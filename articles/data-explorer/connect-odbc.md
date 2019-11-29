@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung mit Azure Data Explorer mithilfe der ODBC
 description: In diesem Artikel erfahren Sie, wie Sie eine ODBC-Verbindung (Open Database Connectivity) mit Azure Data Explorer einrichten.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/30/2019
-ms.openlocfilehash: 65795b5b4dea8d2cdeecf5f78f9de751f275dac0
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 1b2e7a79eb932f5b971dda1d5d51b650789394db
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537594"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034032"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>Herstellen einer Verbindung mit Azure Data Explorer mithilfe der ODBC
 

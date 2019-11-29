@@ -1,7 +1,7 @@
 ---
 title: API-Referenz für die Bing-Suche für ortsansässige Unternehmen v7
 titleSuffix: Azure Cognitive Services
-description: Beschreibt die Programmierelemente der API für die Bing-Suche nach ortsansässigen Unternehmen.
+description: Dieser Artikel enthält technische Details zu Antwortobjekten und die Abfrageparameter und Header, die die Suchergebnisse beeinflussen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: rosh
-ms.openlocfilehash: c9ebaeb66bc46132160c77c09f93fc2921dc8961
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: db764a73aa1bb18ef2fc0f8f6e5ffe8fd60d388c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906349"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075695"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Referenz für die API für die Bing-Suche nach ortsansässigen Unternehmen v7
 

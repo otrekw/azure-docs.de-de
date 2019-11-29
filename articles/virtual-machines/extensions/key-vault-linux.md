@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault-VM-Erweiterung für Linux | Microsoft-Dokumentation
+title: Azure Key Vault-VM-Erweiterung für Linux
 description: Hier erfahren Sie, wie Sie auf virtuellen Computern mithilfe einer VM-Erweiterung einen Agent zur automatischen Aktualisierung von Key Vault-Zertifikaten bereitstellen.
 services: virtual-machines-linux
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 5991d3d2197822b239b946de66f020dd258f835a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2de8a072aec66c2c087541ed9620f3dbdc137ee9
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584376"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073005"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 

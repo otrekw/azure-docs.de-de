@@ -1,18 +1,18 @@
 ---
-title: Architektur für die Notfallwiederherstellung physischer Server in Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Physische Serverarchitektur der Notfallwiederherstellung in Azure Site Recovery
 description: Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die bei der Notfallwiederherstellung von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a5d3dfe6457c4b70f0b23c2d8aa7ac5e58e68dc7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 23e8e4f9a092e871e62da27c8bf0c58a3bb8eb5b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814471"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084683"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung physischer Server in Azure
 

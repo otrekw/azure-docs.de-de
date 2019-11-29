@@ -1,5 +1,5 @@
 ---
-title: Voraussetzungen für OpenShift Container Platform 3.11 in Azure | Microsoft-Dokumentation
+title: Voraussetzungen für OpenShift Container Platform 3.11 in Azure
 description: Voraussetzungen für die Bereitstellung von OpenShift Container Platform 3.11 in Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -12,14 +12,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/14/2019
+ms.date: 10/23/2019
 ms.author: haroldw
-ms.openlocfilehash: 591cc7a4b84f75536446abbcbe32a69a122ddf5a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 069561c4bed55bf6021b594d693e076ef8d313bd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72392073"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035470"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift Container Platform 3.11 in Azure
 
@@ -113,14 +113,16 @@ az group create -l eastus -n openshiftrg
 Erstellen Sie den Dienstprinzipal:
 
 ```azurecli
-scope=`az group show --name openshiftrg --query id`
-az ad sp create-for-rbac --name openshiftsp \
-      --role Contributor --password {Strong Password} \
-      --scopes $scope \
+az group show --name openshiftrg --query id
 ```
-Falls Sie Windows verwenden, führen Sie ```az group show --name openshiftrg --query id``` aus, und verwenden Sie die Ausgabe anstelle von „$scope“.
+Speichern Sie die Ausgabe des Befehls, und verwenden Sie sie anstelle von „$scope“ im nächsten Befehl.
 
-Notieren Sie die „appId“-Eigenschaft, die der Befehl zurückgibt:
+```azurecli
+az ad sp create-for-rbac --name openshiftsp \
+      --role Contributor --scopes $scope \
+```
+
+Notieren Sie die „appId“-Eigenschaft und das Kennwort, die vom Befehl zurückgegeben werden:
 ```json
 {
   "appId": "11111111-abcd-1234-efgh-111111111111",
@@ -131,7 +133,7 @@ Notieren Sie die „appId“-Eigenschaft, die der Befehl zurückgibt:
 }
 ```
  > [!WARNING] 
- > Achten Sie darauf, ein sicheres Kennwort zu erstellen. Befolgen Sie die Anleitung unter [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](/azure/active-directory/active-directory-passwords-policy).
+ > Notieren Sie sich unbedingt das sichere Kennwort, da es nicht möglich ist, dieses Kennwort erneut abzurufen.
 
 Weitere Informationen über Dienstprinzipale finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 

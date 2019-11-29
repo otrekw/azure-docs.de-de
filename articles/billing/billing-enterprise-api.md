@@ -8,19 +8,19 @@ manager: mumami
 editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f5d549006961f3108bf7155610dfb3a9ea78422a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 513dac3a1cdcefa7a49116ea02af5410265af3ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719778"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226249"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
 Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
@@ -31,20 +31,20 @@ Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbra
 
 |Anforderungsheaderschlüssel | Wert|
 |-|-|
-|Authorization| Geben Sie den Wert im folgenden Format an: **bearer {API_SCHLÜSSEL}** <br/> Beispiel: bearer eyr....09| 
+|Authorization| Geben Sie den Wert im folgenden Format an: **bearer {API_SCHLÜSSEL}** <br/> Beispiel: bearer eyr....09|
 
 ## <a name="consumption-apis"></a>APIs zur Nutzung
-Ein Swagger-Endpunkt ist [hier](https://consumption.azure.com/swagger/ui/index) für die unten beschriebenen APIs verfügbar, der eine einfache Introspektion der API und die Möglichkeit zum Generieren von Client-SDKs mithilfe von [AutoRest](https://github.com/Azure/AutoRest) oder [Swagger CodeGen](https://swagger.io/swagger-codegen/) ermöglichen sollte. Seit dem 1. Mai 2014 sind Daten über diese API verfügbar. 
+Ein Swagger-Endpunkt ist [hier](https://consumption.azure.com/swagger/ui/index) für die unten beschriebenen APIs verfügbar, der eine einfache Introspektion der API und die Möglichkeit zum Generieren von Client-SDKs mithilfe von [AutoRest](https://github.com/Azure/AutoRest) oder [Swagger CodeGen](https://swagger.io/swagger-codegen/) ermöglichen sollte. Seit dem 1. Mai 2014 sind Daten über diese API verfügbar.
 
 * **Bilanz und Zusammenfassung**: Die [API für Bilanz und Zusammenfassung](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) bietet eine monatliche Übersicht über Informationen zu Bilanzen, neuen Käufen, Gebühren für den Azure Marketplace, Korrekturen und Überschreitungsgebühren.
 
-* **Verwendungsdetails**: Die [API für Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) bietet eine tägliche Aufschlüsselung der verbrauchten Mengen und durch eine Registrierung anfallenden geschätzten Kosten. Das Ergebnis umfasst auch Informationen zu Instanzen, Verbrauchseinheiten und Abteilungen. Die API kann nach Abrechnungszeitraum oder einem angegebenen Start- und Enddatum abgefragt werden. 
+* **Verwendungsdetails**: Die [API für Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) bietet eine tägliche Aufschlüsselung der verbrauchten Mengen und durch eine Registrierung anfallenden geschätzten Kosten. Das Ergebnis umfasst auch Informationen zu Instanzen, Verbrauchseinheiten und Abteilungen. Die API kann nach Abrechnungszeitraum oder einem angegebenen Start- und Enddatum abgefragt werden.
 
 * **Marketplace Store-Gebühren**: Die [API für Marketplace Store-Gebühren](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) gibt die Aufschlüsselung der nutzungsbasierten Marketplace-Gebühren pro Tag für den angegebenen Abrechnungszeitraum oder gemäß angegebener Start- und Enddaten zurück (einmalige Gebühren sind nicht enthalten).
 
 * **Preisblatt**: Die [Preisblatt-API](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) stellt die zutreffende Rate für jede Verbrauchseinheit für den angegebenen Registrierungs- und Abrechnungszeitraum bereit.
 
-* **Details der reservierten Instanz**: Die [API zur Nutzung reservierter Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) gibt die Nutzung der Käufe reservierter Instanzen zurück. Die [API für Gebühren für reservierte Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) zeigt die vorgenommenen Transaktionsabrechnungen an. 
+* **Details der reservierten Instanz**: Die [API zur Nutzung reservierter Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) gibt die Nutzung der Käufe reservierter Instanzen zurück. Die [API für Gebühren für reservierte Instanzen](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) zeigt die vorgenommenen Transaktionsabrechnungen an.
 
 ## <a name="data-freshness"></a>Datenaktualität
 In der Antwort jeder der oben genannten APIs werden ETags zurückgegeben. Eine Änderung der ETags weist darauf hin, dass die Daten aktualisiert wurden.  Übergeben Sie in nachfolgenden Aufrufen der gleichen API mit den gleichen Parametern das erfasste ETag mit dem Schlüssel „If-None-Match“ im Header der HTTP-Anforderung. Wenn die Daten nicht weiter aktualisiert wurden, lautet der Statuscode der Antwort „NotModified“, und es werden keine Daten zurückgegeben. Bei jeder ETag-Änderung gibt die API das vollständige Dataset für den angeforderten Zeitraum zurück.
@@ -60,13 +60,4 @@ In der Antwort jeder der oben genannten APIs werden ETags zurückgegeben. Eine �
 |401| Nicht autorisiert| API-Schlüssel nicht gefunden, ungültig, abgelaufen usw.|
 |404| Nicht verfügbar| Berichtsendpunkt nicht gefunden|
 |400| Ungültige Anforderung| Ungültige Parameter – Datumsbereiche, EA-Nummern usw.|
-|500| Serverfehler| Unerwarteter Fehler beim Verarbeiten der Anforderung| 
-
-
-
-
-
-
-
-
-
+|500| Serverfehler| Unerwarteter Fehler beim Verarbeiten der Anforderung|

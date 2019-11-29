@@ -1,26 +1,26 @@
 ---
-title: Zusätzliche Szenarien für die gruppenbasierte Lizenzierung – Azure Active Directory | Microsoft-Dokumentation
+title: Zusätzliche Szenarios für die gruppenbasierte Lizenzierung – Azure AD | Microsoft-Dokumentation
 description: Weitere Szenarien für die gruppenbasierte Azure Active Directory-Lizenzierung
 services: active-directory
 keywords: Azure AD-Lizenzierung
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/27/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cfdb8b979d20b77bcbf2f6b0d17855dfa0ac817
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034175"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025946"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Szenarien, Einschränkungen und bekannte Probleme mit der Verwendung von Gruppen zum Verwalten der Lizenzierung in Azure Active Directory
 

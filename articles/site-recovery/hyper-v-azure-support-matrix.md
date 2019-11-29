@@ -5,29 +5,27 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9af85d8d9b181d619d8895542f142708626649d1
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: db334b873358fdab6671877dd66e7f49c334ac44
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620832"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133033"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure
 
 
 In diesem Artikel werden die unterstützten Komponenten und Einstellungen für die Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure mit [Azure Site Recovery](site-recovery-overview.md) beschrieben.
 
-> [!WARNING]
-> Beachten Sie, dass die ASR-Unterstützung für die Verwendung der SCVMM-Konfiguration in Kürze veraltet ist. Darum sollten Sie die Informationen zur [Veraltung](scvmm-site-recovery-deprecation.md) lesen, bevor Sie fortfahren.
 
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
 **Szenario** | **Details**
 --- | ---
-Hyper-V mit Virtual Machine Manager <br> **Dieses Szenario befindet sich im Veraltungsprozess.** <br>| Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](hyper-v-vmm-disaster-recovery.md).
+Hyper-V mit Virtual Machine Manager <br> <br>| Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts durchführen, die im System Center Virtual Machine Manager-Fabric verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.<br/><br/> Wenn Hyper-V-Hosts mit Virtual Machine Manager verwaltet werden, können Sie auch die Notfallwiederherstellung an einem sekundären lokalen Standort durchführen. Weitere Informationen zu diesem Szenario finden Sie in [diesem Tutorial](hyper-v-vmm-disaster-recovery.md).
 Hyper-V ohne Virtual Machine Manager | Sie können die Notfallwiederherstellung in Azure für virtuelle Computer auf Hyper-V-Hosts ausführen, die nicht von Virtual Machine Manager verwaltet werden.<br/><br/> Dieses Szenario können Sie über das Azure-Portal oder mit PowerShell bereitstellen.
 
 ## <a name="on-premises-servers"></a>Lokale Server
@@ -96,7 +94,7 @@ Beschleunigter Netzwerkbetrieb | Nein | Nein
 NFS | Nicht verfügbar | Nicht verfügbar
 SMB 3.0 | Ja | Ja
 SAN (ISCSI) | Ja | Ja
-Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM für CLARiiON | Ja | Ja
+Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4, EMC PowerPath DSM für CLARiiON | Ja | Ja
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V-VM-Gastspeicher
 
@@ -105,7 +103,7 @@ Multipfad (MPIO). Getestet mit:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br
 VMDK | Nicht verfügbar | Nicht verfügbar
 VHD/VHDX | Ja | Ja
 VM der 2. Generation | Ja | Ja
-EFI/UEFI| Ja | Ja
+EFI/UEFI<br></br>Der migrierte virtuelle Computer in Azure wird automatisch in einen virtuellen Computer mit BIOS-Start konvertiert. Auf dem virtuellen Computer sollte nur Windows Server 2012 oder höher ausgeführt werden. Der Betriebssystemdatenträger sollte maximal fünf Partitionen aufweisen, und die Größe des Betriebssystemdatenträgers sollte weniger als 300 GB betragen.| Ja | Ja
 Freigegebener Clusterdatenträger | Nein | Nein
 Verschlüsselter Datenträger | Nein | Nein
 NFS | Nicht verfügbar | Nicht verfügbar
@@ -132,6 +130,7 @@ Speicherebene „Kalt“ | Nein | Nein
 Speicherebene „Heiß“| Nein | Nein
 Blockblobs | Nein | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
+Verschlüsselung ruhender Daten (CMK)| Nein | Nein
 Storage Premium | Ja | Ja
 Import-/Exportdienst | Nein | Nein
 Azure-Speicherkonten mit aktivierter Firewall | Ja. Für Zielspeicher und Cache | Ja. Für Zielspeicher und Cache

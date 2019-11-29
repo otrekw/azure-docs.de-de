@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579668"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110346"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Sprachassistenten: Häufig gestellte Fragen
+# <a name="voice-assistants-frequently-asked-questions"></a>Häufig gestellte Fragen zu Sprachassistenten
 
 Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie sich die [weiteren Supportoptionen](support.md) an.
 
@@ -35,9 +35,9 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 
 **A:** Die beste Möglichkeit, um mit dem Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschau) oder eines grundlegenden Bot Framework-Bots zu beginnen.
 
-* [Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschauversion)](quickstart-custom-speech-commands-create-new.md)
-* [Tutorial: Erstellen und Bereitstellen eines Basisbots](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Herstellen einer Verbindung mit einem Direct Line Speech-Kanal für einen Bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Erstellen einer Anwendung für benutzerdefinierte Befehle (Vorschauversion)](quickstart-custom-speech-commands-create-new.md)
+- [Tutorial: Erstellen und Bereitstellen eines Basisbots](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Herstellen einer Verbindung mit einem Direct Line Speech-Kanal für einen Bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Debuggen
 
@@ -47,14 +47,13 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 
 In der neuesten Version von Direct Line Speech wurde der Prozess für die Kontaktaufnahme mit Ihrem Bot von einem Gerät aus vereinfacht. Auf der Seite für die Kanalregistrierung wird Ihre Direct Line Speech-Kanalregistrierung oben über die Dropdownliste einer Sprachressource zugeordnet. Nach der Zuordnung enthält Speech SDK v1.8 die `BotFrameworkConfig::FromSubscription`-Factorymethode, über die ein `DialogServiceConnector` für die Kontaktaufnahme mit dem Bot, den Sie Ihrem Abonnement zugeordnet haben, konfiguriert wird.
 
-Falls Sie noch mit der Migration Ihrer Clientanwendung von v1.7 zu v1.8 beschäftigt sind, funktioniert `DialogServiceConfig::FromBotSecret` ggf. mit einem Wert vom Typ „nicht leer, nicht Null“ als Kanalgeheimnisparameter, z. B. Ihrem zuvor verwendeten Geheimnis. Dieser Wert wird einfach ignoriert, wenn ein Sprachabonnement verwendet wird, das einer neueren Kanalregistrierung zugeordnet ist. Hierbei ist es *obligatorisch*, dass der Wert nicht Null und nicht leer ist. Dies wird auf dem Gerät überprüft, bevor die dienstseitige Zuordnung relevant wird.
-
+Falls Sie noch mit der Migration Ihrer Clientanwendung von v1.7 zu v1.8 beschäftigt sind, funktioniert `DialogServiceConfig::FromBotSecret` ggf. mit einem Wert vom Typ „nicht leer, nicht Null“ als Kanalgeheimnisparameter, z. B. Ihrem zuvor verwendeten Geheimnis. Dieser Wert wird einfach ignoriert, wenn ein Sprachabonnement verwendet wird, das einer neueren Kanalregistrierung zugeordnet ist. Hierbei ist es _obligatorisch_, dass der Wert nicht Null und nicht leer ist. Dies wird auf dem Gerät überprüft, bevor die dienstseitige Zuordnung relevant wird.
 
 Eine ausführlichere Anleitung finden Sie im [Tutorialabschnitt](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel), in dem die Kanalregistrierung Schritt für Schritt beschrieben wird.
 
 **F: Ich erhalte bei der Verbindungsherstellung eine 401-Fehlermeldung, und nichts funktioniert. Ich weiß, dass mein Speech-Abonnementschlüssel gültig. Was geht da vor?**
 
-**A:** Wenn Sie Ihr Abonnement im Azure-Portal verwalten, stellen Sie sicher, dass Sie die Ressource **Speech** (Microsoft.CognitiveServicesSpeechServices, „Speech“) und *nicht* die Ressource **Cognitive Services** (Microsoft.CognitiveServicesAllInOne, „Alle Cognitive Services“) verwenden. Überprüfen Sie außerdem die [Spracherkennungsdienst-Unterstützung für Sprachassistenten in der Region](regions.md#voice-assistants).
+**A:** Wenn Sie Ihr Abonnement im Azure-Portal verwalten, stellen Sie sicher, dass Sie die Ressource **Speech** (Microsoft.CognitiveServicesSpeechServices, „Speech“) und _nicht_ die Ressource **Cognitive Services** (Microsoft.CognitiveServicesAllInOne, „Alle Cognitive Services“) verwenden. Überprüfen Sie außerdem die [Spracherkennungsdienst-Unterstützung für Sprachassistenten in der Region](regions.md#voice-assistants).
 
 ![Korrektes Abonnement für „Direct Line Speech“](media/voice-assistants/faq-supported-subscription.png "Beispiel für ein kompatibles Sprachabonnement")
 
@@ -62,8 +61,8 @@ Eine ausführlichere Anleitung finden Sie im [Tutorialabschnitt](tutorial-voice-
 
 **A:** Dieser Fehler weist auf ein Kommunikationsproblem zwischen dem Assistenten und dem Sprachassistentendienst hin.
 
-* Stellen Sie für benutzerdefinierte Befehle (Vorschau) sicher, dass die Anwendung für benutzerdefinierte Befehle (Vorschau) veröffentlicht wurde.
-* Stellen Sie für „Direct Line Speech“ sicher, dass Sie eine [Verbindung Ihres Bots mit dem Direct Line Speech-Kanal hergestellt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) und Ihrem Bot [Unterstützung für das Streaming-Protokoll hinzugefügt](https://aka.ms/botframework/addstreamingprotocolsupport) haben (mit der entsprechenden Websocketunterstützung). Überprüfen Sie dann, ob Ihr Bot auf eingehende Anforderungen vom Kanal reagiert.
+- Stellen Sie für benutzerdefinierte Befehle (Vorschau) sicher, dass die Anwendung für benutzerdefinierte Befehle (Vorschau) veröffentlicht wurde.
+- Stellen Sie für „Direct Line Speech“ sicher, dass Sie eine [Verbindung Ihres Bots mit dem Direct Line Speech-Kanal hergestellt](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) und Ihrem Bot [Unterstützung für das Streaming-Protokoll hinzugefügt](https://aka.ms/botframework/addstreamingprotocolsupport) haben (mit der entsprechenden Websocketunterstützung). Überprüfen Sie dann, ob Ihr Bot auf eingehende Anforderungen vom Kanal reagiert.
 
 **F: Dieser Code funktioniert trotzdem nicht, und/oder ich erhalte bei der Verwendung eines `DialogServiceConnector` eine andere Fehlermeldung. Wie soll ich vorgehen?**
 
@@ -71,5 +70,5 @@ Eine ausführlichere Anleitung finden Sie im [Tutorialabschnitt](tutorial-voice-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Problembehandlung](troubleshooting.md)
-* [Versionshinweise](releasenotes.md)
+- [Problembehandlung](troubleshooting.md)
+- [Versionshinweise](releasenotes.md)

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 6cdebb8f6abea2b50dd8aad58ccc9fb5e680cba9
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 635431fb87e5f164f92ab4b7a1027ee96e9d801a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797475"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891032"
 ---
 # <a name="generate-maps"></a>Generieren von Karten
 
@@ -170,7 +170,7 @@ Die Bodenfeuchtigkeit ist das Wasser, das sich in den Zwischenräumen zwischen d
 Stellen Sie die Erfüllung der folgenden Voraussetzungen sicher, bevor Sie versuchen, ein Wärmebild zur Bodenfeuchtigkeit zu generieren:
 
 - Es müssen mindestens drei Sensoren zur Ermittlung der Bodenfeuchtigkeit verwendet werden. Microsoft empfiehlt Ihnen, die Erstellung einer Karte zur Bodenfeuchtigkeit erst durchzuführen, nachdem die Sensoren bereitgestellt und dem landwirtschaftlichen Betrieb zugeordnet wurden.  
-- Für den Tag, an dem die Erstellung der Karte zur Bodenfeuchtigkeit angefordert wurde, muss innerhalb der letzten 120 Tage mindestens eine Sentinel-Szene mit wolkenlosem Himmel verfügbar sein.
+- Die Generierung eines Wärmebilds zur Bodenfeuchtigkeit wird von der Sentinel-Pfadabdeckung, Wolkendecke und Wolkenschatten beeinflusst. Für den Tag, an dem die Erstellung der Karte zur Bodenfeuchtigkeit angefordert wurde, muss innerhalb der letzten 120 Tage mindestens eine Sentinel-Szene mit wolkenlosem Himmel verfügbar sein.
 - Mindestens die Hälfte der auf der Fläche des landwirtschaftlichen Betriebs bereitgestellten Sensoren muss online sein und Daten an den Datenhub streamen.
 - Das Wärmebild sollte aus den Messergebnissen von Sensoren desselben Anbieters generiert werden.
 
@@ -220,6 +220,6 @@ Führen Sie die folgenden Schritte aus:
 4. Wählen Sie das Symbol **Sortieren** neben den Tabellenüberschriften aus, um nach landwirtschaftlichem Betrieb, Datum, Erstellungsdatum, Auftrags-ID oder Auftragstyp zu sortieren.
 5. Scrollen Sie durch die Liste mit den verfügbaren Karten, indem Sie die Navigationsschaltfläche am Ende der Seite verwenden.
 6. Wählen Sie die Karte aus, die Sie anzeigen möchten. In einem Popupfenster wird eine Vorschau für die ausgewählte Karte angezeigt.
-7. Wählen Sie das Dropdownmenü **Herunterladen** aus, um das Downloadformat auszuwählen. Die Karte wird heruntergeladen und im lokalen Ordner Ihres Computers gespeichert.
+7. Wählen Sie das Dropdownmenü **Herunterladen** aus, um das Downloadformat auszuwählen. Die Karte wird heruntergeladen und im angegebenen Ordner gespeichert.
 
     ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)

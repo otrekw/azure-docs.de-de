@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: fe8730b0d97ae3783282cdd401fd5889ed08ad9a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a529ac8b7ce16d3ee4463f1b4bc2e8007e5b79b5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506561"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836766"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Richtlinien für die verantwortungsvolle Bereitstellung von Technologien mit künstlicher Sprache
 Hier folgen die allgemeinen Entwurfsrichtlinien von Microsoft für den Einsatz der Technologien mit künstlicher Sprache. Diese wurden in Studien entwickelt, die Microsoft mit Sprechern, Verbrauchern sowie Personen mit Sprachstörungen durchführte, um die verantwortungsvolle Entwicklung der künstlichen Sprache zu steuern.
@@ -39,7 +39,7 @@ In mehrdeutigen, transaktionalen Szenarien (z. B. beim Support eines Callcenters
 Bei der Arbeit mit Sprechern, z. B. Synchronsprechern, zum Erzeugen synthetischer Stimmen, gilt die folgende Richtlinie.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Einholen einer zweckdienlichen Einwilligung von Sprechern
-Sprecher erwarten, dass sie die Kontrolle über ihr Voicefont haben (wie und wo es verwendet wird) und für jede Verwendung vergütet werden. Systembesitzer sollten daher eine ausdrückliche schriftliche Genehmigung von Sprechern einholen und über klare vertragliche Vorgaben zu Anwendungsfällen, Nutzungsdauer, Vergütung usw. verfügen. Einige Sprecher sind sich der potenziellen böswilligen Verwendung der Technologie nicht bewusst und sollten von Systembesitzern über die Funktionen der Technologie informiert werden. Weitere Informationen zu Sprechern und zur Einwilligung finden Sie in unserem [Transparenzhinweis](https://aka.ms/neural-tts-transparency-note).
+Sprecher erwarten, dass sie die Kontrolle über ihr Voicefont haben (wie und wo es verwendet wird) und für jede Verwendung vergütet werden. Systembesitzer sollten daher eine ausdrückliche schriftliche Genehmigung von Sprechern einholen und über klare vertragliche Vorgaben zu Anwendungsfällen, Nutzungsdauer, Vergütung usw. verfügen. Einige Sprecher sind sich der potenziellen böswilligen Verwendung der Technologie nicht bewusst und sollten von Systembesitzern über die Funktionen der Technologie informiert werden. Weitere Informationen zu Sprechern und zur Einwilligung finden Sie in unserer [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent).
 
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Überlegungen zu Personen mit Sprachstörungen
@@ -57,13 +57,13 @@ Personen mit Sprachstörungen möchten ihre synthetische Stimme aktualisieren, u
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Transparenzhinweis](https://aka.ms/neural-tts-transparency-note)
+* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)
 * [Kontrollübersicht](concepts-gating-overview.md)
 * [Vorgehensweise zum Offenlegen](concepts-disclosure-guidelines.md)
 * [Entwurfsmuster für die Offenlegung](concepts-disclosure-patterns.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Transparenzhinweis](https://aka.ms/neural-tts-transparency-note)
+* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)
 * [Vorgehensweise zum Offenlegen](concepts-disclosure-guidelines.md)
 * [Entwurfsmuster für die Offenlegung](concepts-disclosure-patterns.md)

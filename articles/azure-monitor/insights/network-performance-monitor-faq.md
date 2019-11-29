@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: b451597d2d91117e11b1becd8b4ab96f981dade8
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce0b917f34cab31227e721e119c72cd5d1f99bff
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931316"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832002"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -98,6 +98,42 @@ Der Netzwerkleistungsmonitor verwendet eine Wahrscheinlichkeitsmethode, um den e
 ### <a name="how-can-i-create-alerts-in-npm"></a>Wie kann ich Warnungen im Netzwerkleistungsmonitor erstellen?
 Entsprechende ausführliche Anweisungen finden Sie im [Abschnitt „Warnungen“ in der Dokumentation](https://docs.microsoft.com/azure/log-analytics/log-analytics-network-performance-monitor#alerts).
 
+### <a name="what-are-the-default-log-analytics-queries-for-alerts"></a>Welche Log Analytics-Standardabfragen für Warnungen gibt es?
+Abfrage des Systemmonitors
+
+    NetworkMonitoring 
+     | where (SubType == "SubNetwork" or SubType == "NetworkPath") 
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and RuleName == "<<your rule name>>"
+    
+Abfrage des Dienstkonnektivitätsmonitors
+
+    NetworkMonitoring                 
+     | where (SubType == "EndpointHealth" or SubType == "EndpointPath")
+     | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or ServiceResponseHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy") and TestName == "<<your test name>>"
+    
+Abfragen des ExpressRoute-Monitors: Verbindungsabfrage
+
+    NetworkMonitoring
+    | where (SubType == "ERCircuitTotalUtilization") and (UtilizationHealthState == "Unhealthy") and CircuitResourceId == "<<your circuit resource ID>>"
+
+Privates Peering
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ExpressRoutePath")   
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == "<<your circuit name>>" and VirtualNetwork == "<<vnet name>>"
+
+Microsoft-Peering
+
+    NetworkMonitoring 
+     | where (SubType == "ExpressRoutePeering" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") and CircuitName == ""<<your circuit name>>" and PeeringType == "MicrosoftPeering"
+
+Allgemeine Abfrage   
+
+    NetworkMonitoring
+    | where (SubType == "ExpressRoutePeering" or SubType == "ERVNetConnectionUtilization" or SubType == "ERMSPeeringUtilization" or SubType == "ExpressRoutePath")
+    | where (LossHealthState == "Unhealthy" or LatencyHealthState == "Unhealthy" or UtilizationHealthState == "Unhealthy") 
+
 ### <a name="can-npm-monitor-routers-and-servers-as-individual-devices"></a>Kann der Netzwerkleistungsmonitor Router und Server als einzelne Geräte überwachen?
 Der Netzwerkleistungsmonitor ermittelt nur die IP-Adresse und den Hostnamen der zugrunde liegenden Netzwerkhops (Switches, Router, Server usw.) zwischen der Quell- und der Ziel-IP-Adresse. Zudem wird die Latenz zwischen diesen identifizierten Hops ermittelt. Diese zugrunde liegenden Hops werden nicht einzeln überwacht.
 
@@ -110,17 +146,23 @@ Die Bandbreitennutzung ist die Summe der eingehenden und ausgehenden Bandbreite.
 ### <a name="can-we-get-incoming-and-outgoing-bandwidth-information-for-the-expressroute"></a>Können Informationen zur eingehenden und ausgehenden Bandbreite für ExpressRoute erfasst werden?
 Eingehende und ausgehende Werte können für die primäre und die sekundäre Bandbreite erfasst werden.
 
-Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Peeringebene abzurufen.
+Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Ebene des Microsoft-Peerings abzurufen.
 
     NetworkMonitoring 
-    | where SubType == "ExpressRoutePeeringUtilization"
-    | project CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+     | where SubType == "ERMSPeeringUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+    
+Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Ebene des privaten Peerings abzurufen.
+
+    NetworkMonitoring 
+     | where SubType == "ERVNetConnectionUtilization"
+     | project  CircuitName,PeeringName,PrimaryBytesInPerSecond,PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
   
-Verwenden Sie die folgende Abfrage, um Informationen auf Verbindungsebene abzurufen. 
+Verwenden Sie die folgende Abfrage in der Protokollsuche, um Informationen auf Verbindungsebene abzurufen.
 
     NetworkMonitoring 
-    | where SubType == "ExpressRouteCircuitUtilization"
-    | project CircuitName,PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
+        | where SubType == "ERCircuitTotalUtilization"
+        | project CircuitName, PrimaryBytesInPerSecond, PrimaryBytesOutPerSecond,SecondaryBytesInPerSecond,SecondaryBytesOutPerSecond
 
 ### <a name="which-regions-are-supported-for-npms-performance-monitor"></a>Welche Regionen werden für den Systemmonitor des Netzwerkleistungsmonitors unterstützt?
 Der Netzwerkleistungsmonitor kann die Konnektivität zwischen Netzwerken in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der [unterstützten Regionen](../../azure-monitor/insights/network-performance-monitor.md#supported-regions) gehostet wird.
@@ -142,8 +184,8 @@ Ein Hop reagiert in einem der folgenden Szenarien möglicherweise nicht auf eine
 * Die Netzwerkgeräte lassen keinen ICMP_TTL_EXCEEDED-Datenverkehr zu.
 * Die ICMP_TTL_EXCEEDED-Antwort vom Netzwerkgerät wird durch eine Firewall blockiert.
 
-### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy-"></a>Ich erhalte Warnungen für fehlerhafte Tests, aber die hohen Werte werden im NPM-Diagramm zu Verlust und Latenz nicht angezeigt. Wie prüfe ich, was fehlerhaft ist?
-NPM löst eine Warnung aus, wenn die End-to-End-Latenz zwischen Quelle und Ziel den Schwellenwert für einen beliebigen Pfad dazwischen überschreitet. Einige Netzwerke verfügen über mehr als einen Pfad, der dieselbe Quelle und dasselbe Ziel verbindet. NPM löst eine Warnung aus, wenn ein beliebiger Pfad fehlerhaft ist. Die in den Diagrammen gezeigte Darstellung von Verlust und Latenz ist der Durchschnittswert für alle Pfade und gibt daher möglicherweise nicht den genauen Wert eines einzelnen Pfads an. Suchen Sie in der Warnung nach der Spalte „SubType“, um zu verstehen, wo der Schwellenwert überschritten wurde. Wenn das Problem durch einen Pfad verursacht wird, lautet der SubType-Wert „NetworkPath“ (für Leistungsüberwachungstests), „EndpointPath“ (für Dienstkonnektivitätsmonitor-Tests) und „ExpressRoutePath“ (für ExpressRoute-Monitortests). 
+### <a name="i-get-alerts-for-unhealthy-tests-but-i-do-not-see-the-high-values-in-npms-loss-and-latency-graph-how-do-i-check-what-is-unhealthy"></a>Ich erhalte Warnungen für fehlerhafte Tests, aber die hohen Werte werden im NPM-Diagramm zu Verlust und Latenz nicht angezeigt. Wie prüfe ich, was fehlerhaft ist?
+NPM löst eine Warnung aus, wenn die End-to-End-Latenz zwischen Quelle und Ziel den Schwellenwert für einen beliebigen Pfad dazwischen überschreitet. Einige Netzwerke verfügen über mehrere Pfade, die dieselbe Quelle und dasselbe Ziel verbinden. NPM löst eine Warnung aus, wenn ein beliebiger Pfad fehlerhaft ist. Die in den Diagrammen gezeigte Darstellung von Verlust und Latenz ist der Durchschnittswert für alle Pfade und gibt daher möglicherweise nicht den genauen Wert eines einzelnen Pfads an. Suchen Sie in der Warnung nach der Spalte „SubType“, um zu verstehen, wo der Schwellenwert überschritten wurde. Wenn das Problem durch einen Pfad verursacht wird, lautet der SubType-Wert „NetworkPath“ (für Systemmonitortests), „EndpointPath“ (für Dienstkonnektivitätsmonitor-Tests) und „ExpressRoutePath“ (für ExpressRoute-Monitortests). 
 
 Beispielabfrage zur Feststellung, ob der Pfad fehlerhaft ist:
 

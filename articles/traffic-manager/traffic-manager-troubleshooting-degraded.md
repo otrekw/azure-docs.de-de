@@ -3,21 +3,21 @@ title: Problembehandlung beim Status "Heruntergestuft" in Azure Traffic Manager
 description: Problembehandlung bei Traffic Manager-Profilen, bei denen der Status "Heruntergestuft" angezeigt wird.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: dcscontentpm
+author: asudbring
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 8f043b11c9319d61c4413d01b008b324103ca6c3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.author: allensu
+ms.openlocfilehash: 8b8fbdf55e408874f6a6e83d6333583238865b5c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155215"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227715"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Problembehandlung beim Status "Heruntergestuft" in Traffic Manager
 

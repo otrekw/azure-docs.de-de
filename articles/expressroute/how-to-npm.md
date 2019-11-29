@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute-Leitungen – Azure | Microsoft-Dokumentation
+title: 'Azure ExpressRoute: Konfigurieren des Netzwerkleistungsmonitors für Leitungen'
 description: Konfigurieren Sie die cloudbasierte Netzwerküberwachung für Azure ExpressRoute-Leitungen. Dies umfasst die Überwachung über das private Peering mit ExpressRoute und das Microsoft-Peering.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 180075f13be2cc2507a78e3d10a67a49a0c0cb12
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 54fa3dcbfbbcb3153f81407a9bc9b52511405390
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60840171"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076590"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
 
@@ -191,7 +190,7 @@ In diesem Abschnitt konfigurieren Sie die Monitore. Führen Sie die Schritte fü
 
 Wenn die Ermittlung abgeschlossen ist, werden Regeln für eindeutige **Verbindungsnamen** und **VNet-Namen** angezeigt. Diese Regeln sind zunächst deaktiviert.
 
-![Regeln](./media/how-to-npm/14.png)
+![rules](./media/how-to-npm/14.png)
 
 1. Aktivieren Sie das Kontrollkästchen **Dieses Peering überwachen**.
 2. Aktivieren Sie das Kontrollkästchen **Integritätsüberwachung für dieses Peering aktivieren**.

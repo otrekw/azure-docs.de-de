@@ -1,7 +1,7 @@
 ---
-title: Indizieren eines Blobs in mehrere Suchindexdokumente über den Azure-Blobindexer für die Volltextsuche
+title: Indizieren von Blobs mit mehreren Dokumenten
 titleSuffix: Azure Cognitive Search
-description: Durchforsten von Azure-Blobs nach Textinhalten mithilfe des Blobindexers der kognitiven Azure-Suche. Jedes Blob kann ein oder mehrere Suchindexdokumente ergeben.
+description: Durchforsten Sie Azure-Blobs nach Textinhalten mithilfe des Blobindexers von Azure Congitive Search, wobei jedes Blob ein oder mehrere Suchindexdokumente ergeben kann.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818541"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112269"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Indizieren von Blobs zum Generieren mehrerer Suchdokumente
 Standardmäßig behandelt ein Blobindexer die Inhalte eines Blobs als ein Suchdokument. Einige **parsingMode**-Werte unterstützen Szenarios, in denen sich aus einem einzigen Blob mehrere Suchdokumente ergeben können. Es gibt folgende unterschiedliche Typen von **parsingMode**, die es einem Indexer ermöglichen, mehr als ein Suchdokument aus einem Blob zu extrahieren:

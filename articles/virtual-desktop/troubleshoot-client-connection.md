@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9fcc65768db3029461a5823034336bc883379292
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607388"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227690"
 ---
 # <a name="remote-desktop-client-connections"></a>Remotedesktop-Clientverbindungen
 
@@ -119,7 +119,7 @@ Befolgen Sie für Fehlercodes zu Clientverbindungen diese allgemeinen Problembeh
 6. Führen Sie mithilfe der **ActivityId** aus der vorherigen Cmdlet-Ausgabe den nachstehenden Befehl aus:
 
     ```PowerShell
-    (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
+    (Get-RdsDiagnosticActivities -TenantName <TenantName> -ActivityId <ActivityId> -Detailed).Errors
     ```
 
 7. Der Befehl erzeugt eine Ausgabe ähnlich der weiter unten angegebenen. Verwenden Sie **ErrorCodeSymbolic** und **ErrorMessage**, um Troubleshooting für die Grundursache auszuführen.

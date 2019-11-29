@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 8/1/2019
 ms.author: arya
-ms.openlocfilehash: cfe212a150da0e5828f48de3bf2692ab2a44c672
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: c415739934e2318ea5287d5eed9f8235029b666f
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69656869"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405618"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Konfigurieren der Anmeldeinformationen des Repositorys für Ihre Anwendung zum Herunterladen von Containerimages
 
@@ -112,7 +112,7 @@ Service Fabric unterstützt die Verwendung von Token als Anmeldeinformationen zu
 
 3.  Nachdem Sie die Schritte oben abgeschlossen haben, ändern Sie die Datei „applicationmanifest.xml“.  Suchen Sie das Tag mit der Bezeichnung „ContainerHostPolicies“, und fügen Sie das Attribut `‘UseTokenAuthenticationCredentials=”true”` hinzu.
 
-    ```json
+    ```xml
       <ServiceManifestImport>
           <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
       <Policies>

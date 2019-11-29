@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: d38b11b8fc4351c6b074ccfdf47df06a71e0a0a4
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823974"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464054"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrieren von Media Indexer und Media Indexer 2 zu Video Indexer
 
@@ -73,8 +73,6 @@ Sie werden feststellen, dass Video Indexer, Azure Media Services v3 AudioAnalyze
 
 Dies sind einige der bekannten Unterschiede: 
 
-* Untertiteldateien im SAMI-Format werden nicht mehr unterstützt. Dies ist ein älteres Untertitelformat, das nicht mehr verbreitet ist. Es wird durch TTML, WebVTT und SRT ersetzt.  
-* AIB-Dateien (Audio Indexing Blob) werden nicht mehr unterstützt. Diese Funktion war für die in Indexer 1 verwendete Technologie spezifisch und wird nicht mehr angeboten.  
 * Die Cognitive Services-Spracherkennungsdienste unterstützen keine Extrahierung von Schlüsselwörtern. Jedoch bieten sowohl Video Indexer als auch Media Services v3 AudioAnalyzerPreset eine stabilere Menge von Schlüsselwörtern im JSON-Dateiformat. 
 
 ## <a name="need-help"></a>Sie brauchen Hilfe?

@@ -1,7 +1,7 @@
 ---
 title: Vorschlagen von Suchbegriffen mit der Bing-Vorschlagssuche-API
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie4 Sie die Bing-Vorschlagssuche-API verwenden.
+description: In diesem Artikel wird das Konzept des Vorschlagens von Suchbegriffen mit der Bing-Vorschlagssuche-API und der Einfluss der Abfragelänge auf die Relevanz diskutiert.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cee4f68b734f0c2bec9fd629986ba7f6559f207e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 060dbd29ee4ddb78e8ae9b2ed4e7814da3c4eebf
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882446"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072894"
 ---
 # <a name="suggesting-query-terms"></a>Vorschlagen von Abfrageausdrücken
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/8/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 01408e3592af58f05db32e4722e4a85cd2acd0ef
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 8328170d73d75e8e2eb1a84881375ce21c72a61b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747778"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227833"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -243,7 +243,7 @@ Die folgenden Versionshinweise gelten für Version 6.0.0.0 des Azure-Dateisynchr
   - Standardmäßig können beide Ereigniskanäle jeweils bis zu 1 MB speichern. Sie können die Anzahl der Dateien, für die ein Bericht erstellt wird, erhöhen, indem Sie die Größe der Ereigniskanäle erhöhen.
 - Unterstützung für den FIPS-Modus
   - Die Azure-Dateisynchronisierung unterstützt nun das Aktivieren des FIPS-Modus auf Servern, auf denen der Azure-Dateisynchronisierungs-Agent installiert ist.
-    - Bevor Sie den FIPS-Modus auf Ihrem Server aktivieren, installieren Sie den Azure-Dateisynchronisierungs-Agent und das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) auf Ihrem Server. Wenn der FIPS-Modus bereits auf Ihrem Server aktiviert wurde, können Sie das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) [manuell auf Ihren Server herunterladen](https://docs.microsoft.com/powershell/gallery/how-to/working-with-packages/manual-download).
+    - Bevor Sie den FIPS-Modus auf Ihrem Server aktivieren, installieren Sie den Azure-Dateisynchronisierungs-Agent und das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) auf Ihrem Server. Wenn der FIPS-Modus bereits auf Ihrem Server aktiviert wurde, können Sie das [PackageManagement-Modul](https://www.powershellgallery.com/packages/PackageManagement/1.1.7.2) [manuell auf Ihren Server herunterladen](/powershell/scripting/gallery/how-to/working-with-packages/manual-download).
 - Verschiedene Zuverlässigkeitverbesserungen für Cloudtiering und Synchronisierung
 
 ### <a name="evaluation-tool"></a>Auswertungstool

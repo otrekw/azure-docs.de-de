@@ -2,13 +2,13 @@
 title: Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 description: Als Dienstanbieter, der die delegierte Azure-Ressourcenverwaltung verwendet, können Sie alle Ihre delegierten Kundenressourcen und -abonnements anzeigen, indem Sie im Azure-Portal zu „Meine Kunden“ wechseln.
 ms.date: 10/23/2019
-ms.topic: overview
-ms.openlocfilehash: ed1f2e5044fe5058acc4f8b155b346dd46c51b28
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: f115ecad09b01869a465f50485e191671970d521
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131239"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463825"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Anzeigen und Verwalten von Kunden und delegierten Ressourcen
 

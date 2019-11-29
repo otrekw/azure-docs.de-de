@@ -1,7 +1,7 @@
 ---
 title: Überprüfen der Datenqualität für Custom Speech – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Über das Custom Speech-Portal können Sie hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist.  Mit diesem Tool können Sie schnell die Qualität unseres Baseline-Spracherkennungsmodells oder eines trainierten benutzerdefinierten Modells überprüfen, ohne Audiodaten transkribieren zu müssen.
+description: Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Sie können hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0b5f064204c5bca35ccb1a628cb06978180c318c
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801487"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072560"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 
@@ -43,18 +43,18 @@ Nach erfolgreicher Testerstellung können Sie die Modelle nebeneinander vergleic
 
 ## <a name="side-by-side-model-comparisons"></a>Gegenüberstellung der Modelle
 
-Wenn der Teststatus *Erfolgreich* lautet, klicken Sie auf den Namen des Testelements, um Testdetails anzuzeigen. Diese Detailseite listet alle Äußerungen in Ihrem Dataset auf und zeigt die Erkennungsergebnisse der beiden Modelle neben der Transkription aus dem übermittelten Dataset an.
+Wenn der Teststatus _Erfolgreich_ lautet, klicken Sie auf den Namen des Testelements, um Testdetails anzuzeigen. Diese Detailseite listet alle Äußerungen in Ihrem Dataset auf und zeigt die Erkennungsergebnisse der beiden Modelle neben der Transkription aus dem übermittelten Dataset an.
 
 Zur einfacheren Untersuchung der Gegenüberstellung können Sie verschiedene Fehlertypen wie Einfügungen, Löschungen und Ersetzungen aktivieren oder deaktivieren. Indem Sie sich die Audiodaten anhören und mit den Erkennungsergebnissen in den einzelnen Spalten vergleichen (die die menschenmarkierte Transkription sowie die Ergebnisse zweier Spracherkennungsmodelle enthalten), können Sie entscheiden, welches Modell Ihre Anforderungen erfüllt und wo Verbesserungen erforderlich sind.
 
-Die Überprüfung der Qualität ist sinnvoll, um sich zu vergewissern, dass die Qualität eines Spracherkennungsendpunkts für eine Anwendung ausreicht.  Für eine objektive Genauigkeitsmessung, für die transkribiertes Audio benötigt wird, befolgen Sie die Anweisungen unter [Bewerten der Genauigkeit](how-to-custom-speech-evaluate-data.md).
+Die Überprüfung der Qualität ist sinnvoll, um sich zu vergewissern, dass die Qualität eines Spracherkennungsendpunkts für eine Anwendung ausreicht. Für eine objektive Genauigkeitsmessung, für die transkribiertes Audio benötigt wird, befolgen Sie die Anweisungen unter [Bewerten der Genauigkeit](how-to-custom-speech-evaluate-data.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
-* [Trainieren Ihres Modells](how-to-custom-speech-train-model.md)
-* [Bereitstellen Ihres Modells](how-to-custom-speech-deploy-model.md)
+- [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
+- [Trainieren Ihres Modells](how-to-custom-speech-train-model.md)
+- [Bereitstellen Ihres Modells](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Prepare data for Custom Speech](how-to-custom-speech-test-data.md) (Vorbereiten von Daten für Custom Speech)
+- [Prepare data for Custom Speech](how-to-custom-speech-test-data.md) (Vorbereiten von Daten für Custom Speech)

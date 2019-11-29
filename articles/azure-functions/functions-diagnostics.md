@@ -1,20 +1,17 @@
 ---
 title: Übersicht über die Azure Functions-Diagnose
 description: Erfahren Sie, wie Sie Probleme mit Ihrer Funktions-App mit der Azure Functions-Diagnose beheben können.
-keywords: Funktionen, Diagnosen, Support, serverlos, Problembehandlung, Selbsthilfe
 author: yunjchoi
-manager: gwallace
-ms.service: azure-functions
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 96bfc133ef390f34712151733277ae6f9e9a8d70
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73722412"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227018"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Übersicht über die Azure Functions-Diagnose
 

@@ -1,5 +1,5 @@
 ---
-title: Unterstützungsmatrix für den Microsoft Azure Recovery Services-Agent (MARS)
+title: Unterstützungsmatrix für den Microsoft Azure Recovery Services-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 author: dcurwin
 ms.service: backup
@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 1559bb096baaa8f19718bf0c3bcd6b2dc767235b
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210127"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090545"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -21,9 +21,13 @@ Mit dem [Azure Backup-Dienst](backup-overview.md) können Sie lokale Computer un
 ## <a name="the-mars-agent"></a>Der MARS-Agent
 
 Der MARS-Agent wird von Azure Backup verwendet, um Daten von lokalen Computern und Azure-VMs in einem Backup Recovery Services-Tresor in Azure zu sichern. Mit dem MARS-Agent haben Sie folgende Möglichkeiten:
+
 - Sie können den Agent auf lokalen Windows-Computern ausführen, sodass diese direkt in einem Backup Recovery Services-Tresor in Azure gesichert werden können.
 - Sie können den Agent auf Windows-VMs ausführen, sodass diese direkt in einem Tresor gesichert werden können.
 - Sie können den Agent auf einem MABS-Server (Microsoft Azure Backup Server) oder System Center DPM-Server (Data Protection Manager) ausführen. In diesem Szenario werden Computer und Workloads auf einem MABS- oder DPM-Server gesichert. Anschließend wird dieser Server vom MARS-Agent in einem Tresor in Azure gesichert.
+
+> [!NOTE]
+>Azure Backup unterstützt keine automatische Sommerzeitanpassung der Uhr. Ändern Sie die Richtlinie, um sicherzustellen, dass die Sommerzeit für das Konto übernommen wird, um Diskrepanzen zwischen der tatsächlichen Uhrzeit und der geplanten Uhrzeit für die Sicherung zu vermeiden.
 
 Welche Möglichkeiten zur Sicherung bestehen, hängt davon ab, welcher Agent installiert ist. Weitere Informationen finden Sie unter [Architektur: Direkte Sicherung von lokalen Windows Server-Computern oder Azure-VM-Dateien oder -Ordnern](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders). Informationen zur Architektur für die Sicherung mit MABS und DPM finden Sie unter [Architektur: Sicherung mit DPM/MABS](backup-architecture.md#architecture-back-up-to-dpmmabs). Weitere Informationen zur Sicherungsarchitektur finden Sie auch unter den [Anforderungen](backup-support-matrix-mabs-dpm.md).
 
@@ -36,7 +40,6 @@ Auf einem Sicherungsserver installieren | Wenn Sie DPM oder MABS für die Sicher
 > [!NOTE]
 > Standardmäßig verfügen Azure-VMs, die für die Sicherung aktiviert sind, über eine Azure Backup-Erweiterungsinstallation. Diese Erweiterung sichert die gesamte VM. Sie können den MARS-Agent auf einer Azure-VM neben der Erweiterung installieren und ausführen, wenn Sie nur bestimmte Ordner und Dateien und nicht die gesamte VM sichern möchten.
 > Wenn Sie den MARS-Agent auf einer Azure-VM ausführen, werden Dateien oder Ordner gesichert, die sich im temporären Speicher auf der VM befinden. Sicherungen schlagen fehl, wenn die Dateien oder Ordner aus dem temporären Speicher entfernt werden oder wenn der temporäre Speicher entfernt wird.
-
 
 ## <a name="cache-folder-support"></a>Unterstützung für Cacheordner
 
@@ -55,7 +58,7 @@ Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Si
 
 Der MARS-Agent benötigt Zugriff auf diese URLs:
 
-- http://www.msftncsi.com/ncsi.txt
+- <http://www.msftncsi.com/ncsi.txt>
 - *.Microsoft.com
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
@@ -69,6 +72,9 @@ Bandbreitensteuerung | Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften
 Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Windows Server 2008 R2, Windows Server 2008 SP2 oder Windows 7 ausgeführt wird.
 
 ## <a name="support-for-direct-backups"></a>Unterstützung für direkte Sicherungen
+
+>[!NOTE]
+> Der MARS-Agent unterstützt Windows Server Core-SKUs nicht.
 
 Mit dem MARS-Agent können Sie unter einigen Betriebssystemen, die auf lokalen Computern und Azure-VMs ausgeführt werden, direkt in Azure sichern. Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Service Packs und Updates ausgeführt werden müssen. Eine Übersicht über diese Betriebssysteme finden in der folgenden Tabelle:
 
@@ -88,45 +94,43 @@ Windows Server 2019 (Standard, Datacenter, Essentials) | Ja | Ja | – .NET 4.5 
 
 Weitere Informationen finden Sie unter [Unterstützte MABS- und DPM-Betriebssysteme](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 
-
 ## <a name="backup-limits"></a>Backup-Grenzwerte
 
 Bei Azure Backup ist die Größe einer Datei- oder Ordnerdatenquelle, die gesichert werden kann, begrenzt. Die Elemente, die von einem einzelnen Volume gesichert werden, dürfen die in der folgenden Tabelle angegebenen Größen nicht überschreiten:
 
 **Betriebssystem** | **Größenlimit**
 --- | ---
-Windows Server 2012 oder höher |  54.400 GB
-Windows Server 2008 R2 SP1 |    1\.700 GB
-Windows Server 2008 SP2 | 1\.700 GB
-Windows 8 oder höher  | 54.400 GB
-Windows 7   | 1\.700 GB
-
+Windows Server 2012 oder höher |54.400 GB
+Windows Server 2008 R2 SP1 |1\.700 GB
+Windows Server 2008 SP2| 1\.700 GB
+Windows 8 oder höher| 54.400 GB
+Windows 7| 1\.700 GB
 
 ## <a name="supported-file-types-for-backup"></a>Unterstützte Dateitypen für die Sicherung
 
 **Typ** | **Unterstützung**
 --- | ---
-Verschlüsselt   | Unterstützt.
+Verschlüsselt| Unterstützt.
 Komprimiert | Unterstützt.
 Platzsparend | Unterstützt.
-Komprimiert und geringe Dichte | Unterstützt.
-Feste Links  | Nicht unterstützt. Übersprungen.
-Analysepunkt   | Nicht unterstützt. Übersprungen.
-Verschlüsselt und geringe Dichte |  Nicht unterstützt. Übersprungen.
-Komprimierter Stream   | Nicht unterstützt. Übersprungen.
-Platzsparender Stream   | Nicht unterstützt. Übersprungen.
-OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)  | Nicht unterstützt.
+Komprimiert und geringe Dichte |Unterstützt.
+Feste Links| Nicht unterstützt. Übersprungen.
+Analysepunkt| Nicht unterstützt. Übersprungen.
+Verschlüsselt und geringe Dichte |Nicht unterstützt. Übersprungen.
+Komprimierter Stream| Nicht unterstützt. Übersprungen.
+Platzsparender Stream| Nicht unterstützt. Übersprungen.
+OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)| Nicht unterstützt.
 
 ## <a name="supported-drives-or-volumes-for-backup"></a>Unterstützte Laufwerke oder Volumes für die Sicherung
 
 **Laufwerk/Volume** | **Unterstützung** | **Details**
 --- | --- | ---
-Schreibgeschützte Volumes   | Nicht unterstützt | Der Volumeschattenkopie-Dienst (VSS) funktioniert nur, wenn das Volume beschreibbar ist.
-Offlinevolumes | Nicht unterstützt |   VSS funktioniert nur, wenn das Volume online ist.
-Netzwerkfreigabe   | Nicht unterstützt |   Das Volume muss sich lokal auf dem Server befinden.
-Mit BitLocker geschützte Volumes | Nicht unterstützt |   Das Volume muss entsperrt werden, damit die Sicherung starten kann.
-Dateisystemidentifikation  | Nicht unterstützt |   Es wird nur NTFS unterstützt.
-Wechselmedien | Nicht unterstützt |   Alle Quellen für Sicherungselemente müssen ein *festes* Medium sein.
+Schreibgeschützte Volumes| Nicht unterstützt | Der Volumeschattenkopie-Dienst (VSS) funktioniert nur, wenn das Volume beschreibbar ist.
+Offlinevolumes| Nicht unterstützt |VSS funktioniert nur, wenn das Volume online ist.
+Netzwerkfreigabe| Nicht unterstützt |Das Volume muss sich lokal auf dem Server befinden.
+Mit BitLocker geschützte Volumes| Nicht unterstützt |Das Volume muss entsperrt werden, damit die Sicherung starten kann.
+Dateisystemidentifikation| Nicht unterstützt |Es wird nur NTFS unterstützt.
+Wechselmedien| Nicht unterstützt |Alle Quellen für Sicherungselemente müssen ein *festes* Medium sein.
 Deduplizierte Laufwerke | Unterstützt | Azure Backup konvertiert die deduplizierten Daten in reguläre Daten. Dabei werden die Daten optimiert, verschlüsselt, gespeichert und an den Tresor gesendet.
 
 ## <a name="support-for-initial-offline-backup"></a>Unterstützung für die erste Offlinesicherung
@@ -145,5 +149,6 @@ Mithilfe der Funktion [Sofortige Wiederherstellung](backup-instant-restore-capab
 Sicherungen können nicht auf einem Zielcomputer wiederhergestellt werden, auf dem eine ältere Version des Betriebssystems ausgeführt wird. So kann eine Sicherung, die von einem Computer erstellt wurde, auf dem Windows 7 ausgeführt wird, beispielsweise unter Windows 8 oder höher wiederhergestellt werden. Eine Sicherung, die von einem Computer erstellt wurde, auf dem Windows 8 ausgeführt wird, kann dagegen nicht auf einem Computer wiederhergestellt werden, auf dem Windows 7 ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Erfahren Sie mehr über die [Sicherungsarchitektur, für die der MARS-Agent verwendet wird](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-server-machines-or-azure-vm-files-or-folders).
 - Erfahren Sie, was unterstützt wird, wenn Sie [den MARS-Agent auf einem MABS- oder DPM-Server ausführen](backup-support-matrix-mabs-dpm.md).

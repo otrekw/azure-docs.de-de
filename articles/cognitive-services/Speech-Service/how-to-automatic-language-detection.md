@@ -1,5 +1,5 @@
 ---
-title: 'Gewusst wie: Verwenden der automatischen Spracherkennung zur Spracherkennung – Spracherkennungsdienst'
+title: Verwenden der automatischen Spracherkennung zur Umwandlung von Sprache in Text
 titleSuffix: Azure Cognitive Services
 description: Das Sprach-SDK unterstützt die automatische Spracherkennung für die Umwandlung von Sprache in Text. Mit diesem Feature wird die Audioeingabe mit einer bereitgestellten Liste von Sprachen verglichen und die wahrscheinlichste Übereinstimmung bestimmt. Der zurückgegebene Wert kann dann verwendet werden, um das Sprachmodell auszuwählen, das für die Spracherkennung verwendet wird.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506489"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110184"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische Spracherkennung zur Umwandlung von Sprache in Text
 
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie `AutoDetectSourceLanguageConfig` zum Ers
 
 Die automatische Spracherkennung weist zurzeit eine dienstseitige Einschränkung auf zwei Sprachen pro Erkennung auf. Beachten Sie diese Einschränkung bei der Erstellung des `AudoDetectSourceLanguageConfig`-Objekts. In den folgenden Beispielen erstellen Sie eine `AutoDetectSourceLanguageConfig` und verwenden Sie dann, um einen `SpeechRecognizer` zu erstellen.
 
->[!TIP]
+> [!TIP]
 > Sie können auch ein benutzerdefiniertes Modell angeben, das beim Durchführen der Spracherkennung verwendet werden soll. Weitere Informationen finden Sie unter [Verwenden eines benutzerdefinierten Modells für die automatische Spracherkennung](#use-a-custom-model-for-automatic-language-detection).
 
 Die folgenden Codeausschnitte veranschaulichen die Verwendung der automatischen Spracherkennung in ihren Apps:
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Speech SDK-Referenzdokumentation](speech-sdk.md)
+- [Speech SDK-Referenzdokumentation](speech-sdk.md)

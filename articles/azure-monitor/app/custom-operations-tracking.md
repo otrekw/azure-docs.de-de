@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 06/30/2017
+ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: f05c8724fe87888c93230b4ca77a7a82fe9357c2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 3e316527992b4a478b82bef61fb6da608e218ba5
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677464"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554919"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK
 
@@ -30,7 +30,7 @@ Dieser Artikel enthält eine Anleitung zum Nachverfolgen von benutzerdefinierten
 ## <a name="overview"></a>Übersicht
 Ein Vorgang ist ein logisches Stück Arbeit, das von einer Anwendung ausgeführt wird. Er verfügt über Name, Startzeit, Dauer, Ergebnis und Ausführungskontext, z.B. Benutzername, Eigenschaften und Ergebnis. Wenn Vorgang A von Vorgang B initiiert wurde, dann ist Vorgang B ein übergeordneter Vorgang von A. Ein Vorgang kann nur über einen übergeordneten Vorgang verfügen, aber über mehrere untergeordnete Vorgänge. Weitere Informationen zu Vorgängen und zur Telemetriekorrelation finden Sie unter [Korrelation der Azure Application Insights-Telemetrie](correlation.md).
 
-Im Application Insights .NET SDK wird ein Vorgang mit der abstrakten [OperationTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs)-Klasse und ihren Nachfolgerelementen [RequestTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) und [DependencyTelemetry](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) beschrieben.
+Im Application Insights .NET SDK wird ein Vorgang mit der abstrakten [OperationTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/OperationTelemetry.cs)-Klasse und ihren Nachfolgerelementen [RequestTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/RequestTelemetry.cs) und [DependencyTelemetry](https://github.com/microsoft/ApplicationInsights-dotnet/blob/7633ae849edc826a8547745b6bf9f3174715d4bd/BASE/src/Microsoft.ApplicationInsights/DataContracts/DependencyTelemetry.cs) beschrieben.
 
 ## <a name="incoming-operations-tracking"></a>Nachverfolgen von eingehenden Vorgängen 
 Das Application Insights-Web SDK sammelt automatisch HTTP-Anforderungen für ASP.NET-Anwendungen, die in einer IIS-Pipeline und allen ASP.NET Core-Anwendungen ausgeführt werden. Es sind auch Lösungen mit Community-Support für andere Plattformen und Frameworks vorhanden. Falls die Anwendung von keiner Standardlösung oder Lösung mit Community-Support unterstützt wird, können Sie sie manuell instrumentieren.

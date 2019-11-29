@@ -1,7 +1,7 @@
 ---
 title: Problembehandlung von OData-Sammlungsfiltern
 titleSuffix: Azure Cognitive Search
-description: Beheben von OData-Sammlungsfilterfehlern in Abfragen der kognitiven Azure-Suche.
+description: Erfahren Sie mehr über die Ansätze zum Beheben von OData-Sammlungsfilterfehlern in Azure Cognitive Search-Abfragen.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793185"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113077"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
@@ -227,6 +227,6 @@ Wenn Sie häufig Filter schreiben und das Verstehen der Regeln der ersten Prinzi
 
 - [Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-understand-collection-filters.md)
 - [Filter in der kognitiven Azure-Suche](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

@@ -1,5 +1,5 @@
 ---
-title: Schützen von Webdiensten über SSL
+title: Sichern von Webdiensten mit SSL
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie HTTPS aktivieren, um einen über Azure Machine Learning bereitgestellten Webdienst zu schützen.
 services: machine-learning
@@ -11,22 +11,22 @@ ms.author: aashishb
 author: aashishb
 ms.date: 08/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1455ec17898e82ed0f39fea66c44d2e9b4f57280
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f6a6f50a86dc58299a1c1b5994dd1d19cc915e6c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489542"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076879"
 ---
-# <a name="use-ssl-to-secure-a--through-azure-machine-learning"></a>Verwenden von SSL zum Schützen eines Webdiensts mit Azure Machine Learning
+# <a name="use-ssl-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von SSL zum Schützen eines Webdiensts mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie einen über Azure Machine Learning bereitgestellten Webdienst schützen.
 
-Verwenden Sie [HTTPS](https://en.wikipedia.org/wiki/HTTPS), um den Zugriff auf Webdienste zu beschränken und Daten zu schützen, die Clients übermitteln. Mit HTTPS wird die Kommunikation zwischen einem Client und einem Webdienst geschützt, indem sie verschlüsselt wird. Die Verschlüsselung verwendet [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). In einigen Fällen wird TLS immer noch als *Secure Sockets Layer* (SSL) bezeichnet, der Vorgänger von TLS.
+Verwenden Sie [HTTPS](https://en.wikipedia.org/wiki/HTTPS), um den Zugriff auf Webdienste zu beschränken und Daten zu sichern, die Clients übermitteln. Mit HTTPS wird die Kommunikation zwischen einem Client und einem Webdienst geschützt, indem sie verschlüsselt wird. Die Verschlüsselung verwendet [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). In einigen Fällen wird TLS immer noch als *Secure Sockets Layer* (SSL) bezeichnet, der Vorgänger von TLS.
 
 > [!TIP]
-> Im Azure Machine Learning SDK wird der Begriff „SSL“ für Eigenschaften im Zusammenhang mit sicherer Kommunikation verwendet. Dies bedeutet nicht, dass Ihr Webdienst nicht *TLS* verwendet. SSL ist nur ein gebräuchlicherer Begriff.
+> Im Azure Machine Learning SDK wird der Begriff „SSL“ für Eigenschaften im Zusammenhang mit sicherer Kommunikation verwendet. Dies bedeutet nicht, dass Ihr Webdienst *TLS* nicht verwendet. SSL ist nur ein gebräuchlicherer Begriff.
 
 Sowohl TLS als auch SSL beruhen auf *digitalen Zertifikaten*, die zur Verschlüsselung und Identitätsüberprüfung verwendet werden. Weitere Informationen zur Funktionsweise digitaler Zertifikate finden Sie im Wikipedia-Thema [Public key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (Public-Key-Infrastruktur).
 
@@ -35,15 +35,15 @@ Sowohl TLS als auch SSL beruhen auf *digitalen Zertifikaten*, die zur Verschlüs
 >
 > HTTPS ermöglicht dem Client auch, die Authentizität des Servers, mit dem eine Verbindung hergestellt wird, zu überprüfen. Dieses Feature schützt Clients vor [Man-in-the-Middle-Angriffen](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
-Dies ist der allgemeine Prozess zum Schützen eines Webdiensts:
+Dies ist der allgemeine Prozess zum Sichern eines Webdiensts:
 
 1. Rufen Sie einen Domänennamen ab.
 
 2. Rufen Sie ein digitales Zertifikat ab.
 
-3. Stellen Sie den Webdienst mit aktiviertem SSL bereit, oder aktualisieren Sie ihn mit aktiviertem SSL.
+3. Stellen Sie den Webdienst mit aktiviertem SSL bereit, bzw. aktualisieren Sie ihn.
 
-4. Aktualisieren Sie Ihren DNS, sodass er auf den Dienst verweist.
+4. Aktualisieren Sie Ihren DNS, so dass er auf den Dienst verweist.
 
 > [!IMPORTANT]
 > Wenn Sie für Azure Kubernetes Service (AKS) bereitstellen, können Sie Ihr eigenes Zertifikat erwerben oder ein von Microsoft bereitgestelltes Zertifikat verwenden. Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie weder einen Domänennamen noch ein SSL-Zertifikat abrufen. Weitere Informationen finden Sie im Abschnitt [Aktivieren und Bereitstellen von SSL](#enable) dieses Artikels.
@@ -52,7 +52,7 @@ Es bestehen bei den verschiedenen [Bereitstellungszielen](how-to-deploy-and-wher
 
 ## <a name="get-a-domain-name"></a>Abrufen eines Domänennamens
 
-Wenn Sie nicht bereits über einen Domänennamen verfügen, können Sie einen solchen von einer *Domänennamen-Registrierungsstelle* erwerben. Die Prozesse und Preise der Registrierungsstellen sind unterschiedlich. Die Registrierungsstelle bietet Tools zum Verwalten des Domänennamens. Sie verwenden diese Tools zum Zuordnen eines vollqualifizierten Domänennamens (Fully Qualified Domain Name, FQDN) – z. B. www\.contoso.com – zu der IP-Adresse, die Ihren Webdienst hostet.
+Wenn Sie nicht bereits über einen Domänennamen verfügen, können Sie einen solchen von einer *Domänennamen-Registrierungsstelle* erwerben. Die Prozesse und Preise der Registrierungsstellen sind unterschiedlich. Die Registrierungsstelle bietet Tools zum Verwalten des Domänennamens. Sie verwenden diese Tools zum Zuordnen eines vollqualifizierten Domänennamens (Fully Qualified Domain Name, FQDN) – z.B. www\.contoso.com – zu der IP-Adresse, die Ihren Webdienst hostet.
 
 ## <a name="get-an-ssl-certificate"></a>Beziehen eines SSL-Zertifikats
 
@@ -61,7 +61,7 @@ Es gibt viele Möglichkeiten, ein SSL-Zertifikat (digitales Zertifikat) zu erhal
 * Ein **Zertifikat**. Das Zertifikat muss die vollständige Zertifikatkette enthalten und „PEM-codiert“ sein.
 * Einen **Schlüssel**. Der Schlüssel muss auch PEM-codiert sein.
 
-Wenn Sie ein Zertifikat anfordern, müssen Sie den FQDN der Adresse angeben, die Sie für den Webdienst verwenden möchten (z. B. www\.contoso.com). Die in das Zertifikat gestempelte Adresse und die von den Clients verwendete Adresse werden verglichen, um die Identität des Webdiensts zu überprüfen. Wenn diese Adressen nicht übereinstimmen, erhält der Client eine Fehlermeldung.
+Wenn Sie ein Zertifikat anfordern, müssen Sie den FQDN der Adresse angeben, die Sie für den Webdienst verwenden möchten (z.B. www\.contoso.com). Die in das Zertifikat gestempelte Adresse und die von den Clients verwendete Adresse werden verglichen, um die Identität des Webdiensts zu überprüfen. Wenn diese Adressen nicht übereinstimmen, erhält der Client eine Fehlermeldung.
 
 > [!TIP]
 > Wenn die Zertifizierungsstelle das Zertifikat und den Schlüssel nicht als PEM-codierte Dateien bereitstellen kann, können Sie ein Hilfsprogramm wie [OpenSSL](https://www.openssl.org/) zum Ändern des Formats verwenden.
@@ -85,7 +85,7 @@ Beim Bereitstellen in AKS können Sie einen neuen AKS-Cluster erstellen oder ein
 
 Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bereitgestellt wird, oder ein von Ihnen erworbenes Zertifikat.
 
-  * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Der Wert „myservice“ erstellt z.B. den Domänennamen „myservice\<sechs zufällige Zeichen>.\<Azureregion>.cloudapp.azure.com“, wobei \<Azureregion> die Region ist, die den Dienst enthält. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
+  * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Der Wert „contoso“ erstellt z. B. den Domänennamen „contoso\<sechs zufällige Zeichen>.\<azureregion>.cloudapp.azure.com“, wobei \<Azureregion> die Region ist, die den Dienst enthält. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
 
     Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem SSL den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
 
@@ -98,11 +98,19 @@ Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bere
     from azureml.core.compute import AksCompute
     # Config used to create a new AKS cluster and enable SSL
     provisioning_config = AksCompute.provisioning_configuration()
-    provisioning_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    provisioning_config.enable_ssl(leaf_domain_label = "contoso")
+
+
     # Config used to attach an existing AKS cluster to your workspace and enable SSL
     attach_config = AksCompute.attach_configuration(resource_group = resource_group,
                                           cluster_name = cluster_name)
-    attach_config.enable_ssl(leaf_domain_label = "myservice")
+    # Leaf domain label generates a name using the formula
+    #  "<leaf-domain-label>######.<azure-region>.cloudapp.azure.net"
+    #  where "######" is a random series of characters
+    attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
   * Wenn Sie *ein Zertifikat verwenden, das Sie erworben haben*, verwenden Sie die Parameter *ssl_cert_pem_file*, *ssl_key_pem_file* und *ssl_cname*. Im folgenden Beispiel wird veranschaulicht, wie *PEM*-Dateien zum Erstellen einer Konfiguration verwendet werden, die ein von Ihnen erworbenes SSL-Zertifikat verwendet:
@@ -137,7 +145,7 @@ Weitere Informationen finden Sie unter [AciWebservice.deploy_configuration()](ht
 
 ## <a name="update-your-dns"></a>Aktualisieren Ihres DNS
 
-Als Nächstes müssen Sie Ihren DNS aktualisieren, sodass er auf den Webdienst verweist.
+Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst verweist.
 
 + **Für Container Instances:**
 
@@ -152,7 +160,7 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, sodass er auf den Webdienst v
 
   Aktualisieren Sie das DNS der öffentlichen IP-Adresse des AKS-Clusters im linken Bereich auf der Registerkarte **Konfiguration** unter **Einstellungen**. (Siehe folgende Abbildung.) Die öffentliche IP-Adresse ist ein Ressourcentyp, der unter der Ressourcengruppe erstellt wird, die die AKS-Agent-Knoten und weitere Netzwerkressourcen enthält.
 
-  [![Azure Machine Learning: Schützen von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
+  [![Azure Machine Learning: Sichern von Webdiensten mit SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)](./media/how-to-secure-web-service/aks-public-ip-address-expanded.png)
 
 ## <a name="update-the-ssl-certificate"></a>Aktualisieren des SSL-Zertifikats
 

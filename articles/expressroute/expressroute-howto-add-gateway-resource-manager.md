@@ -1,5 +1,5 @@
 ---
-title: 'Hinzufügen eines virtuellen Netzwerkgateways zu einem VNet für ExpressRoute: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Hinzufügen eines Gateways zu einem VNET PowerShell'
 description: In diesem Artikel wird beschrieben, wie Sie einem bereits erstellten Resource Manager-VNET für ExpressRoute ein VNET-Gateway hinzufügen.
 services: expressroute
 author: charwen
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: bbb091addd078a08a075d2754256ed016d8dd086
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6e6d79afa1126acb26cb8856c39ba486cce31a5e
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748339"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037424"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell
 > [!div class="op_single_selector"]

@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (.NET) | Microsoft-Dokumentation
+title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (.NET)
 description: Hier erfahren Sie, wie Sie mit IoT SDKs für .NET eine Modulidentität erstellen und den Modulzwilling aktualisieren.
 author: chrissie926
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: menchi
-ms.openlocfilehash: abf8b18d13e2990f053dd4273645dd7b9a324c77
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: e728d0ef8f52927687d56bd1d4c64f03c53ef401
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147758"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73947679"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-net"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (.NET)
 

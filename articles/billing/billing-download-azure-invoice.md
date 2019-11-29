@@ -5,19 +5,19 @@ keywords: Rechnung, Rechnungsdownload, Azure-Rechnung, Azure-Nutzung
 author: bandersmsft
 manager: jureid
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 80ec40a7411a370460d663084f9f7034b28e1a2e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 7d52a589ee7fcb8891f5ea839b2baeb5e4b30733
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375755"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224023"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Anzeigen und Herunterladen der Microsoft Azure-Rechnung
 
@@ -32,7 +32,7 @@ Wenn Sie über eine Microsoft-Kundenvereinbarung (MCA) verfügen, benötigen Sie
 - Leser
 - Rechnungs-Manager
 
-Wenn Sie über eine Microsoft-Partnervereinbarung (MPA) verfügen, müssen Sie der globale Administrator oder Administrator-Agent in der Partnerorganisation sein, um Azure-Rechnungen anzuzeigen und herunterzuladen. [Überprüfen Sie Ihren Abrechnungskontotyp](#check-your-billing-account-type), um zu sehen, welche Berechtigungen Sie benötigen. 
+Wenn Sie über eine Microsoft-Partnervereinbarung (MPA) verfügen, müssen Sie der globale Administrator oder Administrator-Agent in der Partnerorganisation sein, um Azure-Rechnungen anzuzeigen und herunterzuladen. [Überprüfen Sie Ihren Abrechnungskontotyp](#check-your-billing-account-type), um zu sehen, welche Berechtigungen Sie benötigen.
 
 <!-- For more information about billing roles for Microsoft Customer Agreements, see [Billing profile roles and tasks](billing-understand-mca-roles.md#billing-profile-roles-and-tasks). -->
 
@@ -46,7 +46,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
 - Sie haben keine Berechtigung zur Ansicht von Rechnungen. Wenn Sie über eine MCA oder MPA verfügen, müssen Sie der Besitzer des Abrechnungsprofils, Mitwirkender, Benutzer mit Leseberechtigung oder Rechnungs-Manager sein. Für andere Abonnements werden ältere Rechnungen nur angezeigt, wenn Sie der Kontoadministrator sind. Weitere Informationen zum Zugriff auf Abrechnungsinformationen finden Sie unter [Verwalten des Zugriffs auf die Azure-Abrechnung mithilfe von Rollen](billing-manage-access.md).
 
-- Falls Sie über eine kostenlose Testversion oder über ein monatliches Guthaben für Ihr Abonnement verfügen, erhalten Sie nur dann eine Rechnung, wenn Sie das monatliche Guthaben überschreiten. Wenn Sie über eine Microsoft-Kundenvereinbarung oder eine Microsoft-Partnervereinbarung verfügen, erhalten Sie immer eine Rechnung. 
+- Falls Sie über eine kostenlose Testversion oder über ein monatliches Guthaben für Ihr Abonnement verfügen, erhalten Sie nur dann eine Rechnung, wenn Sie das monatliche Guthaben überschreiten. Wenn Sie über eine Microsoft-Kundenvereinbarung oder eine Microsoft-Partnervereinbarung verfügen, erhalten Sie immer eine Rechnung.
 
 ## <a name="download-invoices-in-the-azure-portal"></a>Herunterladen von Rechnungen im Azure-Portal
 

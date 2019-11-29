@@ -4,20 +4,20 @@ description: Verwenden Sie Azure Resource Manager, um Ressourcen in eine neue Re
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
+ms.date: 11/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: d249ed2a6a2acbb4d1fe1197637f1f65c549db44
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035554"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132312"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
 In diesem Artikel wird erklärt, wie Sie Azure-Ressourcen entweder in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe im gleichen Abonnement verschieben. Sie können das Azure-Portal, Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden, um Ressourcen zu verschieben.
 
-Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank.
+Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schreib- und Löschvorgänge in den Ressourcengruppen werden bis zum Abschluss der Verschiebung blockiert. Diese Sperre bedeutet, dass Sie in Ressourcengruppen keinen Ressourcen hinzufügen, aktualisieren oder löschen können. Es heißt aber nicht, dass die Ressourcen eingefroren sind. Wenn Sie beispielsweise eine SQL Server-Instanz und ihre Datenbank in eine neue Ressourcengruppe verschieben, weist eine Anwendung, die die Datenbank nutzt, keine Ausfallzeiten auf. Sie hat weiterhin Lese- und Schreibzugriff auf die Datenbank. Die Sperre kann maximal vier Stunden dauern, aber die meisten Verschiebungen werden in viel kürzerer Zeit beendet.
 
 Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe oder ein neues Abonnement verschoben. Der Speicherort der Ressource ändert sich nicht.
 
@@ -233,6 +233,51 @@ Geben Sie im Anforderungstext die Zielgruppe und die zu verschiebenden Ressource
 ```
 
 Wenn ein Fehler auftritt, lesen Sie [Problembehandlung beim Verschieben von Azure-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](troubleshoot-move.md).
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+**Frage: Mein Ressourcenverschiebevorgang, der normalerweise ein paar Minuten dauert, läuft schon seit fast einer Stunde. Stimmt da etwas nicht?**
+
+Das Verschieben einer Ressource ist ein komplexer Vorgang, der in verschiedenen Phasen erfolgt. Es kann mehr als nur den Ressourcenanbieter der Ressource umfassen, die Sie verschieben möchten. Aufgrund der Abhängigkeiten zwischen Ressourcenanbietern stellt Azure Resource Manager vier Stunden bereit, um den Vorgang abzuschließen. Dieser Zeitraum gibt Ressourcenanbietern die Möglichkeit, sich von vorübergehenden Problemen wiederherzustellen. Wenn Ihre Verschiebeanforderung noch innerhalb des 4-Stunden-Zeitraums liegt, wird weiterhin versucht, den Vorgang abzuschließen, was auch noch erfolgreich sein kann. Die Quell- und Zielressourcengruppen sind während dieses Zeitraums gesperrt, um Konsistenzprobleme zu vermeiden.
+
+**Frage: Warum ist meine Ressourcengruppe während der Ressourcenverschiebung vier Stunden lang gesperrt?**
+
+Das 4-Stunden-Fenster ist die maximal zulässige Zeit für das Verschieben von Ressourcen. Um Änderungen an den Ressourcen zu verhindern, die gerade verschoben werden, werden sowohl die Quell- als auch die Zielressourcengruppe für die Dauer der Ressourcenverschiebung gesperrt.
+
+Es gibt zwei Phasen bei einer Verschiebeanforderung. In der ersten Phase wird die Ressource verschoben. In der zweiten Phase werden Benachrichtigungen an andere Ressourcenanbieter gesendet, die von der Ressource abhängen, die verschoben wird. Eine Ressourcengruppe kann für das gesamte 4-Stunden-Zeitfenster gesperrt werden, wenn ein Ressourcenanbieter in einer der beiden Phasen fehlschlägt. Während des gewährten Zeitraums versucht Resource Manager, den fehlgeschlagenen Schritt zu wiederholen.
+
+Wenn eine Ressource nicht innerhalb des Zeitfensters von 4 Stunden verschoben werden kann, entsperrt Resource Manager beide Ressourcengruppen. Ressourcen, die erfolgreich verschoben wurden, befinden sich in der Zielressourcengruppe. Ressourcen, die nicht verschoben werden konnten, verbleiben in der Quellressourcengruppe.
+
+**Frage: Welche Auswirkungen hat es, dass die Quell- und Zielressourcengruppen während der Ressourcenverschiebung gesperrt werden?**
+
+Die Sperrung verhindert, dass Sie eine Ressourcengruppe löschen, eine neue Ressource in einer der Ressourcengruppen erstellen oder eine der an der Verschiebung beteiligten Ressourcen löschen.
+
+In der folgenden Abbildung wird eine Fehlermeldung des Azure-Portals angezeigt, wenn ein Benutzer versucht, eine Ressourcengruppe zu löschen, die Bestandteil einer laufenden Verschiebung ist.
+
+![Verschiebefehlermeldung bei Löschversuch](./media/resource-group-move-resources/move-error-delete.png)
+
+**Frage: Was bedeutet der Fehlercode „MissingMoveDependentResources“?**
+
+Beim Verschieben einer Ressource müssen deren abhängige Ressourcen in der Zielressourcengruppe oder im Zielabonnement vorhanden sein oder in die Verschiebeanforderung eingeschlossen werden. Sie erhalten den Fehlercode „MissingMoveDependentResources“, wenn eine abhängige Ressource diese Anforderung nicht erfüllt. Die Fehlermeldung enthält Details über die abhängige Ressource, die in die Verschiebeanforderung eingeschlossen werden muss.
+
+Beispielsweise könnte das Verschieben eines virtuellen Computers erfordern, dass sieben Ressourcentypen mit drei verschiedenen Ressourcenanbietern verschoben werden. Diese Ressourcenanbieter und -typen sind:
+
+* Microsoft.Compute
+   * virtualMachines
+   * disks
+* Microsoft.Network
+  * networkInterfaces
+  * publicIPAddresses
+  * networkSecurityGroups
+  * virtualNetworks
+* Microsoft.Storage
+  * storageAccounts
+
+Ein weiteres gängiges Beispiel beinhaltet das Verschieben eines virtuellen Netzwerks. Sie müssen möglicherweise mehrere weitere Ressourcen verschieben, die diesem virtuellen Netzwerk zugeordnet sind. Die Verschiebeanforderung kann es erfordern, dass öffentliche IP-Adressen, Routingtabellen, virtuelle Netzwerkgateways, Netzwerksicherheitsgruppen und anderes verschoben werden.
+
+**Frage: Warum kann ich einige Ressourcen in Azure nicht verschieben?**
+
+Derzeit unterstützen nicht alle Ressourcen in Azure das Verschieben. Eine Liste der Ressourcen, die das Verschieben unterstützen, finden Sie unter [Unterstützung des Verschiebevorgangs für Ressourcen](move-support-resources.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

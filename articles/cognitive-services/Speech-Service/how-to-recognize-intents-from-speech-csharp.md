@@ -1,45 +1,46 @@
 ---
-title: 'Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#'
+title: Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK C#
 titleSuffix: Azure Cognitive Services
-description: In diesem Tutorial lernen Sie, wie Sie mit dem Speech SDK für C# Absichten aus gesprochener Sprache erkennen können.
+description: In diesem Leitfaden erfahren Sie, wie Sie mit dem Speech SDK für C# Absichten anhand gesprochener Sprache erkennen können.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 7f42d5914a2ec7f479a8b3d1df1b8672f318036b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464625"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110164"
 ---
-# <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Tutorial: Erkennen von Absichten anhand von gesprochener Sprache mit dem Speech SDK für C#
+# <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK für C#
 
 Das [Speech SDK](speech-sdk.md) von Cognitive Services ist in den [Language Understanding Service (LUIS)](https://www.luis.ai/home) integriert, um **Absichtserkennung** zu ermöglichen. Eine Absicht ist eine Aufgabe, die der Benutzer ausführen möchte: einen Flug buchen, sich über das Wetter informieren oder einen Anruf tätigen. Der Benutzer kann beliebige Begriffe verwenden, die sich für ihn natürlich anfühlen. Mithilfe von Machine Learning ordnet LUIS den Absichten, die Sie definiert haben, Benutzeranforderungen zu.
 
 > [!NOTE]
 > Eine LUIS-Anwendung definiert die Absichten und Entitäten, die Sie erkennen möchten. Sie unterscheidet sich von der C#-Anwendung, die den Speech Service verwendet. In diesem Artikel bedeutet „App“ die LUIS-App, während „Anwendung“ den C#-Code bedeutet.
 
-In diesem Tutorial verwenden Sie das Speech SDK, um eine C#-Konsolenanwendung zu entwickeln, die Absichten aus Benutzeraussagen über das Mikrofon Ihres Geräts ableitet. Sie lernen Folgendes:
+In diesem Leitfaden verwenden Sie das Speech SDK, um eine C#-Konsolenanwendung zu entwickeln, die Absichten aus Benutzeräußerungen über das Mikrofon Ihres Geräts ableitet. Sie lernen Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Visual Studio-Projekts, das auf das Speech SDK NuGet-Paket verweist
-> * Erstellen einer Sprachkonfiguration und Abrufen einer Absichtserkennung
-> * Abrufen des Modells für Ihre LUIS-App und Hinzufügen der benötigten Absicht
-> * Angeben der Sprache für die Spracherkennung
-> * Erkennen von Sprache aus einer Datei
-> * Verwenden von asynchroner, ereignisgesteuerter kontinuierlicher Erkennung
+>
+> - Erstellen eines Visual Studio-Projekts, das auf das Speech SDK NuGet-Paket verweist
+> - Erstellen einer Sprachkonfiguration und Abrufen einer Absichtserkennung
+> - Abrufen des Modells für Ihre LUIS-App und Hinzufügen der benötigten Absicht
+> - Angeben der Sprache für die Spracherkennung
+> - Erkennen von Sprache aus einer Datei
+> - Verwenden von asynchroner, ereignisgesteuerter kontinuierlicher Erkennung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Vergewissern Sie sich, dass folgende Elemente vorhanden sind, bevor Sie mit diesem Tutorial beginnen:
+Vergewissern Sie sich, dass folgende Elemente vorhanden sind, bevor Sie mit diesem Leitfaden beginnen:
 
-* Ein LUIS-Konto. Sie können ein kostenloses Konto über das [LUIS-Portal](https://www.luis.ai/home) erhalten.
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (beliebige Edition)
+- Ein LUIS-Konto. Sie können ein kostenloses Konto über das [LUIS-Portal](https://www.luis.ai/home) erhalten.
+- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) (beliebige Edition)
 
 ## <a name="luis-and-speech"></a>LUIS und Spracherkennung
 
@@ -47,15 +48,15 @@ LUIS ist in die Speech-Dienste integriert, um Absichten anhand von Sprache zu er
 
 LUIS verwendet drei Arten von Schlüsseln:
 
-|Schlüsseltyp|Zweck|
-|--------|-------|
-|Erstellen|Ermöglicht Ihnen das programmgesteuerte Erstellen und Ändern von LUIS-Apps.|
-|Starter|Hiermit können Sie Ihre LUIS-Anwendung nur mit Text testen.|
-|Endpunkt |Autorisiert den Zugriff auf eine bestimmte LUIS-App.|
+| Schlüsseltyp  | Zweck                                               |
+| --------- | ----------------------------------------------------- |
+| Erstellen | Ermöglicht Ihnen das programmgesteuerte Erstellen und Ändern von LUIS-Apps. |
+| Starter   | Hiermit können Sie Ihre LUIS-Anwendung nur mit Text testen.   |
+| Endpunkt  | Autorisiert den Zugriff auf eine bestimmte LUIS-App.            |
 
-Für dieses Tutorial benötigen Sie den Endpunktschlüsseltyp. Dieses Tutorial verwendet die LUIS-Beispiel-App für die Gebäudeautomatisierung, die Sie erstellen können, indem Sie die Anleitung im Schnellstart [Verwenden der vordefinierten Home Automation-App](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) befolgen. Wenn Sie selbst eine LUIS-App erstellt haben, können Sie diese stattdessen verwenden.
+Für diesen Leitfaden benötigen Sie den Endpunktschlüsseltyp. Dieser Leitfaden verwendet die LUIS-Beispiel-App für die Gebäudeautomatisierung, die Sie erstellen können, indem Sie die Anleitung im Schnellstart [Verwenden der vordefinierten Home Automation-App](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) befolgen. Wenn Sie selbst eine LUIS-App erstellt haben, können Sie diese stattdessen verwenden.
 
-Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Integration von Spracherkennungsdiensten möglich, und er ist für dieses Tutorial nicht geeignet. Erstellen Sie eine LUIS-Ressource im Azure-Dashboard, und weisen Sie sie der LUIS-App zu. Sie können den Tarif für ein kostenloses Abonnement für dieses Tutorial verwenden.
+Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Integration von Spracherkennungsdiensten möglich, und er ist für diesen Leitfaden nicht geeignet. Erstellen Sie eine LUIS-Ressource im Azure-Dashboard, und weisen Sie sie der LUIS-App zu. Sie können den Tarif für ein kostenloses Abonnement für diesen Leitfaden verwenden.
 
 Nachdem Sie die LUIS-Ressource im Azure-Dashboard erstellt haben, melden Sie sich beim [LUIS-Portal](https://www.luis.ai/home) an, wählen Sie Ihre Anwendung auf der Seite **Eigene Anwendungen** aus, und wechseln Sie dann zur Seite **Verwalten** der App. Wählen Sie schließlich auf der Seitenleiste die Option **Schlüssel und Endpunkte** aus.
 
@@ -66,11 +67,11 @@ Gehen Sie auf der Seite **Schlüssel- und Endpunkteinstellungen** folgendermaße
 1. Scrollen Sie nach unten zum Abschnitt **Ressourcen und Schlüssel**, und wählen Sie **Ressource zuweisen** aus.
 1. Nehmen Sie im Dialogfeld **App einen Schlüssel zuweisen** die folgenden Änderungen vor:
 
-   * Wählen Sie unter **Mandant** die Option **Microsoft** aus.
-   * Wählen Sie unter **Abonnementname** das Azure-Abonnement aus, das die LUIS-Ressource enthält, die Sie verwenden möchten.
-   * Wählen Sie unter **Schlüssel** die LUIS-Ressource aus, die Sie mit der App verwenden möchten.
+   - Wählen Sie unter **Mandant** die Option **Microsoft** aus.
+   - Wählen Sie unter **Abonnementname** das Azure-Abonnement aus, das die LUIS-Ressource enthält, die Sie verwenden möchten.
+   - Wählen Sie unter **Schlüssel** die LUIS-Ressource aus, die Sie mit der App verwenden möchten.
 
-   Nach einem kurzen Moment wird das neue Abonnement in der Tabelle unten auf der Seite angezeigt. 
+   Nach einem kurzen Moment wird das neue Abonnement in der Tabelle unten auf der Seite angezeigt.
 
 1. Wählen Sie das Symbol neben einem Schlüssel aus, um diesen in die Zwischenablage zu kopieren. (Sie können einen der beiden Schlüssel verwenden.)
 
@@ -112,13 +113,13 @@ Als Nächstes fügen Sie dem Projekt Code hinzu.
 
 1. Ersetzen Sie die Platzhalter in dieser Methode wie folgt durch Ihren LUIS-Abonnementschlüssel, die Region und die App-ID.
 
-   |Platzhalter|Ersetzen durch|
-   |-----------|------------|
-   |`YourLanguageUnderstandingSubscriptionKey`|Ihren LUIS-Endpunktschlüssel. Auch hier müssen Sie dieses Element aus Ihrem Azure-Dashboard und nicht aus einem Startschlüssel abrufen. Sie finden es auf der Seite **Schlüssel und Endpunkte** Ihrer App (unter **Verwalten**) im [LUIS-Portal](https://www.luis.ai/home).|
-   |`YourLanguageUnderstandingServiceRegion`|Der kurze Bezeichner für die Region Ihres LUIS-Abonnements, z.B. `westus` für „USA, Westen“. Siehe [Regionen](regions.md).|
-   |`YourLanguageUnderstandingAppId`|die LUIS-App-ID Sie finden sie auf der Seite **Einstellungen** Ihrer App im [LUIS-Portal](https://www.luis.ai/home).|
+   | Platzhalter | Ersetzen durch |
+   | ----------- | ------------ |
+   | `YourLanguageUnderstandingSubscriptionKey` | Ihren LUIS-Endpunktschlüssel. Auch hier müssen Sie dieses Element aus Ihrem Azure-Dashboard und nicht aus einem Startschlüssel abrufen. Sie finden es auf der Seite **Schlüssel und Endpunkte** Ihrer App (unter **Verwalten**) im [LUIS-Portal](https://www.luis.ai/home). |
+   | `YourLanguageUnderstandingServiceRegion` | Der kurze Bezeichner für die Region Ihres LUIS-Abonnements, z.B. `westus` für „USA, Westen“. Siehe [Regionen](regions.md). |
+   | `YourLanguageUnderstandingAppId` | die LUIS-App-ID Sie finden sie auf der Seite **Einstellungen** Ihrer App im [LUIS-Portal](https://www.luis.ai/home). |
 
-Nachdem Sie diese Änderungen vorgenommen haben, können Sie die Tutorialanwendung erstellen (**STRG+UMSCHALT+B**) und ausführen (**F5**). Wenn Sie dazu aufgefordert werden, sprechen Sie „Turn off the lights“ (Licht ausschalten) in das Mikrofon Ihres PCs. Die Anwendung zeigt das Ergebnis im Konsolenfenster an.
+Nachdem Sie diese Änderungen vorgenommen haben, können Sie die Anwendung erstellen (**STRG+UMSCHALT+B**) und ausführen (**F5**). Wenn Sie dazu aufgefordert werden, sprechen Sie „Turn off the lights“ (Licht ausschalten) in das Mikrofon Ihres PCs. Die Anwendung zeigt das Ergebnis im Konsolenfenster an.
 
 Die folgenden Abschnitte enthalten eine Erläuterung des Codes.
 
@@ -137,10 +138,10 @@ Importieren Sie nun das Modell aus der LUIS-App mit `LanguageUnderstandingModel.
 
 Für das Hinzufügen von Absichten sind drei Argumente erforderlich: das zuvor erstellte LUIS-Modell mit dem Namen `model`, der Absichtsname und eine Absichts-ID. Der Unterschied zwischen der ID und dem Namen ist wie folgt.
 
-|Argument `AddIntent()`&nbsp;|Zweck|
-|--------|-------|
-|intentName|Der Name der Absicht, wie in der LUIS-App definiert. Dieser Wert muss genau mit dem Namen der LUIS-Absicht übereinstimmen.|
-|intentID|Eine ID, die vom Speech SDK einer erkannten Absicht zugewiesen wird. Dieser Wert kann beliebig sein und muss nicht dem Absichtsnamen entsprechen, der in der LUIS-App definiert ist. Wenn beispielsweise mehrere Absichten von demselben Code verarbeitet werden, können Sie für sie die gleiche ID verwenden.|
+| Argument `AddIntent()`&nbsp; | Zweck |
+| --------------------------- | ------- |
+| `intentName` | Der Name der Absicht, wie in der LUIS-App definiert. Dieser Wert muss genau mit dem Namen der LUIS-Absicht übereinstimmen. |
+| `intentID` | Eine ID, die vom Speech SDK einer erkannten Absicht zugewiesen wird. Dieser Wert kann beliebig sein und muss nicht dem Absichtsnamen entsprechen, der in der LUIS-App definiert ist. Wenn beispielsweise mehrere Absichten von demselben Code verarbeitet werden, können Sie für sie die gleiche ID verwenden. |
 
 Die LUIS-App für die Gebäudeautomatisierung verwendet zwei Absichten: eine zum Einschalten eines Geräts und eine zum Ausschalten eines Geräts. Die folgenden Zeilen fügen diese Absichten der Erkennung hinzu. Ersetzen Sie die drei `AddIntent`-Zeilen in der `RecognizeIntentAsync()`-Methode durch diesen Code.
 
@@ -155,24 +156,24 @@ Anstatt einzelne Absichten hinzuzufügen, können Sie auch die Methode `AddAllIn
 
 Sobald die Erkennung erstellt und die Absichten hinzugefügt wurden, kann die Erkennung beginnen. Das Speech SDK unterstützt sowohl einstufige als auch fortlaufende Erkennung.
 
-|Erkennungsmodus|Aufzurufende Methoden|Ergebnis|
-|----------------|-----------------|---------|
-|Einstufig|`RecognizeOnceAsync()`|Gibt die erkannte Absicht (falls vorhanden) nach einer Äußerung zurück.|
-|Fortlaufend|`StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()`|Erkennt mehrere Äußerungen; gibt Ereignisse (z. B. `IntermediateResultReceived`) aus, wenn Ergebnisse verfügbar sind.|
+| Erkennungsmodus | Aufzurufende Methoden | Ergebnis |
+| ---------------- | --------------- | ------ |
+| Einstufig | `RecognizeOnceAsync()` | Gibt die erkannte Absicht (falls vorhanden) nach einer Äußerung zurück. |
+| Fortlaufend | `StartContinuousRecognitionAsync()`<br>`StopContinuousRecognitionAsync()` | Erkennt mehrere Äußerungen; gibt Ereignisse (z. B. `IntermediateResultReceived`) aus, wenn Ergebnisse verfügbar sind. |
 
-Die Tutorialanwendung verwendet den einstufigen Modus und ruft daher `RecognizeOnceAsync()` auf, um die Erkennung zu beginnen. Das Ergebnis ist ein `IntentRecognitionResult`-Objekt, das Informationen über die erkannte Absicht enthält. Die LUIS JSON-Antwort wird durch den folgenden Ausdruck extrahiert:
+Die Anwendung verwendet den einstufigen Modus und ruft daher `RecognizeOnceAsync()` auf, um die Erkennung zu beginnen. Das Ergebnis ist ein `IntentRecognitionResult`-Objekt, das Informationen über die erkannte Absicht enthält. Die LUIS JSON-Antwort wird durch den folgenden Ausdruck extrahiert:
 
 ```csharp
 result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_JsonResult)
 ```
 
-Die Tutorialanwendung analysiert das JSON-Ergebnis nicht. Sie zeigt lediglich den JSON-Text im Konsolenfenster an.
+Die Anwendung analysiert das JSON-Ergebnis nicht. Sie zeigt lediglich den JSON-Text im Konsolenfenster an.
 
 ![Einzelne Ergebnisse der LUIS-Erkennung](media/sdk/luis-results.png)
 
 ## <a name="specify-recognition-language"></a>Angeben der Erkennungssprache
 
-Standardmäßig erkennt LUIS Absichten in amerikanischem Englisch (`en-us`). Durch das Zuweisen eines Gebietsschemacodes zur `SpeechRecognitionLanguage`-Eigenschaft der Sprachkonfiguration können Sie Absichten in anderen Sprachen erkennen. Fügen Sie z.B. `config.SpeechRecognitionLanguage = "de-de";` in unserer Tutorialanwendung hinzu, bevor Sie die Erkennung erstellen, um Absichten in Deutsch zu erkennen. Weitere Informationen finden Sie unter [Unterstützte Sprachen](language-support.md#speech-to-text).
+Standardmäßig erkennt LUIS Absichten in amerikanischem Englisch (`en-us`). Durch das Zuweisen eines Gebietsschemacodes zur `SpeechRecognitionLanguage`-Eigenschaft der Sprachkonfiguration können Sie Absichten in anderen Sprachen erkennen. Fügen Sie z. B. `config.SpeechRecognitionLanguage = "de-de";` in unserer Anwendung hinzu, bevor Sie die Erkennung erstellen, um Absichten in Deutsch zu erkennen. Weitere Informationen finden Sie unter [Unterstützte Sprachen](language-support.md#speech-to-text).
 
 ## <a name="continuous-recognition-from-a-file"></a>Kontinuierliche Erkennung aus einer Datei
 
@@ -196,4 +197,4 @@ Den Code aus diesem Artikel finden Sie im Ordner **samples/csharp/sharedcontent/
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erkennen von Sprache](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)
+> [Schnellstart: Erkennen von Spracheingaben per Mikrofon](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnetcore)

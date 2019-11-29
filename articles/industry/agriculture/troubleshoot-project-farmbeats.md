@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ab0d3aac6944e331223d91eb98b50b3308be12c3
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797215"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131980"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -251,7 +251,7 @@ Suchen Sie auf dem Dashboard der Ressourcengruppe nach dem Speicherkonto, das mi
 
 **Bedeutung**: Die Azure AD-App-Registrierung wurde nicht ordnungsgemäß konfiguriert.  
 
-**Korrekturmaßnahme**: Bitten Sie den IT-Administrator (mit Lesezugriff auf den Mandanten), unser [Skript](https://aka.ms/PPCreateAADappregistration) zu verwenden, um die Azure AD-App-Registrierung zu generieren. Dieses Skript führt die Konfigurationsschritte automatisch aus. as  
+**Korrekturmaßnahme**: Bitten Sie den IT-Administrator (mit Lesezugriff auf den Mandanten), unser [Skript](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) zu verwenden, um die Azure AD-App-Registrierung zu erstellen. Dieses Skript führt die Konfigurationsschritte automatisch aus.
 
 **Fehler**: Die neue Active Directory-Anwendung „dummyname“ konnte in diesem Mandanten nicht erstellt werden: Es ist bereits ein anderes Objekt mit dem gleichen Wert für die Eigenschaftenbezeichner-URIs vorhanden.
 

@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/06/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 8a49221a4b45161e562569535b9aac596a41fb98
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 35c12118cb906b312114ee7e99e299714e397914
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888421"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223969"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -219,7 +219,7 @@ Unternehmensadministratoren können neue Kontobesitzer hinzufügen, vorhandene K
 
 1. Klicken Sie im Enterprise Portal auf **Verwalten**.
 1. Klicken Sie auf die Registerkarte **Konto**.
-1. Klicken Sie auf **+ Konto hinzufügen**. Geben Sie das Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto ein, das dem vorhandenen Konto zugeordnet ist.
+1. Klicken Sie auf **+ Konto hinzufügen**. Geben Sie das Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto ein, das dem vorhandenen Konto zugeordnet ist.
 1. Bestätigen Sie das Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto, das dem vorhandenen Konto zugeordnet ist.
 1. Geben Sie einen Namen ein, den Sie zum Identifizieren dieses Kontos in Berichten verwenden möchten.
 1. Klicken Sie auf **Hinzufügen**.

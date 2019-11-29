@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aab5d9a4cb7527e8a2085f826febc64bbd74854c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 58c0db1f8200a757c95d7f66f9d821968e7e1839
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551965"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121128"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -1450,6 +1450,7 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |cpu_limit|CPU-Grenzwert|Count|Durchschnitt|CPU-Grenzwert. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
 |cpu_used|Verwendete CPU|Count|Durchschnitt|Verwendete CPU. Gilt für V-Kern-basierte Datenbanken.|Keine Dimensionen|
 |deadlock|Deadlocks|Count|Gesamt|Deadlocks. Gilt nicht für Data Warehouses.|Keine Dimensionen|
+|diff_backup_size_bytes|Speichergröße für differenzielle Sicherungen|Byte|Maximum|Speichergröße für kumulative differenzielle Sicherungen Gilt für V-Kern-basierte Datenbanken. Gilt nicht für Hyperscale-Datenbanken.|Keine Dimensionen|
 |dtu_limit|DTU-Grenzwert|Count|Durchschnitt|DTU-Grenzwert. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
 |dtu_consumption_percent|DTU-Prozentsatz|Percent|Durchschnitt|DTU-Prozentsatz. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
 |dtu_used|DTU-Verbrauch|Count|Durchschnitt|DTU-Verbrauch. Gilt für DTU-basierte Datenbanken.|Keine Dimensionen|
@@ -1458,7 +1459,9 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |dwu_consumption_percent|DWU in Prozent|Percent|Maximum|DWU in Prozent. Gilt nur für Data Warehouses.|Keine Dimensionen|
 |dwu_limit|DWU-Grenzwert|Count|Maximum|DWU-Grenzwert. Gilt nur für Data Warehouses.|Keine Dimensionen|
 |dwu_used|DWU-Verbrauch|Count|Maximum|DWU-Verbrauch. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|full_backup_size_bytes|Speichergröße für vollständige Sicherungen|Byte|Maximum|Speichergröße für kumulative vollständige Sicherungen Gilt für V-Kern-basierte Datenbanken. Gilt nicht für Hyperscale-Datenbanken.|Keine Dimensionen|
 |local_tempdb_usage_percent|Lokaler tempdb-Prozentsatz|Percent|Durchschnitt|Lokaler tempdb-Prozentsatz. Gilt nur für Data Warehouses.|Keine Dimensionen|
+|log_backup_size_bytes|Speichergröße für Protokollsicherungen|Byte|Maximum|Speichergröße für kumulative Protokollsicherungen Gilt für V-Kern-basierte Datenbanken. Gilt nicht für Hyperscale-Datenbanken.|Keine Dimensionen|
 |log_write_percent|E/A-Prozentsatz für Protokoll|Percent|Durchschnitt|E/A-Prozentsatz für Protokoll. Gilt nicht für Data Warehouses.|Keine Dimensionen|
 |physical_data_read_percent|E/A-Prozentsatz für Daten|Percent|Durchschnitt|E/A-Prozentsatz für Daten|Keine Dimensionen|
 |sessions_percent|Sitzungen in Prozent|Percent|Durchschnitt|Sitzungen in Prozent. Gilt nicht für Data Warehouses.|Keine Dimensionen|

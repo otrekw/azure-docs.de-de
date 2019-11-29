@@ -1,5 +1,5 @@
 ---
-title: Indizieren einer Azure Cosmos DB-Datenquelle
+title: Durchsuchen von Azure Cosmos DB-Daten
 titleSuffix: Azure Cognitive Search
 description: Durchforsten einer Azure Cosmos DB-Datenquelle und Erfassen von Daten in einem durchsuchbaren Volltextindex in der kognitiven Azure-Suche. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Cosmos DB.
 author: mgottein
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 41da5b59c7d9429a068ecd483aa96edb1141b727
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7e4d51701fd8614831585aac03f2c8a909b2b847
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719948"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112739"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
@@ -78,17 +78,11 @@ Auf der Seite **Datenquelle** muss die Quelle **Cosmos DB** lauten und folgende 
 
    ![Cosmos DB-Datenquellendefinition](media/search-howto-index-cosmosdb/cosmosdb-datasource.png "Cosmos DB-Datenquellendefinition")
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4\. Überspringen der Seite „Kognitive Suche hinzufügen“ im Assistenten
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>Schritt 4: Überspringen der Seite „Inhalte anreichern“ im Assistenten
 
-Das Hinzufügen kognitiver Qualifikationen ist für den Import eines Dokuments nicht erforderlich. Wenn Sie der Indizierungspipeline keine [KI-Anreicherung hinzufügen](cognitive-search-concept-intro.md) möchten, können Sie diesen Schritt überspringen.
+Das Hinzufügen kognitiver Qualifikationen (für Anreicherungen) ist keine Importanforderung. Wenn Sie der Indizierungspipeline keine [KI-Anreicherung hinzufügen](cognitive-search-concept-intro.md) möchten, können Sie diesen Schritt überspringen.
 
-Um den Schritt zu überspringen, wechseln Sie zunächst zur nächsten Seite.
-
-   ![Schaltfläche „Nächste Seite“ zum Hinzufügen von Skills](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Von dieser Seite aus können Sie zur Indexanpassung springen.
-
-   ![Überspringen des Schritts zu kognitiven Qualifikationen](media/search-get-started-portal/skip-cog-skill-step.png)
+Klicken Sie auf die blauen Schaltflächen ganz unten auf der Seite (für „Weiter“ und „Überspringen“), um diesen Schritt zu überspringen.
 
 ### <a name="5---set-index-attributes"></a>5\. Festlegen von Indexattributen
 

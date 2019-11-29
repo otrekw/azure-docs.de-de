@@ -1,19 +1,18 @@
 ---
-title: Azure Site Recovery-Problembehandlung für Azure-zu-Azure-Replikationsfehler | Microsoft-Dokumentation
+title: Problembehandlung für die Replikation virtueller Azure-Computer in Azure Site Recovery
 description: Hier finden Sie Informationen zum Beheben von Fehlern beim Replizieren von virtuellen Azure-Computern für die Notfallwiederherstellung.
-services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
 ms.author: asgang
-ms.openlocfilehash: baf7a21d04e8f9bcf86c67abde302a558dfba01c
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910396"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084925"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsfehler
 
@@ -303,7 +302,7 @@ Sie können diese Warnung ignorieren, wenn Sie diesen virtuellen Computer nicht 
 
 1. Entfernen Sie die Sperre von der VM oder VM-Ressourcengruppe. In der folgenden Abbildung muss beispielsweise die Ressourcensperre für den virtuellen Computer mit dem Namen „MoveDemo“ gelöscht werden:
 
-    ![Entfernen der Sperre für den virtuellen Computer](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
+    ![Entfernen der Sperre vom virtuellen Computer](./media/site-recovery-azure-to-azure-troubleshoot/vm-locks.png)
 
 1. Laden Sie das Skript zum [Entfernen einer veralteten Site Recovery-Konfiguration](https://github.com/AsrOneSdk/published-scripts/blob/master/Cleanup-Stale-ASR-Config-Azure-VM.ps1) herunter.
 1. Führen Sie das Skript mit dem Namen „Cleanup-stale-asr-config-Azure-VM.ps1“ aus. Geben Sie Abonnement-ID, VM-Ressourcengruppe und Name der VM als Parameter an.

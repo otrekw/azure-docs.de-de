@@ -1,7 +1,7 @@
 ---
 title: Beispiele für Bing-Auswertungen – Visuelle Bing-Suche
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Beispiele für Bildauswertungen, die auf bing.com angezeigt werden.
+description: Dieser Artikel enthält Beispiele dafür, wie die visuelle Bing-Suche Bildauswertungen auf bing.com verwendet und anzeigt.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 94f8d4ea98f42ad919597ef53dc63281825f0e6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: df66dbeebb04209921ff91c4b99a14580f026718
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60610332"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111641"
 ---
 # <a name="examples-of-bing-insights-usage"></a>Beispiele für die Nutzung von Bing-Auswertungen
 

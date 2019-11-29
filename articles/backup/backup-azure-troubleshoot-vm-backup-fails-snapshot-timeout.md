@@ -1,5 +1,5 @@
 ---
-title: 'Behandeln von Azure Backup-Fehlern: Bereitstellungsstatus nicht verfügbar'
+title: 'Behandeln von Azure Backup-Fehlern: Probleme mit Agents und Erweiterungen'
 description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Azure Backup-Fehlern in Verbindung mit dem Agent, der Erweiterung und Datenträgern.
 ms.reviewer: saurse
 author: dcurwin
@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 9d76dfa338a697825868c31cfe6fc11e5235730b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 50db82206bbc0b98dcc80bd504022799011697d4
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533723"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074135"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -29,7 +29,7 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 
 Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich in einem inkonsistenten Zustand oder ist nicht installiert und verhindert, dass der Azure Backup-Dienst Momentaufnahmen auslöst.  
 
-- Wenn der VM-Agent angehalten wurde oder sich in einem inkonsistenten Zustand befindet, **starten Sie den Agent neu**, und wiederholen Sie den Sicherungsvorgang (probieren Sie es mit einer Ad-hoc-Sicherung). Die Schritte zum Neustarten des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
+- Wenn der VM-Agent angehalten wurde oder sich in einem inkonsistenten Zustand befindet, **starten Sie den Agent neu**, und wiederholen Sie den Sicherungsvorgang (probieren Sie es mit einer On-Demand-Sicherung). Die Schritte zum Neustarten des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
 - Falls der VM-Agent nicht installiert wurde oder veraltet ist, installieren bzw. aktualisieren Sie den VM-Agent, und wiederholen Sie den Sicherungsvorgang. Die Schritte zum Installieren/Aktualisieren des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
@@ -239,15 +239,15 @@ Wenn Sie die Ressourcengruppe des virtuellen Computers oder die VM selbst lösch
 
 Um die Wiederherstellungspunkte zu bereinigen, verwenden Sie eine der folgenden Methoden:<br>
 
-- [Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung](#clean-up-restore-point-collection-by-running-ad-hoc-backup)<br>
+- [Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer On-Demand-Sicherung](#clean-up-restore-point-collection-by-running-on-demand-backup)<br>
 - [Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal](#clean-up-restore-point-collection-from-azure-portal)<br>
 
-#### <a name="clean-up-restore-point-collection-by-running-ad-hoc-backup"></a>Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer Ad-hoc-Sicherung
+#### <a name="clean-up-restore-point-collection-by-running-on-demand-backup"></a>Bereinigen der Wiederherstellungspunktsammlung durch Ausführen einer On-Demand-Sicherung
 
-Nach dem Entfernen der Sperre lösen Sie eine Ad-hoc-/manuelle Sicherung aus. Dadurch wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser Ad-hoc-/manuelle Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
+Nach dem Entfernen der Sperre lösen Sie eine On-Demand-Sicherung aus. Dadurch wird sichergestellt, dass die Wiederherstellungspunkte automatisch bereinigt werden. Es ist davon auszugehen, dass dieser On-Demand-Vorgang beim ersten Mal fehlschlägt. Er gewährleistet jedoch eine automatische Bereinigung anstelle des manuellen Löschens von Wiederherstellungspunkten. Nach der Bereinigung sollte die nächste geplante Sicherung erfolgreich sein.
 
 > [!NOTE]
-> Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der Ad-hoc-/manuellen Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-azure-portal) aufgeführten Schritte verwenden.
+> Die automatische Bereinigung erfolgt einige Stunden nach dem Auslösen der On-Demand-Sicherung. Wenn bei der geplanten Sicherung weiterhin ein Fehler auftritt, löschen Sie die Wiederherstellungspunktsammlung manuell, indem Sie die [hier](#clean-up-restore-point-collection-from-azure-portal) aufgeführten Schritte verwenden.
 
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Bereinigen der Wiederherstellungspunktsammlung über das Azure-Portal <br>
 

@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Verwalten von Sicherungsaufträgen mit der REST-API'
+title: Verwalten von Sicherungsaufträgen mit der REST-API
 description: In diesem Artikel erfahren Sie, wie Sie Sicherungs- und Wiederherstellungsaufträge von Azure Backup mit der REST-API nachverfolgen und verwalten.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b234533e-ac51-4482-9452-d97444f98b38
-ms.openlocfilehash: 5fe0255a8f304061dc970907c651261832fee614
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 628569c547aa776ec2fbb7ec7e32edad7c1fe7dd
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929098"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173395"
 ---
 # <a name="track-backup-and-restore-jobs-using-rest-api"></a>Nachverfolgen von Sicherungs- und Wiederherstellungsaufträgen mit der REST-API
 

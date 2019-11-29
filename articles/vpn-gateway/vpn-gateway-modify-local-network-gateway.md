@@ -1,5 +1,5 @@
 ---
-title: Ändern der IP-Adresspräfixe des lokalen Netzwerkgateways und der IP-Adresse des VPN Gateway | Azure| PowerShell| Microsoft-Dokumentation
+title: 'VPN Gateway: Ändern der Einstellungen für die Gateway-IP-Adresse: Azure PowerShell'
 description: In diesem Artikel wird erläutert, wie Sie die IP-Adresspräfixe für Ihr lokales Netzwerkgateway mithilfe von PowerShell ändern können.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 923c478909e0393f36da06802023b3f40ee63a3d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6aae2c87615ae0e250d7f9460bde483e3448c46e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014904"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell
 

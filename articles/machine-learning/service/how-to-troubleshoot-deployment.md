@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a79c95d627bbdec3a91a1d048a48ff061b308ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489366"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123212"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
@@ -42,11 +42,21 @@ Bei der Bereitstellung eines Modells in Azure Machine Learning führt das System
 
 Weitere Informationen über diesen Prozess finden Sie in der Einführung zur [Modellverwaltung](concept-model-management-and-deployment.md).
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Das [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).
+* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* Zum lokalen Debuggen benötigen Sie eine funktionierende Docker-Installation auf Ihrem lokalen System.
+
+    Verwenden Sie den Befehl `docker run hello-world` über ein Terminal oder eine Befehlszeile, um Ihre Docker-Installation zu überprüfen. Informationen zur Installation von Docker oder zur Problembehandlung bei Docker-Fehlern finden Sie in der [Docker-Dokumentation](https://docs.docker.com/).
+
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Beim Auftreten eines Problems besteht der erste Schritt darin, die (zuvor beschriebene) Bereitstellungsaufgabe in einzelne Schritte aufzuschlüsseln, um das Problem zu isolieren.
 
-Die Aufschlüsselung der Bereitstellung in Aufgaben ist hilfreich, wenn Sie die [Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-)- oder [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-)-API verwenden, da beide Funktionen die oben genannten Schritte als einzelne Aktion ausführen. Im Normalfall sind diese APIs praktisch, bei der Problembehandlung ist es jedoch hilfreich, die Schritte aufzuschlüsseln, indem Sie sie durch die unten angegebenen API-Aufrufe ersetzen.
+Die Aufschlüsselung der Bereitstellung in Aufgaben ist hilfreich, wenn Sie die [Webservice.deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-)- oder [Webservice.deploy_from_model()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-)-API verwenden, da beide Funktionen die oben genannten Schritte als einzelne Aktion ausführen. Im Normalfall sind diese APIs praktisch, bei der Problembehandlung ist es jedoch hilfreich, die Schritte aufzuschlüsseln, indem Sie sie durch die unten angegebenen API-Aufrufe ersetzen.
 
 1. Registrieren des Modells. Hier finden Sie Beispielcode dazu:
 
@@ -154,15 +164,12 @@ Folgende Ansätze werden empfohlen, um dieses Problem zu umgehen:
 
 ## <a name="debug-locally"></a>Lokales Debuggen
 
-Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es lokal bereitzustellen. Die lokale Verwendung erleichtert die Problembehandlung. Das Docker-Image mit dem Modell wird heruntergeladen und auf dem lokalen System gestartet.
-
-> [!IMPORTANT]
-> Lokale Bereitstellungen erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Docker muss vor der lokalen Bereitstellung ausgeführt werden. Informationen zum Installieren und Verwenden von Docker finden Sie unter [https://www.docker.com/](https://www.docker.com/).
+Wenn bei der Bereitstellung eines Modells für ACI oder AKS Probleme auftreten, versuchen Sie, es als lokalen Webdienst bereitzustellen. Das Verwenden eines lokalen Webdiensts erleichtert die Problembehandlung. Das Docker-Image mit dem Modell wird heruntergeladen und auf dem lokalen System gestartet.
 
 > [!WARNING]
-> Lokale Bereitstellungen werden nicht für Produktionsszenarien unterstützt.
+> Bereitstellungen lokaler Webdienste werden nicht für Produktionsszenarien unterstützt.
 
-Ändern Sie zum lokalen Bereitstellen Ihren Code so, dass `LocalWebservice.deploy_configuration()` zum Erstellen einer Bereitstellungskonfiguration verwendet wird. Verwenden Sie dann `Model.deploy()`, um den Dienst bereitzustellen. Im folgenden Beispiel wird ein (in der `model`-Variable enthaltenes) Modell lokal bereitgestellt:
+Ändern Sie zum lokalen Bereitstellen Ihren Code so, dass `LocalWebservice.deploy_configuration()` zum Erstellen einer Bereitstellungskonfiguration verwendet wird. Verwenden Sie dann `Model.deploy()`, um den Dienst bereitzustellen. Im folgenden Beispiel wird ein (in der `model`-Variable enthaltenes) Modell als lokaler Webdienst bereitgestellt:
 
 ```python
 from azureml.core.model import InferenceConfig, Model
@@ -173,14 +180,14 @@ inference_config = InferenceConfig(runtime="python",
                                    entry_script="score.py",
                                    conda_file="myenv.yml")
 
-# Create a local deployment, using port 8890 for the  endpoint
+# Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
 service = Model.deploy(
     ws, "mymodel", [model], inference_config, deployment_config)
 # Wait for the deployment to complete
 service.wait_for_deployment(True)
-# Display the port that the  is available on
+# Display the port that the web service is available on
 print(service.port)
 ```
 
@@ -290,7 +297,7 @@ Es gibt zwei Möglichkeiten, die beim Verhindern des Statuscodes 503 helfen kö
     > [!IMPORTANT]
     > Durch diese Änderung werden Replikate *nicht schneller* erstellt. Stattdessen werden sie mit einem niedrigeren Schwellenwert für die Auslastung erstellt. Anstatt abzuwarten, bis der Dienst zu 70 % ausgelastet ist, werden Replikate schon bei 30 % Auslastung erstellt, wenn Sie den Wert in 30 % ändern.
     
-    Wenn bereits die derzeit maximale Anzahl von Replikaten verwendet wird, und Sie weiterhin den Statuscode 503 erhalten, erhöhen Sie den `autoscale_max_replicas`-Wert, um die maximale Anzahl der Replikate zu erhöhen.
+    Wenn der Webdienst bereits die derzeit maximale Anzahl von Replikaten verwendet und Sie weiterhin den Statuscode 503 erhalten, erhöhen Sie den `autoscale_max_replicas`-Wert, um die maximale Anzahl der Replikate zu erhöhen.
 
 * Ändern Sie die Mindestanzahl der Replikate. Indem Sie die Mindestanzahl der Replikate erhöhen, wird ein größerer Pool für die Verarbeitung eingehender Spitzen bereitgestellt.
 
@@ -325,8 +332,8 @@ In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Pytho
 
 > [!IMPORTANT]
 > Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)-Klasse erstellen. 
->
-> Lokale Bereitstellungen erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Docker muss vor der lokalen Bereitstellung ausgeführt werden. Informationen zum Installieren und Verwenden von Docker finden Sie unter [https://www.docker.com/](https://www.docker.com/).
+
+Bereitstellungen lokaler Webdienste erfordern eine funktionierende Installation von Docker auf Ihrem lokalen System. Weitere Informationen zum Verwenden von Docker finden Sie in der [Docker-Dokumentation](https://docs.docker.com/).
 
 ### <a name="configure-development-environment"></a>Konfigurieren der Entwicklungsumgebung
 

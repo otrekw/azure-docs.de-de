@@ -1,7 +1,7 @@
 ---
 title: Erkennungsmethode für die Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Erkennungsmethode (Detect) der Textübersetzungs-API.
+description: Identifizieren Sie die Sprache eines Textabschnitts mit der Detect-Methode der Textübersetzungs-API von Azure Cognitive Services.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: ba73b75e30639dd3f5cf5523124c926ea3442fa1
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932024"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837301"
 ---
 # <a name="translator-text-api-30-detect"></a>Textübersetzungs-API 3.0: Detect
 

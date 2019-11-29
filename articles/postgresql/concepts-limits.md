@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4752112acf136d9ffb19a0b7383bc3aff5de5e0
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: b9cef4753b6fd324b38d7254139fe288463a0c0c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448101"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123896"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).
@@ -21,21 +21,21 @@ In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränk
 ## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
 Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif und V-Kernen: 
 
-|**Tarif**| **vCore(s)**| **Max. Anzahl von Verbindungen** |
-|---|---|---|
-|Basic| 1| 50 |
-|Basic| 2| 100 |
-|Allgemeiner Zweck| 2| 150|
-|Allgemeiner Zweck| 4| 250|
-|Allgemeiner Zweck| 8| 480|
-|Allgemeiner Zweck| 16| 950|
-|Allgemeiner Zweck| 32| 1500|
-|Allgemeiner Zweck| 64| 1\.900|
-|Arbeitsspeicheroptimiert| 2| 300|
-|Arbeitsspeicheroptimiert| 4| 500|
-|Arbeitsspeicheroptimiert| 8| 960|
-|Arbeitsspeicheroptimiert| 16| 1\.900|
-|Arbeitsspeicheroptimiert| 32| 1987|
+|**Tarif**| **vCore(s)**| **Max. Anzahl von Verbindungen** | **Max. Benutzerverbindungen** |
+|---|---|---|---|
+|Basic| 1| 55 | 50|
+|Basic| 2| 105 | 100|
+|Allgemeiner Zweck| 2| 150| 145|
+|Allgemeiner Zweck| 4| 250| 245|
+|Allgemeiner Zweck| 8| 480| 475|
+|Allgemeiner Zweck| 16| 950| 945|
+|Allgemeiner Zweck| 32| 1500| 1495|
+|Allgemeiner Zweck| 64| 1\.900| 1895|
+|Arbeitsspeicheroptimiert| 2| 300| 295|
+|Arbeitsspeicheroptimiert| 4| 500| 495|
+|Arbeitsspeicheroptimiert| 8| 960| 955|
+|Arbeitsspeicheroptimiert| 16| 1\.900| 1895|
+|Arbeitsspeicheroptimiert| 32| 1987| 1982|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.

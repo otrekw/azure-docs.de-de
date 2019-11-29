@@ -1,25 +1,25 @@
 ---
-title: Regeln für eine dynamische automatische Gruppenmitgliedschaft – Azure Active Directory | Microsoft-Dokumentation
+title: Regeln für dynamische Gruppenmitgliedschaften – Azure AD | Microsoft-Dokumentation
 description: Erfahren Sie, wie Mitgliedschaftsregeln erstellt werden, um Gruppen automatisch aufzufüllen. Sie finden hier außerdem eine Regelreferenz.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb9b3a4add951079ab918d3ac02ca5e38eff6161
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241168"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027130"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -357,7 +357,10 @@ Den Namen der benutzerdefinierten Eigenschaft finden Sie im Verzeichnis. Fragen 
 
 ## <a name="rules-for-devices"></a>Regeln für Geräte
 
-Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaft in einer Gruppe auswählt. Benutzer und Geräte können nicht gleichzeitig Gruppenmitglieder sein. Das Attribut **organizationalUnit** wird nicht mehr aufgelistet und sollte nicht verwendet werden. Diese Zeichenfolge wird von Intune in bestimmten Fällen festgelegt, aber nicht durch Azure AD erkannt, sodass Gruppen keine Geräte basierend auf diesem Attribut hinzugefügt werden.
+Sie können auch eine Regel erstellen, die Geräteobjekte für die Mitgliedschaft in einer Gruppe auswählt. Benutzer und Geräte können nicht gleichzeitig Gruppenmitglieder sein. 
+
+> [!NOTE]
+> Das Attribut **organizationalUnit** wird nicht mehr aufgelistet und sollte nicht verwendet werden. Diese Zeichenfolge wird von Intune in bestimmten Fällen festgelegt, aber nicht durch Azure AD erkannt, sodass Gruppen keine Geräte basierend auf diesem Attribut hinzugefügt werden.
 
 > [!NOTE]
 > „systemlabels“ ist ein schreibgeschütztes Attribut, das mit Intune nicht festgelegt werden kann.
@@ -380,7 +383,8 @@ Die folgenden Geräteattribute können verwendet werden.
  isRooted | true false | (device.isRooted -eq true)
  managementType | MDM (bei mobilen Geräten)<br>PC (bei Computern, die vom Intune-PC-Agent verwaltet werden) | (device.managementType -eq "MDM")
  deviceId | eine gültige Azure AD-Geräte-ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
- objectId | eine gültige Azure AD-Objekt-ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ objectId | eine gültige Azure AD-Objekt-ID |  (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d")
+ devicePhysicalIds | Jeder von Autopilot verwendete Zeichenfolgenwert, z. B. alle Autopilotgeräte, OrderID oder PurchaseOrderID  | (device.devicePhysicalIDs -any _ -contains "[ZTDId]") (device.devicePhysicalIds -any _ -eq "[OrderID]:179887111881") (device.devicePhysicalIds -any _ -eq "[PurchaseOrderId]:76222342342")
  systemLabels | Eine beliebige Zeichenfolge, die mit der Intune-Geräteeigenschaft zum Kennzeichnen von Geräten der modernen Arbeitswelt übereinstimmt | (device.systemLabels -contains "M365Managed")
 
 > [!Note]  

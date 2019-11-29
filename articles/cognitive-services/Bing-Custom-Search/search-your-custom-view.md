@@ -1,7 +1,7 @@
 ---
 title: Suche nach einer benutzerdefinierten Ansicht – Benutzerdefinierte Bing-Suche
 titleSuffix: Azure Cognitive Services
-description: Beschreibt, wie Sie nach einer benutzerdefinierten Ansicht im Web suchen.
+description: Nachdem Sie Ihre benutzerdefinierte Suche konfiguriert haben, können Sie sie im Portal für die benutzerdefinierte Bing-Suche testen.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/09/2019
 ms.author: maheshb
-ms.openlocfilehash: 814f57d4011823da80e53cce41ffcb523fc0bf1b
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: f04bfc306a89c7bb6caf3f928f5fdfec66358649
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405007"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072745"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Aufrufen Ihrer Instanz der benutzerdefinierten Bing-Suche über das Portal
 

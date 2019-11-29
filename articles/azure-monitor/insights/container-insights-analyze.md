@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: f1a5d0d98a442fab80744636eea05d4c2d26f919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478907"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132342"
 ---
 # <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -320,3 +320,5 @@ Sie greifen auf diese Arbeitsmappen zu, indem Sie sie jeweils in der Dropdownlis
 - Informationen zum Erstellen von Warnungen für hohe CPU- und Arbeitsspeicherauslastung zur Unterstützung Ihrer DevOps oder Betriebsprozesse und -verfahren finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md).
 
 - Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
+
+- Informationen zum Anzeigen des Integritätsstatus Ihres Kubernetes-Clusters finden Sie unter [Überwachen der Clusterintegrität](container-insights-health.md).

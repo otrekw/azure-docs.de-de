@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: zarhoads
-ms.openlocfilehash: 1972a91e1ed8a39bcd467272108e0e772116344e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5bceb6715fc3fd2f9f23738936df2f2c549d0212
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472874"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048195"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Derzeit können diese Abkühlungsstandardwerte nicht optimiert werden.
 
 ## <a name="cluster-autoscaler"></a>Automatische Clusterskalierung
 
-Um auf veränderte Podanforderungen zu reagieren, enthält Kubernetes eine derzeit in AKS in der Vorschau befindliche automatische Clusterskalierung, die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den Metrik-API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
+Um auf veränderte Podanforderungen zu reagieren, enthält Kubernetes eine automatische Clusterskalierung, die die Anzahl von Knoten basierend auf den angeforderten Computeressourcen im Knotenpool anpasst. Standardmäßig überprüft die automatische Clusterskalierung den Metrik-API-Server alle 10 Sekunden auf erforderliche Änderungen der Knotenanzahl. Wenn die automatische Clusterskalierung ermittelt, dass eine Änderung erforderlich ist, wird die Anzahl der Knoten im AKS-Cluster entsprechend herauf- oder herabgesetzt. Die automatische Clusterskalierung funktioniert mit RBAC-fähigen AKS-Clustern, die Kubernetes 1.10.x oder höher ausführen.
 
 ![Automatische Kubernetes-Clusterskalierung](media/concepts-scale/cluster-autoscaler.png)
 
@@ -81,7 +81,7 @@ Um Ihren AKS-Cluster schnell zu skalieren, können Sie ihn in Azure Container In
 
 ![Kubernetes-Burstskalierung in ACI](media/concepts-scale/burst-scaling.png)
 
-Mit ACI können Sie schnell Containerinstanzen ohne zusätzlichen Infrastrukturaufwand bereitstellen. Beim Herstellen der Verbindung mit AKS wird ACI eine sichere logische Erweiterung Ihres AKS-Clusters. Die Virtual Kubelet-Komponente wird in Ihrem AKS-Cluster installiert, der ACI als virtuellen Kubernetes-Knoten darstellt. Kubernetes kann dann Pods einplanen, die als ACI-Instanzen über virtuelle Knoten ausgeführt werden, nicht direkt in Ihrem AKS-Cluster als Pods auf VM-Knoten. Virtuelle Knoten befinden sich derzeit in AKS in der Vorschau.
+Mit ACI können Sie schnell Containerinstanzen ohne zusätzlichen Infrastrukturaufwand bereitstellen. Beim Herstellen der Verbindung mit AKS wird ACI eine sichere logische Erweiterung Ihres AKS-Clusters. Die Komponente zu [virtuellen Knoten][virtual-nodes-cli] (virtual nodes), die unter [Virtual Kubelet][virtual-kubelet] zu finden ist, wird in Ihrem AKS-Cluster installiert, der ACI als virtuellen Kubernetes-Knoten darstellt. Kubernetes kann dann Pods einplanen, die als ACI-Instanzen über virtuelle Knoten ausgeführt werden, nicht direkt in Ihrem AKS-Cluster als Pods auf VM-Knoten. Virtuelle Knoten befinden sich derzeit in AKS in der Vorschau.
 
 Die Anwendung erfordert keine Änderung, um virtuelle Knoten zu verwenden. Bereitstellungen können AKS und ACI übergreifend und ohne Verzögerung skalieren, da die automatische Clusterskalierung neue Knoten im AKS-Cluster bereitstellt.
 
@@ -104,6 +104,7 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 - [Kubernetes/AKS: Speicher][aks-concepts-storage]
 
 <!-- LINKS - external -->
+[virtual-kubelet]: https://virtual-kubelet.io/
 
 <!-- LINKS - internal -->
 [aks-quickstart]: kubernetes-walkthrough.md
@@ -117,3 +118,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [aks-concepts-network]: concepts-network.md
+[virtual-nodes-cli]: virtual-nodes-cli.md

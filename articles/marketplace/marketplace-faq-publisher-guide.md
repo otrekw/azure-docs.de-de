@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822981"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306407"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Häufig gestellte Fragen zum kommerziellen Microsoft-Marketplace
 
@@ -165,7 +165,7 @@ Indirekte Kunden mit Enterprise Agreement (EA) müssen sich bei Preisfragen zu A
 
 **Kann ich den Zugriff meiner Mitarbeiter auf den Azure Marketplace und die Einkaufsberechtigungen steuern?**
 
-Ja, für Enterprise Agreement-Kunden (EA) kann der Beitrittsadministrator die Kaufberechtigungen für alle Konten des Beitritts deaktivieren und sie dann erneut so lange aktivieren, bis der Kauf getätigt wurde. Darüber hinaus können alle Kunden Azure Policy verwenden, um Bereitstellungsoptionen für ihre Azure-Abonnements einzuschränken, einschließlich der Verwaltung von Azure Marketplace-Ressourcen.
+Ja, für Enterprise Agreement-Kunden (EA) kann der Beitrittsadministrator die Kaufberechtigungen für alle Konten des Beitritts deaktivieren und sie dann erneut so lange aktivieren, bis der Kauf getätigt wurde.
 
 **Welche Zahlungsmethoden werden für kommerzielle Marketplace-Käufe unterstützt?**
 

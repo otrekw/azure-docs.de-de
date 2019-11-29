@@ -1,5 +1,5 @@
 ---
-title: Azure-Support für VMs der Generation 2 | Microsoft-Dokumentation
+title: Azure-Support für VMs der Generation 2
 description: 'Übersicht: Azure-Support für VMs der Generation 2'
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 63cf3301a08ce4073998c5d281f155a6b3eefe4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d6fcbcb7f5d1b6bb25840ad1bddc5327b068c15d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491923"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075466"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
-Die Unterstützung für virtuelle Computer (VMs) der Generation 2 ist jetzt in Azure verfügbar. Sie können die Generation eines virtuellen Computers nach der Erstellung nicht mehr ändern, deshalb sollten Sie die Aspekte auf dieser Seite genauestens prüfen, bevor Sie eine Generation auswählen.
+Die Unterstützung für virtuelle Computer (VMs) der Generation 2 ist jetzt in Azure verfügbar. Sie können die Generation eines virtuellen Computers nach der Erstellung nicht mehr ändern, deshalb sollten Sie die Aspekte auf dieser Seite genauestens prüfen, bevor Sie eine Generation auswählen.
 
-VMs der Generation 2 unterstützen wichtige Features, die bei VMs der Generation 1 nicht unterstützt werden. Zu diesen Features gehören mehr Speicher, Intel Software Guard Extensions (Intel SGX) und virtualisierter persistenter Speicher (vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Features und Funktionen](#features-and-capabilities).
+VMs der Generation 2 unterstützen wichtige Features, die bei VMs der Generation 1 nicht unterstützt werden. Zu diesen Features gehören mehr Speicher, Intel Software Guard Extensions (Intel SGX) und virtualisierter persistenter Speicher (vPMEM). VMs der Generation 2, die lokal ausgeführt werden, weisen auch einige Features auf, die in Azure noch nicht unterstützt werden. Weitere Informationen finden Sie im Abschnitt [Features und Funktionen](#features-and-capabilities).
 
 VMs der Generation 2 verwenden die neue UEFI-basierte Startarchitektur und nicht mehr die BIOS-basierte Architektur von VMs der Generation 1. Im Vergleich zu VMs der Generation 1 können VMs der Generation 2 eine verbesserte Start- und Installationszeit aufweisen. Einen Überblick über VMs der Generation 2 und einige der Unterschiede zwischen Generation 1 und Generation 2 finden Sie unter [Sollte ich einen virtuellen Computer der Generation 1 oder 2 in Hyper-V erstellen?](https://docs.microsoft.com/windows-server/virtualization/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 
 ## <a name="generation-2-vm-sizes"></a>VM-Größen der Generation 2
 
-VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure bietet jetzt Unterstützung für die Generation 2 für die folgenden ausgewählten VM-Serien:
+VMs der Generation 1 werden von allen VM-Größen in Azure unterstützt. Azure bietet jetzt Unterstützung für die Generation 2 der folgenden ausgewählten VM-Serien:
 
 * [B-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/b-series-burstable)
 * [DC-Serie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general#dc-series)
@@ -59,7 +59,9 @@ VMs der Generation 2 unterstützen die folgenden Marketplace-Images:
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04+
+* Ubuntu Server 16.04,18.04, 19.04, 19.10
+* RHEL 8.0
+
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokale VMs und Azure-VMs der Generation 2 im Vergleich
 
@@ -90,7 +92,7 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 | Betriebssystem-Datenträger > 2 TB                    | :x:                | :heavy_check_mark: |
 | Benutzerdefinierter Datenträger/Image/Swapbetriebssystem         | :heavy_check_mark: | :heavy_check_mark: |
 | Unterstützung für VM-Skalierungsgruppe | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
 | Shared Image Gallery              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | :x:                |

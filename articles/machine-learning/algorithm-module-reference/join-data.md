@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
-ms.date: 06/01/2019
-ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495087"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232627"
 ---
 # <a name="join-data"></a>Verknüpfen von Daten
 
@@ -68,4 +68,4 @@ Wenn Sie einen Join-Vorgang für zwei Datasets ausführen möchten, müssen die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

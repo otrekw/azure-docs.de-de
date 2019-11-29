@@ -1,7 +1,7 @@
 ---
-title: Häufig gestellte Fragen zum Text-to-Speech-Dienst in Azure
+title: Häufig gestellte Fragen zu Text-to-Speech
 titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zum Text-to-Speech-Dienst.
+description: Erhalten Sie Antworten auf die häufig gestellten Fragen zum Text-to-Speech-Dienst.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: a5ca7d8a6b09dc277664fdc7db2433466e665d56
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 19b8be83a3678164197ec0650b07091e941a04d7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67606670"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110497"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Häufig gestellte Fragen zu Text-to-Speech
 
@@ -25,7 +25,7 @@ Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen fin
 
 **F: Worin besteht der Unterschied zwischen standardmäßigen und benutzerdefinierten Stimmmodellen?**
 
-**A:** Das Standardstimmmodell (auch *Voicefont* genannt) wurde mit Microsoft-eigenen Daten trainiert und wird bereits in der Cloud bereitgestellt. Mit einem benutzerdefinierten Stimmmodelle können Sie entweder ein vorhandenes durchschnittliches Modell verwenden und Klangfarbe und Sprachausdruck an den Stil der Sprecherstimme anpassen oder ein vollständig neues Modell basierend auf vom Benutzer vorbereiteten Daten zu trainieren. Heute wünschen immer mehr Kunden eine einzigartige Stimme mit hohem Wiedererkennungswert für ihre Bots. Hierfür eignet sich die Plattform zum Erstellen benutzerdefinierter Stimmen ideal.
+**A:** Das Standardstimmmodell (auch _Voicefont_ genannt) wurde mit Microsoft-eigenen Daten trainiert und wird bereits in der Cloud bereitgestellt. Mit einem benutzerdefinierten Stimmmodelle können Sie entweder ein vorhandenes durchschnittliches Modell verwenden und Klangfarbe und Sprachausdruck an den Stil der Sprecherstimme anpassen oder ein vollständig neues Modell basierend auf vom Benutzer vorbereiteten Daten zu trainieren. Heute wünschen immer mehr Kunden eine einzigartige Stimme mit hohem Wiedererkennungswert für ihre Bots. Hierfür eignet sich die Plattform zum Erstellen benutzerdefinierter Stimmen ideal.
 
 **F: Wo fange ich an, wenn ich ein Standardstimmmodell verwenden möchte?**
 
@@ -63,5 +63,5 @@ Wir bieten weitere Dienste, um Sie bei der Erstellung von Skripts für die Aufze
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Problembehandlung](troubleshooting.md)
-* [Versionshinweise](releasenotes.md)
+- [Problembehandlung](troubleshooting.md)
+- [Versionshinweise](releasenotes.md)

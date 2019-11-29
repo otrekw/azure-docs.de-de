@@ -1,9 +1,9 @@
 ---
-title: Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor | Microsoft-Dokumentation
+title: Integrieren von Protokollen in ArcSight mit Azure Monitor | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle mit Azure Monitor in ArcSight integrieren.
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: b37bef0d-982e-4e28-86b2-6c61ca524ae1
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 04/19/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d202cb0cc2d073326a5bcc8fb0d540c232afa98
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2fbd658d610fba27bdaed2af4bc27ed40a138fac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240891"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008032"
 ---
 # <a name="integrate-azure-active-directory-logs-with-arcsight-using-azure-monitor"></a>Integrieren von Azure Active Directory-Protokollen in ArcSight mit Azure Monitor
 
@@ -59,4 +59,4 @@ Laden Sie den [Konfigurationsleitfaden für ArcSight SmartConnector für den Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.softwaregrp.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/2/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)
+[Konfigurationsleitfaden für ArcSight SmartConnector für den Azure Monitor-Event Hub](https://community.microfocus.com/dcvta86296/attachments/dcvta86296/connector-documentation/1232/8/Microsoft%20Azure%20Monitor%20Event%20Hub.pdf)

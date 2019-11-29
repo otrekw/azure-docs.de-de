@@ -1,5 +1,5 @@
 ---
-title: SQL Server-Verfügbarkeitsgruppen – Azure Virtual Machines – Voraussetzungen | Microsoft-Dokumentation
+title: 'Tutorial: Voraussetzungen für Verfügbarkeitsgruppen'
 description: Dieses Tutorial zeigt, wie die Voraussetzungen zum Erstellen einer SQL Server AlwaysOn-Verfügbarkeitsgruppe in Azure-VMs konfiguriert werden.
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 62232283fb0b2f499601615702fef3292bb88317
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 17b1f58a950f2e0589986e9f1da1295671599341
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100734"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037472"
 ---
-# <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Erfüllen der Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen in Azure Virtual Machines
+# <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
 In diesem Tutorial erfahren Sie, wie Sie die Voraussetzungen zum Erstellen einer [SQL Server AlwaysOn-Verfügbarkeitsgruppe in Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-tutorial.md) erfüllen. Wenn die Voraussetzungen erfüllt sind, verfügen Sie über einen Domänencontroller, zwei SQL Server-VMs und einen Zeugenserver in einer einzigen Ressourcengruppe.
 

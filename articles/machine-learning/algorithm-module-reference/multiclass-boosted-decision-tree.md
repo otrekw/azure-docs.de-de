@@ -8,14 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 08/22/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: b53e504e98cab34fdc50ee8715ec162c910dd40d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 7f39d393b96b1515e4815abdc28ac4079f271c1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465978"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232601"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Verstärkte Entscheidungsstruktur mit mehreren Klassen
 
@@ -61,4 +60,4 @@ Diese Art von Modell kann mithilfe von [Modell trainieren](././train-model.md) t
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

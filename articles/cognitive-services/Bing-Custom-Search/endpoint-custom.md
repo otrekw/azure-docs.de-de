@@ -1,7 +1,7 @@
 ---
 title: Endpunkt für die benutzerdefinierte Bing-Suche
 titleSuffix: Azure Cognitive Services
-description: Enthält einen Überblick über den API-Endpunkt für die benutzerdefinierte Bing-Suche.
+description: Erstellen Sie eine maßgeschneiderte Suchbenutzeroberfläche für Themen, die Sie interessieren. Den Benutzern werden Suchergebnisse angezeigt, die auf die ihnen wichtigen Inhalte zugeschnitten sind.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: e3b544d8d655b653383cc999de233e2163433d85
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68405077"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072787"
 ---
 # <a name="custom-search"></a>Benutzerdefinierte Suche
 Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren. Ihre Benutzer sehen Suchergebnisse, die auf den gewünschten Inhalt zugeschnitten sind, anstatt durch allgemeine Suchergebnisse mit irrelevanten Inhalten blättern zu müssen.

@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten der Notfallwiederherstellung für eine IIS-Web-App mit Azure Site Recovery
 description: Erfahren Sie, wie Sie virtuelle Computer einer IIS-Webfarm mit Azure Site Recovery replizieren.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 66b9342f1a67c4c9d35fda447a297cc64d048c1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 513a0f28fc03cbf24e35112245c9756d5ce00783
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480297"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954667"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 

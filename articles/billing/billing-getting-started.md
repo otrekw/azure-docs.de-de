@@ -4,19 +4,19 @@ description: Hier erwarten Sie, wie Sie unerwartete Gebühren in Ihrer Azure-Abr
 author: bandersmsft
 manager: amberb
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 6f7a29adfbd145be11f9f6c91e8e66dd229fed62
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: e5cdd7181e680dbc7406118afeb4aeb837d3aaf2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375638"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223911"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -68,11 +68,11 @@ Mit den folgenden Tools können Sie Kosten überwachen:
 
 ### <a name="track-costs-with-budgets-and-cost-alerts"></a>Nachverfolgen von Kosten mithilfe von Budgets und Kostenwarnungen
 
-Erstellen Sie [Budgets](../cost-management/tutorial-acm-create-budgets.md), um Kosten zu verwalten, und [Warnungen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), damit Sie und die Projektbeteiligten automatisch über Ausgabenanomalien und zu hohe Ausgaben informiert werden. 
+Erstellen Sie [Budgets](../cost-management/tutorial-acm-create-budgets.md), um Kosten zu verwalten, und [Warnungen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), damit Sie und die Projektbeteiligten automatisch über Ausgabenanomalien und zu hohe Ausgaben informiert werden.
 
 ### <a name="costs"></a> Ermitteln und Analysieren von Kosten mithilfe der Kostenanalyse
 
-Wenn Ihre Azure-Dienste ausgeführt werden, sollten Sie regelmäßig die Kosten überprüfen, um Ihre Azure-Ausgaben zu überwachen. Mithilfe der Kostenanalyse können Sie nachvollziehen, woher Kosten für Ihre Azure-Nutzung stammen. 
+Wenn Ihre Azure-Dienste ausgeführt werden, sollten Sie regelmäßig die Kosten überprüfen, um Ihre Azure-Ausgaben zu überwachen. Mithilfe der Kostenanalyse können Sie nachvollziehen, woher Kosten für Ihre Azure-Nutzung stammen.
 
 1. Navigieren Sie im Azure-Portal zur Seite [Kostenverwaltung + Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade).
 
@@ -166,7 +166,7 @@ In der Vereinbarung zum Servicelevel (SLA) ist die garantierte Verfügbarkeit un
 
 Gehen Sie wie folgt vor, um eine Gutschrift anzufordern:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie über mehrere Konten verfügen, stellen Sie sicher, dass Sie das Konto verwenden, das von der Azure-Downtime betroffen war. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Wenn Sie über mehrere Konten verfügen, stellen Sie sicher, dass Sie das Konto verwenden, das von der Azure-Downtime betroffen war.
 2. Erstellen Sie eine neue Supportanfrage.
 3. Wählen Sie unter **Problemtyp** die Option **Abrechnung** aus.
 4. Wählen Sie unter **Problemtyp** die Option **Anforderung zur Rückerstattung** aus.

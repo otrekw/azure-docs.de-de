@@ -1,7 +1,7 @@
 ---
-title: Auswählen eines Audioeingabegeräts mit dem Speech SDK – Speech Service
+title: Auswählen eines Audioeingabegeräts mit dem Speech SDK
 titleSuffix: Azure Cognitive Services
-description: Hier erfahren Sie, wie Sie im Speech SDK Audioeingabegeräte auswählen.
+description: Erfahren Sie mehr über die Auswahl von Audioeingabegeräten im Speech SDK (C++, C#, Python, Objective-C, Java, JavaScript), indem Sie die IDs der an ein System angeschlossenen Audiogeräte abrufen.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,18 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 8324f9fccbe46cf6fc0ce297aac29b0d8025b078
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562728"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109976"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Auswählen eines Audioeingabegeräts mit dem Speech SDK
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Gewusst wie: Auswählen eines Audioeingabegeräts mit dem Speech SDK
 
-In Version 1.3.0 des Speech SDK wird eine API zum Auswählen der Audioeingabe eingeführt.
-In diesem Artikel erfahren Sie, wie Sie die IDs der mit einem System verbundenen Audiogeräte abrufen.
-Diese können dann im Speech SDK verwendet werden, indem Sie das Audiogerät über das Objekt `AudioConfig` konfigurieren:
+In Version 1.3.0 des Speech SDK wird eine API zum Auswählen der Audioeingabe eingeführt. In diesem Artikel erfahren Sie, wie Sie die IDs der mit einem System verbundenen Audiogeräte abrufen. Diese können dann im Speech SDK verwendet werden, indem Sie das Audiogerät über das Objekt `AudioConfig` konfigurieren:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -46,12 +44,14 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```JavaScript
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
->[!Note]
+
+> [!Note]
 > Für JavaScript in Node.js ist keine Mikrofonverwendung verfügbar.
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Audiogeräte-IDs unter Windows für Desktopanwendungen
 
 [Endpunkt-ID-Zeichenfolgen](/windows/desktop/CoreAudio/endpoint-id-strings) für Audiogeräte können unter Windows für Desktopanwendungen aus dem Objekt [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice) abgerufen werden.
+
 Das folgende Codebeispiel veranschaulicht, wie Sie damit Audiogeräte in C++ auflisten:
 
 ```cpp
@@ -176,6 +176,7 @@ Ein Beispiel für eine Geräte-ID wäre etwa `{0.0.1.00000000}.{5f23ab69-6181-4f
 ## <a name="audio-device-ids-on-uwp"></a>Audio-Geräte-IDs der UWP
 
 Für die universelle Windows-Plattform (UWP) können Audioeingabegeräte mithilfe der Eigenschaft `Id()` des entsprechenden Objekts vom Typ [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation) abgerufen werden.
+
 Die folgenden Codebeispiele veranschaulichen die Vorgehensweise für C++ und C#:
 
 ```cpp
@@ -226,13 +227,16 @@ Ein Beispiel für eine Geräte-ID wäre etwa `\\\\?\\SWD#MMDEVAPI#{0.0.1.0000000
 ## <a name="audio-device-ids-on-linux"></a>Audio-Geräte-IDs unter Linux
 
 Die Geräte-IDs werden mithilfe standardmäßiger ALSA-Geräte-IDs ausgewählt.
+
 Die IDs der mit dem System verbundenen Eingabegeräte sind in der Ausgabe des Befehls `arecord -L` enthalten.
 Alternativ können sie unter Verwendung der [ALSA-C-Bibliothek](https://www.alsa-project.org/alsa-doc/alsa-lib/) abgerufen werden.
+
 Beispiel-IDs wären etwa `hw:1,0` und `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>Audio-Geräte-IDs unter macOS
 
 Die folgende, in Objective-C implementierte Funktion erstellt eine Liste mit den Namen und IDs der mit einem Mac verbundenen Audiogeräte.
+
 Die Zeichenfolge `deviceUID` wird verwendet, um ein Gerät im Speech SDK für macOS zu identifizieren.
 
 ```objc
@@ -361,8 +365,8 @@ Die UID für das integrierte Mikrofon lautet beispielsweise `BuiltInMicrophoneDe
 
 ## <a name="audio-device-ids-on-ios"></a>Audio-Geräte-IDs unter iOS
 
-Das Auswählen eines Audiogeräts mit dem Speech SDK wird unter iOS nicht unterstützt.
-Allerdings können Apps, die das SDK verwenden, das Audiorouting über das [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)-Framework beeinflussen.
+Das Auswählen eines Audiogeräts mit dem Speech SDK wird unter iOS nicht unterstützt. Allerdings können Apps, die das SDK verwenden, das Audiorouting über das [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)-Framework beeinflussen.
+
 Ein Beispiel: Die Anweisung
 
 ```objc

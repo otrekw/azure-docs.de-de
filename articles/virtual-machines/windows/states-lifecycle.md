@@ -1,5 +1,5 @@
 ---
-title: Lebenszyklus und Status einer Windows-VM in Azure | Microsoft-Dokumentation
+title: Lebenszyklus und Status einer Windows-VM in Azure
 description: Übersicht über den Lebenszyklus einer Windows-VM in Azure, einschließlich Beschreibungen der verschiedenen Status, in denen sich ein virtueller Computer zu einem beliebigen Zeitpunkt befinden kann.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: vashan
-ms.openlocfilehash: 12ef055c94c25d27414e910a1ec1f53f6252d623
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f7823d0e34fb6a79e79e9feab8eea77785b3d0da
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101806"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068227"
 ---
 # <a name="virtual-machines-lifecycle-and-states"></a>Lebenszyklus und Status virtueller Computer
 

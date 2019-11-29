@@ -1,6 +1,6 @@
 ---
-title: Erneutes Schützen von virtuellen Azure-Computern, für die mithilfe von Azure Site Recovery ein Failover zurück zur primären Azure-Region durchgeführt wurde | Microsoft-Dokumentation
-description: Beschreibt das erneute Schützen von virtuellen Azure-Computern in einer sekundären Region nach einem Failover aus einer primären Region mithilfe von Azure Site Recovery.
+title: Erneutes Schützen virtueller Azure-Computer in die primäre Region mit Azure Site Recovery | Microsoft-Dokumentation
+description: Beschreibt das erneute Schützen von virtuellen Azure-Computern nach einem Failover von der sekundären in die primäre Region mithilfe von Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: eabb7d194a3ef65282befab1ae59e85ba56f2f5b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 955e1b84f897a5eb877033e0a58b8d661f143a14
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65472157"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954185"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde
 

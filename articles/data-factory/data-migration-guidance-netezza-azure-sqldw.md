@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 9/03/2019
-ms.openlocfilehash: c5b36a04501b417af4e4527968a082da8a061804
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 762e7d4a7356c11171355b5325e77569e9acb1e2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675803"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555097"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-an-on-premises-netezza-server-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten von einem lokalen Netezza-Server zu Azure 
 
@@ -190,7 +190,7 @@ Basierend auf den vorhergehenden Annahmen, ist hier der geschätzte Preis:
 
 Weitere Informationen finden Sie in den folgenden Artikeln und Leitfäden:
 
-- [Migrieren von Daten aus einer lokalen relationalen Data Warehouse-Datenbank zu Azure mithilfe von Azure Data Factory](https://azure.microsoft.com/mediahandler/files/resourcefiles/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/Data_migration_from_on-prem_RDW_to_ADLS_using_ADF.pdf)
+- [Migrieren von Daten aus einer lokalen relationalen Data Warehouse-Datenbank zu Azure mithilfe von Azure Data Factory](https://azure.microsoft.com/resources/data-migration-from-on-premise-relational-data-warehouse-to-azure-data-lake-using-azure-data-factory/)
 - [Netezza-Connector](https://docs.microsoft.com/azure/data-factory/connector-netezza)
 - [ODBC-Connector](https://docs.microsoft.com/azure/data-factory/connector-odbc)
 - [Azure Blob Storage-Connector](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)

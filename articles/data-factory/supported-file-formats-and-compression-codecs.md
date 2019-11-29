@@ -7,30 +7,23 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: d0183e991a3cbc0481aff44b5b0f03eaa9d43103
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4a81cc9887610036007b92e43b8bd44f0a8b7740
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683979"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075538"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
 *Dieser Artikel bezieht sich auf die folgenden Connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Dateisystem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md), [HTTP](connector-http.md) und [SFTP](connector-sftp.md).*
 
-Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. Wenn Sie **Dateien mit einem bestimmten Format analysieren oder erzeugen** möchten, unterstützt Azure Data Factory die folgenden Dateiformattypen:
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-* [Textformat](#text-format)
-* [JSON-Format](#json-format)
-* [Parquet-Format](#parquet-format)
-* [ORC-Format](#orc-format)
-* [Avro-Format](#avro-format)
-* [Binärformat](#binary-format)
-
-> [!TIP]
-> Erfahren Sie in [Schemazuordnung bei der Kopieraktivität](copy-activity-schema-and-type-mapping.md), wie die Kopieraktivität Ihre Quelldaten zur Senke zuordnet.
+>[!NOTE]
+>In Data Factory wurde das neue formatbasierte Datasetmodell eingeführt. Weitere Informationen dazu finden Sie im dazugehörigen Artikel zum Format, der oben verlinkt ist. Die folgenden Konfigurationen für dateibasierte Datenspeicherdatasets, die in diesem Artikel erwähnt werden, werden aus Gründen der Abwärtskompatibilität unverändert unterstützt. Es wird jedoch empfohlen, in Zukunft das neue Modell zu verwenden. 
 
 ## <a name="text-format"></a>Textformat
 

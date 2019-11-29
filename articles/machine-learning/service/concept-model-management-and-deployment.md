@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: Verwalten, Bereitstellen und Überwachen von ML-Modellen'
+title: 'MLOps: ML-Modellverwaltung'
 titleSuffix: Azure Machine Learning
-description: 'Erfahren Sie, wie Sie Azure Machine Learning für MLOps verwenden: Bereitstellen, Verwalten und Überwachen Ihrer Modelle, um sie kontinuierlich zu verbessern. Sie können die Modelle, die Sie mit Azure Machine Learning trainiert haben, auf Ihrem lokalen Computer oder aus anderen Quellen bereitstellen.'
+description: 'Erfahren Sie mehr über die Modellverwaltung mit Azure Machine Learning (MLOps). Stellen Sie Modelle bereit, und verwalten und überwachen Sie diese, um sie kontinuierlich zu verbessern. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716602"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123600"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: Verwaltung, Bereitstellung und Überwachung von Modellen mit Azure Machine Learning
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning verwenden, um den Lebenszyklus Ihrer Modelle zu verwalten. Azure Machine Learning verwendet MLOps (Machine Learning Operations, Machine Learning-Vorgänge), wodurch sich die Qualität und Konsistenz Ihrer Machine Learning-Lösungen verbessern. 
 

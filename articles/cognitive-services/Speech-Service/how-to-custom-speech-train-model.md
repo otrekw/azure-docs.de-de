@@ -1,7 +1,7 @@
 ---
 title: Trainieren eines Modells für Custom Speech – Speech Service
 titleSuffix: Azure Cognitive Services
-description: Das Training einer Spracherkennung ist notwendig, um die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell, das Sie erstellen möchten, zu verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu optimieren und zu trainieren, sodass es Wörter, Phrasen, Akronyme, Namen und andere produktspezifische Begriffe erkennt.
+description: Das Training einer Spracherkennung kann die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,26 +10,27 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 21a0cd5e257f57a9371a30c6fe57afb88e174b53
-ms.sourcegitcommit: b7b0d9f25418b78e1ae562c525e7d7412fcc7ba0
+ms.openlocfilehash: 7630659deeece7fbf8d0ca1fd00b539a8de83b0e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70801459"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072496"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trainieren eines Modells für Custom Speech
 
-Das Training einer Spracherkennung ist notwendig, um die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell, das Sie erstellen möchten, zu verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu optimieren und zu trainieren, sodass es Wörter, Phrasen, Akronyme, Namen und andere produktspezifische Begriffe erkennt. Je mehr domäneninterne Datasets Sie bereitstellen (Daten, die sich darauf beziehen, was Benutzer sagen und was erwartungsgemäß erkannt wird), desto genauer wird Ihr Modell sein, was zu einer besseren Erkennung führt. Denken Sie daran, dass Sie durch die Eingabe von unabhängigen Daten in Ihr Training die Genauigkeit Ihres Modells reduzieren oder beeinträchtigen können.
+Das Training einer Spracherkennung kann die Erkennungsgenauigkeit sowohl für das Microsoft-Basismodell als auch für ein benutzerdefiniertes Modell, das Sie erstellen möchten, verbessern. Ein Modell wird mithilfe von menschenmarkierten Transkriptionen und zugehörigem Text trainiert. Diese Datasets werden zusammen mit zuvor hochgeladenen Audiodaten verwendet, um das Spracherkennungsmodell zu optimieren und zu trainieren, sodass es Wörter, Phrasen, Akronyme, Namen und andere produktspezifische Begriffe erkennt. Je mehr domäneninterne Datasets Sie bereitstellen (Daten, die sich darauf beziehen, was Benutzer sagen und was erwartungsgemäß erkannt wird), desto genauer wird Ihr Modell sein, was zu einer besseren Erkennung führt. Denken Sie daran, dass Sie durch die Eingabe von unabhängigen Daten in Ihr Training die Genauigkeit Ihres Modells reduzieren oder beeinträchtigen können.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Lösen von Genauigkeitsproblemen durch Training
 
 Wenn Sie mit Ihrem Modell auf Erkennungsprobleme stoßen, kann die Verwendung von menschenmarkierten Transkripten und zugehörigen Daten für zusätzliches Training zur Verbesserung der Genauigkeit beitragen. Bestimmen Sie anhand von dieser Tabelle, welches Dataset zum Beheben Ihrer Probleme verwendet werden soll:
 
 | Anwendungsfall | Datentyp |
-|----------|-----------|
-| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (beispielsweise aus der Medizin- oder IT-Branche) | Zugehöriger Text (Sätze/Äußerungen) |
+| -------- | --------- |
+| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (z. B. aus der Medizin- oder IT-Branche). | Zugehöriger Text (Sätze/Äußerungen) |
 | Definieren der phonetischen und angezeigten Form eines Worts oder Begriffs mit nicht standardmäßiger Aussprache (beispielsweise Produktnamen oder Akronyme) | Zugehöriger Text (Aussprache) |
-| Verbessern der Erkennungsgenauigkeit für Sprechweisen, Akzente oder bestimmte Hintergrundgeräusche | Audio + menschenmarkierte Transkripte |
+| Verbessern der Erkennungsgenauigkeit für Sprechweisen, Akzente oder bestimmte Hintergrundgeräusche. | Audio + menschenmarkierte Transkripte |
+
 > [!IMPORTANT]
 > Wenn Sie kein Dataset hochgeladen haben, beachten Sie [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md). Dieses Dokument enthält Anweisungen zum Hochladen von Daten und Richtlinien zum Erstellen von Datasets mit hoher Qualität.
 
@@ -46,25 +47,24 @@ Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsd
 7. Nachdem das Training abgeschlossen ist, können Sie sich für das Ausführen von Genauigkeitsprüfungen für das neu trainierte Modell entscheiden. Dieser Schritt ist optional.
 8. Wählen Sie **Erstellen** aus, um ein benutzerdefiniertes Modell zu erstellen.
 
-In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstellten Modell entspricht. Außerdem zeigt die Tabelle den Status an:  Wird verarbeitet, Erfolgreich, Fehlerhaft.
+In der Trainingstabelle wird ein neuer Eintrag angezeigt, der diesem neu erstellten Modell entspricht. Außerdem zeigt die Tabelle den Status an: Wird verarbeitet, Erfolgreich, Fehlerhaft.
 
 ## <a name="evaluate-the-accuracy-of-a-trained-model"></a>Bewerten der Genauigkeit eines trainierten Modells
 
 Mithilfe dieser Dokumente können Sie die Daten untersuchen und die Modellgenauigkeit bewerten:
 
-* [Überprüfen Ihrer Daten](how-to-custom-speech-inspect-data.md)
-* [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
-
+- [Überprüfen Ihrer Daten](how-to-custom-speech-inspect-data.md)
+- [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
 
 Wenn Sie sich für einen Genauigkeitstest entscheiden, ist es wichtig, ein anderes akustisches Dataset auszuwählen, als Sie für Ihr Modell verwendet haben, um ein realistisches Bild von der Leistung des Modells zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bereitstellen Ihres Modells](how-to-custom-speech-deploy-model.md)
+- [Bereitstellen Ihres Modells](how-to-custom-speech-deploy-model.md)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md)
-* [Überprüfen Ihrer Daten](how-to-custom-speech-inspect-data.md)
-* [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
-* [Trainieren Ihres Modells](how-to-custom-speech-train-model.md)
+- [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md)
+- [Überprüfen Ihrer Daten](how-to-custom-speech-inspect-data.md)
+- [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
+- [Trainieren Ihres Modells](how-to-custom-speech-train-model.md)

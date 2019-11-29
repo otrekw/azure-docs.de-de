@@ -1,26 +1,25 @@
 ---
-title: Administratorübernahme eines nicht verwalteten Verzeichnisses – Azure Active Directory | Microsoft-Dokumentation
-description: Vorgehensweise bei der Übernahme eines DNS-Domänennamens in einem nicht verwalteten Verzeichnis (Schattenmandant) in Azure Active Directory
+title: Administratorübernahme eines nicht verwalteten Verzeichnisses – Azure AD | Microsoft-Dokumentation
+description: Vorgehensweise bei der Übernahme eines DNS-Domänennamens in einer nicht verwalteten Azure AD-Organisation (Schattenmandant)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
-editor: ''
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 08/01/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44276c911768f588064245c37a1284adeda8138f
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315720"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027372"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 

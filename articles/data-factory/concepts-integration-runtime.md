@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: abnarain
-ms.openlocfilehash: 7475d660fd2fa64ce69e7c23e0bad518fffddd26
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2b90d95d41bb30226d870a74a47327d6492bbd1e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681509"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122946"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrationslaufzeit in Azure Data Factory
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory die folgenden Datenintegrationsfunktionen für verschiedene Netzwerkumgebungen bereitstellt:
@@ -78,6 +78,9 @@ Eine selbstgehostete Integrationslaufzeit ermöglicht Folgendes:
 
 > [!NOTE] 
 > Verwenden Sie die selbstgehostete Integrationslaufzeit zum Unterstützen von Datenspeichern, für die „Bring-your-own Driver“ erforderlich ist, z.B. SAP Hana, MySQL usw.  Weitere Informationen finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
+
+> [!NOTE] 
+> Die Java Runtime Environment (JRE) ist eine Abhängigkeit der selbstgehosteten IR. Stellen Sie sicher, dass die JRE auf dem gleichen Host installiert ist.
 
 ### <a name="self-hosted-ir-network-environment"></a>Selbstgehostete Integrationslaufzeit: Netzwerkumgebung
 Wenn Sie die Datenintegration auf sichere Weise in einer privaten Netzwerkumgebung durchführen möchten, die nicht über eine direkte Sichtlinie aus der öffentlichen Cloudumgebung verfügt, können Sie eine selbstgehostete IR in der lokalen Umgebung hinter Ihrer Unternehmensfirewall oder in einem virtuellen privaten Netzwerk installieren.  Die selbstgehostete Integrationslaufzeit stellt nur ausgehende HTTP-basierte Verbindungen in das offene Internet her.
