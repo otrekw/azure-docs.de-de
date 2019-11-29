@@ -3,12 +3,12 @@ title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959500"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267358"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 
@@ -187,5 +187,5 @@ Andere Cmdlets zur Wartung und Beispiele finden Sie im [Az.PolicyInsights](/powe
 - Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](../concepts/definition-structure.md).
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](../concepts/effects.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](get-compliance-data.md).
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

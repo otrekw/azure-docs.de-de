@@ -1,7 +1,7 @@
 ---
 title: BreakSentence-Methode der Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die BreakSentence-Methode der Textübersetzungs-API.
+description: Die BreakSentence-Methode der Textübersetzungs-API erkennt die Positionierung von Satzgrenzen in einem Textabschnitt.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 184677589b3aa777ec556215455f8018e0d71f3f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934055"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73835886"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Textübersetzungs-API 3.0: BreakSentence
 

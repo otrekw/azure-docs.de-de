@@ -1,17 +1,14 @@
 ---
-title: Bewährte Methoden für Azure Resource Manager-Vorlagen
+title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.author: tomfitz
-ms.openlocfilehash: bd3167b7f0daf7ebd595b2c33b1147140415c3de
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983823"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150299"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 

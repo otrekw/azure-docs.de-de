@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 238b76040559148c48aa67b99e856a5987b71a7e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 51b0d02443df872a7fae13116ea77b13d05055fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123161"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225452"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Korrigieren falsch geschriebener Wörter mit der Bing-Rechtschreibprüfung
 
@@ -26,6 +26,7 @@ Sie können die [Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/
 
 
 ## <a name="create-first-key-for-bing-spell-check-v7"></a>Erstellen des ersten Schlüssels für die Bing-Rechtschreibprüfungs-API V7
+
 Ihr [erster Schlüssel für die Bing-Rechtschreibprüfungs-API v7](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) ist kostenlos. 
 
 ![Erstellen eines kostenlosen Schlüssels](./media/luis-tutorial-bing-spellcheck/free-key.png)
@@ -61,9 +62,10 @@ Wenn Ihr kostenloser Schlüssel abgelaufen ist, erstellen Sie einen Endpunktschl
 
 10. Kopieren Sie den ersten Schlüssel. Sie benötigen nur einen der beiden Schlüssel. 
 
-## <a name="using-the-key-in-luis-test-panel"></a>Verwenden des Schlüssels im LUIS-Testbereich
-Es gibt zwei Bereiche in LUIS, in denen Sie den Schlüssel verwenden. Die erste ist der [Testbereich](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Der Schlüssel wird nicht in LUIS gespeichert, sondern ist stattdessen eine Sitzungsvariable. Sie müssen den Schlüssel jedes Mal festlegen, wenn Sie im Testbereich den Dienst Bing-Rechtschreibprüfungs-API V7 auf eine Äußerung anwenden möchten. [Anweisungen](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) zum Festlegen des Schlüssels finden Sie im Testbereich.
-
+<!--
+## Using the key in LUIS test panel
+There are two places in LUIS to use the key. The first is in the [test panel](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key isn't saved into LUIS but instead is a session variable. You need to set the key every time you want the test panel to apply the Bing Spell Check API v7 service to the utterance. See [instructions](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel) in the test panel for setting the key.
+-->
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Hinzufügen des Schlüssels zur Endpunkt-URL
 Sie müssen der Endpunktabfrage den Schlüssel in den Parametern der Abfragezeichenfolgen für jede Abfrage übergeben, auf die Sie die Rechtschreibprüfung anwenden möchten. Ihr Chatbot könnte beispielsweise LUIS aufrufen, oder Sie rufen die LUIS-Endpunkt-API direkt auf. Unabhängig davon, wie der Endpunkt aufgerufen wird, muss jeder Aufruf die erforderlichen Informationen enthalten, damit die Rechtschreibkorrektur ordnungsgemäßen funktioniert.
 

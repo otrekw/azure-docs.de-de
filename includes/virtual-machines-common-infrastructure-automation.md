@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: 1a18812c6447266d34f2c8aa1ccff8984f68570a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f7dcf342a1b9b2107138044dfc207d6dbcb42e9e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008820"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260741"
 ---
 Für die umfangreiche konsistente Erstellung und Verwaltung virtueller Azure-Computer (Virtual Machines, VMs) empfiehlt sich in der Regel eine Form der Automatisierung. Es gibt zahlreiche Tools und Lösungen, mit denen Sie die gesamte Azure-Infrastrukturbereitstellung und den gesamten Verwaltungslebenszyklus automatisieren können. In diesem Artikel werden einige der Infrastrukturautomatisierungstools vorgestellt, die Sie in Azure verwenden können. Diese Tools lassen sich in der Regel einem der folgenden Konzepte zuordnen:
 
@@ -69,7 +69,7 @@ DSC-Konfigurationen definieren, was auf einem Computer installiert und wie der H
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Erstellen einer einfachen DSC-Konfiguration](https://msdn.microsoft.com/powershell/dsc/quickstarts/website-quickstart)
+- [Erstellen einer einfachen DSC-Konfiguration](/powershell/scripting/dsc/quickstarts/website-quickstart)
 - [Konfigurieren eines DSC-Pull-Servers](/powershell/scripting/dsc/pull-server/pullserver)
 - [Verwenden von DSC für Linux](/powershell/scripting/dsc/getting-started/lnxgettingstarted)
 

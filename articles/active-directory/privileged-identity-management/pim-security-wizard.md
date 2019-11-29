@@ -4,36 +4,36 @@ description: Beschreibt den Sicherheitsassistenten, mit dem Sie mit Azure AD Pri
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 04/09/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d6d94df29ba16ecee06d70f5edac15a96a4299d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 04bd0993873568ba7cce368ddd9277ed356b636c
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804018"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847045"
 ---
-# <a name="azure-ad-roles-security-wizard-in-pim"></a>Sicherheitsassistent für Azure AD-Rollen in PIM
+# <a name="azure-ad-roles-security-wizard-in-privileged-identity-management"></a>Sicherheitsassistent für Azure AD-Rollen in Privileged Identity Management
 
-Wenn Sie die erste Person sind, die Azure Active Directory (Azure AD) Privileged Identity Management (PIM) für Ihre Organisation ausführt, wird Ihnen ein Assistent angezeigt. Der Assistent bietet Einblick in die Sicherheitsrisiken privilegierter Identitäten und informiert darüber, wie Sie diese Risiken mithilfe von PIM reduzieren. Sie müssen die vorhandenen Rollenzuweisungen im Assistenten nicht ändern, wenn Sie dies lieber später machen möchten.
+Wenn Sie die erste Person sind, die Privileged Identity Management (PIM) in Ihrer Azure Active Directory (Azure AD)-Organisation ausführt, wird Ihnen ein Assistent für die ersten Schritte angezeigt. Der Assistent bietet Einblick in die Sicherheitsrisiken privilegierter Identitäten und informiert darüber, wie Sie diese Risiken mithilfe von Privileged Identity Management reduzieren können. Sie müssen die vorhandenen Rollenzuweisungen im Assistenten nicht ändern, wenn Sie dies lieber später machen möchten.
 
 ## <a name="wizard-overview"></a>Übersicht über den Assistenten
 
-Bevor Ihre Organisation mit der Verwendung von PIM beginnt, sind alle Rollenzuweisungen permanent, d. h. die Benutzer besitzen diese Rollen ständig, auch wenn sie die zugehörigen Berechtigungen derzeit nicht benötigen. Der erste Schritt des Assistenten bietet eine Liste der Rollen mit hohen Berechtigungen und zeigt an, wie viele Benutzer derzeit in diesen Rollen vorhanden sind. Sie können Details zu einer bestimmten Rolle anzeigen, um weitere Informationen zu den Benutzern zu erhalten und zu ermitteln, ob ein oder mehrere Benutzer unbekannt sind.
+Bevor Ihre Organisation mit der Verwendung von Privileged Identity Management beginnt, sind alle Rollenzuweisungen permanent, d. h. die Benutzer besitzen diese Rollen ständig, auch wenn sie die zugehörigen Berechtigungen derzeit nicht benötigen. Der erste Schritt des Assistenten bietet eine Liste der Rollen mit hohen Berechtigungen und zeigt an, wie viele Benutzer derzeit in diesen Rollen vorhanden sind. Sie können Details zu einer bestimmten Rolle anzeigen, um weitere Informationen zu den Benutzern zu erhalten und zu ermitteln, ob ein oder mehrere Benutzer unbekannt sind.
 
 Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisungen des Administrators zu ändern.  
 
 > [!WARNING]
-> Es müssen unbedingt mindestens ein globaler Administrator sowie mehrere Administratoren für privilegierte Rollen mit einem Organisationskonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Administrator für privilegierte Rollen vorhanden ist, kann die Organisation PIM nicht mehr verwalten, sollte dieses Konto gelöscht werden.
-> Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (ein Konto zum Anmelden bei Microsoft-Diensten wie Skype und Outlook.com). Wenn Sie planen, zur Aktivierung dieser Rolle MFA als erforderlich festzulegen, kann der Benutzer sie nicht übernehmen.
+> Es müssen unbedingt mindestens ein globaler Administrator sowie mehrere Administratoren für privilegierte Rollen mit einem Organisationskonto (keinem Microsoft-Konto) vorhanden sein. Wenn nur ein Administrator für privilegierte Rollen vorhanden ist, kann die Organisation Privileged Identity Management nicht mehr verwalten, sollte dieses Konto gelöscht werden.
+> Verwenden Sie außerdem permanente Rollenzuweisungen, wenn ein Benutzer über ein Microsoft-Konto verfügt (also ein Konto zum Anmelden bei Microsoft-Diensten wie Skype und Outlook.com). Wenn Sie planen, zur Aktivierung dieser Rolle die mehrstufige Authentifizierung als erforderlich festzulegen, kann der Benutzer sie nicht übernehmen.
 
 ## <a name="run-the-wizard"></a>Ausführen des Assistenten
 
@@ -41,33 +41,33 @@ Im zweiten Schritt des Assistenten haben Sie die Möglichkeit, die Rollenzuweisu
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Klicken Sie auf **Azure AD-Rollen** und dann auf **Assistenten**.
+1. Wählen Sie **Azure AD-Rollen** aus und dann **Assistenten**.
 
     ![Azure AD-Rollen – Seite des Assistenten mit den 3 Schritten zum Ausführen des Assistenten](./media/pim-security-wizard/wizard-start.png)
 
-1. Klicken Sie auf **1 Privilegierte Rollen ermitteln**.
+1. Wählen Sie **1 Ermitteln von privilegierten Rollen** aus.
 
 1. Überprüfen Sie die Liste der Rollen, um festzustellen, welche Benutzer permanente oder berechtigte Zuweisungen haben.
 
     ![Privilegierte Rollen ermitteln – Bereich „Rollen“ mit permanenten und berechtigten Mitgliedern](./media/pim-security-wizard/discover-privileged-roles-users.png)
 
-1. Klicken Sie auf **Weiter**, um die Mitglieder auszuwählen, denen Sie in berechtige Mitglieder umwandeln möchten.
+1. Wählen Sie **Weiter** aus, um die Benutzer oder Gruppen auszuwählen, die Sie in berechtige Mitglieder umwandeln möchten.
 
     ![Seite „Mitglieder in berechtigte Mitglieder konvertieren“ mit Optionen zum Auswählen von Mitgliedern, die in berechtigte Mitglieder für Rollen umgewandelt werden sollen](./media/pim-security-wizard/convert-members-eligible.png)
 
-1. Klicken Sie nach dem Auswählen der Mitglieder auf **Weiter**.
+1. Wählen Sie nach dem Auswählen der Benutzer oder Gruppen die **Weiter** aus.
 
     ![Seite „Änderungen überprüfen“ mit Mitgliedern mit permanenten Rollenzuweisungen, die umgewandelt werden](./media/pim-security-wizard/review-changes.png)
 
-1. Klicken Sie auf **OK**, um die permanenten in berechtigte Zuweisungen zu konvertieren.
+1. Wählen Sie **OK** aus, um die permanenten in berechtigte Zuweisungen zu konvertieren.
 
     Nach Abschluss der Konvertierung wird eine Benachrichtigung angezeigt.
 
     ![Benachrichtigung mit dem Status einer Konvertierung](./media/pim-security-wizard/notification-completion.png)
 
-Wenn Sie weitere privilegierte Rollenzuweisungen in berechtigte Zuweisungen konvertieren müssen, führen Sie den Assistenten erneut aus. Wenn Sie die PIM-Schnittstelle anstelle des Assistenten verwenden möchten, lesen Sie [Zuweisen von Azure AD-Rollen in PIM](pim-how-to-add-role-to-user.md).
+Wenn Sie weitere privilegierte Rollenzuweisungen in berechtigte Zuweisungen konvertieren müssen, führen Sie den Assistenten erneut aus. Wenn Sie die Privileged Identity Management-Schnittstelle anstelle des Assistenten verwenden möchten, lesen Sie [Zuweisen von Azure AD-Rollen in Privileged Identity Management](pim-how-to-add-role-to-user.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen von Azure AD-Rollen in PIM](pim-how-to-add-role-to-user.md)
-- [Gewähren von Zugriff für andere Administratoren zum Verwalten von PIM](pim-how-to-give-access-to-pim.md)
+- [Anderen Administratoren Zugriff für die Verwaltung von Privileged Identity Management gewähren](pim-how-to-give-access-to-pim.md).

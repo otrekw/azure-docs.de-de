@@ -7,12 +7,12 @@ ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 1ff06afd363745ae465a8f5b625c27a4a9e4a222
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608606"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123182"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>Übertragen zusätzlicher Daten zwischen Gerät und DPS
 Mitunter benötigt DPS weitere Daten von Geräten, um sie ordnungsgemäß im richtigen IoT Hub bereitzustellen, und diese Daten müssen vom Gerät bereitgestellt werden. Ebenso kann DPS Daten an das Gerät zurückgeben, um clientseitige Logik zu ermöglichen. 
@@ -21,7 +21,7 @@ Mitunter benötigt DPS weitere Daten von Geräten, um sie ordnungsgemäß im ric
 Diese Funktion kann als Ergänzung der [benutzerdefinierten Zuordnung](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies) verwendet werden. Beispiel: Sie möchten Ihre Geräte anhand des Gerätemodells ohne menschliche Eingriffe zuordnen. In diesem Fall verwenden Sie die [benutzerdefinierte Zuordnung](https://docs.microsoft.com/azure/iot-dps/how-to-use-custom-allocation-policies). Sie können das Gerät in diesem Fall für die Meldung der Modellinformationen im Rahmen des [Registrierungsgeräteaufrufs](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice) konfigurieren. DPS übergibt die Informationen des Geräts an den benutzerdefinierten Zuweisungswebhook. Dann kann Ihre Funktion entscheiden, auf welchen IoT Hub dieses Gerät geht, wenn es Gerätemodellinformationen empfängt. Wenn der Webhook einige Daten an das Gerät zurückgeben möchte, werden die Daten auf ähnliche Weise als Zeichenfolge in der Antwort des Webhooks übergeben.  
 
 ## <a name="device-sends-data-to-dps"></a>Gerät sendet Daten an DPS
-Wenn Ihr Gerät einen [Registrierungsgeräteaufruf](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice) an DPS sendet. Der Registrierungsaufruf kann erweitert werden, um andere Felder im Textkörper zu verwenden. Der Textkörper sieht wie folgt aus: 
+Wenn Ihr Gerät einen [Registrierungsgeräteaufruf](https://docs.microsoft.com/rest/api/iot-dps/runtimeregistration/registerdevice) an DPS sendet, kann dieser Aufruf erweitert werden, um andere Felder im Textkörper zu verwenden. Der Textkörper sieht wie folgt aus: 
    ```
    { 
        “registrationId”: “mydevice”, 

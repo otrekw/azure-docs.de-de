@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 7558ad2e5a4404db140daff89171af92c6072ef6
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3368f72aeb7909c3e0a8653bb5b094729c4c45ed
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805976"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228018"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -68,7 +68,7 @@ Falls Ihr virtueller Computer kritische Anwendungen ausführt, die Hochverfügba
 Eine Verfügbarkeitsgruppe ist eine logische Gruppierung, mit der Sie in Azure sicherstellen können, dass die darin enthaltenen VM-Ressourcen voneinander isoliert sind, wenn sie in einem Azure-Rechenzentrum bereitgestellt werden. Azure stellt sicher, dass die VMs innerhalb einer Verfügbarkeitsgruppe auf mehrere physische Server, Computeracks, Speichereinheiten und Netzwerkswitches verteilt werden. Wenn ein Hardware- oder Softwarefehler in Azure auftritt, ist nur ein Teil Ihrer VMs beeinträchtigt, und die Anwendung ist insgesamt weiterhin für Ihre Kunden verfügbar. Verfügbarkeitsgruppen haben eine wichtige Funktion bei der Erstellung zuverlässiger Cloudlösungen.
 
 ## <a name="protect-against-malware"></a>Schutz vor Malware
-Installieren Sie einen Schadsoftwareschutz, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security) und [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) installieren.
+Installieren Sie einen Schadsoftwareschutz, um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://help.deepsecurity.trendmicro.com/Welcome.html), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://www.microsoft.com/windows/comprehensive-security) und [System Center Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) installieren.
 
 Microsoft-Antischadsoftware umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Malwareproblembehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlungen von Ausschlussereignissen. Für Umgebungen, die getrennt von Ihrer Produktionsumgebung gehostet werden, können Sie eine Antischadsoftware-Erweiterung verwenden, um den Schutz Ihrer VMs und Clouddienste zu verbessern.
 

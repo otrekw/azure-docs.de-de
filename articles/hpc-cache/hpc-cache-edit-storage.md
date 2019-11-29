@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: rohogue
-ms.openlocfilehash: 757fbc166687110b9061ab95e96b0182e0ad3774
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622747"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168519"
 ---
 # <a name="edit-storage-targets"></a>Bearbeiten von Speicherzielen
 
@@ -47,7 +47,7 @@ Klicken Sie auf **OK**, nachdem Sie die Änderungen vorgenommen haben, um das Sp
 
 ## <a name="update-an-azure-blob-storage-target"></a>Hinzufügen eines neuen Azure-Blobspeicherziels
 
-Auf der Detailseite eines Blobspeicherziels können Sie den Pfad des virtuellen Namespace ändern. 
+Auf der Detailseite eines Blobspeicherziels können Sie den Pfad des virtuellen Namespace ändern.
 
 ![Screenshot der Bearbeitungsseite für ein Blobspeicherziel](media/hpc-cache-edit-storage-blob.png)
 

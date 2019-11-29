@@ -1,18 +1,18 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-author: snehithm
-ms.author: snmuvva
-ms.date: 9/18/2018
+author: rboucher
+ms.author: robb
+ms.date: 11/18/2019
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 4dd95d32bad76a610b88a4362e7887efdfaf6af0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: b92b4233b6ecd8743f98f7f0dd13e07ad4c76c81
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972062"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484256"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -143,41 +143,6 @@ Bei Metrikwarnungen werden Sie in der Regel in weniger als 5 Minuten benachricht
 
 Die vollständige Liste der unterstützten Ressourcentypen finden Sie in diesem [Artikel](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
-Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, ob Metrikwarnungen alle verwendeten Ressourcentypen unterstützen, zeigt die folgende Tabelle die Ressourcentypen, die von klassischen Metrikwarnungen unterstützt werden, und ob sie von aktuellen Metrikwarnungen unterstützt werden.
-
-|Ressourcentyp – von klassischen Metrikwarnungen unterstützt | Unterstützt von Metrikwarnungen |
-|-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | Ja |
-| Microsoft.Batch/batchAccounts| Ja|
-|Microsoft.Cache/redis| Ja |
-|Microsoft.ClassicCompute/virtualMachines | Nein |
-|Microsoft.ClassicCompute/domainNames/slots/roles | Nein|
-|Microsoft.CognitiveServices/accounts | Nein |
-|Microsoft.Compute/virtualMachines | Ja|
-|Microsoft.Compute/virtualMachineScaleSets| Ja|
-|Microsoft.ClassicStorage/storageAccounts| Nein |
-|Microsoft.DataFactory/datafactories | Ja|
-|Microsoft.DBforMySQL/servers| Ja|
-|Microsoft.DBforPostgreSQL/servers| Ja|
-|Microsoft.Devices/IotHubs | Nein|
-|Microsoft.DocumentDB/databaseAccounts| Ja|
-|Microsoft.EventHub/namespaces | Ja|
-|Microsoft.Logic/workflows | Ja|
-|Microsoft.Network/loadBalancers |Ja|
-|Microsoft.Network/publicIPAddresses| Ja|
-|Microsoft.Network/applicationGateways| Ja|
-|Microsoft.Network/expressRouteCircuits| Ja|
-|Microsoft.Network/trafficManagerProfiles | Ja|
-|Microsoft.Search/searchServices | Ja|
-|Microsoft.ServiceBus/namespaces| Ja |
-|Microsoft.Storage/storageAccounts | Ja|
-|Microsoft.StreamAnalytics/streamingjobs| Ja|
-|Microsoft.TimeSeriesInsights/environments | Ja|
-|Microsoft. Web/serverfarms | Ja |
-|Microsoft. Web/sites (ohne Funktionen) | Ja|
-|Microsoft. Web/hostingEnvironments/multiRolePools | Nein|
-|Microsoft. Web/hostingEnvironments/workerPools| Nein |
-|Microsoft.SQL/Servers | Nein |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

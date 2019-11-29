@@ -1,19 +1,14 @@
 ---
 title: Einstellen von Runtimeversionen von Azure Functions als Ziel
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Erfahren Sie, wie Sie die Runtimeversion einer in Azure gehosteten Funktions-App angeben.
-services: functions
-author: ggailey777
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: glenga
-ms.openlocfilehash: c30dbad9e2d433920ade6890eabd85f083f9d968
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 6f93ac7bcbd25c1b120cfeecae9dd4353524855f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596827"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230323"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Einstellen von Runtimeversionen von Azure Functions als Ziel
 

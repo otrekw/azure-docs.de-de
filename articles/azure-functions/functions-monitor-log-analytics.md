@@ -2,17 +2,15 @@
 title: Überwachen von Azure Functions mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle mit Azure Functions zum Überwachen der Funktionsausführung verwenden.
 author: ahmedelnably
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: a4fcf6b4dfeae3d8e53e083b2951d9d594c53d73
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 9aac6662304395b1bce5dfc21770d296f6a4f2ab
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72966033"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226851"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Überwachen von Azure Functions mit Azure Monitor-Protokollen
 

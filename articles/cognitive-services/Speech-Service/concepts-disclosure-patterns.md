@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: angle
-ms.openlocfilehash: fde4a73dd4a95028f23563fb6a8ae36c0142fd39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506617"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836998"
 ---
 # <a name="disclosure-design-patterns"></a>Entwurfsmuster für die Offenlegung
 Nachdem Sie die richtige [Offenlegungsstufe](concepts-disclosure-guidelines.md#disclosure-assessment) für die Erfahrung mit Ihrer synthetischen Stimme festgelegt haben, ist es an der Zeit, mögliche Entwurfsmuster zu untersuchen.
@@ -247,11 +247,11 @@ Nutzen Sie die Offenlegung als Gelegenheit, um in angemessener Weise zu scheiter
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Transparenzhinweis](https://aka.ms/neural-tts-transparency-note)
+* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)
 * [Richtlinien für die verantwortungsvolle Bereitstellung von Technologien mit künstlicher Sprache](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Kontrollübersicht](concepts-gating-overview.md)
 * [Vorgehensweise zum Offenlegen](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Transparenzhinweis](https://aka.ms/neural-tts-transparency-note)
+* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)

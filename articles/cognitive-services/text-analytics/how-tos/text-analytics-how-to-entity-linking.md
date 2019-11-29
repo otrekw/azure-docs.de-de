@@ -1,21 +1,21 @@
 ---
 title: Verwenden der Entitätserkennung mit der Textanalyse-API
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Entitäten erkennen.
+description: Erfahren Sie, wie Sie die Identität einer im Text gefundenen Entität mit der Textanalyse-REST-API identifizieren und unterscheiden können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 10/21/2019
+ms.date: 11/12/2019
 ms.author: aahi
-ms.openlocfilehash: e51e5945df8b08ec81db0c85416b31b3ec788ffd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488647"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74031423"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -33,7 +33,7 @@ Die Erkennung benannter Entitäten (Named Entity Recognition, NER) ist die Mögl
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 – öffentliche Vorschau
 
-Die [nächste Version der Named Entity Recognition](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/56f30ceeeda5650db055a3c7/console) steht jetzt als öffentliche Vorschauversion zur Verfügung. Sie enthält Updates sowohl für die Entitätsverknüpfung als auch für die Erkennung benannter Entitäten. 
+Die [nächste Version der Named Entity Recognition]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) steht jetzt als öffentliche Vorschauversion zur Verfügung. Sie enthält Updates sowohl für die Entitätsverknüpfung als auch für die Erkennung benannter Entitäten. 
 
 :::row:::
     :::column span="":::

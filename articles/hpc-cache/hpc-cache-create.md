@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: tutorial
-ms.date: 10/30/2019
+ms.date: 11/11/2019
 ms.author: rohogue
-ms.openlocfilehash: 1b9d2d3c46aab2096dd9208e0bea7f7776c0e429
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 07aba1b1536635e414fc5fab4ece148683909188
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582707"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168576"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -64,6 +64,7 @@ Die Cacheerstellung dauert ungefähr zehn Minuten. Sie können den Status über 
 ![Screenshot der Cache-Erstellungsseiten „Bereitstellung wird ausgeführt“ und „Benachrichtigungen“ im Portal](media/hpc-cache-deploy-status.png)
 
 Wenn die Erstellung abgeschlossen ist, wird eine Benachrichtigung mit einem Link zur neuen Azure HPC Cache-Instanz angezeigt, und der Cache wird in der Liste **Ressourcen** Ihres Abonnements angezeigt.
+<!-- double check on notification -->
 
 ![Screenshot: Azure HPC Cache-Instanz im Azure-Portal](media/hpc-cache-new-overview.png)
 

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3518404b76625e2557aaefdc6ab5ad7353683984
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823320"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186442"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -565,16 +565,6 @@ Durch die laufende `RESTORE`-Anweisung blockieren der Migrationsprozess des Date
 
 **Problemumgehung**: Warten Sie, bis der Wiederherstellungsvorgang abgeschlossen ist, oder brechen Sie ihn ab, wenn der Vorgang des Erstellens oder Aktualisierens der Dienstebene höhere Priorität hat.
 
-### <a name="missing-validations-in-restore-process"></a>Fehlende Überprüfungen im Wiederherstellungsprozess
-
-**Datum:** September 2019
-
-Die Anweisung `RESTORE` und die integrierte Point-in-Time-Wiederherstellung führen einige erforderliche Überprüfungen in der wiederhergestellten Datenbank nicht aus:
-- Die Anweisung **DBCC CHECKDB** - `RESTORE` führt `DBCC CHECKDB` in der wiederhergestellten Datenbank nicht aus. Wenn eine ursprüngliche Datenbank beschädigt wird oder wenn die Sicherungsdatei während ihres Kopierens in Azure Blob Storage beschädigt wird, werden keine automatischen Sicherungen erstellt, und der Azure-Support kontaktiert den Kunden. 
-- Der integrierte Vorgang der Point-in-Time-Wiederherstellung überprüft nicht, ob die automatisierte Sicherung aus der unternehmenskritischen Instanz die [In-Memory-OLTP-Objekte](sql-database-in-memory.md#in-memory-oltp) enthält. 
-
-**Problemumgehung**: Stellen Sie sicher, dass Sie `DBCC CHECKDB` in der Quelldatenbank ausführen, bevor Sie eine Sicherung erstellen, und vermeiden Sie mithilfe der Option `WITH CHECKSUM` bei der Sicherung mögliche Beschädigungen, die auf einer verwalteten Instanz wiederhergestellt werden könnten. Stellen Sie sicher, dass Ihre Quelldatenbank keine [In-Memory-OLTP-Objekte](sql-database-in-memory.md#in-memory-oltp) enthält, wenn Sie sie auf der Dienstebene „Universell“ wiederherstellen.
-
 ### <a name="resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover"></a>Resource Governor auf Dienstebene „Unternehmenskritisch“ muss möglicherweise nach einem Failover neu konfiguriert werden
 
 **Datum:** September 2019
@@ -582,14 +572,6 @@ Die Anweisung `RESTORE` und die integrierte Point-in-Time-Wiederherstellung füh
 Die Funktion [Resource Governor](/sql/relational-databases/resource-governor/resource-governor), die Ihnen ermöglicht, die der Benutzerworkload zugewiesenen Ressourcen einzuschränken, könnte eine andere Benutzerworkload nach einem Failover oder einer vom Benutzer initiierten Änderung der Dienstebene (z. B. Änderung der maximalen virtuellen Kerne oder maximalen Instanzspeichergröße) falsch klassifizieren.
 
 **Problemumgehung**: Führen Sie `ALTER RESOURCE GOVERNOR RECONFIGURE` regelmäßig oder als Teil des SQL Agent-Auftrags aus, der den SQL-Task ausführt, wenn die Instanz gestartet wird, wenn Sie [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) verwenden.
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Authentifizierung bei externen E-Mail-Servern mit sicherer Verbindung (SSL) nicht möglich
-
-**Datum:** August 2019
-
-Datenbank-E-Mail, die [mit sicherer Verbindung (Secure Connection, SSL) konfiguriert wurde](/sql/relational-databases/database-mail/configure-database-mail), kann sich bei einigen E-Mail-Servern außerhalb von Azure nicht authentifizieren. Dies ist ein Sicherheitskonfigurationsproblem, das bald behoben sein wird.
-
-**Problemumgehung:** Entfernen Sie die sichere Verbindung (SSL) vorübergehend aus der Datenbank-E-Mail-Konfiguration, bis das Problem behoben wurde. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Datenbankübergreifende Service Broker-Dialoge müssen nach dem Upgrade der Dienstebene erneut initialisiert werden.
 

@@ -2,17 +2,17 @@
 title: Was ist privater Endpunkt in Azure?
 description: Informationen zum privaten Endpunkt in Azure
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: allensu
+ms.openlocfilehash: ccae73b58b7da8e631c081871e17cec221918a76
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475918"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228119"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -134,5 +134,5 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 - [Erstellen eines privaten Endpunkts über PowerShell](create-private-endpoint-powershell.md)
 - [Erstellen eines privaten Endpunkts über die Azure CLI](create-private-endpoint-cli.md)
 - [Erstellen eines privaten Endpunkts für das Speicherkonto im Portal](create-private-endpoint-storage-portal.md)
-- [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Erstellen eines privaten Endpunkts für das Azure Cosmos-Konto im Portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Erstellen eines eigenen Private Link-Diensts mit Azure PowerShell](create-private-link-service-powershell.md)

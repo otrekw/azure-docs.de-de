@@ -1,19 +1,14 @@
 ---
-title: Sperren von Images in Azure Container Registry
+title: Sperren von Images
 description: Festlegen von Attributen für ein Containerimage oder Repository, sodass es in einer Azure-Containerregistrierung nicht gelöscht oder überschrieben werden kann.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/30/2019
-ms.author: danlep
-ms.openlocfilehash: 1ef6d5366e5db07a7f03bac251c24b1ff76a13e9
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 9e55a6688be9f51f1c1b237ae86bd57692a86592
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949520"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456327"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Sperren von Containerimages in einer Azure-Containerregistrierung
 

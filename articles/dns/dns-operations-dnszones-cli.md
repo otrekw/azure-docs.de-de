@@ -3,7 +3,7 @@ title: Verwalten von DNS-Zonen in Azure DNS – Azure-Befehlszeilenschnittstelle
 description: Sie können DNS-Zonen mithilfe der Azure-Befehlszeilenschnittstelle (CLI) verwalten. In diesem Artikel erfahren Sie, wie Sie DNS-Zonen in Azure DNS aktualisieren, löschen und erstellen.
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: timlt
 ms.assetid: 8ab63bc4-5135-4ed8-8c0b-5f0712b9afed
 ms.service: dns
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
-ms.author: victorh
-ms.openlocfilehash: 14d0512a10329f36872d111825261ebc5ef71976
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: e1a3c401de32beb9757011ac306443334da8b867
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959379"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211924"
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Verwalten von DNS-Zonen in Azure DNS mithilfe der Azure-Befehlszeilenschnittstelle
 

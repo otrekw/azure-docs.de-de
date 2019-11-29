@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines internen Lastenausgleichs – Azure-Vorlage
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Hier erfahren Sie, wie Sie im Ressourcen-Manager mithilfe einer Vorlage einen internen Lastenausgleich erstellen.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: f05c90948fe95f204f268d84c01e1e8773bec468
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: bdc9a8079c46a05e5045d72cd6d7b07a9a457899
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275380"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215272"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Erstellen eines internen Lastenausgleichs mithilfe einer Vorlage
 

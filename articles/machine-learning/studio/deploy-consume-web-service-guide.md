@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 560158dce3c70049ad3faa11a5ffb9a1858aa445
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1c97fd4f4d5646b6654f5261abd99372c521c389
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837666"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228248"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio-Webdienste (klassisch): Bereitstellung und Nutzung
 
@@ -37,7 +37,7 @@ Unter den folgenden Links finden Sie allgemeine Informationen zur Bereitstellung
 * Spezifische Beispiele für das Bereitstellen eines Webdiensts finden Sie hier:
 
   * [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md)
-  * [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
+  * [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](deploy-a-machine-learning-web-service.md#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Mit Webdienste-Ressourcenanbieter-APIs (Azure Resource Manager-APIs)
 

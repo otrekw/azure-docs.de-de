@@ -1,20 +1,15 @@
 ---
 title: 'Benutzerinteraktion und Zeitlimits in Durable Functions: Azure'
 description: In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion und Zeitlimits in der Erweiterung „Durable Functions“ für Azure Functions behandeln.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0c1c92dde2d698fb2c92fb3680ab05393a25573d
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 9346c53ec122b3e6fac124298029c7f8e70bf622
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614741"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232825"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 

@@ -1,5 +1,5 @@
 ---
-title: Lokales Bereitstellen der Remoteüberwachungslösung (über IntelliJ-IDE) – Azure | Microsoft-Dokumentation
+title: Lokales Bereitstellen der Remoteüberwachungslösung – IntelliJ-IDE – Azure | Microsoft-Dokumentation
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von IntelliJ auf Ihrem lokalen Computer bereitgestellt wird.
 author: v-krghan
 manager: dominicbetts
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f3c11763bb2f406caf9d33275fc29b0d140da9a
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 779ee1e057d74b11c5e0ba58dc2fd32b803f1e0e
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "70743331"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888810"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---intellij"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – IntelliJ
 

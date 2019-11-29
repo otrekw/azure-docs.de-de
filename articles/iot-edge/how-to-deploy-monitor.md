@@ -9,13 +9,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 83e2490821f59adeb37958c6c31403121a40274e
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 286bab7b7fdbe42190c32dabb42c59d6fc094b2a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67540904"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457370"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -192,7 +191,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
    * Zielbedingung
    * Metriken: Sie können definierte Metriken ändern oder löschen oder neue Metriken hinzufügen.
    * Bezeichnungen
-   * Priorität
+   * Priority
 1. Wählen Sie **Speichern** aus.
 1. Führen Sie die unter [Überwachen eine Bereitstellung](#monitor-a-deployment) beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
 

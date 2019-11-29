@@ -1,18 +1,14 @@
 ---
 title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: e22c4c24e83be0f89b306eed0eb1d80bdd9387e1
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f1c89b9ac7aeb51f43ef84267b20f83b408fd56c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747199"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172476"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 

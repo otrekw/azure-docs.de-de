@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: aahi
-ms.openlocfilehash: 14157ed22ea40a2157f696e91c59af9b58110bf2
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: dd4444bf42bcc8dda95f8fa37b42a365538efa85
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819939"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482874"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-portal"></a>Erstellen einer Cognitive Services-Ressource mithilfe des Azure-Portals
 
@@ -64,7 +64,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
     |--|--|
     | **Name** | Ein beschreibender Name für Ihre Cognitive Services-Ressource. Beispiel: *MyCognitiveServicesResource*. |
     | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
-    | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. Merken Sie sich Ihren Azure-Speicherort, da Sie ihn beim Aufrufen der Azure Cognitive Services ggf. benötigen. |
+    | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. |
     | **Preisstufe** | Die Kosten für Ihr Cognitive Services-Konto hängen von den ausgewählten Optionen und Ihrer Nutzung ab. Weitere Informationen finden Sie unter API-[Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
     | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
 
@@ -78,7 +78,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
     |--|--|
     | **Name** | Ein beschreibender Name für Ihre Cognitive Services-Ressource. Beispiel: *TextAnalyticsResource*. |
     | **Abonnement** | Wählen Sie eines Ihrer verfügbaren Azure-Abonnements aus. |
-    | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. Merken Sie sich Ihren Azure-Speicherort, da Sie ihn beim Aufrufen der Azure Cognitive Services ggf. benötigen. |
+    | **Location** | Der Speicherort Ihrer Cognitive Services-Instanz. Verschiedene Speicherorte können Wartezeiten verursachen, haben aber keinen Einfluss auf die Laufzeitverfügbarkeit Ihrer Ressource. |
     | **Preisstufe** | Die Kosten für Ihr Cognitive Services-Konto hängen von den ausgewählten Optionen und Ihrer Nutzung ab. Weitere Informationen finden Sie unter API-[Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
     | **Ressourcengruppe** | Die Azure-Ressourcengruppe, die Ihre Cognitive Services-Ressource enthält. Sie können eine neue Gruppe erstellen oder sie einer bereits bestehenden Gruppe hinzufügen. |
 
@@ -87,6 +87,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit der Verwendung von Azure Cogni
     Klicken Sie auf **Create**.
 
     ***
+
 
 ## <a name="get-the-keys-for-your-resource"></a>Abrufen der Schlüssel für die Ressource
 

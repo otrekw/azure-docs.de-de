@@ -3,18 +3,18 @@ title: 'Tutorial: Erstellen eines Skillsets in Python mit REST-APIs'
 titleSuffix: Azure Cognitive Search
 description: Detailliertes Beispiel für KI-basierte Datenextraktion, Verarbeitung natürlicher Sprache und Bildverarbeitung in Azure Cognitive Search unter Verwendung eines Jupyter Python-Notebooks. Extrahierte Daten werden indiziert und lassen sich einfach abfragen.
 manager: nitinme
-author: LisaLeib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 1e404998c8f49852248a754e7134f439dcdf5b04
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d7b4755bb2e69c4a852901b71d917c6baa5d63ae
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113681"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406418"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-rest-and-python"></a>Tutorial: Erstellen einer Pipeline für die KI-Anreicherung mit REST und Python
 

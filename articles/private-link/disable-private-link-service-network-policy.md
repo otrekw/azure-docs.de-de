@@ -2,17 +2,17 @@
 title: 'Deaktivieren von Netzwerkrichtlinien für die Quell-IP-Adresse eines Azure Private Link-Diensts '
 description: Erfahren Sie, wie Sie Netzwerkrichtlinien für Azure Private Link deaktivieren.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 53df209d080cf91be9c558b43edaa618c0748fc5
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.author: allensu
+ms.openlocfilehash: 22dbb12de0793db8aac12f610ff94380542d426a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73101534"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228102"
 ---
 # <a name="disable-network-policies-for-private-link-service-source-ip"></a>Deaktivieren von Netzwerkrichtlinien für die Quell-IP-Adresse eines Private Link-Diensts
 

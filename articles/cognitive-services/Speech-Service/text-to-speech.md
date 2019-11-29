@@ -1,7 +1,7 @@
 ---
 title: Text-zu-Sprache – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Text-zu-Sprache aus dem Spracherkennungsdienst ist ein Feature, der es Ihren Anwendungen, Tools oder Geräten ermöglicht, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar.
+description: Text-zu-Sprache in Speech Service ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie voreingestellte Stimmen aus, oder erstellen Sie Ihre eigene benutzerdefinierte Stimme.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,19 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: d3d4777d54e3ef6b20ab0ac0f0890da958411297
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468664"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075706"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
 Text-zu-Sprache aus den Azure-Spracherkennungsdiensten ist ein Dienst, der es Ihren Anwendungen, Tools oder Geräten ermöglicht, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
 Die Text-zu-Sprache-Technologie ermöglicht Inhaltserstellern, auf unterschiedliche Weise mit ihren Benutzern zu interagieren. Text-zu-Sprache kann die Barrierefreiheit verbessern, indem Benutzern eine Option für die akustische Interaktion mit dem Inhalt zur Verfügung gestellt wird. Unabhängig davon, ob der Benutzer eine Sehbehinderung oder eine Lernbehinderung hat oder während der Fahrt Navigationsinformationen benötigt, kann Text-zu-Sprache ein vorhandenes Erlebnis verbessern. Sprachsynthese ist auch ein wertvolles Add-On für Sprachbots und Sprachassistenten.
-
 
 Mithilfe der Speech Synthesis Markup Language (SSML), einer XML-basierten Markupsprache, können die Sprachsynthese verwendende Entwickler angeben, wie der Eingabetext in synthetisierte Sprache konvertiert werden soll. Mit SSML können Sie Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr anpassen. Weitere Informationen finden Sie unter [SSML](#speech-synthesis-markup-language-ssml).
 
@@ -54,10 +53,10 @@ Alle an den Sprachsynthesedienst gesendeten Texteingaben müssen als SSML strukt
 
 Bei der Nutzung des Sprachsynthesediensts wird Ihnen einschließlich Interpunktion jedes Zeichen in Rechnung gestellt, das in Sprache umgewandelt wird. Während das SSML-Dokument selbst nicht abrechenbar ist, werden optionale Elemente wie Phoneme und Tonhöhe, mit denen eingestellt wird, wie der Text in Sprache umgewandelt wird, als abrechenbare Zeichen gezählt. Folgendes wird abgerechnet:
 
-* Text, der dem Sprachsynthesedienst im SSML-Text der Anforderung übergeben wird
-* Alle Markups im Textfeld des Anforderungstexts im SSML-Format, mit Ausnahme von `<speak>`- und `<voice>`-Tags
-* Buchstaben, Satzzeichen, Leerzeichen, Tabulatoren, Markups und alle sonstigen Leerzeichen
-* Jeder in Unicode definierte Codepunkt
+- Text, der dem Sprachsynthesedienst im SSML-Text der Anforderung übergeben wird
+- Alle Markups im Textfeld des Anforderungstexts im SSML-Format, mit Ausnahme von `<speak>`- und `<voice>`-Tags
+- Buchstaben, Satzzeichen, Leerzeichen, Tabulatoren, Markups und alle sonstigen Leerzeichen
+- Jeder in Unicode definierte Codepunkt
 
 Ausführliche Informationen finden Sie unter [Cognitive Services-Preise – Sprachdienste](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
@@ -68,16 +67,16 @@ Ausführliche Informationen finden Sie unter [Cognitive Services-Preise – Spra
 
 Die folgende Tabelle enthält die wichtigen Features für Text-zu-Sprache:
 
-| Anwendungsfall | SDK | REST |
-|----------|-----|------|
-| Konvertieren von Text in Sprache. | Ja | Ja |
-| Hochladen von Datasets für die Stimmanpassung. | Nein | Ja\* |
-| Erstellen und Verwalten von Voicefont-Modellen. | Nein | Ja\* |
-| Erstellen und Verwalten von Voicefont-Bereitstellungen. | Nein | Ja\* |
-| Erstellen und Verwalten von Voicefont-Tests. | Nein | Ja\* |
-| Verwalten von Abonnements. | Nein | Ja\* |
+| Anwendungsfall                                  | SDK | REST  |
+| ----------------------------------------- | --- | ----- |
+| Konvertieren von Text in Sprache.                   | Ja | Ja   |
+| Hochladen von Datasets für die Stimmanpassung.     | Nein  | Ja\* |
+| Erstellen und Verwalten von Voicefont-Modellen.      | Nein  | Ja\* |
+| Erstellen und Verwalten von Voicefont-Bereitstellungen. | Nein  | Ja\* |
+| Erstellen und Verwalten von Voicefont-Tests.       | Nein  | Ja\* |
+| Verwalten von Abonnements.                     | Nein  | Ja\* |
 
-\* *Diese Dienste sind über den Endpunkt cris.ai verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index). Diese benutzerdefinierten Stimmtrainings- und Management-APIs implementieren eine Drosselung, die die Anforderungen auf 25 pro 5 Sekunden begrenzt, während die Sprachsynthese-API selbst eine Drosselung implementiert, die 200 Anforderungen pro Sekunde als Höchstwert zulässt. Wenn Drosselung auftritt, werden Sie über Nachrichtenheader benachrichtigt.*
+\*_Diese Dienste sind über den Endpunkt „cris.ai“ verfügbar. Weitere Informationen finden Sie in der [Swagger-Referenz](https://westus.cris.ai/swagger/ui/index). Diese benutzerdefinierten Stimmtrainings- und Management-APIs implementieren eine Drosselung, die die Anforderungen auf 25 pro 5 Sekunden begrenzt, während die Sprachsynthese-API selbst eine Drosselung implementiert, die 200 Anforderungen pro Sekunde als Höchstwert zulässt. Wenn Drosselung auftritt, werden Sie über Nachrichtenheader benachrichtigt._
 
 ## <a name="get-started-with-text-to-speech"></a>Erste Schritte mit der Sprachsynthese
 
@@ -86,8 +85,8 @@ Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 
 ### <a name="sdk-quickstarts"></a>SDK-Schnellstarts
 
 | Schnellstart (SDK) | Plattform | API-Referenz |
-|------------|----------|---------------|
-| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
+| ---------------- | -------- | ------------- |
+| [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnetcore)  | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#, .NET Framework](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=dotnet) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#, UWP](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=uwp) | Windows | [Browse](https://aka.ms/csspeech/csharpref) |
 | [C#, Unity](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp&tabs=unity) | Windows, Android | [Browse](https://aka.ms/csspeech/csharpref) |
@@ -97,14 +96,14 @@ Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 
 | [Java](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-java&tabs=android) | Android | [Browse](https://aka.ms/csspeech/javaref) |
 | [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
 | [Objective-C](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/objectivec-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
-| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md) | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
+| [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-macos.md | macOS | [Browse](https://aka.ms/csspeech/objectivecref) |
 | [Swift](~/articles/cognitive-services/speech-service/quickstarts/text-to-speech-langs/swift-ios.md) | iOS | [Browse](https://aka.ms/csspeech/objectivecref) |
 | [Python](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-python) | Window, Linux, macOS | [Browse](https://aka.ms/csspeech/pythonref) |
 
 ### <a name="rest-quickstarts"></a>REST-Schnellstarts
 
 | Schnellstart (REST) | Plattform | API-Referenz |
-|------------|----------|---------------|
+| ----------------- | -------- | ------------- |
 | [C#, .NET Core](~/articles/cognitive-services/Speech-Service/quickstarts/text-to-speech.md?pivots=programming-language-csharp) | Windows, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Node.js](quickstart-nodejs-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
 | [Python](quickstart-python-text-to-speech.md) | Window, macOS, Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
@@ -113,18 +112,18 @@ Wir bieten Schnellstarts an, die so konzipiert sind, dass Sie in weniger als 10 
 
 Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfassen die Text-zu-Sprache-Konvertierung in den gängigsten Programmiersprachen.
 
-* [Beispiele für Text-zu-Sprache (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
-* [Beispiele für Text-zu-Sprache (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+- [Beispiele für Text-zu-Sprache (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+- [Beispiele für Text-zu-Sprache (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Speech SDK](speech-sdk-reference.md)
-* [Speech-Geräte-SDK](speech-devices-sdk.md)
-* [REST-API: Spracherkennung](rest-speech-to-text.md)
-* [REST-API: Sprachsynthese](rest-text-to-speech.md)
-* [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
+- [Speech SDK](speech-sdk-reference.md)
+- [Speech-Geräte-SDK](speech-devices-sdk.md)
+- [REST-API: Spracherkennung](rest-speech-to-text.md)
+- [REST-API: Sprachsynthese](rest-text-to-speech.md)
+- [REST-API: Batchtranskription und Anpassung](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Abrufen eines kostenlosen Speech Services-Abonnements](get-started.md)
-* [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
+- [Abrufen eines kostenlosen Speech Services-Abonnements](get-started.md)
+- [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)

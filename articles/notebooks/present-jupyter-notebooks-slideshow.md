@@ -1,23 +1,14 @@
 ---
 title: Präsentieren eines Jupyter-Notebooks als Bildschirmpräsentation auf Azure
 description: Konfigurieren von Zellen für den Präsentationsmodus in einem Jupyter-Notebook und anschließendes Vorführen der Präsentation mithilfe der RISE-Erweiterung.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 04612dc8892a544397251580b3494badc84e2ad5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973113"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277590"
 ---
 # <a name="run-a-notebook-slideshow"></a>Ausführen einer Notebook-Bildschirmpräsentation
 

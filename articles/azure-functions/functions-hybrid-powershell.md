@@ -2,17 +2,15 @@
 title: Remoteverwaltung von lokalen Ressourcen mithilfe von PowerShell-Funktionen
 description: Erfahren Sie, wie Sie Hybrid Connections in Azure Relay konfigurieren können, um eine PowerShell-Funktions-App mit lokalen Ressourcen zu verbinden, die dann zur Remoteverwaltung der lokalen Ressource verwendet werden kann.
 author: eamono
-manager: gailey777
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
-ms.openlocfilehash: 2a3cf79883d79eb82c361731eb6a632c2df3c9be
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299424"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226935"
 ---
 # <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Verwalten von Hybridumgebungen mit PowerShell in Azure Functions und App Service Hybrid Connections
 

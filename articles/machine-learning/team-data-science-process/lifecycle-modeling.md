@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c22c75b4fe900ecb96d016251c09e9ad6ec31f7c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d72d39a2a59e06954c36473083af2d2b4689a7b6
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306223"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538226"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modellierungsphase des Team Data Science-Prozesslebenszyklus
 
@@ -72,7 +72,7 @@ Wir stellen für TDSP ein [Tool für die Automatisierung von Modellierung und Be
 ## <a name="artifacts"></a>Artefakte
 In dieser Phase werden die folgenden Artefakte produziert:
 
-   * [Featuregruppen](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#feature-sets): Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Featuregruppen** des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
+   * [Featuregruppen](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Featuregruppen** des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
    * [Modellbericht](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Für jedes getestete Modell wird ein vorlagenbasierter Standardbericht mit Details zu den einzelnen Experimenten erstellt.
    * **Prüfpunktentscheidung**: Bewerten Sie, ob das Modell gut genug funktioniert, um in einem Produktionssystem bereitgestellt zu werden. Einige wichtige Fragen lauten:
      * Kann die Frage mit dem Modell basierend auf den Testdaten ausreichend beantwortet werden? 

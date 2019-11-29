@@ -1,21 +1,21 @@
 ---
 title: Referenz für die Textübersetzungs-API Version 3.0
 titleSuffix: Azure Cognitive Services
-description: Referenzdokumentation für die Textübersetzungs-API Version 3.0
+description: Referenzdokumentation für die Textübersetzungs-API Version 3.0 Version 3 der Textübersetzungs-API umfasst eine moderne JSON-basierte Web-API.
 services: cognitive-services
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: a441ca83230a1c715aadda79683964aaab6d6213
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72252975"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123041"
 ---
 # <a name="translator-text-api-v30"></a>Textübersetzungs-API Version 3.0
 
@@ -165,3 +165,21 @@ Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode
 | 500000| Ein unerwarteter Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
 | 503000| Service is temporarily unavailable. (Der Dienst ist vorübergehend nicht verfügbar.) Versuchen Sie es erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn, und geben Sie dabei Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Antwortheader X-RequestId und Clientbezeichner aus dem Anforderungsheader X-ClientTraceId.|
 
+## <a name="metrics"></a>metrics 
+Metriken ermöglichen es Ihnen, die Informationen über die Nutzung und Verfügbarkeit des Translator im Azure-Portal im Abschnitt „Metriken“ anzuzeigen, wie im folgenden Screenshot gezeigt. Weitere Informationen finden Sie unter [Daten- und Plattformmetriken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+
+![Translator-Metriken](../media/translatormetrics.png)
+
+In dieser Tabelle sind die verfügbaren Metriken mit einer Beschreibung, wie sie zur Überwachung von Aufrufen der Übersetzungs-API verwendet werden, aufgeführt.
+
+| metrics | BESCHREIBUNG |
+|:----|:-----|
+| TotalCalls| Gesamtzahl der API-Aufrufe|
+| TotalTokenCalls| Gesamtzahl der API-Aufrufe über den Tokendienst mithilfe des Authentifizierungstokens.|
+| SuccessfulCalls| Anzahl erfolgreicher Aufrufe|
+| TotalErrors| Anzahl der Aufrufe mit Fehlerantwort.|
+| BlockedCalls| Anzahl von Aufrufen, die das Raten- oder Kontingentlimit überschritten haben|
+| ServerErrors| Anzahl der Anrufe mit serverinternem Fehler (5XX).|
+| ClientErrors| Anzahl der Anrufe mit clientseitigem Fehler (4XX).|
+| Latency| Dauer bis zum Abschließen der Anforderung in Millisekunden.|
+| CharactersTranslated| Gesamtanzahl von Zeichen in einer eingehenden Textanforderung|

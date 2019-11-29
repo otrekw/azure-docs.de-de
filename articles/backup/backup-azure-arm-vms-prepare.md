@@ -1,19 +1,14 @@
 ---
-title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
+title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
-service: backup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968535"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173346"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -34,7 +29,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-* [Überprüfen Sie](backup-architecture.md#architecture-direct-backup-of-azure-vms) die Architektur für die Azure-VM-Sicherung.
+* [Überprüfen Sie](backup-architecture.md#architecture-built-in-azure-vm-backup) die Architektur für die Azure-VM-Sicherung.
 * [Erfahren Sie mehr](backup-azure-vms-introduction.md) über die Azure-VM-Sicherung und die Sicherungserweiterung.
 * [Überprüfen Sie die Supportmatrix](backup-support-matrix-iaas.md), bevor Sie die Sicherung konfigurieren.
 

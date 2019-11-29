@@ -1,22 +1,17 @@
 ---
 title: Azure Functions – Twilio-Bindung
 description: Erfahren Sie, wie Twilio-Bindungen in Azure Functions verwendet werden.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 32f987caed915aff8c581b974dec7689fc90b007
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ee78234b43e94a5c537161556410ee6246e625ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114355"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230941"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
 

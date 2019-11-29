@@ -4,27 +4,25 @@ description: In diesem Abschnitt wird beschrieben, wie Gruppen mithilfe von Comp
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720264"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158439"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Einrichten einer Visualisierung der Abhängigkeit für die Bewertung ohne Agent
-
-> [!NOTE]
-> Falls Sie dieses Feature noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Es wird voraussichtlich im Laufe der nächsten Woche verfügbar.
 
 Dieser Artikel beschreibt, wie Sie die Zuordnung von Abhängigkeiten ohne Agent in Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) erstellen. Diese Funktion ist zurzeit als Vorschauversion für VMware-Computer verfügbar, die mit einer Azure Migrate-Appliance ermittelt wurden. 
 
 > [!IMPORTANT]
 > Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit als Vorschauversion für Azure VMware-VMs verfügbar, die mithilfe einer Azure Migrate-Appliance ermittelt wurden.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="about-dependency-mapping"></a>Informationen zur Abhängigkeitszuordnung 
+## <a name="about-dependency-mapping"></a>Informationen zur Abhängigkeitszuordnung
 
 Mit der Abhängigkeitszuordnung können Sie Abhängigkeiten zwischen Computern visualisieren, die Sie bewerten und migrieren möchten. Sie verwenden die Abhängigkeitszuordnung normalerweise, wenn Sie Computer mit höherer Zuverlässigkeit bewerten möchten.
 
@@ -46,7 +44,7 @@ Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents a
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 - Die Visualisierung von Abhängigkeiten ohne Agent ist derzeit nur für VMware-VMs verfügbar.
-- In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server hinzufügen oder aus einer Gruppe entfernen. 
+- In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server hinzufügen oder aus einer Gruppe entfernen.
 - Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist zurzeit nicht verfügbar.
 - Die Abhängigkeitsdaten können derzeit nicht im Tabellenformat heruntergeladen werden.
 
@@ -60,12 +58,12 @@ Bei der Visualisierung von Abhängigkeiten ohne Agent müssen Sie keine Agents a
 
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
- 
+
 Die folgenden Betriebssysteme werden für die Abhängigkeitsvisualisierung ohne Agent unterstützt.
 
 **Typ** | **Unterstützte Betriebssysteme**
---- | --- 
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-Bit) 
+--- | ---
+**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64-Bit)
 **Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14.04, 16.04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
@@ -84,7 +82,7 @@ Fügen Sie das Konto wie folgt hinzu:
 
 1. Öffnen Sie die Verwaltungs-App für die Appliance. Navigieren Sie zum Bereich **vCenter-Details angeben**.
 2. Klicken Sie im Abschnitt **Anwendungen und Abhängigkeiten auf VMs ermitteln** auf **Anmeldeinformationen hinzufügen**.
-3. Wählen Sie das **Betriebssystem** aus. 
+3. Wählen Sie das **Betriebssystem** aus.
 4. Geben Sie einen Anzeigenamen für das Konto an.
 5. Geben Sie den **Benutzernamen** und das **Kennwort** ein.
 6. Klicken Sie auf **Speichern**.
@@ -113,8 +111,8 @@ Nach dem Start der Abhängigkeitsermittlung können Sie die Abhängigkeiten 6 St
 2. Suchen Sie den Computer, für den Sie die Abhängigkeitszuordnung anzeigen möchten.
 3. Klicken Sie in der Spalte **Abhängigkeiten** auf **Abhängigkeiten anzeigen**.
 4. Ändern Sie den Zeitraum, für den Sie die Zuordnung anzeigen möchten, über die Dropdown-Liste **Zeitdauer**.
-5. Erweitern Sie die Gruppe **Client**, um die Computer aufzulisten, die eine Abhängigkeit zum ausgewählten Computer aufweisen. 
-6. Erweitern Sie die Gruppe **Port**, um die Computer aufzulisten, die eine Abhängigkeit vom ausgewählten Computer aufweisen. 
+5. Erweitern Sie die Gruppe **Client**, um die Computer aufzulisten, die eine Abhängigkeit zum ausgewählten Computer aufweisen.
+6. Erweitern Sie die Gruppe **Port**, um die Computer aufzulisten, die eine Abhängigkeit vom ausgewählten Computer aufweisen.
 7. Wenn Sie zur Zuordnungsansicht eines abhängigen Computers navigieren möchten, klicken Sie auf den Computernamen und dann auf **Serverzuordnung laden**.
 
     ![Erweitern der Portgruppe des Servers und Laden der Serverzuordnung](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

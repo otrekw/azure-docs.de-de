@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 681ccc768b1fa3d5a968847d11987fbd83898b59
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf3c2224361cd2890a0b8b4686506eac6858d9cb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721370"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122987"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -61,6 +61,7 @@ Folgende Angebote werden noch nicht unterstützt:
 | Category  | **Angebotsname** | **Kontingent-ID** | **Angebotsnummer** |
 | --- | --- | --- | --- |
 | **Azure Deutschland** | [Azure Deutschland – nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government – nutzungsbasierte Bezahlung | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Deutschland in CSP für die Microsoft Cloud Deutschland   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -126,79 +127,6 @@ Abonnements mit nutzungsbasierter Bezahlung – Wenn der Abrechnungsmonat am 15.
 ### <a name="rerated-data"></a>Neu bewertete Daten
 
 Unabhängig davon, ob Sie die [Cost Management-APIs](index.yml), Power BI oder das Azure-Portal zum Abrufen von Daten verwenden, ist zu erwarten, dass die Gebühren des aktuellen Abrechnungszeitraums neu bewertet werden und sich somit ändern, bis die Rechnung geschlossen ist.
-
-## <a name="cost-management-data-fields"></a>Cost Management-Datenfelder
-
-Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Management-APIs. Für die folgenden Felder in Fettschrift können Partner Filter- und Gruppierungsfeatures in der Kostenanalyse verwenden, um die Kosten anhand mehrerer Feldern zu analysieren. Beide Felder gelten nur für Microsoft-Kundenvereinbarungen, die von Partnern unterstützt werden.
-
-| **Feldname** | **Beschreibung** |
-| --- | --- |
-| invoiceId | Rechnungs-ID auf der Rechnung für die jeweilige Transaktion. |
-| previousInvoiceID | Verweis auf die ursprüngliche Rechnung, wenn es sich um eine Rückerstattung handelt (negative Kosten). Wird nur aufgefüllt, wenn eine Rückerstattung vorliegt. |
-| billingAccountName | Name des Abrechnungskontos, das den Partner repräsentiert. Hier werden alle Kosten für folgenden Kundengruppen zusammengefasst: alle Kunden, die eine Microsoft-Kundenvereinbarung abgeschlossen haben, sowie für alle CSP-Kunden, die berechtigungsbasierte Käufe getätigt haben, z. B. über SaaS, Azure Marketplace oder Reservierungen. |
-| billingAccountID | Bezeichner des Abrechnungskontos, das den Partner repräsentiert. |
-| billingProfileID | Bezeichner des Abrechnungsprofils, in dem Kosten für folgende Kundengruppen rechnungsübergreifend in einer einzigen Abrechnungswährung zusammengefasst werden: alle Kunden, die eine Microsoft-Kundenvereinbarung abgeschlossen haben, sowie alle CSP-Kunden, die berechtigungsbasierte Käufe getätigt haben, z. B. über SaaS, Azure Marketplace oder Reservierungen. |
-| billingProfileName | Name des Abrechnungsprofils, in dem Kosten für folgende Kundengruppen rechnungsübergreifend in einer einzigen Abrechnungswährung zusammengefasst werden: alle Kunden, die eine Microsoft-Kundenvereinbarung abgeschlossen haben, sowie alle CSP-Kunden, die berechtigungsbasierte Käufe getätigt haben, z. B. über SaaS, Azure Marketplace oder Reservierungen. |
-| invoiceSectionName | Name des Projekts, das in Rechnung gestellt wird. Gilt nicht für Microsoft-Kundenvereinbarungen, die über Partner abgeschlossen wurden. |
-| invoiceSectionID | Bezeichner des Projekts, das in Rechnung gestellt wird. Gilt nicht für Microsoft-Kundenvereinbarungen, die über Partner abgeschlossen wurden. |
-| **CustomerTenantID** | Bezeichner des Azure Active Directory-Mandanten des Kundenabonnements. |
-| **CustomerName** | Name des Azure Active Directory-Mandanten des Kundenabonnements. |
-| **CustomerTenantDomainName** | Domänenname des Azure Active Directory-Mandanten des Kundenabonnements. |
-| **PartnerTenantID** | Bezeichner des Azure Active Directory-Mandanten des Partners. |
-| **PartnerName** | Name des Azure Active Directory-Mandanten des Partners. |
-| **ResellerMPNID** | MPNID des Handelspartners, der dem Abonnement zugeordnet ist. |
-| costCenter | Dem Abonnement zugeordnete Kostenstelle. |
-| billingPeriodStartDate | Startdatum des Abrechnungszeitraums, wie auf der Rechnung aufgeführt. |
-| billingPeriodEndDate | Enddatum des Abrechnungszeitraums, wie auf der Rechnung aufgeführt. |
-| servicePeriodStartDate | Startdatum des Bewertungszeitraums, für den die Dienstnutzung zur Gebührenermittlung bewertet wurde. Die Preise für Azure-Dienste werden basierend auf dem Bewertungszeitraum bestimmt. |
-| servicePeriodEndDate | Enddatum des Bewertungszeitraums, für den die Dienstnutzung zur Gebührenermittlung bewertet wurde. Die Preise für Azure-Dienste werden basierend auf dem Bewertungszeitraum bestimmt. |
-| date | Bei Azure-Verbrauchsdaten wird das bewertete Nutzungsdatum angezeigt. Bei reservierten Instanzen wird das Datum des Erwerbs angezeigt. Bei wiederkehrenden und einmaligen Gebühren beispielsweise für Marketplace und Support wird das Datum des Erwerbs angezeigt. |
-| productID | Bezeichner des Produkts, für das basierend auf Verbrauch oder Erwerb Gebühren anfallen. Hierbei handelt es sich um den aus productID und SkuID verketteten Product Key, wie im Partner Center angezeigt. |
-| product | Name des Produkts, für das basierend auf Verbrauch oder Erwerb Gebühren anfallen, wie auf der Rechnung angezeigt. |
-| serviceFamily | Zeigt die Dienstfamilie des erworbenen oder gebührenpflichtigen Produkts an. Beispiel: „Storage“ oder „Compute“. |
-| productOrderID | Der Bezeichner der Ressource oder des Azure-Plans, der bzw. dem das Abonnement angehört. Beispiel: „Azure-Plan“. |
-| productOrderName | Der Name des Azure-Plans, zu dem das Abonnement gehört. Beispiel: „Azure-Plan“. |
-| consumedService | Der genutzte Dienst (Legacytaxonomie), wie in den Legacy-EA-Nutzungsdetails verwendet. |
-| meterID | Der Bezeichner der Verbrauchseinheit für die gemessene Nutzung. |
-| meterName | Identifiziert den Namen der Verbrauchseinheit für die gemessene Nutzung. |
-| meterCategory | Identifiziert den Dienst der obersten Ebene für die Nutzung an. |
-| meterSubCategory | Definiert den Typ oder die Unterkategorie des Azure-Diensts, der bzw. die sich auf den Tarif auswirken kann. |
-| meterRegion | Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden. |
-| Abonnement-ID | Der eindeutige von Microsoft generierte Bezeichner für das Azure-Abonnement. |
-| subscriptionName | Der Name des Azure-Abonnements. |
-| Begriff | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Für reservierte Instanzen werden beispielsweise 12 Monate eines Jahreszeitraums der reservierten Instanz angezeigt. Bei einmaligen oder wiederkehrenden Käufen für SaaS, Azure Marketplace und Support zeigt der Zeitraum einen Monat an. Dies gilt nicht für die Azure-Nutzung. |
-| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Der Herausgebertyp, der den Herausgeber als Erstanbieter, Drittanbieter-Handelspartner oder Drittanbieter-Agentur identifiziert. |
-| partNumber | Teilenummer für nicht genutzte reservierte Instanzen und Azure Marketplace-Dienste. |
-| publisherName | Name des Herausgebers des Diensts – Microsoft oder anderer Herausgeber. |
-| reservationId | Bezeichner für die erworbene reservierte Instanz. |
-| reservationName | Name der reservierten Instanz. |
-| reservationOrderId | Auftrags-ID der reservierten Instanz. |
-| frequency | Zahlungshäufigkeit für eine reservierte Instanz. |
-| resourceGroup | Name der Azure-Ressourcengruppe, der für die Lebenszyklusverwaltung der Ressource verwendet wird. |
-| instanceID (oder) ResourceID | Bezeichner der Ressourceninstanz. |
-| resourceLocation | Name des Ressourcenspeicherorts. |
-| Location | Normalisierter Speicherort der Ressourcengruppe. |
-| effectivePrice | Der geltende Einheitenpreis für den Dienst in der Abrechnungswährung. Dieser Preis ist für jedes Produkt, jede Dienstfamilie, jede Verbrauchseinheit und jedes Angebot einzigartig. Wird mit den Preisen im Preisblatt für das Abrechnungskonto verwendet. Bei Stufenpreisen oder enthaltenen Mengen wird der gemischte Preis für die Nutzung angezeigt. |
-| Menge | Die gemessene Menge, die erworben oder genutzt wurde. Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde. |
-| unitOfMeasure | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele: GB oder Stunden. |
-| pricingCurrency | Die Währung, die den Einheitenpreis definiert. |
-| billingCurrency | Die Währung, in der die abgerechneten Kosten definiert sind. |
-| chargeType | Definiert den Gebührentyp, den die Kosten in Azure Cost Management repräsentieren, z. B. Erwerb oder Erstattung. |
-| costinBillingCurrency | Geschätzte erweiterte oder gemischte Kosten vor Steuern in der Abrechnungswährung. |
-| costinPricingCurrency | Erweiterte oder gemischte Kosten vor Steuern in der Währung, die mit den Preisen korreliert. |
-| **costinUSD** | Geschätzte erweiterte oder gemischte Kosten vor Steuern in USD. |
-| **paygCostInBillingCurrency** | Zeigt Kosten an, wenn die Preise als Verkaufspreise angegeben sind. Zeigt die Preise für die nutzungsbasierte Bezahlung in der Abrechnungswährung an. Nur verfügbar bei RBAC-Bereichen. |
-| **paygCostInUSD** | Zeigt Kosten an, wenn die Preise als Verkaufspreise angegeben sind. Zeigt die Preise für die nutzungsbasierte Bezahlung in USD an. Nur verfügbar bei RBAC-Bereichen. |
-| exchangeRate | Der für die Umrechnung aus der Preiswährung in die Abrechnungswährung verwendete Wechselkurs. |
-| exchangeRateDate | Das Datum des für die Umrechnung aus der Preiswährung in die Abrechnungswährung verwendeten Wechselkurses. |
-| isAzureCreditEligible | Gibt an, ob die Kosten mit Azure-Guthaben bezahlt werden können. |
-| serviceInfo1 | Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden. |
-| serviceInfo2 | Ein Legacyfeld, in dem optionale dienstspezifische Metadaten erfasst werden. |
-| additionalInfo | Dienstspezifische Metadaten. Dies kann beispielsweise ein Imagetyp für einen virtuellen Computer sein. |
-| tags | Ein Tag, den Sie der Verbrauchseinheit zuweisen. Verwenden Sie Tags zum Gruppieren von Abrechnungsdatensätzen. Beispielsweise können Sie Tags verwenden, um Kosten nach den Abteilungen zu unterteilen, die die Verbrauchseinheit nutzen. |
-| **partnerEarnedCreditRate** | Rabatt, der angewendet wird, wenn basierend auf dem Zugriff über einen Partneradministratorlink ein Partner Earned Credit (PEC) vorhanden ist. |
-| **partnerEarnedCreditApplied** | Gibt an, ob der Partner Earned Credit angewendet wurde. |
-
 
 ## <a name="usage-data-update-frequency-varies"></a>Die Häufigkeit der Aktualisierung der Nutzungsdaten variiert.
 

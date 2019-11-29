@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 03eff6afb22ea3306bf7f8191f4eca3ccad39938
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331713"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151567"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Benutzeroberflächenelement „Microsoft.Common.FileUpload“
+
 Ein Steuerelement, mit dem Benutzer hochzuladende Dateien angeben können.
 
 ## <a name="ui-sample"></a>Benutzeroberflächenbeispiel
+
 ![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
 ## <a name="schema"></a>Schema
+
 ```json
 {
   "name": "element1",
@@ -47,16 +50,8 @@ Ein Steuerelement, mit dem Benutzer hochzuladende Dateien angeben können.
 }
 ```
 
-## <a name="remarks"></a>Anmerkungen
-- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert lautet **null**.
-- Wenn `options.multiple` auf **true** festgelegt ist, kann der Benutzer im Dateidialogfeld des Browsers mehr als eine Datei auswählen. Der Standardwert ist **false**.
-- Dieses Element unterstützt das Hochladen von Dateien basierend auf dem Wert für `options.uploadMode` in zwei Modi. Wenn **file** angegeben ist, weist die Ausgabe den Inhalt der Datei als Blob auf. Wenn **url** angegeben ist, wird die Datei an einen temporären Speicherort hochgeladen, und die Ausgabe weist die URL des Blobs auf. Temporäre Blobs werden nach 24 Stunden endgültig gelöscht. Der Standardwert ist **file**.
-- Eine hochgeladene Datei ist geschützt. Die Ausgabe-URL enthält ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) für den Zugriff auf die Datei während der Bereitstellung.
-- Der Wert für `options.openMode` bestimmt, wie die Datei gelesen wird. Wenn eine Nur-Text-Datei erwartet wird, geben Sie **text** an. Andernfalls geben Sie **binary** an. Der Standardwert lautet **text**.
-- Wenn **file** für `options.uploadMode` und **binary** für `options.openMode` festgelegt ist, ist die Ausgabe Base64-codiert.
-- `options.encoding` gibt die beim Lesen der Datei zu verwendende Codierung an. Der Standardwert ist **UTF-8**. Er wird nur verwenden, wenn für `options.openMode` der Wert **text** angegeben ist.
-
 ## <a name="sample-output"></a>Beispielausgabe
+
 Wenn für „options.multiple“ der Wert „false“ und für „options.uploadMode“ der Wert „file“ angegeben ist, weist die Ausgabe den Inhalt der Datei als JSON-Zeichenfolge auf:
 
 ```json
@@ -91,7 +86,17 @@ Wenn für „options.multiple“ der Wert „true“ und für „options.uploadM
 
 Beim Testen eines CreateUiDefinition-Elements schneiden manche Browser (etwa Google Chrome) in der Browserkonsole URLs ab, die vom Microsoft.Common.FileUpload-Element erstellt wurden. Unter Umständen müssen Sie mit der rechten Maustaste auf einzelne Links klicken, um die vollständigen URLs zu kopieren.
 
+## <a name="remarks"></a>Anmerkungen
+
+- `constraints.accept` gibt die Typen von Dateien an, die im Dateidialogfeld des Browsers angezeigt werden. Zulässige Werte finden Sie in der [HTML5-Spezifikation](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept). Der Standardwert lautet **null**.
+- Wenn `options.multiple` auf **true** festgelegt ist, kann der Benutzer im Dateidialogfeld des Browsers mehr als eine Datei auswählen. Der Standardwert ist **false**.
+- Dieses Element unterstützt das Hochladen von Dateien basierend auf dem Wert für `options.uploadMode` in zwei Modi. Wenn **file** angegeben ist, weist die Ausgabe den Inhalt der Datei als Blob auf. Wenn **url** angegeben ist, wird die Datei an einen temporären Speicherort hochgeladen, und die Ausgabe weist die URL des Blobs auf. Temporäre Blobs werden nach 24 Stunden endgültig gelöscht. Der Standardwert ist **file**.
+- Eine hochgeladene Datei ist geschützt. Die Ausgabe-URL enthält ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) für den Zugriff auf die Datei während der Bereitstellung.
+- Der Wert für `options.openMode` bestimmt, wie die Datei gelesen wird. Wenn eine Nur-Text-Datei erwartet wird, geben Sie **text** an. Andernfalls geben Sie **binary** an. Der Standardwert lautet **text**.
+- Wenn **file** für `options.uploadMode` und **binary** für `options.openMode` festgelegt ist, ist die Ausgabe Base64-codiert.
+- `options.encoding` gibt die beim Lesen der Datei zu verwendende Codierung an. Der Standardwert ist **UTF-8**. Er wird nur verwenden, wenn für `options.openMode` der Wert **text** angegeben ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Eine Einführung zum Erstellen von Benutzeroberflächendefinitionen finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).
 * Eine Beschreibung der allgemeinen Eigenschaften in Benutzeroberflächenelementen finden Sie unter [CreateUiDefinition-Elemente](create-uidefinition-elements.md).

@@ -1,19 +1,16 @@
 ---
 title: Zuverlässige Ereignisverarbeitung in Azure Functions
 description: Vermeiden, Event Hub-Nachrichten in Azure Functions zu verpassen
-services: functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: d38ef46abae12886fb04a30f5efc26992cde4443
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955426"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230371"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Zuverlässige Ereignisverarbeitung in Azure Functions
 

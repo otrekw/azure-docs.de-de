@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af8f1e9150efca4441356a80c263a58fafefcfaf
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: baf4c976a1232d08df1be2549d2861295adf9ee1
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834844"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532961"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD-SAML-Tokenreferenz
 
@@ -156,6 +156,7 @@ Dies ist ein Beispiel eines typischen SAML-Tokens.
     </t:RequestSecurityTokenResponse>
 
 ## <a name="related-content"></a>Verwandte Inhalte
+
 * In den [Richtlinienvorgängen](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) und der [Richtlinienentität](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity) von Azure AD Graph finden Sie weitere Informationen zur Verwaltung der Richtlinie für die Tokengültigkeitsdauer über die Azure AD Graph-API.
 * Weitere Informationen und Beispiele zur Verwaltung von Richtlinien über PowerShell-Cmdlets finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Azure AD](active-directory-configurable-token-lifetimes.md). 
 * Fügen Sie den Token für Ihre Anwendung [benutzerdefinierte und optionale](active-directory-optional-claims.md) Ansprüche hinzu.

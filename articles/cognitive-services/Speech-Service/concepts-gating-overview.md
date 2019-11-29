@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: shlo
-ms.openlocfilehash: c0a097c17a24c68f7ebe4ec06a01b9ab7d9943b0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 73e6e4e69a245485ca473f048bbeafef21dbbf37
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506553"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836784"
 ---
 # <a name="custom-neural-voice-gating-overview"></a>Übersicht über die Zulassung zu benutzerdefinierten neuronalen Stimmen
 
@@ -28,7 +28,7 @@ Als Teil der Verpflichtung von Microsoft, KI verantwortungsbewusst zu entwerfen,
 ### <a name="guidance-for-deploying-custom-neural-voice"></a>Leitfaden zum Bereitstellen benutzerdefinierter neuronaler Stimmen
 
 - [Richtlinien für verantwortungsvolle Bereitstellungen:](concepts-guidelines-responsible-deployment-synthetic.md) Unsere wichtigsten Empfehlungen basieren auf unserer Forschung.
-- [Hinweis zur Transparenz bei neuronaler Sprachsynthese:](https://aka.ms/neural-tts-transparency-note) Erfahren Sie alles, was Sie über die Technologie wissen müssen, um sie verantwortungsbewusst verwenden zu können.
+- [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent): Was Sie wissen und dem Sprecher über die Technologie mitteilen müssen, um sie verantwortungsvoll zu nutzen.
 - [Offenlegungsdesign:](concepts-disclosure-guidelines.md) Erfahren Sie, wie Sie Umgebungen so entwerfen, dass Benutzer wissen, wann eine künstliche Stimme verwendet wird, und Ihrem Dienst vertrauen können.
 
 ### <a name="why-custom-neural-voice-is-a-gated-technology"></a>Darum sind benutzerdefinierte neuronale Stimmen eine eingeschränkte Technologie
@@ -41,11 +41,11 @@ Um Zugriff auf benutzerdefinierte neuronale Stimmen zu erhalten, müssen Sie zun
 
 Der Zugriff auf den Dienst für benutzerdefinierte neuronale Stimmen unterliegt dem alleinigen Ermessen von Microsoft basierend auf den Kriterien für die Qualifikation, dem Überprüfungsprozess und der Verfügbarkeit, um eine begrenzte Anzahl von Kunden während dieser eingeschränkten Vorschau zu unterstützen.
 
-Im Rahmen dieses Bewerbungsvorgangs müssen Sie sich dazu verpflichten, vor der Erstellung eines Voicefonts eine explizite schriftliche Genehmigung vom Sprecher einzuholen. Dies schließt auch die Weitergabe der [Transparency Note for Neural text-to-speech](https://aka.ms/neural-tts-transparency-note) (Hinweis zur Transparenz bei der neuronalen Sprachsynthese) ein. Außerdem müssen Sie zustimmen, beim Bereitstellen des Voicefonts [den künstlichen Ursprung](concepts-disclosure-guidelines.md) des Diensts für die Benutzer offenzulegen, den Microsoft-Dienst für künstliche Sprachdienste in Ihren Vertragsbedingungen aufzuführen und einen Feedbackkanal einzurichten, der es Benutzern des Diensts ermöglicht, Probleme zu melden und Details an Microsoft weiterzugeben. [Hier](https://aka.ms/neural-tts-transparency-note) erfahren Sie mehr über die Nutzungsbedingungen.
+Im Rahmen dieses Bewerbungsvorgangs müssen Sie sich dazu verpflichten, vor der Erstellung eines Voicefonts eine explizite schriftliche Genehmigung vom Sprecher einzuholen. Dies schließt auch die Weitergabe der [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent) ein. Außerdem müssen Sie zustimmen, beim Bereitstellen des Voicefonts [den künstlichen Ursprung](concepts-disclosure-guidelines.md) des Diensts für die Benutzer offenzulegen, den Microsoft-Dienst für künstliche Sprachdienste in Ihren Vertragsbedingungen aufzuführen und einen Feedbackkanal einzurichten, der es Benutzern des Diensts ermöglicht, Probleme zu melden und Details an Microsoft weiterzugeben. [Hier](https://aka.ms/custom-neural-code-of-conduct) erfahren Sie mehr über die Nutzungsbedingungen.
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Transparenzhinweis](https://aka.ms/neural-tts-transparency-note)
+* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)
 * [Richtlinien für die verantwortungsvolle Bereitstellung von Technologien mit künstlicher Sprache](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Vorgehensweise zum Offenlegen](concepts-disclosure-guidelines.md)
 

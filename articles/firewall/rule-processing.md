@@ -1,18 +1,18 @@
 ---
 title: Logik für die Azure Firewall-Regelverarbeitung
-description: Enthält eine Beschreibung der Logik für die Azure Firewall-Regelverarbeitung.
+description: Azure Firewall verfügt über NAT-Regeln, Netzwerkregeln und Anwendungsregeln. Die Regeln werden gemäß dem Regeltyp verarbeitet.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 9/27/2018
+ms.date: 11/19/2018
 ms.author: victorh
-ms.openlocfilehash: 12d86793c0d75413559aad77c558c4adb7ac91af
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0fc11221e0ff79d6e17b93282403792fc135c2a4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681589"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166776"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Logik für die Azure Firewall-Regelverarbeitung
 Azure Firewall verfügt über NAT-Regeln, Netzwerkregeln und Anwendungsregeln. Die Regeln werden gemäß dem Regeltyp verarbeitet.

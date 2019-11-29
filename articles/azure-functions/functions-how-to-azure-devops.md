@@ -2,17 +2,15 @@
 title: Continuous Delivery von Funktionscodeaktualisierungen mit Azure DevOps – Azure Functions
 description: Erfahren Sie, wie Sie eine Azure DevOps-Pipeline mit Azure Functions als Ziel einrichten.
 author: ahmedelnably
-manager: jeconnoc
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: aelnably
-ms.openlocfilehash: 4fb01eac53151799a0def00d13f18619faf437f6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e2dbcadab662caf641716272db1f860c3a6bafa5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72927529"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230539"
 ---
 # <a name="continuous-delivery-by-using-azure-devops"></a>Continuous Delivery mit Azure DevOps
 

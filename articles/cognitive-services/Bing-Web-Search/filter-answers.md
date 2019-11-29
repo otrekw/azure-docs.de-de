@@ -1,7 +1,7 @@
 ---
 title: 'Gewusst wie: Filtern von Suchergebnissen – Bing-Websuche-API'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Suchergebnisse der Bing-Websuche-API filtern und anzeigen können.
+description: Sie können die Antworttypen, die von Bing einbezogen werden (z. B. Bilder, Videos und News), mit dem Abfrageparameter „responseFilter“ filtern.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: a89d73b63680415aa8e516926b8e1d6c59ffbbad
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626017"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111420"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtern der Ergebnisse, die die Suchantwort enthält  
 

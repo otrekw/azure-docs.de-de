@@ -1,18 +1,18 @@
 ---
 title: Threat Intelligence-gestütztes Filtern für Azure Firewall
-description: Erfahren Sie mehr über das Threat Intelligence-gestützte Filtern für Azure Firewall
+description: Das Filtern auf Basis von Threat Intelligence kann für Ihre Firewall aktiviert werden, damit diese Sie bei Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f6a60d7c29fc7e482e32233aa86d65a801e3f55c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c291dbe9c1eb37e68174a2353e296a376c7d0896
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582249"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168678"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall
 

@@ -1,25 +1,19 @@
 ---
-title: Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow | Microsoft-Dokumentation
+title: Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 description: Übersicht über das Verfügbarmachen einer in App Service gehosteten API für PowerApps und Microsoft Flow
-services: app-service
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: app-service
 ms.topic: conceptual
 ms.date: 12/15/2017
-ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082846"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233072"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) ist ein Dienst zum Erstellen und Verwenden benutzerdefinierter Branchen-Apps, die eine Verbindung mit Ihren Daten herstellen und plattformübergreifend verwendet werden können. [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) ermöglicht die problemlose Automatisierung von Workflows und Geschäftsprozessen zwischen Ihren bevorzugten Apps und Diensten. Sowohl PowerApps als auch Microsoft Flow verfügt über verschiedene integrierte Connectors für Datenquellen wie Office 365, Dynamics 365 und Salesforce. In einigen Fällen sollten App- und Flow-Generatoren auch mit den von ihrer Organisation erstellten Datenquellen und APIs verbunden werden.
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) ist ein Dienst zum Erstellen und Verwenden benutzerdefinierter Branchen-Apps, die eine Verbindung mit Ihren Daten herstellen und plattformübergreifend verwendet werden können. [Microsoft Flow](/learn/modules/get-started-with-flow/index) ermöglicht die problemlose Automatisierung von Workflows und Geschäftsprozessen zwischen Ihren bevorzugten Apps und Diensten. Sowohl PowerApps als auch Microsoft Flow verfügt über verschiedene integrierte Connectors für Datenquellen wie Office 365, Dynamics 365 und Salesforce. In einigen Fällen sollten App- und Flow-Generatoren auch mit den von ihrer Organisation erstellten Datenquellen und APIs verbunden werden.
 
 Analog dazu können Entwickler, die eine umfassendere Bereitstellung ihrer APIs in einer Organisation anstreben, ihre APIs für App- und Flow-Generatoren verfügbar machen. In diesem Thema wird beschrieben, wie eine in [Azure Functions](../azure-functions/functions-overview.md) oder [Azure App Service](../app-service/overview.md) integrierte API exportiert wird. Die exportierte API dient als *benutzerdefinierter Connector*, der wie ein integrierter Connector in PowerApps und Microsoft Flow verwendet wird.
 

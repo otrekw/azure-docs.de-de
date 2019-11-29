@@ -1,6 +1,6 @@
 ---
-title: Ausgang und Endpunkte in Azure Digital Twins | Microsoft-Dokumentation
-description: Leitfaden für die Erstellung von Endpunkten mit Azure Digital Twins.
+title: Ausgangs- und Endpunkte – Azure Digital Twins | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Ausgangs- und Endpunkte für Ereignisse in Azure Digital Twins erstellt werden.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,14 +8,14 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.openlocfilehash: 9a5e060d6248d3144720930fe960e0a371a73d6e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 33e8a6a281fbc6620a4608c7b0821b196043423e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822274"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010053"
 ---
-# <a name="egress-and-endpoints"></a>Ausgang und Endpunkte
+# <a name="egress-and-endpoints-in-azure-digital-twins"></a>Ausgangs- und Endpunkte in Azure Digital Twins
 
 Bei *Endpunkten* von Azure Digital Twins handelt es sich um eine Nachricht oder einen Ereignisbroker in einem Azure-Abonnement eines Benutzers. Ereignisse und Nachrichten können an Azure Event Hubs, Azure Event Grid und Azure Service Bus-Themen gesendet werden.
 

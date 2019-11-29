@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: 391cddbbd1b69fb7cb5422adbaea2f3378e273bf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f03e32eb17c7c02d8969ea6f79663a5c99196d7b
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580157"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931929"
 ---
 # <a name="long-audio-api-preview"></a>API für lange Audioinhalte (Vorschau)
 
@@ -25,6 +25,9 @@ Weitere Vorteile der API für lange Audioinhalte:
 
 * Die vom Dienst zurückgegebene synthetisierte Sprache verwendet neuronale Stimmen, was eine High-Fidelity-Audioausgabe sicherstellt.
 * Da Echtzeitantworten nicht unterstützt werden, ist es nicht erforderlich, einen Sprachendpunkt bereitzustellen.
+
+> [!NOTE]
+> Die API für lange Audioinhalte unterstützt jetzt nur noch die [benutzerdefinierte neuronale Stimme](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-voice#custom-neural-voices).
 
 ## <a name="workflow"></a>Workflow
 

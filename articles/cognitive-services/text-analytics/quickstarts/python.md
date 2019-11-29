@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: e763c1a5bebddcb76647b4ecff02506fc41f6a47
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 15f0cf7725dec99884497be79b63c21ef16f88b1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387389"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284969"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Aufrufen der Textanalyse von Cognitive Services mit der Python-REST-API 
 <a name="HOLTop"></a>
 
 Verwenden Sie diesen Schnellstart, um mit der Textanalyse-REST-API und Python in die Sprachanalyse einzusteigen. Dieser Artikel veranschaulicht, wie Sie eine [Sprache erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis), [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction) und [verknüpfte Entitäten erkennen](#Entities).
 
-Die technische Dokumentation für die APIs finden Sie in den [API-Definitionen](//go.microsoft.com/fwlink/?LinkID=759346).
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

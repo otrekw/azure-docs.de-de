@@ -2,18 +2,14 @@
 title: Verwenden Sie InSpec für die Automatisierung der Konformität der Azure-Infrastruktur
 description: Erfahren Sie, wie Sie mit InSpec Probleme in Ihren Azure-Bereitstellungen erkennen.
 keywords: Azure, Chef, Devops, virtuelle Computer, Übersicht, Automatisieren, InSpec
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 03/19/2019
 ms.topic: article
-ms.openlocfilehash: bdfa30b48c79a8910d503bb9e54a42c30e5adba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629797"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158229"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Verwenden Sie InSpec für die Automatisierung der Konformität der Azure-Infrastruktur
 

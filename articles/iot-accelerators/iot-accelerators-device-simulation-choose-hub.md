@@ -1,5 +1,5 @@
 ---
-title: Verwenden eines vorhandenen IoT Hubs mit dem Solution Accelerator für Gerätesimulation – Azure | Microsoft-Dokumentation
+title: Verwenden eines vorhandenen IoT Hubs bei einer Lösung für Gerätesimulation – Azure | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Sie ein benutzerdefiniertes Gerätemodell im Solution Accelerator für Gerätesimulation konfigurieren.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 38cde750ce07741a433baa1b8607a584f94ad9b1
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1f89e23d7bb279e7cce5c104060cc7898517f8b7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203949"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889196"
 ---
 # <a name="use-an-existing-iot-hub-with-the-device-simulation-solution-accelerator"></a>Verwenden eines vorhandenen IoT Hubs mit dem Solution Accelerator für Gerätesimulation
 

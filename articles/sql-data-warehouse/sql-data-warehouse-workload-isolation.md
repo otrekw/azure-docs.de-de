@@ -7,22 +7,22 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a31498ec5459604d89fa72a6f2a003dbc1189eed
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685372"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555406"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse: Isolation mit Arbeitsauslastungsgruppen (Vorschau)
 
 In diesem Artikel wird erläutert, wie mithilfe von Arbeitsauslastungsgruppen die Workloadisolation konfiguriert, Ressourcen eingeschlossen und Laufzeitregeln für die Abfrageausführung angewendet werden können.
 
-## <a name="workload-groups"></a>Arbeitsauslastungsgruppen
+## <a name="workload-groups"></a>Workloadgruppen
 
 Arbeitsauslastungsgruppen sind Container für eine Reihe von Anforderungen und bilden die Grundlage für die Konfiguration der Workloadverwaltung, einschließlich der Workloadisolation, auf einem System.  Arbeitsauslastungsgruppen werden mithilfe der Syntax [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) erstellt.  Bei einer einfachen Konfiguration der Workloadverwaltung können Datenladevorgänge und Benutzerabfragen verwaltet werden.  Beispielsweise werden mit einer Arbeitsauslastungsgruppe namens `wgDataLoads` Workloadaspekte für Daten definiert, die in das System geladen werden. Mit einer Arbeitsauslastungsgruppe namens `wgUserQueries` werden Workloadaspekte für Benutzer definiert, die Abfragen zum Lesen von Daten aus dem System ausführen.
 
@@ -88,5 +88,5 @@ Der Zugriff auf Ressourcen im freigegebenen Pool wird auf Basis der [Priorität]
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schnellstart: Konfigurieren der Workloadisolation](quickstart-configure-workload-isolation-tsql.md)
-- [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)

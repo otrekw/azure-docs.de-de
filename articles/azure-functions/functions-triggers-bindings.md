@@ -1,20 +1,16 @@
 ---
 title: Trigger und Bindungen in Azure Functions
 description: Erfahren Sie, wie Sie Trigger und Bindungen verwenden, um eine Verbindung Ihrer Azure Functions-Funktion mit Onlineereignissen und cloudbasierten Diensten herzustellen.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: 914158ba7cfcc7530120d427c62e69036b3bb156
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d41fd7f66ecef3a563345424d7dc4366e47d3f0e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70085088"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226563"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 

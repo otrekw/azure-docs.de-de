@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 11/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 38250d1cd9853013ba9721ece0201a8df6dd1b4a
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 6678efd04125e6ae0e0b66e8bcc011c0f319c0fb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71336287"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954307"
 ---
 # <a name="advertise-custom-routes-for-p2s-vpn-clients"></a>Ankündigen von benutzerdefinierten Routen für P2S-VPN-Clients
 
@@ -51,7 +51,14 @@ Verwenden Sie das folgende Beispiel, um benutzerdefinierte Routen anzuzeigen:
   $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
   $gw.CustomRoutes | Format-List
   ```
+## <a name="to-delete-custom-routes"></a>So löschen Sie benutzerdefinierte Routen
 
+Verwenden Sie das folgende Beispiel, um benutzerdefinierte Routen zu löschen:
+
+  ```azurepowershell-interactive
+  $gw = Get-AzVirtualNetworkGateway -Name <name of gateway> -ResourceGroupName <name of resource group>
+  Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -CustomRoute @0
+  ```
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum P2S-Routing finden Sie unter [Informationen zum Point-to-Site-Routing](vpn-gateway-about-point-to-site-routing.md).

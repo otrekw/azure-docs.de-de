@@ -2,17 +2,17 @@
 title: 'Tutorial: Erstellen von benutzerdefinierten Azure DNS-Einträgen für eine Web-App'
 description: In diesem Tutorial erstellen Sie mithilfe von Azure DNS benutzerdefinierte Domänen-DNS-Einträge für eine Web-App.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730274"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211203"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Tutorial: Erstellen von DNS-Einträgen in einer benutzerdefinierten Domäne für eine Web-App 
 

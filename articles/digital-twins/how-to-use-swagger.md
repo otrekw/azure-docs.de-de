@@ -1,5 +1,5 @@
 ---
-title: 'Referenz: Grundlegendes zum Verwenden von Azure Digital Twins-Swagger | Microsoft-Dokumentation'
+title: Verwenden der Swagger-Referenzdokumentation – Azure Digital Twins – Microsoft-Dokumentation
 description: 'Referenzdokumentation: Grundlegendes zum Verwenden von Azure Digital Twins-Swagger'
 ms.author: alinast
 author: alinamstanciu
@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 06cbdf6fbba89b6666e6fe3162fd591e93dffecd
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: ccea63e8edee739ce6743d7638b4e5300ad07f8f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958866"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74009880"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenzdokumentation: Azure Digital Twins-Swagger
 
@@ -95,7 +95,7 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
 > [!NOTE]
 > * Der Benutzerprinzipal, der die Azure Digital Twins-Ressource erstellt hat, verfügt über eine Raumadministrator-Rollenzuweisung und kann zusätzliche Rollenzuweisungen für andere Benutzer erstellen. Derartige Benutzer und ihre Rollen können zum Aufrufen der APIs autorisiert werden.
 
-1. Führen Sie die Schritte in [dieser Schnellstartanleitung](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) aus, oder [registrieren Sie Ihre Azure Digital Twins-App mit Azure Active Directory Legacy](./how-to-use-legacy-aad.md), um eine Azure AD-Anwendung zu erstellen und zu konfigurieren. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
+1. Führen Sie die Schritte in [diesem Schnellstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) zum Erstellen und Konfigurieren einer Azure AD-Anwendung aus. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
 
 1. Fügen Sie der App-Registrierung die folgende Antwort-URL hinzu:
 

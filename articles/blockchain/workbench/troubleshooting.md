@@ -1,21 +1,15 @@
 ---
 title: Problembehandlung bei Azure Blockchain Workbench
 description: So behandeln Sie Probleme mit einer Azure Blockchain Workbench-Anwendung (Vorschauversion).
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.reviewer: brendal
+ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329084"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324298"
 ---
 # <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Problembehandlung bei Azure Blockchain Workbench (Vorschauversion)
 

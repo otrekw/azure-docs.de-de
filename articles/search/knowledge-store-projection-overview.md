@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: bb6af4be232810c1f5d135e459238e2e4f2cd5d8
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720044"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326590"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Arbeiten mit Projektionen in einem Wissensspeicher in der kognitiven Azure-Suche
 
@@ -114,9 +114,11 @@ Es folgt ein Beispiel für Tabellenprojektionen.
 
 Wie in diesem Beispiel veranschaulicht, werden die Schlüsselbegriffe und Entitäten in verschiedenen Tabellen modelliert und behalten einen Verweis auf das übergeordnete Element (MainTable) für jede Zeile bei.
 
-Die folgende Abbildung ist eine Referenz für die Caselaw-Übung unter [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md). In einem Szenario, bei dem ein Fall mehrere Auffassungen umfasst und jede Auffassung durch Identifizieren von darin enthaltenen Entitäten angereichert wird, können Sie die Projektionen wie hier gezeigt modellieren.
+<!---
+The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
 
-![Entitäten und Beziehungen in Tabellen](media/knowledge-store-projection-overview/TableRelationships.png "Modellieren von Beziehungen in Tabellenprojektionen")
+![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
+--->
 
 ## <a name="object-projections"></a>Objektprojektionen
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 06b8edcb0f912bfd35137e197253b20b9459448f
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 575891d99c077299f5e7abf008c1ebb2b158373f
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057746"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382076"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Debuggen von Problemen mit Anwendungsproxyanwendungen 
 
@@ -48,7 +48,7 @@ Dieses Flussdiagramm führt Sie durch die Schritte zum Debuggen einiger der häu
 |5 | Wenn weiterhin Probleme auftreten, Connectors debuggen | Möglicherweise liegt ein Konnektivitätsproblem zwischen dem Proxy und dem Connector oder zwischen dem Connector und dem Back-End vor. Weitere Informationen finden Sie im Artikel zur Problembehandlung [Debug Application Proxy connectors](application-proxy-debug-connectors.md) (Debuggen von Anwendungsproxyconnectors). |
 |6 | Alle Ressourcen veröffentlichen, mit Entwicklertools des Browsers überprüfen und Links reparieren | Stellen Sie sicher, dass der Veröffentlichungspfad alle erforderlichen Bilder, Skripts und Stylesheets für Ihre Anwendung enthält. Ausführliche Informationen finden Sie unter [Hinzufügen einer lokalen App zu Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). <br></br>Verwenden Sie die Entwicklungstools des Browsers (F12-Tools in Internet Explorer oder Microsoft Edge), und überprüfen Sie wie unter [Anwendungsseite für eine Anwendungsproxyanwendung wird nicht richtig angezeigt](application-proxy-page-appearance-broken-problem.md) beschrieben, ob Probleme mit der Veröffentlichung vorliegen. <br></br>Lesen Sie unter [Links auf der Seite funktionieren nicht](application-proxy-page-links-broken-problem.md) die Methoden zum Beheben fehlerhafter Links nach. |
 |7 | Netzwerklatenz überprüfen | Wenn die Seite langsam geladen wird, lesen Sie unter [Reduzieren der Wartezeit](application-proxy-network-topology.md#considerations-for-reducing-latency) die Möglichkeiten zum Minimieren der Netzwerklatenz nach. | 
-|8 | Weitere Artikel zur Problembehandlung zurate ziehen | Wenn die Probleme weiterhin auftreten, finden Sie in der [Dokumentation zur Problembehandlung für Anwendungsproxys](application-proxy-page-appearance-broken-problem.md) weitere Artikel zum Beheben von Problemen. |
+|8 | Weitere Artikel zur Problembehandlung zurate ziehen | Wenn die Probleme weiterhin auftreten, finden Sie in der [Dokumentation zur Problembehandlung für Anwendungsproxys](application-proxy-troubleshoot.md) weitere Artikel zum Beheben von Problemen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

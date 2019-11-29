@@ -1,19 +1,18 @@
 ---
-title: Funktionen für Kundendatenanforderungen
-description: Zusammenfassung der Features für Kundendatenanforderungen
+title: Kundendatenanforderungen für Azure IoT Hub-Geräte
+description: Die meisten in Azure IoT Hub verwalteten Geräte sind nicht persönlich, aber einige sind es. In diesem Artikel wird beschrieben, wie Administratoren persönliche Daten aus einem Gerät exportieren oder löschen können.
 author: robinsh
-manager: philmea
 ms.author: robinsh
 ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 1519637eddf909040131a1efac5738fc7cc8e565
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 29b3ed46ffe7f2236fc63d65ed49385b29b1a08a
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845799"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889485"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Zusammenfassung der Features für Kundendatenanforderungen
 
@@ -41,7 +40,7 @@ Löschvorgänge für Geräte können auch mithilfe von REST-APIs ausgeführt wer
 
 ## <a name="exporting-customer-data"></a>Exportieren von Kundendaten
 
-Mandantenadministratoren können im Azure-Portal auf dem Blatt „IoT-Geräte“ der Azure IoT Hub-Erweiterung die Funktionen zum Kopieren und Einfügen verwenden, um die einem Gerät zugeordneten Daten zu exportieren.
+Mandantenadministratoren können im Azure-Portal innerhalb des Bereichs „IoT-Geräte“ der Azure IoT Hub-Erweiterung die einem Gerät zugeordneten Daten mithilfe der Funktionen zum Kopieren und Einfügen exportieren.
 
 Exportvorgänge für Geräte können auch mithilfe von REST-APIs ausgeführt werden. Weitere Informationen finden Sie unter [Service - Get Device (Dienst – Gerät abrufen)](/rest/api/iothub/service/getdevice).
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389968"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108724"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -42,7 +42,7 @@ Azure reserviert auch 5 IP-Adressen in jedem Subnetz für die interne Verwendung
 
 Stellen Sie sich ein Subnetz mit 27 Application Gateway-Instanzen und einer privaten Front-End-IP vor. In diesem Fall benötigen Sie 33 IP-Adressen: 27 für Application Gateway-Instanzen, 1 für das private Front-End und 5 für die interne Verwendung. Sie benötigen also mindestens ein /26-Subnetz.
 
-Sie sollten mindestens ein /28-Subnetz verwenden. Diese Größe bietet Ihnen 11 nutzbare IP-Adressen. Wenn für Ihre Anwendungslast mehr als 10 IP-Adressen erforderlich sind, sollten Sie eine Subnetzgröße von /27 oder /26 in Betracht ziehen.
+Sie sollten mindestens ein /28-Subnetz verwenden. Diese Größe bietet Ihnen 11 nutzbare IP-Adressen. Wenn für Ihre Anwendungslast mehr als zehn Application Gateway-Instanzen erforderlich sind, sollten Sie eine Subnetzgröße von /27 oder /26 in Betracht ziehen.
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Netzwerksicherheitsgruppen im Application Gateway-Subnetz
 
@@ -61,7 +61,7 @@ Netzwerksicherheitsgruppen (NSG) werden im Application Gateway-Subnetz unterstü
 
 Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gateway-Subnetz. Legen Sie die folgenden Einschränkungen für das Subnetz in dieser Priorität fest:
 
-1. Eingehenden Datenverkehr aus einem Quell-IP/IP-Adressbereich und entweder zum gesamten Application Gateway-Subnetz oder zu der spezifisch konfigurierten privaten Front-End-IP-Adresse zulassen. Die NSG funktioniert nicht mit einer öffentlichen IP-Adresse.
+1. Eingehenden Datenverkehr von einer Quell-IP oder einem Quell-IP-Adressbereich und das Ziel als entweder das gesamte Application Gateway-Subnetz oder zu der spezifisch konfigurierten privaten Front-End-IP-Adresse zulassen. Die NSG funktioniert nicht mit einer öffentlichen IP-Adresse.
 2. Lassen Sie eingehende Anforderungen aus allen Quellen an den Ports 65503–65534 für die Application Gateway v1-SKU und an den Ports 65200–65535 für die v2-SKU für die [Back-End-Integrität-Kommunikation](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics) zu. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
 3. Lassen Sie eingehende Azure Load Balancer-Tests (*AzureLoadBalancer-Tag*) und eingehenden virtuellen Netzwerkdatenverkehr (*VirtualNetwork*-Tag) für die [Netzwerksicherheitsgruppe](https://docs.microsoft.com/azure/virtual-network/security-overview) zu.
 4. Blockieren Sie den gesamten übrigen eingehenden Datenverkehr mit einer Alle-verweigern-Regel.
@@ -83,13 +83,13 @@ UDRs im Application Gateway-Subnetz werden mit der v2-SKU nicht unterstützt. We
 
 Sie können das Application Gateway mit einer öffentlichen IP-Adresse, mit einer privaten IP-Adresse oder mit beidem konfigurieren. Eine öffentliche IP-Adresse ist erforderlich, wenn Sie ein Back-End hosten, auf das Clients über eine für den Internetzugriff verfügbare virtuelle IP (VIP) über das Internet zugreifen müssen. 
 
-Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungs-Stickiness oder SSL-Terminierung erfordern.
+Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, der nicht für den Internetzugriff verfügbar ist. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungs-Stickiness oder SSL-Terminierung erfordern.
 
 Es wird nur 1 öffentliche oder 1 private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 
-- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Wenn Sie eine neue öffentliche IP-Adresse erstellen, kann der von Ihnen gewählte Typ der IP-Adresse (statisch oder dynamisch) später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
+- Für eine öffentliche IP-Adresse können Sie eine neue öffentliche IP-Adresse erstellen oder eine vorhandene öffentliche IP-Adresse am gleichen Speicherort wie das Application Gateway verwenden. Weitere Informationen finden Sie unter [Statische und dynamische öffentliche IP-Adresse im Vergleich](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address).
 
-- Für eine private IP-Adresse können Sie eine private IP-Adresse aus dem Subnetz angeben, in dem das Application Gateway erstellt wird. Wenn Sie keine angeben, wird automatisch eine beliebige IP-Adresse aus dem Subnetz ausgewählt. Weitere Informationen finden Sie unter [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
+- Für eine private IP-Adresse können Sie eine private IP-Adresse aus dem Subnetz angeben, in dem das Application Gateway erstellt wird. Wenn Sie keine angeben, wird automatisch eine beliebige IP-Adresse aus dem Subnetz ausgewählt. Der von Ihnen ausgewählte Typ der IP-Adresse (statisch oder dynamisch) kann später nicht mehr geändert werden. Weitere Informationen finden Sie unter [Erstellen eines Application Gateways mit einem internen Lastenausgleich (ILB)](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm).
 
 Eine Front-End-IP-Adresse ist einem *Listener* zugeordnet, der auf über die Front-End-IP eingehende Anforderungen prüft.
 
@@ -97,19 +97,19 @@ Eine Front-End-IP-Adresse ist einem *Listener* zugeordnet, der auf über die Fro
 
 Ein Listener ist eine logische Entität, die mithilfe von Port, Protokoll, Host und IP-Adresse auf eingehende Verbindungsanforderungen prüft. Wenn Sie den Listener konfigurieren, müssen Sie Werte für diese eingeben, die den entsprechenden Werten in der eingehenden Anforderung auf dem Gateway entsprechen.
 
-Wenn Sie ein Application Gateway mithilfe des Azure-Portals erstellen, erstellen Sie außerdem einen Standardlistener durch Auswählen von Protokoll und Port für den Listener. Sie können wahlweise HTTP2-Unterstützung auf dem Listener aktivieren. Nach der Erstellung des Application Gateways können Sie die Einstellungen dieses Standardlisteners (*appGatewayHttpListener*/*appGatewayHttpsListener*) bearbeiten oder neue Listener erstellen.
+Wenn Sie ein Application Gateway mithilfe des Azure-Portals erstellen, erstellen Sie außerdem einen Standardlistener durch Auswählen von Protokoll und Port für den Listener. Sie können wahlweise HTTP2-Unterstützung auf dem Listener aktivieren. Nach der Erstellung des Application Gateways können Sie die Einstellungen dieses Standardlisteners (*appGatewayHttpListener*) bearbeiten oder neue Listener erstellen.
 
 ### <a name="listener-type"></a>Listenertyp
 
 Wenn Sie einen neuen Listener erstellen, wählen Sie zwischen [*grundlegend* und *mehreren Standorten*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners) aus.
 
-- Wenn Sie hinter einem Application Gateway eine einzelne Website hosten, wählen Sie „grundlegend“. Erfahren Sie, [wie Sie ein Application Gateway mit einem grundlegenden Listener erstellen](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Wenn alle Ihre Anforderungen (für eine beliebige Domäne) akzeptiert und an Back-End-Pools weitergeleitet werden sollen, wählen Sie „Basic“ aus. Erfahren Sie, [wie Sie ein Application Gateway mit einem grundlegenden Listener erstellen](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Wenn Sie mehr als eine Webanwendung oder mehrere Unterdomänen der gleichen übergeordneten Domäne auf der gleichen Application Gateway-Instanz konfigurieren, wählen Sie den Listener für mehrere Standorte. Für einen Listener mit mehreren Standorten müssen Sie auch einen Hostnamen eingeben. Das hat den Grund, dass Application Gateway HTTP 1.1-Hostheader verwendet, um mehrere Websites an der gleichen öffentlichen IP-Adresse und dem gleichen Port zu hosten.
+- Wenn Sie Anforderungen an verschiedene Back-End-Pools weiterleiten möchten, abhängig vom *Host*header oder Hostnamen, wählen Sie Listener für mehrere Standorte aus, bei dem Sie auch einen Hostnamen angeben müssen, der mit der eingehenden Anforderung übereinstimmt. Das hat den Grund, dass Application Gateway HTTP 1.1-Hostheader verwendet, um mehrere Websites an der gleichen öffentlichen IP-Adresse und dem gleichen Port zu hosten.
 
 #### <a name="order-of-processing-listeners"></a>Verarbeitungsreihenfolge von Listenern
 
-Für die v1 SKU werden Listener gemäß der Auflistungsreihenfolge verarbeitet. Wenn eine eingehende Anforderung zu einem grundlegenden Listener passt, verarbeitet der Listener diese zuerst. Konfigurieren Sie also Listener für mehrere Standorte vor grundlegenden Listenern, um zu gewährleisten, dass der Datenverkehr an das richtige Back-End weitergeleitet wird.
+Bei der v1-SKU werden Anforderungen entsprechend der Reihenfolge der Regeln und des Listenertyps abgeglichen. Wenn eine Regel mit dem Basislistener in der Reihenfolge an erster Stelle steht, wird sie zuerst verarbeitet und akzeptiert alle Anforderungen für diese Port- und IP-Kombination. Um dies zu vermeiden, konfigurieren Sie die Regeln zuerst mit Listenern für mehrere Standorte, und verschieben Sie die Regel mit dem Basislistener an die letzte Stelle in der Liste.
 
 Für v2 SKUs werden Listener für mehrere Standorte vor grundlegenden Listenern verarbeitet.
 
@@ -165,7 +165,7 @@ Wie Sie eine globale benutzerdefinierte Fehlerseite konfigurieren, erfahren Sie 
 
 Sie können die SSL-Zertifikatverwaltung zentralisieren sowie den Ver- und Entschlüsselungsaufwand für eine Back-End-Serverfarm verringern. Diese zentralisierte SSL-Behandlung ermöglicht auch die Angabe einer zentralen SSL-Richtlinie, die auf Ihre Sicherheitsanforderungen abgestimmt ist. Sie können zwischen einer *standardmäßigen*, *vordefinierten* oder *benutzerdefinierten* SSL-Richtlinie wählen.
 
-Sie konfigurieren die SSL-Richtlinie, um die SSL-Protokollversionen zu steuern. Sie können ein Application Gateway konfigurieren, um TLS1.0, TLS1.1 und TLS1.2 abzuweisen. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [Application Gateway SSL policy overview](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview) (Application Gateway SSL-Richtlinie – Übersicht).
+Sie konfigurieren die SSL-Richtlinie, um die SSL-Protokollversionen zu steuern. Sie können ein Application Gateway so konfigurieren, dass es eine Mindestprotokollversion für TLS-Handshakes von TLS 1.0, TLS 1.1 und TLS 1.2 verwendet. Standardmäßig sind SSL 2.0 und 3.0 deaktiviert und nicht konfigurierbar. Weitere Informationen finden Sie unter [Application Gateway SSL policy overview](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview) (Application Gateway SSL-Richtlinie – Übersicht).
 
 Nachdem Sie einen Listener erstellt haben, ordnen Sie ihm eine Anforderungsroutingregel zu. Diese Regel bestimmt, wie vom Listener empfangene Anforderungen an das Back-End weitergeleitet werden.
 
@@ -199,10 +199,6 @@ Ordnen Sie der Regel den Back-End-Pool zu, der die Back-End-Ziele enthält, die 
  - Fügen Sie für eine pfadbasierte Regel mehrere Back-End-Pools hinzu, die den einzelnen URL-Pfaden entsprechen. Mit dem eingegebenen URL-Pfad übereinstimmende Anforderungen werden an den entsprechenden Back-End-Pool weitergeleitet. Fügen Sie darüber hinaus einen standardmäßigen Back-End-Pool hinzu. Anforderungen, die keinem URL-Pfad in der Regel entsprechen, werden an diesen Pool weitergeleitet.
 
 ### <a name="associated-back-end-http-setting"></a>Zugeordnete Back-End-HTTP-Einstellung
-
-Fügen Sie für jede Regel eine Back-End-HTTP-Einstellung hinzu. Anforderungen werden vom Application Gateway mithilfe der Portnummer, des Protokolls und anderer in dieser Einstellung festgelegten Informationen an die Back-End-Ziele weitergeleitet.
-
-Für eine grundlegende Regel ist nur eine einzige Back-End-HTTP-Einstellung zulässig. Alle Anforderungen auf dem zugeordneten Listener werden mit dieser HTTP-Einstellung an die entsprechenden Back-End-Ziele weitergeleitet.
 
 Fügen Sie für jede Regel eine Back-End-HTTP-Einstellung hinzu. Anforderungen werden vom Application Gateway mithilfe der Portnummer, des Protokolls und anderer in dieser Einstellung festgelegten Informationen an die Back-End-Ziele weitergeleitet.
 
@@ -245,10 +241,10 @@ Weitere Informationen zur Umleitung finden Sie unter:
 
 #### <a name="rewrite-the-http-header-setting"></a>Umschreiben der HTTP-Headereinstellung
 
-Diese Einstellung fügt HTTP-Anforderungs- und -Antwortheader hinzu, entfernt oder aktualisiert sie, während die Anforderungs-/Antwortpakete zwischen dem Client und den Back-End-Pools verschoben werden. Sie können diese Funktion nur mithilfe von PowerShell konfigurieren. Unterstützung durch Azure-Portal und CLI sind noch nicht verfügbar. Weitere Informationen finden Sie unter
+Diese Einstellung fügt HTTP-Anforderungs- und -Antwortheader hinzu, entfernt oder aktualisiert sie, während die Anforderungs-/Antwortpakete zwischen dem Client und den Back-End-Pools verschoben werden. Weitere Informationen finden Sie unter
 
  - [Erneutes Generieren von HTTP-Headern in Application Gateway (Public Preview)](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
+ - [Angeben Ihrer Regelkonfiguration für das erneute Generieren eines HTTP-Headers](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 
@@ -260,7 +256,7 @@ Dieses Feature ist nützlich, wenn eine Benutzersitzung auf dem gleichen Server 
 
 ### <a name="connection-draining"></a>Verbindungsausgleich
 
-Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen erhalten. Vorhandene Anforderungen können in der Zwischenzeit innerhalb eines konfigurierten Zeitlimits abgeschlossen werden. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit durch einen API-Aufruf aus dem Back-End-Pool entfernt werden. Dies gilt auch für Back-End-Instanzen, die von den Integritätstests als *fehlerhaft* gemeldet werden.
+Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen erhalten. Vorhandene Anforderungen können in der Zwischenzeit innerhalb eines konfigurierten Zeitlimits abgeschlossen werden. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
 
 ### <a name="protocol"></a>Protocol
 
@@ -274,7 +270,7 @@ Diese Einstellung gibt den Port an, auf dem die Back-End-Server auf Datenverkehr
 
 ### <a name="request-timeout"></a>Anforderungszeitlimit
 
-Diese Einstellung ist die Anzahl der Sekunden, die das Application Gateway auf eine Antwort vom Back-End-Pool wartet, bevor es eine „Verbindungstimeout“-Fehlermeldung zurückgibt.
+Diese Einstellung ist die Anzahl der Sekunden, die das Application Gateway auf eine Antwort vom Back-End-Server wartet.
 
 ### <a name="override-back-end-path"></a>Back-End-Pfad außer Kraft setzen
 
@@ -301,7 +297,7 @@ Mit dieser Einstellung können Sie einen optionalen benutzerdefinierten Weiterle
 
 ### <a name="use-for-app-service"></a>Für App Service verwenden
 
-Dies ist eine Benutzeroberflächenverknüpfung, die die zwei erforderlichen Einstellungen für das Azure App Service-Back-End auswählt. Sie aktiviert **Hostnamen aus Back-End-Adresse auswählen** und erstellt einen neuen benutzerdefinierten Test. (Weitere Informationen finden Sie im Abschnitt [Hostnamen aus Back-End-Adresse auswählen](#pick) dieses Artikels.) Es wird ein neuer Test erstellt, dessen Header aus der Adresse des Back-End-Elements ausgewählt wird.
+Dies ist eine reine Benutzeroberflächenverknüpfung, die die zwei erforderlichen Einstellungen für das Azure App Service-Back-End auswählt. Sie aktiviert **Hostnamen aus Back-End-Adresse auswählen** und erstellt einen neuen benutzerdefinierten Test, wenn Sie nicht bereits einen besitzen. (Weitere Informationen finden Sie im Abschnitt [Hostnamen aus Back-End-Adresse auswählen](#pick) dieses Artikels.) Es wird ein neuer Test erstellt, dessen Header aus der Adresse des Back-End-Elements ausgewählt wird.
 
 ### <a name="use-custom-probe"></a>Benutzerdefinierten Test verwenden
 
@@ -314,22 +310,22 @@ Diese Einstellung ordnet einen [benutzerdefinierten Test](https://docs.microsoft
 
 Diese Funktion legt den *Host*-Header in der Anforderung dynamisch auf den Hostnamen des Back-End-Pools fest. Sie verwendet dazu eine IP-Adresse oder einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN ).
 
-Dieses Feature ist nützlich, wenn der Domänenname des Back-Ends vom DNS-Namen des Application Gateways abweicht und sich das Back-End für die Auflösung des richtigen Endpunkts auf einen bestimmten Hostheader oder eine SNI-Erweiterung (Server Name Indication, Servernamensanzeige) stützt.
+Dieses Feature ist nützlich, wenn der Domänenname des Back-Ends vom DNS-Namen des Application Gateways abweicht und sich das Back-End für die Auflösung zum richtigen Endpunkt auf einen bestimmten Hostheader stützt.
 
 Ein Beispielfall sind mehrinstanzenfähige Dienste auf dem Back-End. Ein App Service ist ein mehrinstanzenfähiger Dienst, der einen gemeinsam genutzten Speicherplatz mit einer einzigen IP-Adresse verwendet. Daher kann der Zugriff auf einen App Service nur über die Hostnamen erfolgen, die in den Einstellungen der benutzerdefinierten Domäne konfiguriert werden.
 
-Standardmäßig ist der benutzerdefinierte Domänenname *example.azurewebsites.<i></i>net*. Um mit einem Application Gateway über einen Hostnamen, der nicht explizit im App Service registriert ist, oder über den FQDN des Application Gateways auf Ihren App Service zuzugreifen, überschreiben Sie den Hostnamen in der ursprünglichen Anforderung mit dem App Service-Hostnamen. Aktivieren Sie zu diesem Zweck die Einstellung **Hostnamen aus Back-End-Adresse auswählen**.
+Standardmäßig ist der benutzerdefinierte Domänenname *example.azurewebsites.net*. Um mit einem Application Gateway über einen Hostnamen, der nicht explizit im App Service registriert ist, oder über den FQDN des Application Gateways auf Ihren App Service zuzugreifen, überschreiben Sie den Hostnamen in der ursprünglichen Anforderung mit dem App Service-Hostnamen. Aktivieren Sie zu diesem Zweck die Einstellung **Hostnamen aus Back-End-Adresse auswählen**.
 
 Für eine benutzerdefinierte Domäne, deren bestehender benutzerdefinierter DNS-Name dem App Service zugeordnet ist, müssen Sie diese Einstellung nicht aktivieren.
 
 > [!NOTE]
-> Diese Einstellung ist für die App Service-Umgebung für PowerApps nicht erforderlich, da es sich dabei um eine dedizierte Bereitstellung handelt.
+> Diese Einstellung ist für die App Service-Umgebung nicht erforderlich, da es sich dabei um eine dedizierte Bereitstellung handelt.
 
 ### <a name="host-name-override"></a>Hostnamen außer Kraft setzen
 
 Diese Funktion ersetzt den *Host*-Header in der beim Application Gateway eingehenden Anforderung durch den Hostnamen, den Sie angeben.
 
-Wenn z.B. *www.contoso<i></i>.com* in der Einstellung **Hostname** angegeben ist, wird die ursprüngliche Anforderung *https:/<i></i>/appgw.eastus.cloudapp.net/path1* in *https:/<i></i>/www.contoso.com/path1* geändert, wenn die Anforderung an den Back-End-Server weitergeleitet wird.
+Wenn beispielsweise *www.contoso.com* in der Einstellung **Hostname** angegeben wird, wird die ursprüngliche Anforderung * https://appgw.eastus.cloudapp.azure.com/path1 beim Weiterleiten der Anforderung an den Back-End-Server in * https://www.contoso.com/path1 geändert.
 
 ## <a name="back-end-pool"></a>Back-End-Pool
 
@@ -342,7 +338,7 @@ Nachdem Sie einen Back-End-Pool erstellt haben, müssen Sie ihn einer oder mehre
 Ein Application Gateway überwacht standardmäßig die Integrität aller Ressourcen in seinem Back-End. Sie sollten aber unbedingt für jede Back-End-HTTP-Einstellung einen benutzerdefinierten Test erstellen, um größere Kontrolle über die Überwachung der Integrität zu erhalten. Informationen zum Konfigurieren eines benutzerdefinierten Tests finden Sie unter [Einstellungen für die benutzerdefinierte Integritätsüberprüfung](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings).
 
 > [!NOTE]
-> Nachdem Sie einen benutzerdefinierten Integritätstest erstellt haben, müssen Sie ihn einer Back-End-HTTP-Einstellung zuordnen. Ein benutzerdefinierter Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit einem Listener zugeordnet ist.
+> Nachdem Sie einen benutzerdefinierten Integritätstest erstellt haben, müssen Sie ihn einer Back-End-HTTP-Einstellung zuordnen. Ein benutzerdefinierter Test überwacht die Integrität des Back-End-Pools nicht, sofern die entsprechende HTTP-Einstellung nicht explizit mithilfe einer Regel einem Listener zugeordnet ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

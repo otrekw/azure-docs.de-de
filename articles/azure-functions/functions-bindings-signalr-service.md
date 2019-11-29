@@ -1,25 +1,16 @@
 ---
 title: Bindungen des SignalR-Diensts für Azure Functions
 description: Erfahren Sie, wie Bindungen des SignalR-Diensts in Azure Functions verwendet werden.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-editor: ''
-tags: ''
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: 82bbd728bfd51595f0b6eacf344bc95ea5db1ea8
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4c7d5d4d8777fee445585b43b58ceb261176b7f4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70086155"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231016"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Bindungen des SignalR-Diensts für Azure Functions
 

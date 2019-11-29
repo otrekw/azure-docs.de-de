@@ -3,12 +3,12 @@ title: Entwerfen von Workflows für Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 935616145ee32bea8c3b514c495690ce4105cb80
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0914ba6510c9d2ef87d3f83417f97340d42c8bce
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072071"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267280"
 ---
 # <a name="design-policy-as-code-workflows"></a>Entwerfen von Workflows für Policy-as-Code
 
@@ -128,6 +128,6 @@ Dieser Artikel beschreibt den allgemeinen Workflow für Policy-as-Code und erlä
 - Erfahren Sie mehr über die [Struktur von Richtliniendefinitionen](./definition-structure.md).
 - Erfahren Sie mehr über die [Struktur von Richtlinienzuweisungen](./assignment-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

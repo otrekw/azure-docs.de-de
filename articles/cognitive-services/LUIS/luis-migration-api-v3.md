@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 7c2866441c7439008fad27ced9b9b1dddea848ec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492837"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961936"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 

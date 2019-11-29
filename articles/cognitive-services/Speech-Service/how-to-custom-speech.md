@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 0f3b7826fdcc16d3094785507ec8263da39d6284
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70881529"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554984"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -43,7 +43,7 @@ Das folgende Diagramm zeigt die Teile, aus denen sich das [Custom Speech-Portal]
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
-Sie benötigen ein Abonnement für die Speech-Dienste, um das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Zum Erstellen eines Standardabonnements für Speech-Dienste gehen Sie wie folgt vor: [Erstellen Sie ein Speech-Abonnement](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account).
+Sie benötigen ein Abonnement für die Speech-Dienste, um das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Zum Erstellen eines Standardabonnements für Speech-Dienste gehen Sie wie folgt vor: [Erstellen Sie ein Speech-Abonnement](get-started.md#try-the-speech-service-using-a-new-azure-account).
 
 > [!NOTE]
 > Achten Sie darauf, dass Sie Standardabonnements (S0) erstellen. Kostenlose Testabonnements (F0) werden nicht unterstützt.

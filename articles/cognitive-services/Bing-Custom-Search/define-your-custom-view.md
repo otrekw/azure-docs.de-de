@@ -1,7 +1,7 @@
 ---
 title: Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche | Microsoft-Dokumentation
 titleSuffix: Azure Cognitive Services
-description: Enthält Informationen zum Erstellen einer Website und vertikaler Suchdienste
+description: 'Im Portal können Sie eine Suchinstanz erstellen, die die Websegmente angibt: Domänen, Unterseiten und Webseiten.'
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 1827bfdbebaf1ffa17c7c631a94aa8fc6471d13b
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854097"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072822"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -27,7 +27,7 @@ Verwenden Sie beim Definieren Ihrer Websegmente Folgendes:
 
 | Segmentname | BESCHREIBUNG                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domäne     | Ein Domänensegment umfasst alle Inhalte, die innerhalb einer Internetdomäne gefunden werden. Beispiel: `www.microsoft.com`. Das Weglassen von `www.` bewirkt, dass Bing auch die Unterdomänen der Domäne durchsucht. Wenn Sie z.B. `microsoft.com` angeben, gibt Bing auch Ergebnisse von `support.microsoft.com` oder `technet.microsoft.com` zurück. |
+| Domain     | Ein Domänensegment umfasst alle Inhalte, die innerhalb einer Internetdomäne gefunden werden. Beispiel: `www.microsoft.com`. Das Weglassen von `www.` bewirkt, dass Bing auch die Unterdomänen der Domäne durchsucht. Wenn Sie z.B. `microsoft.com` angeben, gibt Bing auch Ergebnisse von `support.microsoft.com` oder `technet.microsoft.com` zurück. |
 | Unterseite    | Ein Unterseitensegment umfasst sämtliche Inhalte, die auf der Unterseite und in den Pfaden darunter gefunden werden. Sie können maximal zwei Unterseiten im Pfad angeben. Zum Beispiel, `www.microsoft.com/en-us/windows/`                                                                                                                       |
 | Webseite    | Ein Webseitensegment kann nur diese Webseite in eine benutzerdefinierten Suche einschließen. Sie können optional angeben, ob Unterseiten enthalten sein sollen.                                                                                                                                                                                  |
 

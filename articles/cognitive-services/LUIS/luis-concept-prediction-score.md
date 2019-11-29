@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 5b8d97005d8f404a296ddb45e92b65e4aa811aa3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b360bc82b80e834492b524acc5c4535b0409eda1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486767"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280826"
 ---
 # <a name="prediction-scores-indicate-prediction-accuracy-for-intent-and-entities"></a>Vorhersageergebnisse geben die Vorhersagegenauigkeit für Absichten und Entitäten an
 
@@ -68,7 +68,7 @@ Sie können das **nicht deterministische Training** deaktivieren, indem Sie [all
 
 ## <a name="e-exponent-notation"></a>E-Notation (Exponent)
 
-Vorhersagebewertungen können exponentiell angegeben werden, um außerhalb des Intervalls von 0 bis 1 *angezeigt* zu werden, z.B. `9.910309E-07`. Dieses Ergebnis ist ein Hinweis auf eine sehr **kleine** Zahl.
+Vorhersagebewertungen können exponentiell angegeben werden, um außerhalb des Intervalls von 0 bis 1 _angezeigt_ zu werden, z.B. `9.910309E-07`. Dieses Ergebnis ist ein Hinweis auf eine sehr **kleine** Zahl.
 
 |Bewertung in E-Notation |Tatsächliche Bewertung|
 |--|--|

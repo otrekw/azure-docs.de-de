@@ -2,24 +2,18 @@
 title: PowerShell-Entwicklerreferenz für Azure Functions
 description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln können.
 author: eamonoreilly
-manager: gwallace
-ms.service: azure-functions
-ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.author: glenga
-ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515666"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226680"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
 Dieser Artikel enthält Informationen zum Schreiben von Funktionen in Azure Functions mithilfe von PowerShell.
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 Eine PowerShell-Azure-Funktion (Funktion) wird als ein PowerShell-Skript dargestellt, das durch Auslösen ausgeführt wird. Jedes Funktionsskript verfügt über eine zugehörige Datei `function.json`, in der definiert ist, wie sich die Funktion verhält, also z. B. wie sie ausgelöst wird und welche Ein- und Ausgabeparameter verwendet werden. Weitere Informationen finden Sie im Artikel zu [Triggern und Bindungen](functions-triggers-bindings.md). 
 

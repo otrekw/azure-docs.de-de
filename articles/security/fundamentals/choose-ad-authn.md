@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 71b4a8abc641a3ab11d6b17bbc8de3b42b61c34c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 71339565eed9f41f8f32da852a727c82df482662
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820554"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483953"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Wählen der richtigen Authentifizierungsmethode für Ihre Azure Active Directory-Hybrididentitätslösung
 
@@ -185,7 +185,7 @@ Im folgenden Diagramm sind die allgemeinen Architekturkomponenten dargestellt, d
 |Welche Optionen für bedingten Zugriff gibt es?|[Bedingter Zugriff in Azure AD mit Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Bedingter Zugriff in Azure AD mit Azure AD Premium](../../active-directory/conditional-access/overview.md)|[Bedingter Zugriff in Azure AD mit Azure AD Premium](../../active-directory/conditional-access/overview.md)<br><br>[AD FS-Anspruchsregeln](https://adfshelp.microsoft.com/AadTrustClaims/ClaimsGenerator)|
 |Wird Blockieren älterer Protokolle unterstützt?|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](../../active-directory/conditional-access/conditions.md)|[Ja](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12)|
 |Können das Logo, das Bild und die Beschreibung auf den Anmeldeseiten angepasst werden?|[Ja, mit Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja, mit Azure AD Premium](../../active-directory/fundamentals/customize-branding.md)|[Ja](../../active-directory/hybrid/how-to-connect-fed-management.md)|
-|Welche erweiterten Szenarien werden unterstützt?|[Intelligente Kennwortsperrung](../../active-directory/authentication/concept-sspr-howitworks.md)<br><br>[Berichte über kompromittierte Anmeldeinformationen mit Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligente Kennwortsperrung](../../active-directory/authentication/howto-password-smart-lockout.md)|Authentifizierungssystem mit geringer Wartezeit für mehrere Standorte<br><br>[AD FS-Extranetsperre](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration in Identitätssysteme von Drittanbietern](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
+|Welche erweiterten Szenarien werden unterstützt?|[Intelligente Kennwortsperrung](../../active-directory/authentication/howto-password-smart-lockout.md)<br><br>[Berichte über kompromittierte Anmeldeinformationen mit Azure AD Premium P2](../../active-directory/reports-monitoring/concept-risk-events.md)|[Intelligente Kennwortsperrung](../../active-directory/authentication/howto-password-smart-lockout.md)|Authentifizierungssystem mit geringer Wartezeit für mehrere Standorte<br><br>[AD FS-Extranetsperre](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection)<br><br>[Integration in Identitätssysteme von Drittanbietern](../../active-directory/hybrid/how-to-connect-fed-compatibility.md)|
 
 > [!NOTE]
 > Für den bedingten Zugriff in Azure AD über benutzerdefinierte Steuerelemente wird zurzeit keine Geräteregistrierung unterstützt.

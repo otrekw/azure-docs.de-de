@@ -9,12 +9,12 @@ ms.author: robreed
 manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: b44bcf7edeaad07fbe0b3093ba3c7100cb0c24c4
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 72e5018dc1212e57dc190c05cc54158d37ca7fe1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432064"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231501"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurieren von Servern mit einem gewünschten Status und Verwalten der Abweichung mit Azure Automation
 
@@ -136,14 +136,14 @@ Informationen zum Ändern des Intervalls für die Konformitätsprüfung finden S
 
 ## <a name="working-with-partial-configurations"></a>Arbeiten mit Teilkonfigurationen
 
-Azure Automation DSC unterstützt die Verwendung von [Teilkonfigurationen](/powershell/dsc/pull-server/partialconfigs).
+Azure Automation DSC unterstützt die Verwendung von [Teilkonfigurationen](/powershell/scripting/dsc/pull-server/partialconfigs).
 In diesem Szenario ist DSC so konfiguriert, dass mehrere Konfigurationen unabhängig voneinander verwaltet werden können, wobei jede Konfiguration von Azure Automation abgerufen wird.
 Einem Knoten kann aber nur eine Konfiguration mittels Automation-Konto zugewiesen werden.
 Dies bedeutet, dass Sie bei Verwendung von zwei Konfigurationen für einen Knoten zwei Automation-Kontos benötigen.
 
-Ausführliche Informationen zum Registrieren einer Teilkonfiguration aus dem Pulldienst finden Sie in der Dokumentation zu [Teilkonfigurationen](https://docs.microsoft.com/powershell/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
+Ausführliche Informationen zum Registrieren einer Teilkonfiguration aus dem Pulldienst finden Sie in der Dokumentation zu [Teilkonfigurationen](https://docs.microsoft.com/powershell/scripting/dsc/pull-server/partialconfigs#partial-configurations-in-pull-mode).
 
-Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](/powershell/dsc/overview/authoringadvanced).
+Weitere Informationen dazu, wie Teams zusammenarbeiten können, um Server gemeinsam mithilfe von Konfiguration als Code zu verwalten, finden Sie unter [Grundlegendes zu DSCs Rolle in einer CI/CD-Pipeline](/powershell/scripting/dsc/overview/authoringadvanced).
 
 ## <a name="check-the-compliance-status-of-a-managed-node"></a>Überprüfen des Konformitätsstatus eines verwalteten Knotens
 

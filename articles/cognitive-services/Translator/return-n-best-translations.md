@@ -1,7 +1,7 @@
 ---
-title: Zurückgeben von N besten Übersetzungen – Textübersetzungs-API
+title: Zurückgeben von N besten Übersetzungen – Textübersetzung
 titleSuffix: Azure Cognitive Services
-description: Zurückgeben von N besten Übersetzungen mit der Textübersetzungs-API von Microsoft
+description: Geben Sie die N besten Übersetzungen mit der Textübersetzungs-API zurück.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,13 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 7aec6bb81f3ca99ead744767668c2e4f1d1d4d53
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ROBOTS: NOINDEX
+ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68594884"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837238"
 ---
 # <a name="how-to-return-n-best-translations"></a>Zurückgeben von N besten Übersetzungen
 

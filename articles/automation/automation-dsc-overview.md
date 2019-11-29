@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5ed18f8a8bbd8bd323dec54ca3f700c7ce168dde
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429405"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231626"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Übersicht über Azure Automation State Configuration
 
@@ -66,7 +66,7 @@ Die DSC Linux-Erweiterung unterstützt alle unter [Unterstützte Linux-Distribut
 
 ### <a name="dsc-requirements"></a>DSC-Anforderungen
 
-Für alle Windows-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [WMF 5.1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) installiert.  Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, [wird WinRM aktiviert](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Für alle Windows-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [WMF 5.1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) installiert.  Für Knoten, die unter Windows Server 2012 und Windows 7 ausgeführt werden, [wird WinRM aktiviert](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
 Für alle Linux-Knoten, die in Azure ausgeführt werden, wird während des Onboardings [PowerShell DSC für Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) installiert.
 
@@ -80,7 +80,7 @@ Wenn sich Ihre Knoten in einem privaten Netzwerk befinden, sind nachfolgend der 
 * Agent-Dienst: https://\<Arbeitsbereichs-ID\>.agentsvc.azure-automation.net
 
 Dadurch wird die Netzwerkkonnektivität für die Kommunikation des verwalteten Knotens mit Azure Automation bereitgestellt.
-Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren, z. B. [WaitFor*-Ressourcen](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), müssen Sie auch den Datenverkehr zwischen Knoten zulassen.
+Wenn Sie DSC-Ressourcen verwenden, die zwischen Knoten kommunizieren, z. B. [WaitFor*-Ressourcen](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), müssen Sie auch den Datenverkehr zwischen Knoten zulassen.
 Informationen zu diesen Netzwerkanforderungen finden Sie in der Dokumentation für die einzelnen DSC-Ressourcen.
 
 #### <a name="proxy-support"></a>Proxyunterstützung

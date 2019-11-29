@@ -1,7 +1,7 @@
 ---
 title: 'Anwendungseinstellungen: LUIS'
 titleSuffix: Azure Cognitive Services
-description: Machen Sie sich mit den Anwendungseinstellungen für Language Understanding-Apps vertraut.
+description: Anwendungseinstellungen für Language Understanding-Apps von Azure Cognitive Services werden in der App und im Portal gespeichert.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 6d516590b90efd937789fa0847b707d2521f6459
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: bae4f09b539e26ca8c0d4ce97999776dc0911601
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932590"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961791"
 ---
 # <a name="application-settings"></a>Anwendungseinstellungen
 
@@ -150,9 +150,9 @@ Aktivieren Sie die Äußerungsnormalisierung für die Interpunktion für Ihre LU
 ] 
 ```
 
-Anhand der folgenden Äußerungen wird veranschaulicht, wie sich diakritische Zeichen auf Äußerungen auswirken:
+Anhand der folgenden Äußerungen wird veranschaulicht, wie sich die Interpunktion auf Äußerungen auswirkt:
 
-|Einstellung „false“ für diakritische Zeichen|Einstellung „true“ für diakritische Zeichen|
+|Wenn die Interpunktion auf „False“ festgelegt ist|Wenn die Interpunktion auf „True“ festgelegt ist|
 |--|--|
 |`Hmm..... I will take the cappuccino`|`Hmm I will take the cappuccino`|
 |||

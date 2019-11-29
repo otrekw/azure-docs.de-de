@@ -1,22 +1,16 @@
 ---
 title: Azure Functions – Anleitung zu Fehlerbehandlung
 description: Erfahren Sie, wie Sie Fehler in Azure Functions mit Links zu bestimmten Bindungsfehlern behandeln können.
-services: functions
-cloud: ''
-documentationcenter: ''
 author: craigshoemaker
-manager: gwallace
-ms.assetid: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: cshoe
-ms.openlocfilehash: d301940998175adb6469e46cff2de918b5cae9df
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 06dc4c5c1713ee10f263e573a698e9ea36ca2662
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155287"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227320"
 ---
 # <a name="azure-functions-error-handling"></a>Azure Functions – Fehlerbehandlung
 

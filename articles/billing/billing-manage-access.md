@@ -8,7 +8,7 @@ manager: amberb
 editor: ''
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,18 +16,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 035d2e567b6aad23801ff043652ea143e3f6105b
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: c1f9ef78431b6b293972d4adbc0f64dc49d5c4b7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709616"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74223825"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
 Sie können anderen Personen im Azure-Portal Zugriff auf die Abrechnungsinformationen für Ihr Konto gewähren. Der Typ der Abrechnungsrollen und die Anleitung zum Gewähren des Zugriffs auf die Abrechnungsinformationen variieren je nach Typ Ihres Abrechnungskontos. Informationen zur Ermittlung des Typs Ihres Abrechnungskontos finden Sie unter [Überprüfen des Typs Ihres Abrechnungskontos](#check-the-type-of-your-billing-account).
 
-Der Artikel gilt für Kunden mit Microsoft Online Services-Programmkonten. Wenn Sie Azure-Kunde mit einem Enterprise Agreement (EA) und Unternehmensadministrator sind, können Sie Abteilungsadministratoren und Kontobesitzern im Enterprise Portal Berechtigungen erteilen. Weitere Informationen finden Sie unter [Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure](billing-understand-ea-roles.md). Wenn Sie ein Kunde mit Microsoft-Kundenvereinbarung sind, helfen Ihnen die Informationen unter [Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure](billing-understand-mca-roles.md) weiter. 
+Der Artikel gilt für Kunden mit Microsoft Online Services-Programmkonten. Wenn Sie Azure-Kunde mit einem Enterprise Agreement (EA) und Unternehmensadministrator sind, können Sie Abteilungsadministratoren und Kontobesitzern im Enterprise Portal Berechtigungen erteilen. Weitere Informationen finden Sie unter [Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure](billing-understand-ea-roles.md). Wenn Sie ein Kunde mit Microsoft-Kundenvereinbarung sind, helfen Ihnen die Informationen unter [Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure](billing-understand-mca-roles.md) weiter.
 
 ## <a name="account-administrators-for-microsoft-online-service-program-accounts"></a>Kontoadministratoren für Microsoft Online Services-Programmkonten
 
@@ -60,9 +60,9 @@ Nachdem ein Kontoadministrator anderen Benutzern die entsprechenden Rollen zugew
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-manage-access/billing-search-cost-management-billing.png)
- 
+
 1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
- 
+
     ![Screenshot: Auswahl von „Abonnements“](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. Wählen Sie **Rechnungen** und dann **Zugriff auf Rechnung**.
@@ -88,7 +88,7 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-manage-access/billing-search-cost-management-billing.png)
 
 1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
- 
+
     ![Screenshot: Auswahl von „Abonnements“](./media/billing-manage-access/billing-select-subscriptions.png)
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** .

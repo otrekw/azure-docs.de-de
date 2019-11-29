@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: notification-hubs
 ms.reviewer: jowargo
 ms.lastreviewed: 10/16/2019
-ms.openlocfilehash: e493ac10858aa374362d25f1467ded237b30ca44
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 697e8ba9c9f27e8d5644e3a78950ff006290efe7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177405"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228143"
 ---
 # <a name="azure-notification-hubs-updates-for-ios-13"></a>Azure Notification Hubs-Updates für iOS 13
 
@@ -33,8 +33,7 @@ In den folgenden Codebeispielen wird gezeigt, wie Sie dieses Headerattribut in B
 
 ```csharp
 var hub = NotificationHubClient.CreateFromConnectionString(...);
-var headers = new Dictionary<string, string> {{"apns-push-type",
-"alert"}};
+var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
 var tempprop = new Dictionary<string, string> {{"message", "value"}};
 var notification = new TemplateNotification(tempprop);
 notification.Headers = headers;

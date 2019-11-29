@@ -1,5 +1,5 @@
 ---
-title: Integrieren der Remoteüberwachungslösung in Data Lake Store – Azure | Microsoft-Dokumentation
+title: Streamen von Daten aus der Remoteüberwachung in Data Lake Store – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Remoteüberwachungslösung in Azure Data Lake Store mit einem Azure Stream Analytics-Auftrag integrieren können.
 author: philmea
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a684151e01b298c60ff17ef1470e0648a425850
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449343"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889235"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
 

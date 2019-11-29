@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 6ec98d1f7956ef1460909f62384a931400b596c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2fa4bcb9db6f836346167b76e609a1437df88b04
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579627"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554991"
 ---
 # <a name="audio-content-creation"></a>Audio Content Creation
 
@@ -43,7 +43,7 @@ Dieses Diagramm zeigt die Schritte zum Optimieren und Exportieren von Sprachausg
 
 Führen Sie die folgenden Schritte aus, um eine Speech-Ressource zu erstellen und mit Speech Studio zu verbinden.
 
-1. Befolgen Sie diese Anweisungen, um sich [für ein Azure-Konto zu registrieren](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#new-azure-account) und [eine Speech-Ressource zu erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Vergewissern Sie sich, dass Ihr Tarif **S0** ist. Wenn Sie eine der neuronalen Stimmen verwenden, müssen Sie die Ressource in einer [unterstützten Region](regions.md#standard-and-neural-voices) erstellen.
+1. Befolgen Sie diese Anweisungen, um sich [für ein Azure-Konto zu registrieren](get-started.md#try-the-speech-service-using-a-new-azure-account) und [eine Speech-Ressource zu erstellen](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure). Vergewissern Sie sich, dass Ihr Tarif **S0** ist. Wenn Sie eine der neuronalen Stimmen verwenden, müssen Sie die Ressource in einer [unterstützten Region](regions.md#standard-and-neural-voices) erstellen.
 2. Melden Sie sich bei [Audio Content Creation](https://aka.ms/audiocontentcreation) an.
 3. Wählen Sie ein vorhandenes Projekt aus, oder klicken Sie auf **Neu erstellen**.
 4. Sie können Ihr Abonnement jederzeit ändern, indem Sie im oberen Navigationsbereich die Option **Einstellungen** auswählen.

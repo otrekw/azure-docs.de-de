@@ -1,25 +1,19 @@
 ---
-title: 'Azure Backup: Erstellen von Sicherungsrichtlinien mithilfe der REST-API'
+title: Erstellen von Sicherungsrichtlinien mithilfe der REST-API
 description: In diesem Artikel erfahren Sie, wie Sie Sicherungsrichtlinien (Zeitplan und Aufbewahrung) mithilfe der REST-API erstellen und verwalten.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
-ms.openlocfilehash: 7d44f99a9f2a5bfb3d3a04fe5355f7b1dc13c404
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a086fc9c8be22f177d7fb1205e3545ddc52f5c83
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747593"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554890"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Erstellen von Azure Recovery Services-Sicherungsrichtlinien mit der REST-API
 
-Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
+Die Schritte zum Erstellen einer Sicherungsrichtlinie für einen Azure Recovery Services-Tresor sind in der Dokumentation [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate) beschrieben. Wir nutzen dieses Dokument als Referenz zum Erstellen einer Richtlinie für die Sicherung von Azure-VMs.
 
 ## <a name="backup-policy-essentials"></a>Grundlagen zu Sicherungsrichtlinien
 
@@ -52,10 +46,10 @@ Um z.B. eine Richtlinie für Azure-VM-Sicherungen zu erstellen, werden im Folgen
 
 |NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
+|properties     |   True      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource-Eigenschaften        |
 |tags     |         | Object        |  Ressourcentags       |
 
-Die vollständige Liste von Definitionen im Anforderungstext finden Sie im Dokument [Schutzrichtlinien – Erstellen oder Aktualisieren](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate).
+Die vollständige Liste von Definitionen im Anforderungstext finden Sie im Dokument [Schutzrichtlinien – Erstellen oder Aktualisieren](/rest/api/backup/protectionpolicies/createorupdate).
 
 ### <a name="example-request-body"></a>Beispiel für Anforderungstext
 
@@ -160,7 +154,7 @@ Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang
 
 |NAME  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |    [ProtectionPolicyResource](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/createorupdate#protectionpolicyresource)     |  OK       |
+|200 – OK     |    [ProtectionPolicyResource](/rest/api/backup/protectionpolicies/createorupdate#protectionpolicyresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
 
 ### <a name="example-responses"></a>Beispielantworten

@@ -1,27 +1,27 @@
 ---
-title: Kopieren von Daten nach oder aus Azure Blob Storage mit Data Factory
-description: Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quelldatenspeichern nach Azure Blob Storage oder aus Blob Storage in unterstützte Senkendatenspeicher kopiert werden.
+title: Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Data Factory
+description: Hier erfahren Sie, wie Sie Daten mithilfe von Data Factory in und aus Blob Storage kopieren sowie Daten in Blob Storage transformieren.
 author: linda33wj
 manager: craigg
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 7d17d1ee60f2049dccfb8bc711f3b76bb51689b6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 45fb61ee624ae5ab159f097c233907be7ec35c98
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681361"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075643"
 ---
-# <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mit Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+# <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-azure-blob-connector.md)
 > * [Aktuelle Version](connector-azure-blob-storage.md)
 
-In diesem Artikel wird beschrieben, wie Sie Daten nach und aus Azure Blob Storage kopieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
+In diesem Artikel wird beschrieben, wie Sie Daten mithilfe der Kopieraktivität in Azure Data Factory aus und in Azure Blob Storage kopieren sowie Daten mithilfe von Datenfluss in Azure Blob Storage transformieren. Informationen zu Azure Data Factory finden Sie im [Einführungsartikel](introduction.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -35,7 +35,7 @@ Dieser Azure-BLOB-Connector wird für die folgenden Aktivitäten unterstützt:
 - [GetMetadata-Aktivität](control-flow-get-metadata-activity.md)
 - [Delete-Aktivität](delete-activity.md)
 
-Dieser Blob Storage-Connector unterstützt insbesondere Folgendes:
+Bei der Kopieraktivität unterstützt dieser Blob Storage-Connector Folgendes:
 
 - Kopieren von Daten in bzw. aus Azure Storage-Konten für allgemeine Zwecke und heißen/kalten Blob Storage. 
 - Kopieren von Blobs mithilfe des Kontoschlüssels, der Dienst-SAS, des Dienstprinzipals oder verwalteter Identitäten für Azure-Ressourcenauthentifizierungen.

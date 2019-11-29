@@ -1,6 +1,6 @@
 ---
 title: Überwachen von Vorgängen, Ereignissen und Leistungsindikatoren für öffentliche Load Balancer vom Typ „Basic“
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie die Protokollierung für Warnereignisse und Integritätsteststatus für öffentliche Load Balancer vom Typ „Basic“ aktivieren.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: df35168d0fab0b01ff11c4105a1fcc5b16e21f30
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350721"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214916"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
 

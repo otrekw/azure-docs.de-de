@@ -1,7 +1,7 @@
 ---
 title: Migrieren des Microsoft Translator-Hub-Arbeitsbereichs und der Projekte? – Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Migrieren Sie den Hub-Arbeitsbereich und die Projekte zu Custom Translator.
+description: In diesem Artikel wird erläutert, wie Sie Ihren Hub-Arbeitsbereich und Ihre Projekte in den benutzerdefinierten Translator von Azure Cognitive Services migrieren.
 author: swmachan
 manager: nitinme
 ms.service: cognitive-services
@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cd821ad8fce813d269ace8fb4945cb796c2ae758
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 7ea7b48e1fc36399a0ca173f9068faf8b88849d5
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68595736"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73836575"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Migrieren des Hub-Arbeitsbereichs und der Projekte zu Custom Translator
 
@@ -26,8 +26,8 @@ Während der Migration werden die folgenden Aktionen ausgeführt:
 * Auf alle migrierten Trainings, die nicht den Status „bereitgestellt“ hatten, wird der migrierte Entwurfsstatus angewandt. In diesem Zustand haben Sie die Möglichkeit, ein Modell mit der migrierten Definition zu trainieren – dafür fallen jedoch die regulären Trainingsgebühren an.
 * Sie können die BLEU-Bewertung aus dem Hubtraining jederzeit auf der Seite „TrainingDetails“ des Modells unter der Überschrift „Bleu score in MT Hub“ (BLEU-Punktzahl in MT-Hub) einsehen.
 
-> [!Note]
-> Damit ein Training erfolgreich ausgeführt werden kann, benötigt Custom Translator mindestens 10.000 extrahierte eindeutige Sätze. Custom Translator kann kein Training mit einem geringeren Wert als dem [empfohlenen Minimum](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences) ausführen.
+> [!Note] 
+> Damit ein Training erfolgreich ausgeführt werden kann, benötigt Custom Translator mindestens 10.000 extrahierte eindeutige Sätze. Custom Translator kann kein Training mit einem geringeren Wert als dem [empfohlenen Minimum](sentence-alignment.md#suggested-minimum-number-of-sentences) ausführen.
 
 ## <a name="find-custom-translator-workspace-id"></a>Suchen der ID für den Benutzerdefinierter Translator-Arbeitsbereich
 
@@ -122,7 +122,7 @@ Wenn Sie einen detaillierteren Migrationsbericht über Ihre Projekte, Trainings 
 * Systeme mit Sprachpaaren, die im Benutzerdefinierten Translator noch NICHT verfügbar sind, sind nur für den Datenzugriff oder das Aufheben der Bereitstellung durch den Benutzerdefinierten Translator verfügbar. Diese Projekte werden auf der Seite „Projekte“ als „Nicht verfügbar“ markiert. Sobald wir neue Sprachpaare mit dem Benutzerdefinierten Translator aktivieren, sind die Projekte aktiv zum Trainieren und Bereitstellen. 
 * Das Migrieren eines Projekts von Hub zu Benutzerdefinierter Translator hat keinen Einfluss auf Ihre Hubtrainings oder -projekte. Wir löschen während einer Migration keine Projekte oder Dokumente in Hub, und wir heben keine Bereitstellungen von Modellen auf.
 * Es ist nur eine Migration pro Projekt zulässig. Wenn Sie eine Migration für ein Projekt wiederholen müssen, kontaktieren Sie uns.
-* Custom Translator unterstützt NMT-Sprachpaare aus der und in die englische Sprache. [Sehen Sie sich die vollständige Liste der unterstützten Sprachen an](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub erfordert keine Baselinemodelle und unterstützt daher mehrere Tausend Sprachen. Sie können zwar ein nicht unterstütztes Sprachpaar migrieren, dabei werden aber nur die Dokumente und Projektdefinitionen migriert. Sie können das neue Modell nicht trainieren. Darüber hinaus werden diese Dokumente und Projekte als inaktiv angezeigt, um anzugeben, dass sie zu diesem Zeitpunkt nicht verwendbar sind. Wenn eine Unterstützung für diese Projekte und/oder Dokumente hinzugefügt wird, werden sie aktiviert und sind damit trainierbar.
+* Custom Translator unterstützt NMT-Sprachpaare aus der und in die englische Sprache. [Zeigen Sie die vollständige Liste der unterstützten Sprachen an](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization). Hub erfordert keine Baselinemodelle und unterstützt daher mehrere Tausend Sprachen. Sie können zwar ein nicht unterstütztes Sprachpaar migrieren, dabei werden aber nur die Dokumente und Projektdefinitionen migriert. Sie können das neue Modell nicht trainieren. Darüber hinaus werden diese Dokumente und Projekte als inaktiv angezeigt, um anzugeben, dass sie zu diesem Zeitpunkt nicht verwendbar sind. Wenn eine Unterstützung für diese Projekte und/oder Dokumente hinzugefügt wird, werden sie aktiviert und sind damit trainierbar.
 * Benutzerdefinierter Translator unterstützt derzeit keine einsprachigen Trainingsdaten. Wie bei nicht unterstützten Sprachpaaren können Sie einsprachige Dokumente zwar migrieren, aber sie werden als inaktiv angezeigt, bis einsprachige Daten unterstützt werden.
 * Benutzerdefinierter Translator benötigt für das Trainieren 10.000 parallele Sätze. Microsoft-Hub konnte auch mit einem kleineren Datensatz trainiert werden. Wird ein Training migriert, das diese Anforderungen nicht erfüllt, findet kein Training statt.
 

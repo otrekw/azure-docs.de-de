@@ -1,20 +1,15 @@
 ---
 title: Ausführen von Durable Functions als WebJobs – Azure
 description: Erfahren Sie, wie Sie Durable Functions so codieren und konfigurieren, dass diese in WebJobs mit dem WebJobs SDK ausgeführt werden.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 06f2019dbaff390e88c73d1aae7a635a34a64721
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614625"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232740"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Ausführen von Durable Functions als WebJobs
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fcac058a510b8b7fed5b3967bbbf439dd4c0f71
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e88669b5453069d9f6bb64e803adc65baf8afc6b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786732"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420699"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -220,5 +220,5 @@ Die folgenden Artikel führen zu weiteren Informationen zur Kennwortzurücksetzu
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 
-[Authentication]: ./media/concept-sspr-howitworks/sspr-authentication-methods.png "Verfügbare Azure AD-Authentifizierungsmethoden und erforderliche Menge"
-[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-writeback-running.png "Informationen zur Konfiguration und Problembehandlung des Kennwortrückschreibens für die lokale Integration"
+[Authentication]: ./media/concept-sspr-howitworks/manage-authentication-methods-for-password-reset.png "Verfügbare Azure AD-Authentifizierungsmethoden und erforderliche Menge"
+[Writeback]: ./media/concept-sspr-howitworks/troubleshoot-on-premises-integration-writeback.png "Informationen zur Konfiguration und Problembehandlung des Kennwortrückschreibens für die lokale Integration"

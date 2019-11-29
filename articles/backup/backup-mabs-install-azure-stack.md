@@ -1,20 +1,14 @@
 ---
-title: Installieren von Azure Backup Server in Azure Stack | Microsoft-Dokumentation
+title: Installieren von Azure Backup Server in Azure Stack
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um Workloads in Azure Stack zu schützen oder zu sichern.
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.author: dacurwin
-ms.openlocfilehash: 7716fba7a16b393143ffb9c97e7203e15bc07d82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 396621b43db2500ca9107979fca9d4d2c0646e6d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012937"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172389"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 

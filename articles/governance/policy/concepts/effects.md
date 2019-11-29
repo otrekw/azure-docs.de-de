@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c345f96ef5176c4afb3d46aaca2e9903c7911fb1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959907"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279508"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -571,6 +571,6 @@ Jede Zuweisung wird einzeln ausgewertet. Daher ist es nicht möglich, dass eine 
 - Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
 - Lesen Sie die Informationen unter [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

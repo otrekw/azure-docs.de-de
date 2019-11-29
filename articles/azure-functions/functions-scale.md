@@ -1,21 +1,16 @@
 ---
-title: Skalierung und Hosting von Azure Functions | Microsoft-Dokumentation
+title: Skalierung und Hosting von Azure Functions
 description: Erfahren Sie, wie Sie zwischen einem Azure Functions-Verbrauchstarif und -Premium-Plan (Premium-Tarif) wählen.
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, Functions, Verbrauchstarif, Premium-Plan, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ebb2fcf0f626a82bcb5e6439183ba98c39c58588
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576060"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322882"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
@@ -32,9 +27,6 @@ Sowohl beim Verbrauchsplan als auch beim Premium-Plan wird beim Ausführen Ihres
 Der Premium-Plan bietet zusätzliche Features wie Premium-Compute-Instanzen, die Möglichkeit, Instanzen unbegrenzt betriebsbereit zu halten, und VNET-Konnektivität.
 
 Mit dem App Service-Plan können Sie eine von Ihnen verwaltete dedizierte Infrastruktur nutzen. Die Skalierung Ihrer Funktions-App basiert nicht auf Ereignissen, d.h. sie wird niemals auf 0 (null) herunterskaliert. (Hierzu muss [Always On](#always-on) aktiviert sein.)
-
-> [!NOTE]
-> Sie können zwischen dem Verbrauchstarif und dem Premium-Plan wechseln, indem Sie die Plan-Eigenschaft der Funktions-App-Ressource ändern.
 
 ## <a name="hosting-plan-support"></a>Unterstützung für Hostingpläne
 

@@ -1,20 +1,20 @@
 ---
 title: Übersicht über Azure Firewall-Protokolle und -Metriken
-description: Dieser Artikel bietet eine Übersicht über die Diagnoseprotokolle und Metriken in Azure Firewall.
+description: Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876557"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166986"
 ---
-# <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
+# <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-Protokolle und -Metriken
 
 Azure Firewall kann mithilfe von Firewallprotokollen überwacht werden. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen.
 

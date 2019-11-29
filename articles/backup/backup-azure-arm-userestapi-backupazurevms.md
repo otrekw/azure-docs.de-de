@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Sichern virtueller Azure-Computer mithilfe der REST-API'
+title: Sichern virtueller Azure-Computer mithilfe der REST-API
 description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azure Backup mithilfe der REST-API konfigurieren, initiieren und verwalten.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929169"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554906"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -168,7 +162,7 @@ Im Beispiel ergeben die Werte oben Folgendes:
 
 ### <a name="enabling-protection-for-the-azure-vm"></a>Aktivieren des Schutzes für den virtuellen Azure-Computer
 
-Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](https://docs.microsoft.com/rest/api/backup/protectionpolicies(2019-05-13)/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
+Nachdem der entsprechende virtuelle Computer zwischengespeichert und ermittelt wurde, wählen Sie die Richtlinie zum Schutz aus. Weitere Informationen zu vorhandenen Richtlinien im Tresor finden Sie in der [Liste der Sicherungsrichtlinien](https://docs.microsoft.com/rest/api/backup/backuppolicies/list). Wählen Sie dann die [entsprechende Richtlinie](/rest/api/backup/protectionpolicies/get) aus, indem Sie auf den Richtliniennamen verweisen. Informationen zum Erstellen von Richtlinien finden Sie im [Tutorial zum Erstellen von Richtlinien](backup-azure-arm-userestapi-createorupdatepolicy.md). Im Beispiel unten wurde „DefaultPolicy“ ausgewählt.
 
 Beim Aktivieren des Schutzes handelt es sich um einen asynchronen *PUT*-Vorgang, mit dem ein „geschütztes Element“ erstellt wird.
 

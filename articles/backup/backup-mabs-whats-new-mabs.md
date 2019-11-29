@@ -1,19 +1,14 @@
 ---
 title: Neuerungen in Microsoft Azure Backup Server
 description: Microsoft Azure Backup Server bietet Ihnen erweiterte Sicherungsfunktionen für den Schutz von u.a. virtuellen Computern, Dateien, Ordnern und Workloads. Erfahren Sie, wie Sie Azure Backup Server V3 installieren oder ein Upgrade auf diese Version ausführen.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: dacurwin
-ms.openlocfilehash: 086856865efba2d1b5e1b8e359ab1e4616aabec9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 564b11ebf14652166733c226485dfab94e69dfbb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091545"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172222"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Neuerungen in Microsoft Azure Backup Server
 

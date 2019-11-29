@@ -1,20 +1,16 @@
 ---
 title: Funktionsweise und Konfiguration von Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
 description: Beschreibt die Prozesse, die zur Funktionsweise von Azure Dev Spaces beitragen, und beschreibt, wie diese in der Konfigurationsdatei „azds.yaml“ konfiguriert werden.
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9efae0e9d6bc53e08dce604fa79aa29e158ecabd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670814"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280147"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Funktionsweise und Konfiguration von Azure Dev Spaces
 
@@ -247,7 +243,7 @@ Bestimmte Projektdateien, die statische Objekte sind, etwa HTML-, CSS- und CSHTM
 
 Die Art und Weise, wie *devhostagent* die vorherigen Schritte ausführt, ist in der Konfigurationsdatei `azds.yaml` konfiguriert. Diese Konfiguration ist in einem späteren Abschnitt beschrieben.
 
-Aktualisierungen an Projektdateien, etwa Dockerfile-Dateien, CSPROJ-Dateien oder irgendein Teil des Helm-Charts, bedingen, dass der Container der Anwendung neu erstellt und neu bereitgestellt werden muss. Wird eine dieser Dateien mit dem Entwicklungsbereich synchronisiert, führt der Controller den [helm upgrade](https://helm.sh/docs/helm/#helm-upgrade)-Befehl aus, und der Container der Anwendung wird neu erstellt und neu bereitgestellt.
+Aktualisierungen an Projektdateien, etwa Dockerfile-Dateien, CSPROJ-Dateien oder irgendein Teil des Helm-Charts, bedingen, dass der Container der Anwendung neu erstellt und neu bereitgestellt werden muss. Wird eine dieser Dateien mit dem Entwicklungsbereich synchronisiert, führt der Controller den [helm upgrade](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure)-Befehl aus, und der Container der Anwendung wird neu erstellt und neu bereitgestellt.
 
 ### <a name="file-synchronization"></a>Dateisynchronisierung
 

@@ -8,12 +8,12 @@ ms.author: robreed
 ms.date: 06/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82f02f0ac11c80161f709b3b493306bc8aafc8bd
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72435454"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231576"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwenden von Modulen in Azure Automation
 
@@ -82,7 +82,7 @@ Nachfolgend finden Sie eine Liste der Cmdlets im internen `Orchestrator.AssetMan
 
 ## <a name="add-a-connection-type-to-your-module"></a>Hinzufügen eines Verbindungstyps zu Ihrem Modul
 
-Sie können einen benutzerdefinierten [Verbindungstyp](../automation-connections.md) für Ihr Automation-Konto festlegen, indem Sie Ihrem Modul eine optionale Datei hinzufügen. Mit dieser Metadatendatei legen Sie einen Azure Automation-Verbindungstyp fest, den Sie mit dem Cmdlets des Moduls in Ihrem Automation-Konto verwenden möchten. Dazu müssen Sie ein PowerShell-Modell erstellen. Weitere Informationen zum Erstellen von Modulen finden Sie unter [How to Write a PowerShell Script Module](/powershell/developer/module/how-to-write-a-powershell-script-module) (Schreiben von PowerShell-Skriptmodulen).
+Sie können einen benutzerdefinierten [Verbindungstyp](../automation-connections.md) für Ihr Automation-Konto festlegen, indem Sie Ihrem Modul eine optionale Datei hinzufügen. Mit dieser Metadatendatei legen Sie einen Azure Automation-Verbindungstyp fest, den Sie mit dem Cmdlets des Moduls in Ihrem Automation-Konto verwenden möchten. Dazu müssen Sie ein PowerShell-Modell erstellen. Weitere Informationen zum Erstellen von Modulen finden Sie unter [How to Write a PowerShell Script Module](/powershell/scripting/developer/module/how-to-write-a-powershell-script-module) (Schreiben von PowerShell-Skriptmodulen).
 
 ![Verwenden einer benutzerdefinierten Verbindung im Azure-Portal](../media/modules/connection-create-new.png)
 

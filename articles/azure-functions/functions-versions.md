@@ -1,18 +1,14 @@
 ---
 title: Übersicht über die Runtimeversionen von Azure Functions
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen Sie die Unterschiede kennen, und erfahren Sie, wie Sie die Version auswählen, die sich am besten für Ihre Anforderungen eignet.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.author: glenga
-ms.openlocfilehash: 9ca7006bb842cbe235d2e982e611613e1fd74ed9
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 53da5869b4768c95fd225fb15db60f4301e537d4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597376"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226552"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 

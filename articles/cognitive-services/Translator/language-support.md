@@ -1,7 +1,7 @@
 ---
 title: Sprachunterstützung – Textübersetzungs-API
 titleSuffix: Azure Cognitive Services
-description: Eine Liste der von der Textübersetzungs-API unterstützten natürlichen Sprachen.
+description: Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetzung von Texten mithilfe der neuronalen maschinellen Übersetzung (Neural Machine Translation, NMT).
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: cb0552612d95500e01edd91aff36406d4c2282bd
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70909977"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73837329"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 

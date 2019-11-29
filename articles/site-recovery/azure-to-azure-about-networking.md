@@ -1,21 +1,21 @@
 ---
-title: Netzwerkkonzepte für die Notfallwiederherstellung zwischen Azure-Standorten mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer mit Azure Site Recovery
 description: Bietet eine Übersicht über die Netzwerkkonzepte für die Replikation von Azure-VMs mithilfe von Azure Site Recovery.
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 3/29/2019
+ms.date: 10/22/2019
 ms.author: sutalasi
-ms.openlocfilehash: 9c65d6055807ee2735f1915e8ca289dc0754535b
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70736393"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954211"
 ---
-# <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
+# <a name="about-networking-in-azure-vm-disaster-recovery"></a>Informationen zu Netzwerken für die Notfallwiederherstellung für virtuelle Azure-Computer
 
 
 
@@ -48,7 +48,7 @@ Lassen Sie die folgenden Site Recovery-URLs zu, wenn Sie einen URL-basierten Fir
 
 **URL** | **Details**  
 --- | ---
-*.blob.core.windows.net | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie die spezifischen Speicherkonten-URLs (z. B. cache1.blob.core.windows.net and cache2.blob.core.windows.net) anstelle von „*.blob.core.windows.net“ in die Whitelist aufnehmen.
+*.blob.core.windows.net | Erforderlich, damit Daten in das Cachespeicherkonto in der Quellregion über die VM geschrieben werden können. Wenn Sie alle Cachespeicherkonten für Ihre VMs kennen, können Sie den Zugriff auf die spezifischen Speicherkonten-URLs (z. B. cache1.blob.core.windows.net and cache2.blob.core.windows.net) anstelle von „*.blob.core.windows.net“ zulassen.
 login.microsoftonline.com | Erforderlich für die Autorisierung und Authentifizierung bei den Site Recovery-Dienst-URLs.
 *.hypervrecoverymanager.windowsazure.com | Erforderlich, um die Kommunikation mit dem Site Recovery-Dienst über die VM zu ermöglichen. Sie können die entsprechende Site Recovery-IP verwenden, wenn Ihr Firewallproxy IPs unterstützt.
 *.servicebus.windows.net | Erforderlich, damit die Site Recovery-Überwachungs- und -Diagnosedaten über die VM geschrieben werden können. Sie können die entsprechende Site Recovery-Überwachungs-IP verwenden, wenn Ihr Firewallproxy IPs unterstützt.
@@ -62,7 +62,7 @@ Wenn Sie einen IP-basierten Firewallproxy oder NSG-Regeln zum Steuern der ausgeh
     - Lassen Sie diese Adressen zu, damit Daten von der VM in das Cachespeicherkonto geschrieben werden können.
 - Erstellen Sie basierend auf der NSG-Regel ein [Azure Active Directory-Diensttag (AAD)](../virtual-network/security-overview.md#service-tags) für den Zugriff auf alle IP-Adressen für AAD.
     - Wenn in Azure Active Directory (AAD) später neue Adressen hinzugefügt werden, müssen Sie neue NSG-Regeln erstellen.
-- IP-Adressen von Site Recovery-Dienstendpunkten – in einer [XML-Datei ](https://aka.ms/site-recovery-public-ips) verfügbar und von Ihrem Zielstandort abhängig.
+- IP-Adressen von Site Recovery-Dienstendpunkten – in einer [XML-Datei ](https://aka.ms/site-recovery-public-ips) verfügbar und von Ihrem Zielstandort abhängig. 
 - Wir empfehlen, die erforderlichen NSG-Regeln in einer Test-Netzwerksicherheitsgruppe zu erstellen und sicherzustellen, dass keine Probleme vorliegen, bevor Sie die Regeln in einer Netzwerksicherheitsgruppe in der Produktionsumgebung erstellen.
 
 
@@ -117,6 +117,8 @@ Die Site Recovery-IP-Adressbereiche lauten wie folgt:
    Deutschland, Westen-Mitte | 51.116.156.176 | 51.116.154.192
    Schweiz, Westen | 51.107.231.223| 51.107.154.128
    Schweiz, Norden | 51.107.68.31| 51.107.58.128
+   Norwegen, Osten | 51.120.100.64| 51.120.98.128
+   Norwegen, Westen | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
 
@@ -154,6 +156,7 @@ Diese Regeln sind erforderlich, damit nach dem Failover die Replikation von der 
    **Location** | **IP-Adressen für Site Recovery** |  **IP-Adressen zur Site Recovery-Überwachung**
     --- | --- | ---
    East US | 13.82.88.226 | 104.45.147.24
+
 
 ## <a name="network-virtual-appliance-configuration"></a>Konfiguration der virtuellen Netzwerkappliance
 

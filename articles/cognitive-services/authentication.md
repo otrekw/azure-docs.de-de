@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276778"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423944"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -119,7 +119,7 @@ Ein Teil von Azure Cognitive Services akzeptiert (und in einigen Fällen erforde
 * Speech Services: Text-to-Speech-REST-API
 
 >[!NOTE]
-> QnA Maker verwendet ebenfalls den Autorisierungsheader, erfordert allerdings einen Endpunktschlüssel. Weitere Informationen finden Sie unter [QnA Maker: Erhalten einer Antwort von der Wissensdatenbank](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md).
+> QnA Maker verwendet ebenfalls den Autorisierungsheader, erfordert allerdings einen Endpunktschlüssel. Weitere Informationen finden Sie unter [QnA Maker: Erhalten einer Antwort von der Wissensdatenbank](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md).
 
 >[!WARNING]
 > Die Dienste, die Authentifizierungstoken unterstützen, können sich im Lauf der Zeit ändern. Sehen Sie in der API-Referenz zu einem Dienst nach, bevor Sie diese Authentifizierungsmethode verwenden.

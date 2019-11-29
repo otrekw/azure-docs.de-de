@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: a560cc526e73f3ce7e851f2a545f9b16fa53b423
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65501694"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483531"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
@@ -61,7 +61,7 @@ Zur Besprechung der in diesem Artikel aufgeführten Lösungen müssen Sie einige
 - **DNS-A-Datensatz:** „A-Datensätze“ sind Zeiger, die eine Domäne auf eine IPv4-Adresse verweisen. 
 - **CNAME oder kanonischen Namen** – Dieser Eintragstyp wird zum Verweis auf einen anderen DNS-Eintrag verwendet. CNAME antwortet nicht mit einer IP-Adresse, sondern mit dem Zeiger auf den Eintrag, der die IP-Adresse enthält. 
 - **Gewichtetes Routing** – Es ist möglich, eine Gewichtung mit den Dienstendpunkten zu verknüpfen und dann den Datenverkehr auf der Grundlage der zugewiesenen Gewichtung zu verteilen. Diese Routingmethode ist eine der vier Mechanismen zum Datenverkehrsrouting, die in Traffic Manager verfügbar sind. Weitere Informationen finden Sie unter [Gewichtete Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#weighted).
-- **Prioritätsbasiertes Routing** – Das prioritätsbasierte Routing erfolgt auf Grundlage von Systemdiagnosen der Endpunkte. Standardmäßig sendet Azure Traffic Manager sämtlichen Datenverkehr an den Endpunkt mit der höchsten Priorität, und bei einem Fehler oder Notfall leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Weitere Informationen finden Sie unter [Prioritätsbasierte Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#priority).
+- **Prioritätsbasiertes Routing** – Das prioritätsbasierte Routing erfolgt auf Grundlage von Systemdiagnosen der Endpunkte. Standardmäßig sendet Azure Traffic Manager sämtlichen Datenverkehr an den Endpunkt mit der höchsten Priorität, und bei einem Fehler oder Notfall leitet Traffic Manager den Datenverkehr an den sekundären Endpunkt weiter. Weitere Informationen finden Sie unter [Prioritätsbasierte Methode für das Datenverkehrsrouting](../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method).
 
 ## <a name="manual-failover-using-azure-dns"></a>Manuelles Failover mit Azure DNS
 Die Azure DNS-Lösung für manuelles Failover für die Notfallwiederherstellung verwendet den Standard-DNS-Mechanismus für ein Failover zum Sicherungsstandort. Die manuelle Option über Azure DNS funktioniert am besten in Kombination mit dem Ansatz Standbymodus „Verzögert betriebsbereit“ oder dem Ansatz mit Steuerlicht. 

@@ -1,5 +1,5 @@
 ---
-title: Visualisieren von Telemetriedaten der Gerätesimulation mit Time Series Insights – Azure | Microsoft-Dokumentation
+title: Visualisieren von simulierten Telemetriedaten mit Time Series Insights – Azure | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine Time Series Insights-Umgebung konfigurieren und die vom Solution Accelerator für Gerätesimulation generierten Telemetriedaten untersuchen und analysieren.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.date: 08/20/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 5d20adc11e0d679e12fd060e719593a50180db8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2bbd7911a40d6a256d478e2533ad2469b8fd6973
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65834848"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889344"
 ---
 # <a name="use-time-series-insights-to-visualize-telemetry-sent-from-the-device-simulation-solution-accelerator"></a>Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden
 
@@ -66,8 +66,8 @@ Bei den nachstehenden Schritten wird die Azure-Befehlszeilenschnittstelle in der
     | Einstellung | Wert |
     | ------- | ----- |
     | Umgebungsname | Im nachstehenden Screenshot wird der Name **Contoso-TSI** verwendet. Wählen Sie Ihren eigenen eindeutigen Namen, wenn Sie diesen Schritt durchführen. |
-    | Abonnement | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
-    | Ressourcengruppe | **Contoso-Simulation**. Verwenden Sie den Namen Ihres Solution Accelerators. |
+    | Subscription | Wählen Sie Ihr Azure-Abonnement in der Dropdownliste aus. |
+    | Resource group | **Contoso-Simulation**. Verwenden Sie den Namen Ihres Solution Accelerators. |
     | Location | In diesem Beispiel wird **USA, Osten** verwendet. Erstellen Sie Ihre Umgebung in derselben Region wie Ihren Accelerator für Gerätesimulation. |
     | Sku |**S1** |
     | Capacity | **1** |

@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6a17993d7bc4ff54b3d55fa5b5bb141463896e32
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a2472064720af0a25568a2f173b971898b1f2e25
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488697"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123118"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -24,7 +24,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Language Under
 
 ## <a name="whats-new"></a>Neuigkeiten
 
-[Erfahren Sie mehr über](whats-new.md) Neuerungen in Language Understanding.
+[Erfahren Sie mehr über](whats-new.md) Neuerungen in Language Understanding (LUIS).
 
 <a name="luis-authoring"></a>
 
@@ -50,7 +50,7 @@ Ja, beim Hinzufügen von weiteren Bezeichnungen für andere Absichten sollten Si
 Informationen hierzu finden Sie im Tutorial zur [Bing-Rechtschreibprüfungs-API v7](luis-tutorial-bing-spellcheck.md). LUIS setzt die Einschränkungen um, die durch die Bing-Rechtschreibprüfungs-API v7 vorgegeben werden.
 
 ### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Wie kann ich eine LUIS-App programmgesteuert bearbeiten?
-Sie können Ihre LUIS-App mit der [Erstellungs-API](https://go.microsoft.com/fwlink/?linkid=2092087) programmgesteuert bearbeiten. Unter [Aufrufen der Erstellungs-API für LUIS-Apps](./luis-quickstart-node-add-utterance.md) und [Build a LUIS app programmatically using Node.js (Programmgesteuertes Erstellen einer LUIS-App mit Node.js)](./luis-tutorial-node-import-utterances-csv.md) finden Sie Beispiele zum Aufrufen der Erstellungs-API. Die Erstellungs-API setzt voraus, dass Sie einen [Erstellungsschlüssel](luis-concept-keys.md#azure-resources-for-luis) anstelle eines Endpunktschlüssels verwenden. Bei der programmgesteuerte Erstellung sind bis 1.000.000 Aufrufe pro Monat und fünf Transaktionen pro Sekunde möglich. Weitere Informationen zu den mit LUIS verwendeten Schlüsseln finden Sie unter [Verwalten von Schlüsseln](./luis-concept-keys.md).
+Sie können Ihre LUIS-App mit der [Erstellungs-API](https://go.microsoft.com/fwlink/?linkid=2092087) programmgesteuert bearbeiten. Unter [Aufrufen der Erstellungs-API für LUIS-Apps](./get-started-get-model-rest-apis.md) und [Build a LUIS app programmatically using Node.js (Programmgesteuertes Erstellen einer LUIS-App mit Node.js)](./luis-tutorial-node-import-utterances-csv.md) finden Sie Beispiele zum Aufrufen der Erstellungs-API. Die Erstellungs-API setzt voraus, dass Sie einen [Erstellungsschlüssel](luis-concept-keys.md#azure-resources-for-luis) anstelle eines Endpunktschlüssels verwenden. Bei der programmgesteuerte Erstellung sind bis 1.000.000 Aufrufe pro Monat und fünf Transaktionen pro Sekunde möglich. Weitere Informationen zu den mit LUIS verwendeten Schlüsseln finden Sie unter [Verwalten von Schlüsseln](./luis-concept-keys.md).
 
 ### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Wo finde ich das Feature für Muster, mit den bisher nach regulären Ausdrücken gesucht werden konnte?
 Das bisherige **Feature für Muster** ist als veraltet gekennzeichnet und wurde durch **[Muster](luis-concept-patterns.md)** ersetzt.
@@ -74,7 +74,7 @@ Im LUIS-Portal können Sie Text für genau die Entität bezeichnen, die Sie extr
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Ich habe versucht, eine App- oder Versionsdatei zu importieren, aber eine Fehlermeldung erhalten. Was ist passiert? 
 
-Erfahren Sie mehr über [Fehler beim Versionsimport](luis-how-to-manage-versions.md#import-errors) und [Fehler beim App-Import](luis-how-to-start-new-app.md#import-errors).
+Erfahren Sie mehr über [Fehler beim Versionsimport](luis-how-to-manage-versions.md#import-errors).
 
 <a name="luis-collaborating"></a>
 

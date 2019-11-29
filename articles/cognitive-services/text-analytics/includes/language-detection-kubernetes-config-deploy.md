@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: e3051a72a115e711a99ecd68756967e2cef0cc04
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c39df1e6af292d3774c6cba62663454bd2d8ad28
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130055"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383430"
 ---
 ### <a name="deploy-the-language-detection-container-to-an-aks-cluster"></a>Bereitstellen des Sprachenerkennungscontainers für einen AKS-Cluster
 
@@ -66,6 +66,13 @@ ms.locfileid: "71130055"
             image: mcr.microsoft.com/azure-cognitive-services/language
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -91,7 +98,7 @@ ms.locfileid: "71130055"
 1. Führen Sie den Kubernetes-Befehl `apply` mit der Datei *language.yaml* als Ziel aus:
 
     ```console
-    kuberctl apply -f language.yaml
+    kubectl apply -f language.yaml
     ```
 
     Nachdem der Befehl die Bereitstellungskonfiguration erfolgreich angewendet hat, wird eine Meldung ähnlich der folgenden Ausgabe angezeigt:

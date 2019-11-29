@@ -1,23 +1,14 @@
 ---
 title: Erstellen und Klonen von Jupyter Notebooks in Azure
 description: Azure Notebooks-Projekte verwalten eine Sammlung von Notebooks und verwandten Dateien, die Sie neu erstellen oder aus einer anderen Quelle klonen können.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 9b6a49e2-1d71-4c0b-9e5d-16e059427e38
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/25/2019
-ms.author: kraigb
-ms.openlocfilehash: 3e0c49d1141d976558ece325baaa99fc9981275e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc5425312637710f0b9f94493b8cfb4a48582236
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496717"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277581"
 ---
 # <a name="create-and-clone-projects"></a>Erstellen und Klonen von Projekten
 

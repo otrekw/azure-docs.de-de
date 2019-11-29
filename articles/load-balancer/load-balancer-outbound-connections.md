@@ -1,6 +1,6 @@
 ---
 title: Ausgehende Verbindungen in Azure
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: In diesem Artikel wird erläutert, wie Azure virtuellen Computern die Kommunikation mit öffentlichen Internetdiensten ermöglicht.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 9dcc5fa201c08ca4b1e65b8aae88118731eba427
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 5bdcd955919a91760f16287a62956542cfaa47c5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881073"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225281"
 ---
 # <a name="outbound-connections-in-azure"></a>Ausgehende Verbindungen in Azure
 

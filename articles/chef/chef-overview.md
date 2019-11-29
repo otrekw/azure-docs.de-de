@@ -1,19 +1,15 @@
 ---
 title: Verwenden von Chef mit Azure
 description: Einführung in die Verwendung von Chef zum Konfigurieren und Testen Ihrer Azure-Infrastruktur
-ms.service: virtual-machines-linux
 keywords: Azure, Chef, Devops, virtuelle Computer, Übersicht, Automatisieren
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656573"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158008"
 ---
 # <a name="using-chef-with-azure"></a>Verwenden von Chef mit Azure
 [Chef](https://www.chef.io) ist eine leistungsstarke Automatisierungsplattform, die die Infrastruktur des virtuellen Computers in Azure in Code transformiert. Chef automatisiert die Art, in der Infrastruktur in Ihrem Netzwerk – unabhängig von seiner Größe – konfiguriert, bereitgestellt und verwaltet wird.

@@ -1,22 +1,22 @@
 ---
 author: ggailey777
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: ad87964216db72cfef447a18d4cd05b8a976491b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73476931"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322901"
 ---
 | Resource | [Verbrauchstarif](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontales Skalieren | Ereignisgesteuert | Ereignisgesteuert | [Manuelle Skalierung/Autoskalierung](../articles/app-service/manage-scale-up.md) | 
-| Maximale Anzahl Instanzen | 200 | 20 | 10 – 20 |
+| Maximale Anzahl Instanzen | 200 | 100 | 10 – 20 |
 |Standardmäßige [Timeoutzeit](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |5 | 30 |30<sup>2</sup> |
-|Maximale [Timeoutzeit](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | unbounded | unbegrenzt<sup>3</sup> |
+|Maximale [Timeoutzeit](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | 60 | unbegrenzt<sup>3</sup> |
 | Maximale Anzahl ausgehender Verbindungen (pro Instanz) | 600 aktive (insgesamt 1.200) | unbounded | unbounded |
 | Maximale Anforderungsgröße (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maximale Länge der Abfragezeichenfolge<sup>4</sup> | 4096 | 4096 | 4096 |

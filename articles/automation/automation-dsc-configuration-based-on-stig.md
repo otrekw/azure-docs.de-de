@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 685b6bda09026e64154590afd66bdfbec43b8b1e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 224744bd49add514be165f4955739651fcbf6b61
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243525"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231671"
 ---
 # <a name="configuration-based-on-stig"></a>Konfiguration basierend auf STIG
 
@@ -43,6 +43,6 @@ Um PowerSTIG zu testen, besuchen Sie den [PowerShell-Katalog](http://www.powersh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Windows PowerShell DSC – Übersicht](/powershell/dsc/overview/overview)
-- [DSC-Ressourcen](/powershell/dsc/resources/resources)
-- [Konfigurieren des lokalen Konfigurations-Managers](/powershell/dsc/managing-nodes/metaconfig)
+- [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview)
+- [DSC-Ressourcen](/powershell/scripting/dsc/resources/resources)
+- [Konfigurieren des lokalen Konfigurations-Managers](/powershell/scripting/dsc/managing-nodes/metaconfig)

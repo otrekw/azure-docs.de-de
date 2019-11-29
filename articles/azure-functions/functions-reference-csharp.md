@@ -2,18 +2,15 @@
 title: C#-Skriptentwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Azure Functions mithilfe von C#-Skript entwickelt wird.
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 8bbfef9d9873669120f792bce3e50e457791d4b0
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3b05b0a4a56332cce1068f53a23a7d118a2e6bfc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787193"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230417"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 

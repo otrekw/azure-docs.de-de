@@ -3,22 +3,22 @@ title: Visualisieren von Daten über Azure Data Explorer mit Grafana
 description: In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Grafana einrichten und dann Daten aus einem Beispielcluster visualisieren.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 6/30/2019
-ms.openlocfilehash: f1eb9fb0d81d1e9cdf3dd8628a6d7ad1f0ccce92
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 11/13/2019
+ms.openlocfilehash: a1c52007ea86ca0812c4a73a92ce81db6ddadc7b
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582004"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038022"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Visualisieren von Daten über Azure Data Explorer in Grafana
 
 Grafana ist eine Analyseplattform, mit der Sie Daten abfragen und visualisieren sowie Dashboards auf Basis Ihrer Visualisierungen erstellen und freigeben können. Grafana stellt ein *Plug-In* für den Azure Data Explorer zur Verfügung, mit dem Sie Daten aus dem Azure Data Explorer verbinden und visualisieren können. In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Grafana einrichten und dann Daten aus einem Beispielcluster visualisieren.
 
-Anhand des folgenden Videos lernen Sie, wie Sie das Azure Data Explorer-Plugin von Grafana verwenden, wie Sie Azure Data Explorer als Datenquelle für Grafana einrichten, und wie Sie die Daten dann visualisieren. 
+Anhand des folgenden Videos lernen Sie, wie Sie Azure Data Explorer mithilfe des Azure Data Explorer-Plugins von Grafana als Datenquelle für Grafana einrichten und die Daten anschließend visualisieren. 
 
 > [!VIDEO https://www.youtube.com/embed/fSR_qCIFZSA]
 
@@ -26,7 +26,7 @@ Alternativ können Sie die [Datenquelle auch konfigurieren](#configure-the-data-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Folgendes ist zum Abschließen dieser Vorgehensweise erforderlich:
+Sie benötigen Folgendes, um diesen Artikel durchzuarbeiten:
 
 * [Grafana, Version 5.3.0 oder höher,](https://docs.grafana.org/installation/) für Ihr Betriebssystem
 
@@ -66,7 +66,7 @@ Wenn der Dienstprinzipal der Rolle *Betrachter* zugeordnet ist, geben Sie jetzt 
 
 1. Wählen Sie **Speichern und testen** aus.
 
-    Wenn der Test erfolgreich war, wechseln Sie zum nächsten Abschnitt. Wenn Probleme auftreten, überprüfen Sie die in Grafana angegebenen Werte, und wiederholen Sie die vorherigen Schritte.
+    Wenn der Test erfolgreich war, wechseln Sie zum nächsten Abschnitt. Sollten irgendwelche Probleme auftreten, überprüfen Sie die in Grafana angegebenen Werte, und wiederholen Sie die vorherigen Schritte.
 
 ## <a name="visualize-data"></a>Visualisieren von Daten
 
@@ -111,8 +111,26 @@ Nachdem Sie den Azure Data Explorer als Datenquelle für Grafana konfiguriert ha
 
 1. Wählen Sie im oberen Menü das Speichersymbol aus: ![Symbol „Speichern“](media/grafana/save-icon.png).
 
+## <a name="create-alerts"></a>Erstellen von Warnungen
+
+1. Wählen Sie im Startdashboard **Warnung** > **Benachrichtigungskanäle** aus, um einen neuen Benachrichtigungskanal zu erstellen.
+
+    ![Benachrichtigungskanal erstellen](media/grafana/create-notification-channel.png)
+
+1. Erstellen Sie einen neuen **Benachrichtigungskanal**, und wählen Sie **Speichern** aus.
+
+    ![Erstellen eines neuen Benachrichtigungskanals](media/grafana/new-notification-channel-adx.png)
+
+1. Wählen Sie im **Dashboard** den Eintrag **Bearbeiten** aus der Dropdownliste aus.
+
+    ![Im Dashboard „Bearbeiten“ auswählen](media/grafana/edit-panel-4-alert.png)
+
+1. Wählen Sie das Glockensymbol aus, um den Bereich **Warnung** zu öffnen. Wählen Sie **Warnung erstellen** aus. Füllen Sie die folgenden Eigenschaften im Bereich **Warnung** aus:
+
+    ![Warnungseigenschaften](media/grafana/alert-properties.png)
+
+1. Wählen Sie das Symbol **Dashboard speichern** aus, um Ihre Änderungen zu speichern.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)
-
-* [Tutorial: Visualisieren von Daten über Azure Data Explorer in Power BI](visualize-power-bi.md)

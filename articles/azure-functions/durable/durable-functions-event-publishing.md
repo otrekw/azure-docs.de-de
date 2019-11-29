@@ -1,20 +1,14 @@
 ---
 title: Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure Event Grid für Durable Functions konfigurieren.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: glenga
-ms.openlocfilehash: 4e1a714a6d46a9422fb298749cfe30ac70ffc8c3
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614905"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231447"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 

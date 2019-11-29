@@ -2,18 +2,14 @@
 title: Verwenden von Habitat zum Bereitstellen Ihrer Anwendung in Azure
 description: Erfahren Sie, wie Sie Ihre Anwendung auf virtuellen Azure-Computern und in Containern einheitlich bereitstellen.
 keywords: Azure, Chef, Devops, virtuelle Computer, Übersicht, automatisieren, Habitat
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: de444836c04d1d37a19a006ce4eafdcae867ca5a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60388810"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158064"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Verwenden von Habitat zum Bereitstellen Ihrer Anwendung in Azure
 [Habitat](https://www.habitat.sh/) ist ein Anwendungspaket und Laufzeitsystem, die Anwendung mit ihrer Automatisierung als Einheit der Bereitstellung gemeinsam bündelt. Dies ermöglicht ultimative Portabilität für die Anwendung, Container, was wiederum deren Bereitstellung in Containern, virtuellen Computern, auf Bare-Metal oder in PaaS gestattet, ohne dass alles neu geschrieben oder gepackt werden müsste.

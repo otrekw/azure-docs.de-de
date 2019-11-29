@@ -9,24 +9,31 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 09/26/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 734389c92ede88d336df60a1a79a738d2abcfa92
-ms.sourcegitcommit: 6fe40d080bd1561286093b488609590ba355c261
+ms.openlocfilehash: a199821c4db7fd8131ec54700b8c999dfe604a6e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71703163"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222021"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Ändern von Äußerungsdaten vor oder während der Vorhersage
 LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine [Korrektur der Rechtschreibung](luis-tutorial-bing-spellcheck.md) und das Beheben von Zeitzonenproblemen für die vordefinierte Entität [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Korrigieren von Rechtschreibfehlern in Äußerungen
+
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+
+
 LUIS verwendet die [Bing-Rechtschreibprüfungs-API V7](../Bing-Spell-Check/overview.md) um Rechtschreibfehler in Äußerungen zu korrigieren. LUIS benötigt den diesem Dienst zugewiesenen Schlüssel. Erstellen Sie den Schlüssel, und fügen Sie den Schlüssel dann als Parameter der Abfragezeichenfolge an den [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356) hinzu. 
 
-Sie können Rechtschreibfehler auch im **Testbereich** korrigieren, indem Sie den [Schlüssel eingeben](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Der Schlüssel wird als Sitzungsvariable im Browser des Testbereichs beibehalten. Fügen Sie den Schlüssel dem Testbereich in jeder Browsersitzung hinzu, in der Sie Rechtschreibfehler korrigieren möchten. 
+<!--
+You can also correct spelling errors in the **Test** panel by [entering the key](luis-interactive-test.md#view-bing-spell-check-corrections-in-test-panel). The key is kept as a session variable in the browser for the Test panel. Add the key to the Test panel in each browser session you want spelling corrected. 
 
-Die Verwendungen des Schlüssels im Testbereich und am Endpunkt werden zum Kontingent für die [Schlüsselverwendung](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/) hinzugerechnet. LUIS implementiert die Limits für die Bing-Rechtschreibprüfung bezüglich der Textlänge. 
+Usage of the key in the test panel and at the endpoint count toward the [key usage](https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/) quota. LUIS implements Bing Spell Check limits for text length. 
+
+-->
 
 Der Endpunkt benötigt zwei Parameter, damit Rechtschreibkorrekturen funktionieren:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 675d1889fc74474a1d732cb5d4e9f46c638ce200
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 57350bd00a33c36b5aef3a0ccd3034b4db3d2c55
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467928"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227947"
 ---
 # <a name="create-an-azure-data-lake-storage-gen2-storage-account"></a>Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
 
@@ -95,7 +95,7 @@ So entfernen Sie eine Ressourcengruppe über das Azure-Portal:
 
 ## <a name="create-an-account-using-powershell"></a>Erstellen eines Kontos mithilfe von PowerShell
 
-Installieren Sie zunächst die aktuelle Version des [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget)-Moduls.
+Installieren Sie zunächst die aktuelle Version des [PowerShellGet](/powershell/scripting/gallery/installing-psget)-Moduls.
 
 Aktualisieren Sie anschließend Ihr PowerShell-Modul, melden Sie sich bei Ihrem Azure-Abonnement an, erstellen Sie eine Ressourcengruppe und dann ein Speicherkonto.
 

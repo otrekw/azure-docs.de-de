@@ -1,5 +1,5 @@
 ---
-title: Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt | Microsoft-Dokumentation
+title: Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt
 description: Informationen zur Problembehandlung bei häufigen Problemen, die auftreten, wenn Benutzer nicht in einer Azure AD-Kataloganwendung angezeigt werden, die Sie für die Benutzerbereitstellung mit Azure AD konfiguriert haben
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0562027bb599b596b640e0c1a669447e3fed9680
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1683f645e1ed81a8a415214fbb83ee80572be3ee
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034177"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275841"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Es werden keine Benutzer für eine Azure AD-Kataloganwendung bereitgestellt
 Nachdem die automatische Bereitstellung für eine Anwendung konfiguriert wurde (einschließlich der Überprüfung, ob die Anmeldeinformationen für die App gültig sind, die Azure AD bereitgestellt wurden, um die Verbindung mit der Anwendung herzustellen), werden Benutzer bzw. Gruppen für die App bereitgestellt. Die Bereitstellung wird durch die folgenden Faktoren bestimmt:

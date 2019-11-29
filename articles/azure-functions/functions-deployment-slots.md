@@ -2,18 +2,15 @@
 title: Azure Functions-Bereitstellungsslots
 description: Erfahren Sie, wie Sie Bereitstellungsslots mit Azure Functions erstellen und verwenden.
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Funktionen
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: 23a4870332266ce180c2e94aeb0b5ca24073878b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576316"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230672"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions-Bereitstellungsslots
 

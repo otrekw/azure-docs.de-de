@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: b72e03f6901fbb2b904328992107e31021c76be6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969126"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229803"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Tutorial: Verwalten von Kosten mithilfe von Cloudyn
 
@@ -87,9 +87,9 @@ In der Liste mit den Kostenmodellen wird Ihr neues Kostenmodell mit dem **Verarb
 
 Der Kategorie-Manager ist ein Datenbereinigungstool, mit dem Sie die Werte mehrerer Kategorien (Tags) zusammenführen können, um neue Werte zu erstellen. Es ist ein einfaches regelbasiertes Tool, bei dem Sie eine Kategorie auswählen und Regeln erstellen, um vorhandene Werte zusammenzuführen. Beispielsweise verfügen Sie über vorhandene Kategorien für **F&amp;E** und **dev**, die beide für die Entwicklungsgruppe stehen.
 
-Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Category Manager** (Kategorie-Manager) aus. Wählen Sie zum Erstellen einer neuen Kategorie das Plussymbol (**+**). Geben Sie einen Namen für die Kategorie ein, und geben Sie unter **Schlüssel** dann die Kategorieschlüssel an, die Sie in die neue Kategorie einbeziehen möchten.
+Klicken Sie im Cloudyn-Portal auf das Zahnradsymbol in der rechten oberen Ecke, und wählen Sie **Category Manager** (Kategorie-Manager) aus. Wählen Sie zum Erstellen einer neuen Kategorie das Plussymbol ( **+** ). Geben Sie einen Namen für die Kategorie ein, und geben Sie unter **Schlüssel** dann die Kategorieschlüssel an, die Sie in die neue Kategorie einbeziehen möchten.
 
-Beim Definieren einer Regel können Sie mehrere Werte mit einer OR-Bedingung hinzufügen. Außerdem können Sie einige einfache Zeichenfolgenvorgänge durchführen. Klicken Sie in beiden Fällen auf das Auslassungszeichen (**…**) rechts von **Regel**.
+Beim Definieren einer Regel können Sie mehrere Werte mit einer OR-Bedingung hinzufügen. Außerdem können Sie einige einfache Zeichenfolgenvorgänge durchführen. Klicken Sie in beiden Fällen auf das Auslassungszeichen ( **…** ) rechts von **Regel**.
 
 Erstellen Sie im Bereich **Regeln** eine neue Regel, um eine neue Regel zu definieren. Geben Sie unter **Regeln** beispielsweise **dev** und unter **Aktionen** dann **F&amp;E** ein. Speichern Sie Ihre neue Kategorie, wenn Sie fertig sind.
 

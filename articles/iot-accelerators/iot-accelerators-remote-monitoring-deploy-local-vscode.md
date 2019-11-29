@@ -1,5 +1,5 @@
 ---
-title: Lokales Bereitstellen der Remoteüberwachungslösung (Visual Studio Code) – Azure | Microsoft-Dokumentation
+title: Lokales Bereitstellen der Remoteüberwachungslösung – Visual Studio Code – Azure | Microsoft-Dokumentation
 description: In dieser Schrittanleitung wird gezeigt, wie der Solution Accelerator für die Remoteüberwachung zu Test- und Entwicklungszwecken mithilfe von Visual Studio Code auf Ihrem lokalen Computer bereitgestellt wird.
 author: avneet723
 manager: hegate
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: ed3301eb0e723e05e2a642ffea2f1609032553b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8f1d20e9a6a78d99a23fe4b98aeb4f3eb8359da7
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66730174"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890953"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---visual-studio-code"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Visual Studio Code
 

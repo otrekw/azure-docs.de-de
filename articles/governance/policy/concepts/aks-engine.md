@@ -3,12 +3,12 @@ title: Informationen zu Azure Policy für die AKS-Engine
 description: Erfahren Sie, wie Azure Policy CustomResourceDefinitions und Open Policy Agent von Gatekeeper v3 verwendet, um Cluster mit der AKS-Engine zu verwalten.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 904575680b62233ad5ec7422abbf66cf57dc4e11
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072066"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267248"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Grundlegendes zu Azure Policy für die AKS-Engine
 
@@ -282,6 +282,6 @@ Die vom Add-On gesammelten Informationen sind keine persönlichen Daten. Die fol
 - Befassen Sie sich mit der [Struktur von Azure Policy-Definitionen](definition-structure.md).
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

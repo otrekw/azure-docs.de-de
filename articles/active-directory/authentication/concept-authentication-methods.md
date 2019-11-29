@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18eba93661d9c418a230ced8f9970047a869a7e3
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 4a7110ad3e6c9c66179c90c02c1572ee83cb9f15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808413"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420769"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -158,7 +158,7 @@ Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-
 
 OATH ist ein offener Standard, der angibt, wie Einmalkennwortcodes (OTP) generiert werden. Azure AD unterstützt die Verwendung von OATH-TOTP SHA-1-Token der Varianten 30 Sekunden oder 60 Sekunden. Kunden können sich diese Token vom Hersteller ihrer Wahl beschaffen. Geheime Schlüssel sind auf 128 Zeichen beschränkt, was möglicherweise nicht mit allen Token kompatibel ist. Die geheimen Schlüssel müssen in Base32 codiert werden.
 
-![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+![Hochladen von OATH-Token in das OATH-Token-Blatt des MFA-Servers](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
 OATH-Hardware-Token werden als Teil der öffentlichen Vorschau unterstützt. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 

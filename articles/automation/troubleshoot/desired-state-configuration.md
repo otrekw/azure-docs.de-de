@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887712"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231551"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -32,7 +32,7 @@ Wenn es beim Kompilieren oder Bereitstellen von Konfigurationen in Azure State C
    - **Syntaxfehler**
    - **Logikfehler**
 
-2. **Zeigen Sie die DSC-Protokolle auf Ihrem Knoten an:** Wenn Ihre Konfiguration erfolgreich kompiliert wird, aber nicht auf einen Knoten angewendet werden kann, finden Sie in den Protokollen ausführliche Informationen. Informationen zum Speicherort der DSC-Protokolle finden Sie unter [Wo befinden sich die DSC-Ereignisprotokolle?](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+2. **Zeigen Sie die DSC-Protokolle auf Ihrem Knoten an:** Wenn Ihre Konfiguration erfolgreich kompiliert wird, aber nicht auf einen Knoten angewendet werden kann, finden Sie in den Protokollen ausführliche Informationen. Informationen zum Speicherort der DSC-Protokolle finden Sie unter [Wo befinden sich die DSC-Ereignisprotokolle?](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
    Darüber hinaus können Sie mithilfe von [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) die Informationen in den DSC-Protokollen analysieren. Wenn Sie sich an den Support wenden, werden diese Protokolle zur Diagnose des Problems benötigt.
 
@@ -40,7 +40,7 @@ Wenn es beim Kompilieren oder Bereitstellen von Konfigurationen in Azure State C
 
    Um **xDscDiagnostics** auf Ihrem Azure-Computer zu installieren, können Sie [az vm run-command](/cli/azure/vm/run-command) oder [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) verwenden. Es ist auch möglich, die Option **Befehl ausführen** aus dem Portal zu verwenden. Folgen Sie hierzu den Schritten unter [Ausführen von PowerShell-Skripts in Ihrer Windows-VM mit „Befehl ausführen“](../../virtual-machines/windows/run-command.md).
 
-   Informationen zur Verwendung von **xDscDiagnostics** finden Sie unter [Verwenden von „xDscDiagnostics“ zum Analysieren von DSC-Protokollen](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs) sowie im Abschnitt zu den [xDscDiagnostics-Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+   Informationen zur Verwendung von **xDscDiagnostics** finden Sie unter [Verwenden von „xDscDiagnostics“ zum Analysieren von DSC-Protokollen](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs) sowie im Abschnitt zu den [xDscDiagnostics-Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 3. **Stellen Sie sicher, dass Ihre Knoten und der Automation-Arbeitsbereich über die erforderlichen Module verfügen:** DSC hängt von den Modulen ab, die auf dem Knoten installiert sind.  Wenn Sie Azure Automation State Configuration verwenden, importieren Sie alle benötigten Module in Ihr Automation-Konto. Die hierzu erforderlichen Schritte finden Sie unter [Importieren von Modulen](../shared-resources/modules.md#import-modules). Konfigurationen können auch von bestimmten Modulversionen abhängen.  Weitere Informationen finden Sie unter [Beheben von Fehlern bei freigegebenen Ressourcen](shared-resources.md#modules).
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Häufige Fehler beim Verwenden der Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)

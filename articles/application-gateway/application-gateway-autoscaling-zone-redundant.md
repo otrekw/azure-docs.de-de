@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: f58ac4448f50e8e02f2838fef02c9f884f69266b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177454"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847270"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -41,8 +41,8 @@ Die Standard_v2- und WAF_v2-SKU ist in den folgenden Regionen verfügbar: USA, N
 
 Bei der v2-SKU basiert das Preismodell auf der Nutzung und ist nicht mehr an die Anzahl oder Größe von Instanzen gebunden. Der Preis der v2-SKU setzt sich aus zwei Komponenten zusammen:
 
-- **Festpreis**: Dies ist der Preis pro Stunde (oder Teil einer Stunde) für die Bereitstellung eines Standard_v2- oder WAF_v2-Gateways.
-- **Preis nach Kapazitätseinheit**: Dies sind die nutzungsbasierten Kosten, die zusätzlich zu den festen Kosten berechnet werden. Die Gebühr für Kapazitätseinheiten wird ebenfalls für volle oder teilweise Stunden berechnet. Die Kapazitätseinheit setzt sich aus drei Größen zusammen: Compute-Einheit, permanente Verbindungen und Durchsatz. Die Compute-Einheit ein Maß für die genutzte Prozessorkapazität. Faktoren, die sich auf die Compute-Einheit auswirken, sind TLS-Verbindungen/Sekunde, URL-Rewrite-Berechnungen und Verarbeitung von WAF-Regeln. Permanente Verbindung ist ein Maß für eingerichtete TCP-Verbindungen mit Application Gateway in einem bestimmten Abrechnungsintervall. Der Durchsatz ist die durchschnittliche Anzahl von Megabits pro Sekunde, die vom System in einem bestimmten Abrechnungsintervall verarbeitet werden.
+- **Festpreis**: Dies ist der Preis pro Stunde (oder Teil einer Stunde) für die Bereitstellung eines Standard_v2- oder WAF_v2-Gateways. Beachten Sie, dass auch mit 0 zusätzlichen Mindestinstanzen weiterhin die Hochverfügbarkeit des Diensts gewährleistet wird, die grundsätzlich im Festpreis inbegriffen ist.
+- **Preis nach Kapazitätseinheit**: Dies sind die nutzungsbasierten Kosten, die zusätzlich zu den Fixkosten berechnet werden. Die Gebühr für Kapazitätseinheiten wird ebenfalls für volle oder teilweise Stunden berechnet. Die Kapazitätseinheit setzt sich aus drei Größen zusammen: Compute-Einheit, permanente Verbindungen und Durchsatz. Die Compute-Einheit ein Maß für die genutzte Prozessorkapazität. Faktoren, die sich auf die Compute-Einheit auswirken, sind TLS-Verbindungen/Sekunde, URL-Rewrite-Berechnungen und Verarbeitung von WAF-Regeln. Permanente Verbindung ist ein Maß für eingerichtete TCP-Verbindungen mit Application Gateway in einem bestimmten Abrechnungsintervall. Der Durchsatz ist die durchschnittliche Anzahl von Megabits pro Sekunde, die vom System in einem bestimmten Abrechnungsintervall verarbeitet werden.  Die Abrechnung erfolgt für alles, was die reservierte Instanzanzahl übersteigt, auf Kapazitätseinheitsebene.
 
 Jede Kapazitätseinheit setzt sich maximal zusammen aus: 1 Compute-Einheit oder 2500 permanente Verbindungen oder 2,22 MBit/s Durchsatz.
 
@@ -77,7 +77,7 @@ Gesamtpreis = 148,8 $ + 297,6 $ = 446,4 $
 
 **Beispiel 2**
 
-Es wird ein Application Gateway Standard_v2 für einen Monat bereitgestellt, und es empfängt während dieser Zeit 25 neue SSL-Verbindungen/Sekunde, Datenübertragung von durchschnittlich 8,88 MBit/s. Bei kurzlebigen Verbindungen ist der Preis wie folgt:
+Es wird ein Application Gateway Standard_v2 für einen Monat mit null Mindestinstanzen bereitgestellt, und es empfängt während dieser Zeit 25 neue SSL-Verbindungen/Sekunde, Datenübertragung von durchschnittlich 8,88 MBit/s. Bei kurzlebigen Verbindungen ist der Preis wie folgt:
 
 Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $
 
@@ -85,10 +85,37 @@ Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (25/50 Compute-Einheit für
 
 Gesamtpreis = 148,8 $ + 23,81 $ = 172,61 $
 
+Wie Sie sehen können, werden Ihnen lediglich vier Kapazitätseinheiten berechnet, nicht die gesamte Instanz. 
+
 > [!NOTE]
 > Die Max-Funktion gibt den größten Wert in einem Wertepaar zurück.
 
+
 **Beispiel 3**
+
+Es wird ein Application Gateway Standard_v2 für einen Monat mit mindestens fünf Instanzen bereitgestellt. Unter der Voraussetzung, dass kein Datenverkehr besteht und dass die Verbindungen kurzlebig sind, ist der Preis wie folgt:
+
+Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $
+
+Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (0/50 Compute-Einheit für Verbindungen/Sekunde, 0/2,22 Kapazitätseinheit für Durchsatz) * 0,008 $ = 744 * 50 * 0,008 = 297,60 $
+
+Gesamtpreis = 148,80 $ + 297,60 $ = 446,40 $
+
+In diesem Fall werden Ihnen die gesamten fünf Instanzen in Rechnung gestellt, auch wenn kein Datenverkehr vorhanden ist.
+
+**Beispiel 4**
+
+Es wird ein Application Gateway Standard_v2 für einen Monat mit mindestens fünf Instanzen bereitgestellt, aber diesmal gibt es eine durchschnittliche Datenübertragung von 125 MBit/s und 25 neue SSL-Verbindungen pro Sekunde. Unter der Voraussetzung, dass kein Datenverkehr besteht und dass die Verbindungen kurzlebig sind, ist der Preis wie folgt:
+
+Festpreis = 744 (Stunden) * 0,20 $ = 148,8 $
+
+Preis nach Kapazitätseinheit = 744 (Stunden) * Max. (25/50 Compute-Einheit für Verbindungen/Sekunde, 125/2,22 Kapazitätseinheit für Durchsatz) * 0,008 $ = 744 * 57 * 0,008 = 339,26 $
+
+Gesamtpreis = 148,80 $ + 339,26 $ = 488,06 $
+
+In diesem Fall werden Ihnen die ganzen fünf Instanzen zuzüglich sieben Kapazitätseinheiten (das sind 7/10 einer Instanz) in Rechnung gestellt.  
+
+**Beispiel 5**
 
 Es wird ein Application Gateway WAF_v2 für einen Monat bereitgestellt. Während dieses Zeitraums empfängt es 25 neue SSL-Verbindungen/Sekunde, Datenübertragung von durchschnittlich 8,88 MBit/s, und stellt 80 Anforderungen pro Sekunde. Bei kurzlebigen Verbindungen und unter der Voraussetzung, dass die Berechnung der Compute-Einheiten für die Anwendung 10 RPS pro Compute-Einheit unterstützt, ist der Preis wie folgt:
 
@@ -105,7 +132,7 @@ Gesamtpreis = 267,84 $ + 85,71 $ = 353,55 $
 
 Application Gateway und WAF können für die Skalierung in zwei Modi konfiguriert werden:
 
-- **Automatische Skalierung**: Bei aktivierter automatischer Skalierung können Application Gateway und WAF v2-SKUs basierend auf den Datenverkehrsanforderungen der Anwendung zentral hoch- oder herunterskalieren. Dieser Modus bietet bessere Elastizität für Ihre Anwendung und Größe oder Anzahl der Instanzen von Application Gateway müssen nicht geschätzt werden. Außerdem ermöglicht dieser Modus Kosteneinsparungen, weil das Gateway nicht mit bereitgestellter Spitzenkapazität für die erwartete maximale Auslastung ausgeführt werden muss. Sie müssen eine Mindestanzahl und optional eine Höchstanzahl von Instanzen angeben. Durch eine Mindestkapazität wird sichergestellt, dass Application Gateway und WAF v2 nicht unter die angegebene Mindestanzahl von Instanzen abfallen, selbst wenn kein Datenverkehr vorhanden ist. Jede Instanz zählt als 10 zusätzliche reservierte Kapazitätseinheiten. Bei 0 wird keine Kapazität reserviert. Dieser Wert dient ausschließlich zur automatischen Skalierung. Beachten Sie, dass auch mit 0 zusätzlichen Mindestinstanzen weiterhin die Hochverfügbarkeit des Diensts gewährleistet wird, die grundsätzlich im Festpreis inbegriffen ist. Sie können optional auch eine maximale Anzahl von Instanzen angeben, durch die sichergestellt wird, dass Application Gateway nicht über die angegebene Anzahl von Instanzen hinaus skaliert. Ihnen wird weiterhin die vom Gateway bereitgestellte Menge an Datenverkehr in Rechnung gestellt. Die Anzahl der Instanzen kann zwischen 0 und 125 liegen. Wenn kein Wert angegeben ist, liegt der Standardwert für die maximale Anzahl von Instanzen bei 20. 
+- **Automatische Skalierung**: Bei aktivierter automatischer Skalierung können Application Gateway und WAF v2-SKUs basierend auf den Datenverkehrsanforderungen der Anwendung zentral hoch- oder herunterskalieren. Dieser Modus bietet bessere Elastizität für Ihre Anwendung und Größe oder Anzahl der Instanzen von Application Gateway müssen nicht geschätzt werden. Außerdem ermöglicht dieser Modus Kosteneinsparungen, weil das Gateway nicht mit bereitgestellter Spitzenkapazität für die erwartete maximale Auslastung ausgeführt werden muss. Sie müssen eine Mindestanzahl und optional eine Höchstanzahl von Instanzen angeben. Durch eine Mindestkapazität wird sichergestellt, dass Application Gateway und WAF v2 nicht unter die angegebene Mindestanzahl von Instanzen abfallen, selbst wenn kein Datenverkehr vorhanden ist. Jede Instanz zählt als 10 zusätzliche reservierte Kapazitätseinheiten. Bei 0 wird keine Kapazität reserviert. Dieser Wert dient ausschließlich zur automatischen Skalierung. Beachten Sie, dass auch mit 0 zusätzlichen Mindestinstanzen weiterhin die Hochverfügbarkeit des Diensts gewährleistet wird, die grundsätzlich im Festpreis inbegriffen ist. Sie können optional auch eine maximale Anzahl von Instanzen angeben, durch die sichergestellt wird, dass Application Gateway nicht über die angegebene Anzahl von Instanzen hinaus skaliert. Ihnen wird weiterhin die vom Gateway bereitgestellte Menge an Datenverkehr in Rechnung gestellt. Die Anzahl der Instanzen kann zwischen 0 und 125 liegen. Wenn kein Wert angegeben ist, liegt der Standardwert für die maximale Anzahl von Instanzen bei 20.
 - **Manuell**: Sie können alternativ auch den manuellen Modus auswählen, in dem das Gateway nicht automatisch skaliert wird. Wenn in diesem Modus mehr Datenverkehr vorliegt, als von Application Gateway oder WAF verarbeitet werden kann, kann dies zu einem Datenverlust führen. Beim manuellen Modus ist die Angabe der Anzahl von Instanzen obligatorisch. Die Anzahl der Instanzen kann zwischen 1 und 125 variieren.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Funktionsvergleich zwischen v1 SKU und v2 SKU
@@ -124,6 +151,7 @@ In der folgenden Tabelle werden die Features der einzelnen SKUs gegenübergestel
 | Hosten mehrerer Websites                             | &#x2713; | &#x2713; |
 | Umleitung des Datenverkehrs                               | &#x2713; | &#x2713; |
 | Web Application Firewall (WAF)                    | &#x2713; | &#x2713; |
+| Benutzerdefinierte WAF-Regeln                                  |          | &#x2713; |
 | SSL-Terminierung (Secure Sockets Layer)            | &#x2713; | &#x2713; |
 | End-to-End-SSL-Verschlüsselung                         | &#x2713; | &#x2713; |
 | Sitzungsaffinität                                  | &#x2713; | &#x2713; |

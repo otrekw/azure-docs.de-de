@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Sprach-SDK (Vorschau)'
+title: 'Schnellstart: Verbinden einer App für benutzerdefinierte Befehle mit Speech SDK – Speech Service'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen Sie eine Sprach-SDK-Clientanwendung mit benutzerdefinierten Befehlen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506681"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111148"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Sprach-SDK (Vorschau)
 
@@ -46,7 +46,7 @@ In dieser Schnellstartanleitung erfahren Sie Schritt für Schritt, wie Sie eine 
 
 1. Öffnen Sie Ihre [zuvor erstellte Anwendung für benutzerdefinierte Befehle](./quickstart-custom-speech-commands-create-new.md), und wählen Sie **Veröffentlichen** aus.
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![Veröffentlichen der Anwendung](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Kopieren der App-ID aus der Veröffentlichungsbenachrichtigung zur späteren Verwendung
@@ -320,7 +320,7 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
 1. Fügen Sie dem Methodenkörper der `ListenButton_ButtonClicked`-Methode in der `MainPage`-Klasse den folgenden Codeausschnitt hinzu.
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -415,7 +415,7 @@ Fügen Sie die CodeBehind-Quelle wie folgt hinzu:
 1. Wählen Sie **Sprechen** aus, und sprechen Sie einen englischen Ausdruck oder Satz in das Mikrofon Ihres Geräts. Ihre Spracheingabe wird an den Direct Line Speech-Kanal übermittelt, in Text transkribiert und im Fenster angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-> [!div class="nextstepaction"]
-> [How To: Ausführen der Befehle auf dem Client mit dem Sprach-SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
-> [Vorgehensweise: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)
 
+> [!div class="nextstepaction"]
+> [Gewusst wie: Ausführen der Befehle auf dem Client mit dem Sprach-SDK (Vorschau)](./how-to-custom-speech-commands-fulfill-sdk.md)
+> [Vorgehensweise: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)

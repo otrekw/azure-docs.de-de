@@ -2,17 +2,17 @@
 title: Häufig gestellte Fragen (FAQ) zu Azure Private Link
 description: Erfahren Sie mehr über Azure Private Link.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 32e570e098c9a3f95dfc5393348cccb1ebe1fb60
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104585"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229332"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Private Link
 

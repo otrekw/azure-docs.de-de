@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 06de71776cdf503ff0df9fbf3b28cf9e01a12e01
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0b48652f7b181f1254a4b20af75b83593c2aba05
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575288"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147595"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Bereitstellen von Durchsatz für einen Azure Cosmos-Container
 
 In diesem Artikel erfahren Sie, wie Sie Durchsatz für einen Container (Sammlung, Diagramm oder Tabelle) in Azure Cosmos DB bereitstellen. Sie können Durchsatz für einen einzelnen Container oder [für eine Datenbank](how-to-provision-database-throughput.md) bereitstellen und ihn für die in der Datenbank enthaltenen Container freigeben. Der Durchsatz für einen Container kann über das Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe der Azure Cosmos DB SDKs bereitgestellt werden.
 
-## <a name="provision-throughput-using-azure-portal"></a>Bereitstellen des Durchsatzes mithilfe des Azure-Portals
+## <a name="azure-portal"></a>Azure-Portal
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie Durchsatz für einen Container (Sammlung
 
     ![Screenshot des Daten-Explorers mit hervorgehobener Option „Neue Sammlung“](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-azure-cli-or-powershell"></a>Bereitstellen von Durchsatz über Azure CLI oder PowerShell
+## <a name="azure-cli-or-powershell"></a>Azure CLI oder PowerShell
 
 Informationen zum Erstellen eines Containers mit dediziertem Durchsatz finden Sie unter
 
@@ -43,7 +43,7 @@ Informationen zum Erstellen eines Containers mit dediziertem Durchsatz finden Si
 > [!Note]
 > Verwenden Sie beim Bereitstellen des Durchsatzes für einen Container in einem Azure Cosmos-Konto, das mit der Azure Cosmos DB-API für MongoDB konfiguriert wurde, `/myShardKey` als Partitionsschlüsselpfad. Verwenden Sie beim Bereitstellen des Durchsatzes für einen Container in einem Azure Cosmos-Konto, das mit der Cassandra-API konfiguriert wurde, `/myPrimaryKey` als Partitionsschlüsselpfad.
 
-## <a name="provision-throughput-by-using-net-sdk"></a>Bereitstellen des Durchsatzes mithilfe des .NET SDK
+## <a name="net-sdk"></a>.NET SDK
 
 > [!Note]
 > Verwenden Sie die Cosmos SDKs für die SQL-API, um Durchsatz für alle Cosmos DB-APIs (mit Ausnahme der Cassandra-API) bereitzustellen.
@@ -63,10 +63,40 @@ await client.CreateDocumentCollectionAsync(
     new RequestOptions { OfferThroughput = 400 });
 ```
 
-### <a name="net-v3-sdk"></a>.Net V3 SDK
+### <a name="net-v3-sdk"></a>.NET V3 SDK
 [!code-csharp[](~/samples-cosmosdb-dotnet-v3/Microsoft.Azure.Cosmos/tests/Microsoft.Azure.Cosmos.Tests/SampleCodeForDocs/ContainerDocsSampleCode.cs?name=ContainerCreateWithThroughput)]
 
+## <a name="javascript-sdk"></a>JavaScript SDK
+
+```javascript
+// Create a new Client
+const client = new CosmosClient({ endpoint, key });
+
+// Create a database
+const { database } = await client.databases.createIfNotExists({ id: "databaseId" });
+
+// Create a container with the specified throughput
+const { resource } = await database.containers.createIfNotExists({
+id: "contaierId ",
+throughput: 1000
+});
+
+// To update an existing container or databases throughput, you need to user the offers API
+// Get all the offers
+const { resources: offers } = await client.offers.readAll().fetchAll();
+
+// Find the offer associated with your container or the database
+const offer = offers.find((_offer) => _offer.offerResourceId === resource._rid);
+
+// Change the throughput value
+offer.content.offerThroughput = 2000;
+
+// Replace the offer.
+await client.offer(offer.id).replace(offer);
+```
+
 ### <a id="dotnet-cassandra"></a>Cassandra-API
+
 Ähnliche Befehle können über einen beliebigen CQL-konformen Treiber ausgegeben werden.
 
 ```csharp

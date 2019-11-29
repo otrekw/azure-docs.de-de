@@ -1,7 +1,7 @@
 ---
 title: 'Dashboard: Language Understanding – LUIS'
 titleSuffix: Azure Cognitive Services
-description: Verbessern Sie Absichten mit dem Analysedashboard, einem grafischen Berichterstellungstool.
+description: Korrigieren Sie Absichten und Entitäten über das Dashboard Ihrer trainierten App. Auf dem Dashboard werden allgemeine App-Informationen angezeigt und die wichtigsten Absichten aufgeführt, die verbessert werden sollten.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/22/2019
+ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 22e187bba3782e485685354c203a6273d5bcc618
-ms.sourcegitcommit: 97605f3e7ff9b6f74e81f327edd19aefe79135d2
+ms.openlocfilehash: d9ae126753f55349f9bf3eefd20bc4d222866af1
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70735052"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888200"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Verwenden des Dashboards zum Verbessern Ihrer App
 

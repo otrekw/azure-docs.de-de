@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 45415af479c9581ee04b97af4fb5297d09c5769d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02d6e150e638321e11a8dec9838e360faa00783e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496331"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280935"
 ---
 # <a name="use-firewall-rules"></a>Verwenden von Firewallregeln
 
@@ -46,7 +46,6 @@ IP-Filterregeln werden der Reihenfolge nach angewendet, und die erste Regel, die
 > Vertrauenswürdige Microsoft-Dienste werden bei der Implementierung der IP-Filterung (Firewallregeln) nicht unterstützt und in Kürze verfügbar gemacht.
 >
 > Im Anschluss finden Sie einige allgemeine Azure-Szenarien, in denen die IP-Filterung nicht funktioniert. (Hinweis: Die Liste ist **NICHT** vollständig.)
-> - Azure Monitor
 > - Azure Stream Analytics
 > - Integration in Azure Event Grid
 > - Azure IoT Hub-Routen

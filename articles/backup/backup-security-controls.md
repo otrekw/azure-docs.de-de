@@ -1,19 +1,14 @@
 ---
-title: Sicherheitskontrollen für Azure Backup
+title: Sicherheitskontrollen
 description: Erfahren Sie mehr über die Sicherheitskontrollen, die im Azure Backup-Dienst verwendet werden. Diese Kontrollen helfen dem Dienst, Sicherheitsrisiken zu verhindern, zu erkennen und darauf zu reagieren.
-ms.reviewer: mbaldwin
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/23/2019
-ms.author: dacurwin
-ms.openlocfilehash: 9d7bb2e9ea2d2cf9cce6c4f6d3b4f3346e7ce363
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e3f5ce942ea8aef9bf5eb98883ae1e72a7ab239
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747148"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172139"
 ---
 # <a name="security-controls-for-azure-backup"></a>Sicherheitskontrollen für Azure Backup
 

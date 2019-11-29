@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 29665639e90f729f5506a0a12241bb04fd88e69c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dd91b4331a6093d1cf208893d5d88746707b473b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60859323"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224739"
 ---
 # <a name="azure-white-papers-about-mainframe-topics"></a>Azure-Whitepaper zu Mainframethemen
 
@@ -43,10 +43,10 @@ Modernisieren Sie Ihre Infrastruktur für die Cloud. Mit TmaxSoft OpenFrame ist 
 
 Dieses Whitepaper enthält eine Beschreibung der 25 Jahre an Erfahrung, die Astadia in Bezug auf die Modernisierung von Mainframeplattformen besitzt. Es werden die Vorteile und Schwierigkeiten von Modernisierungsmaßnahmen erläutert. Der Leitfaden enthält eine Übersicht über den IBM-Mainframecomputer und eine Referenzarchitektur für den Fall „IBM-Mainframe zu Azure“. Darüber hinaus wird die Methodik behandelt, die von Astadia zur Sicherstellung des Erfolgs angewandt wird.
 
-### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeployingmainframeapplicationstomicrosoftazurewppdf"></a>[Deploying mainframe applications to Microsoft Azure (Bereitstellen von Mainframeanwendungen unter Microsoft Azure)](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
+### <a name="deploying-mainframe-applications-to-microsoft-azurehttpswwwmicrofocuscommediawhite-paperdeploying_mainframe_applications_to_microsoft_azure_wppdf"></a>[Deploying mainframe applications to Microsoft Azure (Bereitstellen von Mainframeanwendungen unter Microsoft Azure)](https://www.microfocus.com/media/white-paper/deploying_mainframe_applications_to_microsoft_azure_wp.pdf)
 
 Mit Lösungen von Micro Focus unterliegen Sie nicht mehr den Einschränkungen proprietärer Hardware und Software für Mainframes. In diesem Leitfaden wird von Micro Focus beschrieben, wie Sie Ihre COBOL- und PL/I-Anwendungen, die auf IBM-Mainframes ausgeführt werden, stattdessen in der Cloud bereitstellen.
 
-### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscommodernizationpagesbreathe-new-life-mainframesaspx"></a>[Breathe new life into mainframes (Modernisieren von Mainframes)](https://www.infosys.com/modernization/Pages/breathe-new-life-mainframes.aspx)
+### <a name="breathe-new-life-into-mainframeshttpswwwinfosyscomservicesmodernizationbreathe-new-life-mainframeshtml"></a>[Breathe new life into mainframes (Modernisieren von Mainframes)](https://www.infosys.com/services/modernization/breathe-new-life-mainframes.html)
 
  Die Wartung von Mainframes wird für Unternehmen zu einer immer größeren Herausforderung. In diesem Whitepaper von Infosys und Microsoft wird die Erfolgsstrategie für eine erfolgreiche Mainframemigration beschrieben. Die Optionen werden anhand von Anwendungsfällen und Beispielen veranschaulicht.

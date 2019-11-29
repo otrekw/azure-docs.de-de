@@ -1,19 +1,14 @@
 ---
-title: Importieren von Containerimages in Azure Container Registry
+title: Importieren von Containerimages
 description: Importieren von Containerimages in eine Azure-Containerregistrierung mithilfe von Azure-APIs, ohne dass Docker-Befehle ausgeführt werden müssen
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 02/06/2019
-ms.author: danlep
-ms.openlocfilehash: c44eabffaefe24e15f980c9871a5c65ab958f2fc
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: e649447d7b9280dbebef1ae332c1f25910f5a516
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310614"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456310"
 ---
 # <a name="import-container-images-to-a-container-registry"></a>Importieren von Containerimages in eine Containerregistrierung
 

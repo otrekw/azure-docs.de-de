@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577977"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195938"
 ---
 # <a name="about-voice-assistants"></a>Informationen zu Sprach-Assistenten
 
@@ -39,7 +39,8 @@ Im ersten Schritt zur Erstellung eines Sprach-Assistenten wird festgelegt, welch
 Wir empfehlen Ihnen die Verwendung von [Direct Line Speech](direct-line-speech.md) als Standardauswahl, falls Sie noch nicht genau wissen, wie Ihr Assistent eingesetzt werden soll. Hiermit erhalten Sie eine Integration mit umfassenden Tools und Erstellungshilfen, z. B. die [Lösung „Virtueller Assistent“ und die Unternehmensvorlage](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) sowie den [QnA Maker-Dienst](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview), um häufig verwendete Muster zu nutzen und zu erweitern und Ihre vorhandenen Wissensquellen zu verwenden.
 
 Bei [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) handelt es sich um eine optimierte Erstellungs- und Hostingumgebung, die für Szenarien vom Typ „Befehl und Steuerung“ in natürlicher Sprache konzipiert wurde.
-   ![Vergleich von Assistentenlösungen](media/voice-assistants/assistant-solution-comparison.png "CompVergleich von Assistentenlösungen")
+
+   ![Vergleich von Assistentenlösungen](media/voice-assistants/assistant-solution-comparison.png "Vergleich von Assistentenlösungen")
 
 ## <a name="core-features"></a>Wichtige Funktionen
 

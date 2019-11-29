@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 06ce7fb5d18920be6f71821b034dc13061c60032
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: 824fabf6e694b7148486d6593cf17f741d9e5c9e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70051462"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483786"
 ---
 # <a name="traffic-manager-routing-methods"></a>Traffic Manager-Routingmethoden
 
@@ -23,7 +23,7 @@ Azure Traffic Manager unterstützt sechs Methoden für das Datenverkehrsrouting,
 
 Die folgenden vier Methoden für das Datenverkehrsrouting sind in Traffic Manager verfügbar:
 
-* **[Priorität:](#priority)** Wählen Sie **Priorität** aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt oder der Sicherungsendpunkt nicht verfügbar ist.
+* **[Priorität:](#priority-traffic-routing-method)** Wählen Sie **Priorität** aus, wenn Sie einen primären Dienstendpunkt für sämtlichen Datenverkehr verwenden möchten. Stellen Sie Backups bereit, falls der primäre Endpunkt oder der Sicherungsendpunkt nicht verfügbar ist.
 * **[Gewichtet:](#weighted)** Wählen Sie **Gewichtet**, wenn Sie Datenverkehr über eine Gruppe von Endpunkten verteilen möchten – gleichmäßig oder gemäß einer von Ihnen definierten Gewichtung.
 * **[Leistung:](#performance)** Wählen Sie **Leistung** aus, wenn sich Ihre Endpunkte an unterschiedlichen geografischen Standorten befinden und Endbenutzer an den „nächstgelegenen“ Endpunkt (im Hinblick auf die geringste Netzwerklatenz) weitergeleitet werden sollen.
 * **[Geografisch:](#geographic)** Wählen Sie **Geographisch** aus, damit Benutzer auf bestimmte Endpunkte (Azure, Extern oder Geschachtelt) geleitet werden, je nach dem geografischen Ursprungsort ihrer DNS-Abfrage. Dadurch können Traffic Manager-Kunden Szenarien unterstützen, in denen die Kenntnis der geografischen Region eines Benutzers und das Routing auf der Grundlage dieser Kenntnis wichtig sind. Beispiele dafür bilden etwa die Einhaltung von Datenhoheitsmandaten, die Verortung von Inhalten und Benutzererfahrungen und das Messen von Datenverkehr aus verschiedenen Regionen.
@@ -33,7 +33,7 @@ Die folgenden vier Methoden für das Datenverkehrsrouting sind in Traffic Manage
 
 Alle Traffic Manager-Profile beinhalten die Überwachung der Endpunktintegrität sowie automatisches Endpunktfailover. Weitere Informationen finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md). Ein einzelnes Traffic Manager-Profil kann nur eine einzige Methode für das Datenverkehrsrouting verwenden. Sie können jederzeit eine andere Methode für das Datenverkehrsrouting für Ihr Profil auswählen. Änderungen werden innerhalb einer Minute angewendet, und es entstehen keine Ausfallzeiten. Methoden für das Datenverkehrsrouting können durch Verwendung geschachtelter Traffic Manager-Profile kombiniert werden. Durch die Schachtelung können ausgefeilte und flexible Konfigurationen für das Datenverkehrsrouting erstellt werden, um die Anforderungen größerer und komplexer Anwendungen zu erfüllen. Weitere Informationen finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
-## <a name = "priority"></a>Prioritätsmethode für das Datenverkehrsrouting
+## <a name="priority-traffic-routing-method"></a>Prioritätsmethode für das Datenverkehrsrouting
 
 Wenn Organisationen die Zuverlässigkeit ihrer Dienste gewährleisten möchten, stellen sie häufig einen oder mehrere Sicherungsdienste bereit, für den Fall, dass der primäre Dienst ausfällt. Mithilfe der prioritätsbasierten Methode für das Datenverkehrsrouting können Azure-Kunden dieses Failovermuster problemlos implementieren.
 

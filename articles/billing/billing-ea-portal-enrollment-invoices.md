@@ -6,14 +6,14 @@ author: bandersmsft
 ms.author: banders
 ms.date: 11/07/2019
 ms.topic: conceptual
-ms.service: billing
+ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 6bd70a58552a0217cff82cad10b11783aec64347
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 2e9611995a233f9890aebb90fc3b8deaeed8efc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888403"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226325"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure-Unternehmensregistrierung
 
@@ -278,10 +278,10 @@ Beachten Sie, dass Azure Marketplace für MPSA-Registrierungen nicht verfügbar 
 
 ## <a name="advanced-report-download"></a>Download des erweiterten Berichts
 
-Zur Berichterstellung zu bestimmten Datumsbereichen oder Konten kann der Download des erweiterten Berichts verwendet werden. Seit dem 30. August 2016 hat sich das Format der Ausgabedatei von XLSX in CSV geändert, um größere Datensatzgruppen zu unterstützen.
+Zur Berichterstellung für bestimmte Datumsbereiche oder Konten kann die Option „Erweiterten Bericht herunterladen“ verwendet werden. Am 30. August 2016 wurde das Format der Ausgabedatei von XLSX in CSV geändert, um größere Datensatzgruppen zu unterstützen.
 
-1. Wählen Sie **Download des erweiterten Berichts** aus.
-1. Wählen Sie **Entsprechender Datumsbereich** aus.
+1. Wählen Sie **Erweiterten Bericht herunterladen** aus.
+1. Wählen Sie einen **Entsprechenden Datumsbereich** aus.
 1. Wählen Sie **Entsprechende Konten** aus.
 1. Wählen Sie **Nutzungsdaten anfordern** aus.
 1. Wählen Sie die Schaltfläche **Aktualisieren** aus, bis der Status des Berichts auf „Herunterladen“ aktualisiert wird.
@@ -596,9 +596,9 @@ Weitere Informationen zum Generieren des API-Schlüssels für Ihre Registrierung
     - Das Geschäfts-, Schul- oder Unikonto kann, muss aber nicht mit dem Konto identisch sein, das für den Zugriff auf die Registrierung über das Azure EA Portal verwendet wird.
  1. Wählen Sie auf dem Dashboard der Dienste **Microsoft Azure Enterprise** aus, und klicken Sie auf **Verbinden**.
  1. Wählen Sie auf dem Bildschirm „Verbindung mit Azure Enterprise herstellen“ Folgendes aus:
-    - „URL der Azure-Umgebung“: [https://ea.azure.com](https://ea.azure.com/).
-    - „Anzahl von Monaten“: Wählen Sie zwischen 1 und 36 aus.
-    - „Registrierungsnummer“: Geben Sie die Registrierungsnummer ein.
+    - URL der Azure-Umgebung: [https://ea.azure.com](https://ea.azure.com/).
+    - Anzahl von Monaten: Wählen Sie einen Wert zwischen 1 und 36 aus.
+    - Registrierungsnummer: Geben Sie die Registrierungsnummer ein.
     - Klicken Sie auf **Weiter**.
  1. Geben Sie im Feld „Authentifizierungsschlüssel“ den API-Schlüssel ein. Sie können den API-Schlüssel hier im Azure Enterprise-Portal erhalten; klicken Sie auf der Registerkarte „Nutzung herunterladen“ auf „API-Zugriffsschlüssel“.
     - Kopieren Sie den Schlüssel, und fügen Sie ihn in das Feld für „Kontoschlüssel“ ein.

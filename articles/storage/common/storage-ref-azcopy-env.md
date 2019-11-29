@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7ceff4df320aa1fbc3aa6e601c61f6407fd762e
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: cc0ed5f1eec76bedc21106c90e5e82332e27ce3c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514750"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033758"
 ---
 # <a name="azcopy-env"></a>azcopy env
 
@@ -26,7 +26,14 @@ azcopy env [flags]
 ```
 
 > [!IMPORTANT]
-> Wenn Sie eine Umgebungsvariable über die Befehlszeile festlegen, kann diese Variable in Ihrem Befehlszeilenverlauf gelesen werden. Es empfiehlt sich gegebenenfalls, Variablen mit Anmeldeinformationen aus Ihrem Befehlszeilenverlauf zu löschen. Wenn Sie verhindern möchten, dass Variablen in Ihrem Verlauf angezeigt werden, können Sie mithilfe eines Skripts den Benutzer zur Eingabe seiner Anmeldeinformationen auffordern und die Umgebungsvariable festlegen.
+> Wenn Sie eine Umgebungsvariable über die Befehlszeile festlegen, kann diese Variable in Ihrem Befehlszeilenverlauf gelesen werden. Es empfiehlt sich gegebenenfalls, Variablen mit Anmeldeinformationen aus Ihrem Befehlszeilenverlauf zu löschen. Wenn Sie verhindern möchten, dass Variablen in Ihrem Verlauf angezeigt werden, können Sie den Benutzer mit einem Skript zur Eingabe seiner Anmeldeinformationen auffordern und die Umgebungsvariable festlegen.
+
+## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
+
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="options"></a>Optionen
 

@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 77d900844705bb86ce4bcfeda31d6ee765cb8d45
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 0dd6c410040eea9eb4039ab5da183cc0b6799493
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535008"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74005779"
 ---
-# <a name="tutorial-using-azure-iot-hub-message-enrichments-preview"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen (Vorschauversion)
+# <a name="tutorial-using-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
 *Nachrichtenanreicherungen* ist die Fähigkeit des IoT-Hubs, Nachrichten mit zusätzlichen Informationen zu *stempeln*, bevor sie an den angegebenen Endpunkt gesendet werden. Ein Grund für die Verwendung von Nachrichtenanreicherungen: Auf diese Weise lassen sich Daten einbeziehen, die zur Vereinfachung der Downstreamverarbeitung verwendet werden können. So kann beispielsweise durch die Anreicherung von Gerätetelemetrienachrichten mit einem Gerätezwillingstag die Last bei Kunden reduziert werden, um Gerätezwillings-API-Aufrufe für diese Informationen durchzuführen. Weitere Informationen finden Sie in der [Übersicht über Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md).
 
@@ -65,7 +65,7 @@ Sie können das nachstehende Skript verwenden oder das Skript im Ordner „/reso
 
 Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Um die Ausführung des Skripts zu vereinfachen, wird an diese Ressourcennamen der alphanumerische Zufallswert *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen.
 
-Öffnen Sie ein [Cloud Shell-Fenster für Bash](https://shell.azure.com), wenn dies noch nicht geschehen ist. Öffnen Sie das Skript im entpackten Repository, wählen Sie es mit STRG+A vollständig aus, und kopieren Sie es mit STRG+C. Alternativ können Sie das folgende CLI-Skript kopieren oder es direkt in der Cloudshell öffnen. Fügen Sie das Skript im Azure Cloud Shell-Fenster ein, indem Sie mit der rechten Maustaste auf die Befehlszeile klicken und **Einfügen** auswählen. Es wird jeweils eine Anweisung des Skripts ausgeführt. Nachdem das Skript die Ausführung beendet hat, drücken Sie die**EINGABETASTE**, um sicherzustellen, dass der letzte Befehl ausgeführt wird. Der nachstehende Codeblock zeigt das verwendete Skript und Kommentare mit einer Erläuterung der jeweiligen Funktion.
+Falls Sie dies noch nicht getan haben, öffnen Sie ein [Cloud Shell-Fenster](https://shell.azure.com), und sorgen Sie dafür, dass es auf „Bash“ festgelegt ist. Öffnen Sie das Skript im entpackten Repository, wählen Sie es mit STRG+A vollständig aus, und kopieren Sie es mit STRG+C. Alternativ können Sie das folgende CLI-Skript kopieren oder es direkt in Cloud Shell öffnen. Fügen Sie das Skript im Cloud Shell-Fenster ein, indem Sie mit der rechten Maustaste auf die Befehlszeile klicken und **Einfügen** auswählen. Es wird jeweils eine Anweisung des Skripts ausgeführt. Nachdem das Skript die Ausführung beendet hat, drücken Sie die**EINGABETASTE**, um sicherzustellen, dass der letzte Befehl ausgeführt wird. Der nachstehende Codeblock zeigt das verwendete Skript und Kommentare mit einer Erläuterung der jeweiligen Funktion.
 
 Hier sind die vom Skript erstellten Ressourcen. **enriched** bedeutet, dass die Ressource für Nachrichten mit Anreicherungen vorgesehen ist. **original** bedeutet, dass die Ressource für nicht angereicherte Nachrichten vorgesehen ist.
 
@@ -168,10 +168,10 @@ az iot hub device-identity show --device-id $iotDeviceName \
 ##### ROUTING FOR STORAGE #####
 
 # You're going to have two routes and two endpoints.
-# One points to container1 in the storage account
-#   and includes all messages.
-# The other points to container2 in the same storage account
-#   and only includes enriched messages.
+# One route points to the first container ("original") in the storage account
+#   and includes the original messages.
+# The other points to the second container ("enriched") in the same storage account
+#   and includes the enriched versions of the messages.
 
 endpointType="azurestoragecontainer"
 endpointName1="ContosoStorageEndpointOriginal"
@@ -190,7 +190,7 @@ storageConnectionString=$(az storage account show-connection-string \
 # Create the routing endpoints and routes.
 # Set the encoding format to either avro or json.
 
-# This is the endpoint for container 1, for endpoint messages that are not enriched.
+# This is the endpoint for the first container, for endpoint messages that are not enriched.
 az iot hub routing-endpoint create \
   --connection-string $storageConnectionString \
   --endpoint-name $endpointName1 \
@@ -202,7 +202,7 @@ az iot hub routing-endpoint create \
   --resource-group $resourceGroup \
   --encoding json
 
-# This is the endpoint for container 2, for endpoint messages that are enriched.
+# This is the endpoint for the second container, for endpoint messages that are enriched.
 az iot hub routing-endpoint create \
   --connection-string $storageConnectionString \
   --endpoint-name $endpointName2 \
@@ -225,7 +225,8 @@ az iot hub route create \
   --enabled \
   --condition $condition
 
-# This is the route for messages that are not enriched.
+# This is the route for messages that are enriched.
+# Create the route for the second storage endpoint.
 az iot hub route create \
   --name $routeName2 \
   --hub-name $iotHubName \
@@ -240,7 +241,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie k
 
 ### <a name="view-routing-and-configure-the-message-enrichments"></a>Anzeigen des Routings und Konfigurieren der Nachrichtenanreicherungen
 
-1. Wechseln Sie zu Ihrem IoT-Hub, indem Sie **Ressourcengruppen** und dann die für dieses Tutorial eingerichtete Ressourcengruppe, (**ContosoResources_MsgEn**), auswählen. Suchen Sie den IoT-Hub in der Liste, und wählen Sie ihn aus. Wählen Sie *Nachrichtenrouting** für den Iot-Hub aus.
+1. Wechseln Sie zu Ihrem IoT-Hub, indem Sie **Ressourcengruppen** und dann die für dieses Tutorial eingerichtete Ressourcengruppe, (**ContosoResources_MsgEn**), auswählen. Suchen Sie den IoT-Hub in der Liste, und wählen Sie ihn aus. Wählen Sie **Nachrichtenrouting** für den Iot-Hub aus.
 
    ![Auswählen von „Nachrichtenrouting“](./media/tutorial-message-enrichments/select-iot-hub.png)
 
@@ -250,7 +251,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Routing ist konfiguriert. Sie k
 
 2. Fügen Sie diese Werte zur Liste für den Endpunkt „ContosoStorageEndpointEnriched“ hinzu.
 
-   | NAME | Wert | Endpunkt (Dropdownliste) |
+   | Schlüssel | Wert | Endpunkt (Dropdownliste) |
    | ---- | ----- | -------------------------|
    | myIotHub | $iothubname | AzureStorageContainers > ContosoStorageEndpointEnriched |
    | DeviceLocation | $twin.tags.location | AzureStorageContainers > ContosoStorageEndpointEnriched |
@@ -277,16 +278,16 @@ Nachdem Sie die Nachrichtenanreicherungen für den Endpunkt konfiguriert haben, 
 
 Die App „Simuliertes Gerät“ ist eine der Apps im entzippten Download. Die App sendet Nachrichten für jede der verschiedenen Nachrichtenroutingmethoden, die im [Routing-Tutorial](tutorial-routing.md) erläutert werden. Dazu gehört auch Azure Storage.
 
-Doppelklicken Sie auf die Lösungsdatei (IoT_SimulatedDevice.sln), um den Code in Visual Studio zu öffnen. Öffnen Sie anschließend „Program.cs“. Ersetzen Sie `{your hub name}` durch den IoT Hub-Namen. Das Format des IoT Hub-Hostnamens ist **{Ihr Hub-Name}.azure-devices.net**. Für dieses Tutorial lautet der Hub-Hostname **ContosoTestHubMsgEn.azure-devices.net**. Ersetzen Sie als Nächstes `{device key}` durch den Geräteschlüssel, den Sie vorher bei der Ausführung des Skripts zum Erstellen der Ressourcen gespeichert haben.
+Doppelklicken Sie auf die Lösungsdatei (IoT_SimulatedDevice.sln), um den Code in Visual Studio zu öffnen. Öffnen Sie anschließend „Program.cs“. Ersetzen Sie den IoT Hub-Namen durch den Marker `{your hub name}`. Das Format des IoT Hub-Hostnamens ist **{Ihr Hub-Name}.azure-devices.net**. Für dieses Tutorial lautet der Hub-Hostname **ContosoTestHubMsgEn.azure-devices.net**. Ersetzen Sie als Nächstes den Geräteschlüssel, den Sie vorher bei der Ausführung des Skripts zum Erstellen der Ressourcen gespeichert haben, durch den Marker `{your device key}`.
 
 Wenn Sie den Geräteschlüssel nicht haben, können Sie ihn über das Portal abrufen. Nachdem Sie sich angemeldet haben, wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe und dann Ihren IoT-Hub aus. Suchen Sie unter **IoT-Geräte** nach Ihrem Testgerät, und wählen Sie es aus. Wählen Sie das Kopiersymbol neben **Primärschlüssel** aus, um ihn in die Zwischenablage zu kopieren.
 
    ```csharp
-        static string myDeviceId = "contoso-test-device";
-        static string iotHubUri = "ContosoTestHubMsgEn.azure-devices.net";
+        private readonly static string s_myDeviceId = "Contoso-Test-Device";
+        private readonly static string s_iotHubUri = "ContosoTestHubMsgEn.azure-devices.net";
         // This is the primary key for the device. This is in the portal.
         // Find your IoT hub in the portal > IoT devices > select your device > copy the key.
-        static string deviceKey = "{your device key here}";
+        private readonly static string s_deviceKey = "{your device key}";
    ```
 
 ## <a name="run-and-test"></a>Ausführen und Testen
@@ -309,13 +310,13 @@ Nachdem mehrere Speichernachrichten gesendet wurden, zeigen Sie die Daten an.
 
 Den Nachrichten im Container **enriched** wurden die Nachrichtenanreicherungen hinzugefügt. Die Nachrichten im Container **original** wurden nicht angereichert. Führen Sie in einem der Container einen Drilldown bis ganz nach unten aus, und öffnen Sie die neueste Nachrichtendatei. Wiederholen Sie diesen Schritt dann bei dem anderen Container, um sich zu vergewissern, dass den Nachrichten in diesem Container keine Anreicherungen hinzugefügt wurden.
 
-Bei angereicherten Nachrichten sollte die Bezeichnung „My IoT Hub““ (Mein IoT-Hub) mit dem Hubnamen sowie dem Gerätestandort und der Kunden-ID angezeigt werden, wie hier:
+Bei angereicherten Nachrichten sollte die Bezeichnung „my IoT Hub“ (mein IoT-Hub) mit dem Hubnamen sowie dem Gerätestandort und der Kunden-ID angezeigt werden, wie hier:
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage","my IoT Hub":"contosotesthubmsgen3276","devicelocation":"$twin.tags.location","customerID":"6ce345b8-1e4a-411e-9398-d34587459a3a"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}
 ```
 
-Und hier ist eine nicht angereicherte Nachricht. „My IoT Hub“ (Mein IoT-Hub), „devicelocation“ (Gerätestandort) und „customerID“ (Kunden-ID) werden nicht angezeigt, da dieser Endpunkt keine Anreicherungen hat.
+Hier ist eine nicht angereicherte Nachricht. „my IoT Hub“, „devicelocation“ und „customerID“ werden hier nicht angezeigt, weil es sich hierbei um die Felder handelt, die von den Anreicherungen hinzugefügt würden, und es für diesen Endpunkt keine Anreicherungen gibt.
 
 ```json
 {"EnqueuedTimeUtc":"2019-05-10T06:06:32.7220000Z","Properties":{"level":"storage"},"SystemProperties":{"connectionDeviceId":"Contoso-Test-Device","connectionAuthMethod":"{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}","connectionDeviceGenerationId":"636930642531278483","enqueuedTime":"2019-05-10T06:06:32.7220000Z"},"Body":"eyJkZXZpY2VJZCI6IkNvbnRvc28tVGVzdC1EZXZpY2UiLCJ0ZW1wZXJhdHVyZSI6MjkuMjMyMDE2ODQ4MDQyNjE1LCJodW1pZGl0eSI6NjQuMzA1MzQ5NjkyODQ0NDg3LCJwb2ludEluZm8iOiJUaGlzIGlzIGEgc3RvcmFnZSBtZXNzYWdlLiJ9"}

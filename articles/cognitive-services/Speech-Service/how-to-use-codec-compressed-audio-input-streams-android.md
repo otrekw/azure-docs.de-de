@@ -1,5 +1,5 @@
 ---
-title: Streamen von per Codec komprimierten Audiodaten mit dem Speech SDK unter Android – Speech Service
+title: Streamen von per Codec komprimierten Audiodaten mit dem Speech SDK unter Android
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie mit dem Speech SDK unter Android komprimierte Audiodaten an Azure Speech Services streamen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464372"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109901"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK unter Android
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Gewusst wie: Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK unter Android
 
 Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an Speech Services mit PullStream oder PushStream.
 
@@ -25,7 +25,7 @@ Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglic
 > Das Streamen komprimierter Eingabeaudiodaten wird derzeit nur für [C++, C# und Java unter Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) unterstützt. Es wird auch für Java in Android und [Objective-C in iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) unterstützt.
 > Das Speech SDK ab Version 1.7.0 ist erforderlich.
 
-Informationen zu WAV/PCM finden Sie in der Hauptdokumentation zu Speech.  Neben WAV/PCM werden folgende per Codec komprimierten Eingabeformate unterstützt:
+Informationen zu WAV/PCM finden Sie in der Hauptdokumentation zu Speech. Neben WAV/PCM werden folgende per Codec komprimierten Eingabeformate unterstützt:
 
 - MP3
 - OPUS/OGG
@@ -35,7 +35,7 @@ Informationen zu WAV/PCM finden Sie in der Hauptdokumentation zu Speech.  Neben 
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>Voraussetzungen für die Verwendung von per Codec komprimierter Audioeingabe unter Android
 
-Per Codec komprimierte Audiodaten werden mit [GStreamer](https://gstreamer.freedesktop.org) implementiert. Aus Lizenzierungsgründen werden die GStreamer-Binärdateien nicht mit dem SDK kompiliert. Sie müssen die vorkonfigurierten Binärdateien für Android verwenden. Informationen zum Herunterladen der vorkonfigurierten Bibliotheken finden Sie unter [Installieren für die Android-Entwicklung](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c). 
+Per Codec komprimierte Audiodaten werden mit [GStreamer](https://gstreamer.freedesktop.org) implementiert. Aus Lizenzierungsgründen werden die GStreamer-Binärdateien nicht mit dem SDK kompiliert. Sie müssen die vorkonfigurierten Binärdateien für Android verwenden. Informationen zum Herunterladen der vorkonfigurierten Bibliotheken finden Sie unter [Installieren für die Android-Entwicklung](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
 `libgstreamer_android.so` ist erforderlich. Stellen Sie sicher, dass Ihre GStreamer-Plug-Ins in `libgstreamer_android.so` verknüpft sind.
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Abrufen Ihres Testabonnements für Speech](https://azure.microsoft.com/try/cognitive-services/)
-* [Erkennen von Sprache in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Erkennen von Sprache in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -1,23 +1,14 @@
 ---
 title: Konfigurieren und Verwalten von Azure Notebook-Projekten
 description: Verwalten von Projektmetadaten, Projektdateien, der Projektumgebung und von Setupschritten sowohl über die Azure Notebooks-Benutzeroberfläche als auch mit direktem Terminalzugriff.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
-ms.author: kraigb
-ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 56c265122894412e79b3d5a7b256964c49ab81a6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973129"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277643"
 ---
 # <a name="manage-and-configure-projects"></a>Verwalten und Konfigurieren von Projekten
 

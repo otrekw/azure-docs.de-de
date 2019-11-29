@@ -1,13 +1,10 @@
 ---
 title: Reaktivieren eines deaktivierten Azure für Bildungseinrichtungen-Abonnements | Microsoft-Dokumentation
 description: Erklärt, warum Ihr Azure für Bildungseinrichtungen-Abonnement deaktiviert ist, und wie Sie es reaktivieren.
-services: ''
-documentationcenter: ''
 author: amberbhargava
 manager: amberb
-editor: ''
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
@@ -15,12 +12,12 @@ ms.workload: na
 ms.date: 03/01/2018
 ms.author: banders
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d41e9b7774bf8840db9e729d3aa9371f5bac04f
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: cfabb3ad7ad150b38b8c90488710731ad29b80a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "60615925"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226413"
 ---
 # <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Warum ist mein Azure für Bildungseinrichtungen-Abonnement deaktiviert, und wie reaktiviere ich es?
 
@@ -34,7 +31,7 @@ Ihr verbleibendes Guthaben können Sie im [Microsoft Azure Sponsorships-Portal](
 
 1. Melden Sie sich mit Ihren Azure für Bildungseinrichtungen-Kontoanmeldeinformationen an.
 2. Die Bilanzseite enthält Informationen über verwendetes und verbleibendes Guthaben. Das Ablaufdatum Ihres Guthabens finden Sie unterhalb des Guthabendiagramms.  
-   
+
     ![Screenshot mit Guthabeninformationen für Azure für Bildungseinrichtungen-Abonnement](./media/billing-azurestudents-subscription-disabled/azurestudents-credit-balance.png)
 
 3. Wählen Sie zum Überprüfen der Nutzung der Dienste, die Ihr Azure-Guthaben verbrauchen, im linken Navigationsbereich **Nutzung** und dann Ihr Azure für Bildungseinrichtungen-Abonnement aus.

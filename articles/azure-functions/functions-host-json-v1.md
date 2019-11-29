@@ -1,18 +1,14 @@
 ---
 title: host.json-Referenz für Azure Functions 1.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v1 Runtime.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.author: glenga
-ms.openlocfilehash: 614e02e4ba2599154cd3308d6a4fe222b6f63d3d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 99a571483086343d4e7d6188b2f401abc616c1bb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576151"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230588"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-Referenz für Azure Functions 1.x
 

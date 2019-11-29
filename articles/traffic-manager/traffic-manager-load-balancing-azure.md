@@ -3,21 +3,21 @@ title: Verwenden von Lastenausgleichsdiensten in Azure | Microsoft-Dokumentation
 description: 'In diesem Tutorial erfahren Sie, wie Sie ein Szenario mithilfe des Lastenausgleichportfolios von Azure erstellen: Traffic Manager, Application Gateway und Load Balancer.'
 services: traffic-manager
 documentationcenter: ''
-author: liumichelle
-manager: dkays
+author: asudbring
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
-ms.author: limichel
-ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 4a7f8fd45b1e496ba3f0208d523ac569a24e9e7c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60330526"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227789"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 

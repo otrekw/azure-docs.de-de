@@ -1,19 +1,19 @@
 ---
-title: Protokollierung und Diagnose in Azure Spatial Anchors | Microsoft-Dokumentation
+title: Protokollierung und Diagnose
 description: Ausführliche Erklärung der Vorgehensweise zum Generieren und Abrufen von Protokollierung und Diagnose in Azure Spatial Anchors.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b66dc7d6ec9d11fe645587fe791824009231b7c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f4359db1deda2295a66bcb97cf374d0fe9bc3ef7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964744"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270126"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Protokollierung und Diagnose in Azure Spatial Anchors
 
@@ -50,7 +50,7 @@ Diese Ereignisrückrufe stehen zur Verfügung, um Protokolle und Fehler aus der 
 
 Zusätzlich zum Standardmodus für den Protokollierungsvorgang bietet Spatial Anchors auch einen Diagnosemodus. Der Diagnosemodus erfasst Bilder der Umgebung und protokolliert diese auf den Datenträger. Sie können diesen Modus zum Debuggen von bestimmten Problemen verwenden, beispielsweise wenn ein Anker nicht zuverlässig gefunden wird. Aktivieren Sie die Diagnoseprotokollierung ausschließlich zum Reproduzieren eines bestimmten Problems. Deaktivieren Sie sie anschließend wieder. Aktivieren Sie die Diagnoseprotokollierung nicht, wenn Sie Ihre Anwendungen ganz normal ausführen.
 
-Wenn Sie den Microsoft-Support kontaktieren, wird Sie der Microsoft-Mitarbeiter möglicherweise bitten, zur weiteren Untersuchung ein Diagnosepaket zu übermitteln. In diesem Fall können Sie die Diagnoseprotokollierung aktivieren und das Problem reproduzieren, damit Sie das Diagnosepaket übermitteln können. 
+Wenn Sie den Microsoft-Support kontaktieren, wird Sie der Microsoft-Mitarbeiter möglicherweise bitten, zur weiteren Untersuchung ein Diagnosepaket zu übermitteln. In diesem Fall können Sie die Diagnoseprotokollierung aktivieren und das Problem reproduzieren, damit Sie das Diagnosepaket übermitteln können.
 
 Wenn Sie ohne vorherige Bestätigung eines Microsoft-Mitarbeiters ein Diagnoseprotokoll an Microsoft übermitteln, wird die Übermittlung unbeantwortet bleiben.
 
@@ -88,7 +88,7 @@ private void ConfigureSession()
 
 ### <a name="submit-the-diagnostics-bundle"></a>Übermitteln des Diagnosepakets
 
-In dem folgenden Codeausschnitt wird gezeigt, wie ein Diagnosepaket an Microsoft übermittelt wird. Dieses Paket enthält Bilder der Umgebung, die von der Sitzung erfasst worden sind, nachdem Sie die Diagnoseprotokollierung aktiviert haben. 
+In dem folgenden Codeausschnitt wird gezeigt, wie ein Diagnosepaket an Microsoft übermittelt wird. Dieses Paket enthält Bilder der Umgebung, die von der Sitzung erfasst worden sind, nachdem Sie die Diagnoseprotokollierung aktiviert haben.
 
 ```csharp
 // method to handle the diagnostics bundle submission

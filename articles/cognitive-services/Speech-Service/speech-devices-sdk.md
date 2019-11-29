@@ -1,7 +1,7 @@
 ---
 title: Informationen zum Speech Devices SDK – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
-description: Erste Schritte mit dem Speech-Geräte-SDK Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
+description: Erste Schritte mit dem Speech-Geräte-SDK Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Beim Speech-Geräte-SDK handelt es sich um eine vorab optimierte Bibliothek, die mit spezifischen mikrofonfähigen Development Kits kombiniert wurde.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 243072477c7d249d7066a7a448061c51a0bd2f34
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 31d1a60cc6c1316dcfccb4f9ba2571708fddd991
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468718"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74072377"
 ---
 # <a name="about-the-speech-devices-sdk"></a>Informationen zum Speech-Geräte-SDK
 
@@ -23,9 +23,9 @@ ms.locfileid: "73468718"
 
 Anwendungsmöglichkeiten für das Speech-Geräte-SDK:
 
-* Testen Sie neue Sprachszenarien schnell.
-* Integrieren Sie die cloudbasierten Speech Services einfacher in Ihr Gerät.
-* Sorgen Sie für eine herausragende Benutzerfreundlichkeit für Ihre Kunden.
+- Testen Sie neue Sprachszenarien schnell.
+- Integrieren Sie die cloudbasierten Speech Services einfacher in Ihr Gerät.
+- Sorgen Sie für eine herausragende Benutzerfreundlichkeit für Ihre Kunden.
 
 Das Speech-Geräte-SDK nutzt das [Speech-SDK](speech-sdk.md). Es verwendet das Speech-SDK zum Senden von Audioinhalten, die mit unserem Audioverarbeitungsalgorithmus bearbeitet wurden, vom Mikrofonarray des Geräts an die [Speech Services](overview.md). Es verwendet Mehrkanal-Audio für eine präzisere Fernfeld-[Spracherkennung](speech-to-text.md) mit Geräuschunterdrückung, Echounterdrückung, Beamforming und Hallunterdrückung.
 
@@ -53,6 +53,5 @@ Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 
 
 > [!div class="nextstepaction"]
 > [Auswählen Ihres Speech-Geräts](get-speech-devices-sdk.md)
->
 > [!div class="nextstepaction"]
-> [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+> [Kostenloses Testen des Speech-Diensts](get-started.md)

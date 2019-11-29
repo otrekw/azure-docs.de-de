@@ -2,21 +2,15 @@
 author: paulbouwer
 ms.service: container-service
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 11/15/2019
 ms.author: pabouwer
-ms.openlocfilehash: ed021f969bf861482a5730a312e4d17a42915745
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 33c9ce25873b38a01701e6a36219083642666e84
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529870"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170892"
 ---
-Führen Sie den folgenden Befehl aus, um die CRDs zu löschen:
-
-```powershell
-kubectl get crds -o name | Select-String -Pattern 'istio.io' |% { kubectl delete $_ }
-```
-
 Führen Sie den folgenden Befehl aus, um die Geheimnisse zu löschen:
 
 ```powershell

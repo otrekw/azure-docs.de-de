@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Azure IoT Hub-Cloudgerätemessaging mit Azure IoT-Tools für Visual Studio Code | Microsoft-Dokumentation
+title: Verwenden von Azure IoT Tools für VSCode zum Verwalten von IoT Hub-Messaging
 description: In diesem Artikel erfahren Sie, wie Sie mit der Azure IoT-Tools für Visual Studio Code in Azure IoT Hub Gerät-zu-Cloud-Nachrichten überwachen und Cloud-zu-Gerät-Nachrichten senden.
 author: formulahendry
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838511"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083251"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Senden und Empfangen von Nachrichten zwischen Ihrem Gerät und IoT Hub mithilfe der Azure IoT-Tools für Visual Studio Code.
 
@@ -62,11 +62,11 @@ Sie erfahren, wie Sie mit den Azure IoT-Tools für Visual Studio Code Gerät-zu-
 
 Um Nachrichten zu überwachen, die von Ihrem Gerät an Ihren IoT Hub gesendet werden, gehen Sie folgendermaßen vor:
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und klicken Sie auf **Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts starten).
+1. Klicken Sie mit der rechten Maustaste auf Ihr Gerät, und wählen Sie **Überwachung des integrierten Ereignisendpunkts starten** aus.
 
 2. Die überwachten Nachrichten werden in der Ansicht **AUSGABE** > **Azure IoT Hub Toolkit** angezeigt.
 
-3. Um die Überwachung anzuhalten, klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und klicken Sie auf **Stop Monitoring Built-in Event Endpoint** (Überwachung des integrierten Ereignisendpunkts beenden).
+3. Zum Anhalten der Überwachung klicken Sie mit der rechten Maustaste auf die Ansicht **AUSGABE**, und wählen Sie **Überwachung des integrierten Ereignisendpunkts beenden** aus.
 
 ## <a name="send-cloud-to-device-messages"></a>Senden von C2D-Nachrichten.
 

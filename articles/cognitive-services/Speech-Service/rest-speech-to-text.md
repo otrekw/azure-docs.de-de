@@ -10,22 +10,23 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6324c00d9b85a13ef6e69185e3b380b20f761f3b
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552967"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091209"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
-Als Alternative zum [Speech SDK](speech-sdk.md) ermöglichen die Sprachdienste das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten.
+Als Alternative zum [Speech SDK](speech-sdk.md) ermöglicht Speech Services das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten.
 
 Vor der Verwendung der Spracherkennungs-REST-API müssen Sie Folgendes verstanden haben:
-* Anforderungen, die die REST-API verwenden, dürfen nur 10 Sekunden aufgezeichnetes Audiomaterial enthalten.
+
+* Anforderungen, die die REST-API verwenden und Audiodaten direkt übertragen, dürfen nur bis zu 60 Sekunden Audiodaten enthalten.
 * Die Spracherkennung-REST-API gibt nur Endergebnisse zurück. Teilergebnisse werden nicht bereitgestellt.
 
-Wenn das Senden von längerem Audio eine Anforderung für Ihre Anwendung ist, verwenden Sie das [Speech SDK](speech-sdk.md) oder die [Batchtranskription](batch-transcription.md).
+Wenn das Senden von längerem Audio eine Anforderung für Ihre Anwendung ist, verwenden Sie das [Speech SDK](speech-sdk.md) oder eine dateibasierte REST-API wie die [Batchtranskription](batch-transcription.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -33,7 +34,7 @@ Wenn das Senden von längerem Audio eine Anforderung für Ihre Anwendung ist, ve
 
 Diese Regionen werden für die Spracherkennungstranskription über die REST-API unterstützt. Achten Sie darauf, dass Sie den Endpunkt für Ihre Abonnementregion auswählen.
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)] 
 
 ## <a name="query-parameters"></a>Abfrageparameter
 
@@ -55,8 +56,8 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 | `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Entweder dieser Header oder `Ocp-Apim-Subscription-Key` ist erforderlich. |
 | `Content-type` | Beschreibt das Format und den Codec der bereitgestellten Audiodaten. Zulässige Werte sind `audio/wav; codecs=audio/pcm; samplerate=16000` und `audio/ogg; codecs=opus`. | Erforderlich |
 | `Transfer-Encoding` | Gibt an, dass segmentierte Audiodaten anstatt einer einzelnen Datei gesendet werden. Verwenden Sie diesen Header nur, wenn Sie Audiodaten segmentieren. | Optional |
-| `Expect` | Wenn Sie segmentierte Übertragung verwenden, senden Sie `Expect: 100-continue`. Der Spracherkennungsdienst bestätigt die ursprüngliche Anforderung und wartet auf weitere Daten.| Erforderlich, wenn segmentierte Audiodaten gesendet werden. |
-| `Accept` | Wenn angegeben, muss der Wert `application/json` entsprechen. Der Spracherkennungsdienst übermittelt stellt Ergebnisse im JSON-Format bereit. Einige Webanforderungsframeworks stellen einen inkompatiblen Standardwert bereit, wenn Sie keinen Wert angeben. Deswegen wird empfohlen, `Accept` immer zu verwenden. | Optional, wird jedoch empfohlen. |
+| `Expect` | Wenn Sie segmentierte Übertragung verwenden, senden Sie `Expect: 100-continue`. Der Speech-Dienst bestätigt die ursprüngliche Anforderung und wartet auf weitere Daten.| Erforderlich, wenn segmentierte Audiodaten gesendet werden. |
+| `Accept` | Wenn angegeben, muss der Wert `application/json` entsprechen. Der Speech-Dienst übermittelt Ergebnisse im JSON-Format. Einige Anforderungsframeworks bieten einen inkompatiblen Standardwert. Es ist eine bewährte Methode, `Accept` immer einzubeziehen. | Optional, wird jedoch empfohlen. |
 
 ## <a name="audio-formats"></a>Audioformate
 
@@ -72,7 +73,7 @@ Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in e
 
 ## <a name="sample-request"></a>Beispiel für eine Anforderung
 
-Hier sehen Sie eine übliche HTTP-Anforderung. Das folgende Beispiel enthält den Hostnamen und die erforderlichen Header. Beachten Sie, dass der Dienst auch Audiodaten erwartet, die in diesem Beispiel nicht enthalten sind. Wie bereits erwähnt, wird die Segmentierung empfohlen, ist aber nicht erforderlich.
+Das folgende Beispiel enthält den Hostnamen und die erforderlichen Header. Beachten Sie, dass der Dienst auch Audiodaten erwartet, die in diesem Beispiel nicht enthalten sind. Wie bereits erwähnt, wird die Segmentierung empfohlen, ist aber nicht erforderlich.
 
 ```HTTP
 POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -92,13 +93,13 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 |------------------|-------------|-----------------|
 | 100 | Weiter | Die ursprüngliche Anforderung wurde akzeptiert. Mit dem Senden der restlichen Daten fortfahren. (Wird mit segmentierter Übertragung verwendet.) |
 | 200 | OK | Die Anforderung war erfolgreich. Der Antworttext ist ein JSON-Objekt. |
-| 400 | Ungültige Anforderung | Der Sprachcode wurde nicht bereitgestellt oder ist keine unterstützte Sprache, ungültige Audiodatei. |
+| 400 | Ungültige Anforderung | Der Sprachcode wurde nicht bereitgestellt, ist keine unterstützte Sprache, eine ungültige Audiodatei usw. |
 | 401 | Nicht autorisiert | Der Abonnementschlüssel oder das Autorisierungstoken ist in der angegebenen Region ungültig oder ungültiger Endpunkt. |
 | 403 | Verboten | Fehlender Abonnementschlüssel oder fehlendes Autorisierungstoken. |
 
 ## <a name="chunked-transfer"></a>Segmentierte Übertragung
 
-Die segmentierte Übertragung (`Transfer-Encoding: chunked`) kann die Erkennungslatenz verringern, da sie dem Spracherkennungsdienst ermöglicht, mit der Verarbeitung der Audiodatei bei der Übertragung zu beginnen. Der REST-API bietet keine Teil- oder Zwischenergebnisse. Diese Option dient ausschließlich zur Verbesserung der Reaktionsfähigkeit.
+Mithilfe der segmentierten Übertragung (`Transfer-Encoding: chunked`) kann die Erkennungslatenz verringert werden. Es ermöglicht den Speech-Diensten, mit der Verarbeitung der Audiodatei zu beginnen, während sie übertragen wird. Der REST-API bietet keine Teil- oder Zwischenergebnisse.
 
 Dieses Codebeispiel zeigt, wie Sie Audio in Blöcken senden. Nur der erste Block sollte den Header der Audiodatei enthalten. `request` ist ein HTTPWebRequest-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
 
@@ -177,7 +178,7 @@ Jedes Objekt in der `NBest`-Liste enthält:
 
 ## <a name="sample-responses"></a>Beispielantworten
 
-Hier sehen Sie eine typische Antwort für die Erkennung `simple`.
+Eine typische Antwort für die `simple` Erkennung:
 
 ```json
 {
@@ -188,7 +189,7 @@ Hier sehen Sie eine typische Antwort für die Erkennung `simple`.
 }
 ```
 
-Hier sehen Sie eine typische Antwort für die Erkennung `detailed`.
+Eine typische Antwort für die `detailed` Erkennung:
 
 ```json
 {

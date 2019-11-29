@@ -8,12 +8,12 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b9b1be699190f6dc6f4771411c22f376d51637ec
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477448"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231532"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Beheben von Fehlern bei freigegebenen Ressourcen
 
@@ -29,7 +29,7 @@ Ein Modul bleibt beim Importieren oder Aktualisieren in Azure Automation im Zust
 
 #### <a name="cause"></a>Ursache
 
-Das Importieren von PowerShell-Modulen ist ein komplexer Vorgang mit mehreren Schritten. Bei diesen Vorgang besteht die Möglichkeit, dass ein Modul nicht ordnungsgemäß importiert wird. In diesem Fall kann das Modul, das Sie importieren, in einem Übergangszustand hängen bleiben. Weitere Informationen zu diesem Vorgang finden Sie unter [Importieren eines PowerShell-Moduls]( /powershell/developer/module/importing-a-powershell-module#the-importing-process).
+Das Importieren von PowerShell-Modulen ist ein komplexer Vorgang mit mehreren Schritten. Bei diesen Vorgang besteht die Möglichkeit, dass ein Modul nicht ordnungsgemäß importiert wird. In diesem Fall kann das Modul, das Sie importieren, in einem Übergangszustand hängen bleiben. Weitere Informationen zu diesem Vorgang finden Sie unter [Importieren eines PowerShell-Moduls](/powershell/scripting/developer/module/importing-a-powershell-module#the-importing-process).
 
 #### <a name="resolution"></a>Lösung
 

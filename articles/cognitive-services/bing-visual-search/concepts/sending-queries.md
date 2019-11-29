@@ -1,7 +1,7 @@
 ---
 title: Senden von Suchabfragen an die API für die visuelle Bing-Suche
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Informationen zu den REST-API-Parametern, die in der API für die visuelle Bing-Suche verwendet werden.
+description: In diesem Artikel werden die Parameter und Attribute von Anforderungen beschrieben, die an die API für die visuelle Bing-Suche gesendet werden. Außerdem finden Sie hier Informationen zum Antwortobjekt.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: e857401591d45048962e9f606973dbf59dfe99c8
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 2a87bee4769111e01dc49e8fce14569233dfaef3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194316"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111619"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
 
@@ -57,7 +57,7 @@ Legen Sie bei `imageInsightsToken` ein Auswertungstoken fest. Rufen Sie zum Abru
 
 Das Feld `cropArea` ist optional. Mit dem Zuschneidebereich können Sie die linke obere Ecke und die rechte untere Ecke eines relevanten Bereichs angeben. Legen Sie dabei Werte zwischen 0,0 und 1,0 fest. Damit geben Sie den Prozentsatz der gesamten Breite oder Höhe an. Im vorherigen Beispiel wird etwa die rechte Hälfte des Bildes als relevanter Bereich markiert. Soll die Anforderung auf den relevanten Bereich beschränkt sein, fügen Sie Werte in dieses Feld ein.
 
-Das `filters`-Objekt enthält einen Sitefilter (das `site`-Feld). Damit können Sie die Ergebnisse für ähnliche Bilder und ähnliche Produkte auf eine bestimmte Domäne eingrenzen. Zeigt das Bild beispielsweise ein Surface Book, können Sie `site` auf www.microsoft.com festlegen.
+Das `filters`-Objekt enthält einen Sitefilter (das `site`-Feld). Damit können Sie die Ergebnisse für ähnliche Bilder und ähnliche Produkte auf eine bestimmte Domäne eingrenzen. Zeigt das Bild beispielsweise ein Surface Book, können Sie `site` auf `www.microsoft.com` festlegen.
 
 Wenn Sie Informationen zu der lokalen Kopie eines Bildes erhalten möchten, laden Sie das Bild in Binärform hoch.
 

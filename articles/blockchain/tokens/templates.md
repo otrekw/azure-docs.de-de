@@ -1,19 +1,15 @@
 ---
 title: Azure Blockchain Tokens-Vorlagen
 description: Azure Blockchain Tokens-Vorlagen sind standardisierte und wiederverwendbare Vorlagen, die das Erstellen und Bereitstellen Ledger-basierter Token vereinfachen.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: 5b8fc2bd4d2cedadb4c50f7ec11def8bea7b37c4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9600a6a251552acd319cc68d2bd281584d65546d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577289"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324989"
 ---
 # <a name="azure-blockchain-tokens-templates"></a>Azure Blockchain Tokens-Vorlagen
 

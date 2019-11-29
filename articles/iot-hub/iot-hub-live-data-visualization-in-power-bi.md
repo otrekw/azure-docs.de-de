@@ -1,5 +1,5 @@
 ---
-title: Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit mit Power BI | Microsoft-Dokumentation
+title: Datenvisualisierung in Echtzeit von Daten aus Azure IoT Hub – Power BI
 description: Verwenden Sie Power BI, um Temperatur- und Luftfeuchtigkeitsdaten visuell darzustellen, die der Sensor gesammelt und an Ihren Azure IoT Hub gesendet hat.
 author: robinsh
 keywords: Datenvisualisierung in Echtzeit, Visualisierung von Livedaten, Visualisierung von Sensordaten
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 6/06/2019
 ms.author: robinsh
-ms.openlocfilehash: 7deb1b501d30c8af0cb190f4722d46435afa9b8e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f0b909d10790511408e090546fd3359889ea5aca
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67065936"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954623"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Verwenden von Power BI zum Visualisieren von Sensordaten in Azure IoT Hub in Echtzeit
 

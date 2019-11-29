@@ -3,17 +3,17 @@ title: Anzeigen eines Wissensspeichers (Vorschau) mit Storage-Explorer
 titleSuffix: Azure Cognitive Search
 description: Anzeigen und Analysieren eines Azure Cognitive Search-Wissensspeichers mit dem Storage-Explorer des Azure-Portals „Wissensspeicher“ ist zurzeit als öffentliche Vorschauversion verfügbar.
 manager: nitinme
-author: lisaleib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ea879a419aa14d3a6693e23f4f120aca8d9d51
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720050"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406552"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Anzeigen eines Wissensspeichers mit Storage-Explorer
 
