@@ -1,7 +1,7 @@
 ---
 title: 'Hinzufügen von Entitäten: LUIS'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren.
+description: Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren. Extrahierte Entitätsdaten werden von der Clientanwendung verwendet, um Kundenanforderungen zu erfüllen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,171 +9,167 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 54c9d79c62052daeee76de5dffb1099dc7d75180
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467719"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132692"
 ---
-# <a name="create-entities-without-utterances"></a>Erstellen von Entitäten ohne Äußerungen
+# <a name="add-entities-to-extract-data"></a>Hinzufügen von Entitäten zum Extrahieren von Daten 
 
-Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Eine Entität stellt eine Klasse dar, einschließlich einer Sammlung ähnlicher Objekte (Orte, Dinge, Personen, Ereignisse oder Konzepte). Entitäten beschreiben Informationen mit Bezug zur Absicht. Manchmal sind sie auch für die Ausführung der Aufgabe Ihrer App wichtig. Sie können Entitäten erstellen, wenn Sie einer Absicht eine Äußerung hinzufügen, oder auch getrennt vom Hinzufügen einer Äußerung zu einer Absicht (vor oder nach dem Hinzufügen).
+Erstellen Sie Entitäten, um die Schlüsseldaten aus Benutzeräußerungen in Language Understanding-Apps (LUIS) zu extrahieren. Extrahierte Entitätsdaten werden von Ihrer Clientanwendung verwendet, um Kundenanforderungen zu erfüllen.
 
-Sie können Entitäten in Ihrer LUIS-App über die **Entitätenlisten** auf der Seite **Entitäten** hinzufügen, bearbeiten oder löschen. LUIS verfügt über zwei Haupttypen von Entitäten: [vordefinierte Entitäten](luis-reference-prebuilt-entities.md) und Ihre eigenen [benutzerdefinierten Entitäten](luis-concept-entity-types.md#types-of-entities).
+Die Entität stellt ein Wort oder einen Ausdruck innerhalb der Äußerung dar, die extrahiert werden soll. Entitäten beschreiben Informationen mit Bezug zur Absicht. Manchmal sind sie auch für die Ausführung der Aufgabe Ihrer App wichtig. Sie können Entitäten erstellen, wenn Sie einer Absicht eine Beispieläußerung hinzufügen, oder auch getrennt vom Hinzufügen einer Beispieläußerung zu einer Absicht (vor oder nach dem Hinzufügen).
 
-Sobald eine maschinell erlernte Entität erstellt wurde, müssen Sie diese Entität in der gesamten Beispieläußerung aller Absichten, in denen sie sich befindet, markieren.
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+## <a name="plan-entities-then-create-and-label"></a>Planen von Entitäten mit anschließender Erstellung und Bezeichnung
 
-<a name="add-prebuilt-entity"></a>
+Durch maschinelles Lernen erworbene Entitäten können über die Beispieläußerungen oder über die Seite **Entitäten** erstellt werden. 
 
-## <a name="add-a-prebuilt-entity-to-your-app"></a>Hinzufügen einer vordefinierten Entität zu Ihrer App
+Im Allgemeinen ist es eine bewährte Methode, Zeit für die Planung der Entitäten aufzuwenden, bevor eine durch maschinelles Lernen erworbene Entität im Portal erstellt wird. Erstellen Sie dann die durch maschinelles Lernen erworbene Entität über die Beispieläußerung mit so vielen Details in den Teilkomponenten sowie Deskriptoren und Einschränkungen, wie Ihnen zu diesem Zeitpunkt bekannt sind. Das [Tutorial „Zerlegbare Entität“](tutorial-machine-learned-entity.md) veranschaulicht die Verwendung dieser Methode. 
 
-Einer Anwendung hinzugefügte allgemeine vordefinierte Entitäten sind *number* und *datetimeV2*. 
+Im Rahmen der Planung der Entitäten ist zu beachten, dass Sie Entitäten für den Textvergleich benötigen (z. B. vorgefertigte Entitäten, Entitäten vom Typ „Regular Expression“ oder vom Typ „List“). Sie können diese auf der Seite **Entitäten** erstellen, bevor sie in Beispieläußerungen bezeichnet werden. 
 
-1. Wählen Sie in Ihrer App im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
- 
-1. Wählen Sie auf der Seite **Entitäten** die Option **Vordefinierte Entitäten hinzufügen**.
+Beim Bezeichnen können Sie entweder einzelne Entitäten bezeichnen und dann zu einer übergeordneten, durch maschinelles Lernen erworbenen Entität aufbauen. Oder Sie beginnen mit einer übergeordneten, durch maschinelles Lernen erworbenen Entität und zerlegen sie in untergeordnete Entitäten. 
 
-1. Wählen Sie im Dialogfeld **Vordefinierte Entitäten hinzufügen** die vordefinierten Entitäten **number** und **datetimeV2** aus. Wählen Sie dann **Fertig** aus.
+> [!TIP] 
+>Bezeichnen Sie alle Wörter, die auf eine Entität hinweisen können, auch wenn die Wörter bei der Extraktion in der Clientanwendung nicht verwendet werden. 
 
-    ![Screenshot des Dialogfelds „Vordefinierte Entität hinzufügen“](./media/add-entities/list-of-prebuilt-entities.png)
+## <a name="creating-an-entity-before-or-with-labeling"></a>Erstellen einer Entität vor der Bezeichnung oder beim Bezeichnen
 
-<a name="add-simple-entities"></a>
+Verwenden Sie die folgende Tabelle, um zu verstehen, welche Entitäten wo erstellt oder der App hinzugefügt werden sollen. 
 
-## <a name="add-simple-entities-for-single-concepts"></a>Hinzufügen einfacher Entitäten für einzelne Konzepte
+|Entitätstyp|Erstellen einer Entität im LUIS-Portal|
+|--|--|
+|Durch maschinelles Lernen erworbene Entität|Entitäten oder Absichtsdetails|
+|Entität vom Typ „List“|Entitäten oder Absichtsdetails|
+|Entität vom Typ „RegEx“|Entitäten|
+|Entität „Pattern.any“|Entitäten|
+|Vordefinierte Entität|Entitäten|
+|Vordefinierte Domänenentität|Entitäten|
 
-Eine einfache Entität beschreibt ein einzelnes Konzept. Verwenden Sie das folgende Verfahren zum Erstellen einer Entität, mit der die Namen von Unternehmensabteilungen extrahiert werden, z.B. *Personalwesen* oder *Operativer Betrieb*.   
+Sie können alle Entitäten auf der Seite **Entitäten** erstellen, oder Sie können einige Entitäten im Rahmen der Bezeichnung der Entität in der Beispieläußerung auf der Seite **Absichtsdetails** erstellen. Sie können eine Entität in einer Beispieläußerung von der Seite **Absichtsdetails** nur _bezeichnen_. 
 
-1. Wählen Sie in Ihrer App den Abschnitt **Build**, im linken Bereich die Option **Entitäten** und dann die Option **Neue Entität erstellen**.
+## <a name="create-a-machine-learned-entity"></a>Erstellen einer durch maschinelles Lernen erworbenen Entität
 
-1. Geben Sie im Popupdialogfeld das Wort `Location` in das Feld **Entitätsname** ein, und wählen Sie in der Liste **Entitätstyp** die Option **Einfach** aus. Wählen Sie anschließend **Fertig**.
+[!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-    Navigieren Sie nach dem Erstellen dieser Entität zu allen Absichten mit Beispieläußerungen, die die Entität enthalten. Wählen Sie den Text in der Beispieläußerung aus, und kennzeichnen Sie ihn als Entität. 
+## <a name="create-a-text-matching-entity"></a>Erstellen einer Entität mit Textvergleich
 
-    Normalerweise wird eine [Ausdrucksliste](luis-concept-feature.md) verwendet, um das Signal einer einfachen Entität zu verstärken.
+Die Verwendung von Entitäten mit Textvergleich bietet verschiedene Möglichkeiten zur Datenextraktion:
 
-<a name="add-regular-expression-entities"></a>
+|Entitäten mit Textvergleich|Zweck|
+|--|--|
+|[Entität vom Typ „List“](#add-list-entities-for-exact-matches)|Liste der kanonischen Namen zusammen mit Synonymen als alternative Formen|
+|Entität vom Typ „RegEx“|Textvergleich unter Verwendung einer Entität vom Typ „RegEx“|
+|[Vordefinierte Entität](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|Vergleichen allgemeiner Datentypen wie „number“, „email“, „date“|
+|Vordefinierte Domänenentität|Vergleich mit ausgewählten Motivdomänen|
+|[Pattern.any-Entitäten](#add-a-patternany-entity)| Für den Vergleich von Entitäten, die leicht mit dem umgebenden Text verwechselt werden können|  
 
-## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Hinzufügen von Entitäten mit regulären Ausdrücken für hochgradig strukturierte Konzepte
-
-Eine Entität des Typs „Regulärer Ausdruck“ dient zum Abrufen von Daten aus der Äußerung basierend auf einem regulären Ausdruck, den Sie bereitstellen. 
-
-1. Wählen Sie in Ihrer App im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
-
-1. Geben Sie im Popupdialogfeld `Human resources form name` in das Feld **Entitätsname** ein, wählen Sie **Regulärer Ausdruck** in der Liste **Entitätstyp** aus, geben Sie den regulären Ausdruck `hrf-[0-9]{6}` ein, und wählen Sie dann **Fertig** aus. 
-
-    Dieser reguläre Ausdruck stimmt mit dem Literal `hrf-` überein und enthält dann sechs Ziffern, um eine Formularnummer für ein Formular aus dem Personalwesen darzustellen.
-
-<a name="add-composite-entities"></a>
-
-## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>Hinzufügen von zusammengesetzten Entitäten zum Gruppieren in einer Beziehung von über- und untergeordneten Elementen
-
-Sie können Beziehungen zwischen Entitäten unterschiedlichen Typs durch das Erstellen einer zusammengesetzten Entität definieren. Im folgenden Beispiel enthält die Entität einen regulären Ausdruck und eine vordefinierte Entität mit einem Namen.  
-
-In der Äußerung `Send hrf-123456 to John Smith` wird die Zeichenfolge `hrf-123456` mit einem [regulären Ausdruck](#add-regular-expression-entities) des Personalwesens abgeglichen, und `John Smith` wird mit der vordefinierten Entität „personName“ extrahiert. Jede Entität ist Teil einer größeren übergeordneten Entität. 
-
-1. Wählen Sie in Ihrer App im linken Navigationsbereich des Abschnitts **Build** die Option **Entitäten** und dann **Vordefinierte Entität hinzufügen**.
-
-1. Fügen Sie die vordefinierte Entität **PersonName** hinzu. Anweisungen hierzu finden Sie unter [Hinzufügen einer vordefinierten Entität](#add-prebuilt-entity). 
-
-1. Wählen Sie im linken Navigationsbereich **Entitäten** und dann **Neue Entität erstellen** aus.
-
-1. Geben Sie im Popupdialogfeld die Zeichenfolge `SendHrForm` in das Feld **Entitätsname** ein, und wählen Sie in der Liste **Entitätstyp** dann die Option **Zusammengesetzt** aus.
-
-1. Wählen Sie **Untergeordnetes Element hinzufügen** aus, um ein neues untergeordnetes Element hinzuzufügen.
-
-1. Wählen Sie im ersten Feld **Untergeordnete Entität** die Entität **number** in der Liste aus.
-
-1. Wählen Sie im zweiten Feld **Untergeordnete Entität** in der Liste die Entität **Human resources form name** (Name für Personalwesenformular) aus. 
-
-1. Wählen Sie **Fertig**aus.
-
-<a name="add-pattern-any-entities"></a>
-
-## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Hinzufügen von Pattern.any-Entitäten zum Erfassen von Freiformentitäten
-
-[Pattern.Any](luis-concept-entity-types.md)-Entitäten sind nur in [Mustern](luis-how-to-model-intent-pattern.md) gültig, nicht in Absichten. Mit diesem Entitätstyp kann LUIS das Ende von Entitäten unterschiedlicher Länge und Wortwahl finden. Da diese Entität in einem Muster verwendet wird, weiß LUIS, wo sich das Ende der Entität in der Äußerungsvorlage befindet.
-
-Wenn eine App eine `FindHumanResourcesForm`-Absicht hat, kann ein Konflikt zwischen dem extrahierten Formulartitel und der Absichtsvorhersage auftreten. Um zu verdeutlichen, welche Wörter der Formulartitel enthält, verwenden Sie eine Pattern.any-Entität in einem Muster. Die LUIS-Vorhersage beginnt mit der Äußerung. Zunächst wird die Äußerung überprüft und mit Entitäten abgeglichen. Wenn Entitäten gefunden werden, wird das Muster überprüft und abgeglichen. 
-
-In der Äußerung `Where is Request relocation from employee new to the company on the server?` ist der Formulartitel problematisch, da aus dem Kontext nicht hervorgeht, wo der Titel endet und wo der restliche Teil der Äußerung beginnt. Titel können eine beliebigen Wortreihenfolge aufweisen und beispielsweise ein einzelnes Wort, komplexe Ausdrücke mit Satzzeichen und eine unsinnige Reihenfolge von Wörtern enthalten. Ein Muster ermöglicht Ihnen, eine Entität zu erstellen, wobei die vollständige und genaue Entität extrahiert werden kann. Sobald der Titel gefunden wurde, wird die `FindHumanResourcesForm`-Absicht vorhergesagt, da dies die Absicht für das Muster ist.
-
-1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **Neue Entität erstellen**.
-
-1. Geben Sie im Dialogfeld **Entität hinzufügen** in das Feld **Entitätsname** den Namen `HumanResourcesFormTitle` ein, und wählen Sie **Pattern.any** als **Entitätstyp** aus.
-
-    Um die pattern.any-Entität zu verwenden, fügen Sie auf der Seite **Muster** im Abschnitt **Improve app performance** (App-Leistung verbessern) mit der richtigen Syntax mit geschweiften Klammern ein Muster ein, z.B. `Where is **{HumanResourcesFormTitle}** on the server?`.
-
-    Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](luis-concept-patterns.md#explicit-lists), um dieses Problem zu beheben. 
-
-<a name="add-a-role-to-pattern-based-entity"></a>
-
-## <a name="add-a-role-to-distinguish-different-contexts"></a>Hinzufügen einer Rolle zum Unterscheiden verschiedener Kontexte
-
-Eine Rolle ist ein benannter Untertyp, der auf Kontext basiert. Er ist in allen Entitäten verfügbar, einschließlich vorkonfigurierter und nicht durch maschinelles Lernen erworbener Entitäten. 
-
-Die Syntax für eine Rolle ist **`{Entityname:Rolename}`** , wobei auf den Entitätsnamen ein Doppelpunkt und dann der Rollenname folgt. Beispiel: `Move {personName} from {Location:Origin} to {Location:Destination}`.
-
-1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
-
-1. Wählen Sie **Neue Entität erstellen** aus. Geben Sie den Namen `Location` ein. Wählen Sie den Typ **Einfach** und dann **Fertig** aus. 
-
-1. Wählen Sie im linken Bereich die Option **Entitäten** und dann die neue Entität **Location** aus, die im vorherigen Schritt erstellt wurde.
-
-1. Geben Sie im Textfeld **Rollenname** den Namen der Rolle `Origin` ein, und drücken Sie die EINGABETASTE. Fügen Sie eine zweite Rolle namens `Destination` hinzu. 
-
-    ![Screenshot vom Hinzufügen der Rolle „Origin“ zur Entität „Location“](./media/add-entities/roles-enter-role-name-text.png)
+Vordefinierte Entitäten funktionieren ohne Bereitstellung benutzerdefinierter Trainingsdaten. Für die anderen Entitäten müssen Sie entweder Kundentrainingsdaten (z. B. die Elemente der Entität vom Typ „List“) oder einen Ausdruck (z. B. einen regulären Ausdruck oder pattern.any) bereitstellen.
 
 <a name="add-list-entities"></a>
 
-## <a name="add-list-entities-for-exact-matches"></a>Hinzufügen von Listenentitäten für genaue Übereinstimmungen
+### <a name="how-to-create-a-new-custom-entity"></a>Erstellen einer neuen benutzerdefinierten Entität
 
-Listenentitäten stellen eine feste, abgeschlossene Gruppe mit verwandten Wörtern dar. 
+1. Wechseln Sie im LUIS-Portal zum Abschnitt **Verwalten**, dann zur Seite **Entitäten**. 
+1. Wählen Sie **+ Erstellen** und dann den Entitätstyp aus. 
+1. Fahren Sie mit der Konfiguration der Entität fort, und wählen Sie dann **Erstellen** aus, wenn Sie fertig sind. 
 
-Für eine Personal-App können Sie eine Liste mit allen Abteilungen und den Synonymen für die Abteilungen verwenden. Sie müssen nicht alle Werte kennen, wenn Sie die Entität erstellen. Sie können weitere Werte hinzufügen, nachdem Sie wirkliche Benutzeräußerungen mit Synonymen überprüft haben.
+### <a name="add-list-entities-for-exact-matches"></a>Hinzufügen von Listenentitäten für genaue Übereinstimmungen
 
-1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **Neue Entität erstellen**.
+Listenentitäten stellen eine feste, abgeschlossene Gruppe mit verwandten Wörtern dar. Obwohl Sie als Ersteller die Liste ändern können, wird LUIS die Liste nicht vergrößern oder verkleinern. Sie können auch in eine bestehende Listenentität importieren, indem Sie ein [list entity .json format](reference-entity-list.md#example-json-to-import-into-list-entity) verwenden. 
 
-1. Geben Sie im Dialogfeld **Entität hinzufügen** `Department` in das Feld **Entitätsname** ein, und wählen Sie **Liste** als **Entitätstyp** aus. Wählen Sie **Fertig**aus.
-  
-1. Auf der Listenentitätsseite können Sie normalisierte Namen hinzufügen. Geben Sie im Textfeld **Werte** einen Abteilungsnamen für eine Liste ein, z.B. `HumanResources`, und drücken Sie anschließend auf der Tastatur die EINGABETASTE. 
+Die folgende Liste zeigt den kanonischen Namen und die Synonyme. 
 
-1. Geben Sie rechts neben dem normalisierten Wert die Synonyme ein, und drücken Sie nach jedem Element die EINGABETASTE.
+|Farbe – Name des Listenelements|Farbe – Synonyme|
+|--|--|
+|Rot|Karmesin, Blut, Apfel, Feuerwehr|
+|Blau|Himmel, Azur, Kobalt|
+|Grün|Kelly, Limette|
 
-1. Wenn Sie weitere normalisierte Elemente für die Liste wünschen, wählen Sie **Empfehlen** aus, um Optionen aus dem [semantischen Wörterbuch](luis-glossary.md#semantic-dictionary) anzuzeigen.
+Verwenden Sie dieses Verfahren zum Erstellen einer Listenentität. Nachdem die Listenentität erstellt wurde, müssen Sie keine Beispieläußerungen in einer Absicht bezeichnen. Listenelemente und Synonyme werden textgenau verglichen. 
 
-    ![Screenshot der Auswahl der Empfehlen-Funktion zum Anzeigen der Möglichkeiten](./media/add-entities/hr-list-2.png)
+1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **+ Erstellen** aus.
 
+1. Geben Sie im Dialogfeld **Entitätstyp erstellen** den Namen der Entität ein, z. B. `Colors`, und wählen Sie dann **Liste** aus.
+1. Geben Sie im Dialogfeld **Listenentität erstellen** in **Neue Unterliste hinzufügen....** den Namen des Listenelements ein, z.B. `Green`, und fügen Sie dann Synonyme hinzu.
 
-1. Wählen Sie ein Element in der empfohlenen Liste aus, um es als normalisierten Wert hinzuzufügen, oder wählen Sie **Alle hinzufügen** aus, um alle Elemente hinzuzufügen. 
-    Sie können Werte in eine vorhandene Listenentität importieren, indem Sie das folgende JSON-Format verwenden:
+    > [!div class="mx-imgBorder"]
+    > ![Erstellen Sie eine Liste von Farben als Listenentität auf der Seite der Entitätsdetails.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-    ```JSON
-    [
-        {
-            "canonicalForm": "Blue",
-            "list": [
-                "navy",
-                "royal",
-                "baby"
-            ]
-        },
-        {
-            "canonicalForm": "Green",
-            "list": [
-                "kelly",
-                "forest",
-                "avacado"
-            ]
-        }
-    ]  
-    ```
+1. Wenn Sie mit dem Hinzufügen von Listenelementen und Synonymen fertig sind, wählen Sie **Erstellen** aus.
 
-<a name="change-entity-type"></a>
+    Wenn Sie eine Gruppe von Änderungen an der App vorgenommen haben, denken Sie daran, die App zu **trainieren**. Trainieren Sie die App nicht nach einer einzelnen Änderung. 
+
+    > [!NOTE]
+    > Dieses Verfahren veranschaulicht das Erstellen und Bezeichnen einer Listenentität aus einer Beispieläußerung auf der Seite **Absichtsdetails**. Sie können dieselbe Entität auch auf der Seite **Entitäten** erstellen.
+
+## <a name="add-a-role-for-an-entity"></a>Hinzufügen einer Rolle für eine Entität
+
+Eine Rolle ist ein benannter Untertyp einer Entität, basierend auf dem Kontext. 
+
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Hinzufügen einer Rolle zum Unterscheiden verschiedener Kontexte
+
+In der folgenden Äußerung gibt es zwei Standorte, die jeweils semantisch durch die sie umgebenden Wörter wie `to` und `from` spezifiziert werden: 
+
+`Pick up the package from Seattle and deliver to New York City.`
+
+Fügen Sie in diesem Verfahren `origin`- und `destination`-Rollen zu einer vordefinierten GeographyV2-Entität hinzu.
+
+1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten**.
+
+1. Wählen Sie **+ Vordefinierte Entität hinzufügen** aus. Wählen Sie **geographyV2** und dann **Fertig** aus. Dadurch wird der App eine vordefinierte Entität hinzugefügt.
+    
+    Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](reference-pattern-syntax.md#explicit-lists), um dieses Problem zu beheben. 
+
+1. Wählen Sie die neu hinzugefügte vordefinierte GeographieV2-Entität aus der Seitenliste **Entitäten** aus. 
+1. Wählen Sie zum Hinzufügen einer neuen Rolle **+** neben **Keine Rollen hinzugefügt** aus.
+1. Geben Sie im Textfeld **Rolle eingeben...** den Namen der Rolle `Origin` ein, und drücken Sie dann die EINGABETASTE. Fügen Sie eine zweite Rolle namens `Destination` hinzu, und drücken Sie dann die EINGABETASTE. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot vom Hinzufügen der Rolle „Origin“ zur Entität „Location“](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+
+    Die Rolle wird der vordefinierten Entität hinzugefügt, aber nicht zu Äußerungen, die diese Entität verwenden. 
+
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Bezeichnen von Text mit einer Rolle in einer Beispieläußerung
+
+1. Wechseln Sie zur Seite mit den Absichtsdetails, die Beispieläußerungen enthält, die die Rolle verwenden. 
+1. Wählen Sie zum Bezeichnen mit der Rolle die Entitätsbezeichnung (durchgezogene Linie unter Text) in der Beispieläußerung und dann **In Entitätspalette anzeigen** aus der Dropdownliste aus. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot zum Auswählen von „In Entitätspalette anzeigen“](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    Die Entitätspalette wird auf der rechten Seite geöffnet. 
+
+1. Wählen Sie die Entität aus, und wechseln Sie dann zum Ende der Palette, um die Rolle auszuwählen. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot zum Auswählen von „In Entitätspalette anzeigen“](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-a-patternany-entity"></a>Hinzufügen einer pattern.any-Entität
+
+[Pattern.Any](luis-concept-entity-types.md)-Entitäten sind nur in [Mustern](luis-how-to-model-intent-pattern.md) gültig, nicht in Beispieläußerungen von Absichten. Mit diesem Entitätstyp kann LUIS das Ende von Entitäten unterschiedlicher Länge und Wortwahl finden. Da diese Entität in einem Muster verwendet wird, weiß LUIS, wo sich das Ende der Entität in der Äußerungsvorlage befindet.
+
+### <a name="steps-to-create-a-patternany-entity"></a>Schritte zum Erstellen einer Pattern.any-Entität
+
+1. Wählen Sie im Abschnitt **Erstellen** im linken Bereich die Option **Entitäten** und dann **+ Erstellen** aus.
+
+1. Geben Sie im Dialogfeld **Entitätstyps auswählen** den Entitätsnamen in das Feld **Name** ein, und wählen Sie **Pattern.Any** als **Typ** und anschließend **Erstellen** aus.
+
+    Nachdem Sie mit dieser Entität [eine Musteräußerung](luis-how-to-model-intent-pattern.md) erstellt haben, wird die Entität mit einem kombinierten Algorithmus (durch maschinelles Lernen erworben und Textvergleich) extrahiert. 
+
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Erstellen einer Mustervorlageäußerung zur Verwendung der pattern.any-Entität
+
+Um die pattern.any-Entität zu verwenden, fügen Sie auf der Seite **Muster** im Abschnitt **Improve app performance** (App-Leistung verbessern) mit der richtigen Syntax mit geschweiften Klammern ein Muster ein, z.B. `Where is **{HumanResourcesFormTitle}** on the server?`.
+
+Wenn Ihr Muster eine Pattern.any-Entität enthält und Entitäten falsch extrahiert, verwenden Sie eine [explizite Liste](reference-pattern-syntax.md#explicit-lists), um dieses Problem zu beheben. 
 
 ## <a name="do-not-change-entity-type"></a>Der Entitätstyp kann nicht geändert werden
 
@@ -181,15 +177,12 @@ LUIS erlaubt Ihnen nicht, den Entitätstyps zu ändern, da die Anwendung nicht w
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="create-a-pattern-from-an-example-utterance"></a>Erstellen eines Musters aus einer Beispieläußerung
-
-Weitere Informationen finden Sie unter [Hinzufügen eines Musters aus einer vorhandenen Äußerung auf der Seite der Absicht oder der Entität](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
-
-## <a name="train-your-app-after-changing-model-with-entities"></a>Trainieren Ihrer App nach dem Ändern des Modells mit Entitäten
-
-Nachdem Sie Entitäten hinzugefügt, bearbeitet oder entfernt haben, [trainieren](luis-how-to-train.md) und [veröffentlichen](luis-how-to-publish-app.md) Sie Ihre App, damit die Änderungen auf Endpunktabfragen angewandt werden. 
-
 ## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Mustern:
+
+* [Musterkonzepte](luis-concept-patterns.md)
+* [Mustersyntax](reference-pattern-syntax.md)
 
 Weitere Informationen zu vordefinierten Entitäten finden Sie unter dem Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text). 
 

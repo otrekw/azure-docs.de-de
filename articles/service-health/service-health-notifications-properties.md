@@ -1,19 +1,19 @@
 ---
 title: Was sind Azure-Dienstintegritätsbenachrichtigungen?
 description: Mit Dienstintegritätsbenachrichtigungen können Sie von Microsoft Azure veröffentlichte Dienstintegritätsmeldungen anzeigen.
-author: dkamstra
+author: stephbaron
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 4/12/2018
-ms.author: dukek
+ms.author: stbaron
 ms.subservice: logs
-ms.openlocfilehash: 87efa7442b0c67f2ee5f83b6b3e8ac8530ce5285
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b41c2cdc54ab5eecdc4503cbd98e69932c901a3d
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081803"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007086"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
@@ -22,7 +22,6 @@ Dienstintegritätsbenachrichtigungen werden von Azure veröffentlicht und enthal
 Es gibt verschiedene Klassen von Dienstintegritätsbenachrichtigungen:  
 
 - **Aktion erforderlich**: Möglicherweise wurde von Azure etwas Ungewöhnliches in Ihrem Konto festgestellt. Das Azure-Team arbeitet mit Ihnen zusammen, um das Problem zu beheben. Azure sendet Ihnen eine Benachrichtigung, in der beschrieben wird, welche Maßnahmen Sie ergreifen müssen oder wie Sie sich an das Azure-Engineeringteam oder den Azure-Support wenden.  
-- **Unterstützte Wiederherstellung**: Ein Ereignis ist aufgetreten, und das Engineeringteam hat sich davon überzeugt, dass weiterhin Beeinträchtigungen vorliegen. Das Azure-Engineeringteam muss direkt mit Ihnen zusammenarbeiten, um Ihre Dienste vollständig wiederherzustellen.  
 - **Incident**: Ein Ereignis, das den Dienst beeinträchtigt, wirkt sich derzeit auf mindestens eine Ressource in Ihrem Abonnement aus.  
 - **Wartung**: Eine geplante Wartungsaktivität, die eine oder mehrere Ressourcen in Ihrem Abonnement beeinträchtigen kann.  
 - **Information**: Potenzielle Optimierungen, mit denen Sie Ihre Ressourcennutzung verbessern können. 
@@ -60,19 +59,18 @@ Properties.communicationId | Die Kommunikation, der dieses Ereignis ist zugeordn
 ### <a name="details-on-service-health-level-information"></a>Details zu Informationen zur Dienstintegritätsebene
 
 **Aktion erforderlich** (properties.incidentType == ActionRequired)
-- Zur Information: Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden
+- Zur Information: es ist eine Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden.
     
 **Wartung** (properties.incidentType == Maintenance)
 - Warnung: Notfallwartung
 - Zur Information: standardmäßig geplante Wartung
 
 **Informationen** (properties.incidentType == Information)
-- Zur Information: Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden
+- Zur Information: Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden.
 
 **Sicherheit** (properties.incidentType == Security)
-- Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
-- Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
-- Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
+- Warnung: Sicherheitsempfehlung, die sich auf vorhandene Dienste auswirkt und möglicherweise eine Aktion des Administrators erfordert.
+- Information: Sicherheitsempfehlung, die sich auf vorhandene Dienste auswirkt.
 
 **Dienstprobleme** (properties.incidentType == Incident)
 - Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.

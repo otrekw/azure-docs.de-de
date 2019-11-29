@@ -1,5 +1,5 @@
 ---
-title: FAQ – Azure Disk Encryption für virtuelle Windows-Computer | Microsoft-Dokumentation
+title: FAQ – Azure Disk Encryption für virtuelle Windows-Computer
 description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Microsoft Azure Disk Encryption für virtuelle Windows-IaaS-Computer.
 author: msmbaldwin
 ms.service: security
@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: b6cd7e93451de9c5761db22024ac82abaaa0949e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 98ab9ea67ceb1d965e248c93d27cb801ab8c7483
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72246011"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033324"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>Azure Disk Encryption für virtuelle Windows-Computer – FAQ
 

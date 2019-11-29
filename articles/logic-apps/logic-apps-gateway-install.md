@@ -9,20 +9,20 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: a8deb7933bb19745bbe4c3b3a209c19c9cc712bd
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796310"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076934"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
 Bevor Sie eine [Verbindung mit lokalen Datenquellen aus Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md) herstellen können, müssen Sie das [lokale Datengateway](https://aka.ms/on-premises-data-gateway-installer) herunterladen und auf einem lokalen Computer installieren. Das Gateway fungiert als Brücke, die schnelle Datenübertragung und Verschlüsselung zwischen lokalen Datenquellen und Ihren Logik-Apps bereitstellt. Sie können die gleiche Gatewayinstallation für andere Clouddienste verwenden, etwa für Power BI, Power Automate, PowerApps und Azure Analysis Services. Weitere Informationen zum Verwenden des Gateways mit diesen Diensten finden Sie in den folgenden Artikeln:
 
-* [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Lokales Microsoft Power Apps-Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
-* [Power Automate für das lokale Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
+* [Microsoft Power Automate für das lokale Datengateway](/power-automate/gateway-reference)
+* [Microsoft Power BI | Lokales Datengateway](/power-bi/service-gateway-onprem)
+* [Lokales Microsoft Power Apps-Datengateway](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 
 Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installieren und einrichten, damit Sie über Azure Logic Apps auf lokale Datenquellen zugreifen können. Außerdem erfahren Sie weiter unten in diesem Thema mehr über die [Funktionsweise des Datengateways](#gateway-cloud-service). Weitere Informationen zum Gateway finden Sie unter [Was ist ein lokales Gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?

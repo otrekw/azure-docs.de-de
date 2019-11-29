@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Routingmethode „MultiValue“ für Datenverkehr in Azure Traffic Manager
+title: Konfigurieren des „MultiValue“-Routings für Datenverkehr – Azure Traffic Manager
 description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr an A/AAAA-Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: allensu
-ms.openlocfilehash: 5db8e2932a43a2d6c6cb8a99c4f32b37a4a5a3f8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3e5e6cb55b86df8a48f96771fb2436afa8acaa18
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67050894"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74040370"
 ---
 # <a name="configure-multivalue-routing-method-in-traffic-manager"></a>Konfigurieren der Routingmethode „MultiValue“ in Traffic Manager
 
@@ -45,8 +45,8 @@ Erstellen Sie ein Traffic Manager-Profil, das den Benutzerdatenverkehr weiterlei
     | ---                     | ---                                                |
     | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie die Routingmethode **MultiValue** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie *myResourceGroupTM1* aus. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie *myResourceGroupTM1* aus. |
     | Location                | Diese Einstellung bezieht sich auf den Speicherort der Ressourcengruppe und hat keine Auswirkungen auf das Traffic Manager-Profil, das global bereitgestellt wird.                              |
    |        |           | 
   
@@ -62,7 +62,7 @@ Fügen Sie zwei IP-Adressen als externe Endpunkte zum Traffic Manager-Profil „
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Externer Endpunkt                                   |
+    | type                    | Externer Endpunkt                                   |
     | NAME           | myEndpoint1                                        |
     | Vollqualifizierter Domänenname (FQDN) oder IP           | Geben Sie die öffentliche IP-Adresse des Endpunkts ein, den Sie diesem Traffic Manager-Profil hinzufügen möchten.                         |
     |        |           |

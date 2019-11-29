@@ -11,12 +11,12 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: d952229ab327440771db6cc5ac64db2256491179
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823258"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483842"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -149,10 +149,6 @@ Weitere Informationen finden Sie unter [Erste Schritte bei der Datenermittlung u
 ### <a name="compliance"></a>Compliance
 
 Zusätzlich zu den oben aufgeführten Features und Funktionen, mit denen Ihre Anwendung eine Reihe von Sicherheitsanforderungen erfüllen kann, wird Azure SQL-Datenbank außerdem regelmäßigen Überprüfungen unterzogen und ist für eine Reihe von Compliancestandards zertifiziert. Weitere Informationen finden Sie im [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), wo die aktuellste Liste von Compliance-Zertifizierungen für SQL-Datenbank angezeigt wird.
-
-### <a name="feature-restrictions"></a>Featureeinschränkungen
-
-Featureeinschränkungen schützen bei einigen Formen der Einschleusung von SQL-Befehlen vor Preisgabe von Informationen über die Datenbank, selbst wenn die Einschleusung von SQL-Befehlen erfolgreich ist. Weitere Informationen finden Sie unter [Featureeinschränkungen für Azure SQL-Datenbank](sql-database-feature-restrictions.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

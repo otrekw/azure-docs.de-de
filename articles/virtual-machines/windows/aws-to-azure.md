@@ -1,5 +1,5 @@
 ---
-title: Verschieben von Windows-AWS-VMs nach Azure | Microsoft-Dokumentation
+title: Verschieben von Windows-AWS-VMs nach Azure
 description: Hier wird beschrieben, wie Sie eine Windows-Instanz vom Typ „Amazon Web Services (AWS) EC2“ auf einen virtuellen Azure-Computer verschieben.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 31f6ffc4f114039e0c53c1994f8c4364dea18298
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9bd01f24ac2cada02f51089d238519cd6c7e0248
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70089504"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039286"
 ---
 # <a name="move-a-windows-vm-from-amazon-web-services-aws-to-an-azure-virtual-machine"></a>Verschieben eines virtuellen Windows-Computers aus Amazon Web Services (AWS) auf einen virtuellen Azure-Computer
 

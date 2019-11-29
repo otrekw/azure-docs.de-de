@@ -1,8 +1,7 @@
 ---
-title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD in Azure | Microsoft-Dokumentation
+title: Erstellen einer Windows-VM auf Grundlage einer speziellen VHD in Azure
 description: Erstellen Sie eine neue Windows-VM, indem Sie über das Resource Manager-Bereitstellungsmodell einen speziellen verwalteten Datenträger als Betriebssystemdatenträger anfügen.
 services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
 manager: gwallace
 editor: ''
@@ -12,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 6adeae69a4ef9e6f2d77588f8071498fd25beb3e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ac18056f9bfdf22c55b5effac810b8c24ab4d81d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390604"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033857"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Erstellen einer Windows-VM von einem speziellen Datenträger mithilfe von PowerShell
 
@@ -63,100 +62,15 @@ Verwenden Sie die VHD unverändert, um einen neuen virtuellen Computer zu erstel
   * Stellen Sie sicher, dass der virtuelle Computer so konfiguriert ist, dass die IP-Adressen und DNS-Einstellungen über DHCP abgerufen werden. Dadurch wird sichergestellt, dass der Server beim Starten eine IP-Adresse innerhalb des virtuellen Netzwerks bezieht. 
 
 
-### <a name="get-the-storage-account"></a>Abrufen des Speicherkontos
-Sie benötigen ein Speicherkonto in Azure, in dem die hochgeladene VHD gespeichert wird. Sie können ein vorhandenes Speicherkonto auswählen oder ein neues erstellen. 
+### <a name="upload-the-vhd"></a>Hochladen der VHD
 
-Zeigen Sie die verfügbaren Speicherkonten an.
-
-```powershell
-Get-AzStorageAccount
-```
-
-Um ein vorhandenes Speicherkonto zu verwenden, fahren Sie mit dem Abschnitt [Hochladen der VHD](#upload-the-vhd-to-your-storage-account) fort.
-
-Erstellen Sie ein Speicherkonto.
-
-1. Sie benötigen den Namen der Ressourcengruppe, in der das Speicherkonto erstellt werden soll. Verwenden Sie „Get-AzResourceGroup“, um alle Ressourcengruppen in Ihrem Abonnement anzuzeigen.
-   
-    ```powershell
-    Get-AzResourceGroup
-    ```
-
-    Erstellen Sie eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *USA, Westen*.
-
-    ```powershell
-    New-AzResourceGroup `
-       -Name myResourceGroup `
-       -Location "West US"
-    ```
-
-2. Erstellen Sie mit dem Cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageaccount) das Speicherkonto *mystorageaccount* in der neuen Ressourcengruppe.
-   
-    ```powershell
-    New-AzStorageAccount `
-       -ResourceGroupName myResourceGroup `
-       -Name mystorageaccount `
-       -Location "West US" `
-       -SkuName "Standard_LRS" `
-       -Kind "Storage"
-    ```
-
-### <a name="upload-the-vhd-to-your-storage-account"></a>Hochladen der VHD in Ihr Speicherkonto 
-Verwenden Sie das Cmdlet [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), um die VHD in einen Container in Ihrem Speicherkonto hochzuladen. In diesem Beispiel wird die Datei *myVHD.vhd* aus "C:\Users\Public\Documents\Virtual hard disks\" in das Speicherkonto *mystorageaccount* in der Ressourcengruppe *myResourceGroup* hochgeladen. Die Datei wird im Container *mycontainer* gespeichert. Der neue Dateiname lautet *myUploadedVHD.vhd*.
-
-```powershell
-$resourceGroupName = "myResourceGroup"
-$urlOfUploadedVhd = "https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd"
-Add-AzVhd -ResourceGroupName $resourceGroupName `
-   -Destination $urlOfUploadedVhd `
-   -LocalFilePath "C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd"
-```
-
-
-Bei erfolgreicher Ausführung der Befehle erhalten Sie eine Antwort ähnlich dieser:
-
-```powershell
-MD5 hash is being calculated for the file C:\Users\Public\Documents\Virtual hard disks\myVHD.vhd.
-MD5 hash calculation is completed.
-Elapsed time for the operation: 00:03:35
-Creating new page blob of size 53687091712...
-Elapsed time for upload: 01:12:49
-
-LocalFilePath           DestinationUri
--------------           --------------
-C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontainer/myUploadedVHD.vhd
-```
-
-Die Ausführung dieses Befehls kann – abhängig von Ihrer Netzwerkverbindung und der Größe Ihrer VHD-Datei – einige Zeit in Anspruch nehmen.
-
-### <a name="create-a-managed-disk-from-the-vhd"></a>Erstellen verwalteter Datenträger aus der VHD
-
-Erstellen Sie mithilfe von [New-AzDisk](https://docs.microsoft.com/powershell/module/az.compute/new-azdisk) einen verwalteten Datenträger auf Grundlage der spezialisierten VHD in Ihrem Speicherkonto. Dieses Beispiel verwendet *myOSDisk1* als Datenträgername, platziert den Datenträger in Speicher vom Typ *Standard_LRS* und verwendet *https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd* als URI für die Quell-VHD.
-
-Erstellen Sie eine neue Ressourcengruppe für die neue VM.
-
-```powershell
-$destinationResourceGroup = 'myDestinationResourceGroup'
-New-AzResourceGroup -Location $location `
-   -Name $destinationResourceGroup
-```
-
-Erstellen Sie den neuen Betriebssystemdatenträger der hochgeladenen VHD. 
-
-```powershell
-$sourceUri = 'https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd'
-$osDiskName = 'myOsDisk'
-$osDisk = New-AzDisk -DiskName $osDiskName -Disk `
-    (New-AzDiskConfig -AccountType Standard_LRS  `
-    -Location $location -CreateOption Import `
-    -SourceUri $sourceUri) `
-    -ResourceGroupName $destinationResourceGroup
-```
+Sie können nun eine VHD direkt in einen verwalteten Datenträger hochladen. Eine Anleitung hierzu finden Sie unter [Hochladen einer VHD in Azure mithilfe von Azure PowerShell](disks-upload-vhd-to-managed-disk-powershell.md).
 
 ## <a name="option-3-copy-an-existing-azure-vm"></a>Option 3: Kopieren einer vorhandenen Azure-VM
 
 Sie können eine Kopie einer VM mit verwalteten Datenträgern erstellen, indem Sie eine Momentaufnahme von der VM erstellen und dann mit diesem einen neuen verwalteten Datenträger und eine neue VM erstellen.
 
+Wenn Sie einen vorhandenen virtuellen Computer in eine andere Region kopieren möchten, können Sie unter Verwendung von AzCopy [eine Kopie eines Datenträgers in einer anderen Region erstellen](disks-upload-vhd-to-managed-disk-powershell.md#copy-a-managed-disk). 
 
 ### <a name="take-a-snapshot-of-the-os-disk"></a>Erstellen einer Momentaufnahme des Betriebssystemdatenträgers
 

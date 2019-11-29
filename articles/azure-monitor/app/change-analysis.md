@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: cawams
 ms.author: cawa
 ms.date: 05/07/2019
-ms.openlocfilehash: dc572d29b4e6d95525959becad0ed8069735e33c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ed297a1005f67a14db1da15aba2c47c98e83df9c
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605995"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73884976"
 ---
 # <a name="use-application-change-analysis-preview-in-azure-monitor"></a>Verwenden der Anwendungsänderungsanalyse (Vorschau) in Azure Monitor
 
@@ -31,11 +31,15 @@ Das folgende Diagramm zeigt die Architektur der Änderungsanalyse:
 
 ![Architekturdiagramm zum Abrufen von Änderungsdaten und Bereitstellung dieser Daten für Clienttools durch die Änderungsanalyse](./media/change-analysis/overview.png)
 
-Derzeit ist die Änderungsanalyse in die **Diagnose und Problembehandlung** für App Service-Web-Apps integriert. Informationen zum Aktivieren der Änderungserkennung und zum Anzeigen von Änderungen in der Web-App finden Sie im Abschnitt *Änderungsanalyse für die Web-Apps-Funktion* weiter unten.
+Derzeit ist die Änderungsanalyse sowohl in die **Diagnose und Problembehandlung** für App Service-Web-Apps integriert, als auch als eigenständiges Blatt im Azure-Portal verfügbar.
+Weitere Informationen zum Zugreifen auf das Blatt „Änderungsanalyse“ finden Sie im Abschnitt *Anzeigen von Änderungen für alle Ressourcen in Azure*, und Informationen zum Verwenden der Änderungsanalyse im Web-App-Portal finden Sie im Abschnitt *Änderungsanalyse für die Web-Apps-Funktion* im weiteren Verlauf dieses Artikels.
 
-### <a name="azure-resource-manager-deployment-changes"></a>Bereitstellungsänderungen in Azure Resource Manager
+### <a name="azure-resource-manager-tracked-properties-changes"></a>Verfolgte Eigenschaftsänderungen in Azure Resource Manager
 
-Mithilfe von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) stellt die Änderungsanalyse in Form von Verlaufsdaten dar, wie sich die Azure-Ressourcen, die Ihre Anwendung hosten, im Laufe der Zeit verändert haben. Die Änderungsanalyse kann beispielsweise Änderungen bei den IP-Konfigurationsregeln, den verwalteten Identitäten und den SSL-Einstellungen erkennen. Wenn also einer Web-App ein Tag hinzugefügt wird, gibt die Änderungsanalyse diese Änderung wieder. Diese Informationen sind so lange verfügbar, wie der `Microsoft.ChangeAnalysis`-Ressourcenanbieter im Azure-Abonnement aktiviert ist.
+Mithilfe von [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/overview) stellt die Änderungsanalyse in Form von Verlaufsdaten dar, wie sich die Azure-Ressourcen, die Ihre Anwendung hosten, im Laufe der Zeit verändert haben. Nachverfolgte Einstellungen wie verwaltete Identitäten, Plattformbetriebssystems-Upgrades und Hostnamen können erkannt werden.
+
+### <a name="azure-resource-manager-proxied-setting-changes"></a>Per Proxy übermittelte Einstellungsänderungen in Azure Resource Manager
+Einstellungen wie die IP-Konfigurationsregel, SSL-Einstellungen und Erweiterungsversionen sind in ARG noch nicht verfügbar. Daher fragt die Änderungsanalyse diese Änderungen ab und berechnet sie sicher, um weitere Details darüber bereitzustellen, was sich in der App geändert hat. Diese Informationen sind noch nicht in Azure Resource Graph verfügbar. Dies wird aber bald der Fall sein.
 
 ### <a name="changes-in-web-app-deployment-and-configuration-in-guest-changes"></a>Änderungen bei Bereitstellung und Konfiguration einer Web-App (Änderungen auf Gastsystemen)
 
@@ -50,6 +54,10 @@ Derzeit werden die folgenden Abhängigkeiten unterstützt:
 - Web-Apps
 - Azure Storage
 - Azure SQL
+
+### <a name="enablement"></a>Aktivierung
+Der Ressourcenanbieter „Microsoft.ChangeAnalysis“ muss bei einem Abonnement registriert werden, damit die Daten zu nachverfolgten Änderungen und per Proxy übermittelten Einstellungsänderungen von Azure Resource Manager verfügbar sind. Wenn Sie die Diagnose und Problembehandlung in der Web-App öffnen oder das eigenständige Blatt „Änderungsanalyse“ aufrufen, wird dieser Ressourcenanbieter automatisch registriert. Es gibt keine Leistungs- und Kostenimplementierungen für Ihr Abonnement.
+Bei Web-App-Änderungen, die das Gastbetriebssystem betreffen, ist eine separate Aktivierung erforderlich, um Codedateien in einer Web-App zu überprüfen. Weitere Informationen finden Sie unter *Aktivieren der Änderungsanalyse im Tool „Diagnose und Problembehandlung“* weiter unten in diesem Artikel.
 
 ## <a name="viewing-changes-for-all-resources-in-azure"></a>Anzeigen von Änderungen für alle Ressourcen in Azure
 In Azure Monitor gibt es ein eigenständiges Blatt für die Änderungsanalyse, auf dem alle Änderungen mit Ressourcen für Einblicke und Anwendungsabhängigkeiten angezeigt werden.
@@ -70,7 +78,7 @@ Derzeit unterstützte Ressourcen:
 - Azure-Netzwerkressourcen
 - Web-App mit Nachverfolgung von Dateien und Änderungen von Umgebungsvariablen auf Gastsystemen
 
-Zum Senden von Feedback verwenden Sie die entsprechende Schaltfläche auf dem Blatt, oder senden Sie eine E-Mail an changeanalysisteam@microsoft.com. 
+Zum Senden von Feedback verwenden Sie die entsprechende Schaltfläche auf dem Blatt, oder senden Sie eine E-Mail an changeanalysisteam@microsoft.com.
 
 ![Screenshot der Feedbackschaltfläche auf dem Blatt „Änderungsanalyse“](./media/change-analysis/change-analysis-feedback.png)
 
@@ -94,12 +102,12 @@ In Azure Monitor ist die Änderungsanalyse auch in die Self-Service-Umgebung **D
 
    ![Screenshot der Optionen von „Anwendungsabstürze“](./media/change-analysis/enable-changeanalysis.png)
 
-1. Aktivieren Sie **Änderungsanalyse**, und wählen Sie **Speichern** aus.
+1. Aktivieren Sie **Änderungsanalyse**, und wählen Sie **Speichern** aus. Das Tool zeigt alle Web-Apps unter einem App Service-Plan an. Sie können den Schalter auf Planebene verwenden, um die Änderungsanalyse für alle Web-Apps in einem Plan zu aktivieren.
 
     ![Screenshot der Benutzeroberfläche zum Aktivieren der Änderungsanalyse](./media/change-analysis/change-analysis-on.png)
 
 
-1. Wählen Sie **Diagnose und Problembehandlung** > **Verfügbarkeit und Leistung** > **Anwendungsabstürze** aus, um auf die Änderungsanalyse zuzugreifen. Im angezeigten Diagramm sind die Arten der Änderungen im Laufe der Zeit und Details zu diesen Änderungen zusammengefasst:
+1. Wählen Sie **Diagnose und Problembehandlung** > **Verfügbarkeit und Leistung** > **Anwendungsabstürze** aus, um auf die Änderungsanalyse zuzugreifen. Im angezeigten Diagramm sind die Arten der Änderungen im Laufe der Zeit und Details zu diesen Änderungen zusammengefasst. Standardmäßig werden Änderungen der letzten 24 Stunden angezeigt, um bei unmittelbaren Problemen sofort reagieren zu können.
 
      ![Screenshot der Gegenüberstellung der Änderungen](./media/change-analysis/change-view.png)
 

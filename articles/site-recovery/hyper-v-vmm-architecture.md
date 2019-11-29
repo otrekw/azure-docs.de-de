@@ -1,23 +1,23 @@
 ---
-title: Architektur für die Hyper-V-Notfallwiederherstellung in einem sekundären lokalen Standort mit Azure Site Recovery
+title: Architektur für die Hyper-V-Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Dieser Artikel bietet einen Überblick über die Architektur für die Notfallwiederherstellung lokaler Hyper-V-VMs in einem sekundären System Center-VMM-Standort mit Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 2d8e9c3531e031538c593cfd60d83b4ae97b4f4c
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 3e81e353d2912f56a932ce118a0424e45e758df7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813730"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133013"
 ---
 # <a name="architecture---hyper-v-replication-to-a-secondary-site"></a>Architektur – Hyper-V-Replikation an einem sekundären Standort
 
 Dieser Artikel beschreibt die Komponenten und Prozesse bei der Replikation lokaler virtueller Hyper-V-Computer (Virtual Machines, VMs) in System Center-VMM-Clouds (Virtual Machine Manager) an einem sekundären VMM-Standort mithilfe des Diensts [Azure Site Recovery](site-recovery-overview.md) über das Azure-Portal.
-
+a
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 

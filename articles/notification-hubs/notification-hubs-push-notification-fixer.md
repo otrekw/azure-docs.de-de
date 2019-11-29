@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: c9754c1d7fee5af13de6176dbf8a1ca6e57a71eb
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213155"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076842"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostizieren verworfener Benachrichtigungen in Azure Notification Hubs
 
@@ -33,7 +33,7 @@ Zunächst müssen Sie wissen, wie Notification Hubs Benachrichtigungen an ein Ge
 
 In einem typischen Benachrichtigungsflow wird eine Nachricht vom *Anwendungs-Back-End* an Notification Hubs gesendet. Notification Hubs verarbeitet alle Registrierungen. Dabei werden die konfigurierten Tags und Tagausdrücke berücksichtigt, um Ziele zu bestimmen. Bei den Zielen handelt es sich um die Registrierungen, die die Pushbenachrichtigung erhalten sollen. Diese Registrierungen können alle von uns unterstützten Plattformen umfassen: Android, Baidu (Android-Geräte in China), Fire OS (Amazon) iOS, Windows und Windows Phone.
 
-Wenn die Ziele bestimmt sind, übermittelt Notification Hubs Benachrichtigungen per Push an den *Pushbenachrichtigungsdienst* für die Geräteplattform. Apple Push Notification Service (APNs) für Apple und Firebase Cloud Messaging (FCM) für Google sind zwei Beispiele für einen solchen Dienst. Notification Hubs übermittelt die Benachrichtigungen aufgeteilt auf mehrere Registrierungsbatches. Die Authentifizierung erfolgt beim jeweiligen Pushbenachrichtigungsdienst mit den Anmeldeinformationen, die Sie im Azure-Portal unter **Notification Hub konfigurieren** festgelegt haben. Danach leitet der Pushbenachrichtigungsdienst die Benachrichtigungen an die entsprechenden *Clientgeräte* weiter.
+Wenn die Ziele bestimmt sind, übermittelt Notification Hubs Benachrichtigungen per Push an den *Pushbenachrichtigungsdienst* für die Geräteplattform. Apple Push Notification Service (APNs) für iOS und macOS und Firebase Cloud Messaging (FCM) für Android-Geräte sind zwei Beispiele für einen solchen Dienst. Notification Hubs übermittelt die Benachrichtigungen aufgeteilt auf mehrere Registrierungsbatches. Die Authentifizierung erfolgt beim jeweiligen Pushbenachrichtigungsdienst mit den Anmeldeinformationen, die Sie im Azure-Portal unter **Notification Hub konfigurieren** festgelegt haben. Danach leitet der Pushbenachrichtigungsdienst die Benachrichtigungen an die entsprechenden *Clientgeräte* weiter.
 
 Der letzte Abschnitt einer Benachrichtigungsübermittlung liegt zwischen dem Pushbenachrichtigungsdienst der Plattform und dem Gerät. Die Benachrichtigungsübermittlung kann in jeder der vier Phasen im Pushbenachrichtigungsprozess (Client, Anwendungs-Back-End, Notification Hubs und Pushbenachrichtigungsdienst der Plattform) fehlschlagen. Weitere Informationen zur Architektur von Notification Hubs finden Sie in der Übersicht über [Übersicht über Notification Hubs].
 

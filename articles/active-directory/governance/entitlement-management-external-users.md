@@ -1,5 +1,5 @@
 ---
-title: 'Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau): Azure Active Directory'
+title: 'Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung : Azure Active Directory'
 description: Enthält Informationen zu den Einstellungen, die Sie angeben können, um den Zugriff für externe Benutzer in der Azure Active Directory-Berechtigungsverwaltung zu steuern.
 services: active-directory
 documentationCenter: ''
@@ -12,23 +12,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/15/2019
+ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcf4a0272e21a1fba3cf9adbd9158492e4318578
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72452908"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832709"
 ---
-# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management-preview"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau)
-
-> [!IMPORTANT]
-> Die Berechtigungsverwaltung von Azure Active Directory (Azure AD) befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+# <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
 Für die Azure AD-Berechtigungsverwaltung wird [Azure AD Business-to-Business (B2B)](../b2b/what-is-b2b.md) genutzt, um mit Personen außerhalb Ihrer Organisation in einem anderen Verzeichnis zusammenzuarbeiten. Externe Benutzer verwenden Azure AD B2B für die Authentifizierung gegenüber ihrem Basisverzeichnis, aber sie werden in Ihrem Verzeichnis dargestellt. Die Darstellung in Ihrem Verzeichnis ermöglicht dem Benutzer den Zugriff auf Ihre Ressourcen.
 
@@ -50,11 +45,13 @@ Im folgenden Diagramm und den folgenden Schritten erhalten Sie einen Überblick 
 
 ![Diagramm: Lebenszyklus externer Benutzer](./media/entitlement-management-external-users/external-users-lifecycle.png)
 
+1. Sie [fügen eine verbundene Organisation](entitlement-management-organization.md) für das Azure AD-Verzeichnis oder die Domäne hinzu, mit dem bzw. der Sie zusammenarbeiten möchten.
+
 1. Sie erstellen in Ihrem Verzeichnis ein Zugriffspaket, das die Richtlinie [Für nicht in Ihrem Verzeichnis befindliche Benutzer](entitlement-management-access-package-create.md#for-users-not-in-your-directory) enthält.
 
 1. Sie senden einen [Link für das Portal „Mein Zugriff“](entitlement-management-access-package-settings.md) an Ihre Kontaktperson in der externen Organisation, den diese zur Anforderung des Zugriffspakets an die Benutzer weitergeben kann.
 
-1. Ein externer Benutzer (in diesem Beispiel **Requestor A**) verwendet den Link für das Portal „Mein Zugriff“, um [Zugriff auf das Zugriffspaket anzufordern](entitlement-management-request-access.md).
+1. Ein externer Benutzer (in diesem Beispiel **Requestor A**) verwendet den Link für das Portal „Mein Zugriff“, um [Zugriff auf das Zugriffspaket anzufordern](entitlement-management-request-access.md). Wie sich der Benutzer anmeldet, hängt vom Authentifizierungstyp des Verzeichnisses oder der Domäne ab, der bzw. die in der verbundenen Organisation definiert ist.
 
 1. Eine genehmigende Person [genehmigt die Anforderung](entitlement-management-request-approve.md) (oder sie wird automatisch genehmigt).
 
@@ -71,6 +68,52 @@ Im folgenden Diagramm und den folgenden Schritten erhalten Sie einen Überblick 
 1. Abhängig von den Richtlinieneinstellungen läuft die Zuweisung des Zugriffspakets für den externen Benutzer nach einer bestimmten Zeit ab, sodass der Zugriff für ihn nicht mehr möglich ist.
 
 1. Je nach Lebenszyklus der Einstellungen des externen Benutzers gilt Folgendes: Wenn der externe Benutzer nicht mehr über Zuweisungen von Zugriffspaketen verfügt, wird seine Anmeldung blockiert und das Gastbenutzerkonto aus Ihrem Verzeichnis entfernt.
+
+## <a name="settings-for-external-users"></a>Einstellungen für externe Benutzer
+
+Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete anfordern und Zugriff auf die Ressourcen in diesen Zugriffspaketen erhalten können, müssen Sie sicherstellen, dass einige Einstellungen richtig konfiguriert sind.
+
+### <a name="enable-catalog-for-external-users"></a>Aktivieren des Katalogs für externe Benutzer
+
+- Wenn Sie einen [neuen Katalog](entitlement-management-catalog-create.md) erstellen, wird es standardmäßig ermöglicht, dass externe Benutzer Zugriffspakete aus dem Katalog anfordern können. Stellen Sie sicher, dass **Für externe Benutzer aktiviert ist** auf **Ja**festgelegt ist.
+
+    ![Bearbeiten von Katalogeinstellungen](./media/entitlement-management-shared/catalog-edit.png)
+
+### <a name="configure-your-azure-ad-b2b-external-collaboration-settings"></a>Konfigurieren der Einstellungen für externe Azure AD B2B-Zusammenarbeit
+
+- Wenn Sie Gastbenutzern erlauben, andere Gastbenutzer in Ihr Verzeichnis einzuladen, können Gastbenutzereinladungen auch außerhalb der Berechtigungsverwaltung erfolgen. Es wird empfohlen, dass die Option **Gäste können einladen** auf **Nein** gesetzt wird, sodass nur ordnungsgemäß gesteuerte Einladungen möglich sind.
+- Wenn Sie die B2B-Zulassungsliste verwenden, müssen Sie sicherstellen, dass alle Domänen, mit denen Sie über die Berechtigungsverwaltung zusammenarbeiten möchten, zur Liste hinzugefügt werden. Wenn Sie stattdessen die B2B-Verweigerungliste verwenden, müssen Sie sicherstellen, dass alle Domänen, mit denen Sie zusammenarbeiten möchten, nicht zur Liste hinzugefügt werden.
+- Wenn Sie eine Richtlinie für die Berechtigungsverwaltung für **alle Benutzer** (alle verbundenen Organisationen und alle neuen externen Benutzer) erstellen, haben alle Einstellungen der B2B-Zulassungs- oder Verweigerungsliste Vorrang. Achten Sie daher darauf, die Domänen, die Sie in diese Richtlinie einbeziehen möchten, in Ihre Zulassungsliste aufzunehmen, wenn Sie eine verwenden, bzw. sie von Ihrer Verweigerungsliste auszuschließen, wenn Sie mit einer solchen Liste arbeiten.
+- Wenn Sie eine Richtlinie zur Berechtigungsverwaltung erstellen möchten, die **alle Benutzer** umfasst (alle verbundenen Organisationen + alle neuen externen Benutzer), müssen Sie zunächst die Authentifizierung mit Einmalkennung per E-Mail für Ihr Verzeichnis aktivieren. Weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)](../b2b/one-time-passcode.md#opting-in-to-the-preview).
+- Weitere Informationen über Einstellungen für externe Azure AD B2B-Zusammenarbeit finden Sie unter [Aktivieren der externen B2B-Zusammenarbeit und Steuern, wer Gäste einladen kann](../b2b/delegate-invitations.md).
+
+    ![Einstellungen für externe Azure AD-Zusammenarbeit](./media/entitlement-management-external-users/collaboration-settings.png)
+
+### <a name="review-your-conditional-access-policies"></a>Überprüfen Ihrer Richtlinien für bedingten Zugriff
+
+- Stellen Sie sicher, dass Gastbenutzer von allen Richtlinien für bedingten Zugriff ausgeschlossen werden, die neue Gastbenutzer nicht erfüllen können, da sie dadurch daran gehindert werden, sich bei Ihrem Verzeichnis anzumelden. Beispielsweise verfügen Gastbenutzer wahrscheinlich nicht über ein registriertes Gerät, befinden sich nicht an einem bekannten Standort und möchten sich nicht für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) registrieren. Deshalb wird die Verwendung der der Berechtigungsverwaltung für Gastbenutzer blockiert, wenn diese Anforderungen in einer Richtlinie für bedingten Zugriff verwendet werden. Weitere Informationen finden Sie unter [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](../conditional-access/conditions.md).
+
+    ![Einstellungen zum Ausschluss in Azure AD-Richtlinien für bedingten Zugriff](./media/entitlement-management-external-users/conditional-access-exclude.png)
+
+### <a name="review-your-sharepoint-online-external-sharing-settings"></a>Überprüfen Ihrer Einstellung der externen SharePoint Online-Freigabe
+
+- Wenn Sie SharePoint Online-Websites in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass Ihre Einstellung für die externe Freigabe auf Organisationsebene auf **Jeder** (Benutzer müssen sich nicht anmelden) oder **Neue und bestehende Gäste** (Gastbenutzer müssen sich anmelden oder einen Prüfcode angeben) festgelegt ist. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Wenn Sie die externe Freigabe außerhalb der Berechtigungsverwaltung einschränken möchten, können Sie die Einstellung für die externe Freigabe auf **Vorhandene Gäste** festlegen. Dann können nur neue Benutzer, die über die Berechtigungsverwaltung eingeladen werden, auf diese Websites zugreifen. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Stellen Sie sicher, dass die Einstellungen auf Websiteebene den Gastzugriff ermöglichen (es müssen dieselben Optionen ausgewählt sein, wie zuvor aufgeführt). Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe für eine Website](https://docs.microsoft.com/sharepoint/change-external-sharing-site).
+
+### <a name="review-your-office-365-group-sharing-settings"></a>Überprüfen der Freigabeeinstellungen der Office 365-Gruppe
+
+- Wenn Sie Office 365-Gruppen in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass **Benutzer dürfen neue Gastbenutzer zur Organisation hinzufügen** auf **Ein** gesetzt ist, damit Gastbenutzer zugreifen können. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs auf Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups).
+
+- Wenn Sie möchten, dass externe Benutzer auf die SharePoint Online-Website und die der Office 365-Gruppe zugeordneten Ressourcen zugreifen können, müssen Sie sicherstellen, dass die externe SharePoint Online-Freigabe aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
+
+- Informationen zum Einrichten einer Gastrichtlinie für Office 365-Gruppen auf Verzeichnisebene in PowerShell finden Sie in [Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene](../users-groups-roles/groups-settings-cmdlets.md#example-configure-guest-policy-for-groups-at-the-directory-level).
+
+### <a name="review-your-teams-sharing-settings"></a>Überprüfen der Freigabeeinstellungen für Microsoft Teams
+
+- Wenn Sie Microsoft Teams in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass **Gastzugriff in Microsoft Teams zulassen** auf **Ein** gesetzt ist, damit Gastbenutzer zugreifen können. Weitere Informationen finden Sie unter [Konfigurieren des Gastzugriffs im Microsoft Teams Admin Center](/microsoftteams/set-up-guests#configure-guest-access-in-the-teams-admin-center).
 
 ## <a name="manage-the-lifecycle-of-external-users"></a>Verwalten des Lebenszyklus von externen Benutzern
 
@@ -90,29 +133,20 @@ Sie können auswählen, was passiert, wenn ein externer Benutzer, der per Genehm
 
 1. Wenn ein externer Benutzer seine letzte Zuweisung von Zugriffspaketen verliert und Sie die Anmeldung beim Verzeichnis blockieren möchten, müssen Sie die Option **Anmelden von externen Benutzern bei diesem Verzeichnis blockieren** auf **Ja** festlegen.
 
-1. Wenn ein externer Benutzer seine letzte Zuweisung von Zugriffspaketen verliert und Sie sein Gastbenutzerkonto in Ihrem Verzeichnis entfernen möchten, müssen Sie **Externen Benutzer entfernen** auf **Ja** festlegen.
+    > [!NOTE]
+    > Wenn die Anmeldung eines Benutzers bei diesem Verzeichnis blockiert ist, kann der Benutzer das Zugriffspaket nicht erneut anfordern und auch keinen zusätzlichen Zugriff in diesem Verzeichnis beantragen. Konfigurieren Sie keine Blockierung der Anmeldung, wenn die Benutzer später den Zugriff auf weitere Zugriffspakete anfordern müssen.
+
+1. Wenn ein externer Benutzer seine letzte Zuweisung zu Zugriffspaketen verliert und Sie sein Gastbenutzerkonto aus diesem Verzeichnis entfernen möchten, müssen Sie **Externen Benutzer entfernen** auf **Ja** festlegen.
 
     > [!NOTE]
-    > Im Rahmen der Berechtigungsverwaltung werden nur Konten entfernt, für die eine Einladung per Berechtigungsverwaltung erfolgt ist. Beachten Sie außerdem Folgendes: Für einen Benutzer wird auch dann die Anmeldung blockiert und die Entfernung aus Ihrem Verzeichnis durchgeführt, wenn dieser Benutzer Ressourcen in Ihrem Verzeichnis hinzugefügt wurde, die nicht den Zuweisungen von Zugriffspaketen unterliegen. Wenn der Gast bereits in Ihrem Verzeichnis vorhanden war, bevor die Zuweisungen von Zugriffspaketen durchgeführt wurden, wird er nicht entfernt. Falls der Gast aber per Zuweisung eines Zugriffspakets eingeladen und anschließend auch einer OneDrive for Business- oder SharePoint Online-Website zugewiesen wurde, wird er trotzdem entfernt.
+    > Im Rahmen der Berechtigungsverwaltung werden nur Konten entfernt, für die eine Einladung per Berechtigungsverwaltung erfolgt ist. Beachten Sie außerdem Folgendes: Für einen Benutzer wird auch dann die Anmeldung blockiert und die Entfernung aus dem Verzeichnis durchgeführt, wenn dieser Benutzer zu Ressourcen im Verzeichnis hinzugefügt wurde, die nicht den Zuweisungen von Zugriffspaketen unterliegen. Wenn der Gastbenutzer bereits in diesem Verzeichnis vorhanden war, bevor die Zuweisungen von Zugriffspaketen durchgeführt wurden, wird er nicht entfernt. Falls der Gast aber per Zuweisung eines Zugriffspakets eingeladen und anschließend auch einer OneDrive for Business- oder SharePoint Online-Website zugewiesen wurde, wird er trotzdem entfernt.
 
-1. Wenn Sie das Gastbenutzerkonto in Ihrem Verzeichnis entfernen möchten, können Sie die Anzahl von Tagen festlegen, die ablaufen sollen, bevor die Entfernung durchgeführt wird. Falls Sie das Gastbenutzerkonto entfernen möchten, sobald die letzte Zuweisung von Zugriffspaketen abgelaufen ist, legen Sie **Anzahl von Tagen, bevor ein externer Benutzer aus diesem Verzeichnis entfernt wird** auf **0** fest.
+1. Wenn Sie das Gastbenutzerkonto in diesem Verzeichnis entfernen möchten, können Sie die Anzahl von Tagen festlegen, die ablaufen sollen, bevor die Entfernung durchgeführt wird. Falls Sie das Gastbenutzerkonto entfernen möchten, sobald die letzte Zuweisung von Zugriffspaketen abgelaufen ist, legen Sie **Anzahl von Tagen, bevor ein externer Benutzer aus diesem Verzeichnis entfernt wird** auf **0** fest.
 
 1. Klicken Sie auf **Speichern**.
 
-## <a name="enable-a-catalog-for-external-users"></a>Aktivieren eines Katalogs für externe Benutzer
-
-Beim Erstellen eines [neuen Katalogs](entitlement-management-catalog-create.md) können Sie eine Einstellung verwenden, um für Benutzer in externen Verzeichnissen das Anfordern von Zugriffspaketen im Katalog zu ermöglichen. Legen Sie **Für externe Benutzer aktiviert** auf **Nein** fest, wenn Sie nicht möchten, dass externe Benutzer über Berechtigungen zum Anfordern von Zugriffspaketen im Katalog verfügen.
-
-**Erforderliche Rolle:** Globaler Administrator, Benutzeradministrator oder Katalogbesitzer
-
-![Bereich „Neuer Katalog“](./media/entitlement-management-shared/new-catalog.png)
-
-Sie können diese Einstellung auch noch ändern, nachdem Sie den Katalog erstellt haben.
-
-![Bearbeiten von Katalogeinstellungen](./media/entitlement-management-shared/catalog-edit.png)
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden](entitlement-management-access-package-create.md#for-users-not-in-your-directory)
-- [Erstellen und Verwalten eines Katalogs von Ressourcen](entitlement-management-catalog-create.md)
-- [Delegierung und Rollen](entitlement-management-delegate.md)
+- [Hinzufügen einer verbundenen Organisation](entitlement-management-organization.md)
+- [Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)
+- [Problembehandlung](entitlement-management-troubleshoot.md)

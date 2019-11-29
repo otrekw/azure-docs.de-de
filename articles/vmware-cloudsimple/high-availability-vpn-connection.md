@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0b40c15956dc03209dcab49641af66bc8ae24187
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 6e3118814eacc6cc63b5db59bd7f1877c1d347dc
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845326"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927306"
 ---
 # <a name="configure-a-high-availability-connection-from-on-premises-to-cloudsimple-vpn-gateway"></a>Konfigurieren einer Hochverfügbarkeitsverbindung zwischen einem lokalen Standort und einem CloudSimple VPN-Gateway
 
@@ -21,37 +21,14 @@ Netzwerkadministratoren können eine hochverfügbare IPsec-Site-to-Site-VPN-Verb
 
 In diesem Leitfaden werden Schritte zur Konfiguration einer lokalen Firewall für eine IPsec-Site-to-Site-VPN-Hochverfügbarkeitsverbindung beschrieben. Die detaillierten Schritte sind spezifisch für den Typ der lokalen Firewall. In diesem Handbuch werden als Beispiele die Schritte für zwei Firewalltypen aufgeführt: Cisco ASA und Palo Alto Networks.
 
-## <a name="default-configuration-for-cloudsimple-vpn-gateways"></a>Standardkonfiguration für CloudSimple VPN-Gateways
-
-CloudSimple VPN-Gateways werden standardmäßig zusammen mit den folgenden Attributen der Phase 1 und Phase 2 im IKEv1-Modus konfiguriert. Wenn Sie andere VPN-Attribute verwenden oder IKEv2 anstelle von IKEV1 einsetzen möchten, <a href="https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest" target="_blank">öffnen Sie eine Supportanfrage</a>.
-
-### <a name="phase-1"></a>Phase 1
-
-| Parameter | Wert |
-|-----------|-------|
-| IKE-Version | IKEv1 |
-| Verschlüsselung | AES 256 |
-| Hashalgorithmus| SHA 256 |
-| Diffie-Hellman-Gruppe (DH-Gruppe) | 1 |
-| Lebensdauer | 86.400 Sekunden |
-| Datengröße | 4 GB |
-
-### <a name="phase-2"></a>Phase 2
-
-| Parameter | Wert |
-|-----------|-------|
-| Verschlüsselung | AES 256 |
-| Hashalgorithmus| SHA 256 |
-| Perfect Forward Secrecy-Gruppe (PFS-Gruppe) | Keine |
-| Lebensdauer | 28.800 Sekunden |
-| Datengröße | 4 GB |
-
 ## <a name="before-you-begin"></a>Voraussetzungen
 
 Führen Sie die folgenden Aufgaben aus, bevor Sie die lokale Firewall konfigurieren.
 
 1. Vergewissern Sie sich, dass Ihre Organisation die erforderlichen Knoten [bereitgestellt](create-nodes.md) und mindestens eine private CloudSimple-Cloud erstellt hat.
 2. [Konfigurieren Sie ein Site-to-Site-VPN-Gateway](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) zwischen Ihrem lokalen Netzwerk und Ihrer privaten CloudSimple-Cloud.
+
+Weitere Informationen zu unterstützten Vorschlägen für Phase 1 und Phase 2 finden Sie unter [Übersicht über VPN-Gateways](cloudsimple-vpn-gateways.md).
 
 ## <a name="configure-on-premises-cisco-asa-firewall"></a>Konfigurieren einer lokalen Cisco ASA-Firewall
 
@@ -120,7 +97,7 @@ access-list ipsec-acl extended permit ip object AZ_inside object CS_inside
 
 ### <a name="5-configure-the-transform-set"></a>5. Konfigurieren der Transformationsgruppe
 
-Konfigurieren Sie die Transformationsgruppe (TS), die das Schlüsselwort ```ikev1``` einschließen muss. Die in der Transformationsgruppe angegebenen Verschlüsselungs- und Hashattribute müssen mit den Parametern übereinstimmen, die in der [Standardkonfiguration für CloudSimple VPN-Gateways](#default-configuration-for-cloudsimple-vpn-gateways) aufgeführt sind.
+Konfigurieren Sie die Transformationsgruppe (TS), die das Schlüsselwort ```ikev1``` einschließen muss. Die in der Transformationsgruppe angegebenen Verschlüsselungs- und Hashattribute müssen mit den Parametern übereinstimmen, die in der [Standardkonfiguration für CloudSimple VPN-Gateways](cloudsimple-vpn-gateways.md) aufgeführt sind.
 
 ```
 crypto ipsec ikev1 transform-set devtest39 esp-aes-256 esp-sha-hmac 

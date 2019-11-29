@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe7ba0f6daec0b85ec73611ba4e48d72f16146e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45351cc29b2b7028863aff06ab5a511674604d6f
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510991"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048961"
 ---
 # <a name="connect-zscaler-internet-access-to-azure-sentinel"></a>Verbinden von Zscaler Internet Access mit Azure Sentinel
 
@@ -106,7 +106,7 @@ In diesem Schritt müssen Sie den Linux-Computer auswählen, der als Proxy zwisc
     - Port = 514
     - Format = CEF
     - IP-Adresse: Achten Sie darauf, die CEF-Nachrichten an die IP-Adresse des virtuellen Computers zu senden, den Sie für diesen Zweck reserviert haben.
- Weitere Informationen finden Sie im [Leitfaden zur Integration von Zscaler in Azure Sentinel](https://aka.ms/ZscalerCEFInstructions).
+ Weitere Informationen finden Sie im [Leitfaden zur Bereitstellung von Zscaler in Azure Sentinel](https://aka.ms/ZscalerCEFInstructions).
  
    > [!NOTE]
    > Diese Lösung unterstützt Syslog RFC 3164 und RFC 5424.

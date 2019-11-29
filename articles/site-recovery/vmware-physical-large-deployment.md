@@ -1,18 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung in Azure für eine hohe Anzahl von VMware-VMs oder physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
+title: Skalieren der VMware- oder physischen Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie mit Azure Site Recovery die Notfallwiederherstellung in Azure für eine hohe Anzahl von lokalen VMware-VMs oder physischen Servern einrichten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782655"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082223"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 

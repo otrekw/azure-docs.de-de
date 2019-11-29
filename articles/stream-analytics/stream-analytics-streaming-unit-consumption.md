@@ -1,5 +1,5 @@
 ---
-title: Überblick über Streamingeinheiten und Informationen zu Anpassungen in Azure Stream Analytics
+title: Streamingeinheiten in Azure Stream Analytics
 description: Dieser Artikel beschreibt Einstellungen für Streamingeinheiten sowie weitere Faktoren, die sich auf die Leistung in Azure Stream Analytics auswirken.
 services: stream-analytics
 author: JSeb225
@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 06/21/2019
-ms.openlocfilehash: 54296f0b4aed22457a5218154111a42ad01ec262
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.date: 10/28/2019
+ms.openlocfilehash: 25105847b7134b7119252a66ac7e8502771ce5db
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329338"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961278"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -34,6 +34,7 @@ Die Nutzungsmetrik der Streamingeinheit in Prozent, die von 0 % bis 100 % reicht
     ![Konfiguration von Stream Analytics-Aufträgen im Azure-Portal][img.stream.analytics.preview.portal.settings.scale]
     
 4. Verwenden Sie den Schieberegler, um die SUs für den Auftrag festzulegen. Beachten Sie, dass Sie auf die jeweiligen SU-Einstellungen beschränkt sind. 
+5. Sie können die Anzahl der Ihrem Auftrag zugeordneten SUs ändern, auch wenn er gerade ausgeführt wird. Dies ist nicht möglich, wenn Ihr Auftrag eine [nicht partitionierte Ausgabe](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#query-using-non-partitioned-output) verwendet oder [eine mehrstufige Abfrage mit unterschiedlichen Werten für PARTITION BY](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#multi-step-query-with-different-partition-by-values) aufweist. Ihr Auftrag sollte auch über mindestens 6 SUs verfügen, um diese Einstellung während der Ausführung des Auftrags zu ändern. Möglicherweise sind Sie darauf beschränkt, während der Ausführung des Auftrags aus einer Reihe von SU-Werten auszuwählen. 
 
 ## <a name="monitor-job-performance"></a>Überwachen der Auftragsleistung
 Über das Azure-Portal können Sie den Durchsatz eines Auftrags nachverfolgen:

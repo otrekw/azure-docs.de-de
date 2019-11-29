@@ -1,6 +1,6 @@
 ---
-title: Strukturieren von Ereignissen in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
-description: Grundlagen zum Strukturieren von Ereignissen mit Azure Time Series Insights Preview.
+title: Strukturieren von Ereignissen – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ereignisse mit Azure Time Series Insights Preview strukturieren.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b9dd10a4017d821794af037e502c784b10cd62f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: bd1b59ac2037669be021dfad3bf5032b794bef4a
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585275"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006267"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Strukturieren von Ereignissen in Azure Time Series Insights Preview
 

@@ -1,5 +1,5 @@
 ---
-title: Isolation für Windows-VMs in Azure | Microsoft-Dokumentation
+title: Isolation für Windows-VMs in Azure
 description: Erfahren Sie mehr darüber, wie VM-Isolation in Azure funktioniert.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 8fcbd5c9b2f3841d7d1170a2d107cec5e9e524cc
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 4d6c8bb2bc27c7202848229e749b62dd714e86fd
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123912"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029879"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Isolation von virtuellen Computern in Azure
 

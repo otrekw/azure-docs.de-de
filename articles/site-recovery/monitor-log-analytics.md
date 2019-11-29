@@ -1,18 +1,18 @@
 ---
-title: Überwachen von Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics) | Microsoft-Dokumentation
+title: Überwachen von Azure Site Recovery mit Azure Monitor-Protokollen
 description: Erfahren Sie, wie Sie Azure Site Recovery mit Azure Monitor-Protokollen (Log Analytics) überwachen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/13/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 889fa3bee17aa3b0300431b058332c5ec10d9faf
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331920"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133416"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Überwachen von Site Recovery mit Azure Monitor-Protokollen
 
@@ -28,7 +28,7 @@ Für Site Recovery können Sie Azure Monitor-Protokolle für folgende Aufgaben v
 Die Verwendung von Azure Monitor-Protokollen mit Site Recovery wird für die **Azure-zu-Azure-Replikation** und die **Replikation von VMware-VMs/physischen Servern zu Azure** unterstützt.
 
 > [!NOTE]
-> Die Änderungsdaten- und Uploadratenprotokolle sind nur für virtuelle Azure-Computer verfügbar, die in einer sekundären Azure-Region repliziert werden.
+> Um die Änderungsdaten- und Uploadratenprotokolle für VMware- und physische Computer zu erhalten, müssen Sie einen Microsoft Monitoring Agent auf dem Prozessserver installieren. Dieser Agent sendet die Protokolle der replizierenden Computer an den Arbeitsbereich. Diese Funktion ist erst ab der Version 9.30 des des Mobilitäts-Agents verfügbar.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -54,6 +54,24 @@ Es wird empfohlen, vor dem Start die [allgemeinen Fragen zur Überwachung](monit
     ![Arbeitsbereich auswählen](./media/monitoring-log-analytics/select-workspace.png)
 
 Die Site Recovery-Protokolle werden nun in eine Tabelle (**AzureDiagnostics**) im ausgewählten Arbeitsbereich übertragen.
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Konfigurieren des Microsoft Monitoring Agents auf dem Prozessserver zum Senden von Änderungsdaten- und Uploadratenprotokollen
+
+Sie können die Änderungsdateninformationen und die Quelldaten-Uploadrateninformationen für Ihre VMware-/physischen Computer lokal erfassen. Dazu muss ein Microsoft Monitoring Agent auf dem Prozessserver installiert sein.
+
+1. Wechseln Sie zum Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**.
+2. Klicken Sie auf die Seite **Verbundene Quellen**, und wählen Sie dann **Windows-Server** aus.
+3. Laden Sie den Windows-Agent (64 Bit) auf den Prozessserver herunter. 
+4. [Abrufen von Arbeitsbereichs-ID und Schlüssel](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Konfigurieren des Agents für die Verwendung von TLS 1.2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Schließen Sie die Installation des Agents ab](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard), indem Sie die erhaltene Arbeitsbereichs-ID und den Schlüssel angeben.
+7. Nachdem die Installation abgeschlossen ist, wechseln Sie in den Log Analytics-Arbeitsbereich, und klicken Sie auf **Erweiterte Einstellungen**. Wechseln Sie zur Seite **Daten**, und klicken Sie dann auf **Windows-Leistungsindikatoren**. 
+8. Klicken Sie auf **„+“** , um die folgenden beiden Indikatoren mit dem Stichprobenintervall von 300 Sekunden hinzuzufügen:
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+Die Änderungs- und Uploadratendaten werden in den Arbeitsbereich eingegeben.
 
 
 ## <a name="query-the-logs---examples"></a>Abfragen der Protokolle – Beispiele
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![Abfragen des Computer-RPO](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Abfragen der Datenänderungsrate (Änderung) für eine VM
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Abfragen der Datenänderungsrate (Churn) und der Uploadrate für eine Azure-VM
 
-> [!NOTE] 
-> Die Änderungsinformationen sind nur für virtuelle Azure-Computer verfügbar, die in einer sekundären Azure-Region repliziert werden.
-
-Diese Abfrage zeichnet ein Trenddiagramm für eine bestimmte Azure-VM (ContosoVM123), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate nachverfolgt. 
+Diese Abfrage zeichnet ein Trenddiagramm für eine bestimmte Azure-VM (ContosoVM123), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate darstellt. 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![Abfragen von Datenänderungen](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Abfragen der Datenänderungsrate (Churn) und der Uploadrate für einen VMware- oder physischen Computer
+
+> [!Note]
+> Stellen Sie sicher, dass Sie den Überwachungs-Agent auf dem Prozessserver einrichten, um diese Protokolle abzurufen. Weitere Informationen finden Sie unter [Schritte zum Konfigurieren des Überwachungs-Agents](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+
+Diese Abfrage zeichnet ein Trenddiagramm für einen bestimmten Datenträger (**disk0**) eines replizierten Elements (**win-9r7sfh9qlru**), das die Datenänderungsrate (geschriebene Bytes pro Sekunde) und die Datenuploadrate darstellt. Sie finden den Datenträgernamen auf dem Blatt **Datenträger** des replizierten Elements im Recovery Services-Tresor. Der in der Abfrage zu verwendende Instanzenname ist der DNS-Name des Computers, gefolgt von „_“ und dem Datenträgernamen wie in diesem Beispiel.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+Der Prozessserver pusht diese Daten alle 5 Minuten in den Log Analytics-Arbeitsbereich. Diese Datenpunkte stellen den Durchschnitt dar, der für 5 Minuten berechnet wurde.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Abfragen der Zusammenfassung zur Notfallwiederherstellung (Azure-zu-Azure)
 

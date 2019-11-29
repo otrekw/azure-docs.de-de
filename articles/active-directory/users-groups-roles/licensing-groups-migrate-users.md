@@ -1,31 +1,31 @@
 ---
-title: Hinzufügen einzelner lizenzierter Benutzer zur gruppenbasierten Lizenzierung in Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen von Benutzern mit direkten Lizenzen zur Gruppenlizenzierung – Azure AD | Microsoft-Dokumentation
 description: Informationen zum Migrieren einzelner Benutzerlizenzen zur gruppenbasierten Lizenzierung mithilfe von Azure Active Directory
 services: active-directory
 keywords: Azure AD-Lizenzierung
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 09/26/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29ec9c05a7e7d594c64a450fe64e5bb0e0d1b7d0
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6c06d81f2f3f6cee781889d05ae08a1fd125df52
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034759"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025683"
 ---
 # <a name="how-to-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>Gewusst wie: Migrieren von Benutzern mit einzelnen Lizenzen zur gruppenbasierten Lizenzierung
 
-Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits mit „direkte Zuweisung“ Lizenzen zugewiesen, z.B. mithilfe von PowerShell-Skripts oder anderen Tools. Bevor Sie mit der gruppenbasierten Lizenzierung zur Verwaltung von Lizenzen in Ihrer Organisation beginnen, können Sie mit diesem Migrationsplan bestehende Lösungen nahtlos durch gruppenbasierte Lizenzen ersetzen.
+Sie haben möglicherweise einzelnen Benutzern in den Abteilungen bereits per direkter Zuweisung Lizenzen zugewiesen, z. B. mithilfe von PowerShell-Skripts oder anderen Tools. Bevor Sie mit der gruppenbasierten Lizenzierung zur Verwaltung von Lizenzen in Ihrer Organisation beginnen, können Sie mit diesem Migrationsplan bestehende Lösungen nahtlos durch gruppenbasierte Lizenzen ersetzen.
 
 Der wichtigste zu beachtende Aspekt ist, dass Sie unbedingt eine Situation vermeiden müssen, in der die gruppenbasierte Lizenzierung dazu führt, dass Benutzer ihre derzeit zugewiesenen Lizenzen vorübergehend nicht nutzen können. Jeder Vorgang, der zum Entfernen von Lizenzen führt, muss vermieden werden, damit kein Risiko besteht, dass Benutzer keinen Zugriff mehr auf Dienste und ihre Daten haben.
 

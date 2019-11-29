@@ -1,6 +1,6 @@
 ---
-title: Verlängerung des Supports für SQL Server 2008 und SQL Server 2008 R2 mit Azure
-description: Erfahren Sie, wie Sie den Support für SQL Server 2008 und SQL Server 2008 R2 verlängern, indem Sie Ihre SQL Server-Instanz zu Azure migrieren oder verlängerten Support erwerben, um lokale Instanzen zu behalten.
+title: Erweiterte Unterstützung für SQL Server 2008 und 2008 R2
+description: Verlängern Sie den Support für SQL Server 2008 und SQL Server 2008 R2, indem Sie Ihre SQL Server-Instanz zu Azure migrieren oder verlängerten Support erwerben, um lokale Instanzen zu behalten.
 services: virtual-machines-windows
 documentationcenter: ''
 author: MashaMSFT
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 93e0032cd283eda034519ca29a0e1cf501b5cde6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100465"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132778"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Verlängerung des Supports für SQL Server 2008 und SQL Server 2008 R2 mit Azure
 
@@ -63,7 +64,7 @@ SQL Server erfordert App-konsistente Azure Site Recovery-Momentaufnahmen, um d
 
 Für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus auf einem virtuellen Azure-Computer stehen folgende Lösungen zur Verfügung:
 
-- **SQL Server-Sicherungen:** Verwenden Sie Azure Backup, um Ihre SQL Server-Instanz am Ende des Supportlebenszyklus vor Ransomware, unbeabsichtigtem Löschen und Beschädigungen zu schützen. Für die Lösung ist derzeit eine Vorschauversion für SQL Server nach dem Ende des Supportlebenszyklus verfügbar. Diese unterstützt unter Windows 2008 R2 SP1 SQL Server 2008 und 2008 R2. Ausführlichere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2).
+- **SQL Server-Sicherungen:** Verwenden Sie Azure Backup, um Ihre SQL Server-Instanz am Ende des Supportlebenszyklus vor Ransomware, unbeabsichtigtem Löschen und Beschädigungen zu schützen. Für die Lösung ist derzeit eine Vorschauversion für SQL Server nach dem Ende des Supportlebenszyklus verfügbar. Diese unterstützt unter Windows 2008 R2 SP1 SQL Server 2008 und 2008 R2. Ausführlichere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support).
 - **Protokollversand:** Sie können ein Protokollversandreplikat in einer anderen Zone oder Azure-Region mit fortlaufenden Wiederherstellungen erstellen, um das RTO zu verringern. Der Protokollversand muss manuell konfiguriert werden.
 - **Azure Site Recovery**: Sie können Ihren virtuellen Computer mithilfe der Azure Site Recovery-Replikation zonen- und regionsübergreifend replizieren. SQL Server erfordert App-konsistente Momentaufnahmen, um die Wiederherstellung im Notfall zu gewährleisten. Azure Site Recovery bietet für die Notfallwiederherstellung von SQL Server am Ende des Supportlebenszyklus eine RPO von mindestens einer Stunde und eine RTO von mindestens zwei Stunden (plus SQL Server-Wiederherstellungszeit).
 

@@ -1,23 +1,22 @@
 ---
-title: Planen der Skalierung Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Sie beim Planen einer Azure Time Series Insights-Umgebung den bewährten Methoden folgen. Die behandelten Themen umfassen die Speicherkapazität, Datenaufbewahrung, Eingangskapazität, Überwachung und Business Continuity und Disaster Recovery (BCDR).
+title: Planen Ihrer GA-Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie mehr über bewährte Methoden, die Sie bei der Planung Ihrer GA-Umgebung befolgen sollten.
 services: time-series-insights
 ms.service: time-series-insights
-author: ashannon7
+author: deepakpalled
 ms.author: dpalled
 manager: cshankar
-ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 659a6357736817f4a590b97e585230ec8c2b7dae
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2dd3b79e931464e83264433a923e9078b2f62525
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332925"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006954"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Planen Ihrer Azure Time Series Insights-GA-Umgebung
 
@@ -76,16 +75,13 @@ Auf der Konfigurationsseite der Umgebung im Azure-Portal können Sie die Aufbewa
 
 ## <a name="ingress-capacity"></a>Eingangskapazität
 
-Der zweite wichtige Bereich bei der Planung der Time Series Insights-Umgebung ist die *Eingangskapazität*. Die Eingangskapazität wird von der Zuordnung pro Minute abgeleitet.
+[!INCLUDE [Azure Time Series Insights GA limits](../../includes/time-series-insights-ga-limits.md)]
+
+### <a name="environment-planning"></a>Umgebungsplanung
+
+Der zweite wichtige Bereich bei der Planung der Time Series Insights-Umgebung ist die Eingangskapazität. Die Eingangskapazität wird von der Zuordnung pro Minute abgeleitet.
 
 In Bezug auf die Drosselung wird ein eingehendes Datenpaket mit einer Paketgröße von 32 KB als 32 Ereignisse mit jeweils einer Größe von 1 KB behandelt. Die maximal zulässige Ereignisgröße ist 32 KB. Datenpakete mit einer Größe von über 32 KB werden abgeschnitten.
-
-In der folgenden Tabelle ist die Eingangskapazität pro Einheit für jede Time Series Insights-SKU zusammengefasst:
-
-|SKU  |Ereignisanzahl pro Monat  |Ereignisgröße pro Monat  |Ereignisanzahl pro Minute  |Ereignisgröße pro Minute  |
-|---------|---------|---------|---------|---------|
-|S1     |   30 Millionen     |  30 GB     |  720    |  720 KB   |
-|S2     |   300 Millionen    |   300 GB   | 7\.200   | 7\.200 KB  |
 
 Sie können die Kapazität einer SKU des Typs S1 oder S2 in einer einzelnen Umgebung auf 10 Einheiten erhöhen. Sie können nicht von einer S1-Umgebung zu einer S2-Umgebung migrieren. Sie können nicht von einer S2-Umgebung zu einer S1-Umgebung migrieren.
 
@@ -95,7 +91,7 @@ Bei der Kapazität pro Minute spielen Drosselung und Latenz eine Rolle. Wenn Sie
 
 Wenn Sie z.B. über eine einzelne SKU des Typs S1 verfügen, Daten mit einer Rate von 720 Ereignissen pro Minute eingehen und die Datenrate in einem Zeitraum unter einer Stunde mit einer Rate von maximal 1.440 Ereignissen ihren Spitzenwert erreicht, weist Ihre Umgebung keine merkliche Latenz auf. Wenn jedoch 1.440 Ereignisse pro Minute in einem Zeitraum von über einer Stunde überschritten werden, treten für Daten, die in Ihrer Umgebung visualisiert werden und zur Abfrage verfügbar sind, wahrscheinlich Latenzprobleme auf.
 
-Sie wissen möglicherweise nicht im Voraus, wie viele Daten erwartungsgemäß übertragen werden. In diesem Fall finden Sie die Datentelemetrie für [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) und [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) in Ihrem Azure-Portalabonnement. Anhand der Telemetrie können Sie die Bereitstellung Ihrer Umgebung bestimmen. Verwenden Sie den Bereich **Metriken** im Azure-Portal für die jeweilige Ereignisquelle, um die zugehörige Telemetrie anzuzeigen. Wenn Sie sich mit den Metriken der Ereignisquelle vertraut gemacht haben, können Sie Ihre Time Series Insights-Umgebung effektiver planen und bereitstellen.
+Sie wissen möglicherweise nicht im Voraus, wie viele Daten erwartungsgemäß übertragen werden. In diesem Fall finden Sie die Datentelemetrie für [Azure IoT Hub](../iot-hub/iot-hub-metrics.md) und [Azure Event Hubs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2016/05/25/using-the-azure-rest-apis-to-retrieve-event-hub-metrics/) in Ihrem Azure-Portalabonnement. Anhand der Telemetrie können Sie die Bereitstellung Ihrer Umgebung bestimmen. Verwenden Sie den Bereich **Metriken** im Azure-Portal für die jeweilige Ereignisquelle, um die zugehörige Telemetrie anzuzeigen. Wenn Sie sich mit den Metriken der Ereignisquelle vertraut gemacht haben, können Sie Ihre Time Series Insights-Umgebung effektiver planen und bereitstellen.
 
 ### <a name="calculate-ingress-requirements"></a>Berechnen der Eingangsanforderungen
 
@@ -114,7 +110,7 @@ Informationen zum Verhindern der Drosselung und Latenz finden Sie unter [Verring
 Es muss unbedingt sichergestellt sein, dass die Art, in der Sie Ereignisse an Time Series Insights senden, die Größe der von Ihnen bereitgestellten Umgebung unterstützt. (Umgekehrt können Sie die Größe der Umgebung danach zuordnen, wie viele Ereignisse Time Series Insights liest und wie groß die einzelnen Ereignisse sind.) Es ist auch wichtig, sich Gedanken über die Attribute zu machen, die Sie möglicherweise beim Abfragen Ihrer Daten für das Slicing und die Filterung verwenden möchten.
 
 > [!TIP]
-> Lesen Sie die Dokumentation zur JSON-Strukturierung in [Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).
+> Lesen Sie die Dokumentation zur JSON-Strukturierung in [Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub](time-series-insights-send-events.md).
 
 ## <a name="ensure-that-you-have-reference-data"></a>Sicherstellen des Vorhandenseins von Referenzdaten
 
@@ -123,7 +119,7 @@ Ein *Referenzdataset* ist eine Sammlung von Elementen, die die Ereignisse aus Ih
 > [!NOTE]
 > Referenzdaten werden nicht rückwirkend verknüpft. Nur aktuelle und künftige eingehende Daten werden nach dem Konfigurieren und Hochladen abgeglichen und dem Referenzdataset hinzugefügt. Wenn Sie planen, eine große Menge von Verlaufsdaten an Time Series Insights zu senden, und nicht zuerst Referenzdaten in Time Series Insights hochladen oder erstellen, müssen Sie Ihre Arbeitsschritte unter Umständen erneut durchführen (was keinen Spaß macht).  
 
-Weitere Informationen dazu, wie Sie Ihre Referenzdaten in Time Series Insights erstellen, hochladen und verwalten, finden Sie in unserer [Dokumentation zu Verweis-DataSets](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Weitere Informationen dazu, wie Sie Ihre Referenzdaten in Time Series Insights erstellen, hochladen und verwalten, finden Sie in unserer [Dokumentation zu Verweis-DataSets](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

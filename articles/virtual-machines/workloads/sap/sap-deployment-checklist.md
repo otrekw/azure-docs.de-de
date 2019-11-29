@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/15/2019
+ms.date: 11/08/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a77c0e38db06698e714c3d0c3df0d9a5f028787b
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 097429e9c761d447a7164c813a6c84d3f07f0ab6
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71672950"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891418"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -160,7 +160,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
    1.  Überprüfen Sie, ob die Regeln für [Netzwerksicherheitsgruppen und ASC](https://docs.microsoft.com/azure/virtual-network/security-overview) erwartungsgemäß funktionieren und die geschützten Ressourcen abschirmen.
    1.  Stellen Sie sicher, dass alle Ressourcen, die verschlüsselt werden müssen, auch verschlüsselt werden. Definieren und implementieren Sie Prozesse zum Sichern von Zertifikaten, zum Speichern und Zugreifen auf diese Zertifikate und zum Wiederherstellen der verschlüsselten Entitäten.
    1.  Verwenden Sie [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-faq) für Betriebssystem-Datenträger, sofern dies im Rahmen der Betriebssystemunterstützung möglich ist.
-   1.  Achten Sie darauf, nicht zu viele Verschlüsselungsebenen zu verwenden. Es ist in manchen Fällen sinnvoll, Azure Disk Encryption zusammen mit einer der TDE-Methoden (Transparent Data Encryption) für das DBMS einzusetzen.
+   1.  Achten Sie darauf, nicht zu viele Verschlüsselungsebenen zu verwenden. Es ist in manchen Fällen sinnvoll, Azure Disk Encryption zusammen mit einer der TDE-Methoden (Transparent Data Encryption) für das DBMS einzusetzen, um verschiedene Datenträger oder Komponenten auf demselben Server zu schützen.  Auf einem SAP DBMS-Server kann z. B. Azure Disk Encryption (ADE) auf dem Startdatenträger des Betriebssystems (wenn das Betriebssystem ADE unterstützt) und den Datenträgern aktiviert werden, die nicht von den DBMS-Datenpersistenzdateien verwendet werden.  Ein Beispiel ist die Verwendung von ADE auf dem Datenträger, auf dem sich die DBMS TDE-Verschlüsselungsschlüssel befinden.
 1. Leistungstests. Nehmen Sie in SAP auf der Grundlage von SAP-Ablaufverfolgung und Messungen diese Vergleiche vor:
    - Vergleichen Sie ggf. die 10 wichtigsten Onlineberichte mit Ihrer aktuellen Implementierung.
    - Vergleichen Sie ggf. die 10 wichtigsten Batchaufträge mit Ihrer aktuellen Implementierung.

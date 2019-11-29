@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578396"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132599"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Installieren und Ausführen von Containern für den Speech-Dienst
 
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> Das Tag `latest` pullt das Gebietsschema `en-US` und die Stimme `jessarus`. Weitere Gebietsschemas finden Sie unter [Gebietsschemas für die Spracherkennung](#speech-to-text-locales).
+> Das Tag `latest` pullt das Gebietsschema `en-US`. Weitere Gebietsschemas finden Sie unter [Gebietsschemas für die Spracherkennung](#speech-to-text-locales).
 
 #### <a name="speech-to-text-locales"></a>Gebietsschemas für die Spracherkennung
 
@@ -167,7 +167,7 @@ Das folgende Tag ist ein Beispiel für das Format:
 2.0.0-amd64-en-us-preview
 ```
 
-Informationen zu allen unterstützten Gebietsschemas in Version 2.0.0 des Containers für die **Spracherkennung** finden Sie in der Tabelle mit den [für die Spracherkennung unterstützten Sprachen](language-support.md#speech-to-text) in der Spalte **Containerunterstützung**.
+Informationen zu allen unterstützten Gebietsschemas des Containers **Spracherkennung** finden Sie unter [Imagetags für Spracherkennung](../containers/container-image-tags.md#speech-to-text).
 
 # <a name="custom-speech-to-texttabcstt"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
@@ -209,7 +209,7 @@ Das folgende Tag ist ein Beispiel für das Format:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-Informationen zu allen unterstützten Gebietsschemas und entsprechenden Stimmen in Version 1.3.0 des Containers für die **Sprachsynthese** finden Sie in der Tabelle mit den [für Standardstimmen unterstützten Sprachen](language-support.md#standard-voices) in der Spalte **Containerunterstützung**.
+Informationen zu allen unterstützten Gebietsschemas und den entsprechenden Stimmen des Containers **Sprachsynthese** finden Sie unter [Imagetags für Sprachsynthese](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
 > Beim Erstellen einer HTTP POST-Anforderung für die *standardmäßige Sprachsynthese* erfordert die Meldung der [Speech Synthesis Markup Language (SSML)](speech-synthesis-markup.md) ein `voice`-Element mit einem `name`-Attribut. Der Wert ist das entsprechende Gebietsschema des Containers und die Stimme, auch bekannt als „[Kurzname](language-support.md#standard-voices)“. Das Tag `latest` beispielsweise weist den Sprachnamen `en-US-JessaRUS` auf.

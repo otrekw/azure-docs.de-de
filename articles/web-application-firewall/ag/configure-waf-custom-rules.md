@@ -1,18 +1,19 @@
 ---
-title: Konfigurieren von Web Application Firewall v2 für benutzerdefinierte Application Gateway-Regeln mithilfe von Azure PowerShell
-description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell benutzerdefinierte Regeln für WAF v2 konfigurieren.
+title: Konfigurieren von benutzerdefinierten v2-Regeln mit PowerShell
+titleSuffix: Azure Web Application Firewall
+description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell benutzerdefinierte Regeln für WAF v2 konfigurieren. Sie können eigene Regeln erstellen, die für jede Anforderung ausgewertet werden, die die Firewall durchläuft.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 8c307ac5553c2c333425b6c14b9b4da4a6582f62
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511503"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133046"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Konfigurieren von Web Application Firewall v2 für Application Gateway mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell
 

@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0c3c88119c3d064326442881854920b411f5ed4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748375"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953123"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus (Vorschauversion)
 
@@ -24,7 +24,7 @@ Zusätzlich zur manuellen Bereitstellung von Durchsatz können Sie jetzt Azure C
 
 Es ist nicht länger erforderlich, den bereitgestellten Durchsatz manuell zu verwalten oder Probleme aufgrund von Ratenbegrenzungen zu behandeln. Im Autopilot-Modus konfigurierte Azure Cosmos-Container können sofort in Reaktion auf die Workload skaliert werden, ohne dass die Verfügbarkeit, die Wartezeit, der Durchsatz oder die Leistung der Workload insgesamt beeinträchtigt werden. Unter hoher Auslastung können im Autopilot-Modus konfigurierte Azure Cosmos-Container zentral hoch- oder herunterskaliert werden, ohne den laufenden Betrieb zu beeinflussen.
 
-Beim Konfigurieren von Containern und Datenbanken im Autopilot-Modus müssen Sie den maximalen Durchsatz `Tmax` angeben, der nicht überschritten werden darf. Container können dann basierend auf den Anforderungen der Workload innerhalb des Bereichs `0.1*Tmax < T < Tmax` sofort skaliert werden. Mit anderen Worten: Container und Datenbanken werden basierend auf den Anforderungen der Workload unverzüglich skaliert – von einem von Ihnen konfigurierten geringen Wert (z. B. 10 % des maximalen Durchsatzwerts) bis zum konfigurierten Maximalwert. Sie können die Einstellung für den maximalen Durchsatz (Tmax) für eine Autopilot-Datenbank oder einen Autopilot-Container jederzeit ändern.
+Beim Konfigurieren von Containern und Datenbanken im Autopilot-Modus müssen Sie den maximalen Durchsatz `Tmax` angeben, der nicht überschritten werden darf. Container können dann basierend auf den Anforderungen der Workload innerhalb des Bereichs `0.1*Tmax < T < Tmax` sofort skaliert werden. Mit anderen Worten: Container und Datenbanken werden basierend auf den Anforderungen der Workload unverzüglich skaliert – von einem von Ihnen konfigurierten geringen Wert (z. B. 10 % des maximalen Durchsatzwerts) bis zum konfigurierten Maximalwert. Sie können die Einstellung für den maximalen Durchsatz (Tmax) für eine Autopilot-Datenbank oder einen Autopilot-Container jederzeit ändern. Mit der Autopilot-Option ist der minimale Durchsatz von 400 RU/s pro Container oder Datenbank nicht mehr anwendbar.
 
 Während der Vorschauphase von Autopilot ist für den angegebenen maximalen Durchsatz im Container oder in der Datenbank der Betrieb innerhalb der berechneten Speicherbegrenzung zulässig. Wenn die Speicherbegrenzung überschritten wird, wird der maximale Durchsatz automatisch auf einen höheren Wert festgelegt. Bei Verwendung des Durchsatzes auf Datenbankebene im Autopilot-Modus wird die Anzahl von Containern, die in einer Datenbank zulässig ist, wie folgt berechnet: (0,001 · max. Durchsatz). Wenn Sie beispielsweise 20.000 RU/s im Autopilot-Modus bereitstellen, kann die Datenbank über 20 Container verfügen.
 

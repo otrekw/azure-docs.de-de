@@ -1,20 +1,20 @@
 ---
-title: Problembehandlung beim Failback auf lokale Umgebungen während der Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt Möglichkeiten zum Beheben von Fehlern beim Failback und erneuten Schützen während der Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
+title: Problembehandlung bei VMware vCenter-Ermittlungsfehlern in Azure Site Recovery
+description: In diesem Artikel wird beschrieben, wie Sie die Problembehandlung bei VMware vCenter-Ermittlungsfehlern in Azure Site Recovery durchführen können.
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.author: raynew
-ms.openlocfilehash: c27e72333618f73b67eec9b5c0c3a70239a1c0b3
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 10/29/2019
+ms.author: mayg
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970858"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091252"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>Behandeln von vCenter-Ermittlungsfehlern
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problembehandlung von vCenter Server-Ermittlungsfehlern
 
 Dieser Artikel hilft Ihnen bei der Behandlung von Problemen, die aufgrund von VMware vCenter-Ermittlungsfehler auftreten.
 

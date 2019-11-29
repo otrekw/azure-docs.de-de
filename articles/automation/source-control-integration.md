@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 52fcd0d928ecbce5c617ff6a27175fccb8fd96f6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68990244"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73886529"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -177,7 +177,7 @@ Wenn in Ihrem Repository der Quellcodeverwaltung mehrere Personen Runbooks mit u
 
 Derzeit gibt es keine Möglichkeit, das Zugriffstoken in der Quellcodeverwaltung über das Portal zu aktualisieren. Nach Ablauf oder Widerruf Ihres persönlichen Zugriffstokens können Sie die Quellcodeverwaltung wie folgt mit einem neuen Zugriffstoken aktualisieren:
 
-* Über die [REST-API](https://docs.microsoft.com/en-us/rest/api/automation/sourcecontrol/update)
+* Über die [REST-API](https://docs.microsoft.com/rest/api/automation/sourcecontrol/update)
 * Mithilfe des Cmdlets [Update-AzAutomationSourceControl](/powershell/module/az.automation/update-azautomationsourcecontrol)
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,5 +1,5 @@
 ---
-title: Anmelden mit der zweistufigen Überprüfung oder mit Sicherheitsinformationen – Azure Active Directory | Microsoft-Dokumentation
+title: Anmelden mithilfe Ihrer Identitätsauthentifizierungsinformationen – Azure AD
 description: Hier erfahren Sie, wie Sie sich mithilfe der verschiedenen Methoden zur Identitätsüberprüfung in den Sicherheitsinformationen anmelden können.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b20ea1131ceda0527ed35d1a1082d05f25da6bac
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382317"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028523"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Anmelden mit der zweistufige Überprüfung oder einer Sicherheitsinformation
 

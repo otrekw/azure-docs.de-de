@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 5eba5601a50640261fa1b488d959f606d4514737
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 985746989af39aa55d5d8af735edf62f4c4b77b7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612219"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73932283"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -60,7 +60,7 @@ Ein *hochgradig paralleler* Auftrag stellt das am stärksten skalierbare Szenari
 
 1. Wenn Ihre Abfragelogik davon abhängig ist, dass derselbe Schlüssel durch dieselbe Abfrageinstanz verarbeitet wird, müssen Sie sicherstellen, dass die Ereignisse in derselben Partition Ihrer Eingabe aufgenommen werden. Bei Event Hubs oder IoT Hub bedeutet dies, dass für die Ereignisdaten der Wert **PartitionKey** festgelegt sein muss. Alternativ können Sie partitionierte Absender verwenden. Bei Blob Storage bedeutet dies, dass die Ereignisse an denselben Partitionsordner gesendet werden. Wenn es für Ihre Abfragelogik nicht erforderlich ist, dass derselbe Schlüssel von derselben Abfrageinstanz verarbeitet wird, können Sie diese Anforderung ignorieren. Ein Beispiel für diese Logik wäre eine einfache Auswahl-, Projekt- oder Filterabfrage.  
 
-2. Nachdem die Daten auf der Eingabeseite angeordnet wurden, müssen Sie sicherstellen, dass die Abfrage partitioniert wird. Dazu müssen Sie in allen Schritten **Partition by** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch denselben Schlüssel partitioniert werden. Unterhalb des Kompatibilitätsgrads 1.0 und 1.1 muss der Partitionierungsschlüssel auf **PartitionId** festgelegt werden, damit der Auftrag vollständige Parallelität aufweist. Bei Aufträgen mit einem Kompatibilitätsgrad von 1.2 und höher kann die benutzerdefinierte Spalte in den Eingabeeinstellungen als „Partitionsschlüssel“ angegeben werden, und der Auftrag wird dann automatisch parallelisiert, auch wenn keine PARTITION BY-Klausel vorhanden ist.
+2. Nachdem die Daten auf der Eingabeseite angeordnet wurden, müssen Sie sicherstellen, dass die Abfrage partitioniert wird. Dazu müssen Sie in allen Schritten **Partition by** verwenden. Es sind mehrere Schritte zulässig, aber sie müssen alle durch denselben Schlüssel partitioniert werden. Unterhalb des Kompatibilitätsgrads 1.0 und 1.1 muss der Partitionierungsschlüssel auf **PartitionId** festgelegt werden, damit der Auftrag vollständige Parallelität aufweist. Bei Aufträgen mit einem Kompatibilitätsgrad von 1,2 und höher kann die benutzerdefinierte Spalte in den Eingabeeinstellungen als „Partitionsschlüssel“ angegeben werden, und der Auftrag wird dann automatisch parallelisiert, auch wenn keine PARTITION BY-Klausel vorhanden ist. Für die Event Hub-Ausgabe muss die Eigenschaft „Partitionsschlüsselspalte“ auf „PartitionId“ gesetzt werden.
 
 3. Die meisten unserer Ausgaben können Partitionierung nutzen. Wenn Sie jedoch einen Ausgabetyp verwenden, der keine Partitionierung unterstützt, wird Ihr Auftrag nicht vollständig parallel ausgeführt. Weitere Informationen finden Sie im [Abschnitt über Ausgaben](#outputs).
 
@@ -77,7 +77,7 @@ In den folgenden Abschnitten werden einige Beispielszenarien für hochgradige Pa
 ### <a name="simple-query"></a>Einfache Abfrage
 
 * Eingabe: Event Hub mit 8 Partitionen
-* Ausgabe: Event Hub mit 8 Partitionen
+* Ausgabe: Event Hub mit 8 Partitionen („Partitionsschlüsselspalte“ muss auf „PartitionId“ gesetzt werden)
 
 Abfrage:
 
@@ -144,7 +144,7 @@ In den vorherigen Beispielen werden einige Stream Analytics-Aufträge gezeigt, d
 
 ### <a name="compatibility-level-12---multi-step-query-with-different-partition-by-values"></a>Kompatibilitätsgrad 1.2: Mehrstufige Abfrage mit unterschiedlichen Werten für „PARTITION BY“ 
 * Eingabe: Event Hub mit 8 Partitionen
-* Ausgabe: Event Hub mit 8 Partitionen
+* Ausgabe: Event Hub mit 8 Partitionen („Partitionsschlüsselspalte“ muss auf „TollBoothId“ gesetzt werden)
 
 Abfrage:
 

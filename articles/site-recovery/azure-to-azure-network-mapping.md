@@ -1,18 +1,18 @@
 ---
-title: Zuordnung virtueller Netzwerke zwischen zwei Azure-Regionen in Azure Site Recovery | Microsoft-Dokumentation
-description: Azure Site Recovery koordiniert Replikation, Failover und Wiederherstellung virtueller Computer und physischer Server. Informieren Sie sich über das Failover zu Azure oder zu einem sekundären Rechenzentrum.
+title: Zuordnung virtueller Netzwerke zwischen zwei Regionen in Azure Site Recovery
+description: Erfahren Sie mehr über die Zuordnung virtueller Netzwerke zwischen zwei Azure-Regionen für die Notfallwiederherstellung von virtuellen Azure-Computern mit Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mayg
-ms.openlocfilehash: 687c21170c0397b89270e9c3a6af1e994c758179
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8f0512f978f25ca196ad6e9a7a03243c47f0662
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331108"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954153"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 

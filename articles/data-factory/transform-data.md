@@ -11,15 +11,16 @@ ms.date: 07/31/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 97077b9f72de8792e6aba1d72ff34b9185b2d998
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 268c1e66010720d1da052183165ce1cea50a1095
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683808"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092014"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformieren von Data in Azure Data Factory
 > [!div class="op_single_selector"]
+> * [Mapping Data Flow](data-flow-create.md)
 > * [Hive](transform-data-using-hadoop-hive.md)  
 > * [Pig](transform-data-using-hadoop-pig.md)  
 > * [MapReduce](transform-data-using-hadoop-map-reduce.md)  
@@ -34,7 +35,7 @@ ms.locfileid: "73683808"
 > * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
 
 ## <a name="overview"></a>Übersicht
-Dieser Artikel enthält Informationen zu Datentransformationsaktivitäten in Azure Data Factory, mit denen Sie Ihre Rohdaten in Vorhersagen und Einblicke transformieren und verarbeiten können. Transformationsaktivitäten erfolgen in einer Compute-Umgebung wie Azure HDInsight-Cluster oder einem Azure Batch. Sie finden hier Links zu Artikeln mit detaillierten Informationen zu jeder Transformationsaktivität.
+Dieser Artikel enthält Informationen zu Datentransformationsaktivitäten in Azure Data Factory, mit denen Sie Ihre Rohdaten in Vorhersagen und Einblicke im gewünschten Umfang transformieren und verarbeiten können. Eine Transformationsaktivität erfolgt in einer Computing-Umgebung wie Azure Databricks oder Azure HDInsight. Sie finden hier Links zu Artikeln mit detaillierten Informationen zu jeder Transformationsaktivität.
 
 Data Factory unterstützt die folgenden Transformationsaktivitäten, die [Pipelines](concepts-pipelines-activities.md) entweder einzeln oder mit einer anderen Aktivität verkettet hinzugefügt werden können.
 
@@ -42,13 +43,15 @@ Data Factory unterstützt die folgenden Transformationsaktivitäten, die [Pipeli
 
 ### <a name="mapping-data-flows"></a>Zuordnen von Datenflüssen
 
-Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, die horizontal skalierte Spark-Cluster verwenden. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden. Weitere Informationen finden Sie unter [Mapping Data Flows (Zuordnungsdatenflüsse)](concepts-data-flow-overview.md).
+Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die horizontal hochskalierte Spark-Cluster verwendet werden. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden. Weitere Informationen finden Sie unter [Mapping Data Flows (Zuordnungsdatenflüsse)](concepts-data-flow-overview.md).
 
 ### <a name="wrangling-data-flows"></a>Wranglingdatenflüsse
 
 Wranglingdatenflüsse in Azure Data Factory ermöglicht Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud. Wranglingdatenflüsse können in [Power Query Online](https://docs.microsoft.com/power-query/) integriert werden und stellen Power Query M-Funktionen für Data Wrangling in der Cloud über Spark-Ausführung bereit. Weitere Informationen finden Sie unter [Wranglingdatenflüsse](wrangling-data-flow-overview.md).
 
 ## <a name="external-transformations"></a>Externe Transformationen
+
+Optional können Sie Transformationen manuell kodieren und die externe Compute-Umgebung selbst verwalten.
 
 ### <a name="hdinsight-hive-activity"></a>HDInsight Hive-Aktivität
 Die HDInsight Hive-Aktivität in einer Data Factory-Pipeline wendet Hive-Abfragen auf Ihren eigenen oder bedarfsgesteuerten Windows-/Linux-basierten HDInsight-Cluster an. Im Artikel [Hive-Aktivität](transform-data-using-hadoop-hive.md) finden Sie Details zu dieser Aktivität. 

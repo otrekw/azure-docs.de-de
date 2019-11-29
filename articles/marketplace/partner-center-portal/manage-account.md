@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 2962f6c5032ba317f9eb8f10c2abddb566aad904
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 60837171e3f59312895a76f68c660228697529ad
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825517"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891092"
 ---
 # <a name="how-to-manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center 
 
@@ -145,6 +145,11 @@ Die Berichterstellung erfolgt über den Partnerwert (Microsoft-Partner-ID) und d
 Weitere Informationen finden Sie unter [Häufig gestellte Fragen zur Nachverfolgung der Azure-Kundennutzung mit GUIDs](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution#faq).
 
 
+## <a name="create-a-billing-profile"></a>Erstellen eines Abrechnungsprofils
+
+Wenn Sie ein Angebot für [Dynamics 365 for Customer Engagement und Power Apps](./create-new-customer-engagement-offer.md) oder [Dynamics 365 for Operations](./create-new-operations-offer.md) veröffentlichen, müssen Sie ein **Abrechnungsprofil** ausfüllen.
+
+Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. Sie können diese Adresse später aktualisieren. Die Felder „Steuer“ und „Umsatzsteuer-ID“ sind optional.  Der Name des Landes und der Firmenname können nicht bearbeitet werden.
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 

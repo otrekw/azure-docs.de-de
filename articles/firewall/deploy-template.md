@@ -7,18 +7,18 @@ ms.service: firewall
 ms.topic: article
 ms.date: 7/9/2018
 ms.author: victorh
-ms.openlocfilehash: b39174152e427e408e7dfbbc353baf5f96ec7c01
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: c0a6cda54a58e3cc03ba31e221fb57fc725dd779
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657089"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839387"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Bereitstellen von Azure Firewall mit einer Vorlage
 
 Über die [Setupvorlage zum Erstellen einer AzureFirewall-Sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-with-zones-sandbox) wird eine Testnetzwerkumgebung mit einer Firewall erstellt. Das Netzwerk verfügt über ein virtuelles Netzwerk (VNET) mit drei Subnetzen: *AzureFirewallSubnet*, *ServersSubnet* und *JumpboxSubnet*. Die Subnetze *ServersSubnet* und *JumpboxSubnet* verfügen jeweils über einen virtuellen Windows Server-Computer mit zwei Kernen.
 
-Die Firewall befindet sich im Subnetz *AzureFirewallSubnet*, und der Zugriff auf *www.microsoft.com* wird durch eine Anwendungsregelsammlung mit einer einzelnen Regel ermöglicht.
+Die Firewall befindet sich im Subnetz *AzureFirewallSubnet*, und der Zugriff auf `www.microsoft.com` wird durch eine Anwendungsregelsammlung mit einer einzelnen Regel ermöglicht.
 
 Es wird eine benutzerdefinierte Route erstellt, die den Netzwerkverkehr vom Subnetz *ServersSubnet* durch die Firewall leitet, wo die Firewallregeln angewendet werden.
 

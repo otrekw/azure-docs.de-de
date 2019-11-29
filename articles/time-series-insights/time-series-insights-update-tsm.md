@@ -1,6 +1,6 @@
 ---
-title: Zeitreihenmodell in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
-description: Grundlegendes zum Zeitreihenmodell in Azure Time Series.
+title: Zeitreihenmodell – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie mehr über das Zeitreihenmodell in Azure Time Series Insights Preview.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -10,14 +10,14 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3c9bface359df020cea0bfff8f82e25e25efbc47
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5c045a4b5ccda47b786d86f1c004e9da4c8d85f3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585248"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112299"
 ---
-# <a name="time-series-model"></a>Time Series-Modell
+# <a name="time-series-model-in-azure-time-series-insights-preview"></a>Zeitreihenmodell in Azure Time Series Insights Preview
 
 Dieser Artikel beschreibt das Zeitreihenmodell sowie die zugehörigen Funktionen und erläutert, wie Sie selbst Modelle in der Azure Time Series Insights Preview-Umgebung erstellen und aktualisieren.
 
@@ -100,10 +100,10 @@ Instanzen werden durch **timeSeriesId**, **typeId**, **name**, **description**, 
 | --- | ---|
 | timeSeriesId | Der UUID der Zeitreihe, der die Instanz zugeordnet ist. |
 | typeId | Der UUID des Zeitreihenmodelltyps, dem die Instanz zugeordnet ist. Standardmäßig werden alle entdeckten neuen Instanzen einem Standardtyp zugeordnet.
-| name | Die **name**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. Wenn für **name** kein Wert verfügbar ist, wird die Eigenschaft standardmäßig auf **timeSeriesId** festgelegt. Auch wenn ein Name angegeben wurde, ist **timeSeriesId** weiterhin im [Well](time-series-insights-update-explorer.md#preview-well) verfügbar. |
+| name | Die **name**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. Wenn für **name** kein Wert verfügbar ist, wird die Eigenschaft standardmäßig auf **timeSeriesId** festgelegt. Auch wenn ein Name angegeben wurde, ist **timeSeriesId** weiterhin im [Well](time-series-insights-update-explorer.md#4-time-series-well) verfügbar. |
 | description | Eine Textbeschreibung der Instanz. |
 | hierarchyIds | Definiert, zu welchen Hierarchien die Instanz gehört. |
-| instanceFields | **instanceFields** sind Eigenschaften einer Instanz sowie aller statischen Daten, die eine Instanz definieren. Sie definieren Werte von Hierarchie- oder Nicht-Hierarchie-Eigenschaften, während sie gleichzeitig die Indizierung unterstützen, um Suchvorgänge auszuführen. |
+| instanceFields | Die Eigenschaften einer Instanz sowie aller statischen Daten, die eine Instanz definieren. Sie definieren Werte von Hierarchie- oder Nicht-Hierarchie-Eigenschaften, während sie gleichzeitig die Indizierung unterstützen, um Suchvorgänge auszuführen. |
 
 > [!NOTE]
 > Hierarchien werden mithilfe von Instanzfeldern erstellt. Für weitere Definitionen von Instanzeigenschaften können weitere **instanceFields** hinzugefügt werden.

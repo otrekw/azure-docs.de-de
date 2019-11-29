@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/17/2019
+ms.date: 10/28/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6121ca6c1636c8839110712310a1b94fe7fada49
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 778353621491f912d3237900785e6dee17bf975e
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619257"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014490"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -35,17 +35,19 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
     - **Riskante Anmeldungen**: Eine [riskante Anmeldung](concept-risky-sign-ins.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
     - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](concept-user-at-risk.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
-In diesem Thema erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten.
+In diesem Artikel erhalten Sie einen Überblick über den Bericht zu Anmeldeaktivitäten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
+
 * Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“ und „Berichtsleser“
 * Globale Administratoren
-* Darüber hinaus kann jeder Benutzer (Nicht-Administratoren) auf seine eigenen Anmeldungen zugreifen. 
+* Jeder Benutzer (Nicht-Administratoren) kann auf seine eigenen Anmeldungen zugreifen. 
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Welche Azure AD-Lizenz benötigen Sie für den Zugriff auf die Anmeldeaktivität?
-* Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Beachten Sie Folgendes: Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
+
+* Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Anmeldeaktivitäten angezeigt werden kann. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. Wenn Sie vor dem Upgrade über keine Aktivitätsdaten verfügten, dauert es ein paar Tage, bis die Daten in den Berichten angezeigt werden, nachdem Sie ein Upgrade auf eine Premium-Lizenz durchgeführt haben.
 
 ## <a name="sign-ins-report"></a>Bericht zu Anmeldeaktivitäten
 
@@ -55,9 +57,9 @@ Der Bericht zu Anmeldeaktivitäten enthält Antworten auf die folgenden Fragen:
 * Wie viele Benutzer haben sich im Laufe einer Woche angemeldet?
 * Wie lautet der Status dieser Anmeldungen?
 
-Sie können auf den Bericht zu Anmeldeaktivitäten zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Aktivität** die Option **Anmeldungen** wählen. Beachten Sie, dass es bei einigen Anmeldedatensätzen bis zu zwei Stunden dauern kann, bis sie im Portal angezeigt werden.
+Beginnen Sie mit dem [Azure-Portal](https://portal.azure.com). Wenn Sie auf den Anmeldebericht zugreifen möchten, wählen Sie **Anmeldungen** aus, und fahren Sie mit der **Überwachung** fort. Es kann bei einigen Anmeldedatensätzen bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
 
-![Anmeldeaktivität](./media/concept-sign-ins/61.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/concept-sign-ins/reporting-azure-sign-in-screen.png "Anmeldeaktivität")
 
 > [!IMPORTANT]
 > Im Bericht zu Anmeldeaktivitäten werden nur die **interaktiven** Anmeldungen angezeigt, also Anmeldungen, bei denen sich ein Benutzer manuell mit seinem Benutzernamen und Kennwort anmeldet. Nicht interaktive Anmeldungen wie Dienst-zu-Dienst-Authentifizierungen werden im Bericht zu Anmeldeaktivitäten nicht angezeigt. 
@@ -71,19 +73,19 @@ Ein Anmeldungsprotokoll enthält eine Standardlistenansicht mit folgenden Inform
 - Status der Risikoerkennung
 - Status der MFA-Anforderung (Multi-Factor Authentication)
 
-![Anmeldeaktivität](./media/concept-sign-ins/01.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/concept-sign-ins/sign-in-activity.png "Anmeldeaktivität")
 
 Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spalten** klicken.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/19.png "Anmeldeaktivität")
 
-Sie können dann weitere Felder anzeigen oder Felder entfernen, die bereits angezeigt werden.
+Sie können weitere Felder anzeigen oder Felder entfernen, die bereits angezeigt werden.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/02.png "Anmeldeaktivität")
 
 Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 
-![Anmeldeaktivität](./media/concept-sign-ins/03.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/concept-sign-ins/basic-sign-in.png "Anmeldeaktivität")
 
 > [!NOTE]
 > Benutzer können nun in allen Anmeldeberichten Probleme mit Richtlinien für bedingten Zugriff beheben. Durch Klicken auf die Registerkarte **Bedingter Zugriff** eines Anmeldedatensatzes können Benutzer den Status des bedingten Zugriffs überprüfen und die Richtliniendetails für die Anmeldung sowie die jeweiligen Richtlinienergebnisse ansehen.
@@ -93,7 +95,7 @@ Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Information
 
 ## <a name="filter-sign-in-activities"></a>Filtern von Anmeldeaktivitäten
 
-Um die gemeldeten Daten gemäß Ihren Anforderungen einzugrenzen, können Sie die Anmeldedaten mit dem Datumsfeld als Standardfilter filtern. Außerdem bietet Azure AD eine breite Palette an zusätzlichen Filtern, die Sie festlegen können.
+Zuerst schränken Sie die gemeldeten Daten auf einen Umfang ein, der für Sie geeignet ist. Filtern Sie die Anmeldedaten anschließend mit dem Datumsfeld als Standardfilter. Azure AD bietet eine breite Palette an zusätzlichen Filtern, die Sie festlegen können.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/04.png "Anmeldeaktivität")
 
@@ -117,7 +119,7 @@ Mit dem Filter **Bedingter Zugriff** können Sie den Richtlinienstatus des bedin
 Mit dem Filter **Datum** können Sie einen Zeitrahmen für die zurückgegebenen Daten festlegen.  
 Mögliche Werte:
 
-- 1 Monat
+- 1 Monat
 - 7 Tage
 - 24 Stunden
 - Benutzerdefiniertes Zeitintervall
@@ -128,19 +130,19 @@ Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese aut
 ![Anmeldeaktivität](./media/concept-sign-ins/12.png "Anmeldeaktivität")
 
 - **Browser**  
-    Dieser Filter zeigt alle Ereignisse, bei denen Anmeldeversuche mithilfe von Browserflows ausgeführt wurden.
+    Dieser Filter zeigt alle Ereignisse an, bei denen Anmeldeversuche mithilfe von Browserflows ausgeführt wurden.
 - **Exchange ActiveSync (unterstützt)**  
-    Dieser Filter zeigt alle Anmeldeversuche mit dem Exchange ActiveSync (EAS)-Protokoll von unterstützten Plattformen wie iOS, Android und Windows Phone.
+    Dieser Filter zeigt alle Anmeldeversuche mit dem Exchange ActiveSync (EAS)-Protokoll von unterstützten Plattformen wie iOS, Android und Windows Phone an.
 - **Exchange ActiveSync (nicht unterstützt)**  
     Dieser Filter zeigt alle Anmeldeversuche mit dem EAS-Protokoll von nicht unterstützten Plattformen wie Linux-Distributionen.
-- **Mobile Apps und Desktopclients** Dieser Filter zeigt alle Anmeldeversuche, die keine Browserflows verwendet haben. Dabei kann es sich um mobile Apps von einer beliebigen Plattform (mithilfe eines beliebigen Protokolls) oder um Apps auf Desktopclients wie Office unter Windows oder MacOS handeln.
+- **Mobile Apps und Desktopclients** Dieser Filter zeigt alle Anmeldeversuche an, die keine Browserflows verwendet haben. Dabei kann es sich beispielsweise um mobile Apps von einer beliebigen Plattform (mithilfe eines beliebigen Protokolls) oder um Apps auf Desktopclients wie Office unter Windows oder MacOS handeln.
   
 - **Andere Clients**
     - **IMAP**  
         Älterer E-Mail-Client, der IMAP zum Abrufen von E-Mails verwendet.
     - **MAPI**  
         Office 2013 mit aktivierter ADAL und Verwendung von MAPI.
-    - **Ältere Office-Clients**  
+    - **Alte Office-Clients**  
         Office 2013 in der Standardkonfiguration, bei der MAPI verwendet wird und ADAL nicht aktiviert ist, oder Office 2016 mit deaktivierter ADAL.
     - **POP**  
         Älterer E-Mail-Client, der POP3 zum Abrufen von E-Mails verwendet.
@@ -149,9 +151,9 @@ Wenn Sie der Anmeldungsansicht zusätzliche Felder hinzufügen, werden diese aut
 
 ## <a name="download-sign-in-activities"></a>Herunterladen von Anmeldeaktivitäten
 
-Sie können die [Daten zu Anmeldungen herunterladen](quickstart-download-sign-in-report.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten. Durch Klicken auf **Herunterladen** können Sie eine CSV- oder JSON-Datei der letzten 250.000 Datensätze erstellen.  
+Durch Klicken auf die Option **Herunterladen** können Sie eine CSV- oder JSON-Datei der letzten 250.000 Datensätze erstellen. Beginnen Sie damit, [Daten zu Anmeldungen herunterzuladen](quickstart-download-sign-in-report.md), wenn Sie sie außerhalb des Azure-Portals verwenden möchten.  
 
-![Herunterladen](./media/concept-sign-ins/71.png "Herunterladen")
+![Download](./media/concept-sign-ins/71.png "Download")
 
 > [!IMPORTANT]
 > Die Anzahl von Datensätzen, die Sie herunterladen können, ist durch die [Aufbewahrungsrichtlinien für Azure Active Directory-Berichte](reference-reports-data-retention.md) eingeschränkt.  
@@ -159,7 +161,7 @@ Sie können die [Daten zu Anmeldungen herunterladen](quickstart-download-sign-in
 
 ## <a name="sign-ins-data-shortcuts"></a>Tastenkombinationen für Anmeldedaten
 
-Zusätzlich zu Azure AD enthält das Azure-Portal weitere Einstiegspunkte für Anmeldedaten:
+Azure AD und das Azure-Portal enthalten weitere Einstiegspunkte für Anmeldedaten:
 
 - Übersicht über Identitätssicherheit und Schutz
 - Benutzer
@@ -168,7 +170,7 @@ Zusätzlich zu Azure AD enthält das Azure-Portal weitere Einstiegspunkte für A
 
 ### <a name="users-sign-ins-data-in-identity-security-protection"></a>Benutzeranmeldedaten für Identitätssicherheit und Schutz
 
-Mit dem Graphen für Benutzeranmeldungen auf der Übersichtsseite **Identitätssicherheit und Schutz** werden wöchentliche Aggregationen der Anmeldungen aller Benutzer in einem bestimmten Zeitraum angezeigt. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
+Mit dem Graphen für Benutzeranmeldungen auf der Übersichtsseite **Identitätssicherheit und Schutz** werden wöchentliche Aggregationen der Anmeldungen angezeigt. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/06.png "Anmeldeaktivität")
 
@@ -207,30 +209,28 @@ Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevor
 Mit einer anwendungsorientierten Ansicht Ihrer Anmeldedaten können Sie beispielsweise folgende Fragen beantworten:
 
 * Wer verwendet meine Anwendungen?
-* Welche drei Anwendungen sind im Unternehmen am beliebtesten?
-* Ich habe vor Kurzem eine Anwendung eingeführt. Wie gut funktioniert sie?
+* Welche drei Anwendungen sind in Ihrer Organisation am beliebtesten?
+* Wie arbeitet meine neueste Anwendung?
 
-Ihr Einstiegspunkt für diese Daten ist die Liste mit den beliebtesten drei Anwendungen in Ihrem Unternehmen im Bericht zu den letzten 30 Tagen (Abschnitt **Übersicht** unter **Unternehmensanwendungen**).
+Der Einstiegspunkt für diese Daten sind die drei wichtigsten Anwendungen in Ihrer Organisation. Die Daten sind im Bericht über die letzten 30 Tage im Abschnitt **Übersicht** unter **Unternehmensanwendungen** enthalten.
 
 ![Anmeldeaktivität](./media/concept-sign-ins/10.png "Anmeldeaktivität")
 
 Der Graph zur App-Nutzung gibt die wöchentlichen Aggregationen von Anmeldungen für Ihre beliebtesten drei Anwendungen in einem bestimmten Zeitraum an. Die Standardeinstellung für den Zeitraum beträgt 30 Tage.
 
-![Anmeldeaktivität](./media/concept-sign-ins/47.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/concept-sign-ins/graph-chart.png "Anmeldeaktivität")
 
 Wenn Sie möchten, können Sie den Fokus auf eine bestimmte Anwendung festlegen.
 
-![Berichterstellung](./media/concept-sign-ins/single_spp_usage_graph.png "Reporting")
+![Berichterstellung](./media/concept-sign-ins/single-app-usage-graph.png "Berichterstellung")
 
 Wenn Sie im Graph für die App-Nutzung auf einen Tag klicken, wird eine ausführliche Liste mit den Anmeldeaktivitäten angezeigt.
 
 Mit der Option **Anmeldungen** können Sie eine vollständige Übersicht über alle Anmeldeereignisse für Ihre Anwendungen anzeigen.
 
-![Anmeldeaktivität](./media/concept-sign-ins/11.png "Anmeldeaktivität")
-
 ## <a name="office-365-activity-logs"></a>Office 365-Aktivitätsprotokolle
 
-Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Obwohl Office 365- und Azure AD-Aktivitätsprotokolle einen Großteil der Verzeichnisressourcen gemeinsam nutzen, bietet nur das Microsoft 365 Admin Center eine vollständige Ansicht der Office 365-Aktivitätsprotokolle. 
+Sie können Office 365-Aktivitätsprotokolle im [Microsoft 365 Admin Center](https://docs.microsoft.com/office365/admin/admin-overview/about-the-admin-center) anzeigen. Beachten Sie, dass Office 365- und Azure AD-Aktivitätsprotokolle eine beträchtliche Anzahl von Verzeichnisressourcen gemeinsam nutzen. Nur das Microsoft 365 Admin Center bietet eine vollständige Übersicht über die Office 365-Aktivitätsprotokolle. 
 
 Mithilfe der [Office 365-Verwaltungs-APIs](https://docs.microsoft.com/office/office-365-management-api/office-365-management-apis-overview) können Sie auch programmgesteuert auf die Office 365-Aktivitätsprotokolle zugreifen.
 
