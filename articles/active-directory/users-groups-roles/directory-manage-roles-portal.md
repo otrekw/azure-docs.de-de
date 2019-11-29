@@ -1,24 +1,24 @@
 ---
-title: Anzeigen und Zuweisen von Berechtigungen der Administratorrolle – Azure Active Directory | Microsoft-Dokumentation
+title: Anzeigen und Zuweisen von Berechtigungen der Administratorrolle – Azure AD | Microsoft-Dokumentation
 description: Sie können jetzt Mitglieder einer Azure AD-Administratorrolle im Portal anzeigen und verwalten. Für Benutzer vorgesehen, die häufig Rollenzuweisungen verwalten.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20842c8c644a351b59322569661abf82bb524449
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ac62a4f318690a1e8156d619c82e9b936973159
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60472596"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027885"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Anzeigen und Zuweisen von Benutzerrollen in Azure Active Directory
 

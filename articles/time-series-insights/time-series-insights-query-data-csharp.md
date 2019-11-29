@@ -1,6 +1,6 @@
 ---
-title: Abfragen von Daten aus einer Azure Time Series Insights GA-Umgebung mit C#-Code | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie durch Codieren einer in der .NET-Sprache C# (C-Sharp) geschriebenen benutzerdefinierten App Daten aus einer Azure Time Series Insights-Umgebung abgefragt werden.
+title: Abfragen von Daten aus einer GA-Umgebung mit C#-Code – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Daten mithilfe einer in C# geschriebenen benutzerdefinierten App aus einer Azure Time Series Insights-Umgebung abfragen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 23e4ad5667019b5bc38f9ba11d14632d4d55d5b7
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5946a1484a62b041772f388b0629d131afe37b92
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989977"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012546"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-ga-environment-using-c"></a>Abfragen von Daten aus der Azure Time Series Insights GA-Umgebung mit C#
 

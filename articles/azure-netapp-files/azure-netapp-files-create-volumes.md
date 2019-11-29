@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 11/08/2019
 ms.author: b-juche
-ms.openlocfilehash: 1a479b4928631f27d5453d462a59fe7fed09a88c
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: 1f312e8a5034d238e4802e9323bc1b5ac5cdae21
+ms.sourcegitcommit: f226cdd6406372b5693d46b6d04900f2f0cda4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302762"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906238"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
@@ -43,7 +43,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
   Die Unterstützung von UNIX-Modusbits (Lesen, Schreiben und Ausführen) ist für NFSv3 und NFSv4.1 verfügbar. Zum Einbinden von NFS-Volumes ist Stammebenenzugriff auf den NFS-Client erforderlich.
 
 * Unterstützung von lokalen Benutzern/Gruppen und LDAP für NFSv4.1  
-  Von NFSv4.1 wird aktuell nur Stammzugriff auf Volumes unterstützt. 
+  Von NFSv4.1 wird aktuell nur Stammzugriff auf Volumes unterstützt. Weitere Informationen finden Sie unter [Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md). 
 
 ## <a name="best-practice"></a>Bewährte Methode
 
@@ -115,6 +115,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
+* [Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
 * [Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
 * [Konfigurieren der Exportrichtlinie für ein NFS-Volume](azure-netapp-files-configure-export-policy.md)
 * [Ressourcenlimits für Azure NetApp Files](azure-netapp-files-resource-limits.md)

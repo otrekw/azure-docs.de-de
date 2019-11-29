@@ -1,5 +1,5 @@
 ---
-title: 'Anleitung: Ausführen der benutzerdefinierten Befehle auf dem Client mit dem Speech SDK (Vorschau)'
+title: Ausführen der benutzerdefinierten Befehle auf dem Client mit dem Speech SDK
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel werden die Aktivitäten der benutzerdefinierten Befehle auf dem Client mit dem Speech SDK behandelt.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506509"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110076"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Anleitung: Ausführen der Befehle auf dem Client mit dem Speech SDK (Vorschau)
 
@@ -30,11 +30,11 @@ In diesem Artikel führen Sie Folgendes durch:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Azure-Abonnementschlüssel für Spracherkennungsdienste
-   - [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
+  - [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
 - Eine zuvor erstellte Anwendung für benutzerdefinierte Befehle
-   - [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)
 - Eine Speech SDK-fähige Clientanwendung
-   - [Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Speech SDK (Vorschau)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Speech SDK (Vorschau)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>Optional: Schneller Einstieg
 
@@ -45,14 +45,15 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Clientanwendun
 1. Öffnen Sie Ihre zuvor erstellte Anwendung für benutzerdefinierte Befehle über [Speech Studio](https://speech.microsoft.com/).
 1. Überprüfen Sie den Abschnitt **Vervollständigungsregeln**, um sicherzustellen, dass Sie über die zuvor erstellte Regel verfügen, die dem Benutzer antwortet.
 1. Um eine Nutzlast direkt an den Client zu senden, erstellen Sie eine neue Regel mit einer Aktion zum Senden von Aktivitäten.
+
    > [!div class="mx-imgBorder"]
    > ![Vervollständigungsregel zum Senden von Aktivitäten](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Einstellung    | Empfohlener Wert                                  | BESCHREIBUNG                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | Regelname  | UpdateDeviceState                                | Ein Name, der den Zweck der Regel beschreibt.          |
-   | Bedingungen | Erforderlicher Parameter – `OnOff` und `SubjectDevice` | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann.    |
-   | Aktionen    | `SendActivity` (siehe unten)                        | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
+   | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+   | ------- | --------------- | ----------- |
+   | Regelname | UpdateDeviceState | Ein Name, der den Zweck der Regel beschreibt. |
+   | Bedingungen | Erforderlicher Parameter – `OnOff` und `SubjectDevice` | Bedingungen, die bestimmen, wann die Regel ausgeführt werden kann. |
+   | Aktionen | `SendActivity` (siehe unten) | Die durchzuführende Aktion, wenn die Bedingung der Regel erfüllt ist (true). |
 
    > [!div class="mx-imgBorder"]
    > ![Nutzlast zum Senden von Aktivitäten](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Der visuelle Zustand des Fernsehers sollte zu „Ein“ (On) wechseln.
 
 ## <a name="next-steps"></a>Nächste Schritte
-> [!div class="nextstepaction"]
-> [How To: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)
 
+> [!div class="nextstepaction"]
+> [Gewusst wie: Hinzufügen von Validierungen zu Parametern benutzerdefinierter Befehle (Vorschau)](./how-to-custom-speech-commands-validations.md)

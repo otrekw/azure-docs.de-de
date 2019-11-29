@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/11/2019
 ms.author: memildin
-ms.openlocfilehash: 93e52b393db288f5b19afde4a31e08d0bb91b471
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 068fb9f61b7dcb3948e4f03c284ddfa680522c85
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571559"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907047"
 ---
 # <a name="advanced-data-security-for-sql-servers-on-azure-virtual-machines-preview"></a>Erweiterte Datensicherheit für SQL Server-Instanzen in Azure Virtual Machines (Vorschau)
 Advanced Data Security für SQL Server-Instanzen auf Azure Virtual Machines ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Zu dieser Previewfunktion zählen aktuell die Funktionen zur Ermittlung und Verringerung potenzieller Datenbankschwachstellen und Erkennung ungewöhnlicher Aktivitäten, die Bedrohungen für Ihre Datenbank darstellen können. 
@@ -54,7 +54,7 @@ Aktivieren von Advanced Data Security für SQL Server-Instanzen auf Azure Virtua
     Advanced Data Security für SQL Server-Instanzen wird auf allen SQL Server-Instanzen aktiviert, die mit dem ausgewählten Arbeitsbereich oder dem Standardarbeitsbereich des ausgewählten Abonnements verbunden sind.
 
     >[!NOTE]
-    > Die Lösung ist nach dem ersten Neustart der SQL Server-Instanz aktiv. 
+    > Die Lösung ist nach dem ersten Neustart der SQL Server-Instanz vollständig aktiv. 
 
 Um einen neuen Arbeitsbereich zu erstellen, befolgen Sie die Anweisungen unter [Erstellen eines Log Analytics-Arbeitsbereichs](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
 
@@ -72,7 +72,7 @@ Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigu
 1. Klicken Sie im Menü „Einstellungen“ auf **E-Mail-Benachrichtigungen**. 
 1. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adressen ein, die Benachrichtigungen erhalten sollen. Sie können mehrere E-Mail-Adresse eingeben, indem Sie die einzelnen Adressen durch ein Komma (,) trennen.  Beispiel: admin1@mycompany.com,admin2@mycompany.com,admin3@mycompany.com
 
-      ![E-Mail-Einstellungen](./media/security-center-advanced-iaas-data/email-settings.png)
+    ![E-Mail-Einstellungen](./media/security-center-advanced-iaas-data/email-settings.png)
 
 1. Legen Sie unter den **Einstellungen für die E-Mail-Benachrichtigung** die folgenden Optionen fest:
   
@@ -88,29 +88,27 @@ Sie können eine Liste von Empfängern festlegen, die eine E-Mail-Benachrichtigu
 
 Das Dashboard zur Sicherheitsrisikobewertung bietet eine Übersicht über die Bewertungsergebnisse für alle Datenbanken. Sie können die Verteilung von Datenbanken nach SQL Server-Version sowie eine Zusammenfassung der fehlerhaften gegenüber einwandfreien Datenbanken und eine allgemeine Übersicht über fehlerhafte Prüfungen nach Risikoverteilung anzeigen.
 
-Sie können die Ergebnisse und Berichte zur Sicherheitsrisikobewertung direkt aus Log Analytics heraus anzeigen.
+Sie können die Ergebnisse der Sicherheitsrisikobewertung direkt aus Security Center anzeigen.
 
-1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich mit der Advanced Data Security-Lösung.
-1. Navigieren Sie zu **Lösungen**, und wählen Sie die Lösung **SQL-Sicherheitsrisikobewertung** aus.
-1. Klicken Sie im Bereich **Zusammenfassung** auf **Zusammenfassung anzeigen**, und wählen Sie Ihren **Bericht zur SQL-Sicherheitsrisikobewertung** aus.
+1. Wählen Sie in der Randleiste von Security Center unter RESSOURCENSICHERHEIT die Option **Daten und Speicher**aus.
 
-    ![SQL-Bewertungsbericht](./media/security-center-advanced-iaas-data/ads-sql-server-1.png)
+1. Wählen Sie die Empfehlung **Sicherheitsrisiken in Ihren SQL-Datenbanken auf VMs sollten entschärft werden (Vorschau)** aus. Weitere Informationen finden Sie unter [Security Center-Empfehlungen](security-center-recommendations.md). 
 
-    Das Berichtsdashboard wird geladen. Stellen Sie sicher, dass das Zeitfenster mindestens auf **Letzte 7 Tage** festgelegt ist, da Sicherheitsrisikoüberprüfungen für Ihre Datenbanken nach einem festen Zeitplan einmal alle sieben Tage ausgeführt werden.
+    [![**Sicherheitsrisiken in Ihren SQL-Datenbanken auf VMs sollten entschärft werden (Vorschau)** – Empfehlungen](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png)](media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png#lightbox)
 
-    ![Letzte 7 Tage festlegen](./media/security-center-advanced-iaas-data/ads-sql-server-2.png)
+    Die detaillierte Ansicht für diese Empfehlung wird angezeigt.
 
-1. Um weitere Details anzuzeigen, klicken Sie auf eines der Dashboardelemente. Beispiel:
+    [![Detaillierte Ansicht für die Empfehlung **Sicherheitsrisiken in Ihren SQL-Datenbanken auf VMs sollten entschärft werden (Vorschau)**](media/security-center-advanced-iaas-data/all-servers-view.png)](media/security-center-advanced-iaas-data/all-servers-view.png#lightbox)
 
-   1. Klicken Sie im Abschnitt mit der Zusammenfassung zu Überprüfungen mit Fehlern auf eine Sicherheitsüberprüfung, um eine Log Analytics-Tabelle mit den Ergebnissen für diese Überprüfung bei allen Datenbanken anzuzeigen **.** Die Überprüfungen mit Ergebnissen werden zuerst aufgeführt.
+1. So führen Sie einen Drilldown für weitere Details aus:
 
-   1. Klicken Sie dann durch die Liste, um Details zu jedem Sicherheitsrisiko anzuzeigen. Dazu gehören die Beschreibung des Sicherheitsrisikos sowie Auswirkung, Status, verbundenes Risiko und tatsächliche Ergebnisse für diese Datenbank. Sie können auch die eigentliche Abfrage, die für diese Überprüfung ausgeführt wurde, und Informationen zur Beseitigung dieses Sicherheitsrisikos anzeigen.
+    * Klicken Sie auf den gewünschten Server, um eine Übersicht über gescannte Ressourcen (Datenbanken) und die Liste der getesteten Sicherheitsüberprüfungen zu erhalten.
+    [![Nach SQL Server-Instanzen gruppierte Sicherheitsrisiken](media/security-center-advanced-iaas-data/single-server-view.png)](media/security-center-advanced-iaas-data/single-server-view.png#lightbox)
 
-    ![Arbeitsbereich auswählen](./media/security-center-advanced-iaas-data/ads-sql-server-3.png)
+    * Klicken Sie auf die gewünschte Datenbank, um eine Übersicht über die Sicherheitsrisiken zu erhalten, die nach einer bestimmten SQL-Datenbank gruppiert sind.
+    [![Nach SQL Server-Instanzen gruppierte Sicherheitsrisiken](media/security-center-advanced-iaas-data/single-database-view.png)](media/security-center-advanced-iaas-data/single-database-view.png#lightbox)
 
-    ![Arbeitsbereich auswählen](./media/security-center-advanced-iaas-data/ads-sql-server-4.png)
-
-1. Sie können beliebige Log Analytics-Abfragen für die Ergebnisdaten Ihrer Sicherheitsrisikobewertung ausführen, um die Daten entsprechend Ihren Anforderungen aufzuteilen.
+    Die Sicherheitsüberprüfungen werden in jeder Ansicht nach **Schweregrad** sortiert. Klicken Sie auf eine bestimmte Sicherheitsüberprüfung, um einen Detailbereich mit einer **Beschreibung** anzuzeigen sowie **Empfehlungen zur Behebung von Problemen** und andere verwandte Informationen wie zur **Auswirkung** oder **Benchmark** zu erhalten.
 
 ## <a name="advanced-threat-protection-for-sql-servers-on-azure-vms-alerts"></a>Warnungen von Advanced Threat Protection für SQL Server-Instanzen auf Azure Virtual Machines
 Warnungen werden bei ungewöhnlichen und potenziell schädlichen Zugriffsversuchen oder Exploit-Vorgängen für SQL Server-Instanzen generiert. Diese Ereignisse können die folgenden Warnungen auslösen:

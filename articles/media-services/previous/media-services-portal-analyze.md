@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881901"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462614"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Medienanalyse mithilfe des Azure-Portals 
 
@@ -54,15 +54,11 @@ Die natürliche Sprache, die in der Multimediadatei erkannt werden soll. Beispie
 
 ### <a name="captions"></a>Untertitel
 Sie können ein Untertitelformat auswählen, das für Ihre Inhalte generiert wird. Ein Indizierungsauftrag kann Untertiteldateien in den folgenden Formaten generieren:  
-
-* **SAMI**
+ 
 * **TTML**
 * **WebVTT**
 
 Untertiteldateien in diesen Formaten können verwendet werden, um Hörgeschädigten Audio- und Videodateien zugänglich zu machen.
-
-### <a name="aib-file"></a>AIB-Datei
-Wählen Sie diese Option, wenn Sie die Audioindex-Blobdatei zur Verwendung mit dem benutzerdefinierten SQL Server-IFilter generieren möchten. Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) Blog.
 
 ### <a name="keywords"></a>Schlüsselwörter
 Wählen Sie diese Option, wenn Sie eine XML-Schlagwortdatei generieren möchten. Die XML-Schlagwortdatei enthält Stichwörter, die gemeinsam mit Frequenz- und Offsetinformationen aus dem Sprachinhalt extrahiert werden.

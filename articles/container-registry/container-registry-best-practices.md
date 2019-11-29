@@ -1,19 +1,14 @@
 ---
-title: Bewährte Methoden in Azure Container Registry
+title: Registrierung – bewährte Methoden
 description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: danlep
-ms.openlocfilehash: a1ab010300d3f7bec3aeb5969a9a09fa9ee9a6a5
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68309769"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455319"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 

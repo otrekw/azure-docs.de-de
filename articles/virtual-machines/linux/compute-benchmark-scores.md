@@ -1,5 +1,5 @@
 ---
-title: Compute-Benchmarkergebnisse für virtuelle Azure Linux-Computer | Microsoft-Dokumentation
+title: Compute-Benchmarkergebnisse für virtuelle Azure Linux-Computer
 description: Vergleichen von CoreMark-Compute-Benchmarkergebnissen für virtuelle Azure-Computer unter Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: d91535c6f0daeac58a3005d94e19cbba3e781ebf
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 234c4b0493a4f03ed89162318090d57621740cb0
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083852"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036689"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
 Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Ubuntu. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)zur Verfügung.

@@ -2,25 +2,22 @@
 title: Bezahlen Ihrer Rechnung für Microsoft Azure | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie eine Rechnung im Azure-Portal bezahlen.
 keywords: Rechnung, überfällig, Restbetrag, jetzt bezahlen
-services: billing
-documentationcenter: ''
 author: jureid
 manager: jureid
-editor: ''
 tags: billing, past due, pay now, bill, invoice, pay
-ms.service: billing
+ms.service: cost-management-billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 4df0939137a529dd35f8f61ff90ee6da43ec5d61
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 68c9838fc374bd3bd8a4d25f3d6f1c4bdace8e95
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709662"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226185"
 ---
 # <a name="how-to-pay-your-bill-for-microsoft-azure"></a>Bezahlen Ihrer Rechnung für Microsoft Azure
 
@@ -50,7 +47,7 @@ Sie müssen Eigentümer, Beitragender oder Rechnungsmanager des Abrechnungsprofi
 1. Klicken Sie auf dem neuen Blatt auf **Wählen Sie eine Zahlungsmethode**, um eine bestehende Kreditkarte auszuwählen oder eine neue hinzuzufügen.<!-- screenshot of select payment method link -->
 1. Klicken Sie nach dem Auswählen der Zahlungsmethode auf **Jetzt zahlen**.
 
-Der Status der Rechnung wird auf dem Rechnungsblatt in „bezahlt“ aktualisiert. 
+Der Status der Rechnung wird auf dem Rechnungsblatt in „bezahlt“ aktualisiert.
 
 <!-- pay now from invoice blade -->
 
