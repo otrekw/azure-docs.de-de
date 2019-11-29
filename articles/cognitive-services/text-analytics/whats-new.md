@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: aahi
-ms.openlocfilehash: 15beb8d3e326f04f1ae61c26f00e9428d95f6bc4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6ef23c03f01cd8e83d4327f358eaf12209659ce8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031377"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286458"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
@@ -29,8 +29,8 @@ Die nächste Version von Named Entity Recognition (NER, Erkennung benannter Enti
     * Telefonnummer
     * IP-Adresse
 
-* Einen [neuen Endpunkt](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) für das Erkennen von Entitätstypen für personenbezogene Informationen (nur für die englische Sprache)
-* Separate Endpunkte für die [Entitätserkennung]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) und [Entitätsverknüpfung]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
+* Einen [neuen Endpunkt](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionPii) für das Erkennen von Entitätstypen für personenbezogene Informationen (nur für die englische Sprache)
+* Separate Endpunkte für die [Entitätserkennung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) und [Entitätsverknüpfung](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesLinking).
 
 Die Entitätsverknüpfung unterstützt Englisch und Spanisch. Die NER-Sprachunterstützung ist je nach Entitätstyp unterschiedlich. 
 
@@ -39,7 +39,7 @@ Die Entitätsverknüpfung unterstützt Englisch und Spanisch. Die NER-Sprachunte
 
 ## <a name="sentiment-analysis-v3-public-preview---october-2019"></a>Standpunktanalyse v3 – Öffentliche Vorschau: Oktober 2019
 
-Die [nächste Version der Standpunktanalyse](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) ist jetzt als Public Preview verfügbar und bietet erhebliche Verbesserungen bei Genauigkeit und Detailgrad der Textkategorisierung und -bewertung der API. Außerdem bietet sie Folgendes:
+Die [nächste Version der Standpunktanalyse](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) ist jetzt als Public Preview verfügbar und bietet erhebliche Verbesserungen bei Genauigkeit und Detailgrad der Textkategorisierung und -bewertung der API. Außerdem bietet sie Folgendes:
 
 * Automatische Bezeichnung für verschiedene Stimmungen im Text
 * Standpunktanalyse und Ausgabe auf Dokument- und Satzebene 

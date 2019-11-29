@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837329"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286620"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Sprach- und Regionsunterstützung für die Textübersetzungs-API
 
@@ -81,6 +81,7 @@ Die Textübersetzungs-API unterstützt die folgenden Sprachen für die Übersetz
 |Madagassisch|  `mg`    |Nur statistisches System|  Statistisch|
 |Malaiisch| `ms`    |Nur statistisches System   |Statistisch|
 |Maltesisch|   `mt`    |Nur statistisches System|  Statistisch|
+|Maori| `mi`  |Nur neuronales System| Neuronal|
 |Norwegisch| `nb`    |Neuronales System verfügbar|  Neuronal|
 |Persisch|   `fa`    |Neuronales System verfügbar|  Neuronal|
 |Polnisch|    `pl`    |Neuronales System verfügbar|  Neuronal|
@@ -237,6 +238,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Lettisch      | `lv`          |
 | Litauisch      | `lt`          |
 |Madagassisch|  `mg`    |
+|Maori| `mi`  |
 | Norwegisch      | `nb`          |
 | Persisch      | `fa`          |
 | Polnisch      | `pl`          |

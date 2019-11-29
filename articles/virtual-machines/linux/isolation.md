@@ -13,19 +13,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/18/2019
 ms.author: ayshak
-ms.openlocfilehash: 320c07b4168825100eec93f43f1282518ba38c4a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 908cc0f876514ad68c88f73f5d7fa4888a27d325
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035960"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173920"
 ---
 # <a name="virtual-machine-isolation-in-azure"></a>Isolation von virtuellen Computern in Azure
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation-migration.md)]
-
-## <a name="next-steps"></a>Nächste Schritte
-
-- Sie können einen dedizierten Host über die [Azure CLI](dedicated-hosts-cli.md), das [Portal](dedicated-hosts-portal.md) und [Azure PowerShell](../windows/dedicated-hosts-powershell.md) bereitstellen. Weitere Informationen finden Sie in der Übersicht zu [dedizierten Hosts](dedicated-hosts.md).

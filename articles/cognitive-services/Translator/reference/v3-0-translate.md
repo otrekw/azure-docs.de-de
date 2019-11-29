@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835784"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184807"
 ---
 # <a name="translator-text-api-30-translate"></a>Textübersetzungs-API 3.0: Translate
 
@@ -33,6 +33,8 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
+### <a name="required-parameters"></a>Erforderliche Parameter
+
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
   <th>BESCHREIBUNG</th>
@@ -41,13 +43,20 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
     <td><em>Erforderlicher Parameter</em>.<br/>Die vom Client angeforderte Version der API. Der Wert muss <code>3.0</code> sein.</td>
   </tr>
   <tr>
-    <td>from</td>
-    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet. <br/><br/>Sie müssen den Parameter <code>from</code> anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamisches Wörterbuch</a> verwenden.</td>
-  </tr>
-  <tr>
     <td>zu</td>
     <td><em>Erforderlicher Parameter</em>.<br/>Gibt die Sprache des Ausgabetexts an. Sie müssen eine der zum <code>translation</code>-Bereich hinzugefügten <a href="./v3-0-languages.md">unterstützten Sprachen</a> als Zielsprache auswählen. Verwenden Sie z.B. <code>to=de</code> für die Übersetzung ins Deutsche.<br/>Durch Wiederholen des Parameters in der Abfragezeichenfolge ist es möglich, in mehrere Sprachen gleichzeitig zu übersetzen. Verwenden Sie z.B. <code>to=de&to=it</code> für die Übersetzung ins Deutsche und Italienische.</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>Optionale Parameter
+
+<table width="100%">
+  <th width="20%">Query parameter (Abfrageparameter)</th>
+  <th>BESCHREIBUNG</th>
+  <tr>
+    <td>from</td>
+    <td><em>Optionaler Parameter</em>.<br/>Gibt die Sprache des Eingabetexts an. Finden Sie heraus, aus welchen Sprachen Sie übersetzen können, indem Sie die <a href="./v3-0-languages.md">unterstützten Sprachen</a> mithilfe des<code>translation</code>-Bereichs. Wenn kein <code>from</code>-Parameter angegeben wird, wird die automatische Sprachenerkennung zum Bestimmen der Quellsprache verwendet. <br/><br/>Sie müssen den Parameter <code>from</code> anstelle der automatischen Erkennung verwenden, wenn Sie die Funktion für ein <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamisches Wörterbuch</a> verwenden.</td>
+  </tr>  
   <tr>
     <td>textType</td>
     <td><em>Optionaler Parameter</em>.<br/>Definiert, ob es sich bei dem zu übersetzenden Text um Nur-Text oder um HTML-Text handelt. Jede HTML muss ein wohlgeformtes vollständiges Element sein. Mögliche Werte sind: <code>plain</code> (Standard) oder <code>html</code>.</td>

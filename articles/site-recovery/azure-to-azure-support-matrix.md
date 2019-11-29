@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 267177dcdec25b8561b219ae79e40ce61af994df
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123850"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74530955"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -210,7 +210,7 @@ Speicherplätze | Unterstützt |
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.   
 Verschlüsselung ruhender Daten (CMK) | Nicht unterstützt |   
 Azure Disk Encryption (ADE) für Windows | Unterstützt für virtuelle Computer mit verwalteten Datenträgern. Virtuelle Computer, die nicht verwaltete Datenträgern nutzen, werden nicht unterstützt. |
-Azure Disk Encryption (ADE) für Linux | Nicht unterstützt |
+Azure Disk Encryption (ADE) für Linux | Unterstützt |
 Hinzufügen von Datenträgern im laufendem Betrieb | Unterstützt | Die Aktivierung der Replikation für einen Datenträger, den Sie einer replizierten Azure-VM hinzufügen, wird für VMs unterstützt, die verwaltete Datenträger verwenden.
 Entfernen von Datenträgern im laufendem Betrieb | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer erneut aktivieren.
 Ausschließen von Datenträgern | Unterstützung. Sie müssen [PowerShell](azure-to-azure-exclude-disks.md) zum Konfigurieren verwenden. |  Temporäre Datenträger sind standardmäßig ausgeschlossen.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: a2025eb611a394cf4b67c05a4019ccf03bcadf9b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075861"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538176"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 
@@ -95,7 +95,6 @@ Eine typische Lösung verwendet die folgenden Dienste:
 - Der Speech-Dienst wird zum Transkribieren von Sprache in Text verwendet. Um die Batch-Transkriptions-API zu nutzen, ist ein Standardabonnement (S0) für den Speech-Dienst erforderlich. Kostenlose Abonnements (F0) funktionieren nicht.
 - [Azure Storage](https://azure.microsoft.com/services/storage/) wird verwendet, um Telefoniedaten und die von der Batch-Transkriptions-API zurückgegebenen Transkripte zu speichern. Dieses Speicherkonto sollte Benachrichtigungen verwenden, insbesondere wenn neue Dateien hinzugefügt werden. Mit diesen Benachrichtigungen wird der Transkriptionsprozess ausgelöst.
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) wird verwendet, um den SAS-URI (Shared Access Signatures) für jede Aufzeichnung zu erstellen und die HTTP POST-Anforderung zum Starten einer Transkription auszulösen. Darüber hinaus werden mit Azure Functions Anforderungen zum Abrufen und Löschen von Transkriptionen mit der Batch-Transkriptions-API erstellt.
-- [WebHooks](webhooks.md) werden verwendet, um nach Abschluss von Transkriptionen entsprechende Benachrichtigungen zu erhalten.
 
 Die oben genannten Technologien werden von uns intern zur Unterstützung von Microsoft-Kundenanrufen im Batchmodus verwendet.
 ![Batch-Architektur](media/scenarios/call-center-batch-pipeline.png)
