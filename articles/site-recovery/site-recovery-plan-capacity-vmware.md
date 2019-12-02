@@ -1,5 +1,5 @@
 ---
-title: Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
+title: Planen der Kapazität für die VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Dieser Artikel kann Ihnen helfen, die Kapazität und Skalierung zu planen, wenn Sie die Notfallwiederherstellung von VMware-VMs für Azure mithilfe von Azure Site Recovery einrichten.
 author: nsoneji
 manager: garavd
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 0bf1b34295d827124198206e743bc21d5f7eb904
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 467c70a722b8a243be6ac2826188a4ba3459aa06
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747903"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961357"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Planen der Kapazität und Skalierung der VMware-Notfallwiederherstellung für Azure
 
@@ -40,7 +40,7 @@ CPU | Arbeitsspeicher | Größe des Cachedatenträgers | Datenänderungsrate | G
 --- | --- | --- | --- | ---
 8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | Wird verwendet, um weniger als 100 Computer zu replizieren.
 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB bis 1 TB | Wird verwendet, um 100 bis 150 Computer zu replizieren.
-16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 GB | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 200 Computer zu replizieren.
+16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 GB | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 200 Computer zu replizieren.
 Bereitstellen eines weiteren Konfigurationsservers mit einer [OVF-Vorlage](vmware-azure-deploy-configuration-server.md#deploy-a-configuration-server-through-an-ova-template). | | | | Stellen Sie einen neuen Konfigurationsserver bereit, wenn Sie mehr als 200 Computer replizieren.
 Bereitstellen eines weiteren [Prozessservers](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Stellen Sie einen neuen Prozessserver für die horizontale Skalierung bereit, wenn die gesamte tägliche Datenänderungsrate 2 TB überschreitet.
 
@@ -65,8 +65,8 @@ Die folgende Tabelle beschreibt dieses Szenario:
 Zusätzlicher Prozessserver | Größe des Cachedatenträgers | Datenänderungsrate | Geschützte Computer
 --- | --- | --- | ---
 4 vCPUs (2 Sockets mit jeweils 2 Kernen mit\@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Wird verwendet, um maximal 85 Computer zu replizieren.
-8 vCPUs (2 Sockets mit jeweils 4 Kernen mit 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB | Wird verwendet, um 86 bis 150 Computer zu replizieren.
-12 vCPUs (2 Sockets mit jeweils 6 Kernen mit 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 225 Computer zu replizieren.
+8 vCPUs (2 Sockets mit jeweils 4 Kernen mit\@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB | Wird verwendet, um 86 bis 150 Computer zu replizieren.
+12 vCPUs (2 Sockets mit jeweils 6 Kernen mit\@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | Mehr als 1 TB bis 2 TB | Wird verwendet, um 151 bis 225 Computer zu replizieren.
 
 Wie Sie Ihre Server skalieren, hängt davon ab, ob Sie das zentrale Hochskalieren oder das horizontale Hochskalieren als Modell bevorzugen. Zum zentralen Hochskalieren stellen Sie einige High-End-Konfigurationsserver und Prozessserver bereit. Zum horizontalen Hochskalieren stellen Sie weitere Server mit weniger Ressourcen bereit. Wenn Sie beispielsweise 200 Computer mit einer täglichen Datenänderungsrate von insgesamt 1,5 TB schützen möchten, können Sie eine der folgenden Maßnahmen ergreifen:
 
