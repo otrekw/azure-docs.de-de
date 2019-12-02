@@ -1,5 +1,5 @@
 ---
-title: Erneutes Schützen von VMs aus Azure in einem lokalen Standort während der Notfallwiederherstellung von VMware-VMs und physischen Servern | Microsoft-Dokumentation
+title: Erneutes Schützen von VMware-VMs bzw. physischen Servern an einem lokalen Standort mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie nach dem Failover auf Azure während der Notfallwiederherstellung von VMware-VMs und physischen Servern ein Failback von Azure auf den lokalen Standort ausführen.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: mayg
-ms.openlocfilehash: cf1ccdf953781ca9b9bd17152f2cf32677997d12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f3d5f38d940b99c6a74d784f174c91d4127353dc
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791800"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961346"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure
 

@@ -1,18 +1,17 @@
 ---
-title: Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Dieser Artikel bietet eine Übersicht über die Notfallwiederherstellung von virtuellen VMware-Computern mit dem Dienst Azure Site Recovery.
-author: raynew
+author: rayne-wiselman
 ms.service: site-recovery
-services: site-recovery
 ms.topic: conceptual
-ms.date: 9/09/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: dca8174caabf4799c338d780a78ba58f1af5a2f1
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 589dda80d68fba73a729da4b6e59270cc09c18cb
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814308"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954392"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
 

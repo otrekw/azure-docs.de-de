@@ -1,5 +1,5 @@
 ---
-title: Hochladen einer generalisierten VHD zum Erstellen mehrerer virtueller Computer in Azure | Microsoft-Dokumentation
+title: Hochladen einer generalisierten VHD zum Erstellen mehrerer virtueller Computer in Azure
 description: Laden Sie eine generalisierte virtuelle Festplatte (VHD) in ein Azure Storage-Konto hoch, um einen virtuellen Windows-Computer für die Verwendung mit dem Resource Manager-Bereitstellungsmodell zu erstellen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24ed7b75dfa8cb09c530a3f4a896aa9ff9aa92b5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 933b648f15418c4838d3da1ea8379267765c784b
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73749178"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073324"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM
 

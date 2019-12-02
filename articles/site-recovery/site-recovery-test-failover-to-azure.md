@@ -1,20 +1,20 @@
 ---
-title: Durchführen eines Notfallwiederherstellungsverfahrens in Azure mithilfe von Azure Site Recovery
-description: Erfahren Sie, wie Sie mit dem Azure Site Recovery-Dienst eine Übung zur Notfallwiederherstellung von der lokalen Umgebung in Azure durchführen.
+title: Ausführen eines Testfailovers (Notfallwiederherstellungsübung) zu Azure mit Azure Site Recovery
+description: Erfahren Sie, wie Sie ein Testfailover (lokal zu Azure) mit dem Azure Site Recovery-Dienst durchführen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 8342f60d8a0f91cc4807d25307510c1cbe7ee5c8
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 26c734b7a2e9f5592ee6d51dfee4650a3998ab1a
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814373"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091739"
 ---
-# <a name="run-a-disaster-recovery-drill-to-azure"></a>Durchführen eines Notfallwiederherstellungsverfahrens in Azure 
+# <a name="run-a-test-failover-disaster-recovery-drill-to-azure"></a>Ausführen eines Testfailovers (Notfallwiederherstellungsübung) zu Azure 
 
 
 Dieser Artikel beschreibt die Ausführung einer Übung zur Notfallwiederherstellung in Azure mithilfe eines Site Recovery-Testfailovers.  

@@ -1,18 +1,18 @@
 ---
-title: Registrierungsübergreifende Authentifizierung in einer Azure Container Registry-Aufgabe
-description: Aktivieren Sie eine verwaltete Identität für Azure-Ressourcen in einer ACR-Aufgabe (Azure Container Registry), damit die Aufgabe auf eine andere private Containerregistrierung zugreifen kann.
+title: Registrierungsübergreifende Authentifizierung über eine Azure Container Registry-Aufgabe
+description: Konfigurieren einer ACR-Aufgabe (Azure Container Registry) für den Zugriff auf eine andere private Azure Container Registry mithilfe einer verwalteten Identität für Azure-Ressourcen
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: danlep
-ms.openlocfilehash: 07fa7f3df5274ae88c93deac75093ead3f32f036
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: f2ffb42ce109f5e6f7186461f931b7f8da57ff32
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509095"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931514"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Registrierungsübergreifende Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 

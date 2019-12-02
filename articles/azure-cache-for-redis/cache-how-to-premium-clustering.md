@@ -1,25 +1,17 @@
 ---
-title: Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif | Microsoft-Dokumentation
+title: Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif
 description: Hier erfahren Sie, wie Sie das Redis-Clustering für Azure Cache for Redis-Instanzen im Premium-Tarif erstellen und verwalten.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: a919ccd2a23acf6e1bd04cda8a5dd18782ff31b0
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315976"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122163"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurieren des Redis-Clusterings für Azure Cache for Redis-Instanzen im Premium-Tarif
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. In diesem Artikel erfahren Sie, wie Sie das Clustering in einer Azure Cache for Redis-Instanz im Premium-Tarif konfigurieren.
@@ -124,9 +116,9 @@ Beispielcode zum Arbeiten mit Clustering und Suchen von Schlüsseln im gleichen 
 Die maximale Größe bei Premium-Cache beträgt 120 GB. Sie können bis zu 10 Shards mit einer maximalen Größe von 1,2 TB erstellen. Wenn Sie eine höhere Cachegröße benötigen, können Sie sie [anfordern](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). Weitere Informationen finden Sie unter [Azure Cache for Redis – Preise](https://azure.microsoft.com/pricing/details/cache/).
 
 ### <a name="do-all-redis-clients-support-clustering"></a>Wird das Clustering auf allen Redis-Clients unterstützt?
-Zum gegenwärtigen Zeitpunkt unterstützen nicht alle Clients das Redis-Clustering. StackExchange.Redis ist einer der Clients, der das Clustering unterstützt. Weitere Informationen zu anderen Clients finden Sie im [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial) im Abschnitt [Playing with the cluster (Arbeiten mit dem Cluster)](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster). 
+Nicht alle Clients unterstützen Redis-Clustering! Sehen Sie bitte in der Dokumentation der Bibliothek, die Sie verwenden, nach, um zu überprüfen, ob Sie eine Bibliothek und Version verwenden, die Clustering unterstützen. „StackExchange.Redis“" ist eine Bibliothek, die in ihren neueren Versionen Clustering unterstützt. Weitere Informationen zu anderen Clients finden Sie im [Redis Cluster Tutorial](https://redis.io/topics/cluster-tutorial) im Abschnitt [Playing with the cluster (Arbeiten mit dem Cluster)](https://redis.io/topics/cluster-tutorial#playing-with-the-cluster). 
 
-Das Redis-Clusteringprotokoll erfordert, dass jeder Client eine Verbindung mit jedem Shard direkt im Clustermodus herstellen muss. Der Versuch, einen Client verwenden, der kein Clustering unterstützt, führt wahrscheinlich zu einer großen Anzahl von [Ausnahmen des Typs MOVED aufgrund von Umleitungen](https://redis.io/topics/cluster-spec#moved-redirection).
+Das Redis-Clusteringprotokoll erfordert, dass jeder Client eine Verbindung mit jedem Shard direkt im Clustermodus herstellen muss, und definiert ferner neue Fehlerantworten wie „MOVED“ und „CROSSSLOTS“. Der Versuch, einen Client, der kein Clustering unterstützt, mit einem Cache im Clustermodus zu verwenden kann zu zahlreichen [MOVED-Umleitungsausnahmen](https://redis.io/topics/cluster-spec#moved-redirection) führen oder einfach Ihre Anwendung beschädigen, wenn Sie slotübergreifende Anforderungen mit mehreren Schlüsseln ausführen.
 
 > [!NOTE]
 > Wenn Sie StackExchange.Redis als Client verwenden, müssen Sie sicherstellen, dass Sie die neueste Version [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 oder höher verwenden, damit das Clustering ordnungsgemäß ausgeführt wird. Wenn Sie Probleme mit MOVE-Ausnahmen haben, finden Sie unter [MOVE-Ausnahmen](#move-exceptions) weitere Informationen.
@@ -150,7 +142,10 @@ Ohne SSL verwenden Sie die folgenden Befehle.
 Ersetzen Sie für SSL `1300N` durch `1500N`.
 
 ### <a name="can-i-configure-clustering-for-a-previously-created-cache"></a>Kann ich das Clustering für einen bereits erstellten Cache konfigurieren?
-Zurzeit können Sie das Clustering lediglich während der Erstellung eines Caches aktivieren. Sie können nach dem Erstellen des Caches die Clustergröße ändern, jedoch einem Premium-Cache kein Clustering hinzufügen oder das Clustering von einem Premium-Cache entfernen, nachdem der Cache erstellt wurde. Ein Premium-Cache mit aktivierter Clusterunterstützung und nur einem Shard unterscheidet sich von einem Premium-Cache der gleichen Größe ohne Clustering.
+Ja. Stellen Sie zunächst sicher, dass Ihr Cache Premium ist, und wenn nicht, erzielen Sie dies durch Skalierung. Als Nächstes sollten Sie in der Lage sein, die Clusterkonfigurationsoptionen anzuzeigen, einschließlich einer Option zum Aktivieren von Clustern. Sie können die Clustergröße ändern, nachdem der Cache erstellt wurde, oder nachdem Sie das Clustering zum ersten Mal aktiviert haben.
+
+   >[!IMPORTANT]
+   >Die Aktivierung des Clusterings lässt sich nicht rückgängig machen. Und ein Cache mit aktivierter Clusterunterstützung und nur einem Shard verhält sich *anders* als ein Cache derselben Größe *ohne* Clustering.
 
 ### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache"></a>Kann ich das Clustering für einen Basic- oder Standard-Cache konfigurieren?
 Clustering ist nur für Premium-Caches verfügbar.

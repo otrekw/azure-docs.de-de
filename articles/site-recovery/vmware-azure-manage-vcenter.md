@@ -1,17 +1,17 @@
 ---
-title: Verwalten von VMware vCenter-Servern für die Notfallwiederherstellung von VMware-VMs mithilfe von Azure Site Recovery | Microsoft-Dokumentation
+title: Verwalten von VMware vCenter Server in Azure Site Recovery
 description: Dieser Artikel beschreibt, wie Sie VMware vCenter für die Notfallwiederherstellung von VMware-VMs in Azure mit Azure Site Recovery hinzufügen und verwalten.
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 59088d8351bf89c859312774e3e9e396be8dd532
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 8f339103f67f37d10999ef43fa57a6eb27b60f37
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904249"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083981"
 ---
 # <a name="manage-vmware-vcenter-server"></a>Verwalten von VMware vCenter-Servern
 

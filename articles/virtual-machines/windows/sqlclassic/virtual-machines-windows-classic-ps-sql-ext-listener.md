@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren eines externen Listeners für Always On-Verfügbarkeitsgruppen | Microsoft Docs
+title: Konfigurieren eines externen Listeners für Verfügbarkeitsgruppen
 description: Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines AlwaysOn-Verfügbarkeitsgruppenlisteners in Azure, der über die öffentliche virtuelle IP-Adresse des zugeordneten Clouddiensts extern zugänglich ist.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 78881830d4e558daaad6e1929b30287e2731fb1b
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100415"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032717"
 ---
-# <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Konfigurieren eines externen Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure
+# <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurieren eines externen Listeners für Verfügbarkeitsgruppen auf Azure SQL Server-VMs
 > [!div class="op_single_selector"]
 > * [Interner Listener](../classic/ps-sql-int-listener.md)
 > * [Externer Listener](../classic/ps-sql-ext-listener.md)

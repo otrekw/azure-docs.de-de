@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 11/04/2019
-ms.openlocfilehash: 2206afc45c7ea35c41f51839b66dca33982939ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d44fb94978c450808c8a1c0852d4c771a100857e
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489800"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961719"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>Verwalten und Anfordern von Kontingenten für Azure-Ressourcen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -92,7 +92,7 @@ Es gibt auch ein Limit für die Anzahl der Containerinstanzen, die Sie in einem 
 Eine detailliertere und aktuelle Liste der Kontingentgrenzen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits#container-instances-limits) zu Azure-weiten Kontingenten.
 
 ### <a name="storage"></a>Storage
-Es gibt eine Beschränkung für die Anzahl von Speicherkonten pro Region sowie in einem bestimmten Abonnement. Das Standardlimit beträgt 200 und umfasst sowohl Storage Standard- als auch Storage Premium-Konten. Wenn Sie mehr als 200 Speicherkonten in einer bestimmten Region benötigen, senden Sie eine Anfrage an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten für eine Region genehmigen.
+Es gibt eine Beschränkung für die Anzahl von Speicherkonten pro Region sowie in einem bestimmten Abonnement. Das Standardlimit beträgt 250 und umfasst sowohl Storage Standard- als auch Storage Premium-Konten. Wenn Sie mehr als 250 Speicherkonten in einer bestimmten Region benötigen, senden Sie eine Anfrage an den [Azure-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/). Das Azure Storage-Team überprüft Ihr Geschäftsszenario und kann bis zu 250 Speicherkonten für eine Region genehmigen.
 
 
 ## <a name="workspace-level-quota"></a>Kontingent auf Arbeitsbereichsebene

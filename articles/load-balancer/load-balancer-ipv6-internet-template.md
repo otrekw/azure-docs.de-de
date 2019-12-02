@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 – Azure-Vorlage
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und virtuelle Computer mit Lastenausgleich bereitstellen.
+titleSuffix: Azure Load Balancer
+description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und virtuelle Computer mit Lastenausgleich mithilfe einer Azure-Vorlage bereitstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 4286879dc53cc835532c7a8243eaf88813545265
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f92011a6955398ef85e44fae1ce8f782cc9cc12c
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274995"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076000"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>Bereitstellen einer Load Balancer-Lösung mit Internetzugriff über IPv6 mithilfe einer Vorlage
 
@@ -29,6 +29,8 @@ ms.locfileid: "68274995"
 > * [Vorlage](load-balancer-ipv6-internet-template.md)
 
 
+>[!HINWEIS: Änderung der bewährten Methoden für IPv6] Dieser Artikel beschreibt eine Einführungsfunktion von IPv6, um Load Balancers im Tarif „Basic“ sowohl IPv4- als auch IPv6-Konnektivität bereitzustellen.  Umfassendere IPv6-Konnektivität ist jetzt verfügbar mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md), das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wesentliche Funktionen umfasst wie IPv6-Netzwerk-Sicherheitsgruppenregeln, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich im Tarif „Standard“ und „Basic“ und mehr.  IPv6 für Azure VNETs ist die empfohlene bewährte Methode für IPv6-Anwendungen in Azure. 
+>Weitere Informationen finden Sie unter [IPv6 für Azure VNET Vorlagenbereitstellung](../virtual-network/ipv6-configure-standard-load-balancer-template-json.md).
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für Hochverfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 

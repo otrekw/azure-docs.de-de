@@ -1,18 +1,18 @@
 ---
-title: Informationen zur Netzwerkzuordnung für die Notfallwiederherstellung von Hyper-V-VMs (mit VMM) in Azure mit Azure Site Recovery
+title: Informationen zur Hyper-V-Netzwerkzuordnung (mit VMM) mit Site Recovery
 description: Dieser Artikel beschreibt, wie Sie mithilfe von Azure Site Recovery die Netzwerkzuordnung für die Notfallwiederherstellung von (in VMM-Clouds verwalteten) Hyper-V-VMs in Azure einrichten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813673"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082558"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Notfallwiederherstellung für Hyper-V-VMs in Azure
 

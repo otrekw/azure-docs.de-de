@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von dedizierten Azure-Hosts über das Azure-Portal | Microsoft-Dokumentation
+title: Bereitstellen von dedizierten Azure-Hosts über das Azure-Portal
 description: Stellen Sie VMs auf dedizierten Hosts über das Azure-Portal bereit.
 services: virtual-machines-linux
 author: cynthn
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 07/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 03d8b5353a2dc9840c8231978243e7f94a5bff56
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 296c43c7c1345c67cc5b83749272e56c122ee535
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68700166"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74036427"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-portal"></a>Vorschau: Bereitstellen von VMs auf dedizierten Hosts über das Portal
 

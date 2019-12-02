@@ -4,18 +4,18 @@ ms.service: dns
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: victorh
-ms.openlocfilehash: f7fa018225d82e2db4a3c51b333aea6fcb9a1514
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 261ae22348cd82b129727261c619727917e19c96
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178721"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832053"
 ---
 ### <a name="record-names"></a>Eintragsnamen
 
-Einträge in Azure DNS werden mit relativen Namen angegeben. Ein *vollqualifizierter* Domänenname (fully qualified domain name, FQDN) beinhaltet den Zonennamen, ein *relativer* Name hingegen nicht. Der relative Eintragsname „www“ in der Zone „contoso.com“ gibt beispielsweise den vollqualifizierten Eintragsnamen „www.contoso.com“ an.
+Einträge in Azure DNS werden mit relativen Namen angegeben. Ein *vollqualifizierter* Domänenname (fully qualified domain name, FQDN) beinhaltet den Zonennamen, ein *relativer* Name hingegen nicht. Der relative Eintragsname `www` in der Zone `contoso.com` gibt beispielsweise den vollqualifizierten Eintragsnamen `www.contoso.com` an.
 
-Ein Eintrag an der *Zonenspitze* ist ein DNS-Eintrag im Stamm (oder der *Spitze*) einer DNS-Zone. Beispiel: Ein Eintrag an der Zonenspitze der DNS-Zone „contoso.com“ besitzt auch den vollqualifizierten Namen „contoso.com“ (dies wird mitunter als *reine* Domäne bezeichnet).  Gemäß der Konvention wird der relative Name “\@“ verwendet, um Einträge an der Zonenspitze darzustellen.
+Ein Eintrag an der *Zonenspitze* ist ein DNS-Eintrag im Stamm (oder der *Spitze*) einer DNS-Zone. Beispiel: Ein Eintrag an der Zonenspitze der DNS-Zone `contoso.com` besitzt auch den vollqualifizierten Namen `contoso.com` (dies wird mitunter als *reine* Domäne bezeichnet).  Gemäß der Konvention wird der relative Name “\@“ verwendet, um Einträge an der Zonenspitze darzustellen.
 
 ### <a name="record-types"></a>Eintragstypen
 

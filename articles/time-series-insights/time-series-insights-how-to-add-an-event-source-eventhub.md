@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Event Hubs-Ereignisquelle zu Azure Time Series Insights | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzugefügt wird, die mit Azure Event Hubs in Ihrer Time Series Insights-Umgebung verbunden ist.
+title: Hinzufügen einer Event Hubs-Ereignisquelle – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Ihrer Time Series Insights-Umgebung Azure Event Hubs-Ereignisquelle hinzufügen.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3adf8b71d264b01f13f5aac7002b7ec455a31d60
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 421a4635a80c5a7a45fb14bf900c205a06789279
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990084"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012619"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 

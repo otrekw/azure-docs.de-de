@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 2177ba8b3864e8d453a097b391a18ebbbb5baa11
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499919"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084724"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -36,7 +36,7 @@ Zum Absichern des Zugriffs auf diesen Triggertyp gibt es folgende Möglichkeiten
 
 * [Generieren von Shared Access Signatures](#sas)
 * [Einschränken eingehender IP-Adressen](#restrict-inbound-ip-addresses)
-* [Hinzufügen von Azure Active Directory, OAuth oder anderen Sicherheitsfeatures](#add-authentication)
+* [Hinzufügen von Azure Active Directory OAuth oder anderen Sicherheitsfeatures](#add-authentication)
 
 <a name="sas"></a>
 
@@ -163,9 +163,9 @@ Wenn Sie die [Bereitstellung von Logik-Apps mithilfe einer Resource Manager-Vorl
 
 <a name="add-authentication"></a>
 
-### <a name="add-azure-active-directory-oauth-or-other-security"></a>Hinzufügen von Azure Active Directory, OAuth oder anderen Sicherheitsfeatures
+### <a name="add-azure-active-directory-oauth-or-other-security"></a>Hinzufügen von Azure Active Directory OAuth oder anderen Sicherheitsfeatures
 
-Um Ihrer Logik-App weitere Autorisierungsprotokolle hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Sie können dann Azure Active Directory, OAuth, ein Zertifikat oder andere Sicherheitsstandards verwenden, um den Zugriff auf diesen Endpunkt zu autorisieren. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App auslösen kann, können Sie die Einstellungen für den eingehenden IP-Bereich Ihrer Logik-App anpassen.
+Um Ihrer Logik-App weitere Autorisierungsprotokolle hinzuzufügen, können Sie den Dienst [Azure API Management](../api-management/api-management-key-concepts.md) verwenden. Dieser Dienst hilft Ihnen, Ihre Logik-App als API verfügbar zu machen. Er bietet außerdem umfassende Überwachung, Sicherheit, Richtlinien und Dokumentation für alle Endpunkte. Mit API Management können Sie einen öffentlichen oder privaten Endpunkt für die Logik-App verfügbar machen. Um den Zugriff auf diesen Endpunkt zu autorisieren, können Sie [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication), [Clientzertifikate](#client-certificate-authentication) oder andere Sicherheitsstandards verwenden. Wenn API Management eine Anforderung empfängt, sendet der Dienst die Anforderung an Ihre Logik-App und setzt dazu alle erforderlichen Transformationen oder Einschränkungen um. Damit nur API Management Ihre Logik-App auslösen kann, können Sie die Einstellungen für den eingehenden IP-Bereich Ihrer Logik-App anpassen.
 
 <a name="secure-operations"></a>
 
@@ -361,7 +361,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
 Wenn Sie Bereitstellungen in verschiedenen Umgebungen durchführen, sollten Sie die Werte in Ihrer Workflowdefinition parametrisieren, die je nach Umgebung variieren. Auf diese Weise können Sie hartcodierte Daten vermeiden, indem Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) verwenden, um Ihre Logikanwendung bereitzustellen, sensible Daten durch die Definition abgesicherter Parameter zu schützen und diese Daten als separate Eingaben durch die [Parameter der Vorlage](../azure-resource-manager/template-parameters.md) mithilfe einer [Parameterdatei](../azure-resource-manager/resource-manager-parameter-files.md) zu übergeben.
 
-Wenn Sie z. B. HTTP-Aktionen mit [Azure Active Directory](#azure-active-directory-oauth-authentication) authentifizieren, können Sie die Parameter definieren und absichern, die die Client-ID und das Clientgeheimnis akzeptieren, die für die Authentifizierung verwendet werden. Um diese Parameter für Ihre Logik-App zu definieren, verwenden Sie den Abschnitt `parameters` innerhalb der Workflowdefinition Ihrer Logik-App und eine Resource Manager-Vorlage zur Bereitstellung. Um die Parameterwerte auszublenden, die beim Bearbeiten der Logik-App oder beim Anzeigen des Ausführungsverlaufs nicht angezeigt werden sollen, können Sie Parameter des Typs `securestring` oder `secureobject` definieren und bei Bedarf codieren. Parameter dieses Typs werden nicht mit der Ressourcendefinition zurückgegeben und sind beim Anzeigen der Ressource nach der Bereitstellung nicht zugänglich. Um zur Laufzeit auf diese Parameterwerte zuzugreifen, verwenden Sie den Ausdruck `@parameters('<parameter-name>')` in Ihrer Workflowdefinition. Dieser Ausdruck wird nur zur Laufzeit ausgewertet und durch die [Workflowdefinitionssprache](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben.
+Wenn Sie z. B. HTTP-Aktionen mit [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication) authentifizieren, können Sie die Parameter definieren und absichern, die die Client-ID und das Clientgeheimnis akzeptieren, die für die Authentifizierung verwendet werden. Um diese Parameter für Ihre Logik-App zu definieren, verwenden Sie den Abschnitt `parameters` innerhalb der Workflowdefinition Ihrer Logik-App und eine Resource Manager-Vorlage zur Bereitstellung. Um die Parameterwerte auszublenden, die beim Bearbeiten der Logik-App oder beim Anzeigen des Ausführungsverlaufs nicht angezeigt werden sollen, können Sie Parameter des Typs `securestring` oder `secureobject` definieren und bei Bedarf codieren. Parameter dieses Typs werden nicht mit der Ressourcendefinition zurückgegeben und sind beim Anzeigen der Ressource nach der Bereitstellung nicht zugänglich. Um zur Laufzeit auf diese Parameterwerte zuzugreifen, verwenden Sie den Ausdruck `@parameters('<parameter-name>')` in Ihrer Workflowdefinition. Dieser Ausdruck wird nur zur Laufzeit ausgewertet und durch die [Workflowdefinitionssprache](../logic-apps/logic-apps-workflow-definition-language.md) beschrieben.
 
 > [!NOTE]
 > Wenn Sie einen Parameter im Anforderungsheader oder -text verwenden, kann dieser Parameter sichtbar sein, wenn Sie den Ausführungsverlauf Ihrer Logik-App und die ausgehende HTTP-Anforderung anzeigen. Achten Sie darauf, Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festzulegen. Sie können auch [Obfuskation](#obfuscate) verwenden, um Ein- und Ausgaben im Ausführungsverlauf auszublenden. Autorisierungsheader sind nie über Eingaben oder Ausgaben sichtbar. Wenn hier ein Geheimnis verwendet wird, ist dieses daher nicht abrufbar.
@@ -573,7 +573,17 @@ Hier sind einige Möglichkeiten, wie Sie Endpunkte schützen können, die Anrufe
 
 * Fügen Sie für ausgehende Anforderungen eine Authentifizierung hinzu.
 
-  Wenn Sie mit einem HTTP-basierten Trigger oder einer Aktion arbeiten, die ausgehende Aufrufe auslöst, wie z. B. HTTP, HTTP + Swagger oder Webhook, können Sie der Anforderung, die von Ihrer Logik-App gesendet wird, eine Authentifizierung hinzufügen. Sie können beispielsweise die Standardauthentifizierung, die Clientzertifikatauthentifizierung, die [Active Directory OAuth](../active-directory/develop/about-microsoft-identity-platform.md)-Authentifizierung oder eine verwaltete Identität verwenden. Weitere Informationen finden Sie weiter unten in diesem Thema unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](#add-authentication-outbound).
+  Wenn Sie mit einem HTTP-basierten Trigger oder einer Aktion arbeiten, die ausgehende Aufrufe auslöst, wie z. B. HTTP, HTTP + Swagger oder Webhook, können Sie der Anforderung, die von Ihrer Logik-App gesendet wird, eine Authentifizierung hinzufügen. Beispielsweise können Sie diese Authentifizierungstypen verwenden:
+
+  * [Standardauthentifizierung](#basic-authentication)
+
+  * [Clientzertifikatsauthentifizierung](#client-certificate-authentication)
+
+  * [Active Directory OAuth-Authentifizierung](#azure-active-directory-oauth-authentication)
+
+  * [Authentifizierung der verwalteten Identität](#managed-identity-authentication)
+  
+  Weitere Informationen finden Sie weiter unten in diesem Thema unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](#add-authentication-outbound).
 
 * Schränken Sie den Zugriff von IP-Adressen von Logik-Apps ein.
 
@@ -649,8 +659,8 @@ Wenn die Option [Clientzertifikat](../active-directory/authentication/active-dir
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Value | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der für Secure Sockets Layer (SSL)-Clientzertifikate zu verwendende Authentifizierungstyp. Obwohl selbstsignierte Zertifikate unterstützt werden, gilt dies nicht für selbstsignierte Zertifikate für SSL. |
-| **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) |
-| **Kennwort** | `password`| Ja | <*password-for-pfx-file*> | Der Parameter für den Zugriff auf die PFX-Datei |
+| **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **Kennwort** | `password`| Siehe Beschreibung. | <*password-for-pfx-file*> | Das Kennwort für den Zugriff auf die PFX-Datei. <p><p>**Hinweis**: Dieser Eigenschaftswert ist erforderlich, wenn Sie im Logik-App-Designer arbeiten, und ist *nicht* erforderlich, wenn Sie in der Codeansicht arbeiten. |
 |||||
 
 Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertrauliche Informationen zu verarbeiten und zu schützen, z. B. in einer [Azure Resource Manager-Vorlage zur Automatisierung der Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie zur Laufzeit mit Ausdrücken auf diese Parameterwerte zugreifen. In dieser Beispieldefinition einer HTTP-Aktion werden der `type` der Authentifizierung als `ClientCertificate` angegeben und die Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) verwendet, um die Parameterwerte abzurufen:

@@ -1,5 +1,5 @@
 ---
-title: Chef-Erweiterung für Azure-VMs | Microsoft-Dokumentation
+title: Chef-Erweiterung für Azure-VMs
 description: Stellen Sie den Chef-Client auf einem virtuellen Computer mithilfe der Chef-VM-Erweiterung bereit.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169144"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073202"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef-VM-Erweiterung für Linux und Windows
 

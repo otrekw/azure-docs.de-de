@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9c14afb22d95493deaf3552cb8c7392c3fc5a679
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a993c71e362a61b6861e001dfb5d6eca24873293
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934019"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903275"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Hinzufügen oder Entfernen von Zertifikaten für einen Service Fabric-Cluster in Azure
 Es wird empfohlen, dass Sie sich damit vertraut machen, wie Service Fabric X.509-Zertifikate verwendet werden, und dass Sie sich mit den [Szenarien für die Clustersicherheit](service-fabric-cluster-security.md) auskennen. Sie müssen verstehen, was ein Clusterzertifikat ist, und wofür es verwendet wird, bevor Sie den Vorgang fortsetzen.
 
-Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung eines definierten Zertifikats mit einem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNewer“ in Ihrer Fabric.Code-Konfiguration auf FALSE.
+Das standardmäßige Zertifikatladeverhalten des Azure Service Fabric SDK besteht in der Bereitstellung und Verwendung des definierten Zertifikats mit dem Ablaufdatum, das am weitesten in der Zukunft liegt, und zwar unabhängig von der primären oder sekundären Konfigurationsdefinition. Das Zurückfallen auf das klassische Verhalten ist eine nicht empfohlene erweiterte Aktion und erfordert das Festlegen des Parameters „UseSecondaryIfNewer“ in Ihrer `Fabric.Code`-Konfiguration auf FALSE.
 
 Service Fabric ermöglicht es Ihnen, zusätzlich zu den Clientzertifikaten zwei Clusterzertifikate anzugeben – ein primäres und ein sekundäres –, wenn Sie die Zertifikatsicherheit während der Erstellung des Clusters konfigurieren. Ausführliche Informationen zur Einrichtung während der Erstellung finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md) oder [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Wenn Sie während der Erstellung nur ein Clusterzertifikat angeben, wird es als primäres Zertifikat verwendet. Nach der Erstellung des Clusters können Sie ein neues Zertifikat als sekundäres hinzufügen.
 
@@ -287,6 +287,10 @@ Sie können eine beliebige Zahl von Clientzertifikaten angeben. Jedes Hinzufüge
 ### <a name="deletion-of-client-certificates---admin-or-read-only-using-the-portal"></a>Löschen von Clientzertifikaten – „Administrator“ oder „Schreibgeschützt“ über das Portal
 
 Zum Entfernen eines sekundären Zertifikats aus der Verwendung für die Clustersicherheit navigieren Sie zum Abschnitt „Sicherheit“ und wählen im Kontextmenü für das spezifische Zertifikat die Option „Löschen“.
+
+## <a name="adding-application-certificates-to-a-virtual-machine-scale-set"></a>Hinzufügen von Anwendungszertifikaten zu einer VM-Skalierungsgruppe
+
+Informationen zum Bereitstellen eines Zertifikats, das Sie für Ihre Anwendungen verwenden, auf Ihrem Cluster, finden Sie in [diesem PowerShell-Beispielskript](scripts/service-fabric-powershell-add-application-certificate.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Lesen Sie die folgenden Artikel, um weitere Informationen zur Clusterverwaltung zu enthalten:

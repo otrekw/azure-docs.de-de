@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fb9f986c2711e0cbc8ac3facd073f1a72f46043d
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66167286"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039131"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
@@ -100,11 +100,13 @@ Sie können diese Aufgabe über den Azure Ressource Manager mit PowerShell ausf�
 
 1. `Add-AzAccount`
 
-2. `$SecurePassword = Read-Host -AsSecureString` (Kennwort eingeben und EINGABETASTE drücken)
+1. `$SecurePassword = Read-Host -AsSecureString`
 
-3. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+1. Geben Sie ein Kennwort ein, und drücken Sie die EINGABETASTE.
 
-4. Achten Sie darauf, dass Sie die **Mandanten-ID** (GUID für Ihren Azure AD-Mandanten), die **Anwendungs-ID** und das von Ihnen verwendete Kennwort kopieren.
+1. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+
+1. Achten Sie darauf, dass Sie die **Mandanten-ID** (GUID für Ihren Azure AD-Mandanten), die **Anwendungs-ID** und das von Ihnen verwendete Kennwort kopieren.
 
 Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
@@ -161,19 +163,21 @@ Sie können auch die Schritte in Teil 1 ausführen. Dann sollten Sie jedoch sich
 Sobald Sie über die Client-ID und die Mandanten-ID verfügen, nehmen Sie diese IDs als untergeordnete Ressourcen Ihrer Web-App oder API-App in Ihre Bereitstellungsvorlage auf:
 
 ``` json
-"resources": [ {
-    "apiVersion": "2015-08-01",
-    "name": "web",
-    "type": "config",
-    "dependsOn": ["[concat('Microsoft.Web/sites/','parameters('webAppName'))]"],
-    "properties": {
-        "siteAuthEnabled": true,
-        "siteAuthSettings": {
-            "clientId": "{client-ID}",
-            "issuer": "https://sts.windows.net/{tenant-ID}/",
-        }
-    }
-} ]
+"resources": [ 
+   {
+      "apiVersion": "2015-08-01",
+      "name": "web",
+      "type": "config",
+      "dependsOn": ["[concat('Microsoft.Web/sites/','parameters('webAppName'))]"],
+      "properties": {
+         "siteAuthEnabled": true,
+         "siteAuthSettings": {
+            "clientId": "<client-ID>",
+            "issuer": "https://sts.windows.net/<tenant-ID>/"
+         }
+      }
+   } 
+]
 ```
 
 Für die automatische Bereitstellung einer leeren Web-App und einer Logik-App zusammen mit einer Azure Active Directory-Authentifizierung müssen Sie die [vollständige Vorlage hier anzeigen](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-custom-api/azuredeploy.json) oder hier auf **Bereitstellung in Azure** klicken:
@@ -184,12 +188,20 @@ Für die automatische Bereitstellung einer leeren Web-App und einer Logik-App zu
 
 In der obigen Vorlage ist der Abschnitt für die Autorisierung bereits eingerichtet, aber wenn Sie die Logik-App direkt erstellen, müssen Sie den gesamten Abschnitt für die Autorisierung aufnehmen.
 
-Öffnen Sie die Definition Ihrer Logik-App in der Codeansicht, wechseln Sie zum Abschnitt **HTTP-Aktion**, suchen Sie den Abschnitt **Autorisierung**, und fügen Sie folgende Zeile ein:
+Öffnen Sie die Definition Ihrer Logik-App in der Codeansicht, wechseln Sie zur Definition der **HTTP-Aktion**, suchen Sie den Abschnitt **Autorisierung**, und fügen Sie diese Eigenschaften ein:
 
-`{"tenant": "{tenant-ID}", "audience": "{client-ID-from-Part-2-web-app-or-API app}", "clientId": "{client-ID-from-Part-1-logic-app}", "secret": "{key-from-Part-1-logic-app}", "type": "ActiveDirectoryOAuth" }`
+```json
+{
+   "tenant": "<tenant-ID>",
+   "audience": "<client-ID-from-Part-2-web-app-or-API app>", 
+   "clientId": "<client-ID-from-Part-1-logic-app>",
+   "secret": "<key-from-Part-1-logic-app>", 
+   "type": "ActiveDirectoryOAuth"
+}
+```
 
-| Element | Erforderlich | BESCHREIBUNG | 
-| ------- | -------- | ----------- | 
+| Eigenschaft | Erforderlich | BESCHREIBUNG | 
+| -------- | -------- | ----------- | 
 | tenant | Ja | Die GUID für den Azure AD-Mandanten | 
 | audience | Ja | Die GUID für die Zielressource, auf die Sie zugreifen möchten. Dies ist die Client-ID der Anwendungsidentität für Ihre Web-App oder API-App | 
 | clientId | Ja | Die GUID für den Client, der darauf zugreifen möchte. Dies ist die Client-ID der Anwendungsidentität für Ihre Logik-App | 
@@ -202,10 +214,9 @@ Beispiel:
 ``` json
 {
    "actions": {
-      "some-action": {
-         "conditions": [],
+      "HTTP": {
          "inputs": {
-            "method": "post",
+            "method": "POST",
             "uri": "https://your-api-azurewebsites.net/api/your-method",
             "authentication": {
                "tenant": "tenant-ID",
@@ -214,7 +225,7 @@ Beispiel:
                "secret": "key-from-azure-ad-app-for-logic-app",
                "type": "ActiveDirectoryOAuth"
             }
-         },
+         }
       }
    }
 }
@@ -230,16 +241,22 @@ Beispiel:
 
 Sie können Clientzertifikate verwenden, um die eingehenden Anforderungen von Ihrer Logik-App für Ihre Web-App oder API-App zu überprüfen. Weitere Informationen zum Einrichten des Codes finden Sie unter [Konfigurieren der gegenseitigen TLS-Authentifizierung](../app-service/app-service-web-configure-tls-mutual-auth.md).
 
-Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein: 
+Schließen Sie im Abschnitt **Autorisierung** diese Eigenschaften ein:
 
-`{"type": "clientcertificate", "password": "password", "pfx": "long-pfx-key"}`
+```json
+{
+   "type": "ClientCertificate",
+   "password": "<password>",
+   "pfx": "<long-pfx-key>"
+} 
+```
 
-| Element | Erforderlich | BESCHREIBUNG | 
-| ------- | -------- | ----------- | 
-| type | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
-| password | Ja | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) | 
-| pfx | Ja | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) | 
-|||| 
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
+| -------- | -------- | ----------- |
+| `type` | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. |
+| `password` | Nein | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) |
+| `pfx` | Ja | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) |
+||||
 
 <a name="basic"></a>
 
@@ -247,12 +264,18 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
 Sie können die Standardauthentifizierung, z.B. einen Benutzernamen und ein Kennwort, verwenden, um eingehende Anforderungen von der Logik-App für Ihre Web-App oder API-App zu überprüfen. Die Standardauthentifizierung ist ein gängiges Muster, und Sie können diese Authentifizierung in jeder Sprache verwenden, mit der Ihre Web-App oder API-App erstellt wird.
 
-Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
+Schließen Sie im Abschnitt **Autorisierung** diese Eigenschaften ein:
 
-`{"type": "basic", "username": "username", "password": "password"}`.
+```json
+{
+   "type": "Basic",
+   "username": "<username>",
+   "password": "<password>"
+}
+```
 
-| Element | Erforderlich | BESCHREIBUNG | 
-| ------- | -------- | ----------- | 
+| Eigenschaft | Erforderlich | description | 
+| -------- | -------- | ----------- | 
 | type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
 | username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
 | password | Ja | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 

@@ -1,5 +1,5 @@
 ---
-title: Größen von virtuellen Azure Linux-Computern – Speicher | Microsoft-Dokumentation
+title: Größen von virtuellen Azure Linux-Computern – Speicher
 description: Auflistung der verschiedenen verfügbaren speicheroptimierten Größen für virtuelle Linux-Computer in Azure. Dieser Artikel listet Informationen zur Anzahl von vCPUs, Datenträgern und Netzwerkschnittstellenkarten sowie zum Speicherdurchsatz und zur Netzwerkbandbreite für Größen dieser Serie auf.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/15/2019
 ms.author: jonbeck
-ms.openlocfilehash: 7320acc3a00702b66800af5bfd9a240f4b146670
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 26fb9b285658b9bf3d3df67849e9ccd15b8b5f61
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100828"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74034844"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Speicheroptimierte VM-Größen
 

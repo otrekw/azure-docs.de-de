@@ -1,5 +1,5 @@
 ---
-title: Aktivieren der Replikation für einen Datenträger, der einer durch Azure Site Recovery replizierten Azure-VM hinzugefügt wird | Microsoft-Dokumentation
+title: Aktivieren der Replikation für einen hinzugefügten Azure-VM-Datenträger in Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie Sie die Replikation für einen Datenträger aktivieren, der einer Azure-VM hinzugefügt wird, bei der die Notfallwiederherstellung mit Azure Site Recovery aktiviert wurde.
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934542"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084987"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Aktivieren der Replikation für einen Datenträger, der einer Azure-VM hinzugefügt wird
 

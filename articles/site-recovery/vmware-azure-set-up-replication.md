@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren und Verwalten von Replikationsrichtlinien für die VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
+title: Einrichten von Replikationsrichtlinien für die VMware-Notfallwiederherstellung mit Azure Site Recovery | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Replikationseinstellungen für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery konfigurieren.
 author: sujayt
 manager: rochakm
@@ -7,14 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 019f9f2019619053f87a7923d656513a419d4675
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231444"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954323"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>Konfigurieren und Verwalten von Replikationsrichtlinien für die VMware-Notfallwiederherstellung in Azure
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>Konfigurieren und Verwalten von Replikationsrichtlinien für die VMware-Notfallwiederherstellung
+
 In diesem Artikel wird beschrieben, wie Sie mithilfe von [Azure Site Recovery](site-recovery-overview.md) eine Replikationsrichtlinie für die Replikation von VMware-VMs in Azure konfigurieren.
 
 ## <a name="create-a-policy"></a>Erstellen einer Richtlinie

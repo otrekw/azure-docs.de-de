@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: f733e29fc5fbce764fef9a713747d6793d2ebd43
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489320"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123549"
 ---
-# <a name="create-and-manage-reusable-environments-for-training-and-deployment-with-azure-machine-learning"></a>Erstellen und verwalten Sie wiederverwendbare Umgebungen für Trainings und Bereitstellungen mit Azure Machine Learning.
+# <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Wiederverwenden von Umgebungen für Training und Bereitstellung mit Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-[Umgebungen](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py) erstellen und verwalten, sodass Sie die Softwareabhängigkeiten ihrer Projekte nachverfolgen und reproduzieren können, wenn diese sich weiterentwickeln.
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 Sie können Umgebungen verwenden, wenn Sie Ihr Modell als Webdienst bereitstellen. Dies ermöglicht einen reproduzierbaren, verbundenen Workflow, in dem Sie Ihr Modell trainieren, testen und bereitstellen können, indem Sie genau dieselben Bibliotheken sowohl in ihrem Trainings- als auch im Rückschlusscompute verwenden.
 
-Zum Bereitstellen eines Webdiensts kombinieren Sie die Umgebung, das Rückschlusscompute, das Bewertungsskript und das registrierte Modell in Ihrem Bereitstellungs Objekt [deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). Weitere Informationen zum [Bereitstellen von Webdiensten](how-to-deploy-and-where.md).
+Zum Bereitstellen eines Webdiensts kombinieren Sie die Umgebung, das Rückschlusscompute, das Bewertungsskript und das registrierte Modell in Ihrem Bereitstellungs Objekt [deploy()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). Weitere Informationen zum [Bereitstellen von Webdiensten](how-to-deploy-and-where.md).
 
 Nehmen Sie in diesem Beispiel an, dass Sie einen Trainingslauf abgeschlossen haben und dieses Modell in einer Azure-Containerinstanz bereitstellen möchten. Beim Erstellen des Webdiensts werden die Modell- und Bewertungsdateien in das Image eingebunden, und der Azure Machine Learning-Rückschlussstapel wird dem Image hinzugefügt.
 

@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines öffentlichen Lastenausgleichs mit IPv6 – Azure-Befehlszeilenschnittstelle
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie einen öffentlichen Lastenausgleich mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle erstellen.
+titleSuffix: Azure Load Balancer
+description: Mit diesem Lernpfad beginnen Sie mit dem Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 0ee85a92753845e0e67fff22da894a048acb1b14
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: f7c0eb9bd258d2efbdb4df78f2cf86861f77a975
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274954"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076017"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle
 
+>[!HINWEIS: Änderung der bewährten Methoden für IPv6] Dieser Artikel beschreibt eine Einführungsfunktion von IPv6, um Load Balancers im Tarif „Basic“ sowohl IPv4- als auch IPv6-Konnektivität bereitzustellen.  Umfassendere IPv6-Konnektivität ist jetzt verfügbar mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md), das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wesentliche Funktionen umfasst wie IPv6-Netzwerk-Sicherheitsgruppenregeln, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich im Tarif „Standard“ und „Basic“ und mehr.  IPv6 für Azure VNETs ist die empfohlene bewährte Methode für IPv6-Anwendungen in Azure. 
+>Weitere Informationen finden Sie unter [IPv6 für Azure VNET CLI-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Lastenausgleichsmodule sorgen für Hochverfügbarkeit, indem sie eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer in einer Lastenausgleichsgruppe verteilen. Lastenausgleichsmodule können diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -296,8 +298,4 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
 
-## <a name="next-steps"></a>Nächste Schritte
 
-[Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-cli.md)  
-[Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)  
-[Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)

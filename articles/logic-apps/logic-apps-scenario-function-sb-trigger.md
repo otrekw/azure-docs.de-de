@@ -1,6 +1,6 @@
 ---
-title: Aufrufen oder Auslösen von Logik-Apps mit Azure Functions und Azure Service Bus
-description: Erstellen von Azure-Funktionen zum Aufrufen oder Auslösen von Logik-Apps mithilfe von Azure Service Bus
+title: Aufrufen von Logik-Apps mit Azure Functions – Azure Logic Apps
+description: Erstellen von Azure-Funktionen zum Aufrufen oder Auslösen von Logik-Apps durch Lauschen am Azure Service Bus
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,14 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
-ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
-ms.date: 06/04/2019
-ms.openlocfilehash: 3d4f642ae25a179ea2c3241240996da774cd8c23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/08/2019
+ms.openlocfilehash: c65a0464bbad6dbaca51dbc5bbc0d84adbd605d7
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494968"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904659"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Aufrufen oder Auslösen von Logik-Apps mithilfe von Azure Functions und Azure Service Bus
 
@@ -33,13 +32,13 @@ Sie können [Azure Functions](../azure-functions/functions-overview.md) verwende
 
 ## <a name="create-logic-app"></a>Erstellen einer Logik-App
 
-In diesem Szenario haben Sie eine Funktion, die jede Logik-App ausführt, die Sie auslösen möchten. Erstellen Sie zunächst eine Logik-App, die mit einem HTTP-Anforderungstrigger beginnt. Die Funktion ruft jedes Mal, wenn eine Warteschlangennachricht empfangen wird, einen Endpunkt auf.  
+In diesem Szenario haben Sie eine Funktion, die jede Logik-App ausführt, die Sie auslösen möchten. Erstellen Sie zunächst eine Logik-App, die mit einem HTTP-Anforderungstrigger beginnt. Die Funktion ruft jedes Mal, wenn eine Warteschlangennachricht empfangen wird, einen Endpunkt auf.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen Sie leere Logik-App.
 
    Falls Sie noch nicht mit Logik-Apps gearbeitet haben, lesen Sie zunächst das Dokument [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Geben Sie im Suchfeld den Begriff „HTTP-Anforderung“. Wählen Sie in der Triggerliste den folgenden Trigger aus: **Beim Empfang einer HTTP-Anforderung**
+1. Geben Sie im Suchfeld `http request`ein. Wählen Sie aus der Triggerliste diesen Trigger aus: **Beim Empfang einer HTTP-Anforderung**.
 
    ![Trigger auswählen](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -51,9 +50,9 @@ In diesem Szenario haben Sie eine Funktion, die jede Logik-App ausführt, die Si
 
    Wenn Sie kein Schema haben, jedoch über eine Beispielnutzlast im JSON-Format verfügen, können Sie aus dieser Nutzlast ein Schema generieren.
 
-   1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden**.
+   1. Wählen Sie im Anforderungstrigger **Beispielnutzlast zum Generieren eines Schemas verwenden** aus.
 
-   1. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und wählen Sie dann **Fertig**.
+   1. Geben Sie unter **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und wählen Sie dann **Fertig** aus.
 
       ![Beispielnutzlast eingeben](./media/logic-apps-scenario-function-sb-trigger/enter-sample-payload.png)
 
@@ -103,9 +102,9 @@ Als erstellen Sie eine Funktion, die als Trigger fungiert und an der Warteschlan
 
 1. Öffnen und erweitern Sie im Azure-Portal Ihre Funktionen-App, falls sie noch nicht geöffnet ist. 
 
-1. Erweitern Sie unter den Namen Ihrer Funktionen-App **Funktionen**. Klicken Sie im Bereich **Funktionen** auf **Neue Funktion**.
+1. Erweitern Sie unter den Namen Ihrer Funktionen-App **Funktionen**. Wählen Sie im Bereich **Funktionen** die Option **Neue Funktion** aus.
 
-   ![„Funktionen“ erweitern und „Neue Funktion“ auswählen](./media/logic-apps-scenario-function-sb-trigger/create-new-function.png)
+   ![„Funktionen“ erweitern und „Neue Funktion“ auswählen](./media/logic-apps-scenario-function-sb-trigger/add-new-function-to-function-app.png)
 
 1. Wählen Sie diese Vorlage auf der Grundlage aus, ob Sie eine Funktions-App erstellt haben, bei der Sie .NET als Laufzeitstapel ausgewählt haben, oder ob Sie eine vorhandene Funktions-App verwenden.
 
@@ -119,7 +118,15 @@ Als erstellen Sie eine Funktion, die als Trigger fungiert und an der Warteschlan
 
 1. Geben Sie im Bereich **Azure Service Bus-Warteschlangentrigger** einen Namen für Ihren Trigger an, und richten Sie die **Service Bus-Verbindung** für die Warteschlange ein, die den Azure Service Bus SDK-Listener `OnMessageReceive()` verwendet, und wählen Sie **Erstellen** aus.
 
-1. Schreiben Sie eine einfache Funktion zum Aufrufen des zuvor erstellten Logik-App-Endpunkts, bei der die Warteschlangenmeldung als Trigger verwendet wird. Dieses Beispiel verwendet den Inhaltstyp `application/json` für Nachrichten, Sie können diesen jedoch bei Bedarf ändern. Wenn möglich, verwenden Sie die Instanz von HTTP-Clients wieder. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](../azure-functions/manage-connections.md).
+1. Schreiben Sie eine einfache Funktion zum Aufrufen des zuvor erstellten Logik-App-Endpunkts, bei der die Warteschlangenmeldung als Trigger verwendet wird. Überprüfen Sie vor dem Schreiben Ihrer Funktion die folgenden Punkte:
+
+   * Dieses Beispiel verwendet den Inhaltstyp `application/json` für Nachrichten, Sie können diesen jedoch bei Bedarf ändern.
+   
+   * Vermeiden Sie wegen möglicherweise gleichzeitig ausgeführter Funktionen, hoher Volumen oder starker Auslastungen das Instanziieren der [HttpClient-Klasse](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) mit der `using`-Anweisung sowie das direkte Erstellen von HttpClient-Instanzen pro Anforderung. Weitere Informationen finden Sie unter [Verwenden von HttpClientFactory zum Implementieren robuster HTTP-Anforderungen](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests#issues-with-the-original-httpclient-class-available-in-net-core).
+   
+   * Wenn möglich, verwenden Sie die Instanz von HTTP-Clients wieder. Weitere Informationen finden Sie unter [Verwalten von Verbindungen in Azure Functions](../azure-functions/manage-connections.md).
+
+   In diesem Beispiel wird die [`Task.Run`-Methode](https://docs.microsoft.com/dotnet/api/system.threading.tasks.task.run) im [asynchronen](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/async) Modus verwendet. Weitere Informationen finden Sie unter [Asynchrone Programmierung mit async und await](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/).
 
    ```CSharp
    using System;
@@ -127,17 +134,16 @@ Als erstellen Sie eine Funktion, die als Trigger fungiert und an der Warteschlan
    using System.Net.Http;
    using System.Text;
 
-   // Callback URL for previously created Request trigger
+   // Can also fetch from App Settings or environment variable
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/workflows/<remaining-callback-URL>";
 
-   // Reuse the instance of HTTP clients if possible
+   // Reuse the instance of HTTP clients if possible: https://docs.microsoft.com/azure/azure-functions/manage-connections
    private static HttpClient httpClient = new HttpClient();
 
-   public static void Run(string myQueueItem, ILogger log)
+   public static async Task Run(string myQueueItem, TraceWriter log) 
    {
-       log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-
-       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
+      log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+      var response = await httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")); 
    }
    ```
 
@@ -147,4 +153,4 @@ Als erstellen Sie eine Funktion, die als Trigger fungiert und an der Warteschlan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Aufrufen, Auslösen oder Schachteln von Workflows mithilfe von HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md)
+* [Aufrufen, Auslösen oder Schachteln von Workflows mithilfe von HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md)

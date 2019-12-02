@@ -1,19 +1,20 @@
 ---
-title: 'Schnellstart: Konfigurieren der End-to-End-SSL-Verschlüsselung mit Azure Application Gateway im Azure-Portal | Microsoft-Dokumentation'
+title: Konfigurieren von End-to-End-SSL-Verschlüsselung mithilfe des Portals
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie das Azure-Portal zum Erstellen eines Anwendungsgateways mit End-to-End-SSL-Verschlüsselung verwenden.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/14/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: ba31b5ebf83edcd08060a2acc3b5639a521e2729
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: a878b966266bdd326db35d266bc14b2f81161e92
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243664"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075137"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-the-portal"></a>Konfigurieren von End-to-End-SSL mit Application Gateway im Azure-Portal
 

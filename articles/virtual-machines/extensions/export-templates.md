@@ -1,5 +1,5 @@
 ---
-title: Exportieren von Azure-Ressourcengruppen, die VM-Erweiterungen enthalten | Microsoft-Dokumente
+title: Exportieren von Azure-Ressourcengruppen, die VM-Erweiterungen enthalten
 description: Exportieren von Resource Manager-Vorlagen, die Erweiterungen für virtuelle Computer enthalten.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: akjosh
-ms.openlocfilehash: 652ed732a7fe8f08e48aba6fc4bd1b52164d1fa0
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 79991dad96742109817d579b951082d1a30e3951
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169061"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073125"
 ---
 # <a name="exporting-resource-groups-that-contain-vm-extensions"></a>Exportieren von Ressourcengruppen, die VM-Erweiterungen enthalten
 

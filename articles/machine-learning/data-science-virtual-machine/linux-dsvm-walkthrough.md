@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.openlocfilehash: 59f2db8ec4dd8affe1c87ca2bb85a7ff7b8a4d7c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b073c4244d2a7abc7c2c066c3fad036f0caa5faa
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485396"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929545"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Data Science mit Linux Data Science Virtual Machine in Azure
 
@@ -58,8 +58,8 @@ Verketten Sie die beiden Dateien dann:
 
 Das Dataset enthält mehrere Arten von Statistiken für jede E-Mail:
 
-* In Spalten wie **word\_freq\_*WORD*** wird der Prozentsatz der Wörter in der E-Mail angegeben, die mit *WORD* übereinstimmen. Beispiel: Wenn **word\_freq\_make** den Wert **1** hat, lauteten 1 % aller Wörter in der E-Mail *make*.
-* In Spalten wie **char\_freq\_*CHAR*** wird der Prozentsatz aller Zeichen in der E-Mail angegeben, die *CHAR* lauten.
+* In Spalten wie **word\_freq\__WORD_** wird der Prozentsatz der Wörter in der E-Mail angegeben, die mit *WORD* übereinstimmen. Beispiel: Wenn **word\_freq\_make** den Wert **1** hat, lauteten 1 % aller Wörter in der E-Mail *make*.
+* In Spalten wie **char\_freq\__CHAR_** wird der Prozentsatz aller Zeichen in der E-Mail angegeben, die *CHAR* lauten.
 * **capital\_run\_length\_longest** ist die längste Sequenz von Großbuchstaben.
 * **capital\_run\_length\_average** ist die durchschnittliche Länge aller Sequenzen mit Großbuchstaben.
 * **capital\_run\_length\_total** ist die Gesamtlänge aller Sequenzen mit Großbuchstaben.

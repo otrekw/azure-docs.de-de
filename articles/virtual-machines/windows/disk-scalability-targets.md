@@ -1,5 +1,5 @@
 ---
-title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows – Microsoft Azure | Microsoft-Dokumentation
+title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows – Microsoft Azure
 description: Hier finden Sie Informationen zu Skalierbarkeits- und Leistungszielen für VM-Datenträger, die an unter Windows ausgeführte virtuelle Computer angefügt sind.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 9b89cbab450e74a75a63d54ca3b327da622a78c3
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c525ec4becbfda305343a3c7244d5975d60604a3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698779"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74039760"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows
 

@@ -1,5 +1,5 @@
 ---
-title: Erweiterungen und Features für virtuelle Azure-Computer für Windows | Microsoft-Dokumentation
+title: Azure-VM-Erweiterungen und Features für Windows
 description: Sie erhalten einen Überblick über die Erweiterungen für virtuelle Azure-Computer, gruppiert nach den bereitgestellten oder verbesserten Funktionen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d73a2dcd0aab3b972a3e0a9237e53d05d4a9a53
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750025"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073082"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -54,18 +54,18 @@ Informationen zu unterstützten Betriebssystemen und Installationshinweise finde
 
 #### <a name="supported-agent-versions"></a>Unterstützte Agent-Versionen
 
-Es gibt Mindestversionen des Agents, um die bestmöglichen Ergebnisse zu erzielen. [hier finden Sie weitere Informationen](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+Es gibt Mindestversionen des Agents, um die bestmöglichen Ergebnisse zu erzielen. [hier finden Sie weitere Informationen](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
 
 #### <a name="supported-oses"></a>Unterstützte Betriebssysteme
 
-Der Windows-Gast-Agent wird auf mehreren Betriebssystemen ausgeführt. Das Erweiterungsframework begrenzt jedoch die Anzahl der Betriebssysteme, die von Erweiterungen unterstützt werden. [hier finden Sie weitere Informationen](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+Der Windows-Gast-Agent wird auf mehreren Betriebssystemen ausgeführt. Das Erweiterungsframework begrenzt jedoch die Anzahl der Betriebssysteme, die von Erweiterungen unterstützt werden. [hier finden Sie weitere Informationen](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems
 )
 
 Manche Erweiterung werden nicht auf allen Betriebssystemen unterstützt. In diesem Fall wird der Fehler *Error Code 51, 'Unsupported OS'* (Fehlercode 51, „Nicht unterstütztes Betriebssystem“) zurückgegeben. Überprüfen Sie die Dokumentation zu Erweiterungen auf Informationen zu Unterstützungsmöglichkeiten.
 
 #### <a name="network-access"></a>Netzwerkzugriff
 
-Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse [168.63.129.16](https://docs.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16)). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
+Erweiterungspakete werden aus dem Azure Storage-Erweiterungsrepository heruntergeladen, und Uploads des Erweiterungsstatus werden in Azure Storage gepostet. Wenn Sie [unterstützte](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) Versionen der Agents verwenden, müssen Sie keinen Zugriff auf Azure Storage in der VM-Region zulassen, da Sie über den Agent die Kommunikation mit Agents an den Azure-Fabric Controller umleiten können (HostGAPlugin-Feature über den privilegierten Kanal der privaten IP-Adresse [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Wenn Sie eine nicht unterstützte Version des Agents verwenden, müssen Sie in dieser Region den von der VM ausgehenden Zugriff auf Azure Storage zulassen.
 
 > [!IMPORTANT]
 > Wenn Sie den Zugriff auf *168.63.129.16* mit der Gastfirewall oder einem Proxy blockiert haben, treten bei den Erweiterungen unabhängig von den gerade beschriebenen Szenarien Fehler auf. Die Ports 80, 443 und 32526 sind erforderlich.

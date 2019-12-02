@@ -1,5 +1,5 @@
 ---
-title: Übersicht über die Unterstützung mehrerer Mandanten für die Notfallwiederherstellung von VMware-VMs in Azure (CSP) mit Azure Site Recovery | Microsoft-Dokumentation
+title: Notfallwiederherstellung von virtuellen VMware-Computern für mehrere Mandanten mit Azure Site Recovery
 description: Dieser Artikel enthält eine Übersicht über die Azure Site Recovery-Unterstützung für die VMware-Notfallwiederherstellung in Azure in einer Umgebung mit mehreren Mandanten über das CSP-Programm.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718066"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083992"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
 
@@ -89,7 +89,7 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 
 3. Weisen Sie dem vCenter-Konto (das im Konfigurationsserver des Mandanten verwendet wird) für verschiedene Objekte Zugriffsebenen wie folgt zu:
 
->| Object | Rolle | Anmerkungen |
+>| Object | Role | Anmerkungen |
 >| --- | --- | --- |
 >| vCenter | Schreibgeschützt | Nur erforderlich, um vCenter den Zugriff zum Verwalten verschiedener Objekten zu gewähren. Sie können diese Berechtigung aufheben, wenn das Konto keinem Mandanten zur Verfügung gestellt wird oder nicht für Verwaltungsvorgänge in vCenter verwendet wird. |
 >| Datacenter | Azure_Site_Recovery |  |

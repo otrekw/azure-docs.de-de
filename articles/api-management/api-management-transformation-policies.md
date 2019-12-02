@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 4f57f7cbc4e93f8a98b64b31ca51e0f1e32c375c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: c26cca40b0bf6d02bcec09945043f4ba854fa8e9
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073296"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012234"
 ---
 # <a name="api-management-transformation-policies"></a>Azure API Management-Transformationsrichtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -468,13 +468,20 @@ OriginalUrl.
 
 ### <a name="examples"></a>Beispiele
 
-#### <a name="example"></a>Beispiel
+#### <a name="example---adding-header-override-existing"></a>Beispiel: Hinzufügen eines Headers, vorhandenen überschreiben
 
 ```xml
 <set-header name="some header name" exists-action="override">
     <value>20</value>
 </set-header>
 ```
+#### <a name="example---removing-header"></a>Beispiel: Entfernen des Headers
+
+```xml
+ <set-header name="some header name" exists-action="delete" />
+```
+
+
 
 #### <a name="forward-context-information-to-the-backend-service"></a>Weiterleiten von Kontextinformationen an den Back-End-Dienst
  In diesem Beispiel wird gezeigt, wie die Richtlinie auf API-Ebene angewendet wird, um dem Back-End-Dienst Kontextinformationen bereitzustellen. Eine Demonstration der Konfiguration und Verwendung dieser Richtlinie finden Sie in [Cloud Cover-Episode 177: Weitere API Management-Funktionen mit Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (führen Sie einen schnellen Vorlauf bis 10:30 durch). Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie die Richtlinie bei der Arbeit sehen können.
@@ -506,7 +513,7 @@ OriginalUrl.
 |NAME|BESCHREIBUNG|Erforderlich|
 |----------|-----------------|--------------|
 |set-header|Stammelement|Ja|
-|value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Ja|
+|value|Der Wert für den zu setzenden Header. Fügen Sie bei mehreren Headern mit dem gleichen Namen weitere `value`-Elemente hinzu.|Nein|
 
 ### <a name="properties"></a>Properties
 

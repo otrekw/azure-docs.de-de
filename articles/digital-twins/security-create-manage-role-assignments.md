@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: 68714a06f72a522df0245d9c044bb6ff6557d52f
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949823"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013996"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
@@ -60,7 +60,7 @@ Zuvor wurde das Attribut **objectIdType** eingeführt.
 
 Azure Digital Twins unterstützt vollständige *ERSTELLEN*, *LESEN* und *LÖSCHEN*-Vorgänge für Rollenzuweisungen. *AKTUALISIEREN*-Vorgänge werden verarbeitet, indem Rollenzuweisungen hinzugefügt oder entfernt werden oder der Knoten [Raumintelligenzgraph](./concepts-objectmodel-spatialgraph.md), auf den Rollenzuweisungen Zugriff gewähren, geändert wird.
 
-[![Rollenzuweisungs-Endpunkte](media/security-roles/roleassignments.png)](media/security-roles/roleassignments.png#lightbox)
+[![Rollenzuweisungs-Endpunkte](media/security-roles/role-assignments.png)](media/security-roles/role-assignments.png#lightbox)
 
 Die bereitgestellte Swagger-Referenzdokumentation enthält weitere Informationen zu allen verfügbaren API-Endpunkten, Anforderungsvorgängen und Definitionen.
 
@@ -112,7 +112,7 @@ Mit folgendem JSON-Text:
 
 ### <a name="retrieve-all-roles"></a>Abrufen aller Rollen
 
-[![Systemrollen](media/security-roles/system.png)](media/security-roles/system.png#lightbox)
+[![Systemrollen](media/security-roles/system-api.png)](media/security-roles/system-api.png#lightbox)
 
 Um alle verfügbaren Rollen (Rollendefinitionen) aufzulisten, stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 

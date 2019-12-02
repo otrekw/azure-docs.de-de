@@ -7,18 +7,21 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249110"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120969"
 ---
 # <a name="networking-limit-increase"></a>Erhöhung des Grenzwerts für Netzwerke
 
 Navigieren Sie im Azure-Portal zum Blatt **Usages + Quota** (Nutzung + Kontingente), um Ihre aktuelle Netzwerkauslastung und Kontingente anzuzeigen. Sie können auch die [Verbrauchs-CLI](https://docs.microsoft.com//cli/azure/network?view=azure-cli-latest#az-network-list-usages), [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.13.0) oder die [network usage API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/listusage) (Netzwerkauslastungs-API) verwenden, um Ihre Netzwerkauslastung und Grenzwerte anzuzeigen.
 
 Über das Blatt **Hilfe und Support** oder über das Blatt **Usages + Quota** (Nutzung + Kontingente) können Sie im Portal eine Erhöhung anfordern.
+
+> [!Note]
+> Um die Standardgröße für das Präfix für öffentliche IP-Adressen zu ändern, wählen Sie in der Dropdownliste „Min Public IP InterNetwork Prefix Length“ aus.
 
 ## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Anfordern einer Netzwerkkontingenterhöhung auf Abonnementebene mithilfe des Blatts **Hilfe und Support**
 

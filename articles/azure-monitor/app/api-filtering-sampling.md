@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/23/2016
-ms.openlocfilehash: 1e02e227180bb0082dd87ab8f5d2fe64e19b60f2
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 550ac9ff3b425e682fdda16501613aa41a80d765
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677808"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847247"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
@@ -25,11 +25,11 @@ Sie können Plug-Ins für das Application Insights SDK schreiben und konfigurier
 
 Vorbereitung:
 
-* Installieren Sie das für Ihre Anwendung geeignete SDK in Ihrer App: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nicht-HTTP/Worker für .NET/.NET Core](worker-service.md) oder [Java](../../azure-monitor/app/java-get-started.md).
+* Installieren Sie das für Ihre Anwendung geeignete SDK in Ihrer App: [ASP.NET](asp-net.md), [ASP.NET Core](asp-net-core.md), [Nicht-HTTP/Worker für .NET/.NET Core](worker-service.md), [Java](../../azure-monitor/app/java-get-started.md) oder [JavaScript](javascript.md)
 
 <a name="filtering"></a>
 
-## <a name="filtering-itelemetryprocessor"></a>Filtern: ITelemetryProcessor
+## <a name="filtering"></a>Filterung
 
 Mit dieser Technik können Sie direkt kontrollieren, welche Daten in den Telemetriedatenstrom ein- oder daraus ausgeschlossen werden sollen. Filtern Sie Telemetrieelemente vor dem Senden an Application Insights heraus. Sie können sie zusammen mit der Stichprobenerstellung oder einzeln verwenden.
 
@@ -198,7 +198,30 @@ public void Process(ITelemetry item)
 
 <a name="add-properties"></a>
 
-## <a name="add-properties-itelemetryinitializer"></a>Hinzufügen von Eigenschaften: ITelemetryInitializer
+### <a name="javascript-web-applications"></a>JavaScript-Webanwendungen
+
+**Filtern mithilfe von „ITelemetryInitializer“**
+
+1. Erstellen Sie eine Rückruffunktion für einen Telemetrieinitialisierer. Die Rückruffunktion akzeptiert `ITelemetryItem` als Parameter. Dies ist das Ereignis, das gerade verarbeitet wird. Wenn dieser Rückruf `false` zurückgibt, wird das Telemetrieelement herausgefiltert.  
+
+   ```JS
+   var filteringFunction = (envelope) => {
+     if (envelope.data.someField === 'tobefilteredout') {
+        return false;
+     }
+  
+     return true;
+   };
+   ```
+
+2. Fügen Sie den Rückruf für den Telemetrieinitialisierer hinzu:
+
+   ```JS
+   appInsights.addTelemetryInitializer(filteringFunction);
+   ```
+
+## <a name="addmodify-properties-itelemetryinitializer"></a>Hinzufügen/Ändern von Eigenschaften von: ITelemetryInitializer
+
 
 Verwenden Sie Telemetrieinitialisierer, um Telemetriedaten mit zusätzlichen Informationen anzureichern und/oder die von Standardtelemetriemodulen festgelegten Telemetrieeigenschaften zu überschreiben.
 

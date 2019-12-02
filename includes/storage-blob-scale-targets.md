@@ -2,14 +2,14 @@
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 4/20/2019
+ms.date: 11/08/2019
 ms.author: tamram
-ms.openlocfilehash: aab17966862c57a52f252b3c4e9b757673078b0a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 0fda881b805eb3a967cf3b05f6c6df8c65d20730
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67178303"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73905782"
 ---
 | Resource | Ziel        |
 |----------|---------------|
@@ -21,6 +21,8 @@ ms.locfileid: "67178303"
 | Maximale Größe eines Anfügeblobs | 50.000 × 4MiB (ca. 195GiB) |
 | Max. Größe eines Seitenblobs | 8 TiB |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Blobcontainer | 5 |
-|Zieldurchsatz bei Einzel-Blob |Bis zur Eingangs-/Ausgangsbegrenzung des Speicherkontos<sup>1</sup> |
+|Zielanforderungsrate für ein einzelnes Blob | Bis zu 500 Anforderungen pro Sekunde |
+|Zieldurchsatz für ein einzelnes Seitenblob | Bis zu 60 MiB pro Sekunde |
+|Zieldurchsatz für ein einzelnes Blockblob |Bis zur Eingangs-/Ausgangsbegrenzung des Speicherkontos<sup>1</sup> |
 
 <sup>1</sup> Einzelobjektdurchsatz ist abhängig von mehreren Faktoren einschließlich, aber nicht beschränkt auf: Parallelität, Anforderungsgröße, Leistungsstufe, Geschwindigkeit der Quelle bei Uploads und Downloadziel. Um den Vorteil von Leistungsverbesserungen durch [Blockblobs mit hohem Durchsatz](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/) zu nutzen, verwenden Sie eine Put Blob- oder Put Block-Anforderungsgröße von > 4MiB (> 256KiB für Premium-Leistungs-Blockblobspeicher oder Data Lake Storage Gen2).

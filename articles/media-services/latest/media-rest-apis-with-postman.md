@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 11/07/2019
 ms.author: juliako
-ms.openlocfilehash: d25596884acdb356779eafa4348240239855ce37
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 7b4e2d14e8719808db138a4f2607b19cece401a6
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308451"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73839595"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurieren von Postman für Media Services-REST-API-Aufrufe
 
@@ -47,11 +47,9 @@ Klonen Sie ein GitHub-Repository mit der Postman-Sammlung und den Umgebungsdatei
 
 ## <a name="configure-postman"></a>Konfigurieren von Postman
 
-In diesem Abschnitt wird Postman konfiguriert.
-
 ### <a name="configure-the-environment"></a>Konfigurieren der Umgebung 
 
-1. Öffnen Sie **Postman**.
+1. Öffnen Sie die App **Postman**.
 2. Wählen Sie auf der rechten Seite des Bildschirms die Option **Manage environment** (Umgebung verwalten) aus.
 
     ![Verwalten der Umgebung](./media/develop-with-postman/postman-import-env.png)
@@ -80,7 +78,7 @@ In diesem Abschnitt wird Postman konfiguriert.
 
 Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure AD-Token für die Dienstprinzipalauthentifizierung abrufen und festlegen.
 
-1. Klicken Sie im linken Fenster von Postman auf „Step 1: Get AAD Auth token“ (Schritt 1: AAD-Authentifizierungstoken abrufen).
+1. Wählen Sie im linken Fenster der Postman-App „Step 1: Get AAD Auth token“ (Schritt 1: AAD-Authentifizierungstoken abrufen).
 2. Klicken Sie anschließend auf „Get Azure AD Token for Service Principal Authentication“ (Azure AD-Token für Dienstprinzipalauthentifizierung abrufen).
 3. Klicken Sie auf **Senden**.
 
@@ -93,6 +91,11 @@ Bevor Sie mit dem Ändern von AMS v3-Ressourcen beginnen, müssen Sie das Azure 
 4. Die zurückgegebene Antwort enthält das Token und legt die Umgebungsvariable „AccessToken“ auf den Tokenwert fest.  
 
     ![Abrufen des AAD-Tokens](./media/develop-with-postman/postman-get-aad-auth-token.png)
+
+## <a name="troubleshooting"></a>Problembehandlung 
+
+* Wenn Ihre Anwendung mit „HTTP 504:  Gateway-Timeout" fehlschlägt, stellen Sie sicher, dass die location-Variable nicht explizit auf einen anderen Wert als den erwarteten Speicherort des Media Services-Kontos festgelegt wurde. 
+* Wenn Sie den Fehler „Konto nicht gefunden“ erhalten, überprüfen Sie auch, ob die location-Eigenschaft in der Body-JSON-Meldung auf den Speicherort festgelegt ist, an dem sich das Media Services-Konto befindet. 
 
 ## <a name="see-also"></a>Weitere Informationen
 

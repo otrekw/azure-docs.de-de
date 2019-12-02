@@ -1,5 +1,5 @@
 ---
-title: Installieren eines Linux-Masterzielservers für ein Failback an einem lokalen Standort | Microsoft-Dokumentation
+title: Installieren eines Masterzielservers für ein Linux-VM-Failback mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie einen Linux-Masterzielserver für ein Failback an einem lokalen Standort während der Notfallwiederherstellung virtueller VMware-Computer in Azure mithilfe von Azure Site Recovery einrichten.
 author: mayurigupta13
 services: site-recovery
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 5b4b3f5025edef242b87215665fd65f131157943
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 5b4d625d28584bb601905e9439c112c845219e54
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904414"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954375"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -43,7 +43,7 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder im [Forum zu Azu
 Erstellen Sie das Masterziel gemäß den folgenden Richtlinien zum Festlegen der Größe:
 - **RAM**: 6 GB oder mehr
 - **Größe des Betriebssystemdatenträgers**: 100 GB oder mehr (für die Betriebssysteminstallation)
-- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk**: 1 TB
+- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk**: 1 TB
 - **CPU-Kerne**: 4 Kerne oder mehr
 
 Folgende Ubuntu-Kernels werden unterstützt:

@@ -1,7 +1,6 @@
 ---
-title: Übersicht über IPv6 für Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich bereitstellen.
+title: Übersicht über IPv6 – Azure Load Balancer
+description: Mit diesem Lernpfad beginnen Sie mit der IPv6-Unterstützung für Azure Load Balancer und VMs mit Lastenausgleich.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: b4c1fcd6a719f341dcebfd9f4efc4423241ca3dd
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 07dd3ee507f31099e32f18143d2beedf76e83c36
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147345"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077026"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 

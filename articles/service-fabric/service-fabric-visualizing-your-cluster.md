@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 75568cf3c88c02968b3e3e95971f81cf1b9285d3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b873b5a68979b8225c44c32e0b9494408e35ac1
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496344"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927178"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Visualisieren Ihres Clusters mit Service Fabric Explorer
 
@@ -129,7 +129,11 @@ Image Store Viewer ist eine Funktion, die bei Verwendung von Native Image Store 
 ![Service Fabric Explorer-Clusterzuweisung][sfx-imagestore]
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
-Service Fabric Explorer bietet die Möglichkeit einer Schnittstelle zu [Sicherung und Wiederherstellung](./service-fabric-reliable-services-backup-restore.md). Die folgenden Vorgänge sind möglich:
+Service Fabric Explorer bietet die Möglichkeit einer Schnittstelle zu [Sicherung und Wiederherstellung](./service-fabric-reliable-services-backup-restore.md). Um Funktionen für Sicherung und Wiederherstellung in SFX anzuzeigen, muss der erweiterte Modus aktiviert sein.
+
+![Aktivieren des erweiterten Modus][0]
+ 
+Die folgenden Vorgänge sind möglich:
 
 * Erstellen, Bearbeiten und Löschen einer Sicherungsrichtlinie.
 * Aktivieren und Deaktivieren der Sicherung für eine Anwendung, einen Dienst oder eine Partition.
@@ -151,3 +155,4 @@ Weitere Informationen zum Sicherungs- und Wiederherstellungsdienst finden Sie in
 [sfx-create-app-instance]: ./media/service-fabric-visualizing-your-cluster/sfx-create-app-instance.png
 [sfx-eventstore]: ./media/service-fabric-diagnostics-eventstore/eventstore.png
 [sfx-imagestore]: ./media/service-fabric-visualizing-your-cluster/sfx-image-store.png
+[0]: ./media/service-fabric-backuprestoreservice/advanced-mode.png

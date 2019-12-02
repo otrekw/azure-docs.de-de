@@ -1,7 +1,7 @@
 ---
-title: Erstellen einer Azure Load Balancer-Instanz mit der REST-API
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der REST-API erstellen.
+title: Erstellen einer Load Balancer-Instanz mit der REST-API
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erfahren Sie, wie Sie eine Azure Load Balancer-Instanz mit der REST-API erstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: ae8fb4494d27d0c145963c9b32757bdb802e0cc7
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275559"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077096"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Erstellen einer Azure Basic Load Balancer-Instanz mit der REST-API
 

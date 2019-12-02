@@ -1,20 +1,20 @@
 ---
-title: Bewährte Methoden für die JSON-Strukturierung in Azure Time Series Insights-Abfragen | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie die Effizienz Ihrer Azure Time Series Insights-Abfragen steigern.
+title: Bewährte Methoden für die JSON-Strukturierung – Azure Time Series Insights-Abfragen | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie die Effizienz Ihrer Azure Time Series Insights-Abfragen durch Strukturierung von JSON steigern.
 services: time-series-insights
-author: ashannon7
+author: deepakpalled
+ms.author: dpalled
 manager: cshankar
 ms.service: time-series-insights
 ms.topic: article
 ms.date: 10/09/2019
-ms.author: dpalled
 ms.custom: seodec18
-ms.openlocfilehash: 4916397d05ad9d5fcae7624bf558eb7dc5be940f
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: 386d10c8e4bd7d5f46d2081d5a26371fb37ff30f
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274402"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74006998"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>Strukturieren von JSON zum Maximieren der Abfrageleistung 
 
@@ -35,6 +35,9 @@ Sie berücksichtigen beim Senden von Ereignissen an Time Series Insights verschi
 1. Stellen Sie sicher, dass die Grenzwerte für Time Series Insights-Eigenschaften nicht überschritten werden:
    - 600 Eigenschaften (Spalten) für S1-Umgebungen
    - 800 Eigenschaften (Spalten) für S2-Umgebungen
+
+> [!TIP]
+> Lesen Sie [Limits und Planung](time-series-insights-update-plan.md) in Azure Time Series Insights Preview.
 
 Die folgenden Richtlinien unterstützen Sie dabei, die bestmögliche Abfrageleistung zu erzielen:
 
@@ -195,7 +198,7 @@ Für eine Eigenschaft mit einer großen Anzahl möglicher Werte werden diese am 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Senden von [IoT Hub-Gerätemeldungen an die Cloud](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-construct).
+- Weitere Informationen zum Senden von [IoT Hub-Gerätemeldungen an die Cloud](../iot-hub/iot-hub-devguide-messages-construct.md).
 
 - Lesen Sie den Artikel [Azure Time Series Insights-Abfragesyntax](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-syntax), um mehr über die Abfragesyntax der REST-API für den TSI-Datenzugriff zu erfahren
 

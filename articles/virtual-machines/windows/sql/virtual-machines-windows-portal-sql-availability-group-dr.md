@@ -1,5 +1,5 @@
 ---
-title: SQL Server-Verfügbarkeitsgruppen – Azure Virtual Machines – Notfallwiederherstellung | Microsoft-Dokumentation
+title: Konfigurieren einer Verfügbarkeitsgruppe in einer anderen Region
 description: In diesem Artikel erfahren Sie, wie Sie eine SQL Server-Verfügbarkeitsgruppe auf virtuellen Azure-Computern mit einem Replikat in einer anderen Region konfigurieren.
 services: virtual-machines
 documentationCenter: na
@@ -9,20 +9,20 @@ editor: monicar
 tags: azure-service-management
 ms.assetid: 388c464e-a16e-4c9d-a0d5-bb7cf5974689
 ms.service: virtual-machines-sql
-ms.custom: na
+ms.custom: seo-lt-2019
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 9949c389ad0511c3ed5923e0451bc96e7063621f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159746"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037553"
 ---
-# <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Konfigurieren einer Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern in verschiedenen Regionen
+# <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Konfigurieren einer Verfügbarkeitsgruppe auf virtuellen Azure SQL Server-Computern in verschiedenen Regionen
 
 In diesem Artikel erfahren Sie, wie Sie ein SQL Server-Always On-Verfügbarkeitsgruppenreplikat auf virtuellen Azure Computern an einem Azure-Remotestandort konfigurieren. Verwenden Sie diese Konfiguration, um die Notfallwiederherstellung zu unterstützen.
 

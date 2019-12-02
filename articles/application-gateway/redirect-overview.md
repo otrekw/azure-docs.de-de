@@ -1,24 +1,18 @@
 ---
 title: Übersicht über die Umleitung in Azure Application Gateway
-description: Hier finden Sie Informationen zur Umleitungsfunktion in Azure Application Gateway.
+description: Erhalten Sie Informationen über die Umleitungsfunktion in Azure Application Gateway zum Umleiten von an einem Listener empfangenem Datenverkehr an einen anderen Listener oder an eine externe Site.
 services: application-gateway
-documentationcenter: na
 author: amsriva
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 3/19/2018
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715798"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129887"
 ---
 # <a name="application-gateway-redirect-overview"></a>Übersicht über die Umleitung in Application Gateway
 

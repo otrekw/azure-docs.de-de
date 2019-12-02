@@ -1,6 +1,6 @@
 ---
 title: Verwenden von PowerShell zum Verwalten von Traffic Manager in Azure
-description: Verwenden von PowerShell für Traffic Manager mit Azure Resource Manager
+description: Mit diesem Lernpfad beginnen Sie mit der Verwendung von Azure PowerShell für Traffic Manager.
 services: traffic-manager
 documentationcenter: na
 author: asudbring
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: allensu
-ms.openlocfilehash: a2065ba51b74d7f55464a22df0f55cac4c6defcb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f8dd01f22dec58c3345798b391c1c37c968d1025
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67071025"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74038125"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 

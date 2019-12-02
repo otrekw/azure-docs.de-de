@@ -1,18 +1,18 @@
 ---
-title: Informationen zur Azure Site Recovery-Konfiguration, zu Prozessen und Masterzielservern | Microsoft-Dokumentation
+title: Informationen zu Azure Site Recovery-Konfiguration/Prozess/Masterzielservern
 description: Dieser Artikel enthält eine Übersicht über die Konfiguration, Prozesse und Masterzielserver, die beim Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mit Azure Site Recovery verwendet werden.
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a70400a1d0c710b939b4dd6d157cb06e729f53cb
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ad816f39dd4182dfa41fca975c99824a5d77f860
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747825"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961303"
 ---
 # <a name="about-site-recovery-components-configuration-process-master-target"></a>Informationen zu Site Recovery-Komponenten (Konfiguration, Prozess und Masterziel)
 

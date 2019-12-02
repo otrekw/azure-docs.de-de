@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608594"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132874"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid-Ereignisschema für Azure Machine Learning
 
@@ -180,7 +180,7 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 | -------- | ---- | ----------- |
 | ServiceName | Zeichenfolge | Der Name des bereitgestellten Diensts. |
 | ServiceComputeType | Zeichenfolge | Der Computetyp (z. B. ACI, AKS) des bereitgestellten Diensts. |
-| ModelIds | Zeichenfolge | Eine durch Trennzeichen getrennte Liste der Modell-IDs. Die IDs der Modell, die im Dienst bereitgestellt werden. |
+  | ModelIds | Zeichenfolge | Eine durch Trennzeichen getrennte Liste der Modell-IDs. Die IDs der Modell, die im Dienst bereitgestellt werden. |
 | ServiceTags | object | Die Tags des bereitgestellten Diensts. |
 | ServiceProperties | object | Die Eigenschaften des bereitgestellten Diensts. |
 
@@ -214,4 +214,4 @@ Das Datenobjekt weist für jeden Ereignistyp die folgenden Eigenschaften auf:
 * Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
 * Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
 * Eine Einführung in die Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen](/azure/machine-learning/service/concept-event-grid-integration).
-* Ein Beispiel zur Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Erstellen ereignisgesteuerter Machine Learning-Workflows](/azure/machine-learning/service/event-schema-machine-learning).
+* Ein Beispiel zur Verwendung von Azure Event Grid mit Azure Machine Learning finden Sie unter [Erstellen ereignisgesteuerter Machine Learning-Workflows](/azure/machine-learning/service/how-to-use-event-grid).

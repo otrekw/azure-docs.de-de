@@ -1,29 +1,29 @@
 ---
-title: Diagnose und Problembehandlung in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
-description: Machen Sie sich mit der Diagnose und Problembehandlung mit Azure Time Series Insights Preview vertraut.
-author: ashannon7
+title: Diagnose und Problembehandlung einer Preview-Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Diagnose und Problembehandlung in einer Azure Time Series Insights Preview-Umgebung durchführen.
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/06/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: cdcbe62fdba4f111233451680f95abc757e80ee3
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: df8300e84309a874faa4b1c06891a4c5b549fce6
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883319"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014775"
 ---
-# <a name="diagnose-and-troubleshoot"></a>Diagnostizieren und Behandeln von Problemen
+# <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Diagnose und Problembehandlung einer Preview-Umgebung
 
 In diesem Artikel werden einige häufig auftretende Probleme zusammengefasst, die auftreten können, wenn Sie mit Ihrer Azure Time Series Insights Preview-Umgebung arbeiten. Darüber hinaus werden mögliche Ursachen und Lösungen für jedes der Probleme beschrieben.
 
 ## <a name="problem-i-cant-find-my-environment-in-the-preview-explorer"></a>Problem: Ich kann meine Umgebung im Preview-Explorer nicht finden.
 
-Dieses Problem kann auftreten, wenn Sie nicht über die Berechtigung für den Zugriff auf die Time Series Insights-Umgebung verfügen. Benutzer benötigen eine Zugriffsrolle auf Leser-Ebene, um ihre Time Series Insights-Umgebung anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, besuchen Sie den Abschnitt „Datenzugriffsrichtlinien“ in der Time Series Insights-Ressource im [Azure-Portal](https://portal.azure.com/).
+Dieses Problem kann auftreten, wenn Sie nicht über die Berechtigung für den Zugriff auf die Time Series Insights-Umgebung verfügen. Benutzer benötigen eine Zugriffsrolle auf Leser-Ebene, um ihre Time Series Insights-Umgebung anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, wechseln Sie zum Abschnitt **Datenzugriffsrichtlinien** in der Time Series Insights-Ressource im [Azure-Portal](https://portal.azure.com/).
 
   [![Umgebung](media/v2-update-diagnose-and-troubleshoot/environment.png)](media/v2-update-diagnose-and-troubleshoot/environment.png#lightbox)
 
@@ -56,18 +56,17 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
 - Ihre bereitgestellte Consumergruppe ist für Time Series Insights nicht exklusiv.
 
-    Während der Registrierung eines IoT-Hubs oder eines Event Hubs geben Sie die Consumergruppe an, die zum Lesen der Daten verwendet wird. Teilen Sie diese Consumergruppe nicht. Wenn die Consumergruppe geteilt wird, trennt der zugrunde liegende Event Hub automatisch einen der Leser nach dem Zufallsprinzip. Stellen Sie eine eindeutige Consumergruppe bereit, aus der Time Series Insights lesen soll.
+    Während der Registrierung eines IoT-Hubs oder eines Event Hubs geben Sie die Consumergruppe an, die zum Lesen der Daten verwendet wird. Diese Consumergruppe muss pro Umgebung eindeutig sein. Wenn die Consumergruppe geteilt wird, trennt der zugrunde liegende Event Hub automatisch einen der Leser nach dem Zufallsprinzip. Stellen Sie eine eindeutige Consumergruppe bereit, aus der Time Series Insights lesen soll.
 
 - Ihre Time Series-ID-Eigenschaft, die zum Zeitpunkt der Bereitstellung angegeben wurde, ist falsch, fehlt oder ist null.
 
     Dieses Problem kann auftreten, wenn die Time Series-ID-Eigenschaft zum Zeitpunkt der Bereitstellung der Umgebung fehlerhaft konfiguriert ist. Weitere Informationen finden Sie unter [Bewährte Methoden für die Auswahl einer Time Series-ID](./time-series-insights-update-how-to-id.md). Zu diesem Zeitpunkt können Sie eine vorhandene Time Series Insights-Umgebung nicht so aktualisieren, dass sie eine andere Time Series-ID verwendet.
 
-## <a name="problem-some-data-shows-but-some-is-missing"></a>Problem: Einige Daten werden angezeigt, doch andere fehlen.
+## <a name="problem-some-data-shows-but-some-is-missing"></a>Problem: Einige Daten werden angezeigt, andere hingegen fehlen.
 
 Möglicherweise werden Sie Daten ohne die Time Series-ID.
 
 - Dieses Problem kann auftreten, wenn Sie Ereignisse ohne das Feld „Time Series-ID“ in der Nutzlast senden. Weitere Informationen finden Sie unter [Unterstützte JSON-Formen](./how-to-shape-query-json.md).
-
 - Dieses Problem kann auftreten, weil Ihre Umgebung gedrosselt wird.
 
     > [!NOTE]
@@ -83,22 +82,27 @@ Stellen Sie sicher, dass Name und Wert den folgenden Regeln entsprechen:
 Sie können am einfachsten sicherstellen, dass Ihr Name der Timestamp-Eigenschaft erfasst wird und richtig funktioniert, indem Sie den Time Series Insights-Explorer verwenden. Wählen Sie im Time Series Insights-Explorer mithilfe des Diagramms einen Zeitraum aus, nachdem Sie den Namen der Timestamp-Eigenschaft angegeben haben. Klicken Sie mit der rechten Maustaste auf die Auswahl, und wählen Sie die Option **Ereignisse untersuchen** aus. Die erste Spaltenüberschrift ist der Name Ihrer Timestamp-Eigenschaft. Er sollte neben dem Wort `Timestamp` die Zeichenfolge `($ts)` aufweisen, statt:
 
 * `(abc)`, was anzeigt, dass Time Series Insights die Datenwerte als Zeichenfolgen liest.
-* Kalendersymbol, das anzeigt, dass Time Series Insights die Datenwerte als Datum/Uhrzeit-Wert liest.
+* Das **Kalender**symbol, das anzeigt, dass Time Series Insights die Datenwerte als Datum/Uhrzeit-Wert liest.
 * `#`, was anzeigt, dass Time Series Insights die Datenwerte als ganze Zahl liest.
 
 Wenn die Timestamp-Eigenschaft nicht explizit angegeben ist, wird der Zeitpunkt der Einreihung eine Ereignisses in die Warteschlange für einen IoT-Hub oder Event Hub als Standardzeitstempel verwendet.
+
+## <a name="problem-i-cant-view-data-from-my-warm-store-in-the-explorer"></a>Problem: Ich kann keine Daten aus meinem warmen Speicher im Explorer anzeigen.
+
+- Möglicherweise haben Sie Ihren warmen Speicher erst vor Kurzem bereitgestellt, und die Daten werden noch übertragen.
+- Möglicherweise haben Sie Ihren warmen Speicher gelöscht. in diesem Fall wären die Daten verloren.
 
 ## <a name="problem-i-cant-view-or-edit-my-time-series-model"></a>Problem: Ich kann mein Zeitreihenmodell nicht anzeigen oder bearbeiten.
 
 - Möglicherweise greifen Sie auf eine Time Series Insights S1- oder S2-Umgebung zu.
 
-   Zeitreihenmodelle werden nur in PAYG-Umgebungen unterstützt. Weitere Informationen zum Zugriff auf Ihre S1/S2-Umgebung über den Time Series Insights Preview-Explorer finden Sie unter [Visualisieren von Daten im Explorer](./time-series-insights-update-explorer.md).
+   Zeitreihenmodelle werden nur in Umgebungen mit nutzungsbasierter Bezahlung unterstützt. Weitere Informationen zum Zugriff auf Ihre S1- oder S2-Umgebung über den Time Series Insights Preview-Explorer finden Sie unter [Visualisieren von Daten im Explorer](./time-series-insights-update-explorer.md).
 
    [![Zugriff](media/v2-update-diagnose-and-troubleshoot/access.png)](media/v2-update-diagnose-and-troubleshoot/access.png#lightbox)
 
 - Möglicherweise besitzen Sie keine Berechtigungen zum Anzeigen und Bearbeiten des Modells.
 
-   Benutzer benötigen Zugriff auf Mitwirkender-Ebene, um ihre Zeitreihenmodelle zu bearbeiten und anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, besuchen Sie den Abschnitt „Datenzugriffsrichtlinien“ in Ihrer Time Series Insights-Ressource im Azure-Portal.
+   Benutzer benötigen Zugriff auf Mitwirkender-Ebene, um ihre Zeitreihenmodelle zu bearbeiten und anzuzeigen. Um die aktuellen Zugriffsebenen zu überprüfen und zusätzlichen Zugriff zu gewähren, wechseln Sie zum Abschnitt **Datenzugriffsrichtlinien** in Ihrer Time Series Insights-Ressource im Azure-Portal.
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Problem: Bei allen meinen Instanzen im Preview-Explorer fehlt ein übergeordnetes Element.
 
@@ -109,5 +113,5 @@ Dieses Problem kann auftreten, wenn in Ihrer Umgebung keine Zeitreihenmodell-Hie
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie [Arbeiten mit Zeitreihenmodellen](./time-series-insights-update-how-to-tsm.md).
-
 - Weitere Informationen zu [unterstützten JSON-Formen](./how-to-shape-query-json.md).
+- Lesen Sie [Planung und Limits](./time-series-insights-update-plan.md) in Azure Time Series Insights Preview.

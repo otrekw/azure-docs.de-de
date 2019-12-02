@@ -1,5 +1,5 @@
 ---
-title: Informationen zum Verwenden von Azure ExpressRoute mit Azure Site Recovery für Notfallwiederherstellung und Migration | Microsoft-Dokumentation
+title: Informationen zur Verwendung von ExpressRoute mit Azure Site Recovery
 description: Beschreibt, wie Sie Azure ExpressRoute mit dem Azure Site Recovery-Dienst für Notfallwiederherstellung und Migration verwenden.
 services: site-recovery
 author: mayurigupta13
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: 97aea824fac60f8bed71971a416f12e8df0e5e64
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: dcc5105fcf2ad7b6a9f0695b3086dc2956a76a50
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333063"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954071"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute mit Azure Site Recovery
 

@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Netzwerkschnittstellen in Azure Site Recovery für die lokale Notfallwiederherstellung in Azure | Microsoft-Dokumentation
+title: Verwalten von Netzwerkadaptern für die lokale Notfallwiederherstellung mit Azure Site Recovery
 description: Hier wird das Verwalten von Netzwerkschnittstellen für die lokale Notfallwiederherstellung in Azure mit Azure Site Recovery beschrieben.
 author: mayurigupta13
 manager: rochakm
@@ -7,14 +7,15 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 5d5dd7bc3f6b60c2f9d7c2179f2bd356ca101dc4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2a4752b501e40f9e8a4f3bc82cb2533c11f9e526
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471753"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954602"
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Verwalten von Netzwerkschnittstellen auf virtuellen Computern für die lokale Notfallwiederherstellung in Azure
+# <a name="manage-vm-network-interfaces-for-on-premises-disaster-recovery-to-azure"></a>Verwalten von VM-Netzwerkschnittstellen für die lokale Notfallwiederherstellung in Azure
+
 An einen virtuellen Computer (VM) in Azure muss mindestens eine Netzwerkschnittstelle angefügt sein. Es können so viele Netzwerkschnittstellen angefügt sein, wie die VM-Größe unterstützt.
 
 Standardmäßig wird die erste an einen virtuellen Azure-Computer angefügte Netzwerkschnittstelle als primäre Netzwerkschnittstelle definiert. Alle anderen Netzwerkschnittstellen auf dem virtuellen Computer sind sekundäre Netzwerkschnittstellen. Standardmäßig wird sämtlicher ausgehender Datenverkehr des virtuellen Computers über die IP-Adresse gesendet, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist.

@@ -1,7 +1,7 @@
 ---
 title: Load Balancer mit TCP-Rücksetzung bei Leerlauf
-titlesuffix: Azure Load Balancer
-description: Load Balancer mit bidirektionalen TCP-RST-Paketen bei Leerlauftimeout
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erfahren Sie über Load Balancer mit bidirektionalen TCP-RST-Paketen bei Leerlauftimeout.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2019
 ms.author: allensu
-ms.openlocfilehash: 8485f4b6e8d4ff55de4930b3cfb7a07802cf1d41
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b37253f37043d902d33504b99401781eb1c761c5
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274154"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075938"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Load Balancer mit TCP-Rücksetzung bei Leerlauf (öffentliche Vorschau)
 
