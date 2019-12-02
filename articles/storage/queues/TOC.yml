@@ -134,14 +134,18 @@
                   href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                 - name: Verwenden der Azure Storage-REST-API
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-        - name: Verwenden der vom Kunden verwalteten Schlüssel für die Verschlüsselung
-          items:
-            - name: Portal
-              href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: PowerShell
-              href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-            - name: Azure-Befehlszeilenschnittstelle
-              href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+            - name: Verwalten der Azure Storage-Verschlüsselung
+              items:
+                - name: Überprüfen des Verschlüsselungsschlüsselmodells für das Konto
+                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Konfigurieren der von Kunden verwalteten Verschlüsselungsschlüssel
+                  items:
+                    - name: Portal
+                      href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                    - name: PowerShell
+                      href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                    - name: Azure-Befehlszeilenschnittstelle
+                      href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Konfigurieren der clientseitigen Verschlüsselung
           items:
             - name: .NET
@@ -250,13 +254,13 @@
         - name: Laden Sie Storage-Explorer herunter.
           href: 'https://azure.microsoft.com/features/storage-explorer/'
         - name: Erste Schritte mit dem Storage-Explorer
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Versionshinweise für den Storage-Explorer
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Beheben von Problemen mit dem Storage-Explorer
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Barrierefreiheit des Speicher-Explorers
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Azure Storage-Forum
       href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
     - name: Azure Storage auf Stack Overflow
