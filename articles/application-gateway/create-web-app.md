@@ -1,20 +1,21 @@
 ---
-title: Schützen von Web-Apps mit Azure Application Gateway – PowerShell
+title: Konfigurieren von App Service mit PowerShell
+titleSuffix: Azure Application Gateway
 description: In diesem Artikel erfahren Sie, wie Sie Web-Apps als Back-End-Hosts für ein bereits vorhandenes oder neues Anwendungsgateway konfigurieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122216"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089511"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>Konfigurieren von App Service mit Application Gateway
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>Konfigurieren von App Service mit Application Gateway mittels PowerShell
 
 Mit Application Gateway können Sie eine App Service-App oder einen anderen mehrinstanzenfähigen Dienst als Back-End-Poolmitglied einrichten. In diesem Artikel erfahren Sie, wie Sie eine App Service-App mit Application Gateway konfigurieren. Das erste Beispiel zeigt, wie Sie ein bereits vorhandenes Anwendungsgateway für die Verwendung einer Web-App als Back-End-Poolmitglied konfigurieren. Das zweite Beispiel zeigt, wie Sie ein neues Anwendungsgateway mit einer Web-App als Back-End-Poolmitglied erstellen.
 

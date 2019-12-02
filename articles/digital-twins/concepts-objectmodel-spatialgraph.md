@@ -1,5 +1,5 @@
 ---
-title: Grundlegendes zu Azure Digital Twins-Objektmodellen und zum Raumauswertungsgraphen | Microsoft-Dokumentation
+title: Grundlegendes zu Objektmodellen und zum Raumauswertungsgraphen – Azure Digital Twins | Microsoft-Dokumentation
 description: Modellieren von Beziehungen zwischen Personen, Orten und Geräten mithilfe von Azure Digital Twins
 ms.author: alinast
 author: alinamstanciu
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/05/2019
-ms.openlocfilehash: 65e9e6235fd974a7731fa5e86322793f1b680ad9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721313"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74010092"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Grundlegendes zu Digital Twins-Objektmodellen und zum Raumintelligenzgraphen
 

@@ -1,18 +1,18 @@
 ---
-title: Anpassen von Web Application Firewall-Regeln in Azure Application Gateway – Azure-Portal
+title: Anpassen von Regeln über das Portal – Azure Web Application Firewall
 description: Dieser Artikel enthält Informationen zum Anpassen von Web Application Firewall-Regeln (WAF) in Application Gateway mit dem Azure-Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/24/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: ab2722ed4a4aa4fe95be15cd536bfd5d959f9139
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511543"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048378"
 ---
 # <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal
 

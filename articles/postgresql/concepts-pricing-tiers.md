@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: f65bc0a9969ac713c2fb9f8629b97fbe522e9fe0
-ms.sourcegitcommit: 55e0c33b84f2579b7aad48a420a21141854bc9e3
+ms.date: 11/08/2019
+ms.openlocfilehash: 4f8bbf22d1081948cf6effd5fdbd8b6a6b7d5332
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69624850"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903296"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Tarife in Azure Database for PostgreSQL – Einzelserver
 
@@ -22,7 +22,7 @@ Sie können eine Azure Database for PostgreSQL-Serverinstanz basierend auf drei 
 | Computegeneration | Gen 4, Gen 5 | Gen 4, Gen 5 | Gen 5 |
 | V-Kerne | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
 | Arbeitsspeicher pro V-Kern | 2 GB | 5 GB | 10 GB |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
 | Aufbewahrungszeitraum von Datenbanksicherungen | 7 bis 35 Tage | 7 bis 35 Tage | 7 bis 35 Tage |
 
@@ -47,9 +47,15 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 |    | **Basic** | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
 |:---|:----------|:--------------------|:---------------------|
 | Speichertyp | Azure-Standardspeicher | Azure Storage Premium | Azure Storage Premium |
-| Speichergröße | 5 GB bis 1 TB | 5 GB bis 4 TB | 5 GB bis 4 TB |
+| Speichergröße | 5 GB bis 1 TB | 5 GB bis 16 TB | 5 GB bis 16 TB |
 | Speicherinkrementgröße | 1 GB | 1 GB | 1 GB |
-| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 6.000 IOPS |
+| IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
+
+> [!NOTE]
+> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
+>
+> Alle anderen Regionen unterstützen bis zu 4 TB Speicherplatz und 6000 IOPS.
+>
 
 Während und nach der Erstellung des Servers können Sie zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf der Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern. 
 
@@ -59,26 +65,6 @@ Während und nach der Erstellung des Servers können Sie zusätzliche Speicherka
 Der Tarif „Basic“ umfasst keine IOPS-Garantie. Für die Tarife „Allgemein“ und „Arbeitsspeicheroptimiert“ wird der IOPS-Wert gegenüber der bereitgestellten Speichergröße in einem Verhältnis von 3:1 skaliert.
 
 Sie können Ihren E/A-Verbrauch im Azure-Portal oder mit Azure CLI-Befehlen überwachen. Die wichtigen zu überwachenden Metriken sind das [Speicherlimit, der Speicherprozentsatz, der genutzte Speicher und der E/A-Prozentsatz](concepts-monitoring.md).
-
-### <a name="large-storage-preview"></a>Großspeicher (Vorschauversion)
-
-Wir erhöhen die Speicherlimits für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“. Neu erstellte Server, für die die Vorschauversion verwendet wird, können bis zu 16 TB an Speicher bereitstellen. Der IOPS-Wert kann im Verhältnis 3:1 auf bis zu 20.000 IOPS skaliert werden. Wie beim derzeit allgemein verfügbaren Speicher auch, können Sie nach der Erstellung des Servers zusätzliche Speicherkapazität hinzufügen und dem System erlauben, den Speicher auf Grundlage des Speicherbedarfs Ihrer Workload automatisch zu vergrößern.
-
-|              | **Allgemeiner Zweck** | **Arbeitsspeicheroptimiert** |
-|:-------------|:--------------------|:---------------------|
-| Speichertyp | Azure Storage Premium | Azure Storage Premium |
-| Speichergröße | 32 GB bis 16 TB| 32 GB bis 16 TB |
-| Speicherinkrementgröße | 1 GB | 1 GB |
-| IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
-
-> [!IMPORTANT]
-> Großspeicher befindet sich in den folgenden Regionen derzeit in der öffentlichen Vorschauphase: „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Westen“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“.
->
-> Folgendes wird vom Großspeicher (Vorschauversion) derzeit nicht unterstützt:
->
-> * Eingehende Verbindungen über VNET-Dienstendpunkte
-> * Geografisch redundante Sicherungen
-> * Lesereplikate
 
 ### <a name="reaching-the-storage-limit"></a>Erreichen der Speicherbegrenzung
 

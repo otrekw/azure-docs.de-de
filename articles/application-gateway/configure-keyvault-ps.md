@@ -1,18 +1,19 @@
 ---
-title: Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
+title: Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten – PowerShell
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie Azure Application Gateway mit Key Vault für Serverzertifikate integrieren können, die einem HTTPS-fähigen Listener zugeordnet sind.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/22/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: b7408d6169e1cf42bcda8855a19076c739d086dd
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: c40c4cf9f25ce17bc7042191324aeb864696995f
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001011"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074586"
 ---
 # <a name="configure-ssl-termination-with-key-vault-certificates-by-using-azure-powershell"></a>Konfigurieren von SSL-Terminierung mit Key Vault-Zertifikaten mithilfe von Azure PowerShell
 

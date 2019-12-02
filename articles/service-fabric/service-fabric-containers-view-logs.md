@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
 ms.author: atsenthi
-ms.openlocfilehash: 3fa40d794d02da08d29b6cac652edf493977f8e1
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: fd1787318e8573183293ddd832a11cf8cfe09cf2
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599735"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832617"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>Anzeigen von Protokollen für einen Service Fabric-Containerdienst
 Azure Service Fabric ist ein Containerorchestrator und unterstützt [Linux- und Windows-Container](service-fabric-containers-overview.md).  In diesem Artikel wird beschrieben, wie Containerprotokolle eines ausgeführten Containerdiensts oder eines inaktiven Containers angezeigt werden, sodass Sie Probleme diagnostizieren und beheben können.
 
 ## <a name="access-the-logs-of-a-running-container"></a>Zugreifen auf die Protokolle eines ausgeführten Containers
-Der Zugriff auf Containerprotokolle ist über [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) möglich.  Öffnen Sie in einem Webbrowser Service Fabric Explorer über den Verwaltungsendpunkt des Clusters. Navigieren Sie dazu zu [http://mycluster.region.cloudapp.azure.com:19080/Explorer](http://mycluster.region.cloudapp.azure.com:19080/Explorer).  
+Der Zugriff auf Containerprotokolle ist über [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) möglich.  Öffnen Sie in einem Webbrowser Service Fabric Explorer über den Verwaltungsendpunkt des Clusters. Navigieren Sie dazu zu `http://mycluster.region.cloudapp.azure.com:19080/Explorer`.  
 
 Die Containerprotokolle befinden sich auf dem Clusterknoten, auf dem die Containerdienstinstanz ausgeführt wird. Rufen Sie beispielsweise die Protokolle für den Front-End-Webcontainer der [Linux-Voting-Beispielanwendung](service-fabric-quickstart-containers-linux.md) ab. Erweitern Sie in der Strukturansicht **Cluster**>**Anwendungen**>**VotingType**>**fabric:/Voting/azurevotefront**.  Erweitern Sie anschließend die Partition (in diesem Beispiel d1aa737e-f22a-e347-be16-eec90be24bc1), und überprüfen Sie, ob der Container auf dem Clusterknoten *_lnxvm_0* ausgeführt wird.
 

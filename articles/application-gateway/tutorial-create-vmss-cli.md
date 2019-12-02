@@ -1,21 +1,19 @@
 ---
-title: Erstellen eines Anwendungsgateways mit einer VM-Skalierungsgruppe – Azure CLI | Microsoft-Dokumentation
+title: Erstellen eines VM-Skalierungsgruppen-Back-Ends – CLI
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie unter Verwendung der Azure CLI ein Anwendungsgateway mit einer VM-Skalierungsgruppe erstellen.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 792d6da36851f74429d97a9779aff1727e8f64db
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec1837419390fc29e53565881e41fd4265914f78
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133643"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074528"
 ---
 # <a name="create-an-application-gateway-with-a-virtual-machine-scale-set-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways mit einer VM-Skalierungsgruppe unter Verwendung der Azure CLI
 

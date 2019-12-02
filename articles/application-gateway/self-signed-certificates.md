@@ -1,5 +1,6 @@
 ---
-title: Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
+title: Generieren eines selbstsignierten Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie ein selbstsigniertes Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle generieren.
 services: application-gateway
 author: vhorne
@@ -7,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: victorh
-ms.openlocfilehash: 659c4cb3a6f0d50176875b76eeb2784c711eafd1
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: fb3d2e70d9485c63d6de156abe9d192afa818814
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967140"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075090"
 ---
 # <a name="generate-an-azure-application-gateway-self-signed-certificate-with-a-custom-root-ca"></a>Generieren eines selbstsignierten Azure Application Gateway-Zertifikats mit einer benutzerdefinierten Stammzertifizierungsstelle
 
@@ -87,7 +88,7 @@ Verwenden Sie den folgenden Befehl, um den Schlüssel für das Serverzertifikat 
 Die Zertifikatsignieranforderung ist ein öffentlicher Schlüssel, der einer Zertifizierungsstelle erteilt wird, wenn ein Zertifikat angefordert wird. Die Zertifizierungsstelle gibt das Zertifikat für diese spezielle Anforderung aus.
 
 > [!NOTE]
-> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. www.contoso.com, und der CN des Serverzertifikats ist www.fabrikam.com.
+> Der allgemeine Name (Common Name, CN) für das Serverzertifikat muss sich von der Domäne des Zertifikatausstellers unterscheiden. In diesem Fall lautet der CN für den Aussteller z. B. `www.contoso.com`, und der CN des Serverzertifikats ist `www.fabrikam.com`.
 
 
 1. Verwenden Sie den folgenden Befehl, um die Zertifikatsignieranforderung zu generieren:

@@ -1,6 +1,6 @@
 ---
-title: Senden von Ereignissen an eine Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen Event Hub erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen, die Sie in Azure Time Series Insights anzeigen können.
+title: Senden von Ereignissen an eine Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen Event Hub konfigurieren, eine Beispielanwendung ausführen und Ereignisse an Ihre Azure Time Series Insights-Umgebung senden.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2878a77918fdd1c1cd298ae536bcdd3bec065e91
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: cdcd64b5281ce16002720072db3b5f29f1978cac
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991122"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014832"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe eines Event Hub
 

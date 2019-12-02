@@ -1,6 +1,5 @@
 ---
-title: Azure Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
-titlesuffix: Azure Load Balancer
+title: Diagnose mit Metriken, Warnungen und Ressourcenintegrität – Azure Load Balancer Standard
 description: Verwenden Sie die verfügbaren Informationen zu Metriken, Warnungen und Ressourcenintegrität für die Diagnose Ihres Azure Load Balancer Standard.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: b241f753c0de6e14282c679c5aec3c32be68e348
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69516260"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048728"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 

@@ -1,22 +1,18 @@
 ---
-title: Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS – Azure PowerShell | Microsoft-Dokumentation
+title: HTTP-zu-HTTPS-Umleitung mit PowerShell – Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Anwendungsgateway Datenverkehr erstellen, der von HTTP zu HTTPS umgeleitet wird.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: 123b3991e2cfe5b41f9d75cd8902609d73e92a91
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 480ceb4e13843ebeedf155f31aedacc5439a38de
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65202823"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047423"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS mithilfe von Azure PowerShell
 

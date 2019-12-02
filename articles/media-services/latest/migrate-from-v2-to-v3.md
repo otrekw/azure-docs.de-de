@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 05/01/2019
 ms.author: juliako
-ms.openlocfilehash: 901542e2a69d2c7880825d76c1d69d3795713ed2
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: fb36387764efbdaa1ad3d164ba419bee49770871
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231176"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74049000"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -38,7 +38,7 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 *  v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von Azure Resource Manager bereitstellt. Azure Resource Manager-Vorlagen können zum Erstellen und Bereitstellen von Transformationen, Streamingendpunkten, Liveereignissen und mehr verwendet werden.
 * Dokument [OpenAPI-Spezifikation (früher als Swagger bezeichnet)](https://aka.ms/ams-v3-rest-sdk).
     Macht das Schema für alle Dienstkomponenten verfügbar, einschließlich dateibasierter Codierung.
-* SDKs verfügbar für [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](https://aka.ms/ams-v3-nodejs-ref), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref) und Ruby.
+* SDKs verfügbar für [.NET](https://aka.ms/ams-v3-dotnet-ref), .NET Core, [Node.js](/javascript/api/overview/azure/mediaservices/management), [Python](https://aka.ms/ams-v3-python-ref), [Java](https://aka.ms/ams-v3-java-ref), [Go](https://aka.ms/ams-v3-go-ref) und Ruby.
 * [Azure CLI](https://aka.ms/ams-v3-cli-ref)-Integration für einfache Skriptunterstützung.
 
 ### <a name="new-features"></a>Neue Funktionen
@@ -73,7 +73,8 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
     * Das Liveereignis ersetzt den Kanal.<br/>Die Liveereignisabrechnung basiert auf Livekanal-Verbrauchseinheiten. Weitere Informationen finden Sie unter [Zustandswerte von Liveereignissen und Abrechnung](live-event-states-billing.md) und [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
     * Die Liveausgabe ersetzt das Programm.
 * Liveausgaben werden bei der Erstellung gestartet und beim Löschen beendet. In den v2-APIs haben Programme anders funktioniert, sie mussten nach der Erstellung gestartet werden.
-*  Um Informationen zu einem Auftrag abzurufen, müssen Sie den Transformationsnamen wissen, unter dem der Auftrag erstellt wurde. 
+* Um Informationen zu einem Auftrag abzurufen, müssen Sie den Transformationsnamen wissen, unter dem der Auftrag erstellt wurde. 
+* In v2 werden [Eingabe](../previous/media-services-input-metadata-schema.md)- und [Ausgabe](../previous/media-services-output-metadata-schema.md)-Metadatendateien als Ergebnis eines Codierungsauftrags generiert. In v3 wurde das Metadatenformat von XML in JSON geändert. 
 
 > [!NOTE]
 > Sehen Sie sich die Namenskonventionen an, die auf [Media Services v3-Ressourcen](media-services-apis-overview.md#naming-conventions) angewendet werden. Sehen Sie sich auch das [Benennen von Blobs](assets-concept.md#naming-blobs) an.

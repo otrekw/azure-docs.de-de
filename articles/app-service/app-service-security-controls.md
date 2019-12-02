@@ -9,12 +9,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 65b1c7f4649ff90c1305d4007428ea02bb003369
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a1889def8d177c312618f12b3fa0480cc4b849b3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886186"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74046861"
 ---
 # <a name="security-controls-for-azure-app-service"></a>Sicherheitskontrollen für Azure App Service
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die in Azure App Service integrierten Sicherheitskontro
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation
 |---|---|--|
-| Unterstützung des Dienstendpunkts| Ja | Derzeit in der Vorschauversion für App Service verfügbar.| [Azure App Service-Zugriffseinschränkungen](app-service-ip-restrictions.md)
+| Unterstützung des Dienstendpunkts| Ja | Verfügbar für App Service.| [Azure App Service-Zugriffseinschränkungen](app-service-ip-restrictions.md)
 | Unterstützung der VNet-Einschleusung| Ja | App Service-Umgebungen sind private Implementierungen von App Service, die für einen einzelnen Kunden dediziert sind, der in das virtuelle Netzwerk eines Kunden eingefügt wurde. | [Einführung in die App Service-Umgebungen](environment/intro.md)
 | Netzwerkisolation und Firewallunterstützung| Ja | Für die öffentliche mehrinstanzenfähige Variante von App Service können Kunden Netzwerk-Zugriffssteuerungslisten (IP-Einschränkungen) konfigurieren, um zulässigen eingehenden Datenverkehr zu sperren.  App Service-Umgebungen werden direkt in virtuellen Netzwerken bereitgestellt und können daher mit Netzwerksicherheitsgruppen geschützt werden. | [Azure App Service-Zugriffseinschränkungen](app-service-ip-restrictions.md)
 | Unterstützung der Tunnelerzwingung| Ja | App Service-Umgebungen können im virtuellen Netzwerk eines Kunden bereitgestellt werden, in dem Tunnelerzwingung konfiguriert ist. | [Konfigurieren Ihrer App Service-Umgebung mit erzwungenem Tunneling](environment/forced-tunnel-support.md)

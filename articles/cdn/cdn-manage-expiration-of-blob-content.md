@@ -1,5 +1,6 @@
 ---
-title: Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network | Microsoft-Dokumentation
+title: Verwalten des Ablaufs von Azure Blob-Speicher
+titleSuffix: Azure Content Delivery Network
 description: Informationen zu den Optionen für das Festlegen der Gültigkeitsdauer von Blobs beim Azure CDN-Zwischenspeichern.
 services: cdn
 documentationcenter: ''
@@ -14,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: edeb2a798031e34a8ee3f93fd104ebb221ce9c61
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593759"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083155"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
 > [!div class="op_single_selector"]
