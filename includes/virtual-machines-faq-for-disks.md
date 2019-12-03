@@ -8,15 +8,13 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 95fe5471789b66c253aa21d73433f5192cd01e6b
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612077"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74008568"
 ---
-# <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Häufig gestellte Fragen zu Azure-IaaS-VM-Datenträgern sowie zu verwalteten und nicht verwalteten Premium-Datenträgern
-
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
 ## <a name="managed-disks"></a>Managed Disks
@@ -350,18 +348,6 @@ Nein. Wenn Sie allerdings eine VHD-Datei von einem verschlüsselten, verwalteten
 
 ## <a name="premium-disks-managed-and-unmanaged"></a>Premium-Datenträger: verwaltet und nicht verwaltet
 
-**Welche Regionen unterstützen die Burstfunktion für die gültigen SSD Premium-Datenträgergrößen?**
-
-Die Burstfunktion wird derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
-
-**In welchen Regionen werden die Größen mit 4/8/16 GiB für verwaltete Datenträger (P1/P2/P3, E1/E2/E3) unterstützt?**
-
-Diese neuen Datenträgergrößen werden derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
-
-**Werden die Datenträgergrößen P1/P2/P3 für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
-
-Nein, sie werden nur auf verwalteten SSD Premium-Datenträgern unterstützt. 
-
 **Kann ich sowohl Premium- als auch Standard-Datenträger anfügen, wenn ein virtueller Computer eine Größenserie mit Unterstützung für Premium-SSD-Datenträger (beispielsweise DSv2) verwendet?** 
 
 Ja.
@@ -391,6 +377,22 @@ Bei der lokalen SSD handelt es sich um einen temporären Speicher, der in einem 
 Es gibt keinen Nachteil bei der Verwendung von TRIM auf Azure-Datenträger auf Premium- oder Standard-Datenträgern.
 
 ## <a name="new-disk-sizes-managed-and-unmanaged"></a>Neue Datenträgergrößen: verwaltet und nicht verwaltet
+
+**Welche Regionen unterstützen die Burstfunktion für die gültigen SSD Premium-Datenträgergrößen?**
+
+Die Burstfunktion wird derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
+
+**In welchen Regionen werden die Größen mit 4/8/16 GiB für verwaltete Datenträger (P1/P2/P3, E1/E2/E3) unterstützt?**
+
+Diese neuen Datenträgergrößen werden derzeit in der Azure-Region „USA, Westen-Mitte“ unterstützt.
+
+**Werden die Datenträgergrößen P1/P2/P3 für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
+
+Nein, sie werden nur auf verwalteten SSD Premium-Datenträgern unterstützt. 
+
+**Werden die Datenträgergrößen E1/E2/E3 für nicht verwaltete Datenträger oder Seitenblobs unterstützt?**
+
+Nein, verwaltete SSD Standard-Datenträger beliebiger Größe können nicht mit nicht verwalteten Datenträgern oder Seitenblobs verwendet werden.
 
 **Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 

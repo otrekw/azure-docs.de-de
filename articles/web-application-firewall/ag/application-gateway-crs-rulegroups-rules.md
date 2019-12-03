@@ -1,18 +1,19 @@
 ---
-title: 'Azure Application Gateway: CRS-Regelgruppen und -Regeln von Web Application Firewall'
+title: CRS-Regelgruppen und -Regeln
+titleSuffix: Azure Web Application Firewall
 description: Diese Seite enthält Informationen zu CRS-Regelgruppen und -Regeln von Web Application Firewall.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 59e4203ca219802a95a09761b90c00a039b47631
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0303f09e5e704a18576bf50d1f00007f7f86f320
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511555"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075371"
 ---
 # <a name="web-application-firewall-crs-rule-groups-and-rules"></a>CRS-Regelgruppen und -Regeln der Web Application Firewall
 

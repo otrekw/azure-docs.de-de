@@ -1,6 +1,6 @@
 ---
 title: Bedrohungserkennung für Datendienste in Azure Security Center | Microsoft-Dokumentation
-description: Dieses Thema stellt die Warnungen der Datendienste vor, die in Azure Security Center verfügbar sind.
+description: In diesem Artikel werden die Warnungen der Datendienste vorgestellt, die in Azure Security Center verfügbar sind.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -10,16 +10,16 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: memildin
-ms.openlocfilehash: c69352b8ff11edfce8bd800a0d3aad4584557572
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d23d9d2712923f37b3ab9da5ae5369342cd82f5d
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621347"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73907000"
 ---
 # <a name="threat-detection-for-data-services-in-azure-security-center"></a>Bedrohungserkennung für Datendienste in Azure Security Center
 
- Azure Security Center analysiert die Protokolle der Datenspeicherdienste und löst Warnungen aus, wenn eine Bedrohung für Ihre Datenressourcen erkannt wird. Dieses Thema listet die Warnungen auf, die von Security Center für die folgenden Dienste generiert werden:
+ Azure Security Center analysiert die Protokolle der Datenspeicherdienste und löst Warnungen aus, wenn eine Bedrohung für Ihre Datenressourcen erkannt wird. In diesem Artikel werden die Warnungen aufgelistet, die von Security Center für die folgenden Dienste generiert werden:
 
 * [Azure SQL-Datenbank und Azure SQL Data Warehouse](#data-sql)
 * [Azure Storage (in englischer Sprache)](#azure-storage)
@@ -53,7 +53,7 @@ Security Center analysiert Diagnoseprotokolle von Lese-, Schreib- und Löschanfo
 
 |Warnung|BESCHREIBUNG|
 |---|---|
-|**Anomalie: Zugriff von einem ungewöhnlichen Ort**|Bei der Stichprobenanalyse des Netzwerkdatenverkehrs wurde eine ungewöhnliche ausgehende RDP-Kommunikation (Remote Desktop Protocol) erkannt, die von einer Ressource in Ihrer Bereitstellung stammt. Diese Aktivität ist für die Umgebung unnormal. Dies kann darauf hindeuten, dass Ihre Ressource kompromittiert wurde und jetzt für Brute-Force-Angriffe auf einen externen RDP-Endpunkt verwendet wird. Diese Art von Aktivität kann dazu führen, dass Ihre IP-Adresse von externen Stellen als schädlich gekennzeichnet wird.|
+|**Zugriff von einem ungewöhnlichen Ort**|Gibt an, dass sich das Zugriffsmuster für ein Azure Storage-Konto geändert hat. Im Vergleich zu den letzten Aktivitäten hat jemand von einer unbekannten IP-Adresse aus auf dieses Konto zugegriffen. Entweder hat ein Angreifer Zugriff auf das Konto erlangt, oder ein berechtigter Benutzer hat von einem neuen oder ungewöhnlichen geografischen Standort eine Verbindung hergestellt. Ein Beispiel für Letzteres wäre etwa eine Remotewartung durch eine neue Anwendung oder einen neuen Entwickler.|
 |**Anomalie beim Anwendungszugriff**|Gibt an, dass auf dieses Speicherkonto über eine ungewöhnliche Anwendung zugegriffen wurde. Mögliche Ursache: Ein Angreifer hat mit einer neuen Anwendung auf Ihr Speicherkonto zugegriffen.|
 |**Anomalie: Anonymer Zugriff**|Gibt an, dass sich am Zugriffsmuster eines Speicherkontos etwas geändert hat. Auf dieses Konto wurde beispielsweise auf ungewöhnliche Weise (ohne Authentifizierung) zugegriffen, was im Vergleich zum letzten Zugriffsmuster für dieses Konto ein unerwartetes Verhalten ist. Mögliche Ursache: Ein Angreifer hat öffentlichen Lesezugriff auf einen Container ausgenutzt, der Blobspeicher enthält.|
 |**Tor Anomaly** (Tor-Anomalie)|Gibt an, dass auf dieses Konto erfolgreich über eine IP-Adresse zugegriffen wurde, bei der es sich um einen bekannten aktiven Exitknoten von Tor (bekannter Anonymisierungsproxy) handelt. Der Schweregrad dieser Warnung hängt vom verwendeten Authentifizierungstyp (sofern zutreffend) sowie davon ab, ob es sich hierbei um den ersten Zugriff dieser Art handelt. Mögliche Ursachen: Ein Angreifer hat mit Tor auf Ihr Speicherkonto zugegriffen, oder ein berechtigter Benutzer hat unter Verwendung von Tor auf Ihr Speicherkonto zugegriffen.|

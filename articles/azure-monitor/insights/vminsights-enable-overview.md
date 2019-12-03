@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 09/24/2019
-ms.openlocfilehash: 9d132faf0b4d1de232e2b7e6e5ab6730978e27a8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/14/2019
+ms.openlocfilehash: 40282fdb192037d63bff8b0037f09b8b27cf3b1e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555221"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109182"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-overview"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion): Übersicht
 
@@ -37,19 +37,23 @@ Bevor Sie beginnen, stellen Sie sicher, dass Sie die Informationen in den folgen
 Azure Monitor für VMs unterstützt einen Log Analytics-Arbeitsbereich in den folgenden Regionen:
 
 - USA, Westen-Mitte
-- USA, Westen 2<sup>1</sup>
+- USA (Westen)
+- USA, Westen 2
+- USA Süd Mitte
 - East US
-- USA, Osten2<sup>1</sup>
+- USA (Ost 2)
+- USA (Mitte)
+- USA Nord Mitte
 - Kanada, Mitte
 - UK, Süden
-- Europa, Norden<sup>1</sup>
+- Nordeuropa
 - Europa, Westen
+- Asien, Osten
 - Asien, Südosten
-- Japan, Osten<sup>1</sup>
-- Australien, Osten<sup>1</sup>
-- Australien, Südosten<sup>1</sup>
-
-<sup>1</sup> Diese Region unterstützt derzeit das Integritätsfeature von Azure Monitor für VMs nicht.
+- Indien, Mitte
+- Japan, Osten
+- Australien (Osten)
+- Australien, Südosten
 
 >[!NOTE]
 >Sie können virtuelle Azure-Computer aus beliebigen Regionen bereitstellen. Diese virtuellen Computer sind nicht auf die vom Log Analytics-Arbeitsbereich unterstützten Bereiche beschränkt.
@@ -77,29 +81,25 @@ Verwenden Sie zum Konfigurieren Ihres Arbeitsbereichs für das bedarfsorientiert
 
 Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die von Azure Monitor für VMs unterstützt werden. Eine vollständige Liste mit ausführlicheren Informationen zu den größeren und kleineren Release- und unterstützen Kernelversionen des Linux-Betriebssystems ist weiter unten in diesem Abschnitt angegeben.
 
-|Betriebssystemversion |Leistung |Karten |Health |
-|-----------|------------|-----|-------|
-|Windows Server 2019 | X | X | X |
-|Windows Server 2016 1803 | X | X | X |
-|Windows Server 2016 | X | X | X |
-|Windows Server 2012 R2 | X | X | X |
-|Windows Server 2012 | X | X | |
-|Windows Server 2008 R2 | X | X|  |
-|Windows 10 1803 | X | X | |
-|Windows 8.1 | X | X | |
-|Windows 8 | X | X | |
-|Windows 7 SP1 | X | X | |
-|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| X |
-|Ubuntu 18.04, 16.04 | X | X | X |
-|CentOS Linux 7, 6 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Debian 9.4, 8 | X<sup>1</sup> | | X |
+|Betriebssystemversion |Leistung |Karten |
+|-----------|------------|-----|
+|Windows Server 2019 | X | X |
+|Windows Server 2016 1803 | X | X |
+|Windows Server 2016 | X | X |
+|Windows Server 2012 R2 | X | X |
+|Windows Server 2012 | X | X |
+|Windows Server 2008 R2 | X | X|
+|Windows 10 1803 | X | X |
+|Windows 8.1 | X | X |
+|Windows 8 | X | X |
+|Windows 7 SP1 | X | X |
+|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
+|Ubuntu 18.04, 16.04 | X | X |
+|CentOS Linux 7, 6 | X | X |
+|SUSE Linux Enterprise Server (SLES) 12 | X | X |
+|Debian 9.4, 8 | X<sup>1</sup> | |
 
 <sup>1</sup> Das Leistungsfeature von Azure Monitor für VMs ist nur über Azure Monitor verfügbar. Es ist nicht direkt über den linken Bereich des virtuellen Azure-Computers verfügbar.
-
->[!NOTE]
->Das Integritätsfeature von Azure Monitor für VMs unterstützt keine [geschachtelte Virtualisierung](../../virtual-machines/windows/nested-virtualization.md) in einem virtuellen Azure-Computer.
->
 
 >[!NOTE]
 >Für das Linux-Betriebssystem gilt Folgendes:
@@ -157,12 +157,12 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die von Az
 
 Das Zuordnungsfeature in Azure Monitor für VMs erhält seine Daten vom Microsoft Dependency-Agent. Der Dependency-Agent baut auf dem Log Analytics-Agent auf und ist auf dessen Verbindung mit Log Analytics angewiesen. Daher muss für Ihr System der Log Analytics-Agent installiert und mit dem Dependency-Agent konfiguriert sein.
 
-Wenn Sie Azure Monitor für VMs für eine einzelne Azure-VM aktivieren oder die Methoden für die bedarfsorientierte Bereitstellung verwenden, installieren Sie den Agent mit der Azure-VM-Erweiterung für den Depency-Agent im Rahmen der Erfahrung.
+Wenn Sie Azure Monitor für VMs für eine einzelne Azure-VM aktivieren oder die Methoden für die bedarfsorientierte Bereitstellung verwenden, installieren Sie den Agent mit der Azure-VM-Erweiterung für den Depency-Agent für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) oder [Linux](../../virtual-machines/extensions/agent-dependency-linux.md).
 
 >[!NOTE]
 >Die in diesem Abschnitt beschriebenen Informationen gelten auch für die [Dienstzuordnungslösung](service-map.md).  
 
-In einer Hybridumgebung können Sie den Dependency-Agent manuell herunterladen und installieren. Wenn Ihre virtuellen Computer außerhalb von Azure gehostet werden, verwenden Sie eine automatisierte Bereitstellungsmethode.
+In einer Hybridumgebung können Sie den Dependency-Agent manuell oder automatisch herunterladen und installieren.
 
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die vom Zuordnungsfeature in einer Hybridumgebung unterstützt werden.
 
@@ -199,6 +199,9 @@ Aktivieren Sie Azure Monitor für VMs, indem Sie eine der in dieser Tabelle besc
 ## <a name="performance-counters-enabled"></a>Aktivierte Leistungsindikatoren 
 
 Azure Monitor für VMs konfiguriert einen Log Analytics-Arbeitsbereich, um die verwendeten Leistungsindikatoren zu sammeln. In der folgenden Tabelle sind die Objekte und Indikatoren aufgelistet, die alle 60 Sekunden erfasst werden.
+
+>[!NOTE]
+>Sie können zusätzlich zu den von Azure Monitor für VMs aktivierten Leistungsindikatoren in der folgenden Liste weitere Leistungsindikatoren aktivieren, die Sie für die Erfassung von virtuellen Computern benötigen, die Berichte an den Arbeitsbereich senden. Wenn Sie diese Leistungsindikatoren deaktivieren, wird verhindert, dass in den Leistungsdiagrammen, die im Leistungsfeature enthalten sind, die Ressourcenverwendung der VMs angezeigt wird.
 
 ### <a name="windows-performance-counters"></a>Windows-Leistungsindikatoren
 
@@ -257,4 +260,4 @@ Nachdem Sie die Überwachung für Ihre VM aktiviert haben, stehen die Überwachu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Verwenden des Integritätsfeatures finden Sie unter [Azure Monitor für VMs – Integrität anzeigen](vminsights-health.md). Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).
+Informationen zum Verwenden der Leistungsüberwachung finden Sie unter [Azure Monitor für VMs – Leistung anzeigen](vminsights-performance.md). Informationen zu ermittelten Anwendungsabhängigkeiten finden Sie unter [Azure Monitor für VMs – Zuordnung anzeigen](vminsights-maps.md).

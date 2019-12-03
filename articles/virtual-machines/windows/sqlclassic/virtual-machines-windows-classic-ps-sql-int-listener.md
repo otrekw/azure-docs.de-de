@@ -1,27 +1,28 @@
 ---
-title: Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial werden Ressourcen verwendet, die mit dem klassischen Bereitstellungsmodell erstellt wurden, und es wird mithilfe eines internen Load Balancers eine AlwaysOn-Verfügbarkeitsgruppe in Azure erstellt.
+title: Konfigurieren eines ILB-Listeners für Verfügbarkeitsgruppen (klassisch)
+description: In diesem Tutorial werden Ressourcen verwendet, die mit dem klassischen Bereitstellungsmodell erstellt wurden, und es wird mithilfe eines internen Lastenausgleichs eine AlwaysOn-Verfügbarkeitsgruppe in einer SQL Server-VM in Azure erstellt.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
 editor: ''
 tags: azure-service-management
-ms.assetid: 291288a0-740b-4cfa-af62-053218beba77
+ms.assetid: 291288a0-740b-4cfa-af62-053218beba77j
 ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: ca8adf4f9ce221533240e6c797f1fb01dacf6e8d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101903"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74032669"
 ---
-# <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>Konfigurieren eines ILB-Listeners für AlwaysOn-Verfügbarkeitsgruppen in Azure
+# <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Konfigurieren eines ILB-Listeners für Verfügbarkeitsgruppen auf Azure SQL Server-VMs
 > [!div class="op_single_selector"]
 > * [Interner Listener](../classic/ps-sql-int-listener.md)
 > * [Externer Listener](../classic/ps-sql-ext-listener.md)

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: e7f08c175972826a8b226d7e80f563ac71ba23db
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 0c1b09fbc425a80fe1f8d075c5a83455167073c3
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514757"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74029982"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -33,6 +33,13 @@ Kopiert Quelldaten an einen Zielspeicherort. Die folgenden Richtungen werden unt
   - AWS S3 (Zugriffsschlüssel) -> Azure-Blockblob (SAS- oder OAuth-Authentifizierung)
 
 Weitere Informationen finden Sie in den Beispielen.
+
+## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
+
+- [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
+- [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
+- [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
 ## <a name="advanced"></a>Erweitert
 
@@ -172,7 +179,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--check-length**                         Überprüft nach der Übertragung die Länge einer Datei am Ziel. Wenn die Quelle und das Ziel nicht übereinstimmen, wird die Übertragung als fehlerhaft gekennzeichnet. (Standardwert: „true“)
 
-**--check-md5** string                     Gibt an, wie streng MD5-Hashes beim Herunterladen überprüft werden sollten. Nur beim Herunterladen verfügbar. Verfügbare Optionen: „NoCheck“, „LogOnly“, „FailIfDifferent“, „FailIfDifferentOrMissing“. (Standardwert: „FailIfDifferent“) (Der Standardwert lautet „FailIfDifferent“.)
+**--check-md5** string                     Gibt an, wie streng MD5-Hashes beim Herunterladen überprüft werden sollten. Nur beim Herunterladen verfügbar. Verfügbare Optionen: NoCheck, LogOnly, FailIfDifferent, FailIfDifferentOrMissing. (Die Standardeinstellung ist „FailIfDifferent“.)
 
 **--content-disposition** string           Legt den Content-Disposition-Header fest. Wird beim Herunterladen zurückgegeben.
 
@@ -204,15 +211,15 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--include-pattern** string               Schließt nur diese Dateien beim Kopieren ein. Diese Option unterstützt Platzhalterzeichen (*). Trennen Sie Dateien durch ein Semikolon (;).
 
-**--log-level** string                     Definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Der Standardwert lautet „INFO“). (Standardwert: „Info“)
+**--log-level** string                     Definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Standardwert: „Info“)
 
 **--metadata** string                      Führt Uploads in Azure Storage mit diesen Schlüssel-Wert-Paaren als Metadaten aus.
 
 **--no-guess-mime-type**                   Verhindert, dass AzCopy anhand der Erweiterung oder des Inhalts der Datei den Inhaltstyp erkennt.
 
-**--overwrite** string                     Überschreibt die in Konflikt stehenden Dateien und Blobs am Ziel, wenn dieses Flag auf „true“ festgelegt ist. (Standardwert: „true“) Mögliche Werte sind „true“, „false“ und „prompt“. (Der Standardwert lautet „true“.)
+**--overwrite** string                     Überschreibt die in Konflikt stehenden Dateien und Blobs am Ziel, wenn dieses Flag auf „true“ festgelegt ist. Mögliche Werte sind „true“, „false“ und „prompt“. (Der Standardwert lautet „true“.)
 
-**--page-blob-tier** string                Lädt ein Seitenblob unter Verwendung dieses Blobtarifs in Azure Storage hoch. (Der Standardwert lautet „None“.) (Standardwert: „None“)
+**--page-blob-tier** string                Lädt ein Seitenblob unter Verwendung dieses Blobtarifs in Azure Storage hoch. (Standardwert: „None“)
 
 **--preserve-last-modified-time**          Nur verfügbar, wenn das Ziel ein Dateisystem ist.
 
@@ -222,9 +229,9 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--s2s-detect-source-changed**           Überprüft, ob sich die Quelle nach dem Enumerieren geändert hat.
 
-**--s2s-handle-invalid-metadata** string   Gibt an, wie ungültige Metadatenschlüssel behandelt werden. Verfügbare Optionen: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (Der Standardwert lautet „ExcludeIfInvalid“.) (Standardwert: „ExcludeIfInvalid“)
+**--s2s-handle-invalid-metadata** string   Gibt an, wie ungültige Metadatenschlüssel behandelt werden. Verfügbare Optionen: ExcludeIfInvalid, FailIfInvalid, RenameIfInvalid. (Standardwert: „ExcludeIfInvalid“)
 
-**--s2s-preserve-access-tier**             Behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Die Standardeinstellung ist „true“).  (Standardwert: „true“)
+**--s2s-preserve-access-tier**             Behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt, finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: „true“)
 
 **--s2s-preserve-properties**              Behält die vollständigen Eigenschaften beim Kopieren zwischen Diensten bei. Für AWS S3 und Azure Files mit mehr als einer Dateiquelle gibt der Auflistungsvorgang nicht die vollständigen Eigenschaften von Objekten und Dateien zurück. Um die vollständigen Eigenschaften beizubehalten, muss AzCopy eine zusätzliche Anforderung pro Objekt oder Datei senden. (Standardwert: „true“)
 

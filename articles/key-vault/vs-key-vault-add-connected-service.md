@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 9331f13bd85d9df0d47f8fa9d0964974764691f7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4cbc4044b5d1270cecd1a271d2a1db02801650dd
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815117"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012770"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -134,6 +134,21 @@ Löschen Sie die Ressourcengruppe, wenn Sie sie nicht mehr benötigen. Dadurch w
 1. Geben Sie den Namen Ihrer Ressourcengruppe in das Suchfeld am oberen Rand des Portals ein. Klicken Sie in den Suchergebnissen auf die Ressourcengruppe aus dieser Schnellstartanleitung.
 2. Wählen Sie die Option **Ressourcengruppe löschen**.
 3. Geben Sie im Feld **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:** den Namen der Ressourcengruppe ein, und wählen Sie **Löschen** aus.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Wenn der Schlüsseltresor in einem anderen Microsoft-Konto als dem ausgeführt wird, mit dem Sie bei Visual Studio angemeldet sind (wenn z. B. der Schlüsseltresor in Ihrem Geschäftskonto ausgeführt wird, für Visual Studio jedoch Ihr privates Konto verwendet wird), wird in der Datei „Program.cs“ die Fehlermeldung angezeigt, dass Visual Studio keinen Zugriff auf den Schlüsseltresor hat. So beheben Sie dieses Problem:
+
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), und öffnen Sie den Schlüsseltresor.
+
+1. Wählen Sie **Zugriffsrichtlinien** und dann **Zugriffsrichtlinie hinzufügen**, und wählen Sie das Konto, bei dem Sie angemeldet sind, als Prinzipal aus.
+
+1. Wählen Sie in Visual Studio **Datei** > **Kontoeinstellungen** aus.
+Wählen Sie **Konto hinzufügen** im Abschnitt **Alle Konten** aus. Melden Sie sich mit dem Konto an, das Sie als Prinzipal der Zugriffsrichtlinie ausgewählt haben.
+
+1. Wählen Sie **Tools** > **Optionen** aus, und suchen Sie **Azure-Dienstauthentifizierung**. Wählen Sie dann das Konto aus, das Sie soeben Visual Studio hinzugefügt haben.
+
+Wenn Sie nun die Anwendung debuggen, stellt Visual Studio eine Verbindung mit dem Konto her, in dem sich der Schlüsseltresor befindet.
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>Ändern des ASP.NET Core-Projekts
 

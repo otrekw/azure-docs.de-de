@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
-titlesuffix: Azure Load Balancer
+title: Erstellen eines Load Balancer Standard mit einem Zonen-Front-End mit öffentlicher IP-Adresse – Azure CLI
+titleSuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie mithilfe der Azure CLI eine öffentliche Load Balancer Standard-Instanz mit einem Zonen-Front-End mit öffentlicher IP-Adresse erstellen.
 services: load-balancer
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: allensu
-ms.openlocfilehash: 7da41456a4f4bb88d402d27b42b31f6d4adfa7f6
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: b9c3a88df6801566bc927cfc18fda0adfa05a5ae
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274317"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076029"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Erstellen eines Standard-Lastenausgleichs mit einem Zonen-Front-End mithilfe der Azure CLI
+#  <a name="create-a-standard-load-balancer-with-zonal-public-ip-address-frontend-using-azure-cli"></a>Erstellen eines Load Balancer Standard mit einem Zonen-Front-End mit öffentlicher IP-Adresse mithilfe von Azure CLI
 
 In diesem Artikel wird die Erstellung einer öffentlichen [Load Balancer Standard-Instanz](https://aka.ms/azureloadbalancerstandard) mit einem Zonen-Front-End mithilfe einer öffentlichen Standard-IP-Adresse erläutert. In diesem Szenario können Sie auch eine bestimmte Zone für Ihre Front-End- und Back-End-Instanzen angeben, um Ihren Datenpfad und Ihre Ressourcen mit einer bestimmten Zone zu verbinden.
 

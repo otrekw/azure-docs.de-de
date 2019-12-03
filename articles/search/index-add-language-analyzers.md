@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Index
+title: Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern
 titleSuffix: Azure Cognitive Search
 description: Mehrsprachige lexikalische Textanalyse für nicht englischsprachige Abfragen und Indizes in der kognitiven Azure-Suche.
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790136"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111811"
 ---
-# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Hinzufügen von Sprachanalysetools zu einem Index für die kognitive Azure-Suche
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von Sprachanalysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
 Ein *Sprachanalysetool* ist eine bestimmte Art einer [Textanalyse](search-analyzers.md), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Feld verfügt über die Eigenschaft **analyzer**. Wenn Ihr Index übersetzte Zeichenfolgen enthält, wie z.B. separate Felder für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.  
 

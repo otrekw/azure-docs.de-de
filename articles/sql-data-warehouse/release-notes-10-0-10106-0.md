@@ -5,18 +5,18 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 09/18/2019
+ms.date: 11/12/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 967263bde459739482100524e5f85bed96cee6f9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 468a61c83948033905b3727add528520611b8bd4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824287"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092233"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
 
@@ -28,9 +28,23 @@ Da in allen Regionen neue Funktionen eingeführt werden, überprüfen Sie die in
 
 Beispielausgabe:
 
-![SQL Data Warehouse-Version](./media/release-notes/sql_data_warehouse_version.png)
+![SQL Data Warehouse-Version](./media/release-notes/t47-1-version.png)
 
-Verwenden Sie das identifizierte Datum, um zu bestätigen, welches Release auf Ihre Azure SQL Data Warehouse-Instanz angewendet wurde.
+Verwenden Sie die identifizierte Version, um zu bestätigen, welches Release auf Ihre Azure SQL Data Warehouse-Instanz angewendet wurde.
+
+## <a name="october-2019"></a>Oktober 2019
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**COPY (Vorschau)**|Wir freuen uns, die öffentliche Vorschau einer einfachen und flexiblen COPY-Anweisung für die Datenerfassung ankündigen zu können. Mit nur einer-Anweisung können Sie jetzt nahtlos Daten erfassen. Dabei verfügen Sie über zusätzliche Flexibilität und benötigen keine Benutzer mit hohen Berechtigungen. Weitere Informationen finden Sie in der [Dokumentation des COPY-Befehls](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest).|
+|**Workloadisolation (Vorschau)**|Für die Unterstützung unserer Kunden bei der Demokratisierung ihrer Data Warehouses geben wir neue Features für eine intelligente Workloadverwaltung bekannt. Die neue [Workloadisolation](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) ermöglicht Ihnen die Verwaltung der Ausführung heterogener Workloads bei mehr Flexibilität und Kontrolle über Data Warehouse-Ressourcen. Dies steigert die Vorhersagbarkeit von Ausführungen und gewährleistet die Einhaltung vordefinierter SLAs. </br>Neben der Workloadisolation sind nun zusätzliche Optionen für die [Workloadklassifizierung](/azure/sql-data-warehouse/sql-data-warehouse-workload-classification) verfügbar.  Neben der Anmeldungsklassifizierung bietet die Syntax von [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest) die Möglichkeit, Anforderungen basierend auf der Abfragebezeichnung, dem Sitzungskontext und der Tageszeit zu klassifizieren.|
+|**PREDICT (Vorschau)**|Sie können jetzt Machine Learning-Modelle in Ihrem Data Warehouse bewerten, sodass keine umfangreichen und komplexen Datenverschiebungen mehr nötig sind. Die T-SQL-PREDICT-Funktion basiert auf einem offenen Modellframework und erstellt Vorhersagen anhand der Daten und des Machine Learning-Modells als Eingabe.
+|**SSDT CI/CD (allgemeine Verfügbarkeit)**|Wir freuen uns, heute die allgemeine Verfügbarkeit des [besonders häufig gewünschten Features](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/13313247--in-preview-database-project-from-visual-studio-t) für Datenbankprojekte mit SQL Data Warehouse – SQL Server Data Tools (SSDT) ankündigen zu können. Dieses Release umfasst die Unterstützung von SSDT mit Visual Studio 2019 sowie die Integration nativer Plattformen in Azure DevOps, wodurch CI/CD-Funktionen (Continuous Integration und Continuous Deployment) für Bereitstellungen auf Unternehmensebene zur Verfügung stehen. |
+|**Materialisierte Sicht (allgemeine Verfügbarkeit)**|In einer materialisierten Sicht werden die von der Sichtdefinitionsabfrage zurückgegebenen Daten beibehalten, und die Sicht wird automatisch aktualisiert, wenn Daten in den zugrunde liegenden Tabellen geändert werden. Sie verbessert die Leistung komplexer Abfragen (in der Regel Abfragen mit Joins und Aggregationen) und bietet einfache Wartungsvorgänge. Weitere Informationen finden Sie unter [Leistungsoptimierung mit materialisierten Sichten](/azure/sql-data-warehouse/performance-tuning-materialized-views).  Installieren Sie [SQL Server Management Studio 18.4 oder höher](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) zum Erstellen von Skripts materialisierter Sichten.|
+|**Dynamische Datenmaskierung (allgemeine Verfügbarkeit)**|Mit der dynamischen Datenmaskierung (DDM) wird der unerlaubte Zugriff auf Ihre sensiblen Daten in Ihrer Data Warehouse-Instanz verhindert, indem diese basierend auf den von Ihnen definierten Maskierungsregeln direkt in den Abfrageergebnissen verborgen werden. Weitere Informationen finden Sie unter [Dynamische Datenmaskierung für SQL-Datenbank](/azure/sql-database/sql-database-dynamic-data-masking-get-started).|
+|**READ COMMITTED-Momentaufnahmeisolation (allgemeine Verfügbarkeit)**|Mit dem Befehl ALTER DATABASE können Sie die Momentaufnahmeisolation für eine Benutzerdatenbank aktivieren oder deaktivieren. Sie können Auswirkungen auf die aktuelle Workload vermeiden, indem Sie diese Option während des Wartungsfensters der Datenbank festlegen oder warten, bis keine weitere Verbindung mit der Datenbank aktiv ist. Weitere Informationen finden Sie unter [ALTER DATABASE SET-Optionen](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest).|
+|**Sortierter gruppierter Columnstore-Index (allgemeine Verfügbarkeit)**|Columnstore ist ein wichtiges Element beim Speichern und effizienten Abfragen großer Datenmengen. Sortierte gruppierte Columnstore-Indizes optimieren die Abfrageausführung, indem sie eine effiziente Löschung von Segmenten ermöglichen.   Weitere Informationen finden Sie unter [Leistungsoptimierung mit einem sortierten gruppierten Columnstore-Index](/azure/sql-data-warehouse/performance-tuning-ordered-cci).|
+|**Zwischenspeichern von Resultsets (allgemeine Verfügbarkeit)**|Wenn das Zwischenspeichern von Resultsets aktiviert ist, werden die Abfrageergebnisse von Azure SQL Data Warehouse in der Benutzerdatenbank automatisch zwischengespeichert, damit sie wiederholt verwendet werden können. Dies ermöglicht es, dass nachfolgende Abfrageausführungen die Ergebnisse direkt aus dem permanenten Cache erhalten und so keine Neuberechnung erforderlich ist. Durch das Zwischenspeichern von Resultsets wird die Abfrageleistung verbessert und die Nutzung von Computeressourcen verringert. Außerdem belegen Abfragen, die das zwischengespeicherte Resultset verwenden, keine Parallelitätsslots und werden daher auf vorhandene Parallelitätslimits nicht angerechnet. Aus Sicherheitsgründen können Benutzer nur dann auf die zwischengespeicherten Ergebnisse zugreifen, wenn sie über dieselben Datenzugriffsberechtigungen wie die Benutzer verfügen, die die zwischengespeicherten Ergebnisse erstellen. Weitere Informationen finden Sie unter [Leistungsoptimierung mit Zwischenspeichern von Resultsets](/azure/sql-data-warehouse/performance-tuning-result-set-caching). Gilt für Version: 10.0.10783.0 und höher.|
 
 ## <a name="september-2019"></a>September 2019
 

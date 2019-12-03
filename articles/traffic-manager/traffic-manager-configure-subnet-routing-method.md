@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Routingmethode für Subnetzdatenverkehr mit dem Azure Traffic Manager
+title: Konfigurieren des Routings für Subnetzdatenverkehr – Azure Traffic Manager
 description: In diesem Artikel wird erläutert, wie der Traffic Manager so konfiguriert wird, dass Datenverkehr von bestimmten Subnetzen weitergeleitet wird.
 services: traffic-manager
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: allensu
-ms.openlocfilehash: 1a7bc38a91dc7621a3b09d7901c70eecb21101d6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d3751a14e8c317d6a4f23c1aa051b7e13305acf5
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060967"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014606"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 
@@ -55,7 +55,7 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
     |NAME|myIISVMEastUS|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Ressourcengruppe| Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM1* ein.|
+    |Resource group| Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM1* ein.|
     |Location| Wählen Sie **USA, Osten** aus.|
     |||
 
@@ -75,7 +75,7 @@ In diesem Abschnitt erstellen Sie die beiden VMs *myEndpointVMEastUS* und *myEnd
 
     |Einstellung|Wert|
     |---|---|
-    |Ressourcengruppe | Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM2* ein.|
+    |Resource group | Klicken Sie auf **Neu**, und geben Sie *myResourceGroupTM2* ein.|
     |Location|Europa, Westen|
     |VM-Name | myIISVMWEurope|
     |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** in **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet2* für **Name** und *mySubnet* für das Subnetz ein.|
@@ -141,7 +141,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
     |NAME|myVMEastUS|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Ressourcengruppe| Wählen Sie **Vorhandene** und dann *myResourceGroupTM1* aus.|
+    |Resource group| Wählen Sie **Vorhandene** und dann *myResourceGroupTM1* aus.|
     |||
 
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
@@ -161,7 +161,7 @@ In diesem Abschnitt erstellen Sie je einen virtuellen Computer (*mVMEastUS* und 
     |Einstellung|Wert|
     |---|---|
     |VM-Name | *myVMWEurope*|
-    |Ressourcengruppe | Wählen Sie **Vorhandene** und dann *myResourceGroupTM2* aus.|
+    |Resource group | Wählen Sie **Vorhandene** und dann *myResourceGroupTM2* aus.|
     |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** unter **Virtuelles Netzwerk erstellen** aus, und geben Sie *myVNet4* für **Name** und *mySubnet4* für das Subnetz ein.|
     |||
 
@@ -177,8 +177,8 @@ Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP
     | ---                     | ---                                                |
     | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie als Routingmethode **Subnetz** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
     | |                              |
     |
 
@@ -194,7 +194,7 @@ Fügen Sie die beiden VMs mit den IIS-Servern (*myIISVMEastUS* & *myIISVMWEurope
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure-Endpunkt                                   |
+    | type                    | Azure-Endpunkt                                   |
     | NAME           | myTestWebSiteEndpoint                                        |
     | Zielressourcentyp           | Öffentliche IP-Adresse                          |
     | Zielressource          | **Wählen Sie eine öffentliche IP-Adresse aus**, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen *myIISVMEastUS-ip* aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|

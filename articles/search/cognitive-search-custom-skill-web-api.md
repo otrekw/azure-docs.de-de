@@ -1,5 +1,5 @@
 ---
-title: Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline
+title: Die Qualifikation „Benutzerdefinierte Web-API“ in Skillsets
 titleSuffix: Azure Cognitive Search
 description: Erweitern Sie die Funktionen der Qualifikationsgruppen für die kognitive Azure-Suche durch Aufruf von Web-APIs. Verwenden Sie die Qualifikation „Benutzerdefinierte Web-API“ zum Integrieren Ihres benutzerdefinierten Codes.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466738"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113797"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline der kognitiven Azure-Suche
 

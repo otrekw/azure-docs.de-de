@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: dacurwin
-ms.openlocfilehash: a59ac45d157f8674374c894a280e51392038524b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: abd4e91b8fd3332191b58acf38daed06d03801be
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747417"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012838"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -119,11 +119,13 @@ Wenn geplante Sicherungen nicht automatisch ausgelöst werden, manuelle Sicherun
 
   `<MARS agent installation path>\Microsoft Azure Recovery Services Agent\bin\Modules\MSOnlineBackup`
 
-- Wenn die PowerShell-Ausführungsrichtlinie für `LocalMachine` auf „Eingeschränkt“ festgelegt ist, tritt bei dem PowerShell-Cmdlet, das die Sicherungsaufgabe auslöst, möglicherweise ein Fehler auf. Führen Sie die folgenden Befehle im Modus mit erhöhten Rechten aus, um die Ausführungsrichtlinie zu überprüfen und auf `Unrestricted` oder `RemoteSigned` festzulegen:
+- Wenn die PowerShell-Ausführungsrichtlinie für `LocalMachine` auf `restricted` festgelegt ist, tritt bei dem PowerShell-Cmdlet, das die Sicherungsaufgabe auslöst, möglicherweise ein Fehler auf. Führen Sie die folgenden Befehle im Modus mit erhöhten Rechten aus, um die Ausführungsrichtlinie zu überprüfen und auf `Unrestricted` oder `RemoteSigned` festzulegen:
 
-  `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
+ ```PowerShell
+ Get-ExecutionPolicy -List
 
-  `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
+Set-ExecutionPolicy Unrestricted
+```
 
 - Stellen Sie sicher, dass keine MSonlineBackup-Dateien des PowerShell-Moduls fehlen oder beschädigt sind. Wenn Dateien fehlen oder beschädigt sind, führen Sie die folgenden Schritte aus:
 
@@ -167,7 +169,7 @@ Wenn bei der Wiederherstellung weiterhin ein Fehler auftritt, starten Sie Ihren 
 
 Der Sicherungsvorgang schlägt möglicherweise fehl, wenn der Cacheordner (auch als Ablageordner bezeichnet) falsch konfiguriert ist, Voraussetzungen nicht erfüllt oder der Zugriff auf ihn beschränkt ist.
 
-### <a name="pre-requisites"></a>Voraussetzungen
+### <a name="prerequisites"></a>Voraussetzungen
 
 Damit MARS-Agent-Vorgänge erfolgreich ausgeführt werden können, muss der Cacheordner den folgenden Anforderungen entsprechen:
 
@@ -215,13 +217,13 @@ Microsoft Azure Recovery Services Agent was unable to access the scratch locatio
 
 Fehlermeldung | Empfohlene Maßnahme |
 -- | --
-Backup failed due to insufficient storage in volume  where the scratch folder is located (Die Sicherung ist aufgrund von unzureichendem Speicher im Volume des Ablageordners fehlgeschlagen.) | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/>- [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).<br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#pre-requisites).
+Backup failed due to insufficient storage in volume  where the scratch folder is located (Die Sicherung ist aufgrund von unzureichendem Speicher im Volume des Ablageordners fehlgeschlagen.) | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/>- [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409).<br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#prerequisites).
 
 ### <a name="salbitmaperror"></a>SalBitmapError
 
 Fehlermeldung | Empfohlene Maßnahme |
 -- | --
-Es wurden keine Änderungen in einer Datei gefunden. Dies kann verschiedene Ursachen haben. Wiederholen Sie den Vorgang | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/> - [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409). <br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#pre-requisites).
+Es wurden keine Änderungen in einer Datei gefunden. Dies kann verschiedene Ursachen haben. Wiederholen Sie den Vorgang | Führen Sie zum Beheben des Problems die folgenden Schritte aus, und wiederholen Sie den Vorgang:<br/> - [Stellen Sie sicher, dass der MARS-Agent die aktuelle Version aufweist](https://go.microsoft.com/fwlink/?linkid=229525&clcid=0x409). <br/> - [Überprüfen und beheben Sie Speicherprobleme, die den temporären Speicherbereich für Sicherungen beeinträchtigen](#prerequisites).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

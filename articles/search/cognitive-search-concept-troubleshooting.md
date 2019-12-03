@@ -1,5 +1,5 @@
 ---
-title: Tipps zur Problembehandlung bei der KI-Anreicherung
+title: Tipps zum Entwerfen von KI-Anreicherungen
 titleSuffix: Azure Cognitive Search
 description: Tipps und Problembehandlung für die Einrichtung von KI-Anreicherungspipelines in der kognitiven Azure-Suche.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 485dd47e035f03a8e20ded4c8a424f1658f5246a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 3fef5db90c3ae63a8fa48835646e09f9dfe6f023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787704"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113832"
 ---
-# <a name="troubleshooting-tips-for-ai-enrichment-in-azure-cognitive-search"></a>Tipps zur Problembehandlung bei der KI-Anreicherung in der kognitiven Azure-Suche
+# <a name="tips-for-ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
 Dieser Artikel enthält eine Liste mit Tipps und Tricks als Unterstützung bei Ihren ersten Schritten mit den Funktionen der KI-Anreicherung in der kognitiven Azure-Suche. 
 

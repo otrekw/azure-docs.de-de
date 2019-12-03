@@ -1,18 +1,18 @@
 ---
-title: Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
+title: Migrieren von V1 zu v2 – Azure Application Gateway
 description: In diesem Artikel wird gezeigt, wie Sie Azure Application Gateway und Web Application Firewall von v1 zu v2 migrieren.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/10/2019
+ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: c4bc0ec2bf15a29962909f14f55854c06f0a6561
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 75d041f8ef0d6593a5ff1c696777b68c5f513bf5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932501"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74047622"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -119,7 +119,7 @@ So führen Sie das Skript aus
 
       Informationen, wie eine Liste aus PSApplicationGatewayTrustedRootCertificate-Objekten erstellt wird, finden Sie unter [New-AzApplicationGatewayTrustedRootCertificate](https://docs.microsoft.com/powershell/module/Az.Network/New-AzApplicationGatewayTrustedRootCertificate?view=azps-2.1.0&viewFallbackFrom=azps-2.0.0).
    * **privateIpAddress: [Zeichenfolge]: Optional**. Eine bestimmte private IP-Adresse, die Sie Ihrem neuen v2-Gateway zuordnen möchten.  Diese Adresse muss aus dem VNet stammen, das Sie für Ihr neues v2-Gateway zuordnen. Ist dieser Parameter nicht angegeben, weist das Skript eine private IP-Adresse für Ihr v2-Gateway zu.
-    * **publicIpResourceId: [Zeichenfolge]: Optional**. Die ResourceId einer öffentlichen IP-Adresse (Standard-SKU-Ressource) in Ihrem Abonnement, die Sie dem neuen v2-Gateway zuordnen möchten. Wenn dies nicht angegeben ist, weist das Skript eine neue öffentliche IP-Adresse in der gleichen Ressourcengruppe zu. Der Name ist der Name des v2-Gateways, an den *-IP-* angefügt ist.
+    * **publicIpResourceId: [Zeichenfolge]: Optional**. Die Ressourcen-ID einer öffentlichen IP-Adresse (Standard-SKU-Ressource) in Ihrem Abonnement, die Sie dem neuen v2-Gateway zuordnen möchten. Wenn dies nicht angegeben ist, weist das Skript eine neue öffentliche IP-Adresse in der gleichen Ressourcengruppe zu. Der Name ist der Name des v2-Gateways, an den *-IP-* angefügt ist.
    * **validateMigration: [Schalter]: Optional**. Verwenden Sie diesen Parameter, wenn das Skript nach der Erstellung des v2-Gateways und dem Kopieren der Konfiguration einige grundlegende Vergleichsprüfungen der Konfiguration durchführen soll. Standardmäßig erfolgt keine Prüfung.
    * **enableAutoScale: [Schalter]: Optional**. Verwenden Sie diesen Parameter, wenn das Skript die automatische Skalierung auf dem neuen v2-Gateway nach der Erstellung aktivieren soll. Standardmäßig ist automatische Skalierung deaktiviert. Sie können automatische Skalierung später für das neu erstellte v2-Gateway jederzeit manuell aktivieren.
 
@@ -156,7 +156,7 @@ Es folgen einige Szenarien, in denen Ihr aktuelles Anwendungsgateway (Standard) 
 
   * Wenn Sie öffentliche IP-Adressen in Ihrem Anwendungsgateway verwenden, können Sie eine kontrollierte, präzise Migration durchführen, indem Sie ein Traffic Manager-Profil verwenden, um Datenverkehr inkrementell an das neue v2-Gateway weiterzuleiten (gewichtete Routingmethode für Datenverkehr).
 
-    Hierzu können Sie die DNS-Bezeichnungen vom v1- und vom v2-Anwendungsgateway zu dem [Traffic Manager-Profil](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method) hinzufügen und Ihren benutzerdefinierten DNS-Eintrag (z. B. [www.contoso.com]\(www.contoso.com) ) über CNAME-Einträge zur Traffic Manager-Domäne (z. B. „contoso.trafficmanager.net“) umleiten.
+    Hierzu können Sie die DNS-Bezeichnungen vom v1- und vom v2-Anwendungsgateway zu dem [Traffic Manager-Profil](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method) hinzufügen und Ihren benutzerdefinierten DNS-Eintrag (z. B. `www.contoso.com`) über CNAME-Einträge zur Traffic Manager-Domäne (z. B. „contoso.trafficmanager.net“) umleiten.
   * Alternativ können Sie Ihren benutzerdefinierten Domänen-DNS-Eintrag so aktualisieren, dass er auf die DNS-Bezeichnung des neuen v2-Anwendungsgateways verweist. Abhängig davon, welche Gültigkeitsdauer für Ihren DNS-Eintrag konfiguriert ist, kann es einige Zeit dauern, bis Ihr gesamter Clientdatenverkehr zu Ihrem neuen v2-Gateway migriert wird.
 * **Ihre Client stellen Verbindungen mit der Front-End-IP-Adresse Ihres Anwendungsgateways her**.
 

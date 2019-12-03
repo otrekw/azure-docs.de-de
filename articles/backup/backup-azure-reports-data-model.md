@@ -8,23 +8,27 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
 ms.author: dacurwin
-ms.openlocfilehash: 96adca2da28517c28ba3583f5d15f07311d2792a
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954512"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074891"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Datenmodell für Azure Backup-Berichte
-In diesem Artikel wird das Power BI-Datenmodell beschrieben, das zum Erstellen von Azure Backup-Berichten verwendet wird. Mit diesem Datenmodell können Sie vorhandene Berichte basierend auf entsprechenden Feldern filtern und, was noch wichtiger ist, eigene Berichte mithilfe der Tabellen und Felder im Modell erstellen. 
+
+In diesem Artikel wird das Power BI-Datenmodell beschrieben, das zum Erstellen von Azure Backup-Berichten verwendet wird. Mit diesem Datenmodell können Sie vorhandene Berichte basierend auf entsprechenden Feldern filtern und, was noch wichtiger ist, eigene Berichte mithilfe der Tabellen und Felder im Modell erstellen.
 
 ## <a name="creating-new-reports-in-power-bi"></a>Erstellen neuer Berichte in Power BI
+
 Power BI bietet Anpassungsfunktionen, mit deren Hilfe Sie [Berichte mithilfe des Datenmodells erstellen](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/) können.
 
 ## <a name="using-azure-backup-data-model"></a>Verwenden des Azure Backup-Datenmodells
+
 Sie können die folgenden Felder im Datenmodell nutzen, um Berichte zu erstellen und vorhandene Berichte anzupassen.
 
 ### <a name="alert"></a>Warnung
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene warnungsbezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -42,6 +46,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene w
 | EntityState |Text |Aktueller Status des Warnungsobjekts. Beispielsweise Active (Aktiv), Deleted (Gelöscht). |
 
 ### <a name="backup-item"></a>Sicherungselement
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene auf Sicherungselemente bezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -60,6 +65,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene a
 | ProtectionState |Text |Aktueller Schutzstatus des Sicherungselements. Beispiel: Protected (Geschützt), ProtectionStopped (Schutz angehalten). |
 
 ### <a name="calendar"></a>Kalender
+
 Diese Tabelle enthält Details zu kalenderbezogenen Feldern.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -77,6 +83,7 @@ Diese Tabelle enthält Details zu kalenderbezogenen Feldern.
 | YearDate |Date |Zum Filtern von Daten ausgewähltes Datum im Jahr, an dem das Jahr endet |
 
 ### <a name="job"></a>Auftrag
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene auftragsbezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -97,6 +104,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene a
 | JobUniqueId |Text |Eindeutige ID zur Bezeichnung des Auftrags |
 
 ### <a name="policy"></a>Richtlinie
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene richtlinienbezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -131,6 +139,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene r
 | YearlyRetentionWeeksOfTheMonth |Text |Wochen des Monats, in denen die jährliche Beibehaltung konfiguriert ist. Beispiel: Erste, Letzte usw. |
 
 ### <a name="protected-server"></a>Geschützter Server
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene Felder, die sich auf geschützte Server beziehen.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -150,6 +159,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene F
 | RegisteredContainerId |Text |ID des Containers, der für die Sicherung registriert ist |
 
 ### <a name="storage"></a>Storage
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene speicherbezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -161,6 +171,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene s
 | LastUpdatedDate |Date |Datum, an dem ausgewählte Zeile zuletzt aktualisiert wurde |
 
 ### <a name="time"></a>Time
+
 Diese Tabelle enthält Details zu uhrzeitbezogenen Feldern.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -173,6 +184,7 @@ Diese Tabelle enthält Details zu uhrzeitbezogenen Feldern.
 | TimeKey |Text |Schlüsselwert zum Darstellen der Zeit |
 
 ### <a name="vault"></a>Tresor
+
 Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene tresorbezogene Felder.
 
 | Feld | Datentyp | BESCHREIBUNG |
@@ -187,6 +199,7 @@ Diese Tabelle enthält grundlegende Felder und Aggregationen für verschiedene t
 | VaultTags |Text |Dem Tresor zugeordnete Tags |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie das Datenmodell zum Erstellen von Azure Backup-Berichten überprüft haben, finden Sie in den folgenden Artikeln weitere ausführliche Informationen zum Erstellen und Anzeigen von Berichten in Power BI.
 
 * [Erstellen von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

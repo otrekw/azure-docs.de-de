@@ -1,5 +1,5 @@
 ---
-title: Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation – Azure Active Directory | Microsoft-Dokumentation
+title: Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation – AD
 description: Hier erfahren Sie, wie Sie Ihr geschäftliches Gerät in das Netzwerk der Organisation einbinden.
 services: active-directory
 author: eross-msft
@@ -13,12 +13,12 @@ ms.date: 08/03/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62faa47c116cceb941f575a9f76052e8bc57f036
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b122d70179f22c91028c8343b23d74cc616b1f76
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243268"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028539"
 ---
 # <a name="join-your-work-device-to-your-organizations-network"></a>Einbinden von geschäftlichen Geräten in das Netzwerk der Organisation
 Binden Sie Ihr unternehmenseigenes Windows 10-Gerät in das Netzwerk Ihrer Organisation ein, sodass Sie auf möglicherweise eingeschränkte Ressourcen zugreifen können.

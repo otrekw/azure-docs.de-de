@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 068d320c85a1e10027c92b92c1b3c205a999bed7
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553830"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109315"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mithilfe von Azure Policy
 
@@ -30,7 +30,7 @@ Wenn Sie diese Aufgaben mit Azure PowerShell oder einer Azure Resource Manager-V
 
 Ursprünglich erfolgte die Verwaltung und Bereitstellung der Richtliniendefinitionen für Azure Monitor für VMs ausschließlich über Azure Policy. Durch die Funktion „Richtlinienabdeckung verwalten“ werden die Erkennung, Verwaltung und Aktivierung der Initiative **Aktivieren von Azure Monitor für VMs** nach Maß einfacher, die die zuvor genannten Richtliniendefinitionen einschließt. Sie können auf diese neue Funktion über die Registerkarte **Erste Schritte** in Azure Monitor für VMs zugreifen. Wählen Sie **Richtlinienabdeckung verwalten** aus, um die Seite **Azure Monitor für VMs – Richtlinienabdeckung** zu öffnen.
 
-![Azure Monitor für VMs-Registerkarte „Erste Schritte“](./media/vminsights-enable-at-scale-policy/get-started-page-01.png)
+![Azure Monitor für VMs-Registerkarte „Erste Schritte“](./media/vminsights-enable-at-scale-policy/get-started-page.png)
 
 Hier können Sie die Abdeckung der Initiative für alle Ihre Verwaltungsgruppen und Abonnements überprüfen und verwalten. Sie können auch erfahren, wie viele VMs in den einzelnen Verwaltungsgruppen und Abonnements vorhanden sind und welchen Konformitätsstatus sie haben.
 
@@ -93,7 +93,7 @@ Die Richtliniendefinitionen für eine Azure-VM-Skalierungsgruppe sind in der fol
 
 |NAME |BESCHREIBUNG |type |
 |-----|------------|-----|
-|\[Vorschau\]: Aktivieren von Azure Monitor für VM-Skalierungsgruppen |Hiermit aktivieren Sie Azure Monitor für VM-Skalierungsgruppen im angegebenen Umfang (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. Hinweis: Wenn die Upgraderichtlinie für Skalierungsgruppen auf „Manuell“ festgelegt ist, wenden Sie die Erweiterung auf alle VMs in der Gruppe an, indem Sie für diese ein Upgrade durchführen. Führen Sie dazu in der CLI „az vmss update-instances“ aus. |Initiative |
+|\[Vorschau\]: Aktivieren von Azure Monitor für VM-Skalierungsgruppen |Hiermit aktivieren Sie Azure Monitor für VM-Skalierungsgruppen im angegebenen Umfang (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. Hinweis: Wenn die Upgraderichtlinie für Skalierungsgruppen auf „Manuell“ festgelegt ist, wenden Sie die Erweiterung auf alle VMs in der Gruppe an, indem Sie für diese ein Upgrade durchführen. In der CLI lautet der Befehl `az vmss update-instances`. |Initiative |
 |\[Vorschau\]: Überwachen der Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
 |\[Vorschau\]: Überwachen der Bereitstellung des Log Analytics-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
 |\[Vorschau\]: Bereitstellen des Dependency-Agents für Linux-VM-Skalierungsgruppen |Hiermit stellen Sie den Dependency-Agent für Linux-VM-Skalierungsgruppen bereit, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
@@ -170,7 +170,7 @@ In der folgenden Tabelle ist der Initiative jeder mögliche Zuweisungsstatus zug
 
 Das folgende Beispiel gilt für eine Azure-VM, trifft aber auch auf VM-Skalierungsgruppen zu. Informationen zum Überprüfen von Konformitätsergebnissen finden Sie unter [Identifizieren nicht konformer Ressourcen](../../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). Wählen Sie auf der Seite **Azure Monitor für VMs – Richtlinienabdeckung** in der Tabelle entweder eine Verwaltungsgruppe oder ein Abonnement aus. Wählen Sie **Konformität anzeigen** aus, indem Sie auf die Auslassungszeichen (...) klicken.   
 
-![Richtlinienkonformität für Azure-VMs](./media/vminsights-enable-at-scale-policy/policy-view-compliance-01.png)
+![Richtlinienkonformität für Azure-VMs](./media/vminsights-enable-at-scale-policy/policy-view-compliance.png)
 
 Auf der Grundlage der in der Initiative enthaltenen Richtlinien werden VMs in den folgenden Szenarien als nicht konform gemeldet:
 

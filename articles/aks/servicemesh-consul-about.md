@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 7bf979e4f828b6971603d31ba5ba9e8bc791f799
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 7ffbd2386cd0e50cec8976e6bdd6c5778aa014d7
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529922"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928426"
 ---
 # <a name="consul"></a>Consul
 
@@ -36,7 +36,7 @@ Das folgende Architekturdiagramm veranschaulicht, wie die verschiedenen Komponen
 
 ## <a name="selection-criteria"></a>Auswahlkriterien
 
-Bei der Auswertung von Linkerd für Ihre Workloads ist es wichtig, die folgenden Bereiche zu verstehen und zu berücksichtigen:
+Beim Auswerten von Consul für Ihre Workloads ist es wichtig, die folgenden Bereiche zu verstehen und zu berücksichtigen:
 
 - [Consul-Prinzipien](#consul-principles)
 - [Capabilities](#capabilities)

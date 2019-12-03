@@ -1,8 +1,8 @@
 ---
-title: Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte | Microsoft-Dokumentation
+title: Azure Monitor-Arbeitsmappen für Berichte | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte verwenden.
 services: active-directory
-author: cawrites
+author: MarkusVi
 manager: daveba
 ms.assetid: 4066725c-c430-42b8-a75b-fe2360699b82
 ms.service: active-directory
@@ -11,17 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/18/2019
-ms.author: chadam
+ms.date: 10/30/2019
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9bea8da4f0d694be3a39a8f5dfaca8e54ce2773d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 2e94d9f56a865999f9169650f621a6af892c27ae
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255666"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014365"
 ---
 # <a name="how-to-use-azure-monitor-workbooks-for-azure-active-directory-reports"></a>Verwenden von Azure Monitor-Arbeitsmappen für Azure Active Directory-Berichte
+
+> [!IMPORTANT]
+> Um die zugrunde liegenden Abfragen in dieser Arbeitsmappe zu optimieren, klicken Sie auf „Bearbeiten“, klicken Sie auf das Symbol „Einstellungen“, und wählen Sie den Arbeitsbereich aus, in dem diese Abfragen ausgeführt werden sollen. Für Arbeitsmappen werden standardmäßig alle Arbeitsbereiche ausgewählt, an die Sie die Azure AD-Protokolle weiterleiten. 
 
 Möchten Sie:
 
@@ -31,7 +34,17 @@ Möchten Sie:
 
 - Wissen, welche Benutzer sich über Legacyauthentifizierungen bei Ihrer Umgebung anmelden? (Durch [Blockieren der Legacyauthentifizierung](../conditional-access/block-legacy-authentication.md) können Sie den Schutz Ihres Mandanten verbessern.)
 
-Damit Sie diese Fragen beantworten können, stellt Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten. 
+- Müssen Sie die Auswirkungen der Richtlinien für bedingten Zugriff im Mandanten verstehen?
+
+- Möchten Sie Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben, überprüfen können?
+
+- Möchten Sie mehr über die Arbeitsmappendetails pro Bedingung wissen, sodass die Auswirkung einer Richtlinie pro Bedingung kontextualisiert werden kann, einschließlich Geräteplattform, Gerätestatus, Client-App, Anmelderisiko, Standort und Anwendung?
+
+- Gewinnen Sie tiefere Einblicke in Anmeldeprotokollabfragen, die Arbeitsmappenberichte zur Anzahl der Benutzer, denen der Zugriff gewährt oder verweigert wurde, sowie zur Anzahl der Benutzer, die beim Zugriff auf Ressourcen die Richtlinien für bedingten Zugriff umgangen haben.
+
+- Damit Sie diese Fragen beantworten können, stellt Active Directory Arbeitsmappen für die Überwachung bereit. [Azure Monitor-Arbeitsmappen](https://docs.microsoft.com/azure/azure-monitor/app/usage-workbooks) kombinieren Text, Analyseabfragen, Metriken und Parameter zu umfassenden interaktiven Berichten.
+
+
 
 Dieser Artikel:
 
@@ -53,17 +66,16 @@ Zum Verwenden von Monitor-Arbeitsmappen benötigen Sie:
 - Folgende Rollen in Azure Active Directory (beim Zugriff auf Log Analytics über das Azure Active Directory-Portal)
     - Sicherheitsadministrator
     - Sicherheitsleseberechtigter
-    - Report Reader (Leseberechtigter für Berichte)
+    - Berichtsleseberechtigter
     - Globaler Administrator
 
 ## <a name="roles"></a>Rollen
-Sie müssen Mitglied einer der folgenden Rollen sein und über [Zugriff auf den zugrunde liegenden Log Analytics-Arbeitsbereich](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) verfügen, um die Arbeitsmappen verwalten zu können:
+Sie müssen Mitglied einer der folgenden Rollen sein und über [Zugriff auf den zugrunde liegenden Log Analytics-Arbeitsbereich](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access#manage-access-using-azure-permissions) verfügen, um die Arbeitsmappen verwalten zu können:
 -   Globaler Administrator
 -   Sicherheitsadministrator
 -   Sicherheitsleseberechtigter
--   Report Reader (Leseberechtigter für Berichte)
+-   Berichtsleseberechtigter
 -   Anwendungsadministrator
-
 
 ## <a name="workbook-access"></a>Arbeitsmappenzugriff 
 
@@ -71,16 +83,11 @@ So greifen Sie auf Arbeitsmappen zu
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+1. Navigieren Sie zu **Azure Active Directory** > **Überwachung** > **Arbeitsmappen**. 
 
-3. Wählen Sie im Abschnitt **Überwachung** die Option **Arbeitsmappen** aus. 
+1. Wählen Sie einen Bericht oder eine Vorlage aus, oder wählen Sie auf der Symbolleiste **Öffnen** aus. 
 
-    ![„Einblicke“ auswählen](./media/howto-use-azure-monitor-workbooks/41.png)
-
-4. Wählen Sie einen Bericht oder eine Vorlage aus, oder wählen Sie auf der Symbolleiste **Öffnen** aus. 
-
-    ![„Öffnen“ auswählen](./media/howto-use-azure-monitor-workbooks/42.png)
-
+![Suchen der Azure Monitor-Arbeitsmappen in Azure AD](./media/howto-use-azure-monitor-workbooks/azure-monitor-workbooks-in-azure-ad.png)
 
 ## <a name="sign-in-analysis"></a>Analyse der Anmeldungen
 
@@ -170,7 +177,43 @@ Für deaktivierte Anmeldungen erhalten Sie eine Aufschlüsselung nach dem Status
 ![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/conditional-access-status.png)
 
 
+## <a name="conditional-access-insights"></a>Erkenntnisse zum bedingten Zugriff
 
+### <a name="overview"></a>Übersicht
+
+Arbeitsmappen enthalten Anmeldeprotokollabfragen, mit denen IT-Administratoren die Auswirkung von Richtlinien für bedingten Zugriff im Mandanten überwachen können. Sie können berichten, wie vielen Benutzern der Zugriff gewährt oder verweigert wurde. Die Arbeitsmappe enthält Informationen darüber, wie viele Benutzer die Richtlinien für bedingten Zugriff umgangen haben, auf Grundlage der Attribute der Benutzer zum Zeitpunkt der Anmeldung. Sie enthält Informationen pro Bedingung, sodass die Auswirkung einer Richtlinie pro Bedingung, einschließlich Geräteplattform, Gerätestatus, Client-App, Anmelderisiko, Standort und Anwendung, kontextualisiert werden kann.
+
+### <a name="instructions"></a>Anleitung 
+Um auf die Arbeitsmappe für Erkenntnisse zum bedingten Zugriff zuzugreifen, wählen Sie im Abschnitt „Bedingter Zugriff“ die Arbeitsmappe **Erkenntnisse zum bedingten Zugriff** aus. In dieser Arbeitsmappe werden die erwarteten Auswirkungen der einzelnen Richtlinien für bedingten Zugriff im Mandanten angezeigt. Wählen Sie in der Dropdownliste eine oder mehrere Richtlinien für bedingten Zugriff aus, und schränken Sie den Bereich der Arbeitsmappe ein, indem Sie die folgenden Filter anwenden: 
+
+- **Zeitbereich**
+
+- **Benutzer**
+
+- **Apps**
+
+- **Datenansicht**
+
+![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/access-insights.png)
+
+
+In „Zusammenfassung der Auswirkungen“ wird die Anzahl der Benutzer oder Anmeldungen angezeigt, für die die ausgewählten Richtlinien ein bestimmtes Ergebnis hatten. „Gesamt“ gibt die Anzahl der Benutzer oder Anmeldungen an, für die die ausgewählten Richtlinien im ausgewählten Zeitbereich ausgewertet wurden. Klicken Sie auf eine Kachel, um die Daten in der Arbeitsmappe nach dem entsprechenden Ergebnistyp zu filtern. 
+
+![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/impact-summary.png)
+
+In dieser Arbeitsmappe werden auch die Auswirkungen der ausgewählten Richtlinien nach sechs einzelnen Bedingungen untergliedert angezeigt: 
+- **Gerätestatus**
+- **Geräteplattform**
+- **Client-Apps**
+- **Anmelderisiko**
+- **Location**
+- **Anwendungen**
+
+![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/device-platform.png)
+
+Sie können auch einzelne Anmeldungen untersuchen, die nach den in der Arbeitsmappe ausgewählten Parametern gefiltert sind. Suchen Sie nach einzelnen Benutzern, sortiert nach Anmeldehäufigkeit, und zeigen Sie die entsprechenden Anmeldeereignisse an. 
+
+![Status des bedingten Zugriffs](./media/howto-use-azure-monitor-workbooks/filtered.png)
 
 
 

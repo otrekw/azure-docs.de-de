@@ -1,21 +1,21 @@
 ---
-title: Verwalten des Azure Site Recovery-Zugriffs mit rollenbasierter Zugriffssteuerung | Microsoft-Dokumentation
+title: Verwalten der rollenbasierten Zugriffssteuerung von Azure in Azure Site Recovery
 description: In diesem Artikel wird beschrieben, wie die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) zum Verwalten des Azure Site Recovery-Zugriffs eingesetzt wird.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 33fc2cd19152fb6cbbffb106aa058948d39555f9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61471433"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083773"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Verwalten des Site Recovery-Zugriffs mit rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC)
 
-Die rollenbasierte Access Control in Azure (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe der rollenbasierten Zugriffssteuerung können Sie Zuständigkeiten in Ihrem Team aufteilen und Benutzern nur die jeweils spezifischen Zugriffsrechte zum Ausführen bestimmter Aufträge zuweisen.
+Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure ermöglicht eine präzise Zugriffsverwaltung für Azure. Mithilfe der rollenbasierten Zugriffssteuerung können Sie Zuständigkeiten in Ihrem Team aufteilen und Benutzern nur die jeweils spezifischen Zugriffsrechte zum Ausführen bestimmter Aufträge zuweisen.
 
 Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery-Verwaltungsvorgängen. Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../role-based-access-control/built-in-roles.md).
 
@@ -37,6 +37,9 @@ Ein Benutzer benötigt die folgenden Berechtigungen, um die Replikation eines ne
 
 > [!IMPORTANT]
 >Stellen Sie sicher, dass die relevanten Berechtigungen entsprechend dem für die Ressourcenbereitstellung verwendeten Bereitstellungsmodell (Resource Manager-Modell oder klassisches Modell) hinzugefügt werden.
+
+> [!NOTE]
+> Wenn Sie die Replikation für eine Azure-VM aktivieren und die Verwaltung von Updates durch Site Recovery zulassen möchten, können Sie beim Aktivieren der Replikation auch ein neues Automation-Konto erstellen. In diesem Fall benötigen Sie zudem die Berechtigung zum Erstellen eines Automation-Kontos in demselben Abonnement wie der Tresor.
 
 | **Ressourcentyp** | **Bereitstellungsmodell** | **Berechtigung** |
 | --- | --- | --- |

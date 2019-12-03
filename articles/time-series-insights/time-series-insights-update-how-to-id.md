@@ -1,62 +1,78 @@
 ---
-title: Bewährte Methoden für die Auswahl einer Time Series-ID in Azure Time Series Insights (Vorschauversion) | Microsoft-Dokumentation
-description: Grundlegendes zu bewährten Methoden, wenn Sie eine Time Series-ID in Azure Time Series Insights Preview auswählen.
-author: ashannon7
+title: Bewährte Methoden für die Auswahl einer Time Series-ID – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie die bewährten Methoden bei der Auswahl einer Time Series-ID in Azure Time Series Insights Preview.
+author: deepakpalled
 ms.author: dpalled
-ms.workload: big-data
 manager: cshankar
+ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 08/09/2019
+ms.date: 10/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7057ce27cbbba8d70835493fc91a88ad823369bb
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: cf826c47c61e3714a05dd81fe3eea4e6ee0b03f4
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947198"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74012495"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Bewährte Methoden für die Auswahl einer Time Series-ID
 
-Dieser Artikel behandelt den Partitionsschlüssel für Azure Time Series Insights Preview, die Time Series-ID und bewährte Methoden für deren Auswahl.
+Dieser Artikel fasst die Wichtigkeit der Time Series-ID für Ihre Azure Time Series Insights Preview-Umgebung zusammen sowie bewährte Methoden für deren Auswahl.
 
 ## <a name="choose-a-time-series-id"></a>Auswählen einer Time Series-ID
 
-Das Auswählen einer Time Series-ID ist wie das Auswählen eines Partitionsschlüssels für eine Datenbank. Es ist eine wichtige Entscheidung, die zur Entwurfszeit getroffen werden sollte. Sie können eine vorhandene Time Series Insights Preview-Umgebung nicht so aktualisieren, dass sie eine andere Time Series-ID verwendet. Das heißt, wenn eine Umgebung mit einer Time Series-ID erstellt wird, ist die Richtlinie eine unveränderliche Eigenschaft, die nicht mehr geändert werden kann.
+Das Auswählen einer Time Series-ID ist wie das Auswählen eines Partitionsschlüssels für eine Datenbank. Sie muss ausgewählt werden, während Sie eine Time Series Insights Preview-Umgebung erstellen. Dabei handelt es sich um eine *unveränderliche* Eigenschaft. Das heißt, nachdem Sie eine Time Series Insights Preview-Umgebung mit einer Time Series-ID erstellt haben, können Sie sie für diese Umgebung nicht mehr ändern. 
 
 > [!IMPORTANT]
-> Die Time Series-ID beachtet Groß-/Kleinschreibung und ist unveränderlich (sie kann nach ihrer Festlegung nicht mehr geändert werden).
+> Bei der Time Series-ID muss die Groß-/Kleinschreibung beachtet werden.
 
-Unter diesem Aspekt ist die Auswahl der geeigneten Time Series-ID entscheidend. Wenn Sie einen Time Series-ID auswählen, berücksichtigen Sie die folgenden bewährten Methoden:
+Die Auswahl einer geeigneten Time Series-ID ist entscheidend. Im Folgenden finden Sie einige der bewährten Methoden, die Sie befolgen können:
 
-* Wählen Sie einen Eigenschaftsnamen mit einem breiten Wertespektrum und gleichmäßigen Zugriffsmustern. Es hat sich bewährt, einen Partitionsschlüssel mit vielen unterschiedlichen Werten (z. B. Hunderte oder Tausende) auszuwählen. Für viele Kunden wird dies etwas wie die „DeviceID“ oder „SensorID“ in Ihrem JSON-Objekt sein.
+* Wählen Sie einen Partitionsschlüssel mit vielen unterschiedlichen Werten (z. B. Hunderten oder Tausenden) aus. In vielen Fällen kann dies die Geräte-ID, die Sensor-ID oder die Tag-ID in Ihrem JSON sein.
 * Die Time Series-ID sollte auf Blattknotenebene Ihres [Zeitreihenmodells](./time-series-insights-update-tsm.md) eindeutig sein.
-* Die Zeichenfolge eines Time Series-ID-Eigenschaftsnamens kann bis zu 128 Zeichen lang sein, und Time Series-ID-Eigenschaftswerte können aus bis zu 1024 Zeichen bestehen.
-* Fehlende eindeutige Time Series-ID-Eigenschaftswerte werden als Nullwerte behandelt und als solche in die Eindeutigkeitseinschränkung einbezogen.
-
-Darüber hinaus können Sie bis zu *drei* (3) Schlüsseleigenschaften als Ihre Time Series-ID auswählen.
+* Wenn es sich bei ihrer Ereignisquelle um einen IoT-Hub handelt, ist Ihre Time Series-ID höchstwahrscheinlich *iothub-connection-device-id*.
+* Das Zeichenlimit für die Zeichenfolge des Eigenschaftsnamens der Time Series-ID ist 128. Für den Eigenschaftswert der Time Series-ID ist das Zeichenlimit 1.024.
+* Wenn ein eindeutiger Eigenschaftswert für die Time Series-ID fehlt, wird er als Nullwert behandelt und folgt derselben Regel der Eindeutigkeitseinschränkung.
+* Darüber hinaus können Sie bis zu *drei* Schlüsseleigenschaften als Ihre Time Series-ID auswählen. Deren Kombination ergibt einen zusammengesetzten Schlüssel, der die Time Series-ID darstellt.  
 
   > [!NOTE]
-  > Ihre *drei* (3) Schlüsseleigenschaften müssen Zeichenfolgen sein.
+  > Ihre drei Schlüsseleigenschaften müssen Zeichenfolgen sein.
+  > Sie müssten dann diesen zusammengesetzten Schlüssel abfragen, anstatt jede Eigenschaft einzeln.
 
-Die folgenden Szenarien beschreiben die Auswahl von mehr als einer Schlüsseleigenschaft als Ihre Time Series-ID:  
+Die folgenden Szenarien beschreiben die Auswahl von mehr als einer Schlüsseleigenschaft als Ihre Time Series-ID.  
 
-### <a name="scenario-one"></a>Szenario 1
+### <a name="example-1-time-series-id-with-a-unique-key"></a>Beispiel 1: Time Series-ID mit einem eindeutigen Schlüssel
 
-* Sie besitzen Legacygruppen von Ressourcen mit jeweils eindeutigen Schlüsseln.
-* Eine Gruppe wird z. B. eindeutig identifiziert durch die Eigenschaft *deviceId* und eine andere durch die eindeutige Eigenschaft *objectId*. Keine der Gruppen enthält die eindeutige Eigenschaft der anderen Gruppe. In diesem Beispiel würden Sie zwei Schlüssel, die „deviceId“ und die „objectId“, als eindeutige Schlüssel auswählen.
-* Wir akzeptieren Nullwerte, und das Fehlen einer Eigenschaft in der Ereignisnutzlast zählt als ein `null`-Wert. Dies ist auch die geeignete Methode, um das Senden von Daten an zwei unterschiedliche Ereignisquellen zu handhaben, wobei die Daten in jeder Ereignisquelle eine eindeutige Time Series-ID haben.
+* Sie besitzen Legacygruppen von Ressourcen. Jede besitzt einen eindeutigen Schlüssel.
+* Eine Gruppe wird eindeutig durch die Eigenschaft **deviceId** identifiziert. Für eine andere Gruppe ist die eindeutige Eigenschaft **objectId**. Keine der Gruppen enthält die eindeutige Eigenschaft der jeweils anderen Gruppe. In diesem Beispiel würden Sie zwei Schlüssel, **deviceId** und die **objectId**, als eindeutige Schlüssel auswählen.
+* Wir akzeptieren Nullwerte, und das Fehlen einer Eigenschaft in der Ereignisnutzlast zählt als ein Nullwert. Dies ist auch die geeignete Methode, um das Senden von Daten an zwei Ereignisquellen zu handhaben, wobei die Daten in jeder Ereignisquelle eine eindeutige Time Series-ID haben.
 
-### <a name="scenario-two"></a>Szenario 2
+### <a name="example-2-time-series-id-with-a-composite-key"></a>Beispiel 2: Time Series-ID mit einem zusammengesetzten Schlüssel
 
 * Ihre Anforderung ist, dass mehrere Eigenschaften innerhalb derselben Gruppe von Ressourcen eindeutig sind. 
-* Nehmen wir an, Sie sind Hersteller von intelligenten Gebäuden und stellen in jedem Raum Sensoren bereit. In jedem Raum haben Sie normalerweise dieselben Werte für *sensorId*, z. B. *sensor1*, *sensor2* und *sensor3*.
-* Darüber hinaus besitzt Ihr Gebäude sich überlappende Stockwerk- und Raumnummern zwischen Standorten in der Eigenschaft *flrRm*, die Werte wie z. B. *1a*, *2b*, *3a* usw. aufweisen.
-* Schließlich haben Sie noch eine Eigenschaft, *location* (Ort), die Werte wie *Redmond*, *Barcelona* und *Tokio* enthält. Um Eindeutigkeit herzustellen, würden Sie die folgenden drei Eigenschaften als Ihre Time Series-ID-Schlüssel festlegen: *sensorId*, *flrRm* und *location*.
+* Sie sind ein Hersteller von intelligenten Gebäuden und stellen in jedem Raum Sensoren bereit. In jedem Raum haben Sie normalerweise dieselben Werte für **sensorId**. Beispiele sind **sensor1**, **sensor2** und **sensor3**.
+* Ihr Gebäude besitzt sich überlappende Stockwerk- und Raumnummern zwischen Standorten in der Eigenschaft **flrRm**. Diese Nummern haben Werte wie **1a**, **2b** und **3a**.
+* Sie haben eine Eigenschaft, **location** (Ort), die Werte wie **Redmond**, **Barcelona** und **Tokio** enthält. Um Eindeutigkeit herzustellen, legen Sie die folgenden drei Eigenschaften als Ihre Time Series-ID-Schlüssel fest: **sensorId**, **flrRm** und **location**.
+
+Beispielrohereignis:
+
+```JSON
+{
+  "sensorId": "sensor1",
+  "flrRm": "1a",
+  "location": "Redmond",
+  "temperature": 78
+}
+```
+
+Im Azure-Portal können Sie diesen zusammengesetzten Schlüssel eingeben als: 
+
+`[{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur [Datenmodellierung](./time-series-insights-update-tsm.md).
 
-* Planen Ihrer [Azure Time Series Insights (Preview)-Umgebung](./time-series-insights-update-plan.md).
+* Planen Ihrer [Azure Time Series Insights Preview-Umgebung](./time-series-insights-update-plan.md).

@@ -1,17 +1,14 @@
 ---
 title: Phasen einer Blaupausenbereitstellung
 description: Hier erfahren Sie, welche Schritte die Azure-Blaupausendienste während der Bereitstellung durchlaufen.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 4645edde5163f1c8bca787416f5465e5a8f2d355
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71978538"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048611"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Phasen einer Blaupausenbereitstellung
 
@@ -28,7 +25,7 @@ Die Blaupausenbereitstellung wird durch Zuweisen einer Blaupause zu einem Abonne
 
 ## <a name="blueprints-granted-owner-rights"></a>Azure Blueprints gewährt Besitzerrechte
 
-Dem Azure Blueprints-Dienstprinzipal werden Besitzerrechte für die zugewiesenen Abonnements gewährt. Mit der gewährten Rolle kann Azure Blueprints die [systemseitig zugewiesene verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) erstellen und später widerrufen.
+Dem Azure Blueprints-Dienstprinzipal werden Besitzerrechte für die zugewiesenen Abonnements oder für Abonnements gewährt, wenn eine [systemseitig zugewiesene verwaltete Identität](../../../active-directory/managed-identities-azure-resources/overview.md) verwendet wird. Mit der gewährten Rolle kann Azure Blueprints die **systemseitig zugewiesene verwaltete Identität** erstellen und später widerrufen. Wenn eine **vom Benutzer zugewiesene** verwaltete Identität verwendet wird, erhält der Azure Blueprints-Dienstprinzipal keine Besitzerrechte für das Abonnement, und er benötigt diese auch nicht.
 
 Die Rechte werden automatisch gewährt, wenn die Zuweisung über das Portal erfolgt. Wenn die Zuweisung jedoch über die REST-API erfolgt, müssen die Rechte mithilfe eines separaten API-Aufrufs gewährt werden. Die Azure Blueprint-AppId lautet `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, aber die Dienstprinzipale variieren je nach Mandant. Verwenden Sie die [Azure Active Directory Graph-API](../../../active-directory/develop/active-directory-graph-api.md) und den REST-Endpunkt [servicePrincipals](/graph/api/resources/serviceprincipal), um den Dienstprinzipal abzurufen. Gewähren Sie dann Azure Blueprints die Rolle _Besitzer_ über das [Portal](../../../role-based-access-control/role-assignments-portal.md), die [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), die [REST-API](../../../role-based-access-control/role-assignments-rest.md) oder eine [Resource Manager-Vorlage](../../../role-based-access-control/role-assignments-template.md).
 
@@ -38,7 +35,7 @@ Der Azure Blueprints-Dienst stellt die Ressourcen nicht direkt bereit.
 
 Ein Benutzer, eine Gruppe oder ein Dienstprinzipal weist eine Blaupause zu einem Abonnement zu. Das Zuweisungsobjekt befindet sich auf der Abonnementebene, der die Blaupause zugewiesen wurde. Ressourcen, die von der Bereitstellung erstellt werden, stehen nicht im Zusammenhang mit der bereitstellenden Entität.
 
-Bei der Erstellung der Blaupausenzuweisung wird der Typ der [verwalteten Identität](../../../active-directory/managed-identities-azure-resources/overview.md) ausgewählt. Die **systemseitig zugewiesene** verwaltete Identität entspricht dem Standardtyp. Eine **benutzerseitig zugewiesene** verwaltete Identität kann ebenfalls ausgewählt werden. Bei der Verwendung einer **benutzerseitig zugewiesenen** verwalteten Identität muss diese definiert werden und die Berechtigungen erhalten, bevor die Blaupausenzuweisung erstellt wird.
+Bei der Erstellung der Blaupausenzuweisung wird der Typ der [verwalteten Identität](../../../active-directory/managed-identities-azure-resources/overview.md) ausgewählt. Die **systemseitig zugewiesene** verwaltete Identität entspricht dem Standardtyp. Eine **benutzerseitig zugewiesene** verwaltete Identität kann ebenfalls ausgewählt werden. Bei der Verwendung einer **benutzerseitig zugewiesenen** verwalteten Identität muss diese definiert werden und die Berechtigungen erhalten, bevor die Blaupausenzuweisung erstellt wird. Die integrierten Rollen [Besitzer](../../../role-based-access-control/built-in-roles.md#owner) und [Blueprint-Operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) verfügen über die erforderliche `blueprintAssignment/write`-Berechtigung zum Erstellen einer Zuweisung, die eine **vom Benutzer zugewiesene** verwaltete Identität verwendet.
 
 ## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optional: Azure Blueprints erstellt eine systemseitig zugewiesene verwaltete Identität
 

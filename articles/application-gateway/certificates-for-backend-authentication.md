@@ -1,18 +1,19 @@
 ---
-title: Zertifikate, die für die Aufnahme von Back-Ends in die Whitelist in Azure Application Gateway erforderlich sind
-description: In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat in ein Authentifizierungszertifikat und ein vertrauenswürdiges Stammzertifikat konvertieren können, die erforderlich sind, um eine Back-End-Instanz in Azure Application Gateway in die Whitelist aufzunehmen.
+title: Erforderliche Zertifikate zum Zulassen von Back-End-Servern
+titleSuffix: Azure Application Gateway
+description: In diesem Artikel erfahren Sie, wie Sie ein SSL-Zertifikat in ein Authentifizierungszertifikat und ein vertrauenswürdiges Stammzertifikat konvertieren können, die erforderlich sind, um Back-End-Instanzen in Azure Application Gateway zuzulassen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: ae1ac3df3da4e5c25e5538f0e8cc4cd12f9186c6
-ms.sourcegitcommit: 4b5dcdcd80860764e291f18de081a41753946ec9
+ms.openlocfilehash: 48944c513bd075e3859503fdadc4001261dc8c4a
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2019
-ms.locfileid: "68774792"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048167"
 ---
 # <a name="create-certificates-to-allow-the-backend-with-azure-application-gateway"></a>Erstellen von Zertifikaten zum Zulassen des Back-Ends für Azure Application Gateway
 

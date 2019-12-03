@@ -1,5 +1,5 @@
 ---
-title: Verweise auf Eingaben und Ausgaben in einer KI-Anreicherungspipeline
+title: Verweisen auf Eingaben und Ausgaben in Skillsets
 titleSuffix: Azure Cognitive Search
 description: Erläutert die Anmerkungssyntax und wie auf eine Anmerkung in den Eingaben und Ausgaben eines Skillsets in einer KI-Anreicherungspipeline in der kognitiven Azure-Suche verwiesen wird.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787774"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113874"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verweisen auf Anmerkungen in einem Skillset der kognitiven Azure-Suche
 

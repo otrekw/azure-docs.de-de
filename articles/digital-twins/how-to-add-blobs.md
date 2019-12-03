@@ -1,20 +1,20 @@
 ---
 title: 'Hinzufügen von Blobs zu Objekten: Azure Digital Twins | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie Objekten in Azure Digital Twins Blobs hinzufügen.
+description: Erfahren Sie, wie Sie in Azure Digital Twins Benutzern, Geräten und Räumen Blobs hinzufügen.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 11/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3a278501f1110da0ab332d0e1acf170892be26ee
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949128"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082337"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Hinzufügen von Blobs zu Objekten in Azure Digital Twins
 
@@ -181,8 +181,6 @@ var response = await httpClient.PostAsync("spaces/blobs", multipartContent);
 
 Abschließend können [cURL](https://curl.haxx.se/)-Benutzer auf die gleiche Weise mehrteilige Anforderungen ausführen:
 
-[![Geräteblobs](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
-
 ```bash
 curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -H "Authorization: Bearer YOUR_TOKEN" \
@@ -198,7 +196,9 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | Die ID des Raums, der dem Blob zugeordnet werden soll |
 | PATH_TO_FILE | Der Pfad zur Textdatei |
 
-Eine erfolgreiche POST-Anforderung gibt die ID des neuen Blobs zurück (oben rot hervorgehoben).
+[![cURL-Beispiel](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+
+Eine erfolgreiche POST-Anforderung gibt die ID des neuen Blobs zurück.
 
 ## <a name="api-endpoints"></a>API-Endpunkte
 

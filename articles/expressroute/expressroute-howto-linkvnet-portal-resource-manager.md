@@ -1,6 +1,6 @@
 ---
-title: 'Verknüpfen eines virtuellen Netzwerks mit einer Verbindung – ExpressRoute: Azure-Portal | Microsoft-Dokumentation'
-description: Verbinden eines VNET mit einer Azure ExpressRoute-Verbindung. Ausführliche Schritte.
+title: 'ExpressRoute: Verknüpfen eines VNET mit einer Verbindung: Azure-Portal'
+description: Verbinden Sie ein VNET mit einer Azure ExpressRoute-Verbindung. Ausführliche Schritte.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6185540340bba4299eb9307432480c91d531779a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4c7a24ad692086398059d1afd48c8927e9d18582
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088919"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022193"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 > [!div class="op_single_selector"]
@@ -54,10 +54,10 @@ Dieser Artikel hilft Ihnen dabei, eine Verbindung zum Verknüpfen eines virtuell
 
 1. Stellen Sie sicher, dass Ihre ExpressRoute-Verbindung und das private Azure-Peering erfolgreich konfiguriert wurden. Folgen Sie der Anleitung unter [Erstellen und Ändern einer ExpressRoute-Verbindung mit PowerShell](expressroute-howto-circuit-arm.md) sowie unter [Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell](expressroute-howto-routing-arm.md). Ihre ExpressRoute-Verbindung sollte in etwa wie in der folgenden Abbildung dargestellt aussehen:
 
-   [![Screenshot: ExpressRoute-Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Anzeigen der Verbindung")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
+   [![Screenshot einer ExpressRoute-Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png "Anzeigen einer Verbindung")](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1-exp.png#lightbox)
 2. Jetzt können Sie damit beginnen, eine Verbindung zum Verknüpfen des virtuellen Netzwerkgateways mit Ihrer ExpressRoute-Verbindung bereitzustellen. Klicken Sie auf **Verbindung** > **Hinzufügen**, um die Seite **Verbindung hinzufügen** zu öffnen, und konfigurieren Sie dann die Werte.
 
-   [![Screenshot: Hinzufügen einer Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Screenshot: Hinzufügen einer Verbindung")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
+   [![Screenshot zum Hinzufügen der Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png "Screenshot zum Hinzufügen der Verbindung")](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1-exp.png#lightbox)
 3. Nachdem die Verbindung erfolgreich konfiguriert wurde, zeigt das Verbindungsobjekt die Daten für die Verbindung an.
 
    ![Screenshot des Verbindungsobjekts](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)

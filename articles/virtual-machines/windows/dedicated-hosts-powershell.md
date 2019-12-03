@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von dedizierten Azure-Hosts über Azure PowerShell | Microsoft-Dokumentation
+title: Bereitstellen von dedizierten Azure-Hosts mit Azure PowerShell
 description: Stellen Sie VMs auf dedizierten Hosts über Azure PowerShell bereit.
 services: virtual-machines-windows
 author: cynthn
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 1dcea4f56d778b0e6320634286a25d478c78a5bc
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261711"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74033366"
 ---
 # <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vorschau: Bereitstellen von VMs auf dedizierten Hosts über Azure PowerShell
 

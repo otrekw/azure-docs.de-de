@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Index
+title: Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern
 titleSuffix: Azure Cognitive Search
 description: Konfigurieren Sie Texttokenizer und Zeichenfilter, die in Volltextsuchabfragen der kognitiven Azure-Suche verwendet werden.
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bed011d62fa227697562f552ecb649c4b1fc00c9
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9bf0fb1a33a98031a78155a3956ac6d6abe33029
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790157"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113630"
 ---
-# <a name="add-custom-analyzers-to-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu einem Index für die kognitive Azure-Suche
+# <a name="add-custom-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Hinzufügen von benutzerdefinierten Analysetools zu Zeichenfolgenfeldern in einem Azure Cognitive Search-Index
 
 Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetool](search-analyzers.md), das aus einer benutzerdefinierten Kombination von bestehendem Tokenizer und optionalen Filtern besteht. Durch die Kombination von Tokenizern und Filtern auf neue Weise können Sie die Textverarbeitung in der Suchmaschine anpassen, um bestimmte Ergebnisse zu erzielen. Sie können beispielsweise ein benutzerdefiniertes Analysetool mit einem *Zeichenfilter* erstellen, um HTML-Markup zu entfernen, bevor Texteingaben tokenisiert werden.
 

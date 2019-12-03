@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: ece49ff749a3b51e2fd4982f2df2726c57c6bf3d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 6f6aa90553f3a69d2d287c7d59e166884a1a8f66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785209"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113730"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 
@@ -150,7 +150,7 @@ Wenn Sie erstmals vorläufiges Löschen aktivieren, wird empfohlen, eine kurze B
 
 Die folgenden Schritte zeigen, wie Sie mit dem vorläufigen Löschen beginnen.
 
-### <a name="azure-portal"></a>Azure-Portal
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Navigieren Sie zum Aktivieren von vorläufigem Löschen unter **Blobdienst** zur Option **Vorläufiges Löschen**. Klicken Sie dann auf **Aktiviert**, und geben Sie die Anzahl der Tage ein, die vorläufig gelöschte Daten beibehalten werden sollen.
 
@@ -180,7 +180,7 @@ Sobald Sie die Momentaufnahmen eines Blobs wiederhergestellt haben, können Sie 
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-promote-snapshot.png)
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -217,7 +217,7 @@ Mithilfe des folgenden Befehls können Sie die aktuelle Aufbewahrungsrichtlinie 
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle 
+# <a name="clitabazure-cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/azure-CLI)
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
@@ -231,7 +231,7 @@ Verwenden Sie den folgenden Befehl, um sicherzustellen, dass das vorläufige Lö
 az storage blob service-properties delete-policy show --account-name mystorageaccount 
 ```
 
-### <a name="python-client-library"></a>Python-Clientbibliothek
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
@@ -249,7 +249,7 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-### <a name="net-client-library"></a>.NET-Clientbibliothek
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 Aktualisieren Sie zum Aktivieren des vorläufigen Löschens die Diensteigenschaften eines Blobclients:
 
@@ -291,9 +291,11 @@ CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)ve
 blockBlob.StartCopy(copySource);
 ```
 
-## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Sind bei der Verwendung des vorläufigen Löschens besondere Überlegungen zu beachten?
+---
 
-Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, wird empfohlen, das vorläufige Löschen zu aktivieren. Das Aktivieren des vorläufigen Löschens für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz beim Auflisten der Blobs führen. Sie können diese zusätzlichen Kosten umgehen, indem Sie häufig überschriebene Daten in einem separaten Speicherkonto speichern, in dem das vorläufige Löschen deaktiviert ist. 
+## <a name="special-considerations"></a>Besondere Überlegungen
+
+Wenn die Möglichkeit besteht, dass Ihre Daten von einer Anwendung oder einem anderen Benutzer des Speicherkontos versehentlich geändert oder gelöscht werden, wird empfohlen, das vorläufige Löschen zu aktivieren. Das Aktivieren des vorläufigen Löschens für häufig überschriebene Daten kann zu höheren Gebühren für die Speicherkapazität und einer höheren Latenz beim Auflisten der Blobs führen. Sie können diese zusätzliche(n) Kosten und Latenz umgehen, indem Sie häufig überschriebene Daten in einem separaten Speicherkonto speichern, in dem das vorläufige Löschen deaktiviert ist. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
@@ -344,6 +346,8 @@ Ja, vorläufiges Löschen ist für Blockblobs, Anfügeblobs und Seitenblobs verf
 ### <a name="is-soft-delete-available-for-virtual-machine-disks"></a>Ist vorläufiges Löschen für die Datenträger virtueller Computer verfügbar?  
 
 Vorläufiges Löschen ist sowohl für Premium-Datenträger als auch für nicht verwaltete Standarddatenträger verfügbar, bei denen es sich um Seitenblobs im Hintergrund handelt. Vorläufiges Löschen kann Sie nur beim Wiederherstellen von Daten unterstützen, die mit den Vorgängen **Delete Blob**, **Put Blob**, **Put Block List**, **Put Block** und **Copy Blob** gelöscht wurden. Daten, die durch einen Aufruf von **Put Page** überschrieben wurden, können nicht wiederhergestellt werden.
+
+Ein virtueller Azure-Computer schreibt auf einen nicht verwalteten Datenträger mithilfe von Aufrufen von **Put Page**. Daher wird das vorläufige Löschen von Schreibvorgängen auf einem nicht verwalteten Datenträger von einer Azure-VM aus nicht unterstützt.
 
 ### <a name="do-i-need-to-change-my-existing-applications-to-use-soft-delete"></a>Muss ich zur Verwendung von vorläufigem Löschen meine vorhandenen Anwendungen ändern?
 

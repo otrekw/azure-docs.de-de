@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: e0354f96036cce968e6b6909a18f97ff48347eda
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796250"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74068894"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -27,9 +27,9 @@ In diesem Artikel wird gezeigt, wie Sie Ihre Azure-Gatewayressource für ein zuv
 
 Informationen zum Verwenden des Gateways mit anderen Diensten finden Sie in den folgenden Artikeln:
 
-* [Microsoft Power BI | Lokales Datengateway](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
-* [Power Automate für das lokale Datengateway](https://flow.microsoft.com/documentation/gateway-manage/)
-* [Lokales Microsoft Power Apps-Datengateway](https://powerapps.microsoft.com/tutorials/gateway-management/)
+* [Microsoft Power Automate für das lokale Datengateway](/power-automate/gateway-reference)
+* [Microsoft Power BI | Lokales Datengateway](/power-bi/service-gateway-onprem)
+* [Lokales Microsoft Power Apps-Datengateway](/powerapps/maker/canvas-apps/gateway-reference)
 * [Azure Analysis Services | Lokales Datengateway](../analysis-services/analysis-services-gateway.md)
 
 <a name="supported-connections"></a>

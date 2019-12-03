@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 51a51e63f1d45d67cda63d4491a3bac572434dc0
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: a35cf935d990dbb61f440d2592d59d21f33a2ae8
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69991912"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74037239"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerung in Azure Data Lake Storage Gen2
 
@@ -90,7 +90,7 @@ Die Berechtigungen für ein Containerobjekt sind **Lesen**, **Schreiben** und **
 | **Ausführen (Execute, X)** | Hat im Kontext von Data Lake Storage Gen2 keine Bedeutung | Erfordert das Durchlaufen der untergeordneten Elemente eines Verzeichnisses |
 
 > [!NOTE]
-> Wenn Sie Berechtigungen ausschließlich mithilfe von ACLs (ohne RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Dienstprinzipal dem Dienstprinzipal die Berechtigung **Ausführen** für den Container und zu jedem Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
+> Wenn Sie Berechtigungen ausschließlich mithilfe von ACLs (ohne RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Sicherheitsprinzipal dem Sicherheitsprinzipal die Berechtigung **Ausführen** für den Container und für jeden Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
 
 #### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
 

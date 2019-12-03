@@ -1,5 +1,5 @@
 ---
-title: 'Umstellen von Verbindungen vom klassischen Modell auf das Resource Manager-Modell – ExpressRoute: Azure | Microsoft-Dokumentation'
+title: 'ExpressRoute: Umstellen von Verbindungen vom klassischen Modell auf das Azure Resource Manager-Modell'
 description: Übersicht über das Bridging zwischen dem klassischen Bereitstellungsmodell und dem Resource Manager-Bereitstellungsmodell.
 services: expressroute
 author: ganesr
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: dfa2bbc735a79555da0421f64ca644adbd7a1701
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60363826"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076645"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
 Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell auf das Azure Resource Manager-Bereitstellungsmodell.

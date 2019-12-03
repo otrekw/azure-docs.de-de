@@ -6,14 +6,14 @@ author: axayjo
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 05/06/2019
-ms.author: akjosh; cynthn
+ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 9a564bf7f633903c58a5719327216baee2df6550
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026154"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085243"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -33,9 +33,10 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 | Resource | BESCHREIBUNG|
 |----------|------------|
-| **Verwaltetes Image** | Ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus generalisierten virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
+| **Verwaltetes Image** | Ein Basisimage, das eigenständig oder zum Erstellen einer **Imageversion** in einem Imagekatalog verwendet werden kann. Verwaltete Images werden aus [generalisierten](#generalized-and-specialized-images) virtuellen Computern erstellt. Ein verwaltetes Image ist ein spezieller VHD-Typ, mit dem mehrere virtuelle Computer und jetzt auch Versionen von freigegebenen Images erstellt werden können. |
+| **Momentaufnahme** | Eine Kopie einer VHD, die zum Erstellen einer **Imageversion** verwendet werden kann. Momentaufnahmen können von einem [spezialisierten](#generalized-and-specialized-images) virtuellen Computer (einem virtuellen Computer, der nicht generalisiert wurde) erstellt und dann allein oder mit Momentaufnahmen von Datenträgern verwendet werden, um eine spezialisierte Imageversion zu erstellen.
 | **Imagekatalog** | Wie der Azure Marketplace ist ein **Imagekatalog** ein Repository zum Verwalten und Teilen von Images, aber Sie kontrollieren, wer Zugriff hat. |
-| **Imagedefinition** | Images sind innerhalb eines Katalogs definiert und enthalten Informationen über das jeweilige Image und die Anforderungen für dessen Verwendung in Ihrer Organisation. Sie können Informationen einbinden, etwa, ob das Image ein Windows- oder Linux-Image ist, Anforderungen hinsichtlich minimalem und maximalem Arbeitsspeicher und Versionshinweise. Es ist eine Definition eines Imagetyps. |
+| **Imagedefinition** | Images sind innerhalb eines Katalogs definiert und enthalten Informationen über das jeweilige Image und die Anforderungen für dessen Verwendung in Ihrer Organisation. Sie können Informationen einbinden, etwa, ob das Image ein generalisiertes oder spezialisiertes Image ist, das Betriebssystem, Anforderungen hinsichtlich minimalem und maximalem Arbeitsspeicher und Versionshinweise. Es ist eine Definition eines Imagetyps. |
 | **Imageversion** | Eine **Imageversion** ist, was Sie verwenden, um einen virtuellen Computer zu erstellen, wenn Sie einen Katalog verwenden. Sie können nach Bedarf mehrere Versionen eines Images für Ihre Umgebung haben. Wie bei einem verwalteten Image wird, wenn Sie eine **Imageversion** zum Erstellen einer VM verwenden, wird die Imageversion verwendet, um neue Datenträger für den virtuellen Computer zu erstellen. Imageversionen können mehrmals verwendet werden. |
 
 <br>
@@ -58,7 +59,7 @@ Alle drei verfügen über eindeutige Sätze von Werten. Das Format ist ähnlich 
 
 Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition festgelegt werden können, damit Sie Ihre Ressourcen einfacher verfolgen können:
 
-* Betriebssystemstatus: Sie können den Betriebssystemstatus auf „Generalisiert“ oder „Spezialisiert“ festlegen, derzeit wird jedoch nur „Generalisiert“ unterstützt. Images müssen von virtuellen Computern erstellt werden, die mithilfe von Sysprep für Windows oder `waagent -deprovision` für Linux generalisiert wurden.
+* Betriebssystemstatus: Sie können den Betriebssystemstatus auf [„Generalisiert“ oder „Spezialisiert“](#generalized-and-specialized-images) festlegen.
 * Betriebssystem: Kann entweder Windows oder Linux sein.
 * Beschreibung: Verwenden Sie eine Beschreibung, um ausführlichere Informationen darüber anzugeben, warum die Imagedefinition vorhanden ist. Sie könnten z. B. eine Imagedefinition für Ihren Front-End-Server haben, in dem die Anwendung vorinstalliert ist.
 * EULA (Lizenzbedingungen): Kann verwendet werden, um auf einen Endbenutzer-Lizenzvertrag zu verweisen, der speziell für die Imagedefinition gilt.
@@ -68,21 +69,43 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 * Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 * Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
 
+## <a name="generalized-and-specialized-images"></a>Generalisierte und spezialisierte Images
+
+Die Shared Image Gallery unterstützt zwei Betriebssystemzustände. In der Regel ist es erforderlich, dass der zum Erstellen des Images verwendete virtuelle Computer generalisiert wurde, bevor das Image verwendet wird. Durch das Generalisieren werden computer- und benutzerspezifische Informationen aus dem virtuellen Computer entfernt. Für Windows wird Sysprep ebenfalls verwendet. Für Linux können Sie den [waagent](https://github.com/Azure/WALinuxAgent)-Parameter `-deprovision` oder `-deprovision+user` verwenden.
+
+Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informationen und Konten entfernt. Virtuellen Computern, die aus spezialisierten Images erstellt wurden, ist zudem kein `osProfile` zugeordnet. Dies bedeutet, dass spezialisierte Images einige Einschränkungen aufweisen.
+
+- Konten, die für die Anmeldung beim virtuellen Computer verwendet werden können, können auch auf jedem virtuellen Computer verwendet werden, der mit dem aus ihm erstellten spezialisierten Image erstellt wurde.
+- Virtuelle Computer haben den **Computernamen** des virtuellen Computers, aus dem das Image erstellt wurde. Sie sollten den Computernamen ändern, um Konflikte zu vermeiden.
+- Das `osProfile` gibt an, wie sensible Informationen mithilfe von `secrets` an den virtuellen Computer übermittelt werden. Dies kann Probleme bei KeyVault, WinRM und anderen Funktionen verursachen, die `secrets` im `osProfile` verwenden. In einigen Fällen können Sie verwaltete Dienstidentitäten (Managed Service Identities, MSIs) verwenden, um diese Einschränkungen zu umgehen.
+
+> [!IMPORTANT]
+> Spezialisierte Images befinden sich zurzeit in der Public Preview-Phase.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> **Bekannte Einschränkungen der Vorschau** Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
+
+
 ## <a name="regional-support"></a>Regionsunterstützung
 
 Quellregionen sind in der folgenden Tabelle aufgeführt. Alle öffentlichen Regionen können Zielregionen sein, aber um in „Australien, Mitte“ und „Australien, Mitte 2“ zu replizieren, muss Ihr Abonnement in eine Whitelist aufgenommen werden. Hier können Sie die Aufnahme in die Whitelist anfordern: https://azure.microsoft.com/global-infrastructure/australia/contact/
 
-| Quellregionen |
-|---------------------|-----------------|------------------|-----------------|
-| Australien, Mitte   | USA, Mitte (EUAP) | Korea, Mitte    | USA, Westen-Mitte |
-| Australien, Mitte 2 | Asien, Osten       | Korea, Süden      | Europa, Westen     |
-| Australien (Osten)      | East US         | USA Nord Mitte | Indien, Westen      |
-| Australien, Südosten | USA (Ost) 2       | Nordeuropa     | USA (Westen)         |
-| Brasilien Süd        | USA, Osten 2 (EUAP)  | USA Süd Mitte | USA, Westen 2       |
-| Kanada, Mitte      | Frankreich, Mitte  | Indien (Süden)      | China, Osten      |
-| Kanada, Osten         | Frankreich, Süden    | Asien, Südosten   | China, Osten 2    |
-| Indien, Mitte       | Japan, Osten      | UK, Süden         | China, Norden     |
-| USA (Mitte)          | Japan, Westen      | UK, Westen          | China, Norden 2   |
+
+| Quellregionen        |                   |                    |                    |
+| --------------------- | ----------------- | ------------------ | ------------------ |
+| Australien, Mitte     | China, Osten        | Indien (Süden)        | Europa, Westen        |
+| Australien, Mitte 2   | China, Osten 2      | Asien, Südosten     | UK, Süden           |
+| Australien (Osten)        | China, Norden       | Japan, Osten         | UK, Westen            |
+| Australien, Südosten   | China, Norden 2     | Japan, Westen         | US DoD, Mitte     |
+| Brasilien Süd          | Asien, Osten         | Korea, Mitte      | US DoD, Osten        |
+| Kanada, Mitte        | East US           | Korea, Süden        | US Gov Arizona     |
+| Kanada, Osten           | USA (Ost) 2         | USA Nord Mitte   | US Gov Texas       |
+| Indien, Mitte         | USA, Osten 2 (EUAP)    | Nordeuropa       | US Government, Virginia    |
+| USA (Mitte)            | Frankreich, Mitte    | USA Süd Mitte   | Indien, Westen         |
+| USA, Mitte (EUAP)       | Frankreich, Süden      | USA, Westen-Mitte    | USA (Westen)            |
+|                       |                   |                    | USA, Westen 2          |
+
+
 
 ## <a name="limits"></a>Einschränkungen 
 
@@ -163,7 +186,7 @@ Die folgenden SDKs unterstützen das Erstellen von Katalogen mit freigegebenen I
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 
@@ -217,15 +240,16 @@ Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben k�
 
  Szenario 1: Wenn Sie ein verwaltetes Image haben, können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
 
- Szenario 2: Wenn Sie ein nicht verwaltetes, generalisiertes Image haben, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
+ Szenario 2: Wenn Sie ein nicht verwaltetes Image haben, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
 
- Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD hochladen, ein verwaltetes Image erstellen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
+ Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD in ein verwaltetes Image hochladen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
+
 - Wenn die VHD von einer Windows-VM stammt, lesen Sie [Hochladen einer generalisierten VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
 - Wenn die VHD für eine Linux-VM ist, lesen Sie [Hochladen einer VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd).
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
-Nein, zurzeit unterstützen wir keine speziellen Datenträger als Images. Wenn Sie einen speziellen Datenträger haben, müssen Sie [einen virtuellen Computer aus der VHD erstellen](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk), indem Sie den speziellen Datenträger an einen neuen virtuellen Computer anfügen. Wenn Sie einen virtuellen Computer haben, der ausgeführt wird, befolgen Sie die Anweisungen, um ein verwaltetes Image auf der Grundlage des [virtuellen Windows-Computers](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) oder des [virtuellen Linux-Computers](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images) zu erstellen. Nachdem Sie ein generalisiertes, verwaltetes Image haben, können Sie den Prozess zum Erstellen einer geteilten Imagebeschreibung und Imageversion starten.
+Ja, die Unterstützung von spezialisierten Datenträgern als Images ist als Vorschauversion verfügbar. Sie können einen virtuellen Computer nur aus einem spezialisierten Image erstellen, indem Sie das Portal ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) oder [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) und die API verwenden. In der Vorschauversion wird PowerShell nicht unterstützt.
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Kann ich die Katalogressource mit geteilten Images nach der Erstellung in ein anderes Abonnement verschieben?
 
@@ -235,7 +259,7 @@ Nein, Sie können Katalogressource mit geteilten Images nicht in ein anderes Abo
 
 Nein, Sie können Imageversionen nicht zwischen Clouds replizieren.
 
-### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Kann ich meine Imageversionen zwischen Abonnements replizieren? 
+### <a name="can-i-replicate-my-image-versions-across-subscriptions"></a>Kann ich meine Imageversionen zwischen Abonnements replizieren?
 
 Nein, Sie können die Imageversionen zwischen Regionen in einem Abonnement replizieren und mittels rollenbasierter Zugriffssteuerung in anderen Abonnements verwenden.
 

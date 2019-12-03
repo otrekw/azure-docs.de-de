@@ -1,26 +1,26 @@
 ---
-title: Self-Service-Registrierung für über E-Mail verifizierte Benutzerkonten – Azure Active Directory | Microsoft-Dokumentation
+title: Self-Service-Registrierung für per E-Mail verifizierte Benutzer – Azure AD | Microsoft-Dokumentation
 description: Verwenden der Self-Service-Registrierung in einem Azure Active Directory-Mandanten (Azure AD)
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 editor: ''
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d949b746f05eb440f5ae28f683dfc838217ab47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 953837e22cdd3ba8a54d702eac61461739db82d2
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65956516"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74027636"
 ---
 # <a name="what-is-self-service-sign-up-for-azure-active-directory"></a>Was ist die Self-Service-Registrierung für Azure Active Directory?
 

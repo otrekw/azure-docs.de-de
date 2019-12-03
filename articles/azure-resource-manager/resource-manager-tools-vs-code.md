@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: jgao
-ms.openlocfilehash: 8d2b818846eeae44ffe05b4546a333510c638621
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 4c0fd0968ce52e50a9171eecb3dfaebd1e2a4c46
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70196872"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075010"
 ---
 # <a name="use-visual-studio-code-to-create-azure-resource-manager-templates"></a>Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen
 
@@ -121,5 +121,5 @@ Zu den Warnungen gehören:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Resource Manager und Resource Manager-Vorlagen finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](./resource-group-overview.md).
+- Weitere Informationen zum Erstellen von Azure Resource Manager-Vorlagen finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](template-tutorial-create-first-template.md).
 - Wenn Sie einen Schnellstart mit Visual Studio Code durchlaufen möchten, lesen Sie [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md).

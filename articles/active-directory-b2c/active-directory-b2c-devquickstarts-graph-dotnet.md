@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: e0b87757326b5e2a54a78a38bbcd5bef8e6f5be2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802062"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74119991"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Verwenden der Azure AD-Graph-API
 
@@ -277,10 +277,11 @@ B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
 
 ### <a name="search-users"></a>Suchen nach Benutzern
 
-Sie haben zwei Möglichkeiten, um in Ihrem B2C-Mandanten nach Benutzern zu suchen:
+Sie haben folgende Möglichkeiten, um in Ihrem B2C-Mandanten nach Benutzern zu suchen:
 
 * Verweisen Sie auf die **Objekt-ID** des Benutzers.
 * Verweisen Sie auf die Anmeldekennung (die Eigenschaft `signInNames`).
+* Verweisen Sie auf einen der gültigen OData-Parameter. Beispiel: „givenName“, „surname“, „displayName“ usw.
 
 Führen Sie einen der folgenden Befehle aus, um nach einem Benutzer zu suchen:
 
@@ -294,6 +295,9 @@ Beispiel:
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
 B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27consumer@fabrikam.com%27)
+B2C get-user $filter=givenName%20eq%20%27John%27
+B2C get-user $filter=surname%20eq%20%27Doe%27
+B2C get-user $filter=displayName%20eq%20%27John%20Doe%27
 ```
 
 ### <a name="delete-users"></a>Löschen von Benutzern

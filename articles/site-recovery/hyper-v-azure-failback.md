@@ -1,5 +1,5 @@
 ---
-title: Durchführen eines Failbacks während der Notfallwiederherstellung für virtuelle Hyper-V-Computer aus Azure in eine lokale Umgebung | Microsoft-Dokumentation
+title: Failback von virtuellen Hyper-V-Computern aus Azure mit Azure Site Recovery
 description: Es wird beschrieben, wie Sie für virtuelle Hyper-V-Computer während der Notfallwiederherstellung in Azure mit dem Azure Site Recovery-Dienst ein Failback zu einem lokalen Standort durchführen.
 services: site-recovery
 author: rajani-janaki-ram
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: rajanaki
-ms.openlocfilehash: 07ecc8547ab155600bccfd1ad8f1ecbb58a18fa3
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b924c1424a309fb61f690c21e5665a70356c7a62
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931842"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084231"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Durchführen eines Failbacks für virtuelle Hyper-V-Computer
 

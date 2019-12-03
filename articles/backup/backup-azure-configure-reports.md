@@ -8,14 +8,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: dacurwin
-ms.openlocfilehash: 293af600f4bd58efe8383d019ca3d17f724f242c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 757e12f97f95ef856643820e47113521d840f10d
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68933335"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74074976"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
+
 Dieser Artikel erläutert die Schritte zum Konfigurieren von Berichten für Azure Backup mit dem Recovery Services-Tresor. Außerdem erfahren Sie, wie Sie mit Power BI auf Berichte zugreifen. Nachdem Sie diese Schritte abgeschlossen haben, können Sie direkt Power BI aufrufen, um Berichte anzuzeigen, anzupassen und zu erstellen.
 
 > [!IMPORTANT]
@@ -26,24 +27,27 @@ Laden Sie die aktuelle App (Version 1.8) herunter, um dieses Problem zu vermeide
 >
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
+
 - Azure Backup-Berichte werden für die Sicherung von Azure-VMs und Dateien/Ordnern in der Cloud mit dem Azure Recovery Services-Agent unterstützt.
 - Berichte für Azure SQL-Datenbank, Azure-Dateifreigaben, Data Protection Manager und Azure Backup Server werden aktuell nicht unterstützt.
 - Sie können die Berichte für verschiedene Tresore und Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto konfiguriert ist. Das ausgewählte Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
-- Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. Sie können auch in Power BI eine Ad-hoc-Aktualisierung der Berichte ausführen. In diesem Fall werden die neuesten Daten im Kundenspeicherkonto zum Rendern von Berichten verwendet.
+- Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. Sie können auch in Power BI eine bedarfsgesteuerte Aktualisierung der Berichte ausführen. In diesem Fall werden die neuesten Daten im Kundenspeicherkonto zum Rendern von Berichten verwendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 - Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
 - [Erstellen Sie ein Power BI-Konto](https://powerbi.microsoft.com/landing/signin/), um im Power BI-Portal Ihre eigenen Berichte anzuzeigen, anzupassen und zu erstellen.
 - Registrieren Sie den Ressourcenanbieter **Microsoft.insights**, falls er noch nicht registriert ist. Verwenden Sie die Abonnements für das Speicherkonto und den Recovery Services-Tresor, damit die Berichtsdaten an das Speicherkonto übermittelt werden können. Öffnen Sie zum Registrieren das Azure-Portal, wählen Sie **Abonnement** > **Ressourcenanbieter** aus, und markieren Sie den gewünschten Anbieter.
 
 ## <a name="configure-storage-account-for-reports"></a>Konfigurieren des Speicherkontos für Berichte
+
 Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tresor über das Azure-Portal konfigurieren. Diese Konfiguration wird einmalig ausgeführt. Wenn das Speicherkonto konfiguriert wurde, können Sie direkt Power BI öffnen, um die Vorlagen-App anzuzeigen und Berichte zu verwenden.
 
 1. Falls Sie bereits über einen geöffneten Recovery Services-Tresor verfügen, fahren Sie mit dem nächsten Schritt fort. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, wählen Sie im Azure-Portal **Alle Dienste** aus.
 
-   * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
-   * Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
-   * Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
+   - Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
+   - Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
+   - Die Liste mit den Recovery Services-Tresoren wird angezeigt. Wählen Sie in der Liste mit den Recovery Services-Tresoren einen Tresor aus.
 
      Das ausgewählte Tresor-Dashboard wird geöffnet.
 2. Wählen Sie in der Liste der Elemente, die unter dem Tresor angezeigt wird, im Abschnitt **Überwachung und Berichte** **Sicherungsberichte** aus, um das Speicherkonto für Berichte zu konfigurieren.
@@ -76,6 +80,7 @@ Diese Schritte zeigen, wie Sie das Speicherkonto für einen Recovery Services-Tr
 >
 
 ## <a name="view-reports-in-power-bi"></a>Anzeigen von Berichten in Power BI
+
 Nachdem das Speicherkonto mit dem Recovery Services-Tresor für Berichte konfiguriert wurde, dauert es etwa 24 Stunden, bis die ersten Daten an das Speicherkonto übermittelt werden. 24 Stunden nach Einrichten des Speicherkontos können Sie anhand der folgenden Schritte Berichte in Power BI anzeigen.
 Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeitsbereich, und führen Sie die folgenden Schritte aus.
 
@@ -87,7 +92,7 @@ Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeit
       ![Abrufen der Vorlagen-App](./media/backup-azure-configure-reports/template-app-get.png)
 4. Geben Sie den Namen des Speicherkonto ein, das in Schritt 5 konfiguriert wurde, und wählen Sie **Weiter** aus.
 
-    ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
+    ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
 5. Geben Sie bei Verwendung der Authentifizierungsmethode „Schlüssel“ den Speicherkontoschlüssel für dieses Speicherkonto ein. Zum [Anzeigen und Kopieren der Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys) navigieren Sie im Azure-Portal zu Ihrem Speicherkonto.
 
      ![Speicherkonto erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
@@ -112,16 +117,17 @@ Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeit
 
       ![Azure Backup-Berichtsregisterkarten](./media/backup-azure-configure-reports/reports-tab-view.png)
 
-
 ## <a name="troubleshooting-errors"></a>Problembehandlung
+
 | Fehlerdetails | Lösung |
 | --- | --- |
 | Nach dem Einrichten des Speicherkontos für Backup-Berichte wird unter **Speicherkonto** weiterhin **Nicht konfiguriert** angezeigt. | Wenn das Speicherkonto erfolgreich konfiguriert wurde, werden die Berichtsdaten trotz dieses Problems übertragen. Um dieses Problem zu beheben, öffnen Sie das Azure-Portal, und wählen Sie **Alle Dienste** > **Diagnoseeinstellungen** > **Recovery Services-Tresor** > **Einstellung bearbeiten** aus. Löschen Sie die zuvor konfigurierte Einstellung, und erstellen Sie auf demselben Blatt eine neue Einstellung. Wählen Sie diesmal im Feld **Name** die Option **Dienst** aus. Nun wird das konfigurierte Speicherkonto angezeigt. |
 |Nach dem Import der Azure Backup-Vorlagen-App in Power BI wird die Fehlermeldung „404: Container wurde nicht gefunden.“ angezeigt. | Wie bereits erwähnt, werden Berichte erst 24 Stunden nach ihrer Konfiguration im Recovery Services-Tresor korrekt in Power BI angezeigt. Wenn Sie vor Ablauf dieser 24 Stunden versuchen, auf die Berichte zuzugreifen, wird diese Fehlermeldung angezeigt, weil noch nicht alle Daten zum Anzeigen gültiger Berichte vorhanden sind. |
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Nachdem Sie das Speicherkonto konfiguriert und die Azure Backup-Vorlagen-App importiert haben, müssen Sie die Berichte anpassen und Berichte mithilfe eines Datenmodells zur Berichterstellung erstellen. Weitere Informationen finden Sie in den folgenden Artikeln.
 
-* [Verwenden eines Datenmodells für die Azure Backup-Berichterstellung](backup-azure-reports-data-model.md)
-* [Filtern von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
-* [Erstellen von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
+- [Verwenden eines Datenmodells für die Azure Backup-Berichterstellung](backup-azure-reports-data-model.md)
+- [Filtern von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+- [Erstellen von Berichten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

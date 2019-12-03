@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer mithilfe der Azure CLI
+title: Konfigurieren eines Verfügbarkeitsgruppe (Azure CLI)
 description: Verwenden Sie die Azure CLI, um den Windows-Failovercluster, den Verfügbarkeitsgruppenlistener und den internen Lastenausgleich auf einer SQL Server-VM in Azure zu erstellen.
 services: virtual-machines-windows
 documentationcenter: na
@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 58174704051709a720950ac51591a1d53b9d01bb
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.custom: seo-lt-2019
+ms.openlocfilehash: a6600af353daf2bfa7b49196f48ba5b60e6c45fb
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100565"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022362"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Konfigurieren einer Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer mithilfe der Azure CLI
 In diesem Artikel wird die Verwendung der [Azure CLI](/cli/azure/sql/vm?view=azure-cli-latest/) zum Bereitstellen eines Windows-Failoverclusters, zum Hinzufügen von virtuellen SQL Server-Computern zum Cluster sowie zum Erstellen des internen Lastenausgleichs und Listeners für eine Always On-Verfügbarkeitsgruppe beschrieben. Die Bereitstellung der Always On-Verfügbarkeitsgruppe erfolgt weiterhin manuell über SQL Server Management Studio (SSMS). 

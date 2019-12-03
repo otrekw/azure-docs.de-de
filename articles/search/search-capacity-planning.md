@@ -1,5 +1,5 @@
 ---
-title: Zentrales Hochskalieren von Partitionen und Replikaten zum Hinzufügen von Kapazität für Abfrage- und Indexworkloads
+title: Skalieren der Kapazität für Abfrage- und Indexworkloads
 titleSuffix: Azure Cognitive Search
 description: Passen Sie Partitions- und Replikatcomputerressourcen in der kognitiven Azure-Suche an, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792503"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112131"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Zentrales Hochskalieren von Partitionen und Replikaten zum Hinzufügen von Kapazität für Abfrage- und Indexworkloads in der kognitiven Azure-Suche
 

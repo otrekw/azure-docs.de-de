@@ -1,5 +1,5 @@
 ---
-title: Azure-Regionen für virtuelle Linux-Computer | Microsoft-Dokumentation
+title: Azure-Regionen für virtuelle Linux-Computer
 description: Erfahren Sie etwas über die Regionen für die Ausführung virtueller Linux-Computer in Azure.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/10/2019
 ms.author: cynthn
-ms.openlocfilehash: c5c00084e09cfffc850670a0092154996ecdceed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: db30d9690293e4d720181438785197f2480657ac
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091413"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74035142"
 ---
+# <a name="regions-for-virtual-machines-in-azure"></a>Regionen für virtuelle Computer in Azure
 [!INCLUDE [virtual-machines-common-regions](../../../includes/virtual-machines-common-regions.md)]
 

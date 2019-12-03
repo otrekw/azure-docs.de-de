@@ -9,19 +9,19 @@ ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 08/23/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e2074cec65ea4c1df803999c6a995f73ea4227ee
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f4420824192ff3fd967cb6676cbe1de81ce7ad4c
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796689"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953917"
 ---
 # <a name="use-secrets-in-training-runs"></a>Verwenden von Geheimnissen in Trainingsausführungen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Geheimnisse sicher in Trainingsausführungen verwenden. Beispielsweise müssen Sie, wenn eine Verbindung mit einer externen Datenbank herstellen möchten, um Trainingsdaten abzufragen, den Benutzernamen und das Kennwort an den Remoteausführungskontext übergeben. Das Codieren solcher Werte in Trainingsskripts in Klartext ist unsicher, da so das Geheimnis verfügbar gemacht wird. 
+In diesem Artikel erfahren Sie, wie Sie Geheimnisse sicher in Trainingsausführungen verwenden. Beispielsweise müssen Sie, wenn Sie eine Verbindung mit einer externen Datenbank herstellen möchten, um Trainingsdaten abzufragen, Ihren Benutzernamen und Ihr Kennwort an den Remoteausführungskontext übergeben. Das Codieren solcher Werte in Trainingsskripts in Klartext ist unsicher, da so das Geheimnis verfügbar gemacht wird. 
 
 Stattdessen hat Ihr Azure Machine Learning-Arbeitsbereich [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) als zugehörige Ressource. Diese Key Vault-Instanz kann verwendet werden, um Geheimnisse über APIs, die zum Azure Machine Learning Python SDK gehören, sicher an Remoteausführungen zu übergeben.
 
@@ -51,7 +51,7 @@ Sie können Geheimnisnamen mit der [list_secrets](https://docs.microsoft.com/pyt
 
 ## <a name="get-secrets"></a>Abrufen geheimer Schlüssel
 
-In Ihrem lokalen Code können Sie die [Keyvault.get_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-)-Methode verwenden, um den Geheimniswert für einen Namen abzurufen.
+Im lokalen Code können Sie die [Keyvault.get_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.keyvault.keyvault?view=azure-ml-py#get-secret-name-)-Methode verwenden, um den Geheimniswert nach Namen abzurufen.
 
 In Ausführungen, die mit [Experiment.submit](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py#submit-config--tags-none----kwargs-) übermittelt (gestartet) wurden, verwenden Sie die [Run.get_secret](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-secret-name-)-Methode. Da die übermittelte Ausführung ihren Arbeitsbereich kennt, umgeht diese Methode die Arbeitsbereichsinstanziierung und gibt den Geheimniswert direkt zurück.
 

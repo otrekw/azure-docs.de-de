@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: da84f72c1ccf85e1f3d0f003a5aca961118c0a0e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472895"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120615"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
 Da die Anwendungsentwicklung zunehmend auf eine containerbasierte Vorgehensweise setzt, ist es wichtig, die Ressourcen zu orchestrieren und zu verwalten. Kubernetes ist die führende Plattform, die Funktionen bietet, um eine zuverlässige Planung fehlertoleranter Anwendungsworkloads bereitzustellen. Azure Kubernetes Service (AKS) ist ein Managed Kubernetes-Angebot, das die containerbasierte Anwendungsbereitstellung und -verwaltung weiter vereinfacht.
 
-In diesem Artikel werden die grundlegenden Kubernetes-Infrastrukturkomponenten wie *Clustermaster*, *Knoten* und *Knotenpools* vorgestellt. Darüber hinaus werden Workloadressourcen wie *Pods*, *Bereitstellungen* und *Sets* erläutert, und es wird beschrieben, wie Sie Ressourcen in *Namespaces* gruppieren.
+In diesem Artikel werden die grundlegenden Kubernetes-Infrastrukturkomponenten wie *Steuerungsebene*, *Knoten* und *Knotenpools* vorgestellt. Darüber hinaus werden Workloadressourcen wie *Pods*, *Bereitstellungen* und *Sets* erläutert, und es wird beschrieben, wie Sie Ressourcen in *Namespaces* gruppieren.
 
 ## <a name="what-is-kubernetes"></a>Was ist Kubernetes?
 
@@ -28,33 +28,33 @@ Sie können moderne, portierbare, auf Microservices basierende Anwendungen erste
 
 Als offene Plattform ermöglicht Kubernetes Ihnen, Ihre Anwendungen mit Ihren bevorzugten Programmiersprachen, Betriebssystemen, Bibliotheken oder Messagingbussen zu erstellen. Vorhandene CI/CD-Tools (Continuous Integration/Continuous Delivery) können in Kubernetes integriert werden, um Releases zu planen und bereitzustellen.
 
-Azure Kubernetes Service (AKS) ist ein Managed Kubernetes-Dienst, der die Komplexität von Bereitstellungs- und wichtigen Verwaltungsaufgaben reduziert – beispielsweise die Koordination von Upgrades. Die AKS-Clustermaster werden von der Azure-Plattform verwaltet, und Sie zahlen nur für die AKS-Knoten, die Ihre Anwendungen ausführen. AKS baut auf der Open-Source-Engine von Azure Kubernetes Service ([aks-engine][aks-engine]) auf.
+Azure Kubernetes Service (AKS) ist ein Managed Kubernetes-Dienst, der die Komplexität von Bereitstellungs- und wichtigen Verwaltungsaufgaben reduziert – beispielsweise die Koordination von Upgrades. Die AKS-Steuerungsebene wird von der Azure-Plattform verwaltet, und Sie zahlen nur für die AKS-Knoten, die Ihre Anwendungen ausführen. AKS baut auf der Open-Source-Engine von Azure Kubernetes Service ([aks-engine][aks-engine]) auf.
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes-Cluster – Architektur
 
 Ein Kubernetes-Cluster ist in zwei Komponenten unterteilt:
 
-- *Clustermasterknoten* stellen die grundlegenden Kubernetes-Dienste und Orchestrierungsfunktionen für Anwendungsworkloads bereit.
+- Knoten auf *Steuerungsebene* stellen die grundlegenden Kubernetes-Dienste und Orchestrierungsfunktionen für Anwendungsworkloads bereit.
 - *Knoten* führen Ihre Anwendungsworkloads aus.
 
-![Komponenten der Kubernetes-Clustermaster und -Clusterknoten](media/concepts-clusters-workloads/cluster-master-and-nodes.png)
+![Kubernetes-Steuerungsebene und Knoten – Komponenten](media/concepts-clusters-workloads/control-plane-and-nodes.png)
 
-## <a name="cluster-master"></a>Clustermaster
+## <a name="control-plane"></a>Steuerungsebene
 
-Wenn Sie einen AKS-Cluster erstellen, wird automatisch ein Clustermaster erstellt und konfiguriert. Dieser Clustermaster wird als verwaltete Azure-Ressource bereitgestellt, die für den Benutzer abstrahiert wird. Für den Clustermaster fallen keine Kosten an. Nur die Knoten, die Teil des AKS-Clusters sind, werden in Rechnung gestellt.
+Wenn Sie einen AKS-Cluster erstellen, wird automatisch eine Steuerungsebene erstellt und konfiguriert. Diese Steuerungsebene wird als verwaltete Azure-Ressource bereitgestellt, die für den Benutzer abstrahiert wird. Für die Steuerungsebene fallen keine Kosten an. Nur die Knoten, die Teil des AKS-Clusters sind, werden in Rechnung gestellt.
 
-Der Clustermaster umfasst die folgenden Kubernetes-Kernkomponenten:
+Die Steuerungsebene umfasst die folgenden Kubernetes-Kernkomponenten:
 
 - *kube-apiserver*: Die zugrunde liegenden Kubernetes-APIs werden auf dem API-Server verfügbar gemacht. Diese Komponente ermöglicht die Interaktion für Verwaltungstools, z.B. `kubectl` oder das Kubernetes-Dashboard.
 - *etcd*: Für die Verwaltung des Zustands Ihres Kubernetes-Clusters und Ihrer Kubernetes-Konfiguration ist *etcd* ein hoch verfügbarer Schlüssel-Wert-Speicher in Kubernetes.
 - *kube-scheduler*: Wenn Sie Anwendungen erstellen oder skalieren, ermittelt der Scheduler, welche Knoten die Workload ausführen können, und startet diese.
 - *kube-controller-manager*: Der Controller Manager überwacht eine Reihe kleinerer Controller, die Aktionen wie beispielsweise das Replizieren von Pods und das Verarbeiten von Knotenvorgängen ausführen.
 
-AKS stellt einen Clustermaster mit Einzelmandant, einem dedizierten API-Server, einem Scheduler usw. bereit. Sie definieren die Anzahl und Größe der Knoten, und die Azure-Plattform konfiguriert die sichere Kommunikation zwischen Clustermaster und Clusterknoten. Die Interaktion mit dem Clustermaster erfolgt über Kubernetes-APIs, z.B. `kubectl` oder das Kubernetes-Dashboard.
+AKS stellt eine Steuerungsebene mit Einzelmandant, einem dedizierten API-Server, einem Scheduler usw. bereit. Sie definieren die Anzahl und Größe der Knoten, und die Azure-Plattform konfiguriert die sichere Kommunikation zwischen Steuerungsebene und Knoten. Die Interaktion mit der Steuerungsebene erfolgt über Kubernetes-APIs, z.B. `kubectl`, oder das Kubernetes-Dashboard.
 
-Dieser verwaltete Clustermaster bedeutet, dass Sie Komponenten wie einen hoch verfügbaren *etcd*-Speicher nicht konfigurieren müssen. Er bedeutet aber auch, dass Sie nicht direkt auf den Clustermaster zugreifen können. Upgrades für Kubernetes werden über die Azure CLI oder das Azure-Portal orchestriert. Ein Upgrade erfolgt erst auf dem Clustermaster, dann auf den Knoten. Zum Beheben möglicher Probleme können Sie über Azure Monitor-Protokolle die Clustermasterprotokolle überprüfen.
+Diese verwaltete Steuerungsebene bedeutet, dass Sie Komponenten wie einen hoch verfügbaren *etcd*-Speicher nicht konfigurieren müssen. Sie bedeutet aber auch, dass Sie nicht direkt auf die Steuerungsebene zugreifen können. Upgrades für Kubernetes werden über die Azure CLI oder das Azure-Portal orchestriert. Ein Upgrade erfolgt erst auf der Steuerungsebene, dann auf den Knoten. Zum Beheben möglicher Probleme können Sie über Azure Monitor-Protokolle die Steuerungsebenenprotokolle überprüfen.
 
-Wenn Sie den Clustermaster auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen.
+Wenn Sie die Steuerungsebene auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen.
 
 Entsprechende bewährte Methoden finden Sie unter [Best Practices für Clustersicherheit und Upgrades in Azure Kubernetes Service (AKS)][operator-best-practices-cluster-security].
 
@@ -62,7 +62,7 @@ Entsprechende bewährte Methoden finden Sie unter [Best Practices für Clustersi
 
 Zum Ausführen Ihrer Anwendungen und der unterstützenden Dienste benötigen Sie einen Kubernetes-*Knoten*. Ein AKS-Cluster besteht aus mindestens einem Knoten, bei dem es sich um einen virtuellen Azure-Computer handelt, der die Kubernetes-Knotenkomponenten und die Containerruntime ausführt:
 
-- Das `kubelet` ist der Kubernetes-Agent, der die Orchestrierungsanforderungen des Clustermasters und die Planung der Ausführung der angeforderten Container verarbeitet.
+- Das `kubelet` ist der Kubernetes-Agent, der die Orchestrierungsanforderungen der Steuerungsebene und die Planung der Ausführung der angeforderten Container verarbeitet.
 - Die virtuellen Netzwerkfunktionen werden vom *kube-proxy* auf jedem Knoten verarbeitet. Der Proxy leitet den Netzwerkdatenverkehr weiter und verwaltet die IP-Adressen für Dienste und Pods.
 - Die *Containerruntime* ist die Komponente, die es Anwendungen in Containern ermöglicht, zusätzliche Ressourcen wie das virtuelle Netzwerk und den virtuellen Speicher auszuführen und damit zu interagieren. In AKS wird Moby als Containerruntime verwendet.
 
@@ -87,7 +87,7 @@ kubectl describe node [NODE_NAME]
 Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf jedem Knoten Ressourcen von AKS reserviert. Wenn ein Knoten mehr Ressourcen nutzt, steigt die Anzahl der reservierten Ressourcen aufgrund der höheren Menge an vom Benutzer bereitgestellten Pods, die verwaltet werden müssen.
 
 >[!NOTE]
-> Durch die Verwendung von Add-Ons wie OMS werden zusätzliche Knotenressourcen beansprucht.
+> Durch die Verwendung von AKS-Add-Ons wie Container Insights (OMS) werden zusätzliche Knotenressourcen beansprucht.
 
 - **CPU:** Die reservierten CPU-Ressourcen hängen vom Knotentyp und der Clusterkonfiguration ab. Dies kann dazu führen, dass weniger CPU-Ressourcen zugewiesen werden können, da zusätzliche Features ausgeführt werden.
 
@@ -95,16 +95,24 @@ Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf je
 |---|---|---|---|---|---|---|---|
 |Kube-reserviert (Millicore)|60|100|140|180|260|420|740|
 
-- **Arbeitsspeicher:** Die Reservierung von Arbeitsspeicher folgt einer progressiven Rate.
-  - 25 % der ersten 4 GB Arbeitsspeicher
-  - 20 % der nächsten 4 GB Arbeitsspeicher (bis 8 GB)
-  - 10 % der nächsten 8 GB Arbeitsspeicher (bis 16 GB)
-  - 6 % der nächsten 112 GB Arbeitsspeicher (bis 128 GB)
-  - 2 % des Arbeitsspeichers oberhalb von 128 GB
+- **Arbeitsspeicher**: Der reservierte Arbeitsspeicher umfasst die Summe von zwei Werten.
 
-Diese Reservierungen führen dazu, dass möglicherweise eine geringere Menge verfügbarer CPU-Leistung und Arbeitsspeicher für Ihre Anwendungen angezeigt wird, als der eigentliche Knoten enthält. Wenn Ressourceneinschränkungen aufgrund der Anzahl von ausgeführten Anwendungen vorliegen, gewährleisten diese Reservierungen, dass für die Kubernetes-Kernkomponenten weiterhin CPU-Leistung und Arbeitsspeicher zur Verfügung stehen. Die Ressourcenreservierungen können nicht geändert werden.
+1. Der Kubelet-Daemon wird auf allen Kubernetes-Agent-Knoten installiert, um die Erstellung und Beendigung von Containern zu verwalten. In AKS gilt für diesen Daemon standardmäßig die folgende Entfernungsregel: memory.available<750Mi. Dies bedeutet, dass der zuweisbare Arbeitsspeicher auf einem Knoten immer mindestens 750 Mi betragen muss.  Wenn ein Host den Schwellenwert des verfügbaren Arbeitsspeichers unterschreitet, beendet das Kubelet einen der ausgeführten Pods, um Speicher auf dem Hostcomputer freizugeben und zu schützen.
 
-Das zugrunde liegende Betriebssystem des Knotens erfordert auch eine gewisse Menge an CPU- und Speicherressourcen für die eigenen Kernfunktionen.
+2. Der zweite Wert ist die progressive Rate des Arbeitsspeichers, der für den Kubelet-Daemon reserviert ist, damit er ordnungsgemäß ausgeführt wird (Kube-reserviert).
+    - 25 % der ersten 4 GB Arbeitsspeicher
+    - 20 % der nächsten 4 GB Arbeitsspeicher (bis 8 GB)
+    - 10 % der nächsten 8 GB Arbeitsspeicher (bis 16 GB)
+    - 6 % der nächsten 112 GB Arbeitsspeicher (bis 128 GB)
+    - 2 % des Arbeitsspeichers oberhalb von 128 GB
+
+Aufgrund dieser zwei definierten Regeln für die Aufrechterhaltung der Integrität von Kubernetes und der Agent-Knoten wird eine geringere Menge an zuweisbaren CPU- und Arbeitsspeicherressourcen angezeigt, als der Knoten selbst bereitstellen kann. Die Ressourcenreservierungen können nicht geändert werden.
+
+Wenn ein Knoten beispielsweise 7 GB bietet, werden 34 % des Arbeitsspeichers als nicht zuweisbar angegeben:
+
+`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+
+Zusätzlich zu den Reservierungen für Kubernetes reserviert das zugrunde liegende Knotenbetriebssystem ebenfalls CPU- und Arbeitsspeicherressourcen für die Aufrechterhaltung der Betriebssystemfunktionen.
 
 Entsprechende bewährte Methoden finden Sie unter [Best Practices für grundlegende Schedulerfunktionen in Azure Kubernetes Service (AKS)][operator-best-practices-scheduler].
 

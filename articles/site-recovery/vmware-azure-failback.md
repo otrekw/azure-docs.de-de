@@ -1,5 +1,5 @@
 ---
-title: Ausführen eines Failbacks in Azure während der Notfallwiederherstellung von virtuellen VMware-Computern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Failback von virtuellen VMware-Computern/physischen Servern von Azure mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie während der Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure nach dem Failover in Azure ein Failback auf den lokalen Standort ausführen.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 7773a2f43eb076075be484d92fde31094a2b584b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2ec2a4a91f4de0761f631bec393bb90c3feb82b9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60318120"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084057"
 ---
 # <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>Failback von virtuellen VMware-Computern und physischen Servern von Azure zum lokalen Standort
 
