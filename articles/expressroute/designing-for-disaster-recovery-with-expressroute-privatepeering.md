@@ -1,21 +1,18 @@
 ---
-title: Entwurf für die Notfallwiederherstellung mit Azure ExpressRoute | Microsoft-Dokumentation
+title: 'Azure ExpressRoute: Entwerfen für die Notfallwiederherstellung'
 description: Diese Seite enthält architektonische Empfehlungen für die Notfallwiederherstellung bei Verwendung von Azure ExpressRoute.
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 05/25/2019
 ms.author: rambala
-ms.openlocfilehash: cf2b4e385de901254fde3c3d3e807feda98d5b41
-ms.sourcegitcommit: c63e5031aed4992d5adf45639addcef07c166224
+ms.openlocfilehash: 726a014983c0da959d72b7976fef2ebb2c6e9b9e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67466071"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076702"
 ---
 # <a name="designing-for-disaster-recovery-with-expressroute-private-peering"></a>Entwurf für die Notfallwiederherstellung mit privatem ExpressRoute-Peering
 

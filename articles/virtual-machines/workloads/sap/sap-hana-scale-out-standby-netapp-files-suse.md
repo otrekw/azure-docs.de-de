@@ -1,5 +1,5 @@
 ---
-title: Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mit Azure NetApp Files auf SUSE Linux Enterprise Server | Microsoft-Dokumentation
+title: Bereitstellen eines Systems für horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf SUSE Linux Enterprise Server | Microsoft-Dokumentation
 description: Hochverfügbarkeitsleitfaden für SAP NetWeaver unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/30/2019
 ms.author: radeltch
-ms.openlocfilehash: 11b0746c3e9e137775b2466af776b4cd9ba1e5df
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 7fb7294cc6f7918b4c6a3afa9e3c9dc7f44504e1
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791671"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74014953"
 ---
-# <a name="sap-hana-scale-out-with-standby-node-on-azure-vms-with-azure-netapp-files-on-suse-linux-enterprise-server"></a>Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mit Azure NetApp Files auf SUSE Linux Enterprise Server 
+# <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Bereitstellen eines Systems für horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf SUSE Linux Enterprise Server 
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -55,48 +55,55 @@ ms.locfileid: "72791671"
 [nfs-ha]:high-availability-guide-suse-nfs.md
 
 
-Dieser Artikel beschreibt die Bereitstellung eines hochverfügbaren HANA-Systems in einer Konfiguration mit horizontaler Skalierung mit Standby auf virtuellen Azure-Computern mit [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) für die freigegebenen Speichervolumes.  
+Dieser Artikel beschreibt die Bereitstellung eines hochverfügbaren SAP HANA-Systems in einer Konfiguration mit horizontaler Skalierung mit Standby auf virtuellen Azure-Computern (VMs) mithilfe von [Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) für die freigegebenen Speichervolumes.  
+
 In den Beispielkonfigurationen, Installationsbefehlen usw. werden die HANA-Instanz **03** und HANA-System-ID **HN1** verwendet. Die Beispiele basieren auf HANA 2.0 SP4 und SUSE Linux Enterprise Server für SAP 12 SP4. 
 
-Lesen Sie zuerst die folgenden SAP-Hinweise und -Dokumente:
+Bevor Sie beginnen, lesen Sie die folgenden SAP-Hinweise und Dokumente:
 
 * [Azure NetApp Files-Dokumentation][anf-azure-doc] 
-* SAP-Hinweis [1928533] mit folgenden Informationen:  
-  * Liste der Azure-VM-Größen, die für die Bereitstellung von SAP-Software unterstützt werden
+* SAP-Hinweis [1928533] enthält:  
+  * Eine Liste der Azure-VM-Größen, die für die Bereitstellung von SAP-Software unterstützt werden
   * Wichtige Kapazitätsinformationen für Größen von Azure-VMs
   * Unterstützte SAP-Software und Kombinationen aus Betriebssystem (OS) und Datenbank
-  * Erforderliche SAP-Kernelversion für Windows und Linux in Microsoft Azure
-* In SAP-Hinweis [2015553] sind die Voraussetzungen für Bereitstellungen von SAP-Software in Azure aufgeführt, die von SAP unterstützt werden.
-* SAP-Hinweis [2205917] enthält empfohlene Betriebssystemeinstellungen für den SUSE Linux Enterprise Server for SAP Applications.
-* SAP-Hinweis [1944799] enthält SAP-Richtlinien für SUSE Linux Enterprise Server für SAP-Anwendungen.
-* SAP-Hinweis [2178632] enthält ausführliche Informationen zu allen Überwachungsmetriken, die für SAP in Azure gemeldet werden.
-* SAP-Hinweis [2191498] enthält die erforderliche SAP Host Agent-Version für Linux in Azure.
-* SAP-Hinweis [2243692] enthält Informationen zur SAP-Lizenzierung unter Linux in Azure.
-* SAP-Hinweis [1984787] enthält allgemeine Informationen zu SUSE Linux Enterprise Server 12.
-* SAP-Hinweis [1999351] enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP.
-* SAP-Hinweis [1900823] enthält Informationen zu SAP HANA-Speicheranforderungen.
-* Das [WIKI der SAP-Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) enthält alle erforderlichen SAP-Hinweise für Linux.
+  * Die erforderliche SAP-Kernelversion für Windows und Linux in Microsoft Azure
+* SAP-Hinweis [2015553]: Enthält eine Liste der Voraussetzungen für Bereitstellungen von SAP-Software in Azure, die von SAP unterstützt werden
+* SAP-Hinweis [2205917]: Enthält empfohlene Betriebssystemeinstellungen für SUSE Linux Enterprise Server für SAP-Anwendungen
+* SAP-Hinweis [1944799]: Enthält SAP-Richtlinien für SUSE Linux Enterprise Server für SAP-Anwendungen
+* SAP-Hinweis [2178632]: Enthält ausführliche Informationen zu allen Überwachungsmetriken, die für SAP in Azure gemeldet werden
+* SAP-Hinweis [2191498]: Enthält die erforderliche SAP Host Agent-Version für Linux in Azure
+* SAP-Hinweis [2243692]: Enthält Informationen zur SAP-Lizenzierung unter Linux in Azure
+* SAP-Hinweis [1984787]: Enthält allgemeine Informationen zu SUSE Linux Enterprise Server 12
+* SAP-Hinweis [1999351]: Enthält Informationen zur Problembehandlung für die Azure-Erweiterung zur verbesserten Überwachung für SAP
+* SAP-Hinweis [1900823]: Enthält Informationen zu SAP HANA-Speicheranforderungen
+* [Wiki der SAP Community](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Enthält alle erforderlichen SAP-Hinweise für Linux.
 * [Azure Virtual Machines – Planung und Implementierung für SAP unter Linux][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP unter Linux][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP unter Linux][dbms-guide]
-* [Best Practices für SUSE SAP HA][suse-ha-guide] Die Leitfäden enthalten alle erforderlichen Informationen, um NetWeaver HA und SAP HANA System Replication vor Ort einzurichten. Verwenden Sie diese Leitfäden als allgemeine Basis. Sie bieten wesentlich mehr Informationen.
+* [Best Practices für SUSE SAP HA][suse-ha-guide]: Enthält alle erforderlichen Informationen zum lokalen Einrichten von NetWeaver-Hochverfügbarkeit und SAP Hana System Replication (als allgemeine Basis zu verwenden, sie bieten jedoch weitaus ausführlichere Informationen)
 * [SUSE High Availability Extension 12 SP3 Release Notes][suse-ha-12sp3-relnotes] (Versionshinweise zur SUSE-Hochverfügbarkeitserweiterung 12 SP3, in englischer Sprache)
 * [NetApp-SAP-Anwendungen in Microsoft Azure mithilfe von Azure NetApp Files][anf-sap-applications-azure]
-* [SAP HANA auf den NetApp-Systemen mit NFS](https://www.netapp.com/us/media/tr-4435.pdf). Das Konfigurationshandbuch enthält Informationen zur Einrichtung von SAP HANA mit NFS, das von Azure NetApp Files bereitgestellt wird.
+* [SAP HANA auf den NetApp-Systemen mit NFS](https://www.netapp.com/us/media/tr-4435.pdf): Ein Konfigurationshandbuch mit Informationen zum Einrichten von SAP Hana mithilfe von Azure NFS by NetApp
 
 
 ## <a name="overview"></a>Übersicht
 
-Eine der Methoden zum Erreichen von HANA-Hochverfügbarkeit ist das automatische Hostfailover. Zum Konfigurieren des automatischen Hostfailovers wird dem HANA-System mindestens ein virtueller Computer hinzugefügt und als Standbyknoten konfiguriert. Wenn der aktive Knoten ausfällt, übernimmt automatisch ein Standbyknoten. In der dargestellten Konfiguration mit virtuellen Azure-Computern wird dies durch [NFS in Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) erreicht.  
+Eine Methode zum Erreichen von Hochverfügbarkeit mit HANA ist das Konfigurieren des automatischen Hostfailovers. Zum Konfigurieren des automatischen Hostfailovers fügen Sie dem HANA-System einen oder mehrere virtuelle Computer hinzu und konfigurieren sie als Standbyknoten. Wenn der aktive Knoten ausfällt, übernimmt automatisch ein Standbyknoten. In der dargestellten Konfiguration mit virtuellen Azure-Computern wird das automatische Failover durch [NFS in Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-introduction/) erreicht.  
 
-Der Standbyknoten muss auf alle Datenbankvolumes zugreifen können. Die HANA-Volumes müssen als NFSv4-Volumes bereitgestellt werden. Der verbesserte, auf Dateilease basierende Sperrmechanismus im NFSv4-Protokoll wird zum `I/O`-Fencing verwendet. 
+> [!NOTE]
+> Der Standbyknoten erfordert Zugriff auf alle Datenbankvolumes. Die HANA-Volumes müssen als NFSv4-Volumes bereitgestellt werden. Der verbesserte, auf Dateilease basierende Sperrmechanismus im NFSv4-Protokoll wird zum `I/O`-Fencing verwendet. 
 
 > [!IMPORTANT]
-> Zur Unterstützung der Konfiguration ist es zwingend erforderlich, die HANA-Daten- und Protokollvolumes als NFSv4.1-Volumes bereitzustellen und diese unter Verwendung des NFSv4.1-Protokolls einzubinden. Die Konfiguration zum automatischen Failover des HANA-Hosts mit dem Standbyknoten wird bei NFSv3 nicht unterstützt.
+> Zum Erstellen der unterstützten Konfiguration müssen Sie die HANA-Datenvolumes und -Protokollvolumes als NFSv4.1-Volumes bereitstellen und unter Verwendung des NFSv4.1-Protokolls einbinden. Die Konfiguration zum automatischen Failover des HANA-Hosts mit dem Standbyknoten wird bei NFSv3 nicht unterstützt.
 
 ![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-suse-anf/sap-hana-scale-out-standby-netapp-files-suse.png)
 
-Entsprechend den SAP HANA-Netzwerkempfehlungen wurden innerhalb eines virtuellen Azure-Netzwerks drei Subnetze erstellt: für die Kommunikation mit dem Speichersystem, für die interne Kommunikation zwischen den HANA-Knoten und für die Clientkommunikation. Die Azure NetApp-Volumes befinden sich in einem separaten Subnetz, das an [Azure NetApp Files delegiert wurde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
+Im vorangehenden Diagramm, das den Empfehlungen für SAP HANA-Netzwerke entspricht, werden drei Subnetze in einem virtuellen Azure-Netzwerk dargestellt: 
+* Für die Kommunikation mit dem Speichersystem
+* Für die interne Kommunikation zwischen SAP HANA-Knoten
+* Für die Clientkommunikation
+
+Die Azure NetApp-Volumes befinden sich in einem separaten Subnetz, das an [Azure NetApp Files delegiert wurde](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet).  
 
 Die Subnetze in dieser Beispielkonfiguration sind:  
 
@@ -105,128 +112,157 @@ Die Subnetze in dieser Beispielkonfiguration sind:
   - `client` 10.23.0.0/24  
   - `anf` 10.23.1.0/26  
 
-## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Einrichten der Infrastruktur für Azure NetApp Files 
+## <a name="set-up-the-azure-netapp-files-infrastructure"></a>Einrichten der Infrastruktur für Azure NetApp Files 
 
-Bevor Sie mit der Einrichtung der Azure NetApp Files-Infrastruktur beginnen, sollten Sie sich mit der [Azure NetApp Files-Dokumentation][anf-azure-doc] vertraut machen. Azure NetApp Files ist in verschiedenen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=netapp) verfügbar. Überprüfen Sie, ob Azure NetApp Files in Ihrer ausgewählten Azure-Region angeboten wird.  
+Bevor Sie mit der Einrichtung der Azure NetApp Files-Infrastruktur beginnen, sollten Sie sich mit der [Azure NetApp Files-Dokumentation][anf-azure-doc] vertraut machen. 
 
-Unter dem folgenden Link sehen Sie die Verfügbarkeit von Azure NetApp Files nach Azure-Region: [Verfügbarkeit von Azure NetApp Files nach Azure-Region][anf-avail-matrix].  
-Fordern Sie Onboarding für Azure NetApp Files an, bevor Sie Azure NetApp Files bereitstellen. Befolgen Sie dazu die [Registrierungsanweisungen für Azure NetApp Files][anf-register]. 
+Azure NetApp Files ist in verschiedenen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=netapp) verfügbar. Überprüfen Sie, ob Azure NetApp Files in Ihrer ausgewählten Azure-Region angeboten wird.  
+
+Informationen zur Verfügbarkeit von Azure NetApp Files in den einzelnen Azure-Regionen finden Sie unter [Verfügbarkeit von Azure NetApp Files nach Azure-Region][anf-avail-matrix].  
+
+Fordern Sie Onboarding für Azure NetApp Files an, bevor Sie Azure NetApp Files bereitstellen. Wechseln Sie dazu zu den [Registrierungsanweisungen für Azure NetApp Files][anf-register]. 
 
 ### <a name="deploy-azure-netapp-files-resources"></a>Bereitstellen von Azure NetApp Files-Ressourcen  
 
-In den folgenden Schritten wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellt haben. Die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, müssen im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken bereitgestellt werden.  
+In den folgenden Anweisungen wird davon ausgegangen, dass Sie bereits [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) bereitgestellt haben. Die Azure NetApp Files-Ressourcen und die virtuellen Computer, auf denen die Azure NetApp Files-Ressourcen eingebunden werden, müssen im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken bereitgestellt werden.  
 
-1. Fordern Sie [Onboarding für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register) an, sofern noch nicht geschehen.  
+1. Wenn Sie die Ressourcen noch nicht bereitgestellt haben, fordern Sie [Onboarding für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-register) an.  
 
-2. Erstellen Sie das NetApp-Konto entsprechend den [Anweisungen zum Erstellen eines NetApp-Kontos](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) in der ausgewählten Azure-Region.  
+2. Erstellen Sie entsprechend den Anweisungen in [Erstellen eines NetApp-Kontos](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-netapp-account) ein NetApp-Konto in der ausgewählten Azure-Region.  
 
-3. Richten Sie entsprechend den [Anweisungen zum Einrichten eines Azure NetApp Files-Kapazitätspools](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) einen Azure NetApp Files-Kapazitätspool ein.  
-Die in diesem Artikel vorgestellte HANA-Architektur verwendet einen einzigen Azure NetApp Files-Kapazitätspool mit der Dienstebene „Ultra“. Für HANA-Workloads in Azure empfehlen wir die [Dienstebene](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) „Ultra“ oder „Premium“ für Azure NetApp Files.  
+3. Richten Sie entsprechend den Anweisungen in [Einrichten eines Kapazitätspools](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-set-up-capacity-pool) einen Azure NetApp Files-Kapazitätspool ein.  
 
-4. Delegieren Sie ein Subnetz für Azure NetApp Files, wie in den [Anweisungen zum Delegieren eines Subnetzes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) beschrieben.  
+   Die in diesem Artikel vorgestellte HANA-Architektur verwendet einen einzigen Azure NetApp Files-Kapazitätspool mit der Dienstebene *Ultra*. Für HANA-Workloads in Azure empfehlen wir die [Dienstebene](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) *Ultra* oder *Premium*.  
 
-5. Stellen Sie Azure NetApp Files-Volumes entsprechend den [Anweisungen zum Erstellen eines Azure NetApp Files-Volumes](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereit.  Stellen Sie sicher, dass Sie beim Bereitstellen der Volumes die Version **NFSv4.1** verwenden. Derzeit sind für den Zugriff auf NFSv4.1 zusätzliche Whitelists erforderlich. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die virtuellen Azure-Computer im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken befinden müssen. Beispielsweise sind „<b>HN1</b>-data-mnt00001“, „<b>HN1</b>-log-mnt00001“ usw. die Namen der Volumes, „nfs://10.23.1.5/<b>HN1</b>-data-mnt00001“, „nfs://10.23.1.4/<b>HN1</b>-log-mnt00001“ usw. sind die Dateipfade für die Azure NetApp Files-Volumes.  
+4. Delegieren Sie ein Subnetz an Azure NetApp Files, wie in den Anweisungen in [Delegieren eines Subnetzes an Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-delegate-subnet) beschrieben.  
 
-   1. Volume „<b>HN1</b>-data-mnt00001 (nfs://10.23.1.5/<b>HN1</b>-data-mnt00001)“
-   2. Volume „<b>HN1</b>-data-mnt00002 (nfs://10.23.1.6/<b>HN1</b>-data-mnt00002)“
-   3. Volume „<b>HN1</b>-log-mnt00001 (nfs://10.23.1.4/<b>HN1</b>-log-mnt00001)“
-   4. Volume „<b>HN1</b>-log-mnt00002 (nfs://10.23.1.6/<b>HN1</b>-log-mnt00002)“
-   5. Volume „<b>HN1</b>-shared (nfs://10.23.1.4/<b>HN1</b>-shared)“
+5. Stellen Sie Azure NetApp Files-Volumes entsprechend den Anweisungen in [Erstellen eines NFS-Volumes für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes) bereit.  
+
+   Stellen Sie beim Bereitstellen der Volumes sicher, dass Sie die Version **NFSv4.1** auswählen. Derzeit sind für den Zugriff auf NFSv4.1 zusätzliche Whitelists erforderlich. Stellen Sie die Volumes im festgelegten [Subnetz](https://docs.microsoft.com/rest/api/virtualnetwork/subnets) für Azure NetApp Files bereit. 
    
-   In diesem Beispiel haben wir separate Azure NetApp Files für die einzelnen HANA-Daten- und -Protokollvolumes verwendet. Für eine kostenoptimierte Konfiguration in kleineren oder nicht produktiven Systemen können alle Daten- und Protokollbereitstellungen auf einem einzelnen Volume platziert werden.  
+   Denken Sie daran, dass sich die Azure NetApp Files-Ressourcen und die virtuellen Azure-Computer im gleichen virtuellen Azure-Netzwerk oder in mittels Peering verknüpften virtuellen Azure-Netzwerken befinden müssen. Beispielsweise sind „**HN1**-data-mnt00001“, „**HN1**-log-mnt00001“ usw. die Namen der Volumes, und „nfs://10.23.1.5/**HN1**-data-mnt00001“, „nfs://10.23.1.4/**HN1**-log-mnt00001“ usw. sind die Dateipfade für die Azure NetApp Files-Volumes.  
+
+   * Volume „**HN1**-data-mnt00001 (nfs://10.23.1.5/**HN1**-data-mnt00001)“
+   * Volume „**HN1**-data-mnt00002 (nfs://10.23.1.6/**HN1**-data-mnt00002)“
+   * Volume „**HN1**-log-mnt00001 (nfs://10.23.1.4/**HN1**-log-mnt00001)“
+   * Volume „**HN1**-log-mnt00002 (nfs://10.23.1.6/**HN1**-log-mnt00002)“
+   * Volume „**HN1**-shared (nfs://10.23.1.4/**HN1**-shared)“
+   
+   In diesem Beispiel haben wir ein separates Azure NetApp Files-Volume für die einzelnen HANA-Daten- und -Protokollvolumes verwendet. Für eine kostenoptimierte Konfiguration in kleineren oder nicht produktiven Systemen können alle Daten- und Protokollbereitstellungen auf einem einzelnen Volume platziert werden.  
 
 ### <a name="important-considerations"></a>Wichtige Hinweise
 
-Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetWeaver unter SUSE in Betracht ziehen, beziehen Sie die folgenden wichtigen Überlegungen mit ein:
+Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetWeaver unter SUSE erstellen, beziehen Sie die folgenden wichtigen Überlegungen mit ein:
 
-- Die Mindestgröße eines Kapazitätspools beträgt 4 TiB.  
-- Die Mindestvolumegröße ist 100 GiB.
-- Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden.  
+- Die Mindestgröße eines Kapazitätspools beträgt 4 TiB (Tebibyte).  
+- Die Mindestvolumegröße ist 100 GiB (Gibibyte).
+- Azure NetApp Files und alle virtuellen Computer, auf denen die Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich in demselben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden.  
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
 - Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion des Volumekontingents und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) beschrieben. Stellen Sie bei der Größenanpassung der HANA Azure NetApp-Volumes sicher, dass der sich ergebende Durchsatz die HANA-Systemanforderungen erfüllt.  
-- Azure NetApp Files bietet [Exportrichtlinien](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
-- Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen.  
-- Um eine niedrige Latenz zu erzielen, ist es wichtig, dass die virtuellen Computer in unmittelbarer Nähe des Azure NetApp-Speichers bereitgestellt werden. Bei SAP HANA-Workloads ist eine niedrige Latenz sehr wichtig. Arbeiten Sie mit Ihrem Microsoft-Vertreter zusammen, um sicherzustellen, dass die virtuellen Computer und die Azure NetApp Files-Volumes in unmittelbarer Nähe zueinander bereitgestellt werden.  
-- Die Benutzer-ID für „<b>sid</b>adm“ und die Gruppen-ID für `sapsys` auf den virtuellen Computern müssen mit der Konfiguration in Azure NetApp Files übereinstimmen. 
+- Mit den [Exportrichtlinien](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy) von Azure NetApp Files können Sie die zulässigen Clients und den Zugriffstyp (Lese- und Schreibzugriff, schreibgeschützt usw.) steuern. 
+- Das Azure NetApp Files-Feature wertet derzeit noch keine Zonen aus. Das Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen.  
+-  
 
 > [!IMPORTANT]
 > Bei SAP HANA-Workloads ist eine niedrige Latenz sehr wichtig. Arbeiten Sie mit Ihrem Microsoft-Vertreter zusammen, um sicherzustellen, dass die virtuellen Computer und die Azure NetApp Files-Volumes in unmittelbarer Nähe zueinander bereitgestellt werden.  
 
 > [!IMPORTANT]
-> Wenn die Benutzer-ID für „<b>sid</b>adm“ und die Gruppen-ID für `sapsys` auf den virtuellen Computern und in der Azure NetApp-Konfiguration nicht übereinstimmen, werden die Berechtigungen für Dateien auf Azure NetApp-Volumes, die auf virtuellen Computern bereitgestellt sind, als `nobody` angezeigt. Stellen Sie beim [Onboarding eines neuen Systems](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) in Azure NetApp Files sicher, dass Sie die richtige Benutzer-ID für „<b>sid</b>adm“ und die Gruppen-ID für `sapsys` angeben.
+> Die Benutzer-ID für „**sid**adm“ und die Gruppen-ID für `sapsys` auf den VMs müssen mit der Konfiguration in Azure NetApp Files übereinstimmen. Wenn es einen Konflikt zwischen den VM-IDs und der Azure Net App-Konfiguration gibt, werden die Berechtigungen für Dateien auf Azure NettApp Files-Volumes, die auf den VMs eingebunden sind, als `nobody` angezeigt. Stellen Sie sicher, dass Sie die richtigen IDs angeben, wenn Sie das [Onboarding eines neuen Systems](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) in Azure NetApp Files durchführen möchten.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>Größenanpassung für eine HANA-Datenbank in Azure NetApp Files
 
-Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion der Volumegröße und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) beschrieben. 
+Der Durchsatz eines Azure NetApp Files-Volumes ist eine Funktion der Volumegröße und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) beschrieben. 
 
-Beim Entwerfen der Infrastruktur für SAP in Azure müssen Sie einige Mindestanforderungen von SAP an den Speicher beachten, aus denen sich die Mindestdurchsatzeigenschaften ergeben:
+Beachten Sie beim Entwerfen der Infrastruktur für SAP in Azure einige Mindestanforderungen von SAP an den Speicher, aus denen sich die Mindestdurchsatzeigenschaften ergeben:
 
-- Lese-/Schreibaktivität mit 250 MB/s in „/hana/log“ bei einer E/A-Größe von 1 MB aktivieren  
-- Leseaktivität mit mindestens 400 MB/s in „/hana/data“ für E/A-Größen von 16 MB und 64 MB aktivieren  
-- Schreibaktivität mit mindestens 250 MB/s in „/hana/data“ für E/A-Größen von 16 MB und 64 MB aktivieren  
+- Aktivieren Sie den Lese-/Schreibzugriff auf „/hana/log“ für 250 Megabyte pro Sekunde (MB/s) mit einer E/A-Größe von 1 MB.  
+- Aktivieren Sie Leseaktivität mit mindestens 400 MB/s in „/hana/data“ für E/A-Größen von 16 MB und 64 MB.  
+- Aktivieren Sie Schreibaktivität mit mindestens 250 MB/s in „/hana/data“ für E/A-Größen von 16 MB und 64 MB. 
 
 Die [Azure NetApp Files-Durchsatzlimits](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-service-levels) pro 1 TiB an Volumekontingent lauten:
-- Storage Premium-Tarif: 64 MIB/s  
-- Storage Ultra-Tarif: 128 MIB/s  
+- Storage Premium-Tarif: 64 MiB/s  
+- Storage Ultra-Tarif: 128 MiB/s  
 
-Um die SAP-Mindestanforderungen für den Durchsatz für Daten und Protokolle und die Richtlinien für `/hana/shared` zu erfüllen, werden folgende Größen empfohlen:
+Um die SAP-Mindestanforderungen für den Durchsatz für Daten und Protokolle und die Richtlinien für „hana/shared“ zu erfüllen, werden folgende Größen empfohlen:
 
-| Volume | Size<br /> Storage Premium-Tarif | Size<br /> Storage Ultra-Tarif |
+| Volume | Größe<br>Storage Premium-Tarif | Größe<br>Storage Ultra-Tarif | Unterstütztes NFS-Protokoll |
+| --- | --- | --- | --- |
+| /hana/log/ | 4 TiB | 2 TiB | v4.1 |
+| /hana/data | 6,3 TiB | 3,2 TiB | v4.1 |
+| /hana/shared | Max. 512 GB, 1 x RAM pro 4 Workerknoten | Max. 512 GB, 1 x RAM pro 4 Workerknoten | v3 oder v4.1 |
+
+Die SAP HANA-Konfiguration für das in diesem Artikel vorgestellte Layout mit Azure NetApp Files-Tarif „Storage Ultra“ lautet:
+
+| Volume | Größe<br>Storage Ultra-Tarif | Unterstütztes NFS-Protokoll |
 | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB |
-| /hana/data | 6,3 TiB | 3,2 TiB |
-| /hana/shared | Max. 512 GB, 1 x RAM pro 4 Workerknoten | Max. 512 GB, 1 x RAM pro 4 Workerknoten |
-
-Die SAP HANA-Konfiguration für das in diesem Artikel vorgestellte Layout mit Azure NetApp Files-Tarif „Storage Ultra“ sieht wie folgt aus:
-
-| Volume | Size<br /> Storage Ultra-Tarif |
-| --- | --- |
-| /hana/log/mnt00001 | 2 TiB |
-| /hana/log/mnt00002 | 2 TiB |
-| /hana/data/mnt00001 | 3,2 TiB |
-| /hana/data/mnt00002 | 3,2 TiB |
-| /hana/shared | 2 TiB |
+| /hana/log/mnt00001 | 2 TiB | v4.1 |
+| /hana/log/mnt00002 | 2 TiB | v4.1 |
+| /hana/data/mnt00001 | 3,2 TiB | v4.1 |
+| /hana/data/mnt00002 | 3,2 TiB | v4.1 |
+| /hana/shared | 2 TiB | v3 oder v4.1 |
 
 > [!NOTE]
-> Die hier angegebenen Empfehlungen für die Azure NetApp Files-Größenanpassung zielen darauf ab, die Mindestanforderungen zu erfüllen, die SAP an seine Infrastrukturanbieter stellt. In realen Kundenbereitstellungen und Workloadszenarien sind sie möglicherweise nicht ausreichend. Verwenden Sie diese Empfehlungen also als Ausgangspunkt, und nehmen Sie Anpassungen auf Grundlage der Anforderungen der spezifischen Workload vor.  
+> Die hier angegebenen Empfehlungen für die Azure NetApp Files-Größenanpassung zielen darauf ab, die Mindestanforderungen zu erfüllen, die SAP seinen Infrastrukturanbietern empfiehlt. In realen Kundenbereitstellungen und Workloadszenarien sind diese Größen möglicherweise nicht ausreichend. Verwenden Sie diese Empfehlungen also als Ausgangspunkt, und nehmen Sie Anpassungen auf Grundlage der Anforderungen der spezifischen Workload vor.  
 
 > [!TIP]
-> Sie können die Größe der Azure NetApp Files-Volumes dynamisch anpassen, ohne die Bereitstellung der Volumes aufheben (`unmount`) oder die virtuellen Computer oder SAP HANA beenden zu müssen. Damit kann Ihre Anwendung sowohl den erwarteten als auch unvorhergesehenen Durchsatzanforderungen flexibel gerecht werden.
+> Sie können die Größe der Azure NetApp Files-Volumes dynamisch anpassen, ohne *die Bereitstellung der Volumes aufheben* oder die virtuellen Computer oder SAP HANA beenden zu müssen. Mit diesem Ansatz können Sie sowohl den erwarteten als auch unvorhergesehenen Durchsatzanforderungen flexibel gerecht werden.
 
-## <a name="deploy-linux-virtual-machines-via-azure-portal"></a>Bereitstellen von virtuellen Linux-Computern über das Azure-Portal
+## <a name="deploy-linux-virtual-machines-via-the-azure-portal"></a>Bereitstellen von virtuellen Linux-Computern über das Azure-Portal
 
-Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Erstellen Sie im [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) die [Azure Virtual Network-Subnetze](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). Stellen Sie die virtuellen Computer bereit. Erstellen Sie die zusätzlichen Netzwerkschnittstellen, und fügen Sie diese an die entsprechenden virtuellen Computer an. Jeder virtuelle Computer verfügt über drei Netzwerkschnittstellen, die den drei Azure Virtual Network-Subnetzen (`storage`, `hana` und `client`) entsprechen.  Weitere Informationen finden Sie in [Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
+Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Gehen Sie wie folgt vor:
+1. Erstellen Sie im [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) die [Azure Virtual Network-Subnetze](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-subnet). 
+1. Stellen Sie die VMs bereit. 
+1. Erstellen Sie die zusätzlichen Netzwerkschnittstellen, und fügen Sie diese an die entsprechenden virtuellen Computer an.  
+
+   Jeder virtuelle Computer verfügt über drei Netzwerkschnittstellen, die den drei Azure Virtual Network-Subnetzen (`storage`, `hana` und `client`) entsprechen. 
+
+   Weitere Informationen finden Sie in [Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten](https://docs.microsoft.com/azure/virtual-machines/linux/multiple-nics).  
 
 > [!IMPORTANT]
-> Bei SAP HANA-Workloads ist eine niedrige Latenz sehr wichtig. Arbeiten Sie mit Ihrem Microsoft-Vertreter zusammen, um sicherzustellen, dass die virtuellen Computer und die Azure NetApp Files-Volumes in unmittelbarer Nähe zueinander bereitgestellt werden, um eine niedrige Latenz zu erzielen. Übermitteln Sie beim [Onboarding eines neuen SAP HANA-Systems](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u), das SAP HANA Azure NetApp Files verwendet, die erforderlichen Informationen.  
-> 
-In den nächsten Schritten wird davon ausgegangen, dass Sie bereits die Ressourcengruppe, das Azure Virtual Network und die drei Azure Virtual Network-Subnetze erstellt haben: `storage`, `hana` und `client`.  Wählen Sie beim Bereitstellen der virtuellen Computer das Speichersubnetz aus, sodass die Speichernetzwerk-Schnittstelle die primäre Schnittstelle auf den virtuellen Computern ist. Ist dies nicht möglich, muss eine explizite Route zum delegierten Subnetz von Azure NetApp über das Gateway des Speichersubnetzes konfiguriert werden. 
+> Bei SAP HANA-Workloads ist eine niedrige Latenz sehr wichtig. Arbeiten Sie mit Ihrem Microsoft-Vertreter zusammen, um sicherzustellen, dass die virtuellen Computer und die Azure NetApp Files-Volumes in unmittelbarer Nähe zueinander bereitgestellt werden, damit eine niedrige Latenz erzielt wird. Übermitteln Sie beim [Onboarding eines neuen SAP HANA-Systems](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u), das SAP HANA Azure NetApp Files verwendet, die erforderlichen Informationen. 
+ 
+In den nächsten Anweisungen wird davon ausgegangen, dass Sie bereits die Ressourcengruppe, das Azure Virtual Network und die drei Azure Virtual Network-Subnetze erstellt haben: `storage`, `hana` und `client`. Wählen Sie beim Bereitstellen der VMs das Speichersubnetz aus, sodass die Speichernetzwerk-Schnittstelle die primäre Schnittstelle auf den VMs ist. Falls dies nicht möglich ist, konfigurieren Sie eine explizite Route zum delegierten Subnetz von Azure NetApp über das Gateway des Speichersubnetzes. 
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass das von Ihnen ausgewählte Betriebssystem SAP-zertifiziert ist für SAP HANA auf den spezifischen VM-Typen, die Sie verwenden. Die Liste der SAP HANA-zertifizierten VM-Typen und BS-Releases für diese kann unter [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) nachgeschlagen werden. Stellen Sie sicher, dass Sie in die Details des jeweils aufgeführten VM-Typs klicken, um die vollständige Liste der von SAP HANA unterstützten BS-Releases für den spezifischen VM-Typ anzuzeigen.  
+> Stellen Sie sicher, dass das von Ihnen ausgewählte Betriebssystem SAP-zertifiziert ist für SAP HANA auf den spezifischen VM-Typen, die Sie verwenden. Eine Liste der SAP HANA-zertifizierten VM-Typen und BS-Releases für diese finden Sie auf der Website [Zertifizierte SAP HANA-IaaS-Plattformen](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Klicken Sie in die Details des jeweils aufgeführten VM-Typs, um die vollständige Liste der von SAP HANA unterstützten BS-Releases für diesen Typ anzuzeigen.  
 
 1. Erstellen Sie eine Verfügbarkeitsgruppe für SAP HANA. Stellen Sie sicher, dass Sie die maximale Updatedomäne einrichten.  
 
-2. Erstellen Sie drei virtuelle Computer (**hanadb1**, **hanadb2**, **hanadb3**).  
-   - Verwenden Sie ein SLES4SAP-Image im Azure-Katalog, das für SAP HANA unterstützt wird. In diesem Beispiel wurde das Image „SLES4SAP 12 SP4“ verwendet.  
-   - Wählen Sie die zuvor für SAP HANA erstellte Verfügbarkeitsgruppe aus.  
-   - Wählen Sie das Azure Virtual Network-Speichersubnetz aus. Wählen Sie [Beschleunigter Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) aus.  
-Der Name der Netzwerkschnittstelle wird automatisch beim Bereitstellen der virtuellen Computer generiert. Die Netzwerkschnittstellen, die an das Azure Virtual Network-Speichersubnetz angefügt werden, bezeichnen wir als **hanadb1-storage**, **hanadb2-storage** und **hanadb3-storage**. 
-3. Erstellen Sie für das Subnetz des virtuellen `hana`-Netzwerks drei Netzwerkschnittstellen – eine für jeden virtuellen Computer. In diesem Beispiel: **hanadb1-hana**, **hanadb2-hana** und **hanadb3-hana**.  
-4. Erstellen Sie für das Subnetz des virtuellen Netzwerks **client** drei Netzwerkschnittstellen – eine für jeden virtuellen Computer. In diesem Beispiel: **hanadb1-client**, **hanadb2-client**, and **hanadb3-client**.  
-5. Fügen Sie die neu erstellten virtuellen Netzwerkschnittstellen an die entsprechenden virtuellen Computer an.  
+2. Erstellen Sie wie folgt drei virtuelle Computer (**hanadb1**, **hanadb2**, **hanadb3**):  
 
-    1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/#home) zum virtuellen Computer.  
-    2. Wählen Sie im linken Navigationsbereich „Virtuelle Computer“ aus. Filtern Sie nach dem Namen des virtuellen Computers, z. B. **hanadb1**. Klicken Sie auf den virtuellen Computer.  
-    3. Wenn Sie sich in der Übersicht befinden, klicken Sie auf „Beenden“, um die Zuordnung des virtuellen Computers aufzuheben.  
-    4. Wählen Sie „Netzwerk“ und dann „Netzwerkschnittstelle anfügen“ aus. Wählen Sie in der Dropdownliste unter „Netzwerkschnittstelle anfügen“ die bereits erstellten Netzwerkschnittstellen für die Subnetze **`hana`** und **client** aus.  Speichern Sie. 
-    5. Wiederholen Sie diesen Vorgang für die verbleibenden virtuellen Computer. In unserem Beispiel **hanadb2** und **hanadb3**.
-    6. Belassen Sie die virtuelle Computer für den Moment im Status „Beendet“. Als Nächstes aktivieren wir den [beschleunigten Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) für alle neu angefügten Netzwerkschnittstellen.  
+   a. Verwenden Sie ein SLES4SAP-Image im Azure-Katalog, das für SAP HANA unterstützt wird. In diesem Beispiel wurde das Image „SLES4SAP 12 SP4“ verwendet.  
 
-6. Aktivieren Sie den beschleunigten Netzwerkbetrieb für die zusätzlichen Netzwerkschnittstellen für die Subnetze **`hana`** und **`client`** .  
+   b. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor für SAP HANA erstellt haben.  
 
-    1. Öffnen Sie [Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) im [Azure-Portal](https://portal.azure.com/#home).  
-    2. Führen Sie die folgenden Befehle aus, um den beschleunigten Netzwerkbetrieb für die zusätzlichen Netzwerkschnittstellen zu aktivieren, die an die Subnetze **`hana`** und **`client`** angefügt wurden.  
+   c. Wählen Sie das Azure Virtual Network-Speichersubnetz aus. Wählen Sie [Beschleunigter Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) aus.  
+
+   Der Name der Netzwerkschnittstelle wird automatisch beim Bereitstellen der virtuellen Computer generiert. Die Netzwerkschnittstellen, die an das Azure Virtual Network-Speichersubnetz angefügt werden, bezeichnen wir als **hanadb1-storage**, **hanadb2-storage** und **hanadb3-storage**. 
+
+3. Erstellen Sie für das Subnetz des virtuellen `hana`-Netzwerks drei Netzwerkschnittstellen – eine für jeden virtuellen Computer (in diesem Beispiel **hanadb1-hana**, **hanadb2-hana** und **hanadb3-hana**).  
+
+4. Erstellen Sie für das Subnetz des virtuellen `client`-Netzwerks drei Netzwerkschnittstellen – eine für jeden virtuellen Computer (in diesem Beispiel **hanadb1-client**, **hanadb2-client** und **hanadb3-client**).  
+
+5. Fügen Sie die neu erstellten virtuellen Netzwerkschnittstellen wie folgt an die entsprechenden virtuellen Computer an:  
+
+    a. Navigieren Sie im [Azure-Portal](https://portal.azure.com/#home) zum virtuellen Computer.  
+
+    b. Wählen Sie im linken Bereich **Virtuelle Computer** aus. Filtern Sie nach dem Namen des virtuellen Computers (z. B. **hanadb1**), und wählen Sie dann den virtuellen Computer aus.  
+
+    c. Klicken Sie im Bereich **Übersicht** auf **Beenden**, um die Zuordnung des virtuellen Computers aufzuheben.  
+
+    d. Wählen Sie **Netzwerk** aus, und fügen Sie dann die Netzwerkschnittstelle an. Wählen Sie in der Dropdownliste **Netzwerkschnittstelle anfügen** die bereits erstellten Netzwerkschnittstellen für die Subnetze `hana` und `client` aus.  
+    
+    e. Wählen Sie **Speichern** aus. 
+ 
+    f. Wiederholen Sie die Schritte b bis e für die restlichen virtuellen Computer (in unserem Beispiel **hanadb2** und **hanadb3**).
+ 
+    g. Belassen Sie die virtuelle Computer für den Moment im Status „Beendet“. Als Nächstes aktivieren wir den [beschleunigten Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli) für alle neu angefügten Netzwerkschnittstellen.  
+
+6. Aktivieren Sie den beschleunigten Netzwerkbetrieb für die zusätzlichen Netzwerkschnittstellen für die Subnetze `hana` und `client` wie folgt:  
+
+    a. Öffnen Sie [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) im [Azure-Portal](https://portal.azure.com/#home).  
+
+    b. Führen Sie die folgenden Befehle aus, um den beschleunigten Netzwerkbetrieb für die zusätzlichen Netzwerkschnittstellen zu aktivieren, die wir an die Subnetze `hana` und `client` angefügt haben.  
 
     <pre><code>
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb1-hana</b> --accelerated-networking true
@@ -237,16 +273,25 @@ Der Name der Netzwerkschnittstelle wird automatisch beim Bereitstellen der virtu
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb2-client</b> --accelerated-networking true
     az network nic update --id /subscriptions/<b>your subscription</b>/resourceGroups/<b>your resource group</b>/providers/Microsoft.Network/networkInterfaces/<b>hanadb3-client</b> --accelerated-networking true
     </code></pre>
-7. Starten Sie die virtuellen Computer.  
 
-    1. Wählen Sie im linken Navigationsbereich „Virtuelle Computer“ aus. Filtern Sie nach dem Namen des virtuellen Computers, z. B. **hanadb1**. Klicken Sie auf den virtuellen Computer.  
-    2. Da Sie sich in der Übersicht befinden, wählen Sie „Starten“ aus.  
+7. Starten Sie die virtuellen Computer wie folgt:  
+
+    a. Wählen Sie im linken Bereich **Virtuelle Computer** aus. Filtern Sie nach dem Namen des virtuellen Computers (z. B. **hanadb1**), und wählen Sie ihn dann aus.  
+
+    b. Wählen Sie im Bereich **Übersicht** die Option **Starten** aus.  
 
 ## <a name="operating-system-configuration-and-preparation"></a>Konfiguration und Vorbereitung des Betriebssystems
 
-Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** – gilt für alle Knoten, **[1]** – gilt nur für Knoten 1, **[2]** – gilt nur für Knoten 2 oder **[3]** – gilt nur für Knoten 3.
+Die Anweisungen in den nächsten Abschnitten weisen eines der folgenden Präfixe auf:
+* **[A]** : Gilt für alle Knoten
+* **[1]** : Gilt nur für Knoten 1
+* **[2]** : Gilt nur für Knoten 2
+* **[3]** : Gilt nur für Knoten 3
+
+Führen Sie die folgenden Schritte aus, um das Betriebssystem zu konfigurieren und vorzubereiten:
 
 1. **[A]** Verwalten Sie die Hostdateien auf den virtuellen Computern. Schließen Sie Einträge für alle Subnetze ein. Die folgenden Einträge wurden für dieses Beispiel zu `/etc/hosts` hinzugefügt.  
+
     <pre><code>
     # Storage
     10.23.2.4   hanadb1
@@ -263,6 +308,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 2. **[A]** Ändern Sie die DHCP- und Cloudkonfigurationseinstellungen, um unbeabsichtigte Änderungen des Hostnamens zu vermeiden.  
+
     <pre><code>
     vi /etc/sysconfig/network/dhcp
     #Change the following DHCP setting to "no"
@@ -273,7 +319,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     CLOUD_NETCONFIG_MANAGE='no'
     </code></pre>
 
-3. **[A]** Bereiten Sie das Betriebssystem für den Betrieb von SAP HANA auf NetApp-Systemen mit NFS vor, wie im [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf) (Konfigurationshandbuch für SAP HANA auf NetApp AFF-Systemen mit NFS) beschrieben. Erstellen Sie die Konfigurationsdatei für die NetApp-Konfigurationseinstellungen: `/etc/sysctl.d/netapp-hana.conf`.  
+3. **[A]** Bereiten Sie das Betriebssystem für den Betrieb von SAP HANA auf NetApp-Systemen mit NFS vor, wie im [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf) (Konfigurationshandbuch für SAP HANA auf NetApp AFF-Systemen mit NFS) beschrieben. Erstellen Sie die Konfigurationsdatei */etc/sysctl.d/netapp-hana.conf* für die NetApp-Konfigurationseinstellungen.  
 
     <pre><code>
     vi /etc/sysctl.d/netapp-hana.conf
@@ -294,7 +340,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     net.ipv4.tcp_sack = 1
     </code></pre>
 
-4. **[A]** Erstellen Sie eine Konfigurationsdatei mit Microsoft für Azure-Konfigurationseinstellungen: `/etc/sysctl.d/ms-az.conf`.  
+4. **[A]** Erstellen Sie die Konfigurationsdatei */etc/sysctl.d/ms-az.conf* mit Microsoft für Azure-Konfigurationseinstellungen.  
 
     <pre><code>
     vi /etc/sysctl.d/ms-az.conf
@@ -308,6 +354,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 4. **[A]** Passen Sie die sunrpc-Einstellungen entsprechend den Empfehlungen im [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf) (Konfigurationshandbuch für SAP HANA auf NetApp AFF-Systemen mit NFS) an.  
+
     <pre><code>
     vi /etc/modprobe.d/sunrpc.conf
     # Insert the following line
@@ -317,6 +364,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 ## <a name="mount-the-azure-netapp-files-volumes"></a>Einbinden der Azure NetApp Files-Volumes
 
 1. **[A]** Erstellen Sie Bereitstellungspunkte für die HANA-Datenbankvolumes.  
+
     <pre><code>
     mkdir -p /hana/data/<b>HN1</b>/mnt00001
     mkdir -p /hana/data/<b>HN1</b>/mnt00002
@@ -326,10 +374,10 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     mkdir -p /usr/sap/<b>HN1</b>
     </code></pre>
 
-2. **[1]** Erstellen Sie knotenspezifische Verzeichnisse für `/usr/sap` auf **HN1**-shared.  
+2. **[1]** Erstellen Sie knotenspezifische Verzeichnisse für „/usr/sap“ auf „**HN1**-shared“.  
 
     <pre><code>
-    # Create a temporary directory to mount  <b>HN1</b>-shared
+    # Create a temporary directory to mount <b>HN1</b>-shared
     mkdir /mnt/tmp
     mount <b>10.23.1.4</b>:/<b>HN1</b>-shared /mnt/tmp
     cd /mnt/tmp
@@ -340,6 +388,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 3. **[A]** Überprüfen Sie die Einstellung für die NFS-Domäne. Stellen Sie sicher, dass die Domäne als **`localdomain`** konfiguriert und die Zuordnung auf **nobody** festgelegt ist.  
+
     <pre><code>
     sudo cat  /etc/idmapd.conf
     # Example
@@ -352,18 +401,17 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** Deaktivieren Sie die NFSv4-ID-Zuordnung. Führen Sie bei `nfs4_disable_idmapping` den Einbindungsbefehl aus, um die Verzeichnisstruktur zu erstellen.  Sie können das Verzeichnis unter“/sys/modules“ nicht manuell erstellen, da der Zugriff für den Kernel bzw. die Treiber reserviert ist.  
+4. **[A]** Deaktivieren Sie die NFSv4-ID-Zuordnung. Führen Sie den Einbindungsbefehl aus, um bei `nfs4_disable_idmapping` die Verzeichnisstruktur zu erstellen. Sie können das Verzeichnis unter „/sys/modules“ nicht manuell erstellen, da der Zugriff für den Kernel bzw. die Treiber reserviert ist.  
 
     <pre><code>
-    
     mkdir /mnt/tmp
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     # Disable NFSv4 idmapping. 
     echo "N" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>
+    </code></pre>`
 
-5. **[A]** Erstellen Sie manuell die SAP HANA-Gruppe und den -Benutzer. Die IDs für die Gruppe „sapsys“ und den Benutzer „**hn1**adm“ müssen auf dieselben IDs festgelegt werden, die während des Onboardings bereitgestellt wurden. In diesem Beispiel werden die IDs auf **1001**festgelegt. Andernfalls kann nicht auf die Volumes zugegriffen werden.  Die IDs für die Gruppe „sapsys“ und die Benutzerkonten **„hn1**adm“ und „sapadm“ müssen auf allen virtuellen Computern identisch sein.  
+5. **[A]** Erstellen Sie manuell die SAP HANA-Gruppe und den -Benutzer. Die IDs für die Gruppe „sapsys“ und den Benutzer „**hn1**adm“ müssen auf dieselben IDs festgelegt werden, die während des Onboardings bereitgestellt werden. (In diesem Beispiel werden die IDs auf **1001** festgelegt.) Wenn die IDs nicht ordnungsgemäß festgelegt sind, können Sie nicht auf die Volumes zugreifen. Die IDs für die Gruppe „sapsys“ und die Benutzerkonten **„hn1**adm“ und „sapadm“ müssen auf allen virtuellen Computern identisch sein.  
 
     <pre><code>
     # Create user group 
@@ -391,6 +439,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 7. **[1]** Binden Sie die knotenspezifischen Volumes auf **hanadb1** ein.  
+
     <pre><code>
     sudo vi /etc/fstab
     # Add the following entries
@@ -400,6 +449,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 8. **[2]** Binden Sie die knotenspezifischen Volumes auf **hanadb2** ein.  
+
     <pre><code>
     sudo vi /etc/fstab
     # Add the following entries
@@ -409,6 +459,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 9. **[3]** Binden Sie die knotenspezifischen Volumes auf **hanadb3** ein.  
+
     <pre><code>
     sudo vi /etc/fstab
     # Add the following entries
@@ -418,6 +469,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
     </code></pre>
 
 10. **[A]** Überprüfen Sie, ob alle HANA-Volumes mit der NFS-Protokollversion **NFSv4** eingebunden wurden.  
+
     <pre><code>
     sudo nfsstat -m
     # Verify that flag vers is set to <b>4.1</b> 
@@ -442,20 +494,23 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
 
 ### <a name="prepare-for-hana-installation"></a>Vorbereiten der HANA-Installation
 
-1. **[A]** Legen Sie vor der HANA-Installation das Stammkennwort fest (nach Abschluss der Installation können Sie das Stammkennwort deaktivieren). Führen Sie den Befehl `passwd` als `root` aus.  
+1. **[A]** Legen Sie vor der HANA-Installation das Stammkennwort fest. Nachdem die Installation abgeschlossen wurde, können Sie das Stammkennwort deaktivieren. Führen Sie den Befehl `passwd` als `root` aus.  
 
-2. **[1]** Vergewissern Sie sich, dass Sie eine SSH-Verbindung mit **hanadb2** und **hanadb3** herstellen können, ohne zur Eingabe eines Kennworts aufgefordert zu werden.  
+2. **[1]** Vergewissern Sie sich, dass Sie sich bei **hanadb2** und **hanadb3** per SSH anmelden können, ohne zur Eingabe eines Kennworts aufgefordert zu werden.  
+
     <pre><code>
     ssh root@<b>hanadb2</b>
     ssh root@<b>hanadb3</b>
     </code></pre>
 
-3. **[A]** Installieren Sie zusätzliche Pakete, die für HANA 2.0 SP4 erforderlich sind. Weitere Informationen finden Sie in SAP-Hinweis [2593824](https://launchpad.support.sap.com/#/notes/2593824). 
+3. **[A]** Installieren Sie zusätzliche Pakete, die für HANA 2.0 SP4 erforderlich sind. Weitere Informationen finden Sie im SAP-Hinweis [2593824](https://launchpad.support.sap.com/#/notes/2593824). 
+
     <pre><code>
     sudo zypper install libgcc_s1 libstdc++6 libatomic1 
     </code></pre>
 
-4. **[2, 3]** Übertragen Sie den Besitz der SAP HANA-Verzeichnisse `data` und `log` an „**hn1**adm“.   
+4. **[2], [3]** Übertragen Sie den Besitz der SAP HANA-Verzeichnisse `data` und `log` an „**hn1**adm“.   
+
     <pre><code>
     # Execute as root
     sudo chown hn1adm:sapsys /hana/data/<b>HN1</b>
@@ -464,49 +519,51 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
 
 ### <a name="hana-installation"></a>HANA-Installation
 
-1. **[1]** Installieren Sie SAP HANA, und befolgen Sie dabei die Anweisungen unter [SAP HANA 2.0 Installation and Update Guide](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html) (Installations- und Updateleitfaden für SAP HANA 2.0). In diesem Beispiel installieren wir eine SAP HANA-Konfiguration mit horizontaler Skalierung mit einem Master-, einem Worker- und einem Standbyknoten.  
-   Starten Sie das Programm **hdblcm** über das HANA-Installationssoftwareverzeichnis. Verwenden Sie den `internal_network`-Parameter, und übergeben Sie den Adressraum für das Subnetz, das für die interne Kommunikation zwischen HANA-Knoten verwendet wird.  
+1. **[1]** Installieren Sie SAP HANA gemäß den Anweisungen im [SAP HANA 2.0 Installation and Update Guide](https://help.sap.com/viewer/2c1988d620e04368aa4103bf26f17727/2.0.04/en-US/7eb0167eb35e4e2885415205b8383584.html) (Installations- und Updateleitfaden für SAP HANA 2.0). In diesem Beispiel installieren wir eine SAP HANA-Konfiguration mit horizontaler Skalierung mit einem Master-, einem Worker- und einem Standbyknoten.  
 
-    <pre><code>./hdblcm --internal_network=10.23.3.0/24
+   a. Starten Sie das Programm **hdblcm** über das HANA-Installationssoftwareverzeichnis. Verwenden Sie den `internal_network`-Parameter, und übergeben Sie den Adressraum für das Subnetz, das für die interne Kommunikation zwischen HANA-Knoten verwendet wird.  
+
+    <pre><code>
+    ./hdblcm --internal_network=10.23.3.0/24
     </code></pre>
 
-   Geben Sie an der Eingabeaufforderung folgende Werte ein.
+   b. Geben Sie an der Eingabeaufforderung folgende Werte ein:
 
-     * Aktion auswählen:  Geben Sie **1** ein (für die Installation).
-     * Wählen Sie weitere Komponenten für die Installation aus: Geben Sie **2, 3** ein.
-     * Geben Sie den Installationspfad ein:  Drücken Sie die EINGABETASTE (Standardwert „/hana/shared“).
-     * Geben Sie den Namen des lokalen Hosts ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Möchten Sie dem System Hosts hinzufügen? Geben Sie **y** ein.
-     * Geben Sie die Hostnamen, die Sie hinzufügen möchten, durch Kommas getrennt ein: **hanadb2, hanadb3**.
-     * Geben Sie den Root-Benutzernamen [root] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie das Root-Benutzerkennwort ein: Geben Sie das Root-Kennwort ein.
-     * Wählen Sie Rollen für den Host „hanadb2“ aus: Geben Sie **1** ein (für den Worker).
-     * Geben Sie die Hostfailovergruppe für den Host „hanadb2“ [Standard] ein:  Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie die Nummer der Speicherpartition für den Host „hanadb2“ [<<assign automatically>>] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie die Workergruppe für den Host „hanadb2“ [Standard] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Wählen Sie Rollen für den Host „hanadb3“ aus: Geben Sie **2** ein (für den Standbyknoten).
-     * Geben Sie die Hostfailovergruppe für den Host „hanadb3“ [Standard] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie die Workergruppe für den Host „hanadb3“ [Standard] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie die SAP HANA-System-ID ein: Geben Sie **HN1** ein.
-     * Geben Sie die Instanznummer [00] ein: Geben Sie **03** ein.
-     * Geben Sie die lokale Workergruppe des Hosts [Standard] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Wählen Sie die Systemnutzung/Geben Sie den Index [4] ein: Geben Sie **4** ein (für benutzerdefiniert).
-     * Geben Sie den Speicherort der Datenvolumes ein [/hana/data/HN1]:  Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie den Speicherort der Protokollvolumes ein [/hana/log/HN1]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Möchten Sie die maximale Speicherbelegung beschränken? [n]: Geben Sie **n** ein.
-     * Geben Sie den Zertifikathostnamen für Host „hanadb1“ [hanadb1] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie den Zertifikathostnamen für Host „hanadb2“ [hanadb2] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie den Zertifikathostnamen für Host „hanadb3“ [hanadb3] ein: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
-     * Geben Sie das Kennwort für den Systemadministrator ein (hn1adm): Kennwort eingeben
-     * Geben Sie das Kennwort für den Systemdatenbankbenutzer ein (SYSTEM): Geben Sie das Kennwort für das System ein.
-     * Bestätigen Sie das Kennwort für den Systemdatenbankbenutzer (SYSTEM): Geben Sie das Kennwort für das System ein.
-     * Soll das System nach dem Neustart des Computers neu starten? [n]: Geben Sie **n** ein. 
-     * Möchten Sie fortfahren (y/n)? Überprüfen Sie die Zusammenfassung. Wenn alle Werte korrekt sind, geben Sie **y** ein.
+     * Für **Aktion auswählen**: Geben Sie **1** ein (für „installieren“).
+     * Für **Additional components for installation** (Zusätzliche Komponenten für die Installation): Geben Sie **2, 3** ein.
+     * Für den Installationspfad: Drücken Sie die EINGABETASTE (Standardwert „/hana/shared“).
+     * Für **Local Host Name** (Name des lokalen Hosts): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Möchten Sie dem System Hosts hinzufügen?** : Geben Sie **y** ein.
+     * Für **Hostnamen, die durch Kommas getrennt hinzugefügt werden sollen**: Geben Sie **hanadb2, hanadb3** ein.
+     * Für **Root User Name** (Root-Benutzername) [root]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Root User Password** (Kennwort des Root-Benutzers): Geben Sie das Kennwort des Root-Benutzers ein.
+     * Für Rollen für den Host „hanadb2“: Geben Sie **1** ein (für Workerrolle).
+     * Für **Host Failover Group** (Hostfailovergruppe) für den Host „hanadb2“ [Standard]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Storage Partition Number** (Speicherpartitionsnummer) für den Host „hanadb2“ [<<assign automatically>>]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Worker Group** (Workergruppe) für den Host „hanadb2“ [Standard]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Select Roles** (Rollen auswählen) für den Host „hanadb3“: Geben Sie **2** (für Standby) ein.
+     * Für **Host Failover Group** (Hostfailovergruppe) für den Host „hanadb3“ [Standard]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Worker Group** (Workergruppe) für den Host „hanadb3“ [Standard]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **SAP HANA System ID** (SAP HANA-System-ID): Geben Sie **HN1** ein.
+     * Für **Instance number** (Instanznummer) [00]: Geben Sie **03** ein.
+     * Für **Local Host Worker Group** (Workergruppe des lokalen Hosts): Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Select System Usage / Enter index [4]** (Systemnutzung auswählen/Index eingeben): Geben Sie **4** (für benutzerdefiniert) ein.
+     * Für **Location of Data Volumes** (Speicherort der Datenvolumes) [/Hana/Data/HN1]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Location of Log Volumes** (Speicherort der Protokollvolumes) [/Hana/log/HN1]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Möchten Sie die maximale Speicherbelegung beschränken?** [n] Geben Sie **n** ein.
+     * Für **Certificate Host Name For Host hanadb1** (Zertifikathostname für Host „hanadb1“ [hanadb1]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Certificate Host Name For Host hanadb2** (Zertifikathostname für Host „hanadb2“ [hanadb1]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **Certificate Host Name For Host hanadb3** (Zertifikathostname für Host „hanadb1“ [hanadb3]: Drücken Sie die EINGABETASTE, um die Standardeinstellung zu übernehmen.
+     * Für **System Administrator (hn1adm) Password** (Kennwort für den Systemadministrator (hn1adm)): Geben Sie das Kennwort ein.
+     * For **System Database User (system) Password** (Kennwort für den Systemdatenbankbenutzer (system)): Geben Sie das Kennwort für das System ein.
+     * For **Confirm System Database User (system) Password** (Kennwort für den Systemdatenbankbenutzer (system) bestätigen): Geben Sie das Kennwort für das System ein.
+     * Für **Soll das System nach dem Neustart des Computers neu starten?** [n] Geben Sie **n** ein. 
+     * Für **Möchten Sie fortfahren (y/n)?** : Überprüfen Sie die Zusammenfassung. Wenn alle Werte korrekt sind, geben Sie **y** ein.
 
 
 2. **[1]** Überprüfen Sie die „global.ini“.  
 
-   Zeigen Sie die „global. ini“ an, und stellen Sie sicher, dass die Konfiguration für die interne SAP HANA-Kommunikation zwischen Knoten eingerichtet ist. Überprüfen Sie den Abschnitt **communication**. Dieser sollte den Adressraum für das **`hana`** -Subnetz enthalten, und `listeninterface` sollte auf `.internal` festgelegt sein. Überprüfen Sie den Abschnitt **internal_hostname_resolution**. Er sollte die IP-Adressen für die virtuellen HANA-Computer enthalten, die zum **`hana`** -Subnetz gehören.  
+   Zeigen Sie die „global. ini“ an, und stellen Sie sicher, dass die Konfiguration für die interne SAP HANA-Kommunikation zwischen Knoten eingerichtet ist. Überprüfen Sie den Abschnitt **communication**. Dieser sollte den Adressraum für das `hana`-Subnetz enthalten, und `listeninterface` sollte auf `.internal` festgelegt sein. Überprüfen Sie den Abschnitt **internal_hostname_resolution**. Er sollte die IP-Adressen für die virtuellen HANA-Computer enthalten, die zum `hana`-Subnetz gehören.  
 
    <pre><code>
     sudo cat /usr/sap/<b>HN1</b>/SYS/global/hdb/custom/config/global.ini
@@ -521,7 +578,7 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
     <b>10.23.3.6</b> = <b>hanadb3</b>
    </code></pre>
 
-3. **[1]** Fügen Sie die Hostzuordnung hinzu, um sicherzustellen, dass die Client-IP-Adressen für die Clientkommunikation verwendet werden. Fügen Sie Abschnitt `public_host_resolution` hinzu, und fügen Sie die entsprechenden IP-Adressen aus dem Clientsubnetz hinzu.  
+3. **[1]** Fügen Sie die Hostzuordnung hinzu, um sicherzustellen, dass die Client-IP-Adressen für die Clientkommunikation verwendet werden. Fügen Sie den Abschnitt `public_host_resolution` hinzu, und fügen Sie die entsprechenden IP-Adressen aus dem Clientsubnetz hinzu.  
 
    <pre><code>
     sudo vi /usr/sap/HN1/SYS/global/hdb/custom/config/global.ini
@@ -533,12 +590,14 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
    </code></pre>
 
 4. **[1]** Starten Sie SAP HANA neu, um die Änderungen zu aktivieren.  
+
    <pre><code>
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StopSystem HDB
     sudo -u <b>hn1</b>adm /usr/sap/hostctrl/exe/sapcontrol -nr <b>03</b> -function StartSystem HDB
    </code></pre>
 
-5. **[1]** Stellen Sie sicher, dass die Clientschnittstelle zur Kommunikation die IP-Adressen aus dem Subnetz **client** verwendet.  
+5. **[1]** Stellen Sie sicher, dass die Clientschnittstelle zur Kommunikation die IP-Adressen aus dem `client`-Subnetz verwendet.  
+
    <pre><code>
     sudo -u hn1adm /usr/sap/HN1/HDB03/exe/hdbsql -u SYSTEM -p "<b>password</b>" -i 03 -d SYSTEMDB 'select * from SYS.M_HOST_INFORMATION'|grep net_publicname
     # Expected result
@@ -559,21 +618,22 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
    Weitere Informationen finden Sie im [SAP HANA on NetApp AFF Systems with NFS Configuration Guide](https://www.netapp.com/us/media/tr-4435.pdf) (Konfigurationshandbuch für SAP HANA auf NetApp AFF-Systemen mit NFS). 
 
    Ab SAP HANA 2.0 können Sie die Parameter in `global.ini` festlegen. Weitere Informationen finden Sie im SAP-Hinweis [1999930](https://launchpad.support.sap.com/#/notes/1999930).  
+   
    Für SAP HANA 1.0-Systeme, Versionen bis SPS12, können diese Parameter bei der Installation festgelegt werden, wie im SAP-Hinweis [2267798](https://launchpad.support.sap.com/#/notes/2267798) beschrieben.  
 
-7. Die Größe des von Azure NetApp Files verwendeten Speichers ist auf 16 TB begrenzt. SAP HANA erkennt die Speicherbegrenzung nicht implizit und erstellt nicht automatisch eine neue Datendatei, wenn die Dateigröße von 16 TB erreicht ist. Wenn SAP HANA versucht, die Datei über 16 TB hinaus zu vergrößern, führt dies zu Fehlern und schließlich zum Absturz des Indexservers. 
+7. Die Größe des von Azure NetApp Files verwendeten Speichers ist auf 16 Terabyte (TB) begrenzt. SAP HANA erkennt die Speicherbegrenzung nicht implizit und erstellt nicht automatisch eine neue Datendatei, wenn die Dateigröße von 16 TB erreicht ist. Wenn SAP HANA versucht, die Datei über 16 TB hinaus zu vergrößern, führt dies zu Fehlern und schließlich zum Absturz des Indexservers. 
 
    > [!IMPORTANT]
    > Um zu verhindern, dass SAP HANA versucht, Datendateien über die [16-TB-Begrenzung](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-resource-limits) des Speichersubsystems hinaus zu vergrößern, legen Sie die folgenden Parameter in `global.ini` fest.  
-   > -  datavolume_striping=true
+   > - datavolume_striping = true
    > - datavolume_striping_size_gb = 15000. Weitere Informationen finden Sie im SAP-Hinweis [2400005](https://launchpad.support.sap.com/#/notes/2400005).
    > Beachten Sie den SAP-Hinweis [2631285](https://launchpad.support.sap.com/#/notes/2631285). 
 
 ## <a name="test-sap-hana-failover"></a>Testen des SAP HANA-Failovers 
 
-1. Simulieren Sie den Knotenabsturz auf einem SAP HANA-Workerknoten.  
+1. Simulieren Sie einen Knotenabsturz auf einem SAP HANA-Workerknoten. Gehen Sie wie folgt vor: 
 
-   Führen Sie die folgenden Befehle als „**hn1**adm“ aus, um den Status der Umgebung zu erfassen, bevor Sie den Knotenabsturz simulieren.  
+   a. Führen Sie die folgenden Befehle als „**hn1**adm“ aus, um den Status der Umgebung zu erfassen, bevor Sie den Knotenabsturz simulieren:  
 
    <pre><code>
     # Check the landscape status
@@ -595,13 +655,15 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
    </code></pre>
 
-   Führen Sie den folgenden Befehl als „root“ auf dem Workerknoten aus (in diesem Fall **hanadb2**), um den Knotenabsturz zu simulieren.  
+   b. Um einen Knotenabsturz zu simulieren, führen Sie auf dem Workerknoten, in diesem Fall **hanadb2**, den folgenden Befehl als Root-Benutzer aus:  
+   
    <pre><code>
     echo b > /proc/sysrq-trigger
    </code></pre>
 
-   Überwachen Sie das System, bis das Failover abgeschlossen ist. Erfassen Sie den Status nach Abschluss des Failovers – dieser sollte wie der Status unten aussehen.  
-   <pre><code>
+   c. Überwachen Sie das System, bis das Failover abgeschlossen ist. Erfassen Sie den Status nach Abschluss des Failovers – dieser sollte wie folgt aussehen:  
+
+    <pre><code>
     # Check the instance status
     sapcontrol -nr <b>03</b>  -function GetSystemInstanceList
     GetSystemInstanceList
@@ -622,10 +684,11 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
    </code></pre>
 
    > [!IMPORTANT]
-   > Um Verzögerungen beim SAP HANA-Failover zu vermeiden, legen Sie bei einem Kernel Panic-Status eines Knotens `kernel.panic` auf **allen** virtuellen HANA-Computern auf 20 Sekunden fest. Die Konfiguration wird in `/etc/sysctl` ausgeführt. Starten Sie die virtuellen Computer neu, um die Änderung zu aktivieren. Wenn ein Knoten einen Kernel Panic-Status aufweist, kann ein Failover 10 Minuten oder länger dauern, wenn diese Änderung nicht vorgenommen wird.  
+   > Legen Sie `kernel.panic` auf *allen* virtuellen HANA-Computern auf 20 Sekunden fest, um bei einem Kernel-Panic-Status eines Knotens Verzögerungen beim SAP HANA-Failover zu vermeiden. Die Konfiguration wird in `/etc/sysctl` ausgeführt. Starten Sie die virtuellen Computer neu, um die Änderung zu aktivieren. Wenn diese Änderung nicht vorgenommen wird, kann im Falle des Kernel-Panic-Status eines Knotens ein Failover 10 Minuten oder länger dauern.  
 
-2. Beenden Sie den Namenserver.  
-   Führen Sie die folgenden Befehle als „**hn1**adm“ aus, um den Status der Umgebung vor dem Test zu überprüfen:  
+2. Beenden Sie den Namenserver, indem Sie die folgenden Schritte ausführen:
+
+   a. Führen Sie die folgenden Befehle als „**hn1**adm“ aus, um den Status der Umgebung vor dem Test zu überprüfen:  
 
    <pre><code>
     #Landscape status 
@@ -647,40 +710,42 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
     hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GRAY
    </code></pre>
 
-   Führen Sie die folgenden Befehle als „**hn1**adm“ auf dem aktiven Masterknoten aus (in diesem Fall **hanadb1**).  
+   b. Führen Sie die folgenden Befehle als „**hn1**adm“ auf dem aktiven Masterknoten aus (in diesem Fall **hanadb1**):  
 
-   <pre><code>
-    hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
-   </code></pre>
+    <pre><code>
+        hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB kill
+    </code></pre>
+    
+    Der Standbyknoten **hanadb3** wird zum Masterknoten. Dies ist der Ressourcenstatus nach Abschluss des Failovertests:  
 
-   Der Standbyknoten **hanadb3** wird zum Masterknoten. Ressourcenstatus nach Abschluss des Failovertests:  
+    <pre><code>
+        # Check the instance status
+        sapcontrol -nr 03 -function GetSystemInstanceList
+        GetSystemInstanceList
+        OK
+        hostname, instanceNr, httpPort, httpsPort, startPriority, features, dispstatus
+        hanadb2, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GREEN
+        hanadb1, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GRAY
+        hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
+        # Check the landscape status
+        python /usr/sap/HN1/HDB03/exe/python_support/landscapeHostConfiguration.py
+        | Host    | Host   | Host   | Failover | Remove | Storage   | Storage   | Failover | Failover | NameServer | NameServer | IndexServer | IndexServer | Host    | Host    | Worker  | Worker  |
+        |         | Active | Status | Status   | Status | Config    | Actual    | Config   | Actual   | Config     | Actual     | Config      | Actual      | Config  | Actual  | Config  | Actual  |
+        |         |        |        |          |        | Partition | Partition | Group    | Group    | Role       | Role       | Role        | Role        | Roles   | Roles   | Groups  | Groups  |
+        | ------- | ------ | ------ | -------- | ------ | --------- | --------- | -------- | -------- | ---------- | ---------- | ----------- | ----------- | ------- | ------- | ------- | ------- |
+        | hanadb1 | no     | info   |          |        |         1 |         0 | default  | default  | master 1   | slave      | worker      | standby     | worker  | standby | default | -       |
+        | hanadb2 | yes    | ok     |          |        |         2 |         2 | default  | default  | master 2   | slave      | worker      | slave       | worker  | worker  | default | default |
+        | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
+    </code></pre>
 
-   <pre><code>
-    # Check the instance status
-    sapcontrol -nr 03 -function GetSystemInstanceList
-    GetSystemInstanceList
-    OK
-    hostname, instanceNr, httpPort, httpsPort, startPriority, features, dispstatus
-    hanadb2, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GREEN
-    hanadb1, 3, 50313, 50314, 0.3, HDB|HDB_WORKER, GRAY
-    hanadb3, 3, 50313, 50314, 0.3, HDB|HDB_STANDBY, GREEN
-    # Check the landscape status
-    python /usr/sap/HN1/HDB03/exe/python_support/landscapeHostConfiguration.py
-    | Host    | Host   | Host   | Failover | Remove | Storage   | Storage   | Failover | Failover | NameServer | NameServer | IndexServer | IndexServer | Host    | Host    | Worker  | Worker  |
-    |         | Active | Status | Status   | Status | Config    | Actual    | Config   | Actual   | Config     | Actual     | Config      | Actual      | Config  | Actual  | Config  | Actual  |
-    |         |        |        |          |        | Partition | Partition | Group    | Group    | Role       | Role       | Role        | Role        | Roles   | Roles   | Groups  | Groups  |
-    | ------- | ------ | ------ | -------- | ------ | --------- | --------- | -------- | -------- | ---------- | ---------- | ----------- | ----------- | ------- | ------- | ------- | ------- |
-    | hanadb1 | no     | info   |          |        |         1 |         0 | default  | default  | master 1   | slave      | worker      | standby     | worker  | standby | default | -       |
-    | hanadb2 | yes    | ok     |          |        |         2 |         2 | default  | default  | master 2   | slave      | worker      | slave       | worker  | worker  | default | default |
-    | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
-   </code></pre>
+   c. Starten Sie die HANA-Instanz auf **hanadb1** (d. h. auf demselben virtuellen Computer, auf dem der Namenserver beendet wurde) neu. Der Knoten **hanadb1** tritt wieder der Umgebung bei und behält seine Standbyrolle.  
 
-   Starten Sie die HANA-Instanz erneut auf **hanadb1**, d. h. auf demselben virtuellen Computer, auf dem der Namenserver beendet wurde. Der Knoten **hanadb1** tritt wieder der Umgebung bei und behält seine Standbyrolle.  
    <pre><code>
     hn1adm@hanadb1:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Es wird der folgende Status erwartet, nachdem SAP HANA auf **hanadb1** gestartet wurde:  
+   Nach dem Starten von SAP HANA auf **hanadb1** wird der folgende Status erwartet:  
+
    <pre><code>
     # Check the instance status
     sapcontrol -nr 03 -function GetSystemInstanceList
@@ -701,12 +766,14 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
     | hanadb3 | yes    | info   |          |        |         0 |         1 | default  | default  | master 3   | master     | standby     | master      | standby | worker  | default | default |
    </code></pre>
 
-   Beenden Sie nun den Namenserver wieder auf dem aktuell aktiven Masterknoten, also auf „hanadb3“.  
+   d. Beenden Sie den Namenserver erneut auf dem derzeit aktiven Masterknoten (auf dem Knoten **hanadb3**).  
+   
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB kill
    </code></pre>
 
-   Knoten **hanadb1** übernimmt wieder die Rolle des Masterknotens. Nachdem der Failovertest abgeschlossen ist, sieht der Status wie folgt aus:
+   Der Knoten **hanadb1** übernimmt wieder die Rolle des Masterknotens. Nachdem der Failovertest abgeschlossen wurde, sieht der Status wie folgt aus:
+
    <pre><code>
     # Check the instance status
     sapcontrol -nr 03  -function GetSystemInstanceList & python /usr/sap/HN1/HDB03/exe/python_support/landscapeHostConfiguration.py
@@ -730,12 +797,14 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
     | hanadb3 | no     | ignore |          |        |         0 |         0 | default  | default  | master 3   | slave      | standby     | standby     | standby | standby | default | -       |
    </code></pre>
 
-   Starten Sie SAP HANA auf **hanadb3** – dieser Knoten kann jetzt als Standbyknoten verwendet werden.  
+   e. Starten Sie SAP HANA auf **hanadb3** – dieser Knoten kann jetzt als Standbyknoten verwendet werden.  
+
    <pre><code>
     hn1adm@hanadb3:/usr/sap/HN1/HDB03> HDB start
    </code></pre>
 
-   Status, nachdem SAP HANA auf **hanadb3** gestartet wurde.  
+   Nach dem Starten von SAP HANA auf **hanadb3** sieht der Status wie folgt aus:  
+
    <pre><code>
     # Check the instance status
     sapcontrol -nr 03  -function GetSystemInstanceList & python /usr/sap/HN1/HDB03/exe/python_support/landscapeHostConfiguration.py
@@ -764,6 +833,5 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
 * [Azure Virtual Machines – Planung und Implementierung für SAP][planning-guide]
 * [Azure Virtual Machines – Bereitstellung für SAP][deployment-guide]
 * [Azure Virtual Machines – DBMS-Bereitstellung für SAP][dbms-guide]
-* Informationen zum Erreichen von Hochverfügbarkeit und zum Planen der Notfallwiederherstellung für SAP 
-* HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
+* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

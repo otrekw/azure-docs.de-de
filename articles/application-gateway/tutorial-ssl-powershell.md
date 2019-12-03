@@ -1,19 +1,20 @@
 ---
-title: Erstellen eines Anwendungsgateways mit SSL-Terminierung – Azure PowerShell
+title: SSL-Beendigung mit PowerShell
+titleSuffix: Azure Application Gateway
 description: Hier erfahren Sie, wie Sie mit Azure PowerShell ein Anwendungsgateway erstellen und ein Zertifikat für die SSL-Terminierung hinzufügen.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 7/31/2019
+ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 70447e01fc248e889662c5ec15cb65b1c0cc4848
-ms.sourcegitcommit: d585cdda2afcf729ed943cfd170b0b361e615fae
+ms.openlocfilehash: 2ce5b8472fe10b51cff34677c9ce5a89888bdc01
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68688099"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74075063"
 ---
 # <a name="create-an-application-gateway-with-ssl-termination-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit SSL-Terminierung mithilfe von Azure PowerShell
 
