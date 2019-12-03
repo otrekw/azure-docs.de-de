@@ -1,19 +1,19 @@
 ---
-title: Automatische Updates von Mobility Service bei der Notfallwiederherstellung zwischen Azure-Regionen | Microsoft-Dokumentation
+title: Automatische Updates von Mobility Service in Azure Site Recovery
 description: Überblick über automatische Updates von Mobility Service bei der Replikation virtueller Azure-Computer mit Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 92a46f7be116d0664b438c9039e311f802c873e5
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: 9479ccce534f9c9d48a0aa08d4ea887bc4f30acb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708079"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078868"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Updates von Mobility Service bei der Replikation zwischen Azure-Regionen
 
@@ -31,7 +31,7 @@ Wenn Site Recovery Ihre Updates verwaltet, wird ein globales Runbook (das von Az
 Standardmäßig führt das Runbook dies jeden Tag um 0:00 Uhr in der Zeitzone des geografischen Raums der replizierten VM durch. Sie können diese Zeit über das Automatisierungskonto anpassen.
 
 > [!NOTE]
-> Ab dem Updaterollup 35 können Sie ein vorhandenes Automatisierungskonto auswählen, um es für Updates zu verwenden. Vor diesem Update wurde dieses Konto standardmäßig von Site Recovery erstellt. Diese Option ist verfügbar, wenn Sie die Replikation für einen virtuellen Computer aktivieren. Wenn Sie die Einstellung ändern, gilt sie für alle Azure-VMs, die in demselben Tresor geschützt werden.
+> Ab dem Updaterollup 35 können Sie ein vorhandenes Automatisierungskonto auswählen, um es für Updates zu verwenden. Vor diesem Update wurde dieses Konto standardmäßig von Site Recovery erstellt. Si können diese Option nur auswählen, wenn Sie die Replikation für einen virtuellen Computer aktivieren. Sie ist für einen replizierenden virtuellen Computer nicht verfügbar. Die ausgewählte Einstellung gilt sie für alle Azure-VMs, die in demselben Tresor geschützt werden.
  
 > Das Aktivieren automatischer Updates erfordert keinen Neustart der Azure-VMs und hat keinen Einfluss auf eine laufende Replikation.
 
@@ -66,7 +66,8 @@ Wenn Sie die Replikation für einen virtuellen Computer aktivieren, indem Sie en
 > [!Note]
 > Bei beiden Optionen werden Sie über das Automatisierungskonto informiert, das zum Verwalten der Updates verwendet wird. Wenn Sie dieses Feature zum ersten Mal in einem Tresor verwenden, wird standardmäßig ein neues Automatisierungskonto erstellt. Alternativ können Sie die Einstellung anpassen und ein vorhandenes Automatisierungskonto auswählen. Alle nachfolgend im selben Tresor aktivierten Replikationen verwenden das zuvor erstellte Konto. In der Dropdownliste werden derzeit nur Automatisierungskonten aufgeführt, die sich in derselben Ressourcengruppe wie der Tresor befinden.  
 
-Für ein benutzerdefiniertes Automatisierungskonto können Sie das folgende Skript verwenden:
+> [!IMPORTANT]
+> Das folgende Skript muss im Kontext eines Automatisierungskontos ausgeführt werden. Verwenden Sie für ein benutzerdefiniertes Automatisierungskonto das folgende Skript:
 
 ```azurepowershell
 param(
@@ -538,7 +539,7 @@ Wenn Sie keine automatischen Updates aktivieren konnten, finden Sie in den häuf
 
 -  **Fehler**: Das vom Automatisierungskonto verwendete Zertifikat für das ausführende Azure-Konto wird bald ablaufen. 
 
-    Das für das ausführende Konto erstellte selbstsignierte Zertifikat läuft ein Jahr nach dem Datum seiner Erstellung ab. Sie können es vor dem Ablaufdatum jederzeit erneuern. Wenn Sie sich für E-Mail-Benachrichtigungen registriert haben, erhalten Sie außerdem E-Mails, wenn Ihrerseits eine Maßnahme erforderlich ist. Dieser Fehler wird 2 Monate vor dem Ablaufdatum angezeigt und in einen kritischen Fehler geändert, wenn das Zertifikat abgelaufen ist. Nachdem das Zertifikat abgelaufen ist, funktioniert die automatische Aktualisierung so lange nicht mehr, bis sie es erneuert haben.
+    Das für das ausführende Konto erstellte selbstsignierte Zertifikat läuft ein Jahr nach dem Datum seiner Erstellung ab. Sie können es vor dem Ablaufdatum jederzeit erneuern. Wenn Sie sich für E-Mail-Benachrichtigungen registriert haben, erhalten Sie außerdem E-Mails, wenn Ihrerseits eine Maßnahme erforderlich ist. Dieser Fehler wird zwei Monate vor dem Ablaufdatum angezeigt und in einen kritischen Fehler geändert, wenn das Zertifikat abgelaufen ist. Nach Ablauf des Zertifikats funktioniert die automatische Aktualisierung erst wieder, wenn es erneuert wurde.
 
    **Empfohlene Maßnahme:** Klicken Sie auf „Reparieren“ und dann auf „Zertifikat erneuern“, um dieses Problem zu beheben.
     

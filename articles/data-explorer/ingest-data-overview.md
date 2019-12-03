@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285918"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091787"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -117,11 +117,9 @@ Für Organisationen mit einer vorhandenen Infrastruktur, die auf einem Messaging
 
 ## <a name="supported-data-formats"></a>Unterstützte Datenformate
 
-Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der Abfrage so, dass sie von Azure Data Explorer analysiert werden können. Die folgenden Datenformate werden unterstützt:
-
-* TXT, CSV, TSV, TSVE, PSV, SCSV, SOH
-* JSON (getrennte Zeilen, mehrzeilig) Avro
-* ZIP und GZIP 
+Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der Abfrage so, dass sie von Azure Data Explorer analysiert werden können. 
+* Die folgenden Datenformate werden unterstützt: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (getrennte Zeilen, mehrzeilig), Avro und Parquet. 
+* Unterstützt ZIP- und GZIP-Komprimierung.
 
 > [!NOTE]
 > Beim Erfassen von Daten werden Datentypen aus den Spalten der Zieltabelle abgeleitet. Wenn ein Datensatz unvollständig ist oder ein Feld nicht als erforderlicher Datentyp analysiert werden kann, werden die entsprechenden Tabellenspalten mit Nullwerten gefüllt.

@@ -1,27 +1,26 @@
 ---
-title: 'Azure Site Recovery: Häufig gestellte Fragen | Microsoft-Dokumentation'
-description: Dieser Artikel enthält häufig gestellte Fragen zu Azure Site Recovery.
-services: site-recovery
+title: Allgemeine Fragen zum Azure Site Recovery-Dienst
+description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azure Site Recovery behandelt.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 6/27/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a9c7aa2be945e4fbaa65bdd2a145d576422c5539
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67491766"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078540"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
-Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen.</br>
-Informationen zu bestimmten Abfragen in verschiedenen ASR-Szenarien finden Sie in den häufig gestellten Fragen zu bestimmten Szenarien.<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
-- [Notfallwiederherstellung von virtuellen Azure-Computern in Azure](azure-to-azure-common-questions.md)
-- [Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-common-questions.md)
-- [Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure](hyper-v-azure-common-questions.md)
+Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. In den folgenden Artikeln werden spezielle Szenarien behandelt:
+
+- [Fragen zur Notfallwiederherstellung von virtuellen Azure-Computern in Azure](azure-to-azure-common-questions.md)
+- [Fragen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure](vmware-azure-common-questions.md)
+- [Fragen zur Notfallwiederherstellung von virtuellen Hyper-V-Computern in Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Allgemein
 
@@ -162,7 +161,7 @@ Ja, [ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet we
 - Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (für neue Verbindungen veraltet) einrichten.
 - Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation.
 - Replikation über privates Peering wird nicht unterstützt.
-- Falls Sie VMware-Computer oder physische Computer schützen, stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs aufnehmen. Für diese Verbindung können Sie ExpressRoute nicht nutzen.
+- Falls Sie VMware-Computer oder physische Computer schützen, stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs herstellen können. Für diese Verbindung kann ExpressRoute nicht verwendet werden.
 - Nachdem für die virtuellen Computer ein Failover auf ein virtuelles Azure-Netzwerk ausgeführt wurde, können Sie mithilfe der Einrichtung des [privaten Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) für das virtuelle Azure-Netzwerk darauf zugreifen.
 
 
@@ -171,7 +170,7 @@ Ja, [ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet we
 Sie benötigen LRS- oder GRS-Speicher. Wir empfehlen Ihnen die Verwendung von GRS, damit Resilienz für die Daten besteht, wenn es zu einem regionalen Ausfall kommt oder wenn die primäre Region nicht wiederhergestellt werden kann. Das Konto muss sich in derselben Region wie der Recovery Services-Tresor befinden. Storage Premium wird für die Replikation von virtuellen VMware-Computern, virtuellen Hyper-V-Computern und physischen Servern verwendet, wenn Sie Site Recovery im Azure-Portal bereitstellen. Verwaltete Datenträger unterstützen nur LRS.
 
 ### <a name="how-often-can-i-replicate-data"></a>Wie oft kann ich Daten replizieren?
-* **Hyper-V:** Virtuelle Hyper-V-Computer können alle fünf Minuten oder alle 30 Sekunden repliziert werden (außer bei Storage Premium).
+* **Hyper-V:** Hyper-V-VMs können alle 30 Sekunden (außer bei Storage Premium), alle fünf Minuten oder alle 15 Minuten repliziert werden.
 * **Virtuelle Azure-Computer, virtuelle VMware-Computer und physische Server:** Hier ist eine Replikationshäufigkeit irrelevant. Die Replikation ist fortlaufend.
 
 ### <a name="can-i-extend-replication-from-existing-recovery-site-to-another-tertiary-site"></a>Kann die Replikation von vorhandenen Wiederherstellungsstandorten auf einen weiteren tertiären Standort erweitert werden?

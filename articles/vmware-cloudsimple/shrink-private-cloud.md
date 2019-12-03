@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825684"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108595"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Verkleinern einer privaten Cloud von CloudSimple
 
@@ -24,7 +24,8 @@ CloudSimple bietet die Flexibilität, eine private Cloud dynamisch zu verkleiner
 Folgende Bedingungen müssen für das Verkleinern einer privaten Cloud erfüllt sein.  Verwaltungscluster (erster Cluster), die beim Erstellen einer privaten Cloud angelegt wurden, können nicht gelöscht werden.
 
 * Ein vSphere-Cluster muss aus drei Knoten bestehen.  Ein Cluster mit nur drei Knoten kann nicht verkleinert werden.
-* Der gesamte Speicherverbrauch darf die Gesamtkapazität nach dem Verkleinern des Clusters nicht überschreiten. 
+* Der gesamte Speicherverbrauch darf die Gesamtkapazität nach dem Verkleinern des Clusters nicht überschreiten.
+* Überprüfen Sie, ob die DRS-Regeln (Distributed Resource Scheduler) die vMotion-Ausführung eines virtuellen Computers verhindern.  Deaktivieren oder löschen Sie die Regeln, wenn Regeln vorhanden sind.  DRS-Regeln schließen virtuelle Computer zum Hosten von Affinitätsregeln ein.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -55,7 +56,8 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 Die Verkleinerung der privaten Cloud wird gestartet.  Sie können den Status unter „Aufgaben“ verfolgen.  Der Verkleinerungsprozess kann je nach den Daten, die mit vSAN erneut synchronisiert werden müssen, einige Stunden dauern.
 
 > [!NOTE]
-> Wenn Sie eine private Cloud verkleinern, indem Sie den letzten bzw. den einzigen Cluster im Rechenzentrum löschen, wird das Rechenzentrum nicht gelöscht.  
+> 1. Wenn Sie eine private Cloud verkleinern, indem Sie den letzten bzw. den einzigen Cluster im Rechenzentrum löschen, wird das Rechenzentrum nicht gelöscht.
+> 2. Wenn eine DRS-Regelverletzung auftritt, wird der Knoten nicht aus dem Cluster entfernt und in der Aufgabenbeschreibung wird angezeigt, dass durch das Entfernen eines Knotens die DRS-Regeln im Cluster verletzt werden.    
 
 
 ## <a name="next-steps"></a>Nächste Schritte

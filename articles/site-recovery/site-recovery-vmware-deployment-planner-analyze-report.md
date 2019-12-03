@@ -1,20 +1,20 @@
 ---
-title: Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die Notfallwiederherstellung von VMware in Azure | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt, wie Sie einen Bericht analysieren, der vom Azure Site Recovery-Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure generiert wurde.
+title: Analysieren des Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung mit Azure Site Recovery
+description: Dieser Artikel beschreibt, wie Sie einen Bericht analysieren, der vom Bereitstellungsplaner für die VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery generiert wurde.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/4/2019
 ms.author: mayg
-ms.openlocfilehash: 4240e17320cc62dc1a0e74db2f40a452a63f2982
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: b6ac10b47a8bbc987eb1e338991100ee17eacd61
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72690724"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961378"
 ---
-# <a name="analyze-the-azure-site-recovery-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
+# <a name="analyze-the-deployment-planner-report-for-vmware-disaster-recovery-to-azure"></a>Analysieren des Bereitstellungsplaner-Berichts für die VMware-Notfallwiederherstellung in Azure
 
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Tabellen:
 ## <a name="on-premises-summary"></a>On-premises Summary (Lokale Zusammenfassung)
@@ -232,8 +232,6 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 80.000 pro VM.
 
 * Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 20 MB/s für die durchschnittliche E/A-Größe für den Datenträger.
-
-* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 25 MB/s für die durchschnittliche E/A-Größe der VM (Summe der Datenänderungen aller Datenträger).
 
 * Die Spitzenänderungsrate für alle Datenträger auf der VM übersteigt den maximal unterstützten Grenzwert für die Site Recovery-Spitzenänderungsrate von 54 MB/s pro VM.
 

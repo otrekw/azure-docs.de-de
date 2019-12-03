@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Mobilitäts-Agents auf Servern für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
+title: Verwalten des Mobilität-Agent für VMware-/physische Server mit Azure Site Recovery
 description: Verwalten Sie den Mobilitäts-Agent, um mit dem Azure Site Recovery-Dienst eine Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure auszuführen.
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -7,14 +7,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 0a8b3a8bcfc2aa8270d7be140a94e5b83973f3e5
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: e6e7beeb4c10098f36636aad2709e03d1a1a0fea
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972127"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953648"
 ---
-# <a name="manage-mobility-agent-on-protected-machines"></a>Verwalten des Mobilitäts-Agents auf geschützten Computern
+# <a name="manage-the-mobility-agent"></a>Verwalten des Mobilitäts-Agent 
 
 Sie richten einen Mobilitäts-Agent auf Ihrem Server ein, wenn Sie Azure Site Recovery für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure verwenden. Der Mobilitäts-Agent koodiniert die Kommunikation zwischen dem geschützten Computer und dem Konfigurationsserver/Prozessserver für horizontales Hochskalieren und verwaltet die Datenreplikation. In diesem Artikel werden häufige Aufgaben zur Verwaltung des Mobilitäts-Agents nach dessen Bereitstellung zusammengefasst.
 

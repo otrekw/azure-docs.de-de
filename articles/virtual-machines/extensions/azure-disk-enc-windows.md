@@ -1,5 +1,5 @@
 ---
-title: Azure Disk Encryption für Windows | Microsoft-Dokumentation
+title: Azure Disk Encryption für Windows
 description: Stellen Sie Azure Disk Encryption mithilfe einer VM-Erweiterung auf einem virtuellen Windows-Computer bereit.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 00891122015bb3e6adb500b6f6c30fa031161b92
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8435663dcf92e2617ea2fe9218649e94243272d2
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597996"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073204"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption für Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -36,11 +36,11 @@ Eine vollständige Liste mit den Voraussetzungen finden Sie unter [Azure Disk En
 
 ## <a name="extension-schemata"></a>Erweiterungsschemas
 
-Es gibt zwei Schemas für Azure Disk Encryption: v1.1 – ein neueres, empfohlenes Schema, das keine Eigenschaften von Azure Active Directory (AAD) voraussetzt, und v0.1 – ein älteres Schema, für das AAD-Eigenschaften erforderlich sind. Sie müssen die Schemaversion verwenden, die Ihrer Erweiterung entspricht: Schema v1.1 für die AzureDiskEncryption-Erweiterung, Version 1.1, und Schema v0.1 für die AzureDiskEncryption-Erweiterung, Version 0.1.
+Es gibt zwei Schemas für die Windows AzureDiskEncryption-Erweiterung: v2.2 – ein neueres, empfohlenes Schema, das keine Eigenschaften von Azure Active Directory (AAD) voraussetzt, und v1.1 – ein älteres Schema, für das AAD-Eigenschaften erforderlich sind. Sie müssen die Schemaversion verwenden, die Ihrer Erweiterung entspricht: Schema v2.2 für die AzureDiskEncryption-Erweiterung, Version 2.2, und Schema v1.1 für die AzureDiskEncryption-Erweiterung, Version 1.1.
 
-### <a name="schema-v11-no-aad-recommended"></a>Schema v1.1: Kein AAD (empfohlen)
+### <a name="schema-v22-no-aad-recommended"></a>Schema v2.2: Kein AAD (empfohlen)
 
-Das v1.1-Schema wird empfohlen und erfordert keine Azure Active Directory-Eigenschaften.
+Das v2.2-Schema wird für alle neuen virtuellen Computer empfohlen und erfordert keine Azure Active Directory-Eigenschaften.
 
 ```json
 {
@@ -67,9 +67,9 @@ Das v1.1-Schema wird empfohlen und erfordert keine Azure Active Directory-Eigens
 ```
 
 
-### <a name="schema-v01-with-aad"></a>Schema v0.1: mit AAD 
+### <a name="schema-v11-with-aad"></a>Schema v1.1: mit AAD 
 
-Das 0.1-Schema erfordert `aadClientID` und entweder `aadClientSecret` oder `AADClientCertificate`.
+Das 1.1-Schema erfordert `aadClientID` und entweder `aadClientSecret` oder `AADClientCertificate` und wird für neue virtuelle Computer nicht empfohlen.
 
 Verwenden von `aadClientSecret`:
 
@@ -139,10 +139,10 @@ Verwenden von `AADClientCertificate`:
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.Azure.Security | string |
 | type | AzureDiskEncryptionForLinux | string |
-| typeHandlerVersion | 0.1, 1.1 | int |
-| (0.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
-| (0.1-Schema) AADClientSecret | password | string |
-| (0.1-Schema) AADClientCertificate | thumbprint | string |
+| typeHandlerVersion | 1.1, 2.2 | Zeichenfolge |
+| (1.1-Schema) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID | 
+| (1.1-Schema) AADClientSecret | password | Zeichenfolge |
+| (1.1-Schema) AADClientCertificate | thumbprint | string |
 | DiskFormatQuery | {"dev_path":"","name":"","file_system":""} | JSON-Wörterbuch |
 | EncryptionOperation | EnableEncryption, EnableEncryptionFormatAll | string | 
 | KeyEncryptionAlgorithm | 'RSA-OAEP', 'RSA-OAEP-256', 'RSA1_5' | string |

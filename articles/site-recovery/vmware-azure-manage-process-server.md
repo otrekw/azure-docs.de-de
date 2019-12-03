@@ -1,18 +1,18 @@
 ---
-title: Verwalten eines Prozessservers, der für die Notfallwiederherstellung von VMware-VMs und physischen Servern zu Azure verwendet wird, mit Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver für die Notfallwiederherstellung von VMware-VMs und physischen Servern zu Azure mithilfe von Azure Site Recovery verwalten.
+title: Verwalten eines Prozessservers für die Notfallwiederherstellung von virtuellen VMware-Computern/physischen Servern in Azure Site Recovery
+description: In diesem Artikel wird beschrieben, wie Sie einen Prozessserver für die Notfallwiederherstellung von VMware-VMs/physischen Servern mit Azure Site Recovery verwalten.
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/28/2019
 ms.author: ramamill
-ms.openlocfilehash: 2c27779719c73adf4d7fc1a61a0c77d03df71815
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef16e3b75ca8e051b1b7abb1a92843279884c697
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64925623"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954347"
 ---
 # <a name="manage-process-servers"></a>Verwalten von Prozessservern
 
@@ -67,7 +67,20 @@ Verschieben Sie die gesamte von einem Prozessserver verarbeitete Workload folgen
 
 Es dauert ungefähr 15 Minuten, bis Änderungen im Portal angezeigt werden. Wenn dies schneller geschehen soll, [aktualisieren Sie den Konfigurationsserver](vmware-azure-manage-configuration-server.md#refresh-configuration-server).
 
+## <a name="register-a-master-target-server"></a>Registrieren eines Masterzielservers
 
+Der Masterzielserver befindet sich auf dem Konfigurationsserver und Prozessservern für die horizontale Skalierung. Er muss beim Konfigurationsserver registriert sein. Eine fehlerhafte Registrierung kann sich auf die Integrität der geschützten Elemente auswirken. Um den Masterzielserver beim Konfigurationsserver zu registrieren, melden Sie sich beim jeweiligen Konfigurationserver/Prozessserver für die horizontale Skalierung an, auf dem die Registrierung erforderlich ist. Navigieren Sie zum Ordner **%PROGRAMDATA%\ASR\Agent**, und führen Sie Folgendes an einer Administratoreingabeaufforderung aus.
+
+   ```
+   cmd
+   cdpcli.exe --registermt
+
+   net stop obengine
+
+   net start obengine
+
+   exit
+   ```
 
 ## <a name="reregister-a-process-server"></a>Erneutes Registrieren eines Prozessservers
 

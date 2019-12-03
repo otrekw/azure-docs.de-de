@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Replikation für virtuelle Computer mit „Direkte Speicherplätze“ (S2D) in Azure Site Recovery | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die Replikation virtueller Computer mit S2D zwischen Azure-Regionen mithilfe von Site Recovery konfigurieren.
+title: Replizieren von virtuellen Azure-Computern mit direkten Speicherplätzen mithilfe Azure Site Recovery
+description: In diesem Artikel wird die Replikation von virtuellen Azure-Computern mit direkten Speicherplätzen mithilfe Azure Site Recovery beschrieben.
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,14 +8,14 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: asgang
-ms.openlocfilehash: 6c639d4503b170660abed5767e3571c8a2bf24b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60790299"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954466"
 ---
-# <a name="replicate-azure-virtual-machines-using-storage-spaces-direct-to-another-azure-region"></a>Replizieren von virtuellen Azure-Computern, die „Direkte Speicherplätze“ verwenden, in einer anderen Azure-Region
+# <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Replizieren von virtuellen Azure-Computern mit direkten Speicherplätzen in eine andere Region
 
 In diesem Artikel wird beschrieben, wie Sie die Notfallwiederherstellung von virtuellen Azure-Computern aktivieren, auf denen „Direkte Speicherplätze“ ausgeführt wird.
 
