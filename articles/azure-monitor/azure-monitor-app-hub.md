@@ -16,7 +16,7 @@ ms.contentlocale: de-DE
 ms.lasthandoff: 10/24/2019
 ms.locfileid: "72899162"
 ---
-#<a name="productsa"></a>Produkte“></a>
+#<a name="productsa"></a>Produkte"></a>
                 <ul id="products">
                     <li>
                         <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
@@ -129,7 +129,7 @@ ms.locfileid: "72899162"
                                                             <a href="./app/java-agent.md">Agent config for dependency tracking</a><br>
                                                             <a href="./app/api-custom-events-metrics.md">Custom events and metrics</a><br>
                                                             <a href="https://docs.microsoft.com/azure/azure-monitor/app/configuration-with-applicationinsights-config#channel-parameters-java
-“>Config.xml</a><br>
+">Config .xml</a><br>
                                                             <a href="https://github.com/Microsoft/ApplicationInsights-Java">Open Source SDK für Java – GitHub-Repository</a>
                                                         </p>
                                                         <br><br>

@@ -1139,7 +1139,7 @@
           href: salesforce-tutorial.md
         - name: Salesforce Sandbox
           href: salesforce-sandbox-tutorial.md
-        - name: Salesforce
+        - name: Samanage
           href: samanage-tutorial.md
         - name: Branchenanwendung mit aktiviertem SAML 1.1-Token
           href: saml-tutorial.md
@@ -1668,7 +1668,7 @@
           href: salesforce-provisioning-tutorial.md
         - name: Salesforce Sandbox
           href: salesforce-sandbox-provisioning-tutorial.md
-        - name: Salesforce
+        - name: Samanage
           href: samanage-provisioning-tutorial.md
         - name: SAP Cloud Platform Identity Authentication
           href: sap-cloud-platform-identity-authentication-provisioning-tutorial.md

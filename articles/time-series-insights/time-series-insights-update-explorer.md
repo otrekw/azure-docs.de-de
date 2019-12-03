@@ -1,6 +1,6 @@
 ---
-title: Visualisieren von Daten im Azure Time Series Insights Preview-Explorer | Microsoft-Dokumentation
-description: In diesem Artikel werden die in der Time Series Insights Preview-Explorer-Web-App verfügbaren Funktionen und Optionen beschrieben.
+title: Visualisieren von Daten im Preview-Explorer – Azure Time Series Insights | Microsoft-Dokumentation
+description: Erfahren Sie über die im Azure Time Series Insights Preview-Explorer verfügbaren Funktionen und Optionen.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,75 +8,68 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/07/2019
+ms.date: 11/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3f6c03ace13b9b6cb1bda004799502e1f382051d
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 17ba808ebfabb68765cf35bbf0799d117bc6383b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72989950"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133439"
 ---
-# <a name="visualize-data-in-the-explorer-preview"></a>Visualisieren von Daten in der Explorer Preview
+# <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights Preview-Explorer
 
-In diesem Dokument werden die UI/UX-Features und die Oberfläche der [Demo-Web-App](https://insights.timeseries.azure.com/preview/demo) für Azure Time Series Insights Preview beschrieben. Insbesondere werden darin das Layout des gehosteten Beispiels, die Anpassungsoptionen für die Benutzeroberfläche und die Navigation durch die bereitgestellte Demo erläutert.
+In diesem Artikel werden die in der Azure Time Series Insights Preview-[Demowebanwendung](https://insights.timeseries.azure.com/preview/demo) verfügbaren verschiedenen Funktionen und Optionen beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Einstieg in den Azure Time Series Insights Preview-Explorer müssen Sie Folgendes erledigt haben:
 
-* Einrichten einer Time Series Insights-Umgebung. Wenn Sie mehr zur Bereitstellung einer Instanz erfahren möchten, probieren Sie das Tutorial [Azure Time Series Insights Preview](./time-series-insights-update-create-environment.md) aus.
+* Bereitstellung einer Time Series Insights-Umgebung. Weitere Informationen zur Bereitstellung einer Instanz erhalten Sie im Tutorial [Azure Time Series Insights Preview](./time-series-insights-update-create-environment.md).
 * [Bereitstellung von Datenzugriff](./time-series-insights-data-access.md) auf die Time Series Insights-Umgebung, die Sie für das Konto erstellt haben. Außer Ihnen, können Sie auch anderen Zugriff gewähren.
 * Hinzufügen einer Ereignisquelle zur Time Series Insights-Umgebung zum Senden von Daten per Push an die Umgebung:
-  * Informationen zum [Herstellen einer Verbindung mit einem Event Hub](./time-series-insights-how-to-add-an-event-source-eventhub.md)
+  * Informationen zum [Herstellen einer Verbindung mit einem Event Hub](./time-series-insights-how-to-add-an-event-source-eventhub.md) 
   * Informationen zum [Herstellen einer Verbindung mit einem IoT-Hub](./time-series-insights-how-to-add-an-event-source-iothub.md)
 
-## <a name="learn-about-the-preview-explorer"></a>Informationen zum Preview-Explorer
+## <a name="explore-the-time-series-insights-preview-explorer"></a>Erkunden des Time Series Insights Preview-Explorers
 
-Der Azure Time Series Insights Preview-Explorer besteht aus folgenden Elementen:
+Der Azure Time Series Insights Preview-Explorer besteht aus den folgenden sieben Elementen:
 
-[![Explorer-Ansicht](media/v2-update-explorer/explorer-one.png)](media/v2-update-explorer/explorer-one.png#lightbox)
+[![Time Series Insights Preview-Explorer – Übersicht](media/v2-update-explorer/preview-explorer-overview.png)](media/v2-update-explorer/preview-explorer-overview.png#lightbox)
 
-- <a href="#environment-drop-down-list">Umgebungsbereich</a>: Zeigt Ihre Azure Time Series Insights-Umgebungen an.
-- <a href="#navigation-menu">Navigationsmenü</a>: Ermöglicht das Wechseln zwischen den Seiten **Analysieren** und **Modell**.
-- <a href="#hierarchy-tree">Hierarchiestruktur</a>: Ermöglicht das Auswählen bestimmter Modell- und Datenelemente für die Diagrammdarstellung.
-- <a href="#preview-well">Zeitreihenquelle</a>: Zeigt Ihre aktuell ausgewählten Datenelemente im Tabellenformat mit Farbcodierung an.
-- <a href="#preview-chart">Diagrammbereich</a>: Zeigt Ihr aktuelles Arbeitsdiagramm an.
-- <a href="#time-editor-panel">Zeitachse</a>: Ermöglicht das Ändern des Arbeitszeitraums.
-- <a href="#navigation-panel">App-Leiste</a>: Enthält Ihre Benutzerverwaltungsoptionen (etwa den aktuellen Mandanten). Ermöglicht das Ändern von Design- und Spracheinstellungen.
+1. [Umgebungsbereich](#1-environment-panel): Zeigt alle Ihre Azure Time Series Insights-Umgebungen an.
+1. [Navigationsleiste](#2-navigation-bar): Ermöglicht ihnen das Wechseln zwischen den Seiten **Analysieren** und **Modell**.
+1. [Hierarchiestruktur und Suchbereich](#3-hierarchy-tree-and-search-panel): Ermöglicht Ihnen die Auswahl und Suche bestimmter Datenelemente für die Diagrammdarstellung.
+1. [Zeitreihenquelle](#4-time-series-well): Zeigt alle Ihre aktuell ausgewählten Datenelemente an.
+1. [Diagrammbereich](#5-chart-panel): Zeigt Ihr aktuelles Arbeitsdiagramm an.
+1. [Zeitachse](#6-time-editor-panel): Ermöglicht Ihnen die Änderung Ihres Arbeitszeitraums.
+1. [App-Leiste](#7-app-bar): Enthält Ihre Benutzerverwaltungsoptionen (z. B. den aktuellen Mandanten) und gestattet Ihnen die Änderung von Design- und Spracheinstellungen.
 
-## <a name="environment-drop-down-list"></a>Dropdownliste für die Umgebung
 
-In der Dropdownliste für die Umgebung werden alle Time Series Insights-Umgebungen angezeigt, auf die Sie Zugriff haben. Die Liste enthält Umgebungen mit nutzungsbasierter Bezahlung (unter anderem Time Series Insights Preview). Darüber hinaus sind in der Liste auch allgemein verfügbare S1-/S2-Umgebungen enthalten.
+## <a name="1-environment-panel"></a>1. Umgebungsbereich
+
+Im Umgebungsbereich werden alle Time Series Insights-Umgebungen angezeigt, auf die Sie Zugriff haben. Die Liste enthält Umgebungen mit nutzungsbasierter Bezahlung (Preview) sowie S1/S2-Umgebungen (allgemeine Verfügbarkeit). Klicken Sie einfach auf die Time Series Insights-Umgebung, die Sie verwenden möchten, um sofort dorthin zu wechseln.
 
 1. Wählen Sie den Dropdownpfeil neben der angezeigten Umgebung aus.
 
-   [![Die Systemsteuerung](media/v2-update-explorer/explorer-two.png)](media/v2-update-explorer/explorer-two.png#lightbox)
+   [![Umgebungsbereich](media/v2-update-explorer/environment-panel.png)](media/v2-update-explorer/environment-panel.png#lightbox)
 
 1. Wählen Sie anschließend die gewünschte Umgebung aus.
 
-## <a name="navigation-menu"></a>Navigationsmenü
+## <a name="2-navigation-bar"></a>2. Navigationsleiste
 
-  [![Das Navigationsmenü](media/v2-update-explorer/explorer-three.png)](media/v2-update-explorer/explorer-three.png#lightbox)
+  [![ Die Navigationsleiste](media/v2-update-explorer/navigation-bar.png)](media/v2-update-explorer/navigation-bar.png#lightbox)
 
-Im Navigationsmenü stehen zwei Ansichten zur Auswahl:
+In der Navigationsleiste können Sie zwischen zwei Ansichten auswählen:
 
 * **Analysieren**: Ermöglicht umfangreiche Analysen für Ihre modellierten oder nicht modellierten Zeitreihendaten sowie deren Darstellung als Diagramme.
 * **Modell**: Ermöglicht das Pushen neuer Time Series Insights Preview-Typen, -Hierarchien und -Instanzen an Ihr Time Series Insights-Modell.
 
-## <a name="hierarchy-tree"></a>Hierarchiestruktur
-
-Die Hierarchiestruktur zeigt ausgewählte Datenelemente an. Hierzu zählen unter anderem Modelle, bestimmte Geräte sowie Sensoren Ihrer Geräte.
-
-### <a name="model-search-panel"></a>Modellsuchbereich
-
-Im Modellsuchbereich können Sie ganz einfach in Ihrer Zeitreihenmodellhierarchie suchen und navigieren, um die spezifischen Zeitreiheninstanzen zu finden, die Sie in Ihrem Diagramm anzeigen möchten. Die ausgewählten Instanzen werden sowohl dem aktuellen Diagramm als auch der Datenquelle hinzugefügt.
-
-  [![Der Modellsuchbereich](media/v2-update-explorer/explorer-four.png)](media/v2-update-explorer/explorer-four.png#lightbox)
-
 ### <a name="model-authoring"></a>Modellerstellung
 
 Azure Time Series Insights Preview unterstützt vollständige CRUD-Vorgänge („Create“, „Read“, „Update“, „Delete“; „Erstellen“, „Lesen“, „Aktualisieren“, „Löschen“) für Ihr Zeitreihenmodell.
+
+[![Der Modellsuchbereich](media/v2-update-explorer/model-search-panel.png)](media/v2-update-explorer/model-search-panel.png#lightbox)
 
 * **Zeitreihenmodelltyp**: Mithilfe von Time Series Insights-Typen können Sie Variablen oder Formeln für Berechnungen definieren. Sie werden mit einer bestimmten Time Series Insights-Instanz verknüpft. Ein Typ kann eine oder mehrere Variablen enthalten.
 * **Zeitreihenmodellhierarchie**: Hierarchien sind systematische Organisationen Ihrer Daten. Hierarchien stellen die Beziehungen zwischen verschiedenen Entitäten in Ihren Time Series Insights-Daten dar.
@@ -84,58 +77,81 @@ Azure Time Series Insights Preview unterstützt vollständige CRUD-Vorgänge (�
 
 Weitere Informationen zu Zeitreihenmodellen finden Sie unter [Zeitreihenmodelle](./time-series-insights-update-tsm.md).
 
-## <a name="preview-well"></a>Vorschauquelle
+## <a name="3-hierarchy-tree-and-search-panel"></a>3. Hierarchiestruktur und Suchbereich
 
-In der Quelle werden Instanzfelder und andere Metadaten angezeigt, die ausgewählten Time Series Insights-Instanzen zugeordnet sind. Mithilfe der Kontrollkästchen auf der rechten Seite können Sie bestimmte Instanzen im aktuellen Diagramm ausblenden oder anzeigen. Sie können auch bestimmte Datenelemente aus Ihrer aktuellen Datenquelle entfernen, indem Sie auf der linken Seite des Elements auf das rote Steuerelement **Löschen** (Papierkorb) klicken.
+Mit der HIerarchiestruktur und dem Suchbereich können Sie ganz einfach in Ihrer [Zeitreihenmodell](./time-series-insights-update-tsm.md)hierarchie suchen und navigieren, um die spezifischen Zeitreiheninstanzen zu finden, die Sie in Ihrem Diagramm anzeigen möchten. Wenn Sie Ihre Instanzen auswählen, werden sie nicht nur dem aktuellen Diagramm, sondern auch den Daten hinzugefügt. 
 
-  [![Die Vorschauquelle](media/v2-update-explorer/explorer-five.png)](media/v2-update-explorer/explorer-five.png#lightbox)
+[![Hierarchiestruktur und Suchbereich](media/v2-update-explorer/hierarchy-search.png)](media/v2-update-explorer/hierarchy-search.png#lightbox)
 
-Wenn Sie das Layout der Diagrammseite **Analysieren** neu konfigurieren möchten, wählen Sie die Auslassungspunkte in der rechten oberen Ecke aus:
+Der Suchergebnissebereich erlaubt Ihnen außerdem, Ihre Ergebnisse in einer Hierarchie- oder Listenansicht anzuzeigen, die das Auffinden der anzuzeigenden Instanzen erleichtern.
+ 
+## <a name="4-time-series-well"></a>4. Zeitreihenquelle
 
-  [![Layoutoptionen für Telemetrie](media/v2-update-explorer/explorer-six.png)](media/v2-update-explorer/explorer-six.png#lightbox)
+In der Quelle werden Instanzfelder und andere Metadaten angezeigt, die ausgewählten Time Series Insights-Instanzen zugeordnet sind. Mithilfe der Kontrollkästchen auf der rechten Seite können Sie bestimmte Instanzen im aktuellen Diagramm ausblenden oder anzeigen. 
+
+  [![Die Vorschauquelle](media/v2-update-explorer/preview-well.png)](media/v2-update-explorer/preview-well.png#lightbox)
+
+Sie können bestimmte Datenelemente aus Ihrer aktuellen Datenquelle entfernen, indem Sie auf der linken Seite des Elements auf das rote Steuerelement **Löschen** (Papierkorb) klicken. Über die Quelle können Sie außerdem steuern, wie jedes Element in dem Diagramm angezeigt wird. Sie können auswählen, Mindest-/Höchstwert für Schatten und Datenpunkte hinzufügen, das Element zeitlich zu verschieben und die Instanz auf abgestufte Weise zu visualisieren. 
+
+Darüber hinaus können Sie mithilfe des Steuerelements für Erkundungen problemlos Zeitverschiebungen und Punktdiagramme erstellen.  
+
+  [![Quellenlayoutoptionen](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
 > [!NOTE]
 > Sollte die folgende Meldung angezeigt werden, liegen im ausgewählten Zeitraum keine Daten für die Instanz vor. Verwenden Sie zur Behebung des Problems einen größeren Zeitraum, oder vergewissern Sie sich, dass von der Instanz Daten gepusht werden.
 >
-> ![Keine Datenbenachrichtigung](media/v2-update-explorer/explorer-seven.png)
+> ![Keine Datenbenachrichtigung](media/v2-update-explorer/no-data-warning.png)
 
-## <a name="preview-chart"></a>Vorschaudiagramm
+## <a name="5-chart-panel"></a>5. Diagrammbereich
 
-Mit dem Diagramm können Sie Time Series Insights-Instanzen als Linien anzeigen. Durch Auswählen der Websteuerelemente können Sie den Umgebungsbereich, das Datenmodell und die Einstellungen für den Zeitraum reduzieren, um das Diagramm zu vergrößern.
+Mit dem Diagramm können Sie Zeitreiheninstanzen als Linien anzeigen. Sie können den Umgebungsbereich, das Datenmodell und den Zeitraumsteuerelement-Bereich reduzieren, indem Sie auf die Websteuerelemente klicken, um das Diagramm zu vergrößern. 
 
-  [![Vorschaudiagramm „Übersicht“](media/v2-update-explorer/explorer-eight.png)](media/v2-update-explorer/explorer-eight.png#lightbox)
+  [![Vorschaudiagramm „Übersicht“](media/v2-update-explorer/chart-overview.png)](media/v2-update-explorer/chart-overview.png#lightbox)
 
-- **Ausgewählter Datumsbereich**: Steuert, welche Datenelemente zur Visualisierung verfügbar sind.
+1. **Diagrammtyp**: Steuert, welche Datenelemente zur Visualisierung verfügbar sind.
 
-- **Schieberegler für den inneren Datumsbereich**: Ziehen Sie die beiden Endpunktsteuerelemente über den gewünschten Zeitraum.
+1. **Intervallgröße**: Mit dem Schieberegler für die Intervallgröße können Sie die Intervalle in einer Zeitspanne vergrößern und verkleinern. Dies ermöglicht eine genauere Steuerung der Bewegung zwischen größeren Zeitabschnitten, die Trends gleichmäßig bis hin zu kleinsten Zeitabschnitten in Millisekunden anzeigen, sodass Sie präzise, hochauflösende Schnitte Ihrer Daten anzeigen können. Der Standardstartpunkt des Schiebereglers ist als optimierte Ansicht der Daten aus Ihrer Auswahl festgelegt und gleicht somit Auflösung, Abfragegeschwindigkeit und Granularität aus.
 
-- **Zeitraum-Reduzierungssteuerelement**: Reduziert und erweitert den Zeitraumbereichs-Editor.
+1. **Zoomen und Schwenken**: Klicken Sie auf dieses Steuerelement, um das Diagramm zu zoomen und zu schwenken.
 
-- **Y-Achsenformat-Steuerelement**: Durchläuft die verfügbaren Optionen für die Y-Achse:
+1. **Y-Achsen-Steuerelement**: Durchläuft die verfügbaren Optionen für die Y-Achse:
 
-    * `Default`: Jede Zeile hat eine eigene Y-Achse.
-    * `Stacked`: Ermöglicht das Stapeln mehrerer Zeilen auf der gleichen Y-Achse, wobei sich die Y-Achsendaten je nach ausgewählter Zeile ändern.
-    * `Shared`: Alle Y-Achsendaten werden zusammen angezeigt.
+    * `Stacked`: Jede Zeile hat eine eigene Y-Achse.
+    * `Overlap`: Ermöglicht das Stapeln mehrerer Zeilen auf derselben Y-Achse, wobei sich die Y-Achsendaten je nach ausgewählter Zeile ändern.
+    * `Shared`: Anzeige aller Y-Achsendaten gemeinsam.
 
-- **Aktuelles Datenelement**: Das aktuell ausgewählte Datenelement und seine zugehörigen Details.
+1. **Marker-Element**: Das aktuell ausgewählte Datenelement und seine zugehörigen Details.
 
-Sie können Detailinformationen zu einem bestimmten Datenslice anzeigen, indem Sie auf einen Datenpunkt im aktuellen Diagramm klicken und dann den ausgewählten Bereich zum Endpunkt Ihrer Wahl ziehen. Klicken Sie mit der rechten Maustaste auf den grauen ausgewählten Bereich, und wählen Sie **Zoom** aus, wie in der folgenden Abbildung dargestellt:
+Sie können ein Drilldown in einen bestimmten Datenschnitt ausführen, indem Sie auf einen Datenpunkt im aktuellen Diagramm **klicken**, die Maustaste gedrückt halten und dann den ausgewählten Bereich zum Endpunkt Ihrer Wahl ziehen. **Klicken Sie mit der rechten Maustaste** auf den abgeblendeten, ausgewählten Bereich, und klicken Sie, wie unten dargestellt, auf **Zoom**. Sie können die Telemetrieereignisse auch in der ausgewählten Zeitspanne anzeigen und herunterladen.
 
-  [![Vorschaudiagramm „Zoom“](media/v2-update-explorer/explorer-nine.png)](media/v2-update-explorer/explorer-nine.png#lightbox)
+  [![Vorschaudiagramm „Zoom“](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-Nach dem **Zoomen** wird Ihr ausgewähltes Dataset angezeigt. Wählen Sie das Steuerelement für das Format der Y-Achse aus, um zwischen den drei Y-Achsendarstellungen Ihrer Time Series Insights-Daten zu wechseln.
+Nach dem **Zoomen** wird Ihr ausgewähltes Dataset angezeigt. Wählen Sie das Format-Steuerelement aus, um zwischen den drei Y-Achsendarstellungen Ihrer Time Series Insights-Daten zu wechseln.
 
-  [![Vorschaudiagramm für die Y-Achse](media/v2-update-explorer/explorer-ten.png)](media/v2-update-explorer/explorer-ten.png#lightbox)
+  [![Vorschaudiagramm für die Y-Achse](media/v2-update-explorer/standard-chart.png)](media/v2-update-explorer/standard-chart.png#lightbox)
 
-Hier sehen Sie ein Beispiel für gemeinsam genutzte Y-Achsen:
+Hier sehen Sie ein Beispiel für ein **überlappendes Diagramm**:
 
-  [![Vorschau gemeinsam genutzter Y-Achsen](media/v2-update-explorer/explorer-eleven.png)](media/v2-update-explorer/explorer-eleven.png#lightbox)
+  [![Option „Überlappendes Diagramm“](media/v2-update-explorer/overlapping-chart.png)](media/v2-update-explorer/overlapping-chart.png#lightbox)
 
-## <a name="time-editor-panel"></a>Editor-Bereich für Zeiten
+Die Schaltfläche **Weitere Aktionen** wird erweitert und zeigt die Optionen **Als CSV herunterladen** und **Nach Power BI exportieren** an.
 
-Wenn Sie mit Time Series Insights Preview arbeiten, wählen Sie zunächst einen Zeitraum aus. Der ausgewählte Zeitraum steuert das Dataset, das für die Manipulation durch die Time Series Insights Preview-Widgets verfügbar ist. In Time Series Insights Preview stehen folgende Websteuerelemente zum Auswählen Ihres Arbeitszeitraums zur Verfügung:
+  [![Option „Weitere Aktionen“](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-  [![Zeitauswahlbereich](media/v2-update-explorer/explorer-twelve.png)](media/v2-update-explorer/explorer-twelve.png#lightbox)
+Weitere Informationen zum [Nativen Power BI-Connector für Time Series Insights](concepts-power-bi.md).
+
+## <a name="6-time-editor-panel"></a>6. Editor-Bereich für Zeiten
+
+Wenn Sie mit Time Series Insights arbeiten, wählen Sie zunächst einen Zeitraum aus. Der ausgewählte Zeitraum steuert das Dataset, das für die Manipulation durch die Time Series Insights Update-Widgets verfügbar ist.
+
+  [![Zeitauswahlbereich](media/v2-update-explorer/timeline-element.png)](media/v2-update-explorer/timeline-element.png#lightbox)
+
+> [!TIP]
+> Ein Teil der Zeitachse wird in Bernstein oder Orange hervorgehoben, um die Datenspanne anzugeben, die im warmen Speicher verfügbar ist.
+
+Im Time Series Insights Update stehen folgende Websteuerelemente zum Auswählen Ihres Arbeitszeitraums zur Verfügung. 
+
+  [![Steuerelement für Erkundungsquelle](media/v2-update-explorer/exploration-well-control.png)](media/v2-update-explorer/exploration-well-control.png#lightbox)
 
 1. **Schieberegler für den inneren Datumsbereich**: Ziehen Sie die beiden Endpunktsteuerelemente über den gewünschten Zeitraum. Dieser innere Datumsbereich wird durch den Schieberegler für den äußeren Datumsbereich begrenzt.
 
@@ -145,29 +161,25 @@ Wenn Sie mit Time Series Insights Preview arbeiten, wählen Sie zunächst einen 
 
 1. **Schieberegler für den äußeren Datumsbereich**: Verwenden Sie die Endpunktsteuerelemente, um den äußeren Datumsbereich auszuwählen. Dieser steht dann für das Steuerelement für den inneren Datumsbereich zur Verfügung.
 
-1. **Dropdownliste zum schnellen Ändern des Datumsbereichs**: Hiermit können Sie schnell zwischen voreingestellten Zeitbereichen wechseln. Beispiele wären etwa die letzten **30 Minuten**, die letzten **12 Stunden** oder ein **benutzerdefinierter Bereich**. Durch das Ändern dieses Werts werden auch die verfügbaren Intervallbereiche geändert, die im Intervallgrößen-Schiebereglertool besprochen werden.
+1. **Schieberegler für den Zeitbereich**: Hiermit können Sie schnell zwischen voreingestellten Zeitbereichen wechseln. Beispiele wären etwa die letzten **30 Minuten**, die letzten **12 Stunden** oder ein **benutzerdefinierter Bereich**. Durch das Ändern dieses Werts werden auch die verfügbaren Intervallbereiche geändert, die im Intervallgrößen-Schiebereglertool besprochen werden.
 
-1. **Intervallgröße-Schiebereglertool**: Hiermit können Sie Intervalle innerhalb eines Zeitraums vergrößern und verkleinern. Diese Aktion bietet eine genauere Steuerung der Bewegung zwischen größeren Zeitabschnitten. Sie zeigt ausgeglichene Trends für Slices bis hin zum Millisekundenbereich an. Dies ermöglicht präzise, hochauflösende Schnitte Ihrer Daten. Der Standardstartpunkt des Schiebereglers ist als optimierte Ansicht der Daten aus Ihrer Auswahl festgelegt und gleicht somit Auflösung, Abfragegeschwindigkeit und Granularität aus.
+   [![Auswahlbereich „In“ und „Aus“](media/v2-update-explorer/to-and-from-element.png)](media/v2-update-explorer/to-and-from-element.png#lightbox)
 
-1. **Websteuerelement für Ende und Anfang eines Datumsbereichs**: Mit diesem Websteuerelement können Sie komfortabel die gewünschten Datumsbereiche und Zeiträume auswählen. Sie können das Steuerelement auch verwenden, um zwischen verschiedenen Zeitzonen zu wechseln. Wählen Sie **Speichern** aus, nachdem Sie die gewünschten Änderungen für Ihren aktuellen Arbeitsbereich vorgenommen haben.
-
-   [![Auswahlbereich „In“ und „Aus“](media/v2-update-explorer/explorer-thirteen.png)](media/v2-update-explorer/explorer-thirteen.png#lightbox)
-
-## <a name="navigation-panel"></a>Navigationsbereich
+## <a name="7-app-bar"></a>7. App-Leiste
 
 Der Navigationsbereich von Time Series Insights Preview wird oben in Ihrer Time Series Insights-App angezeigt. Er bietet folgende Funktionen:
 
 ### <a name="current-session-share-link-control"></a>Steuerelement für Freigabelink der aktuellen Sitzung
 
-  [![Symbol „Freigeben“](media/v2-update-explorer/explorer-fifteen.png)](media/v2-update-explorer/explorer-fifteen.png#lightbox)
+  [![Symbol „Freigeben“](media/v2-update-explorer/share-icon.png)](media/v2-update-explorer/share-icon.png#lightbox)
 
 Wählen Sie das neue Symbol **Freigeben** aus, um einen URL-Link für Ihr Team freizugeben.
 
-  [![Freigeben Ihrer Instanz-URL](media/v2-update-explorer/url-share.png)](media/v2-update-explorer/url-share.png#lightbox)
+  [![Freigeben Ihrer Instanz-URL](media/v2-update-explorer/share-your-view.png)](media/v2-update-explorer/share-your-view.png#lightbox)
 
 ### <a name="tenant-section"></a>Mandantenabschnitt
 
-  [![Mandantenauswahl](media/v2-update-explorer/explorer-sixteen.png)](media/v2-update-explorer/explorer-sixteen.png#lightbox)
+  [![Mandantenauswahl](media/v2-update-explorer/tenant-selection.png)](media/v2-update-explorer/tenant-selection.png#lightbox)
 
 * Zeigt Ihre aktuellen Time Series Insights-Anmeldekontoinformationen an.
 * Ermöglicht das Wechseln zwischen den verfügbaren Time Series Insights-Designs.
@@ -187,7 +199,7 @@ Azure Time Series Insights Preview unterstützt zwei Designs:
 * **Helles Design**: Das Standarddesign, das im gesamten vorliegenden Dokument gezeigt wird.
 * **Dunkles Design**: Stellt den Explorer wie hier gezeigt dar:
 
-  [![„Dunkles Design“ ausgewählt](media/v2-update-explorer/explorer-seventeen.png)](media/v2-update-explorer/explorer-seventeen.png#lightbox)
+  [![„Dunkles Design“ ausgewählt](media/v2-update-explorer/dark-theme-selected.png)](media/v2-update-explorer/dark-theme-selected.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>Steuerelemente für S1/S2-Umgebungen
 
@@ -197,7 +209,7 @@ Dieser Abschnitt gilt nur für vorhandene S1/S2-Umgebungen, die versuchen, den E
 
 Anstelle der Hierarchie wird der Time Series Insights-Begriffebereich angezeigt, in dem Sie Abfragen in Ihrer Umgebung definieren können. Dadurch können Sie Ihre Daten auf der Grundlage eines Prädikats filtern.
 
-  [![Abfragebereich „Where“](media/v2-update-explorer/explorer-eighteen.png)](media/v2-update-explorer/explorer-eighteen.png#lightbox)
+  [![Abfragebereich „Where“](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
 Der Time Series Insights Preview-Begriffe-Editor-Bereich akzeptiert die folgenden Parameter:
 
@@ -210,24 +222,26 @@ Der Time Series Insights Preview-Begriffe-Editor-Bereich akzeptiert die folgende
 | `IN` | String, Bool, Double, DateTime, TimeSpan, NULL | Alle Operanden müssen denselben Typ aufweisen oder eine NULL-Konstante sein. |
 | `HAS` | Zeichenfolge | Im rechten Bereich sind nur konstante Zeichenfolgenliterale zulässig. Leere Zeichenfolgen und NULL sind nicht zulässig. |
 
-Informationen zu den unterstützten Abfragevorgängen und Datentypen finden Sie unter [Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview-tsx).
+Informationen zu den unterstützten Abfragevorgängen und Datentypen finden Sie unter [Time Series Expression (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax).
 
 ### <a name="examples-of-where-clauses"></a>Beispiele für Where-Klauseln
 
-  [![Beispiele für die „Where-Klausel“](media/v2-update-explorer/explorer-nineteen.png)](media/v2-update-explorer/explorer-nineteen.png#lightbox)
+  [![Beispiele für die „Where-Klausel“](media/v2-update-explorer/example-queries.png)](media/v2-update-explorer/example-queries.png#lightbox)
 
 **Measure**: Eine Dropdownliste mit allen numerischen Spalten (**Doubles**), die Sie als Elemente für Ihr aktuelles Diagramm verwenden können.
 
 **Aufteilen nach**: In dieser Dropdownliste werden alle in Ihrem Modell verfügbaren kategorischen Spalten (Zeichenfolgen) angezeigt, nach denen Sie Ihre Daten gruppieren können. Sie können bis zu fünf Begriffe hinzufügen, um sie auf der gleichen X-Achse anzuzeigen. Geben Sie die gewünschten Parameter ein, und wählen Sie dann **Hinzufügen** aus, um einen neuen Begriff hinzuzufügen.
 
-  [![Abgerufene und gefilterte Ansicht eins](media/v2-update-explorer/explorer-twenty.png)](media/v2-update-explorer/explorer-twenty.png#lightbox)
+  [![Abgerufene und gefilterte Ansicht eins](media/v2-update-explorer/s1-s2-preview-filtered-view.png)](media/v2-update-explorer/s1-s2-preview-filtered-view.png#lightbox)
 
 Sie können Elemente im Diagrammbereich ein- und ausblenden, indem Sie das Symbol „Sichtbar“ auswählen, wie in der folgenden Abbildung dargestellt. Wenn Sie Abfragen vollständig entfernen möchten, wählen Sie das rote **X** aus.
 
-  [![Abgerufene und gefilterte Ansicht zwei](media/v2-update-explorer/explorer-twenty-one.png)](media/v2-update-explorer/explorer-twenty-one.png#lightbox)
+  [![Abbrechen einer abgerufenen und gefilterten Option](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png)](media/v2-update-explorer/s1-s2-preview-filtered-view-cancel.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über [Datenspeicherung und Dateneingang](./time-series-insights-update-storage-ingress.md) in Azure Time Series Insights Preview.
+
 - Lesen Sie das Time Series Insights Preview-Dokument zur [Datenmodellierung](./time-series-insights-update-tsm.md).
+
 - Informieren Sie sich über die [Vorgehensweise zur Diagnose und Problembehandlung](./time-series-insights-update-how-to-troubleshoot.md) in Ihrer Time Series Insights-Instanz.
