@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 7547db502056304307094541dcfd2474eda999d8
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620435"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454426"
 ---
 # <a name="access-and-customize-developer-portal"></a>Zugreifen auf das Entwicklerportal und Anpassen dieses Portals
 
@@ -35,10 +35,6 @@ In diesem Tutorial lernen Sie Folgendes:
 Weitere Informationen zum Entwicklerportal finden Sie in der [Übersicht über das Azure API Management-Entwicklerportal](api-management-howto-developer-portal.md).
 
 ![API Management-Entwicklerportal: Administratormodus](media/api-management-howto-developer-portal-customize/cover.png)
-
-> [!WARNING]
-> Das Entwicklerportal wird zurzeit in den API Management-Diensten bereitgestellt.
-> Wenn Ihr Dienst neu erstellt wurde oder es sich um einen Dienst der Entwicklerebene handelt, sollten Sie bereits über die neueste Version verfügen. Andernfalls können Probleme auftreten (z. B. mit der Veröffentlichungsfunktion). Das Featurerollout wird am Montag, den 11. November 2019, abgeschlossen sein. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -115,13 +111,16 @@ In dem folgenden Video demonstrieren wir, wie Sie den Inhalt des Portals bearbei
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish-the-portal"></a>Veröffentlichen des Portals
+## <a name="publish"> </a>Veröffentlichen des Portals
 
 Um Ihr Portal mit den neuesten Änderungen Besuchern zur Verfügung zu stellen, müssen Sie es veröffentlichen.
 
 1. Stellen Sie sicher, dass Ihre Änderungen gespeichert wurden, indem Sie auf das Symbol **Speichern** klicken.
 1. Klicken Sie im Menüabschnitt **Vorgänge** auf **Website veröffentlichen**. Dieser Vorgang kann einige Minuten dauern.  
     ![Portal veröffentlichen](media/api-management-howto-developer-portal-customize/publish-portal.png)
+
+> [!NOTE]
+> Das Portal muss nach Änderungen an der API Management-Dienstkonfiguration neu veröffentlicht werden, z. B. dem Zuweisen einer benutzerdefinierten Domäne, dem Aktualisieren der Identitätsanbieter, dem Festlegen der Delegierung, dem Angeben von Anmelde- und Produktbedingungen und mehr.
 
 ## <a name="visit-the-published-portal"></a>Besuchen des veröffentlichten Portals
 

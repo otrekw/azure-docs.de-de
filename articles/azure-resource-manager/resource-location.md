@@ -1,17 +1,14 @@
 ---
-title: Speicherort von Azure Resource Manager-Vorlagenressourcen
+title: Speicherort der Vorlagenressource
 description: Beschreibt, wie Sie den Speicherort von Ressourcen in einer Azure Resource Manager-Vorlage festlegen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 6af5d82766533ef7bbacab04381db9a37502923e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1e711b2cfeb42c33dbfa68b1fbdabd42cbd46d10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70293764"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150618"
 ---
 # <a name="set-resource-location-in-resource-manager-template"></a>Festlegen des Ressourcenspeicherorts in Resource Manager-Vorlagen
 

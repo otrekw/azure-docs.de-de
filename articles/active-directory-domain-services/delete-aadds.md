@@ -1,6 +1,6 @@
 ---
-title: Deaktivieren von Azure Active Directory Domain Services | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Active Directory Domain Services im Azure-Portal deaktivieren
+title: Löschen von Azure Active Directory Domain Services | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine von Azure Active Directory Domain Services verwaltete Domäne im Azure-Portal deaktivieren oder löschen.
 services: active-directory-ds
 author: iainfoulds
 manager: daveba
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 05c4e73c56b79c6e313ea15124bd0f3d17b2fc70
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9f0b8a438a7c236c5e016673a59bfb691e9c2152
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842612"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546294"
 ---
-# <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Deaktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
+# <a name="delete-an-azure-active-directory-domain-services-managed-domain-using-the-azure-portal"></a>Löschen einer von Azure Active Directory Domain Services verwalteten Domäne im Azure-Portal
 
 Wenn Sie eine verwaltete Domäne nicht mehr benötigen, können Sie eine Azure Active Directory Domain Services-Instanz (Azure AD DS) löschen. Es gibt keine Möglichkeit, eine verwaltete Azure AD DS-Domäne abzuschalten oder vorübergehend zu deaktivieren. Durch das Löschen der verwalteten Azure AD DS-Domäne wird der Azure AD-Mandant weder gelöscht noch anderweitig beeinträchtigt. In diesem Artikel erfahren Sie, wie Sie im Azure-Portal eine verwaltete Azure AD DS-Domäne löschen.
 

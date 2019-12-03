@@ -1,6 +1,6 @@
 ---
-title: Verwalten von verbundenen Geräte im Portal „Mein Konto“ – Azure AD
-description: Sie erfahren, wie Sie im Portal „Mein Konto“ auf der Seite „Geräte“ verbundene Geräte anzeigen und deaktivieren.
+title: Verwalten Ihrer verbundenen Geräte im Portal „Mein Konto“ – Azure AD
+description: Sie erfahren, wie Sie im Portal „Mein Konto“ auf der Seite „Geräte“ mit Ihrem Geschäfts-, Schul- oder Unikonto verbundene Geräte anzeigen und deaktivieren.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0eb691abaabf09ae8f89354e1fdb6f18cf8e5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804256"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233217"
 ---
-# <a name="manage-your-connected-devices-from-the-my-account-portal"></a>Verwalten von verbundenen Geräte im Portal „Mein Konto“
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Verwalten von mit Ihrem Geschäfts-, Schul- oder Unikonto verbundenen Geräten auf der Seite „Geräte“
 
 Im Portal **Mein Konto** haben Sie auf der Seite **Geräte** folgende Möglichkeiten:
 
@@ -72,4 +72,4 @@ Nach der Anzeige der verbundenen Geräte können Sie folgende Aktionen ausführe
 
 - Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md)
 
-- Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation
+- Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation.

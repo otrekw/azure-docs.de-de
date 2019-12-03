@@ -1,5 +1,5 @@
 ---
-title: Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer zum Abrufen eines Zugriffstokens
+title: Verwenden von verwalteten Identitäten auf einem virtuellen Computer zum Abrufen eines Zugriffstokens – Azure AD
 description: Schrittweise Anweisungen und Beispiele zur Verwendung verwalteter Identitäten für Azure-Ressourcen auf einem virtuellen Computer zum Abrufen eines OAuth-Zugriffstokens.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 443f1eb1576f2d6eb28d0de16f37e37912b707b9
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290788"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547356"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -45,7 +45,7 @@ Wenn Sie die Azure PowerShell-Beispiele in diesem Artikel verwenden möchten, m�
 
 ## <a name="overview"></a>Übersicht
 
-Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/developer-glossary.md#access-token) der verwalteten Identitäten für Azure-Ressourcen für den Zugriff auf eine bestimmte Ressource anfordern. Das Token [basiert auf dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-it-work). Daher muss sich der Client nicht selbst registrieren, um ein Zugriffstoken unter seinem eigenen Dienstprinzipal abzurufen. Das Token ist geeignet für die Nutzung als Bearertoken in [Dienst-zu-Dienst-Aufrufen, für die Clientanmeldeinformationen benötigt werden](../develop/v1-oauth2-client-creds-grant-flow.md).
+Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/developer-glossary.md#access-token) der verwalteten Identitäten für Azure-Ressourcen für den Zugriff auf eine bestimmte Ressource anfordern. Das Token [basiert auf dem Dienstprinzipal der verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-the-managed-identities-for-azure-resources-work). Daher muss sich der Client nicht selbst registrieren, um ein Zugriffstoken unter seinem eigenen Dienstprinzipal abzurufen. Das Token ist geeignet für die Nutzung als Bearertoken in [Dienst-zu-Dienst-Aufrufen, für die Clientanmeldeinformationen benötigt werden](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |

@@ -1,6 +1,6 @@
 ---
 title: Ereignisschema des Azure-Aktivitätsprotokolls
-description: Informieren Sie sich über das Ereignisschema für Daten, die in das Aktivitätsprotokoll ausgegeben werden
+description: Beschreibt das Ereignisschema für jede Kategorie im Azure-Aktivitätsprotokoll.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9f58f08718cc0bfeb94b83de55531c9bd22720e2
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: d196cf4024513d891182f3b916bd8412a2f81d14
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847347"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305480"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das **Azure-Aktivitätsprotokoll** ist ein Protokoll, das einen Einblick in alle Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dieser Artikel beschreibt das Ereignisschema pro Datenkategorie. Das Schema der Daten unterscheidet sich, je nachdem, ob Sie die Daten im Portal, in PowerShell, auf der Befehlszeilenschnittstelle oder direkt über die REST-API lesen, im Gegensatz zum [Streamen der Daten in den Speicher oder zu Event Hubs mithilfe eines Protokollprofils](activity-log-export.md). Im Beispiel unten ist zu sehen, in welcher Weise das Schema über das Portal, PowerShell, die Befehlszeilenschnittstelle und REST-API zur Verfügung gestellt wird. Eine Zuordnung dieser Eigenschaften zum [Azure-Diagnoseprotokollschema](diagnostic-logs-schema.md) findet sich am Ende dieses Artikels.

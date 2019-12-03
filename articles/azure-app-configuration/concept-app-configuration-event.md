@@ -7,12 +7,12 @@ ms.author: jimmyca
 ms.date: 05/30/2019
 ms.topic: article
 ms.service: azure-app-configuration
-ms.openlocfilehash: 601124aef37d2b285db71130f5c63b3620c7768f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5da64155f2823712eee7a60427b1c1e80abec068
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735879"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185298"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Reagieren auf Azure App Configuration-Ereignisse
 
@@ -43,8 +43,8 @@ Azure App Configuration-Ereignisse enthalten alle Informationen, die Sie zur R
 > |subject|Zeichenfolge|Die URL des Schlüssel-Wert-Paars, das Gegenstand des Ereignisses ist.|
 > |eventTime|Zeichenfolge|Datum und Uhrzeit der Ereignisgenerierung im ISO 8601-Format.|
 > |eventType|Zeichenfolge|„Microsoft.AppConfiguration.KeyValueModified“ oder „Microsoft.AppConfiguration.KeyValueDeleted“.|
-> |id|Zeichenfolge|Ein eindeutiger Bezeichner für dieses Ereignis.|
-> |dataVersion|Zeichenfolge|Die Schemaversion des Datenobjekts.|
+> |Id|Zeichenfolge|Ein eindeutiger Bezeichner für dieses Ereignis.|
+> |dataVersion|string|Die Schemaversion des Datenobjekts.|
 > |metadataVersion|Zeichenfolge|Die Schemaversion der Eigenschaften oberster Ebene.|
 > |data|object|Eine Sammlung Azure App Configuration-spezifischer Ereignisdaten.|
 > |data.key|Zeichenfolge|Der Schlüssel des Schlüssel-Wert-Paars, das geändert oder gelöscht wurde.|

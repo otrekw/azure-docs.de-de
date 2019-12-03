@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113797"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484124"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Qualifikation „Benutzerdefinierte Web-API“ in einer Anreicherungspipeline der kognitiven Azure-Suche
 
@@ -205,4 +205,4 @@ In Fällen, in denen die Web-API nicht verfügbar ist oder einen HTTP-Fehler zur
 
 + [Definieren eines Skillsets](cognitive-search-defining-skillset.md)
 + [Hinzufügen einer benutzerdefinierten Qualifikation zu einer KI-Anreicherungspipeline](cognitive-search-custom-skill-interface.md)
-+ [Beispiel: Erstellen einer benutzerdefinierten Qualifikation für KI-Anreicherung (cognitive-search-create-custom-skill-example.md)
++ [Beispiel: Erstellen eines benutzerdefinierten Skills für die KI-Anreicherung](cognitive-search-create-custom-skill-example.md)

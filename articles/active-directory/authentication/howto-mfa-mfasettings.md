@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4932089b7315f2756f3760b252c7257868f640fa
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26744791dd3abe732f56f69ca05dd7c781755e9b
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066032"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167979"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen
 
@@ -371,7 +371,7 @@ Wenn Ihre Benutzer ihre Konten für Azure Multi-Factor Authentication registrier
 | Methode | BESCHREIBUNG |
 |:--- |:--- |
 | Auf Telefon anrufen |Startet einen automatisierten Sprachanruf. Der Benutzer nimmt den Anruf an und drückt die #-Taste auf der Telefontastatur, um sich zu authentifizieren. Die Telefonnummer wird nicht mit dem lokalen Active Directory synchronisiert. |
-| Textnachricht an Telefon |Sendet eine Textnachricht mit einem Überprüfungscode. Der Benutzer wird über die Anmeldeoberfläche zur Eingabe des Prüfcodes aufgefordert. Dieser Vorgang wird als „unidirektionale SMS“ bezeichnet. Bei einer bidirektionalen SMS muss der Benutzer einen bestimmten Code per SMS zurücksenden. Die Funktion für bidirektionale SMS ist veraltet und wird ab dem 14. November 2018 nicht mehr unterstützt. Benutzer, die für die Verwendung bidirektionaler SMS konfiguriert sind, werden dann automatisch auf die Überprüfungsoption _Auf Telefon anrufen_ umgestellt.|
+| Textnachricht an Telefon |Sendet eine Textnachricht mit einem Überprüfungscode. Der Benutzer wird über die Anmeldeoberfläche zur Eingabe des Prüfcodes aufgefordert. Dieser Vorgang wird als „unidirektionale SMS“ bezeichnet. Bei einer bidirektionalen SMS muss der Benutzer einen bestimmten Code per SMS zurücksenden. Die Funktion für bidirektionale SMS ist veraltet und wird ab dem 14. November 2018 nicht mehr unterstützt. Administratoren sollten eine andere Methode für Benutzer aktivieren, die zuvor bidirektionale SMS verwendet haben.|
 | Benachrichtigung über mobile App |Sendet eine Pushbenachrichtigung an Ihr Telefon oder registriertes Gerät. Der Benutzer zeigt die Benachrichtigung an und wählt **Überprüfen**, um die Überprüfung abzuschließen. Die Microsoft Authenticator-App ist für [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 | Prüfcode aus mobiler App oder Hardwaretoken |Die Microsoft Authenticator-App generiert alle 30 Sekunden einen neuen OATH-Überprüfungscode. Der Benutzer gibt den Überprüfungscode auf der Anmeldeoberfläche ein. Die Microsoft Authenticator-App ist für [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 

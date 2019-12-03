@@ -1,5 +1,5 @@
 ---
-title: Beispiele für Azure Monitor-Metrikdiagramme
+title: Beispiel für Azure Monitor-Metrikdiagramme
 description: Erfahren Sie mehr über die Visualisierung Ihrer Azure Monitor-Daten.
 author: vgorbenko
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: bbfeb428d38c23955df4497242184499349aecf9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8cc653b8e5d2c239243bf6a09955b10011c7408b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60256711"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538960"
 ---
-# <a name="metric-chart-samples"></a>Beispiele für Metrikdiagramme
+# <a name="metric-chart-examples"></a>Beispiele für Metrikdiagramme 
 
 Die Azure-Plattform stellt [mehr als tausend Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported) bereit, von denen viele Dimensionen umfassen. Durch die Verwendung von [Dimensionsfiltern](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), das Anwenden einer [Aufteilung](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), die Steuerung des Diagrammtyps und eine Anpassung der Diagrammeinstellungen können Sie leistungsstarke Diagnoseansichten und Dashboards erstellen, die Einblick in den Zustand Ihrer Infrastruktur und Anwendungen bieten. Dieser Artikel zeigt einige Beispiele für die Diagramme, die Sie mit dem [Metrik-Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) erstellen können, und erklärt die notwendigen Schritte zur Konfiguration jedes dieser Diagramme.
 

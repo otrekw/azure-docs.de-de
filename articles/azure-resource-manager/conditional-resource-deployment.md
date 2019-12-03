@@ -1,17 +1,14 @@
 ---
-title: Bedingte Bereitstellung mit Azure Resource Manager-Vorlagen
+title: Bedingte Bereitstellung mit Vorlagen
 description: Beschreibt, wie eine Ressource in einer Azure Resource Manager-Vorlage bedingt bereitgestellt werden kann.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
-ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e3d78f875e39628194ac30310314e59e2ef19fdb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881658"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147167"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Bedingte Bereitstellung in Resource Manager-Vorlagen
 

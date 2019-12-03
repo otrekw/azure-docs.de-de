@@ -6,16 +6,21 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/06/2019
-ms.openlocfilehash: dd1618151b97ab4f958bfd5d50333b9551014f0f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/11/2019
+ms.openlocfilehash: 8fb1c6c65ab9c38ef16cfbc20435b35d0c7a7ce5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554071"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279612"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Gewusst wie: Aktualisieren von Azure Monitor für Container zum Aktivieren von Metriken
+
 Mit Azure Monitor für Container wird Unterstützung für die Erfassung von Metriken aus AKS-Clusterknoten und -Pods (Azure Kubernetes Service) und das Schreiben in den Azure Monitor-Metrikspeicher eingeführt. Diese Änderung soll zu einer verbesserten Zeitgenauigkeit führen, wenn Aggregatberechnungen (Avg, Count, Max, Min, Sum) in Leistungsdiagrammen dargestellt werden, und das Anheften von Leistungsdiagrammen in Dashboards des Azure-Portals und Metrikwarnungen unterstützen.
+
+>[!NOTE]
+>Diese Funktion unterstützt derzeit keine Red Hat-OpenShift-Cluster.
+>
 
 Im Rahmen dieses Features werden die folgenden Metriken aktiviert:
 
@@ -28,8 +33,12 @@ Die Aktualisierung des Clusters zur Unterstützung dieser neuen Funktionen kann 
 
 Bei beiden Prozessen wird die Rolle **Überwachungsmetriken veröffentlichen** dem Dienstprinzipal des Clusters zugewiesen, sodass die vom Agent erfassten Daten für Ihre Clusterressource veröffentlicht werden können. Die Rolle „Überwachungsmetriken veröffentlichen“ verfügt nur über die Berechtigung zum Übertragen von Metriken per Pushvorgang an die Ressource. Das Ändern eines Zustands, Aktualisieren der Ressource oder Lesen von Daten ist nicht möglich. Weitere Informationen zur Rolle finden Sie unter [Herausgeber von Überwachungsmetriken](../../role-based-access-control/built-in-roles.md#monitoring-metrics-publisher).
 
-## <a name="prerequisites"></a>Voraussetzungen 
-Stellen Sie zunächst sicher, dass Sie Mitglied der Rolle **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)** in der AKS-Clusterressource sind, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen. 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Vergewissern Sie sich, dass folgende Voraussetzungen erfüllt sind, bevor Sie beginnen:
+
+* Benutzerdefinierte Metriken sind nur in einigen Azure-Regionen verfügbar. Eine Liste der unterstützten Regionen finden Sie [hier](../platform/metrics-custom-overview.md#supported-regions).
+* Sie sind Mitglied der Rolle **[Besitzer](../../role-based-access-control/built-in-roles.md#owner)** in der AKS-Clusterressource, um die Erfassung von benutzerdefinierten Leistungsmetriken für Knoten und Pods zu ermöglichen. 
 
 Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
@@ -42,6 +51,7 @@ Für vorhandene AKS-Cluster, die mit Azure Monitor für Container überwacht wer
 Wenn Sie auf **Aktivieren** klicken, wird der Prozess zum Durchführen einer Aktualisierung für den Cluster initiiert. Dieser Vorgang kann einige Sekunden dauern, und Sie können den Fortschritt im Menü unter „Benachrichtigungen“ nachverfolgen.
 
 ## <a name="upgrade-all-clusters-using-bash-in-azure-command-shell"></a>Aktualisieren aller Cluster per Bash in der Azure-Befehlsshell
+
 Führen Sie die folgenden Schritte aus, um alle Cluster Ihres Abonnements per Bash in der Azure-Befehlsshell zu aktualisieren.
 
 1. Führen Sie den folgenden Befehl mithilfe der Azure CLI aus.  Bearbeiten Sie den Wert für **subscriptionId**, indem Sie den Wert von der Seite mit der **AKS-Übersicht** für den AKS-Cluster verwenden.
@@ -59,6 +69,7 @@ Führen Sie die folgenden Schritte aus, um alle Cluster Ihres Abonnements per Ba
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-cli"></a>Aktualisieren pro Cluster mit der Azure CLI
+
 Führen Sie die folgenden Schritte aus, um einen bestimmten Cluster in Ihrem Abonnement mit der Azure CLI zu aktualisieren.
 
 1. Führen Sie den folgenden Befehl mithilfe der Azure CLI aus. Bearbeiten Sie die Werte für **subscriptionId**, **resourceGroupName** und **clusterName**, indem Sie die Werte auf der Seite mit der **AKS-Übersicht** für den AKS-Cluster verwenden.  Der Wert von **clientIdOfSPN** wird zurückgegeben, wenn Sie den Befehl `az aks show` wie im Beispiel unten ausführen.
@@ -71,6 +82,7 @@ Führen Sie die folgenden Schritte aus, um einen bestimmten Cluster in Ihrem Abo
     ``` 
 
 ## <a name="upgrade-all-clusters-using-azure-powershell"></a>Aktualisieren aller Cluster per Azure PowerShell
+
 Führen Sie die folgenden Schritte aus, um alle Cluster Ihres Abonnements per Azure PowerShell zu aktualisieren.
 
 1. Kopieren Sie das folgende Skript, und fügen Sie es in Ihre Datei ein:
@@ -326,6 +338,7 @@ Führen Sie die folgenden Schritte aus, um alle Cluster Ihres Abonnements per Az
     ```
 
 ## <a name="upgrade-per-cluster-using-azure-powershell"></a>Aktualisieren pro Cluster per Azure PowerShell
+
 Führen Sie die folgenden Schritte aus, um mit Azure PowerShell einen bestimmten Cluster zu aktualisieren.
 
 1. Kopieren Sie das folgende Skript, und fügen Sie es in Ihre Datei ein:
@@ -576,4 +589,5 @@ Führen Sie die folgenden Schritte aus, um mit Azure PowerShell einen bestimmten
     ```
 
 ## <a name="verify-update"></a>Überprüfen von Updatevorgängen 
+
 Nach dem Initiieren des Updatevorgangs mit einer der oben beschriebenen Methoden können Sie den Metrik-Explorer von Azure Monitor verwenden und über den **Metriknamespace** überprüfen, ob **insights** aufgeführt ist. Wenn ja, ist dies der Hinweis darauf, dass Sie mit dem Einrichten von [Metrikwarnungen](../platform/alerts-metric.md) bzw. dem Anheften Ihrer Diagramme in [Dashboards](../../azure-portal/azure-portal-dashboards.md) beginnen können.  

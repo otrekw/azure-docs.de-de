@@ -1,17 +1,14 @@
 ---
-title: Exportieren einer Resource Manager-Vorlage – Azure-Portal
+title: Exportieren einer Vorlage im Azure-Portal
 description: Verwenden Sie das Azure-Portal, um eine Azure Resource Manager-Vorlage aus Ressourcen in Ihrem Abonnement zu exportieren.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: 0605e24590fa2d702a1385429a7808a7e1226809
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 11/21/2019
+ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532346"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306780"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Exportieren von einzelnen oder mehreren Ressourcen in eine Vorlage im Azure-Portal
 
@@ -36,7 +33,7 @@ Je nach gewählter Option haben die exportierten Vorlagen unterschiedliche Quali
 | Die Vorlage ist eine Momentaufnahme des aktuellen Zustands der Ressourcen. Sie umfasst alle manuellen Änderungen, die Sie nach der Bereitstellung vorgenommen haben. | Die Vorlage zeigt nur den Zustand der Ressourcen zum Zeitpunkt der Bereitstellung an. Alle manuellen Änderungen, die Sie nach der Bereitstellung vorgenommen haben, sind nicht enthalten. |
 | Sie können auswählen, welche Ressourcen aus einer Ressourcengruppe exportiert werden sollen. | Alle Ressourcen für eine bestimmte Bereitstellung sind enthalten. Sie können keine Teilmenge dieser Ressourcen auswählen oder Ressourcen hinzufügen, die zu einem anderen Zeitpunkt hinzugefügt wurden. |
 | Die Vorlage enthält alle Eigenschaften für die Ressourcen, einschließlich einiger Eigenschaften, die Sie normalerweise während der Bereitstellung nicht festlegen würden. Möglicherweise möchten Sie diese Eigenschaften entfernen oder bereinigen, bevor Sie die Vorlage wiederverwenden. | Die Vorlage enthält nur die für die Bereitstellung erforderlichen Eigenschaften. Die Vorlage ist einsatzbereit. |
-| Die Vorlage enthält möglicherweise nicht alle für die Wiederverwendung erforderlichen Parameter. Die meisten Eigenschaftswerte sind in der Vorlage hartcodiert. Um die Vorlage in anderen Umgebungen neu bereitzustellen, müssen Sie Parameter hinzufügen, die die Möglichkeit zur Konfiguration der Ressourcen erhöhen. | Die Vorlage enthält Parameter, die es einfach gestalten, sie in verschiedenen Umgebungen neu bereitzustellen. |
+| Die Vorlage enthält möglicherweise nicht alle für die Wiederverwendung erforderlichen Parameter. Die meisten Eigenschaftswerte sind in der Vorlage hartcodiert. Um die Vorlage in anderen Umgebungen neu bereitzustellen, müssen Sie Parameter hinzufügen, die die Möglichkeit zur Konfiguration der Ressourcen erhöhen.  Sie haben auch die Möglichkeit, die Auswahl von **Parameter einschließen** aufzuheben, sodass Sie Ihre eigenen Parameter erstellen können. | Die Vorlage enthält Parameter, die es einfach gestalten, sie in verschiedenen Umgebungen neu bereitzustellen. |
 
 Exportieren Sie die Vorlage aus einer Ressourcengruppe oder Ressource, wenn Folgendes zutrifft:
 
@@ -65,6 +62,8 @@ So exportieren Sie eine oder mehrere Ressourcen aus einer Ressourcengruppe
 
    ![Anzeigen der Vorlage](./media/export-template-portal/show-template.png)
 
+   **Parameter einschließen** ist standardmäßig ausgewählt.  Wenn diese Option ausgewählt ist, werden alle Vorlagenparameter eingeschlossen, wenn die Vorlage generiert wird. Wenn Sie Ihre eigenen Parameter erstellen möchten, deaktivieren Sie dieses Kontrollkästchen, um sie nicht einzuschließen.
+
 ## <a name="export-template-from-a-resource"></a>Exportieren einer Vorlage aus einer Ressource
 
 So exportieren Sie eine Ressource
@@ -77,7 +76,7 @@ So exportieren Sie eine Ressource
 
    ![Exportieren einer Ressource](./media/export-template-portal/export-single-resource.png)
 
-1. Die exportierte Vorlage wird angezeigt und steht zum Herunterladen und Bereitstellen bereit. Die Vorlage enthält nur die einzelne Ressource.
+1. Die exportierte Vorlage wird angezeigt und steht zum Herunterladen und Bereitstellen bereit. Die Vorlage enthält nur die einzelne Ressource. **Parameter einschließen** ist standardmäßig ausgewählt.  Wenn diese Option ausgewählt ist, werden alle Vorlagenparameter eingeschlossen, wenn die Vorlage generiert wird. Wenn Sie Ihre eigenen Parameter erstellen möchten, deaktivieren Sie dieses Kontrollkästchen, um sie nicht einzuschließen.
 
 ## <a name="export-template-before-deployment"></a>Exportieren einer Vorlage vor der Bereitstellung
 

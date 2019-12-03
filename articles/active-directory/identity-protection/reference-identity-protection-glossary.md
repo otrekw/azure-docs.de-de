@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5439b8626d1fa0ea502d33455db8b2564fbd45f0
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 9a3e2df956aaa4f9fd0af83dd2a18e04d731c714
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886689"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232343"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection – Glossar
 
@@ -45,7 +45,7 @@ Ein Risikoerkennungsstatus, der von einem Identity Protection-Benutzer manuell f
 Eine Person oder Identität, die per Authentifizierung anhand von Kriterien, z. B. einem Kennwort oder Zertifikat, überprüft werden muss.
 
 ### <a name="identity-risk-detection"></a>Identitätsrisikoerkennung
-AAD-Ereignis, das von Identity Protection als anomal gekennzeichnet wurde und mit dem angegeben werden kann, dass eine Identität kompromittiert wurde.
+Azure AD-Ereignis, das von Identity Protection als anomal gekennzeichnet wurde und mit dem angegeben werden kann, dass eine Identität kompromittiert wurde.
 
 ### <a name="ignored-risk-detection"></a>Ignoriert (Risikoerkennung)
 Ein Risikoerkennungsstatus, der von einem Identity Protection-Benutzer manuell festgelegt wurde und angibt, dass die Risikoerkennung geschlossen wurde, ohne dass Maßnahmen ergriffen wurden.

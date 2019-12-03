@@ -1,22 +1,22 @@
 ---
-title: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz – Azure Active Directory
+title: Häufig gestellte Fragen zum lokalen Kennwortschutz – Azure Active Directory
 description: Häufig gestellte Fragen zum lokalen Azure AD-Kennwortschutz
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: article
-ms.date: 02/01/2019
+ms.topic: troubleshooting
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c2e737360d6b1eeb8df28a95b8c36d4cca80ee4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 9ee5d6328c6a3e4ea0b4a6359d4a21494e3ae62c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71268641"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381703"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 

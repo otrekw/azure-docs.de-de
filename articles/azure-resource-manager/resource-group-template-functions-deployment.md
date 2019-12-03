@@ -1,31 +1,28 @@
 ---
-title: Azure Resource Manager-Vorlagenfunktionen – Bereitstellung | Microsoft Docs
+title: Vorlagenfunktionen – Bereitstellung
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Informationen zur Bereitstellung verwendet werden können.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.date: 11/27/2019
+ms.openlocfilehash: 67540a78e349285be032f696a9ef4b9ba3c7e242
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983991"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561454"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Bereitstellungsfunktionen für Azure Resource Manager-Vorlagen 
 
-Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten aus Vorlagenabschnitten sowie von bereitstellungsbezogenen Werten bereit:
+Resource Manager stellt die folgenden Funktionen zum Abrufen von Werten im Zusammenhang mit der aktuellen Bereitstellung bereit:
 
 * [deployment](#deployment)
+* [Umgebung](#environment)
 * [parameters](#parameters)
 * [Variablen](#variables)
 
 Informationen zum Abrufen von Werten aus Ressourcen, Ressourcengruppen oder Abonnements finden Sie unter [Ressourcenfunktionen](resource-group-template-functions-resource.md).
 
-<a id="deployment" />
-
 ## <a name="deployment"></a>deployment
+
 `deployment()`
 
 Gibt Informationen zum aktuellen Bereitstellungsvorgang zurück.
@@ -136,9 +133,106 @@ Im vorherigen Beispiel wird das folgende Objekt zurückgegeben:
 
 Eine Vorlage auf Abonnementebene, die die Bereitstellungsfunktion verwendet, finden Sie unter [Subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json) (Bereitstellungsfunktion für Abonnements). Sie wird mit den Befehlen `az deployment create` oder `New-AzDeployment` bereitgestellt.
 
-<a id="parameters" />
+## <a name="environment"></a>Environment
+
+`environment()`
+
+Gibt Informationen zur für die Bereitstellung verwendeten Azure-Umgebung zurück.
+
+### <a name="return-value"></a>Rückgabewert
+
+Diese Funktion gibt Eigenschaften für die aktuelle Azure-Umgebung zurück. Das folgende Beispiel zeigt die Eigenschaften für globales Azure. Sovereign Clouds können etwas andere Eigenschaften zurückgeben.
+
+```json
+{
+  "name": "",
+  "gallery": "",
+  "graph": "",
+  "portal": "",
+  "graphAudience": "",
+  "activeDirectoryDataLake": "",
+  "batch": "",
+  "media": "",
+  "sqlManagement": "",
+  "vmImageAliasDoc": "",
+  "resourceManager": "",
+  "authentication": {
+    "loginEndpoint": "",
+    "audiences": [
+      "",
+      ""
+    ],
+    "tenant": "",
+    "identityProvider": ""
+  },
+  "suffixes": {
+    "acrLoginServer": "",
+    "azureDatalakeAnalyticsCatalogAndJob": "",
+    "azureDatalakeStoreFileSystem": "",
+    "azureFrontDoorEndpointSuffix": "",
+    "keyvaultDns": "",
+    "sqlServerHostname": "",
+    "storage": ""
+  }
+}
+```
+
+### <a name="example"></a>Beispiel
+
+Die folgende Beispielvorlage gibt das Umgebungsobjekt zurück.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "environmentOutput": {
+            "value": "[environment()]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+Im vorherigen Beispiel wird bei Bereitstellung in globalem Azure das folgende Objekt zurückgegeben:
+
+```json
+{
+  "name": "AzureCloud",
+  "gallery": "https://gallery.azure.com/",
+  "graph": "https://graph.windows.net/",
+  "portal": "https://portal.azure.com",
+  "graphAudience": "https://graph.windows.net/",
+  "activeDirectoryDataLake": "https://datalake.azure.net/",
+  "batch": "https://batch.core.windows.net/",
+  "media": "https://rest.media.azure.net",
+  "sqlManagement": "https://management.core.windows.net:8443/",
+  "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+  "resourceManager": "https://management.azure.com/",
+  "authentication": {
+    "loginEndpoint": "https://login.windows.net/",
+    "audiences": [
+      "https://management.core.windows.net/",
+      "https://management.azure.com/"
+    ],
+    "tenant": "common",
+    "identityProvider": "AAD"
+  },
+  "suffixes": {
+    "acrLoginServer": ".azurecr.io",
+    "azureDatalakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+    "azureDatalakeStoreFileSystem": "azuredatalakestore.net",
+    "azureFrontDoorEndpointSuffix": "azurefd.net",
+    "keyvaultDns": ".vault.azure.net",
+    "sqlServerHostname": ".database.windows.net",
+    "storage": "core.windows.net"
+  }
+}
+```
 
 ## <a name="parameters"></a>parameters
+
 `parameters(parameterName)`
 
 Gibt einen Parameterwert zurück. Der spezifizierte Parametername muss im Parameterabschnitt der Vorlage definiert werden.
@@ -242,9 +336,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Weitere Informationen zur Verwendung von Parametern finden Sie unter [Parameter in Azure Resource Manager-Vorlagen](template-parameters.md).
 
-<a id="variables" />
-
 ## <a name="variables"></a>variables
+
 `variables(variableName)`
 
 Gibt den Wert der Variablen zurück. Der angegebene Variablenname muss im Variablenabschnitt der Vorlage definiert werden.

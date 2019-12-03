@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 11/18/2019
 ms.author: jmprieur
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcf11ac8dc39dcb1d70b932dbe870687f5446a52
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 66ff02e4c95594f0155ab31e3c99a0eb269626d9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802850"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168127"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
+
 Um ihre Identität nachzuweisen, tauschen vertrauliche Clientanwendungen einen geheimen Schlüssel mit Azure AD aus. Folgende geheime Schlüssel sind möglich:
 - Ein geheimer Clientschlüssel (Anwendungskennwort)
 - Ein Zertifikat, mit dem eine signierte Assertion erstellt wird, die Standardansprüche enthält
@@ -37,6 +38,9 @@ MSAL.NET verfügt über vier Methoden, um für die vertrauliche Client-App Anmel
 - `.WithCertificate()`
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
+
+> [!NOTE]
+> Obwohl es möglich ist, die `WithClientAssertion()`-API zum Abrufen von Token für den vertraulichen Client zu verwenden, empfiehlt es sich nicht, diese Methode standardmäßig zu verwenden, da sie komplexer ist und für sehr spezifische Szenarios konzipiert ist, die nicht häufig vorkommen. Die Verwendung der `.WithCertificate()`-API ermöglicht es MSAL.NET, dies für Sie zu verarbeiten. Diese API bietet Ihnen die Möglichkeit, Ihre Authentifizierungsanforderung bei Bedarf anzupassen, doch die von `.WithCertificate()` erstellte Standardassertion reicht für die meisten Authentifizierungsszenarien aus. Diese API kann auch als Problemumgehung in einigen Szenarien verwendet werden, in denen MSAL.NET den Signaturvorgang nicht intern ausführen kann.
 
 ### <a name="signed-assertions"></a>Signierte Assertionen
 
@@ -66,9 +70,9 @@ Im folgenden Beispiel wird das Erstellen dieser Ansprüche veranschaulicht:
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
-      string aud = "https://login.microsoftonline.com/72f988bf-86f1-41af-hd4m-2d7cd011db47/v2.0";
+      string aud = $"https://login.microsoftonline.com/{tenantId}/v2.0";
 
-      string ConfidentialClientID = "61dab2ba-145d-4b1b-8569-bf4b9aed5dhb" //client id
+      string ConfidentialClientID = "00000000-0000-0000-0000-000000000000" //client id
       const uint JwtToAadLifetimeInSeconds = 60 * 10; // Ten minutes
       DateTime validFrom = DateTime.UtcNow;
       var nbf = ConvertToTimeT(validFrom);
@@ -105,11 +109,11 @@ string Encode(byte[] arg)
     return s;
 }
 
-string GetAssertion()
+string GetSignedClientAssertion()
 {
     //Signing with SHA-256
     string rsaSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256";
-    X509Certificate2 certificate = ReadCertificate(config.CertificateName);
+     X509Certificate2 certificate = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
 
     //Create RSACryptoServiceProvider
     var x509Key = new X509AsymmetricSecurityKey(certificate);
@@ -129,9 +133,55 @@ string GetAssertion()
     string token = Encode(Encoding.UTF8.GetBytes(JObject.FromObject(header).ToString())) + "." + Encode(Encoding.UTF8.GetBytes(JObject.FromObject(GetClaims())));
 
     string signature = Encode(rsa.SignData(Encoding.UTF8.GetBytes(token), new SHA256Cng()));
-    string SignedAssertion = string.Concat(token, ".", signature);
-    return SignedAssertion;
+    string signedClientAssertion = string.Concat(token, ".", signature);
+    return signedClientAssertion;
 }
+```
+
+### <a name="alternative-method"></a>Alternative Methode
+
+Sie haben auch die Möglichkeit, [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) zu verwenden, um die Assertion für Sie erstellen zu lassen. Der Code wird somit etwas eleganter, wie im folgenden Beispiel zu sehen ist:
+
+```CSharp
+        string GetSignedClientAssertion()
+        {
+            var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
+
+            //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
+            string aud = $"https://login.microsoftonline.com/{tenantID}/v2.0";
+
+            // client_id
+            string confidentialClientID = "00000000-0000-0000-0000-000000000000";
+
+            // no need to add exp, nbf as JsonWebTokenHandler will add them by default.
+            var claims = new Dictionary<string, object>()
+            {
+                { "aud", aud },
+                { "iss", confidentialClientID },
+                { "jti", Guid.NewGuid().ToString() },
+                { "sub", confidentialClientID }
+            };
+
+            var securityTokenDescriptor = new SecurityTokenDescriptor
+            {
+                Claims = claims,
+                SigningCredentials = new X509SigningCredentials(cert)
+            };
+
+            var handler = new JsonWebTokenHandler();
+            var signedClientAssertion = handler.CreateToken(securityTokenDescriptor);
+        }
+```
+
+Sobald Sie Ihre signierte Clientassertion besitzen, können Sie sie wie unten gezeigt mit den MSAL-APIs verwenden.
+
+```CSharp
+            string signedClientAssertion = GetSignedClientAssertion();
+
+            var confidentialApp = ConfidentialClientApplicationBuilder
+                .Create(ConfidentialClientID)
+                .WithClientAssertion(signedClientAssertion)
+                .Build();
 ```
 
 ### <a name="withclientclaims"></a>WithClientClaims

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bde1741d12cc7ef181fb60bc7eecbec1fed8cbd0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 806447f788b7a394b29ee08e8b562662c2cc3e1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73151222"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208399"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -114,6 +114,7 @@ Hier finden Sie Schrittanleitungen dazu, wie Sie mithilfe des bedingten Zugriffs
 - [Vorschreiben der MFA für die Azure-Verwaltung](howto-conditional-access-policy-azure-management.md)
 - [Blockieren älterer Authentifizierungsmethoden](howto-conditional-access-policy-block-legacy.md)
 - [Erzwingen der MFA für alle Benutzer](howto-conditional-access-policy-all-users-mfa.md)
+- [Anfordern von Azure MFA-Registrierung](../identity-protection/howto-identity-protection-configure-mfa-policy.md) – Erfordert Azure AD Identity Protection
 
 ## <a name="enabling-security-defaults"></a>Aktivieren von Sicherheitsstandards
 

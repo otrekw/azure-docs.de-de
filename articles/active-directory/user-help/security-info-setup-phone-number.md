@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Sicherheitsinformationen (Vorschau) für Telefonanrufe – Azure AD
-description: So richten Sie Ihre Sicherheitsinformation ein, um Ihre Identität mithilfe von Telefonanrufen zu bestätigen.
+title: Einrichten Ihrer Telefonnummer als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Preview) einrichten, um Ihre Identität mithilfe Ihrer Telefonnummer und eines mobilen Geräts als Überprüfungsmethode zu verifizieren.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5dc5ec06e60112e69a31d1ce4c69e698576609f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6bb7d811b1d622fb14935b4d5ddf0cb60e44daa8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803797"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278962"
 ---
-# <a name="set-up-security-info-preview-to-use-phone-calls"></a>Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Telefonanrufen
+# <a name="set-up-a-phone-number-as-your-verification-method"></a>Einrichten einer Telefonnummer als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 

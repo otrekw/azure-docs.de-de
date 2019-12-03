@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125061"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275717"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 
-Das Azure-Portal bietet eine bequeme Möglichkeit, die Bereitstellung für einzelne Apps einzeln zu konfigurieren. Wenn Sie jedoch mehrere – oder sogar Hunderte – Instanzen einer Anwendung erstellen, kann es einfacher sein, die App-Erstellung und-Konfiguration mit Microsoft Graph-APIs zu automatisieren. In diesem Artikel wird beschrieben, wie Sie die Bereitstellungskonfiguration über APIs automatisieren. Dieses Verfahren wird häufig für Anwendungen wie [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on) verwendet.
+Das Azure-Portal bietet eine bequeme Möglichkeit, die Bereitstellung für einzelne Apps einzeln zu konfigurieren. Wenn Sie jedoch mehrere – oder sogar Hunderte – Instanzen einer Anwendung erstellen, kann es einfacher sein, die App-Erstellung und-Konfiguration mit Microsoft Graph-APIs zu automatisieren. In diesem Artikel wird beschrieben, wie Sie die Bereitstellungskonfiguration über APIs automatisieren. Dieses Verfahren wird häufig für Anwendungen wie [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso) verwendet.
 
 **Übersicht über die Schritte zum Automatisieren der Bereitstellungskonfiguration mithilfe von Microsoft Graph-APIs**
 

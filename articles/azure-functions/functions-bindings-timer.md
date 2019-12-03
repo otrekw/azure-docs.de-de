@@ -1,23 +1,18 @@
 ---
 title: Trigger mit Timer für Azure Functions
 description: Erfahren Sie, wie Trigger mit Timer in Azure Functions verwendet werden.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 439e5ab4bf943293ff4ed20ed477bc98bb683836
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299334"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545729"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -39,16 +34,7 @@ Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](ht
 
 ## <a name="example"></a>Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#c-example)
-* [C#-Skript (.csx)](#c-script-example)
-* [F#](#f-example)
-* [Java](#java-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
-
-### <a name="c-example"></a>C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die jedes Mal ausgeführt wird, wenn die Minuten einen durch fünf teilbaren Wert haben (wird die Funktion beispielsweise um 18:57:00 Uhr gestartet, erfolgt die nächste Ausführung um 19:00:00 Uhr). Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
 
@@ -64,7 +50,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 }
 ```
 
-### <a name="c-script-example"></a>C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
 
@@ -92,47 +78,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 }
 ```
 
-### <a name="f-example"></a>F#-Beispiel
-
-Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei *function.json* sowie eine [F#-Skriptfunktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Das [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)-Objekt wird an die Funktion übergeben.
-
-Bindungsdaten in der Datei *function.json*:
-
-```json
-{
-    "schedule": "0 */5 * * * *",
-    "name": "myTimer",
-    "type": "timerTrigger",
-    "direction": "in"
-}
-```
-
-Der F#-Skriptcode sieht wie folgt aus:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger ) =
-    if (myTimer.IsPastDue) then
-        log.LogInformation("F# function is running late.")
-    let now = DateTime.Now.ToLongTimeString()
-    log.LogInformation(sprintf "F# function executed at %s!" now)
-```
-
-### <a name="java-example"></a>Java-Beispiel
-
-Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
-
-```java
-@FunctionName("keepAlive")
-public void keepAlive(
-  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
-      ExecutionContext context
- ) {
-     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
-     context.getLogger().info("Timer is triggered: " + timerInfo);
-}
-```
-
-### <a name="javascript-example"></a>JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Triggerbindung mit Timer in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt ein Protokoll, das angibt, ob dieser Funktionsaufruf aufgrund eines versäumten Zeitplantermins erfolgt. Ein[Timerobjekt](#usage) wird an die Funktion übergeben.
 
@@ -163,7 +109,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="python-example"></a>Beispiel für Python
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Im folgenden Beispiel wird eine Triggerbindung mit Timer verwendet, deren Konfiguration in der Datei *function.json* beschrieben ist. Die eigentliche [Python-Funktion](functions-reference-python.md), von der die Bindung genutzt wird, ist in der Datei *__init__.py* beschrieben. Das an die Funktion übergebene Objekt hat den Typ [azure.functions.TimerRequest-Objekt](/python/api/azure-functions/azure.functions.timerrequest). Mit der Funktionslogik werden Daten in die Protokolle geschrieben, um anzugeben, ob der aktuelle Aufruf aufgrund eines versäumten Zeitplantermins erfolgt. 
 
@@ -197,7 +143,26 @@ def main(mytimer: func.TimerRequest) -> None:
     logging.info('Python timer trigger function ran at %s', utc_timestamp)
 ```
 
-## <a name="attributes"></a>Attribute
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die folgende Beispielfunktion wird ausgelöst und alle fünf Minuten ausgeführt. Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
+---
+
+## <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das Attribut [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
 
@@ -214,6 +179,35 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
     log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 }
 ```
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Die `@TimerTrigger`-Anmerkung für die Funktion definiert den Zeitplan mit dem gleichen Zeichenfolgeformat wie [CRON-Ausdrücke](https://en.wikipedia.org/wiki/Cron#CRON_expression).
+
+```java
+@FunctionName("keepAlive")
+public void keepAlive(
+  @TimerTrigger(name = "keepAliveTrigger", schedule = "0 */5 * * * *") String timerInfo,
+      ExecutionContext context
+ ) {
+     // timeInfo is a JSON string, you can deserialize it to an object using your favorite JSON library
+     context.getLogger().info("Timer is triggered: " + timerInfo);
+}
+```
+
+---
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -289,7 +283,10 @@ Die folgenden Beispiele zeigen NCRONTAB-Ausdrücke, die Sie für den Trigger mit
 
 Die Zahlen in einem CRON-Ausdruck beziehen sich auf ein Datum und eine Uhrzeit, nicht auf einen Zeitraum. Beispielsweise bezieht sich eine 5 im Feld `hour` auf 5:00 Uhr, nicht auf alle 5 Stunden.
 
-Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://technet.microsoft.com/library/cc749073) (Microsoft-Zeitzonenindex) fest. 
+Als Standardzeitzone wird in Verbindung mit den CRON-Ausdrücken die Coordinated Universal Time (UTC) verwendet. Wenn Sie möchten, dass Ihr CRON-Ausdruck auf einer anderen Zeitzone basiert, erstellen Sie eine App-Einstellung für die Funktionen-App mit dem Namen `WEBSITE_TIME_ZONE`. Legen Sie den Wert auf den Namen der gewünschten Zeitzone gemäß [Microsoft Time Zone Index](https://technet.microsoft.com/library/cc749073) (Microsoft-Zeitzonenindex) fest.
+
+  > [!NOTE]
+  > `WEBSITE_TIME_ZONE` wird im Linux-Verbrauchsplan zurzeit nicht unterstützt.
 
 Beispiel: *Eastern Normalzeit* ist UTC-05:00. Wenn Sie Ihren Trigger mit Timer täglich um 10:00 Uhr (EST) auslösen möchten, verwenden Sie den folgenden NCRONTAB-Ausdruck, der die UTC-Zeitzone berücksichtigt:
 

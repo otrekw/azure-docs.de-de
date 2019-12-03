@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager-Vorlagensyntax und -ausdrücke
+title: Vorlagensyntax und -ausdrücke
 description: Beschreibt die deklarative JSON-Syntax für Azure Resource Manager-Vorlagen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
-ms.openlocfilehash: 1e7288da19e2e81d609b952e03d5143b03a65c63
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 046f7f4866e9b5933c55bc5a9d0ee96c945bff0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259434"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149199"
 ---
 # <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Syntax und Ausdrücke in Azure Resource Manager-Vorlagen
 
@@ -71,4 +68,4 @@ Verwenden Sie den umgekehrten Schrägstrich, um doppelte Anführungszeichen in e
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](resource-group-template-functions.md)finden Sie eine vollständige Liste der Vorlagenfunktionen.
-* Weitere Informationen über Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
+* Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

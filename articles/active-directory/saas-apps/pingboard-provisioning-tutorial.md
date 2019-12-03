@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerbereitstellung für Pingboard – Azure AD'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in Pingboard konfigurieren.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7e2fabc86374f7fe055303d056ae8e00f33389
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964371"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278255"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Pingboard für die automatische Benutzerbereitstellung
 
