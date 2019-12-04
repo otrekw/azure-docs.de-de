@@ -1,7 +1,7 @@
 ---
 title: Lucene-Abfragesyntax
 titleSuffix: Azure Cognitive Search
-description: Referenz für die vollständige Lucene-Syntax, wie sie in Azure Cognitive Search verwendet wird.
+description: Referenz der vollständigen Lucene-Abfragesyntax, die in Azure Cognitive Search für Platzhalter, Fuzzysuche, RegEx und andere erweiterte Abfragekonstrukte verwendet wird.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 1b94a1bbab810345ab222be9e7aba2fef0f52549
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0bb8474b30c05e21a62ded1fa2cb8a6df8e4e321
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786282"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112191"
 ---
 # <a name="lucene-query-syntax-in-azure-cognitive-search"></a>Lucene-Abfragesyntax in Azure Cognitive Search
 

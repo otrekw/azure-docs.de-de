@@ -1,5 +1,5 @@
 ---
-title: Arbeiten mit Qualifikationsgruppen
+title: Qualifikationsgruppenkonzepte und Workflow
 titleSuffix: Azure Cognitive Search
 description: In Qualifikationsgruppen erstellen Sie eine KI-Anreicherungspipeline in der kognitiven Azure-Suche. Informieren Sie sich über wichtige Konzepte und Details zur Zusammenstellung von Qualifikationsgruppen.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8a783581394de05fff9f0060e124e8dc59c96b60
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790167"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113648"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Arbeiten mit Qualifikationsgruppen in der kognitiven Azure-Suche
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Qualifikationsgruppenkonzepte und Komposition in Azure Cognitive Search
 
 Dieser Artikel richtet sich an Entwickler, die ein besseres Verständnis der Funktionsweise der Anreicherungspipeline benötigen. Dabei wird davon ausgegangen, dass Sie über ein konzeptionelles Verständnis des KI-Anreicherungsprozesses verfügen. Wenn Ihnen dieses Konzept noch nicht vertraut ist, beginnen Sie mit folgenden Themen:
 + [KI-Anreicherung in der kognitiven Azure-Suche](cognitive-search-concept-intro.md)
@@ -32,7 +32,7 @@ Eine Qualifikationsgruppe verfügt über drei Eigenschaften:
 
 
 
-Qualifikationsgruppen werden in JSON erstellt. Mithilfe der [Ausdruckssprache](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) können Sie komplexe Qualifikationsgruppen mit Schleifen und [Verzweigungen](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-conditional) erstellen. Die Ausdruckssprache verwendet die [JSON-Zeiger](https://tools.ietf.org/html/rfc6901)-Pfadnotation mit einigen Änderungen zum Identifizieren von Knoten in der Anreicherungsstruktur. Ein ```"/"``` durchläuft eine niedrigere Ebene in der Struktur und ```"*"``` fungiert als „for-each“-Operator im Kontext. Diese Konzepte lassen sich am besten mit einem Beispiel verdeutlichen. Um einige Konzepte und Funktionen zu veranschaulichen, schauen wir uns die Qualifikationsgruppen für das [Beispiel „Hotelbewertungen“](knowledge-store-connect-powerbi.md) an. Um die Qualifikationsgruppe anzuzeigen, nachdem Sie den Workflow zum Importieren von Daten ausgeführt haben, müssen Sie unter Verwendung eines REST-API-Clients die [Qualifikationsgruppe abrufen](https://docs.microsoft.com/en-us/rest/api/searchservice/get-skillset).
+Qualifikationsgruppen werden in JSON erstellt. Mithilfe der [Ausdruckssprache](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) können Sie komplexe Qualifikationsgruppen mit Schleifen und [Verzweigungen](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) erstellen. Die Ausdruckssprache verwendet die [JSON-Zeiger](https://tools.ietf.org/html/rfc6901)-Pfadnotation mit einigen Änderungen zum Identifizieren von Knoten in der Anreicherungsstruktur. Ein ```"/"``` durchläuft eine niedrigere Ebene in der Struktur und ```"*"``` fungiert als „for-each“-Operator im Kontext. Diese Konzepte lassen sich am besten mit einem Beispiel verdeutlichen. Um einige Konzepte und Funktionen zu veranschaulichen, schauen wir uns die Qualifikationsgruppen für das [Beispiel „Hotelbewertungen“](knowledge-store-connect-powerbi.md) an. Um die Qualifikationsgruppe anzuzeigen, nachdem Sie den Workflow zum Importieren von Daten ausgeführt haben, müssen Sie unter Verwendung eines REST-API-Clients die [Qualifikationsgruppe abrufen](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
 
 ### <a name="enrichment-tree"></a>Anreicherungsstruktur
 
@@ -50,7 +50,7 @@ Sobald sich ein Dokument in der Anreicherungspipeline befindet, wird es als Inha
  Beim Ausführen von Qualifikationen werden neue Knoten zur Anreicherungsstruktur hinzugefügt. Diese neuen Knoten können dann als Eingaben für Downstreamqualifikationen verwendet werden, und somit in den Wissensspeicher projiziert oder Indexfeldern zugeordnet werden. Anreicherungen sind nicht änderbar: Die Knoten können nach der Erstellung nicht bearbeitet werden. Mit steigender Komplexität Ihrer Qualifikationen wird auch Ihre Anreicherungsstruktur komplexer, aber nicht alle Knoten in der Anreicherungsstruktur müssen in den Index oder Wissensspeicher aufgenommen werden. Sie können selektiv nur eine Teilmenge der Anreicherungen im Index oder Wissensspeicher beibehalten.
 
 Sie können selektiv nur eine Teilmenge der Anreicherungen im Index oder Wissensspeicher beibehalten.
-In den übrigen Teilen dieses Dokuments gehen wir vom [Beispiel „Hotelbewertungen“](https://docs.microsoft.com/en-us/azure/search/knowledge-store-connect-powerbi) aus, die gleichen Konzepte gelten aber auch für die Anreicherung von Dokumenten aus allen anderen Datenquellen.
+In den übrigen Teilen dieses Dokuments gehen wir vom [Beispiel „Hotelbewertungen“](https://docs.microsoft.com/azure/search/knowledge-store-connect-powerbi) aus, die gleichen Konzepte gelten aber auch für die Anreicherung von Dokumenten aus allen anderen Datenquellen.
 
 ### <a name="context"></a>Kontext
 Jede Qualifikation erfordert einen Kontext. Ein Kontext bestimmt Folgendes:

@@ -1,5 +1,5 @@
 ---
-title: Importieren von Daten für die Datenerfassung in einem Suchindex
+title: Import und Datenerfassung in Suchindizes
 titleSuffix: Azure Cognitive Search
 description: Füllen Sie Daten aus externen Datenquellen auf, und laden Sie sie in einen Index der kognitiven Azure-Suche hoch.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a05291012bcf44b1a07d9b451eef1302862b2fce
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: cc3f38e9bb96ce76263a3124f8bfdc49dc638bfd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794157"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113779"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Übersicht über den Datenimport – kognitive Azure-Suche
 

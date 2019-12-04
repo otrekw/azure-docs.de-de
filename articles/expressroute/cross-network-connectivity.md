@@ -1,21 +1,18 @@
 ---
-title: Netzwerkübergreifende Azure-Verbindungen | Microsoft-Dokumentation
+title: Netzwerkübergreifende Azure-Verbindungen
 description: Auf dieser Seite wird ein Anwendungsszenario für netzwerkübergreifende Verbindungen und Lösungen beschrieben, das auf Azure-Netzwerkfeatures basiert.
-documentationcenter: na
-services: networking
+services: expressroute
 author: rambk
-manager: tracsman
 ms.service: expressroute
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
-ms.openlocfilehash: 3bc189cf269084fdb26f141a36755c96554cad7b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e503dc2b4ae8773ebfedc7a9b73bc5ea93dd9d5a
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64866004"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74076749"
 ---
 # <a name="cross-network-connectivity"></a>Netzwerkübergreifende Verbindungen
 
@@ -117,7 +114,7 @@ Die folgende Tabelle zeigt die Routingtabelle des privaten Peerings der ExpressR
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Antworten auf weitere Fragen zu VNETs und zum VNET-Peering finden Sie unter [FAQs zu virtuellen Netzwerken][VNet-FAQ]. Antworten auf weitere Fragen zu ExpressRoute und zur VNET-Konnektivität finden Sie unter [ExpressRoute – FAQ][ER-FAQ].
+Antworten auf weitere Fragen zu VNETs und zum VNET-Peering finden Sie unter [FAQs zu virtuellen Netzwerken][VNet-FAQ]. Antworten auf weitere Fragen zu ExpressRoute und zur virtuellen Netzwerkkonnektivität finden Sie unter [ExpressRoute – FAQ][ER-FAQ].
 
 Global Reach wurde noch nicht in allen Ländern/Regionen eingeführt. Ob Global Reach in den gewünschten Ländern/Regionen verfügbar ist, erfahren Sie unter [ExpressRoute Global Reach][Global Reach].
 

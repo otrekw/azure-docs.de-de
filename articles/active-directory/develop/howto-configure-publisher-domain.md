@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren der Herausgeberdomäne einer Anwendung | Azure
+title: Konfigurieren der Herausgeberdomäne einer Anwendung
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie die Herausgeberdomäne einer Anwendung konfigurieren, damit Benutzer wissen, wohin ihre Informationen gesendet werden.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28021c0b8512ca12ead92b0b78541fce690b1f80
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 3558e589004e0488e5b96b0e39bd3f5ceea69658
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257935"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74013059"
 ---
-# <a name="how-to-configure-an-applications-publisher-domain-preview"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung (Vorschau)
+# <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
 Die Herausgeberdomäne einer Anwendung wird für Benutzer in der [Zustimmungsaufforderung der Anwendung](application-consent-experience.md) angezeigt, damit sie wissen, wohin ihre Informationen gesendet werden. Mehrinstanzenfähige Anwendungen, die nach dem 21. Mai 2019 registriert werden und über keine Herausgeberdomäne verfügen, werden als **nicht überprüft** angezeigt. Mehrinstanzenfähige Anwendungen sind Anwendungen, in denen Konten außerhalb eines einzelnen Organisationsverzeichnisses unterstützt werden, z. B. in denen alle Azure AD-Konten oder alle Azure AD-Konten und persönlichen Microsoft-Konten unterstützt werden.
 

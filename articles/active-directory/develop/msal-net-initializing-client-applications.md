@@ -1,5 +1,6 @@
 ---
-title: Initialisieren von Clientanwendungen (Microsoft Authentication Library für .NET) | Azure
+title: Initialisieren von Clientanwendungen (Microsoft Authentication Library für .NET)
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Initialisierung öffentlicher und vertraulicher Clientanwendungen mithilfe der Microsoft Authentication Library für .NET (MSAL.NET).
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +18,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5012da8f2ff41971df674fd35162fe14e1de8fc9
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: a8cf7b7004097ef5a4d915d8fdff60cc9606c5be
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532640"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73927080"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.NET
 Dieser Artikel beschreibt die Initialisierung öffentlicher und vertraulicher Clientanwendungen mithilfe der Microsoft Authentication Library für .NET (MSAL.NET).  Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
@@ -100,7 +101,7 @@ In den Codeausschnitten, in denen Anwendungsersteller verwendet werden, kann ein
 
 Folgende Modifizierer können Sie sowohl für einen öffentlichen als auch einen vertraulichen Clientanwendungsersteller festlegen:
 
-|Parameter | BESCHREIBUNG|
+|Modifizierer | BESCHREIBUNG|
 |--------- | --------- |
 |`.WithAuthority()` 7 Außerkraftsetzungen | Legt die Standardautorität der Anwendung auf eine Azure AD-Autorität fest, mit der Möglichkeit zur Auswahl der Azure-Cloud, der Zielgruppe, des Mandanten (Mandanten-ID oder Domänenname) oder mit direkter Angabe des Autoritäts-URI.|
 |`.WithAdfsAuthority(string)` | Legt die Standardautorität der Anwendung auf eine AD FS-Autorität fest.|
@@ -119,7 +120,7 @@ Folgende Modifizierer können Sie sowohl für einen öffentlichen als auch einen
 
 Folgende Modifizierer können Sie für einen öffentlichen Clientanwendungsersteller in Xamarin.iOS festlegen:
 
-|Parameter | BESCHREIBUNG|
+|Modifizierer | BESCHREIBUNG|
 |--------- | --------- |
 |`.WithIosKeychainSecurityGroup()` | **Nur Xamarin.iOS**: Legt die Sicherheitsgruppe der iOS-Keychain (für die Cachepersistenz) fest.|
 
@@ -127,7 +128,7 @@ Folgende Modifizierer können Sie für einen öffentlichen Clientanwendungserste
 
 Folgende Modifizierer können Sie für einen vertraulichen Clientanwendungsersteller festlegen:
 
-|Parameter | BESCHREIBUNG|
+|Modifizierer | BESCHREIBUNG|
 |--------- | --------- |
 |`.WithCertificate(X509Certificate2 certificate)` | Legt das Zertifikat fest, das die Anwendung bei Azure AD identifiziert.|
 |`.WithClientSecret(string clientSecret)` | Legt das Clientgeheimnis (App-Kennwort) fest, das die Anwendung bei Azure AD identifiziert.|

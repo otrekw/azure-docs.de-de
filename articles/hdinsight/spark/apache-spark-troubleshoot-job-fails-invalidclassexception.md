@@ -1,5 +1,5 @@
 ---
-title: Fehler bei Apache Spark-Auftrag mit InvalidClassException in Azure HDInsight
+title: Fehler „InvalidClassException“ aus Apache Spark – Azure HDInsight
 description: Apache Spark-Auftrag schlägt mit InvalidClassException, Klassenversionskonflikt in Azure HDInsight fehl
 ms.service: hdinsight
 ms.topic: troubleshooting
@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: c32b6a5ed7e8c052096f6125a5246fc9685302d4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 124d5586180258589c5db17454b8fbf1e465fc24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088689"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106488"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark-Auftrag schlägt mit InvalidClassException, Klassenversionskonflikt in Azure HDInsight fehl
 
@@ -34,7 +34,10 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Ursache
 
-Dieser Fehler kann durch Hinzufügen einer zusätzlichen JAR-Datei zur `spark.yarn.jars`-Konfiguration verursacht werden, die eine „shaded“ JAR-Datei ist, die eine andere Version des `commons-lang3`-Pakets enthält und einen Klassenkonflikt verursacht. Standardmäßig verwendet Spark 2.1/2/3 Version 3.5 von `commons-lang3`.
+Dieser Fehler kann durch Hinzufügen einer zusätzlichen JAR-Datei zur `spark.yarn.jars`-Konfiguration verursacht werden, insbesondere einer „schattierten“ (shaded) JAR-Datei, die eine andere Version des `commons-lang3`-Pakets enthält und einen Klassenkonflikt verursacht. Standardmäßig verwendet Spark 2.1/2/3 Version 3.5 von `commons-lang3`.
+
+> [!TIP]
+> Eine Bibliothek zu schattieren, bedeutet, den Inhalt der Bibliothek in Ihrer eigenen JAR-Datei zu speichern, wodurch das Paket geändert wird. Dies unterscheidet sich vom Verpacken der Bibliothek, bei dem die Bibliothek ohne erneutes Verpacken Ihrer eigenen JAR-Datei hinzugefügt wird.
 
 ## <a name="resolution"></a>Lösung
 

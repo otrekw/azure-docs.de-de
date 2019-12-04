@@ -7,12 +7,12 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 494beb6ba2bf8a9409962b4418089cdad0e182e1
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 7f48012ca1f97c2e28380d95da37863c4bc17f63
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114782"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73831838"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>Bereitstellen und Konfigurieren von Azure Firewall mithilfe von Azure PowerShell
 
@@ -241,7 +241,7 @@ Testen Sie nun die Firewall, um sicherzustellen, dass sie wie erwartet funktioni
    Invoke-WebRequest -Uri https://www.microsoft.com
    ```
 
-   Die Anforderungen an www.google.com sollten erfolgreich sein, die an www.microsoft.com sollten zu einem Fehler führen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
+   Die `www.google.com`-Anforderungen sollten erfolgreich sein, und die `www.microsoft.com`-Anforderungen sollten fehlschlagen. Dies zeigt, dass Ihre Firewall-Regeln wie erwartet funktionieren.
 
 Damit haben Sie sich vergewissert, dass die Firewallregeln funktionieren:
 

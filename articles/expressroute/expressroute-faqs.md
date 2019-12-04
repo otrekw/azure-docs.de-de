@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 10/28/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 4fd27acc58f5aaeb9b7680062ad97aaba22dec51
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: f27a6df86ebbe2b07b73016f304ac364e88664bb
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71686987"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73891039"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -43,7 +43,7 @@ Nein. Sie können eine VPN-Verbindung beliebiger Geschwindigkeit bei Ihrem Diens
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-the-ability-to-burst-up-to-higher-speeds-if-necessary"></a>Wenn ich für eine ExpressRoute-Verbindung mit einer bestimmten Bandbreite bezahle, habe ich die Möglichkeit, bei Bedarf höhere Geschwindigkeiten zu nutzen?
 
-Ja. ExpressRoute-Verbindungen sind so konfiguriert, dass Sie das erworbene Bandbreitenlimit um das Doppelte überschreiten können, ohne dass zusätzliche Kosten anfallen. Fragen Sie bei Ihrem Dienstanbieter an, ob er diese Funktion unterstützt. Dies gilt nicht für einen längeren Zeitraum und wird nicht garantiert. 
+Ja. ExpressRoute-Verbindungen sind so konfiguriert, dass Sie das erworbene Bandbreitenlimit um das Doppelte überschreiten können, ohne dass zusätzliche Kosten anfallen. Fragen Sie bei Ihrem Dienstanbieter an, ob er diese Funktion unterstützt. Dies gilt nicht für einen längeren Zeitraum und wird nicht garantiert.  Wenn der Datenverkehr über ein ExpressRoute-Gateway fließt, wird die Bandbreite für die SKU korrigiert und ist nicht burstfähig.
 
 ### <a name="can-i-use-the-same-private-network-connection-with-virtual-network-and-other-azure-services-simultaneously"></a>Kann ich dieselbe private Netzwerkverbindung gleichzeitig mit virtuellen Netzwerken und anderen Azure-Diensten verwenden?
 
@@ -66,6 +66,7 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 * [Office 365](https://aka.ms/ExpressRouteOffice365)
 * Power BI ist über eine regionale Azure-Community verfügbar. Die Region Ihres Power BI-Mandanten können Sie [hier](https://docs.microsoft.com/power-bi/service-admin-where-is-my-tenant-located) ermitteln.
 * Azure Active Directory
+* [Windows Virtual Desktop](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Community der globalen Azure-Dienste)
 * Die meisten Azure-Dienste werden unterstützt. Überprüfen Sie dies direkt für den Dienst, den Sie verwenden möchten.<br><br>**Die folgenden Dienste werden NICHT unterstützt**:
     * CDN
@@ -87,12 +88,20 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
     * Multi-Factor Authentication-Server (Vorversion)
     * Traffic Manager
 
+### <a name="why-i-see-advertised-public-prefixes-status-as-validation-needed-while-configuring-microsoft-peering"></a>Warum wird beim Konfigurieren des Microsoft-Peerings der Status „Angekündigte öffentliche Präfixe“ als „Überprüfung erforderlich“ angezeigt?
+
+Microsoft überprüft, ob Ihnen die angegebenen „Angekündigten öffentlichen Präfixe“ und „Peer-ASN" (oder „Kunden-ASN“) in der Internet Routing Registry zugewiesen werden. Wenn Sie die öffentlichen Präfixe aus einer anderen Entität erhalten und die Zuweisung nicht mit der Routing Registry aufgezeichnet wird, wird die automatische Überprüfung nicht durchgeführt, sodass eine manuelle Überprüfung erforderlich ist. Wenn bei der automatischen Überprüfung ein Fehler auftritt, wird die Meldung „Überprüfung erforderlich“ angezeigt.
+
+Wenn die Meldung „Überprüfung erforderlich“ angezeigt wird, sammeln Sie die Dokumente, in denen die öffentlichen Präfixe angezeigt werden, die Ihrer Organisation von der Entität zugewiesen wurden, die als Besitzer der Präfixe in der Routing Registry aufgeführt ist, und senden Sie diese Dokumente durch Öffnen eines Supporttickets zur manuellen Überprüfung, wie unten gezeigt.
+
+![](./media/expressroute-faqs/ticket-portal-msftpeering-prefix-validation.png)
+
 ### <a name="is-dynamics-365-supported-on-expressroute"></a>Wird Dynamics 365 in ExpressRoute unterstützt?
 
 Dynamics 365- und Common Data Service (CDS)-Umgebungen werden in Azure gehostet, sodass Kunden von der zugrunde liegenden ExpressRoute-Unterstützung für Azure-Ressourcen profitieren. Sie können eine Verbindung mit ihren Dienstendpunkten herstellen, wenn Ihr Routerfilter die Azure-Regionen umfasst, in denen Ihre Dynamics 365/CDS-Umgebungen gehostet werden.
 
 > [!NOTE]
-> [ExpressRoute Premium](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-faqs#expressroute-premium) ist für Dynamics 365-Konnektivität über Azure ExpressRoute **nicht** erforderlich.
+> [ExpressRoute Premium](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#expressroute-premium) ist für Dynamics 365-Konnektivität über Azure ExpressRoute **nicht** erforderlich.
 
 ## <a name="data-and-connections"></a>Daten und Verbindungen
 
@@ -303,7 +312,7 @@ Ja. Für ExpressRoute Premium werden neben den ExpressRoute-Verbindungsgebühren
 
 ## <a name="expressroute-local"></a>ExpressRoute Local
 ### <a name="what-is-expressroute-local"></a>Was ist ExpressRoute Local?
-ExpressRoute Local ist eine SKU der ExpressRoute-Verbindung, die nur unter [ExpressRoute Direct](expressroute-erdirect-about.md) verfügbar ist. Ein wichtiges Feature von ExpressRoute Local ist, dass Sie über eine Local-Verbindung an einem ExpressRoute-Peeringstandort nur Zugriff auf eine oder zwei Azure-Regionen an demselben Standort bzw. in dessen Nähe haben. Mit einer Standard-Verbindung haben Sie dagegen Zugriff auf alle Azure-Regionen eines geopolitischen Gebiets, und mit einer Premium-Verbindung auf alle Azure-Regionen weltweit. 
+Expressroute Local ist neben der Standard-SKU und der Premium-SKU eine SKU der ExpressRoute-Verbindung. Ein wichtiges Feature von ExpressRoute Local ist, dass Sie über eine Local-Verbindung an einem ExpressRoute-Peeringstandort nur Zugriff auf eine oder zwei Azure-Regionen an demselben Standort bzw. in dessen Nähe haben. Mit einer Standard-Verbindung haben Sie dagegen Zugriff auf alle Azure-Regionen eines geopolitischen Gebiets, und mit einer Premium-Verbindung auf alle Azure-Regionen weltweit. 
 
 ### <a name="what-are-the-benefits-of-expressroute-local"></a>Welche Vorteile hat ExpressRoute Local?
 Sie müssen für Ihre ExpressRoute-Standard- bzw. -Premium-Verbindung zwar für ausgehende Datenübertragungen zahlen, aber für Ihre ExpressRoute Local-Verbindung fallen hierfür keine separaten Kosten an. Anders ausgedrückt: Die Gebühren für die Datenübertragung sind im Preis von ExpressRoute Local enthalten. ExpressRoute Local ist eine wirtschaftlichere Lösung, falls Sie über eine große Menge von zu übertragenden Daten verfügen und Ihre Daten über eine private Verbindung an einen ExpressRoute-Peeringstandort in der Nähe der gewünschten Azure-Regionen verlagern können. 
@@ -314,9 +323,6 @@ Eine Local-Verbindung verfügt über die gleichen Features wie eine ExpressRoute
 * ExpressRoute Global Reach ist für Local nicht verfügbar
 
 Für ExpressRoute Local gelten auch die gleichen Einschränkungen in Bezug auf Ressourcen (z. B. die Anzahl von VNETs pro Verbindung) wie für Standard. 
-
-### <a name="how-to-configure-expressroute-local"></a>Konfigurieren von ExpressRoute Local 
-ExpressRoute Local ist nur unter ExpressRoute Direct verfügbar. Zuerst müssen Sie also Ihren ExpressRoute Direct-Port konfigurieren. Nachdem der Direct-Port erstellt wurde, können Sie anhand [dieser Anleitung](expressroute-howto-erdirect.md) eine Local-Verbindung erstellen.
 
 ### <a name="where-is-expressroute-local-available-and-which-azure-regions-is-each-peering-location-mapped-to"></a>Wo ist ExpressRoute Local verfügbar, und welchen Azure-Regionen sind die einzelnen Peeringstandorte zugeordnet?
 ExpressRoute Local ist an den Peeringstandorten verfügbar, in deren Nähe sich ein oder zwei Azure-Regionen befinden. Dies gilt nicht für einen Peeringstandort, für den sich im Bundesland/Kanton bzw. im Land keine Azure-Region befindet. Die genauen Zuordnungen finden Sie auf der [Seite mit den Standorten](expressroute-locations-providers.md).  

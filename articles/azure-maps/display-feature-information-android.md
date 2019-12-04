@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: dc72bb43752323576bed6e7991f33c4096ccabd4
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0dcabb0e5141a92394f2be38cbe7e71fa6e03d58
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976268"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928537"
 ---
-# <a name="display-feature-information"></a>Anzeigen von Merkmalsinformationen
+# <a name="display-feature-information"></a>Anzeigen von Featureinformationen
 
 Räumliche Daten werden häufig mithilfe von Punkten, Linien und Polygonen dargestellt. Diesen Daten sind häufig Metadateninformationen zugeordnet. Ein Punkt kann beispielsweise den Standort einer Filiale darstellen, und die Metadaten zu diesem Restaurant können den Namen, die Adresse und die Art des Essensangebots umfassen. Diese Metadaten können mithilfe eines JSON-Objekts (`JsonObject`) als Eigenschaften dieser Merkmale hinzugefügt werden. Der folgende Code erstellt ein einfaches Punktmerkmal mit einer Eigenschaft vom Typ `title` und dem Wert „Hello World!“:
 

@@ -1,5 +1,5 @@
 ---
-title: Feldzuordnungen für die automatisierte Indizierung mithilfe von Indexern
+title: Feldzuordnungen in Indexern
 titleSuffix: Azure Cognitive Search
 description: Konfigurieren von Feldzuordnungen in einem Indexer zum Ausgleichen von Unterschieden in Feldnamen und Datendarstellungen.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786969"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123997"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Feldzuordnungen und Transformationen mithilfe von Indexern der kognitiven Azure-Suche
 
@@ -175,11 +175,14 @@ Die kognitive Azure-Suche unterstützt zwei verschiedene Base64-Codierungen. Ver
 
 #### <a name="base64-encoding-options"></a>Base64-Codierungsoptionen
 
-Die kognitive Azure-Suche unterstützt zwei verschiedene Base64-Codierungen: das **HttpServerUtility-URL-Token** und die **URL-sichere Base64-Codierung ohne Auffüllung**. Eine während der Indizierung base64-codierte Zeichenfolge muss später mit denselben Codierungsoptionen decodiert werden. Andernfalls stimmt das Ergebnis nicht mit dem ursprünglichen Wert überein.
+Azure Cognitive Search unterstützt die URL-sichere Base64-Codierung sowie normale Base64-Codierung. Eine während der Indizierung base64-codierte Zeichenfolge muss später mit denselben Codierungsoptionen decodiert werden. Andernfalls stimmt das Ergebnis nicht mit dem ursprünglichen Wert überein.
 
 Wenn der Parameter `useHttpServerUtilityUrlTokenEncode` zum Codieren bzw. `useHttpServerUtilityUrlTokenDecode` zum Decodieren auf `true` festgelegt ist, verhält sich `base64Encode` wie [HttpServerUtility.UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) und `base64Decode` wie [HttpServerUtility.UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Wenn Sie nicht das vollständige .NET Framework (sondern .NET Core oder ein anderes Framework) verwenden, um die Schlüsselwerte zum Emulieren des Verhaltens der kognitiven Azure-Suche zu generieren, sollten Sie `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` auf `false` festlegen. Abhängig von der verwendeten Bibliothek können sich die Base64-Codierungsfunktionen und -Decodierungsfunktionen von den in der kognitiven Azure-Suche verwendeten Funktionen unterscheiden.
+> [!WARNING]
+> Wenn `base64Encode` verwendet wird, um Schlüsselwerte zu erzeugen, muss `useHttpServerUtilityUrlTokenEncode` auf „true“ festgelegt werden. Für Schlüsselwerte kann nur die URL-sichere Base64-Codierung verwendet werden. Weitere Informationen zum vollständigen Satz der Einschränkungen für Zeichen in Schlüsselwerten finden Sie unter [Benennungsregeln &#40;Azure Cognitive Search&#41;](https://docs.microsoft.com/rest/api/searchservice/naming-rules).
+
+Die .NET-Bibliotheken in Azure Cognitive Search setzen das vollständige .NET Framework voraus, das integrierte Codierung bereitstellt. Die Optionen `useHttpServerUtilityUrlTokenEncode` und `useHttpServerUtilityUrlTokenDecode` nutzen diese integrierten Funktionen. Wenn Sie .NET Core oder ein anderes Framework verwenden, empfiehlt es sich, diese Optionen auf `false` festzulegen und die Codierungs- und Decodierungsfunktionen Ihres Frameworks direkt aufzurufen.
 
 In der folgenden Tabelle werden verschiedene Base64-Codierungen der Zeichenfolge `00>00?00` verglichen. Um die erforderliche weitere Verarbeitung (sofern vorhanden) für die Base64-Funktionen zu ermitteln, wenden Sie die Codierfunktion der Bibliothek auf die Zeichenfolge `00>00?00` an und vergleichen die Ausgabe mit der erwarteten Ausgabe `MDA-MDA_MDA`.
 

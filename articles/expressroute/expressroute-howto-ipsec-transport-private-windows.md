@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurieren des IPsec-Transportmodus für Windows-Hosts – privates Peering: ExpressRoute: Azure | Microsoft-Dokumentation'
+title: 'Privates Azure ExpressRoute-Peering: Konfigurieren des IPsec-Transportmodus – Windows-Hosts'
 description: Vorgehensweise zum Aktivieren des IPsec-Transportmodus zwischen Windows Azure-VMs und lokalen Windows-Hosts über privates ExpressRoute-Peering mit Gruppenrichtlinienobjekten und Organisationseinheiten.
 services: expressroute
 author: fabferri
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: fabferri
 ms.custom: seodec18
-ms.openlocfilehash: d728980517988e2dc39be4e4b64d20157a1aef54
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1bc33047d31262af443cddc418853fbacd88aec1
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60366927"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74022005"
 ---
 # <a name="configure-ipsec-transport-mode-for-expressroute-private-peering"></a>Konfigurieren des IPsec-Transportmodus für privates ExpressRoute-Peering
 

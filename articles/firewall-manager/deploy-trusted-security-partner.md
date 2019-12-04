@@ -7,12 +7,12 @@ ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: victorh
-ms.openlocfilehash: fe733b686f2b56beee26a6c33c4d6264d621e627
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bcea9a8674e4b1979698b7d28eb4192172b0dc11
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511363"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73931306"
 ---
 # <a name="deploy-a-trusted-security-partner-preview"></a>Bereitstellen eines vertrauenswürdigen Sicherheitspartners (Vorschau)
 
@@ -83,12 +83,11 @@ Um Tunnel zum VPN-Gateway Ihres virtuellen Hubs einzurichten, benötigen Drittan
 
    > [!NOTE]
    > Zur genaueren Steuerung können Sie den Zugriff auf Ihre Ressourcengruppe beschränken.
-3. Befolgen Sie die Anweisungen im folgenden Link.
+3. Befolgen Sie die Anweisungen unter [ZScaler: Configuring a Microsoft Azure Virtual WAN Integration](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) (Konfigurieren einer Microsoft Azure Virtual WAN-Integration), um folgende Aufgaben auszuführen:
 
-   - Melden Sie sich beim Partnerportal an, und fügen Sie Ihre Anmeldeinformationen hinzu, um dem vertrauenswürdigen Partner Zugriff auf Ihren geschützten Hub zu gewähren.
-   - Wenn Ihre Azure AD-Authentifizierungsinformationen validiert wurden, führen Sie die folgenden Anweisungen aus, um die virtuellen Hubs im Partnerportal zu synchronisieren und den Tunnel zum virtuellen Hub einzurichten.
-
-   [ZScaler: Configuring a Microsoft Azure Virtual WAN Integration](https://help.zscaler.com/zia/configuring-microsoft-azure-virtual-wan-integration) (Konfigurieren einer Microsoft Azure Virtual WAN-Integration)
+   - Anmelden beim Partnerportal, und Hinzufügen Ihrer Anmeldeinformationen, um dem vertrauenswürdigen Partner Zugriff auf Ihren geschützten Hub zu gewähren.
+   - Synchronisieren der virtuellen Hubs im Partnerportal, und Einrichten des Tunnels für den virtuellen Hub. Dies ist möglich, sobald die Anmeldeinformationen für die Azure AD-Authentifizierung überprüft wurden.
+   
 4. Im Azure Virtual WAN-Portal in Azure können Sie den Status der Tunnelerstellung anzeigen. Sobald die Tunnel sowohl im Azure-Portal als auch im Partnerportal **verbunden** anzeigen, fahren Sie mit den nächsten Schritten fort, um Routen einzurichten, mit denen ausgewählt wird, welche Zweigstellen und VNETs Internetdatenverkehr an den Partner senden sollen.
 
 ## <a name="configure-route-settings"></a>Konfigurieren von Routeneinstellungen

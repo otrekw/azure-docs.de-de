@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25cd36b6b3e8a6974618189985152e55c2676999
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: bb90fafb48be1d3389597c6188b0200743f90c3e
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69874298"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74065972"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
@@ -24,16 +24,16 @@ Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre
 
 | Bericht | Location | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| Verlauf – gesperrte Benutzer | Azure AD > MFA-Server > Benutzer blockieren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
+| Verlauf – gesperrte Benutzer | Azure AD > Sicherheit > MFA > Benutzer sperren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
 | Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
-| Nutzung für lokale Komponenten | Azure AD > MFA-Server > Aktivitätsbericht | Bietet Informationen zur Gesamtnutzung für MFA durch die NPS-Erweiterung, AD FS und den MFA-Server. |
-| Verlauf – Umgangene Benutzer | Azure AD > MFA-Server > Einmalumgehung | Zeigt den Verlauf von Anforderungen zur Umgehung der Multi-Factor Authentication für einen Benutzer an. |
-| Serverstatus | Azure AD > MFA-Server > Serverstatus | Zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind. |
+| Nutzung für lokale Komponenten | Azure AD > Sicherheit > MFA > Aktivitätsbericht | Bietet Informationen zur Gesamtnutzung für MFA durch die NPS-Erweiterung, AD FS und den MFA-Server. |
+| Verlauf – Umgangene Benutzer | Azure AD > Sicherheit > MFA > Einmalige Umgehung | Zeigt den Verlauf von Anforderungen zur Umgehung der Multi-Factor Authentication für einen Benutzer an. |
+| Serverstatus | Azure AD > Sicherheit > MFA > Serverstatus | Zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind. |
 
 ## <a name="view-mfa-reports"></a>Anzeigen von MFA-Berichten
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** > **MFA-Server** aus.
+2. Wählen Sie auf der linken Seite **Azure Active Directory** > **Sicherheit** > **MFA** aus.
 3. Wählen Sie den Bericht aus, den Sie anzeigen möchten.
 
    ![MFA Server-Serverstatusbericht im Azure-Portal](./media/howto-mfa-reporting/report.png)
@@ -115,7 +115,7 @@ Diese Daten sind über das [Azure-Portal](https://portal.azure.com) und die [Ber
 
 **MFA-Authentifizierungsdetail:** Bereinigte Version der Telefonnummer, z.B. +X XXXXXXXX64.
 
-**Bedingter Zugriff**: Finden Sie Informationen über Richtlinien für bedingten Zugriff, die den Anmeldeversuch beeinflusst haben, einschließlich:
+**Bedingter Zugriff**: Finden Sie Informationen zu Richtlinien für bedingten Zugriff, die den Anmeldeversuch beeinflusst haben, einschließlich:
 
 - Richtlinienname
 - Gewährungssteuerelemente

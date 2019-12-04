@@ -1,19 +1,18 @@
 ---
-title: 'Erstellen und Ändern einer ExpressRoute-Verbindung: Azure CLI | Microsoft-Dokumentation'
+title: 'Erstellen und Ändern einer ExpressRoute-Verbindung: Azure-Befehlszeilenschnittstelle'
 description: Dieser Artikel beschreibt das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung mithilfe der CLI.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 75729811b63e8de3047e45e9b90f5fa3ec657901
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657069"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083223"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern einer ExpressRoute-Verbindung mit der CLI
 
@@ -142,8 +141,8 @@ Das folgende Beispiel zeigt, wie Sie eine ExpressRoute-Verbindung mit 200 MBit/
 
 Stellen Sie sicher, dass Sie die richtige SKU-Ebene und die richtige SKU-Familie angeben.
 
-* Die SKU-Ebene bestimmt, ob ein ExpressRoute Standard- oder ein ExpressRoute Premium-Add-On aktiviert wird. Sie können „Standard“ für die Standard-SKU bzw. „Premium“ für das Premium-Add-On angeben.
-* Die SKU-Familie bestimmt den Abrechnungstyp. Sie können „Metereddata“ für einen Volumentarif und „Unlimiteddata“ für einen unbegrenzten Datentarif auswählen. Sie können den Abrechnungstyp von „Metereddata“ in „Unlimiteddata“ ändern, nicht jedoch umgekehrt („Unlimiteddata“ in „Metereddata“).
+* Der SKU-Tarif bestimmt, ob eine ExpressRoute-Verbindung eine [lokale](expressroute-faqs.md#expressroute-local), Standard- oder [Premium](expressroute-faqs.md#expressroute-premium)-Verbindung ist. Sie können *Lokal*, *Standard* oder *Premium* angeben.
+* Die SKU-Familie bestimmt den Abrechnungstyp. Sie können *Metereddata* für einen Volumentarif und *Unlimiteddata* für einen Plan mit Datenflatrate auswählen. Sie können den Abrechnungstyp von *Metereddata* in *Unlimiteddata* ändern, nicht jedoch umgekehrt (*Unlimiteddata* in *Metereddata*). Eine *lokale* Verbindung kann nur vom Typ *Unlimiteddata* sein.
 
 
 Ihre ExpressRoute-Verbindung wird von dem Moment an berechnet, in dem ein Dienstschlüssel ausgegeben wird. Nachfolgend sehen Sie eine Beispielanforderung für einen neuen Dienstschlüssel:

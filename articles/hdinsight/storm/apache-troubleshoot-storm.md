@@ -2,19 +2,19 @@
 title: Problembehandlung bei Storm mit Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Storm und Azure HDInsight.
 keywords: Azure HDInsight, Storm, FAQ, Problembehandlungshandbuch, allgemeine Probleme
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: troubleshooting
-ms.date: 08/15/2019
+ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f307d6245b107fdbd3c6d6baafa5a162988235da
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: e2cc9dd81a0bbefa5cf37facb6067bda07117eaf
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800008"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73903719"
 ---
 # <a name="troubleshoot-apache-storm-by-using-azure-hdinsight"></a>Problembehandlung bei Apache Storm mit Azure HDInsight
 
@@ -167,6 +167,16 @@ Die Worker Log4J-Konfiguration wird aus `/usr/hdp/\<HDP version>/storm/log4j2/wo
 
 Beispiele: `/usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml`
 `/usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml`
+
+---
+
+## <a name="not-a-leader-exception"></a>Keine übergeordnete Ausnahme
+
+Wenn eine Topologie übermittelt wird, erhält der Benutzer möglicherweise eine Fehlermeldung ähnlich der folgenden: `Topology submission exception, cause not a leader, the current leader is NimbusInfo`.
+
+Um das Problem zu beheben, muss der Benutzer möglicherweise ein Ticket einreichen, damit die Knoten neu gestartet bzw. neu hochgefahren werden. Weitere Informationen finden Sie unter [https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html](https://community.hortonworks.com/content/supportkb/150287/error-ignoring-exception-while-trying-to-get-leade.html).
+
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

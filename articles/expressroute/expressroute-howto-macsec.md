@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurieren von MACsec – ExpressRoute: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Konfigurieren von MACsec'
 description: In diesem Artikel wird erläutert, wie Sie MACsec zum Sichern der Verbindungen zwischen Ihren Edgeroutern und den Edgeroutern von Microsoft konfigurieren.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748275"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083550"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>Konfigurieren von MACsec für ExpressRoute Direct-Ports
 

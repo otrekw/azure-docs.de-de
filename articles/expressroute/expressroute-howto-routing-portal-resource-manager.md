@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurieren des Peerings für eine Verbindung – ExpressRoute: Azure | Microsoft-Dokumentation'
+title: 'Azure ExpressRoute: Konfigurieren des Peerings'
 description: In diesem Artikel sind die Schritte zur Erstellung und Bereitstellung von privatem ExpressRoute- und Microsoft-Peering dokumentiert. Außerdem wird in diesem Artikel veranschaulicht, wie Sie den Status von Peerings für eine Leitung überprüfen bzw. diese aktualisieren oder löschen.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 08d8103c4b35148a87d347e31b11c7c8c968598b
-ms.sourcegitcommit: dda9fc615db84e6849963b20e1dce74c9fe51821
+ms.openlocfilehash: 5fb728cccd77d0cefd10c124cb7215dc3b880fe3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67622348"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083537"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung
 
@@ -61,11 +60,11 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
    **Verbindung – Anbieterstatus: Nicht bereitgestellt**
 
-    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Anbieterstatus: Nicht bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
+    [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m.png "Provider status: Not provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-m-lightbox.png#lightbox)
 
    **Verbindung – Anbieterstatus: Bereitgestellt**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Anbieterstatus = Bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Provider status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 2. Konfigurieren Sie das Microsoft-Peering für die Verbindung. Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
 
    * Ein /30-Subnetz für die primäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein, das sich in Ihrem Besitz befindet und über eine RIR/IRR-Registrierung verfügt. Über dieses Subnetz weisen Sie die erste verwendbare IP-Adresse für Ihren Router zu, da die zweite verwendbare IP-Adresse von Microsoft für den eigenen Router genutzt wird.
@@ -83,6 +82,12 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
    ![Konfigurieren des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
+> [!IMPORTANT]
+> Microsoft überprüft, ob Ihnen die angegebenen „Angekündigten öffentlichen Präfixe“ und „Peer-ASN" (oder „Kunden-ASN“) in der Internet Routing Registry zugewiesen werden. Wenn Sie die öffentlichen Präfixe aus einer anderen Entität erhalten und die Zuweisung nicht mit der Routing Registry aufgezeichnet wird, wird die automatische Überprüfung nicht durchgeführt, sodass eine manuelle Überprüfung erforderlich ist. Wenn bei der automatischen Überprüfung ein Fehler auftritt, wird die Meldung „Überprüfung erforderlich“ angezeigt. 
+>
+> Wenn die Meldung „Überprüfung erforderlich“ angezeigt wird, sammeln Sie die Dokumente, in denen die öffentlichen Präfixe angezeigt werden, die Ihrer Organisation von der Entität zugewiesen wurden, die als Besitzer der Präfixe in der Routing Registry aufgeführt ist, und senden Sie diese Dokumente durch Öffnen eines Supporttickets zur manuellen Überprüfung, wie unten gezeigt. 
+>
+
    Wenn Ihre Verbindung wie oben dargestellt in den Zustand „Überprüfung erforderlich“ versetzt wird, müssen Sie ein Supportticket öffnen, um gegenüber unserem Supportteam nachzuweisen, dass sich die Präfixe in Ihrem Besitz befinden. Sie können ein Supportticket direkt über das Portal erstellen, wie im folgenden Beispiel zu sehen:
 
    ![Überprüfung erforderlich – Supportticket](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
@@ -95,7 +100,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 Sie können die Eigenschaften des Microsoft-Peerings anzeigen, indem Sie die Zeile für das Peering auswählen.
 
-[![Anzeigen der Eigenschaften des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "Anzeigen von Eigenschaften")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
+[![Anzeigen der Eigenschaften des Microsoft-Peerings](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "Eigenschaften anzeigen")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
 ### <a name="updatemsft"></a>So aktualisieren Sie die Konfiguration des Microsoft-Peerings:
 
 Sie können die Zeile für das Peering auswählen, das Sie ändern möchten, und anschließend die Peeringeigenschaften ändern und die Änderungen speichern.
@@ -120,11 +125,11 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
    **Verbindung – Anbieterstatus: Nicht bereitgestellt**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Anbieterstatus = Nicht bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
+   [![](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p.png "Provider status = Not Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/not-provisioned-p-lightbox.png#lightbox)
 
    **Verbindung – Anbieterstatus: Bereitgestellt**
 
-   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Anbieterstatus – Bereitgestellt")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
+   [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png "Provider Status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
 
 2. Konfigurieren Sie das private Azure-Peering für die Verbindung. Stellen Sie sicher, dass Sie über die folgenden Elemente verfügen, bevor Sie mit den nächsten Schritten fortfahren:
 
@@ -136,7 +141,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
    * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
 3. Wählen Sie die Zeile für das private Azure-Peering aus, wie im folgenden Beispiel gezeigt:
 
-   [![Auswählen der Zeile für privates Peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "Auswählen der Zeile für privates Peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
+   [![Auswählen der Zeile für das private Peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "Auswählen der Zeile für das private Peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
 4. Konfigurieren Sie das private Azure-Peering. **Speichern** Sie die Konfiguration, nachdem Sie alle Parameter angegeben haben.
 
    ![Konfigurieren des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
@@ -148,7 +153,7 @@ Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Lö
 
 Sie können die Eigenschaften des privaten Azure-Peerings anzeigen, indem Sie das Peering auswählen.
 
-[![Anzeigen der Eigenschaften des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "Anzeigen der Eigenschaften des privaten Peerings")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
+[![Anzeigen der Eigenschaften für das private Peering](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "Anzeigen der Eigenschaften für das private Peering")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
 ### <a name="updateprivate"></a>So aktualisieren Sie die Konfiguration für privates Azure-Peering:
 

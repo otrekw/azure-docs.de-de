@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: mlearned
-ms.openlocfilehash: f27b910910ca21aa36582506e6c7b2d1d39da88a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ce5d2965d0127eec01620c702d7d83bd0b39416
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472862"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73885791"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -122,6 +122,35 @@ Nachdem Sie die automatische Clusterskalierung deaktiviert haben, können Sie de
 ## <a name="re-enable-a-disabled-cluster-autoscaler"></a>Erneutes Aktivieren der deaktivierten automatischen Clusterskalierung
 
 Wenn Sie die automatische Clusterskalierung für einen vorhandenen Cluster wieder aktivieren möchten, können Sie sie mit dem Befehl [az aks update][az-aks-update] unter Angabe der Parameter *--enable-cluster-autoscaler*, *--min-count* und *--max-count* wieder aktivieren.
+
+## <a name="retrieve-cluster-autoscaler-logs-and-status"></a>Abrufen von Protokollen und Status der automatischen Clusterskalierung
+
+Zum Diagnostizieren und Debuggen von Ereignissen der automatischen Skalierung können Protokolle und Status aus dem AutoScaler-Add-On abgerufen werden.
+
+AKS verwaltet die automatische Clusterskalierung in Ihrem Namen und führt sie in der verwalteten Steuerungsebene aus. Masterknotenprotokolle müssen so konfiguriert sein, dass Sie als Ergebnis angezeigt werden.
+
+Führen Sie die folgenden Schritte aus, um zu konfigurieren, dass Protokolle per Push aus der automatischen Clusterskalierung in Log Analytics übertragen werden.
+
+1. Richten Sie eine Regel für Diagnoseprotokolle ein, um Protokolle der automatischen Clusterskalierung per Push in Log Analytics zu übertragen. [Die Anweisungen werden hier erläutert](https://docs.microsoft.com/azure/aks/view-master-logs#enable-diagnostics-logs). Stellen Sie sicher, dass Sie das Kontrollkästchen für `cluster-autoscaler` aktivieren, wenn Sie Optionen für „Protokolle“ auswählen.
+1. Klicken Sie im Azure-Portal in Ihrem Cluster auf den Abschnitt „Protokolle“.
+1. Geben Sie die folgende Beispielabfrage in Log Analytics ein:
+
+```
+AzureDiagnostics
+| where Category == "cluster-autoscaler"
+```
+
+Sofern Protokolle zum Abrufen vorhanden sind, sollten diese in etwa folgendermaßen angezeigt werden.
+
+![Log Analytics-Protokolle](media/autoscaler/autoscaler-logs.png)
+
+Die automatische Clusterskalierung schreibt auch den Integritätsstatus in ein ConfigMap-Element mit dem Namen `cluster-autoscaler-status`. Führen Sie den folgenden `kubectl`-Befehl aus, um diese Protokolle abzurufen. Für jeden mit der automatischen Clusterskalierung konfigurierten Knotenpool wird ein Integritätsstatus angezeigt.
+
+```
+kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+Weitere Informationen dazu, welche Elemente von AutoScaler protokolliert werden, finden Sie in den häufig gestellten Fragen zum [Kubernetes/AutoScaler GitHub-Projekt](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#ca-doesnt-work-but-it-used-to-work-yesterday-why).
 
 ## <a name="use-the-cluster-autoscaler-with-multiple-node-pools-enabled"></a>Verwenden der automatischen Clusterskalierung mit mehreren aktivierten Knotenpools
 

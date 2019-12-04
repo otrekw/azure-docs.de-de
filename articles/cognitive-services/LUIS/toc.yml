@@ -46,10 +46,10 @@
         - name: 2. Extrahieren von Benutzerdaten
           href: tutorial-machine-learned-entity.md
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+        - name: 3. Ermitteln der Stimmung anhand von Benutzeräußerungen
+          href: tutorial-publish-settings.md
     - name: Erstellen einer App
       items:
-        - name: Ermitteln der Stimmung anhand von Benutzeräußerungen
-          href: luis-quickstart-intent-and-sentiment-analysis.md
         - name: Abrufen von gut formatierten Daten mit regulären Ausdrücken
           href: luis-quickstart-intents-regex-entity.md
         - name: Abrufen genauer Textübereinstimmungen mithilfe von Listen

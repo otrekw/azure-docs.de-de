@@ -1,7 +1,7 @@
 ---
 title: Grundlegendes zu OData-Sammlungsfiltern
 titleSuffix: Azure Cognitive Search
-description: Informationen dazu, wie OData-Sammlungsfilter in Abfragen der kognitiven Azure-Suche funktionieren.
+description: Informieren Sie sich über die Funktionsweise von OData-Sammlungsfiltern in Azure Cognitive Search-Abfragen, einschließlich für Sammlungen spezifischer Einschränkungen und Verhaltensweisen.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a57e1d16b13d822b6f5b541a7f838b0dd3a69ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794394"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113068"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Grundlegendes zu OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
@@ -190,6 +190,6 @@ Spezifische Beispiele dafür, welche Arten von Filtern zulässig sind und welche
 
 - [Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche](search-query-troubleshoot-collection-filters.md)
 - [Filter in der kognitiven Azure-Suche](search-filters.md)
-- [Übersicht über die OData-Ausdruckssprache für die kognitive Azure-Suche](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für die kognitive Azure-Suche](search-query-odata-syntax-reference.md)
-- [Suchen von Dokumenten &#40;REST-API für die kognitive Azure-Suche&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)

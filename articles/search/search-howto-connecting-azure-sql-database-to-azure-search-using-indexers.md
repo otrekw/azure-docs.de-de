@@ -1,5 +1,5 @@
 ---
-title: Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern
+title: Durchsuchen von Azure SQL-Daten
 titleSuffix: Azure Cognitive Search
 description: Importieren von Daten aus Azure SQL-Datenbank mithilfe von Indexern für die Volltextsuche in der kognitiven Azure-Suche. Dieser Artikel behandelt Verbindungen, Indexerkonfiguration und Datenerfassung.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792194"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113308"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung von Indexern der kognitiven Azure-Suche
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Verbinden und Indizieren von Azure SQL-Datenbankinhalten unter Verwendung eines Azure Cognitive Search-Indexers
 
 Bevor Sie einen [Index der kognitiven Azure-Suche](search-what-is-an-index.md) abfragen können, müssen Sie ihn mit Daten auffüllen. Wenn sich die Daten in einer Azure SQL-Datenbank befinden, können Sie mit einem **Indexer der kognitiven Azure-Suche für Azure SQL-Datenbank** (oder kurz **Azure SQL-Indexer**) den Indizierungsprozess automatisieren. Sie müssen also weniger Code schreiben und sich weniger Gedanken über die Infrastruktur machen.
 

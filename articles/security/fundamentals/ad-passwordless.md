@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 0fbd8404e326ecc6fabef8c89991009809b1448b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820508"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007279"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Eine Welt ohne Kennwörter – mit Azure Active Directory
 
@@ -24,7 +24,7 @@ Zu den drei häufigsten Methoden zur Gefährdung von Benutzerkonten zählen Kenn
 
 Dieser Artikel beschreibt Grundlegendes zur Funktion und Implementierung der kennwortlosen Lösungen von Microsoft und bietet Hilfestellung bei der Auswahl der folgenden Optionen:
 
-* **Windows Hello for Business**. In Windows 10 können Sie über Windows Hello for Business Kennwörter durch eine sichere zweistufige Authentifizierung auf PCs und mobilen Geräten ersetzen. Diese Authentifizierung besteht aus einer neuen Form von Anmeldeinformationen, die an ein Gerät gebunden sind und biometrische Daten oder eine PIN verwenden.
+* **Windows Hello for Business**. In Windows 10 können Sie über Windows Hello for Business Kennwörter durch eine sichere zweistufige Authentifizierung auf PCs und mobilen Geräten ersetzen. Diese Authentifizierung besteht aus einer neuen Form von Anmeldeinformationen, die an ein Gerät gebunden sind und biometrische Erkennung oder eine PIN verwenden.
 
 * **Anmelden ohne Kennwort mit Microsoft Authenticator**. Mit der Microsoft Authenticator-App können sich Benutzer ohne Kennwort bei einem Azure AD-Konto anmelden. Ähnlich wie die Technologie von Windows Hello for Business nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischen Daten oder einer PIN beruhen.
 

@@ -1,5 +1,5 @@
 ---
-title: Einführung in die inkrementelle Indizierung (Vorschau)
+title: Inkrementelle Indizierung (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Konfigurieren Sie Ihre KI-Anreicherungspipeline für letztliche Datenkonsistenz, um für jegliche Aktualisierungen von Qualifikationen, Skillsets Indexern oder Datenquellen gewappnet zu sein. Dieses Feature ist zurzeit als öffentliche Vorschauversion verfügbar.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715420"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113589"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Was ist die inkrementelle Indizierung in Azure Cognitive Search?
 
