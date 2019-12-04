@@ -1,24 +1,24 @@
 ---
-title: Anzeigen von Berechtigungen der Administratorrolle im Admin Center | Microsoft-Dokumentation
+title: Anzeigen der Zuweisungen benutzerdefinierter Rollen im Azure AD-Portal | Microsoft-Dokumentation
 description: Sie können jetzt Mitglieder einer Azure AD-Administratorrolle im Azure AD Admin Center anzeigen und verwalten.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbe3b0218b73649d40f27d17ee2c7de2853c6b7c
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d989a515a1a3c1dc12ca357a3ab2126e78800ffa
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025558"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74024419"
 ---
 # <a name="view-custom-role-assignments-in-azure-active-directory"></a>Anzeigen der Zuweisungen benutzerdefinierter Rollen in Azure Active Directory
 

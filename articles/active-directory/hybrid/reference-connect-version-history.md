@@ -2,26 +2,22 @@
 title: 'Azure AD Connect: Versionsverlauf | Microsoft-Dokumentation'
 description: In diesem Artikel sind alle Versionen von Azure AD Connect und Azure AD Sync aufgeführt.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
-ms.devlang: na
 ms.topic: reference
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5132581c3d79db88dabc3c20ac3b962226d8a12d
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025831"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73944225"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -35,17 +31,25 @@ Thema |  Details
 --------- | --------- |
 Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisieren von einer früheren Version auf die aktuelle Version](how-to-upgrade-previous-version.md) von Azure AD Connect.
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](reference-connect-accounts-permissions.md#upgrade).
-
-Download | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
+Download| [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Das Veröffentlichen einer neuen Version von Azure AD Connect ist ein Prozess, der mehrere Qualitätskontrollschritte erfordert, um die Funktionalität des Diensts sicherzustellen. Im Laufe dieses Prozesses wird die Versionsnummer und der Status des Releases aktualisiert, um den aktuellen Zustand wiederzugeben.
 Während dieses Prozesses enthält die Versionsnummer des Releases ein „X“ an der Position der Nebenversion (z.B. 1.3.X.0). Dies bedeutet, dass die Versionshinweise in diesem Dokument für alle Versionen gültig sind, die mit „1.3“ beginnen. Sobald wir den Veröffentlichungsprozess beendet haben, wird die Versionsnummer auf die aktuell veröffentliche Version und der Releasestatus auf „Für den Download und für automatisches Upgrade veröffentlicht“ aktualisiert.
-Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) erhalten Sie weitere Informationen zu diesem Thema.
+Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md) erhalten Sie weitere Informationen zu diesem Thema.
+
+## <a name="14320"></a>1.4.32.0
+### <a name="release-status"></a>Releasestatus
+08.11.2019: Für den Download veröffentlicht. Nicht für automatisches Upgrade verfügbar
+
+>[!IMPORTANT]
+>Wenn Sie Konfigurationseinstellungen für die AD FS-Vertrauensstellung mithilfe von MSOnline PowerShell verwalten, müssen Sie Ihr MSOnline PowerShell-Modul aufgrund einer internen Schemaänderung in dieser Version von Azure AD Connect auf Version 1.1.183.57 oder höher aktualisieren.
+### <a name="fixed-issues"></a>Behobene Probleme
+
+In dieser Version wird ein Problem bei vorhandenen in Hybrid-Azure AD eingebundenen Geräten behoben. Dieses Release enthält eine neue Gerätesynchronisierungsregel, die dieses Problem behebt.
+Beachten Sie, dass diese Regeländerung dazu führen kann, dass veraltete Geräte aus Azure AD gelöscht werden. Dies ist kein Grund zur Besorgnis, weil diese Geräteobjekte bei der Autorisierung mit bedingtem Zugriff von Azure AD nicht verwendet werden. Bei einigen Kunden kann die Anzahl der Geräte, die durch diese Regeländerung gelöscht werden, den Schwellenwert für Löschungen überschreiten. Wenn das Löschen von Geräteobjekten in Azure AD den Schwellenwert für den Löschvorgang beim Export überschreitet, wird empfohlen, diese Löschvorgänge zuzulassen. [Anleitung: Zulassen von Löschvorgängen bei Überschreiten des Schwellenwerts für Löschungen](how-to-connect-sync-feature-prevent-accidental-deletes.md)
 
 ## <a name="14250"></a>1.4.25.0
-
-
 
 ### <a name="release-status"></a>Releasestatus
 28.09.2019: Veröffentlicht als automatisches Upgrade für ausgewählte Mandanten. Nicht als Download verfügbar.
@@ -62,7 +66,7 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 >Wir untersuchen einen Incident, bei dem bei einigen Kunden nach dem Upgraden auf diese Version von Azure AD Connect auf bestehenden in Hybrid-Azure AD eingebundenen Geräten ein Problem auftritt. Wir empfehlen Kunden, die Azure AD Hybrid Join bereitgestellt haben, das Upgrade auf diese Version zu verschieben, bis die Grundursache dieser Probleme vollständig verstanden und behoben wurde. Weitere Informationen werden so bald wie möglich bereitgestellt.
 
 >[!IMPORTANT]
->Diese Version von Azure AD Connect kann bei einigen Kunden dazu führen, dass einige oder sämtliche ihrer Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Weitere Informationen finden Sie unter [Grundlegendes zum Verschwinden eines Azure AD Connect 1.4.xx.x-Geräts](reference-connect-device-disappearance.md)
+>Diese Version von Azure AD Connect kann bei einigen Kunden dazu führen, dass einige oder sämtliche ihrer Windows-Geräte in Azure AD nicht mehr angezeigt werden. Dies ist kein Grund zur Besorgnis, da diese Geräteidentitäten bei der Autorisierung mit bedingtem Zugriff in Azure AD nicht verwendet werden. Weitere Informationen finden Sie unter [Grundlegendes zum Verschwinden eines Azure AD Connect 1.4.xx.x-Geräts](reference-connect-device-disappearance.md)
 
 
 ### <a name="release-status"></a>Releasestatus
@@ -80,8 +84,8 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 - Auf der Seite „Connectoreigenschaften“ wurde eine Warnung zur Einstellung für den Synchronisierungsdienst-Manager hinzugefügt. Diese Warnung informiert den Benutzer, dass über den AADC-Assistenten Änderungen vorgenommen werden sollten.
 - Es wurde ein neuer Fehler bei Problemen mit der Kennwortrichtlinie eines Benutzers hinzugefügt.
 - Verhindern von Fehlkonfigurationen beim Filtern von Gruppen nach Domänen und Organisationseinheiten. Bei der Gruppenfilterung wird ein Fehler angezeigt, wenn die Domäne/Organisationseinheit der eingegebenen Gruppe bereits herausgefiltert wurde. Der Benutzer kann den Vorgang erst fortsetzen, wenn das Problem behoben wurde.
-- Benutzer können auf der alten Benutzeroberfläche keinen Connector für Active Directory Domain Services oder Windows Azure Active Directory erstellen.
-- Die Barrierefreiheit für die benutzerdefinierten UI-Steuerelemente im Synchronisierungsdienst-Manager wurde korrigiert
+- Benutzer können auf der Benutzeroberfläche von Synchronization Service Manager keinen Connector für Active Directory Domain Services oder Windows Azure Active Directory mehr erstellen.
+- Die Barrierefreiheit von benutzerdefinierten Steuerelementen der Benutzeroberfläche von Synchronization Service Manager wurde korrigiert.
 - In Azure AD Connect wurden sechs Verbundverwaltungsaufgaben für alle Anmeldemethoden aktiviert.  (Bisher war nur die Aufgabe „AD FS-SSL-Zertifikat aktualisieren“ für alle Anmeldungen verfügbar.)
 - Es wurde eine Warnung hinzugefügt, dass beim Ändern der Anmeldemethode von Verbund zu PHS oder PTA alle Azure AD-Domänen und -Benutzer zur verwalteten Authentifizierung konvertiert werden.
 - Tokensignaturzertifikate wurden aus der Aufgabe „Azure AD- und AD FS-Vertrauensstellung zurücksetzen“ entfernt, und eine separate Unteraufgabe zum Aktualisieren dieser Zertifikate wurde hinzugefügt.
@@ -120,7 +124,7 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 
 ### <a name="fixed-issues"></a>Behobene Probleme 
 
-- Ein Sicherheitsrisiko in Verbindung mit der Rechteerweiterung in Microsoft Azure Active Directory Connect, Build 1.3.20.0, wurde behoben.  Dieses Sicherheitsrisiko ermöglicht es einem Angreifer unter bestimmten Bedingungen, zwei Powershell-Cmdlets im Kontext eines privilegierten Kontos sowie privilegierte Aktionen auszuführen.  Das Problem wird durch das Sicherheitsupdate behoben, indem diese Cmdlets deaktiviert werden. Weitere Informationen finden Sie unter [Sicherheitsupdate](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1000).
+- Ein Sicherheitsrisiko in Verbindung mit der Rechteerweiterung in Microsoft Azure Active Directory Connect, Build 1.3.20.0, wurde behoben.  Dieses Sicherheitsrisiko ermöglicht es einem Angreifer unter bestimmten Bedingungen, zwei Powershell-Cmdlets im Kontext eines privilegierten Kontos sowie privilegierte Aktionen auszuführen.  Das Problem wird durch das Sicherheitsupdate behoben, indem diese Cmdlets deaktiviert werden. Weitere Informationen finden Sie unter [Sicherheitsupdate](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1000).
 
 ## <a name="13200"></a>1.3.20.0 
 
@@ -133,7 +137,7 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 - Die Unterstützung der Domänenaktualisierung wurde hinzugefügt. 
 - Das Feature „Öffentliche Exchange-E-Mail-Ordner“ wird allgemein verfügbar. 
 - Der Assistent für die Fehlerbehandlung bei Dienstfehlern wurde verbessert. 
-- Ein Warnungslink für die alte Benutzeroberfläche wurde auf der Seite „Connector-Eigenschaften“ hinzugefügt. 
+- Auf der Benutzeroberfläche von Synchronization Service Manager wurde auf der Eigenschaftenseite für den Connector ein Warnungslink hinzugefügt. 
 - Das Feature für ein einheitliches Gruppenrückschreiben ist jetzt allgemein verfügbar. 
 - Die SSPR Fehlermeldung beim Fehlen eines LDAP-Steuerelements für den Domänencontroller wurde verbessert. 
 - Eine Diagnose für DCOM-Registrierungsfehler während der Installation wurde hinzugefügt.  
@@ -159,7 +163,7 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 - VSS-Fehler mit LocalDB wurden behoben.  
 - Die irreführende Fehlermeldung, die angezeigt wurde, wenn sich der Objekttyp nicht im Bereich befand, wurde korrigiert. 
 - Das Problem, bei dem die Installation von Azure AD PowerShell auf einem Server unter Umständen einen Assemblykonflikt mit Azure AD Connect verursachte, wurde behoben. 
-- Der PHS-Fehler auf dem Stagingserver beim Aktualisieren der Connector-Anmeldeinformationen in der alten Benutzeroberfläche wurde behoben. 
+- Der PHS-Fehler auf dem Stagingserver beim Aktualisieren der Connectoranmeldeinformationen auf der Benutzeroberfläche von Synchronization Service Manager wurde behoben. 
 - Einige Speicherverluste wurden behoben. 
 - Korrektur sonstiger Autoupgrade-Fehler 
 - Verschiedene Fehler bei der Export- und unbestätigten Importverarbeitung wurden behoben. 
@@ -1177,7 +1181,7 @@ Veröffentlichung: November 2015
 
 **Neues unterstütztes Szenario:**
 
-* Es werden mehrere lokale Exchange-Organisationen unterstützt. Weitere Informationen finden Sie unter [Hybrid-Bereitstellungen mit mehreren Active Directory-Gesamtstrukturen](https://technet.microsoft.com/library/jj873754.aspx).
+* Es werden mehrere lokale Exchange-Organisationen unterstützt. Weitere Informationen finden Sie unter [Hybrid-Bereitstellungen mit mehreren Active Directory-Gesamtstrukturen](https://docs.microsoft.com/previous-versions/exchange-server/exchange-150/jj873754(v=exchg.150)).
 
 **Behobene Probleme:**
 

@@ -1,24 +1,24 @@
 ---
-title: Erstellen und Zuweisen einer benutzerdefinierten Rolle in der rollenbasierten Zugriffssteuerung von Azure AD – Azure Active Directory | Microsoft-Dokumentation
+title: Erstellen von benutzerdefinierten Rollen in der rollenbasierten Zugriffssteuerung von Azure AD | Microsoft-Dokumentation
 description: Erstellen Sie benutzerdefinierte Azure AD-Rollen mit den Azure Active Directory-Ressourcen als Ressourcenbereich, und weisen Sie sie zu.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1a5aee1be7580956c32947e9bda7e2928a006c3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: c2cb19c82f8c19bf87eeef755adb5756b2452512
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72026402"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025276"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 

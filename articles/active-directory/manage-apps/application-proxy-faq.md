@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: 9743f25d89bed4e54b3deed815d1cf29030caff6
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 612b6caf47ec4764aa2bbef162592100198ed0c4
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955406"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73832210"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 
@@ -95,7 +95,7 @@ Die „PrincipalsAllowedToDelegateToAccount“-Methode wird verwendet, wenn sich
 Wenn sich die Connectorserver und das Webanwendungsdienstkonto in derselben Domäne befinden, können Sie „Active Directory-Benutzer und -Computer“ verwenden, um die Delegierungseinstellungen für die einzelnen Connectorcomputerkonten zu konfigurieren, sodass sie an den Ziel-SPN delegiert werden können.
 
 Wenn sich die Connectorserver und das Webanwendungsdienstkonto in unterschiedlichen Domänen befinden, wird die ressourcenbasierte Delegierung verwendet. Die Delegierungsberechtigungen werden für den Zielwebserver und das Webanwendungsdienstkonto konfiguriert. Diese Methode der eingeschränkten Delegierung ist relativ neu. Die Methode wurde in Windows Server 2012 eingeführt. Dieses Betriebssystem unterstützt die domänenübergreifende Delegierung, indem der Besitzer der Ressource (des Webdiensts) steuern kann, welche Computer- und Dienstkonten die Delegierung ausführen können. Es gibt keine Benutzeroberfläche, die Sie bei dieser Konfiguration unterstützt, daher müssen Sie PowerShell verwenden.
-Weitere Informationen finden Sie im Whitepaper [Grundlegendes zur eingeschränkten Kerberos-Delegierung mit dem Anwendungsproxy](http://aka.ms/kcdpaper).
+Weitere Informationen finden Sie im Whitepaper [Grundlegendes zur eingeschränkten Kerberos-Delegierung mit dem Anwendungsproxy](https://aka.ms/kcdpaper).
 
 ## <a name="pass-through-authentication"></a>Passthrough-Authentifizierung
 
@@ -117,9 +117,9 @@ Entsprechende Informationen finden Sie unter [Veröffentlichen des Remotedesktop
 
 Nein, dieses Szenario wird nicht unterstützt.  
 
-### <a name="my-users-dont-use-internet-explorer-11-and-the-pre-authentication-scenario-doesnt-work-for-them-is-this-expected"></a>Meine Benutzer verwenden Internet Explorer 11 nicht, und das Szenario der Vorauthentifizierung funktioniert bei ihnen nicht. Ist das so gewollt?
+### <a name="my-users-dont-use-internet-explorer-11-and-the-pre-authentication-scenario-doesnt-work-for-them-is-this-expected"></a>Meine Benutzer verwenden Internet Explorer 11 nicht, und das Szenario der Vorauthentifizierung funktioniert bei ihnen nicht. Entspricht dies dem erwarteten Verhalten?
 
-Ja, das ist Absicht. Für das Szenario der Vorauthentifizierung ist ein ActiveX-Steuerelement erforderlich, das in Browsern von Drittanbietern nicht unterstützt wird.
+Ja, das entspricht dem erwarteten Verhalten. Für das Szenario der Vorauthentifizierung ist ein ActiveX-Steuerelement erforderlich, das in Browsern von Drittanbietern nicht unterstützt wird.
 
 ### <a name="is-the-remote-desktop-web-client-supported"></a>Wird der Remotedesktop-Webclient unterstützt?
 

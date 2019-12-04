@@ -1,6 +1,6 @@
 ---
-title: Problembehandlung bei der Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“ – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Behandeln der möglichen Ursachen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“.
+title: Fehlerbehebungen für den Fehler „Der Wechsel von hier nach dort ist nicht möglich“ – Azure AD
+description: Hier finden Sie potenzielle Korrekturen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich“.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -14,14 +14,15 @@ ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a317680a39d4594aacdf84ccdf963bb84bfbf07b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473802"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028559"
 ---
-# <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Ursachen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich.“
+# <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>Mögliche Korrekturen für die Fehlermeldung „Der Wechsel von hier nach dort ist nicht möglich“
+
 Beim Zugriff auf interne Web-Apps oder Dienste Ihrer Organisation wird unter Umständen die Fehlermeldung **Der Wechsel von hier nach dort ist nicht möglich.** angezeigt. Diese Meldung bedeutet, dass Ihre Organisation eine Richtlinie eingerichtet hat, die Ihr Gerät davon abhält, auf die Ressourcen Ihrer Organisation zuzugreifen. Es kann sein, dass Sie sich zur Behebung dieses Problems letztendlich an den Helpdesk wenden müssen, vorher gibt es aber noch ein paar Dinge, die Sie versuchen können.
 
 ## <a name="make-sure-youre-using-a-supported-browser"></a>Vergewissern Sie sich, dass Sie einen unterstützten Browser verwenden.

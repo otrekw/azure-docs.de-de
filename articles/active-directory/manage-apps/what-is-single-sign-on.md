@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8f8d1c9f53d08d017c6c07abf8e00ab77e6879e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477176"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091393"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
 
@@ -97,6 +97,8 @@ Das kennwortbasierte einmalige Anmelden wird für jede cloudbasierte Anwendung u
    > Internet Explorer wird nur eingeschränkt unterstützt, und es werden keine neuen Softwareupdates dafür bereitgestellt. Microsoft Edge ist der empfohlene Browser.
 
 - Microsoft Edge in Windows 10 Anniversary Edition oder höher
+- Microsoft Edge für iOS und Android
+- Intune Managed Browser
 - Chrome unter Windows 7 oder höher und macOS X oder höher
 - Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 

@@ -1,5 +1,5 @@
 ---
-title: Anmelden an Ihren Konten per Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
+title: Anmelden mit der Microsoft Authenticator-App – Azure AD
 description: Verwenden Sie die Microsoft Authenticator-App, um sich an Ihrem Geschäfts-, Schul- oder Unikonto oder Ihrem persönlichen Microsoft-Konto und anderen Konten anzumelden, indem Sie entweder die zweistufige Überprüfung oder die Anmeldung per Telefon nutzen.
 services: active-directory
 author: eross-msft
@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9af3549984bd29a6e896e498bf4a2e6c67d7e0e2
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 4cf9b92793d6c769751590dd0a375cbc8894759c
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616009"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74028984"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 

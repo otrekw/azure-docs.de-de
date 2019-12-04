@@ -1,24 +1,24 @@
 ---
-title: Problembehandlung für dynamische Mitgliedschaften in Gruppen – Azure Active Directory | Microsoft-Dokumentation
-description: Tipps zur Problembehandlung für dynamische Mitgliedschaften in Gruppen in Azure AD.
+title: Beheben von Problemen bei dynamischen Gruppenmitgliedschaften – Azure AD | Microsoft-Dokumentation
+description: Tipps zur Problembehandlung bei dynamischen Gruppenmitgliedschaften in Azure Active Directory
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eededcc180d7652fd52c79b85ca3c34f65a22a4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469706"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74026543"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Beheben von Problemen bei Gruppen
 

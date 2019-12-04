@@ -1,24 +1,24 @@
 ---
-title: Administratoreinwilligung für LinkedIn-Kontoverbindungen – Azure Active Directory | Microsoft-Dokumentation
+title: Administratoreinwilligung für LinkedIn-Kontoverbindungen – Azure AD | Microsoft-Dokumentation
 description: Dieser Artikel erläutert, wie Sie die LinkedIn-Integrationskontoverbindungen in Microsoft-Apps in Azure Active Directory aktivieren oder deaktivieren.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36ca46d6df9c32f23d3051d1205c3c6b39e69f5a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 0bf65f69d9dcaf6de2236c98b56b58ec7e021099
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164711"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025414"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>Integrieren von LinkedIn-Kontoverbindungen in Azure Active Directory
 
@@ -96,7 +96,7 @@ Unter [Aktivieren von LinkedIn-Kontoverbindungen im Azure-Portal](#enable-linked
 1. Erstellen Sie ein Gruppenrichtlinienobjekt mit folgender Einstellung: **Benutzerkonfiguration** > **Administrative Vorlagen** > **Microsoft Office 2016** > **Verschiedenes** > **LinkedIn-Integration zulassen**.
 1. Wählen Sie **Aktiviert** oder **Deaktiviert** aus.
   
-   Zustand | Wirkung
+   State | Wirkung
    ------ | ------
    **Aktiviert** | Die Einstellung **LinkedIn Funktionen in Office-Anwendungen anzeigen** ist in den Optionen für Office 2016 aktiviert. Benutzer in Ihrer Organisation können LinkedIn-Features in ihren Office 2016-Anwendungen verwenden.
    **Disabled** | Die Einstellung **LinkedIn Funktionen in Office-Anwendungen anzeigen** ist in den Optionen für Office 2016 deaktiviert, und Endbenutzer können diese Einstellung nicht ändern. Benutzer in Ihrer Organisation können LinkedIn-Features nicht in ihren Office 2016-Anwendungen verwenden.

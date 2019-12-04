@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c897d52c10efdb8824f676d7640dcc7275915a9e
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851789"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74073624"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Kontrollierte Überprüfung der Azure AD-Hybrideinbindung
 
@@ -33,7 +33,7 @@ Voraussetzungen für eine kontrollierte Überprüfung von Azure AD Hybrid Join 
 1. Entfernen Sie den Eintrag des Dienstverbindungspunkts (Service Connection Point, SCP) aus Active Directory (AD), sofern vorhanden.
 1. Konfigurieren Sie mithilfe eines Gruppenrichtlinienobjekts (Group Policy Object, GPO) die clientseitige Registrierungseinstellung für SCP auf Ihren in die Domäne eingebundenen Computern.
 1. Bei Verwendung von AD FS müssen Sie mithilfe eines Gruppenrichtlinienobjekts auch die clientseitige Registrierungseinstellung für SCP auf Ihrem AD FS-Server konfigurieren.  
-
+1. Möglicherweise müssen Sie auch in Azure AD Connect die [Synchronisierungsoptionen anpassen](../hybrid/how-to-connect-post-installation.md#additional-tasks-available-in-azure-ad-connect), um die Gerätesynchronisierung zu aktivieren. 
 
 
 ### <a name="clear-the-scp-from-ad"></a>Entfernen des SCP aus AD
@@ -82,7 +82,7 @@ Verwenden Sie das folgende Beispiel, um ein Gruppenrichtlinienobjekt (Group Poli
 Bei Verwendung von AD FS müssen Sie gemäß der weiter oben angegebenen Anleitung zunächst den clientseitigen SCP konfigurieren. Dabei muss das Gruppenrichtlinienobjekt allerdings mit Ihren AD FS-Servern verknüpft werden. Das SCP-Objekt definiert die Autoritätsquelle für Geräteobjekte. Dabei kann es sich um die lokale Umgebung oder um Azure AD handeln. Wenn dieses Objekt für Active Directory-Verbunddienste (AD FS) konfiguriert ist, wird die Quelle für Geräteobjekte als Azure AD eingerichtet.
 
 > [!NOTE]
-> Wenn Sie auf Ihren AD FS-Servern den clientseitigen SCP nicht konfiguriert haben, wird als Quelle für Geräteidentitäten die lokale Umgebung verwendet, und AD FS beginnt nach einem bestimmten Zeitraum damit, Geräteobjekte aus dem lokalen Verzeichnis zu löschen.
+> Wenn Sie den clientseitigen SCP nicht auf Ihren AD FS-Servern konfigurieren konnten, wird die Quelle für Geräteidentitäten als lokal betrachtet. AD FS beginnt dann nach Ablauf des im Attribut „MaximumInactiveDays“ der AD FS-Geräteregistrierung festgelegten Zeitraums mit dem Löschen von Geräteobjekten aus dem lokalen Verzeichnis. AD FS-Geräteregistrierungsobjekte können mithilfe des [Cmdlets „Get-AdfsDeviceRegistration“](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps) gefunden werden.
 
 ## <a name="controlled-validation-of-hybrid-azure-ad-join-on-windows-down-level-devices"></a>Kontrollierte Überprüfung von Azure AD Hybrid Join für kompatible Windows-Geräte
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7993810343f6bd925afd54cc38a8302420d6aec
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 47a60ed44ddf057ef983f8f76f23fd784bc3efd5
+ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439359"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73961815"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>Löschen eines Verzeichnisses in Azure Active Directory
 
@@ -108,7 +108,7 @@ Wenn Sie mit dem Löschen des Produkts zur Self-Service-Registrierung beginnen, 
 
 Weitere Informationen zu den derzeit verfügbaren Produkten und Diensten zur Self-Service-Registrierung finden Sie unter [Verfügbare Self-Service-Programme](https://docs.microsoft.com/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
 
-Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter  [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
+Informationen dazu, was zu erwarten ist, wenn ein Testabonnement für Office 365 ausläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Weitere Informationen zum Datenaufbewahrungs- und Abonnementlebenszyklus von Office 365 finden Sie unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Office 365 Business-Abonnement endet?](https://docs.microsoft.com/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide).
 
 Produktstatus | Data | Zugriff auf Daten
 ------------- | ---- | --------------
@@ -119,13 +119,13 @@ Deleted | Daten gelöscht | Benutzer können auf Produkte, Dateien oder Apps zur
 
 Sie können ein Produkt zur Self-Service-Registrierung wie Microsoft Power BI oder Azure Rights Management Services in den Status **Löschen** versetzen, damit es im Azure-Portal sofort gelöscht wird.
 
-1. Melden Sie sich beim  [Azure AD Admin Center](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview)  mit einem Konto mit Rechten eines globalen Administrators in der Organisation an. Wenn Sie versuchen, das Verzeichnis „Contoso“ zu löschen, das die anfängliche Standarddomäne „contoso.onmicrosoft.com“ hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit dem Konto eines globalen Administrators in der Organisation an. Wenn Sie versuchen, das Verzeichnis „Contoso“ zu löschen, das die anfängliche Standarddomäne „contoso.onmicrosoft.com“ hat, melden Sie sich mit einem Benutzerprinzipalnamen wie admin@contoso.onmicrosoft.com an.
 
-2. Wählen Sie **Lizenzen** und dann  **Self-Service-Registrierungsprodukte** aus. Sie können alle Produkte zur Self-Service-Registrierung getrennt von den auf Arbeitsplätzen basierenden Abonnements anzeigen. Wählen Sie das Produkt aus, das Sie dauerhaft löschen möchten. Hier ist ein Beispiel in Microsoft Power BI:
+2. Wählen Sie **Lizenzen** aus, und wählen Sie dann **Self-Service-Registrierungsprodukte** aus. Sie können alle Produkte zur Self-Service-Registrierung getrennt von den auf Arbeitsplätzen basierenden Abonnements anzeigen. Wählen Sie das Produkt aus, das Sie dauerhaft löschen möchten. Hier ist ein Beispiel in Microsoft Power BI:
 
     ![Der Benutzername wurde falsch eingegeben oder nicht gefunden](./media/directory-delete-howto/licenses-page.png)
 
-3. Wählen Sie  **Löschen**  aus, um das Produkt zu löschen, und akzeptieren Sie die Bedingungen, dass die Daten sofort und unwiderruflich gelöscht werden. Durch diese Löschaktion werden alle Benutzer und der Organisationszugriff auf das Produkt entfernt. Klicken Sie auf „Ja“, damit der Löschvorgang fortgesetzt wird.  
+3. Wählen Sie **Löschen** aus, um das Produkt zu löschen, und akzeptieren Sie die Bedingungen, dass die Daten sofort und unwiderruflich gelöscht werden. Durch diese Löschaktion werden alle Benutzer und der Organisationszugriff auf das Produkt entfernt. Klicken Sie auf „Ja“, damit der Löschvorgang fortgesetzt wird.  
 
     ![Der Benutzername wurde falsch eingegeben oder nicht gefunden](./media/directory-delete-howto/delete-product.png)
 

@@ -1,24 +1,24 @@
 ---
-title: Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen – Azure Active Directory | Microsoft-Dokumentation
+title: LinkedIn-Datenfreigabe und -Einwilligung – Azure Active Directory | Microsoft-Dokumentation
 description: Es wird beschrieben, wie bei der LinkedIn-Integration Daten über Microsoft-Apps in Azure Active Directory freigegeben werden.
 services: active-directory
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e6e24f4e726e25ae65ecceaeb161f8e16d61721
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a21c986ccfe96bae5d341e0ba2ee6622d998d076
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60469635"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025394"
 ---
 # <a name="linkedin-account-connections-data-sharing-and-consent"></a>Datenfreigabe und Benutzereinwilligung bei LinkedIn-Kontoverbindungen
 

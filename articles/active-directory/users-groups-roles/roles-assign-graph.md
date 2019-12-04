@@ -1,5 +1,5 @@
 ---
-title: Zuweisen und Entfernen von benutzerdefinierten Administratorrollen mithilfe der Microsoft Graph-API – Azure Active Directory | Microsoft-Dokumentation
+title: Zuweisen von Azure AD-Administratorrollen mit Microsoft Graph-API | Microsoft-Dokumentation
 description: Zuweisen und Entfernen von Azure AD-Administratorrollen mit der Graph-API in Azure Active Directory
 services: active-directory
 author: curtand
@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 898f444e868a469aed5358f49f48f5bcbfab4450
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: 2f5be5829843e9857239ca5ea9a7395f569f563a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68707439"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025339"
 ---
 # <a name="assign-custom-admin-roles-using-graph-api-in-azure-active-directory"></a>Zuweisen von benutzerdefinierten Administratorrollen mithilfe der Graph-API in Azure Active Directory 
 

@@ -1,26 +1,26 @@
 ---
-title: Beheben von Lizenzzuweisungsproblemen für eine Gruppe – Azure Active Directory | Microsoft-Dokumentation
+title: Beheben von Problemen bei Gruppenlizenzzuweisungen – Azure Active Directory | Microsoft-Dokumentation
 description: Vorgehensweise zum Identifizieren und Beheben von Lizenzzuweisungsproblemen bei Verwendung der gruppenbasierten Lizenzierung mit Azure Active Directory
 services: active-directory
 keywords: Azure AD-Lizenzierung
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 09/23/2019
+ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 247dee2cfbb00b185e941fde05c2198459a05e20
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73815742"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74025695"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -29,11 +29,6 @@ Mit der gruppenbasierten Lizenzierung in Azure Active Directory (Azure AD) wird 
 Wenn Sie Lizenzen direkt einzelnen Benutzern zuweisen, ohne die gruppenbasierte Lizenzierung zu verwenden, tritt für den Zuweisungsvorgang ggf. ein Fehler auf. Wenn Sie beispielsweise das PowerShell-Cmdlet `Set-MsolUserLicense` auf einem Benutzersystem ausführen, kann für das Cmdlet aufgrund der Geschäftslogik aus verschiedensten Gründen ein Fehler auftreten. Beispielsweise kann die Anzahl von Lizenzen nicht ausreichen, oder es kann ein Konflikt zwischen zwei Dienstplänen bestehen, die nicht gleichzeitig zugewiesen werden können. Das Problem wird Ihnen sofort gemeldet.
 
 Bei Verwendung der gruppenbasierten Lizenzierung können die gleichen Fehler auftreten. Diese treten allerdings im Hintergrund auf, während der Azure AD-Dienst Lizenzen zuweist. Daher können Ihnen die Fehler nicht sofort gemeldet werden. Stattdessen werden sie im Benutzerobjekt aufgezeichnet und anschließend über das Verwaltungsportal gemeldet. Das ursprüngliche Ziel (die Lizenzierung Benutzers) bleibt stets erhalten und wird im Falle eines Fehlers zur künftigen Untersuchung und Behebung aufgezeichnet.
-
-## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in Überwachungsprotokollen
-
-**Problem:** Für den Benutzer enthalten die Überwachungsprotokolle eine LicenseAssignmentAttributeConcurrencyException für die Lizenzzuweisung.
-Wenn die gruppenbasierte Lizenzierung versucht, gleichzeitige Lizenzzuweisungen derselben Lizenz zu einem Benutzer zu verarbeiten, wird diese Ausnahme für den Benutzer aufgezeichnet. Dies ist normalerweise der Fall, wenn ein Benutzer Mitglied mehrerer Gruppen ist, denen dieselbe Lizenz zugewiesen ist. Azure AD wiederholt den Verarbeitungsversuch der Benutzerlizenz und löst das Problem. Es ist keine Aktion durch den Kunden erforderlich, um dieses Problem zu beheben.
 
 ## <a name="find-license-assignment-errors"></a>Suchen von Fehlern bei der Lizenzzuweisung
 
@@ -121,6 +116,11 @@ Nachdem Sie die Probleme mit den Proxyadressen für die betroffenen Benutzer beh
 **Problem:** Beim Aktualisieren der Lizenzzuweisung für einen Benutzer oder eine Gruppe wird möglicherweise angezeigt, dass Azure AD Mail- und ProxyAddresses-Attribut geändert werden.
 
 Beim Aktualisieren der Lizenzzuweisung für einen Benutzer wird die Berechnung der Proxyadresse ausgelöst, die Attribute der Benutzer ändern kann. Wie Sie die genaue Ursache der Änderung ermitteln und das Problem lösen, erfahren Sie in dem Artikel [Wie das Attribut ProxyAddresses in Azure AD aufgefüllt wird](https://support.microsoft.com/help/3190357/how-the-proxyaddresses-attribute-is-populated-in-azure-ad).
+
+## <a name="licenseassignmentattributeconcurrencyexception-in-audit-logs"></a>LicenseAssignmentAttributeConcurrencyException in Überwachungsprotokollen
+
+**Problem:** Für den Benutzer enthalten die Überwachungsprotokolle eine LicenseAssignmentAttributeConcurrencyException für die Lizenzzuweisung.
+Wenn die gruppenbasierte Lizenzierung versucht, gleichzeitige Lizenzzuweisungen derselben Lizenz zu einem Benutzer zu verarbeiten, wird diese Ausnahme für den Benutzer aufgezeichnet. Dies ist normalerweise der Fall, wenn ein Benutzer Mitglied mehrerer Gruppen ist, denen dieselbe Lizenz zugewiesen ist. Azure AD wiederholt den Verarbeitungsversuch der Benutzerlizenz und löst das Problem. Es ist keine Aktion durch den Kunden erforderlich, um dieses Problem zu beheben.
 
 ## <a name="more-than-one-product-license-assigned-to-a-group"></a>Mehrere Produktlizenzen für eine Gruppe
 
