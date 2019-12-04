@@ -2,19 +2,18 @@
 title: Apache Storm-Beispiel, Java-Topologie – Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Storm-Topologien in Java erstellen, indem Sie eine Beispieltopologie zur Wortzählung erstellen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-keywords: Apache Storm, Apache Storm-Beispiel, Storm-Java, Storm-Topologiebeispiel
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018605"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083292"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
@@ -32,6 +31,7 @@ Nach Abschluss der Schritte in diesem Dokument können Sie die Topologie für Ap
 * Ordnungsgemäße [Installation](https://maven.apache.org/install.html) von [Apache Maven](https://maven.apache.org/download.cgi) (gemäß Apache).  Maven ist ein Projekterstellungssystem für Java-Projekte.
 
 ## <a name="test-environment"></a>Testumgebung
+
 Für diesen Artikel wurde ein Computer unter Windows 10 verwendet.  Die Befehle wurden an einer Eingabeaufforderung ausgeführt, und die verschiedenen Dateien wurden mit dem Windows-Editor bearbeitet.
 
 Geben Sie an einer Eingabeaufforderung die folgenden Befehle ein, um eine Arbeitsumgebung zu erstellen:
@@ -171,7 +171,7 @@ Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optio
 * **Exec Maven-Plug-In**
 
     Für in Java implementierte Apache Storm-Topologien ist das [Exec Maven-Plug-In](https://www.mojohaus.org/exec-maven-plugin/) hilfreich, da es Ihnen ermöglicht, die Topologie einfach lokal in Ihrer Entwicklungsumgebung auszuführen. Fügen Sie den folgenden Code im Abschnitt `<plugins>` der Datei `pom.xml` hinzu, um das Exec Maven-Plug-In einzubeziehen:
-    
+
     ```xml
     <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -179,9 +179,9 @@ Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optio
         <version>1.6.0</version>
         <executions>
             <execution>
-            <goals>
-                <goal>exec</goal>
-            </goals>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
             </execution>
         </executions>
         <configuration>
@@ -190,7 +190,7 @@ Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optio
             <includePluginDependencies>false</includePluginDependencies>
             <classpathScope>compile</classpathScope>
             <mainClass>${storm.topology}</mainClass>
-            <cleanupDaemonThreads>false</cleanupDaemonThreads> 
+            <cleanupDaemonThreads>false</cleanupDaemonThreads>
         </configuration>
     </plugin>
     ```
@@ -198,35 +198,35 @@ Dieser Abschnitt wird zum Hinzufügen von Plug-Ins, Ressourcen und anderen Optio
 * **Apache Maven Compiler-Plug-In**
 
     Ein weiteres nützliches Plug-In ist das [Apache Maven Compiler-Plug-In](https://maven.apache.org/plugins/maven-compiler-plugin/), das zum Ändern von Kompilierungsoptionen verwendet wird. Ändern Sie die Java-Version, die Maven für die Quelle und das Ziel Ihrer Anwendung verwendet.
-    
+
   * Für HDInsight __3.4 oder früher__ legen Sie Java-Version __1.7__ für Quelle und Ziel fest.
-    
+
   * Für HDInsight __3.5__ legen Sie Java-Version __1.8__ für Quelle und Ziel fest.
-    
-    Fügen Sie folgenden Text im Abschnitt `<plugins>` der Datei `pom.xml` hinzu, um das Apache Maven Compiler-Plug-In einzubeziehen. Dieses Beispiel legt 1.8 fest, damit die Ziel-HDInsight-Version 3.5 ist.
-    
-    ```xml
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.3</version>
-      <configuration>
-      <source>1.8</source>
-      <target>1.8</target>
-      </configuration>
-    </plugin>
-    ```
+
+  Fügen Sie folgenden Text im Abschnitt `<plugins>` der Datei `pom.xml` hinzu, um das Apache Maven Compiler-Plug-In einzubeziehen. Dieses Beispiel legt 1.8 fest, damit die Ziel-HDInsight-Version 3.5 ist.
+
+  ```xml
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.1</version>
+    <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+    </configuration>
+  </plugin>
+  ```
 
 ### <a name="configure-resources"></a>Konfigurieren der Ressourcen
 
-Im Abschnitt „resources“ können Sie nicht codebezogene Ressourcen, z.B. Konfigurationsdateien, hinzufügen, die von Komponenten in der Topologie benötigt werden. Fügen Sie für dieses Beispiel dem Abschnitt `<resources>` der Datei `pom.xml` den folgenden Text hinzu:
+Im Abschnitt „resources“ können Sie nicht codebezogene Ressourcen, z.B. Konfigurationsdateien, hinzufügen, die von Komponenten in der Topologie benötigt werden. Fügen Sie für dieses Beispiel dem Abschnitt `<resources>` der Datei `pom.xml` den folgenden Text hinzu: Speichern und schließen Sie die Datei anschließend.
 
 ```xml
 <resource>
     <directory>${basedir}/resources</directory>
     <filtering>false</filtering>
     <includes>
-        <include>log4j2.xml</include>
+            <include>log4j2.xml</include>
     </includes>
 </resource>
 ```
@@ -323,7 +323,6 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Ein Beispiel-Spout, der Daten aus Twitter liest.
 > * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Ein Spout, der Dateien aus Kafka liest.
 
-
 ### <a name="create-the-bolts"></a>Erstellen des Bolts
 
 Bolts übernehmen die Datenverarbeitung. Bolts können alle Aufgaben übernehmen, beispielsweise Berechnungen, Persistenz oder Kommunikation mit externen Komponenten. Diese Topologie verwendet zwei Bolts:
@@ -331,7 +330,6 @@ Bolts übernehmen die Datenverarbeitung. Bolts können alle Aufgaben übernehmen
 * **SplitSentence**: Unterteilt die von **RandomSentenceSpout** ausgegebenen Sätze in einzelne Wörter.
 
 * **WordCount**: Zählt das Vorkommen der einzelnen Wörter.
-
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -572,19 +570,19 @@ Kopieren Sie den folgenden XML-Text, und fügen Sie ihn in die neue Datei ein.  
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-<Appenders>
-    <Console name="STDOUT" target="SYSTEM_OUT">
-        <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
-    </Console>
-</Appenders>
-<Loggers>
-    <Logger name="com.microsoft.example" level="trace" additivity="false">
-        <AppenderRef ref="STDOUT"/>
-    </Logger>
-    <Root level="error">
-        <Appender-Ref ref="STDOUT"/>
-    </Root>
-</Loggers>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.microsoft.example" level="trace" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Root level="error">
+            <Appender-Ref ref="STDOUT"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 
@@ -636,7 +634,7 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
     DEL src\main\java\com\microsoft\example\WordCountTopology.java
     ```
 
-2. Geben Sie den folgenden Befehl ein, um die neue Datei `topology.yaml` zu erstellen und zu öffnen:
+1. Geben Sie den folgenden Befehl ein, um die neue Datei `topology.yaml` zu erstellen und zu öffnen:
 
     ```cmd
     notepad resources\topology.yaml
@@ -648,46 +646,46 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
     name: "wordcount"       # friendly name for the topology
 
     config:                 # Topology configuration
-      topology.workers: 1     # Hint for the number of workers to create
-
+           topology.workers: 1     # Hint for the number of workers to create
+  
     spouts:                 # Spout definitions
     - id: "sentence-spout"
-      className: "com.microsoft.example.RandomSentenceSpout"
-      parallelism: 1      # parallelism hint
+           className: "com.microsoft.example.RandomSentenceSpout"
+           parallelism: 1      # parallelism hint
 
     bolts:                  # Bolt definitions
     - id: "splitter-bolt"
-      className: "com.microsoft.example.SplitSentence"
-      parallelism: 1
-        
+           className: "com.microsoft.example.SplitSentence"
+           parallelism: 1
+
     - id: "counter-bolt"
-      className: "com.microsoft.example.WordCount"
-      constructorArgs:
-        - 10
-      parallelism: 1
+           className: "com.microsoft.example.WordCount"
+           constructorArgs:
+             - 10
+           parallelism: 1
 
     streams:                # Stream definitions
     - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-      from: "sentence-spout"       # The stream emitter
-      to: "splitter-bolt"          # The stream consumer
-      grouping:                    # Grouping type
-        type: SHUFFLE
-    
+           from: "sentence-spout"       # The stream emitter
+           to: "splitter-bolt"          # The stream consumer
+           grouping:                    # Grouping type
+             type: SHUFFLE
+
     - name: "Splitter -> Counter"
-      from: "splitter-bolt"
-      to: "counter-bolt"
-      grouping:
-        type: FIELDS
-        args: ["word"]           # field(s) to group on
+           from: "splitter-bolt"
+           to: "counter-bolt"
+           grouping:
+             type: FIELDS
+             args: ["word"]           # field(s) to group on
     ```
 
-3. Geben Sie den folgenden Befehl ein, um `pom.xml` zu öffnen, und nehmen Sie folgende Änderungen vor:
+1. Geben Sie den folgenden Befehl ein, um `pom.xml` zu öffnen, und nehmen Sie folgende Änderungen vor:
 
     ```cmd
     notepad pom.xml
     ```
 
-   * Fügen Sie im Abschnitt `<dependencies>` die folgende neue Abhängigkeit hinzu:
+   1. Fügen Sie im Abschnitt `<dependencies>` die folgende neue Abhängigkeit hinzu:
 
         ```xml
         <!-- Add a dependency on the Flux framework -->
@@ -698,7 +696,7 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
         </dependency>
         ```
 
-   * Fügen Sie im Abschnitt `<plugins>` das folgende Plug-In hinzu. Dieses Plug-In ist für die Erstellung eines Pakets (JAR-Datei) für das Projekt zuständig und wendet beim Erstellen des Pakets einige spezifische Transformationen für Flux an.
+   1. Fügen Sie im Abschnitt `<plugins>` das folgende Plug-In hinzu. Dieses Plug-In ist für die Erstellung eines Pakets (JAR-Datei) für das Projekt zuständig und wendet beim Erstellen des Pakets einige spezifische Transformationen für Flux an.
 
         ```xml
         <!-- build an uber jar -->
@@ -739,9 +737,9 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
         </plugin>
         ```
 
-   * Ändern Sie im Abschnitt **exec-maven-plugin** `<configuration>` den Wert für `<mainClass>` von `${storm.topology}` in `org.apache.storm.flux.Flux`. Diese Einstellung ermöglicht Flux, die Ausführung der Topologie lokal in der Entwicklung zu steuern.
+   1. Navigieren Sie im Abschnitt „Exec Maven-Plug-In“ zu `<configuration>` > `<mainClass>`, und ändern Sie `${storm.topology}` in `org.apache.storm.flux.Flux`. Diese Einstellung ermöglicht Flux, die Ausführung der Topologie lokal in der Entwicklung zu steuern.
 
-   * Fügen Sie im Abschnitt `<resources>` Folgendes zu `<includes>` hinzu. Dieser XML-Code enthält die YAML-Datei, mit der die Topologie als Teil des Projekts definiert wird.
+   1. Fügen Sie im Abschnitt `<resources>` Folgendes zu `<includes>` hinzu. Dieser XML-Code enthält die YAML-Datei, mit der die Topologie als Teil des Projekts definiert wird.
 
         ```xml
         <include>topology.yaml</include>
@@ -769,34 +767,36 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
 
     Während der Ausführung zeigt die Topologie zunächst Startinformationen an. Der folgende Text ist ein Beispiel der Ausgabe:
 
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
-        17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
+    17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
 
     Es gibt eine Verzögerung von 10 Sekunden zwischen Batches protokollierter Informationen.
 
 2. Erstellen Sie auf der Grundlage des Projekts eine neue YAML-Datei für die Topologie.
- 
-    a. Geben Sie den folgenden Befehl ein, um `topology.xml` zu öffnen:
+
+    1. Geben Sie den folgenden Befehl ein, um `topology.xml` zu öffnen:
 
     ```cmd
     notepad resources\topology.yaml
     ```
 
-    b. Suchen Sie nach dem folgenden Abschnitt, und ändern Sie den Wert von `10` in `5`. Durch diese Änderung wird das Intervall zwischen dem Ausgeben der Batches mit der Wortanzahl von 10 Sekunden in 5 Sekunden geändert.  
+    1. Suchen Sie nach dem folgenden Abschnitt, und ändern Sie den Wert von `10` in `5`. Durch diese Änderung wird das Intervall zwischen dem Ausgeben der Batches mit der Wortanzahl von 10 Sekunden in 5 Sekunden geändert.  
 
     ```yaml
     - id: "counter-bolt"
-      className: "com.microsoft.example.WordCount"
-      constructorArgs:
-        - 5
-      parallelism: 1  
-    ```  
+           className: "com.microsoft.example.WordCount"
+           constructorArgs:
+             - 5
+           parallelism: 1  
+    ```
 
-    c. Speichern Sie die Datei unter `newtopology.yaml`.
+    1. Speichern Sie die Datei unter `newtopology.yaml`.
 
 3. Geben Sie den folgenden Befehl ein, um die Topologie auszuführen:
 
@@ -810,7 +810,7 @@ Weitere Informationen zu Flux finden Sie unter [Flux-Framework (https://storm.ap
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local resources/newtopology.yaml
     ```
 
-     Bei diesem Befehl wird `newtopology.yaml` als Topologiedefinition verwendet. Da wir den Parameter `compile` nicht eingebunden haben, verwendet Maven wieder die Version des Projekts, das in den vorherigen Schritten erstellt wurde.
+    Bei diesem Befehl wird `newtopology.yaml` als Topologiedefinition verwendet. Da wir den Parameter `compile` nicht eingebunden haben, verwendet Maven wieder die Version des Projekts, das in den vorherigen Schritten erstellt wurde.
 
     Nachdem die Topologie gestartet wurde, sollte erkennbar sein, dass sich der Zeitraum zwischen der Ausgabe der Batches gemäß dem Wert in `newtopology.yaml` geändert hat. Sie haben gelernt, dass Sie die Konfiguration über eine YAML-Datei ändern können, ohne die Topologie neu kompilieren zu müssen.
 
