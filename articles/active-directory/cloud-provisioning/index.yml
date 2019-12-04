@@ -1,0 +1,50 @@
+### YamlMime:Landing
+title: Dokumentation zur Azure AD Connect-Cloudbereitstellung
+summary: Die Cloudbereitstellung vereinfacht und automatisiert die Verwaltung lokaler Benutzer durch Speicherung aller Elemente in der Cloud.
+metadata:
+  author: billmath
+  description: Durch die Cloudbereitstellung kann die Verwaltung von Azure AD-Benutzern mithilfe von cloudverwalteten Regeln für die Synchronisierung dieser Benutzer aus vorhandenen AD-Gesamtstrukturen vereinfacht und automatisiert werden.
+  ms.author: billmath
+  ms.collection: na
+  ms.date: 09/05/2019
+  ms.service: active-directory
+  ms.subservice: na
+  ms.topic: landing-page
+  services: active-directory
+  ms.openlocfilehash: 89f3cf397322be65166e05c20b2e1d978a837581
+  ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74795240"
+landingContent:
+- title: Informationen zur Cloudbereitstellung
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Azure AD Connect-Cloudbereitstellung?
+      url: what-is-cloud-provisioning.md
+- title: Hier erfahren Sie, wie Sie die beste Lösung zur Verwaltung des Lebenszyklus Ihrer Benutzer und Gruppen implementieren.
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Integrieren einer einzelnen AD-Gesamtstruktur in einen einzelnen Azure AD-Mandanten
+      url: tutorial-single-forest.md
+    - text: Integrieren einer vorhandenen Gesamtstruktur in eine neue Gesamtstruktur mit einem einzelnen Azure AD-Mandanten
+      url: tutorial-existing-forest.md
+    - text: Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur
+      url: tutorial-pilot-aadc-aadccp.md
+- title: Erste Schritte bei der Cloudbereitstellung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
+      url: how-to-prerequisites.md
+    - text: Installieren der Azure AD Connect-Cloudbereitstellung
+      url: how-to-install.md
+    - text: Konfiguration des Agents für die Azure AD Connect-Cloudbereitstellung
+      url: how-to-configure.md
+  - linkListType: reference
+    links:
+    - text: Unterstützte Topologien und Szenarien
+      url: plan-cloud-provisioning-topologies.md

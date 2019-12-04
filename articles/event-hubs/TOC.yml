@@ -164,11 +164,11 @@
           href: event-hubs-service-endpoints.md
         - name: Aktivieren der Integration virtueller Netzwerke und von Firewalls für den Event Hubs-Namespace
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten
+        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten (Vorschau)
           href: configure-customer-managed-key.md
     - name: Problembehandlung
       items:
-        - name: Ausnahmen
+        - name: Handbuch zur Problembehandlung
           href: event-hubs-messaging-exceptions.md
 - name: Verweis
   items:

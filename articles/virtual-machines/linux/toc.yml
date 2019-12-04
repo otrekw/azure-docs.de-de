@@ -74,8 +74,9 @@
         - name: Netzwerkleistung
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Arten und Größen von virtuellen Computern
-      href: sizes.md
       items:
+        - name: Größenfamilien
+          href: sizes.md
         - name: Virtuelle Computer der 2. Generation
           href: generation-2.md
         - name: Allgemeiner Zweck
@@ -103,6 +104,16 @@
               href: n-series-driver-setup.md
         - name: High Performance Computing
           href: sizes-hpc.md
+        - name: Reservierte Instanzen
+          items:
+            - name: Vorauszahlung für virtuelle Computer
+              href: prepay-reserved-vm-instances.md
+            - name: Was sind Azure-Reservierungen?
+              href: ../../billing/billing-save-compute-costs-reservations.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+            - name: Flexibilität bei der VM-Instanzgröße
+              href: reserved-vm-instance-size-flexibility.md
+        - name: Spot-VMs
+          href: spot-vms.md
         - name: Vorherige Generationen
           href: sizes-previous-gen.md
         - name: Isolierte Größen
@@ -186,6 +197,16 @@
               href: dedicated-hosts-cli.md
             - name: Portal
               href: dedicated-hosts-portal.md
+        - name: Bereitstellen von Spot-VMs
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: spot-cli.md
+            - name: Portal
+              href: ../windows/spot-portal.md?toc=/azure/virtual-machines/linux/toc.json
+            - name: Vorlage
+              href: spot-template.md
+            - name: Fehlercodes
+              href: ../error-codes-spot.md?toc=/azure/virtual-machines/linux/toc.json
     - name: Schützen von virtuellen Computern
       items:
         - name: Empfehlungen

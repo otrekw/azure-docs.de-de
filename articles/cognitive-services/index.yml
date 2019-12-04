@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 11/04/2019
-  ms.openlocfilehash: 15a89528ce53eabe7ed70ca66a514b71ef5e5307
-  ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+  ms.openlocfilehash: fae1321f70d538dcacde83cadd83f5cb15155459
+  ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/27/2019
-  ms.locfileid: "74554938"
+  ms.lasthandoff: 12/03/2019
+  ms.locfileid: "74775522"
 highlightedContent:
   items:
   - title: Was ist Cognitive Services?
@@ -111,34 +111,37 @@ conceptualContent:
   - title: Suchen,
     summary: Fügen Sie Bing-Suche-APIs zu Ihren Apps hinzu, und profitieren Sie von der Möglichkeit, Milliarden von Webseiten, Bildern, Videos und Nachrichten mit einem einzigen API-Aufruf zu durchsuchen.
     links:
-    - url: ./Bing-Autosuggest/index.yml
+    - url: ./Bing-web-search/index.yml
+      itemType: overview
+      text: Hubseite für Bing-Suche-APIs
+    - url: ./Bing-Autosuggest/get-suggested-search-terms.md
       itemType: overview
       text: Verwenden der Vorschlagssuche
-    - url: ./bing-custom-search/index.yml
+    - url: ./bing-custom-search/overview.md
       itemType: overview
       text: Benutzerdefinierte Suche
-    - url: ./bing-entities-search/index.yml
+    - url: ./bing-entities-search/overview.md
       itemType: overview
       text: Entitätssuche
-    - url: ./bing-image-search/index.yml
+    - url: ./bing-image-search/overview.md
       itemType: overview
       text: Bildersuche
-    - url: ./bing-local-business-search/index.yml
+    - url: ./bing-local-business-search/overview.md
       itemType: overview
       text: Suche nach ortsansässigen Unternehmen (Vorschau)
-    - url: ./bing-news-search/index.yml
+    - url: ./bing-news-search/search-the-web.md
       itemType: overview
       text: News-Suche
-    - url: ./bing-spell-check/index.yml
+    - url: ./bing-spell-check/overview.md
       itemType: overview
       text: Rechtschreibprüfung
-    - url: ./Bing-Video-Search/index.yml
+    - url: ./Bing-Video-Search/overview.md
       itemType: overview
       text: Videosuche
-    - url: ./bing-visual-search/index.yml
+    - url: ./bing-visual-search/overview.md
       itemType: overview
       text: Visuelle Suche
-    - url: ./bing-web-search/index.yml
+    - url: ./bing-web-search/overview.md
       itemType: overview
       text: Websuche
   - title: Cognitive Services-Container
@@ -159,9 +162,6 @@ conceptualContent:
     - url: ./containers/docker-compose-recipe.md
       itemType: get-started
       text: Verwenden von Docker Compose zum Bereitstellen mehrerer Container
-    - url: ./containers/container-image-tags.md
-      itemType: reference
-      text: Cognitive Services-Containerimagetags
     - url: ./containers/container-faq.md
       itemType: reference
       text: 'Cognitive Services-Container: Häufig gestellte Fragen'
@@ -170,12 +170,10 @@ additionalContent:
   - items:
     - title: Zusätzliche Ressourcen
       links:
-      - text: Support- und Hilfeoptionen
-        url: cognitive-services-support-options.md
       - text: Azure-Befehlszeilenschnittstelle
         url: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest
       - text: PowerShell
-        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-3.0.0#cognitive_services
+        url: https://docs.microsoft.com/powershell/module/az.cognitiveservices/?view=azps-2.5.0#cognitive_services
     - title: REST-APIs
       links:
       - text: Cognitive Services-Verwaltung

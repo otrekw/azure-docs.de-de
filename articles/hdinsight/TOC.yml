@@ -49,6 +49,8 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Planen der Clusterkapazität
           href: ./hdinsight-capacity-planning.md
+        - name: Bewährte Methoden für die Clusterverwaltung
+          href: ./cluster-management-best-practices.md
         - name: Verfügbarkeit und Zuverlässigkeit
           href: ./hdinsight-high-availability-linux.md
         - name: Vergleichen von Speicheroptionen

@@ -28,15 +28,31 @@
       href: tutorial-custom-role-cli.md
 - name: Konzepte
   items:
-    - name: Grundlegendes zu Rollendefinitionen
-      href: role-definitions.md
     - name: PIM für Azure-Ressourcen
       href: pim-azure-resource.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
 - name: Anleitungen
   items:
-    - name: Verwalten des Zugriffs
+    - name: Auflisten der Rollendefinitionen
+      items:
+        - name: Übersicht
+          href: role-definitions.md
+        - name: Auflisten der Rollendefinitionen
+          href: role-definitions-list.md
+        - name: Integrierte Rollen
+          href: built-in-roles.md
+    - name: Auflisten der Rollenzuweisungen
+      items:
+        - name: Portal
+          href: role-assignments-list-portal.md
+        - name: PowerShell
+          href: role-assignments-list-powershell.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: role-assignments-list-cli.md
+        - name: REST-API
+          href: role-assignments-list-rest.md
+    - name: Hinzufügen oder Entfernen von Rollenzuweisungen
       items:
         - name: Portal
           href: role-assignments-portal.md
@@ -50,9 +66,9 @@
           href: role-assignments-rest.md
         - name: Vorlage
           href: role-assignments-template.md
-    - name: Zugriff verweigern
+    - name: Auflisten von Ablehnungszuweisungen
       items:
-        - name: Ablehnungszuweisungen
+        - name: Übersicht
           href: deny-assignments.md
         - name: Portal
           href: deny-assignments-portal.md
@@ -60,7 +76,7 @@
           href: deny-assignments-powershell.md
         - name: REST-API
           href: deny-assignments-rest.md
-    - name: Benutzerdefinierte Rollen
+    - name: Erstellen von benutzerdefinierten Rollen
       items:
         - name: Übersicht
           href: custom-roles.md
@@ -72,7 +88,7 @@
           href: custom-roles-rest.md
     - name: Anzeigen von Aktivitätsprotokollen
       href: change-history-report.md
-    - name: Erhöhen der Zugriffsrechte zum Verwalten aller Abonnements
+    - name: Erhöhen von Zugriffsrechten
       href: elevate-access-global-admin.md
     - name: Klassische Administratoren
       href: classic-administrators.md
@@ -80,8 +96,6 @@
       href: troubleshooting.md
 - name: Verweis
   items:
-    - name: Integrierte Rollen
-      href: built-in-roles.md
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
     - name: RBAC-Grenzwerte

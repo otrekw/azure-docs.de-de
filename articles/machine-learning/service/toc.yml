@@ -300,7 +300,7 @@
         - name: Ausführen von Batchvorhersagen
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference
           href: how-to-run-batch-predictions.md
-        - name: Verwenden des Designers für Batchvorhersagen
+        - name: Designer-Batchvorhersagen
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
     - name: Überwachen von Modellen
