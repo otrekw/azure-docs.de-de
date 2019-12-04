@@ -1,5 +1,5 @@
 - name: 'Bing-Such-API für ortsansässige Unternehmen: Dokumentation'
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
   expanded: true
   items: null
 - name: Übersicht

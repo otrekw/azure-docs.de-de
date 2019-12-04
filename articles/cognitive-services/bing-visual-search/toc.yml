@@ -1,5 +1,5 @@
 - name: Visuelle Bing-Suche – Dokumentation
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Übersicht
   items:
     - name: Was ist die API für die visuelle Bing-Suche?
