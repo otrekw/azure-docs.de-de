@@ -1,5 +1,5 @@
 - name: Dokumentation zur Bing-Videosuche-API
-  href: index.yml
+  href: ../Bing-Web-Search/index.yml
 - name: Übersicht
   expanded: true
   items:
