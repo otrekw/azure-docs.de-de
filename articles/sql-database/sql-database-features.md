@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: bonova, sstein
 ms.date: 05/10/2019
-ms.openlocfilehash: 294fd39bfa78219df4bb0134aa744dd7515ff0f2
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 8f078bdfa1c6c106bb12116f30dc69abce42baa0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092147"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790464"
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL-Datenbank – Funktionen
 
@@ -35,7 +35,7 @@ Die folgende Tabelle enthält die wichtigsten Features von SQL Server und gibt A
 | **SQL-Feature** | **Einzeldatenbanken und Pools für elastische Datenbanken** | **Verwaltete Instanzen und Instanzpools** |
 | --- | --- | --- |
 | [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | Ja (siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)) | Ja (siehe [Zertifikatspeicher](sql-database-always-encrypted.md) und [Schlüsseltresor](sql-database-always-encrypted-azure-key-vault.md)) |
-| [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [99,99–99,995 % Verfügbarkeit](sql-database-high-availability.md) sind für jede Datenbank garantiert. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | [99,99 % Verfügbarkeit](sql-database-high-availability.md) ist für jede Datenbank garantiert und [kann nicht vom Benutzer verwaltet werden](sql-database-managed-instance-transact-sql-information.md#always-on-availability). Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). Verwenden Sie [Autofailover-Gruppen](sql-database-auto-failover-group.md), um eine sekundäre verwaltete Always On-Instanz in einer anderen Region zu konfigurieren. Andere SQL Server-Instanzen und einzelne Datenbanken können nicht als sekundäre Datenbank für die verwaltete Instanz dienen. |
+| [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [99,99–99,995 % Verfügbarkeit](sql-database-high-availability.md) sind für jede Datenbank garantiert. Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). | [99,99 % Verfügbarkeit](sql-database-high-availability.md) ist für jede Datenbank garantiert und [kann nicht vom Benutzer verwaltet werden](sql-database-managed-instance-transact-sql-information.md#availability). Informationen zur Notfallwiederherstellung finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md). Verwenden Sie [Autofailover-Gruppen](sql-database-auto-failover-group.md), um eine sekundäre verwaltete Always On-Instanz in einer anderen Region zu konfigurieren. Andere SQL Server-Instanzen und einzelne Datenbanken können nicht als sekundäre Datenbank für die verwaltete Instanz dienen. |
 | [Anfügen einer Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | Nein | Nein |
 | [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [Ja](sql-database-auditing.md)| [Ja](sql-database-managed-instance-auditing.md), mit einigen [Unterschieden](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [Authentifizierung über Azure Active Directory (AAD)](sql-database-aad-authentication.md) | Ja. Nur AAD-Benutzer. | Ja. Einschließlich AAD-Anmeldungen auf Serverebene. |

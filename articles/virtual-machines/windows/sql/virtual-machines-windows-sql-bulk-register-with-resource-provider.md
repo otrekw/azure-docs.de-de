@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 97541484501a3ecdd1bd5998314c1ee9e7a4e3a5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489073"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790556"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Massenregistrierung von SQL-VMs in Azure beim SQL-VM-Ressourcenanbieter
 
@@ -222,7 +222,7 @@ Fehler werden in der Protokolldatei mit dem Namen `VMsNotRegisteredDueToError<Ti
 
 Wenn Sie SQL Server-VMs mithilfe des bereitgestellten Skripts beim Ressourcenanbieter registrieren, müssen Sie Folgendes beachten:
 
-- Für die Registrierung beim Ressourcenanbieter muss ein Gast-Agent auf der SQL Server-VM ausgeführt werden. Windows Server 2008-Images verfügen über keinen Gast-Agent, sodass diese virtuellen Computer fehlschlagen und manuell im [NoAgent-Verwaltungsmodus](virtual-machines-windows-sql-register-with-resource-provider.md#register-sql-server-2008-or-2008-r2-on-windows-server-2008-vms) registriert werden müssen.
+- Für die Registrierung beim Ressourcenanbieter muss ein Gast-Agent auf der SQL Server-VM ausgeführt werden. Windows Server 2008-Images verfügen über keinen Gast-Agent, sodass diese virtuellen Computer fehlschlagen und manuell im [NoAgent-Verwaltungsmodus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) registriert werden müssen.
 - Es ist eine integrierte Wiederholungslogik vorhanden, um offensichtliche Fehler zu überwinden. Wenn die virtuelle Maschine erfolgreich registriert wurde, ist dies ein schneller Vorgang. Wenn die Registrierung jedoch fehlschlägt, wird jeder virtuelle Computer erneut geprüft.  Daher sollten Sie eine ausreichende Zeit für die Durchführung des Registrierungsprozesses zulassen. Die tatsächlich erforderliche Zeit hängt jedoch vom Typ und von der Anzahl der Fehler ab. 
 
 ## <a name="full-script"></a>Vollständiges Skript

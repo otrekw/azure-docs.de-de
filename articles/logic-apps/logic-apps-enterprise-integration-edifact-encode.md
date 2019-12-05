@@ -1,21 +1,19 @@
 ---
-title: Codieren von EDIFACT-Nachrichten – Azure Logic Apps | Microsoft-Dokumentation
+title: Codierung von EDIFACT-Nachrichten
 description: Überprüfen von EDI und Generieren von XML-Code mit dem EDIFACT-Nachrichtendecoder für Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: jonfan, divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
-ms.assetid: 974ac339-d97a-4715-bc92-62d02281e900
 ms.date: 01/27/2017
-ms.openlocfilehash: 7396aee56acdf2476ed1bb3cc5a9909349662dc7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 257cbd0b1a68ddd2b16235e6f8dec5d5b0eb10e2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64705547"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790643"
 ---
 # <a name="encode-edifact-messages-for-azure-logic-apps-with-enterprise-integration-pack"></a>Codieren von EDIFACT-Nachrichten für Azure Logic Apps mit Enterprise Integration Pack
 
@@ -94,5 +92,5 @@ Der Connector „EDIFACT-Nachricht codieren“ führt folgende Aufgaben aus:
 Informationen zum Anzeigen der Details zu Swagger für den EDIFACT-Connector finden Sie unter [EDIFACT](/connectors/edifact/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack") 
+[Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.") 
 

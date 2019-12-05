@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e33fce7b3fc19d6dfa83f95b6a9bcb43588945d1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228071"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671556"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Was ist Azure Private Link? (Vorschau)
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage, Azure Cosmos DB und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Links ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
@@ -38,11 +38,11 @@ Azure Private Link bietet folgende Vorteile:
 ## <a name="availability"></a>Verfügbarkeit 
  In der folgenden Tabelle sind die Private Link-Dienste und die Regionen, in denen sie verfügbar sind, aufgelistet. 
 
-|Szenario  |Unterstützte Dienste   |Verfügbare Regionen | Status   |
-|---------|---------|---------|---------|
-|Private Link für Kundendienste|Private Link-Dienste hinter Load Balancer Standard | Alle öffentlichen Regionen  |  Vorschau  |
-|Private Link für Azure PaaS-Dienste   | Azure Storage        |  Alle öffentlichen Regionen      | Vorschau         |
-|  | Azure Data Lake Storage Gen2        |  Alle öffentlichen Regionen      | Vorschau         |
+|Szenario  |Unterstützte Dienste  |Verfügbare Regionen | Status  |
+|:---------|:-------------------|:-----------------|:--------|
+|Private Link für Kundendienste|Private Link-Dienste hinter Load Balancer Standard | Alle öffentlichen Regionen  | Vorschau  |
+|Private Link für Azure PaaS-Dienste   | Azure Storage        |  Alle öffentlichen Regionen      | Vorschau <br/> [Weitere Informationen](/azure/storage/common/storage-private-endpoints)  |
+|  | Azure Data Lake Storage Gen2        |  Alle öffentlichen Regionen      | Vorschau <br/> [Weitere Informationen](/azure/storage/common/storage-private-endpoints)  |
 |  |  Azure SQL-Datenbank         | Alle öffentlichen Regionen      |   Vorschau      |
 ||Azure SQL Data Warehouse| Alle öffentlichen Regionen |Vorschau|
 ||Azure Cosmos DB| USA, Westen-Mitte; USA, Westen; USA, Norden-Mitte |Vorschau|

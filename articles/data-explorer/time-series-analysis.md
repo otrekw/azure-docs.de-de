@@ -3,16 +3,16 @@ title: Analysieren Sie Zeitreihendaten mit Azure Data Explorer
 description: Erfahren Sie, wie Sie Zeitreihendaten in der Cloud mit Azure Data Explorer analysieren können.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: adieldar
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
-ms.openlocfilehash: 7415e13a445a73af197362c6cfbd3a865a2fea02
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3873b25394f91ce1c1601c348de2098198ba7fdd
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65604049"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765482"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Zeitreihenanalysen in Azure Data Explorer
 
@@ -25,6 +25,8 @@ In diesem Abschnitt erstellen wir einen umfangreichen Satz regulärer Zeitreihen
 Der erste Schritt bei der Einrichtung von Zeitreihenanalysen besteht darin, die ursprüngliche Telemetriedatentabelle zu partitionieren und in einen Satz Zeitreihen umzuwandeln. Die Tabelle enthält in der Regel eine Zeitstempelspalte, kontextbezogene Dimensionen und optionale Metriken. Die Dimensionen werden zum Partitionieren der Daten verwendet. Ziel ist es, pro Partition Tausende von Zeitreihen in regelmäßigen Zeitintervallen zu erstellen.
 
 Die Eingabetabelle *demo_make_series1* enthält 600.000 Datensätze aus beliebigem Webdienstdatenverkehr. Verwenden Sie den folgenden Befehl, um zehn Datensätze als Stichprobe zu erfassen:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03MTo0vTi3KTC02VKhRKAFyFQwNADOyzKUbAAAA) **\]**
 
 ```kusto
 demo_make_series1 | take 10 
@@ -47,6 +49,8 @@ Die resultierende Tabelle enthält eine Zeitstempelspalte, drei kontextbezogene 
 |   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | Indien |
 
 Da keine Metriken vorhanden sind, können wir nur einen Satz Zeitreihen erstellen, die die Anzahl von Datenverkehrsbewegungen selbst darstellen, partitioniert nach Betriebssystem. Dazu erstellen wir folgende Abfrage:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5XPwQrCMBAE0Hu/Yo4NVLBn6Td4ULyWtV1tMJtIsoEq/XhbC4J48jgw+5h1rBDrW0UDDakjR7HsWUIrdOM2cbScakxIWYSiffJSL49W+KAkd2N2hVsMGv8yaPw2furFhCVu1gifpelC9loa9Hyh7LTZInh8FFiPSP7K5fufap1UoR4Mzg/s04njjEb2PUfofNYNFPUFtJiguAEBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -80,6 +84,8 @@ Die Filterung ist ein gängiges Verfahren zur Signalverarbeitung und eignet sich
     - [`series_iir()`](/azure/kusto/query/series-iirfunction): Anwenden eines IIR-Filters. Wird zur exponentiellen Glättung und für kumulative Summen verwendet.
 - `Extend`: Erweitern Sie die Zeitreihe, indem Sie der Abfrage eine neue Reihe für den gleitenden Durchschnitt von Abschnitten der Größe 5 (namens *ma_num*) hinzufügen:
 
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPQavCMBCE7/6KOSYQ4fXgSfobPDx517C2q4bXpLLZQBV/vKkFQTx5WRh25tvZgRUxJK9ooWPuaCAxPcfRR/pnn1kC5wZ35BIjSbjxbDf7EPlXKV6s3a6GmUHTVwya3hkf9tUds1wvEqnEthtLUmPR85HKoO0PxoQXBSFBKJ3YPP9xSyWH5mxxuGKX/1gqlCfl1Neln5EL3R+DmCodhC9MahqHjXVQKbxMW5NScyzQerA7k+gDa1tswzsBAAA=) **\]**
+
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
 let max_t = toscalar(demo_make_series1 | summarize max(TimeStamp));
@@ -98,6 +104,8 @@ Azure Data Explorer unterstützt die segmentierte lineare Regressionsanalyse, um
 - Verwenden Sie [series_fit_2lines()](/azure/kusto/query/series-fit-2linesfunction), um Trendänderungen relativ zur Baseline zu erkennen – diese sind in Überwachungsszenarien nützlich.
 
 Beispiel für die Funktionen `series_fit_line()` und `series_fit_2lines()` in einer Zeitreihenabfrage:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuKqUUitKEnNS1GACMSnZZbEG+Vk5qUWa1Rq6iCLggSBYkAdRUD1qUUKIIHkjMSiEoXyzJIMjYrk/JzS3DzbCk0AUIIJ02EAAAA=) **\]**
 
 ```kusto
 demo_series2
@@ -120,6 +128,8 @@ Viele Metriken folgen saisonalen (periodischen) Mustern. Benutzerdatenverkehr in
 
 Das folgende Beispiel wendet die Erkennung von Saisonalität auf einen Monat Datenverkehr eines Webdiensts an (Zeitabschnitte von 2 Stunden):
 
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2PL04tykwtNuaqUShKzUtJLVIoycxNTc5ILCoBAHrjE80fAAAA) **\]**
+
 ```kusto
 demo_series3
 | render timechart 
@@ -132,6 +142,8 @@ demo_series3
 
 > [!NOTE]
 > Wenn bestimmte Zeiträume nicht vorhanden sind, handelt es sich um eine Anomalie.
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12OwQ6CMBBE737FHKmpVtAr39IguwkYyzZ0IZj48TZSLx533szOEAfxieeR0/XwRpzlwb2iilkSShapl5mTQYvd5QvxxJqd1bQEi8vZor6RawaLxsA5FewcOjBKBOP0PXUMXL7lyrCeeIvdRPjrzIw35Qyoe6W2GY4qJMv9yb91xtX0AS7N323BAAAA) **\]**
 
 ```kusto
 demo_series3
@@ -151,6 +163,8 @@ Die Funktion erkennt tägliche und wöchentliche Saisonalität. Der Trefferwert 
 ### <a name="element-wise-functions"></a>Elementbezogene Funktionen
 
 In einer Zeitreihe können arithmetische und logische Operationen durchgeführt werden. Mit [series_subtract()](/azure/kusto/query/series-subtractfunction) können wir eine residuale Zeitreihe berechnen, also den Unterschied zwischen der ursprünglichen Rohdatenmetrik und einer geglätteten Metrik, und nach Anomalien im verbleibenden Signal suchen:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WQQU/DMAyF7/sVT5waqWjrgRPqb+AAgmPltR6LSNLJcdhA+/G4izRAnLhEerbfl2cHVkSfBkUPnfNIgaSZOM5DpDceMovn3OGMXGIk8Z+8jDdPPvKjUjw4d78KC4NO/2LQ6Tfjz/jqjEXeVolUYj/OJWnjMPGOStB+gznhSoFPEEqv3Fz2aWukFt3eYfuBh/zMYlA+KafJmsOCrPRh56Ux2UL4wKRN1+LOtVApXF/37RTOfioUfvpz2arQqBVS2Q7rtc6wa4wlkPLVCLXIqE7DHvcsXOOh73Hz4tM0HzO6zQ1gDOx8UOvZrtayst0Y7z4babkkYQxMyQbGPYnCiGIxTS/fXGpfwk+n7uQBAAA=) **\]**
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -173,6 +187,8 @@ demo_make_series1
 
 Das folgende Beispiel zeigt, wie diese Funktionen innerhalb von Sekunden für mehrere Tausend Zeitreihen ausgeführt werden können, um Anomalien zu erkennen. Um einige beispielhafte Telemetriedatensätze aus der Metrik für die Anzahl von Lesevorgängen eines Datenbankdiensts im Lauf von vier Tagen anzuzeigen, führen Sie die folgende Abfrage aus:
 
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKEnMTlUwAQArfAiiGgAAAA==) **\]**
+
 ```kusto
 demo_many_series1
 | take 4 
@@ -188,6 +204,8 @@ demo_many_series1
 
 Und eine einfache Statistik:
 
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVcgrzbVNzi/NK9HQ1FHIzcyLL7EFkhohnr6uwSGOvgEg0cQKkGhiBZIoAEq2dK9VAAAA) **\]**
+
 ```kusto
 demo_many_series1
 | summarize num=count(), min_t=min(TIMESTAMP), max_t=max(TIMESTAMP) 
@@ -199,6 +217,8 @@ demo_many_series1
 |   | 2177472 | 2016-09-08 00:00:00.0000000 | 2016-09-11 23:00:00.0000000 |
 
 Eine Zeitreihe in 1-Stunden-Abschnitten der Metrik für die Anzahl von Lesevorgängen (4 Tage × 24 Stunden = 96 Punkte) führt zu einer normalen Musterfluktuation:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPMQvCMBSE9/6KGxOoYGfpIOjgUBDtXh7twwabFF6ittIfb2rBQSfHg+8+7joOsMZVATlC72vqSFTDtq8subHyLIZ9hgn+Zi2JefKMq/JQ7M/ltjhqvQGSbrbQ8JeFhm/LTyGZInbl1RIhTI3P6X5ROwp0ikmjd/hYYByE3IXV+1G6TEqRtTqahF3DgmAs1y1JwMOEVo0Rzdf6BbBH5FAHAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -214,6 +234,8 @@ Das oben beschriebene Verhalten ist irreführend, da die einzelne normale Zeitre
 
 Wie viele Zeitreihen können wir erstellen?
 
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA0tJzc2Pz03Mq4wvTi3KTC025KpRKC7NzU0syqxKVUiqVPDJT9ZR8C/QUXBxAkol55fmlQAAWEsFxjQAAAA=) **\]**
+
 ```kusto
 demo_many_series1
 | summarize by Loc, Op, DB
@@ -226,6 +248,8 @@ demo_many_series1
 |   | 18339 |
 
 Jetzt erstellen wir einen Satz aus 18.339 Zeitreihen der Metrik für die Anzahl von Lesevorgängen. Wir fügen die `by`-Klausel zur make-series-Anweisung hinzu, wenden lineare Regression an und wählen die beiden Zeitreihen aus, bei denen der signifikanteste Abwärtstrend zu beobachten war:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPsU7DQBBE+3zFdLmTTGHSgFAKUCiQiIKIe2u5rJ0T9l3YWwcH5eO5JBIFVJSzmnmz07Gi96FWzKExOepIzIb7WPcUDnVi8ZxKHJGGvifxX3yym+pp+biu7pcv1t4Bk+5EofFfFBp/U/4EJsdse+eri4QwbdKc9q1ZkNJrVhYx4IcCHyAUWjbnRcXlpQLl1uLtgOfoCqx2BRYPGcyjctjASPoYSLhA6uKObR5waasbr3XnA5tzrc0RjTtcn0hnKyg55KtkDAvU9+y2JIpPr1ujXjueT9cse+8YlVDTeIfVoNQymiiZ5ENSCi4vM3FQxAblzWx2a6f2G2UcBRyWAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -240,6 +264,8 @@ demo_many_series1
 ![Die Top 2 der Zeitreihen](media/time-series-analysis/time-series-top-2.png)
 
 Zeigen Sie die Instanzen an:
+
+**\[** [**Zum Ausführen der Abfrage klicken**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA5WPvW4CMRCEe55iSlsyBWkjChApIoESAb21udsQg38O26AD8fDx3SEUJVXKWc18s2M5wxmvM6bIIVVkKYqaXdCO/EUnjobTBDekk3MUzZU7u9i+rl4229nqXcpnYGQ7CrX/olD7m/InMLoV24HHg0RkqtOUzjuxoEzroiSCx4MC4xHJ71j0i9TwksLkS+LjgmWoFN4ahcW8gLnN7GuImI4niqyQbGhYlgFDm/40WVvjWfS1skRyaPDUkXorKFXl2MSw5yr/pN9Z31SyxuhbAQAA) **\]**
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  

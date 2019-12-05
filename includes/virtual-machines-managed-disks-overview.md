@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7ceff623c6559ef5e929d6d5bff9e07cca9039d2
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 05e4dc5bc96ef654006a98f27ff4a12e924250b4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796281"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828977"
 ---
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -37,7 +37,7 @@ Verwaltete Datenträger unterstützen [Verfügbarkeitszonen](../articles/availab
 
 ### <a name="azure-backup-support"></a>Azure Backup-Unterstützung
 
-Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt derzeit Datenträgergrößen von bis zu vier Tebibyte (TiB).  Azure Backup unterstützt die Sicherung und Wiederherstellung von verwalteten Datenträgern. [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
+Zum Schutz vor regionalen Katastrophen kann mit [Azure Backup](../articles/backup/backup-overview.md) ein Sicherungsauftrag mit zeitbasierten Sicherungen und Richtlinien zur Sicherungsaufbewahrung erstellt werden. So können Sie einfach nach Belieben VM-Wiederherstellungen ausführen. Azure Backup unterstützt die Sicherung und Wiederherstellung von verwalteten Datenträgern. [Weitere Informationen](../articles/backup/backup-support-matrix-iaas.md) zur Unterstützung der Azure-VM-Sicherung.
 
 ### <a name="granular-access-control"></a>Genau abgestimmte Zugriffssteuerung
 

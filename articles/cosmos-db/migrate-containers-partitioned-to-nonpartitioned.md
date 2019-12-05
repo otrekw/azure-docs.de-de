@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: mjbrown
-ms.openlocfilehash: 3a13f8928ba243195c30200dae0525e72c1c161b
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: 1afca920a8146ce5501900bcc9e36bdebcccca09
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71844404"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706068"
 ---
 # <a name="migrate-non-partitioned-containers-to-partitioned-containers"></a>Migrieren nicht partitionierter Container zu partitionierten Containern
 
@@ -91,7 +91,7 @@ ItemResponse<DeviceInformationItem> readResponse =
 
 ```
 
-Das vollständige Beispiel finden Sie im GitHub-Repository mit [.NET-Beispielen](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples).
+Das vollständige Beispiel finden Sie im GitHub-Repository mit [.NET-Beispielen][1].
                       
 ## <a name="migrate-the-documents"></a>Migrieren der Dokumente
 
@@ -110,7 +110,7 @@ await migratedContainer.Items.ReadItemAsync<DeviceInformationItem>(
 
 ```
 
-Das vollständige Beispiel für die Neupartitionierung der Dokumente finden Sie im GitHub-Repository mit [.NET-Beispielen](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/CodeSamples). 
+Das vollständige Beispiel für die Neupartitionierung der Dokumente finden Sie im GitHub-Repository mit [.NET-Beispielen][1]. 
 
 ## <a name="compatibility-with-sdks"></a>Kompatibilität mit SDKs
 
@@ -124,3 +124,5 @@ Wenn ein migrierter Container von der neuesten bzw. der V3-Version eines SDKs ve
 * [Anforderungseinheiten in Azure Cosmos DB](request-units.md)
 * [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md)
 * [Arbeiten mit einem Azure Cosmos-Konto](account-overview.md)
+
+[1]: https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/NonPartitionContainerMigration

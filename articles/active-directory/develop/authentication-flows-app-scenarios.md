@@ -17,12 +17,12 @@ ms.date: 09/27/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d6a36d66d6094bbac1b3e39a4ee5cea55737971
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 24c891c3de9126de6b833dea30c78c14b709384d
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473825"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687746"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -261,14 +261,14 @@ Szenarien mit Tokenabruf lassen sich auch OAuth 2.0-Authentifizierungsflows zuo
 
   <tr>
    <td><a href="scenario-daemon-overview.md"><img alt="Daemon app that calls web APIs" src="media/scenarios/daemon-app.svg"></a></td>
-   <td><a href=scenario-daemon-overview.md">Daemon-App, die Web-APIs aufruft</a></td>
+   <td><a href="scenario-daemon-overview.md">Daemon-App, die Web-APIs aufruft</a></td>
    <td><a href="v2-oauth2-client-creds-grant-flow.md">Clientanmeldeinformationen</a></td>
    <td>Nur für die App geltende Berechtigungen ohne Benutzer sowie ausschließliche Verwendung in Azure AD-Organisationen</td>
  </tr>
 
   <tr>
-   <td><a href=scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
-   <td><a href=scenario-web-api-call-api-overview.md">Web-API, die Web-APIs aufruft</a></td>
+   <td><a href="scenario-web-api-call-api-overview.md"><img alt="Web API that calls web APIs" src="media/scenarios/web-api.svg"></a></td>
+   <td><a href="scenario-web-api-call-api-overview.md">Web-API, die Web-APIs aufruft</a></td>
    <td><a href="v2-oauth2-on-behalf-of-flow.md">Im Namen von</a></td>
    <td>Geschäfts-, Schul- oder Unikonten und persönliche Konten</td>
  </tr>

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/13/2018
-ms.openlocfilehash: 229216ee873ade9418574141017aaf88235ba9e4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: d313fed6a61ac98e596e6f8caca8f0e46a8c9600
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820699"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689080"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
@@ -139,7 +139,7 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Leistungsindikatoren für Anwendungen, die in Azure-Web-Apps ausgeführt werden
 
-Sowohl ASP.NET- als auch ASP.NET Core-Anwendungen, die in Azure-Web-Apps bereitgestellt werden, werden in einer speziellen Sandkastenumgebung ausgeführt. Für diese Umgebung ist der direkte Zugriff auf Systemleistungsindikatoren nicht möglich. Es wird aber eine eingeschränkte Teilmenge der Indikatoren in Form von Umgebungsvariablen verfügbar gemacht. Dies ist [hier](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables) beschrieben. Mit dem Application Insights SDK für ASP.NET und ASP.NET Core werden Leistungsindikatoren aus Azure-Web-Apps aus diesen speziellen Umgebungsvariablen erfasst. In dieser Umgebung ist nur eine Teilmenge der Indikatoren verfügbar. Die vollständige Liste finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs).
+Sowohl ASP.NET- als auch ASP.NET Core-Anwendungen, die in Azure-Web-Apps bereitgestellt werden, werden in einer speziellen Sandkastenumgebung ausgeführt. Für diese Umgebung ist der direkte Zugriff auf Systemleistungsindikatoren nicht möglich. Es wird aber eine eingeschränkte Teilmenge der Indikatoren in Form von Umgebungsvariablen verfügbar gemacht. Dies ist [hier](https://github.com/projectkudu/kudu/wiki/Perf-Counters-exposed-as-environment-variables) beschrieben. Mit dem Application Insights SDK für ASP.NET und ASP.NET Core werden Leistungsindikatoren aus Azure-Web-Apps aus diesen speziellen Umgebungsvariablen erfasst. In dieser Umgebung ist nur eine Teilmenge der Indikatoren verfügbar. Die vollständige Liste finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet-server/blob/develop/WEB/Src/PerformanceCollector/Perf.Shared/Implementation/WebAppPerformanceCollector/CounterFactory.cs).
 
 ## <a name="performance-counters-in-aspnet-core-applications"></a>Leistungsindikatoren in ASP.NET Core-Anwendungen
 

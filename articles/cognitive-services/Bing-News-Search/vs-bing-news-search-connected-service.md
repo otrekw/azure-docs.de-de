@@ -3,19 +3,19 @@ title: Herstellen einer Verbindung mit der Bing-News-Suche-API mithilfe von verb
 titleSuffix: Azure Cognitive Services
 description: Indem Sie die Bing-News-Suche verwenden, können Sie Apps und Diensten die Nutzung einer leistungsstarken, werbefreien Suchmaschine für das gesamte Web ermöglichen.
 services: cognitive-services
-author: ghogen
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 06/18/2019
-ms.author: ghogen
-ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 11/29/2019
+ms.author: aahi
+ms.openlocfilehash: 2afe9a66d9f0ebecaef9626ef6caf9fc30f20841
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111500"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771069"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Tutorial: Herstellen einer Verbindung mit der Bing-News-Suche-API mithilfe von verbundenen Diensten in Visual Studio und C#
 
@@ -268,4 +268,4 @@ Wenn die Ressourcengruppe nicht mehr benötigt wird, können Sie sie löschen. D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Bing-News-Suche-API finden Sie unter [Was ist die Bing-News-Suche?](index.yml).
+Weitere Informationen zur Bing-News-Suche-API finden Sie unter [Was ist die Bing-News-Suche?](search-the-web.md).

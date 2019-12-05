@@ -1,25 +1,16 @@
 ---
-title: Übersicht über die Sicherheit – Azure App Service | Microsoft-Dokumentation
+title: Sicherheit
 description: Hier erfahren Sie, wie App Service zum Schutz Ihrer App beiträgt und wie Sie Ihre App noch besser vor Bedrohungen schützen.
 keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicherheit, sicher, geschützt, Compliance, Konformität, konform, Zertifikat, Zertifikate, HTTPS, FTPS, TLS, Vertrauen, Verschlüsselung, Verschlüsseln, verschlüsselt, IP-Einschränkung, Authentifizierung, Autorisierung, authentifizieren, autorisieren, MSI, verwaltete Dienstidentität, verwaltete Identität, Geheimnisse, Geheimnis, Patchen, Patch, Patches, Version, Isolation, Netzwerkisolation, DDoS, MITM
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 07dbbb956dcf6f1204bef2af3a28a0af3eeb5226
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 28394689048e730aa0c84e3bf807ef3afb898b1e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470082"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688554"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 

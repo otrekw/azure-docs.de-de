@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 9f1bd795af2802af642d48b4a16a55425c5f4c7f
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72028469"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74667425"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Erfassen von Daten aus IoT Hub in Azure Data Explorer (Vorschauversion)
 
@@ -20,17 +20,15 @@ ms.locfileid: "72028469"
 > * [Portal](ingest-data-iot-hub.md)
 > * [C#](data-connection-iot-hub-csharp.md)
 > * [Python](data-connection-iot-hub-python.md)
+> * [Azure Resource Manager-Vorlage](data-connection-iot-hub-resource-manager.md)
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Azure Data Explorer ermöglicht das Erfassen (Laden) von Daten aus IoT Hub (Big Data-Streamingplattform und IoT-Erfassungsdienst).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
 * Erstellen Sie [einen Testcluster und eine Testdatenbank](create-cluster-database-portal.md) mit dem Datenbanknamen *testdb*.
-
 * [Eine Beispiel-App](https://github.com/Azure-Samples/azure-iot-samples-csharp) und eine Dokumentation zum Simulieren eines Geräts.
-
 * [Visual Studio-2019](https://visualstudio.microsoft.com/vs/) zum Ausführen der Beispielapp
 
 ## <a name="create-an-iot-hub"></a>Erstellen einer IoT Hub-Instanz

@@ -1,18 +1,18 @@
 ---
 title: Vorauszahlen für Azure Data Explorer-Markup zum Einsparen von Kosten
 description: Erfahren Sie, wie Sie reservierte Azure Data Explorer-Kapazität kaufen, um Kosten für Azure Data Explorer zu sparen.
-author: avnera
+author: avneraa
 ms.author: avnera
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: 66c5644df7d796669105693d08788548334ae93a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681627"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769097"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Vorauszahlen für Azure Data Explorer-Markupeinheiten mit reservierter Azure Data Explorer-Kapazität
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/07/2019
-ms.openlocfilehash: 523fb2d3a3b148afc9219e666c2fbe7fa40d58ad
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 88634777897341f4bd4d8c12b5f9d3b6d9982758
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553798"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671537"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor für VMs in der allgemein verfügbaren Version (GA)
 
@@ -40,8 +40,9 @@ Bei der aktuellen Methode zum Aktivieren von Azure Monitor für VMs werden Leist
 
 Sobald wir unsere Benutzeroberfläche für die Verwendung der Daten in InsightsMetrics aktualisiert haben, aktualisieren wir auch unsere Dokumentation und verbreiten diese Ankündigung über mehrere Kanäle. Dazu gehört auch die Anzeige eines Banners im Azure-Portal. Zu diesem Zeitpunkt können Sie die [Leistungsindikatoren ](vminsights-enable-overview.md#performance-counters-enabled) in Ihrem Arbeitsbereich deaktivieren, wenn Sie sie nicht mehr verwenden möchten. 
 
-[!NOTE]
+>[!NOTE]
 >Wenn Sie über Warnungsregeln verfügen, die auf diese Leistungsindikatoren in der Tabelle „Perf“ verweisen, müssen Sie sie aktualisieren, damit sie auf die neuen Daten in der Tabelle `InsightsMetrics` verweisen.  In unserer Dokumentation finden Sie Beispiele für Protokollabfragen, die Sie verwenden können und die auf diese Tabelle verweisen.
+>
 
 Wenn Sie sich entschließen, die Leistungsindikatoren aktiviert zu lassen, werden Ihnen die erfassten und in der Tabelle „Perf“ gespeicherten Daten basierend auf den [Log Analytics-Preisen[(https://azure.microsoft.com/pricing/details/monitor/) in Rechnung gestellt.
 

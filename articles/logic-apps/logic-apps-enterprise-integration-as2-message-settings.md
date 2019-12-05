@@ -1,20 +1,19 @@
 ---
-title: AS2-Nachrichteneinstellungen – Azure Logic Apps
+title: AS2-Nachrichteneinstellungen
 description: Referenzhandbuch für AS2-Sende- und -Empfangseinstellungen in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/22/2019
-ms.openlocfilehash: ead92094b9af1dff56ff68e1ff58a3a4cdd9dca5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad047a30b901d71604c775e9882b0f242f094638
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "63767653"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793029"
 ---
 # <a name="reference-for-as2-message-settings-in-azure-logic-apps-with-enterprise-integration-pack"></a>Referenz für AS2-Nachrichteneinstellungen in Azure Logic Apps mit Enterprise Integration Pack
 

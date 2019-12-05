@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: ddade9472517d080d01b04c853db9dd1848fe0f3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7fb24d53876ab8c06fca4fbfe929c06a889335f3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73668465"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786349"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Schnellstart: Verbinden von Computern mit Azure mithilfe von Azure Arc für Server – PowerShell
 
@@ -175,7 +175,7 @@ Nach erfolgreichem Abschluss des Vorgangs ist Ihr Computer mit Azure verbunden. 
 Sollte der Server unter **Linux** einen Proxyserver benötigen, haben Sie folgende Möglichkeiten:
 
 * Führen Sie das Skript `install_linux_hybrid_agent.sh` aus dem Abschnitt [Installieren des Agents](#download-and-install-the-agent) mit `--proxy` aus.
-* Falls Sie den Agent bereits installiert haben, führen Sie den Befehl `/opt/azcmagent/bin/hybridrp_proxy add https://{proxy-url}:{proxy-port}` aus, um den Proxy zu konfigurieren und den Agent neu zu starten.
+* Falls Sie den Agent bereits installiert haben, führen Sie den Befehl `/opt/azcmagent/bin/hybridrp_proxy add http://{proxy-url}:{proxy-port}` aus, um den Proxy zu konfigurieren und den Agent neu zu starten.
 
 #### <a name="windows"></a>Windows
 
@@ -183,7 +183,7 @@ Sollte der Server unter **Windows** einen Proxyserver für den Zugriff auf Inter
 
 ```powershell
 # If a proxy server is needed, execute these commands with actual proxy URL
-[Environment]::SetEnvironmentVariable("https_proxy", "{https:\\proxy-url:proxyport}", "Machine")
+[Environment]::SetEnvironmentVariable("https_proxy", "http://{proxy-url}:{proxy-port}", "Machine")
 $env:https_proxy = [System.Environment]::GetEnvironmentVariable("https_proxy","Machine")
 # The agent service needs to be restarted after the proxy environment variable is set in order for the changes to take effect.
 Restart-Service -Name himds

@@ -1,20 +1,17 @@
 ---
-title: 'Behandeln von Inhaltstypen: Azure Logic Apps'
+title: Behandeln von Inhaltstypen
 description: Erfahren Sie, wie Logic Apps Inhaltstypen zur Entwurfszeit und Laufzeit behandelt.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/20/2018
-ms.openlocfilehash: 97897da13c70c29834b1fc276829b316416efd8d
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: 75d9285c4a838c2057c0f23841c3a2f465789c7c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868914"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791536"
 ---
 # <a name="handle-content-types-in-azure-logic-apps"></a>Behandeln von Inhaltstypen in Azure Logic Apps
 

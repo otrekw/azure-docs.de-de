@@ -1,17 +1,18 @@
 ---
-author: ecfan
 ms.service: logic-apps
 ms.topic: include
-ms.date: 11/03/2016
+author: ecfan
 ms.author: estfan
-ms.openlocfilehash: 6c905842778f43196ac463b99993a3cbcd436fa5
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/03/2016
+ms.openlocfilehash: 3a0cb48e7fe5f3eef101f644e4f72fcfa2689d6e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70036707"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789448"
 ---
-### <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
+
 * Ein [OneDrive](https://OneDrive.com)-Konto 
 
 Bevor Sie Ihr OneDrive for Business-Konto in einer Logik-App verwenden können, müssen Sie die Logik-App für Verbindungen mit Ihrem OneDrive for Business-Konto autorisieren. Glücklicherweise können Sie dies ganz einfach in Ihrer Logik-App im Azure-Portal durchführen. 

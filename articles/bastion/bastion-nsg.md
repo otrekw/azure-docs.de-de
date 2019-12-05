@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24279ff81daf0a350aa5234e78f27a99b7e4a03e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4b64c420290bec687388690f1c901c2ae789a3c8
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72527996"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707562"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>Verwenden von NSG-Zugriff und Azure Bastion
 
@@ -58,7 +58,7 @@ Wenn Sie eine NSG erstellen und auf ***AzureBastionSubnet*** anwenden, stellen S
 * **Diagnoseprotokollierung und Sonstiges:** Ausgehend am Port 443 an „AzureCloud“. Regionale Tags innerhalb dieses Diensttags werden noch nicht unterstützt.
 * **Virtueller Zielcomputer:** Ausgehend für die Ports 3389 und 22 an „VirtualNetwork“
 
-Eine exemplarische NSG-Regel finden Sie in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion).
+Eine exemplarische NSG-Regel finden Sie in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

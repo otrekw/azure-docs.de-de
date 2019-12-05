@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 1016fbc1478ec713d50a2f04bcc80d08288b03f3
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 73a76c4442bb8af70168e54a294f2cb100ff653c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827235"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703659"
 ---
 # <a name="troubleshoot-domain-join-problems-with-an-azure-ad-domain-services-managed-domain"></a>Behandeln von Problemen beim Einbinden in eine von Azure AD Domain Services verwaltete Domäne
 
@@ -32,7 +32,7 @@ Wenn die VM die von Azure AD DS verwaltete Domäne nicht finden kann, liegt norm
 
 1. Stellen Sie sicher, dass die VM mit demselben virtuellen Netzwerk (oder einem virtuellen Peernetzwerk) verbunden ist, das für Azure AD DS aktiviert wurde. Andernfalls kann die VM die Domäne nicht finden und eine Verbindung mit ihr herstellen, um sich darin einzubinden.
     * Wenn die VM nicht mit demselben virtuellen Netzwerk verbunden ist, vergewissern Sie sich, dass der Status für das Peering virtueller Netzwerke oder die VPN-Verbindung *Aktiv* oder *Verbunden* lautet, damit der Datenverkehr ordnungsgemäß weitergeleitet werden kann.
-1. Versuchen Sie, die Domäne unter Angabe des Domänennamens der von Azure AD DS verwaltete Domäne, z.B. `ping contoso.com`, zu pingen.
+1. Versuchen Sie, die Domäne unter Angabe des Domänennamens der von Azure AD DS verwaltete Domäne, z.B. `ping aadds.contoso.com`, zu pingen.
     * Wenn die Ping-Antwort fehlschlägt, versuchen Sie, die IP-Adressen für die Domäne zu pingen, die auf der Übersichtsseite im Portal für Ihre von Azure AD DS verwaltete Domäne angezeigt werden, z.B. `ping 10.0.0.4`.
     * Wenn Sie die IP-Adresse erfolgreich pingen können, aber nicht die Domäne, ist der DNS möglicherweise falsch konfiguriert. Stellen Sie sicher, dass Sie die DNS-Server der von Azure AD DS verwalteten Domäne für das virtuelle Netzwerk konfiguriert haben.
 1. Versuchen Sie, den DNS-Resolvercache auf dem virtuellen Computer zu leeren, z.B. `ipconfig /flushdns`.

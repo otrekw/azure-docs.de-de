@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/14/2019
-ms.openlocfilehash: 14cb4f02bc18bda24f022f1ccf41a06776a5136b
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 4e6b648ed70f6ff57a2d11cde43b8168b800fcb3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241484"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806914"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Ausführen von Azure Machine Learning-Workloads mit automatisiertem maschinellem Lernen in Apache Spark in HDInsight
 
@@ -71,7 +71,7 @@ Sie können zudem den Datenspeicher mit einer einmaligen Registrierung beim Arbe
 
 ## <a name="experiment-submission"></a>Experimentübermittlung
 
-In der [Konfiguration für automatisiertes maschinelles Lernen](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig) legen Sie die Eigenschaft `spark_context` fest, um das Paket im verteilten Modus auszuführen. Mit der Eigenschaft `concurrent_iterations` bestimmen Sie, wie viele Iterationen parallel ausgeführt werden dürfen. Legen Sie eine Zahl fest, die kleiner ist als die Anzahl von Executorkernen für die Spark-App.
+In der [Konfiguration für automatisiertes maschinelles Lernen](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) legen Sie die Eigenschaft `spark_context` fest, um das Paket im verteilten Modus auszuführen. Mit der Eigenschaft `concurrent_iterations` bestimmen Sie, wie viele Iterationen parallel ausgeführt werden dürfen. Legen Sie eine Zahl fest, die kleiner ist als die Anzahl von Executorkernen für die Spark-App.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,22 +1,19 @@
 ---
-title: 'Schützen von B2B-Nachrichten mit Zertifikaten: Azure Logic Apps | Microsoft-Dokumentation'
+title: Schützen von B2B-Nachrichten mit Zertifikaten
 description: Hinzufügen von Zertifikaten zum Schützen von B2B-Nachrichten in Azure Logic Apps mit dem Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-manager: jeconnoc
-ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: be3dbc386b0ac89a85bc1719081df944523c28ce
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 6c5de6eba000c9052c7eb7b31d75804b9f454607
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997839"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790690"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Schützen von B2B-Nachrichten mit Zertifikaten
 

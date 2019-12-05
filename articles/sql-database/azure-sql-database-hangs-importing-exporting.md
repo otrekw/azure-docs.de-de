@@ -9,12 +9,12 @@ author: v-miegge
 ms.author: ramakoni
 ms.reviewer: ''
 ms.date: 09/27/2019
-ms.openlocfilehash: 29edd7da42a5eb4586cd52cc0f913a56e199a5ba
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e1638c9779ca50507a1ce30dd3bbc9c18248964a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73808279"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807067"
 ---
 # <a name="azure-sql-database-importexport-service-takes-a-long-time-to-import-or-export-a-database"></a>Der Import-/Exportdienst von Azure SQL Datenbank benötigt viel Zeit, um eine Datenbank zu importieren oder zu exportieren
 
@@ -22,7 +22,7 @@ Wenn Sie den Import-/Exportdienst Azure SQL-Datenbank verwenden, kann der Vorga
 
 ## <a name="azure-sql-database-importexport-service"></a>Import-/Exportdienst von Azure SQL-Datenbank
 
-Der Import-/Exportdienst von Azure SQL-Datenbank ist ein REST-basierter Webdienst, der in jedem Azure-Rechenzentrum ausgeführt wird. Dieser Dienst wird aufgerufen, wenn Sie im Azure-Portal die Option [Datenbank importieren](https://docs.microsoft.com/azure/sql-database/sql-database-import#import-from-a-bacpac-file-in-the-azure-portal) oder [Exportieren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) verwenden, um Ihre SQL-Datenbank zu verschieben. Der Dienst bietet kostenlose Anforderungswarteschlangen und Computedienste für Importe und Exporte zwischen einer Azure SQL-Datenbank und Azure Blob Storage.
+Der Import-/Exportdienst von Azure SQL-Datenbank ist ein REST-basierter Webdienst, der in jedem Azure-Rechenzentrum ausgeführt wird. Dieser Dienst wird aufgerufen, wenn Sie im Azure-Portal die Option [Datenbank importieren](sql-database-import.md#using-azure-portal) oder [Exportieren](https://docs.microsoft.com/azure/sql-database/sql-database-export#export-to-a-bacpac-file-using-the-azure-portal) verwenden, um Ihre SQL-Datenbank zu verschieben. Der Dienst bietet kostenlose Anforderungswarteschlangen und Computedienste für Importe und Exporte zwischen einer Azure SQL-Datenbank und Azure Blob Storage.
 
 Bei den Import- und Exportvorgängen handelt es sich nicht um eine herkömmliche physische Datenbanksicherung, sondern um eine logische Sicherung der Datenbank in einem speziellen BACPAC-Format. Das BACPAC-Format ermöglicht die Vermeidung eines physischen Formats, das sich möglicherweise zwischen den Versionen von Microsoft SQL Server und Azure  SQL-Datenbank unterscheidet. Daher können Sie die Datenbank mithilfe dieses Formats auf sichere Weise in einer SQL Server-Datenbank und in einer SQL-Datenbank wiederherstellen.
 

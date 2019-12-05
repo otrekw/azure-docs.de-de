@@ -5,14 +5,14 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 08/15/2018
 ms.author: charwen
-ms.openlocfilehash: 2810dfc4cb41dcf11eb59ce3c87e6f7d6b2d5f65
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b14b8a9a2bc43c33095bf07e7fb7ebcc2d6c1ffa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083500"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769522"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>Zurücksetzen von ExpressRoute-Verbindungspeerings
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Peerings einer ExpressRoute-Verbindung m
 
 Es gibt einige Szenarios, in denen das Zurücksetzen Ihrer ExpressRoute-Peerings hilfreich sein kann.
 * Testen Sie Ihren Entwurf und die Implementierung der Notfallwiederherstellung. Wenn Sie z.B. über zwei ExpressRoute-Verbindungen verfügen, können Sie die Peerings von einer Verbindung deaktivieren und erzwingen, dass Ihr Netzwerkdatenverkehr ein Failover auf die andere Verbindung ausführt.
-* Aktivieren Sie die bidirektionale Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD) für das private Azure-Peering oder Microsoft-Peering Ihrer ExpressRoute-Verbindung. BFD ist standardmäßig im privaten Azure-Peering aktiviert, wenn Ihre ExpressRoute-Verbindung nach dem 1. August 2018 erstellt wurde, und im Microsoft-Peering, wenn Ihre ExpressRoute-Verbindung nach dem 1. Oktober 2019 erstellt wurde. Wenn Ihre Verbindung vor diesem Datum erstellt wurde, wurde BFD nicht aktiviert. Sie können BFD aktivieren, indem Sie das Peering deaktivieren und anschließend erneut aktivieren. 
+* Aktivieren Sie die bidirektionale Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD) für das private Azure-Peering Ihrer ExpressRoute-Verbindung. BFD ist standardmäßig aktiviert, wenn Ihre ExpressRoute-Verbindung nach dem 1. August 2018 erstellt wurde. Wenn Ihre Verbindung vor diesem Datum erstellt wurde, wurde BFD nicht aktiviert. Sie können BFD aktivieren, indem Sie das Peering deaktivieren und anschließend erneut aktivieren. Beachten Sie, dass BFD ausschließlich für das private Azure-Peering unterstützt wird.
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 

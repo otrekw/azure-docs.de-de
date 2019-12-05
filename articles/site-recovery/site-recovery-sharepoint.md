@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 6/27/2019
 ms.author: sutalasi
-ms.openlocfilehash: cc72cb4134e6492478805421e448df26a8dc4554
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: d74e28ce470c23bbc8ee2081532a198c260ccea5
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622406"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706360"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Einrichten der Notfallwiederherstellung für eine SharePoint-Anwendung mit mehreren Ebenen mithilfe von Azure Site Recovery
 
@@ -82,7 +82,7 @@ Folgen Sie [dieser Anleitung](site-recovery-vmware-to-azure.md), um die Replikat
 
 * Eine Anleitung zum Schutz von Active Directory und DNS finden Sie im Dokument [Schützen von Active Directory und DNS](site-recovery-active-directory.md).
 
-* Eine Anleitung zum Schutz von Datenbankebenen auf SQL Server finden Sie im Dokument [Schützen von SQL Server](site-recovery-active-directory.md).
+* Eine Anleitung zum Schutz von Datenbankebenen auf SQL Server finden Sie im Dokument [Schützen von SQL Server](site-recovery-sql.md).
 
 ## <a name="networking-configuration"></a>Netzwerkkonfiguration
 

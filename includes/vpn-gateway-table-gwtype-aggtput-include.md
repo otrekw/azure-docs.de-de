@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cba54c65a314919b5509e1de029ad05f8722baa2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1643b20c6c157c43e93967cef364e703dbf4478e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075461"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828756"
 ---
 |**VPN<br>Gateway-<br>Generation** |**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br>-IKEv2/OpenVPN-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** | **BGP** | **Zonenredundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -27,12 +27,12 @@ ms.locfileid: "74075461"
 |        |            |            |           |                |           |           |     |
 |**Generation 2**|**VpnGw2**  | Maximal 30*   | Maximal 128  | Maximal 500       | 1,25 GBit/s | Unterstützt | Nein |
 |**Generation 2**|**VpnGw3**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 2,5 GBit/s  | Unterstützt | Nein |
-|**Generation 2**|**VpnGw4**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 5 GBit/s    | Unterstützt | Nein |
-|**Generation 2**|**VpnGw5**  | Maximal 30*   | Maximal 128  | Maximal 1000      | 10 GBit/s   | Unterstützt | Nein |
+|**Generation 2**|**VpnGw4**  | Maximal 30*   | Maximal 128  | Maximal 5\.000      | 5 GBit/s    | Unterstützt | Nein |
+|**Generation 2**|**VpnGw5**  | Maximal 30*   | Maximal 128  | Maximal 10000      | 10 GBit/s   | Unterstützt | Nein |
 |**Generation 2**|**VpnGw2AZ**| Maximal 30*   | Maximal 128  | Maximal 500       | 1,25 GBit/s | Unterstützt | Ja |
 |**Generation 2**|**VpnGw3AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 2,5 GBit/s  | Unterstützt | Ja |
-|**Generation 2**|**VpnGw4AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 5 GBit/s    | Unterstützt | Ja |
-|**Generation 2**|**VpnGw5AZ**| Maximal 30*   | Maximal 128  | Maximal 1000      | 10 GBit/s   | Unterstützt | Ja |
+|**Generation 2**|**VpnGw4AZ**| Maximal 30*   | Maximal 128  | Maximal 5\.000      | 5 GBit/s    | Unterstützt | Ja |
+|**Generation 2**|**VpnGw5AZ**| Maximal 30*   | Maximal 128  | Maximal 10000      | 10 GBit/s   | Unterstützt | Ja |
 
 (\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
 

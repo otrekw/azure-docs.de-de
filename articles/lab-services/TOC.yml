@@ -68,6 +68,8 @@
           href: devtest-lab-configure-cost-management.md
         - name: Senden von Benachrichtigungen zum automatischen Herunterfahren
           href: devtest-lab-auto-shutdown.md
+        - name: Festlegen des automatischen Starts für virtuelle Labcomputer
+          href: devtest-lab-auto-startup-vm.md
         - name: Skalieren des Labs
           href: devtest-lab-scale-lab.md
         - name: Verwalten von Basen virtueller Computer
@@ -193,6 +195,8 @@
           href: add-artifact-repository.md
         - name: Angeben verbindlicher Artefakte
           href: devtest-lab-mandatory-artifacts.md
+        - name: Beheben von Problemen beim Anwenden von Artefakten
+          href: devtest-lab-troubleshoot-apply-artifacts.md
     - name: Integrieren mit CI/CD
       items:
         - name: Integrieren von Labs in Ihre CI/CD-Pipeline in Azure Pipelines

@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: ee7a03f27ab03feadedb7ac8441675a90468655c
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ab8ef516e5434ac5a9cde9324798d8dd1706a04e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534922"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807407"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen
 
@@ -80,7 +80,7 @@ Verwenden Sie Self-Service-Wartung am besten in den folgenden Fällen:
 
 **A:** In einer Verfügbarkeitsgruppe oder VM-Skalierungsgruppe bereitgestellte virtuelle Computer werden wie Updatedomänen (UD) behandelt. Bei der Wartung berücksichtigt Azure die UD-Einschränkung und startet virtuelle Computer nicht von einer anderen UD (innerhalb derselben Verfügbarkeitsgruppe) aus neu.  Azure wartet auch mindestens 30 Minuten vor dem Wechsel zur nächsten Gruppe von virtuellen Computern. 
 
-Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit für virtuelle Computer in Azure](/linux/availability.md).
+Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit für virtuelle Computer in Azure](./linux/availability.md).
 
 **F: Wie werde ich über eine geplante Wartung benachrichtigt?**
 
@@ -92,7 +92,7 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Verfügbarkeit fü
 
 **F: Kann ich feststellen, wann genau mein virtueller Computer betroffen sein wird?**
 
-**A:** Bei Festlegung des Zeitplans definieren wir ein Zeitfenster von einigen Tagen. Allerdings ist die genaue Reihenfolge von Servern (und VMs) innerhalb dieses Zeitfensters unbekannt. Kunden, die die genaue Zeit für ihre virtuellen Computer wissen möchten, können [geplante Ereignisse](/linux/scheduled-events.md) verwenden, aus dem virtuellen Computer heraus abfragen und erhalten 15 Minuten vor dem VM-Neustart eine Benachrichtigung.
+**A:** Bei Festlegung des Zeitplans definieren wir ein Zeitfenster von einigen Tagen. Allerdings ist die genaue Reihenfolge von Servern (und VMs) innerhalb dieses Zeitfensters unbekannt. Kunden, die die genaue Zeit für ihre virtuellen Computer wissen möchten, können [geplante Ereignisse](./linux/scheduled-events.md) verwenden, aus dem virtuellen Computer heraus abfragen und erhalten 15 Minuten vor dem VM-Neustart eine Benachrichtigung.
 
 **F: Wie lange dauert es, meinen virtuellen Computer neu zu starten?**
 

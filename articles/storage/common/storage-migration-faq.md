@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 250cdedaa5155f1487cb842be492acd82c0f26b3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 1e2c899e0ef98266b5afd2f1bf21443a2debd281
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090821"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666425"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -237,7 +237,7 @@ Wenn Sie über virtuelle Computer verfügen, müssen Sie vor der Migration der S
 
 **Wie verschiebe ich Ressourcen von einem klassischen Speicherkonto in ein Azure Resource Manager-Speicherkonto?**
 
-Sie können das Cmdlet **Move-AzStorageAccount** verwenden. Dieses Cmdlet verfügt über mehrere Schritte (überprüfen, vorbereiten, committen). Sie können die Verschiebung überprüfen, bevor Sie sie durchführen.
+Sie können das Cmdlet **Move-AzureStorageAccount** verwenden. Dieses Cmdlet verfügt über mehrere Schritte (überprüfen, vorbereiten, committen). Sie können die Verschiebung überprüfen, bevor Sie sie durchführen.
 
 Wenn Sie über virtuelle Computer verfügen, müssen Sie vor der Migration der Speicherkontodaten weitere Schritte ausführen. Weitere Informationen finden Sie unter [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell](../..//virtual-machines/windows/migration-classic-resource-manager-ps.md).
 

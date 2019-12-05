@@ -5,14 +5,14 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 12/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4c263b32b7ededb9e5169e80a29806f322a3c849
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: d453bb4071c4a6972e01b8f7e90375181caf6d01
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755166"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806523"
 ---
 # <a name="transactions-and-optimistic-concurrency-control"></a>Transaktionen und Steuerung für optimistische Nebenläufigkeit
 
@@ -47,15 +47,15 @@ Die JavaScript-basierten gespeicherten Prozeduren, Trigger, UDFs und Mergeprozed
 
 Die Möglichkeit zur direkten Ausführung von JavaScript innerhalb der Datenbank-Engine bietet die leistungsfähige und transaktionale Ausführung von Datenbankvorgängen für die Elemente eines Containers. Da die Azure Cosmos-Datenbank-Engine JSON und JavaScript nativ unterstützt, treten darüber hinaus keine Impedanzabweichungen zwischen den Typsystemen einer Anwendung und der Datenbank auf.
 
-## <a name="optimistic-concurrency-control"></a>Steuerung für optimistische Parallelität 
+## <a name="optimistic-concurrency-control"></a>Steuerung für optimistische Parallelität
 
 Mit der Steuerung für optimistische Nebenläufigkeit können Sie den Verlust von Aktualisierungen und Löschvorgängen vermeiden. Gleichzeitige, konfliktverursachende Vorgänge unterliegen der regulären pessimistischen Sperrung der Datenbank-Engine, die in der logischen Partition gehostet wird, die das Element besitzt. Wenn in zwei parallelen Vorgängen versucht wird, die neueste Version eines Elements in einer logischen Partition zu aktualisieren, ist nur einer der beiden Vorgänge erfolgreich. Wenn jedoch in einem oder beiden Vorgängen, mit denen versucht wird, gleichzeitig dasselbe Element zu aktualisieren, zuvor bereits ein älterer Wert des Elements gelesen wurde, kann in der Datenbank nicht ermittelt werden, ob der zuvor mit den konfliktverursachenden Vorgängen gelesene Wert tatsächlich der neueste Wert des Elements war. Dies kann zum Glück mit der Steuerung für **optimistische Nebenläufigkeit (Optimistic Concurrency Control, OCC)** erkannt werden, bevor die beiden Vorgänge die Transaktionsgrenze innerhalb der Datenbank-Engine überschreiten. Mit der Steuerung für optimistische Nebenläufigkeit werden Ihre Daten davor geschützt, dass Änderungen, die von anderen Benutzern vorgenommen wurden, versehentlich überschrieben werden. Ebenso wird verhindert, dass andere Benutzer versehentlich die von Ihnen vorgenommenen Änderungen überschreiben.
 
 Die gleichzeitigen Aktualisierungen eines Elements unterliegen über die Kommunikationsprotokollebene von Azure Cosmos DB der Steuerung für optimistische Nebenläufigkeit. In der Azure Cosmos-Datenbank wird sichergestellt, dass die clientseitige Version des Elements, das Sie aktualisieren (oder löschen), der Version des Elements im Azure Cosmos-Container entspricht. Dadurch wird sichergestellt, dass Ihre Schreibvorgänge geschützt sind und nicht versehentlich durch Schreibvorgänge von anderen Benutzern überschrieben werden und umgekehrt. In einer Umgebung mit mehreren Benutzern verhindert die Steuerung für optimistische Nebenläufigkeit, dass Sie versehentlich die falsche Version eines Elements löschen oder aktualisieren. Elemente werden so vor den berüchtigten Problemen mit verloren gegangenen Aktualisierungen oder Löschvorgängen geschützt.
 
-Jedes in einem Azure Cosmos-Container gespeicherte Element weist eine systemdefinierte `_etag`-Eigenschaft auf. Der Wert von `_etag` wird automatisch generiert und bei jeder Aktualisierung des Elements vom Server aktualisiert. `_etag` kann mit dem vom Client bereitgestellten Anforderungsheader `if-match` verwendet werden, sodass der Server festlegen kann, ob ein Element bedingt aktualisiert werden kann. Wenn der Wert des `if-match`-Headers dem Wert von `_etag` auf dem Server entspricht, wird das Element aktualisiert. Wenn der Wert des `if-match`-Anforderungsheaders nicht mehr aktuell ist, lehnt der Server den Vorgang mit der Antwortmeldung „HTTP 412 – Vorbedingungsfehler“ ab. Der Client kann dann das Element erneut abrufen, um die aktuelle Version des Elements auf dem Server zu erhalten, oder die Version des Elements auf dem Server mit dem eigenen `_etag`-Wert für das Element überschreiben. Darüber hinaus kann `_etag` mit dem `if-none-match`-Header verwendet werden, um festzustellen, ob ein erneutes Abrufen einer Ressource erforderlich ist. 
+Jedes in einem Azure Cosmos-Container gespeicherte Element weist eine systemdefinierte `_etag`-Eigenschaft auf. Der Wert von `_etag` wird automatisch generiert und bei jeder Aktualisierung des Elements vom Server aktualisiert. `_etag` kann mit dem vom Client bereitgestellten Anforderungsheader `if-match` verwendet werden, sodass der Server festlegen kann, ob ein Element bedingt aktualisiert werden kann. Wenn der Wert des `if-match`-Headers dem Wert von `_etag` auf dem Server entspricht, wird das Element aktualisiert. Wenn der Wert des `if-match`-Anforderungsheaders nicht mehr aktuell ist, lehnt der Server den Vorgang mit der Antwortmeldung „HTTP 412 – Vorbedingungsfehler“ ab. Der Client kann dann das Element erneut abrufen, um die aktuelle Version des Elements auf dem Server zu erhalten, oder die Version des Elements auf dem Server mit dem eigenen `_etag`-Wert für das Element überschreiben. Darüber hinaus kann `_etag` mit dem `if-none-match`-Header verwendet werden, um festzustellen, ob ein erneutes Abrufen einer Ressource erforderlich ist.
 
-Der Wert `_etag` des Elements ändert sich bei jeder Aktualisierung des Elements. Bei Vorgängen zum Ersetzen von Elementen muss `if-match` ausdrücklich als Teil der Anforderungsoptionen ausgedrückt werden. Einen entsprechenden Beispielcode finden Sie in [GitHub](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs#L398-L446). `_etag`-Werte werden für alle geschriebenen Elemente, die von der gespeicherten Prozedur verwendet werden, implizit überprüft. Wenn ein Konflikt erkannt wird, setzt die gespeicherte Prozedur die Transaktion zurück und löst eine Ausnahme aus. Mit dieser Methode werden entweder alle oder keine Schreibvorgänge in der gespeicherten Prozedur unteilbar angewandt. Dies ist ein Signal für die Anwendung, Aktualisierungen erneut anzuwenden und die ursprüngliche Clientanforderung zu wiederholen.
+Der Wert `_etag` des Elements ändert sich bei jeder Aktualisierung des Elements. Bei Vorgängen zum Ersetzen von Elementen muss `if-match` ausdrücklich als Teil der Anforderungsoptionen ausgedrückt werden. Einen entsprechenden Beispielcode finden Sie in [GitHub](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/ItemManagement/Program.cs#L578-L674). `_etag`-Werte werden für alle geschriebenen Elemente, die von der gespeicherten Prozedur verwendet werden, implizit überprüft. Wenn ein Konflikt erkannt wird, setzt die gespeicherte Prozedur die Transaktion zurück und löst eine Ausnahme aus. Mit dieser Methode werden entweder alle oder keine Schreibvorgänge in der gespeicherten Prozedur unteilbar angewandt. Dies ist ein Signal für die Anwendung, Aktualisierungen erneut anzuwenden und die ursprüngliche Clientanforderung zu wiederholen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 0e9a71e1e826569930cf593a7e264020617bdc3a
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883388"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775539"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Was sind die Bing-Suche-APIs?
 
@@ -23,7 +23,7 @@ Die Bing-Suche-APIs ermöglichen Ihnen das Erstellen von verbundenen Web-Apps un
 
 ## <a name="the-bing-web-search-api"></a>Die Bing-Websuche-API
 
-Die [Bing-Websuche-API](../Bing-Web-Search/index.yml) gibt Webseiten, Bilder, Videos, Nachrichten und mehr zurück. Sie können die an diese API gesendeten Suchabfragen filtern, um bestimmte Inhaltstypen ein- oder auszuschließen.
+Die [Bing-Websuche-API](../Bing-Web-Search/overview.md) gibt Webseiten, Bilder, Videos, Nachrichten und mehr zurück. Sie können die an diese API gesendeten Suchabfragen filtern, um bestimmte Inhaltstypen ein- oder auszuschließen.
 
 Ziehen Sie die Bing-Websuche-API in Anwendungen in Betracht, die möglicherweise nach allen Arten von relevanten Webinhalten suchen müssen. Wenn Ihre Anwendung für einen bestimmten Typ von Onlineinhalten vorgesehen ist, erwägen Sie eine der folgenden Such-APIs:
 
@@ -33,16 +33,16 @@ Die folgenden Bing-Suche-APIs geben bestimmte Inhalte aus dem Internet zurück, 
 
 | Bing-API | BESCHREIBUNG |
 | -- | -- |
-| [Entitätssuche](../Bing-Entities-Search/index.yml) | Die Bing-Entitätssuche-API gibt Suchergebnisse mit Entitäten zurück. Dies können Personen, Orte oder Dinge sein. Abhängig von der Abfrage gibt die API mindestens eine Entität zurück, die die Kriterien der Abfrage erfüllt. Die Suchabfrage kann namhafte Personen, lokale Unternehmen, Sehenswürdigkeiten, Reiseziele und mehr umfassen. |
-| [Bildersuche](../Bing-Image-Search/index.yml) | Mit der Bing-Bildersuche-API können Sie nach qualitativ hochwertigen statischen und animierten Bildern suchen, ähnlich wie unter [Bing.com/images](https://www.Bing.com/images). Sie können die Suchvorgänge verfeinern, um Bilder nach Attributen wie Größe, Farbe, Lizenz und Aktualität auszuschließen. Außerdem können Sie nach derzeit beliebten Bildern suchen, Bilder hochladen, um Erkenntnisse zu diesen zu gewinnen, und Miniaturansichten als Vorschau anzeigen. |
-| [News-Suche](../Bing-News-Search/index.yml) | Die Bing-News-Suche-API ermöglicht das Auffinden von Nachrichten, ähnlich der Suche unter [Bing.com/news](https://www.Bing.com/news). Die API gibt Nachrichtenartikel aus mehreren Quellen oder von bestimmten Domänen zurück. Sie können nach Kategorien suchen, um aktuell relevante Artikel, wichtige Berichte und Schlagzeilen abzurufen. |
-| [Videosuche](../Bing-Video-Search/index.yml) | Mit der Bing-Videosuche-API können Sie Videos überall im Web suchen. Finden Sie beliebte Videos, verwandte Inhalte und Miniaturansichten als Vorschau. |
-| [Visuelle Suche](../Bing-visual-search/index.yml) | Laden Sie ein Bild hoch, oder verwenden Sie eine URL, um aufschlussreiche Informationen darüber zu erhalten. Dies umfasst z.B. visuell ähnliche Produkte, Bilder und verwandte Suchvorgänge. |
- [Suche nach lokalen Unternehmen](../bing-local-business-search/index.yml) | Mit der Bing-Such-API für ortsansässige Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen. |
+| [Entitätssuche](../Bing-Entities-Search/overview.md) | Die Bing-Entitätssuche-API gibt Suchergebnisse mit Entitäten zurück. Dies können Personen, Orte oder Dinge sein. Abhängig von der Abfrage gibt die API mindestens eine Entität zurück, die die Kriterien der Abfrage erfüllt. Die Suchabfrage kann namhafte Personen, lokale Unternehmen, Sehenswürdigkeiten, Reiseziele und mehr umfassen. |
+| [Bildersuche](../Bing-Image-Search/overview.md) | Mit der Bing-Bildersuche-API können Sie nach qualitativ hochwertigen statischen und animierten Bildern suchen, ähnlich wie unter [Bing.com/images](https://www.Bing.com/images). Sie können die Suchvorgänge verfeinern, um Bilder nach Attributen wie Größe, Farbe, Lizenz und Aktualität auszuschließen. Außerdem können Sie nach derzeit beliebten Bildern suchen, Bilder hochladen, um Erkenntnisse zu diesen zu gewinnen, und Miniaturansichten als Vorschau anzeigen. |
+| [News-Suche](../Bing-News-Search/search-the-web.md) | Die Bing-News-Suche-API ermöglicht das Auffinden von Nachrichten, ähnlich der Suche unter [Bing.com/news](https://www.Bing.com/news). Die API gibt Nachrichtenartikel aus mehreren Quellen oder von bestimmten Domänen zurück. Sie können nach Kategorien suchen, um aktuell relevante Artikel, wichtige Berichte und Schlagzeilen abzurufen. |
+| [Videosuche](../Bing-Video-Search/overview.md) | Mit der Bing-Videosuche-API können Sie Videos überall im Web suchen. Finden Sie beliebte Videos, verwandte Inhalte und Miniaturansichten als Vorschau. |
+| [Visuelle Suche](../Bing-visual-search/overview.md) | Laden Sie ein Bild hoch, oder verwenden Sie eine URL, um aufschlussreiche Informationen darüber zu erhalten. Dies umfasst z.B. visuell ähnliche Produkte, Bilder und verwandte Suchvorgänge. |
+ [Suche nach lokalen Unternehmen](../bing-local-business-search/overview.md) | Mit der Bing-Such-API für ortsansässige Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen. |
 
 ## <a name="the-bing-custom-search-api"></a>API für die benutzerdefinierte Bing-Suche
 
-Das Erstellen einer Instanz der benutzerdefinierten Suche mit der API für die [benutzerdefinierte Bing-Suche](../Bing-Custom-Search/index.yml) ermöglicht Ihnen die Erstellung eine Suchfunktion, die ausschließlich die für Sie interessanten Inhalte und Themen umfasst. Nachdem Sie beispielsweise die Domänen, Websites und spezifischen Webseiten angegeben haben, die Bing durchsuchen soll, passt die benutzerdefinierte Bing-Suche die Ergebnisse an diesen bestimmten Inhalt an. Sie können die APIs für die benutzerdefinierte Bing-Vorschlagssuche, die Bildersuche und die Videosuche integrieren, um das Suchergebnis noch weiter anzupassen.
+Das Erstellen einer Instanz der benutzerdefinierten Suche mit der API für die [benutzerdefinierte Bing-Suche](../Bing-Custom-Search/overview.md) ermöglicht Ihnen die Erstellung eine Suchfunktion, die ausschließlich die für Sie interessanten Inhalte und Themen umfasst. Nachdem Sie beispielsweise die Domänen, Websites und spezifischen Webseiten angegeben haben, die Bing durchsuchen soll, passt die benutzerdefinierte Bing-Suche die Ergebnisse an diesen bestimmten Inhalt an. Sie können die APIs für die benutzerdefinierte Bing-Vorschlagssuche, die Bildersuche und die Videosuche integrieren, um das Suchergebnis noch weiter anzupassen.
 
 ## <a name="additional-bing-search-apis"></a>Weitere Bing-Suche-APIs
 
@@ -50,7 +50,7 @@ Mit den folgenden Bing-Suche-APIs können Sie Ihre Suchergebnisse noch weiter ve
 
 | API | BESCHREIBUNG |
 | -- | -- |
-| [Bing-Vorschlagssuche](../Bing-Autosuggest/index.yml) | Verbessern Sie Suchergebnisse Ihrer Anwendung mit der Bing-Vorschlagssuche-API, indem Sie empfohlene Suchbegriffe in Echtzeit zurückgegeben.  |
+| [Bing-Vorschlagssuche](../Bing-Autosuggest/get-suggested-search-terms.md) | Verbessern Sie Suchergebnisse Ihrer Anwendung mit der Bing-Vorschlagssuche-API, indem Sie empfohlene Suchbegriffe in Echtzeit zurückgegeben.  |
 | [Bing-Statistik](bing-web-stats.md) | Die Bing-Statistik stellt Analysen für die Bing-Suche-APIs bereit, die Ihre Anwendung verwendet. Einige der verfügbaren Analysen enthalten das Aufrufvolumen, die häufigsten Abfragezeichenfolgen und die geografische Verteilung. |
 
 ## <a name="next-steps"></a>Nächste Schritte

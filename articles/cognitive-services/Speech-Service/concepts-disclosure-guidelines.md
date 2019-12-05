@@ -3,19 +3,19 @@ title: Entwurfsrichtlinien für die Offenlegung
 titleSuffix: Azure Cognitive Services
 description: Einführung in die Richtlinien für den Entwurf von Offenlegungen und die Bewertung der Offenlegungsstufe.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: 7dffa3d9f6e96adc6146a1059e7360c77926ece3
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837374"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776384"
 ---
 # <a name="disclosure-design-guidelines"></a>Entwurfsrichtlinien für die Offenlegung
 Erfahren Sie, wie Sie Vertrauen zu Ihren Kunden aufbauen und erhalten können, indem Sie sich in Bezug auf die synthetische Natur Ihres Spracherlebnisses transparent verhalten.

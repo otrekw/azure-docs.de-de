@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/12/2019
+ms.date: 12/01/2019
 ms.author: b-juche
-ms.openlocfilehash: 06ebe8ed22453289fa02c238d9b2e6ef13191f2a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888545"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769845"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes 
 
@@ -257,9 +257,6 @@ Für diesen Gewusst-wie-Artikel wird Az-Version 2.6.0 (oder höher) des Azure P
     * Wählen Sie die NFS-Version (**NFSv3** oder **NFSv4.1**) für das Volume aus.  
       Lesen Sie sich die [Überlegungen](azure-netapp-files-create-volumes.md#considerations) und [bewährten Methoden](azure-netapp-files-create-volumes.md#best-practice) zu NFS-Versionen durch. 
       
-> [!IMPORTANT] 
-> Für den Zugriff auf das NFSv4.1-Feature sind Whitelists erforderlich.  Übermitteln Sie eine Anforderung an <anffeedback@microsoft.com>, um Whitelists anzufordern. 
-
   ![Angeben des NFS-Protokolls für den Schnellstart](../media/azure-netapp-files/azure-netapp-files-quickstart-protocol-nfs.png)
 
 5. Klicken Sie auf **Überprüfen + erstellen**.

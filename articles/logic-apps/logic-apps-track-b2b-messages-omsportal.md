@@ -1,20 +1,19 @@
 ---
-title: Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen – Azure Logic Apps | Microsoft-Dokumentation
+title: Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen
 description: Nachverfolgen der B2B-Kommunikation für Integrationskonten und Azure Logic Apps mit Azure Log Analytics
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 33c4efb2b783b5071513f069beac9cdf73c373a8
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997846"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792937"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>Nachverfolgen von B2B-Nachrichten mit Azure Monitor-Protokollen
 
