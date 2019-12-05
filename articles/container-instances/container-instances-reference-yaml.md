@@ -1,19 +1,14 @@
 ---
-title: Azure Container Instances – YAML-Referenz
+title: YAML-Referenz für Containergruppe
 description: Referenz für die von Azure Container Instances zum Konfigurieren einer Containergruppe unterstützte YAML-Datei
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: danlep
-ms.openlocfilehash: 2e6be18371cf3ff96d1ce91d4dde26ff1f14021b
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5603f2e0f63c4f83a6d3761feb540abb8b8b7d5c
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179993"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533485"
 ---
 # <a name="yaml-reference-azure-container-instances"></a>YAML-Referenz: Azure Container Instances
 
@@ -145,7 +140,7 @@ In den folgenden Tabellen sind die Werte beschrieben, die Sie im Schema festlege
 |  NAME | type | Erforderlich | Wert |
 |  ---- | ---- | ---- | ---- |
 |  name | Zeichenfolge | Ja | Der Name der Containergruppe. |
-|  apiVersion | enum | Ja | 01.10.2018 |
+|  apiVersion | enum | Ja | 2018-10-01 |
 |  location | Zeichenfolge | Nein | Der Ressourcenspeicherort. |
 |  tags | object | Nein | Die Ressourcentags. |
 |  identity | object | Nein | Die Identität der Containergruppe, sofern konfiguriert. - [-Objekt](#ContainerGroupIdentity) |

@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Klassifizieren, Einkommensprognose'
+title: 'Designer: Klassifizieren, Einkommensprognose – Beispiel'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie über den Designer (Vorschau) eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben.
+description: Folgen Sie diesem Beispiel, und erstellen Sie mit dem Azure Machine Learning-Designer einen Klassifizierer ohne Code zur Einkommensprognose.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: adc7712a4f41daea9ed691e6df52290e98e8d81f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647963"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214112"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Beispiel 3 – Klassifizierung mit Featureauswahl: Vorhersage des Einkommens
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Erstellen eines Klassifizierers und Verwenden der Featureauswahl zur Einkommensprognose mit dem Azure Machine Learning-Designer
+
+**Designer (Vorschauversion) – Beispiel 3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Erfahren Sie, wie Sie über den Designer (Vorschau) eine Machine Learning-Klassifizierung (Klassifizierer) erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel wird ein **verstärkter Entscheidungsbaum mit zwei Klassen** trainiert, um das Einkommen von Erwachsenen (>=50.000 oder <=50.000) mit der Erhebung vorherzusagen.
@@ -26,7 +29,7 @@ Weil die Frage „Welches Risiko?“ lautet, wird dies als Klassifikationsproble
 
 So sieht der endgültige Graph der Pipeline für dieses Beispiel aus:
 
-![Graph der Pipeline](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
+![Graph der Pipeline](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +41,7 @@ So sieht der endgültige Graph der Pipeline für dieses Beispiel aus:
 
 ## <a name="data"></a>Data
 
-Das Dataset enthält 14 Features und eine Bezeichnungsspalte. Es gibt mehrere Typen von Features, einschließlich numerischer und kategorischer Features. Das folgende Diagramm zeigt einen Auszug aus dem Dataset: ![Daten](media/how-to-ui-sample-classification-predict-income/data.png)
+Das Dataset enthält 14 Features und eine Bezeichnungsspalte. Es gibt mehrere Typen von Features, einschließlich numerischer und kategorischer Features. Das folgende Diagramm zeigt einen Auszug aus dem Dataset: ![Daten](media/how-to-designer-sample-classification-predict-income/data.png)
 
 
 
@@ -52,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um die Pipeline zu erstellen:
 1. Fügen Sie das Modul **Two-Class Boosted Decision Tree** hinzu, um einen verstärkten Entscheidungsbaum mit zwei Klassen zu initialisieren.
 1. Fügen Sie das Modul **Train Model** (Trainieren des Modells) hinzu. Verbinden Sie den Klassifizierer aus dem vorherigen Schritt mit dem linken Eingabeport des Moduls **Train Model**. Stellen Sie eine Verbindung des gefilterten Datasets aus dem Modul „Filter Based Feature Selection“ als Trainingsdataset her.  Das Modul **Train Model** trainiert den Klassifizierer.
 1. Fügen Sie „Select Columns Transformation“ (Spaltentransformation auswählen) und das Modul „Apply Transformation“ (Transformation anwenden) hinzu, um die gleiche Transformation (Filter Based Feature Selection) auf das Testdataset anzuwenden.
-![apply-transformation](media/how-to-ui-sample-classification-predict-income/transformation.png)
+![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
 1. Fügen Sie das Modul **Score Model** (Bewerten des Modells) hinzu, und stellen Sie eine Verbindung des Moduls **Train Model** mit diesem Modul her. Fügen Sie dann das Testdataset (die Ausgabe des Moduls „Apply Transformation“, das die Featureauswahl auch auf das Testdataset anwendet) dem Modul **Score Model** hinzu. **Score Model** nimmt die Vorhersagen vor. Sie können den Ausgabeport auswählen, um die Vorhersagen und die Wahrscheinlichkeiten positiver Klassen anzuzeigen.
 
 
@@ -62,7 +65,7 @@ Führen Sie die folgenden Schritte aus, um die Pipeline zu erstellen:
 
 ## <a name="results"></a>Ergebnisse
 
-![Auswertung der Ergebnisse](media/how-to-ui-sample-classification-predict-income/evaluate-result.png)
+![Auswertung der Ergebnisse](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
 In den Auswertungsergebnissen können Sie Kurven wie ROC, Precision-Recall und Verwirrungsmetriken sehen. 
 

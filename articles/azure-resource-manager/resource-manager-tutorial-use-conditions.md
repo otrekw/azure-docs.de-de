@@ -1,24 +1,16 @@
 ---
-title: Verwenden von Bedingungen in Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Verwenden von Bedingungen in Vorlagen
 description: Es wird beschrieben, wie Sie Azure-Ressourcen basierend auf Bedingungen bereitstellen. Hier wird gezeigt, wie Sie entweder eine neue Ressource bereitstellen oder eine vorhandene Ressource verwenden.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5fa1db5131f555c92aa12fc01a109469c2cf819e
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 7aecc25daed8f73e903b181d782e53c0ea5acd74
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390188"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325330"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Tutorial: Verwenden von Bedingungen in Azure Resource Manager-Vorlagen
 
@@ -49,7 +41,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
     ```azurecli-interactive

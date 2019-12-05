@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158027"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Tutorial: Azure Active Directory-Integration von ArcGIS Online
 
@@ -223,7 +223,7 @@ Im Fall von ArcGIS Online ist die Bereitstellung eine manuelle Aufgabe.
    
      ![Hinzufügen und Überprüfen](./media/arcgis-tutorial/ic784749.png "Add And Review")
     
-     a. Geben Sie **E-Mail-Adresse**, **Vorname** und **Nachname** eines gültigen AAD-Kontos ein, das Sie bereitstellen möchten.
+     a. Geben Sie **E-Mail-Adresse**, **Vorname** und **Nachname** eines gültigen Azure AD-Kontos ein, das Sie bereitstellen möchten.
   
      b. Klicken Sie auf **HINZUFÜGEN UND ÜBERPRÜFEN**.
 5. Überprüfen Sie die eingegebenen Daten, und klicken Sie dann auf **MITGLIEDER HINZUFÜGEN**.

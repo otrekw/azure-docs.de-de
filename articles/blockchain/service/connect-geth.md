@@ -1,25 +1,19 @@
 ---
-title: Herstellen einer Verbindung mit Azure Blockchain mithilfe von Geth
-description: Herstellen einer Verbindung mit einem Azure Blockchain-Netzwerk mithilfe von Geth
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+title: Anfügen an Azure Blockchain Service mithilfe von Geth
+description: Anfügen an eine Geth-Instanz in einem Azure Blockchain Service-Transaktionsknoten
+ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: a26899e291c4f44d3c9d91032b2ee191ba03133a
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.reviewer: janders
+ms.openlocfilehash: 9da78eac1dc429bcc0ad52bb9cb2f1fb743a90d4
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931771"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455835"
 ---
-# <a name="quickstart-use-geth-to-connect-to-a-transaction-node"></a>Schnellstart: Herstellen einer Verbindung mit einem Transaktionsknoten mithilfe von Geth
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Schnellstart: Anfügen an einen Azure Blockchain Service-Transaktionsknoten mithilfe von Geth
 
-Geth ist ein Go Ethereum-Client, mit dem Sie eine Geth-Instanz an einen Azure Blockchain-Transaktionsknoten anfügen können.
+In dieser Schnellstartanleitung verwenden Sie den Geth-Client, um eine Anfügung an eine Geth-Instanz in einem Azure Blockchain Service-Transaktionsknoten durchzuführen. Nach dem Anfügen verwenden Sie die Geth-JavaScript-Konsole, um eine Web3-JavaScript-DApp-API aufzurufen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,17 +22,17 @@ Geth ist ein Go Ethereum-Client, mit dem Sie eine Geth-Instanz an einen Azure Bl
 * Installieren Sie [Geth](https://github.com/ethereum/go-ethereum/wiki/geth).
 * [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md)
 
-## <a name="get-the-geth-connection-string"></a>Abrufen der Geth-Verbindungszeichenfolge
+## <a name="get-geth-connection-string"></a>Abrufen der Geth-Verbindungszeichenfolge
 
-Die Geth-Verbindungszeichenfolge finden Sie im Azure-Portal.
+Sie können die Geth-Verbindungszeichenfolge für einen Azure Blockchain Service-Transaktionsknoten über das Azure-Portal abrufen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Navigieren Sie zu Ihrem Azure Blockchain-Mitglied. Klicken Sie auf **Transaktionsknoten** und dann auf den Link „default transaction node“ (Standardtransaktionsknoten).
+1. Navigieren Sie zu Ihrem Azure Blockchain Service-Mitglied. Klicken Sie auf **Transaktionsknoten** und dann auf den Link „default transaction node“ (Standardtransaktionsknoten).
 
     ![Standardtransaktionsknoten auswählen](./media/connect-geth/transaction-nodes.png)
 
 1. Wählen Sie **Connection strings** (Verbindungszeichenfolgen).
-1. Kopieren Sie die Verbindungszeichenfolge aus **HTTPS (Access key 1)** (HTTPS (Zugriffsschlüssel 1)). Sie benötigen den Befehl für den nächsten Abschnitt.
+1. Kopieren Sie die Verbindungszeichenfolge aus **HTTPS (Access key 1)** (HTTPS (Zugriffsschlüssel 1)). Sie benötigen die Zeichenfolge für den nächsten Abschnitt.
 
     ![Verbindungszeichenfolge](./media/connect-geth/connection-string.png)
 
@@ -47,7 +41,7 @@ Die Geth-Verbindungszeichenfolge finden Sie im Azure-Portal.
 1. Öffnen Sie eine Eingabeaufforderung oder Shell.
 1. Verwenden Sie den Unterbefehl „geth attach“, um eine Anfügung an die ausgeführte Geth-Instanz auf Ihrem Transaktionsknoten durchzuführen. Fügen Sie die Verbindungszeichenfolge als Argument für den Unterbefehl ein. Beispiel:
 
-    ```
+    ``` bash
     geth attach <connection string>
     ```
 
@@ -55,11 +49,11 @@ Die Geth-Verbindungszeichenfolge finden Sie im Azure-Portal.
 
     Mit der folgenden API können Sie beispielsweise den Wert von chainId ermitteln:
 
-    ```bash
+    ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    In diesem Fall lautet der Wert von chainId 297.
+    In diesem Beispiel lautet der Wert von chainId 661.
 
     ![Azure Blockchain-Option](./media/connect-geth/geth-attach.png)
 
@@ -67,7 +61,7 @@ Die Geth-Verbindungszeichenfolge finden Sie im Azure-Portal.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie den Geth-Client verwendet, um eine Anfügung an eine Geth-Instanz auf einem Azure Blockchain-Transaktionsknoten durchzuführen. Im nächsten Tutorial erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum und Truffle verwenden, um eine Smart Contract-Funktion über eine Transaktion zu erstellen, bereitstellen und auszuführen.
+In diesem Schnellstart haben Sie den Geth-Client verwendet, um eine Anfügung an eine Geth-Instanz auf einem Azure Blockchain-Transaktionsknoten durchzuführen. Im nächsten Tutorial erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum verwenden, um eine Smart Contract-Funktion über eine Transaktion zu erstellen, bereitstellen und auszuführen.
 
 > [!div class="nextstepaction"]
-> [Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code](send-transaction.md)
+> [Tutorial: Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service](send-transaction.md)

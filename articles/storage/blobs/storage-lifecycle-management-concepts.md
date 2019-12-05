@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: e4d961603ab0ade1bb175161fffd7f085a1f644b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934082"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077118"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -56,7 +56,7 @@ In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und übe
 > [!NOTE]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen für vertrauenswürdige Microsoft-Dienste aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
-### <a name="azure-portal"></a>Azure-Portal
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
 Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Portal. 
 
@@ -126,7 +126,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 6. Weitere Informationen zu diesem JSON-Beispiel finden Sie in den Abschnitten [Richtlinie](#policy) und [Regeln](#rules).
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Das folgende PowerShell-Skript kann verwendet werden, um Ihrem Speicherkonto eine Richtlinie hinzuzufügen. Die Variable `$rgname` muss mit Ihrem Ressourcengruppennamen initialisiert werden. Die Variable `$accountName` muss mit Ihrem Speicherkontonamen initialisiert werden.
 
@@ -156,7 +156,7 @@ $rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action -Fi
 $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -StorageAccountName $accountName -Rule $rule1
 ```
 
-## <a name="azure-resource-manager-template-with-lifecycle-management-policy"></a>Azure Resource Manager-Vorlage mit Richtlinie für die Lebenszyklusverwaltung
+# <a name="templatetabtemplate"></a>[Vorlage](#tab/template)
 
 Sie können die Lebenszyklusverwaltung definieren, indem Sie Azure Resource Manager-Vorlagen verwenden. Hier ist eine Beispielvorlage für das Bereitstellen eines GPv2-Speicherkontos mit RA-GRS mit einer Richtlinie für die Lebenszyklusverwaltung angegeben.
 
@@ -197,6 +197,8 @@ Sie können die Lebenszyklusverwaltung definieren, indem Sie Azure Resource Mana
   "outputs": {}
 }
 ```
+
+---
 
 ## <a name="policy"></a>Richtlinie
 
@@ -345,6 +347,9 @@ Dieses Beispiel zeigt den Übergang von Blockblobs mit dem Präfix `container1/f
 
 Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird. Die folgende Lebenszyklusrichtlinie ist so konfiguriert, dass Daten nach der Erfassung archiviert werden. In diesem Beispiel werden Blockblobs im Speicherkonto im Container `archivecontainer` an eine Archivebene überführt. Die Umstellung wird durch die Ausführung der Aktion für Blobs 0 Tage nach dem Zeitpunkt der letzten Änderung erreicht:
 
+> [!NOTE] 
+> Es wird empfohlen, die Blobs für mehr Effizienz direkt auf die Archivebene hochzuladen. Sie können den Header „x-ms-acess-tier“ für [PutBlob](https://docs.microsoft.com/rest/api/storageservices/put-blob) oder [PutBlockList](https://docs.microsoft.com/rest/api/storageservices/put-block-list) mit REST-Version 2018-11-09 und höher oder unsere neuesten Blobspeicher-Clientbibliotheken verwenden. 
+
 ```json
 {
   "rules": [
@@ -427,9 +432,11 @@ Bei Daten, die regelmäßig geändert und auf die während ihrer Lebensdauer reg
 **Ich habe eine neue Richtlinie erstellt. Warum werden die Aktionen nicht sofort ausgeführt?**  
 Die Plattform führt die Lebenszyklusrichtlinie ein Mal täglich aus. Nachdem Sie eine neue Richtlinie konfiguriert haben, kann es bis zu 24 Stunden dauern, bis einige Aktionen das erste Mal ausgeführt werden.  
 
-**Ich will ein archiviertes Blob manuell aktivieren. Wie kann ich verhindern, dass es vorübergehend zurück auf die Archivspeicherebene verschoben wird?**  
-Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert sich der Zeitpunkt der letzten Änderung nicht. Wenn Sie ein archiviertes Blob auf der heißen Ebene manuell aktivieren, würde es vom Modul für die Lebenszyklusverwaltung zurück auf die Archivspeicherebene verschoben. Deaktivieren Sie vorübergehend die Regel, die sich auf dieses Blob auswirkt, um zu verhindern, dass es erneut archiviert wird. Kopieren Sie das Blob an einen anderen Speicherort, falls es sich dauerhaft auf einer heißen Ebene befinden muss. Aktivieren Sie die Regel erneut, wenn das Blob sicher zurück auf die Archivspeicherebene verschoben werden kann. 
+**Wie lange dauert es nach dem Aktualisieren einer vorhandenen Richtlinie, bis die Aktionen ausgeführt werden?**  
+Es dauert bis zu 24 Stunden, bis die aktualisierte Richtlinie in Kraft tritt. Sobald die Richtlinie gültig ist, kann es bis zu 24 Stunden dauern, bis die Aktionen ausgeführt werden. Daher kann das Ausführen der Richtlinie bis zu 48 Stunden dauern.   
 
+**Ich habe ein archiviertes Blob manuell wieder aktiviert. Wie kann ich vorübergehend verhindern, dass es zurück auf die Archivspeicherebene verschoben wird?**  
+Wenn ein Blob von einer Zugriffsebene auf eine andere verschoben wird, ändert sich der Zeitpunkt der letzten Änderung nicht. Wenn Sie ein archiviertes Blob auf der heißen Ebene manuell aktivieren, würde es vom Modul für die Lebenszyklusverwaltung zurück auf die Archivspeicherebene verschoben. Deaktivieren Sie vorübergehend die Regel, die sich auf dieses Blob auswirkt, um zu verhindern, dass es erneut archiviert wird. Aktivieren Sie die Regel erneut, wenn das Blob sicher zurück auf die Archivspeicherebene verschoben werden kann. Sie können das Blob auch an einen anderen Speicherort kopieren, falls es sich dauerhaft auf einer heißen oder kalten Ebene befinden muss.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.author: cabailey
-ms.openlocfilehash: d1d048507946850192c1c6f8ca9024c6f9ddf8ca
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510987"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546864"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Verwenden des Hunting-Livestreams in Azure Sentinel zum Erkennen von Bedrohungen
 
 > [!IMPORTANT]
-> Der Hunting-Livestream in Azure Sentinel ist derzeit als öffentliche Vorschau verfügbar.
+> Der Hunting-Livestream in Azure Sentinel ist derzeit als öffentliche Vorschau verfügbar und der Rollout auf die Mandanten erfolgt schrittweise.
 > Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
@@ -63,7 +63,7 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage oder ei
     1. Wählen Sie die Registerkarte **Livestream** aus.
     2. Wählen Sie **Zu Livestream wechseln** aus.
     
-4. Gehen Sie auf dem Blatt **Livestream** folgendermaßen vor:
+4. Im Bereich **Livestream**:
     
     - Wenn Sie Livestream aus einer Abfrage gestartet haben, überprüfen Sie die Abfrage, und nehmen Sie die gewünschten Änderungen vor.
     - Wenn Sie Livestream von Grund auf neu gestartet haben, erstellen Sie Ihre Abfrage. 
@@ -96,7 +96,7 @@ Da Livestreambenachrichtigungen für neue Ereignisse Benachrichtigungen des Azur
 
 ![Benachrichtigung des Azure-Portals für Livestream](./media/livestream/notification.png)
 
-Wählen Sie die Benachrichtigung aus, um das Blatt **Livestream** zu öffnen.
+Wählen Sie die Benachrichtigung aus, um den Bereich **Livestream** zu öffnen.
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>Erhöhen einer Livestreamsitzung zu einer Warnung
 

@@ -1,24 +1,16 @@
 ---
-title: Erstellen verknüpfter Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Erstellen verknüpfter Vorlagen
 description: Informationen zum Erstellen verknüpfter Azure Resource Manager-Vorlagen zum Erstellen virtueller Computer
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 869e59aea9b78c44b1a920e58ecefab5e0ca4920
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9764edb986b2ee847e3fcecda228f53551b462c3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169406"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325421"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
 
@@ -47,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
     ```azurecli-interactive

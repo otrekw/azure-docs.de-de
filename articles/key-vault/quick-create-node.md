@@ -1,202 +1,263 @@
 ---
-title: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung legen Sie mithilfe einer Node-Web-App ein Geheimnis in Azure Key Vault fest und rufen es ab.
-services: key-vault
+title: 'Schnellstart: Azure Key Vault-Clientbibliothek für Node.js (v4)'
+description: Hier erfahren Sie, wie Sie mithilfe der Node.js-Clientbibliothek Geheimnisse in einer Azure Key Vault-Instanz erstellen, daraus abrufen und löschen.
 author: msmbaldwin
-manager: rkarlin
+ms.author: mbaldwin
+ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.date: 09/03/2010
-ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: 02b9c439a932a4b35700871e68bdad7f03451110
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 6555e61bab4ee668578b50cd27860fde1909c4dd
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003501"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546892"
 ---
-# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-node-web-app"></a>Schnellstart: Festlegen und Abrufen eines Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App 
+# <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Schnellstart: Azure Key Vault-Clientbibliothek für Node.js (SDK v4)
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Geheimnis in Azure Key Vault speichern und es über eine Web-App abrufen. Die Verwendung von Key Vault trägt zum Schutz der Informationen bei. Um den Wert des Geheimnisses anzuzeigen, müssen Sie diese Schnellstartanleitung in Azure befolgen. In dieser Schnellstartanleitung werden Node.js und verwaltete Identitäten für Azure-Ressourcen verwendet. Folgendes wird vermittelt:
+Hier finden Sie Informationen zu den ersten Schritten mit der Azure Key Vault-Clientbibliothek für Node.js. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
 
-* Erstellen eines Schlüsseltresors
-* Speichern eines Geheimnisses im Schlüsseltresor
-* Abrufen eines Geheimnisses aus dem Schlüsseltresor
-* Erstellen einer Azure-Webanwendung
-* Aktivieren einer [verwalteten Identität](../active-directory/managed-service-identity/overview.md) für die Web-App
-* Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Webanwendung
+Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnisse zu schützen, die von Cloudanwendungen und -diensten verwendet werden. Die Key Vault-Clientbibliothek für Node.js ermöglicht Folgendes:
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [grundlegenden Konzepten von Key Vault](basic-concepts.md) vertraut sind.
+- Verbessern der Sicherheit und der Kontrolle über Schlüssel und Kennwörter
+- Erstellen und Importieren von Verschlüsselungsschlüsseln in wenigen Minuten
+- Verringern der Wartezeit durch Cloudskalierung und globale Redundanz
+- Vereinfachen und Automatisieren von Aufgaben für SSL-/TLS-Zertifikate
+- Verwenden FIPS 140-2 Level 2-zertifizierter HSMs
 
-> [!NOTE]
-> Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen und Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis regelmäßig rotiert werden. 
->
-> Dank der [verwalteten Dienstidentitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) erhalten in Azure ausgeführte Anwendungen eine Identität, die automatisch von Azure verwaltet wird. Das macht die *Einführung von Geheimnissen weniger problematisch*, da Benutzer und Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
+[API-Referenzdokumentation](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [Paket (npm)](https://www.npmjs.com/package/@azure/keyvault-secrets)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Node.js](https://nodejs.org/en/)
-* [Git-Client](https://www.git-scm.com/)
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) 2.0.4 oder höher. Für diese Schnellstartanleitung ist es erforderlich, dass Sie die Azure CLI lokal ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zur Installation und Aktualisierung der CLI finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0](https://review.docs.microsoft.com/en-us/cli/azure/install-azure-cli?branch=master&view=azure-cli-latest).
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Azure-Abonnement ([kostenloses Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
+- Aktuelle [Node.js](https://nodejs.org) für Ihr Betriebssystem.
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) oder [Azure PowerShell](/powershell/azure/overview)
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+In diesem Schnellstart wird davon ausgegangen, dass Sie die [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) in einem Linux-Terminalfenster ausführen.
 
-Geben Sie Folgendes ein, um sich mithilfe der Azure-Befehlszeilenschnittstelle bei Azure anzumelden:
+## <a name="setting-up"></a>Einrichten
+
+### <a name="install-the-package"></a>Installieren des Pakets
+
+Installieren Sie über das Konsolenfenster die Azure Key Vault-Geheimnisbibliothek für Node.js.
+
+```console
+npm install @azure/keyvault-secrets
+```
+
+Im Rahmen dieses Schnellstarts muss außerdem das azure.identity-Paket installiert werden:
+
+```console
+npm install @azure/identity
+```
+
+### <a name="create-a-resource-group-and-key-vault"></a>Erstellen einer Ressourcengruppe und eines Schlüsseltresors
+
+In dieser Schnellstartanleitung wird eine vorab erstellte Azure Key Vault-Instanz verwendet. Eine Anleitung zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](quick-create-cli.md), [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe von PowerShell](quick-create-powershell.md) oder [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](quick-create-portal.md). Alternativ können Sie einfach die folgenden Azure CLI-Befehle ausführen.
+
+> [!Important]
+> Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors.
 
 ```azurecli
-az login
+az group create --name "myResourceGroup" -l "EastUS"
+
+az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 ```
 
-## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
+### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Eine cloudbasierte Anwendung kann am einfachsten mit einer verwalteten Identität authentifiziert werden. Einzelheiten hierzu finden Sie unter [Verwenden einer verwalteten App Service-Identität für den Zugriff auf Azure Key Vault](managed-identity.md). Der Einfachheit halber wird in dieser Schnellstartanleitung allerdings eine Konsolenanwendung erstellt. Zum Authentifizieren einer Desktopanwendung mit Azure müssen ein Dienstprinzipal und eine Zugriffssteuerungsrichtlinie verwendet werden.
 
-Wählen Sie einen Namen für die Ressourcengruppe aus, und fügen Sie den Platzhalter ein.
-Im folgenden Beispiel wird eine Ressourcengruppe am Standort „USA, Osten“ erstellt.
+Erstellen Sie mithilfe des Azure CLI-Befehls [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) einen Dienstprinzipal:
 
 ```azurecli
-# To list locations: az account list-locations --output table
-az group create --name "<YourResourceGroupName>" --location "East US"
+az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Die eben erstellte Ressourcengruppe wird im gesamten Artikel verwendet.
-
-## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
-
-Als Nächstes erstellen Sie einen Schlüsseltresor, indem Sie die im vorherigen Schritt erstellte Ressourcengruppe verwenden. In diesem Artikel wird „ContosoKeyVault“ als Name verwendet, aber Sie müssen einen eindeutigen Namen nutzen. Geben Sie die folgenden Informationen ein:
-
-* Name des Schlüsseltresors
-* Ressourcengruppenname Der Name muss eine Zeichenfolge aus 3 bis 24 Zeichen sein und darf nur die Zeichen 0–9, a–z, A–Z und Bindestrich (-) enthalten.
-* Standort: **USA, Osten**.
+Daraufhin wird eine Reihe von Schlüssel-Wert-Paaren zurückgegeben. 
 
 ```azurecli
-az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "East US"
+{
+  "clientId": "7da18cae-779c-41fc-992e-0527854c6583",
+  "clientSecret": "b421b443-1669-4cd7-b5b1-394d5c945002",
+  "subscriptionId": "443e30da-feca-47c4-b68f-1636b75e16b3",
+  "tenantId": "35ad10f1-7799-4766-9acf-f2d946161b77",
+  "activeDirectoryEndpointUrl": "https://login.microsoftonline.com",
+  "resourceManagerEndpointUrl": "https://management.azure.com/",
+  "activeDirectoryGraphResourceId": "https://graph.windows.net/",
+  "sqlManagementEndpointUrl": "https://management.core.windows.net:8443/",
+  "galleryEndpointUrl": "https://gallery.azure.com/",
+  "managementEndpointUrl": "https://management.core.windows.net/"
+}
 ```
 
-An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
+Notieren Sie sich die Client-ID (clientId) und das Clientgeheimnis (clientSecret). Sie werden weiter unten im Schritt [Festlegen der Umgebungsvariable](#set-environmental-variables) benötigt.
 
-## <a name="add-a-secret-to-the-key-vault"></a>Hinzufügen eines Geheimnisses zum Schlüsseltresor
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor für den Dienstprinzipal
 
-Wir fügen ein Geheimnis hinzu, um die Vorgehensweise zu veranschaulichen. Sie können eine SQL-Verbindungszeichenfolge oder beliebige andere Informationen speichern, die sicher aufbewahrt, aber für Ihre Anwendung verfügbar gemacht werden müssen. In diesem Tutorial heißt das Kennwort **AppSecret**, und darin wird der Wert **MySecret** gespeichert.
-
-Geben Sie die folgenden Befehle ein, um im Schlüsseltresor ein Geheimnis namens **AppSecret** zu erstellen. Dieses Geheimnis speichert den Wert **MySecret**.
+Erstellen Sie eine Zugriffsrichtlinie für Ihren Schlüsseltresor, die dem Dienstprinzipal Berechtigungen erteilt, indem Sie die Client-ID an den Befehl [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) übergeben. Erteilen Sie dem Dienstprinzipal Berechtigungen zum Abrufen, Auflisten und Festlegen von Schlüsseln und Geheimnissen.
 
 ```azurecli
-az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
+az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-Geben Sie Folgendes ein, um den Wert im Geheimnis als Nur-Text anzuzeigen:
+#### <a name="set-environmental-variables"></a>Festlegen von Umgebungsvariablen
+
+Die DefaultAzureCredential-Methode in unserer Anwendung basiert auf drei Umgebungsvariablen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` und `AZURE_TENANT_ID`. Legen Sie diese Variablen auf die clientId-, clientSecret- und tenantId-Werte fest, die Sie sich im Schritt [Erstellen eines Dienstprinzipals](#create-a-service-principal) notiert haben. Verwenden Sie hierbei das Format `export VARNAME=VALUE`. (Hierdurch werden nur die Variablen für Ihre aktuelle Shell und daraus erstellte Prozesse festgelegt. Um diese Variablen dauerhaft zu Ihrer Umgebung hinzuzufügen, bearbeiten Sie Ihre Datei `/etc/environment `.) 
+
+Sie müssen außerdem den Namen Ihres Schlüsseltresors als Umgebungsvariable `KEY_VAULT_NAME` speichern.
+
+```console
+export AZURE_CLIENT_ID=<your-clientID>
+
+export AZURE_CLIENT_SECRET=<your-clientSecret>
+
+export AZURE_TENANT_ID=<your-tenantId>
+
+export KEY_VAULT_NAME=<your-key-vault-name>
+````
+
+## <a name="object-model"></a>Objektmodell
+
+Mit der Azure Key Vault-Clientbibliothek für Node.js können Sie Schlüssel und zugehörige Objekte wie Zertifikate und Geheimnisse verwalten. In den folgenden Codebeispielen wird gezeigt, wie Sie einen Client erstellen und ein Geheimnis festlegen, abrufen und löschen.
+
+Die gesamte Konsolen-App steht unter https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app zur Verfügung.
+
+## <a name="code-examples"></a>Codebeispiele
+
+### <a name="add-directives"></a>Hinzufügen von Anweisungen
+
+Fügen Sie am Anfang Ihres Codes die folgenden Anweisungen hinzu:
+
+```javascript
+const { DefaultAzureCredential } = require("@azure/identity");
+const { SecretClient } = require("@azure/keyvault-secrets");
+```
+
+### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
+
+Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlüsseltresorclients hängen von den Umgebungsvariablen im Schritt [Festlegen von Umgebungsvariablen](#set-environmental-variables) oben und vom [SecretClient-Konstruktor](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#secretclient-string--tokencredential--pipelineoptions-) ab. 
+
+Der Name Ihres Schlüsseltresors wird in den Schlüsseltresor-URI im Format `https://<your-key-vault-name>.vault.azure.net` erweitert. 
+
+```javascript
+const keyVaultName = process.env["KEY_VAULT_NAME"];
+const KVUri = "https://" + keyVaultName + ".vault.azure.net";
+
+const credential = new DefaultAzureCredential();
+const client = new SecretClient(KVUri, credential);
+```
+
+### <a name="save-a-secret"></a>Speichern eines Geheimnisses
+
+Nachdem Ihre Anwendung authentifiziert wurde, können Sie Ihrem Schlüsseltresor mithilfe der [client.setSecret](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#setsecret-string--string--setsecretoptions-)-Methode ein Geheimnis hinzufügen. Hierzu benötigen Sie einen Namen für das Geheimnis. In diesem Beispiel verwenden wir „mySecret“.  
+
+```javascript
+await client.setSecret(secretName, secretValue);
+```
+
+Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis festgelegt wurde:
 
 ```azurecli
-az keyvault secret show --name "AppSecret" --vault-name "<YourKeyVaultName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-Mit diesem Befehl werden die Geheimnisinformationen einschließlich des URI angezeigt. Nach der Ausführung dieser Schritte sollten Sie einen URI zu einem Geheimnis in einem Schlüsseltresor besitzen. Notieren Sie sich diese Informationen. Sie benötigen sie in einem späteren Schritt.
+### <a name="retrieve-a-secret"></a>Abrufen eines Geheimnisses
 
-## <a name="clone-the-repo"></a>Klonen des Repositorys
+Nun können Sie den zuvor festgelegten Wert mithilfe der [client.getSecret](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#getsecret-string--getsecretoptions-)-Methode abrufen.
 
-Klonen Sie das Repository, um eine lokale Kopie zu erstellen, in der Sie die Quelle bearbeiten können. Führen Sie den folgenden Befehl aus:
+```javascript
+const retrievedSecret = await client.getSecret(secretName);
+ ```
 
+Ihr Geheimnis ist jetzt als `retrievedSecret.value` gespeichert.
+
+### <a name="delete-a-secret"></a>Löschen eines Geheimnisses
+
+Abschließend löschen wir das Geheimnis mithilfe der [client.beginDeleteSecret](/javascript/api/@azure/keyvault-secrets/secretclient?view=azure-node-latest#begindeletesecret-string--begindeletesecretoptions-)-Methode aus dem Schlüsseltresor.
+
+```javascript
+await client.beginDeleteSecret(secretName)
 ```
-git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
-```
 
-## <a name="install-dependencies"></a>Installieren von Abhängigkeiten
-
-Führen Sie die folgenden Befehle zum Installieren von Abhängigkeiten aus:
-
-```
-cd key-vault-node-quickstart
-npm install
-```
-
-In diesem Projekt werden zwei Node-Module verwendet: [ms-rest-azure](https://www.npmjs.com/package/ms-rest-azure) und [azure-keyvault](https://www.npmjs.com/package/azure-keyvault).
-
-## <a name="publish-the-web-app-to-azure"></a>Veröffentlichen der Web-App in Azure
-
-Erstellen Sie einen [Azure App Service](https://azure.microsoft.com/services/app-service/)-Plan. In diesem Plan können Sie mehrere Web-Apps speichern.
-
-    ```
-    az appservice plan create --name myAppServicePlan --resource-group myResourceGroup
-    ```
-Erstellen Sie als Nächstes eine Web-App. Ersetzen Sie im folgenden Beispiel `<app_name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind „a - z“, „0 - 9“ und „-“). Die Runtime ist auf NODE|6.9 festgelegt. Führen Sie `az webapp list-runtimes` aus, um alle unterstützten Runtimes anzuzeigen.
-
-    ```
-    # Bash
-    az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
-    ```
-Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Beispiel an:
-
-    ```
-    {
-      "availabilityState": "Normal",
-      "clientAffinityEnabled": true,
-      "clientCertEnabled": false,
-      "cloningInfo": null,
-      "containerSize": 0,
-      "dailyMemoryTimeQuota": 0,
-      "defaultHostName": "<app_name>.azurewebsites.net",
-      "enabled": true,
-      "deploymentLocalGitUrl": "https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git"
-      < JSON data removed for brevity. >
-    }
-    ```
-Navigieren Sie zu Ihrer neu erstellten Web-App. Ihnen sollte nun eine funktionsfähige Web-App angezeigt werden. Ersetzen Sie `<app_name>` durch einen eindeutigen App-Namen.
-
-    ```
-    http://<app name>.azurewebsites.net
-    ```
-Mit dem obigen Befehl wird auch eine Git-fähige App erstellt, mit der Sie die Bereitstellung in Azure über Ihr lokales Git-Repository durchführen können. Das lokale Git-Repository ist mit dieser URL konfiguriert: `https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git`.
-
-Nach Abschluss des vorherigen Befehls können Sie Ihrem lokalen Git-Repository eine Azure-Remoteinstanz hinzufügen. Ersetzen Sie `<url>` durch die URL des Git-Repositorys.
-
-    ```
-    git remote add azure <url>
-    ```
-
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Aktivieren einer verwalteten Identität für die Web-App
-
-Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mit den Informationen unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
-
-Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
+Sie können sich mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) vergewissern, dass das Geheimnis entfernt wurde:
 
 ```azurecli
-az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
+az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-Dieser Befehl entspricht dem Aufrufen des Portals und dem Festlegen der Einstellung **Identität/Vom System zugewiesen** auf **Ein** in den Webanwendungseigenschaften.
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>Zuweisen von Berechtigungen zu Ihrer Anwendung für das Lesen von Geheimnissen aus Key Vault
-
-Notieren Sie sich die Ausgabe des vorherigen Befehls. Sie sollte das folgende Format aufweisen:
-        
-        {
-          "principalId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "tenantId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "type": "SystemAssigned"
-        }
-        
-Führen Sie anschließend den folgenden Befehl aus, indem Sie den Namen Ihres Schlüsseltresors und den Wert von **principalId** verwenden:
+Wenn Sie die Ressourcen nicht mehr benötigen, können Sie Azure CLI oder Azure PowerShell verwenden, um Ihren Schlüsseltresor und die zugehörige Ressourcengruppe zu entfernen.
 
 ```azurecli
-az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get set
+az group delete -g "myResourceGroup" -l "EastUS" 
 ```
 
-## <a name="deploy-the-node-app-to-azure-and-retrieve-the-secret-value"></a>Bereitstellen der Node-App in Azure und Abrufen des Geheimniswerts
-
-Führen Sie den folgenden Befehl aus, um die App in Azure bereitzustellen:
-
-```
-git push azure master
+```azurepowershell
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-Wenn Sie anschließend zu `https://<app_name>.azurewebsites.net` navigieren, können Sie den geheimen Wert sehen. Stellen Sie sicher, dass Sie den Namen `<YourKeyVaultName>` durch Ihren Tresornamen ersetzt haben.
+## <a name="sample-code"></a>Beispielcode
+
+```javascript
+const { DefaultAzureCredential } = require("@azure/identity");
+const { SecretClient } = require("@azure/keyvault-secrets");
+
+const readline = require('readline');
+
+function askQuestion(query) {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+
+    return new Promise(resolve => rl.question(query, ans => {
+        rl.close();
+        resolve(ans);
+    }))
+}
+
+async function main() {
+
+  const keyVaultName = process.env["KEY_VAULT_NAME"];
+  const KVUri = "https://" + keyVaultName + ".vault.azure.net";
+
+  const credential = new DefaultAzureCredential();
+  const client = new SecretClient(KVUri, credential);
+
+  const secretName = "mySecret";
+  var secretValue = await askQuestion("Input the value of your secret > ");
+
+  console.log("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+  await client.setSecret(secretName, secretValue);
+
+  console.log("Done.");
+
+  console.log("Forgetting your secret.");
+  secretValue = "";
+  console.log("Your secret is '" + secretValue + "'.");
+
+  console.log("Retrieving your secret from " + keyVaultName + ".");
+
+  const retrievedSecret = await client.getSecret(secretName);
+
+  console.log("Your secret is '" + retrievedSecret.value + "'.");
+  console.log("Deleting your secret from " + keyVaultName + " ...");
+
+  await client.beginDeleteSecret(secretName);
+
+  console.log("Done.");
+
+}
+
+main()
+
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Key Vault-Instanz erstellt und ein Geheimnis darin gespeichert. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, ein Geheimnis gespeichert und dieses Geheimnis abgerufen. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)

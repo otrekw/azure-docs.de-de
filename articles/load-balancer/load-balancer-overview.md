@@ -1,6 +1,6 @@
 ---
 title: Was versteht man unter Azure Load Balancer?
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Übersicht über Features, Architektur und Implementierung des Azure Load Balancers. Erfahren Sie, wie Load Balancer funktioniert, und nutzen Sie den Dienst in der Cloud.
 services: load-balancer
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: be293a925e507468d96be4c9f6b47f30eea5f025
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888678"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423910"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -41,7 +41,9 @@ Sie können Azure Load Balancer für Folgendes verwenden:
 * Stellen Sie [ausgehende Verbindungen](load-balancer-outbound-connections.md) für virtuelle Computer in Ihrem virtuellen Netzwerk durch Verwenden eines öffentlichen Load Balancers bereit.
 
 >[!NOTE]
-> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, hilft Ihnen der Artikel [Was ist Azure Application Gateway?](../application-gateway/application-gateway-introduction.md) weiter. Wenn Sie nach Informationen zum globalen DNS-Lastenausgleich suchen, hilft Ihnen der Artikel [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md) weiter. Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen zu kombinieren.
+> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, hilft Ihnen der Artikel [Was ist Azure Application Gateway?](../application-gateway/overview.md) weiter. Wenn Sie nach Informationen zum globalen DNS-Lastenausgleich suchen, hilft Ihnen der Artikel [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md) weiter. Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen zu kombinieren.
+>
+> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="what-are-load-balancer-resources"></a>Was sind Load Balancer-Ressourcen?
 

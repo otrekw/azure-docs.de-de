@@ -1,20 +1,19 @@
 ---
 title: Apache Spark-Streaming mit Apache Kafka – Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Spark verwenden, um Daten mithilfe von DStreams in oder aus Apache Kafka zu streamen. In diesem Beispiel streamen Sie Daten mithilfe eines Jupyter Notebooks aus Spark auf HDInsight.
-keywords: Kafka Beispiel,Kafka ZooKeeper,Spark Streaming Kafka,Spark Streaming Kafka Beispiel
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 201e86908b61efa72eed76346f70cfc55e08d03c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 11/21/2019
+ms.openlocfilehash: d868cdd346c79cf77d4f8c1ea6e4b20adcd99b6c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076814"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327398"
 ---
 # <a name="apache-spark-streaming-dstream-example-with-apache-kafka-on-hdinsight"></a>Beispiel für Apache Spark-Streaming (DStream) mit Apache Kafka in HDInsight
 
@@ -50,27 +49,23 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     Mit dieser Vorlage wird ein HDInsight 3.6-Cluster für Kafka und Spark erstellt.
 
-2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
+1. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
+
+    |Eigenschaft |Wert |
+    |---|---|
+    |Resource group|Erstellen Sie eine Gruppe, oder wählen Sie eine vorhandene Gruppe aus.|
+    |Location|Wählen Sie einen Standort in Ihrer Nähe aus.|
+    |Basisclustername|Dieser Wert wird als Basisname für Spark- und Kafka-Cluster verwendet. Wenn Sie beispielsweise **hdistreaming** eingeben, werden ein Spark-Cluster mit dem Namen __spark-hdistreaming__ und ein Kafka-Cluster mit dem Namen **kafka-hdistreaming** erstellt.|
+    |Benutzername für Clusteranmeldung|Der Administratorbenutzername für die Spark- und Kafka-Cluster.|
+    |Kennwort für Clusteranmeldung|Das Administratorbenutzerkennwort für die Spark- und Kafka-Cluster.|
+    |SSH-Benutzername|SSH-Benutzer, der für die Spark- und Kafka-Cluster erstellt wird.|
+    |SSH-Kennwort|Kennwort für den SSH-Benutzer für die Spark- und Kafka-Cluster.|
 
     ![HDInsight – Benutzerdefinierte Bereitstellungsparameter](./media/hdinsight-apache-spark-with-kafka/hdinsight-parameters.png)
 
-    * **Ressourcengruppe**: Erstellen Sie eine Gruppe, oder wählen Sie eine vorhandene Gruppe aus. Diese Gruppe enthält den HDInsight-Cluster.
+1. Lesen Sie die **Geschäftsbedingungen**, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 
-    * **Standort**: Wählen Sie einen Standort in Ihrer Nähe aus.
-
-    * **Basisclustername**: Dieser Wert wird als Basisname für Spark- und Kafka-Cluster verwendet. Wenn Sie beispielsweise **hdistreaming** eingeben, werden ein Spark-Cluster mit dem Namen __spark-hdistreaming__ und ein Kafka-Cluster mit dem Namen **kafka-hdistreaming** erstellt.
-
-    * **Benutzername für Clusteranmeldung**: Der Administratorbenutzername für die Spark- und Kafka-Cluster.
-
-    * **Kennwort für Clusteranmeldung**: Das Administratorbenutzerkennwort für die Spark- und Kafka-Cluster.
-
-    * **SSH-Benutzername**: SSH-Benutzer, der für die Spark- und Kafka-Cluster erstellt wird.
-
-    * **SSH-Kennwort**: Kennwort für den SSH-Benutzer für die Spark- und Kafka-Cluster.
-
-3. Lesen Sie die **Geschäftsbedingungen**, und wählen Sie anschließend die Option **Ich stimme den oben genannten Geschäftsbedingungen zu**.
-
-4. Wählen Sie abschließend **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
+1. Wählen Sie abschließend **Kaufen** aus. Das Erstellen der Cluster dauert ca. 20 Minuten.
 
 Sobald die Ressourcen erstellt wurden, wird eine Zusammenfassungsseite angezeigt.
 
@@ -82,8 +77,6 @@ Sobald die Ressourcen erstellt wurden, wird eine Zusammenfassungsseite angezeigt
 ## <a name="use-the-notebooks"></a>Verwenden der Notebooks
 
 Den Code für das in diesem Dokument beschriebene Beispiel finden Sie unter [https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka).
-
-Führen Sie die Schritte in der Datei `README.md` aus, um dieses Beispiel durchzuführen.
 
 ## <a name="delete-the-cluster"></a>Löschen des Clusters
 
@@ -98,4 +91,3 @@ In diesem Beispiel haben Sie erfahren, wie Spark verwendet wird, um in Kafka Les
 * [Erste Schritte mit Apache Kafka in HDInsight](kafka/apache-kafka-get-started.md)
 * [Verwenden von MirrorMaker zum Replizieren von Apache Kafka in HDInsight](kafka/apache-kafka-mirroring.md)
 * [Verwenden von Apache Storm mit Apache Kafka in HDInsight](hdinsight-apache-storm-with-kafka.md)
-

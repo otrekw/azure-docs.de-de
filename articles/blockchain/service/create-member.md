@@ -1,25 +1,19 @@
 ---
-title: Erstellen eines Azure Blockchain Service-Mitglieds über das Azure-Portal
-description: Verwenden Sie den Azure Blockchain-Dienst, um ein Blockchainmitglied zu erstellen.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+title: 'Erstellen eines Azure Blockchain Service-Mitglieds: Azure-Portal'
+description: Erstellen Sie mithilfe des Azure-Portals ein Azure Blockchain Service-Mitglied für ein Blockchainkonsortium.
+ms.date: 11/18/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: c87f9a044d6655b2062f2c2657d3b465699e0dd2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 90f859e4d2e2621afad9cab11d66e81018bd3147
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329261"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455782"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Schnellstart: Erstellen eines Blockchainmitglieds für Azure Blockchain Service mithilfe des Azure-Portals
 
-Bei Azure Blockchain handelt es sich um eine Blockchainplattform, über die Sie Ihre Geschäftslogik in einem Smart Contract ausführen können. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie zum Einstieg ein Blockchainmitglied über das Azure-Portal erstellen.
+In dieser Schnellstartanleitung stellen Sie mithilfe des Azure-Portals ein neues Blockchainmitglied und -konsortium in Azure Blockchain Service bereit.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -29,25 +23,24 @@ Erstellen Sie ein Blockchainmitglied, das das Quorum-Ledgerprotokoll in einem ne
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**.
-1. Wählen Sie **Blockchain** > **Azure Blockchain Service** aus.
-1. Vervollständigen Sie die Vorlage.
+1. Wählen Sie **Blockchain** > **Azure Blockchain Service (Vorschau)** aus.
 
     ![Erstellen des Dienstes](./media/create-member/create-member.png)
 
     Einstellung | BESCHREIBUNG
     --------|------------
-    Blockchainmitglied | Wählen Sie einen eindeutiger Namen aus, der Ihr Blockchainmitglied in Azure Blockchain Service identifiziert. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
     Subscription | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Dienst verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
-    Resource group | Ein neuer Ressourcengruppenname oder ein bereits vorhandener Name aus Ihrem Abonnement
-    Region | Der Speicherort muss für alle Mitglieder des Konsortiums identisch sein.
+    Resource group | Erstellen Sie einen neuen Ressourcengruppennamen, oder wählen Sie einen bereits vorhandenen Namen aus Ihrem Abonnement aus.
+    Region | Wählen Sie zum Erstellen eines Mitglieds eine Region aus. Alle Mitglieder des Konsortiums müssen sich am gleichen Standort befinden.
+    Protocol | Derzeit unterstützt die Vorschauversion von Azure Blockchain Service das Quorum-Protokoll.
+    Konsortium | Geben Sie für ein neues Konsortium einen eindeutigen Namen ein. Wenn Sie einem Konsortium über eine Einladung beitreten, wählen Sie das Konsortium aus, dem Sie beitreten.
+    NAME | Wählen Sie einen eindeutigen Namen für das Azure Blockchain-Mitglied aus. Der Name des Blockchainmitglieds darf nur Kleinbuchstaben und Zahlen enthalten. Das erste Zeichen muss ein Buchstabe sein. Der Wert muss zwischen 2 und 20 Zeichen umfassen.
     Mitgliedskontokennwort | Das Mitgliedskontokennwort wird zum Verschlüsseln des privaten Schlüssels für das Ethereum-Konto verwendet, das für Ihr Mitglied erstellt wird. Sie verwenden das Mitgliedskonto und das Mitgliedskontokennwort für die Verwaltung des Konsortiums.
-    Konsortiumsname | Geben Sie für ein neues Konsortium einen eindeutigen Namen ein. Wenn Sie einem Konsortium über eine Einladung beitreten, entspricht der Wert dem Konsortium, dem Sie beitreten.
     BESCHREIBUNG | Beschreibung des Konsortiums.
-    Protocol |  Die Vorschauversion unterstützt das Quorum-Protokoll.
-    Preise | Die Knotenkonfiguration für Ihren neuen Dienst. Wählen Sie **Standard** aus. Die Standardeinstellung umfasst zwei Validierungsknoten und einen Transaktionsknoten.
-    Kennwort des Transaktionsknotens | Das Kennwort für den Standardtransaktionsknoten des Mitglieds. Verwenden Sie das Kennwort für die Standardauthentifizierung, wenn Sie eine Verbindung mit dem öffentlichen Endpunkt des Standardtransaktionsknotens des Blockchainmitglieds herstellen.
+    Preise | Die Knotenkonfiguration und Kosten für Ihren neuen Dienst. Wählen Sie den Link **Ändern** aus, um zwischen den Ebenen **Standard** und **Basic** zu wählen.
+    Knotenkennwort | Das Kennwort für den Standardtransaktionsknoten des Mitglieds. Verwenden Sie das Kennwort für die Standardauthentifizierung, wenn Sie eine Verbindung mit dem öffentlichen Endpunkt des Standardtransaktionsknotens des Blockchainmitglieds herstellen.
 
-1. Wählen Sie **Erstellen** aus, um den Dienst bereitzustellen. Die Bereitstellung dauert ungefähr 10 Minuten.
+1. Wählen Sie zum Überprüfen Ihrer Einstellungen **Überprüfen + erstellen** aus. Wählen Sie **Erstellen** aus, um den Dienst bereitzustellen. Die Bereitstellung dauert ungefähr 10 Minuten.
 1. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
 1. Wenn die Bereitstellung abgeschlossen ist, navigieren Sie zu Ihrem Blockchainmitglied.
 
@@ -57,7 +50,7 @@ Klicken Sie auf **Übersicht**, um die grundlegenden Informationen über Ihren D
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Das von Ihnen erstellte Mitglied können Sie für die nächste Schnellstartanleitung oder das nächste Tutorial verwenden. Wenn Ressourcen nicht mehr benötigt werden, können Sie diese löschen, indem Sie die `myResourceGroup`-Ressourcengruppe löschen, die Sie mit Azure Blockchain erstellt haben.
+Das von Ihnen erstellte Mitglied können Sie für die nächste Schnellstartanleitung oder das nächste Tutorial verwenden. Wenn Ressourcen nicht mehr benötigt werden, können Sie diese löschen, indem Sie die für die Schnellstartanleitung erstellte Ressourcengruppe `myResourceGroup` löschen.
 
 So löschen Sie die Ressourcengruppe:
 
@@ -66,5 +59,7 @@ So löschen Sie die Ressourcengruppe:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+In dieser Schnellstartanleitung haben Sie ein Azure Blockchain Service-Mitglied und ein neues Konsortium bereitgestellt. In der nächsten Schnellstartanleitung erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum zum Anfügen an ein Konsortium in Azure Blockchain Service verwenden.
+
 > [!div class="nextstepaction"]
-> [Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts](connect-metamask.md)
+> [Herstellen einer Verbindung mit Azure Blockchain Service mithilfe von Visual Studio Code](connect-vscode.md)

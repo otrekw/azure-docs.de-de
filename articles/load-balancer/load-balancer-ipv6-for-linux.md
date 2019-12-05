@@ -1,7 +1,7 @@
 ---
 title: Konfigurieren von DHCPv6 für virtuelle Linux-Computer
-titlesuffix: Azure Load Balancer
-description: Vorgehensweise beim Konfigurieren von DHCPv6 für virtuelle Linux-Computer.
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erhalten Sie Informationen zum Konfigurieren von DHCPv6 für virtuelle Linux-Computer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2019
 ms.author: allensu
-ms.openlocfilehash: 3e987b6718ead6b7014ec302d1a186dabef11126
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 6ea215b6aa826231e940f88c3687bb65591303f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274926"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225319"
 ---
 # <a name="configure-dhcpv6-for-linux-vms"></a>Konfigurieren von DHCPv6 für virtuelle Linux-Computer
 

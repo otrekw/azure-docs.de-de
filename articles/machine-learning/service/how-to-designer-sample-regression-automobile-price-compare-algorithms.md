@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Vorhersagen von Automobilpreisen (Regression)'
+title: 'Designer: Beispiel zur Vorhersage von Autopreisen (Erweitert)'
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel wird gezeigt, wie Sie über den Designer (Vorschauversion) eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben. Erfahren Sie, wie Sie mehrere Regressionsmodelle trainieren und vergleichen, um den Preis eines Fahrzeugs anhand technischer Merkmale vorherzusagen.
+description: Erstellen und vergleichen Sie mehrere ML-Regressionsmodelle, um den Preis eines Autos basierend auf technischen Merkmalen mit dem Azure Machine Learning-Designer vorherzusagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 60baf2229b6c704f951e6cc54949109d5e403bc0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647952"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225046"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Beispiel 2 – Regression: Vorhersagen des Preises und Vergleichen von Algorithmen
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Trainieren und vergleichen Sie mehrere Regressionsmodelle, um Autopreise mit dem Azure Machine Learning-Designer vorherzusagen.
+
+**Designer (Vorschauversion) – Beispiel 2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Erfahren Sie, wie Sie im Designer (Vorschauversion) eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben. In diesem Beispiel werden mehrere Regressionsmodelle trainiert und verglichen, um den Preis eines Fahrzeugs anhand seiner technischen Merkmale vorherzusagen. Wir stellen die Gründe für die Entscheidungen bereit, die in dieser Pipeline getroffen wurden, damit Sie Ihre eigenen Probleme durch maschinelles Lernen lösen können.
@@ -26,7 +29,7 @@ Wenn Sie noch keine Erfahrung mit maschinellem Lernen haben, sehen Sie sich zun�
 
 Der fertige Graph für diese Pipeline sieht wie folgt aus:
 
-[![Graph der Pipeline](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph der Pipeline](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png)](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,7 +56,7 @@ Zu den Hauptaufgaben der Datenaufbereitung gehören die Datenbereinigung, Integr
 
 Verwenden Sie das Modul **Select Columns in Dataset** (Spalten in Dataset auswählen), um normalisierte Verluste auszuschließen, die viele fehlende Werte aufweisen. Anschließend verwenden wir **Clean Missing Data** (Fehlende Daten bereinigen), um die Zeilen zu entfernen, die fehlende Werte aufweisen. Dies hilft, einen bereinigten Satz von Trainingsdaten zu erstellen.
 
-![Datenvorverarbeitung](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
+![Datenvorverarbeitung](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/data-processing.png)
 
 ## <a name="train-the-model"></a>Modelltraining
 
@@ -75,7 +78,7 @@ Nachdem das Modell trainiert wurde, verwenden Sie die Module **Score Model** (Mo
 
 Hier sehen Sie die Ergebnisse:
 
-![Vergleichen der Ergebnisse](media/how-to-ui-sample-regression-predict-automobile-price-compare-algorithms/result.png)
+![Vergleichen der Ergebnisse](media/how-to-designer-sample-regression-predict-automobile-price-compare-algorithms/result.png)
 
 Diese Ergebnisse zeigen, dass das Modell, das mit **Boosted Decision Tree Regression** erstellt wurde, einen geringeren mittleren quadratischen Fehler als das Modell aufweist, das mit **Decision Forest Regression** erstellt wurde.
 

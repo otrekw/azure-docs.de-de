@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure Cosmos-Kontos und eines Containers sowie von Elementen mit dem Azure-Portal.
-description: Erstellen eines Azure Cosmos-Kontos und eines Containers sowie von Elementen mit dem Azure-Portal.
+title: Erstellen Sie über das Azure-Portal eine Azure Cosmos-Datenbank.
+description: Erstellen Sie eine Azure Cosmos-Datenbank, einen Container sowie Elemente mit dem Azure-Portal.
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
@@ -8,14 +8,14 @@ ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 09/01/2019
-ms.openlocfilehash: e0a9f4fa6ca5ff7447d2ffaef3eab2f3c54fdeae
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: b42a442564812f4386eb94b9bd7b7c9aff9e9f29
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241263"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220728"
 ---
-# <a name="quickstart-create-an-azure-cosmos-account-container-and-items-with-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cosmos-Kontos und eines Containers sowie von Elementen mit dem Azure-Portal
+# <a name="quickstart-create-an-azure-cosmos-account-database-container-and-items-from-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Cosmos-Kontos, einer Datenbank, eines Containers sowie von Elementen mit dem Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](create-cosmosdb-resources-portal.md)

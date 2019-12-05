@@ -11,18 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: orspodek
-ms.openlocfilehash: 6945e4dcf6baf44881bd5b13571dd03e3dee41ed
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300541"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547146"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in oder aus [Azure Data Explorer](../data-explorer/data-explorer-overview.md) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
+
+>[!TIP]
+>Weitere Informationen zur Integration von Azure Data Factory und Azure Data Explorer im Allgemeinen finden Sie unter [Integration von Azure Data Explorer und Azure Data Factory](../data-explorer/data-factory-integration.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -45,7 +48,7 @@ Mit dem Azure Data Explorer-Connector ist Folgendes möglich:
 ## <a name="getting-started"></a>Erste Schritte
 
 >[!TIP]
->Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory](../data-explorer/data-factory-load-data.md).
+>Eine exemplarische Vorgehensweise zur Verwendung des Azure Data Explorer-Connectors finden Sie unter [Kopieren von Daten in Azure Data Explorer mithilfe von Azure Data Factory](../data-explorer/data-factory-load-data.md) und [Massenkopieren aus einer Datenbank zu Azure Data Explorer](../data-explorer/data-factory-template.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

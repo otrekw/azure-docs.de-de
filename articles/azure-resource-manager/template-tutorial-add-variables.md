@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Hinzufügen von Variablen zur Azure Resource Manager-Vorlage'
+title: 'Tutorial: Hinzufügen einer Variablen zur Vorlage'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Variablen hinzu, um die Syntax zu vereinfachen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 0598da3c060b8a8055ffb045fe4aae60b3806060
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001469"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406056"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Variablen zur Azure Resource Manager-Vorlage
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu Funktionen](template-tutorial-add-functions.md) 
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
@@ -53,7 +50,7 @@ Mit dem Parameter **storagePrefix** können Sie ein Präfix übergeben, das Ihne
 
 Beachten Sie auch, dass der Speichername jetzt nicht mehr auf einen Parameter, sondern auf die Variable festgelegt ist.
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Nun stellen Sie die Vorlage bereit. Die Bereitstellung dieser Vorlage ist einfacher als die der vorherigen Vorlagen, da Sie nur das Präfix für den Speichernamen angeben.
 
@@ -82,7 +79,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
+## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 
 Sie können die Bereitstellung überprüfen, indem Sie sich die Ressourcengruppe im Azure-Portal ansehen.
 

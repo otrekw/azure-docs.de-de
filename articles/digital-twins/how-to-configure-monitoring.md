@@ -1,20 +1,20 @@
 ---
 title: 'Konfigurieren der Überwachung: Azure Digital Twins | Microsoft-Dokumentation'
-description: 'Vorgehensweise: Konfigurieren der Überwachung in Azure Digital Twins.'
+description: Erfahren Sie, wie Sie die Überwachungs- und Protokollierungsoptionen für Azure Digital Twins konfigurieren.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7d81636bfb60c2d5fa059da01ac535e09b829f4
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949994"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547097"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Gewusst wie: Konfigurieren der Überwachung in Azure Digital Twins
 

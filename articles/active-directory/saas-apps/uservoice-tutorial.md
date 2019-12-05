@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087637"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Tutorial: Azure Active Directory-Integration mit UserVoice
 
@@ -136,15 +136,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit UserVoi
 
 2. Klicken Sie auf der Symbolleiste oben auf **Settings** (Einstellungen), und wählen Sie dann aus dem Menü die Option **Web portal** aus.
    
-    ![Abschnitt „Settings“ auf App-Seite](./media/uservoice-tutorial/ic777519.png "Settings")
+    ![Abschnitt „Settings“ (Einstellungen) auf App-Seite](./media/uservoice-tutorial/ic777519.png "Einstellungen")
 
 3. Klicken Sie auf der Registerkarte **Web portal** im Abschnitt **User authentication** (Benutzerauthentifizierung) auf **Edit** (Bearbeiten), um die Dialogfeldseite **Edit User Authentication** (Benutzerauthentifizierung bearbeiten) zu öffnen.
    
-    ![Registerkarte „Web portal“](./media/uservoice-tutorial/ic777520.png "Web portal")
+    ![Registerkarte „Web portal“ (Webportal)](./media/uservoice-tutorial/ic777520.png "Webportal")
 
 4. Führen Sie auf der Dialogseite **Benutzerauthentifizierung bearbeiten** die folgenden Schritte aus:
    
-    ![Benutzerauthentifizierung bearbeiten](./media/uservoice-tutorial/ic777521.png "Benutzerauthentifizierung bearbeiten")
+    ![Bearbeiten der Benutzerauthentifizierung](./media/uservoice-tutorial/ic777521.png "Benutzerauthentifizierung bearbeiten")
    
     a. Klicken Sie auf **Einmaliges Anmelden (SSO)** .
  
@@ -222,22 +222,22 @@ Damit sich Azure AD-Benutzer bei UserVoice anmelden können, müssen sie in Use
 
 4. Klicken Sie auf **Agents und Berechtigungen**.
    
-    ![Agents und Berechtigungen](./media/uservoice-tutorial/ic777812.png "Agents und Berechtigungen")
+    ![Agents and permissions (Agents und Berechtigungen)](./media/uservoice-tutorial/ic777812.png "Agents und Berechtigungen")
 
 5. Klicken Sie auf **Administratoren hinzufügen**.
    
-    ![Administratoren hinzufügen](./media/uservoice-tutorial/ic777813.png "Administratoren hinzufügen")
+    ![Add admins (Administratoren hinzufügen)](./media/uservoice-tutorial/ic777813.png "Administratoren hinzufügen")
 
 6. Führen Sie im Dialogfeld **Benutzer einladen** die folgenden Schritte aus:
    
-    ![Administratoren einladen](./media/uservoice-tutorial/ic777814.png "Administratoren einladen")
+    ![Invite admins (Administratoren einladen)](./media/uservoice-tutorial/ic777814.png "Benutzer einladen")
    
     a. Geben Sie in das Textfeld „E-Mails“ die E-Mail-Adresse des Azure AD-Kontos ein, das Sie bereitstellen möchten, und klicken Sie auf **Hinzufügen**.
    
     b. Klicken Sie auf **Einladen**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von UserVoice-Benutzerkonten oder mithilfe der von UserVoice bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von UserVoice-Benutzerkonten oder mithilfe der von UserVoice bereitgestellten APIs erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -251,5 +251,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „UserVoice“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

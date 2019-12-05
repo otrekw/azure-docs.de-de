@@ -1,24 +1,16 @@
 ---
-title: Azure Resource Manager-Vorlage mit abhängigen Ressourcen
+title: Vorlage mit abhängigen Ressourcen
 description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage mit mehreren Ressourcen erstellen und über das Azure-Portal bereitstellen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0eb4b29ffb8ae0269dbc7efd7e9ef6b720188bce
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533504"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325390"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen
 
@@ -41,7 +33,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.  Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
     ```azurecli-interactive
@@ -92,7 +84,7 @@ Sehen Sie sich die Vorlage in diesem Abschnitt an, und versuchen Sie, die folgen
 3. Erweitern Sie die zweite Ressource. Der Ressourcentyp lautet `Microsoft.Network/publicIPAddresses`. Vergleichen Sie die Ressourcendefinition mit der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
 
     ![Azure Resource Manager-Vorlagen in Visual Studio Code: Definition der öffentlichen IP-Adresse](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
-4. Erweitern Sie die vierte Ressource. Der Ressourcentyp lautet `Microsoft.Network/networkInterfaces`:  
+4. Erweitern Sie die vierte Ressource. Der Ressourcentyp lautet `Microsoft.Network/networkInterfaces`:
 
     ![„dependsOn“ für Azure Resource Manager-Vorlagen in Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -118,14 +110,14 @@ Durch die Angabe der Abhängigkeiten wird die Lösung von Resource Manager effiz
 
 Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwenden Sie Cloud Shell aus dem Azure-Portal.
 
-1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an. 
+1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an.
 2. Wählen Sie links oben in der Cloudshell die Option **PowerShell** aus, und wählen Sie dann **Bestätigen**.  In diesem Tutorial können Sie PowerShell verwenden.
 3. Klicken Sie in Cloud Shell auf **Datei hochladen**:
 
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 4. Wählen Sie die Vorlage aus, die Sie zuvor im Tutorial gespeichert haben. Der Standardname lautet **azuredeploy.json**.  Falls Sie eine Datei mit dem gleichen Dateinamen besitzen, wird die alte Datei ohne Benachrichtigung überschrieben.
 
-    Sie können optional den Befehl **ls $HOME** und den Befehl **cat $HOME/azuredeploy.json** verwenden, um zu überprüfen, ob die Dateien hochgeladen wurden. 
+    Sie können optional den Befehl **ls $HOME** und den Befehl **cat $HOME/azuredeploy.json** verwenden, um zu überprüfen, ob die Dateien hochgeladen wurden.
 
 5. Führen Sie in Cloud Shell die folgenden PowerShell-Befehle aus. Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Siehe [Voraussetzungen](#prerequisites).
 

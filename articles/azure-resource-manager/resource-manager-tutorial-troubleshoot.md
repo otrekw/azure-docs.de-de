@@ -1,24 +1,16 @@
 ---
-title: Behandeln von Ressource Manager-Bereitstellungsproblemen | Microsoft-Dokumentation
+title: Behandeln von Bereitstellungsproblemen
 description: Hier erfahren Sie, wie Azure Ressource Manager-Vorlagenbereitstellungen überwacht und Probleme damit behandelt werden. Sie finden hier Aktivitätsprotokolle und den Bereitstellungsverlauf.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4ad32ed83d731a26b6bb72fca230d00d5465c45a
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 32f3f55df2b87b35672d811c63a21b956a8a4b52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390209"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325358"
 ---
 # <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Tutorial: Problembehandlung bei der Resource Manager-Vorlagenbereitstellung
 
@@ -26,7 +18,7 @@ Hier erfahren Sie, wie Fehler bei der Ressource Manager-Vorlagenbereitstellung b
 
 Im Zusammenhang mit der Vorlagenbereitstellung gibt es zwei Fehlertypen:
 
-- **Überprüfungsfehler** entstehen durch Szenarien, die vor der Bereitstellung bestimmt werden können. Dazu gehören Syntaxfehler in Ihrer Vorlage oder Versuche, Ressourcen bereitzustellen, die Ihre Abonnementkontingente überschreiten würden. 
+- **Überprüfungsfehler** entstehen durch Szenarien, die vor der Bereitstellung bestimmt werden können. Dazu gehören Syntaxfehler in Ihrer Vorlage oder Versuche, Ressourcen bereitzustellen, die Ihre Abonnementkontingente überschreiten würden.
 - **Bereitstellungsfehler** können durch Bedingungen verursacht werden, die während des Bereitstellungsprozesses auftreten. Dazu gehören Versuche, auf eine Ressource zuzugreifen, die parallel bereitgestellt wird.
 
 Beide Fehlertypen geben einen Fehlercode zurück, der für die Problembehandlung für die Bereitstellung genutzt werden kann. Beide Fehlertypen werden im Aktivitätsprotokoll angezeigt. Überprüfungsfehler werden allerdings nicht im Bereitstellungsverlauf festgehalten, da die Bereitstellung tatsächlich nie gestartet wurde.
@@ -47,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-- [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 
 ## <a name="create-a-problematic-template"></a>Erstellen einer problematischen Vorlage
 

@@ -1,21 +1,20 @@
 ---
 title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
-ms.date: 12/06/2018
+ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: e6b74eb2ffe15256523e46f0c246ba9f4d399c4d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959324"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484009"
 ---
-# <a name="overview-of-the-azure-policy-service"></a>Übersicht über den Azure Policy-Dienst
+# <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
 Anhand von Governance wird überprüft, ob Ihre Organisation ihre Ziele basierend auf einer effektiven und effizienten IT-Nutzung erreichen kann. Hierzu werden die Geschäftsziele und die IT-Projekte eindeutig aufeinander abgestimmt.
 
-Tritt in Ihrem Unternehmen eine erhebliche Anzahl von IT-Problemen auf, die anscheinend nie gelöst werden?
-Eine gute IT-Governance zeichnet sich durch die Planung von Initiativen und das Setzen von Prioritäten auf strategischer Ebene aus, um Probleme managen und verhindern zu können. Bei dieser strategischen Anforderung kommt Azure Policy ins Spiel.
+Tritt in Ihrem Unternehmen eine erhebliche Anzahl von IT-Problemen auf, die anscheinend nie gelöst werden? Eine gute IT-Governance zeichnet sich durch die Planung von Initiativen und das Setzen von Prioritäten auf strategischer Ebene aus, um Probleme managen und verhindern zu können. Bei dieser strategischen Anforderung kommt Azure Policy ins Spiel.
 
 Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy erfüllt diese Anforderung, indem Ihre Ressourcen auf die Nichteinhaltung der zugewiesenen Richtlinien überprüft werden. Beispielsweise können Sie eine Richtlinie erstellen, die besagt, dass in Ihrer Umgebung für virtuelle Computer nur eine bestimmte SKU-Größe zulässig ist. Nachdem diese Richtlinie implementiert wurde, wird die Konformität der neuen und vorhandenen Ressourcen ausgewertet. Mit dem richtigen Typ von Richtlinie kann für vorhandene Ressourcen Konformität erzielt werden. Weiter unten in dieser Dokumentation werden noch weitere Details zur Erstellung und Implementierung von Richtlinien mit Azure Policy beschrieben.
 
@@ -35,7 +34,7 @@ Azure Policy verfügt über verschiedene Berechtigungen (als Vorgänge bezeichne
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender an Ressourcenrichtlinien (Vorschau)** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl für **Mitwirkender** als auch für **Leser** können alle Azure Policy-Lesevorgänge genutzt werden, aber mit **Mitwirkender** kann zusätzlich eine Bereinigung ausgelöst werden.
+Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl für **Mitwirkender** als auch für **Leser** können alle Azure Policy-Lesevorgänge genutzt werden, aber mit **Mitwirkender** kann zusätzlich eine Bereinigung ausgelöst werden.
 
 Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verfügt, erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md).
 
@@ -81,6 +80,9 @@ Weitere Informationen zu Richtlinienparametern finden Sie unter [Struktur von Az
 
 Eine Initiativdefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.
 
+> [!NOTE]
+> Das SDK, etwa Azure CLI und Azure PowerShell, verwendet zum Verweisen auf Initiativen Eigenschaften und Parameter mit dem Namen **PolicySet**.
+
 Im Rahmen dieser Initiative würden Sie Richtliniendefinitionen wie etwa Folgende haben:
 
 - **Unverschlüsselte SQL-Datenbank im Security Center überwachen** – Zum Überwachen von unverschlüsselten SQL-Datenbanken und Servern.
@@ -125,11 +127,12 @@ Hier sind einige Hinweise und Tipps aufgeführt, die Sie beachten sollten:
 - Berücksichtigen Sie beim Erstellen von Definitionen und Anweisungen die Hierarchien der Organisation. Wir empfehlen Ihnen, Definitionen auf allgemeiner Ebene zu erstellen, z.B. Verwaltungsgruppen- oder Abonnementebene. Erstellen Sie anschließend die Zuweisung auf der nächsten untergeordneten Ebene. Wenn Sie eine Definition für eine Verwaltungsgruppe erstellen, kann die Zuweisung für ein Abonnement oder eine Ressourcengruppe innerhalb dieser Verwaltungsgruppe festgelegt werden.
 
 - Wir empfehlen Ihnen, auch für nur eine einzelne Richtliniendefinition Initiativdefinitionen zu erstellen und zuzuweisen.
-Es kann beispielsweise sein, dass Sie über die Richtliniendefinition *policyDefA* verfügen und sie unter der Initiativdefinition *initiativeDefC* erstellen. Wenn Sie später eine andere Richtliniendefinition für *policyDefB* erstellen, deren Ziele denen von *policyDefA* ähneln, können Sie sie unter *initiativeDefC* hinzufügen und beide zusammen nachverfolgen.
+  Es kann beispielsweise sein, dass Sie über die Richtliniendefinition *policyDefA* verfügen und sie unter der Initiativdefinition *initiativeDefC* erstellen. Wenn Sie später eine andere Richtliniendefinition für *policyDefB* erstellen, deren Ziele denen von *policyDefA* ähneln, können Sie sie unter *initiativeDefC* hinzufügen und beide zusammen nachverfolgen.
 
 - Nachdem Sie eine Initiativzuweisung erstellt haben, werden der Initiative hinzugefügte Richtliniendefinitionen ebenfalls Teil dieser Initiativzuweisungen.
 
-- Wenn eine Initiativzuweisung ausgewertet wird, werden auch alle Richtlinien innerhalb der Initiative ausgewertet. Falls Sie eine Richtlinie einzeln auswerten möchten, empfiehlt es sich, sie nicht in eine Initiative aufzunehmen.
+- Wenn eine Initiativzuweisung ausgewertet wird, werden auch alle Richtlinien innerhalb der Initiative ausgewertet.
+  Falls Sie eine Richtlinie einzeln auswerten möchten, empfiehlt es sich, sie nicht in eine Initiative aufzunehmen.
 
 ## <a name="video-overview"></a>Videoübersicht
 
@@ -141,8 +144,6 @@ Die folgende Übersicht über Azure Policy stammt von der Build 2018. Folien und
 
 Nachdem Sie nun einen Überblick über Azure Policy erhalten und einige Schlüsselbegriffe kennengelernt haben, geht es mit den nächsten empfohlenen Schritten weiter:
 
-- [Zuweisen einer Richtliniendefinition mit dem Portal](assign-policy-portal.md)
-- [Zuweisen einer Richtliniendefinition mit der Azure-Befehlszeilenschnittstelle](assign-policy-azurecli.md)
-- [Zuweisen einer Richtliniendefinition mit PowerShell](assign-policy-powershell.md)
-- Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](..//management-groups/overview.md).
-- Sehen Sie sich [Govern your Azure environment through Azure Policy](https://channel9.msdn.com/events/Build/2018/THR2030) (Steuern Ihrer Azure-Umgebung über Azure Policy) auf Channel 9 an.
+- [Zuweisen einer Richtliniendefinition mit dem Portal](./assign-policy-portal.md)
+- [Zuweisen einer Richtliniendefinition mit der Azure-Befehlszeilenschnittstelle](./assign-policy-azurecli.md)
+- [Zuweisen einer Richtliniendefinition mit PowerShell](./assign-policy-powershell.md)

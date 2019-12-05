@@ -7,17 +7,25 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/22/2018
-ms.openlocfilehash: 263456769ab391cbc0588eed1a714a1ea5788154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 883e1007b35991c1f5d8f0c6e949efcb48c27a1d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494889"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327221"
 ---
 # <a name="access-apache-hadoop-yarn-application-logs-on-linux-based-hdinsight"></a>Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle unter Linux-basiertem HDInsight
 
 Erfahren Sie, wie Sie auf Protokolle für [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html)-Anwendungen (Yet Another Resource Negotiator) in einem [Apache Hadoop](https://hadoop.apache.org/) Cluster in Azure HDInsight zugreifen.
+
+## <a name="what-is-apache-yarn"></a>Was ist Apache YARN?
+
+YARN unterstützt mehrere Programmierungsmodelle (u. a.[Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)), indem die Ressourcenverwaltung von der Zeitplanung/Überwachung von Anwendungen getrennt wird. YARN verwendet einen globalen *ResourceManager* (RM), workerknotenbezogene *NodeManager* (NMs) und anwendungsbezogene *ApplicationMaster* (AMs). Der anwendungsbezogene AM handelt Ressourcen (CPU, Arbeitsspeicher, Datenträger, Netzwerk) für die Ausführung Ihrer Anwendung mit dem RM aus. Der RM arbeitet mit NMs zusammen, um diese Ressourcen zu gewähren, die als *Container* zugewiesen werden. Der AM ist zuständig für die Nachverfolgung des Status der Container, die ihm vom RM zugewiesen wurden. Je nach Art der Anwendung kann diese viele Container benötigen.
+
+Jede Anwendung kann aus mehreren *Anwendungsversuchen* bestehen. Tritt bei einer Anwendung ein Fehler auf, kann ein neuer Versuch unternommen werden. Jeder Versuch wird in einem Container ausgeführt. In gewisser Weise stellt ein Container den Kontext für die Standardeinheit für Aufgaben, die von einer YARN-Anwendung ausgeführt werden. Alle Aufgaben, die im Kontext eines Containers erledigt werden, erfolgen auf dem einzelnen Workerknoten, auf dem der Container zugeordnet wurde. Weitere Informationen finden Sie unter [Hadoop: Schreiben von YARN-Anwendungen](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html) oder [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html).
+
+Zur Skalierung Ihres Clusters für einen höheren Verarbeitungsdurchsatz können Sie die [Autoskalierung](hdinsight-autoscale-clusters.md) oder das [manuelle Skalieren Ihrer Cluster mit einigen verschiedenen Sprachen](hdinsight-scaling-best-practices.md#utilities-to-scale-clusters) verwenden.
 
 ## <a name="YARNTimelineServer"></a>YARN Timeline Server
 
@@ -42,7 +50,7 @@ Anwendungsprotokolle (und dazugehörige Containerprotokolle) sind für das Beheb
 
 `user` steht hier für den Namen des Benutzers, der die Anwendung gestartet hat. `applicationId` ist der eindeutige Bezeichner, der einer Anwendung durch den YARN-RM zugewiesen wird.
 
-Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in einem [TFile][T-file]-[Binärformat ][binary-format] mit Indizierung nach Container geschrieben werden. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
+Die zusammengeführten Protokolle sind nicht unmittelbar lesbar, da sie in einem [TFile](https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf)-[Binärformat](https://issues.apache.org/jira/browse/HADOOP-3315) mit Indizierung nach Container geschrieben werden. Verwenden Sie die YARN-ResourceManager-Protokolle oder CLI-Tools, um diese Protokolle für relevante Anwendungen oder Container im Nur-Text-Format anzuzeigen.
 
 ## <a name="yarn-cli-tools"></a>YARN-CLI-Tools
 
@@ -69,7 +77,3 @@ Die YARN-ResourceManager-Benutzeroberfläche wird im Cluster-Hauptknoten ausgef�
     ![Quicklinks für Apache Ambari Yarn](./media/hdinsight-hadoop-access-yarn-app-logs-linux/hdi-yarn-quick-links.png)
 
     Eine Liste mit Links zu YARN-Protokollen wird angezeigt.
-
-[YARN-timeline-server]:https://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
-[T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
-[binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315

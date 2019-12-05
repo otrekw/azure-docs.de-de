@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: bfe44e552618dfbee13e8c85ef424f52d4b7ae5f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814995"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224976"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Führen Sie diesen Code in einer dieser Umgebungen aus:
 
     - [Installieren Sie das Azure Machine Learning SDK.](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)
     - [Erstellen Sie eine Konfigurationsdatei für den Arbeitsbereich.](how-to-configure-environment.md#workspace)
-    - Laden Sie die Beispielskriptdatei [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/chainer_mnist.py) herunter.
+    - Laden Sie die Beispielskriptdatei [chainer_mnist.py](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer) herunter.
      - Auf der GitHub-Seite mit Beispielen finden Sie außerdem eine vervollständigte [Jupyter Notebook-Version](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/ml-frameworks/chainer/deployment/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb) dieser Anleitung. Das Notebook umfasst erweiterte Abschnitte, in denen die intelligente Hyperparameteroptimierung, die Modellimplementierung und Notebook-Widgets behandelt werden.
 
 ## <a name="set-up-the-experiment"></a>Einrichten des Experiments
@@ -193,7 +193,7 @@ model = run.register_model(model_name='chainer-dnn-mnist', model_path='outputs/m
 ```
 
 > [!TIP]
-> Wird ein Fehler mit der Meldung angezeigt, dass das Modell nicht gefunden wurde, warten Sie einen Moment, und wiederholen Sie dann den Vorgang.  Manchmal dauert es kurz, bis das Modell nach dem Ende der Trainingsausführung im Ausgabeverzeichnis verfügbar ist.
+> Das soeben registrierte Modell wird genauso bereitgestellt wie jedes andere registrierte Modell in Azure Machine Learning, unabhängig davon, welchen Estimator Sie für das Training verwendet haben. Die Schrittanleitung zur Bereitstellung enthält einen Abschnitt zur Registrierung von Modellen, aber Sie können direkt zu [Erstellen eines Computeziels](how-to-deploy-and-where.md#choose-a-compute-target) für die Bereitstellung springen, da Sie bereits über ein registriertes Modell verfügen.
 
 Sie können auch eine lokale Kopie des Modells herunterladen. Dies kann nützlich sein, um zusätzliche Arbeiten zur Modellüberprüfung lokal durchzuführen. Im Trainingsskript `chainer_mnist.py` wird das Modell durch ein saver-Objekt persistent in einem lokalen Ordner (lokal für das Computeziel) gespeichert. Mit dem Run-Objekt können Sie eine Kopie aus dem Datenspeicher herunterladen.
 

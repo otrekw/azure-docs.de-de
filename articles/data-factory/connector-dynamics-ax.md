@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory
+title: Kopieren von Daten aus Dynamics AX
 description: Erfahren Sie, wie Daten aus Dynamics AX mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 07edc284c29ca209ee20e5de390e8126993f4ce3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 555293492a37b9c635cb11087c08d52aa4b4d8c4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681015"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218623"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Kopieren von Daten aus Dynamics AX mithilfe von Azure Data Factory
 

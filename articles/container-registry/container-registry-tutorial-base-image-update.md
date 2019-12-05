@@ -1,20 +1,15 @@
 ---
-title: 'Tutorial: Auslösen der Imageerstellung bei der Aktualisierung eines Basisimages – Azure Container Registry'
+title: 'Tutorial: Auslösen der Imageerstellung bei der Aktualisierung eines Basisimages'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Container Registry-Aufgabe so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn ein Basisimage aktualisiert wird.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/12/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 1beb66d8491b7dac84e9531558f8967e22086575
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b89bf0364165822368647b4c5b773bf422902aec
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931686"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456143"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
@@ -272,10 +267,10 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie erfahren, wie Sie mithilfe einer Aufgabe automatisch Buildvorgänge für Containerimages auslösen, wenn das Basisimage des Images aktualisiert wurde. Der nächste Artikel enthält Informationen zur Authentifizierung für Ihre Containerregistrierung.
+In diesem Tutorial haben Sie erfahren, wie Sie mithilfe einer Aufgabe automatisch Buildvorgänge für Containerimages auslösen, wenn das Basisimage des Images aktualisiert wurde. Im nächsten Tutorial erfahren Sie, wie Sie Aufgaben nach einem definierten Zeitplan ausführen.
 
 > [!div class="nextstepaction"]
-> [Authentifizieren mit einer privaten Docker-Containerregistrierung](container-registry-authentication.md)
+> [Ausführen eines ACR Tasks nach einem definierten Zeitplan](container-registry-tasks-scheduled.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

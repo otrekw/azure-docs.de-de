@@ -1,5 +1,5 @@
 ---
-title: Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
+title: Datentool zum schrittweisen Kopieren neuer und aktualisierter Dateien
 description: Erstellen Sie eine Azure Data Factory, und verwenden Sie dann das Tool zum Kopieren von Daten, um neue Dateien auf Basis von „LastModifiedDate“ inkrementell zu laden.
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 09a9fa4515913470c86bbafe293add007a3117ea
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5c20196bd243d025d58f7cc08e015e1e0038e178
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683463"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217786"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
 

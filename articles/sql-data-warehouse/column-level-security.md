@@ -11,16 +11,16 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 605dfadaf4cd1686b124b120151e6a88a43f1a68
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
+ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693086"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077104"
 ---
 # <a name="column-level-security"></a>Sicherheit auf Spaltenebene
 Mit der Sicherheit auf Spaltenebene (CLS) können Kunden den Zugriff auf Datentabellenspalten basierend auf dem Ausführungskontext oder der Gruppenmitgliedschaft des Benutzers steuern.
-
+Update zum folgenden Video: Seit Bereitstellung dieses Video ist [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) auch in SQL Data Warehouse verfügbar. 
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
 
 CLS vereinfacht das Entwerfen und Programmieren der Sicherheit in Ihrer Anwendung. Mit CLS können Sie den Zugriff auf Spalten zum Schutz vertraulicher Daten einschränken. Zum Beispiel können Sie so sicherstellen, dass bestimmte Benutzer nur auf bestimmte Spalten einer Tabelle zugreifen können, die für ihre Abteilung relevant sind. Die Zugriffsbeschränkungslogik befindet sich auf der Datenbankebene und nicht auf einer anderen, von den Daten getrennten Anwendungsebene. Die Datenbank wendet die Zugriffsbeschränkungen jedes Mal an, wenn ein Datenzugriff von einer beliebigen Ebene aus versucht wird. Dadurch bietet Ihr gesamtes Sicherheitssystem eine geringere Angriffsfläche und ist zuverlässiger und robuster. Darüber hinaus entfällt dank CLS die Notwendigkeit, Ansichten zum Herausfiltern von Spalten einzuführen, um den Benutzern Zugriffsbeschränkungen aufzuerlegen.

@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933036"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278603"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
@@ -239,4 +239,7 @@ Um die Ausgabe übersichtlicher zu gestalten, wählen Sie das jeweilige Zeitdiag
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Schreiben von Abfragen](search-queries.md).
+- Weitere Informationen zur Verwendung von Zeichenfolgendaten in einer Protokollabfrage finden Sie unter [Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen](string-operations.md).
+- Weitere Informationen zum Aggregieren von Daten in einer Protokollabfrage finden Sie unter [Erweiterte Aggregationen in Azure Monitor-Protokollabfragen](advanced-aggregations.md).
+- Unter [Joins in Azure Monitor-Protokollabfragen](joins.md) erfahren Sie, wie Sie Daten aus mehreren Tabellen verknüpfen.
+- Eine Dokumentation zur gesamten Kusto-Abfragesprache finden Sie in der [KQL-Sprachreferenz](/azure/kusto/query/).

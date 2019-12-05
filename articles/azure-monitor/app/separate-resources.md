@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/15/2017
-ms.openlocfilehash: bcf741e82e247a5b79a478ef1015a70cccb4d274
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c4d029de782ae408b83c265322a865db7b166c1e
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899912"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73928302"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Trennen der Telemetriedaten von Entwicklung, Test und Produktion
 
@@ -51,7 +51,7 @@ Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "globa
 In diesem Beispiel werden die iKeys für die verschiedenen Ressourcen in verschiedenen Versionen der Webkonfigurationsdatei platziert. Wenn Sie die Webkonfigurationsdatei austauschen – z.B. im Rahmen des Releaseskripts – wird die Zielressource ausgetauscht.
 
 ### <a name="web-pages"></a>Webseiten
-Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf dem Blatt "Schnellstart" erhalten haben](../../azure-monitor/app/javascript.md). Statt ihn direkt im Skript zu programmieren, generieren Sie ihn über den Serverzustand. Beispielsweise in einer ASP.NET-App:
+Der iKey wird auch in Webseiten Ihrer App in dem [Skript verwendet, das Sie auf dem Blatt „Schnellstart“ erhalten haben](../../azure-monitor/app/javascript.md). Statt ihn direkt im Skript zu programmieren, generieren Sie ihn über den Serverzustand. Beispielsweise in einer ASP.NET-App:
 
 *JavaScript in Razor*
 
@@ -81,7 +81,7 @@ Fügen Sie unter [portal.azure.com](https://portal.azure.com)eine neue Applicati
 
 Das Erstellen der Ressource dauert einige Sekunden. Wenn es abgeschlossen ist, sehen Sie eine Warnung.
 
-(Sie können ein [PowerShell-Skript](../../azure-monitor/app/powershell-script-create-resource.md) schreiben, um eine Ressource automatisch zu erstellen.)
+(Sie können ein [PowerShell-Skript](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) schreiben, um eine Ressource automatisch zu erstellen.)
 
 ### <a name="getting-the-instrumentation-key"></a>Abrufen des Instrumentierungsschlüssels
 Der Instrumentierungsschlüssel identifiziert die Ressource, die Sie erstellt haben. 
@@ -134,7 +134,7 @@ Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulege
     Um das Generieren von Versionsnummern in MSBuild zu ermöglichen, legen Sie in "AssemblyReference.cs" die Version fest, z. B. `1.0.*`.
 
 ## <a name="version-and-release-tracking"></a>Versionsnachverfolgung
-Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihrer Microsoft-Build-Engine generiert wird. Fügen Sie in Ihrer CSPROJ-Datei Folgendes hinzu:  
+Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihrer Microsoft-Build-Engine generiert wird. Fügen Sie in der `.csproj`-Datei Folgendes hinzu:  
 
 ```XML
 
@@ -145,7 +145,7 @@ Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinf
 
 Wenn das Webmodul Application Insights über die Buildinformationen verfügt, fügt es jedem Telemetrieelement automatisch die **Anwendungsversion** als Eigenschaft hinzu. Dies ermöglicht es Ihnen, nach der Version zu filtern, wenn Sie [Diagnosesuchen](../../azure-monitor/app/diagnostic-search.md) durchführen oder [Metriken untersuchen](../../azure-monitor/app/metrics-explorer.md).
 
-Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild in Visual Studio.
+Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild aus Visual Studio.
 
 ### <a name="release-annotations"></a>Versionsanmerkungen
 Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. In der folgenden Abbildung ist dargestellt, wie dieser Marker angezeigt wird.

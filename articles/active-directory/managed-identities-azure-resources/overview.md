@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5a9f83a8f6e8d5e83f30d30da2b1c4c0f722dc3
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ee30962db230417bf3e20a354614a5ebb8f35a0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063054"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561909"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Was sind verwaltete Identitäten für Azure-Ressourcen?
 
@@ -43,7 +43,7 @@ Die folgenden Begriffe werden in den verwalteten Identitäten für den Azure-Res
 - **Prinzipal-ID**: Die Objekt-ID des Dienstprinzipalobjekts für Ihre verwaltete Identität, die zum Gewähren des rollenbasierten Zugriffs auf eine Azure-Ressource verwendet wird
 - **Azure Instance Metadata Service (IMDS)** ist ein REST-Endpunkt, der für alle virtuellen IaaS-Computer verfügbar ist, die mit Azure Resource Manager erstellt wurden. Der Endpunkt steht unter einer bekannten, nicht routingfähigen IP-Adresse zur Verfügung (169.254.169.254), auf die nur von innerhalb der VM zugegriffen werden kann.
 
-## Wie funktionieren die verwalteten Identitäten für Azure-Ressourcen?<a name="how-does-it-work"></a>
+## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Wie funktionieren die verwalteten Identitäten für Azure-Ressourcen?
 
 Es gibt zwei Arten von verwalteten Identitäten:
 

@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ccea63e8edee739ce6743d7638b4e5300ad07f8f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009880"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456986"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Referenzdokumentation: Azure Digital Twins-Swagger
 
@@ -42,15 +42,15 @@ Das automatisch generierte Swagger-Referenzmaterial enthält eine schnelle Über
 
 Eine präzise Zusammenfassung beschreibt die API.
 
-[![Swagger-Einstieg](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
+[![Swagger-Zusammenfassung und API-Übersichtsinformationen](media/how-to-use-swagger/swagger-management-top-img.png)](media/how-to-use-swagger/swagger-management-top-img.png#lightbox)
 
 Verwaltungs-API-Objektmodelle werden ebenfalls aufgelistet.
 
-[![Swagger-Modelle](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
+[![Am unteren Rand der Swagger-Benutzeroberfläche aufgelistete Swagger-Modelle](media/how-to-use-swagger/swagger-management-models-img.png)](media/how-to-use-swagger/swagger-management-models-img.png#lightbox)
 
 Sie können jedes aufgelistete Objektmodell auswählen, um eine detailliertere Zusammenfassung der Schlüsselattribute zu erhalten.
 
-[![Swagger-Modell](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Erweiterte Swagger-Modelle zum Anzeigen von Modellinhalten](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
 Die generierten Swaggerobjektmodelle eignen sich ideal zum Anzeigen aller verfügbaren [Objekte und APIs](./concepts-objectmodel-spatialgraph.md) von Azure Digital Twins. Entwickler können diese Ressource verwenden, wenn sie Lösungen in Azure Digital Twins erstellen.
 
@@ -64,7 +64,7 @@ Für jeden aufgelisteten Endpunkt werden auch die erforderlichen Anforderungsinf
 * Datentypen der erforderlichen Parameter
 * HTTP-Methode zum Zugreifen auf die Ressource
 
-[![Swagger-Endpunkte](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
+[![Auf der Swagger-Benutzeroberfläche angezeigte Swagger-Endpunkte](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
 Wählen Sie eine Ressource aus, um eine detailliertere Übersicht zu erhalten.
 
@@ -74,11 +74,11 @@ Eine der leistungsstarken Funktionalitäten von Swagger besteht darin, einen API
 
 Nachdem Sie einen bestimmten Endpunkt ausgewählt haben, wird **Jetzt ausprobieren** angezeigt.
 
-[![Swagger vor Test](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
+[![Swagger-Schaltfläche „Jetzt ausprobieren“](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
 Erweitern Sie diesen Abschnitt, um Eingabefelder für jeden erforderlichen und optionalen Parameter anzuzeigen. Geben Sie die richtigen Werte ein, und wählen Sie **Ausführen** aus.
 
-[![Swagger nach Test](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
+[![Beispiel: Swagger-Ergebnis zu „Jetzt ausprobieren“](media/how-to-use-swagger/swagger-management-tried-img.png)](media/how-to-use-swagger/swagger-management-tried-img.png#lightbox)
 
 Wenn Sie den Test ausgeführt haben, können Sie die Antwortdaten überprüfen.
 
@@ -86,7 +86,7 @@ Wenn Sie den Test ausgeführt haben, können Sie die Antwortdaten überprüfen.
 
 Jeder aufgelistete Endpunkt enthält auch Antworttextdaten, um Ihre Entwicklung und Tests zu überprüfen. Diese Beispiele enthalten die Statuscodes und JSON-Objekte, die für erfolgreiche HTTP-Anforderungen angezeigt werden sollen.
 
-[![Swagger-Antwort](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
+[![Beispiel: Swagger-JSON-Antwort](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
 Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder Verändern von fehlgeschlagenen Tests.
 
@@ -97,7 +97,9 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
 
 1. Führen Sie die Schritte in [diesem Schnellstart](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) zum Erstellen und Konfigurieren einer Azure AD-Anwendung aus. Alternativ können Sie eine vorhandene App-Registrierung wiederverwenden.
 
-1. Fügen Sie der App-Registrierung die folgende Antwort-URL hinzu:
+1. Fügen Sie die folgende **Umleitungs-URL** zu Ihrer Registrierung der Azure AD-App hinzu:
+
+    [![Registrieren der Swagger-Umleitungs-URL in AAD](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png)](media/how-to-use-swagger/swagger-aad-redirect-url-registration.png#lightbox)
 
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
@@ -106,7 +108,7 @@ Die Beispiele enthalten auch Fehlercodes zur Unterstützung beim Debuggen oder V
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Dokumentations-URL Ihrer Verwaltungs-REST-API aus dem Portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
-1. Kopieren Sie die ID Ihrer Azure AD-App.
+1. Kopieren Sie die **Client-ID** Ihrer Azure AD-App.
 
 Nach Abschluss der Azure Active Directory-Registrierung:
 

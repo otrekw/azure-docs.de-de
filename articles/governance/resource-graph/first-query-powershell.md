@@ -1,14 +1,14 @@
 ---
-title: Ausführen Ihrer ersten Abfrage mit PowerShell
-description: Dieser Artikel führt Sie durch die Schritte zum Aktivieren des Resource Graph-Moduls für Azure PowerShell und Ausführen Ihrer ersten Abfrage.
-ms.date: 10/18/2019
+title: 'Schnellstart: Ihre erste PowerShell-Abfrage'
+description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren des Resource Graph-Moduls für Azure PowerShell und zum Ausführen Ihrer ersten Abfrage aus.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 6aaddcfc6cae16501ba6544f9789aa3ac1d13136
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958778"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304152"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mit Azure PowerShell
 
@@ -16,7 +16,11 @@ Wenn Sie Azure Resource Graph verwenden möchten, müssen Sie sich zunächst ver
 
 Am Ende dieses Prozesses haben Sie das Modul zu Ihrer Azure PowerShell-Installation hinzugefügt und Ihre erste Resource Graph-Abfrage ausgeführt.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>Hinzufügen des Resource Graph-Moduls
 
@@ -28,7 +32,7 @@ Das Azure Resource Graph-Modul setzt folgende Software voraus:
 
 - Azure PowerShell 1.0.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
 
-- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/gallery/installing-psget).
+- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/scripting/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
@@ -103,10 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
-- Erfahren Sie mehr über das [Erkunden von Ressourcen](./concepts/explore-resources.md).
-- Führen Sie Ihre erste Abfrage über das [Azure-Portal](first-query-portal.md) aus.
-- Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
-- Sehen Sie sich Beispiele für [einfache Abfragen](./samples/starter.md) an.
-- Sehen Sie sich Beispiele für [erweiterte Abfragen](./samples/advanced.md) an.
-- Geben Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback ab.
+In dieser Schnellstartanleitung haben Sie das Resource Graph-Modul zu ihrer Azure PowerShell-Umgebung hinzugefügt und Ihre erste Abfrage ausgeführt. Weitere Informationen zur Resource Graph-Sprache finden Sie auf der Seite mit den Details zur Abfragesprache.
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zur Abfragesprache](./concepts/query-language.md)

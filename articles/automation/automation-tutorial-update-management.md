@@ -1,20 +1,20 @@
 ---
 title: Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
-description: Dieser Artikel enthält eine Übersicht über die Verwendung der Updateverwaltung von Azure Automation zum Verwalten von Updates und Patches für Ihre virtuellen Azure Windows-Computer.
+description: Dieser Artikel enthält eine Übersicht über die Verwendung der Updateverwaltung von Azure Automation zum Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer und virtuellen Nicht-Azure-Computer.
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469728"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278783"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
@@ -51,15 +51,15 @@ Aktivieren Sie für dieses Tutorial zuerst die Updateverwaltung auf Ihrem virtue
 1. Wählen Sie den virtuellen Computer aus, für den Sie die Updateverwaltung aktivieren möchten.
 1. Wählen Sie auf der Seite der virtuellen Computer unter **VORGÄNGE** die Option **Updateverwaltung**. Der Bereich **Updateverwaltung aktivieren** wird geöffnet.
 
-Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist. Dabei wird auf einen Azure Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto geprüft und überprüft, ob die Lösung für die Updateverwaltung im Arbeitsbereich vorhanden ist.
+Eine Überprüfung wird ausgeführt, um festzustellen, ob die Updateverwaltung für diesen virtuellen Computer aktiviert ist. Dabei wird auf einen Log Analytics-Arbeitsbereich und ein verknüpftes Automation-Konto geprüft sowie überprüft, ob die Lösung für die Updateverwaltung im Arbeitsbereich aktiviert ist.
 
-Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Updateverwaltung generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
+Mit einem [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Updateverwaltung generiert werden. Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
-Bei der Überprüfung wird auch geprüft, ob der virtuelle Computer mit Microsoft Monitoring Agent (MMA) und Automation Hybrid Runbook Worker bereitgestellt wird. Dieser Agent wird verwendet, um mit Azure Automation zu kommunizieren und Informationen zum Updatestatus abzurufen. Für den Agent muss Port 443 geöffnet sein, um mit dem Azure Automation-Dienst zu kommunizieren und Updates herunterzuladen.
+Beim Überprüfungsprozess wird auch geprüft, ob der virtuelle Computer mit dem Log Analytics-Agent und Automation Hybrid Runbook Worker bereitgestellt wird. Dieser Agent wird verwendet, um mit Azure Automation zu kommunizieren und Informationen zum Updatestatus abzurufen. Für den Agent muss Port 443 geöffnet sein, um mit dem Azure Automation-Dienst zu kommunizieren und Updates herunterzuladen.
 
 Wenn beim Onboarding festgestellt wird, dass eine der folgenden Voraussetzungen fehlt, wird sie automatisch hinzugefügt:
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich
+* [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-Arbeitsbereich
 * [Automation-Konto](./automation-offering-get-started.md)
 * [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) (auf dem virtuellen Computer aktiviert)
 
@@ -73,7 +73,7 @@ Das Aktivieren der Lösung kann einige Minuten dauern. Schließen Sie das Browse
 
 Sobald die Updateverwaltung aktiviert ist, wird der Bereich **Updateverwaltung** angezeigt. Falls Updates fehlen, wird auf der Registerkarte **Fehlende Updates** eine Liste mit den entsprechenden Updates angezeigt.
 
-Klicken Sie unter **INFORMATIONSLINK** auf den Updatelink, um den Supportartikel für das Update in einem neuen Fenster zu öffnen. Dieses Fenster enthält wichtige Informationen zum Update.
+Wählen Sie unter **INFORMATIONSLINK** den Updatelink aus, um den Supportartikel für das Update zu öffnen. Dort finden Sie wichtige Informationen zum Update.
 
 ![Anzeigen des Updatestatus](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 

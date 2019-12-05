@@ -1,7 +1,7 @@
 ---
-title: 'Designer&#58;: Klassifizieren von Buchrezensionen'
+title: 'Designer: Klassifizieren von Buchrezensionen – Beispiel'
 titleSuffix: Azure Machine Learning
-description: Erstellen eines Machine Learning-Modells, um Buchrezensionen in verschiedene Kategorien zu klassifizieren
+description: Erstellen Sie eine Klassifizierung für eine logistische Regression mit mehreren Klassen, um die Unternehmenskategorie anhand des Wikipedia SP 500-Datasets mit Microsoft Azure Machine Learning-Designer vorherzusagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 16253abce2940690a80f84aa5b68521c09212bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647127"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213771"
 ---
-# <a name="sample-7---text-classification-predict-company-category"></a>Beispiel 7: Textklassifizierung: Vorhersagen der Unternehmenskategorie 
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Erstellen Sie mit Azure Machine Learning-Designer einen Klassifizierer zur Vorhersage der Unternehmenskategorie.
+
+**Designer (Vorschauversion) – Beispiel 7**
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Dieses Beispiel veranschaulicht das Erstellen einer Textklassifizierungspipeline mit Textanalysemodulen im Azure Machine Learning-Designer (Vorschauversion).
 
 Das Ziel der Textklassifizierung besteht darin, einen Text mindestens einer vordefinierten Klasse oder Kategorie zuzuweisen. Bei dem Text kann es sich beispielsweise um ein Dokument, einen Nachrichtenartikel, eine Suchabfrage, eine E-Mail, einen Tweet, ein Supportticket, Kundenfeedback oder um die Produktrezension eines Benutzers handeln. Zu den Anwendungsbereichen der Textklassifizierung zählen unter anderem die Kategorisierung von Zeitungsartikeln und Nachrichteninhalten in Themen, die Strukturierung von Webseiten in hierarchische Kategorien, Standpunktanalysen, die Vorhersage der Benutzerabsicht auf der Grundlage von Suchabfragen, die Weiterleitung von Supporttickets sowie die Analyse von Kundenfeedback. 
 
-Diese Pipeline trainiert eine **Klassifizierung für eine logistische Regression mit mehreren Klassen**, um die Unternehmenskategorie anhand des von Wikipedia abgeleiteten SP 500-Datasets vorherzusagen.  
+Diese Pipeline trainiert eine **Klassifizierung für eine logistische Regression mit mehreren Klassen**, um die Unternehmenskategorie anhand des von **Wikipedia abgeleiteten SP 500-Datasets** vorherzusagen.  
 
 Das Trainieren eines Machine Learning-Modells mit Textdaten umfasst grundsätzlich folgende Schritte:
 
@@ -43,7 +47,7 @@ Das Trainieren eines Machine Learning-Modells mit Textdaten umfasst grundsätzl
 
 Das endgültige, vollständige Diagramm der Pipeline, an der wir arbeiten, sieht wie folgt aus. Es werden die Gründe für alle Module bereitgestellt, sodass Sie ähnliche Entscheidungen selbst treffen können.
 
-[![Graph der Pipeline](./media/how-to-ui-sample-text-classification/nlp-modules-overall.png)](./media/how-to-ui-sample-text-classification/nlp-modules-overall.png#lightbox)
+[![Graph der Pipeline](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
 ## <a name="data"></a>Data
 
@@ -92,7 +96,7 @@ Nachdem das Modell trainiert wurde, verwenden wir die Module **Score Model** (Mo
 Im Falle des Moduls **Feature Hashing** kann die Featureentwicklung für die Bewertung genau wie beim Trainieren ausgeführt werden. Verwenden Sie das Modul **Feature Hashing** direkt, um die Eingabetextdaten zu verarbeiten.
 
 Für das Modul **Extract N-Gram Feature from Text** (Extrahieren von N-Gramm-Features aus Text) müssen wir eine Verbindung zwischen der **Ergebnisvokabularausgabe** aus dem Trainingsdataflow und dem **Eingabevokabular** aus dem Bewertungsdataflow herstellen und den Parameter **Vocabulary mode** (Vokabularmodus) auf **ReadOnly** festlegen.
-[![Diagramm der N-Gramm-Bewertung](./media/how-to-ui-sample-text-classification/n-gram.png)](./media/how-to-ui-sample-text-classification/n-gram.png)
+[![Diagramm der N-Gramm-Bewertung](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
 
 Nach Abschluss des Entwicklungsschritts kann **Score Model** (Modell bewerten) verwendet werden, um unter Verwendung des trainierten Modells Vorhersagen für das Testdataset zu generieren. Um das Ergebnis zu überprüfen, wählen Sie den Ausgabeport des **Score Model**-Moduls und dann **Visualize** (Visualisieren) aus.
 

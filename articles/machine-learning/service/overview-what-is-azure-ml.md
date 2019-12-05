@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: 7e07419115a6e9709879c71dfac1234408bda0ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 488616ab2068337331d589bbf5c61ae06b299f5d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824076"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173973"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -54,7 +54,6 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 
 Sie können sogar [MLflow zum Nachverfolgen von Metriken und Bereitstellen von Modellen](how-to-use-mlflow.md) oder Kubeflow zum [Erstellen von End-to-End-Workflowpipelines](https://www.kubeflow.org/docs/azure/) verwenden.
 
-
 ## <a name="build-ml-models-in-python-or-r"></a>Erstellen von ML-Modellen in Python oder R
 
 Beginnen Sie auf Ihrem lokalen Computer mit dem Azure Machine Learning <a href="https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py" target="_blank">Python SDK</a> oder dem <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">R SDK</a> mit dem Training. Anschließend können Sie horizontal in die Cloud hochskalieren. 
@@ -69,7 +68,7 @@ Optionen für Training und Bereitstellung ohne oder mit nur wenig Code:
 
 + **Azure Machine Learning-Designer (Vorschauversion)**
 
-  Verwenden Sie den Designer zum Aufbereiten von Daten, Trainieren, Testen, Bereitstellen, Verwalten und Nachverfolgen von Machine Learning-Modellen, ohne Code schreiben zu müssen. Für das Erstellen Ihres Modells ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von Datasets und Modulen.   Probieren Sie das [Tutorial zum Designer](tutorial-designer-automobile-price-train-score.md) aus.
+  Verwenden Sie den Designer zum Aufbereiten von Daten, Trainieren, Testen, Bereitstellen, Verwalten und Nachverfolgen von Machine Learning-Modellen, ohne Code schreiben zu müssen. Für das Erstellen Ihres Modells ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von Datasets und Modulen. Probieren Sie das [Tutorial zum Designer](tutorial-designer-automobile-price-train-score.md) aus.
 
   Weitere Informationen finden Sie im [Artikel mit der Übersicht über den Azure Machine Learning-Designer](concept-designer.md). 
 
@@ -99,6 +98,24 @@ Falls Sie Skripts zum Automatisieren Ihres Machine Learning-Workflows nutzen mö
 
 Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie [hier](#next-steps).
 
+## <a name="integration-with-other-services"></a>Integration in andere Dienste
+
+Azure Machine Learning funktioniert mit anderen Diensten der Azure-Plattform und lässt sich auch in Open-Source-Tools wie Git und MLFlow integrieren.
+
++ Computeziele wie __Azure Kubernetes Service__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ und __Azure HDInsight__. Weitere Informationen zu Computezielen finden Sie unter [Was sind Computeziele in Azure Machine Learning?](concept-compute-target.md).
++ __Azure Event Grid__. Weitere Informationen finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen (Vorschauversion)](concept-event-grid-integration.md).
++ __Azure Monitor__: Weitere Informationen finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
++ Datenspeicher wie __Azure Storage-Konten__, __Azure Data Lake Storage__, __Azure SQL-Datenbank__, __Azure Database for PostgreSQL__ und __Azure Open Datasets__. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md) und [Erstellen von Datasets mit Azure Open Datasets](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets).
++ __Virtuelle Azure-Netzwerke:__ Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md).
++ __Azure Pipelines__. Weitere Informationen finden Sie unter [Trainieren und Bereitstellen von Machine Learning-Modellen](/azure/devops/pipelines/targets/azure-machine-learning).
++ __Git-Repository-Protokolle:__ Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).
++ __MLFlow:__ Weitere Informationen finden Sie unter [Nachverfolgen von Metriken und Bereitstellen von Modellen mit MLflow und Azure Machine Learning (Vorschauversion)](how-to-use-mlflow.md). 
++ __Kubeflow:__ Weitere Informationen finden Sie unter [Erstellen von End-to-End-Workflowpipelines](https://www.kubeflow.org/docs/azure/).
+
+### <a name="secure-communications"></a>Sichere Kommunikation
+
+Das Azure Storage-Konto, die Computeziele und andere Ressourcen können innerhalb eines virtuellen Netzwerks gefahrlos zum Trainieren von Modellen sowie für Rückschlüsse verwendet werden. Weitere Informationen finden Sie unter [Sichern von Azure ML-Experiment- und Rückschlussaufträgen in einem virtuellen Azure-Netzwerk](how-to-enable-virtual-network.md).
+
 ## <a name="sku"></a>Basic- und Enterprise-Edition
 
 Azure Machine Learning verfügt über zwei Editionen für Ihre Machine Learning-Anforderungen:
@@ -117,7 +134,7 @@ Kunden sind während dieses Zeitraums für Kosten für Computevorgänge und für
 
 - Erstellen Sie Ihr erstes Experiment mit Ihrer bevorzugten Methode:
   + [Verwenden von Python-Notebooks zum Trainieren und Bereitstellen von ML-Modellen](tutorial-1st-experiment-sdk-setup.md)
-  + [Verwenden von R Markdown zum Trainieren und Bereitstellen von ML-Modellen](tutorial-1st-r-experiment.md) 
+  + [Verwenden von R Markdown zum Trainieren und Bereitstellen von ML-Modellen](tutorial-1st-r-experiment.md) 
   + [Verwenden von automatisiertem Machine Learning zum Trainieren und Bereitstellen von ML-Modellen](  tutorial-first-experiment-automated-ml.md) 
   + [Verwenden der Drag & Drop-Funktionen des Designers zum Trainieren und Bereitstellen](tutorial-designer-automobile-price-train-score.md) 
   + [Verwenden der Machine Learning-CLI zum Trainieren und Bereitstellen eines Modells](tutorial-train-deploy-model-cli.md)

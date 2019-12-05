@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803915"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307317"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 
@@ -113,6 +113,8 @@ Die folgenden Azure-PaaS-Ressourcen werden von Azure Security Center unterstütz
 * Schlüsseltresor
 
 Weitere Informationen zu den unterstützten Features für die oben aufgeführte Liste mit PaaS-Ressourcen finden Sie unter [PaaS-Dienste – unterstützte Features](security-center-services.md#paas-services).
+
+Der Schutz für virtuelle Computer, die sich in Azure Stack befinden, wird ebenfalls unterstützt. Weitere Informationen zur Integration des Security Centers in Azure Stack finden Sie unter [Integrieren Ihrer Azure Stack-VMs in Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

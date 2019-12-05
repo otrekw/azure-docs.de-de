@@ -1,20 +1,17 @@
 ---
-title: Private Docker-Containerregistrierungen in Azure – Übersicht
+title: Verwaltete Containerregistrierungen
 description: Enthält eine Einführung in den Dienst „Azure-Containerregistrierung“ und die Bereitstellung von cloudbasierten, verwalteten, privaten Docker-Registrierungen.
-services: container-registry
 author: stevelas
-manager: gwallace
-ms.service: container-registry
 ms.topic: overview
 ms.date: 06/28/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 2262948a8368f9448d876166b712ebaf670b5a56
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: fceaf312f35356acf18c0873a467ed43d11ddd83
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70994354"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454928"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Einführung in private Docker-Containerregistrierungen in Azure
 

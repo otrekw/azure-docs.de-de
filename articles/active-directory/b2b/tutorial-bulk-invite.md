@@ -1,5 +1,5 @@
 ---
-title: Tutorial für das Masseneinladen von Benutzern für die B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation
+title: 'Tutorial für das Masseneinladen von Benutzern für die B2B-Zusammenarbeit: Azure AD'
 description: In diesem Tutorial erfahren Sie, wie Sie mit PowerShell und einer CSV-Datei Masseneinladungen an externe Benutzer für die Azure AD B2B-Zusammenarbeit senden.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128726"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272357"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Tutorial: Masseneinladen von Benutzern für die Azure AD B2B-Zusammenarbeit (Vorschau)
 

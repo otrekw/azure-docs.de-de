@@ -4,15 +4,15 @@ description: AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden könne
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/08/2019
+ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: f4523b2aa580d0fd237c15e23b06b44593cbf055
-ms.sourcegitcommit: f272ba8ecdbc126d22a596863d49e55bc7b22d37
+ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72274647"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111759"
 ---
 # <a name="get-started-with-azcopy"></a>Erste Schritte mit AzCopy
 
@@ -58,6 +58,8 @@ Um eine Liste der AzCopy-Befehle anzuzeigen, geben Sie `azcopy -h` ein, und drü
 Wenn Sie weitere Informationen zu einem bestimmten Befehl erhalten möchten, fügen Sie einfach den Namen des Befehls ein (etwa `azcopy list -h`).
 
 ![Inlinehilfe](media/storage-use-azcopy-v10/azcopy-inline-help.png)
+
+Eine ausführliche Referenzdokumentation zu den einzelnen Befehlen und Befehlsparametern finden Sie unter [azcopy](storage-ref-azcopy.md).
 
 > [!NOTE] 
 > Als Besitzer Ihres Azure Storage-Kontos erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten. Bevor Sie etwas Sinnvolles mit AzCopy machen können, müssen Sie entscheiden, wie Sie dem Speicherdienst die Autorisierungsanmeldeinformationen bereitstellen werden. 
@@ -295,16 +297,17 @@ Die URL wird in der Ausgabe dieses Befehls angezeigt. Ihr Skript kann dann AzCop
 
 In Batchdateien mit der Erweiterung `.cmd` müssen Sie die `%`-Zeichen, die in SAS-Token vorkommen, mit Escapezeichen versehen. Sie können dazu ein zusätzliches `%`-Zeichen neben vorhandenen `%`-Zeichen in der SAS-Tokenzeichenfolge hinzufügen.
 
-## <a name="use-azcopy-in-storage-explorer"></a>Verwenden von AzCopy im Storage-Explorer
+### <a name="run-scripts-by-using-jenkins"></a>Ausführen von Skripts mithilfe von Jenkins
 
-Wenn Sie die Leistungsvorteile von AzCopy nutzen möchten, aber lieber Storage-Explorer statt der Befehlszeile verwenden, um mit Ihren Dateien zu interagieren, aktivieren Sie AzCopy in Storage-Explorer.
+Wenn Sie beabsichtigen, [Jenkins](https://jenkins.io/) zum Ausführen von Skripts zu verwenden, stellen Sie sicher, dass Sie den folgenden Befehl an den Anfang des Skripts setzen.
 
-Wählen Sie in Storage-Explorer **Preview**->**Use AzCopy for Improved Blob Upload and Download** (AzCopy für verbessertes Hoch- und Herunterladen von Blobs verwenden) aus.
+```
+/usr/bin/keyctl new_session
+```
 
-![Aktivieren von AzCopy als Übertragungsmodul in Azure Storage-Explorer](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
+## <a name="use-azcopy-in-azure-storage-explorer"></a>Verwenden von AzCopy im Azure Storage-Explorer
 
-> [!NOTE]
-> Sie müssen diese Einstellung nicht aktivieren, wenn Sie einen hierarchischen Namespace in Ihrem Speicherkonto aktiviert haben. Der Grund hierfür ist, dass Storage-Explorer AzCopy automatisch in Speicherkonten verwendet, die einen hierarchischen Namespace haben.  
+[Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwendet AzCopy zum Ausführen aller seiner Datenübertragungsvorgänge. Sie können [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, wenn Sie die Leistungsvorteile von AzCopy nutzen möchten, aber lieber eine grafische Benutzeroberfläche statt der Befehlszeile verwenden, um mit Ihren Dateien zu interagieren.
 
 Storage-Explorer verwendet Ihren Kontoschlüssel, um Vorgänge auszuführen. Nachdem Sie sich also bei Storage-Explorer anmelden, müssen Sie keine weiteren Autorisierungsdaten angeben.
 

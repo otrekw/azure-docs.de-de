@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: a02e690e344678b512503f8c3beb57023a838ac0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c4ce0d4ecd64273bcb3226b4b543ba378aad538c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686657"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078953"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -358,14 +358,14 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
 
 ## <a name="exceptions"></a>Ausnahmen
 
-Mithilfe von Netzwerkregeln können Sie in den meisten Szenarien eine sichere Umgebung für Verbindungen zwischen Ihren Anwendungen und Ihren Daten erstellen. Bei einigen Anwendungen werden jedoch Dienste verwendet, die über Regeln für virtuelle Netzwerke oder IP-Adressen nicht eindeutig isoliert werden können. Diese Dienste müssen jedoch für den Speicher gewährt werden, um eine vollständige Anwendungsfunktionalität zu ermöglichen. In solchen Fällen können Sie über die Einstellung ***Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...*** den Zugriff auf Ihre Daten, Protokolle oder Analysen ermöglichen.
+Mithilfe von Netzwerkregeln können Sie in den meisten Szenarien eine sichere Umgebung für Verbindungen zwischen Ihren Anwendungen und Ihren Daten erstellen. Einige Anwendungen sind jedoch von Azure-Diensten abhängig, die über Regeln für virtuelle Netzwerke oder IP-Adressen nicht eindeutig isoliert werden können. Diese Dienste müssen jedoch für den Speicher gewährt werden, um eine vollständige Anwendungsfunktionalität zu ermöglichen. In solchen Fällen können Sie über die Einstellung ***Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...*** diesen Diensten den Zugriff auf Ihre Daten, Protokolle oder Analysen ermöglichen.
 
 ### <a name="trusted-microsoft-services"></a>Vertrauenswürdige Microsoft-Dienste
 
-Einige Microsoft-Dienste werden aus Netzwerken betrieben, die in Ihren Netzwerkregeln nicht enthalten sein können. Sie können einer Teilmenge solcher vertrauenswürdiger Microsoft-Dienste Zugriff auf das Speicherkonto gewähren und gleichzeitig Netzwerkregeln für andere Apps beibehalten. Diese vertrauenswürdigen Dienste können dann mithilfe einer sicheren Authentifizierung eine sichere Verbindung mit Ihrem Speicherkonto herstellen. Wir aktivieren zwei Arten von vertrauenswürdigem Zugriff für Microsoft-Dienste.
+Einige Microsoft-Dienste werden aus Netzwerken betrieben, die in Ihren Netzwerkregeln nicht enthalten sein können. Sie können einer Teilmenge solcher vertrauenswürdiger Microsoft-Dienste Zugriff auf das Speicherkonto gewähren und gleichzeitig Netzwerkregeln für andere Apps beibehalten. Diese vertrauenswürdigen Dienste stellen dann mithilfe einer strengen Authentifizierung eine sichere Verbindung mit Ihrem Speicherkonto her. Wir haben zwei Modi für den vertrauenswürdigen Zugriff für Microsoft-Dienste ermöglicht.
 
 - Ressourcen einiger Dienste können, **sofern sie in Ihrem Abonnement registriert sind**, für bestimmte Vorgänge auf Ihr Speicherkonto **im gleichen Abonnement** zugreifen. Hierzu zählen beispielsweise Sicherungsvorgänge und das Schreiben von Protokollen.
-- Ressourcen einiger Dienste kann durch [**Zuweisen einer RBAC-Rolle**](storage-auth-aad.md#assign-rbac-roles-for-access-rights) expliziter Zugriff auf Ihr Speicherkonto gewährt werden.
+- Ressourcen einiger Dienste kann durch **Zuweisen einer RBAC-Rolle** zur vom System zugewiesenen verwalteten Identität der explizite Zugriff auf Ihr Speicherkonto gewährt werden.
 
 
 Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festlegen, wird Ressourcen der folgenden Dienste, die im gleichen Abonnement registriert sind wie das Speicherkonto, Zugriff für eine eingeschränkte Gruppe von Vorgängen gewährt:
@@ -383,15 +383,15 @@ Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festl
 | Azure-Netzwerke         | Microsoft.Network          | Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs. [Weitere Informationen](/azure/network-watcher/network-watcher-packet-capture-overview) |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Aktivieren Sie die Replikation für die Notfallwiederherstellung von virtuellen Azure-IaaS-Computern bei Verwendung von firewallfähigen Cache-, Quell- oder Zielspeicherkonten.  [Weitere Informationen](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) |
 
-Die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** ermöglicht einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit eine RBAC-Rolle zuweisen.
+Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...** ermöglicht auch einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](storage-auth-aad.md#assign-rbac-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
 
 | Dienst                        | Name des Ressourcenanbieters          | Zweck                            |
 | :----------------------------- | :------------------------------ | :--------------------------------- |
 | Azure Data Factory             | Microsoft.DataFactory/factories | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
-| Azure Logic Apps               | Microsoft.Logic/workflows       | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md) |
+| Azure Logic Apps               | Microsoft.Logic/workflows       | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity) |
 | Azure Machine Learning-Dienst | Microsoft.MachineLearningServices | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                   | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics       | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity.md) |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics       | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity) |
 
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten

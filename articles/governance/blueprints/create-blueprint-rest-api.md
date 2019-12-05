@@ -1,28 +1,24 @@
 ---
-title: Erstellen einer Blaupause mit REST-API
-description: Verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
-ms.date: 02/04/2019
+title: 'Schnellstart: Erstellen einer Blaupause mit REST-API'
+description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9b711a6359ed9ecb45f25c460ece095af46ad8c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960410"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322152"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
 Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
 
-> [!div class="checklist"]
-> - Erstellen einer neuen Blaupause und Hinzufügen verschiedener unterstützter Artefakte
-> - Ändern einer vorhandenen Blaupause, die sich noch im **Entwurf** befindet
-> - Markieren einer Blaupause als bereit für die Zuweisung mit **Veröffentlicht**
-> - Zuweisen einer Blaupause zu einem vorhandenen Abonnement
-> - Überprüfen von Status und Fortschritt einer zugewiesenen Blaupause
-> - Entfernen einer Blaupause, die einem Abonnement zugewiesen wurde
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="getting-started-with-rest-api"></a>Erste Schritte mit der REST-API
 
@@ -393,7 +389,8 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
 
    - Benutzerseitig zugewiesene verwaltete Identität
 
-     Eine Blaupausenzuweisung kann auch eine [benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) verwenden. In diesem Fall ändert sich der Identitätsteil (**identity**) des Anforderungstexts wie folgt:  Ersetzen Sie `{yourRG}` und `{userIdentity}` durch den Namen Ihrer Ressourcengruppe bzw. durch den Namen Ihrer benutzerseitig zugewiesenen verwalteten Identität.
+     Eine Blaupausenzuweisung kann auch eine [benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) verwenden.
+     In diesem Fall ändert sich der Identitätsteil (**identity**) des Anforderungstexts wie folgt: Ersetzen Sie `{yourRG}` und `{userIdentity}` durch den Namen Ihrer Ressourcengruppe bzw. durch den Namen Ihrer benutzerseitig zugewiesenen verwalteten Identität.
 
      ```json
      "identity": {
@@ -432,9 +429,7 @@ Verwenden Sie den folgenden REST-API-Vorgang, um die Blaupause zu löschen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./concepts/resource-locking.md) können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).
+In dieser Schnellstartanleitung haben Sie eine Blaupause mit der REST-API erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)

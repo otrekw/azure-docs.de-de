@@ -1,23 +1,17 @@
 ---
-title: Azure Blockchain-Dienstkonsortium
-description: Grundlegendes zur Verwendung eines privaten Konsortiums durch Azure Blockchain Service
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+title: Azure Blockchain Service-Konsortium
+description: Übersicht über die Implementierung von Konsortium-Blockchainnetzwerken durch den Azure Blockchain Service.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: ddb3f02662c0c71ebc90e1a740b4068d6fbcded4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577506"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455731"
 ---
-# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain-Dienstkonsortium
+# <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service-Konsortium
 
 Mit dem Azure Blockchain-Dienst können Sie private Konsortium-Blockchainnetzwerke erstellen, bei denen jedes Blockchainnetzwerk auf bestimmte Teilnehmer im Netzwerk beschränkt werden kann. Nur Teilnehmer des privaten Konsortium-Blockchainnetzwerks können die Blockchain-Komponenten einsehen und mit ihren interagieren. Konsortium-Netzwerke im Azure Blockchain-Dienst können zwei Arten von Mitgliederteilnehmerrollen enthalten:
 
@@ -85,4 +79,4 @@ Sie können Ihr Ethereum-Konto zurücksetzen, indem Sie auf Ihr Mitgliedskonto k
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Verwalten der Mitglieder im Azure Blockchain-Dienst mithilfe von PowerShell](manage-consortium-powershell.md)
+Auf Konsortiumsverwaltungsaktionen kann über PowerShell zugegriffen werden. Weitere Informationen finden Sie unter [Verwalten der Konsortiumsmitglieder in Azure Blockchain Service mithilfe von PowerShell](manage-consortium-powershell.md).

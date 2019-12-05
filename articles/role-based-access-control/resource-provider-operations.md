@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ca9b0289fbc8dd01427de38e0e7b30eec266bb12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 092c3b4ac6ce163e9fcf8aaad9e74f398559e9e2
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818595"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546336"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
-In diesem Artikel werden die Vorgänge aufgeführt, die jedem Azure Resource Manager-Ressourcenanbieter zur Verfügung stehen. Die Vorgänge können in [benutzerdefinierten Rollen](custom-roles.md) verwendet werden, um eine präzise [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](overview.md) für Ressourcen in Azure bereitzustellen. Die Vorgangszeichenfolgen weisen folgendes Format auf: `{Company}.{ProviderName}/{resourceType}/{action}`
+In diesem Artikel werden die Vorgänge aufgeführt, die jedem Azure Resource Manager-Ressourcenanbieter zur Verfügung stehen. Die Vorgänge können in [benutzerdefinierten Rollen](custom-roles.md) verwendet werden, um eine präzise [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](overview.md) für Ressourcen in Azure bereitzustellen. Die Vorgangszeichenfolgen weisen folgendes Format auf: `{Company}.{ProviderName}/{resourceType}/{action}`. Eine Liste, wie die Namespaces von Ressourcenanbietern den Azure-Diensten zugeordnet werden, finden Sie unter [Zuordnung von Ressourcenanbieter zu Dienst](../azure-resource-manager/azure-services-resource-providers.md).
 
 Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list), um die neuesten Vorgänge abzurufen.
 
@@ -758,7 +758,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 ## <a name="microsoftcache"></a>Microsoft.Cache
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Aktionstyp | Vorgang | BESCHREIBUNG |
+> | Aktionstyp | Vorgang | Beschreibung |
 > | --- | --- | --- |
 > | Aktion | Microsoft.Cache/checknameavailability/action | Prüft, ob ein Name für die Verwendung mit einer neuen Redis Cache-Instanz verfügbar ist. |
 > | Aktion | Microsoft.Cache/locations/operationresults/read | Ruft das Ergebnis eines lange andauernden Vorgangs ab, dessen Location-Header zuvor an den Client zurückgegeben wurde. |
@@ -4683,7 +4683,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Aktionstyp | Vorgang | Beschreibung |
+> | Aktionstyp | Vorgang | BESCHREIBUNG |
 > | --- | --- | --- |
 > | Aktion | Microsoft.ResourceHealth/AvailabilityStatuses/current/read | Ruft den Verfügbarkeitsstatus für die angegebene Ressource ab. |
 > | Aktion | Microsoft.ResourceHealth/AvailabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
@@ -6235,5 +6235,6 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Zuordnung von Ressourcenanbieter zu Dienst](../azure-resource-manager/azure-services-resource-providers.md)
 - [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
 - [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md)

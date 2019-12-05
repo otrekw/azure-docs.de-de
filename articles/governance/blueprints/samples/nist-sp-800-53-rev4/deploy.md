@@ -1,14 +1,14 @@
 ---
-title: Blaupausenbeispiel „NIST SP 800-53 R4“ – Bereitstellungsschritte
+title: Bereitstellen des Blaupausenbeispiels „NIST SP 800-53 R4“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „NIST SP 800-53 R4“, einschließlich Details zum Blaupausenartefaktparameter.
-ms.date: 06/24/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 9923e2923c57224cadfa471753d8c90b98855607
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: db8c2302a6c2311e096be2cdc78935bdab2ef9c7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037313"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546607"
 ---
 # <a name="deploy-the-nist-sp-800-53-r4-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „NIST SP 800-53 R4“
 

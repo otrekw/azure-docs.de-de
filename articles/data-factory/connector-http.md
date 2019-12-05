@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 125841697a8ad7d34441dfca3a4c079ef59e5f96
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 214809df692bc7e43203fe4a736d6cc53908e0bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680822"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278522"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 
@@ -178,7 +178,7 @@ Folgende Eigenschaften werden für HTTP unter den `location`-Einstellungen in fo
 | Eigenschaft    | BESCHREIBUNG                                                  | Erforderlich |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | Die „type“-Eigenschaft unter `location` im Dataset muss auf **HttpServerLocation** festgelegt werden. | Ja      |
-| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält.       | Nein       |
+| relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`.   | Nein       |
 
 > [!NOTE]
 > Die unterstützte Nutzlastgröße für HTTP-Anforderungen beträgt etwa 500 KB. Wenn die Nutzlast, die Sie an Ihre Webendpunkt übergeben möchten, größer als 500 KB ist, sollten Sie eine Aufteilung der Nutzlast in kleinere Blöcke erwägen.
@@ -284,7 +284,7 @@ Folgende Eigenschaften werden für HTTP unter den `storeSettings`-Einstellungen 
 | requestMethod            | Die HTTP-Methode. <br>Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein       |
 | addtionalHeaders         | Zusätzliche HTTP-Anforderungsheader                             | Nein       |
 | requestBody              | Der Text der HTTP-Anforderung.                               | Nein       |
-| requestTimeout           | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**. | Nein       |
+| httpRequestTimeout           | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**. | Nein       |
 | maxConcurrentConnections | Die Anzahl von Verbindungen, die gleichzeitig mit einem Speicher hergestellt werden können. Geben Sie diesen Wert nur an, wenn Sie die gleichzeitigen Verbindungen mit dem Datenspeicher begrenzen möchten. | Nein       |
 
 **Beispiel:**

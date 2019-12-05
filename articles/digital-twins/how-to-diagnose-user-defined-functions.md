@@ -1,20 +1,20 @@
 ---
-title: 'Gewusst wie: Debuggen von UDFs in Azure Digital Twins | Microsoft-Dokumentation'
-description: Richtlinie zum Debuggen von UDFs in Azure Digital Twins.
+title: 'Gewusst wie: Debuggen von UDFs – Azure Digital Twins | Microsoft-Dokumentation'
+description: Erfahren Sie mehr über empfohlene Ansätze zum Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7b122df279ecde8ed9ed49b5a89251073f3feda7
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949884"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457021"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Debuggen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -84,7 +84,7 @@ Wenn keine Rollenzuweisung innerhalb der Verwaltungs-API erstellt wird, hat die 
 
 Überprüfen Sie, ob eine Rollenzuweisung für Ihre benutzerdefinierte Funktion über die Verwaltungs-API vorhanden ist:
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/roleassignments?path=/&traverse=Down&objectId=YOUR_USER_DEFINED_FUNCTION_ID
 ```
 
@@ -98,7 +98,7 @@ Informationen, wenn keine Rollenzuweisungen vorhanden sind, finden Sie unter [Ge
 
 Mit dem folgenden Aufruf der Verwaltungs-API Ihrer Azure Digital Twins-Instanzen können Sie feststellen, ob ein bestimmter Matcher für den angegebenen Sensor gilt.
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/matchers/YOUR_MATCHER_IDENTIFIER/evaluate/YOUR_SENSOR_IDENTIFIER?enableLogging=true
 ```
 
@@ -122,7 +122,7 @@ Antwort:
 
 Mit dem folgenden Aufruf der Verwaltungs-APIs von Azure Digital Twins können Sie die Bezeichner der benutzerdefinierten Funktionen ermitteln, die durch die eingehenden Telemetriedaten des angegebenen Sensors ausgelöst werden:
 
-```plaintext
+```URL
 GET YOUR_MANAGEMENT_API_URL/sensors/YOUR_SENSOR_IDENTIFIER/matchers?includes=UserDefinedFunctions
 ```
 

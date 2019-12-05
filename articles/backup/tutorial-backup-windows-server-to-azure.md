@@ -1,20 +1,15 @@
 ---
-title: Sichern von Windows Server in Azure
+title: 'Tutorial: Sichern von Windows Server in Azure'
 description: Dieses Tutorial enthält Informationen zum Sichern lokaler Windows Server-Instanzen in einem Recovery Services-Tresor.
-author: dcurwin
-manager: carmonm
-keywords: Windows Server sichern; Sichern von Windows Server; Sicherung und Notfallwiederherstellung
-ms.service: backup
 ms.topic: tutorial
 ms.date: 08/22/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d57d25eff9548bea9d29f8aa908e9e1721495bd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073945"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226479"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -28,7 +23,7 @@ Mit Azure Backup können Sie Ihre Windows Server-Instanzen vor Beschädigungen, 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter <https://portal.azure.com.> beim Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 

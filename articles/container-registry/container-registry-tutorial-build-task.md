@@ -1,20 +1,15 @@
 ---
-title: 'Tutorial: Erstellen von Images beim Committen von Code – Azure Container Registry Tasks'
+title: 'Tutorial: Erstellen eines Images nach dem Codecommit'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task so konfigurieren, dass automatisch Buildvorgänge für Containerimages in der Cloud ausgelöst werden, wenn Sie Quellcode in einem Git-Repository committen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 05/04/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d01863979f4cf74d544ef2b1ff121022abb8d4f6
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8af8daa4233fe6461b4e129f56a063e7cc212245
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931426"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454762"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages in der Cloud beim Committen von Quellcode
 

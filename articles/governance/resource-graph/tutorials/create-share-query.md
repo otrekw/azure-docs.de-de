@@ -1,18 +1,18 @@
 ---
-title: Erstellen und Freigeben einer Abfrage im Azure-Portal
-description: In diesem Tutorial erfahren Sie, wie Sie eine Resource Graph-Abfrage erstellen und für andere Benutzer im Azure-Portal freigeben.
-ms.date: 10/23/2019
+title: 'Tutorial: Verwalten von Abfragen im Azure-Portal'
+description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Graph-Abfrage und geben die neue Abfrage für andere Benutzer frei.
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 65b96da3bd9064f34d75d5e87f1fcf55336d9893
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958569"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303949"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
-Mit dem Azure Resource Graph-Explorer können Sie Ihre Resource Graph-Abfragen direkt im Azure-Portal speichern. Es gibt zwei Arten von Abfragen: _Privat_ und _Freigegeben_. Eine private Abfrage wird in den Einstellungen Ihres Azure-Portals gespeichert. Eine freigegebene Abfrage dagegen ist eine Resource Manager-Ressource, die mit der rollenbasierten Zugriffssteuerung verwaltet und mit Ressourcensperren geschützt werden kann.
+Mit dem Azure Resource Graph-Explorer können Sie Ihre Resource Graph-Abfragen direkt im Azure-Portal speichern. Es gibt zwei Arten von Abfragen: _Privat_ und _Freigegeben_. Eine private Abfrage wird in den Einstellungen Ihres Azure-Portals gespeichert. Eine freigegebene Abfrage dagegen ist eine Resource Manager-Ressource, die mit der rollenbasierten Zugriffssteuerung verwaltet und mit Ressourcensperren geschützt werden kann. Beide Abfragetypen werden im Ruhezustand verschlüsselt.
 
 Durch Speichern von Abfragen im Azure-Portal sparen Sie Zeit für die Suche nach Ihren bevorzugten oder häufig verwendeten Abfragen. Wenn Sie Abfragen freigeben, unterstützen Sie Ihr Team dabei, durch Wiederholung Ziele in Bezug auf Konsistenz und Effizienz zu erreichen.
 
@@ -54,7 +54,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 1. Wählen Sie **Abfrage öffnen** aus. Stellen Sie sicher, dass der Typ **Private Abfrage** lautet. Der gespeicherte Name **VMs nach Betriebssystem zählen** wird jetzt in der Liste **Abfragename** angezeigt. Wenn Sie den Titellink der gespeicherten Abfrage auswählen, wird sie in einer neuen Registerkarte mit dem Namen dieser Abfrage geladen.
 
    > [!NOTE] 
-   >Wenn eine gespeicherte Abfrage offen ist und die Registerkarte ihren Namen angezeigt, wird die Abfrage beim Klicken auf die Schaltfläche **Speichern** mit allen vorgenommenen Änderungen gespeichert. Um eine neue gespeicherte Abfrage aus einer offenen Abfrage zu erstellen, wählen Sie **Speichern unter** aus, und fahren Sie so fort, als würden Sie eine ganz neue Abfrage speichern.
+   > Wenn eine gespeicherte Abfrage offen ist und die Registerkarte ihren Namen angezeigt, wird die Abfrage beim Klicken auf die Schaltfläche **Speichern** mit allen vorgenommenen Änderungen gespeichert. Um eine neue gespeicherte Abfrage aus einer offenen Abfrage zu erstellen, wählen Sie **Speichern unter** aus, und fahren Sie so fort, als würden Sie eine ganz neue Abfrage speichern.
 
 1. Um eine gespeicherte Abfrage zu löschen, wählen Sie erneut **Abfrage öffnen** aus, und überprüfen Sie, ob der **Typ** als **Private Abfrage** festgelegt ist. Klicken Sie in der Zeile der gespeicherten Abfrage `Count VMs by OS` auf **Löschen** (Papierkorbsymbol). Klicken Sie im Bestätigungsdialogfeld auf **Ja**, um das Löschen der Abfrage abzuschließen.
    Schließen Sie danach den Bereich **Abfrage öffnen**.
@@ -153,9 +153,7 @@ Wenn Sie mit diesem Tutorial fertig sind, löschen Sie die privaten und freigege
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Führen Sie Ihre erste Abfrage über das [Azure-Portal](../first-query-portal.md) aus.
-- Erfahren Sie mehr über die [Abfragesprache](../concepts/query-language.md).
-- Erfahren Sie mehr über das [Erkunden von Ressourcen](../concepts/explore-resources.md).
-- Sehen Sie sich Beispiele für [einfache Abfragen](../samples/starter.md) an.
-- Sehen Sie sich Beispiele für [erweiterte Abfragen](../samples/advanced.md) an.
-- Geben Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback ab.
+In diesem Tutorial haben Sie private und freigegebene Abfragen erstellt. Weitere Informationen zur Resource Graph-Sprache finden Sie auf der Seite mit den Details zur Abfragesprache.
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zur Abfragesprache](../concepts/query-language.md)

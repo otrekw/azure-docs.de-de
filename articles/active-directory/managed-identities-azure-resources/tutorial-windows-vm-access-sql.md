@@ -1,5 +1,5 @@
 ---
-title: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
+title: Tutorial`:` Verwenden einer verwalteten Identität für den Zugriff auf Azure SQL – Windows – Azure AD
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure SQL zuzugreifen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433172"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181173"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure SQL
 

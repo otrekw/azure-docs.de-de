@@ -1,14 +1,14 @@
 ---
-title: ISO 27001-Blaupausenbeispiel – Bereitstellungsschritte
+title: Bereitstellen des Blaupausenbeispiels „ISO 27001“
 description: Bereitstellungsschritte für das eigenständige Blaupausenbeispiel „ISO 27001“, einschließlich Details zum Blaupausenartefaktparameter.
 ms.date: 07/22/2019
 ms.topic: sample
-ms.openlocfilehash: 8b12b448d4c218549838b95260fd6b1f874b6b83
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9ea579537ff98d662066ecb8900a62f080b88d3d
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038318"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546652"
 ---
 # <a name="deploy-the-iso-27001-blueprint-sample"></a>Bereitstellen des ISO 27001-Blaupausenbeispiels
 

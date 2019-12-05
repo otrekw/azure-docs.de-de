@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen einer App zum Azure Active Directory-Mandanten | Microsoft-Dokumentation
+title: 'Schnellstart: Hinzufügen einer App zum Azure Active Directory-Mandanten'
 description: In dieser Schnellstartanleitung wird mithilfe des Azure-Portals eine Kataloganwendung zu Ihrem Azure Active Directory-Mandanten (Azure AD) hinzugefügt.
 services: active-directory
 author: msmimart
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/29/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5ee40f6fcd77465b67a7c409493027fefa48ca9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 650a4f643f170fc64dd0e0643d645a7dcbffdfbc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062947"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420465"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure Active Directory-Mandanten
 

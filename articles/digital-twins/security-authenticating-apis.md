@@ -1,5 +1,5 @@
 ---
-title: Grundlagen zur API-Authentifizierung mit Azure Digital Twins | Microsoft-Dokumentation
+title: Grundlagen zur API-Authentifizierung – Azure Digital Twins | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure Digital Twins eine Verbindung mit APIs herstellen und sich authentifizieren.
 ms.author: alinast
 author: alinamstanciu
@@ -7,17 +7,17 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 53b53fa5185ade87dfdd21f0805641657d49d676
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 11/22/2019
+ms.openlocfilehash: 6c2b0ec5165652e77c92426bb62a30468eef04c2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800212"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456898"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Herstellen einer Verbindung und Authentifizieren bei APIs
 
-Für Azure Digital Twins wird Azure Active Directory (Azure AD) verwendet, um Benutzer zu authentifizieren und Anwendungen zu schützen. Azure AD unterstützt die Authentifizierung für eine Vielzahl moderner Architekturen. Diese basieren alle auf den branchenüblichen Protokollen OAuth 2.0 oder OpenID Connect. Darüber hinaus können Entwickler Azure AD dazu verwenden, Anwendungen mit einem Mandanten sowie Branchenanwendungen zu erstellen. Entwickler können Azure AD auch für die Entwicklung mehrinstanzenfähiger Anwendungen nutzen.
+Für Azure Digital Twins wird Azure Active Directory (Azure AD) verwendet, um Benutzer zu authentifizieren und Anwendungen zu schützen. Azure AD unterstützt die Authentifizierung für eine Vielzahl moderner Architekturen. Diese basieren alle auf den branchenüblichen Protokollen OAuth 2.0 oder OpenID Connect. Darüber hinaus können Entwickler Azure AD dazu verwenden, Anwendungen mit einem Mandanten sowie Branchenanwendungen zu erstellen. Entwickler können Azure AD auch für die Entwicklung [mehrinstanzenfähiger Anwendungen](how-to-multitenant-applications.md) nutzen.
 
 Die Seite mit der [Dokumentation mit grundlegenden Informationen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/) enthält eine Übersicht über Azure AD. Dort finden Sie beispielsweise Schritt-für-Schritt-Anleitungen, Informationen zu Konzepten sowie Schnellstartanleitungen.
 

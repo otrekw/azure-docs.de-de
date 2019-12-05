@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Hinzufügen von Vorlagenfunktionen zur Azure Resource Manager-Vorlage'
+title: 'Tutorial: Hinzufügen von Vorlagenfunktionen'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Vorlagenfunktionen hinzu, um Werte zu erstellen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ca6e7f326ba67eac33e4dee5fa844d7676ab864b
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 03a38178ec66c1c1a10934975d20778369d80dbe
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963657"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405961"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Vorlagenfunktionen zu Ihrer Resource Manager-Vorlage
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu Parametern](template-tutorial-add-parameters.md)
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
@@ -73,7 +70,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
+## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 
 Sie können die Bereitstellung überprüfen, indem Sie sich die Ressourcengruppe im Azure-Portal ansehen.
 

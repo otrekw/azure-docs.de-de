@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/06/2019
-ms.openlocfilehash: fc5565ab9e3be21b96ce5aa5a938cf22ec3caeb0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.date: 11/08/2019
+ms.openlocfilehash: 39c1928f1d38276418b2e1a3e766c4b9d8a0d8d2
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68848483"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902780"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure DB for MySQL
 
@@ -83,7 +83,7 @@ LOB-Spalten (Large Object) sind Spalten, die groß werden können. Bei MySQL sin
     SELECT max(length(description)) as LEN from catalog;
     ```
 
-    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam. 
+    **Problemumgehung**: Wenden Sie sich bei einem LOB-Objekt, das größer als 32 KB ist, unter [Fragen zur Azure-Datenbankmigration](mailto:AskAzureDatabaseMigrations@service.microsoft.com) an das Entwicklerteam.
 
 ## <a name="limitations-when-migrating-online-from-aws-rds-mysql"></a>Einschränkungen bei der Onlinemigration von AWS RDS MySQL
 
@@ -130,4 +130,10 @@ Beim Versuch der Onlinemigration von AWS RDS MySQL zu Azure Database for MySQL k
     CREATE INDEX partial_name ON customer (name(10));
     ```
 
-- In DMS ist die Anzahl der in einer einzelnen Migrationsaktivität zu migrierenden Datenbanken auf vier Datenbanken beschränkt.
+- In Azure Database Migration Service ist die Anzahl der in einer einzelnen Migrationsaktivität zu migrierenden Datenbanken auf vier Datenbanken beschränkt.
+
+- **Fehler:** Zeile zu groß (> 8126). Das Ändern einiger Spalten in TEXT oder BLOB kann helfen. Beim aktuellen Zeilenformat wird das BLOB-Präfix von 0 Byte inline gespeichert.
+
+  **Einschränkung**: Dieser Fehler tritt auf, wenn Sie mithilfe der InnoDB-Speicher-Engine zu Azure Database for MySQL migrieren und eine Tabellenzeilen zu groß ist (> 8126 Bytes).
+
+  **Problemumgehung**: Aktualisieren Sie das Schema der Tabelle, die eine Zeilengröße von mehr als 8126 Bytes aufweist. Es wird nicht empfohlen, den Strict-Modus zu ändern, da die Daten abgeschnitten werden. Das Ändern von „page_size“ wird nicht unterstützt.

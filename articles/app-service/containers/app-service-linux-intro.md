@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 1/11/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 1bbcd5e4f8c6a429def84ad77d7dd93fa11b7324
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 966eb6068ff545dde284463866bfeee3d5074069
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819687"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559026"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Einführung in Azure App Service unter Linux
 
@@ -67,7 +67,12 @@ Aufgrund einer aktuellen Beschränkung können Sie für dieselbe Ressourcengrupp
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Wenn Ihre Anwendung nicht gestartet werden kann oder Sie die Protokolle Ihrer App überprüfen möchten, sehen Sie sich die Docker-Protokolle im Verzeichnis „LogFiles“ an. Sie können auf dieses Verzeichnis entweder über Ihre SCM-Website oder per FTP zugreifen. Zum Protokollieren von `stdout` und `stderr` in Ihrem Container müssen Sie unter **App Service-Protokolle** die **Protokollierung von Docker-Containern** aktivieren. Diese Einstellung wird sofort wirksam. App Service erkennt die Änderung und startet den Container automatisch neu.
+> [!NOTE]
+> Mit der [Azure-Überwachung (Vorschau)](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#send-logs-to-azure-monitor-preview) steht eine neue integrierte Protokollierungsfunktion zur Verfügung. 
+>
+>
+
+Wenn Ihre Anwendung nicht gestartet werden kann oder Sie die Protokolle Ihrer App überprüfen möchten, sehen Sie sich die Docker-Protokolle im Verzeichnis „LogFiles“ an. Sie können auf dieses Verzeichnis entweder über Ihre SCM-Website oder per FTP zugreifen. Wenn Sie `stdout` und `stderr` aus Ihrem Container protokollieren möchten, müssen Sie unter **App Service-Protokolle** die Option **Anwendungsprotokollierung** aktivieren. Diese Einstellung wird sofort wirksam. App Service erkennt die Änderung und startet den Container automatisch neu.
 
 Sie können auf die SCM-Website über die Option **Erweiterte Tools** im Menü **Entwicklungstools** zugreifen.
 

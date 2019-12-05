@@ -7,15 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/19/2019
-ms.openlocfilehash: 3f0b31cd3d37c3040ff99a89c1a5201b413fd3fc
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 10/22/2019
+ms.openlocfilehash: 9caf0a41096a22e94aeb80ccfd0e6e6f70954a3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076635"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185649"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
+
+> [!Important]
+> Verwenden Sie das Feature [Diensttag](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen. Neue Regionen werden nur für Diensttags hinzugefügt und die statischen IP-Adressen werden schließlich eingestellt.
 
 Wenn Sie Netzwerksicherheitsgruppen (NSG) oder benutzerdefinierte Routen (UDRs) zum Steuern von eingehendem Datenverkehr verwenden, müssen Sie sicherstellen, dass Ihr Cluster mit kritischen Azure-Integritäts- und -Verwaltungsdiensten kommunizieren kann.  Einige der IP-Adressen für diese Dienste sind regionsspezifisch, und einige davon gelten für alle Azure-Regionen. Unter Umständen müssen Sie auch Datenverkehr über den Azure DNS-Dienst zulassen, wenn Sie kein benutzerdefiniertes DNS verwenden.
 
@@ -41,7 +44,7 @@ Lassen Sie Datenverkehr von den folgenden IP-Adressen für Azure HDInsight-Integ
 Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integritäts- und -Verwaltungsdienste in der jeweiligen Azure-Region angegeben sind, in der sich Ihre Ressourcen befinden:
 
 > [!IMPORTANT]  
-> Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus dem vorherigen Schritt.
+> Wenn die von Ihnen verwendete Azure-Region nicht aufgeführt ist, verwenden Sie das Feature [Diensttag](hdinsight-service-tags.md) für Netzwerksicherheitsgruppen.
 
 | Country | Region | Zulässige Quell-IP-Adressen | Zulässiges Ziel | Direction |
 | ---- | ---- | ---- | ---- | ----- |

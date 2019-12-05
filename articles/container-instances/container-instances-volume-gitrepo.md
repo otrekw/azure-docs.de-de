@@ -1,19 +1,14 @@
 ---
-title: Einbinden eines gitRepo-Volumes in Azure Container Instances
+title: Einbinden eines gitRepo-Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein gitRepo-Volume einbinden, um ein Git-Repository in Ihren Containerinstanzen zu klonen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: danlep
-ms.openlocfilehash: e8afa9e14941920cdcfb984e6660bdc666240716
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 708fca185227292e7cdf33952bde6f42b3d4951f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325439"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533218"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Einbinden eines gitRepo-Volumes in Azure Container Instances
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5c501e6c2bc1a30273682352a68565ccc897ff50
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 005e93837d1d420526f6fb33e79d25a94da6fab7
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699200"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73838530"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
@@ -37,7 +37,7 @@ Häufige Ursachen für dieses Problem:
 | openSUSE | 13.2 und höher | 42.3+ |
 | SUSE Linux Enterprise Server | 12 | 12 SP3 und höher |
 
-- Auf dem Client sind die CIFS-Hilfsprogramme (cfs-utils) nicht installiert.
+- Auf dem Client sind keine CIFS-Hilfsprogramme (cifs-utils) installiert.
 - Die mindestens erforderliche SMB-/CIFS-Version 2.1 ist auf dem Client nicht installiert.
 - Der Client unterstützt die SMB 3.0-Verschlüsselung nicht. Die oben aufgeführte Tabelle enthält eine Liste der Linux-Distributionen, die die lokale und regionsübergreifende Bereitstellung unter Verwendung der Verschlüsselung unterstützen. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
 - Sie versuchen, über den TCP-Port 445 eine Verbindung mit einem Speicherkonto herstellen. Dies wird nicht unterstützt.
@@ -60,7 +60,7 @@ Verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehler
 
 Aus Sicherheitsgründen werden Verbindungen mit Azure-Dateifreigaben blockiert, wenn der Kommunikationskanal nicht verschlüsselt ist und der Verbindungsversuch nicht von dem gleichen Datencenter aus erfolgt, in dem sich die Azure-Dateifreigaben befinden. Unverschlüsselte Verbindungen innerhalb desselben Datencenters können auch blockiert werden, wenn die Einstellung [Sichere Übertragung erforderlich](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto aktiviert ist. Ein verschlüsselter Kommunikationskanal wird nur dann bereitgestellt, wenn das Clientbetriebssystem des Benutzers SMB-Verschlüsselung unterstützt.
 
-Weitere Informationen finden Sie unter [Voraussetzungen für das Einbinden einer Azure-Dateifreigabe in Linux und das Paket „cifs-utils“](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-linux#prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package). 
+Weitere Informationen finden Sie unter [Voraussetzungen für das Einbinden einer Azure-Dateifreigabe in Linux und das Paket „cifs-utils“](storage-how-to-use-files-linux.md#prerequisites). 
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
@@ -126,7 +126,7 @@ Einige Linux-Distributionen unterstützen die Verschlüsselungsfeatures in SMB 3
 
 ### <a name="solution"></a>Lösung
 
-Das Verschlüsselungsfeature für SMB 3.0 für Linux wurde im Kernel 4.11 eingeführt. Dieses Feature ermöglicht die Einbindung einer Azure-Dateifreigabe aus der lokalen Umgebung oder aus einer anderen Azure-Region. Diese Funktionalität ist in den Linux-Distributionen enthalten, die unter [Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB 2.1-Version im Vergleich zur SMB 3.0-Version)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) aufgeführt sind. Bei anderen Distributionen wird mindestens die Kernel-Version 4.11 vorausgesetzt.
+Das Verschlüsselungsfeature für SMB 3.0 für Linux wurde im Kernel 4.11 eingeführt. Dieses Feature ermöglicht die Einbindung einer Azure-Dateifreigabe aus der lokalen Umgebung oder aus einer anderen Azure-Region. Einige Linux-Distributionen verfügen möglicherweise über zurückportierte Änderungen vom 4.11-Kernel zu älteren Versionen des Linux-Kernels, die von ihnen verwaltet werden. Um festzustellen, ob Ihre Linux-Version SMB 3.0 mit Verschlüsselung unterstützt, sehen Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md) nach. 
 
 Falls Ihr Linux-SMB-Client die Verschlüsselung nicht unterstützt, binden Sie Azure Files mithilfe von SMB 2.1 von einem virtuellen Azure-Linux-Computer aus ein, der sich im gleichen Datencenter befindet wie die Dateifreigabe. Vergewissern Sie sich, dass die Einstellung [Sichere Übertragung erforderlich]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) für das Speicherkonto deaktiviert ist. 
 
@@ -281,7 +281,7 @@ Dieses Verbindungswiederherstellungs-Problem im Linux-Kernel wurde jetzt im Rahm
 - [CIFS: Fix a possible memory corruption during reconnect (Beheben einer Arbeitsspeicherbeschädigung während der Verbindungswiederherstellung)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=53e0e11efe9289535b060a51d4cf37c25e0d0f2b)
 - [CIFS: Fix a possible double locking of mutex during reconnect (Beheben einer möglichen doppelten Sperre des Mutex während der Verbindungswiederherstellung, für Kernel v4.9 und spätere Versionen)](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=96a988ffeb90dba33a71c3826086fe67c897a183)
 
-Allerdings können diese Änderungen noch nicht zu allen Linux-Distributionen portiert werden. Diesen Fix und andere Fixes zur Verbindungswiederherstellung finden Sie im Abschnitt [Empfohlene Mindestversionen mit entsprechenden Einbindungsmöglichkeiten (SMB 2.1-Version im Vergleich zur SMB 3.0-Version)](storage-how-to-use-files-linux.md#minimum-recommended-versions-with-corresponding-mount-capabilities-smb-version-21-vs-smb-version-30) des Artikels [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md). Sie können diese Behebung abrufen, indem Sie ein Upgrade auf eine dieser empfohlenen Kernelversionen vornehmen.
+Allerdings können diese Änderungen noch nicht zu allen Linux-Distributionen portiert werden. Wenn Sie eine gängige Linux-Distribution verwenden, können Sie unter [Verwenden von Azure Files mit Linux](storage-how-to-use-files-linux.md) feststellen, welche Version Ihrer Distribution die erforderlichen Kerneländerungen aufweist.
 
 ### <a name="workaround"></a>Problemumgehung
 

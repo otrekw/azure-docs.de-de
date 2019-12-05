@@ -1,20 +1,20 @@
 ---
-title: Clientbibliotheksreferenz für benutzerdefinierte Funktionen in Azure Digital Twins | Microsoft-Dokumentation
-description: Clientbibliotheksreferenz für benutzerdefinierte Funktionen in Azure Digital Twins
+title: Clientbibliotheksreferenz für benutzerdefinierte Funktionen – Azure Digital Twins | Microsoft-Dokumentation
+description: Dokumentation zur Clientbibliotheksreferenz für benutzerdefinierte Funktionen in Azure Digital Twins
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 36fb8a5588321426ccae7d6c6577fb4b48f3a4db
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 41baacd4485e6702ec29057f5d539724b74e353b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71948900"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383244"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Clientbibliotheksreferenz für benutzerdefinierte Funktionen
 

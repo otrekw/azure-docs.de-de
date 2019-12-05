@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 3be246402c4acd63aee3518f2333d50ec307e9c0
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: eea929d68c824ac7cf8045aa6a7ce60430952d03
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647891"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546872"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Schnellstart: Azure Key Vault-Clientbibliothek für Python
 
@@ -53,7 +53,7 @@ pip install azure.identity
 
 ### <a name="create-a-resource-group-and-key-vault"></a>Erstellen einer Ressourcengruppe und eines Schlüsseltresors
 
-In dieser Schnellstartanleitung wird eine vorab erstellte Azure Key Vault-Instanz verwendet. Eine Anleitung zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](quick-create-cli.md), [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe von PowerShell](quick-create-powershell.md) oder [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](quick-create-portal.md). Alternativ können Sie einfach die folgenden Azure CLI-Befehle ausführen.
+In dieser Schnellstartanleitung wird eine vorab erstellte Azure Key Vault-Instanz verwendet. Eine Anleitung zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](quick-create-cli.md), [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe von PowerShell](quick-create-powershell.md) oder [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](quick-create-portal.md). Alternativ können Sie die unten angegebenen Azure CLI-Befehle ausführen.
 
 > [!Important]
 > Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen „<your-unique-keyvault-name>“ durch den Namen Ihres Schlüsseltresors.
@@ -103,7 +103,7 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Festlegen von Umgebungsvariablen
 
-Die DefaultAzureCredential-Methode in unserer Anwendung basiert auf drei Umgebungsvariablen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` und `AZURE_TENANT_ID`. Legen Sie diese Variablen auf die clientId-, clientSecret- und tenantId-Werte fest, die Sie sich im Schritt [Erstellen eines Dienstprinzipals](#create-a-service-principal) notiert haben. Verwenden Sie hierbei das Format `export VARNAME=VALUE`. (Hierdurch werden nur die Variablen für Ihre aktuelle Shell und daraus erstellte Prozesse festgelegt. Um diese Variablen dauerhaft zu Ihrer Umgebung hinzuzufügen, bearbeiten Sie Ihre Datei `/etc/environment `.) 
+Die DefaultAzureCredential-Methode in unserer Anwendung basiert auf drei Umgebungsvariablen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET` und `AZURE_TENANT_ID`. Legen Sie diese Variablen auf die clientId-, clientSecret- und tenantId-Werte fest, die Sie sich im Schritt [Erstellen eines Dienstprinzipals](#create-a-service-principal) notiert haben. Verwenden Sie hierbei das Format `export VARNAME=VALUE`. (Mit dieser Methode werden nur die Variablen für Ihre aktuelle Shell und daraus erstellte Prozesse festgelegt. Um diese Variablen dauerhaft zu Ihrer Umgebung hinzuzufügen, bearbeiten Sie Ihre Datei `/etc/environment `.) 
 
 Sie müssen außerdem den Namen Ihres Schlüsseltresors als Umgebungsvariable `KEY_VAULT_NAME` speichern.
 
@@ -135,9 +135,9 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Authentifizierung und Erstellen eines Clients
+### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlüsseltresorclients hängt von den Umgebungsvariablen im Schritt [Festlegen von Umgebungsvariablen](#set-environmental-variables) oben ab. Der Name Ihres Schlüsseltresors wird zum Schlüsseltresor-URI im Format „https://<Name_Ihres_Schlüsseltresors>.vault.azure.net“ erweitert.
+Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlüsseltresorclients hängen von den Umgebungsvariablen im Schritt [Festlegen von Umgebungsvariablen](#set-environmental-variables) oben ab. Der Name Ihres Schlüsseltresors wird in den Schlüsseltresor-URI im Format „https://<Name-Ihres-Schlüsseltresors>.vault.azure.net“ erweitert.
 
 ```python
 credential = DefaultAzureCredential()
@@ -147,7 +147,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 
 ### <a name="save-a-secret"></a>Speichern eines Geheimnisses
 
-Nachdem Ihre Anwendung authentifiziert wurde, können Sie Ihrem Schlüsseltresor mithilfe der [client.SetSecret-Methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) ein Geheimnis hinzufügen. Hierzu benötigen Sie einen Namen für das Geheimnis. In diesem Beispiel verwenden wir „mySecret“.  
+Nachdem Ihre Anwendung authentifiziert wurde, können Sie Ihrem Schlüsseltresor mithilfe der client.SetSecret-Methode ein Geheimnis hinzufügen.](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) Hierzu benötigen Sie einen Namen für das Geheimnis. In diesem Beispiel verwenden wir „mySecret“.  
 
 ```python
 client.set_secret(secretName, secretValue);
@@ -161,7 +161,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ### <a name="retrieve-a-secret"></a>Abrufen eines Geheimnisses
 
-Nun können Sie den zuvor festgelegten Wert mithilfe der [client.GetSecret-Methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) abrufen.
+Nun können Sie den zuvor festgelegten Wert mithilfe der [client.GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)-Methode abrufen.
 
 ```python
 retrieved_secret = client.get_secret(secretName)
@@ -171,13 +171,13 @@ Ihr Geheimnis ist jetzt als `retrieved_secret.value` gespeichert.
 
 ### <a name="delete-a-secret"></a>Löschen eines Geheimnisses
 
-Abschließend löschen wir das Geheimnis mithilfe der [client.DeleteSecret-Methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync) aus dem Schlüsseltresor.
+Abschließend löschen wir das Geheimnis mithilfe der [client.DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)-Methode aus dem Schlüsseltresor.
 
 ```python
 client.delete_secret(secretName);
 ```
 
-Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis entfernt wurde:
+Sie können sich mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) vergewissern, dass das Geheimnis entfernt wurde:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -203,14 +203,13 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-secretName = "mySecret";
-
 keyVaultName = os.environ["KEY_VAULT_NAME"];
 KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 credential = DefaultAzureCredential()
-
 client = SecretClient(vault_endpoint=KVUri, credential=credential)
+
+secretName = "mySecret";
 
 print("Input the value of your secret > ");
 secretValue = raw_input();
@@ -239,9 +238,7 @@ print(" done.");
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, ein Geheimnis gespeichert und dieses Geheimnis abgerufen. Die gesamte Konsolen-App steht in [GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app) zur Verfügung.
-
-Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie einen Schlüsseltresor erstellt, ein Geheimnis gespeichert und dieses Geheimnis abgerufen. Weitere Informationen zu Key Vault und zur Integration in Ihre Anwendungen finden Sie in den folgenden Artikeln:
 
 - [Was ist der Azure-Schlüsseltresor?](key-vault-overview.md)
 - [Entwicklerhandbuch zu Azure-Schlüsseltresor](key-vault-developers-guide.md)

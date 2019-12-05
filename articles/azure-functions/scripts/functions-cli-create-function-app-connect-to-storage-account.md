@@ -1,29 +1,19 @@
 ---
-title: Erstellen einer Azure-Funktion, die eine Verbindung mit einem Azure-Speicher herstellt | Microsoft-Dokumentation
+title: 'Erstellen einer Funktions-App mit verbundenem Speicher: Azure CLI'
 description: 'Azure CLI-Skriptbeispiel: Erstellen einer Azure-Funktion, die eine Verbindung mit Azure Storage herstellt'
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 04/20/2017
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 48f6124373d80d22766d319ec58ed4ad7adaf6f5
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 9c2a70066e673bfa164a58884891f29e220c7bd6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963367"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532831"
 ---
-# <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Erstellen einer Funktions-App, die eine Verbindung mit einem Azure Storage-Konto herstellt
+# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Erstellen einer Funktions-App mit einer benannten Speicherkontoverbindung 
 
 Dieses Azure Functions-Beispielskript erstellt eine Funktions-App und stellt eine Verbindung zwischen der Funktion und einem Azure Storage-Konto her. Die erstellte App-Einstellung mit der Verbindung kann mit einem [Storage-Trigger oder einer Storage-Bindung](../functions-bindings-storage-blob.md) verwendet werden. 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,11 +27,6 @@ Dieses Beispiel erstellt eine Azure-Funktionen-App und fügt einer App-Einstellu
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-storage/create-function-app-connect-to-storage-account.sh "Integrate Function App into Azure Storage Account")]
 
-
-## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
-
-Nach Ausführung des Skriptbeispiels werden mit dem folgenden Befehl die Ressourcengruppe und alle zugehörigen Ressourcen entfernt:
-
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
@@ -50,12 +35,14 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Erstellen Sie ein Speicherkonto. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../functions-scale.md#consumption-plan). |
+| [az group create](/cli/azure/group#az-group-create) | Erstellen Sie eine Ressourcengruppe mit einem Speicherort. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellen Sie ein Speicherkonto. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../functions-scale.md#consumption-plan). |
+| [az storage account show-connection-string](/cli/azure/storage/account#az-storage-account-show-connection-string) | Ruft die Verbindungszeichenfolge für das Konto ab. |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Legt die Verbindungszeichenfolge als App-Einstellung in der Funktions-App fest. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).

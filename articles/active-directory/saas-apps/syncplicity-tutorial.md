@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/10/2019
 ms.author: jeedes
-ms.openlocfilehash: e6a8a25e88d4193562c818f30efd5eb017c372fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 663958ae367162eaeb336c819d1d219dc74a2cbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089290"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233286"
 ---
 # <a name="tutorial-integrate-syncplicity-with-azure-active-directory"></a>Tutorial: Integrieren von Syncplicity in Azure Active Directory
 
@@ -122,7 +122,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
 1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
@@ -146,13 +146,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-syncplicity-test-user"></a>Erstellen eines Testbenutzers für Syncplicity
 
-Damit sich AAD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendung bereitgestellt werden. In diesem Abschnitt wird beschrieben, wie in Syncplicity AAD-Benutzerkonten erstellt werden.
+Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendung bereitgestellt werden. In diesem Abschnitt wird beschrieben, wie in Syncplicity Azure AD-Benutzerkonten erstellt werden.
 
 **Führen Sie zum Bereitstellen eines Benutzerkontos in Syncplicity die folgenden Schritte aus:**
 
@@ -160,14 +160,14 @@ Damit sich AAD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendu
 
 1. Klicken Sie auf **admin** (Administrator), wählen Sie **user accounts** (Benutzerkonten) aus, und klicken Sie dann auf **ADD A USER** (BENUTZER HINZUFÜGEN).
 
-    ![Benutzer verwalten](./media/syncplicity-tutorial/ic769764.png "Benutzer verwalten")
+    ![Verwalten von Benutzern](./media/syncplicity-tutorial/ic769764.png "Benutzer verwalten")
 
 1. Geben Sie die **E-Mail-Adresse** eines AAD-Kontos ein, das Sie bereitstellen möchten, und wählen Sie dann für **Role** (Rolle) die Option **User** (Benutzer) aus. Klicken Sie abschließend auf **NEXT** (WEITER).
 
-    ![Kontoinformationen](./media/syncplicity-tutorial/ic769765.png "Kontoinformationen")
+    ![Kontoinformationen](./media/syncplicity-tutorial/ic769765.png "Azure-Kontoinformationen")
 
     > [!NOTE]
-    > Der AAD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
+    > Der Azure AD-Kontoinhaber erhält eine E-Mail mit einem Link zur Bestätigung und Aktivierung des Kontos.
 
 1. Wählen Sie eine Gruppe in Ihrem Unternehmen aus, bei der Ihr neuer Benutzer Mitglied werden soll. Klicken Sie dann auf **WEITER**.
 
@@ -181,7 +181,7 @@ Damit sich AAD-Benutzer anmelden können, müssen sie in der Syncplicity-Anwendu
     ![Syncplicity-Ordner](./media/syncplicity-tutorial/ic769773.png "Syncplicity-Ordner")
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Syncplicity-Benutzerkonten oder mithilfe der von Syncplicity bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Syncplicity-Benutzerkonten oder mithilfe der von Syncplicity bereitgestellten APIs erstellen.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
@@ -193,4 +193,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Syncplicity“ klicken, sollten Si
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

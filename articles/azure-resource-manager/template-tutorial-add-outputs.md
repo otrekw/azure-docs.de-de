@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Hinzufügen von Ausgaben zur Azure Resource Manager-Vorlage'
+title: 'Tutorial: Hinzufügen von Ausgaben zur Vorlage'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Ausgaben hinzu, um die Syntax zu vereinfachen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 654d3f7cbf6362d982549c86e6f54fea1e890cfc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001540"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406001"
 ---
 # <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Ausgaben zur Azure Resource Manager-Vorlage
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu Variablen](template-tutorial-add-variables.md) d
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
@@ -49,7 +46,7 @@ Der Laufzeitstatus des Speicherkontos wird mithilfe der Funktion [reference](res
 
 Am Ende wird die Eigenschaft **primaryEndpoints** des Speicherkontos zurückgegeben.
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Jetzt können Sie die Vorlage bereitstellen und sich den zurückgegebenen Wert ansehen.
 

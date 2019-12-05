@@ -1,14 +1,14 @@
 ---
-title: Schützen neuer Ressourcen mit Blaupausensperren
-description: In diesem Tutorial erfahren Sie, wie Sie mit den Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints neu bereitgestellte Ressourcen schützen.
-ms.date: 03/28/2019
+title: 'Tutorial: Schützen neuer Ressourcen mit Sperren'
+description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints, um neu bereitgestellte Ressourcen zu schützen.
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: e2adbb1e47222055753d4b3690646daa83b32bf1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ee57ff0c08f4fb8aa710dd2fa4dcef664484973d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960251"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327445"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 
@@ -25,7 +25,7 @@ Dieses Tutorial umfasst folgende Schritte:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
 ## <a name="create-a-blueprint-definition"></a>Erstellen einer Blaupausendefinition
 
@@ -53,9 +53,10 @@ Erstellen Sie zunächst die Blaupausendefinition.
    1. Wählen Sie **Hinzufügen** aus, um der Blaupause das Artefakt hinzuzufügen.
 
 1. Fügen Sie unter der Ressourcengruppe eine Vorlage hinzu:
-   1. Wählen Sie unter dem Eintrag **RGtoLock** die Zeile **Artefakt hinzufügen** aus. 
-   1. Wählen Sie unter **Artefakttyp** die Option **Azure Resource Manager-Vorlage** aus, legen Sie für **Anzeigename für Artefakt** die Option **StorageAccount** fest, und lassen Sie **Beschreibung** leer. 
-   1. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein. Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um das Artefakt zur Blaupause hinzuzufügen.
+   1. Wählen Sie unter dem Eintrag **RGtoLock** die Zeile **Artefakt hinzufügen** aus.
+   1. Wählen Sie unter **Artefakttyp** die Option **Azure Resource Manager-Vorlage** aus, legen Sie für **Anzeigename für Artefakt** die Option **StorageAccount** fest, und lassen Sie **Beschreibung** leer.
+   1. Fügen Sie auf der Registerkarte **Vorlage** im Editorfeld die folgende Resource Manager-Vorlage ein.
+      Wählen Sie nach dem Einfügen der Vorlage **Hinzufügen** aus, um das Artefakt zur Blaupause hinzuzufügen.
 
    ```json
    {
@@ -224,9 +225,7 @@ Löschen Sie nach Abschluss dieses Tutorials die folgenden Ressourcen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../concepts/parameters.md) vertraut.
-- Lesen Sie, wie Sie [Ressourcen in Blaupausen sperren](../concepts/resource-locking.md) können.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](../concepts/sequencing-order.md) anpassen können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
-- [Beheben Sie Probleme](../troubleshoot/general.md) bei der Blaupausenzuweisung.
+In diesem Tutorial haben Sie erfahren, wie Sie neue Ressourcen schützen, die mit Azure Blueprints bereitgestellt werden. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Informationen zum Lebenszyklus von Blaupausen](../concepts/lifecycle.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ea2a88c92dcd52e99bb98563cf76d2c5501ef6d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a12d4dca61734275ef0e56dfe2a800c64dc52540
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67088746"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thoughtworks-mingle"></a>Tutorial: Azure Active Directory-Integration mit Thoughtworks Mingle
 
@@ -130,11 +130,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Thoughtw
 
 2. Klicken Sie auf die Registerkarte **Admin**, und klicken Sie dann auf **SSO-Config**.
    
-    ![Registerkarte „Admin“](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO Config")
+    ![Registerkarte „Admin“](./media/thoughtworks-mingle-tutorial/ic785157.png "SSO-Config")
 
 3. Führen Sie im Abschnitt **SSO Config** die folgenden Schritte aus:
    
-    ![SSO-Config](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO-Config")
+    ![SSO Config (SSO-Konfiguration)](./media/thoughtworks-mingle-tutorial/ic785158.png "SSO-Config")
     
     a. Klicken Sie auf **Datei auswählen**, um die Metadatendatei hochzuladen. 
 
@@ -212,7 +212,7 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Thoughtworks M
 
 5. Führen Sie auf der Dialogfeldseite **Neuer Benutzer** die folgenden Schritte aus:
    
-    ![Dialogfeld „New User“](./media/thoughtworks-mingle-tutorial/ic785163.png "New User")  
+    ![Dialogfeld „New User“ (Neuer Benutzer)](./media/thoughtworks-mingle-tutorial/ic785163.png "Neuer Benutzer")  
  
     a. Geben Sie **Anmeldenamen**, **Anzeigenamen**, **Kennwort** und **Kennwortbestätigung** eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein. 
 
@@ -221,7 +221,7 @@ Damit sich Azure AD-Benutzer anmelden können, müssen sie in der Thoughtworks M
     c. Klicken Sie auf **Dieses Profil erstellen**.
 
 >[!NOTE]
->Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Thoughtworks Mingle-Benutzerkonten oder mithilfe der von Thoughtworks Mingle bereitgestellten APIs erstellen.
+>Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Thoughtworks Mingle-Benutzerkonten oder mithilfe der von Thoughtworks Mingle bereitgestellten APIs erstellen.
 > 
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
@@ -236,5 +236,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Thoughtworks Mingle“ klicken, so
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

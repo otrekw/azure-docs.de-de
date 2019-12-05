@@ -1,27 +1,19 @@
 ---
-title: Erstellen einer Funktion in Azure, die aus GitHub bereitgestellt wird | Microsoft-Dokumentation
+title: 'Erstellen einer Funktions-App mit GitHub-Bereitstellung: Azure CLI'
 description: Erstellen einer Funktions-App und Bereitstellen von Funktionscode aus einem GitHub-Repository mit Azure Functions.
-services: functions
-ms.service: azure-functions
-keywords: ''
-ms.devlang: azurecli
-author: ggailey777
-ms.author: glenga
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: b973e6538a7639f4119e4407d96e6d9d8f959cbb
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959001"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532808"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Erstellen einer Funktions-App in Azure, die über GitHub bereitgestellt wird
 
 Dieses Azure Functions-Beispielskript erstellt eine Funktions-App unter Verwendung des [Verbrauchsplans](../functions-scale.md#consumption-plan) (zusammen mit den dazugehörigen Ressourcen). Darüber hinaus konfiguriert das Skript den Funktionscode für Continuous Deployment über ein GitHub-Repository. 
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 In diesem Beispiel benötigen Sie Folgendes:
 
@@ -48,12 +40,12 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 | Get-Help | Notizen |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Erstellt das für die Funktions-App erforderliche Speicherkonto. |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../functions-scale.md#consumption-plan) und ordnet sie einem Git- oder Mercurial-Repository zu. |
+| [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Erstellt das für die Funktions-App erforderliche Speicherkonto. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Erstellt eine Funktions-App im serverlosen [Verbrauchsplan](../functions-scale.md#consumption-plan) und ordnet sie einem Git- oder Mercurial-Repository zu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 4767f43171e8576fcf35ba7304c48b05b85745c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553571"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213198"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Tutorial: Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure
 
@@ -48,7 +48,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 * [Installieren Sie das Service Fabric SDK.](service-fabric-get-started.md)
 
 > [!NOTE]
-> Ein kostenloses Konto erfüllt unter Umständen nicht die Anforderungen zum Erstellen eines virtuellen Computers. Aufgrund dessen kann das Tutorial nicht abgeschlossen werden.
+> Ein kostenloses Konto erfüllt unter Umständen nicht die Anforderungen zum Erstellen eines virtuellen Computers. Aufgrund dessen kann das Tutorial nicht abgeschlossen werden. Darüber hinaus kann es bei einem Konto, das kein Geschäfts-, Schul- oder Unikonto ist, zu Berechtigungsproblemen beim Erstellen des Zertifikats für den Schlüsseltresor kommen, der dem Cluster zugeordnet ist. Wenn ein Fehler im Zusammenhang mit der Zertifikaterstellung auftritt, verwenden Sie das Portal, um stattdessen den Cluster zu erstellen. 
 
 ## <a name="download-the-voting-sample-application"></a>Herunterladen der Beispielanwendung „Voting“
 

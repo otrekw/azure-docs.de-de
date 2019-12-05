@@ -1,24 +1,16 @@
 ---
-title: Continuous Integration mit Azure Pipelines | Microsoft-Dokumentation
+title: Continuous Integration mit Azure Pipelines
 description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Testen und Bereitstellen von Azure Resource Manager-Vorlagen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 457d2a8868283eed2e211ff26ce77156eee68e01
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052203"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326405"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von Azure Resource Manager-Vorlagen mit Azure Pipelines
 
@@ -50,7 +42,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * **Ein GitHub-Konto** zum Erstellen eines Repositorys für Ihre Vorlagen. Sollten Sie über kein Konto verfügen, können Sie [ein kostenloses Konto erstellen](https://github.com). Weitere Informationen zur Verwendung von GitHub-Repositorys finden Sie unter [Build GitHub repositories](/azure/devops/pipelines/repos/github) (Erstellen von GitHub-Repositorys).
 * **Git installieren**. In diesem Tutorial wird *Git Bash* oder *Git Shell* verwendet. Eine entsprechende Anleitung finden Sie unter [Install Git]( https://www.atlassian.com/git/tutorials/install-git) (Installieren von Git).
 * **Eine Azure DevOps-Organisation.** Sollten Sie über keine Organisation verfügen, können Sie kostenlos eine Organisation erstellen. Weitere Informationen finden Sie unter [Quickstart: Create an organization or project collection]( https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization?view=azure-devops) (Schnellstart: Erstellen einer Organisation oder einer Projektsammlung).
-* **[Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.** Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 
 ## <a name="prepare-a-github-repository"></a>ein GitHub-Repository erstellen
 

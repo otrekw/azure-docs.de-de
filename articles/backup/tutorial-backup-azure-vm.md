@@ -1,19 +1,15 @@
 ---
-title: Sichern mehrerer virtueller Azure-Computer mit PowerShell
+title: 'Tutorial: Sichern mehrerer virtueller Azure-Computer mit PowerShell'
 description: In diesem Tutorial wird erläutert, wie Sie mithilfe von Azure PowerShell mehrere virtuelle Azure-Computer in einem Recovery Services-Tresor sichern.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: tutorial
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: c290e44d8bfecfbf57be8f8e1c596a294f077229
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 154238eae78ce44b9fc91058e58d9a11e254c0f9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074710"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171782"
 ---
 # <a name="back-up-azure-vms-with-powershell"></a>Sichern virtueller Azure-Computer mit PowerShell
 

@@ -1,20 +1,15 @@
 ---
-title: Bedarfsorientiertes Sichern von virtuellen Azure-Computern
+title: 'Tutorial: Bedarfsorientiertes Sichern von virtuellen Azure-Computern'
 description: In diesem Tutorial erfahren Sie, wie Sie einen Recovery Services-Tresor erstellen, eine Sicherungsrichtlinie definieren und mehrere virtuelle Computer gleichzeitig sichern.
-keywords: Sicherung virtueller Computer; virtuelle Computer sichern; VM-Sicherung; VM sichern; Azure-VM sichern; Sicherung und Notfallwiederherstellung
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747019"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171852"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -37,7 +32,7 @@ Der Recovery Services-Tresor enthält die Sicherungsdaten, und Sicherungsrichtli
 
 1. Wählen Sie im linken Menü **Alle Dienste** aus, und geben Sie in der Dienstliste *Recovery Services* ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn in der Liste die Option „Recovery Services-Tresore“ angezeigt wird, wählen Sie sie aus, um das Menü „Recovery Services-Tresore“ zu öffnen.
 
-    ![Öffnen des Menüs „Recovery Services-Tresor“](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![Öffnen des Menüs „Recovery Services-Tresor“](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**, um das Menü „Recovery Services-Tresor“ zu öffnen.
 

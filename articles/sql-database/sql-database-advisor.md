@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik
-ms.date: 12/19/2018
-ms.openlocfilehash: fb7ba90724a98a34adf4aa279eefc8e3d7a63bf3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/12/2019
+ms.openlocfilehash: a113ea3fd4828a498d1f53ea7604df7bc8588eb5
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811385"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048406"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>Empfehlungen zur Leistung für SQL-Datenbank
 
@@ -25,6 +25,17 @@ Azure SQL-Datenbank lernt und passt sich an Ihre Anwendung an. Das Produkt biete
 > [!TIP]
 > Die [automatische Optimierung](sql-database-automatic-tuning.md) ist die empfohlene Methode, um automatisch einige der häufigsten Probleme mit der Datenbankleistung zu beheben und die Leistung zu optimieren. [Query Performance Insights](sql-database-query-performance.md) ist die empfohlene Methode für grundlegende Anforderungen an die Azure SQL-Datenbank-Leistungsüberwachung. [Azure SQL-Analyse](../azure-monitor/insights/azure-sql.md) ist die empfohlene Methode für die erweiterte Überwachung der Datenbankleistung und bietet intelligente Funktionen für die automatisierte Behebung von Leistungsproblemen.
 >
+
+## <a name="performance-recommendations-options"></a>Optionen für Leistungsempfehlungen
+
+Folgende Optionen für Leistungsempfehlungen sind in Azure SQL-Datenbank verfügbar:
+
+| Leistungsempfehlung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
+| :----------------------------- | ----- | ----- |
+| **Empfehlungen zum Erstellen eines Index**: Empfiehlt das Erstellen von Indizes, durch die sich die Leistung Ihrer Workload verbessern kann. | Ja | Nein | 
+| **Empfehlungen zum Löschen eines Index**: Empfiehlt das tägliche Entfernen redundanter und doppelter Indizes (mit Ausnahme von eindeutigen Indizes) sowie Indizes, die über einen langen Zeitraum hinweg (über 90 Tage) nicht verwendet wurden. Beachten Sie, dass diese Option nicht kompatibel mit Anwendungen ist, die Partitionswechsel und Indexhinweise verwenden. Das Löschen nicht verwendeter Indizes wird bei den Dienstebenen „Premium“ und „Unternehmenskritisch“ nicht unterstützt. | Ja | Nein |
+| **Empfehlungen zum Parametrisieren von Abfragen (Vorschau)** : Empfiehlt die erzwungene Parametrisierung in Fällen, in denen eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer derselbe Abfrageausführungsplan daraus hervorgeht. | Ja | Nein |
+| **Empfehlungen zum Beheben von Schemaproblemen (Vorschau)** : Empfehlungen für die Schemakorrektur werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer SQL-Datenbank auftreten. Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. | Ja | Nein |
 
 ## <a name="create-index-recommendations"></a>Empfehlungen zum Erstellen eines Index
 SQL-Datenbank überwacht kontinuierlich die ausgeführten Abfragen und erkennt die Indizes, die die Leistung verbessern könnten. Sobald genügend Vertrauen besteht, dass ein bestimmter Index fehlt, wird eine neue Empfehlung **Index erstellen** erstellt.
@@ -50,8 +61,7 @@ Zusätzlich zum Erkennen fehlender Indizes analysiert die SQL-Datenbank kontinui
 
 „Index löschen“-Empfehlungen durchlaufen auch die Überprüfung nach der Implementierung. Wenn die Leistung verbessert wird, ist ein Auswirkungsbericht verfügbar. Wenn die Leistung beeinträchtigt wird, wird die Empfehlung zurückgesetzt.
 
-
-## <a name="parameterize-queries-recommendations"></a>Empfehlungen zum Parametrisieren von Abfragen
+## <a name="parameterize-queries-recommendations-preview"></a>Empfehlungen zum Parametrisieren von Abfragen (Vorschau)
 Empfehlungen zum *Parametrisieren von Abfragen* werden angezeigt, wenn eine oder mehrere Abfragen ständig neu kompiliert werden, aber am Ende immer derselbe Abfrageausführungsplan daraus hervorgeht. Diese Bedingung eröffnet die Möglichkeit, erzwungene Parametrisierung anzuwenden. Durch die erzwungene Parametrisierung können Abfragepläne in Zukunft zwischengespeichert und wiederverwendet werden. Dies verbessert die Leistung und verringert den Ressourcenverbrauch. 
 
 Jede für SQL Server ausgestellte Abfrage muss zunächst kompiliert werden, um einen Ausführungsplan zu erstellen. Jeder generierte Plan wird dem Plancache hinzugefügt. Nachfolgende Ausführungen derselben Abfrage können dieser Plan aus dem Cache wiederverwenden. Auf diese Weise wird eine erneute Kompilierung überflüssig. 

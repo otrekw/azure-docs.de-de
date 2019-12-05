@@ -1,18 +1,18 @@
 ---
-title: Arbeiten mit der vorherigen Version von Azure Migrate | Microsoft-Dokumentation
-description: Bietet eine Zusammenfassung zum Arbeiten mit der alten Version von Azure Migrate
+title: Arbeiten mit der vorherigen Version von Azure Migrate
+description: Hier wird das Arbeiten mit der vorherigen Version von Azure Migrate beschrieben.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162456"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186540"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Arbeiten mit der vorherigen Version von Azure Migrate
 

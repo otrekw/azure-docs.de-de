@@ -1,14 +1,14 @@
 ---
-title: Verwalten der Tag-Governance
-description: Verwenden Sie die Auswirkung „modify“ von Azure Policy, um ein Tag-Governancemodell für neue und bereits vorhandene Ressourcen zu erstellen und zu erzwingen.
-ms.date: 11/04/2019
+title: 'Tutorial: Verwalten der Tag-Governance'
+description: In diesem Tutorial verwenden Sie die Auswirkung „modify“ von Azure Policy, um ein Tag-Governancemodell für neue und bereits vorhandene Ressourcen zu erstellen und zu erzwingen.
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: edb74bce5758ae040a6170a8e73be75fc228b001
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069655"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482253"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Tutorial: Verwalten der Tag-Governance mit Azure Policy
 
@@ -21,7 +21,16 @@ Die Auswirkung [modify](../concepts/effects.md#modify) von Azure Policy unterst�
 - Sie verfügen bereits über tausende von Ressourcen ohne Tag-Governance.
 - Sie verfügen über eine Taxonomie, die geändert werden muss.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+In diesem Tutorial führen Sie die folgenden Aufgaben aus:
+
+> [!div class="checklist"]
+> - Ermitteln Ihrer geschäftlichen Anforderungen
+> - Zuordnen der einzelnen Anforderungen zu einer Richtliniendefinition
+> - Gruppieren der Tagrichtlinien in einer Initiative
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie benötigen ein Azure-Abonnement, um dieses Tutorial durcharbeiten zu können. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="identify-requirements"></a>Ermitteln der Anforderungen
 
@@ -184,6 +193,16 @@ Diese Richtlinienregel sucht nach allen Ressourcen, die nicht über den Wert des
 Fassen Sie die obigen Tagrichtlinien nach der Erstellung zu einer einzelnen Initiative für die Tag-Governance zusammen, und weisen Sie sie einer Verwaltungsgruppe oder einem Abonnement zu. Die Initiative und die darin enthaltenen Richtlinien analysieren daraufhin die Konformität bereits vorhandener Ressourcen und ändern Anforderungen für neue oder aktualisierte Ressourcen, die der Eigenschaft **if** in der Richtlinienregel entsprechen. Vorhandene, nicht konforme Ressourcen werden durch die Richtlinie jedoch nicht automatisch mit den definierten Tagänderungen aktualisiert.
 
 Bei der Richtlinie **modify** werden genau wie bei Richtlinien vom Typ [deployIfNotExists](../concepts/effects.md#deployifnotexists) Korrekturaufgaben verwendet, um vorhandene, nicht konforme Ressourcen zu ändern. Gehen Sie wie unter [Korrigieren nicht konformer Ressourcen mit Azure Policy](../how-to/remediate-resources.md) beschrieben vor, um Ihre nicht konformen Ressourcen vom Typ **modify** zu ermitteln und die Tags gemäß Ihrer definierten Taxonomie zu korrigieren.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die folgenden Schritte aus, um die erstellten Zuweisungen oder Definitionen zu löschen:
+
+1. Klicken Sie links auf der Seite „Azure Policy“ unter **Erstellung** auf **Definitionen** (oder auf **Zuweisungen**, wenn Sie eine Zuweisung löschen möchten).
+
+1. Suchen Sie nach der neuen Initiativ- oder Richtliniendefinition (bzw. der Zuweisung), die Sie entfernen möchten.
+
+1. Klicken Sie mit der rechten Maustaste auf die Zeile, oder wählen Sie die Auslassungspunkte am Ende der Definition (oder Zuweisung), und wählen Sie anschließend **Definition löschen** (bzw. **Zuweisung löschen**) aus.
 
 ## <a name="review"></a>Überprüfung
 

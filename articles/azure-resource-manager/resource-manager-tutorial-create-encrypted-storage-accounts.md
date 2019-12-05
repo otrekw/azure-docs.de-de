@@ -1,25 +1,17 @@
 ---
-title: Nutzen der Azure Resource Manager-Vorlagenreferenz | Microsoft-Dokumentation
+title: Nutzen der Vorlagenreferenz
 description: Nutzen Sie die Azure Resource Manager-Vorlagenreferenz, um eine Vorlage zum Bereitstellen eines verschlüsselten Speicherkontos zu erstellen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 81c02c5e39e23b49291561821b0732227feb5c05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 99ec64529b90c7a80aea62090f80c55cf4e23510
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103644"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326479"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Tutorial: Nutzen der Azure Resource Manager-Vorlagenreferenz
 
@@ -44,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
@@ -86,7 +78,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
     Verwenden Sie die aktuellste Version, falls Sie nicht wissen, welche Version Sie wählen sollen.
 
-4. Suchen Sie die verschlüsselungsbezogenen Definitionsinformationen.  
+4. Suchen Sie die verschlüsselungsbezogenen Definitionsinformationen.
 
     ```json
     "encryption": {

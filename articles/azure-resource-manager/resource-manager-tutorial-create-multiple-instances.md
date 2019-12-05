@@ -1,24 +1,16 @@
 ---
-title: 'Erstellen mehrerer Ressourceninstanzen: Azure Resource Manager'
+title: Erstellen mehrerer Ressourceninstanzen
 description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, um mehrere Azure-Ressourceninstanzen bereitzustellen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b1233ff4695a1f715801d78d70ea80ab84be2a36
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: df41094d163b8e3ecb78827df1a52dafab0aec1f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528252"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326529"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Tutorial: Erstellen mehrerer Ressourceninstanzen mit Resource Manager-Vorlagen
 
@@ -39,7 +31,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/) mit der [Erweiterung „Azure Resource Manager-Tools“](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)
+* Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Verwenden von Visual Studio Code für die Erstellung von Azure Resource Manager-Vorlagen](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
@@ -57,7 +49,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
-Die vorhandene Vorlage erstellt ein einzelnes Speicherkonto. Sie passen die Vorlage an, um drei Speicherkonten zu erstellen.  
+Die vorhandene Vorlage erstellt ein einzelnes Speicherkonto. Sie passen die Vorlage an, um drei Speicherkonten zu erstellen.
 
 Nehmen Sie von Visual Studio Code aus die folgenden vier Änderungen vor:
 

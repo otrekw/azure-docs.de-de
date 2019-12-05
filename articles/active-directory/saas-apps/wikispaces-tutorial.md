@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d2c03143eca9f335c440dfcaee766e205b5c0730
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a683923ba48b1f354f90ac94d746cb92f359e7a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087149"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233323"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Tutorial: Azure Active Directory-Integration mit Wikispaces
 
@@ -190,17 +190,17 @@ Damit sich Azure AD-Benutzer bei Wikispaces anmelden können, müssen sie in Wi
 
 2. Wechseln Sie zu **Mitglieder**.
    
-    ![Mitglieder](./media/wikispaces-tutorial/ic787193.png "Mitglieder")
+    ![Mitglieder](./media/wikispaces-tutorial/ic787193.png "Members")
 
 3. Klicken Sie auf **Personen einladen**.
    
-    ![Personen einladen](./media/wikispaces-tutorial/ic787194.png "Personen einladen")
+    ![Invite People (Personen einladen)](./media/wikispaces-tutorial/ic787194.png "Invite People")
 
 4. Führen Sie im Abschnitt **Personen einladen** die folgenden Schritte aus:
    
-    ![Personen einladen](./media/wikispaces-tutorial/ic787208.png "Personen einladen")
+    ![Invite People (Personen einladen)](./media/wikispaces-tutorial/ic787208.png "Invite People")
    
-    a. Geben Sie **Benutzernamen oder E-Mail-Adresse** eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
+    a. Geben Sie die **Benutzernamen oder E-Mail-Adresse** eines gültigen Azure AD-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
    
     b. Klicken Sie auf **Send**.  
       
@@ -208,7 +208,7 @@ Damit sich Azure AD-Benutzer bei Wikispaces anmelden können, müssen sie in Wi
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
     
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Wikispaces-Benutzerkonten oder mithilfe der von Wikispaces bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Wikispaces-Benutzerkonten oder mithilfe der von Wikispaces bereitgestellten APIs erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -222,5 +222,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Wikispaces“ klicken, sollten Sie
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

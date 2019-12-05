@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 61ffd4857ca9a330a4cb0eeace89791fc0973f70
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575089"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186060"
 ---
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3: Übersicht
 
@@ -53,6 +53,10 @@ Hier erfahren Sie, wie Sie mit Media Services Videos v3 Inhalte codieren und pac
 
 > [!TIP]
 > Machen Sie sich zunächst mit Folgendem vertraut, bevor Sie mit der Entwicklung beginnen:<br/>* [Grundlegende Konzepte](concepts-overview.md) (beinhaltet wichtige Konzepte wie Verpacken, Codierung und Schutz)<br/>* [Entwickeln mit Media Services v3-APIs](media-services-apis-overview.md) (Informationen zum Zugreifen auf APIs, Namenskonventionen usw.)
+
+### <a name="sdks"></a>SDKs
+
+Beginnen Sie mit den [Azure Media Services v3-Client-SDKs](media-services-apis-overview.md#sdks) mit dem Entwickeln.
 
 ### <a name="quickstarts"></a>Schnellstarts  
 

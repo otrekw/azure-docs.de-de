@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: 02ea164a1fa29b494801623d418be73fc47d069c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077084"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327387"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Verwaltete Identitäten in Azure HDInsight
 

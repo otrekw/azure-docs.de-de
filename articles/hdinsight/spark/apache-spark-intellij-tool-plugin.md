@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: b2705f209b2acf1198ea555a5de2f79987a4d0e3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b417823d0ec7ed838186d53c1bb25400a148e0e9
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494246"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533918"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-hdinsight-cluster"></a>Tutorial: Erstellen von Apache Spark-Anwendungen für einen HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ
 
@@ -336,8 +336,6 @@ Stellen Sie sicher, dass die WINUTILS.EXE-Voraussetzung erfüllt ist.
 
 ### <a name="spark-livy-interactive-session-consolescala"></a>Spark-Konsole mit interaktiver Livy-Sitzung (Scala)
 
-Dies wird nur für IntelliJ 2018.2 und 2018.3 unterstützt.
-
 1. Navigieren Sie in der Menüleiste zu **Run** > **Edit Configurations** (Ausführen > Konfigurationen bearbeiten).
 
 2. Navigieren Sie im Fenster **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) im linken Bereich zu **Apache Spark on HDInsight** >  **[Spark on HDInsight] myApp**.
@@ -366,6 +364,25 @@ Dies wird nur für IntelliJ 2018.2 und 2018.3 unterstützt.
 Sie können das Skriptergebnis vorab erhalten, indem Sie einfach Code an die lokale Konsole oder die interaktive Livy-Sitzungskonsole (Scala) senden. Sie können Code in der Scala-Datei hervorheben und dann mit der rechten Maustaste auf **Send Selection To Spark Console** (Auswahl an Spark-Konsole senden) klicken. Der ausgewählte Code wird an die Konsole gesendet und ausgeführt. Das Ergebnis wird in der Konsole jeweils hinter dem Code angezeigt. Falls vorhanden, führt die Konsole eine Überprüfung der Fehler durch.  
 
    ![Senden einer Auswahl an die Spark-Konsole](./media/apache-spark-intellij-tool-plugin/send-selection-to-console.png)
+
+## <a name="integrate-with-hdinsight-identity-broker-hib"></a>Integrieren in den HDInsight-Identitätsbroker (HIB) 
+
+### <a name="connect-to-your-hdinsight-esp-cluster-with-id-broker-hib"></a>Herstellen einer Verbindung mit Ihrem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+Sie können die normalen Schritte zum Anmelden beim Azure-Abonnement ausführen, um eine Verbindung mit Ihrem HDInsight ESP-Cluster mit Identitätsbroker (HIB) herzustellen. Nach der Anmeldung wird die Clusterliste in Azure Explorer angezeigt. Weitere Anweisungen finden Sie unter [Herstellen einer Verbindung mit Ihrem HDInsight-Cluster](#connect-to-your-hdinsight-cluster).
+
+### <a name="run-a-spark-scala-application-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Ausführen einer Spark Scala-Anwendung in einem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+Sie können die normalen Schritte ausführen, um einen Auftrag an einen HDInsight ESP-Cluster mit Identitätsbroker (HIB) zu übermitteln. Weitere Anweisungen finden Sie unter [Ausführen einer Spark Scala-Anwendung in einem HDInsight Spark-Cluster](#run-a-spark-scala-application-on-an-hdinsight-spark-cluster).
+
+Die erforderlichen Dateien werden in einen Ordner mit dem Namen Ihres Anmeldekontos hochgeladen, und Sie können den Uploadpfad in der Konfigurationsdatei sehen.
+
+   ![Uploadpfad in der Konfiguration](./media/apache-spark-intellij-tool-plugin/upload-path-in-the-configuration.png)
+
+### <a name="spark-console-on-an-hdinsight-esp-cluster-with-id-broker-hib"></a>Spark-Konsole in einem HDInsight ESP-Cluster mit Identitätsbroker (HIB)
+Sie können eine lokale Spark-Konsole (Scala) oder eine Spark-Konsole mit interaktiver Livy-Sitzung (Scala) in einem HDInsight ESP-Cluster mit Identitätsbroker (HIB) ausführen. Weitere Anweisungen finden Sie unter [Spark-Konsole](#spark-console).
+
+   > [!NOTE]  
+   > Für einen HDInsight ESP-Cluster mit Identitätsbroker (HIB) wird das [Verknüpfen eines Clusters](#link-a-cluster) und das [Remotedebuggen von Apache Spark-Anwendungen](#debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster) derzeit nicht unterstützt.
+
 
 ## <a name="reader-only-role"></a>Rolle nur mit Leseberechtigung
 

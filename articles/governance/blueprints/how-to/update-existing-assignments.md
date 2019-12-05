@@ -1,14 +1,14 @@
 ---
 title: Aktualisieren einer vorhandenen Zuweisung über das Portal
-description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Zuweisung in Azure Blueprints über das Portal erläutert.
-ms.date: 10/25/2018
+description: Hier werden die Mechanismen beim Aktualisieren einer vorhandenen Blaupausenzuweisung in Azure Blueprints über das Portal erläutert.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: f48f8cfb33a05e2bf8dcbe097d3a9eb3a5ebb9db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960355"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406395"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Aktualisieren einer vorhandenen Blaupausenzuweisung
 
@@ -28,7 +28,8 @@ Wenn eine Blaupause zugewiesen ist, kann die Zuweisung aktualisiert werden. Es g
 
    ![Aktualisieren einer vorhandenen Blaupausenzuweisung](../media/update-existing-assignments/update-assignment.png)
 
-1. Die Seite **Blaupause zuweisen** wird geladen, und alle Werte der ursprünglichen Zuweisung sind bereits eingetragen. Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Klicken Sie nach dem Vornehmen der Änderungen auf **Zuweisen**.
+1. Die Seite **Blaupause zuweisen** wird geladen, und alle Werte der ursprünglichen Zuweisung sind bereits eingetragen.
+   Sie können die **Version der Blaupausendefinition**, den Zustand von **Zuweisung sperren** sowie die dynamischen Parameter für die Blaupausendefinition ändern. Klicken Sie nach dem Vornehmen der Änderungen auf **Zuweisen**.
 
 1. Überprüfen Sie auf der Detailseite für die aktualisierte Zuweisung den neuen Status. In diesem Beispiel wurde der Zuweisung **Wird gesperrt** hinzugefügt.
 
@@ -46,7 +47,8 @@ Bei der Bereitstellung der aktualisierten Zuweisungen werden einige wichtige Reg
   - Wird die Rolle oder der Rollenempfänger (Benutzer, Gruppe oder App) geändert, wird eine neue Rollenzuweisung erstellt. Zuvor bereitgestellte Rollenzuweisungen werden beibehalten.
 - Richtlinienzuweisungen
   - Werden die Parameter der Richtlinienzuweisung geändert, wird die vorhandene Zuweisung aktualisiert.
-  - Wird die Definition der Richtlinienzuweisung geändert, wird eine neue Richtlinienzuweisung erstellt. Zuvor bereitgestellte Richtlinienzuweisungen werden beibehalten.
+  - Wird die Definition der Richtlinienzuweisung geändert, wird eine neue Richtlinienzuweisung erstellt.
+    Zuvor bereitgestellte Richtlinienzuweisungen werden beibehalten.
   - Wird das Artefakt der Richtlinienzuweisung aus der Blaupause entfernt, werden bereitgestellte Richtlinienzuweisung beibehalten.
 - Azure-Ressourcen-Manager-Vorlagen
   - Die Vorlage wird über den Ressourcen-Manager als **PUT** verarbeitet. Da diese Aktion für jeden Ressourcentyp anders behandelt wird, sehen Sie sich die Dokumentation der einzelnen eingeschlossenen Ressourcen an, um die Auswirkung dieser von Blaupausen ausgeführten Aktion zu bestimmen.

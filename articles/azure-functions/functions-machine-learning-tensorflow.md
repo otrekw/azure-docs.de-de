@@ -1,21 +1,17 @@
 ---
-title: 'Tutorial: Verwenden von Python und TensorFlow in Azure Functions für Machine Learning-Rückschlüsse | Microsoft-Dokumentation'
+title: Verwenden von Python und TensorFlow in Azure Functions für Machine Learning-Rückschlüsse
 description: In diesem Tutorial wird veranschaulicht, wie Sie TensorFlow-Machine Learning-Modelle in Azure Functions anwenden.
-services: functions
 author: anthonychu
-manager: gwallace
-ms.service: azure-functions
-ms.devlang: python
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082729"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230509"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Anwenden von Machine Learning-Modellen in Azure Functions mit Python und TensorFlow
 

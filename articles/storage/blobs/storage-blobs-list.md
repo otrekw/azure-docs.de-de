@@ -1,23 +1,25 @@
 ---
 title: Auflisten von Blobs mit .NET – Azure Storage
-description: Hier erfahren Sie, wie Sie Blobs in einem Container in Ihrem Azure Storage-Konto mithilfe der .NET-Clientbibliothek auflisten.
+description: Hier erfahren Sie, wie Sie Blobs in einem Container in Ihrem Azure Storage-Konto mithilfe der .NET-Clientbibliothek auflisten. Codebeispiele veranschaulichen, wie Blobs in einer flachen Auflistung angezeigt werden oder wie Blobs hierarchisch aufgelistet werden, als wären Sie in Verzeichnissen oder Ordnern organisiert.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 11/08/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bf9d2d59e993de3807a10a6c39f88b2063024bfc
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4b6dc9d80cfe96e501e575d265b9fa383b1c4d2c
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72599800"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73902014"
 ---
 # <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
 
-Wenn Sie Blobs über Ihren Code auflisten, können Sie eine Reihe von Optionen angeben, um zu steuern, wie Ergebnisse von Azure Storage zurückgegeben werden. In diesem Artikel wird beschrieben, wie Blobs mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) aufgelistet werden.  
+Wenn Sie Blobs über Ihren Code auflisten, können Sie eine Reihe von Optionen angeben, um zu steuern, wie Ergebnisse von Azure Storage zurückgegeben werden. Sie können die Anzahl der Ergebnisse festlegen, die in den einzelnen Ergebnissätzen zurückgegeben werden sollen, und dann die nachfolgenden Sätze abrufen. Sie können ein Präfix angeben, um Blobs zurückzugeben, deren Namen mit dem jeweiligen Zeichen oder der Zeichenfolge beginnen. Sie können Blobs auch in einer flachen Auflistungsstruktur anzeigen oder hierarchisch auflisten. Bei einer hierarchischen Auflistung werden Blobs so zurückgegeben, als wären sie in Ordnern organisiert. 
+
+In diesem Artikel wird beschrieben, wie Blobs mithilfe der [Azure Storage-Clientbibliothek für .NET](/dotnet/api/overview/azure/storage/client) aufgelistet werden.  
 
 ## <a name="understand-blob-listing-options"></a>Grundlegendes zu den Optionen für das Auflisten von Blobs
 
@@ -53,7 +55,7 @@ Wenn mit den Ergebnissen Blobmetadaten zurückgegeben werden sollen, geben Sie f
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Flache Auflistung und hierarchische Auflistung im Vergleich
 
-Blobs in Azure Storage sind in einem flachen Paradigma organisiert statt in einem hierarchischen Paradigma (wie ein klassisches Dateisystem). Sie können Blobs jedoch in *virtuellen Verzeichnissen* organisieren, um ein hierarchisches Paradigma zu imitieren. Ein virtuelles Verzeichnis ist ein Teil des Blobnamens und durch das Trennzeichen gekennzeichnet.
+Blobs in Azure Storage sind in einem flachen Paradigma organisiert statt in einem hierarchischen Paradigma (wie ein klassisches Dateisystem). Sie können Blobs jedoch in *virtuellen Verzeichnissen* organisieren, um eine Ordnerstruktur zu imitieren. Ein virtuelles Verzeichnis bildet einen Teil des Blobnamens und wird durch das Trennzeichen angezeigt.
 
 Wenn Sie also Blobs in virtuellen Verzeichnissen organisieren möchten, verwenden Sie ein Trennzeichen im Blobnamen. Das Standardtrennzeichen ist ein Schrägstrich (/), doch können Sie ein beliebiges Zeichen als Trennzeichen angeben.
 

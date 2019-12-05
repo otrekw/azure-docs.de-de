@@ -1,20 +1,15 @@
 ---
-title: 'Tutorial: Auslösen von Azure Container Instances durch eine Azure-Funktion'
+title: 'Tutorial: Auslösen einer Containergruppe nach Azure-Funktion'
 description: Erstellen einer über HTTP ausgelösten, serverlosen PowerShell-Funktion zum Automatisieren der Erstellung von Azure-Containerinstanzen
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: tutorial
 ms.date: 09/20/2019
-ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 00bd017b0bcff6386e678802c301087819792744
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 49eb0721972a92f33bda2532367bc78280b6e655
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179948"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533375"
 ---
 # <a name="tutorial-use-an-http-triggered-azure-function-to-create-a-container-group"></a>Tutorial: Verwenden einer über HTTP ausgelösten Azure-Funktion zum Erstellen einer Containergruppe
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer selbstgehosteten Integration Runtime als Proxy für SSIS in Azure Data Factory
+title: Konfigurieren einer selbstgehosteten Integration Runtime als Proxy für SSIS
 description: Erfahren Sie, wie Sie eine selbstgehostete Integration Runtime als Proxy für Azure-SSIS Integration Runtime konfigurieren.
 services: data-factory
 documentationcenter: ''
@@ -7,19 +7,21 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 178628db11b95fbd345e94111ebf15809da3fc35
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 11/12/2019
+ms.openlocfilehash: cae15e38f98794a3e97ad0b06329aa2e62c2945e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684305"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217645"
 ---
 # <a name="configure-self-hosted-ir-as-a-proxy-for-azure-ssis-ir-in-adf"></a>Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF
+
 In diesem Artikel wird beschrieben, wie Sie SSIS-Pakete (SQL Server Integration Services) in Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) mit einer selbstgehosteten IR ausführen, die als Proxy konfiguriert ist.  Mit dieser Funktion können Sie auf lokale Daten zugreifen, ohne Ihre [Azure-SSIS IR mit einem virtuellen Netzwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network) zu verbinden.  Dies ist hilfreich, wenn Ihr Unternehmensnetzwerk über eine übermäßig komplexe Konfiguration bzw. restriktive Richtlinie verfügt, in die Sie Ihre Azure-SSIS IR einfügen müssen.
 
 Diese Funktion teilt Ihr Paket, das einen Datenflusstask mit lokaler Datenquelle enthält, in zwei Stagingtasks auf: Der erste, der für Ihre selbstgehostete IR ausgeführt wird, verschiebt zunächst Daten aus der lokalen Datenquelle in einen Stagingbereich in Azure Blob Storage, während der zweite, der für Azure-SSIS IR ausgeführt wird, dann Daten aus dem Stagingbereich in das vorgesehene Datenziel verschiebt.
@@ -58,7 +60,7 @@ Wenn Sie neue Pakete mit Datenflusstasks mit OLEDB-/Flatfilequellen für den lok
 
 ![Aktivieren der ConnectByProxy-Eigenschaft](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-manager-properties.png)
 
-Sie können diese Eigenschaft auch aktivieren, wenn Sie vorhandene Pakete ausführen, ohne sie manuell einzeln ändern zu müssen.  Es gibt 2 Möglichkeiten:
+Sie können diese Eigenschaft auch aktivieren, wenn Sie vorhandene Pakete ausführen, ohne sie manuell einzeln ändern zu müssen.  Es gibt zwei Optionen:
 - Öffnen, Neuerstellen und erneutes Bereitstellen des Projekts, das diese Pakete enthält, mit den neuesten SSDT, die in Ihrer Azure-SSIS IR ausgeführt werden sollen: Die Eigenschaft kann dann aktiviert werden, indem sie für die entsprechenden Verbindungs-Manager auf **TRUE** festgelegt wird, die auf der Registerkarte **Connection Managers** (Verbindungs-Manager) des Popupfensters „Execute Package“ (Paket ausführen) angezeigt werden, wenn Pakete aus SSMS ausgeführt werden.
 
   ![Aktivieren der ConnectByProxy-Eigenschaft (2)](media/self-hosted-integration-runtime-proxy-ssis/shir-connection-managers-tab-ssms.png)
@@ -87,10 +89,10 @@ Die zweiten Stagingtasks, die für ihre Azure-SSIS IR ausgeführt werden, werden
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Zurzeit werden nur OLEDB-/Flatfile-Verbindungs-Manager und OLEDB-/Flatfilequellen unterstützt. 
+- Zurzeit werden nur Datenflusstasks mit ODBC-/OLEDB-/Flatfile-Verbindungs-Managern und ODBC-/OLEDB-/Flatfilequellen unterstützt. 
 - Nur mit Azure Blob Storage verknüpfte Dienste, die mit den Authentifizierungsmethoden **Kontoschlüssel**/**SAS-URI**/**Dienstprinzipal** konfiguriert sind, werden derzeit unterstützt.
 - Nur die selbstgehostete IR, die unter der gleichen ADF bereitgestellt wird, in der auch Ihre Azure-SSIS IR bereitgestellt wird, wird zurzeit unterstützt.
-- Die Verwendung von SSIS-Parametern/-Variablen innerhalb der Eigenschaften von OLEDB-/Flatfilequellen und Verbindungs-Managern wird nicht unterstützt.
+- Die Verwendung von SSIS-Parametern/-Variablen innerhalb der Eigenschaften von ODBC-/OLEDB-/Flatfilequellen und Verbindungs-Managern wird derzeit nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sobald Sie Ihre selbstgehostete IR als Proxy für Ihre Azure-SSIS IR konfiguriert haben, können Sie Pakete bereitstellen und ausführen, um auf lokale Daten mithilfe von Aktivitäten „SSIS-Paket ausführen“ in ADF-Pipelines zuzugreifen. Siehe hierzu [Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity).

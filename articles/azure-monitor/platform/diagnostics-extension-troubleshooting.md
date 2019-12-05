@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/08/2019
-ms.openlocfilehash: 63ddb329e37ea3da589e7d2eeaebabb42aa2b467
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 0a6322edccc2047ffd9d67e4e3ed113e668898da
+ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555519"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73834691"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -208,15 +208,15 @@ Mit diesem Code werden vier Tabellen generiert:
 
 | Ereignis | Tabellenname |
 | --- | --- |
-| provider=”prov1” &lt;Event id=”1” /&gt; |WADEvent+MD5(“prov1”)+”1” |
-| provider=”prov1” &lt;Event id=”2” eventDestination=”dest1” /&gt; |WADdest1 |
-| provider=”prov1” &lt;DefaultEvents /&gt; |WADDefault+MD5(“prov1”) |
-| provider=”prov2” &lt;DefaultEvents eventDestination=”dest2” /&gt; |WADdest2 |
+| provider="prov1" &lt;Event id="1" /&gt; |WADEvent+MD5("prov1")+"1" |
+| provider="prov1" &lt;Event id="2" eventDestination="dest1" /&gt; |WADdest1 |
+| provider="prov1" &lt;DefaultEvents /&gt; |WADDefault+MD5("prov1") |
+| provider="prov2" &lt;DefaultEvents eventDestination="dest2" /&gt; |WADdest2 |
 
 ## <a name="references"></a>Referenzen
 
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Überprüfen der Konfiguration der Diagnoseerweiterung
-Die einfachste Möglichkeit zum Überprüfen Ihrer Erweiterungskonfiguration ist das Navigieren zum [Azure-Ressourcen-Explorer](http://resources.azure.com) und dann zu dem virtuellen Computer oder Clouddienst, unter dem sich die betreffende Azure-Diagnoseerweiterung (IaaSDiagnostics/PaaDiagnostics) befindet.
+Die einfachste Möglichkeit zum Überprüfen Ihrer Erweiterungskonfiguration ist das Navigieren zum [Azure-Ressourcen-Explorer](https://resources.azure.com) und dann zu dem virtuellen Computer oder Clouddienst, unter dem sich die betreffende Azure-Diagnoseerweiterung (IaaSDiagnostics/PaaDiagnostics) befindet.
 
 Greifen Sie alternativ dazu über Remotedesktop auf den Computer zu, und sehen Sie sich die Datei für die Azure-Diagnosekonfiguration an, die im Abschnitt zum Protokollartefaktpfad beschrieben ist.
 

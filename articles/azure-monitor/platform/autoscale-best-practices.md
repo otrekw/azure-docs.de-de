@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 604cf0564039a542ec117612bcbf74601388c0f7
+ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61063381"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74007621"
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 Die automatische Skalierung von Azure Monitor gilt nur für [VM.Skalierungsgruppen](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Clouddienste](https://azure.microsoft.com/services/cloud-services/), [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/) und [API Management-Dienste](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -48,8 +48,8 @@ Wir empfehlen die sorgfältige Auswahl verschiedener Schwellenwerte für das hor
 
 Wir empfehlen Ihnen, die Einstellungen für die automatische Skalierung *nicht* wie in den unten gezeigten Beispielen vorzunehmen. In diesen sind die Schwellenwerte für die Bedingungen des horizontalen Hoch- und Herunterskalierens gleich oder sehr ähnlich:
 
-* Erhöhe die Anzahl der Instanzen um 1, wenn Threadanzahl <= 600
-* Verringere die Anzahl der Instanzen um 1, wenn Threadanzahl >= 600
+* Erhöhe die Anzahl der Instanzen um 1, wenn Threadanzahl >= 600
+* Verringere die Anzahl der Instanzen um 1, wenn Threadanzahl <= 600
 
 Sehen wir uns nun ein Beispiel an, das zu möglicherweise verwirrendem Verhalten führen kann. Gehen Sie dabei von der folgenden Abfolge aus.
 

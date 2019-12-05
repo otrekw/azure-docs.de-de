@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 09/16/2019
+ms.date: 11/18/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b39c1596dd16f8ec6235878abdbf37492abd1ea8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: f10d3ee78dffb32db01a48ccf935e5443fae08b6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177073"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227460"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -33,8 +33,8 @@ Danach stellt Ihre Beispiel-App ganz ohne Benutzername und Kennwort eine sichere
 > [!NOTE]
 > Die in diesem Tutorial behandelten Schritte gelten für die folgenden Versionen:
 > 
-> - .NET Framework 4.7.2 und höher
-> - .NET Core 2.2 und höher
+> - .NET Framework 4.7.2
+> - .NET Core 2.2
 >
 
 Sie lernen Folgendes:
@@ -113,7 +113,7 @@ Die Schritte für Ihr Projekt hängen davon ab, ob es sich um ein ASP.NET-Projek
 Öffnen Sie in Visual Studio die Paket-Manager-Konsole, und fügen Sie das NuGet-Paket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) hinzu:
 
 ```powershell
-Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.0
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 ```
 
 Nehmen Sie in *Web.config* nacheinander folgende Änderungen vor:
@@ -145,7 +145,7 @@ Drücken Sie `Ctrl+F5`, um die App erneut auszuführen. Die gleiche CRUD-App in 
 Öffnen Sie in Visual Studio die Paket-Manager-Konsole, und fügen Sie das NuGet-Paket [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) hinzu:
 
 ```powershell
-Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.0
+Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.1
 ```
 
 Unter [Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md) wird die Verbindungszeichenfolge `MyDbConnection` überhaupt nicht verwendet, weil die lokale Entwicklungsumgebung eine Sqlite-Datenbankdatei und die Azure-Produktionsumgebung eine Verbindungszeichenfolge aus App Service nutzt. Bei der Active Directory-Authentifizierung müssen beide Umgebungen die gleiche Verbindungszeichenfolge verwenden. Ersetzen Sie in *appsettings.json* den Wert der Verbindungszeichenfolge `MyDbConnection` durch Folgendes:
@@ -184,8 +184,8 @@ var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
 conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
-> [!TIP]
-> Aus Gründen der Übersichtlichkeit wird synchroner Democode verwendet. Weitere Informationen finden Sie unter [Asynchronous guide for constructors](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#constructors) (Asynchroner Leitfaden für Konstruktoren).
+> [!NOTE]
+> Zur Vereinfachung und besseren Übersichtlichkeit wird synchroner Democode verwendet.
 
 Das ist alles, was Sie benötigen, um eine Verbindung mit SQL-Datenbank herzustellen. Beim Debuggen in Visual Studio verwendet Ihr Code den Azure AD-Benutzer, den Sie unter [Einrichten von Visual Studio](#set-up-visual-studio) konfiguriert haben. Sie richten den SQL-Datenbank-Server später ein, um eine Verbindung von der verwalteten Identität ihrer App Service-App zuzulassen. Die `AzureServiceTokenProvider`-Klasse speichert das Token im Arbeitsspeicher zwischen und ruft es kurz vor dem Ablaufdatum von Azure AD ab. Sie benötigen keinen benutzerdefinierten Code, um das Token zu aktualisieren.
 
@@ -217,20 +217,18 @@ Beispiel für die Ausgabe:
 }
 ```
 
-### <a name="add-managed-identity-to-an-azure-ad-group"></a>Hinzufügen der verwalteten Identität zu einer Azure AD-Gruppe
+### <a name="grant-permissions-to-managed-identity"></a>Erteilen von Berechtigungen für eine verwaltete Identität
 
-Um dieser Identität Zugriff auf Ihre SQL-Datenbank zu gewähren, müssen Sie sie einer [Azure AD-Gruppe](../active-directory/fundamentals/active-directory-manage-groups.md) hinzufügen. Fügen Sie sie in Cloud Shell einer neuen Gruppe namens _myAzureSQLDBAccessGroup_ hinzu, wie im folgenden Skript zu sehen:
-
-```azurecli-interactive
-groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
-msiobjectid=$(az webapp identity show --resource-group myResourceGroup --name <app-name> --query principalId --output tsv)
-az ad group member add --group $groupid --member-id $msiobjectid
-az ad group member list -g $groupid
-```
-
-Wenn Sie die Parameter `--query objectId --output tsv` weglassen, wird die vollständige JSON-Ausgabe für die einzelnen Befehle angezeigt.
-
-### <a name="grant-permissions-to-azure-ad-group"></a>Erteilen von Berechtigungen für die Azure AD-Gruppe
+> [!NOTE]
+> Sie können die Identität einer [Azure AD-Gruppe](../active-directory/fundamentals/active-directory-manage-groups.md) hinzufügen und anschließend der Azure AD-Gruppe (und nicht der Identität) SQL-Datenbank-Zugriff erteilen. Mit den folgenden Befehlen wird beispielsweise die verwaltete Identität aus dem vorherigen Schritt zu einer neuen Gruppe namens _myAzureSQLDBAccessGroup_ hinzugefügt:
+> 
+> ```azurecli-interactive
+> groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
+> msiobjectid=$(az webapp identity show --resource-group myResourceGroup --name <app-name> --query principalId --output tsv)
+> az ad group member add --group $groupid --member-id $msiobjectid
+> az ad group member list -g $groupid
+> ```
+>
 
 Melden Sie sich in Cloud Shell mithilfe des Befehls „sqlcmd“ bei SQL-Datenbank an. Ersetzen Sie _\<server-name>_ durch den Namen Ihres SQL-Datenbank-Servers, _\<db-name>_ durch den von Ihrer App verwendeten Datenbanknamen sowie _\<aad-user-name>_ und _\<aad-password>_ durch die Anmeldeinformationen Ihres Azure AD-Benutzers.
 
@@ -241,12 +239,14 @@ sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P 
 Führen Sie an der SQL-Eingabeaufforderung für die gewünschte Datenbank die folgenden Befehle aus, um die Azure AD-Gruppe hinzuzufügen und der App die nötigen Berechtigungen zu erteilen. Beispiel: 
 
 ```sql
-CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
-ALTER ROLE db_datareader ADD MEMBER [myAzureSQLDBAccessGroup];
-ALTER ROLE db_datawriter ADD MEMBER [myAzureSQLDBAccessGroup];
-ALTER ROLE db_ddladmin ADD MEMBER [myAzureSQLDBAccessGroup];
+CREATE USER [<identity-name>] FROM EXTERNAL PROVIDER;
+ALTER ROLE db_datareader ADD MEMBER [<identity-name>];
+ALTER ROLE db_datawriter ADD MEMBER [<identity-name>];
+ALTER ROLE db_ddladmin ADD MEMBER [<identity-name>];
 GO
 ```
+
+*\<identity-name>* ist der Name der verwalteten Identität in Azure AD. Da er vom System zugewiesen wird, ist er immer mit dem Namen Ihrer App Service-App identisch. Wenn Sie Berechtigungen für eine Azure AD-Gruppe erteilen möchten, verwenden Sie stattdessen den Anzeigenamen der Gruppe (etwa *myAzureSQLDBAccessGroup*).
 
 Geben Sie `EXIT` ein, um zur Cloud Shell-Eingabeaufforderung zurückzukehren.
 

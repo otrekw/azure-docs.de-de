@@ -1,20 +1,20 @@
 ---
 title: 'Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen'
-description: Es wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows- oder Linux-VMs erstellen.
-ms.date: 09/20/2019
+description: Es wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows- oder Linux-VMs mit Azure PowerShell erstellen.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2e653d07e783425afdcd71f9d58e3569692faaf9
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959482"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407055"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gewusst wie: Erstellen von Richtlinien für Gastkonfigurationen
 
 Für die Gastkonfiguration wird ein [DSC](/powershell/scripting/dsc/overview/overview)-Ressourcenmodul (Desired State Configuration) verwendet, um die Konfiguration für die Überprüfung der Azure-Computer zu erstellen. Die DSC-Konfiguration definiert den Zustand, in dem sich der Computer befinden soll. Wenn bei der Evaluierung der Konfiguration ein Fehler auftritt, wird die Richtlinienauswirkung **auditIfNotExists** ausgelöst, und der Computer wird als **nicht konform** eingestuft.
 
-Die [Azure Policy-Gastkonfiguration](/azure/governance/policy/concepts/guest-configuration) kann nur zur Überwachung von Einstellungen in Computern verwendet werden. Die Wiederherstellung von Einstellungen in Computern ist noch nicht verfügbar.
+Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nur zur Überwachung von Einstellungen in Computern verwendet werden. Die Wiederherstellung von Einstellungen in Computern ist noch nicht verfügbar.
 
 Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprüfen des Zustands eines Azure-Computers zu erstellen.
 
@@ -23,7 +23,7 @@ Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprü
 
 ## <a name="add-the-guestconfiguration-resource-module"></a>Hinzufügen des GuestConfiguration-Ressourcenmoduls
 
-Zum Erstellen einer Richtlinie für Gastkonfigurationen muss das Ressourcenmodul hinzugefügt werden. Dieses Ressourcenmodul kann mit einer lokal installierten PowerShell-Instanz, mit [Azure Cloud Shell](https://shell.azure.com) oder mit dem [Azure PowerShell-Docker-Image](https://hub.docker.com/rsdk-powershell/) verwendet werden.
+Zum Erstellen einer Richtlinie für Gastkonfigurationen muss das Ressourcenmodul hinzugefügt werden. Dieses Ressourcenmodul kann mit einer lokal installierten PowerShell-Instanz, mit [Azure Cloud Shell](https://shell.azure.com) oder mit dem [Azure PowerShell Core Docker-Image](https://hub.docker.com/r/azuresdk/azure-powershell-core) verwendet werden.
 
 ### <a name="base-requirements"></a>Basisanforderungen
 
@@ -165,7 +165,8 @@ Parameter des Cmdlets `New-GuestConfigurationPackage`:
 - **Pfad**: Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
 - **ChefProfilePath**: Vollständiger Pfad zum InSpec-Profil. Dieser Parameter wird nur unterstützt, wenn Inhalt für die Linux-Überprüfung erstellt wird.
 
-Das fertige Paket muss an einem Speicherort gespeichert werden, auf den von den verwalteten virtuellen Computern zugegriffen werden kann. Beispiele hierfür sind GitHub-Repositorys, ein Azure-Repository oder Azure Storage. Falls Sie das Paket nicht öffentlich zugänglich machen möchten, können Sie ein [SAS-Token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in die URL einfügen. Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) für Computer in einem privaten Netzwerk implementieren. Diese Konfiguration gilt aber nur für den Zugriff auf das Paket und nicht für die Kommunikation mit dem Dienst.
+Das fertige Paket muss an einem Speicherort gespeichert werden, auf den von den verwalteten virtuellen Computern zugegriffen werden kann. Beispiele hierfür sind GitHub-Repositorys, ein Azure-Repository oder Azure Storage. Falls Sie das Paket nicht öffentlich zugänglich machen möchten, können Sie ein [SAS-Token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in die URL einfügen.
+Sie können auch einen [Dienstendpunkt](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) für Computer in einem privaten Netzwerk implementieren. Diese Konfiguration gilt aber nur für den Zugriff auf das Paket und nicht für die Kommunikation mit dem Dienst.
 
 ### <a name="working-with-secrets-in-guest-configuration-packages"></a>Verwenden von Geheimnissen in Paketen für die Gastkonfiguration
 
@@ -412,4 +413,4 @@ Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool d
 
 - Informieren Sie sich über die Überprüfung von VMs mit [Gastkonfiguration](../concepts/guest-configuration.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](get-compliance-data.md).

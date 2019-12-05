@@ -1,5 +1,5 @@
 ---
-title: Aktivieren von mehrinstanzenfähigen Anwendungen mit Azure Digital Twins | Microsoft-Dokumentation
+title: Aktivieren von mehrinstanzenfähigen Anwendungen – Azure Digital Twins | Microsoft-Dokumentation
 description: Konfigurieren von mehrinstanzenfähigen Anwendungen für Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
-ms.openlocfilehash: 070b04b27982b84f101ee4d6f85f4e5b82760092
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.date: 11/21/2019
+ms.openlocfilehash: 65e1fa3fe371766566eeeaaa2d33479ea0243d61
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958788"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383365"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>Aktivieren von mehrinstanzenfähigen Anwendungen mit Azure Digital Twins
 
@@ -54,7 +54,7 @@ Um das vorgenannte Szenario zu lösen, müssen die folgenden Aktionen ausgeführ
 
 - Im [Azure-Portal](https://portal.azure.com) führt der Azure Active Directory-Mandantenadministrator des **KUNDEN** folgende Schritte aus:
 
-  1. Er öffnet **Abonnements**.
+  1. Suchen Sie im oberen Azure-Suchfeld nach **Abonnements**. Wählen Sie **Abonnements**.
   1. Er wählt das Abonnement aus, das den Azure Active Directory-Mandanten umfasst, der in der App des **ENTWICKLERS** verwendet werden soll.
 
      [![Azure Active Directory-Abonnements](media/multitenant/ad-subscriptions.png)](media/multitenant/ad-subscriptions.png#lightbox)

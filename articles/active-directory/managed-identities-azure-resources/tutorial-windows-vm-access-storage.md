@@ -1,5 +1,5 @@
 ---
-title: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage
+title: Tutorial`:` Verwenden einer verwalteten Identität für den Zugriff auf Azure Storage – Windows – Azure AD
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität eines virtuellen Windows-Computers verwenden, um auf Azure Storage zuzugreifen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2449307936839d50fe0d48a0536ca4dd9c8d85c3
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191079"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181919"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Storage über Zugriffsschlüssel
 
@@ -74,7 +74,7 @@ Später werden wir eine Datei in das neue Speicherkonto hoch- und daraus herunte
 Azure Storage unterstützt die Azure AD-Authentifizierung nicht nativ.  Sie können die systemseitig zugewiesene verwaltete Identität Ihres virtuellen Computers jedoch zum Abrufen von Speicherkonto-Zugriffsschlüsseln aus Resource Manager verwenden und dann mithilfe eines Schlüssels auf den Speicher zugreifen.  In diesem Schritt gewähren Sie der systemseitig zugewiesenen verwalteten Identität Ihres virtuellen Computers Zugriff auf die Schlüssel des Speicherkontos.   
 
 1. Navigieren Sie zurück zum neu erstellten Speicherkonto.  
-2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)**.  
+2. Klicken Sie im linken Bereich auf den Link **Zugriffssteuerung (IAM)** .  
 3. Klicken Sie oben auf der Seite auf **+ Rollenzuweisung hinzufügen**, um dem virtuellen Computer eine neue Rollenzuweisung hinzuzufügen.
 4. Legen Sie **Rolle** rechts auf der Seite auf „Dienstrolle Speicherkonto-Schlüsseloperator“ fest. 
 5. Legen Sie in der nächsten Dropdownliste **Zugriff zuweisen zu** auf die Ressource „Virtueller Computer“ fest.  

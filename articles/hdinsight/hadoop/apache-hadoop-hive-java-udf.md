@@ -2,18 +2,18 @@
 title: Benutzerdefinierte Java-Funktion (UDF) mit Apache Hive – Azure HDInsight
 description: Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) zur Verwendung mit Apache Hive erstellen. Diese benutzerdefinierte Beispielfunktion (UDF) konvertiert eine Tabelle von Textzeichenfolgen in Kleinbuchstaben.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.author: hrasheed
-ms.openlocfilehash: 5690f2cc5bc85d7bcdbf1d05930a05bcc2e764c0
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/20/2019
+ms.openlocfilehash: 73a2a612a4eeb4a59f12abf0660fffb092f0547f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044781"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327210"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>Verwenden einer benutzerdefinierten Java-Funktion mit Apache Hive in HDInsight
 
@@ -32,6 +32,7 @@ Hier erfahren Sie, wie Sie eine Java-basierte benutzerdefinierte Funktion (UDF) 
     > Wenn Sie die Python-Dateien auf einem Windows-Client erstellen, müssen Sie einen Editor verwenden, der als Zeilenende LF verwendet. Wenn Sie nicht sicher sind, ob der Editor LF oder CRLF verwendet, finden Sie im Abschnitt [Problembehandlung](#troubleshooting) Schritte für das Entfernen des CR-Zeichens.
 
 ## <a name="test-environment"></a>Testumgebung
+
 Für diesen Artikel wurde ein Computer unter Windows 10 verwendet.  Die Befehle wurden an einer Eingabeaufforderung ausgeführt, und die verschiedenen Dateien wurden mit dem Windows-Editor bearbeitet. Nehmen Sie die Ihrer Umgebung entsprechenden Änderungen vor.
 
 Geben Sie an einer Eingabeaufforderung die folgenden Befehle ein, um eine Arbeitsumgebung zu erstellen:

@@ -1,26 +1,20 @@
 ---
-title: Erstellen einer Blaupause im Portal
-description: Verwenden Sie Azure Blueprints, um Artefakte über das Azure-Portal zu erstellen, zu definieren und bereitzustellen.
-ms.date: 03/11/2019
+title: 'Schnellstart: Erstellen einer Blaupause im Portal'
+description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte über das Azure-Portal zu erstellen, zu definieren und bereitzustellen.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 1c2d619a0383cc9542bc6dc3a5f5822f0477237c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960452"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321941"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Schnellstart: Definieren und Zuweisen einer Blaupause im Portal
 
 Wenn Sie sich mit der Erstellung und Zuweisung von Blaupausen vertraut machen, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Azure Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprints einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause durchführen. Zu diesen Aufgaben zählen:
 
-> [!div class="checklist"]
-> - Erstellen einer neuen Blaupause und Hinzufügen verschiedener unterstützter Artefakte
-> - Ändern einer vorhandenen Blaupause, die sich noch im **Entwurf** befindet
-> - Markieren einer Blaupause als bereit für die Zuweisung mit **Veröffentlicht**
-> - Zuweisen einer Blaupause zu einem vorhandenen Abonnement
-> - Überprüfen von Status und Fortschritt einer zugewiesenen Blaupause
-> - Entfernen einer Blaupause, die einem Abonnement zugewiesen wurde
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
@@ -296,9 +290,7 @@ Entfernen Sie eine Blaupausenzuweisung aus einem Abonnement, wenn Sie sie nicht 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./concepts/resource-locking.md) können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).
+In dieser Schnellstartanleitung haben Sie eine Blaupause mit dem Azure-Portal erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)

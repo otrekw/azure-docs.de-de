@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Azure Resource Manager-Vorlage'
+title: 'Tutorial: Verwenden der Parameterdatei zum Bereitstellen einer Vorlage'
 description: Verwenden Sie Parameterdateien, die die Werte enthalten, die Sie für die Bereitstellung Ihrer Azure Resource Manager-Vorlage verwenden möchten.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1b01e9ece2d194d76c7184a676f17d626c41a011
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177551"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405985"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Tutorial: Verwenden von Parameterdateien zum Bereitstellen Ihrer Resource Manager-Vorlage
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu Tags](template-tutorial-add-tags.md) durchzufüh
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Ihre Vorlage verfügt über zahlreiche Parameter, die Sie während der Bereitstellung angeben können. Am Ende des vorherigen Tutorials sah Ihre Vorlage wie folgt aus:
 
@@ -49,7 +46,7 @@ Erstellen Sie erneut eine neue Datei mit dem folgenden Inhalt. Speichern Sie die
 
 Diese Datei ist Ihre Parameterdatei für die Produktionsumgebung. Beachten Sie, dass „Standard_GRS“ als Speicherkonto verwendet wird, Ressourcen mit dem Präfix **contoso** benannt werden, und das **Environment**-Tag auf **Production** festgelegt wird. In einer realen Produktionsumgebung würden Sie auch einen App-Dienst mit einer anderen SKU als „Free“ verwenden, für dieses Tutorial verwenden wir diese SKU aber weiterhin.
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Verwenden Sie entweder die Azure CLI oder Azure PowerShell, um die Vorlage bereitzustellen.
 
@@ -119,7 +116,7 @@ az group deployment create \
 
 ---
 
-## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
+## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 
 Sie können die Bereitstellung überprüfen, indem Sie sich die Ressourcengruppen im Azure-Portal ansehen.
 

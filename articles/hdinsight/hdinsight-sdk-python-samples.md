@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/08/2019
-ms.openlocfilehash: 14d7c6c6352528207a20071908c31ea684dde19d
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 64e1f172a947cb08795272fe2a022e9d7beac7a6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903638"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215724"
 ---
 # <a name="azure-hdinsight-python-samples"></a>Azure HDInsight: Python-Beispiele
 
@@ -21,6 +21,9 @@ ms.locfileid: "73903638"
 > * [.NET-Beispiele](hdinsight-sdk-dotnet-samples.md)
 > * [Java-Beispiele](hdinsight-sdk-java-samples.md)
 <!-- * [Go Examples](hdinsight-sdk-go-samples.md)-->
+
+> [!Important]
+> Python 2.7 gilt ab 1. Januar 2020 als veraltet. Wenn Sie noch Python 2.7 verwenden, führen Sie ein Upgrade auf 3.7 durch, um das HDInsight Python SDK verwenden zu können.  
 
 Dieser Artikel enthält Folgendes:
 

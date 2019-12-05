@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ec1842d534dcb1e9ddef149d3ae879677b29e715
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b90e5ccf38e95d33c4b5b6f3b8da0e91a4facb5a
+ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263025"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74023738"
 ---
 # <a name="create-diagnostic-setting-to-collect-platform-logs-and-metrics-in-azure"></a>Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure
 [Plattformprotokolle](resource-logs-overview.md) in Azure liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformprotokolle an verschiedenen Zielen zu erfassen.
@@ -42,7 +42,8 @@ Plattformprotokolle können an die Ziele in der folgenden Tabelle gesendet werde
 | [Azure-Speicherkonto](resource-logs-collect-storage.md) | Das Archivieren von Protokollen in einem Azure-Speicherkonto ist für die Überwachung, statische Analyse oder Sicherung nützlich. |
 
 
-
+> [!IMPORTANT]
+> Azure Data Lake Storage Gen2-Konten werden derzeit nicht als Ziel für Diagnoseeinstellungen unterstützt, auch wenn sie möglicherweise als gültige Option im Azure-Portal aufgeführt werden.
 
 ## <a name="create-diagnostic-settings-in-azure-portal"></a>Erstellen von Diagnoseeinstellungen im Azure-Portal
 Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monitor-Menü oder über das Menü für die Ressource konfigurieren.
@@ -92,7 +93,7 @@ Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellung
 
 
 ## <a name="create-diagnostic-settings-using-powershell"></a>Erstellen von Diagnoseeinstellungen mithilfe von PowerShell
-Verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](https://docs.microsoft.com/en-us/powershell/module/az.monitor/set-azdiagnosticsetting), um eine Diagnoseeinstellung mit [Azure PowerShell](powershell-quickstart-samples.md) zu erstellen. Beschreibungen der zugehörigen Parameter finden Sie in der Dokumentation zu diesem Cmdlet.
+Verwenden Sie das Cmdlet [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting), um eine Diagnoseeinstellung mit [Azure PowerShell](powershell-quickstart-samples.md) zu erstellen. Beschreibungen der zugehörigen Parameter finden Sie in der Dokumentation zu diesem Cmdlet.
 
 Es folgt ein Beispiel für ein PowerShell-Cmdlet zum Erstellen einer Diagnoseeinstellung, die alle drei Ziele verwendet.
 

@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Hinzufügen von Parametern zur Azure Resource Manager-Vorlage'
+title: 'Tutorial: Hinzufügen von Parametern zu einer Vorlage'
 description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Parameter hinzu, damit sie wiederverwendet werden kann.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001497"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406086"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Tutorial: Hinzufügen von Parametern zu Ihrer Resource Manager-Vorlage
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu Ressourcen](template-tutorial-add-resource.md) d
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
@@ -33,7 +30,7 @@ Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
 Möglicherweise haben Sie bemerkt, dass es bei dieser Vorlage ein Problem gibt. Der Name des Speicherkontos ist hartcodiert. Sie können mit dieser Vorlage immer nur das gleiche Speicherkonto bereitstellen. Um ein Speicherkonto mit einem anderen Namen bereitzustellen, müssten Sie eine neue Vorlage erstellen, was natürlich nicht praktisch ist, wenn Sie Ihre Bereitstellungen automatisieren möchten.
 
-## <a name="make-your-template-reusable"></a>Ermöglichen der Wiederverwendung Ihrer Vorlage
+## <a name="make-template-reusable"></a>Ermöglichen der Wiederverwendung einer Vorlage
 
 Damit Ihre Vorlage wiederverwendet werden kann, fügen Sie einen Parameter hinzu, mit dem Sie einen Speicherkontonamen übergeben können. Der hervorgehobene JSON-Code im folgenden Beispiel zeigt, was sich in der Vorlage geändert hat. Der Parameter **storageName** wird als Zeichenfolge identifiziert. Die maximale Länge ist auf 24 Zeichen festgelegt, damit keine zu langen Namen verwendet werden.
 
@@ -41,9 +38,9 @@ Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt d
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
-Jetzt stellen Sie die Vorlage bereit. Im folgenden Beispiel wird die Vorlage mit der Azure CLI oder PowerShell bereitgestellt. Dabei geben Sie den Namen des Speicherkontos als einen der Werte im Bereitstellungsbefehl an. Geben Sie für das Speicherkonto den Namen an, den Sie im vorherigen Tutorial verwendet haben.
+Nun stellen Sie die Vorlage bereit. Im folgenden Beispiel wird die Vorlage mit der Azure CLI oder PowerShell bereitgestellt. Dabei geben Sie den Namen des Speicherkontos als einen der Werte im Bereitstellungsbefehl an. Geben Sie für das Speicherkonto den Namen an, den Sie im vorherigen Tutorial verwendet haben.
 
 Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
@@ -87,7 +84,7 @@ Mit der vorherigen Vorlage wurde immer ein Standard_LRS-Speicherkonto bereitgest
 
 Der Parameter **storageSKU** hat einen Standardwert. Dieser Wert wird verwendet, wenn während der Bereitstellung kein Wert angegeben wird. Außerdem verfügt er über eine Liste zulässiger Werte. Diese entsprechen den Werten, die zum Erstellen eines Speicherkontos erforderlich sind, und verhindern, dass Benutzer Ihrer Vorlage SKUs übergeben, die nicht funktionieren.
 
-## <a name="redeploy-the-template"></a>Erneutes Bereitstellen der Vorlage
+## <a name="redeploy-template"></a>Erneutes Bereitstellen der Vorlage
 
 Jetzt können Sie Ihre Vorlage erneut bereitstellen. Da die Standard-SKU auf **Standard_LRS** festgelegt ist, müssen Sie keinen Wert für diesen Parameter angeben.
 

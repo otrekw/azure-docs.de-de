@@ -1,5 +1,5 @@
 ---
-title: Verwenden einer systemseitig zugewiesenen verwalteten Identität einer Linux-VM für den Zugriff auf die Azure AD Graph-API
+title: Tutorial`:` Verwenden einer verwalteten Linux-VM-Identität für den Zugriff auf die Azure AD Graph-API
 description: In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltete Identität einer Linux-VM verwenden, um auf die Azure AD Graph-API zuzugreifen.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445396"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183647"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität einer Linux-VM für den Zugriff auf die Azure AD Graph-API
 

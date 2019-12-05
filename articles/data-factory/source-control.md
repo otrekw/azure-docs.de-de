@@ -12,12 +12,12 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 5f497bd06868d586f8378cb81e870a750b8a1670
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 264c60c719ffdd94664ae3a85fc67894d14f394d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122886"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484457"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 
@@ -232,7 +232,7 @@ Normalerweise möchten Sie nicht, dass jedes Teammitglied die Berechtigung hat, 
 *   Alle Teammitglieder sollten über Leseberechtigungen für die Data Factory verfügen.
 *   Nur eine ausgewählte Gruppe von Personen sollte in der Factory veröffentlichen dürfen. Zu diesem Zweck müssen Sie über die Rolle **Data Factory-Mitwirkender** für die Factory verfügen. Weitere Informationen zu Berechtigungen finden Sie unter [Rollen und Berechtigungen für Azure Data Factory](concepts-roles-permissions.md).
    
-Es wird empfohlen, keine direkten Eincheckvorgänge im Kollaborationsbranch zuzulassen. Diese Einschränkung kann helfen, Fehler zu vermeiden, da jeder Eincheckvorgang einen Pull Request-Prozess durchläuft.
+Es wird empfohlen, keine direkten Eincheckvorgänge im Kollaborationsbranch zuzulassen. Diese Einschränkung kann dazu beitragen, Fehler zu vermeiden, da jeder Eincheckvorgang einen Pull Request-Prozess durchläuft, der unter [Erstellen von Featurebranches](source-control.md#creating-feature-branches) beschrieben ist.
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Verwenden von Kennwörtern aus Azure Key Vault
 
@@ -249,7 +249,7 @@ Wenn der Branch für die Veröffentlichung nicht mit dem Masterbranch synchron i
 1. Entfernen des aktuellen Git-Repositorys
 1. Konfigurieren Sie Git mit denselben Einstellungen neu. Stellen Sie jedoch sicher, dass **Vorhandene Data Factory Ressourcen in Repository importieren** ausgewählt ist, und wählen Sie **Neuer Branch** aus.
 1. Löschen aller Ressourcen aus dem Kollaborationsbranch
-1. Erstellen eines Pull Requests zum Mergen der Änderungen in den Kollaborationsbranch 
+1. Erstellen eines Pull Request zum Mergen der Änderungen in den Kollaborationsbranch 
 
 ## <a name="provide-feedback"></a>Feedback geben
 Wählen Sie **Feedback** aus, um Kommentare zu Funktionen abzugeben oder um Microsoft Probleme mit dem Tool zu melden:

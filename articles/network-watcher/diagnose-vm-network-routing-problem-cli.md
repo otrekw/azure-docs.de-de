@@ -1,5 +1,6 @@
 ---
-title: Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI | Microsoft Docs
+title: Diagnostizieren von Problemen mit dem Netzwerkrouting einer VM – Azure-Befehlszeilenschnittstelle
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel erfahren Sie, wie Sie ein Netzwerkroutingproblem eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 968b7dd703ba40f46a068deb1d8b7d2b32e0de2b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 23ffc16948c250a6999c33b8812769ba889f4900
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64688214"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276092"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-cli"></a>Diagnostizieren eines Netzwerkroutingproblems eines virtuellen Computers – Azure CLI
 

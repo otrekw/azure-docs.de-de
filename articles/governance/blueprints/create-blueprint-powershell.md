@@ -1,32 +1,26 @@
 ---
-title: Erstellen einer Blaupause mit PowerShell
-description: Verwenden Sie Azure Blueprints, um Artefakte unter Verwendung von PowerShell zu erstellen, zu definieren und bereitzustellen.
-ms.date: 08/21/2019
+title: 'Schnellstart: Erstellen einer Blaupause mit PowerShell'
+description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe von PowerShell zu erstellen, zu definieren und bereitzustellen.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 4cc181a7e0b07448d6dd538cfb1621d1efa43a80
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960421"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327467"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 
 Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können Sie allgemeine Muster definieren, um wiederverwendbare und schnell bereitstellbare Konfigurationen zu entwickeln, die auf Resource Manager-Vorlagen, Richtlinien, Sicherheit usw. basieren. In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Blueprint einige allgemeine Aufgaben im Zusammenhang mit der organisationsweiten Erstellung, Veröffentlichung und Zuweisung einer Blaupause ausführen:
 
-> [!div class="checklist"]
-> - Erstellen einer neuen Blaupause und Hinzufügen verschiedener unterstützter Artefakte
-> - Ändern einer vorhandenen Blaupause, die sich noch im **Entwurf** befindet
-> - Markieren einer Blaupause als bereit für die Zuweisung mit **Veröffentlicht**
-> - Zuweisen einer Blaupause zu einem vorhandenen Abonnement
-> - Überprüfen von Status und Fortschritt einer zugewiesenen Blaupause
-> - Entfernen einer Blaupause, die einem Abonnement zugewiesen wurde
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
 Falls das Modul **AZ.Blueprint** nicht bereits installiert ist, befolgen Sie die Anweisungen unter [Hinzufügen des Moduls „AZ.Blueprint“](./how-to/manage-assignments-ps.md#add-the-azblueprint-module), um das Modul aus dem PowerShell-Katalog zu installieren und zu überprüfen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-blueprint"></a>Erstellen einer Blaupause
 
@@ -397,9 +391,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](./concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](./concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](./concepts/sequencing-order.md) anpassen können.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](./concepts/resource-locking.md) können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](./how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](./troubleshoot/general.md).
+In dieser Schnellstartanleitung haben Sie eine Blaupause mit PowerShell erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)

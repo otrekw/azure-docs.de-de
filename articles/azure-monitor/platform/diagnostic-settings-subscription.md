@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 10/31/2019
-ms.openlocfilehash: 9f8783dc6d3c14b086364639b60273dbae626cee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6104a8b01cc9fca5ff8de973e7fc2af77cda8515
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586991"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048209"
 ---
 # <a name="collect-azure-activity-log-with-diagnostic-settings-preview"></a>Erfassen des Azure-Aktivitätsprotokolls mit Diagnoseeinstellungen (Vorschau)
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) ist ein [Plattformprotokoll](platform-logs-overview.md), das einen Einblick in Ereignisse auf Abonnementebene bietet, die in Azure aufgetreten sind. Bisher haben Sie ein Protokollprofil erstellt, um Aktivitätsprotokolleinträge an [einen Event Hub oder ein Speicherkonto](activity-log-export.md) zu senden, und einen Connector verwendet, um sie in einem [Log Analytics-Arbeitsbereich](activity-log-collect.md) zu erfassen.
@@ -22,6 +22,8 @@ Sie können jetzt die Erfassung des Azure-Aktivitätsprotokolls mit denselben [D
 - Konsistente Methode zum Erfassen aller Plattformprotokolle
 - Erfassen des Aktivitätsprotokolls übergreifend für mehrere Abonnements und Mandanten
 - Filtern der Erfassung, um nur Protokolle für bestimmte Kategorien zu erfassen
+- Sammeln aller Aktivitätsprotokollkategorien. Einige Kategorien werden mit der vorherigen Methode nicht erfasst.
+- Niedrigere Latenz für Protokollerfassung. Die vorherige Methode weist eine Latenz von ungefähr 15 Minuten auf, während sich die Zeit bei Diagnoseeinstellungen nur um etwa eine Minute verlängert.
 
 ## <a name="considerations"></a>Überlegungen
 Beachten Sie die folgenden Details der Aktivitätsprotokollerfassung mithilfe von Diagnoseeinstellungen, bevor Sie diese Funktion aktivieren.

@@ -1,21 +1,15 @@
 ---
 title: Verbinden von MetaMask mit einem Azure Blockchain-Netzwerk
 description: Stellen Sie mithilfe von MetaMask eine Verbindung mit einem Azure Blockchain-Netzwerk her, und stellen Sie einen Smart Contract bereit.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 09/12/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
-ms.reviewer: jackyhsu
-manager: femila
-ms.openlocfilehash: b89e75d406a738fb685bb3294dca8d79a2b9170c
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.reviewer: janders
+ms.openlocfilehash: 21e45b80a9a08dd6bdeefb0ab01fadabaa08cbce
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966525"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456012"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Schnellstart: Verwenden von MetaMask zum Verbinden und Bereitstellen eines Smart Contracts
 
@@ -144,4 +138,4 @@ Remix ist eine browserbasierte Solidity-Entwicklungsumgebung. Wenn Sie MetaMask 
 In diesem Schnellstart haben Sie die MetaMask-Browsererweiterung verwendet, um eine Verbindung mit einem Azure Blockchain-Transaktionsknoten herzustellen, einen Smart Contract bereitzustellen und eine Transaktion an die Blockchain zu senden. Im nächsten Tutorial erfahren Sie, wie Sie das Azure Blockchain Development Kit für Ethereum und Truffle verwenden, um eine Smart Contract-Funktion über eine Transaktion zu erstellen, bereitstellen und auszuführen.
 
 > [!div class="nextstepaction"]
-> [Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code](send-transaction.md)
+> [Tutorial: Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service](send-transaction.md)

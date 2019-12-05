@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128846"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406490"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
@@ -63,7 +63,7 @@ Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie diese
     ./generateCredentials.ps1   
 
     ```
-7. Befolgen Sie die Anweisungen auf dem Bildschirm, um die Werte zu erfassen. (Dies sind die Werte für API-Endpunkt, Mandanten-ID, Client-ID, geheimer Clientschlüssel und EventHub-Verbindungszeichenfolge.)
+7. Befolgen Sie die Anweisungen auf dem Bildschirm, um die Werte zu erfassen. (Dies sind die Werte für API-Endpunkt, Mandanten-ID, Client-ID, geheimer Clientschlüssel und EventHub-Verbindungszeichenfolge.) Die EventHub-Verbindungszeichenfolge wird als Teil der API-Antwort in Swagger zur Verfügung gestellt.
 
 **Integrieren von Gerätedaten mit den generierten Anmeldeinformationen**
 

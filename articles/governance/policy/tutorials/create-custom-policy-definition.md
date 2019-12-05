@@ -1,14 +1,14 @@
 ---
-title: Erstellen einer benutzerdefinierten Richtliniendefinition
-description: Es wird beschrieben, wie Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy erstellen, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
-ms.date: 04/23/2019
+title: 'Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition'
+description: In diesem Tutorial erstellen Sie eine benutzerdefinierte Richtliniendefinition für Azure Policy, um benutzerdefinierte Geschäftsregeln für Ihre Azure-Ressourcen zu erzwingen.
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128789"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483976"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition
 
@@ -31,6 +31,8 @@ Der Ansatz zur Erstellung einer benutzerdefinierten Richtlinie umfasst die folge
 > - Ermitteln der zu verwendenden Auswirkung
 > - Verfassen der Richtliniendefinition
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="identify-requirements"></a>Ermitteln der Anforderungen
@@ -50,12 +52,17 @@ Basierend auf der geschäftlichen Anforderung ist die Azure-Ressource, die mit A
 
 Es gibt viele Möglichkeiten, die Eigenschaften für eine Azure-Ressource zu ermitteln. In diesem Tutorial sehen wir uns die einzelnen Fälle an:
 
+- Azure Policy-Erweiterung für VS Code
 - Resource Manager-Vorlagen
   - Export der vorhandenen Ressource
   - Umgebung für die Erstellung
   - Schnellstartvorlagen (GitHub)
   - Vorlagenreferenzdokumente
 - Azure-Ressourcen-Explorer
+
+### <a name="view-resources-in-vs-code-extension"></a>Anzeigen von Ressourcen in der VS Code-Erweiterung
+
+Mit der [VS Code-Erweiterung](../how-to/extension-for-vscode.md#search-for-and-view-resources) können Sie Ressourcen in Ihrer Umgebung durchsuchen und die Resource Manager-Eigenschaften der einzelnen Ressourcen anzeigen.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
@@ -156,9 +163,14 @@ Wir haben die Ressourceneigenschaft identifiziert, aber wir müssen diese Eigens
 
 Es gibt verschiedene Möglichkeiten, die Aliase für eine Azure-Ressource zu ermitteln. In diesem Tutorial sehen wir uns die einzelnen Fälle an:
 
+- Azure Policy-Erweiterung für VS Code
 - Azure-Befehlszeilenschnittstelle
 - Azure PowerShell
 - Azure Resource Graph
+
+### <a name="get-aliases-in-vs-code-extension"></a>Abrufen von Aliasen in der VS Code-Erweiterung
+
+Mit der Azure Policy-Erweiterung für die VS Code-Erweiterung können Sie ganz einfach Ihre Ressourcen durchsuchen und [Aliase ermitteln](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -188,7 +200,7 @@ Wie in der Azure-Befehlszeilenschnittstelle auch, wird in den Ergebnissen ein Al
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) ist ein neuer Dienst, der sich in der Vorschauphase befindet. Mit diesem Dienst ist noch ein weiteres Verfahren zum Suchen nach Eigenschaften von Azure-Ressourcen möglich. Hier ist eine Beispielabfrage für die Suche nach einem einzelnen Speicherkonto mit Resource Graph angegeben:
+[Azure Resource Graph](../../resource-graph/overview.md) ist ein neuer Dienst. Mit diesem Dienst ist noch ein weiteres Verfahren zum Suchen nach Eigenschaften von Azure-Ressourcen möglich. Hier ist eine Beispielabfrage für die Suche nach einem einzelnen Speicherkonto mit Resource Graph angegeben:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -301,12 +313,11 @@ Hier ist eine Beispielausgabe eines Speicherkontos für Aliase angegeben:
 }
 ```
 
-Azure Resource Graph (Vorschauversion) kann mit [Cloud Shell](https://shell.azure.com) verwendet werden. Dies ist eine schnelle und einfache Methode zum Erkunden der Eigenschaften Ihrer Ressourcen.
+Azure Resource Graph kann mit [Cloud Shell](https://shell.azure.com) verwendet werden. Dies ist eine schnelle und einfache Methode zum Erkunden der Eigenschaften Ihrer Ressourcen.
 
 ## <a name="determine-the-effect-to-use"></a>Ermitteln der zu verwendenden Auswirkung
 
-Die Entscheidung, was mit Ihren nicht konformen Ressourcen passieren soll, ist fast so wichtig wie die Entscheidung, was überhaupt evaluiert werden soll. Jede mögliche Reaktion auf eine nicht konforme Ressource wird als [Auswirkung](../concepts/effects.md) bezeichnet.
-Mit der Auswirkung wird gesteuert, ob die nicht konforme Ressource protokolliert oder blockiert wird, über angefügte Daten verfügt oder mit einer zugeordneten Bereitstellung versehen ist, um die Ressource wieder in einen konformen Zustand zu versetzen.
+Die Entscheidung, was mit Ihren nicht konformen Ressourcen passieren soll, ist fast so wichtig wie die Entscheidung, was überhaupt evaluiert werden soll. Jede mögliche Reaktion auf eine nicht konforme Ressource wird als [Auswirkung](../concepts/effects.md) bezeichnet. Mit der Auswirkung wird gesteuert, ob die nicht konforme Ressource protokolliert oder blockiert wird, über angefügte Daten verfügt oder mit einer zugeordneten Bereitstellung versehen ist, um die Ressource wieder in einen konformen Zustand zu versetzen.
 
 Für unser Beispiel ist „Deny“ die passende Auswirkung, da wir nicht möchten, dass in unserer Azure-Umgebung nicht konforme Ressourcen erstellt werden. Die Überwachung ist eine gute erste Wahl für eine Richtlinienauswirkung, um vor dem Festlegen einer Richtlinie auf „Deny“ zu ermitteln, welche Auswirkung damit verbunden ist. Eine Möglichkeit, die Änderung der Auswirkung pro Zuweisung zu vereinfachen, ist die Parametrisierung der Auswirkung. Genauere Informationen zur Vorgehensweise finden Sie unter [Parameter](#parameters).
 
@@ -439,6 +450,16 @@ Nachdem alle drei Teile der Richtlinie festgelegt wurden, sieht die fertige Defi
 ```
 
 Die fertige Definition kann genutzt werden, um eine neue Richtlinie zu erstellen. Vom Portal und den einzelnen SDKs (Azure CLI, Azure PowerShell und REST-API) wird die Definition auf unterschiedliche Weise akzeptiert. Sehen Sie sich also jeweils die Befehle genau an, um die richtige Nutzung sicherzustellen. Führen Sie anschließend die Zuweisung zu den passenden Ressourcen durch, indem Sie die parametrisierte Auswirkung verwenden, um die Sicherheit Ihrer Speicherkonten zu verwalten.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die folgenden Schritte aus, um die erstellten Zuweisungen oder Definitionen zu löschen:
+
+1. Klicken Sie links auf der Seite „Azure Policy“ unter **Erstellung** auf **Definitionen** (oder auf **Zuweisungen**, wenn Sie eine Zuweisung löschen möchten).
+
+1. Suchen Sie nach der neuen Initiativ- oder Richtliniendefinition (bzw. der Zuweisung), die Sie entfernen möchten.
+
+1. Klicken Sie mit der rechten Maustaste auf die Zeile, oder wählen Sie die Auslassungspunkte am Ende der Definition (oder Zuweisung), und wählen Sie anschließend **Definition löschen** (bzw. **Zuweisung löschen**) aus.
 
 ## <a name="review"></a>Überprüfung
 

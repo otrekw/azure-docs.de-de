@@ -1,5 +1,5 @@
 ---
-title: Ausführen von Batchrückschlüssen für große Datenmengen
+title: Ausführen von Batchvorhersagen für Big Data
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mithilfe von Batchrückschlüssen in Azure Machine Learning asynchron Rückschlüsse für große Datenmengen erhalten. Batchrückschlüsse bieten vorgefertigte Parallelverarbeitungsfunktionen sowie Optimierungen für Fire-and-Forget-Rückschlüsse mit hohem Durchsatz in Big Data-Szenarien.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929557"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276727"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

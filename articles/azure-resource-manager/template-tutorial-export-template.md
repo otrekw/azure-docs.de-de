@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Exportieren von Azure Resource Manager-Vorlagen aus dem Azure-Portal'
+title: 'Tutorial: Exportieren einer Vorlage aus dem Azure-Portal'
 description: Erfahren Sie, wie Sie eine exportierte Vorlage verwenden, um die Vorlagenentwicklung abzuschließen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243204"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406015"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Tutorial: Verwenden einer exportieren Vorlage aus dem Azure-Portal
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu Ausgaben](template-tutorial-add-outputs.md) durc
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
@@ -52,7 +49,7 @@ Diese Vorlage eignet sich gut für die Bereitstellung von Speicherkonten, Sie so
 1. Klicken Sie auf **Überprüfen und erstellen**.
 1. Klicken Sie auf **Erstellen**. Es dauert einen Moment, bis die Ressource erstellt wird.
 
-## <a name="export-the-template"></a>Exportieren der Vorlage
+## <a name="export-template"></a>Exportieren der Vorlage
 
 1. Wählen Sie **Zu Ressource wechseln** aus.
 
@@ -71,7 +68,7 @@ Diese Vorlage eignet sich gut für die Bereitstellung von Speicherkonten, Sie so
 > [!IMPORTANT]
 > In der Regel ist die exportierte Vorlage ausführlicher als bei der Erstellung einer Vorlage. Beispielsweise verfügt das SKU-Objekt in der exportierten Vorlage über fünf Eigenschaften. Diese Vorlage funktioniert, aber Sie könnten einfach die **name**-Eigenschaft verwenden. Sie können mit der exportierten Vorlage beginnen und Sie dann wie gewünscht ändern, um Sie an Ihre Anforderungen anzupassen.
 
-## <a name="revise-the-existing-template"></a>Überarbeiten der vorhandenen Vorlage
+## <a name="revise-existing-template"></a>Überarbeiten der vorhandenen Vorlage
 
 Mit der exportierten Vorlage erhalten Sie den größten Teil des benötigten JSON-Code, müssen ihn aber für Ihre Vorlage anpassen. Achten Sie besonders auf Unterschiede in den Parametern und Variablen zwischen Ihrer Vorlage und der exportierten Vorlage. Der Exportprozess kennt natürlich nicht die Parameter und Variablen, die Sie bereits in ihrer Vorlage definiert haben.
 
@@ -81,7 +78,7 @@ Kopieren Sie die gesamte Datei, und ersetzen Sie Ihre Vorlage durch den Inhalt d
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Zum Bereitstellen einer Vorlage verwenden Sie entweder die Azure CLI oder Azure PowerShell.
 

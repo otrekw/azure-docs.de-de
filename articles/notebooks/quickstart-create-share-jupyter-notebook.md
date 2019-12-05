@@ -1,23 +1,14 @@
 ---
 title: Erstellen und Teilen eines Jupyter-Notebooks auf Azure
 description: Erstellen Sie schnell ein Jupyter-Notebook in Azure Notebooks, führen Sie es aus, und teilen Sie das Notebook dann mit anderen.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970170"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277500"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>Schnellstart: Erstellen und Freigeben eines Notebooks
 
@@ -42,7 +33,7 @@ ms.locfileid: "71970170"
 
 1. Nach einigen Augenblicken navigiert Azure Notebooks zum neuen Projekt. Fügen Sie dem Projekt ein Notebook hinzu, indem Sie das Dropdownelement **+ New** (+ Neu) (das möglicherweise nur als **+** angezeigt wird) und dann **Notebook** auswählen:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "Neues leeres Projekt und Befehl „Add Notebook“ (Notizbuch hinzufügen)")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
 1. Geben Sie im Popup **Create New Notebook** (Neues Notebook erstellen), das angezeigt wird, einen Dateinamen für Ihr Notebook ein, z. B. *HelloWorldInPython.ipynb* ( *.ipynb* bedeutet IronPython (Jupyter) Notebook), und wählen Sie **Python 3.6** als Sprache aus (auch als *Kernel* bezeichnet):
 

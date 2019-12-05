@@ -1,24 +1,18 @@
 ---
 title: Verbinden von Computern über das Log Analytics-Gateway | Microsoft-Dokumentation
 description: Verbinden Sie Geräte und durch Operations Manager überwachte Computer mit dem Log Analytics-Gateway, um Daten an den Azure Automation- und Log Analytics-Dienst zu senden, wenn sie nicht über Internetzugriff verfügen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-monitor
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 08/12/2019
+author: MGoedtel
 ms.author: magoedte
-ms.openlocfilehash: 1d735a3740b473806835f2e80f40cea02b48387e
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 10/30/2019
+ms.openlocfilehash: 7574f5c17c1b4598336b8db3108946164dc203f2
+ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955098"
+ms.lasthandoff: 11/08/2019
+ms.locfileid: "73847282"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway in Azure Monitor
 
@@ -28,18 +22,18 @@ ms.locfileid: "68955098"
 
 Dieser Artikel beschreibt, wie Sie die Kommunikation mit Azure Automation and Azure Monitor über das Log Analytics-Gateway konfigurieren, wenn Computer, die direkt verbunden sind oder von Operations Manager überwacht werden, über keinen Internetzugang verfügen. 
 
-Das Log Analytics-Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl „HTTP CONNECT“ unterstützt. Dieses Gateway sendet im Namen der Computer, die keine direkte Verbindung mit dem Internet herstellen können, Daten an Azure Automation und einen Log Analytics-Arbeitsbereich in Azure Monitor. Daten von den Agents werden nicht zwischengespeichert, und der Agent verarbeitet die Zwischenspeicherung von Daten in dieser Situation, bis die Kommunikation wieder hergestellt wurde.
+Das Log Analytics-Gateway ist ein HTTP-Forwardproxy, der HTTP-Tunnel mit dem Befehl „HTTP CONNECT“ unterstützt. Dieses Gateway sendet im Namen der Computer, die keine direkte Verbindung mit dem Internet herstellen können, Daten an Azure Automation und einen Log Analytics-Arbeitsbereich in Azure Monitor. 
 
 Das Log Analytics-Gateway unterstützt Folgendes:
 
-* Kommunikation mit bis zu den gleichen vier Log Analytics-Arbeitsbereichs-Agents, die sich hinter dem Gateway befinden und die mit Azure Automation Hybrid Runbook Workers konfiguriert sind.  
+* Berichterstattung an dieselben Log Analytics-Arbeitsbereiche, die auf den einzelnen Agents dahinter sowie mit Azure Automation Hybrid Runbook Workern konfiguriert sind.  
 * Direkt mit einem Log Analytics-Arbeitsbereich in Azure Monitor verbundene Windows-Computer mit Microsoft Monitoring Agent.
 * Direkt mit einem Log Analytics-Arbeitsbereich in Azure Monitor verbundene Linux-Computer mit dem Log Analytics-Agent für Linux.  
 * System Center Operations Manager 2012 SP1 mit UR7, Operations Manager 2012 R2 mit UR3 oder eine Verwaltungsgruppe in Operations Manager 2016 oder höher, die in Log Analytics integriert ist.  
 
 Einige IT-Sicherheitsrichtlinien lassen keine Internetverbindung für Netzwerkcomputer zu. Diese nicht verbundenen Computer können beispielsweise POS-Geräte (Point of Sale) oder Server sein, die IT-Dienste unterstützen. Um diese Geräte mit Azure Automation oder einen Log Analytics-Arbeitsbereich zu verbinden, damit Sie sie verwalten und überwachen können, konfigurieren Sie sie so, dass sie direkt mit dem Log Analytics-Gateway kommunizieren. Das Log Analytics-Gateway kann Konfigurationsinformationen empfangen und Daten in ihrem Auftrag weiterleiten. Wenn die Computer mit dem Log Analytics-Agent konfiguriert werden, um eine direkte Verbindung mit einem Log Analytics-Arbeitsbereich herzustellen, kommunizieren die Computer stattdessen mit dem Log Analytics-Gateway.  
 
-Das Log Analytics-Gateway überträgt Daten von den Agents direkt an den Dienst. Dabei werden keinerlei Daten im Übergang analysiert.
+Das Log Analytics-Gateway überträgt Daten von den Agents direkt an den Dienst. Die Daten werden während der Übertragung nicht analysiert, und das Gateway nimmt keine Zwischenspeicherung von Daten vor, wenn die Verbindung mit dem Dienst unterbrochen wird. Kann das Gateway nicht mit dem Dienst kommunizieren, wird der Agent weiterhin ausgeführt und stellt die gesammelten Daten in die Warteschlange auf dem Datenträger des überwachten Computers. Nachdem die Verbindung wiederhergestellt wurde, sendet der Agent die gesammelten zwischengespeicherten Daten an Azure Monitor.
 
 Wenn eine Operations Manager-Verwaltungsgruppe in Log Analytics integriert wird, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem Log Analytics-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden.  Operations Manager-Agents senden einige Daten an den Verwaltungsserver. Agents können z.B. Operations Manager-Warnungen, Daten zur Konfigurationsbewertung, Instanz-Speicherplatzdaten und Kapazitätsdaten senden. Andere umfangreiche Daten wie etwa IIS-Protokolle (Internet Information Services, Internetinformationsdienste), Leistungsdaten und Sicherheitsereignisse werden direkt an das Log Analytics-Gateway gesendet. 
 
@@ -173,7 +167,7 @@ In der folgenden Tabelle sind die beim Setup unterstützten Parameter aufgeführ
 Geben Sie Folgendes ein, um das Gateway automatisch zu installieren und mit einer spezifischen Proxyadresse und einer spezifischen Portnummer zu konfigurieren:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 LicenseAccepted=1 
 ```
 
 Mit der Befehlszeilenoption „/qn“ wird das Setup bei der automatischen Installation ausgeblendet, mit der Befehlszeilenoption „/qb“ wird das Setup angezeigt.  
@@ -181,7 +175,7 @@ Mit der Befehlszeilenoption „/qn“ wird das Setup bei der automatischen Insta
 Wenn Sie für die Authentifizierung beim Proxy Anmeldeinformationen angeben müssen, geben Sie Folgendes ein:
 
 ```dos
-Msiexec.exe /I “oms gateway.msi” /qn PORTNUMBER=8080 PROXY=”10.80.2.200” HASPROXY=1 HASAUTH=1 USERNAME=”<username>” PASSWORD=”<password>” LicenseAccepted=1 
+Msiexec.exe /I "oms gateway.msi" /qn PORTNUMBER=8080 PROXY="10.80.2.200" HASPROXY=1 HASAUTH=1 USERNAME="<username>" PASSWORD="<password>" LicenseAccepted=1 
 ```
 
 Nach der Installation können Sie mit den folgenden PowerShell-Cmdlets bestätigen, dass die Einstellungen akzeptiert werden (mit Ausnahme des Benutzernamens und Kennworts):
@@ -300,50 +294,11 @@ So konfigurieren Sie bestimmte Server oder Gruppen für die Verwendung des Log A
 
 ### <a name="configure-for-automation-hybrid-runbook-workers"></a>Konfigurieren für Automation Hybrid Runbook Worker
 
-Für den Fall, dass Ihre Umgebung Automation Hybrid Runbook Worker enthält, finden Sie im Anschluss manuelle, temporäre Problemumgehungen, mit denen Sie das OMS-Gateway für Unterstützung der Worker konfigurieren können.
+Für den Fall, dass Ihre Umgebung Automation Hybrid Runbook Worker enthält, führen Sie die folgenden Schritte aus, um das Gateway für die Unterstützung der Worker zu konfigurieren.
 
-Um die Schritte in diesem Abschnitt ausführen zu können, müssen Sie die Azure-Region kennen, in der sich das Automation-Konto befindet. Gehen Sie zum Ermitteln dieses Standorts wie folgt vor:
+Die URL für jede Region finden Sie in der Dokumentation zu Automation im Abschnitt [Konfigurieren des Netzwerks](../../automation/automation-hybrid-runbook-worker.md#network-planning).
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wählen Sie den Azure Automation-Dienst.
-1. Wählen Sie das entsprechende Azure Automation-Konto aus.
-1. Zeigen Sie seine Region unter **Speicherort** an.
-
-   ![Screenshot des Automation-Kontostandorts im Azure-Portal](./media/gateway/location.png)
-
-Verwenden Sie die folgenden Tabellen, um die URL für jeden Speicherort zu identifizieren:
-
-**Auftragslaufzeit-Datendienst-URLs**
-
-| **Location** | **URL** |
-| --- | --- |
-| USA Nord Mitte |ncus-jobruntimedata-prod-su1.azure-automation.net |
-| Europa, Westen |we-jobruntimedata-prod-su1.azure-automation.net |
-| USA, Süden-Mitte |scus-jobruntimedata-prod-su1.azure-automation.net |
-| USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
-| Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net |
-| Nordeuropa |ne-jobruntimedata-prod-su1.azure-automation.net |
-| Südostasien |sea-jobruntimedata-prod-su1.azure-automation.net |
-| Indien, Mitte |cid-jobruntimedata-prod-su1.azure-automation.net |
-| Japan |jpe-jobruntimedata-prod-su1.azure-automation.net |
-| Australien |ase-jobruntimedata-prod-su1.azure-automation.net |
-
-**Agent-Dienst-URLs**
-
-| **Location** | **URL** |
-| --- | --- |
-| USA Nord Mitte |ncus-agentservice-prod-1.azure-automation.net |
-| Europa, Westen |we-agentservice-prod-1.azure-automation.net |
-| USA Süd Mitte |scus-agentservice-prod-1.azure-automation.net |
-| USA (Ost) 2 |eus2-agentservice-prod-1.azure-automation.net |
-| Kanada, Mitte |cc-agentservice-prod-1.azure-automation.net |
-| Nordeuropa |ne-agentservice-prod-1.azure-automation.net |
-| Südostasien |sea-agentservice-prod-1.azure-automation.net |
-| Indien, Mitte |cid-agentservice-prod-1.azure-automation.net |
-| Japan |jpe-agentservice-prod-1.azure-automation.net |
-| Australien |ase-agentservice-prod-1.azure-automation.net |
-
-Wenn Ihr Computer automatisch als Hybrid Runbook Worker registriert ist, verwenden Sie die Updateverwaltungslösung, um den Patch zu verwalten. Folgen Sie diesen Schritten:
+Wenn Ihr Computer automatisch als Hybrid Runbook Worker registriert wird, z.B. wenn die Lösung für die Updateverwaltung für eine oder mehrere VMs aktiviert ist, gehen Sie wie folgt vor:
 
 1. Fügen Sie die Auftragslaufzeit-Datendienst-URLs der Liste zulässiger Hosts auf dem Log Analytics-Gateway hinzu. Beispiel: `Add-OMSGatewayAllowedHost we-jobruntimedata-prod-su1.azure-automation.net`
 1. Starten Sie den Log Analytics-Gatewaydienst mithilfe des folgenden PowerShell-Cmdlets neu: `Restart-Service OMSGatewayService`

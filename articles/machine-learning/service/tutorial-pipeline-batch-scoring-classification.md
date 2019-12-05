@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: ML-Pipelines für die Batchbewertung'
 titleSuffix: Azure Machine Learning
-description: Erstellen Sie eine Machine Learning-Pipeline zum Ausführen der Batchbewertung für ein Bildklassifizierungsmodell in Azure Machine Learning. Machine Learning-Pipelines optimieren Ihren Workflow durch Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Ihre Machine Learning-Kenntnisse konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen.
+description: In diesem Tutorial erstellen Sie eine Machine Learning-Pipeline zum Ausführen der Batchbewertung für ein Bildklassifizierungsmodell in Azure Machine Learning. Machine Learning-Pipelines optimieren Ihren Workflow durch Geschwindigkeit, Portabilität und Wiederverwendung, sodass Sie sich auf Ihre Machine Learning-Kenntnisse konzentrieren können, anstatt sich um Infrastruktur und Automatisierung kümmern zu müssen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 11d57031405939e37afade9a9452c5d3a8b9e1e4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796690"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483298"
 ---
-# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Erstellen und Verwenden einer Azure Machine Learning-Pipeline für die Batchbewertung
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 

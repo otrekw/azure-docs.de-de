@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Bereitstellen von Docker-Containern in Azure Container Instances – PowerShell'
+title: 'Schnellstart: Bereitstellen von Docker-Containern in einer Containerinstanz– PowerShell'
 description: In diesem Schnellstart verwenden Sie PowerShell, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
 services: container-instances
 author: dlepow
@@ -7,14 +7,13 @@ manager: gwallace
 ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 7fe199d2ac228ddb0ccfd1e5bc980e680e160acf
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 9901b3f18973365dc9ceb8c85ff8587b6c2ea894
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325830"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533612"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe von Azure PowerShell
 

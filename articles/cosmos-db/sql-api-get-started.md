@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132568"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173906"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Tutorial: Erstellen einer .NET-Konsolen-App zum Verwalten von Daten in einem Azure Cosmos DB-SQL-API-Konto
 
@@ -259,7 +259,7 @@ Eine Datenbank ist ein logischer Container für Elemente, die auf Container aufg
 1. Wählen Sie F5 aus, um die Anwendung auszuführen.
 
    > [!NOTE]
-   > Wenn die Ausnahme „503 Dienst nicht verfügbar“ angezeigt wird, werden die erforderlichen [Ports](performance-tips.md#networking) für den direkten Modus unter Umständen durch eine Firewall blockiert. Öffnen Sie zum Beheben dieses Problems entweder die erforderlichen [Ports](performance-tips.md#networking), oder versuchen Sie, wie unten gezeigt den Gatewaymodus zu verwenden.
+   > Wird der Fehler „503 Dienst nicht verfügbar“ angezeigt, werden die erforderlichen [Ports](performance-tips.md#networking) für den direkten Konnektivitätsmodus unter Umständen durch eine Firewall blockiert. Öffnen Sie zum Beheben des Problems entweder die erforderlichen Ports, oder verwenden Sie die Gatewaymoduskonnektivität wie im folgenden Code gezeigt:
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a144bec0a610a5a47e8a9bf3ff6a5de05b239ed
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fd7cfe93aa39982836944230f860c603c7117ceb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159972"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Tutorial: Azure Active Directory-Integration mit Humanity
 
@@ -229,12 +229,12 @@ Damit sich Azure AD-Benutzer bei Humanity anmelden können, müssen sie in Human
 
     ![Save Employees (Mitarbeiter speichern)](./media/shiftplanning-tutorial/iC786625.png "Mitarbeiter speichern")
 
-    a. Geben Sie **Vorname**, **Nachname** und **E-Mail-Adresse** eines gültigen AAD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
+    a. Geben Sie **Vorname**, **Nachname** und **E-Mail-Adresse** eines gültigen Azure AD-Benutzerkontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
     b. Klicken Sie auf **Mitarbeiter speichern**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Humanity-Benutzerkonten oder mithilfe der von Humanity bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Humanity-Benutzerkonten oder mithilfe der von Humanity bereitgestellten APIs erstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

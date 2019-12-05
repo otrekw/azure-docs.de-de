@@ -1,18 +1,18 @@
 ---
-title: Informationen zu Azure Migrate | Microsoft-Dokumentation
-description: Enthält eine Übersicht über den Azure Migrate-Dienst.
+title: Informationen zu Azure Migrate
+description: Hier erfahren Sie mehr über die Serverbewertung und -migration mit dem Azure Migrate-Dienst.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8b1e716e482c49ceba0c600aaba30fe276bdb74d
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: a64e7366281f15c94d6551c1f7be27f461737634
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748009"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185795"
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 

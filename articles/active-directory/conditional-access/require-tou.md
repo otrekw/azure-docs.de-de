@@ -1,22 +1,22 @@
 ---
-title: Schnellstart – Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps, die durch bedingten Zugriff mit Azure Active Directory geschützt sind | Microsoft-Dokumentation
+title: 'Bedingter Zugriff: Erzwingen von Nutzungsbedingungen – Azure Active Directory'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit dem bedingten Zugriff mit Azure Active Directory erzwingen können, dass Ihre Nutzungsbedingungen akzeptiert werden, bevor der Zugriff auf ausgewählte Cloud-Apps gewährt wird.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 12/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67506911"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380102"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Schnellstart: Fordern der Annahme von Nutzungsbedingungen vor dem Zugreifen auf Cloud-Apps
 

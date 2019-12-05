@@ -1,17 +1,19 @@
 ---
-title: 'Quelltransformation im Zuordnungsdatenfluss: Azure Data Factory'
+title: Quelltransformation in einem Zuordnungsdatenfluss
 description: Erfahren Sie, wie Sie eine Quelltransformation in Mapping Data Flow einrichten.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 5889d96057d4b028e8716e407819d17938f58b3c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73675951"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217747"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 

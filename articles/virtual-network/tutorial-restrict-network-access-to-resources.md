@@ -1,10 +1,10 @@
 ---
-title: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen – Tutorial – Azure-Portal | Microsoft-Dokumentation
+title: Einschränken des Zugriffs auf PaaS-Ressourcen – Tutorial – Azure-Portal
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe des Azure-Portals den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit VNET-Dienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 08/23/2018
 ms.author: kumud
-ms.openlocfilehash: 34cb2b6c5a770aa9ec38ce02a97d976fe28251ac
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 85fc5687b82947ed16bde0c30ca2b947514ba958
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69638751"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186366"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Tutorial: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe des Azure-Portals
 
@@ -112,7 +112,7 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
     |Zieldiensttag | Wählen Sie **Storage** aus.|
     |Zielportbereiche| * |
     |Protocol|Any|
-    |Action|ZULASSEN|
+    |Action|Allow|
     |Priority|100|
     |NAME|Allow-Storage-All|
 
@@ -141,7 +141,7 @@ Standardmäßig können alle virtuellen Computer in einem Subnetz mit allen Ress
     |Destination | Wählen Sie **VirtualNetwork** aus.|
     |Zielportbereiche| 3389 |
     |Protocol|Any|
-    |Action|ZULASSEN|
+    |Action|Allow|
     |Priority|120|
     |NAME|Allow-RDP-All|
 

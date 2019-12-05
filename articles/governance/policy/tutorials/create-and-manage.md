@@ -1,14 +1,14 @@
 ---
-title: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
-description: Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetzlichen Vorschriften und Auditanforderungen durchzusetzen, Kosten zu steuern, für konsistente Sicherheit und Leistung zu sorgen und unternehmensweite Entwurfsprinzipien vorzugeben.
-ms.date: 02/04/2019
+title: 'Tutorial: Erstellen von Richtlinien zur Konformitätserzwingung'
+description: In diesem Tutorial verwenden Sie Richtlinien zum Erzwingen von Standards, Steuern der Kosten, Gewährleisten der Sicherheit und Erzwingen von unternehmensweiten Entwurfsprinzipien.
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959546"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482363"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -20,7 +20,11 @@ Zur Einhaltung Ihrer Unternehmensstandards und Vereinbarungen zum Servicelevel m
 > - Beheben von Problemen mit einer nicht konformen oder abgelehnten Ressource
 > - Implementieren einer neuen Richtlinie in der gesamten Organisation
 
-Lesen Sie die Schnellstartartikel, wenn Sie eine Richtlinie zum Ermitteln des aktuellen Konformitätszustands Ihrer vorhandenen Ressourcen zuweisen möchten. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Lesen Sie die Schnellstartartikel, wenn Sie eine Richtlinie zum Ermitteln des aktuellen Konformitätszustands Ihrer vorhandenen Ressourcen zuweisen möchten.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="assign-a-policy"></a>Zuweisen einer Richtlinie
 
@@ -443,7 +447,7 @@ Wenn Sie die Ressourcen dieses Tutorials nicht mehr benötigen, führen Sie die 
 
 1. Klicken Sie mit der rechten Maustaste auf die Zeile, oder wählen Sie die Auslassungspunkte am Ende der Definition (oder Zuweisung), und wählen Sie anschließend **Definition löschen** (bzw. **Zuweisung löschen**) aus.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="review"></a>Überprüfung
 
 In diesem Tutorial haben Sie folgende Aufgaben durchgeführt:
 
@@ -452,6 +456,8 @@ In diesem Tutorial haben Sie folgende Aufgaben durchgeführt:
 > - Sie haben eine Initiativdefinition zur Nachverfolgung der Konformität für mehrere Ressourcen erstellt und zugewiesen.
 > - Sie haben ein Problem mit einer nicht konformen oder abgelehnten Ressource behoben.
 > - Sie haben eine neue Richtlinie in der gesamten Organisation implementiert.
+
+## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu den Strukturen von Richtliniendefinitionen finden Sie im folgenden Artikel:
 

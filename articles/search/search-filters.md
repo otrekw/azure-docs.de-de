@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132933"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406743"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filter in der kognitiven Azure-Suche 
 
@@ -61,7 +61,6 @@ Zur Abfragezeit akzeptiert ein Filterparser Kriterien als Eingabe, wandelt den A
 Die Filterung erfolgt zusammen mit Suche und bestimmt, welche Dokumente für den Dokumentabruf und die Relevanzbewertung in die nachgelagerte Verarbeitung einbezogen werden sollen. In Kombination mit einem Suchbegriff reduziert der Filter wirkungsvoll die Abrufmenge des nachfolgenden Suchvorgangs. Bei alleiniger Verwendung (z. B. wenn die Abfragezeichenfolge bei `search=*` leer ist) ist das Filterkriterium die einzige Eingabe. 
 
 ## <a name="defining-filters"></a>Definieren von Filtern
-
 Filter sind OData-Ausdrücke, die mittels einer [in der kognitiven Azure-Suche unterstützten Teilmenge der OData V4-Syntax](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) definiert werden. 
 
 Sie können für jeden **Suchvorgang** einen Filter angeben. Doch der Filter selbst kann mehrere Felder, mehrere Kriterien und, wenn Sie eine **ismatch**-Funktion verwenden, mehrere Volltextsuchausdrücke enthalten. Bei einem mehrteiligen Filterausdruck können Sie Prädikate in beliebiger Reihenfolge angeben (gemäß den Regeln der Rangfolge von Operatoren). Es ergibt sich kein nennenswerter Leistungszuwachs, wenn Sie versuchen, Prädikate in einer bestimmten Reihenfolge neu anzuordnen.
@@ -72,14 +71,14 @@ Die folgenden Beispiele veranschaulichen prototypische Filterdefinitionen in meh
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -87,8 +86,8 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
     var results = searchIndexClient.Documents.Search("*", parameters);
@@ -101,31 +100,31 @@ Die folgenden Beispiele veranschaulichen einige Verwendungsmuster für Filtersze
 + Eigenständige **$filter**-Filter ohne Abfragezeichenfolge; nützlich, wenn der Filterausdruck Dokumente von Interesse vollständig qualifizieren kann. Ohne Abfragezeichenfolge gibt es keine lexikalische oder linguistische Analyse, Bewertung und Rangfolge. Beachten Sie, dass die Suchzeichenfolge nur ein Sternchen ist, und alle Dokumente abgeglichen werden.
 
    ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ Kombination aus Abfragezeichenfolge und **$filter**, wobei der Filter die Teilmenge erstellt und die Abfragezeichenfolge die Begriffseingaben für die Volltextsuche über die gefilterte Teilmenge liefert. Das Verwenden eines Filters mit einer Abfragezeichenfolge ist das verbreitetste Verwendungsmuster.
++ Kombination aus Abfragezeichenfolge und **$filter**, wobei der Filter die Teilmenge erstellt und die Abfragezeichenfolge die Begriffseingaben für die Volltextsuche über die gefilterte Teilmenge liefert. Das Hinzufügen von Begriffen („Theater in Gehweite“) führt zu Suchbewertungen in den Ergebnissen, bei denen Dokumente, die am besten zu den Begriffen passen, höher eingestuft werden. Das Verwenden eines Filters mit einer Abfragezeichenfolge ist das verbreitetste Verwendungsmuster.
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
    ```
 
 + Zusammengesetzte Abfragen, getrennt durch "or", jede mit eigenen Filterkriterien (z.B. 'beagles' in' dog' oder' siamese' in' cat'). Ausdrücke in Kombination mit `or` werden einzeln ausgewertet. Dabei stimmt die Vereinigung der Dokumente mit jedem Ausdruck überein, der in der Antwort zurückgesendet wird. Dieses Nutzungsmuster erfolgt über die `search.ismatchscoring`-Funktion. Sie können auch die nicht bewertende Version (`search.ismatch`) verwenden.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
   Es ist auch möglich, die Volltextsuche über `search.ismatchscoring` mit den Filtern `and` anstelle von `or` zu kombinieren. Diese Funktion entspricht der Suche mit den Parametern `search` und `$filter` in einer Suchanforderung. Die folgenden beiden Abfragen erzielen beispielsweise das gleiche Ergebnis:
 
   ```
-  $filter=search.ismatchscoring('pool') and rating ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search=pool&$filter=rating ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
 Diese Artikel bieten eine umfassende Anleitung zu bestimmten Anwendungsfällen:
