@@ -18,16 +18,16 @@ ms.author: abpati
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 148b9a4a890b22db63f03c673f5d779547a589e1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0aada339ab68eeb7f29eeb815611a8e434e6a998
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484783"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803647"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Unterstützung der Active Directory-Verbunddienste in MSAL für Python
 
-Mithilfe der Active Directory-Verbunddienste (AD FS) in Windows Server können Sie den von Ihnen entwickelten Anwendungen die OpenID Connect- und OAuth 2.0-basierte Authentifizierung und Autorisierung hinzufügen, indem Sie die Microsoft-Authentifizierungsbibliothek (MSAL) für Python verwenden. Mithilfe der MSAL für Python-Bibliothek kann Ihre App Benutzer direkt gegen AD FS authentifizieren. Weitere Informationen zu den Szenarien finden Sie unter [AD FS-Szenarien für Entwickler](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers).
+Mithilfe der Active Directory-Verbunddienste (AD FS) in Windows Server können Sie den von Ihnen entwickelten Anwendungen die OpenID Connect- und OAuth 2.0-basierte Authentifizierung und Autorisierung hinzufügen, indem Sie die Microsoft-Authentifizierungsbibliothek (MSAL) für Python verwenden. Mithilfe der MSAL für Python-Bibliothek kann Ihre App Benutzer direkt gegen AD FS authentifizieren. Weitere Informationen zu den Szenarien finden Sie unter [AD FS-Szenarien für Entwickler](/windows-server/identity/ad-fs/ad-fs-development).
 
 Es gibt in der Regel zwei Möglichkeiten, sich bei AD FS zu authentifizieren:
 

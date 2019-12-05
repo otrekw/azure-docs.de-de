@@ -87,7 +87,7 @@
           href: deploy-kcd.md
         - name: Konfigurieren von Kennwort- und Kontosperrungsrichtlinien
           href: password-policy.md
-        - name: Aktivieren von Sicherheitsüberwachungsereignissen (Vorschau)
+        - name: Aktivieren von Sicherheitsüberwachungsereignissen
           href: security-audit-events.md
     - name: Einbinden virtueller Computer in eine Domäne
       items:

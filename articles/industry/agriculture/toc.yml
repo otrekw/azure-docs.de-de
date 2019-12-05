@@ -19,9 +19,11 @@
       href: imagery-partner-integration.md
 - name: Anleitungen
   items:
-    - name: FarmBeats bereitstellen
+    - name: Bereitstellen von FarmBeats
       href: prepare-for-deployment.md
-    - name: Bauernhöfe verwalten
+    - name: Verwalten von Benutzern
+      href: manage-users.md
+    - name: Verwalten landwirtschaftlicher Betriebe
       href: manage-farms.md
     - name: Sensordaten abrufen
       href: get-sensor-data-from-sensor-partner.md

@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479611"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151253"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Schnellstart: Erstellen und Verschlüsseln eines virtuellen Linux-Computers mit dem Azure-Portal
 
@@ -23,36 +23,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
-
-1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Option **Ressource erstellen**.
-1. Geben Sie **Key Vault** in das Suchfeld ein.
-1. Wählen Sie in der Ergebnisliste **Key Vault** aus.
-1. Wählen Sie im Abschnitt „Key Vault“ die Option **Erstellen** aus.
-1. Wählen Sie auf dem Bildschirm **Schlüsseltresor erstellen** einen eindeutigen Namen für Ihren neuen Schlüsseltresor aus.
-
-    > [!Important]
-    > Jeder Schlüsseltresor muss einen eindeutigen Namen haben. Das folgende Beispiel erstellt einen Schlüsseltresor mit dem Namen *myADEKV*. Ihrem eigenen müssen Sie jedoch einen anderen Namen geben.
-
-1. Wählen Sie unter **Abonnement** ein Abonnement aus.
-1.  Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie in dem Popup *myResourceGroup* als Namen der Ressourcengruppe ein, und wählen Sie dann **OK** aus. 
-
-    ![Bildschirm zur Ressourcengruppenerstellung](./media/disk-encryption/portal-qs-keyvaultcreation.png)
-
-1. Wählen Sie im Pulldownmenü **Standort** die Option **USA, Osten** aus.
-1. Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.
-1. Wählen Sie „Zugriffsrichtlinien“ aus. Dadurch werden Sie auf einen neuen Bildschirm weitergeleitet.
-1. Aktivieren Sie das Kontrollkästchen neben „Zugriff auf Azure Disk Encryption für Volumeverschlüsselung aktivieren“.
-
-    ![Bildschirm zur Ressourcengruppenerstellung](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
-
-1. Klicken Sie am unteren Rand des Bildschirms „Zugriffsrichtlinien“ auf „Überprüfen + erstellen“.
-1. Klicken Sie nach der Überprüfung auf „Create“.
-
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 1. Klicken Sie links oben im Azure-Portal auf **Ressource erstellen**.
-
 1. Wählen Sie auf der Seite „Neu“ unter „Beliebt“ die Option **Ubuntu Server 18.04 LTS** aus.
 1. Stellen Sie sicher, dass auf der Registerkarte **Grundlagen** unter **Projektdetails** das richtige Abonnement ausgewählt ist.
 1. Wählen Sie unter **Ressourcengruppe** die Ressourcengruppe aus, die Sie oben beim Erstellen Ihres Schlüsseltresors erstellt haben (z. B. **myResourceGroup**).
@@ -73,15 +46,24 @@ Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie 
 1. Wählen Sie auf der linken Seitenleiste **Datenträger** aus.
 1. Wählen Sie auf dem Bildschirm „Datenträger“ die Option **Verschlüsselung** aus. 
 
-    ![Auswählen von „Datenträger“ und „Verschlüsselung“](./media/disk-encryption/portal-qs-disks-to-encryption.png)
+    ![Auswählen von „Datenträger“ und „Verschlüsselung“](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. Wählen Sie auf dem Bildschirm „Verschlüsselung“ unter **Disks to encrypt** (Zu verschlüsselnde Datenträger) die Option **Datenträger für Betriebssystem und Daten** aus.
-1. Klicken Sie unter **Verschlüsselungseinstellungen** auf „Wählen Sie einen Schlüsseltresor und einen Schlüssel für die Verschlüsselung aus.“.
-1. Wählen Sie auf der rechten Seitenleiste den Namen des zuvor erstellten Schlüsseltresors als Wert für **Schlüsseltresor** aus, und klicken Sie auf **Auswählen**.
+1. Wählen Sie unter **Verschlüsselungseinstellungen** die Option **Wählen Sie einen Schlüsseltresor und einen Schlüssel für die Verschlüsselung aus** aus.
+1. Wählen Sie im Fenster zum **Auswählen des Schlüssels aus Azure Key Vault** die Option **Neue erstellen** aus.
 
-    ![Auswählen von „Datenträger“ und „Verschlüsselung“](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. Klicken Sie oben auf dem Verschlüsselungsbildschirm auf „Speichern“. In einem Popup werden Sie gewarnt, dass der virtuelle Computer neu gestartet wird. Klicken Sie auf **Ja**.
+    ![Auswählen von „Datenträger“ und „Verschlüsselung“](../media/disk-encryption/portal-qs-keyvault-create.png)
 
+1. Stellen Sie im Fenster **Schlüsseltresor erstellen** sicher, dass dieselbe Ressourcengruppe angegeben ist, die Sie zum Erstellen der VM verwendet haben.
+1. Geben Sie Ihrem Schlüsseltresor einen Namen.  Jeder Schlüsseltresor in Azure muss einen eindeutigen Namen haben.
+1. Aktivieren Sie auf der Registerkarte **Zugriffsrichtlinien** das Kontrollkästchen **Azure Disk Encryption für Volumeverschlüsselung**.
+
+    ![Auswählen von „Datenträger“ und „Verschlüsselung“](../media/disk-encryption/portal-qs-keyvault-enable.png)
+
+1. Klicken Sie auf **Überprüfen + erstellen**.  
+1. Nachdem der Schlüsseltresor die Überprüfung bestanden hat, wählen Sie **Erstellen** aus. Sie gelangen zurück zum Fenster zum **Auswählen eines Schlüssels aus Azure Key Vault**.
+1. Lassen Sie das Feld **Schlüssel** leer, und wählen Sie **Auswählen** aus.
+1. Klicken Sie oben im Verschlüsselungsfenster auf **Speichern**. In einem Popup werden Sie gewarnt, dass der virtuelle Computer neu gestartet wird. Klicken Sie auf **Ja**.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

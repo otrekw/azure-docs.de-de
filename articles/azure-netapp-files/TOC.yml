@@ -75,3 +75,11 @@
       href: 'https://docs.microsoft.com/rest/api/netapp/'
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.netapp/allversions
+- name: Ressourcen
+  items:
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/netapp/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=netapp'
+    - name: Videos
+      href: azure-netapp-files-videos.md
