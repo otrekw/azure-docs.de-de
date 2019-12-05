@@ -1,20 +1,20 @@
 ---
 title: Verwalten von Updates für mehrere virtuelle Azure-Computer
-description: In diesem Artikel wird beschrieben, wie Sie Updates für virtuelle Azure-Computer verwalten.
+description: In diesem Artikel wird beschrieben, wie Sie Updates für Azure- und Nicht-Azure-VMs verwalten.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374492"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278683"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -31,6 +31,8 @@ Zum Verwenden der Updateverwaltung benötigen Sie Folgendes:
 
 - Einen virtuellen Computer bzw. einen Computer, auf dem eines der unterstützten Betriebssysteme installiert ist.
 
+- Zugriff auf ein Updaterepository für virtuelle Linux-Computer, die in die Lösung integriert sind.
+
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
 Die Updateverwaltung wird für folgende Betriebssysteme unterstützt:
@@ -39,17 +41,13 @@ Die Updateverwaltung wird für folgende Betriebssysteme unterstützt:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Unterstützt nur Updatebewertungen.         |
 |Windows Server 2008 R2 SP1 und höher     |Windows PowerShell 4.0 oder höher ist erforderlich. ([WMF 4.0 herunterladen](https://www.microsoft.com/download/details.aspx?id=40855))</br> Für eine höhere Zuverlässigkeit wird Windows PowerShell 5.1 empfohlen. ([WMF 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
+|CentOS 6 (x86/x64) und 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | |
+|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Damit unter Ubuntu keine Updates außerhalb der Wartungsfenster angewendet werden, konfigurieren Sie das „Unattended-Upgrade“-Paket erneut, um automatische Updates zu deaktivieren. Weitere Informationen finden Sie im [Thema zu automatischen Updates im Ubuntu-Serverhandbuch](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
-
-Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.
-
-Diese Lösung unterstützt keinen Log Analytics-Agent für Linux, der für die Berichterstattung an mehrere Azure Log Analytics-Arbeitsbereiche konfiguriert ist.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Aktivieren der Updateverwaltung für virtuelle Azure-Computer
 
@@ -69,9 +67,7 @@ Nach Abschluss der Integration ist die Updateverwaltung für Ihren virtuellen Co
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Aktivieren der Updateverwaltung für VMs und Computer, die nicht Azure unterstehen
 
-Informationen zum Aktivieren der Updateverwaltung für Windows-VMs und -Computer, die nicht Azure unterstehen, finden Sie unter [Verbinden von Windows-Computern mit dem Azure Monitor-Dienst in Azure](../log-analytics/log-analytics-windows-agent.md).
-
-Informationen zum Aktivieren der Updateverwaltung für Azure-fremde Linux-VMs und -Computer finden Sie unter [Verbinden Ihrer Linux-Computer mit Azure Monitor-Protokolle](../log-analytics/log-analytics-agent-linux.md).
+Der Log Analytics-Agent für Windows und Linux muss auf den VMS installiert werden, die in Ihrem Unternehmensnetzwerk oder in einer anderen Cloudumgebung ausgeführt werden, um Sie für die Updateverwaltung zu aktivieren. Informationen zu den Systemanforderungen und unterstützten Methoden für die Bereitstellung des Agent auf außerhalb von Azure gehosteten Computern finden Sie unter [Übersicht zum Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Anzeigen von Computern, die an Ihr Automation-Konto angefügt sind
 
@@ -130,8 +126,13 @@ Geben Sie im Bereich **Neue Updatebereitstellung** die folgenden Informationen e
 
 - **Name**: Geben Sie einen eindeutigen Namen zur Identifizierung der Updatebereitstellung ein.
 - **Betriebssystem**: Wählen Sie **Windows** oder **Linux** aus.
-- **Zu aktualisierende Gruppen (Vorschau)** : Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management-groups.md).
-- **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
+- **Zu aktualisierende Gruppen**: Definieren Sie eine Abfrage basierend auf einer Kombination aus Abonnement, Ressourcengruppen, Standorten und Tags, um eine dynamische Gruppe von Azure-VMs zu erstellen, die in Ihre Bereitstellung eingeschlossen werden sollen. Bei Nicht-Azure-VMs werden gespeicherte Suchvorgänge verwendet, um eine dynamische Gruppe zu erstellen, die in Ihre Bereitstellung eingeschlossen werden soll. Weitere Informationen finden Sie unter [Dynamische Gruppen](automation-update-management-groups.md).
+- **Zu aktualisierende Computer**: Wählen Sie eine gespeicherte Suche, eine importierte Gruppe oder Computer aus, um die Computer auszuwählen, die Sie aktualisieren möchten.
+
+   >[!NOTE]
+   >Wenn Sie die Option „Gespeicherte Suche“ auswählen, werden keine Computeridentitäten, sondern nur ihre Namen zurückgegeben. Wenn Sie über mehrere virtuelle Computer mit demselben Namen in mehreren Ressourcengruppen verfügen, werden diese in den Ergebnissen zurückgegeben. Die Verwendung der Option **Zu aktualisierende Gruppen** wird empfohlen, um sicherzustellen, dass Sie eindeutige VMS einschließen, die Ihren Kriterien entsprechen.
+
+   Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt. Sie können den Integritätsstatus des Computers sehen, bevor Sie die Updatebereitstellung planen. Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md).
 
   ![Bereich „Neue Updatebereitstellung“](./media/manage-update-multi/update-select-computers.png)
 
@@ -196,5 +197,5 @@ Klicken Sie auf **Fehler**, um ausführliche Informationen zu Fehlern bei der Be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur Updateverwaltung, einschließlich der Protokolle, Ausgabe und Fehler, finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
+Weitere Informationen zur Updateverwaltung, einschließlich der Protokolle, Ausgabe und Fehler, finden Sie unter [Lösung für die Updateverwaltung in Azure](../operations-management-suite/oms-solution-update-management.md).
 
