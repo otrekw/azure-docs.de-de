@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: fd75cc392bb30d15b665190eef8fbea39d692ee3
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: dfa5fbcf5df8ee314aab3e4a8228d81e7e14565b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160342"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233518"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Tutorial: Azure Active Directory-Integration mit New Relic
 
@@ -225,7 +225,7 @@ Damit sich Azure Active Directory-Benutzer bei New Relic anmelden können, müss
     c. Klicken Sie auf **Diesen Benutzer hinzufügen**.
 
 >[!NOTE]
->Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von New Relic-Benutzerkonten oder mithilfe der von New Relic bereitgestellten APIs erstellen.
+>Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von New Relic-Benutzerkonten oder mit den APIs von New Relic bereitstellen.
 > 
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 

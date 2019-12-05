@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884218"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184916"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Löschen eines Azure-App-Konfigurationspeichers
 
@@ -40,7 +40,7 @@ Führen Sie zunächst den folgenden Befehl aus, um die CLI-Erweiterung für Azur
 ```azurecli-interactive
 #/bin/bash
 
-# Delete an app configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
+# Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
 az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 ```
 
@@ -48,14 +48,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Dieses Skript verwendet die folgenden Befehle, um einen App-Konfigurationsspeicher zu löschen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Dieses Skript verwendet die folgenden Befehle, um einen App Configuration-Speicher zu löschen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|
-| [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Löscht eine App-Konfigurationspeicherressource. |
+| [az appconfig delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Löscht eine App Configuration-Speicherressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Weitere CLI-Skriptbeispiele für App Configuration finden Sie in der [Dokumentation zu Azure App Configuration](../cli-samples.md).
+Weitere CLI-Skriptbeispiele für App Configuration finden Sie in den [CLI-Beispielen für Azure App Configuration](../cli-samples.md).

@@ -1,21 +1,20 @@
 ---
-title: 'Tutorial: Bereitstellen eines Geräts mit Azure IoT Hub Device Provisioning Service (.NET)'
-description: 'Tutorial: Bereitstellen Ihres Geräts für eine einzelne IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)'
+title: Bereitstellen eines Geräts mit Azure IoT Hub Device Provisioning Service (.NET)
+description: Bereitstellen Ihres Geräts für einen einzelnen IoT-Hub mithilfe von Azure IoT Hub Device Provisioning Service (.NET)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 02995549590f6f53feff92fe45bfb6cc3d543334
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a19774a163c8725e0232e955a7be907420ce8249
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112820"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229481"
 ---
 # <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Tutorial: Registrieren des Geräts für eine IoT Hub-Instanz mithilfe des Azure IoT Hub Device Provisioning-Diensts (.NET)
 

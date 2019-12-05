@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Workflows mit dem Azure IoT Central-Connector in Microsoft Flow | Microsoft-Dokumentation
+title: Verwenden des Azure IoT Central-Connectors in Microsoft Flow | Microsoft-Dokumentation
 description: Verwenden Sie den IoT Central-Connector in Microsoft Flow zum Auslösen von Workflows und Erstellen, Abrufen, Aktualisieren und Löschen von Geräten sowie Ausführen von Befehlen in Workflows.
 services: iot-central
 author: viv-liu
@@ -8,12 +8,12 @@ ms.date: 08/26/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: hegate
-ms.openlocfilehash: 258020c8ccd690c524460873387293e73fc89125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f1912b90df75f3d85f6ba5d730c723cf42803237
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72941959"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73930372"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 

@@ -5,14 +5,14 @@ services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: overview
-ms.date: 09/28/2019
+ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: ce70260c6033d22b20675d6f3872c2ffa6368252
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b646035f6a952f679059abab86d94179f447f9ff
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495610"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406199"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure Web Application Firewall für Azure Front Door
 
@@ -92,16 +92,16 @@ Der Standardregelsatz wird standardmäßig im Erkennungsmodus in den WAF-Richtli
 Benutzerdefinierte Regeln werden immer vor den Regeln im Standardregelsatz ausgewertet. Wenn eine Anforderung mit einer benutzerdefinierten Regel übereinstimmt, wird die entsprechende Regelaktion angewendet, und die Anforderung wird entweder gesperrt oder an den Back-End weitergeleitet, ohne weitere benutzerdefinierte Regeln oder Regeln im Standardregelsatz aufzurufen. Darüber hinaus haben Sie die Möglichkeit, den Standardregelsatz aus Ihren WAF-Richtlinien zu entfernen.
 
 
-### <a name="bot-protection-rule-preview"></a>Bot-Schutzregel (Vorschauversion)
+### <a name="bot-protection-rule-set-preview"></a>Bot-Schutzregelsatz (Vorschauversion)
 
-Ein verwalteter Bot-Schutzregelsatz kann für Ihre WAF aktiviert werden, damit bei Anforderungen von IP-Adressen, die als schädlich bekannt sind, benutzerdefinierte Aktionen ausgeführt werden können. Die IP-Adressen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten einschließlich Azure Security Center verwendet.
+Ein verwalteter Bot-Schutzregelsatz kann für Ihre WAF aktiviert werden, damit bei Anforderungen von bekannten Bot-Kategorien benutzerdefinierte Aktionen ausgeführt werden können. Es werden drei Bot-Kategorien unterstützt: böswillige Bots, gute Bots und unbekannte Bots. Bot-Signaturen werden von der WAF-Plattform verwaltet und dynamisch aktualisiert. Die schädlichen IP-Adressen böswilliger Bots stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten verwendet (einschließlich Azure Security Center). Zu den guten Bots gehören auch validierte Suchmaschinen. Die Kategorien der unbekannten Bots umfassen weitere Bot-Gruppen. Sie können benutzerdefinierte Aktionen festlegen, um Bots der unterschiedlichen Kategorien zu sperren, zuzulassen, zu protokollieren oder umzuleiten.
 
 ![Bot-Schutzregelsatz](../media/afds-overview/botprotect2.png)
 
 > [!IMPORTANT]
-> Bot-Schutzregelsatz befindet sich derzeit in der öffentlichen Vorschau und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.  Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Der Bot-Schutzregelsatz befindet sich derzeit in der öffentlichen Vorschau und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.  Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wenn der Bot-Schutz aktiviert ist, werden eingehende Anforderungen, die mit Client-IPs von schädlichen Bots übereinstimmen, im Protokoll „FrontdoorWebApplicationFirewallLog“ protokolliert. Sie können auf WAF-Protokolle per Speicherkonto, Event Hub oder Log Analytics zugreifen. 
+Wenn der Bot-Schutz aktiviert ist, werden eingehende Anforderungen, die mit Bot-Regeln übereinstimmen, im Protokoll „FrontdoorWebApplicationFirewallLog“ protokolliert. Sie können auf WAF-Protokolle über ein Speicherkonto, über Event Hub oder über Log Analytics zugreifen.
 
 ## <a name="configuration"></a>Konfiguration
 

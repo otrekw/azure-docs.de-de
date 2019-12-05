@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Registrieren von X.509-Geräten für den Azure Device Provisioning-Dienst mit C#'
+title: Registrieren eines X.509-Geräts für Azure Device Provisioning Service mithilfe von C#
 description: In dieser Schnellstartanleitung werden Gruppenregistrierungen verwendet. In dieser Schnellstartanleitung registrieren Sie X.509-Geräte per C# in Azure IoT Hub Device Provisioning Service.
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: e43448337f787115c479f2f53ca57b7a20120108
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 3df9afa35b3ae9f7360a5d4b890d3fce209a4b12
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903434"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423351"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit C#
 
@@ -80,13 +79,13 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus. Wählen Sie unter **Neues Projekt erstellen** die Projektvorlage **Konsolen-App (.NET Core)** für C# und dann **Weiter** aus.
 
-1. Nennen Sie das Projekt *CreateEnrollmentGroup*, und wählen Sie anschließend **Erstellen** aus.
+1. Geben Sie dem Projekt den Namen *CreateEnrollmentGroup*, und wählen Sie dann **Erstellen** aus.
 
     ![Konfigurieren des Visual C#-Projekts für den klassischen Windows-Desktop](media//quick-enroll-device-x509-csharp/configure-app-vs2019.png)
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CreateEnrollmentGroup**, und wählen Sie dann **NuGet-Pakete verwalten** aus.
+1. Wenn die Projektmappe in Visual Studio geöffnet wird, klicken Sie im Bereich des **Projektmappen-Explorers** mit der rechten Maustaste auf das Projekt **CreateEnrollmentGroup**, und wählen Sie dann **NuGet-Pakete verwalten** aus.
 
-1. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Provisioning.Service**, wählen Sie diese Option aus, und klicken Sie dann auf **Installieren**.
+1. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Provisioning.Service**, und wählen Sie diese Option und dann **Installieren** aus.
 
     ![Fenster „NuGet-Paket-Manager“](media//quick-enroll-device-x509-csharp/add-nuget.png)
 
@@ -103,12 +102,12 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
 1. Fügen Sie die folgenden Felder zur `Program`-Klasse hinzu, und nehmen Sie die aufgeführten Änderungen vor.  
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private static string EnrollmentGroupId = "enrollmentgrouptest";
    private static string X509RootCertPath = @"{Path to a .cer or .pem file for a verified root CA or intermediate CA X.509 certificate}";
    ```
 
-   * Ersetzen Sie den Platzhalterwert `ProvisioningConnectionString` durch die Verbindungszeichenfolge des Bereitstellungsdiensts, für den Sie die Registrierung erstellen möchten.
+   * Ersetzen Sie den Platzhalterwert `ProvisioningServiceConnectionString` durch die Verbindungszeichenfolge des Bereitstellungsdiensts, für den Sie die Registrierung erstellen möchten.
 
    * Ersetzen Sie den Platzhalterwert `X509RootCertPath` durch den Pfad zu einer PEM- oder CER-Datei. Diese Datei stellt den öffentlichen Teil eines X.509-Zwischenzertifikats oder -Stammzertifikats einer Zertifizierungsstelle dar, das zuvor für Ihren Bereitstellungsdienst hochgeladen und überprüft wurde.
 
@@ -168,7 +167,7 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
 
 ## <a name="run-the-enrollment-group-sample"></a>Ausführen des Registrierungsgruppenbeispiels
   
-Führen Sie das Beispiel in Visual Studio aus, um die Registrierungsgruppe zu erstellen. Nach erfolgreicher Erstellung werden im Eingabeaufforderungsfenster die Eigenschaften der neuen Registrierungsgruppe angezeigt.
+Führen Sie das Beispiel in Visual Studio aus, um die Registrierungsgruppe zu erstellen. Ein Eingabeaufforderungsfenster wird geöffnet, in dem Bestätigungsmeldungen angezeigt werden. Nach erfolgreicher Erstellung werden im Eingabeaufforderungsfenster die Eigenschaften der neuen Registrierungsgruppe angezeigt.
 
 Überprüfen Sie, ob die Registrierungsgruppe erstellt wurde. Navigieren Sie zur Device Provisioning Service-Zusammenfassung, und wählen Sie **Registrierungen verwalten** und anschließend **Registrierungsgruppen** aus. Daraufhin sollte ein neuer Registrierungseintrag mit der im Beispiel verwendeten Registrierungs-ID angezeigt werden.
 
@@ -182,9 +181,9 @@ Wenn Sie sich das C#-Dienstbeispiel näher ansehen möchten, dürften Sie die in
 
 1. Schließen Sie das Ausgabefenster des C#-Beispiels auf Ihrem Computer.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und wählen Sie anschließend **Registrierungsgruppen** aus. Wählen Sie die *Registrierungs-ID* für den Registrierungseintrag aus, den Sie mit dieser Schnellstartanleitung erstellt haben, und wählen Sie **Löschen** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und wählen Sie anschließend **Registrierungsgruppen** aus. Wählen Sie die *Registrierungs-ID* für den Registrierungseintrag aus, den Sie in diesem Schnellstart erstellt haben, und wählen Sie **Löschen** aus.
 
-1. Klicken Sie im Azure-Portal für Ihren Device Provisioning Service auf **Zertifikate**, wählen Sie das Zertifikat aus, das Sie für diesen Schnellstart hochgeladen haben, und klicken Sie anschließend über **Zertifikatdetails** auf **Löschen**.  
+1. Wählen Sie im Azure-Portal für Ihren Gerätebereitstellungsdienst **Zertifikate** aus. Wählen Sie anschließend das Zertifikat aus, das Sie für diesen Schnellstart hochgeladen haben, und wählen Sie dann oben unter **Zertifikatdetails** die Option **Löschen** aus.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

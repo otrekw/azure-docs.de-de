@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Richtlinieninitiative zur Abrechnung von Tags'
-description: Diese Beispielrichtliniendefinition erfordert angegebene Tagwerte für die Kostenstelle und den Produktnamen.
+description: Für diese Beispielrichtlinieninitiative (Richtliniensatz) müssen Tagwerte, die in Parametern definiert sind, für die Kostenstelle und den Produktnamen angegeben werden.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: e2fc9a7251fbe548b22f24356e555f92a3a6e22f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 449909b160c2b811c62cd8c6592e74dd0f714e41
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076356"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463391"
 ---
 # <a name="sample---billing-tags-policy-initiative"></a>Beispiel: Richtlinieninitiative zur Abrechnung von Tags
 

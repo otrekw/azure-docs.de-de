@@ -1,14 +1,14 @@
 ---
-title: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
-description: Verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, die zwei Ressourcengruppen einrichtet und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert.
-ms.date: 03/05/2019
+title: 'Tutorial: Blaupausenbeispiel für neue Umgebung'
+description: In diesem Tutorial verwenden Sie ein Blaupausenbeispiel, um eine Blaupausendefinition zu erstellen, mit der zwei Ressourcengruppen eingerichtet werden und eine Rollenzuweisung für jede dieser Ressourcengruppen konfiguriert wird.
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: d23e9b7242c58e4da5fcfe5ef4d29d9f9df6f754
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960269"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321732"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Erstellen einer Umgebung anhand eines Blaupausenbeispiels
 
@@ -183,9 +183,7 @@ Löschen Sie nach Abschluss dieses Tutorials die folgenden Ressourcen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](../concepts/lifecycle.md).
-- Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](../concepts/parameters.md) vertraut.
-- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](../concepts/resource-locking.md) können.
-- Erfahren Sie, wie Sie die [Abfolge von Blaupausen](../concepts/sequencing-order.md) anpassen können.
-- Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
-- Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).
+In diesem Tutorial wurde beschrieben, wie Sie eine neue Blaupause aus einer Beispieldefinition erstellen. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr über den Lebenszyklus von Blaupausen](../concepts/lifecycle.md).

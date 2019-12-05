@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/08/2019
+ms.date: 11/23/2019
 ms.author: sharadag
-ms.openlocfilehash: 96dae96e16ce033ce15a8f1e9386e5252562654a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e92e51e8aabf24f1c5c4db31e2e203f391620ecc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796225"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423473"
 ---
 # <a name="what-is-azure-front-door-service"></a>Was ist Azure Front Door Service?
 Über Azure Front Door Service können Sie das globale Routing für Ihren Webdatenverkehr definieren, verwalten und überwachen, indem Sie es für beste Leistung und sofortiges globales Failover bei Hochverfügbarkeit optimieren. Mit Front Door können Sie Ihre globalen (mehrere Regionen) Consumer- und Unternehmensanwendungen in stabile und hochleistungsfähige personalisierte moderne Anwendungen, APIs und Inhalte transformieren, die eine globale Zielgruppe mit Azure erreichen.
@@ -26,6 +26,8 @@ Front Door arbeitet auf Layer 7 oder HTTP/HTTPS-Layer und verwendet das Anycast-
 
 >[!NOTE]
 > Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zu einem DNS-basierten globalen Routing suchen und **keine** Anforderungen zur Beendigung der Transport Layer Security (TLS)-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, lesen Sie den Artikel [Traffic Manager](../traffic-manager/traffic-manager-overview.md). Wenn Sie nach Informationen zum Lastenausgleich zwischen Ihren Servern in einer Region suchen, lesen Sie im Zusammenhang mit der Anwendungsschicht den Artikel [Application Gateway](../application-gateway/application-gateway-introduction.md) und im Zusammenhang mit der Vermittlungsschicht den Artikel [Load Balancer](../load-balancer/load-balancer-overview.md). Für Ihre End-to-End-Szenarios kann es von Vorteil sein, diese Lösungen nach Bedarf zu kombinieren.
+>
+> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 Die folgenden Features sind in Front Door enthalten:
 

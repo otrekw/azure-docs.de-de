@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Keine kalte Zugriffsebene für Speicherkonto'
-description: Diese Beispielrichtliniendefinition untersagt die Verwendung des kalten Zugriffstierings für Blobspeicherkonten.
+description: Mit dieser Beispielrichtliniendefinition wird die Verwendung des kalten Zugriffstierings für alle Blobspeicherkonten untersagt.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 6e22519eecc6db8ddccccbdb7f6bbbee622cc803
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: cbee14edffb79ed3261bf65776b41017a30276fc
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076319"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463366"
 ---
 # <a name="sample---deny-cool-access-tiering-for-storage-accounts"></a>Beispiel: Verweigern des kalten Zugriffstierings für Speicherkonten
 

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669418"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278544"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Schnellstart: Bereitstellen einer App im LUIS-Portal
 
@@ -29,6 +29,7 @@ In diesem Schnellstart erfahren Sie, wie eine Anwendung bereitgestellt wird. Sie
 
 * Erwerben Sie ein [Azure-Abonnement](https://azure.microsoft.com/free).
 * Führen Sie den vorherigen [Schnellstart: Erstellen einer neuen App im LUIS-Portal](get-started-portal-build-app.md) durch, oder [laden Sie die App herunter, und importieren Sie die App](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Wenn Sie über Apps verfügen, die vor der Azure-Ressourcenauthentifizierung erstellt wurden, [migrieren Sie zu einer Azure-Ressource](luis-migration-authoring.md). Einige Portalseiten sehen anders aus, wenn die E-Mail-Authentifizierung verwendet wird.
 
 ## <a name="create-the-endpoint-resource"></a>Erstellen der Endpunktressource
 
@@ -60,7 +61,7 @@ Sie erstellen die Vorhersageendpunktressource im Azure-Portal. Diese Ressource d
 
 Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie der LUIS-App die Ressource zuweisen. Nachdem Sie die Ressource zugewiesen haben, müssen Sie diesen Schritt nur dann erneut ausführen, wenn Sie eine neue Ressource erstellen. Sie können beispielsweise eine neue Ressource erstellen, um die Regionen Ihrer App zu erweitern oder eine größere Anzahl von Vorhersageabfragen zu unterstützen.
 
-1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
+1. Melden Sie sich beim [LUIS-Portal](https://preview.luis.ai) an, und wählen Sie in der Liste der Apps die App **myEnglishApp** aus.
 
 1. Wählen Sie im Menü oben rechts die Option **Verwalten** aus, und wählen Sie dann **Azure-Ressourcen** aus.
 
@@ -86,7 +87,7 @@ Jedes Mal, wenn Sie eine neue Ressource für LUIS erstellen, müssen Sie der LUI
 
 ## <a name="prediction-endpoint-request"></a>Anforderung für Vorhersageendpunkt
 
-Die Äußerung des Benutzers wird am Ende der URL bei `query=` an die GET-Anforderung angefügt. Geben Sie nach `query=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
+Die Äußerung des Benutzers wird im Vorschauportal am Ende der URL bei `query=` an die GET-Anforderung angefügt. Geben Sie nach `query=` die gleiche Benutzeräußerung ein, die am Ende des vorherigen Schnellstarts verwendet wurde:
 
 ```Is there a form named hrf-234098```
 

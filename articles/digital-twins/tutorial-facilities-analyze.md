@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Analysieren von Ereignissen aus dem Azure Digital Twins-Setup'
+title: 'Tutorial: Analysieren von Ereignissen in Time Series Insights – Azure Digital Twins | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Ereignisse in Ihren Azure Digital Twins-Gebäudebereichen mit Azure Time Series Insights visualisieren und analysieren.
 services: digital-twins
 ms.author: alinast
@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3df0fa448e320cba6dd3aaba1bb1be09c1a8b49b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107682"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383059"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen über Azure Digital Twins mit Time Series Insights
 
@@ -54,6 +54,8 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Suchen Sie nach der Option **Event Hubs**, und wählen Sie sie aus. Klicken Sie auf **Erstellen**.
 
+    [![Erstellen eines Event Hubs-Namespace](./media/tutorial-facilities-analyze/create-event-hubs.png)](./media/tutorial-facilities-analyze/create-event-hubs.png#lightbox)
+
 1. Geben Sie einen **Namen** für den Event Hubs-Namespace ein. Wählen Sie unter **Tarif** die Option **Standard** sowie Ihr **Abonnement**, die **Ressourcengruppe**, die Sie für Ihre Digital Twins-Instanz verwendet haben, sowie den **Standort** aus. Klicken Sie auf **Erstellen**.
 
 1. Wählen Sie in der Event Hubs-Namespacebereitstellung erst den Bereich **Übersicht** und dann **Zu Ressource wechseln** aus.
@@ -77,7 +79,10 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
     [![Event Hub-Verbindungszeichenfolgen](./media/tutorial-facilities-analyze/event-hub-connection-strings.png)](./media/tutorial-facilities-analyze/event-hub-connection-strings.png#lightbox)
 
-1. Öffnen Sie die soeben erstellte Richtlinie „ManageSend“, und kopieren Sie die Werte für **Verbindungszeichenfolge – Primärschlüssel** und **Verbindungszeichenfolge – Sekundärschlüssel** in eine temporäre Datei. Sie benötigen diese Werte im nächsten Abschnitt, um einen Endpunkt für den Event Hub zu erstellen.
+    > [!TIP]
+    > Vergewissern Sie sich, dass Sie eine SAS-Richtlinie für Ihre Event Hub-Instanz und nicht den Namespace erstellen.
+
+1. Öffnen Sie die soeben erstellte Richtlinie **ManageSend**, und kopieren Sie die Werte für **Verbindungszeichenfolge – Primärschlüssel** und **Verbindungszeichenfolge – Sekundärschlüssel** in eine temporäre Datei. Sie benötigen diese Werte im nächsten Abschnitt, um einen Endpunkt für den Event Hub zu erstellen.
 
 ### <a name="create-an-endpoint-for-the-event-hub"></a>Erstellen eines Endpunkts für den Event Hub
 
@@ -105,13 +110,13 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
 1. Ersetzen Sie die Platzhalter `Primary_connection_string_for_your_event_hub` durch den Wert von **Verbindungszeichenfolge – Primärschlüssel** für den Event Hub. Stellen Sie sicher, dass die Verbindungszeichenfolge das folgende Format aufweist:
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey1GUID;EntityPath=nameOfYourEventHub
    ```
 
 1. Ersetzen Sie die Platzhalter `Secondary_connection_string_for_your_event_hub` durch den Wert von **Verbindungszeichenfolge – Sekundärschlüssel** für den Event Hub. Stellen Sie sicher, dass die Verbindungszeichenfolge das folgende Format aufweist: 
 
-   ```plaintext
+   ```ConnectionString
    Endpoint=sb://nameOfYourEventHubNamespace.servicebus.windows.net/;SharedAccessKeyName=ManageSend;SharedAccessKey=yourShareAccessKey2GUID;EntityPath=nameOfYourEventHub
    ```
 

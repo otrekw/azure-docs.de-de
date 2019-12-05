@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 067293f76ac4894ca73f4e74cb01db65ae8d1fba
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 877467b65d346c871dd93f4b3f96b2c1664fa4b9
+ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876919"
+ms.lasthandoff: 11/11/2019
+ms.locfileid: "73906791"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Vergleichen von Nachrichtenweiterleitung und Event Grid für IoT Hub
 
@@ -23,7 +23,7 @@ Azure IoT Hub stellt die Möglichkeit bereit, Daten von Ihren verbundenen Gerät
 
 **[IoT Hub-Nachrichtenweiterleitung](iot-hub-devguide-messages-d2c.md)** : Dieses IoT Hub-Feature ermöglicht es Benutzern, Gerät-zu-Cloud-Nachrichten an Dienstendpunkte wie Azure Storage-Container, Event Hubs, Service Bus-Warteschlangen oder Service Bus-Themen weiterzuleiten. Die Weiterleitung verfügt auch über eine Abfragefunktion zum Filtern der Daten, bevor diese an die Endpunkte weitergeleitet werden. Zusätzlich zu Gerätetelemetriedaten können Sie auch [Ereignisse ohne Telemetriedaten](iot-hub-devguide-messages-d2c.md#non-telemetry-events) senden, die zum Auslösen von Aktionen verwendet werden können. 
 
-**IoT Hub-Integration mit Event Grid** Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. IoT Hub und Event Grid [integrieren gemeinsam IoT Hub-Ereignisse in Azure- und Nicht-Azure-Dienste](iot-hub-event-grid.md) praktisch in Echtzeit. IoT Hub veröffentlicht [Geräteereignisse](iot-hub-event-grid.md#event-types), die allgemein verfügbar sind, und jetzt auch Telemetrieereignisse (in der öffentlichen Vorschau).
+**IoT Hub-Integration mit Event Grid** Azure Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. IoT Hub und Event Grid [integrieren gemeinsam IoT Hub-Ereignisse in Azure- und Nicht-Azure-Dienste](iot-hub-event-grid.md) praktisch in Echtzeit. IoT Hub veröffentlicht sowohl [Geräteereignisse](iot-hub-event-grid.md#event-types) als auch Telemetrieereignisse.
 
 ## <a name="differences"></a>Unterschiede
 

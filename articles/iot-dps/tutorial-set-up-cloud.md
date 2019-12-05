@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Einrichten einer Cloud für Azure IoT Hub Device Provisioning Service im Portal'
-description: 'Tutorial: Einrichten der Cloudressourcen für die Gerätebereitstellung im [Azure-Portal](https://portal.azure.com) per IoT Hub Device Provisioning Service (DPS)'
+title: Einrichten einer Cloud für Azure IoT Hub Device Provisioning Service im Portal
+description: 'Tutorial: Einrichten der Cloudressourcen für die Gerätebereitstellung im [Azure-Portal](https://portal.azure.com) mithilfe von IoT Hub Device Provisioning Service'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: e91627f934357cd67965ea8880db37ff9bfb3fb2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: bdfe851532383e5a051f43cc4b20772f8053dbfc
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112796"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228307"
 ---
 # <a name="tutorial-configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Tutorial: Konfigurieren von Cloudressourcen für die Gerätebereitstellung mit dem IoT Hub Device Provisioning-Dienst
 

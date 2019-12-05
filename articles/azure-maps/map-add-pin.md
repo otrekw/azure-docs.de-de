@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 10f6a7ef92bfd6558ed93e7fb40df9e48e1b92f5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976176"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480620"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Hinzufügen einer Symbolebene zu einer Karte
 
@@ -22,6 +22,14 @@ Ein Symbol kann mit einer Datenquelle verbunden und dazu verwendet werden, ein S
 
 > [!TIP]
 > Symbolebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', ['geometry-type'], 'Point']` oder `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest, um die Ebene dahin gehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden, wenn auch MultiPoint-Funktionen berücksichtigt werden sollen.
+
+Der Kartenbild-Sprite-Manager, mit dem von der Symbolebene verwendete benutzerdefinierte Bilder geladen werden, unterstützt die folgenden Bildformate:
+
+- JPEG
+- PNG
+- SVG
+- BMP
+- GIF (keine Animationen)
 
 ## <a name="add-a-symbol-layer"></a>Hinzufügen einer Symbolebene
 

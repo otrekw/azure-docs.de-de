@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123506"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280544"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Bewerten physischer Server mit Azure Migrate: Migrate-Serverbewertung
-
-> [!NOTE]
-> Falls Sie dieses Feature noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Es wird voraussichtlich im Laufe der nächsten Woche verfügbar.
- 
 
 In diesem Artikel erfahren Sie, wie Sie lokale physische Server mit Azure Migrate bewerten: Migrate-Serverbewertung bewerten.
 
@@ -108,11 +104,12 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
 
-3.  Für die Applianceversion 1.19.05.10 muss der generierte Hash den folgenden Einstellungen entsprechen:
+3.  Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen Einstellungen entsprechen.
 
   **Algorithmus** | **Hashwert**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 96fd99581072c400aa605ab036a0a7c0
+  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
 
@@ -135,7 +132,7 @@ Führen Sie das Skript wie folgt aus:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde. 
+Das Skript startet die Appliancewebanwendung, nachdem es erfolgreich ausgeführt wurde.
 
 Bei Problemen können Sie unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Timestamp</em>.log“ auf die Skriptprotokolle zugreifen, um die Problembehandlung durchzuführen.
 
@@ -166,7 +163,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Registrieren der Appliance bei Azure Migrate
 
 1. Klicken Sie auf **Anmelden**. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
-2. Melden Sie sich auf der neuen Registerkarte mit Ihren Azure-Anmeldeinformationen an. 
+2. Melden Sie sich auf der neuen Registerkarte mit Ihren Azure-Anmeldeinformationen an.
     - Melden Sie sich mit Ihrem Benutzernamen und Ihrem Kennwort an.
     - Die Anmeldung mit einer PIN wird nicht unterstützt.
 3. Kehren Sie nach erfolgreicher Anmeldung zur Web-App zurück.
@@ -188,7 +185,7 @@ Sie können für Windows- und Linux-Server je einen Satz Anmeldeinformationen an
     - Um einen Server zu entfernen, wählen Sie **Löschen** aus.
 4. Klicken Sie nach der Überprüfung auf **Speichern und Ermittlung starten**, um mit der Ermittlung zu beginnen.
 
-Daraufhin wird die Ermittlung gestartet. Es dauert ca. 1,5 Minuten pro Server, bis Metadaten des ermittelten Servers im Azure-Portal angezeigt werden. 
+Daraufhin wird die Ermittlung gestartet. Es dauert ca. 1,5 Minuten pro Server, bis Metadaten des ermittelten Servers im Azure-Portal angezeigt werden.
 
 ### <a name="verify-servers-in-the-portal"></a>Überprüfen von Servern im Portal
 

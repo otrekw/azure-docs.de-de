@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen eines Suchindex in Node.js mithilfe von REST-APIs'
 titleSuffix: Azure Cognitive Search
-description: Dieses Node.js-Beispiel für Azure Cognitive Search veranschaulicht das Erstellen eines Indexes, das Laden von Daten in den Index und das Abfragen des Indexes aus JavaScript.
+description: In diesem Node.js-Schnellstart erfahren Sie, wie Sie mit JavaScript und den REST-APIs in Azure Cognitive Search einen Index erstellen, Daten laden und Abfragen ausführen.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b7308b5289ba747dba90716b495ca1ba6afb209
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: fd8a053eb4ff0805b95dc11db4206e1dd2edb184
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719993"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406931"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Node.js mit REST-APIs
 > [!div class="op_single_selector"]
@@ -684,11 +684,12 @@ Die **AzureSearchClient**-Klasse kapselt die Konfiguration, URLs und grundlegend
 
 Das Gesamtverhalten der `run`-Funktion lässt sich so zusammenfassen: Löschen des Azure Cognitive Search-Index (falls ein solcher vorhanden ist), Erstellen des Indexes, Hinzufügen einiger Daten und Ausführen einiger Abfragen.  
 
-## <a name="clean-up"></a>Bereinigen 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
 Ressourcen können im Portal über den Link **Alle Ressourcen** oder **Ressourcengruppen** im linken Navigationsbereich gesucht und verwaltet werden.
+
 Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf maximal drei Indizes, Indexer und Datenquellen. Sie können einzelne Elemente über das Portal löschen, um unter dem Limit zu bleiben. 
 
 ## <a name="next-steps"></a>Nächste Schritte

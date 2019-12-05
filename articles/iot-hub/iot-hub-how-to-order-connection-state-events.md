@@ -1,5 +1,5 @@
 ---
-title: Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB | Microsoft-Dokumentation
+title: Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mit von Azure Cosmos DB
 description: In diesem Artikel wird beschrieben, wie Sie Geräteverbindungsereignisse von Azure IoT Hub mit Azure Cosmos DB sortieren und aufzeichnen, um den aktuellen Verbindungsstatus zu verwalten
 services: iot-hub
 ms.service: iot-hub
@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: asrastog
-ms.openlocfilehash: a020221d841682d1e18d2b728a732ec4dfc35ef3
-ms.sourcegitcommit: 6b41522dae07961f141b0a6a5d46fd1a0c43e6b2
+ms.openlocfilehash: 210c2e74305ba99b4ac3a12625d0b7f5fc47ba43
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67988280"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73954252"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Sortieren von Geräteverbindungsereignissen von Azure IoT Hub mithilfe von Azure Cosmos DB
 

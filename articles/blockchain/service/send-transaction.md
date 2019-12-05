@@ -1,21 +1,17 @@
 ---
-title: 'Verwenden von Visual Studio Code: Azure Blockchain Service'
+title: 'Tutorial: Erstellen und Bereitstellen von Smart Contracts – Azure Blockchain Service'
 description: Tutorial zur Verwendung des Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code zum Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2d2cb174656f5ed8f13d4463d416455ebb3f9ec9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329240"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325164"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Tutorial: Erstellen und Bereitstellen von Smart Contracts mithilfe von Visual Studio Code
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Tutorial: Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service
 
 In diesem Tutorial verwenden Sie das Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code zum Erstellen und Bereitstellen von Smart Contracts in Azure Blockchain Service. Außerdem verwenden Sie Truffle zum Ausführen einer Smart Contract-Funktion per Transaktion.
 
@@ -32,6 +28,21 @@ Sie verwenden das Azure Blockchain Development Kit für Ethereum für folgende Z
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Quickstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure Blockchain Development Kit für Ethereum-Erweiterung](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node.js 10.15.x oder höher](https://nodejs.org/download)
+* [Git 2.10.x oder höher](https://git-scm.com)
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Fügen Sie Ihrem Pfad „python.exe“ hinzu. Python-Version 2.7.15 ist in Ihrem Pfad für das Azure Blockchain Development Kit erforderlich.
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+Unter Windows ist ein installierter C++-Compiler für das Modul „node-gyp“ erforderlich. Sie können die MSBuild-Tools verwenden:
+
+* Wenn Visual Studio 2017 installiert ist, konfigurieren Sie npm mit dem Befehl `npm config set msvs_version 2017 -g` für die Verwendung der MSBuild-Tools.
+* Wenn Visual Studio 2019 installiert ist, legen Sie den Pfad der MSBuild-Tools für npm fest. Zum Beispiel, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Installieren Sie andernfalls die eigenständigen VS-Buildtools. Verwenden Sie hierzu `npm install --global windows-build-tools` in einer Befehlsshell mit erhöhten Rechten (*Als Administrator ausführen*).
+
+Weitere Informationen zu node-gyp finden Sie im [node-gyp-Repository auf GitHub](https://github.com/node-gyp).
 
 ## <a name="create-a-smart-contract"></a>Erstellen eines Smart Contracts
 
@@ -165,7 +176,7 @@ Das Skript fragt den Smart Contract ab, indem die Funktion „getMessage“ aufg
 
 ![Skriptausgabe](./media/send-transaction/execute-get.png)
 
-Beachten Sie, dass der Wert nicht **Hello, blockchain!** lautet. Stattdessen ist der zurückgegebene Wert ein Platzhalter. Wenn Sie den Contract ändern und bereitstellen, erhält er eine neue Adresse, und die Zustandsvariablen werden Werten im Smart Contract-Konstruktor zugewiesen. Im Truffle-Beispiel **2_deploy_contracts.js** für ein Migrationsskript wird der Smart Contract bereitgestellt und ein Platzhalterwert als Argument übergeben. Der Konstruktor legt die Zustandsvariable **RequestMessage** auf den Platzhalterwert fest, und der Wert wird zurückgegeben.
+Beachten Sie, dass der Wert nicht **Hello, blockchain!** lautet. Stattdessen ist der zurückgegebene Wert ein Platzhalter. Wenn Sie den Contract ändern und bereitstellen, wird die geänderte Version unter einer neuen Adresse bereitgestellt, und die Zustandsvariablen werden Werten im Smart Contract-Konstruktor zugewiesen. Im Truffle-Beispiel **2_deploy_contracts.js** für ein Migrationsskript wird der Smart Contract bereitgestellt und ein Platzhalterwert als Argument übergeben. Der Konstruktor legt die Zustandsvariable **RequestMessage** auf den Platzhalterwert fest, und der Wert wird zurückgegeben.
 
 1. Führen Sie die Skripts **sendrequest.js** und **getmessage.js** erneut aus, um die Zustandsvariable **RequestMessage** festzulegen und den Wert abzufragen.
 

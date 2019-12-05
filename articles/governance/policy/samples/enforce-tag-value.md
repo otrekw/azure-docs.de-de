@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Erzwingen eines Tags und dessen zugehörigen Werts'
-description: Diese Beispielrichtliniendefinition erfordert einen Tagnamen und -wert (jeweils als Parameter festgelegt).
+description: Für diese Beispielrichtliniendefinition werden in jeder Azure-Ressource ein Tagname und ein Tagwert benötigt, die in einem Parameter definiert sind.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: b48bd1e38264bc98a2ec7b4c5b1a6a929babffaf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d405b5cbe2bdb7b96c74d665171714d1890ef624
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076253"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463337"
 ---
 # <a name="sample---enforce-tag-and-its-value"></a>Beispiel: Erzwingen eines Tags und dessen zugehörigen Werts
 

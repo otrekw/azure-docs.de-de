@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73155762"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227616"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory-Integration mit FreshDesk
 
@@ -272,7 +272,7 @@ Im Fall von Freshdesk ist die Bereitstellung eine manuelle Aufgabe.
     >Der Besitzer des Azure AD-Kontos erhält eine E-Mail mit einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
     >
     >[!NOTE]
-    >Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von FreshDesk-Benutzerkonten oder mithilfe der von FreshDesk bereitgestellten APIs in FreshDesk bereitstellen.
+    >Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von FreshDesk-Benutzerkonten oder mit den APIs von FreshDesk bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

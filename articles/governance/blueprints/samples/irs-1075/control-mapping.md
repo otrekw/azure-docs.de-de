@@ -1,14 +1,14 @@
 ---
-title: IRS 1075-Blaupausenbeispiel – Steuerungszuordnung
+title: IRS 1075-Blaupausenbeispiel – Steuerungen
 description: Steuerungszuordnung des IRS 1075-Blaupausenbeispiels Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 08/07/2019
+ms.date: 11/20/2019
 ms.topic: sample
-ms.openlocfilehash: b56e1a2c8a71e3bb7927dc487e0c2f1e7709d413
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 86570012000e660b53b2c3c7291b9ca98576a004
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032210"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546826"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Zuordnung der Steuerungen des ISO 1075-Blaupausenbeispiels
 
@@ -324,7 +324,8 @@ Advanced Threat Protection für Azure Storage erkennt ungewöhnliche und möglic
 Nachdem Sie sich nun die Steuerungszuordnung der IRS 1075-Blaupause angesehen haben, lesen Sie die folgenden Artikel, um weitere Informationen zur Blaupause zu erhalten und zu erfahren, wie Sie dieses Beispiel bereitstellen:
 
 > [!div class="nextstepaction"]
-> [IRS 1075-Blaupause – Übersicht](./index.md)
+> [IRS 1075-Blaupause: Übersicht](./index.md)
+> [IRS 1075-Blaupause: Schritte zur Bereitstellung](./deploy.md)
 
 Weitere Artikel zu Blaupausen und ihrer Nutzung:
 

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357011"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185102"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integrieren in eine CI/CD-Pipeline
 
@@ -29,7 +29,7 @@ Wenn Sie eine Azure DevOps-Pipeline besitzen, können Sie Schlüsselwerte aus Ap
 
 ## <a name="deploy-app-configuration-data-with-your-application"></a>Bereitstellen von App Configuration-Daten mit Ihrer Anwendung
 
-Ihre Anwendung kann unter Umständen nicht ausgeführt werden, wenn sie von Azure App Configuration abhängig ist, den Dienst aber nicht erreicht. Sie können die Resilienz Ihrer Anwendung für diesen Fall optimieren, auch wenn ein solches Ereignis sehr unwahrscheinlich ist. Fassen Sie hierzu die aktuellen Konfigurationsdaten in einer Datei zusammen, die gemeinsam mit der Anwendung bereitgestellt und beim Start lokal geladen wird. Dadurch wird sichergestellt, dass Ihre Anwendung mindestens über Standardeinstellungen verfügt. Diese Werte werden durch neuere Änderungen in einem App-Konfigurationsspeicher überschrieben (sofern verfügbar).
+Ihre Anwendung kann unter Umständen nicht ausgeführt werden, wenn sie von Azure App Configuration abhängig ist, den Dienst aber nicht erreicht. Sie können die Resilienz Ihrer Anwendung für diesen Fall optimieren, auch wenn ein solches Ereignis sehr unwahrscheinlich ist. Fassen Sie hierzu die aktuellen Konfigurationsdaten in einer Datei zusammen, die gemeinsam mit der Anwendung bereitgestellt und beim Start lokal geladen wird. Dadurch wird sichergestellt, dass Ihre Anwendung mindestens über Standardeinstellungen verfügt. Diese Werte werden durch neuere Änderungen in einem App Configuration-Speicher überschrieben (sofern verfügbar).
 
 Mithilfe der Azure App Configuration-Funktion [Exportieren](./howto-import-export-data.md#export-data) können Sie das Abrufen aktueller Konfigurationsdaten als einzelne Datei automatisieren. Betten Sie diese Datei anschließend in einen Build- oder Bereitstellungsschritt in Ihre CI/CD-Pipeline (Continuous Integration/Continuous Deployment) ein.
 
@@ -43,7 +43,7 @@ Wenn Sie die App lokal erstellen möchten, laden Sie die [Azure-Befehlszeilensch
 
 Für einen Cloud-Build (etwa mit Azure DevOps) muss die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) auf Ihrem Buildsystem installiert sein.
 
-### <a name="export-an-app-configuration-store"></a>Exportieren eines App-Konfigurationsspeichers
+### <a name="export-an-app-configuration-store"></a>Exportieren eines App Configuration-Speichers
 
 1. Öffnen Sie Ihre*CSPROJ-Datei*, und fügen Sie das folgende Skript hinzu:
 
@@ -54,7 +54,7 @@ Für einen Cloud-Build (etwa mit Azure DevOps) muss die [Azure-Befehlszeilenschn
     </Target>
     ```
 
-    Fügen Sie die Ihrem App-Konfigurationsspeicher zugeordnete Verbindungszeichenfolge (*ConnectionString*) als Umgebungsvariable hinzu.
+    Fügen Sie die Ihrem App Configuration-Speicher zugeordnete Verbindungszeichenfolge (*ConnectionString*) als Umgebungsvariable hinzu.
 
 2. Öffnen Sie *Program.cs*, und aktualisieren Sie die Methode `CreateWebHostBuilder` für die Verwendung der exportierten JSON-Datei durch Aufrufen der Methode `config.AddJsonFile()`.
 
@@ -74,7 +74,7 @@ Für einen Cloud-Build (etwa mit Azure DevOps) muss die [Azure-Befehlszeilenschn
 
 ### <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
-1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App-Konfigurationsspeicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
+1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer'
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie im Azure Machine Learning-Designer (Vorschauversion) eine Predictive Analytics-Lösung erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells unter Verwendung von Drag & Drop-Modulen.
+description: In diesem Tutorial wird veranschaulicht, wie Sie im Azure Machine Learning-Designer (Vorschauversion) eine Predictive Analytics-Lösung erstellen. Sie erhalten Informationen zum Trainieren, Bewerten und Bereitstellen eines Machine Learning-Modells unter Verwendung von Drag & Drop-Modulen.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 31b06f3ad102f39d1a9f95dee2bd98b5d0a3b310
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932044"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483311"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer (Vorschauversion)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -41,7 +41,7 @@ Zum Bereitstellen Ihrer Pipeline müssen Sie zunächst die Trainingspipeline in 
 
     Ihre Pipeline sollte nun wie folgt aussehen: 
 
-   ![Screenshot der erwarteten Pipelinekonfiguration nach Vorbereitung der Bereitstellung](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Screenshot der erwarteten Pipelinekonfiguration nach Vorbereitung der Bereitstellung](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
     Wenn Sie **Rückschlusspipeline erstellen** auswählen, passiert Folgendes:
     
@@ -70,7 +70,7 @@ Im angezeigten Dialogfeld können Sie auswählen, in welchen vorhandenen AKS-Clu
 
 1. Wählen Sie auf dem Navigationsmenüband **Rückschlusscluster** >  **+ Neu** aus.
 
-    ![Screenshot: Navigation zum Bereich für den neuen Rückschlusscluster](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![Screenshot: Navigation zum Bereich für den neuen Rückschlusscluster](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
 1. Konfigurieren Sie im Bereich des Rückschlussclusters einen neuen Kubernetes-Dienst.
 
@@ -96,7 +96,7 @@ Kehren Sie nach Abschluss der Bereitstellung des AKS-Diensts zur Echtzeit-Rücks
 
 1. Klicken Sie auf **Bereitstellen**.
 
-    ![Screenshot: Einrichtung eines neuen Echtzeit-Endpunkts](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Screenshot: Einrichtung eines neuen Echtzeit-Endpunkts](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
     Nach Abschluss der Bereitstellung wird über der Canvas eine Erfolgsbenachrichtigung angezeigt. Dies kann einige Minuten dauern.
 
@@ -106,7 +106,7 @@ Nach Abschluss der Bereitstellung können Sie Ihren Echtzeitendpunkt testen, ind
 
 1. Wählen Sie auf der Seite **Endpunkte** den bereitgestellten Endpunkt aus.
 
-    ![Screenshot: Registerkarte „Echtzeitendpunkte“ mit Hervorhebung des kürzlich erstellten Endpunkts](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![Screenshot: Registerkarte „Echtzeitendpunkte“ mit Hervorhebung des kürzlich erstellten Endpunkts](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
 1. Klicken Sie auf **Test**.
 
@@ -114,7 +114,7 @@ Nach Abschluss der Bereitstellung können Sie Ihren Echtzeitendpunkt testen, ind
 
     Das Portal übermittelt eine Testanforderung an den Endpunkt und zeigt die Ergebnisse an. Für die Eingabedaten wird zwar ein Preiswert generiert, dieser wird jedoch nicht zum Generieren des Vorhersagewerts verwendet.
 
-    ![Screenshot: Test des Echtzeitendpunkts mit Hervorhebung des ausgewerteten Bezeichners für den Preis](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![Screenshot: Test des Echtzeitendpunkts mit Hervorhebung des ausgewerteten Bezeichners für den Preis](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

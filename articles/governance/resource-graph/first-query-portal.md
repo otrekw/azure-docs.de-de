@@ -1,20 +1,22 @@
 ---
-title: Ausführen Ihrer ersten Abfrage mithilfe des Azure Resource Graph-Explorers
-description: Dieser Artikel führt Sie durch die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers.
-ms.date: 10/21/2019
+title: 'Schnellstart: Ihre erste Portalabfrage'
+description: In dieser Schnellstartanleitung führen Sie die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers aus.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9cb8fdfcc68e2ef8e19a8fce2545d2939ac13e06
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5cf355e78ad51e06d7ba27d48dd352f35b4c0740
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958830"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406797"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 
 Azure Resource Graph steht Ihnen direkt im Azure-Portal über den Azure Resource Graph-Explorer zur Verfügung. Der Resource Graph-Explorer stellt durchsuchbare Informationen über die Azure Resource Manager-Ressourcentypen und Eigenschaften bereit, die Sie abfragen können. Der Resource Graph-Explorer bietet auch eine übersichtliche Oberfläche, auf der Sie mit mehreren Abfragen arbeiten, die Ergebnisse auswerten und sogar die Ergebnisse mancher Abfragen in ein Diagramm umwandeln können, das Sie anschließend an ein Azure-Dashboard anheften können.
 
 Am Ende dieser Schnellstartanleitung haben Sie das Azure-Portal und den Resource Graph-Explorer verwendet, um Ihre erste Resource Graph-Abfrage auszuführen, und haben die Ergebnisse an ein Dashboard angeheftet.
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -117,9 +119,7 @@ Wenn Sie die Resource Graph-Beispieldashboards aus der Azure-Portalumgebung entf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
-- Erfahren Sie mehr über das [Erkunden von Ressourcen](./concepts/explore-resources.md).
-- Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
-- Sehen Sie sich Beispiele für [einfache Abfragen](./samples/starter.md) an.
-- Sehen Sie sich Beispiele für [erweiterte Abfragen](./samples/advanced.md) an.
-- Geben Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback ab.
+In dieser Schnellstartanleitung haben Sie den Azure Resource Graph-Explorer verwendet, um Ihre erste Abfrage auszuführen, und sich auf Resource Graph basierende Dashboardbeispiele angesehen. Fahren Sie mit der Seite mit den Details zur Abfragesprache fort, um weitere Informationen zur Resource Graph-Sprache zu erhalten.
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr über die Abfragesprache](./concepts/query-language.md).

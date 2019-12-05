@@ -1,25 +1,25 @@
 ---
-title: Konfigurieren der gewichteten Roundrobin-Routingmethode für Datenverkehr – Azure Traffic Manager
-description: In diesem Artikel wird der Lastenausgleich des Datenverkehrs mit einer Roundrobinmethode in Traffic Manager erläutert.
+title: 'Tutorial: Konfigurieren der gewichteten Roundrobin-Routingmethode für Datenverkehr mit Azure Traffic Manager'
+description: In diesem Tutorial wird der Lastenausgleich des Datenverkehrs mit einer Roundrobinmethode in Traffic Manager beschrieben.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
 manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 0bfed558ec8db0ef715dad044c3965c1b1d8052b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 06bb86e635b7b3377e1f313ef3aa3487e1c215bc
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74040336"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422767"
 ---
-# <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurieren der gewichteten Routingmethode für Datenverkehr in Traffic Manager
+# <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Tutorial: Konfigurieren der gewichteten Routingmethode für Datenverkehr in Traffic Manager
 
 Ein gängiges Muster für das Routing von Datenverkehr besteht darin, eine Reihe identischer Endpunkte (die Clouddienste und Websites umfassen) bereitzustellen und gleichmäßig Datenverkehr an die einzelnen Endpunkte zu senden. Die folgenden Schritte beschreiben, wie diese Routingmethodentyp für Datenverkehr konfiguriert wird.
 

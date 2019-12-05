@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 944ddb7f83a4d10861e5a16dbc69b8f9e4dabfe0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973786"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422685"
 ---
 # <a name="what-is-the-qna-maker-service"></a>Was ist der QnA Maker-Dienst?
 
@@ -40,14 +40,17 @@ Nach der Veröffentlichung einer QnA Maker Wissensdatenbank sendet eine Clienta
 |:--|:--|
 |1|Die Clientanwendung sendet die frei formulierte _Frage_ des Benutzers „How do I programmatically update my Knowledge Base?“ (Wie kann ich meine Wissensdatenbank programmgesteuert aktualisieren?) an den Endpunkt Ihrer Wissensdatenbank.|
 |2|QnA Maker verwendet die trainierte Wissensdatenbank, um die korrekte Antwort sowie ggf. weitere Folgeaufforderungen bereitzustellen, die zur Eingrenzung der Suche nach der besten Antwort beitragen. QnA Maker gibt eine Antwort im JSON-Format zurück.|
-|3|Die Clientanwendung entscheidet auf der Grundlage der JSON-Antwort über den weiteren Verlauf der Konversation. Mögliche Entscheidungen wären etwa, die beste Antwort anzuzeigen oder weitere Optionen zu präsentieren, um die Suche nach der besten Antwort einzugrenzen. |
+|3|Die Clientanwendung entscheidet auf der Grundlage der JSON-Antwort über den weiteren Verlauf der Konversation. Mögliche Entscheidungen wären etwa, die beste Antwort anzuzeigen und weitere Optionen zu präsentieren, um die Suche nach der besten Antwort einzugrenzen. |
 |||
 
 ## <a name="what-is-a-knowledge-base"></a>Was ist eine Wissensdatenbank? 
 
 QnA Maker [importiert Ihre Inhalte](../concepts/data-sources-supported.md) in eine Wissensdatenbank, die aus Frage-Antwort-Sätzen besteht. Im Zuge des Importvorgangs werden Informationen zu den Beziehung zwischen den Teilen Ihrer strukturierten und teilweise strukturierten Inhalte extrahiert, um Beziehungen zwischen den Frage-Antwort-Sätzen zu implizieren. Sie können diese Frage-Antwort-Sätze bearbeiten oder neue hinzufügen.  
 
-Der Frage-Antwort-Satz enthält alle alternativen Fragen für eine bestimmte Antwort, Metadatentags zum Filtern von Antwortoptionen während der Suche sowie Folgeaufforderungen zum Fortsetzen der Sucheingrenzung.
+Der Inhalt des Frage-Antwort-Satzes umfasst Folgendes:
+* Alle alternativen Formen der Frage
+* Metadatentags zum Filtern von Antwortoptionen während der Suche
+* Folgeaufforderungen zum weiteren Optimieren der Suche
 
 ![Beispielfrage und -antwort mit Metadaten](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
@@ -55,7 +58,7 @@ Nach der Veröffentlichung Ihrer Wissensdatenbank sendet eine Clientanwendung ei
 
 ## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Erstellen, Verwalten und Veröffentlichen für einen Bot ohne Code
 
-Eine Wissensdatenbank kann vollständig über das QnA Maker-Portal erstellt werden. Sie können Dokumente in ihrer aktuellen Form in Ihre Wissensdatenbank importieren. Diese Dokumente (häufig gestellte Fragen, Handbücher, Arbeitsblätter, Webseiten oder Ähnliches) werden in Frage-Antwort-Sätze konvertiert. Jeder Satz wird nach Folgeaufforderungen analysiert und mit anderen Sätzen verknüpft. Das endgültige Markdownformat unterstützt eine hochwertige Darstellung mit Bildern und Links. 
+Eine Wissensdatenbank kann vollständig über das QnA Maker-Portal erstellt werden. Sie können Dokumente in ihrer aktuellen Form in Ihre Wissensdatenbank importieren. Diese Dokumente (häufig gestellte Fragen, Handbücher, Arbeitsblätter, Webseiten oder Ähnliches) werden in Frage-Antwort-Sätze konvertiert. Jeder Satz wird nach Folgeaufforderungen analysiert und mit anderen Sätzen verknüpft. Das endgültige _Markdownformat_ unterstützt eine hochwertige Darstellung mit Bildern und Links. 
 
 Veröffentlichen Sie die Wissensdatenbank nach der Bearbeitung ganz ohne Programmieraufwand für einen funktionierenden [Azure-Web-App-Bot](https://azure.microsoft.com/services/bot-service/). Testen Sie Ihren Bot im [Azure-Portal](https://portal.azure.com), oder setzen Sie die Entwicklung nach dem Herunterladen fort. 
 
@@ -81,9 +84,9 @@ QnA Maker bietet Erstellungs-, Trainings- und Veröffentlichungsfunktionen sowi
 
 **Schritt 2:** Erstellen Sie eine Wissensdatenbank über das Portal von [QnA Maker](https://www.qnamaker.ai). Fügen Sie [Dateien und URLs](../concepts/data-sources-supported.md) hinzu, um die Wissensdatenbank zu erstellen.  
 
-**Schritt 3:** Veröffentlichen Sie Ihre Wissensdatenbank, und testen Sie sie an Ihrem benutzerdefinierten Endpunkt unter Verwendung von [cURL](../quickstarts/get-answer-from-kb-using-curl.md) oder [Postman](../quickstarts/get-answer-from-kb-using-postman.md). 
+**Schritt 3:** Veröffentlichen Sie Ihre Wissensdatenbank, und testen Sie sie an Ihrem benutzerdefinierten Endpunkt unter Verwendung von [cURL oder Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md). 
 
-**Schritt 4:** Rufen Sie in Ihrer Clientanwendung programmgesteuert Ihren Endpunkt der Wissensdatenbank auf, und lesen Sie die JSON-Antwort, um dem Benutzer die beste Antwort anzuzeigen.  
+**Schritt 4:** Greifen Sie in der Clientanwendung programmgesteuert auf den Endpunkt Ihrer Wissensdatenbank zu. Die Clientanwendung verarbeitet die JSON-Antwort, um dem Benutzer die beste Antwort anzuzeigen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 QnA Maker bietet alles, was Sie zum Erstellen, Verwalten und Bereitstellen Ihrer benutzerdefinierten Wissensdatenbank benötigen. 

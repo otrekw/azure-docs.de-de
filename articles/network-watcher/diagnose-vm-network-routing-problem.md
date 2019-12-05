@@ -1,5 +1,6 @@
 ---
-title: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers – Tutorial – Azure-Portal | Microsoft-Dokumentation
+title: 'Tutorial: Diagnostizieren eines Problems mit dem VM-Netzwerkrouting – Azure-Portal'
+titleSuffix: Azure Network Watcher
 description: In diesem Tutorial erfahren Sie, wie Sie Probleme mit dem Netzwerkrouting eines virtuellen Computers mit der Funktion „Nächster Hop“ von Azure Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684519"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276048"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Tutorial: Diagnostizieren von Problemen mit dem Netzwerkrouting eines virtuellen Computers über das Azure-Portal
 
@@ -53,8 +54,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |NAME|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
     |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
@@ -85,7 +86,7 @@ Azure erstellt automatisch Routen zu Standardzielen. Sie können benutzerdefinie
 
     |Einstellung                  |Wert                                                   |
     |---------                |---------                                               |
-    | Ressourcengruppe          | Wählen Sie „myResourceGroup“ aus.                                 |
+    | Resource group          | Wählen Sie „myResourceGroup“ aus.                                 |
     | Virtueller Computer         | Wählen Sie „myVm“ aus.                                            |
     | Netzwerkschnittstelle       | myvm (Der Name Ihrer Netzwerkschnittstelle kann anders lauten.)   |
     | Quell-IP-Adresse       | 10.0.0.4                                               |

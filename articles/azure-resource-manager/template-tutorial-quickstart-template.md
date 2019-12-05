@@ -1,19 +1,16 @@
 ---
-title: 'Tutorial: Verwenden von Azure-Schnellstartvorlagen | Microsoft-Dokumentation'
+title: 'Tutorial: Verwenden von Schnellstartvorlagen'
 description: Erfahren Sie, wie Sie Azure-Schnellstartvorlagen verwenden, um die Vorlagenentwicklung abzuschließen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 1ddae445fb912b4bb60f257f667784b17b0d6ea5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001484"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405953"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Tutorial: Verwenden von Azure-Schnellstartvorlagen
 
@@ -25,7 +22,7 @@ Wir empfehlen, das [Tutorial zu exportieren Vorlagen](template-tutorial-export-t
 
 Sie benötigen Visual Studio Code mit der Resource Manager-Tools-Erweiterung und entweder Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI). Weitere Informationen finden Sie unter [Vorlagentools](template-tutorial-create-first-template.md#get-tools).
 
-## <a name="review-your-template"></a>Überprüfen der Vorlage
+## <a name="review-template"></a>Überprüfen der Vorlage
 
 Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
@@ -33,7 +30,7 @@ Am Ende des vorherigen Tutorials enthielt Ihre Vorlage den folgenden JSON-Code:
 
 Diese Vorlage funktioniert für die Bereitstellung von Speicherkonten und App Service-Plänen, Sie sollten ihr jedoch eine Website hinzufügen. Sie können vorgefertigte Vorlagen verwenden, um schnell den JSON-Code zu ermitteln, der für die Bereitstellung einer Ressource erforderlich ist.
 
-## <a name="find-a-template"></a>Eine Vorlage suchen
+## <a name="find-template"></a>Suchen nach Vorlagen
 
 1. Öffnen Sie [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
 1. Geben Sie **Linux-Web-App bereitstellen** in die **Suche** ein.
@@ -44,13 +41,13 @@ Diese Vorlage funktioniert für die Bereitstellung von Speicherkonten und App Se
 
     ![Website: Resource Manager-Schnellstartvorlage](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
-## <a name="revise-the-existing-template"></a>Überarbeiten der vorhandenen Vorlage
+## <a name="revise-existing-template"></a>Überarbeiten der vorhandenen Vorlage
 
 Zusammenführen der Schnellstartvorlage mit der vorhandenen Vorlage:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-Der WebApp-Name muss in Azure eindeutig sein. Zum Vermeiden von doppelten Namen wurde die Variable **webAppPortalName** von **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** zu **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** aktualisiert.
+Der Web-App-Name muss in Azure eindeutig sein. Zum Vermeiden von doppelten Namen wurde die Variable **webAppPortalName** von **"webAppPortalName": "[concat(parameters('webAppName'), '-webapp')]"** zu **"webAppPortalName": "[concat(parameters('webAppName'), uniqueString(resourceGroup().id))]"** aktualisiert.
 
 Fügen Sie am Ende der `Microsoft.Web/serverfarms`-Definition ein Komma hinzu, um die Ressourcendefinition von der `Microsoft.Web/sites`-Definition zu trennen.
 
@@ -60,7 +57,7 @@ Sie werden feststellen, dass Sie ein Element mit dem Namen **dependsOn** enthäl
 
 Die **serverFarmId**-Eigenschaft verwendet die Funktion [resourceId](resource-group-template-functions-resource.md#resourceid). Diese Funktion ruft den eindeutigen Bezeichner für eine Ressource ab. In diesem Fall wird der eindeutige Bezeichner für den App Service-Plan abgerufen. Die Web-App ist einem bestimmten App Service-Plan zugeordnet.
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
+## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Zum Bereitstellen einer Vorlage verwenden Sie entweder die Azure CLI oder Azure PowerShell.
 

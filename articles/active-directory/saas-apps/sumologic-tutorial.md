@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d7d7b808472b3f5446fadfe800584f61b1df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089527"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Tutorial: Azure Active Directory-Integration mit SumoLogic
 
@@ -148,11 +148,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SumoLog
 
 1. Wählen Sie aus der Liste **Eine Konfiguration auswählen oder eine neue erstellen** die Option **Azure AD** aus, und klicken Sie dann auf **Konfigurieren**.
 
-    ![SAML 2.0 konfigurieren](./media/sumologic-tutorial/ic778558.png "SAML 2.0 konfigurieren")
+    ![Konfigurieren von SAML 2.0](./media/sumologic-tutorial/ic778558.png "SAML 2.0 konfigurieren")
 
 1. Führen Sie auf der Seite **SAML 2.0 konfigurieren** die folgenden Schritte aus:
 
-    ![SAML 2.0 konfigurieren](./media/sumologic-tutorial/ic778559.png "SAML 2.0 konfigurieren")
+    ![Konfigurieren von SAML 2.0](./media/sumologic-tutorial/ic778559.png "SAML 2.0 konfigurieren")
 
     a. Geben Sie in das Textfeld **Konfigurationsnamen** die Option **Azure AD** ein.
 
@@ -250,7 +250,7 @@ Damit sich Azure AD-Benutzer bei SumoLogic anmelden können, müssen sie in Sum
     d. Klicken Sie auf **Speichern**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von SumoLogic-Benutzerkonten oder mithilfe der von SumoLogic bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von SumoLogic-Benutzerkonten oder mit den APIs von SumoLogic bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -264,5 +264,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SumoLogic“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

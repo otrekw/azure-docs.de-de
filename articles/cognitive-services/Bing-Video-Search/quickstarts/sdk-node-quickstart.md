@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Videos mithilfe des Bing-Videosuche-SDK für Node.js'
+title: 'Schnellstart: Suchen nach Videos mithilfe des SDK für Node.js – Bing-Videosuche'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um Videosuchanforderungen mit dem Bing-Videosuche-SDK für Node.js zu senden.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 07/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c8bd4ccadcc3c1947905e6bd74b48045a62ab57
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358888"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383739"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Schnellstart: Ausführen einer Videosuche mit dem Bing-Videosuche-SDK für Node.js
 

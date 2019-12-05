@@ -1,29 +1,21 @@
 ---
-title: Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App für die serverlose Ausführung | Microsoft-Dokumentation
-description: Azure CLI-Skriptbeispiel – Erstellen einer Funktionen-App für die serverlose Ausführung
-services: functions
-documentationcenter: functions
-author: ggailey777
-manager: jeconnoc
+title: Erstellen einer serverlosen Funktions-App mit der Azure CLI
+description: Erstellen einer Funktions-App für die serverlose Ausführung in Azure mit der Azure CLI
 ms.assetid: 0e221db6-ee2d-4e16-9bf6-a456cd05b6e7
-ms.service: azure-functions
-ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 265c4fa3c28783f0d9e5d789348c3cd2e249eb29
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4bf0e43132662f6f5322485a59f356f872559092
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325715"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532499"
 ---
-# <a name="create-a-function-app-for-serverless-code-execution"></a>Erstellen einer Funktions-App für die serverlose Codeausführung
+# <a name="create-a-function-app-for-serverless-code-execution"></a>Erstellen einer Funktions-App für die serverlose Codeausführung 
 
 Dieses Azure Functions-Beispielskript erstellt eine Funktions-App, die als Container für Ihre Funktionen fungiert. Die Funktions-App wird unter Verwendung des [Verbrauchsplans](../functions-scale.md#consumption-plan) erstellt, der sich ideal für ereignisgesteuerte serverlose Workloads eignet.
-
-[!INCLUDE [upgrade runtime](../../../includes/functions-cli-version-note.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,6 +43,6 @@ Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
+Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
 Weitere Azure Functions-CLI-Skriptbeispiele finden Sie in der [Dokumentation zu Azure Functions](../functions-cli-samples.md).

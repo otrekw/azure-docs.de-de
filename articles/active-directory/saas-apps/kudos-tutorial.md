@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: 50f6762c8046850da1e4541f2ccb7688542f7d54
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1fb1a1bc7bfd8b3cc9d7758bf8e80d8759f9357e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098470"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227485"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Tutorial: Azure Active Directory-Integration mit Kudos
 
@@ -217,14 +217,14 @@ Damit sich Azure AD-Benutzer bei Kudos anmelden können, müssen sie in Kudos be
 
 1. Führen Sie im Abschnitt **Benutzer hinzufügen** die folgenden Schritte aus:
 
-    ![Benutzer hinzufügen](./media/kudos-tutorial/ic787810.png "Benutzer hinzufügen")
+    ![Hinzufügen eines Benutzers](./media/kudos-tutorial/ic787810.png "Benutzer hinzufügen")
 
     a. Geben Sie **Vorname**, **Nachname**, **E-Mail-Adresse** und weitere Details eines gültigen Azure Active Directory-Kontos, das Sie bereitstellen möchten, in die entsprechenden Textfelder ein.
 
     b. Klicken Sie auf **Benutzer erstellen**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Kudos-Benutzerkonten oder mithilfe der von Kudos bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Kudos-Benutzerkonten oder mit den APIs von Kudos bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -238,4 +238,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Kudos“ klicken, sollten Sie auto
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

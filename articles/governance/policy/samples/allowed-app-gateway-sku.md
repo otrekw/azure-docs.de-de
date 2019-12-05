@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Zulässige Anwendungsgateway-SKUs'
-description: Diese Beispielrichtliniendefinition erfordert, dass Anwendungsgateways eine genehmigte SKU verwenden.
+description: Diese Beispielrichtliniendefinition erfordert, dass für Anwendungsgateways eine genehmigte SKU verwendet wird, die per Parameter definiert ist.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 1d146fbe4966e3ba2d99077280f02253ae4af02d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 89a1f7f60639f31d79690d0ddb1ea11d26ae4bdc
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076534"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463753"
 ---
 # <a name="sample---allowed-application-gateway-skus"></a>Beispiel: Zulässige Anwendungsgateway-SKUs
 

@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und des Azure-Portals anzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat.
+title: 'Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat'
+description: In diesem Schnellstart erfahren Sie, wie Sie mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und des Azure-Portals anzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337944"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419604"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat
 
@@ -33,7 +33,7 @@ Sie können das Blatt **Zugriffssteuerung (IAM)** der [rollenbasierten Zugriffss
 
 1. Klicken Sie auf Ihr Abonnement.
 
-1. Klicken Sie auf **Zugriffssteuerung (IAM)**.
+1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
 1. Klicken Sie auf die Registerkarte **Zugriff überprüfen**.
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f0a684c6a38ba3a95438941f668b36b23d278df
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 772b37816b83c275bae927d825434dc3ca76a35c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227718"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231988"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Tutorial: Integrieren von AirWatch in Azure Active Directory
 
@@ -138,7 +138,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt für **LDAP** die folgenden Schritte aus:
 
-    ![Hochladen](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Upload](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. Wählen Sie unter **Verzeichnistyp** die Option **Keiner** aus.
 
@@ -146,7 +146,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Klicken Sie im Abschnitt **SAML 2.0** auf **Upload** (Hochladen), um das heruntergeladene Zertifikat hochzuladen.
 
-    ![Hochladen](./media/airwatch-tutorial/ic791932.png "Hochladen")
+    ![Upload](./media/airwatch-tutorial/ic791932.png "Hochladen")
 
 1. Führen Sie im Abschnitt **Request** die folgenden Schritte aus:
 
@@ -239,7 +239,7 @@ Damit sich Azure AD-Benutzer bei AirWatch anmelden können, müssen sie in AirWa
    b. Klicken Sie auf **Speichern**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von AirWatch-Benutzerkonten oder mithilfe der von AirWatch bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von AirWatch-Benutzerkonten oder mit den APIs von AirWatch bereitstellen.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

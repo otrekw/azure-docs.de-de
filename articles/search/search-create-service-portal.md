@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Erstellen eines Suchdiensts über das Portal'
 titleSuffix: Azure Cognitive Search
-description: Stellen Sie eine Ressource für die kognitive Azure-Suche im Azure-Portal bereit. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
+description: In diesem Portal-Schnellstart erfahren Sie, wie Sie eine Azure Cognitive Search-Ressource im Azure-Portal einrichten. Wählen Sie Ressourcengruppen, Regionen und SKU oder Tarif aus.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 75a7cce55627a981d0d0b0f23a119fac6de920ef
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: ec794f66866f9773f8b7c0fc57b644d8a13d697a
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112121"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534568"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -41,7 +41,7 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 
 ## <a name="choose-a-subscription"></a>Wählen Sie ein Abonnement.
 
-Der erste Schritt besteht im Festlegen der Abonnement-ID und der Ressourcengruppe. Wenn Sie über mehrere Abonnements verfügen, wählen Sie ein Abonnement aus, in dem sich Daten- oder Dateispeicherdienste befinden. Die kognitive Azure-Suche kann die Dienste Azure Table Storage, Blob Storage, SQL-Datenbank und Azure Cosmos DB automatisch erkennen, um sie über [*Indexer*](search-indexer-overview.md) zu indizieren. Dies gilt jedoch nur für Dienste im selben Abonnement.
+Falls Sie über mehrere Abonnements verfügen, wählen Sie eines für Ihren Suchdienst aus.
 
 ## <a name="set-a-resource-group"></a>Festlegen einer Ressourcengruppe
 

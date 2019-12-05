@@ -1,20 +1,19 @@
 ---
-title: 'Tutorial: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich mithilfe des Azure IoT Hub Device Provisioning Service'
-description: 'Tutorial: Automatische Device Provisioning Service-Gerätebereitstellung für IoT Hubs mit Lastausgleich im Azure-Portal'
-author: sethmanheim
-ms.author: sethm
+title: Bereitstellen von Geräten für Hubs mit Lastenausgleich mithilfe von Azure IoT Hub Device Provisioning Service
+description: 'Tutorial: Automatische Gerätebereitstellung für IoT-Hubs mit Lastenausgleich mithilfe von Device Provisioning Service im Azure-Portal'
+author: wesmc7777
+ms.author: wesmc
 ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6cd5dcb1fd96ac0fda75bf89dcf7259695cf971d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: fb3002e5f195bd3dca32a3500c6789f90e9ea0d6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112785"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229449"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Tutorial: Bereitstellen von Geräten für IoT Hubs mit Lastausgleich
 

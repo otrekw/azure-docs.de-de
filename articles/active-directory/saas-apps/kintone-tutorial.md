@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: a9245ab5a2d51ee3995ff0c614cafaebdc20d00f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098799"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227578"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Tutorial: Azure Active Directory-Integration mit Kintone
 
@@ -141,19 +141,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Kintone d
 
 1. Klicken Sie auf **Benutzer und Systemadministration**.
 
-    ![Benutzer und Systemadministration](./media/kintone-tutorial/ic785880.png "Benutzer und Systemadministration")
+    ![Benutzer- und Systemverwaltung](./media/kintone-tutorial/ic785880.png "Benutzer und Systemadministration")
 
 1. Klicken Sie unter **Systemadministration \> Sicherheit** auf **Anmelden**.
 
-    ![Anmelden](./media/kintone-tutorial/ic785881.png "Anmelden")
+    ![Anmeldung](./media/kintone-tutorial/ic785881.png "Anmeldung")
 
 1. Klicken Sie auf **SAML-Authentifizierung aktivieren**.
 
-    ![SAML-Authentifizierung](./media/kintone-tutorial/ic785882.png "SAML-Authentifizierung")
+    ![SAML Authentication (SAML-Authentifizierung)](./media/kintone-tutorial/ic785882.png "SAML-Authentifizierung")
 
 1. Führen Sie im Abschnitt für die SAML-Authentifizierung die folgenden Schritte aus:
 
-    ![SAML-Authentifizierung](./media/kintone-tutorial/ic785883.png "SAML-Authentifizierung")
+    ![SAML Authentication (SAML-Authentifizierung)](./media/kintone-tutorial/ic785883.png "SAML-Authentifizierung")
 
     a. Fügen Sie in das Textfeld **Login URL** (Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -228,7 +228,7 @@ Damit sich Azure AD-Benutzer bei Kintone anmelden können, müssen sie in Kinton
 
 1. Klicken Sie auf **Benutzer und Systemadministration**.
 
-    ![Benutzer und Systemadministration](./media/kintone-tutorial/ic785880.png "Benutzer und Systemadministration")
+    ![Benutzer- und Systemverwaltung](./media/kintone-tutorial/ic785880.png "Benutzer und Systemadministration")
 
 1. Klicken Sie unter **Benutzerverwaltung** auf **Abteilungen und Benutzer**.
 
@@ -247,7 +247,7 @@ Damit sich Azure AD-Benutzer bei Kintone anmelden können, müssen sie in Kinton
     b. Klicken Sie auf **Speichern**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Kintone-Benutzerkonten oder mithilfe der von Kintone bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Kintone-Benutzerkonten oder mit den APIs von Kintone bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -261,4 +261,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Kintone“ klicken, sollten Sie au
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

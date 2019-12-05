@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b4ae076ba08af5514caa09a2e8027a1cbc909dc
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793675"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534554"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Datenimport-Assistent für die kognitive Azure-Suche
 
@@ -43,7 +43,7 @@ Die bekannten Einschränkungen lassen sich wie folgt zusammenfassen:
 
 + Der Assistent unterstützt keine Iteration oder Wiederverwendung. Bei jedem Pass-Through erstellt der Assistent einen neue Index, eine neue Qualifikationsgruppe und eine neue Indexer-Konfiguration. Nur Datenquellen können persistent gespeichert und innerhalb des Assistenten wieder verwendet werden. Zum Bearbeiten oder Verfeinern anderer Objekte müssen Sie die REST-APIs oder das .NET SDK verwenden, um die Strukturen abzurufen und zu ändern.
 
-+ Der Quellinhalt muss sich in einer unterstützten Azure-Datenquelle in einem Dienst unter demselben Abonnement befinden.
++ Der Quellinhalt muss sich in einer unterstützten Azure-Datenquelle befinden.
 
 + Das Sampling erfolgt über eine Teilmenge der Quelldaten. Bei großen Datenquellen ist es möglich, dass der Assistent Felder auslässt. Sie müssen das Schema möglicherweise erweitern oder die abgeleiteten Datentypen korrigieren, wenn das Sampling unzureichend ist.
 

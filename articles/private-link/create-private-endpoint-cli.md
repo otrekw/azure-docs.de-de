@@ -1,20 +1,20 @@
 ---
-title: Erstellen eines privaten Azure-Endpunkts mit Azure CLI | Microsoft-Dokumentation
-description: Informationen zum privaten Endpunkt in Azure
+title: 'Schnellstart: Erstellen eines privaten Azure-Endpunkts mit der Azure-Befehlszeilenschnittstelle'
+description: In diesem Schnellstart erfahren Sie etwas über den privaten Azure-Endpunkt.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: 477f7d4824d3165357228d200dca9e556a072744
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.author: allensu
+ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053506"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419810"
 ---
-# <a name="create-a-private-endpoint-using-azure-cli"></a>Erstellen eines privaten Endpunkts mit Azure CLI
+# <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Schnellstart: Erstellen eines privaten Endpunkts mit Azure CLI
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Netzwerk und einen SQL-Datenbank-Server mit einem privaten Endpunkt unter Verwendung von Azure CLI erstellen. Anschließend können Sie auf den virtuellen Computer zugreifen und sicher auf die Private Link-Ressource zugreifen (in diesem Beispiel auf eine private Azure SQL-Datenbank-Server-Instanz). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -179,4 +179,3 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Azure Private Link](private-link-overview.md).
- 

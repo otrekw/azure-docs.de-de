@@ -1,24 +1,24 @@
 ---
-title: Konfigurieren von geografischem Routing für Datenverkehr – Azure Traffic Manager
-description: Dieser Artikel erläutert die Konfiguration der geografischen Routingmethode für Datenverkehr mithilfe von Azure Traffic Manager
+title: 'Tutorial: Konfigurieren von geografischem Routing für Datenverkehr mit Azure Traffic Manager'
+description: In diesem Tutorial wird die Konfiguration der geografischen Routingmethode für Datenverkehr mit Azure Traffic Manager beschrieben.
 services: traffic-manager
 author: asudbring
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: allensu
-ms.openlocfilehash: f15871705b9839f1c7a7c7f04f6f4a88641673fd
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9de1f0b0adc4d82b666adcd4bc9b26e31e7750d6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031948"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422802"
 ---
-# <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager
+# <a name="tutorial-configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Tutorial: Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager
 
 Die geografische Routingmethode für Datenverkehr ermöglicht das Leiten von Datenverkehr an bestimmte Endpunkte auf der Grundlage des geografischen Ursprungsorts von Anforderungen. Dieses Tutorial zeigt, wie ein Traffic Manager-Profil mit dieser Routingmethode erstellt wird und die Endpunkte für den Empfang von Datenverkehr von angegebenen Geografien konfiguriert werden.
 

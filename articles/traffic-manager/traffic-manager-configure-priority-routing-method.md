@@ -1,25 +1,25 @@
 ---
-title: Konfigurieren der prioritätsbasierten Routingmethode für Datenverkehr mit Azure Traffic Manager | Microsoft Docs
-description: Dieser Artikel erläutert die Konfiguration der prioritätsbasierten Routingmethode für Datenverkehr in Traffic Manager.
+title: 'Tutorial: Konfigurieren der prioritätsbasierten Routingmethode für Datenverkehr in Azure Traffic Manager'
+description: In diesem Tutorial wird die Konfiguration der prioritätsbasierten Routingmethode für Datenverkehr in Traffic Manager erläutert.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
-manager: twooley
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: allensu
-ms.openlocfilehash: 259457a604727cba6e6964851ec4fcf4b13a20a6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d5d58ec39841274b78ababf9f73f00a262cc37be
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67048489"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420289"
 ---
-# <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Konfigurieren der prioritätsbasierten Routingmethode für Datenverkehr in Traffic Manager
+# <a name="tutorial-configure-priority-traffic-routing-method-in-traffic-manager"></a>Tutorial: Konfigurieren der prioritätsbasierten Routingmethode für Datenverkehr in Traffic Manager
 
 Unabhängig vom Websitemodus stellen Azure Websites bereits Failoverfunktionen für Websites in einem Rechenzentrum (auch als „Region“ bezeichnet) zur Verfügung. Traffic Manager bietet ein Failover für Websites in verschiedenen Rechenzentren.
 

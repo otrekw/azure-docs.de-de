@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326599"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185176"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt mit der Azure-Befehlszeilenschnittstelle
 
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration"></a>Erstellen einer App-Konfiguration
 
-Ersetzen Sie `<appconfig_name>` durch einen eindeutigen Namen für Ihre App-Konfiguration und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe. Der Name muss eindeutig sein, da er als DNS-Name verwendet wird.
+Ersetzen Sie `<appconfig_name>` durch einen eindeutigen Namen für Ihre App Configuration-Instanz und `<resource_group_name>` durch die zuvor erstellte Ressourcengruppe. Der Name muss eindeutig sein, da er als DNS-Name verwendet wird.
 
 ```azurecli-interactive
 az appconfig create \
@@ -80,7 +80,7 @@ Die Website sollte angezeigt werden, und es sollten momentan keine Nachrichten v
 
 ## <a name="subscribe-to-your-app-configuration"></a>Abonnieren Ihrer App-Konfiguration
 
-Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin sie gesendet werden sollen. Im folgenden Beispiel wird die von Ihnen erstellte App-Konfiguration abonniert. Außerdem wird die URL Ihrer Web-App als Endpunkt für Ereignisbenachrichtigungen übergeben. Ersetzen Sie `<event_subscription_name>` durch einen Namen für Ihr Ereignisabonnement. Verwenden Sie für `<resource_group_name>` und `<appconfig_name>` jeweils den zuvor erstellten Wert.
+Sie abonnieren ein Thema, um Event Grid mitzuteilen, welche Ereignisse Sie nachverfolgen möchten und wohin sie gesendet werden sollen. Im folgenden Beispiel wird die von Ihnen erstellte App Configuration-Instanz abonniert. Außerdem wird die URL Ihrer Web-App als Endpunkt für Ereignisbenachrichtigungen übergeben. Ersetzen Sie `<event_subscription_name>` durch einen Namen für Ihr Ereignisabonnement. Verwenden Sie für `<resource_group_name>` und `<appconfig_name>` jeweils den zuvor erstellten Wert.
 
 Der Endpunkt für Ihre Web-App muss das Suffix `/api/updates/` enthalten.
 
@@ -126,7 +126,7 @@ Sie haben das Ereignis ausgelöst, und Event Grid hat die Nachricht an den Endpu
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Wenn Sie diese App-Konfiguration und das Ereignisabonnement weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Führen Sie andernfalls den folgenden Befehl aus, um die in diesem Artikel erstellten Ressourcen zu löschen.
+Wenn Sie diese App Configuration-Instanz und das Ereignisabonnement weiterverwenden möchten, überspringen Sie die Bereinigung der in diesem Artikel erstellten Ressourcen. Führen Sie andernfalls den folgenden Befehl aus, um die in diesem Artikel erstellten Ressourcen zu löschen.
 
 Ersetzen Sie `<resource_group_name>` durch die weiter oben erstellte Ressourcengruppe.
 

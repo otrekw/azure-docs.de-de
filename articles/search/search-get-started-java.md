@@ -1,20 +1,20 @@
 ---
 title: 'Schnellstart: Erstellen eines Suchindex in Java mithilfe von REST-APIs'
 titleSuffix: Azure Cognitive Search
-description: Hier erfahren Sie, wie Sie mit Java und den Azure Cognitive Search-REST-APIs einen Index erstellen, Daten laden und Abfragen ausführen.
+description: In diesem Java-Schnellstart erfahren Sie, wie Sie mit den Azure Cognitive Search-REST-APIs einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
-author: lisaleib
-ms.author: v-lilei
+author: HeidiSteen
+ms.author: heidist
 ms.devlang: java
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 9f30c30276db6daa0b4afdf3e6bdd8e617dedc52
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 5e53167a083b5e89bd88a45452929dd40f0868f2
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792815"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406726"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-java-using-rest-apis"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Java mit REST-APIs
 > [!div class="op_single_selector"]
@@ -817,7 +817,7 @@ Nachdem Sie die Hoteldokumente geladen haben, können Sie Suchabfragen erstellen
 
     Suchen Sie nach einer Zusammenfassung der einzelnen Abfragen und der zugehörigen Ergebnisse. Die Ausführung sollte mit der Meldung BUILD SUCCESS (BUILD ERFOLGREICH) und dem Exitcode „0“ abgeschlossen werden.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, ist es ratsam, nach Abschluss eines Projekts die nicht mehr benötigten Ressourcen zu entfernen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 
@@ -827,10 +827,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Java-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. Wenn Sie mit den grundlegenden Konzepten vertraut sind, empfehlen wir Ihnen, Ihr Wissen mit den folgenden Artikeln zu vertiefen.
+In dieser Java-Schnellstartanleitung haben Sie eine Reihe von Aufgaben ausgeführt, um einen Index zu erstellen, Dokumente in den Index zu laden und Abfragen auszuführen. Wenn Sie mit den grundlegenden Konzepten vertraut sind, empfehlen wir Ihnen die folgenden Artikel mit Indexeroptionen in REST.
 
-+ [Indexvorgänge](/rest/api/searchservice/index-operations)
-
-+ [Dokumentvorgänge](/rest/api/searchservice/document-operations)
-
-+ [Indexer-Vorgänge](/rest/api/searchservice/indexer-operations)
+> [!div class="nextstepaction"]
+> [Indexer-Vorgänge](/rest/api/searchservice/indexer-operations)

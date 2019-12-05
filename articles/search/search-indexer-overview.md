@@ -1,29 +1,30 @@
 ---
-title: 'Indexer für das Crawlen von Datenquellen während der Indizierung: Azure Search'
-description: Erfahren Sie, wie Sie eine Azure SQL-Datenbank, Azure Cosmos DB oder Azure-Speicher per Crawler durchlaufen, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen.
-author: HeidiSteen
+title: Indexer für das Crawlen von Daten während des Imports
+titleSuffix: Azure Cognitive Search
+description: Erfahren Sie, wie Sie eine Azure SQL-Datenbank, Azure Cosmos DB oder Azure-Speicher per Crawler durchlaufen, um durchsuchbare Daten zu extrahieren und einen Azure Cognitive Search-Index aufzufüllen.
 manager: nitinme
-services: search
-ms.service: search
-ms.topic: conceptual
-ms.date: 05/02/2019
+author: HeidiSteen
 ms.author: heidist
-ms.openlocfilehash: 55a9e06ad09c4c3635a2925956cac75c24b2c3c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 2719bba0e88ba3125bd5ba163804e31885b286a2
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376383"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534525"
 ---
-# <a name="indexers-in-azure-search"></a>Indexer in Azure Search
+# <a name="indexers-in-azure-cognitive-search"></a>Indexer in Azure Cognitive Search
 
-Ein *Indexer* in Azure Search ist ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Azure-Datenquelle extrahiert werden und ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle aufgefüllt wird. Dieser Ansatz wird auch als „Pullmodell“ bezeichnet, weil der Dienst Daten abruft, ohne dass Sie Code schreiben müssen, der einem Index Daten hinzufügt.
+Ein *Indexer* in Azure Cognitive Search ist ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Azure-Datenquelle extrahiert werden und ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle aufgefüllt wird. Dieser Ansatz wird auch als „Pullmodell“ bezeichnet, weil der Dienst Daten abruft, ohne dass Sie Code schreiben müssen, der einem Index Daten hinzufügt.
 
 Indexer basieren auf Datenquellentypen oder Plattformen. Es gibt individuelle Indexer für SQL Server in Azure, Cosmos DB, Azure Table Storage und Azure Blob Storage. Blob Storage-Indexer verfügen über zusätzliche Eigenschaften, die für Blobinhaltstypen spezifisch sind.
 
 Sie können einen Indexer als alleiniges Mittel für die Datenerfassung verwenden, oder Sie können eine Kombination aus Verfahren nutzen, bei denen ein Indexer zum Laden eines Teils der Felder in Ihren Index verwendet wird.
 
-Sie können Indexer bei Bedarf oder nach einem Zeitplan für die regelmäßige Datenaktualisierung ausführen (z. B. alle fünf Minuten). Für häufigere Aktualisierungen ist ein Pushmodell erforderlich, bei dem Daten in Azure Search und Ihrer externen Datenquelle gleichzeitig aktualisiert werden.
+Sie können Indexer bei Bedarf oder nach einem Zeitplan für die regelmäßige Datenaktualisierung ausführen (z. B. alle fünf Minuten). Für häufigere Aktualisierungen ist ein Pushmodell erforderlich, bei dem Daten in Azure Cognitive Search und Ihrer externen Datenquelle gleichzeitig aktualisiert werden.
 
 ## <a name="approaches-for-creating-and-managing-indexers"></a>Ansätze zum Erstellen und Verwalten von Indexern
 
@@ -46,6 +47,7 @@ Alle Vorgänge im Zusammenhang mit Indexern, einschließlich GET-Anforderungen f
 Indexer durchforsten Datenspeicher in Azure.
 
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
+* [Azure Data Lake Storage Gen2](search-howto-index-azure-data-lake-storage.md) (in der Vorschau)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure SQL-Datenbank](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
@@ -61,13 +63,13 @@ Ein Indexer ruft eine Datenquellenverbindung aus einem *Datenquelle*-Objekt ab. 
 Datenquellen werden unabhängig von den Indexern, die darauf zugreifen, konfiguriert und verwaltet. Dies bedeutet, dass eine Datenquelle von mehreren Indexern verwendet werden kann, um mehr als einen Index gleichzeitig zu laden.
 
 ### <a name="step-2-create-an-index"></a>Schritt 2: Erstellen eines Index
-Mit einem Indexer werden einige Aufgaben in Bezug auf die Datenerfassung automatisiert, aber das Erstellen eines Index gehört im Allgemeinen nicht dazu. Als Voraussetzung hierfür müssen Sie über einen vordefinierten Index mit Feldern verfügen, die den Feldern in Ihrer externen Datenquelle entsprechen. Felder müssen nach Name und Datentyp übereinstimmen. Weitere Informationen zum Strukturieren eines Index finden Sie unter [Create Index (Azure Search-Dienst REST-API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) oder [Index-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Hilfreiche Informationen zu Feldzuordnungen finden Sie unter [Feldzuordnungen in Azure Search-Indexern](search-indexer-field-mappings.md).
+Mit einem Indexer werden einige Aufgaben in Bezug auf die Datenerfassung automatisiert, aber das Erstellen eines Index gehört im Allgemeinen nicht dazu. Als Voraussetzung hierfür müssen Sie über einen vordefinierten Index mit Feldern verfügen, die den Feldern in Ihrer externen Datenquelle entsprechen. Felder müssen nach Name und Datentyp übereinstimmen. Weitere Informationen zum Strukturieren eines Index finden Sie unter [Create Index (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/Create-Index) oder [Index-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). Hilfreiche Informationen zu Feldzuordnungen finden Sie unter [Feldzuordnungen in Azure Cognitive Search-Indexern](search-indexer-field-mappings.md).
 
 > [!Tip]
 > Indexer können zwar keinen Index für Sie erstellen, diese Aufgabe kann jedoch mit dem Assistenten **Daten importieren** im Portal ausgeführt werden. In den meisten Fällen kann der Assistent ein Indexschema aus vorhandenen Metadaten in der Quelle ableiten und ein vorläufiges Indexschema bereitstellen, das Sie inline bearbeiten können, während der Assistent aktiv ist. Sobald der Index für den Dienst erstellt wurde, ist die weitere Bearbeitung im Portal hauptsächlich auf das Hinzufügen neuer Felder beschränkt. Verwenden Sie den Assistenten zum Erstellen, aber nicht zum Überarbeiten eines Index. Praxisnahe Lerninhalte finden Sie in der [exemplarischen Vorgehensweise zum Portal](search-get-started-portal.md).
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>Schritt 3: Erstellen und Planen des Indexers
-Die Indexerdefinition ist ein Konstrukt, das alle Elemente im Zusammenhang mit der Datenerfassung kombiniert. Erforderliche Elemente enthalten eine Datenquelle und einen Index. Optionale Elemente enthalten einen Zeitplan und Feldzuordnungen. Feldzuordnungen sind nur optional, wenn sich Quellfelder und Indexfelder eindeutig entsprechen. Ein Indexer kann von einem anderen Dienst aus auf eine Datenquelle verweisen, solange diese Datenquelle aus demselben Abonnement stammt. Weitere Informationen zum Strukturieren eines Indexers finden Sie unter [Create Indexer (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer)(Create Indexer (Azure Search REST-API)).
+Die Indexerdefinition ist ein Konstrukt, das alle Elemente im Zusammenhang mit der Datenerfassung kombiniert. Erforderliche Elemente enthalten eine Datenquelle und einen Index. Optionale Elemente enthalten einen Zeitplan und Feldzuordnungen. Feldzuordnungen sind nur optional, wenn sich Quellfelder und Indexfelder eindeutig entsprechen. Weitere Informationen zum Strukturieren eines Indexers finden Sie unter [Create Indexer (Azure Cognitive Search-REST-API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
@@ -130,5 +132,5 @@ Nachdem Sie sich über die Grundlagen informiert haben, ist der nächste Schritt
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
-* [Indizieren von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)
-* [Indizieren von JSON-Blobs mit Azure Search-Blobindexer](search-howto-index-json-blobs.md)
+* [Indizieren von CSV-Blobs mit Azure Cognitive Search-Blobindexer](search-howto-index-csv-blobs.md)
+* [Indizieren von JSON-Blobs mit Azure Cognitive Search-Blobindexer](search-howto-index-json-blobs.md)

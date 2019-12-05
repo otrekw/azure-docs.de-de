@@ -1,16 +1,16 @@
 ---
 title: Übersicht über Azure Resource Graph
-description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen ermöglicht.
+description: Hier wird erläutert, wie der Azure Resource Graph-Dienst das komplexe bedarfsabhängige Abfragen von Ressourcen für Abonnements und Mandanten ermöglicht.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958746"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406698"
 ---
-# <a name="overview-of-the-azure-resource-graph-service"></a>Übersicht über den Azure Resource Graph-Dienst
+# <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
 Azure Resource Graph ist ein Dienst in Azure, der die Azure-Ressourcenverwaltung mithilfe effizienter und leistungsstarker Ressourcenuntersuchung befähigen soll, übergreifend für eine bestimmte Menge von Abonnements nach Bedarf Abfragen durchzuführen, sodass Sie Ihre Umgebung effektiv beherrschen können. Diese Abfragen verfügen über die folgenden Features:
 
@@ -92,6 +92,3 @@ Resource Graph unterstützt die Azure-Befehlszeilenschnittstelle, Azure PowerShe
 - Führen Sie Ihre erste Abfrage über das [Azure-Portal](first-query-portal.md) aus.
 - Führen Sie Ihre erste Abfrage mit der [Azure CLI](first-query-azurecli.md) aus.
 - Führen Sie Ihre erste Abfrage mit [Azure PowerShell](first-query-powershell.md) aus.
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
-- Beginnen Sie mit [einfachen Abfragen](./samples/starter.md).
-- Verbessern Sie Ihre Kenntnisse mit [Erweiterten Abfragen](./samples/advanced.md).

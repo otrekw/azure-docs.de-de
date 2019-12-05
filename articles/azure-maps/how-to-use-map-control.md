@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: c764460fb65287dab0031b27291d2f332cec3b3d
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ff183261f67ff76f56fc034d8102e3aa3a4838a8
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756552"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480519"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -110,7 +110,7 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
 
     Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) in Azure Maps finden Sie [hier](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples). 
     
-    Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md).
+    Weitere Informationen finden Sie im Dokument [Authentifizierung mit Azure Maps](azure-maps-authentication.md) sowie in den [Azure Maps-Beispielen für die Azure AD-Authentifizierung](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples).
 
 6. Es kann sinnvoll sein, dem Kopf der Seite die folgenden optionalen Metatagelemente hinzuzufügen:
 
@@ -183,7 +183,7 @@ Azure Maps bietet zwei verschiedene Möglichkeiten zum Festlegen der Sprache und
 
 ```javascript
 atlas.setLanguage('fr-FR');
-atlas.setView('auto');
+atlas.setView('Auto');
 ```
 
 Die zweite Option besteht darin, diese Informationen beim Laden der Karte folgendermaßen an die Kartenoptionen zu übergeben:
@@ -191,7 +191,7 @@ Die zweite Option besteht darin, diese Informationen beim Laden der Karte folgen
 ```javascript
 map = new atlas.Map('myMap', {
     language: 'fr-FR',
-    view: 'auto',
+    view: 'Auto',
 
     authOptions: {
         authType: 'aad',
@@ -231,7 +231,7 @@ So fügen Sie Ihrer Karte weitere Daten hinzu:
 > [!div class="nextstepaction"]
 > [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)
 
-Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) in Azure Maps finden Sie unter:
+Eine Liste mit Beispielen zur Integration von Azure Active Directory (AAD) in Azure Maps finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Beispiele für AAD-Authentifizierung](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)
+> [Beispiele für die Azure AD-Authentifizierung](https://github.com/Azure-Samples/Azure-Maps-AzureAD-Samples)

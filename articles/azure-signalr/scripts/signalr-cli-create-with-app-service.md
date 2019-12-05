@@ -1,19 +1,19 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Erstellen einer SignalR Service-Instanz per App Service'
-description: 'Azure CLI-Skriptbeispiel: Erstellen eines SignalR Service per App Service'
+title: Erstellen einer SignalR Service-Instanz mit App Service und der Azure-Befehlszeilenschnittstelle
+description: Verwenden Sie die Azure-Befehlszeilenschnittstelle, um eine SignalR Service-Instanz mit App Service zu erstellen. Erlernen Sie alle CLI-Befehle für Azure SignalR Service.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 09855c45f0a621ef1f51ba7c87443c40b02e00bd
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578844"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158024"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Erstellen eines SignalR Service per App Service
 

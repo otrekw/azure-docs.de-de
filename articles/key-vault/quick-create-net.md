@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 61e176314c655ef6380a196043fb3159d003cb6e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646926"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273955"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Clientbibliothek für .NET (SDK v4)
 
@@ -25,7 +25,7 @@ Azure Key Vault unterstützt Sie dabei, kryptografische Schlüssel und Geheimnis
 - Vereinfachen und Automatisieren von Aufgaben für SSL-/TLS-Zertifikate
 - Verwenden FIPS 140-2 Level 2-zertifizierter HSMs
 
-[API-Referenzdokumentation](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API-Referenzdokumentation](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,10 +39,7 @@ In dieser Schnellstartanleitung wird davon ausgegangen, dass Sie Befehle für `d
 
 ### <a name="create-new-net-console-app"></a>Erstellen einer neuen .NET-Konsolen-App
 
-Erstellen Sie eine neue .NET Core-Anwendung in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE.
-
-Erstellen Sie in einem Konsolenfenster mithilfe des Befehls `dotnet new` eine neue Konsolen-App mit dem Namen `akv-dotnet`.
-
+Erstellen Sie in einem Konsolenfenster mit dem Befehl `dotnet new` eine neue .NET-Konsolen-App mit dem Namen `akv-dotnet`.
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -160,7 +157,7 @@ Fügen Sie am Anfang Ihres Codes die folgenden Anweisungen hinzu:
 
 ### <a name="authenticate-and-create-a-client"></a>Authentifizieren und Erstellen eines Clients
 
-Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlüsseltresorclients hängen von den Umgebungsvariablen im Schritt [Festlegen von Umgebungsvariablen](#set-environmental-variables) oben ab. Der Name Ihres Schlüsseltresors wird in den Schlüsseltresor-URI im Format „https://<Name-Ihres-Schlüsseltresors>.vault.azure.net“ erweitert.
+Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlüsseltresorclients hängen von den Umgebungsvariablen im Schritt [Festlegen von Umgebungsvariablen](#set-environmental-variables) oben ab. Der Name Ihres Schlüsseltresors wird in den Schlüsseltresor-URI mit dem Format „https://\<<Name-Ihres-Schlüsseltresors>\>.vault.azure.net“ erweitert.
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 

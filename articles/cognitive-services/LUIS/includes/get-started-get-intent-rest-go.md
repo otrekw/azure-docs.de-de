@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125493"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414562"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Programmiersprache [Go](https://golang.org/)  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* ID der öffentlichen App: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Abrufen des LUIS-Schlüssels
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125493"
 
 ## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht
 
-Verwenden Sie Go, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim-v3-prediction) abzurufen, um das Vorhersageergebnis zu erhalten.
+Verwenden Sie Go, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-prediction) abzurufen und ein Vorhersageergebnis zu erhalten.
 
 1. Erstellen Sie eine neue Datei mit dem Namen `predict.go`. Fügen Sie den folgenden Code hinzu:
     
@@ -86,7 +86,7 @@ Verwenden Sie Go, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim-v
 1. Ersetzen Sie die folgenden Werte:
 
     * `YOUR-KEY` durch Ihren Startschlüssel
-    * `YOUR-ENDPOINT` durch Ihren Endpunkt (Beispiel: `westus2.api.cognitive.microsoft.com`)
+    * `YOUR-ENDPOINT` durch Ihren Endpunkt Beispiel: `westus2.api.cognitive.microsoft.com`.
 
 1. Geben Sie in dem Verzeichnis, in dem Sie die Datei erstellt haben, an einer Eingabeaufforderung den folgenden Befehl ein, um die Go-Datei zu kompilieren:
 

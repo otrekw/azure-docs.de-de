@@ -1,20 +1,20 @@
 ---
-title: Verwalten von privaten Endpunkten in Azure
-description: Erfahren Sie, wie Sie mit dem Azure-Portal einen privaten Endpunkt erstellen.
+title: 'Schnellstart: Verwalten von privaten Endpunkten in Azure'
+description: In diesem Schnellstart erfahren Sie, wie Sie über das Azure-Portal einen privaten Endpunkt erstellen.
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: d8d7c0232110d3d5b040debc3a24941988d4ee29
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.author: allensu
+ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372241"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419766"
 ---
-# <a name="create-a-private-endpoint-using-azure-portal"></a>Erstellen eines privaten Endpunkts mit dem Azure-Portal
+# <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und einen SQL-Datenbank-Server mit einem privaten Azure-Endpunkt mithilfe des Azure-Portals erstellen. Anschließend können Sie vom virtuellen Computer sicher auf den SQL-Datenbank-Server zugreifen.
 
@@ -241,4 +241,3 @@ Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem SQL-Server und dem virtuelle
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Schnellstart haben Sie einen virtuellen Computer in einem virtuellen Netzwerk, einen SQL-Datenbankserver und einen privaten Endpunkt für den privaten Zugriff erstellt. Sie haben aus dem Internet eine Verbindung mit einem virtuellen Computer hergestellt und über Private Link sicher mit dem SQL-Datenbankserver kommuniziert. Weitere Informationen zu privaten Endpunkten finden Sie unter [Was ist privater Endpunkt in Azure?](private-endpoint-overview.md).
-

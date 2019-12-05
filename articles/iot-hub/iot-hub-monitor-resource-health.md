@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 11/11/2019
 ms.author: kgremban
-ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f801abc40caf273c28a0c01dedf9735f5198c2af
+ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66166210"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73929693"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Schnelle Überwachung der Integrität von Azure IoT Hub und Diagnose von Problemen
 
@@ -379,8 +379,8 @@ Im `properties` Abschnitt enthält dieses Protokoll zusätzliche Informationen z
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **isRoutingEnabled** | string | Entweder „true“ oder „false“; gibt an, ob Nachrichtenweiterleitung in IoT Hub aktiviert ist |
-| **parentSpanId** | string | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die D2C-Nachrichtenablaufverfolgung |
+| **isRoutingEnabled** | Zeichenfolge | Entweder „true“ oder „false“; gibt an, ob Nachrichtenweiterleitung in IoT Hub aktiviert ist |
+| **parentSpanId** | Zeichenfolge | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die D2C-Nachrichtenablaufverfolgung |
 
 ##### <a name="iot-hub-egress-logs"></a>Ausgehende IoT Hub-Protokolle
 
@@ -411,9 +411,57 @@ Im `properties` Abschnitt enthält dieses Protokoll zusätzliche Informationen z
 
 | Eigenschaft | Typ | BESCHREIBUNG |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
-| **endpointName** | string | Der Name des Routingendpunkts |
-| **endpointType** | string | Der Typ des Routingendpunkts |
-| **parentSpanId** | string | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die Ablaufverfolgung des IoT Hub-Nachrichteneingangs |
+| **endpointName** | Zeichenfolge | Der Name des Routingendpunkts |
+| **endpointType** | Zeichenfolge | Der Typ des Routingendpunkts |
+| **parentSpanId** | Zeichenfolge | Das [span-id](https://w3c.github.io/trace-context/#parent-id)-Element der übergeordneten Nachricht, in diesem Fall die Ablaufverfolgung des IoT Hub-Nachrichteneingangs |
+
+#### <a name="configurations"></a>Configurations
+
+Die Kategorie „IoT Hub-Konfigurationsprotokolle“ verfolgt Ereignisse und Fehler für die Featuregruppe „Automatische Geräteverwaltung“.
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-24T17:21:52Z",
+             "resourceId": "Resource Id",
+             "operationName": "ReadManyConfigurations",
+             "category": "Configurations",
+             "resultType": "",
+             "resultDescription": "",
+             "level": "Information",
+             "durationMs": "17",
+             "properties": "{\"configurationId\":\"\",\"sdkVersion\":\"2018-06-30\",\"messageSize\":\"0\",\"statusCode\":null}",
+             "location": "southcentralus"
+         }
+    ]
+}
+```
+
+### <a name="device-streams-preview"></a>Gerätestreams (Vorschau)
+
+Die Kategorie „Gerätestreams“ verfolgt Anforderung-Antwort-Interaktionen, die an die einzelnen Geräte gesendet werden.
+
+```json
+{
+    "records":
+    [
+         {
+             "time": "2019-09-19T11:12:04Z",
+             "resourceId": "Resource Id",
+             "operationName": "invoke",
+             "category": "DeviceStreams",
+             "resultType": "",
+             "resultDescription": "",    
+             "level": "Information",
+             "durationMs": "74",
+             "properties": "{\"deviceId\":\"myDevice\",\"moduleId\":\"myModule\",\"sdkVersion\":\"2019-05-01-preview\",\"requestSize\":\"3\",\"responseSize\":\"5\",\"statusCode\":null,\"requestName\":\"myRequest\",\"direction\":\"c2d\"}",
+             "location": "Central US"
+         }
+    ]
+}
+```
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Lesen von Protokollen aus Azure Event Hubs
 

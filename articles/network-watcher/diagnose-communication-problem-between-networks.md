@@ -1,6 +1,7 @@
 ---
-title: 'Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken – Azure-Portal | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie ein Kommunikationsproblem zwischen einem virtuellen Azure-Netzwerk und einem mit diesem über ein Gateway für virtuelle Azure-Netzwerke verbundenen lokalen oder anderen virtuellen Netzwerk mit der VPN-Diagnosefunktion von Network Watcher diagnostizieren.
+title: 'Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal'
+titleSuffix: Azure Network Watcher
+description: In diesem Tutorial erfahren Sie, wie Sie ein Kommunikationsproblem zwischen einem virtuellen Azure-Netzwerk und einem mit diesem über ein Gateway für virtuelle Azure-Netzwerke verbundenen lokalen oder anderen virtuellen Netzwerk mit der VPN-Diagnosefunktion von Network Watcher diagnostizieren.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -15,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e4dc66a5ca6e18b12586b5b03742fba3d6c3d6c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704216"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419737"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Tutorial: Diagnostizieren eines Problems mit der Kommunikation zwischen Netzwerken mit dem Azure-Portal
 
@@ -108,7 +109,7 @@ Wenn Sie mithilfe des Skripts ein VPN-Gateway in den [Voraussetzungen](#prerequi
 
 1. Geben Sie oben im Portal *TestRG1* im Feld **Suche** ein. Wenn Sie **TestRG1** in den Suchergebnissen finden, wählen Sie dies aus.
 2. Wählen Sie die Option **Ressourcengruppe löschen**.
-3. Geben Sie *TestRG1* für **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:**, und wählen Sie **Löschen** aus.
+3. Geben Sie *TestRG1* für **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:** , und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

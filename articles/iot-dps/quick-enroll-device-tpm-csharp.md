@@ -1,21 +1,20 @@
 ---
-title: 'Schnellstart: Registrieren eines TPM-Geräts für den Azure Device Provisioning-Dienst per C#'
-description: Azure-Schnellstart – Registrieren eines TPM-Geräts für Azure IoT Hub Device Provisioning Service per C#-Dienst-SDK In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.
+title: Registrieren eines TPM-Geräts für den Azure Device Provisioning-Dienst per C#
+description: 'Schnellstart: Registrieren eines TPM-Geräts für Azure IoT Hub Device Provisioning Service mithilfe des C#-Dienst-SDK In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 70f9c9d2ec488854a1b386b872f10e4f54c45a1c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a95a50e5931f42e442e11fe593a151dd273449e8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904738"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423011"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>Schnellstart: Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per C#-Dienst-SDK
 
@@ -52,13 +51,13 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus. Wählen Sie unter **Neues Projekt erstellen** die Projektvorlage **Konsolen-App (.NET Core)** für C# und dann **Weiter** aus.
 
-1. Geben Sie dem Projekt den Namen *CreateTpmEnrollment*, und wählen Sie **Erstellen** aus.
+1. Geben Sie dem Projekt den Namen *CreateTpmEnrollment*, und klicken Sie auf **Erstellen**.
 
     ![Konfigurieren des Visual C#-Projekts für den klassischen Windows-Desktop](media/quick-enroll-device-tpm-csharp/configure-tpm-app-vs2019.png)
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **CreateTpmEnrollment**, und klicken Sie dann auf **NuGet-Pakete verwalten**.
+1. Wenn die Projektmappe in Visual Studio geöffnet wird, klicken Sie im Bereich des **Projektmappen-Explorers** mit der rechten Maustaste auf das Projekt **CreateTpmEnrollment**. Wählen Sie **NuGet-Pakete verwalten** aus.
 
-1. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Provisioning.Service**, wählen Sie diese Option aus, und klicken Sie dann auf **Installieren**.
+1. Wählen Sie im **NuGet-Paket-Manager** die Option **Durchsuchen** aus, suchen Sie nach **Microsoft.Azure.Devices.Provisioning.Service**, und wählen Sie diese Option und dann **Installieren** aus.
 
    ![Fenster „NuGet-Paket-Manager“](media//quick-enroll-device-tpm-csharp/add-nuget.png)
 
@@ -71,10 +70,10 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
    using Microsoft.Azure.Devices.Provisioning.Service;
    ```
 
-1. Fügen Sie die folgenden Felder zur `Program`-Klasse hinzu, und nehmen Sie die aufgeführten Änderungen vor.
+1. Fügen Sie der `Program`-Klasse die folgenden Felder hinzu, und nehmen Sie die nachstehend aufgeführten Änderungen vor.
 
    ```csharp
-   private static string ProvisioningConnectionString = "{Your provisioning service connection string}";
+   private static string ProvisioningConnectionString = "{ProvisioningServiceConnectionString}";
    private const string RegistrationId = "sample-registrationid-csharp";
    private const string TpmEndorsementKey =
        "AToAAQALAAMAsgAgg3GXZ0SEs/gakMyNRqXXJP1S124GUgtk8qHaGzMUaaoABgCAAEMAEAgAAAAAAAEAxsj2gUS" +
@@ -88,11 +87,11 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
    private const ProvisioningStatus OptionalProvisioningStatus = ProvisioningStatus.Enabled;
    ```
 
-   * Ersetzen Sie den Platzhalterwert `ProvisioningConnectionString` durch die Verbindungszeichenfolge des Bereitstellungsdiensts, für den Sie die Registrierung erstellen möchten.
+   * Ersetzen Sie den Platzhalterwert `ProvisioningServiceConnectionString` durch die Verbindungszeichenfolge des Bereitstellungsdiensts, für den Sie die Registrierung erstellen möchten.
 
    * Sie können optional die Registrierungs-ID, den Endorsement Key, die Geräte-ID und den Bereitstellungsstatus ändern.
 
-   * Wenn Sie diese Schnellstartanleitung zusammen mit der Schnellstartanleitung [Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des C#-Geräte-SDKs](quick-create-simulated-device-tpm-csharp.md) verwenden, um ein simuliertes Gerät bereitzustellen, ersetzen Sie den Endorsement Key und die Registrierungs-ID durch die Werte, die Sie sich in dieser Schnellstartanleitung notiert haben. Die Geräte-ID können Sie durch den in der Schnellstartanleitung vorgeschlagenen Wert ersetzen, auf einen eigenen Wert festlegen oder den Standardwert in diesem Beispiel verwenden.
+   * Wenn Sie diesen Schnellstart zusammen mit dem Schnellstart [Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des C#-Geräte-SDK](quick-create-simulated-device-tpm-csharp.md) verwenden, um ein simuliertes Gerät bereitzustellen, ersetzen Sie den Endorsement Key und die Registrierungs-ID durch die Werte, die Sie sich in diesem Schnellstart notiert haben. Die Geräte-ID können Sie durch den in der Schnellstartanleitung vorgeschlagenen Wert ersetzen, auf einen eigenen Wert festlegen oder den Standardwert in diesem Beispiel verwenden.
 
 1. Fügen Sie der `Program`-Klasse die folgende Methode hinzu.  Dieser Code erstellt einen individuellen Registrierungseintrag und ruft dann die `CreateOrUpdateIndividualEnrollmentAsync`-Methode für `ProvisioningServiceClient` auf, um die individuelle Registrierung zum Bereitstellungsdienst hinzuzufügen.
 
@@ -143,7 +142,7 @@ Dieser Abschnitt zeigt, wie Sie eine .NET Core-Konsolen-App erstellen, die Ihrem
   
 Führen Sie das Beispiel in Visual Studio aus, um die individuelle Registrierung für Ihr TPM-Gerät zu erstellen.
 
-Nach erfolgreicher Erstellung werden im Eingabeaufforderungsfenster die Eigenschaften der neuen individuellen Registrierung angezeigt.
+Ein Eingabeaufforderungsfenster wird geöffnet, in dem Bestätigungsmeldungen angezeigt werden. Nach erfolgreicher Erstellung werden im Eingabeaufforderungsfenster die Eigenschaften der neuen individuellen Registrierung angezeigt.
 
 Überprüfen Sie, ob eine individuelle Registrierung erstellt wurde. Navigieren Sie zur Device Provisioning Service-Zusammenfassung, und wählen Sie **Registrierungen verwalten** und anschließend **Individuelle Registrierungen** aus. Daraufhin sollte ein neuer Registrierungseintrag mit der im Beispiel verwendeten Registrierungs-ID angezeigt werden.
 
@@ -159,13 +158,13 @@ Wenn Sie sich das C#-Dienstbeispiel näher ansehen möchten, dürften Sie die in
 
 1. Schließen Sie das Ausgabefenster des C#-Beispiels auf Ihrem Computer.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und klicken Sie anschließend auf die Registerkarte **Individuelle Registrierungen**. Wählen Sie die *Registrierungs-ID* für den Registrierungseintrag aus, den Sie mit dieser Schnellstartanleitung erstellt haben, und wählen Sie **Löschen** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrem Device Provisioning Service, klicken Sie auf **Registrierungen verwalten**, und klicken Sie anschließend auf die Registerkarte **Individuelle Registrierungen**. Aktivieren Sie das Kontrollkästchen der *Registrierungs-ID* für den Registrierungseintrag, den Sie in diesem Schnellstart erstellt haben, und klicken Sie oben im Bereich auf die Schaltfläche **Löschen**.
 
 1. Falls Sie die Schritte aus der Schnellstartanleitung [Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des C#-Geräte-SDKs](quick-create-simulated-device-tpm-csharp.md) ausgeführt haben, um ein simuliertes TPM-Gerät zu erstellen, führen Sie die folgenden Schritte aus:
 
     1. Schließen Sie das TPM-Simulatorfenster und das Beispielausgabefenster für das simulierte Gerät.
 
-    1. Navigieren Sie im Azure-Portal zu der IoT Hub-Instanz, in der Ihr Gerät bereitgestellt wurde. Wählen Sie im Menü unter **Explorer** die Option **IoT-Geräte** aus, aktivieren Sie das Kontrollkästchen neben Ihrem Gerät, und wählen Sie dann **Löschen** aus.
+    1. Navigieren Sie im Azure-Portal zu der IoT Hub-Instanz, in der Ihr Gerät bereitgestellt wurde. Wählen Sie in dem Menü unter **Explorer** die Option **IoT-Geräte** aus, aktivieren Sie das Kontrollkästchen *GERÄTE-ID* für das Gerät, das Sie in diesem Schnellstart registriert haben, und klicken Sie dann oben im Bereich auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

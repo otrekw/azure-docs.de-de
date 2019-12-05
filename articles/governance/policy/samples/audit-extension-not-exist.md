@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Überwachen, ob keine Erweiterung vorhanden ist'
-description: Diese Beispielrichtliniendefinition überwacht, wenn eine Erweiterung nicht mit einem virtuellen Computer bereitgestellt wird.
+description: Mit dieser Beispielrichtliniendefinition wird überprüft, ob eine in einem Parameter definierte Erweiterung nicht auf einem virtuellen Computer bereitgestellt wird.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 72d7728ef89678998a5fc3726d643142e3842635
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0b81a5f7b59d236cd8edb30cf0cb4f59ed9a7eab
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071448"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463397"
 ---
 # <a name="sample---audit-if-extension-does-not-exist"></a>Beispiel: Überwachen, ob keine Erweiterung vorhanden ist
 

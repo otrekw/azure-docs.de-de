@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mit Azure PowerShell | Microsoft-Dokumentation'
-description: Erste Schritte beim Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell
+title: 'Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell'
+description: In diesem Tutorial lernen Sie die ersten Schritte beim Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell kennen.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 176e465163d92156308eda64c4187467cc10ee15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158853"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419751"
 ---
 # <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell
 
@@ -28,7 +28,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer benutzerdefinierten Rolle
-> * Auflisten benutzerdefinierter Rollen 
+> * Auflisten benutzerdefinierter Rollen
 > * Aktualisieren einer benutzerdefinierten Rolle
 > * Löschen einer benutzerdefinierten Rolle
 
@@ -149,7 +149,7 @@ Zum Erstellen einer benutzerdefinierten Rolle beginnen Sie am besten mit einer i
         
     Die neue benutzerdefinierte Rolle ist jetzt im Azure-Portal verfügbar und kann wie integrierte Rollen Benutzern, Gruppen oder Dienstprinzipalen zugewiesen werden.
 
-## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen 
+## <a name="list-custom-roles"></a>Auflisten benutzerdefinierter Rollen
 
 - Verwenden Sie zum Auflisten aller benutzerdefinierten Rollen den Befehl [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 

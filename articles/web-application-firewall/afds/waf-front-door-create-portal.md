@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen einer Web Application Firewall-Richtlinie für Azure Front Door im Azure-Portal'
+title: 'Tutorial: Erstellen von WAF-Richtlinien für Azure Front Door – Azure-Portal'
 description: In diesem Tutorial erfahren Sie, wie Sie im Azure-Portal eine Web Application Firewall-Richtlinie (WAF) erstellen.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/07/2019
 ms.author: victorh
-ms.openlocfilehash: 602a8620ef35ea247c5865d97495ea43a7d7d93c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73508904"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186724"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Tutorial: Erstellen einer Web Application Firewall-Richtlinie auf Azure Front Door im Azure-Portal
 

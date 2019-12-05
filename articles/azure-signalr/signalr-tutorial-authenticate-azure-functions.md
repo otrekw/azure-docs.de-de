@@ -1,17 +1,17 @@
 ---
-title: 'Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions'
+title: 'Tutorial: Authentifizierung mit Azure Functions – Azure SignalR Service'
 description: In diesem Tutorial erfahren Sie, wie Sie Azure SignalR-Dienstclients für Azure Functions-Bindungen nutzen.
 author: sffamily
 ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: dfa17720b34962611d240aa7c35ba8092bf99082
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278835"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158152"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
 
@@ -45,7 +45,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), und melden Sie sich 
 
 Sie erstellen und testen die Azure Functions-App lokal. Die App greift auf eine SignalR Service-Instanz in Azure zu, die zuvor erstellt werden muss.
 
-1. Klicken Sie auf die Schaltfläche **Ressource erstellen** (**+**), um eine neue Azure-Ressource zu erstellen.
+1. Klicken Sie auf die Schaltfläche **Ressource erstellen** ( **+** ), um eine neue Azure-Ressource zu erstellen.
 
 1. Suchen Sie nach **SignalR Service**, und wählen Sie den Dienst aus. Klicken Sie auf **Create**.
 
@@ -56,8 +56,8 @@ Sie erstellen und testen die Azure Functions-App lokal. Die App greift auf eine 
     | NAME | Wert |
     |---|---|
     | Ressourcenname | Ein eindeutiger Name für die SignalR Service-Instanz |
-    | Ressourcengruppe | Erstellen Sie eine neue Ressourcengruppe mit einem eindeutigen Namen. |
-    | Standort | Wählen Sie einen Standort in Ihrer Nähe aus. |
+    | Resource group | Erstellen Sie eine neue Ressourcengruppe mit einem eindeutigen Namen. |
+    | Location | Wählen Sie einen Standort in Ihrer Nähe aus. |
     | Preisstufe | Kostenlos |
 
 1. Klicken Sie auf **Create**.
@@ -283,7 +283,7 @@ Die Benutzeroberfläche der Chatanwendung ist eine Single-Page-Webanwendung (Sin
 
 1. Erstellen Sie im Ordner **Inhalt** eine neue Datei mit dem Namen **index.html**.
 
-1. Kopieren Sie den Inhalt von **[index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/2720a9a565e925db09ef972505e1c5a7a3765be4/docs/demo/chat-with-auth/index.html)**, und fügen Sie ihn ein.
+1. Kopieren Sie den Inhalt von **[index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/2720a9a565e925db09ef972505e1c5a7a3765be4/docs/demo/chat-with-auth/index.html)** , und fügen Sie ihn ein.
 
 1. Speichern Sie die Datei .
 
@@ -309,7 +309,7 @@ Sie haben die Funktions-App und die Chatanwendung lokal ausgeführt. Nun stellen
 
 Für eine in Azure ausgeführte Funktions-App wird ein Azure Storage-Konto benötigt. Sie werden auch die Webseite für die Chat-Benutzeroberfläche mit dem Feature der statischen Website von Azure Storage hosten.
 
-1. Klicken Sie im Azure-Portal auf die Schaltfläche **Ressource erstellen** (**+**), um eine neue Azure-Ressource zu erstellen.
+1. Klicken Sie im Azure-Portal auf die Schaltfläche **Ressource erstellen** ( **+** ), um eine neue Azure-Ressource zu erstellen.
 
 1. Wählen Sie die Kategorie **Storage** und dann die Option **Speicherkonten** aus.
 
@@ -317,10 +317,10 @@ Für eine in Azure ausgeführte Funktions-App wird ein Azure Storage-Konto benö
 
     | NAME | Wert |
     |---|---|
-    | Abonnement | Wählen Sie das Abonnement mit der SignalR Service-Instanz. |
-    | Ressourcengruppe | Wählen Sie dieselbe Ressourcengruppe. |
+    | Subscription | Wählen Sie das Abonnement mit der SignalR Service-Instanz. |
+    | Resource group | Wählen Sie dieselbe Ressourcengruppe. |
     | Ressourcenname | Geben Sie einen eindeutigen Namen für das Speicherkonto an. |
-    | Standort | Wählen Sie den gleichen Speicherort wie für Ihre anderen Ressourcen aus. |
+    | Location | Wählen Sie den gleichen Speicherort wie für Ihre anderen Ressourcen aus. |
     | Leistung | Standard |
     | Kontoart | StorageV2 (universell v2) |
     | Replikation | Lokal redundanter Speicher (LRS) |
@@ -374,10 +374,10 @@ Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen
     | NAME | Wert |
     |---|---|
     | Bereitzustellender Ordner | Wählen Sie den Hauptprojektordner aus. |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Funktionen-App | Wählen Sie **Create New Function App** (Neue Funktions-App erstellen) aus. |
     | Name der Funktions-App | Geben Sie einen eindeutigen Namen ein. |
-    | Ressourcengruppe | Wählen Sie die gleiche Ressourcengruppe wie für die SignalR Service-Instanz aus. |
+    | Resource group | Wählen Sie die gleiche Ressourcengruppe wie für die SignalR Service-Instanz aus. |
     | Speicherkonto | Wählen Sie das zuvor erstellte Speicherkonto aus. |
 
     Eine neue Funktions-App wird in Azure erstellt, und die Bereitstellung beginnt. Warten Sie, bis die Bereitstellung abgeschlossen ist.
@@ -393,7 +393,7 @@ Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen
     | NAME | Wert |
     |---|---|
     | Datei für lokale Einstellungen | local.settings.json |
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Funktionen-App | Wählen Sie die zuvor bereitgestellte Funktions-App aus. |
 
 Lokale Einstellungen werden in die Funktions-App in Azure hochgeladen. Wählen Sie **Ja, alle** aus, wenn Sie zum Überschreiben vorhandener Einstellungen aufgefordert werden.
@@ -451,7 +451,7 @@ Die Webanwendung wird mithilfe des Azure Blob Storage-Features für statische We
 
     | NAME | Wert |
     |---|---|
-    | Abonnement | Wählen Sie Ihr Abonnement aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Speicherkonto | Wählen Sie das zuvor erstellte Speicherkonto aus. |
     | Bereitzustellender Ordner | Wählen Sie **Durchsuchen** , und wählen Sie den Ordner *content* aus. |
 
@@ -467,7 +467,7 @@ Die Dateien im Ordner *content* sollten nun auf der statischen Website bereitges
 
     ![Suchen von CORS](media/signalr-tutorial-authenticate-azure-functions/signalr-find-cors.png)
 
-1. Fügen Sie im Abschnitt *Zulässige Ursprünge* einen Eintrag mit dem *primären Endpunkt* der statischen Website als Wert hinzu (entfernen Sie die nachfolgenden */*).
+1. Fügen Sie im Abschnitt *Zulässige Ursprünge* einen Eintrag mit dem *primären Endpunkt* der statischen Website als Wert hinzu (entfernen Sie die nachfolgenden */* ).
 
 1. Damit das SignalR JavaScript SDK Ihre Funktions-App von einem Browser aus aufrufen kann, muss die Unterstützung für Anmeldeinformationen in CORS aktiviert sein. Aktivieren Sie das Kontrollkästchen „Access-Control-Allow-Credentials“ aktivieren“ aus.
 

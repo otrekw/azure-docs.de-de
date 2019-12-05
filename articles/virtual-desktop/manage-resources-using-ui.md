@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 11/09/2019
 ms.author: helohr
-ms.openlocfilehash: c7ef648dd2610c337bc9146e7a52c04d91907c8e
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904908"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384283"
 ---
 # <a name="tutorial-deploy-a-management-tool"></a>Tutorial: Bereitstellen eines Verwaltungstools
 
@@ -63,10 +63,9 @@ Gehen Sie wie folgt vor, um die Azure Ressource Manager-Vorlage bereitzustellen:
 ### <a name="guidance-for-template-parameters"></a>Anleitung für Vorlagenparameter
 Die Parameter zum Konfigurieren des Tools werden wie folgt eingegeben:
 
-- Dies ist die RD-Broker-URL:  https:\//rdbroker.wvd.microsoft.com/
-- Dies ist die Ressourcen-URL:  https:\//mrs-prod.ame.gbl/mrs-RDInfra-prod
-- Verwenden Sie für die Anmeldung bei Azure Ihre AAD-Anmeldeinformationen mit deaktivierter MFA. Siehe dazu [Benötigte Komponenten zum Ausführen der Azure Resource Manager-Vorlage](#what-you-need-to-run-the-azure-resource-manager-template).
-- Verwenden Sie einen eindeutigen Namen für die Anwendung, die in Ihrer Azure Active Directory-Instanz für das Verwaltungstool registriert wird, z. B. Apr3UX.
+- Wählen Sie für den **isServicePrincipal**-Parameter die Option **false** aus.
+- Geben Sie als Anmeldeinformationen Ihre Azure Active Directory-Anmeldeinformationen ein, wobei Sie die mehrstufige Authentifizierung deaktivieren. Diese Anmeldeinformationen werden für Ihre Anmeldung bei Azure verwendet und um die Ressourcen für die Azure AD-Anwendung und die Azure-Web-App zu erstellen. Weitere Informationen finden Sie unter [Benötigte Komponenten zum Ausführen der Azure Resource Manager-Vorlage](#what-you-need-to-run-the-azure-resource-manager-template).
+- Verwenden Sie für **applicationName** einen eindeutigen Namen für die App, die in Ihrer Azure Active Directory-Instanz registriert wird. Dieser Name wird auch für die Web-App-URL verwendet. Sie können beispielsweise einen Namen wie „Apr3UX“ verwenden.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Erteilen der Einwilligung für das Verwaltungstool
 

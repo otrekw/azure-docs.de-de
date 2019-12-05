@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127920"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278088"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Vergleichen von Azure CDN-Produktfeatures
 
@@ -41,11 +41,11 @@ In der folgenden Tabelle werden die Features der einzelnen Produkte gegenüberge
 | [Globaler Serverlastenausgleich (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Schnelles Löschen](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** . „Alles löschen“ und das Löschen mit Platzhalter werden derzeit vom Azure-CDN von Akamai nicht unterstützt. |**&#x2713;** |**&#x2713;** |
 | [Vorabladen von Assets](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| Cache-/Headereinstellungen (mit [Zwischenspeicherungsregeln](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
-| Anpassbare, regelbasierte Engine zur Inhaltsübermittlung (mit [Regel-Engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Cache-/Headereinstellungen (mit [Regel-Engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| URL-Umleitung/-Umschreibung (mit [Regel-Engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Regeln für mobile Geräte (mit [Regel-Engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| Cache-/Headereinstellungen (mit [Zwischenspeicherungsregeln](cdn-caching-rules.md))  |**&#x2713;** mit [Standard-Regel-Engine](cdn-standard-rules-engine.md)  |**&#x2713;** |**&#x2713;** | |
+| Anpassbare, regelbasierte Engine zur Inhaltsübermittlung |**&#x2713;** mit [Standard-Regel-Engine](cdn-standard-rules-engine.md)  | | |**&#x2713;** mit [Regel-Engine](cdn-rules-engine.md) |
+| Cache-/Headereinstellungen  |**&#x2713;** mit [Standard-Regel-Engine](cdn-standard-rules-engine.md) | | |**&#x2713;** mit [Premium-Regel-Engine](cdn-rules-engine.md) |
+| URL-Umleitung/-Rewrite |**&#x2713;** mit [Standard-Regel-Engine](cdn-standard-rules-engine.md)  | | |**&#x2713;** mit [Premium-Regel-Engine](cdn-rules-engine.md) |
+| Regeln für mobile Geräte  |**&#x2713;** mit [Standard-Regel-Engine](cdn-standard-rules-engine.md) | | |**&#x2713;** mit [Premium-Regel-Engine](cdn-rules-engine.md) |
 | [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | Dualer IPv4-/IPv6-Stapel | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [HTTP/2-Unterstützung](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |

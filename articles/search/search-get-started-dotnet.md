@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Erstellen eines Suchindex in C# mit .NET'
 titleSuffix: Azure Cognitive Search
-description: Hier erfahren Sie, wie Sie mit C# und dem Azure Cognitive Search .NET SDK einen Index erstellen, Daten laden und Abfragen ausführen.
+description: In diesem C#-Schnellstart erfahren Sie, wie Sie mit dem Azure Cognitive Search-.NET SDK einen Index erstellen, Daten laden und Abfragen ausführen.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: 45d24286a511ff60db33e149627932b0768c543b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 1d8eaea4a6eded769542921851fb0c74a3c9d58b
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112022"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406754"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-c-using-the-net-sdk"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in C# mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -548,7 +548,7 @@ Die Klasse [`DocumentsSearchResult`](https://docs.microsoft.com/dotnet/api/micro
 
     Neben den gleichen Meldungen wie zuvor enthält die Ausgabe nun auch Abfrageinformationen und Ergebnisse.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie in Ihrem eigenen Abonnement arbeiten, sollten Sie sich am Ende eines Projekts überlegen, ob Sie die erstellten Ressourcen noch benötigen. Ressourcen, die weiterhin ausgeführt werden, können Sie Geld kosten. Sie können entweder einzelne Ressourcen oder aber die Ressourcengruppe löschen, um den gesamten Ressourcensatz zu entfernen.
 

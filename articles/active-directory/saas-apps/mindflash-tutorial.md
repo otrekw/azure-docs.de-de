@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e7498411e68b83f8c05d50f52f73f97df9f797
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 78d4f44e9fe2310fab485804e0aaf70aa0dfbdb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160591"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Azure Active Directory-Integration mit Mindflash
 
@@ -208,7 +208,7 @@ Damit sich Azure AD-Benutzer bei Mindflash anmelden können, müssen sie in Mind
     b. Klicken Sie auf **Hinzufügen**.
 
 >[!NOTE]
->Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von Mindflash-Benutzerkonten oder mithilfe der von Mindflash bereitgestellten APIs erstellen. 
+>Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von Mindflash-Benutzerkonten oder mit den von Mindflash bereitgestellten APIs erstellen. 
 > 
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 

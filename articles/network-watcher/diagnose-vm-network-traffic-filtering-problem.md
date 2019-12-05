@@ -1,5 +1,6 @@
 ---
-title: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Schnellstart – Azure-Portal | Microsoft-Dokumentation
+title: 'Schnellstart: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr – Azure-Portal'
+titleSuffix: Azure Network Watcher
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der IP-Flussüberprüfungsfunktion von Azure Network Watcher Probleme mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers diagnostizieren.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702873"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276006"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal
 
@@ -45,8 +46,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
     |NAME|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
     |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
@@ -78,7 +79,7 @@ Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzw
 
     |Einstellung            |Wert                                                                                              |
     |---------          |---------                                                                                          |
-    | Ressourcengruppe    | Wählen Sie „myResourceGroup“ aus.                                                                            |
+    | Resource group    | Wählen Sie „myResourceGroup“ aus.                                                                            |
     | Virtueller Computer   | Wählen Sie „myVm“ aus.                                                                                       |
     | Netzwerkschnittstelle | myvm (Die Netzwerkschnittstelle, die das Portal beim Erstellen des virtuellen Computers erstellt hat, hat einen anderen Namen.) |
     | Protocol          | TCP                                                                                               |

@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Gewährleisten des HTTPS-Datenverkehrs für Speicherkonten'
-description: Diese Beispielrichtliniendefinition erfordert, dass Speicherkonten HTTP-Datenverkehr verwenden.
+description: Bei dieser Beispielrichtliniendefinition muss für alle Azure-Speicherkonten festgelegt sein, dass nur sicherer HTTPS-Datenverkehr zulässig ist.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: c61ccecb72d568ff3a1f4bfce542a2cbbf7d8330
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4d6b6f7e494d2f8c5278c546ead1f9697f245f38
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076234"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463589"
 ---
 # <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Beispiel: Gewährleisten eines HTTPS-Datenverkehrs ausschließlich für Speicherkonten
 

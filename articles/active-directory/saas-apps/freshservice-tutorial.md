@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3ba2f59799629873553fe261abebf59529ad94d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "73570624"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227533"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory in Freshservice
 
@@ -155,7 +155,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anme
 
 4. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Admin](./media/freshservice-tutorial/ic790814.png "Admin")
+    ![Administrator](./media/freshservice-tutorial/ic790814.png "Administrator")
 
 5. Klicken Sie im **Kundenportal** auf **Sicherheit**.
 
@@ -187,7 +187,7 @@ Damit sich Azure AD-Benutzer bei Freshservice anmelden können, müssen sie in F
 
 2. Klicken Sie oben im Menü auf **Administrator**.
 
-    ![Admin](./media/freshservice-tutorial/ic790814.png "Admin")
+    ![Administrator](./media/freshservice-tutorial/ic790814.png "Administrator")
 
 3. Klicken Sie im Abschnitt **Benutzerverwaltung** auf **Anfordernde Personen**.
 
@@ -210,7 +210,7 @@ Damit sich Azure AD-Benutzer bei Freshservice anmelden können, müssen sie in F
     >  
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von FreshService-Benutzerkonten oder mithilfe der von FreshService bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von FreshService-Benutzerkonten oder mit den APIs von FreshService bereitstellen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

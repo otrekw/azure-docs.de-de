@@ -1,19 +1,19 @@
 ---
-title: Migrieren von lokalen virtuellen Hyper-V-Computern zu Azure per Azure Migrate-Servermigration | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie lokale Hyper-V-VMs per Azure Migrate-Servermigration zu Azure migrieren.
+title: Migrieren von Hyper-V-VMs zu Azure per Azure Migrate-Servermigration
+description: Es wird beschrieben, wie Sie lokale virtuelle Hyper-V-Computer per Azure Migrate-Servermigration zu Azure migrieren.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 755bb6d019418cf9dae22ebf7ee6a3c94af3c750
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: be5d519269739f09b4a4264292f578b1d7051d26
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309446"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196302"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Migrieren von virtuellen Hyper-V-Computern zu Azure 
 
@@ -27,7 +27,7 @@ Dieses Tutorial ist das dritte in einer Reihe, mit der veranschaulicht wird, wie
 > [!div class="checklist"]
 > * Vorbereiten von Azure und Ihrer lokalen Hyper-V-Umgebung
 > * Einrichten der Quellumgebung und Bereitstellen einer Replikationsappliance
-> * Einrichten der Zielumgebung
+> * Richten Sie die Zielumgebung ein.
 > * Aktivieren Sie die Replikation.
 > * Ausführen einer Testmigration, um sicherzustellen, dass alles wie erwartet funktioniert
 > * Durchführen einer vollständigen Migration zu Azure
@@ -39,7 +39,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüllt sein:
 
-1. [Lesen Sie den Artikel zur Hyper-V-Migrationsarchitektur](migrate-architecture.md).
+1. [Lesen Sie den Artikel zur Hyper-V-Migrationsarchitektur](hyper-v-migration-architecture.md).
 2. Arbeiten Sie das [erste Tutorial dieser Reihe](tutorial-prepare-hyper-v.md) durch, um Azure und Hyper-V für die Migration einzurichten. Im ersten Tutorial führen Sie Folgendes durch:
     - [Vorbereiten von Azure](tutorial-prepare-hyper-v.md#prepare-azure) für die Migration
     - [Vorbereiten der lokalen Umgebung](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-migration) für die Migration

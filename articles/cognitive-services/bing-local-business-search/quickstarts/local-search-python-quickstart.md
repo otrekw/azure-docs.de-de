@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Senden einer Abfrage an die API für die Bing-Suche für ortsansässige Unternehmen in Python'
+title: 'Schnellstart: Senden einer Abfrage an die API mit Python – Bing-Suche für ortsansässige Unternehmen'
 titleSuffix: Azure Cognitive Services
 description: Einführung in die Verwendung der API für die Bing-Suche nach ortsansässigen Unternehmen mit Python
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: quickstart
 ms.date: 11/06/2019
 ms.author: aahi
-ms.openlocfilehash: ec13555b478404c7e2169af5bcb33f37d8afc5bb
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8a0a7c27294838f8f5c4459eda890c1cbbec7a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796160"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326668"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-python"></a>Schnellstart: Senden einer Abfrage an die API für die Bing-Suche nach ortsansässigen Unternehmen mit Python
 

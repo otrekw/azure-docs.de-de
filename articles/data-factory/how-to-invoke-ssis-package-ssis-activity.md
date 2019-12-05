@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673748"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122966"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory
 In diesem Artikel wird das Ausführen eines SSIS-Pakets (SQL Server Integration Services) in einer Azure Data Factory-Pipeline mithilfe der Aktivität „SSIS-Paket ausführen“ beschrieben. 
@@ -57,7 +57,7 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche oder 
 
     Wenn Sie Ihren verknüpften Dienst für den Schlüsseltresor erstellen oder bearbeiten, können Sie den vorhandenen Schlüsseltresor auswählen und bearbeiten oder einen neuen erstellen. Stellen Sie sicher, dass die verwaltete Data Factory-Identität Zugriff auf Ihren Schlüsseltresor hat, sofern dies noch nicht der Fall ist. Sie können Ihre Geheimnisse auch direkt im folgenden Format eingeben: `<Key vault linked service name>/<secret name>/<secret version>`. Wenn Ihr Paket die 32-Bit-Runtime zum Ausführen benötigt, aktivieren Sie das Kontrollkästchen **32-Bit-Runtime**.
 
-   Wählen Sie unter **Paketspeicherort** entweder **SSISDB**, **Dateisystem (Paket)** oder **Dateisystem (Projekt)** aus. Wenn Sie **SSISDB** als Paketspeicherort auswählen, geben Sie das auszuführende Paket an, das in SSISDB bereitgestellt wurde. Die Option „SSISDB“ wird automatisch ausgewählt, wenn Azure-SSIS Integration Runtime mit dem SSIS-Katalog (SSISDB) bereitgestellt wurde und dieser vom Azure SQL-Datenbank-Server bzw. von der verwalteten Instanz gehostet wird. 
+   Wählen Sie unter **Paketspeicherort** eine der Optionen **SSISDB**, **Dateisystem (Paket)** , **Dateisystem (Projekt)** oder **Eingebettetes Paket** aus. Wenn Sie **SSISDB** als Paketspeicherort auswählen, geben Sie das auszuführende Paket an, das in SSISDB bereitgestellt wurde. Die Option „SSISDB“ wird automatisch ausgewählt, wenn Azure-SSIS Integration Runtime mit dem SSIS-Katalog (SSISDB) bereitgestellt wurde und dieser vom Azure SQL-Datenbank-Server bzw. von der verwalteten Instanz gehostet wird. 
 
     Wenn Ihre Azure-SSIS Integration Runtime-Instanz ausgeführt wird und das Kontrollkästchen **Manuelle Einträge** nicht aktiviert ist, können Sie Ihre vorhandenen Ordner, Projekte, Pakete oder Umgebungen über SSISDB durchsuchen und auswählen. Wählen Sie **Aktualisieren** aus, um Ihre neu hinzugefügten Ordner, Projekte, Pakete oder Umgebungen aus SSISDB abzurufen, sodass sie zum Durchsuchen und Auswählen verfügbar sind. Um die Umgebungen für Ihre Paketausführungen zu durchsuchen oder auszuwählen, müssen Sie Ihre Projekte zuvor so konfigurieren, dass sie diese Umgebungen als Referenzen aus denselben Ordnern unter SSISDB hinzufügen. Weitere Informationen finden Sie unter [Erstellen und Zuordnen einer Serverumgebung](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014).
 
@@ -82,6 +82,10 @@ In diesem Schritt erstellen Sie über die Data Factory-Benutzeroberfläche oder 
    Als Nächstes geben Sie die Anmeldeinformationen für den Zugriff auf Ihre Projekt-, Paket- oder Konfigurationsdateien an. Wenn Sie wie weiter oben beschrieben die Werte der Anmeldeinformationen für die Paketausführung eingegeben haben, können Sie diese Werte wiederverwenden, indem Sie das Kontrollkästchen **Same as package execution credentials** (Identisch mit den Anmeldeinformationen für die Paketausführung) aktivieren. Geben Sie andernfalls die Werte Ihrer Anmeldeinformationen für den Paketzugriff in die Felder **Domäne**, **Benutzername** und **Kennwort** ein. Wenn Sie Ihr Projekt, Ihr Paket oder Ihre Konfiguration also beispielsweise in Azure Files speichern, lauten die Werte wie folgt: Domäne: `Azure`; Benutzername: `<storage account name>`; Kennwort: `<storage account key>`. 
 
    Alternativ können Sie in Ihrem Schlüsseltresor gespeicherte Geheimnisse als Werte verwenden (wie weiter oben beschrieben). Diese Anmeldeinformationen werden sowohl für den Zugriff auf Ihr Paket und Ihre Unterpakete in der Paketausführungsaufgabe (jeweils unter ihrem eigenen Pfad oder dem gleichen Projekt) als auch für den Zugriff auf Konfigurationen verwendet (einschließlich der Konfigurationen, die in Ihren Paketen angegeben sind). 
+
+   Wenn Sie **Eingebettetes Paket** als Ihren Paketspeicherort auswählen, können Sie das Paket ziehen und ablegen, um es auszuführen, oder es aus einem Dateiordner in das dafür vorgesehene Feld **hochladen**. Ihr Paket wird automatisch komprimiert und in die Nutzlast für die Aktivität eingebettet. Nachdem das Paket eingebettet wurde, können Sie es zum späteren Bearbeiten **herunterladen**. Sie können Ihr eingebettetes Paket auch **Parametrisieren**, indem Sie es einem Pipelineparameter zuweisen, der in mehreren Aktivitäten verwendet werden kann. Auf diese Weise wird die Größe Ihrer Pipelinenutzlast optimiert. Wenn Ihr eingebettetes Paket nicht vollständig verschlüsselt wurde und darin die Verwendung des Tasks „Paket ausführen“ erkannt wird, wird das Kontrollkästchen **Task „Paket ausführen“** automatisch aktiviert, und die relevanten untergeordneten Pakete mit ihren Dateisystemverweisen werden automatisch hinzugefügt und so auch eingebettet. Wenn die Verwendung des Tasks „Paket ausführen“ nicht erkannt werden kann, müssen Sie das Kontrollkästchen **Task „Paket ausführen“** manuell aktivieren und die relevanten untergeordneten Pakete mit ihren Dateisystemverweisen einzeln hinzufügen, damit sie auch eingebettet werden. Wenn die untergeordneten Pakete SQL Server-Verweise verwenden, stellen Sie sicher, dass Ihre Azure-SSIS Integration Runtime-Instanz auf den SQL-Server zugreifen kann.  Die Verwendung von Projektverweisen für untergeordnete Pakete wird derzeit nicht unterstützt.
+   
+   ![Festlegen von Eigenschaften auf der Registerkarte „Einstellungen“ – Manuell](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    Wenn Sie bei der Paketerstellung über SQL Server Data Tools die Schutzebene **EncryptAllWithPassword** oder **EncryptSensitiveWithPassword** verwendet haben, müssen Sie unter **Verschlüsselungskennwort** den Wert für Ihr Kennwort eingeben. Alternativ können Sie ein in Ihrem Schlüsseltresor gespeichertes Geheimnis als Wert verwenden (wie weiter oben beschrieben). Wenn Sie die Schutzebene **EncryptSensitiveWithUserKey** verwendet haben, geben Sie Ihre vertraulichen Werte in Konfigurationsdateien oder auf den Registerkarten **SSIS-Parameter**, **Verbindungs-Manager** oder **Eigenschaftenüberschreibungen** erneut ein (wie weiter unten beschrieben). 
 
@@ -281,7 +285,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität „SSIS-Paket
    }
    ```
 
-   Geben Sie zum Ausführen von Paketen, die in Dateisystemen, Dateifreigaben oder Azure Files gespeichert sind, die Werte für Ihre Paket- oder Protokollspeicherort-Eigenschaften wie folgt ein:
+   Geben Sie zum Ausführen von Paketen, die in Dateisystemen, Dateifreigaben oder Azure Files gespeichert sind, die Werte für Ihre Paket- und Protokollspeicherort-Eigenschaften wie folgt ein:
 
    ```json
    {
@@ -353,6 +357,31 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Aktivität „SSIS-Paket
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Geben Sie zum Ausführen von eingebetteten Paketen die Werte für Ihre Paketspeicherort-Eigenschaft wie folgt ein:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

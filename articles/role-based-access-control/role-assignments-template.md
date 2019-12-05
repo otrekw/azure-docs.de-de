@@ -10,19 +10,59 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/20/2019
+ms.date: 11/21/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5f57ea658df0569c4e69e476513863abe6940471
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72692903"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383989"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen
 
 Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. Neben der Verwendung von Azure PowerShell oder der Azure CLI können Sie den Zugriff auf Azure-Ressourcen mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) verwalten. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird beschrieben, wie Sie den Zugriff mit der RBAC und Vorlagen verwalten können.
+
+## <a name="get-object-ids"></a>Abrufen von Objekt-IDs
+
+Um eine Rolle zuzuweisen, müssen Sie die ID des Benutzers, der Gruppe oder der Anwendung angeben, dem bzw. der Sie die Rolle zuweisen möchten. Die ID weist dieses Format auf: `11111111-1111-1111-1111-111111111111`. Sie können die ID über das Azure-Portal, Azure PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI) abrufen.
+
+### <a name="user"></a>Benutzer
+
+Zum Abrufen eines Benutzers können Sie die Befehle [Get-AzADUser](/powershell/module/az.resources/get-azaduser) oder [az ad user show](/cli/azure/ad/user#az-ad-user-show) verwenden.
+
+```azurepowershell
+$objectid = (Get-AzADUser -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
+```
+
+### <a name="group"></a>Group
+
+Zum Abrufen einer Gruppe können Sie die Befehle [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) oder [az ad group show](/cli/azure/ad/group#az-ad-group-show) verwenden.
+
+```azurepowershell
+$objectid = (Get-AzADGroup -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
+```
+
+### <a name="application"></a>Anwendung
+
+Zum Abrufen eines Dienstprinzipals (eine von einer Anwendung verwendete Identität) können Sie die Befehle [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) oder [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
+
+```azurepowershell
+$objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
+```
+
+```azurecli
+objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
+```
 
 ## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Erstellen einer Rollenzuweisung in einem Ressourcengruppenbereich (ohne Parameter)
 
@@ -33,7 +73,7 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Die folge
 Um die Vorlage zu verwenden, müssen Sie folgendermaßen vorgehen:
 
 - Erstellen Sie eine neue JSON-Datei, und kopieren Sie die Vorlage.
-- Ersetzen Sie `<your-principal-id>` durch den eindeutigen Bezeichner eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird. Das Format des Bezeichners ist: `11111111-1111-1111-1111-111111111111`
+- Ersetzen Sie `<your-principal-id>` durch den die ID eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird.
 
 ```json
 {
@@ -76,9 +116,8 @@ Die vorherige Vorlage ist nicht sehr flexibel. Die folgende Vorlage enthält Par
 
 Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 
-- Den eindeutigen Bezeichner eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
-- Die zuzuweisende Rolle
-- Einen eindeutigen Bezeichner, der für die Rollenzuweisung verwendet wird (oder alternativ den Standardbezeichner)
+- Die ID eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
+- Eine eindeutige ID, die für die Rollenzuweisung verwendet wird (oder alternativ die Standard-ID)
 
 ```json
 {
@@ -129,38 +168,28 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 }
 ```
 
-Um den eindeutigen Bezeichner eines Benutzers abzurufen, dem die Rolle zugewiesen werden soll, können Sie den Befehl [Get-AzADUser](/powershell/module/az.resources/get-azaduser) oder [az ad user show](/cli/azure/ad/user#az-ad-user-show) verwenden.
-
-```azurepowershell
-$userid = (Get-AzADUser -DisplayName "{name}").id
-```
-
-```azurecli
-userid=$(az ad user show --upn-or-object-id "{email}" --query objectId --output tsv)
-```
+> [!NOTE]
+> Diese Vorlage ist nicht idempotent, es sei denn, derselbe `roleNameGuid`-Wert wird als Parameter bei jeder Bereitstellung der Vorlage bereitgestellt. Wenn keine `roleNameGuid` angegeben wird, wird standardmäßig für jede Bereitstellung eine neue GUID generiert, und bei nachfolgenden Bereitstellungen tritt ein `Conflict: RoleAssignmentExists`-Fehler auf.
 
 Der Bereich der Rollenzuweisung wird von der Bereitstellungsebene bestimmt. Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) zum Starten der Bereitstellung in einem Ressourcengruppenbereich.
 
 ```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
 Im Folgenden finden Sie Beispiele für die Befehle [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) und [az deployment create](/cli/azure/deployment#az-deployment-create) zum Starten der Bereitstellung in einem Abonnementbereich und zum Angeben des Standorts.
 
 ```azurepowershell
-New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Reader
+New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
 ```
 
 ```azurecli
-az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Reader
+az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
-
-> [!NOTE]
-> Diese Vorlage ist nicht idempotent, es sei denn, derselbe `roleNameGuid`-Wert wird als Parameter bei jeder Bereitstellung der Vorlage bereitgestellt. Wenn keine `roleNameGuid` angegeben wird, wird standardmäßig für jede Bereitstellung eine neue GUID generiert, und bei nachfolgenden Bereitstellungen tritt ein `Conflict: RoleAssignmentExists`-Fehler auf.
 
 ## <a name="create-a-role-assignment-at-a-resource-scope"></a>Erstellen einer Rollenzuweisung in einem Ressourcenbereich
 
@@ -181,8 +210,7 @@ Die folgende Vorlage veranschaulicht Folgendes:
 
 Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 
-- Den eindeutigen Bezeichner eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
-- Die zuzuweisende Rolle
+- Die ID eines Benutzers, einer Gruppe oder einer Anwendung, dem bzw. der die Rolle zugewiesen wird
 
 ```json
 {
@@ -248,11 +276,11 @@ Um die Vorlage zu verwenden, müssen Sie Folgendes eingeben:
 Zum Bereitstellen der vorherigen Vorlage verwenden Sie die Befehle für die Ressourcengruppe. Im Folgenden finden Sie Beispiele für die Befehle [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) und [az group deployment create](/cli/azure/group/deployment#az-group-deployment-create) zum Starten der Bereitstellung in einem Ressourcenbereich.
 
 ```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $userid -builtInRoleType Contributor
+New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
 ```
 
 ```azurecli
-az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$userid builtInRoleType=Contributor
+az group deployment create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
 Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“ zu einem Benutzer für ein Speicherkonto nach dem Bereitstellen der Vorlage.

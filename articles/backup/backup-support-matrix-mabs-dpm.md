@@ -1,18 +1,14 @@
 ---
-title: Unterstützungsmatrix für Microsoft Azure Backup Server und System Center DPM
-description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
-author: dcurwin
-ms.service: backup
+title: MABS & System Center DPM-Unterstützungsmatrix
+description: Dieser Artikel enthält eine Zusammenfassung der Unterstützung für Azure Backup bei Verwendung von Microsoft Azure Backup Server (MABS) oder System Center DPM zum Sichern von lokalen Ressourcen und Ressourcen auf virtuellen Azure-Computern.
 ms.date: 02/17/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: d14cd996fe0e5a67cc3b554fe1e12146cd6b8e1c
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 2bec2818eaabaa2d2d74ab7181db0eabcba092ec
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981080"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172046"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-server-or-system-center-dpm"></a>Unterstützungsmatrix für die Sicherung mit Microsoft Azure Backup Server oder System Center DPM
 
@@ -30,7 +26,7 @@ MABS basiert auf System Center DPM und bietet ähnliche Funktionen mit einigen U
 - In Azure ist für MABS und für DPM die langfristige Sicherungsspeicherung möglich. Darüber hinaus können Sie mit DPM Daten zur langfristigen Speicherung auf Band sichern. Diese Funktion ist in MABS nicht enthalten.
 - Sie können einen primären DPM-Server mit einem sekundären DPM-Server sichern. Der sekundäre Server schützt die primäre Serverdatenbank und die auf dem primären Server gespeicherten Datenquellenreplikate. Wenn der primäre Server ausfällt, kann der sekundäre Server die vom primären Server geschützten Workloads weiterhin schützen, bis der primäre Server wieder verfügbar ist.  Diese Funktion ist in MABS nicht enthalten.
 
-Sie können MABS über das [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=57520) herunterladen. Es kann lokal oder auf einem virtuellen Azure-Computer ausgeführt werden.
+Sie können MABS über das [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57520) herunterladen. Es kann lokal oder auf einem virtuellen Azure-Computer ausgeführt werden.
 
 DPM und MABS unterstützen eine Vielzahl von Anwendungen und Server- und Clientbetriebssystemen. Sie ermöglichen mehrere Sicherungsszenarien:
 

@@ -1,18 +1,14 @@
 ---
-title: Unterstützungsmatrix für den Microsoft Azure Recovery Services-Agent
+title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090545"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195002"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -54,7 +50,7 @@ Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Si
 
 ## <a name="networking-and-access-support"></a>Netzwerk und Zugriffsunterstützung
 
-### <a name="url-access"></a>URL-Zugriff
+### <a name="url-and-ip-access"></a>Zugriff auf URLs und IP-Adressen
 
 Der MARS-Agent benötigt Zugriff auf diese URLs:
 
@@ -63,6 +59,13 @@ Der MARS-Agent benötigt Zugriff auf diese URLs:
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+Und auf diese IP-Adressen:
+
+- 20.190.128.0/18
+- 40.126.0.0/18
+
+Beim Zugriff auf alle oben aufgeführten URLs und IP-Adressen wird das HTTPS-Protokoll auf Port 443 verwendet.
 
 ### <a name="throttling-support"></a>Unterstützung für Drosselung
 
@@ -76,7 +79,12 @@ Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Window
 >[!NOTE]
 > Der MARS-Agent unterstützt Windows Server Core-SKUs nicht.
 
-Mit dem MARS-Agent können Sie unter einigen Betriebssystemen, die auf lokalen Computern und Azure-VMs ausgeführt werden, direkt in Azure sichern. Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Service Packs und Updates ausgeführt werden müssen. Eine Übersicht über diese Betriebssysteme finden in der folgenden Tabelle:
+Mit dem MARS-Agent können Sie unter den unten aufgeführten Betriebssystemen, die auf folgenden Computern ausgeführt werden, direkt in Azure sichern:
+
+1. Lokale Windows-Server
+2. Azure-VMs unter Windows
+
+Dabei muss es sich um 64-Bit-Betriebssysteme handeln, die mit den neuesten Service Packs und Updates ausgeführt werden müssen. Eine Übersicht über diese Betriebssysteme finden in der folgenden Tabelle:
 
 **Betriebssystem** | **Dateien/Ordner** | **Systemstatus** | **Software-/Modulanforderungen**
 --- | --- | --- | ---
@@ -128,7 +136,7 @@ OneDrive (synchronisierte Dateien sind Streams mit geringer Dichte)| Nicht unter
 Schreibgeschützte Volumes| Nicht unterstützt | Der Volumeschattenkopie-Dienst (VSS) funktioniert nur, wenn das Volume beschreibbar ist.
 Offlinevolumes| Nicht unterstützt |VSS funktioniert nur, wenn das Volume online ist.
 Netzwerkfreigabe| Nicht unterstützt |Das Volume muss sich lokal auf dem Server befinden.
-Mit BitLocker geschützte Volumes| Nicht unterstützt |Das Volume muss entsperrt werden, damit die Sicherung starten kann.
+BitLocker-gesperrte Volumes| Nicht unterstützt |Das Volume muss entsperrt werden, damit die Sicherung starten kann.
 Dateisystemidentifikation| Nicht unterstützt |Es wird nur NTFS unterstützt.
 Wechselmedien| Nicht unterstützt |Alle Quellen für Sicherungselemente müssen ein *festes* Medium sein.
 Deduplizierte Laufwerke | Unterstützt | Azure Backup konvertiert die deduplizierten Daten in reguläre Daten. Dabei werden die Daten optimiert, verschlüsselt, gespeichert und an den Tresor gesendet.

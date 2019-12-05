@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Hosten Ihrer Domäne und Unterdomäne in Azure DNS'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure DNS zum Hosten Ihrer DNS-Zonen konfigurieren.
+title: 'Tutorial: Hosten Ihrer Domäne und Unterdomäne – Azure DNS'
+description: In diesem Artikel erfahren Sie, wie Sie Azure DNS für das Hosten Ihrer DNS-Zonen konfigurieren.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 99a3ca0115611f45ed080c39767d13e087b8efb8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: allensu
+ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464220"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212201"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Tutorial: Hosten Ihrer Domäne in Azure DNS
 

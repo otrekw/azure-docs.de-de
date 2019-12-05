@@ -1,19 +1,19 @@
 ---
-title: Vorbereiten von lokalen Computern für die Migration zu Azure mit Azure Migrate
-description: In diesem Artikel wird beschrieben, wie Sie lokale Computer für die Migration zu Azure mit Azure Migrate vorbereiten.
+title: Vorbereiten von Computern für die Migration mit Azure Migrate
+description: Es wird beschrieben, wie Sie lokale Computer für die Migration mit Azure Migrate vorbereiten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480122"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196424"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -46,8 +46,7 @@ In diesem Artikel führen Sie folgende Schritte aus:
 
 - Für VMware-VMs wird bei der Azure Migrate-Servermigration die [Migration mit oder ohne Agent](server-migrate-overview.md) unterstützt. Überprüfen Sie für Migrationen [ohne Agent](migrate-support-matrix-vmware.md#migration---limitations) und [mit Agent](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) die Anforderungen bzw. die Unterstützung in Bezug auf VMware-VMs.
 - Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) in Bezug auf Hyper-V-VMs.
-- Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) für lokale physische Computer oder andere virtualisierte Server. Diese Anforderungen ähneln denen von VMware-VMs.
-
+- Überprüfen Sie die [Migrationsanforderungen und -unterstützung](migrate-support-matrix-physical.md) für lokale physische Computer oder andere virtualisierte Server. 
 
 
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 5e84b8777fc7671a19b6d8974f1309eb5af35bd3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 8cfcbddfc8d50855860af655847f997fb2a01711
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048016"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479708"
 ---
 # <a name="what-is-azure-iot-central-preview-features"></a>Was ist Azure IoT Central (Previewfunktionen)?
 
@@ -51,7 +51,7 @@ In diesem Artikel werden folgende Punkte für IoT Central behandelt:
 - Array-Schematypen werden nicht unterstützt.
 - Der Export von Anwendungsvorlagen und die Anwendungskopie werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
-- Nur in den Regionen „Europa, Norden“ und „USA, Mitte“ verfügbar
+- Nur an Standorten in den USA und Europa verfügbar.
 - Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
 
 ## <a name="personas"></a>Personas
@@ -140,6 +140,10 @@ Als Bediener verwenden Sie die Benutzeroberfläche der IoT Central-Anwendung, um
 Als Lösungsentwickler können Sie benutzerdefinierte Regeln und Aktionen definieren, die über Datenstreaming von verbundenen Geräten ausgeführt werden. Bediener können diese Regeln auf der Geräteebene aktivieren oder deaktivieren, um Aufgaben innerhalb der Anwendung zu steuern und zu automatisieren.
 
 Administratoren verwalten über [Benutzerrollen und Berechtigungen](howto-administer.md) den Zugriff auf Ihre Anwendung.
+
+## <a name="quotas"></a>Kontingente
+
+Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT-Lösung beeinträchtigen könnten. Derzeit ist die Anzahl der Anwendungen, die Sie in einem Abonnement bereitstellen können, in IoT Central auf 10 begrenzt. Wenn Sie diesen Grenzwert erhöhen müssen, wenden Sie sich an den [Microsoft-Support](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

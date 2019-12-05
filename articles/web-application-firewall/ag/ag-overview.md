@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.topic: overview
-ms.openlocfilehash: 4ba2772ffb89809c2262880385207a12c74882cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1a210ff7da57147762dcf13e1dda7fee26dbe5f0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74067146"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384114"
 ---
 # <a name="azure-web-application-firewall-on-azure-application-gateway"></a>Azure Web Application Firewall für Azure Application Gateway
 
@@ -89,7 +89,12 @@ Weitere Informationen finden Sie unter [CRS-Regelgruppen und -Regeln der Web App
 
 Application Gateway unterstützt auch benutzerdefinierte Regeln. Benutzerdefinierte Regeln ermöglichen die Erstellung eigener Regeln. Diese werden für jede Anforderung ausgewertet, die die WAF durchlaufen. Diese Regeln haben eine höhere Priorität als die restlichen Regeln in den verwalteten Regelsätzen. Wenn eine Reihe von Bedingungen erfüllt ist, erfolgt eine Zulassen- oder Blockieren-Aktion. 
 
-Weitere Informationen finden Sie unter [Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway](custom-waf-rules-overview.md).
+Der geomatch-Operator ist nun als Public Preview für benutzerdefinierte Regeln verfügbar. Weitere Informationen finden Sie unter [Benutzerdefinierte geomatch-Regeln](custom-waf-rules-overview.md#geomatch-custom-rules-preview).
+
+> [!NOTE]
+> Der geomatch-Operator für benutzerdefinierte Regeln befindet sich derzeit in der Public Preview und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Weitere Informationen zu benutzerdefinierten Regeln finden Sie unter [Benutzerdefinierte Regeln für Application Gateway](custom-waf-rules-overview.md).
 
 ### <a name="bot-mitigation-preview"></a>Risikominderung für Bots (Vorschau)
 

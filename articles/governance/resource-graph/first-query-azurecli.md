@@ -1,14 +1,14 @@
 ---
-title: Ausführen Ihrer ersten Abfrage mit der Azure CLI
-description: Dieser Artikel führt Sie durch die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure-Befehlszeilenschnittstelle und Ausführen Ihrer ersten Abfrage.
-ms.date: 10/18/2019
+title: 'Schnellstart: Ihre erste Azure CLI-Abfrage'
+description: In dieser Schnellstartanleitung führen Sie die Schritte zum Aktivieren der Resource Graph-Erweiterung für die Azure CLI und zum Ausführen Ihrer ersten Abfrage aus.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: b74e4314a7755bb067831f955ca02d62485abe4f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: e75152c720d94f084b43f855452e5e8ce4dc6bc8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958967"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304123"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe der Azure CLI
 
@@ -16,13 +16,17 @@ Der erste Schritt der Verwendung von Azure Resource Graph ist, zu überprüfen, 
 
 Am Ende dieses Prozesses haben Sie die Erweiterung der Installation der Azure-Befehlszeilenschnittstelle Ihrer Wahl hinzugefügt und Ihre erste Resource Graph-Abfrage durchgeführt.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-extension"></a>Hinzufügen der Resource Graph-Erweiterung
 
 Um die Azure-Befehlszeilenschnittstelle für die Abfrage von Azure Resource Graph zu aktivieren, muss die Erweiterung hinzugefügt werden. Diese Erweiterung funktioniert überall, wo die Azure-Befehlszeilenschnittstelle verwendet werden kann, einschließlich [bash unter Windows 10](/windows/wsl/install-win10), [Cloud Shell](https://shell.azure.com) (sowohl eigenständig als auch innerhalb des Portals), [Azure CLI-Docker-Image](https://hub.docker.com/r/microsoft/azure-cli/) oder lokaler Installation.
 
-1. Vergewissern Sie sich, dass die neueste Azure CLI (mindestens **2.0.45**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+1. Vergewissern Sie sich, dass die neueste Azure CLI (mindestens **2.0.76**) installiert ist. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
 1. Importieren Sie sie mit folgendem Befehl in die Azure CLI-Umgebung Ihrer Wahl:
 
@@ -87,10 +91,7 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Abfragesprache](./concepts/query-language.md).
-- Erfahren Sie mehr über das [Erkunden von Ressourcen](./concepts/explore-resources.md).
-- Führen Sie Ihre erste Abfrage über das [Azure-Portal](first-query-portal.md) aus.
-- Führen Sie Ihre erste Abfrage mit [Azure PowerShell](first-query-powershell.md) aus.
-- Sehen Sie sich Beispiele für [einfache Abfragen](./samples/starter.md) an.
-- Sehen Sie sich Beispiele für [erweiterte Abfragen](./samples/advanced.md) an.
-- Geben Sie über [UserVoice](https://feedback.azure.com/forums/915958-azure-governance) Feedback ab.
+In dieser Schnellstartanleitung haben Sie die Resource Graph-Erweiterung Ihrer Azure CLI-Umgebung hinzugefügt und Ihre erste Abfrage ausgeführt. Fahren Sie mit der Seite mit den Details zur Abfragesprache fort, um weitere Informationen zur Resource Graph-Sprache zu erhalten.
+
+> [!div class="nextstepaction"]
+> [Erfahren Sie mehr über die Abfragesprache](./concepts/query-language.md).

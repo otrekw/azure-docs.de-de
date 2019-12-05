@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Verweigern des Hybridnutzungsvorteils'
-description: Diese Beispielrichtliniendefinition verweigert die Verwendung des Azure-Hybridnutzungsvorteils.
+description: Mit dieser Beispielrichtliniendefinition wird die Nutzung des Azure-Vorteils bei Hybridnutzung für virtuelle Computer und VM-Skalierungsgruppen untersagt.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 441f3bc75dc066684f201deabe34b2dfd962e0ca
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 98518e33f27f0e46bf224301f3a02bb57141c4e1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74070904"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463652"
 ---
 # <a name="sample---deny-hybrid-use-benefit"></a>Beispiel: Verweigern des Hybridnutzungsvorteils
 

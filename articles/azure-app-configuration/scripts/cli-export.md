@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 480e21994846f5b2adb85bcf846df2a7cdda4bda
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7969300e9865c943c0f3759277bd26529c0c5464
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444462"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184885"
 ---
 # <a name="export-from-an-azure-app-configuration-store"></a>Exportieren aus einem Azure App Configuration-Speicher
 
@@ -48,14 +48,14 @@ az appconfig kv export --name myTestAppConfigStore --file ~/Export.json
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-Dieses Skript verwendet die folgenden Befehle, um einen App-Konfigurationsspeicher zu exportieren. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+Dieses Skript verwendet die folgenden Befehle für das Exportieren aus einem App Configuration-Speicher. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|
-| [az appconfig export](/cli/azure/ext/appconfig/appconfig) | Dient zum Exportieren aus einer App-Konfigurationsspeicherressource. |
+| [az appconfig kv export](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-export) | Dient zum Exportieren aus einer App Configuration-Speicherressource. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Weitere CLI-Skriptbeispiele für App Configuration finden Sie in der [Dokumentation zu Azure App Configuration](../cli-samples.md).
+Weitere CLI-Skriptbeispiele für App Configuration finden Sie in den [CLI-Beispielen für Azure App Configuration](../cli-samples.md).

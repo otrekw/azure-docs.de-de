@@ -1,5 +1,5 @@
 ---
-title: Verbinden einer generischen Node.js-Clientanwendung mit Azure IoT Central | Microsoft-Dokumentation
+title: Verbinden einer generischen Node.js-Client-App mit Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein generisches Node.js-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76ab6a229de14af1e3808326c62a7bdbbd188e81
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 1ddb947e9bcbdde655b5c83cffb67e8fc13d9d0e
+ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72941847"
+ms.lasthandoff: 11/13/2019
+ms.locfileid: "74048678"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Verbinden einer generischen Clientanwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)
 
@@ -30,7 +30,9 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 ## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
 
-In Ihrer Azure IoT Central-Anwendung benötigen Sie eine Gerätevorlage mit den folgenden Messungen, Geräteeigenschaften, Einstellungen und Befehlen:
+In Ihrer Azure IoT Central-Anwendung benötigen Sie eine Gerätevorlage mit den nachstehend aufgeführten Messungen, Geräteeigenschaften, Einstellungen und Befehlen.
+
+Weitere Informationen zu gültigen Eigenschaftennamen finden Sie unter [Format von Tags und Eigenschaften](../../iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format).
 
 ### <a name="telemetry-measurements"></a>Telemetriemessungen
 

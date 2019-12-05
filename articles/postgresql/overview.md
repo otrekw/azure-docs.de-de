@@ -6,13 +6,13 @@ ms.author: jonels
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 05/06/2019
-ms.openlocfilehash: 9d4389ed2c0cc5d7b632380fba691ae2e9a6b257
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/25/2019
+ms.openlocfilehash: 9ea0610811f6906526afe55d577e04a8decd5f49
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466755"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481666"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
 Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler. Er basiert auf der Communityversion der Open-Source-[PostgreSQL](https://www.postgresql.org/)-Datenbank-Engine und wird mit zwei Bereitstellungsoptionen angeboten: „Einzelserver“ und „Hyperscale (Citus)“
@@ -20,13 +20,14 @@ Azure Database for PostgreSQL ist ein relationaler Datenbankdienst in der Micr
 ## <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (Einzelserver)
 Die Bereitstellungsoption „Einzelserver“ bietet Folgendes:
 
-- Integrierte Hochverfügbarkeit ohne zusätzliche Kosten (SLA von 99,99 %)
+- Integrierte [Hochverfügbarkeit](concepts-high-availability.md) ohne zusätzliche Kosten (SLA mit 99,99 %)
 - Vorhersagbare Leistung inklusive nutzungsbasierter Bezahlung
-- Vertikale Skalierung nach Bedarf in Sekundenschnelle
-- Überwachung und Warnung zur schnellen Bewertung der Auswirkungen der Skalierung
-- Schutz von sensiblen Daten in Ruhe und während der Übertragung
-- Automatische Sicherungen und Point-in-Time-Wiederherstellung für bis zu 35 Tage
+- [Vertikale Skalierung nach Bedarf](concepts-pricing-tiers.md) in Sekundenschnelle
+- [Überwachung und Warnung](concepts-monitoring.md) zum Bewerten Ihres Servers
 - Sicherheit und Konformität auf Unternehmensniveau
+- [Schutz](concepts-security.md) von sensiblen Daten im ruhenden Zustand und während der Übertragung
+- [Automatische Sicherungen und Point-in-Time-Wiederherstellung](concepts-business-continuity.md) für bis zu 35 Tage
+
 
 All diese Funktionen erfordern fast keine Administration und werden alle ohne zusätzliche Kosten bereitgestellt. Sie ermöglichen es Ihnen, sich auf die schnelle Anwendungsentwicklung und die Beschleunigung der Markteinführung zu konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von VMs und der Infrastruktur aufzuwenden. Sie können Ihre Anwendung weiterhin mit den Open-Source-Tools und der Plattform Ihrer Wahl entwickeln, ohne sich neue Fähigkeiten aneignen zu müssen.
 
@@ -42,11 +43,6 @@ Die Bereitstellungsoption „Hyperscale (Citus)“ bietet Folgendes:
 - Hervorragende Unterstützung für mehrinstanzenfähige Anwendungen, operative Echtzeitanalyse und Transaktionsworkloads mit hohem Durchsatz
 
 Bei der Option „Hyperscale (Citus)“ können für PostgreSQL erstellte Anwendungen verteilte Abfragen mit [Standardverbindungsbibliotheken](./concepts-connection-libraries.md) und minimalen Änderungen ausführen.
-
-## <a name="data-security"></a>Datensicherheit
-Azure-Datenbankdienste sind für ihre Datensicherheit bekannt. Diese Tradition wird auch von Azure Database for PostgreSQL fortgeführt. Der Dienst bietet Features zur Einschränkung des Zugriffs, zum Schutz von Daten (sowohl in Ruhe als auch während der Übertragung) sowie zur Überwachung von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://azure.microsoft.com/overview/trusted-cloud/).
-
-Der Azure Database for PostgreSQL-Dienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten, einschließlich Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden. Für den Schutz von Daten während der Übertragung erfordert der Azure Database for PostgreSQL-Dienst standardmäßig sichere Verbindungen innerhalb des Netzwerks sowie zwischen der Datenbank und Clientanwendung.
 
 ## <a name="contacts"></a>Kontakte
 Sollten Sie Fragen oder Vorschläge zur Verwendung von Azure Database for PostgreSQL haben, senden Sie eine E-Mail an das Azure Database for PostgreSQL-Team ([@Ask Azure DB for PostgreSQL](mailto:AskAzureDBforPostgreSQL@service.microsoft.com)). Wenden Sie sich bei allgemeinen Fragen an diese Adresse, anstatt ein Supportticket zu öffnen.

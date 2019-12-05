@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595059"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457044"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -76,7 +76,7 @@ Ja. Azure reserviert fünf IP-Adressen in jedem Subnetz. Dies sind x.x.x.0-x.x.x
 - x.x.x.255: Netzwerkadresse für Broadcasts
 
 ### <a name="how-small-and-how-large-can-vnets-and-subnets-be"></a>Wie ist die minimale und maximale Größe von VNets und Subnetzen?
-Das kleinste unterstützte Subnetz weist die Netzmaske /29 und das größte die Netzmaske /8 (gemäß CIDR-Subnetzdefinitionen) auf.
+Das kleinste unterstützte IPv4-Subnetz weist die Netzmaske /29 und das größte die Netzmaske /8 (gemäß CIDR-Subnetzdefinitionen) auf.  IPv6-Subnetze müssen exakt /64 groß sein.  
 
 ### <a name="can-i-bring-my-vlans-to-azure-using-vnets"></a>Können VLANs mithilfe von VNets in Azure integriert werden?
 Nein. VNets sind Layer-3-Overlays. Layer-2-Semantik wird in Azure nicht unterstützt.
@@ -109,7 +109,7 @@ Ja. Sie können die in einem VNet verwendeten CIDR-Blöcke hinzufügen, entferne
 Ja. Alle Dienste, die in einem VNET bereitgestellt werden, können eine ausgehende Verbindung mit dem Internet herstellen. Weitere Informationen zu ausgehenden Internetverbindungen in Azure finden Sie unter [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie mit einer Ressource eine Verbindung in eingehender Richtung herstellen möchten, die über Resource Manager bereitgestellt wurde, muss der Ressource eine öffentliche IP-Adresse zugewiesen sein. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md). Jeder in Azure bereitgestellte Azure-Clouddienst verfügt über eine öffentlich adressierbare, zugewiesene VIP-Adresse. Sie müssen Eingabeendpunkte für PaaS-Rollen und Endpunkte für virtuelle Computer definieren, damit diese Dienste Verbindungen über das Internet annehmen können.
 
 ### <a name="do-vnets-support-ipv6"></a>Unterstützen VNets IPv6?
-Nein. Zum gegenwärtigen Zeitpunkt können Sie IPv6 mit VNets nicht verwenden. Sie können Azure-Lastenausgleichsmodulen jedoch IPv6-Adressen zuweisen, um einen Lastausgleich für virtuelle Computer vorzunehmen. Ausführliche Informationen finden Sie unter [Übersicht über IPv6 für Azure Load Balancer](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Ja, VNets können „Nur-IPv4“ oder „Dual-Stack“ sein (IPv4 und IPv6).  Ausführliche Informationen finden Sie unter [Übersicht über IPv6 für Azure Virtual Networks](./ipv6-overview.md).
 
 ### <a name="can-a-vnet-span-regions"></a>Kann sich ein VNet über mehrere Regionen erstrecken?
 Nein. Ein VNet ist auf eine Region beschränkt. Ein virtuelles Netzwerk erstreckt sich jedoch über Verfügbarkeitszonen. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie können mithilfe von Peering in virtuellen Netzwerken Verbindungen zwischen virtuellen Netzwerken in verschiedenen Regionen herstellen. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md).
@@ -241,8 +241,8 @@ VNET-Peering (das Peering virtueller Netzwerke) ermöglicht Ihnen das Verbinden 
 Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNet-Peering ist in allen öffentlichen Azure-Regionen, China-Cloudregionen und Government-Cloudregionen verfügbar. Das globale Peering von öffentlichen Azure-Regionen in nationale Cloudregionen ist nicht möglich.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Welche Einschränkungen gibt es im Zusammenhang mit globalem VNET-Peering und Load Balancern?
-Wenn sich die zwei virtuellen Netzwerke in unterschiedlichen Regionen befinden (Globales VNet-Peering), können Sie sich nicht mit Ressourcen verbinden, die Basic-Load Balancer verwenden. Sie können sich mit Ressourcen verbinden, die Load Balancer Standard verwenden.
-Die folgenden Ressourcen verwenden Basic-Load Balancer, d. h. Sie können nicht über globales VNet-Peering mit ihnen kommunizieren:
+Wenn die beiden virtuellen Netzwerke in zwei verschiedenen Regionen mittels Peering über das globale VNET-Peering verbunden sind, können Sie über die Front-End-IP des Load Balancer keine Verbindung mit Ressourcen herstellen, die sich hinter einem Load Balancer im Tarif „Basic“ befinden. Diese Einschränkung gilt nicht für einen Load Balancer Standard.
+Die folgenden Ressourcen können Load Balancer im Tarif „Basic“ verwenden, d. h. Sie können sie nicht über die Front-End-IP-Adresse des Load Balancer über globales VNET-Peering erreichen. Sie können jedoch das globale VNET-Peering verwenden, um die Ressourcen direkt über ihre privaten VNET-IP-Adressen zu erreichen, falls zulässig. 
 - VMs hinter Basic-Load Balancern
 - VM-Skalierungsgruppen mit Basic-Load Balancern 
 - Redis Cache 

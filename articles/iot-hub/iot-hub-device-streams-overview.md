@@ -1,18 +1,18 @@
 ---
-title: Azure IoT Hub-Gerätestreams (Vorschau) | Microsoft-Dokumentation
-description: Übersicht über IoT Hub-Gerätestreams
+title: Azure IoT Hub-Gerätestreams | Microsoft-Dokumentation
+description: Eine Übersicht über Azure IoT Hub-Gerätestreams, die sichere bidirektionale TCP-Tunnel für eine Vielzahl von Szenarios mit Kommunikation zwischen Cloud und Gerät vereinfachen.
 author: robinsh
 services: iot-hub
 ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: robinsh
-ms.openlocfilehash: 86f8c6e527f58a7c4cfca6233165f0ab05426409
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: ff738e56226f7cbb720a754573a9d8607e0e3247
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672567"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890468"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -140,7 +140,7 @@ Führen Sie die folgenden Schritte aus, um Azure Monitor-Protokolle für die Ger
 
 ## <a name="regional-availability"></a>Regionale Verfügbarkeit
 
-Während der öffentlichen Vorschauphase sind IoT Hub-Gerätestreams in den Regionen „USA, Mitte“ und „USA, Mitte (EUAP)“ verfügbar. Achten Sie darauf, dass Sie Ihren Hub in einer dieser Regionen erstellen.
+Während der öffentlichen Vorschau sind IoT Hub-Gerätestreams in den Regionen „USA, Mitte“, „USA, Mitte (EUAP)“, „Europa, Norden“ und „Asien, Südosten“ verfügbar. Achten Sie darauf, dass Sie Ihren Hub in einer dieser Regionen erstellen.
 
 ## <a name="sdk-availability"></a>SDK-Verfügbarkeit
 

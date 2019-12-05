@@ -1,16 +1,16 @@
 ---
 title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
-ms.date: 08/26/2019
+ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048289"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321760"
 ---
-# <a name="overview-of-the-azure-blueprints-service"></a>Übersicht über den Azure Blueprints-Dienst
+# <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
 Genau wie eine Blaupause, die einem Ingenieur oder Architekten die Skizzierung der Entwurfsparameter für ein Projekt ermöglicht, ermöglicht es Azure Blueprints Cloudarchitekten und zentralen IT-Gruppen, eine wiederholbare Gruppe von Azure-Ressourcen zu definieren, mit der die Standards, Muster und Anforderungen einer Organisation implementiert und erzwungen werden. Mit Azure Blueprints können Entwicklungsteams schnell neue Umgebungen bereitstellen und einrichten und dabei darauf vertrauen, dass sie die Konformitätsanforderungen der Organisation erfüllen und über eine Reihe integrierter Komponenten (z.B. Netzwerk) zur Beschleunigung der Entwicklung und Bereitstellung verfügen.
 
@@ -62,7 +62,8 @@ Bei der Erstellung einer Blaupausendefinition legen Sie fest, wo die Blaupause g
 ### <a name="blueprint-parameters"></a>Blaupausenparameter
 
 Azure Blueprint kann Parameter entweder an eine Richtlinie oder Initiative oder an eine Azure Resource Manager-Vorlage übergeben.
-Beim Hinzufügen eines _Artefakts_ zu einer Blaupause entscheidet der Ersteller, ob er einen definierten Wert für jede Blaupausenzuweisung angeben möchte oder ob bei jeder Blaupausenzuweisung ein Wert angegeben werden kann. Diese Flexibilität bietet die Möglichkeit, einen vorab festgelegten Wert für alle Verwendungen der Blaupause zu definieren. Es ist auch möglich, diese Festlegung zum Zeitpunkt der Zuweisung vorzunehmen.
+Beim Hinzufügen eines _Artefakts_ zu einer Blaupause entscheidet der Ersteller, ob er einen definierten Wert für jede Blaupausenzuweisung angeben möchte oder ob bei jeder Blaupausenzuweisung ein Wert angegeben werden kann.
+Diese Flexibilität bietet die Möglichkeit, einen vorab festgelegten Wert für alle Verwendungen der Blaupause zu definieren. Es ist auch möglich, diese Festlegung zum Zeitpunkt der Zuweisung vorzunehmen.
 
 > [!NOTE]
 > Eine Blaupause kann über eigene Parameter verfügen, diese können derzeit jedoch nur erstellt werden, wenn die Blaupause mit der REST-API und nicht im Portal generiert wird.
@@ -71,7 +72,8 @@ Weitere Informationen finden Sie unter [Blaupausenparameter](./concepts/paramete
 
 ### <a name="blueprint-publishing"></a>Blaupausenveröffentlichung
 
-Wenn eine Blaupause erstellt wird, befindet sie sich im **Entwurfsmodus**. Wenn sie bereit ist für die Zuweisung, muss sie **veröffentlicht** werden. Für die Veröffentlichung muss eine **Versionszeichenfolge** (Buchstaben, Zahlen und Bindestriche mit einer maximalen Länge von 20 Zeichen) zusammen mit optionalen **Änderungshinweisen** definiert werden. Durch die **Version** unterscheidet sich eine Blaupause von zukünftigen Änderungen an der Blaupause, sodass jede Version zugewiesen werden kann. Diese Versionierung bedeutet auch, dass einem Abonnement verschiedene **Versionen** der gleichen Blaupause zugewiesen werden können. Wenn zusätzliche Änderungen an der Blaupause vorgenommen werden, existiert die **veröffentlichte** **Version** parallel zu den **unveröffentlichten Änderungen**. Nachdem die Änderungen abgeschlossen wurden, wird die aktualisierte Blaupause mit einer neuen und eindeutigen **Version** **veröffentlicht** und kann dann auch zugewiesen werden.
+Wenn eine Blaupause erstellt wird, befindet sie sich im **Entwurfsmodus**. Wenn sie bereit ist für die Zuweisung, muss sie **veröffentlicht** werden. Für die Veröffentlichung muss eine **Versionszeichenfolge** (Buchstaben, Zahlen und Bindestriche mit einer maximalen Länge von 20 Zeichen) zusammen mit optionalen **Änderungshinweisen** definiert werden. Durch die **Version** unterscheidet sich eine Blaupause von zukünftigen Änderungen an der Blaupause, sodass jede Version zugewiesen werden kann. Diese Versionierung bedeutet auch, dass einem Abonnement verschiedene **Versionen** der gleichen Blaupause zugewiesen werden können. Wenn zusätzliche Änderungen an der Blaupause vorgenommen werden, ist die **veröffentlichte**
+**Version** parallel zu den **unveröffentlichten Änderungen** vorhanden. Nachdem die Änderungen abgeschlossen wurden, wird die aktualisierte Blaupause mit einer neuen und eindeutigen **Version** **veröffentlicht** und kann dann auch zugewiesen werden.
 
 ## <a name="blueprint-assignment"></a>Blaupausenzuweisung
 
@@ -135,5 +137,6 @@ Die folgende Übersicht über Azure Blueprints stammt aus Azure Friday. Besuchen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer Blaupause – Portal](create-blueprint-portal.md)
-- [Erstellen einer Blaupause – REST-API](create-blueprint-rest-api.md)
+- [Erstellen einer Blaupause – Portal](./create-blueprint-portal.md)
+- [Erstellen einer Blaupause – PowerShell](./create-blueprint-powershell.md)
+- [Erstellen einer Blaupause – REST-API](./create-blueprint-rest-api.md)

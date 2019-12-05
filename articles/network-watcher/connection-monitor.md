@@ -1,6 +1,6 @@
 ---
-title: Überwachen von Netzwerkkommunikation – Tutorial – Azure-Portal | Microsoft-Dokumentation
-description: Informationen zum Überwachen der Netzwerkkommunikation zwischen zwei VMs mit der Verbindungsmonitorfunktion des Network Watchers von Azure.
+title: 'Tutorial: Überwachen der Netzwerkkommunikation über das Azure-Portal'
+description: In diesem Tutorial erfahren Sie, wie Sie die Netzwerkkommunikation zwischen zwei virtuellen Computern mit der Verbindungsmonitorfunktion von Azure Network Watcher überwachen.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233888"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419699"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -54,8 +54,8 @@ Erstellen Sie zwei virtuelle Computer.
     |NAME|myVm1|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
     |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
-    |Abonnement| Wählen Sie Ihr Abonnement aus.|
-    |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
+    |Subscription| Wählen Sie Ihr Abonnement aus.|
+    |Resource group| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
     |Location| Wählen Sie **USA, Osten** aus.|
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
@@ -76,7 +76,7 @@ Führen Sie die Schritte in [Erstellen des ersten virtuellen Computers](#create-
 | 1 | Auswählen einer **Ubuntu Server**-Version |                                                                         |
 | 3 | NAME                                  | myVm2                                                                   |
 | 3 | Authentifizierungsart                   | Fügen Sie Ihren öffentlichen SSH-Schlüssel ein, oder wählen Sie **Kennwort** aus, und geben Sie ein Kennwort ein. |
-| 3 | Ressourcengruppe                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
+| 3 | Resource group                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
 | 6 | Erweiterungen                            | **Network Watcher-Agent für Linux**                                             |
 
 Die Bereitstellung des virtuellen Computers dauert einige Minuten. Warten Sie, bis die Bereitstellung des virtuellen Computers abgeschlossen ist, bevor Sie mit den weiteren Schritten fortfahren.
@@ -96,7 +96,7 @@ Erstellen Sie einen Verbindungsmonitor zum Überwachen der Kommunikation über T
     | NAME                     | myVm1-myVm2(22)     |
     | `Source`                   |                     |
     | Virtueller Computer          | myVm1               |
-    | Ziel              |                     |
+    | Destination              |                     |
     | Wählen Sie einen virtuellen Computer aus. |                     |
     | Virtueller Computer          | myVm2               |
     | Port                     | 22                  |
@@ -151,7 +151,7 @@ Standardmäßig ermöglicht Azure die Kommunikation über alle Ports zwischen vi
     | ---                     | ---            |
     | Zielportbereiche | 22             |
     | Aktion                  | Verweigern           |
-    | Priorität                | 100            |
+    | Priority                | 100            |
     | NAME                    | DenySshInbound |
 
 5. Da der Verbindungsmonitor in Intervallen von 60 Sekunden prüft, warten Sie einige Minuten, und wählen Sie auf der linken Seite des Portals **Network Watcher**, dann **Verbindungsmonitor** und schließlich erneut den Monitor **myVm1-myVm2(22)** aus. Die Ergebnisse unterscheiden sich nun, wie in der folgenden Abbildung gezeigt:

@@ -1,23 +1,24 @@
 ---
-title: Planen von Azure Container Registry Tasks
-description: Erfahren Sie, wie Sie einen Azure Container Registry Task nach einem definierten Zeitplan auszuführen, indem Sie einen oder mehrere Zeitgebertrigger festlegen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Tutorial – Planen eines ACR Tasks
+description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Registry Task nach einem definierten Zeitplan auszuführen, indem Sie einen oder mehrere Zeitgebertrigger festlegen.
 ms.topic: article
 ms.date: 06/27/2019
-ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 37247289ef11873ac37dc78ad56548994220f894
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931469"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454673"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Ausführen eines ACR Tasks nach einem definierten Zeitplan
 
-Dieser Artikel zeigt Ihnen, wie Sie einen [ACR Task](container-registry-tasks-overview.md) nach einem Zeitplan ausführen. Planen Sie einen Task, indem Sie einen oder mehrere *Zeitgebertrigger* einrichten.
+Dieses Tutorial zeigt Ihnen, wie Sie einen [ACR Task](container-registry-tasks-overview.md) nach einem Zeitplan ausführen. Planen Sie einen Task, indem Sie einen oder mehrere *Zeitgebertrigger* einrichten. Zeitgebertrigger können allein oder in Kombination mit anderen Tasktriggern verwendet werden.
+
+In diesem Tutorial erfahren Sie mehr über das Planen von Tasks und:
+
+> [!div class="checklist"]
+> * Erstellen eines Tasks mit einem Zeitgebertrigger
+> * Verwalten von Zeitgebertriggern
 
 Das Planen eines Tasks ist für Szenarien wie die folgenden nützlich:
 
@@ -199,9 +200,11 @@ Jedes Feld kann einen der folgenden Werttypen aufweisen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+In diesem Tutorial haben Sie erfahren, wie Sie Azure Container Registry Tasks erstellen, die automatisch von einem Zeitgeber ausgelöst werden. 
+
 Ein Beispiel für die Verwendung einer geplanten Aufgabe zum Bereinigen von Repositorys in einer Registrierung finden Sie unter [Automatisches Bereinigen von Images aus einer Azure-Containerregistrierung](container-registry-auto-purge.md).
 
-Beispiele für Tasks, die durch Quellcode-Commits oder Basisimage-Updates ausgelöst werden, finden Sie in der [Tutorialserie zu ACR Tasks](container-registry-tutorial-quick-task.md).
+Beispiele für Tasks, die durch Quellcode-Commits oder Basisimage-Updates ausgelöst werden, finden Sie in anderen Artikeln der [Tutorialserie zu ACR Tasks](container-registry-tutorial-quick-task.md).
 
 
 

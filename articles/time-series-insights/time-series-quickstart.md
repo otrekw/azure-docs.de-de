@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006432"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167595"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Schnellstart: Erkunden von Azure Time Series Insights
 
@@ -38,45 +38,47 @@ In dieser Schnellstartanleitung zum Time Series Insights-Explorer werden die Fea
 
 1. Die Seite zur Schnelleinführung in Time Series Insights wird angezeigt. Wählen Sie **Weiter** aus, um die Schnelleinführung zu starten.
 
-   [![Auswählen von „Weiter“](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [![Willkommensseite der Schnellstartanleitung: Auswählen von „Weiter“](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>Erkunden der Demoumgebung
 
 1. Der **Zeitauswahlbereich** wird angezeigt. Wählen Sie in diesem Bereich den Zeitrahmen aus, der dargestellt werden soll.
 
-   [![Zeitauswahlbereich](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [![Zeitauswahlbereich](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. Wählen Sie einen Zeitrahmen aus, und ziehen Sie ihn in den Bereich. Wählen Sie anschließend **Suchen** aus.
 
-   [![Auswählen eines Zeitrahmens](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [![Auswählen eines Zeitrahmens](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    In Time Series Insights wird eine Diagrammvisualisierung für den angegebenen Zeitrahmen angezeigt. Sie können verschiedene Aktionen im Liniendiagramm ausführen. Nutzen Sie beispielsweise Optionen zum Filtern, Anheften, Sortieren und Stapeln.
 
    Um zum **Zeitauswahlbereich** zurückzukehren, wählen Sie wie dargestellt den Pfeil nach unten aus:
 
-   [![Diagramm](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [![Diagramm](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. Wählen Sie im **Begriffsbereich** die Option **Hinzufügen** aus, um einen neuen Suchbegriff hinzuzufügen.
 
-   [![Hinzufügen eines Elements](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [![Bereich „Suchbegriffe hinzufügen“](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. Im Diagramm können Sie eine Region auswählen, mit der rechten Maustaste auf die Region klicken und **Explore Events** (Ereignisse durchsuchen) auswählen.
 
-   [![Ereignisse untersuchen](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [![Ereignisse untersuchen](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    Ein Raster der Rohdaten aus der durchsuchten Region wird angezeigt.
 
-   [![Rasteransicht](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [![Ereignisse untersuchen: Rasterdatenansicht](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Auswählen und Filtern von Daten
 
 1. Bearbeiten Sie Ihre Begriffe, um die Werte im Diagramm zu ändern. Fügen Sie einen weiteren Begriff zum übergreifenden Korrelieren verschiedener Werttypen hinzu.
 
-   [![Hinzufügen eines Begriffs](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![Hinzufügen eines Begriffs](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. Geben Sie in das Feld **Datenreihe filtern...** einen Filterbegriff zum improvisierten Filtern von Datenreihen ein. Geben Sie für den Schnellstart **Station5** ein, um die Temperatur und den Druck für die Station übergreifend zu korrelieren.
+1. Lassen Sie das Feld **Datenreihe filtern** leer, um alle ausgewählten Suchbegriffe anzuzeigen, oder geben Sie im Feld **Datenreihe filtern** einen Filterbegriff ein, um eine improvisierte Filterung von Datenreihen durchzuführen.
 
-   [![Datenreihen filtern](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![Datenreihen filtern](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   Geben Sie für den Schnellstart **Station5** ein, um die Temperatur und den Druck für die Station übergreifend zu korrelieren.
 
 Nach Abschluss des Schnellstarts können Sie das Beispiel-DataSet verwenden, um verschiedene Visualisierungen zu erstellen.
 

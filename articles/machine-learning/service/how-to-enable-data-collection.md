@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: laobri
 ms.author: copeters
 author: lostmygithubaccount
-ms.date: 10/15/2019
+ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2ca091a1bbf56e2d2850a464d0109020b06483d0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 18b92fe090895c3aa08c3c931dfa8bd12db0f2d3
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576691"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406453"
 ---
 # <a name="collect-data-for-models-in-production"></a>Sammeln von Daten für Modelle in der Produktion
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Nach der Aktivierung ermöglichen Ihnen diese Daten Folgendes:
 Die folgenden Daten können gesammelt werden:
 * **Modelleingabedaten** aus Webdiensten, die im Azure Kubernetes-Cluster (AKS) bereitgestellt wurden (Sprachdaten, Bilder und Videos werden **nicht** erfasst) 
   
-* Modellvorhersagen, die auf Eingabedaten aus der Produktion gestützt sind.
+* Modellvorhersagen, die auf Eingabedaten aus der Produktion gestützt sind
 
 > [!Note]
 > Vorab-Aggregation und -Berechnungen werden vom Dienst derzeit nicht abgedeckt.   
@@ -59,20 +59,20 @@ Der Pfad zu den Ausgabedaten im Blob folgt dieser Syntax:
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-- Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalt dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
+- Ein Azure Machine Learning-Arbeitsbereich, ein lokales Verzeichnis mit Ihren Skripts und das Azure Machine Learning SDK für Python müssen installiert sein. Informationen zum Erhalten dieser Voraussetzungen finden Sie im Dokument [Konfigurieren einer Entwicklungsumgebung](how-to-configure-environment.md).
 
 - Ein trainiertes Machine Learning-Modell, das im Azure Kubernetes Service (AKS) bereitgestellt werden soll. Wenn Sie keines besitzen, sehen Sie sich das Tutorial zum [Trainieren eines Imageklassifizierungsmodells](tutorial-train-models-with-aml.md) an.
 
 - Ein Azure Kubernetes Service-Cluster. Informationen zum Erstellen und Bereitstellen finden Sie im Dokument [Bereitstellung: wie und wo?](how-to-deploy-and-where.md).
 
-- [Richten Sie Ihre Umgebung ein](how-to-configure-environment.md), und installieren Sie das [Überwachungs-SDK](https://aka.ms/aml-monitoring-sdk).
+- [Einrichten Ihrer Umgebung](how-to-configure-environment.md) und Installieren des [Überwachungs-SDKs](https://aka.ms/aml-monitoring-sdk)
 
 ## <a name="enable-data-collection"></a>Aktivieren der Datensammlung
 Die Datensammlung kann ungeachtet des über Azure Machine Learning oder andere Tools bereitgestellten Modells aktiviert werden. 
 
 Zum Aktivieren müssen Sie folgende Schritte ausführen:
 
-1. Öffnen Sie die Bewertungsdatei. 
+1. Öffnen Sie die Bewertungsdatei.
 
 1. Fügen Sie den [folgenden Code](https://aka.ms/aml-monitoring-sdk) am Anfang der Datei hinzu:
 
@@ -124,11 +124,11 @@ Wenn Sie in der **Umgebungsdatei** und **Bewertungsdatei** bereits einen Dienst 
 
    ![Dienst bearbeiten](media/how-to-enable-data-collection/EditService.PNG)
 
-1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**. 
+1. Aktivieren Sie unter **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**.
 
     [![Überprüfen der Datensammlung](media/how-to-enable-data-collection/CheckDataCollection.png)](./media/how-to-enable-data-collection/CheckDataCollection.png#lightbox)
 
-   In diesem Fenster können Sie auch die Option „AppInsights-Diagnose aktivieren“ auswählen, um die Integrität des Diensts zu verfolgen.  
+   In diesem Fenster können Sie auch die Option „AppInsights-Diagnose aktivieren“ auswählen, um die Integrität des Diensts zu verfolgen.
 
 1. Klicken Sie auf **Aktualisieren**, um die Änderungen zu übernehmen.
 
@@ -145,7 +145,7 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 
      [![Option „Bearbeiten“](media/how-to-enable-data-collection/EditService.PNG)](./media/how-to-enable-data-collection/EditService.PNG#lightbox)
 
-  1. Deaktivieren Sie in **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**. 
+  1. Deaktivieren Sie in **Erweiterte Einstellungen** die Option **Modelldatensammlung aktivieren**.
 
      [![Deaktivieren der Datensammlung](media/how-to-enable-data-collection/UncheckDataCollection.png)](./media/how-to-enable-data-collection/UncheckDataCollection.png#lightbox)
 
@@ -164,6 +164,7 @@ Sie können die Datensammeln jederzeit beenden. Deaktivieren Sie die Datensammlu
 Sie können ein beliebiges Tool Ihrer Wahl verwenden, um die im Azure-Blob erfassten Daten zu analysieren.
 
 Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
+
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
 1. Öffnen Sie Ihren Arbeitsbereich.
@@ -188,9 +189,9 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
     [![Power BI-Blob-Setup](media/how-to-enable-data-collection/PBIBlob.png)](./media/how-to-enable-data-collection/PBIBlob.png#lightbox)
 
 
-1. Fügen Sie den Namen Ihres Speicherkontos hinzu, und geben Sie Ihren Speicherschlüssel ein. Sie finden diese Informationen für Ihr Blob unter **Einstellungen** > „Zugriffsschlüssel“. 
+1. Fügen Sie den Namen Ihres Speicherkontos hinzu, und geben Sie Ihren Speicherschlüssel ein. Sie finden diese Informationen für Ihr Blob unter **Einstellungen** > „Zugriffsschlüssel“.
 
-1. Wählen Sie den Container **modeldata** aus, und klicken Sie auf **Bearbeiten**. 
+1. Wählen Sie den Container **modeldata** aus, und klicken Sie auf **Bearbeiten**.
 
     [![Power BI Navigator](media/how-to-enable-data-collection/pbiNavigator.png)](./media/how-to-enable-data-collection/pbiNavigator.png#lightbox)
 
@@ -198,7 +199,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 1. Filtern Sie die Daten, die für Sie relevant sind, nach dem **Namen**. Wenn Sie **Vorhersagen** und **Eingaben** gespeichert haben, müssen Sie für jede jeweils eine separate Abfrage erstellen.
 
-1. Klicken Sie neben der Spalte **Inhalt** auf den Doppelpfeil, um die Dateien zu kombinieren. 
+1. Klicken Sie neben der Spalte **Inhalt** auf den Doppelpfeil, um die Dateien zu kombinieren.
 
     [![Power BI-Inhalt](media/how-to-enable-data-collection/pbiContent.png)](./media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
@@ -215,15 +216,15 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
 
 ### <a name="analyzing-model-data-using-databricks"></a>Analysieren von Modelldaten mit Databricks
 
-1. Erstellen Sie einen [Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal). 
+1. Erstellen Sie einen [Databricks-Arbeitsbereich](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal).
 
-1. Greifen Sie auf Ihren Databricks-Arbeitsbereich zu. 
+1. Greifen Sie auf Ihren Databricks-Arbeitsbereich zu.
 
 1. Wählen Sie in Ihrem Databricks Arbeitsbereich die Option **Daten hochladen**.
 
     [![Databricks-Upload](media/how-to-enable-data-collection/dbupload.png)](./media/how-to-enable-data-collection/dbupload.png#lightbox)
 
-1. Erstellen Sie eine neue Tabelle, und wählen Sie **Weitere Datenquellen** > „Azure Blob Storage“ > „Create Table in Notebook“ (Tabelle in Notebook erstellen).
+1. Erstellen Sie eine neue Tabelle, und wählen Sie **Weitere Datenquellen** > „Azure Blob Storage“ > „Tabelle in Notebook erstellen“.
 
     [![Databricks-Tabelle](media/how-to-enable-data-collection/dbtable.PNG)](./media/how-to-enable-data-collection/dbtable.PNG#lightbox)
 
@@ -236,7 +237,7 @@ Greifen Sie wie folgt schnell auf die Daten Ihres Blobs zu:
  
     [![Databricks-Setup](media/how-to-enable-data-collection/dbsetup.png)](./media/how-to-enable-data-collection/dbsetup.png#lightbox)
 
-1. Führen Sie die Schritte in der Vorlage aus, um Ihre Daten anzuzeigen und zu analysieren. 
+1. Führen Sie die Schritte in der Vorlage aus, um Ihre Daten anzuzeigen und zu analysieren.
 
 ## <a name="example-notebook"></a>Notebook mit Beispielen
 

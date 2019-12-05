@@ -6,20 +6,20 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: cac3ee99598f8bcb29bd15c60063159b51f71923
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 4e2fb81b19694136896b1dee07c3bd74c63fc01b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125492"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414606"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
 * [Visual Studio Code](https://code.visualstudio.com/) oder Ihre bevorzugte IDE
-* ID der öffentlichen App: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* ID der öffentlichen App: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>Abrufen des LUIS-Schlüssels
 
@@ -27,16 +27,15 @@ ms.locfileid: "74125492"
 
 ## <a name="get-intent-programmatically"></a>Programmgesteuertes Abrufen der Absicht
 
-Verwenden Sie Java, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim-v3-prediction) abzurufen, um das Vorhersageergebnis zu erhalten.
+Verwenden Sie Java, um den [Vorhersageendpunkt](https://aka.ms/luis-apim-v3-prediction) abzurufen und ein Vorhersageergebnis zu erhalten.
 
-1. Erstellen Sie ein Unterverzeichnis namens `lib`, und kopieren Sie die folgenden Java-Bibliotheken hinein:
+1. Erstellen Sie ein Unterverzeichnis mit dem Namen `lib`, und kopieren Sie die folgenden Java-Bibliotheken hinein:
 
     * [commons-logging-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
     * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
     * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Kopieren Sie den folgenden Code, um eine Klasse in einer Datei namens `Predict.java` zu erstellen:
-
 
     ```java
     import java.io.*;
@@ -108,7 +107,7 @@ Verwenden Sie Java, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim
 1. Ersetzen Sie die folgenden Werte:
 
     * `YOUR-KEY` durch Ihren Startschlüssel
-    * `YOUR-ENDPOINT` durch Ihren Endpunkt (Beispiel: `westus2.api.cognitive.microsoft.com`)
+    * `YOUR-ENDPOINT` durch Ihren Endpunkt Beispiel: `westus2.api.cognitive.microsoft.com`.
 
 
 1. Kompilieren Sie das Java-Programm über die Befehlszeile: 
@@ -123,7 +122,7 @@ Verwenden Sie Java, um den Vorhersageendpunkt GET [API](https://aka.ms/luis-apim
     java -cp ":lib/*" Predict
     ```
 
-1. Überprüfen Sie die Vorhersageantwort im JSON-Format:
+1. Überprüfen Sie die Vorhersageantwort, die im JSON-Format zurückgegeben wird:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}

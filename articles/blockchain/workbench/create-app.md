@@ -1,23 +1,17 @@
 ---
 title: 'Erstellen einer Blockchainanwendung: Azure Blockchain Workbench'
-description: Tutorial zum Erstellen einer Blockchainanwendung in der Vorschauversion von Azure Blockchain Workbench
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+description: Tutorial mit einer Beschreibung der Erstellung einer Blockchainanwendung in der Vorschauversion von Azure Blockchain Workbench.
 ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: a7d7c68840999772461655090d0213ada0997a7a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329111"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324805"
 ---
-# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Tutorial: Erstellen einer Blockchainanwendung in Blockchain Workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Erstellen einer Blockchainanwendung in Azure Blockchain Workbench
 
 Mithilfe von Azure Blockchain Workbench können Sie Blockchainanwendungen erstellen, die mehrere Workflows darstellen, die durch Konfigurations- und intelligenten Vertragscode definiert werden.
 

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie einem Benutzer mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure PowerShell Zugriff auf Azure-Ressourcen gewähren.
+title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell'
+description: In diesem Tutorial erfahren Sie, wie Sie einem Benutzer mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure PowerShell Zugriff auf Azure-Ressourcen gewähren.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343475"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74418632"
 ---
 # <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell
 
@@ -46,10 +46,10 @@ Um dieses Lernprogramm abzuschließen, benötigen Sie:
 
 In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. In diesem Tutorial führen Sie die zwei folgenden Rollenzuweisungen aus:
 
-| Sicherheitsprinzipal | Rollendefinition | Bereich |
+| Sicherheitsprinzipal | Rollendefinition | `Scope` |
 | --- | --- | --- |
-| Benutzer<br>(Benutzer des RBAC-Tutorials) | [Leser](built-in-roles.md#reader) | Abonnement |
-| Benutzer<br>(Benutzer des RBAC-Tutorials)| [Mitwirkender](built-in-roles.md#contributor) | Ressourcengruppe<br>(rbac-tutorial-resource-group) |
+| Benutzer<br>(Benutzer des RBAC-Tutorials) | [Leser](built-in-roles.md#reader) | Subscription |
+| Benutzer<br>(Benutzer des RBAC-Tutorials)| [Mitwirkender](built-in-roles.md#contributor) | Resource group<br>(rbac-tutorial-resource-group) |
 
    ![Rollenzuweisungen für einen Benutzer](./media/tutorial-role-assignments-user-powershell/rbac-role-assignments-user.png)
 

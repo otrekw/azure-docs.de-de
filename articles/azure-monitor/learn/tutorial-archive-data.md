@@ -1,6 +1,6 @@
 ---
 title: Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
-description: Archivieren Sie in Azure generierte Protokoll- und Metrikdaten in einem Speicherkonto.
+description: Es wird beschrieben, wie Sie von Azure-Ressourcen generierte Protokoll- und Metrikdaten in einem Speicherkonto archivieren.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: e784b76af478f834a7d1104650da1cbd3ca2a31f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433350"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304711"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
 

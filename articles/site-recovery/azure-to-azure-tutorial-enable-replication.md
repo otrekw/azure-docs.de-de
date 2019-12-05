@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/12/2019
+ms.date: 11/28/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 502f71365d78bd8fd949d17fe8907817394586b2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961494"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561501"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Einrichten der Notfallwiederherstellung für Azure-VMs
 
@@ -143,7 +143,7 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
     **Zielstandort** | Die Zielregion, die zur Notfallwiederherstellung verwendet wird.<br/><br/> Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
     **Zielressourcengruppe** | Die Ressourcengruppe in der Zielregion, zu der Azure-VMs nach einem Failover gehören.<br/><br/> Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe mit dem Suffix „asr“. Der Speicherort der Zielressourcengruppe kann eine beliebige Region sein, mit Ausnahme der Region, in der Ihre virtuellen Quellcomputer gehostet werden.
     **Virtuelles Zielnetzwerk** | Das Netzwerk in der Zielregion, in dem sich Azure-VMs nach einem Failover befinden.<br/><br/> Site Recovery erstellt standardmäßig in der Zielregion ein neues virtuelles Netzwerk (und Subnetze) mit dem Suffix „asr“.
-    **Cachespeicherkonten** | Site Recovery verwendet ein Speicherkonto in der Quellregion. Änderungen an Quell-VMs werden vor der Replikation am Zielspeicherort an dieses Konto gesendet.<br/><br/> Wenn Sie ein Cachespeicherkonto mit aktivierter Firewall verwenden, müssen Sie **vertrauenswürdige Microsoft-Dienste zulassen**, indem Sie die entsprechende Option auswählen. [Weitere Informationen.](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)
+    **Cachespeicherkonten** | Site Recovery verwendet ein Speicherkonto in der Quellregion. Änderungen an Quell-VMs werden vor der Replikation am Zielspeicherort an dieses Konto gesendet.<br/><br/> Wenn Sie ein Cachespeicherkonto mit aktivierter Firewall verwenden, müssen Sie **vertrauenswürdige Microsoft-Dienste zulassen**, indem Sie die entsprechende Option auswählen. [Erfahren Sie mehr](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions). Stellen Sie außerdem sicher, dass Sie den Zugriff auf mindestens ein Subnetz des Quell-VNET zulassen.
     **Zielspeicherkonten (wenn die Quell-VM keine verwalteten Datenträger verwendet)** | Standardmäßig erstellt Site Recovery ein neues Speicherkonto in der Zielregion, um das Quell-VM-Speicherkonto zu spiegeln.<br/><br/> Aktivieren Sie die Option **Vertrauenswürdige Microsoft-Dienste zulassen**, wenn Sie ein Cachespeicherkonto mit aktivierter Firewall verwenden.
     **Verwaltete Replikatdatenträger (wenn die Quell-VM verwaltete Datenträger verwendet)** | Site Recovery erstellt standardmäßig verwaltete Replikatdatenträger in der Zielregion, um die verwalteten Datenträger der Quell-VM zu spiegeln. Dabei wird der gleiche Speichertyp (Standard oder Premium) wie für die verwalteten Datenträger der Quell-VM verwendet. Sie können nur den Datenträgertyp anpassen 
     **Zielverfügbarkeitsgruppen** | Standardmäßig erstellt Azure Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe und verwendet das Namenssuffix „asr“ für die virtuellen Computer, die zu einer Verfügbarkeitsgruppe in der Quellregion gehören. Falls bereits eine von Azure Site Recovery erstellte Verfügbarkeitsgruppe vorhanden ist, wird diese wiederverwendet.

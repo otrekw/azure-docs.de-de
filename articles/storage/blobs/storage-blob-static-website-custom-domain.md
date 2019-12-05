@@ -1,20 +1,20 @@
 ---
-title: 'Tutorial: Aktivieren einer benutzerdefinierten Domäne mit SSL für eine statische Website mit Azure CDN: Azure Storage'
+title: 'Tutorial: Aktivieren einer benutzerdefinierten Domäne und von SSL für eine statische Website in Azure'
 description: Erfahren Sie, wie Sie eine benutzerdefinierte Domäne für das Hosten von statischen Websites konfigurieren.
 author: normesta
 ms.service: storage
 ms.topic: tutorial
-ms.date: 05/22/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: a65c0e677182eb224f6bfa7ed834740458b97098
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 893ac53dc9f0b6b162c5ec22e478cd15706e50fb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847006"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327491"
 ---
-# <a name="tutorial-use-azure-cdn-to-enable-a-custom-domain-with-ssl-for-a-static-website"></a>Tutorial: Verwenden von Azure CDN zum Aktivieren einer benutzerdefinierten Domäne mit SSL für eine statische Website
+# <a name="tutorial-enable-custom-domain--ssl-for-a-static-website-in-azure"></a>Tutorial: Aktivieren einer benutzerdefinierten Domäne und von SSL für eine statische Website in Azure
 
 Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Teil erfahren Sie, wie Sie einen benutzerdefinierten Domänenendpunkt mit SSL für Ihre statische Website aktivieren. 
 

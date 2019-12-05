@@ -2,19 +2,19 @@
 title: Bestimmung Ihrer Veröffentlichungsoption in Azure Marketplace | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt die Eignungskriterien und Veröffentlichungsbedingungen für Partner, die sich über die Veröffentlichung von Apps im Azure Marketplace informieren möchten.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: jm-aditi-ms
+author: ellacroi
 manager: pabutler
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 967d33cb7a9eb3ec922f9d85cfc2581b85bce537
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ed25b92dc759f687e35a8424558453a830369a57
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825900"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548356"
 ---
 # <a name="determine-your-publishing-option"></a>Bestimmung Ihrer Veröffentlichungsoption
 Die Veröffentlichungsoption, die Sie für Ihr Angebot auswählen, bezieht sich direkt sowohl auf die erforderlichen Berechtigungen als auch die Marketplace-GTM-Vorteile. Wichtiger ist, dass durch die Auswahl von Veröffentlichungsoption und Angebotstyp definiert wird, wie Benutzer mit Ihrem Marketplace-Angebot interagieren.
@@ -41,7 +41,7 @@ Bei **Azure Marketplace**-Anwendungen handelt es sich um technische „Baustein�
 
 ## <a name="understand-storefront-selection"></a>Verstehen der Storefrontauswahl
 
-Die Storefront, in der Ihr Angebot präsentiert wird (Azure Marketplace bzw. AppSource), wird anhand der Details Ihres Angebots und der Zielgruppe sowie der von Ihnen bei der Angebotserstellung festgelegten Kategorien und Branchen automatisch bestimmt. 
+Jede Storefront erfüllt bestimmte Kundenanforderungen. In welcher Storefront Ihr Angebot veröffentlicht wird, wird durch die Art des Angebots, die Möglichkeiten der Angebotsabwicklung und die Auswahl von Kategorie und/oder Branche bestimmt, um eine bestimmte Zielgruppe anzusprechen. 
 
 >[!Note]
 >„Cross-Listing“ (nur für SaaS-Apps): Wenn ein aufgelistetes oder Testversionsangebot sowohl die Kriterien für die technische als auch Geschäftskunden-Zielgruppe erfüllt, wird Ihr Angebot in beiden Storefronts aufgeführt. Im Folgenden finden Sie weitere Informationen zu den Veröffentlichungsoptionen.

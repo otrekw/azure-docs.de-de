@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Verwenden des zulässigen Subnetzes für VM-Netzwerkadapter'
-description: Diese Beispielrichtliniendefinition erfordert, dass Netzwerkschnittstellen ein genehmigtes Subnetz verwenden.
+description: Diese Beispielrichtliniendefinition erfordert, dass Netzwerkschnittstellen ein genehmigtes Subnetz verwenden, das per Parameter definiert wird.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 912dbae5fe22e68604502055fe3c5b369e26e5c3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c78b14b49efe663d5693c64d8fd9ac38b6aa2a62
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74069753"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463135"
 ---
 # <a name="sample---use-approved-subnet-for-vm-network-interfaces"></a>Beispiel: Verwenden des zulässigen Subnetzes für VM-Netzwerkschnittstellen
 

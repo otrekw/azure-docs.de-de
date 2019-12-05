@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 4ee9bf218765ea4c3966e7f0a8b20a8108de7655
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 72927dd89a81d2440bf78ba24402f5ce283006da
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931909"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405815"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts (Vorschauversion, Windows)
 
@@ -46,46 +46,15 @@ Sie finden die _Verbindungszeichenfolge für das Modellrepository Ihres Unterneh
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="prepare-an-iot-hub"></a>Vorbereiten eines IoT-Hubs
-
-Für diesen Schnellstart benötigen Sie außerdem eine Azure IoT Hub-Instanz in Ihrem Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. Falls Sie über keinen IoT-Hub verfügen, gehen Sie wie [hier](../iot-hub/iot-hub-create-using-cli.md) beschrieben vor, um einen zu erstellen.
-
-> [!IMPORTANT]
-> Während der öffentlichen Vorschauphase sind die IoT Plug & Play-Funktionen nur für IoT-Hubs verfügbar, die in den Regionen **USA, Mitte**, **Europa, Norden** und **Japan, Osten** erstellt wurden.
-
-Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen:
-
-```azurecli-interactive
-az extension add --name azure-cli-iot-ext
-```
-
-Führen Sie den folgenden Befehl aus, um die Geräteidentität in Ihrem IoT-Hub zu erstellen. Ersetzen Sie die Platzhalter **YourIoTHubName** und **YourDevice** durch Ihre entsprechenden Namen.
-
-```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
-```
-
-Führen Sie den folgenden Befehl aus, um die _Geräteverbindungszeichenfolge_ für das soeben registrierte Gerät abzurufen:
-
-```azurecli-interactive
-az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
-```
-
-Führen Sie den folgenden Befehl aus, um die _IoT-Hub-Verbindungszeichenfolge_ für Ihren Hub abzurufen:
-
-```azurecli-interactive
-az iot hub show-connection-string --hub-name <YourIoTHubName> --output table
-```
+[!INCLUDE [iot-pnp-prepare-iot-hub-windows.md](../../includes/iot-pnp-prepare-iot-hub-windows.md)]
 
 ## <a name="prepare-the-development-environment"></a>Vorbereiten der Entwicklungsumgebung
 
-### <a name="get-azure-iot-device-sdk-for-c"></a>Abrufen des Azure IoT-Geräte-SDK für C
-
-In diesem Schnellstart bereiten Sie eine Entwicklungsumgebung vor, indem Sie das Azure IoT-Geräte-SDK für C mittels [Vcpkg](https://github.com/microsoft/vcpkg) installieren.
+In diesem Schnellstart verwenden Sie den [Vcpkg](https://github.com/microsoft/vcpkg)-Bibliotheks-Manager, um das Azure IoT-C-Geräte-SDK in Ihrer Entwicklungsumgebung zu installieren.
 
 1. Öffnen Sie eine Eingabeaufforderung. Führen Sie den folgenden Befehl aus, um Vcpkg zu installieren:
 
-    ```cmd/sh
+    ```cmd
     git clone https://github.com/Microsoft/vcpkg.git
     cd vcpkg
 
@@ -94,13 +63,13 @@ In diesem Schnellstart bereiten Sie eine Entwicklungsumgebung vor, indem Sie das
 
     Führen Sie dann Folgendes aus, um die benutzerweite [Integration](https://github.com/microsoft/vcpkg/blob/master/docs/users/integration.md) zu verbinden (Hinweis: erfordert bei der ersten Verwendung Administratorrechte):
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe integrate install
     ```
 
 1. Installieren Sie Vcpkg für das Azure IoT-C-Geräte-SDK:
 
-    ```cmd/sh
+    ```cmd
     .\vcpkg.exe install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
@@ -151,14 +120,14 @@ Sie verwenden den Quellcode des Geräte-SDK, um den generierten Gerätecode-Stub
 
 1. Erstellen Sie im Ordner `sample_device` den Unterordner `cmake`, und navigieren Sie zu diesem Ordner:
 
-    ```cmd\sh
+    ```cmd
     mkdir cmake
     cd cmake
     ```
 
 1. Führen Sie die folgenden Befehle aus, um den generierten Codestub zu erstellen (wobei Sie den Platzhalter durch das Verzeichnis des Vcpkg-Repositorys ersetzen):
 
-    ```cmd\sh
+    ```cmd
     cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
 
     cmake --build .
@@ -166,7 +135,7 @@ Sie verwenden den Quellcode des Geräte-SDK, um den generierten Gerätecode-Stub
     
     > [!NOTE]
     > Wenn Sie Visual Studio 2017 oder 2015 verwenden, müssen Sie den CMake-Generator entsprechend den verwendeten Buildtools angeben:
-    >```cmd\sh
+    >```cmd
     ># Either
     >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
     ># or
@@ -178,7 +147,7 @@ Sie verwenden den Quellcode des Geräte-SDK, um den generierten Gerätecode-Stub
 
 1. Führen Sie nach erfolgreichem Abschluss des Buildvorgangs Ihre Anwendung aus, und übergeben Sie dabei die IoT-Hub-Geräteverbindungszeichenfolge als Parameter.
 
-    ```cmd\sh
+    ```cmd
     .\Debug\sample_device.exe "<device connection string>"
     ```
 
@@ -212,11 +181,11 @@ Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dat
 
 1. Geben Sie Ihre _IoT-Hub-Verbindungszeichenfolge_ ein, und klicken Sie auf **Verbinden**.
 
-1. Nachdem Sie eine Verbindung hergestellt haben, wird die Seite mit der Geräteübersicht angezeigt.
+1. Nachdem Sie eine Verbindung hergestellt haben, wird die Übersichtsseite **Geräte** angezeigt.
 
 1. Wählen Sie zum Hinzufügen Ihres Unternehmensrepositorys **Einstellungen**, **+ Add module definition source** (Moduldefinitionsquelle hinzufügen) und dann **Company repository** (Unternehmensrepository) aus. Fügen Sie die Verbindungszeichenfolge für das Modellrepository Ihres Unternehmens hinzu, und wählen Sie **Save and Connect** (Speichern und verbinden) aus.
 
-1. Suchen Sie auf der Seite mit der Geräteübersicht nach der Geräteidentität, die Sie zuvor erstellt haben, und wählen Sie sie aus, um weitere Details anzuzeigen.
+1. Suchen Sie auf der Übersichtsseite **Geräte** nach der Geräteidentität, die Sie zuvor erstellt haben. Wenn die Geräteanwendung weiterhin an der Eingabeaufforderung ausgeführt wird, überprüfen Sie, ob im Azure IoT-Explorer für den **Verbindungsstatus** des Geräts _Verbunden_ angezeigt wird (wählen Sie andernfalls **Aktualisieren** aus, bis dies der Fall ist). Wählen Sie ein Gerät aus, um weitere Details anzuzeigen.
 
 1. Erweitern Sie die Schnittstelle mit der ID **urn:<IHR_SCHNITTSTELLENNAME>:EnvironmentalSensor:1**, um die IoT Plug & Play-Grundtypen anzuzeigen: Eigenschaften, Befehle und Telemetriedaten. Der angezeigte Schnittstellenname ist der Name, den Sie beim Erstellen des Modells eingegeben haben.
 
@@ -226,7 +195,7 @@ Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dat
 
 1. Wählen Sie die Seite **Properties (writable)** (Eigenschaften (schreibbar)) aus, um die schreibbaren Eigenschaften anzuzeigen, die Sie aktualisieren können.
 
-1. Erweitern Sie die **name**-Eigenschaft, aktualisieren Sie sie mit einem neuen Namen, und wählen Sie **Update writable property** (Schreibbare Eigenschaft aktualisieren) aus.
+1. Erweitern Sie die **name**-Eigenschaft, aktualisieren Sie sie mit einem neuen Namen, und wählen Sie **Update writable property** (Schreibbare Eigenschaft aktualisieren) aus. 
 
 1. Wählen Sie im oberen Seitenbereich die Schaltfläche **Aktualisieren** aus, damit der neue Name in der Spalte **Gemeldete Eigenschaft** angezeigt wird.
 
@@ -235,6 +204,8 @@ Zum Überprüfen des Gerätecodes mit **Azure IoT-Explorer** müssen Sie die Dat
 1. Erweitern Sie den Befehl **blink** (Blinken), und legen Sie ein neues Intervall für die Blinkzeit fest. Wählen Sie **Befehl senden** aus, um den Befehl auf dem Gerät aufzurufen.
 
 1. Navigieren Sie zur Eingabeaufforderung des simulierten Geräts, und lesen Sie die ausgegebenen Bestätigungsmeldungen, um sich zu vergewissern, dass die Befehle erwartungsgemäß ausgeführt wurden.
+
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d1973dd51068e6f3e0746ee988a51f375899f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588021"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233383"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Tutorial: Azure Active Directory-Integration mit SpringCM
 
@@ -131,7 +131,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit SpringCM
 
 1. Klicken Sie im Menü oben auf **GEHE ZU**, anschließend auf **Voreinstellungen** und dann im Abschnitt **Kontovoreinstellungen** auf **SAML-SSO**.
    
-    ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
+    ![SAML-SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
 
 1. Führen Sie im Abschnitt „Identitätsanbieterkonfiguration“ die folgenden Schritte aus:
    
@@ -225,7 +225,7 @@ Damit sich Azure Active Directory-Benutzer bei SpringCM anmelden können, müsse
 1. Klicken Sie auf **Speichern**.
 
    > [!NOTE]
-   > Sie können AAD-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von SpringCM-Benutzerkonten oder mithilfe der von SpringCM bereitgestellten APIs erstellen.
+   > Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von SpringCM-Benutzerkonten oder mit den APIs von SpringCM bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
@@ -239,5 +239,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SpringCM“ klicken, sollten Sie a
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

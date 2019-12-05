@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260393"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305824"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure Files-Freigabe mit virtuellen Windows-Computern
 
@@ -173,7 +173,7 @@ Die Momentaufnahmen Ihrer eingebundenen Azure-Dateifreigabe können genau wie lo
 
 1. Wählen Sie **Wiederherstellen** aus. Dadurch wird der Inhalt des gesamten Verzeichnisses rekursiv an den ursprünglichen Speicherort zum Erstellungszeitpunkt der Freigabemomentaufnahme kopiert.
 
-   ![Warnmeldung mit Schaltfläche „Wiederherstellen“](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+   ![Schaltfläche „Wiederherstellen“ in Warnmeldung](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) Hinweis: Wenn sich Ihre Datei nicht geändert hat, wird keine vorherige Version davon angezeigt, weil die Version der Datei der Momentaufnahme entspricht. Dies ist die gleiche Vorgehensweise wie auf einem Windows-Dateiserver.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

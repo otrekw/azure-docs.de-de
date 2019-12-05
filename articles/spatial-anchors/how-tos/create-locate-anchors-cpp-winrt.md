@@ -1,19 +1,19 @@
 ---
-title: Erstellen von und Suchen nach Ankern mit Azure Spatial Anchors in C++/WinRT | Microsoft-Dokumentation
+title: Erstellen und Suchen von Ankern in C++/WinRT
 description: Hier erhalten Sie detaillierte Informationen dazu, wie Sie mit Azure Spatial Anchors in C++/WinRT Anker erstellen und nach ihnen suchen.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e8cacb443a9fc13d742f84b92136be7428375fc6
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 9da98c0908f2164b8b03db5ec0e67802e782e2c4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669230"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270237"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Erstellen von und Suchen nach Ankern mit Azure Spatial Anchors in C++/WinRT
 

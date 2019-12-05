@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0243a3e0ed83abc1edead5ecece4fd5c6ff1cad9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 970ab9de270b1227884a13ac578d4c439043b20c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089160"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Tutorial: Azure Active Directory-Integration in TalentLMS
 
@@ -143,7 +143,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TalentLM
 
 1. Führen Sie im Abschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden](./media/talentlms-tutorial/IC777297.png "des einmaligen Anmeldens")
+    ![Einmaliges Anmelden](./media/talentlms-tutorial/IC777297.png "Single Sign-On")
 
     a. Wählen Sie aus der Liste **SSO-Integrationstyp** die Option **SAML 2.0** aus.
 
@@ -240,7 +240,7 @@ Damit sich Azure AD-Benutzer bei TalentLMS anmelden können, müssen sie in Tale
     d. Klicken Sie auf **Benutzer hinzufügen**.
 
 > [!NOTE]
-> Sie können AAD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von TalentLMS-Benutzerkonten oder mithilfe der von TalentLMS bereitgestellten APIs erstellen.
+> Sie können Azure AD-Benutzerkonten auch mit anderen Tools zum Erstellen von TalentLMS-Benutzerkonten oder mit den APIs von TalentLMS bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -254,5 +254,5 @@ Wenn Sie im Zugriffsbereich auf die Kachel „TalentLMS“ klicken, sollten Sie 
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

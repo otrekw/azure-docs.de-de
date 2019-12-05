@@ -1,6 +1,6 @@
 ---
 title: Glossar mit Azure IoT Hub-Begriffen | Microsoft-Dokumentation
-description: 'Entwicklerhandbuch: Ein Glossar mit häufig verwendeten Begriffen für IoT Hub.'
+description: Entwicklerhandbuch – ein Glossar mit Erläuterungen einiger allgemeiner Begriffe, die in den Artikeln zu Azure IoT Hub verwendet werden.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6f89e27b06179c33857d581c0c6e3fc78c683d48
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62119808"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73890523"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -214,7 +214,7 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) bezieht si
 ## <a name="reported-properties"></a>Gemeldete Eigenschaften
 Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es sich bei gemeldeten Eigenschaften um einen Unterabschnitt, der zusammen mit [gewünschten Eigenschaften](#desired-properties) verwendet wird, um die Gerätekonfiguration oder den Gerätezustand zu synchronisieren. Gemeldete Eigenschaften können nur von der [Geräte-App](#device-app) festgelegt werden. Das Lesen und Abfragen ist per [Back-End-App](#back-end-app) möglich.
 
-## <a name="resource-group"></a>Ressourcengruppe
+## <a name="resource-group"></a>Resource group
 [Azure Resource Manager](#azure-resource-manager) nutzt Ressourcengruppen, um zusammengehörige Ressourcen zu gruppieren. Sie können eine Ressourcengruppe verwenden, um Vorgänge für alle Ressourcen der Gruppe gleichzeitig durchzuführen.
 
 ## <a name="retry-policy"></a>Wiederholungsrichtlinie
@@ -241,7 +241,7 @@ Der Einfachheit halber werden in vielen IoT Hub-Tutorials simulierte Geräte ver
 ## <a name="solution"></a>Lösung
 Eine _Lösung_ kann eine Visual Studio-Lösung (Projektmappe) sein, die mindestens ein Projekt enthält. Eine _Lösung_ kann auch eine IoT-Lösung sein, die Elemente wie Geräte, [Geräte-Apps](#device-app), einen IoT Hub, andere Azure-Dienste und [Back-End-Apps](#back-end-app) enthält.
 
-## <a name="subscription"></a>Abonnement
+## <a name="subscription"></a>Subscription
 Dies ist ein Azure-Abonnement, für das die Abrechnung durchgeführt wird. Jede Azure-Ressource, die Sie erstellen, und jeder Azure-Dienst, den Sie verwenden, ist einem einzelnen Abonnement zugeordnet. Viele Kontingente gelten auch für die Ebene eines Abonnements.
 
 ## <a name="system-properties"></a>Systemeigenschaften

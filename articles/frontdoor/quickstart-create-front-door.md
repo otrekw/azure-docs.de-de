@@ -1,5 +1,5 @@
 ---
-title: 'Azure-Schnellstart: Erstellen eines Front Door-Profils für Hochverfügbarkeit von Anwendungen mithilfe des Azure-Portals'
+title: 'Schnellstart: Erstellen eines Front Door-Profils für Hochverfügbarkeit von Anwendungen'
 description: In diesem Schnellstartartikel wird die Vorgehensweise zum Erstellen einer Front Door-Instanz für globale Webanwendungen mit Hochverfügbarkeit und hoher Leistung beschrieben.
 services: front-door
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461985"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184514"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Schnellstart: Erstellen Sie eine „Front Door“ für eine hoch verfügbare globale Webanwendung.
 
@@ -40,9 +40,9 @@ Für diesen Schnellstart müssen Sie zwei Instanzen einer Webanwendung bereitges
      | Einstellung         | Wert     |
      | ---              | ---  |
      | NAME           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
-     | Ressourcengruppe          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD1* ein. |
+     | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD1* ein. |
      | App Service-Plan/Standort         | Wählen Sie **Neu**aus.  Geben Sie als App Service-Plan *myAppServicePlanEastUS* ein, und klicken Sie dann auf **OK**. 
-     |      Location  |   USA (Ost)        |
+     |      Location  |   East US        |
     |||
 
 3. Klicken Sie auf **Erstellen**.
@@ -52,7 +52,7 @@ Für diesen Schnellstart müssen Sie zwei Instanzen einer Webanwendung bereitges
      | Einstellung         | Wert     |
      | ---              | ---  |
      | NAME           | Geben Sie einen eindeutigen Namen für Ihre Web-App ein.  |
-     | Ressourcengruppe          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD2* ein. |
+     | Resource group          | Wählen Sie **Neu** aus, und geben Sie *myResourceGroupFD2* ein. |
      | App Service-Plan/Standort         | Wählen Sie **Neu**aus.  Geben Sie als App Service-Plan *myAppServicePlanWestEurope* ein, und klicken Sie dann auf **OK**. 
      |      Location  |   Europa, Westen      |
     |||

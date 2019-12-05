@@ -1,28 +1,21 @@
 ---
-title: 'Ethereum Proof-of-Authority Consortium: Azure'
-description: Verwenden Sie die Lösung für „Ethereum – Proof-of-Authority-Konsortium“, um ein Netzwerk mit vielen Elementen für das Ethereum-Konsortium bereitzustellen und zu konfigurieren.
-services: azure-blockchain
-keywords: ''
-author: CodyBorn
-ms.author: coborn
+title: Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
+description: Verwenden Sie die Lösung für „Ethereum – Proof-of-Authority-Konsortium“, um ein Netzwerk mit vielen Elementen für das Ethereum-Konsortium auf Azure bereitzustellen und zu konfigurieren.
 ms.date: 04/08/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: brendal
-manager: vamelech
-ms.openlocfilehash: 01b9f7f74077737ea95a56bbe81f440db425bf0c
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.reviewer: coborn
+ms.openlocfilehash: c3e449c1d6ebaf7c6cb2c35dc9f91d55f569447a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698456"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326171"
 ---
-# <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
+# <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Bereitstellen der Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“ auf Azure
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="overview"></a>Übersicht
-[Diese Projektmappe](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) ist dafür ausgelegt, das Bereitstellen, Konfigurieren und Steuern eines Multi-Member-Netzwerks für das Ethereum-Proof-of-Authority-Konsortium zu erleichtern, ohne dass ausführliche Azure- und Ethereum-Kenntnisse vorhanden sein müssen.
+[Die Azure-Lösungsvorlage „Ethereum-Proof-of-Authority-Konsortium“](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium) ist dafür ausgelegt, das Bereitstellen, Konfigurieren und Steuern eines Multi-Member-Netzwerks für das Ethereum-Proof-of-Authority-Konsortium zu erleichtern, ohne dass ausführliche Azure- und Ethereum-Kenntnisse vorhanden sein müssen.
 
 Mit einigen wenigen Benutzereingaben und einer Bereitstellung per Klick über das Azure-Portal kann jedes Mitglied einen Netzwerk-Fußabdruck über Microsoft Azure Compute, Networking und weltweite Speicherdienste bereitstellen. Der Netzwerk-Fußabdruck jedes Mitglieds umfasst eine Gruppe von Validierungsknoten mit Lastenausgleich, über die eine Anwendung oder ein Benutzer interagieren kann, um Ethereum-Transaktionen zu übermitteln.
 

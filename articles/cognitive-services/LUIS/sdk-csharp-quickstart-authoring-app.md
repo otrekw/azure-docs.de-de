@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49a28fb779b7a48b598059e9494cb28e9ec57a6e
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672091"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74405900"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Schnellstart: LUIS-Erstellungsclientbibliothek (Language Understanding) für .NET
 
@@ -35,11 +35,51 @@ Verwenden Sie die LUIS-Erstellungsclientbibliothek (Language Understanding) für
 * Konto für das LUIS-Portal (Language Understanding): [Erstellen Sie ein kostenloses Konto.](https://www.luis.ai)
 * Aktuelle Version von [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
 
+
 ## <a name="setting-up"></a>Einrichten
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Abrufen Ihres LUIS-Startschlüssels (Language Understanding)
 
-Rufen Sie Ihren [Startschlüssel](luis-how-to-azure-subscription.md#starter-key) ab, und [erstellen Sie eine Umgebungsvariable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel mit dem Namen `COGNITIVESERVICE_AUTHORING_KEY`.
+Sie rufen Ihren [Startschlüssel](luis-how-to-azure-subscription.md#starter-key) ab, indem Sie eine LUIS-Erstellungsressource erstellen. Bewahren Sie den Schlüssel und die Region des Schlüssels für den nächsten Schritt auf.
+
+### <a name="create-an-environment-variable"></a>Erstellen einer Umgebungsvariablen
+
+Erstellen Sie unter Verwendung des Schlüssels und der Region für den Schlüssel zwei Umgebungsvariablen für die Authentifizierung:
+
+* `COGNITIVESERVICE_AUTHORING_KEY`: Der Ressourcenschlüssel zum Authentifizieren Ihrer Anforderungen.
+* `COGNITIVESERVICE_REGION`: Region, die Ihrem Schlüssel zugeordnet ist. Beispiel: `westus`.
+
+Führen Sie die Schritte für Ihr Betriebssystem aus:
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+Starten Sie das Konsolenfenster neu, nachdem Sie die Umgebungsvariable hinzugefügt haben.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source ~/.bashrc` aus, damit die Änderungen wirksam werden.
+
+#### <a name="macostabunix"></a>[macOS](#tab/unix)
+
+Bearbeiten Sie `.bash_profile`, und fügen Sie die Umgebungsvariable hinzu:
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Führen Sie nach dem Hinzufügen der Umgebungsvariablen im Konsolenfenster `source .bash_profile` aus, damit die Änderungen wirksam werden.
+***
 
 ### <a name="create-a-new-c-application"></a>Erstellen einer neuen C#-Anwendung
 
@@ -47,7 +87,7 @@ Erstellen Sie eine neue .NET Core-Anwendung in Ihrem bevorzugten Editor oder Ihr
 
 1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl dotnet `new` zum Erstellen einer neuen Konsolen-App mit dem Namen `language-understanding-quickstart`. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: `Program.cs`. 
 
-    ```console
+    ```dotnetcli
     dotnet new console -n language-understanding-quickstart
     ```
 
@@ -55,7 +95,7 @@ Erstellen Sie eine neue .NET Core-Anwendung in Ihrem bevorzugten Editor oder Ihr
 
 1. Sie können die Anwendung mit folgendem Befehl erstellen:
 
-    ```console
+    ```dotnetcli
     dotnet build
     ```
 
@@ -74,7 +114,7 @@ Erstellen Sie eine neue .NET Core-Anwendung in Ihrem bevorzugten Editor oder Ihr
 
 Installieren Sie innerhalb des Anwendungsverzeichnisses die LUIS-Erstellungsclientbibliothek (Language Understanding) für .NET mithilfe des folgenden Befehls:
 
-```console
+```dotnetcli
 dotnet add package Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring --version 3.0.0
 ```
 
@@ -109,7 +149,7 @@ In den bereitgestellten Codeausschnitten wird veranschaulicht, wie Sie die folge
 
 ## <a name="add-the-dependencies"></a>Hinzufügen der Abhängigkeiten
 
-Öffnen Sie aus dem Projektverzeichnis die Datei **Program.cs** in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Ersetzen Sie den vorhandenen `using`-Code durch die folgenden `using`-Anweisungen:
+Öffnen Sie aus dem Projektverzeichnis die Datei *Program.cs* in Ihrem bevorzugten Editor oder Ihrer bevorzugten IDE. Ersetzen Sie den vorhandenen `using`-Code durch die folgenden `using`-Anweisungen:
 
 [!code-csharp[Using statements](~/cognitive-services-dotnet-sdk-samples/documentation-samples/quickstarts/LUIS/LUIS.cs?name=Dependencies)]
 
@@ -188,9 +228,9 @@ Veröffentlichen Sie die LUIS-App mithilfe der Methode [PublishAsync](https://do
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
-Führen Sie die Anwendung mit dem Befehl dotnet `run` über das Anwendungsverzeichnis aus.
+Führen Sie die Anwendung mit dem Befehl `dotnet run` aus dem Anwendungsverzeichnis aus.
 
-```console
+```dotnetcli
 dotnet run
 ```
 

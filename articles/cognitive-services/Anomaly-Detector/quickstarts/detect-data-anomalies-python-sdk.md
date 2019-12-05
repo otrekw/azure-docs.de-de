@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 10/15/2019
+ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 926d7043ea6f56c1ba6d13fd4586fc6f6d59cfa8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: f58f4f9c89e2c0bfb7d9eca6d39dab3f25b21990
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554713"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483353"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-python"></a>Schnellstart: Anomalieerkennungs-Clientbibliothek für Python
 
@@ -26,11 +26,12 @@ Mit der Anomalieerkennungs-Clientbibliothek für Python ist Folgendes möglich:
 * Erkennung von Anomalien in Ihrem gesamten Zeitreihen-Dataset als Batchanforderung
 * Erkennen des Anomaliestatus des letzten Datenpunkts in Ihrer Zeitreihe
 
-[Bibliotheksreferenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Codebeispiele](https://github.com/Azure-Samples/anomalydetector)
+[Bibliotheksreferenzdokumentation](https://docs.microsoft.com/python/api/azure-cognitiveservices-anomalydetector/azure.cognitiveservices.anomalydetector?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-anomalydetector) | [Paket (PyPi)](https://pypi.org/project/azure-cognitiveservices-anomalydetector/) | [Codebeispiele auf GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/python-sdk-sample.py)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
+* Ein Anomalieerkennungsschlüssel und -endpunkt
 * [Python 3.x](https://www.python.org/)
 * Die [Pandas-Bibliothek für Datenanalyse](https://pandas.pydata.org/)
  
@@ -114,18 +115,4 @@ Rufen Sie mithilfe der [last_detect()](https://docs.microsoft.com/python/api/azu
 
 Führen Sie die Anwendung mit dem Befehl `python` und Ihrem Dateinamen aus.
  
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die der Ressourcengruppe zugeordnet sind.
-
-* [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
-* [Azure-Befehlszeilenschnittstelle](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
-
-## <a name="next-steps"></a>Nächste Schritte
-
-> [!div class="nextstepaction"]
->[Anomalieerkennung in Streamingdaten mit Azure Databricks](../tutorials/anomaly-detection-streaming-databricks.md)
-
-* Was ist die [Anomalieerkennungs-API](../overview.md)?
-* [Bewährte Methoden](../concepts/anomaly-detection-best-practices.md) bei der Verwendung der Anomalieerkennungs-API.
-* Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/AnomalyDetector/blob/master/quickstarts/sdk/csharp-sdk-sample.cs).
+[!INCLUDE [anomaly-detector-next-steps](../includes/quickstart-cleanup-next-steps.md)]

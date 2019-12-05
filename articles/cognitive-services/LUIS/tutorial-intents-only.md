@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 1e39126324de486d118f808b37672c9fd08af711
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822756"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325922"
 ---
-# <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
+# <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
 In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt. 
 
@@ -58,7 +58,7 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
 ## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht 
 
-1. Wählen Sie im [LUIS-Vorschauportal](https://preview.luis.ai) im Abschnitt **Erstellen** der App die Option **+ Erstellen** aus. Geben Sie den unten aufgeführten neuen Absichtsnamen ein, und wählen Sie **Fertig** aus.
+1. Wählen Sie im Portal im Abschnitt **Erstellen** der App die Option **+ Erstellen** aus. Geben Sie den neuen Namen der Absicht ein (`OrderPizza`), und wählen Sie dann **Fertig** aus.
 
     Die `OrderPizza`-Absicht wird vorhergesagt, wenn ein Benutzer eine Pizza bestellen möchte. 
 
@@ -122,7 +122,7 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
     Dies ist nicht genau dasselbe wie eine Beispieläußerung, also ist es ein guter Test, um zu prüfen, ob LUIS lernen kann, was mit dieser Absicht vorhergesagt werden sollte.
 
-    Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `OrderPizza` als Absicht mit der höchsten Bewertung zurückgeben. 
+    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `OrderPizza` als Absicht mit der höchsten Bewertung zurückgeben. 
 
     ```JSON
     {
@@ -148,7 +148,7 @@ Diese Intentionen sind in **Absichten** kategorisiert.
     }
     ```
 
-    Das Entitätenarray ist leer, weil diese App aktuell keine Entitäten aufweist. 
+    Das Entitätenarray ist leer, da diese App aktuell keine Entitäten (Dateneinheiten in der zu extrahierenden Äußerung) aufweist. 
 
     Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht als **`prediction.topIntent`** -Eigenschaft. Alle Bewertungen liegen zwischen 1 und 0. Die bessere Bewertung liegt näher bei 1. 
 
@@ -205,4 +205,4 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
 In diesem Tutorial wurden die LUIS-App und Absichten erstellt, Beispieläußerungen für jede Absicht hinzugefügt, Beispieläußerungen zur Absicht „None“ (Keine) hinzugefügt, die App trainiert, veröffentlicht und am Endpunkt getestet. Dies sind die grundlegenden Schritte bei der Erstellung eines LUIS-Modells. 
 
 > [!div class="nextstepaction"]
-> [Add prebuilt intents and entities to this app (Hinzufügen von vordefinierten Absichten und Entitäten)](tutorial-machine-learned-entity.md)
+> [Hinzufügen einer zerlegbaren Entität zu dieser App](tutorial-machine-learned-entity.md)

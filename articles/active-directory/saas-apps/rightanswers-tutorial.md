@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: f242b2e33b50aa955446ae2b1f62421d39e58418
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8b1f7590e13be97841aae95ec47eaaa61ab004a9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098901"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233489"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Tutorial: Azure Active Directory-Integration mit RightAnswers
 
@@ -191,7 +191,7 @@ Damit sich Azure AD-Benutzer bei RightAnswers anmelden können, müssen sie in R
 Benutzer werden beim Versuch des einmaligen Anmeldens bei Bedarf automatisch erstellt.
 
 > [!NOTE]
-> Sie können RightAnswers-Benutzerkonten auch mithilfe von anderen Tools zum Erstellen von AAD-Benutzerkonten oder mithilfe der von RightAnswers bereitgestellten APIs erstellen.
+> Sie können RightAnswers-Benutzerkonten auch mit anderen Tools zum Erstellen von Azure AD-Benutzerkonten oder mit den APIs von RightAnswers bereitstellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: c639cb059d773042b7f45160dea18bfc2130cae9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1fcaf694e7a628232ea252585d6d9a507a9850da
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896278"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287046"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Erstellen einer Azure IoT Central-Anwendung (Previewfunktionen)
 
@@ -46,13 +46,13 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
 
 1. Wählen Sie aus, ob Sie diese Anwendung mit einer kostenlosen 7-tägigen Testversion erstellen möchten, oder verwenden Sie ein Abonnement mit nutzungsbasierter Bezahlung.
     - **Testanwendungen** sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Bevor das geschieht, können sie jederzeit auf die nutzungsbasierte Zahlung umgestellt werden. Bei der Erstellung einer Testanwendung müssen Sie Ihre Kontaktdaten eingeben und auswählen, ob Sie Informationen und Tipps von Microsoft erhalten möchten.
-    - Anwendungen mit **nutzungsbasierter Bezahlung** werden pro Gerät berechnet, wobei die ersten zwei Geräte kostenlos sind. Weitere Informationen finden Sie unter [IoT Central – Preise](https://aka.ms/iotcentral-pricing). Wenn Sie eine Anwendung mit nutzungsbasierter Bezahlung erstellen, müssen Sie Ihr *Verzeichnis*, Ihr *Azure-Abonnement* und Ihre *Region* auswählen:
+    - Anwendungen mit **nutzungsbasierter Bezahlung** werden pro Gerät berechnet, wobei die ersten zwei Geräte kostenlos sind. Weitere Informationen finden Sie unter [IoT Central – Preise](https://aka.ms/iotcentral-pricing). Wenn Sie eine Anwendung mit nutzungsbasierter Bezahlung erstellen, müssen Sie Ihr *Verzeichnis*, Ihr *Azure-Abonnement* und Ihren *Standort* auswählen:
         - Bei *Verzeichnis* handelt es sich um das Azure Active Directory (AAD), in dem Sie Ihre Anwendung erstellen. Ein Azure AD enthält Benutzeridentitäten, Anmeldeinformationen und andere organisatorische Informationen. Falls Sie über keine Azure AD-Instanz verfügen, wird eine erstellt, wenn Sie ein Azure-Abonnement erstellen.
         - Mit einem *Azure-Abonnement* können Sie Instanzen von Azure-Diensten erstellen. IoT Central stellt Ressourcen in Ihrem Abonnement bereit. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eins erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Anwendung erstellen**. Ihr neues Abonnement wird in der Dropdownliste **Azure-Abonnement** angezeigt.
-        - *Region* ist der physische Speicherort, an dem die Daten Ihrer Geräte gespeichert werden. In der Regel wählen Sie die Region aus, die Ihren Geräten geografisch am nächsten liegt, um sowohl eine optimale Leistung zu erzielen als auch Datenhoheitskonformität zu gewährleisten. Sobald Sie eine Region ausgewählt haben, können Sie Ihre Anwendung später nicht mehr in eine andere Region verschieben.
+        - *Standort* ist die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Die Public Preview von Azure IoT Central ist derzeit in den **USA** und in **Europa** verfügbar. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
 
         > [!NOTE]
-        > Während der öffentlichen Vorschauphase sind für eine **Vorschauanwendung** nur die Regionen **Europa, Norden** und **USA, Mitte** verfügbar.
+        > Während der Public Preview sind für **Vorschauanwendungen** nur die Standorte **Europa** und **USA** verfügbar.
 
 1. Lesen Sie die Geschäftsbedingungen, und wählen Sie **Erstellen** im unteren Bereich der Seite aus.
 

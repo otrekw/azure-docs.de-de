@@ -1,23 +1,17 @@
 ---
-title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen1 für MapReduce | Microsoft Docs
+title: Optimierung der Leistung von Azure Data Lake Storage Gen1 – MapReduce
 description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen1 für MapReduce
-services: data-lake-store
-documentationcenter: ''
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: b9e5d034db4711384d2ac8a1083da5c93ea11900
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a645049665bc1d51efa94a879b9d2e4e5529282f
+ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61437241"
+ms.lasthandoff: 11/10/2019
+ms.locfileid: "73904588"
 ---
 # <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für MapReduce in HDInsight und Azure Data Lake Storage Gen1
 
@@ -26,66 +20,89 @@ ms.locfileid: "61437241"
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Ein Azure Data Lake Storage Gen1-Konto**. Eine Anleitung zur Erstellung finden Sie unter [Erste Schritte mit Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md).
 * **Ein Azure HDInsight-Cluster** mit Zugriff auf ein Data Lake Storage Gen1-Konto. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Stellen Sie sicher, dass Remotedesktop für den Cluster aktiviert ist.
-* **Verwendung von MapReduce in HDInsight**.  Weitere Informationen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce).
-* **Richtlinien für die Leistungsoptimierung von Data Lake Storage Gen1**.  Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).
+* **Verwendung von MapReduce in HDInsight**. Weitere Informationen finden Sie unter [Verwenden von MapReduce mit Hadoop in HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce).
+* Überprüfen Sie die **Richtlinien für die Leistungsoptimierung bei Data Lake Storage Gen1**. Allgemeine Leistungskonzepte finden Sie unter [Anleitung für die Leistungsoptimierung von Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance).
 
 ## <a name="parameters"></a>Parameter
 
 Im Folgenden finden Sie die wichtigsten Parameter, die Sie für die Ausführung von MapReduce konfigurieren können, um die Leistung in Azure Data Lake Storage Gen1 zu verbessern:
 
-* **Mapreduce.map.memory.mb** – die Menge an Arbeitsspeicher, die jedem Mapper zugeordnet werden soll
-* **Mapreduce.job.maps** – die Anzahl an Zuordnungstasks pro Auftrag
-* **Mapreduce.reduce.memory.mb** – die Menge an Arbeitsspeicher, die jedem Reducer zugeordnet werden soll
-* **Mapreduce.job.reduces** – die Anzahl von Reduzierungstasks pro Auftrag
+|Parameter      | BESCHREIBUNG  |
+|---------|---------|
+|`Mapreduce.map.memory.mb`  |  Die Menge an Arbeitsspeicher, die jedem Mapper zugeordnet werden soll.  |
+|`Mapreduce.job.maps`     |  Die Anzahl von Zuordnungsaufgaben pro Auftrag.  |
+|`Mapreduce.reduce.memory.mb`     |  Die Menge an Arbeitsspeicher, die jedem Reducer zugeordnet werden soll.  |
+|`Mapreduce.job.reduces`    |   Die Anzahl von Reduzierungsaufgaben pro Auftrag.  |
 
-**Mapreduce.map.memory / Mapreduce.reduce.memory**: Diese Zahl muss angepasst werden, je nachdem, wie viel Arbeitsspeicher für den Zuordnungs- oder Reduzierungstask erforderlich ist.  Die Standardwerte von „mapreduce.map.memory“ und „mapreduce.reduce.memory“ können in Ambari über die YARN-Konfiguration angezeigt werden.  Navigieren Sie in Ambari zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Der YARN-Arbeitsspeicher wird angezeigt.  
+### <a name="mapreducemapmemory--mapreducereducememory"></a>„Mapreduce.map.memory“ / „Mapreduce.reduce.memory“
 
-**Mapreduce.job.maps / Mapreduce.job.reduces**: Diese Einstellung legt die maximale Anzahl von Mappern oder Reducern fest, die erstellt werden.  Die Anzahl der Teilungen legt fest, wie viele Mapper für den MapReduce-Auftrag erstellt werden.  Daher erhalten Sie möglicherweise weniger Mapper als angefordert, wenn weniger Teilungen als angeforderte Mapper vorhanden sind.       
+Passen Sie diese Zahl basierend auf der Speichermenge an, die für die Zuordnungs- und/oder Reduzierungsaufgabe benötigt wird. Sie können die Standardwerte von `mapreduce.map.memory` und `mapreduce.reduce.memory` in Ambari über die Yarn-Konfiguration anzeigen. Navigieren Sie in Ambari zu YARN, und zeigen Sie die Registerkarte **Configs** (Konfigurationen) an. Der YARN-Arbeitsspeicher wird angezeigt.
+
+### <a name="mapreducejobmaps--mapreducejobreduces"></a>„Mapreduce.job.maps“ / „Mapreduce.job.reduces“
+
+Hiermit wird die maximale Anzahl der zu erstellenden Mapper oder Reducer bestimmt. Die Anzahl der Teilungen legt fest, wie viele Mapper für den MapReduce-Auftrag erstellt werden. Daher erhalten Sie möglicherweise weniger Mapper als angefordert, wenn weniger Teilungen als angeforderte Mapper vorhanden sind.
 
 ## <a name="guidance"></a>Anleitungen
 
-**Schritt 1: Ermitteln der Anzahl der ausgeführten Aufträge**: Standardmäßig verwendet MapReduce den gesamten Cluster für Ihren Auftrag.  Sie können einen kleineren Teil des Clusters verwenden, indem Sie weniger Mapper verwenden als Container verfügbar sind.  Bei den Anleitungen in diesem Dokument wird davon ausgegangen, dass Ihre Anwendung die einzige Anwendung ist, die in Ihrem Cluster ausgeführt wird.      
+### <a name="step-1-determine-number-of-jobs-running"></a>Schritt 1: Ermitteln der Anzahl von ausgeführten Aufträgen
 
-**Schritt 2: Festlegen von „mapreduce.map.memory/mapreduce.reduce.memory“** : Die Größe des Arbeitsspeichers für Zuordnungs- und Reduzierungstasks richtet sich nach dem jeweiligen Auftrag.  Sie können die Arbeitsspeichergröße reduzieren, wenn Sie die Parallelität erhöhen möchten.  Die Anzahl von gleichzeitig ausgeführten Tasks richtet sich nach der Anzahl von Containern.  Durch Verringern der Arbeitsspeichermenge pro Mapper oder Reducer können mehr Container erstellt werden, wodurch mehr Mapper oder Reducer gleichzeitig ausgeführt werden können.  Wenn die Arbeitsspeichermenge zu stark verringert wird, steht für einige Prozesse möglicherweise nicht genügend Arbeitsspeicher zur Verfügung.  Wenn Sie beim Ausführen Ihres Auftrags einen Heapfehler erhalten, sollten Sie den Arbeitsspeicher pro Mapper oder Reducer erhöhen.  Denken Sie daran, dass beim Hinzufügen weiterer Container auch zusätzlicher Overhead für jeden zusätzlichen Container entsteht, wodurch die Leistung beeinträchtigt werden kann.  Eine andere Möglichkeit besteht darin, mehr Arbeitsspeicher zur Verfügung zu stellen, indem Sie einen Cluster verwenden, der über mehr Arbeitsspeicher verfügt, oder indem Sie die Anzahl von Knoten in Ihrem Cluster erhöhen.  Eine größere Menge an Arbeitsspeicher ermöglicht die Verwendung einer größeren Anzahl von Containern, was wiederum mehr Parallelität bedeutet.  
+Standardmäßig nutzt MapReduce den gesamten Cluster für Ihren Auftrag. Sie können einen kleineren Teil des Clusters verwenden, indem Sie weniger Mapper verwenden als Container verfügbar sind. Bei den Anleitungen in diesem Dokument wird davon ausgegangen, dass Ihre Anwendung die einzige Anwendung ist, die in Ihrem Cluster ausgeführt wird.
 
-**Schritt 3: Ermitteln des gesamten YARN-Arbeitsspeichers**: Beim Optimieren von „mapreduce.job.maps/mapreduce.job.reduces“ müssen Sie die Menge an YARN-Arbeitsspeicher berücksichtigen, die zur Verwendung verfügbar ist.  Diese Informationen sind in Ambari verfügbar.  Navigieren Sie zu YARN, und zeigen Sie die Registerkarte für die Konfiguration an.  Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt.  Um den YARN-Gesamtarbeitsspeicher zu erhalten, müssen Sie den YARN-Arbeitsspeicher pro Knoten mit der Anzahl von Knoten in Ihrem Cluster multiplizieren.
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Schritt 2: Festlegen von „mapreduce.map.memory/mapreduce.reduce.memory“
 
-    Total YARN memory = nodes * YARN memory per node
-Wenn Sie einen leeren Cluster verwenden, kann der Arbeitsspeicher der gesamte YARN-Arbeitsspeicher für den Cluster sein.  Wenn andere Anwendungen auch Arbeitsspeicher belegen, können Sie nur einen Teil des Clusterarbeitsspeichers nutzen, indem Sie die Anzahl von Mappern oder Reducern auf die Anzahl von Containern verringern, die Sie verwenden möchten.  
+Die Größe des Arbeitsspeichers für Mapper/Reducer-Aufgaben richtet sich nach Ihrem jeweiligen Auftrag. Sie können die Arbeitsspeichergröße reduzieren, wenn Sie die Parallelität erhöhen möchten. Die Anzahl von gleichzeitig ausgeführten Tasks richtet sich nach der Anzahl von Containern. Durch Verringern der Arbeitsspeichermenge pro Mapper oder Reducer können mehr Container erstellt werden, wodurch mehr Mapper oder Reducer gleichzeitig ausgeführt werden können. Wenn die Arbeitsspeichermenge zu stark verringert wird, steht für einige Prozesse möglicherweise nicht genügend Arbeitsspeicher zur Verfügung. Wenn beim Ausführen Ihres Auftrags ein Heapfehler angezeigt wird, erhöhen Sie den Arbeitsspeicher pro Mapper oder Reducer. Denken Sie daran, dass beim Hinzufügen weiterer Container zusätzlicher Overhead für jeden zusätzlichen Container entsteht. Dadurch kann die Leistung beeinträchtigt werden. Eine andere Möglichkeit besteht darin, mehr Arbeitsspeicher zur Verfügung zu stellen, indem Sie einen Cluster verwenden, der über mehr Arbeitsspeicher verfügt, oder indem Sie die Anzahl von Knoten in Ihrem Cluster erhöhen. Eine größere Menge an Arbeitsspeicher ermöglicht die Verwendung einer größeren Anzahl von Containern, was wiederum mehr Parallelität bedeutet.
 
-**Schritt 4: Berechnen der Anzahl von YARN-Containern**: Die Anzahl von YARN-Containern bestimmt, wie viel Parallelität für den Auftrag verfügbar ist.  Teilen Sie den YARN-Gesamtarbeitsspeicher durch „mapreduce.map.memory“.  
+### <a name="step-3-determine-total-yarn-memory"></a>Schritt 3: Ermitteln des YARN-Gesamtarbeitsspeichers
 
-    # of YARN containers = total YARN memory / mapreduce.map.memory
+Berücksichtigen Sie beim Optimieren von „mapreduce.job.maps/mapreduce.job.reduces“ die Menge an YARN-Gesamtarbeitsspeicher, die für die Nutzung zur Verfügung steht. Diese Informationen sind in Ambari verfügbar. Navigieren Sie zu YARN, und zeigen Sie die Registerkarte **Configs** an. Die Größe des YARN-Arbeitsspeichers wird in diesem Fenster angezeigt. Multiplizieren Sie den YARN-Arbeitsspeicher mit der Anzahl von Knoten in Ihrem Cluster, um den YARN-Gesamtarbeitsspeicher zu erhalten.
 
-**Schritt 5: Festlegen von „mapreduce.job.maps/mapreduce.job.reduces“** Legen Sie „mapreduce.job.maps/mapreduce.job.reduces“ mindestens auf die Anzahl der verfügbaren Container fest.  Sie können weiter experimentieren, indem Sie die Anzahl von Mappern und Reducern erhöhen, um zu ermitteln, ob sich die Leistung verbessert.  Denken Sie daran, dass eine größere Anzahl von Mappern zu weiterem Overhead führt und zu viele Mapper daher die Leistung beeinträchtigen können.  
+`Total YARN memory = nodes * YARN memory per node`
+
+Wenn Sie einen leeren Cluster verwenden, kann der Arbeitsspeicher der YARN-Gesamtarbeitsspeicher für Ihren Cluster sein. Wenn andere Anwendungen auch Arbeitsspeicher belegen, können Sie nur einen Teil des Clusterarbeitsspeichers nutzen, indem Sie die Anzahl von Mappern oder Reducern auf die Anzahl von Containern verringern, die Sie verwenden möchten.
+
+### <a name="step-4-calculate-number-of-yarn-containers"></a>Schritt 4: Berechnen der Anzahl von YARN-Containern
+
+YARN-Container geben vor, wie viel Parallelität für den Auftrag verfügbar ist. Teilen Sie den YARN-Gesamtarbeitsspeicher durch „mapreduce.map.memory“.
+
+`# of YARN containers = total YARN memory / mapreduce.map.memory`
+
+### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Schritt 5: Festlegen von „mapreduce.job.maps/mapreduce.job.reduces“
+
+Legen Sie „mapreduce.job.maps/mapreduce.job.reduces“ mindestens auf die Anzahl verfügbarer Container fest. Sie können weiter experimentieren, indem Sie die Anzahl von Mappern und Reducern erhöhen, um zu ermitteln, ob sich die Leistung verbessert. Denken Sie daran, dass eine größere Anzahl von Mappern zu weiterem Overhead führt und zu viele Mapper daher die Leistung beeinträchtigen können.
 
 CPU-Planung und -Isolierung sind standardmäßig deaktiviert, sodass die Anzahl von YARN-Containern durch den Arbeitsspeicher begrenzt ist.
 
 ## <a name="example-calculation"></a>Beispielberechnung
 
-Angenommen, Sie haben einen Cluster mit 8 D14-Knoten und möchten einen E/A-intensiven Auftrag ausführen.  Dann müssen Sie folgende Berechnungen anstellen:
+Angenommen, Sie haben einen Cluster mit 8 D14-Knoten und möchten einen E/A-intensiven Auftrag ausführen. Dann müssen Sie folgende Berechnungen anstellen:
 
-**Schritt 1: Ermitteln der Anzahl von ausgeführten Aufträgen**: Für das Beispiel nehmen wir an, dass Ihr Auftrag der einzige ist, der ausgeführt wird.  
+### <a name="step-1-determine-number-of-jobs-running"></a>Schritt 1: Ermitteln der Anzahl von ausgeführten Aufträgen
 
-**Schritt 2: Festlegen von „mapreduce.map.memory/mapreduce.reduce.memory“** : In diesem Beispiel führen Sie einen E/A-intensiven Auftrag aus und entscheiden, dass 3 GB Arbeitsspeicher für Zuordnungstasks ausreichend sind.
+In unserem Beispiel gehen wir davon aus, dass unser Auftrag als einziger ausgeführt wird.
 
-    mapreduce.map.memory = 3GB
-**Schritt 3: Ermitteln des gesamten YARN-Arbeitsspeichers**
+### <a name="step-2-set-mapreducemapmemorymapreducereducememory"></a>Schritt 2: Festlegen von „mapreduce.map.memory/mapreduce.reduce.memory“
 
-    total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB
-**Schritt 4: Berechnen der Anzahl von YARN-Containern**
+Bei unserem Beispiel führen Sie einen E/A-intensiven Auftrag aus und entscheiden, dass 3 GB Arbeitsspeicher für Zuordnungsaufgaben ausreicht.
 
-    # of YARN containers = 768GB of available memory / 3 GB of memory =   256
+`mapreduce.map.memory = 3GB`
 
-**Schritt 5: Festlegen von „mapreduce.job.maps/mapreduce.job.reduces“**
+### <a name="step-3-determine-total-yarn-memory"></a>Schritt 3: Ermitteln des YARN-Gesamtarbeitsspeichers
 
-    mapreduce.map.jobs = 256
+`total memory from the cluster is 8 nodes * 96GB of YARN memory for a D14 = 768GB`
+
+### <a name="step-4-calculate--of-yarn-containers"></a>Schritt 4: Berechnen der Anzahl von YARN-Containern
+
+`# of YARN containers = 768 GB of available memory / 3 GB of memory = 256`
+
+### <a name="step-5-set-mapreducejobmapsmapreducejobreduces"></a>Schritt 5: Festlegen von „mapreduce.job.maps/mapreduce.job.reduces“
+
+`mapreduce.map.jobs = 256`
 
 ## <a name="limitations"></a>Einschränkungen
 
 **Data Lake Storage Gen1-Einschränkung**
 
-Azure Data Lake Storage Gen1 ist ein mehrinstanzenfähiger Dienst und legt daher Bandbreitengrenzwerte auf Kontoebene fest.  Wenn Sie diese Grenzwerte erreichen, werden Taskfehler angezeigt. Dies lässt sich durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln.  Wenn Sie für einen Auftrag mehr Bandbreite benötigen, wenden Sie sich an uns.   
+Azure Data Lake Storage Gen1 ist ein mehrinstanzenfähiger Dienst und legt daher Bandbreitengrenzwerte auf Kontoebene fest. Wenn Sie diese Grenzwerte erreichen, werden Taskfehler angezeigt. Dies lässt sich durch Beobachten der Drosselungsfehler in den Taskprotokollen ermitteln. Wenn Sie für einen Auftrag mehr Bandbreite benötigen, wenden Sie sich an uns.
 
 Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung auf Clientseite aktivieren. Gehen Sie hierzu wie folgt vor:
 
@@ -97,21 +114,27 @@ Um zu prüfen, ob eine Drosselung vorliegt, müssen Sie die Debugprotokollierung
 
 ## <a name="examples-to-run"></a>Beispiele für die Ausführung
 
-Um zu zeigen, wie MapReduce in Data Lake Storage Gen1 ausgeführt wird, finden Sie hier Beispielcode, der mit folgenden Einstellungen in einem Cluster ausgeführt wurde:
+Zur Veranschaulichung, wie MapReduce in Data Lake Storage Gen1 ausgeführt wird, finden Sie hier Beispielcode, der mit den folgenden Einstellungen in einem Cluster ausgeführt wurde:
 
 * D14v2 mit 16 Knoten
 * Hadoop-Cluster mit HDI 3.6
 
-Im Folgenden finden Sie einige Beispielbefehle zum Ausführen von MapReduce Teragen, Terasort und Teravalidate.  Sie können diese Befehle basierend auf Ihren Ressourcen anpassen.
+Im Folgenden finden Sie einige Beispielbefehle zum Ausführen von MapReduce Teragen, Terasort und Teravalidate. Sie können diese Befehle basierend auf Ihren Ressourcen anpassen.
 
-**Teragen**
+### <a name="teragen"></a>Teragen
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
+```
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 10000000000 adl://example/data/1TB-sort-input
+```
 
-**Terasort**
+### <a name="terasort"></a>Terasort
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
+```
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapreduce.job.maps=2048 -Dmapreduce.map.memory.mb=3072 -Dmapreduce.job.reduces=512 -Dmapreduce.reduce.memory.mb=3072 adl://example/data/1TB-sort-input adl://example/data/1TB-sort-output
+```
 
-**Teravalidate**
+### <a name="teravalidate"></a>Teravalidate
 
-    yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
+```
+yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapreduce.job.maps=512 -Dmapreduce.map.memory.mb=3072 adl://example/data/1TB-sort-output adl://example/data/1TB-sort-validate
+```

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Konfigurieren des Routings für Subnetzdatenverkehr – Azure Traffic Manager'
-description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr von Benutzersubnetzen an bestimmte Endpunkte geleitet wird.
+title: 'Tutorial: Konfigurieren des Routings für Subnetzdatenverkehr mit Azure Traffic Manager'
+description: In diesem Artikel Tutorial wird beschrieben, wie Traffic Manager so konfiguriert wird, dass Datenverkehr von Benutzersubnetzen an bestimmte Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
 author: asudbring
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: allensu
-ms.openlocfilehash: c2fbb4a85347c8ee68376069474add865cc06c43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 00bc453ebb0e467f48bd886fc7c6b6c422693864
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048809"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420260"
 ---
 # <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Tutorial: Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 

@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen von Korrelations-IDs zu IoT-Nachrichten mit der verteilten Ablaufverfolgung (Vorschau)
-description: ''
+description: Hier erfahren Sie, wie Sie IoT-Nachrichten mithilfe der verteilten Ablaufverfolgung in allen von Ihrer Lösung verwendeten Azure-Diensten überwachen.
 author: jlian
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: e4403c245a3cae671f83260ae313ed400b0f7721
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 835a359d3b5781ad814e423e4a69e8d60379c97b
+ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259358"
+ms.lasthandoff: 11/12/2019
+ms.locfileid: "73953149"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -28,7 +28,7 @@ Durch die Aktivierung der verteilten Ablaufverfolgung für IoT Hub können Sie d
 - Messen und analysieren Sie den Nachrichtenfluss sowie die Latenzen von Geräten zu IoT Hub und Routingendpunkten.
 - Überlegen Sie, wie Sie die verteilte Ablaufverfolgung für Nicht-Azure-Dienste in Ihrer IoT-Lösung implementieren möchten.
 
-In diesem Artikel verwenden Sie das [Azure IoT-Geräte-SDK für C](./iot-hub-device-sdk-c-intro.md) mit der verteilten Ablaufverfolgung. An der Unterstützung der verteilten Ablaufverfolgung für die anderen SDKs wird noch gearbeitet.
+In diesem Artikel verwenden Sie das [Azure IoT-Geräte-SDK für C](iot-hub-device-sdk-c-intro.md) mit der verteilten Ablaufverfolgung. An der Unterstützung der verteilten Ablaufverfolgung für die anderen SDKs wird noch gearbeitet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ In diesem Artikel verwenden Sie das [Azure IoT-Geräte-SDK für C](./iot-hub-dev
   - **Asien, Südosten**
   - **USA, Westen 2**
 
-- In diesem Artikel wird davon ausgegangen, dass Sie mit dem Senden von Telemetrienachrichten an Ihre IoT Hub-Instanz vertraut sind. Absolvieren Sie zunächst den Schnellstart zum [Senden von Telemetriedaten mit C](./quickstart-send-telemetry-c.md).
+- In diesem Artikel wird davon ausgegangen, dass Sie mit dem Senden von Telemetrienachrichten an Ihre IoT Hub-Instanz vertraut sind. Absolvieren Sie zunächst den Schnellstart zum [Senden von Telemetriedaten mit C](quickstart-send-telemetry-c.md).
 
 - Registrieren Sie ein Gerät bei Ihrer IoT Hub-Instanz (entsprechende Schritte werden in jedem Schnellstart beschrieben), und notieren Sie sich die Verbindungszeichenfolge.
 

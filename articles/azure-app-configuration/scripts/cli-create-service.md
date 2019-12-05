@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8a58b73f3f3acb8d7c6ced9e0086687b54fff734
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: cd150368898b3f02b4366debbe775ece76b23043
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029791"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184905"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
@@ -71,16 +71,16 @@ Notieren Sie den tatsächlichen Namen, der für die neue Ressourcengruppe generi
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
 
-In diesem Skript werden die folgenden Befehle verwendet, um eine neue Ressourcengruppe und einen App-Konfigurationsspeicher zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
+In diesem Skript werden die folgenden Befehle verwendet, um eine neue Ressourcengruppe und einen App Configuration-Speicher zu erstellen. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appconfig create](/cli/azure/ext/appconfig/appconfig) | Erstellt eine App-Konfigurationsspeicherressource. |
-| [az appconfig key list](/cli/azure/ext/appconfig/appconfig/kv) | Führt die in einem App-Konfigurationsspeicher gespeicherten Schlüssel auf. |
+| [az appconfig create](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-create) | Erstellt eine App Configuration-Speicherressource. |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Listet die in einem App Configuration-Speicher gespeicherten Schlüssel auf. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).
 
-Weitere CLI-Skriptbeispiele für App Configuration finden Sie in der [Dokumentation zu Azure App Configuration](../cli-samples.md).
+Weitere CLI-Skriptbeispiele für App Configuration finden Sie in den [CLI-Beispielen für Azure App Configuration](../cli-samples.md).

@@ -1,18 +1,14 @@
 ---
-title: Azure Backup-Architektur
+title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: 24e90ebd2994c5fffc1252167c06783421f2ac33
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035249"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173522"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -96,7 +92,7 @@ Speicherverbrauch, RTO (Recovery Time Objective) und Netzwerkauslastung variiere
 
 Die folgende Tabelle enthält eine Zusammenfassung der für die verschiedenen Sicherungstypen unterstützten Features:
 
-**Feature** | **Lokale Windows Server-Computer (direkt)** | **Virtuelle Azure-Computer** | **Computer oder Apps mit DPM/MABS**
+**Feature** | **Direkte Sicherung von Dateien und Ordnern (mit dem MARS-Agent)** | **Azure-VM-Sicherung** | **Computer oder Apps mit DPM/MABS**
 --- | --- | --- | ---
 Sicherung in einem Tresor | ![Ja][green] | ![Ja][green] | ![Ja][green]
 Sicherung auf DPM-/MABS-Datenträgern und dann in Azure | | | ![Ja][green]
@@ -106,7 +102,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 
 ![Tabellenschlüssel](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architektur: Direkte Sicherung virtueller Azure-Computer
+## <a name="architecture-built-in-azure-vm-backup"></a>Architektur: Integrierte Azure-VM-Sicherung
 
 1. Wenn Sie die Sicherung für einen virtuellen Azure-Computer aktivieren, wird eine Sicherung gemäß dem von Ihnen angegebenen Zeitplan ausgeführt.
 1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn der VM ausgeführt wird.
@@ -120,7 +116,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
     - Es werden nur Datenblöcke kopiert, die seit der letzten Sicherung geändert wurden.
     - Die Daten werden nicht verschlüsselt. Azure Backup kann virtuelle Azure-Computer sichern, die mit Azure Disk Encryption verschlüsselt wurden.
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten kann die Sicherung mehrere Stunden dauern. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
-1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](https://docs.microsoft.com/en-us/azure/backup/backup-instant-restore-capability).
+1. Nachdem die Daten an den Tresor gesendet wurden, wird ein Wiederherstellungspunkt erstellt. Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt, bevor sie gelöscht werden. Mit diesem Feature kann die Wiederherstellung über diese Momentaufnahmen mit reduzierten Wiederherstellungszeiten durchgeführt werden. Es reduziert die erforderliche Zeit zum Transformieren und Zurückkopieren von Daten aus dem Tresor. Lesen Sie die Informationen unter [Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-instant-restore-capability).
 
 Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang. Wenn Sie Workloads auf dem virtuellen Computer sichern (z. B. SQL Server-Datenbanksicherungen), benötigen die Back-End-Daten auch einen Internetzugang.
 
@@ -134,7 +130,7 @@ Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang.
     - Der MARS-Agent verwendet zum Erstellen der Momentaufnahme nur den Schreibvorgang des Windows-Systems.
     - Weil der Agent keine anwendungsspezifischen VSS Writer verwendet, erfasst er keine App-konsistenten Momentaufnahmen.
 1. Nach der Erstellung der Momentaufnahme mit VSS erstellt der MARS-Agent eine virtuelle Festplatte (Virtual Hard Disk, VHD) in dem Cacheordner, den Sie beim Konfigurieren der Sicherung angegeben haben. Außerdem speichert der Agent Prüfsummen für die einzelnen Datenblöcke.
-1. Inkrementelle Sicherungen werden gemäß dem angegebenen Zeitplan ausgeführt, sofern Sie keine Ad-hoc-Sicherung ausführen.
+1. Inkrementelle Sicherungen werden gemäß dem angegebenen Zeitplan ausgeführt, sofern Sie keine bedarfsgesteuerte Sicherung ausführen.
 1. Bei inkrementellen Sicherungen werden geänderte Dateien identifiziert, und eine neue virtuelle Festplatte wird erstellt. Die VHD wird komprimiert und verschlüsselt und dann an den Tresor gesendet.
 1. Nach Abschluss der inkrementellen Sicherung wird die neue VHD mit der VHD zusammengeführt, die nach der ersten Replikation erstellt wurde. Durch diese zusammengeführte VHD erhalten Sie den aktuellen Zustand zum Vergleich für die laufende Sicherung.
 
@@ -148,7 +144,7 @@ Zum Ausführen von Steuerungsbefehlen benötigen Azure-VMs einen Internetzugang.
     - Mit DPM/MABS können Sie Sicherungsvolumes, Freigaben, Dateien und Ordner schützen. Sie können auch den Systemstatus eines Computers (durch Bare-Metal-Sicherung) sowie spezifische Apps mit App-fähigen Sicherungseinstellungen schützen.
 1. Wenn Sie den Schutz für einen Computer oder eine App in DPM/MABS einrichten, wählen Sie aus, dass eine kurzzeitige Sicherung auf dem lokalen DPM-/MABS-Datenträger und eine Sicherung in Azure für den Onlineschutz erstellt werden sollen. Außerdem geben Sie an, wann die Sicherung im lokalen DPM-/MABS-Speicher und wann die Onlinesicherung in Azure ausgeführt werden soll.
 1. Der Datenträger der geschützten Workload wird gemäß dem angegebenen Zeitplan auf den lokalen MABS-/DPM-Datenträgern gesichert.
-4. Die DPM-/MABS-Datenträger werden von dem auf dem DPM-/MABS-Server ausgeführten MARS-Agent im Tresor gesichert.
+1. Die DPM-/MABS-Datenträger werden von dem auf dem DPM-/MABS-Server ausgeführten MARS-Agent im Tresor gesichert.
 
 ![Sicherung von Computern und Workloads mit DPM- oder MABS-Schutz](./media/backup-architecture/architecture-dpm-mabs.png)
 

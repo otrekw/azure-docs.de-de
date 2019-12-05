@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083015"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279115"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
 
@@ -43,11 +43,15 @@ Zum SAS-Token hinzugefügte Einschränkungen werden von Azure CDN ignoriert. Bei
 Wenn Sie für denselben Blobendpunkt mehrere SAS-URLs erstellen, sollten Sie das Aktivieren der Zwischenspeicherung von Abfragezeichenfolge in Betracht ziehen. Dadurch wird sichergestellt, dass jede URL als eindeutige Entität behandelt wird. Weitere Informationen finden Sie unter [Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen](cdn-query-string.md).
 
 ## <a name="http-to-https-redirection"></a>HTTP-zu-HTTPS-Umleitung
-Sie können das Umleiten von HTTP-Datenverkehr an HTTPS festlegen, indem Sie bei der [Azure CDN-Regel-Engine](cdn-verizon-premium-rules-engine.md) eine [URL-Umleitungsregel](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) erstellen. Für diese Option ist ein **Azure CDN Premium von Verizon**-Profil erforderlich.
+Sie können das Umleiten von HTTP-Datenverkehr an HTTPS festlegen, indem Sie bei der [Standard-Regel-Engine](cdn-standard-rules-engine.md) oder der [Verizon Premium-Regel-Engine](cdn-verizon-premium-rules-engine.md) eine URL-Umleitungsregel erstellen. Die Standard-Regel-Engine ist nur für Profile von Azure CDN von Microsoft verfügbar, während die Verizon Premium-Regel-Engine nur über Profile für Azure CDN Premium von Verizon verfügbar ist.
 
-![URL-Umleitungsregel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Microsoft-Umleitungsregel](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-In dieser Regel bezieht sich *Cdn-endpoint-name* auf den Namen, den Sie für den CDN-Endpunkt konfiguriert haben und der aus der Dropdownliste ausgewählt werden kann. Der Wert für *origin-path* bezieht sich auf den Pfad in Ihrem Ursprungsspeicherkonto, in dem sich Ihr statischer Inhalt befindet. Wenn Sie alle statischen Inhalte in einem einzelnen Container hosten, ersetzen Sie *origin-path* durch den entsprechenden Containernamen.
+Wenn Sie in der oben genannten Regel Hostname, Pfad, Abfragezeichenfolge und Fragment unverändert lassen, werden die eingehenden Werte in der Umleitung verwendet. 
+
+![Verizon-Umleitungsregel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+In der oben genannten Regel bezieht sich *Cdn-endpoint-name* auf den Namen, den Sie für den CDN-Endpunkt konfiguriert haben und der in der Dropdownliste ausgewählt werden kann. Der Wert für *origin-path* bezieht sich auf den Pfad in Ihrem Ursprungsspeicherkonto, in dem sich Ihr statischer Inhalt befindet. Wenn Sie alle statischen Inhalte in einem einzelnen Container hosten, ersetzen Sie *origin-path* durch den entsprechenden Containernamen.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 Beim Zugriff auf Blobs über Azure CDN bezahlen Sie [Blobspeichergebühren](https://azure.microsoft.com/pricing/details/storage/blobs/) für den Datenverkehr zwischen POP-Servern und dem Ursprung (Blobspeicher). Weiterhin zahlen Sie [Azure CDN-Gebühren](https://azure.microsoft.com/pricing/details/cdn/) für Daten, auf die von den POP-Servern aus zugegriffen wird.

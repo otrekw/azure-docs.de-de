@@ -1,22 +1,20 @@
 ---
-title: 'Erstellen und Ändern einer ExpressRoute-Verbindung – Portal: Azure | Microsoft-Dokumentation'
-description: Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung.
+title: 'Tutorial: Erstellen und Ändern einer Verbindung mit ExpressRoute'
+description: In diesem Tutorial wird das Erstellen, Bereitstellen, Überprüfen, Aktualisieren, Löschen und Aufheben der Bereitstellung einer ExpressRoute-Verbindung beschrieben.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 7327031a7cd05674e9823f21601aab34c859f540
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846582"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423566"
 ---
-# <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
+# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Erstellen und Ändern einer ExpressRoute-Verbindung
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](expressroute-howto-circuit-portal-resource-manager.md)

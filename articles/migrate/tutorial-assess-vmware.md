@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521221"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196445"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Bewerten von VMware-VMs mit der Azure Migrate-Serverbewertung
 
@@ -71,7 +71,7 @@ Richten Sie wie folgt ein neues Azure Migrate-Projekt ein:
 
     ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-assess-vmware/assessment-tool.png)
 
-9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** und anschließend **Weiter** aus.
+9. Wählen Sie unter **Migrationstool auswählen** die Option **Hinzufügen eines Migrationstools vorerst überspringen** >  und anschließend **Weiter** aus.
 10. Überprüfen Sie die Einstellungen unter **Review + add tools** (Überprüfen und Tools hinzufügen), und klicken Sie auf **Tools hinzufügen**.
 11. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Sie werden zur Projektseite weitergeleitet. Sollte das Projekt nicht angezeigt werden, können Sie auf dem Azure Migrate-Dashboard unter **Server** darauf zugreifen.
 
@@ -108,8 +108,8 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 
   **Algorithmus** | **Hashwert**
   --- | ---
-  MD5 | 27230f3b012187860281b912ee661709
-  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ### <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
@@ -145,7 +145,7 @@ Richten Sie die Appliance wie folgt ein:
    Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
 4. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
     - **Lizenz**: Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
-    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Sollte die VM einen Proxy verwenden, gehen Sie wie folgt vor:
+    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Falls die VM einen Proxy verwendet, gehen Sie wie folgt vor:
         - Klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an (im Format http://ProxyIPAddress oder http://ProxyFQDN ).
         - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
         - Es werden nur HTTP-Proxys unterstützt.
@@ -172,7 +172,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server-Details angeben
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem Ihre vCenter Server-Instanz lauscht.
-2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#scoping-discovery).
+2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das vCenter Server-Konto an, über das die Appliance VMs auf der vCenter Server-Instanz ermittelt. Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#scoping-discovery).
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen
@@ -222,7 +222,7 @@ Es gibt zwei Ansätze, um Berechtigungen in Inventarobjekten in vCenter dem vCen
 
     Bei der Servermigration muss entsprechend eine benutzerdefinierte Rolle (kann den Namen <em>Azure_Migrate</em> haben) mit diesen zugewiesenen [Berechtigungen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) auf das vCenter-Benutzerkonto für alle übergeordneten Objekte angewendet werden, auf denen die zu migrierenden VMs gehostet werden.
 
-![Zuweisen von Berechtigungen](./media/tutorial-assess-vmware/assign-perms.png)
+  ![Zuweisen von Berechtigungen](./media/tutorial-assess-vmware/assign-perms.png)
 
 - Die alternative Vorgehensweise besteht darin, das Benutzerkonto und die Rolle auf Rechenzentrumsebene zuzuweisen und diese an die untergeordneten Objekte weiterzugeben. Weisen Sie dem Konto dann eine Rolle vom Typ **Kein Zugriff** für jedes Objekt zu (z. B. VMs), das Sie nicht ermitteln bzw. migrieren möchten. Diese Konfiguration ist mühsam. Dabei besteht das Risiko einer versehentlichen Preisgabe von Zugangsdaten, da jedem neuen untergeordneten Objekt auch automatisch die vom übergeordneten Objekt geerbten Zugangsrechte erteilt werden. Aus diesem Grund wird empfohlen, die erste Methode zu verwenden.
 

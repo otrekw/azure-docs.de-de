@@ -1,14 +1,14 @@
 ---
 title: 'Beispiel: Zulässige Speicherkonten-SKUs'
-description: Diese Beispielrichtliniendefinition erfordert, dass Speicherkonten eine genehmigte SKU verwenden.
+description: Diese Beispielrichtliniendefinition erfordert, dass für Speicherkonten eine genehmigte SKU verwendet wird, die per Parameter definiert ist.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 34f6e15bb89a74855462ce9426cd05cd78340f9e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 843c06b4c7b18e130b325c9ccd37a4fe70fc471f
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071656"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463687"
 ---
 # <a name="sample---allowed-storage-account-skus"></a>Beispiel: Zulässige Speicherkonten-SKUs
 

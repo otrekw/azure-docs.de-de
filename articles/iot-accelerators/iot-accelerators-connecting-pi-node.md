@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Raspberry Pi für die Remoteüberwachung in Node.js – Azure | Microsoft-Dokumentation
+title: Herstellen einer Verbindung zwischen Raspberry Pi und der Remoteüberwachungslösung – Node.js – Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie mittels einer in Node.js geschriebenen Anwendung die Verbindung eines Raspberry Pi-Geräts mit dem Solution Accelerator für die Remoteüberwachung herstellen.
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dobett
-ms.openlocfilehash: 20d50ac4ac4a1919077ebe67bb529e2dc5abf187
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 98d947e8aabf20fbfdb192cb80c9bc881007d5da
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449691"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73889266"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und dem Solution Accelerator für die Remoteüberwachung (Node.js)
 

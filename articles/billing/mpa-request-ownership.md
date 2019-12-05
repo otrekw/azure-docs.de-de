@@ -5,23 +5,23 @@ author: amberbhargava
 manager: amberb
 editor: banders
 tags: billing
-ms.service: billing
+ms.service: cost-management-billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: banders
-ms.openlocfilehash: 312808517c80041cb45e2e8ac46566c1f59884e1
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d68d95619b6aa6e8098c282977866c4bc21a357c
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376789"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561050"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto
 
-Cloudlösungsanbieter (Cloud Solution Providers, CSPs) können den Abrechnungsbesitz für Azure-Abonnements von ihren Kunden mit Konzernvertrag (Enterprise Agreement, EA) übernehmen, um eine einzelne, konsolidierte Rechnung für verwaltete Dienste und die Azure-Nutzung bereitzustellen.
+Cloudlösungsanbieter (Cloud Solution Providers, CSPs) können den Abrechnungsbesitz für Azure-Abonnements von ihren Kunden mit direktem Konzernvertrag (Enterprise Agreement, EA) übernehmen, um eine einzelne, konsolidierte Rechnung für verwaltete Dienste und die Azure-Nutzung bereitzustellen.
 
 Dieses Feature steht nur für CSP-Partner mit direkter Abrechnung zur Verfügung, die als [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind. Es unterliegt der Governance und den Richtlinien von Microsoft und erfordert ggf. eine Überprüfung und Genehmigung für bestimmte Kunden.
 

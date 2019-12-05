@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/20/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 28666aaac4ec221acca00d937d54a753a4e6a055
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 1c375370ec6bae2775ad758688825b92cbbbca50
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71172683"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407038"
 ---
 ::: zone target="docs"
 
@@ -123,28 +123,7 @@ Bei Azure-Datencentern in Australien ist aus Sicherheitsgründen eine zusätzlic
 2. Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war.
 3. Schalten Sie das Gerät aus, und entfernen Sie die Kabel.
 4. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-5. Fordern Sie per E-Mail bei Quantium Solutions eine Abholung an. Geben Sie dabei die Servicereferenznummer aus dem Azure-Portal an. Verwenden Sie die folgende E-Mail-Vorlage: *Request for reverse shipping label with TAU code*. Geben Sie in der E-Mail folgende Informationen an: 
-
-    ```
-    To: Azure@quantiumsolutions.com
-    Subject: Pickup request for Azure｜Reference number：XXX XXX XXX
-    Body: 
-    - Company name：
-    - Address:
-    - Contact name:
-    - Contact number:
-    - Requested pickup date: mm/dd
-    ```
-6. Von Quantium Solutions Australia erhalten Sie eine E-Mail mit einem Rücksendeetikett.
-7. Drucken Sie das Rücksendeetikett aus, und bringen Sie es am Versandkarton an.
-8. Übergeben Sie das Paket an den Versanddienstleister.
-
-Bei Bedarf können Sie sich per E-Mail (Azure@quantiumsolutions.com) oder telefonisch mit dem Support von Quantium Solutions in Verbindung setzen.
-
-Beachten Sie bei telefonischen Anfragen im Zusammenhang mit Ihrer Bestellung Folgendes:
-
-- Fordern Sie zuerst per E-Mail eine Abholung an.
-- Geben Sie am Telefon den Namen Ihrer Bestellung an.
+5. Reservieren Sie online unter dem [DHL-Link](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference) einen Abholtermin.
 
 ::: zone target="chromeless"
 

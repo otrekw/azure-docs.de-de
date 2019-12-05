@@ -1,21 +1,21 @@
 ---
-title: Festlegen von Berechtigungen für Data Lake Storage Gen2 mit Azure Storage-Explorer
+title: 'Azure Storage-Explorer: Verwalten des Zugriffs in Azure Data Lake Storage Gen2'
 description: In dieser Anleitung erfahren Sie, wie Sie mit dem Azure Storage-Explorer Berechtigungen für Dateien und Verzeichnisse in Ihrem Azure Data Lake Storage Gen2-fähigen Speicherkonto festlegen.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/11/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 2cc93ad9ae1d9d6d21064a2a80c3d62bf661dabc
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: b34103e521def678acce17e3292e04fca95b5e6e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992277"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327979"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2
+# <a name="use-azure-storage-explorer-to-manage-access-in-azure-data-lake-storage-gen2"></a>Verwenden von Azure Storage-Explorer zum Verwalten des Zugriffs in Azure Data Lake Storage Gen2
 
 Dateien, die in Azure Data Lake Storage Gen2 gespeichert sind, unterstützen differenzierte Berechtigungen und die Verwaltung von Zugriffssteuerungslisten (Access Control Lists, ACLs). In Kombination ermöglichen Ihnen differenzierte Berechtigungen und die ACL-Verwaltung den Zugriff auf Ihre Daten auf sehr präzise Weise.
 
