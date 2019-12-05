@@ -1,19 +1,14 @@
 ---
-title: Verwenden von Helm-Repositorys in Azure Container Registry
+title: Speichern von Helm-Diagrammen
 description: Informationen zum Verwenden eines Helm-Repositorys mit Azure Container Registry zum Speichern von Diagrammen für Ihre Anwendungen
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 09/24/2018
-ms.author: iainfou
-ms.openlocfilehash: 2135a3a5a8f14cf6c2e7fd2984d9b221e2445c1d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 0c5e66d5f2fc3dd3c2d8c0a975c3e9d1c813732d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68309508"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456347"
 ---
 # <a name="use-azure-container-registry-as-a-helm-repository-for-your-application-charts"></a>Verwenden Sie Azure Container Registry als Helm-Repository für Ihre Anwendungsdiagramme
 
@@ -226,7 +221,7 @@ Weitere Informationen zur Verwendung und Verwaltung von Azure Container Registry
 <!-- LINKS - external -->
 [helm]: https://helm.sh/
 [helm-install]: https://docs.helm.sh/using_helm/#installing-helm
-[develop-helm-charts]: https://docs.helm.sh/developing_charts/
+[develop-helm-charts]: https://helm.sh/docs/topics/charts/
 [semver2]: https://semver.org/
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 

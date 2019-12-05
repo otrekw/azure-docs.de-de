@@ -8,13 +8,12 @@ ms.date: 11/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 94e33c855327e70f486746bcd781491823324dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6382159c2a9d73b9db21dd0467be0e68cf4b4c2d
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490418"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456598"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur
 
@@ -98,6 +97,9 @@ Jedes Element im Bereitstellungsmanifest enthält spezifische Informationen zu e
    * `on-failure` – Wenn das Modul abstürzt, wird es vom IoT Edge-Agent neu gestartet. Wenn das Modul ordnungsgemäß heruntergefahren wird, führt der IoT Edge-Agent keinen Neustart des Moduls aus.
    * `on-unhealthy` – Wenn das Modul abstürzt oder als fehlerhaft betrachtet wird, startet es der IoT Edge-Agent neu.
    * `always` – Wenn das Modul abstürzt, als fehlerhaft betrachtet oder auf irgendeine Weise heruntergefahren wird, startet es der IoT Edge-Agent neu. 
+* **imagePullPolicy** – Gibt an, ob der IoT Edge-Agent versucht, das neueste Image für ein Modul automatisch abzurufen. Wenn Sie keinen Wert angeben, ist der Standardwert *onCreate*. Mögliche Werte sind: 
+   * `on-create` – Wenn ein Modul gestartet oder basierend auf einem neuen Bereitstellungsmanifest aktualisiert wird, versucht der IoT Edge-Agent, das Modulimage aus der Containerregistrierung zu pullen.
+   * `never` – Der IoT Edge-Agent wird niemals versuchen, das Modulimage aus der Containerregistrierung zu pullen. Die Erwartung ist, dass das Modulimage auf dem Gerät zwischengespeichert wird und alle Updates des Modulimage manuell vorgenommen oder von einer Drittanbieterlösung verwaltet werden. 
 
 Der IoT Edge-Agent sendet eine Runtimeantwort an IoT Hub. Im Folgenden sehen Sie eine Liste der möglichen Antworten:
   * 200 – OK

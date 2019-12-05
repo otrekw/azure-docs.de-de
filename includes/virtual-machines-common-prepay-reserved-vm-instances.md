@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08/29/2019
-ms.openlocfilehash: 29cf947d1e9d26460dc34a6417e76b68bb75e9dc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/21/2019
+ms.openlocfilehash: f583796fc353852ef3898e28fa96524e08cfb4ad
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005486"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414589"
 ---
 Wenn Sie an eine reservierte Azure-VM-Instanz committen, können Sie Geld sparen. Der Reservierungsrabatt wird automatisch auf die Anzahl der ausgeführten virtuellen Computer angewendet, die dem Reservierungsbereich und den Reservierungsattributen entsprechen. Sie müssen einem virtuellen Computer keine Reservierung zuweisen, um die Rabatte zu erhalten. Beim Erwerb reservierter Instanzen wird nur der Computeteil ihrer VM-Nutzung abgedeckt. Bei Windows-VMs wird die Verwendungsmessung in zwei separate Verbrauchseinheiten aufgeteilt. Es gibt eine Computeverbrauchseinheit, die mit der Linux-Verbrauchseinheit identisch ist, und eine Windows-IP-Verbrauchseinheit. Die Gebühren, die Ihnen beim Kauf angezeigt werden, gelten nur für die Computekosten. Gebühren enthalten keine Windows-Softwarekosten. Weitere Informationen zu Softwarekosten finden Sie unter [In Azure Reserved VM Instances nicht enthaltene Softwarekosten](../articles/billing/billing-reserved-instance-windows-software-costs.md).
 
@@ -79,7 +79,6 @@ Reservierte VM-Instanzen sind bis auf wenige Ausnahmen für die meisten VM-Grö�
 ## <a name="buy-a-reserved-vm-instance"></a>Kaufen einer reservierten VM-Instanz
 
 Sie können eine reservierte VM-Instanz im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) erwerben. Bezahlen Sie die Reservierung [im Voraus oder mit monatlichen Zahlungen](../articles/billing/billing-monthly-payments-reservations.md).
-
 Diese Anforderungen gelten für den Erwerb einer reservierten VM-Instanz:
 
 - Sie müssen in einer „Besitzer“-Rolle für mindestens ein EA-Abonnement oder ein Abonnement mit einem Satz für nutzungsbasierte Bezahlung sein.
@@ -92,6 +91,9 @@ So kaufen Sie ein Instanz:
 1. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 1. Klicken Sie auf **Hinzufügen**, um eine neue Reservierung zu erwerben, und klicken Sie dann auf **Virtueller Computer**.
 1. Geben Sie die erforderlichen Felder ein. Ausgeführte VM-Instanzen, die den ausgewählten Attributen entsprechen, sind für den Reservierungsrabatt berechtigt. Die tatsächliche Anzahl der VM-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
+
+Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere hinzufügen** verwenden, um schnell weitere Instanzen hinzuzufügen. Die Option ist für andere Abonnementtypen nicht verfügbar.
+
 
 | Feld      | BESCHREIBUNG|
 |------------|--------------|
