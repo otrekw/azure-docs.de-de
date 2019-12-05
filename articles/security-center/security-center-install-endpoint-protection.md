@@ -1,6 +1,6 @@
 ---
 title: Behandeln von Endpoint Protection-Problemen mit Azure Security Center | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Endpoint Protection-Probleme in Azure Security Center behandeln.
+description: Erfahren Sie mehr über die Überwachung Ihrer Endpoint Protection durch das Security Center und wie Sie auftretende Probleme beheben können.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: memildin
-ms.openlocfilehash: b1bcce1e94a64253986ad9b1fd77874ba0a39839
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 70b7f511c32013a5dbc9369a2dfba2b8cd5f9145
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202074"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558611"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Behandeln von Endpoint Protection-Problemen mit Azure Security Center
-Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf dem Blatt „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
+Azure Security Center überwacht den Status des Antischadsoftware-Schutzes und meldet diesen auf der Seite „Endpoint protection issues“ (Endpoint Protection-Probleme). Security Center hebt Probleme wie erkannte Bedrohungen und unzureichenden Schutz hervor, die Ihre virtuellen Computer (VMs) und physischen Computer anfällig für Antischadsoftwarebedrohungen machen können. Mithilfe der Informationen unter **Endpoint protection issues** (Endpoint Protection-Probleme) können Sie die Behandlung der erkannten Probleme planen.
 
 Security Center meldet folgende Endpoint Protection-Probleme:
 
@@ -30,7 +30,7 @@ Security Center meldet folgende Endpoint Protection-Probleme:
 - Endpoint Protection-Integrität:
 
   - Signatur veraltet: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese verfügt jedoch nicht über die neuesten Antischadsoftware-Signaturen.
-  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert.   Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-services.md#endpoint-supported).
+  - Kein Echtzeitschutz: Auf diesen virtuellen und physischen Computern ist eine Antischadsoftware-Lösung installiert, diese ist jedoch nicht für Echtzeitschutz konfiguriert. Der Dienst wurde möglicherweise deaktiviert, oder Security Center kann den Status nicht abrufen, da die Lösung nicht unterstützt wird. Eine Liste mit unterstützten Lösungen finden Sie unter [Partnerintegration in Azure Security Center](security-center-services.md#endpoint-supported).
   - Keine Berichterstattung: Von der installierten Antischadsoftware-Lösung werden keine Daten gemeldet.
   - Unbekannt: Eine Antischadsoftware-Lösung ist installiert, aber der Status ist unbekannt, oder es wird ein unbekannter Fehler gemeldet.
 
@@ -40,7 +40,7 @@ Security Center meldet folgende Endpoint Protection-Probleme:
     >
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-Endpoint Protection-Probleme werden in Security Center als Empfehlung präsentiert.  Wenn Ihre Umgebung für Antischadsoftwarebedrohungen anfällig ist, wird diese Empfehlung unter **Empfehlungen** und unter **Compute** angezeigt. Zum Anzeigen des Dashboards **Endpoint protection issues** (Endpoint Protection-Probleme) muss der Compute-Workflow verwendet werden.
+Endpoint Protection-Probleme werden in Security Center als Empfehlung präsentiert. Wenn Ihre Umgebung für Antischadsoftwarebedrohungen anfällig ist, wird diese Empfehlung unter **Empfehlungen** und unter **Compute** angezeigt. Zum Anzeigen des Dashboards **Endpoint protection issues** (Endpoint Protection-Probleme) muss der Compute-Workflow verwendet werden.
 
 In diesem Beispiel verwenden wir **Compute**.  Sie erfahren, wie Sie Antischadsoftware auf virtuellen Azure-Computern und auf Azure-fremden Computern installieren.
 

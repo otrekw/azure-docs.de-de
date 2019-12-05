@@ -1,6 +1,6 @@
 ---
 title: Überwachung der Dateiintegrität in Azure Security Center | Microsoft-Dokumentation
-description: " Erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center aktivieren. "
+description: In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/13/2019
 ms.author: memildin
-ms.openlocfilehash: f7f5c257b23cd273a2cda40f874f5edfc62c0dbd
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: cfa767a42800ceaf78fe007a8468fe9113a2d412
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202200"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558783"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Überwachung der Dateiintegrität in Azure Security Center
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Überwachung der Dateiintegrität in Azure Security Center konfigurieren.
@@ -93,7 +93,7 @@ Das Dashboard **Überwachung der Dateiintegrität** zeigt die Arbeitsbereiche an
 
 ![Dashboard „Überwachung der Dateiintegrität“][6]
 
-Im Dashboard „Überwachung der Dateiintegrität“ für einen Arbeitsbereich wird Folgendes angezeigt:
+Im Dashboard „Überwachung der Dateiintegrität“ für einen Arbeitsbereich werden folgende Details angezeigt:
 
 - Die Gesamtanzahl der mit dem Arbeitsbereich verbundenen Computer
 - Die Gesamtanzahl der Änderungen, die im ausgewählten Zeitraum aufgetreten sind
@@ -199,7 +199,7 @@ Sie können die Überwachung der Dateiintegrität deaktivieren. Die Überwachung
 4. Klicken Sie auf **Entfernen**, um sie zu deaktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie mehr darüber erfahren, wie die Überwachung der Dateiintegrität in Security Center verwendet wird. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
+In diesem Artikel haben Sie mehr darüber erfahren, wie die Überwachung der Dateiintegrität in Security Center verwendet wird. Weitere Informationen zu Security Center finden Sie auf den folgenden Seiten:
 
 * [Festlegen von Sicherheitsrichtlinien:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
 * [Verwalten von Sicherheitsempfehlungen:](security-center-recommendations.md) Erfahren Sie, wie Empfehlungen Ihnen beim Schutz Ihrer Azure-Ressourcen helfen.
