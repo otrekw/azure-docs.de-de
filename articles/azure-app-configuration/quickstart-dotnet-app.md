@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: f1fd1c21789c272bf8deae72ef64f2bbb1c6b3cb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707433"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185061"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer .NET Framework-App mit Azure App Configuration
 
@@ -112,7 +112,7 @@ In dieser Schnellanleitung integrieren Sie Azure App Configuration in eine auf .
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie einen neuen App Configuration-Speicher erstellt und mit einer .NET Framework-Konsolen-App verwendet. Der Wert `AppSettings` von `ConfigurationManager` ändert sich nach dem Start der Anwendung nicht mehr. Die Bibliothek des .NET Standard-Konfigurationsanbieters App Configuration kann jedoch auch in einer .NET Framework-App verwendet werden. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre .NET Framework-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
+In diesem Schnellstart haben Sie einen neuen App Configuration-Speicher erstellt und mit einer .NET Framework-Konsolen-App verwendet. Der Wert `AppSettings` von `ConfiguratoinManager` ändert sich nach dem Start der Anwendung nicht mehr. Die Bibliothek des .NET Standard-Konfigurationsanbieters App Configuration kann jedoch auch in einer .NET Framework-App verwendet werden. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre .NET Framework-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
 
 > [!div class="nextstepaction"]
 > [Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App](./enable-dynamic-configuration-dotnet.md)
