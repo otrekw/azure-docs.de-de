@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry-Webhooks
-description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys bestimmte Aktionen stattfinden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Webhooks zum Reagieren auf Registrierungsaktionen
+description: Erfahren Sie, wie Sie Webhooks verwenden, um Ereignisse auszulösen, wenn in einem Ihrer Registrierungsrepositorys Push- oder Pull-Aktionen stattfinden.
 ms.topic: article
 ms.date: 05/24/2019
-ms.author: danlep
-ms.openlocfilehash: 59e8d4979e7be02d6097e1c3eccc44e64da87e95
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311590"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454379"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Verwenden von Azure Container Registry-Webhooks
 

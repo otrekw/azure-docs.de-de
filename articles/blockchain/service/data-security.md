@@ -1,21 +1,15 @@
 ---
 title: Sicherheit in Azure Blockchain
 description: Datenzugriff und Sicherheitskonzepte des Azure Blockchain-Diensts
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/22/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 63e61844ddb5bd0f0ed52b67e26ea5bf1857fd2b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.reviewer: janders
+ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579922"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455714"
 ---
 # <a name="azure-blockchain-service-security"></a>Sicherheit in Azure Blockchain
 
@@ -65,4 +59,4 @@ Konstellationsschlüssel werden zum eindeutigen Identifizieren von Quorum-Knoten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Konfigurieren von Azure Blockchain-Transaktionsknoten](configure-transaction-nodes.md)
+Siehe [Konfigurieren des Azure Active Directory-Zugriff für Azure Blockchain Service](configure-aad.md)

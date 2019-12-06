@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: d3b9284282a7ee14cde2461598c81e6dfdfd9f72
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: a45f273078a622de5e256457fc45b6cb6cae512f
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316744"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74464139"
 ---
 # <a name="remove-azure-sentinel-from-your-tenant"></a>Entfernen von Azure Sentinel von Ihrem Mandanten
 
@@ -38,7 +38,7 @@ Beim Installieren von Azure Sentinel wird im Hintergrund die Lösung **SecurityI
 3.  Wählen Sie am oberen Rand der Seite die Option **Löschen** aus.
 
     > [!IMPORTANT]
-    > Wenn Sie den Arbeitsbereich löschen, werden der Arbeitsbereich und Azure Sentinel aus Ihrem Mandanten in Azure Monitor entfernt.
+    > Wenn Sie den Arbeitsbereich entfernen, wirkt sich dies möglicherweise auf andere Lösungen und Datenquellen aus, die diesen Arbeitsbereich verwenden, darunter Azure Monitor. Unter [Auflisten installierter Überwachungslösungen](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions) erfahren Sie, wie Sie überprüfen können, welche Lösungen diesen Arbeitsbereich verwenden. Unter [Grundlegendes zur erfassten Datenmenge](../azure-monitor/platform/manage-cost-storage.md#understanding-ingested-data-volume) erfahren Sie, wie Sie überprüfen können, welche Daten welcher Lösungen im Arbeitsbereich erfasst werden.
 
     ![Löschen der Lösung „SecurityInsights“](media/offboard/delete-solution.png)
 

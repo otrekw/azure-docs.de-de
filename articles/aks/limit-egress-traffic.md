@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: mlearned
-ms.openlocfilehash: cfef8ff79f62eca9946dcbb49cafc253f36ab7bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 208ffaa4c78e00031e41b6e2b8c01edb667b54a6
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472748"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481149"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -132,6 +132,17 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AK
 | *.oms.opinsights.azure.com | HTTPS: 443 | Diese Adresse wird von omsagent verwendet, mit dem der Log Analytics-Dienst authentifiziert wird. |
 |*.microsoftonline.com | HTTPS: 443 | Wird zum Authentifizieren und Senden von Metriken an Azure Monitor verwendet. |
 |*.monitoring.azure.com | HTTPS: 443 | Wird zum Senden von Metrikdaten an Azure Monitor verwendet. |
+
+## <a name="required-addresses-and-ports-with-azure-dev-spaces-enabled"></a>Erforderliche Adressen und Ports mit aktiviertem Azure Dev Spaces-Dienst
+
+Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind für AKS-Cluster mit aktiviertem Azure Dev Spaces-Dienst erforderlich.
+
+| FQDN                                    | Port      | Zweck      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | Diese Adresse wird verwendet, um Linux Alpine und andere Azure Dev Spaces-Images zu pullen. |
+| gcr.io | HTTP:443 | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
+| storage.googleapis.com | HTTP:443 | Diese Adresse wird zum Abrufen von Helm/Tiller-Images verwendet. |
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | Dieser vollqualifizierte Domänenname (FQDN) dient der Kommunikation mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter %USERPROFILE%\.azds\settings.json. |
 
 ## <a name="required-addresses-and-ports-for-aks-clusters-with-azure-policy-in-public-preview-enabled"></a>Erforderliche Adressen und Ports für AKS-Cluster mit aktiviertem Azure Policy (in der öffentlichen Vorschau)
 

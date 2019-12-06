@@ -1,6 +1,6 @@
 ---
-title: Ändern Ihres Kennworts im Portal „Mein Konto“ – Azure Active Directory | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie im Portal „Mein Konto“ auf der Seite "Kennwort ändern" das Kennwort für Ihr Geschäfts-, Schul-oder Unikonto ändern können.
+title: Ändern des Kennworts Ihres Geschäfts-, Schul- oder Unikontos – Azure AD
+description: Erfahren Sie, wie Sie im Portal „Mein Konto“ auf der Seite „Kennwort ändern“ das Kennwort für Ihr Geschäfts-, Schul-oder Unikonto ändern können.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4716ef932debe50bfe0aee6519b53e3a19e8d51
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586955"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231870"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Ändern des Kennworts für Ihr Geschäfts-, Schul- oder Unikonto im Portal „Mein Konto“
 
@@ -56,4 +56,4 @@ Nach dem Ändern Ihres Kennworts können Sie folgende Schritte ausführen:
 
 - Anzeigen Ihrer [Anmeldeaktivitäten](my-account-portal-sign-ins-page.md)
 
-- Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation
+- Anzeigen von Informationen zur [Nutzung der datenschutzrelevanten Informationen](my-account-portal-privacy-page.md) in Ihrer Organisation.

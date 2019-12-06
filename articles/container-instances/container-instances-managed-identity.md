@@ -1,20 +1,14 @@
 ---
-title: Verwenden einer verwalteten Identität mit Azure Container Instances
-description: Erfahren Sie, wie Sie eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten über Azure Container Instances verwenden.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Aktivieren einer verwalteten Identität in einer Containergruppe
+description: Erfahren Sie, wie Sie in Azure Container Instances eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten aktivieren können.
 ms.topic: article
 ms.date: 10/22/2018
-ms.author: danlep
-ms.custom: ''
-ms.openlocfilehash: 773650e5e5e85d4a5fca0b3755f3730921cc5f2e
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325939"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533675"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 

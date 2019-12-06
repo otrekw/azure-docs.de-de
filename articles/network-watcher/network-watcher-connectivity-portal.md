@@ -1,5 +1,6 @@
 ---
-title: Problembehandlung für Verbindungen mit Azure Network Watcher – Azure-Portal | Microsoft-Dokumentation
+title: Problembehandlung bei Verbindungen – Azure-Portal
+titleSuffix: Azure Network Watcher
 description: Hier erfahren Sie, wie Sie über das Azure-Portal die Funktion zur Problembehandlung für Verbindungen von Azure Network Watcher nutzen.
 services: network-watcher
 documentationcenter: na
@@ -13,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702003"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275969"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Problembehandlung für Verbindungen mit Azure Network Watcher und dem Azure-Portal
 

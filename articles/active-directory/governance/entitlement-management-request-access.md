@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddc0a3788075701fb4633895e7b22fff2c15f60b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 81697293be235c12ca009c76a9fd9d3975e232fc
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173707"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554100"
 ---
 # <a name="request-access-to-an-access-package-in-azure-ad-entitlement-management"></a>Anfordern des Zugriffs auf ein Zugriffspaket in der Azure AD-Berechtigungsverwaltung
 
@@ -80,6 +80,30 @@ Nachdem Sie das Zugriffspaket im Portal „Mein Zugriff“ gefunden haben, könn
 Wenn Sie Zugriff auf ein Zugriffspaket anfordern, für das mehrere Richtlinien gelten, werden Sie möglicherweise aufgefordert, eine Richtlinie auszuwählen. Beispielsweise kann ein Zugriffspaketmanager ein Zugriffspaket mit zwei Richtlinien für zwei Gruppen interner Mitarbeiter konfigurieren. Die erste Richtlinie könnte einen Zeitraum von 60 Tagen für den Zugriff zulassen und eine Genehmigung erfordern. Die zweite Richtlinie könnte den Zugriff 2 Tage lang zulassen und keine Genehmigung erfordern. Bei diesem Szenario müssen Sie die Richtlinie auswählen, die Sie verwenden möchten.
 
 ![Portal „Mein Zugriff“ – Zugriff anfordern – mehrere Richtlinien](./media/entitlement-management-request-access/my-access-multiple-policies.png)
+
+## <a name="resubmit-a-request"></a>Erneutes Übermitteln einer Anforderung
+
+Wenn Sie den Zugriff auf ein Zugriffspaket anfordern, kann Ihre Anforderung abgelehnt werden, oder Ihre Anforderung kann ablaufen, wenn die genehmigenden Personen nicht rechtzeitig antworten. Wenn Sie Zugriff benötigen, können Sie es nochmal versuchen und Ihre Anforderung nochmal übermitteln. Im Folgenden wird erläutert, wie Sie eine Zugriffsanforderung nochmal übermitteln:
+
+**Erforderliche Rolle:** Anforderer
+
+1. Melden Sie sich beim Portal **Mein Zugriff** an.
+
+1. Klicken Sie auf **Anforderungsverlauf** im linken Navigationsmenü.
+
+1. Suchen Sie das Zugriffspaket, für das Sie eine Anforderung nochmal übermitteln.
+
+1. Klicken Sie auf das Häkchen, um das Zugriffspaket auszuwählen.
+
+1. Klicken Sie rechts vom ausgewählten Zugriffspaket auf den blauen Link **View** (Ansicht).
+    
+    ![Auswählen des Zugriffspakets und des Links „View“ (Ansicht)](./media/entitlement-management-request-access/resubmit-request-select-request-and-view.png)
+
+    Ein Bereich wird rechts mit dem Anforderungsverlauf für das Zugriffspaket geöffnet.
+    
+    ![Klicken auf die Schaltfläche „Erneut übermitteln“](./media/entitlement-management-request-access/resubmit-request-select-resubmit.png)
+
+1. Klicken Sie unten im Bereich auf die Schaltfläche **Erneut übermitteln**.
 
 ## <a name="cancel-a-request"></a>Abbrechen einer Anforderung
 

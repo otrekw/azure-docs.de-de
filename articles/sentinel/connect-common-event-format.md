@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/14/2019
+ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 92beb61125c9c6a41bafb9a0c477d81c34a2f5de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0fbdba5c3fbfdfab5267407ccec9c611d74a5e02
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520671"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463984"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbinden der externen Lösung mithilfe von Common Event Format
 
@@ -82,9 +82,9 @@ Stellen Sie sicher, dass Ihr Computer auch die folgenden Anforderungen erfüllt:
 ## <a name="step-1-deploy-the-agent"></a>SCHRITT 1: Bereitstellen des Agents
 
 In diesem Schritt müssen Sie den Linux-Computer auswählen, der als Proxy zwischen Azure Sentinel und Ihrer Sicherheitslösung fungieren soll. Sie müssen auf dem Proxycomputer ein Skript ausführen, das die folgenden Aufgaben übernimmt:
-- Installieren des Log Analytics-Agents und Konfigurieren des Agents, um auf Syslog-Nachrichten an Port 514 über TCP zu lauschen und die CEF-Nachrichten an Ihren Azure Sentinel-Arbeitsbereich zu senden.
-- Konfigurieren des Syslog-Daemons, um CEF-Nachrichten mithilfe von Port 25226 an den Log Analytics-Agent weiterzuleiten.
-- Festlegen des Syslog-Agents für das Erfassen von Daten und sicheres Senden der Daten an Log Analytics, um sie dort zu analysieren und anzureichern.
+- Installieren des Log Analytics-Agents und Konfigurieren nach Bedarf, um auf Syslog-Nachrichten zu lauschen
+- Konfigurieren des Syslog-Daemons, um auf Syslog-Nachrichten über den TCP-Port 514 zu lauschen und dann Weiterleiten von nur CEF-Nachrichten an den Log Analytics-Agent über den TCP-Port 25226
+- Festlegen des Syslog-Agents für das Erfassen von Daten und sicheres Senden der Daten an Azure Sentinel, um sie dort zu analysieren und anzureichern
  
  
 1. Klicken Sie im Azure Sentinel-Portal auf **Data connectors** (Datenconnectors), und wählen Sie **Common Event Format (CEF)** und dann **Open connector page** (Connectorseite öffnen) aus. 

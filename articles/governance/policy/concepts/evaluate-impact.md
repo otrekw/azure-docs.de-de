@@ -1,14 +1,14 @@
 ---
 title: Auswerten der Auswirkung einer neuen Azure-Richtlinie
-description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtlinie in Ihre Azure-Umgebung zu befolgen ist.
+description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtliniendefinition in Ihre Azure-Umgebung zu befolgen ist.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6c1a3ea764aedec7de5eab1f564176eaafead70b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 562fa2378356ddc1eac48b6ea5c160ebf655d525
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959830"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463524"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Auswerten der Auswirkung einer neuen Azure-Richtlinie
 
@@ -71,6 +71,6 @@ Die Implementierung und Zuweisung Ihrer Richtliniendefinition ist nicht der letz
 - Erfahren Sie mehr über die [Struktur von Richtliniendefinitionen](./definition-structure.md).
 - Erfahren Sie mehr über die [Struktur von Richtlinienzuweisungen](./assignment-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

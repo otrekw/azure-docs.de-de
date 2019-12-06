@@ -2,13 +2,13 @@
 title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in die delegierte Azure-Ressourcenverwaltung durchführt.
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131296"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483183"
 ---
 # <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -99,14 +99,14 @@ Vervollständigen Sie im Abschnitt **Übersicht** die folgenden Felder:
 |**Zusammenfassung**     | Kurze Beschreibung des Zwecks oder der Funktion Ihres Angebots. Diese wird in der Regel unterhalb des Titels angezeigt. Die maximale Länge beträgt 100 Zeichen.        |
 |**Long Summary** (Lange Zusammenfassung)     | Eine längere Zusammenfassung von Zweck und Funktion Ihres Angebots. Die maximale Länge beträgt 256 Zeichen.        |
 |**Beschreibung**     | Weitere Informationen zu Ihrem Angebot. Die maximale Länge des Felds beträgt 3000 Zeichen, und es unterstützt einfache HTML-Formatierung. Sie müssen die Begriffe „verwalteter Dienst“ oder „verwaltete Dienste“ in Ihrer Beschreibung verwenden.       |
-|**Marketing Identifier** (Marketingbezeichner)     | Ein eindeutiger, aussagekräftiger URL-Bezeichner. Dieser wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet *contoso* und Ihr Marketingbezeichner lautet *sampleApp*, dann ist die URL für Ihr Angebot im Azure Marketplace gleich *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
+|**Marketing Identifier** (Marketingbezeichner)     | Ein eindeutiger, aussagekräftiger URL-Bezeichner. Dieser Bezeichner darf nur aus klein geschriebenen alphanumerischen Zeichen und Bindestrichen (-) bestehen. Er wird in den Marketplace-URLs für dieses Angebot verwendet. Angenommen, Ihre Herausgeber-ID lautet *contoso* und Ihr Marketingbezeichner lautet *sampleApp*, dann ist die URL für Ihr Angebot im Azure Marketplace gleich *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* .        |
 |**Preview Subscription IDs** (Abonnement-IDs für die Vorschauversion)     | Sie können zwischen 1 und 100 Abonnement-IDs hinzufügen. Die diesem Abonnement zugeordneten Kunden können das Angebot in Azure Marketplace anzeigen, bevor es live geschaltet wird. Wir schlagen vor, dass Sie hier Ihre eigenen Abonnements einschließen, damit Sie eine Vorschau anzeigen können, wie Ihr Angebot im Azure Marketplace angezeigt wird, bevor Sie es für Kunden verfügbar machen.  (Microsoft-Support- und -Technikteams können Ihr Angebot auch während dieses Vorschauzeitraums anzeigen.)   |
 |**Nützliche Links**     | URLs im Zusammenhang mit Ihrem Angebot, z. B. Dokumentation, Anmerkungen zu dieser Version, FAQs usw.        |
 |**Vorgeschlagene Kategorien (max. 5)**     | Mindestens eine Kategorie (bis zu fünf), die auf Ihr Angebot zutrifft. Diese Kategorien helfen Kunden dabei, Ihr Angebot in Azure Marketplace und im Azure-Portal zu ermitteln.        |
 
 Im Abschnitt **Marketingartefakte** können Sie Logos und andere Ressourcen hochladen, die mit Ihrem Angebot angezeigt werden sollen. Optional können Sie Screenshots oder Links zu Videos hochladen, die Kunden dabei helfen können, Ihr Angebot besser zu verstehen.
 
-Vier Logogrößen sind erforderlich: **Klein (40 x 40)** , **Mittel (90 x 90)** , **Groß (115 x 115)** und **Breit (255 x 155)** . Befolgen Sie die folgenden Richtlinien für Ihre Logos:
+Vier Logogrößen sind erforderlich: **Klein (40 x 40)** , **Mittel (90 x 90)** , **Groß (115 x 115)** und **Breit (255 x 115)** . Befolgen Sie die folgenden Richtlinien für Ihre Logos:
 
 - Die Farbpalette des Azure-Designs ist einfach und geradlinig. Beschränken Sie die Anzahl der Primär- und Sekundärfarben auf Ihrem Logo.
 - Die Designfarben des Azure-Portals sind Weiß und Schwarz. Verwenden Sie diese Farben nicht als Hintergrundfarbe für Ihr Logo. Verwenden Sie eine Farbe, die Ihr Logo im Portal ideal zur Geltung bringt. Sie sollten einfache Primärfarben verwenden.

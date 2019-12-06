@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Bot-Schutz für Web Application Firewall mit Azure Front Door (Vorschau)
+title: Konfigurieren von Bot-Schutz für WAF mit Azure Front Door (Vorschau)
 description: Erfahren Sie mehr über Web Application Firewall (WAF).
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: 9a8901e3763b10b7ee00c10f4eec08a8325d7dec
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 95660f764d28172ecb55a4952b785fea5f2aa4bb
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510171"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186714"
 ---
 # <a name="configure-bot-protection-for-web-application-firewall-preview"></a>Konfigurieren von Bot-Schutz für Web Application Firewall (Vorschau)
 In diesem Artikel wird erläutert, wie Sie Bot-Schutzregeln in Azure Web Application Firewall (WAF) für Front Door über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage konfigurieren.

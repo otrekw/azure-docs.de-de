@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511907"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167563"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -38,6 +38,9 @@ Technische Validierungsprofile werden in der Reihenfolge ausgeführt, in der sie
 Technische Validierungsprofile können bedingt ausgeführt werden, basierend auf Vorbedingungen, die im **ValidationTechnicalProfiles**-Element definiert sind. Beispielsweise können Sie überprüfen, ob ein bestimmter Anspruch vorhanden ist, oder ob ein Anspruch gleich oder ungleich dem angegebenen Wert ist.
 
 Ein selbstbestätigtes technisches Profil kann definieren, dass ein technisches Validierungsprofil verwendet wird, um einige oder alle seiner Ausgabeansprüche zu validieren. Alle Eingabeansprüche des technischen Profils, auf das verwiesen wird, müssen in den Ausgabeansprüchen des verweisenden technischen Validierungsprofils enthalten sein.
+
+> [!NOTE]
+> Nur selbstbestätigte technische Profile können technische Validierungsprofile verwenden. Wenn Sie die Ausgabeansprüche von nicht selbst bestätigten technischen Profilen überprüfen müssen, sollten Sie einen zusätzlichen Orchestrierungsschritt in Ihrer User Journey in Betracht ziehen, um das technische Profil für die Validierung zu unterstützen.    
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 

@@ -1,26 +1,25 @@
 ---
 title: Abrufen von Metriken über die REST-API
-titlesuffix: Azure Load Balancer
-description: Verwenden Sie die Azure REST-APIs, um Metriken zur Integrität und Nutzung für Load Balancer für einen bestimmten Zeit- und Datumsbereich zu erfassen.
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erfahren Sie die ersten Schritte zur Verwendung der Azure REST-APIs, um Metriken zur Integrität und Nutzung für Azure Load Balancer zu erfassen.
 services: sql-database
 author: asudbring
-ms.reviewer: routlaw
-manager: jeconnoc
+manager: KumudD
 ms.service: load-balancer
 ms.custom: REST, seodec18
 ms.topic: article
-ms.date: 06/06/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 0d12dc04aff58dd6273d8d29d422bdbd9e7c886b
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 760ec8a945ab88b63dde2de75f5354818facf4f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274527"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225258"
 ---
-# <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Abrufen von Metriken zur Load Balancer-Nutzung über die REST-API
+# <a name="get-load-balancer-usage-metrics-using-the-rest-api"></a>Abrufen von Metriken zur Load Balancer-Nutzung über die REST-API
 
-In dieser exemplarischen Vorgehensweise wird gezeigt, wie die Anzahl der Bytes erfasst wird, die von einem [Load Balancer Standard](/azure/load-balancer/load-balancer-standard-overview) für ein Zeitintervall mithilfe der [Azure REST-API](/rest/api/azure/) verarbeitet werden.
+Erfassen Sie die Anzahl der Bytes, die von einem [Load Balancer Standard](/azure/load-balancer/load-balancer-standard-overview) für ein Zeitintervall mithilfe der [Azure REST-API](/rest/api/azure/) verarbeitet werden.
 
 Eine vollständige Dokumentation und weitere Beispiele für die REST-API sind in der [Azure Monitor-REST-Referenz](/rest/api/monitor) verfügbar. 
 
@@ -48,9 +47,9 @@ Die folgenden Header sind erforderlich:
 | subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
 | resourceGroupName | Der Name der Ressourcengruppe, die die Ressource enthält. Dieser Wert kann über die Azure Resource Manager-API, Befehlszeilenschnittstelle oder das Portal abgerufen werden. |
 | loadBalancerName | Der Azure Load Balancer-Name. |
-| metricnames | Durch Trennzeichen getrennte Liste der gültigen [Load Balancer-Metriken](/azure/load-balancer/load-balancer-standard-diagnostics). |
+| Metriknamen | Durch Trennzeichen getrennte Liste der gültigen [Load Balancer-Metriken](/azure/load-balancer/load-balancer-standard-diagnostics). |
 | api-version | API-Version, die für die Anforderung verwendet werden soll.<br /><br /> In diesem Dokument wird API-Version `2018-01-01` behandelt, die in der obigen URL enthalten ist.  |
-| Zeitraum | Die Zeitspanne der Abfrage. Es handelt sich um eine Zeichenkette mit dem folgenden Format `startDateTime_ISO/endDateTime_ISO`. Dieser optionale Parameter ist im Beispiel zum Zurückgeben eines gesamten Tages an Daten festgelegt. |
+| Zeitraum | Die Zeitspanne der Abfrage. Es handelt sich um eine Zeichenfolge mit dem folgenden Format `startDateTime_ISO/endDateTime_ISO`. Dieser optionale Parameter ist im Beispiel zum Zurückgeben eines gesamten Tages an Daten festgelegt. |
 | &nbsp; | &nbsp; |
 
 ### <a name="request-body"></a>Anforderungstext

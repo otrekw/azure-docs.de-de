@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086976"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384225"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Informationen zum Systemneustart für virtuelle Azure-Computer
 
@@ -67,7 +67,7 @@ Updates für mehrere Instanzen (VMs in einer Verfügbarkeitsgruppe) werden nache
 
 ### <a name="user-initiated-reboot-or-shutdown-actions"></a>Vom Benutzer eingeleitete Aktionen zum Neustarten oder Herunterfahren
 
-Wenn Sie einen Neustart über das Azure-Portal, Azure PowerShell, die Befehlszeilenschnittstelle oder die Zurücksetzungs-API durchführen, finden Sie das zugehörige Ereignis im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md).
+Wenn Sie einen Neustart über das Azure-Portal, Azure PowerShell, die Befehlszeilenschnittstelle oder die REST-API durchführen, finden Sie das zugehörige Ereignis im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md).
 
 Falls Sie die Aktion über das Betriebssystem des virtuellen Computers durchführen, finden Sie das Ereignis in den Systemprotokollen.
 

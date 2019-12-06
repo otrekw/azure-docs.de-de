@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: cdac8321ec4ac7b2e13c5545a2483527118daae3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606255"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533172"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen in Azure Cosmos DB
 
@@ -316,6 +316,17 @@ function tax(income) {
 ```
 
 Beispiele für das Registrieren und Verwenden einer benutzerdefinierten Funktion finden Sie im Artikel [Verwenden von benutzerdefinierten Funktionen in Azure Cosmos DB](how-to-use-stored-procedures-triggers-udfs.md#udfs).
+
+## <a name="logging"></a>Protokollierung 
+
+Wenn Sie gespeicherte Prozeduren, Trigger oder benutzerdefinierte Funktionen verwenden, können Sie die Schritte mithilfe des Befehls `console.log()` protokollieren. Mit diesem Befehl konzentriert sich eine Zeichenfolge auf das Debuggen, wenn `EnableScriptLogging` wie im folgenden Beispiel gezeigt auf TRUE festgelegt ist:
+
+```javascript
+var response = await client.ExecuteStoredProcedureAsync(
+document.SelfLink,
+new RequestOptions { EnableScriptLogging = true } );
+Console.WriteLine(response.ScriptLog);
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

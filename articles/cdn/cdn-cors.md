@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 204183fa25203a094eecd8df85a8bfd5dcf271cc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 169de21b6dbdafaaeff64e315daa104f3b6faadd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593971"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278100"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
@@ -63,12 +63,21 @@ Wenn Anforderungen schon an CDN gesendet wurden, bevor CORS auf den Ursprung kon
 ## <a name="multiple-origin-scenarios"></a>Szenarien mit mehreren Ursprüngen
 Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird es etwas komplizierter. Das Problem tritt auf, wenn CDN den **Access-Control-Allow-Origin** -Header für den ersten CORS-Ursprung zwischenspeichert.  Bei einer Folgeanforderung durch einen anderen CORS-Ursprung stellt das CDN den zwischengespeicherten **Access-Control-Allow-Origin**-Header bereit, dieser stimmt jedoch nicht überein.  Es gibt mehrere Möglichkeiten, dies zu korrigieren:
 
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard-Profile
+Unter Azure CDN Standard von Microsoft können Sie eine Regel in der [Standardregel-Engine](cdn-standard-rules-engine-reference.md) erstellen, um den **Origin**-Header (Ursprung) in der Anforderung zu überprüfen. Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin**-Header auf den gewünschten Wert fest. In diesem Fall wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
+
+![Regelbeispiel mit der Standard-Regel-Engine](./media/cdn-cors/cdn-standard-cors.png)
+
+> [!TIP]
+> Sie können Ihrer Regel zusätzliche Aktionen hinzufügen, um zusätzliche Antwortheader zu ändern, z. B. **Access-Control-Allow-Methods**.
+> 
+
+Unter [Azure CDN-Standard von Akamai](cdn-query-string.md) ist der einzige Mechanismus, um mehrere Ursprünge ohne Verwendung des Platzhalterursprungs zuzulassen, die Verwendung der **Zwischenspeicherung von Abfragezeichenfolgen**. Aktivieren Sie Abfragezeichenfolgen für den CDN-Endpunkt, und verwenden Sie anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von den einzelnen zulässigen Domänen. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.  
+
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium von Verizon
-Die beste Möglichkeit ist die Verwendung von **Azure CDN Premium von Verizon**, wodurch erweiterte Funktionen geboten werden. 
+Unter Verwendung der Verizon Premium-Regel-Engine müssen Sie [eine Regel erstellen](cdn-rules-engine.md), um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im Header **Origin** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
 
-Sie müssen [eine Regel erstellen](cdn-rules-engine.md) , um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im Header **Origin** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
-
-Es gibt zwei Möglichkeiten, dies mit der Regel-Engine zu tun. In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
+Es gibt zwei Möglichkeiten, dies mit der Premium-Regel-Engine zu tun. In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Ein regulärer Ausdruck mit allen gültigen Ursprüngen
 In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enthält, die Sie zulassen möchten: 
@@ -94,6 +103,5 @@ Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jede
 > 
 > 
 
-### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard-Profile
-Bei Azure CDN Standard-Profilen (**Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard von Verizon**) besteht die einzige Möglichkeit, mehrere Ursprünge zuzulassen, ohne Platzhalterzeichen zu verwenden, in der Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md). Aktivieren Sie Abfragezeichenfolgen für den CDN-Endpunkt, und verwenden Sie anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von den einzelnen zulässigen Domänen. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.  
+
 

@@ -1,6 +1,6 @@
 ---
-title: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch)
-description: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher (Cloud Services)
+title: Senden von klassischen Metriken von Azure Cloud Services an die Azure Monitor-Metrikendatenbank
+description: Hier erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für Azure Cloud Services (klassisch) an den Azure Monitor-Metrikspeicher senden.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844936"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304770"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
 

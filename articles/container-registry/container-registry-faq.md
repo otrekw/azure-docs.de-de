@@ -1,19 +1,16 @@
 ---
-title: Azure Container Registry – Häufig gestellte Fragen
+title: Häufig gestellte Fragen
 description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Container Registry-Dienst
-services: container-registry
 author: sajayantony
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622706"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456394"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -256,11 +253,13 @@ Quarantäne von Images ist derzeit eine Previewfunktion von ACR. Sie können den
 - [Überprüfen der Integrität mit `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker pull fails with error: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers) (Docker-Pullvorgang mit Fehler fehlgeschlagen: Net/http: Anforderung während des Wartens auf Verbindung abgebrochen [Client.Timeout-Wert beim Warten auf Header überschritten])
 - [docker push succeeds but docker pull fails with error: unauthorized: authentication required](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required) (Docker-Pushvorgang erfolgreich, aber Docker-Pullvorgang schlägt mit Fehler fehl: nicht autorisiert: Authentifizierung erforderlich)
+- [`az acr login` erfolgreich, aber für den Docker-Befehl tritt ein Fehler auf: "Nicht autorisiert: Authentifizierung erforderlich"](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
 - [Neue Benutzerberechtigungen gelten nach Aktualisierung möglicherweise nicht sofort](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Authentifizierungsinformationen sind für direkte Aufrufe der REST-API nicht im ordnungsgemäßen Format angegeben](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Warum werden im Azure-Portal nicht alle meine Repositorys oder Tags angezeigt?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Warum kann das Azure-Portal keine Repositorys oder Tags abrufen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
+- [Warum schlägt meine Pull- oder Pushanforderung mit einem unzulässigen Vorgang fehl?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
 - [Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Überprüfen der Integrität mit `az acr check-health`
@@ -318,6 +317,10 @@ So beheben Sie den Fehler
   ```
 
 Details zu `--signature-verification` finden Sie, indem Sie `man dockerd` ausführen.
+
+### <a name="az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required"></a>az acr login erfolgreich, aber für Docker tritt ein Fehler auf: "Nicht autorisiert: Authentifizierung erforderlich"
+
+Stellen Sie sicher, dass Sie für die Server-URL Kleinbuchstaben verwenden (z. B. `docker push myregistry.azurecr.io/myimage:latest`), auch wenn der Name der Registrierungsressource auch aus Großbuchstaben oder Groß- und Kleinbuchstaben besteht (z. B. `myRegistry`).
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>Aktivieren und Abrufen der Debugprotokolle des Docker-Daemons  
 
@@ -421,6 +424,13 @@ Der Browser ist möglicherweise nicht in der Lage, die Anforderung zum Abrufen v
 * DNS-Fehler
 
 Wenden Sie sich an Ihren Netzwerkadministrator, oder überprüfen Sie Ihre Netzwerkkonfiguration und -verbindungen. Führen Sie `az acr check-health -n yourRegistry` mithilfe Ihrer Azure CLI aus, um zu überprüfen, ob Ihre Umgebung eine Verbindung mit Container Registry herstellen kann. Außerdem könnten Sie es mit einer Inkognito- bzw. privaten Sitzung in Ihrem Browser probieren, um veraltete Browsercaches oder -cookies zu vermeiden.
+
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Warum schlägt meine Pull- oder Pushanforderung mit einem unzulässigen Vorgang fehl?
+
+Hier finden Sie einige Szenarios, bei denen Vorgänge möglicherweise nicht zulässig sind:
+* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) oder mit dem Azure-Portal ein Upgrade auf eine unterstützte [SKU](https://aka.ms/acr/skus) durch.
+* Das Image oder Repository ist möglicherweise gesperrt, sodass es nicht gelöscht oder aktualisiert werden kann. Sie können den Befehl [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) verwenden, um aktuelle Attribute anzuzeigen.
+* Einige Vorgänge sind nicht zulässig, wenn das Image in Quarantäne gestellt wird. Weitere Informationen zur Quarantäne finden Sie [hier](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Wie erfasse ich HTTP-Ablaufverfolgungen unter Windows?
 

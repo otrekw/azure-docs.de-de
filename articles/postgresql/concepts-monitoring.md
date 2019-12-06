@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: c69ffb30a37de8e6dc3e15aa1f7dcd6a9311d614
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.openlocfilehash: 799b2b6ee6074472a951e69dec7e9a87056373b4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67274301"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384025"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Überwachung und Optimierung in Azure Database for PostgreSQL – Einzelserver
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for PostgreSQL bietet verschiedene Überwachungsoptionen, um Einblicke in das Verhalten Ihres Servers zu gewähren.
@@ -52,6 +52,14 @@ Der [Abfragespeicher](concepts-query-store.md) dient dazu, die Abfrageleistung i
 
 ## <a name="performance-recommendations"></a>Leistungsempfehlungen
 Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) identifiziert Möglichkeiten zur Verbesserung der Workloadleistung. Unter „Leistungsempfehlungen“ erhalten Sie Empfehlungen zum Erstellen neuer Indizes, mit denen sich die Leistung Ihrer Workloads u. U. verbessern lässt. Um Indexempfehlungen zu generieren, berücksichtigt das Feature verschiedene Datenbankmerkmale einschließlich des Schemas und der Workload laut Abfragespeicher. Nach der Implementierung von Leistungsempfehlungen sollten Kunden die Leistung testen, um die Auswirkungen dieser Änderungen auszuwerten. 
+
+## <a name="service-health"></a>Dienstintegrität
+[Azure Service Health](../service-health/overview.md) bietet eine Ansicht für alle Dienstintegritätsbenachrichtigungen in Ihrem Abonnement. Sie können Dienstintegritätswarnungen einrichten, damit Sie über Ihre bevorzugten Kommunikationskanäle benachrichtigt werden, wenn Probleme oder Änderungen vorliegen, die sich auf die von Ihnen verwendeten Azure-Dienste und -Regionen auswirken können.
+
+Sie können geplante Wartungsereignisse für Azure Database for PostgreSQL-Einzelserver mithilfe des Ereignistyps **geplante Wartung** anzeigen. Informationen zum Erstellen von **Dienstintegritätswarnungen** finden Sie im Artikel [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications.md).
+
+> [!IMPORTANT]
+> Benachrichtigungen zur geplanten Wartung sind nur in der Vorschauversion für die Regionen „USA, Osten“ und „Vereinigtes Königreich, Süden“ verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).

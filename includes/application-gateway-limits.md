@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 6/5/2019
 ms.author: victorh
-ms.openlocfilehash: cd0ec07ebfffc839fedcdc76c9aff8e86556a7de
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: 3b692ed697d69deca4c50a0595cc54251bac4990
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70130086"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74174955"
 ---
 | Resource | Standard/maximales Limit | Hinweis |
 | --- | --- | --- |
@@ -33,7 +33,8 @@ ms.locfileid: "70130086"
 | Maximale Anzahl pfadbasierter Regeln pro URL-Zuordnung|100||
 | Umleitungskonfiguration |100<sup>1</sup>| |
 | Gleichzeitige WebSocket-Verbindungen |Mittelgroße Gateways 20K<br> Große Gateways 50K| |
-| Maximale URL-Länge|8\.000||
+| Maximale URL-Länge|32 KB| |
+| Maximale Headergröße für HTTP/2 |4 KB| |
 | Maximale Dateiuploadgröße (Standard) |2 GB | |
 | Maximale Dateiuploadgröße (WAF) |Mittlere WAF-Gateways, 100 MB<br>Große WAF-Gateways, 500 MB| |
 | WAF-Textgrößenbeschränkung (ohne Dateien)|128 KB||

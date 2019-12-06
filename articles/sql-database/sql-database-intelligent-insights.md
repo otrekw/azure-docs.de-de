@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810184"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151420"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung
 
@@ -65,6 +65,17 @@ Einen praktischen Überblick über die Verwendung von Intelligent Insights mit d
 >
 
 Intelligent Insights glänzt bei der Erkennung und Fehlerbehebung von Leistungsproblemen der SQL-Datenbank. Informationen zur Verwendung von Intelligent Insights zur Behandlung von Datenbankleistungsproblemen in SQL-Datenbank und verwalteten Instanzen finden Sie unter [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+
+## <a name="intelligent-insights-options"></a>Intelligent Insights-Optionen
+
+In Azure SQL-Datenbank stehen folgende Optionen für Intelligent Insights zur Verfügung:
+
+| Intelligent Insights-Option | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
+| :----------------------------- | ----- | ----- |
+| **Configure Intelligent Insights** (Intelligent Insights konfigurieren): Konfigurieren Sie eine Intelligent Insights-Analyse für Ihre Datenbanken. | Ja | Ja | 
+| **Stream insights to Azure SQL Analytics** (Erkenntnisse an die Azure SQL-Analyse streamen): Streamen Sie Erkenntnisse an die Azure SQL-Analyse-Überwachungslösung für Azure SQL-Datenbank. | Ja | Ja | 
+| **Stream insights to Event Hub** (Erkenntnisse an den Event Hub streamen): Streamen Sie Erkenntnisse an Event Hubs, damit weitere benutzerdefinierte Integrationen erfolgen können. | Ja | Ja | 
+| **Stream insights to Azure Storage** (Erkenntnisse an Azure Storage streamen): Streamen Sie Erkenntnisse an Azure Storage, damit diese näher analysiert und langfristig archiviert werden können. | Ja | Ja |
 
 ## <a name="configure-intelligent-insights"></a>Konfigurieren von Intelligent Insights
 

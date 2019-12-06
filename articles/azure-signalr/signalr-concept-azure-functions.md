@@ -1,17 +1,17 @@
 ---
-title: Erstellen von Echtzeit-Apps mit Azure Functions und Azure SignalR
-description: Ein Überblick über die Verwendung des Azure SignalR-Diensts in serverlosen Anwendungen.
+title: Erstellen von Echtzeit-Apps – Azure Functions und Azure SignalR Service
+description: Im folgenden Beispiel erfahren Sie, wie Sie eine serverlose Echtzeitwebanwendung mit Azure SignalR Service entwickeln.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 6a71647d452597c84e0df1beb6e9c6c3932d171b
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: cbb1fcf320a78f11045bf9627ffcc438af3e388a
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68639929"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157623"
 ---
 # <a name="build-real-time-apps-with-azure-functions-and-azure-signalr-service"></a>Erstellen von Echtzeit-Apps mit Azure Functions und Azure SignalR
 

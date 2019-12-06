@@ -1,5 +1,6 @@
 ---
-title: Automatisieren der NSG-Überwachung mit der Azure Network Watcher-Sicherheitsgruppenansicht | Microsoft-Dokumentation
+title: 'Automatisieren der NSG-Überwachung: Sicherheitsgruppenansicht'
+titleSuffix: Azure Network Watcher
 description: Diese Seite enthält Anweisungen zum Konfigurieren der Überwachung einer Netzwerksicherheitsgruppe.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165136"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278056"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>Automatisieren der NSG-Überwachung mit der Azure Network Watcher-Sicherheitsgruppenansicht
 

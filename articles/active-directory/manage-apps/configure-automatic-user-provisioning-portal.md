@@ -1,5 +1,5 @@
 ---
-title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure Active Directory| Microsoft-Dokumentation
+title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure AD
 description: Erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benutzerkontobereitstellung für Unternehmens-Apps verwalten.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315269"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558572"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 
@@ -85,9 +85,4 @@ Wenn die Bereitstellung für eine Anwendung zum ersten Mal aktiviert wird, legen
 
 Durch Ändern des **Bereitstellungsstatus** in **Aus** wird der Bereitstellungsdienst angehalten. In diesem Status werden von Azure keine Benutzer- oder Gruppenobjekte in der App erstellt, aktualisiert oder entfernt. Wenn Sie den Zustand wieder in **Ein** ändern, fährt der Dienst da fort, wo er aufgehört hat.
 
-Aktivieren Sie das Kontrollkästchen **Aktuellen Status löschen und Synchronisierung neu starten**, und klicken Sie auf **Speichern**, um Folgendes zu erreichen:
-
-* Beenden des Bereitstellungsdiensts
-* Neustarten der Dienste und erneutes Ausführen des anfänglichen Zyklus
-
-Diese Option ermöglicht Administratoren das erneute Starten des Bereitstellungsprozesses.
+Durch **Aktuellen Status löschen und Synchronisierung neu starten** wird ein Startzyklus ausgelöst. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn Ihre Anwendung sich derzeit in Quarantäne befindet oder wenn Sie eine Änderung an der Zuordnung Ihrer Attribute vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user). 

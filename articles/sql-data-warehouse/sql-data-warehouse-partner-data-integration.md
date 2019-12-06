@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2d0f92f7bf5b015a30e431354edb0c29f5e103f6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c6951ad129a564193a33a4c21fb97e9000ac8dc2
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046429"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555429"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>Partner für die Datenintegration bei SQL Data Warehouse
 Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vielzahl branchenführender Tools zurückgreifen. In diesem Artikel sind Partnerunternehmen von Microsoft aufgeführt, die offizielle Tools und Lösungen für die Datenintegration anbieten, die Azure SQL Data Warehouse unterstützen.
@@ -36,9 +36,10 @@ Für die Erstellung Ihrer eigenen Data Warehouse-Lösung können Sie auf eine Vi
 | ![Skyvia][11] |**Skyvia (Datenintegration)**<br>Die Skyvia-Datenintegration bietet einen Assistenten, der Datenimporte automatisiert. Der Assistent ermöglicht Ihnen das Migrieren von Daten zwischen verschiedene Arten von Quellen, beispielsweise CRM-Lösungen, Anwendungsdatenbanken, CSV-Dateien usw. |[Produktseite][segment_website]<br> |
 | ![SnapLogic][6] |**SnapLogic**<br>Mit der SnapLogic-Plattform können Kunden Daten schnell in und aus Microsoft Azure SQL Data Warehouse übertragen. Sie bietet die Möglichkeit, Hunderte von Anwendungen, Diensten und IoT-Szenarien in einer Lösung zu integrieren.|[Produktseite][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
 | ![StreamSets][15] |**StreamSets**<br>StreamSets bietet eine Datenintegrationsplattform für DataOps. Es operationalisiert den vollständigen Lebenszyklus von Entwurf, Bereitstellung und Durchführung der Integration von Daten in Azure SQL Data Warehouse. Sie können nicht nur in das Warehouse eingehende und von dort ausgehende Daten über Streaming- und Batch-Datenübermittlungsmethoden oder Datenübermittlungsmethoden zur Erfassung geänderter Daten schnell erfassen und integrieren, sondern auch kontinuierliche Vorgänge mit intelligenten Datenpipelines sicherstellen, die eine Ende-zu-Ende-Sichtbarkeit und -Resilienz des Datenflusses ermöglichen.|[Produktseite][streamsets_website]|
-| ![Talend][12] |**Talend Cloud**<br>Talend Cloud ist eine Integrationsplattform für Unternehmensdaten, mit der Sie auf beliebige cloudbasierte oder lokale Daten zugreifen und diese verknüpfen sowie transformieren können. Talend Cloud ist ein iPaaS-Angebot (Integration Platform-as-a-Service), das umfassende Konnektivität, integrierte Datenqualität und native Unterstützung für die neuesten Big Data- und Cloudtechnologien bietet. |[Produktseite][talend_website]<br> [Azure Marketplace][talend_marketplace] |
-| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta ist eine Lösung für Einzelpersonen und Organisationen, die Sie beim Untersuchen und Verknüpfen unterschiedlicher Daten für die Analyse unterstützt. Trifacta Wrangler ist zur Verarbeitung von Data Wrangling-Workloads konzipiert, die große Datenmengen und eine große Anzahl von Benutzern unterstützen müssen.|[Produktseite][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
-| ![WhereScape][14] |**Wherescape RED**<br> WhereScape RED ist eine integrierte Entwicklungsumgebung (Integrated Development Environment, IDE), die Automatisierungstools zum Optimieren von ETL-Workflows für Teams bereitstellt. Die IDE bietet optimierten nativen Code für gängige Datenziele, der auf bewährten Methoden beruht. Mit WhereScape RED können Sie das Entwickeln, Bereitstellen und Betreiben Ihrer Dateninfrastruktur beschleunigen.|[Produktseite][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
+| ![Talend][12] |**Talend Cloud**<br>Talend Cloud ist eine Integrationsplattform für Unternehmensdaten, mit der Sie auf beliebige cloudbasierte oder lokale Daten zugreifen und diese verknüpfen sowie transformieren können. Talend Cloud ist ein iPaaS-Angebot (Integration Platform-as-a-Service), das umfassende Konnektivität, integrierte Datenqualität und native Unterstützung für die neuesten Big Data- und Cloudtechnologien bietet. |[Produktseite][talend_website]<br> [Azure Marketplace][talend_marketplace] |
+| ![TimeXtender][13] |**TimeXtender**<br>Mithilfe des Discovery Hub von TimeXtender können Unternehmen ein modernes Datenzentrum erstellen. Die integrierte Datenverwaltungsplattform kann die Zeit für Datenerkenntnisse um das Zehnfache beschleunigen. Dabei wird über das tägliche Extrahieren, Transformieren und Laden (ETL) oder Extrahieren, Laden und Transformieren (ELT) hinausgegangen, indem für den Datenzugriff, die Datenmodellierung und die Konformität auf einer einzelnen Plattform eine Automatisierung und Funktionen bereitgestellt werden. Discover Hub bietet eine umfangreiche Datenfabric für Cloudanalysen. Dabei können Sie verschiedene Datensilos verbinden und integrieren, und Daten für die Analyse und KI katalogisieren, modellieren, verschieben und dokumentieren. | [Produktseite][timextender_website] |
+| ![Trifacta][14] |**Trifacta Wrangler**<br> Trifacta ist eine Lösung für Einzelpersonen und Organisationen, die Sie beim Untersuchen und Verknüpfen unterschiedlicher Daten für die Analyse unterstützt. Trifacta Wrangler ist zur Verarbeitung von Data Wrangling-Workloads konzipiert, die große Datenmengen und eine große Anzahl von Benutzern unterstützen müssen.|[Produktseite][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
+| ![WhereScape][15] |**Wherescape RED**<br> WhereScape RED ist eine integrierte Entwicklungsumgebung (Integrated Development Environment, IDE), die Automatisierungstools zum Optimieren von ETL-Workflows für Teams bereitstellt. Die IDE bietet optimierten nativen Code für gängige Datenziele, der auf bewährten Methoden beruht. Mit WhereScape RED können Sie das Entwickeln, Bereitstellen und Betreiben Ihrer Dateninfrastruktur beschleunigen.|[Produktseite][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -64,9 +65,10 @@ Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligenc
 [10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
 [11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
 [12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
-[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
-[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
-[15]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/timextender-logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[15]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
+[16]: ./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png
 
 
 
@@ -86,6 +88,7 @@ Weitere Informationen zu anderen Partnern finden Sie unter [Business Intelligenc
 [segment_website]:https://segment.com/
 [skyvia_website]:https://skyvia.com/
 [talend_website]:https://www.talend.com/
+[timextender_website]:https://www.timextender.com/
 [trifacta_website]:https://www.trifacta.com/
 [wherescape_website]:https://www.wherescape.com/
 [streamsets_website]:https://streamsets.com/partners/microsoft

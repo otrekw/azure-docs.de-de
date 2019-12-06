@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: aa905d1686939346827d07419a62fd6f299387ec
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012594"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561205"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Konfigurieren der Vermerkdauer in Time Series Insights
 
@@ -38,7 +38,7 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 
 1. Suchen Sie die vorhandene Time Series Insights-Umgebung. Wählen Sie im Azure-Portal im Menü auf der linken Seite **Alle Ressourcen** aus. Wählen Sie Ihre Time Series Insights-Umgebung aus.
 
-1. Klicken Sie unter der Überschrift **Einstellungen** auf **Konfigurieren**.
+1. Wählen Sie unter der Überschrift **Einstellungen** die Option **Speicherkonfiguration** aus.
 
     [![Wählen Sie „Konfigurieren“ und dann „Einstellungen“ aus](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox).
 
@@ -50,7 +50,7 @@ Ausführliche Informationen zu einem besseren Verständnis dieser Einstellungen 
 
     [![Datenaufbewahrung – Akzeptieren und Speichern](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox).
 
-1. Aktivieren Sie das Kontrollkästchen, das angibt, dass Sie die Dokumentation gelesen und das potenzielle Risiko von Datenverlusten verstanden haben. Wählen Sie zum Konfigurieren der Änderungen **Speichern** aus.
+1. Lesen Sie die Dokumentation, um die potenziellen Risiken von Datenverlusten zu verstehen. Wählen Sie zum Konfigurieren der Änderungen **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

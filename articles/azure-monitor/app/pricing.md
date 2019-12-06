@@ -6,14 +6,14 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: DaleKoetke
 ms.author: dalek
-ms.date: 10/28/2019
+ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 1749fb4c27a1bfa3048ec0e35c8a09556b0e995b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007736"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559093"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -69,7 +69,7 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 ### <a name="using-data-volume-metrics"></a>Verwenden von Metriken für Datenvolumen
 <a id="understanding-ingested-data-volume"></a>
 
-Um mehr über Ihre Datenvolumen zu erfahren, wählen Sie **Metriken** für Ihre Application Insights-Ressource aus, und fügen Sie ein neues Diagramm hinzu. Wählen Sie für die Diagrammmetrik unter **Protokollbasierte Metriken** die Option **Datenpunktvolumen** aus. Klicken Sie auf **Teilung anwenden**, und wählen Sie die Gruppierung nach **Telemetrieelementtyp** aus.
+Um mehr über Ihre Datenvolumen zu erfahren, wählen Sie **Metriken** für Ihre Application Insights-Ressource aus, und fügen Sie ein neues Diagramm hinzu. Wählen Sie für die Diagrammmetrik unter **Protokollbasierte Metriken** die Option **Datenpunktvolumen** aus. Klicken Sie auf **Teilung anwenden**, und wählen Sie die Gruppierung nach **`Telemetryitem`-Typ** aus.
 
 ![Verwenden von Metriken zum Überprüfen des Datenvolumens](./media/pricing/10-billing.png)
 
@@ -203,7 +203,7 @@ Wenn Sie die Aufbewahrungsdauer ändern möchten, rufen Sie in der Application I
 
 ![Anpassen der Volumenobergrenze für Telemetriedaten pro Tag](./media/pricing/pricing-005.png)
 
-Die Aufbewahrungsdauer kann auch [programmgesteuert mithilfe von PowerShell](powershell.md#set-the-data-retention) anhand des Parameters `retentionInDays` festgelegt werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Bereinigungsfunktion wird nur über Azure Resource Manager bereitgestellt und sollte mit äußerster Sorgfalt verwendet werden. 
+Die Aufbewahrungsdauer kann auch [programmgesteuert mithilfe von PowerShell](powershell.md#set-the-data-retention) anhand des Parameters `retentionInDays` festgelegt werden. Wenn Sie die Datenaufbewahrung auf 30 Tage festlegen, können Sie außerdem mit dem Parameter `immediatePurgeDataOn30Days` eine sofortige Bereinigung älterer Daten auslösen, was für konformitätsrelevante Szenarien nützlich sein kann. Diese Bereinigungsfunktion wird nur über Azure Resource Manager bereitgestellt und sollte mit äußerster Sorgfalt verwendet werden. Die tägliche Zurücksetzungszeit für das Datenvolumenlimit kann mithilfe von Azure Resource Manager konfiguriert werden, um den `dailyQuotaResetTime`-Parameter festzulegen. 
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Datenübertragungsgebühren bei Verwendung von Application Insights
 

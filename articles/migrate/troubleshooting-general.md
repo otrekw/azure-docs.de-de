@@ -5,14 +5,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 96c5190988d79885f3a1335b6fd431e028bba8fc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970649"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384061"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problembehandlung für Azure Migrate
 
@@ -229,6 +229,33 @@ Fehler 50004: „Es ist keine Verbindung mit einem Host oder Cluster möglich, d
     4. Speichern und schließen Sie die Datei „hosts“.
     5. Überprüfen Sie mithilfe der Applianceverwaltungs-App, ob die Appliance eine Verbindung mit den Hosts herstellen kann. Nach 30 Minuten sollten die neuesten Informationen für diese Hosts im Azure-Portal angezeigt werden.
 
+## <a name="application-discovery-issues"></a>Probleme bei der Anwendungsermittlung
+
+Die Ermittlung von Anwendungen wird derzeit nur für VMware-VMs unterstützt. Eine Unterstützung von Hyper-V-VMs und physischen Servern wird zukünftig hinzugefügt.
+
+Bei der Ermittlung von Anwendungen müssen Sie VM-Anmeldeinformationen in der Appliance angeben. Wenn Sie keine VM-Anmeldeinformationen in der Appliance angegeben haben, funktioniert die Anwendungsermittlung nicht. [Erfahren Sie mehr](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) über die Zugriffsrechte, die für vCenter Server und VMware-VMS erforderlich sind. Wenn Sie in der Appliance VM-Anmeldeinformationen angegeben haben und bei der Anwendungsermittlung ein Fehler auftritt, ermitteln Sie anhand der folgenden Tabelle die Ursache für den Fehler sowie die richtige Aktion zur Problembehandlung:
+
+**Fehlercode** | **Meldung** | **Mögliche Ursache** | **Empfohlene Maßnahme**
+--- | --- | --- | ---
+10000 | Die auf dem Server installierten Anwendungen können nicht ermittelt werden. | Dies kann vorkommen, wenn das auf dem Server ausgeführte Betriebssystem weder Windows noch Linux ist. | Die Ermittlung installierter Anwendungen wird nur für Windows- und Linux-Server unterstützt.
+10001 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Dies liegt an einem internen Fehler, weil in der Appliance einige Dateien fehlen. | Kontaktieren Sie den Microsoft-Support.
+10002 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Dies kann vorkommen, wenn der Ermittlungs-Agent in der Azure Migrate-Appliance nicht ordnungsgemäß funktioniert. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+10003 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Dies kann vorkommen, wenn der Ermittlungs-Agent nicht ordnungsgemäß funktioniert. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+10004 | Installierte Anwendungen für <Windows-/Linux->Computer können nicht ermittelt werden. |  In der Azure Migrate-Appliance wurden keine Anmeldeinformationen für den Zugriff auf <Windows-/Linux->Computer angegeben. | Fügen Sie in der Azure Migrate-Appliance Anmeldeinformationen hinzu, die auf die <Windows-/Linux->Computer zugreifen können.
+10005 | Der Zugriff auf den lokalen Server ist nicht möglich. | Dies kann vorkommen, wenn die für den Zugriff des Computers auf den Server angegebenen Anmeldeinformationen falsch sind. | Aktualisieren Sie die in der Appliance angegebenen Anmeldeinformationen, und stellen Sie sicher, dass der Zugriff auf den Server mit den Anmeldeinformationen möglich ist.
+10006 | Der Zugriff auf den lokalen Server ist nicht möglich. | Dies kann vorkommen, wenn das auf dem Server ausgeführte Betriebssystem weder Windows noch Linux ist. | Die Ermittlung installierter Anwendungen wird nur für Windows- und Linux-Server unterstützt.
+9000 | Die auf der VM installierten Anwendungen können nicht ermittelt werden. | Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt. | Installieren Sie die VMware-Tools auf der VM (oder installieren Sie sie neu), und überprüfen Sie, ob sie ausgeführt werden.
+9001 | Die auf der VM installierten Anwendungen können nicht ermittelt werden. | Die VMware-Tools sind möglicherweise nicht installiert oder beschädigt. | Installieren Sie die VMware-Tools auf der VM (oder installieren Sie sie neu), und überprüfen Sie, ob sie ausgeführt werden.
+9002 | Die auf der VM installierten Anwendungen können nicht ermittelt werden. | VMware-Tools werden möglicherweise nicht ausgeführt. | Installieren Sie die VMware-Tools auf der VM (oder installieren Sie sie neu), und überprüfen Sie, ob sie ausgeführt werden.
+9003 | Die auf dem Server installierten Anwendungen können nicht ermittelt werden. | Dies kann vorkommen, wenn das auf dem Server ausgeführte Betriebssystem weder Windows noch Linux ist. | Die Ermittlung installierter Anwendungen wird nur für Windows- und Linux-Server unterstützt.
+9004 | Die auf dem Server installierten Anwendungen können nicht ermittelt werden. | Dies kann vorkommen, wenn die VM ausgeschaltet ist. | Stellen Sie sicher, dass die VM eingeschaltet ist, um installierte Anwendungen auf dem Server zu ermitteln.
+9005 | Die auf der VM installierten Anwendungen können nicht ermittelt werden. | Dies kann vorkommen, wenn das auf der VM ausgeführte Betriebssystem weder Windows noch Linux ist. | Die Ermittlung installierter Anwendungen wird nur für Windows- und Linux-Server unterstützt.
+9006 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Dies kann vorkommen, wenn der Ermittlungs-Agent nicht ordnungsgemäß funktioniert. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+9007 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Dies kann vorkommen, wenn der Ermittlungs-Agent nicht ordnungsgemäß funktioniert. | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+9008 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Das Problem kann aufgrund eines internen Fehlers auftreten.  | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+9009 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Das Problem kann auftreten, wenn die Einstellungen der Windows-Benutzerkontensteuerung (UAC) auf dem Server restriktiv sind und die Ermittlung installierter Anwendungen verhindern. | Suchen Sie auf dem Server nach den Einstellungen für die Benutzerkontensteuerung, und konfigurieren Sie die UAC-Einstellung auf dem Server so, dass eine der beiden niedrigeren Stufen eingestellt ist.
+9010 | Die auf dem Server installierten Anwendungen können nicht abgerufen werden. | Das Problem kann aufgrund eines internen Fehlers auftreten.  | Das Problem sollte innerhalb von 24 Stunden automatisch behoben werden. Wenden Sie sich an den Microsoft-Support, wenn das Problem weiterhin besteht.
+8084 | Anwendungen können aufgrund eines VMware-Fehlers nicht ermittelt werden: <Exception from VMware> | Die Azure Migrate-Appliance verwendet VMware-APIs zum Ermitteln von Anwendungen. Das Problem kann aufgrund einer Ausnahme auftreten, die von vCenter Server beim Versuch der Ermittlung von Anwendungen ausgelöst wurde. Die Fehlermeldung von VMware wird in der Fehlermeldung im Portal angezeigt. | Lesen Sie die [VMware-Dokumentation](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), suchen Sie nach der Fehlermeldung, und befolgen Sie die Schritte zur Problembehandlung im VMware-Artikel, um das Problem zu beheben. Wenn Sie das Problem immer noch nicht beheben können, wenden Sie sich an den Microsoft-Support.
 
 
 ## <a name="fix-assessment-readiness"></a>Behebung: Bewertungsbereitschaft
@@ -321,13 +348,11 @@ Die Serverbewertung sammelt fortlaufend Leistungsdaten von lokalen Computern und
 - Falls Sie die Spitzenauslastung für den Zeitraum wählen möchten und keine Ausreißer verpassen möchten, sollten Sie das 99. Quantil als Quantilauslastung wählen.
 
 
-
 ## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>Ich kann die Abhängigkeitsvisualisierung für Azure Government nicht finden
 
 Azure Migrate ist bei der Funktion zur Visualisierung von Abhängigkeiten von Service Map abhängig. Da Service Map in Azure Government zurzeit nicht verfügbar ist, ist diese Funktionalität auch nicht in Azure Government verfügbar.
 
 ## <a name="dependencies-dont-show-after-installing-agents"></a>Abhängigkeiten werden nach der Installation von Agents nicht angezeigt
-
 
 Nachdem Sie die Agents für die Abhängigkeitsvisualisierung auf lokalen virtuellen Computern installiert haben, benötigt Azure Migrate üblicherweise 15 bis 30 Minuten, um die Abhängigkeiten im Portal anzuzeigen. Stellen Sie nach einer Wartezeit von mehr als 30 Minuten sicher, dass Microsoft Monitoring Agent (MMA) eine Verbindung zum Log Analytics-Arbeitsbereich herstellen kann.
 

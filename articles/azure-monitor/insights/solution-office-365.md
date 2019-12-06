@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 84af0484ed9fb792bef6bbbe9c53395b569acb3c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: aff6be1a6abf2550013b752ba4f796ffe255499f
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793862"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539043"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -198,8 +198,6 @@ Um das Administratorkonto zum ersten Mal zu aktivieren, müssen Sie die Administ
 > Sie werden möglicherweise zu einer Seite umgeleitet, die nicht vorhanden ist. Dies können Sie als Erfolg ansehen.
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>Abonnieren des Log Analytics-Arbeitsbereichs
-
-Als letzten Schritt müssen Sie die Anwendung für Ihren Log Analytics-Arbeitsbereich abonnieren. Dafür verwenden Sie ebenfalls ein PowerShell-Skript.
 
 Als letzten Schritt müssen Sie die Anwendung für Ihren Log Analytics-Arbeitsbereich abonnieren. Dafür verwenden Sie ebenfalls ein PowerShell-Skript.
 
@@ -461,15 +459,17 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
     # Create Authentication Context tied to Azure AD Tenant
     $authContext = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationContext" -ArgumentList $authority
     # Acquire token
-    $global:authResultARM = $authContext.AcquireToken($resourceAppIdURIARM, $clientId, $redirectUri, "Auto")
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $platformParameters = New-Object "Microsoft.IdentityModel.Clients.ActiveDirectory.PlatformParameters" -ArgumentList "Auto"
+    $global:authResultARM = $authContext.AcquireTokenAsync($resourceAppIdURIARM, $clientId, $redirectUri, $platformParameters)
+    $global:authResultARM.Wait()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $authHeader
     }
     
     Function Office-UnSubscribe-Call{
     
     #----------------------------------------------------------------------------------------------------------------------------------------------
-    $authHeader = $global:authResultARM.CreateAuthorizationHeader()
+    $authHeader = $global:authResultARM.Result.CreateAuthorizationHeader()
     $ResourceName = "https://manage.office.com"
     $SubscriptionId   = $Subscription[0].Subscription.Id
     $OfficeAPIUrl = $ARMResource + 'subscriptions/' + $SubscriptionId + '/resourceGroups/' + $ResourceGroupName + '/providers/Microsoft.OperationalInsights/workspaces/' + $WorkspaceName + '/datasources/office365datasources_'  + $SubscriptionId + $OfficeTennantId + '?api-version=2015-11-01-preview'
@@ -506,6 +506,8 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
     ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
+
+Sie werden zur Eingabe Ihrer Anmeldeinformationen aufgefordert. Geben Sie die Anmeldeinformationen für den Log Analytics-Arbeitsbereich an.
 
 ## <a name="data-collection"></a>Datensammlung
 

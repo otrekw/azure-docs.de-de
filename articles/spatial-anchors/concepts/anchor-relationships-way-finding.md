@@ -1,19 +1,19 @@
 ---
-title: Ankerbeziehungen und Wegeleitsysteme in Azure Spatial Anchors | Microsoft-Dokumentation
+title: Ankerbeziehungen und Wegeleitsysteme
 description: Enthält eine Beschreibung des konzeptionellen Modells von Ankerbeziehungen. Es wird beschrieben, wie Sie Anker in einem Bereich verbinden und die Nearby-API verwenden, um die Anforderungen eines Wegeleitsystem-Szenarios zu erfüllen.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 008269a5883750dc8899d896c101c6a05bf7e814
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969285"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270604"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Ankerbeziehungen und Wegeleitsysteme in Azure Spatial Anchors
 
@@ -60,11 +60,11 @@ Verbinden Sie die Anker wie folgt:
 
 ### <a name="connect-anchors-in-multiple-sessions"></a>Verbinden von Ankern in mehreren Sitzungen
 
-Sie können Raumanker auch in mehreren Sitzungen verbinden. Mit dieser Methode können Sie zunächst einige Anker und später dann weitere Anker erstellen und verbinden. 
+Sie können Raumanker auch in mehreren Sitzungen verbinden. Mit dieser Methode können Sie zunächst einige Anker und später dann weitere Anker erstellen und verbinden.
 
 Verbinden Sie Anker wie folgt in mehreren Sitzungen:
 
-1. Die App erstellt einige Anker mit einem CloudSpatialAnchorSession-Element. 
+1. Die App erstellt einige Anker mit einem CloudSpatialAnchorSession-Element.
 2. Später findet die App dann einen dieser Anker (z. B. Anker A), indem ein neues CloudSpatialAnchorSession-Element verwendet wird.
 3. Gehen Sie zu einem neuen Ort. Mit der zugrunde liegenden Mixed Reality- oder Augmented Reality-Plattform wird die Bewegung nachverfolgt.
 4. Erstellen Sie Anker C, indem Sie dasselbe CloudSpatialAnchorSession-Element verwenden. Die Anker A, B und C sind jetzt verbunden. Diese Beziehung wird vom Spatial Anchors-Dienst verwaltet.
@@ -73,7 +73,7 @@ Sie können dieses Verfahren später für weitere Anker und weitere Sitzungen fo
 
 ### <a name="verify-anchor-connections"></a>Überprüfen von Ankerverbindungen
 
-Die App kann überprüfen, ob zwei Anker verbunden sind, indem sie eine Abfrage für in der Nähe befindliche Anker durchführt. Wenn das Ergebnis der Abfrage den Zielanker enthält, wird die Ankerverbindung bestätigt. Falls die Anker nicht verbunden sind, kann die App versuchen, die Verbindung wiederherzustellen. 
+Die App kann überprüfen, ob zwei Anker verbunden sind, indem sie eine Abfrage für in der Nähe befindliche Anker durchführt. Wenn das Ergebnis der Abfrage den Zielanker enthält, wird die Ankerverbindung bestätigt. Falls die Anker nicht verbunden sind, kann die App versuchen, die Verbindung wiederherzustellen.
 
 Hier sind einige Gründe angegeben, warum beim Verbinden von Ankern ggf. ein Fehler auftritt:
 

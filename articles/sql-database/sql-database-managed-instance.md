@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/04/2019
-ms.openlocfilehash: 6c5b913835b2080f30ff3dd73e6a59c1043ecf5d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.openlocfilehash: db5ac9465e6b897690c54484de25fde462741fb3
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823291"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548393"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Was ist eine verwaltete Azure SQL-Datenbank-Instanz?
 
@@ -77,7 +77,7 @@ Das [vCore-basierte Kaufmodell](sql-database-service-tiers-vcore.md) für verwal
 Beim V-Kern-Modell können Sie verschiedene Hardwaregenerationen auswählen.
 
 - **Gen4**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v3 (Haswell) mit 2,4 GHz, angefügter SSD, physischen Kernen, 7 GB RAM pro Kern und Computegrößen zwischen 8 und 24 virtuellen Kernen.
-- **Gen5**: Logische CPUs basierend auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz,schnelle NVMe SSD, logischer Kern mit Hyperthreading und Computegrößen zwischen 4 und 80 Kernen.
+- **Gen5**: Logische CPUs basieren auf Intel-Prozessoren vom Typ E5-2673 v4 (Broadwell) mit 2,3 GHz und Intel-Prozessoren vom Typ SP-8160 (Skylake), schnellem NVMe-SSD, einem logischem Kern mit Hyperthreading und Computegrößen zwischen vier und 80 Kernen.
 
 Weitere Informationen zu den Unterschieden zwischen Hardwaregenerationen finden Sie unter [Ressourceneinschränkungen für verwaltete Instanzen](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 

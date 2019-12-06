@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/25/2019
 ms.author: rkarlin
-ms.openlocfilehash: ba22cc3db0ca50a292ddef4d0d646f8578c15cd4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b78f6f0773e114a4dda536213e2684d8fbd706d
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489132"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483259"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
 
@@ -62,18 +62,18 @@ Sie benötigen ein Azure Notebooks-Konto, um die Notebooks verwenden zu können.
 > [!div class="mx-imgBorder"]
 >![Option „Für Azure Notebooks registrieren“](./media/notebooks/sentinel-azure-sign-up-azure-notebooks.png)
 
-## <a name="view-available-notebooks-from-azure-sentinel"></a>Anzeigen der verfügbaren Notebooks von Azure Sentinel
+Sie können ein Notebook direkt in Azure Sentinel ausführen, oder alle Azure Sentinel-Notebooks in ein neues Azure Notebooks-Projekt klonen.
+
+## <a name="run-a-notebook-from-azure-sentinel"></a>Ausführen eines Notebooks über Azure Sentinel
  
 1. Navigieren Sie vom Azure-Portal aus zu **Azure Sentinel** > **Bedrohungsverwaltung** > **Notebooks**, wo die von Azure Sentinel bereitgestellten Notebooks angezeigt werden. 
 
 2. Wählen Sie einzelne Notebooks aus, um deren Beschreibungen, erforderliche Datentypen und Datenquellen zu lesen. Beispiel:
     
     > [!div class="mx-imgBorder"]
-    > ![Notebook starten](./media/notebooks/sentinel-azure-notebooks-nolaunch.png)
+    > ![Notebook starten](./media/notebooks/sentinel-azure-notebooks-launch.png)
 
-3. Wählen Sie **Notebook starten** aus, um die Notebooks im [Azure Sentinel Community GitHub-Repository](https://github.com/Azure/Azure-Sentinel) zu durchsuchen.
-
-Derzeit ist es nicht möglich, ein Notebook direkt von Azure Sentinel aus zu starten. Gehen Sie stattdessen wie folgt vor, um die Notebooks auf GitHub in ein Azure Notebooks-Projekt zu klonen.
+3. Wählen Sie das gewünschte Notebook aus, und klicken Sie anschließend auf **Notebook starten (Vorschau)** , um das Notebook in ein neues Azure Notebooks-Projekt, das mit Ihrem Azure Sentinel-Arbeitsbereich verbunden ist, zu klonen und zu konfigurieren. Sobald der Prozess abgeschlossen ist, wird das Notebook in Azure Notebooks geöffnet, und Sie können es ausführen.
 
 ## <a name="clone-azure-sentinel-notebooks-to-a-new-azure-notebooks-project"></a>Klonen von Azure Sentinel-Notebooks in ein neues Azure Notebooks-Projekt
 

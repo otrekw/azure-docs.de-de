@@ -1,5 +1,5 @@
 ---
-title: Rollen von X.509-Zertifikaten in Azure IoT Hub Device Provisioning Service | Microsoft-Dokumentation
+title: Rollen von X.509-Zertifikaten in Azure IoT Hub Device Provisioning Service
 description: Rollen von X.509-Zertifikaten mit Ihrer Device Provisioning Service-Instanz
 author: wesmc7777
 ms.author: wesmc
@@ -7,13 +7,12 @@ ms.date: 08/06/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 8cf5f262a758efe08ad73e2d8066ad4b736e76d1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 55ed99c434028b9761ef53fc09a01481bbd184e1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60626956"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228753"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Rollen von X.509-Gerätezertifikaten
 

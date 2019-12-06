@@ -1,18 +1,18 @@
 ---
-title: Erneutes Generieren von HTTP-Headern in Azure Application Gateway
+title: Erstellen eines Azure Application Gateways und nochmaliges Generieren eines HTTP-Headers
 description: Dieser Artikel enthält Informationen zum Erstellen eines Azure Application Gateways und zum erneuten Generieren eines HTTP-Headers mithilfe von Azure PowerShell.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947088"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173714"
 ---
 # <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Erstellen eines Application Gateways und erneutes Generieren eines HTTP-Headers
 

@@ -10,24 +10,34 @@ ms.assetid: ''
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.workload: infrastructure-services
-ms.date: 11/14/2019
+ms.date: 11/18/2019
 ms.author: magoedte
-ms.openlocfilehash: e369067a3ff61ffefe1758f6fa8b4acdce4bb2e2
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134226"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279652"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Verstehen der Integrität von Kubernetes-Clustern mit Azure Monitor für Container
 
-Mit Azure Monitor für Container wird der Integritätsstatus der verwalteten Infrastrukturkomponenten und aller Knoten, die auf einem von Azure Monitor für Container unterstützten Kubernetes-Cluster ausgeführt werden, überwacht und gemeldet. Dies ist noch weitreichender als der Integritätsstatus des Clusters, der in der [Multi-Cluster-Ansicht](container-insights-analyze.md#multi-cluster-view-from-azure-monitor) berechnet und gemeldet wird. Sie können nun erkennen, ob ein oder mehrere Knoten im Cluster eingeschränkte Ressourcen aufweisen oder ein Knoten oder Pod nicht verfügbar ist, was sich basierend auf bereitgestellten Metriken auf eine aktive Anwendung im Cluster auswirken kann. 
+Mit Azure Monitor für Container wird der Integritätsstatus der verwalteten Infrastrukturkomponenten und aller Knoten, die auf einem von Azure Monitor für Container unterstützten Kubernetes-Cluster ausgeführt werden, überwacht und gemeldet. Dies ist noch weitreichender als der Integritätsstatus des Clusters, der in der [Multi-Cluster-Ansicht](container-insights-analyze.md#multi-cluster-view-from-azure-monitor) berechnet und gemeldet wird. Sie können nun erkennen, ob ein oder mehrere Knoten im Cluster eingeschränkte Ressourcen aufweisen oder ein Knoten oder Pod nicht verfügbar ist, was sich basierend auf bereitgestellten Metriken auf eine aktive Anwendung im Cluster auswirken kann.
+
+>[!NOTE]
+>Die Integritätsfunktion befindet sich derzeit in der öffentlichen Vorschauphase.
+>
 
 Weitere Informationen zum Aktivieren von Azure Monitor für Container finden Sie unter [Onboarding von Azure Monitor für Container](container-insights-onboard.md).
 
+>[!NOTE]
+>Vergewissern Sie sich zur Unterstützung der AKS-Engine-Cluster, dass sie Folgendes erfüllen:
+>- Es werden die neuesten Versionen des [HTML-Clients](https://helm.sh/docs/using_helm/) verwendet.
+>- Die Version des containerisierten Agents ist *microsoft/oms:ciprod11012019*. Informationen zum Upgraden des Agents finden Sie unter [Upgraden des Agents im Kubernetes-Cluster](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>
+
 ## <a name="overview"></a>Übersicht
 
-Das Integritätsfeature in Azure Monitor für Container bietet eine proaktive Integritätsüberwachung Ihres Kubernetes-Clusters als Hilfe beim Identifizieren und Diagnostizieren von Problemen. Sie haben dadurch die Möglichkeit, wichtige erkannte Probleme anzuzeigen. Monitore zur Auswertung der Integrität Ihres Clusters, werden im Container-Agent in Ihrem Cluster ausgeführt, und die Integritätsdaten werden in die Tabelle **KubeHealth** in Ihrem Log Analytics-Arbeitsbereich geschrieben. 
+Das Integritätsfeature (Preview) in Azure Monitor für Container bietet eine proaktive Integritätsüberwachung Ihres Kubernetes-Clusters als Hilfe beim Identifizieren und Diagnostizieren von Problemen. Sie haben dadurch die Möglichkeit, wichtige erkannte Probleme anzuzeigen. Monitore zur Auswertung der Integrität Ihres Clusters, werden im Container-Agent in Ihrem Cluster ausgeführt, und die Integritätsdaten werden in die Tabelle **KubeHealth** in Ihrem Log Analytics-Arbeitsbereich geschrieben. 
 
 Die Integrität des Kubernetes-Clusters basiert auf einer Reihe von Überwachungsszenarien, die nach folgenden Kubernetes-Objekten und -Abstraktionen organisiert sind:
 
@@ -60,13 +70,13 @@ Folgende Symbole dienen zur Angabe des Status:
 
 Informationen zum Verhalten und zur Konfiguration der einzelnen Monitore, die das Integritätsfeature von Azure Monitor für Container unterstützen, finden Sie im [Konfigurationsleitfaden für Integritätsmonitore](container-insights-health-monitors-config.md).
 
-## <a name="sign-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
 ## <a name="view-health-of-an-aks-or-non-aks-cluster"></a>Anzeigen der Integrität eines AKS- oder Nicht-AKS-Clusters
 
-Der Zugriff auf das Integritätsfeature von Azure Monitor für Container ist direkt aus einem AKS-Cluster möglich, indem Sie im Azure-Portal im linken Bereich die Option **Insights** auswählen. Wählen Sie im Abschnitt **Insights** die Option **Container** aus. 
+Der Zugriff auf das Integritätsfeature (Preview) von Azure Monitor für Container ist direkt aus einem AKS-Cluster möglich, indem Sie im Azure-Portal im linken Bereich die Option **Insights** auswählen. Wählen Sie im Abschnitt **Insights** die Option **Container** aus. 
 
 Zum Anzeigen der Integrität für einen Nicht-AKS-Cluster, bei dem es sich um einen lokal oder auf Azure Stack gehosteten AKS-Engine-Cluster handelt, wählen Sie im Azure-Portal im linken Bereich die Option **Azure Monitor** aus. Wählen Sie im Abschnitt **Insights** die Option **Container** aus.  Wählen Sie auf der Multi-Cluster-Seite den Nicht-AKS-Cluster aus der Liste aus.
 

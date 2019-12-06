@@ -1,20 +1,16 @@
 ---
 title: 'Entwicklerhandbuch für dauerhafte Entitäten in .NET: Azure Functions'
 description: Es wird beschrieben, wie Sie dauerhafte Entitäten in .NET nutzen, indem Sie die Durable Functions-Erweiterung für Azure Functions verwenden.
-services: functions
 author: sebastianburckhardt
-manager: gwallace
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a59e5443c80c9372f646edfdae2261157a41acc9
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 74b013c9953974371957cc4d88439d20770d78a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614889"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231430"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Entwicklerhandbuch für dauerhafte Entitäten in .NET
 
@@ -117,7 +113,7 @@ Wir können die Counter-Entität beispielsweise so modifizieren, dass eine Orche
 
 ## <a name="accessing-entities-directly"></a>Direktes Zugreifen auf Entitäten
 
-Auf klassenbasierte Entitäten kann direkt zugegriffen werden, indem explizite Zeichenfolgennamen für die Entität und die zugehörigen Vorgänge verwendet werden. Unten sind einige Beispiele angegeben. Eine ausführlichere Beschreibung der zugrunde liegenden Konzepte (z. B. Signale und Aufrufe) finden Sie unter [Zugreifen auf Entitäten](durable-functions-entities.md#accessing-entities). 
+Auf klassenbasierte Entitäten kann direkt zugegriffen werden, indem explizite Zeichenfolgennamen für die Entität und die zugehörigen Vorgänge verwendet werden. Unten sind einige Beispiele angegeben. Eine ausführlichere Beschreibung der zugrunde liegenden Konzepte (z. B. Signale und Aufrufe) finden Sie unter [Zugreifen auf Entitäten](durable-functions-entities.md#access-entities). 
 
 > [!NOTE]
 > Aufgrund der besseren Typüberprüfung empfehlen wir Ihnen, nach Möglichkeit [über Schnittstellen auf Entitäten zuzugreifen](#accessing-entities-through-interfaces).

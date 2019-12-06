@@ -1,5 +1,6 @@
 ---
-title: Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Azure Network Watcher und Open Source-Tools | Microsoft-Dokumentation
+title: Visualisieren von Netzwerk-Datenverkehrsmustern mithilfe von Open Source-Tools
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird beschrieben, wie Sie die Network Watcher-Paketerfassung mit CapAnalysis zum Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr verwenden.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 3a0ae782d3fe97752ca8b9e786c3c2672f554277
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3baf73eed09e6880820952b8457526b6c21dd83b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64936021"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277760"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Visualisieren von Mustern im eingehenden und ausgehenden VM-Datenverkehr mithilfe von Open Source-Tools
 

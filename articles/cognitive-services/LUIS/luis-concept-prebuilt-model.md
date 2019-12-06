@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: d9cb86c1c19649052e4796fd0a8909ce08381d55
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e0b5b95a7524b60a7c3367035a15a7158fa7908a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487579"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280837"
 ---
 # <a name="prebuilt-models"></a>Vordefinierte Modelle
 
@@ -34,7 +34,7 @@ LUIS bietet drei Typen von vordefinierten Modellen. Jedes Modell kann Ihrer App 
 
 ## <a name="prebuilt-domains"></a>Vordefinierte Domänen
 
-Language Understanding Intelligent Service (LUIS) bietet *vordefinierte Domänen*. Dabei handelt es sich um vortrainierte Sätze von [Absichten](luis-how-to-add-intents.md) und [Entitäten](luis-concept-entity-types.md), die für Domänen oder allgemeine Kategorien von Clientanwendungen zusammenarbeiten. 
+Language Understanding Intelligent Service (LUIS) bietet *vordefinierte Domänen*. Dabei handelt es sich um vortrainierte Modelle von [Absichten](luis-how-to-add-intents.md) und [Entitäten](luis-concept-entity-types.md), die für Domänen oder allgemeine Kategorien von Clientanwendungen zusammenarbeiten. 
 
 Die vordefinierten Domänen wurden trainiert und können Ihrer LUIS-App direkt hinzugefügt werden. Die Absichten und Entitäten einer vordefinierten Domäne sind nach dem Hinzufügen zu einer App vollständig anpassbar. 
 
@@ -44,13 +44,13 @@ Die vordefinierten Domänen wurden trainiert und können Ihrer LUIS-App direkt h
 
 ### <a name="changing-the-behavior-of-a-prebuilt-domain-intent"></a>Ändern des Verhaltens der Absicht einer vordefinierten Domäne
 
-Möglicherweise enthält eine vordefinierte Domäne eine Absicht, die einer Absicht, die Sie in Ihrer LUIS-App haben möchten, ähnelt, Sie möchten das Verhalten jedoch ändern. Beispielsweise enthält die vordefinierte Domäne **Places** die Absicht `MakeReservation` zum Durchführen einer Restaurantreservierung, aber Ihre App soll mit dieser Absicht Hotelreservierungen vornehmen. In diesem Fall können Sie das Verhalten der Absicht ändern, indem Sie Beispieläußerungen zum Tätigen von Hotelreservierungen zur Absicht hinzufügen. Trainieren Sie die App anschließend neu. 
+Möglicherweise enthält eine vordefinierte Domäne eine Absicht, die einer Absicht, die Sie in Ihrer LUIS-App haben möchten, ähnelt, Sie möchten das Verhalten jedoch ändern. Beispielsweise enthält die vordefinierte Domäne **Places** die Absicht `MakeReservation` zum Durchführen einer Restaurantreservierung, aber Ihre App soll mit dieser Absicht Hotelreservierungen vornehmen. In diesem Fall können Sie das Verhalten der Absicht ändern, indem Sie Beispieläußerungen zum Tätigen von Hotelreservierungen zur Absicht hinzufügen und dann die App nochmal trainieren. 
 
 Eine vollständige Auflistung der vordefinierten Domänen finden Sie in der [Referenz zu vordefinierten Domänen](./luis-reference-prebuilt-domains.md).
 
 ## <a name="prebuilt-intents"></a>Vordefinierte Absichten
 
-LUIS bietet vordefinierte Absichten mit Äußerungen aus den vordefinierten Domänen. Absichten können auch ohne die gesamte Domäne hinzugefügt werden. Beim Hinzufügen einer Absicht werden Ihrer App die Absicht selbst und ihre Äußerungen hinzugefügt. Sowohl der Name der Absicht als auch die Liste der Äußerungen können geändert werden.  
+LUIS bietet vordefinierte Absichten mit Äußerungen für alle vordefinierten Domänen. Absichten können auch ohne die gesamte Domäne hinzugefügt werden. Beim Hinzufügen einer Absicht werden Ihrer App die Absicht selbst und ihre Äußerungen hinzugefügt. Sowohl der Name der Absicht als auch die Liste der Äußerungen können geändert werden.  
 
 ## <a name="prebuilt-entities"></a>Vordefinierte Entitäten
 

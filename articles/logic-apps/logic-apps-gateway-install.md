@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e1e56d18b0874a724849e28092ed46892a1b5519
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076934"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326371"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -66,7 +66,7 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 
 * **Damit zusammenhängende Überlegungen**
 
-  * Sie können das lokale Datengateway nur auf einem lokalen Computer und nicht auf einem Domänencontroller installieren. Sie müssen das Gateway jedoch nicht auf dem Computer installieren, auf dem sich die Datenquelle befindet. Sie benötigen nur ein Gateway für alle Ihre Datenquellen, Sie müssen das Gateway also nicht für jede Datenquelle installieren.
+  * Installieren Sie das lokale Datengateway nur auf einem lokalen Computer und nicht auf einem Domänencontroller. Sie müssen das Gateway nicht auf dem Computer installieren, auf dem sich die Datenquelle befindet. Sie benötigen nur ein Gateway für alle Ihre Datenquellen, Sie müssen das Gateway also nicht für jede Datenquelle installieren.
 
     > [!TIP]
     > Um Wartezeiten zu minimieren, können Sie das Gateway so nah wie möglich zur Datenquelle oder auf demselben Computer installieren, vorausgesetzt, Sie haben die Berechtigungen.
@@ -76,6 +76,8 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
   * Wenn Sie planen, Windows-Authentifizierung zu verwenden, stellen Sie sicher, dass Sie das Gateway auf einem Computer installieren, der Mitglied derselben Active Directory-Umgebung ist wie Ihre Datenquellen.
 
   * Die Region, die Sie für Ihre Gatewayinstallation auswählen, ist die gleiche Region, die Sie auswählen müssen, wenn Sie später die Azure-Gatewayressource für Ihre Logik-App erstellen. Standardmäßig ist diese Region derselbe Standort wie Ihr Azure AD-Mandant, der Ihr Azure-Konto verwaltet. Der Standort kann jedoch während der Gatewayinstallation geändert werden.
+
+  * Wenn Sie Ihre Gatewayinstallation auf die neueste Version aktualisieren, deinstallieren Sie zuerst Ihr aktuelles Gateway, um die Erfahrung zu bereinigen.
 
   * Das Gateway verfügt über zwei Modi: Standardmodus und persönlicher Modus, der nur für Power BI gilt. Auf demselben Computer können nicht mehrere Gateways im gleichen Modus ausgeführt werden.
 

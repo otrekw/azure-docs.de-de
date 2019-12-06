@@ -10,14 +10,14 @@ ms.reviewer: v-mamcge, jasonh, kfile
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7ea98baa9cb202e2584c18998c5ab96d1c1f9e5a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012658"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561399"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Überwachen und Mindern der Drosselung zur Verhinderung von Latenz in Azure Time Series Insights
 
@@ -42,13 +42,13 @@ Am wahrscheinlichsten treten Latenz und Drosselung in folgenden Fällen auf:
 
 Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme diagnostizieren und verringern.
 
-1. Wählen Sie im Azure-Portal **Warnungen** aus.
+1. Wählen Sie im Azure-Portal Ihre Time Series Insights-Umgebung aus. Wählen Sie dann **Warnungen** aus.
 
-   [![Warnungen](media/environment-mitigate-latency/add-alerts.png)](media/environment-mitigate-latency/add-alerts.png#lightbox)
+   [![Hinzufügen einer Warnung zu Ihrer Time Series Insights-Umgebung](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
 1. Daraufhin wird der Bereich **Regel erstellen** angezeigt. Wählen Sie unter **BEDINGUNG** die Option **Hinzufügen** aus.
 
-   [![Warnung hinzufügen](media/environment-mitigate-latency/alert-pane.png)](media/environment-mitigate-latency/alert-pane.png#lightbox)
+   [![Bereich „Warnung hinzufügen“](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 
 1. Konfigurieren Sie als Nächstes die genauen Bedingungen für die Signallogik.
 
@@ -70,7 +70,7 @@ Mithilfe von Warnungen können Sie durch die Umgebung verursachte Latenzprobleme
 
 1. Nachdem Sie die gewünschte Signallogik konfiguriert haben, überprüfen Sie die ausgewählte Warnungsregel visuell.
 
-   [![Eingehende Daten](media/environment-mitigate-latency/ingress.png)](media/environment-mitigate-latency/ingress.png#lightbox)
+   [![Wartezeitansicht und Diagrammerstellung](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png)](media/environment-mitigate-latency/mitigate-latency-view-and-charting.png#lightbox)
 
 ## <a name="throttling-and-ingress-management"></a>Drosselung und Eingangsverwaltung
 

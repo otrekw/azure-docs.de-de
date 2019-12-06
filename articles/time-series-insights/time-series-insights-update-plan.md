@@ -1,6 +1,6 @@
 ---
-title: Planen Ihrer Azure Time Series Insights Preview-Umgebung | Microsoft-Dokumentation
-description: Planen Sie Ihre Azure Time Series Insights Preview-Umgebung.
+title: 'Azure Time Series Insights: Planen Ihrer Vorschauumgebung | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie Ihre Azure Time Series Insights-Vorschauumgebung planen.
 author: deepakpalled
 ms.author: dpalled
 manager: cshankar
@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5a12ca2bdccee1d2f738aa3c810577caf3d8eac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9fb2dcf2c05b709340f8e9ae549bab5756e6abf2
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491964"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420308"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 

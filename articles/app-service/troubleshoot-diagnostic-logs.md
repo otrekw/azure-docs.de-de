@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/17/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 4f5344259767aaad9ed58ded1da86ae7ee3c03e7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bf25967133901aca911c0ad3a69d43c75bb816a0
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470111"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558571"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -26,7 +26,7 @@ Azure bietet integrierte Diagnosefunktionen zur Unterstützung beim Debuggen ein
 In diesem Artikel werden das [Azure-Portal](https://portal.azure.com) und die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet, um mit Diagnoseprotokollen zu arbeiten. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](troubleshoot-dotnet-visual-studio.md).
 
 > [!NOTE]
-> Zusätzlich zu den Protokollierungsanweisungen in diesem Artikel gibt es eine neue, integrierte Protokollierungsfunktion mit Azure Monitor. Sie finden diese Funktion auf den Seiten zu [Protokollen und Diagnoseeinstellungen (Vorschau)](https://aka.ms/appsvcblog-azmon). 
+> Zusätzlich zu den Protokollierungsanweisungen in diesem Artikel gibt es eine neue, integrierte Protokollierungsfunktion mit Azure Monitor. Weitere Informationen zu dieser Funktion finden Sie im Abschnitt [Senden von Protokollen an Azure Monitor (Vorschauversion)](#send-logs-to-azure-monitor-preview). 
 >
 >
 
@@ -178,7 +178,28 @@ Für Windows-Apps enthält die ZIP-Datei den Inhalt des Verzeichnisses *D:\Home\
 | **Webserverprotokolle** | */LogFiles/http/RawLogs/* | Enthält Textdateien im [erweiterten W3C-Protokolldateiformat](/windows/desktop/Http/w3c-logging). Diese Informationen können in einem Text-Editor oder mit einem Hilfsprogramm wie [Log Parser](https://go.microsoft.com/fwlink/?LinkId=246619) gelesen werden.<br/>App Service unterstützt die Felder `s-computername`, `s-ip` oder `cs-version` nicht. |
 | **Bereitstellungsprotokolle** | */LogFiles/Git/* und */deployments/* | Enthält Protokolle, die von den internen Bereitstellungsprozessen generiert werden, sowie Protokolle für Git-Bereitstellungen. |
 
+## <a name="send-logs-to-azure-monitor-preview"></a>Senden von Protokollen an Azure Monitor (Vorschauversion)
+
+Mit der neuen [Azure Monitor-Integration](https://aka.ms/appsvcblog-azmon) können Sie [Diagnoseeinstellungen (Vorschau) erstellen](https://azure.github.io/AppService/2019/11/01/App-Service-Integration-with-Azure-Monitor.html#create-a-diagnostic-setting), um Protokolle an Speicherkonten, Event Hubs und Log Analytics zu senden. 
+
+> [!div class="mx-imgBorder"]
+> ![Diagnoseeinstellungen (Vorschau)](media/troubleshoot-diagnostic-logs/diagnostic-settings-page.png)
+
+### <a name="supported-log-types"></a>Unterstützte Protokolltypen
+
+In der folgenden Tabelle werden die unterstützten Protokolltypen und Beschreibungen dieser aufgeführt: 
+
+| Protokolltyp | Windows-Unterstützung | Linux-Unterstützung (Docker) | BESCHREIBUNG |
+|-|-|-|
+| AppServiceConsoleLogs | Wird noch angekündigt | Ja | Standardausgabe und Standardfehler |
+| AppServiceHTTPLogs | Ja | Ja | Webserverprotokolle |
+| AppServiceEnvironmentPlatformLogs | Ja | Ja | App Service-Umgebung: Skalierung, Konfigurationsänderungen und Statusprotokolle|
+| AppServiceAuditLogs | Ja | Ja | Anmeldeaktivität per FTP und Kudu |
+| AppServiceFileAuditLogs | Wird noch angekündigt | Wird noch angekündigt | Dateiänderungen per FTP und Kudu |
+| AppServiceAppLogs | Wird noch angekündigt | Java SE & Tomcat | Anwendungsprotokolle |
+
 ## <a name="nextsteps"></a> Nächste Schritte
+* [Abfrageprotokolle mit Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 * [How to Monitor Azure App Service (Vorgehensweise: Überwachen von Azure App Service)](web-sites-monitor.md)
 * [Troubleshooting Azure App Service in Visual Studio (Problembehandlung für Azure App Service in Visual Studio)](troubleshoot-dotnet-visual-studio.md)
 * [Analyze app Logs in HDInsight (Analyse von App-Protokollen in HDInsight)](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

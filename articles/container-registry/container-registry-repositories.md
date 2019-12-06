@@ -1,19 +1,14 @@
 ---
-title: Azure Container Registry-Repositorys im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Azure Container Registry-Repositorys im Azure-Portal anzeigen.
-services: container-registry
-author: cristy
-manager: gwallace
-ms.service: container-registry
+title: Anzeigen von Repositorys im Portal
+description: Verwenden Sie das Azure-Portal, um Azure Container Registry-Repositorys anzuzeigen, die Docker-Containerimages und andere unterstützte Artefakte hosten.
 ms.topic: article
 ms.date: 01/05/2018
-ms.author: jeconnoc
-ms.openlocfilehash: 22f84efee2b3996734e8e38c73d30ba891b745d9
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: 1da72706d2554610a685f71199ab14af5e30ce1a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68310582"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456298"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>Anzeigen von Azure Container Registry-Repositorys im Azure-Portal
 

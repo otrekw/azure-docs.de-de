@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/14/2019
-ms.openlocfilehash: 70e6bdfcf9718244632ad02e09d3ddadee71a617
-ms.sourcegitcommit: f5075cffb60128360a9e2e0a538a29652b409af9
+ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68311572"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561864"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 
@@ -41,7 +41,7 @@ Bei Verwendung der horizontalen Skalierung können Sie die Instanzenanzahl anhan
 
    ![Manuelle Skalierung](media/manage-cluster-horizontal-scaling/manual-scale-method.png)
 
-### <a name="optimized-autoscale"></a>Optimierte Autoskalierung
+### <a name="optimized-autoscale-preview"></a>Optimierte Autoskalierung (Vorschau)
 
 Die optimierte Autoskalierung ist die empfohlene Methode für die Autoskalierung. Mit dieser Methode werden die Leistung und die Kosten des Clusters optimiert. Wenn sich der Cluster einem Status mit zu geringer Auslastung nähert, wird er horizontal herunterskaliert. Durch diese Aktion werden die Kosten verringert, während gleichzeitig die Leistungsstufe erhalten bleibt. Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er horizontal hochskaliert, damit die optimale Leistung erhalten bleibt. Konfigurieren Sie die optimierte Autoskalierung wie folgt:
 

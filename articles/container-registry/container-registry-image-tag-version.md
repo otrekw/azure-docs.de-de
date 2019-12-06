@@ -1,18 +1,16 @@
 ---
-title: Taggen und Versionsverwaltung von Images in der Azure Container Registry
-description: Bewährte Methoden für das Taggen und die Versionsverwaltung von Docker-Containerimages
-services: container-registry
+title: Bewährte Methoden für das Taggen von Images
+description: Bewährte Methoden für das Taggen und die Versionsverwaltung von Docker-Containerimages beim Durchführen von Push- und Pullvorgängen für Images für eine Azure-Containerregistrierung
 author: stevelasker
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
-ms.openlocfilehash: ea7c0831f4ecc345cbcd8a9b8eb6d6566e8c5023
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: 2d407f041456ea3856fbeedf98147356eaeb61d6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297762"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454999"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages
 

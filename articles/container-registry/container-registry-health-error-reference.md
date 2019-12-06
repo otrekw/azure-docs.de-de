@@ -1,19 +1,14 @@
 ---
-title: 'Fehlerreferenz für die Integritätsprüfung: Azure Container Registry'
+title: Fehlerreferenz für Integritätsprüfung
 description: Fehlercodes und mögliche Lösungen für Probleme, die beim Ausführen des Diagnosebefehls az acr check-health in Azure Container Registry gefunden wurden.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
-ms.author: danlep
-ms.openlocfilehash: 3bb81f33823fff5fb47f5bbbf6bb9b798b26d8af
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: a921d17ad7d01b134f5bfa33a1d9a768d3ea94df
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840358"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455034"
 ---
 # <a name="health-check-error-reference"></a>Fehlerreferenz für die Integritätsprüfung
 

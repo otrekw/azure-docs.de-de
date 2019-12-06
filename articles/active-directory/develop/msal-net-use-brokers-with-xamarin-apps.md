@@ -17,12 +17,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71e9ef72e7b6caaa3894bb30c6e7e9cf762232a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: f2ae0d79076a0137b3756721675267d89990bf5a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802711"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554042"
 ---
 # <a name="use-microsoft-authenticator-or-microsoft-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Microsoft Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -180,7 +180,9 @@ Das Portal bietet ein neues App-Registrierungsportal, das Sie beim Berechnen des
 
 ## <a name="brokered-authentication-for-android"></a>Brokerauthentifizierung für Android
 
-Die Brokerunterstützung ist für Android nicht verfügbar.
+MSAL.NET unterstützt zurzeit nur die Xamarin.iOS-Plattform. Broker für die Xamarin.Android-Plattform werden noch nicht unterstützt.
+
+Die native MSAL-Android-Bibliothek unterstützt diese bereits. Weitere Informationen finden Sie unter [Brokerauthentifizierung in Android](brokered-auth.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

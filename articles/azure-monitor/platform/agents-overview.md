@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/15/2019
-ms.openlocfilehash: 8bf1af096555be8245ff5172905781464dc2d441
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: a01258799efa81c8d3ddba398facaa90c24c2513
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132237"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150025"
 ---
 # <a name="overview-of-the-azure-monitor-agents"></a>Übersicht über die Azure Monitor-Agents 
 Computeressourcen (z.B. virtuelle Computer) generieren Daten zum Überwachen ihrer Leistung und Verfügbarkeit genau wie [andere Cloudressourcen](../insights/monitor-azure-resource.md). Computeressourcen verfügen aber auch über ein Gastbetriebssystem und Workloads, die überwacht werden müssen. Zum Erfassen dieser Überwachungsdaten aus der Ressource ist ein Agent erforderlich. In diesem Artikel werden die von Azure Monitor verwendeten Agents beschrieben. Außerdem bietet er Hilfe bei der Entscheidung, welche Agents Sie zum Erfüllen der Anforderungen für Ihre bestimmte Umgebung benötigen.
@@ -31,7 +31,7 @@ Azure Monitor verfügt über drei Agents, die jeweils bestimmte Funktionen berei
 
 Die folgende Tabelle zeigt einen schnellen Vergleich der verschiedenen Agents. Ausführliche Informationen zu den einzelnen Agents finden Sie weiter unten in diesem Artikel.
 
-| | Azure-Diagnoseerweiterung | Log Analytics-Agent | Dependency-Agent |
+| | Azure-Diagnoseerweiterung | Log Analytics-Agent | Abhängigkeits-Agent |
 |:---|:---|:---|:---|
 | Unterstützte Umgebungen | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
 | Betriebssysteme | Windows<br>Linux | Windows<br>Linux | Windows<br>Linux
@@ -42,7 +42,7 @@ Die folgende Tabelle zeigt einen schnellen Vergleich der verschiedenen Agents. A
 
 
 ## <a name="azure-diagnostic-extension"></a>Azure-Diagnoseerweiterung
-Mit der [Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md) können Sie Überwachungsdaten vom Gastbetriebssystem und Workloads von Azure-Computeressourcen erfassen. Daten werden primär in Azure Storage gesammelt. Sie können Azure Monitor so konfigurieren, dass die Daten aus Storage in einen Log Analytics-Arbeitsbereich kopiert werden. Sie können auch Gastleistungsdaten in Azure Monitor-Metriken erfassen.
+Mit der [Azure-Diagnoseerweiterung](../../azure-monitor/platform/diagnostics-extension-overview.md) erfasst Überwachungsdaten vom Gastbetriebssystem und Workloads von Azure-Computeressourcen. Daten werden primär in Azure Storage gesammelt. Sie können Azure Monitor so konfigurieren, dass die Daten aus Storage in einen Log Analytics-Arbeitsbereich kopiert werden. Sie können auch Gastleistungsdaten in Azure Monitor-Metriken erfassen.
 
 Die Azure-Diagnoseerweiterung wird häufig als Windows Azure-Diagnoseerweiterung (WAD) oder Linux Azure-Diagnoseerweiterung (LAD) bezeichnet.
 
@@ -61,7 +61,7 @@ Folgende Szenarien werden von der Azure-Diagnoseerweiterung unterstützt:
 * Kopieren von Daten aus Anwendungen, die auf Ihrer VM ausgeführt werden, [in Application Insights](diagnostics-extension-to-application-insights.md) zur Integration in andere Anwendungsüberwachungen.
 
 ## <a name="log-analytics-agent"></a>Log Analytics-Agent
-Mit dem [Log Analytics-Agent](log-analytics-agent.md) können Sie Überwachungsdaten vom Gastbetriebssystem und Workloads von Azure-Computeressourcen erfassen. Die Daten werden in einem Log Analytics-Arbeitsbereich gesammelt.
+Der [Log Analytics-Agent](log-analytics-agent.md) erfasst Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Computern in Azure, anderen Cloudanbietern und lokal. Die Daten werden in einem Log Analytics-Arbeitsbereich gesammelt.
 
 Der Log Analytics-Agent ist derselbe Agent, der von System Center Operations Manager verwendet wird, und Sie verwenden ein Multihoming von Agent-Computern, um mit Ihrer Verwaltungsgruppe und Azure Monitor gleichzeitig zu kommunizieren. Dieser Agent ist auch für bestimmte Lösungen in Azure Monitor erforderlich.
 
@@ -82,7 +82,7 @@ Folgende Szenarien werden vom Log Analytics-Agent unterstützt:
   * [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) zur Beibehaltung eines konsistenten Konfigurationsstatus.
   * Nachverfolgen von Konfigurationsänderungen mit [Azure Automation-Änderungsnachverfolgung und Bestand](../../automation/change-tracking.md).
 
-## <a name="dependency-agent"></a>Dependency-Agent
+## <a name="dependency-agent"></a>Abhängigkeits-Agent
 Der Dependency-Agent sammelt ermittelte Daten über Prozesse, die auf dem virtuellen Computer ausgeführt werden, und über Abhängigkeiten von externen Prozessen. Dieser Agent ist für [Service Map](../insights/service-map.md) und die Zuordnungsfunktion von [Azure Monitor für VMs](../insights/vminsights-overview.md) erforderlich. Der Dependency-Agent benötigt den Log Analytics-Agent und schreibt Daten in einen Log Analytics-Arbeitsbereich in Azure Monitor.
 
 

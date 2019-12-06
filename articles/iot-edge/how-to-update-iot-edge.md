@@ -9,13 +9,12 @@ ms.date: 06/27/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 27f0ebab1fd87eb1870c5a8be21c4f80be4132f1
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 58171d2fc8e7e1563bd83689d1cd91c55fea239a
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698583"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456551"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Aktualisieren des IoT Edge-Sicherheitsdaemons und der Runtime
 
@@ -33,14 +32,14 @@ Der IoT Edge-Sicherheitsdaemon ist eine native Komponente, die mithilfe des Pake
 
 ### <a name="linux-devices"></a>Linux-Geräte
 
-Verwenden Sie auf Linux x64-Geräten „apt-get“ oder Ihren geeigneten Paket-Manager, um den Sicherheitsdaemon zu aktualisieren. 
+Verwenden Sie auf Linux x64-Geräten „apt-get“ oder einen geeigneten Paket-Manager, um den Sicherheitsdaemon zu aktualisieren. 
 
 ```bash
 apt-get update
 apt-get install libiothsm iotedge
 ```
 
-Verwenden Sie für Linux ARM32-Geräte die Schritte unter [„Installieren der Azure IoT Edge-Runtime unter Linux (ARM32v7/armhf)“](how-to-install-iot-edge-linux-arm.md), um die neuste Version des Sicherheits-Daemons zu installieren. 
+Verwenden Sie für Linux ARM32-Geräte die unter [Installieren der Azure IoT Edge-Runtime unter Linux (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md) beschriebenen Schritte, um die neuste Version des Sicherheitsdaemons zu installieren. 
 
 ### <a name="windows-devices"></a>Windows-Geräte
 
@@ -56,7 +55,7 @@ Wenn Sie eine bestimmte Version des Sicherheitsdaemons installieren möchten, la
 
 ## <a name="update-the-runtime-containers"></a>Aktualisieren der Runtimecontainer
 
-Die Art und Weise, in der Sie die IoT Edge-Agent- und IoT Edge-Hubcontainer aktualisieren, hängt davon ab, ob Sie in Ihrer Bereitstellung fortlaufende Versionstags (wie 1.0) oder spezifische Versionstags (wie 1.0.7) verwenden. 
+Die Art und Weise, auf die Sie die IoT Edge-Agent- und IoT Edge-Hubcontainer aktualisieren, hängt davon ab, ob Sie bei der Bereitstellung fortlaufende Versionstags (wie 1.0) oder spezifische Versionstags (wie 1.0.7) verwenden. 
 
 Überprüfen Sie die Version der aktuell auf Ihrem Gerät ausgeführten IoT Edge-Agent- und IoT Edge-Hubmodule mithilfe der Befehle `iotedge logs edgeAgent` und `iotedge logs edgeHub`. 
 
@@ -67,7 +66,7 @@ Die Art und Weise, in der Sie die IoT Edge-Agent- und IoT Edge-Hubcontainer aktu
 Die IoT Edge-Agent- und IoT Edge-Hubimages sind im Tag mit der IoT Edge-Version gekennzeichnet, der sie zugeordnet sind. Es gibt zwei Möglichkeiten zum Verwenden von Tags mit den Runtime-Images: 
 
 * **Fortlaufende Tags**: Verwenden Sie nur die ersten zwei Stellen der Versionsnummer, um zum neuesten Image zu gelangen, das mit diesen Stellen übereinstimmt. Beispielsweise wird, sobald eine neue Version veröffentlicht wird, 1.0 immer so aktualisiert, dass auf die neueste 1.0.x-Version verwiesen wird. Wenn die Containerruntime auf Ihrem IoT Edge-Gerät das Image erneut per Pull herunterlädt, werden die Laufzeitmodule auf die neueste Version aktualisiert. Dieses Vorgehen wird für Entwicklungszwecke vorgeschlagen. Bereitstellungen aus dem Azure-Portal weisen standardmäßig fortlaufende Tags auf. 
-* **Spezifische Tags**: Verwenden Sie alle drei Stellen der Versionsnummer, um die Imageversion explizit festzulegen. Beispielsweise ändert sich 1.0.7 nach der ursprünglichen Veröffentlichung nicht. Sie können im Bereitstellungsmanifest eine neue Versionsnummer deklarieren, wenn Sie zur Aktualisierung bereit sind. Dieses Vorgehen wird für Produktionszwecke vorgeschlagen.
+* **Spezifische Tags**: Verwenden Sie alle drei Stellen der Versionsnummer, um die Imageversion explizit festzulegen. Beispielsweise ändert sich 1.0.7 nach dem ersten Release nicht. Sie können im Bereitstellungsmanifest eine neue Versionsnummer deklarieren, wenn Sie zur Aktualisierung bereit sind. Dieses Vorgehen wird für Produktionszwecke vorgeschlagen.
 
 ### <a name="update-a-rolling-tag-image"></a>Aktualisieren eines Images mit fortlaufendem Tag
 
@@ -86,7 +85,7 @@ Der IoT Edge-Dienst lädt per Pull die neuesten Versionen der Runtimeimages heru
 
 ### <a name="update-a-specific-tag-image"></a>Aktualisieren eines Images mit spezifischem Tag
 
-Wenn Sie in Ihrer Bereitstellung spezifische Tags verwenden (Beispiel: mcr.microsoft.com/azureiotedge-hub:**1.0.7**), brauchen Sie lediglich das Tag in Ihrem Bereitstellungsmanifest zu aktualisieren und die Änderungen auf Ihr Gerät anzuwenden. 
+Wenn Sie bei der Bereitstellung spezifische Tags verwenden (z. B. mcr.microsoft.com/azureiotedge-hub:**1.0.7**), müssen Sie lediglich das Tag in Ihrem Bereitstellungsmanifest aktualisieren und die Änderungen auf Ihr Gerät anwenden. 
 
 Im Azure-Portal sind die Images zum Bereitstellen der Runtime im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** deklariert. 
 
@@ -115,13 +114,13 @@ Aktualisieren Sie in einem JSON-Bereitstellungsmanifest die Modulimages im Absch
 },
 ```
 
-## <a name="update-to-a-release-candidate-version"></a>Update für eine veröffentlichte Version eines Release Candidates
+## <a name="update-to-a-release-candidate-version"></a>Update für eine Release Candidate-Version
 
-Azure IoT Edge veröffentlicht regelmäßig neue Versionen des IoT Edge-Dienstes. Vor jeder stabilen Veröffentlichung gibt es einen oder mehrere Release Candidate-Versionen (RC). Die RC-Versionen enthalten alle geplanten Funktionen für die Veröffentlichung, werden allerdings noch getestet und validiert, bis es zu einer stabilien Veröffentlichung kommt. Wenn Sie eine neue Funktion vorab testen möchten, dann können Sie die RC-Version installieren und uns Feedback über GitHub schicken. 
+Azure IoT Edge veröffentlicht regelmäßig neue Versionen des IoT Edge-Dienstes. Vor jedem stabilen Release gibt es einen oder mehrere Release Candidate-Versionen (RC). Die RC-Versionen enthalten alle geplanten Funktionen für das Release, werden allerdings noch getestet und validiert, bis es zu einem stabilen Release kommt. Wenn Sie eine neue Funktion vorab testen möchten, können Sie die RC-Version installieren und uns Ihr Feedback über GitHub mitteilen. 
 
-Release Candidate-Versionen werden genauso nummeriert, wie die Veröffentlichungen, haben jedoch **„-rc“** und eine inkrementelle Zahl am Ende. Sie finden die Release Candidates in derselben Liste der [Azure IoT Edge-Veröffentlichungen,](https://github.com/Azure/azure-iotedge/releases) wie die stabilen Versionen. Suchen Sie z. B. nach **1.0.7-rc1** und **1.0.7-rc2**. Dies sind die zwei Release Candidates, die vor **1.0.7** veröffentlicht wurden. Sie werden außerdem feststellen, dass die RC-Versionen über die Bezeichnung **„Vorabversion“** verfügen. 
+Release Candidate-Versionen werden genauso nummeriert wie die Releases, am Ende wird jedoch **-rc** und eine inkrementelle Zahl angehängt. Sie finden die Release Candidates in derselben Liste der [Azure IoT Edge-Releases](https://github.com/Azure/azure-iotedge/releases) wie die stabilen Versionen. Suchen Sie z. B. nach **1.0.7-rc1** und **1.0.7-rc2**. Dies sind die zwei Release Candidates, die vor **1.0.7** veröffentlicht wurden. Sie werden außerdem feststellen, dass die RC-Versionen die Bezeichnung **Vorabversion** aufweisen. 
 
-Release Candidate-Versionen als Vorschauversionen sind nicht in der neusten Version enthalten, die reguläre Installationsprogramme aufrufen. Stattdessen müssen Sie die Assets für die RC-Version selber aufrufen, die Sie testen möchten. Je nach Betriebssystem Ihres IoT Edge-Geräts können sie die folgenden Abschnitte verwenden, um Ihr IoT Edge auf eine bestimmte Version zu aktualisieren:
+Release Candidate-Versionen sind als Vorschauversionen nicht in der neusten Version enthalten, die reguläre Installationsprogramme aufrufen. Stattdessen müssen Sie die Objekte für die RC-Version manuell aufrufen, die Sie testen möchten. Je nach Betriebssystem Ihres IoT Edge-Geräts können sie die folgenden Abschnitte verwenden, um Ihr IoT Edge auf eine bestimmte Version zu aktualisieren:
 
 * [Linux](how-to-install-iot-edge-linux.md#install-a-specific-runtime-version)
 * [Windows](how-to-install-iot-edge-windows.md#offline-installation)

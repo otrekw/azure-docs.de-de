@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zum Lebenszyklus einer Blaupause
-description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und Details zu jeder einzelnen Phase.
+description: Erfahren Sie mehr über den Lebenszyklus einer Blaupausendefinition und die Details zu den einzelnen Phasen, einschließlich dem Aktualisieren und Entfernen von Blaupausenzuweisungen.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: d071a2af985d294bc87a5363d9e7566762e0fd8a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960494"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404587"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
@@ -35,8 +35,7 @@ Erstellen und bearbeiten Sie eine Blaupause mit dem [Azure-Portal](../create-blu
 
 ## <a name="publishing-a-blueprint"></a>Veröffentlichen einer Blaupause
 
-Nachdem Sie alle geplanten Änderungen an einer Blaupause im Modus **Entwurf** vorgenommen haben, kann sie **veröffentlicht** und für die Zuweisung verfügbar gemacht werden. Die Blaupausenversion mit dem Modus **Veröffentlicht** kann nicht geändert werden.
-Einmal **veröffentlicht**, wird die Blaupause mit einem anderen Symbol als Blaupausen im Modus **Entwurf** angezeigt. Die Versionsnummer wird in der Spalte **Neueste Version** angezeigt.
+Nachdem Sie alle geplanten Änderungen an einer Blaupause im Modus **Entwurf** vorgenommen haben, kann sie **veröffentlicht** und für die Zuweisung verfügbar gemacht werden. Die Blaupausenversion mit dem Modus **Veröffentlicht** kann nicht geändert werden. Einmal **veröffentlicht**, wird die Blaupause mit einem anderen Symbol als Blaupausen im Modus **Entwurf** angezeigt. Die Versionsnummer wird in der Spalte **Neueste Version** angezeigt.
 
 Veröffentlichen Sie eine Blaupause mit dem [Azure-Portal](../create-blueprint-portal.md#publish-a-blueprint) oder der [REST-API](../create-blueprint-rest-api.md#publish-a-blueprint).
 

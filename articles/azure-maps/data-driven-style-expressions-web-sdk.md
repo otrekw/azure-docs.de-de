@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 507af54b8b4c2e7c67538a1a25a040c7ee5fdfd5
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976314"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480637"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Datengesteuerte Formatvorlagenausdrücke (Web SDK)
 
@@ -375,6 +375,24 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 });
 ```
 
+Im folgenden Beispiel wird ein `coalesce`-Ausdruck verwendet, um das erste verfügbare Bildsymbol, das im Kartensprite verfügbar ist, aus einer Liste mit angegebenen Imagenamen abzurufen.
+
+```javascript
+var layer = new atlas.layer.SymbolLayer(datasource, null, {
+    iconOptions: {
+        image: [
+            'coalesce',
+
+            //Try getting the image with id 'missing-image'.
+            ['image', 'missing-image'],
+
+            //Specify an image id to fallback to. 
+            'marker-blue'
+        ]
+    }
+});
+``` 
+
 ## <a name="type-expressions"></a>Typenausdrücke
 
 Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher Datentypen, z. B. Zeichenfolgen, Zahlen und boolesche Werte, bereitgestellt.
@@ -382,6 +400,7 @@ Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher 
 | Ausdruck | Rückgabetyp | BESCHREIBUNG |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | array \| object | Gibt einen Literalarray- oder Objektwert zurück. Verwenden Sie diesen Ausdruck, um zu verhindern, dass ein Array oder ein Objekt als Ausdruck ausgewertet wird. Dies ist erforderlich, wenn ein Array oder Objekt von einem Ausdruck zurückgegeben werden muss. |
+| `['image', string]` | Zeichenfolge | Prüft, ob eine angegebene Image-ID in das Kartenbildsprite geladen wird. Wenn dies der Fall ist, wird die ID zurückgegeben, andernfalls wird NULL zurückgegeben. |
 | `['to-boolean', value]` | boolean | Konvertiert den Eingabewert in einen booleschen Wert. Das Ergebnis ist `false`, wenn die Eingabe eine leere Zeichenfolge ist oder `0`, `false`, `null` oder `NaN` lautet. Andernfalls lautet das Ergebnis `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Konvertiert den Eingabewert in eine Farbe. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | number | Konvertiert den Eingabewert in eine Zahl, falls dies möglich ist. Wenn die Eingabe `null` oder `false` lautet, ist das Ergebnis 0. Wenn die Eingabe `true` lautet, ist das Ergebnis 1. Wenn die Eingabe eine Zeichenfolge ist, wird sie mit der Zeichenfolgenfunktion [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) der ECMAScript-Sprachspezifikation in eine Zahl konvertiert. Falls mehrere Werte bereitgestellt werden, werden sie der Reihe nach einzeln ausgewertet, bis die erste erfolgreiche Konvertierung erfolgt ist. Wenn keine der Eingaben konvertiert werden kann, ergibt sich für den Ausdruck ein Fehler. |
@@ -400,7 +419,7 @@ Bei Typenausdrücken werden Tools zum Testen und Konvertieren unterschiedlicher 
 >             //Get the entityType value.
 >             ['get', 'entityType'],
 >
->             //If there is no title, try getting the subtitle. 
+>             //If the entity type is 'restaurant', return a different pixel offset. 
 >             'restaurant', ['literal', [0, -10]],
 >
 >             //Default to value.
@@ -665,6 +684,7 @@ Der Text Field Format-Ausdruck kann mit der `textField`-Option der `textOptions`
 
  * `'font-scale'` – Gibt den Skalierungsfaktor für den Schriftgrad an. Wenn er angegeben ist, wird mit diesem Wert die `size`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
  * `'text-font'` – Gibt mindestens eine Schriftfamilie an, die für diese Zeichenfolge verwendet werden sollte. Wenn er angegeben ist, wird mit diesem Wert die `font`-Eigenschaft von `textOptions` für die individuelle Zeichenfolge außer Kraft gesetzt.
+ * `'text-color'`: Gibt eine Farbe an, die beim Rendern auf einen Text angewendet werden soll. 
 
 Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks definiert. 
 
@@ -674,12 +694,14 @@ Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks d
     input1: string, 
     options1: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[],
+        'text-color': color
     },
     input2: string, 
     options2: { 
         'font-scale': number, 
-        'text-font': string[] 
+        'text-font': string[] ,
+        'text-color': color
     },
     …
 ]
@@ -687,7 +709,7 @@ Mit dem folgenden Pseudocode wird die Struktur des Text Field Format-Ausdrucks d
 
 **Beispiel**
 
-Im folgenden Beispiel wird das Textfeld formatiert, indem Fettdruck hinzugefügt und der Schriftgrad der `title`-Eigenschaft des Features erhöht wird. In diesem Beispiel wird auch die `subtitle`-Eigenschaft des Features mit einem niedrigeren Schriftgrad in einer neuen Zeile hinzugefügt.
+Im folgenden Beispiel wird das Textfeld formatiert, indem Fettdruck hinzugefügt und der Schriftgrad der `title`-Eigenschaft des Features erhöht wird. In diesem Beispiel wird auch die `subtitle`-Eigenschaft des Features mit einem niedrigeren Schriftgrad und rot markiert in einer neuen Zeile hinzugefügt.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -706,7 +728,10 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
             //Scale the font size down of the subtitle property. 
             ['get', 'subtitle'],
-            { 'font-scale': 0.75 }
+            { 
+                'font-scale': 0.75, 
+                'text-color': 'red' 
+            }
         ]
     }
 });
@@ -840,7 +865,7 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, in denen Ausdrücke 
 > [Hinzufügen einer Blasenebene](map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Add a line layer to the map](map-add-line-layer.md) (Hinzufügen einer Linienebene zur Karte)
+> [Hinzufügen einer Linienebene](map-add-line-layer.md)
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer Form zu einer Karte](map-add-shape.md)

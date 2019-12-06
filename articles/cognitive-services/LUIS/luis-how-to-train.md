@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 259ea23c05f0c0a138ad54b6efd11aad2061cf7a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1da8ab3015730c6b3e1962301a34b1ad43b1aad6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500230"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143695"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Trainieren Ihrer aktiven Version der LUIS-App 
 
@@ -26,47 +26,27 @@ Das Trainieren und [Testen](luis-concept-test.md) eine App ist ein iterativer Vo
 
 Das Training wird auf die aktive Version im LUIS-Portal angewandt. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
 ## <a name="how-to-train-interactively"></a>Interaktives Trainieren
 
 Sie müssen Ihre LUIS-App mindestens zunächst mindestens einmal im [LUIS-Portal](https://www.luis.ai) trainieren, damit Sie den iterativen Prozess starten können. Vergewissern Sie sich vor dem Training, dass jeder Absicht mindestens eine Äußerung zugeordnet ist.
 
 1. Greifen Sie auf Ihre App zu, indem Sie ihren Namen auf der Seite **Meine Apps** auswählen. 
 
-2. Klicken Sie in Ihrer App im oberen Bereich auf **Trainieren**. 
+1. Klicken Sie in Ihrer App im oberen Bereich auf **Trainieren**. 
 
-3. Wenn das Training abgeschlossen ist, wird im oberen Bereich des Browsers eine Benachrichtigungsleiste in grün angezeigt.
-
-<!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
-
->[!NOTE]
->Wenn Ihre App mindestens eine Absicht aufweist, die keine Beispieläußerungen enthält, können Sie Ihre App nicht trainieren. Fügen Sie für sämtliche Absichten Äußerungen hinzu. Weitere Informationen finden Sie unter [Add example utterances (Hinzufügen von Beispieläußerungen)](luis-how-to-add-example-utterances.md).
+1. Wenn das Training abgeschlossen ist, wird im oberen Bereich des Browsers eine Benachrichtigung angezeigt.
 
 ## <a name="training-date-and-time"></a>Datum und Uhrzeit für das Training
 
-Das Datum und die Uhrzeit für das Training ist GMT + 2. 
+Das Datum und die Uhrzeit für das Training werden in der Zeitzone GMT + 2 angegeben. 
 
 ## <a name="train-with-all-data"></a>Trainieren mit allen Daten
 
-Das Training verwendet einen kleinen Prozentsatz negativer Stichproben. 
-
-Wenn Sie anstelle der kleinen negativen Stichprobenentnahme alle Daten verwenden möchten, verwenden Sie die [API](#version-settings-api-use-of-usealltrainingdata).
-
-<!--
-
- or the [LUIS portal setting](#luis-portal-setting-to-use-all-training-data)
-
-### LUIS portal setting to use all training data
-
-!!!IGNITE
-
-
--->
+Das Training verwendet einen kleinen Prozentsatz negativer Stichproben. Wenn Sie anstelle der kleinen negativen Stichprobenentnahme alle Daten verwenden möchten, verwenden Sie die [API](#version-settings-api-use-of-usealltrainingdata).
 
 ### <a name="version-settings-api-use-of-usealltrainingdata"></a>Verwendung von UseAllTrainingData durch die Versionseinstellungs- API
 
-Verwenden Sie die [Versionseinstellungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) mit auf WAHR festgelegter Option `UseAllTrainingData`, um dieses Feature zu deaktivieren. 
+Verwenden Sie die [Versionseinstellungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) mit der Option `UseAllTrainingData` (auf TRUE festgelegt), um dieses Feature zu deaktivieren. 
 
 ## <a name="unnecessary-training"></a>Unnötiges Trainieren
 
@@ -80,5 +60,5 @@ Um zu ermitteln, wann das Training abgeschlossen ist, müssen Sie den Status abr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md) 
+* [Interaktives Testen](luis-interactive-test.md)
+* [Batchtests](luis-how-to-batch-test.md)

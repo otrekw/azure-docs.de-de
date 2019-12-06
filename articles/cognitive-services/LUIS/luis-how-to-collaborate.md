@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 15c7c6664b0c17d02f1f4e9120c9509fda21e0f4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 96aa7517a3418ab30b0b6a1736eea950ecf4a731
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467531"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533804"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
 Ein App-Besitzer kann Mitwirkende zu Apps hinzufügen. Diese Projektmitarbeiter können das Modell ändern und die App trainieren und veröffentlichen. 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
 
 [!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
 
@@ -56,8 +54,6 @@ Eine App hat einen einzelnen Autor, den Besitzer, sie kann aber viele Mitarbeite
 1. Wählen Sie im Menü rechts oben **Verwalten** und dann im linken Menü **Projektmitarbeiter** aus.
 
 1. Wählen Sie auf der Symbolleiste **Projektmitarbeiter hinzufügen** aus.
-
-    [![Projektmitarbeiter hinzufügen](./media/luis-how-to-collaborate/add-collaborator.png "Mitarbeiter hinzufügen")](./media/luis-how-to-collaborate/add-collaborator.png#lightbox)
 
 1. Geben Sie die E-Mail-Adresse ein, die der Projektmitarbeiter für die Anmeldung beim LUIS-Portal verwendet.
 
@@ -93,7 +89,7 @@ Der Administrator des Mandanten sollte direkt mit dem Benutzer zusammenarbeiten,
 
 Wenn der Mandantenadministrator nur bestimmten Benutzern die Verwendung von LUIS gestatten möchte, gibt es mehrere mögliche Lösungen:
 * Erteilen der „Administratoreinwilligung“ (Einwilligung für alle Benutzer von Azure AD) und anschließendes Festlegen von „Benutzerzuweisung erforderlich“ unter den Eigenschaften der Unternehmensanwendung auf „Ja“ und Zuweisen/Hinzufügen nur der gewünschten Benutzer zur Anwendung. Mit dieser Methode erteilt der Administrator immer noch „Administratoreinwilligung“ für die App, es ist jedoch möglich, die Benutzer zu steuern, die darauf zugreifen können.
-* Eine zweite Lösung ist die Verwendung der [Azure AD Graph-API](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview) zum Bereitstellen der Einwilligung für jeden einzelnen Benutzer. 
+* Eine zweite Lösung ist die Verwendung der [Identitäts- und Zugriffsverwaltungs-API von Azure AD in Microsoft Graph](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview), um jedem einzelnen Benutzer die Einwilligung zu erteilen. 
 
 Weitere Informationen zu Azure Active Directory-Benutzern und Einwilligung: 
 * [Einschränken Ihrer App](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) auf eine Gruppe von Benutzern

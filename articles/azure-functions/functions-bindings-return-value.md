@@ -1,20 +1,16 @@
 ---
 title: Verwendung des Rückgabewerts einer Azure-Funktion
 description: Informationen zum Verwalten von Rückgabewerten für Azure Functions
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7ba104e288204dfbf3d24f5783bf69682a286553
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074401"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480568"
 ---
 # <a name="using-the-azure-function-return-value"></a>Verwenden des Rückgabewerts einer Azure-Funktion
 
@@ -23,6 +19,7 @@ In diesem Artikel wird erläutert, wie Rückgabewerte innerhalb einer Funktion f
 In Sprachen mit Rückgabewert können Sie eine [Ausgabebindung](./functions-triggers-bindings.md#binding-direction) einer Funktion an den Rückgabewert binden:
 
 * Wenden Sie in einer C#-Klassenbibliothek das Attribut der Ausgabebindung auf den Rückgabewert der Methode an.
+* Wenden Sie in Java die Anmerkung der Ausgabebindung auf die Funktionsmethode an.
 * In anderen Sprachen legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest.
 
 Wenn mehrere Ausgabebindungen vorhanden sind, verwenden Sie den Rückgabewert für nur eine davon.
@@ -154,6 +151,24 @@ def main(input: azure.functions.InputStream) -> str:
         'length': input.length,
         'content': input.read().decode('utf-8')
     })
+```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Hier sehen Sie Java-Code, der den Rückgabewert für eine Ausgabebindung verwendet:
+
+```java
+@FunctionName("QueueTrigger")
+@StorageAccount("AzureWebJobsStorage")
+@BlobOutput(name = "output", path = "output-container/{id}")
+public static String run(
+  @QueueTrigger(name = "input", queueName = "inputqueue") WorkItem input,
+  final ExecutionContext context
+) {
+  String json = String.format("{ \"id\": \"%s\" }", input.id);
+  context.getLogger().info("Java processed queue message. Item=" + json);
+  return json;
+}
 ```
 
 ---

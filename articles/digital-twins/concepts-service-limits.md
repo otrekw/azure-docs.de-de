@@ -1,19 +1,19 @@
 ---
-title: Diensteinschränkungen der öffentlichen Vorschauversion von Azure Digital Twins | Microsoft-Dokumentation
-description: Grundlegendes zu den Diensteinschränkungen der Public Preview von Azure Digital Twins.
+title: Dienstbegrenzungen der Public Preview – Azure Digital Twins | Microsoft-Dokumentation
+description: Erfahren Sie mehr über Begrenzungen bezüglich der Public Preview, des Abonnements, der Instanzen und Raten für Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: 88a66506b5102a4efaeefe1c7033b337dff9889a
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.date: 11/21/2019
+ms.openlocfilehash: f54311af65d9678b2a51b23a38bab66111a818ca
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949238"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383073"
 ---
 # <a name="public-preview-service-limits"></a>Diensteinschränkungen der öffentlichen Vorschauversion
 
@@ -70,7 +70,8 @@ Es gelten die folgenden Grenzwerte für die Gesamtanzahl der Aufrufe, die von be
 
 Die folgenden Grenzwerte deckeln die Gesamtanzahl aller Nachrichten, die Ihre Geräte an Ihre Azure Digital Twins Instanz senden können:
 
-- 100 Nachrichten pro Sekunde
+- 100 Nachrichten pro Sekunde auf allen Geräten
+-   25 Nachrichten pro Sekunde und Gerät
 
 ## <a name="next-steps"></a>Nächste Schritte
 

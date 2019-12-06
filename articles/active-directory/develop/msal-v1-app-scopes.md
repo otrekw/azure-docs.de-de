@@ -12,24 +12,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/23/2019
+ms.date: 11/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0590614e1c1bc7331246e76fa26a6567a05324e6
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 70a8a5859c7f1e2353b53d01a25a0ca39e0b04dd
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532342"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532979"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
-OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine Azure AD-Web-API-Anwendung (Ressource) für Entwickler (v1.0) für Clientanwendungen verfügbar macht. Diese Berechtigungsbereiche können Clientanwendungen im Zuge der Zustimmung gewährt werden. Weitere Informationen finden Sie im Abschnitt über `oauth2Permissions` in der [Azure Active Directory-Anwendungsmanifestreferenz](reference-app-manifest.md#manifest-reference).
+OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine Azure AD-Web-API-Anwendung (Ressource) für Entwickler (v1.0) für Clientanwendungen zur Verfügung stellt. Diese Berechtigungsbereiche können Clientanwendungen im Zuge der Zustimmung gewährt werden. Weitere Informationen finden Sie im Abschnitt über `oauth2Permissions` in der [Azure Active Directory-Anwendungsmanifestreferenz](reference-app-manifest.md#manifest-reference).
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf bestimmte OAuth2-Berechtigungen einer v1.0-Anwendung angefordert wird
-Wenn Sie Token für bestimmte Geltungsbereiche einer v1.0-Anwendung (z. B. Azure AD-Graph unter https:\//graph.windows.net) abrufen möchten, müssen Sie Geltungsbereiche erstellen, indem Sie einen gewünschten Ressourcenbezeichner mit einer gewünschten OAuth2-Berechtigung für die entsprechende Ressource verketten.
+
+Wenn Sie Token für bestimmte Geltungsbereiche einer v1.0-Anwendung (z. B. Azure AD-Graph unter https:\//graph.windows.net) abrufen möchten, müssen Sie Geltungsbereiche erstellen, indem Sie einen beliebigen Ressourcenbezeichner mit einer beliebigen OAuth2-Berechtigung für die entsprechende Ressource verketten.
 
 Beispiel für den Zugriff auf eine v1. 0-Web-API im Auftrag des Benutzers mit dem App-ID-URI `ResourceId`:
 
@@ -41,7 +42,7 @@ var scopes = new [] {  ResourceId+"/user_impersonation"};
 var scopes = [ ResourceId + "/user_impersonation"];
 ```
 
-Wenn Sie mit Azure Active Directory MSAL.NET unter Verwendung der Azure AD-Graph-API (https:\//graph.windows.net/) Lese- und Schreibvorgänge ausführen möchten, erstellen Sie eine Liste von Geltungsbereichen wie im folgenden Beispiel:
+Wenn Sie mit MSAL.NET für Azure AD unter Verwendung der Azure AD-Graph-API (https:\//graph.windows.net/) Lese- und Schreibvorgänge ausführen möchten, müssen Sie wie im folgenden Beispiel eine Liste von Geltungsbereichen erstellen:
 
 ```csharp
 string ResourceId = "https://graph.windows.net/";
@@ -53,7 +54,7 @@ var ResourceId = "https://graph.windows.net/";
 var scopes = [ ResourceId + "Directory.Read", ResourceID + "Directory.Write"];
 ```
 
-Um den Geltungsbereich für die Azure Resource Manager-API (https:\//management.core.windows.net/) zu schreiben, müssen Sie den folgenden Geltungsbereich anfordern (beachten Sie die beiden Schrägstriche):
+Zum Schreiben des Geltungsbereichs für die Azure Resource Manager-API (https:\//management.core.windows.net/) müssen Sie den folgenden Geltungsbereich anfordern (beachten Sie die beiden Schrägstriche):
 
 ```csharp
 var scopes = new[] {"https://management.core.windows.net//user_impersonation"};
@@ -67,11 +68,12 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 
 Die von Azure AD verwendete Logik lautet wie folgt:
 
-- Für einen ADAL (v1.0)-Endpunkt mit einem v1.0-Zugriffstoken (einzige Möglichkeit): aud=resource
-- Für einen MSAL (v2.0)-Endpunkt (Microsoft Identity Platform v2.0), der ein Zugriffstoken für eine Ressource abfragt, die v2.0-Token akzeptiert: aud=resource.AppId
-- Für einen MSAL (v2.0)-Endpunkt, der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn „https:\//database.windows.net“ die Zielgruppe „https:\//database.windows.net/“ erwartet, müssen Sie daher den Geltungsbereich „https:\//database.windows.net//.default“ anfordern. Siehe auch GitHub-Problem [#747: Resource url's trailing slash is omitted, which caused sql auth failure](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) (Bei der URL der Ressource wurde der nachgestellte Schrägstrich ausgelassen, wodurch bei der SQL-Authentifizierung ein Fehler aufgetreten ist).
+- Für einen Endpunkt zu einer Active Directory-Authentifizierungsbibliothek (v1.0) mit einem v1.0-Zugriffstoken (einzige Möglichkeit): aud=resource
+- Für einen MSAL-Endpunkt (Microsoft Identity Platform v2.0), der ein Zugriffstoken für eine Ressource abfragt, die v2.0-Token akzeptiert: `aud=resource.AppId`
+- Für einen MSAL-Endpunkt (v2.0), der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn „https:\//database.windows.net“ die Zielgruppe „https:\//database.windows.net/“ erwartet, müssen Sie daher den Geltungsbereich „https:\//database.windows.net//.default“ anfordern. Siehe auch GitHub-Problem [#747: Resource url's trailing slash is omitted, which caused sql auth failure](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) (Bei der URL der Ressource wurde der nachgestellte Schrägstrich ausgelassen, wodurch bei der SQL-Authentifizierung ein Fehler aufgetreten ist).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf alle Berechtigungen einer v1.0-Anwendung angefordert wird
+
 Wenn Sie ein Token für alle statischen Geltungsbereiche einer v1.0-Anwendung abrufen möchten, fügen Sie an den App-ID-URI der API die Zeichenfolge „.default“ an:
 
 ```csharp
@@ -84,5 +86,6 @@ var ResourceId = "someAppIDURI";
 var scopes = [ ResourceId + "/.default"];
 ```
 
-## <a name="scopes-to-request-for-client-credential-flow--daemon-app"></a>Für Clientanmeldeinformations-Flows/Daemon-Apps anzufordernde Geltungsbereiche
+## <a name="scopes-to-request-for-a-client-credential-flowdaemon-app"></a>Für Clientanmeldeinformationsflows/Daemon-Apps anzufordernde Geltungsbereiche
+
 Bei einem Clientanmeldeinformations-Flow lautet der zu übergebende Geltungsbereich ebenfalls `/.default`. Dies bedeutet für Azure AD: Alle Berechtigungen auf Anwendungsebene, denen der Administrator bei der Anwendungsregistrierung zugestimmt hat.

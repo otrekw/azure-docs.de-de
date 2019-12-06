@@ -1,14 +1,14 @@
 ---
 title: Grundlagen von Ressourcensperren
-description: Es wird beschrieben, wie Sie die Optionen für das Sperren verwenden, um beim Zuweisen einer Blaupause die Ressourcen zu schützen.
+description: Erfahren Sie, wie Sie die Sperrfunktionen in Azure Blueprints verwenden, um beim Zuweisen einer Blauphase die Ressourcen zu schützen.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960479"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406409"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -61,8 +61,7 @@ Die [Eigenschaften von Ablehnungszuweisungen](../../../role-based-access-control
 
 ## <a name="exclude-a-principal-from-a-deny-assignment"></a>Ausschließen eines Prinzipals von einer Ablehnungszuweisung
 
-In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen Prinzipal von der [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) auszuschließen, die von der Blaupausenzuweisung erstellt wird. Dies erfolgt in REST-API durch Hinzufügen von bis zu fünf Werten zum Array **excludedPrincipals** in der Eigenschaft **locks**, wenn [die Zuweisung erstellt wird](/rest/api/blueprints/assignments/createorupdate).
-Dies ist ein Beispiel für einen Anforderungstext, der **excludedPrincipals** enthält:
+In einigen Entwurfs- oder Sicherheitsszenarien kann es erforderlich sein, einen Prinzipal von der [Ablehnungszuweisung](../../../role-based-access-control/deny-assignments.md) auszuschließen, die von der Blaupausenzuweisung erstellt wird. Dies erfolgt in REST-API durch Hinzufügen von bis zu fünf Werten zum Array **excludedPrincipals** in der Eigenschaft **locks**, wenn [die Zuweisung erstellt wird](/rest/api/blueprints/assignments/createorupdate). Dies ist ein Beispiel für einen Anforderungstext, der **excludedPrincipals** enthält:
 
 ```json
 {

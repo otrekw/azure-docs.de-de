@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 89bc690e5a8c8d24d7732dd4e12f70a9f1f368af
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6941a159c8be9f7d1921dd281f7366b078b30a7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842657"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546274"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in Azure Active Directory Domain Services
 
@@ -42,7 +42,9 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie f
 
 Die Kerberos-Delegierung ermöglicht einem Konto, für den Zugriff auf Ressourcen die Identität eines anderen Kontos anzunehmen. Beispielsweise kann eine Webanwendung, die auf eine Back-End-Webkomponente zugreift, beim Herstellen der Back-End-Verbindung die Identität eines anderen Benutzerkontos annehmen. Die Kerberos-Delegierung ist unsicher, da sie die Ressourcen, auf die das Konto für den Identitätswechsel zugreifen kann, nicht einschränkt.
 
-Die eingeschränkte Kerberos-Delegierung (KCD) schränkt die Dienste oder Ressourcen ein, mit denen ein bestimmter Server oder eine Anwendung bei einem Identitätswechsel eine Verbindung herstellen kann. Bei der herkömmlichen eingeschränkten Kerberos-Delegierung sind zum Konfigurieren eines Domänenkontos für einen Dienst Domänenadministratorrechte erforderlich. Außerdem muss das Konto in einer einzelnen Domäne ausgeführt werden. Mit der herkömmlichen KCD sind auch einige Probleme verbunden. Bei früheren Betriebssystemversionen beispielsweise hatte der Dienstadministrator keine praktische Möglichkeit herauszufinden, welche Front-End-Dienste an die Ressourcendienste delegierten, die sich in ihrem Besitz befanden. Jeder Front-End-Dienst, der an einen Ressourcendienst delegieren konnte, bot einen potenziellen Angriffspunkt. Wenn ein Server kompromittiert wurde, der einen Front-End-Dienst hostete, für den die Delegierung an Ressourcendienste konfiguriert war, wurden möglicherweise auch die Ressourcendienste kompromittiert.
+Die eingeschränkte Kerberos-Delegierung (KCD) schränkt die Dienste oder Ressourcen ein, mit denen ein bestimmter Server oder eine Anwendung bei einem Identitätswechsel eine Verbindung herstellen kann. Bei der herkömmlichen eingeschränkten Kerberos-Delegierung sind zum Konfigurieren eines Domänenkontos für einen Dienst Domänenadministratorrechte erforderlich. Außerdem muss das Konto in einer einzelnen Domäne ausgeführt werden.
+
+Mit der herkömmlichen KCD sind auch einige Probleme verbunden. Bei früheren Betriebssystemversionen beispielsweise hatte der Dienstadministrator keine praktische Möglichkeit herauszufinden, welche Front-End-Dienste an die Ressourcendienste delegierten, die sich in ihrem Besitz befanden. Jeder Front-End-Dienst, der an einen Ressourcendienst delegieren konnte, bot einen potenziellen Angriffspunkt. Wenn ein Server kompromittiert wurde, der einen Front-End-Dienst hostete, für den die Delegierung an Ressourcendienste konfiguriert war, wurden möglicherweise auch die Ressourcendienste kompromittiert.
 
 In einer verwalteten Azure AD DS-Domäne haben Sie keine Domänenadministratorrechte. Demzufolge kann die herkömmliche kontobasierte eingeschränkte Kerberos-Delegierung (KCD) nicht in einer verwalteten Azure AD DS-Domäne konfiguriert werden. Stattdessen kann eine ressourcenbasierte KCD verwendet werden, die außerdem sicherer ist.
 

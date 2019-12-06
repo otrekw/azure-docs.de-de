@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0a3bc6bcae2f06173cbc334ffe80e2dfa001e407
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309265"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479384"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -95,8 +95,6 @@ Security Center erkennt Sicherheitslösungen automatisch, die in Azure ausgefüh
 
 Wählen Sie unterhalb einer Lösung die Option **VERBINDEN**, um die Integration in Security Center durchzuführen und über Sicherheitswarnungen benachrichtigt zu werden.
 
-![Ermittelte Lösungen](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
-
 ### <a name="add-data-sources"></a>Hinzufügen von Datenquellen
 
 Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenquellen, mit denen eine Verbindung hergestellt werden kann. Klicken Sie **HINZUFÜGEN**, um eine Anleitung zum Hinzufügen von Daten aus einer dieser Quellen anzuzeigen.
@@ -104,6 +102,10 @@ Der Abschnitt **Datenquellen hinzufügen** enthält weitere verfügbare Datenque
 ![Datenquellen](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 ## <a name="exporting-data-to-a-siem"></a>Exportieren von Daten in ein SIEM-Tool
+
+> [!NOTE]
+> Ausführliche Informationen zu einer einfacheren Methode (derzeit in der Vorschau) zum Exportieren von Daten in SIEM finden Sie unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md). Die neue Methode verwendet nicht das Aktivitätsprotokoll als Vermittler und ermöglicht den direkten Export von Security Center in Event Hubs (und anschließend in SIEM). Außerdem wird der Export von Sicherheitsempfehlungen unterstützt.
+
 
 Sie können Ihre SIEMs oder anderen Überwachungstools für den Empfang von Azure Security Center-Ereignissen konfigurieren.
 

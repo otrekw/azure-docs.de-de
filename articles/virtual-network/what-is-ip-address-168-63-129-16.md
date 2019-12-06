@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067780"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196668"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Was ist die IP-Adresse 168.63.129.16?
 
@@ -35,6 +35,7 @@ Die IP-Adresse 168.63.129.16 ist eine virtuelle öffentliche IP-Adresse, die ver
 ## <a name="scope-of-ip-address-1686312916"></a>Bereich der IP-Adresse 168.63.129.16
 
 Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Sie ist gemäß der Standard-Netzwerksicherheitsgruppe zulässig. Es wird empfohlen, dass Sie diese IP-Adresse in lokalen Firewallrichtlinien sowohl für eingehenden als auch für ausgehenden Datenverkehr zulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen.
+Für die Kommunikation mit WireServer müssen mindestens die folgenden Ports geöffnet sein: 80, 443 und 32526.
 
 [Azure Load Balancer-Integritätstests](../load-balancer/load-balancer-custom-probe-overview.md) gehen von dieser IP-Adresse aus. Wenn Sie diese IP-Adresse blockieren, treten bei Ihren Tests Fehler auf.
 

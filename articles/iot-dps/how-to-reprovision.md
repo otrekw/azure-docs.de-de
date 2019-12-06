@@ -1,19 +1,18 @@
 ---
-title: Erneutes Bereitstellen von Geräten im Azure IoT Hub Device Provisioning Service | Microsoft-Dokumentation
-description: Erneutes Bereitstellen von Geräten mit Ihrer Dienstinstanz für die Gerätebereitstellung
+title: Erneutes Bereitstellen von Geräten mit dem Azure IoT Hub Device Provisioning Service
+description: Erfahren Sie, wie Sie Geräte mit Ihrer Instanz von Azure IoT Hub Device Provisioning Service nochmal bereitstellen können und warum dies notwendig sein kann.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f28dc20a107e9dfdbf252ea614ed4007eafddcd4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60627347"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229706"
 ---
 # <a name="how-to-reprovision-devices"></a>Erneutes Bereitstellen von Geräten
 

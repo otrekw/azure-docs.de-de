@@ -1,6 +1,7 @@
 ---
-title: Überwachen von Azure Media Services-Metriken und -Diagnoseprotokollen über Azure Monitor | Microsoft-Dokumentation
-description: Dieser Artikel bietet eine Übersicht darüber, wie Sie Metriken und Diagnoseprotokolle von Azure Media Services über Azure Monitor überwachen können.
+title: Überwachen von Metriken und Diagnoseprotokollen über Azure Monitor
+titleSuffix: Azure Media Services
+description: Erfahren Sie, wie Sie Metriken und Diagnoseprotokolle von Azure Media Services über Azure Monitor überwachen können.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1c77cdf57978af81accc7802575d262b97d08fe2
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261075"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186114"
 ---
-# <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen
+# <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen über Azure Monitor
 
-[Azure Monitor](../../azure-monitor/overview.md) ermöglicht Ihnen die Überwachung von Metriken und Diagnoseprotokollen, die Ihnen zu verstehen helfen, wie sich Ihre Anwendungen verhalten. Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an: Metriken und Protokollen. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können die Metrikdaten mit dem [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) visualisieren und analysieren. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
+Mit [Azure Monitor](../../azure-monitor/overview.md) können Sie Metriken und Diagnoseprotokolle überwachen, die Ihnen helfen zu verstehen, wie sich Ihre Anwendungen verhalten. Alle von Azure Monitor gesammelten Daten gehören einem von zwei Grundtypen an: Metriken und Protokollen. Sie können Media Services-Diagnoseprotokolle überwachen sowie Warnungen und Benachrichtigungen für die gesammelten Metriken und Protokolle erstellen. Sie können die Metrikdaten mit dem [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) visualisieren und analysieren. Sie können Protokolle an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen, in [Log Analytics](https://azure.microsoft.com/services/log-analytics/) exportieren oder Dienste von Drittanbietern nutzen.
 
 Eine ausführliche Übersicht finden Sie unter [Azure Monitor-Metrik](../../azure-monitor/platform/data-platform.md) und [Azure Monitor-Diagnoseprotokolle](../../azure-monitor/platform/resource-logs-overview.md).
 
@@ -36,10 +37,10 @@ Media Services unterstützt das Überwachen von Metriken für die folgenden Ress
 
 * Konto
 * Streamingendpunkt
- 
+
 ### <a name="account"></a>Konto
 
-Sie können die folgenden Kontometriken überwachen. 
+Sie können die folgenden Kontometriken überwachen.
 
 |Metrikname|`Display name`|BESCHREIBUNG|
 |---|---|---|
@@ -52,7 +53,7 @@ Sie können die folgenden Kontometriken überwachen.
 |StreamingPolicyCount|Anzahl der Streamingrichtlinien|Die Streamingrichtlinien in Ihrem Konto.|
 |StreamingPolicyQuota|Kontingent der Streamingrichtlinien|Das Kontingent der Streamingrichtlinien in Ihrem Konto.|
 |StreamingPolicyQuotaUsedPercentage|Prozentsatz des verwendeten Kontingents der Streamingrichtlinien|Der Prozentsatz des bereits verwendeten Kontingents der Streamingrichtlinien.|
- 
+
 Informieren Sie sich außerdem über [Kontingente und Einschränkungen für Konten](limits-quotas-constraints.md).
 
 ### <a name="streaming-endpoint"></a>Streamingendpunkt
@@ -65,17 +66,17 @@ Die folgenden [Streamingendpunkte](https://docs.microsoft.com/rest/api/media/str
 |Ausgehende Daten|Ausgehende Daten|Die Gesamtzahl der ausgehenden Bytes. Beispiel: Vom Streamingendpunkt gestreamte Bytes.|
 |SuccessE2ELatency|End-to-End-Wartezeit bei Erfolg|Die Zeitspanne zwischen dem Empfang der Anforderung durch den Streamingendpunkt und dem Senden des letzten Bytes der Antwort.|
 
-### <a name="why-would-i-want-to-use-metrics"></a>Warum sollte ich Metriken verwenden? 
+### <a name="why-would-i-want-to-use-metrics"></a>Warum sollte ich Metriken verwenden?
 
 Hier sind Beispiele dafür, wie Sie durch das Überwachen von Media Services-Metriken Informationen über die Leistung Ihrer Anwendungen erhalten. Media Services-Metriken können beispielsweise für folgende Fragen genutzt werden:
 
 * Wie überwache ich meinen Standardstreamingendpunkt, um zu wissen, wann die Grenzwerte überschritten wurden?
-* Wie erkenne ich, ob ich über genügend Premium-Streamingendpunkt-Skalierungseinheiten verfüge? 
+* Wie erkenne ich, ob ich über genügend Premium-Streamingendpunkt-Skalierungseinheiten verfüge?
 * Wie kann ich eine Warnung festlegen, um zu wissen, wann die Streamingendpunkte zentral hochskaliert werden müssen?
 * Wie lege ich eine Warnung fest, um zu wissen, wann der für das Konto konfigurierte maximale ausgehende Datenverkehr erreicht wurde?
 * Wie kann ich die Aufschlüsselung der fehlgeschlagenen Anforderungen und die Fehlerursachen anzeigen?
 * Wie kann ich erkennen, wie viele HLS- oder DASH-Anforderungen aus dem Objekt-Manager abgerufen werden?
-* Wie lege ich eine Warnung fest, um zu wissen, wann der Schwellenwert für die Anzahl fehlgeschlagener Anforderungen erreicht wurde? 
+* Wie lege ich eine Warnung fest, um zu wissen, wann der Schwellenwert für die Anzahl fehlgeschlagener Anforderungen erreicht wurde?
 
 ### <a name="example"></a>Beispiel
 
@@ -95,12 +96,12 @@ Media Services unterstützt die folgenden Diagnoseprotokolle:
 |---|---|
 |Dienstanforderung zur Schlüsselübermittlung|Protokolle, die die wichtigsten Informationen zur Dienstanforderung für die Schlüsselübermittlung anzeigen. Weitere Informationen finden Sie unter [Schemas](media-services-diagnostic-logs-schema.md).|
 
-### <a name="why-would-i-want-to-use-diagnostics-logs"></a>Warum sollte ich Diagnoseprotokolle verwenden? 
+### <a name="why-would-i-want-to-use-diagnostics-logs"></a>Warum sollte ich Diagnoseprotokolle verwenden?
 
 Mit Diagnoseprotokollen für die Schlüsselübermittlung können Sie beispielsweise Folgendes untersuchen:
 
 * Anzeigen der Anzahl bereitgestellter Lizenzen nach DRM-Typ
-* Anzeigen der Anzahl bereitgestellter Lizenzen nach Richtlinie 
+* Anzeigen der Anzahl bereitgestellter Lizenzen nach Richtlinie
 * Anzeigen von Fehlern nach DRM- oder Richtlinientyp
 * Anzeigen der Anzahl nicht autorisierter Lizenzanforderungen von Clients
 
@@ -108,7 +109,7 @@ Mit Diagnoseprotokollen für die Schlüsselübermittlung können Sie beispielswe
 
 Siehe [Überwachen von Media Services-Diagnoseprotokollen](media-services-diagnostic-logs-howto.md)
 
-## <a name="next-steps"></a>Nächste Schritte 
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../../azure-monitor/platform/resource-logs-overview.md)
 * [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-metric.md)

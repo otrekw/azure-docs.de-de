@@ -1,19 +1,15 @@
 ---
-title: Konfigurieren von Blockchain Data Manager – Azure CLI
-description: Informationen zum Erstellen und Verwalten von Blockchain Data Manager mithilfe der Azure CLI
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: 'Konfigurieren von Blockchain Data Manager mithilfe der Azure CLI: Azure Blockchain Service'
+description: Erstellen und Verwalten von Blockchain Data Manager-Instanzen für Azure Blockchain Service mithilfe der Azure CLI
 ms.date: 11/04/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: a8061aad6d6a1513de70e7c2bc57aa109c666611
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605897"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455941"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>Konfigurieren von Blockchain Data Manager mithilfe der Azure CLI
 
@@ -261,7 +257,7 @@ Wenn Sie eine Blockchainanwendung hinzufügen, werden Ereignis- und Eigenschafts
 
 
 > [!IMPORTANT]
-> Derzeit werden Blockchainanwendungen, die Solidity-[Arraytypen](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) oder -[Zuordnungstypen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) deklarieren, nicht vollständig unterstützt. Als Array- oder Zuordnungstypen deklarierte Eigenschaften werden in Meldungen vom Typ *ContractPropertiesMsg* oder *DecodedContractEventsMsg* nicht decodiert.
+> Derzeit werden Blockchainanwendungen, die [Arraytypen](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) oder [Zuordnungstypen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) von Solidity deklarieren, nicht vollständig unterstützt. Als Array- oder Zuordnungstypen deklarierte Eigenschaften werden in Meldungen vom Typ *ContractPropertiesMsg* oder *DecodedContractEventsMsg* nicht decodiert.
 
 ``` azurecli
 az resource create \
@@ -419,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Versuchen Sie, mit Blockchain Data Manager und Azure Cosmos DB einen Explorer für Blockchaintransaktionsnachrichten zu erstellen.
+Versuchen Sie im Rahmen des nächsten Tutorials, mit Blockchain Data Manager und Azure Cosmos DB einen Explorer für Blockchaintransaktionsnachrichten zu erstellen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB](data-manager-cosmosdb.md)
+> [Verwenden von Blockchain Data Manager zum Senden von Daten an Azure Cosmos DB](data-manager-cosmosdb.md)

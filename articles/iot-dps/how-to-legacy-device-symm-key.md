@@ -1,5 +1,5 @@
 ---
-title: Verwenden von symmetrischen Schlüsseln zum Bereitstellen von Legacygeräten mit dem Azure IoT Hub Device Provisioning Service | Microsoft-Dokumentation
+title: 'Bereitstellung von Legacygeräten, die symmetrische Schlüssel verwenden: Azure IoT Hub Device Provisioning Service'
 description: Verwenden von symmetrischen Schlüsseln zum Bereitstellen von Legacygeräten mit Ihrer Device Provisioning Service-Instanz
 author: wesmc7777
 ms.author: wesmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434835"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209911"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Bereitstellen von Legacygeräten mit symmetrischen Schlüsseln
 

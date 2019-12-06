@@ -1,21 +1,21 @@
 ---
-title: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Hive | Microsoft-Dokumentation
-description: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Hive
+title: 'Optimieren der Leistung: Hive, HDInsight und Azure Data Lake Storage Gen2 | Microsoft-Dokumentation'
+description: Erfahren Sie mehr über Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Hive.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1290174fb87306b34be81ed7fa4fb5de3bfba43c
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 66042568cede364c16302fbd85751de4113bbe0f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847127"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327589"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Leitfaden zur Leistungsoptimierung für Hive in HDInsight und Azure Data Lake Storage Gen2
+# <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: Hive, HDInsight und Azure Data Lake Storage Gen2
 
 Die Standardeinstellungen bieten eine gute Leistung für viele verschiedene Anwendungsfälle.  Für E/A-intensive Abfragen kann Hive optimiert werden, um eine bessere Leistung mit Azure Data Lake Storage Gen2 zu erzielen.  
 

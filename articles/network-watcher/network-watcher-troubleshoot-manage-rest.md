@@ -1,5 +1,6 @@
 ---
-title: Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit REST in Azure Network Watcher | Microsoft-Dokumentation
+title: Problembehandlung von VNET Gateway und Verbindungen – Azure-REST-API
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird beschrieben, wie Sie für Virtual Network-Gateways und -Verbindungen per REST in Azure Network Watcher die Problembehandlung durchführen.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9b3898a7c4cd09b59da0fc167b758199119793eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686120"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277795"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen in Azure Network Watcher
 

@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134386"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279691"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Konfigurationsleitfaden für Integritätsmonitore in Azure Monitor für Container
 
-Monitore sind das Hauptelement zum Messen der Integrität und Erkennen von Fehlern in Azure Monitor für Container. Dieser Artikel erläutert die Konzepte zum Messen der Integrität sowie die Elemente, die das Integritätsmodell zum Überwachen und Melden der Integrität Ihres Kubernetes-Clusters mit dem [Integritätsfeature](container-insights-health.md) umfasst.
+Monitore sind das Hauptelement zum Messen der Integrität und Erkennen von Fehlern in Azure Monitor für Container. Dieser Artikel erläutert die Konzepte zum Messen der Integrität sowie die Elemente, die das Integritätsmodell zum Überwachen und Melden der Integrität Ihres Kubernetes-Clusters mit dem [Integritäts](container-insights-health.md)funktion (Preview) umfasst.
+
+>[!NOTE]
+>Die Integritätsfunktion befindet sich derzeit in der öffentlichen Vorschauphase.
+>
 
 ## <a name="monitors"></a>Monitore
 
@@ -31,7 +35,7 @@ Die Gesamtintegrität eines bestimmten Objekts wird durch die Integrität der ei
 
 ## <a name="types-of-monitors"></a>Monitortypen
 
-|Monitor | BESCHREIBUNG | 
+|Überwachen | BESCHREIBUNG | 
 |--------|-------------|
 | Einheitenmonitor |Ein Einheitenmonitor misst einen bestimmten Aspekt einer Ressource oder Anwendung. Dabei kann es sich um die Überprüfung eines Leistungszählers zum Ermitteln der Leistung der Ressource oder ihrer Verfügbarkeit handeln. |
 |Aggregatmonitor | Mit Aggregatmonitoren werden mehrere Monitore in einer Gruppe zusammengefasst, um einen einzelnen aggregierten Integritätsstatus bereitzustellen. Einheitenmonitore werden in der Regel unter einem bestimmten Aggregatmonitor konfiguriert. Ein Aggregatmonitor vom Typ „Knoten“ führt z.B. einen Rollup des Status der Knoten-CPU-Auslastung, der Arbeitsspeicherauslastung und des Knotenstatus durch.
