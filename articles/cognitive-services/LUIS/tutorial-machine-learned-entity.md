@@ -11,18 +11,18 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 1d05df454e3d7a4f54e7451b81dd2a6470a8200b
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 913fa3c846ea00649a584be02975fdde449dc7cf
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806410"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383279"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe der durch maschinelles Lernen erworbenen Entitäten in Language Understanding (LUIS)
 
-In diesem Tutorial extrahieren Sie strukturierte Daten aus einer Äußerung mithilfe der durch maschinelles Lernen erworbenen Entität.
+In diesem Tutorial extrahieren Sie strukturierte Daten aus einer Äußerung mithilfe der durch maschinelles Lernen erworbenen Entität. 
 
-Die durch maschinelles Lernen erworbene Entität unterstützt das [Modellaufschlüsselungskonzept](luis-concept-model.md#v3-authoring-model-decomposition), indem sie Unterkomponentenentitäten mit ihren Deskriptoren und Einschränkungen bereitstellt.
+Die durch maschinelles Lernen erworbene Entität unterstützt das [Modellaufschlüsselungskonzept](luis-concept-model.md#v3-authoring-model-decomposition), indem sie Unterkomponentenentitäten mit ihren Deskriptoren und Einschränkungen bereitstellt. 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -30,7 +30,7 @@ Die durch maschinelles Lernen erworbene Entität unterstützt das [Modellaufschl
 
 > [!div class="checklist"]
 > * Importieren der Beispiel-App
-> * Hinzufügen einer durch maschinelles Lernen erworbenen Entität
+> * Hinzufügen einer durch maschinelles Lernen erworbenen Entität 
 > * Hinzufügen von Unterkomponenten
 > * Hinzufügen des Deskriptors der Unterkomponente
 > * Hinzufügen der Einschränkung der Unterkomponente
@@ -44,23 +44,23 @@ Die durch maschinelles Lernen erworbene Entität unterstützt das [Modellaufschl
 
 ## <a name="why-use-a-machine-learned-entity"></a>Gründe für die Verwendung einer durch maschinelles Lernen erworbenen Entität
 
-In diesem Tutorial wird eine durch maschinelles Lernen erworbene Entität hinzugefügt, um Daten aus einer Äußerung zu extrahieren.
+In diesem Tutorial wird eine durch maschinelles Lernen erworbene Entität hinzugefügt, um Daten aus einer Äußerung zu extrahieren. 
 
-Der Zweck einer Entität ist es, die zu extrahierenden Daten zu definieren. Dies umfasst die Angabe eines Namens, eines Typs (falls möglich), einer beliebigen Auflösung der Daten bei Mehrdeutigkeit und des genauen Textes, aus dem die Daten bestehen.
+Der Zweck einer Entität ist es, die zu extrahierenden Daten zu definieren. Dies umfasst die Angabe eines Namens, eines Typs (falls möglich), einer beliebigen Auflösung der Daten bei Mehrdeutigkeit und des genauen Textes, aus dem die Daten bestehen. 
 
-Um die Entität zu definieren, müssen Sie die Entität erstellen und dann den Text beschriften, der die Entität in der Beispieläußerung darstellt. Diese beschrifteten Beispiele vermitteln LUIS, worum es sich bei der Entität handelt und wo sie sich in einer Äußerung befindet.
+Um die Entität zu definieren, müssen Sie die Entität erstellen und dann den Text beschriften, der die Entität in der Beispieläußerung darstellt. Diese beschrifteten Beispiele vermitteln LUIS, worum es sich bei der Entität handelt und wo sie sich in einer Äußerung befindet. 
 
 ## <a name="entity-decomposability-is-important"></a>Die Möglichkeit zur Aufschlüsselung von Entitäten ist wichtig.
 
-Die Möglichkeit zur Aufschlüsselung von Entitäten ist sowohl für die Absichtsvorhersage als auch für die Datenextraktion wichtig.
+Die Möglichkeit zur Aufschlüsselung von Entitäten ist sowohl für die Absichtsvorhersage als auch für die Datenextraktion wichtig. 
 
-Beginnen Sie mit einer durch maschinelles Lernen erworbenen Entität, die den Anfang und die Entität der höchsten Ebene für die Datenextraktion darstellt. Dann schlüsseln Sie die Entität in die für die Clientanwendung erforderlichen Teile auf.
+Beginnen Sie mit einer durch maschinelles Lernen erworbenen Entität, die den Anfang und die Entität der höchsten Ebene für die Datenextraktion darstellt. Dann schlüsseln Sie die Entität in die für die Clientanwendung erforderlichen Teile auf. 
 
 Obwohl Sie vielleicht nicht wissen, wie detailliert Ihre Entität sein soll, wenn Sie Ihre App starten, ist es eine bewährte Methode, mit einer durch maschinelles Lernen erworbenen Entität zu beginnen und dann mit der Aufschlüsselung von Teilkomponenten fortzufahren, wenn die Entwicklung Ihrer App fortschreitet.
 
-In der Praxis werden Sie eine durch maschinelles Lernen erworbene Entität erstellen, um eine Bestellung für eine Pizza-App darzustellen. Die Bestellung sollte alle Teile enthalten, die zur Erfüllung der Bestellung erforderlich sind. Zu Beginn extrahiert die Entität zunächst bestellungsbezogenen Text – insbesondere Größe und Menge.
+In der Praxis werden Sie eine durch maschinelles Lernen erworbene Entität erstellen, um eine Bestellung für eine Pizza-App darzustellen. Die Bestellung sollte alle Teile enthalten, die zur Erfüllung der Bestellung erforderlich sind. Zu Beginn extrahiert die Entität zunächst bestellungsbezogenen Text – insbesondere Größe und Menge. 
 
-Eine Äußerung für `Please deliver one large cheese pizza to me` sollte `one large cheese pizza` als Bestellung und dann auch `1` und `large` extrahieren.
+Eine Äußerung für `Please deliver one large cheese pizza to me` sollte `one large cheese pizza` als Bestellung und dann auch `1` und `large` extrahieren. 
 
 Sie können weitere Aufschlüsselungen hinzufügen, um z. B. Unterkomponenten für Beläge oder die Kruste zu erstellen. Nach diesem Tutorial sollten Sie sich beim Hinzufügen dieser Unterkomponenten zu Ihrer bestehenden `Order`-Entität sicher fühlen.
 
@@ -68,15 +68,24 @@ Sie können weitere Aufschlüsselungen hinzufügen, um z. B. Unterkomponenten f
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json) herunter, und speichern Sie sie.
 
-[!INCLUDE [Import app steps](includes/import-app-steps.md)]
+1. Wählen Sie im [LUIS-Vorschauportal](https://preview.luis.ai) auf der Seite **Meine Apps** die Option **Importieren** und dann **Als JSON importieren** aus. Suchen Sie die gespeicherte JSON-Datei aus dem vorherigen Schritt. Sie müssen den Namen der App nicht ändern. Wählen Sie **Fertig**aus.
+
+1. Wählen Sie die Version auf der Registerkarte **Versionen** im Abschnitt **Verwalten** und dann **Klonen** aus, um die Version zu klonen. Geben Sie ihr anschließend den Namen `mach-learn`, und wählen Sie **Fertig** aus, um den Klonvorgang zu beenden. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+
+    > [!TIP] 
+    > Das Klonen einer Version in eine neue Version ist eine bewährte Methode vor dem Ändern einer App. Wenn Sie mit einer Version fertig sind, exportieren Sie die Version (als JSON- oder LU-Datei), und checken Sie diese in Ihre Quellcodeverwaltung ein.
+
+1. Wählen Sie **Erstellen** und dann **Absichten** aus, um die wichtigsten Bausteine einer LUIS-App anzuzeigen, nämlich die Absichten.
+
+    ![Wechseln Sie von der Seite „Versionen“ zur Seite „Absichten“.](media/tutorial-machine-learned-entity/new-version-imported-app.png)
 
 ## <a name="label-text-as-entities-in-example-utterances"></a>Bezeichnungstext als Entitäten in Beispieläußerungen
 
 Um Details einer Pizzabestellung zu extrahieren, erstellen Sie eine durch maschinelles Lernen erworbene `Order`-Entität auf höchster Ebene.
 
-1. Wählen Sie auf der Seite **Absichten** die Absicht **OrderPizza** (Pizza bestellen) aus.
+1. Wählen Sie auf der Seite **Absichten** die Absicht **OrderPizza** (Pizza bestellen) aus. 
 
-1. Wählen Sie in der Liste der Beispieläußerungen die folgende Äußerung aus.
+1. Wählen Sie in der Liste der Beispieläußerungen die folgende Äußerung aus. 
 
     |Beispieläußerung zu einer Bestellung|
     |--|
@@ -87,26 +96,26 @@ Um Details einer Pizzabestellung zu extrahieren, erstellen Sie eine durch maschi
     ![Bezeichnen von Anfang und Ende des Textes für die vollständige Bestellung](media/tutorial-machine-learned-entity/mark-complete-order.png)
 
     > [!NOTE]
-    > Eine Entität ist nicht immer die gesamte Äußerung. In diesem speziellen Fall gibt `pickup` an, wie die Bestellung empfangen werden soll. Aus konzeptioneller Sicht sollte `pickup` Teil der bezeichneten Entität für die Bestellung sein.
+    > Eine Entität ist nicht immer die gesamte Äußerung. In diesem speziellen Fall gibt `pickup` an, wie die Bestellung empfangen werden soll. Aus konzeptioneller Sicht sollte `pickup` Teil der bezeichneten Entität für die Bestellung sein. 
 
 1. Wählen Sie im Feld **Entitätstyp auswählen** die Option **Struktur hinzufügen** und dann **Weiter** aus. Die Struktur ist erforderlich, um Unterkomponenten wie Größe und Menge hinzuzufügen.
 
     ![Hinzufügen einer Struktur zur Entität](media/tutorial-machine-learned-entity/add-structure-to-entity.png)
 
-1. Fügen Sie im Feld zum **Erstellen einer durch maschinelles Lernen erworbenen Entität** im Feld **Struktur** die Option `Size` hinzu, und drücken Sie dann die EINGABETASTE.
+1. Fügen Sie im Feld zum **Erstellen einer durch maschinelles Lernen erworbenen Entität** im Feld **Struktur** die Option `Size` hinzu, und drücken Sie dann die EINGABETASTE. 
 1. Wählen Sie zum Hinzufügen eines **Deskriptors** das `+` im Bereich **Deskriptoren für Größe** und dann **Neue Ausdrucksliste erstellen** aus.
 
-1. Geben Sie im Feld **Neuen Ausdruckslistendeskriptor erstellen** den Namen `SizeDescriptor` und dann die Werte von `small`, `medium` und `large` ein. Wenn das Feld **Vorschläge** ausgefüllt ist, wählen Sie `extra large` und `xl` aus. Wählen Sie **Fertig** aus, um die neue Ausdrucksliste zu erstellen.
+1. Geben Sie im Feld **Neuen Ausdruckslistendeskriptor erstellen** den Namen `SizeDescriptor` und dann die Werte von `small`, `medium` und `large` ein. Wenn das Feld **Vorschläge** ausgefüllt ist, wählen Sie `extra large` und `xl` aus. Wählen Sie **Fertig** aus, um die neue Ausdrucksliste zu erstellen. 
 
-    Dieser Begriffslistendeskriptor hilft der Unterkomponente `Size`, Wörter zu finden, die sich auf die Größe beziehen, indem er ein Beispielwort bereitstellt. Diese Liste muss nicht jedes auf die Größe bezogene Wort enthalten, sondern sollte Wörter einbeziehen, die voraussichtlich die Größe angeben.
+    Dieser Begriffslistendeskriptor hilft der Unterkomponente `Size`, Wörter zu finden, die sich auf die Größe beziehen, indem er ein Beispielwort bereitstellt. Diese Liste muss nicht jedes auf die Größe bezogene Wort enthalten, sondern sollte Wörter einbeziehen, die voraussichtlich die Größe angeben. 
 
     ![Erstellen eines Deskriptors für die Unterkomponente „Größe“](media/tutorial-machine-learned-entity/size-entity-size-descriptor-phrase-list.png)
 
-1. Wählen Sie im Fenster **Durch maschinelles Lernen erworbene Entität** die Option **Erstellen** aus, um die Erstellung der Unterkomponente `Size` abzuschließen.
+1. Wählen Sie im Fenster **Durch maschinelles Lernen erworbene Entität** die Option **Erstellen** aus, um die Erstellung der Unterkomponente `Size` abzuschließen.  
 
-    Die `Order`-Entität mit einer `Size`-Komponente wird erstellt, aber nur die `Order`-Entität wurde auf die Äußerung angewendet. Sie müssen den `Size`-Entitätstext in der Beispieläußerung bezeichnen.
+    Die `Order`-Entität mit einer `Size`-Komponente wird erstellt, aber nur die `Order`-Entität wurde auf die Äußerung angewendet. Sie müssen den `Size`-Entitätstext in der Beispieläußerung bezeichnen. 
 
-1. Bezeichnen Sie in derselben Beispieläußerung die Unterkomponente **Größe** von `large`, indem Sie das Wort und dann die Entität **Größe** aus der Dropdownliste auswählen.
+1. Bezeichnen Sie in derselben Beispieläußerung die Unterkomponente **Größe** von `large`, indem Sie das Wort und dann die Entität **Größe** aus der Dropdownliste auswählen. 
 
     ![Bezeichnen Sie die Entität „Größe“ für Text in der Äußerung.](media/tutorial-machine-learned-entity/mark-and-create-size-entity.png)
 
@@ -124,54 +133,54 @@ Um Details einer Pizzabestellung zu extrahieren, erstellen Sie eine durch maschi
     ![Erstellen Sie Entitäten und Unterkomponenten in allen verbleibenden Beispieläußerungen.](media/tutorial-machine-learned-entity/entity-subentity-labeled-not-trained.png)
 
     > [!CAUTION]
-    > Wie gehen Sie mit impliziten Daten wie dem Buchstaben `a` um, der eine einzelne Pizza auszeichnet? Oder das Fehlen von `pickup` und `delivery`, um anzugeben, wo die Pizza erwartet wird? Oder das Fehlen einer Größe, um Ihre Standardgröße bzw. „Klein“ oder „Groß“ anzugeben? Betrachten Sie den Umgang mit impliziten Daten als Teil Ihrer Geschäftsregeln in der Clientanwendung anstelle von oder ergänzend zu LUIS.
+    > Wie gehen Sie mit impliziten Daten wie dem Buchstaben `a` um, der eine einzelne Pizza auszeichnet? Oder das Fehlen von `pickup` und `delivery`, um anzugeben, wo die Pizza erwartet wird? Oder das Fehlen einer Größe, um Ihre Standardgröße bzw. „Klein“ oder „Groß“ anzugeben? Betrachten Sie den Umgang mit impliziten Daten als Teil Ihrer Geschäftsregeln in der Clientanwendung anstelle von oder ergänzend zu LUIS. 
 
 1. Wählen Sie zum Trainieren der App **Trainieren** aus. Das Training wendet die Änderungen, z. B. die neuen Entitäten und die bezeichneten Äußerungen, auf das aktive Modell an.
 
-1. Nach dem Training fügen Sie der Absicht eine neue Beispieläußerung hinzu, um zu erfahren, wie gut LUIS die durch maschinelles Lernen erworbene Entität versteht.
+1. Nach dem Training fügen Sie der Absicht eine neue Beispieläußerung hinzu, um zu erfahren, wie gut LUIS die durch maschinelles Lernen erworbene Entität versteht. 
 
     |Beispieläußerung zu einer Bestellung|
     |--|
     |`pickup XL meat lovers pizza`|
 
-    Die oberste Entität, `Order`, ist bezeichnet und die Unterkomponente `Size` ist ebenfalls mit gestrichelten Linien gekennzeichnet. Dies ist eine erfolgreiche Vorhersage.
+    Die oberste Entität, `Order`, ist bezeichnet und die Unterkomponente `Size` ist ebenfalls mit gestrichelten Linien gekennzeichnet. Dies ist eine erfolgreiche Vorhersage. 
 
     ![Neues Beispieläußerung mit Vorhersage durch Entität](media/tutorial-machine-learned-entity/new-example-utterance-predicted-with-entity.png)
 
-    Die gepunktete Linie zeigt die Vorhersage an.
+    Die gepunktete Linie zeigt die Vorhersage an. 
 
 1. Wählen Sie beim Ändern der Vorhersage in eine bezeichnete Entität die Zeile aus, und wählen Sie dann **Entitätsvorhersagen bestätigen** aus.
 
     ![Akzeptieren Sie die Vorhersage, indem Sie „Entitätsvorhersage bestätigen“ auswählen.](media/tutorial-machine-learned-entity/confirm-entity-prediction-for-new-example-utterance.png)
 
-    An diesem Punkt funktioniert die durch maschinelles Lernen erworbene Entität, da sie die Entität innerhalb einer neuen Beispieläußerung finden kann. Wenn die Entität nicht ordnungsgemäß vorhergesagt wird, bezeichnen Sie die Entität und die Unterkomponenten, während Sie Beispieläußerungen hinzufügen. Wenn die Entität richtig vorhergesagt wird, stellen Sie sicher, dass Sie die Vorhersagen bestätigen.
+    An diesem Punkt funktioniert die durch maschinelles Lernen erworbene Entität, da sie die Entität innerhalb einer neuen Beispieläußerung finden kann. Wenn die Entität nicht ordnungsgemäß vorhergesagt wird, bezeichnen Sie die Entität und die Unterkomponenten, während Sie Beispieläußerungen hinzufügen. Wenn die Entität richtig vorhergesagt wird, stellen Sie sicher, dass Sie die Vorhersagen bestätigen. 
 
 ## <a name="add-prebuilt-number-to-help-extract-data"></a>Hinzufügen einer vordefinierten Nummer für das Extrahieren der Daten
 
 Die Bestellinformationen sollten auch enthalten, wie viele Artikel in der Bestellung enthalten sind, z. B. die Anzahl der Pizzas. Um diese Daten zu extrahieren, muss eine neue durch maschinelles Lernen erworbene Unterkomponente zu `Order` hinzugefügt werden, und diese Komponente erfordert eine Einschränkung einer vordefinierten Nummer. Durch die Einschränkung der Entität auf eine vordefinierte Nummer findet und extrahiert die Entität Zahlen, unabhängig davon, ob es sich bei dem Text um eine Ziffer (`2`) oder Text (`two`) handelt.
 
-Beginnen Sie mit dem Hinzufügen der vordefinierten Nummernentität zur App.
+Beginnen Sie mit dem Hinzufügen der vordefinierten Nummernentität zur App. 
 
-1. Wählen Sie **Entitäten** aus dem linken Menü und dann **+ Vordefinierte Entität hinzufügen** aus.
+1. Wählen Sie **Entitäten** aus dem linken Menü und dann **+ Vordefinierte Entität hinzufügen** aus. 
 
-1. Suchen Sie im Feld **Vordefinierte Entitäten hinzufügen** nach **Nummer** und wählen Sie dies aus. Anschließend wählen Sie **Fertig** aus.
+1. Suchen Sie im Feld **Vordefinierte Entitäten hinzufügen** nach **Nummer** und wählen Sie dies aus. Anschließend wählen Sie **Fertig** aus. 
 
     ![Hinzufügen einer vordefinierten Entität](media/tutorial-machine-learned-entity/add-prebuilt-entity-as-constraint-to-quantity-subcomponent.png)
 
-    Die vordefinierte Entität wird der App hinzugefügt, ist aber noch keine Einschränkung.
+    Die vordefinierte Entität wird der App hinzugefügt, ist aber noch keine Einschränkung. 
 
 ## <a name="create-subcomponent-entity-with-constraint-to-help-extract-data"></a>Erstellen einer Unterkomponentenentität mit Einschränkung, um beim Extrahieren der Daten zu helfen
 
-Die `Order`-Entität sollte eine `Quantity`-Unterkomponente aufweisen, um die Anzahl der Artikel in der Bestellung zu ermitteln. Die Menge sollte auf eine Anzahl beschränkt werden, damit die extrahierten Daten für die Clientanwendung sofort nutzbar sind.
+Die `Order`-Entität sollte eine `Quantity`-Unterkomponente aufweisen, um die Anzahl der Artikel in der Bestellung zu ermitteln. Die Menge sollte auf eine Anzahl beschränkt werden, damit die extrahierten Daten für die Clientanwendung sofort nutzbar sind. 
 
-Eine Einschränkung wird als Textübereinstimmung angewendet, entweder mit genauer Übereinstimmung (z. B. eine Listenentität) oder durch reguläre Ausdrücke (z. B. eine Entität mit regulärem Ausdruck oder eine vordefinierte Entität).
+Eine Einschränkung wird als Textübereinstimmung angewendet, entweder mit genauer Übereinstimmung (z. B. eine Listenentität) oder durch reguläre Ausdrücke (z. B. eine Entität mit regulärem Ausdruck oder eine vordefinierte Entität). 
 
-Bei Verwendung einer Einschränkung wird nur Text extrahiert, der dieser Einschränkung entspricht.
+Bei Verwendung einer Einschränkung wird nur Text extrahiert, der dieser Einschränkung entspricht. 
 
-1. Wählen Sie **Entitäten** und dann die `Order`-Einheit aus.
+1. Wählen Sie **Entitäten** und dann die `Order`-Einheit aus. 
 1. Wählen Sie **+ Komponente hinzufügen** aus, geben Sie dann den Namen `Quantity` ein, und drücken Sie die EINGABETASTE, um der App die neue Entität hinzuzufügen.
 1. Wählen Sie nach der Erfolgsmeldung die Unterkomponente `Quantity` und dann den Einschränkungsstift aus.
-1. Wählen Sie in der Dropdownliste die vordefinierte Nummer aus.
+1. Wählen Sie in der Dropdownliste die vordefinierte Nummer aus. 
 
     ![Erstellen Sie eine Mengenentität mit vordefinierter Nummer als Einschränkung.](media/tutorial-machine-learned-entity/create-constraint-from-prebuilt-number.png)
 
@@ -180,7 +189,7 @@ Bei Verwendung einer Einschränkung wird nur Text extrahiert, der dieser Einschr
     Die Entität mit der Einschränkung ist erstellt, aber noch nicht auf die Beispieläußerungen angewendet.
 
     > [!NOTE]
-    > Eine Unterkomponente kann innerhalb einer Unterkomponente auf bis zu fünf Ebenen geschachtelt werden. Obwohl dies in diesem Artikel nicht dargestellt wird, ist es über das Portal und die API verfügbar.
+    > Eine Unterkomponente kann innerhalb einer Unterkomponente auf bis zu fünf Ebenen geschachtelt werden. Obwohl dies in diesem Artikel nicht dargestellt wird, ist es über das Portal und die API verfügbar.  
 
 ## <a name="label-example-utterance-to-teach-luis-about-the-entity"></a>Bezeichnen einer Beispieläußerung, damit LUIS über die Entität lernen kann
 
@@ -190,7 +199,7 @@ Bei Verwendung einer Einschränkung wird nur Text extrahiert, der dieser Einschr
 
 1. Bezeichnen Sie die Nummern mit der `Quantity`-Einheit, indem Sie die `2` in der Beispieläußerung und dann `Quantity` aus der Liste auswählen. Bezeichnen Sie die `6` und die `1` in derselben Beispieläußerung.
 
-    ![Bezeichnen Sie den Text mit der Entität „Menge“.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)
+    ![Bezeichnen Sie den Text mit der Entität „Menge“.](media/tutorial-machine-learned-entity/mark-example-utterance-with-quantity-entity.png)  
 
 ## <a name="train-the-app-to-apply-the-entity-changes-to-the-app"></a>Trainieren der App zum Anwenden der Entitätsänderungen auf die App
 
@@ -198,14 +207,14 @@ Wählen Sie **Trainieren** aus, um die App mit diesen neuen Äußerungen zu trai
 
 ![Trainieren Sie die App, und überprüfen Sie dann die Beispieläußerungen.](media/tutorial-machine-learned-entity/trained-example-utterances.png)
 
-An dieser Stelle weist die Bestellung einige Details auf, die extrahiert werden können (Größe, Menge und gesamter Text der Bestellung). Es gibt eine weitere Verfeinerung der `Order`-Entität, z. B. Pizzabeläge, Krustentyp und Nebenbestellungen. Jede dieser Komponenten sollte als Unterkomponente der `Order`-Entität erstellt werden.
+An dieser Stelle weist die Bestellung einige Details auf, die extrahiert werden können (Größe, Menge und gesamter Text der Bestellung). Es gibt eine weitere Verfeinerung der `Order`-Entität, z. B. Pizzabeläge, Krustentyp und Nebenbestellungen. Jede dieser Komponenten sollte als Unterkomponente der `Order`-Entität erstellt werden. 
 
 ## <a name="test-the-app-to-validate-the-changes"></a>Testen der App zum Überprüfen der Änderungen
 
 Testen Sie die App über den interaktiven **Testbereich**. Mit diesem Prozess können Sie eine neue Äußerung eingeben und dann die Vorhersageergebnisse anzeigen, um zu überprüfen, wie gut die aktive und trainierte App funktioniert. Die Absichtsvorhersage sollte ziemlich zuverlässig sein (über 70 %) und die Entitätsextraktion sollte mindestens die `Order`-Entität aufnehmen. Die Details der Entität „Bestellung“ fehlen möglicherweise, da fünf Äußerungen nicht ausreichen, um jeden Fall zu bearbeiten.
 
 1. Klicken Sie auf der oberen Navigationsleiste auf **Test** (Testen).
-1. Geben Sie die Äußerung `deliver a medium veggie pizza` ein, und wählen Sie die EINGABETASTE aus. Das aktive Modell hat die richtige Absicht mit einer Zuverlässigkeit von über 70 % vorhergesagt.
+1. Geben Sie die Äußerung `deliver a medium veggie pizza` ein, und wählen Sie die EINGABETASTE aus. Das aktive Modell hat die richtige Absicht mit einer Zuverlässigkeit von über 70 % vorhergesagt. 
 
     ![Geben Sie eine neue Äußerung ein, um die Absicht zu testen.](media/tutorial-machine-learned-entity/interactive-test-panel-with-first-utterance.png)
 
@@ -215,7 +224,7 @@ Testen Sie die App über den interaktiven **Testbereich**. Mit diesem Prozess k�
 
     Die Größe wurde richtig identifiziert. Denken Sie daran, dass die Beispieläußerungen in der `OrderPizza`-Absicht kein Beispiel von `medium` als Größe aufweisen, sondern einen Deskriptor einer `SizeDescriptor`-Ausdrucksliste verwenden, die „mittelgroß“ enthält.
 
-    Die Menge ist nicht richtig vorhergesagt. Um dies zu beheben, können Sie weitere Beispieläußerungen hinzufügen, die dieses Wort verwenden, um die Menge anzugeben und dieses Wort als `Quantity`-Entität zu bezeichnen.
+    Die Menge ist nicht richtig vorhergesagt. Um dies zu beheben, können Sie weitere Beispieläußerungen hinzufügen, die dieses Wort verwenden, um die Menge anzugeben und dieses Wort als `Quantity`-Entität zu bezeichnen. 
 
 ## <a name="publish-the-app-to-access-it-from-the-http-endpoint"></a>Veröffentlichen der App für den Zugriff über den HTTP-Endpunkt
 
@@ -225,11 +234,11 @@ Testen Sie die App über den interaktiven **Testbereich**. Mit diesem Prozess k�
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Wechseln Sie zum Ende der URL in der Adresse, und geben Sie dieselbe Abfrage ein, die Sie im interaktiven Testbereich eingegeben haben.
+1. Wechseln Sie zum Ende der URL in der Adresse, und geben Sie dieselbe Abfrage ein, die Sie im interaktiven Testbereich eingegeben haben. 
 
     `deliver a medium veggie pizza`
 
-    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung).
+    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung). 
 
     ```json
     {
@@ -292,9 +301,9 @@ Testen Sie die App über den interaktiven **Testbereich**. Mit diesem Prozess k�
                 }
             }
         }
-    }
+    }    
     ```
-
+    
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
 
@@ -309,7 +318,7 @@ Testen Sie die App über den interaktiven **Testbereich**. Mit diesem Prozess k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial verwendet die App eine durch maschinelles Lernen erworbene Entität, um die Absicht der Äußerung eines Benutzers zu finden und Details aus dieser Äußerung zu extrahieren. Die Verwendung der durch maschinelles Lernen erworbenen Entität ermöglicht es Ihnen, die Details der Entität aufzuschlüsseln.
+In diesem Tutorial verwendet die App eine durch maschinelles Lernen erworbene Entität, um die Absicht der Äußerung eines Benutzers zu finden und Details aus dieser Äußerung zu extrahieren. Die Verwendung der durch maschinelles Lernen erworbenen Entität ermöglicht es Ihnen, die Details der Entität aufzuschlüsseln.  
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer vorgefertigten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md)
