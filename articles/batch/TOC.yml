@@ -113,6 +113,8 @@
           href: batch-user-accounts.md
         - name: Senden einer großen Anzahl von Aufgaben
           href: large-number-tasks.md
+        - name: Ermitteln von Auftrags- und Aufgabenfehlern
+          href: batch-job-task-error-checking.md
     - name: Erstellen von Ressourcendateien
       href: resource-files.md
     - name: Persistente Aufträge und Aufgabenausgabe

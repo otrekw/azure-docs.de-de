@@ -203,6 +203,10 @@
               href: service-bus-resource-manager-namespace-auth-rule.md
             - name: 'Erstellen eines Namespace mit Thema, Abonnement und Regel'
               href: service-bus-resource-manager-namespace-topic-with-rule.md
+    - name: Schützen
+      items:
+        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten (Vorschau)
+          href: configure-customer-managed-key.md
     - name: Problembehandlung
       items:
         - name: Handbuch zur Problembehandlung

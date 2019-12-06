@@ -48,13 +48,13 @@
           displayName: 'n-depth, constraint, descriptor, phrase list, entity'
         - name: 3. Ermitteln der Stimmung anhand von Benutzeräußerungen
           href: tutorial-publish-settings.md
-    - name: Erstellen einer App
+    - name: Erstellen und Verwenden von Entitäten
       items:
-        - name: Abrufen von gut formatierten Daten mit regulären Ausdrücken
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Abrufen genauer Textübereinstimmungen mithilfe von Listen
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Abrufen von zugehörigen Daten mit Entitätsrollen
+        - name: RegEx-Entitäten
+          href: tutorial-regex-entity.md
+        - name: Listenentitäten
+          href: tutorial-list-entity.md
+        - name: Entitätsrollen
           href: tutorial-entity-roles.md
           displayName: 'roles, geographyV2, context'
         - name: Gruppieren und Extrahieren verwandter Daten mit Verbundentitäten

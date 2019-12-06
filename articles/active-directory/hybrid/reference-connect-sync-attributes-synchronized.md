@@ -16,12 +16,12 @@ ms.date: 04/24/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e95b230d4f9699f15296ba94946c7063cabd0516
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6a82766be01476890bbf18b518ce21febe0d07f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847193"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766088"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect-Synchronisierung: Mit Azure Active Directory synchronisierte Attribute
 In diesem Thema werden die Attribute aufgelistet, die bei der Azure AD Connect-Synchronisierung synchronisiert werden.  
@@ -430,7 +430,7 @@ Diese Attribute werden vom Azure AD in das lokale Active Directory zurückgeschr
 | msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchSafeSendersHash| ms-Exch-SafeSendersHash  |X | | |Filtern: Schreibt lokale Filterung, Onlinesicherung und blockierte Absenderdaten von Clients zurück. |
 | msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |X | | |Aktivieren von Unified Messaging (UM) – Onlinevoicemail: Wird von Microsoft Lync Server-Integration verwendet, um Lync Server lokal zu melden, dass der Benutzer Voicemail in Onlinediensten verwendet. |
-| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |X | | |Beweissicherungsverfahren: Ermöglicht Clouddiensten, zu bestimmen, welche Benutzer einem Beweissicherungsverfahren unterliegen. |
+| msExchUserHoldPolicies| ms-Exch-UserHoldPolicies |X | | |Beweissicherungsverfahren: Ermöglicht Clouddiensten, zu bestimmen, welche Benutzer einem Beweissicherungsverfahren unterliegen. |
 | proxyAddresses| proxyAddresses |X |X |X |Nur die x500-Adresse von Exchange Online wird eingefügt. |
 | publicDelegates| ms-Exch-Public-Delegates  |X | | |Ermöglicht einem Exchange Online-Postfach, dass Benutzern mit lokalem Exchange-Postfach SendOnBehalfTo-Rechte erteilt werden. Erfordert Azure AD Connect Build 1.1.552.0 oder höher |
 

@@ -178,7 +178,7 @@
               href: dealing-with-duplicates.md
     - name: Bereitstellen
       items:
-        - name: Bereitstellen des Clusters in Ihrem VNET
+        - name: Bereitstellen des Clusters in Ihrem virtuellen Netzwerk
           href: vnet-deployment.md
     - name: Überwachen
       items:

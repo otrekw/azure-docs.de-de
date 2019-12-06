@@ -12,10 +12,6 @@
       href: require-tou.md
     - name: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
       href: app-sign-in-risk.md
-- name: Lernprogramme
-  items:
-    - name: Migrieren der klassischen MFA-Richtlinien
-      href: policy-migration-mfa.md
 - name: Konzepte
   expanded: false
   items:
@@ -37,6 +33,8 @@
       href: service-dependencies.md
     - name: Was-wäre-wenn-Tool
       href: what-if-tool.md
+    - name: Migration klassischer Richtlinien
+      href: policy-migration.md
     - name: Baselineschutzrichtlinien
       href: concept-baseline-protection.md
 - name: Anleitungen
@@ -83,7 +81,7 @@
     - name: Steuerelemente für Anmeldehäufigkeit und Browserpersistenz
       href: howto-conditional-access-session-lifetime.md
     - name: Migrieren von klassischen Richtlinien
-      href: policy-migration.md
+      href: policy-migration-mfa.md
     - name: Einführen von bedingtem Zugriff
       href: howto-conditional-access-adoption-kit.md
     - name: Problembehandlung
