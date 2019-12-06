@@ -1,19 +1,19 @@
 ---
 title: Spark Streaming und Ereignisverarbeitung vom Typ „Exactly-Once“ – Azure HDInsight
 description: Einrichten von Apache Spark Streaming zur ausschließlich einmaligen Verarbeitung eines Ereignisses.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 34cb3f4cdcc5bfc11bba300ff1aa04422e0fcc57
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.date: 11/15/2018
+ms.openlocfilehash: ee4f9b84e822cb370e5fe3d55fcceb9c8a9f2ab9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241133"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228970"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Erstellen von Apache Spark-Streamingaufträgen mit Ereignisverarbeitung vom Typ „Exactly-Once“
 
@@ -57,7 +57,7 @@ Für Worker, die Aufgaben mit den Ereignisdaten ausführen, wird jede RDD defini
 
 Die Auftragstreiber müssen neu gestartet werden können. Wenn der Treiber abstürzt, der Ihre Spark Streaming-Anwendung ausführt, reißt er alle ausgeführten Empfänger, Aufgaben und RDDs, die Ereignisdaten speichern, mit sich. In diesem Fall müssen Sie in der Lage sein, den Fortschritt des Auftrags zu speichern, sodass Sie ihn später fortsetzen können. Hierzu werden in regelmäßigen Abständen Prüfpunkte des gerichteten azyklischen Graphs (Directed Acyclic Graph, DAG) des DStream in einen fehlertoleranten Speicher geschrieben. Die DAG-Metadaten umfassen die Konfiguration, die zum Erstellen der Streaminganwendung verwendet wird, die Vorgänge, die die Anwendung definieren, und alle Batches, die in die Warteschlange gestellt wurden, aber noch nicht abgeschlossen sind. Anhand dieser Metadaten kann ein fehlerhafter Treiber mit den Prüfpunktinformationen neu gestartet werden. Wenn der Treiber neu gestartet wird, startet er neue Empfänger, die selbst die Ereignisdaten aus dem Write-Ahead-Protokoll in RDDs wiederherstellen.
 
-Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert. 
+Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert.
 
 1. Konfigurieren Sie im StreamingContext-Objekt den Speicherpfad für die Prüfpunkte:
 
@@ -81,7 +81,7 @@ Prüfpunkte werden in Spark Streaming in zwei Schritten aktiviert.
 
 Die Zielsenke, in die Ihr Auftrag Ergebnisse schreibt, muss die Situation behandeln können, dass sie das gleiche Ergebnis mehrmals erhält. Die Senke muss solche doppelten Ergebnisse erkennen und ignorieren können. Eine *idempotente* Senke kann mehrere Male mit denselben Daten ohne Änderung des Zustands aufgerufen werden.
 
-Sie können idempotente Senken durch Implementierung von Logik erstellen, die zuerst überprüft, ob das eingehende Ergebnis im Datenspeicher vorhanden ist. Wenn das Ergebnis bereits vorhanden ist, sollte der Schreibvorgang aus der Perspektive des Spark-Auftrags erfolgreich sein, jedoch sollte Ihr Datenspeicher in Wirklichkeit die doppelt vorhandenen Daten ignorieren. Wenn das Ergebnis nicht vorhanden ist, sollte die Senke dieses neue Ergebnis in den Speicher einfügen. 
+Sie können idempotente Senken durch Implementierung von Logik erstellen, die zuerst überprüft, ob das eingehende Ergebnis im Datenspeicher vorhanden ist. Wenn das Ergebnis bereits vorhanden ist, sollte der Schreibvorgang aus der Perspektive des Spark-Auftrags erfolgreich sein, jedoch sollte Ihr Datenspeicher in Wirklichkeit die doppelt vorhandenen Daten ignorieren. Wenn das Ergebnis nicht vorhanden ist, sollte die Senke dieses neue Ergebnis in den Speicher einfügen.
 
 Sie könnten z.B. eine gespeicherte Prozedur mit Azure SQL-Datenbank verwenden, die Ereignisse in eine Tabelle einfügt. Diese gespeicherte Prozedur sucht zuerst mit den Schlüsselfeldern nach dem Ereignis, und nur dann, wenn kein entsprechendes Ereignis gefunden wird, wird der Datensatz in die Tabelle eingefügt.
 

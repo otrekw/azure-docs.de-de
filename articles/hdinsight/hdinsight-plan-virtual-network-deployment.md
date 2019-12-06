@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d337d026e89d2383e25498288ba11a9c60f77b39
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498176"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228992"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Planen eines virtuellen Netzwerks für Azure HDInsight
 
@@ -221,7 +221,7 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** zum Steuern des Netzwerkdatenver
 
 1. Identifizieren Sie die Azure-Region, die Sie für HDInsight verwenden möchten.
 
-2. Identifizieren Sie die IP-Adressen, die für HDInsight erforderlich sind. Weitere Informationen finden Sie unter [HDInsight management IP addresses (IP-Adressen für die HDInsight-Verwaltung)](hdinsight-management-ip-addresses.md).
+2. Identifizieren Sie die von HDInsight für Ihre Region benötigten Diensttags. Weitere Informationen finden Sie unter [NSG-Diensttags (Netzwerksicherheitsgruppen) für Azure HDInsight](hdinsight-service-tags.md).
 
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
@@ -233,7 +233,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersich
 
 Weitere Informationen zum Steuern des ausgehenden Datenverkehrs von HDInsight-Clustern finden Sie unter [Konfigurieren von Einschränkungen des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster (Vorschau)](hdinsight-restrict-outbound-traffic.md).
 
-#### <a name="forced-tunneling-to-on-premise"></a>Tunnelerzwingung für lokale Netzwerke
+#### <a name="forced-tunneling-to-on-premises"></a>Tunnelerzwingung für lokale Netzwerke
 
 Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der für den gesamten Datenverkehr eines Subnetzes die Weiterleitung in ein bestimmtes Netzwerk bzw. an einen bestimmten Standort erzwungen wird, z.B. Ihr lokales Netzwerk. HDInsight bietet __keine__ Unterstützung für die Tunnelerzwingung bei Datenverkehr zu lokalen Netzwerken. 
 
