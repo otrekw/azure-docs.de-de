@@ -64,8 +64,6 @@
           href: howto-conditional-access-policy-compliant-device.md
     - name: Blockieren älterer Authentifizierungsmethoden
       href: block-legacy-authentication.md
-    - name: Bedingter Zugriff für MFA-Registrierung
-      href: '../authentication/howto-registration-mfa-sspr-combined.md#conditional-access-policies-for-combined-registration'
     - name: Vorschreiben der Verwendung genehmigter Client-Apps
       href: app-based-conditional-access.md
     - name: App-Schutzrichtlinie erforderlich

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 28a0418fd94c03f1fe308c7cd6f17b6d9a331fb0
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: dd514bb7c600c99518983855dae1d3b7fb8a1efb
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529368"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481652"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -146,7 +146,8 @@ Zuverlässige Sammlungen sind in der Regel [partitioniert](service-fabric-concep
 
 - Erstellen Sie einen Dienst, der alle Partitionen eines anderen Diensts abfragt, um die erforderlichen Daten abzurufen.
 - Erstellen Sie einen Dienst, der Daten von allen Partitionen eines anderen Diensts empfangen kann.
-- Verschieben Sie Daten aus den einzelnen Diensten regelmäßig mithilfe von Push in einen externen Speicher. Dieser Ansatz ist nur geeignet, wenn die von Ihnen durchgeführten Abfragen nicht Teil Ihrer Kerngeschäftslogik sind.
+- Verschieben Sie Daten aus den einzelnen Diensten regelmäßig mithilfe von Push in einen externen Speicher. Dieser Ansatz ist nur geeignet, wenn die von Ihnen durchgeführten Abfragen nicht Teil Ihrer Kerngeschäftslogik sind, da die Daten des externen Speichers veraltet sein werden.
+- Alternativ können Sie Daten speichern, die Abfragen über alle Datensätze hinweg direkt in einem Datenspeicher anstatt in einer zuverlässigen Sammlung unterstützen müssen. Dadurch wird das Problem mit veralteten Daten vermieden, aber die Vorteile zuverlässiger Sammlungen können nicht genutzt werden.
 
 
 ### <a name="whats-the-best-way-to-query-data-across-my-actors"></a>Welche Möglichkeit bietet sich an, um Daten akteurübergreifend abzufragen?

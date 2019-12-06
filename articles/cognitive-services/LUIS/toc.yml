@@ -60,9 +60,6 @@
         - name: Gruppieren und Extrahieren verwandter Daten mit Verbundentitäten
           href: luis-tutorial-composite-entity.md
           displayName: roles
-        - name: Abrufen von Namen mit einfachen Entitäten
-          href: luis-quickstart-primary-and-secondary-data.md
-          displayName: roles
     - name: Verbessern der App
       items:
         - name: Korrigieren von unsicheren Vorhersagen

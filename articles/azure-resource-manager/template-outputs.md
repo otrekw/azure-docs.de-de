@@ -3,12 +3,12 @@ title: Ausgaben in Vorlagen
 description: Beschreibt, wie Ausgabewerte in einer Azure Resource Manager-Vorlage definiert werden.
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61120b9941a6a20812ea046265ecbe13014d769e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149183"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689145"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Ausgaben in einer Azure Resource Manager-Vorlage
 
@@ -101,4 +101,3 @@ In den folgenden Beispielen werden Szenarien für die Verwendung von Ausgaben ve
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den verfügbaren Eigenschaften für Ausgaben finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
-* Empfehlungen zum Erstellen von Ausgaben finden Sie unter [Bewährte Methoden: Ausgaben](template-best-practices.md#outputs).
