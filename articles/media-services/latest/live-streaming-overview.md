@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: bac784ea3050111184e2908fe5656a1d16545a99
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231020"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186189"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Livestreaming mit Azure Media Services v3
 
@@ -62,6 +62,13 @@ Wenn Sie das **Liveereignis** vom Typ „Pass-Through“ verwenden, stützen Sie
 ![Livecodierung](./media/live-streaming/live-encoding.svg)
 
 Wenn Sie die Cloudcodierung mit Media Services verwenden, konfigurieren Sie Ihren lokalen Liveencoder so, dass er ein Einzelbitraten-Video als Beitragsfeed (bis zu 32 MBit/s aggregiert) an das Liveereignis sendet (über RTMP oder das Eingabeprotokoll für fragmentiertes MP4). Vom Liveereignis wird der eingehende Einzelbitraten-Stream in [Mehrfachbitraten-Videostreams](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) mit unterschiedlichen Auflösungen transcodiert, um die Übermittlung zu verbessern und die Bereitstellung für Wiedergabegeräte über Protokolle gemäß Branchenstandard wie MPEG-DASH, Apple HTTP Live Streaming (HLS) und Microsoft Smooth Streaming zu ermöglichen. 
+
+### <a name="live-transcription-preview"></a>Livetranskription (Preview)
+
+Die Livetranskription ist ein Feature, das Sie mit Liveereignissen verwenden können, bei denen es sich um Pass-Through oder Live Encoding handelt. Weitere Informationen finden Sie unter [Livetranskription](live-transcription.md). Wenn dieses Feature aktiviert wird, nutzt der Dienst das [Spracherkennungsfeature](../../cognitive-services/speech-service/speech-to-text.md) von Cognitive Services, um den gesprochenen Text in der eingehenden Audiodatei in Text zu konvertieren. Dieser Text wird dann mitsamt Video- und Audiodaten in den MPEG-DASH- und HLS-Protokollen für die Übermittlung zur Verfügung gestellt.
+
+> [!NOTE]
+> Derzeit ist die Livetranskription als Previewfeature in der Region „USA, Westen 2“ verfügbar.
 
 ## <a name="live-streaming-workflow"></a>Workflow für das Livestreaming
 
