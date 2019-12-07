@@ -1,22 +1,18 @@
 ---
 title: Problembehandlung
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 87aa96614b6aec4843723233a77d0a1dc1b66453
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 64b9cda61e5af3e8b9ea52477b5bf4fa879f48e6
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300365"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483855"
 ---
-# <a name="troubleshooting-guide"></a>Handbuch zur Problembehandlung
+# <a name="azure-dev-spaces-troubleshooting"></a>Problembehandlung für Azure Dev Spaces
 
 Dieses Handbuch enthält Informationen über allgemeine Probleme, die bei Verwendung von Azure Dev Spaces auftreten können.
 
@@ -93,6 +89,14 @@ azure-cli                         2.0.60 *
 Trotz der Fehlermeldung bei der Ausführung von `az aks use-dev-spaces` mit einer Version der Azure CLI vor 2.0.63 ist die Installation erfolgreich. Sie können `azds` ohne Probleme weiterhin verwenden.
 
 Aktualisieren Sie zum Beheben des Problems die Installation von [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) mindestens auf Version 2.0.63. Mit diesem Update wird die Fehlermeldung behoben, die bei der Ausführung von `az aks use-dev-spaces` angezeigt wird. Alternativ können Sie auch weiterhin Ihre aktuelle Version der Azure CLI und der Azure Dev Spaces CLI verwenden.
+
+### <a name="error-unable-to-reach-kube-apiserver"></a>Fehler „kube-apiserver kann nicht erreicht werden“
+
+Dieser Fehler wird möglicherweise angezeigt, wenn Azure Dev Spaces keine Verbindung mit dem API-Server Ihres AKS-Clusters herstellen kann. 
+
+Wenn der Zugriff auf Ihren den API-Server Ihres AKS-Clusters gesperrt ist, oder wenn Sie für Ihren AKS-Cluster [von einem API-Server autorisierte IP-Adressbereiche ](../aks/api-server-authorized-ip-ranges.md) aktiviert haben, müssen Sie Ihren Cluster auch so [erstellen](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) oder [aktualisieren](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges), dass [zusätzliche Bereiche auf Grundlage Ihrer Region zugelassen werden](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+
+Stellen Sie sicher, dass der API-Server verfügbar ist, indem Sie kubectl-Befehle ausführen. Wenn der API-Server nicht verfügbar ist, wenden Sie sich an den AKS-Support, und versuchen Sie es noch mal, wenn der API-Server funktioniert.
 
 ## <a name="common-issues-when-preparing-your-project-for-azure-dev-spaces"></a>Häufige Probleme beim Vorbereiten des Projekts für Azure Dev Spaces
 
@@ -249,6 +253,21 @@ Service cannot be started.
 ```
 
 Dieser Fehler tritt auf, da auf AKS-Knoten eine ältere Version von Docker ausgeführt wird, die mehrstufige Builds nicht unterstützt. Um mehrstufige Builds zu vermeiden, müssen Sie Ihre Dockerfile-Datei neu schreiben.
+
+### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Der Netzwerkdatenverkehr wird beim Verbinden Ihres Entwicklungscomputers nicht an Ihren AKS-Cluster weitergeleitet.
+
+Wenn Sie [Azure Dev Spaces verwenden, um Ihren AKS-Cluster mit Ihrem Entwicklungscomputer zu verbinden](how-to/connect.md), kann ein Problem auftreten, bei dem der Netzwerkverkehr zwischen Ihrem Entwicklungscomputer und Ihrem AKS-Cluster nicht weitergeleitet wird.
+
+Wenn Sie Ihren Entwicklungscomputer mit Ihrem AKS-Cluster verbinden, leitet Azure Dev Spaces den Netzwerkdatenverkehr zwischen Ihrem AKS-Cluster und Ihrem Entwicklungscomputer weiter, indem die Datei `hosts` Ihres Entwicklungscomputers geändert wird. Azure Dev Spaces erstellt in der Datei `hosts` einen Eintrag mit der Adresse des Kubernetes-Diensts, den Sie als Hostnamen ersetzen. Dieser Eintrag wird bei der Portweiterleitung verwendet, um Netzwerkdatenverkehr zwischen Ihrem Entwicklungscomputer und dem AKS-Cluster zu leiten. Wenn ein Dienst auf Ihrem Entwicklungscomputer mit dem Port des Kubernetes-Diensts, den Sie ersetzen, in Konflikt steht, kann Azure Dev Spaces keinen Netzwerkdatenverkehr für den Kubernetes-Dienst weiterleiten. Der *Windows BranchCache*-Dienst ist beispielsweise normalerweise an *0.0.0.0:80*gebunden, was einen Konflikt für Port 80 bei allen lokalen IPs verursacht.
+
+Um dieses Problem zu beheben, müssen Sie alle Dienste oder Prozesse beenden, die mit dem Port des zu ersetzenden Kubernetes-Diensts in Konflikt stehen. Sie können Tools wie *netstat* verwenden, um zu untersuchen, welche Dienste oder Prozesse auf Ihrem Entwicklungscomputer in Konflikt stehen.
+
+Um beispielsweise den *Windows BranchCache*-Dienst zu beenden und zu deaktivieren:
+* Führen Sie `services.msc` an einer Eingabeaufforderung aus.
+* Klicken Sie mit der rechten Maustaste auf *BranchCache*, und wählen Sie *Eigenschaften* aus.
+* Klicken Sie auf *Beenden*.
+* Optional können Sie dies deaktivieren, indem Sie den *Starttyp* auf *Deaktiviert* festlegen.
+* Klicken Sie auf *OK*.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Häufige Probleme bei der Verwendung von Visual Studio und Visual Studio Code mit Azure Dev Spaces
 
@@ -431,3 +450,28 @@ Nachstehend finden Sie ein Beispiel für eine „proxy-resources“-Anmerkung, d
 ```
 azds.io/proxy-resources: "{\"Limits\": {\"cpu\": \"300m\",\"memory\": \"400Mi\"},\"Requests\": {\"cpu\": \"150m\",\"memory\": \"200Mi\"}}"
 ```
+
+### <a name="enable-azure-dev-spaces-on-an-existing-namespace-with-running-pods"></a>Aktivieren von Azure Dev Spaces für einen vorhandenen Namespace mit laufenden Pods
+
+Möglicherweise verfügen Sie über einen vorhandenen AKS-Cluster und Namespace mit laufenden Pods, bei denen Sie Azure Dev Spaces aktivieren möchten.
+
+Um Azure Dev Spaces für einen vorhandenen Namespace in einem AKS-Cluster zu aktivieren, führen Sie `use-dev-spaces` aus, und verwenden Sie `kubectl`, um alle Pods in diesem Namespace neu zu starten.
+
+```console
+az aks get-credentials --resource-group MyResourceGroup --name MyAKS
+az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space my-namespace --yes
+kubectl -n my-namespace delete pod --all
+```
+
+Nachdem Ihre Pods neu gestartet wurden, können Sie mit der Verwendung Ihres vorhandenen Namespace mit Azure Dev Spaces beginnen.
+
+### <a name="enable-azure-dev-spaces-on-aks-cluster-with-restricted-egress-traffic-for-cluster-nodes"></a>Aktivieren von Azure Dev Spaces in dem AKS-Cluster mit eingeschränktem ausgehendem Datenverkehr für Clusterknoten
+
+Um Azure Dev Spaces in einem AKS-Cluster zu aktivieren, für den der ausgehende Datenverkehr von Clusterknoten eingeschränkt ist, müssen Sie die folgenden FQDNs zulassen:
+
+| FQDN                                    | Port      | Zweck      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS: 443 | Pullen von Linux Alpine und andere Azure Dev Spaces-Images |
+| gcr.io | HTTP:443 | Pullen von helm/tiller-Images|
+| storage.googleapis.com | HTTP:443 | Pullen von helm/tiller-Images|
+| azds-<guid>.<location>.azds.io | HTTPS: 443 | Dieser vollqualifizierte Domänenname (FQDN) dient der Kommunikation mit Azure Dev Spaces-Back-End-Diensten für Ihren Controller. Den genauen FQDN finden Sie in „dataplaneFqdn“ unter %USERPROFILE%\.azds\settings.json.|
