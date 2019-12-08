@@ -43,8 +43,6 @@
       items:
         - name: Funktionsweise von MFA
           href: concept-mfa-howitworks.md
-        - name: MFA aktivieren
-          href: concept-mfa-get-started.md
         - name: Lizenzieren Ihrer Benutzer
           href: concept-mfa-licensing.md
         - name: Verwalten eines Authentifizierungsanbieters

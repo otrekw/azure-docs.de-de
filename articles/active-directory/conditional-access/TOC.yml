@@ -17,8 +17,6 @@
   items:
     - name: Allgemeine Richtlinien für bedingten Zugriff
       href: concept-conditional-access-policy-common.md
-    - name: Standardwerte für die Sicherheit
-      href: concept-conditional-access-security-defaults.md
     - name: Komponenten der Richtlinie für bedingten Zugriff
       href: concept-conditional-access-policies.md
     - name: Bedingungen

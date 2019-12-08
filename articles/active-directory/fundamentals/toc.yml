@@ -17,6 +17,14 @@
   items:
     - name: Identity Secure Score
       href: identity-secure-score.md
+    - name: Sicherheit
+      items:
+        - name: MFA aktivieren
+          href: concept-fundamentals-mfa-get-started.md
+        - name: Standardwerte für die Sicherheit
+          href: concept-fundamentals-security-defaults.md
+        - name: Blockieren älterer Authentifizierungsmethoden
+          href: concept-fundamentals-block-legacy-authentication.md
     - name: Gruppen und Zugriffsverwaltung
       href: active-directory-manage-groups.md
     - name: Gruppenbasierte Lizenzierung
