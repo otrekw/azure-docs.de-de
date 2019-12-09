@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: diberry
-ms.openlocfilehash: 3d2895fa8d45ad594963d3f26cbe04fd968f5fcc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 309a2592dbac2918aeb532fbe91e33d296f4e5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487535"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280882"
 ---
 # <a name="intents-in-your-luis-app"></a>Absichten in Ihrer LUIS-App
 
@@ -47,7 +47,7 @@ Wenn Sie die Scores für alle Absichten der Äußerung benötigen, können Sie i
 |V3|`show-all-intents=true`|
 
 ## <a name="intent-compared-to-entity"></a>Absichten im Vergleich zu Entitäten
-Die Absicht stellt die Aktion dar, die der Bot für den Benutzer ausführen soll. Sie basiert auf der gesamten Äußerung. Ein Äußerung kann nur eine Absicht mit der höchsten Bewertung, aber viele Entitäten enthalten. 
+Die Absicht stellt die Aktion dar, die die Anwendung für den Benutzer ausführen soll. Sie basiert auf der gesamten Äußerung. Ein Äußerung kann nur eine Absicht mit der höchsten Bewertung, aber viele Entitäten enthalten. 
 
 <a name="how-do-intents-relate-to-entities"></a>
 

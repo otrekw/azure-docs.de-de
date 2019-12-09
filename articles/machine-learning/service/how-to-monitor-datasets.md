@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b9b120240ffc6f7dd2252d12c9f8af2bcfafbc
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 10532ba2b43e40c4ffa2990e924947046d03b576
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049171"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539201"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Erkennen von Datendrift (Vorschau) in Datasets
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Analysieren von Daten der Vergangenheit | Dieses Szenario hilft dabei, frühere 
 
 ## <a name="how-dataset-can-monitor-data"></a>Überwachen von Daten im Dataset
 
-Mit Azure Machine Learning lässt sich die Datendrift in Datasets überwachen. Zum Überwachen von Datenabweichungen wird ein Baseline-Dataset angegeben. Dies ist normalerweise das Trainingsdataset für ein Modell. Ein Zieldataset – in der Regel Modelleingabedaten – wird im Lauf der Zeit mit dem Baselinedataset verglichen. Das bedeutet, dass im Zieldataset eine Zeitstempelspalte angegeben sein muss.
+Mit Azure Machine Learning lässt sich die Datendrift in Datasets überwachen. Zum Überwachen von Datenabweichungen wird ein Baseline-Dataset angegeben. Dies ist normalerweise das Trainingsdataset für ein Modell. Ein Zieldataset – in der Regel Modelleingabedaten – wird im Lauf der Zeit mit dem Baselinedataset verglichen. Dieser Vergleich bedeutet, dass im Zieldataset eine Zeitstempelspalte angegeben sein muss.
 
 ### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>Festlegen des `timeseries`-Merkmals im Zieldataset
 
@@ -134,7 +134,7 @@ Diese Tabelle enthält grundlegende Einstellungen, die für den Datasetmonitor v
 | NAME | Name des Datasetmonitors. | | Nein |
 | Baselinedataset | Tabellarisches Dataset, das als Baseline für den Vergleich mit dem Zieldataset im Lauf der Zeit verwendet wird. | Das Baselinedataset muss gemeinsame Features mit dem Zieldataset aufweisen. Im Allgemeinen sollte die Baseline auf ein Trainingsdataset des Modells oder auf einen Slice des Zieldatasets festgelegt werden. | Nein |
 | Zieldataset | Tabellarisches Dataset mit angegebener Zeitstempelspalte, das im Hinblick auf Datendrift analysiert wird. | Das Zieldataset muss gemeinsame Features mit dem Baselinedataset aufweisen, und es sollte sich um ein `timeseries`-Dataset handeln, an das neue Daten angefügt werden. Es können Daten der Vergangenheit im Zieldataset analysiert oder neue Daten überwacht werden. | Nein | 
-| Frequency | Dies ist die Häufigkeit, die zum Planen des Pipelineauftrags und zum Analysieren von Daten der Vergangenheit verwendet wird, wenn ein Abgleich durchgeführt wird. Verfügbare Optionen sind „täglich“, „wöchentlich“ oder „monatlich“. | Passen Sie diese Einstellung an, um eine vergleichbare Datenmenge in die Baseline einzubeziehen. | Nein | 
+| Frequency | Die Häufigkeit, die zum Planen des Pipelineauftrags und zum Analysieren von Daten der Vergangenheit verwendet wird, wenn ein Abgleich durchgeführt wird. Verfügbare Optionen sind „täglich“, „wöchentlich“ oder „monatlich“. | Passen Sie diese Einstellung an, um eine vergleichbare Datenmenge in die Baseline einzubeziehen. | Nein | 
 | Features | Liste der Features, die im Hinblick auf Datendrift im Lauf der Zeit analysiert werden. | Legen Sie diese Einstellung auf die Ausgabefeatures eines Modells fest, um eine konzeptionelle Drift zu messen. Schließen Sie keine Features ein, für die im Lauf der Zeit eine natürliche Drift auftritt (Monat, Jahr, Index usw.). Nach dem Anpassen der Featureliste können Sie einen Abgleich für alle vorhandenen Datendriftmonitore durchführen. | Ja | 
 | Computeziel | Azure Machine Learning-Computeziel zur Ausführung der Aufträge des Datasetmonitors. | | Ja | 
 
@@ -144,7 +144,7 @@ Diese Einstellungen gelten für die geplante Datasetmonitor-Pipeline, die erstel
 
 | Einstellung | BESCHREIBUNG | Tipps | Veränderlich | 
 | ------- | ----------- | ---- | ------- |
-| Aktivieren | Aktivieren oder Deaktivieren des Zeitplans in der Pipeline des Datasetmonitors. | Deaktivieren Sie diese Einstellung, um Daten der Vergangenheit mithilfe der Abgleicheinstellung zu analysieren. Die Einstellung kann nach dem Erstellen des Datasetmonitors aktiviert werden. | Ja | 
+| Aktivieren | Aktivieren oder Deaktivieren des Zeitplans in der Pipeline des Datasetmonitors. | Deaktivieren Sie den Zeitplan, um Daten der Vergangenheit mithilfe der Abgleicheinstellung zu analysieren. Die Einstellung kann nach dem Erstellen des Datasetmonitors aktiviert werden. | Ja | 
 | Latency | Der Zeitraum in Stunden, der verstreicht, bis Daten im Dataset eintreffen. Wenn es z. B. drei Tage dauert, bis Daten in der SQL-Datenbank eintreffen, die vom Dataset gekapselt wird, legen Sie die Latenz auf den Wert 72 fest. | Die Einstellung kann nach dem Erstellen des Datasetmonitors nicht geändert werden. | Nein | 
 | E-Mail-Adressen | E-Mail-Adressen, an die Warnungen gesendet werden, wenn eine Verletzung des Schwellenwerts für den Prozentsatz der Datendrift ermittelt wird. | Das Senden der E-Mails erfolgt über Azure Monitor. | Ja | 
 | Schwellenwert | Schwellenwert für den Prozentsatz der Datendrift für Warnungen per E-Mail. | Weitere Warnungen und Ereignisse können in vielen weiteren Metriken in der dem Arbeitsbereich zugeordneten Application Insights-Ressource festgelegt werden. | Ja | 
@@ -156,7 +156,7 @@ Diese Einstellungen gelten für die Durchführung eines Abgleichs von Vergangenh
 | Einstellung | BESCHREIBUNG | Tipps |
 | ------- | ----------- | ---- |
 | Startdatum | Startdatum des Abgleichsauftrags. | | 
-| Enddatum | Enddatum des Abgleichsauftrags. | Dieses darf nicht mehr als 31 Zeiteinheiten für die Häufigkeit vom Startdatum abweichen. In einem vorhandenen Datasetmonitor kann ein Metrikabgleich durchgeführt werden, um Daten der Vergangenheit zu analysieren oder Metriken durch aktualisierte Einstellungen zu ersetzen. |
+| Enddatum | Enddatum des Abgleichsauftrags. | Das Enddatum darf nicht mehr als 31 Zeiteinheiten für die Häufigkeit vom Startdatum abweichen. In einem vorhandenen Datasetmonitor kann ein Metrikabgleich durchgeführt werden, um Daten der Vergangenheit zu analysieren oder Metriken durch aktualisierte Einstellungen zu ersetzen. |
 
 ## <a name="create-dataset-monitors"></a>Erstellen von Datasetmonitoren 
 
@@ -181,7 +181,7 @@ Der resultierende Datasetmonitor wird in der Liste angezeigt. Wählen Sie diesen
 
 Vollständige Informationen finden Sie in der [Python SDK-Referenzdokumentation zur Datendrift](/python/api/azureml-datadrift/azureml.datadrift). 
 
-Der folgende Code ist ein Beispiel für die Erstellung eines Datasetmonitors mit dem Python SDK.
+Im folgenden Beispiel wird gezeigt, wie ein Datasetmonitor mit dem Python SDK erstellt wird.
 
 ```python
 from azureml.core import Workspace, Dataset
@@ -252,7 +252,7 @@ Die folgende Abbildung zeigt ein Beispiel für Diagramme, die in den Ergebnissen
 
 Der Abschnitt **Featuredetails** enthält Erkenntnisse auf Featureebene zu Änderungen an der Verteilung des ausgewählten Features sowie weitere statistische Daten im Zeitverlauf. 
 
-Für das Zieldataset wird auch ein Profil im Zeitverlauf erstellt. Der statistische Abstand zwischen der Baselineverteilung jedes Features wird mit dem zeitlichen Verlauf des Zieldatasets verglichen. Dies entspricht konzeptionell der Größenordnung der Datendrift, außer dass diese Berechnung für ein einzelnes Feature erfolgt. Mindest-, Maximal- und Mittelwerte sind ebenfalls verfügbar. 
+Für das Zieldataset wird auch ein Profil im Zeitverlauf erstellt. Der statistische Abstand zwischen der Baselineverteilung jedes Features wird mit dem zeitlichen Verlauf des Zieldatasets verglichen. Dies entspricht konzeptionell der Größenordnung der Datendrift, außer dass dieser statistische Abstand für ein einzelnes Feature gilt. Mindest-, Maximal- und Mittelwerte sind ebenfalls verfügbar. 
 
 Wenn Sie im Azure Machine Learning-Studio auf einen Datenpunkt im Diagramm klicken, wird die Verteilung des angezeigten Features entsprechend angepasst. Standardmäßig werden die Verteilung des Baselinedatasets und die Verteilung der letzten Ausführung desselben Features angezeigt. 
 
@@ -295,7 +295,7 @@ Wählen Sie im linken Bereich unter „Überwachung“ die Option „Protokolle 
 
 ![Application Insights-Übersicht](media/how-to-monitor-datasets/ai-overview.png)
 
-Die Metriken der Datasetüberwachung werden als `customMetrics` gespeichert. Sie können eine einfache Abfrage schreiben und ausführen, nachdem Sie eine Überwachung per Datasetmonitor eingerichtet haben, um die Metriken anzuzeigen:
+Die Metriken der Datasetüberwachung werden als `customMetrics` gespeichert. Sie können eine Abfrage schreiben und ausführen, nachdem Sie eine Überwachung per Datasetmonitor eingerichtet haben, um die Metriken anzuzeigen:
 
 [![Log Analytics-Abfrage](media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 
@@ -321,7 +321,7 @@ Spalten bzw. Features im Dataset werden basierend auf den Bedingungen in der unt
 | Featuretyp | Datentyp | Bedingung | Einschränkungen | 
 | ------------ | --------- | --------- | ----------- |
 | Kategorisch | string, bool, int, float | Die Anzahl von eindeutigen Werten im Feature ist kleiner als 100 und geringer als 5 % der Anzahl von Zeilen. | NULL wird als eigene Kategorie behandelt. | 
-| Numerisch | int, float | Weist einen numerischen Datentyp auf und erfüllt die Bedingungen für ein kategorisches Feature nicht. | Das Feature wird entfernt, wenn mehr als 15 % der Werte NULL sind. | 
+| Numerisch | int, float | Die Werte im Feature weisen einen numerischen Datentyp auf und erfüllen die Bedingung für ein kategorisches Feature nicht. | Das Feature wird entfernt, wenn mehr als 15 % der Werte NULL sind. | 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

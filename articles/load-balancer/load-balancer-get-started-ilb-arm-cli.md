@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines internen Lastenausgleichs im Tarif „Basic“ – Azure CLI
-titlesuffix: Azure Load Balancer
-description: Erfahren Sie, wie Sie mit der Azure CLI einen internen Load Balancer erstellen.
+titleSuffix: Azure Load Balancer
+description: In diesem Artikel erfahren Sie, wie Sie eine interne Load Balancer-Instanz mit der Azure CLI erstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/27/2018
 ms.author: allensu
-ms.openlocfilehash: e38cc4e6da574e0c3be490cf5d9cd929624343e5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 8726991682ca8c2eabd628f1539ff940bf94e03d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275451"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215318"
 ---
 # <a name="create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Security Center – Handbuch zur Problembehandlung | Microsoft Docs
-description: In diesem Dokument wird die Problembehandlung in Azure Security Center beschrieben.
+description: Dieses Handbuch richtet sich an IT-Experten, Sicherheitsanalysten und Cloudadministratoren, die Probleme im Zusammenhang mit Azure Security Center beheben müssen.
 services: security-center
 author: v-miegge
 manager: dcscontentpm
@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 073e500028634e3c35a482d8efc5f9ae169145e3
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b9650c3c30d95c85f505b640564ff416931676ea
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257685"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559208"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 

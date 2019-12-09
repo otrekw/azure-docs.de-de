@@ -1,5 +1,5 @@
 ---
-title: Anfügen eines Datenträgers an eine Linux-VM | Microsoft Docs
+title: Anfügen eines Datenträgers an einen virtuellen Linux-Computer
 description: Verwenden Sie das Portal, um einen neuen oder vorhandenen Datenträger an einen virtuellen Linux-Computer anzufügen.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f63648f63d6154b89f641cdc4d2657e0396a8c66
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71036379"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279131"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>Alternative Methode mithilfe von Parted
+Das Hilfsprogramm „fdisk“ benötigt interaktive Eingaben und ist daher nicht ideal für die Verwendung in Automatisierungsskripts. Allerdings kann für das [Parted](https://www.gnu.org/software/parted/)-Hilfsprogramm ein Skript erstellt werden, das sich dann besser in Automatisierungsszenarios eignet. Das Hilfsprogramm „Parted“ kann zum Partitionieren und Formatieren eines Datenträgers verwendet werden. In der folgenden exemplarischen Vorgehensweise verwenden wir einen neuen Datenträger/Dev/Quelldomänencontroller und formatieren ihn mithilfe des [XFS](https://xfs.wiki.kernel.org/)-Dateisystems.
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+Wie oben gezeigt verwenden wir das [partprobe](https://linux.die.net/man/8/partprobe)-Hilfsprogramm, um sicherzustellen, dass der Kernel die neue Partition und das neue Dateisystem sofort erkennt. Wenn „partprobe“ nicht verwendet werden kann, können die Befehle „blkid“ oder „lslbk“ nicht sofort die UUID für das neue Dateisystem zurückgeben.
+
 ### <a name="mount-the-disk"></a>Einbinden des Datenträgers
 Erstellen Sie mit `mkdir` ein Verzeichnis zum Einbinden des Dateisystems. Im folgenden Beispiel wird ein Verzeichnis mit dem Namen */datadrive* erstellt:
 

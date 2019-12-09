@@ -1,6 +1,6 @@
 ---
-title: Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
-description: Übersicht zur Einstellung der klassischen Überwachungsdienste und -funktionen, die bisher im Azure-Portal unter Benachrichtigungen (klassisch) angezeigt wurden. Die klassische Benachrichtigung und Überwachung beinhaltet klassische Metrikwarnungen für Azure-Ressourcen, klassische Metrikwarnungen für Application Insights, klassische Web-Testwarnungen für Application Insights, klassische benutzerdefinierte metrikbasierte Warnungen für Application Insights und klassische Warnungen für Application Insights SmartDetection v1
+title: Update der klassischen Warnungen und Überwachung in Azure Monitor
+description: Beschreibung der Einstellung der klassischen Überwachungsdienste und -funktionen, die bisher im Azure-Portal unter Benachrichtigungen (klassisch) angezeigt wurden.
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676893"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307098"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 

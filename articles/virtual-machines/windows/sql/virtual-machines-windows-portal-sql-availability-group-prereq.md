@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 17b1f58a950f2e0589986e9f1da1295671599341
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4c89489964410104726b65e1b1fc3577945ce14a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037472"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224753"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Voraussetzungen für die Erstellung von AlwaysOn-Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -152,7 +152,7 @@ Konfigurieren Sie die beiden Verfügbarkeitsgruppen mit den Parametern in der fo
 Kehren Sie nach Erstellung der Verfügbarkeitsgruppen zur Ressourcengruppe im Azure-Portal zurück.
 
 ## <a name="create-domain-controllers"></a>Erstellen von Domänencontrollern
-Nach dem Erstellen des Netzwerks, der Subnetze, der Verfügbarkeitsgruppen und eines Lastenausgleichsmoduls mit Internetzugriff können Sie die virtuellen Computer für die Domänencontroller erstellen.
+Nach dem Erstellen des Netzwerks, der Subnetze und der Verfügbarkeitsgruppen können Sie die virtuellen Computer für die Domänencontroller erstellen.
 
 ### <a name="create-virtual-machines-for-the-domain-controllers"></a>Erstellen der virtuellen Computer für die Domänencontroller
 Kehren Sie zum Erstellen und Konfigurieren der Domänencontroller zur Ressourcengruppe **SQL-HA-RG** zurück.

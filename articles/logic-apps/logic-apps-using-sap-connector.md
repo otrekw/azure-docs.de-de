@@ -10,26 +10,26 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 98e6b515d5e9d60f95873016ad1cb06a13799bb2
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390123"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287125"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
 > [!IMPORTANT]
-> Die älteren Connectors für SAP-Anwendungsserver und SAP-Nachrichtenserver werden am 30. November 2019 als veraltet markiert. Der aktuelle SAP-Connector fasst diese älteren SAP-Connectors zusammen, damit Sie den Verbindungstyp nicht ändern müssen. Darüber hinaus ist er vollständig mit vorherigen Connectors kompatibel, bietet zahlreiche Zusatzfunktionen und verwendet weiterhin die SAP-.NET-Connectorbibliothek (SAP NCo).
+> Die vorherigen SAP-Anwendungsserver- und SAP-Nachrichtenserverconnectors werden ab dem 29. Februar 2020 als veraltet eingestuft. Der aktuelle SAP-Connector fasst diese älteren SAP-Connectors zusammen, damit Sie den Verbindungstyp nicht ändern müssen. Darüber hinaus ist er vollständig mit vorherigen Connectors kompatibel, bietet zahlreiche Zusatzfunktionen und verwendet weiterhin die SAP-.NET-Connectorbibliothek (SAP NCo).
 >
 > Für Logik-Apps, die die älteren Connectors verwenden, muss vor dem Veraltungsdatum eine [Migration zum neuesten Connector](#migrate) durchgeführt werden. Andernfalls treten bei diesen Logik-Apps Ausführungsfehler auf, und es können keine Nachrichten an Ihr SAP-System gesendet werden.
 
 In diesem Artikel wird gezeigt, wie Sie aus einer Logik-App auf Ihre lokalen SAP-Ressourcen zugreifen, indem Sie den SAP-Connector verwenden. Der Connector arbeitet mit den klassischen SAP-Releases wie R/3- und ECC-Systemen lokal zusammen. Der Connector ermöglicht auch die Integration mit den neueren HANA-basierten SAP-Systemen wie S/4 HANA, unabhängig davon, ob sie lokal oder in der Cloud gehostet werden. Der SAP-Connector unterstützt die Nachrichten- oder Datenintegration in SAP NetWeaver-basierten Systemen über Intermediate Document (IDoc), Business Application Programming Interface (BAPI) oder Remote Function Call (RFC).
 
-Der SAP-Connector verwendet die [SAP-NCo-Bibliothek (.NET-Connector)](https://support.sap.com/en/product/connectors/msnet.html) und stellt diese Vorgänge oder Aktionen bereit:
+Der SAP-Connector verwendet die [SAP-NCo-Bibliothek (.NET-Connector)](https://support.sap.com/en/product/connectors/msnet.html) und stellt die folgenden Aktionen bereit:
 
-* **An SAP senden:** Senden von IDoc über tRFC, Abrufen von BAPI-Funktionen über RFC und Abrufen von RFC/tRFC in SAP-Systemen
-* **Von SAP empfangen:** Empfangen von IDoc über tRFC, Abrufen von BAPI-Funktionen über tRFC und Abrufen von RFC/tRFC in SAP-Systemen
+* **Nachricht an SAP senden:** Senden von IDoc über tRFC, Abrufen von BAPI-Funktionen über RFC und Abrufen von RFC/tRFC in SAP-Systemen
+* **Beim Empfang einer Nachricht von SAP:** Empfangen von IDoc über tRFC, Abrufen von BAPI-Funktionen über tRFC und Abrufen von RFC/tRFC in SAP-Systemen
 * **Schemas generieren:** Generieren von Schemas für die SAP-Artefakte für IDoc, BAPI oder RFC.
 
 Für diese Vorgänge unterstützt der SAP-Connector die Basisauthentifizierung über Benutzername und Kennwort. Der Connector unterstützt auch [Secure Network Communications (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). SNC kann für SAP NetWeaver-SSO (einmaliges Anmelden) oder für zusätzliche Sicherheitsfunktionen eines externen Sicherheitsprodukts verwendet werden.
@@ -76,13 +76,13 @@ Um diesem Artikel weiter folgen zu können, benötigen Sie Folgendes:
 
 1. Löschen Sie in der Logik-App, die den älteren SAP-Connector verwendet, die Aktion **Send to SAP** (An SAP senden).
 
-1. Fügen Sie über den aktuellen SAP-Connector die Aktion **Send to SAP** (An SAP senden) hinzu. Diese Aktion kann erst nach erneuter Erstellung der Verbindung mit Ihrem SAP-System verwendet werden.
+1. Fügen Sie über den neuesten SAP-Connector die Aktion **Nachricht an SAP senden** hinzu. Diese Aktion kann erst nach erneuter Erstellung der Verbindung mit Ihrem SAP-System verwendet werden.
 
 1. Wenn Sie fertig sind, speichern Sie Ihre Logik-App.
 
 <a name="add-trigger"></a>
 
-## <a name="send-to-sap"></a>Senden an SAP
+## <a name="send-message-to-sap"></a>Senden von Nachrichten an SAP
 
 In diesem Beispiel wird eine Logik-App verwendet, die Sie mit einer HTTP-Anforderung auslösen können. Die Logik-App sendet eine IDoc-Datei an einen SAP-Server und gibt eine Antwort an den Anforderer zurück, der die Logik-App aufgerufen hat.
 
@@ -94,9 +94,9 @@ In diesem Beispiel erstellen Sie eine Logik-App mit einem Endpunkt in Azure, dam
 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) eine leere Logik-App, die den Logik-App-Designer öffnet.
 
-1. Geben Sie im Suchfeld den Begriff „http request“ als Filter ein. Wählen Sie in der Liste der **Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus.
+1. Geben Sie im Suchfeld den Begriff `http request` als Filter ein. Wählen Sie in der Liste der **Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-   ![Hinzufügen eines HTTP-Anforderungstriggers](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![Hinzufügen eines HTTP-Anforderungstriggers](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Speichern Sie jetzt Ihre Logik-App, damit Sie eine Endpunkt-URL dafür erstellen können. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -112,31 +112,39 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
 1. Wählen Sie im Logik-App-Designer unter dem Trigger die Option **Neuer Schritt** aus.
 
-   ![Wählen Sie „Neuer Schritt“ aus.](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Hinzufügen eines neuen Schritts zum Logik-App](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. Geben Sie im Suchfeld den Begriff „sap“ als Filter ein. Wählen Sie in der Liste **Aktionen** die Option **Nachricht an SAP senden** aus.
+1. Geben Sie im Suchfeld den Begriff `sap` als Filter ein. Wählen Sie in der Liste **Aktionen** die Option **Nachricht an SAP senden** aus.
   
-   ![SAP-Sendeaktion auswählen](media/logic-apps-using-sap-connector/select-sap-send-action.png)
+   ![Auswählen der Aktion „Nachricht an SAP senden“](media/logic-apps-using-sap-connector/select-sap-send-action.png)
 
-   Anstelle der Suchaktion können Sie alternativ die Registerkarte **Unternehmen** und dann die SAP-Aktion auswählen.
+   Alternativ können Sie die Registerkarte **Unternehmen** und dann die SAP-Aktion auswählen.
 
-   ![SAP-Sendeaktion auf der Registerkarte „Unternehmen“ auswählen](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
+   ![Auswählen der Aktion „Nachricht an SAP senden“ auf der Registerkarte „Unternehmen“](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Wenn Sie zur Angabe von Verbindungsdetails aufgefordert werden, erstellen Sie jetzt Ihre SAP-Verbindung. Sollte die Verbindung bereits bestehen, fahren Sie mit dem nächsten Schritt fort, damit Sie Ihre SAP-Aktion einrichten können.
+1. Sollte die Verbindung bereits bestehen, fahren Sie mit dem nächsten Schritt fort, damit Sie Ihre SAP-Aktion einrichten können. Wenn Sie jedoch zur Eingabe von Verbindungsdetails aufgefordert werden, sollten Sie die Informationen angeben, damit Sie eine Verbindung mit Ihrem lokalen SAP-Server herstellen können.
 
-   **Erstellen einer lokalen SAP-Verbindung**
+   1. Geben Sie einen Namen für die Verbindung an.
 
-   Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. Wählen Sie **Erstellen** aus, wenn Sie fertig sind. Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
+   1. Wählen Sie unter **Abonnement** im Abschnitt **Datengateway** das Azure-Abonnement für die Gatewayressource aus, die Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. 
+   
+   1. Wählen Sie unter **Verbindungsgateway** Ihre Gatewayressource aus.
 
-   * Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   1. Geben Sie weitere Informationen zu Verbindung an. Führen Sie die Schritte für die Eigenschaft **Anmeldetyp** abhängig davon aus, ob die Eigenschaft auf **Anwendungsserver** oder **Gruppe** festgelegt ist:
+   
+      * Bei **Anwendungsserver** sind die folgenden Eigenschaften erforderlich, die sonst optional sind:
 
-     ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+        ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-   * Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+      * Bei **Gruppe** sind die folgenden Eigenschaften erforderlich, die sonst optional sind:
 
-     ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
-   Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
+      Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
+
+   1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+
+      Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
 
 1. Suchen Sie nun eine Aktion für Ihren SAP-Server, und wählen Sie sie aus.
 
@@ -159,11 +167,11 @@ In Azure Logic Apps handelt es sich bei einer [Aktion](../logic-apps/logic-apps-
 
       Dadurch wird der Hauptteil des HTTP-Anforderungstriggers eingefügt und diese Ausgabe an Ihren SAP-Server gesendet.
 
-      ![Feld „Hauptteil“ auswählen](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
+      ![Auswählen der Eigenschaft „Text“ über den Auslöser](./media/logic-apps-using-sap-connector/SAP-app-server-action-select-body.png)
 
       Ihre SAP-Aktion sieht dann wie im folgenden Beispiel aus:
 
-      ![Vollständige SAP-Aktion](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
+      ![Vervollständigen der SAP-Aktion](./media/logic-apps-using-sap-connector/SAP-app-server-complete-action.png)
 
 1. Speichern Sie Ihre Logik-App. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
@@ -175,7 +183,7 @@ Fügen Sie nun dem Workflow Ihrer Logik-App eine Antwortaktion hinzu, und fügen
 
 1. Wählen Sie im Logik-App-Designer unter der SAP-Aktion die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld den Begriff „Antwort“ als Filter ein. Wählen Sie in der Liste **Aktionen** die Option **Antwort** aus.
+1. Geben Sie im Suchfeld den Begriff `response` als Filter ein. Wählen Sie in der Liste **Aktionen** die Option **Antwort** aus.
 
 1. Klicken Sie in das Feld **Hauptteil**, damit die dynamische Inhaltsliste angezeigt wird. Wählen Sie aus dieser Liste unter **Send message to SAP** (Nachricht an SAP senden) das Feld **Hauptteil** aus.
 
@@ -194,7 +202,7 @@ Fügen Sie den Nachrichteninhalt in Ihre Anforderung ein. Um die Anforderung zu 
 
    In diesem Artikel sendet die Anforderung eine IDoc-Datei, die im XML-Format vorliegen muss, und enthält den Namespace der SAP-Aktion, die Sie verwenden möchten, z.B.:
 
-   ``` xml
+   ```xml
    <?xml version="1.0" encoding="UTF-8" ?>
    <Send xmlns="http://Microsoft.LobServices.Sap/2007/03/Idoc/2/ORDERS05//720/Send">
       <idocData>
@@ -210,7 +218,9 @@ Fügen Sie den Nachrichteninhalt in Ihre Anforderung ein. Um die Anforderung zu 
 
 Sie haben eine Logik-App erstellt, die mit dem SAP-Server kommunizieren kann. Da Sie eine SAP-Verbindung für die Logik-App eingerichtet haben, können Sie nun andere SAP Aktionen kennenlernen, z.B. BAPI und RFC.
 
-## <a name="receive-from-sap"></a>Empfangen von SAP
+<a name="receive-from-sap"></a>
+
+## <a name="receive-message-from-sap"></a>Empfangen von Nachrichten von SAP
 
 Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von einem SAP-System ausgelöst wird.
 
@@ -218,29 +228,37 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
 1. Erstellen Sie im Azure-Portal eine leere Logik-App, die den Logik-App-Designer öffnet.
 
-1. Geben Sie im Suchfeld den Begriff „sap“ als Filter ein. Wählen Sie in der Liste der **Trigger** die Option **Beim Empfang einer Nachricht von SAP** aus.
+1. Geben Sie im Suchfeld den Begriff `sap` als Filter ein. Wählen Sie in der Liste der **Trigger** die Option **Beim Empfang einer Nachricht von SAP** aus.
 
-   ![Hinzufügen eines SAP-Triggers](./media/logic-apps-using-sap-connector/add-sap-trigger.png)
+   ![Hinzufügen eines SAP-Triggers](./media/logic-apps-using-sap-connector/add-sap-trigger-logic-app.png)
 
-   Alternativ können Sie zur Registerkarte **Unternehmen** wechseln und folgenden Trigger auswählen:
+   Alternativ können Sie die Registerkarte **Unternehmen** und dann den Auslöser auswählen:
 
    ![Hinzufügen eines SAP-Triggers auf der Registerkarte „Unternehmen“](./media/logic-apps-using-sap-connector/add-sap-trigger-ent-tab.png)
 
-1. Wenn Sie zur Angabe von Verbindungsdetails aufgefordert werden, erstellen Sie jetzt Ihre SAP-Verbindung. Sollte die Verbindung bereits bestehen, fahren Sie mit dem nächsten Schritt fort, damit Sie Ihre SAP-Aktion einrichten können.
+1. Sollte die Verbindung bereits bestehen, fahren Sie mit dem nächsten Schritt fort, damit Sie Ihre SAP-Aktion einrichten können. Wenn Sie jedoch zur Eingabe von Verbindungsdetails aufgefordert werden, sollten Sie die Informationen angeben, damit Sie eine Verbindung mit Ihrem lokalen SAP-Server herstellen können.
 
-   **Erstellen einer lokalen SAP-Verbindung**
+   1. Geben Sie einen Namen für die Verbindung an.
 
-   Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. Wählen Sie **Erstellen** aus, wenn Sie fertig sind. Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
+   1. Wählen Sie unter **Abonnement** im Abschnitt **Datengateway** das Azure-Abonnement für die Gatewayressource aus, die Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. 
 
-   * Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   1. Wählen Sie unter **Verbindungsgateway** Ihre Gatewayressource aus.
 
-     ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
+   1. Geben Sie weitere Informationen zu Verbindung an. Führen Sie die Schritte für die Eigenschaft **Anmeldetyp** abhängig davon aus, ob die Eigenschaft auf **Anwendungsserver** oder **Gruppe** festgelegt ist:
 
-   * Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+      * Bei **Anwendungsserver** sind die folgenden Eigenschaften erforderlich, die sonst optional sind:
 
-     ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
+        ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-   Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
+      * Bei **Gruppe** sind die folgenden Eigenschaften erforderlich, die sonst optional sind:
+
+        ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+
+      Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
+
+   1. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+
+      Die Verbindung wird in Logic Apps eingerichtet und getestet, sodass sichergestellt ist, dass sie ordnungsgemäß funktioniert.
 
 1. Geben Sie die erforderlichen Parameter basierend auf der Konfiguration Ihres SAP-Systems an.
 
@@ -248,7 +266,7 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
    Sie können eine SAP-Aktion aus der Dateiauswahl auswählen:
 
-   ![SAP-Aktion auswählen](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
+   ![Hinzufügen der SAP-Aktion zur Logik-App](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
 
    Sie können eine Aktion auch manuell angeben:
 
@@ -256,12 +274,11 @@ Dieses Beispiel verwendet eine Logik-App, die bei Empfang einer Nachricht von ei
 
    Dieses Beispiel stellt dar, wie die Aktion angezeigt wird, wenn Sie den Trigger für den Empfang mehrerer Nachrichten einrichten.
 
-   ![Triggerbeispiel](media/logic-apps-using-sap-connector/example-trigger.png)  
+   ![Beispiel für einen Auslöser, der mehrere Nachrichten empfängt](media/logic-apps-using-sap-connector/example-trigger.png)
 
    Weitere Informationen zur SAP-Aktion finden Sie unter [Nachrichtenschemas für IDOC-Vorgänge](https://docs.microsoft.com/biztalk/adapters-and-accelerators/adapter-sap/message-schemas-for-idoc-operations).
 
-1. Speichern Sie jetzt Ihre Logik-App, um den Empfang von Nachrichten von Ihrem SAP-System zu starten.
-Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
+1. Speichern Sie jetzt Ihre Logik-App, um den Empfang von Nachrichten von Ihrem SAP-System zu starten. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
 Ihre Logik-App kann jetzt Nachrichten von Ihrem SAP-System empfangen.
 
@@ -282,17 +299,17 @@ Sie können SAP für das [Senden von IDOCs in Paketen](https://help.sap.com/view
 
 Im Folgenden sehen Sie ein Beispiel, das veranschaulicht, wie einzelne IDOCs mithilfe der [`xpath()`-Funktion](./workflow-definition-language-functions-reference.md#xpath) aus einem Paket extrahiert werden:
 
-1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie diese Logik-App noch nicht besitzen, führen Sie die vorherigen Schritte in diesem Thema aus, um [eine Logik-App mit einem SAP-Trigger](#receive-from-sap) einzurichten.
+1. Zunächst benötigen Sie eine Logik-App mit einem SAP-Trigger. Wenn Sie diese Logik-App noch nicht besitzen, führen Sie die vorherigen Schritte in diesem Artikel aus, um [eine Logik-App mit einem SAP-Trigger](#receive-from-sap) einzurichten.
 
    Beispiel:
 
-   ![SAP-Trigger](./media/logic-apps-using-sap-connector/first-step-trigger.png)
+   ![Hinzufügen eines SAP-Auslösers zur Logik-App](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
 1. Rufen Sie den Stammnamespace aus dem XML-IDOC ab, das Ihre Logik-App von SAP erhält. Fügen Sie zum Extrahieren dieses Namespace aus dem XML-Dokument einen Schritt hinzu, der eine lokale Zeichenfolgenvariable erstellt und diesen Namespace mithilfe eines `xpath()`-Ausdrucks speichert:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
-   ![Abrufen des Namespace](./media/logic-apps-using-sap-connector/get-namespace.png)
+   ![Abrufen des Stammnamespace aus dem IDoc](./media/logic-apps-using-sap-connector/get-namespace.png)
 
 1. Fügen Sie zum Extrahieren eines einzelnen IDOC einen Schritt hinzu, der eine Arrayvariable erstellt und die IDOC-Sammlung mithilfe eines anderen `xpath()`-Ausdrucks speichert:
 
@@ -302,14 +319,13 @@ Im Folgenden sehen Sie ein Beispiel, das veranschaulicht, wie einzelne IDOCs mit
 
    Die Arrayvariable macht jedes IDOC verfügbar, damit Ihre Logik-App diese einzeln verarbeiten kann, indem sie sie in der Sammlung auflistet. In diesem Beispiel überträgt die Logik-App jedes IDOC mithilfe einer Schleife an einen SFTP-Server:
 
-   ![Versenden des IDOC](./media/logic-apps-using-sap-connector/loop-batch.png)
+   ![Senden des IDocs an SFTP-Server](./media/logic-apps-using-sap-connector/loop-batch.png)
 
    Jedes IDOC muss den Stammnamespace enthalten. Daher wird der Inhalt der Datei zusammen mit dem Stammnamespace in ein `<Receive></Receive`-Element gepackt, bevor das IDOC an die Downstream-App oder in diesem Fall an den SFTP-Server gesendet wird.
 
-> [!TIP]
-> Sie können die Schnellstartvorlage für dieses Muster verwenden, indem Sie diese Vorlage im Logik-App-Designer auswählen, wenn Sie eine neue Logik-App erstellen.
->
-> ![Batchvorlage](./media/logic-apps-using-sap-connector/batch-template.png)
+Sie können die Schnellstartvorlage für dieses Muster verwenden, indem Sie diese Vorlage im Logik-App-Designer auswählen, wenn Sie eine neue Logik-App erstellen.
+
+![Auswählen der Vorlage Batch-Logik-App](./media/logic-apps-using-sap-connector/select-batch-logic-app-template.png)
 
 ## <a name="generate-schemas-for-artifacts-in-sap"></a>Generieren von Schemas für Artefakte in SAP
 
@@ -319,9 +335,9 @@ In diesem Beispiel wird eine Logik-App verwendet, die Sie mit einer HTTP-Anforde
 
 1. Erstellen Sie im Azure-Portal eine leere Logik-App, die den Logik-App-Designer öffnet.
 
-1. Geben Sie im Suchfeld den Begriff „http request“ als Filter ein. Wählen Sie in der Liste der **Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus.
+1. Geben Sie im Suchfeld den Begriff `http request` als Filter ein. Wählen Sie in der Liste der **Trigger** die Option **Beim Empfang einer HTTP-Anforderung** aus.
 
-   ![Hinzufügen eines HTTP-Anforderungstriggers](./media/logic-apps-using-sap-connector/add-trigger.png)
+   ![Hinzufügen eines HTTP-Anforderungstriggers](./media/logic-apps-using-sap-connector/add-http-trigger-logic-app.png)
 
 1. Speichern Sie jetzt Ihre Logik-App, damit Sie eine Endpunkt-URL dafür erstellen können.
 Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
@@ -334,29 +350,33 @@ Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
 1. Wählen Sie im Logik-App-Designer unter dem Trigger die Option **Neuer Schritt** aus.
 
-   ![Wählen Sie „Neuer Schritt“ aus.](./media/logic-apps-using-sap-connector/add-action.png)
+   ![Hinzufügen eines neuen Schritts zum Logik-App](./media/logic-apps-using-sap-connector/add-sap-action-logic-app.png)
 
-1. Geben Sie im Suchfeld den Begriff „sap“ als Filter ein. Wählen Sie in der Liste mit den **Aktionen** die Aktion **Schemas generieren** aus.
+1. Geben Sie im Suchfeld den Begriff `sap` als Filter ein. Wählen Sie in der Liste mit den **Aktionen** die Aktion **Schemas generieren** aus.
   
-   ![SAP-Sendeaktion auswählen](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
+   ![Hinzufügen der Aktion „Schemas generieren“ zur Logik-App](media/logic-apps-using-sap-connector/select-sap-schema-generator-action.png)
 
-   Alternativ dazu wählen Sie die Registerkarte **Unternehmen** und dann die SAP-Aktion aus.
+   Alternativ können Sie die Registerkarte **Unternehmen** und dann die SAP-Aktion auswählen.
 
    ![SAP-Sendeaktion auf der Registerkarte „Unternehmen“ auswählen](media/logic-apps-using-sap-connector/select-sap-schema-generator-ent-tab.png)
 
-1. Wenn Sie zur Angabe von Verbindungsdetails aufgefordert werden, erstellen Sie jetzt Ihre SAP-Verbindung. Sollte die Verbindung bereits bestehen, fahren Sie mit dem nächsten Schritt fort, damit Sie Ihre SAP-Aktion einrichten können.
+1. Sollte die Verbindung bereits bestehen, fahren Sie mit dem nächsten Schritt fort, damit Sie Ihre SAP-Aktion einrichten können. Wenn Sie jedoch zur Eingabe von Verbindungsdetails aufgefordert werden, sollten Sie die Informationen angeben, damit Sie eine Verbindung mit Ihrem lokalen SAP-Server herstellen können.
 
-   **Erstellen einer lokalen SAP-Verbindung**
+   1. Geben Sie einen Namen für die Verbindung an.
 
-   1. Stellen Sie die Verbindungsinformationen für Ihren SAP-Server bereit. Wählen Sie für die Eigenschaft **Datengateway** das Datengateway aus, das Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben.
+   1. Wählen Sie unter **Abonnement** im Abschnitt **Datengateway** das Azure-Abonnement für die Gatewayressource aus, die Sie im Azure-Portal für Ihre Gatewayinstallation erstellt haben. 
+   
+   1. Wählen Sie unter **Verbindungsgateway** Ihre Gatewayressource aus.
 
-      * Wenn die Eigenschaft **Anmeldetyp** auf **Anwendungsserver** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+   1. Geben Sie weitere Informationen zu Verbindung an. Führen Sie die Schritte für die Eigenschaft **Anmeldetyp** abhängig davon aus, ob die Eigenschaft auf **Anwendungsserver** oder **Gruppe** festgelegt ist:
+   
+      * Bei **Anwendungsserver** sind die folgenden Eigenschaften erforderlich, die sonst optional sind:
 
         ![Verbindung zum SAP-Anwendungsserver herstellen](media/logic-apps-using-sap-connector/create-SAP-application-server-connection.png)
 
-      * Wenn die Eigenschaft **Anmeldetyp** auf **Gruppe** festgelegt ist, sind diese (in der Regel optionalen) Eigenschaften erforderlich:
+      * Bei **Gruppe** sind die folgenden Eigenschaften erforderlich, die sonst optional sind:
 
-        ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)
+        ![Verbindung zum SAP-Nachrichtenserver herstellen](media/logic-apps-using-sap-connector/create-SAP-message-server-connection.png)  
 
       Standardmäßig wird starke Typisierung verwendet, um nach ungültigen Werten zu suchen, indem eine XML-Validierung anhand des Schemas durchgeführt wird. Durch dieses Verhalten können Sie Probleme früher feststellen. Die Option **Sichere Typisierung** ist aus Gründen der Abwärtskompatibilität verfügbar und überprüft nur die Länge der Zeichenfolge. Erfahren Sie mehr über die Option [Sichere Typisierung](#safe-typing).
 
@@ -398,7 +418,7 @@ Optional können Sie die generierten Schemas in Repositorys wie ein Blob-, Speic
 
 1. Wählen Sie im Logik-App-Designer unter dem Trigger die Option **Neuer Schritt** aus.
 
-1. Geben Sie im Suchfeld den Begriff „Resource Manager“ als Filter ein. Wählen Sie **Ressource erstellen oder aktualisieren** aus.
+1. Geben Sie im Suchfeld den Begriff `Resource Manager` als Filter ein. Wählen Sie **Ressource erstellen oder aktualisieren** aus.
 
    ![Azure Resource Manager-Aktion auswählen](media/logic-apps-using-sap-connector/select-azure-resource-manager-action.png)
 
@@ -412,7 +432,8 @@ Optional können Sie die generierten Schemas in Repositorys wie ein Blob-, Speic
 
    Die SAP-Aktion **Schemas generieren** generiert Schemas als Sammlung, daher fügt der Designer der Aktion automatisch eine **For each**-Schleife hinzu. In diesem Beispiel wird die Darstellung dieser Aktion gezeigt:
 
-   ![Azure Resource Manager-Aktion mit „for each“-Schleife](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)  
+   ![Azure Resource Manager-Aktion mit „for each“-Schleife](media/logic-apps-using-sap-connector/azure-resource-manager-action-foreach.png)
+
    > [!NOTE]
    > Die Schemas verwenden das Base64-codierte Format. Damit die Schemas in ein Integrationskonto hochgeladen werden können, müssen sie mithilfe der Funktion `base64ToString()` decodiert werden. Das folgende Beispiel zeigt den Code für das Element `"properties"`:
    >
@@ -516,7 +537,7 @@ Hier sehen Sie ein Beispiel für dieses Muster:
 
 1. Fügen Sie über den SAP-Connector die Aktion **Send IDOC** (IDOC senden) hinzu. Geben Sie die Details für das IDOC-Element an, das Sie an Ihr SAP-System senden.
 
-1. Soll die Transaktions-ID explizit in einem separaten Schritt bestätigt werden, wählen Sie unter der Eigenschaft **Confirm TID** (Transaktions-ID bestätigen) die Option **Nein** aus. Für die optionale Eigenschaft **Transaction ID GUID** (GUID der Transaktions-ID) können Sie den Wert entweder manuell angeben oder diese GUID automatisch durch den Connector generieren und in der Antwort auf die Aktion „Send IDOC“ (IDOC senden) zurückgeben lassen.
+1. Wählen Sie im Feld **TID bestätigen** die Option **Nein** aus, um die Transaktions-ID explizit in einem separaten Schritt zu bestätigen. Für das optionale Feld **Transaktions-ID-GUID** können Sie den Wert entweder manuell angeben oder diese GUID automatisch durch den Connector generieren und in der Antwort auf die Aktion „IDoc senden“ zurückgeben lassen.
 
    ![Eigenschaften der Aktion „Send IDOC“ (IDOC senden)](./media/logic-apps-using-sap-connector/send-idoc-action-details.png)
 

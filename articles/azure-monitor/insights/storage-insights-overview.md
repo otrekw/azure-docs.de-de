@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 08/15/2019
-ms.openlocfilehash: e5738b9f7cca03898d3bb5c593004bb316aa0b23
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553882"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286367"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)
 
@@ -168,7 +168,7 @@ Sie können die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachab
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Ändern von Metriken und Farben in der Arbeitsmappe
 
-Die vorkonfigurierten Arbeitsmappen enthalten Metrikdaten, und Sie haben die Möglichkeit, jede der Visualisierungen zu ändern oder zu entfernen und sie an die spezifischen Anforderungen Ihres Teams anzupassen. 
+Die vorkonfigurierten Arbeitsmappen enthalten Metrikdaten, und Sie haben die Möglichkeit, jede der Visualisierungen zu ändern oder zu entfernen und sie an die spezifischen Anforderungen Ihres Teams anzupassen.
 
 In unserem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ für Mehrfachabonnement und Speicherkonto, um Folgendes zu veranschaulichen:
 
@@ -183,7 +183,7 @@ Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**,
 
     ![„Bearbeiten“ auswählen, um eine Arbeitsmappe zu ändern](./media/storage-insights-overview/workbook-edit-workbook.png)
 
-3. Wählen Sie neben dem Abschnitt „Metriken“ **Bearbeiten** aus. 
+3. Wählen Sie neben dem Abschnitt „Metriken“ **Bearbeiten** aus.
 
     ![„Bearbeiten“ auswählen, um die Metriken für die Arbeitsmappe „Kapazität“ zu ändern](./media/storage-insights-overview/edit-metrics-capacity-workbook-01.png)
 
@@ -191,7 +191,7 @@ Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**,
 
     ![Bearbeiten von Spalteneinstellungen](./media/storage-insights-overview/edit-capacity-workbook-resource-grid.png)
 
-5. Wählen Sie im Bereich **Spalteneinstellungen bearbeiten** im Abschnitt **Spalten** die Option **microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$|Verwendete Kontokapazität Timeline$** und dann in der Dropdownliste **Spaltenrenderer** den Eintrag **Ausgeblendet** aus. 
+5. Wählen Sie im Bereich **Spalteneinstellungen bearbeiten** im Abschnitt **Spalten** die Option **microsoft.storage/storageaccounts-Capacity-UsedCapacity Timeline$|Verwendete Kontokapazität Timeline$** und dann in der Dropdownliste **Spaltenrenderer** den Eintrag **Ausgeblendet** aus.
 
 6. Wählen Sie **Speichern und schließen** aus, um Ihre Änderung zu committen.
 
@@ -234,6 +234,86 @@ Dieser Abschnitt wird Sie bei der Diagnose und Behandlung einiger bekannter Prob
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Beheben von Leistungs-, Kapazitäts-oder Verfügbarkeitsproblemen
 
 Informationen zur Problembehandlung bei speicherbezogenen Problemen, die Sie mit Azure Monitor für Storage (Vorschauversion) identifizieren, finden Sie in [Anleitungen zur Problembehandlung](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance) für Azure Storage.  
+
+### <a name="why-can-i-only-see-200-storage-accounts"></a>Warum kann ich nur 200 Speicherkonten sehen?
+
+Die Anzahl der ausgewählten Speicherkonten ist auf 200 begrenzt, unabhängig von der Anzahl der ausgewählten Abonnements.
+
+### <a name="what-happens-when-i-click-on-a-recently-pinned-tile-in-the-dashboard"></a>Was passiert, wenn ich auf eine kürzlich angeheftete Kachel im Dashboard klicke?
+
+* Wenn Sie irgendwo auf die Kachel klicken, gelangen Sie zu der Registerkarte, von der aus die Kachel angeheftet wurde. Wenn Sie beispielsweise einen Graphen in der Registerkarte „Storage Account Overview“ (Übersicht der Speicherkonten) anheften, wird beim Anklicken dieser Kachel im Dashboard diese Standardansicht geöffnet, wenn Sie jedoch einen Graphen aus Ihrer eigenen gespeicherten Kopie anheften, wird die Ansicht Ihrer gespeicherten Kopie geöffnet.
+* Das Filtersymbol oben links im Titel öffnet die Registerkarte „Configure tile settings“ (Kacheleinstellungen konfigurieren).
+* Das Ellipsensymbol oben rechts zeigt Ihnen die Optionen „Customize title data“ (Titeldaten anpassen), „customize“ (Anpassen), „Refresh“ (Aktualisieren) und „remove from dashboard“ (Aus Dashboard entfernen) an.
+
+### <a name="what-happens-when-i-save-a-workbook"></a>Was passiert, wenn ich eine Arbeitsmappe speichere?
+
+* Wenn Sie eine Arbeitsmappe speichern, können Sie eine neue Kopie der Arbeitsmappe mit Ihren Bearbeitungen erstellen und den Titel ändern. Beim Speichern wird die Arbeitsmappe nicht überschrieben; die aktuelle Arbeitsmappe wird immer die Standardansicht sein.
+* Eine **nicht gespeicherte** Arbeitsmappe ist nur die Standardansicht.
+
+
+### <a name="why-dont-i-see-all-my-subscriptions-in-the-portal"></a>Warum werden meine gesamten Abonnements im Portal nicht angezeigt?
+
+Beim Start des Portals werden nur die Daten für ausgewählte Abonnements im Portal angezeigt. Navigieren Sie nach oben rechts, und klicken Sie auf das Notebook mit einem Filtersymbol, um die ausgewählten Abonnements zu ändern. Dann wird Ihnen die Registerkarte „Directory + subscriptions“ (Verzeichnis + Abonnements) angezeigt.
+
+![Directory + subscription (Verzeichnis + Abonnement)](./media/storage-insights-overview/fqa3.png)
+
+### <a name="how-to-change-the-coloring-and-threshold-for-availability"></a>Wie ändert man die Farbgebung und den Schwellenwert für die Verfügbarkeit?
+
+Im Abschnitt [Ändern des Verfügbarkeitsschwellenwerts](storage-insights-overview.md#modify-the-availability-threshold) finden Sie detaillierte Schritte zum Ändern der Farbgebung und der Verfügbarkeitsschwellenwerte.
+
+### <a name="how-to-analyze-and-troubleshoot-the-data-shown-in-azure-monitor-for-storage"></a>Wie können Sie die Daten analysieren und Probleme behandeln, die in Azure Monitor für Storage angezeigt werden?
+
+ Weitere Informationen zur Analyse und Problembehandlung der im Azure Monitor für Storage angezeigten Azure Storage-Daten finden Sie im Artikel [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-monitoring-diagnosing-troubleshooting).
+
+### <a name="why-dont-i-see-all-the-types-of-errors-in-metrics"></a>Warum werden nicht alle Fehlertypen in Metriken angezeigt?
+
+Derzeit werden bis zu drei verschiedene Fehlertypen angezeigt und der Rest der Fehler in einem einzigen Bucket zusammengefasst. Dieses wird über splitByLimit gesteuert und kann geändert werden. Zum Ändern der Eigenschaft:
+
+1. Klicken Sie auf „Edit workbook“ (Arbeitsmappe bearbeiten).
+2. Navigieren Sie zu „metrics“ (Metriken), klicken Sie auf „edit“ (Bearbeiten), und wählen Sie **Transactions, Sum** (Transaktionen, Summe) oder andere beliebige Metriken aus, die Sie bearbeiten möchten.
+
+    ![Navigieren zu „metrics“ (Metriken), Klicken auf „edit“ (Bearbeiten) und „Transactions, Sums“ (Transaktionen, Summen)](./media/storage-insights-overview/fqa7.png)
+
+1. Ändern Sie dann die Anzahl der Aufteilungen.
+
+    ![Auswählen von „Metrikparameter“](./media/storage-insights-overview/fqa7-2.png)
+
+Wenn Sie n verschiedene Fehlertypen anzeigen möchten, geben Sie splitByLimit als n+1 an. 1 steht hier für die zusätzlichen, restlichen Fehler.
+
+###  <a name="i-saved-my-workbook-while-on-some-storage-account-why-cant-i-find-it-now"></a>Ich habe meine Arbeitsmappe in einem Speicherkonto gespeichert. Warum kann ich die Arbeitsmappe nicht mehr finden?
+
+Jede Arbeitsmappe wird in dem Speicherkonto gespeichert, in der Sie diese gespeichert haben. Versuchen Sie das bestimmte Speicherkonto zu finden, in dem der Benutzer die Arbeitsmappe gespeichert hat. Andernfalls gibt es keine Möglichkeit, eine bestimmte Arbeitsmappe zu finden, ohne die Ressource (Speicherkonto) zu kennen.
+
+### <a name="what-is-time-range"></a>Was ist der Zeitbereich?
+
+Der Zeitbereich zeigt Ihnen Daten aus einem bestimmten Zeitrahmen an. Wenn der Zeitbereich beispielsweise 24 Stunden beträgt, zeigt dieser Daten der letzten 24 Stunden an.
+
+### <a name="what-is-time-granularity-time-grain"></a>Was ist Zeitgranularität (Aggregationsintervall)?
+
+Zeitgranularität bezeichnet den Zeitunterschied zwischen zwei Datenreihenpunkten. Wenn beispielsweise das Aggregationsintervall auf eine Sekunde festgelegt ist, bedeutet das, dass jede Sekunde Metriken gesammelt werden.
+
+### <a name="what-is-the-time-granularity-once-we-pin-any-part-of-the-workbooks-to-a-dashboard"></a>Was ist die Zeitgranularität, wenn wir einen Teil der Arbeitsmappen an ein Dashboard anheften?
+
+Die Standardzeitgranularität ist auf „automatisch“ festgelegt, diese kann derzeit nicht geändert werden.
+
+### <a name="how-do-i-change-the-timespan-time-range-of-the-workbook-step-on-my-dashboard"></a>Wie kann ich die Zeitspanne/den Zeitbereich des Arbeitsmappenschritts auf meinem Dashboard ändern?
+
+Standardmäßig ist die Zeitspanne/der Zeitbereich auf Ihrer Dashboardkachel auf 24 Stunden festgelegt. Klicken Sie auf die Ellipsen oben rechts, wählen Sie **Customize tile data** (Kacheldaten anpassen) aus, aktivieren Sie das Kontrollkästchen „override the dashboard time settings at the title level“ (Dashboardzeiteinstellungen auf Kachelebene überschreiben), und wählen Sie dann eine Zeitspanne aus dem Dropdownmenü aus, um.diesen Wert zu ändern.  
+
+![Auswählen des Ellipsensymbols in der rechten Ecke der Kachel und Auswählen von „Customize tile data“ (Kacheldaten anpassen)](./media/storage-insights-overview/fqa-data-settings.png)
+
+![Auswählen des Dropdownmenüs „timespan“ (Zeitspanne) in „Configure tile settings“ (Kacheleinstellungen konfigurieren) zur Änderung der Zeitspanne/des Zeitbereichs](./media/storage-insights-overview/fqa-timespan.png)
+
+### <a name="how-do-i-change-the-title-of-the-workbook-or-a-workbook-step-i-pinned-to-a-dashboard"></a>Wie ändere ich den Titel der Arbeitsmappe oder des Arbeitsmappenschritts, den ich an das Dashboard angeheftet habe?
+
+Der Titel der Arbeitsmappe oder des Arbeitsmappenschritts, der an ein Dashboard angeheftet ist, behält den gleichen Namen wie in der Arbeitsmappe. Sie müssen Ihre eigene Kopie der Arbeitsmappe speichern, um den Titel zu ändern. Dann können Sie die Arbeitsmappe benennen, bevor Sie auf „Speichern“ klicken.
+
+![Wählen Sie oben „Speichern“ aus, um eine Kopie der Arbeitsmappe zu speichern und den Namen der Arbeitsmappe zu ändern.](./media/storage-insights-overview/fqa-change-workbook-name.png)
+
+Wählen Sie „Edit“ (Bearbeiten) in diesem Schritt aus, und klicken Sie dann auf das Zahnrad ganz unten in den Einstellungen, um den Namen eines Schrittes in Ihrer gespeicherten Arbeitsmappe zu ändern.
+
+![Auswählen von „Edit“ (Bearbeiten) unten im Arbeitsmappenschritt zum Öffnen der Einstellungen](./media/storage-insights-overview/fqa-edit.png)
+![Auswählen des Zahnrads unten in den Einstellungen zur Änderung des Namen eines Schritts](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

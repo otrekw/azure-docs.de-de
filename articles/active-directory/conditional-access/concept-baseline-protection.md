@@ -1,22 +1,22 @@
 ---
-title: Basisschutzrichtlinien für den bedingten Zugriff – Azure Active Directory
+title: Basisrichtlinien für den bedingten Zugriff – Azure Active Directory
 description: Basisrichtlinien für den bedingten Zugriff zum Schutz von Organisationen vor gängigen Angriffen
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd46b8cb734355a8394b7480c6def341cf9700d
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430329"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420566"
 ---
 # <a name="what-are-baseline-policies"></a>Was sind Basisrichtlinien?
 
@@ -26,7 +26,7 @@ Für die Verwaltung von Richtlinien für den bedingten Zugriff ist eine Azure AD
 
 ## <a name="baseline-policies"></a>Basisrichtlinien
 
-![Basisrichtlinien für bedingten Zugriff im Azure-Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
+![Basisrichtlinien für bedingten Zugriff im Azure-Portal](./media/concept-baseline-protection/conditional-access-policies.png)
 
 Es gibt vier Basisrichtlinien:
 

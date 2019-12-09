@@ -1,22 +1,22 @@
 ---
-title: Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion) – Azure Active Directory
+title: 'Azure Active Directory: Kennwortlose Anmeldung mit der Microsoft Authenticator-App'
 description: Aktivieren der kennwortlosen Anmeldung bei Azure AD mit der Microsoft Authenticator-App (Vorschauversion)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a76aa0ca7cbda3f2db564c220ba12fec60f60509
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474360"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381864"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -46,7 +46,7 @@ Die Registrierungsfunktionen für Methoden zur kennwortlosen Authentifizierung s
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Aktivieren von Authentifizierungsmethoden für die kennwortlose Anmeldung per Telefon
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-1. Navigieren Sie zu **Azure AD-Sicherheit** > **Authentifizierungsmethoden** > **Authentifizierungsmethodenrichtlinie (Vorschau)** .
+1. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus. Klicken Sie auf **Sicherheit** > **Authentifizierungsmethoden** > **Authentifizierungsmethodenrichtlinie (Vorschau)** .
 1. Wählen Sie unter **Kennwortlose Anmeldung per Telefon** die folgenden Optionen aus:
    1. **Aktivieren**: „Ja“ oder „Nein“
    1. **Ziel**: „Alle Benutzer“ oder „Benutzer auswählen“

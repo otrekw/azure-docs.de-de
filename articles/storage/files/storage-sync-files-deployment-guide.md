@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: de0eb685e212b59705d8d659cbe9627338697e9d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854524"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546367"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -398,6 +398,45 @@ Für das Vorabseeding gelten aktuell einige Einschränkungen:
 - Vollständige Originaltreue für Dateien wird nicht beibehalten. Dateien verlieren beispielsweise Zugriffssteuerungslisten und Zeitstempel.
 - Datenänderungen auf dem Server, bevor die Synchronisierungstopologie vollständig in Betrieb ist, können zu Konflikten auf den Serverendpunkten führen.  
 - Nachdem der Cloudendpunkt erstellt wurde, führt die Azure-Dateisynchronisierung einen Prozess aus, um die Dateien in der Cloud zu erkennen, bevor die anfängliche Synchronisierung gestartet wird. Die zum Abschluss dieses Prozesses benötigte Zeit variiert je nach den verschiedenen Faktoren wie Netzwerkgeschwindigkeit, verfügbare Bandbreite und Anzahl der Dateien und Ordner. Grob geschätzt schafft der Erkennungsprozess in der Vorschauversion ca. 10 Dateien pro Sekunde. Selbst wenn das Vorabseeding schnell erfolgt, kann die Gesamtzeit bis zur Inbetriebnahme eines voll funktionsfähigen Systems erheblich länger sein, wenn für die Daten in der Cloud vorab ein Seeding durchgeführt wird.
+
+## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Self-Service-Wiederherstellung mit „Vorherige Versionen“ und Volumeschattenkopie-Dienst (VSS)
+„Vorherige Versionen“ ist ein Windows-Feature, mit dem Sie serverseitige VSS-Momentaufnahmen eines Volumes nutzen können, um wiederherstellbare Versionen einer Datei auf einem SMB-Client darzustellen.
+Dies ermöglicht ein leistungsfähiges Szenario, das häufig als Self-Service-Wiederherstellung bezeichnet wird. Es ist für die direkte Nutzung durch Information-Worker gedacht, ohne dass die Wiederherstellung von einem IT-Administrator durchgeführt werden muss.
+
+VSS-Momentaufnahmen und Vorherige Versionen funktionieren unabhängig von der Azure-Dateisynchronisierung. Das Cloudtiering muss aber auf einen kompatiblen Modus festgelegt werden. Auf einem Volume können mehrere Serverendpunkte der Azure-Dateisynchronisierung angeordnet sein. Sie müssen den folgenden PowerShell-Aufruf für jedes Volume durchführen. Dies gilt auch, wenn nur ein Serverendpunkt vorhanden ist, für den Sie das Cloudtiering nutzen möchten bzw. bereits nutzen.
+
+```powershell
+Import-Module ‘<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll’
+Enable-StorageSyncSelfServiceRestore [-DriveLetter] <string> [[-Force]] 
+```
+
+VSS-Momentaufnahmen werden für ein gesamtes Volume erstellt. Standardmäßig können für ein bestimmtes Volume bis zu 64 Momentaufnahmen vorhanden sein, sofern genügend Platz für die Speicherung verfügbar ist. Dies wird von VSS automatisch durchgeführt. Beim Standardzeitplan für Momentaufnahmen werden zwei Momentaufnahmen pro Tag erstellt (am Montag und Freitag). Dieser Zeitplan kann über einen geplanten Windows-Task konfiguriert werden. Mit dem obigen PowerShell-Cmdlet werden zwei Schritte ausgeführt:
+1. Das Cloudtiering der Azure-Dateisynchronisierung auf dem angegebenen Volume wird so konfiguriert, dass es mit vorherigen Versionen kompatibel ist. Hierbei wird sichergestellt, dass eine Datei auch dann aus einer vorherigen Version wiederhergestellt werden kann, wenn sie per Tiering auf dem Server in der Cloud ausgelagert wurde. 
+2. Der Standardzeitplan für VSS wird aktiviert. Sie können dies später noch ändern. 
+
+> [!Note]  
+> Hierbei sind zwei wichtige Punkte zu beachten:
+>- Wenn Sie den Parameter „-Force“ verwenden und VSS derzeit aktiviert ist, wird der aktuelle VSS-Zeitplan für Momentaufnahmen außer Kraft gesetzt und durch den Standardzeitplan ersetzt. Stellen Sie sicher, dass Sie Ihre benutzerdefinierte Konfiguration speichern, bevor Sie das Cmdlet ausführen.
+> - Wenn Sie dieses Cmdlet auf einem Clusterknoten verwenden, müssen Sie es auch auf allen anderen Knoten im Cluster ausführen! 
+
+Sie können das folgende Cmdlet ausführen, um zu ermitteln, ob Kompatibilität für die Self-Service-Wiederherstellung besteht.
+
+```powershell
+    Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
+```
+
+Hiermit werden alle Volumes des Servers aufgelistet, und es wird jeweils die Anzahl von Tagen mit Kompatibilität für das Cloudtiering angegeben. Diese Anzahl wird basierend auf den maximal möglichen Momentaufnahmen pro Volume und dem Standardzeitplan für Momentaufnahmen automatisch berechnet. Standardmäßig können also alle vorherigen Versionen, die einem Information-Worker angezeigt werden, für die Wiederherstellung verwendet werden. Dies gilt auch, wenn Sie den Standardzeitplan ändern, um weitere Momentaufnahmen zu erstellen.
+Falls Sie den Zeitplan aber so ändern, dass auf dem Volume eine Momentaufnahme verfügbar ist, die älter als die Anzahl von Kompatibilitätstagen ist, können Benutzer diese ältere Momentaufnahme (vorherige Version) nicht für die Wiederherstellung verwenden.
+
+> [!Note]
+> Die Aktivierung der Self-Service-Wiederherstellung kann sich auf den Verbrauch und die Kosten Ihres Azure-Speichers auswirken. Diese Auswirkung ist auf Dateien beschränkt, die derzeit auf dem Server ausgelagert sind. Durch die Aktivierung dieses Features wird sichergestellt, dass in der Cloud eine Dateiversion verfügbar ist, auf die über einen „Vorherige Versionen“-Eintrag (VSS-Momentaufnahme) verwiesen werden kann.
+>
+> Wenn Sie das Feature deaktivieren, nimmt der Verbrauch von Azure-Speicher langsam ab, bis das Zeitfenster der Kompatibilitätstage verstrichen ist. Es gibt keine Möglichkeit, diesen Vorgang zu beschleunigen. 
+
+Die maximale Standardanzahl von VSS-Momentaufnahmen pro Volume (64) sowie der Standardzeitplan für deren Erstellung führt zu einem maximalen Zeitraum von 45 Tagen mit vorherigen Versionen, für die ein Information-Worker die Wiederherstellung durchführen kann. Dies hängt davon ab, wie viele VSS-Momentaufnahmen Sie auf Ihrem Volume speichern können.
+
+Falls die maximale Anzahl von 64 VSS-Momentaufnahmen pro Volume für Sie keine geeignete Einstellung ist, können Sie [diesen Wert über einen Registrierungsschlüssel ändern](https://docs.microsoft.com/windows/win32/backup/registry-keys-for-backup-and-restore#maxshadowcopies).
+Damit der neue Grenzwert wirksam wird, müssen Sie das Cmdlet erneut ausführen, um die Kompatibilität mit vorherigen Versionen auf jedem Volume, auf dem diese zuvor aktiviert waren, zu ermöglichen. Hierbei verwenden Sie das „-Force“-Flag, um die neue maximale Anzahl von VSS-Momentaufnahmen pro Volume zu berücksichtigen. Dies ergibt eine neu berechnete Anzahl von Kompatibilitätstagen. Beachten Sie Folgendes: Diese Änderung wird nur für neue Dateien wirksam, die per Tiering ausgelagert werden, und es werden alle Anpassungen des VSS-Zeitplans außer Kraft gesetzt, die Sie ggf. vorgenommen haben.
 
 ## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrieren einer DFS-R-Bereitstellung (DFS-Replikation) zur Azure-Dateisynchronisierung
 So migrieren eine DFS-R-Bereitstellung zur Azure-Dateisynchronisierung

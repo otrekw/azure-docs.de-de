@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 8f24b94226daffb769993c9f6659909fdff039b6
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014983"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534130"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Erstellen einer Routingtabelle für den Virtual WAN-Hub für virtuelle Netzwerkgeräte: Azure-Portal
 
-In diesem Artikel wird veranschaulicht, wie Sie Datenverkehr von einem Hub zu einem virtuellen Netzwerkgerät steuern.
+In diesem Artikel erfahren Sie, wie Sie Datenverkehr von einer Niederlassung (lokaler Standort) steuern, die über ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) und den Virtual WAN-Hub mit einem Spoke-VNET verbunden ist.
 
 ![Virtual WAN-Diagramm](./media/virtual-wan-route-table/vwanroute.png)
 
@@ -31,7 +31,7 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 
     * Das virtuelle Netzwerkgerät wird nicht im virtuellen Hub bereitgestellt. Es muss in einem gesonderten VNET bereitgestellt werden.
 
-    *  Mit dem VNET des virtuellen Netzwerkgeräts kann mindestens ein virtuelles Netzwerk verbunden sein. In diesem Artikel wird dieses VNET als „Indirektes Spoke-VNET“ bezeichnet. Diese VNETs können mithilfe von VNET-Peering mit dem VNET des virtuellen Netzwerkgeräts verbunden werden.
+    *  Mit dem VNET des virtuellen Netzwerkgeräts kann mindestens ein virtuelles Netzwerk verbunden sein. In diesem Artikel wird dieses VNET als „Indirektes Spoke-VNET“ bezeichnet. Diese VNETs können mithilfe von VNET-Peering mit dem VNET des virtuellen Netzwerkgeräts verbunden werden. Die VNET-Peeringlinks sind in der Abbildung oben als schwarze Pfeile zwischen VNET 1, VNET 2 und NVA-VNET dargestellt.
 *  Sie haben 2 VNETs erstellt. Diese werden als Spoke-VNETs verwendet.
 
     * In diesem Artikel sind die VNET-Spoke-Adressräume wie folgt: VNet1: 10.0.2.0/24 und VNET2: 10.0.3.0/24. Informationen zum Erstellen eines VNET finden Sie unter [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md).
@@ -79,7 +79,7 @@ Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Für diese Übu
 
 ## <a name="connections"></a>5. Herstellen der VNET-Verbindungen
 
-Stellen Sie eine Verbindung zwischen jedem indirekten Spoke-VNET (VNET1 und VNET2) und dem Hub her. Richten Sie dann eine Verbindung zwischen dem VNET des virtuellen Netzwerkgeräts und dem Hub ein.
+Stellen Sie eine VNET-Verbindung zwischen jedem indirekten Spoke-VNET (VNET1 und VNET2) und dem Hub her. Die VNET-Verbindungen sind in der Abbildung oben durch blaue Pfeile dargestellt. Erstellen Sie anschließend eine VNET-Verbindung vom NVA-VNET zum Hub (schwarzer Pfeil in der Abbildung). 
 
  Für diesen Schritt können Sie die folgenden Werte verwenden:
 

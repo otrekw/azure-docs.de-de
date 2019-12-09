@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: b034bad8661e93cbf5797c93739f1db3a64626f0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ad0e3bbba729436c3a07f44d989a40f5349dfb3e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748913"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326363"
 ---
 # <a name="azure-disk-encryption-sample-scripts"></a>Azure Disk Encryption-Beispielskripts 
 
@@ -319,7 +319,8 @@ Konfigurieren Sie die Verschlüsselung für Azure, indem Sie die folgenden Schri
 
 6. Nun können Sie die Bereitstellung der VM aufheben und Ihre VHD in Azure hochladen.
 
-### <a name="centos-7"></a>CentOS 7:
+### <a name="centos-7-and-rhel-81"></a>CentOS 7 und RHEL 8.1
+
 Konfigurieren Sie die Verschlüsselung während der Installation einer Distribution, indem Sie diese Schritte ausführen:
 1. Wählen Sie beim Partitionieren von Datenträgern die Option **Encrypt my data** (Daten verschlüsseln).
 

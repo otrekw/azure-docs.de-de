@@ -1,22 +1,22 @@
 ---
-title: Problembehandlung von Fehlercodes für die NPS-Erweiterung für Azure MFA – Azure Active Directory
+title: Problembehandlung der NPS-Erweiterung für Azure MFA – Azure Active Directory
 description: Hilfe zum Auflösen von Problemen mit der NPS-Erweiterung für Azure Multi-Factor Authentication
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0d04db6e9ccedc1e67ed0cdfd914ab42ebea0b1
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 1ead9e5785297c9569d23573d4dd7f5f29354717
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67536942"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381807"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 

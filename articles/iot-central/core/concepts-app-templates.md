@@ -7,16 +7,16 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: eb7319d665f228c552423a60a3b1529dc9b1143f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: af1870ecc9714eceaf69f2892537e59f068c6a70
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73583226"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480325"
 ---
 # <a name="what-are-application-templates"></a>Was sind Anwendungsvorlagen?
 
-Anwendungsvorlagen in Azure IoT Central sind ein Tool, das Lösungsentwickler beim Einstieg in die IoT-Lösungsentwicklung unterstützt. Sie können App-Vorlagen zu vielen Zwecken verwenden, um einen Überblick zu gewinnen über das, was möglich ist, bis zur vollständigen Anpassung Ihrer Anwendung und deren Herausgabe als White-Label-Produkt für den Verkauf an Ihre Kunden.
+Anwendungsvorlagen in Azure IoT Central sind ein Tool, das Lösungsentwickler beim Einstieg in die IoT-Lösungsentwicklung unterstützt. Sie können App-Vorlagen zu vielen Zwecken verwenden – vom Gewinnen einer Übersicht über die Möglichkeiten bis hin zur vollständigen Anpassung der Anwendung für den Verkauf an Ihre Kunden.
 
 Anwendungsvorlagen bestehen aus:
 
@@ -26,7 +26,35 @@ Anwendungsvorlagen bestehen aus:
 - Vorkonfigurierten Regeln und Aufträgen
 - Umfassender Dokumentation einschließlich Tutorials und Anleitungen
 
-## <a name="industry-focused-app-templates"></a>Branchenorientierten App-Vorlagen
+## <a name="preview-templates"></a>Vorschauvorlagen
+
+Durch die Auswahl der Anwendungsvorlage ist vorgegeben, ob in Ihrer Anwendung IoT Central-Previewfunktionen wie Plug & Play für Geräte verwendet werden.
+
+Derzeit werden in folgenden Anwendungsvorlagen _allgemein verfügbare_ Funktionen verwendet:
+
+- Benutzerdefinierte App > Benutzerdefinierte Anwendung
+- Benutzerdefinierte App > Contoso-Beispiel
+- Benutzerdefinierte App > Beispiel-Devkits
+
+Aktuell werden in folgenden Anwendungsvorlagen _Public Preview_-Funktionen verwendet:
+
+- Benutzerdefinierte App > Vorschauanwendung
+- Retail > Vernetzte Logistik
+- Retail > Digitales Verteilzentrum
+- Retail > In-Store-Analyse – Bedingungsüberwachung
+- Retail > In-Store-Analyse – Auschecken
+- Retail > Intelligente Bestandsverwaltung
+- Energieversorgung > Intelligente Messgerätüberwachung
+- Energieversorgung > Überwachung von Solarpaneln
+- Behörden > Vernetzte Abfallwirtschaft
+- Behörden > Überwachung des Wasserverbrauchs
+- Behörden > Überwachung der Wasserqualität
+- Gesundheitswesen > Fortlaufende Patientenüberwachung
+
+> [!NOTE]
+> Die Vorlagen **Benutzerdefinierte Anwendung, Contoso-Beispiel, Beispiel-Devkits** sind derzeit in den Standorten **USA**, **Australien**, **Asien-Pazifik** und **Europa** verfügbar, andere Vorlagen sind dagegen aktuell nur in den Standorten **Europa** und **USA** verfügbar.
+
+## <a name="industry-focused-templates"></a>Branchenorientierten Vorlagen
 
 Azure IoT Central ist eine branchenunabhängige Anwendungsplattform. Anwendungsvorlagen sind branchenspezifische Beispiele, die heute für diese Branchen verfügbar sind, und für die Zukunft ist noch mehr zu erwarten:
 
@@ -48,4 +76,4 @@ Azure IoT Central ist eine branchenunabhängige Anwendungsplattform. Anwendungsv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Da Sie nun wissen, was IoT Central-Anwendungsvorlagen sind, beginnen Sie mit dem [Erstellen einer IoT Central-Anwendung](quick-deploy-iot-central-pnp.md).
+Da Sie nun wissen, was IoT Central-Anwendungsvorlagen sind, beginnen Sie mit dem [Erstellen einer IoT Central-Anwendung](quick-deploy-iot-central.md).

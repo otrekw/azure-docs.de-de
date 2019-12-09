@@ -1,17 +1,17 @@
 ---
 title: Azure CLI-Beispiele – Azure SignalR-Dienst
-description: Azure CLI-Beispiele – Azure SignalR-Dienst
+description: Folgen Sie echten Beispielen, um die Azure CLI für Azure SignalR Service zu lernen. Sie erfahren, wie Sie SignalR Service mit weiteren Azure-Diensten erstellen können.
 author: sffamily
 ms.service: signalr
 ms.topic: reference
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 1fbe96d827bcf6bb39a6cf7a4e6811174b862d59
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3c28781362e60d22b0d9a4e3754daaa24e5b61ee
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61071075"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158129"
 ---
 # <a name="azure-cli-reference"></a>Azure CLI-Referenz
 

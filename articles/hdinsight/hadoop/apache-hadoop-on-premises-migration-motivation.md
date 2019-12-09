@@ -2,18 +2,18 @@
 title: 'Vorteile: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight'
 description: Erfahren Sie mehr über die Motivation und Vorteile einer Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494943"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267328"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Motivation und Vorteile
 
@@ -45,7 +45,7 @@ Azure HDInsight ist eine Clouddistribution von Hadoop-Komponenten. Azure HDInsig
 
 - **Sicher und konform**: Mit HDInsight können Sie die Datenressourcen Ihres Unternehmens durch die Verwendung von  [Azure Virtual Network](../hdinsight-plan-virtual-network-deployment.md),  [Verschlüsselung](../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) und Integration von  [Azure Active Directory](../domain-joined/hdinsight-security-overview.md) schützen. Darüber hinaus erfüllt HDInsight die gängigsten branchen- und behördenspezifischen  [Compliancestandards](https://azure.microsoft.com/overview/trusted-cloud).
 
-- **Vereinfachte Versionsverwaltung**: Azure HDInsight verwaltet die Versionen von Komponenten des Hadoop-Ökosystems und hält sie auf dem neuesten Stand. Bei lokalen Bereitstellungen stellen Softwareupdates in der Regel ein komplexes Verfahren dar.
+- **Vereinfachte Versionsverwaltung:** Azure HDInsight verwaltet die Versionen von Komponenten des Hadoop-Ökosystems und hält sie auf dem neuesten Stand. Bei lokalen Bereitstellungen stellen Softwareupdates in der Regel ein komplexes Verfahren dar.
 
 - **Kleinere Cluster, die für bestimmte Workloads mit weniger Abhängigkeiten zwischen Komponenten optimiert sind**: Bei einer üblichen lokalen Hadoop-Einrichtung wird ein einzelner Cluster verwendet, der vielen Zwecken dient. Mit Azure HDInsight können workloadspezifische Cluster erstellt werden. Durch das Erstellen von Clustern für bestimmte Workloads erübrigt sich die komplexe Verwaltung eines einzelnen Clusters mit wachsender Komplexität.
 

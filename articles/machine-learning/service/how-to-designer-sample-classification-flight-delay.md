@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Klassifizieren, Vorhersage von Flugverspätungen'
+title: 'Designer: Beispiel für die Vorhersage von Flugverspätungen'
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel wird veranschaulicht, wie Sie ein Machine Learning-Modell für die Vorhersage von Flugverspätungen mit dem Drag & Drop-Designer und benutzerdefiniertem R-Code erstellen.
+description: Erstellen Sie einen Klassifizierer, und verwenden Sie benutzerdefinierten R-Code, um Flugverspätungen mithilfe eines Azure Machine Learning-Designers vorherzusagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,21 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 10b3b78b4878eeddf2f786fda90ab9709e4bd2b4
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 23b763a69fc0ea3191150c6255cf358d69bc4b73
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647197"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213955"
 ---
-# <a name="sample-6---classification-predict-flight-delays-using-r"></a>Beispiel 6 – Klassifizierung: Vorhersage von Flugverspätungen mit R-Code
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Erstellen Sie einen Klassifizierer, und verwenden Sie R, um Flugverspätungen mithilfe eines Azure Machine Learning-Designers vorherzusagen.
+
+**Designer (Vorschauversion) – Beispiel 6**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Diese Pipeline verwendet historische Flug- und Wetterdaten, um vorherzusagen, ob sich ein Linienflug um mehr als 15 Minuten verspäten wird. Dieses Problem kann als Klassifizierungsproblem angegangen werden, indem zwei Klassen vorhergesagt werden: verzögert oder pünktlich.
 
 So sieht der endgültige Graph der Pipeline für dieses Beispiel aus:
 
-[![Graph der Pipeline](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph der Pipeline](media/how-to-designer-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,13 +55,13 @@ Zur Ergänzung der Flugdaten wurde das **Dataset „Weather“** verwendet. Die 
 
 Datasets müssen vor der Analyse normalerweise vorverarbeitet werden.
 
-![Datenverarbeitung](media/how-to-ui-sample-classification-predict-flight-delay/data-process.png)
+![Datenverarbeitung](media/how-to-designer-sample-classification-predict-flight-delay/data-process.png)
 
 ### <a name="flight-data"></a>Flugdaten
 
 Die Spalten**Carrier**, **OriginAirportID** und **DestAirportID** werden als ganze Zahlen gespeichert. Allerdings sind sie kategorische Attribute. Verwenden Sie das Modul **Edit Metadata**, um sie in kategorische Werte umzuwandeln.
 
-![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-designer-sample-classification-predict-flight-delay/edit-metadata.png)
 
 Verwenden Sie dann das Modul **Select Columns** im Dataset, um aus dem Dataset Spalten auszuschließen, die mögliche Zielleaker sind: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **Year**. 
 
@@ -78,18 +81,18 @@ Da die Wetterdaten in der Ortszeit angegeben sind, werden Zeitzonenunterschiede 
 
 Die Flugdatensätze werden mit den Wetterdaten am Ausgangspunkt des Fluges (**OriginAirportID**) über das Modul **Join Data** verknüpft.
 
- ![Verknüpfen von Flug- und Wetterdaten nach Ursprung](media/how-to-ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![Verknüpfen von Flug- und Wetterdaten nach Ursprung](media/how-to-designer-sample-classification-predict-flight-delay/join-origin.png)
 
 
 Flugdatensätze werden mit Wetterdaten anhand des Flugziels verknüpft (**DestAirportID**).
 
- ![Verknüpfen von Flug- und Wetterdaten nach Ziel](media/how-to-ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![Verknüpfen von Flug- und Wetterdaten nach Ziel](media/how-to-designer-sample-classification-predict-flight-delay/join-destination.png)
 
 ### <a name="preparing-training-and-test-samples"></a>Vorbereiten der Trainings- und Testbeispiele
 
 Das Modul **Split Data** trennt die Daten in die Datensätze von April bis September für das Training und von Oktober für den Test.
 
- ![Trennen von Trainings- und Testdaten](media/how-to-ui-sample-classification-predict-flight-delay/split.png)
+ ![Trennen von Trainings- und Testdaten](media/how-to-designer-sample-classification-predict-flight-delay/split.png)
 
 Die Spalten „Year“, „Month“ und „Timezone“ werden anhand des Moduls „Select Columns“ aus dem Trainingsdataset entfernt.
 
@@ -111,7 +114,7 @@ Um schließlich die Qualität der Ergebnisse zu überprüfen, ziehen Sie das Mod
 ## <a name="evaluate"></a>Evaluate
 Das logistische Regressionsmodell verwendet für den Testsatz einen AUC-Wert von 0.631.
 
- ![Evaluieren](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
+ ![Evaluieren](media/how-to-designer-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

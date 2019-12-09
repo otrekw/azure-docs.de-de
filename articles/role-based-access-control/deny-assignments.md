@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165980"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479361"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
 
@@ -30,7 +30,10 @@ In diesem Artikel wird die Definition von Ablehnungszuweisungen beschrieben.
 
 ## <a name="how-deny-assignments-are-created"></a>Wie werden Ablehnungszuweisungen erstellt?
 
-Ablehnungszuweisungen werden von Azure erstellt und verwaltet, um Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps verwenden Ablehnungszuweisungen beispielsweise, um systemseitig verwaltete Ressourcen zu schützen. Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+Ablehnungszuweisungen werden von Azure erstellt und verwaltet, um Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps verwenden Ablehnungszuweisungen, um systemseitig verwaltete Ressourcen zu schützen. Azure Blueprints und von Azure verwaltete Apps stellen die einzige Möglichkeit dar, Ablehnungszuweisungen zu erstellen. Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen.  Weitere Informationen finden Sie unter [Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren](../governance/blueprints/tutorials/protect-new-resources.md).
+
+> [!NOTE]
+> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen.
 
 ## <a name="compare-role-assignments-and-deny-assignments"></a>Vergleich zwischen Rollenzuweisungen und Ablehnungszuweisungen
 
@@ -53,13 +56,13 @@ Ablehnungszuweisungen folgen einem ähnlichen Muster wie Rollenzuweisungen, weis
 > [!div class="mx-tableFixed"]
 > | Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Ja | string | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
-> | `Description` | Nein | string | Die Beschreibung der Ablehnungszuweisung. |
+> | `DenyAssignmentName` | Ja | Zeichenfolge | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
+> | `Description` | Nein | Zeichenfolge | Die Beschreibung der Ablehnungszuweisung. |
 > | `Permissions.Actions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
 > | `Permissions.DataActions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotDataActions` | Nein | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
-> | `Scope` | Nein | string | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
+> | `Scope` | Nein | Zeichenfolge | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
 > | `DoNotApplyToChildScopes` | Nein | Boolean | Gibt an, ob die Ablehnungszuweisung für untergeordnete Bereiche gilt. Der Standardwert ist „false“. |
 > | `Principals[i].Id` | Ja | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung gilt. Die Festlegung einer leeren GUID `00000000-0000-0000-0000-000000000000` repräsentiert alle Prinzipale. |
 > | `Principals[i].Type` | Nein | String[] | Ein Array von Objekttypen, das durch „Principals[i].Id“ dargestellt wird. Eine leere GUID `SystemDefined` repräsentiert alle Prinzipale. |

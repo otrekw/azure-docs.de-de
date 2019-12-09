@@ -14,22 +14,23 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 8/20/2019
 ms.author: alsin
-ms.openlocfilehash: e4596ae2f92e5dfd99dc7c83857e0c9874358fd4
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 7bd9fe4044dace4061285c016cb08562b556b98e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949703"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483586"
 ---
 # <a name="common-errors-within-the-azure-serial-console"></a>Häufige Fehler in der seriellen Azure-Konsole
 In der seriellen Azure-Konsole können mehrere bekannte Fehler auftreten. Diese Fehler und die jeweils entsprechenden Lösungsschritte sind nachfolgend aufgeführt.
 
 ## <a name="common-errors"></a>Häufige Fehler
 
-Error                            |   Lösung
+Error                             |   Lösung
 :---------------------------------|:--------------------------------------------|
-Die Startdiagnoseeinstellungen für *&lt;VMNAME&gt;* können nicht abgerufen werden. Damit Sie die serielle Konsole verwenden können, stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist. ![Startdiagnosefehler](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | Stellen Sie sicher, dass die [Startdiagnose](boot-diagnostics.md) für den virtuellen Computer oder die VM-Skalierungsgruppe aktiviert ist. Wenn Sie die serielle Konsole in einer VM-Skalierungsgruppeninstanz verwenden, vergewissern Sie sich, dass für die Instanz das neueste Modell verwendet wird.
-Der virtuelle Computer befindet sich in einem beendeten Zustand mit aufgehobener Zuordnung. Starten Sie den virtuellen Computer neu, und wiederholen Sie die Verbindung mit der seriellen Konsole. ![Fehler bei der Aufhebung der Zuordnung](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | Der virtuelle Computer oder die VM-Skalierungsgruppeninstanz muss den Status „Gestartet“ aufweisen, um auf die serielle Konsole zugreifen zu können. Starten Sie den virtuellen Computer oder die VM-Skalierungsgruppeninstanz, und wiederholen Sie den Vorgang.
+„Für die serielle Azure-Konsole muss die Startdiagnose aktiviert sein. Klicken Sie hier, um die Startdiagnose für Ihren virtuellen Computer zu konfigurieren.“ ![Startdiagnosefehler](./media/virtual-machines-serial-console/virtual-machines-serial-console-boot-diagnostics-error.png) | Stellen Sie sicher, dass die [Startdiagnose](boot-diagnostics.md) für den virtuellen Computer oder die VM-Skalierungsgruppe aktiviert ist. Wenn Sie die serielle Konsole in einer VM-Skalierungsgruppeninstanz verwenden, vergewissern Sie sich, dass für die Instanz das neueste Modell verwendet wird.
+„Für die serielle Azure-Konsole muss ein virtueller Computer ausgeführt werden. Verwenden Sie die Schaltfläche ‚Start‘ oben, um Ihren virtuellen Computer zu starten.“ ![Fehler bei der Aufhebung der Zuordnung](./media/virtual-machines-serial-console/virtual-machines-serial-console-deallocating-error.png) | Der virtuelle Computer oder die VM-Skalierungsgruppeninstanz muss den Status „Gestartet“ aufweisen, um auf die serielle Konsole zugreifen zu können. (Der virtuelle Computer darf weder beendet noch freigegeben sein.) Stellen Sie sicher, dass der virtuelle Computer oder die VM-Skalierungsgruppeninstanz ausgeführt wird, und wiederholen Sie den Vorgang.
+„Die serielle Azure-Konsole ist für dieses Abonnement nicht aktiviert. Wenden Sie sich an Ihren Abonnementadministrator, um sie zu aktivieren.“ ![Fehler wegen Deaktivierung auf Abonnementebene](./media/virtual-machines-serial-console/virtual-machines-serial-console-subscription-disabled-error.png) | Die serielle Azure-Konsole kann auf Abonnementebene deaktiviert werden. Als Abonnementadministrator können Sie [die serielle Azure-Konsole aktivieren und deaktivieren](./serial-console-enable-disable.md). Wenn Sie kein Abonnementadministrator sind, wenden Sie sich für die nächsten Schritte an Ihren Abonnementadministrator.
 Beim Zugriff auf das Speicherkonto für die Startdiagnose dieses virtuellen Computers wurde eine „Forbidden“-Antwort empfangen. ![Fehler bei der Speicherkontofirewall](./media/virtual-machines-serial-console/virtual-machines-serial-console-firewall-error.png)| Stellen Sie sicher, dass die Startdiagnose nicht über eine Kontofirewall verfügt. Damit die serielle Konsole funktioniert, ist Zugriff auf ein Startdiagnose-Speicherkonto erforderlich. Die serielle Konsole kann programmbedingt nicht verwendet werden, wenn für das Speicherkonto mit Startdiagnose Speicherkontofirewalls aktiviert sind.
 Sie verfügen nicht über die erforderlichen Berechtigungen, um diese VM mit der seriellen Konsole zu verwenden. Achten Sie darauf, dass Sie mindestens über die Berechtigungen der Rolle „Mitwirkender für virtuelle Computer“ verfügen.| Für den Zugriff auf die serielle Konsole müssen Sie über Berechtigungen auf der Zugriffsebene „Mitwirkender“ oder höher für den virtuellen Computer oder die VM-Skalierungsgruppe verfügen. Weitere Informationen finden Sie auf der Seite mit der [Übersicht](serial-console-overview.md).
 Das Speicherkonto „{0}“ für die Startdiagnose auf dieser VM wurde nicht gefunden. Stellen Sie sicher, dass die Startdiagnose für diesen virtuellen Computer aktiviert ist, dass dieses Speicherkonto nicht gelöscht wurde und dass Sie Zugriff auf dieses Speicherkonto haben. | Vergewissern Sie sich, dass Sie das Startdiagnose-Speicherkonto für den virtuellen Computer oder die VM-Skalierungsgruppe nicht gelöscht haben.

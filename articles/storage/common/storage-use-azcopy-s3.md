@@ -1,5 +1,5 @@
 ---
-title: Übertragen von Daten in Azure Storage aus Amazon S3-Buckets mit AzCopy v10 | Microsoft-Dokumentation
+title: Kopieren von Daten aus Amazon S3 in Azure Storage mithilfe von AzCopy | Microsoft-Dokumentation
 description: Übertragen von Daten mit AzCopy und Amazon S3-Buckets
 services: storage
 author: normesta
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: b984d194c75924451a52250490b1a5590b996974
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821386"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327861"
 ---
-# <a name="copy-data-from-amazon-s3-buckets-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3-Buckets mit AzCopy
+# <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Kopieren von Daten aus Amazon S3 in Azure Storage mithilfe von AzCopy
 
 AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs oder Dateien in oder aus einem Speicherkonto zu kopieren. Dieser Artikel enthält Informationen zum Kopieren von Objekten, Verzeichnissen und Buckets aus Amazon Web Services (AWS) S3 in Azure Blob Storage mit AzCopy.
 

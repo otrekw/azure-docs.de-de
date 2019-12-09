@@ -1,23 +1,17 @@
 ---
-title: Konfigurieren des Azure Active Directory-Zugriffs
-description: Konfigurieren des Azure Blockchain-Diensts mit Azure Active Directory-Zugriff
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: seal
-ms.date: 05/02/2019
+title: 'Azure Blockchain Service: Konfigurieren des Azure Active Directory-Zugriffs'
+description: Konfigurieren des Azure Blockchain Service mit Azure Active Directory-Zugriff
+ms.date: 11/22/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 616e342f1d52179c40c225c5dafc9de13ce85e06
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: janders
+ms.openlocfilehash: 682ab282036fcd592e66942d08a84cdce46d8915
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027658"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455845"
 ---
-# <a name="how-to-configure-azure-active-directory-access"></a>Konfigurieren des Azure Active Directory-Zugriffs
+# <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Konfigurieren des Azure Active Directory-Zugriffs für Azure Blockchain Service
 
 In diesem Artikel erfahren Sie, wie Sie mit Hilfe von Azure Active Directory (Azure AD) Benutzer-, Gruppen- oder Anwendungs-IDs Zugriff gewähren und eine Verbindung zu Azure Blockchain-Dienstknoten herstellen.
 
@@ -41,7 +35,7 @@ So gewähren Sie Zugriff auf Mitgliederebene.
 
     | Ein Azure AD-Objekt | Beispiel |
     |-----------------|---------|
-    | Ein Azure AD-Benutzer   | `frank@contoso.onmicrosoft.com` |
+    | Ein Azure AD-Benutzer   | `kim@contoso.onmicrosoft.com` |
     | Eine Azure AD-Gruppe  | `sales@contoso.onmicrosoft.com` |
     | Anwendungs-ID  | `13925ab1-4161-4534-8d18-812f5ca1ab1e` |
 
@@ -51,8 +45,11 @@ So gewähren Sie Zugriff auf Mitgliederebene.
 
 ### <a name="grant-node-level-access"></a>Gewähren von Knotenzugriff
 
-1. Sie können den Zugriff auf Knotenebene gewähren, indem Sie zur Knotensicherheit navigieren und auf den Knotennamen klicken, auf en Sie den Zugriff gewähren möchten.
-1. Wählen Sie die Rolle „Knotenzugriff für Blockchainmitglied (Vorschauversion)“ aus, und fügen Sie das Azure AD-ID-Objekt hinzu, auf das Sie Zugriff gewähren möchten. 
+Sie können den Zugriff auf Knotenebene gewähren, indem Sie zur Knotensicherheit navigieren und auf den Knotennamen klicken, auf en Sie den Zugriff gewähren möchten.
+
+Wählen Sie die Rolle „Knotenzugriff für Blockchainmitglied (Vorschauversion)“ aus, und fügen Sie das Azure AD-ID-Objekt hinzu, auf das Sie Zugriff gewähren möchten.
+
+Weitere Informationen finden Sie unter [Konfigurieren von Azure Blockchain Service-Transaktionsknoten](configure-transaction-nodes.md#azure-active-directory-access-control).
 
 ## <a name="connect-using-azure-blockchain-connector"></a>Herstellen einer Verbindung mit dem Azure Blockchain-Connector
 
@@ -110,7 +107,4 @@ connector.exe -remote <myBlockchainEndpoint>  -method aaddevice -tenant-id <myAA
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Datensicherheit im Azure Blockchain-Dienst finden Sie unter:
-
-> [!div class="nextstepaction"]
-> [Azure Blockchain-Dienstsicherheit](data-security.md)
+Weitere Informationen zur Datensicherheit in Azure Blockchain Service finden Sie unter [Sicherheit in Azure Blockchain Service](data-security.md).

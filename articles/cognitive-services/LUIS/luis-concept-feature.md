@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647415"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280910"
 ---
 # <a name="machine-learned-features"></a>Durch maschinelles Lernen erworbene Features 
 
-Beim maschinellen Lernen ist ein *Feature* ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht oder durch die es lernt. In Language Understanding (LUIS) beschreibt und erläutert ein Feature, was an Ihren Absichten und Entitäten wichtig ist.
+Beim maschinellen Lernen ist ein _Feature_ ein eindeutiges Merkmal oder Attribut der Daten, die Ihr System untersucht oder durch die es lernt. In Language Understanding (LUIS) beschreibt und erläutert ein Feature, was an Ihren Absichten und Entitäten wichtig ist.
 
 Im [LUIS-Vorschauportal](https://preview.luis.ai) handelt es sich bei Features um _Deskriptoren_, da sie zum _Beschreiben_ der Absicht oder Entität verwendet werden.  
 
@@ -57,7 +57,7 @@ Das `enabledForAllModels`-Flag steuert diesen Modellbereich in der API.
 
 ### <a name="how-to-use-a-phrase-list"></a>Verwenden von Ausdruckslisten
 
-[Erstellen Sie eine Ausdrucksliste](luis-how-to-add-features.md), wenn Ihre Absicht oder Entität wichtige Wörter oder Ausdrücke enthält, wie etwa:
+[Erstellen Sie eine Begriffsliste](luis-how-to-add-features.md), wenn Ihre Absicht oder Entität wichtige Wörter oder Ausdrücke enthält, wie etwa:
 
 * Branchenbegriffe
 * Jargon
@@ -82,7 +82,7 @@ Wenn die Absicht beispielsweise das Buchen eines Fluges und die Entität die Tic
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>Entität als Feature einer anderen Entität
 
-Eine Entität (A) sollte einer anderen Entität (B) als Feature hinzugefügt werden, wenn die Erkennung dieser Entität (A) für (B) wichtig ist.
+Eine Entität (A) sollte einer anderen Entität (B) als Feature hinzugefügt werden, wenn die Erkennung dieser Entität (A) für die Vorhersage von Entität (B) wichtig ist.
 
 Wenn beispielsweise die Straßenanschriftsentität (A) erkannt wird, dann verleiht das Auffinden der Straßenanschrift (A) der Vorhersage für die Versandadressentität (B) zusätzliches Gewicht. 
 

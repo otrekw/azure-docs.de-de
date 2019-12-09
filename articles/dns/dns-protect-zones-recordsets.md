@@ -1,18 +1,18 @@
 ---
-title: Schützen von Azure DNS-Zonen und -Einträgen
-description: So schützen Sie DNS-Zonen und -Ressourceneintragsätze in Microsoft Azure DNS
+title: 'Azure DNS: Schützen von Azure DNS-Zonen und -Einträgen'
+description: In diesem Lernpfad erhalten Sie eine Einführung in den Schutz von DNS-Zonen und Datensätzen in Microsoft Azure DNS.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
-ms.author: victorh
-ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66121446"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211447"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>So schützen Sie DNS-Zonen und -Ressourceneintragssätze
 

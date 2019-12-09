@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012014"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280853"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Verbessern der Vorhersagegenauigkeit mit Mustern
 Muster werden entworfen, um die Genauigkeit zu erhöhen, wenn mehrere Äußerungen sehr ähnlich sind.  Ein Muster ermöglicht es Ihnen, größere Genauigkeit für eine Absicht zu erreichen, ohne viele weitere Äußerungen anzugeben. 
@@ -45,7 +45,7 @@ Muster verwenden eine Kombination von Vorhersagetechnologien. Das Festlegen eine
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Muster verbessern nicht die Erkennung von Entitäten, die mit Machine Learning trainiert wurden
 
-Ein Muster ist in erster Linie zur Unterstützung der Vorhersage bei Absichten und Rollen vorgesehen. Die Entität „pattern.any“ wird zum Extrahieren von Freiformentitäten verwendet. Zwar verwenden Muster Entitäten, ein Muster hilft jedoch nicht beim Erkennen einer mit Machine Learning trainierten Entität.  
+Ein Muster ist in erster Linie zur Unterstützung der Vorhersage bei Absichten und Rollen vorgesehen. Die Entität _pattern.any_ wird zum Extrahieren von Freiformentitäten verwendet. Zwar verwenden Muster Entitäten, ein Muster hilft jedoch nicht beim Erkennen einer mit Machine Learning trainierten Entität.  
 
 Erwarten Sie keine verbesserte Vorhersage von Entitäten, wenn Sie mehrere Äußerungen in einem einzelnen Muster zusammenfassen. Damit einfache Entitäten ausgelöst werden, müssen Sie Äußerungen hinzufügen oder Listenentitäten verwenden, da Ihr Muster andernfalls nicht ausgelöst wird.
 

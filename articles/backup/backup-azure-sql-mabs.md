@@ -1,19 +1,14 @@
 ---
-title: Azure Backup für SQL Server-Workloads mit Azure Backup Server
+title: Sichern von SQL Server mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie mehr über die Konfigurationsschritte für die Sicherung von SQL Server-Datenbanken mithilfe von Microsoft Azure Backup Server (MABS).
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: dacurwin
-ms.openlocfilehash: bd16cefff66c727ad9de6331a311796cf9521192
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: d5e0c49e2cad77e42960fafec9311b31d4cf2601
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091044"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172662"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Sichern von SQL Server in Azure mit Azure Backup Server
 

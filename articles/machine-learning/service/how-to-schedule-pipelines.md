@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: laobri
 author: lobrien
-ms.date: 10/15/2019
-ms.openlocfilehash: 31c3cd944651b9ba4ca4fcaa275e5b0ccedd947c
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.date: 11/12/2019
+ms.openlocfilehash: 76e489f76d29f5fa0b68a743a302668a285a5d90
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72559404"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406532"
 ---
 # <a name="schedule-machine-learning-pipelines-with-azure-machine-learning-sdk-for-python"></a>Planen von Machine Learning-Pipelines mit dem Azure Machine Learning-SDK für Python
 
@@ -94,9 +94,9 @@ Neben den zuvor beschriebenen Argumenten können Sie das `status`-Argument auf `
 
 ## <a name="view-your-scheduled-pipelines"></a>Anzeigen der geplanten Pipelines
 
-Navigieren Sie in Ihrem Webbrowser zum Arbeitsbereich des Machine Learning Service. Wählen Sie im Navigationsbereich im Bereich **Ressourcen** den Eintrag **Pipelines** aus. Über diesen Link gelangen Sie zu einer Liste der im Arbeitsbereich veröffentlichten Pipelines.
+Navigieren Sie in Ihrem Webbrowser zu Azure Machine Learning. Wählen Sie im Navigationsbereich im Bereich **Endpunkte** den Eintrag **Pipelineendpunkte** aus. Dadurch gelangen Sie zu einer Liste der im Arbeitsbereich veröffentlichten Pipelines.
 
-![Seite „Pipelines“ im Arbeitsbereich](media/how-to-schedule-a-pipeline/pipelines-list.png)
+![Seite „Pipelines“ in AML](media/how-to-schedule-pipelines/scheduled-pipelines.png)
 
 Auf dieser Seite können Sie Übersichtsinformationen wie Name, Beschreibung, Status usw. zu allen Pipelines im Arbeitsbereich anzeigen. Durch Klicken auf eine Pipeline erhalten Sie ausführlichere Informationen. Auf der Seite, die dann geöffnet wird, finden Sie weitere Details zu Ihrer Pipeline und können einzelne Ausführungen genauer betrachten.
 

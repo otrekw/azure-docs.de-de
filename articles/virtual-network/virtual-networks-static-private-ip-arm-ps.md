@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse – Azure PowerShell | Microsoft-Dokumentation
+title: 'Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse: Azure PowerShell'
 description: Erfahren Sie, wie Sie mithilfe von PowerShell einen virtuellen Computer mit einer statischen privaten IP-Adresse erstellen.
 services: virtual-network
 documentationcenter: na
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9115386b0543e1ac840aec29fc7f57e7c98c03bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685332"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196595"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe von PowerShell
 

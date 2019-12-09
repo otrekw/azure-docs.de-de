@@ -1,5 +1,5 @@
 ---
-title: Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts | Microsoft-Dokumentation
+title: Bekannte Probleme bei der Einhaltung des SCIM 2.0-Protokolls – Azure AD
 description: Erfahren Sie, wie Sie häufige Kompatibilitätsprobleme mit dem Protokoll beim Hinzufügen einer Anwendung, die nicht aus dem Katalog stammt und die SCIM 2.0 unterstützt, in Azure AD beheben.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963180"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275812"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -66,7 +66,7 @@ Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden 
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Abrufen von Aufträgen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Abrufen von Aufträgen") 
+   ![Aufträge abrufen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Aufträge abrufen") 
 
 
 6. Kopieren Sie in den Ergebnissen die vollständige „ID“-Zeichenfolge, die mit „customappsso“ oder mit „scim“ beginnt.
@@ -74,7 +74,7 @@ Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden 
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Abrufen des Schemas](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Abrufen des Schemas") 
+   ![Schema abrufen](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Schema abrufen") 
 
 8. Kopieren Sie die JSON-Ausgabe aus dem letzten Schritt, und speichern Sie sie in einer Textdatei. Diese Datei enthält alle benutzerdefinierten Attributzuordnungen, die Sie in Ihrer alten App hinzugefügt haben, und sollte einige Tausend Zeilen JSON umfassen.
 9. Führen Sie den folgenden Befehl aus, um den Bereitstellungsauftrag zu löschen:

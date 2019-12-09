@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v2 für JavaScript'
-description: Erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Verwenden Sie anschließend die Azure Storage-Clientbibliothek für Node.js v2, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
+description: Erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Verwenden Sie die Azure Storage-Clientbibliothek für Node.js v2, um ein Blob hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzuführen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825349"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269684"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v2 für JavaScript
 

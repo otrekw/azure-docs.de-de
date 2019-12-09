@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 6e5d95a47261445e3031f55368f4e2cd8e2830a7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a0058bf309e0ff4fbe687731d676e907d1c3fd82
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754865"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383105"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 
@@ -21,7 +21,7 @@ Azure Cosmos DB unterstützt viele APIs wie z.B. SQL, MongoDB, Cassandra, Gremli
 
 Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und als *Anforderungseinheiten* (Request Units, kurz RUs) ausgedrückt. RUs pro Sekunde ist also gewissermaßen die Währung für Durchsatz. RUs pro Sekunde ist eine ratenbasierte Währung. Sie abstrahiert die Systemressourcen wie CPU, IOPS und Arbeitsspeicher, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind. 
 
-Eine Anforderungseinheit (oder eine RU) entspricht den Kosten für das Lesen eines Elements mit einer Größe von 1 KB. Allen anderen Datenbankvorgängen werden analog dazu ebenfalls Kosten in RUs zugewiesen. Unabhängig davon, welche API Sie für die Interaktion mit Ihrem Azure Cosmos-Container verwenden, werden die Kosten immer in RUs gemessen. Unabhängig davon, ob es sich bei dem Datenbankvorgang um eine Schreib-, Lese- oder Abfragevorgang handelt, werden die Kosten immer in RUs gemessen.
+Eine Anforderungseinheit (oder eine RU) entspricht den Kosten für das Lesen eines Elements mit einer Größe von 1 KB. Ein Minimum von 10 RUs pro Sekunde ist pro Gigabyte an Daten erforderlich. Allen anderen Datenbankvorgängen werden analog dazu ebenfalls Kosten in RUs zugewiesen. Unabhängig davon, welche API Sie für die Interaktion mit Ihrem Azure Cosmos-Container verwenden, werden die Kosten immer in RUs gemessen. Unabhängig davon, ob es sich bei dem Datenbankvorgang um eine Schreib-, Lese- oder Abfragevorgang handelt, werden die Kosten immer in RUs gemessen.
 
 Die folgende Abbildung zeigt eine Übersicht über RUs:
 

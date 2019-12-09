@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996599"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227821"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Troubleshooting bei Azure Files-Leistungsproblemen
 
@@ -57,6 +57,7 @@ Um zu prüfen, ob die meisten Ihrer Anforderungen metadatenorientiert sind, kön
 ### <a name="workaround"></a>Problemumgehung
 
 - Überprüfen Sie, ob die Anwendung so geändert werden kann, dass sich die Anzahl von Metadatenvorgängen verringert.
+- Fügen Sie eine VHD (virtuelle Festplatte) zur Dateifreigabe hinzu, und binden Sie eine VHD per SMB-Protokoll über den Client ein, um Dateivorgänge für die Daten durchzuführen. Dieser Ansatz eignet sich für Szenarios mit einem Schreib- und mehreren Lesevorgängen und ermöglicht lokale Metadatenvorgänge, wodurch eine ähnliche Leistung wie bei direkt implementiertem lokalen Speicher gewährleistet werden kann.
 
 ### <a name="cause-3-single-threaded-application"></a>Ursache 3: Singlethread-Anwendung
 

@@ -1,21 +1,21 @@
 ---
-title: Architektur der Azure Migrate-Replikationsappliance | Microsoft-Dokumentation
-description: Bietet eine Übersicht über die Azure Migrate-Replikationsappliance.
+title: Architektur der Azure Migrate-Replikationsappliance
+description: Bietet eine Übersicht über die Azure Migrate-Replikationsappliance für die agentbasierte Migration
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4f4dc307bee4190a0e94ace493053e0cfd01150e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810109"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186555"
 ---
 # <a name="replication-appliance"></a>Replikationsappliance
 
-In diesem Artikel wird die Replikationsappliance beschrieben, die von Azure Migrate: Serverbewertung bei der Migration von VMware-VMs, physischen Computern und privaten/öffentlichen Cloud-VMS zu Azure mithilfe einer Agent-basierten Migration verwendet wird. 
+In diesem Artikel wird die Replikationsappliance beschrieben, die von Azure Migrate- Serverbewertung bei der Migration von VMware-VMs, physischen Computern und privaten/öffentlichen Cloud-VMS zu Azure mithilfe einer Agent-basierten Migration verwendet wird. 
 
 Das Tool ist im [Azure Migrate](migrate-overview.md)-Hub verfügbar. Der Hub stellt native Tools für die Bewertung und Migration sowie Tools aus anderen Azure-Diensten und von unabhängigen Softwareanbietern (ISVs) bereit.
 

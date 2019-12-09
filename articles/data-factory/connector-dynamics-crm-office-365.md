@@ -1,23 +1,24 @@
 ---
-title: Kopieren von Daten aus und nach Dynamics CRM oder Dynamics 365 (Common Data Service) mithilfe von Azure Data Factory
+title: Kopieren von Daten in Dynamics (Common Data Service)
 description: Erfahren Sie, wie mithilfe einer Kopieraktivität in eine Data Factory-Pipeline Daten aus Microsoft Dynamics CRM oder Microsoft Dynamics 365 (Common Data Service) in unterstützte Senkendatenspeicher oder aus unterstützten Quelldatenspeichern nach Dynamics CRM oder Dynamics 365 kopiert werden.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: c9adcf72eeec82fd4b8f1805fca1f284c0b953b7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: craigg
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 11/20/2019
+ms.openlocfilehash: eaf8060d3ccfd1f76aa81a289cba5b795106b2b1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680981"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280684"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
 
@@ -42,7 +43,7 @@ In der folgenden Tabelle finden Sie Informationen zu den unterstützten Authenti
 
 | Dynamics-Versionen | Authentifizierungstypen | Beispiele für verknüpfte Dienste |
 |:--- |:--- |:--- |
-| Dynamics 365 (online) <br> Dynamics CRM Online | Office 365 | [Dynamics Online und Office 365-Authentifizierung](#dynamics-365-and-dynamics-crm-online) |
+| Common Data Service <br> Dynamics 365 (online) <br> Dynamics CRM Online | AAD-Dienstprinzipal <br> Office 365 | [Dynamics Online und AAD-Dienstprinzipal oder Office 365-Authentifizierung](#dynamics-365-and-dynamics-crm-online) |
 | Dynamics 365 lokal mit IFD <br> Dynamics CRM 2016 lokal mit IFD <br> Dynamics CRM 2015 lokal mit IFD | IFD | [Dynamics lokal mit IFD und IFD-Authentifizierung](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
 Für Dynamics 365 werden insbesondere die folgenden Anwendungstypen unterstützt:
@@ -77,13 +78,68 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 | type | Die type-Eigenschaft muss auf **Dynamics**, **DynamicsCrm** oder **CommonDataServiceForApps** festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Für Dynamics Online muss der Typ **Online** lauten. | Ja |
 | serviceUri | Die Dienst-URL Ihrer Dynamics-Instanz, z.B. `https://adfdynamics.crm.dynamics.com` | Ja |
-| authenticationType | Der Authentifizierungstyp für die Herstellung der Verbindung mit dem Dynamics-Server. Geben Sie für Dynamics Online **Office 365** an. | Ja |
-| username | Geben Sie den Benutzernamen für die Herstellung der Verbindung mit Dynamics an. | Ja |
-| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
+| authenticationType | Der Authentifizierungstyp für die Herstellung der Verbindung mit dem Dynamics-Server. Zulässige Werte sind: **AADServicePrincipal** oder **Office 365**. | Ja |
+| servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Ja, bei Verwendung der `AADServicePrincipal`-Authentifizierung |
+| servicePrincipalCredentialType | Geben Sie die Art der Anmeldeinformationen für die Dienstprinzipalauthentifizierung an. Zulässige Werte sind: **ServicePrincipalKey** oder **ServicePrincipalCert**. | Ja, bei Verwendung der `AADServicePrincipal`-Authentifizierung |
+| servicePrincipalCredential | Geben Sie die Anmeldeinformationen zum Dienstprinzipal an. <br>Wenn Sie `ServicePrincipalKey` als Anmeldeinformationstyp verwenden, kann `servicePrincipalCredential` eine Zeichenfolge (ADF verschlüsselt diese bei der Bereitstellung eines verknüpften Diensts) oder ein Verweis auf einen geheimen Schlüssel in Azure Key Vault sein. <br>Wenn Sie `ServicePrincipalCert` als Anmeldeinformation verwenden, sollte `servicePrincipalCredential` ein Verweis auf ein Zertifikat in Azure Key Vault sein. | Ja, bei Verwendung der `AADServicePrincipal`-Authentifizierung | 
+| username | Geben Sie den Benutzernamen für die Herstellung der Verbindung mit Dynamics an. | Ja, bei Verwendung der `Office365`-Authentifizierung |
+| password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, bei Verwendung der `Office365`-Authentifizierung |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein für die Quelle. Ja für die Senke, wenn der mit der Quelle verknüpfte Dienst keine Integration Runtime aufweist. |
 
 >[!NOTE]
 >Der Dynamics-Connector hat zum Identifizieren Ihrer Dynamics CRM- oder 365 Online-Instanz früher die optionale Eigenschaft „organizationName“ verwendet. Diese Eigenschaft kann zwar immer noch verwendet werden, es wird jedoch empfohlen, stattdessen die neue Eigenschaft „serviceUri“ anzugeben, um eine bessere Leistung bei der Instanzermittlung zu erzielen.
+
+**Beispiel: Dynamics Online unter Verwendung des AAD-Dienstprinzipals und der Schlüsselauthentifizierung**
+
+```json
+{  
+    "name": "DynamicsLinkedService",  
+    "properties": {  
+        "type": "Dynamics",  
+        "typeProperties": {  
+            "deploymentType": "Online",  
+            "serviceUri": "https://adfdynamics.crm.dynamics.com",  
+            "authenticationType": "AADServicePrincipal",  
+            "servicePrincipalId": "<service principal id>",  
+            "servicePrincipalCredentialType": "ServicePrincipalKey",  
+            "servicePrincipalCredential": "<service principal key>"
+        },  
+        "connectVia": {  
+            "referenceName": "<name of Integration Runtime>",  
+            "type": "IntegrationRuntimeReference"  
+        }  
+    }  
+}  
+```
+**Beispiel: Dynamics Online unter Verwendung des AAD-Dienstprinzipals und der Zertifikatauthentifizierung**
+
+```json
+{ 
+    "name": "DynamicsLinkedService", 
+    "properties": { 
+        "type": "Dynamics", 
+        "typeProperties": { 
+            "deploymentType": "Online", 
+            "serviceUri": "https://adfdynamics.crm.dynamics.com", 
+            "authenticationType": "AADServicePrincipal", 
+            "servicePrincipalId": "<service principal id>", 
+            "servicePrincipalCredentialType": "ServicePrincipalCert", 
+            "servicePrincipalCredential": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<AKV reference>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<certificate name in AKV>" 
+            } 
+        }, 
+        "connectVia": { 
+            "referenceName": "<name of Integration Runtime>", 
+            "type": "IntegrationRuntimeReference" 
+        } 
+    } 
+} 
+```
 
 **Beispiel: Dynamics Online mit Office 365-Authentifizierung**
 
@@ -92,7 +148,6 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
     "name": "DynamicsLinkedService",
     "properties": {
         "type": "Dynamics",
-        "description": "Dynamics online linked service using Office365 authentication",
         "typeProperties": {
             "deploymentType": "Online",
             "serviceUri": "https://adfdynamics.crm.dynamics.com",

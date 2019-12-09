@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 4ecb0189736ca2787f0725fb471ef8a22252185c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.author: Zhchia
+ms.openlocfilehash: 73991efa2e98ff033987f1ce172d24fe3ecddb96
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68641515"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144598"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Oracle Fusion ERP für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte erläutert, die in Oracle Fusion ERP und 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * Einen Azure AD-Mandanten
-* [Einen Oracle Fusion ERP-Mandanten](https://www.oracle.com/applications/erp/)
+* Einen [Oracle Fusion ERP-Mandanten](https://www.oracle.com/applications/erp/)
 * Ein Benutzerkonto in Oracle Fusion ERP mit Administratorberechtigungen
 
 ## <a name="assign-users-to-oracle-fusion-erp"></a>Zuweisen von Benutzern zu Oracle Fusion ERP 
@@ -52,7 +52,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 * Beim Zuweisen eines Benutzers zu Oracle Fusion ERP müssen Sie im Dialogfeld für die Zuweisung eine gültige anwendungsspezifische Rolle auswählen (sofern verfügbar). Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen.
 
-## <a name="setup-oracle-fusion-erp-for-provisioning"></a>Einrichten von Oracle Fusion ERP für die Bereitstellung
+## <a name="set-up-oracle-fusion-erp-for-provisioning"></a>Einrichten von Oracle Fusion ERP für die Bereitstellung
 
 Bevor Sie Oracle Fusion ERP für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie in Oracle Fusion ERP die SCIM-Bereitstellung aktivieren.
 
@@ -95,7 +95,10 @@ Um Oracle Fusion ERP für die automatische Benutzerbereitstellung mit Azure AD k
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts für das Erstellen, Aktualisieren und Deaktivieren von Benutzern und/oder Gruppen in Oracle Fusion ERP auf der Grundlage von Benutzer- und/oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für Oracle Fusion ERP aktivieren. Folgen Sie dazu den Anweisungen unter [Tutorial: Azure Active Directory-Integration von Oracle Fusion ERP](oracle-fusion-erp-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für Oracle Fusion ERP aktivieren. Folgen Sie dazu den Anweisungen unter [Tutorial: Azure Active Directory-Integration von Oracle Fusion ERP](oracle-fusion-erp-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+
+> [!NOTE]
+> Weitere Informationen zum SCIM-Endpunkt von Oracle Fusion ERP finden Sie unter [REST-API für allgemeine Features in Oracle Applications Cloud](https://docs.oracle.com/en/cloud/saas/applications-common/18b/farca/index.html).
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Oracle Fusion ERP in Azure AD:
 
@@ -128,28 +131,42 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Oracle Fusion ERP synchronisieren** aus.
 
     ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
-    
+
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Oracle Fusion ERP, SCIM hinzufügen](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
 
-10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Oracle Fusion ERP synchronisieren** aus.
 
-11. Um den Azure AD-Bereitstellungsdienst für Oracle Fusion ERP zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+    ![Oracle Fusion ERP: Gruppenzuordnungen](media/oracle-fusion-erp-provisioning-tutorial/groupmappings.png)
+
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Oracle Fusion ERP synchronisiert werden. Die als **Abgleichseigenschaften** ausgewählten Attribute werden zum Abgleich der Gruppen in Oracle Fusion ERP für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+
+    ![Oracle Fusion ERP: Gruppenattribute](media/oracle-fusion-erp-provisioning-tutorial/groupattributes.png)
+
+12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
+
+13. Um den Azure AD-Bereitstellungsdienst für Oracle Fusion ERP zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-12. Legen Sie die Benutzer und/oder Gruppen fest, die in Oracle Fusion ERP bereitgestellt werden sollen, indem Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte auswählen.
+14. Legen Sie die Benutzer und/oder Gruppen fest, die in Oracle Fusion ERP bereitgestellt werden sollen, indem Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte auswählen.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
     Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Bereitstellungsaktivitätsberichten aufrufen. In diesen Berichten sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Oracle Fusion ERP ausgeführt werden.
 
-    Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Reporting on automatic user account provisioning (Tutorial: Meldung zur automatischen Benutzerkontobereitstellung)](../manage-apps/check-status-user-account-provisioning.md).
+    Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Connector-Einschränkungen
+
+* Oracle Fusion ERP unterstützt nur die Standardauthentifizierung für den zugehörigen SCIM-Endpunkt.
+* Oracle Fusion ERP unterstützt keine Gruppenbereitstellung.
+* Rollen in Oracle Fusion ERP werden Gruppen in Azure AD zugeordnet. Wenn Sie Benutzern in Oracle Fusion ERP Rollen aus Azure AD zuweisen möchten, müssen Sie Benutzer den gewünschten Azure AD-Gruppen zuweisen, die nach Rollen in Oracle Fusion ERP benannt sind.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

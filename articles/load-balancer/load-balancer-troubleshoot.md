@@ -1,10 +1,9 @@
 ---
 title: Beheben von Problemen mit Azure Load Balancer
-titlesuffix: Azure Load Balancer
-description: Beheben von bekannten Problemen mit Azure Load Balancer
+description: Hier erfahren Sie, wie Sie bekannte Probleme mit Azure Load Balancer beheben.
 services: load-balancer
 documentationcenter: na
-author: chadmath
+author: asudbring
 manager: dcscontentpm
 ms.custom: seodoc18
 ms.service: load-balancer
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2018
-ms.author: genli
-ms.openlocfilehash: 4e0e3cf6067467947bcb799a915a93d1bb342ea1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 11/19/2019
+ms.author: allensu
+ms.openlocfilehash: eab86b3643dde2a6e854d73c38b5267c65fb7e3e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154920"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214762"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Beheben von Problemen mit Azure Load Balancer
 
@@ -28,6 +27,8 @@ ms.locfileid: "71154920"
 Diese Seite enthält Informationen zur Problembehandlung für häufige Fragen zu Azure Load Balancer. Wenn die Load Balancer-Konnektivität nicht verfügbar ist, liegen meist die folgenden Symptome vor: 
 - VMs hinter dem Load Balancer antworten nicht auf Integritätstests 
 - VMs hinter dem Load Balancer antworten nicht auf Datenverkehr am konfigurierten Port
+
+Wenn die externen Clients für die Back-End-VMs den Load Balancer durchlaufen, wird die IP-Adresse der Clients für die Kommunikation verwendet. Stellen Sie sicher, dass die IP-Adressen der Clients der NSG-Zulassungsliste hinzugefügt werden. 
 
 ## <a name="symptom-vms-behind-the-load-balancer-are-not-responding-to-health-probes"></a>Symptom: VMs hinter dem Load Balancer antworten nicht auf Integritätstests
 Damit Back-End-Server Teil einer Load Balancer-Gruppe sein können, müssen sie die Überprüfung bestehen. Weitere Informationen zu Integritätstests finden Sie unter [Grundlegendes zu Load Balancer-Tests](load-balancer-custom-probe-overview.md). 
@@ -97,18 +98,20 @@ Wenn eine VM nicht auf den Datenverkehr antwortet, kann dies daran liegen, dass 
 1. Melden Sie sich an der Back-End-VM an. 
 2. Öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus, um zu überprüfen, ob eine Anwendung am Datenport lauscht:  netstat -an 
 3. Wenn der Port nicht mit dem Status „EMPFANGSBEREIT“ aufgeführt ist, konfigurieren Sie den richtigen Listenerport. 
-4. Wenn der Port als „Empfangsbereit“ markiert ist, überprüfen Sie die Zielanwendung an diesem Port auf mögliche Probleme. 
+4. Wenn der Port als „Empfangsbereit“ markiert ist, überprüfen Sie die Zielanwendung an diesem Port auf mögliche Probleme.
 
 ### <a name="cause-2-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vm"></a>Ursache 2: Eine Netzwerksicherheitsgruppe blockiert den Port auf der VM des Load Balancer-Back-End-Pools  
 
 Wenn eine oder mehrere im Subnetz oder auf der VM konfigurierte Netzwerksicherheitsgruppen die Quell-IP oder den Port blockieren, kann die VM nicht antworten.
 
-* Listen Sie die Netzwerksicherheitsgruppen auf, die auf der Back-End-VM konfiguriert sind. Weitere Informationen finden Sie unter [Create, change, or delete a network security group](../virtual-network/manage-network-security-group.md) (Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe).
-* Überprüfen Sie Folgendes anhand der Liste von Netzwerksicherheitsgruppen:
+Beim öffentlichen Load Balancer wird für die Kommunikation zwischen den Clients und den Back-End-VMs des Load Balancers die IP-Adresse der Internetclients verwendet. Stellen Sie sicher, dass die IP-Adressen der Clients in der Netzwerksicherheitsgruppe der Back-End-VMs zulässig sind.
+
+1. Listen Sie die Netzwerksicherheitsgruppen auf, die auf der Back-End-VM konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten von Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md).
+1. Überprüfen Sie Folgendes anhand der Liste von Netzwerksicherheitsgruppen:
     - Beim eingehenden oder ausgehenden Datenverkehr am Datenport tritt eine Störung auf. 
-    - Eine Regel **Alle verweigern** für Netzwerksicherheitsgruppen der NIC der VM oder des Subnetzes weist eine höhere Priorität als die Standardregel auf, die Load Balancer-Tests und -Datenverkehr zulässt (Netzwerksicherheitsgruppen müssen die Load Balancer-IP-Adresse 168.63.129.16 (Testport) zulassen). 
-* Wenn eine der Regeln den Datenverkehr blockiert, entfernen und konfigurieren Sie diese Regeln, um den Datenverkehr zuzulassen.  
-* Testen Sie, ob die VM jetzt auf Integritätstests antwortet.
+    - Eine Regel **Alle verweigern** für Netzwerksicherheitsgruppen der NIC der VM oder des Subnetzes weist eine höhere Priorität als die Standardregel auf, die Load Balancer-Tests und -Datenverkehr zulässt (Netzwerksicherheitsgruppen müssen die Load Balancer-IP-Adresse 168.63.129.16 (Testport) zulassen).
+1. Wenn eine der Regeln den Datenverkehr blockiert, entfernen und konfigurieren Sie diese Regeln, um den Datenverkehr zuzulassen.  
+1. Testen Sie, ob die VM jetzt auf Integritätstests antwortet.
 
 ### <a name="cause-3-accessing-the-load-balancer-from-the-same-vm-and-network-interface"></a>Ursache 3: Der Zugriff auf den Load Balancer erfolgt über die gleiche VM und Netzwerkschnittstelle 
 

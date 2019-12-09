@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84290ee3c242b5ccb91bdca8a6b82fc0bf963751
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: c387e2d78adcaebc430073a2a45818c4a0928b9f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194586"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422355"
 ---
 # <a name="update-a-dynamic-group-to-manage-membership-in-azure-active-directory"></a>Aktualisieren und Verwalten einer dynamischen Gruppenregel und Problembehandlung bei der Mitgliedschaft in Azure Active Directory
 
@@ -46,7 +46,7 @@ Beispiele für Syntax, unterstützte Eigenschaften, Operatoren und Werte für ei
 
 ## <a name="to-update-a-group-membership-rule"></a>So aktualisieren Sie eine Regel für die Gruppenmitgliedschaft
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle des globalen Administrators, Intune-Administrators oder Benutzeradministrators in dem Mandanten angehört.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle „Globaler Administrator“, „Gruppenadministrator“, „Intune-Administrator“ oder „Benutzeradministrator“ in dem Mandanten angehört.
 1. Wählen Sie **Gruppen** > **Alle Gruppen** aus.
 1. Wählen Sie eine Gruppe aus, um ihr Profil zu öffnen.
 1. Wählen Sie auf der Profilseite für die Gruppe **Dynamische Mitgliedschaftsregeln** aus. Der Regel-Generator unterstützt bis zu fünf Ausdrücke. Falls Sie mehr als fünf Ausdrücke hinzufügen möchten, müssen Sie das Textfeld verwenden.

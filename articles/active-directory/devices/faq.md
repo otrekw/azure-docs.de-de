@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: a27c9ae1b75b9517bd3af92486df96434c5b34fb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809252"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207383"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -62,7 +62,7 @@ Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 - Der Benutzer deaktiviert das Gerät im Meine Apps-Portal. 
 - Ein Administrator (oder Benutzer) löscht oder deaktiviert das Gerät im Azure-Portal oder über PowerShell.
 - Nur in Azure AD Hybrid eingebundene Geräte: Ein Administrator entfernt die Geräte-OE aus dem Synchronisierungsbereich, was dazu führt, dass die Geräte aus Azure AD gelöscht werden.
-- Aktualisieren von AAD Connect auf Version 1.4.xx.x. [Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
+- Aktualisieren von Azure AD Connect auf Version 1.4.xx.x. [Grundlegendes zu Azure AD Connect 1.4.xx.x und zum Verschwinden von Geräten](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-device-disappearance).
 
 
 Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden können.
@@ -119,7 +119,7 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>F: Unterstützt die Windows 10-Geräteregistrierung in Azure AD TPMs im FIPS-Modus?
 
-**A:** Nein. Derzeit unterstützt die Geräteregistrierung unter Windows 10 für alle Gerätezustände – Azure AD Hybrid Join, Azure AD Join und Azure AD Registered – keine TPMs im FIPS-Modus. Für eine erfolgreiche Anmeldung oder Registrierung bei Azure AD muss der FIPS-Modus für die TPMs auf diesen Geräten deaktiviert werden.
+**A:** Die Windows 10-Geräteregistrierung wird nur für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 unterstützt. Wenn Ihre Geräte über FIPS-konformes TPM 1.2 verfügen, müssen Sie sie deaktivieren, bevor Sie mit Azure AD Join oder Azure AD Hybrid Join fortfahren. Beachten Sie, dass Microsoft keine Tools zum Deaktivieren des FIPS-Modus für TPMs bereitstellt, da dieser vom TPM-Hersteller abhängig ist. Wenden Sie sich an Ihren Hardware-OEM, um Unterstützung zu erhalten. 
 
 ---
 

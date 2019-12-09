@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f9d1198a0faca8eed2ca5d3f3ee89ac9019d657
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9db368b634d79e66275b43196ed133ced331ce38
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073901"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74328011"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -120,6 +120,8 @@ Informationen zur Integration von Azure-Diensten in SAP-Komponenten finden Sie u
 
 
 ## <a name="change-log"></a>Änderungsprotokoll
+- 21.11.2019: Änderungen an [Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mit Azure NetApp Files auf SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) zum Vereinfachen der Konfiguration für NFS-ID-Zuordnung und Ändern der empfohlenen primäre Netzwerkschnittstelle, um das Routing zu vereinfachen.
+- 15.11.2019: Kleinere Änderungen an [Hochverfügbarkeit für SAP NetWeaver unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](high-availability-guide-suse-netapp-files.md) und [Hochverfügbarkeit für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](high-availability-guide-rhel-netapp-files.md) zum Klarstellen der Kapazitätseinschränkungen bei der Poolgröße und Entfernen der Aussage, dass nur die NFSv3-Version unterstützt wird.
 - 12.11.2019: Freigabe der [Hochverfügbarkeit für SAP NetWeaver unter Windows mit Azure NetApp Files (SMB)](high-availability-guide-windows-netapp-files-smb.md)
 - 08.11.2019: Änderungen an [Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern auf SUSE Linux Enterprise Server](sap-hana-high-availability.md), [Einrichten der SAP HANA-Systemreplikation auf virtuellen Azure-Computern (VMs)](sap-hana-high-availability-rhel.md)[Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver auf SUSE Linux Enterprise Server für SAP-Anwendungen](high-availability-guide-suse.md), [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver auf SUSE Linux Enterprise Server mit Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver auf Red Hat Enterprise Linux](high-availability-guide-rhel.md), [Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver auf Red Hat Enterprise Linux mit Azure NetApp Files](high-availability-guide-rhel-netapp-files.md), [Hochverfügbarkeit für NFS auf virtuellen Azure-Computern auf SUSE Linux Enterprise Server](high-availability-guide-suse-nfs.md), [GlusterFS auf virtuellen Azure-Computern auf Red Hat Enterprise Linux für SAP NetWeaver](high-availability-guide-rhel-glusterfs.md), um Azure Load Balancer Standard zu empfehlen  
 - 08.11.2019: Änderungen in der [Prüfliste für SAP-Workloadplanung und -bereitstellung](sap-deployment-checklist.md) zur Verdeutlichung der Verschlüsselungsempfehlung  

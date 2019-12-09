@@ -1,5 +1,6 @@
 ---
-title: Diagnostizieren der lokalen Konnektivität über VPN Gateway mit Azure Network Watcher | Microsoft Docs
+title: Diagnostizieren der lokalen Konnektivität über VPN Gateway
+titleSuffix: Azure Network Watcher
 description: Dieser Artikel beschreibt die Durchführung einer Diagnose der lokalen Konnektivität über VPN-Gateways mithilfe der Azure Network Watcher-Ressource zur Problembehandlung.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 05335cb6949928244e10641ebe82008275830e67
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66754070"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531824"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostizieren der lokalen Konnektivität über VPN-Gateways
 
@@ -41,7 +42,7 @@ Sie möchten eine Site-to-Site-Verbindung zwischen Azure und dem lokalen Netzwer
 
 Eine ausführliche Hilfestellung zum Konfigurieren einer Standort-zu-Standort-Konfiguration finden Sie unter: [Erstellen eines VNET mit einer Standort-zu-Standort-Verbindung über das Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Beachten Sie, dass diese Einstellungen wie bereits erwähnt nicht geändert werden können.  Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
+Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikationsparameter. Eine fehlerhafte Konfiguration führt zum Verlust der Verbindung zwischen dem lokalen Netzwerk und Azure. Derzeit sind Azure VPN Gateway-Instanzen für die Unterstützung der folgenden IPsec-Parameter für Phase 1 konfiguriert. Wie Sie in der Tabelle unten sehen können, unterstützt Azure VPN Gateway die Verschlüsselungsalgorithmen AES256, AES128 und 3DES.
 
 ### <a name="ike-phase-1-setup"></a>IKE Phase 1-Einrichtung
 
@@ -52,7 +53,7 @@ Ein wichtiger Konfigurationsschritt ist die Konfiguration der IPsec-Kommunikatio
 | Authentifizierungsmethode |Vorab ausgetauschter Schlüssel |Vorab ausgetauschter Schlüssel |
 | Verschlüsselungsalgorithmen |AES256 AES128 3DES |AES256 3DES |
 | Hashalgorithmus |SHA1(SHA128) |SHA1(SHA128), SHA2(SHA256) |
-| Phase 1 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |28\.800 Sekunden |10\.800 Sekunden |
+| Phase 1 Sicherheitszuordnung (SA) Lebensdauer (Zeit) |28.800 Sekunden |28.800 Sekunden |
 
 Als Benutzer müssen Sie FortiGate konfigurieren. Eine Beispielkonfiguration finden Sie auf [GitHub](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/fortigate_show%20full-configuration.txt). Ohne es zu wissen, haben Sie FortiGate für die Verwendung des Hashalgorithmus SHA-512 konfiguriert. Da dieser Algorithmus für richtlinienbasierte Verbindungen nicht unterstützt wird, funktioniert Ihre VPN-Verbindung nicht.
 

@@ -1,6 +1,6 @@
 ---
-title: Erstellen einer Image Factory in Azure DevTest Labs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie in Azure DevTest Labs eine benutzerdefinierte Image Factory erstellen.
+title: Einrichten von Aufbewahrungsrichtlinien in Azure DevTest Labs | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie eine Aufbewahrungsrichtlinie konfigurieren, die Factory bereinigen und alte Images von DevTest Labs ausmustern.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cf1c18fc799014ad862c93076d695f2516c6363d
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622544"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560171"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Erstellen einer benutzerdefinierten Image Factory in Azure DevTest Labs
 In diesem Artikel wird das Festlegen einer Aufbewahrungsrichtlinie, das Bereinigen der Factory und das Ausmustern alter Images aus allen anderen DevTest Labs in der Organisation behandelt. 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a80c61efbcbff569f5fed53734def3979ed70616
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e2f7136ea7b973386eeb746a74ad09fadb490e83
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820772"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229118"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
@@ -71,8 +71,16 @@ Um die Zuverlässigkeitsbewertung einer bestimmten Antwort auf eine Benutzerabfr
 Wenn mehrere Antworten eine ähnliche Zuverlässigkeitsbewertung aufweisen, ist es wahrscheinlich, dass die Abfrage zu allgemein war und daher mit gleicher Wahrscheinlichkeit mit mehreren Antworten übereinstimmt. Versuchen Sie, Ihre Fragen und Antworten (Questions and Answers, QnAs) besser zu strukturieren, damit jede QnA-Entität eine eindeutige Absicht ausdrückt.
 
 
-## <a name="confidence-score-differences"></a>Abweichungen zwischen Zuverlässigkeitsbewertungen
-Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Cognitive Search-Indizes befinden. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
+## <a name="confidence-score-differences-between-test-and-production"></a>Unterschiede bei der Zuverlässigkeitsbewertung zwischen Test und Produktion
+Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Cognitive Search-Indizes befinden. 
+
+Der Testindex enthält alle QnA-Paare Ihrer Wissensdatenbanken. Wenn Sie den Testindex abfragen, gilt die Abfrage für den gesamten Index, und die Ergebnisse sind auf die Partition für diese spezifische Wissensdatenbank beschränkt. Wenn die Ergebnisse der Testabfrage negative Auswirkungen auf die Fähigkeit zum Überprüfen der Wissensdatenbank haben, können Sie Folgendes tun:
+* Organisieren Sie Ihre Wissensdatenbank wie folgt:
+    * 1 Ressource beschränkt auf 1 KB: Beschränken Sie Ihre einzelne QnA-Ressource (und den resultierenden Azure Cognitive Search-Testindex) auf eine einzelne Wissensdatenbank. 
+    * 2 Ressourcen – 1 für Tests, 1 für die Produktion: Nutzen Sie zwei QnA Maker-Ressourcen, eine für Tests (mit eigenen Test- und Produktionsindizes) und eine für das Produkt (ebenfalls mit eigenen Test- und Produktionsindizes).
+* Verwenden Sie immer dieselben Parameter, z. B. **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** , wenn Sie Ihre Test- und Produktionswissensdatenbank abfragen.
+
+Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) funktioniert.
 
 Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Cognitive Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein. 
 

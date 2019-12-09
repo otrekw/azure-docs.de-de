@@ -1,31 +1,28 @@
 ---
 title: Wiederherstellen von Daten von einer Azure Backup Server-Instanz
 description: Stellen Sie die Daten wieder her, die Sie in einem Recovery Services-Tresor auf einer beliebigen, bei diesem Tresor registrierten Azure Backup Server-Instanz gesichert haben.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: dacurwin
-ms.openlocfilehash: 0a6d1fd73d99cf15137e937dbfe2336d49a63d90
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 2a89697899fc244848854978de4b25e79ef6f184
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955048"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173503"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
+
 Mit Azure Backup Server können Sie die Daten wiederherstellen, die Sie in einem Recovery Services-Tresor gesichert haben. Der entsprechende Prozess ist in der Azure Backup Server-Verwaltungskonsole integriert und ähnelt dem Wiederherstellungsworkflow für andere Azure Backup-Komponenten.
 
 > [!NOTE]
-> Dieser Artikel gilt für [System Center Data Protection Manager 2012 R2 mit UR7 oder höher](https://support.microsoft.com/en-us/kb/3065246), kombiniert mit dem [neuesten Azure Backup-Agent](https://aka.ms/azurebackup_agent).
+> Dieser Artikel gilt für [System Center Data Protection Manager 2012 R2 mit UR7 oder höher](https://support.microsoft.com/kb/3065246), kombiniert mit dem [neuesten Azure Backup-Agent](https://aka.ms/azurebackup_agent).
 >
 >
 
 So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 
-1. Klicken Sie auf der Registerkarte **Wiederherstellung** der Azure Backup Server-Verwaltungskonsole auf **Externen DPM hinzufügen** (links oben auf dem Bildschirm).   
+1. Klicken Sie auf der Registerkarte **Wiederherstellung** der Azure Backup Server-Verwaltungskonsole auf **Externen DPM hinzufügen** (links oben auf dem Bildschirm).
+
     ![Externen DPM hinzufügen](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 2. Laden Sie die neuen **Tresoranmeldeinformationen** des mit der **Azure Backup Server**-Instanz verknüpften Tresors herunter, wählen Sie die Azure Backup Server-Instanz aus der Liste der beim Recovery Services-Tresor registrierten Azure Backup Server-Instanzen aus, und geben Sie die **Verschlüsselungspassphrase** für den Server an, dessen Daten wiederhergestellt werden.
 
@@ -80,6 +77,7 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
     ![Löschen des externen DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
 ## <a name="troubleshooting-error-messages"></a>Problembehandlung bei Fehlermeldungen
+
 | Nein. | Fehlermeldung | Schritte zur Problembehandlung |
 |:---:|:--- |:--- |
 | 1. |Dieser Server ist nicht bei dem Tresor registriert, der durch die Tresoranmeldeinformationen angegeben ist. |**Ursache:** Dieser Fehler wird angezeigt, wenn die ausgewählte Datei mit den Tresoranmeldeinformationen nicht zu dem Recovery Services-Tresor gehört, dem die Azure Backup Server-Instanz zugeordnet ist, auf der die Wiederherstellung versucht wird. <br> **Lösung:** Laden Sie die Anmeldeinformationsdatei für den Tresor aus dem Recovery Services-Tresor herunter, bei dem die Azure Backup Server-Instanz registriert ist. |
@@ -91,5 +89,5 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 
 Lesen Sie die anderen häufig gestellten Fragen:
 
-- [Gängige Fragen](backup-azure-vm-backup-faq.md) zu Azure VM-Sicherungen
-- [Gängige Fragen](backup-azure-file-folder-backup-faq.md) zum Azure Backup-Agent
+* [Gängige Fragen](backup-azure-vm-backup-faq.md) zu Azure VM-Sicherungen
+* [Gängige Fragen](backup-azure-file-folder-backup-faq.md) zum Azure Backup-Agent

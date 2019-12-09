@@ -1,17 +1,17 @@
 ---
 title: Leitfaden für die Authentifizierung von Azure SignalR Service-Clients
-description: In diesem Leitfaden erfahren Sie, wie Sie Azure SignalR-Dienstclients nutzen.
+description: Erfahren Sie, wie Sie Ihre eigene Authentifizierung implementieren und in den Azure SignalR Service integrieren, indem Sie dem e2e-Beispiel folgen.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 7660e1405598676599cab30467d22ac979438deb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc955adffbe7df5809f9c4c860877ad22df3e99b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66128305"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158279"
 ---
 # <a name="azure-signalr-service-authentication"></a>Azure SignalR Service-Authentifizierung
 

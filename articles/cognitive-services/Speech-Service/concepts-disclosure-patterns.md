@@ -3,19 +3,19 @@ title: Entwurfsmuster für die Offenlegung
 titleSuffix: Azure Cognitive Services
 description: Entwurfsmuster und bewährte Methoden für die Offenlegung.
 services: cognitive-services
-author: angle
+author: sharonlo101
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.author: angle
-ms.openlocfilehash: dfa05ff114ea0976cb8d57f711eaacc016ea53cc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73836998"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776621"
 ---
 # <a name="disclosure-design-patterns"></a>Entwurfsmuster für die Offenlegung
 Nachdem Sie die richtige [Offenlegungsstufe](concepts-disclosure-guidelines.md#disclosure-assessment) für die Erfahrung mit Ihrer synthetischen Stimme festgelegt haben, ist es an der Zeit, mögliche Entwurfsmuster zu untersuchen.
@@ -167,7 +167,7 @@ Konsistenz ist der Schlüssel zur impliziten Offenlegung während der gesamten U
 
 ![Konsistenz der impliziten Hinweise](media/responsible-ai/disclosure-patterns/consistency.png)
 
-### <a name="implicit-cues-amp-feedback"></a>Implizite Hinweise &amp; Feedback
+### <a name="implicit-cues--feedback"></a>Implizite Hinweise und Feedback
 
 Anthropomorphismus kann sich auf verschiedene Weise manifestieren, von der tatsächlichen visuellen Darstellung des Agents über die Stimme, Geräusche, Lichtmuster, hüpfende Formen bis hin zur Vibration eines Geräts. Nutzen Sie bei der Definition Ihrer Persona implizite Hinweise und Feedbackmuster, anstatt auf einen sehr menschenähnlichen Avatar zu setzen. Dies ist eine Möglichkeit, die Notwendigkeit einer expliziteren Offenlegung zu minimieren.
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 10/28/2019
+ms.date: 12/03/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e7b0c379783af2f9131d487f45c0f4e2009e258
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 706cc38c997c91efc890b213444ff779eb86d5c1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232150"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805272"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Berichte zu Anmeldeaktivitäten im Azure Active Directory-Portal
 
@@ -81,7 +81,7 @@ Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spal
 
 Sie können weitere Felder anzeigen oder Felder entfernen, die bereits angezeigt werden.
 
-![Anmeldeaktivität](./media/concept-sign-ins/02.png "Anmeldeaktivität")
+![Anmeldeaktivität](./media/concept-sign-ins/columns.png "Anmeldeaktivität")
 
 Wählen Sie in der Listenansicht ein Element aus, um ausführlichere Informationen zu erhalten.
 

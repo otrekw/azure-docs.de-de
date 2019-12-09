@@ -11,19 +11,19 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: d69378b2e791732fb478a66f226c6269e2c515f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1ee2efbb8aebfc2f1a94c89edef6166898946d8a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820817"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422527"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
 
 SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert und mit dem Sie die ausgewählten Daten bidirektional über mehrere SQL-Datenbanken und SQL Server-Instanzen hinweg synchronisieren können.
 
 > [!IMPORTANT]
-> Die Azure SQL-Datensynchronisierung unterstützt derzeit **keine** verwalteten Azure SQL-Datenbank-Instanzen.
+> Die Azure SQL-Datensynchronisierung unterstützt derzeit keine verwalteten Azure SQL-Datenbank-Instanzen.
 
 ## <a name="when-to-use-data-sync"></a>Verwenden der Datensynchronisierung
 
@@ -33,7 +33,7 @@ Die Datensynchronisierung ist nützlich, wenn Daten über mehrere Azure SQL-Date
 - **Verteilte Anwendungen:** In vielen Fällen ist es vorteilhaft, unterschiedliche Workloads auf verschiedene Datenbanken aufzuteilen. Wenn Sie beispielsweise über eine große Produktionsdatenbank verfügen, aber gleichzeitig die Berichterstellung oder Analyse für diese Daten durchführen müssen, ist für diese zusätzliche Workload die Verwendung einer zweiten Datenbank hilfreich. Bei diesem Ansatz werden die Auswirkungen auf die Leistung Ihrer Produktionsworkload reduziert. Sie können die Datensynchronisierung nutzen, um diese beiden Datenbanken synchron zu halten.
 - **Global verteilte Anwendungen:** Viele Unternehmen sind in mehreren Regionen und sogar mehreren Ländern/Regionen ansässig. Es ist ratsam, die Daten jeweils in einer Region in der Nähe vorzuhalten, um die Netzwerklatenz zu verringern. Mit der Datensynchronisierung können Sie Datenbanken in den Regionen weltweit synchron halten.
 
-Die Datensynchronisierung ist für folgende Szenarien nicht die beste Lösung:
+Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 
 | Szenario | Einige empfohlene Lösungen |
 |----------|----------------------------|
@@ -79,7 +79,6 @@ Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 |---|---|---|
 | Vorteile | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration |
 | Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung über eine Einzel- oder Pooldatenbank in Azure SQL-Datenbank<br/>– Hohe Wartungskosten |
-| | | |
 
 ## <a name="get-started-with-sql-data-sync"></a>Erste Schritte mit der SQL-Datensynchronisierung
 
@@ -103,25 +102,25 @@ Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 
 ## <a name="consistency-and-performance"></a>Konsistenz und Leistung
 
-#### <a name="eventual-consistency"></a>Letztliche Konsistenz
+### <a name="eventual-consistency"></a>Letztliche Konsistenz
 
 Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung auf Auslösern basiert. Microsoft gewährleistet, dass alle Änderungen letztlich vorgenommen werden und dass es bei der Datensynchronisierung nicht zu Datenverlusten kommt.
 
-#### <a name="performance-impact"></a>Auswirkungen auf die Leistung
+### <a name="performance-impact"></a>Auswirkungen auf die Leistung
 
 Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihre Dienstebene, und aktualisieren Sie sie bei Bedarf.
 
-Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktualisierung oder Löschung von Synchronisierungsgruppen kann sich ebenfalls nachteilig auf die Datenbankleistung auswirken. 
+Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktualisierung oder Löschung von Synchronisierungsgruppen kann sich ebenfalls nachteilig auf die Datenbankleistung auswirken.
 
 ## <a name="sync-req-lim"></a> Anforderungen und Einschränkungen
 
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
-- Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie einen Primärschlüsselwert ändern müssen, können Sie die Zeile löschen und mit dem neuen Wert des Primärschlüssels neu erstellen. 
+- Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie einen Primärschlüsselwert ändern müssen, können Sie die Zeile löschen und mit dem neuen Wert des Primärschlüssels neu erstellen.
 
 > [!IMPORTANT]
-> Wenn Sie den Wert eines vorhandenen Primärschlüssels ändern, führt dies zu folgendem fehlerhaften Verhalten:   
->   - Daten zwischen Hub und Mitglied können verloren gehen, auch wenn bei der Synchronisierung kein Problem gemeldet wird.
+> Wenn Sie den Wert eines vorhandenen Primärschlüssels ändern, führt dies zu folgendem fehlerhaften Verhalten:
+> - Daten zwischen Hub und Mitglied können verloren gehen, auch wenn bei der Synchronisierung kein Problem gemeldet wird.
 > - Bei der Synchronisierung kann ein Fehler auftreten, weil die Nachverfolgungstabelle aufgrund der Primärschlüsseländerung über eine nicht vorhandene Zeile aus der Quelle verfügt.
 
 - Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
@@ -129,11 +128,11 @@ Das Bereitstellen und Aufheben der Bereitstellung während der Erstellung, Aktua
 ### <a name="general-limitations"></a>Allgemeine Einschränkungen
 
 - Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
-- Ein Primärschlüssel kann nicht über die folgenden Datentypen verfügen: sql_variant, binary, varbinary, image, xml. 
+- Ein Primärschlüssel kann nicht über die folgenden Datentypen verfügen: sql_variant, binary, varbinary, image, xml.
 - Gehen Sie mit Bedacht vor, wenn Sie die folgenden Datentypen als Primärschlüssel verwenden, da nur die Genauigkeit bis auf die Sekunde unterstützt wird: time, datetime, datetime2, datetimeoffset.
 - Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
 - Die Azure Active Directory-Authentifizierung wird nicht unterstützt.
-- Tabellen mit demselben Namen, aber unterschiedlichem Schema (z.B. „dbo.customers“ und „sales.customers“) werden nicht unterstützt.
+- Tabellen mit demselben Namen, aber unterschiedlichem Schema (z. B. „dbo.customers“ und „sales.customers“) werden nicht unterstützt.
 - Spalten mit benutzerdefinierten Datentypen werden nicht unterstützt.
 
 #### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
@@ -152,7 +151,7 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 
 #### <a name="limitations-on-service-and-database-dimensions"></a>Einschränkungen von Dienst- und Datenbankdimensionen
 
-| **Dimensionen**                                                      | **Begrenzung**              | **Problemumgehung**              |
+| **Dimensionen**                                                  | **Begrenzung**              | **Problemumgehung**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | Maximale Anzahl von Synchronisierungsgruppen, denen eine Datenbank angehören kann       | 5                      |                             |
 | Maximale Anzahl von Endpunkten einer einzelnen Synchronisierungsgruppe              | 30                     |                             |
@@ -162,7 +161,7 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 | Spalten in einer Tabelle einer Synchronisierungsgruppe                              | 1000                   |                             |
 | Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
 | Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
-|||
+
 > [!NOTE]
 > Es können bis zu 30 Endpunkte in einer einzelnen Synchronisierungsgruppe vorhanden sein, wenn es nur eine Synchronisierungsgruppe gibt. Wenn mehr als eine Synchronisierungsgruppe vorhanden ist, darf die Gesamtanzahl der Endpunkte in allen Synchronisierungsgruppen 30 nicht überschreiten. Wenn eine Datenbank mehreren Synchronisierungsgruppen angehört, wird sie als mehrere Endpunkte und nicht als einer gezählt.
 
@@ -170,7 +169,7 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 
 ### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Kosten für den SQL-Datensynchronisierungsdienst
 
-Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an.  Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+Für den SQL-Datensynchronisierungsdienst selbst fallen keine Kosten an. Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ### <a name="what-regions-support-data-sync"></a>Für die Datensynchronisierung unterstützte Regionen
 
@@ -191,7 +190,7 @@ Ja. Sie können Daten zwischen SQL-Datenbanken aus Ressourcengruppen synchronisi
 - Wenn die Abonnements zum gleichen Mandanten gehören und Sie über Berechtigungen für alle Abonnements verfügen, können Sie die Synchronisierungsgruppe im Azure-Portal konfigurieren.
 - Andernfalls müssen die Synchronisierungsmitglieder unterschiedlicher Abonnements mithilfe von PowerShell hinzugefügt werden.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china"></a>Kann ich die Datensynchronisierung zwischen SQL-Datenbanken verschiedener Clouds (etwa öffentliche Azure-Cloud und Azure China) verwenden?
+### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Kann ich die Datensynchronisierung zwischen SQL-Datenbanken verschiedener Clouds (etwa öffentliche Azure-Cloud und Azure China 21ViaNet) verwenden?
 
 Ja. Die Synchronisierung zwischen SQL-Datenbanken, die zu verschiedenen Clouds gehören, ist möglich. Sie müssen PowerShell verwenden, um die Synchronisierungsmitglieder der verschiedenen Abonnements hinzuzufügen.
 
@@ -201,7 +200,7 @@ Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manue
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Sollte ich die SQL-Datensynchronisierung nutzen, um meine Datenbanken zu sichern und wiederherzustellen?
 
-Es wird nicht empfohlen, die SQL-Datensynchronisierung zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung auf einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung keine anderen SQL-Objekte gesichert, z.B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
+Es wird nicht empfohlen, die SQL-Datensynchronisierung zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung auf einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung keine anderen SQL-Objekte gesichert, z. B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
 
 Informationen zu einem empfohlenen Sicherungsverfahren finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
 

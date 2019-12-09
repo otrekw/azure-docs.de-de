@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 06/05/2019
+ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 98ab9ea67ceb1d965e248c93d27cb801ab8c7483
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ea2a66a6b012664a9596a02ea32c1a0b677ee3ea
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033324"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384268"
 ---
 # <a name="azure-disk-encryption-for-windows-vms-faq"></a>Azure Disk Encryption für virtuelle Windows-Computer – FAQ
 
@@ -98,7 +98,17 @@ Verwenden Sie die neueste Version des Azure PowerShell SDK, um Azure Disk Encryp
 
 ## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Welche Verschlüsselungsmethode verwendet Azure Disk Encryption?
 
-Azure Disk Encryption verwendet das BitLocker-AES256-Verschlüsselungsverfahren (AES256WithDiffuser für Versionen vor Windows Server 2012). 
+Azure Disk Encryption wählt die Verschlüsselungsmethode in BitLocker basierend auf der Windows-Version wie folgt aus:
+
+| Windows-Versionen                 | Version | Verschlüsselungsmethode        |
+|----------------------------------|--------|--------------------------|
+| Windows Server 2012, Windows 10 oder höher  | >=1511 |XTS-AES-256-Bit           |
+| Windows Server 2012, Windows 8, 8.1, 10 | < 1511 |AES-256-Bit *              |
+| Windows Server 2008R2            |        |AES 256-Bit mit Diffuser |
+
+\* AES-256-Bit mit Diffuser wird in Windows 2012 und höher nicht unterstützt.
+
+Um die Version Ihres Windows-Betriebssystems zu ermitteln, führen Sie das Tool "winver" auf dem virtuellen Computer aus.
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Werden die Daten auf den bereits verschlüsselten Datenlaufwerken gelöscht, wenn ich EncryptFormatAll verwende und alle Volumetypen angebe?
 Nein, Daten werden nicht von Datenträgern für Daten gelöscht, die bereits mit Azure Disk Encryption verschlüsselt wurden. Ebenso wie EncryptFormatAll das Betriebssystemlaufwerk nicht erneut verschlüsselte, werden auch bereits verschlüsselte Laufwerke für Daten nicht erneut verschlüsselt. 

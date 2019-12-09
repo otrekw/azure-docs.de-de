@@ -1,6 +1,6 @@
 ---
-title: Registrieren zum Zurückzusetzen Ihres Kennworts – Azure AD
-description: Registrieren Sie Ihre Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung in Azure AD, damit Sie Ihr eigenes Kennwort ohne Administratorhilfe zurücksetzen können.
+title: 'Azure AD: Registrieren von Authentifizierungsinformationen zum Zurücksetzen Ihres Kennworts'
+description: Registrieren Sie Ihre Überprüfungsmethodeninformationen für die Self-Service-Kennwortzurücksetzung in Azure AD, damit Sie Ihr Kennwort ohne Administratorhilfe zurücksetzen können.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,19 +13,19 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 796702b2189dcfb001f72913e4a01c0ae01462ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820452"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279053"
 ---
-# <a name="register-to-reset-your-own-password"></a>Registrieren zum Zurückzusetzen Ihres Kennworts
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrieren Ihrer Überprüfungsmethode zum Zurücksetzen Ihres Kennworts
 
 > [!IMPORTANT]
 > Haben Sie Probleme bei der Anmeldung? Dann lesen Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md) weiter.
 
-Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) selbstständig zurücksetzen oder ihr Konto entsperren. Um diese Funktion verwenden zu können, müssen Sie zunächst Ihre Authentifizierungsmethoden registrieren oder die vordefinierten Authentifizierungsmethoden bestätigen, die Ihr Administrator angegeben hat.
+Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) selbstständig zurücksetzen oder ihr Konto entsperren. Damit Sie diese Funktion verwenden können, müssen Sie zunächst Ihre Überprüfungsmethoden registrieren oder die vordefinierten Überprüfungsmethoden bestätigen, die Ihr Administrator angegeben hat.
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrieren oder Bestätigen von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung
 
@@ -38,13 +38,13 @@ Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzun
     * **Sicherheitsfragen**: Diese Liste mit Fragen wurde vom Administrator zur Beantwortung freigegeben. Fragen und Antworten dürfen nicht mehrmals verwendet werden.
 4. Geben Sie die vom Administrator angeforderten Informationen an, und überprüfen Sie sie. Sollten mehrere Optionen verfügbar sein, empfiehlt es sich, mehrere Methoden zu registrieren. Dadurch sind Sie flexibel, falls eine der Methoden nicht verfügbar ist – beispielsweise, wenn Sie unterwegs und nicht über Ihr Bürotelefon erreichbar sind.
 
-    ![Registrieren von Authentifizierungsmethoden und Klicken auf „Fertig stellen“][Register]
+    ![Registrieren von Überprüfungsmethoden und Klicken auf „Fertig stellen“][Register]
 
 5. Klicken Sie auf **Fertig stellen**. SSPR steht Ihnen nun bei Bedarf zur Verfügung.
 
 Für **Authentifizierungstelefon** oder **E-Mail für Authentifizierung** eingegebene Daten werden im globalen Verzeichnis nicht angezeigt. Diese Daten sind nur für Sie selbst und für Ihre Administratoren sichtbar. Die Antworten auf Ihre Sicherheitsfragen sind nur für Sie selbst sichtbar.
 
-Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestätigung Ihrer Authentifizierungsmethoden aufgefordert, um sicherzustellen, dass die registrierten Methoden immer noch angemessen sind.
+Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestätigung Ihrer Überprüfungsmethoden aufgefordert, um sicherzustellen, dass die registrierten Methoden immer noch angemessen sind.
 
 ## <a name="common-problems-and-their-solutions"></a>Häufige Probleme und Lösungen
 

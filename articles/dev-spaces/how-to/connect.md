@@ -1,20 +1,16 @@
 ---
-title: " Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster"
-titleSuffix: Azure Dev Spaces
+title: Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Ihren Entwicklungscomputer mithilfe von Azure Dev Spaces mit einem AKS-Cluster verbinden.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 0adaa4266978cf9c9ef42359c0cf4f81c5c5f056
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c26d159d6f883e1c368b09a82bc53c621c70e281
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571770"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482242"
 ---
 # <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Verbinden Ihres Entwicklungscomputers mit einem AKS-Cluster (Vorschauversion)
 
@@ -96,7 +92,7 @@ Nach Auswahl des Verbindungsmodus werden Sie aufgefordert, den TCP-Port für die
 Nachdem Sie den TCP-Port der Anwendung ausgewählt haben, wird in Azure Dev Spaces eine Verbindung mit dem AKS-Cluster hergestellt. Azure Dev Spaces fügt einen Agent im AKS-Cluster ein, um Datenverkehr zwischen dem AKS-Cluster und dem Entwicklungscomputer umzuleiten. Das Einrichten dieser Verbindung kann einige Minuten dauern. In Azure Dev Spaces wird außerdem Administratorzugriff angefordert, um die Datei *hosts* auf dem Entwicklungscomputer ändern zu können.
 
 > [!IMPORTANT]
-> Nachdem mit Azure Dev Spaces eine Verbindung mit dem AKS-Cluster hergestellt wurde, werden die anderen Dienste im AKS-Cluster möglicherweise erst dann ordnungsgemäß ausgeführt, wenn Sie den Dienst auf dem Entwicklungscomputer starten. Wenn der Dienst eine Abhängigkeit aufweist, die auf dem Entwicklungscomputer nicht verfügbar ist, müssen Sie außerdem möglicherweise die Anwendung ändern oder eine [zusätzliche Konfiguration](#additional-configuration) vornehmen.
+> Nachdem mit Azure Dev Spaces eine Verbindung mit dem AKS-Cluster hergestellt wurde, werden die anderen Dienste im AKS-Cluster bei Auswahl des Verbindungsmodus *Ersetzen* möglicherweise erst dann ordnungsgemäß ausgeführt, wenn Sie den Dienst auf dem Entwicklungscomputer starten. Sie können stattdessen den Verbindungsmodus *Klonen* auswählen, um einen untergeordneten Entwicklungsbereich für die Umleitung zu erstellen und jegliche Unterbrechung des übergeordneten Bereichs zu vermeiden. Wenn der Dienst eine Abhängigkeit aufweist, die auf dem Entwicklungscomputer nicht verfügbar ist, müssen Sie außerdem möglicherweise die Anwendung ändern oder eine [zusätzliche Konfiguration](#additional-configuration) vornehmen.
 
 In Azure Dev Spaces wird nach dem Herstellen einer Verbindung mit dem AKS-Cluster ein Terminalfenster mit dem Titel *AZDS Connect – Bikes* (AZDS-Verbindung – Bikes) angezeigt. In diesem Terminalfenster sind alle im AKS-Cluster konfigurierten Umgebungsvariablen und DNS-Einträge aufgeführt. Sämtlicher Code, den Sie in diesem Terminalfenster ausführen oder der im Visual Studio Code-Debugger verwendet wird, ist mit dem AKS-Cluster verbunden.
 
@@ -123,7 +119,6 @@ $ npm install
 > node install
 ...
 ```
-
 
 Klicken Sie auf *Debuggen* und dann auf *Konfigurationen öffnen*. Wenn Sie zur Auswahl einer Umgebung aufgefordert werden, wählen Sie *Node.js* aus. Dadurch wird eine `.vscode/launch.json`-Datei erstellt. Ersetzen Sie den Inhalt dieser Datei durch folgenden Code:
 
@@ -235,6 +230,18 @@ MYAPP1_SERVICE_HOST=${services.myapp1}
 # in addition to the IP in the MYAPP1_SERVICE_HOST environment variable.
 ```
 
+## <a name="using-logging-and-diagnostics"></a>Verwenden der Protokollierung und Diagnose
+
+Die Protokollierungsausgabe wird in das Fenster *Dev Spaces Connect* geschrieben, nachdem der Entwicklungscomputer mit dem AKS-Cluster verbunden wurde.
+
+![Output](../media/how-to-connect/connect-output.png)
+
+Klicken Sie auf die Azure Dev Spaces-Statusleiste, und wählen Sie *Diagnoseinformationen anzeigen* aus. Mit diesem Befehl werden die aktuellen Umgebungsvariablen und DNS-Einträge in der Protokollierungsausgabe ausgegeben.
+
+![Ausgabe mit Diagnose](../media/how-to-connect/connect-output-diagnostics.png)
+
+Außerdem finden Sie die Diagnoseprotokolle im Verzeichnis `Azure Dev Spaces` im Verzeichnis [*TEMP* des Entwicklungscomputers][azds-tmp-dir].
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie mithilfe von Azure Dev Spaces und GitHub-Aktionen Änderungen eines Pull Request direkt in AKS testen können, bevor der Pull Request im Hauptzweig des Repositorys zusammengeführt wird.
@@ -242,11 +249,11 @@ Erfahren Sie, wie Sie mithilfe von Azure Dev Spaces und GitHub-Aktionen Änderun
 > [!div class="nextstepaction"]
 > [GitHub-Aktionen und Azure Kubernetes Service][gh-actions]
 
+[azds-tmp-dir]: ../troubleshooting.md#before-you-begin
 [azds-vs-code]: https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds
 [azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [bike-sharing-github]: https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp
 [gh-actions]: github-actions.md
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [team-quickstart]: ../quickstart-team-development.md
 [vs-code]: https://code.visualstudio.com/download

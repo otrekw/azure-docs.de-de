@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: panosper
-ms.openlocfilehash: 101cfacf071292d00556656b0df9c6bf9c15f414
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: 158a99b1691e59fa58207f3c9291ca9d37a6679c
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69515885"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538113"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -65,7 +65,7 @@ Die Konfigurationsparameter werden als JSON angegeben:
 {
   "recordingsUrl": "<URL to the Azure blob to transcribe>",
   "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
+  "locale": "<locale to use, for example en-US>",
   "name": "<user defined name of the transcription batch>",
   "description": "<optional description of the transcription>",
   "properties": {
@@ -96,12 +96,6 @@ Verwenden Sie diese optionalen Eigenschaften zum Konfigurieren der Transkription
 
 Die Batchtranskription unterstützt [Azure Blob-Speicher](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) zum Lesen von Audio und zum Schreiben von Transkriptionen in den Speicher.
 
-## <a name="webhooks"></a>webhooks
-
-Die Abfrage des Transkriptionsstatus ist möglicherweise nicht die leistungsstärkste Option oder bietet nicht die bestmögliche Benutzererfahrung. Zur Abfrage des Status können Sie Rückrufe registrieren, die den Client benachrichtigen, wenn zeitintensive Transkriptionsaufgaben abgeschlossen sind.
-
-Weitere Informationen finden Sie unter [Webhooks](webhooks.md).
-
 ## <a name="speaker-separation-diarization"></a>Sprechertrennung (Diarisierung)
 
 Diarisierung ist der Prozess, bei dem Sprecher in einem Audioelement getrennt werden. Unsere Batch-Pipeline unterstützt die Diarisierung und kann zwei Sprecher in Monokanalaufnahmen erkennen.
@@ -122,7 +116,7 @@ Wenn Sie anfordern möchten, dass Ihre Audiotranskriptionsanforderung zur Diaris
 }
 ```
 
-Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden.
+Zeitstempel auf Wortebene müssten außerdem in der oben angegebenen Anforderung als Parameter ‚aktiviert‘ werden. 
 
 Das entsprechende Audio enthält die durch eine Zahl identifizierten Sprecher (weil wir derzeit nur zwei Stimmen unterstützen, werden die Sprecher als ‚Sprecher 1‘ und ‚Sprecher 2‘ identifiziert), gefolgt von der Transkriptionsausgabe.
 

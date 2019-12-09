@@ -1,24 +1,27 @@
 ---
-title: 'Bereitstellungsplan zur Self-Service-Kennwortzurücksetzung: Azure Active Directory'
+title: 'Bereitstellung der Self-Service-Kennwortzurücksetzung: Azure Active Directory'
 description: Strategie für eine erfolgreiche Implementierung der Self-Service-Kennwortzurücksetzung von Azure AD
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 06/24/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b9f340ad12fbf26190a17bc4df97bfc95473093c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743240"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381283"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD
+
+> [!NOTE]
+> In diesem Leitfaden wird die Self-Service-Kennwortzurücksetzung und deren Bereitstellung erläutert. Wenn Sie Ihr Konto wieder aktivieren möchten, finden Sie Informationen über das Tool zum Zurücksetzen des Self-Service-Kennworts unter [https://aka.ms/sspr](https://aka.ms/sspr). 
 
 Die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist eine Funktion von Azure Active Directory, die es Mitarbeitern ermöglicht, Ihre Kennwörter zurückzusetzen, ohne sich an IT-Mitarbeiter wenden zu müssen. Mitarbeiter müssen sich für die Self-Service-Kennwortzurücksetzung registrieren, bevor sie den Dienst verwenden. Während der Registrierung wählt der Mitarbeiter eine oder mehrere Authentifizierungsmethoden aus, die von seiner Organisation aktiviert wurden.
 
@@ -133,7 +136,7 @@ Um sicherzustellen, dass Ihre Bereitstellung wie erwartet funktioniert, sollten 
 | Der Benutzer meldet sich an, wenn die Registrierung zur Kennwortzurücksetzung durchgesetzt wird | Der Benutzer wird aufgefordert, Sicherheitsinformationen zu registrieren |
 | Der Benutzer meldet sich an, wenn die Registrierung zur Kennwortzurücksetzung abgeschlossen ist | Der Benutzer wird nicht aufgefordert, Sicherheitsinformationen zu registrieren |
 | Auf das SSPR-Portal kann zugegriffen werden, wenn der Benutzer keine Lizenz besitzt | Zugriff möglich |
-| Setzen Sie das Benutzerkennwort in Windows 10 AADJ oder dem H+AADJ-Gerätesperrbildschirm zurück, nachdem sich der Benutzer registriert hat | Benutzer kann Kennwort zurücksetzen |
+| Benutzerkennwort in Windows 10 auf dem Sperrbildschirm eines in Azure AD eingebundenen Geräts oder eines in Azure AD Hybrid eingebundenen Geräts zurücksetzen, nachdem sich der Benutzer registriert hat | Benutzer kann Kennwort zurücksetzen |
 | SSPR-Registrierungs- und Nutzungsdaten stehen Administratoren nahezu in Echtzeit zur Verfügung | Über die Überwachungsprotokolle verfügbar |
 
 ### <a name="support-plan"></a>Supportplan

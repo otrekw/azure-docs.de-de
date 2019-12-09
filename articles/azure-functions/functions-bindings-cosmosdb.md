@@ -1,21 +1,17 @@
 ---
 title: Azure Cosmos DB-Bindungen für Functions 1.x
 description: Grundlegendes zur Verwendung von Azure Cosmos DB-Triggern und -Bindungen in Azure Functions.
-services: functions
 author: craigshoemaker
 ms.author: cshoe
-manager: gwallace
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0e6782c48543723438ee332313de268117dee3e9
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 18bbfd1b54947bb88ba8f06c65a17b90430b38a3
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480726"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305208"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -47,15 +43,7 @@ Informationen zum partitionsübergreifenden Lauschen auf Einfügungen und Aktual
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
-Sehen Sie sich das sprachspezifische Beispiel an:
-
-* [C#](#trigger---c-example)
-* [C#-Skript (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-
-[Trigger-Beispiele überspringen](#trigger---attributes)
-
-### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die aufgerufen wird, wenn etwas in der angegebenen Datenbank und Sammlung eingefügt oder aktualisiert wird.
 
@@ -88,9 +76,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Trigger-Beispiele überspringen](#trigger---attributes)
-
-### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
 
@@ -126,9 +112,7 @@ Der C#-Skriptcode sieht wie folgt aus:
     }
 ```
 
-[Trigger-Beispiele überspringen](#trigger---attributes)
-
-### <a name="trigger---javascript-example"></a>Trigger: JavaScript-Beispiel
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
 
@@ -157,7 +141,11 @@ Der JavaScript-Code sieht wie folgt aus:
     }
 ```
 
+---
+
 ## <a name="trigger---attributes"></a>Trigger: Attribute
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.CosmosDB/Trigger/CosmosDBTriggerAttribute.cs)-Attribut.
 
@@ -174,7 +162,17 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
     }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c-example).
+Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger).
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+---
 
 ## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
@@ -217,18 +215,7 @@ Der Trigger gibt nicht an, ob ein Dokument aktualisiert oder eingefügt wurde, e
 
 Die Azure Cosmos DB-Eingabebindung verwendet die SQL-API, um mindestens ein Azure Cosmos DB-Dokument abzurufen und an den Eingabeparameter der Funktion zu übergeben. Die Dokument-ID oder die Abfrageparameter können basierend auf dem Trigger, der die Funktion aufruft, ermittelt werden.
 
-## <a name="input---examples"></a>Eingabe: Beispiele
-
-Sehen Sie sich die sprachspezifischen Beispiele an, in denen ein ID-Wert angegeben wird, um ein einzelnes Dokument zu lesen:
-
-* [C#](#input---c-examples)
-* [C#-Skript (.csx)](#input---c-script-examples)
-* [JavaScript](#input---javascript-examples)
-* [F#](#input---f-examples)
-
-[Eingabebeispiele überspringen](#input---attributes)
-
-### <a name="input---c-examples"></a>Eingabe: C#-Beispiele
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -252,9 +239,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="queue-trigger-look-up-id-from-json-c"></a>
 
-#### <a name="queue-trigger-look-up-id-from-json-c"></a>Warteschlangentrigger: Suchen der ID in JSON-Code (C#)
+### <a name="queue-trigger-look-up-id-from-json"></a>Warteschlangentrigger: Suchen der ID in JSON-Code
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine Warteschlangennachricht ausgelöst, die ein JSON-Objekt enthält. Der Warteschlangentrigger zerlegt den JSON-Code in ein Objekt namens `ToDoItemLookup`, das die zu suchende ID enthält. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -301,9 +288,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge (C#)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -343,9 +330,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c"></a>HTTP-Trigger: Suchen der ID in Routendaten (C#)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-Trigger: Suchen der ID in Routendaten
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Routendaten verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -390,7 +377,9 @@ namespace CosmosDBSamplesV1
 
 [Eingabebeispiele überspringen](#input---attributes)
 
-#### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>HTTP-Trigger: Suchen der ID in Routendaten unter Verwendung von „SqlQuery“ (C#)
+<a id="http-trigger-look-up-id-from-route-data-using-sqlquery-c"></a>
+
+### <a name="http-trigger-look-up-id-from-route-data-using-sqlquery"></a>HTTP-Trigger: Suchen der ID in Routendaten unter Verwendung von SqlQuery
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Routendaten verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -430,7 +419,9 @@ namespace CosmosDBSamplesV1
 
 [Eingabebeispiele überspringen](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“ (C#)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c"></a>
+
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von SqlQuery
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Liste von Dokumenten abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst. Die Abfrage wird in der Attributeigenschaft `SqlQuery` angegeben.
 
@@ -471,7 +462,9 @@ namespace CosmosDBSamplesV1
 
 [Eingabebeispiele überspringen](#input---attributes)
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von „DocumentClient“ (C#)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c"></a>
+
+### <a name="http-trigger-get-multiple-docs-using-documentclient-c"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von „DocumentClient“ (C#)
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Liste von Dokumenten abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst. Der Code verwendet eine von der Azure Cosmos DB-Bindung bereitgestellte `DocumentClient`-Instanz, um eine Liste von Dokumenten zu lesen. Die `DocumentClient`-Instanz kann auch für Schreibvorgänge verwendet werden.
 
@@ -530,9 +523,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
-
-### <a name="input---c-script-examples"></a>Eingabe: C#-Skriptbeispiele
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -556,9 +547,9 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="queue-trigger-look-up-id-from-string-c-script"></a>
 
-#### <a name="queue-trigger-look-up-id-from-string-c-script"></a>Warteschlangentrigger: Suchen der ID in einer Zeichenfolge (C#-Skript)
+### <a name="queue-trigger-look-up-id-from-string"></a>Warteschlangentrigger: Suchen der ID in einer Zeichenfolge
 
 Das folgende Beispiel zeigt eine Cosmos DB-Eingabebindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion liest ein einzelnes Dokument und aktualisiert den Textwert des Dokuments.
 
@@ -576,6 +567,7 @@ Bindungsdaten in der Datei *function.json*:
     "direction": "in"
 }
 ```
+
 Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
 
 Der C#-Skriptcode sieht wie folgt aus:
@@ -590,9 +582,9 @@ Der C#-Skriptcode sieht wie folgt aus:
     }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-c-script"></a>Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“ (C#-Skript)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von SqlQuery
 
 Das folgende Beispiel zeigt eine Azure Cosmos DB-Eingabebindung in einer *function.json*-Datei sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion ruft mehrere von einer SQL-Abfrage angegebene Dokumente mithilfe eines Warteschlangentriggers ab, um die Abfrageparameter anzupassen.
 
@@ -631,9 +623,9 @@ Der C#-Skriptcode sieht wie folgt aus:
     }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-c-script"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge (C#-Skript)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge
 
 Das folgende Beispiel zeigt eine [C#-Skriptfunktion](functions-reference-csharp.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -692,9 +684,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-c-script"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-c-script"></a>HTTP-Trigger: Suchen der ID in Routendaten (C#-Skript)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-Trigger: Suchen der ID in Routendaten
 
 Das folgende Beispiel zeigt eine [C#-Skriptfunktion](functions-reference-csharp.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Routendaten verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -754,9 +746,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, ToDoItem toDoItem,
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-sqlquery-c-script"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“ (C#-Skript)
+### <a name="http-trigger-get-multiple-docs-using-sqlquery"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von SqlQuery
 
 Das folgende Beispiel zeigt eine [C#-Skriptfunktion](functions-reference-csharp.md), die eine Liste von Dokumenten abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst. Die Abfrage wird in der Attributeigenschaft `SqlQuery` angegeben.
 
@@ -811,9 +803,9 @@ public static HttpResponseMessage Run(HttpRequestMessage req, IEnumerable<ToDoIt
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>
 
-#### <a name="http-trigger-get-multiple-docs-using-documentclient-c-script"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von „DocumentClient“ (C#-Skript)
+### <a name="http-trigger-get-multiple-docs-using-documentclient"></a>HTTP-Trigger: Abrufen mehrerer Dokumente unter Verwendung von DocumentClient
 
 Das folgende Beispiel zeigt eine [C#-Skriptfunktion](functions-reference-csharp.md), die eine Liste von Dokumenten abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst. Der Code verwendet eine von der Azure Cosmos DB-Bindung bereitgestellte `DocumentClient`-Instanz, um eine Liste von Dokumenten zu lesen. Die `DocumentClient`-Instanz kann auch für Schreibvorgänge verwendet werden.
 
@@ -889,9 +881,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 }
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
-
-### <a name="input---javascript-examples"></a>Eingabe: JavaScript-Beispiele
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
@@ -900,9 +890,10 @@ Dieser Abschnitt enthält folgende Beispiele:
 * [HTTP-Trigger: Suchen der ID in Routendaten](#http-trigger-look-up-id-from-route-data-javascript)
 * [Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
 
-[Eingabebeispiele überspringen](#input---attributes)
 
-#### <a name="queue-trigger-look-up-id-from-json-javascript"></a>Warteschlangentrigger: Suchen der ID in JSON-Code (JavaScript)
+<a id="queue-trigger-look-up-id-from-json-javascript"></a>
+
+### <a name="queue-trigger-look-up-id-from-json"></a>Warteschlangentrigger: Suchen der ID in JSON-Code
 
 Das folgende Beispiel zeigt eine Cosmos DB-Eingabebindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion liest ein einzelnes Dokument und aktualisiert den Textwert des Dokuments.
 
@@ -930,6 +921,7 @@ Bindungsdaten in der Datei *function.json*:
     "direction": "out"
 }
 ```
+
 Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
 
 Der JavaScript-Code sieht wie folgt aus:
@@ -943,9 +935,9 @@ Der JavaScript-Code sieht wie folgt aus:
     };
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-look-up-id-from-query-string-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-query-string-javascript"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge (JavaScript)
+### <a name="http-trigger-look-up-id-from-query-string"></a>HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge
 
 Das folgende Beispiel zeigt eine [JavaScript-Skriptfunktion](functions-reference-node.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -1001,9 +993,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="http-trigger-look-up-id-from-route-data-javascript"></a>
 
-#### <a name="http-trigger-look-up-id-from-route-data-javascript"></a>HTTP-Trigger: Suchen der ID in Routendaten (JavaScript)
+### <a name="http-trigger-look-up-id-from-route-data"></a>HTTP-Trigger: Suchen der ID in Routendaten
 
 Das folgende Beispiel zeigt eine [JavaScript-Skriptfunktion](functions-reference-node.md), die ein einzelnes Dokument abruft. Die Funktion wird durch eine HTTP-Anforderung ausgelöst, die eine Abfragezeichenfolge verwendet, um die zu suchende ID anzugeben. Anhand dieser ID wird ein Dokument vom Typ `ToDoItem` aus der angegebenen Datenbank und Sammlung abgerufen.
 
@@ -1060,11 +1052,9 @@ module.exports = function (context, req, toDoItem) {
 };
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
+<a id="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>
 
-
-
-#### <a name="queue-trigger-get-multiple-docs-using-sqlquery-javascript"></a>Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“ (JavaScript)
+### <a name="queue-trigger-get-multiple-docs-using-sqlquery"></a>Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von SqlQuery
 
 Das folgende Beispiel zeigt eine Azure Cosmos DB-Eingabebindung in einer *function.json*-Datei sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion ruft mehrere von einer SQL-Abfrage angegebene Dokumente mithilfe eines Warteschlangentriggers ab, um die Abfrageparameter anzupassen.
 
@@ -1099,61 +1089,25 @@ Der JavaScript-Code sieht wie folgt aus:
     };
 ```
 
-[Eingabebeispiele überspringen](#input---attributes)
-
-<a name="infsharp"></a>
-
-### <a name="input---f-examples"></a>Eingabe: F#-Beispiele
-
-Das folgende Beispiel zeigt eine Cosmos DB-Eingabebindung in einer Datei *function.json* sowie eine [F#-Funktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion liest ein einzelnes Dokument und aktualisiert den Textwert des Dokuments.
-
-Bindungsdaten in der Datei *function.json*:
-
-```json
-{
-    "name": "inputDocument",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "id" : "{queueTrigger}",
-    "connection": "MyAccount_COSMOSDB",
-    "direction": "in"
-}
-```
-
-Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
-
-Der F#-Code lautet wie folgt:
-
-```fsharp
-    (* Change input document contents using Azure Cosmos DB input binding *)
-    open FSharp.Interop.Dynamic
-    let Run(myQueueItem: string, inputDocument: obj) =
-    inputDocument?text <- "This has changed."
-```
-
-Dieses Beispiel erfordert die Datei `project.json`, die die NuGet-Abhängigkeiten `FSharp.Interop.Dynamic` und `Dynamitey` angibt:
-
-```json
-{
-    "frameworks": {
-        "net46": {
-            "dependencies": {
-                "Dynamitey": "1.0.2",
-                "FSharp.Interop.Dynamic": "3.0.0"
-            }
-        }
-    }
-}
-```
-
-Informationen zum Hinzufügen einer `project.json`-Datei finden Sie unter [Paketverwaltung](functions-reference-fsharp.md#package).
+---
 
 ## <a name="input---attributes"></a>Eingabe: Attribute
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs)-Attribut.
 
 Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. Weitere Informationen zu diesen Einstellungen und anderen Eigenschaften, die Sie konfigurieren können, finden Sie im [folgenden Konfigurationsabschnitt](#input---configuration).
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+---
 
 ## <a name="input---configuration"></a>Eingabe: Konfiguration
 
@@ -1175,33 +1129,30 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="input---usage"></a>Eingabe: Verwendung
 
-Wenn in C#- und F#-Funktionen die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Siehe das [JavaScript-Beispiel](#input---javascript-examples).
+Wenn die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten.
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Wenn die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Aktualisierungen erfolgen beim Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Weitere Informationen finden Sie im [Eingabebeispiel](#input).
+
+---
 
 ## <a name="output"></a>Output
 
 Die Azure Cosmos DB-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank mithilfe der SQL-API.
 
-## <a name="output---examples"></a>Ausgabe – Beispiele
-
-Sehen Sie sich die sprachspezifischen Beispiele an:
-
-* [C#](#output---c-examples)
-* [C#-Skript (.csx)](#output---c-script-examples)
-* [JavaScript](#output---javascript-examples)
-* [F#](#output---f-examples)
-
-Sehen Sie sich auch das [Eingabebeispiel](#input---c-examples) mit `DocumentClient` an.
-
-[Ausgabebeispiele überspringen](#output---attributes)
-
-### <a name="output---c-examples"></a>Ausgabe: C#-Beispiele
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 * Warteschlangentrigger: Schreiben eines einzelnen Dokuments
-* Warteschlangentrigger: Schreiben von Dokumenten unter Verwendung von „IAsyncCollector“
+* Warteschlangentrigger: Schreiben von Dokumenten mit `IAsyncCollector`
 
 Die Beispiele beziehen sich auf einen einfachen `ToDoItem`-Typ:
 
@@ -1216,9 +1167,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Ausgabebeispiele überspringen](#output---attributes)
-
-#### <a name="queue-trigger-write-one-doc-c"></a>Warteschlangentrigger: Schreiben eines einzelnen Dokuments (C#)
+### <a name="queue-trigger-write-one-doc"></a>Warteschlangentrigger: Schreiben eines einzelnen Dokuments
 
 Das folgende Beispiel zeigt eine [ C#-Funktion](functions-dotnet-class-library.md), die einer Datenbank ein Dokument hinzufügt und dazu die Daten aus der Meldung vom Warteschlangenspeicher verwendet.
 
@@ -1249,9 +1198,7 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Ausgabebeispiele überspringen](#output---attributes)
-
-#### <a name="queue-trigger-write-docs-using-iasynccollector-c"></a>Warteschlangentrigger: Schreiben von Dokumenten unter Verwendung von „IAsyncCollector“ (C#)
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Warteschlangentrigger: Schreiben von Dokumenten unter Verwendung von „IAsyncCollector“
 
 Das folgende Beispiel zeigt eine [ C#-Funktion](functions-dotnet-class-library.md), die einer Datenbank eine Sammlung von Dokumenten hinzufügt und dabei Daten aus dem JSON-Code einer Warteschlangennachricht verwendet.
 
@@ -1286,18 +1233,14 @@ namespace CosmosDBSamplesV1
 }
 ```
 
-[Ausgabebeispiele überspringen](#output---attributes)
-
-### <a name="output---c-script-examples"></a>Ausgabe: C#-Skriptbeispiele
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
 
 Dieser Abschnitt enthält folgende Beispiele:
 
 * Warteschlangentrigger: Schreiben eines einzelnen Dokuments
-* Warteschlangentrigger: Schreiben von Dokumenten unter Verwendung von „IAsyncCollector“
+* Warteschlangentrigger: Schreiben von Dokumenten mit `IAsyncCollector`
 
-[Ausgabebeispiele überspringen](#output---attributes)
-
-#### <a name="queue-trigger-write-one-doc-c-script"></a>Warteschlangentrigger: Schreiben eines einzelnen Dokuments (C#-Skript)
+### <a name="queue-trigger-write-one-doc"></a>Warteschlangentrigger: Schreiben eines einzelnen Dokuments
 
 Das folgende Beispiel zeigt eine Azure Cosmos DB-Ausgabebindung in einer *function.json*-Datei sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
 
@@ -1359,7 +1302,7 @@ Der C#-Skriptcode sieht wie folgt aus:
     }
 ```
 
-#### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Warteschlangentrigger: Schreiben von Dokumenten unter Verwendung von „IAsyncCollector“
+### <a name="queue-trigger-write-docs-using-iasynccollector"></a>Warteschlangentrigger: Schreiben von Dokumenten unter Verwendung von „IAsyncCollector“
 
 Für das Erstellen mehrerer Dokumente können Sie eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
 
@@ -1418,9 +1361,7 @@ public static async Task Run(ToDoItem[] toDoItemsIn, IAsyncCollector<ToDoItem> t
 }
 ```
 
-[Ausgabebeispiele überspringen](#output---attributes)
-
-### <a name="output---javascript-examples"></a>Ausgabe: JavaScript-Beispiele
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Azure Cosmos DB-Ausgabebindung in einer *function.json*-Datei sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
 
@@ -1475,87 +1416,11 @@ Der JavaScript-Code sieht wie folgt aus:
     };
 ```
 
-[Ausgabebeispiele überspringen](#output---attributes)
-
-### <a name="output---f-examples"></a>Ausgabe: F#-Beispiele
-
-Das folgende Beispiel zeigt eine Azure Cosmos DB-Ausgabebindung in einer *function.json*-Datei sowie eine [F#-Funktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
-
-```json
-{
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Die Funktion erstellt Azure Cosmos DB-Dokumente im folgenden Format für die einzelnen Datensätze:
-
-```json
-{
-    "id": "John Henry-123456",
-    "name": "John Henry",
-    "employeeId": "123456",
-    "address": "A town nearby"
-}
-```
-
-Bindungsdaten in der Datei *function.json*:
-
-```json
-{
-    "name": "employeeDocument",
-    "type": "documentDB",
-    "databaseName": "MyDatabase",
-    "collectionName": "MyCollection",
-    "createIfNotExists": true,
-    "connection": "MyAccount_COSMOSDB",
-    "direction": "out"
-}
-```
-Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#output---configuration).
-
-Der F#-Code lautet wie folgt:
-
-```fsharp
-    open FSharp.Interop.Dynamic
-    open Newtonsoft.Json
-
-    type Employee = {
-      id: string
-      name: string
-      employeeId: string
-      address: string
-    }
-
-    let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
-      log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
-      let employee = JObject.Parse(myQueueItem)
-      employeeDocument <-
-        { id = sprintf "%s-%s" employee?name employee?employeeId
-          name = employee?name
-          employeeId = employee?employeeId
-          address = employee?address }
-```
-
-Dieses Beispiel erfordert die Datei `project.json`, die die NuGet-Abhängigkeiten `FSharp.Interop.Dynamic` und `Dynamitey` angibt:
-
-```json
-{
-    "frameworks": {
-        "net46": {
-          "dependencies": {
-            "Dynamitey": "1.0.2",
-            "FSharp.Interop.Dynamic": "3.0.0"
-           }
-        }
-    }
-}
-```
-
-Informationen zum Hinzufügen einer `project.json`-Datei finden Sie unter [Paketverwaltung](functions-reference-fsharp.md#package).
+---
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs)-Attribut.
 
@@ -1571,7 +1436,17 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
     }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-examples).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe](#output).
+
+# <a name="c-scripttabcsharp-script"></a>[C#-Skript](#tab/csharp-script)
+
+Attribute werden von C#-Skript nicht unterstützt.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+---
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 

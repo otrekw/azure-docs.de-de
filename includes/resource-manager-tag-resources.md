@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: ab55441650085f6ca89f05613fe74dd4ae3cba54
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: b1252c455c2dfad2963f914ee746bcb932e59aa9
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178477"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451499"
 ---
 1. Um die Tags für eine Ressource oder Ressourcengruppe anzuzeigen, suchen Sie in der Übersicht nach vorhandenen Tags. Wenn Sie noch keine Tags angewandt haben, ist die Liste leer.
    
@@ -52,9 +52,9 @@ So führen Sie einen Massenzuweisung von Tags zu mehreren Ressourcen durch
 
 So zeigen Sie alle Ressourcen mit einem Tag an
 
-1. Wählen Sie **Alle Dienste** und **Tags** aus.
+1. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus. Wählen Sie **Allgemein** und dann **Tags** aus.
 
-     ![Suchen nach Tag](./media/resource-manager-tag-resources/find-tags.png)
+     ![Suchen nach Tag](./media/resource-manager-tag-resources/find-tags-general.png)
 
 1. Wählen Sie das Tag zum Anzeigen von Ressourcen aus.
 
@@ -70,4 +70,4 @@ So zeigen Sie alle Ressourcen mit einem Tag an
 
 1. Die Ansicht ist über das Dashboard verfügbar.
 
-     ![Dashboard](./media/resource-manager-tag-resources/dashboard.png)
+     ![Dashboard](./media/resource-manager-tag-resources/dashboard-with-view.png)

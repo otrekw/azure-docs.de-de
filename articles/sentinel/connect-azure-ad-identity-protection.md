@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5dae8c4da46c750f69057f33d593f5bb7396a99e
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 5d73ce12d509b2ccc534e19a27124980f3b60044
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882251"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158885"
 ---
 # <a name="connect-data-from-azure-ad-identity-protection"></a>Verknüpfen von Daten aus Azure AD Identity Protection
 
@@ -46,7 +46,7 @@ Wenn Azure AD Identity Protection bereitgestellt ist und Daten erhält, können 
 2. Klicken Sie auf **Verbinden**, um das Streamen von Azure AD Identity Protection-Ereignissen an Azure Sentinel zu starten.
 
 
-6. Um in der Protokollanalyse (Log Analytics) das relevante Schema für die Azure AD Identity Protection-Warnungen zu verwenden, suchen Sie nach **IdentityProtectionLogs_CL**.
+6. Suchen Sie nach **SecurityAlert**, um in der Protokollanalyse das relevante Schema für die Azure AD Identity Protection-Warnungen zu verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument erfahren Sie, wie Sie Azure AD Identity Protection mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:

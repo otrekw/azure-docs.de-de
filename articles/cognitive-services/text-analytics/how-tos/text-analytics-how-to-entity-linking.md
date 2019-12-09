@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/12/2019
+ms.date: 11/21/2019
 ms.author: aahi
-ms.openlocfilehash: 5933c7ec56ded971e4daf96ea6d4302c04921f2f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae5222dcd05740ecb9747037b315c4e920b3eabd
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031423"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326638"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -33,7 +33,7 @@ Die Erkennung benannter Entitäten (Named Entity Recognition, NER) ist die Mögl
 
 ## <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 – öffentliche Vorschau
 
-Die [nächste Version der Named Entity Recognition]( https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral) steht jetzt als öffentliche Vorschauversion zur Verfügung. Sie enthält Updates sowohl für die Entitätsverknüpfung als auch für die Erkennung benannter Entitäten. 
+Die nächste Version der Named Entity Recognition steht jetzt als öffentliche Vorschauversion zur Verfügung. Sie enthält Updates sowohl für die Entitätsverknüpfung als auch für die Erkennung benannter Entitäten. Testen Sie es mit der [API-Testkonsole](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral).
 
 :::row:::
     :::column span="":::
@@ -120,6 +120,8 @@ Entitätsverknüpfung
 | Datetime      | Set           | „jeden Dienstag“     |
 | URL           | N/V\*         | "https:\//www.bing.com"    |
 | Email         | N/V\*         | "support@contoso.com" |
+| US-Telefonnummer  | N/V\*         | (nur US-Telefonnummern) "(312) 555-0176" |
+| IP-Adresse    | N/V\*         | "10.0.0.100" |
 
 \* Je nach Eingabe und extrahierten Entitäten können bestimmte Entitäten den `SubType` auslassen.  Alle aufgelisteten unterstützten Entitätstypen sind nur für Englisch, Chinesisch (vereinfacht), Französisch, Deutsch und Spanisch verfügbar.
 

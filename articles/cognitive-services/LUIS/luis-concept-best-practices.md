@@ -1,7 +1,7 @@
 ---
-title: Bewährte Methoden – LUIS
+title: Bewährte Methoden für das Entwickeln von LUIS-Apps
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit bewährten Methoden bei LUIS die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
+description: Erfahren Sie, wie Sie mit bewährten Methoden die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,14 +11,14 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 64d67edaf5affbc908fba7b6c261096589bc84d0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4be79338db71ad83204fae971da0b77885a8070
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73487615"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280921"
 ---
-# <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
+# <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App: 
 
 * Erstellen Sie Sprachmodelle (Absichten und Entitäten)

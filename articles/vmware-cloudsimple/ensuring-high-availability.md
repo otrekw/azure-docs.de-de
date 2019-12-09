@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5a48a75d70234b06942f5141402070c89c543f18
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: a3eed033ba6a1a6f9237116a53ec7751ae906fe4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901766"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206539"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 
@@ -30,7 +30,7 @@ Die CloudSimple-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in 
 | Fehler an Blattknoten-Switchport | JA | Redundante NIC |  |  |
 | Fehler an Blattknoten-Switch | JA | Redundante Blattknoten-Switches |  |  |
 | Rack-Fehler | JA | Platzierungsgruppen |  |  |
-| Netzwerkkonnektivität mit lokalem DC | JA  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
+| Netzwerkkonnektivität zum lokalen Rechenzentrum | JA  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
 | Netzwerkkonnektivität mit Azure | JA | |  | Redundante ExpressRoute-Leitungen |
 | Datacenter-Fehler | JA |  |  | Verfügbarkeitszonen |
 | Regionaler Fehler | JA  |  |  | Azure-Regionen |
@@ -47,7 +47,7 @@ Ein Benutzer, der eine private Cloud erstellt, kann eine Azure-Region und eine P
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
-Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Bei Verfügbarkeitszonen handelt es sich um spezielle physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Jede Region verfügt über eine Verfügbarkeitszone. Weitere Informationen finden Sie unter [„Was sind Verfügbarkeitszonen in Azure?“](../availability-zones/az-overview.md).
+Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Bei Verfügbarkeitszonen handelt es sich um spezielle physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Jede Region verfügt über eine Verfügbarkeitszone. Weitere Informationen finden Sie unter [Was sind Verfügbarkeitszonen in Azure?](../availability-zones/az-overview.md).
 
 ## <a name="redundant-azure-expressroute-circuits"></a>Redundante Azure ExpressRoute-Leitungen
 

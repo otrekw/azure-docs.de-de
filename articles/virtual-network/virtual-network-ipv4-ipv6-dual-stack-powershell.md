@@ -1,11 +1,11 @@
 ---
-title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer in Azure – PowerShell
+title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel – Load Balancer Basic –PowerShell
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie eine IPv6-Anwendung mit dualem Stapel in Azure Virtual Network mit Azure PowerShell bereitgestellt wird.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0b7f7a9198664693819143c306eeb1a020d22b7c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011434"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185488"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – PowerShell (Vorschau)
 
-In diesem Artikel wird veranschaulicht, wie Sie eine Anwendung mit dualem Stapel (IPv4 und IPv6) mit einem Basic-Load Balancer unter Verwendung der Azure CLI bereitstellen. Diese umfasst ein virtuelles Netzwerk mit dualem Stapel und ein Subnetz, einen Basic-Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs und einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen.
+In diesem Artikel wird veranschaulicht, wie Sie eine Anwendung mit dualem Stapel (IPv4 und IPv6) mit einem Basic-Load Balancer unter Verwendung von Azure PowerShell bereitstellen. Sie umfasst ein virtuelles Netzwerk mit dualem Stapel und ein Subnetz, einen Basic-Load Balancer mit dualen Front-End-Konfigurationen (IPv4 und IPv6), VMs mit NICs und einer dualen IP-Konfiguration, eine Netzwerksicherheitsgruppe und öffentliche IP-Adressen.
 
 Informationen zum Bereitstellen einer Anwendung mit dualem Stapel (IPv4 und IPv6) mithilfe von Load Balancer Standard finden Sie unter dem Thema zum [Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Load Balancer Standard mithilfe von Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 

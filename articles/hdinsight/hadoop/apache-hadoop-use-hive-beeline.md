@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/03/2019
-ms.openlocfilehash: d97470494af0d64cc20d78d69957d84a8acebc16
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/21/2019
+ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494896"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406247"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -71,7 +71,7 @@ Oder beim privaten Endpunkt:
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
 ```
 
-Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `<username>` durch das Anmeldekonto für Ihren Cluster. Denken Sie bei Clustern mit Enterprise-Sicherheitspaket daran, den vollständigen Benutzerprinzipalnamen (z.B. user@domain.com) zu verwenden. Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
+Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `<username>` durch das Anmeldekonto für Ihren Cluster. Verwenden Sie bei ESP-Clustern den vollständigen Benutzerprinzipalnamen (z. B. user@domain.com). Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
 
 Private Endpunkte zeigen auf einen Load Balancer im Tarif „Basic“, auf den nur über die VNETs zugegriffen werden kann, die mittels Peering in derselben Region verknüpft sind. Weitere Informationen finden Sie unter den [Einschränkungen im Zusammenhang mit globalem VNET-Peering und Load Balancern](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sie können den `curl`-Befehl mit der Option `-v` verwenden, um Konnektivitätsprobleme mit öffentlichen oder privaten Endpunkten vor der Verwendung von Beeline zu beheben.
 
@@ -85,17 +85,17 @@ Apache Spark stellt eine eigene Implementierung von HiveServer2 bereit, die manc
 
 Die verwendete Verbindungszeichenfolge ist etwas anders. Sie enthält `httpPath/sparkhive2` anstelle von `httpPath=/hive2`:
 
-```bash 
+```bash
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
 Oder beim privaten Endpunkt:
 
-```bash 
+```bash
 beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
 ```
 
-Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `<username>` durch das Anmeldekonto für Ihren Cluster. Denken Sie bei Clustern mit Enterprise-Sicherheitspaket daran, den vollständigen Benutzerprinzipalnamen (z.B. user@domain.com) zu verwenden. Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
+Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters. Ersetzen Sie `<username>` durch das Anmeldekonto für Ihren Cluster. Verwenden Sie bei ESP-Clustern den vollständigen Benutzerprinzipalnamen (z. B. user@domain.com). Ersetzen Sie `password` durch das Kennwort des Anmeldekontos für den Cluster.
 
 Private Endpunkte zeigen auf einen Load Balancer im Tarif „Basic“, auf den nur über die VNETs zugegriffen werden kann, die mittels Peering in derselben Region verknüpft sind. Weitere Informationen finden Sie unter den [Einschränkungen im Zusammenhang mit globalem VNET-Peering und Load Balancern](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Sie können den `curl`-Befehl mit der Option `-v` verwenden, um Konnektivitätsprobleme mit öffentlichen oder privaten Endpunkten vor der Verwendung von Beeline zu beheben.
 
@@ -264,7 +264,7 @@ Dies ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden 
     > [!NOTE]  
     > Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
-3. Verwenden Sie **STRG**+ **_X**, um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die **EINGABETASTE**.
+3. Verwenden Sie **STRG**+**X**, um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die **EINGABETASTE**.
 
 4. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen:
 
@@ -290,15 +290,10 @@ Dies ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die folgenden 
         | 2012-02-03    | 18:55:54      | SampleClass1  | [ERROR]       | incorrect     | id            |               |
         | 2012-02-03    | 19:25:27      | SampleClass4  | [ERROR]       | incorrect     | id            |               |
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
-        3 rows selected (1.538 seconds)
+        3 rows selected (0.813 seconds)
 
 ## <a id="summary"></a><a id="nextsteps"></a>Nächste Schritte
 
-Allgemeine Informationen zu Hive in HDInsight finden Sie im folgenden Artikel:
+* Allgemeinere Informationen zu Hive in HDInsight finden Sie unter [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md).
 
-* [Verwenden von Apache Hive mit Apache Hadoop in HDInsight](hdinsight-use-hive.md)
-
-Weitere Informationen zu anderen Methoden zur Verwendung von Hadoop in HDInsight finden Sie in den folgenden Artikeln:
-
-* [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
-* [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
+* Weitere Informationen zu anderen Methoden zur Verwendung von Hadoop in HDInsight finden Sie unter [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md).

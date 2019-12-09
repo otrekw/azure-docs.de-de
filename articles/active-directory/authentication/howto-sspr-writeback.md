@@ -1,22 +1,22 @@
 ---
-title: 'Gewusst wie: Konfigurieren von Kennwortrückschreiben für Azure AD SSPR – Azure Active Directory'
+title: Konfigurieren von Kennwortrückschreiben für SSPR – Azure Active Directory
 description: Verwenden von Azure AD und Azure AD Connect zum Rückschreiben von Kennwörtern in ein lokales Verzeichnis
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17a2661883dd069e8cb719672f6b92442f1a8a0a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1acda877ecadc8ad0abd09b78d5453743e2470b1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357500"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381156"
 ---
 # <a name="how-to-configure-password-writeback"></a>Gewusst wie: Konfigurieren von Kennwortrückschreiben
 
@@ -59,7 +59,7 @@ Damit Kennwortrückschreiben verwendet werden kann, muss in Ihrem Mandanten eine
 > Eigenständige Office 365-Lizenzierungspläne *bieten keine Unterstützung für Self-Service-Kennwortzurücksetzung/-änderung/-entsperrung mit lokalem Rückschreiben* und erfordern, dass Sie einen der obigen Pläne haben, damit diese Funktion verwendbar ist.
 >
 
-## <a name="active-directory-permissions"></a>Active Directory-Berechtigungen
+## <a name="active-directory-permissions-and-on-premises-password-complexity-policies"></a>Active Directory-Berechtigungen und lokale Richtlinien zur Kennwortkomplexität 
 
 Für das in Azure AD Connect angegebene Konto müssen die folgenden Elemente festgelegt sein, wenn SSPR möglich sein soll:
 
@@ -98,6 +98,8 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
     * **lockoutTime schreiben**
     * **pwdLastSet schreiben**
 9. Wählen Sie auf **Übernehmen/OK** aus, um die Änderungen zu übernehmen und alle geöffneten Dialogfelder zu schließen.
+
+Da es sich um eine lokale Autoritätsquelle handelt, gelten die Kennwortkomplexitätsrichtlinien von dieser verbundenen Datenquelle. Achten Sie darauf, dass Sie die vorhandenen Gruppenrichtlinien für „Minimales Kennwortalter“ geändert haben. Die Gruppenrichtlinie darf nicht auf 1 festgelegt werden, was bedeutet, dass ein Kennwort mindestens einen Tag alt sein muss, damit es aktualisiert werden kann. Sie müssen diese Einstellung auf 0 festlegen. Diese Einstellung finden Sie in `gpmc.msc` unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**. Führen Sie `gpupdate /force` aus, damit die Änderung wirksam wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

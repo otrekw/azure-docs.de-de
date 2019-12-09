@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: c482291e665656bf16f28cd114a9cb8141ae77c3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083999"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384298"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -28,6 +28,15 @@ Citrix macht Windows Virtual Desktop noch leistungsfähiger mit stabilen Enterpr
 
 - [Zur Partnerwebsite](https://more.citrix.com/wvd).
 
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse-Logo](./media/partners/cloudhouse.png)
+
+Cloudhouse ist ein Anbieter von Mehrwertdiensten für Windows Virtual Desktop, der Kunden einen schlüsselfertigen Anwendungsmigrationsdienst anbietet, mit dem alle Anwendungen, auch solche, die mit modernen Windows-Betriebssystemen nicht kompatibel sind, in die Windows Virtual Desktop-Umgebung verschoben werden können, sodass Kunden die Vorteile von Windows 10 im Multisessioneinsatz voll ausschöpfen können. 
+
+Durch die Nutzung der bewährten Cloudhouse-Containerisierungstechnologie übernimmt der Cloudhouse-Dienst alle Anwendungen, auch solche, die für Windows XP, Windows 7 oder Windows 8 entwickelt wurden, und stellt sie auf einem modernen Windows Virtual Desktop bereit, ohne dass Codeänderungen erforderlich sind oder die Benutzerfreundlichkeit beeinträchtigt wird. Cloudhouse steigert den Wert von Windows Virtual Desktop noch weiter, indem es Anwendungen vom zugrunde liegenden Betriebssystem isoliert, sodass Windows-Wartungsupdates ohne Beeinträchtigung der containerisierten Anwendung bereitgestellt werden können. 
+
+- [Zur Partnerwebsite](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="vmware"></a>VMware
 

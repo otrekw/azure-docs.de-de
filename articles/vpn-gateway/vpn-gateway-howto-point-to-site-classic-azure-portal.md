@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 74940f3b89237233acd575aa5df441163e00d178
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845456"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424158"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der Zertifikatauthentifizierung (klassisch)
 
@@ -89,7 +89,7 @@ Stellen Sie zunächst sicher, dass Sie über ein Azure-Abonnement verfügen. Wen
 
 Falls Sie noch nicht über ein virtuelles Netzwerk (VNET) verfügen, erstellen Sie eines. Die Screenshots dienen lediglich zur Veranschaulichung. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Gehen Sie wie folgt vor, um ein VNet über das Azure-Portal zu erstellen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann **Ressource erstellen** aus. Die Seite **Neu** wird geöffnet. 
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) oder auf der **Startseite** die Option **Ressource erstellen** aus. Die Seite **Neu** wird geöffnet.
 
 2. Geben Sie *virtuelles Netzwerk* in das Feld **Marketplace durchsuchen** ein, und wählen Sie in der zurückgegebenen Liste den Eintrag **Virtuelles Netzwerk** aus. Die Seite **Virtuelles Netzwerk** wird geöffnet.
 
@@ -210,7 +210,7 @@ Um eine P2S-Verbindung mit einem anderen Clientcomputer als dem für die Generie
 >
 >
 
-1. Um eine Verbindung mit Ihrem VNET herzustellen, navigieren Sie auf dem Clientcomputer zu **VPN-Verbindungen** im Azure-Portal und suchen nach der VPN-Verbindung, die Sie erstellt haben. Die VPN-Verbindung hat den gleichen Namen wie Ihr virtuelles Netzwerk. Wählen Sie **Verbinden**aus. Wenn eine Popupmeldung zu dem Zertifikat angezeigt wird, wählen Sie **Weiter** zur Verwendung erhöhter Rechte aus.
+1. Um eine Verbindung mit Ihrem VNET herzustellen, wechseln Sie auf dem Clientcomputer im Azure-Portal zu **VPN-Verbindungen**, und suchen Sie nach der VPN-Verbindung, die Sie erstellt haben. Die VPN-Verbindung hat den gleichen Namen wie Ihr virtuelles Netzwerk. Wählen Sie **Verbinden**aus. Wenn eine Popupmeldung zu dem Zertifikat angezeigt wird, wählen Sie **Weiter** zur Verwendung erhöhter Rechte aus.
 
 2. Wählen Sie auf der Statusseite **Verbindung** **Verbinden** aus, um die Verbindung herzustellen. Wenn der Bildschirm **Zertifikat auswählen** angezeigt wird, stellen Sie sicher, dass das angezeigte Clientzertifikat richtig ist. Falls nicht, wählen Sie das richtige Zertifikat in der Dropdownliste aus, und wählen Sie dann **OK** aus.
 
@@ -277,7 +277,7 @@ Sie können ein Clientzertifikat sperren, indem Sie den Fingerabdruck der Sperrl
 
 1. Rufen Sie den Fingerabdruck des Clientzertifikats ab. Weitere Informationen finden Sie unter [Gewusst wie: Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Kopieren Sie die Informationen in einen Text-Editor, und entfernen Sie alle Leerzeichen, sodass eine fortlaufende Zeichenfolge entsteht.
-3. Navigieren Sie zum klassischen virtuellen Netzwerk. Wählen Sie **Point-to-Site-VPN-Verbindung** und dann **Zertifikat verwalten** aus, um die Seite **Zertifikate** zu öffnen.
+3. Wechseln Sie zum klassischen virtuellen Netzwerk. Wählen Sie **Point-to-Site-VPN-Verbindung** und dann **Zertifikat verwalten** aus, um die Seite **Zertifikate** zu öffnen.
 4. Wählen Sie **Sperrliste** zum Öffnen der Seite **Sperrliste** aus. 
 5. Wählen Sie **Zertifikat hinzufügen** aus, um die Seite **Zertifikat der Sperrliste hinzufügen** zu öffnen.
 6. Fügen Sie in **Fingerabdruck** den Zertifikatfingerabdruck als durchgehende Textzeile (ohne Leerzeichen) ein. Wählen Sie **OK** aus, um den Vorgang abzuschließen.

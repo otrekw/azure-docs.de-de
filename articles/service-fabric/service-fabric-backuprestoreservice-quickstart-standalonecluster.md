@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/24/2019
 ms.author: hrushib
-ms.openlocfilehash: 559f6cce7044d57c0a17fc3fe17f1c61f710913a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: feec830a81b9afe572e05bb6be21ad39edd7af04
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013329"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232489"
 ---
 # <a name="periodic-backup-and-restore-in-azure-service-fabric"></a>Regelmäßiges Sichern und Wiederherstellen in Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -172,6 +172,16 @@ $url = "http://localhost:19080/BackupRestore/BackupPolicies/$/Create?api-version
 Invoke-WebRequest -Uri $url -Method Post -Body $body -ContentType 'application/json'
 ```
 
+#### <a name="using-service-fabric-explorer"></a>Verwenden von Service Fabric Explorer
+
+1. Navigieren Sie in Service Fabric Explorer zur Registerkarte „Sicherungen“, und wählen Sie „Aktionen“ > „Erstellen“ > „Sicherungsrichtlinie“ aus.
+
+    ![Sicherungsrichtlinie erstellen][6]
+
+2. Geben Sie alle Informationen ein. Bei eigenständigen Clustern sollte „FileShare“ ausgewählt werden.
+
+    ![Erstellen einer Dateifreigabe für eine Sicherungsrichtlinie][7]
+
 ### <a name="enable-periodic-backup"></a>Aktivieren der regelmäßigen Sicherung
 Nach dem Definieren der Richtlinie zum Erfüllen der Datenschutzanforderungen der Anwendung muss die Sicherungsrichtlinie mit der Anwendung verknüpft werden. Je nach Anforderungen kann die Sicherungsrichtlinie einer Anwendung, einem Dienst oder einer Partition zugeordnet werden.
 
@@ -293,3 +303,5 @@ Um Sicherungen in Service Fabric Explorer anzuzeigen, navigieren Sie zu einer Pa
 [3]: ./media/service-fabric-backuprestoreservice/enable-app-backup.png
 [4]: ./media/service-fabric-backuprestoreservice/enable-application-backup.png
 [5]: ./media/service-fabric-backuprestoreservice/backup-enumeration.png
+[6]: ./media/service-fabric-backuprestoreservice/create-bp.png
+[7]: ./media/service-fabric-backuprestoreservice/create-bp-fileshare.png

@@ -1,6 +1,6 @@
 ---
-title: Azure Resource Manager-Unterstützung für Load Balancer | Microsoft Docs
-description: Verwenden von PowerShell für Load Balancer mit Azure Resource Manager. Verwenden von Vorlagen für Lastenausgleich
+title: Unterstützung von Azure Resource Manager für Load Balancer
+description: In diesem Artikel verwenden Sie Azure PowerShell und Vorlagen mit Azure Load Balancer.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: 839b607b7787d51151401737848a46d7b66229dd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 57a60a65dee995695224aa1b451e848ea8768ab1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275491"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215387"
 ---
-# <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Verwenden der Azure Resource Manager-Unterstützung mit Azure Load Balancer
+# <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Unterstützung von Azure Resource Manager für Azure Load Balancer
 
 
 
@@ -29,7 +29,7 @@ Azure Resource Manager ist das bevorzugte Verwaltungsframework für Dienste in A
 Mit Resource Manager enthält Azure Load Balancer die folgenden untergeordneten Ressourcen:
 
 * Front-End-IP-Konfiguration: ein Lastenausgleich kann ein oder mehrere Front-End-IP-Adressen umfassen, die auch als virtuelle IPs (VIPs) bezeichnet werden. Diese IP-Adressen dienen als Eingang für den Datenverkehr.
-* Back-End-Adresspool: IP-Adressen, die der Netzwerkschnittstellenkarte des virtuellen Computers zugeordnet ist, an die die Last verteilt wird.
+* Back-End-Adresspool: Bei diesem Pool handelt es sich um eine Sammlung von IP-Adressen, die der Netzwerkschnittstellenkarte des virtuellen Computers zugeordnet ist, an die die Last verteilt wird.
 * Lastenausgleichsregeln: Eine Regeleigenschaft ordnet eine bestimmte IP-/Port-Kombination des Front-Ends einer IP-Adressen-/Port-Kombination des Back-Ends zu. Ein einzelnes Lastenausgleichsmodul kann mehrere Lastenausgleichsregeln umfassen. Jede Regel ist eine Kombination aus der Front-End-IP und dem Front-End-Port sowie der Back-End-IP und dem Back-End-Port von virtuellen Computern.
 * Überprüfungen – Mit Überprüfungen können Sie die Integrität der VM-Instanzen nachverfolgen. Schlägt eine Integritätsüberprüfung fehl, wird die VM-Instanz automatisch aus der Rotation entfernt.
 * NAT-Regeln für eingehenden Datenverkehr: NAT-Regeln definieren den Eingangsdatenverkehr, der durch die Front-End-IP fließt und an die Back-End-IP verteilt wird.
@@ -40,7 +40,17 @@ Mit Resource Manager enthält Azure Load Balancer die folgenden untergeordneten 
 
 Mit dem Azure-Ressourcen-Manager können Sie Ihre Anwendungen mit einer deklarativen Vorlage bereitstellen. In einer Vorlage können Sie mehrere Dienste zusammen mit ihren Abhängigkeiten bereitstellen. Sie verwenden die gleiche Vorlage, um Ihre Anwendung während jeder Phase des Anwendungslebenszyklus wiederholt bereitzustellen.
 
-Vorlagen können Definitionen für virtuelle Computer, virtuelle Netzwerke, Verfügbarkeitsgruppen, Netzwerkkarten, Speicherkonten, Lastenausgleichsmodule, Netzwerksicherheitsgruppen und öffentliche IP-Adressen umfassen. Mit Vorlagen können Sie alle Elemente erstellen, die Sie für eine komplexe Anwendung benötigen. Die Vorlagendatei kann zur Versionskontrolle und Zusammenarbeit in ein Content Management-System eingecheckt werden.
+Vorlagen können folgende Definitionen enthalten:
+* **Virtuelle Computer**
+* **Virtuelle Netzwerke**
+* **Verfügbarkeitsgruppen**
+* **Netzwerkschnittstellen (NICs)**
+* **Speicherkonten**
+* **Load Balancer**
+* **Netzwerksicherheitsgruppen**
+* **Öffentliche IP-Adressen.** 
+
+Mit Vorlagen können Sie alle Elemente erstellen, die Sie für eine komplexe Anwendung benötigen. Die Vorlagendatei kann zur Versionskontrolle und Zusammenarbeit in ein Content Management-System eingecheckt werden.
 
 [Weitere Informationen zu Vorlagen](../azure-resource-manager/resource-manager-template-walkthrough.md)
 
@@ -65,6 +75,6 @@ Erste Schritte mit Cmdlets, Befehlszeilentools und REST-APIs von Azure Resource 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch einen [Lastenausgleich für Internetzugriff erstellen](load-balancer-get-started-internet-arm-ps.md) und die Art des [Verteilungsmodus](load-balancer-distribution-mode.md) des Lastenausgleichs für ein bestimmtes Datenverkehrsverhalten im Netzwerk konfigurieren.
+Sie können einen [Lastenausgleich mit Internetzugriff erstellen](load-balancer-get-started-internet-arm-ps.md) und die Art des [Verteilungsmodus](load-balancer-distribution-mode.md) für ein bestimmtes Verhalten des Datenverkehrs im Netzwerk konfigurieren.
 
-Erfahren Sie, wie Sie [TCP-Leerlauftimeout-Einstellungen für ein Lastenausgleichsmodul](load-balancer-tcp-idle-timeout.md)verwalten. Dies ist wichtig, wenn Ihre Anwendung Verbindungen für Server hinter einem Lastenausgleichsmodul beibehalten muss.
+Erfahren Sie, wie Sie [TCP-Leerlauftimeout-Einstellungen für ein Lastenausgleichsmodul](load-balancer-tcp-idle-timeout.md)verwalten. Diese Einstellungen sind wichtig, wenn Ihre Anwendung Verbindungen für Server hinter einem Lastenausgleichsmodul beibehalten muss.

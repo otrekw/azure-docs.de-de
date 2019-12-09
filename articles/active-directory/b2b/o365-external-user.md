@@ -1,5 +1,5 @@
 ---
-title: Externe Office 365-Freigaben und B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation
+title: 'Azure Active Directory: Externe Office 365-Freigaben und B2B Collaboration'
 description: Erläutert die gemeinsame Verwendung von Ressourcen mit externen Partnern, die Office 365- und Azure Active Directory B2B-Zusammenarbeit verwenden.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f6cdc782f091709ed00358dd309e9fd4ccfd0eb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d70aed6fbe0f09ea6284f913c88186ecf94e297
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66807694"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272267"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Externe Office 365-Freigaben und Azure Active Directory B2B-Zusammenarbeit
 

@@ -1,21 +1,15 @@
 ---
 title: Verwalten des Azure Blockchain-Diensts mit der Azure CLI
-description: Erstellen und Verwalten des Azure Blockchain-Diensts mit der Azure CLI
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+description: Verwalten von Azure Blockchain Service mit der Azure CLI
+ms.date: 11/22/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: 4dd58f2542674633f2d5e2a1724adc7934d7f030
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.reviewer: janders
+ms.openlocfilehash: ac75be644877905c1517395c1c789b1ea16fd49c
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307043"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455582"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Verwalten des Azure Blockchain-Diensts mit der Azure CLI
 
@@ -30,7 +24,12 @@ Ersetzen Sie in den folgenden Beispielen die Beispiel-`<parameter names>` durch 
 In folgenden Beispiel wird ein Blockchainmitglied im Azure Blockchain-Dienst erstellt, das das Quorum-Ledgerprotokoll in einem neuen Konsortium ausführt.
 
 ```azurecli
-az resource create --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --is-full-object --properties "{ \"location\": \"<myBlockchainLocation>\", \"properties\": {\"password\": \"<myStrongPassword>\", \"protocol\": \"Quorum\", \"consortium\": \"<myConsortiumName>\", \"consortiumManagementAccountPassword\": \"<myConsortiumManagementAccountPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] }, \"sku\": { \"name\": \"<skuName>\" } }"
+az resource create \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --is-full-object \
+                     --properties '{ "location":"<myBlockchainLocation>", "properties": {"password":"<myStrongPassword>", "protocol":"Quorum","consortium":"<myConsortiumName>", "consortiumManagementAccountPassword":"<myConsortiumManagementAccountPassword>", "firewallRules":[{"ruleName":"<myRuleName>","startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}, "sku":{"name":"<skuName>"}}'
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -52,8 +51,14 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName> --re
 Im folgenden Beispiel wird das Kennwort eines Blockchainmitglieds geändert.
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.password="<myStrongPassword>" --remove properties.consortiumManagementAccountAddress
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.password='<myStrongPassword>' \
+                     --remove properties.consortiumManagementAccountAddress
 ```
+
 | Parameter | BESCHREIBUNG |
 |---------|-------------|
 | **resource-group** | Name der Ressourcengruppe, in der die Ressourcen des Azure Blockchain-Diensts erstellt werden. |
@@ -65,7 +70,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 Erstellen Sie einen Transaktionsknoten in einem vorhandenen Blockchainmitglied. Durch Hinzufügen von Transaktionsknoten können Sie die Sicherheitsisolation erhöhen oder die Last verteilen. Sie können beispielsweise über einen Transaktionsknotenendpunkt für verschiedene Clientanwendungen verfügen.
 
 ```azurecli
-az resource create --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --is-full-object --properties "{ \"location\": \"<myRegion>\", \"properties\": { \"password\": \"<myStrongPassword>\", \"firewallRules\": [ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ] } }"
+az resource create \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --is-full-object \
+                     --properties '{"location":"<myRegion>", "properties":{"password":"<myStrongPassword>", "firewallRules":[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]}}'
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -83,7 +93,11 @@ az resource create --resource-group <myResourceGroup> --name <myMemberName>/tran
 Im folgenden Beispiel wird das Kennwort des Transaktionsknotens geändert.
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers  --set properties.password="<myStrongPassword>"
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.password='<myStrongPassword>'
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -97,7 +111,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName>/tran
 Das Verwaltungskonto des Konsortiums wird zur Verwaltung der Mitgliedschaften im Konsortium verwendet. Jedes Mitglied wird eindeutig durch ein Konsortiumverwaltungskonto identifiziert. Sie können das Kennwort des Kontos mit dem folgenden Befehl ändern:
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.consortiumManagementAccountPassword="<myConsortiumManagementAccountPassword>" --remove properties.consortiumManagementAccountAddress
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.consortiumManagementAccountPassword='<myConsortiumManagementAccountPassword>' \
+                     --remove properties.consortiumManagementAccountAddress
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -109,7 +128,12 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 ## <a name="update-firewall-rules"></a>Aktualisieren von Firewallregeln
 
 ```azurecli
-az resource update --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers --set properties.firewallRules="[ { \"ruleName\": \"<myRuleName>\", \"startIpAddress\": \"<myStartIpAddress>\", \"endIpAddress\": \"<myEndIpAddress>\" } ]" --remove properties.consortiumManagementAccountAddress
+az resource update \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers \
+                     --set properties.firewallRules='[{"ruleName":"<myRuleName>", "startIpAddress":"<myStartIpAddress>", "endIpAddress":"<myEndIpAddress>"}]' \
+                     --remove properties.consortiumManagementAccountAddress
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -125,7 +149,11 @@ az resource update --resource-group <myResourceGroup> --name <myMemberName> --re
 Mit API-Schlüsseln erhalten Sie Zugriff auf Knoten, ähnlich wie mit einem Benutzernamen und einem Kennwort. Es gibt zwei API-Schlüssel, die die Schlüsselrotation unterstützen. Verwenden Sie den folgenden Befehl, um Ihre API-Schlüssel aufzulisten:
 
 ```azurecli
-az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "listApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers
+az resource invoke-action \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                            --action "listApiKeys" \
+                            --resource-type Microsoft.Blockchain/blockchainMembers
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -138,9 +166,13 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 Verwenden Sie den folgenden Befehl, um Ihre API-Schlüssel erneut zu generieren:
 
 ```azurecli
-az resource invoke-action --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --action "regenerateApiKeys" --resource-type Microsoft.Blockchain/blockchainMembers --request-body '{"keyName":"<keyValue>"}'
+az resource invoke-action \
+                            --resource-group <myResourceGroup> \
+                            --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                            --action "regenerateApiKeys" \
+                            --resource-type Microsoft.Blockchain/blockchainMembers \
+                            --request-body '{"keyName":"<keyValue>"}'
 ```
-
 
 | Parameter | BESCHREIBUNG |
 |---------|-------------|
@@ -153,20 +185,26 @@ az resource invoke-action --resource-group <myResourceGroup> --name <myMemberNam
 Im folgenden Beispiel wird der Transaktionsknoten des Blockchainmitglieds gelöscht.
 
 ```azurecli
-az resource delete --resource-group <myResourceGroup> --name <myMemberName>/transactionNodes/<myTransactionNode> --resource-type Microsoft.Blockchain/blockchainMembers
+az resource delete \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName>/transactionNodes/<myTransactionNode> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers
 ```
 
 | Parameter | BESCHREIBUNG |
 |---------|-------------|
 | **resource-group** | Der Name der Ressourcengruppe, in der sich die Ressourcen des Azure Blockchain-Diensts befinden. |
-| **name** | Der Name des Blockchainmitglieds von Azure Blockchain mit dem Namen des neuen Transaktionsknotens, der gelöscht werden soll. |
+| **name** | Der Name des Azure Blockchain Service-Blockchainmitglieds mit dem Namen des neuen Transaktionsknotens, der gelöscht werden soll |
 
 ## <a name="delete-a-blockchain-member"></a>Löschen eines Blockchainmitglieds
 
 Im folgenden Beispiel wird das Blockchainmitglied gelöscht.
 
 ```azurecli
-az resource delete --resource-group <myResourceGroup> --name <myMemberName> --resource-type Microsoft.Blockchain/blockchainMembers
+az resource delete \
+                     --resource-group <myResourceGroup> \
+                     --name <myMemberName> \
+                     --resource-type Microsoft.Blockchain/blockchainMembers
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -179,7 +217,10 @@ az resource delete --resource-group <myResourceGroup> --name <myMemberName> --re
 ### <a name="grant-access-for-azure-ad-user"></a>Gewähren des Zugriffs für einen Azure AD-Benutzer
 
 ```azurecli
-az role assignment create --role <role> --assignee <assignee> --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
+az role assignment create \
+                            --role <role> \
+                            --assignee <assignee> \
+                            --scope /subscriptions/<subId>/resourceGroups/<groupName>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -194,9 +235,9 @@ Gewähren Sie einem Azure AD-Benutzer Knotenzugriff auf ein **Blockchainmitglied
 
 ```azurecli
 az role assignment create \
-  --role "myRole" \
-  --assignee user@contoso.com \
-  --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
+                            --role 'myRole' \
+                            --assignee user@contoso.com \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
 **Beispiel:**
@@ -205,16 +246,19 @@ Gewähren Sie einem Azure AD-Benutzer Knotenzugriff auf einen **Blockchaintransa
 
 ```azurecli
 az role assignment create \
-  --role "MyRole" \
-  --assignee user@contoso.com \
-  --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
+                            --role 'MyRole' \
+                            --assignee user@contoso.com \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
 ### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Gewähren des Knotenzugriffs für Azure AD-Gruppen oder Anwendungsrollen
 
 ```azurecli
-az role assignment create --role <role> --assignee-object-id <assignee_object_id>
+az role assignment create \
+                            --role <role> \
+                            --assignee-object-id <assignee_object_id>
 ```
+
 | Parameter | BESCHREIBUNG |
 |---------|-------------|
 | **role** | Der Name der Azure AD-Rolle. |
@@ -227,15 +271,18 @@ Gewähren des Knotenzugriffs für **Anwendungsrollen**
 
 ```azurecli
 az role assignment create \
-  --role "myRole" \
-  --assignee-object-id 22222222-2222-2222-2222-222222222222 \
-  --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
+                            --role 'myRole' \
+                            --assignee-object-id 22222222-2222-2222-2222-222222222222 \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
 ### <a name="remove-azure-ad-node-access"></a>Entfernen des Azure AD-Knotenzugriffs
 
 ```azurecli
-az role assignment delete --role <myRole> --assignee <assignee> --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
+az role assignment delete \
+                            --role <myRole> \
+                            --assignee <assignee> \
+                            --scope /subscriptions/mySubscriptionId/resourceGroups/<myResourceGroup>/providers/Microsoft.Blockchain/blockchainMembers/<myMemberName>/transactionNodes/<myTransactionNode>
 ```
 
 | Parameter | BESCHREIBUNG |
@@ -246,5 +293,4 @@ az role assignment delete --role <myRole> --assignee <assignee> --scope /subscri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Konfigurieren von Azure Blockchain-Transaktionsknoten mit dem Azure-Portal](configure-transaction-nodes.md)
+Informationen zum [Konfigurieren von Azure Blockchain Service-Transaktionsknoten mit dem Azure-Portal](configure-transaction-nodes.md)

@@ -1,5 +1,5 @@
 ---
-title: Indizieren von JSON-Blobs aus Azure Blob-Indexer für die Volltextsuche
+title: Durchsuchen von JSON-Blobs
 titleSuffix: Azure Cognitive Search
 description: Durchforsten von Azure-JSON-Blobs nach Textinhalten mithilfe des Blobindexers der kognitiven Azure-Suche. Indexer automatisieren die Datenerfassung für ausgewählte Datenquellen wie Azure Blob Storage.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f8ddec95b92121c8dad4a39cf0c7b3f1798ec8ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 37fc78971124240077a59d4ad99aa06cc408dbae
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72789502"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533969"
 ---
 # <a name="how-to-index-json-blobs-using-a-blob-indexer-in-azure-cognitive-search"></a>Indizieren von JSON-Blobs mit einem Blobindexer in der kognitiven Azure-Suche
 
@@ -33,7 +33,7 @@ JSON-Blobs in Azure Blob Storage bestehen normalerweise entweder aus einem einze
 
 Die einfachste Methode zum Indizieren von JSON-Dokumenten ist die Verwendung eines Assistenten im [Azure-Portal](https://portal.azure.com/). Der [**Datenimport**](search-import-data-portal.md)-Assistent kann durch das Analysieren von Metadaten im Azure-Blobcontainer einen Standardindex erstellen, Quellfelder Zielindexfeldern zuordnen und den Index in einem einzigen Vorgang laden. Je nach Größe und Komplexität der Quelldaten können Sie auch innerhalb von Minuten einen funktionsfähigen Volltextsuchindex erstellen.
 
-Sie sollten für die kognitive Azure-Suche und Azure Storage dasselbe Azure-Abonnement verwenden, vorzugsweise in derselben Region.
+Es wird empfohlen, die gleiche Region oder den gleichen Speicherort für Azure Cognitive Search und Azure Storage zu verwenden, um geringere Latenzzeiten zu erreichen und Bandbreitengebühren zu vermeiden.
 
 ### <a name="1---prepare-source-data"></a>1\. Vorbereiten von Quelldaten
 
@@ -65,17 +65,11 @@ Auf der Seite **Datenquelle** muss die Quelle **Azure Blob Storage** lauten und 
 
    ![Definition der Blobdatenquelle](media/search-howto-index-json/import-wizard-json-data-source.png)
 
-### <a name="4---skip-the-add-cognitive-search-page-in-the-wizard"></a>4\. Überspringen der Seite „Kognitive Suche hinzufügen“ im Assistenten
+### <a name="4---skip-the-enrich-content-page-in-the-wizard"></a>Schritt 4: Überspringen der Seite „Inhalte anreichern“ im Assistenten
 
-Das Hinzufügen kognitiver Qualifikationen ist für den Import eines JSON-Dokuments nicht erforderlich. Wenn Sie der Indizierungspipeline keine [KI-Anreicherung hinzufügen](cognitive-search-concept-intro.md) möchten, können Sie diesen Schritt überspringen.
+Das Hinzufügen kognitiver Qualifikationen (für Anreicherungen) ist keine Importanforderung. Wenn Sie der Indizierungspipeline keine [KI-Anreicherung hinzufügen](cognitive-search-concept-intro.md) möchten, können Sie diesen Schritt überspringen.
 
-Um den Schritt zu überspringen, wechseln Sie zunächst zur nächsten Seite.
-
-   ![Nächste Seite, Schaltfläche für kognitive Suche](media/search-get-started-portal/next-button-add-cog-search.png)
-
-Von dieser Seite aus können Sie zur Indexanpassung springen.
-
-   ![Überspringen des Schritts zu kognitiven Qualifikationen](media/search-get-started-portal/skip-cog-skill-step.png)
+Klicken Sie auf die blauen Schaltflächen ganz unten auf der Seite (für „Weiter“ und „Überspringen“), um diesen Schritt zu überspringen.
 
 ### <a name="5---set-index-attributes"></a>5\. Festlegen von Indexattributen
 

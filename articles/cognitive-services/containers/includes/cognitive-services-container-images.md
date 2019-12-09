@@ -6,22 +6,22 @@ manager: nitinme
 description: Zwei Tabellen, die die Containerregistrierungen, Repositorys und Imagenamen für alle Cognitive Service-Angebote darstellen.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: ae11fe785237a02652af1f16aaba1f1bac5ecd62
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2058dd6e52ddb417e24368b27384df9a222c378e
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961912"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74142197"
 ---
 ### <a name="container-repositories-and-images"></a>Containerrepositorys und -images
 
-Die folgenden Tabellen stellen eine umfassende Liste der verfügbaren Containerimages dar, die von Azure Cognitive Services geboten werden.
+Die folgenden Tabellen stellen eine Liste der verfügbaren Containerimages dar, die von Azure Cognitive Services geboten werden. Eine vollständige Liste aller verfügbaren Namen für Containerimages und ihrer verfügbaren Tags finden Sie unter [Cognitive Services-Containerimagetags](../container-image-tags.md).
 
 #### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Öffentliche „nicht verwaltete“ Vorschau (Containerregistrierung: `mcr.microsoft.com`)
 
-Die Microsoft-Containerregistrierung hostet alle öffentlich verfügbaren, „nicht verwalteten“ Container für Cognitive Services.
+Die Microsoft-Containerregistrierung (MCR) syndikalisiert alle öffentlich verfügbaren, „nicht verwalteten“ Container für Cognitive Services. Sie sind auch direkt über den [Docker-Hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)verfügbar.
 
 | Dienst | Container | Containerregistrierung/Repository/Imagename |
 |--|--|--|

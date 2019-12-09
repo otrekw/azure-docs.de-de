@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669091"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382283"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -248,6 +249,10 @@ So leiten Sie Produktionsdatenverkehr automatisch weiter:
 Nach dem Speichern der Einstellung wird der angegebene Prozentsatz von Clients nach dem Zufallsprinzip an den produktionsfremden Slot weitergeleitet. 
 
 Sobald ein Client automatisch an einen bestimmten Slot weitergeleitet wird, ist er für die Dauer der Clientsitzung auf diesen Slot festgelegt. Im Clientbrowser sehen Sie anhand des Cookies `x-ms-routing-name` in Ihren HTTP-Headern, mit welchem Slot Ihre Sitzung verknüpft ist. Anforderungen, die an den Stagingslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=staging`. Anforderungen, die an den Produktionsslot weitergeleitet werden, haben das Cookie `x-ms-routing-name=self`.
+
+   > [!NOTE]
+   > Neben dem Azure-Portal können Sie auch den Befehl [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) in der Azure-Befehlszeilenschnittstelle verwenden, um die Prozentwerte für das Routing von CI/CD-Tools wie DevOps-Pipelines oder anderen Automatisierungssystemen festzulegen.
+   > 
 
 ### <a name="route-production-traffic-manually"></a>Manuelles Weiterleiten von Produktionsdatenverkehr
 

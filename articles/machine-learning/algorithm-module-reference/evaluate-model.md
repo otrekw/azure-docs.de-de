@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497909"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214572"
 ---
 # <a name="evaluate-model-module"></a>Modul „Evaluate Model“
 
@@ -26,7 +26,6 @@ Mithilfe dieses Moduls können Sie die Genauigkeit eines trainierten Modells mes
   
 -   **Klassifizierungsmodelle**    
 -   **Regressionsmodelle**    
-
 
 
 > [!TIP]
@@ -107,7 +106,7 @@ Die folgenden Metriken werden bei der Auswertung von Klassifizierungsmodellen er
 
 ##  <a name="bkmk_regression"></a> Metriken für Regressionsmodelle
  
-Die für Regressionsmodelle zurückgegebenen Metriken sind im Allgemeinen so gestaltet, dass sie die Fehlerquote schätzen.  Ein Modell passt gut zu den Daten, wenn der Unterschied zwischen beobachteten und vorhergesagten Werten gering ist. Wenn Sie sich jedoch das Muster der Residuen (die Differenz zwischen einem beliebigen vorhergesagten Punkt und seinem entsprechenden Istwert) ansehen, können Sie viel über eine mögliche Verzerrung im Modell erfahren.  
+Die für Regressionsmodelle zurückgegebenen Metriken sind so gestaltet, dass sie die Fehlerquote schätzen.  Ein Modell passt gut zu den Daten, wenn der Unterschied zwischen beobachteten und vorhergesagten Werten gering ist. Wenn Sie sich jedoch das Muster der Residuen (die Differenz zwischen einem beliebigen vorhergesagten Punkt und seinem entsprechenden Istwert) ansehen, können Sie viel über eine mögliche Verzerrung im Modell erfahren.  
   
  Die folgenden Metriken werden für die Auswertung von Regressionsmodellen herangezogen. Wenn Sie Modelle vergleichen, werden sie nach der Metrik eingestuft, die Sie für die Auswertung auswählen.  
   

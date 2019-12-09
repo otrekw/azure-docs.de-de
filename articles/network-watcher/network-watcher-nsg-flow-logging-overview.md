@@ -1,5 +1,6 @@
 ---
-title: Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen mit Azure Network Watcher | Microsoft-Dokumentation
+title: Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
+titleSuffix: Azure Network Watcher
 description: In diesem Artikel wird erläutert, wie das NSG-Datenflussprotokolle-Feature von Azure Network Watcher verwendet wird.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: a77cc22c7a56c29b5b42a032af3d0ea0b2c17d88
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 1da1bc330af9d2b652c44114e44dc6d6c9f0d575
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563521"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559171"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -86,6 +87,13 @@ Für die Flowzustände *C* (Fortsetzung) und *E* (Beendung) wird die Anzahl von 
 Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen können, sind mehrere Datensätze vorhanden, die der im vorherigen Abschnitt beschriebenen Eigenschaftenliste entsprechen.
 
 ## <a name="nsg-flow-logging-considerations"></a>Überlegungen zur NSG-Datenflussprotokollierung
+
+**Überlegungen zum Speicherkonto:** 
+
+1. Standort: Das verwendete Speicherkonto muss sich in derselben Region wie die Netzwerksicherheitsgruppe befinden.
+2. Keine Firewall: NSG-Datenflussprotokolle sind nicht als [vertrauenswürdiger Microsoft-Dienst für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services) integriert. Informationen zum Deaktivieren der Firewall finden Sie unter [Wie deaktiviere ich die Firewall für mein Speicherkonto?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) 
+3. Keine Dienstendpunkte: Aufgrund einer aktuellen Einschränkung können Protokolle nur direkt in Speicherkonten und nicht über Dienstendpunkte ausgegeben werden. Informationen zum Entfernen vorhandener Dienstendpunkte finden Sie unter [Wie verwende ich NSG-Flussprotokolle mit Dienstendpunkten?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints)
+4. Rotation von selbstverwalteten Schlüsseln: Wenn Sie die Zugriffsschlüssel für Ihr Speicherkonto ändern oder rotieren, funktionieren die NSG-Datenflussprotokolle nicht mehr. Um dies zu beheben, müssen Sie die NSG-Datenflussprotokolle deaktivieren und anschließend wieder aktivieren.
 
 **Aktivieren der NSG-Datenflussprotokollierung für alle Netzwerksicherheitsgruppen (NSGs), die einer Ressource angefügt sind**: Datenflussprotokollierung in Azure wird für die einzelne NSG-Ressource konfiguriert. Ein Flow wird nur einer einzigen NSG-Regel zugeordnet. In Szenarien, in denen mehrere NSGs verwendet werden, empfehlen wir, dass die NSG-Datenflussprotokollierung für alle auf das Subnetz oder die Netzwerkschnittstelle einer Ressource angewendeten Netzwerksicherheitsgruppen aktiviert wird, um sicherzustellen, dass der gesamte Datenverkehr aufgezeichnet wird. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Gewusst wie: Bewertung von Datenverkehr](../virtual-network/security-overview.md#how-traffic-is-evaluated). 
 

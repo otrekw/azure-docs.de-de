@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016363"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186452"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Vorbereiten des Quellcomputers für die Pushinstallation des Mobilitäts-Agents
 
@@ -32,7 +32,7 @@ Führen Sie auf jedem Windows-Computer, den Sie schützen möchten, folgende Sch
    ![Firewalleinstellungen](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Fügen Sie das Konto hinzu, das Sie im CSPSConfigtool erstellt haben. Melden Sie sich dazu beim Konfigurationsserver an.
-5. Öffnen Sie die Datei **cspsconfigtool.exe**. Sie ist als Verknüpfung auf dem Desktop und im Ordner „%ProgramData%\home\svsystems\bin“ verfügbar.
+5. Öffnen Sie die Datei **cspsconfigtool.exe**. Sie finden sie als Verknüpfung auf dem Desktop und im Ordner „%ProgramData%\ASR\home\svsystems\bin“.
 6. Wählen Sie auf der Registerkarte **Konten verwalten** die Option **Konto hinzufügen**.
 7. Fügen Sie das von Ihnen erstellte Konto hinzu.
 8. Geben Sie die Anmeldeinformationen ein, die Sie verwenden, wenn Sie die Replikation für einen Computer aktivieren.

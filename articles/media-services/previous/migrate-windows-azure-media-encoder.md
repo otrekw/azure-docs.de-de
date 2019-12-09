@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 1f4760713eccd612014f6b75a1623dd9ad0c8c0f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 862643cb4eb26d7d88aa81d05433066a927a69aa
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595504"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74424046"
 ---
 # <a name="migrate-from-windows-azure-media-encoder-to-media-encoder-standard"></a>Migrieren von Windows Azure Media Encoder zu Media Encoder Standard
 
-In diesem Artikel werden die Schritte für die Migration vom älteren WAME-Medienprozessor (Windows Azure Media Encoder), der am 30. November 2019 eingestellt wird, zum Media Encoder Standard-Medienprozessor erläutert.
+In diesem Artikel werden die Schritte für die Migration vom älteren Microsoft Azure Media Encoder-Medienprozessor, der am 1. März 2020 eingestellt wird, zum Media Encoder Standard-Medienprozessor erläutert.
 
 Beim Codieren von Dateien mit WAME haben Kunden in der Regel eine benannte Voreinstellungszeichenfolge wie `H264 Adaptive Bitrate MP4 Set 1080p` verwendet. Für die Migration muss Ihr Code aktualisiert werden, um den **Media Encoder Standard**-Medienprozessor anstelle von WAME und eine der entsprechenden [Systemvoreinstellungen](media-services-mes-presets-overview.md) wie `H264 Multiple Bitrate 1080p` zu verwenden. 
 

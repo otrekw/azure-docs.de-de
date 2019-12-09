@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 0945b06f78ac34500f0b16a4a419cff12d1a4734
-ms.sourcegitcommit: af31deded9b5836057e29b688b994b6c2890aa79
+ms.openlocfilehash: 483b8251bf17eaa5fe7aa7cbd86299575535725d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67812925"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170042"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
 
@@ -20,7 +20,18 @@ In diesem Artikel wird beschrieben, wie Azure Event Grid Ereignisse verarbeitet,
 
 Event Grid bietet permanente Übermittlung. Jede Nachricht wird für jedes Abonnement mindestens einmal übermittelt. Ereignisse werden sofort an den registrierten Endpunkt des jeweiligen Abonnements gesendet. Wenn ein Endpunkt den Eingang eines Ereignisses nicht bestätigt, wiederholt Event Grid die Übermittlung des Ereignisses.
 
-Derzeit sendet Event Grid jedes Ereignis einzeln an Abonnenten. Der Abonnent empfängt ein Array mit einem einzelnen Ereignis.
+## <a name="batched-event-delivery"></a>Batchübermittlung von Ereignissen
+
+Event Grid sendet jedes Ereignis standardmäßig einzeln an Abonnenten. Der Abonnent empfängt ein Array mit einem einzelnen Ereignis. Sie können Event Grid zum Zusammenstellen von Ereignissen für die Übermittlung konfigurieren, um die HTTP-Leistung in Szenarios mit hohen Durchsätzen zu verbessern.
+
+Es gibt zwei Einstellungen für die Batchübermittlung:
+
+* **Max events per batch** (Maximale Anzahl der Ereignisse pro Batch) bezeichnet die maximale Anzahl der Ereignisse, die Event Grid pro Batch übermittelt. Diese Zahl wird nie überschritten, jedoch können weniger Ereignisse übermittelt werden, wenn keine anderen Ereignisse zum Zeitpunkt der Veröffentlichung verfügbar sind. Event Grid verzögert Ereignisse nicht, um ein Batch zu erstellen, wenn weniger Ereignisse verfügbar sind. Der Wert muss zwischen 1 und 5.000 liegen.
+* **Preferred batch size in kilobytes** (Bevorzugte Batchgröße in Kilobyte) bezeichnet die Zielgrenze für die Batchgröße in Kilobyte. Ähnlich wie bei der maximalen Anzahl von Ereignissen, kann die Batchgröße kleiner sein, wenn nicht mehr Ereignisse zum Zeitpunkt der Veröffentlichung vorhanden sind. Es ist möglich, dass ein Batch die bevorzugte Batchgröße überschreitet, *wenn* ein einzelnes Ereignis größer als die bevorzugte Batchgröße ist. Wenn die bevorzugte Größe beispielsweise 4 KB ist und ein Ereignis mit 10 KB an Event Grid gepusht wird, wird das Ereignis mit 10 KB dennoch in einem eigenen Batch übermittelt, anstatt gelöscht zu werden.
+
+Die Batchübermittlung wird pro Ereignisabonnement über das Portal, eine Befehlszeilenschnittstelle, PowerShell oder über SDKs konfiguriert.
+
+![Einstellungen der Batchübermittlung](./media/delivery-and-retry/batch-settings.png)
 
 ## <a name="retry-schedule-and-duration"></a>Wiederholungszeitplan und Dauer
 

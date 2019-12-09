@@ -1,23 +1,23 @@
 ---
-title: Übersicht über Reverse-DNS in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Reverse-DNS funktioniert und wie dieses Feature in Azure verwendet wird.
+title: 'Azure DNS: Übersicht über Reverse-DNS in Azure'
+description: In diesem Lernpfad erhalten Sie eine Einführung in die Funktionsweise und Verwendung von Reverse-DNS in Azure.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: asudbring
+manager: KumuD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: 2788cc3957e9822e61c10f5f06a29802e225bcbf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60192981"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211030"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Übersicht über Reverse-DNS und die Unterstützung in Azure
 

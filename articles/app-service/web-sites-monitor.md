@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 1cfab9b065fd4e28a9ce11ac85682a298011200b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7edff127bb981db985bebb41740744f325306bc8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470126"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546193"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Überwachen von Apps in Azure App Service
 [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) bietet integrierte Überwachungsfunktionen für Web-Apps, mobile Back-Ends und API-Apps im [Azure-Portal](https://portal.azure.com).
 
-Im Azure-Portal können Sie *Kontingente* und *Metriken* für eine App sowie den App Service-Plan einsehen und basierend auf diesen Metriken automatisch *Warnungen* und *Skalierungen* einrichten.
+Im Azure-Portal können Sie *Kontingente* und *Metriken* für eine App sowie den App Service-Plan einsehen und *Warnungen* und die *automatische Skalierung* einrichten, die auf den Metriken basieren.
 
 ## <a name="understand-quotas"></a>Grundlegende Informationen zu Kontingenten
 
@@ -46,7 +46,7 @@ Im Folgenden sind die Kontingente für Free- oder Shared-Apps aufgelistet:
 | **Bandwidth** | Die zulässige Gesamtmenge an ausgehender Bandbreite für diese App für einen Tag. Dieses Kontingent wird alle 24 Stunden um Mitternacht (UTC) zurückgesetzt. |
 | **Filesystem** | Die zulässige Gesamtmenge an Speicher. |
 
-Das einzige Kontingent, das für Apps gilt, die in den Plänen *Basic*, *Standard* und *Premium* gehostet werden, ist „Filesystem“ (Dateisystem).
+Das einzige Kontingent, das für Apps gilt, die in *Basic*, *Standard* und *Premium* gehostet werden, ist „Filesystem“ (Dateisystem).
 
 Weitere Informationen zu den spezifischen Kontingenten, Grenzwerten und Features, die für die verschiedenen App Service-SKUs gelten sind, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md#app-service-limits).
 
@@ -64,6 +64,10 @@ Sie können Kontingente erhöhen oder aus Ihrer App entfernen, indem Sie ein Upg
 
 ## <a name="understand-metrics"></a>Grundlegendes zu Metriken
 
+> [!NOTE]
+> **Dateisystemnutzung** ist eine neue Metrik, die global eingeführt wird. Es werden keine Daten erwartet, es sei denn, Sie wurden für die private Vorschau in die Whitelist aufgenommen.
+> 
+
 Metriken liefern Informationen zur App oder zum Verhalten des App Service-Plans.
 
 Für eine App sind folgende Metriken verfügbar:
@@ -77,6 +81,7 @@ Für eine App sind folgende Metriken verfügbar:
 | **Aktuelle Assemblys** | Die aktuelle Anzahl von Assemblys, die in allen Anwendungsdomänen in dieser Anwendung geladen wurden. |
 | **Eingehende Daten** | Die Menge an eingehender Bandbreite in MiB, die von der App verbraucht wird. |
 | **Ausgehende Daten** | Die Menge an ausgehender Bandbreite in MiB, die von der App verbraucht wird. |
+| **Dateisystemnutzung** | Prozentsatz des von der App genutzten Dateisystemkontingents. |
 | **Garbage Collections der Generation 0** | Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 0 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten.|
 | **Garbage Collections der Generation 1** | Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 1 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten.|
 | **Garbage Collections der Generation 2** | Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 2 ausgeführt wurde.|
@@ -90,7 +95,7 @@ Für eine App sind folgende Metriken verfügbar:
 | **HTTP 4xx** | Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode ≥ 400 und < 500 führen. |
 | **HTTP-Serverfehler** | Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode ≥ 500 und < 600 führen. |
 | **IO Other Bytes Per Second** (E/A: Andere Bytes pro Sekunde) | Die Rate, mit der der App-Prozess Bytes an E/A-Vorgänge ausgibt, die keine Daten beinhalten (beispielsweise Steuerungsvorgänge).|
-| **IO Other Operations Per Second** (E/A: Andere Vorgänge pro Sekunde) | Die Rate, mit der der App-Prozess E/A-Vorgänge ausgibt, bei denen es sich weder um Lese- noch um Schreibvorgänge handelt.|
+| **IO Other Operations Per Second** (E/A: Andere Vorgänge pro Sekunde) | Die Rate, mit der der App-Prozess E/A-Vorgänge ausgibt, bei denen es sich um keine Lese- oder Schreibvorgänge handelt.|
 | **E/A: Gelesene Bytes pro Sekunde** | Die Rate, mit der der App-Prozess Bytes aus E/A-Vorgängen liest.|
 | **E/A: Lesevorgänge pro Sekunde** | Die Rate, mit der der App-Prozess E/A-Lesevorgänge ausgibt.|
 | **E/A: Geschriebene Bytes pro Sekunde** | Die Rate, mit der der App-Prozess Bytes in E/A-Vorgänge schreibt.|

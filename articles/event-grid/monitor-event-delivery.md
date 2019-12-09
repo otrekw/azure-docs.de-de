@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824158"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170004"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Überwachen der Event Grid-Nachrichtenübermittlung 
 
@@ -75,6 +75,12 @@ Wenn Sie ein benutzerdefiniertes Thema veröffentlicht haben, können Sie die Me
 Zeigen Sie die Metriken für das benutzerdefinierte Ereignisthema an.
 
 ![Anzeigen von Ereignismetriken](./media/monitor-event-delivery/custom-topic-metrics.png)
+
+## <a name="set-alerts"></a>Festlegen von Benachrichtigungen
+
+Sie können für benutzerdefinierte Themen und Ereignisdomänen Warnungen zu den Themen sowie den Metriken auf Domänenebene festlegen. Klicken Sie auf dem Blatt „Übersicht“ im Ressourcenmenü auf der linken Seite auf **Warnungen**, um Warnungsregeln abzurufen, zu verwalten und zu erstellen. [Weitere Informationen zu Azure Monitor-Warnungen](../azure-monitor/platform/alerts-overview.md)
+
+![Anzeigen von Ereignismetriken](./media/monitor-event-delivery/select-alerts.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

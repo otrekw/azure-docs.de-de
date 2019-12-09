@@ -1,22 +1,22 @@
 ---
-title: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen2 Spark | Microsoft-Dokumentation
+title: 'Optimieren der Leistung: Spark, HDInsight und Azure Data Lake Storage Gen2 | Microsoft-Dokumentation'
 description: Leitlinien für die Optimierung der Leistung von Azure Data Lake Storage Gen2 Spark
 services: storage
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: feefcf4f9f4448ab2b36c415cb745fd98277eb28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a70b8112af201a49e7eece8b689e75102ec55880
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939337"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327544"
 ---
-# <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Anleitung für die Leistungsoptimierung für Spark in HDInsight und Azure Data Lake Storage Gen2 Spark
+# <a name="tune-performance-spark-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: Spark, HDInsight und Azure Data Lake Storage Gen2
 
 Beim Optimieren der Leistung in Spark müssen Sie die Anzahl von Apps berücksichtigen, die in Ihrem Cluster ausgeführt werden sollen.  Standardmäßig können Sie bis zu 4 Apps gleichzeitig in einem HDI-Cluster ausführen (Hinweis: Die Standardeinstellung wird in Zukunft geändert).  Wenn Sie weniger Apps verwenden möchten, setzen Sie die Standardeinstellungen außer Kraft, und verwenden Sie einen größeren Teil des Clusters für diese Apps.  
 

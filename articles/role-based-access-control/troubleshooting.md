@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e8a5b8b5794687f9e3b1707fda4cbe381e277317
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 2351e6a63723156cce646a6a1cdda837b18a8f91
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819771"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456829"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
@@ -56,7 +56,11 @@ In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugr
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Rollenzuweisungen mit unbekanntem Sicherheitsprinzipal
 
-Wenn Sie Ihre Rollenzuweisungen mithilfe von Azure PowerShell auflisten, werden möglicherweise Zuweisungen mit einem leeren `DisplayName` und einem auf „Unbekannt“ festgelegten `ObjectType` angezeigt. Beispiel: [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
+Wenn Sie einem Sicherheitsprinzipal eine Rolle (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) zuweisen und diesen Sicherheitsprinzipal später löschen, ohne die Rollenzuweisung zu entfernen, wird für die Rollenzuweisung der Sicherheitsprinzipaltyp **Unknown** (Unbekannt) angezeigt. Der folgende Screenshot zeigt ein Beispiel im Azure-Portal. Für den Sicherheitsprinzipalnamen wird **Identität gelöscht** und **Die Identität ist nicht mehr vorhanden** angezeigt. 
+
+![Web-App-Ressourcengruppe](./media/troubleshooting/unknown-security-principal.png)
+
+Wenn Sie diese Rollenzuweisung mit Azure PowerShell anzeigen, ist `DisplayName` leer und `ObjectType` auf „Unknown“ (Unbekannt) festgelegt. Beispiel: [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
 
 ```azurepowershell
 RoleAssignmentId   : /subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleAssignments/22222222-2222-2222-2222-222222222222
@@ -70,7 +74,7 @@ ObjectType         : Unknown
 CanDelegate        : False
 ```
 
-Und wenn Sie Ihre Rollenzuweisungen mit der Azure-Befehlszeilenschnittstelle auflisten, werden möglicherweise Zuweisungen mit einem leeren `principalName` angezeigt. Beispiel: [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
+Wenn Sie diese Rollenzuweisung mit der Azure CLI anzeigen, ist `principalName` leer. Beispiel: [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list) gibt eine Rollenzuweisung zurück, die dem folgenden ähnelt:
 
 ```azurecli
 {
@@ -86,9 +90,7 @@ Und wenn Sie Ihre Rollenzuweisungen mit der Azure-Befehlszeilenschnittstelle auf
 }
 ```
 
-Diese Rollenzuweisungen treten auf, wenn Sie einem Sicherheitsprinzipal (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität) eine Rolle zuweisen, und den Sicherheitsprinzipal später löschen. Diese Rollenzuweisungen werden im Azure-Portal nicht angezeigt, und es stellt kein Problem dar, diese zu belassen. Wenn Sie möchten, können Sie diese Rollenzuweisungen jedoch entfernen.
-
-Um diese Rollenzuweisungen zu entfernen, verwenden Sie den Befehl [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) bzw. [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete).
+Es stellt kein Problem dar, diese Rollenzuweisungen zu belassen. Sie können Sie jedoch mit Schritten entfernen, die denen für andere Rollenzuweisungen ähneln. Informationen zum Entfernen von Rollenzuweisungen finden Sie unter [Azure-Portal](role-assignments-portal.md#remove-role-assignments), [Azure PowerShell](role-assignments-powershell.md#remove-access) oder [Azure CLI](role-assignments-cli.md#remove-access).
 
 Wenn Sie in PowerShell versuchen, die Rollenzuweisungen unter Verwendung der Objekt-ID und des Rollendefinitionsnamens zu entfernen, und mehr als eine Rollenzuweisung Ihren Parametern entspricht, wird die folgende Fehlermeldung angezeigt: „The provided information does not map to a role assignment“ (Die angegebenen Informationen stimmen mit keiner Rollenzuweisung überein). Nachfolgend sehen Sie ein Beispiel für die Fehlermeldung:
 

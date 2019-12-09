@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24b7f05bc59f3eb951897f5e36030b531d8f3aa9
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959095"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383314"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Erstellen von benutzerdefinierten Funktionen in Azure Digital Twins
 
@@ -46,7 +46,7 @@ Matcher (Abgleicher) sind Graphobjekte, die bestimmen, welche benutzerdefinierte
 
 Der folgende Beispielmatcher besitzt den Ergebniswert TRUE für jedes Sensortelemetrieereignis, das den Datentyp `"Temperature"` aufweist. Sie können mehrere Matcher für eine benutzerdefinierte Funktion erstellen, indem Sie eine authentifizierte HTTP-POST-Anforderung an folgende URL stellen:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
@@ -54,16 +54,18 @@ Mit JSON-Text:
 
 ```JSON
 {
-  "Name": "Temperature Matcher",
-  "Conditions": [
+  "id": "3626464-f39b-46c0-d9b0c-436aysj55",
+  "name": "Temperature Matcher",
+  "spaceId": "YOUR_SPACE_IDENTIFIER",
+  "conditions": [
     {
+      "id": "ag7gq35cfu3-e15a-4e9c-6437-sj6w68sy44s",
       "target": "Sensor",
       "path": "$.dataType",
       "value": "\"Temperature\"",
       "comparison": "Equals"
     }
-  ],
-  "SpaceId": "YOUR_SPACE_IDENTIFIER"
+  ]
 }
 ```
 
@@ -79,7 +81,7 @@ Das Erstellen einer benutzerdefinierten Funktion beinhaltet das Erstellen einer 
 
 Nachdem die Matcher erstellt wurden, laden Sie den Funktionsocdeausschnitt mit der folgenden authentifizierten mehrteiligen HTTP-POST-Anforderung hoch:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
@@ -199,7 +201,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
 
 1. [Fragen Sie die System-API](./security-create-manage-role-assignments.md#retrieve-all-roles) nach allen Rollen ab, um die Rollen-ID zu erhalten, die Sie Ihrer benutzerdefinierten Funktion zuweisen möchten. Stellen Sie hierzu eine authentifizierte HTTP-GET-Anforderung an:
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
    Behalten Sie die gewünschten Rollen-ID. Sie wird als JSON-Textattribut **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) unten übergeben.
@@ -208,7 +210,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
 1. Suchen Sie den Wert von **Path** (`YOUR_ACCESS_CONTROL_PATH`) durch Abfragen Ihrer Räume mit `fullpath`.
 1. Kopieren Sie den zurückgegebenen `spacePaths`-Wert. Diesen verwenden Sie dann weiter unten. Stellen Sie eine authentifizierte HTTP-GET-Anforderung an:
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
@@ -218,7 +220,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
 
 1. Fügen Sie den zurückgegebenen `spacePaths`-Wert in **path** ein, um eine benutzerdefinierte Funktionsrollenzuweisung zu erstellen, indem Sie eine authentifizierte HTTP-POST-Anforderung an folgende URL stellen:
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
     Mit JSON-Text:
@@ -236,7 +238,7 @@ Erstellen Sie eine Rollenzuweisung, unter der die benutzerdefinierte Funktion au
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | Der Bezeichner für die gewünschte Rolle |
     | YOUR_USER_DEFINED_FUNCTION_ID | Die ID für die benutzerdefinierte Funktion, die Sie verwenden möchten. |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Die ID, die den Typ der benutzerdefinierten Funktion angibt. |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | Die ID, die den Typ der benutzerdefinierten Funktion angibt (`UserDefinedFunctionId`). |
     | YOUR_ACCESS_CONTROL_PATH | Der Zugriffssteuerungspfad |
 
 >[!TIP]

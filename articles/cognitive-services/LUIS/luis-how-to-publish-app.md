@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d3a413249cb9058e4098f2836131494670a1727
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 676c6d15c4f439543a3ed74627001725632fecfa
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491323"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554842"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Veröffentlichen Ihrer aktiven, trainierten App an einem Staging- oder Produktionsendpunkt
 
-Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen. 
+Wenn Sie das Erstellen, Trainieren und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
-
-<a name="publish-your-trained-app-to-an-http-endpoint"></a>
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="publishing"></a>Veröffentlichung
 
@@ -41,15 +39,18 @@ Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, st
 Wählen Sie den richtigen Slot aus, wenn das Popupfenster angezeigt wird: 
 
 * Staging
-* Produktion 
+* Bereitstellung 
 
 Durch Verwenden beider Veröffentlichungsslots haben Sie die Möglichkeit, zwei unterschiedliche Versionen Ihrer App auf den veröffentlichten Endpunkten oder dieselbe Version auf zwei unterschiedlichen Endpunkten zu nutzen. 
 
 ### <a name="publishing-regions"></a>Veröffentlichungsregionen
 
-Die App wird in allen Regionen veröffentlicht, die den im LUIS-Portal hinzugefügten LUIS-Vorhersageendpunkt-Ressourcen zugeordnet sind. 
+Die App wird in allen Regionen veröffentlicht, die den im LUIS-Portal auf der Seite **Verwalten** ->  **[Azure-Ressourcen](luis-how-to-azure-subscription.md#assign-a-resource-to-an-app)** hinzugefügten LUIS-Vorhersageendpunkt-Ressourcen zugeordnet sind. 
 
 Wenn Sie beispielsweise für eine auf [www.luis.ai](https://www.luis.ai) erstellte App eine LUIS-Ressource in zwei Regionen, **westus** und **eastus**, erstellen und diese der App als Ressourcen hinzufügen, wird die App in beiden Regionen veröffentlicht. Weitere Informationen zu LUIS-Regionen finden Sie unter [Regionen](luis-reference-regions.md).
+
+> [!TIP]
+> Es gibt drei Erstellungsregionen. Sie müssen die Erstellung in der Region durchführen, in der Sie veröffentlichen möchten. Wenn Sie in allen Regionen veröffentlichen müssen, müssen Sie den Erstellungsprozess und das daraus resultierende trainierte Modell in allen drei Erstellungsregionen verwalten. 
 
 
 ## <a name="configuring-publish-settings"></a>Konfigurieren der Einstellungen für die Veröffentlichung
@@ -57,16 +58,14 @@ Wenn Sie beispielsweise für eine auf [www.luis.ai](https://www.luis.ai) erstell
 Nachdem Sie den Slot ausgewählt haben, konfigurieren Sie die Veröffentlichungseinstellungen für:
 
 * Stimmungsanalyse
-* Rechtschreibkorrektur
+* Rechtschreibkorrektur: nur V2-Vorhersageendpunkte
 * Sprachvorbereitung 
 
 Nach der Veröffentlichung können Sie diese Einstellungen auf der zum Abschnitt **Verwalten** gehörenden Seite **Veröffentlichungseinstellungen** ändern. Sie können die Einstellungen mit jeder Veröffentlichung ändern. Wenn Sie eine Veröffentlichung abbrechen, werden alle Änderungen, die Sie während der Veröffentlichung vorgenommen haben, ebenfalls abgebrochen. 
 
 ### <a name="when-your-app-is-published"></a>Nach Veröffentlichung Ihrer App
 
-Wenn Ihre App erfolgreich veröffentlicht wurde, wird eine grüne Erfolgsmeldung am oberen Rand des Browsers angezeigt. Die grüne Benachrichtigungsleiste enthält außerdem einen Link zu den Endpunkten. 
-
-![Popupfenster „Veröffentlichung“ mit Link zum Endpunkt](./media/luis-how-to-publish-app/publish-success.png)
+Wenn Ihre App erfolgreich veröffentlicht wurde, wird eine Erfolgsmeldung am oberen Rand des Browsers angezeigt. Die Benachrichtigung enthält außerdem einen Link zu den Endpunkten. 
 
 Wenn Sie die Endpunkt-URL benötigen, wählen Sie den Link aus. Außerdem können Sie die Endpunkt-URLs ermitteln, indem Sie im oberen Menü die Option **Verwalten** und dann im linken Menü die Option **Azure-Ressourcen** auswählen. 
 
@@ -83,6 +82,8 @@ Stimmungsdaten stellen eine Bewertung zwischen 1 und 0 dar, die eine eher positi
 Weitere Informationen zur JSON-Endpunktantwort im Zusammenhang mit der Standpunktanalyse finden Sie unter [Standpunktanalyse](luis-concept-data-extraction.md#sentiment-analysis).
 
 ## <a name="spelling-correction"></a>Rechtschreibkorrektur
+
+[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
 
 Korrekturen an der Rechtschreibung werden vor der LUIS-Äußerungsvorhersage für den Benutzer vorgenommen. In der Antwort können Sie alle Änderungen an der ursprünglichen Äußerung, einschließlich Rechtschreibung, sehen.
 

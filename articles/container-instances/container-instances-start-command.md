@@ -1,19 +1,14 @@
 ---
-title: Verwenden einer Startbefehlszeile in Azure Container Instances
-description: Setzen Sie den in einem Containerimage konfigurierten Einstiegspunkt außer Kraft, wenn Sie eine Azure-Containerinstanz bereitstellen.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Außerkraftsetzen des Einstiegspunkts in einer Containerinstanz
+description: Legen Sie eine Befehlszeile zum außer Kraft setzen des Einstiegspunkts in einem Containerimage fest, in dem Sie eine Azure-Containerinstanz bereitstellen.
 ms.topic: article
 ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: 40d946db48a65452d2da529098c07d0d0c60d472
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: d9554603f78a07fa44af51d8f39a91e1b3c39f70
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619661"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533404"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>Legen Sie die Befehlszeile in einer Containerinstanz so fest, dass sie die standardmäßige Befehlszeilenoperation außer Kraft setzt.
 

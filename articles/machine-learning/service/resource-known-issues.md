@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619782"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286982"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
@@ -25,7 +25,7 @@ Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu ermitteln und zu beheben, d
 
 Azure Compute wird die NCv3-SKUs ab Anfang November 2019 aktualisieren, um alle MPI-Implementierungen und -Versionen sowie RDMA-Verben für mit InfiniBand ausgestattete virtuelle Computer zu unterstützen. Dies erfordert eine kurze Ausfallzeit – [erfahren Sie mehr über das SR-IOV-Upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
-Als Kunde des zu Azure Machine Learning gehörenden verwalteten Compute-Angebots (AmlCompute) müssen Sie derzeit keine Änderungen vornehmen. Entsprechend dem [Aktualisierungszeitplan](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) sollten Sie eine kurze Unterbrechung in Ihrem Training einplanen. Der Dienst übernimmt sämtliche Schritte zum Aktualisieren der VM-Images auf Ihren Clusterknoten und automatischen zentralen Hochskalieren Ihres Clusters. Sobald das Upgrade abgeschlossen ist, sollten Sie in der Lage sein, alle anderen MPI-Distributionen (etwa OpenMPI mit Pytorch) zu verwenden, und sollten Sie eine höhere InfiniBand-Bandbreite, kürzere Wartezeiten und eine besserer Leistung der verteilten Anwendung erhalten.
+Als Kunde des zu Azure Machine Learning gehörenden verwalteten Compute-Angebots (AmlCompute) müssen Sie derzeit keine Änderungen vornehmen. Entsprechend dem [Aktualisierungszeitplan](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) sollten Sie eine kurze Unterbrechung in Ihrem Training einplanen. Der Dienst übernimmt sämtliche Schritte zum Aktualisieren der VM-Images auf Ihren Clusterknoten und automatischen zentralen Hochskalieren Ihres Clusters. Sobald das Upgrade abgeschlossen ist, sollten Sie in der Lage sein, alle anderen MPI-Distributionen (etwa OpenMPI mit Pytorch) zu verwenden, und Sie sollten außerdem eine höhere InfiniBand-Bandbreite, kürzere Wartezeiten und eine besserer Leistung der verteilten Anwendung erhalten.
 
 ## <a name="azure-machine-learning-designer-issues"></a>Azure Machine Learning-Designer-Probleme
 

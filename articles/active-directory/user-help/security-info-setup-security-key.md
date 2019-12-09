@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Sicherheitsinformationen (Vorschauversion) für einen Sicherheitsschlüssel – Azure AD
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe eines FIDO2-Sicherheitsschlüssels (Fast Identity Online) zu bestätigen.
+title: Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode – Azure AD
+description: Hier erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Preview) einrichten, um Ihre Identität zur Verwendung eines FIDO2-Sicherheitsschlüssels (Fast Identity Online) als Überprüfungsmethode zu bestätigen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803787"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278952"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>Einrichten von Sicherheitsinformationen (Vorschauversion) für einen Sicherheitsschlüssel
+# <a name="set-up-a-security-key-as-your-verification-method"></a>Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode
 
-Sie können Sicherheitsschlüssel als kennwortlose Anmeldemethode in Ihrer Organisation verwenden. Ein Sicherheitsschlüssel ist ein physisches Gerät, das mit einer eindeutigen PIN zum Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto verwendet wird. Weil Sicherheitsschlüssel erfordern, dass Sie über das physische Gerät und etwas verfügen, das nur Ihnen bekannt ist, wird ein Sicherheitsschlüssel als eine sicherere Authentifizierungsmethode angesehen als ein Benutzername und Kennwort.
+Sie können Sicherheitsschlüssel als kennwortlose Anmeldemethode in Ihrer Organisation verwenden. Ein Sicherheitsschlüssel ist ein physisches Gerät, das mit einer eindeutigen PIN zum Anmelden bei Ihrem Geschäfts-, Schul- oder Unikonto verwendet wird. Weil Sicherheitsschlüssel erfordern, dass Sie über das physische Gerät und etwas verfügen, das nur Ihnen bekannt ist, wird ein Sicherheitsschlüssel als eine sicherere Überprüfungsmethode angesehen als ein Benutzername und Kennwort.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
@@ -35,7 +35,7 @@ Wir unterstützen derzeit mehrere Entwürfe und Anbieter von Sicherheitsschlüss
 Ihr Administrator oder Ihre Organisation stellt Ihnen einen Sicherheitsschlüssel zur Verfügung, wenn er für Ihr Geschäfts-, Schul- oder Unikonto erforderlich ist. Es gibt verschiedene Typen von Sicherheitsschlüsseln, die Sie verwenden können. So können Sie z. B. einen USB-Schlüssel an Ihr Gerät anschließen oder einen NFC-Schlüssel an ein NFC-Lesegerät halten. Weitere Informationen zu Ihrem Sicherheitsschlüssel, einschließlich des Typs, finden Sie in der Dokumentation des Herstellers.
 
 > [!Note]
-> Wenn Sie keinen FIDO2-Sicherheitsschlüssel verwenden können, sind andere kennwortlose Authentifizierungsmethoden verfügbar, die Sie nutzen können, beispielsweise die Microsoft Authenticator-App oder Windows Hello. Weitere Informationen zur Microsoft Authenticator-App finden Sie im Artikel [Was ist die Microsoft Authenticator-App?](user-help-auth-app-overview.md). Weitere Informationen zu Windows Hello finden Sie auf der Seite mit der [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello).
+> Wenn Sie keinen FIDO2-Sicherheitsschlüssel verwenden können, sind andere kennwortlose Überprüfungsmethoden verfügbar, die Sie nutzen können, beispielsweise die Microsoft Authenticator-App oder Windows Hello. Weitere Informationen zur Microsoft Authenticator-App finden Sie im Artikel [Was ist die Microsoft Authenticator-App?](user-help-auth-app-overview.md). Weitere Informationen zu Windows Hello finden Sie auf der Seite mit der [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -150,7 +150,7 @@ Um einen Sicherheitsschlüssel registrieren zu können, müssen Sie mindestens e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den Blogbeitrag [Microsoft Azure AD startet die öffentliche Vorschauversion von FIDO2-Sicherheitsschlüsseln, die kennwortlose Anmeldungen ermöglichen](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) oder die Artikel [Wozu dient die Microsoft Authenticator-App?](user-help-auth-app-overview.md) und [Windows Hello: Lernen Sie die Gesichtserkennung unter Windows 10 kennen](https://www.microsoft.com/windows/windows-hello), um weitere Informationen zu kennwortlosen Authentifizierungsmethoden zu erhalten.
+- Lesen Sie den Blogbeitrag [Microsoft Azure AD startet die öffentliche Vorschauversion von FIDO2-Sicherheitsschlüsseln, die kennwortlose Anmeldungen ermöglichen](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) oder die Artikel [Wozu dient die Microsoft Authenticator-App?](user-help-auth-app-overview.md) und [Übersicht über Windows Hello](https://www.microsoft.com/windows/windows-hello), um weitere Informationen zu kennwortlosen Überprüfungsmethoden zu erhalten.
 
 - Lesen Sie ausführlichere Informationen zu [Microsoft-kompatiblen Sicherheitsschlüsseln](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

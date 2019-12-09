@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: f8793975d920e24924fca7c2ae366f70972e6ab7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468614"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422607"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -62,16 +62,7 @@ Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
 
 Stack Overflow ist der bevorzugte Kanal für entwicklungsbezogene Fragen. Dort sind Mitglieder der Community und Microsoft-Teammitglieder direkt an der Lösung Ihrer Probleme beteiligt.
 
-Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermitteln Sie eine neue Frage in Stack Overflow. Verwenden Sie beim Formulieren der Frage eines der folgenden Tags:
-
-|Komponente/Bereich  |`Tags`  |
-|---------|---------|
-|Spracherkennung |[[microsoft-cognitive+speech-to-text]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech-to-text)|
-|Sprachsynthese |[[microsoft-cognitive+text-to-speech]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+text-to-speech)|
-|Sprachübersetzung |[[microsoft-cognitive+translation]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+translation)|
-|Sprechabsicht |[[microsoft-cognitive+luis]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+luis)|
-|Allgemeines Speech SDK |[[microsoft-cognitive+microsoft-speech-api]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+microsoft-speech-api)|
-|Sprachassistenten | [[microsoft-cognitive+virtual-assistant+botframework]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+virtual-assistant+botframework) |
+Wenn Sie über die Suche keine Lösung für Ihr Problem finden, übermitteln Sie eine neue Frage in Stack Overflow unter Verwendung des Tags [microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech).
 
 > [!TIP]
 > Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von Fragen und zum Hinzufügen von Quellcode. Das Befolgen dieser Hinweis kann dazu beitragen, dass Mitglieder der Community schneller auf Ihre Frage reagieren:  

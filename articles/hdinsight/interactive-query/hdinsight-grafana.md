@@ -7,18 +7,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: cea0e9709afb65caa23d28be093c28498f2b82d0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: dae9c47f535d87214c9e1583562b4c0419cd44cf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122996"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305440"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Zugreifen auf Grafana in Azure HDInsight
 
 [Grafana](https://grafana.com/) ist ein verbreiteter Open-Source-Generator für Diagramme und Dashboards. Mit dem umfangreichen Funktionssatz von Grafana können Benutzer nicht nur anpassbare und gemeinsam nutzbare Dashboards erstellen, sondern u.a. auch von Dashboards mit Vorlagen bzw. Skripts, LDAP-Integration und verschiedenen Datenquellen profitieren.
 
-Derzeit wird Grafana in Azure HDInsight mit den Clustertypen Hbase und Interactive Query unterstützt.
+Derzeit wird Grafana in Azure HDInsight mit den Clustertypen Hbase, Kafka und Interactive Query unterstützt. Cluster mit aktiviertem Enterprise-Sicherheitspaket werden nicht unterstützt.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -37,7 +37,7 @@ In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight m
     > 
     >
     
-    ![HDInsight unter Linux, Erste Schritte mit der Resource Manager-Vorlage im Portal](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "Bereitstellen eines Hadoop-Clusters in HDInsight mithilfe des Azure-Portals und einer Resource Manager-Vorlage für Ressourcengruppen")
+    ![HDInsight Linux: erste Schritte mit der Resource Manager-Vorlage im Portal](./media/hdinsight-grafana/hdinsight-linux-get-started-arm-template-on-portal.png "Bereitstellen eines Hadoop-Clusters in HDInsight mithilfe des Azure-Portals und einer Resource Manager-Vorlage für Ressourcengruppen")
 
     Geben Sie folgende Werte ein bzw. wählen diese aus:
     
@@ -55,11 +55,11 @@ In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight m
 
 3. Aktivieren Sie die Optionen **Ich stimme den oben genannten Geschäftsbedingungen zu** und **An Dashboard anheften**, und wählen Sie anschließend **Kaufen** aus. Im Portal-Dashboard wird die neue Kachel **Bereitstellung wird übermittelt** angezeigt. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
-    ![Azure-Vorlagenbereitstellungsstatus](./media/hdinsight-grafana/deployment-progress-tile.png "Azure-Vorlagenbereitstellungsstatus")
+    ![Status der Bereitstellung von Azure-Vorlagen](./media/hdinsight-grafana/deployment-progress-tile.png "Status der Bereitstellung von Azure-Vorlagen")
 
 4. Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Die Kachel listet auch den HDInsight-Cluster auf, der innerhalb der Ressourcengruppe erstellt wird.
 
-    ![HDInsight unter Linux, Erste Schritte mit der Ressourcengruppe](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-Clusterressourcengruppe")
+    ![HDInsight Linux: erste Schritte mit der Ressourcengruppe](./media/hdinsight-grafana/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-Clusterressourcengruppe")
 
 5. Die Kachel listet auch den mit dem Cluster verbundenen Standardspeicher auf. Jeder Cluster verfügt über eine Abhängigkeit von einem [Azure Storage-Konto](../hdinsight-hadoop-use-blob-storage.md) oder einem [Azure Data Lake-Konto](../hdinsight-hadoop-use-data-lake-store.md). Es wird als Standardspeicherkonto bezeichnet. Der HDInsight-Cluster und das dazugehörige Speicherkonto müssen sich in derselben Azure-Region befinden. Beim Löschen von Clustern wird das Speicherkonto nicht gelöscht.
     
@@ -75,7 +75,7 @@ In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight m
 
 3. Klicken Sie unter **Quicklinks** auf **Clusterdashboard**.
 
-    ![HDInsight-Clusterdashboard im Portal](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight cluster dashboard on the portal")
+    ![Portal mit HDInsight-Clusterdashboard](./media/hdinsight-grafana/hdinsight-portal-cluster-dashboard.png "HDInsight-Clusterdashboard im Portal")
 
 4. Klicken Sie auf dem Dashboard auf die Kachel **Grafana**. Navigieren Sie alternativ zum `/grafana/`-Pfad Ihrer Cluster-URL. Beispiel: `https://<clustername>.azurehdinsight.net/grafana/`.
 
@@ -83,7 +83,7 @@ In diesem Abschnitt erstellen Sie einen Interactive Query-Cluster in HDInsight m
 
 6. Das Grafana-Dashboard wird angezeigt und sieht wie in diesem Beispiel aus:
 
-    ![HDInsight – Grafana-Webdashboard](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight – Grafana-Dashboard")
+    ![HDInsight Grafana-Webdashboard](./media/hdinsight-grafana/hdinsight-grafana-dashboard.png "HDInsight Grafana-Dashboard")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Nach Abschluss des Artikels kann es ratsam sein, den Cluster zu löschen. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen. 
@@ -95,7 +95,7 @@ Nach Abschluss des Artikels kann es ratsam sein, den Cluster zu löschen. Mit HD
 
 1. Wechseln Sie zurück zur Browserregisterkarte für das Azure-Portal. Die Seite mit der Clusterübersicht sollte angezeigt werden. Klicken Sie auf **Löschen**, wenn Sie nur den Cluster löschen, aber das Standardspeicherkonto behalten möchten.
 
-    ![Symbol „Cluster löschen“ im Azure-Portal](./media/hdinsight-grafana/hdinsight-delete-cluster.png "Löschen eines HDInsight-Clusters")
+    ![Azure-Portal: Symbol zum Löschen von Clustern](./media/hdinsight-grafana/hdinsight-delete-cluster.png "Löschen eines HDInsight-Clusters")
 
 2. Wenn Sie sowohl den Cluster als auch das Standardspeicherkonto löschen möchten, wählen Sie den Ressourcengruppennamen (im vorherigen Screenshot markiert) aus, um die Seite für die Ressourcengruppe zu öffnen.
 

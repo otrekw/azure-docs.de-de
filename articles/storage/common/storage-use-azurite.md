@@ -1,5 +1,5 @@
 ---
-title: Verwenden des Azurite-Open-Source-Emulators für die Entwicklung und das Testen mit Azure Storage (Vorschauversion)
+title: Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 description: Der Azurite-Open-Source-Emulator (Vorschauversion) bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure Storage-Anwendungen.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -7,14 +7,14 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e611afd6f10154636eb2e0dd08437b4f7468d6b3
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70309534"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269471"
 ---
-# <a name="use-the-azurite-open-source-emulator-for-azure-storage-development-and-testing-preview"></a>Verwenden des Azurite-Open-Source-Emulators für die Entwicklung und das Testen mit Azure Storage (Vorschauversion)
+# <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>Verwenden des Azurite-Emulators für das lokale Entwickeln und Testen mit Azure Storage (Vorschauversion)
 
 Der Azurite-Open-Source-Emulator, Version 3.2, bietet eine kostenlose lokale Umgebung zum Testen Ihrer Azure-Blob- und -Warteschlangen-Speicheranwendungen. Wenn Sie mit der Funktion Ihrer Anwendung auf lokaler Ebene zufrieden sind, können Sie zur Verwendung eines Azure Storage-Kontos in der Cloud übergehen. Der Emulator bietet plattformübergreifenden Support für Windows, Linux und macOS. Azurite v3 unterstützt APIs, die vom Azure-Blob-Dienst implementiert wurden.
 

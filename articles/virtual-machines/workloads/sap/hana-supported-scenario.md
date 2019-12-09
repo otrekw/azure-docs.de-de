@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/06/2018
+ms.date: 11/26/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f17e447f26ae4f7573941fc0c578a918ff45a145
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7ed63f5caa6b1f1c0072a92f6a60ad43c5431af0
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101233"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538388"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Unterstützte Szenarien für große HANA-Instanzen
 Dieses Dokument beschreibt die unterstützten Szenarien sowie deren Architekturdetails für große HANA-Instanzen (HANA Large Instances, HLI).
@@ -37,7 +37,7 @@ Machen Sie sich mit den Begriffen und Definitionen vertraut, die in diesem Dokum
 - Mehrzweck-DR: Ein System am DR-Standort, das für die Verwendung einer Nicht-Produktionsumgebung zusammen mit einer Produktionsinstanz konfiguriert ist, die für die Verwendung des DR-Ereignisses konfiguriert ist. 
 - Einzelne SID:  Ein System mit einer installierten Instanz.
 - Mehrfach-SID: Ein System mit mehreren konfigurierten Instanzen. Wird auch als MCOS-Umgebung bezeichnet.
-
+- HSR: SAP HANA-Systemreplikation.
 
 ## <a name="overview"></a>Übersicht
 Große HANA-Instanzen unterstützen eine Vielzahl von Architekturen, um Ihren Geschäftsanforderungen zu genügen. In der folgenden Liste werden die Szenarien und ihre Konfigurationsdetails beschrieben. 
@@ -107,7 +107,7 @@ Der Speicher ist je nach angeforderter Topologie vorkonfiguriert. Die Volumegrö
 
 In den Architekturdiagrammen werden die folgenden Notationen für die Grafiken verwendet:
 
-![Legends.PNG](media/hana-supported-scenario/Legends.PNG)
+[ ![Legends.PNG](media/hana-supported-scenario/Legends.png)](media/hana-supported-scenario/Legends.png#lightbox)
 
 Die folgende Liste nennt die unterstützten Szenarien:
 
@@ -199,7 +199,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 - Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
 
-## <a name="3-single-node-with-dr-normal"></a>3. Einzelner Knoten mit DR (normal)
+## <a name="3-single-node-with-dr-using-storage-replication"></a>3. Einzelner Knoten mit Notfallwiederherstellung mithilfe der Speicherreplikation
  
 Diese Topologie unterstützt einen Knoten in einer zentral hochskalierten Konfiguration mit einer SID oder mehreren SIDs mit der speicherbasierten Replikation in den DR-Standort für eine primäre SID. In der Abbildung wird nur eine SID am primären Standort dargestellt, aber mehrere SIDs (MCOS) werden ebenfalls unterstützt.
 
@@ -240,7 +240,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
 
-## <a name="4-single-node-with-dr-multipurpose"></a>4. Einzelner Knoten mit DR (Mehrzweck)
+## <a name="4-single-node-with-dr-multipurpose-using-storage-replication"></a>4. Einzelner Knoten mit Notfallwiederherstellung (Mehrzweck) mithilfe der Speicherreplikation
  
 Diese Topologie unterstützt einen Knoten in einer zentral hochskalierten Konfiguration mit einer SID oder mehreren SIDs mit der speicherbasierten Replikation in den DR-Standort für eine primäre SID. In der Abbildung wird nur eine SID am primären Standort dargestellt, aber mehrere SIDs (MCOS) werden ebenfalls unterstützt. Am DR-Standort wird die HLI-Einheit für die QA-Instanz verwendet, während die Produktionsvorgänge vom primären Standort aus ausgeführt werden. Zum Zeitpunkt des DR-Failovers (oder Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen.
 
@@ -289,7 +289,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
 
-## <a name="5-hsr-with-stonith"></a>5. HSR mit STONITH
+## <a name="5-hsr-with-stonith-for-high-availability"></a>5. HSR mit STONITH für Hochverfügbarkeit
  
 Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR). Diese Konfiguration wird nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. Das bedeutet, dass MCOS-Szenarien NICHT unterstützt werden.
 
@@ -338,7 +338,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 - STONITH: Eine SBD wird für das STONITH-Setup konfiguriert. Die Verwendung von STONITH ist jedoch optional.
 
 
-## <a name="6-hsr-with-dr"></a>6. HSR mit DR
+## <a name="6-high-availability-with-hsr-and-dr-with-storage-replication"></a>6. Hochverfügbarkeit mit HSR und Notfallwiederherstellung mit Speicherreplikation
  
 Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR). Sowohl normale als auch Mehrzweck-DR wird unterstützt. Diese Konfigurationen werden nur für einzelne HANA-Instanzen auf einem Knoten unterstützt. Das bedeutet, das MCOS-Szenarien mit diesen Konfigurationen NICHT unterstützt werden.
 
@@ -515,7 +515,7 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 ### <a name="key-considerations"></a>Wichtige Aspekte
 - /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
 
-## <a name="10-scale-out-with-dr"></a>10. Horizontales Hochskalieren mit DR
+## <a name="10-scale-out-with-dr-using-storage-replication"></a>10. Horizontale Skalierung mit Notfallwiederherstellung mithilfe der Speicherreplikation
  
 Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration mit einer DR. Sowohl normale als auch Mehrzweck-DR wird unterstützt. In der Abbildung wird nur eine DR mit einem einzigen Zweck dargestellt. Sie können diese Topologie mit oder ohne Standbyknoten anfordern.
 
@@ -560,6 +560,239 @@ Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
 -  Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der DR-HLI Einheit konfiguriert (als „Für HANA-Installation erforderlich“ markiert). 
 - Am DR-Standort: Die Daten, Protokollsicherungen und die freigegebenen Volumes (als „Speicherreplikation“ markiert) werden über eine Momentaufnahme aus dem Produktionsstandort repliziert. Diese Volumes werden nur während der Failoverzeit bereitgestellt. Weitere Informationen finden Sie in dem Dokument [Failoverprozedur für die Notfallwiederherstellung](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery). 
 - Das Startvolume für die **SKU-Typ I-Klasse** wird auf den DR-Knoten repliziert.
+
+
+## <a name="11-single-node-with-dr-using-hsr"></a>11. Einzelner Knoten mit Notfallwiederherstellung mithilfe von HSR
+ 
+Diese Topologie unterstützt einen Knoten in einer zentral hochskalierten Konfiguration mit einer SID mit der HANA-Systemreplikation zum Notfallwiederherstellungs-Standort für eine primäre SID. In der Abbildung wird nur eine SID am primären Standort dargestellt, aber mehrere SIDs (MCOS) werden ebenfalls unterstützt.
+
+### <a name="architecture-diagram"></a>Architekturdiagramm  
+
+![single-node-hsr-dr-111.png](media/hana-supported-scenario/single-node-hsr-dr-111.png)
+
+### <a name="ethernet"></a>Ethernet
+Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
+
+| LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
+| --- | --- | --- | --- | --- |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI/HSR |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
+| D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI/HSR |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+
+### <a name="storage"></a>Storage
+Die folgenden Bereitstellungspunkte sind in beiden HLI-Einheiten (der primären und der für die Notfallwiederherstellung) vorkonfiguriert:
+
+| Bereitstellungspunkt | Anwendungsfall | 
+| --- | --- |
+|/hana/shared/SID | HANA-Installation für SID | 
+|/hana/data/SID/mnt00001 | Datendateieninstallation für SID | 
+|/hana/log/SID/mnt00001 | Protokolldateieninstallation für SID | 
+|/hana/logbackups/SID | Wiederholungsprotokolle für SID |
+
+
+### <a name="key-considerations"></a>Wichtige Aspekte
+- /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Der primäre Knoten wird mithilfe der HANA-Systemreplikation mit dem Knoten für die Notfallwiederherstellung synchronisiert. 
+- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Verbindungen miteinander verbunden, um ein privates Netzwerk zwischen den Netzwerken in Ihren Regionen aufzubauen.
+
+
+
+## <a name="12-single-node-hsr-to-dr-cost-optimized"></a>12. HSR in einem einzelnen Knoten für Notfallwiederherstellung (kostenoptimiert) 
+ 
+ Diese Topologie unterstützt einen Knoten in einer zentral hochskalierten Konfiguration mit einer SID mit der HANA-Systemreplikation zum Notfallwiederherstellungs-Standort für eine primäre SID. In der Abbildung wird nur eine SID am primären Standort dargestellt, aber mehrere SIDs (MCOS) werden ebenfalls unterstützt. Am DR-Standort wird die HLI-Einheit für die QA-Instanz verwendet, während die Produktionsvorgänge vom primären Standort aus ausgeführt werden. Zum Zeitpunkt des DR-Failovers (oder Failovertests) wird die QA-Instanz am DR-Standort außer Betrieb genommen.
+
+### <a name="architecture-diagram"></a>Architekturdiagramm  
+
+![single-node-hsr-dr-cost-optimized-121.png](media/hana-supported-scenario/single-node-hsr-dr-cost-optimized-121.png)
+
+### <a name="ethernet"></a>Ethernet
+Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
+
+| LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
+| --- | --- | --- | --- | --- |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI/HSR |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
+| D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI/HSR |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+
+### <a name="storage"></a>Storage
+Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
+
+| Bereitstellungspunkt | Anwendungsfall | 
+| --- | --- |
+|**Am primären Standort**|
+|/hana/shared/SID | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+|**Am DR-Standort**|
+|/hana/shared/SID | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+|/hana/shared/QA-SID | HANA-Installation für QA-SID | 
+|/hana/data/QA-SID/mnt00001 | Datendateieninstallation für QA-SID | 
+|/hana/log/QA-SID/mnt00001 | Protokolldateieninstallation für QA-SID |
+|/hana/logbackups/QA-SID | Wiederholungsprotokolle für QA-SID |
+
+### <a name="key-considerations"></a>Wichtige Aspekte
+- /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
+- Für MCOS: Die Verteilung der Volumegröße basiert auf der Datenbankgröße im Arbeitsspeicher. Im Abschnitt [Übersicht und Architektur](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) erfahren Sie, welche Datenbankgrößen im Arbeitsspeicher in einer Umgebung mit mehreren SIDs unterstützt werden.
+- Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der HLI-Einheit für die Notfallwiederherstellung konfiguriert (als „PROD-Instanz am DR-Standort“ markiert). 
+- Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
+- Der primäre Knoten wird mithilfe der HANA-Systemreplikation mit dem Knoten für die Notfallwiederherstellung synchronisiert. 
+- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Verbindungen miteinander verbunden, um ein privates Netzwerk zwischen den Netzwerken in Ihren Regionen aufzubauen.
+
+## <a name="13-high-availability-and-disaster-recovery-with-hsr"></a>13. Hochverfügbarkeit und Notfallwiederherstellung mit HSR 
+ 
+ Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR) für Hochverfügbarkeit lokaler Regionen. Für die Notfallwiederherstellung wird der dritte Knoten in der Notfallwiederherstellungsregion mithilfe von HSR (asynchroner Modus) vom primären Standort synchronisiert. 
+
+### <a name="architecture-diagram"></a>Architekturdiagramm  
+
+![hana-system-replication-dr-131.png](media/hana-supported-scenario/hana-system-replication-dr-131.png)
+
+### <a name="ethernet"></a>Ethernet
+Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
+
+| LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
+| --- | --- | --- | --- | --- |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI/HSR |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
+| D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI/HSR |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+
+### <a name="storage"></a>Storage
+Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
+
+| Bereitstellungspunkt | Anwendungsfall | 
+| --- | --- |
+|**Am primären Standort**|
+|/hana/shared/SID | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+|**Am DR-Standort**|
+|/hana/shared/SID | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+
+
+### <a name="key-considerations"></a>Wichtige Aspekte
+- /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
+- Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der HLI-Einheit für die Notfallwiederherstellung konfiguriert (als „PROD-DR-Instanz“ markiert). 
+- Der Knoten des primären Standorts wird mithilfe der HANA-Systemreplikation mit dem Knoten für die Notfallwiederherstellung synchronisiert. 
+- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Verbindungen miteinander verbunden, um ein privates Netzwerk zwischen den Netzwerken in Ihren Regionen aufzubauen.
+
+## <a name="14-high-availability-and-disaster-recovery-with-hsr-cost-optimized"></a>14. Hochverfügbarkeit und Notfallwiederherstellung mit HSR (kostenoptimiert)
+ 
+ Diese Topologie unterstützt zwei Knoten für die Konfiguration der HANA-Systemreplikation (HSR) für Hochverfügbarkeit lokaler Regionen. Für die Notfallwiederherstellung wird der dritte Knoten in der Notfallwiederherstellungsregion mithilfe von HSR (asynchroner Modus) vom primären Standort synchronisiert, während eine andere Instanz (z. B. für Qualitätssicherung) bereits über den Knoten für die Notfallwiederherstellung ausgeführt wird. 
+
+### <a name="architecture-diagram"></a>Architekturdiagramm  
+
+![hana-system-replication-dr-cost-optimized-141.png](media/hana-supported-scenario/hana-system-replication-dr-cost-optimized-141.png)
+
+### <a name="ethernet"></a>Ethernet
+Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
+
+| LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
+| --- | --- | --- | --- | --- |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI/HSR |
+| b | TYP I | eth2.tenant | eno3.tenant | Konfiguriert, aber nicht verwendet |
+| C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
+| D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI/HSR |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Konfiguriert, aber nicht verwendet |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+
+### <a name="storage"></a>Storage
+Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
+
+| Bereitstellungspunkt | Anwendungsfall | 
+| --- | --- |
+|**Am primären Standort**|
+|/hana/shared/SID | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+|**Am DR-Standort**|
+|/hana/shared/SID | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+|/hana/shared/QA-SID | HANA-Installation für QA-SID | 
+|/hana/data/QA-SID/mnt00001 | Datendateieninstallation für QA-SID | 
+|/hana/log/QA-SID/mnt00001 | Protokolldateieninstallation für QA-SID |
+|/hana/logbackups/QA-SID | Wiederholungsprotokolle für QA-SID |
+
+### <a name="key-considerations"></a>Wichtige Aspekte
+- /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
+- Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der HLI-Einheit für die Notfallwiederherstellung konfiguriert (als „PROD-DR-Instanz“ markiert). 
+- Am DR-Standort: Die Daten, Protokollsicherungen, freigegebenen Volumes für QA (als „QA-Instanzinstallation“ gekennzeichnet) sind für die QA-Instanzinstallation konfiguriert.
+- Der Knoten des primären Standorts wird mithilfe der HANA-Systemreplikation mit dem Knoten für die Notfallwiederherstellung synchronisiert. 
+- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Verbindungen miteinander verbunden, um ein privates Netzwerk zwischen den Netzwerken in Ihren Regionen aufzubauen.
+
+## <a name="15-scale-out-with-dr-using-hsr"></a>15. Horizontales Hochskalieren mit DR über HSR
+ 
+Diese Topologie unterstützt mehrere Knoten in einer horizontal hochskalierten Konfiguration mit einer DR. Sie können diese Topologie mit oder ohne Standbyknoten anfordern. Die Knoten des primären Standorts werden mithilfe der HANA-Systemreplikation (asynchroner Modus) mit den Knoten des Notfallwiederherstellungsstandorts synchronisiert.
+
+
+### <a name="architecture-diagram"></a>Architekturdiagramm  
+
+[ ![scale-out-dr-hsr-151.png](media/hana-supported-scenario/scale-out-dr-hsr-151.png)](media/hana-supported-scenario/scale-out-dr-hsr-151.png#lightbox)
+
+
+### <a name="ethernet"></a>Ethernet
+Die folgenden Netzwerkschnittstellen sind vorkonfiguriert:
+
+| LOGISCHE NIC-SCHNITTSTELLEN | SKU-TYP | Name mit dem Betriebssystem SUSE | Name mit dem Betriebssystem RHEL | Anwendungsfall|
+| --- | --- | --- | --- | --- |
+| Eine Datei | TYP I | eth0.tenant | eno1.tenant | Client zu HLI/HSR |
+| b | TYP I | eth2.tenant | eno3.tenant | Kommunikation zwischen den Knoten |
+| C | TYP I | eth1.tenant | eno2.tenant | Knoten zu Speicher |
+| D | TYP I | eth4.tenant | eno4.tenant | Konfiguriert, aber nicht verwendet |
+| Eine Datei | TYP II | vlan\<tenantNo> | team0.tenant | Client zu HLI/HSR |
+| b | TYP II | vlan\<tenantNo+2> | team0.tenant+2 | Kommunikation zwischen den Knoten |
+| C | TYP II | vlan\<tenantNo+1> | team0.tenant+1 | Knoten zu Speicher |
+| D | TYP II | vlan\<tenantNo+3> | team0.tenant+3 | Konfiguriert, aber nicht verwendet |
+
+### <a name="storage"></a>Storage
+Die folgenden Bereitstellungspunkte sind vorkonfiguriert:
+
+| Bereitstellungspunkt | Anwendungsfall | 
+| --- | --- |
+|**Auf dem primären Knoten**|
+|/hana/shared | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+|**Auf den DR-Knoten**|
+|/hana/shared | SID der HANA-Installation für die Produktion | 
+|/hana/data/SID/mnt00001 | SID der Datendateieninstallation für die Produktion | 
+|/hana/log/SID/mnt00001 | SID der Protokolldateieninstallation für die Produktion | 
+|/hana/logbackups/SID | SID für die Wiederholungsprotokolle für die Produktion |
+
+
+### <a name="key-considerations"></a>Wichtige Aspekte
+- /usr/sap/SID ist eine symbolische Verknüpfung mit /hana/shared/SID.
+- Am DR-Standort: Die Volumes und Bereitstellungspunkte sind für die Installation der HANA-Produktionsinstanz an der HLI-Einheit für die Notfallwiederherstellung konfiguriert. 
+- Die Knoten des primären Standorts werden mithilfe der HANA-Systemreplikation mit den Knoten für die Notfallwiederherstellung synchronisiert. 
+- Mit [Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) werden die ExpressRoute-Verbindungen miteinander verbunden, um ein privates Netzwerk zwischen den Netzwerken in Ihren Regionen aufzubauen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

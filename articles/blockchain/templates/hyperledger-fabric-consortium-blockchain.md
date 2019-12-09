@@ -1,21 +1,15 @@
 ---
-title: Hyperledger Fabric-Konsortiumsnetzwerk in Azure
-description: Projektmappenvorlage zum Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortiumsnetzwerks
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Bereitstellen einer Hyperledger Fabric-Konsortiumslösungsvorlage in Azure
+description: Konfigurieren und Bereitstellen der Lösungsvorlage eines Hyperledger Fabric-Konsortiumsnetzwerk in Azure
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: caleteet
-manager: femila
-ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510748"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325135"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric-Konsortiumsnetzwerk
 

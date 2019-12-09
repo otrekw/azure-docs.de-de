@@ -1,22 +1,22 @@
 ---
-title: Planen der Implementierung von Azure Active Directory (Azure AD) Join | Microsoft-Dokumentation
+title: Planen der Implementierung einer Azure Active Directory-Einbindung
 description: Hier werden die Schritte erläutert, die Sie zum Implementieren von in Azure AD eingebundenen Geräten in Ihrer Umgebung ausführen müssen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c8219dd9ec971303fb62cf828da91ee877f4ca9
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882918"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379611"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 

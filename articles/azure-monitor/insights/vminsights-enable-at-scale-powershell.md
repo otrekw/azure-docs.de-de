@@ -1,5 +1,5 @@
 ---
-title: Aktivieren von Azure Monitor für VMs (Vorschauversion) mit Azure PowerShell oder Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Aktivieren von Azure Monitor für VMs (klassisch) mit PowerShell oder Vorlagen
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs mithilfe von Azure PowerShell oder Azure Resource Manager-Vorlagen für mindestens einen virtuellen Azure-Computer oder eine VM-Skalierungsgruppe aktivieren.
 ms.service: azure-monitor
 ms.subservice: ''
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/14/2019
-ms.openlocfilehash: 24b40e5dfdef7bde65d326cb0d054365f730477e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 7d5107279654aa883a040a9168eb099a6543caa8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555277"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286231"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mit Azure PowerShell oder Resource Manager-Vorlagen
 
@@ -183,7 +183,7 @@ Um Azure Monitor für VMs für mehrere VMs oder VM-Skalierungsgruppen zu aktivie
 - Die bereichsbezogene Ressourcengruppe gemäß der Angabe in *ResourceGroup*. 
 - Eine einzelne VM oder VM-Skalierungsgruppe, die in *Name* angegeben ist.
 
-Für jede VM oder VM-Skalierungsgruppe überprüft das Skript, ob die VM-Erweiterung bereits installiert ist. Wenn die VM-Erweiterung nicht installiert ist, versucht das Skript, sie neu zu installieren. Wenn die VM-Erweiterung installiert ist, installiert das Skript die Log Analytics- und Dependency-Agent-VM-Erweiterungen.
+Für jede VM oder VM-Skalierungsgruppe überprüft das Skript, ob die VM-Erweiterung bereits installiert ist. Wenn die VM-Erweiterung installiert ist, versucht das Skript, sie neu zu installieren. Wenn die VM-Erweiterung nicht installiert ist, installiert das Skript die Log Analytics- und Dependency-Agent-VM-Erweiterungen.
 
 Vergewissern Sie sich, dass Sie mindestens die Version 1.0.0 des Azure PowerShell-Moduls „Az“ mit aktivierten `Enable-AzureRM`-Kompatibilitätsaliasen verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer Web Application Firewall-Regel zur Ratenbegrenzung für Front Door – Azure PowerShell
+title: Konfigurieren einer WAF-Regel zur Ratenbegrenzung für Front Door – Azure PowerShell
 description: Erfahren Sie, wie Sie eine Ratenbegrenzungsregel für einen vorhandenen Front Door-Endpunkt konfigurieren.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511607"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186623"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Regel zur Ratenbegrenzung mit Azure PowerShell
 Die Azure-WAF-Ratenbegrenzungsregel (Web Application Firewall) für Azure Front Door steuert die Anzahl der Anforderungen, die von einer einzelnen Client-IP-Adresse in einem Zeitraum von einer Minute zulässig sind.

@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation
+title: Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene App
 description: Konfigurieren des einmaligen Anmeldens im Verbund für eine benutzerdefinierte, nicht im Katalog enthaltene Anwendung, die in Azure AD integriert werden soll
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7de7384b93237e240352651eda6e16383bcb143
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190184"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274592"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens im Verbund für eine nicht im Katalog enthaltene Anwendung
 

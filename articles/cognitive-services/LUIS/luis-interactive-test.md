@@ -9,20 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: ebc86d1cf91cf79ab83b0f49d9898a91d8be8a75
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 628547e8254bb0055cf1f09af50e79b68311a759
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500284"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221788"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testen Ihrer LUIS-App im LUIS-Portal
 
 Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut. 
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 <!-- anchors for H2 name changes -->
 <a name="train-your-app"></a>
@@ -30,13 +30,20 @@ Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen 
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
+## <a name="train-before-testing"></a>Vor dem Testen trainieren
+
+Um die aktuellste Version der aktiven App zu testen, wählen Sie vor dem Testen im oberen Menü **Train** (Trainieren) aus. 
+
 ## <a name="test-an-utterance"></a>Testen einer Äußerung
+
+Die Testäußerung sollte nicht exakt mit einer der Beispieläußerungen in der App übereinstimmen. Die Testäußerung sollte die Wortwahl, Satzlänge und Entitätsverwendung aufweisen, die Sie von einem Benutzer erwarten. 
 
 1. Greifen Sie auf Ihre App zu, indem Sie ihren Namen auf der Seite **Meine Apps** auswählen. 
 
 1. Um auf den Einblendbereich **Test** zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
 
-    ![Seite „Train & Test App“ (App trainieren und testen)](./media/luis-how-to-interactive-test/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![Seite „Train & Test App“](./media/luis-how-to-interactive-test/test.png) (App trainieren und testen)
 
 1. Geben Sie eine Äußerung in das Textfeld ein, und drücken Sie die EINGABETASTE. Sie können im **Test** beliebig viele Äußerungen eingeben, aber immer nur einzeln.
 
@@ -92,28 +99,29 @@ Sie können den für den Vergleich zurückgegebenen JSON-Code des Endpunkts anze
 
 Wenn Sie mehrere LUIS-Endpunkte haben, können Sie den für Tests verwendeten Endpunkt über den Link **Zusätzliche Einstellungen** im Bereich „Veröffentlicht“ des Tests ändern. Wenn Sie nicht sicher sind, welchen Endpunkt Sie verwenden sollten, wählen Sie den Standard **Starter_Key** aus. 
 
-![Testbereich mit hervorgehobenem Link „Zusätzliche Einstellungen“](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+> [!div class="mx-imgBorder"]
+> ![Testbereich mit hervorgehobenem Link „Zusätzliche Einstellungen“](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
+<!--
+###  View Bing Spell Check corrections in test panel
 
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Anzeigen von Korrekturen der Bing-Rechtschreibprüfung im Testbereich
+Requirements to view the spelling corrections: 
 
-Anforderungen zum Anzeigen der Rechtschreibkorrekturen: 
+* Published app
+* Bing Spell Check [service key](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). The service key is not stored and needs to be reset for each browser session. 
 
-* Veröffentlichte App
-* [Dienstschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) für die Bing-Rechtschreibprüfung. Der Dienstschlüssel wird nicht gespeichert und muss für jede Browsersitzung zurückgesetzt werden. 
+Use the following procedure to include the [Bing Spell Check v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) service  in the Test pane results. 
 
-Verwenden Sie das folgende Verfahren, um den Dienst [Bing-Rechtschreibprüfung v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) in die Ergebnisse im Testbereich einzuschließen. 
+1. In the **Test** pane, enter an utterance. When the utterance is predicted, select **[Inspect](#inspect-score)** underneath the utterance you entered. 
 
-1. Geben Sie im Bereich **Test** eine Äußerung ein. Wenn die Äußerung vorhergesagt wird, wählen Sie unter der eingegebenen Äußerung **[Überprüfen](#inspect-score)** aus. 
+1. When the **Inspect** panel opens, select **[Compare with Published](#compare-with-published-version)**. 
 
-1. Wenn der Bereich **Überprüfen** geöffnet wird, wählen Sie **[Compare with Published](#compare-with-published-version)** (Mit veröffentlichtem Element vergleichen) aus. 
+1. When the **Published** panel opens, select **[Additional Settings](#additional-settings-in-test-panel)**.
 
-1. Wenn der Bereich **Veröffentlicht** geöffnet wird, wählen Sie **[Zusätzliche Einstellungen](#additional-settings-in-test-panel)** aus.
+1. In the pop-up dialog, check **Enable Bing Spell Check** and enter the key, then select **Done**. 
+    ![Enter Bing Spell Check service key](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
 
-1. Aktivieren Sie im Popupdialogfenster die Option **Bing-Rechtschreibprüfung aktivieren** , geben Sie den Schlüssel ein, und wählen Sie **Fertig** aus. 
-    ![Eingeben des Dienstschlüssels für die Bing-Rechtschreibprüfung](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
-
-1. Geben Sie eine Abfrage in falscher Schreibweise ein, z.B. `book flite to seattle`, und drücken Sie die EINGABETASTE. Die falsche Schreibweise des Worts `flite` wird in der an LUIS gesendeten Abfrage ersetzt, und der resultierende JSON-Code enthält sowohl die ursprüngliche Abfrage als `query` als auch die korrigierte Schreibweise in der Abfrage als `alteredQuery`.
+1. Enter a query with an incorrect spelling such as `book flite to seattle` and select enter. The incorrect spelling of the word `flite` is replaced in the query sent to LUIS and the resulting JSON shows both the original query, as `query`, and the corrected spelling in the query, as `alteredQuery`.
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="import-a-dataset-file-for-batch-testing"></a>
@@ -125,6 +133,7 @@ Verwenden Sie das folgende Verfahren, um den Dienst [Bing-Rechtschreibprüfung v
 <a name="view single-point utterance data"></a>
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
+-->
 
 ## <a name="batch-testing"></a>Testen in Batches
 Weitere Informationen finden Sie in den [Konzepten](luis-concept-batch-test.md) zu Batchtests und im Artikel zum [Testen eines Batches von Äußerungen](luis-how-to-batch-test.md).

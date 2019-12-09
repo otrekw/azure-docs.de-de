@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f36d3bcb16876f080f780658bc59afd794e3431e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699184"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560132"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -295,17 +295,29 @@ Um dieses Problem zu beheben, passen Sie den Registrierungswert **DirectoryCache
  
 Sie können den Wert beispielsweise auf 0x100000 festlegen und überprüfen, ob sich die Leistung verbessert.
 
-## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fehler „AadDsTenantNotFound“ beim Aktivieren der Azure Active Directory-Authentifizierung für Azure Files mit der Fehlermeldung „Unable to locate active tenants with tenant Id aad-tenant-id“ (Es wurden keine aktiven Mandanten mit der Mandanten-ID „aad-tenant-id“ gefunden)
+## <a name="error-aaddstenantnotfound-in-enabling-azure-active-directory-domain-service-aad-ds-authentication-for-azure-files-unable-to-locate-active-tenants-with-tenant-id-aad-tenant-id"></a>Fehler „AadDsTenantNotFound“ beim Aktivieren der AAD DS-Authentifizierung (Azure Active Directory Domain Service) für Azure Files mit der Fehlermeldung „Unable to locate active tenants with tenant Id aad-tenant-id“ (Es wurden keine aktiven Mandanten mit der Mandanten-ID „aad-tenant-id“ gefunden)
 
 ### <a name="cause"></a>Ursache
 
-Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der Azure Active Directory-Authentifizierung (AAD) für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
+Der Fehler „AadDsTenantNotFound“ tritt auf, wenn Sie versuchen, die [Aktivierung der AAD DS-Authentifizierung (Azure Active Directory Domain Service) für Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-enable) für ein Speicherkonto vorzunehmen, für das [Azure Active Directory Domain Services (AAD DS)](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) nicht im AAD-Mandanten des zugehörigen Abonnements erstellt wurde.  
 
 ### <a name="solution"></a>Lösung
 
 Aktivieren Sie AAD DS im AAD-Mandanten des Abonnements, in dem Ihr Speicherkonto bereitgestellt ist. Sie benötigen Administratorrechte für den AAD-Mandanten, um eine verwaltete Domäne zu erstellen. Wenn Sie nicht der Administrator des Azure AD-Mandanten sind, wenden Sie sich an den Administrator und folgen Sie der schrittweisen Anleitung zum [Aktivieren von Azure Active Directory Domain Services über das Azure-Portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started).
 
 [!INCLUDE [storage-files-condition-headers](../../../includes/storage-files-condition-headers.md)]
+
+## <a name="error-system-error-1359-has-occurred-an-internal-error-received-over-smb-access-to-file-shares-with-azure-active-directory-domain-service-aad-ds-authentication-enabled"></a>Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“, empfangen über SMB-Zugriff auf Dateifreigaben mit aktivierter AAD DS-Authentifizierung (Azure Active Directory Domain Service)
+
+### <a name="cause"></a>Ursache
+
+Fehler „Systemfehler 1359 ist aufgetreten. Interner Fehler“ tritt auf, wenn Sie versuchen, eine Verbindung mit Ihrer Dateifreigabe herzustellen, und die AAD DS-Authentifizierung für einen AAD DS mit einem DNS-Domänennamen aktiviert ist, der mit einem numerischen Zeichen beginnt. Wenn der DNS-Domänenname für Ihren AAD DS beispielsweise „1domain“ lautet und Sie versuchen, die Dateifreigabe mit AAD-Anmeldeinformationen einzubinden, wird dieser Fehler angezeigt. 
+
+### <a name="solution"></a>Lösung
+
+Derzeit können Sie die nochmalige Bereitstellung des AAD DS mit einem neuen DNS-Domänennamen in Erwägung ziehen, für den die folgenden Regeln gelten:
+- Namen dürfen nicht mit einem numerischen Zeichen beginnen.
+- Die Namen müssen zwischen 3 und 63 Zeichen lang sein.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

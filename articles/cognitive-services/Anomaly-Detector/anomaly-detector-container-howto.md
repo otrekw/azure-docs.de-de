@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 11f041ed06117a7e3d495fb43d3a4904f6001520
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 45abd904ea95cf8e68583ba5630a485af59479ec
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316391"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327251"
 ---
-# <a name="install-and-run-anomaly-detector-containers"></a>Installieren und Ausführen von Containern für die Anomalieerkennung
+# <a name="install-and-run-anomaly-detector-containers-preview"></a>Installieren und Ausführen von Containern für die Anomalieerkennung (Vorschau)
 
-Die Anomalieerkennung umfasst die folgenden Container: 
+Die Anomalieerkennung umfasst die folgenden Funktionen für Container:
 
-|Funktion|Features|
-|-|-|
-|Anomalieerkennung| <li> Erkennt Anomalien in Echtzeit <li> Erkennt Anomalien für das ganze Dataset als Batch <li> Leitet den normalen zu erwartenden Bereich Ihrer Daten ab <li> Unterstützt die Anpassung der Anomalieerkennung an Ihre Daten |
+| Funktion | Features |
+|--|--|
+| Anomalieerkennung | <li> Erkennt Anomalien in Echtzeit <li> Erkennt Anomalien für das ganze Dataset als Batch <li> Leitet den normalen zu erwartenden Bereich Ihrer Daten ab <li> Unterstützt die Anpassung der Anomalieerkennung an Ihre Daten |
 
 Ausführliche Informationen zu den APIs finden Sie unter:
 * [Erfahren Sie mehr über den Anomalieerkennungs-API-Dienst.](https://go.microsoft.com/fwlink/?linkid=2080698&clcid=0x409)
@@ -92,8 +92,8 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-det
 
 Wenn sich der Container auf dem [Hostcomputer](#the-host-computer) befindet, können Sie über den folgenden Prozess mit dem Container arbeiten.
 
-1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Abrechnungseinstellungen. Es sind noch weitere [Beispiele](anomaly-detector-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar. 
-1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint) 
+1. [Führen Sie den Container aus](#run-the-container-with-docker-run), und verwenden Sie dabei die erforderlichen Abrechnungseinstellungen. Es sind noch weitere [Beispiele](anomaly-detector-container-configuration.md#example-docker-run-commands) für den Befehl `docker run` verfügbar.
+1. [Fragen Sie den Vorhersageendpunkt des Containers ab.](#query-the-containers-prediction-endpoint)
 
 ## <a name="run-the-container-with-docker-run"></a>Ausführen des Containers mit `docker run`
 

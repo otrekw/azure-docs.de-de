@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2f4346dfdb095e849adc65baf0fd31d25d03c4a7
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: e3c25798be8af26c1f5e5c1178395cd1688bb132
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604067"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382061"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Überwachung in Azure Database for MariaDB
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MariaDB bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -55,6 +55,14 @@ Der [Abfragespeicher](concepts-query-store.md) dient dazu, die Abfrageleistung i
 ## <a name="performance-recommendations"></a>Leistungsempfehlungen
 
 Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) identifiziert Möglichkeiten zur Verbesserung der Workloadleistung. Unter „Leistungsempfehlungen“ erhalten Sie Empfehlungen zum Erstellen neuer Indizes, mit denen sich die Leistung Ihrer Workloads u. U. verbessern lässt. Um Indexempfehlungen zu generieren, berücksichtigt das Feature verschiedene Datenbankmerkmale einschließlich des Schemas und der Workload laut Abfragespeicher. Nach der Implementierung von Leistungsempfehlungen sollten Kunden die Leistung testen, um die Auswirkungen dieser Änderungen auszuwerten.
+
+## <a name="service-health"></a>Dienstintegrität
+[Azure Service Health](../service-health/overview.md) stellt eine Ansicht mit allen Service Health-Benachrichtigungen in Ihrem Abonnement bereit. Sie können Service Health-Warnungen einrichten, damit Sie über Ihre bevorzugten Kommunikationskanäle benachrichtigt werden, wenn Probleme oder Änderungen vorliegen, die sich auf die von Ihnen verwendeten Azure-Dienste und -Regionen auswirken können.
+
+Sie können geplante Wartungsereignisse für Azure Database for MariaDB mithilfe des Ereignistyps **Geplante Wartung** anzeigen. Informationen zum Erstellen von **Service Health-Warnungen** finden Sie im Artikel [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications.md).
+
+> [!IMPORTANT]
+> Die Benachrichtigungen zu geplanten Wartungen sind nur in der Vorschau für „USA, Osten“ und „Vereinigtes Königreich, Süden“ verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

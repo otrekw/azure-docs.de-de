@@ -8,13 +8,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: e8a8170023c8f529894522e27a4c6231325089af
-ms.sourcegitcommit: 156b313eec59ad1b5a820fabb4d0f16b602737fc
+ms.openlocfilehash: 1ab45a6bde9ead69a7ea23dd095de84b8ff01334
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67190979"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456703"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>Eigenschaften der Modulzwillinge von IoT Edge-Agent und IoT Edge-Hub
 
@@ -55,6 +54,7 @@ Der Modulzwilling für den IoT Edge-Agent heißt `$edgeAgent` und koordiniert di
 | modules.{moduleId}.type | Muss „Docker“ sein. | Ja |
 | modules.{moduleId}.status | {"running" \| "stopped"} | Ja |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failure" \| "on-unhealthy" \| "always"} | Ja |
+| modules.{moduleId}.imagePullPolicy | {"on-create" \| "never"} | Nein |
 | modules.{moduleId}.settings.image | URI des Modulimage. | Ja |
 | modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Docker-Erstellungsoptionen](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate) | Nein |
 | modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | IoT Hub legt diese Eigenschaft fest, wenn das Manifest mithilfe einer Bereitstellung angewandt wird. Nicht Teil eines Bereitstellungsmanifests. |

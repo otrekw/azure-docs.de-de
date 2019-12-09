@@ -4,15 +4,15 @@ description: Beschreibt Datenquellen und Connectors, die für tabellarische Date
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572956"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170659"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -35,7 +35,7 @@ Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Da
 <a name="tab1400a">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
 <a name="azsqlmanaged">2</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz innerhalb von Azure VNet mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Ist das nicht der Fall, ist ein lokales Datengateway erforderlich.    
 <a name="databricks">3</a>: Azure Databricks unter Verwendung des Spark-Connectors wird derzeit nicht unterstützt.   
-<a name="gen2">4</a>: ADLS Gen2 wird aktuell nicht unterstützt.
+<a name="gen2">4</a>: Der ADLS Gen2-Connector wird derzeit nicht unterstützt, jedoch kann der Blob Storage-Connector mit einer ADLS Gen2-Datenquelle verwendet werden.
 
 
 **Anbieter**   
@@ -43,14 +43,14 @@ In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen h
 
 ## <a name="other-data-sources"></a>Weitere Datenquellen
 
-Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-Server ist ein lokales Gateway erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich.
+Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure Analysis Services-Server ist ein lokales Gateway erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich.
 
 ### <a name="in-memory-and-directquery"></a>In-Memory und DirectQuery
 
 |Datenquelle | In-Memory-Anbieter | DirectQuery-Anbieter |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
-| SQL Server Data Warehouse |SQL Server Native Client 11.0, Microsoft OLE DB-Anbieter für SQL Server, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
+| SQL Server |Microsoft OLE DB-Treiber für SQL Server MSOLEDBSQL (empfohlen), SQL Server Native Client 11.0, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
+| SQL Server Data Warehouse |Microsoft OLE DB-Treiber für SQL Server MSOLEDBSQL (empfohlen), SQL Server Native Client 11.0, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
 | Oracle | OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET |
 | Teradata |OLE DB-Anbieter für Teradata, Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET |
 | | | |
@@ -91,7 +91,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure AS-S
 
 ## <a name="specifying-a-different-provider"></a>Angeben eines anderen Herstellers
 
-Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Wenn Sie andere native Anbieter als SQLOLEDB verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Der Anbieter „SQLNCLI11.1“ ist nicht registriert**. Wenn ein DirectQuery-Modell eine Verbindung mit lokalen Datenquellen herstellt und Sie native Anbieter verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Fehler beim Erstellen des OLE DB-Rowsets. Incorrect syntax near „LIMIT“. (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei „LIMIT“)** .
+Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Wenn Sie andere native Anbieter als MSOLEDBSQL verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Der Anbieter „SQLNCLI11.1“ ist nicht registriert**. Wenn ein DirectQuery-Modell eine Verbindung mit lokalen Datenquellen herstellt und Sie native Anbieter verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Fehler beim Erstellen des OLE DB-Rowsets. Incorrect syntax near „LIMIT“. (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei „LIMIT“)** .
 
 Bei der Migration eines lokalen SQL Server Analysis Services-Tabellenmodells zu Azure Analysis Services muss möglicherweise der Anbieter gewechselt werden.
 

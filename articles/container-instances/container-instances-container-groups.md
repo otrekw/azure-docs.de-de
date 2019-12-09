@@ -1,26 +1,21 @@
 ---
-title: Containergruppen von Azure Container Instances
-description: Funktionsweise von Gruppen mit mehreren Containern in Azure Container Instances
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
+title: Einführung in Containergruppen
+description: Informationen zu Containergruppen in Azure Container Instances, einer Sammlung von Instanzen mit dem gleichen Lebenszyklus, die Ressourcen gemeinsam nutzen, z. B. Speicher und Netzwerk
 ms.topic: article
-ms.date: 03/20/2019
-ms.author: danlep
+ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: cc9b11ba5fe0cd015d0879f28b9e85fb46b11955
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9fbf9fea7da0896ee6c0e248d18e18d52798fbd7
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178583"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482104"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
 Die oberste Ressource in Azure Container Instances ist die *Containergruppe*. In diesem Artikel wird beschrieben, was Containergruppen sind und welche Arten von Szenarien damit möglich sind.
 
-## <a name="how-a-container-group-works"></a>Funktionsweise einer Containergruppe
+## <a name="what-is-a-container-group"></a>Was ist eine Containergruppe?
 
 Eine Containergruppe ist eine Sammlung mit Containern, die auf demselben Hostcomputer geplant werden. Für die Container einer Containergruppe werden der Lebenszyklus, die Ressourcen, das lokale Netzwerk und die Speichervolumes gemeinsam genutzt. Dies ähnelt dem *Pod*-Konzept in [Kubernetes][kubernetes-pod].
 
@@ -51,15 +46,17 @@ Mit dem Azure CLI-Befehl [az container export][az-container-export] können Sie 
 
 Azure Container Instances weist einer Containergruppe Ressourcen wie CPUs, Arbeitsspeicher und optional [GPUs][gpus] (Vorschau) zu, indem die [Ressourcenanforderungen][resource-requests] der Instanzen in der Gruppe hinzugefügt werden. Wenn Sie zum Beispiel bei CPU-Ressourcen eine Containergruppe mit zwei Instanzen erstellen, von denen jede 1 CPU erfordert, werden der Containergruppe 2 CPUs zugeordnet.
 
-Die maximal für eine Containergruppe verfügbaren Ressourcen hängen von der [Azure-Region][region-availability] ab, die für die Bereitstellung verwendet wird.
+### <a name="resource-usage-by-instances"></a>Ressourcenverwendung durch Instanzen
 
-### <a name="container-resource-requests-and-limits"></a>Containerressourcenanforderungen und -grenzwerte
+Jeder Containerinstanz sind die Ressourcen zugeordnet, die in der jeweiligen Ressourcenanforderung angegeben sind. Die Ressourcenverwendung durch eine Containerinstanz in einer Gruppe hängt jedoch davon ab, wie Sie die zugehörige optionale Eigenschaft für das [Ressourcenlimit][resource-limits] konfigurieren.
 
-* Standardmäßig teilen sich die Containerinstanzen in einer Gruppe die angeforderten Ressourcen der Gruppe. In einer Gruppe mit zwei Instanzen, von denen jede 1 CPU erfordert, hat die Gruppe als Ganzes Zugriff auf 2 CPUs. Jede Instanz kann bis zu 2 CPUs verwenden, und die Instanzen konkurrieren während der Ausführung möglicherweise um eine CPU-Ressource.
+* Wenn Sie kein Ressourcenlimit angeben, ist die maximale Ressourcenverwendung der Instanz identisch mit der Ressourcenanforderung.
 
-* Sie können optional einen [Ressourcengrenzwert][resource-limits] für eine Instanz festlegen, um die Ressourcennutzung der Instanz in der Gruppe zu beschränken. In einer Gruppe mit zwei Instanzen, die 1 CPU erfordern, können für einen der Container mehr CPUs für die Ausführung erforderlich sein als für den anderen.
+* Wenn Sie ein Ressourcenlimit für eine Instanz angeben, können Sie die Ressourcenverwendung der Instanz für ihre Workload anpassen, d. h. die Verwendung relativ zur Ressourcenanforderung verringern oder erhöhen. Als maximales Ressourcenlimit können Sie die Gesamtmenge der Ressourcen festlegen, die der Gruppe zugeordnet sind.
+    
+    In einer Gruppe mit zwei Instanzen, die 1 CPU anfordern, kann für einen Container beispielsweise eine Workload ausgeführt werden, die mehr CPUs für die Ausführung erfordert, als der andere Container aufweist.
 
-  In diesem Szenario könnten Sie einen Ressourcengrenzwert von 0,5 CPU für die eine Instanz und einen Grenzwert von 2 CPUs für die zweite festlegen. Diese Konfiguration beschränkt die Ressourcennutzung des ersten Containers auf 0,5 CPU und lässt den zweiten Container gegebenenfalls bis zu 2 CPUs verwenden.
+    In diesem Szenario könnten Sie einen Ressourcengrenzwert von 0,5 CPU für die eine Instanz und einen Grenzwert von 2 CPUs für die zweite festlegen. Diese Konfiguration beschränkt die Ressourcennutzung des ersten Containers auf 0,5 CPU und lässt den zweiten Container gegebenenfalls bis zu 2 CPUs verwenden.
 
 Weitere Informationen finden Sie unter der Eigenschaft [ResourceRequirements][resource-requirements] in der REST-API für Containergruppen.
 

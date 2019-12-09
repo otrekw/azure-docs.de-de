@@ -1,17 +1,17 @@
 ---
-title: Agent-basierte Migrationsarchitektur bei der Azure Migrate-Servermigration
+title: Agent-basierte Migration bei der Azure Migrate-Servermigration
 description: Bietet eine Übersicht über die Agent-basierte VMware VM-Migration mit der Azure Migrate-Servermigration.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: f5ad3aa0fc51f47942750d3745ffef1d6e4a087d
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: a8477b4c10ccbc76f36eed4d64ac12e8bb648a28
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232587"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186100"
 ---
 # <a name="agent-based-migration-architecture"></a>Agent-basierte Migrationsarchitektur
 
@@ -36,7 +36,7 @@ Die Azure Migrate-Servermigration ist ein Tool zum Migrieren lokaler und öffent
 
 ## <a name="architectural-components"></a>Komponenten der Architektur
 
-![Architektur](./media/agent-based-replication-architecture/architecture.png)
+![Architecture](./media/agent-based-replication-architecture/architecture.png)
 
 In der Tabelle sind die Komponenten zusammengefasst, die für die Agent-basierte Migration verwendet werden.
 
@@ -101,7 +101,7 @@ Mit den Werten in dieser Tabelle können Sie herausfinden, ob Sie in Ihrer Berei
 --- | --- | --- | --- | ---
 8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz) | 16 GB | 300 GB | 500 GB oder weniger | < 100 Computer 
 12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz) | 18 GB | 600 GB | 501 GB bis 1 TB | 100-150 Computer.
-16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB bis 2 TB | 151-200 Computer.
+16 vCPUs (2 Sockets * 8 Kerne \@ 2,5 GHz) | 32 G1 |  1 TB | 1 TB bis 2 TB | 151-200 Computer.
 
 ### <a name="scale-out-process-server-sizing"></a>Dimensionierung horizontal skalierter Prozessserver
 
@@ -109,9 +109,9 @@ Wenn Sie einen horizontal skalierten Prozessserver bereitstellen müssen, könne
 
 **Prozessserver** | **Freier Speicherplatz für Datenzwischenspeicherung** | **Datenänderungsrate** | **Replikationsgrenzwerte**
 --- | --- | --- | --- 
-4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer 
+4 vCPUs (2 Sockets * 2 Kerne \@ 2,5 GHz), 8 GB Arbeitsspeicher | 300 GB | 250 GB oder weniger | Bis zu 85 Computer 
 8 vCPUs (2 Sockets * 4 Kerne \@ 2,5 GHz), 12 GB Arbeitsspeicher | 600 GB | 251 GB bis 1 TB    | 86-150 Computer.
-12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | 1–2 TB | 151-225 Computer.
+12 vCPUs (2 Sockets * 6 Kerne \@ 2,5 GHz), 24 GB Arbeitsspeicher | 1 TB | 1–2 TB | 151-225 Computer.
 
 ## <a name="control-upload-throughput"></a>Steuern des Uploaddurchsatzes
 

@@ -13,18 +13,18 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0872d3c798bd5bd94e425869822602e8123517b4
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: 3777180a4d62f8b253ac4cd096bff15613f33565
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303604"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206618"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
-Die Architektur von Azure-Netzwerkdiensten ist eine wichtige Komponente der erfolgreichen Bereitstellung von SAP-Anwendungen unter HANA (große Instanz). In der Regel weisen Bereitstellungen von SAP HANA in Azure (große Instanzen) eine größere SAP-Landschaft mit mehreren verschiedenen SAP-Lösungen mit Datenbanken unterschiedlicher Größe sowie variierender CPU-Ressourcen- und Arbeitsspeichernutzung auf. Die Wahrscheinlichkeit ist hoch, dass nicht alle IT-Systeme bereits unter Azure angeordnet sind. Ihre SAP-Landschaft ist aus DBMS- und SAP-Anwendungssicht häufig eine hybride Landschaft, indem eine Mischung aus NetWeaver und S/4HANA/SAP HANA sowie anderen DBMS-Systemen verwendet wird. Azure verfügt über verschiedene Dienste, mit denen Sie die unterschiedlichen DBMS-, NetWeaver- und S/4HANA-System in Azure ausführen können. Darüber hinaus verfügt Azure über Netzwerktechnologie, damit Azure für Ihre lokalen Softwarebereitstellungen wie ein virtuelles Datencenter aussieht.
+Die Architektur von Azure-Netzwerkdiensten ist eine wichtige Komponente der erfolgreichen Bereitstellung von SAP-Anwendungen unter HANA (große Instanz). In der Regel weisen Bereitstellungen von SAP HANA in Azure (große Instanzen) eine größere SAP-Landschaft mit mehreren verschiedenen SAP-Lösungen mit Datenbanken unterschiedlicher Größe sowie variierender CPU-Ressourcen- und Arbeitsspeichernutzung auf. Die Wahrscheinlichkeit ist hoch, dass nicht alle IT-Systeme bereits unter Azure angeordnet sind. Ihre SAP-Landschaft ist aus DBMS- und SAP-Anwendungssicht häufig eine hybride Landschaft, indem eine Mischung aus NetWeaver und S/4HANA/SAP HANA sowie anderen DBMS-Systemen verwendet wird. Azure verfügt über verschiedene Dienste, mit denen Sie die unterschiedlichen DBMS-, NetWeaver- und S/4HANA-System in Azure ausführen können. Darüber hinaus verfügt Azure über Netzwerktechnologie, damit Azure für Ihre lokalen Softwarebereitstellungen wie ein virtuelles Rechenzentrum aussieht.
 
-Dies gilt nicht, wenn Ihre gesamten IT-Systeme in Azure gehostet werden. Die Azure-Netzwerkfunktionalität wird verwendet, um die lokale Umgebung mit Ihren Azure-Ressourcen zu verbinden, damit Azure wie eines Ihrer virtuellen Datencenter aussieht. Folgende Azure-Netzwerkfunktionalität wird verwendet: 
+Dies gilt nicht, wenn Ihre gesamten IT-Systeme in Azure gehostet werden. Die Azure-Netzwerkfunktionalität wird verwendet, um die lokale Umgebung mit Ihren Azure-Ressourcen zu verbinden, damit Azure wie eines Ihrer virtuellen Rechenzentren aussieht. Folgende Azure-Netzwerkfunktionalität wird verwendet: 
 
 - Virtuelle Azure-Netzwerke werden mit der [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Leitung verbunden, die als Verbindung mit Ihren lokalen Netzwerkressourcen dient.
 - Eine ExpressRoute-Leitung, die lokale Systeme mit Azure verbindet, sollte über eine [Mindestbandbreite von 1 GBit/s](https://azure.microsoft.com/pricing/details/expressroute/) verfügen. Diese minimale Bandbreite ist ausreichend für die Übertragung von Daten zwischen lokalen Systemen und auf VMs ausgeführten Systemen. Sie bietet auch eine angemessene Bandbreite für die Verbindung von lokalen Benutzern mit Azure-Systemen.
@@ -163,11 +163,11 @@ Microsoft hat eine neue Funktionalität mit dem Namen [ExpressRoute Global Reach
 - Ermöglichen der direkten Kommunikation zwischen Ihren HANA-Einheiten (große Instanz) in unterschiedlichen Regionen
 
 
-##### <a name="direct-access-from-on-premise"></a>Direktzugriff aus der lokalen Umgebung
+##### <a name="direct-access-from-on-premises"></a>Direktzugriff aus der lokalen Umgebung
 In den Azure-Regionen, in denen Global Reach angeboten wird, können Sie die Aktivierung der Global Reach-Funktionalität für Ihre ExpressRoute-Leitung anfordern, mit der Ihr lokales Netzwerk mit dem virtuellen Azure-Netzwerk verbunden wird (über das auch eine Verbindung mit Ihren HANA-Einheiten (große Instanz) hergestellt wird). Für die lokale Seite Ihrer ExpressRoute-Leitung wirkt sich dies auf die Kosten aus. Informationen zu den Preisen erhalten Sie auf der Seite mit den Preisangaben für das [Global Reach-Add-On](https://azure.microsoft.com/pricing/details/expressroute/). Für Sie fallen keine zusätzlichen Kosten für die Leitung an, mit der eine Verbindung mit HANA-Einheiten (große Instanz) mit Azure hergestellt wird. 
 
 > [!IMPORTANT]  
-> Bei der Nutzung von Global Reach zur Aktivierung des Direktzugriffs zwischen Ihren HANA-Einheiten (große Instanz) und lokalen Ressourcen werden die Netzwerkdaten und die Ablaufsteuerung **nicht über virtuelle Azure-Netzwerke** geleitet, sondern direkt zwischen den Microsoft-Unternehmensedgeroutern. Dies führt dazu, dass alle NSG- oder ASG-Regeln und alle Arten von Firewall, NVA oder Proxy, die Sie in einem virtuellen Azure-Netzwerk bereitgestellt haben, nicht genutzt werden. **Wenn Sie ExpressRoute Global Reach zum Ermöglichen des Direktzugriffs aus der lokalen Umgebung auf HANA-Einheiten (große Instanz) verwenden, müssen Einschränkungen und Berechtigungen zum Zugreifen auf HANA-Einheiten (große Instanz) in Firewalls auf lokaler Seite definiert werden.** 
+> Bei der Nutzung von Global Reach zur Aktivierung des Direktzugriffs zwischen Ihren HANA-Einheiten (große Instanz) und lokalen Ressourcen werden die Netzwerkdaten und die Ablaufsteuerung **nicht über virtuelle Azure-Netzwerke** geleitet, sondern direkt zwischen den Microsoft-Unternehmensedgeroutern. Dies führt dazu, dass alle NSG- oder ASG-Regeln und alle Arten von Firewall, NVA oder Proxy, die Sie in einem virtuellen Azure-Netzwerk bereitgestellt haben, nicht genutzt werden. **Wenn Sie ExpressRoute Global Reach zum Ermöglichen des Direktzugriffs aus der lokalen Umgebung auf HANA-Einheiten (große Instanz) verwenden, müssen Einschränkungen und Berechtigungen zum Zugreifen auf HANA-Einheiten (große Instanz) in Firewalls auf lokaler Seite definiert werden**. 
 
 ##### <a name="connecting-hana-large-instances-in-different-azure-regions"></a>Verbinden von HANA (große Instanzen) in unterschiedlichen Azure-Regionen
 ExpressRoute Global Reach kann nicht nur zum Herstellen einer Verbindung der lokalen Umgebung mit HANA-Einheiten (große Instanz) verwendet werden, sondern auch für die Verbindungsherstellung mit HANA-Mandanten (große Instanz), die für Sie in zwei unterschiedlichen Regionen bereitgestellt werden. Die Isolation erfolgt über die ExpressRoute-Leitungen, die von Ihren HANA-Mandanten (große Instanz) verwendet werden, um in beiden Regionen eine Verbindung mit Azure herzustellen. Es werden keine zusätzlichen Gebühren berechnet, um zwei HANA-Mandanten (große Instanz) zu verbinden, die in zwei unterschiedlichen Regionen bereitgestellt werden. 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: fe4436afe56e631ae308b70ae35b1fb4a7c32e11
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4f8e5d1c5ac3b0383fee5a901d2bb34edab8dae2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669185"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225493"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Erstellungs- und Veröffentlichungsregionen und die dazugehörigen Schlüssel
 
@@ -29,9 +29,9 @@ Es gibt drei LUIS-Erstellungsportale, die auf der Region basieren. Sie müssen d
 
 |LUIS|Erstellungsregion|Azure-Region: Name|
 |--|--|--|
-|[www.luis.ai][www.luis.ai]|Daten<br>nicht Europa<br>nicht Australien| `westus`|
-|[au.luis.ai][au.luis.ai]|Australien| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai]|Europa|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|Daten<br>nicht Europa<br>nicht Australien| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Australien| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Europa|`westeurope`|
 
 Erstellungsbereiche verfügen über [gekoppelte Failoverregionen](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 

@@ -1,6 +1,6 @@
 ---
-title: Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“ in Azure Active Directory | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie auf das Portal „Meine Apps“ zugreifen.
+title: Suchen und Verwenden von Apps im Portal „Meine Apps“ – Azure AD
+description: Erfahren Sie, wie Sie das Portal „Meine Apps“ suchen und auf die cloudbasierten Apps Ihrer Organisation zugreifen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 901067e198616dba390e0e1162ec26a0b11768f1
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: b74fa1caad629e6f7f745f84787b6f415876bbae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "68383140"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233173"
 ---
-# <a name="access-and-use-apps-on-the-my-apps-portal"></a>Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“
+# <a name="locate-and-use-your-organizations-cloud-based-apps-on-the-my-apps-portal"></a>Suchen und Verwenden der cloudbasierten Apps Ihrer Organisation im Portal „Meine Apps“
 
 Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 

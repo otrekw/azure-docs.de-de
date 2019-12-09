@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1aa696ccaecc24df700315962c1f01f3a298c56c
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026691"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233110"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -324,7 +324,7 @@ Wenn eine Gruppe erstellt wird, ermöglichen bestimmte Endpunkte dem Benutzer, e
 
 ## <a name="group-writeback-to-on-premises-preview"></a>Rückschreiben von Gruppen in das lokale Azure AD (Vorschau)
 
-Heutzutage werden viele Gruppen immer noch im lokalen Active Directory verwaltet. Als Reaktion auf Anforderungen zum Synchronisieren von Cloudgruppen mit dem lokalen Active Directory ist jetzt das Feature Office 365-Gruppenrückschreiben für Azure AD als Vorschau verfügbar.
+Heutzutage werden viele Gruppen immer noch im lokalen Active Directory verwaltet. Als Reaktion auf Anforderungen zum Synchronisieren von Cloudgruppen mit dem lokalen Active Directory ist jetzt das Feature Office 365-Gruppenrückschreiben für Azure AD als Vorschau verfügbar.
 
 Office 365-Gruppen werden in der Cloud erstellt und verwaltet. Die Funktion zum Rückschreiben ermöglicht Ihnen, Office 365-Gruppen als Verteilergruppen in eine Active Directory-Gesamtstruktur bei installiertem Exchange zurückzuschreiben. Benutzer mit lokalen Exchange-Postfächern können E-Mails von diesen Gruppen senden und empfangen. Das Feature „Gruppenrückschreiben“ unterstützt keine Azure AD-Sicherheitsgruppen oder -Verteilergruppen.
 

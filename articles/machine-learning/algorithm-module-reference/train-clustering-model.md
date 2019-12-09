@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 1b26fc251aeb527041b1e648f19f9dd67f7701b7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490391"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232591"
 ---
 # <a name="train-clustering-model"></a>Trainieren eines Clusteringmodells
 
@@ -52,11 +52,9 @@ Nach Abschluss des Trainings:
 
 +  Um die Werte im Dataset anzuzeigen, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Result datasets** (Ergebnisdatasets) aus, und klicken Sie auf **Visualize** (Visualisieren).
 
-+ Um das trainierte Modell für die spätere Wiederverwendung zu speichern, klicken Sie mit der rechten Maustaste auf das Modul. Wählen Sie **Trained model** (Trainiertes Modell) aus, und klicken Sie auf **Save As Trained Model** (Als trainiertes Modell speichern).
++ Klicken Sie mit der rechten Maustaste auf das Modul, um das trainierte Modell für die spätere Wiederverwendung zu speichern. Wählen Sie **Trained model** (Trainiertes Modell) aus, und klicken Sie auf **Save As Trained Model** (Als trainiertes Modell speichern).
 
 + Verwenden Sie zum Generieren von Ergebnissen aus dem Modell [Assign Data to Clusters](assign-data-to-clusters.md) (Zuweisen von Daten zu Clustern).
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

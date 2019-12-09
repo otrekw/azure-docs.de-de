@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388050"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184673"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mappingdatenfluss: Ausdrucks-Generator
 
@@ -77,6 +77,40 @@ Verwenden Sie bei Ausdrucksfunktionen, die Arrays zurückgeben, eckige Klammern 
 
 Wenn Sie Spaltennamen besitzen, die Sonderzeichen oder Leerzeichen enthalten, setzen Sie die Namen in geschweiften Klammern.
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>Tastenkombinationen
+
+* ```Ctrl-K Ctrl-C```: Gesamte Zeile auskommentieren
+* ```Ctrl-K Ctrl-U```: Auskommentierung aufheben
+* ```F1```: Befehle für Editor-Hilfe anzeigen
+* ```Alt-Down Arrow```: Aktuelle Zeile nach unten verschieben
+* ```Alt-Up Arrow```: Aktuelle Zeile nach oben verschieben
+* ```Cntrl-Space```: Kontexthilfe anzeigen
+
+## <a name="manual-comments"></a>Manuelle Kommentare
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+Wenn Sie einen Kommentar am Anfang des Ausdrucks einfügen, wird er im Transformationstextfeld angezeigt, sodass die Transformationsausdrücke dokumentiert werden:
+
+![Kommentare](media/data-flow/comments2.png "Kommentare")
+
+## <a name="convert-to-dates-or-timestamps"></a>Konvertieren in Datumsangaben oder Zeitstempel
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+Beachten Sie, dass die Konvertierung in einer toString()-Funktion erfolgen muss, damit Zeichenfolgenliterale in der Zeitstempelausgabe eingefügt werden.
+
+## <a name="handling-column-names-with-special-characters"></a>Verarbeiten von Spaltennamen mit Sonderzeichen
+
+Wenn Sie Spaltennamen besitzen, die Sonderzeichen oder Leerzeichen enthalten, setzen Sie die Namen in geschweiften Klammern.
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

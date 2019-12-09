@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/19/2019
+ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009249"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229037"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Bewährte Methoden für Azure Digital Twins-Sicherheit
 
@@ -38,8 +38,8 @@ Einige der wichtigsten Methoden zum sicheren Schutz Ihrer IoT-Geräte sind:
 > * Begrenzen Sie die Rolle jedes Geräts, jedes Sensors und jeder Person in Ihrem IoT-Raum. Bei einer Kompromittierung werden die Auswirkungen minimiert.
 > * Verwenden Sie ggf. Filterung der Geräte-IP-Adressen und Einschränkungen der Ports.
 > * Begrenzen Sie E/A- und Gerätebandbreite, um die Leistung zu verbessern. Begrenzung der Übertragungsrate kann die Sicherheit verbessern, indem Denial-of-Service-Angriffe verhindert werden.
-> * Halten Sie die Gerätefirmware auf dem neuesten Stand.
-> * Überprüfen Sie Ihre Best Practices für die Geräte-, Netzwerk- und Gatewaysicherheit in regelmäßigen Abständen, da diese sich im Lauf der Zeit weiterentwickeln und verbessern.
+> * Halten Sie die Gerätefirmware, das Betriebssystem und die Software auf dem neuesten Stand.
+> * Überprüfen Sie Ihre Best Practices für die Geräte-, Software-, Netzwerk- und Gatewaysicherheit in regelmäßigen Abständen, da diese sich im Lauf der Zeit weiterentwickeln und verbessern.
 
 Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 
@@ -48,16 +48,19 @@ Einige der wichtigsten Methoden zum sicheren Schutz eines IoT-Raums sind:
 > * Erfordern Sie, dass Kennwörter oder Schlüssel in regelmäßigen Abständen geändert oder aktualisiert werden.
 > * Schränken Sie den Zugriff und die Berechtigungen sorgfältig nach Rollen ein. Weitere Informationen finden Sie im Abschnitt [Rollenbasierte Zugriffssteuerung – bewährte Methoden](#role-based-access-control-best-practices) weiter unten.
 > * Erwägen Sie die Einrichtung einer geteilten Netzwerktopologie, sodass die Geräte in den einzelnen Netzwerken von den anderen Netzwerken isoliert sind.
-> * Verwenden Sie leistungsstarke Verschlüsselung. Verlangen Sie lange Kennwörter, und verwenden Sie sichere Protokolle sowie die zweistufige Authentifizierung.
+> * Verwenden Sie leistungsstarke Verschlüsselung. Schreiben Sie lange Kennwörter vor, und verwenden Sie sichere Protokolle sowie [zweistufige Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
 [Überwachen](./how-to-configure-monitoring.md) Sie IoT-Ressourcen, und achten Sie auf Ausreißer, Bedrohungen und Ressourcenparameter, die außerhalb des üblichen Betriebsbereichs liegen. Verwenden Sie Azure Analytics zur Überwachung der Verwaltung.
+
+> [!IMPORTANT]
+> Lesen Sie Azure [Bewährte Methoden für die IoT-Sicherheit](../iot-fundamentals/iot-security-best-practices.md), um den Grundstein einer umfassenden IoT-Sicherheitsstrategie zu legen.
 
 > [!NOTE]
 > Weitere Informationen zum Verarbeiten und Überwachen von Ereignissen finden Sie unter [Weiterleiten von Ereignissen und Nachrichten mit Azure Digital Twins](./concepts-events-routing.md).
 
 ## <a name="azure-active-directory-best-practices"></a>Azure Active Directory – bewährte Methoden
 
-Azure Digital Twins verwendet Azure Active Directory, um Benutzer zu authentifizieren und Anwendungen zu schützen. Azure Active Directory unterstützt die Authentifizierung für eine Vielzahl moderner Architekturen. Diese basieren alle auf branchenüblichen Protokollen wie OAuth 2.0 oder OpenID Connect. Einige wichtige Methoden zum Schützen Ihres IoT-Raums für Azure Active Directory sind:
+Azure Digital Twins verwendet [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/), um Benutzer zu authentifizieren und Anwendungen zu schützen. Azure Active Directory unterstützt die Authentifizierung für eine Vielzahl moderner Architekturen. Diese basieren alle auf branchenüblichen Protokollen wie OAuth 2.0 oder OpenID Connect. Einige wichtige Methoden zum Schützen Ihres IoT-Raums für Azure Active Directory sind:
 
 > [!div class="checklist"]
 > * Speichern Sie geheime Schlüssel von Azure Active Directory-Apps an einem sicheren Ort, z. B. [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).

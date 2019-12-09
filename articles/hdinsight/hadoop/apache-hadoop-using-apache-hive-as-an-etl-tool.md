@@ -7,13 +7,13 @@ ms.author: ashishth
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/14/2017
-ms.openlocfilehash: 71631cd2394efd6743bc0e80a458fed2678d4be0
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 11/22/2019
+ms.openlocfilehash: 025a31c08ac97783ddf1a608c2899eadd9b89725
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076245"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561771"
 ---
 # <a name="use-apache-hive-as-an-extract-transform-and-load-etl-tool"></a>Verwenden von Apache Hive als Tool zum Extrahieren, Transformieren und Laden (ETL)
 
@@ -25,7 +25,7 @@ Die folgende Abbildung enthält eine Übersicht über den Anwendungsfall und das
 
 ![Apache Hive als ETL-Architektur](./media/apache-hadoop-using-apache-hive-as-an-etl-tool/hdinsight-etl-architecture.png)
 
-Hadoop wird normalerweise in ETL-Prozessen verwendet, bei denen entweder eine hohe Zahl von Textdateien (z.B. CSVs) oder eine kleinere Zahl von sich häufig ändernden Textdateien (oder beides) importiert wird.  Hive ist ein hervorragendes Tool zum Vorbereiten der Daten, bevor diese auf das Datenziel geladen werden.  Hive ermöglicht Ihnen die Erstellung eines Schemas für CSV und die Verwendung einer SQL-ähnlichen Sprache zum Generieren von MapReduce-Programmen, die mit den Daten interagieren. 
+Hadoop wird normalerweise in ETL-Prozessen verwendet, bei denen entweder eine hohe Zahl von Textdateien (z.B. CSVs) oder eine kleinere Zahl von sich häufig ändernden Textdateien (oder beides) importiert wird.  Hive ist ein hervorragendes Tool zum Vorbereiten der Daten, bevor diese auf das Datenziel geladen werden.  Hive ermöglicht Ihnen die Erstellung eines Schemas für CSV und die Verwendung einer SQL-ähnlichen Sprache zum Generieren von MapReduce-Programmen, die mit den Daten interagieren.
 
 Normalerweise gelten für die Verwendung von Hive zur Durchführung des ETL-Vorgangs die folgenden Schritte:
 
@@ -38,14 +38,14 @@ Normalerweise gelten für die Verwendung von Hive zur Durchführung des ETL-Vorg
     DROP TABLE IF EXISTS hvac;
 
     --create the hvac table on comma-separated sensor data stored in Azure Storage blobs
-    
+
     CREATE EXTERNAL TABLE hvac(`date` STRING, time STRING, targettemp BIGINT,
-        actualtemp BIGINT, 
-        system BIGINT, 
-        systemage BIGINT, 
+        actualtemp BIGINT,
+        system BIGINT,
+        systemage BIGINT,
         buildingid BIGINT)
-    ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
-    STORED AS TEXTFILE LOCATION 'wasb://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
+    ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+    STORED AS TEXTFILE LOCATION 'wasbs://{container}@{storageaccount}.blob.core.windows.net/HdiSamples/SensorSampleData/hvac/';
     ```
 
 5. Transformieren Sie die Daten, und laden Sie sie auf das Ziel.  Es gibt mehrere Möglichkeiten, Hive während der Transformation und beim Laden zu verwenden:
@@ -73,7 +73,7 @@ Sie können Hive verwenden, um Daten auf einer Vielzahl von Zielen auszugeben, z
 * Excel
 * Azure-Tabellen- und -Blobspeicher
 * Anwendungen oder Dienste, für die Daten in bestimmten Formaten oder als Dateien mit bestimmten Arten von Informationsstrukturen verarbeitet werden müssen.
-* Ein JSON-Dokumentspeicher wie <a href="https://azure.microsoft.com/services/cosmos-db/">CosmosDB</a>.
+* Ein JSON-Dokumentspeicher wie [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 
 ## <a name="considerations"></a>Überlegungen
 

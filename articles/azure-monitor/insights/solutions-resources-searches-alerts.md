@@ -1,6 +1,6 @@
 ---
 title: Gespeicherte Suchen in Verwaltungslösungen | Microsoft-Dokumentation
-description: Verwaltungslösungen enthalten in der Regel gespeicherte Suchen in Log Analytics zum Analysieren der von der Lösung erfassten Daten. Sie können auch Warnungen zur Benachrichtigung des Benutzers definieren oder als Reaktion auf ein schwerwiegendes Problem automatisch Maßnahmen ergreifen. Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen in einer Resource Manager-Vorlage, damit sie in Verwaltungslösungen aufgenommen werden können.
+description: Verwaltungslösungen enthalten in der Regel gespeicherte Protokollabfragen zum Analysieren der von der Lösung erfassten Daten. Dieser Artikel beschreibt das Definieren von in Log Analytics gespeicherten Suchen in einer Resource Manager-Vorlage.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553921"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304925"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
 

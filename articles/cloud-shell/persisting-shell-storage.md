@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082992"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284825"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -38,9 +38,6 @@ Wenn Sie die grundlegenden Einstellungen verwenden und nur ein Abonnement auswä
 
 Die Dateifreigabe wird in Ihrem Verzeichnis `$Home` als `clouddrive` bereitgestellt. Dies ist eine einmalige Aktion, und die Dateifreigabe wird in den nachfolgenden Sitzungen automatisch bereitgestellt. 
 
-> [!NOTE]
-> Aus Sicherheitsgründen sollte jeder Benutzer ein eigenes Speicherkonto bereitstellen.  Für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) benötigen Benutzer zumindest die Berechtigungen eines Mitwirkenden auf Speicherkontoebene.
-
 Die Dateifreigabe enthält auch ein 5-GB-Image, das für Sie erstellt wird und mit dem Daten automatisch in Ihrem Verzeichnis `$Home` beibehalten werden. Dies gilt für Bash sowie für PowerShell.
 
 ## <a name="use-existing-resources"></a>Verwenden vorhandener Ressourcen
@@ -54,7 +51,14 @@ Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers di
 
 ![Einstellung „Ressourcengruppe“](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>Unterstützte Speicherregionen
+## <a name="securing-storage-access"></a>Schützen des Speicherzugriffs
+Aus Sicherheitsgründen sollte jeder Benutzer ein eigenes Speicherkonto bereitstellen.  Für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) benötigen Benutzer zumindest die Berechtigungen eines Mitwirkenden auf Speicherkontoebene.
+
+In Cloud Shell wird eine Azure-Dateifreigabe in einem Speicherkonto innerhalb eines angegebenen Abonnements verwendet. Aufgrund von geerbten Berechtigungen können Benutzer mit ausreichenden Zugriffsrechten für das Abonnement auf alle Speicherkonten und Dateifreigaben zugreifen, die im Abonnement enthalten sind.
+
+Benutzer sollten den Zugriff auf ihre Dateien sperren, indem sie die Berechtigungen auf der Speicherkonto- oder Abonnementebene festlegen.
+
+## <a name="supported-storage-regions"></a>Unterstützte Speicherregionen
 Zugeordnete Azure-Speicherkonten müssen sich in derselben Region wie der Cloud Shell-Computer befinden, auf dem Sie diese bereitstellen. Um die aktuelle Region zu suchen, können Sie `env` in Bash ausführen und die Variable `ACC_LOCATION` suchen. Dateifreigaben erhalten ein für Sie erstelltes 5-GB-Image zum Beibehalten Ihres Verzeichnisses `$Home`.
 
 Cloud Shell-Computer sind in folgenden Regionen vorhanden:
@@ -67,8 +71,6 @@ Cloud Shell-Computer sind in folgenden Regionen vorhanden:
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Beschränken der Ressourcenerstellung mit einer Azure-Ressourcenrichtlinie
 Speicherkonten, die Sie in Cloud Shell erstellen, erhalten das Tag `ms-resource-usage:azure-cloud-shell`. Wenn Sie nicht möchten, dass Benutzer Speicherkonten in Cloud Shell erstellen, können Sie eine [Azure-Ressourcenrichtlinie für Tags](../azure-policy/json-samples.md) erstellen, die durch das jeweilige Tag ausgelöst werden.
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Funktionsweise von Cloud Shell-Speicher 
 Cloud Shell nutzt die beiden folgenden Methoden zum Beibehalten von Dateien: 

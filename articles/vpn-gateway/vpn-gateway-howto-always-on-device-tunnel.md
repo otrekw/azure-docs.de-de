@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren eines Always On-VPN-Tunnels für VPN Gateway
+title: Konfigurieren eines Always On-VPN-Tunnels
+titleSuffix: Azure VPN Gateway
 description: Schritte zum Konfigurieren eines Always On-VPN-Tunnels für VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841137"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146398"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Konfigurieren eines Always On-VPN-Gerätetunnels
 

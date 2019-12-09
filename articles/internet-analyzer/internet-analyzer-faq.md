@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510303"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184252"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Häufig gestellte Fragen zu Azure Internet Analyzer (Vorschauversion)
 
@@ -45,7 +45,7 @@ Internet Analyzer ist so konzipiert, dass Sie Einblicke in die Netzwerkleistung 
 
 * Wie wirkt sich die Migration zur Cloud auf die Leistung aus? 
     * *Vorgeschlagener Test: Benutzerdefiniert (Ihre aktuelle lokale Infrastruktur) im Vergleich zu Azure (beliebiger vorkonfigurierter Endpunkt)*
-* Welcher Nutzen lässt sich erzielen, wenn ich meine Daten am Edge statt in einem Rechenzentrum vorhalte? 
+* Welche Vorteile ergeben sich, wenn ich meine Daten statt in einem Rechenzentrum am Edge platziere? 
     *  *Vorgeschlagener Test: Azure im Vergleich zu Azure Front Door, Azure im Vergleich zu Azure CDN von Microsoft*
 * Welche Leistungsvorteile bietet Azure Front Door?
     *  *Vorgeschlagener Test: Benutzerdefiniert/Azure/CDN im Vergleich zu Azure Front Door*
@@ -58,7 +58,7 @@ Internet Analyzer ist so konzipiert, dass Sie Einblicke in die Netzwerkleistung 
 
 ## <a name="which-tests-can-i-run-in-preview"></a>Welche Tests können in der Vorschauphase ausgeführt werden?
 
-Jeder Test, den Sie in Internet Analyzer erstellen, besteht aus zwei Endpunkten: Endpunkt A und Endpunkt B. Jede der folgenden Kombinationen kann als Tests ausgeführt werden:  
+Jeder Test, den Sie in Internet Analyzer erstellen, besteht aus zwei Endpunkten: Endpunkt A und Endpunkt B. Alle folgenden Kombinationen können als Test ausgeführt werden:  
 * Zwei vorkonfigurierte Endpunkte,
 * Ein benutzerdefinierter und ein vorkonfigurierter Endpunkt oder
 * Zwei [benutzerdefinierte Endpunkte](internet-analyzer-custom-endpoint.md) (ein benutzerdefinierter Endpunkt muss sich in Azure befinden).
@@ -98,6 +98,10 @@ In der Vorschauphase sind die folgenden vorkonfigurierten Endpunkte verfügbar:
 ## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Wie unterscheidet sich Internet Analyzer von anderen von Azure bereitgestellten Überwachungsdiensten?
 
 Internet Analyzer unterstützt Sie dabei, die Leistung Ihrer Endbenutzer zu verstehen und Entscheidungen zum Verbessern der Leistung zu treffen. Während andere Azure-Überwachungstools Einblicke in Ihre Azure-Dienste geben, konzentriert sich Internet Analyzer auf die Messung der Internetleistung für Ihre Benutzer.
+
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Wie werden Messungsdaten von Internet Analyzer behandelt?
+
+Azure verfügt über [ausgefeilte Sicherheitsprozesse und erfüllt eine breite Palette von Kompatibilitätsstandards](https://azure.microsoft.com/support/trust-center/). Auf die Daten haben nur Sie selbst und Ihr Team Zugriff. Microsoft-Mitarbeiter können nur unter ganz bestimmten Bedingungen und mit Ihrem Wissen eingeschränkten Zugriff auf die Daten erlangen. Die Daten sind während der Übertragung und im Ruhezustand verschlüsselt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 56830e20b190958c1c411f5daa1d2a7e928f0f3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821195"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279231"
 ---
 # <a name="sql-database-release-notes"></a>Versionshinweise zu SQL-Datenbank
 
@@ -79,6 +79,9 @@ Die folgenden Funktionen sind im Bereitstellungsmodell für verwaltete Instanzen
 ## <a name="fixed-known-issues"></a>Behobene bekannte Probleme
 
 - **Aug 2019** –Eigenständige Datenbanken werden in einer verwalteten Instanz vollständig unterstützt.
+- **Oktober 2019**: Die integrierte Point-in-Time-Wiederherstellung einer Datenbank vom unternehmenskritischen zum universellen Tarif ist nicht erfolgreich, wenn die Quelldatenbank In-Memory-OLTP-Objekte enthält.
+- **Oktober 2019**: Sie können mithilfe der sicheren Verbindung das Feature **Datenbank-E-Mail** mit externen (nicht-Azure) E-Mail-Servern verwenden.
+- **November 2019**: Die Datenbankkonsistenz wird mithilfe von `DBCC CHECKDB` nach dem Wiederherstellen der Datenbank aus Azure Blob Storage überprüft.
 
 ## <a name="updates"></a>Aktualisierungen
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/17/2019
 ms.author: rkarlin
-ms.openlocfilehash: 3f5e01a0ceebac092084e339994161763a11c49b
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: c5f4bd079fa215e3fbd4241f603aa29d19f7aad7
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71241222"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158854"
 ---
 # <a name="tutorial-monitor-your-data"></a>Tutorial: Überwachen Ihrer Daten
 
@@ -81,10 +81,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Sentinel überwache
 
 Sie können Arbeitsmappen löschen, die aus einer Azure Sentinel-Vorlage erstellt wurden. 
 
-So löschen Sie eine angepasste Arbeitsmappe:
-1.  Wählen Sie **View workbook** (Arbeitsmappe anzeigen) aus.
-2.  Wählen Sie oben **Open** (Öffnen) aus.
-3.  Wählen Sie in der Tabelle, in der Ihre Arbeitsmappen aufgelistet sind, in der Zeile für die Arbeitsmappe, die Sie löschen möchten, die drei Punkte (...) am Ende der Zeile aus, um das Menü zu öffnen, und wählen Sie dann **Delete** (Löschen) aus. Dadurch wird die gespeicherte Arbeitsmappe entfernt.
+Wählen Sie zum Löschen einer angepassten Arbeitsmappe auf der Seite der Arbeitsmappen die gewünschte gespeicherte Arbeitsmappe aus, und klicken Sie auf **Löschen**. Dadurch wird die gespeicherte Arbeitsmappe entfernt.
 
 > [!NOTE]
 > Dadurch werden die Ressource und alle Änderungen, die Sie an der Vorlage vorgenommen haben, entfernt. Die ursprüngliche Vorlage bleibt verfügbar.

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 920d632dfa15c25905dc4077465e6f8654b5f57d
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: df03f8ba0e522aacd305b6337e506f53e309660a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603170"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384046"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Überwachen in Azure Database for MySQL
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MySQL bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -51,6 +51,14 @@ Sie können die Protokollierung von langsamen Abfragen und die Überwachungsprot
 
 ## <a name="performance-recommendations"></a>Leistungsempfehlungen
 Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) identifiziert Möglichkeiten zur Verbesserung der Workloadleistung. Unter „Leistungsempfehlungen“ erhalten Sie Empfehlungen zum Erstellen neuer Indizes, mit denen sich die Leistung Ihrer Workloads u. U. verbessern lässt. Um Indexempfehlungen zu generieren, berücksichtigt das Feature verschiedene Datenbankmerkmale einschließlich des Schemas und der Workload laut Abfragespeicher. Nach der Implementierung von Leistungsempfehlungen sollten Kunden die Leistung testen, um die Auswirkungen dieser Änderungen auszuwerten.
+
+## <a name="service-health"></a>Dienstintegrität
+[Azure Service Health](../service-health/overview.md) bietet eine Ansicht für alle Dienstintegritätsbenachrichtigungen in Ihrem Abonnement. Sie können Service Health-Warnungen einrichten, damit Sie über Ihre bevorzugten Kommunikationskanäle benachrichtigt werden, wenn Probleme oder Änderungen vorliegen, die sich auf die von Ihnen verwendeten Azure-Dienste und -Regionen auswirken können.
+
+Sie können geplante Wartungsereignisse für Azure Database for MySQL mithilfe des Ereignistyps **Geplante Wartung** anzeigen. Informationen zum Erstellen von **Service Health-Warnungen** finden Sie im Artikel [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../service-health/alerts-activity-log-service-notifications.md).
+
+> [!IMPORTANT]
+> Benachrichtigungen zur geplanten Wartung sind nur in der Vorschauversion für die Regionen „USA, Osten“ und „Vereinigtes Königreich, Süden“ verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).

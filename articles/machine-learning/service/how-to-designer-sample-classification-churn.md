@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Klassifizieren, Vorhersage von Kundenabwanderung'
+title: 'Designer: Beispiel zur Vorhersage von Kundenabwanderung'
 titleSuffix: Azure Machine Learning
-description: Diese Beispiel-Pipeline im Designer (Vorschauversion) zeigt eine auf einem binären Klassifizierer basierende Vorhersage der Kundenabwanderung, eine übliche Aufgabe beim Customer Relationship Management (CRM).
+description: Befolgen Sie dieses Klassifizierungsbeispiel, um Kundenabwanderung mit Azure Machine Learning-Designer und Boosted Decision Trees vorherzusagen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1fe3598fd15424ab2593e3d236146c7566493743
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647175"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225105"
 ---
-# <a name="sample-5---classification-predict-churn"></a>Beispiel 5 – Klassifizierung: Änderungsprognose
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Verwenden von Boosted Decision Tree zum Vorhersagen von Kundenabwanderung mit Azure Machine Learning-Designer
+
+**Designer (Vorschauversion) – Beispiel 5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Hier erfahren Sie, wie Sie im Designer (Vorschauversion) eine komplexe Machine Learning-Pipeline erstellen, ohne eine einzige Codezeile zu schreiben.
@@ -28,7 +31,7 @@ Weil Sie versuchen, die Frage „Welche?“ zu beantworten, wird dies als Klassi
 
 Das vollständige Diagramm für diese Pipeline sieht wie folgt aus:
 
-![Pipelinegraph](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
+![Pipelinegraph](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,11 +51,11 @@ Zunächst eine einfache Datenverarbeitung.
 
 - Das Dataset mit den Rohdaten enthält viele fehlende Werte. Verwenden Sie das Modul **Clean Missing Data** (Bereinigen fehlender Daten), um die fehlenden Werte durch 0 zu ersetzen.
 
-    ![Bereinigen des Datasets](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Bereinigen des Datasets](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
 
 - Die Features und die zugehörigen Bezeichnungen befinden sich in verschiedenen Datasets. Verwenden Sie das Modul **Add Columns** (Spalten hinzufügen), um die Bezeichnungsspalten an die Featurespalten anzufügen. Die erste Spalte, **Col1**, ist die Bezeichnungsspalte. Das Visualisierungsergebnis zeigt, dass das Dataset unausgewogen ist. Es gibt wesentlich mehr negative (-1) als positive Beispiele (+ 1). Wir verwenden das Modul **SMOTE**, um unterrepräsentierte Fälle später zu erhöhen.
 
-    ![Hinzufügen des Spaltendatasets](./media/how-to-ui-sample-classification-predict-churn/added-column1.png)
+    ![Hinzufügen des Spaltendatasets](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
 
 
 
@@ -66,7 +69,7 @@ Zunächst eine einfache Datenverarbeitung.
 
 Visualisieren Sie die Ausgabe des Moduls **Evaluate Model** (Auswerten des Modells), um die Leistung des Modells für das Testdataset zu ermitteln. 
 
-![Auswertung der Ergebnisse](./media/how-to-ui-sample-classification-predict-churn/evaluate-result.png)
+![Auswertung der Ergebnisse](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
 
  Sie können den Schieberegler **Threshold** (Schwellenwert) verschieben und prüfen, wie sich die Metriken für die binäre Klassifizierungsaufgabe ändern. 
 

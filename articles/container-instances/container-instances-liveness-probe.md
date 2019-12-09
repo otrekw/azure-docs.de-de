@@ -1,32 +1,29 @@
 ---
-title: Konfigurieren von Livetests in Azure Container Instances
+title: Einrichten des Livetests in einer Containerinstanz
 description: Erfahren Sie, wie Sie Livetests zu Neustart von fehlerhaften Containern in Azure Container Instances konfigurieren.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: danlep
-ms.openlocfilehash: 28205d6db85d7a5051f283445d95dd2375e174c8
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325868"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481682"
 ---
 # <a name="configure-liveness-probes"></a>Konfigurieren von Livetests
 
-Containerisierte Anwendungen können über einen längeren Zeitraum laufen, was zu fehlerhaften Zuständen führen kann, die durch einen Neustart des Containers repariert werden müssen. Azure Container Instances unterstützt Livetests, um Konfigurationen einzubinden, sodass Ihr Container neu gestartet werden kann, wenn kritische Funktionen nicht ausgeführt werden.
+Containerbasierte Anwendungen werden möglicherweise über einen längeren Zeitraum ausgeführt, was zu fehlerhaften Zuständen führen kann, die durch einen Neustart des Containers repariert werden müssen. Azure Container Instances unterstützt Livetests, sodass Sie Ihre Container in Ihrer Containergruppe konfigurieren so können, dass sie neu gestartet werden, wenn kritische Funktionen nicht ausgeführt werden. Der Livetest verhält sich wie ein [Kubernetes-Livetest](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/).
 
 Dieser Artikel erläutert die Bereitstellung einer Containergruppe mit integriertem Livetest, um den automatischen Neustart eines simulierten fehlerhaften Containers zu demonstrieren.
+
+Azure Container Instances unterstützt darüber hinaus auch [Bereitschaftstests](container-instances-readiness-probe.md), die Sie so konfigurieren können, dass sichergestellt wird, dass der Datenverkehr einen Container nur dann erreicht, wenn dieser dafür bereit ist.
 
 ## <a name="yaml-deployment"></a>YAML-Bereitstellung
 
 Erstellen Sie eine `liveness-probe.yaml`-Datei mit dem folgenden Ausschnitt. Diese Datei definiert eine Containergruppe, die einen NGNIX-Container enthält, der letztendlich fehlerhaft ist.
 
 ```yaml
-apiVersion: 2018-06-01
+apiVersion: 2018-10-01
 location: eastus
 name: livenesstest
 properties:
@@ -87,7 +84,7 @@ Diese Ereignisse können über das Azure-Portal oder Azure CLI angezeigt werden.
 
 ![Fehlerhaftes Ereignis im Portal][portal-unhealthy]
 
-Durch Anzeigen der Ereignisse im Azure-Portal werden bei einem Fehler beim Livetestbefehl Ereignisse vom Typ `Unhealthy` ausgelöst. Das nachfolgende Ereignis ist vom Typ`Killing`. Damit wird die Löschung eines Containers angezeigt, damit ein Neustart beginnen kann. Der Neustartzähler für den Container wird jedes Mal erhöht, wenn dies geschieht.
+Durch Anzeigen der Ereignisse im Azure-Portal werden bei einem Fehler beim Livetestbefehl Ereignisse vom Typ `Unhealthy` ausgelöst. Das nachfolgende Ereignis ist vom Typ`Killing`. Damit wird die Löschung eines Containers angezeigt, damit ein Neustart beginnen kann. Der Neustartzähler für den Container wird jedes Mal erhöht, wenn ein Ereignis auftritt.
 
 Neustarts werden vor Ort durchgeführt, sodass Ressourcen wie öffentliche IP-Adressen und knotenspezifische Inhalte erhalten bleiben.
 
@@ -97,7 +94,7 @@ Wenn im Livetest weiterhin Fehler auftreten, wodurch zu viele Neustarts ausgelö
 
 ## <a name="liveness-probes-and-restart-policies"></a>Livetests und Neustartrichtlinien
 
-Neustartrichtlinien ersetzen das Neustartverhalten, das von Livetests ausgelöst wird. Wenn Sie beispielsweise eine `restartPolicy = Never`  *und* einen Livetest einrichten, wird die Containergruppe bei einer fehlerhaften Livetestüberprüfung nicht neu gestartet. Für die Containergruppe gilt stattdessen die Neustartrichtlinie von `Never` der Containergruppe.
+Neustartrichtlinien ersetzen das Neustartverhalten, das von Livetests ausgelöst wird. Wenn Sie beispielsweise eine `restartPolicy = Never` *und* einen Livetest einrichten, wird die Containergruppe aufgrund einer fehlerhaften Livetestüberprüfung nicht neu gestartet. Für die Containergruppe gilt stattdessen die Neustartrichtlinie von `Never` der Containergruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

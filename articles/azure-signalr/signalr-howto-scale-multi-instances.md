@@ -1,17 +1,17 @@
 ---
-title: 'Gewusst wie: Skalieren mit mehreren Instanzen für Azure SignalR Service'
+title: 'Azure SignalR Service: Skalieren mit mehreren Instanzen'
 description: In vielen Skalierungsszenarien muss der Kunde häufig mehrere Instanzen bereitstellen und für die gemeinsame Nutzung konfigurieren, um eine umfangreiche Bereitstellung zu erzielen. Beispielsweise wird für das Sharding die Unterstützung mehreren Instanzen benötigt.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672334"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158162"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Skalieren von SignalR Service mit mehreren Instanzen
 Das neueste SignalR Service SDK unterstützt mehrere Endpunkte für SignalR Service-Instanzen. Sie können dieses Feature zum Skalieren der gleichzeitigen Verbindungen oder für das regionsübergreifende Messaging verwenden.
