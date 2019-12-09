@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132692"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383678"
 ---
 # <a name="add-entities-to-extract-data"></a>Hinzufügen von Entitäten zum Extrahieren von Daten 
 
@@ -66,7 +66,7 @@ Die Verwendung von Entitäten mit Textvergleich bietet verschiedene Möglichkeit
 |--|--|
 |[Entität vom Typ „List“](#add-list-entities-for-exact-matches)|Liste der kanonischen Namen zusammen mit Synonymen als alternative Formen|
 |Entität vom Typ „RegEx“|Textvergleich unter Verwendung einer Entität vom Typ „RegEx“|
-|[Vordefinierte Entität](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|Vergleichen allgemeiner Datentypen wie „number“, „email“, „date“|
+|[Vordefinierte Entität](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|Vergleichen allgemeiner Datentypen wie „number“, „email“, „date“|
 |Vordefinierte Domänenentität|Vergleich mit ausgewählten Motivdomänen|
 |[Pattern.any-Entitäten](#add-a-patternany-entity)| Für den Vergleich von Entitäten, die leicht mit dem umgebenden Text verwechselt werden können|  
 
@@ -82,7 +82,7 @@ Vordefinierte Entitäten funktionieren ohne Bereitstellung benutzerdefinierter T
 
 ### <a name="add-list-entities-for-exact-matches"></a>Hinzufügen von Listenentitäten für genaue Übereinstimmungen
 
-Listenentitäten stellen eine feste, abgeschlossene Gruppe mit verwandten Wörtern dar. Obwohl Sie als Ersteller die Liste ändern können, wird LUIS die Liste nicht vergrößern oder verkleinern. Sie können auch in eine bestehende Listenentität importieren, indem Sie ein [list entity .json format](reference-entity-list.md#example-json-to-import-into-list-entity) verwenden. 
+Listenentitäten stellen eine feste, abgeschlossene Gruppe mit verwandten Wörtern dar. Obwohl Sie als Ersteller die Liste ändern können, wird LUIS die Liste nicht vergrößern oder verkleinern. Sie können auch in eine bestehende Listenentität importieren, indem Sie ein [list entity .json format]\(reference-entity-list.md#example-json-to-import-into-list-entity) verwenden. 
 
 Die folgende Liste zeigt den kanonischen Namen und die Synonyme. 
 
@@ -179,14 +179,18 @@ LUIS erlaubt Ihnen nicht, den Entitätstyps zu ändern, da die Anwendung nicht w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Mustern:
+> [!div class="nextstepaction"] 
+> [Verwenden von vordefinierten Modellen](howto-add-prebuilt-models.md) 
 
-* [Musterkonzepte](luis-concept-patterns.md)
-* [Mustersyntax](reference-pattern-syntax.md)
+Weitere Informationen:
+* Informationen zum [Trainieren](luis-how-to-train.md)
+* Informationen zum [Testen](luis-interactive-test.md)
+* Informationen zum [Veröffentlichen](luis-how-to-publish-app.md)
+* Muster:
+    * [Konzepte](luis-concept-patterns.md)
+    * [Syntax](reference-pattern-syntax.md)
+* [GitHub-Repository für vordefinierte Entitäten](https://github.com/Microsoft/Recognizers-Text)
+* [Konzepte der Datenextraktion](luis-concept-data-extraction.md)
 
-Weitere Informationen zu vordefinierten Entitäten finden Sie unter dem Projekt [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text). 
 
-Weitere Informationen zur Anzeige der Entität in der Antwort auf die JSON-Endpunktabfrage finden Sie unter [Extrahieren von Daten](luis-concept-data-extraction.md).
-
-Wenn Sie Absichten, Äußerungen und Entitäten hinzugefügt haben, verfügen Sie über eine einfache LUIS-App. Erfahren Sie, wie Sie Ihre App [trainieren](luis-how-to-train.md), [testen](luis-interactive-test.md) und [veröffentlichen](luis-how-to-publish-app.md) können.
  

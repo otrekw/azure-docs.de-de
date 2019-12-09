@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e4778693e448b9a989d70d3ca8cf91c76ce380
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 0d840cbaba2cc8325c619248bb7f4421d3b2f83c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482061"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766071"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
 
@@ -68,27 +68,27 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
    1. Geben Sie im Abschnitt **Name** einen aussagekräftigen Anwendungsnamen ein, der den Benutzern der App angezeigt wird. Geben Sie z. B. **MailApp-openidconnect-v2** ein.
    1. Wählen Sie im Abschnitt **Umleitungs-URI (optional)** im Kombinationsfeld die Option **Web** aus, und geben Sie den folgenden Umleitungs-URI ein: **https://localhost:44326/** .
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
-1. Wählen Sie das Menü **Authentifizierung** aus. 
+1. Wählen Sie das Menü **Authentifizierung** aus.
 1. Wählen Sie im Abschnitt **Erweiterte Einstellungen** | **Implizite Gewährung** die Option **ID-Token** aus. Für dieses Beispiel muss der [Flow zur impliziten Gewährung](v2-oauth2-implicit-grant-flow.md) aktiviert werden, damit Benutzer angemeldet werden.
 1. Wählen Sie **Speichern** aus.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Anzeigenamen für die Anwendung ein. Geben Sie z. B. **java-webapp** ein. 
+1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Anzeigenamen für die Anwendung ein. Geben Sie z. B. **java-webapp** ein.
 1. Wählen Sie **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** und dann für **Anwendungstyp** die Option **Web-App/API** aus.
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu registrieren.
-1. Wählen Sie im linken Menü die Option **Authentifizierung** aus. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus. 
+1. Wählen Sie im linken Menü die Option **Authentifizierung** aus. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus.
 
 1. Geben Sie zwei Umleitungs-URIs ein: einen für die Anmeldeseite und einen für die Graph-Seite. Verwenden Sie für beide denselben Host und dieselbe Portnummer, gefolgt von **/msal4jsample/secure/aad** für die Anmeldeseite und **msal4jsample/graph/me** für die Benutzerinformationsseite.
- 
+
    Im Beispiel wird standardmäßig Folgendes verwendet:
 
    - **http://localhost:8080/msal4jsample/secure/aad**
    - **http://localhost:8080/msal4jsample/graph/me**
 
-1. Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf **http://localhost:8080/msal4jsample/sign_out** fest. Wählen Sie anschließend **Speichern** aus.
+  Wählen Sie anschließend **Speichern** aus.
 
-1. Wählen Sie im Menü die Option **Zertifikate und Geheimnisse** aus. 
+1. Wählen Sie im Menü die Option **Zertifikate und Geheimnisse** aus.
 1. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus, und führen Sie dann folgende Schritte aus:
 
    1. Geben Sie eine Beschreibung für den Schlüssel ein.
@@ -104,7 +104,6 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
    1. Wählen Sie im Abschnitt **Umleitungs-URI (optional)** im Kombinationsfeld die Option **Web** aus, und geben Sie den folgenden Umleitungs-URI ein: **http://localhost:5000/getAToken** .
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Suchen Sie auf der Seite **Übersicht** der App den Wert **Anwendungsclient-ID**, und notieren Sie ihn zur späteren Verwendung. Sie benötigen diesen Wert, um die Visual Studio-Konfigurationsdatei für dieses Projekt zu konfigurieren.
-1. Wählen Sie den Abschnitt **Authentifizierung** aus. Legen Sie unter **Erweiterte Einstellungen** die Option **Abmelde-URL** auf **http://localhost:5000/logout** fest. Wählen Sie anschließend **Speichern** aus.
 1. Wählen Sie im linken Menü die Option **Zertifikate und Geheimnisse** aus.
 1. Wählen Sie im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus, und führen Sie dann folgende Schritte aus:
 

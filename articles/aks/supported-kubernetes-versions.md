@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: saudas
-ms.openlocfilehash: 27b180d8d95d7dad967b8ac2495a795ed70836b9
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: b6dd91dda559f778eaa8f5a17b46a22020dd8373
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147219"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484047"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -41,6 +41,9 @@ Für jede Zahl in der Version gilt, dass allgemeine Kompatibilität mit der vorh
 Benutzer sollten nach Möglichkeit immer das neueste Patchrelease der aktuell verwendeten Nebenversion nutzen. Wenn Ihr Produktionscluster beispielsweise die Version *1.12.14* verwendet und *1.12.15* die neueste verfügbare Patchversion für die Nebenversion *1.12* ist, sollten Sie ein Upgrade auf die Version *1.12.15* durchführen, sobald Sie sicher sind, dass Ihr Cluster vollständig gepatcht und unterstützt wird.
 
 ## <a name="kubernetes-version-support-policy"></a>Richtlinie zur Unterstützung der Kubernetes-Version
+
+> [!NOTE]
+> Ab dem 9. Dezember 2019 unterstützt AKS die neuesten N–2 Versionen von Kubernetes. Diese Änderung soll dem Upstreamfenster der Unterstützung für Kubernetes-Versionen entsprechen und sicherstellen, dass die neuesten und sichersten Versionen verwendet werden. Weitere Informationen finden Sie in [dieser Ankündigung](https://azure.microsoft.com/updates/azure-kubernetes-service-will-be-retiring-support-for-kubernetes-versions-1-11-and-1-12/).
 
 AKS unterstützt vier Nebenversionen von Kubernetes:
 
@@ -112,10 +115,16 @@ In AKS wird „Veröffentlichung“ (Release) als allgemeine Verfügbarkeit defi
 > [!NOTE]
 > Kunden werden benachrichtigt, wenn Kubernetes-Versionen veröffentlicht oder nicht mehr unterstützt werden. Wenn eine Nebenversion nicht mehr unterstützt und entfernt wird, haben Benutzer 60 Tage Zeit, ein Upgrade auf ein unterstütztes Release vorzunehmen. Im Fall von Patchreleases haben Kunden 30 Tage Zeit, ein Upgrade auf ein unterstütztes Release vorzunehmen.
 
-Benachrichtigungen werden an den folgenden Stellen veröffentlicht:
+#### <a name="notification-channels-for-aks-changes"></a>Benachrichtigungskanäle für AKS-Änderungen
+
+Für AKS wird ein wöchentliches Dienstupdate veröffentlicht, in dem neue Kubernetes-Versionen, Dienständerungen und Komponentenupdates zusammengefasst sind, die für den Dienst in [GitHub](https://github.com/Azure/AKS/releases) veröffentlicht wurden.
+
+Diese Änderungen werden im Rahmen der regulären Wartung, die als Teil des verwalteten Diensts angeboten wird, an alle Kunden weitergegeben. Einige Änderungen erfordern explizite Upgrades, während für andere keine Maßnahmen erforderlich sind.
+
+Benachrichtigungen werden außerdem an den folgenden Stellen veröffentlicht:
 
 * in den [AKS-Versionshinweisen](https://aka.ms/aks/releasenotes)
-* im Azure-Portal
+* Benachrichtigungen im Azure-Portal
 * im [Azure-Updatekanal][azure-update-channel]
 
 ### <a name="policy-exceptions"></a>Richtlinienausnahmen
