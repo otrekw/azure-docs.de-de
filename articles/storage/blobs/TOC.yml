@@ -91,7 +91,7 @@
           items:
             - name: '1: Hochverfügbarmachen einer Anwendung'
               href: storage-create-geo-redundant-storage.md
-            - name: '2: Simulieren eines Fehlers im RA-GRS-Speicher'
+            - name: '2: Simulieren eines Fehlers beim Lesen von Daten aus der primären Region'
               href: storage-simulate-failure-ragrs-account-app.md
         - name: Verschlüsseln und Entschlüsseln von Blobs mit Azure Key Vault
           href: storage-encrypt-decrypt-blobs-key-vault.md
@@ -151,7 +151,7 @@
               href: ../common/storage-redundancy-gzrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Notfallwiederherstellung und Failover
               href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Entwerfen von HA-Apps mit RA-GRS
+            - name: Entwerfen hochverfügbarer Anwendungen
               href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Zugriffsebenen und Leistungsstufen
           items:
@@ -406,6 +406,8 @@
               href: ../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Einbinden eines Blobspeichers als Dateisystem unter Linux
               href: storage-how-to-mount-container-linux.md
+            - name: Übertragen von Daten mit der Datenverschiebungsbibliothek
+              href: ../common/storage-use-data-movement-library.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Speichermigration – häufig gestellte Fragen
               href: ../common/storage-migration-faq.md
         - name: Entwickeln mit Blobs

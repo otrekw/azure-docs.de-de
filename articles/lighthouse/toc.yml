@@ -44,9 +44,6 @@
     - name: Kunden anzeigen und verwalten
       displayName: my customers
       href: ./how-to/view-manage-customers.md
-    - name: Dienstanbieter anzeigen und verwalten
-      displayName: 'customer, update'
-      href: ./how-to/view-manage-service-providers.md
     - name: Azure Policy-Integration
       items:
         - name: Bedarfsorientiertes Bereitstellen einer Richtlinie
@@ -55,6 +52,14 @@
         - name: 'Bereitstellen einer Richtlinie, die gewartet werden kann'
           displayName: 'deployIfNotExists, modify, managed identities, managed identity'
           href: ./how-to/deploy-policy-remediation.md
+    - name: Kundenaktionen
+      items:
+        - name: Dienstanbieter anzeigen und verwalten
+          displayName: 'customer, update'
+          href: ./how-to/view-manage-service-providers.md
+        - name: Anzeigen der Dienstanbieteraktivität
+          displayName: 'monitor, log'
+          href: ./how-to/view-service-provider-activity.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

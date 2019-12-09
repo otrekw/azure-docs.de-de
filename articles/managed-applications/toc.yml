@@ -51,6 +51,10 @@
       href: concepts-custom-role-definition.md
     - name: Onboarding von Ressourcen
       href: concepts-custom-providers-resourceonboarding.md
+    - name: Azure Policy für Zuordnungen benutzerdefinierter Anbieter
+      href: concepts-custom-providers-built-in-policy.md
+    - name: Azure Policy für Zuordnungen verwalteter Anwendungen
+      href: concepts-managed-applications-built-in-policy.md
 - name: Anleitungen
   items:
     - name: Benutzerdefinierte Anbieter

@@ -385,6 +385,10 @@
           href: functions-for-customizing-application-data.md
         - name: Auswählen einer Bereitstellungsmethode
           href: isv-automatic-provisioning-multi-tenant-apps.md
+    - name: HR-Cloudbereitstellung
+      items:
+        - name: SuccessFactors-Attributreferenz
+          href: sap-successfactors-attribute-reference.md
     - name: Azure AD Connect-Bereitstellungs-Agent
       items:
         - name: Versionsverlauf des Bereitstellungs-Agents

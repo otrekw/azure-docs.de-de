@@ -170,6 +170,8 @@
       items:
         - name: Handbuch zur Problembehandlung
           href: event-hubs-messaging-exceptions.md
+        - name: Resource Manager-Ausnahmen
+          href: resource-manager-exceptions.md
 - name: Verweis
   items:
     - name: Java

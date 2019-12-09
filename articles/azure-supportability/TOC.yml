@@ -14,7 +14,7 @@
               href: per-vm-quota-requests.md
             - name: Erhöhung des Grenzwerts der gesamten regionalen vCPUs
               href: regional-quota-requests.md
-            - name: Erhöhung des Kontingentlimits mit niedriger Priorität
+            - name: Erhöhung des Spotkontingentlimits
               href: low-priority-quota.md
         - name: Klassisches Bereitstellungsmodell
           href: classic-deployment-model-quota-increase-requests.md
