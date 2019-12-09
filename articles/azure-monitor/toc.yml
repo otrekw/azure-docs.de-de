@@ -563,7 +563,7 @@
                           href: platform/collect-custom-metrics-guestos-vm-classic.md
                         - name: Clouddienst
                           href: platform/collect-custom-metrics-guestos-vm-cloud-service-classic.md
-                    - name: Diagnoseprotokollformat „JSON-Zeilen“
+                    - name: JSON-Zeilenformat für Ressourcenprotokolle
                       href: platform/diagnostic-logs-append-blobs.md
                     - name: Problembehandlung
                       href: platform/diagnostics-extension-troubleshooting.md
@@ -1163,7 +1163,7 @@
           href: platform/metrics-supported.md
         - name: Unterstützte Metriken für neuere Warnungen
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Ressourcenprotokoll: Dienste, Kategorien und Schemas'
+    - name: 'Plattformprotokolldienste, -kategorien und -schemas'
       href: platform/diagnostic-logs-schema.md
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/monitor?view=azure-cli-latest

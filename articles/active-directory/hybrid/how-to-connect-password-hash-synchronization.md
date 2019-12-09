@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0398ff7eb8931acc400b326ff92deaf75f0aa97e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882835"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539022"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -160,9 +160,11 @@ Die Synchronisierung eines Kennworts hat keinen Einfluss auf den angemeldeten Az
 
 ## <a name="password-hash-sync-process-for-azure-ad-domain-services"></a>Der Prozess der Kennworthashsynchronisierung für Azure AD Domain Services
 
-Wenn Sie Azure AD Domain Services verwenden, um die Legacyauthentifizierung für Anwendungen und Dienste bereitzustellen, die Keberos, LDAP oder NTLM verwenden müssen, sind einige zusätzliche Prozesse Teil des Kennworthashsynchronisierungs-Flows. Azure AD Connect verwendet den folgenden zusätzlichen Prozess, um Kennworthashes mit Azure AD zur Verwendung in Azure AD Domain Services zu synchronisieren:
+Wenn Sie Azure AD Domain Services verwenden, um die Legacyauthentifizierung für Anwendungen und Dienste bereitzustellen, die Kerberos, LDAP oder NTLM verwenden müssen, umfasst der Kennworthash-Synchronisierungsfluss einige zusätzliche Prozesse. Azure AD Connect verwendet den folgenden zusätzlichen Prozess, um Kennworthashes mit Azure AD zur Verwendung in Azure AD Domain Services zu synchronisieren:
 
 > [!IMPORTANT]
+> Azure AD Connect sollte nur für die Synchronisierung mit lokalen AD DS-Umgebungen installiert und konfiguriert werden. Die Installation von Azure AD Connect in einer verwalteten Azure AD DS-Domäne zur erneuten Synchronisierung von Objekten mit Azure AD wird nicht unterstützt.
+>
 > Azure AD Connect synchronisiert Legacykennworthashes nur, wenn Sie Azure AD DS für Ihren Azure AD-Mandanten aktivieren. Die folgenden Schritte werden nicht ausgeführt, wenn Sie Azure AD Connect nur zum Synchronisieren einer lokalen AD DS-Umgebung mit Azure AD verwenden.
 >
 > Wenn Ihre Legacyanwendungen keine NTLM-Authentifizierung oder einfachen LDAP-Bindungen verwenden, empfiehlt es sich, die NTLM-Kennworthashsynchronisierung für Azure AD DS zu deaktivieren. Weitere Informationen finden Sie unter [Deaktivieren von schwachen Verschlüsselungssammlungen und der Synchronisierung von NTLM-Anmeldeinformationshashes](../../active-directory-domain-services/secure-your-domain.md).

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 6b135b14fb18904901ad78a1f5d9dc66c8a2bc67
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175053"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538804"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Anleitung: Verwalten von veralteten Geräte in Azure AD
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie veraltete Geräte in Ihrer Umgebung 
 Ein veraltetes Gerät ist ein Gerät, das für Azure AD registriert, aber dann nicht genutzt wurde, um über einen bestimmten Zeitraum auf Cloud-Apps zuzugreifen. Veraltete Geräte wirken sich aus folgenden Gründen auf die Verwaltung und Unterstützung Ihrer Geräte und Benutzer im Mandanten aus: 
 
 - Doppelte Geräte können für Ihre Helpdesk-Mitarbeiter die Identifizierung des derzeit aktiven Geräts erschweren.
-- Bei einer erhöhten Anzahl von Geräten werden unnötige Geräterückschreiben-Vorgänge erstellt, sodass sich die Dauer von AAD-Verbindungssynchronisierungen erhöht.
+- Bei einer erhöhten Anzahl von Geräten werden unnötige Geräterückschreiben-Vorgänge erstellt, sodass sich die Dauer von Azure AD-Verbindungssynchronisierungen erhöht.
 - Als allgemeine Hygienemaßnahme und zur Erfüllung der Konformität ist es ratsam, über einen bereinigten Gerätestand zu verfügen. 
 
 Veraltete Geräte in Azure AD können eine Störung der allgemeinen Lebenszyklusrichtlinien für Geräte in Ihrer Organisation darstellen.
@@ -125,7 +125,7 @@ Deaktivieren oder löschen Sie in Azure AD registrierte Geräte in Azure AD.
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Bereinigen veralteter Geräte im Azure-Portal  
 
-Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V1-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte herauszufiltern, z.B. Autopilot. An diesem Punkt ist die Nutzung von PowerShell V2 nicht zu empfehlen.
+Sie können veraltete Geräte zwar im Azure-Portal bereinigen, aber es ist effizienter, für diesen Vorgang ein PowerShell-Skript zu verwenden. Verwenden Sie das aktuelle PowerShell V1-Modul, um den Zeitstempelfilter zu nutzen und vom System verwaltete Geräte herauszufiltern, z. B. Autopilot. An diesem Punkt ist die Nutzung von PowerShell V2 nicht zu empfehlen.
 
 Eine typische Routine umfasst die folgenden Schritte:
 

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 3fb021c06369d1f37dad83b3f9b27e039ddf8b5e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811285"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539334"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das DTU-Kaufmodell verwenden
 
@@ -43,6 +43,12 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. gleichzeitige Sitzungen | 300 |
 |||
 
+> [!IMPORTANT]
+> Die Dienstebene „Basic“ bietet weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
+>
+>Im Hinblick auf die Datenspeicherung wird die Dienstebene „Basic“ in Standard-Seitenblobs platziert. Standard-Seitenblobs arbeiten mit HDD-basierten Speichermedien und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
+>
+
 ### <a name="standard-service-tier"></a>Standard-Dienstebene
 
 | **Computegröße** | **S0** | **S1** | **S2** | **S3** |
@@ -54,6 +60,12 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. gleichzeitige Worker (Anforderungen)| 60 | 90 | 120 | 200 |
 | Max. gleichzeitige Sitzungen |600 | 900 | 1200 | 2400 |
 ||||||
+
+> [!IMPORTANT]
+> Die „Standard S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
+>
+>Im Hinblick auf die Datenspeicherung werden die Dienstebenen „Standard S0“ und „S1“ in Standard-Seitenblobs platziert. Standard-Seitenblobs arbeiten mit HDD-basierten Speichermedien und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
+>
 
 ### <a name="standard-service-tier-continued"></a>Standard-Dienstebene (Fortsetzung)
 

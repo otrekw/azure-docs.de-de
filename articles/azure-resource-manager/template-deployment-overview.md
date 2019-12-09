@@ -1,19 +1,16 @@
 ---
-title: Azure-Ressourcen-Manager-Vorlagen
-description: Es wird beschrieben, wie Sie Azure Resource Manager-Vorlagen für die Bereitstellung von Ressourcen verwenden.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Übersicht über Vorlagen
+description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen für die Bereitstellung von Ressourcen
 ms.topic: conceptual
 ms.date: 09/25/2019
-ms.author: tomfitz
-ms.openlocfilehash: 96f140cfa5e6151ad53ca242d1fc87ba3397316e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 0765ec1cd5952a05a168dfed72ba4d6fd78ed89c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71300153"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150291"
 ---
-# <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
+# <a name="azure-resource-manager-templates-overview"></a>Übersicht über Azure Resource Manager-Vorlagen
 
 Mit dem Wechsel zur Cloud haben viele Teams agile Entwicklungsmethoden eingeführt. Diese Teams führen schnelle Iterationen durch. Sie müssen ihre Lösungen wiederholt in der Cloud bereitstellen und sicher sein, dass sich ihre Infrastruktur in einem zuverlässigen Zustand befindet. Da die Infrastruktur Teil des iterativen Prozesses geworden ist, gibt es keine Trennung mehr zwischen Betrieb und Entwicklung. Die Teams müssen Infrastruktur und Anwendungscode in einem einheitlichen Prozess verwalten.
 
@@ -125,5 +122,6 @@ Informationen zu geschachtelten Vorlagen finden Sie unter [Verwenden von verknü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](template-tutorial-create-first-template.md).
 * Informationen zu den Eigenschaften in Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).
 * Weitere Informationen zum Exportieren von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md).

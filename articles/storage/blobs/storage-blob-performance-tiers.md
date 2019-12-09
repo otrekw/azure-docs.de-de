@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932268"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270225"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Leistungsstufen für Blockblobspeicher
 
@@ -54,6 +54,12 @@ Speicher mit Premium-Leistung eignet sich ideal für Workloads, die schnelle und
 ## <a name="standard-performance"></a>Standardleistung
 
 Die Standardleistung unterstützt verschiedene [Zugriffsebenen](storage-blob-storage-tiers.md), um Daten möglichst kostengünstig zu speichern. Sie ist für eine hohe Kapazität und einen hohen Durchsatz bei großen Datasets optimiert.
+
+- **Sicherung und Datasets für die Notfallwiederherstellung**. Speicher des Typs „Standardleistung“ bietet kostengünstige Ebenen, sodass er für kurz- und langfristige Notfallwiederherstellungs-Datasets, sekundäre Sicherungen sowie die Archivierung von Konformitätsdaten ein perfekter Anwendungsfall ist.
+
+- **Medieninhalt**. Auf Bilder und Videos wird oft zugegriffen, wenn sie zum ersten Mal erstellt und gespeichert werden, doch dieser Inhaltstyp wird seltener verwendet, wenn er älter wird. Speicher des Typs „Standardleistung“ bietet geeignete Ebenen für Anforderungen von Medieninhalten. 
+
+- **Datenverarbeitung in Massen**. Diese Arten von Workloads eignen sich für Standardspeicher, weil sie statt konsistenter niedriger Latenz kostengünstigen Speicher mit hohem Durchsatz erfordern. Große, rohe Datasets werden zur Verarbeitung bereitgestellt und schließlich zu kälteren Ebenen migriert.
 
 ## <a name="migrate-from-standard-to-premium"></a>Migrieren von Standard zu Premium
 

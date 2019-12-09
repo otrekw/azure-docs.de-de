@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/05/2019
+ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: bf9afb66163532b4095e0d30b1167010320abbf8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490898"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184833"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Erstellen eines benutzerdefinierten Schlüsselworts mit dem Speech Service
 
@@ -46,7 +46,7 @@ Berücksichtigen Sie bei der Auswahl eines Schlüsselworts die folgenden Richtli
 
 ## <a name="create-your-keyword"></a>Erstellen Ihres Schlüsselworts
 
-Bevor Sie auf Ihrem Gerät ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie es mithilfe des Microsoft-Diensts für die Generierung eines benutzerdefinierten Schlüsselworts erstellen. Nachdem Sie ein Schlüsselwort angegeben haben, erstellt der Dienst eine Datei, die Sie anschließend zur Aktivierung des Schlüsselworts auf Ihrem Gerät in Ihrem Development Kit bereitstellen.
+Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) in [Speech Studio](https://aka.ms/sdsdk-speechportal) ein Schlüsselwort erstellen. Nachdem Sie ein Schlüsselwort angegeben haben, wird eine Datei erstellt, die Sie auf Ihrem Gerät bereitstellen.
 
 1. Wechseln Sie zu [Speech Studio](https://aka.ms/sdsdk-speechportal), und **melden Sie sich an**. Wenn Sie kein Speech-Abonnement haben, wählen Sie [**Abonnement erstellen**](https://go.microsoft.com/fwlink/?linkid=2086754) aus.
 
@@ -62,7 +62,7 @@ Bevor Sie auf Ihrem Gerät ein benutzerdefiniertes Schlüsselwort verwenden kön
 
     ![Herunterladen Ihres Schlüsselworts](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
 
-1. Speichern Sie die ZIP-Datei auf Ihrem Computer. Sie benötigen diese Datei, um Ihr benutzerdefiniertes Schlüsselwort im Development Kit bereitzustellen.
+1. Speichern Sie die ZIP-Datei auf Ihrem Computer. Sie benötigen diese Datei, um Ihr benutzerdefiniertes Schlüsselwort auf Ihrem Gerät bereitzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

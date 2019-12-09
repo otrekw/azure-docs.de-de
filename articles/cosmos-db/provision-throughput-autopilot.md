@@ -6,12 +6,12 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953123"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383084"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus (Vorschauversion)
 
@@ -68,7 +68,7 @@ Lösungen für die vorherigen Probleme erfordern nicht nur eine sehr lange Imple
 | **Preise** | Manuell bereitgestellte RU/s pro Stunde | Bei Konten mit einer Schreibregion zahlen Sie für den genutzten Durchsatz auf Stundenbasis nach dem Tarif für Autopilot-RU/s pro Stunde. <br/><br/>Bei Konten mit mehreren Schreibregionen fallen keine zusätzlichen Kosten für Autopilot an. Sie zahlen für den genutzten Durchsatz auf Stundenbasis nach demselben Tarif für Multimaster-RU/s pro Stunde. |
 | **Für folgende Workloadtypen am besten geeignet** |  Vorhersehbare und stabile Workloads|   Nicht vorhersehbare und variable Workloads  |
 
-## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a><a id="enable-autopilot"> Aktivieren des Autopilot-Modus über das Azure-Portal
+## <a id="enable-autopilot"></a> Aktivieren des Autopilot-Modus über das Azure-Portal
 
 Sie können den Autopilot-Modus unter Ihren Azure Cosmos-Konten ausprobieren, indem Sie ihn über das Azure-Portal aktivieren. Führen Sie die folgenden Schritte aus, um die Autopilot-Option zu aktivieren:
 
@@ -93,6 +93,17 @@ Sie können Autopilot für Datenbanken oder Container konfigurieren, während Si
 1. Klicken Sie auf **OK**.
 
 Auf ähnliche Weise können Sie auch eine Datenbank mit bereitgestelltem Durchsatz im Autopilot-Modus erstellen.
+
+## <a id="autopilot-limits"></a> Durchsatz- und Speicherlimits für Autopilot
+
+In der nachstehenden Tabelle werden die maximalen Durchsatz- und Speicherlimits für verschiedene Optionen im Autopilot-Modus gezeigt:
+
+|Maximales Durchsatzlimit  |Maximales Speicherlimit  |
+|---------|---------|
+|4\.000 RU/s  |   50 GB    |
+|20.000 RU/s  |  200 GB  |
+|100.000 RU/s    |  1 TB   |
+|500.000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

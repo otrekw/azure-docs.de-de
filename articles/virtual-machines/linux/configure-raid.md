@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von Software-RAID auf einem virtuellen Computer unter Linux | Microsoft Docs
+title: Konfigurieren von Software-RAID auf einem virtuellen Computer unter Linux
 description: Erfahren Sie, wie Sie mdadm zum Konfigurieren von RAID unter Linux in Azure verwenden.
 services: virtual-machines-linux
 documentationcenter: na
@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: d0658af090d9a3f39bee69f5103a78a329fe189c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: f59e4b9ee85803ab5635e72b3607e82e958d9696
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083803"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534193"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurieren von Software-RAID unter Linux
 Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux-Computern in Azure, um mehrere angefügte Datenträger als einzelnes RAID-Gerät darzustellen. Dies kann normalerweise angewendet werden, um die Leistung zu verbessern und optimierten Durchsatz im Vergleich zur Verwendung eines einzelnen Datenträgers zu ermöglichen.
 
 ## <a name="attaching-data-disks"></a>Anfügen von Datenträgern
 Es sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Gerät zu konfigurieren.  Der Hauptgrund für die Erstellung eines RAID-Geräts ist die Leistungsverbesserung Ihrer Datenträger-E/A.  Basierend auf Ihren E/A-Anforderungen können Sie wählen, in unserem Standardspeicher gespeicherte Datenträger mit bis zu 500 IOPS und Datenträger anzufügen oder in unserem Premiumspeicher gespeicherte Datenträger mit bis zu 5000 IOPS und Datenträger anzufügen. In diesem Artikel wird nicht erläutert, wie Sie einem virtuellen Linux-Computer Datenträger bereitstellen und an diesen anfügen.  Eine ausführliche Anleitung, wie Sie einen leeren Datenträger an einen virtuellen Linux-Computer in Azure anfügen, finden Sie im Microsoft Azure-Artikel [Anfügen eines Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
+
+> [!IMPORTANT]
+>Kombinieren Sie keine Datenträger mit unterschiedlichen Größen. Dies würde dazu führen, dass die Leistung des RAIDs auf die des langsamsten Datenträgers beschränkt wird. 
 
 ## <a name="install-the-mdadm-utility"></a>Installieren des mdadm-Dienstprogramms
 * **Ubuntu**

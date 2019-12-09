@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 6ad71cecfd088a92bdd41ae13cb530c286ebea4c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: 66864870f29729e54ad06aef1208641f673c0612
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970397"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158313"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Lesereplikate in Azure Database for MySQL
 
@@ -69,7 +69,7 @@ Jedes Replikat ist für die [automatische Vergrößerung](concepts-pricing-tiers
 
 ## <a name="connect-to-a-replica"></a>Herstellen einer Verbindung mit einem Replikat
 
-Wenn Sie ein Replikat erstellen, erbt dieses weder die Firewallregeln noch den VNET-Dienstendpunkt des Masterservers. Diese Regeln müssen separat für das Replikat eingerichtet werden.
+Ein Replikat erbt bei der Erstellung weder die Firewallregeln noch den VNET-Dienstendpunkt des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
 
 Das Replikat erbt das Administratorkonto vom Masterserver. Alle Benutzerkonten auf dem Masterserver werden auf die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Masterserver verfügbar sind.
 
@@ -121,6 +121,8 @@ Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erst
 
 > [!IMPORTANT]
 > Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
+
+Firewallregeln, VNET-Regeln und Parametereinstellungen werden beim Erstellen eines Replikats vom Masterserver geerbt. Danach sind die Regeln des Replikats unabhängig.
 
 ### <a name="stopped-replicas"></a>Beendete Replikate
 

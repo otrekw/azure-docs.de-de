@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8e5dc43170af8f33ad266edfa02ac5b41ca67a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174141"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561920"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -42,6 +42,10 @@ Wie sich Benutzer aus dem Azure AD-Verzeichnis oder der Domäne authentifizieren
 - Azure AD
 - [Direkter Verbund](../b2b/direct-federation.md)
 - [Einmalkennung](../b2b/one-time-passcode.md) (Domäne)
+
+Eine Demonstration, wie Sie eine verbundene Organisation hinzufügen können, finden Sie im folgenden Video:
+
+>[!VIDEO https://www.microsoft.com/videoplayer/embed/RE4dskS]
 
 ## <a name="add-a-connected-organization"></a>Hinzufügen einer verbundenen Organisation
 

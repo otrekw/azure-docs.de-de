@@ -1,23 +1,20 @@
 ---
-title: 'Azure Resource Manager-Vorlagen: Struktur und Syntax | Microsoft-Dokumentation'
+title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: e5ef3dcd7c2eec08237d5eb31fb95a0e450d9ac9
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.date: 11/12/2019
+ms.openlocfilehash: ed3f75862e33f87001bc0a7720a98adb64dde5c3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72286716"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149758"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 
 In diesem Artikel wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind.
 
-Dieser Artikel richtet sich an Benutzer, die bereits Vorkenntnisse zu Resource Manager-Vorlagen haben. Er bietet detaillierte Informationen zur Struktur der Vorlage. Eine Einführung in die Erstellung einer Vorlage finden Sie unter [Azure Resource Manager-Vorlagen](template-deployment-overview.md).
+Dieser Artikel richtet sich an Benutzer, die bereits Vorkenntnisse zu Resource Manager-Vorlagen haben. Er bietet detaillierte Informationen zur Struktur der Vorlage. Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](template-tutorial-create-first-template.md).
 
 ## <a name="template-format"></a>Vorlagenformat
 
@@ -286,6 +283,31 @@ Beispiele für die Verwendung von Ausgaben finden Sie unter [Ausgaben in einer A
 
 Es gibt mehrere Möglichkeiten, um Kommentare und Metadaten in Ihrer Vorlage hinzuzufügen.
 
+### <a name="comments"></a>Kommentare
+
+Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Sie können nicht den Vorlagen-Editor des Portals verwenden, um Vorlagen mit Inlinekommentaren zu bearbeiten. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
+
+> [!NOTE]
+> Wenn Sie Vorlagen mit Kommentaren mithilfe der Azure CLI bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[parameters('location')]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  "dependsOn": [ /* storage account and network interface must be deployed first */
+    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
+```
+
+In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](./resource-manager-tools-vs-code.md#install-resource-manager-tools-extension) Resource Manager-Vorlage automatisch erkennen und den Sprachmodus entsprechend ändern. Wenn in VS Code unten rechts **Azure Resource Manager Vorlage** angezeigt wird, können Sie die Inline Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
+
+![Azure Resource Manager-Vorlagenmodus in Visual Studio Code](./media/resource-group-authoring-templates/resource-manager-template-editor-mode.png)
+
+### <a name="metadata"></a>Metadaten
+
 Sie können ein `metadata`-Objekt fast überall in Ihrer Vorlage hinzufügen. Resource Manager ignoriert das Objekt, aber Sie werden von Ihrem JSON-Editor möglicherweise gewarnt, dass die Eigenschaft nicht gültig ist. Definieren Sie im Objekt die erforderlichen Eigenschaften.
 
 ```json
@@ -354,31 +376,6 @@ Fügen Sie für **Ausgaben** dem Ausgabewert ein Metadatenobjekt hinzu.
 ```
 
 Sie können ein Metadatenobjekt nicht zu benutzerdefinierten Funktionen hinzufügen.
-
-Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber diese Syntax funktioniert nicht mit allen Tools. Sie können nicht den Vorlagen-Editor des Portals verwenden, um Vorlagen mit Inlinekommentaren zu bearbeiten. Wenn Sie diese Art von Kommentar hinzufügen, stellen Sie sicher, dass die von Ihnen verwendeten Tools JSON-Inlinekommentare unterstützen.
-
-> [!NOTE]
-> Wenn Sie Vorlagen mit Kommentaren mithilfe der Azure CLI bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
-
-```json
-{
-  "type": "Microsoft.Compute/virtualMachines",
-  "name": "[variables('vmName')]", // to customize name, change it in variables
-  "location": "[parameters('location')]", //defaults to resource group location
-  "apiVersion": "2018-10-01",
-  "dependsOn": [ /* storage account and network interface must be deployed first */
-    "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
-    "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
-  ],
-```
-
-Im VS-Code können Sie den Sprachmodus auf „JSON mit Kommentaren“ festlegen. Die Inlinekommentare werden nicht mehr als ungültig markiert. So ändern Sie den Modus
-
-1. Öffnen Sie die Sprachmodusauswahl (STRG+K M).
-
-1. Wählen Sie **JSON mit Kommentaren** aus.
-
-   ![Auswählen des Sprachmodus](./media/resource-group-authoring-templates/select-json-comments.png)
 
 ## <a name="multi-line-strings"></a>Mehrzeilige Zeichenfolgen
 

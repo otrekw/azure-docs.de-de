@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 103e09a0e2b9dd409fa2ddaff1c5311ef9936d22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2019
+ms.openlocfilehash: d589800f62f96510a09d23cb6e8794177121c6dd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61422132"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419722"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MySQL mit dem Azure-Portal
 
@@ -35,30 +35,23 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 
 ## <a name="non-configurable-server-parameters"></a>Nicht konfigurierbare Serverparameter
 
-„InnoDB-Pufferpool“ und „Max. Anzahl von Verbindungen“ können nicht konfiguriert werden und sind an Ihren [Tarif](concepts-service-tiers.md) gebunden.
+Die InnoDB-Pufferpoolgröße kann nicht konfiguriert und an Ihren [Tarif](concepts-service-tiers.md) gebunden werden.
 
-|**Tarif**| **Computegeneration**|**vCore(s)**|**InnoDB-Pufferpool (MB)**| **Max. Anzahl von Verbindungen**|
-|---|---|---|---|--|
-|Basic| Gen 4| 1| 960| 50|
-|Basic| Gen 4| 2| 2\.560| 100|
-|Basic| Gen 5| 1| 960| 50|
-|Basic| Gen 5| 2| 2\.560| 100|
-|Allgemeiner Zweck| Gen 4| 2| 3\.584| 300|
-|Allgemeiner Zweck| Gen 4| 4| 7\.680| 625|
-|Allgemeiner Zweck| Gen 4| 8| 15360| 1250|
-|Allgemeiner Zweck| Gen 4| 16| 31\.232| 2500|
-|Allgemeiner Zweck| Gen 4| 32| 62\.976| 5\.000|
-|Allgemeiner Zweck| Gen 5| 2| 3\.584| 300|
-|Allgemeiner Zweck| Gen 5| 4| 7\.680| 625|
-|Allgemeiner Zweck| Gen 5| 8| 15360| 1250|
-|Allgemeiner Zweck| Gen 5| 16| 31\.232| 2500|
-|Allgemeiner Zweck| Gen 5| 32| 62\.976| 5\.000|
-|Allgemeiner Zweck| Gen 5| 64| 125952| 10000|
-|Arbeitsspeicheroptimiert| Gen 5| 2| 7168| 600|
-|Arbeitsspeicheroptimiert| Gen 5| 4| 15360| 1250|
-|Arbeitsspeicheroptimiert| Gen 5| 8| 30720| 2500|
-|Arbeitsspeicheroptimiert| Gen 5| 16| 62464| 5\.000|
-|Arbeitsspeicheroptimiert| Gen 5| 32| 125952| 10000|
+|**Tarif**|**vCore(s)**|**InnoDB-Pufferpoolgröße in MB<br> (Server, die bis zu 4 TB Speicher unterstützen)**| **InnoDB-Pufferpoolgröße in MB<br> (Server, die bis zu 16 TB Speicher unterstützen)**|
+|:---|---:|---:|---:|
+|Basic| 1| 832| |
+|Basic| 2| 2\.560| |
+|Allgemeiner Zweck| 2| 3\.584| 7168|
+|Allgemeiner Zweck| 4| 7\.680| 15360|
+|Allgemeiner Zweck| 8| 15360| 30720|
+|Allgemeiner Zweck| 16| 31.232| 62464|
+|Allgemeiner Zweck| 32| 62.976| 125952|
+|Allgemeiner Zweck| 64| 125952| 251904|
+|Arbeitsspeicheroptimiert| 2| 7168| 14336|
+|Arbeitsspeicheroptimiert| 4| 15360| 30720|
+|Arbeitsspeicheroptimiert| 8| 30720| 61440|
+|Arbeitsspeicheroptimiert| 16| 62464| 124928|
+|Arbeitsspeicheroptimiert| 32| 125952| 251904|
 
 Diese zusätzlichen Serverparameter sind im System nicht konfigurierbar:
 

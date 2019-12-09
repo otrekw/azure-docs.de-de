@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Data Factory zum inkrementellen Kopieren neuer Dateien nur basierend auf dem zeitpartitionierten Dateinamen
+title: Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen
 description: Erstellen Sie eine Azure Data Factory, und verwenden Sie dann das Tool „Daten kopieren“, um neue Dateien nur basierend auf dem zeitpartitionierten Dateinamen zu laden.
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 273aaaa2ac51f75edfad6da03d6720f58b7c3c47
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 746b5cbcc58f6c722623446227417e6c94dd0a80
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683449"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217448"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 

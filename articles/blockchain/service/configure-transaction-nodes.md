@@ -1,31 +1,17 @@
 ---
 title: Konfigurieren von Azure Blockchain-Transaktionsknoten
 description: Erfahren Sie, wie Sie Azure Blockchain-Transaktionsknoten konfigurieren.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: seal
-manager: femila
-ms.openlocfilehash: dffeb81ae1eb244c38639a1241c0581e6fcdf94a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.reviewer: janders
+ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65027624"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326307"
 ---
 # <a name="configure-azure-blockchain-service-transaction-nodes"></a>Konfigurieren von Azure Blockchain-Transaktionsknoten
-
-Sie interagieren mit dem Azure Blockchain-Dienst, indem Sie eine Verbindung mit mindestens einem Transaktionsknoten in Ihrem Blockchainmitglied herstellen.  Für die Interaktion mit Transaktionsknoten, müssen Sie die Knoten für den Zugriff konfigurieren.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-* [Erstellen eines Azure Blockchain-Mitglieds](create-member.md)
-
-## <a name="transaction-node-overview"></a>Übersicht über Transaktionsknoten
 
 Transaktionsknoten werden zum Senden von Blockchaintransaktionen an den Azure Blockchain-Dienst über einen öffentlichen Endpunkt verwendet. Der Standardtransaktionsknoten enthält den privaten Schlüssel des in der Blockchain registrierten Ethereum-Kontos und kann deshalb nicht gelöscht werden.
 
@@ -40,7 +26,7 @@ So zeigen Sie die Details zum Standardtransaktionsknoten an:
 
 ## <a name="create-transaction-node"></a>Erstellen eines Transaktionsknotens
 
-Sie können bis zu neun zusätzliche Transaktionsknoten für Ihr Blockchainmitglied erstellen. Sie können also über maximal zehn Transaktionsknoten verfügen. Durch Hinzufügen von Transaktionsknoten können Sie die Skalierbarkeit erhöhen oder Last verteilen. Sie können beispielsweise über einen Transaktionsknotenendpunkt für verschiedene Clientanwendungen verfügen.
+Sie können bis zu neun zusätzliche Transaktionsknoten für Ihr Blockchainmitglied erstellen. Sie können also über maximal 10 Transaktionsknoten verfügen. Durch Hinzufügen von Transaktionsknoten können Sie die Skalierbarkeit erhöhen oder Last verteilen. Sie können beispielsweise über einen Transaktionsknotenendpunkt für verschiedene Clientanwendungen verfügen.
 
 So fügen Sie einen Transaktionsknoten hinzu:
 
@@ -83,7 +69,7 @@ So gewähren Sie die Azure AD-Zugriffssteuerung Ihres Endpunkts:
 
     | Einstellung | Aktion |
     |---------|-------------|
-    | Rolle | Wählen Sie die Rolle **Besitzer**, **Mitwirkender** oder **Leser** aus.
+    | Role | Wählen Sie die Rolle **Besitzer**, **Mitwirkender** oder **Leser** aus.
     | Zugriff zuweisen zu | Wählen Sie **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** aus.
     | Select | Suchen Sie den Benutzer, die Gruppe oder den Dienstprinzipal, den bzw. die Sie hinzufügen möchten.
 
@@ -141,7 +127,7 @@ Der Beispielcode wird bereitgestellt, sodass Sie schnell eine Verbindung über W
 
 Sie können den Beispielcode zum Herstellen einer Verbindung eines Transaktionsknotens anzeigen und kopieren, um ihn mit beliebten Entwicklertools zu verwenden. Navigieren Sie zu einem Ihrer Transaktionsknoten Ihres Azure Blockchain-Mitglieds, und klicken Sie in den Einstellungen auf **Beispielcode**.
 
-Klicken Sie auf die Registerkarte „Web3“ oder „Nethereum“, um den Beispielcode anzuzeigen, den Sie verwenden möchten.
+Klicken Sie auf die Registerkarte „Web3“, „Nethereum“, „Truffle“ oder „Web3j“, um den Beispielcode anzuzeigen, den Sie verwenden möchten.
 
 ![Beispielcode](./media/configure-transaction-nodes/sample-code.png)
 

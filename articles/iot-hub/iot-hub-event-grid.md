@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub und Event Grid | Microsoft-Dokumentation
 description: Lösen Sie mit Azure Event Grid Prozesse auf der Basis von Aktionen aus, die in IoT Hub auftreten.
-author: kgremban
+author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: robinsh
+ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906779"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151314"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -176,13 +176,21 @@ devices/{deviceId}
 
 Event Grid ermöglicht auch das Filtern nach Attributen jedes Ereignisses, einschließlich des Dateninhalts. Dadurch können Sie auswählen, welche Ereignisse auf der Grundlage von Inhalten der Telemetrienachricht übermittelt werden sollen. Beispiele hierfür finden Sie unter [erweiterte Filterung](../event-grid/event-filtering.md#advanced-filtering). Zum Filtern des Telemetrienachrichtentexts müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen. Bei beiden Eigenschaften wird die Groß-/Kleinschreibung nicht beachtet.
 
-Bei nicht telemetriebezogenen Ereignissen wie „DeviceConnected“, „DeviceDisconnected“, „DeviceCreated“ und „DeviceDeleted“ kann die Event Grid-Filterung beim Erstellen des Abonnements verwendet werden. Bei Telemetrieereignissen können Benutzer – zusätzlich zum Filtern in Event Grid – über die Abfrage des Nachrichtenroutings auch nach Gerätezwillingen, Nachrichteneigenschaften und Textkörper filtern. Wir erstellen in IoT Hub eine Standard-[Route](iot-hub-devguide-messages-d2c.md), die auf Ihrem Event Grid-Abonnement für Gerätetelemetrie basiert. Diese einzelne Route kann alle Ihre Event Grid-Abonnements verarbeiten. Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann. Darüber hinaus müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen.
+Bei nicht telemetriebezogenen Ereignissen wie „DeviceConnected“, „DeviceDisconnected“, „DeviceCreated“ und „DeviceDeleted“ kann die Event Grid-Filterung beim Erstellen des Abonnements verwendet werden. Bei Telemetrieereignissen können Benutzer – zusätzlich zum Filtern in Event Grid – über die Abfrage des Nachrichtenroutings auch nach Gerätezwillingen, Nachrichteneigenschaften und Textkörper filtern. 
+
+Wenn Sie Telemetrieereignisse über Event Grid abonnieren, erstellt IoT Hub eine Standardnachrichtenroute für das Senden von Gerätenachrichten zum Datenquellentyp an Event Grid. Weitere Informationen zum Nachrichtenrouting finden Sie unter [IoT Hub-Nachrichtenrouting](iot-hub-devguide-messages-d2c.md). Diese Route wird im Portal unter „IOT Hub“ > „Nachrichtenrouting“ angezeigt. Unabhängig von der Anzahl der für Telemetrieereignisse erstellten Event Grid-Abonnements wird nur eine Route zu Event Grid erstellt. Wenn Sie also mehrere Abonnements mit verschiedenen Filtern benötigen, können Sie in diesen Abfragen den OR-Operator auf derselben Route verwenden. Das Erstellen und Löschen der Route wird durch das Abonnement von Telemetrieereignissen über Event Grid gesteuert. Sie können mithilfe von IoT Hub-Nachrichtenrouting keine Route zu Event Grid erstellen oder löschen.
+
+Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, können Sie Ihre [Routingabfrage](iot-hub-devguide-routing-query-syntax.md) aktualisieren. Beachten Sie, dass die Routingabfrage nur auf einen Nachrichtenkörper im JSON-Format angewendet werden kann. Darüber hinaus müssen Sie contentType in den Nachrichten-[Systemeigenschaften](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties) auf **application/json** und contentEncoding auf **UTF-8** festlegen.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 
 Um die Ereignisse „Gerät verbunden“ und „Gerät getrennt“ zu erhalten, müssen Sie den D2C-Link oder den C2D-Link für Ihr Gerät öffnen. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [ReceiveAsync-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) aufrufen.
 
-Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. Wenn die Geräteverbindung instabil ist, das Gerät also häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Der Verbindungsstatus, für den einmal pro Minute eine Momentaufnahme erstellt wird, wird aber veröffentlicht. Bei einem Ausfall von IoT Hub wird der Geräteverbindungsstatus veröffentlicht, sobald der Ausfall beendet ist. Wenn das Gerät während dieses Ausfalls getrennt wird, wird das Ereignis „Gerät getrennt“ innerhalb von 10 Minuten veröffentlicht.
+Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. 
+
+Wenn die Geräteverbindung instabil ist, das Gerät also häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Der *letzte* Verbindungsstatus, der letztendlich konsistent ist, wird aber veröffentlicht. Wenn Ihr Gerät beispielsweise zunächst im verbundenen Zustand war, wird die Konnektivität für ein paar Sekunden wiederhergestellt, und dann ist die Verbindung wieder im verbundenen Zustand. Es werden keine neuen Ereignisse zum Geräteverbindungsstatus seit dem Anfangsverbindungsstatus veröffentlicht. 
+
+Bei einem Ausfall von IoT Hub wird der Geräteverbindungsstatus veröffentlicht, sobald der Ausfall beendet ist. Wenn das Gerät während dieses Ausfalls getrennt wird, wird das Ereignis „Gerät getrennt“ innerhalb von 10 Minuten veröffentlicht.
 
 ## <a name="tips-for-consuming-events"></a>Tipps zum Nutzen von Ereignissen
 

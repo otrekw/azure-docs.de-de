@@ -1,22 +1,22 @@
 ---
-title: Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Azure AD (Vorschauversion) – Azure Active Directory
+title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln bei Windows – Azure Active Directory
 description: Aktivieren der kennwortlosen Anmeldung mit FIDO2-Sicherheitsschlüsseln bei Azure AD (Vorschauversion)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 12/02/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 05230e39175e71f4eec2c99cd6cbd2f44f05df30
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081555"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766360"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Windows 10-Geräten (Vorschauversion)
 
@@ -45,6 +45,7 @@ In diesem Dokument liegt der Schwerpunkt auf der Aktivierung der auf FIDO2-Siche
 - „Ausführen als“ wird bei Verwendung von Sicherheitsschlüsseln **nicht unterstützt**.
 - Die Anmeldung bei einem Server mithilfe eines Sicherheitsschlüssels wird **nicht unterstützt**.
 - Wenn Sie Ihren Sicherheitsschlüssel nicht verwendet haben, um sich online bei Ihrem Gerät anzumelden, können Sie ihn nicht verwenden, um sich offline anzumelden oder die Sperrung aufzuheben.
+- Anmelden oder Entsperren eines Windows 10-Geräts mit einem Sicherheitsschlüssel, der mehrere Azure AD-Konten enthält In diesem Szenario wird das letzte Konto verwendet, das dem Sicherheitsschlüssel hinzugefügt wurde. WebAuthN ermöglicht Benutzern die Auswahl des gewünschten Kontos.
 
 ## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
 
@@ -55,7 +56,7 @@ Auf den in Azure AD eingebundenen Geräten, auf denen Sie Pilotversuche ausführ
 Organisationen können je nach den Anforderungen der Organisation eine oder mehrere der folgenden Methoden zum Aktivieren der Verwendung von Sicherheitsschlüsseln für die Windows-Anmeldung verwenden.
 
 - [Aktivieren mit Intune](#enable-with-intune)
-   - [Zielgerichtete Intune-Bereitstellung](#targeted-intune-deployment)
+- [Zielgerichtete Intune-Bereitstellung](#targeted-intune-deployment)
 - [Aktivieren mit einem Bereitstellungspaket](#enable-with-a-provisioning-package)
 
 ### <a name="enable-with-intune"></a>Aktivieren mit Intune
@@ -66,7 +67,7 @@ Organisationen können je nach den Anforderungen der Organisation eine oder mehr
 
 Die Konfiguration von Sicherheitsschlüsseln für die Anmeldung ist nicht von der Konfiguration von Windows Hello for Business abhängig.
 
-#### <a name="targeted-intune-deployment"></a>Zielgerichtete Intune-Bereitstellung
+### <a name="targeted-intune-deployment"></a>Zielgerichtete Intune-Bereitstellung
 
 Verwenden Sie zum Festlegen bestimmter Gerätegruppen als Ziel die folgenden benutzerdefinierten Einstellungen über Intune, um den Anmeldeinformationsanbieter zu aktivieren.
 

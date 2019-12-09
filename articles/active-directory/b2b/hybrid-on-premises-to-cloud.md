@@ -1,5 +1,5 @@
 ---
-title: Synchronisieren von lokalen Partnerkonten als B2B-Benutzer mit der Cloud – Azure Active Directory | Microsoft-Dokumentation
+title: Synchronisieren von lokalen Partnerkonten als B2B-Benutzer mit der Cloud – Azure AD
 description: Ermöglichen Sie es lokal verwalteten Partnern mithilfe von Azure AD B2B-Zusammenarbeit, mit denselben Anmeldeinformationen auf lokale und cloudbasierte Ressourcen zuzugreifen.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ae75311ab61449f37ccea15a0bcb88fed80c3ed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dcc8c0538bb3362818a4172dd42905fd72b19812
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767343"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272616"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Gewähren des Zugriffs auf Cloudressourcen für lokal verwaltete Partnerkonten mit Azure AD B2B-Zusammenarbeit
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e1f7aeb5615c1a22c1970f118c24c996ac936870
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a732e80549747f7c683a73bf0f16c40d48decea6
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826822"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546342"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -169,7 +169,7 @@ Beachten Sie, dass die Volumeeinsparungen nur für den Server gelten. Ihre Daten
 > Datendeduplizierung und Cloudtiering auf dem gleichen Volume unter Windows Server 2019 werden zurzeit aufgrund eines Fehlers, der in einem zukünftigen Update behoben wird, nicht unterstützt.
 
 **Windows Server 2012 R2**  
-Datendeduplizierung und Cloudtiering auf dem gleichen Volume werden von der Azure-Dateisynchronisierung nicht unterstützt. Wenn die Datendeduplizierung auf einem Volume aktiviert wird, muss Cloudtiering deaktiviert werden. 
+Datendeduplizierung und Cloudtiering auf demselben Volume unter Windows Server 2012 R2 werden von der Azure-Dateisynchronisierung nicht unterstützt. Wenn die Datendeduplizierung auf einem Volume aktiviert wird, muss Cloudtiering deaktiviert werden. 
 
 **Hinweise**
 - Wenn die Datendeduplizierung vor dem Azure-Dateisynchronisierungs-Agent installiert wird, ist ein Neustart erforderlich, damit die Datendeduplizierung und das Cloudtiering auf demselben Volume unterstützt werden.
@@ -227,7 +227,7 @@ Wenn Sie eine lokale Sicherungslösung verwenden, sollten die Sicherungen auf ei
 > Bare-Metal-Recovery (BMR) kann zu unerwarteten Ergebnissen führen und wird derzeit nicht unterstützt.
 
 > [!Note]  
-> VSS-Momentaufnahmen (einschließlich der Registerkarte „Vorherige Versionen“) werden auf Volumes, für die das Cloudtiering aktiviert ist, derzeit nicht unterstützt. Wenn das Cloudtiering aktiviert ist, sollten Sie die Momentaufnahmen von Azure-Dateifreigaben verwenden, um eine Datei aus einer Sicherung wiederherzustellen.
+> Bei Version 9 des Dateisynchronisierungs-Agents werden VSS-Momentaufnahmen (einschließlich der Registerkarte "Vorherige Versionen") jetzt auf Volumes mit aktiviertem Cloudtiering unterstützt. Allerdings müssen Sie die vorherige Versionskompatibilität über PowerShell aktivieren. [Weitere Informationen](storage-files-deployment-guide.md).
 
 ### <a name="encryption-solutions"></a>Verschlüsselungslösungen
 Die Unterstützung von Verschlüsselungslösungen hängt davon ab, wie sie implementiert werden. Die Azure-Dateisynchronisierung funktioniert mit:

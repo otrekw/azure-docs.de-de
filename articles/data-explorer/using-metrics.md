@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569281"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173787"
 ---
 # <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Überwachen der Azure Data Explorer-Leistung, -Integrität und -Nutzung mit Metriken
 
@@ -67,5 +67,6 @@ Weitere Informationen zur Verwendung von [Metrik-Explorer](/azure/azure-monitor/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
+* [Tutorial: Erfassen und Abfragen von Überwachungsdaten in Azure Data Explorer](/azure/data-explorer/ingest-data-no-code)
+* [Überwachen von Azure Data Explorer-Erfassungsvorgängen mithilfe von Diagnoseprotokollen](/azure/data-explorer/using-diagnostic-logs)
+* [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)

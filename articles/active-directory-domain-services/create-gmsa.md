@@ -9,20 +9,22 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 1cfddf14d60b7d73bae283a18732c7c99ae22b4d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a943d2a8453cb727e9d01e35b12ca90d939ee5e8
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898228"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546310"
 ---
 # <a name="create-a-group-managed-service-account-gmsa-in-azure-ad-domain-services"></a>Erstellen eines gruppenverwalteten Dienstkontos (gMSA) in Azure AD Domain Services
 
-Anwendungen und Dienste benötigen häufig eine Identität, um sich bei anderen Ressourcen zu authentifizieren. Beispielsweise muss sich ein Webdienst unter Umständen bei einem Datenbankdienst authentifizieren. Wenn eine Anwendung oder ein Dienst über mehrere Instanzen verfügt (z.B. eine Webserverfarm), wird das manuelle Erstellen und Konfigurieren der Identitäten für diese Ressourcen zeitaufwändig. Stattdessen können Sie in der verwalteten Azure AD DS-Domäne (Azure Active Directory Domain Services) ein gruppenverwaltetes Dienstkonto (gMSA) erstellen. Das Windows-Betriebssystem verwaltet die Anmeldeinformationen für ein gMSA automatisch, was die Verwaltung großer Ressourcengruppen vereinfacht.
+Anwendungen und Dienste benötigen häufig eine Identität, um sich bei anderen Ressourcen zu authentifizieren. Beispielsweise muss sich ein Webdienst unter Umständen bei einem Datenbankdienst authentifizieren. Wenn eine Anwendung oder ein Dienst über mehrere Instanzen verfügt (z.B. eine Webserverfarm), wird das manuelle Erstellen und Konfigurieren der Identitäten für diese Ressourcen zeitaufwändig.
 
-In diesem Artikel wird gezeigt, wie Sie in einer verwalteten Azure AD DS-Domäne ein gruppenverwaltetes Dienstkonto (gMSA) erstellen.
+Stattdessen können Sie in der verwalteten Azure AD DS-Domäne (Azure Active Directory Domain Services) ein gruppenverwaltetes Dienstkonto (gMSA) erstellen. Das Windows-Betriebssystem verwaltet die Anmeldeinformationen für ein gMSA automatisch, was die Verwaltung großer Ressourcengruppen vereinfacht.
+
+In diesem Artikel wird gezeigt, wie Sie in einer verwalteten Azure AD DS-Domäne mithilfe von Azure PowerShell ein gruppenverwaltetes Dienstkonto (gMSA) erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -59,6 +61,9 @@ Da verwaltete Azure AD DS-Domänen von Microsoft gesperrt und verwaltet werden, 
 ## <a name="create-a-gmsa"></a>Erstellen eines gruppenverwalteten Dienstkontos (gMSA)
 
 Erstellen Sie zunächst mithilfe des Cmdlets [New-ADOrganizationalUnit][New-AdOrganizationalUnit] eine benutzerdefinierte Organisationseinheit. Weitere Informationen zum Erstellen und Verwalten von benutzerdefinierten Organisationseinheiten finden Sie unter [Benutzerdefinierte Organisationseinheiten in Azure AD DS][create-custom-ou].
+
+> [!TIP]
+> Führen Sie diese Schritte zum Erstellen eines gMSA [auf Ihrer Verwaltungs-VM][tutorial-create-management-vm] aus. Diese Verwaltungs-VM muss bereits über die erforderlichen AD PowerShell-Cmdlets und eine Verbindung mit der verwalteten Domäne verfügen.
 
 Im folgenden Beispiel wird eine benutzerdefinierte Organisationseinheit namens *myNewOU* in der verwalteten Azure AD DS-Domäne namens *contoso.com* erstellt. Verwenden Sie Ihre eigene Organisationseinheit und den Namen der verwalteten Domäne:
 

@@ -1,5 +1,5 @@
 ---
-title: Support für B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation
+title: Support für B2B-Zusammenarbeit – Azure Active Directory
 description: Wie erhalten Sie Support für die Azure Active Directory B2B-Zusammenarbeit?
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9ebefb9762b663adcd17fb1fdd656cb4f2ec2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 00817acf93295becefab2d1a61de84a3f5519338
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768427"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272770"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Support für die B2B-Zusammenarbeit
 

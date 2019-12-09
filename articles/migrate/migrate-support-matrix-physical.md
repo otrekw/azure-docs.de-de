@@ -1,25 +1,23 @@
 ---
-title: Azure Migrate-Unterstützungsmatrix für die Bewertung und Migration physischer Server
-description: Fasst die Einstellungen und Einschränkungen für die Bewertung und Migration physischer Server mit dem Azure Migrate-Dienst zusammen.
+title: Unterstützung für die Bewertung/Migration physischer Server mit Azure Migrate
+description: Zusammenfassung der Unterstützung für die Bewertung/Migration physischer Server mit Azure Migrate
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 902e89305aa24e8cbb6d2dd84d6a61c710d11637
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715369"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196347"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Unterstützungsmatrix für die Bewertung und Migration physischer Server
 
 Mit dem [Azure Migrate-Dienst](migrate-overview.md) können Sie Computer bewerten und in die Microsoft Azure-Cloud migrieren. Dieser Artikel enthält eine Übersicht über die Unterstützungseinstellungen und -einschränkungen für die Bewertung und Migration von lokalen physischen Servern.
 
-> [!NOTE]
-> Werden hier Features erwähnt, die Sie noch nicht im Azure Migrate-Portal sehen, bitten wir Sie um etwas Geduld. Sie werden voraussichtlich im Laufe der nächsten Woche verfügbar.
 
 
 ## <a name="physical-server-scenarios"></a>Physischer Server – Szenarien
@@ -28,7 +26,7 @@ Die Tabelle enthält eine Übersicht über die unterstützten Szenarien für phy
 
 **Bereitstellung** | **Details***
 --- | ---
-**Zugriff auf lokale physische Server** | [Einrichten](tutorial-prepare-physical.md) Ihrer ersten Bewertung
+**Zugriff auf lokale physische Server** | [Einrichten](tutorial-prepare-physical.md) Ihrer ersten Bewertung<br/><br/> [Durchführen](tutorial-assess-physical.md) einer Bewertung
 **Migrieren physischer Server zu Azure** | [Testen ](tutorial-migrate-physical-virtual-machines.md) der Migration zu Azure
 
 
@@ -37,7 +35,7 @@ Die Tabelle enthält eine Übersicht über die unterstützten Szenarien für phy
 **Unterstützung** | **Details**
 --- | ---
 **Azure-Berechtigungen** | Sie benötigen Berechtigungen für Mitwirkende oder Eigentümer im Abonnement, um ein Azure Migrate-Projekt zu erstellen.
-**Physische Server** | Sie können bis zu 250 physische Server in einem einzelnen Projekt bewerten. Ein Azure-Abonnement kann mehrere Projekte enthalten. Ein Projekt kann im Rahmen der Bewertungseinschränkungen physische Server, VMware-VMs und Hyper-V-VMs umfassen.
+**Physische Server** | Sie können bis zu 35.000 physische Server in einem einzelnen Projekt bewerten. Ein Azure-Abonnement kann mehrere Projekte enthalten. Ein Projekt kann im Rahmen der Bewertungseinschränkungen physische Server, VMware-VMs und Hyper-V-VMs umfassen.
 **Geografie** | Sie können Azure Migrate-Projekte in verschiedenen geografischen Regionen erstellen. Obwohl Sie Projekte nur in spezifischen geografischen Regionen erstellen können, haben Sie die Möglichkeit, Computer für andere Zielstandorte zu bewerten und dorthin zu migrieren. Die Projektgeografie wird nur zum Speichern der ermittelten Metadaten verwendet.
 
   **Geografie** | **Speicherort der Metadaten**
@@ -66,7 +64,7 @@ Die Tabelle enthält eine Übersicht über die unterstützten Szenarien für phy
 | :-------------------       | :------------------- |
 | **Physische Serverbereitstellung**       | Der physische Server kann eigenständig sein oder in einem Cluster bereitgestellt werden. |
 | **Berechtigungen**           | **Windows:** Richten Sie auf allen Windows-Servern, die Sie in die Ermittlung einschließen möchten, ein lokales Benutzerkonto ein. Das Benutzerkonto muss diesen Gruppen hinzugefügt werden: Remotedesktopbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer. <br/> **Linux:** Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. |
-| **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme, die von Azure unterstützt werden |
+| **Betriebssystem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)- und [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)-Betriebssysteme mit Ausnahme der folgenden werden unterstützt:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
 ## <a name="assessment-appliance-requirements"></a>Anforderungen an die Appliances für die Bewertung
@@ -77,7 +75,7 @@ Für die Bewertung führt Azure Migrate eine einfache Appliance aus, um physisch
 | :-------------------       | :------------------- |
 | **Bereitstellung einer Appliance**   |  Sie stellen die Appliance auf einem physischen Server oder virtuellen Computer bereit.<br/>  Auf dem Hostcomputer muss Windows Server 2012 R2 oder höher ausgeführt werden.<br/> Der Host benötigt ausreichenden Speicherplatz, um 16 GB RAM, 8 vCPUs, etwa 80 GB Speicherplatz und einen externen Switch für die Appliance-VM zuzuweisen.<br/> Die Appliance benötigt eine statische oder dynamische IP-Adresse und einen Internetzugang.
 | **Azure Migrate-Projekt**  |  Eine Appliance kann einem einzelnen Projekt zugeordnet werden.<br/> Einem einzelnen Projekt kann eine beliebige Anzahl von Appliances zugeordnet werden.<br/> Sie können bis zu 35.000 Computer in einem Projekt bewerten.
-| **Ermittlung**              | Eine einzelne Appliance kann bis zu 200 Server ermitteln.
+| **Ermittlung**              | Eine einzelne Appliance kann bis zu 250 Server ermitteln.
 | **Bewertungsgruppe**       | Sie können einer einzelnen Gruppe bis zu 35.000 Computer hinzufügen.
 | **Bewertung**             | Sie können bis zu 35.000 virtuelle Computer in einer einzelnen Bewertung bewerten.
 

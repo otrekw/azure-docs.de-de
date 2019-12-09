@@ -1,5 +1,5 @@
 ---
-title: Verlassen einer Organisation als Gastbenutzer – Azure Active Directory | Microsoft-Dokumentation
+title: Verlassen einer Organisation als Gastbenutzer – Azure Active Directory
 description: In diesem Artikel wird gezeigt, wie ein Azure AD B2B-Gastbenutzer eine Organisation über den Zugriffsbereich verlassen kann.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26d9eb883cc014c1bea092a12e22b6d144a37994
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8bce67c81b924d768826402b707c41c085b7767b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67112966"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272496"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Verlassen einer Organisation als Gastbenutzer
 

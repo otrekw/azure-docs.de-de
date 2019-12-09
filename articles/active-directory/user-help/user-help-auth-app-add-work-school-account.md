@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen eines Geschäfts-, Schul- oder Unikontos zu einer Authentifikator-App – Azure AD
-description: Erfahren Sie, wie Sie Ihr Geschäfts-, Schul- oder Unikonto zur Microsoft Authenticator-App hinzufügen, um die zweistufige Überprüfung zu nutzen.
+title: Hinzufügen eines Geschäfts-, Schul- oder Unikontos zur Microsoft Authenticator-App – Azure AD
+description: Fügen Sie der Microsoft Authenticator-App Ihr Geschäfts-, Schul- oder Unikonto hinzu, um während der zweistufigen Überprüfung Ihre Identität zu bestätigen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803732"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267142"
 ---
-# <a name="add-your-work-or-school-account"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App
 
 Wenn Ihre Organisation eine zweistufige Überprüfung verwendet, können Sie Ihr Geschäfts-, Schul- oder Unikonto für die Verwendung der Microsoft Authenticator-App als eine der Überprüfungsmethoden einrichten.
 

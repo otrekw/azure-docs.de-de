@@ -1,7 +1,7 @@
 ---
-title: 'Designer: Preisprognose (Regression)'
+title: 'Designer: Beispiel zur Vorhersage von Autopreisen (einfach)'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie, ohne eine einzige Codezeile zu schreiben, ein Machine Learning-Modell erstellen, um den-Preises eines Fahrzeugs vorherzusagen.
+description: Erstellen Sie mit dem Azure Machine Learning-Designer ein Machine Learning-Modell zum Vorhersagen eines Fahrzeugpreises, ohne eine einzige Codezeile schreiben zu müssen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0cdf2d0b632368a5a5bc24e092783c979f7c26bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 4dfcc76c31452d93d30cd9f2e4c649924b68c203
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647156"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213888"
 ---
-# <a name="sample-1---regression-predict-price"></a>Beispiel 1 – Regression: Preisprognose
+# <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Sagen Sie Autopreise mit dem Azure Machine Learning-Designer mithilfe von Regression vorher.
+
+**Designer (Vorschauversion) – Beispiel 1**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Erfahren Sie, wie Sie über den Designer (Vorschauversion) ein Machine Learning-Regressionsmodell erstellen, ohne eine einzige Codezeile zu schreiben.
@@ -33,7 +36,7 @@ Die elementaren Schritte des Trainings eines Machine Learning-Modells sind:
 
 Hier ist der endgültige vollständige Graph der Pipeline. Dieser Artikel stellt Begründungen für alle Module bereit, sodass Sie ähnliche Entscheidungen selbst treffen können.
 
-![Graph der Pipeline](media/how-to-ui-sample-regression-predict-automobile-price-basic/overall-graph.png)
+![Graph der Pipeline](media/how-to-designer-sample-regression-predict-automobile-price-basic/overall-graph.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,7 +55,7 @@ Zu den Hauptaufgaben der Datenaufbereitung gehören die Datenbereinigung, Integr
 
 Verwenden Sie das Modul **Select Columns in Dataset** (Spalten in Dataset auswählen), um normalisierte Verluste auszuschließen, die viele fehlende Werte aufweisen. Verwenden Sie dann **Clean Missing Data** (Fehlende Daten bereinigen), um die Zeilen zu entfernen, die fehlende Werte aufweisen. Dies hilft, einen bereinigten Satz von Trainingsdaten zu erstellen.
 
-![Datenvorverarbeitung](./media/how-to-ui-sample-regression-predict-automobile-price-basic/data-processing.png)
+![Datenvorverarbeitung](./media/how-to-designer-sample-regression-predict-automobile-price-basic/data-processing.png)
 
 ## <a name="train-the-model"></a>Modelltraining
 
@@ -70,11 +73,11 @@ Nachdem das Modell trainiert wurde, verwenden Sie die Module **Score Model** (Mo
 
 **Score Model** generiert Vorhersagen für das Testdataset mithilfe des trainierten Modells. Um das Ergebnis zu überprüfen, wählen Sie den Ausgabeport des **Score Model**-Moduls und dann **Visualize** (Visualisieren) aus.
 
-![Bewerten des Ergebnisses](./media/how-to-ui-sample-regression-predict-automobile-price-basic/score-result.png)
+![Bewerten des Ergebnisses](./media/how-to-designer-sample-regression-predict-automobile-price-basic/score-result.png)
 
 Übergeben Sie die Bewertungen dann an das **Evaluate Model**-Modul, um Auswertungsmetriken zu generieren. Um das Ergebnis zu überprüfen, wählen Sie den Ausgabeport des **Evaluate Model**-Moduls und dann **Visualize** (Visualisieren) aus.
 
-![Auswerten des Ergebnisses](./media/how-to-ui-sample-regression-predict-automobile-price-basic/evaluate-result.png)
+![Auswerten des Ergebnisses](./media/how-to-designer-sample-regression-predict-automobile-price-basic/evaluate-result.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

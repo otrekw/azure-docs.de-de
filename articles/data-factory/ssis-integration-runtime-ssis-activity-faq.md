@@ -12,12 +12,12 @@ author: wenjiefu
 ms.author: wenjiefu
 ms.reviewer: sawinark
 manager: craigg
-ms.openlocfilehash: de90614d9d24b3f57cb170e9a590de859f689331
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9692c754e59eba02d3d483d44430150107d703a4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683989"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217539"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -77,7 +77,7 @@ Dieser Fehler bedeutet, dass der lokale Datenträger auf dem Knoten mit SSIS Int
       * Die Domäne muss „Azure“ lauten.
       * Der Benutzername muss der \<Name des Speicherkontos\> sein.
       * Das Kennwort muss der \<Speicherzugriffsschlüssel\> sein.
-    * Wenn Sie eine lokale Datei verwenden, überprüfen Sie, ob VNet sowie die Anmeldeinformationen und Berechtigungen für den Paketzugriff ordnungsgemäß konfiguriert sind, damit die Azure-SSIS Integration Runtime auf die lokale Dateifreigabe zugreifen kann.
+    * Wenn Sie eine lokale Datei verwenden, überprüfen Sie, ob VNet sowie die Anmeldeinformationen und Berechtigungen für den Paketzugriff ordnungsgemäß konfiguriert wurden, damit die Azure-SSIS Integration Runtime auf Ihre lokale Dateifreigabe zugreifen kann.
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Fehlermeldung: „Der in der Verbindung angegebene Dateiname "..." war ungültig.“
 

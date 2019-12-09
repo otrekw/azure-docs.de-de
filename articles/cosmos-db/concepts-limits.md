@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 45cf7b7d9383de467f72769465a3ad382fe9d589
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73064044"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383394"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -30,7 +30,8 @@ Nach der Erstellung eines Azure Cosmos-Kontos unter Ihrem Abonnement können Sie
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |
 | Maximale Speicherkapazität pro Container | Unbegrenzt |
 | Maximale Speicherkapazität pro Datenbank | Unbegrenzt |
-| Maximale Anlagengröße pro Konto (Anlagenfeature wird eingestellt) | 2 GB | 
+| Maximale Anlagengröße pro Konto (Anlagenfeature wird eingestellt) | 2 GB |
+| Mindestens erforderliche RUs pro 1 GB | 10 RU/s |
 
 > [!NOTE]
 > Informationen zu bewährten Methoden für die Verwaltung von Workloads, bei denen Partitionsschlüssel höhere Grenzwerte für Speicher oder Durchsatz erfordern, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
@@ -134,6 +135,10 @@ Cosmos DB verwendet einen HMAC zur Autorisierung. Sie können entweder einen Hau
 | Maximale Zeitabweichung für Tokenautorisierung| 15 Min. |
 
 Cosmos DB unterstützt die Ausführung von Triggern während Schreibvorgängen. Der Dienst unterstützt maximal einen vorangestellten und einen nachgestellten Trigger pro Schreibvorgang. 
+
+## <a name="autopilot-mode-limits"></a>Limits im Autopilot-Modus
+
+Im Artikel [Autopilot](provision-throughput-autopilot.md#autopilot-limits) finden Sie die Limits für Durchsatz und Speicher im Autopilot-Modus.
 
 ## <a name="sql-query-limits"></a>Grenzwerte für SQL-Abfragen
 

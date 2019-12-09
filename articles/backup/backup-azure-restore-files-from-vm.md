@@ -1,20 +1,14 @@
 ---
-title: 'Azure Backup: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung'
+title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Wiederherstellung auf Elementebene; Wiederherstellung von Dateien aus Azure-VM-Sicherung; Wiederherstellen von Dateien aus Azure-VM
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: dacurwin
-ms.openlocfilehash: c6b49e794011d915f8cd7b29e6317e80391f2675
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747372"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172860"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -66,17 +60,13 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
     Wenn Sie das Skript auf einem Computer mit eingeschränktem Zugriff ausführen, stellen Sie sicher, dass Zugriff auf Folgendes besteht:
 
     - download.microsoft.com
-    - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.com (für öffentliche Azure-Regionen)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (für Azure China 21Vianet)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (für Azure US Government)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (für Azure Deutschland)
+    - Recovery Service-URLs (Geoname bezieht sich auf die Region, in der sich der Recovery Services-Tresor befindet)       - <https://pod01-rec2.geo-name.backup.windowsazure.com> (für öffentliche Azure-Regionen)       - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (für Azure China 21Vianet)       - <https://pod01-rec2.geo-name.backup.windowsazure.us> (für Azure US Government)       - <https://pod01-rec2.geo-name.backup.windowsazure.de> (für Azure Deutschland)
     - Ausgehender Port 3260
 
 > [!Note]
 >
-> - Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. ContosoVM_wcus_12345678...<br><br>
-> - Die URL wäre: https:\//pod01-rec2.wcus.backup.windowsazure.com
+> - Für den Namen der heruntergeladenen Skriptdatei wird **geo-name** in die URL eingefügt. Beispiel: Der Name des heruntergeladenen Skripts beginnt mit \'VMname\'\_\'geoname\'_\'GUID\', z. B. ContosoVM_wcus_12345678
+> - Die URL wäre <https://pod01-rec2.wcus.backup.windowsazure.com>
 
    Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.
 
@@ -125,7 +115,7 @@ Führen Sie das ausführbare Skript stattdessen auf einem beliebigen anderen Com
 
 Wenn der geschützte virtuelle Azure-Computer „Windows-Speicherplätze“ verwendet, können Sie das ausführbare Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie das ausführbare Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
 
-### <a name="lvmraid-arrays"></a>LVM-/RAID-Arrays
+### <a name="lvmraid-arrays"></a>LVM/RAID-Arrays
 
 Unter Linux werden LVM- (Logical Volume Manager) bzw. softwaregestützte RAID-Arrays zum Verwalten logischer Volumes verwendet, die sich über mehrere Datenträger erstrecken. Wenn der geschützte virtuelle Linux-Computer mit LVM- bzw. RAID-Arrays arbeitet, kann das Skript nicht auf diesem virtuellen Computer ausgeführt werden. Führen Sie das Skript stattdessen auf einem anderen Computer mit kompatiblem Betriebssystem und Unterstützung des Dateisystems des geschützten Computers aus.
 
@@ -141,21 +131,21 @@ Hiermit werden die Volumegruppennamen unter einem physischen Volume aufgeführt.
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 Hiermit werden alle logischen Volumes mit Name und Pfad in einer Volumegruppe aufgeführt.
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 Hiermit werden die logischen Volumes im Pfad Ihrer Wahl bereitgestellt.
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Für RAID-Arrays
@@ -164,7 +154,7 @@ Mit dem folgenden Befehl werden Details zu allen RAID-Datenträgern angezeigt.
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  Der entsprechende RAID-Datenträger wird als `/dev/mdm/<RAID array name in the protected VM>` angezeigt.
@@ -173,7 +163,7 @@ Verwenden Sie den Befehl „mount“, wenn der RAID-Datenträger physische Volum
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 Wenn auf dem RAID-Laufwerk eine andere LVM konfiguriert ist, führen Sie das vorhergehende Verfahren für LVM-Partitionen durch, verwenden aber der Volumenamen anstelle des Namens des RAID-Datenträgers.
@@ -186,6 +176,7 @@ Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetrie
 
 |Serverbetriebssystem | Kompatibles Clientbetriebssystem  |
 | --------------- | ---- |
+| Windows Server 2019    | Windows 10 |
 | Windows Server 2016    | Windows 10 |
 | Windows Server 2012 R2 | Windows 8.1 |
 | Windows Server 2012    | Windows 8  |

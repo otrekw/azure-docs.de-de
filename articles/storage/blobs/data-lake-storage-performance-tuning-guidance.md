@@ -1,21 +1,21 @@
 ---
-title: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2 | Microsoft-Dokumentation
+title: Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung | Microsoft-Dokumentation
 description: Leitfaden für die Optimierung der Leistung von Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855568"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327945"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen2
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung
 
 Azure Data Lake Storage Gen2 unterstützt hohe Durchsätze für E/A-intensive Analysen und Datenverschiebungen.  In Data Lake Storage Gen2 ist es wichtig, den gesamten verfügbaren Durchsatz zu nutzen, um eine optimale Leistung zu erzielen. Der verfügbare Durchsatz bezieht sich hierbei auf die Menge an Daten, die pro Sekunde gelesen oder geschrieben werden können.  Dies wird erreicht, indem möglichst viele Lese- und Schreibvorgänge parallel ausgeführt werden.
 

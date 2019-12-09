@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486631"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280811"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App
 
@@ -60,17 +60,17 @@ Sehen Sie sich diese Beispieläußerungen an:
 |Ich möchte einen Computer bekommen, wie gehe ich dazu vor?|
 |Wann kann ich einen Computer bekommen?| 
 
-Für den zentralen Begriff (Computer) sind keine Varianten vorhanden. Verwenden Sie Alternativen wie „Desktopcomputer“, „Laptop“, „Arbeitsstation“ oder sogar nur „Maschine“. LUIS kann diese Synonyme auf intelligente Weise vom Kontext ableiten. Wenn Sie jedoch Äußerungen zum Trainieren erstellen, ist es besser, diese zu variieren.
+Für den zentralen Begriff („Computer“) sind keine Varianten vorhanden. Verwenden Sie Alternativen wie „Desktopcomputer“, „Laptop“, „Arbeitsstation“ oder sogar nur „Maschine“. LUIS kann diese Synonyme auf intelligente Weise vom Kontext ableiten. Wenn Sie jedoch Äußerungen zum Trainieren erstellen, ist es immer besser, diese zu variieren.
 
 ## <a name="example-utterances-in-each-intent"></a>Beispieläußerungen mit jeder Absicht
 
-Jede Absicht benötigt mindestens 15 Beispieläußerungen. Wenn Sie jedoch über eine Absicht verfügen, die keine Beispieläußerungen aufweist, können Sie LUIS nicht trainieren. Wenn Sie über eine Absicht mit nur einer oder sehr wenigen Beispieläußerungen verfügen, kann LUIS die Absicht nicht genau vorhersagen. 
+Jede Absicht benötigt mindestens 15 Beispieläußerungen. Wenn Sie jedoch über eine Absicht verfügen, die keine Beispieläußerungen aufweist, können Sie LUIS nicht trainieren. Wenn Sie über eine Absicht mit nur einer oder sehr wenigen Beispieläußerungen verfügen, sagt LUIS die Absicht möglicherweise nicht genau vorher. 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Hinzufügen kleiner Gruppen mit 15 Äußerungen pro Erstellungsiteration
 
 Fügen Sie nicht jeder Iteration des Modells große Mengen von Äußerungen hinzu. Fügen Sie Äußerungen in 15er Gruppen hinzu. [Trainieren](luis-how-to-train.md), [veröffentlichen](luis-how-to-publish-app.md) und [testen](luis-interactive-test.md) Sie anschließend erneut.  
 
-LUIS erstellt effektive Modelle mit sorgfältig vom LUIS-Modellersteller ausgewählten Äußerungen. Das Hinzufügen zu vieler Äußerungen ist nicht nützlich, da es zu Verwechslungen führen kann.  
+LUIS erstellt effektive Modelle mit sorgfältig vom LUIS-Modellersteller ausgewählten Äußerungen. Das Hinzufügen zu vieler Äußerungen ist nicht nützlich, da es zu Verwechslungen führen kann.
 
 Es ist besser, mit nur wenigen Äußerungen anzufangen und anschließend die [Endpunktäußerungen zu überprüfen](luis-how-to-review-endpoint-utterances.md), um die richtige Vorhersage der Absicht und Extraktion der Entität zu gewährleisten.
 
@@ -112,7 +112,7 @@ Interpunktion ist ein separates Token in LUIS. Eine Äußerung mit einem Punkt a
 
 Wenn die Interpunktion nicht normalisiert wird, ignoriert LUIS Satzzeichen standardmäßig nicht, da diese für einige Clientanwendungen unter Umständen wichtig sind. Stellen Sie sicher, dass Sie Beispieläußerungen mit und ohne Satzzeichen verwenden, damit beide Formate die gleichen relativen Ergebnisse zurückgeben. 
 
-Stellen Sie sicher, dass das Modell die Interpunktion entweder in den [Beispieläußerungen](luis-concept-utterance.md) (mit und ohne Interpunktion) oder in den [Mustern](luis-concept-patterns.md) behandelt, wo es mit der speziellen Syntax einfacher ist, die Interpunktion zu ignorieren: `I am applying for the {Job} position[.]`
+Stellen Sie sicher, dass das Modell die Interpunktion entweder in den Beispieläußerungen (mit und ohne Interpunktion) oder in den [Mustern](luis-concept-patterns.md) behandelt, wo es mit der speziellen Syntax einfacher ist, die Interpunktion zu ignorieren: `I am applying for the {Job} position[.]`
 
 Wenn die Interpunktion in Ihrer Clientanwendung keine besondere Bedeutung hat, sollten Sie erwägen, [Satzzeichen zu ignorieren](#utterance-normalization), indem Sie die Interpunktion normalisieren. 
 

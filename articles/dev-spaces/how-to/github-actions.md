@@ -1,21 +1,17 @@
 ---
 title: GitHub-Aktionen und Azure Kubernetes Service
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Überprüfen und testen Sie Änderungen einer Pull Request direkt im Azure Kubernetes Service mithilfe von GitHub-Aktionen und Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, GitHub-Aktionen, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 590d49f4c189ff48f20369d18b17e0f6e4a46fa2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571588"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483928"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub-Aktionen und Azure Kubernetes Service (Vorschau)
 
@@ -35,7 +31,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 * Ein Azure-Abonnement. Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen.
 * [Azure-CLI installiert][azure-cli-installed].
-* [Helm 2.13 oder höher installiert][helm-installed].
+* [Helm 2.13–2.16 installiert][helm-installed].
 * Ein GitHub-Konto mit [aktivierten GitHub-Aktionen][github-actions-beta-signup].
 * Ausführung der [Azure Dev Spaces-Beispielanwendung „Bike Sharing“](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) in einem AKS-Cluster.
 
@@ -145,7 +141,7 @@ Verwenden Sie `git push`, um den neuen Branch per Push in Ihr geforktes Reposito
 git push origin bike-images
 ```
 
-Navigieren Sie nach dem Pushen in GitHub zum geforkten Repository und erstellen Sie eine Pull Request mit dem *dev*-Wert in Ihrem geforkten Repository als Basisbranch im Vergleich zum *bike-images*-Branch.
+Navigieren Sie nach dem Pushen in GitHub zum geforkten Repository und erstellen Sie eine Pull Request mit dem *master*-Branch in Ihrem geforkten Repository als Basisbranch im Vergleich zum *bike-images*-Branch.
 
 Navigieren Sie nach dem Öffnen der Pull Request zur Registerkarte *Aktionen*. Vergewissern Sie sich, dass eine neue Aktion gestartet wurde und der *Bikes*-Dienst erstellt wird.
 
@@ -158,7 +154,7 @@ Nachdem die Aktion abgeschlossen wurde, wird basierend auf den Änderungen in de
 
 Navigieren Sie zum Dienst *bikesharingweb*, indem Sie die URL im Kommentar öffnen. Wählen Sie *Aurelia Briggs (customer)* als Benutzer und dann ein zu mietendes Fahrrad aus. Vergewissern Sie sich, dass das Platzhalterbild für das Fahrrad nicht mehr angezeigt wird.
 
-Wenn Sie Ihre Änderungen im *dev*-Branch zusammenführen, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im übergeordneten Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist der übergeordnete Bereich *dev*. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
+Wenn Sie Ihre Änderungen im *master*-Branch in Ihrem Fork zusammenführen, wird eine weitere Aktion ausgeführt, um die gesamte Anwendung im übergeordneten Entwicklungsbereich neu zu erstellen und auszuführen. In diesem Beispiel ist der übergeordnete Bereich *dev*. Diese Aktion wird in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml] konfiguriert.
 
 ## <a name="clean-up-your-azure-resources"></a>Bereinigen Ihrer Azure-Ressourcen
 
@@ -184,7 +180,7 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md

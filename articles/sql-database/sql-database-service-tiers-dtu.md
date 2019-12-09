@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 09/06/2019
-ms.openlocfilehash: 6d4c9dd08f2d00bc12f041748cc78363c9abecbd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/26/2019
+ms.openlocfilehash: 6dee7642ac7ac0544db5b88981483bd1ea0f745e
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822517"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539312"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
@@ -43,6 +43,12 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 |In-Memory-OLTP|–|–|Unterstützt|
 |||||
 
+> [!IMPORTANT]
+> Die Dienstebenen „Basic“, „Standard S0“, „S1“ und „S2“ bieten weniger als einen virtuellen Kern (CPU).  Für CPU-intensive Workloads wird eine Dienstebene von S3 oder höher empfohlen. 
+>
+>Im Hinblick auf die Datenspeicherung werden die Dienstebenen „Basic“, „Standard S0“ und „S1“ in Standard-Seitenblobs platziert. Standard-Seitenblobs arbeiten mit HDD-basierten Speichermedien und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
+>
+
 > [!NOTE]
 > Sie können eine kostenlose Azure SQL-Datenbank mit dem Diensttarif „Basic“ in Verbindung mit einem kostenlosen Azure-Konto erhalten, um Azure zu erkunden. Weitere Informationen finden Sie unter [Mit dem kostenlosen Azure-Konto eine verwaltete Clouddatenbank erstellen](https://azure.microsoft.com/free/services/sql-database/).
 
@@ -52,7 +58,7 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: |
-| Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
+| Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
 | Maximale DTU-Anzahl | 5 | 3000 | 4000 | 
 |||||
 
@@ -63,7 +69,7 @@ Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten
 
 | | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: |
-| Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
+| Maximale Speichergröße pro Datenbank  | 2 GB | 1 TB | 1 TB |
 | Maximale Speichergröße pro Pool | 156 GB | 4 TB | 4 TB |
 | Maximale Anzahl von eDTUs pro Datenbank | 5 | 3000 | 4000 |
 | Maximale Anzahl von eDTUs pro Pool | 1600 | 3000 | 4000 |

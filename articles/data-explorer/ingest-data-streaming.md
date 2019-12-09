@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 712273ddfb8b6f781627e2cc7915a1f538f57b4d
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4f9804ed0e7d6c83a4f6fc732f836fcecce1c2e7
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090631"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74548337"
 ---
 # <a name="streaming-ingestion-preview"></a>Streamingerfassung (Vorschauversion)
 
@@ -73,8 +73,7 @@ Es werden zwei Streamingerfassungstypen unterstützt:
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Leistung und Kapazität der Streamingerfassung werden für größere virtuelle Computer und Cluster skaliert. Für einen einzelnen D14-Knoten wird eine Last von bis zu 150 Anforderungen pro Sekunde empfohlen.
-* Aktuell werden nur SKUs mit acht und 16 Kernen (D13, D14, L8 und L16) unterstützt.
+* Leistung und Kapazität der Streamingerfassung werden für größere virtuelle Computer und Cluster skaliert. Gleichzeitige Erfassungen sind auf 6 Erfassungen pro Kern beschränkt. Beispielsweise besteht die maximale unterstützte Last bei 16-Kern-SKUs (z.B. D14 und L16) aus 96 gleichzeitigen Erfassungen. Bei 2-Kern-SKUs (z.B. D11) besteht die maximale unterstützte Last aus 12 gleichzeitigen Erfassungen.
 * Die Datengröße pro Erfassungsanforderung ist auf 4 MB beschränkt.
 * Schemaaktualisierungen wie etwa die Erstellung und Änderung von Tabellen und Erfassungszuordnungen können für den Streamingerfassungsdienst bis zu fünf Minuten dauern.
 * Wenn die Streamingerfassung in einem Cluster aktiviert wird, wird ein Teil des lokalen SSD-Datenträgers der Clustercomputer für Streamingerfassungsdaten genutzt, wodurch sich der verfügbare Speicherplatz für den aktiven Cache verringert. Dies gilt auch, wenn gar keine Daten per Streaming erfasst werden.

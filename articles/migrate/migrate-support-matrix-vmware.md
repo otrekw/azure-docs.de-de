@@ -1,19 +1,18 @@
 ---
-title: Azure Migrate-Matrix für die VMware-Bewertung und -Migration
-description: Hier finden Sie eine Zusammenfassung der Supporteinstellungen und -einschränkungen für die Bewertung und Migration von VMware-VMs zu Azure mit dem Azure Migrate-Dienst.
-services: backup
+title: Unterstützung für VMware-Bewertung und Migration in Azure Migrate
+description: Informationen zur Unterstützung für VMware-Bewertung/Migration in Azure Migrate
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838919"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196277"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Unterstützungsmatrix für die VMware-Bewertung und -Migration
 
@@ -79,7 +78,13 @@ In dieser Tabelle sind die Unterstützung und Einschränkungen der Bewertung fü
 
 ## <a name="assessment-vcenter-server-permissions"></a>vCenter Server-Berechtigungen für die Bewertung
 
-Für die Bewertung wird ein schreibgeschütztes Konto benötigt, um auf vCenter Server zugreifen zu können.
+Azure Migrate muss auf die vCenter Server-Instanz zugreifen, um VMs für die Bewertung und die Migration ohne Agent zu ermitteln.
+
+- Wenn Sie Anwendungen ermitteln oder Abhängigkeiten ohne Agent visualisieren möchten, erstellen Sie ein vCenter Server-Konto mit Lesezugriff sowie den Berechtigungen **Virtuelle Computer** > **Gastvorgänge**.
+
+  ![Berechtigungen des vCenter Server-Kontos](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- Falls Sie keine Anwendungsermittlung und keine Abhängigkeitsvisualisierung ohne Agent durchführen möchten, richten Sie ein schreibgeschütztes Konto für die vCenter Server-Instanz ein.
 
 ## <a name="assessment-appliance-requirements"></a>Anforderungen an die Appliances für die Bewertung
 
@@ -324,7 +329,7 @@ Herunterladen und Installieren in Azure Migrate | Wenn Sie die Appliance install
 **Unabhängige Datenträger** | Unterstützt.
 **Pass-Through-Datenträger** | Unterstützt.
 **NFS** | NFS-Volumes, die als Volumes auf den VMs bereitgestellt sind, werden nicht repliziert.
-iSCSI-Ziele | Virtuelle Computer mit iSCSI-Zielen werden bei der Migration ohne Agent nicht unterstützt.
+**iSCSI-Ziele** | Virtuelle Computer mit iSCSI-Zielen werden bei der Migration ohne Agent nicht unterstützt.
 **Multipfad-E/A** | Nicht unterstützt.
 **Storage vMotion** | Unterstützt
 **Kombinierte Netzwerkadapter** | Nicht unterstützt.

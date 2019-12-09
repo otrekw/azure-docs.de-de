@@ -1,17 +1,19 @@
 ---
-title: Einrichten einer Senkentransformation im Mappingdatenfluss-Feature von Azure Data Factory
+title: Einrichten einer Senkentransformation im Feature „Mappingdatenfluss“
 description: Hier erfahren Sie, wie Sie im Mappingdatenfluss eine Senkentransformation einrichten.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 707c0e93b88f34d4663d3dbe20bb2e9e4991a332
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519328"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217924"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Senkentransformation für einen Datenfluss
 
@@ -28,7 +30,7 @@ Wenn alle eingehenden Felder an diese Senke weitergeleitet werden sollen, aktivi
 ## <a name="output"></a>Output 
 Für Senken des Typs Azure Blob Storage oder Data Lake Storage geben Sie die transformierten Daten in einen Ordner aus. Spark generiert partitionierte Ausgabedatendateien basierend auf dem Partitionsschema, das in der Senkentransformation verwendet wird. 
 
-Sie können das Partitionsschema auf der Registerkarte **Optimieren** einrichten. Wenn Sie Ihre Ausgabe mit Data Factory in einer einzelnen Datei zusammenführen möchten, wählen Sie **Einzelne Partition** aus.
+Sie können das Partitionsschema auf der Registerkarte **Optimieren** einrichten. Wenn Sie Ihre Ausgabe mit Data Factory in einer einzelnen Datei zusammenführen möchten, wählen Sie **Einzelne Partition** aus. Wenn Sie partitionierte Ordner verwalten oder erstellen möchten, verwenden Sie **Schlüsselpartitionierung**, und legen Sie die Schlüssel fest, die Sie für partitionierte Ordnerstrukturen verwenden möchten.
 
 ![Optionen auf der Registerkarte „Optimieren“](media/data-flow/opt001.png "Senkenoptionen")
 
