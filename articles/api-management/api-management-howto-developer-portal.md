@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2b69fdd7abefca360433fc9fb090569cba23febe
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011479"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454387"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Azure API Management-Entwicklerportal: Übersicht
 
@@ -26,8 +26,6 @@ Das Entwicklerportal ist eine automatisch generierte, vollständig anpassbare We
 In diesem Artikel werden die Unterschiede zwischen selbstgehosteten und verwalteten Versionen des Entwicklerportals in API Management beschrieben. Außerdem wird die Architektur erläutert, und es werden Antworten auf häufig gestellte Fragen bereitgestellt.
 
 > [!WARNING]
-> Zurzeit erfolgt das Rollout des neuen Entwicklerportals in die API Management-Dienste.
-> Wenn Ihr Dienst neu erstellt wurde oder es sich um einen Dienst der Entwicklerebene handelt, sollten Sie bereits über die neueste Version verfügen. Andernfalls können Probleme auftreten (z. B. mit der Veröffentlichungsfunktion). Der Abschluss der Featurebereitstellung ist für den 22. November 2019 geplant.
 >
 > Erfahren Sie, wie Sie von der Vorschauversion zur allgemein verfügbaren Version des neuen Entwicklerportals [migrieren](#preview-to-ga) können.
 
@@ -67,7 +65,7 @@ Die Portalkomponenten können logisch in zwei Kategorien unterteilt werden: *Cod
 
 *API Management-Inhalte* umfassen Entitäten wie APIs, Vorgänge, Produkte und Abonnements.
 
-Das Portal basiert auf einem angepassten Fork des [Paperbits-Frameworks](https://paperbits.io/). Die ursprüngliche Paperbits-Funktionalität wurde erweitert, um für API Management spezifische Widgets (z.B. eine Liste von APIs, eine Liste von Produkten) und einen Connector zum API Management-Dienst zum Speichern und Abrufen von Inhalten bereitzustellen.
+Das Portal basiert auf einem angepassten Fork des [Paperbits-Frameworks](https://paperbits.io/). Die ursprüngliche Paperbits-Funktionalität wurde erweitert, um für API Management spezifische Widgets (etwa eine Liste mit APIs oder Produkten) und einen API Management-Dienstconnector zum Speichern und Abrufen von Inhalten bereitzustellen.
 
 ## <a name="faq"></a> Häufig gestellte Fragen
 
@@ -95,6 +93,8 @@ Die Portale sind nicht kompatibel, und Sie müssen den Inhalt manuell migrieren.
 
 Das neue Entwicklerportal unterstützt keine *Anwendungen* und *Issues*. Wenn Sie *Issues* im alten Portal verwendet haben und diese im neuen Portal benötigen, posten Sie einen Kommentar in [einem dedizierten GitHub-Issue](https://github.com/Azure/api-management-developer-portal/issues/122).
 
+Die Authentifizierung mit OAuth in der interaktiven Entwicklerkonsole wird noch nicht unterstützt. Sie können den Fortschritt anhand des [GitHub-Problems](https://github.com/Azure/api-management-developer-portal/issues/208) verfolgen.
+
 ### <a name="has-the-old-portal-been-deprecated"></a>Wurde das alte Portal eingestellt?
 
 Die alten Entwickler- und Herausgeberportale sind nun *Legacyfeatures*. Sie erhalten nur noch Sicherheitsupdates. Neue Features werden nur im neuen Entwicklerportal implementiert.
@@ -111,13 +111,31 @@ Die APIs sind im [Wiki-Abschnitt des GitHub-Repositorys][2] dokumentiert. Diese 
 
 Nein.
 
-### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-managed-portal-dependencies"></a>Muss ich zusätzliche VNET-Konnektivität für die Abhängigkeiten des verwalteten Portals aktivieren?
+### <a name="do-i-need-to-enable-additional-vnet-connectivity-for-the-new-managed-portal-dependencies"></a>Benötige ich zusätzliche VNET-Konnektivität für die neuen Abhängigkeiten des verwalteten Portals?
 
-Nein.
+In den meisten Fällen nicht.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Beim Verwenden der interaktiven Konsole erhalte ich einen CORS-Fehler. Wie sollte ich vorgehen?
+Wenn sich Ihr API Management-Dienst in einem internen VNET befindet, kann nur innerhalb des Netzwerks auf Ihr Entwicklerportal zugegriffen werden. Der Hostname des Verwaltungsendpunkts muss über den Computer, mit dem Sie auf die Verwaltungsschnittstelle des Portals zugreifen, zur internen VIP des Diensts aufgelöst werden. Vergewissern Sie sich, dass der Verwaltungsendpunkt im DNS registriert ist. Ist die Konfiguration fehlerhaft, wird ein Fehler angezeigt: `Unable to start the portal. See if settings are specified correctly in the configuration (...)`.
 
-Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Browser. Sie können das CORS-Problem beheben, indem Sie [eine CORS-Richtlinie](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) für Ihre API(s) hinzufügen. Sie können alle Parameter manuell angeben oder Platzhalterwerte (`*`) verwenden. Beispiel:
+### <a name="i-have-assigned-a-custom-api-management-domain-and-the-published-portal-doesnt-work"></a>Ich habe eine benutzerdefinierte API Management-Domäne zugewiesen, und das veröffentlichte Portal funktioniert nicht.
+
+Nachdem Sie die Domäne aktualisiert haben, müssen Sie [das Portal erneut veröffentlichen](api-management-howto-developer-portal-customize.md#publish), damit die Änderungen wirksam werden.
+
+### <a name="i-have-added-an-identity-provider-and-i-cant-see-it-in-the-portal"></a>Ich habe einen Identitätsanbieter hinzugefügt, er wird im Portal aber nicht angezeigt.
+
+Nachdem Sie einen Identitätsanbieter (beispielsweise AAD oder AAD B2C) konfiguriert haben, müssen Sie [das Portal erneut veröffentlichen](api-management-howto-developer-portal-customize.md#publish), damit die Änderungen wirksam werden.
+
+### <a name="i-have-set-up-delegation-and-the-portal-doesnt-use-it"></a>Ich habe die Delegierung eingerichtet, sie wird vom Portal aber nicht verwendet.
+
+Nachdem Sie die Delegierung eingerichtet haben, müssen Sie [das Portal erneut veröffentlichen](api-management-howto-developer-portal-customize.md#publish), damit die Änderungen wirksam werden.
+
+### <a name="my-other-api-management-configuration-changes-havent-been-propagated-in-the-developer-portal"></a>Meine anderen API Management-Konfigurationsänderungen wurden nicht an das Entwicklerportal weitergegeben.
+
+Bei den meisten Konfigurationsänderungen (beispielsweise für das VNET, für die Anmeldung und für Produktbedingungen) ist eine [erneute Veröffentlichung des Portals](api-management-howto-developer-portal-customize.md#publish) erforderlich.
+
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console"></a>Beim Verwenden der interaktiven Konsole erhalte ich einen CORS-Fehler.
+
+Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Browser. Sie können das CORS-Problem beheben, indem Sie [eine CORS-Richtlinie](api-management-cross-domain-policies.md#CORS) für Ihre API(s) hinzufügen. Sie können alle Parameter manuell angeben oder Platzhalterwerte (`*`) verwenden. Beispiel:
 
 ```XML
 <cors>
@@ -142,6 +160,54 @@ Die interaktive Konsole sendet eine clientseitige API-Anforderung über den Brow
     </expose-headers>
 </cors>
 ```
+
+> [!NOTE]
+> 
+> Wenn Sie die CORS-Richtlinie nicht auf der API-Ebene, sondern auf der Produktebene anwenden und Ihre API die Abonnementschlüsselauthentifizierung über einen Header verwendet, funktioniert Ihre Konsole nicht.
+>
+> Der Browser gibt automatisch eine HTTP-Anforderung vom Typ „OPTIONS“ aus, die keinen Header mit dem Abonnementschlüssel enthält. Aufgrund des fehlenden Abonnementschlüssels kann API Management den OPTIONS-Aufruf keinem Produkt zuordnen und somit die CORS-Richtlinie nicht anwenden.
+>
+> Zur Umgehung dieses Problems können Sie den Abonnementschlüssel in einem Abfrageparameter übergeben.
+
+### <a name="what-permissions-do-i-need-to-edit-the-developer-portal"></a>Welche Berechtigungen sind zum Bearbeiten des Entwicklerportals erforderlich?
+
+Sollte beim Öffnen des Portals im Verwaltungsmodus der Fehler `Oops. Something went wrong. Please try again later.` angezeigt werden, verfügen Sie möglicherweise nicht über die erforderlichen Berechtigungen (RBAC).
+
+Bei den Legacyportalen war die Berechtigung `Microsoft.ApiManagement/service/getssotoken/action` auf der Dienstebene (`/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>`) erforderlich, um dem Benutzer Administratorzugriff auf die Portale zu gewähren. Für das neue Portal ist die Berechtigung `Microsoft.ApiManagement/service/users/token/action` auf der Ebene `/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1` erforderlich.
+
+Sie können das folgende PowerShell-Skript verwenden, um eine Rolle mit der erforderlichen Berechtigung zu erstellen. Vergessen Sie nicht, den Parameter `<subscription-id>` zu ändern. 
+
+```PowerShell
+#New Portals Admin Role 
+Import-Module Az 
+Connect-AzAccount 
+$contributorRole = Get-AzRoleDefinition "API Management Service Contributor" 
+$customRole = $contributorRole 
+$customRole.Id = $null
+$customRole.Name = "APIM New Portal Admin" 
+$customRole.Description = "This role gives the user ability to log in to the new Developer portal as administrator" 
+$customRole.Actions = "Microsoft.ApiManagement/service/users/token/action" 
+$customRole.IsCustom = $true 
+$customRole.AssignableScopes.Clear() 
+$customRole.AssignableScopes.Add('/subscriptions/<subscription-id>') 
+New-AzRoleDefinition -Role $customRole 
+```
+ 
+Nachdem die Rolle erstellt wurde, kann sie im Azure-Portal im Abschnitt **Zugriffssteuerung (IAM)** einem beliebigen Benutzer zugewiesen werden. Wenn Sie diese Rolle einem Benutzer zuweisen, wird die Berechtigung auf der Dienstebene zugewiesen. Der Benutzer kann SAS-Token im Namen *jedes beliebigen* Benutzers im Dienst generieren. Diese Rolle muss mindestens dem Administrator des Diensts zugewiesen werden. Der folgende PowerShell-Befehl zeigt, wie Sie die Rolle dem Benutzer `user1` auf der niedrigsten Ebene zuweisen, um dem Benutzer keine unnötigen Berechtigungen zu erteilen: 
+
+```PowerShell
+New-AzRoleAssignment -SignInName "user1@contoso.com" -RoleDefinitionName "APIM New Portal Admin" -Scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.ApiManagement/service/<apim-service-name>/users/1" 
+```
+
+Nach Erteilung der Berechtigungen muss sich der betreffende Benutzer abmelden und erneut beim Azure-Portal anmelden, damit die neuen Berechtigungen wirksam werden.
+
+### <a name="im-seeing-the-unable-to-start-the-portal-see-if-settings-are-specified-correctly--error"></a>Der Fehler `Unable to start the portal. See if settings are specified correctly (...)` wird angezeigt.
+
+Dieser Fehler wird angezeigt, wenn ein Aufruf vom Typ `GET` für `https://<management-endpoint-hostname>/subscriptions/xxx/resourceGroups/xxx/providers/Microsoft.ApiManagement/service/xxx/contentTypes/document/contentItems/configuration?api-version=2018-06-01-preview` nicht erfolgreich war. Der Aufruf wird vom Browser über die Verwaltungsschnittstelle des Portals ausgegeben.
+
+Wenn sich Ihr API Management-Dienst in einem VNET befindet, lesen Sie weiter oben die Frage zur VNET-Konnektivität.
+
+Der Aufruffehler kann auch auf ein SSL-Zertifikat zurückzuführen sein, das einer benutzerdefinierten Domäne zugewiesen ist und dem der Browser nicht vertraut. Sie können die benutzerdefinierte Domäne des Verwaltungsendpunkts entfernen. API Management greift daraufhin auf den Standardendpunkt mit einem vertrauenswürdigen Zertifikat zurück.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

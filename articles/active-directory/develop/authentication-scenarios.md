@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927117"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167803"
 ---
 # <a name="authentication-basics"></a>Authentifizierungsgrundlagen
 
@@ -148,7 +148,7 @@ Dieses Attribut bewirkt, dass für ASP.NET überprüft wird, ob ein Sitzungscook
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Delegierung der Anmeldung an Azure AD und Abruf eines Tokens durch die Web-App
 
 Die Benutzerauthentifizierung erfolgt über den Browser. Für das OpenID-Protokoll werden die üblichen HTTP-Protokollnachrichten verwendet.
-- Die Web-App sendet „HTTP 202 (Umleitung)“ an den Browser, um Azure AD verwenden zu können.
+- Die Web-App sendet „HTTP 302 (Umleitung)“ an den Browser, um Azure AD verwenden zu können.
 - Nachdem der Benutzer authentifiziert wurde, sendet Azure AD das Token an die Web-App, indem eine Umleitung über den Browser genutzt wird.
 - Die Umleitung durch die Web-App erfolgt in Form eines Umleitungs-URIs. Dieser Umleitungs-URI wird unter dem Azure AD-Anwendungsobjekt registriert. Es kann mehrere Umleitungs-URIs geben, weil die Anwendung ggf. unter mehreren URLs bereitgestellt wird. Daher muss die Web-App auch den zu verwendenden Umleitungs-URI angeben.
 - Azure AD überprüft, ob der von der Web-App gesendete Umleitungs-URI einer der registrierten URIs für die App ist.
@@ -159,7 +159,7 @@ Der oben beschriebene Ablauf gilt mit geringfügigen Abweichungen auch für Desk
 
 Für Desktop- und mobile Anwendungen kann für die Authentifizierung ein eingebettetes Websteuerelement oder ein Systembrowser verwendet werden. Im folgenden Diagramm ist dargestellt, wie eine Desktop- oder mobile App die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) verwendet, um Zugriffstoken abzurufen und Web-APIs aufzurufen.
 
-![Darstellung einer Desktop-App](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![Darstellung einer Desktop-App](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 Für die MSAL wird ein Browser genutzt, um Token abzurufen, und wie bei Web-Apps wird die Authentifizierung an Azure AD delegiert.
 

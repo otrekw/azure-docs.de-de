@@ -1,18 +1,14 @@
 ---
-title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer mit Azure Backup
+title: Verwalten und Überwachen von SQL Server-Datenbanken auf einem virtuellen Azure-Computer
 description: In diesem Artikel wird beschrieben, wie auf einer Azure-VM ausgeführte SQL Server-Datenbanken verwaltet und überwacht werden.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5ef4ca3f6cbf45ac67bad6531926a7de54cd2012
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4daf068e97a08d1a611ef64cb64569cacd5d7420
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934807"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172158"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>Verwalten und Überwachen gesicherter SQL Server-Datenbanken
 
@@ -31,7 +27,6 @@ Azure Backup zeigt alle manuell ausgelösten Aufträge im Portal **Sicherungsauf
 >
 
 Ausführliche Informationen zu Überwachungsszenarios finden Sie unter [Monitoring in the Azure portal](backup-azure-monitoring-built-in-monitor.md) (Überwachung im Azure-Portal) und [Monitoring using Azure Monitor](backup-azure-monitoring-use-azuremonitor.md) (Überwachung mithilfe von Azure Monitor).  
-
 
 ## <a name="view-backup-alerts"></a>Anzeigen von Sicherungswarnungen
 
@@ -57,14 +52,14 @@ So überwachen Sie Datenbanksicherungswarnungen:
 
 Sie können die Sicherung einer SQL Server-Datenbank auf verschiedene Arten beenden:
 
-* Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte
-* Beenden aller zukünftigen Sicherungsaufträge und Beibehalten der Wiederherstellungspunkte.
+- Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte
+- Beenden aller zukünftigen Sicherungsaufträge und Beibehalten der Wiederherstellungspunkte.
 
 Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachten:
 
-* Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die Bereinigung endet mit der Beendung des Schutzes unter Beibehaltung der Daten.
-* Ihnen werden die geschützte Instanz und der verbrauchte Speicher in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/).
-* Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf.
+- Alle Wiederherstellungspunkte werden unbegrenzt beibehalten, und die Bereinigung endet mit der Beendung des Schutzes unter Beibehaltung der Daten.
+- Ihnen werden die geschützte Instanz und der verbrauchte Speicher in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/).
+- Wenn Sie eine Datenquelle löschen, ohne die Sicherungen zu beenden, treten bei neuen Sicherungen Fehler auf.
 
 Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
@@ -82,22 +77,20 @@ Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
     ![Auswählen von „Sicherung beenden“](./media/backup-azure-sql-database/stop-db-button.png)
 
-
 5. Wählen Sie im Menü **Sicherung beenden** aus, ob Daten beibehalten oder gelöscht werden sollen. Geben Sie bei Bedarf einen Grund und einen Kommentar ein.
 
     ![Beibehalten oder Löschen von Daten im Menü „Sicherung beenden“](./media/backup-azure-sql-database/stop-backup-button.png)
 
 6. Wählen Sie **Sicherung beenden** aus.
 
-
 > [!NOTE]
 >
 >Weitere Informationen zur Option zum Löschen von Daten finden Sie im folgenden FAQ:
->* [Was passiert mit den Sicherungen, wenn ich eine Datenbank von einer automatisch geschützten Instanz lösche?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
->* [Welches Verhalten ergibt sich, wenn ich den Vorgang „Sicherung beenden“ für eine automatisch geschützte Datenbank durchführe?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
+>
+>- [Was passiert mit den Sicherungen, wenn ich eine Datenbank von einer automatisch geschützten Instanz lösche?](faq-backup-sql-server.md#if-i-delete-a-database-from-an-autoprotected-instance-what-will-happen-to-the-backups)
+>- [Welches Verhalten ergibt sich, wenn ich den Vorgang „Sicherung beenden“ für eine automatisch geschützte Datenbank durchführe?](faq-backup-sql-server.md#if-i-change-the-name-of-the-database-after-it-has-been-protected-what-will-be-the-behavior)
 >
 >
-
 
 ## <a name="resume-protection-for-a-sql-database"></a>Fortsetzen des Schutzes für eine SQL-­Datenbank-Instanz
 
@@ -115,12 +108,13 @@ So setzen Sie den Schutz für eine SQL-­Datenbank fort:
 
 Sie können verschiedene Arten von bedarfsgesteuerten Sicherungen ausführen:
 
-* Vollständige Sicherung
-* Vollständige Kopiesicherung
-* Differenzielle Sicherung
-* Protokollsicherung
+- Vollständige Sicherung
+- Vollständige Kopiesicherung
+- Differenzielle Sicherung
+- Protokollsicherung
 
-Während Sie die Aufbewahrungsdauer für „Nur vollständige Sicherung kopieren“ angeben müssen, wird die Dauer für die vollständige Ad-hoc-Sicherung automatisch auf 45 Tage ab dem aktuellen Zeitpunkt festgelegt. <br/>
+Für eine vollständige Sicherung vom Typ „Nur kopieren“ muss eine Aufbewahrungsdauer angegeben werden. Für bedarfsgesteuerte vollständige Sicherungen wird die Aufbewahrungsdauer dagegen automatisch auf 45 Tage ab dem aktuellen Zeitpunkt festgelegt.
+
 Weitere Informationen finden Sie unter [Typen von SQL Server-Sicherungen](backup-architecture.md#sql-server-backup-types).
 
 ## <a name="unregister-a-sql-server-instance"></a>Registrierung einer SQL Server-Instanz aufheben
@@ -141,8 +135,8 @@ Heben Sie die Registrierung einer SQL Server-Instanz auf, nachdem Sie den Schutz
 
    ![Auswählen von „Löschen“](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
-
 ## <a name="modify-policy"></a>Ändern der Richtlinie
+
 Bearbeiten Sie die Richtlinie, um die Sicherungshäufigkeit oder die Aufbewahrungsdauer zu ändern.
 
 > [!NOTE]
@@ -154,22 +148,21 @@ Navigieren Sie im Tresordashboard zu **Verwalten** > **Sicherungsrichtlinien**, 
 
   ![Ändern der Sicherungsrichtlinie](./media/backup-azure-sql-database/modify-backup-policy-impact.png)
 
-Eine Richtlinienänderung wirkt sich auf alle zugeordneten Sicherungselemente aus und löst entsprechende Aufträge zum **Konfigurieren des Schutzes** aus. 
+Eine Richtlinienänderung wirkt sich auf alle zugeordneten Sicherungselemente aus und löst entsprechende Aufträge zum **Konfigurieren des Schutzes** aus.
 
-#### <a name="inconsistent-policy"></a>Inkonsistente Richtlinie 
+### <a name="inconsistent-policy"></a>Inkonsistente Richtlinie
 
 Manchmal kann ein Vorgang zum Ändern einer Richtlinie zu einer **inkonsistenten** Richtlinienversion für einige Sicherungselemente führen. Dies geschieht, wenn der entsprechende Auftrag zum **Konfigurieren des Schutzes** für das Sicherungselement fehlschlägt, nachdem ein Vorgang zum Ändern der Richtlinie ausgelöst wurde. Es wird in der Ansicht „Sicherungselement“ folgendermaßen angezeigt:
- 
+
   ![Inkonsistente Richtlinie](./media/backup-azure-sql-database/inconsistent-policy.png)
 
 Sie können die Richtlinienversion für alle betroffenen Elemente mit einem Mausklick korrigieren:
 
   ![Korrigieren einer inkonsistenten Richtlinie](./media/backup-azure-sql-database/fix-inconsistent-policy.png)
- 
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>Erneutes Registrieren einer Erweiterung auf der SQL Server-VM
 
-Manchmal kann die Workload-Erweiterung auf der VM aus irgendeinem Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Bei der **Neuregistrierung** wird die Workloadsicherungserweiterung erneut auf der VM installiert, damit die Vorgänge fortgesetzt werden können.  <br>
+Manchmal kann die Workload-Erweiterung auf der VM aus irgendeinem Grund beeinträchtigt werden. In solchen Fällen schlagen alle auf der VM ausgelösten Vorgänge fehl. Möglicherweise müssen Sie dann die Erweiterung erneut auf der VM registrieren. Bei der **Neuregistrierung** wird die Workloadsicherungserweiterung erneut auf der VM installiert, damit die Vorgänge fortgesetzt werden können.
 
 Verwenden Sie diese Option mit Vorsicht. Wenn dieser Vorgang auf einer VM mit bereits fehlerfreier Erweiterung ausgelöst wird, wird die Erweiterung dadurch neu gestartet. Dies kann dazu führen, dass alle in Bearbeitung befindlichen Aufträge fehlschlagen. Deshalb sollten Sie vor dem Auslösen der erneuten Registrierung überprüfen, ob ein oder mehrere [Symptome](backup-sql-server-azure-troubleshoot.md#re-registration-failures) vorhanden sind.
 

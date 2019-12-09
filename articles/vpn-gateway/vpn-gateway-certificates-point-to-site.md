@@ -1,5 +1,6 @@
 ---
-title: 'Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen: PowerShell: Azure | Microsoft-Dokumentation'
+title: 'Generieren und Exportieren von Zertifikaten für P2S: PowerShell'
+titleSuffix: Azure VPN Gateway
 description: Hier erhalten Sie Informationen zum Erstellen selbstsignierter Stammzertifikate, Exportieren des öffentlichen Schlüssels und Generieren von Clientzertifikaten mit PowerShell unter Windows 10 oder Windows Server 2016.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f7d4f71853e1640146a38fb39384c20ca9553eb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285733"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151376"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell
 

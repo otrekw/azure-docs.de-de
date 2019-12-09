@@ -1,19 +1,15 @@
 ---
-title: 'Azure Backup: Wiederherstellen des Systemstatus auf einem Windows Server-Computer'
+title: Wiederherstellen des Systemstatus auf einem Windows Server-Computer
 description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Systemstatus aus einer Sicherung in Azure.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.author: dacurwin
-ms.openlocfilehash: beac49585239a1ecc15588a6c8160bc34c84c6ad
-ms.sourcegitcommit: d470d4e295bf29a4acf7836ece2f10dabe8e6db2
+ms.openlocfilehash: 8e256fbac0651b4c237c540151b3377927989d36
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/02/2019
-ms.locfileid: "70210318"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172818"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -25,8 +21,8 @@ In diesem Artikel wird erläutert, wie Sicherungen des Windows Server-Systemstat
 
 2. Wenden Sie die wiederhergestellten Systemstatusdateien auf Windows Server an.
 
-
 ## <a name="recover-system-state-files-to-the-same-server"></a>Wiederherstellen der Systemstatusdateien auf dem gleichen Server
+
 Die folgenden Schritte erläutern das Ausführen eines Rollbacks Ihrer Windows Server-Konfiguration zu einem früheren Zustand. Ein Rollback Ihrer Serverkonfiguration zu einem bekannten, stabilen Zustand kann sehr hilfreich sein. Mit den folgenden Schritten stellen Sie den Systemstatus des Servers aus einem Recovery Services-Tresor wieder her.
 
 1. Öffnen Sie das Snap-In **Microsoft Azure Backup**. Falls Sie nicht wissen, wo das Snap-In installiert wurde, können Sie den für **Microsoft Azure Backup** verwendeten Computer oder Server durchsuchen.
@@ -39,7 +35,7 @@ Die folgenden Schritte erläutern das Ausführen eines Rollbacks Ihrer Windows S
 
 3. Wählen Sie im Bereich **Erste Schritte** die Option **Dieser Server (`<server name>`)** , um die Daten auf demselben Server oder Computer wiederherzustellen, und klicken Sie auf **Weiter**.
 
-    ![Auswählen der Option „Dieser Server“ zum Wiederherstellen der Daten auf demselben Computer](./media/backup-azure-restore-system-state/samemachine.png)
+    ![Auswählen der Option „Dieser Server“ zum Wiederherstellen der Daten auf dem gleichen Computer](./media/backup-azure-restore-system-state/samemachine.png)
 
 4. Wählen Sie im Bereich **Wiederherstellungsmodus auswählen** die Option **Systemstatus** aus, und klicken Sie auf **Weiter**.
 
@@ -73,9 +69,9 @@ Wenn Windows Server beschädigt ist oder darauf nicht zugegriffen werden kann un
 
 In diesen Schritten wird folgende Terminologie verwendet:
 
-- *Quellcomputer* – Der ursprüngliche Computer, von dem die Sicherung erstellt wurde und der zurzeit nicht verfügbar ist.
-- *Zielcomputer* – Der Computer, auf dem die Daten wiederhergestellt werden.
-- *Beispieltresor* – Der Recovery Services-Tresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind. <br/>
+* *Quellcomputer* – Der ursprüngliche Computer, von dem die Sicherung erstellt wurde und der zurzeit nicht verfügbar ist.
+* *Zielcomputer* – Der Computer, auf dem die Daten wiederhergestellt werden.
+* *Beispieltresor* – Der Recovery Services-Tresor, bei dem der *Quellcomputer* und der *Zielcomputer* registriert sind. <br/>
 
 > [!NOTE]
 > Sicherungen von einem Computer können nicht auf einem Computer wiederhergestellt werden, auf dem eine frühere Version des Betriebssystems ausgeführt wird. Beispielsweise können Sicherungen von einem Windows Server 2016-Computer nicht unter Windows Server 2012 R2 wiederhergestellt werden. In umgekehrter Richtung ist dies jedoch möglich. Sie können Sicherungen von Windows Server 2012 R2 zum Wiederherstellen von Windows Server 2016 verwenden.
@@ -114,9 +110,6 @@ In diesen Schritten wird folgende Terminologie verwendet:
 12. Kopieren Sie das Verzeichnis *WindowsImageBackup* auf ein weniger wichtiges Volume des Servers (z.B. „D:\)“. Normalerweise ist das Windows-Betriebssystemvolume das wichtigste Volume.
 
 13. Um den Wiederherstellungsprozess abzuschließen, befolgen Sie die Schritte im folgenden Abschnitt zum [Anwenden der wiederhergestellten Systemstatusdateien auf Windows Server](#apply-restored-system-state-on-a-windows-server).
-
-
-
 
 ## <a name="apply-restored-system-state-on-a-windows-server"></a>Anwenden der wiederhergestellten Systemstatusdateien auf Windows Server
 
@@ -168,7 +161,6 @@ Sicherungen des Systemstatus umfassen auch Active Directory-Daten. Anhand der fo
 1. Starten Sie den Domänencontroller im Modus „Verzeichnisdienstwiederherstellung“ (Directory Services Restore Mode, DSRM) neu.
 2. Führen Sie die [hier](https://technet.microsoft.com/library/cc794755(v=ws.10).aspx) beschriebenen Schritte durch, um AD DS mithilfe von Cmdlets für die Windows Server-Sicherung wiederherzustellen.
 
-
 ## <a name="troubleshoot-failed-system-state-restore"></a>Wiederherstellen nach einer nicht erfolgreichen Problembehandlung des Systemstatus
 
 Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abgeschlossen wurde, verwenden Sie die Windows-Wiederherstellungsumgebung (Windows Recovery Environment, Windows RE), um Windows Server wiederherzustellen. In den folgenden Schritten wird die Wiederherstellung mit Win RE erläutert. Verwenden Sie diese Option nur, wenn Windows Server nach einer Wiederherstellung des Systemstatus nicht normal gestartet wird. Beim folgenden Prozess werden nicht zum System gehörende Daten gelöscht. Seien Sie deshalb äußerst vorsichtig.
@@ -192,6 +184,7 @@ Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abge
     ```cmd
     Wbadmin get versions -backuptarget:<Volume where WindowsImageBackup folder is copied>:
     ```
+
     ![Versionen der Systemstatussicherung abrufen](./media/backup-azure-restore-system-state/winre-4.png)
 
 6. Führen Sie den folgenden Befehl aus, um alle in der Sicherung verfügbaren Volumes abzurufen.
@@ -207,9 +200,9 @@ Wenn der vorherige Vorgang der Anwendung des Systemstatus nicht erfolgreich abge
     ```cmd
     Wbadmin start recovery -items:C: -itemtype:Volume -version:<Backupversion> -backuptarget:<backup target volume>
     ```
+
      ![Versionen der Systemstatussicherung abrufen](./media/backup-azure-restore-system-state/winre-6.png)
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Nachdem Sie nun Ihre Dateien und Ordner wiederhergestellt haben, können Sie [Ihre Sicherungen verwalten](backup-azure-manage-windows-server.md).

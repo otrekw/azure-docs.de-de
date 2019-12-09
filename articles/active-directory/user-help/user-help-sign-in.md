@@ -13,21 +13,21 @@ ms.date: 07/18/2019
 ms.author: lizross
 ms.custom: user-help
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c79e82680ae81137ee4164e88e62235f934565a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f595013d5404f0cbcb17a0d24d6395a84fa5b607
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028523"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266983"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Anmelden mit der zweistufige Überprüfung oder einer Sicherheitsinformation
 
-Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Authentifizierungsmethode bei Ihrem Konto anmelden.
+Nachdem Sie die zweistufige Überprüfung oder eine Sicherheitsinformation eingerichtet haben, können Sie sich mit der von Ihnen angegebenen Überprüfungsmethode bei Ihrem Konto anmelden.
 
 > [!Note]
-> Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Authentifizierungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
+> Wenn Sie noch die zweistufige Überprüfung verwenden, müssen Sie die Überprüfungsmethoden einrichten. Befolgen Sie dazu die Anweisungen im Artikel [Einrichten meines Kontos für die zweistufige Überprüfung](multi-factor-authentication-end-user-first-time.md).
 >
-> Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Authentifizierungsmethoden mithilfe der schrittweisen Anleitungen in folgenden Artikeln einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels](security-info-setup-security-key.md)</li></ul>
+> Wenn Ihr Administrator die Benutzeroberfläche für Sicherheitsinformationen aktiviert hat, müssen Sie Ihre Überprüfungsmethoden mithilfe der schrittweisen Anleitungen in folgenden Artikeln einrichten:<ul><li>[Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von SMS](security-info-setup-text-msg.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md)</li><li>[Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels](security-info-setup-security-key.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>Anmelden mithilfe einer Authenticator-App-Benachrichtigung auf dem Mobilgerät
 

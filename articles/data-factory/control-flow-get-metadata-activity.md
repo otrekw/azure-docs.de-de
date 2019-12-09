@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/26/2019
 ms.author: jingwang
-ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c62a7de1f16a3d7d286f48500117c256804c0f24
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679888"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546924"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
 
@@ -53,10 +53,12 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Me
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Dateisystem](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
 - Für Amazon S3 und Google Cloud Storage gilt `lastModified` für den Bucket und den Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für den Bucket und den Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
 - Für Azure Blob Storage gilt `lastModified` für den Container und das Blob, aber nicht für den virtuellen Ordner.
+- Der Filter `lastModified` gilt aktuell für untergeordnete Filterelemente, aber nicht für den angegebenen Ordner bzw. die angegebene Datei selbst.
+- Platzhalterfilter für Ordner/Dateien werden für die Aktivität „Metadaten abrufen" nicht unterstützt.
 
 **Relationale Datenbank**
 

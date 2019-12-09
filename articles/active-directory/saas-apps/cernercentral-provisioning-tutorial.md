@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Benutzerbereitstellung für Cerner Central – Azure AD'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen von Benutzern in einer Liste in Cerner Central konfigurieren.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61e88e0fe7e6eec5b3cdfd03755a186744b77b47
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e80373fa28f1ea24d6a2d5fc2c147bf81b2b279
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964205"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276526"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cerner Central für die automatische Benutzerbereitstellung
 

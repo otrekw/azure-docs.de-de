@@ -1,6 +1,6 @@
 ---
-title: Governance der Azure DevTest Labs-Infrastruktur
-description: Dieser Artikel enthält Anweisungen zur Governance der Azure DevTest Labs-Infrastruktur.
+title: Unternehmensrichtlinie und Compliance in Azure DevTest Labs
+description: Dieser Artikel enthält Hinweise zur Einhaltung der Unternehmensrichtlinie und der Compliance für die Azure DevTest Labs-Infrastruktur.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81ca2a90b1940d70e170cab3f8d18144a5d5e5a8
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127360"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560504"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Governance der Azure DevTest Labs-Infrastruktur – Unternehmensrichtlinie und Compliance
 Dieser Artikel enthält Hinweise zur Einhaltung der Unternehmensrichtlinie und der Compliance für die Azure DevTest Labs-Infrastruktur. 

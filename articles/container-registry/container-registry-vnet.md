@@ -1,19 +1,14 @@
 ---
-title: Beschränken des Zugriffs auf eine Azure-Containerregistrierung auf ein virtuelles Netzwerk
+title: Beschränken des Zugriffs mit einem virtuellen Netzwerk
 description: Erlauben Sie den Zugriff auf eine Azure-Containerregistrierung nur von Ressourcen in einem virtuellen Azure-Netzwerk oder von öffentlichen IP-Adressbereichen.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/01/2019
-ms.author: danlep
-ms.openlocfilehash: 3050a52da4d39657bd7b2fb38e235b9bd418faf4
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: a6b89b074c25ea0948597ede7e5681b100c7f429
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68619886"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454330"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>Beschränken des Zugriffs auf eine Azure-Containerregistrierung mithilfe eines virtuellen Azure-Netzwerks oder mit Firewallregeln
 
@@ -54,7 +49,7 @@ Wenn Sie stattdessen Zugriffsregeln für Ressourcen einrichten müssen, um von e
 
 ## <a name="about-network-rules-for-a-container-registry"></a>Informationen zu Netzwerkregeln für eine Containerregistrierung
 
-Eine Azure-Containerregistrierung akzeptiert standardmäßig Verbindungen über das Internet von Hosts in beliebigen Netzwerken. Mit einem virtuellen Netzwerk können Sie nur Azure-Ressourcen wie einem AKS-Cluster oder einem virtuellen Azure-Computer den sicheren Zugriff auf die Registrierung erlauben, ohne dass die Grenzen des Netzwerks überschritten werden. Sie können auch Firewallregeln für das Netzwerk konfigurieren, um bestimmte öffentliche Internet-IP-Adressbereiche auf die Whitelist zu setzen. 
+Eine Azure-Containerregistrierung akzeptiert standardmäßig Verbindungen über das Internet von Hosts in beliebigen Netzwerken. Mit einem virtuellen Netzwerk können Sie nur Azure-Ressourcen wie einem AKS-Cluster oder einem virtuellen Azure-Computer den sicheren Zugriff auf die Registrierung erlauben, ohne dass die Grenzen des Netzwerks überschritten werden. Sie können auch Firewallregeln für das Netzwerk konfigurieren, um nur bestimmte öffentliche Internet-IP-Adressbereiche zuzulassen. 
 
 Zum Beschränken des Zugriffs auf eine Registrierung müssen Sie zuerst die Standardaktion der Registrierung ändern, sodass die Registrierung alle Netzwerkverbindungen verweigert. Anschließend fügen Sie Netzwerkzugriffsregeln hinzu. Clients, denen mithilfe der Netzwerkregeln Zugriff gewährt wird, müssen sich weiterhin [bei der Containerregistrierung authentifizieren](https://docs.microsoft.com/azure/container-registry/container-registry-authentication) und für den Datenzugriff autorisiert sein.
 

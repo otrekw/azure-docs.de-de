@@ -1,5 +1,5 @@
 ---
-title: Probleme beim Konfigurieren des Kennworts für das einmalige Anmelden für Azure AD-Katalog-Apps | Microsoft-Dokumentation
+title: Probleme beim Konfigurieren des einmaligen Anmeldens (SSO) per Kennwort für eine Azure AD-Katalog-App
 description: Informationen zu den häufig auftretenden Problemen beim Konfigurieren des einmaligen Anmeldens per Kennwort für Anwendungen, die bereits im Azure AD-Anwendungskatalog aufgeführt sind
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381127"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274195"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine Azure AD-Kataloganwendung
 

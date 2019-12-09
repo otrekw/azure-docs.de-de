@@ -1,5 +1,5 @@
 ---
-title: Probleme beim Konfigurieren des einmaligen Anmeldens (SSO) per Kennwort für eine nicht im Katalog enthaltene Anwendung | Microsoft-Dokumentation
+title: Probleme beim Konfigurieren des einmaligen Anmeldens (SSO) per Kennwort für eine nicht im Katalog enthaltene App
 description: Allgemeine Probleme, die beim Konfigurieren des einmaligen Anmeldens (SSO) per Kennwort für nicht im Azure AD-Anwendungskatalog enthaltene benutzerdefinierte Apps auftreten.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24330dc874173ba1c6f15abb7b4caf9f23e2e00c
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ed8bafe7f5bc28cf37205107f8ab6dd5cdb4907c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67440352"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274144"
 ---
 # <a name="problems-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Probleme beim Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 

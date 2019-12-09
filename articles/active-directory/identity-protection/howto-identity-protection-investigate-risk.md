@@ -1,5 +1,5 @@
 ---
-title: Untersuchen von Risiken in Azure Active Directory Identity Protection
+title: Untersuchen von Risiken – Azure Active Directory Identity Protection
 description: Erfahren Sie, wie Sie riskante Benutzer, Erkennungen und Anmeldungen in Azure Active Directory Identity Protection untersuchen.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e04cadef1f6a4aee7d8f807fc7aaa999ba6da8d7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 27753d965949d3e677606111139a5d86ccf26dbf
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886741"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382124"
 ---
 # <a name="how-to-investigate-risk"></a>Anleitung: Untersuchen eines Risikos
 

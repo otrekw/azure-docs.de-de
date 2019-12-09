@@ -1,22 +1,22 @@
 ---
-title: VPN-Integration in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung – Azure Active Directory
+title: VPN mit Azure MFA unter Verwendung der NPS-Erweiterung – Azure Active Directory
 description: Integrieren Sie Ihre VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Microsoft Azure.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf841738296f0d23bec5d68a0ad1ca0401facfb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: fa0158b99d10b426efb02ca31cef2bc0053a976f
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68812392"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404689"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -244,7 +244,7 @@ In diesem Abschnitt konfigurieren Sie Ihren VPN-Server zur Verwendung der RADIUS
 
     b. Wählen Sie für **Gemeinsamer geheimer Schlüssel** die Schaltfläche **Ändern** aus, und geben Sie das gemeinsame geheime Kennwort ein, das Sie zuvor erstellt und notiert haben.
 
-    c. Geben Sie im Feld **„Timeout (Sekunden)“** den Wert **30** ein.  
+    c. Geben Sie im Feld **Timeout (Sekunden)** den Wert **30** ein.  
     Der Timeoutwert ist erforderlich, damit genügend Zeit für den Abschluss des zweiten Authentifizierungsfaktors bleibt.
 
     ![Fenster „RADIUS-Server hinzufügen“, in dem der Timeoutwert ausgewählt wird](./media/howto-mfa-nps-extension-vpn/image16.png)
@@ -302,7 +302,7 @@ Um diese Probleme zu beheben, ist die Untersuchung der Sicherheitsereignisprotok
 
 ## <a name="configure-multi-factor-authentication"></a>Konfigurieren der Multi-Factor Authentication
 
-Unterstützung für das Konfigurieren von Benutzern für die Multi-Factor Authentication finden Sie in den Artikeln [„Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung“](howto-mfa-getstarted.md#create-conditional-access-policy) und [„Einrichten meines Kontos für die zweistufige Überprüfung“](../user-help/multi-factor-authentication-end-user-first-time.md).
+Unterstützung beim Konfigurieren von Benutzern für Multi-Factor Authentication finden Sie in den Artikeln [Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung](howto-mfa-getstarted.md#create-conditional-access-policy) und [Einrichten meines Kontos für die zweistufige Überprüfung](../user-help/multi-factor-authentication-end-user-first-time.md).
 
 ## <a name="install-and-configure-the-nps-extension"></a>Installieren und Konfigurieren der NPS-Erweiterung
 

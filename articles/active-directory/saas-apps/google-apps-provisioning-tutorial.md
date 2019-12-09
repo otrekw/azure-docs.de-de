@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120325"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167864"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden die Schritte erläutert, die in G Suite und Azure Acti
 > [!NOTE]
 > Der G Suite-Connector wurde vor Kurzem im Oktober 2019 aktualisiert. An dem G Suite-Connector vorgenommene Änderungen umfassen Folgendes:
 - Unterstützung für zusätzliche G Suite-Benutzer- und -Gruppenattribute hinzugefügt. 
-- Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass dem entsprechen, was [hier](/azure/active-directory/manage-apps/customize-application-attributes)definiert ist.
+- Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass dem entsprechen, was [hier](https://developers.google.com/admin-sdk/directory)definiert ist.
 - Aktualisierte Standardattributzuordnungen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -129,6 +129,9 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 > [!TIP]
 > Sie können auch das SAML-basierte einmalige Anmelden für G Suite aktivieren. Befolgen Sie hierzu die Anweisungen unter [Tutorial: Azure Active Directory-Integration mit G Suite](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
+> [!NOTE]
+> Weitere Informationen über den Directory-API-Endpunkt von G Suite finden Sie unter [Directory-API](https://developers.google.com/admin-sdk/directory).
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für G Suite in Azure AD:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
@@ -196,15 +199,6 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in G Suite ausgeführt werden.
 
 Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
-
-> [!NOTE]
-> Eine weitere Option für die Automatisierung der Benutzerbereitstellung für G Suite ist die Verwendung von [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Diese Option stellt Ihre lokalen Active Directory-Identitäten für G Suite bereit.
-
-## <a name="common-issues"></a>Häufige Probleme
-* G Suite erfordert, dass alle bereitgestellten Benutzer aus überprüften Domänen stammen. Stellen Sie sicher, dass alle Benutzer, die Sie bereitstellen möchten, einen UPN aus einer überprüften Domäne in G Suite besitzen. Wenn sich ein Benutzer aus einer nicht verifizierten Domäne im Umfang der Bereitstellung befindet, wird in den [Bereitstellungsprotokollen ](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) ein Fehler wie „GoogleAppsInvalidDomain“ angezeigt. Sie können diese Fehler verhindern und sicherstellen, dass Benutzer aus nicht überprüften Domänen nicht im Umfang enthalten sind, indem Sie einen [Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) verwenden.
-    * Zielattribut: userPrincipalName
-    * Operator: REGEX MATCH oder NOT REGEX MATCH
-    * Wert: .*@domain.com
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

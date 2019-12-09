@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage
+title: Konfigurieren verwalteter Identitäten auf einem virtuellen Azure-Computer mithilfe einer Vorlage – Azure AD
 description: Ausführliche Anweisungen zum Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einer Azure-VM mithilfe einer Azure Resource Manager-Vorlage
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f5e04440f55c44a53b85aa4d3600e0d926424d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 74bbc596321b4882ef99104e045ee2da752b125a
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330001"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547199"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe einer Vorlage
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Resource Manager-Bere
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Wenn Sie nicht mit der Verwendung der Azure Resource Manager-Bereitstellungsvorlage vertraut sind, sehen Sie sich die [Übersicht](overview.md) an. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-it-work)** bewusst.
+- Wenn Sie nicht mit der Verwendung der Azure Resource Manager-Bereitstellungsvorlage vertraut sind, sehen Sie sich die [Übersicht](overview.md) an. **Machen Sie sich den [Unterschied zwischen einer vom System und einer vom Benutzer zugewiesenen verwalteten Identität](overview.md#how-does-the-managed-identities-for-azure-resources-work)** bewusst.
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 
 ## <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen

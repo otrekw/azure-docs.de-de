@@ -1,6 +1,6 @@
 ---
-title: Verwalten der Einstellungen für die zweistufige Überprüfung – Azure AD
-description: Erfahren Sie, wie Sie die Details Ihrer Methode für die Sicherheitsüberprüfung in Bezug auf die zweistufige Überprüfung ändern.
+title: Ändern der zweistufigen Überprüfungsmethode und der Einstellungen – Azure AD
+description: Auf der Seite „Zusätzliche Sicherheitsüberprüfung“ erfahren Sie, wie Sie die Sicherheitsüberprüfungsmethode und die Einstellungen für Ihr Geschäfts-, Schul- oder Unikonto ändern können.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.date: 08/06/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c402e0992a3a04d674477bc9dd19e0181fd6775
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f7fbc18d8141c44c2b0863547c33b5c5193e928b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805259"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231921"
 ---
-# <a name="manage-your-two-factor-verification-method-settings"></a>Verwalten der Einstellungen für die zweistufige Überprüfung
+# <a name="change-your-two-factor-verification-method-and-settings"></a>Ändern der zweistufigen Überprüfungsmethode und der Einstellungen
 
 Nachdem Sie Ihre Methoden für die Sicherheitsüberprüfung für Ihre Geschäfts-, Schul- oder Unikonto eingerichtet haben, können Sie alle zugehörigen Details aktualisieren. Folgendes ist möglich:
 

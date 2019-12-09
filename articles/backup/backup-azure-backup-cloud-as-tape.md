@@ -1,18 +1,14 @@
 ---
-title: Verwenden von Azure Backup als Ersatz für Ihre Bandinfrastruktur
+title: Ersetzen Ihrer Bandinfrastruktur
 description: Hier erfahren Sie, wie Azure Backup eine Semantik bereitstellt, die derjenigen von Bandsicherungen ähnelt, damit Sie Ihre Daten in Azure sichern und wiederherstellen können.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/30/2017
-ms.author: dacurwin
-ms.openlocfilehash: 2850fab3a5639673008a7433db48911ced832401
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 4659a4d6fcc7213f8323e23d59411680276fcb28
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091102"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173311"
 ---
 # <a name="move-your-long-term-storage-from-tape-to-the-azure-cloud"></a>Verschieben langfristiger Speicher von Bändern in die Azure-Cloud
 

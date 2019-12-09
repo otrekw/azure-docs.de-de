@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: fa3cd84978119a5858e63712b4d22c2ea89ea528
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9625870132d088bf1de6df06f05f0cac41a1e7fa
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470903"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144219"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurieren einer Linux-Java-App für Azure App Service
 
@@ -239,6 +239,24 @@ Befolgen Sie zunächst die Anweisungen zum [Gewähren des Zugriffs auf KeyVault 
 
 Um diese Geheimnisse in Ihre Spring- oder Tomcat-Konfigurationsdatei einzufügen, verwenden Sie die Syntax der Umgebungsvariablen (`${MY_ENV_VAR}`). Informationen zu Spring-Konfigurationsdateien finden Sie in dieser Dokumentation zu [externalisierten Konfigurationen](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
+### <a name="using-the-java-key-store"></a>Verwenden des Java-Keystores
+
+Standardmäßig werden alle öffentlichen oder privaten Zertifikate, die [in App Service Linux hochgeladen](../configure-ssl-certificate.md) wurden, beim Start des Containers in den Java-Keystore geladen. Das bedeutet, dass Ihre hochgeladenen Zertifikate beim Herstellen ausgehender TLS-Verbindungen im Verbindungskontext zur Verfügung stehen. Nach dem Hochladen Ihres Zertifikats müssen Sie Ihre App Service-Instanz neu starten, damit es in den Java-Keystore geladen wird.
+
+Sie können mit dem Java-Schlüsseltool interagieren oder Debuggingschritte ausführen, indem Sie eine [SSH-Verbindung](app-service-linux-ssh-support.md) mit Ihrer App Service-Instanz herstellen und den Befehl `keytool`ausführen. Eine Liste mit Befehlen finden Sie in der [Dokumentation des Schlüsseltools](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html). Die Zertifikate werden am Java-Standardspeicherort für die Keystore-Datei gespeichert: `$JAVA_HOME/jre/lib/security/cacerts`.
+
+Zur Verschlüsselung Ihrer JDBC-Verbindung sind möglicherweise zusätzliche Konfigurationsschritte erforderlich. Weitere Informationen finden Sie in der Dokumentation für den gewählten JDBC-Treiber.
+
+- [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
+- [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
+- [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
+
+#### <a name="manually-initialize-and-load-the-key-store"></a>Manuelles Initialisieren und Laden des Keystores
+
+Sie können den Keystore manuell initialisieren und Zertifikate manuell hinzufügen. Erstellen Sie die App-Einstellung `SKIP_JAVA_KEYSTORE_LOAD` mit dem Wert `1`, damit die Zertifikate nicht automatisch von App Service in den Keystore geladen werden. Alle öffentlichen Zertifikate, die über das Azure-Portal in App Service hochgeladen werden, werden unter `/var/ssl/certs/` gespeichert. Private Zertifikate werden unter `/var/ssl/private/` gespeichert.
+
+Weitere Informationen zur Keystore-API finden Sie in der [offiziellen Dokumentation](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
+
 ## <a name="configure-apm-platforms"></a>Konfigurieren von APM-Plattformen
 
 In diesem Abschnitt wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure App Service für Linux bereitgestellt werden, mit den Plattformen NewRelic und AppDynamics für die Überwachung der Anwendungsleistung (Application Performance Monitoring, APM) verbinden.
@@ -345,40 +363,79 @@ Legen Sie als Nächstes fest, ob die Datenquelle nur für eine einzelne Anwendun
 
 #### <a name="shared-server-level-resources"></a>Gemeinsam verwendete Ressourcen auf Serverebene
 
-1. Kopieren Sie den Inhalt von */usr/local/tomcat/conf* über SSH in */home/tomcat/conf* in Ihrer Linux-Instanz von App Service, wenn dort noch keine Konfiguration vorliegt.
+Wenn Sie eine gemeinsam genutzte Datenquelle auf Serverebene hinzufügen, müssen Sie die Datei „server.xml“ von Tomcat bearbeiten. Laden Sie zunächst ein [Startskript](app-service-linux-faq.md#built-in-images) hoch, und legen Sie unter **Konfiguration** > **Startbefehl** den Pfad des Skripts fest. Das Startskript kann per [FTP](../deploy-ftp.md) hochgeladen werden.
 
-    ```bash
-    mkdir -p /home/tomcat
-    cp -a /usr/local/tomcat/conf /home/tomcat/conf
-    ```
+Ihr Startskript führt eine [XSL-Transformation](https://www.w3schools.com/xml/xsl_intro.asp) für die Datei „server.xml“ durch und gibt die resultierende XML-Datei unter `/usr/local/tomcat/conf/server.xml` aus. Das Startskript muss „libxslt“ per APK installieren. Die XSL-Datei und das Startskript können per FTP hochgeladen werden. Im Anschluss finden Sie ein Beispiel für ein Startskript:
 
-2. Fügen Sie in *server.xml* innerhalb des Elements `<Server>` ein Kontextelement hinzu.
+```sh
+# Install libxslt. Also copy the transform file to /home/tomcat/conf/
+apk add --update libxslt
 
-    ```xml
-    <Server>
-    ...
-    <Context>
-        <Resource
-            name="jdbc/dbconnection"
-            type="javax.sql.DataSource"
-            url="${dbuser}"
-            driverClassName="<insert your driver class name>"
-            username="${dbpassword}"
-            password="${connURL}"
-        />
-    </Context>
-    ...
-    </Server>
-    ```
+# Usage: xsltproc --output output.xml style.xsl input.xml
+xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+```
 
-3. Aktualisieren Sie die Datei *web.xml* Ihrer Anwendung, sodass die Datenquelle in Ihrer Anwendung verwendet wird.
+Im Anschluss folgt ein Beispiel für eine XSL-Datei. Die XSL-Beispieldatei fügt der Datei „server.xml“ von Tomcat einen neuen Connectorknoten hinzu.
 
-    ```xml
-    <resource-env-ref>
-        <resource-env-ref-name>jdbc/dbconnection</resource-env-ref-name>
-        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
-    </resource-env-ref>
-    ```
+```xml
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+  <xsl:output method="xml" indent="yes"/>
+
+  <xsl:template match="@* | node()" name="Copy">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()"/>
+    </xsl:copy>
+  </xsl:template>
+
+  <xsl:template match="@* | node()" mode="insertConnector">
+    <xsl:call-template name="Copy" />
+  </xsl:template>
+
+  <xsl:template match="comment()[not(../Connector[@scheme = 'https']) and
+                                 contains(., '&lt;Connector') and
+                                 (contains(., 'scheme=&quot;https&quot;') or
+                                  contains(., &quot;scheme='https'&quot;))]">
+    <xsl:value-of select="." disable-output-escaping="yes" />
+  </xsl:template>
+
+  <xsl:template match="Service[not(Connector[@scheme = 'https'] or
+                                   comment()[contains(., '&lt;Connector') and
+                                             (contains(., 'scheme=&quot;https&quot;') or
+                                              contains(., &quot;scheme='https'&quot;))]
+                                  )]
+                      ">
+    <xsl:copy>
+      <xsl:apply-templates select="@* | node()" mode="insertConnector" />
+    </xsl:copy>
+  </xsl:template>
+
+  <!-- Add the new connector after the last existing Connnector if there is one -->
+  <xsl:template match="Connector[last()]" mode="insertConnector">
+    <xsl:call-template name="Copy" />
+
+    <xsl:call-template name="AddConnector" />
+  </xsl:template>
+
+  <!-- ... or before the first Engine if there is no existing Connector -->
+  <xsl:template match="Engine[1][not(preceding-sibling::Connector)]"
+                mode="insertConnector">
+    <xsl:call-template name="AddConnector" />
+
+    <xsl:call-template name="Copy" />
+  </xsl:template>
+
+  <xsl:template name="AddConnector">
+    <!-- Add new line -->
+    <xsl:text>&#xa;</xsl:text>
+    <!-- This is the new connector -->
+    <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true" 
+               maxThreads="150" scheme="https" secure="true" 
+               keystroreFile="${{user.home}}/.keystore" keystorePass="changeit"
+               clientAuth="false" sslProtocol="TLS" />
+  </xsl:template>
+  
+</xsl:stylesheet>
+```
 
 #### <a name="finalize-configuration"></a>Abschließen der Konfiguration
 

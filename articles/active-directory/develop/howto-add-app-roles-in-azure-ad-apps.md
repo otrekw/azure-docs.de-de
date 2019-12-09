@@ -18,12 +18,12 @@ ms.author: kkrishna
 ms.reviewer: ''
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c838c6fe256e2960842c5b40f58f8a5d5b1fdf3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 84275be5c85570a44d968dca8887b448fce09979
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473773"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546839"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -43,12 +43,8 @@ Diese Anwendungsrollen werden im [Azure-Portal](https://portal.azure.com) im Reg
 1. Wählen Sie auf der oberen Leiste Ihr Konto und dann **Verzeichnis wechseln** aus.
 1. Wählen Sie im geöffneten Bereich **Verzeichnis + Abonnement** in der Liste **Favoriten** oder **Alle Verzeichnisse** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 1. Wählen Sie im linken Navigationsbereich **Alle Dienste** und dann **Azure Active Directory** aus.
-1. Wählen Sie im Bereich **Azure Active Directory** die Option **App-Registrierungen (Legacy)** aus, um eine Liste aller Anwendungen anzuzeigen.
-
-     Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **App-Registrierungen (Legacy)** die verschiedenen Filter verwenden, um die Liste einzuschränken. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
-
-1. Wählen Sie die Anwendung aus, in der Sie App-Rollen definieren möchten.
-1. Wählen Sie auf dem Blatt für Ihre Anwendung die Option **Manifest** aus.
+1. Wählen Sie im Bereich **Azure Active Directory** die Option **App-Registrierungen** aus, um eine Liste aller Anwendungen anzuzeigen.
+1. Wählen Sie die Anwendung aus, in der Sie App-Rollen definieren möchten. Wählen Sie anschließend **Manifest** aus.
 1. Bearbeiten Sie das Manifest, indem Sie die `appRoles`-Einstellung suchen und alle Anwendungsrollen hinzufügen.
 
      > [!NOTE]

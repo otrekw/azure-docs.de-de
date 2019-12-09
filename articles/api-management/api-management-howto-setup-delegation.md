@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 63ff91c6b4db351e5ec72973874466cff74432b5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a69babdf2fffb4cb9d963f1806f3c85755e50294
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073445"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454361"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
-Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Auf diese Weise besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
+Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Dadurch besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="delegate-signin-up"> </a>Delegieren der Anmeldung und Registrierung für Entwickler
+## <a name="delegate-signin-up"></a>Delegieren von Anmeldung und Registrierung für Entwickler
 
-Um die Anmeldung und Registrierung für Entwickler bei Ihrer vorhandenen Website zu delegieren, müssen Sie einen speziellen Delegierungsendpunkt auf Ihrer Website erstellen. Er muss als Einstiegspunkt für über das API Management-Entwicklerportal initiierte Anforderungen dieser Art fungieren.
+Um die Anmeldung und Registrierung für Entwickler bei Ihrer vorhandenen Website zu delegieren, müssen Sie einen speziellen Delegierungsendpunkt für Ihre Website erstellen. Er muss als Einstiegspunkt für über das API Management-Entwicklerportal initiierte Anforderungen dieser Art fungieren.
 
 Der komplette Workflow sieht wie folgt aus:
 
@@ -173,6 +173,9 @@ var digest = hmac.update(salt + '\n' + returnUrl).digest();
 
 var signature = digest.toString('base64');
 ```
+
+> [!IMPORTANT]
+> Sie müssen Sie [das Entwicklerportal erneut veröffentlichen](api-management-howto-developer-portal-customize.md#publish), damit die Delegierungsänderungen wirksam werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Delegieren finden Sie im folgenden Video:

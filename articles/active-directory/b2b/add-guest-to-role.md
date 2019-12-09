@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle – Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen eines B2B-Zusammenarbeitsbenutzers zu einer Rolle – Azure Active Directory
 description: Hinzufügen eines Gastbenutzers zu einer Rolle in Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb195fd3fbf668afe436d3247767d2cc998281a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767591"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268557"
 ---
 # <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Gewähren von Berechtigungen für Benutzer von Partnerorganisationen in Ihrem Azure Active Directory-Mandanten
 

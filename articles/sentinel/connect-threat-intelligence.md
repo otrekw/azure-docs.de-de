@@ -2,7 +2,7 @@
 title: Verknüpfen von Threat Intelligence-Daten mit Azure Sentinel | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Threat Intelligence-Daten mit Azure Sentinel verknüpfen.
 documentationcenter: na
-author: rkarlin
+author: cabailey
 manager: rkarlin
 editor: ''
 ms.service: security-center
@@ -10,24 +10,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/24/2019
-ms.author: rkarlin
-ms.openlocfilehash: 44b3830465bf2b5aa06612aa868b086b120f1ece
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.date: 11/22/2019
+ms.author: cabailey
+ms.openlocfilehash: 33edeb04e88a01efafaf69b850ed87120671ed11
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372272"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384133"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
 > [!IMPORTANT]
-> Der Threat Intelligence Platforms-Datenconnector in Azure Sentinel ist derzeit als Public Preview verfügbar.
+> Die Threat Intelligence-Datenconnectors in Azure Sentinel befinden sich aktuell in der Public Preview-Phase.
 > Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Mit Azure Sentinel können Sie die von Ihrer Organisation verwendeten Bedrohungsindikatoren importieren. Dies kann die Fähigkeit Ihrer Sicherheitsanalysten verbessern, bekannte Bedrohungen zu erkennen und zu priorisieren. Einige Features von Azure Sentinel werden dann verfügbar oder wurden verbessert:
+Mit Azure Sentinel können Sie die von Ihrer Organisation verwendeten Bedrohungsindikatoren importieren. Dies kann dazu beitragen, dass Ihre Sicherheitsanalysten bekannte Bedrohungen besser erkennen und priorisieren können. Einige Features von Azure Sentinel werden dann verfügbar oder wurden verbessert:
 
-- **Analysen** enthalten eine Reihe von geplanten Regelvorlagen, die Sie aktivieren können, um Warnungen und Incidents zu generieren, die auf Übereinstimmungen von Protokollereignissen aus Ihren Bedrohungsindikatoren basieren.
+- **Analytics** enthält eine Reihe von Vorlagen für geplante Regeln, die Sie aktivieren können, um Warnungen und Incidents zu generieren, die auf Übereinstimmungen von Protokollereignissen aus Ihren Bedrohungsindikatoren basieren.
 
 - **Arbeitsmappen** bieten zusammengefasste Informationen zu den in Azure Sentinel importierten Bedrohungsindikatoren und allen Warnungen, die von Analyseregeln generiert werden, die Ihren Bedrohungsindikatoren entsprechen.
 
@@ -35,7 +35,7 @@ Mit Azure Sentinel können Sie die von Ihrer Organisation verwendeten Bedrohungs
 
 - **Notebooks** können Bedrohungsindikatoren verwenden, wenn Sie Anomalien untersuchen und nach schädlichen Verhaltensweisen suchen.
 
-Sie können Bedrohungsindikatoren zu Azure Sentinel streamen, indem Sie eines der im nächsten Abschnitt aufgeführten Produkte der integrierten Threat Intelligence Platform (TIP) verwenden, oder indem Sie die direkte Integration mit der [tiIndicators-API von Microsoft Graph-Sicherheit](https://aka.ms/graphsecuritytiindicators) verwenden.
+Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines der im Abschnitt „Verbinden von Azure Sentinel mit TAXII-Servern“ aufgeführten Produkte der integrierten Threat Intelligence-Plattform (TIP) oder aber die direkte Integration mit der [Microsoft Graph-Sicherheits-API „tiIndicators“](https://aka.ms/graphsecuritytiindicators) verwenden.
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>Produkte der integrierten Threat Intelligence Platform
 
@@ -49,6 +49,10 @@ Sie können Bedrohungsindikatoren zu Azure Sentinel streamen, indem Sie eines de
 
 - [ThreatConnect-Plattform](https://threatconnect.com/solution/)
 
+    Weitere Informationen finden Sie auf der Seite [ThreatConnect-Integrationen](https://threatconnect.com/integrations/) unter „Microsoft Graph Security API“ (Microsoft Graph-Sicherheits-API).
+
+
+## <a name="connect-azure-sentinel-to-your-threat-intelligence-platform"></a>Verbinden von Azure Sentinel mit Ihrer Threat Intelligence-Plattform
 
 ## <a name="prerequisites"></a>Voraussetzungen  
 
@@ -56,7 +60,7 @@ Sie können Bedrohungsindikatoren zu Azure Sentinel streamen, indem Sie eines de
 
 - Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich, um Ihre Bedrohungsindikatoren zu speichern.
 
-## <a name="connect-azure-sentinel-to-your-threat-intelligence-provider"></a>Verbinden von Azure Sentinel mit Ihrem Threat Intelligence-Anbieter
+## <a name="instructions"></a>Anleitung
 
 1. [Registrieren Sie eine Anwendung](/graph/auth-v2-service#1-register-your-app) in Azure Active Directory, um eine Anwendungs-ID, ein Anwendungsgeheimnis und eine Azure Active Directory-Mandanten-ID zu erhalten. Sie benötigen diese Werte, wenn Sie Ihr integriertes TIP-Produkt oder Ihre integrierte Anwendung konfigurieren, die eine direkte Integration mit der tiIndicators-API der Microsoft Graph-Sicherheit verwendet.
 
@@ -76,7 +80,29 @@ Sie können Bedrohungsindikatoren zu Azure Sentinel streamen, indem Sie eines de
 
 6. Wählen Sie **Connectorseite öffnen** und dann **Verbinden** aus.
 
-7. Um die Bedrohungsindikatoren anzuzeigen, die in Azure Sentinel importiert werden, navigieren Sie zu **Azure Sentinel – Protokolle** > **SecurityInsights**, und erweitern Sie dann **ThreatIntelligenceIndicator**.
+7. Um die in Azure Sentinel importierten Bedrohungsindikatoren anzuzeigen, navigieren Sie zu **Azure Sentinel – Protokolle** > **SecurityInsights**, und erweitern Sie **ThreatIntelligenceIndicator**.
+
+## <a name="connect-azure-sentinel-to-taxii-servers"></a>Verbinden von Azure Sentinel mit TAXII-Servern
+
+## <a name="prerequisites"></a>Voraussetzungen  
+
+- Lese- und Schreibberechtigungen für den Azure Sentinel-Arbeitsbereich, um Ihre Bedrohungsindikatoren zu speichern.
+
+- TAXII 2.0-Server-URI und Sammlungs-ID
+
+## <a name="instructions"></a>Anleitung
+
+1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Datenconnectors**, und wählen Sie den Connector **Threat Intelligence – TAXII (Vorschauversion)** aus.
+
+2. Wählen Sie **Connectorseite öffnen** aus.
+
+3. Geben Sie in den Textfeldern die erforderlichen und optionalen Informationen an.
+
+4. Wählen Sie **Hinzufügen** aus, um die Verbindung mit dem TAXII 2.0-Server zu aktivieren.
+
+5. Sollten Sie über zusätzliche TAXII 2.0-Server verfügen: Wiederholen Sie die Schritte 3 und 4.
+
+6. Um die in Azure Sentinel importierten Bedrohungsindikatoren anzuzeigen, navigieren Sie zu **Azure Sentinel – Protokolle** > **SecurityInsights**, und erweitern Sie **ThreatIntelligenceIndicator**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

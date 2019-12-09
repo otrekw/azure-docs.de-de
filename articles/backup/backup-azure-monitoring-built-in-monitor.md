@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Überwachen von geschützten Azure Backup-Workloads'
+title: Überwachen von geschützten Azure Backup-Workloads
 description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Benachrichtigungsfunktionen für Azure Backup-Workloads im Azure-Portal.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup, Warnungen
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090959"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172875"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -63,7 +57,7 @@ Es gibt folgende Ausnahmefälle, in denen keine Warnung ausgelöst wird:
 
 Diese Ausnahmen wurden eingeführt, weil das Ergebnis der oben aufgeführten Vorgänge, die in erster Linie vom Benutzer ausgelöst werden, direkt im Portal bzw. im PS- oder CLI-Client dargestellt wird. Sie sind dem Benutzer also bekannt, sodass keine Benachrichtigung erforderlich ist.
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Im Folgenden werden die Warnungen der folgenden Azure Backup-Lösungen vorgestellt:
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Hier sehen Sie die Warnungen der folgenden Azure Backup-Lösungen:
 
 - Azure-VM-Sicherungen
 - Azure-Dateisicherungen

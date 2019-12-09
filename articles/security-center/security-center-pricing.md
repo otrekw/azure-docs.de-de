@@ -1,6 +1,6 @@
 ---
 title: Preise für Azure Security Center-Dienstebenen
-description: Dieser Artikel enthält Informationen zu den Preisen für Azure Security Center.
+description: 'Azure Security Center wird in zwei Tarifen angeboten: Free und Standard. Auf dieser Seite erfahren Sie, wie Sie von Free auf Standard upgraden.'
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 0c3fdc48d9b3bc77b629d4d6f1da081d70658c88
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8ffb571d13270ced80426aee3575197cf95d3805
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664259"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559243"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>Upgrade auf den Standard-Tarif von Azure Security Center für erhöhte Sicherheit
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.

@@ -9,12 +9,12 @@ ms.date: 07/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ad88066ebf19bdcc9bcdb77309ce76828c09ce47
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: b11b2c42087b8724c7d90b87bc33965eb7270dc6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671126"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422003"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-in-the-azure-portal"></a>Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mit RBAC über das Azure-Portal
 
@@ -58,7 +58,7 @@ Die hier gezeigte Vorgehensweise weist eine auf einen Container begrenzte Rolle 
 1. Navigieren Sie zum Container, dem Sie eine Rolle zuweisen möchten, und zeigen Sie die Einstellungen des Containers an. 
 1. Wählen Sie **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Container anzuzeigen. Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
 
-    ![Screenshot mit Zugriffssteuerungseinstellungen für den Container](media/storage-auth-aad-rbac-portal/portal-access-control-container.png)
+    ![Screenshot mit Zugriffssteuerungseinstellungen für den Container](media/storage-auth-aad-rbac-portal/portal-access-control-for-storage.png)
 
 1. Klicken Sie auf die Schaltfläche **Rollenzuweisung hinzufügen**, um eine neue Rolle hinzuzufügen.
 1. Wählen Sie im Fenster **Rollenzuweisung hinzufügen** die Azure Storage-Rolle aus, die Sie zuweisen möchten. Suchen Sie dann den Sicherheitsprinzipal, dem Sie diese Rolle zuweisen möchten.

@@ -1,20 +1,15 @@
 ---
-title: Automatisieren der Ressourcenbereitstellung für eine Funktions-App in Azure Functions | Microsoft-Dokumentation
+title: Automatisieren der Ressourcenbereitstellung für eine Funktions-App in Azure Functions
 description: Hier erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die Ihre Funktions-App bereitstellt.
-author: ggailey777
-manager: gwallace
-keywords: Azure Functions, Funktionen, serverlose Architektur, Infrastruktur als Code, Azure Resource Manager
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: glenga
-ms.openlocfilehash: 8435aab65d26627de26fb8b5ad0510fcd7c57c33
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9c222937831c0e8017a390b16ef192783e9e564a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575936"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230519"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 

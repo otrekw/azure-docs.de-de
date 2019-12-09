@@ -3,19 +3,19 @@ title: Einführung in Azure Advisor | Microsoft Docs
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
 services: advisor
 documentationcenter: NA
-author: kasparks
+author: sagupt
 ms.service: advisor
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: 2ccac3bf9a882dc021c6c969946ad9d439a7cf5d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: sagupt
+ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67069684"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145378"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -37,6 +37,7 @@ Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abo
 * **Sicherheit:** Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
 * **Leistung**: Der Ratgeber hilft, die Geschwindigkeit Ihrer Anwendungen zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md).
 * **Kosten**: Mit dem Ratgeber können Sie Ihre Gesamtausgaben für Azure senken und optimieren. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md).
+* **Optimaler Betrieb**: Dieser Ratgeber hilft Ihnen bei der Implementierung effizienter Prozesse und Workflows, unterstützt Sie bei der Ressourcenverwaltung und enthält bewährte Methoden für die Bereitstellung. . Weitere Informationen finden Sie unter [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md).
 
   ![Typen von Advisor-Empfehlungen](./media/advisor-overview/advisor-dashboard.png)
 

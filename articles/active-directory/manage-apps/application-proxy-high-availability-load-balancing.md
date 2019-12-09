@@ -1,5 +1,5 @@
 ---
-title: Hochverfügbarkeit und Lastenausgleich für Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Hochverfügbarkeit und Lastenausgleich – Azure AD-Anwendungsproxy
 description: Funktionsweise der Verteilung des Datenverkehrs mit Ihrer Anwendungsproxy-Bereitstellung. Enthält Tipps zum Optimieren der Connectorleistung und zum Verwenden des Lastenausgleichs für Back-End-Server.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169801"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275538"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hochverfügbarkeit und Lastenausgleich von Anwendungsproxy-Connectors und -Anwendungen
 

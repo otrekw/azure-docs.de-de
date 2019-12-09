@@ -1,5 +1,5 @@
 ---
-title: Erweiterte Zertifikatsignaturoptionen im SAML-Token für vorab integrierte Azure AD-Apps | Microsoft-Dokumentation
+title: Erweiterte Zertifikatsignaturoptionen im SAML-Token für Azure AD-Apps
 description: Hier erfahren Sie, wie Sie erweiterte Optionen für die Zertifikatsignatur im SAML-Token für bereits in Azure Active Directory integrierte Apps verwenden.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381270"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274759"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Erweiterte Optionen für die Zertifikatsignatur im SAML-Token für Katalog-Apps in Azure Active Directory
 

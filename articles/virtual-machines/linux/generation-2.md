@@ -1,5 +1,5 @@
 ---
-title: Azure-Support für VMs der Generation 2 | Microsoft-Dokumentation
+title: Azure-Support für VMs der Generation 2
 description: 'Übersicht: Azure-Support für VMs der Generation 2'
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: lahugh
-ms.openlocfilehash: 6d90075f866cb65e5428a1641ebd4cf77dd2a887
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02ab7cdcbf0f150157eb44ef5e28e8284621b813
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479582"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173951"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -59,7 +59,8 @@ VMs der Generation 2 unterstützen die folgenden Marketplace-Images:
 * Windows Server 2012 Datacenter
 * SUSE Linux Enterprise Server 15 SP1
 * SUSE Linux Enterprise Server 12 SP4
-* Ubuntu Server 16.04+
+* Ubuntu Server 16.04,18.04, 19.04, 19.10 
+* RHEL 8.0
 
 ## <a name="on-premises-vs-azure-generation-2-vms"></a>Lokale VMs und Azure-VMs der Generation 2 im Vergleich
 
@@ -90,7 +91,7 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 | Betriebssystem-Datenträger > 2 TB                    | :x:                | :heavy_check_mark: |
 | Benutzerdefinierter Datenträger/Image/Swapbetriebssystem         | :heavy_check_mark: | :heavy_check_mark: |
 | Unterstützung für VM-Skalierungsgruppe | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Site Recovery               | :heavy_check_mark: | :x:                |
+| Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
 | Shared Image Gallery              | :heavy_check_mark: | :heavy_check_mark: |
 | Azure Disk Encryption             | :heavy_check_mark: | :x:                |

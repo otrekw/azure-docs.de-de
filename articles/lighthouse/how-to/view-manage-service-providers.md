@@ -2,13 +2,13 @@
 title: Dienstanbieter anzeigen und verwalten
 description: Kunden können die Seite „Dienstanbieter“ im Azure-Portal verwenden, um Informationen zu Dienstanbietern, Angeboten von Dienstanbietern und delegierten Ressourcen anzuzeigen.
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: baa5a77b481779ab511ff473aacda5d40e0d771c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132185"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463815"
 ---
 # <a name="view-and-manage-service-providers"></a>Dienstanbieter anzeigen und verwalten
 
@@ -49,7 +49,9 @@ Wenn der Kunde ein Angebot eines Dienstanbieters entfernen möchte, kann er das 
 
 ## <a name="update-service-provider-offers"></a>Aktualisieren von Dienstanbieterangeboten
 
-Nachdem ein Kunde ein Angebot hinzugefügt hat, kann ein Dienstanbieter eine aktualisierte Version desselben Angebots für Azure Marketplace veröffentlichen. Dabei kann es sich beispielsweise um das Hinzufügen einer neuen Rollendefinition handeln. Wenn eine neue Version des Angebots veröffentlicht wurde, wird auf der Seite **Anbieter** ein Aktualisierungssymbol in der Zeile für das Angebot angezeigt. Der Kunde kann dieses Symbol auswählen, um die Unterschiede zwischen der aktuellen Version des Angebots und der neuen Version anzuzeigen. 
+Nachdem ein Kunde ein Angebot hinzugefügt hat, kann ein Dienstanbieter eine aktualisierte Version desselben Angebots für Azure Marketplace veröffentlichen. Dabei kann es sich beispielsweise um das Hinzufügen einer neuen Rollendefinition handeln. Wenn eine neue Version des Angebots veröffentlicht wurde, wird auf der Seite **Anbieter** ein Aktualisierungssymbol in der Zeile für das Angebot angezeigt. Der Kunde kann dieses Symbol auswählen, um die Unterschiede zwischen der aktuellen Version des Angebots und der neuen Version anzuzeigen.
+
+ ![Symbol für Aktualisierungsangebot](../media/update-offer.jpg)
 
 Nachdem er die Änderungen überprüft hat, kann der Kunde auf die neue Version aktualisieren. Anschließend gelten die in der neuen Version angegebenen Autorisierungen und anderen Einstellungen für alle Abonnements und/oder Ressourcengruppen, die für dieses Angebot delegiert wurden.
 

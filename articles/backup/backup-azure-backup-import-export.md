@@ -1,19 +1,15 @@
 ---
-title: Seed-Offlinesicherung mithilfe des Import/Export-Diensts von Azure Backup
+title: Seed-Offlinesicherung mithilfe des Import/Export-Diensts
 description: Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Export-Diensts Daten aus dem Netzwerk senden können. Dieser Artikel erläutert das Offlineseeding der ersten Sicherungsdaten mit dem Azure Import/Export-Dienst.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: dacurwin
-ms.openlocfilehash: 15a5a67209552134969c01220e8412d0c9dace15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968521"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173302"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 
@@ -40,7 +36,7 @@ Die Verwendung der Offlinesicherung wird von folgenden Azure Backup-Features ode
 > * Sichern von Dateien und Ordnern mit dem Microsoft Azure Recovery Services-Agent (MARS; auch Azure Backup-Agent genannt)
 > * Sichern aller Workloads und Dateien mit dem System Center Data Protection Manager (DPM SC)
 > * Sichern aller Workloads und Dateien mit dem Microsoft Azure Backup Server
-
+ 
    > [!NOTE]
    > Die Offlinesicherung wird für Sicherungen des Systemstatus mithilfe des Azure Backup-Agents nicht unterstützt.
 
@@ -109,7 +105,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
 Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, die an das nächstgelegene Azure-Datencenter gesendet werden. Dieses Hilfsprogramm steht im Installationsverzeichnis des Azure Backup-Agents unter folgendem Pfad zur Verfügung:
 
-   *\Microsoft Azure Recovery Services Agent\Utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen anderen Computer, mit dem die SATA-Laufwerke verbunden sind. Vergewissern Sie sich, dass auf dem Computer mit den verbundenen SATA-Laufwerken Folgendes erfüllt ist:
 

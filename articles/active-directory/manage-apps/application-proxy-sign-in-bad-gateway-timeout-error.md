@@ -1,5 +1,5 @@
 ---
-title: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der App-Proxy-App | Microsoft-Dokumentation
+title: Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der App-Proxy-App
 description: Informationen zum Beheben häufiger Probleme mit Azure AD-Anwendungsproxyanwendungen.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381403"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275467"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Fehler „Zugriff auf diese Unternehmensanwendung nicht möglich“ bei Verwendung der Anwendungsproxyanwendung
 

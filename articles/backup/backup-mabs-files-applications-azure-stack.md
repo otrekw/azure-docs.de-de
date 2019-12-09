@@ -1,19 +1,14 @@
 ---
-title: Sichern von Dateien in Azure Stack-VMs – Azure Backup
+title: Sichern von Dateien auf virtuellen Azure Stack-Computern
 description: Verwenden Sie Azure Backup, um Azure Stack-Dateien und -Anwendungen in Ihrer Azure Stack-Umgebung zu sichern und wiederherzustellen.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
-ms.author: dacurwin
-ms.openlocfilehash: 70da426f1dff843f1e2515052431f54f8ea83780
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 2bcdf7f720708db1487d7d5cdaee41dc93c05728
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091566"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172333"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Sichern von Dateien und Anwendungen in Azure Stack
 

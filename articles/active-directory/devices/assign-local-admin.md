@@ -1,5 +1,5 @@
 ---
-title: Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten | Microsoft-Dokumentation
+title: Verwalten lokaler Administratoren für in Azure AD eingebundene Geräte
 description: Hier erfahren Sie, wie Sie Azure-Rollen zur lokalen Administratorgruppe eines Windows-Geräts hinzufügen.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: fd8087e9eaa11ced5da9b445af9d33377b4391c0
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062256"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379659"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Verwalten der lokalen Administratorgruppe auf in Azure AD eingebundenen Geräten
 
@@ -48,7 +48,7 @@ Informationen zum Anzeigen und Aktualisieren der Mitgliedschaft in der globalen 
 Die Geräteadministratorrolle kann im Azure-Portal auf der Seite **Geräte** verwaltet werden. So öffnen Sie die Seite **Geräte**:
 
 1. Melden Sie sich als globaler Administrator oder Geräteadministrator beim [Azure-Portal](https://portal.azure.com) an.
-1. Klicken Sie auf der linken Navigationsleiste auf **Azure Active Directory**. 
+1. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus.
 1. Klicken Sie im Bereich **Verwalten** auf **Geräte**.
 1. Klicken Sie auf der Seite **Geräte** auf **Geräteeinstellungen**.
 

@@ -1,17 +1,17 @@
 ---
 title: Gängige Fragen zu Azure Migrate
-description: Beantwortet gängige und häufig gestellte Fragen zu Azure Migrate
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Azure Migrate-Dienst.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: 1663e1d418610bcfa2ada28770944bfc8cbf908f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480071"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284471"
 ---
 # <a name="azure-migrate-common-questions"></a>Von der Azure Häufig gestellte Fragen
 
@@ -118,16 +118,10 @@ Die Serverbewertung ermöglicht eine Bewertung zum Feststellen der Migrationsber
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Was ist der Unterschied zwischen der Serverbewertung und dem Site Recovery-Bereitstellungsplaner?
 
-Die Serverbewertung ist ein Tool zur Migrationsplanung. Der Site Recovery-Bereitstellungsplaner ist ein Tool zur Notfallwiederherstellung. 
+Die Serverbewertung ist ein Tool zur Migrationsplanung. Der Site Recovery-Bereitstellungsplaner ist ein Tool zur Notfallwiederherstellung.
 
 - **Planen der lokalen Migration zu Azure**: Wenn Sie planen, Ihre lokalen Server zu Azure zu migrieren, verwenden Sie für die Migrationsplanung die Serverbewertung. Sie bewertet lokale Workloads und stellt Anleitungen und Tools zur Verfügung, die Sie bei der Migration unterstützen. Nachdem der Migrationsplan steht, können Sie Tools wie die Azure Migrate-Servermigration verwenden, um die Computer zu Azure zu migrieren.
 - **Planen der Notfallwiederherstellung in Azure**: Wenn Sie planen, mit Site Recovery eine Notfallwiederherstellung lokaler Computer in Azure einzurichten, verwenden Sie die Site Recovery-Bereitstellungsplaner. Der Bereitstellungsplaner führt eine umfassende, Site Recovery-spezifische Bewertung Ihrer lokalen Umgebung für die Notfallwiederherstellung durch. Er stellt Empfehlungen für die Notfallwiederherstellung zur Verfügung, z. B. Replikation und Failover.
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Kann Azure Migrate die Kosten für das Enterprise Agreement-Programm (EA) abschätzen?
-
-Die Azure Migrate-Serverbewertung unterstützt derzeit keine Kostenschätzung für das [Enterprise Agreement-Programm](https://azure.microsoft.com/offers/enterprise-agreement-support/). Als Problemumgehung können Sie beim Erstellen der Bewertung **Nutzungsbasierte Bezahlung** als **Angebot** angeben und dann den (für das Abonnement geltenden) Rabattprozentsatz manuell in das Feld **Rabatt** der Bewertungseigenschaften eingeben:
-
-  ![Bewertungseigenschaften](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Was ist der Unterschied zwischen der lokal orientierten und der leistungsbasierten Größenanpassung?
 

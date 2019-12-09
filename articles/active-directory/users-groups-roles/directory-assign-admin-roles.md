@@ -1,5 +1,5 @@
 ---
-title: Beschreibungen und Berechtigungen der Administratorrolle – Azure Active Directory | Microsoft-Dokumentation
+title: Beschreibungen und Berechtigungen für Administratorrollen – Azure AD | Microsoft-Dokumentation
 description: Eine Administratorrolle kann zum Hinzufügen von Benutzern, zum Zuweisen von Administratorrollen, zum Zurücksetzen von Benutzerkennwörtern sowie zum Verwalten von Benutzerlizenzen oder Domänen verwendet werden.
 services: active-directory
 author: curtand
@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: reference
-ms.date: 11/06/2019
+ms.date: 11/12/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e1e4fe4c06833302ac3ef9794981ee4a47fa454b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 3b85c5c6c5642d10c8d917ed9785d0fcf48a5e68
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747771"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554135"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -51,9 +51,14 @@ Die folgenden Administratorrollen sind verfügbar:
 
 Benutzer mit dieser Rolle können alle Aspekte von Unternehmensanwendungen, Anwendungsregistrierungen und Anwendungsproxyeinstellungen erstellen und verwalten. Beachten Sie, dass Benutzer, denen diese Rolle zugewiesen wurde, bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt werden.
 
-> [!IMPORTANT]
-> Diese Rolle ermöglicht die Verwaltung von Anmeldeinformationen für Anwendungen. Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Wenn der Identität der Anwendung der Zugriff auf Azure Active Directory gewährt wurde, z.B. die Berechtigung, Benutzer oder andere Objekte zu erstellen oder zu aktualisieren, kann ein dieser Rolle zugewiesener Benutzer diese Aktionen ausführen, während er die Identität der Anwendung annimmt. Diese Fähigkeit, die Identität der Anwendung anzunehmen, bedeutet ggf. eine Rechteerweiterung im Vergleich zu den Rollenzuweisungen des Benutzers in Azure AD. Beachten Sie, dass das Zuweisen eines Benutzers zur Anwendungsadministratorrolle ihm die Möglichkeit gibt, die Identität einer Anwendung anzunehmen.
+Anwendungsadministratoren können Anmeldeinformationen von Anwendungen verwalten, die es ihnen ermöglichen, die Identität der Anwendung zu wechseln. So können Benutzer, die dieser Rolle zugewiesen sind, nur Anmeldeinformationen von Anwendungen verwalten, die entweder keinen Azure AD-Rollen oder nur folgenden Administratorrollen zugeordnet sind:
+* Anwendungsadministrator
+* Anwendungsentwickler
+* Cloudanwendungsadministrator
+* Rolle „Verzeichnis lesen“
 
+Wenn eine Anwendung einer anderen Rolle zugeordnet ist, die oben nicht aufgeführt ist, kann der Anwendungsadministrator die Anmeldeinformationen dieser Anwendung nicht verwalten. 
+ 
 Diese Rolle ermöglicht auch die _Zustimmung_ zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Berechtigungen für Microsoft Graph und Azure AD Graph.
 
 > [!IMPORTANT]
@@ -122,8 +127,12 @@ Tätigt Käufe, verwaltet Abonnements und Supporttickets und überwacht die Dien
 
 Benutzer mit dieser Rolle haben die gleichen Berechtigungen wie die Rolle des Anwendungsadministrators, mit Ausnahme der Möglichkeit, den Anwendungsproxy zu verwalten. Diese Rolle ermöglicht die Erstellung und Verwaltung aller Aspekte von Unternehmensanwendungen und Anwendungsregistrierungen. Diese Rolle ermöglicht auch die Zustimmung zu delegierten Berechtigungen und Anwendungsberechtigungen mit Ausnahme von Microsoft Graph und Azure AD Graph. Benutzer, denen diese Rolle zugewiesen wurde, werden bei der Erstellung neuer Anwendungsregistrierungen oder Unternehmensanwendungen nicht als Besitzer hinzugefügt.
 
-> [!IMPORTANT]
-> Diese Rolle ermöglicht die Verwaltung von Anmeldeinformationen für Anwendungen. Benutzer, die dieser Rolle zugewiesen sind, können einer Anwendung Anmeldeinformationen hinzufügen und diese Anmeldeinformationen verwenden, um die Anwendung zu imitieren. Wenn der Identität der Anwendung der Zugriff auf Azure Active Directory gewährt wurde, z.B. die Berechtigung, Benutzer oder andere Objekte zu erstellen oder zu aktualisieren, kann ein dieser Rolle zugewiesener Benutzer diese Aktionen ausführen, während er die Identität der Anwendung annimmt. Diese Fähigkeit, die Identität der Anwendung anzunehmen, bedeutet ggf. eine Rechteerweiterung im Vergleich zu den Rollenzuweisungen des Benutzers in Azure AD. Beachten Sie, dass das Zuweisen eines Benutzers zur Cloudanwendungsadministrator-Rolle ihm die Möglichkeit gibt, die Identität einer Anwendung anzunehmen.
+Cloudanwendungsadministratoren können Anmeldeinformationen von Anwendungen verwalten, die es ihnen ermöglichen, die Identität der Anwendung zu wechseln. So können Benutzer, die dieser Rolle zugewiesen sind, nur Anmeldeinformationen von Anwendungen verwalten, die entweder keinen Azure AD-Rollen oder nur folgenden Administratorrollen zugeordnet sind:
+* Anwendungsentwickler
+* Cloudanwendungsadministrator
+* Rolle „Verzeichnis lesen“
+
+Wenn eine Anwendung einer anderen Rolle zugeordnet ist, die oben nicht aufgeführt ist, kann der Cloudanwendungsadministrator die Anmeldeinformationen dieser Anwendung nicht verwalten.
 
 ### <a name="cloud-device-administratorcloud-device-administrator-permissions"></a>[Cloudgeräteadministrator](#cloud-device-administrator-permissions)
 
@@ -229,6 +238,7 @@ Benutzer in dieser Rolle können in Microsoft 365-Diensten Einstellungen und adm
 >- [Azure AD Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/): Die Rolle „Globaler Leser“ kann den Bereitstellungsmodus einer Unternehmens-App nicht lesen.
 >- [M365 Admin Center](https://admin.microsoft.com/Adminportal/Home#/homepage): Die Rolle „Globaler Leser“ kann keine Kunden-Lockbox-Anforderungen lesen. Im linken Bereich von M365 Admin Center wird keine Registerkarte **Kunden-Lockbox-Anforderungen** unter **Support** angezeigt.
 >- [M365 Security Center](https://security.microsoft.com/homepage): Die Rolle „Globaler Leser“ kann die Vertraulichkeits- und Aufbewahrungsbezeichnungen nicht lesen. Im linken Bereich von M365 Security Center werden die Registerkarten **Vertraulichkeitsbezeichnungen**, **Aufbewahrungsbezeichnungen** und **Bezeichnungsanalyse** nicht angezeigt.
+>- [Office Security & Compliance Center](https://sip.protection.office.com/homepage): Die Rolle „Globaler Leser“ kann SCC-Überwachungsprotokolle nicht lesen oder die Inhaltssuche nicht durchführen.
 >- [Teams Admin Center](https://admin.teams.microsoft.com): Die Rolle „Globaler Leser“ kann den **Teams-Lebenszyklus**, **Analysen und Berichte**, die **IP-Telefon-Geräteverwaltung** und den **App-Katalog** nicht lesen.
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) unterstützt die Rolle „Globaler Leser“ nicht.
 >- [Azure Information Protection:](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) Die Rolle „Globaler Leser“ wird nur für die [zentrale Berichterstellung](https://docs.microsoft.com/azure/information-protection/reports-aip) unterstützt, wenn sich Ihre Azure AD-Organisation nicht auf der [Plattform für einheitliche Bezeichnungen](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform) befindet.
@@ -316,6 +326,10 @@ Benutzer mit dieser Rolle besitzen globale Berechtigungen innerhalb von Microsof
 
 > [!NOTE]
 > In der Microsoft Graph-API, der Azure AD Graph-API und Azure AD PowerShell wird diese Rolle als „Power BI-Dienstadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com) lautet sie „Power BI-Administrator“.
+
+### <a name="power-platform-administratorpower-platform-administrator-permissions"></a>[Power Platform-Administrator](#power-platform-administrator-permissions)
+
+Benutzer in dieser Rolle können alle Aspekte von Umgebungen, PowerApps, Flows und Richtlinien zur Verhinderung von Datenverlust erstellen und verwalten. Darüber hinaus verfügen Benutzer mit dieser Rolle über die Möglichkeit, Supporttickets zu verwalten und die Dienstintegrität zu überwachen.
 
 ### <a name="privileged-authentication-administratorprivileged-authentication-administrator-permissions"></a>[Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator-permissions)
 
@@ -1335,12 +1349,31 @@ Verwalten sämtlicher Aspekte des Produkts Power BI.
 > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
 >
 >
-
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Verwalten sämtlicher Aspekte von Power BI. |
+| microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
+| microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+
+
+### <a name="power-platform-administrator-permissions"></a>Power Platform-Administratorberechtigungen
+
+Kann alle Aspekte von Microsoft Dynamics 365, PowerApps und Microsoft Flow erstellen und verwalten. 
+
+> [!NOTE]
+> Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
+>
+>
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
+| microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
+| microsoft.dynamics365/allEntities/allTasks | Verwalten sämtlicher Aspekte von Dynamics 365. |
+| microsoft.flow/allEntities/allTasks | Verwalten aller Aspekte von Microsoft Flow. |
+| microsoft.powerApps/allEntities/allTasks | Verwalten aller Aspekte von PowerApps. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Office 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
@@ -1698,6 +1731,7 @@ Partnersupport der Ebene 1 | Partnersupport der Ebene 1 | 4ba39ca4-527c-499a-b93
 Partnersupport der Ebene 2 | Partnersupport der Ebene 2 | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8
 Kennwortadministrator | Kennwortadministrator | 966707d0-3269-4727-9be2-8c3a10f19b9d
 Power BI-Dienstadministrator | Power BI-Administrator | a9ea8996-122f-4c74-9520-8edcd192826c
+Power Platform-Administrator | Power Platform-Administrator | 11648597-926c-4cf3-9c36-bcebb0ba8dcc
 Privilegierter Authentifizierungsadministrator | Privilegierter Authentifizierungsadministrator | 7be44c8a-adaf-4e2a-84d6-ab2649e08a13
 Administrator für privilegierte Rollen | Administrator für privilegierte Rollen | e8611ab8-c189-46e8-94e1-60213ab1f814
 Meldet Reader | Berichtsleser | 4a5d8f65-41da-4de4-8968-e035b65339cf

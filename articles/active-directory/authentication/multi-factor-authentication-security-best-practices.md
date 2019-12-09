@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 436b7899b1a9d4f9cab1ca2581ff9b5b162de8ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2756d39a93751271c8c7bf2a51108b9fe5b09b1e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60357977"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74208433"
 ---
 # <a name="security-guidance-for-using-azure-multi-factor-authentication-with-azure-ad-accounts"></a>Sicherheitsanleitung zur Verwendung von Azure Multi-Factor Authentication mit Azure AD-Konten
 
@@ -52,7 +52,7 @@ Beim Erstellen des Authentifizierungsanbieters müssen Sie ein Verzeichnis ausw�
 * Zum Erstellen eines Anbieters für mehrstufige Authentifizierung ist ein Azure AD-Verzeichnis nicht unbedingt erforderlich, bietet Ihnen aber mehr Funktionalität. Folgende Features stehen zur Verfügung, wenn Sie den Authentifizierungsanbieter zu einem Azure AD-Verzeichnis zuordnen:
   * Erweitern der zweistufigen Überprüfung auf alle Benutzer
   * Bieten Sie Ihren globalen Benutzern zusätzliche Features wie z.B. das Verwaltungsportal, benutzerdefinierte Begrüßungen und Berichte.
-* Wenn Sie Ihre lokale Active Directory-Umgebung mit einem Azure AD-Verzeichnis synchronisieren, ist entweder DirSync oder AAD Sync erforderlich. Wenn Sie ein Azure AD-Verzeichnis verwenden, das nicht mit einer lokalen Instanz von Active Directory synchronisiert wird, benötigen Sie weder DirSync noch AAD Sync.
+* Wenn Sie Ihre lokale Active Directory-Umgebung mit einem Azure AD-Verzeichnis synchronisieren, ist entweder DirSync oder Azure AD Sync erforderlich. Wenn Sie ein Azure AD-Verzeichnis verwenden, das nicht mit einer lokalen Instanz von Active Directory synchronisiert wird, benötigen Sie weder DirSync noch Azure AD Sync.
 * Wählen Sie das Nutzungsmodell aus, das am besten zu Ihrem Unternehmen passt. Das Nutzungsmodell kann nach der Auswahl nicht mehr geändert werden. Diese beiden Modelle stehen zur Auswahl:
   * Pro Authentifizierung: Jede Überprüfung wird abgerechnet. Verwenden Sie dieses Modell, wenn Sie die zweistufige Überprüfung für jede Person verwenden möchten, die auf eine bestimmte App zugreift, nicht nur für bestimmte Benutzer.
   * Pro aktiviertem Benutzer: Jeder Benutzer, den Sie für Azure MFA aktivieren, wird abgerechnet. Verwenden Sie dieses Modell, wenn einige Ihrer Benutzer Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verwenden, andere dagegen nicht.

@@ -1,5 +1,5 @@
 ---
-title: Gewähren des Zugriffs auf lokale Apps für B2B-Benutzer – Azure Active Directory | Microsoft-Dokumentation
+title: Gewähren des Zugriffs auf lokale Apps für B2B-Benutzer – Azure AD
 description: Beschreibt, wie Sie B2B-Cloudbenutzern mit Azure AD B2B-Zusammenarbeit Zugriff auf lokale Apps gewähren.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d3fa8e71df3d1184956e1802d1b6b72411b6449
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113030"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272797"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 

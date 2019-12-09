@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 7d4546a6d2de01575825154ab30a909b76b3fc89
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a0c9a654d0ee49dc2bdb6efb7370a3ad2b199e10
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474470"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74481307"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisieren von Objekten und Anmeldeinformationen in einer verwalteten Azure AD Domain Services-Domäne
 
@@ -98,6 +98,9 @@ In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Gruppenob
 ## <a name="synchronization-from-on-premises-ad-ds-to-azure-ad-and-azure-ad-ds"></a>Synchronisierung aus einer lokalen AD DS-Umgebung mit Azure AD und Azure AD DS
 
 Mithilfe von Azure AD Connect werden Benutzerkonten, Gruppenmitgliedschaften und Anmeldeinformationshashes aus einer lokalen AD DS-Umgebung mit Azure AD synchronisiert. Die Attribute von Benutzerkonten wie der UPN und die lokale Sicherheits-ID (SID) werden synchronisiert. Für die Anmeldung mithilfe von Azure AD Domain Services werden Legacykennworthashes, die für die NTLM- und Kerberos-Authentifizierung erforderlich sind, auch mit Azure AD synchronisiert.
+
+> [!IMPORTANT]
+> Azure AD Connect sollte nur für die Synchronisierung mit lokalen AD DS-Umgebungen installiert und konfiguriert werden. Die Installation von Azure AD Connect in einer verwalteten Azure AD DS-Domäne zur erneuten Synchronisierung von Objekten mit Azure AD wird nicht unterstützt.
 
 Wenn Sie das Zurückschreiben konfigurieren, werden Änderungen in Azure AD wieder mit der lokalen AD DS-Umgebung synchronisiert. Wenn ein Benutzer beispielsweise sein Kennwort mit der Azure AD-Self-Service-Kennwortverwaltung ändert, wird das Kennwort in der lokalen AD DS-Umgebung aktualisiert.
 

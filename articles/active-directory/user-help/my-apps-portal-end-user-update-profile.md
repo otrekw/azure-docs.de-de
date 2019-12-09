@@ -1,5 +1,5 @@
 ---
-title: Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“ – Azure AD
+title: Aktualisieren von Profil- und Kontoinformationen über das Portal „Meine Apps“ – Azure AD
 description: Erfahren Sie, wie Sie Ihr Profil und Ihre Geschäfts-, Schul- oder Unikontoinformationen aktualisieren können, einschließlich Ändern Ihres Kennworts, Zurücksetzen des Kennworts, Aktualisieren Ihrer Sicherheitsüberprüfungsmethoden, Anzeigen des Hinweises mit den Nutzungsbedingungen Ihres Unternehmens und Abmelden von überall dort, wo Sie sich mit Ihrem Geschäfts-, Schul- oder Unikonto angemeldet haben.
 services: active-directory
 author: eross-msft
@@ -13,14 +13,14 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4416b35d2e2204cec2a9ffe2f50e92983d6204c0
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820379"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233165"
 ---
-# <a name="update-your-profile-and-account-info-on-the-my-apps-portal"></a>Aktualisieren Ihrer Profil- und Kontoinformationen im Portal „Meine Apps“
+# <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>Aktualisieren Ihres Profils und der Informationen zu Ihrem Geschäfts-, Schul- oder Unikonto über das Portal „Meine Apps“
 
 Sie können Ihr Geschäfts-, Schul- oder Unikonto mit dem webbasierten Portal **Meine Apps** verwenden, um viele der cloudbasierten Apps Ihrer Organisation anzuzeigen und zu starten, bestimmte Profil- und Kontoinformationen zu aktualisieren, Informationen zu Ihren **Gruppen** anzuzeigen und **Zugriffsüberprüfungen** für Ihre Apps und Gruppen durchzuführen. Sollten Sie keinen Zugriff auf das Portal **Meine Apps** haben, wenden Sie sich an Ihren Helpdesk.
 

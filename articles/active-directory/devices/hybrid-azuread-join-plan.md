@@ -1,5 +1,5 @@
 ---
-title: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung in Azure Active Directory (Azure AD) | Microsoft-Dokumentation
+title: Planen einer Azure Active Directory-Hybrideinbindung – Azure Active Directory
 description: Erfahren Sie, wie Sie in Azure Active Directory eingebundene Hybridgeräte konfigurieren.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882818"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74379321"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -81,7 +81,7 @@ Azure AD Hybrid Join wird für FIPS-konformes TPM 2.0 und nicht für TPM 1.2 
 
 Azure AD Hybrideinbindung wird für Windows Server, die die Domänencontrollerrolle ausführen, nicht unterstützt.
 
-Azure AD Hybrideinbindung wird für kompatible Windows-Geräte nicht unterstützt, wenn sie das Roaming von Anmeldeinformationen oder Benutzerprofilen verwenden.
+Azure AD Hybrideinbindung wird für kompatible Windows-Geräte nicht unterstützt, wenn sie das Roaming von Anmeldeinformationen oder Benutzerprofilen bzw. obligatorischen Profilen verwenden.
 
 Wenn Sie das Systemvorbereitungstool (Sysprep) verwenden und ein Image einer niedrigeren Version als **Windows 10 1809** für die Installation verwenden, stellen Sie sicher, dass dieses Image nicht von einem Gerät stammt, das bereits als Azure AD-Hybrideinbindung bei Azure AD registriert ist.
 
@@ -93,7 +93,8 @@ Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte für Ihren Mandanten 
 - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001.
 - Wenn Sie Windows Hello for Business unter Windows 10 1803 konfiguriert haben, muss der Benutzer Windows Hello for Business nach der Bereinigung des Doppelstatus erneut einrichten. Dieses Problem wird mit KB4512509 behoben.
 
-
+> [!NOTE]
+> Das für Azure AD registrierte Gerät wird nicht automatisch entfernt, wenn es von Intune verwaltet wird.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Überprüfung der kontrollierten Überprüfung der Azure AD-Hybrideinbindung
 

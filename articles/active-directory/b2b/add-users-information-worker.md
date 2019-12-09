@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen von Benutzern der B2B-Zusammenarbeit als Information-Worker – Azure Active Directory | Microsoft-Dokumentation
+title: Hinzufügen von B2B-Zusammenarbeitsbenutzern als Information-Worker – Azure AD
 description: B2B-Zusammenarbeit ermöglicht es Information-Workern und App-Besitzern, Azure AD Gastbenutzer für den Zugriff hinzuzufügen | Microsoft-Dokumentation
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8606a0d4e203e1a910a5cd15ca83a622f5286bd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 37dc4a618f01022f4963a14aba921edcce9f4b60
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812536"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268853"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 

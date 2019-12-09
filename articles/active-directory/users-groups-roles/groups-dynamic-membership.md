@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/27/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6cfad04d9b0dd3537d60f2651ed341d96bd0210
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a92dbeec706ff8c4f892632243353549295dd26b
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027130"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74538790"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -32,7 +32,7 @@ Wenn sich Attribute eines Benutzers oder Geräts ändern, bewertet das System al
 
 > [!NOTE]
 > Dieses Feature erfordert für jeden eindeutigen Benutzer, der Mitglied mindestens einer dynamischen Gruppe ist, eine Azure AD Premium P1-Lizenz. Sie müssen den Benutzern keine Lizenzen zuweisen, damit sie Mitglieder dynamischer Gruppen werden können, aber Sie müssen die Mindestanzahl von Lizenzen im Mandanten haben, um alle diese Benutzer abzudecken. Beispiel: Wenn Sie über insgesamt 1.000 eindeutige Benutzer in allen dynamischen Gruppen Ihres Mandanten verfügen, benötigen Sie mindestens 1.000 Lizenzen für Azure AD Premium P1 oder höher, um die Lizenzanforderung zu erfüllen.
->
+> Für Geräte, die Mitglied einer dynamischen Gerätegruppe sind, ist keine Lizenz erforderlich.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
 

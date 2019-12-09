@@ -14,26 +14,29 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/04/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.custom: aaddev
-ms.reviewer: elisol, lenalepa
+ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebf6b9a07e775c76188dcebece011b01e90fbcf5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6d2efdcf03b829b43f797ddb7ca32bb6d120609e
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803437"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532997"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
-Es gibt zwei Darstellungen von Anwendungen in Azure AD: 
+Es gibt zwei Darstellungen von Anwendungen in Azure AD:
+
 * [Anwendungsobjekte](app-objects-and-service-principals.md#application-object) können, obwohl es [Ausnahmen](#notes-and-exceptions) gibt, als die Definition einer Anwendung betrachtet werden.
 * [Dienstprinzipale](app-objects-and-service-principals.md#service-principal-object) können als eine Instanz einer Anwendung betrachtet werden. Dienstprinzipale verweisen in der Regel auf ein Anwendungsobjekt, und ein Anwendungsobjekt kann verzeichnisübergreifend von mehreren Dienstprinzipalen referenziert werden.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Was sind Anwendungsobjekte und woher stammen sie?
+
 [Anwendungsobjekte](app-objects-and-service-principals.md#application-object) können im Azure-Portal über die Oberfläche [App-Registrierungen](https://aka.ms/appregistrations) verwaltet werden. Anwendungsobjekte stellen für Azure AD eine Beschreibung der Anwendung bereit und können als die Definition der Anwendung betrachtet werden. Sie teilen dem Dienst basierend auf den Einstellungen der Anwendung mit, wie Token für die Anwendung ausgestellt werden müssen. Das Anwendungsobjekt ist nur in seinem Stammverzeichnis vorhanden. Dies gilt auch dann, wenn es sich um eine mehrinstanzenfähige Anwendung handelt, die Dienstprinzipale in anderen Verzeichnissen unterstützt. Das Anwendungsobjekt kann Folgendes enthalten (sowie zusätzliche Informationen, die hier nicht erwähnt werden):
+
 * Name, Logo und Herausgeber
 * Umleitungs-URIs
 * Geheimnisse (symmetrische und/oder asymmetrische Schlüssel für die Authentifizierung der Anwendung)
@@ -45,13 +48,15 @@ Es gibt zwei Darstellungen von Anwendungen in Azure AD:
 * Metadaten und Konfiguration für den Proxy
 
 Anwendungsobjekte können auf verschiedene Arten erstellt werden, darunter:
+
 * Anwendungsregistrierungen im Azure-Portal
 * Erstellen einer neuen Anwendung mit Visual Studio und Konfigurieren der Anwendung zur Verwendung der Azure AD-Authentifizierung
 * Hinzufügen einer Anwendung aus dem App-Katalog durch einen Administrator (dadurch wird ebenfalls ein Dienstprinzipal erstellt)
-* Erstellen einer neuen Anwendung mithilfe der Microsoft Graph-API, der Azure AD Graph-API oder mit PowerShell
+* Erstellen einer neuen Anwendung mithilfe der Microsoft Graph-API oder mithilfe von PowerShell
 * Verschiedene weitere Methoden wie entwicklerspezifische Methoden in Azure oder API-Explorer-Methoden in einem Developer Center
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Was sind Dienstprinzipale und woher stammen sie?
+
 [Dienstprinzipale](app-objects-and-service-principals.md#service-principal-object) können im Azure-Portal über die Oberfläche [Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) verwaltet werden. Dienstprinzipale steuern eine Anwendung, die eine Verbindung mit Azure AD herstellt, und können als die Instanz der Anwendung in Ihrem Verzeichnis betrachtet werden. Für jede Anwendung können maximal ein Anwendungsobjekt (das in einem „Basisverzeichnis“ registriert wird) und ein oder mehrere Dienstprinzipalobjekte vorhanden sein, die Instanzen der Anwendung in jedem Verzeichnis darstellen, in dem diese agiert. 
 
 Der Dienstprinzipal kann Folgendes enthalten:

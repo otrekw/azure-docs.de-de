@@ -12,21 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 11/19/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: e4504a1ae60aaac790ca15c120433159c2ff78fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295400"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207784"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
-Die Microsoft Identity Platform unterstützt die [Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3). So kann eine Anwendung Benutzer anmelden, indem sie ihr Kennwort direkt verarbeitet. Der ROPC-Flow erfordert ein hohes Maß an Vertrauen und die Freigabe von Benutzeranmeldeinformationen. Sie sollten diesen Flow nur dann verwenden, wenn der andere, sicherere Flow nicht genutzt werden kann.
+Die Microsoft Identity Platform unterstützt die [Gewährung für OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3). So kann eine Anwendung Benutzer anmelden, indem sie ihr Kennwort direkt verarbeitet.  In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
+
+> [!WARNING]
+> Microsoft empfiehlt, dass Sie _nicht_ den ROPC-Flow verwenden. In den meisten Szenarien sind sicherere Alternativen verfügbar und werden daher empfohlen. Dieser Flow erfordert ein sehr hohes Maß an Vertrauen in die Anwendung und birgt Risiken, die in anderen Flows nicht vorhanden sind. Verwenden Sie diesen Flow nur, wenn kein anderer Flow verfügbar ist, der mehr Sicherheit bietet.
 
 > [!IMPORTANT]
 >

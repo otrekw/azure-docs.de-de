@@ -1,6 +1,6 @@
 ---
-title: Beheben gängiger Problemen bei der zweistufigen Überprüfung – Azure AD
-description: Erfahren Sie mehr über mögliche Lösungen für einige der gängigeren Probleme bei der zweistufigen Überprüfung.
+title: Häufige Probleme und Lösungen bei der Kontoauthentifizierung – Azure AD
+description: Erfahren Sie mehr über mögliche Probleme und Lösungen für einige der häufigeren zweistufigen Überprüfungsprobleme und Ihr Geschäfts-, Schul- oder Unikonto.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,14 +13,14 @@ ms.date: 10/28/2019
 ms.author: lizross
 ms.reviewer: kexia
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8d226d61f4b67541a6991fef3a435b4cfff500f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9d998fafbf6b3ba0547991de6c3a8e71b66d91f7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805299"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231896"
 ---
-# <a name="troubleshoot-common-two-factor-verification-problems"></a>Beheben gängiger Problemen bei der zweistufigen Überprüfung
+# <a name="common-problems-and-solutions-with-two-factor-verification-and-your-work-or-school-account"></a>Allgemeine Probleme und Lösungen für die zweistufige Überprüfung und Ihr Geschäfts-, Schul- oder Unikonto
 
 Ihre Organisation hat die zweistufige Überprüfung aktiviert, was bedeutet, dass für die Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto nun eine Kombination aus Ihrem Benutzernamen, Ihrem Kennwort und einem mobilen Gerät oder Telefon erforderlich ist. Ihre Organisation hat diese zusätzliche Überprüfung aktiviert, da sie sicherer als ein bloßes Kennworts ist, denn sie basiert auf zwei Authentifizierungsfaktoren: Sie müssen etwas wissen (das Kennwort) und etwas haben (Ihr Smartphone oder ein ähnliches geeignetes Gerät). Die zweistufige Überprüfung trägt dazu bei, Angriffe durch Hacker zu verhindern, die sich für Sie ausgeben, denn auch wenn ein Hacker Ihr Kennwort weiß, ist die Wahrscheinlichkeit gering, dass er auch über Ihr Gerät verfügt.
 

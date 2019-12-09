@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
+title: Rollen, Berechtigungen und Sicherheit in Azure Monitor
 description: Erfahren Sie mehr über die Verwendung der vordefinierten Rollen und Berechtigungen in Azure Monitor, um den Zugriff auf Überwachungsressourcen zu beschränken.
 author: johnkemnetz
 services: azure-monitor
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260623"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305159"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Erste Schritte mit Rollen, Berechtigungen und Sicherheit in Azure Monitor
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

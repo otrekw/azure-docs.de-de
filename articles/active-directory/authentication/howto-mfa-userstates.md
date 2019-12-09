@@ -1,22 +1,22 @@
 ---
-title: Benutzerstatus in Azure Multi-Factor Authentication – Azure Active Directory
-description: Hier erhalten Sie Informationen zu den verschiedenen Benutzerstatus in Azure Multi-Factor Authentication.
+title: Häufig gestellte Fragen zur benutzerspezifischen mehrstufigen Authentifizierung – Azure Active Directory
+description: Hier erfahren Sie, wie Sie MFA aktivieren, indem Sie den Benutzerstatus in Azure Multi-Factor Authentication ändern.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2d22c4a7a8b95f5a200518a3c46fc33f55c66a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 258675a343387eb6930cd3511bf885bf510050c6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569865"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404208"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
 
@@ -56,7 +56,7 @@ Der Anfangsstatus aller Benutzer lautet *Deaktiviert*. Wenn Sie Benutzer für Az
 Führen Sie die folgenden Schritte aus, um auf die Seite zuzugreifen, auf der Sie Benutzerstatus anzeigen und verwalten können:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Navigieren Sie zu **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer**.
+2. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus. Wählen Sie **Benutzer** > **Alle Benutzer** aus.
 3. Wählen Sie **Multi-Factor Authentication** aus.
    ![Auswählen von Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
 4. Es wird eine neue Seite geöffnet, auf der die Benutzerstatus angezeigt werden.

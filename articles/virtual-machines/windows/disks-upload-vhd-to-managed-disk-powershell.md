@@ -1,6 +1,6 @@
 ---
 title: Hochladen einer VHD in Azure mithilfe von Azure PowerShell
-description: Erfahren Sie, wie Sie mit Azure PowerShell eine VHD auf einen verwalteten Azure-Datenträger hochladen und den verwalteten Datenträger regionsübergreifend kopieren können.
+description: Hier erfahren Sie, wie Sie per Azure PowerShell und direktem Upload eine VHD in einen verwalteten Azure-Datenträger hochladen und den verwalteten Datenträger regionsübergreifend kopieren.
 author: roygara
 ms.author: rogarana
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: d193dcd0c0539c2daa7220d915fdc3e02c8ea798
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: dcd2f5f00c00ce0f74c07bfb7ba8e81316d9a53e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512439"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456669"
 ---
 # <a name="upload-a-vhd-to-azure-using-azure-powershell"></a>Hochladen einer VHD in Azure mithilfe von Azure PowerShell
 

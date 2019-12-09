@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 11/06/2019
 ms.author: mlearned
-ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 8457f1c0c5b6107c4b44f6f00236a33f7c67452a
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614471"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325442"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
@@ -26,40 +26,31 @@ Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen 
 
 Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
-Derzeit wird nur die *SKU „Basic IP“* unterstützt. Unterstützung der Ressourcen-SKU *Standard IP* ist in Vorbereitung. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure][ip-sku].
+In diesem Artikel wird die Verwendung einer IP-Adresse der SKU *Standard* mit einem Lastenausgleich der SKU *Standard* behandelt. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure][ip-sku].
 
 ## <a name="create-a-static-ip-address"></a>Erstellen einer statischen IP-Adresse
 
-Wenn Sie eine statische öffentliche IP-Adresse zur Verwendung mit AKS erstellen, sollte die Ressource der IP-Adresse im **Knoten** „Ressourcengruppe“ erstellt werden. Wenn Sie die Ressourcen trennen möchten, beachten Sie im folgenden Abschnitt die Informationen unter [Verwenden einer statischen IP-Adresse außerhalb der Knotenressourcengruppe](#use-a-static-ip-address-outside-of-the-node-resource-group).
-
-Rufen Sie zuerst den Namen der Knotenressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
-
-```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-Erstellen Sie dann über den Befehl [az network public-ip create][az-network-public-ip-create] eine statische öffentliche IP-Adresse. Geben Sie den Knoten „Ressourcengruppe“ an, den Sie über den vorherigen Befehl erhalten haben, und fügen Sie anschließend einen Namen für die Ressource der IP-Adresse hinzu, z.B. *myAKSPublicIP*:
+Erstellen Sie mithilfe des Befehls [az network public-ip create][az-network-public-ip-create] eine statische öffentliche IP-Adresse. Im folgenden Beispiel wird eine statische IP-Adressressource namens *myAKSPublicIP* in der Ressourcengruppe *myResourceGroup* erstellt:
 
 ```azurecli-interactive
 az network public-ip create \
-    --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+    --resource-group myResourceGroup \
     --name myAKSPublicIP \
+    --sku Standard \
     --allocation-method static
 ```
+
+> [!NOTE]
+> Falls Sie in Ihrem AKS-Cluster einen Lastenausgleich der SKU *Basic* verwenden, geben Sie für den Parameter *sku* die Option *Basic* an, wenn Sie eine öffentliche IP-Adresse definieren. Mit dem Lastenausgleich der SKU *Basic* können nur IP-Adressen der SKU *Basic* verwendet werden. Analog dazu können mit einem Lastenausgleich der SKU *Standard* nur IP-Adressen der SKU *Standard* verwendet werden. 
 
 Die IP-Adresse wird ähnlich wie in der folgenden gekürzten Beispielausgabe angezeigt:
 
 ```json
 {
   "publicIp": {
-    "dnsSettings": null,
-    "etag": "W/\"6b6fb15c-5281-4f64-b332-8f68f46e1358\"",
-    "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
-    "idleTimeoutInMinutes": 4,
+    ...
     "ipAddress": "40.121.183.52",
-    [...]
+    ...
   }
 }
 ```
@@ -67,47 +58,23 @@ Die IP-Adresse wird ähnlich wie in der folgenden gekürzten Beispielausgabe ang
 Anschließend können Sie die öffentliche IP-Adresse über den Befehl [az network public-ip list][az-network-public-ip-list] abrufen. Geben Sie den Namen der erstellten Knotenressourcengruppe und die öffentliche IP-Adresse an, und fragen Sie anschließend wie im folgenden Beispiel gezeigt den Wert von *ipAddress* ab:
 
 ```azurecli-interactive
-$ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
+$ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
 
 40.121.183.52
 ```
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Erstellen eines Diensts mithilfe der statischen IP-Adresse
 
-Fügen Sie die `loadBalancerIP`-Eigenschaft und den Wert der öffentlichen statischen IP-Adresse dem YAML-Manifest hinzu, um mit der statischen öffentlichen IP-Adresse einen Dienst zu erstellen. Erstellen Sie eine Datei namens „`load-balancer-service.yaml`“, und fügen Sie den folgenden YAML-Code ein. Geben Sie Ihre eigene öffentliche IP-Adresse an, die Sie im vorherigen Schritt erstellt haben:
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-load-balancer
-spec:
-  loadBalancerIP: 40.121.183.52
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-load-balancer
-```
-
-Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
-
-```console
-kubectl apply -f load-balancer-service.yaml
-```
-
-## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>Verwenden einer statischen IP-Adresse außerhalb der Knotenressourcengruppe
-
-Mit Kubernetes 1.10 oder höher können Sie eine statische IP-Adresse verwenden, die außerhalb der Knotenressourcengruppe erstellt wurde. Der vom AKS-Cluster verwendete Dienstprinzipal muss delegierte Berechtigungen für die anderen Ressourcengruppe aufweisen, wie im folgenden Beispiel gezeigt:
+Vergewissern Sie sich vor dem Erstellen eines Diensts, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt. Beispiel:
 
 ```azurecli-interactive
-az role assignment create\
+az role assignment create \
     --assignee <SP Client ID> \
-    --role "Network Contributor" \
+    --role "Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-Um eine IP-Adresse außerhalb der Knotenressourcengruppe zu verwenden, fügen Sie der Dienstdefinition eine Anmerkung hinzu. Im folgenden Beispiel wird die Anmerkung für die Ressourcengruppe *myResourceGroup* festgelegt. Geben Sie Ihren eigenen Ressourcengruppennamen an:
+Fügen Sie die Eigenschaft `loadBalancerIP` und den Wert der statischen öffentlichen IP-Adresse dem YAML-Manifest hinzu, um einen Dienst vom Typ *LoadBalancer* mit der statischen öffentlichen IP-Adresse zu erstellen. Erstellen Sie eine Datei namens „`load-balancer-service.yaml`“, und fügen Sie den folgenden YAML-Code ein. Geben Sie Ihre eigene öffentliche IP-Adresse an, die Sie im vorherigen Schritt erstellt haben: Im folgenden Beispiel wird auch die Anmerkung auf die Ressourcengruppe *myResourceGroup* festgelegt. Geben Sie Ihren eigenen Ressourcengruppennamen an.
 
 ```yaml
 apiVersion: v1
@@ -123,6 +90,12 @@ spec:
   - port: 80
   selector:
     app: azure-load-balancer
+```
+
+Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
+
+```console
+kubectl apply -f load-balancer-service.yaml
 ```
 
 ## <a name="troubleshoot"></a>Problembehandlung

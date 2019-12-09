@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/31/2019
+ms.date: 11/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c8e4027bd8892ff3bf5c598573b7736aea42953f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9c01e22cfa96321994c16df6b61a52ebd4137549
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602575"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322929"
 ---
-# <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
+# <a name="migrate-users-to-azure-active-directory-b2c"></a>Migrieren von Benutzern zu Azure Active Directory B2C
 
 Beim Migrieren Ihres Identitätsanbieters zu Azure Active Directory B2C (Azure AD B2C) müssen Sie unter Umständen auch die Benutzerkonten migrieren. In diesem Artikel wird erläutert, wie vorhandene Benutzerkonten von einem beliebigen Identitätsanbieter zu Azure AD B2C migriert werden. Der Artikel enthält keine verbindliche Anleitung, sondern beschreibt lediglich einige Szenarien. Der Entwickler ist jeweils dafür verantwortlich, dass ein Ansatz geeignet ist.
 
@@ -306,7 +306,17 @@ Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `AADB2C.User
 
 Mit dem obigen technischen Profil wird ein Eingabeanspruch definiert: `signInName` (als E-Mail senden). Bei der Anmeldung wird der Anspruch an Ihren RESTful-Endpunkt gesendet.
 
-Definieren Sie das technische Profil für die RESTful-API, und konfigurieren Sie anschließend die Azure AD B2C-Richtlinie für das Aufrufen des technischen Profils. Der XML-Codeausschnitt setzt das in der Basisrichtlinie definierte Element `SelfAsserted-LocalAccountSignin-Email` außer Kraft. Darüber hinaus fügt der XML-Codeausschnitt `ValidationTechnicalProfile` mit einer Referenz-ID hinzu, die auf das technische Profil `LocalAccountUserMigration` verweist.
+Nachdem Sie das technische Profil für Ihre RESTful-API definiert haben, konfigurieren Sie das vorhandene technische Profil `SelfAsserted-LocalAccountSignin-Email` so, dass es zusätzlich Ihr technisches Profil der REST-API aufruft, indem es in Ihrer *TrustFrameworkExtensions.xml*-Datei außer Kraft gesetzt wird:
+
+```XML
+<TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+  <ValidationTechnicalProfiles>
+    <ValidationTechnicalProfile ReferenceId="LocalAccountUserMigration" />
+  </ValidationTechnicalProfiles>
+</TechnicalProfile>
+```
+
+Ändern Sie dann die `Id` des technischen Profils `LocalAccountSignIn` in `LocalAccountUserMigration`.
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>Schritt 4.4: Hochladen der Richtlinie in Ihren Mandanten
 

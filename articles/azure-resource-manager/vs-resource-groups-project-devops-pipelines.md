@@ -1,17 +1,14 @@
 ---
-title: CI/CD mit Azure-Pipelines und Resource Manager-Vorlagen
+title: CI/CD mit Azure Pipelines und Vorlagen
 description: Beschreibt die Einrichtung von Continuous Integration in Azure Pipelines mithilfe von Bereitstellungsprojekten für Azure-Ressourcengruppen in Visual Studio für die Bereitstellung von Resource Manager-Vorlagen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 51122e314ebd0a97647fc4026b1f49619950c351
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597513"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143753"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Integrieren von Resource Manager-Vorlagen mit Azure Pipelines
 

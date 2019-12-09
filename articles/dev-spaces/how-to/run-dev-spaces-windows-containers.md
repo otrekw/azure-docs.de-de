@@ -1,22 +1,18 @@
 ---
-title: Verwenden von Azure Dev Spaces für die Interaktion mit Windows-Containern
-titleSuffix: Azure Dev Spaces
+title: Interagieren mit Windows-Containern
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/25/2019
 ms.topic: conceptual
 description: Erfahren Sie, wie Sie Azure Dev Spaces für einen vorhandenen Cluster mit Windows-Containern ausführen.
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Windows-Container
-ms.openlocfilehash: 90d7c8e5fc08405178ab6596b765f289b9bd716f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582772"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484003"
 ---
-# <a name="use-azure-dev-spaces-to-interact-with-windows-containers"></a>Verwenden von Azure Dev Spaces für die Interaktion mit Windows-Containern
+# <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interagieren mit Windows-Containern unter Verwendung von Azure Dev Spaces
 
 Sie können Azure Dev Spaces für neue und vorhandene Kubernetes-Namespaces aktivieren. Azure Dev Spaces führt Dienste aus, die in Linux-Containern ausgeführt werden, und instrumentiert diese. Diese Dienste können auch mit Anwendungen interagieren, die in Windows-Containern im selben Namespace ausgeführt werden. In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Dev Spaces Dienste in einem Namespace mit vorhandenen Windows-Containern ausführen.
 
@@ -64,7 +60,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-Die Beispielanwendung verwendet [Helm][helm-installed], um den Windows-Dienst auf Ihrem Cluster auszuführen. Installieren Sie Helm in Ihrem Cluster, und erteilen Sie ihm die entsprechenden Berechtigungen:
+Die Beispielanwendung verwendet [Helm 2][helm-installed], um den Windows-Dienst in Ihrem Cluster auszuführen. Installieren Sie Helm in Ihrem Cluster, und erteilen Sie ihm die entsprechenden Berechtigungen:
 
 ```console
 helm init --wait
@@ -181,7 +177,7 @@ Informieren Sie sich darüber, wie Azure Dev Spaces Sie bei der Entwicklung komp
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

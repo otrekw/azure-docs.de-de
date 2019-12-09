@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 15e0b8a5b3ea64148eb78cb376500adac2410a71
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: a9c1ca3ac55c1c995ac858e758d6930b49c5ea1c
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949667"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287013"
 ---
 # <a name="azure-serial-console-for-linux"></a>Die serielle Azure-Konsole für Linux
 
@@ -169,7 +169,7 @@ A. Ja. Da die serielle Konsole keine SSH-Schlüssel erfordert, brauchen Sie nur 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden der seriellen Konsole zum [Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
 * Verwenden der seriellen Konsole für [NMI- und SysRq-Aufrufe](serial-console-nmi-sysrq.md).
-* Erfahren Sie, wie Sie die serielle Konsole zum [Aktivieren von GRUB in verschiedenen Distributionen](https://blogs.msdn.microsoft.com/linuxonazure/2018/10/23/why-proactively-ensuring-you-have-access-to-grub-and-sysrq-in-your-linux-vm-could-save-you-lots-of-down-time/) verwenden.
+* Erfahren Sie, wie Sie die serielle Konsole zum [Aktivieren von GRUB in verschiedenen Distributionen](serial-console-grub-proactive-configuration.md) verwenden. 
 * Die serielle Konsole ist auch für [virtuelle Windows-Computer](../windows/serial-console.md) verfügbar.
 * Erfahren Sie mehr zur [Startdiagnose](boot-diagnostics.md).
 

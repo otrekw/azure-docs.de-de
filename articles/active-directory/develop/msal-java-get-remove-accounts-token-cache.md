@@ -18,16 +18,16 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 343abd87d3b5e8b82989b8b370cef61ec6d051df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: fa6c4c53d04f227db7a9a83946182c109dc06d39
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905167"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452485"
 ---
-# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java-msal4j"></a>Aufrufen und Entfernen von Konten aus dem Tokencache mithilfe von MSAL für Java (MSAL4j)
+# <a name="get-and-remove-accounts-from-the-token-cache-using-msal-for-java"></a>Aufrufen und Entfernen von Konten aus dem Tokencache mithilfe von MSAL für Java
 
-MSAL4J stellt standardmäßig einen Tokencache im Arbeitsspeicher bereit. Der In-Memory-Tokencache bleibt für die Lebensdauer der Anwendungsinstanz gültig.
+MSAL für Java stellt standardmäßig einen Tokencache im Arbeitsspeicher bereit. Der In-Memory-Tokencache bleibt für die Lebensdauer der Anwendungsinstanz gültig.
 
 ## <a name="see-which-accounts-are-in-the-cache"></a>Anzeigen, welche Konten sich im Cache befinden
 

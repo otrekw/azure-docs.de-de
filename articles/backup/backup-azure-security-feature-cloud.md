@@ -1,18 +1,14 @@
 ---
-title: Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
+title: Sicherheitsfeatures für den Schutz von Cloudworkloads
 description: In diesem Artikel wird erläutert, wie Sie mit den Azure Backup-Sicherheitsfunktionen für mehr Sicherheit für Ihre Sicherungen sorgen können.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622012"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278231"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Cloudworkloads mit Azure Backup
 
@@ -45,7 +41,7 @@ Vorläufiges Löschen wird derzeit in unterstützt in USA, Westen-Mitte; Asien, 
    > [!NOTE]
    > Wenn im Tresor vorläufig gelöschte Sicherungselemente vorhanden sind, kann der Tresor nicht gelöscht werden. Versuchen Sie erst, den Tresor zu löschen, nachdem die Sicherungselemente endgültig gelöscht wurden und im Tresor kein Element mit dem Status „Vorläufig gelöscht“ mehr vorhanden ist.
 
-4. Das Löschen muss zuerst wieder rückgängig gemacht werden, um die vorläufig gelöschte VM wiederherstellen zu können. Wählen Sie zum Rückgängigmachen des Löschvorgangs die vorläufig gelöschte VM aus, und klicken Sie anschließend auf die Option **Wiederherstellen**.
+4. Das Löschen muss zuerst wieder rückgängig gemacht werden, um die vorläufig gelöschte VM wiederherstellen zu können. Wählen Sie zum Rückgängigmachen des Löschvorgangs den vorläufig gelöschten virtuellen Computer und anschließend **Wiederherstellen** aus.
 
    ![Screenshot: Wiederherstellen der VM im Azure-Portal](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -64,7 +60,7 @@ Vorläufiges Löschen wird derzeit in unterstützt in USA, Westen-Mitte; Asien, 
 
    ![Screenshot: Option „Sicherung fortsetzen“ im Azure-Portal](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
-In diesem Flussdiagramm sind die unterschiedlichen Schritte und Status eines Sicherungselements dargestellt:
+Im folgenden Flussdiagramm sind die unterschiedlichen Schritte und Zustände eines Sicherungselements bei aktiviertem vorläufigem Löschen dargestellt:
 
 ![Lebenszyklus eines vorläufig gelöschten Sicherungselements](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
@@ -72,26 +68,47 @@ Weitere Informationen finden Sie unten im Abschnitt [Häufig gestellte Fragen](b
 
 ## <a name="disabling-soft-delete"></a>Deaktivieren des vorläufigen Löschens
 
-Das vorläufige Löschen ist bei neu erstellten Tresoren standardmäßig aktiviert. Wenn das Sicherheitsfeature für vorläufiges Löschen deaktiviert ist, sind die Sicherungsdaten nicht vor versehentlichen oder böswilligen Löschvorgängen geschützt. Ohne das Feature für vorläufiges Löschen führen alle Löschvorgänge von geschützten Elementen zu einer sofortigen Entfernung, ohne die Möglichkeit zur Wiederherstellung. Da für den Kunden keine Kosten für die Sicherung von Daten im Zustand „Vorläufiges Löschen“ anfallen, wird die Deaktivierung dieses Features nicht empfohlen. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung).
+Vorläufiges Löschen ist für neu erstellte Tresore standardmäßig aktiviert, um Sicherungsdaten vor versehentlichen oder vorsätzlichen Löschvorgängen zu schützen.  Es wird davon abgeraten, dieses Feature zu deaktivieren. Sie sollten das vorläufige Löschen nur dann deaktivieren, wenn Sie planen, Ihre geschützten Elemente in einen neuen Tresor zu verschieben, und nicht die 14 Tage warten können, die für das Löschen und erneute Schützen erforderlich sind (z. B. in einer Testumgebung). Dieses Feature kann nur durch einen Sicherungsadministrator deaktiviert werden. Wenn Sie dieses Feature deaktivieren, führen alle Löschvorgänge von geschützten Elementen zur sofortigen und endgültigen Entfernung der Elemente. Sicherungsdaten, die vor der Deaktivierung dieses Features vorläufig gelöscht wurden, verbleiben im vorläufigen Löschzustand. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden.
 
-### <a name="prerequisites-for-disabling-soft-delete"></a>Voraussetzungen für das Deaktivieren des vorläufigen Löschens
-
-- Das Aktivieren oder Deaktivieren des vorläufigen Löschens für Tresore (ohne geschützte Elemente) kann nur über das Azure-Portal erfolgen. Dies gilt für:
-  - Neu erstellte Tresore, die keine geschützten Elemente enthalten.
-  - Vorhandene Tresore, deren geschützte Objekte gelöscht und abgelaufen sind (über den festgelegten 14-tägigen Aufbewahrungszeitraum hinaus).
-- Wenn das Feature für vorläufiges Löschen für den Tresor deaktiviert ist, können Sie es erneut aktivieren, aber Sie können diese Option nicht rückgängig machen und wieder deaktivieren, wenn der Tresor geschützte Elemente enthält.
-- Sie können das Feature für vorläufiges Löschen für Tresore, die geschützte Elemente enthalten oder sich im Zustand „vorläufig gelöscht“ befinden, nicht deaktivieren. Führen Sie in diesem Fall die folgenden Schritte aus:
-  - Beenden Sie den Schutz der gelöschten Daten für alle geschützten Elemente.
-  - Warten Sie, bis die 14 Tage des Sicherheitsaufbewahrungszeitraums abgelaufen sind.
-  - Deaktivieren Sie das vorläufige Löschen.
-
-Um das vorläufige Löschen zu deaktivieren, stellen Sie sicher, dass die Voraussetzungen erfüllt sind, und führen Sie dann die folgenden Schritte aus:
+Gehen Sie zum Deaktivieren des vorläufigen Löschens wie folgt vor:
 
 1. Wechseln Sie im Azure-Portal zu Ihrem Tresor und dann zu **Einstellungen** -> **Eigenschaften**.
-2. Wählen Sie im Eigenschaftenbereich **Sicherheitseinstellungen** -> **Aktualisieren** aus.
-3. Wählen Sie im Bereich „Sicherheitseinstellungen“ unter „Vorläufiges Löschen“ die Option **Deaktivieren** aus.
+2. Wählen Sie im Eigenschaftenbereich **Sicherheitseinstellungen** -> **Aktualisieren** aus.  
+3. Wählen Sie im Bereich mit den Sicherheitseinstellungen unter **Vorläufiges Löschen** die Option **Deaktivieren** aus.
+
 
 ![Deaktivieren des vorläufigen Löschens](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>Endgültiges Löschen vorläufig gelöschter Sicherungselemente
+
+Sicherungsdaten, die vor der Deaktivierung dieses Features vorläufig gelöscht wurden, verbleiben im vorläufigen Löschzustand. Wenn Sie diese Elemente umgehend endgültig löschen möchten, müssen Sie sie wiederherstellen und anschließend erneut löschen, damit sie endgültig gelöscht werden. 
+
+Folgen Sie diesen Schritten:
+
+1. Führen Sie die Schritte zum [Deaktivieren des vorläufigen Löschens](#disabling-soft-delete) aus. 
+2. Navigieren Sie im Azure-Portal unter Ihrem Tresor zu **Sicherungselemente**, und wählen Sie den vorläufig gelöschten virtuellen Computer aus. 
+
+![Auswählen des vorläufig gelöschten virtuellen Computers](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. Wählen Sie die Option **Wiederherstellen** aus.
+
+![Auswählen von „Wiederherstellen“](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. Daraufhin wird ein Fenster angezeigt. Wählen Sie **Wiederherstellen** aus.
+
+![Auswählen von „Wiederherstellen“](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. Wählen Sie **Sicherungsdaten löschen** aus, um die Sicherungsdaten endgültig zu löschen.
+
+![Auswählen von „Sicherungsdaten löschen“](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. Geben Sie den Namen des Sicherungselements ein, um zu bestätigen, dass Sie die Wiederherstellungspunkte löschen möchten.
+
+![Eingeben des Namens des Sicherungselements](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. Wählen Sie **Löschen** aus, um die Sicherungsdaten des Elements zu löschen. Sie erhalten einer Benachrichtigung, dass die Sicherungsdaten gelöscht wurden.
+
 
 ## <a name="other-security-features"></a>Weitere Sicherheitsfeatures
 
@@ -143,7 +160,7 @@ Wenn Sie nach dem Wiederherstellen den Vorgang „Fortsetzen“ ausführen, ist 
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kann ich meinen Tresor löschen, wenn er vorläufig gelöschte Elemente enthält?
 
-Der Recovery Services-Tresor kann nicht gelöscht werden, wenn sich darin Sicherungselemente mit dem Status „Vorläufig gelöscht“ befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem ersten Löschvorgang endgültig gelöscht. Sie können den Tresor erst löschen, nachdem alle vorläufig gelöschten Elemente entfernt wurden.  
+Der Recovery Services-Tresor kann nicht gelöscht werden, wenn sich darin Sicherungselemente im Zustand „Vorläufig gelöscht“ befinden. Die vorläufig gelöschten Elemente werden 14 Tage nach dem Löschvorgang endgültig gelöscht. Wenn Sie nicht so lange warten möchten, können Sie [vorläufiges Löschen deaktivieren](#disabling-soft-delete), die vorläufig gelöschten Elemente wiederherstellen und sie erneut löschen, um sie endgültig zu löschen. Nachdem Sie sich vergewissert haben, dass keine geschützten oder vorläufig gelöschten Elemente mehr vorhanden sind, kann der Tresor gelöscht werden.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Kann ich die Daten löschen, bevor die 14 Tage im Status „Vorläufig gelöscht“ abgelaufen sind?
 

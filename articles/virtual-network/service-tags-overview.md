@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: 0eb15d1b9b56522b9caa1bb10890eb2b485714e8
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 33ee7351e547ee5ef57ef07f67ba6f5f4410b57f
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586851"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384143"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken 
 <a name="network-service-tags"></a>
@@ -51,6 +51,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider.  
 | **AzureContainerRegistry** | Azure Container Registry-Dienst. | Ausgehend | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos-Datenbank-Dienst. | Ausgehend | Ja | Ja |
 | **AzureDataLake** | Azure Data Lake-Dienst. | Ausgehend | Nein | Ja |
+| **AzureIoTHub** | Azure IoT Hub-Dienst. | Ausgehend | Nein | Nein |
 | **AzureKeyVault** | Azure Key Vault-Dienst.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **AzureActiveDirectory** auf. | Ausgehend | Ja | Ja |
 | **AzureLoadBalancer** | Lastenausgleichsmodul der Azure-Infrastruktur. Das Tag wird in eine [virtuelle IP-Adresse des Hosts](security-overview.md#azure-platform-considerations) (168.63.129.16) umgewandelt, die als Ausgangspunkt für die Integritätstests von Azure fungiert. Sie können diese Regel außer Kraft setzen, wenn Sie den Lastenausgleich von Azure nicht verwenden. | Beides | Nein | Nein |
 | **AzureMachineLearning** | Azure Machine Learning Service. | Ausgehend | Nein | Ja |

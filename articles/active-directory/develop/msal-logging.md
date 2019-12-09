@@ -1,5 +1,6 @@
 ---
-title: Microsoft Authentication Library (MSAL)-Apps anmelden | Azure
+title: Protokollieren in MSAL-Anwendungen (Microsoft Authentication Library, Microsoft-Authentifizierungsbibliothek)
+titleSuffix: Microsoft identity platform
 description: Hier finden Sie Informationen zur Protokollierung in Microsoft Authentication Library-Anwendungen (MSAL-Anwendungen).
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2019
+ms.date: 11/11/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3235037d2b60322ab3e5c393c0a19b1a42bdc6c
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5960389389e4b75794a7334c0bff12ce3ac0f170
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678039"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452465"
 ---
 # <a name="logging-in-msal-applications"></a>Protokollierung in MSAL-Anwendungen
 
@@ -40,6 +41,10 @@ MSAL bietet mehrere Grade für Protokollierungsdetails:
 ## <a name="personal-and-organizational-data"></a>Personenbezogene Daten und Organisationsdaten
 
 Die MSAL-Protokollierung erfasst standardmäßig keine streng vertraulichen personenbezogenen Daten oder Organisationsdaten. Die Bibliothek bietet jedoch die Option, die Protokollierung von personenbezogenen Daten und Organisationsdaten zu aktivieren.
+
+Ausführliche Informationen zur MSAL-Protokollierung in einer bestimmten Sprache finden Sie auf der entsprechenden Registerkarte:
+
+## <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 ## <a name="logging-in-msalnet"></a>Protokollierung in MSAL.NET
 
@@ -80,6 +85,8 @@ class Program
  }
  ```
 
+## <a name="androidtabandroid"></a>[Android](#tab/android)
+
 ## <a name="logging-in-msal-for-android-using-java"></a>Protokollierung in MSAL für Android mithilfe von Java
 
 Aktivieren Sie die Protokollierung bei der App-Erstellung durch Erstellen eines Protokollierungsrückrufs. Der Rückruf übernimmt die folgenden Parameter:
@@ -116,14 +123,15 @@ So deaktivieren Sie die Protokollierung persönlicher Daten und Organisationsdat
 Logger.getInstance().setEnablePII(false);
 ```
 
-Standardmäßig ist die Protokollierung für logcat deaktiviert. So aktivieren Sie Firewallregeln: 
+Standardmäßig ist die Protokollierung für logcat deaktiviert. So aktivieren Sie Firewallregeln:
+
 ```java
 Logger.getInstance().setEnableLogcatLog(true);
 ```
 
-## <a name="logging-in-msaljs"></a>Protokollierung in MSAL.js
+## <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
- Sie können die Protokollierung in MSAL.js aktivieren, indem Sie bei der Konfiguration ein Protokollierungsobjekt zum Erstellen einer `UserAgentApplication`-Instanz übergeben. Dieses Protokollierungsobjekt weist die folgenden Eigenschaften auf:
+ Aktivieren Sie die Protokollierung in MSAL.js (JavaScript), indem Sie beim Konfigurieren ein Protokollierungsobjekt zum Erstellen einer Instanz vom Typ `UserAgentApplication` übergeben. Dieses Protokollierungsobjekt weist die folgenden Eigenschaften auf:
 
 - `localCallback`: Eine Rückrufinstanz, die vom Entwickler bereitgestellt werden kann, um Protokolle benutzerdefiniert zu verarbeiten und zu veröffentlichen. Implementieren Sie die „localCallback“-Methode abhängig davon, wie Sie Protokolle umleiten möchten.
 - `level` (optional): Der konfigurierbare Protokolliergrad. Die unterstützten Protokollierungsebenen sind: `Error`, `Warning`, `Info` und `Verbose`. Der Standardwert lautet `Info`.
@@ -137,7 +145,7 @@ function loggerCallback(logLevel, message, containsPii) {
 
 var msalConfig = {
     auth: {
-        clientId: “<Enter your client id>”,
+        clientId: "<Enter your client id>",
     },
      system: {
              logger: new Msal.Logger(
@@ -153,7 +161,9 @@ var msalConfig = {
 var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 ```
 
-## <a name="logging-in-msal-for-ios-and-macos"></a>Protokollierung in MSAL für iOS und macOS
+## <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
+
+## <a name="msal-for-ios-and-macos-logging-objc"></a>MSAL für iOS- und macOS-Protokollierung – ObjC
 
 Legen Sie einen Rückruf fest, um die MSAL-Protokollierung zu erfassen und in die Protokollierung Ihrer eigenen Anwendung zu integrieren. Die Signatur für den Rückruf sieht folgendermaßen aus:
 
@@ -174,7 +184,6 @@ typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL cont
 
 Beispiel:
 
-Objective-C
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
     {
@@ -188,7 +197,71 @@ Objective-C
     }];
 ```
 
-Swift
+### <a name="personal-data"></a>Personenbezogene Daten
+
+Standardmäßig erfasst und protokolliert MSAL keine personenbezogenen Informationen (PII). Die Bibliothek erlaubt App-Entwicklern jedoch, diese Möglichkeit über eine Eigenschaft in der MSALLogger-Klasse zu aktivieren. Nach der Aktivierung von `pii.Enabled` übernimmt die App die Verantwortung für den sicheren Umgang mit hochgradig sensiblen Daten sowie für die Einhaltung gesetzlicher Anforderungen.
+
+```objc
+// By default, the `MSALLogger` doesn't capture any PII
+
+// PII will be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = YES;
+
+// PII will NOT be logged
+MSALGlobalConfig.loggerConfig.piiEnabled = NO;
+```
+
+### <a name="logging-levels"></a>Protokolliergrade
+
+Verwenden Sie einen der folgenden Werte, um den Protokolliergrad festzulegen, wenn Sie die Protokollierung mit MSAL für iOS und macOS ausführen:
+
+|Level  |BESCHREIBUNG |
+|---------|---------|
+| `MSALLogLevelNothing`| Deaktivieren der gesamten Protokollierung |
+| `MSALLogLevelError` | Standardgrad, gibt Informationen nur aus, wenn Fehler auftreten. |
+| `MSALLogLevelWarning` | Warnungen |
+| `MSALLogLevelInfo` |  Bibliothekseinstiegspunkte mit Parametern und verschiedenen Keychainvorgängen. |
+|`MSALLogLevelVerbose`     |  API-Ablaufverfolgung |
+
+Beispiel:
+
+```objc
+MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
+ ```
+
+ ### <a name="log-message-format"></a>Protokollieren des Nachrichtenformats
+
+Der Nachrichtenteil der MSAL-Protokollmeldungen weist das Format `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message` auf.
+
+Beispiel:
+
+`TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
+
+Das Bereitstellen von Korrelations-IDs und Zeitstempeln ist hilfreich zum Nachverfolgen von Problemen. Informationen zum Zeitstempel und zur Korrelations-ID sind in der Protokollmeldung verfügbar. Der einzige zuverlässige Ort zum Abrufen dieser Informationen sind die MSAL-Protokollierungsmeldungen.
+
+## <a name="swifttabswift"></a>[Swift](#tab/swift)
+
+## <a name="msal-for-ios-and-macos-logging-swift"></a>MSAL für iOS- und macOS-Protokollierung – Swift
+
+Legen Sie einen Rückruf fest, um die MSAL-Protokollierung zu erfassen und in die Protokollierung Ihrer eigenen Anwendung zu integrieren. Die Signatur (dargestellt in Objective-C) für den Rückruf sieht wie folgt aus:
+
+```objc
+/*!
+    The LogCallback block for the MSAL logger
+ 
+    @param  level           The level of the log message
+    @param  message         The message being logged
+    @param  containsPII     If the message might contain Personally Identifiable Information (PII)
+                            this will be true. Log messages possibly containing PII will not be
+                            sent to the callback unless PIllLoggingEnabled is set to YES on the
+                            logger.
+
+ */
+typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
+```
+
+Beispiel:
+
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
     if let message = message, !containsPII
@@ -201,22 +274,10 @@ MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
 }
 ```
 
-### <a name="personal-identifiable-information-pii"></a>Personenbezogene Informationen (Personal Identifiable Information, PII)
+### <a name="personal-data"></a>Personenbezogene Daten
 
-Standardmäßig erfasst und protokolliert MSAL keine PII. Die Bibliothek erlaubt App-Entwicklern jedoch, diese Möglichkeit über eine Eigenschaft in der MSALLogger-Klasse zu aktivieren. Nach der Aktivierung von personenbezogenen Informationen ist die App für die sichere Verarbeitung hochgradig sensibler Daten und die Einhaltung von gesetzlichen Anforderungen verantwortlich.
+Standardmäßig erfasst und protokolliert MSAL keine personenbezogenen Informationen (PII). Die Bibliothek erlaubt App-Entwicklern jedoch, diese Möglichkeit über eine Eigenschaft in der MSALLogger-Klasse zu aktivieren. Nach der Aktivierung von `pii.Enabled` übernimmt die App die Verantwortung für den sicheren Umgang mit hochgradig sensiblen Daten sowie für die Einhaltung gesetzlicher Anforderungen.
 
-Objective-C
-```objc
-// By default, the `MSALLogger` doesn't capture any PII
-
-// PII will be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = YES;
-
-// PII will NOT be logged
-MSALGlobalConfig.loggerConfig.piiEnabled = NO;
-```
-
-Swift
 ```swift
 // By default, the `MSALLogger` doesn't capture any PII
 
@@ -237,16 +298,10 @@ Verwenden Sie einen der folgenden Werte, um den Protokolliergrad festzulegen, we
 | `MSALLogLevelError` | Standardgrad, gibt Informationen nur aus, wenn Fehler auftreten. |
 | `MSALLogLevelWarning` | Warnungen |
 | `MSALLogLevelInfo` |  Bibliothekseinstiegspunkte mit Parametern und verschiedenen Keychainvorgängen. |
-|`MSALLogLevelVerbose`     |  API-Ablaufverfolgung       |
+|`MSALLogLevelVerbose`     |  API-Ablaufverfolgung |
 
 Beispiel:
 
-Objective-C
-```objc
-MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
- ```
- 
- Swift
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
  ```
@@ -260,3 +315,85 @@ Beispiel:
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
 Das Bereitstellen von Korrelations-IDs und Zeitstempeln ist hilfreich zum Nachverfolgen von Problemen. Informationen zum Zeitstempel und zur Korrelations-ID sind in der Protokollmeldung verfügbar. Der einzige zuverlässige Ort zum Abrufen dieser Informationen sind die MSAL-Protokollierungsmeldungen.
+
+## <a name="javatabjava"></a>[Java](#tab/java)
+
+## <a name="msal-for-java-logging"></a>MSAL für Java-Protokollierung
+
+Mit MSAL für Java können Sie die Protokollierungsbibliothek nutzen, die Sie bereits mit Ihrer App verwenden, sofern sie mit SLF4J kompatibel ist. MSAL für Java verwendet [Simple Logging Facade for Java](http://www.slf4j.org/) (SLF4J) als einfache Fassade oder Abstraktion für verschiedene Protokollierungsframeworks (beispielsweise [java.util.logging](https://docs.oracle.com/javase/7/docs/api/java/util/logging/package-summary.html), [Logback](http://logback.qos.ch/) und [Log4j](https://logging.apache.org/log4j/2.x/)). Mit SLF4J kann der Benutzer zur Bereitstellungszeit das gewünschte Protokollierungsframework einbinden.
+
+Wenn Sie also beispielsweise Logback als Protokollierungsframework in Ihrer Anwendung verwenden möchten, fügen Sie der Maven-POM-Datei für Ihre Anwendung die Logback-Abhängigkeit hinzu:
+
+```xml
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>
+```
+
+Fügen Sie anschließend die Logback-Konfigurationsdatei hinzu:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+
+</configuration>
+```
+
+SLF4J wird zur Bereitstellungszeit automatisch an Logback gebunden. MSAL-Protokolle werden in die Konsole geschrieben.
+
+Eine Anleitung für die Bindung an andere Protokollierungsframeworks finden Sie im [SLF4J-Handbuch](http://www.slf4j.org/manual.html).
+
+### <a name="personal-and-organization-information"></a>Personen- oder organisationsbezogene Informationen
+
+Von der MSAL-Protokollierung werden standardmäßig keine personen- oder organisationsbezogenen Daten erfasst oder protokolliert. Im folgenden Beispiel ist die Protokollierung personen- oder organisationsbezogener Daten standardmäßig deaktiviert:
+
+```java
+    PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+            .authority(AUTHORITY)
+            .build();
+```
+
+Aktivieren Sie die Protokollierung personen- oder organisationsbezogener Daten, indem Sie `logPii()` im Clientanwendungsersteller festlegen. Wenn Sie die Protokollierung personen- oder organisationsbezogener Daten aktivieren, muss Ihre App die Verantwortung für den sicheren Umgang mit hochgradig sensiblen Daten sowie für die Einhaltung gesetzlicher Anforderungen übernehmen.
+
+Im folgenden Beispiel ist die Protokollierung personen- oder organisationsbezogener Daten aktiviert:
+
+```java
+PublicClientApplication app2 = PublicClientApplication.builder(PUBLIC_CLIENT_ID)
+        .authority(AUTHORITY)
+        .logPii(true)
+        .build();
+```
+
+## <a name="pythontabpython"></a>[Python](#tab/python)
+
+## <a name="msal-for-python-logging"></a>MSAL für Python-Protokollierung
+
+Bei der Protokollierung in MSAL Python wird der standardmäßige Python-Protokollierungsmechanismus verwendet (beispielsweise `logging.info("msg")`). Die MSAL-Protokollierung kann wie folgt konfiguriert werden. (Ein Praxisbeispiel finden Sie unter [username_password_sample](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/1.0.0/sample/username_password_sample.py#L31L32).)
+
+### <a name="enable-debug-logging-for-all-modules"></a>Aktivieren der Debugprotokollierung für alle Module
+
+Standardmäßig ist die Protokollierung in jedem Python-Skript deaktiviert. Wenn Sie die Debugprotokollierung für alle Module in Ihrem gesamten Python-Skript aktivieren möchten, verwenden Sie Folgendes:
+
+```python
+logging.basicConfig(level=logging.DEBUG)
+```
+
+### <a name="silence-only-msal-logging"></a>Nur Deaktivieren der MSAL-Protokollierung
+
+Wenn Sie nur die MSAL-Protokollierung deaktivieren möchten, die Debugprotokollierung in allen anderen Modulen in Ihrem Python-Skript aber aktiviert sein soll, deaktivieren Sie die von MSAL Python verwendete Protokollierung:
+
+```Python
+logging.getLogger("msal").setLevel(logging.WARN)
+```
+
+### <a name="personal-and-organizational-data-in-python"></a>Personen- und organisationsbezogene Daten in Python
+
+Von MSAL für Python werden keine personen- oder organisationsbezogenen Daten protokolliert. Es gibt keine Eigenschaft zum Aktivieren oder Deaktivieren der Protokollierung personen- oder organisationsbezogener Daten.
+
+Sie können die Python-Standardprotokollierung verwenden, um die gewünschten Inhalte zu protokollieren. Sie sind jedoch für den sicheren Umgang mit sensiblen Daten sowie für die Einhaltung gesetzlicher Anforderungen verantwortlich.
+
+Weitere Informationen zur Protokollierung in Python finden Sie in der [Protokollierungsanleitung](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial) von Python.
+
+---

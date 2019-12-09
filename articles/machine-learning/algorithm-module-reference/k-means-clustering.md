@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 4634519f55582a3184472d28acfd98fa849be86a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497762"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213909"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K-Means Clustering
 
@@ -141,4 +141,4 @@ Sie können dieses Problem auf verschiedene Weise vermeiden:
   
 -   Erstellen Sie mehrere Modelle, wobei Sie die Metrik variieren oder mehr Iterationen vornehmen.  
   
-Im Allgemeinen ist es bei Clusteringmodellen möglich, dass eine bestimmte Konfiguration zu einer lokal optimierten Menge von Clustern führt. Mit anderen Worten, die vom Modell zurückgegebene Menge von Clustern passt nur zu den aktuellen Datenpunkten und ist nicht für andere Daten generalisierbar. Wenn Sie eine andere Anfangskonfiguration verwendet haben, kann die k-Means-Methode eine andere, vielleicht sogar bessere Konfiguration finden. 
+Im Allgemeinen ist es bei Clusteringmodellen möglich, dass eine bestimmte Konfiguration zu einer lokal optimierten Menge von Clustern führt. Mit anderen Worten, die vom Modell zurückgegebene Menge von Clustern passt nur zu den aktuellen Datenpunkten und ist nicht für andere Daten generalisierbar. Wenn Sie eine andere Anfangskonfiguration verwendet haben, kann die k-Means-Methode eine andere (bessere) Konfiguration finden. 

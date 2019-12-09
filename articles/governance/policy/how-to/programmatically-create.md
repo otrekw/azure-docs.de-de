@@ -1,20 +1,20 @@
 ---
 title: Programmgesteuertes Erstellen von Richtlinien
-description: In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy Schritt für Schritt beschrieben.
+description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 98af714e5aaf8e103b81e77c9960589fa0ee6b77
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959420"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463539"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
 In diesem Artikel wird das programmgesteuerte Erstellen und Verwalten von Richtlinien Schritt für Schritt beschrieben. Mit Azure Policy-Definitionen werden verschiedene Regeln und Auswirkungen für Ihre Ressourcen erzwungen. Durch die Erzwingung wird sichergestellt, dass die Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel bleiben.
 
-Weitere Informationen zur Konformität finden Sie unter [Abrufen von Konformitätsdaten](getting-compliance-data.md).
+Weitere Informationen zur Konformität finden Sie unter [Abrufen von Konformitätsdaten](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

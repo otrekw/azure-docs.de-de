@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b0472b10de3641f1575f7f9a5c223ab5032f0e16
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5643f1df6cefa9ca6c60453939be533b2c00eaf4
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066146"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533084"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>In Active Directory B2C verwendbare Anwendungstypen
 
@@ -124,7 +124,7 @@ Informationen über das Einrichten des Clientanmeldeinformations-Flows finden Si
 
 #### <a name="web-api-chains-on-behalf-of-flow"></a>Web-API-Ketten („Im Auftrag von“-Ablauf)
 
-Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor. Dabei wird ein Microsoft-Onlinedienst (z. B. die Azure AD Graph-API) aufgerufen.
+Viele Architekturen umfassen eine Web-API, von der eine andere Downstream-Web-API aufgerufen werden muss, wobei beide durch Azure AD B2C gesichert sind. Dieses Szenario kommt häufig bei nativen Clients mit Web-API-Back-End vor. Dabei wird ein Microsoft-Onlinedienst (z. B. die Microsoft Graph-API oder Azure AD Graph-API) aufgerufen.
 
 Dieses Szenario der verketteten Web-API kann mithilfe der Berechtigung für Anmeldeinformationen über den OAuth 2.0-JWT-Bearer unterstützt werden, auch bekannt als „Im Auftrag von“-Ablauf.  Der „Im Auftrag von“-Ablauf ist in Azure AD B2C derzeit noch nicht implementiert.
 

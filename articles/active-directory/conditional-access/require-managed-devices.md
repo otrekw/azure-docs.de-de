@@ -1,22 +1,22 @@
 ---
-title: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs von Azure Active Directory | Microsoft-Dokumentation
+title: 'Bedingter Zugriff: Erzwingen von verwalteten Geräten – Azure Active Directory'
 description: Hier erfahren Sie, wie Sie gerätebasierte bedingte Zugriffsrichtlinien von Azure Active Directory (Azure AD) konfigurieren, die für den Zugriff auf Cloud-Apps die Verwendung verwalteter Geräte erforderlich machen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 11/22/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c99b8390cd43c3f0767123684fe06e0ae74f86
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 0caf8e8d5e18efc0a7332f97acccc394051ed360
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509363"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74452403"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung verwalteter Geräte für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs
 
@@ -49,11 +49,11 @@ Einfach ausgedrückt: Verwaltete Geräte sind Geräte, die *in irgendeiner Weise
 
 Zum Registrieren eines Geräts bei Azure AD gibt drei Optionen: 
 
-- **Bei Azure AD registrierte Geräte**: zum Registrieren eines persönlichen Geräts bei Azure AD
-- **In Azure AD eingebundene Geräte**: Diese Option ermöglicht es, ein Windows 10-Organisationsgerät bei Azure AD zu registrieren, das nicht in ein lokales Active Directory eingebunden ist. 
-- **In Azure AD eingebundene Hybridgeräte:** zum Registrieren eines Organisationsgeräts mit Windows 10 oder einer unterstützten niedrigeren Version bei Azure AD, das in ein lokales Active Directory eingebunden ist.
+- **Bei Azure AD registrierte Geräte:** Zum Registrieren eines persönlichen Geräts bei Azure AD.
+- **In Azure AD eingebundene Geräte:** Diese Option ermöglicht es, ein Windows 10-Organisationsgerät bei Azure AD zu registrieren, das nicht in ein lokales Active Directory eingebunden ist. 
+- **In Azure AD eingebundene Hybridgeräte:** Zum Registrieren eines Organisationsgeräts mit Windows 10 oder einer unterstützten niedrigeren Version bei Azure AD, das in ein lokales Active Directory eingebunden ist.
 
-Diese drei Optionen werden im Artikel [„Was ist die Geräteidentität?“](../devices/overview.md) behandelt.
+Diese drei Optionen werden im Artikel [Was ist eine Geräteidentität?](../devices/overview.md) erläutert.
 
 Damit aus einem registrierten Gerät ein verwaltetes Gerät wird, muss das Gerät entweder ein **in Azure AD eingebundenes Hybridgerät** oder ein **als kompatibel markiertes Gerät** sein.  
 
@@ -91,6 +91,9 @@ Bei einem als kompatibel markierten Gerät können Sie Folgendes voraussetzen:
 - Ihre Unternehmensdaten sind durch eine bessere Kontrolle der Zugriffs- und Freigabemöglichkeiten Ihrer Mitarbeiter geschützt
 - Das Gerät und seine Apps sind kompatibel mit den Sicherheitsanforderungen des Unternehmens
 
+> [!NOTE]
+> Wenn Sie eine Richtlinie so konfigurieren, dass konforme Geräte erforderlich sind, werden Benutzer unter Mac, iOS und Android möglicherweise aufgefordert, während der Richtlinienauswertung ein Gerätezertifikat auszuwählen. Dies ist ein bekanntes Verhalten.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Bevor Sie eine Richtlinie für den gerätebasierten bedingten Zugriff in Ihrer Umgebung konfigurieren, sollten Sie die [Best Practices für den bedingten Zugriff in Azure Active Directory](best-practices.md) kennen.
+Bevor Sie eine Richtlinie für den gerätebasierten bedingten Zugriff in Ihrer Umgebung konfigurieren, sollten Sie die [Bewährte Methoden für den bedingten Zugriff in Azure Active Directory](best-practices.md) kennen.

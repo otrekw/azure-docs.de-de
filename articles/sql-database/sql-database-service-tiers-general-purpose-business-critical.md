@@ -1,5 +1,5 @@
 ---
-title: „Universell“ und „Unternehmenskritisch“
+title: Universell und unternehmenskritisch
 description: In diesem Artikel werden die Dienstebenen „Universell“ und „Unternehmenskritisch“ im vCore-basierten Kaufmodell erläutert.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 10/01/2019
-ms.openlocfilehash: 85b610969f9e5e85d014f89b90cfd862731aaf0c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5e3cc12351313b8fb1dedf795031202070ac7cf7
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821074"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558990"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Dienstebenen für Azure SQL-Datenbank
 

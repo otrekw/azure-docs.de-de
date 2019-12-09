@@ -15,12 +15,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ac8acf2193442de5c85e0a1134d46330821c77b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 92ea116414e12cb231fdbaa5ec9ad375d2c0eea9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756440"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144994"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Aktivieren einer benutzerdefinierten Azure AD-Rolle in Privileged Identity Management
 
@@ -39,6 +39,9 @@ Wenn Sie eine Azure AD-Rolle aktivieren müssen, fordern Sie die Aktivierung an,
 1. Wählen Sie **Benutzerdefinierte Azure AD-Rollen** aus, um eine Liste der berechtigten benutzerdefinierten Azure AD-Rollenzuweisungen anzuzeigen.
 
    ![Anzeigen der Liste von berechtigten benutzerdefinierten Azure AD-Rollenzuweisungen](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
+
+> [!Note] 
+>  Bevor Sie eine Rolle zuweisen können, müssen Sie zunächst eine Rolle erstellen/konfigurieren. Weitere Informationen zum Konfigurieren von benutzerdefinierten AAD-Rollen finden Sie [hier] (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure)
 
 1. Suchen Sie auf der Seite **Benutzerdefinierte Azure AD-Rollen (Vorschau)** die gewünschte Zuweisung.
 1. Wählen Sie **Ihre Rolle aktivieren** aus, um die Seite **Aktivieren** zu öffnen.

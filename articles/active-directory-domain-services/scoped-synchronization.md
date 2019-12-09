@@ -9,18 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 5fe19d3800883782187ae15c0a6fc0cd9709f0e9
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70842669"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74546247"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD für Azure Active Directory Domain Services
 
-Zum Bereitstellen von Authentifizierungsdiensten synchronisiert Azure Active Directory Domain Services (Azure AD DS) Benutzer und Gruppen von Azure AD. In einer Hybridumgebung können Benutzer und Gruppen aus einer lokalen AD DS-Umgebung (Active Directory Domain Services) zuerst mithilfe von Azure AD Connect mit Azure AD und anschließend mit Azure AD DS synchronisiert werden. Standardmäßig werden alle Benutzer und Gruppen aus einem Azure AD-Verzeichnis mit einer verwalteten Azure AD DS-Domäne synchronisiert. Bei speziellen Anforderungen können Sie stattdessen festlegen, dass nur eine definierte Gruppe von Benutzern synchronisiert werden soll.
+Zum Bereitstellen von Authentifizierungsdiensten synchronisiert Azure Active Directory Domain Services (Azure AD DS) Benutzer und Gruppen von Azure AD. In einer Hybridumgebung können Benutzer und Gruppen aus einer lokalen AD DS-Umgebung (Active Directory Domain Services) zuerst mithilfe von Azure AD Connect mit Azure AD und anschließend mit Azure AD DS synchronisiert werden.
+
+Standardmäßig werden alle Benutzer und Gruppen aus einem Azure AD-Verzeichnis mit einer verwalteten Azure AD DS-Domäne synchronisiert. Bei speziellen Anforderungen können Sie stattdessen festlegen, dass nur eine definierte Gruppe von Benutzern synchronisiert werden soll.
 
 In diesem Artikel erfahren Sie, wie Sie eine verwaltete Azure AD DS-Domäne mit einer bereichsbezogenen Synchronisierung erstellen, und anschließend die Gruppe der Benutzer für diesen Bereich ändern oder deaktivieren.
 
@@ -53,22 +55,22 @@ Zum Konfigurieren der Einstellungen für die bereichsbezogene Synchronisierung v
 
 ## <a name="enable-scoped-synchronization-using-the-azure-portal"></a>Aktivieren der bereichsbezogenen Synchronisierung im Azure-Portal
 
-1. Führen Sie die Anweisungen im [Tutorial zum Erstellen und Konfigurieren einer Azure AD DS-Instanz](tutorial-create-instance.md) aus. Sorgen Sie dafür, dass Sie bis auf die Angabe des Synchronisierungsbereichs alle Voraussetzungen erfüllt und die Bereitstellungsschritte ausgeführt haben.
+1. Führen Sie die Anweisungen im [Tutorial zum Erstellen und Konfigurieren einer Azure AD DS-Instanz](tutorial-create-instance-advanced.md) aus. Sorgen Sie dafür, dass Sie bis auf die Angabe des Synchronisierungsbereichs alle Voraussetzungen erfüllt und die Bereitstellungsschritte ausgeführt haben.
 1. Wählen Sie beim Synchronisierungsschritt **Bereichsbezogen** aus, und legen Sie dann die Azure AD-Gruppen fest, die mit der Azure AD DS-Instanz synchronisiert werden sollen.
 
 Es kann bis zu einer Stunde dauern, bis die Bereitstellung der verwalteten Azure AD DS-Domäne abgeschlossen ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die verwaltete Azure AD DS-Domäne die Bereitstellung abgeschlossen hat, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Azure AD DS-Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
-* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
+    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="modify-scoped-synchronization-using-the-azure-portal"></a>Ändern der bereichsbezogenen Synchronisierung im Azure-Portal
 
 Führen Sie die folgenden Schritte aus, um die Liste der Gruppen zu ändern, deren Benutzer mit der verwalteten Azure AD DS-Domäne synchronisiert werden sollen:
 
-1. Wählen Sie im Azure-Portal Ihre Azure AD DS-Instanz aus, z.B. *contoso.com*.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre Instanz aus (beispielsweise *contoso.com*).
 1. Wählen Sie im Menü auf der linken Seite **Synchronisierung** aus.
 1. Um eine Gruppe hinzuzufügen, wählen Sie im oberen Bereich **+ Gruppen auswählen** aus, und wählen Sie dann die hinzuzufügenden Gruppen aus.
 1. Um eine Gruppe aus dem Synchronisierungsbereich zu entfernen, wählen Sie diese in der Liste der derzeit synchronisierten Gruppen aus, und wählen Sie dann **Gruppen entfernen** aus.
@@ -80,7 +82,7 @@ Wenn Sie den Bereich der Synchronisierung ändern, werden zwangsläufig alle Dat
 
 Führen Sie die folgenden Schritte aus, um die gruppenbasierte bereichsbezogene Synchronisierung für eine verwaltete Azure AD DS-Domäne zu deaktivieren:
 
-1. Wählen Sie im Azure-Portal Ihre Azure AD DS-Instanz aus, z.B. *contoso.com*.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre Instanz aus (beispielsweise *contoso.com*).
 1. Wählen Sie im Menü auf der linken Seite **Synchronisierung** aus.
 1. Legen Sie den Synchronisierungsbereich von **Bereichsbezogen** auf **Alle** fest, und wählen Sie dann **Synchronisierungsbereich speichern** aus.
 
@@ -211,11 +213,13 @@ Verwenden Sie PowerShell, um diese Schritte auszuführen. Lesen Sie die Anweisun
 
 Es dauert einige Minuten, bis die Ressource erstellt und die Steuerung an die PowerShell-Eingabeaufforderung zurückgegeben wird. Im Hintergrund wird weiterhin die verwaltete Azure AD DS-Domäne bereitgestellt, und es kann bis zu einer Stunde dauern, bis die Bereitstellung beendet ist. Während dieser Bereitstellungsphase wird im Azure-Portal auf der Seite **Übersicht** für Ihre verwaltete Azure AD DS-Domäne der aktuelle Status angezeigt.
 
-Wenn im Azure-Portal angezeigt wird, dass die verwaltete Azure AD DS-Domäne die Bereitstellung abgeschlossen hat, müssen Sie die folgenden Aufgaben ausführen:
+Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete Azure AD DS-Domäne abgeschlossen ist, müssen Sie die folgenden Aufgaben ausführen:
 
 * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-    * Wählen Sie zum Konfigurieren von DNS Ihre verwaltete Azure AD DS-Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
-* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
+    * Wählen Sie zum Konfigurieren von DNS Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, diese DNS-Einstellungen automatisch zu konfigurieren.
+* Wenn Sie eine von Azure AD DS verwaltete Domäne in einer Region erstellt haben, die Verfügbarkeitszonen unterstützt, erstellen Sie eine Netzwerksicherheitsgruppe, um den Datenverkehr im virtuellen Netzwerk für die von Azure AD DS verwaltete Domäne zu beschränken. Ein Azure-Standard-Load Balancer wird erstellt, der diese Regeln erfordert. Diese Netzwerksicherheitsgruppe sichert Azure AD DS. Sie ist erforderlich, damit die verwaltete Domäne ordnungsgemäß funktioniert.
+    * Wählen Sie zum Erstellen der Netzwerksicherheitsgruppe und der erforderlichen Regeln Ihre von Azure AD DS verwaltete Domäne im Portal aus. Im Fenster **Übersicht** werden Sie aufgefordert, die entsprechende Netzwerksicherheitsgruppe automatisch zu erstellen und zu konfigurieren.
+* [Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](tutorial-create-instance-advanced.md#enable-user-accounts-for-azure-ad-ds), damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden können.
 
 ## <a name="modify-scoped-synchronization-using-powershell"></a>Ändern der bereichsbezogenen Synchronisierung mit PowerShell
 

@@ -1,5 +1,5 @@
 ---
-title: Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer für die Anmeldung
+title: Verwenden von verwalteten Identitäten auf einem virtuellen Azure-Computer für die Anmeldung – Azure AD
 description: Ausführliche Anweisungen und Beispiele für die Verwendung von verwalteten Identitäten eines virtuellen Azure-Computers für die Anmeldung und den Zugriff auf Ressourcen eines Skriptclients
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43aa0859fa67cc6b2f5c5974f072e7b6d4b29527
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112963"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74547383"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer für die Anmeldung 
 
@@ -41,7 +41,7 @@ Wenn Sie die Azure PowerShell- oder Azure CLI-Beispiele in diesem Artikel verwen
 
 ## <a name="overview"></a>Übersicht
 
-Verwaltete Identitäten für Azure-Ressourcen bieten ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object), das [bei der Aktivierung von verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-it-work) auf dem virtuellen Computer erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
+Verwaltete Identitäten für Azure-Ressourcen bieten ein [Dienstprinzipalobjekt](../develop/developer-glossary.md#service-principal-object), das [bei der Aktivierung von verwalteten Identitäten für Azure-Ressourcen](overview.md#how-does-the-managed-identities-for-azure-resources-work) auf dem virtuellen Computer erstellt wird. Der Dienstprinzipal kann Zugriff auf Azure-Ressourcen erhalten und von Skript- oder Befehlszeilenclients als Identität für die Anmeldung und den Zugriff auf Ressourcen verwendet werden. Bislang war für einen Skriptclient für den Zugriff auf geschützte Ressourcen unter seiner eigenen Identität Folgendes erforderlich:  
 
    - Registrierung und Zustimmung als vertrauliche und Webclientanwendung in Azure AD
    - Anmeldung unter dem zugehörigen Dienstprinzipal mit den Anmeldeinformationen der Anwendung (wahrscheinlich im Skript eingebettet)

@@ -9,35 +9,34 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
-ms.date: 01/25/2019
-ms.openlocfilehash: f7e5f698a822cd68d8319102e1b8bddbbfa8ad70
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 474c2f4f00374ce785b81fe048e11cb353b3078a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821337"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151212"
 ---
 # <a name="monitor-and-improve-performance"></a>Überwachen und Verbessern der Leistung
 
 Azure SQL-Datenbank stellt intelligente Aktionen zur Optimierung und Empfehlungen bereit, mit denen potenzielle Probleme in Ihrer Datenbank identifiziert werden und Aktionen zur Leistungsverbesserung Ihrer Workload vorgeschlagen werden.
 
-Verwenden Sie die Kachel **Leistung** auf der Seite „Übersicht“, um die Leistung Ihrer Datenbank zu überprüfen, oder navigieren Sie zum Abschnitt „Support und Problembehandlung“ herunter:
+## <a name="performance-tuning-options"></a>Optionen für die Leistungsoptimierung
 
-   ![Anzeigen der Leistung](./media/sql-database-performance/entries.png)
+Leistungsoptimierungsoptionen für Azure SQL-Datenbank finden Sie im Datenbanknavigationsmenü unter „Intelligente Leistung“:
 
-Im Abschnitt „Support und Problembehandlung“ können Sie die folgenden Seiten verwenden:
-
-
-1. [Leistungsübersicht](#performance-overview) zum Überwachen der Leistung Ihrer Datenbank. 
-2. [Empfehlungen zur Leistung](#performance-recommendations) zum Suchen von Empfehlungen, die die Leistung Ihrer Workload verbessern können.
-3. [Statistik zur Abfrageleistung](#query-performance-insight) zum Identifizieren der Abfragen mit dem größten Ressourcenverbrauch.
-4. [Automatische Optimierung](#automatic-tuning) zum Aktivieren der automatischen Optimierung Ihrer Datenbank durch Azure SQL-Datenbank.
+| Option für die Leistungsoptimierung | Unterstützung für Einzel- und Pooldatenbanken | Unterstützung der Instanzdatenbank |
+| :----------------------------- | ----- | ----- |
+| **Leistungsübersicht**: Ermöglicht die Überwachung aller Leistungsaktivitäten für Ihre Datenbank. | Ja | Nein | 
+| **Leistungsempfehlungen**: Zeigt Leistungsempfehlungen an, die zur Verbesserung der Workloadleistung beitragen können. | Ja | Nein | 
+| **Statistik zur Abfrageleistung**: Zeigt die Leistung der Abfragen mit dem höchsten Verbrauch der Datenbank an. | Ja | Nein | 
+| **Automatische Optimierung**: Verwenden Sie Azure SQL-Datenbank zur automatischen Optimierung der Datenbankleistung. | Ja | Nein | 
 
 ## <a name="performance-overview"></a>Leistungsübersicht
 
 Diese Ansicht bietet eine Übersicht über die Leistung der Datenbank und unterstützt Sie bei der Leistungsoptimierung und Fehlerbehebung. 
 
-![Leistung](./media/sql-database-performance/performance.png)
+![Leistungsübersicht für Azure SQL-Datenbank](./media/sql-database-performance/performance-overview-annotated.png)
 
 * Die Kachel **Empfehlungen** bietet eine Aufschlüsselung der Optimierungsempfehlungen für Ihre Datenbank (bei mehreren Empfehlungen werden die wichtigsten drei angezeigt). Durch Klicken auf diese Kachel gelangen Sie zu **[Empfehlungen zur Leistung](#performance-recommendations)** . 
 * Die Kachel **Optimierungsaktivität** bietet eine Zusammenfassung der laufenden und abgeschlossenen Optimierungsaktionen für die Datenbank, sodass Sie einen schnellen Überblick über den Verlauf der Optimierungsaktivitäten erhalten. Wenn Sie auf diese Kachel klicken, gelangen Sie zur Ansicht des vollständigen Optimierungsverlaufs für Ihre Datenbank.
@@ -52,15 +51,11 @@ Diese Seite bietet intelligente [Empfehlungen zur Optimierung](sql-database-advi
 * Empfehlungen bei Schemaproblemen in der Datenbank.
 * Empfehlungen, wenn Abfragen von parametrisierten Abfragen profitieren können.
 
-![Leistung](./media/sql-database-performance/recommendations.png)
+![Leistungsempfehlungen für Azure SQL-Datenbank](./media/sql-database-performance/performance-recommendations-annotated.png)
 
 Sie können auch den vollständigen Verlauf der Aktionen zur Leistungsoptimierung suchen, die in der Vergangenheit angewendet wurden.
 
 Im Artikel [Find and apply performance recommendations (Suchen und Anwenden von Empfehlungen zur Leistung)](sql-database-advisor-portal.md) finden Sie Informationen zur Anwendung von Empfehlungen zur Leistung.
-
-## <a name="automatic-tuning"></a>Automatische Optimierung
-
-Azure SQL-Datenbanken können automatisch die Leistung der Datenbank optimieren, indem sie [Empfehlungen zur Leistung](sql-database-advisor.md) anwenden. Weitere Informationen finden Sie unter [Automatische Optimierung](sql-database-automatic-tuning.md). Lesen Sie zum Aktivieren den Artikel [Aktivieren der automatischen Optimierung](sql-database-automatic-tuning-enable.md).
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
@@ -70,12 +65,19 @@ Mithilfe von [Query Performance Insight](sql-database-query-performance.md) kön
 * Informationen zu Abfragen mit der höchsten CPU-Auslastung, für die unter Umständen eine Leistungssteigerung erzielt werden kann. 
 * Die Möglichkeit zum Durchführen eines Drilldowns in die Details einer Abfrage.​ 
 
-  ![Leistungsdashboard](./media/sql-database-query-performance/performance.png)
+  ![Statistik zur Abfrageleistung für Azure SQL-Datenbank](./media/sql-database-performance/query-performance-insights-annotated.png)
 
 Weitere Informationen zu dieser Seite finden Sie im Artikel **[How to use Query Performance Insight (Anleitung zur Verwendung der Statistik zur Abfrageleistung)](sql-database-query-performance.md)** .
+
+## <a name="automatic-tuning"></a>Automatische Optimierung
+
+Azure SQL-Datenbanken können automatisch die Leistung der Datenbank optimieren, indem sie [Empfehlungen zur Leistung](sql-database-advisor.md) anwenden. Lesen Sie zum Aktivieren den Artikel [Aktivieren der automatischen Optimierung](sql-database-automatic-tuning-enable.md).
+
+  ![Automatische Optimierung für Azure SQL-Datenbank](./media/sql-database-performance/automatic-tuning-annotated.png)
+
+Weitere Informationen finden Sie unter [Automatische Optimierung](sql-database-automatic-tuning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Leitfaden zur Azure SQL-Datenbankleistung für Einzeldatenbanken](sql-database-performance-guidance.md)
 * [Wann sollte ein Pool für elastische Datenbanken verwendet werden?](sql-database-elastic-pool-guidance.md)
-

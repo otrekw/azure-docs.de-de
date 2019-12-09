@@ -6,33 +6,24 @@ ms.author: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.openlocfilehash: 7af40404550fb78af891563d8256f23620781b24
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.date: 11/21/2019
+ms.openlocfilehash: 5c77fb30ef60c1ad82d0a87442bc8af186c54321
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841531"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383910"
 ---
-# <a name="understanding-the-ip-address-of-your-iot-hub"></a>Grundlegendes zur IP-Adresse Ihres IoT-Hubs
+# <a name="iot-hub-ip-addresses"></a>IP-Adressen von IoT Hub
 
-Die IP-Adresse Ihres IoT-Hubs ist ein öffentlicher Endpunkt für Ihren Hub mit Lastenausgleich, KEINE dedizierte IP-Adresse. Die Adresse wird durch den Netzwerkadressbereich der Azure-Region bestimmt, in der sie bereitgestellt wird. Diese IP-Adresse kann sich ohne vorherige Ankündigung ändern. Die IP-Adresse Ihres IoT-Hubs kann sich beispielsweise bei Aktualisierungen des Rechenzentrumsnetzwerks, bei einer Notfallwiederherstellung des Rechenzentrums oder bei einem regionalen Failover eines IoT-Hubs ändern. Weitere Informationen zum regionalen Failover und zur Verfügbarkeit von Azure IoT Hub-Instanzen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für Azure IoT Hub](iot-hub-ha-dr.md).
+Die IP-Adresspräfixe von IoT Hub werden regelmäßig unter dem [Diensttag](../virtual-network/service-tags-overview.md) *AzureIoTHub* veröffentlicht. Ihre IoT-Geräte müssen über ausgehende Konnektivität mit Adresspräfixen verfügen, die unter dem Diensttag *AzureIoTHub* aufgeführt sind. Ihre IoT-Anwendungsdienste müssen zudem über ausgehende Konnektivität mit Adresspräfixen verfügen, die unter dem Diensttag *EventHub* aufgeführt sind.
 
-Die IP-Adresse Ihres IoT-Hubs ändert sich nach einem Failover in eine andere Region. Sie können diese Funktionalität testen, indem Sie das Tutorial [Ausführen eines manuellen Failovers für einen IoT-Hub](tutorial-manual-failover.md) absolvieren.
 
-## <a name="discover-your-iot-hub-ip-address"></a>Ermitteln der IP-Adresse Ihres IoT-Hubs
+## <a name="best-practices"></a>Bewährte Methoden
 
-Sie können die IP-Adresse Ihres IoT-Hubs mit einem DNS-Reverse-Lookup des CNAME-Eintrags ([*Name-des-IoT-Hubs*].azure-devices.net) ermitteln. Sie können **nslookup** verwenden, um die IP-Adresse eines IoT-Hubs zu überprüfen:
+* Die IP-Adresspräfixe von IoT Hub können sich möglicherweise ändern. Solche Änderungen werden regelmäßig mithilfe von Diensttags veröffentlicht, bevor sie in Kraft treten. Daher ist es wichtig, geeignete Prozesse zu entwickeln, um regelmäßig die neuesten Diensttags abzurufen und zu verwenden. Dieser Prozess kann mithilfe der [Diensttagermittlungs-API](../virtual-network/service-tags-overview.md#service-tags-in-on-premises) automatisiert werden.
+* Verwenden Sie das Tag *AzureIoTHub.[Regionsname]* , um die IP-Präfixe zu ermitteln, die von IoT Hub-Endpunkten in einer bestimmten Region verwendet werden. Achten Sie zur Einbeziehung von Rechenzentrums-Notfallwiederherstellung oder [regionalem Failover](iot-hub-ha-dr.md) darauf, dass die Konnektivität mit IP-Präfixen der geografisch gekoppelten Region Ihrer IoT Hub-Instanz ebenfalls aktiviert ist.
 
-```cmd/sh
-nslookup {YourIoTHubName}.azure-devices.net
-```
-
-Diese IP-Adresse kann sich ohne vorherige Ankündigung ändern. Im Fall eines Failovers oder einer Notfallwiederherstellung müssen Sie die IP-Adresse Ihres IoT-Hubs in der sekundären Region abfragen.
-
-## <a name="outbound-firewall-rules-for-iot-hub"></a>Ausgehende Firewallregeln für IoT-Hubs
-
-Versuchen Sie, Firewallregeln und -filter basierend auf dem Hostnamen oder der Domäne des IoT-Hubs zu erstellen. Wenn Sie nur ausgehenden Datenverkehr an bestimmte Adressen zulassen können, fragen Sie die IP-Adresse Ihres IoT-Hubs regelmäßig ab, und aktualisieren Sie Ihre Firewallregeln.
 
 ## <a name="support-for-ipv6"></a>Unterstützung für IPv6 
 

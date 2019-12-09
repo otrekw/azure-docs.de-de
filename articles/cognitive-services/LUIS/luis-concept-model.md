@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4cbca96ed95167615f3ff2876e27e546d08d92f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506761"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280869"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Entwerfen mit Absichts- und Entitätsmodellen 
 
@@ -37,7 +37,7 @@ Die Aufschlüsselung von Modellen setzt sich aus folgenden Teilen zusammen:
 * [Durch maschinelles Lernen erworbene Entitäten](#machine-learned-entities)
     * [Unterkomponenten](#entity-subcomponents-help-extract-data) (ebenfalls durch maschinelles Lernen gewonnene Entitäten)
         * Von Features bereitgestellte [Deskriptoren](#descriptors-are-features) 
-        * Von nicht durch maschinelles Lernen erworbenen Entitäten bereitgestellte [Einschränkungen](#constraints-are-text-rules) (reguläre Ausdrücke und Listen).
+        * Von nicht durch maschinelles Lernen erworbenen Entitäten bereitgestellte [Einschränkungen](#constraints-are-text-rules) (beispielsweise reguläre Ausdrücke und Listen)
 
 ## <a name="v2-authoring-models"></a>V2-Erstellungsmodelle
 
@@ -134,7 +134,7 @@ Eine Absicht ist das gewünschte Ergebnis der _gesamten_ Äußerung, während En
 
 Diese Äußerung _muss_ eine Absicht und _kann_ Entitäten aufweisen:
 
-`Buy a airline ticket from Seattle to Cairo`
+`Buy an airline ticket from Seattle to Cairo`
 
 Diese Äußerung verfolgt ein einzelnes Ziel:
 

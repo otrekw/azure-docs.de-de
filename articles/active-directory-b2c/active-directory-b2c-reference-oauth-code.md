@@ -11,12 +11,12 @@ ms.date: 02/19/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 1ae3f739d5104ea9a98889f7fbce938b835e84aa
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d738bfb8bcd11c8da4c39d873c7f298b8c49af98
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385943"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167187"
 ---
 # <a name="oauth-20-authorization-code-flow-in-azure-active-directory-b2c"></a>OAuth 2.0-Autorisierungscodefluss in Azure Active Directory B2C
 
@@ -115,6 +115,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 |{tenant}| Erforderlich | Name des Azure AD B2C-Mandanten.|
 |{policy}| Erforderlich| Der Benutzerflow, der zum Abrufen des Autorisierungscodes verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. |
 | client_id |Erforderlich |Die Anwendungs-ID, die Ihrer App im [Azure-Portal](https://portal.azure.com) zugewiesen wird.|
+| client_secret | Ja, in Web-Apps | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Geheime Client-Schlüssel werden in diesem Flow für Web-App-Szenarien verwendet, in denen der Client einen geheimen Client-Schlüssel sicher speichern kann. Bei nativen App-Szenarien (öffentlicher Client) können geheime Clientschlüssel nicht sicher gespeichert werden, und werden daher nicht in diesem Aufruf verwendet. Wenn Sie einen geheimen Clientschlüssel verwenden, ändern Sie ihn regelmäßig. |
 | grant_type |Erforderlich |Der Gewährungstyp. Beim Autorisierungscodefluss muss der Gewährungstyp `authorization_code` sein. |
 | scope |Empfohlen |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure AD an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der Bereich `offline_access` gibt an, dass Ihre App ein Aktualisierungstoken für den langfristigen Zugriff auf Ressourcen benötigt.  Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
 | code |Erforderlich |Der Autorisierungscode, den Sie im ersten Abschnitt des Vorgangs erhalten haben. |
@@ -180,7 +181,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 |{tenant}| Erforderlich | Name des Azure AD B2C-Mandanten.|
 |{policy} |Erforderlich |Der Benutzerflow, der zum Abrufen des ursprünglichen Aktualisierungstokens verwendet wurde. Sie können in dieser Anforderung keinen anderen Benutzerflow verwenden. |
 | client_id |Erforderlich |Die Anwendungs-ID, die Ihrer App im [Azure-Portal](https://portal.azure.com) zugewiesen wird. |
-| client_secret |Erforderlich |Das Clientgeheimnis (client_secret), das der Client-ID (client_id) im [Azure-Portal](https://portal.azure.com) zugewiesen wird |
+| client_secret | Ja, in Web-Apps | Der geheime Schlüssel der Anwendung, der im [Azure-Portal](https://portal.azure.com/) generiert wurde. Geheime Client-Schlüssel werden in diesem Flow für Web-App-Szenarien verwendet, in denen der Client einen geheimen Client-Schlüssel sicher speichern kann. Bei nativen App-Szenarien (öffentlicher Client) können geheime Clientschlüssel nicht sicher gespeichert werden, und werden daher nicht in diesem Aufruf verwendet. Wenn Sie einen geheimen Clientschlüssel verwenden, ändern Sie ihn regelmäßig. |
 | grant_type |Erforderlich |Der Gewährungstyp. Bei diesem Abschnitt des Autorisierungscodeflows muss der Gewährungstyp `refresh_token` sein. |
 | scope |Empfohlen |Eine durch Leerzeichen getrennte Liste von Bereichen. Ein einzelner Bereichswert gibt Azure AD an, dass beide Berechtigungen angefordert werden. Mit der Verwendung der Client-ID als Bereich wird angegeben, dass für die App ein Zugriffstoken erforderlich ist, das für Ihren eigenen Dienst oder die Web-API mit derselben Client-ID verwendet werden kann.  Der Bereich `offline_access` gibt an, dass Ihre App ein Aktualisierungstoken für den langfristigen Zugriff auf Ressourcen benötigt.  Außerdem können Sie den Bereich `openid` verwenden, um ein ID-Token von Azure AD B2C anzufordern. |
 | redirect_uri |Optional |Der Umleitungs-URI der Anwendung, bei der Sie den Autorisierungscode erhalten haben. |

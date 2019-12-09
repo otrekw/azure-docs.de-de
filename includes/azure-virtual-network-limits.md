@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/25/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: a37280fddf34221a9d08501ef55c6b069cd877a4
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: ac1687d371630089436640af15cf46491a38ab51
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "70242665"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74485520"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -25,6 +25,7 @@ ms.locfileid: "70242665"
 | Virtuelle Netzwerke |1\.000 |
 | Subnetze pro virtuellem Netzwerk |3,000 |
 | VNET-Peerings pro virtuellem Netzwerk |500 |
+| [Gateways für virtuelle Netzwerke (VPN-Gateways) pro virtuellem Netzwerk](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
 | DNS-Server pro virtuellem Netzwerk |20 |
 | Private IP-Adressen pro virtuellem Netzwerk |65.536 |
 | Private IP-Adressen pro Netzwerkschnittstelle |256 |

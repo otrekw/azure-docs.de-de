@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure-CLI | Microsoft-Dokumentation
+title: Konfigurieren privater IP-Adressen für virtuelle Computer – Azure-Befehlszeilenschnittstelle
 description: Hier erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe der Azure-Befehlszeilenschnittstelle (CLI) konfigurieren.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: dfc56d86d2e516a7c7bb82ef7a5e84105e049188
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681409"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404459"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
 
@@ -251,7 +251,7 @@ Um die in den vorhergehenden Befehlen verwendete Netzwerkkarte für die VM zu ä
 2. Führen Sie den Befehl **azure vm set** aus, um die vom virtuellen Computer verwendete Netzwerkkarte zu ändern.
    
     ```azurecli
-    azure vm set -g TestRG -n DNS01 -N TestNIC2
+   az vm nic set --resource-group TestRG --vm-name DNS01 --nics TestNIC2
     ```
 
     Erwartete Ausgabe:

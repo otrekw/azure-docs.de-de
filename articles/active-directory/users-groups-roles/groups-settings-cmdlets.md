@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1b900d4a67390ae867d770c3b984c43fd501b5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ef0bfcb8c82d3f3caf90500e8852ca9e02c725aa
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74026755"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382971"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-Cmdlets zum Konfigurieren von Gruppeneinstellungen
 
@@ -116,16 +116,17 @@ Folgende Einstellungen sind im SettingsTemplate-Objekt „Group.Unified“ defin
 |  <ul><li>EnableGroupCreation<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True |Das Flag, das angibt, ob die Erstellung von Office 365-Gruppen im Verzeichnis durch Benutzer ohne Administratorrechte zulässig ist. Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
 |  <ul><li>GroupCreationAllowedGroupId<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |GUID der Sicherheitsgruppe, deren Mitgliedern das Erstellen von Office 365-Gruppen erlaubt ist, auch wenn der EnableGroupCreation-Wert „false“ lautet. |
 |  <ul><li>UsageGuidelinesUrl<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Ein Link zu den Nutzungsrichtlinien für die Gruppe. |
-|  <ul><li>ClassificationDescriptions<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>wobei Classification mit den Zeichenfolgen in ClassificationList übereinstimmt.|
-|  <ul><li>DefaultClassification<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.|
+|  <ul><li>ClassificationDescriptions<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Liste mit Klassifizierungsbeschreibungen. Der Wert von ClassificationDescriptions ist nur in folgendem Format gültig:<br>$setting[“ClassificationDescriptions”] ="Classification:Description,Classification:Description"<br>wobei Classification mit den Zeichenfolgen in ClassificationList übereinstimmt.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
+|  <ul><li>DefaultClassification<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die Klassifizierung, die als Standardklassifizierung einer Gruppe verwendet werden soll, falls keine angegeben wurde.<br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
 |  <ul><li>PrefixSuffixNamingRequirement<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Zeichenfolge mit einer maximalen Länge von 64 Zeichen, mit der die für Office 365-Gruppen konfigurierte Namenskonvention definiert wird. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
 | <ul><li>CustomBlockedWordsList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Eine durch Trennzeichen getrennte Zeichenfolge mit Ausdrücken, deren Verwendung in Gruppennamen oder -aliasen nicht gestattet ist. Weitere Informationen finden Sie unter [Erzwingen einer Benennungsrichtlinie für Office 365-Gruppen](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: „False“ | Nicht verwenden
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: False | Boolescher Wert, der angibt, ob ein Gastbenutzer Besitzer von Gruppen sein kann. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Boolescher Wert, der angibt, ob ein Gastbenutzer Zugriff auf die Inhalte von Office 365-Gruppen hat.  Für diese Einstellung ist keine Azure Active Directory Premium P1-Lizenz erforderlich.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” | Die URL eines Links zu den Leitlinien für die Nutzung des Gastzugriffs. |
-|  <ul><li>AllowAddGuests<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist.|
-|  <ul><li>ClassificationList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. |
+|  <ul><li>AllowToAddGuests<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: True | Ein boolescher Wert, der angibt, ob das Hinzufügen von Gästen zu diesem Verzeichnis erlaubt ist. <br>Diese Einstellung kann außer Kraft gesetzt und schreibgeschützt werden, wenn *EnableMIPLabels* auf *True* festgelegt ist und der der Gruppe zugeordneten Vertraulichkeitsbezeichnung eine Gastrichtlinie zugeordnet ist. |
+|  <ul><li>ClassificationList<li>Geben Sie Folgendes ein:  Zeichenfolge<li>Standardwert: “” |Eine durch Trennzeichen getrennte Liste der gültigen Klassifizierungswerte, die auf Office 365-Gruppen angewendet werden können. <br>Diese Einstellung gilt nicht, wenn der EnableMIPLabels-Wert „True“ lautet.|
+|  <ul><li>EnableMIPLabels<li>Geben Sie Folgendes ein:  Boolean<li>Standardwert: „False“ |Das Flag, das angibt, ob die im Microsoft 365 Compliance Center veröffentlichten Vertraulichkeitsbezeichnungen auf Office 365-Gruppen angewendet werden können. Weitere Informationen finden Sie unter [Zuweisen von Vertraulichkeitsbezeichnungen für Office 365-Gruppen](groups-assign-sensitivity-labels.md). |
 
 ## <a name="example-configure-guest-policy-for-groups-at-the-directory-level"></a>Beispiel: Konfigurieren einer Gastrichtlinie für Gruppen auf Verzeichnisebene
 1. Rufen Sie alle Einstellungsvorlagen ab:

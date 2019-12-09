@@ -1,22 +1,22 @@
 ---
-title: Azure Multi-Factor Authentication – Erfassen von Benutzerdaten – Azure Active Directory
+title: 'Azure MFA: -Benutzerdatensammlung – Azure Active Directory'
 description: Welche Informationen verwendet Azure Multi-Factor Authentication, um Benutzer zu authentifizieren?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2b8d68cc348ce8e157c7d58424eaebb06940335
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 09aa95e55b3d253ef41724298247694b9883e31f
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359040"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381762"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication – Erfassen von Benutzerdaten
 
@@ -116,7 +116,7 @@ Umgehungen (für Berichterstellung)
 - Grund des Abschlusses
 - Verwendete Umgehung
 
-Änderungen (zum Synchronisieren der Benutzerdaten mit MFA-Server oder AAD):
+Änderungen (zum Synchronisieren der Benutzerdaten mit MFA-Server oder Azure AD):
 
 - Zeitstempel der Änderung
 - Username

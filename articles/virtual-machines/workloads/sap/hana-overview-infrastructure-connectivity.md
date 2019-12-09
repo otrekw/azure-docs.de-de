@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fa0fe072fe98d565ad9d6f947540b7e1b039732
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 36f0b78f563bb4dda76f192259541d1c2b1fa060
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101156"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224669"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Bereitstellung von SAP HANA (große Instanzen) 
 
