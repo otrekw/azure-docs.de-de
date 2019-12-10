@@ -10,7 +10,7 @@
   items:
     - name: "Verbinden von Computern mit Azure mithilfe von Azure Arc für Server\_– Portal"
       href: ./servers/quickstart-onboard-portal.md
-    - name: "Verbinden von Computern mit Azure mithilfe von Azure Arc für Server\_– PowerShell"
+    - name: "Bedarfsorientiertes Verbinden von Computern mithilfe von Azure Arc für Server\_– PowerShell"
       href: ./servers/quickstart-onboard-powershell.md
 - name: Verweis
   items:
