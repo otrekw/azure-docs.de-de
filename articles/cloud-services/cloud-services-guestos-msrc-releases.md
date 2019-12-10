@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/1/2019
+ms.date: 11/15/2019
 ms.author: raiye
-ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fd4936357035d8163130064bd6f0600c9d2b08bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888308"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150000"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="november-2019-guest-os"></a>Gastbetriebssystem für November 2019
+
+>[!NOTE]
+>Das Gastbetriebssystem für November wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für November enthalten. Änderungen der Liste vorbehalten.
+
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Release 19-11   |  [4525106]  |  Internet Explorer   |  2.92  |  12. November 2019  |
+|  Release 19-11   |  [4525233]  |  Windows-Sicherheit   |  2.92  |  12. November 2019  |
+|  Release 19-11   |  [4525106]  |  Internet Explorer   |  3.79  |  12. November 2019  |
+|  Release 19-11   |  [4525253]  |  Windows-Sicherheit   |  3.79  |  12. November 2019  |
+|  Release 19-11   |  [4525106]  |  Internet Explorer   |  4.72  |  12. November 2019  |
+|  Release 19-11   |  [4525250]  |  Windows-Sicherheit   |  4.72  |  12. November 2019  |
+|  Release 19-11   |  [4525236]  |  Letztes kumulatives Update   |  5.37  |  12. November 2019  |
+|  Release 19-11   |  [4523205]  |  Letztes kumulatives Update   |  6.13  |  12. November 2019  |
+|  Release 19-11   |  [4519976]  |  Nicht sicherheitsrelevant   |  2.92  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4520007]  |  Nicht sicherheitsrelevant   |  3.79  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521857]  |  ServicingStackUpdate   |  3.79  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4520005]  |  Nicht sicherheitsrelevant   |  4.72  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521864]  |  ServicingStackUpdate   |  4.72  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521858]  |  ServicingStackUpdate   |  5.37  |  8\. Oktober 2019  |
+|  Release 19-11   |  [4521862]  |  ServicingStackUpdate   |  6.13  |  8\. Oktober 2019  |
+
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525233]: https://support.microsoft.com/kb/4525233
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525253]: https://support.microsoft.com/kb/4525253
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525250]: https://support.microsoft.com/kb/4525250
+[4525236]: https://support.microsoft.com/kb/4525236
+[4523205]: https://support.microsoft.com/kb/4523205
+[4519976]: https://support.microsoft.com/kb/4519976
+[4520007]: https://support.microsoft.com/kb/4520007
+[4521857]: https://support.microsoft.com/kb/4521857
+[4520005]: https://support.microsoft.com/kb/4520005
+[4521864]: https://support.microsoft.com/kb/4521864
+[4521858]: https://support.microsoft.com/kb/4521858
+[4521862]: https://support.microsoft.com/kb/4521862
+
 
 ## <a name="october-2019-guest-os"></a>Gastbetriebssystem für Oktober 2019
 

@@ -1,6 +1,6 @@
 ---
 title: Streamen von Azure-Ressourcenprotokollen an Event Hubs
-description: Hier erfahren Sie, wie Sie Azure-Ressourcenprotokolle an Event Hubs streamen.
+description: Erfahren Sie, wie Ressourcenprotokolle an Event Hubs gestreamt werden, um Daten an externe Systeme zu senden, z.B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262993"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304942"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Streamen von Azure-Ressourcenprotokollen an Azure Event Hubs
 [Ressourcenprotokolle](resource-logs-overview.md) in Azure liefern regelmäßig umfassende Daten zum internen Betrieb einer Azure-Ressource. In diesem Artikel wird das Streamen von Ressourcenprotokollen an Event Hubs beschrieben, um Daten an externe Systeme zu senden, z.B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.
@@ -25,7 +25,7 @@ Streamen Sie Ressourcenprotokolle in Azure an Event Hubs, um folgende Funktional
 * **Streamen von Protokollen an Protokollierungs- und Telemetriesysteme von Drittanbietern**: Streamen Sie alle Ressourcenprotokolle an einen einzelnen Event Hub, um Protokolldaten an ein SIEM- oder Protokollanalysetool eines Drittanbieters weiterzureichen.
 * **Erstellen einer benutzerdefinierten Telemetrie- und Protokollierungsplattform**: Event Hubs ermöglichen dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung der Ressourcenprotokolle auf einer benutzerdefinierten Telemetrieplattform. Ausführliche Informationen finden Sie unter [Designing and Sizing a Global Scale Telemetry Platform on Azure Event Hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) (Entwerfen und Dimensionieren einer globalen Telemetrieplattform in Azure Event Hubs).
 
-* **Anzeigen der Dienstintegrität durch Streamen von Daten an Power BI**: Mithilfe von Event Hubs, Stream Analytics und Power BI können Sie sich anhand Ihrer Diagnosedaten nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. Ausführliche Informationen zu dieser Lösung finden Sie unter [Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten](../../stream-analytics/stream-analytics-power-bi-dashboard.md).
+* **Anzeigen der Dienstintegrität durch Streamen von Daten an Power BI**: Mithilfe von Event Hubs, Stream Analytics und Power BI können Sie sich anhand Ihrer Diagnosedaten nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. Details zu dieser Lösung finden Sie unter [Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten](../../stream-analytics/stream-analytics-power-bi-dashboard.md).
 
     Der folgende SQL-Code ist ein Beispiel für eine Stream Analytics-Abfrage, mit der Sie alle Protokolldaten in einer Power BI-Tabelle analysieren können:
     
