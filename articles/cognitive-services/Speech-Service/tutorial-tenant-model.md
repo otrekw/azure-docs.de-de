@@ -61,7 +61,7 @@ Um ein Mandantenmodell mit dem Speech SDK verwenden zu können, benötigen Sie e
 5. Folgen Sie den Anweisungen auf dem Bildschirm, um Ihre Ressource zu erstellen. Stellen Sie Folgendes sicher:
    * **Standort** ist entweder auf **eastus** oder **westus** festgelegt.
    * **Tarif** ist auf **S0** festgelegt.
-6. Klicken Sie auf **Create**.
+6. Klicken Sie auf **Erstellen**.
 7. Ihre Ressource wird binnen weniger Minuten erstellt. Den Abonnementschlüssel finden Sie im Abschnitt **Übersicht** für Ihre Ressource.
 
 ## <a name="create-a-model"></a>Modellerstellung
