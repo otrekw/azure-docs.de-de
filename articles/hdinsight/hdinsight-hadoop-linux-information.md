@@ -1,19 +1,19 @@
 ---
 title: Tipps zur Verwendung von Hadoop unter Linux-basiertem HDInsight – Azure
 description: Hier erhalten Sie Implementierungstipps für die Verwendung von Linux-basierten HDInsight (Hadoop)-Clustern in einer vertrauten Linux-Umgebung, die in der Azure-Cloud ausgeführt wird.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: f50702688b9a261ed98c2eb3a5892d1bdbe8d11b
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.date: 11/14/2019
+ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71308082"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150053"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -88,8 +88,8 @@ Weitere Informationen finden Sie im Dokument [Ports für Apache Hadoop-Dienste i
 
 Zu Hadoop zugehörige Dateien befinden sich auf den Clusterknoten in `/usr/hdp`. Dieses Verzeichnis enthält die folgenden Unterverzeichnisse:
 
-* **2.6.5.3006-29**: Der Name des Verzeichnisses ist die Version der in HDInsight verwendeten Hadoop-Plattform. Der Wert Ihres Clusters unterscheidet sich möglicherweise vom hier aufgeführten.
-* **current**: Dieses Verzeichnis enthält Links zu den Unterverzeichnissen im Verzeichnis **2.6.5.3006-29**. Da dieses Verzeichnis vorhanden ist, müssen Sie sich nicht die Versionsnummer merken.
+* **2.6.5.3009-43**: Der Name des Verzeichnisses ist die Version der in HDInsight verwendeten Hadoop-Plattform. Der Wert Ihres Clusters unterscheidet sich möglicherweise vom hier aufgeführten.
+* **current**: Dieses Verzeichnis enthält Links zu den Unterverzeichnissen im Verzeichnis **2.6.5.3009-43**. Da dieses Verzeichnis vorhanden ist, müssen Sie sich nicht die Versionsnummer merken.
 
 Beispieldaten und JAR-Dateien finden Sie im Hadoop Distributed File System unter `/example` und `/HdiSamples`.
 
@@ -111,12 +111,11 @@ Wenn Sie entweder Azure Storage oder Data Lake Storage nutzen, müssen Sie in HD
 
 In HDInsight werden die Datenspeicherressourcen (Azure Blob Storage und Azure Data Lake Store) von den Computerressourcen entkoppelt. Aus diesem Grund können Sie nach Bedarf HDInsight-Cluster für Berechnungen erstellen und die Cluster später nach Abschluss der Aufgaben löschen. Ihre Datendateien werden währenddessen so lange wie nötig sicher im Cloudspeicher aufbewahrt.
 
-
 ### <a name="URI-and-scheme"></a>URI und Schema
 
 Einige Befehle erfordern ggf. die Angabe des Schemas als Teil des URI, wenn auf eine Datei zugegriffen wird. Beispielsweise erfordert die Komponente Storm-HDFS, dass Sie das Schema angeben. Bei Verwendung von nicht standardmäßigem Speicher (der dem Cluster als „zusätzlicher“ Speicher hinzugefügt wird), müssen Sie stets das Schema als Teil des URI angeben.
 
-Nutzen Sie bei Verwendung von __Azure Storage__ eines der folgenden URI-Schemas:
+Nutzen Sie bei Verwendung von [**Azure Storage**](./hdinsight-hadoop-use-blob-storage.md) eines der folgenden URI-Schemas:
 
 * `wasb:///`: Zugriff auf Standardspeicher über unverschlüsselte Verbindungen.
 
@@ -124,13 +123,13 @@ Nutzen Sie bei Verwendung von __Azure Storage__ eines der folgenden URI-Schemas:
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
-Nutzen Sie bei Verwendung von __Azure Data Lake Storage Gen2__ das folgende URI-Schema:
+Nutzen Sie bei Verwendung von [**Azure Data Lake Storage Gen2**](./hdinsight-hadoop-use-data-lake-storage-gen2.md) das folgende URI-Schema:
 
 * `abfs://`: Zugriff auf Standardspeicher über verschlüsselte Verbindungen.
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Wird bei einer Verbindung mit einem nicht standardmäßigen Speicherkonto verwendet. Beispielsweise wenn Sie ein zusätzliches Speicherkonto haben oder auf Daten in einem öffentlich zugänglichen Speicherkonto zugreifen.
 
-Nutzen Sie bei Verwendung von __Azure Data Lake Storage Gen1__ eines der folgenden URI-Schemas:
+Nutzen Sie bei Verwendung von [**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md) eines der folgenden URI-Schemas:
 
 * `adl:///`: Zugriff auf die standardmäßige Data Lake Storage-Instanz für den Cluster
 
@@ -285,5 +284,4 @@ Um eine andere Version einer Komponente zu verwenden, laden Sie die benötigte V
 
 * [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [Verwenden von MapReduce-Aufträgen mit HDInsight](hadoop/hdinsight-use-mapreduce.md)

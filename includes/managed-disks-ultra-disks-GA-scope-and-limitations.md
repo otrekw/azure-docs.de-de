@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 11/04/2019
+ms.date: 11/18/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c847b110cb821ebe3ca7e706fcaec592dcc58fa8
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: df488c2a3033015175943f7d092beaaa41e34046
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73600977"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260742"
 ---
 Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt lauten:
 
@@ -38,3 +38,4 @@ Derzeit gibt es für Ultra-Datenträger weitere Einschränkungen, die wie folgt 
 - Unterstützen noch keine Datenträger-Momentaufnahmen, VM-Images, Verfügbarkeitsgruppen oder Azure Disk Encryption
 - Unterstützen noch keine Integration in Azure Backup oder Azure Site Recovery.
 - Die IOPS-Obergrenze liegt bei allgemein verfügbaren virtuellen Computern derzeit bei 80.000.
+- Wenn Sie an einer eingeschränkten Vorschau einer VM teilnehmen möchten, die 160.000 IOPS mit Ultradisks erreichen kann, senden Sie eine E-Mail an UltraDiskFeedback@microsoft.com.

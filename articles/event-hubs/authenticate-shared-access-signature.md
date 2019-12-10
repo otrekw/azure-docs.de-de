@@ -6,14 +6,14 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/22/2019
+ms.date: 11/26/2019
 ms.author: spelluru
-ms.openlocfilehash: cb5c53f3f473c10a3c9a12bb1aac20b109c06422
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: d17026dba26b3c1cb846d60967180c29563c425d
+ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992366"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74545587"
 ---
 # <a name="authenticate-access-to-event-hubs-resources-using-shared-access-signatures-sas"></a>Authentifizieren des Zugriffs auf Event Hubs-Ressourcen mit Shared Access Signatures (SAS)
 Die Shared Access Signature (SAS) ermöglicht Ihnen die präzise Steuerung des Zugriffstyps, den Sie den Clients mit der Shared Access Signature gewähren. Folgende Kontrollen können Sie beispielsweise in einer SAS festlegen: 
@@ -185,20 +185,31 @@ In der Regel setzt ein Event Hub einen Herausgeber pro Client ein. Alle Nachrich
 
 Jedem Event Hubs-Client wird ein eindeutiges Token zugewiesen, das auf den Client hochgeladen wird. Token werden so erzeugt, dass jedes eindeutige Token Zugriff auf einen anderen eindeutigen Herausgeber gewährt. Ein Client, der über ein Token verfügt, kann nur an einen Herausgeber Daten senden und an keinen anderen. Wenn mehrere Clients dasselbe Token gemeinsam nutzen, verwendet jeder von ihnen denselben Herausgeber.
 
-Alle Token werden mit SAS-Schlüsseln zugewiesen. Alle Token werden in der Regel mit demselben Schlüssel signiert. Clients kennen den Schlüssel nicht. Andere Clients können daher keine Token erzeugen. Clients verwenden die gleichen Token, bis diese ablaufen.
+Alle Token werden mit SAS-Schlüsseln zugewiesen. Alle Token werden in der Regel mit demselben Schlüssel signiert. Clients kennen den Schlüssel nicht. Clients können daher keine Token generieren. Clients verwenden die gleichen Token, bis diese ablaufen.
 
 Zum Definieren von Autorisierungsregeln, die nur für das Senden/Veröffentlichen von Daten an bzw. in Event Hubs gelten, müssen Sie beispielsweise eine Autorisierungsregel für das Senden definieren. Sie können die Regel auf der Namespaceebene definieren oder einen differenzierteren Bereich für eine bestimmte Entität (eine Event Hubs-Instanz oder ein Thema) festlegen. Ein Client oder eine Anwendung, für den bzw. die ein solch präziser Zugriff festgelegt ist, wird als Event Hubs-Herausgeber bezeichnet. Gehen Sie dazu folgendermaßen vor:
 
 1. Erstellen Sie einen SAS-Schlüssel für die Entität, die Sie veröffentlichen möchten, um ihr den Bereich **Senden** zuzuweisen. Weitere Informationen finden Sie unter [Shared access authorization policies](authorize-access-shared-access-signature.md#shared-access-authorization-policies) (SAS-Autorisierungsrichtlinien).
 2. Generieren Sie mit dem in Schritt 1 generierten Schlüssel ein SAS-Token mit einer Ablaufzeit für einen bestimmten Herausgeber.
-3. Stellen Sie das Token für den Herausgeberclient bereit, der nur an die Entität Daten senden kann, auf die das Token Zugriff gewährt.
-4. Nach dem Ablauf des Tokens verliert der Client seinen Sende-/Veröffentlichungszugriff auf die Entität. 
+
+    ```csharp
+    var sasToken = SharedAccessSignatureTokenProvider.GetPublisherSharedAccessSignature(
+                new Uri("Service-Bus-URI"),
+                "eventub-name",
+                "publisher-name",
+                "sas-key-name",
+                "sas-key",
+                TimeSpan.FromMinutes(30));
+    ```
+3. Stellen Sie das Token für den Herausgeberclient bereit, der nur an die Entität und den Herausgeber Daten senden kann, auf die das Token Zugriff gewährt.
+
+    Nach dem Ablauf des Tokens verliert der Client seinen Sende-/Veröffentlichungszugriff auf die Entität. 
 
 
 > [!NOTE]
-> Obwohl dies nicht empfohlen wird, ist es möglich, Geräte mit Token auszustatten, die Zugriff auf einen Event Hub gewähren. Alle Geräte mit diesem Token können Nachrichten direkt an den Event Hub senden. Darüber hinaus kann das Gerät nicht davon gesperrt werden, an den betreffenden Event Hub zu senden.
+> Obwohl dies nicht empfohlen wird, ist es möglich, Geräte mit Token auszustatten, die Zugriff auf einen Event Hub oder Namespace gewähren. Alle Geräte mit diesem Token können Nachrichten direkt an den Event Hub senden. Darüber hinaus kann das Gerät nicht davon gesperrt werden, an den betreffenden Event Hub zu senden.
 > 
-> Das oben beschriebene Verhalten tritt auf, wenn das gleiche Token an mehrere Geräte verteilt und somit Zugriff auf der Namespaceebene erteilt wird. In diesem Fall kann ein nicht autorisiertes Gerät/nicht autorisierter Herausgeber nicht isoliert und widerrufen werden. Es empfiehlt sich immer, spezifische und präzise Bereiche festzulegen.
+> Es empfiehlt sich immer, spezifische und präzise Bereiche festzulegen.
 
 > [!IMPORTANT]
 > Sobald die Token erstellt wurden, wird jedem Client sein eigenes eindeutiges Token bereitgestellt.

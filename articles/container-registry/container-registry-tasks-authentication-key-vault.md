@@ -1,18 +1,14 @@
 ---
-title: Externe Authentifizierung in einer Azure Container Registry-Aufgabe
+title: Externe Authentifizierung aus ACR-Aufgabe
 description: Aktivieren Sie eine verwaltete Identität für Azure-Ressourcen in einer Azure Container Registry-Aufgabe (ACR), damit in der Aufgabe die in einem Azure-Schlüsseltresor gespeicherten Docker Hub-Anmeldeinformationen gelesen werden können.
-services: container-registry
-author: dlepow
-ms.service: container-registry
 ms.topic: article
 ms.date: 07/12/2019
-ms.author: danlep
-ms.openlocfilehash: bcaf2918c92ec7b8223d394290a1d7c624fc451c
-ms.sourcegitcommit: 0e59368513a495af0a93a5b8855fd65ef1c44aac
+ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69509233"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456221"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Externe Authentifizierung in einer ACR-Aufgabe unter Verwendung einer in Azure verwalteten Identität 
 

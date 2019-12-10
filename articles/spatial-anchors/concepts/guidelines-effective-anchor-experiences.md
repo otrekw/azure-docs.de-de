@@ -1,5 +1,5 @@
 ---
-title: Richtlinien für effektive Ankerfunktionen, die Azure Spatial Anchors verwenden | Microsoft-Dokumentation
+title: Richtlinien für effektive Ankerumgebungen
 description: Richtlinien und Überlegungen zum effektiven Erstellen und Suchen von Ankern mit Azure Spatial Anchors.
 author: mattwojo
 manager: jken
@@ -8,12 +8,12 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9e77dcd96ffa0fbd57aa0ed1b4f857279ca768a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60566032"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270522"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Erstellen von effektiven Ankerfunktionen mithilfe von Azure Spatial Anchors
 
@@ -40,7 +40,7 @@ Bei dynamischen Positionen müssen Sie überlegen, wie Sie Benutzer auf der Benu
 
 ## <a name="stable-visual-features"></a>Stabile visuelle Merkmale
 
-Visuelle Nachverfolgungssysteme, die auf Mixed Reality- und Augmented Reality-Geräten zum Einsatz kommen, nutzen visuelle Merkmale der Umgebung. So erzielen Sie ein möglichst zuverlässiges Benutzererlebnis:  
+Visuelle Nachverfolgungssysteme, die auf Mixed Reality- und Augmented Reality-Geräten zum Einsatz kommen, nutzen visuelle Merkmale der Umgebung. So erzielen Sie ein möglichst zuverlässiges Benutzererlebnis:
 
 - *Ja*: Erstellen Sie Anker an Positionen, die stabile visuelle Merkmale aufweisen (also Merkmale, die sich nicht häufig ändern).
 
@@ -62,9 +62,9 @@ Allgemein gilt beim Erstellen von Ankern Folgendes: Scannen Sie den Anker aus de
 
 ## <a name="multiple-anchors"></a>Mehrere Anker
 
-Die Lichtverhältnisse können sich auf die visuellen Merkmale auswirken, die von einer App erkannt werden. Anker, die bei starkem natürlichem Licht erstellt wurden, lassen sich bei künstlichem Licht möglicherweise sehr schwer finden (und umgekehrt).  
+Die Lichtverhältnisse können sich auf die visuellen Merkmale auswirken, die von einer App erkannt werden. Anker, die bei starkem natürlichem Licht erstellt wurden, lassen sich bei künstlichem Licht möglicherweise sehr schwer finden (und umgekehrt).
 
-Wenn Sie dieses Problem haben, kann es hilfreich sein, zwei Anker zu erstellen. Erstellen Sie an der gleichen Position einen Anker bei Tageslicht und einen weiteren bei künstlichem Licht. Ihre App kann dann beide Anker abfragen. Wenn einer der beiden Anker gefunden wird, kann die App den Anker darstellen. 
+Wenn Sie dieses Problem haben, kann es hilfreich sein, zwei Anker zu erstellen. Erstellen Sie an der gleichen Position einen Anker bei Tageslicht und einen weiteren bei künstlichem Licht. Ihre App kann dann beide Anker abfragen. Wenn einer der beiden Anker gefunden wird, kann die App den Anker darstellen.
 
 Mehrere Anker können auch in Umgebungen hilfreich sein, in denen sich die visuellen Merkmale verändern, weil sich die meisten Objekte bewegen. Wenn ein Anker aufgrund erheblicher Änderungen in der Umgebung nur noch schwer auffindbar ist, können Sie den Anker durch einen neuen ersetzen. Dies kann beispielsweise in einem Einzelhandelsgeschäft der Fall sein, in dem die Einrichtung alle paar Monate geändert wird.
 
@@ -74,7 +74,7 @@ In vielen Fällen ist ein Anker ein Einstiegspunkt in das Benutzererlebnis für 
 
 ### <a name="targets"></a>Ziele
 
-Im Szenario „Ziele“ ist die Position eines Ankers bekannt. Ein Beispiel: In einer fiktiven Mixed Reality-App für einen Malkurs hängt eine Benutzerin eine virtuelle Leinwand an die Wand. Sie weist die anderen Benutzer im Raum an, ihre Geräte auf die gleiche Stelle an der Wand zu richten, um den Anker zu lokalisieren und mit dem Malen zu beginnen.  
+Im Szenario „Ziele“ ist die Position eines Ankers bekannt. Ein Beispiel: In einer fiktiven Mixed Reality-App für einen Malkurs hängt eine Benutzerin eine virtuelle Leinwand an die Wand. Sie weist die anderen Benutzer im Raum an, ihre Geräte auf die gleiche Stelle an der Wand zu richten, um den Anker zu lokalisieren und mit dem Malen zu beginnen.
 
 Ein anderes Beispiel für ein Zielszenario ist ein Schild in einem Café: „Scannen, um Angebote zu erhalten“. Das Café hat hier einen Anker platziert. Wenn Benutzer das Schild scannen, finden sie den Anker und betreten das Augmented Reality-Erlebnis, um Angebote zu suchen.
 
@@ -104,7 +104,7 @@ Wenn ein Benutzer nicht innerhalb weniger Sekunden einen Anker findet, sollte di
 
 Fordern Sie bei Zielszenarien die Benutzer auf, sich um das Ziel herum zu bewegen, um es aus anderen Blickwinkeln zu betrachten. Anders gesagt: Fordern Sie Benutzer so lange auf, das Ziel aus neuen Blickwinkeln zu erfassen, bis der Anker gefunden wurde.
 
-In Raumszenarien sollten Sie Benutzer auffordern, den Raum langsam zu scannen. Sie können Benutzer z.B. anweisen, den Raum mit einer 180- oder sogar 360-Grad-Drehung zu erfassen. Oder Sie fordern die Benutzer auf, den Raum aus einem neuen Blickwinkel zu betrachten. 
+In Raumszenarien sollten Sie Benutzer auffordern, den Raum langsam zu scannen. Sie können Benutzer z.B. anweisen, den Raum mit einer 180- oder sogar 360-Grad-Drehung zu erfassen. Oder Sie fordern die Benutzer auf, den Raum aus einem neuen Blickwinkel zu betrachten.
 
 Die sinnvollste Methode ist ein Raumscan. Bei einem Raumscan werden mehr Merkmale der Umgebung erfasst als z.B. beim Scannen einer nahe gelegenen Wand. Der Scan einer nahe gelegenen Wand erfasst nicht so viele nützliche visuelle Merkmale der Umgebung.
 

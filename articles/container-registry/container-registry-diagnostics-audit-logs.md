@@ -1,25 +1,14 @@
 ---
-title: Ressourcenprotokolle für Azure Container Registry | Microsoft-Dokumentation
+title: Erfassen und Analysieren von Ressourcenprotokollen
 description: Aufzeichnen und Analysieren von Ressourcenprotokollereignissen für Azure Container Registry wie Authentifizierung, Imagepush und Imagepull.
-services: container-registry
-documentationcenter: ''
-author: dlepow
-manager: gwallace
-editor: ''
-ms.assetid: ''
-ms.service: container-registry
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: ''
 ms.date: 10/30/2019
-ms.author: danlep
-ms.openlocfilehash: e419f8c5cf06efc93294f9c428e9102c1f81b36a
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180198"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456434"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry-Protokolle für die Diagnoseauswertung und -überwachung
 

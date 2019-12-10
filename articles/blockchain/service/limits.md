@@ -1,21 +1,15 @@
 ---
-title: Einschränkungen von Azure Blockchain
+title: Einschränkungen von Azure Blockchain Service
 description: Übersicht über die Einschränkungen des Diensts und der Funktionalität des Azure Blockchain-Diensts
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/22/2019
 ms.topic: conceptual
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 20c26db9453220270d17801b74d904384c74cb36
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4001ee520f3f3136d1bac5ca047c80526fc92e6
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577220"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455644"
 ---
 # <a name="limits-in-azure-blockchain-service"></a>Einschränkungen des Azure Blockchain-Diensts
 
@@ -64,4 +58,4 @@ Die Speichergröße für Ledger und Protokolle kann nicht verringert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Patches, Updates und Versionen](ledger-versions.md)
+Erfahren Sie mehr über Richtlinien für das Patchen und Aktualisieren von Systemen: [Patchen, Updates und Versionen](ledger-versions.md).

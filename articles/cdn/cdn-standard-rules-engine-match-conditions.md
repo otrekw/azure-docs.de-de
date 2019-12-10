@@ -1,78 +1,79 @@
 ---
-title: Übereinstimmungsbedingungen der Microsoft Standardregel-Engine für Azure CDN | Microsoft-Dokumentation
-description: Referenzdokumentation zu den Übereinstimmungsbedingungen der Microsoft Standardregel-Engine für Azure Content Delivery Network.
+title: Übereinstimmungsbedingungen in der Standardregel-Engine für Azure CDN | Microsoft-Dokumentation
+description: Referenzdokumentation für Übereinstimmungsbedingungen in der Standardregel-Engine für Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: a72452d37b152a9463a5aee0e199fd42ea852236
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615841"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171607"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Microsoft Standardregel-Engine für Azure CDN
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Übereinstimmungsbedingungen in der Standardregel-Engine für Azure CDN
 
-Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen der Microsoft [Standardregel-Engine](cdn-standard-rules-engine.md) für das Azure Content Delivery Network (CDN).
+In der [Standardregel-Engine](cdn-standard-rules-engine.md) für Azure Content Delivery Network (Azure CDN) besteht eine Regel aus mindestens einer Übereinstimmungsbedingung und einer Aktion. In diesem Artikel werden die Übereinstimmungsbedingungen, die Sie in der Standardregel-Engine für Azure CDN verwenden können, ausführlich beschrieben.
 
-Der erste Teil einer Regel besteht aus mehreren Übereinstimmungsbedingungen. Jede Regel kann bis zu 4 Übereinstimmungsbedingungen enthalten. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die die in der Regel definierten Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden diese mit UND-Logik gruppiert.
+Der erste Teil einer Regel besteht aus einer Übereinstimmungsbedingung oder aus mehreren Übereinstimmungsbedingungen. In der Standardregel-Engine für Azure CDN kann jede Regel bis zu vier Übereinstimmungsbedingungen aufweisen. Eine Übereinstimmungsbedingung gibt bestimmte Typen von Anforderungen an, für die definierte Aktionen ausgeführt werden. Wenn Sie mehrere Übereinstimmungsbedingungen verwenden, werden die Übereinstimmungsbedingungen mit UND-Logik gruppiert.
 
 Sie können eine Übereinstimmungsbedingung z.B. für Folgendes verwenden:
 
-- Filtern von Anforderungen, die von einer bestimmten IP-Adresse oder einem bestimmten Land bzw. einer bestimmten Region generiert wurden
+- Filtern von Anforderungen, die auf einer bestimmten IP-Adresse, einem bestimmten Land oder einer bestimmten Region basieren.
 - Filtern von Anforderungen nach Headerinformationen
-- Filtern von Anforderungen von Mobil- oder Desktopgeräten
+- Filtern von Anforderungen von Mobil- oder Desktopgeräten.
 
 ## <a name="match-conditions"></a>Übereinstimmungsbedingungen
 
-Die folgenden Übereinstimmungsbedingungen können verwendet werden. 
+Die folgenden Übereinstimmungsbedingungen können auch in der Standardregel-Engine für Azure CDN verwendet werden. 
 
 ### <a name="device-type"></a>Gerätetyp 
 
-Die Übereinstimmungsbedingung für den Gerätetyp identifiziert Anforderungen von einem Mobil- oder Desktopgerät anhand der jeweiligen Eigenschaften.  
+Identifiziert Anforderungen von einem Mobil- oder Desktopgerät.  
 
-**Erforderliche Felder**
+#### <a name="required-fields"></a>Pflichtfelder
 
-Operator | Unterstützter Wert
+Operator | Unterstützte Werte
 ---------|----------------
 Gleich, Ungleich | Mobil, Desktop
 
-
 ### <a name="http-version"></a>HTTP-Version
 
-Die Übereinstimmungsbedingung für die HTTP-Version identifiziert Anforderungen anhand der HTTP-Version, mit der die Anforderung eingeht.
+Identifiziert Anforderungen auf der Grundlage der HTTP-Version der Anforderung.
 
-**Erforderliche Felder**
+#### <a name="required-fields"></a>Pflichtfelder
 
-Operator | Unterstützter Wert
+Operator | Unterstützte Werte
 ---------|----------------
 Gleich, Ungleich | 2.0, 1.1, 1.0, 0.9, All
 
-
 ### <a name="request-cookies"></a>Anforderungscookies
 
-Die Übereinstimmungsbedingung für Anforderungscookies identifiziert Anforderungen anhand der Cookieinformationen in der eingehenden Anforderung.
+Identifiziert Anforderungen anhand der Cookieinformationen in der eingehenden Anforderung.
 
-**Erforderliche Felder**
+#### <a name="required-fields"></a>Pflichtfelder
 
 Cookiename | Operator | Cookiewert | Umwandlung der Groß-/Kleinschreibung
 ------------|----------|--------------|---------------
 Zeichenfolge | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
-Wichtige Informationen
-- Platzhalterwerte, z. B. Sternchen (*) werden beim Angeben eines Cookienamens nicht unterstützt. Daher können nur exakte Übereinstimmungen von Cookienamen für Vergleiche herangezogen werden.
+#### <a name="key-information"></a>Wichtige Informationen
+
+- Sie können keine Platzhalterwerte (einschließlich Sternchen (\*)) verwenden, wenn Sie einen Cookienamen angeben. Sie müssen den genauen Cookienamen verwenden.
 - Für jede Instanz dieser Übereinstimmungsbedingung kann nur ein einziger Cookiename angegeben werden.
 - Beim Vergleichen von Cookienamen wird die Groß-/Kleinschreibung nicht beachtet.
-- Wenn Sie mehrere Cookiewerte angeben möchten, trennen Sie diese durch ein einzelnes Leerzeichen voneinander. 
+- Verwenden Sie zum Angeben mehrerer Cookiewerte ein einzelnes Leerzeichen zwischen den jeweiligen Cookiewerten. 
 - Für Cookiewerte können Platzhalterwerte verwendet werden.
-- Wenn kein Platzhalterwert angegeben wurde, wird diese Übereinstimmungsbedingung nur bei einer exakten Übereinstimmung erfüllt. Durch die Angabe von „Wert“ wird eine Übereinstimmung mit „Wert“ erzielt, aber nicht mit „Wert1“. 
+- Wenn kein Platzhalterwert angegeben wurde, wird diese Übereinstimmungsbedingung nur bei einer genauen Übereinstimmung erfüllt. Beispielsweise entspricht „Value“ dem Wert „Value“, nicht aber dem Wert „Value1“. 
 
 ### <a name="post-argument"></a>POST-Argument
 
-**Erforderliche Felder**
+Identifiziert Anforderungen auf der Grundlage von Argumenten, die für die POST-Anforderungsmethode definiert sind, die in der Anforderung verwendet wird. 
+
+#### <a name="required-fields"></a>Pflichtfelder
 
 Argumentname | Operator | Argumentwert | Umwandlung der Groß-/Kleinschreibung
 --------------|----------|----------------|---------------
@@ -80,9 +81,9 @@ Zeichenfolge | [Liste der Standardoperatoren](#standard-operator-list) | String,
 
 ### <a name="query-string"></a>Abfragezeichenfolge
 
-Die Übereinstimmungsbedingungen für die Abfragezeichenfolge identifizieren Anforderungen, die einen angegebenen Abfragezeichenfolgenparameter enthalten. Dieser Parameter wird auf einen Wert festgelegt, der mit einem angegebenen Muster übereinstimmt. Abfragezeichenfolgenparameter (z.B. parameter=value) in der Anforderungs-URL bestimmen, ob die Bedingung erfüllt ist. Mit dieser Übereinstimmungsbedingung wird ein Abfragezeichenfolgenparameter anhand des Namens identifiziert, und für den Parameterwert werden ein oder mehrere Werte akzeptiert.
+Identifiziert Anforderungen, die einen bestimmten Abfragezeichenfolgenparameter enthalten. Dieser Parameter wird auf einen Wert festgelegt, der mit einem bestimmten Muster übereinstimmt. Abfragezeichenfolgenparameter (z.B. **parameter=value**) in der Anforderungs-URL bestimmen, ob diese Bedingung erfüllt ist. Mit dieser Übereinstimmungsbedingung wird ein Abfragezeichenfolgenparameter anhand des Namens identifiziert, und für den Parameterwert werden ein oder mehrere Werte akzeptiert.
 
-**Erforderliche Felder**
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Abfragezeichenfolge | Umwandlung der Groß-/Kleinschreibung
 ---------|--------------|---------------
@@ -90,32 +91,34 @@ Operator | Abfragezeichenfolge | Umwandlung der Groß-/Kleinschreibung
 
 ### <a name="remote-address"></a>Remoteadresse
 
-Die Übereinstimmungsbedingung für die Remoteadresse identifizieren Anforderungen anhand des Standorts oder anhand der IP-Adresse des Anfordernden.
+Identifiziert Anforderungen basierend auf dem Standort oder der IP-Adresse des Anforderers.
 
-**Erforderliche Felder**
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Unterstützte Werte
 ---------|-----------------
 Any | –
-Geografische Übereinstimmung | Landeskennzahlen
-IP-Übereinstimmung | IP-Adressen (durch Leerzeichen getrennt)
+Geografische Übereinstimmung | Landesvorwahl
+IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
 Keine | –
-Keine geografische Übereinstimmung | Landeskennzahlen
-Keine IP-Übereinstimmung | IP-Adressen (durch Leerzeichen getrennt)
+Keine geografische Übereinstimmung | Landesvorwahl
+Keine IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
 
-Wichtige Informationen:
+#### <a name="key-information"></a>Wichtige Informationen
 
 - Verwenden Sie die CIDR-Notation.
-- Wenn Sie mehrere IP-Adressen und/oder IP-Adressblöcke angeben, trennen Sie diese mit einem einzelnen Leerzeichen. Beispiel:
-  - **IPv4-Beispiel:** Die Angabe „1.2.3.4 10.20.30.40“ führt zur Übereinstimmung mit eingehenden Anforderungen von der Adresse 1.2.3.4 oder 10.20.30.40.
-  - **IPv6-Beispiel:** Die Angabe „1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80“ führt zur Übereinstimmung mit eingehenden Anforderungen von der Adresse 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80.
+- Verwenden Sie zum Angeben mehrerer IP-Adressen und IP-Adressblöcke ein einzelnes Leerzeichen zwischen den Werten:
+  - **IPv4-Beispiel:** *1.2.3.4 10.20.30.30.40* entspricht allen Anforderungen, die entweder von der Adresse 1.2.3.4 oder 10.20.30.40 eingehen.
+  - **IPv6-Beispiel:** *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:70:80* entspricht allen Anforderungen, die von einer der Adressen 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80 eingehen.
 - Die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel:
-  - **IPv4-Beispiel:** Die Angabe „5.5.5.64/26“ führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 5.5.5.64 bis 5.5.5.127.
-  - **IPv6-Beispiel:** Die Angabe „1:2:3:/48“ führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.
+  - **IPv4-Beispiel:** *5.5.5.64/26* entspricht allen Anforderungen, die von den Adressen 5.5.5.64 bis 5.5.5.127 eingehen.
+  - **IPv6-Beispiel:** Die Angabe *1:2:3:/48* führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.
 
 ### <a name="request-body"></a>Anforderungstext
 
-**Erforderliche Felder**
+Identifiziert Anforderungen auf der Grundlage eines bestimmten Texts, der im Textkörper der Anforderung vorhanden ist.
+
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Anforderungstext | Umwandlung der Groß-/Kleinschreibung
 ---------|--------------|---------------
@@ -123,76 +126,91 @@ Operator | Anforderungstext | Umwandlung der Groß-/Kleinschreibung
 
 ### <a name="request-header"></a>Anforderungsheader
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die einen bestimmten Header in der Anforderung verwenden.
+
+#### <a name="required-fields"></a>Pflichtfelder
+
 Headername | Operator | Headerwert | Umwandlung der Groß-/Kleinschreibung
 ------------|----------|--------------|---------------
 Zeichenfolge | [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
-### <a name="request-method"></a>Request Method
+### <a name="request-method"></a>Anforderungsmethode
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die die angegebene Anforderungsmethode verwenden.
 
-Operator | Unterstützter Wert
+#### <a name="required-fields"></a>Pflichtfelder
+
+Operator | Unterstützte Werte
 ---------|----------------
 Gleich, Ungleich | GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE
 
-Wichtige Informationen:
+#### <a name="key-information"></a>Wichtige Informationen
 
-- Nur die GET-Anforderungsmethode zwischengespeicherten Inhalt im CDN generieren. Alle anderen Anforderungsmethoden werden per Proxy durch das Netzwerk gesendet. 
+- Nur die GET-Anforderungsmethode zwischengespeicherten Inhalt in Azure CDN generieren. Alle anderen Anforderungsmethoden werden per Proxy durch das Netzwerk gesendet. 
 
 ### <a name="request-protocol"></a>Anforderungsprotokoll
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die das angegebene Protokoll verwenden.
 
-Operator | Unterstützter Wert
+#### <a name="required-fields"></a>Pflichtfelder
+
+Operator | Unterstützte Werte
 ---------|----------------
 Gleich, Ungleich | HTTP, HTTPS
 
 ### <a name="request-url"></a>Anfrage-URL
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die mit der angegebenen URL übereinstimmen.
+
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Anfrage-URL | Umwandlung der Groß-/Kleinschreibung
 ---------|-------------|---------------
 [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
-Wichtige Informationen:
+#### <a name="key-information"></a>Wichtige Informationen
 
-- Achten Sie beim Eingeben der Anforderungs-URL darauf, dass Sie Protokollinformationen einbeziehen, z. B. "https://www.[yourdomain].com".
+- Wenn Sie diese Regelbedingung verwenden, achten Sie darauf, dass Sie Protokollinformationen einschließen. Beispiel: *https://www.\<yourdomain\>.com* .
 
 ### <a name="url-file-extension"></a>URL-Dateierweiterung
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die die angegebene Dateierweiterung in den Dateinamen in der anfordernden URL einschließen.
+
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Durchwahl | Umwandlung der Groß-/Kleinschreibung
 ---------|-----------|---------------
 [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
-Wichtige Informationen:
+#### <a name="key-information"></a>Wichtige Informationen
 
-- Lassen Sie bei der Erweiterung den vorangestellten Punkt weg. Verwenden Sie also „htm“ anstelle von „.htm“.
+- Lassen Sie bei der Erweiterung den vorangestellten Punkt weg. Verwenden Sie also *html* anstelle von *.html*.
 
 ### <a name="url-file-name"></a>URL-Dateiname
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die den angegebenen Dateinamen in der anfordernden URL einschließen.
+
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Dateiname | Umwandlung der Groß-/Kleinschreibung
 ---------|-----------|---------------
 [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
-Wichtige Informationen:
+#### <a name="key-information"></a>Wichtige Informationen
 
 - Um mehrere Dateinamen anzugeben, trennen Sie die einzelnen Dateinamen jeweils durch ein einzelnes Leerzeichen. 
 
 ### <a name="url-path"></a>URL-Pfad
 
-**Erforderliche Felder**
+Identifiziert Anforderungen, die den angegebenen Pfad in der anfordernden URL einschließen.
+
+#### <a name="required-fields"></a>Pflichtfelder
 
 Operator | Wert | Umwandlung der Groß-/Kleinschreibung
 ---------|-------|---------------
 [Liste der Standardoperatoren](#standard-operator-list) | String, Int | Keine Umwandlung, in Großbuchstaben, in Kleinbuchstaben
 
-Wichtige Informationen:
+#### <a name="key-information"></a>Wichtige Informationen
 
 - Für Dateinamen können Platzhalterwerte verwendet werden. Beispielsweise kann jedes Dateinamensmuster ein oder mehrere Sternchen (*) enthalten, wobei jedes Sternchen für ein Zeichen oder eine Folge von Zeichen steht.
 
@@ -200,7 +218,7 @@ Wichtige Informationen:
 
 ### <a name="standard-operator-list"></a>Liste der Standardoperatoren
 
-Für Regeln, die die Liste der Standardoperatoren enthalten, sind die folgenden Operatoren gültig:
+Für Regeln, die Werte aus der Liste der Standardoperatoren akzeptieren, sind die folgenden Operatoren gültig:
 
 - Any
 - Equals 
@@ -220,17 +238,11 @@ Für Regeln, die die Liste der Standardoperatoren enthalten, sind die folgenden 
 - Nicht größer als
 - Nicht größer als oder gleich
 
-Für numerische Operatoren wie „Kleiner als“ oder „Größer als oder gleich“ basiert der verwendete Vergleich auf der Länge. In diesem Fall muss der Wert in der Übereinstimmungsbedingung eine ganze Zahl sein, die der Länge entspricht, die Sie vergleichen möchten. 
-
----
-
-[Nach oben](#match-conditions)
-
-</br>
+Für numerische Operatoren wie *Kleiner als* oder *Größer als oder gleich* basiert der verwendete Vergleich auf der Länge. In diesem Fall muss der Wert in der Übereinstimmungsbedingung eine ganze Zahl sein, die der Länge entspricht, die Sie vergleichen möchten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Übersicht über Azure Content Delivery Network](cdn-overview.md)
-- [Regel-Engine – Referenz](cdn-standard-rules-engine-reference.md)
-- [Aktionen der Regel-Engine](cdn-standard-rules-engine-actions.md)
+- [Übersicht über das Azure Content Delivery Network](cdn-overview.md)
+- [Referenz zur Standardregel-Engine](cdn-standard-rules-engine-reference.md)
+- [Aktionen der Standardregel-Engine](cdn-standard-rules-engine-actions.md)
 - [Erzwingen von HTTPS mithilfe der Standardregel-Engine](cdn-standard-rules-engine.md)

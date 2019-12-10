@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6268256c9be26ef3e7e1061eef7cdb3b3f7d31db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494682"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286952"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Apache Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
 
@@ -84,7 +84,10 @@ Sie können einen normalen Cluster mithilfe des verwalteten Ambari-Benutzernamen
    > [!NOTE]  
    > Wir verwenden den verknüpften Speicherschlüssel, den Benutzernamen und das Kennwort, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.
    > ![Azure-Explorer – Speicherkonten](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
-
+   >
+   > Wenn **Speicherschlüssel** den aktuellen Fokus besitzt, müssen Benutzer, die nur die Tastatur verwenden, **STRG+TAB** verwenden, um den Fokus in das nächste Feld im Dialogfeld zu verschieben.
+   
+   
 1. Ein verknüpfter Cluster wird im Knoten **HDInsight** angezeigt, nachdem Sie auf die Schaltfläche „OK“ geklickt haben, wenn die eingegebenen Informationen richtig sind. Jetzt können Sie eine Anwendung an diesen verknüpften Cluster übermitteln.
 
    ![Azure-Explorer – verknüpfter HDI-Cluster](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)

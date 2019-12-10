@@ -1,23 +1,23 @@
 ---
 title: Synchronisieren von Azure Active Directory-Benutzern in einem HDInsight-Cluster
 description: Synchronisieren Sie authentifizierte Benutzer von Azure Active Directory in einen HDInsight-Cluster.
-ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: b6252e99e69f849e2e988819f38dcccc5a7a73e0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 11/21/2019
+ms.openlocfilehash: acacb9c10250d43e22b5b5b1d073b18461561512
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498160"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406841"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronisieren von Azure Active Directory-Benutzern in einen HDInsight-Cluster
 
-[HDInsight-Cluster mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP)](hdinsight-domain-joined-introduction.md) können eine strenge Authentifizierung für Azure AD-Benutzer sowie Richtlinien für die *rollenbasierte Zugriffssteuerung* (Role-Based Access Control, RBAC) verwenden. Wenn Sie Benutzer und Gruppen zu Azure AD hinzufügen, können Sie die Benutzer synchronisieren, die Zugriff auf Ihren Cluster benötigen.
+[HDInsight-Cluster mit Enterprise-Sicherheitspaket (Enterprise Security Package, ESP)](hdinsight-domain-joined-introduction.md) können eine strenge Authentifizierung für Azure AD-Benutzer sowie Richtlinien für die *rollenbasierte Zugriffssteuerung* (Role-Based Access Control, RBAC) verwenden. Wenn Sie Azure AD Benutzer und Gruppen hinzufügen, können Sie die Benutzer synchronisieren, die Zugriff auf Ihren Cluster benötigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +27,7 @@ ms.locfileid: "73498160"
 
 Um Ihre Hosts anzuzeigen, öffnen Sie die Ambari-Webbenutzeroberfläche. Jeder Knoten wird mit neuen Einstellungen für das unbeaufsichtigte Upgrade aktualisiert.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem Azure AD-Verzeichnis, dem Ihr ESP-Cluster zugeordnet ist.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem Azure AD-Verzeichnis, das Ihrem ESP-Cluster zugeordnet ist.
 
 2. Wählen Sie im linken Menü den Eintrag **Alle Benutzer** aus, und wählen Sie dann **Neuer Benutzer** aus.
 
@@ -45,20 +45,20 @@ Benutzergruppen, die während des Clustererstellungsprozesses angegeben werden, 
 
 Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Informationen finden Sie unter [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md).
 
-1. [Stellen Sie über SSH eine Verbindung mit Ihrem Cluster her](hdinsight-hadoop-linux-use-ssh-unix.md). Klicken Sie im Azure-Portal im Übersichtsbereich für Ihren Cluster auf die Schaltfläche **Secure Shell (SSH)** .
+1. Verwenden Sie einen [ssh-Befehl](hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den unten angegebenen Befehl, indem Sie `CLUSTERNAME` durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
 
-    ![HDInsight – SSH-Symbol (Secure Shell)](./media/hdinsight-sync-aad-users-to-cluster/hdinsight-secure-shell.png)
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-2. Kopieren Sie den angezeigten `ssh`-Befehl, und fügen Sie ihn in Ihrem SSH-Client ein. Geben Sie bei Aufforderung das SSH-Benutzerkennwort ein.
-
-3. Geben Sie nach der Authentifizierung den folgenden Befehl ein:
+1. Geben Sie nach der Authentifizierung den folgenden Befehl ein:
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> -sS -H "X-Requested-By: ambari" \
+    curl -u admin:PASSWORD -sS -H "X-Requested-By: ambari" \
     -X POST -d '{"Event": {"specs": [{"principal_type": "groups", "sync_type": "existing"}]}}' \
-    "https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events"
+    "https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events"
     ```
-    
+
     Das Ergebnis sieht in etwa wie folgt aus:
 
     ```json
@@ -74,14 +74,14 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
     }
     ```
 
-4. Führen Sie einen neuen `curl`-Befehl aus, um den Synchronisierungsstatus anzuzeigen:
+1. Führen Sie einen neuen `curl`-Befehl aus, um den Synchronisierungsstatus anzuzeigen:
 
     ```bash
-    curl -u admin:<YOUR PASSWORD> https://<YOUR CLUSTER NAME>.azurehdinsight.net/api/v1/ldap_sync_events/1
+    curl -u admin:PASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/ldap_sync_events/1
     ```
-    
+
     Das Ergebnis sieht in etwa wie folgt aus:
-    
+
     ```json
     {
       "href" : "http://hn0-hadoop.YOURDOMAIN.com:8080/api/v1/ldap_sync_events/1",
@@ -120,14 +120,14 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
     }
     ```
 
-5. Dieses Ergebnis zeigt, dass der Status **ABGESCHLOSSEN** lautet, ein neuer Benutzer erstellt wurde und dem Benutzer eine Mitgliedschaft zugewiesen wurde. In diesem Beispiel wird der Benutzer der synchronisierten LDAP-Gruppe „HiveUsers“ zugewiesen, da der Benutzer in Azure AD zu genau dieser Gruppe hinzugefügt wurde.
+1. Dieses Ergebnis zeigt, dass der Status **ABGESCHLOSSEN** lautet, ein neuer Benutzer erstellt und dem Benutzer eine Mitgliedschaft zugewiesen wurde. In diesem Beispiel wird der Benutzer der synchronisierten LDAP-Gruppe „HiveUsers“ zugewiesen, da der Benutzer in Azure AD zu genau dieser Gruppe hinzugefügt wurde.
 
-> [!NOTE]  
-> Die vorherige Methode synchronisiert nur die Azure AD-Gruppen, die während der Clustererstellung in der Eigenschaft **Zugriff auf die Benutzergruppe** der Domäneneinstellungen angegeben wurden. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters](domain-joined/apache-domain-joined-configure.md).
+    > [!NOTE]  
+    > Die vorherige Methode synchronisiert nur die Azure AD-Gruppen, die während der Clustererstellung in der Eigenschaft **Zugriff auf die Benutzergruppe** der Domäneneinstellungen angegeben wurden. Weitere Informationen finden Sie unter [Erstellen eines HDInsight-Clusters](domain-joined/apache-domain-joined-configure.md).
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Überprüfen des neu hinzugefügten Azure AD-Benutzers
 
-Öffnen Sie die [Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md), um zu überprüfen, ob der neue Azure AD-Benutzer hinzugefügt wurde. Sie können über **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** auf die Ambari-Webbenutzeroberfläche zugreifen. Geben Sie den Benutzernamen und das Kennwort des Clusteradministrators ein.
+Öffnen Sie die [Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md), um zu überprüfen, ob der neue Azure AD-Benutzer hinzugefügt wurde. Sie können über **`https://CLUSTERNAME.azurehdinsight.net`** auf die Ambari-Webbenutzeroberfläche zugreifen. Geben Sie den Benutzernamen und das Kennwort des Clusteradministrators ein.
 
 1. Wählen Sie im Ambari-Dashboard im Menü **Administrator** die Option **Ambari verwalten** aus.
 
@@ -143,7 +143,8 @@ Die folgende Methode verwendet POST mit der Ambari-REST-API. Weitere Information
 
 ## <a name="log-in-to-ambari-as-the-new-user"></a>Anmelden bei Ambari als neuer Benutzer
 
-Wenn der neue Benutzer (oder ein anderer Domänenbenutzer) sich bei Ambari anmeldet, verwendet er seinen vollständigen Azure AD-Benutzernamen und die Domänenanmeldeinformationen.  Ambari zeigt einen Benutzeralias an, bei dem es sich um den Anzeigenamen des Benutzers in Azure AD handelt. Der neue Beispielbenutzer hat den Benutzernamen `hiveuser3@contoso.com`. In Ambari wird dieser neue Benutzer als `hiveuser3` angezeigt, der Benutzer muss sich jedoch als `hiveuser3@contoso.com` bei Ambari anmelden.
+Wenn der neue Benutzer (oder ein anderer Domänenbenutzer) sich bei Ambari anmeldet, verwendet er seinen vollständigen Azure AD-Benutzernamen und die Domänenanmeldeinformationen.  Ambari zeigt einen Benutzeralias an, bei dem es sich um den Anzeigenamen des Benutzers in Azure AD handelt.
+Der neue Beispielbenutzer hat den Benutzernamen `hiveuser3@contoso.com`. In Ambari wird dieser neue Benutzer als `hiveuser3` angezeigt, der Benutzer muss sich jedoch als `hiveuser3@contoso.com` bei Ambari anmelden.
 
 ## <a name="see-also"></a>Weitere Informationen
 

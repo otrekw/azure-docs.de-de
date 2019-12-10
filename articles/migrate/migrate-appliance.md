@@ -1,17 +1,17 @@
 ---
-title: Architektur der Azure Migrate-Appliance | Microsoft-Dokumentation
-description: Enthält eine Übersicht über die Azure Migrate-Appliance
+title: Architektur der Azure Migrate-Appliance
+description: Bietet einen Überblick über die Azure Migrate-Appliance, die bei der Serverbewertung und -migration verwendet wird.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 49545ca6c43c272c3fd84f8bee59b8617aae136d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685096"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232570"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-Appliance
 
@@ -42,7 +42,7 @@ Auf dieser Appliance sind Agents installiert.
 
 **Agent** | **Details**
 --- | ---
-Ermittlungs-Agent | Sammelt Konfigurationsdaten von lokalen virtuellen Computern.
+Ermittlungs-Agent | Erfasst Konfigurationsdaten von lokalen virtuellen Computern.
 Bewertungs-Agent | Erstellt ein Profil der lokalen Umgebung, um VM-Leistungsdaten zu sammeln.
 Migrationsadapter | Orchestriert die VM-Replikation und koordiniert die Kommunikation zwischen virtuellen Computern und Azure.
 Migrations-Gateway | Sendet replizierte VM-Daten an Azure.

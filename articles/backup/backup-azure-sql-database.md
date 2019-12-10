@@ -1,18 +1,14 @@
 ---
 title: Sichern von SQL Server-Datenbanken in Azure
-description: In diesem Tutorial erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
-author: dcurwin
-manager: carmonm
-ms.service: backup
-ms.topic: tutorial
+description: In diesem Artikel erfahren Sie, wie Sie SQL Server in Azure sichern. In diesem Artikel wird auch die SQL Server-Wiederherstellung beschrieben.
+ms.topic: conceptual
 ms.date: 06/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: e5d24c35fd2fafc27f2339af5b1c92875b0138d9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 39f2348a95be95a03dada45d48952dce99ec4ec7
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162202"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462590"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
 
@@ -55,7 +51,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 * SQL Server-Sicherung kann im Azure-Portal oder mit **PowerShell** konfiguriert werden. CLI wird nicht unterstützt.
 * Die Lösung wird für beide Arten von [Bereitstellungen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) unterstützt: Azure Resource Manager-VMs und klassische VMs.
 * Der virtuelle Computer, auf dem SQL Server ausgeführt wird, benötigt eine Internetverbindung, um auf öffentliche IP-Adressen von Azure zuzugreifen.
-* Die **Failoverclusterinstanz (FCI)** für SQL Server und die Failoverclusterinstanz für SQL Server Always On werden nicht unterstützt.
+* Eine SQL Server-**Failoverclusterinstanz (FCI)** wird nicht unterstützt.
 * Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
 * Die Verwendung mehrerer Sicherungslösungen zum Sichern Ihrer eigenständigen SQL Server-Instanz oder SQL Always On-Verfügbarkeitsgruppe kann zu Fehlern bei der Sicherung führen. Es ist daher ratsam, von dieser Vorgehensweise abzusehen.
 * Das Sichern von zwei Knoten einer Verfügbarkeitsgruppe mit derselben Lösung oder anderen Lösungen kann auch zu Fehlern bei der Sicherung führen.
@@ -63,7 +59,7 @@ Die Lösung nutzt die nativen SQL-APIs, um Sicherungen Ihrer SQL-Datenbankinstan
 * Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien beträgt **~1.000**.  
 * Sie können bis zu **~2.000** SQL Server-Datenbanken in einem Tresor sichern. Sie können mehrere Tresore erstellen, falls Sie über eine größere Anzahl von Datenbanken verfügen.
 * Sie können die Sicherung für bis zu **50** Datenbanken auf einmal konfigurieren; diese Einschränkung trägt dazu bei, Sicherungslasten zu optimieren.
-* Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
+* Wir unterstützen Datenbanken bis zu einer Größe von **2 TB**. Über 2 TB treten unter Umständen Leistungsprobleme auf.
 * Um einen Eindruck davon zu bekommen, wie viele Datenbanken pro Server geschützt werden können, müssen wir Faktoren wie z.B. Bandbreite, VM-Größe, Sicherungshäufigkeit, Datenbankgröße usw. berücksichtigen. Laden Sie den Ressourcenplaner [hier](https://download.microsoft.com/download/A/B/5/AB5D86F0-DCB7-4DC3-9872-6155C96DE500/SQL%20Server%20in%20Azure%20VM%20Backup%20Scale%20Calculator.xlsx) herunter. Er enthält die ungefähre Anzahl von Datenbanken, die basierend auf den VM-Ressourcen pro Server zulässig sind, sowie die Sicherungsrichtlinie.
 * Bei Verfügbarkeitsgruppen werden Sicherungen basierend auf einigen Faktoren auf den verschiedenen Knoten erstellt. Das Sicherungsverhalten für eine Verfügbarkeitsgruppe ist unten zusammengefasst.
 

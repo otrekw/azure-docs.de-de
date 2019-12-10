@@ -1,18 +1,18 @@
 ---
-title: Bereitstellen von Azure Firewall mit Verfügbarkeitszonen mithilfe von Azure PowerShell
+title: Bereitstellen von Azure Firewall mit Verfügbarkeitszonen mithilfe von PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure Firewall mit Verfügbarkeitszonen mithilfe von Azure PowerShell bereitstellen.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/10/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 56958eedceeb4602589d65d5e0eb7b10e8a9ff2d
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 33dcebf14f4d534962783a30ec94f7ff6529ae0d
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67703995"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195925"
 ---
 # <a name="deploy-an-azure-firewall-with-availability-zones-using-azure-powershell"></a>Bereitstellen einer Azure Firewall mit Verfügbarkeitszonen mithilfe von Azure PowerShell
 

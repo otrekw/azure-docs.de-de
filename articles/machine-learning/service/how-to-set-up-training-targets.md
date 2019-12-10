@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwenden von Computezielen für das Modelltraining
+title: Verwenden von Computeziele für das Modelltraining
 titleSuffix: Azure Machine Learning
 description: Konfigurieren Sie die Trainingsumgebungen (Computeziele) für das Machine Learning-Modelltraining. Sie können problemlos zwischen Trainingsumgebungen wechseln. Beginnen Sie das Training lokal. Wenn ein horizontales Hochskalieren erforderlich ist, wechseln Sie zu einem cloudbasierten Computeziel.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3237272c7bdab5a798e84117147254a3471f5c6d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489582"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305329"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie verschiedene Computeziele für das Model
 
 
 >[!NOTE]
-> Der Code in diesem Artikel wurde mit Version 1.0.39 des Azure Machine Learning SDK getestet.
+> Der Code in diesem Artikel wurde mit Version 1.0.74 des Azure Machine Learning SDK getestet.
 
 ## <a name="compute-targets-for-training"></a>Computeziele für das Training
 
@@ -105,9 +105,6 @@ Sie können eine Azure Machine Learning Compute-Umgebung bedarfsgesteuert beim P
 #### <a name="run-based-creation"></a>Ausführungsbasierte Erstellung
 
 Sie können eine Azure Machine Learning Compute-Umgebung als Computeziel zur Laufzeit erstellen. Das Computeziel wird automatisch für Ihre Ausführung erstellt. Das Computeziel wird nach Abschluss der Ausführung automatisch gelöscht. 
-
-> [!NOTE]
-> Zum Festlegen einer maximalen Anzahl der zu verwendenden Knoten würden Sie normalerweise `node_count` auf die jeweilige Anzahl von Knoten festlegen. Derzeit (4.4.2019) gibt es einen Fehler, der diese Funktionsweise verhindert. Verwenden Sie die `amlcompute._cluster_max_node_count`-Eigenschaft der Ausführungskonfiguration, um dieses Problem zu umgehen. Beispiel: `run_config.amlcompute._cluster_max_node_count = 5`.
 
 > [!IMPORTANT]
 > Die ausführungsbasierte Erstellung von Azure Machine Learning Compute ist zurzeit als Vorschauversion verfügbar. Verwenden Sie die ausführungsbasierte Erstellung nicht, wenn Sie die Hyperparameteroptimierung oder automatisiertes maschinelles Lernen nutzen. Um Hyperparameteroptimierung oder automatisches maschinelles Lernen zu verwenden, erstellen Sie stattdessen ein [persistentes Computeziel](#persistent).

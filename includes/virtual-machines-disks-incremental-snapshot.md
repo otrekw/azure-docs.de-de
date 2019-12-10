@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a7e9e36f75d0b0638fadbf92e713a924e816807d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012400"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74566263"
 ---
 Inkrementelle Momentaufnahmen (Vorschau) sind Sicherungen zu einem bestimmten Zeitpunkt für verwaltete Datenträger, die im Erfassungszustand nur aus allen Änderungen seit der letzten Momentaufnahme bestehen. Wenn Sie versuchen, eine inkrementelle Momentaufnahme herunterzuladen oder anderweitig zu verwenden, wird die vollständige VHD verwendet. Diese neue Funktion für Momentaufnahmen verwalteter Datenträger kann es potenziell ermöglichen, dass diese kostengünstiger sind, da Sie nicht mehr den gesamten Datenträger mit jeder einzelnen Momentaufnahme speichern müssen, es sei denn, Sie entscheiden sich dazu. Ebenso wie reguläre Momentaufnahmen können inkrementelle Momentaufnahmen verwendet werden, um einen vollständigen verwalteten Datenträger oder eine reguläre Momentaufnahme zu erstellen.
 
@@ -25,7 +25,7 @@ Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwend
 
 ## <a name="restrictions"></a>Einschränkungen
 
-- Inkrementelle Momentaufnahmen sind zurzeit nur in den Regionen „USA, Westen-Mitte“ und „Europa, Norden“ verfügbar.
+- Inkrementelle Momentaufnahmen sind zurzeit nur in den Regionen „USA, Osten“, „USA, Mitte“, „Kanada, Mitte“, „USA, Westen-Mitte“ und „Europa, Norden“ verfügbar.
 - Inkrementelle Momentaufnahmen können derzeit nicht erstellt werden, nachdem die Größe eines Datenträgers geändert wurde.
 - Inkrementelle Momentaufnahmen können derzeit nicht zwischen Abonnements verschoben werden.
 - Sie können zurzeit nur SAS-URIs mit jeweils bis zu fünf Momentaufnahmen einer bestimmten Momentaufnahmefamilie generieren.
@@ -78,11 +78,13 @@ $incrementalSnapshots
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Sie können eine inkrementelle Momentaufnahme mit der Azure CLI erstellen. Sie benötigen dazu die aktuelle Version der Azure CLI. Mit dem folgenden Befehl wird sie installiert oder Ihre vorhandene Installation auf die neueste Version aktualisiert:
+Sie können eine inkrementelle Momentaufnahme mit der Azure CLI erstellen. Sie benötigen dazu die aktuelle Version der Azure CLI. 
 
+Mit dem folgenden Befehl wird sie unter Windows installiert oder Ihre vorhandene Installation auf die neueste Version aktualisiert:
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
+Unter Linux variiert die CLI-Installation je nach Betriebssystemversion.  Weitere Informationen finden Sie unter [Installieren der Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) für Ihre jeweilige Linux-Version.
 
 Um eine inkrementelle Momentaufnahme zu erstellen, verwenden Sie [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) mit dem Parameter `--incremental`.
 
@@ -154,4 +156,8 @@ Sie können auch Azure Resource Manager-Vorlagen verwenden, um eine inkrementell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwendung von inkrementellen Momentaufnahmen beginnen möchten, senden Sie eine E-Mail an AzureDisks@microsoft.com, um Zugriff auf die öffentliche Vorschau zu erhalten.
+1. Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwendung von inkrementellen Momentaufnahmen beginnen möchten, senden Sie eine E-Mail an AzureDisks@microsoft.com, um Zugriff auf die öffentliche Vorschau zu erhalten. 
+
+2. Sehen Sie sich die folgenden Beispiele für regionsübergreifende Kopien von inkrementellen Momentaufnahmen mit differenziellen Funktionen an.   
+
+    - [Verwenden von Azure .NET SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 16ce90d3db1091fa759d940f4bbf91a3ef924e42
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 217a1160595bfcbd33fe260613289951370cf409
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72025528"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184324"
 ---
 # <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
@@ -24,7 +24,123 @@ ms.locfileid: "72025528"
 
 Azure HDInsight ist einer der beliebtesten Dienste unter Enterprise-Kunden für die Open Source-Analyseframeworks Apache Hadoop und Apache Spark in Azure.
 
-## <a name="new-features"></a>Neue Funktionen
+## <a name="release-date-08072019"></a>Veröffentlichungsdatum: 07.08.2019
+
+### <a name="component-versions"></a>Komponentenversionen
+
+Die offiziellen Apache-Versionen aller HDInsight 4.0-Komponenten werden unten aufgeführt. Die aufgelisteten Komponenten stellen Releases der neuesten stabilen Versionen dar, die verfügbar sind.
+
+- Apache Ambari 2.7.1
+- Apache Hadoop 3.1.1
+- Apache HBase 2.0.0
+- Apache Hive 3.1.0
+- Apache Kafka 1.1.1, 2.1.0
+- Apache Mahout 0.9.0 und höher
+- Apache Oozie 4.2.0
+- Apache Phoenix 4.7.0
+- Apache Pig 0.16.0
+- Apache Ranger 0.7.0
+- Apache Slider 0.92.0
+- Apache Spark 2.3.1, 2.4.0
+- Apache Sqoop 1.4.7
+- Apache TEZ 0.9.1
+- Apache Zeppelin 0.8.0
+- Apache ZooKeeper 3.4.6
+
+Höhere Versionen von Apache-Komponenten werden gelegentlich zusätzlich zu den oben aufgeführten Versionen in der HDP-Distribution gebündelt. In diesem Fall werden diese neueren Versionen in der Technical Previews-Tabelle aufgeführt. Diese sollten die oben aufgeführten Versionen der Apache-Komponenten in einer Produktionsumgebung nicht ersetzen.
+
+### <a name="apache-patch-information"></a>Apache-Patchinformationen
+
+Weitere Informationen zu den in HDInsight 4.0 verfügbaren Patches finden Sie in der Patchauflistung zu den einzelnen Produkten in der Tabelle unten.
+
+| Produktname | Patchinformationen |
+|---|---|
+| Ambari | [Ambari-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/Ambari-2.7.1.0/bk_ambari-release-notes/content/ambari_relnotes-2.7.1.0-patch-information.html) |
+| Hadoop | [Hadoop-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hadoop.html) |
+| hbase | [HBase-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_hbase.html) |
+| Hive  | Dieses Release stellt Hive 3.1.0 ohne zusätzliche Apache-Patches bereit.  |
+| Kafka | Dieses Release stellt Kafka 1.1.1 ohne zusätzliche Apache-Patches bereit. |
+| Oozie | [Oozie-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_oozie.html) |
+| Phoenix | [Phoenix-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_phoenix.html) |
+| Pig | [Pig-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_pig.html) |
+| Ranger | [Ranger-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_ranger.html) |
+| Spark | [Spark-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_spark.html) |
+| Sqoop | Dieses Release stellt Sqoop 1.4.7 ohne zusätzliche Apache-Patches bereit. |
+| Tez | Dieses Release stellt Tez 0.9.1 ohne zusätzliche Apache-Patches bereit. |
+| Zeppelin | Dieses Release stellt Zeppelin 0.8.0 ohne zusätzliche Apache-Patches bereit. |
+| Zookeeper | [Zookeeper-Patchinformationen](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/patch_zookeeper.html) |
+
+### <a name="fixed-common-vulnerabilities-and-exposures"></a>Behobene Common Vulnerabilities and Exposures
+
+Weitere Informationen zu den in dieser Version behobenen Sicherheitsproblemen finden Sie unter in Hortonworks [Behobene Common Vulnerabilities and Exposures für HDP 3.0.1](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.1/release-notes/content/cve.html).
+
+### <a name="known-issues"></a>Bekannte Probleme
+
+#### <a name="replication-is-broken-for-secure-hbase-with-default-installation"></a>Die Replikation ist für Secure HBase in der Standardinstallation nicht funktional
+
+Führen Sie für HDInsight 4.0 die folgenden Schritte aus:
+
+1. Aktivieren Sie die Kommunikation zwischen Clustern.
+1. Melden Sie sich beim aktiven Hauptknoten an.
+1. Laden Sie mit dem folgenden Befehl ein Skript zum Aktivieren der Replikation herunter:
+
+    ```
+    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
+    ```
+1. Geben Sie den Befehl `sudo kinit <domainuser>` ein.
+1. Geben Sie den folgenden Befehl ein, um das Skript auszuführen:
+
+    ```
+    sudo bash hdi_enable_replication.sh -m <hn0> -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    ```
+Gehen Sie für HDInsight 3.6 wie folgt vor:
+
+1. Melden Sie sich beim aktiven HMaster ZK an.
+1. Laden Sie mit dem folgenden Befehl ein Skript zum Aktivieren der Replikation herunter:
+    ```
+    sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
+    ```
+1. Geben Sie den Befehl `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>` ein.
+1. Geben Sie folgenden Befehl ein:
+
+    ```bash
+    sudo bash hdi_enable_replication.sh -s <srclusterdns> -d <dstclusterdns> -sp <srcclusterpasswd> -dp <dstclusterpasswd> -copydata
+    ```
+
+#### <a name="phoenix-sqlline-stops-working-after-migrating-hbase-cluster-to-hdinsight-40"></a>Phoenix Sqlline funktioniert nach dem Migrieren des HBase-Clusters nach HDInsight 4.0 nicht mehr
+
+Führen Sie folgende Schritte aus:
+
+1. Löschen Sie die folgenden Phoenix-Tabellen:
+    1. `SYSTEM.FUNCTION`
+    1. `SYSTEM.SEQUENCE`
+    1. `SYSTEM.STATS`
+    1. `SYSTEM.MUTEX`
+    1. `SYSTEM.CATALOG`
+1. Wenn Sie keine der Tabellen löschen können, starten Sie HBase neu, um alle Verbindungen mit den Tabellen zu löschen.
+1. Führen Sie `sqlline.py` erneut aus. Phoenix erstellt alle Tabellen, die in Schritt 1 gelöscht wurden, erneut.
+1. Regenerieren Sie die Phoenix-Tabellen und -Ansichten für Ihre HBase-Daten.
+
+#### <a name="phoenix-sqlline-stops-working-after-replicating-hbase-phoenix-metadata-from-hdinsight-36-to-40"></a>Phoenix Sqlline funktioniert nach der Replikation von HBase Phoenix-Metadaten von HDInsight 3.6 nach 4.0 nicht mehr
+
+Führen Sie folgende Schritte aus:
+
+1. Wechseln Sie vor dem Ausführen der Replikation zum 4.0-Zielcluster, und führen Sie `sqlline.py` aus. Dieser Befehl generiert Phoenix-Tabellen wie `SYSTEM.MUTEX` und `SYSTEM.LOG`, die nur in Version 4.0 bestehen.
+1. Löschen Sie die folgenden Tabellen:
+    1. `SYSTEM.FUNCTION`
+    1. `SYSTEM.SEQUENCE`
+    1. `SYSTEM.STATS`
+    1. `SYSTEM.CATALOG`
+1. Starten Sie die HBase-Replikation
+
+### <a name="deprecation"></a>Eingestellte Unterstützung
+
+Die Apache-Dienste Storm und ML stehen in HDInsight 4.0 nicht zur Verfügung.
+
+
+## <a name="release-date-04142019"></a>Veröffentlichungsdatum: 14.04.2019
+
+### <a name="new-features"></a>Neue Funktionen
 
 Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
@@ -40,7 +156,7 @@ Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
 *  ***Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):*** (Vorschauversion) [VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
 
-## <a name="component-versions"></a>Komponentenversionen
+### <a name="component-versions"></a>Komponentenversionen
 
 Die offiziellen Apache-Versionen aller HDInsight 3.6-Komponenten werden unten aufgeführt. Alle hier aufgeführten Komponenten sind offizielle Apache-Releases der neuesten stabilen Versionen, die verfügbar sind.
 
@@ -80,9 +196,9 @@ Die offiziellen Apache-Versionen aller HDInsight 3.6-Komponenten werden unten au
 
 Höhere Versionen einiger Apache-Komponenten werden gelegentlich zusätzlich zu den oben aufgeführten Versionen in der HDP-Distribution gebündelt. In diesem Fall werden diese neueren Versionen in der Technical Previews-Tabelle aufgeführt. Diese sollten die oben aufgeführten Versionen der Apache-Komponenten in einer Produktionsumgebung nicht ersetzen.
 
-## <a name="apache-patch-information"></a>Apache-Patchinformationen
+### <a name="apache-patch-information"></a>Apache-Patchinformationen
 
-### <a name="hadoop"></a>Hadoop
+#### <a name="hadoop"></a>Hadoop
 
 Dieses Release stellt Hadoop Common 2.7.3 und die folgenden Apache-Patches bereit:
 
@@ -166,7 +282,7 @@ Mit HDP-2.6.4 wurde Hadoop Common 2.7.3 mit den folgenden Apache-Patches bereitg
 
 -   [YARN-6805](https://issues.apache.org/jira/browse/YARN-6805): NPE in LinuxContainerExecutor due to null PrivilegedOperationException exit code. (NPE in LinuxContainerExecutor aufgrund von NULL bei PrivilegedOperationException#getExitCode.)
 
-### <a name="hbase"></a>hbase
+#### <a name="hbase"></a>hbase
 
 Dieses Release stellt HBase 1.1.2 und die folgenden Apache-Patches bereit:
 
@@ -232,7 +348,7 @@ Dieses Release stellt HBase 1.1.2 und die folgenden Apache-Patches bereit:
 
 -   [HBASE-20008](https://issues.apache.org/jira/browse/HBASE-20008): \[backport\] NullPointerException when restoring a snapshot after splitting a region. (NullPointerException wird ausgelöst, wenn eine Momentaufnahme nach dem Aufteilen einer Region wiederhergestellt wird.)
 
-### <a name="hive"></a>Hive
+#### <a name="hive"></a>Hive
 
 Dieses Release stellt Hive 1.2.1 und Hive 2.1.0 mit den folgenden Patches bereit:
 
@@ -492,7 +608,7 @@ Dieses Release stellt Hive 1.2.1 und Hive 2.1.0 mit den folgenden Patches bereit
 
 -   [*HIVE-18944*](https://issues.apache.org/jira/browse/HIVE-18944): Grouping sets position is set incorrectly during DPP. (groupingSetsPosition wird während DPP falsch festgelegt.)
 
-### <a name="kafka"></a>Kafka
+#### <a name="kafka"></a>Kafka
 
 Dieses Release stellt Kafka 1.0.0 und die folgenden Apache-Patches bereit:
 
@@ -526,7 +642,7 @@ Dieses Release stellt Kafka 1.0.0 und die folgenden Apache-Patches bereit:
 
 -   [KAFKA-6274](https://issues.apache.org/jira/browse/KAFKA-6274): Improve KTable Source state store auto-generated names. (Verbesserung der automatisch generierten Namen für den Zustandsspeicher für KTable-Source.)
 
-### <a name="mahout"></a>Mahout
+#### <a name="mahout"></a>Mahout
 
 Anstelle der Veröffentlichung eines spezifischen Apache-Releases von Mahout wurde in HDP-2.3.x und 2.4.x auf einen bestimmten Revisionspunkt des Apache Mahout-Trunks synchronisiert. Dieser Revisionspunkt befindet sich zwischen Release 0.9.0 und Release 0.10.0. Damit wird gegenüber dem Release 0.9.0 eine große Anzahl von Fehlerbehebungen und Funktionsverbesserungen implementiert, dennoch wird ein stabiles Release der Funktionalität von Mahout geboten, das nicht die vollständige Konvertierung zum neuen auf Spark basierenden Mahout von Release 0.10.0 umfasst.
 
@@ -540,7 +656,7 @@ Die Bibliothek „commons-httpclient“ wurde in HDP-2.5.x und -2.6.x aus Mahout
 
 -   Es besteht eine noch geringere Möglichkeit, dass einige Mahout-Aufträge aufgrund von Problemen mit der binären Kompatibilität im hbase-client-Code von Mahout hadoop-common-Bibliotheken aufruft. Bedauerlicherweise besteht keine Möglichkeit, dieses Problem zu beheben, außer auf die HDP-2.4.2 Version von Mahout zurückzukehren, was zu Sicherheitsproblemen führen kann. Dies sollte jedoch in jeder verfügbaren Mahout-Auftragssammlung sehr unwahrscheinlich sein.
 
-### <a name="oozie"></a>Oozie
+#### <a name="oozie"></a>Oozie
 
 Dieses Release stellt Oozie 4.2.0 und die folgenden Apache-Patches bereit:
 
@@ -566,7 +682,7 @@ Dieses Release stellt Oozie 4.2.0 und die folgenden Apache-Patches bereit:
 
 -   [OOZIE-3167](https://issues.apache.org/jira/browse/OOZIE-3167): Upgrade tomcat version on Oozie 4.3 branch. (Upgrade der Tomcat-Version auf Oozie 4.3.)
 
-### <a name="phoenix"></a>Phoenix
+#### <a name="phoenix"></a>Phoenix
 
 Dieses Release stellt Phoenix 4.7.0 und die folgenden Apache-Patches bereit:
 
@@ -610,7 +726,7 @@ Dieses Release stellt Phoenix 4.7.0 und die folgenden Apache-Patches bereit:
 
 -   [PHOENIX-4588](https://issues.apache.org/jira/browse/PHOENIX-4588): Clone expression also if its children have Determinism.PER\_INVOCATION. (Ausdruck auch klonen, wenn die untergeordneten Elemente Determinism.PER_INVOCATION enthalten.)
 
-### <a name="pig"></a>Pig
+#### <a name="pig"></a>Pig
 
 Dieses Release stellt Pig 0.16.0 und die folgenden Apache-Patches bereit:
 
@@ -618,7 +734,7 @@ Dieses Release stellt Pig 0.16.0 und die folgenden Apache-Patches bereit:
 
 -   [PIG-5175](https://issues.apache.org/jira/browse/PIG-5175): Upgrade jruby to 1.7.26. (Upgrade von jruby auf Version 1.7.26.)
 
-### <a name="ranger"></a>Ranger
+#### <a name="ranger"></a>Ranger
 
 Dieses Release stellt Ranger 0.7.0 und die folgenden Apache-Patches bereit:
 
@@ -638,11 +754,11 @@ Dieses Release stellt Ranger 0.7.0 und die folgenden Apache-Patches bereit:
 
 -   [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008): Die Auswertung von Richtlinien schlägt für mehrzeilige Richtlinienbedingungen fehl.
 
-### <a name="slider"></a>Schieberegler
+#### <a name="slider"></a>Schieberegler
 
 Dieses Release stellt Slider 0.92.0 ohne zusätzliche Apache-Patches bereit.
 
-### <a name="spark"></a>Spark
+#### <a name="spark"></a>Spark
 
 Dieses Release stellt Spark 2.3.0 und die folgenden Apache-Patches bereit:
 
@@ -768,11 +884,11 @@ Dieses Release stellt Spark 2.3.0 und die folgenden Apache-Patches bereit:
 
 -   [SPARK-23881](https://issues.apache.org/jira/browse/SPARK-23881): Fix flaky test JobCancellationSuite."interruptible iterator of shuffle reader". (Fehlerbehebung für den unzuverlässigen Test JobCancellationSuite."interruptible iterator of shuffle reader".)
 
-### <a name="sqoop"></a>Sqoop
+#### <a name="sqoop"></a>Sqoop
 
 Dieses Release stellt Sqoop 1.4.6 ohne zusätzliche Apache-Patches bereit.
 
-### <a name="storm"></a>Storm
+#### <a name="storm"></a>Storm
 
 Dieses Release stellt Storm 1.1.1 und die folgenden Apache-Patches bereit:
 
@@ -786,13 +902,13 @@ Dieses Release stellt Storm 1.1.1 und die folgenden Apache-Patches bereit:
 
 -   [STORM-2960](https://issues.apache.org/jira/browse/STORM-2960): Better to stress importance of setting up proper OS account for Storm processes. (In der Dokumentation wurde mehr Betonung auf die Wichtigkeit des Einrichtens eines richtigen Betriebssystemkontos für Storm-Prozesse verwendet.)
 
-### <a name="tez"></a>Tez
+#### <a name="tez"></a>Tez
 
 Dieses Release stellt Tez 0.7.0 und die folgenden Apache-Patches bereit:
 
 -   [TEZ-1526](https://issues.apache.org/jira/browse/TEZ-1526): LoadingCache for TezTaskID slow for large jobs. (LoadingCache ist bei großen Aufträgen für TezTaskID langsam.)
 
-### <a name="zeppelin"></a>Zeppelin
+#### <a name="zeppelin"></a>Zeppelin
 
 Dieses Release stellt Zeppelin 0.7.3 und die folgenden Apache-Patches bereit:
 
@@ -802,7 +918,7 @@ Dieses Release stellt Zeppelin 0.7.3 und die folgenden Apache-Patches bereit:
 
 -   [ZEPPELIN-903](https://issues.apache.org/jira/browse/ZEPPELIN-903): Replace CXF with Jersey2. (CXF durch Jersey2 ersetzt.)
 
-### <a name="zookeeper"></a>ZooKeeper
+#### <a name="zookeeper"></a>ZooKeeper
 
 Dieses Release stellt ZooKeeper 3.4.6 und die folgenden Apache-Patches bereit:
 
@@ -816,11 +932,11 @@ Dieses Release stellt ZooKeeper 3.4.6 und die folgenden Apache-Patches bereit:
 
 -   [ZOOKEEPER-2726](https://issues.apache.org/jira/browse/ZOOKEEPER-2726): Patch for ZOOKEEPER-2693 introduces potential race condition. (Patch für ZOOKEEPER-2693 hat eine potenzielle Racebedingung implementiert.)
 
-## <a name="fixed-common-vulnerabilities-and-exposures"></a>Behobene Common Vulnerabilities and Exposures
+### <a name="fixed-common-vulnerabilities-and-exposures"></a>Behobene Common Vulnerabilities and Exposures
 
 Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine Sicherheitslücken und Schwachstellen, CVE), die in diesem Release behoben wurden.
 
-### <a name="cve-2017-7676"></a>**CVE-2017-7676**
+#### <a name="cve-2017-7676"></a>**CVE-2017-7676**
 
 | **Zusammenfassung:** Die Apache Ranger-Richtlinienauswertung ignoriert Zeichen nach dem Platzhalterzeichen „\*“. |
 |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -844,7 +960,7 @@ Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine S
 | **Details zur Fehlerbehebung:** Der Ranger Hive-Autorisierer wurde aktualisiert, um die Überprüfung von Berechtigungen für den externen Speicherort ordnungsgemäß zu verarbeiten. |
 | **Empfohlene Maßnahme:** Upgrade auf HDI 3.6 (mit Apache Ranger 0.7.1 oder höher). |
 
-### <a name="cve-2017-9799"></a>**CVE-2017-9799**
+#### <a name="cve-2017-9799"></a>**CVE-2017-9799**
 
 | **Zusammenfassung:** Mögliche Ausführung von Code als falscher Benutzer in Apache Storm |
 |--------------------------------------------------------------------------------------------------|
@@ -855,7 +971,7 @@ Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine S
 | **Auswirkung:** In einigen Situationen und Konfigurationen von Storm ist es für den Besitzer einer Topologie theoretisch möglich, den Supervisor dazu zu bringen, einen Worker als einen anderen Benutzer zu starten, der nicht zum Stamm gehört. Im schlimmsten Fall führt dies zur Gefährdung der Anmeldeinformationen des anderen Benutzers. Dieses Sicherheitsrisiko gilt nur für Apache Storm-Installationen mit aktivierter Sicherheit. |
 | **Lösung:** Upgrade auf HDP 2.6.2.1, da derzeit keine Problemumgehungen vorhanden sind.  |
 
-### <a name="cve-2016-4970"></a>**CVE-2016-4970**
+#### <a name="cve-2016-4970"></a>**CVE-2016-4970**
 
 | **Zusammenfassung:** Handler/SSL/OpenSslEngine.java in Netty 4.0.x vor 4.0.37.Final und 4.1.x vor 4.1.1.Final lassen zu, dass Remote-Angreifer einen Denial of Service verursachen (Endlosschleife). |
 |--------------------------------------------------------------------------------------------------|
@@ -866,19 +982,19 @@ Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine S
 | **Auswirkung:** Die Auswirkungen sind gering, da Hortonworks OpenSslEngine.java nicht direkt in der Hadoop-Codebasis verwendet.     |
 | **Empfohlene Maßnahme:** Upgrade auf HDP 2.6.3.   |
 
-### <a name="cve-2016-8746"></a>**CVE-2016-8746**
+#### <a name="cve-2016-8746"></a>**CVE-2016-8746**
 
 | **Zusammenfassung:** Fehler beim Pfadabgleich von Apache Ranger in der Richtlinienauswertung                                                                    |
 |----------------------------------------------------------------------------------------------------------------------------------------|
 | **Schweregrad:** Normal                                                                                                                   |
 | **Anbieter:** Hortonworks                                                                                                                |
 | **Betroffene Versionen:** Alle Versionen von HDP 2.5, einschließlich der Apache Ranger-Versionen 0.6.0/0.6.1/0.6.2                                         |
-| **Betroffene Benutzer:** Alle Benutzer des Administratortools für Ranger-Richtlinien                                                                         |
+| **Betroffene Benutzer:** Alle Benutzer des Administratortools für Ranger-Richtlinien.                                                                         |
 | **Auswirkung:** Ranger-Richtlinien-Engine führt fehlerhaften Abgleich von Pfaden mit bestimmten Bedingungen durch, wenn eine Richtlinie Platzhalter und rekursive Flags enthält. |
 | **Details zur Fehlerbehebung:** Richtlinienauswertungslogik wurde behoben                                                                                          |
 | **Empfohlene Maßnahme:** Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)         |
 
-### <a name="cve-2016-8751"></a>**CVE-2016-8751**
+#### <a name="cve-2016-8751"></a>**CVE-2016-8751**
 
 | **Zusammenfassung:** Apache Ranger hat ein Problem in Bezug auf webseitenübergreifendes Skripting gespeichert.  |
 |--------------------------------------------------------------------------------------------------|
@@ -890,7 +1006,7 @@ Dieser Abschnitt umfasst alle Common Vulnerabilities and Exposures (Allgemeine S
 | **Details zur Fehlerbehebung:** Logik zum Säubern der Benutzereingabe wurde hinzugefügt.  |
 | **Empfohlene Maßnahme:** Upgrade auf HDP 2.5.4 oder höher (mit Apache Ranger 0.6.3 oder höher) oder HDP 2.6 oder höher (mit Apache Ranger 0.7.0 oder höher)  |
 
-## <a name="fixed-issues-for-support"></a>Für den Support behobene Probleme
+### <a name="fixed-issues-for-support"></a>Für den Support behobene Probleme
 
 Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support von Hortonworks protokolliert wurden, aber im aktuellen Release behoben werden. Diese Probleme wurden möglicherweise in vorherigen Versionen im Abschnitt „Bekannte Probleme“ gemeldet. Das bedeutet, dass sie zuvor von Kunden gemeldet oder durch das Quality Engineering-Team von Hortonworks identifiziert wurden.
 
@@ -925,7 +1041,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 | BUG-97708              | [HIVE-18817](https://issues.apache.org/jira/browse/HIVE-18817)                                                                                                                                                                                                                 | ArrayIndexOutOfBounds-Ausnahme wird beim Lesen der ACID-Tabelle ausgelöst.                                                             |
 | BUG-97864              | [HIVE-18833](https://issues.apache.org/jira/browse/HIVE-18833)                                                                                                                                                                                                                 | Automatische Zusammenführung schlägt fehl, wenn die Funktion als ORC-Datei eingefügt wird.                                                               |
 | BUG-97889              | [RANGER-2008](https://issues.apache.org/jira/browse/RANGER-2008)                                                                                                                                                                                                               | Die Auswertung von Richtlinien schlägt für mehrzeilige Richtlinienbedingungen fehl.                                                          |
-| BUG-98655              | [RANGER-2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | Zugriff auf HBase-Spaltenfamilie wird von einer markierten Spalte in der Spaltenfamilie autorisiert.                                       |
+| BUG-98655              | [RANGER-2066](https://issues.apache.org/jira/browse/RANGER-2066)                                                                                                                                                                                                               | Zugriff auf HBase-Spaltenfamilie wird von einer markierten Spalte in der Spaltenfamilie autorisiert                                       |
 | BUG-99883              | [HIVE-19073](https://issues.apache.org/jira/browse/HIVE-19073), [HIVE-19145](https://issues.apache.org/jira/browse/HIVE-19145)                                                                                                                                                 | StatsOptimizer kann konstante Spalten beschädigen.                                                                             |
 
 **Andere**
@@ -1261,7 +1377,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 | BUG-96873              | [ATLAS-2443](https://issues.apache.org/jira/browse/ATLAS-2443)                                                                                                                                                                                                                 | Erfassung erforderlicher Entitätsattribute in ausgehenden DELETE-Nachrichten                                                                                               |
 | BUG-96880              | [SPARK-23230](https://issues.apache.org/jira/browse/SPARK-23230)                                                                                                                                                                                                               | Wenn hive.default.fileformat andere Dateitypen aufweist, löst das Erstellen einer TEXTFILE-Tabelle einen SerDe-Fehler aus                                                         |
 | BUG-96911              | [OOZIE-2571](https://issues.apache.org/jira/browse/OOZIE-2571), [OOZIE-2792](https://issues.apache.org/jira/browse/OOZIE-2792), [OOZIE-2799](https://issues.apache.org/jira/browse/OOZIE-2799), [OOZIE-2923](https://issues.apache.org/jira/browse/OOZIE-2923)                 | Verbesserung der Analyse von Spark-Optionen                                                                                                                                |
-| BUG-97100              | [RANGER-1984](https://issues.apache.org/jira/browse/RANGER-1984)                                                                                                                                                                                                               | Überwachungsprotokoll von HBase zeigt möglicherweise nicht alle Tags an, die der Spalte zugeordnet sind, auf die zugegriffen wird.                                                                                |
+| BUG-97100              | [RANGER-1984](https://issues.apache.org/jira/browse/RANGER-1984)                                                                                                                                                                                                               | Hbase audit log records may not show all tags associated with accessed column. (Überwachungsprotokoll von HBase zeigt möglicherweise nicht alle Tags an, die der Spalte zugeordnet sind, auf die zugegriffen wird.)                                                                                |
 | BUG-97110              | [PHOENIX-3789](https://issues.apache.org/jira/browse/PHOENIX-3789)                                                                                                                                                                                                             | Ausführung regionsübergreifender Wartungsaufrufe in postBatchMutateIndispensably.                                                                                 |
 | BUG-97145              | [HIVE-12245](https://issues.apache.org/jira/browse/HIVE-12245), [HIVE-17829](https://issues.apache.org/jira/browse/HIVE-17829)                                                                                                                                                 | Unterstützung für Spaltenkommentare für eine HBase-Tabelle.                                                                                                            |
 | BUG-97409              | [HADOOP-15255](https://issues.apache.org/jira/browse/HADOOP-15255)                                                                                                                                                                                                             | Unterstützung der Anpassung der Groß-/Kleinschreibung für Gruppennamen in LdapGroupsMapping                                                                                     |
@@ -1289,11 +1405,11 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 | BUG-99650              | [KNOX-1223](https://issues.apache.org/jira/browse/KNOX-1223)                                                                                                                                                                                                                   | Knox-Proxy von Zeppelin leitet /api/ticket nicht erwartungsgemäß um                                                                                               |
 | BUG-99804              | [OOZIE-2858](https://issues.apache.org/jira/browse/OOZIE-2858)                                                                                                                                                                                                                 | HiveMain, ShellMain und SparkMain sollten Eigenschaften und Konfigurationsdateien nicht lokal überschreiben                                                                   |
 | BUG-99805              | [OOZIE-2885](https://issues.apache.org/jira/browse/OOZIE-2885)                                                                                                                                                                                                                 | Ausführung von Spark-Aktionen sollte Hive nicht auf dem Klassenpfad erfordern                                                                                                  |
-| BUG-99806              | [OOZIE-2845](https://issues.apache.org/jira/browse/OOZIE-2845)                                                                                                                                                                                                                 | Ersetzen von reflektionsbasierten Code, der Variable in HiveConf festlegt                                                                                                |
+| BUG-99806              | [OOZIE-2845](https://issues.apache.org/jira/browse/OOZIE-2845)                                                                                                                                                                                                                 | Ersetzen von reflexionsbasierten Code, der Variable in HiveConf festlegt                                                                                                |
 | BUG-99807              | [OOZIE-2844](https://issues.apache.org/jira/browse/OOZIE-2844)                                                                                                                                                                                                                 | Erhöhung der Stabilität von Oozie-Aktionen, wenn „log4j.properties“ fehlt oder nicht lesbar ist                                                                         |
 | RMP-9995               | [AMBARI-22222](https://issues.apache.org/jira/browse/AMBARI-22222)                                                                                                                                                                                                             | Auswechseln von Druid, um das Verzeichnis /var/druid anstelle von /apps/druid auf dem lokalen Datenträger zu verwenden                                                                                |
 
-## <a name="behavioral-changes"></a>Verhaltensänderungen
+### <a name="behavioral-changes"></a>Verhaltensänderungen
 
 |**Apache-Komponente**|**Apache JIRA**|**Zusammenfassung**|**Details**|
 |--|--|--|--|
@@ -1304,7 +1420,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 |**HDFS**|**N/V** |HDFS sollte mehrere KMS-URI unterstützen |**Vorheriges Verhalten:** Die dfs.encryption.key.provider.uri-Eigenschaft wurde verwendet, um den Pfad des KMS-Anbieters zu konfigurieren.<br /><br />**Neues Verhalten:** dfs.encryption.key.provider.uri ist nun veraltet und wurde zum Konfigurieren des Pfads des KMS-Anbieters durch hadoop.security.key.provider.path ersetzt.|
 |**Zeppelin**|[**ZEPPELIN-3271**](https://issues.apache.org/jira/browse/ZEPPELIN-3271)|Option zum Deaktivieren des Planers |**Betroffene Komponente:** Zeppelin-Server<br /><br />**Vorheriges Verhalten:** In vorherigen Releases von Zeppelin gab es keine Option zum Deaktivieren des Planers.<br /><br />**Neues Verhalten:** Standardmäßig wird der Planer nicht mehr für Benutzer angezeigt, da er standardmäßig deaktiviert ist.<br /><br />**Problemumgehung/Erwartete Kundenaktion:** Wenn Sie den Planer aktivieren möchten, müssen Sie azeppelin.notebook.cron.enable mit dem Wert TRUE in einer benutzerdefinierten „zeppelin-site.xml“ in den Zeppelin-Einstellungen von Ambari hinzufügen.|
 
-## <a name="known-issues"></a>Bekannte Probleme
+### <a name="known-issues"></a>Bekannte Probleme
 
 - **HDInsight-Integration in ADLS Gen 2**: In HDInsight-ESP-Clustern mit Azure Data Lake Storage Gen 2 können bei Benutzerverzeichnissen und -berechtigungen zwei Probleme auftreten:
    
@@ -1425,7 +1541,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
     1.  Die Stammverzeichnisse für Benutzer werden in „Head Node 1“ nicht erstellt. Um dieses Problem zu umgehen, erstellen Sie die Verzeichnisse manuell, und ändern Sie den Besitz in den Benutzerprinzipalnamen des jeweiligen Benutzers.
     2.  Berechtigungen im Verzeichnis „/hdp“ werden zurzeit nicht auf 751 festgelegt. Diese müssen folgendermaßen festgelegt werden:  „chmod 751 /hdp“ bzw.  „chmod –R 755 /hdp/apps“.
 
-## <a name="deprecation"></a>Eingestellte Unterstützung
+### <a name="deprecation"></a>Eingestellte Unterstützung
 
 -   **OMS-Portal:** Der Link zur HDInsight-Ressourcenseite, der zum OMS-Portal geführt hat, wurde entfernt. Für Azure Monitor-Protokolle wurde zunächst ein eigenes Portal verwendet – das OMS-Portal –, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren. Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden. HDInsight unterstützt das OMS-Portal nicht mehr. Kunden verwenden die Integration von HDInsight in Azure Monitor-Protokolle im Azure-Portal.
 
@@ -1433,7 +1549,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-## <a name="upgrading"></a>Wird aktualisiert
+### <a name="upgrading"></a>Wird aktualisiert
 
 Alle dieser Features sind in HDInsight 3.6 verfügbar. Wählen Sie beim [Erstellen eines HDInsight 3.6-Clusters](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) die Versionen Spark, Kafka und ML Services aus, um die neuesten Versionen von Spark, Kafka und R Server (Machine Learning Services) zu erhalten. Unterstützung für ADLS erhalten Sie, indem Sie den ADLS-Speichertyp als Option auswählen. Vorhandene Cluster werden nicht automatisch auf diese Versionen aktualisiert.
 

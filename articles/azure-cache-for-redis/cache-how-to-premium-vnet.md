@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: b2ddac9439183321691104d4eedccb0c971d19c9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 03cc5bd4e6e7198a6a3a916226c72e9b0f9ff1b2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129398"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233129"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -96,11 +96,7 @@ Beim Hosten von Azure Cache for Redis in einem VNET werden die in den folgenden 
 
 #### <a name="outbound-port-requirements"></a>Anforderungen für ausgehende Ports
 
-Es liegen Anforderungen für neun ausgehende Ports vor.
-
-- Alle ausgehenden Verbindungen mit dem Internet können über das lokale Überwachungsgerät eines Clients hergestellt werden.
-- Über drei dieser Ports wird Datenverkehr an Azure-Endpunkte für Azure Storage und Azure DNS weitergeleitet.
-- Die restlichen Ports sind Portbereiche und werden für die interne Kommunikation im Redis-Subnetz verwendet. Für die interne Kommunikation im Redis-Subnetz müssen keine NSG-Regeln für das Subnetz definiert werden.
+Es liegen Anforderungen für neun ausgehende Ports vor. Ausgehende Anforderungen in diesen Bereichen sind entweder ausgehend zu anderen Diensten, die erforderlich sind, damit der Cache funktioniert, oder intern an das Redis-Subnetz für die Kommunikation zwischen Knoten. Bei der Georeplikation sind zusätzliche Anforderungen an ausgehenden Datenverkehr für die Kommunikation zwischen Subnetzen des primären und sekundären Caches vorhanden.
 
 | Port(s) | Direction | Transportprotokoll | Zweck | Lokale IP | Remote-IP |
 | --- | --- | --- | --- | --- | --- |

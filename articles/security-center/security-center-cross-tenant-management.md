@@ -1,6 +1,6 @@
 ---
 title: Mandantenübergreifende Verwaltung in Azure Security Center | Microsoft-Dokumentation
-description: " Hier erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren. "
+description: Erfahren Sie, wie mandantenübergreifende Verwaltung für den Sicherheitsstatus mehrerer Mandanten in Security Center unter Verwendung delegierter Azure-Ressourcenverwaltung eingerichtet wird.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: f7aa75601639bc0c5652010fb44b01dec0d2622b
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5c654610df8c00e1e80382687bd30dca0c02b69f
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996949"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558952"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 

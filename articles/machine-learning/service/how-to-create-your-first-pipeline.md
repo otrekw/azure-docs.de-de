@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 11/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: f87d835973410a7d8e134c676530a9476cd3c2fe
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 329fa301917fec368b0e76ab970d8ece72aa66c5
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012733"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74561404"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -184,7 +184,7 @@ Geben Sie zum Anfügen von Azure Databricks als Computeziel die folgenden Inform
 * __Name des Databricks-Arbeitsbereichs__: Der Name des Azure Databricks-Arbeitsbereichs.
 * __Databricks-Zugriffstoken__: Das zur Authentifizierung bei Azure Databricks verwendete Zugriffstoken. Informationen zum Generieren eines Zugriffstokens finden Sie im Dokument [Authentifizierung](https://docs.azuredatabricks.net/dev-tools/api/latest/authentication.html).
 
-Der folgende Code veranschaulicht, wie Azure Databricks mit dem Azure Machine Learning-SDK als Computeziel angefügt wird:
+Der folgende Code veranschaulicht, wie Sie Azure Databricks als Computeziel mit dem Azure Machine Learning SDK anfügen (__der Databricks-Arbeitsbereich muss im gleichen Abonnement wie der AML-Arbeitsbereich vorhanden sein__):
 
 ```python
 import os
@@ -404,7 +404,7 @@ Hier finden Sie die Liste aller Ihrer Pipelines und deren Ausführungsdetails in
  
 1. Wählen Sie eine bestimmte Pipeline aus, um die Ausführungsergebnisse anzuzeigen.
 
-## <a name="github-tracking-and-integration"></a>GitHub-Nachverfolgung und -Integration
+## <a name="git-tracking-and-integration"></a>Git-Nachverfolgung und -Integration
 
 Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).
 
@@ -459,6 +459,39 @@ response = requests.post(published_pipeline1.endpoint,
                                "ParameterAssignments": {"pipeline_arg": 20}})
 ```
 
+## <a name="create-a-versioned-pipeline-endpoint"></a>Erstellen eines Pipelineendpunkts mit Versionsangabe
+Sie können einen Pipelineendpunkt erstellen, hinter dem sich mehrere veröffentlichte Pipelines befinden. Dieser kann wie eine veröffentlichte Pipeline verwendet werden, stellt aber einen festen REST-Endpunkt bereit, wenn Sie Ihre ML-Pipelines durchlaufen und aktualisieren.
+
+```python
+from azureml.pipeline.core import PipelineEndpoint
+
+published_pipeline = PublishedPipeline.get(workspace="ws", name="My_Published_Pipeline")
+pipeline_endpoint = PipelineEndpoint.publish(workspace=ws, name="PipelineEndpointTest",
+                                            pipeline=published_pipeline, description="Test description Notebook")
+```
+
+### <a name="submit-a-job-to-a-pipeline-endpoint"></a>Übermitteln eines Auftrags an einen Pipelineendpunkt
+Sie können einen Auftrag an die Standardversion eines Pipelineendpunkts übermitteln:
+```python
+pipeline_endpoint_by_name = PipelineEndpoint.get(workspace=ws, name="PipelineEndpointTest")
+run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment")
+print(run_id)
+```
+Sie können einen Auftrag auch an eine bestimmte Version übermitteln:
+```python
+run_id = pipeline_endpoint_by_name.submit("PipelineEndpointExperiment", pipeline_version="0")
+print(run_id)
+```
+
+Das gleiche Ergebnis kann mit der REST-API erreicht werden:
+```python
+rest_endpoint = pipeline_endpoint_by_name.endpoint
+response = requests.post(rest_endpoint, 
+                         headers=aad_token, 
+                         json={"ExperimentName": "PipelineEndpointExperiment",
+                               "RunSource": "API",
+                               "ParameterAssignments": {"1": "united", "2":"city"}})
+```
 
 ### <a name="use-published-pipelines-in-the-studio"></a>Verwenden von veröffentlichten Pipelines in Studio
 

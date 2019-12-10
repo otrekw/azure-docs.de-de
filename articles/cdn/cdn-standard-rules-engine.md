@@ -1,67 +1,79 @@
 ---
-title: Erzwingen von HTTPS über die Azure CDN-Standardregel-Engine | Microsoft-Dokumentation
-description: Mit der Standardregel-Engine können Sie anpassen, wie HTTP-Anforderungen von Azure CDN von Microsoft behandelt werden. So können Sie z. B. die Übermittlung bestimmter Inhaltstypen blockieren, eine Cacherichtlinie definieren oder HTTP-Header ändern.
+title: Verwenden einer Regel-Engine zum Erzwingen von HTTPS in Azure CDN Standard | Microsoft-Dokumentation
+description: Verwenden Sie die Regel-Engine für Microsoft Azure CDN Standard (Content Delivery Network), um die Art und Weise anzupassen, wie Azure CDN HTTP-Anforderungen verarbeitet. Dazu gehören das Blockieren der Übermittlung bestimmter Inhaltstypen, das Definieren einer Cacherichtlinie und das Ändern von HTTP-Headern. In diesem Artikel erfahren Sie, wie Sie eine Regel erstellen, um Benutzer an HTTPS umzuleiten.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: b24c4a04e0c02258a918ee075066d90c22ea0c75
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 724861305d7a25db409072200ac2bc3bd83f0682
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615829"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171572"
 ---
-# <a name="azure-cdn-standard-rules-engine"></a>Azure CDN-Standardregel-Engine
+# <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Einrichten der Standardregel-Engine für Azure CDN
+
+In diesem Artikel wird beschrieben, wie Sie die Standardregel-Engine für Azure Content Delivery Network (Azure CDN) einrichten und verwenden.
+
+## <a name="standard-rules-engine"></a>Standardregel-Engine
+
+Sie können die Standardregel-Engine für Azure CDN verwenden, um anzupassen, wie HTTP-Anforderungen verarbeitet werden. Beispielsweise können Sie mit der Regel-Engine die Inhaltsübermittlung zwingen, bestimmte Protokolle zu verwenden, eine Cacherichtlinie definieren oder einen HTTP-Header ändern. In diesem Artikel wird veranschaulicht, wie Sie eine Regel erstellen, mit der Benutzer automatisch an HTTPS umgeleitet werden. 
 
 > [!NOTE]
-> Die Standardregel-Engine ist nur für Azure CDN von Microsoft verfügbar. 
+> Die in diesem Artikel beschriebene Regel-Engine ist nur für Azure CDN Standard von Microsoft verfügbar. 
 
-Über die Azure CDN-Standardregel-Engine können Sie anpassen, wie HTTP-Anforderungen verarbeitet werden. Beispielsweise können Sie die Übermittlung bestimmter Inhaltstypen blockieren, eine Cacherichtlinie definieren oder einen HTTP-Header ändern. In diesem Tutorial wird veranschaulicht, wie Sie eine Regel erstellen, mit der Ihre Benutzer automatisch an HTTPS umgeleitet werden. 
+## <a name="redirect-users-to-https"></a>Umleiten von Benutzern an HTTPS
 
+1. Navigieren Sie in Ihren Microsoft-Profilen zu „Azure Content Delivery Network“.
 
-## <a name="tutorial"></a>Tutorial
-
-1. Wählen Sie in Azure CDN auf der Seite **CDN-Profil** aus den Microsoft-Profilen den Endpunkt aus, für den Sie Regeln konfigurieren möchten.
+1. Wählen Sie auf der Seite **CDN-Profil** den Endpunkt aus, für den Sie Regeln erstellen möchten.
   
-2. Klicken Sie auf die links angezeigte Registerkarte **Regel-Engine**.
+1. Klicken Sie auf die Registerkarte **Regel-Engine**.
    
-    Das Blatt „Regel-Engine“ mit der Regel „Global“ wird geöffnet. 
+    Der Bereich **Regel-Engine** wird geöffnet und zeigt die Liste der verfügbaren globalen Regeln an. 
    
-    [![Seite für neue CDN-Regeln](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
-   
-   > [!IMPORTANT]
-   > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst deren Verarbeitung. Eine Regel kann die von einer vorherigen Regel angegebenen Aktionen überschreiben.
-   >
-
-3. Klicken Sie auf die Schaltfläche **Regel hinzufügen**, und geben Sie einen Regelnamen an. Regelnamen müssen mit einem Buchstaben beginnen und dürfen nur Ziffern und Buchstaben enthalten.
-
-4. Ermitteln Sie die Anforderungstypen, auf die die Regel angewendet wird. Verwenden Sie die Dropdownliste, um die Übereinstimmungsbedingung **Protokoll anfordern** auszuwählen, und verwenden Sie den Wert **Ist gleich** **HTTP**.
-   
-   [![Übereinstimmungsbedingung für die CDN-Regel](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
-   
-   > [!NOTE]
-   > In der Dropdownliste sind mehrere Übereinstimmungsbedingungen verfügbar. Eine ausführliche Liste von Übereinstimmungsbedingungen finden Sie unter [Übereinstimmungsbedingungen der Regel-Engine](cdn-standard-rules-engine-match-conditions.md).
-   
-5. Wählen Sie die Aktion aus, die auf die identifizierten Anforderungen angewendet wird. Wählen Sie in der Dropdownliste die Aktion **URL-Umleitung** aus, und geben Sie für den Typ den Wert **Gefunden (302)** und als Protokoll **HTTPS** an. Lassen Sie alle weiteren Felder leer, um die eingehenden Werte zu verwenden.
-   
-   [![CDN-Regelaktion](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
-   
-   > [!NOTE]
-   > In der Dropdownliste sind mehrere Aktionen verfügbar. Eine detaillierte Liste der Aktionen finden Sie unter [Aktionen der Regel-Engine](cdn-standard-rules-engine-actions.md).
-
-6. Klicken Sie auf **Speichern**, um die neue Regel zu speichern.  Die neue Regel wird jetzt bereitgestellt.
+    [![Seite für neue Azure CDN-Regeln](./media/cdn-standard-rules-engine/cdn-new-rule.png)](./media/cdn-standard-rules-engine/cdn-new-rule.png#lightbox)
    
    > [!IMPORTANT]
-   > Es kann bis zu 15 Minuten dauern, bis Regeländerungen über Azure CDN verteilt wurden.
+   > Die Reihenfolge, in der mehrere Regeln aufgelistet sind, beeinflusst die Verarbeitung der Regeln. Die in einer Regel angegebenen Aktionen werden möglicherweise durch eine nachfolgende Regel überschrieben.
+   >
+
+1. Wählen Sie **Regel hinzufügen** aus, und geben Sie einen Regelnamen ein. Regelnamen müssen mit einem Buchstaben beginnen und dürfen nur Ziffern und Buchstaben enthalten.
+
+1. Um die Anforderungstypen zu identifizieren, auf die die Regel angewendet wird, erstellen Sie eine Übereinstimmungsbedingung:
+    1. Wählen Sie **Bedingung hinzufügen** aus, und wählen Sie dann die Übereinstimmungsbedingung **Anforderungsprotokoll** aus.
+    1. Wählen Sie die Option **Ist gleich** als **Operator** aus.
+    1. Wählen Sie als **Wert** die Option **HTTP** aus.
+   
+   [![Übereinstimmungsbedingung für die Azure CDN-Regel](./media/cdn-standard-rules-engine/cdn-match-condition.png)](./media/cdn-standard-rules-engine/cdn-match-condition.png#lightbox)
+   
+   > [!NOTE]
+   > In der Dropdownliste **Bedingung hinzufügen** können Sie unter mehreren Übereinstimmungsbedingungen wählen. Eine ausführliche Liste der Übereinstimmungsbedingungen finden Sie unter [Übereinstimmungsbedingungen in der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md).
+   
+1. Wählen Sie die Aktion aus, die auf die Anforderungen angewendet wird, die die Übereinstimmungsbedingung erfüllen:
+   1. Wählen Sie **Aktion hinzufügen** aus, und wählen Sie dann **URL-Umleitung** aus.
+   1. Wählen Sie als **Typ** die Option **Gefunden (302)** aus.
+   1. Wählen Sie als **Protokoll** die Option **HTTPS** aus.
+   1. Lassen Sie alle weiteren Felder leer, um die eingehenden Werte zu verwenden.
+   
+   [![Azure CDN-Regelaktion](./media/cdn-standard-rules-engine/cdn-action.png)](./media/cdn-standard-rules-engine/cdn-action.png#lightbox)
+   
+   > [!NOTE]
+   > In der Dropdownliste **Aktion hinzufügen** können Sie unter mehreren Aktionen wählen. Eine detaillierte Liste der Aktionen finden Sie unter [Aktionen der Standardregel-Engine](cdn-standard-rules-engine-actions.md).
+
+6. Klicken Sie auf **Speichern**, um die neue Regel zu speichern. Die Regel ist jetzt für die Verwendung verfügbar.
+   
+   > [!IMPORTANT]
+   > Es kann bis zu 15 Minuten dauern, bis Regeländerungen über Azure CDN verteilt wurden.
    >
    
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 - [Übersicht über das Azure Content Delivery Network](cdn-overview.md)
 - [Referenz zur Standardregel-Engine](cdn-standard-rules-engine-reference.md)
-- [Übereinstimmungsbedingungen der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md)
-- [Aktionen der Standardregel-Engine](cdn-standard-rules-engine-actions.md)
+- [Übereinstimmungsbedingungen in der Standardregel-Engine](cdn-standard-rules-engine-match-conditions.md)
+- [Aktionen in der Standardregel-Engine](cdn-standard-rules-engine-actions.md)

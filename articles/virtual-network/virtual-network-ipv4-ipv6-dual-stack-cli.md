@@ -1,11 +1,11 @@
 ---
-title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer in Azure – Befehlszeilenschnittstelle
+title: Bereitstellen einer IPv6-Anwendung mit dualem Stapel – CLI
 titlesuffix: Azure Virtual Network
 description: Dieser Artikel zeigt, wie eine IPv6-Dual Stack-Anwendung in Azure Virtual Network mit der Azure CLI bereitgestellt wird.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: d4ca26606eb8be5b9092f40b70b57b9d5d85385c
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: b8440efa08e47685d21b0222861f749e8bdffbc9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72804004"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186381"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – Befehlszeilenschnittstelle (Vorschauversion)
 

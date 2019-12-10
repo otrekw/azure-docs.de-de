@@ -1,22 +1,23 @@
 ---
-title: Überwachen von Zugriffsprotokollen, Leistungsprotokollen, Back-End-Integrität und Metriken für Azure Application Gateway
+title: Back-End-Integrität und Diagnoseprotokolle
+titleSuffix: Azure Application Gateway
 description: Erfahren Sie, wie Sie Zugriffs- und Leistungsprotokolle für Azure Application Gateway aktivieren und verwalten.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9e1fe0e5bae462715a8cb2950cca100f0f409325
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bfae540af1c501c09ec026b97ac11e8a14b177a9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718732"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326550"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
-Mit Azure Application Gateway können Sie Ressourcen auf die folgenden Arten überwachen:
+Sie können Azure Application Gateway-Ressourcen auf die folgenden Arten überwachen:
 
 * [Back-End-Integrität:](#back-end-health) Application Gateway bietet über das Azure-Portal sowie mithilfe von PowerShell die Möglichkeit zur Überwachung der Integrität der Server in den Back-End-Pools. Sie können die Integrität der Back-End-Pools auch über die Leistungsdiagnoseprotokolle ermitteln.
 
@@ -33,7 +34,7 @@ Application Gateway bietet über das Portal sowie mithilfe von PowerShell oder d
 Der Back-End-Integritätsbericht spiegelt die Ausgabe des Application Gateway-Integritätstests an die Back-End-Instanzen wider. Wenn der Testvorgang erfolgreich ist und das Back-End Datenverkehr empfangen kann, wird es als fehlerfrei angesehen. Andernfalls wird es als nicht fehlerfrei eingestuft.
 
 > [!IMPORTANT]
-> Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, sollten Sie die Portbereiche 65503 - 65534 im Application Gateway-Subnetz für eingehenden Datenverkehr öffnen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
+> Wenn sich eine Netzwerksicherheitsgruppe (NSG) in einem Application Gateway-Subnetz befindet, sollten Sie die Portbereiche 65503 bis 65534 für v1-SKUs und 65200 bis 65535 für v2-SKUs im Application Gateway-Subnetz für eingehenden Datenverkehr öffnen. Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Sie werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten, einschließlich der Kunden dieser Gateways, keine Änderungen an diesen Endpunkten vornehmen.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Anzeigen der Back-End-Integrität über das Portal
@@ -302,7 +303,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 |ruleSetVersion     | Verwendete Regelsatzversion. Verfügbare Werte sind 2.2.9 und 3.0.     |
 |ruleId     | Regel-ID des auslösenden Ereignisses        |
 |message     | Benutzerfreundliche Meldung für das auslösende Ereignis. Weitere Details im Abschnitt „Details“.        |
-|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Blocked“ und „Allowed“.      |
+|action     |  Aktion, die für die Anforderung durchgeführt wird. Verfügbare Werte sind „Matched“ und „Blocked“.      |
 |site     | Standort, für den das Protokoll generiert wurde. Derzeit ist nur „Global“ aufgeführt, da Regeln global sind.|
 |details     | Details zum auslösenden Ereignis        |
 |details.message     | Beschreibung der Regel        |

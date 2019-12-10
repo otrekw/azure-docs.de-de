@@ -4,38 +4,39 @@ description: Hinzufügen von Daten zu einem neuen Speichervolumen zur Verwendung
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 11/21/2019
 ms.author: rohogue
-ms.openlocfilehash: f4696d9e2d45e99089c9a723024067bf3b2aabcc
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255439"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480587"
 ---
-# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung 
+# <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Verschieben von Daten in den vFXT-Cluster – Parallele Datenerfassung
 
 Nachdem Sie einen neuen vFXT-Cluster erstellt haben, besteht Ihre erste Aufgabe möglicherweise darin, Daten auf das neue Speichervolumen zu verschieben. Wenn Ihre übliche Methode zum Verschieben von Daten jedoch einen einfachen Kopierbefehl von einem Client ausgibt, werden Sie wahrscheinlich eine langsame Kopierleistung feststellen. Der Singlethread-Kopiervorgang ist keine geeignete Option, um Daten in den Back-End-Speicher des Avere vFXT-Clusters zu kopieren.
 
 Da der Avere vFXT-Cluster ein skalierbarer Multi-Client-Cache ist, besteht die schnellste und effizienteste Methode darin, die Daten mit mehreren Clients zu kopieren. Dieses Verfahren sorgt für die parallele Erfassung der Dateien und Objekte.
 
-![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf Avere vFXT. Von Avere vFXT aus zeigen mehrere Pfeile auf Blobspeicher.](media/avere-vfxt-parallel-ingest.png) 
+![Diagramm der Datenverschiebung mit mehreren Clients und mehreren Threads: Oben links befindet sich ein Symbol für den lokalen Hardwarespeicher, von dem mehrere Pfeile ausgehen. Die Pfeile zeigen auf vier Clientcomputer. Von jedem Clientcomputer zeigen drei Pfeile auf Avere vFXT. Von Avere vFXT aus zeigen mehrere Pfeile auf Blobspeicher.](media/avere-vfxt-parallel-ingest.png)
 
 Die Befehle ``cp`` oder ``copy``, die häufig verwendet werden, um Daten von einem Speichersystem zu einem anderen zu übertragen, sind Singlethread-Prozesse, die nur eine Datei zur Zeit kopieren. Das bedeutet, dass der Dateiserver immer nur eine Datei auf einmal erfasst, was eine Verschwendung der Ressourcen des Clusters darstellt.
 
 In diesem Artikel werden Strategien zur Erstellung eines Dateikopiersystems mit mehreren Clients und mehreren Threads erläutert, mit dem Daten auf den Avere vFXT-Cluster verschoben werden können. Es werden Konzepte für die Dateiübertragung und Entscheidungspunkte erläutert, die für eine effiziente Datenkopie mit mehreren Clients und einfachen Kopierbefehlen verwendet werden können.
 
-Es werden auch einige Hilfsprogramme erläutert, die hilfreich sein können. Das Hilfsprogramm ``msrsync`` kann verwendet werden, um den Prozess der Aufteilung eines Datasets in Buckets und der Verwendung von rsync-Befehlen teilweise zu automatisieren. Das ``parallelcp``-Skript ist ein weiteres Hilfsprogramm, das das Quellverzeichnis liest und automatisch Kopierbefehle ausgibt.  
+Es werden auch einige Hilfsprogramme erläutert, die hilfreich sein können. Das Hilfsprogramm ``msrsync`` kann verwendet werden, um den Prozess der Aufteilung eines Datasets in Buckets und der Verwendung von ``rsync``-Befehlen teilweise zu automatisieren. Das ``parallelcp``-Skript ist ein weiteres Hilfsprogramm, das das Quellverzeichnis liest und automatisch Kopierbefehle ausgibt. Außerdem kann das ``rsync``-Tool in zwei Phasen verwendet werden, um eine schnellere Kopie bereitzustellen, die dennoch Datenkonsistenz bietet.
 
 Klicken Sie auf den Link, um zu einem Abschnitt zu wechseln:
 
 * [Beispiel zum manuellen Kopieren](#manual-copy-example): Eine ausführliche Beschreibung mit Kopierbefehlen.
-* [Beispiel zur teilweisen Automatisierung (msrsync)](#use-the-msrsync-utility-to-populate-cloud-volumes) 
+* [Beispiel für rsync in zwei Phasen](#use-a-two-phase-rsync-process)
+* [Beispiel zur teilweisen Automatisierung (msrsync)](#use-the-msrsync-utility)
 * [Beispiel zum parallelen Kopieren](#use-the-parallel-copy-script)
 
 ## <a name="data-ingestor-vm-template"></a>VM-Vorlage zur Datenerfassung
 
-Eine Resource Manager-Vorlage ist auf GitHub verfügbar, um automatisch einen virtuellen Computer mit den in diesem Artikel erwähnten Tools zur parallelen Datenerfassung zu erstellen. 
+Eine Resource Manager-Vorlage ist auf GitHub verfügbar, um automatisch einen virtuellen Computer mit den in diesem Artikel erwähnten Tools zur parallelen Datenerfassung zu erstellen.
 
 ![Diagramm, das mehrere Pfeile zeigt, die jeweils aus Blob-Speicher, Hardwarespeicher und Azure-Dateiquellen stammen. Die Pfeile zeigen auf einen „virtuellen Computer zur Datenerfassung“ und von dort aus zeigen mehrere Pfeile auf Avere vFXT](media/avere-vfxt-ingestor-vm.png)
 
@@ -50,7 +51,7 @@ Wenn Sie eine Strategie zum parallelen Kopieren von Daten erstellen, sollten Sie
 
 Jeder Kopiervorgang hat eine Durchsatzrate und eine Übertragungsrate, die gemessen werden kann, indem die Dauer des Kopierbefehls gemessen wird und Dateigröße sowie Anzahl der Dateien berücksichtigt werden. Die Erläuterung der Vorgehensweise zur Messung der Raten liegt außerhalb des Rahmens dieses Dokuments, aber es ist unbedingt erforderlich zu verstehen, ob es sich um kleine oder große Dateien handelt.
 
-## <a name="manual-copy-example"></a>Beispiel zum manuellen Kopieren 
+## <a name="manual-copy-example"></a>Beispiel zum manuellen Kopieren
 
 Sie können eine Kopie mit mehreren Threads manuell auf einem Client erstellen, indem Sie mehrere Kopierbefehle gleichzeitig im Hintergrund für vordefinierte Gruppen von Dateien oder Pfaden ausführen.
 
@@ -64,9 +65,9 @@ cp /mnt/source/file1 /mnt/destination1/ & cp /mnt/source/file2 /mnt/destination1
 
 Nach der Ausführung dieses Befehls zeigt der Befehl `jobs` an, dass zwei Threads ausgeführt werden.
 
-### <a name="predictable-filename-structure"></a>Vorhersagbare Dateinamenstruktur 
+### <a name="predictable-filename-structure"></a>Vorhersagbare Dateinamenstruktur
 
-Wenn Ihre Dateinamen vorhersagbar sind, können Sie Ausdrücke verwenden, um parallele Kopierthreads zu erstellen. 
+Wenn Ihre Dateinamen vorhersagbar sind, können Sie Ausdrücke verwenden, um parallele Kopierthreads zu erstellen.
 
 Wenn Ihr Verzeichnis z. B. 1000 Dateien enthält, die von `0001` bis `1000` durchnummeriert sind, können Sie die folgenden Ausdrücke verwenden, um zehn parallele Threads zu erstellen, die jeweils 100 Dateien kopieren:
 
@@ -85,7 +86,7 @@ cp /mnt/source/file9* /mnt/destination1/
 
 ### <a name="unknown-filename-structure"></a>Unbekannte Dateinamenstruktur
 
-Wenn Ihre Dateinamenstruktur nicht vorhersagbar ist, können Sie Dateien nach Verzeichnisnamen gruppieren. 
+Wenn Ihre Dateinamenstruktur nicht vorhersagbar ist, können Sie Dateien nach Verzeichnisnamen gruppieren.
 
 In diesem Beispiel werden ganze Verzeichnisse gesammelt, um sie an ``cp``-Befehle zu senden, die als Hintergrundaufgaben ausgeführt werden:
 
@@ -103,16 +104,16 @@ Nachdem die Dateien gesammelt wurden, können Sie parallele Kopierbefehle ausfü
 
 ```bash
 cp /mnt/source/* /mnt/destination/
-mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ & 
-cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ & 
+mkdir -p /mnt/destination/dir1 && cp /mnt/source/dir1/* mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1a /mnt/destination/dir1/ &
+cp -R /mnt/source/dir1/dir1b /mnt/destination/dir1/ &
 cp -R /mnt/source/dir1/dir1c /mnt/destination/dir1/ & # this command copies dir1c1 via recursion
 cp -R /mnt/source/dir1/dir1d /mnt/destination/dir1/ &
 ```
 
 ### <a name="when-to-add-mount-points"></a>Zeitpunkt für das Hinzufügen von Bereitstellungspunkten
 
-Nachdem Sie ausreichend parallele Threads auf einen einzelnen Bereitstellungspunkt des Zielsystems ausgerichtet haben, gibt es einen Punkt, an dem das Hinzufügen weiterer Threads nicht zu einem höheren Durchsatz führt. (Der Durchsatz wird in Dateien/Sekunde oder Bytes/Sekunde gemessen, abhängig vom Datentyp.) Im schlimmsten Fall kann eine zu große Anzahl von Threads zu einer Verringerung des Durchsatzes führen.  
+Nachdem Sie ausreichend parallele Threads auf einen einzelnen Bereitstellungspunkt des Zielsystems ausgerichtet haben, gibt es einen Punkt, an dem das Hinzufügen weiterer Threads nicht zu einem höheren Durchsatz führt. (Der Durchsatz wird in Dateien/Sekunde oder Bytes/Sekunde gemessen, abhängig vom Datentyp.) Im schlimmsten Fall kann eine zu große Anzahl von Threads zu einer Verringerung des Durchsatzes führen.
 
 In diesem Fall können Sie clientseitige Bereitstellungspunkte zu anderen IP-Adressen des vFXT-Clusters hinzufügen, wobei Sie denselben Bereitstellungspfad des Remotedateisystems verwenden:
 
@@ -123,7 +124,7 @@ In diesem Fall können Sie clientseitige Bereitstellungspunkte zu anderen IP-Adr
 10.1.1.103:/nfs on /mnt/destination3type nfs (rw,vers=3,proto=tcp,addr=10.1.1.103)
 ```
 
-Das Hinzufügen von clientseitigen Bereitstellungspunkten ermöglicht es Ihnen, weitere Kopierbefehle für die zusätzlichen `/mnt/destination[1-3]`-Bereitstellungspunkte abzuspalten, um die Parallelität zu erhöhen.  
+Das Hinzufügen von clientseitigen Bereitstellungspunkten ermöglicht es Ihnen, weitere Kopierbefehle für die zusätzlichen `/mnt/destination[1-3]`-Bereitstellungspunkte abzuspalten, um die Parallelität zu erhöhen.
 
 Wenn Sie z. B. sehr große Dateien verwenden, können Sie die Kopierbefehle so definieren, dass sie unterschiedliche Zielpfade verwenden und mehr Befehle parallel vom Client aus senden, der den Kopiervorgang durchführt.
 
@@ -143,7 +144,7 @@ Im obigen Beispiel sind die Kopiervorgänge der Clientdateien auf alle drei Ziel
 
 ### <a name="when-to-add-clients"></a>Zeitpunkt zum Hinzufügen von Clients
 
-Wenn Sie die Kapazitäten des Clients erreicht haben, führt das Hinzufügen weiterer Kopierthreads oder zusätzlicher Bereitstellungspunkte nicht zu einer weiteren Erhöhung der „Dateien/Sekunde“ oder „Bytes/Sekunde“. In dieser Situation können Sie einen weiteren Client mit demselben Satz von Bereitstellungspunkten bereitstellen, der auch eigene Sätze von Dateikopiervorgängen ausführen wird. 
+Wenn Sie die Kapazitäten des Clients erreicht haben, führt das Hinzufügen weiterer Kopierthreads oder zusätzlicher Bereitstellungspunkte nicht zu einer weiteren Erhöhung der „Dateien/Sekunde“ oder „Bytes/Sekunde“. In dieser Situation können Sie einen weiteren Client mit demselben Satz von Bereitstellungspunkten bereitstellen, der auch eigene Sätze von Dateikopiervorgängen ausführen wird.
 
 Beispiel:
 
@@ -189,7 +190,7 @@ Leiten Sie dieses Ergebnis in eine Datei um: `find . -mindepth 4 -maxdepth 4 -ty
 Dann können Sie das Manifest mithilfe von BASH-Befehlen durchlaufen, um Dateien zu zählen und die Größe der Unterverzeichnisse zu bestimmen:
 
 ```bash
-ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l`    `du -sh ${i}`"; done
+ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `find ${i} |wc -l` `du -sh ${i}`"; done
 244    3.5M    ./atj5b5ab44b7f-02/support/gsi/2018-07-18T00:07:03EDT
 9      172K    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-18T05:01:00UTC
 124    5.8M    ./atj5b5ab44b7f-02/support/gsi/stats_2018-07-19T01:01:01UTC
@@ -225,7 +226,7 @@ ben@xlcycl1:/sps/internal/atj5b5ab44b7f > for i in $(cat /tmp/foo); do echo " `f
 33     2.8G    ./atj5b5ab44b7f-03/support/trace/rolling
 ```
 
-Schließlich müssen Sie die eigentlichen Befehle zum Kopieren von Dateien an die Clients anpassen.  
+Schließlich müssen Sie die eigentlichen Befehle zum Kopieren von Dateien an die Clients anpassen.
 
 Wenn Sie über vier Clients verfügen, verwenden Sie den folgenden Befehl:
 
@@ -245,7 +246,7 @@ Und für sechs Befehle... Extrapolieren Sie bei Bedarf.
 for i in 1 2 3 4 5 6; do sed -n ${i}~6p /tmp/foo > /tmp/client${i}; done
 ```
 
-Sie erhalten *N* Ergebnisdateien, eine für jeden Ihrer *N* Clients, der über die Pfadnamen zu den Level-4-Verzeichnissen verfügt, die als Teil der Ausgabe des Befehls `find` erhalten wurden. 
+Sie erhalten *N* Ergebnisdateien, eine für jeden Ihrer *N* Clients, der über die Pfadnamen zu den Level-4-Verzeichnissen verfügt, die als Teil der Ausgabe des Befehls `find` erhalten wurden.
 
 Verwenden Sie die einzelnen Dateien, um den Kopierbefehl zu erstellen:
 
@@ -253,28 +254,48 @@ Verwenden Sie die einzelnen Dateien, um den Kopierbefehl zu erstellen:
 for i in 1 2 3 4 5 6; do for j in $(cat /tmp/client${i}); do echo "cp -p -R /mnt/source/${j} /mnt/destination/${j}" >> /tmp/client${i}_copy_commands ; done; done
 ```
 
-Das obige Beispiel liefert Ihnen *N* Dateien, jede mit einem Kopierbefehl pro Zeile, die als BASH-Skript auf dem Client ausgeführt werden können. 
+Das obige Beispiel liefert Ihnen *N* Dateien, jede mit einem Kopierbefehl pro Zeile, die als BASH-Skript auf dem Client ausgeführt werden können.
 
 Ziel ist es, mehrere Threads dieser Skripts gleichzeitig pro Client parallel auf mehreren Clients auszuführen.
 
-## <a name="use-the-msrsync-utility-to-populate-cloud-volumes"></a>Verwenden des Hilfsprogramms msrsync zum Füllen von Cloudvolumes
+## <a name="use-a-two-phase-rsync-process"></a>Verwenden eines rsync-Prozesses in zwei Phasen
 
-Das ``msrsync``-Tool kann auch verwendet werden, um Daten in eine Back-End-Kernspeichereinheit für den Avere-Cluster zu verschieben. Dieses Tool wurde entwickelt, um die Bandbreitenauslastung durch die Ausführung mehrerer paralleler ``rsync``-Prozesse zu optimieren. Es ist bei GitHub unter https://github.com/jbd/msrsync erhältlich.
+Das ``rsync``-Standardhilfsprogramm funktioniert nicht gut für das Auffüllen des Cloudspeichers über Avere vFXT für das Azure-System, da es eine große Anzahl von Dateierstellungs- und -umbenennungsvorgängen generiert, um die Datenintegrität zu gewährleisten. Allerdings können Sie die Option ``--inplace`` mit ``rsync`` auf sichere Weise verwenden, um das ausführlichere Kopierverfahren zu überspringen, wenn Sie anschließend einen zweiten Testlauf durchführen, um die Dateiintegrität zu überprüfen.
+
+Bei einem ``rsync``-Standardkopiervorgang wird eine temporäre Datei erstellt und mit Daten aufgefüllt. Wenn die Datenübertragung erfolgreich abgeschlossen wurde, wird die temporäre Datei in den ursprünglichen Dateinamen umbenannt. Diese Methode gewährleistet Konsistenz selbst dann, wenn während des Kopiervorgangs auf die Dateien zugegriffen wird. Diese Methode generiert jedoch weitere Schreibvorgänge, wodurch die Dateibewegung durch den Cache verlangsamt wird.
+
+Mit der Option ``--inplace`` wird die neue Datei direkt an ihren endgültigen Speicherort geschrieben. Es ist nicht garantiert, dass Dateien während der Übertragung konsistent sind, aber das ist nicht wichtig, wenn Sie ein Speichersystem für die spätere Verwendung vorbereiten.
+
+Der zweite ``rsync``-Vorgang dient als Konsistenzprüfung für den ersten Vorgang. Da die Dateien bereits kopiert wurden, ist die zweite Phase eine schnelle Überprüfung, um sicherzustellen, dass die Dateien im Ziel den Dateien in der Quelle entsprechen. Wenn Dateien nicht übereinstimmen, werden Sie erneut kopiert.
+
+Beide Phasen können mit einem Befehl ausgegeben werden:
+
+```bash
+rsync -azh --inplace <source> <destination> && rsync -azh <source> <destination>
+```
+
+Diese Methode ist eine einfache und zeiteffektive Methode für Datasets bis zur Anzahl der Dateien, die der interne Verzeichnis-Manager verarbeiten kann. (Hierbei handelt es sich in der Regel um 200 Millionen Dateien für einen Cluster mit drei Knoten, 500 Millionen Dateien für einen Cluster mit sechs Knoten usw.)
+
+## <a name="use-the-msrsync-utility"></a>Verwenden des msrsync-Hilfsprogramms
+
+Das ``msrsync``-Tool kann auch verwendet werden, um Daten in eine Back-End-Kernspeichereinheit für den Avere-Cluster zu verschieben. Dieses Tool wurde entwickelt, um die Bandbreitenauslastung durch die Ausführung mehrerer paralleler ``rsync``-Prozesse zu optimieren. Es ist bei GitHub unter <https://github.com/jbd/msrsync> erhältlich.
 
 ``msrsync`` unterteilt das Quellverzeichnis in separate „Buckets“ und führt dann einzelne ``rsync``-Prozesse für die einzelnen Buckets aus.
 
 Vorläufige Tests mit einem virtuellen Computer mit vier Kernen zeigten die höchste Effizienz bei der Verwendung von 64 Prozessen. Verwenden Sie die ``msrsync``-Option ``-p``, um die Anzahl der Prozesse auf 64 festzulegen.
 
-Beachten Sie, dass ``msrsync`` nur auf und von lokalen Volumes schreiben kann. Quelle und Ziel müssen als lokale Bereitstellungen im virtuellen Netzwerk des Clusters zugänglich sein.
+Sie können auch das ``--inplace``-Argument mit ``msrsync``-Befehlen verwenden. Wenn Sie diese Option verwenden, sollten Sie ggf. einen zweiten Befehl ausführen (wie bei [rsync](#use-a-two-phase-rsync-process), siehe oben), um die Datenintegrität sicherzustellen.
 
-Befolgen Sie die folgenden Anweisungen, um mit msrsync ein Azure-Cloudvolume mit einem Avere-Cluster zu füllen:
+``msrsync`` kann nur auf lokale Volumes und von lokalen Volumes schreiben. Quelle und Ziel müssen als lokale Bereitstellungen im virtuellen Netzwerk des Clusters zugänglich sein.
 
-1. Installieren Sie msrsync und die erforderlichen Komponenten (rsync und Python 2.6 oder höher).
+Befolgen Sie diese Anweisungen, um mit ``msrsync`` ein Azure-Cloudvolume mit einem Avere-Cluster aufzufüllen:
+
+1. Installieren Sie ``msrsync`` und seine Voraussetzungen (rsync und Python 2.6 oder höher)
 1. Bestimmen Sie die Gesamtzahl der zu kopierenden Dateien und Verzeichnisse.
 
-   Verwenden Sie z. B. das Avere-Hilfsprogramm ``prime.py`` mit den Argumenten ```prime.py --directory /path/to/some/directory``` (verfügbar durch Herunterladen der URL https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py).
+   Verwenden Sie z.B. das Avere-Hilfsprogramm ``prime.py`` mit den Argumenten ```prime.py --directory /path/to/some/directory``` (verfügbar durch Herunterladen der URL <https://github.com/Azure/Avere/blob/master/src/clientapps/dataingestor/prime.py>).
 
-   Wenn Sie ``prime.py`` nicht verwenden, können Sie die Anzahl der Elemente mit dem Gnu ``find``-Tool wie folgt berechnen:
+   Wenn Sie ``prime.py`` nicht verwenden, können Sie die Anzahl der Elemente mit dem GNU-Tool ``find`` wie folgt berechnen:
 
    ```bash
    find <path> -type f |wc -l         # (counts files)
@@ -284,39 +305,45 @@ Befolgen Sie die folgenden Anweisungen, um mit msrsync ein Azure-Cloudvolume mit
 
 1. Teilen Sie die Anzahl der Elemente durch 64, um die Anzahl der Elemente pro Prozess zu ermitteln. Verwenden Sie diese Zahl zusammen mit der Option ``-f``, um die Größe der Buckets festzulegen, wenn Sie den Befehl ausführen.
 
-1. Führen Sie den Befehl msrsync aus, um Dateien zu kopieren:
+1. Führen Sie den Befehl ``msrsync`` aus, um Dateien zu kopieren:
 
    ```bash
-   msrsync -P --stats -p64 -f<ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH>
+   msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
+   ```
+
+   Wenn Sie ``--inplace`` verwenden, fügen Sie eine zweite Ausführung ohne die Option hinzu, um zu überprüfen, ob die Daten ordnungsgemäß kopiert werden:
+
+   ```bash
+   msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv --inplace" <SOURCE_PATH> <DESTINATION_PATH> && msrsync -P --stats -p 64 -f <ITEMS_DIV_64> --rsync "-ahv" <SOURCE_PATH> <DESTINATION_PATH>
    ```
 
    Dieser Befehl ist z. B. so konzipiert, dass 11.000 Dateien in 64 Prozessen von „/test/source-repository“ nach „/mnt/vfxt/repository“ verschoben werden:
 
-   ``mrsync -P --stats -p64 -f170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
+   ``msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository && msrsync -P --stats -p 64 -f 170 --rsync "-ahv --inplace" /test/source-repository/ /mnt/vfxt/repository``
 
 ## <a name="use-the-parallel-copy-script"></a>Verwenden des Skripts zum parallelen Kopieren
 
-Das ``parallelcp``-Skript kann auch hilfreich sein, um Daten in den Back-End-Speicher Ihres vFXT-Clusters zu verschieben. 
+Das ``parallelcp``-Skript kann auch hilfreich sein, um Daten in den Back-End-Speicher Ihres vFXT-Clusters zu verschieben.
 
 Das folgende Skript fügt die ausführbare Datei `parallelcp` hinzu. (Dieses Skript ist für Ubuntu vorgesehen. Wenn Sie eine andere Distribution verwenden, müssen Sie ``parallel`` separat installieren.)
 
 ```bash
-sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM 
+sudo touch /usr/bin/parallelcp && sudo chmod 755 /usr/bin/parallelcp && sudo sh -c "/bin/cat >/usr/bin/parallelcp" <<EOM
 #!/bin/bash
 
-display_usage() { 
-    echo -e "\nUsage: \$0 SOURCE_DIR DEST_DIR\n" 
-} 
+display_usage() {
+    echo -e "\nUsage: \$0 SOURCE_DIR DEST_DIR\n"
+}
 
-if [  \$# -le 1 ] ; then 
+if [  \$# -le 1 ] ; then
     display_usage
     exit 1
-fi 
- 
-if [[ ( \$# == "--help") ||  \$# == "-h" ]] ; then 
+fi
+
+if [[ ( \$# == "--help") ||  \$# == "-h" ]] ; then
     display_usage
     exit 0
-fi 
+fi
 
 SOURCE_DIR="\$1"
 DEST_DIR="\$2"
@@ -352,7 +379,7 @@ EOM
 
 ### <a name="parallel-copy-example"></a>Beispiel zum parallelen Kopieren
 
-In diesem Beispiel wird das Skript zum parallelen Kopieren verwendet, um ``glibc`` mit Quelldateien aus dem Avere-Cluster zu kompilieren. 
+In diesem Beispiel wird das Skript zum parallelen Kopieren verwendet, um ``glibc`` mit Quelldateien aus dem Avere-Cluster zu kompilieren.
 <!-- xxx what is stored where? what is 'the avere cluster mount point'? xxx -->
 
 Die Quelldateien werden auf dem Bereitstellungspunkt des Avere-Clusters und die Objektdateien auf der lokalen Festplatte gespeichert.
@@ -374,4 +401,3 @@ cd obj
 /home/azureuser/avere/glibc-2.27/configure --prefix=/home/azureuser/usr
 time make -j
 ```
-

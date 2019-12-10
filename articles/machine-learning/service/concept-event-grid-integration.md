@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: andyxu
 author: gogowings
 ms.date: 11/04/2019
-ms.openlocfilehash: 888d294634078d2fe7737426f6cf025ae9948b0a
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 2fe2d07b29b8799712d59cdf21aeb3ce989ca3b2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608526"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158460"
 ---
 # <a name="consume-azure-machine-learning-events-preview"></a>Nutzen von Azure Machine Learning-Ereignissen (Vorschauversion)
 
@@ -81,7 +81,7 @@ Weitere Informationen zum Anwenden von Filtern finden Sie unter [Filtern von Ere
 Anwendungen, die Machine Learning-Ereignisse behandeln, sollten einigen empfohlene Vorgehensweisen entsprechen:
 
 > [!div class="checklist"]
-> * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzustellen, dass es aus dem Speicherkonto stammt, das Sie erwarten.
+> * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse von einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzugehen, dass es aus dem erwarteten Machine Learning-Arbeitsbereich stammt.
 > * Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
 > * Da Nachrichten in falscher Reihenfolge und mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand ist.  Verwenden Sie auch die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen.
 > * Ignorieren Sie Felder, die Sie nicht verstehen. So müssen Sie sich nicht mit neuen Features auseinandersetzen, die in der Zukunft hinzugefügt werden könnten.

@@ -1,5 +1,5 @@
 ---
-title: Bereitstellen von Azure Log Analytics Nozzle zur Überwachung von Cloud Foundry | Microsoft-Dokumentation
+title: Bereitstellen von Azure Log Analytics Nozzle zur Überwachung von Cloud Foundry
 description: Enthält eine Schritt-für-Schritt-Anleitung zur Bereitstellung von Cloud Foundry Loggregator Nozzle für Azure Log Analytics. Verwenden Sie Nozzle zum Überwachen der Systemintegrität und Leistungsmetriken von Cloud Foundry.
 services: virtual-machines-linux
 author: ningk
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 6220aebdef6970f3d5f7017e4ae48f6f409ae0ce
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60199396"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286642"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Bereitstellen von Azure Log Analytics Nozzle zur Überwachung des Cloud Foundry-Systems
 

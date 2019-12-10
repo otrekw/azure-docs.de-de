@@ -1,6 +1,7 @@
 ---
-title: Filtern, Sortieren und Paginieren von Media Services-Entitäten – Azure | Microsoft-Dokumentation
-description: Dieser Artikel erörtert die Filterung, Sortierung und Paginierung von Azure Media Services-Entitäten.
+title: Filtern, Sortieren und Paginieren von Media Services-Entitäten
+titleSuffix: Azure Media Services
+description: Informationen zum Filtern, Sortieren und Paginieren von Azure Media Services-Entitäten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +13,12 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693307"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186247"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filtern, Sortieren und Paginieren von Media Services-Entitäten
 
@@ -41,7 +42,7 @@ Bereichsoperatoren:
 
 - `gt`: Testet, ob ein Feld *größer als* ein konstanter Wert ist.
 - `lt`: Testet, ob ein Feld *kleiner als* ein konstanter Wert ist.
-- `ge`: Testet, ob ein Feld *größer oder gleich* einem konstanten Wert ist. value
+- `ge`: Testet, ob ein Feld *größer oder gleich* einem konstanten Wert ist.
 - `le`: Testet, ob ein Feld *kleiner oder gleich* einem konstanten Wert ist.
 
 ## <a name="filter"></a>Filter
@@ -59,11 +60,11 @@ Im folgenden C#-Beispiel wird nach dem Erstellungsdatum der Ressource gefiltert:
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```    
+```
 
 ## <a name="order-by"></a>ORDER BY
 
-Verwenden Sie `$orderby`, um die zurückgegebenen Objekte anhand des angegebenen Parameters zu sortieren. Beispiel:    
+Verwenden Sie `$orderby`, um die zurückgegebenen Objekte anhand des angegebenen Parameters zu sortieren. Beispiel:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -77,7 +78,7 @@ Wenn die Antwort auf eine Abfrage viele Elemente enthält, gibt der Dienst einen
 
 In Media Services v3 kann die Seitengröße nicht konfiguriert werden. Die Seitengröße variiert je nach Art der Entität. Lesen Sie die folgenden Abschnitte, um ausführliche Informationen zu erhalten.
 
-Wenn während des Durchlaufens der Sammlung Entitäten erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen berücksichtigt (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde). 
+Wenn während des Durchlaufens der Sammlung Entitäten erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen berücksichtigt (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde).
 
 > [!TIP]
 > Verwenden Sie zum Aufzählen der Sammlung stets `nextLink`, anstatt sich auf eine bestimmte Seitengröße zu verlassen.
@@ -94,7 +95,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-In diesem Fall erhalten eine Antwort wie die folgende:
+Sie erhalten eine Antwort ähnlich wie die folgende:
 
 ```
 HTTP/1.1 200 OK

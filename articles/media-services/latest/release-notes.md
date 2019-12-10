@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168636"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420039"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -64,7 +64,7 @@ Weiter Informationen finden Sie unter [Clouds und Regionen, in denen Media Servi
 
 #### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an, die am 30. November 2019 eingestellt werden.
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) am 31. März 2020 an.
 
 Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
  

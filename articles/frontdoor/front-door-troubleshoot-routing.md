@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung – Behandeln von Problemen mit der Azure Front Door Service-Konfiguration | Microsoft-Dokumentation
+title: Behandeln von Problemen mit der Azure Front Door Service-Konfiguration
 description: In diesem Tutorial erfahren Sie, wie Sie selbst einige häufige Probleme mit Front Door behandeln können.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335880"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184557"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Behandeln von häufigen Routingproblemen
 In diesem Artikel wird beschrieben, wie Sie einige häufige Routingprobleme in Ihrer Azure Front Door Service-Konfiguration beheben können. 

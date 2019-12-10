@@ -1,23 +1,14 @@
 ---
-title: Azure-Ressourcenanbieter und -Ressourcentypen | Microsoft-Dokumentation
+title: Ressourcenanbieter und Ressourcentypen
 description: Beschreibt die Ressourcenanbieter, die den Ressourcen-Manager, die zugehörigen Schemas und verfügbaren API-Versionen sowie die Regionen unterstützen, die die Ressourcen hosten können.
-services: azure-resource-manager
-documentationcenter: na
-author: tfitzmac
-ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/29/2019
-ms.author: tomfitz
-ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 73cc053ab2ca19f42e3c45b8350d1e2baedfcc7a
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164820"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422201"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-Ressourcenanbieter und -typen
 
@@ -43,9 +34,10 @@ Eine Liste, die Ressourcenanbieter zu Azure-Diensten zuordnet, finden Sie unter 
 So zeigen Sie alle Ressourcenanbieter und den Registrierungsstatus für Ihr Abonnement an
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Alle Dienste** aus.
+2. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus.
 
-    ![„Abonnements“ auswählen](./media/resource-manager-supported-services/select-subscriptions.png)
+    ![„Abonnements“ auswählen](./media/resource-manager-supported-services/select-all-services.png)
+
 3. Geben Sie im Feld **Alle Dienste** **Abonnement** ein, und wählen Sie dann **Abonnements** aus.
 4. Wählen Sie das Abonnement aus der Abonnentenliste aus, um es anzuzeigen.
 5. Wählen Sie **Ressourcenanbieter** aus, und sehen Sie sich die Liste mit den verfügbaren Ressourcenanbietern an.
@@ -59,11 +51,11 @@ So zeigen Sie alle Ressourcenanbieter und den Registrierungsstatus für Ihr Abon
 So zeigen Sie Informationen für einen bestimmten Ressourcenanbieter an
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie **Alle Dienste** aus.
-
-    ![Auswahl von „Alle Dienste“](./media/resource-manager-supported-services/more-services.png)
-
+2. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus.
 3. Geben Sie im Feld **Alle Dienste** **Ressourcen-Explorer** ein, und wählen Sie dann **Ressourcen-Explorer** aus.
+
+    ![Auswahl von „Alle Dienste“](./media/resource-manager-supported-services/select-resource-explorer.png)
+
 4. Erweitern Sie **Anbieter**, indem Sie den Pfeil nach rechts auswählen.
 
     ![„Anbieter“ auswählen](./media/resource-manager-supported-services/select-providers.png)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: atsenthi
-ms.openlocfilehash: d8925f1c31b7a0c8f45e65e783077e8f5e2b0add
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 707fc9f073e37d60c6c6fca8e9a8392b2550da9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71103239"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229302"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>DNS-Dienst in Azure Service Fabric
 Der DNS-Dienst ist ein optionaler Systemdienst, den Sie in Ihrem Cluster aktivieren können, um andere Dienste mithilfe des DNS-Protokolls zu ermitteln. 
@@ -116,6 +116,8 @@ Nachdem Sie die Vorlage erstellt haben, aktivieren Sie den DNS-Dienst mit den fo
 > [!NOTE]
 > Beim Aktualisieren von DNS aus „Deaktiviert“ in „Aktiviert“ zeigt Service Fabric Explorer den neuen Status möglicherweise nicht an. Um dieses Problem zu beheben, starten Sie die Knoten neu, indem Sie die UpgradePolicy in Ihrer Azure Resource Manager-Vorlage ändern. Weitere Informationen finden Sie in der [Referenz zu Service Fabric-Vorlagen](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/2019-03-01/clusters/applications).
 
+> [!NOTE]
+> Wenn Sie den DNS-Dienst beim Entwickeln auf einem lokalen Computer aktivieren, werden einige DNS-Einstellungen überschrieben. Wenn beim Herstellen einer Verbindung mit dem Internet Probleme auftreten, überprüfen Sie die DNS-Einstellungen.
 
 ## <a name="setting-the-dns-name-for-your-service"></a>Festlegen des DNS-Namens für den Dienst
 Sie können einen DNS-Namen für Ihre Dienste entweder deklarativ für Standarddienste in der Datei „ApplicationManifest.xml“ oder über PowerShell-Befehle festlegen.

@@ -5,15 +5,15 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 07/20/2019
+ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 535c74fd161019db28e691ff916ad03eaaf07c90
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: f282fce8070d440bdd3a518b4444eb0e67110961
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260375"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74559070"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Streamen von Azure-Überwachungsdaten an einen Event Hub
 Azure Monitor bietet eine vollständige Lösung für die Stapelüberwachung für Anwendungen und Dienste in Azure, in anderen Clouds und lokal. Sie sollten diese Daten nicht nur mit Azure Monitor analysieren und für verschiedene Überwachungsszenarios nutzen, sondern sie auch an andere Überwachungstools in Ihrer Umgebung senden. Die effektivste Methode zum Streamen von Überwachungsdaten an externe Tools ist in den meisten Fällen die Verwendung von [Azure Event Hubs](/azure/event-hubs/). Dieser Artikel enthält eine kurze Beschreibung der Vorgehensweise beim Streamen von Überwachungsdaten aus verschiedenen Quellen an einen Event Hub und Links zu ausführlichen Anleitungen.
@@ -57,6 +57,7 @@ Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor 
 | sumologic | Anweisungen zum Einrichten von SumoLogic für die Nutzung von Daten aus einem Event Hub finden Sie unter [Collect Logs for the Azure Audit App from Event Hub (Sammeln von Protokollen für die Azure Audit App aus einem Event Hub)](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
 | ArcSight | Der intelligente Azure Event Hub-Connector von ArcSight wird im Rahmen dieser [ArcSight-Sammlung von intelligenten Connectors](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852) zur Verfügung gestellt. |
 | Syslog-Server | Wenn Sie Azure Monitor-Daten direkt an einen Syslog-Server streamen möchten, können Sie eine [auf einer Azure-Funktion basierende Lösung](https://github.com/miguelangelopereira/azuremonitor2syslog/) nutzen.
+| LogRhythm | Anweisungen zum Einrichten von LogRhythm zum Erfassen von Protokollen aus einem Event Hub sind [hier](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/) verfügbar. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

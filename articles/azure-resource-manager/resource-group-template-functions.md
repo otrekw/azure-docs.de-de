@@ -1,17 +1,14 @@
 ---
-title: Vorlagenfunktionen im Resource Manager | Microsoft Docs
+title: Funktionen von Azure-Ressourcen-Manager-Vorlagen
 description: Es werden die Funktionen beschrieben, die in einer Azure-Ressourcen-Manager-Vorlage zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 04358f21af79838f894dc50d5d9c165da67a332c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.date: 11/19/2019
+ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894159"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224179"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Vorlagenfunktionen im Azure-Ressourcen-Manager
 
@@ -81,6 +78,7 @@ Resource Manager stellt mehrere Funktionen zum Durchführen von Vergleichen in V
 Der Ressourcen-Manager stellt die folgenden Funktionen zum Abrufen von Werten aus Vorlagenabschnitten sowie von bereitstellungsbezogenen Werten bereit:
 
 * [deployment](resource-group-template-functions-deployment.md#deployment)
+* [Umgebung](resource-group-template-functions-deployment.md#environment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 

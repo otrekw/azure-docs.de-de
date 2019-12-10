@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 06/10/2018
 ms.author: raynew
 ms.custom: include file
-ms.openlocfilehash: d77269c1e965d5bca1e32b756ef26e2c694e5c81
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7baa2dbd1583ebbccbf9b21df3531404bd839e10
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747844"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74260745"
 ---
 **Anforderungen an den Konfigurations- und Prozessserver**
 
@@ -38,8 +38,9 @@ Betriebssystem | Windows Server 2012 R2 <br> Windows Server 2016
 Gebietsschema des Betriebssystems | Englisch (en-us)
 Windows Server-Rollen | Aktivieren Sie die folgenden Rollen nicht: <br> - Active Directory Domain Services <br>- Internetinformationsdienste <br> - Hyper-V 
 Gruppenrichtlinien | Aktivieren Sie die folgenden Gruppenrichtlinien nicht: <br> - Zugriff auf Eingabeaufforderung verhindern <br> - Zugriff auf Programme zum Bearbeiten der Registrierung verhindern <br> - Vertrauenslogik für Dateianlagen <br> - Skriptausführung aktivieren <br> [Weitere Informationen](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
-IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene Website oder Anwendung, die an Port 443 lauscht <br>- Aktivierte [anonyme Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> - Aktivierte Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx)
-| 
+IIS | - Keine bereits vorhandene Standardwebsite <br> - Keine bereits vorhandene Website/Anwendung sollte an Port 443 lauschen <br>- Die [anonyme Authentifizierung](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) ist aktiviert. <br> - Aktivieren der Einstellung [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 
+FIPS (Federal Information Processing Standard) | FIPS-Modus nicht aktivieren
+|
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -66,8 +67,9 @@ https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.
 
 **Komponente** | **Anforderung** 
 --- | ---
-VMware vSphere PowerCLI | [PowerCLI Version 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) sollte installiert werden, wenn der Konfigurationsserver auf einer VMware-VM ausgeführt wird.
-MySQL | MySQL sollte installiert sein. Sie können diese Komponente manuell installieren oder durch Azure Site Recovery installieren lassen. (Weitere Informationen finden Sie unter [Konfigurieren von Einstellungen](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings).)
+VMware vSphere PowerCLI | [PowerCLI Version 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) sollte installiert werden, wenn der Konfigurationsserver auf einer VMware-VM ausgeführt wird.
+MYSQL | MySQL sollte installiert sein. Sie können es manuell installieren oder durch Site Recovery installieren lassen. (Weitere Informationen finden Sie unter [Konfigurieren von Einstellungen](../articles/site-recovery/vmware-azure-deploy-configuration-server.md#configure-settings)).
+|
 
 ## <a name="sizing-and-capacity-requirements"></a>Anforderungen an Größenanpassung und Kapazität
 
@@ -76,7 +78,8 @@ Die folgende Tabelle enthält die Kapazitätsanforderungen für den Konfiguratio
 
 **CPU** | **Memory** | **Cachedatenträger** | **Datenänderungsrate** | **Replizierte Computer**
 --- | --- | --- | --- | ---
-8 vCPUs<br/><br/> 2 Sockets * 4 Kerne \@ 2,5GHz | 16 GB | 300 GB | 500 GB oder weniger | < 100 Computer
-12 vCPUs<br/><br/> 2 Sockets * 6 Kerne \@ 2,5GHz | 18 GB | 600 GB | 500 GB bis 1 TB | 100 bis 150 Computer
-16 vCPUs<br/><br/> 2 Sockets * 8 Kerne \@ 2,5GHz | 32 GB | 1 TB | 1 bis 2 TB | 150 bis 200 Computer
+8 vCPUs<br/><br/> 2 Sockets * 4 Kerne \@ 2,5GHz | 16 GB | 300 GB | 500 GB oder weniger | < 100 Computer
+12 vCPUs<br/><br/> 2 Sockets * 6 Kerne \@ 2,5GHz | 18 GB | 600 GB | 500 GB bis 1 TB | 100 bis 150 Computer
+16 vCPUs<br/><br/> 2 Sockets * 8 Kerne \@ 2,5GHz | 32 GB | 1 TB | 1–2 TB | 150–200 Computer
+|
 

@@ -1,17 +1,14 @@
 ---
-title: Anzeigen von Azure-Aktivitätsprotokollen zur Überwachung von Ressourcen | Microsoft-Dokumentation
+title: Anzeigen von Azure-Aktivitätsprotokollen zur Überwachung von Ressourcen
 description: Verwenden Sie die Aktivitätsprotokolle zur Überprüfung von Benutzeraktionen und Fehlern. Zeigt das Azure-Portal, PowerShell, die Azure CLI und REST
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 7b70d2a8c158b6f8b3dc87c22e5ca90f2861aebb
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329437"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422263"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen
 
@@ -31,9 +28,11 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-1. Wählen Sie zum Anzeigen der Aktivitätsprotokolle über das Portal die Option **Überwachen** aus.
+Führen Sie zum Anzeigen der Aktivitätsprotokolle über das Portal die folgenden Schritte aus:
 
-    ![Option „Überwachen“ auswählen](./media/resource-group-audit/select-monitor.png)
+1. Wählen Sie im Menü des Azure-Portals die Option **Überwachen** aus, oder suchen Sie auf einer beliebigen Seite nach **Überwachen**, und wählen Sie diese Option anschließend aus.
+
+    ![Option „Überwachen“ auswählen](./media/resource-group-audit/select-monitor-from-menu.png)
 
 1. Wählen Sie **Aktivitätsprotokoll** aus.
 
@@ -67,9 +66,9 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
 
     ![Filter benennen](./media/resource-group-audit/name-filters.png)
 
-1. Der Filter ist im Dashboard verfügbar.
+1. Der Filter ist im Dashboard verfügbar. Wählen Sie im Menü des Azure-Portals die Option **Dashboard** aus.
 
-    ![Filter im Dashboard anzeigen](./media/resource-group-audit/show-dashboard.png)
+    ![Filter im Dashboard anzeigen](./media/resource-group-audit/activity-log-on-dashboard.png)
 
 1. Sie können die Änderungen an einer Ressource über das Portal anzeigen. Wechseln Sie wieder zur Standardansicht in Monitor, und wählen Sie einen Vorgang aus, durch den eine Ressource geändert wird.
 

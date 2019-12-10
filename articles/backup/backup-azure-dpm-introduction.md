@@ -1,19 +1,14 @@
 ---
-title: Vorbereiten des DPM-Servers zum Sichern von Workloads in Azure
+title: Vorbereiten des DPM-Servers zum Sichern von Workloads
 description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 5c89dc8b5c8ee420c94d61763770cd37e763f2df
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747516"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173150"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 

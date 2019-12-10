@@ -9,14 +9,14 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 03/12/2019
+ms.date: 11/26/2019
 ms.author: shvija
-ms.openlocfilehash: 5a1b293d4d7f652c0cdd95226113ec3ce8f8222c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9b8b3600acc33e177e65002ba69dcf98a20c2253
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466144"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555328"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Verwenden von Virtual Network-Dienstendpunkten mit Azure Event Hubs
 
@@ -33,7 +33,7 @@ Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, di
 > Vertrauenswürdige Microsoft-Dienste werden bei Implementierung von Virtual Networks nicht unterstützt.
 >
 > Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
-> - Azure Monitor
+> - Integration in Azure Monitor. Diagnoseprotokolle können nicht von **anderen** Azure-Diensten in Event Hubs gestreamt werden. Sie können jedoch die Azure-Diagnoseprotokolle für den Event Hub selbst aktivieren. Dies gilt auch, wenn Sie die Firewall (IP-Filterung) aktiviert haben.
 > - Azure Stream Analytics
 > - Integration in Azure Event Grid
 > - Azure IoT Hub-Routen

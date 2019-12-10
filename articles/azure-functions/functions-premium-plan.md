@@ -2,17 +2,15 @@
 title: Premium-Tarif für Azure Functions
 description: Details und Konfigurationsoptionen (VNet, kein Kaltstart, unbegrenzte Ausführungsdauer) für den Premium-Plan (Premium-Tarif) für Azure Functions.
 author: jeffhollan
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: jehollan
-ms.openlocfilehash: 8cda3ce85e6e7e9d5d7787406eb3b9785c1f7724
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9c1a9a9e3b9e1c12c3960a8586c25436c8d937e0
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719038"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74532902"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -31,7 +29,7 @@ az functionapp plan create --resource-group <RESOURCE_GROUP> --name <PLAN_NAME> 
 
 Ersetzen Sie in diesem Beispiel `<RESOURCE_GROUP>` durch Ihre Ressourcengruppe und `<PLAN_NAME>` durch einen Namen für Ihren Plan, der in der Ressourcengruppe eindeutig ist. Geben Sie eine [unterstützte `<REGION>`](#regions) an. Wenn Sie einen Premium-Plan mit Linux-Unterstützung erstellen möchten, schließen Sie die Option `--is-linux` ein.
 
-Nach Erstellung des Plans können Sie mithilfe von [az functionapp create](/cli/azure/functionapp#az-functionapp-create) Ihre Funktions-App erstellen. Im Portal werden Plan und App gleichzeitig erstellt. 
+Nach Erstellung des Plans können Sie mithilfe von [az functionapp create](/cli/azure/functionapp#az-functionapp-create) Ihre Funktions-App erstellen. Im Portal werden Plan und App gleichzeitig erstellt. Ein Beispiel für ein vollständiges Azure CLI-Skript finden Sie unter [Erstellen einer Funktions-App in einem Premium-Tarif](scripts/functions-cli-create-premium-plan.md).
 
 ## <a name="features"></a>Features
 
@@ -65,9 +63,9 @@ Weitere Informationen finden Sie unter [Integrieren einer Funktions-App in ein A
 
 Weitere Compute-Instanzen werden automatisch für Ihre App hinzugefügt. Dazu wird die gleiche Logik für schnelle Skalierung verwendet wie für den Verbrauchsplan.  Weitere Informationen zur Funktionsweise von Skalierung finden Sie unter [Skalierung und Hosting von Azure Functions](./functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-### <a name="unbounded-run-duration"></a>Unbegrenzte Ausführungsdauer
+### <a name="longer-run-duration"></a>Längere Ausführungsdauer
 
-Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die host.json-Konfiguration ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Premium-Plan-Apps auf unbegrenzt festzulegen.
+Azure Functions in einem Verbrauchsplan sind auf 10 Minuten für eine einzelne Ausführung beschränkt.  Im Premium-Plan wird die Ausführungsdauer standardmäßig auf 30 Minuten festgelegt, um Endlosausführungen zu verhindern. Sie können jedoch [die host.json-Konfiguration ändern](./functions-host-json.md#functiontimeout), um die Ausführungsdauer für Premium-Plan-Apps auf 60 Minuten festzulegen.
 
 ## <a name="plan-and-sku-settings"></a>Plan- und SKU-Einstellungen
 

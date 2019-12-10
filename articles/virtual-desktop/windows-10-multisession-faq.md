@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: f1ba54547b947e18d2d42520c0fb51a0855fb37c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901608"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227668"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 
@@ -32,7 +32,7 @@ Windows 10 Enterprise (mehrere Sitzungen) ist eine virtuelle Edition von Window
  
 ## <a name="can-i-run-windows-10-enterprise-multi-session-on-premises"></a>Kann ich Windows 10 Enterprise (mehrere Sitzungen) lokal ausführen?
 
-Windows 10 Enterprise (mehrere Sitzungen) kann nicht in lokalen Produktionsumgebungen ausgeführt werden, weil die Anwendung für den Dienst Windows Virtual Desktop für Azure optimiert ist. Es ist ein Verstoß gegen den Lizenzvertrag, Windows 10 Enterprise (mehrere Sitzungen) außerhalb von Azure zu Produktionszwecken auszuführen. Windows 10 Enterprise (mehrere Sitzungen) kann für lokale Schlüsselverwaltungsdienste (Key Management Services, KMS) nicht aktiviert werden.
+Windows 10 Enterprise (mehrere Sitzungen) kann nicht in lokalen Produktionsumgebungen ausgeführt werden, weil die Anwendung für den Dienst Windows Virtual Desktop für Azure optimiert ist. Es ist ein Verstoß gegen den Lizenzvertrag, Windows 10 Enterprise (mehrere Sitzungen) außerhalb von Azure zu Produktionszwecken auszuführen. Windows 10 Enterprise (mehrere Sitzungen) kann für lokale Schlüsselverwaltungsdienste (Key Management Services, KMS) nicht aktiviert werden.
  
 ## <a name="how-do-i-customize-the-windows-10-enterprise-multi-session-image-for-my-organization"></a>Wie kann ich das Image von Windows 10 Enterprise (mehrere Sitzungen) für meine Organisation anpassen?
 

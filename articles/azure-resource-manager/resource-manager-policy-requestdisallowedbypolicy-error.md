@@ -1,24 +1,16 @@
 ---
-title: Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien | Microsoft-Dokumentation
+title: RequestDisallowedByPolicy-Fehler
 description: Hier wird die Ursache des Fehlers „RequestDisallowedByPolicy“ beim Bereitstellen von Ressourcen mit Azure Resource Manager beschrieben.
-services: azure-resource-manager
-documentationcenter: ''
 author: genlin
-manager: dcscontentpm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c791342bf68f84f6893e549d8528d1a861aa9040
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: ed4008c6c6705f307f8c21bd43992523701a4ee6
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390299"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150519"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien
 

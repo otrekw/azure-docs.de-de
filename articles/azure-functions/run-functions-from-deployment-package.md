@@ -1,18 +1,14 @@
 ---
-title: Ausführen Ihrer Azure Functions aus einem Paket | Microsoft-Dokumentation
+title: Ausführen von Azure Functions aus einem Paket
 description: Lassen Sie die Azure Functions-Laufzeit Ihre Funktionen ausführen, indem Sie eine Bereitstellungspaketdatei einbinden, die Ihre Projektdateien für die Funktions-App enthält.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/15/2019
-ms.author: glenga
-ms.openlocfilehash: dc7f2b6c6e00477b6326e3277cb195aa0de6868c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5d3465e0899f7e5eab213bdb6234313128b7ec8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176424"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230352"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Ausführen Ihrer Azure Functions aus einem Paket
 

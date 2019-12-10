@@ -1,19 +1,14 @@
 ---
-title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Computern mit Azure Backup
+title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Computern
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
-ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074928"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172534"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Sichern und Wiederherstellen eines verschlüsselten virtuellen Azure-Computers
 
@@ -21,7 +16,7 @@ In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer (VMs) unter
 
 Wenn Sie zunächst mehr dazu erfahren möchten, wie Azure Backup mit Azure VMs interagiert, lesen Sie diese Ressourcen:
 
-- [Überprüfen Sie](backup-architecture.md#architecture-direct-backup-of-azure-vms) die Architektur für die Azure-VM-Sicherung.
+- [Überprüfen Sie](backup-architecture.md#architecture-built-in-azure-vm-backup) die Architektur für die Azure-VM-Sicherung.
 - [Erfahren Sie mehr](backup-azure-vms-introduction.md) über die Azure-VM-Sicherung und die Azure Backup-Erweiterung.
 
 ## <a name="encryption-support"></a>Verschlüsselungsunterstützung

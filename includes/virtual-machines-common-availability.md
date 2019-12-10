@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7ea4762684a41e06687adcca91b13872a0c9f740
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897504"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414514"
 ---
 Dieser Artikel enthält eine Übersicht über die Verfügbarkeitsfunktionen von virtuellen Azure-Computern (VMs).
 
@@ -47,7 +47,7 @@ Mit diesem Ansatz wird sichergestellt, dass mindestens eine Instanz Ihrer Anwend
 
 ## <a name="virtual-machines-scale-sets"></a>Skalierungsgruppen für virtuelle Computer 
 
-Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren zahlreicher VMs. Es empfiehlt sich, mindestens zwei VMs in einer Skalierungsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Für die Skalierungssgruppe selbst entstehen keine Kosten. Sie bezahlen nur für die einzelnen VM-Instanzen, die Sie erstellen. Wenn ein einzelner virtuelle Computer [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. VMs in einer Skalierungsgruppe können über mehrere Regionen und Fehlerdomänen bereitgestellt werden, um die Verfügbarkeit und Ausfallsicherheit für den Fall von Rechenzentrumsausfällen sowie geplanten oder ungeplanten Wartungsereignissen zu maximieren. VMs in einer Skalierungsgruppe können auch in einer einzelnen Verfügbarkeitszone oder regional bereitgestellt werden. Die Bereitstellungsoptionen für Verfügbarkeitszonen können je nach Orchestrierungsmodus variieren.
+Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen ermöglichen Hochverfügbarkeit für Ihre Anwendungen und das zentrale Verwalten, Konfigurieren und Aktualisieren zahlreicher VMs. Es empfiehlt sich, mindestens zwei VMs in einer Skalierungsgruppe zu erstellen, um eine Anwendung mit hoher Verfügbarkeit zu erhalten und die [Azure-SLA von 99,95 Prozent](https://azure.microsoft.com/support/legal/sla/virtual-machines/) zu erfüllen. Für die Skalierungssgruppe selbst entstehen keine Kosten. Sie bezahlen nur für die einzelnen VM-Instanzen, die Sie erstellen. Wenn ein einzelner virtuelle Computer [Azure Premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) verwendet, gilt die Azure-SLA für ungeplante Wartungsereignisse. VMs in einer Skalierungsgruppe können über mehrere Updatedomänen und Fehlerdomänen hinweg bereitgestellt werden, um die Verfügbarkeit und Ausfallsicherheit für den Fall von Rechenzentrumsausfällen sowie geplanten oder ungeplanten Wartungsereignissen zu maximieren. VMs in einer Skalierungsgruppe können auch in einer einzelnen Verfügbarkeitszone oder regional bereitgestellt werden. Die Bereitstellungsoptionen für Verfügbarkeitszonen können je nach Orchestrierungsmodus variieren.
 
 ### <a name="preview-orchestration-mode-preview"></a>Vorschau: Orchestrierungsmodus (Vorschau)
 Anhand von VM-Skalierungsgruppen können Sie den Orchestrierungsmodus angeben.  Mit dem Orchestrierungsmodus für VM-Skalierungsgruppe (Vorschauversion) können Sie nun wählen, ob die Skalierungsgruppe VMs orchestrieren soll, die explizit außerhalb eines Konfigurationsmodells für die Skalierungsgruppe erstellt wurden, oder VM-Instanzen, die implizit basierend auf dem Konfigurationsmodell erstellt wurden. Wählen Sie den Orchestrierungsmodus aus, über den das VM-Orchestrierungsmodell eine Gruppierung der explizit definierten VMs in einer Region oder Verfügbarkeitszone zulässt. VMs, die in einer Verfügbarkeitszone bereitgestellt werden, bieten eine Zonenisolierung für VMs, weil sie an die Grenze der Verfügbarkeitszone gebunden sind und nicht durch Ausfälle beeinträchtigt werden, die möglicherweise in anderen Verfügbarkeitszonen in der Region auftreten. 

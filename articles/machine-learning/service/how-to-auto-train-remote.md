@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4276a713e62f96cc5340fc7be0e8391939d32342
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8c50a1ba79fc07f62e319c6dceb75c32a9e8609f
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497318"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287137"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trainieren von Modellen mit automatisiertem maschinellem Lernen in der Cloud
 
@@ -70,11 +70,18 @@ Zu den Einschränkungen für einen Clusternamen gehören:
 
 ## <a name="access-data-using-tabulardataset-function"></a>Zugreifen auf Daten mit der TabularDataset-Funktion
 
-Definiert X und Y als `TabularDataset`s, die in der AutoMLConfig-Datei an Automated ML übergeben werden. `from_delimited_files` legt `infer_column_types` standardmäßig auf „true“ fest, wodurch der Spaltentypen automatisch abgeleitet wird. 
+Definierte training_data als `TabularDataset` und die Bezeichnung, die in der AutoMLConfig-Datei an Automated ML übergeben werden. `from_delimited_files` legt `infer_column_types` standardmäßig auf „true“ fest, wodurch der Spaltentypen automatisch abgeleitet wird. 
 
 Wenn Sie die Spaltentypen manuell festlegen möchten, können Sie das `set_column_types`-Argument so festlegen, dass der Typ der einzelnen Spalten manuell festgelegt wird. Im folgenden Codebeispiel stammen die Daten aus dem sklearn-Paket.
 
 ```python
+from sklearn import datasets
+from azureml.core.dataset import Dataset
+from scipy import sparse
+import numpy as np
+import pandas as pd
+import os
+
 # Create a project_folder if it doesn't exist
 if not os.path.isdir('data'):
     os.mkdir('data')
@@ -82,23 +89,20 @@ if not os.path.isdir('data'):
 if not os.path.exists(project_folder):
     os.makedirs(project_folder)
 
-from sklearn import datasets
-from azureml.core.dataset import Dataset
-from scipy import sparse
-import numpy as np
-import pandas as pd
+X = pd.DataFrame(data_train.data[100:,:])
+y = pd.DataFrame(data_train.target[100:])
 
-data_train = datasets.load_digits()
+# merge X and y
+label = "digit"
+X[label] = y
 
-pd.DataFrame(data_train.data[100:,:]).to_csv("data/X_train.csv", index=False)
-pd.DataFrame(data_train.target[100:]).to_csv("data/y_train.csv", index=False)
+training_data = X
 
+training_data.to_csv('data/digits.csv')
 ds = ws.get_default_datastore()
 ds.upload(src_dir='./data', target_path='digitsdata', overwrite=True, show_progress=True)
 
-X = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/X_train.csv'))
-y = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/y_train.csv'))
-
+training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/digits.csv'))
 ```
 
 ## <a name="create-run-configuration"></a>Erstellen einer Laufzeitkonfiguration
@@ -115,7 +119,7 @@ run_config.environment.docker.enabled = True
 run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
 
 dependencies = CondaDependencies.create(
-    pip_packages=["scikit-learn", "scipy", "numpy"])
+    pip_packages=["scikit-learn", "scipy", "numpy==1.16.2"])
 run_config.environment.python.conda_dependencies = dependencies
 ```
 
@@ -131,41 +135,21 @@ import logging
 
 automl_settings = {
     "name": "AutoML_Demo_Experiment_{0}".format(time.time()),
+    "experiment_timeout_minutes" : 20,
+    "enable_early_stopping" : True,
     "iteration_timeout_minutes": 10,
-    "iterations": 20,
     "n_cross_validations": 5,
     "primary_metric": 'AUC_weighted',
-    "preprocess": False,
     "max_concurrent_iterations": 10,
-    "verbosity": logging.INFO
 }
 
 automl_config = AutoMLConfig(task='classification',
                              debug_log='automl_errors.log',
                              path=project_folder,
                              compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
+                             training_data=training_data,
+                             label_column_name=label,
                              **automl_settings,
-                             )
-```
-
-### <a name="enable-model-explanations"></a>Aktivieren von Modellerklärungen
-
-Legen Sie den optionalen `model_explainability`-Parameter im `AutoMLConfig` Konstruktor fest. Darüber hinaus muss ein Dataframe-Überprüfungsobjekt als Parameter `X_valid` übergeben werden, um das Modellerklärungsfeature verwenden zu können.
-
-```python
-automl_config = AutoMLConfig(task='classification',
-                             debug_log='automl_errors.log',
-                             path=project_folder,
-                             compute_target=compute_target,
-                             run_configuration=run_config,
-                             X = X,
-                             y = y,
-                             **automl_settings,
-                             model_explainability=True,
-                             X_valid=X_test
                              )
 ```
 
@@ -237,59 +221,13 @@ remote_run.get_portal_url()
 
 Die gleichen Informationen sind in Ihrem Arbeitsbereich verfügbar.  Weitere Informationen zu diesen Ergebnissen finden Sie unter [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).
 
-### <a name="view-logs"></a>Anzeigen von Protokollen
-
-Suchen Sie unter `/tmp/azureml_run/{iterationid}/azureml-logs` nach Protokollen zur DSVM.
-
-## <a name="explain"></a> Erklärung für das beste Modell
-
-Das Abrufen von Modellerklärungsdaten ermöglicht es Ihnen, detaillierte Informationen zu den Modellen anzuzeigen, um die Transparenz der Vorgänge zu erhöhen, die auf dem Back-End ausgeführt werden. In diesem Beispiel führen Sie Modellerklärungen nur für das am besten passende Modell aus. Eine Ausführung für alle Modelle in der Pipeline würde zu erheblichen Ausführungszeiten führen. Eine Modellerklärung enthält die folgenden Informationen:
-
-* shap_values: Die von der shap-Bibliothek generierten Erklärungsinformationen.
-* expected_values: Der erwartete Wert des Modells, der auf den Satz von X_train-Daten angewendet wird.
-* overall_summary: Die Featuregewichtungswerte auf Modellebene, sortiert in absteigender Reihenfolge.
-* overall_imp: Die Featurenamen, sortiert in derselben Reihenfolge wie in overall_summary.
-* per_class_summary: Die Featuregewichtungswerte auf Klassenebene, sortiert in absteigender Reihenfolge. Nur für den Klassifizierungsfall verfügbar.
-* per_class_imp: Die Featurenamen, sortiert in der gleichen Reihenfolge wie in per_class_summary. Nur für den Klassifizierungsfall verfügbar.
-
-Verwenden Sie den folgenden Code, um die beste Pipeline aus Ihren Iterationen auszuwählen. Die `get_output`-Methode gibt die beste Ausführung und das angepasste Modell für den letzten passenden Aufruf zurück.
-
-```python
-best_run, fitted_model = remote_run.get_output()
-```
-
-Importieren Sie die `retrieve_model_explanation`-Funktion, und führen Sie sie für das beste Modell aus.
-
-```python
-from azureml.train.automl.automlexplainer import retrieve_model_explanation
-
-shap_values, expected_values, overall_summary, overall_imp, per_class_summary, per_class_imp = \
-    retrieve_model_explanation(best_run)
-```
-
-Geben Sie die Ergebnisse für die `best_run`-Erklärungsvariablen aus, die Sie anzeigen möchten.
-
-```python
-print(overall_summary)
-print(overall_imp)
-print(per_class_summary)
-print(per_class_imp)
-```
-
-Das Ausgeben der `best_run`-Erklärungszusammenfassungsvariablen führt zur folgenden Ausgabe.
-
-![Konsolenausgabe der Modellerklärung](./media/how-to-auto-train-remote/expl-print.png)
-
-Sie können die Featurerelevanz auch über die Widget-Benutzeroberfläche oder in Ihrem Arbeitsbereich in [Azure Machine Learning-Studio](https://ml.azure.com) visualisieren. 
-
-![Benutzeroberfläche der Modellerklärung](./media/how-to-auto-train-remote/model-exp.png)
-
 ## <a name="example"></a>Beispiel
 
-Das Notebook [how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/remote-amlcompute/auto-ml-remote-amlcompute.ipynb) veranschaulicht die Konzepte in diesem Artikel.
+Das folgende [Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression/auto-ml-regression.ipynb) veranschaulicht die Konzepte in diesem Artikel.
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, [wie Sie die Einstellungen für das automatische Training konfigurieren](how-to-configure-auto-train.md).
+* Erfahren Sie, [wie Sie die Einstellungen für das automatische Training konfigurieren](how-to-configure-auto-train.md).
+* Weitere Informationen zum Aktivieren von Modellinterpretierbarkeitsmerkmalen in automatisierten ML-Experimenten finden Sie im Artikel zur [Vorgehensweise](how-to-machine-learning-interpretability-automl.md).

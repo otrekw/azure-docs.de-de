@@ -1,7 +1,7 @@
 ---
-title: Modellinterpretierbarkeit beim automatisierten maschinellen Lernen
+title: Modellinterpretierbarkeit bei automatisiertem Machine Learning
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mithilfe des Azure Machine Learning SDK erklären können, warum Ihr Modell für automatisches ML Vorhersagen trifft. Es kann während des Trainings und für Rückschlüsse verwendet werden, um zu verstehen, wie Ihr Modell die Featurerelevanz bestimmt und Vorhersagen trifft.
+description: Erfahren Sie, wie Ihr automatisiertes Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden des Azure Machine Learning SDK Vorhersagen trifft.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,37 +10,37 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 2c9df55eb319dd45281eca4684c79d83dc6ef933
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5bde67913bf5e23345974f52dd6a9a22e2dd4865
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511051"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158452"
 ---
-# <a name="model-interpretability-for-automated-ml-models"></a>Interpretierbarkeit von Modellen für automatisiertes ML
+# <a name="model-interpretability-in-automated-machine-learning"></a>Modellinterpretierbarkeit bei automatisiertem Machine Learning
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie die Interpretierbarkeitsfunktion für automatisiertes ML mithilfe von Azure Machine Learning Service aktivieren. Automatisiertes ML ermöglicht es Ihnen, die Relevanz von Rohfeatures und entwickelten Features zu verstehen. Zur Verwendung der Modellinterpretierbarkeit legen Sie `model_explainability=True` im `AutoMLConfig`-Objekt fest.  
+In diesem Artikel erfahren Sie, wie Sie die Interpretierbarkeitsfeatures für automatisiertes Machine Learning (ML) in Azure Machine Learning Service aktivieren können. Automatisiertes ML unterstützt Sie dabei, die Relevanz von Rohfeatures und entwickelten Features zu verstehen. Zur Verwendung der Modellinterpretierbarkeit legen Sie `model_explainability=True` im `AutoMLConfig`-Objekt fest.  
 
-In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-* Interpretierbarkeit während des Trainings nach dem besten oder einem beliebigen Modell
-* Aktivieren von Visualisierungen, die Ihnen bei der Erkennung von Mustern in Daten und Erklärungen helfen
-* Interpretierbarkeit beim Ziehen von Rückschlüssen oder bei der Bewertung
+- Ausführen von Interpretierbarkeit während des Trainings für das beste oder ein beliebiges Modell.
+- Aktivieren von Visualisierungen, um Muster in Daten und Erläuterungen zu erkennen.
+- Implementieren von Interpretierbarkeit beim Ziehen von Rückschlüssen oder bei der Bewertung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Führen Sie `pip install azureml-interpret azureml-contrib-interpret` aus, um die erforderlichen Pakete für die Interpretierbarkeitsfeatures abzurufen.
-* In diesem Artikel werden Vorkenntnisse in Bezug auf die Erstellung von Experimenten für automatisiertes ML vorausgesetzt. Informationen zur Verwendung von automatisiertem ML im SDK finden Sie im [Tutorial](tutorial-auto-train-models.md) oder in der [Anleitung](how-to-configure-auto-train.md).
- 
-## <a name="interpretability-during-training-for-the-best-model"></a>Interpretierbarkeit während des Trainings nach dem besten Modell 
+- Interpretierbarkeitsfeatures. Führen Sie `pip install azureml-interpret azureml-contrib-interpret` aus, um das erforderliche Paket abzurufen.
+- Vorkenntnisse in Bezug auf die Erstellung von Experimenten für automatisiertes ML. Weitere Informationen zur Verwendung des Azure Machine Learning SDK finden Sie in diesem [Regressionsmodelltutorial](tutorial-auto-train-models.md) oder unter [Konfigurieren automatisierter ML-Experimente](how-to-configure-auto-train.md).
 
-Rufen Sie die Erklärung aus `best_run` ab, darin sind Erklärungen für entwickelte Features und Rohfeatures enthalten. 
+## <a name="interpretability-during-training-for-the-best-model"></a>Interpretierbarkeit während des Trainings nach dem besten Modell
+
+Rufen Sie die Erklärung aus `best_run` ab, darin sind Erklärungen für entwickelte Features und Rohfeatures enthalten.
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Herunterladen der Relevanz entwickelter Features aus dem Artefaktspeicher
 
-Sie können mithilfe von `ExplanationClient` Erklärungen zu entwickelten Features aus dem Artefaktspeicher von „best_run“ herunterladen. Legen Sie `raw=True` fest, um die Erklärungen für die Rohfeatures abzurufen. 
+Sie können mithilfe von `ExplanationClient` Erklärungen zu entwickelten Features aus dem Artefaktspeicher von `best_run` herunterladen. Legen Sie `raw=True` fest, um die Erklärungen für die Rohfeatures abzurufen.
 
 ```python
 from azureml.contrib.interpret.explanation.explanation_client import ExplanationClient
@@ -52,7 +52,7 @@ print(engineered_explanations.get_feature_importance_dict())
 
 ## <a name="interpretability-during-training-for-any-model"></a>Interpretierbarkeit während des Trainings nach einem beliebigen Modell 
 
-In diesem Abschnitt erfahren Sie, wie Modellerklärungen berechnet und die Erklärungen visualisiert werden können. Neben dem Abruf einer vorhandenen Modellerklärung für ein Modell für automatisiertes ML können Sie Ihr Modell auch mit anderen Testdaten erklären. Anhand der folgenden Schritte können Sie die Relevanz von entwickelten Features und Rohfeatures basierend auf Ihren Testdaten berechnen und visualisieren.
+Wenn Sie Modellerklärungen berechnen und visualisieren, sind Sie nicht auf eine vorhandene Modellerklärung für ein automatisiertes ML-Modell beschränkt. Sie können auch eine Erläuterung für das Modell mit anderen Testdaten erhalten. Die Schritte in diesem Abschnitt zeigen, wie die Relevanz von entwickelten Features und Rohfeatures basierend auf Ihren Testdaten berechnet und visualisiert wird.
 
 ### <a name="retrieve-any-other-automl-model-from-training"></a>Abrufen eines anderen AutoML-Modells aus dem Training
 
@@ -60,15 +60,15 @@ In diesem Abschnitt erfahren Sie, wie Modellerklärungen berechnet und die Erkl�
 automl_run, fitted_model = local_run.get_output(metric='r2_score')
 ```
 
-### <a name="setup-the-model-explanations"></a>Einrichten der Modellerklärungen
+### <a name="set-up-the-model-explanations"></a>Einrichten der Modellerklärungen
 
-Über „fitted_model“ können die folgenden Elemente generiert werden, die zum Abrufen der Erklärungen für entwickelte Features und Rohfeatures über „automl_setup_model_explanations“ verwendet werden:
+Verwenden Sie `automl_setup_model_explanations`, um die Erläuterungen zu den entwickelten Features und Rohfeatures abzurufen. `fitted_model` kann die folgenden Elemente generieren:
 
-* Als Features erkannte Daten aus Trainingsbeispielen/Testbeispielen
-* Namenslisten für entwickelte Features und Rohfeatures
-* Auffinden der Klassen in Ihrer gekennzeichneten Spalte in Klassifizierungsszenarien
+- Empfohlene Daten aus trainierten oder Testbeispielen
+- Namenslisten für entwickelte Features und Rohfeatures
+- Auffindbare Klassen in Ihrer bezeichneten Spalte in Klassifizierungsszenarien
 
-„automl_explainer_setup_obj" enthalt alle oben aufgeführten Strukturen.
+`automl_explainer_setup_obj` enthält alle Strukturen aus der oben aufgeführten Liste.
 
 ```python
 from azureml.train.automl.automl_explain_utilities import AutoMLExplainerSetupClass, automl_setup_model_explanations
@@ -77,9 +77,16 @@ automl_explainer_setup_obj = automl_setup_model_explanations(fitted_model, X=X_t
                                                              X_test=X_test, y=y_train, 
                                                              task='classification')
 ```
+
 ### <a name="initialize-the-mimic-explainer-for-feature-importance"></a>Initialisieren von MimicExplainer für Featurerelevanz
 
-Verwenden Sie zum Erklären der AutoML-Modelle die Klasse `MimicWrapper`. Die MimicWrapper-Klasse kann mit Parametern für das explainer_setup-Objekt, Ihren Arbeitsbereich und ein LightGBM-Modell initialisiert werden, das als Surrogatmodell zum Erklären des Modells für automatisiertes ML fungiert (hier: fitted_model). Die MimicWrapper-Klasse verwendet außerdem das automl_run-Objekt, in das die Erklärungen für Rohfeatures und entwickelte Features hochgeladen werden.
+Verwenden Sie die `MimicWrapper`-Klasse, um eine Erläuterung für AutoML-Modelle zu generieren. Sie können die MimicWrapper-Klasse mit den folgenden Parametern initialisieren:
+
+- Dem Erklärmoduleinrichtungsobjekt
+- Ihrem Arbeitsbereich
+- Einem LightGBM-Modell, das als Ersatz für das automatisierte `fitted_model`-ML-Modell fungiert
+
+Die MimicWrapper-Klasse verwendet außerdem das `automl_run`-Objekt, in das die Erklärungen für Rohfeatures und entwickelte Features hochgeladen werden.
 
 ```python
 from azureml.interpret.mimic.models.lightgbm_model import LGBMExplainableModel
@@ -94,7 +101,7 @@ explainer = MimicWrapper(ws, automl_explainer_setup_obj.automl_estimator, LGBMEx
 
 ### <a name="use-mimicexplainer-for-computing-and-visualizing-engineered-feature-importance"></a>Verwenden von MimicExplainer zum Berechnen und Visualisieren der Relevanz von entwickelten Features
 
-Die explain()-Methode in MimicWrapper kann mit den transformierten Testbeispielen aufgerufen werden, um die Featurerelevanz für die generierten entwickelten Features abzurufen. Sie können außerdem ExplanationDashboard verwenden, um eine Dashboardvisualisierung der Relevanzwerte für die über Featurizer für automatisiertes ML generierten entwickelten Features anzuzeigen.
+Sie können die `explain()`-Methode in MimicWrapper mit den transformierten Testbeispielen aufrufen, um die Featurerelevanz für die generierten entwickelten Features abzurufen. Sie können außerdem `ExplanationDashboard` verwenden, um eine Dashboardvisualisierung der Relevanzwerte für die über Featurizer für automatisiertes ML generierten entwickelten Features anzuzeigen.
 
 ```python
 from azureml.contrib.interpret.visualize import ExplanationDashboard
@@ -104,9 +111,10 @@ engineered_explanations = explainer.explain(['local', 'global'],
 print(engineered_explanations.get_feature_importance_dict())
 ExplanationDashboard(engineered_explanations, automl_explainer_setup_obj.automl_estimator, automl_explainer_setup_obj.X_test_transform)
 ```
+
 ### <a name="use-mimic-explainer-for-computing-and-visualizing-raw-feature-importance"></a>Verwenden von MimicExplainer zum Berechnen und Visualisieren der Relevanz von Rohfeatures
 
-Die explain()-Methode in MimicWrapper kann erneut mit den transformierten Testbeispielen und mit Festlegung von `get_raw` auf TRUE aufgerufen werden, um die Featurerelevanz für die Rohfeatures abzurufen. Darüber hinaus können Sie mit ExplanationDashboard eine Dashboardvisualisierung der Relevanzwerte für die Rohfeatures anzeigen.
+Sie können die `explain()`-Methode in MimicWrapper erneut mit den transformierten Testbeispielen und mit Festlegung von `get_raw=True` aufrufen, um die Featurerelevanz für die Rohfeatures abzurufen. Darüber hinaus können Sie mit `ExplanationDashboard` eine Dashboardvisualisierung der Relevanzwerte für die Rohfeatures anzeigen.
 
 ```python
 from azureml.contrib.interpret.visualize import ExplanationDashboard
@@ -121,13 +129,13 @@ ExplanationDashboard(raw_explanations, automl_explainer_setup_obj.automl_pipelin
 
 ### <a name="interpretability-during-inference"></a>Interpretierbarkeit beim Ziehen von Rückschlüssen
 
-In diesem Abschnitt erfahren Sie, wie ein Modell für automatisiertes ML mit dem Erklärmodul operationalisiert wird, der im vorherigen Abschnitt zum Berechnen der Erklärungen verwendet wurde.
+In diesem Abschnitt erfahren Sie, wie ein Modell für automatisiertes ML mit dem Erklärmodul operationalisiert wird, das im vorherigen Abschnitt zum Berechnen der Erklärungen verwendet wurde.
 
 ### <a name="register-the-model-and-the-scoring-explainer"></a>Registrieren des Modells und des Erklärmoduls für die Bewertung
 
-Verwenden Sie den `TreeScoringExplainer`, um das Erklärmodul für die Bewertung zu erstellen. Mit diesem werden beim Ziehen von Rückschlüssen die Relevanzwerte für die Rohfeatures und die entwickelten Features berechnet. Beachten Sie, dass Sie das Erklärmodul für die Bewertung mit dem zuvor berechneten feature_map-Element initialisieren. Das feature_map-Element wird vom Erklärmodul für die Bewertung verwendet, um die Relevanz für Rohfeatures zurückzugeben.
+Verwenden Sie `TreeScoringExplainer`, um das Erklärmodul für die Bewertung zu erstellen. Mit diesem werden beim Ziehen von Rückschlüssen die Relevanzwerte für die Rohfeatures und die entwickelten Features berechnet. Sie initialisieren das Erklärmodul für die Bewertung mit dem zuvor berechneten `feature_map`-Element. Die Bewertungserläuterungen verwenden `feature_map`, um die Rohfeaturerelevanz zurückzugeben.
 
-Im Code unten speichern Sie das Erklärmodul für die Bewertung und registrieren das Modell und das Erklärmodul für die Bewertung mit dem Modellverwaltungsdienst.
+Speichern Sie das Erklärmodul für die Bewertung, und registrieren das Modell und das Erklärmodul für die Bewertung dann mit dem Modellverwaltungsdienst. Führen Sie den folgenden Code aus:
 
 ```python
 from azureml.interpret.scoring.scoring_explainer import TreeScoringExplainer, save
@@ -149,10 +157,10 @@ scoring_explainer_model = automl_run.register_model(model_name='scoring_explaine
 
 ### <a name="create-the-conda-dependencies-for-setting-up-the-service"></a>Erstellen der conda-Abhängigkeiten zum Einrichten des Diensts
 
-Als Nächstes erstellen Sie die Umgebungsabhängigkeiten, die im Container für das bereitgestellte Modell benötigt werden.
+Erstellen Sie dann die erforderlichen Umgebungsabhängigkeiten im Container für das bereitgestellte Modell.
 
 ```python
-from azureml.core.conda_dependencies import CondaDependencies 
+from azureml.core.conda_dependencies import CondaDependencies
 
 azureml_pip_packages = [
     'azureml-interpret', 'azureml-train-automl', 'azureml-defaults'
@@ -195,9 +203,9 @@ service = Model.deploy(ws, 'model-scoring', [scoring_explainer_model, original_m
 service.wait_for_deployment(show_output=True)
 ```
 
-### <a name="inference-using-test-data"></a>Rückschlüsse mithilfe von Testdaten
+### <a name="inference-with-test-data"></a>Rückschluss mit Testdaten
 
-Ziehen Sie Rückschlüsse mithilfe einiger Testdaten, um die vorhergesagten Werte aus dem Modell für automatisiertes ML sowie die Relevanz für entwickelte Features und Rohfeatures für den jeweiligen vorhergesagten Wert anzuzeigen.
+Ziehen Sie mit einigen Testdaten einen Rückschluss, um den vorhergesagten Wert aus dem automatisierten ML-Modell anzuzeigen. Zeigen Sie die Relevanz entwickelter Features für den vorhergesagten Wert und die Relevanz von Rohfeatures für den vorhergesagten Wert an.
 
 ```python
 if service.state == 'Healthy':
@@ -214,12 +222,12 @@ if service.state == 'Healthy':
     print(output['raw_local_importance_values'])
 ```
 
-### <a name="visualizations-to-aid-you-in-the-discovery-of-patterns-in-data-and-explanations-at-training-time"></a>Visualisierungen zum Erkennen von Mustern in Daten und Erklärungen während des Trainings
+### <a name="visualize-to-discover-patterns-in-data-and-explanations-at-training-time"></a>Visualisieren, um Muster in Daten und Erläuterungen zur Trainingszeit zu ermitteln
 
-Sie können das Diagramm zur Featurerelevanz auch in Ihrem Arbeitsbereich in [Azure Machine Learning-Studio](https://ml.azure.com) anzeigen. Nach Abschluss Ihrer automatisierten ML-Ausführung müssen Sie auf „Modelldetails anzeigen“ klicken, wodurch Sie zu einer spezifischen Ausführung gelangen. Klicken Sie dann auf die Registerkarte „Erklärungen“, um das Dashboard zur Erklärungsvisualisierung anzuzeigen. 
+Sie können das Diagramm zur Featurerelevanz in Ihrem Arbeitsbereich in [Azure Machine Learning Studio](https://ml.azure.com) anzeigen. Wählen Sie nach Abschluss der automatisierten ML-Ausführung **Modelldetails anzeigen** aus, um eine bestimmte Ausführung anzuzeigen. Klicken Sie auf die Registerkarte **Erklärungen**, um das Dashboard zur Erklärungsvisualisierung anzuzeigen.
 
 [![Architektur von Machine Learning Interpretability](./media/machine-learning-interpretability-explainability/automl-explainability.png)](./media/machine-learning-interpretability-explainability/automl-explainability.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen dazu, wie Modellerklärungen und Featurewichtigkeit in anderen Bereichen des SDK außerhalb des automatisierten Machine Learnings aktiviert werden können, finden Sie im Artikel [Modellinterpretierbarkeit mit Azure Machine Learning Service](how-to-machine-learning-interpretability.md).
+Weitere Informationen dazu, wie Sie Modellerklärungen und Featurerelevanz in anderen Bereichen des Azure Machine Learning SDK als für automatisiertes Machine Learning aktivieren können, finden Sie im [Konzeptartikel zur Interpretierbarkeit](how-to-machine-learning-interpretability.md).

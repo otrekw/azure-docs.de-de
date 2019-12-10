@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/15/2019
+ms.date: 11/27/2019
 ms.author: aschhab
-ms.openlocfilehash: 2ca8f0e34b63802453c8876f878b531e78e66d76
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3fba1d62b9347303d630c80733c4fbfa279b5296
+ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991776"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74560096"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
 
@@ -75,16 +75,10 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
     static ITopicClient topicClient;
     ``` 
 
-3. Ersetzen Sie den Standardinhalt von `Main()` durch die folgende Codezeile:
+3. Ersetzen Sie die `Main()`-Methode durch die folgende **asynchrone** `Main`-Methode, die Nachrichten mithilfe der SendMessagesAsync-Methode asynchron sendet, die Sie im nächsten Schritt hinzufügen. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-   
-4. Fügen Sie direkt nach `Main()` die folgende asynchrone `MainAsync()`-Methode hinzu, die die Methode für den Nachrichtenversand aufruft:
-
-    ```csharp
-    static async Task MainAsync()
+    public static async Task Main(string[] args)
     {
         const int numberOfMessages = 10;
         topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
@@ -101,8 +95,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
         await topicClient.CloseAsync();
     }
     ```
-
-5. Fügen Sie direkt nach der `MainAsync()`-Methode die folgende `SendMessagesAsync()`-Methode hinzu. Diese Methode dient zum Senden der durch `numberOfMessagesToSend` angegebenen Anzahl von Nachrichten. Die Anzahl ist aktuell auf 10 festgelegt:
+5. Fügen Sie direkt nach der `Main`-Methode die folgende `SendMessagesAsync()`-Methode hinzu. Diese Methode dient zum Senden der durch `numberOfMessagesToSend` angegebenen Anzahl von Nachrichten. Die Anzahl ist aktuell auf 10 festgelegt:
 
     ```csharp
     static async Task SendMessagesAsync(int numberOfMessagesToSend)
@@ -146,25 +139,20 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
             const string TopicName = "<your_topic_name>";
             static ITopicClient topicClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
+            public static async Task Main(string[] args)
             {
                 const int numberOfMessages = 10;
                 topicClient = new TopicClient(ServiceBusConnectionString, TopicName);
-
+    
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after sending all the messages.");
                 Console.WriteLine("======================================================");
-
+    
                 // Send messages.
                 await SendMessagesAsync(numberOfMessages);
-
+    
                 Console.ReadKey();
-
+    
                 await topicClient.CloseAsync();
             }
 
@@ -222,17 +210,11 @@ Erstellen Sie zum Empfangen der gesendeten Nachrichten eine weitere .NET Core-Ko
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Ersetzen Sie den Standardinhalt von `Main()` durch die folgende Codezeile:
+3. Ersetzen Sie die `Main()`-Methode durch die folgende **asynchrone** `Main`-Methode. Sie ruft die `RegisterOnMessageHandlerAndReceiveMessages()`-Methode auf, die Sie im nächsten Schritt hinzufügen. 
 
     ```csharp
-    MainAsync().GetAwaiter().GetResult();
-    ```
-
-4. Fügen Sie direkt nach `Main()` die folgende asynchrone `MainAsync()`-Methode hinzu, die die `RegisterOnMessageHandlerAndReceiveMessages()`-Methode aufruft:
-
-    ```csharp
-    static async Task MainAsync()
-    {
+    public static async Task Main(string[] args)
+    {    
         subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
 
         Console.WriteLine("======================================================");
@@ -244,11 +226,10 @@ Erstellen Sie zum Empfangen der gesendeten Nachrichten eine weitere .NET Core-Ko
 
         Console.ReadKey();
 
-        await subscriptionClient.CloseAsync();
+        await subscriptionClient.CloseAsync();    
     }
-    ```
-
-5. Fügen Sie direkt nach der `MainAsync()`-Methode die folgende Methode hinzu, die den Nachrichtenhandler registriert und die von der Absenderanwendung gesendeten Nachrichten empfängt:
+   ```
+5. Fügen Sie direkt nach der `Main()`-Methode die folgende Methode hinzu, die den Nachrichtenhandler registriert und die von der Absenderanwendung gesendeten Nachrichten empfängt:
 
     ```csharp
     static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -322,25 +303,20 @@ Erstellen Sie zum Empfangen der gesendeten Nachrichten eine weitere .NET Core-Ko
             const string SubscriptionName = "<your_subscription_name>";
             static ISubscriptionClient subscriptionClient;
 
-            static void Main(string[] args)
-            {
-                MainAsync().GetAwaiter().GetResult();
-            }
-
-            static async Task MainAsync()
-            {
+            public static async Task Main(string[] args)
+            {    
                 subscriptionClient = new SubscriptionClient(ServiceBusConnectionString, TopicName, SubscriptionName);
-
+        
                 Console.WriteLine("======================================================");
                 Console.WriteLine("Press ENTER key to exit after receiving all the messages.");
                 Console.WriteLine("======================================================");
-
-                // Register subscription message handler and receive messages in a loop.
+        
+                // Register subscription message handler and receive messages in a loop
                 RegisterOnMessageHandlerAndReceiveMessages();
-
+        
                 Console.ReadKey();
-
-                await subscriptionClient.CloseAsync();
+        
+                await subscriptionClient.CloseAsync();    
             }
 
             static void RegisterOnMessageHandlerAndReceiveMessages()

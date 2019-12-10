@@ -1,21 +1,15 @@
 ---
-title: Übersicht über die Integration von Nachrichten in Azure Blockchain Workbench
-description: Übersicht über die Verwendung von Nachrichten in der Vorschauversion von Azure Blockchain Workbench.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Verwenden von Nachrichten für die Integration in Azure Blockchain Workbench
+description: Übersicht über die Verwendung von Nachrichten für die Integration von Azure Blockchain (Vorschau) in andere Systeme.
 ms.date: 09/05/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 99159b15ea663d43d125748d6db1f334b72931ae
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 14bd0f84bc9490d95d3dbe0b9f122882f0d2059d
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161798"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324507"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Integration von Nachrichten in Azure Blockchain Workbench
 

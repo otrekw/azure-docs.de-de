@@ -1,23 +1,23 @@
 ---
-title: Reverse-DNS für Azure-Dienste | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Reverse-DNS-Lookups für in Azure gehostete Dienste konfigurieren.
+title: 'Reverse-DNS für Azure-Dienste: Azure DNS'
+description: Mit diesem Lernpfad beginnen Sie mit dem Konfigurieren von Reverse-DNS-Lookups für in Azure gehostete Dienste.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: timlt
+author: asudbring
+manager: KumudD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: c33914fb404467a20a9799df9643e9702234c300
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: allensu
+ms.openlocfilehash: 550ba617dec0359fd7d4e0bc309e411095de0d1e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224488"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211232"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
 

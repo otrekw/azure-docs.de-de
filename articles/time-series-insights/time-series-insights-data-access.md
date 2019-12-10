@@ -9,18 +9,21 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: f49567b8060be2bf2a9ca2b8a1bdee23f58fdd6b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012681"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74328040"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gewähren von Datenzugriff für eine Umgebung
 
 In diesem Artikel werden die beiden Arten von Zugriffsrichtlinien für Azure Time Series Insights Preview thematisiert.
+
+> [!TIP]
+> Lesen Sie [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md), um sich über die Schritte für die Azure Active Directory App-Registrierung zu informieren.
 
 ## <a name="sign-in-to-time-series-insights"></a>Anmelden bei Time Series Insights
 
@@ -34,11 +37,11 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerprinzipal Datenzugriff 
 
 1. Wählen Sie **Datenzugriffsrichtlinien** und dann **+ Hinzufügen** aus.
 
-    [![Data-access-one](media/data-access/data-access-one.png)](media/data-access/data-access-one.png#lightbox)
+    [![Auswählen und Hinzufügen einer Datenzugriffsrichtlinie](media/data-access/data-access-select-add-button.png)](media/data-access/data-access-select-add-button.png#lightbox)
 
 1. Wählen Sie **Benutzer auswählen** aus. Suchen Sie den Benutzernamen oder die E-Mail-Adresse des Benutzers, den Sie hinzufügen möchten. Wählen Sie **Auswählen** aus, um die Auswahl zu bestätigen.
 
-    [![Data-access-two](media/data-access/data-access-two.png)](media/data-access/data-access-two.png#lightbox)
+    [![Auswählen eines hinzuzufügenden Benutzers](media/data-access/data-access-select-user-to-confirm.png)](media/data-access/data-access-select-user-to-confirm.png#lightbox)
 
 1. Wählen Sie **Rolle auswählen** aus. Wählen Sie die geeignete Zugriffsrolle für den Benutzer aus:
 
@@ -48,37 +51,37 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerprinzipal Datenzugriff 
 
    Wählen Sie **OK** aus, um die Rollenauswahl zu bestätigen.
 
-    [![Data-access-three](media/data-access/data-access-three.png)](media/data-access/data-access-three.png#lightbox)
+    [![Bestätigen der ausgewählten Rolle](media/data-access/data-access-select-a-role.png)](media/data-access/data-access-select-a-role.png#lightbox)
 
 1. Wählen Sie auf der Seite **Benutzerrolle auswählen** die Option **OK** aus.
 
-    [![Data-access-four](media/data-access/data-access-four.png)](media/data-access/data-access-four.png#lightbox)
+    [![Auswählen von „OK“ auf der Seite „Benutzerrolle auswählen“](media/data-access/data-access-confirm-user-and-role.png)](media/data-access/data-access-confirm-user-and-role.png#lightbox)
 
 1. Vergewissern Sie sich, dass auf der Seite **Datenzugriffsrichtlinien** die Benutzer und die Rollen der einzelnen Benutzer aufgeführt werden.
 
-    [![Data-access-five](media/data-access/data-access-five.png)](media/data-access/data-access-five.png#lightbox)
+    [![Überprüfen, ob Benutzer und Rollen richtig sind](media/data-access/data-access-verify-and-confirm-assignments.png)](media/data-access/data-access-verify-and-confirm-assignments.png#lightbox)
 
-## <a name="provide-guest-access-from-another-aad-tenant"></a>Bereitstellen von Gastzugriff über einen anderen AAD-Mandanten
+## <a name="provide-guest-access-from-another-azure-ad-tenant"></a>Bereitstellen von Gastzugriff über einen anderen Azure AD-Mandanten
 
-`Guest` ist keine Verwaltungsrolle. Es ist ein Begriff, der ein Konto bezeichnet, das von einem Mandanten zu einem anderem Mandanten eingeladen wird. Nachdem das Gastkonto in das Mandantenverzeichnis eingeladen wurde, kann darauf dieselbe Zugriffssteuerung angewendet werden, wie auf jedes andere Konto. Sie können einer Time Series Insights-Umgebung Verwaltungszugriff gewähren, indem Sie das Blatt „Zugriffssteuerung (IAM)“ verwenden. Oder Sie können den Zugriff auf die Daten in der Umgebung über das Blatt „Datenzugriffsrichtlinien“ gewähren. Weitere Informationen zum Mandantengastzugriff in Azure Active Directory (Azure AD) finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
+Die Rolle `Guest` ist keine Verwaltungsrolle. Es ist ein Begriff, der ein Konto bezeichnet, das von einem Mandanten zu einem anderem Mandanten eingeladen wird. Nachdem das Gastkonto in das Mandantenverzeichnis eingeladen wurde, kann darauf dieselbe Zugriffssteuerung angewendet werden, wie auf jedes andere Konto. Sie können einer Time Series Insights-Umgebung Verwaltungszugriff gewähren, indem Sie das Blatt „Zugriffssteuerung (IAM)“ verwenden. Oder Sie können den Zugriff auf die Daten in der Umgebung über das Blatt „Datenzugriffsrichtlinien“ gewähren. Weitere Informationen zum Mandantengastzugriff in Azure Active Directory (Azure AD) finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator).
 
 Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen anderen Mandanten Zugriff auf die Time Series Insights-Umgebung zu gewähren.
 
 1. Wählen Sie **Datenzugriffsrichtlinien** und dann **+ Einladen** aus.
 
-    [![Data-access-six](media/data-access/data-access-six.png)](media/data-access/data-access-six.png#lightbox)
+    [![Auswählen von Datenzugriffsrichtlinien und „+ Einladen“](media/data-access/data-access-invite-another-aad-tenant.png)](media/data-access/data-access-invite-another-aad-tenant.png#lightbox)
 
 1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie einladen möchten. Diese E-Mail-Adresse muss Azure AD zugeordnet sein. Sie können der Einladung eine persönliche Nachricht hinzufügen.
 
-    [![Data-access-seven](media/data-access/data-access-seven.png)](media/data-access/data-access-seven.png#lightbox)
+    [![Eingeben der E-Mail-Adresse, um den ausgewählten Benutzer zu suchen](media/data-access/data-access-invite-guest-by-email.png)](media/data-access/data-access-invite-guest-by-email.png#lightbox)
 
 1. Suchen Sie nach der Bestätigungsmeldung, die am Bildschirm angezeigt wird.
 
-    [![Data-access-eight](media/data-access/data-access-eight.png)](media/data-access/data-access-eight.png#lightbox)
+    [![Suchen nach der Bestätigungsblase, die angezeigt wird](media/data-access/data-access-confirmation-bubble.png)](media/data-access/data-access-confirmation-bubble.png#lightbox)
 
 1. Wählen Sie **Benutzer auswählen** aus. Suchen Sie nach der E-Mail-Adresse des Gastbenutzers, den Sie eingeladen haben, um diesen hinzuzufügen. Wählen Sie dann **Auswählen** aus, um die Auswahl zu bestätigen.
 
-    [![Data-access-nine](media/data-access/data-access-nine.png)](media/data-access/data-access-nine.png#lightbox)
+    [![Auswählen des Benutzers und Bestätigen der Auswahl](media/data-access/data-access-select-invited-person-confirmation.png)](media/data-access/data-access-select-invited-person-confirmation.png#lightbox)
 
 1. Wählen Sie **Rolle auswählen** aus. Wählen Sie eine geeignete Zugriffsrolle für den Gastbenutzer aus:
 
@@ -88,31 +91,38 @@ Führen Sie die folgenden Schritte aus, um einem Azure AD-Benutzer über einen a
 
    Wählen Sie **OK** aus, um die Rollenauswahl zu bestätigen.
 
-    [![Data-access-ten](media/data-access/data-access-ten.png)](media/data-access/data-access-ten.png#lightbox)
+    [![Bestätigen der Rollenauswahl](media/data-access/data-access-select-ok-and-confirm.png)](media/data-access/data-access-select-ok-and-confirm.png#lightbox)
 
 1. Wählen Sie auf der Seite **Benutzerrolle auswählen** die Option **OK** aus.
 
 1. Vergewissern Sie sich, dass auf der Seite **Datenzugriffsrichtlinien** die Gastbenutzer mit denen ihnen zugewiesenen Rollen aufgeführt werden.
 
-    [![Data-access-eleven](media/data-access/data-access-eleven.png)](media/data-access/data-access-eleven.png#lightbox)
+    [![Überprüfen, ob Benutzer und Rollen ordnungsgemäß zugewiesen sind](media/data-access/data-access-confirm-invited-users-and-roles.png)](media/data-access/data-access-confirm-invited-users-and-roles.png#lightbox)
 
-1. Anschließend muss der Gastbenutzer einige Schritte ausführen, um auf die Umgebung zuzugreifen, die sich in dem Azure-Mandanten befindet, zu dem Sie ihn eingeladen haben. Zunächst muss er die Einladung annehmen, die Sie ihm gesendet haben. Diese Einladung wird per E-Mail an die E-Mail-Adresse gesendet, die Sie in Schritt 5 verwendet haben. Der Benutzer wählt **Get Started** (Erste Schritte) aus, um die Einladung anzunehmen.
+1. Nun erhält der Gastbenutzer eine Einladungs-E-Mail an die oben angegebene E-Mail-Adresse. Der Gastbenutzer wählt **Los geht's** aus, um die Einladung anzunehmen und eine Verbindung mit der Azure-Cloud herzustellen.
 
-    [![Data-access-twelve](media/data-access/data-access-twelve.png)](media/data-access/data-access-twelve.png#lightbox)
+    [![Gast wählt „Los geht's“ aus, um die Einladung anzunehmen](media/data-access/data-access-email-invitation.png)](media/data-access/data-access-email-invitation.png#lightbox)
 
-1. Anschließend muss er die Berechtigungen annehmen, die der Organisation des Administrators zugeordnet sind.
+1. Nachdem **Los geht's** ausgewählt wurde, wird dem Gastbenutzer ein Berechtigungsfeld angezeigt, das der Organisation des Administrators zugeordnet ist. Nachdem die Berechtigung durch die Auswahl von **Akzeptieren** erteilt wurde, wird er angemeldet.
 
-    [![Data-access-thirteen](media/data-access/data-access-thirteen.png)](media/data-access/data-access-thirteen.png#lightbox)
+    [![Gast überprüft Berechtigungen und akzeptiert die Einladung](media/data-access/data-access-grant-permission-sign-in.png)](media/data-access/data-access-grant-permission-sign-in.png#lightbox)
 
-1. Nachdem sich der Gastbenutzer bei der E-Mail-Adresse angemeldet hat, mit der Sie ihn eingeladen hatten, und dieser die Einladung annimmt, wechselt er zu „insights.azure.com“. Auf dieser Seite wählt er dann den Avatar aus, der neben seiner E-Mail-Adresse in der rechten oberen Ecke des Bildschirms angezeigt wird.
+1. Der Administrator [teilt die Umgebungs-URL](time-series-insights-parameterized-urls.md) mit seinem Gast.
 
-    [![Data-access-fourteen](media/data-access/data-access-fourteen.png)](media/data-access/data-access-fourteen.png#lightbox)
+1. Nachdem sich der Gastbenutzer bei der E-Mail-Adresse angemeldet hat, mit der Sie ihn eingeladen haben, und dieser die Einladung annimmt, wird er an das Azure-Portal weitergeleitet. 
 
-1. Anschließend muss der Gastbenutzer Ihren Azure-Mandanten aus dem Dropdownmenü für das Verzeichnis auswählen. Dies ist der Mandant, zu dem Sie ihn eingeladen haben.
+1. Der Gast kann nun mithilfe der vom Administrator bereitgestellten Umgebungs-URL auf die freigegebene Umgebung zugreifen. Er kann diese URL für den sofortigen Zugriff in seinen Webbrowser eingeben.
 
-    [![Data-access-fifteen](media/data-access/data-access-fifteen.png)](media/data-access/data-access-fifteen.png#lightbox)
+1. Der Gastbenutzer sieht den Mandanten des Administrators, indem er in der oberen rechten Ecke des Time Series-Explorers sein Profilsymbol auswählt.
 
-Nachdem der Gastbenutzer Ihren Mandanten ausgewählt hat, wird ihm die Time Series Insights-Umgebung angezeigt, zu der Sie ihm Zugriff gewährt haben. Er verfügt nun über alle Funktionen, die mit der Rolle verbunden sind, die Sie ihm in **Schritt 5** zugewiesen haben.
+    [![Avatarauswahl auf insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
+
+
+    Nachdem der Gastbenutzer den Mandanten des Administrators ausgewählt hat, kann er die freigegebene Time Series Insights-Umgebung auswählen. 
+    
+    Er verfügt nun über alle Funktionen, die mit der Rolle verbunden sind, die Sie ihm in **Schritt 5** zugewiesen haben.
+
+    [![Gastbenutzer wählt Ihren Azure-Mandanten aus der Dropdownliste aus](media/data-access/data-access-all-capabilities.png)](media/data-access/data-access-all-capabilities.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

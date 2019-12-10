@@ -4,14 +4,14 @@ description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokale
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/18/2019
 ms.author: rohogue
-ms.openlocfilehash: b10692e352007ee2b0fd18543d8ae2ad8f9819dc
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 396ed84856604c297551c4593e0d7b82b92ac924
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621464"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166618"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 
@@ -41,7 +41,7 @@ Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 * **Name des Speicherziels**: Legen Sie einen Namen fest, der dieses Speicherziel im Azure HPC Cache identifiziert.
 * **Zieltyp**: Wählen Sie **Blob** aus.
-* **Speicherkonto**: Wählen Sie das Konto mit dem Container aus, auf den verwiesen werden soll.
+* **Speicherkonto**: Wählen Sie das Konto mit dem Container aus, den Sie verwenden möchten.
 
   Sie müssen die Cache-Instanz für den Zugriff auf das Speicherkonto autorisieren, wie unter [Hinzufügen der Zugriffsrollen](#add-the-access-control-roles-to-your-account) beschrieben.
 
@@ -53,13 +53,16 @@ Geben Sie diese Informationen ein, um einen Azure Blobcontainer zu definieren.
 
 Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
+> [!NOTE]
+> Wenn Ihre Speicherkontofirewall so festgelegt ist, dass der Zugriff nur auf „ausgewählte Netzwerke“ eingeschränkt wird, verwenden Sie die temporäre Problemumgehung, die unter [Problemumgehung für die Firewalleinstellungen von Blobspeicherkonten](hpc-cache-blob-firewall-fix.md) dokumentiert ist.
+
 ### <a name="add-the-access-control-roles-to-your-account"></a>Hinzufügen der Zugriffssteuerungsrollen zu Ihrem Konto
 
-Azure HPC Cache verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index), um die Cache-Anwendung für den Zugriff auf Ihr Speicherkonto für Azure-Blobspeicherziele zu autorisieren.
+Azure HPC Cache verwendet die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/index), um den Cachedienst für den Zugriff auf Ihr Speicherkonto für Azure-Blobspeicherziele zu autorisieren.
 
 Der Besitzer des Speicherkontos muss die Rollen [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) und [Mitwirkender an Storage-Blobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) für den Benutzer „HPC Cache-Ressourcenanbieter“ explizit hinzufügen.
 
-Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite klicken, auf der Sie ein Blobspeicherziel hinzufügen.
+Sie können dies im Voraus erledigen oder indem Sie auf einen Link auf der Seite klicken, auf der Sie ein Blobspeicherziel hinzufügen. Beachten Sie, dass es bis zu fünf Minuten dauern kann, bis die Rolleneinstellungen in der Azure-Umgebung weitergegeben werden. Daher sollten Sie nach dem Hinzufügen der Rollen einige Minuten warten, bevor Sie ein Speicherziel erstellen.
 
 Schritte zum Hinzufügen der RBAC-Rollen:
 
@@ -76,7 +79,7 @@ Schritte zum Hinzufügen der RBAC-Rollen:
    > [!NOTE]
    > Wenn eine Suche nach „hpc“ nicht funktioniert, versuchen Sie stattdessen, die Zeichenfolge „storagecache“ zu verwenden. Benutzer, die (vor der allgemeinen Verfügbarkeit) an der Vorschau teilgenommen haben, müssen möglicherweise den älteren Namen für den Dienstprinzipal verwenden.
 
-1. Klicken Sie auf die Schaltfläche **Speichern**, um dem Speicherkonto die Rollenzuweisung hinzuzufügen.
+1. Klicken Sie unten auf die Schaltfläche **Speichern**.
 
 1. Wiederholen Sie diesen Vorgang, um die Rolle "Mitwirkender an Storage-Blobdaten" zuzuweisen.  
 
@@ -84,7 +87,7 @@ Schritte zum Hinzufügen der RBAC-Rollen:
 
 ## <a name="add-a-new-nfs-storage-target"></a>Hinzufügen eines neuen NFS-Speicherziels
 
-Ein NFS-Speicherziel weist einige zusätzliche Felder auf, um anzugeben, wie auf den Speicherexport zugegriffen werden soll und wie seine Daten effizient gespeichert werden. Darüber hinaus können Sie mehrere Namespacepfade von einem NFS-Host angeben, wenn für ihn mehrere Exporte verfügbar sind.
+Ein NFS-Speicherziel verfügt über mehr Felder als das Blobspeicherziel. Diese Felder geben an, wie auf den Speicherexport zugegriffen werden soll und wie seine Daten effizient zwischengespeichert werden sollen. Außerdem können Sie mit einem NFS-Speicherziel mehrere Namespacepfade erstellen, wenn der NFS-Host über mehrere Exporte verfügt.
 
 ![Screenshot der Seite zum Hinzufügen von Speicherzielen mit definiertem NFS-Ziel](media/hpc-cache-add-nfs-target.png)
 
@@ -96,14 +99,15 @@ Geben Sie diese Informationen für ein NFS-gestütztes Speicherziel an:
 
 * **Hostname**: Geben Sie die IP-Adresse oder den vollqualifizierten Domänennamen Ihres NFS-Speichersystems ein. (Verwenden Sie nur dann einen Domänennamen, wenn Ihr Cache Zugriff auf einen DNS-Server hat, der den Namen auflösen kann.)
 
-* **Nutzungsmodell**: Wählen Sie auf der Grundlage Ihres Workflows eins der Datencacheprofile aus, die unten in [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschrieben sind.
+* **Nutzungsmodell**: Wählen Sie auf der Grundlage Ihres Workflows eines der Datencacheprofile aus, die unten in [Auswählen eines Nutzungsmodells](#choose-a-usage-model) beschrieben werden.
 
 ### <a name="nfs-namespace-paths"></a>NFS-Namespacepfade
 
 Ein NFS-Speicherziel kann mehrere virtuelle Pfade aufweisen, solange jeder Pfad ein anderes Export- oder Unterverzeichnis in demselben Speichersystem darstellt.
 
 Erstellen Sie alle Pfade von einem Speicherziel aus.
-<!-- You can create multiple namespace paths to represent different exports on the same NFS storage system, but you must create them all from one storage target. -->
+
+Sie können [Namespacepfade](hpc-cache-edit-storage.md) für ein Speicherziel jederzeit hinzufügen und bearbeiten.
 
 Geben Sie diese Werte für die einzelnen Namespacepfade ein:
 
@@ -122,11 +126,29 @@ Klicken Sie abschließend auf **OK**, um das Speicherziel hinzuzufügen.
 
 Wenn Sie ein Speicherziel erstellen, das auf ein NFS-Speichersystem verweist, müssen Sie das *Nutzungsmodell* für dieses Ziel auswählen. Dieses Modell bestimmt, wie Ihre Daten zwischengespeichert werden.
 
-* Leseintensiv: Wenn Sie den Cache größtenteils zum Beschleunigen des Lesezugriffs für Daten verwenden, wählen Sie diese Option aus.
+Drei Optionen stehen zur Verfügung:
 
-* Lese-/Schreibzugriff: Wenn Clients den Cache zum Lesen und Schreiben verwenden, wählen Sie diese Option aus.
+* **Leseintensive, unregelmäßige Schreibvorgänge**: Verwenden Sie diese Option, wenn Sie den Lesezugriff auf Dateien beschleunigen möchten, die statisch sind oder selten geändert werden.
 
-* Clients umgehen den Cache: Wählen Sie diese Option aus, wenn Ihre Clients Daten direkt in das Speichersystem schreiben, ohne zuvor in den Cache zu schreiben.
+  Mit dieser Option werden von Clients gelesene Dateien zwischengespeichert, die Schreibvorgänge werden jedoch sofort an den Back-End-Speicher übergeben. Im Cache gespeicherte Dateien werden niemals mit den Dateien auf dem NFS-Speichervolume verglichen.
+
+  Verwenden Sie diese Option nicht, wenn das Risiko besteht, dass eine Datei direkt im Speichersystem geändert werden kann, ohne sie zuvor in den Cache zu schreiben. In diesem Fall wird die zwischengespeicherte Version der Datei niemals mit Änderungen aus dem Back-End aktualisiert, und das Dataset kann inkonsistent werden.
+
+* **Mehr als 15 % Schreibvorgänge**: Diese Option beschleunigt die Lese-und Schreibleistung. Wenn diese Option verwendet wird, müssen alle Clients über den Azure HPC-Cache auf Dateien zugreifen, anstatt den Back-End-Speicher direkt einzubinden. Die zwischengespeicherten Dateien enthalten aktuelle Änderungen, die nicht auf dem Back-End gespeichert werden.
+
+  Bei diesem Nutzungsmodell werden Dateien im Cache nicht mit den Dateien im Back-End-Speicher verglichen. Es wird davon ausgegangen, dass die zwischengespeicherte Version der Datei aktueller ist. Eine geänderte Datei im Cache wird nur dann in das Back-End-Speichersystem geschrieben, nachdem sie sich für eine Stunde ohne zusätzliche Änderungen im Cache befunden hat.
+
+* **Clients umgehen den Cache und schreiben in das NFS-Ziel**: Wählen Sie diese Option aus, wenn Clients in Ihrem Workflow Daten direkt in das Speichersystem schreiben, ohne zuvor in den Cache zu schreiben. Die von Clients angeforderten Dateien werden zwischengespeichert, aber alle Änderungen an diesen Dateien vom Client werden sofort an das Back-End-Speichersystem zurückgegeben.
+
+  Bei diesem Nutzungsmodell werden die Dateien im Cache häufig anhand der Back-End-Versionen auf Updates überprüft. Bei dieser Überprüfung können Dateien außerhalb des Caches geändert werden, während die Datenkonsistenz gewahrt bleibt.
+
+In dieser Tabelle werden die Unterschiede im Nutzungsmodell zusammengefasst:
+
+| Nutzungsmodell | Cachemodus | Back-End-Überprüfung | Maximale Zurückschreibverzögerung |
+| ---- | ---- | ---- | ---- |
+| Leseintensiv, unregelmäßige Schreibvorgänge | Lesen | Nie | Keine |
+| Mehr als 15 % Schreibvorgänge | Lesen/Schreiben | Nie | 1 Stunde |
+| Clients umgehen den Cache | Lesen | 30 Sekunden | Keine |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -135,4 +157,4 @@ Ziehen Sie nach dem Erstellen von Speicherzielen eine dieser Aufgaben in Erwägu
 * [Einbinden der Azure HPC Cache-Instanz](hpc-cache-mount.md)
 * [Daten in Azure-Blobspeicher verschieben](hpc-cache-ingest.md)
 
-Wenn Sie ein Speicherziel ändern müssen, lesen Sie [Bearbeiten von Speicherzielen](hpc-cache-edit-storage.md), um sich zu informieren.
+Wenn Sie Einstellungen aktualisieren müssen, können Sie ein [Speicherziel bearbeiten](hpc-cache-edit-storage.md).

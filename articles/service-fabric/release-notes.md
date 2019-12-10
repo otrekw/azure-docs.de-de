@@ -2,19 +2,19 @@
 title: Azure Service Fabric-Versionen
 description: Versionshinweise zu den neuesten Features und Verbesserungen in Service Fabric
 author: athinanthny
-manager: chackdan
+manager: gamonroy
 ms.author: atsenthi
-ms.date: 6/10/2019
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: service-fabric
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 4a681b3a09def3a7b27b603cf5201aebdbf2e4bf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 496a5babe58be4354ffb10a331d35abc8a51b04d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72386213"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186519"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric-Versionen
 
@@ -28,9 +28,41 @@ Dieser Artikel enthält weitere Informationen zu den neuesten Versionen und Upda
 
 ## <a name="whats-new-in-service-fabric"></a>Neuigkeiten in Service Fabric
 
+### <a name="service-fabric-70"></a>Service Fabric 7.0
+
+Azure Service Fabric 7.0 ist jetzt verfügbar! Sie können über das Azure-Portal oder über eine Azure Resource Manager-Bereitstellung ein Update auf Version 7.0 durchführen. Aufgrund von Kundenfeedback zu Releases am Jahresende beginnen wir mit der automatischen Aktualisierung von Clustern, die für den Empfang automatischer Upgrades eingerichtet wurden, erst im Januar.
+Im Januar wird die Standardprozedur für das Rollout fortgesetzt, und Cluster mit aktivierten automatischen Upgrades empfangen das Update auf Version 7.0 automatisch. Wir werden eine weitere Ankündigung bereitstellen, bevor das Rollout beginnt.
+Wir aktualisieren auch unsere geplanten Veröffentlichungstermine, um anzugeben, dass diese Richtlinie berücksichtigt wird. Hier finden Sie Updates zu unseren zukünftigen [Releasezeitplänen](https://github.com/Microsoft/service-fabric/#service-fabric-release-schedule).
+ 
+Dies ist die neueste Version von Service Fabric mit wichtigen Features und umfangreichen Verbesserungen.
+
+### <a name="key-announcements"></a>Wichtige Ankündigungen
+ - [**KeyVaultReference-Unterstützung für Anwendungsgeheimnisse (Vorschau)** ](https://docs.microsoft.com/azure/service-fabric/service-fabric-keyvault-references): Service Fabric-Anwendungen, für die [verwaltete Identitäten](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity) aktiviert sind, können nun direkt auf eine Key Vault-Geheimnis-URL als Umgebungsvariable, Anwendungsparameter oder Containerrepository-Anmeldeinformationen verweisen. Service Fabric löst das Geheimnis mithilfe der verwalteten Identität der Anwendung automatisch auf. 
+     
+- **Verbesserte Upgradesicherheit für zustandslose Dienste**: Um die Verfügbarkeit während eines Anwendungsupgrades zu gewährleisten, haben wir neue Konfigurationen eingeführt, um die [Mindestanzahl von Instanzen für zustandslose Dienste](https://docs.microsoft.com/dotnet/api/system.fabric.description.statelessservicedescription?view=azure-dotnet) zu definieren, die als verfügbar erachtet werden. Zuvor war dieser Wert für alle Dienste 1 und konnte nicht geändert werden. Mit dieser neuen Sicherheitsüberprüfung pro Dienst können Sie sicherstellen, dass Ihre Dienste bei Anwendungsupgrades, Clusterupgrades und anderen Wartungsarbeiten, die von den Integritäts- und Sicherheitsüberprüfungen von Service Fabric abhängig sind, eine Mindestanzahl von aktiven Instanzen beibehalten.
+  
+- [**Resourceneinschränkungen für Benutzerdienste**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services): Benutzer können Ressourceneinschränkungen für die Benutzerdienste auf einem Knoten einrichten, um Szenarien wie die Erschöpfung von Ressourcen der Systemdienste von Service Fabric zu verhindern. 
+  
+- [**Sehr hohe Dienstverschiebungskosten**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) für einen Replikattyp. Replikate mit sehr hohen Verschiebungskosten werden nur verschoben, wenn eine Einschränkungsverletzung im Cluster vorliegt, die nicht auf andere Weise behoben werden kann. Weitere Informationen dazu, wann die Nutzung von „sehr hohen“ Verschiebungskosten angemessen ist, sowie weitere Überlegungen finden Sie in der Dokumentation.
+  
+-  **Zusätzliche Clustersicherheitsüberprüfungen**: In diesem Release haben wir eine konfigurierbare Quorumsicherheitsüberprüfung für den Seedknoten eingeführt. Auf diese Weise können Sie anpassen, wie viele Seedknoten während des Lebenszyklus von Clustern und in Verwaltungsszenarien verfügbar sein müssen. Vorgänge, die den Cluster unter den konfigurierten Wert bringen würden, werden blockiert. Zurzeit ist der Standardwert immer ein Quorum der Seedknoten. Wenn Sie z.B. 7 Seedknoten verwenden, würde ein Vorgang, der Sie unter 5 Seedknoten bringen würde, standardmäßig blockiert. Mit dieser Änderung können Sie den minimal sicheren Wert auf 6 festlegen, sodass nur ein Seedknoten gleichzeitig ausfallen darf.
+   
+- Unterstützung für [**Verwaltung des Sicherungs- und Wiederherstellungsdiensts in Service Fabric Explorer**](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster) hinzugefügt. Dies ermöglicht die folgenden Aktivitäten direkt aus SFX heraus: Ermitteln des Sicherungs- und Wiederherstellungsdiensts, Erstellen von Sicherungsrichtlinien, Aktivieren automatischer Sicherungen, Erstellen von Ad-hoc-Sicherungen, Auslösen von Wiederherstellungsvorgängen und Durchsuchen vorhandener Sicherungen.
+
+- Ankündigung der Verfügbarkeit von [**ReliableCollectionsMissingTypesTool**](https://github.com/hiadusum/ReliableCollectionsMissingTypesTool): Mit diesem Tool können Sie überprüfen, ob die in zuverlässigen Sammlungen verwendeten Typen bei einem parallelen Anwendungsupgrade aufwärts- und abwärtskompatibel sind. Dadurch können Upgradefehler oder Datenverluste und Datenbeschädigungen aufgrund fehlender oder inkompatibler Typen verhindert werden.
+
+- [**Aktivieren stabiler Lesevorgänge für sekundäre Replikate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-configuration#configuration-names-1): Durch stabile Lesevorgänge werden die Rückgaben sekundärer Replikate auf Werte beschränkt, die durch ein Quorum bestätigt wurden.
+
+Dieses Release enthält außerdem viele neue Funktionen und Fehlerbehebungen sowie Unterstützungs-, Zuverlässigkeits- und Leistungsverbesserungen. Die vollständige Liste der Änderungen finden Sie in den [Versionshinweisen](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md).
+
+| Herausgabedatum | Release | Weitere Informationen |
+|---|---|---|
+| 18. November 2019 | [Azure Service Fabric 7.0](https://techcommunity.microsoft.com/t5/Azure-Service-Fabric/Service-Fabric-7-0-Release/ba-p/1015482)  | [Versionshinweise](https://github.com/Azure/service-fabric/blob/master/release_notes/Service_Fabric_ReleaseNotes_70.md)|
+
+
 ### <a name="service-fabric-65"></a>Service Fabric 6.5
 
-Die neueste Version von Service Fabric umfasst Verbesserungen hinsichtlich Unterstützungsmöglichkeiten, Zuverlässigkeit und Leistung sowie neue Features, Fehlerbehebungen und Verbesserungen, um die Cluster- und Anwendungslebenszyklusverwaltung zu vereinfachen.
+Dieses Release umfasst Verbesserungen hinsichtlich Unterstützungsmöglichkeiten, Zuverlässigkeit und Leistung sowie neue Features, Fehlerbehebungen und Verbesserungen, um die Cluster- und Anwendungslebenszyklusverwaltung zu vereinfachen.
 
 > [!IMPORTANT]
 > Service Fabric 6.5 ist die endgültige Version mit Unterstützung für Service Fabric-Tools in Visual Studio 2015. Kunden wird empfohlen, in Zukunft auf [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) umzusteigen.

@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 356f8d17dd194c79915600f63683e124cc481b33
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7838e1930a8ccd190c95740a6a8e3dadc68149f0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498372"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422114"
 ---
 # <a name="create-an-azure-bastion-host"></a>Erstellen eines Azure Bastion-Hosts
 
@@ -33,7 +33,7 @@ Bastion ist in den folgenden öffentlichen Azure-Regionen verfügbar:
 
 In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource über das Azure-Portal erstellen.
 
-1. Klicken Sie auf der Startseite im [Azure-Portal](https://portal.azure.com) auf **+ Ressource erstellen**.
+1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) oder auf der **Startseite** die Option **Ressource erstellen** aus.
 
 1. Geben Sie auf der Seite **Neu** im Feld *Marketplace durchsuchen* den Suchbegriff **Bastion** ein, und drücken Sie anschließend die **EINGABETASTE**, um zu den Suchergebnissen zu gelangen.
 
