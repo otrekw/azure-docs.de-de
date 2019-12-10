@@ -1,26 +1,18 @@
 ---
-title: Bewährte Methoden der Bereitstellung – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Hauptkomponenten der Bereitstellung in Azure App Service.
+title: Best Practices für die Bereitstellung
+description: Erfahren Sie mehr über die Schlüsselmechanismen bei der Bereitstellung in Azure App Service. Hier finden Sie sprachspezifische Empfehlungen sowie Informationen zu Einschränkungen.
 keywords: Azure App Service, Web-App, bereitstellen, Bereitstellung, Pipelines, Build
-services: app-service
-documentationcenter: ''
 author: jasonfreeberg
-manager: ''
-editor: ''
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: jafreebe
-ms.custom: ''
-ms.openlocfilehash: 121ea4b7e29510ef86b61350ed97ffca5d133d56
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d3959b9a86ccc2d42cbf7bd188ce86bf4b7a2e63
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199490"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670085"
 ---
 # <a name="deployment-best-practices"></a>Bewährte Methoden der Bereitstellung
 

@@ -1,25 +1,16 @@
 ---
-title: 'Konfigurieren der Google-Authentifizierung: Azure App Service'
-description: Erfahren Sie, wie Sie die Google-Authentifizierung für Ihre App Service-App konfigurieren.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Konfigurieren von Google-Authentifizierung
+description: Erfahren Sie, wie Sie Google-Authentifizierung als Identitätsanbieter für Ihre App Services-App konfigurieren.
 ms.assetid: 2b2f9abf-9120-4aac-ac5b-4a268d9b6e2b
-ms.service: app-service-mobile
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/02/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 917fa87a0cd0f7b0615a5139a7c15311f866739a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 81ce3e393d308323c8d5a3d688c16c9b45e7be9d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176967"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670823"
 ---
 # <a name="configure-your-app-service-app-to-use-google-login"></a>Konfigurieren Ihrer App Service-Anwendung zur Verwendung der Google-Anmeldung
 
@@ -51,7 +42,7 @@ Sie benötigen ein Google-Konto mit verifizierter E-Mail-Adresse, um den in dies
 1. (Optional) Um den Sitezugriff ausschließlich auf Benutzer zu beschränken, die von Google authentifiziert wurden, legen Sie **Die auszuführende Aktion, wenn die Anforderung nicht authentifiziert ist.** auf **Google** fest. Wenn Sie diese Funktion festlegen, erfordert Ihre App, dass alle Anforderungen authentifiziert werden. Sie leitet außerdem alle nicht authentifizierten Anforderungen zur Authentifizierung an Google um.
 
     > [!CAUTION]
-    > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite haben, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, sodass die App die Anmeldung selbst manuell startet. Weitere Informationen finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).
+    > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite haben, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen. Bei solchen Anwendungen ist möglicherweise die Einstellung **Anonyme Anforderungen zulassen (keine Aktion)** vorzuziehen, sodass die App die Authentifizierung selbst manuell startet. Weitere Informationen finden Sie unter [Authentifizierungsflow](overview-authentication-authorization.md#authentication-flow).
 
 1. Wählen Sie **Speichern** aus.
 

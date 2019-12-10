@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 8aa6a8bfb690b00ee21980f4aa64d950abec2f3c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d30195cb9aceac0e785f01ce8c2ce78d7a9d4da7
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152259"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805772"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 
@@ -94,7 +94,7 @@ Bevor Sie RingCentral für die automatische Benutzerbereitstellung mit Azure AD
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern bzw. Gruppen in RingCentral auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!TIP]
-> Sie können auch das SAML-basierte einmalige Anmelden für RingCentral aktivieren. Befolgen Sie hierzu die Anweisungen im [Tutorial für einmaliges Anmelden mit RingCentral](https://docs.microsoft.comazure/active-directory/saas-apps/ringcentral-tutorial). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
+> Sie können auch das SAML-basierte einmalige Anmelden für RingCentral aktivieren. Befolgen Sie hierzu die Anweisungen im [Tutorial für einmaliges Anmelden mit RingCentral](ringcentral-tutorial.md). Einmaliges Anmelden kann unabhängig von der automatischen Benutzerbereitstellung konfiguriert werden, obwohl diese beiden Features einander ergänzen.
 
 > [!NOTE]
 > Weitere Informationen zum SCIM-Endpunkt von RingCentral finden Sie in der [RingCentral-API-Referenz](https://developers.ringcentral.com/api-reference).

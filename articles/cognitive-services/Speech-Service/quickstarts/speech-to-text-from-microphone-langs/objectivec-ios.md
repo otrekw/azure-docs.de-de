@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 0d353b115acbf48bfffa6c2033b507721de501c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 652754c31711df7b14c055b31d6d96a6b0217d29
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505691"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815605"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Objective-C unter iOS mit dem Speech SDK
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine iOS-App in Objective-C mit dem Azur
 
 Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst.
+* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst
 * Einen macOS-Computer mit [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) oder einer höheren Version
 * Ziel mindestens auf die iOS-Version 9.3 festgelegt
 

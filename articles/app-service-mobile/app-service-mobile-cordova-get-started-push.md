@@ -1,25 +1,17 @@
 ---
-title: Hinzufügen von Pushbenachrichtigungen zu einer Apache Cordova-App mit dem Mobile Apps-Feature von Azure App Service | Microsoft-Dokumentation
+title: Hinzufügen von Pushbenachrichtigungen zu einer Apache Cordova-App
 description: Erfahren Sie mehr über die Verwendung von Mobile Apps zum Senden von Pushbenachrichtigungen an Ihre Apache Cordova-App.
-services: app-service\mobile
-documentationcenter: javascript
-manager: crdun
-editor: ''
-author: elamalani
 ms.assetid: 92c596a9-875c-4840-b0e1-69198817576f
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: article
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 7a7e64b32a084075fe96cbd4ab7a0d28fc0f8e19
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 6ec214c0f1a4f8333bf88790de8d2936fce39002
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388868"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668909"
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Apache Cordova-App
 

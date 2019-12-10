@@ -1,24 +1,15 @@
 ---
-title: Konfigurieren von PHP-Apps – Azure App Service | Microsoft-Dokumentation
-description: Informationen zum Konfigurieren von PHP-Apps, damit sie in Azure App Service funktionieren
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: jpconnock
-editor: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+title: Konfigurieren von PHP-Apps
+description: Hier erfahren Sie, wie Sie einen vordefinierten PHP-Container für Ihre App konfigurieren. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
+ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.author: cephalin
-ms.openlocfilehash: 279660d903b3b0e893c3ccddb89da7c6dc42fa09
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: a3de4769193d95a3ef483924c4d65c4fa1cc9f8d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67205071"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671831"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurieren einer PHP-App für Azure App Service
 
@@ -179,7 +170,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 `/usr/local/etc/php/conf.d` ist das Standardverzeichnis, in dem *php.ini* vorhanden ist. `/home/site/ini` ist das benutzerdefinierte Verzeichnis, in dem Sie eine benutzerdefinierte *ini*-Datei hinzufügen werden. Sie trennen die Werte durch `:`.
 
-Navigieren Sie zu der Web-SSH-Sitzung mit Ihrem Linux-Container (`https://cephalin-container.scm.azurewebsites.net/webssh/host`).
+Navigieren Sie zu der Web-SSH-Sitzung mit Ihrem Linux-Container (`https://<app-name>.scm.azurewebsites.net/webssh/host`).
 
 Erstellen Sie ein Verzeichnis in `/home/site` namens `ini`, erstellen Sie dann eine *.ini*-Datei im Verzeichnis `/home/site/ini` (z. B. *settings.ini)* mit den Anweisungen, die Sie anpassen möchten. Verwenden Sie dieselbe Syntax, die Sie in einer *php.ini*-Datei verwenden würden. 
 

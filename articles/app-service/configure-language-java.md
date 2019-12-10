@@ -1,25 +1,20 @@
 ---
-title: Konfigurieren von Windows-Java-Apps – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Java-Apps so konfigurieren, dass sie auf den Windows-Standardinstanzen in Azure App Service ausgeführt werden können.
+title: Konfigurieren von Windows Java-Apps
+description: Erfahren Sie, wie Sie Java-Apps so konfigurieren, dass sie auf Windows VM-Instanzen in Azure App Service ausgeführt werden können. In diesem Artikel werden die gängigsten Konfigurationsaufgaben vorgestellt.
 keywords: Azure App Service, Web-App, Windows, OSS, Java
-services: app-service
 author: jasonfreeberg
-manager: jeconnock
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
 ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: ad9ee8a21390126f20da4037a438a2655b8b5d47
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: dec5d1c7c7664bf72d92e5aca4333ba64db26d02
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012258"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671912"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Konfigurieren einer Windows-Java-App für Azure App Service
 

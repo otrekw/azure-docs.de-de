@@ -1,17 +1,14 @@
 ---
-title: Unterstützung des Verschiebevorgangs je nach Azure-Ressourcentyp
+title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 05f7d022588eee0e5e97f10d6300da04c4be6270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: b4a6f448807dd82b2c81cc207070d30a823151c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161943"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707015"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 In diesem Artikel wird aufgeführt, für welche Azure-Ressourcentypen der Verschiebevorgang unterstützt wird. Außerdem finden Sie hier Informationen zu speziellen Bedingungen, die beim Verschieben einer Ressource berücksichtigt werden müssen.
@@ -1271,9 +1268,9 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > [!div class="mx-tableFixed"]
 > | Ressourcentyp | Resource group | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | account | JA | Ja |
-> | account/extension | Ja | Ja |
-> | account/project | Ja | Ja |
+> | account | Nein | Nein |
+> | account/extension | Nein | Nein |
+> | account/project | Nein | Nein |
 
 > [!IMPORTANT]
 > Informationen zum Ändern des Abonnements für Azure DevOps finden Sie unter [Change or remove the Azure subscription that your organization uses for billing](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json) (Ändern oder Entfernen des Azure-Abonnements, das von Ihrer Organisation für die Abrechnung verwendet wird).

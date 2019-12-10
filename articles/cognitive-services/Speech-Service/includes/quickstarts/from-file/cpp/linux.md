@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: 4d03c0f8e8aa387bae68dda6aeb974efe155366d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2372e04ed7e20757cc0a3cbb9aae5e7597f17c3f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506323"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819388"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,6 +25,8 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=linux)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=linux)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
@@ -74,11 +76,14 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
    ````
 
-1. Ersetzen Sie in dieser neuen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel für die Speech-Dienste.
+1. Ersetzen Sie in dieser neuen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel für den Spracherkennungsdienst.
 
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](~/articles/cognitive-services/Speech-Service/regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
 1. Ersetzen Sie die Zeichenfolge `whatstheweatherlike.wav` durch Ihren eigenen Dateinamen.
+
+> [!NOTE]
+> Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
 
 ## <a name="build-the-app"></a>Erstellen der App
 
@@ -131,7 +136,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
    ./helloworld
    ```
 
-1. Ihre Audiodatei wird an die Speech-Dienste übermittelt, und die erste Äußerung in der Datei wird in Text transkribiert und im gleichen Fenster angezeigt.
+1. Ihre Audiodatei wird an den Speech-Dienst übermittelt, und die erste Äußerung in der Datei wird in Text transkribiert, der in demselben Fenster angezeigt wird.
 
    ```text
    Recognizing first result...

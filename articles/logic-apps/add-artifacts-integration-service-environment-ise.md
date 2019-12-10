@@ -1,20 +1,17 @@
 ---
-title: Hinzufügen von Artefakten zur Integrationsdienstumgebung – Azure Logic Apps
+title: Hinzufügen von Artefakten zu Integrationsdienstumgebungen
 description: Hinzufügen von Logik-Apps, Integrationskonten und benutzerdefinierten Connectors zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) für den Zugriff auf Azure-VNETs (virtual networks, virtuelle Netzwerke)
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 266c942adb62b187d39d2eac4a47455482bfadaa
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680517"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793312"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Hinzufügen von Artefakten zu Ihrer Integrationsdienstumgebung (Integration Service Environment, ISE) in Azure Logic Apps
 

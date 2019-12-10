@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines Verweis-DataSets zu Ihrer Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
+title: Hinzufügen eines Referenzdatasets zu Ihrer Umgebung – Azure Time Series Insights | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Ihrer Azure Time Series Insights-Umgebung ein Verweisdataset zum Ergänzen der Daten hinzufügen.
 ms.service: time-series-insights
 services: time-series-insights
@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: 31ae271a4ad6aa1370828640884a54eb2669804d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d1bbfb43c6e2319706f5eeac15fa1d60791b62b9
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012720"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807236"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -44,59 +44,73 @@ Verweisdaten werden nicht rückwirkend verknüpft. Somit werden nur aktuelle und
 
 1. Erweitern Sie die Umgebungsauswahl im Times Series Insights-Explorer. Wählen Sie die aktive Umgebung aus. Klicken Sie oben rechts auf der Explorer-Seite auf das Symbol für Verweisdaten.
 
-   [![Hinzufügen von Verweisdaten](media/add-reference-data-set/add-reference-data.png)](media/add-reference-data-set/add-reference-data.png#lightbox)
+   [![Hinzufügen von Verweisdaten](media/add-reference-data-set/tsi-select-environment-and-data-icons.png)](media/add-reference-data-set/tsi-select-environment-and-data-icons.png#lightbox)
 
 1. Klicken Sie auf die Schaltfläche **+ Dataset hinzufügen**, um ein neues Dataset hinzuzufügen.
 
-   [![Hinzufügen eines Datasets](media/add-reference-data-set/add-data-set.png)](media/add-reference-data-set/add-data-set.png#lightbox)
+   [![Hinzufügen eines Datasets](media/add-reference-data-set/tsi-add-a-reference-data-set.png)](media/add-reference-data-set/tsi-add-a-reference-data-set.png#lightbox)
 
 1. Wählen Sie auf der Seite **Neues Verweisdataset** das Format der Daten aus:
 
    - Wählen Sie **CSV** für kommagetrennte Daten aus. Die erste Zeile als Kopfzeile behandelt.
    - Wählen Sie **JSON-Array** für Daten im JSON-Format (JavaScript Object Notation) aus.
 
-   [![Auswählen eines Datenformats](media/add-reference-data-set/add-data.png)](media/add-reference-data-set/add-data.png#lightbox).
+   [![Auswählen eines Datenformats](media/add-reference-data-set/tsi-select-data-upload-option.png)](media/add-reference-data-set/tsi-select-data-upload-option.png#lightbox).
 
 1. Geben Sie die Daten mit einer der folgenden Methoden an:
 
    - Fügen Sie die Daten in den Text-Editor ein. Klicken Sie dann auf die Schaltfläche **Referenzdaten analysieren**.
    - Klicken Sie auf die Schaltfläche **Datei auswählen**, um Daten aus einer lokalen Textdatei hinzuzufügen.
 
-   Fügen Sie beispielsweise CSV-Daten ein: [![Eingefügte CSV-Daten](media/add-reference-data-set/csv-data-pasted.png)](media/add-reference-data-set/csv-data-pasted.png#lightbox)
+   Fügen Sie beispielsweise CSV-Daten ein: [![Eingefügte CSV-Daten](media/add-reference-data-set/select-csv-and-enter-data.png)](media/add-reference-data-set/select-csv-and-enter-data.png#lightbox)
 
-   Fügen Sie beispielsweise JSON-Arraydaten ein: [![Eingefügte JSON-Daten](media/add-reference-data-set/json-data-pasted.png)](media/add-reference-data-set/json-data-pasted.png#lightbox)
+   Fügen Sie beispielsweise JSON-Arraydaten ein: [![Eingefügte JSON-Daten](media/add-reference-data-set/select-json-option-and-enter-data.png)](media/add-reference-data-set/select-json-option-and-enter-data.png#lightbox)
 
    Falls beim Analysieren der Datenwerte ein Fehler auftritt, wird er unten auf der Seite in Rot angezeigt. Beispiel: `CSV parsing error, no rows extracted`
 
 1. Nachdem die Daten analysiert wurden, wird ein Datenraster mit den Spalten und Zeilen und den entsprechenden Daten angezeigt.  Überprüfen Sie das Datenraster auf seine Richtigkeit.
 
-   [![Hinzufügen von Verweisdaten](media/add-reference-data-set/parse-data.png)](media/add-reference-data-set/parse-data.png#lightbox)
+   [![Hinzufügen von Verweisdaten](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
 1. Überprüfen Sie in jeder Spalte den angenommenen Datentyp, und ändern Sie ihn bei Bedarf.  Klicken Sie in der Spaltenüberschrift auf das Symbol für den Datentyp: **#** : Double (numerische Daten), **T|F**: Boolesch, **Abc**: Zeichenfolge.
 
-   [![Auswählen von Datentypen in den Spaltenüberschriften.](media/add-reference-data-set/choose-datatypes.png)](media/add-reference-data-set/choose-datatypes.png#lightbox)
+   [![Auswählen von Datentypen in den Spaltenüberschriften.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-1. Benennen Sie die Spaltenüberschriften ggf. um. Der Name der Schlüsselspalte ist für die Verknüpfung mit der entsprechenden Eigenschaft in Ihrer Ereignisquelle erforderlich. Stellen Sie sicher, dass die Namen der Referenzdaten-Spaltennamen exakt mit dem Ereignisnamen der eingehenden Daten übereinstimmen. Dabei muss auch die Groß- und Kleinschreibung beachtet werden. Die Namen der Spalten, bei denen es sich nicht um Schlüsselspalten handelt, werden dazu verwendet, die eingehenden Daten mit den entsprechenden Referenzdatenwerten zu ergänzen.
+1. Benennen Sie die Spaltenüberschriften ggf. um. Der Name der Schlüsselspalte ist für die Verknüpfung mit der entsprechenden Eigenschaft in Ihrer Ereignisquelle erforderlich. 
 
-1. Wählen Sie **Zeile hinzufügen** oder **Spalte hinzufügen** aus, um bei Bedarf weitere Referenzdatenwerte hinzuzufügen.
+   > [!IMPORTANT]
+   > Stellen Sie sicher, dass die Namen der Referenzdaten-Spaltennamen exakt mit dem Ereignisnamen der eingehenden Daten übereinstimmen. Dabei muss auch die Groß- und Kleinschreibung beachtet werden. Die Namen der Spalten, bei denen es sich nicht um Schlüsselspalten handelt, werden dazu verwendet, die eingehenden Daten mit den entsprechenden Referenzdatenwerten zu ergänzen.
 
 1. Geben Sie im Feld **Filter the rows...** (Zeilen filtern...) einen Wert ein, um bei Bedarf bestimmte Zeilen zu überprüfen. Der Filter ist praktisch für die Überprüfung von Daten, wird beim Hochladen der Daten jedoch nicht angewendet.
 
 1. Geben Sie dem Dataset einen Namen, indem Sie oberhalb des Datenrasters einen Namen ins Feld **Datasetname** eingeben.
 
-    [![Benennen des Datasets.](media/add-reference-data-set/name-reference-dataset.png)](media/add-reference-data-set/name-reference-dataset.png#lightbox)
+    [![Benennen des Datasets.](media/add-reference-data-set/enter-reference-data-set-name.png)](media/add-reference-data-set/enter-reference-data-set-name.png#lightbox)
 
 1. Legen Sie die Spalte **Primärschlüssel** im Dataset fest. Wählen Sie dazu einen Wert aus der Dropdownliste oberhalb des Datenrasters aus.
 
-    [![Auswählen der Schlüsselspalte(n).](media/add-reference-data-set/set-primary-key.png)](media/add-reference-data-set/set-primary-key.png#lightbox)
+    [![Auswählen der Schlüsselspalte(n).](media/add-reference-data-set/select-primary-key-column.png)](media/add-reference-data-set/select-primary-key-column.png#lightbox)
 
-    Klicken Sie optional auf die Schaltfläche **+** , um eine Sekundärschlüsselspalte als zusammengesetzten Primärschlüssel hinzuzufügen. Wenn Sie die Auswahl rückgängig machen müssen, wählen Sie den leeren Wert in der Dropdownliste aus, um den Sekundärschlüssel zu entfernen.
+    **(Optional)** Wählen Sie die Schaltfläche **+** aus, um eine Sekundärschlüsselspalte als zusammengesetzten Primärschlüssel hinzuzufügen. Wenn Sie die Auswahl rückgängig machen müssen, wählen Sie den leeren Wert in der Dropdownliste aus, um den Sekundärschlüssel zu entfernen.
 
 1. Klicken Sie zum Hochladen der Daten auf die Schaltfläche **Upload rows** (Zeilen hochladen).
 
-    [![Upload (Hochladen)](media/add-reference-data-set/upload-rows.png)](media/add-reference-data-set/upload-rows.png#lightbox)
+    [![Hochladen von Zeilen und Bestätigen von Daten.](media/add-reference-data-set/confirm-upload-reference-data.png)](media/add-reference-data-set/confirm-upload-reference-data.png#lightbox)
 
     Auf der Seite wird der abgeschlossene Upload bestätigt und die Meldung **Das Dataset wurde erfolgreich hochgeladen.** angezeigt.
+
+    > [!WARNING]
+    > Spalten oder Eigenschaften, die von Referenzdatasets gemeinsam verwendet werden, zeigen einen Uploadfehler vom Typ **Doppelter Eigenschaftsname** an. Der Fehler verhindert nicht, dass die Referenzdatasets erfolgreich hochgeladen werden. Der Fehler kann durch Kombinieren der Zeilen entfernt werden, die den doppelt vorhandenen Eigenschaftsnamen verwenden.
+
+1. Wählen Sie **Zeile hinzufügen**, **Massenimport von Zeilen** oder **Spalte hinzufügen** aus, um bei Bedarf weitere Referenzdatenwerte hinzuzufügen.
+
+    [![Hinzufügen einer Zeile, Massenimport von Zeilen oder Hinzufügen einer Spalte.](media/add-reference-data-set/add-row-or-bulk-upload.png)](media/add-reference-data-set/add-row-or-bulk-upload.png#lightbox)
+
+   > [!IMPORTANT]
+   > Für jede Zeile, die einen eindeutigen Schlüssel mit einer anderen Zeile gemeinsam verwendet, werden die Spalten von der letzten hinzugefügten Zeile, die den eindeutigen Schlüssel ebenfalls verwendet, überschrieben.
+
+   > [!NOTE]
+   > Hinzugefügte Zeilen müssen **nicht** *gleichwertig* sein: Sie können weniger, größere oder abweichende Spalten als die anderen Einträge im Referenzdataset aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

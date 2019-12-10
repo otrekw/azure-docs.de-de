@@ -1,26 +1,19 @@
 ---
-title: Wiederherstellen aus der Sicherung – Azure App Service
-description: Hier erfahren Sie, wie Sie Ihre App auf der Grundlage einer Momentaufnahme wiederherstellen.
-services: app-service
-documentationcenter: ''
+title: Wiederherstellen einer App aus einer Momentaufnahme
+description: Hier erfahren Sie, wie Sie Ihre App auf der Grundlage einer Momentaufnahme wiederherstellen. Wiederherstellung nach unerwartetem Datenverlust im Premium-Tarif mit automatischen Schattenkopien.
 author: ahmedelnably
-manager: cfowler
-editor: ''
 ms.assetid: 4164f9b5-f735-41c6-a2bb-71f15cdda417
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: multiple
 ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably
 ms.reviewer: nicking
 ms.custom: seodec18
-ms.openlocfilehash: 4b3b10177b119c9362f807206a915d4b0b367e16
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: e5b48e05d6bd9a310b4527300126464c4b755c8d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69639752"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671138"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme
 In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/overview.md) auf der Grundlage einer Momentaufnahme wiederherstellen. Mithilfe der Momentaufnahmen Ihrer App können Sie die App in einem vorherigen Zustand wiederherstellen. Die Sicherung von Momentaufnahmen muss nicht aktiviert werden, da die Plattform automatisch eine Momentaufnahme aller Apps speichert, um die Wiederherstellung von Daten zu ermöglichen.

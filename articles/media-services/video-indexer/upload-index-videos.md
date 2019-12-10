@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 12/03/2019
 ms.author: juliako
-ms.openlocfilehash: 255c98965026266348a66bb98a1741eaf04a1d38
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839155"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815401"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -87,8 +87,9 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
 
 Verwenden Sie diesen Parameter, wenn unformatierte oder externe Aufzeichnungen Hintergrundgeräusche enthalten. Dieser Parameter wird verwendet, um den Indizierungsprozess zu konfigurieren. Sie können die folgenden Werte angeben:
 
-- `Default`: Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
 - `AudioOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Audiodaten (Videodaten werden ignoriert)
+- `VideoOnly`: Indizieren und Extrahieren von Erkenntnissen ausschließlich für Videodaten (Audiodaten werden ignoriert)
+- `Default`: Indizieren und Extrahieren von Erkenntnissen für Audio- und Videodaten
 - `DefaultWithNoiseReduction`: Indizieren und Extrahieren von Erkenntnissen aus Audio- und Videodaten mit Anwendung von Algorithmen für die Rauschunterdrückung auf den Audiodatenstrom
 
 Der Preis richtet sich nach der gewählten Indizierungsoption.  
@@ -119,12 +120,28 @@ Wenn `videoUrl` nicht angegeben ist, erwartet Video Indexer, dass Sie die Datei 
 
 Mit dem folgenden C#-Codeausschnitt wird die Nutzung aller Video Indexer-APIs zusammen veranschaulicht.
 
+### <a name="instructions-for-running-this-code-sample"></a>Anweisungen zum Ausführen dieses Codebeispiels
+
+Nachdem Sie diesen Code auf Ihre Entwicklungsplattform kopiert haben, müssen Sie zwei Parameter angeben: API Management-Authentifizierungsschlüssel und Video-URL.
+
+* API-Schlüssel: Der API-Schlüssel ist Ihr persönlicher API Management-Abonnementschlüssel, mit dem Sie ein Zugriffstoken abrufen können, um Vorgänge für Ihr Video Indexer-Konto auszuführen. 
+
+    Um Ihren API-Schlüssel abzurufen, gehen Sie wie folgt vor:
+
+    * Navigieren Sie zu https://api-portal.videoindexer.ai/.
+    * Anmeldung
+    * Navigieren Sie zu **Produkte** -> **Autorisierung** -> **Autorisierungsabonnement**.
+    * Kopieren Sie den **Primärschlüssel**.
+* Video-URL: Eine URL der zu indizierenden Video-/Audiodatei. Die URL muss auf eine Mediendatei zeigen (HTML-Seiten werden nicht unterstützt). Die Datei kann durch ein Zugriffstoken als Teil des URI geschützt werden, und der Endpunkt für die Datei muss mit TLS 1.2 oder höher gesichert werden. Die URL muss codiert sein.
+
+Das Ergebnis der erfolgreichen Ausführung des Codebeispiels umfasst eine Insight-Widget-URL und eine Player-Widget-URL, mit der Sie die Einblicke bzw. das hochgeladene Video untersuchen können. 
+
+
 ```csharp
 public async Task Sample()
 {
     var apiUrl = "https://api.videoindexer.ai";
-    var location = "westus2";
-    var apiKey = "...";
+    var apiKey = "..."; // replace with API key taken from https://aka.ms/viapi
 
     System.Net.ServicePointManager.SecurityProtocol =
         System.Net.ServicePointManager.SecurityProtocol | System.Net.SecurityProtocolType.Tls12;
@@ -145,7 +162,9 @@ public async Task Sample()
     HttpResponseMessage result = await client.GetAsync($"{apiUrl}/auth/trial/Accounts?{queryParams}");
     var json = await result.Content.ReadAsStringAsync();
     var accounts = JsonConvert.DeserializeObject<AccountContractSlim[]>(json);
-    // take the relevant account, here we simply take the first
+    
+    // take the relevant account, here we simply take the first, 
+    // you can also get the account via accounts.First(account => account.Id == <GUID>);
     var accountInfo = accounts.First();
 
     // we will use the access token from here on, no need for the apim key
@@ -153,7 +172,7 @@ public async Task Sample()
 
     // upload a video
     var content = new MultipartFormDataContent();
-    Debug.WriteLine("Uploading...");
+    Console.WriteLine("Uploading...");
     // get the video from URL
     var videoUrl = "VIDEO_URL"; // replace with the video URL
 
@@ -179,9 +198,9 @@ public async Task Sample()
 
     // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
-    Debug.WriteLine("Uploaded");
-    Debug.WriteLine("Video ID:");
-    Debug.WriteLine(videoId);
+    Console.WriteLine("Uploaded");
+    Console.WriteLine("Video ID:");
+    Console.WriteLine(videoId);
 
     // wait for the video index to finish
     while (true)
@@ -200,16 +219,16 @@ public async Task Sample()
 
         string processingState = JsonConvert.DeserializeObject<dynamic>(videoGetIndexResult)["state"];
 
-        Debug.WriteLine("");
-        Debug.WriteLine("State:");
-        Debug.WriteLine(processingState);
+        Console.WriteLine("");
+        Console.WriteLine("State:");
+        Console.WriteLine(processingState);
 
         // job is finished
         if (processingState != "Uploaded" && processingState != "Processing")
         {
-            Debug.WriteLine("");
-            Debug.WriteLine("Full JSON:");
-            Debug.WriteLine(videoGetIndexResult);
+            Console.WriteLine("");
+            Console.WriteLine("Full JSON:");
+            Console.WriteLine(videoGetIndexResult);
             break;
         }
     }
@@ -224,9 +243,9 @@ public async Task Sample()
 
     var searchRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/Search?{queryParams}");
     var searchResult = await searchRequestResult.Content.ReadAsStringAsync();
-    Debug.WriteLine("");
-    Debug.WriteLine("Search:");
-    Debug.WriteLine(searchResult);
+    Console.WriteLine("");
+    Console.WriteLine("Search:");
+    Console.WriteLine(searchResult);
 
     // Generate video access token (used for get widget calls)
     client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", apiKey);
@@ -244,8 +263,8 @@ public async Task Sample()
         });
     var insightsWidgetRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/{videoId}/InsightsWidget?{queryParams}");
     var insightsWidgetLink = insightsWidgetRequestResult.Headers.Location;
-    Debug.WriteLine("Insights Widget url:");
-    Debug.WriteLine(insightsWidgetLink);
+    Console.WriteLine("Insights Widget url:");
+    Console.WriteLine(insightsWidgetLink);
 
     // get player widget url
     queryParams = CreateQueryString(
@@ -255,9 +274,16 @@ public async Task Sample()
         });
     var playerWidgetRequestResult = await client.GetAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos/{videoId}/PlayerWidget?{queryParams}");
     var playerWidgetLink = playerWidgetRequestResult.Headers.Location;
-    Debug.WriteLine("");
-    Debug.WriteLine("Player Widget url:");
-    Debug.WriteLine(playerWidgetLink);
+     Console.WriteLine("");
+     Console.WriteLine("Player Widget url:");
+     Console.WriteLine(playerWidgetLink);
+     Console.WriteLine("\nPress Enter to exit...");
+     String line = Console.ReadLine();
+     if (line == "enter")
+     {
+         System.Environment.Exit(0);
+     }
+
 }
 
 private string CreateQueryString(IDictionary<string, string> parameters)

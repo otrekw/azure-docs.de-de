@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 22c304b26eddaee4444f6eb12957e2a6fedf7810
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131980"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793281"
 ---
 # <a name="troubleshooting"></a>Problembehandlung
 
@@ -34,18 +34,28 @@ Wenn Sie weitere Unterstützung benötigen, senden Sie eine E-Mail an farmbeatss
 
 **Korrekturmaßnahme**: Besuchen Sie das Azure-Portal, und führen Sie die folgenden Schritte aus:
 
-1. Wechseln Sie zur Ressourcengruppe für Ihren FarmBeats-Datenhub.   
-2. Wählen Sie den **Event Hub** (DatafeedEventHubNamespace...) aus, und überprüfen Sie die Anzahl von eingehenden Nachrichten.   
+1. Wechseln Sie zur Ressourcengruppe für Ihren FarmBeats-Datenhub.   
+2. Wählen Sie den **Event Hub** (DatafeedEventHubNamespace...) aus, und überprüfen Sie die Anzahl von eingehenden Nachrichten.   
 3. Wenn **KEINE eingehenden Nachrichten** vorhanden sind, wenden Sie sich an Ihren Gerätepartner.  
 4. Wenn **Eingehende Nachrichten** vorhanden sind, wenden Sie sich an farmbeatssupport@microsoft.com, und stellen Sie Informationen zum Datenhub und der erfassten Telemetrie sowie Accelerator-Protokolle bereit.
 
-Informationen zum Herunterladen von Protokollen finden Sie im [Abschnitt zu Protokollen](#collect-logs-manually) des vorliegenden Dokuments.    
+Informationen zum Herunterladen von Protokollen finden Sie im [Abschnitt zu Protokollen](#collect-logs-manually) des vorliegenden Dokuments.  
+
+### <a name="dont-have-the-eventhub-connection-string"></a>Die Event Hub-Verbindungszeichenfolge ist nicht bekannt
+
+**Korrekturmaßnahme**: Besuchen Sie den Data Hub Swagger, und führen Sie die folgenden Schritte aus:
+1. Navigieren Sie zur Partner-API.
+2. Klicken Sie auf „Get > Try it Out > Execute“ (Abrufen > Testen > Ausführen).
+3. Notieren Sie sich die Partner-ID des Sensorpartners, an dem Sie interessiert sind.
+4. Wechseln Sie zurück zur Partner-API, und klicken Sie auf GET/{id}.
+5. Geben Sie die ID aus Schritt 3 an, und klicken Sie auf „Execute“ (Ausführen).
+6. Die API-Antwort sollte die EventHub-Verbindungs Zeichenfolge aufweisen.
 
 ### <a name="device-appears-offline"></a>Das Gerät wird als offline angezeigt
 
 **Symptome:** Geräte sind installiert, und Sie haben FarmBeats mit Ihrem Gerätepartner verknüpft. Die Geräte sind online und senden Telemetriedaten, werden aber als offline angezeigt.
 
-**Korrekturmaßnahme**: Für das Gerät ist kein Berichtsintervall konfiguriert. Wenden Sie sich an den Hersteller Ihres Geräts, um das Berichtsintervall festzulegen. 
+**Korrekturmaßnahme**: Für das Gerät ist kein Berichtsintervall konfiguriert. Wenden Sie sich an den Hersteller Ihres Geräts, um das Berichtsintervall festzulegen. 
 
 ### <a name="error-deleting-a-resource"></a>Fehler beim Löschen einer Ressource
 
@@ -125,44 +135,44 @@ Schließen Sie alle Registerkarten, in denen der Accelerator geöffnet ist, und 
 
 **Korrekturmaßnahme**: Führen Sie den fehlerhaften Auftrag erneut aus, oder führen Sie einen Satellitenauftrag zur Indizierung für einen Datumsbereich von 5–7 Tagen aus, und überprüfen Sie, ob der Auftrag erfolgreich ausgeführt wird.
 
-### <a name="sentinel-hub-wrongurlor-not-accessible"></a>Sentinel-Hub-URL falsch oder kein Zugriff möglich 
+### <a name="sentinel-hub-wrong-url-or-not-accessible"></a>Falsche Sentinel Hub-URL oder kein Zugriff 
 
-**Auftragsfehlermeldung**: Leider ist ein Problem aufgetreten. Die Seite, auf die Sie versucht haben zuzugreifen, ist (vorübergehend) nicht verfügbar. 
+**Auftragsfehlermeldung**: Leider ist ein Problem aufgetreten. Die Seite, auf die Sie versucht haben zuzugreifen, ist (vorübergehend) nicht verfügbar. 
 
 **Korrekturmaßnahme**:
-1.  Öffnen Sie die Sentinel-URL (https://scihub.copernicus.eu/dhus/) in einem Browser, und überprüfen Sie, ob auf die Website zugegriffen werden kann. 
-2.  Wenn kein Zugriff auf die Website möglich ist, überprüfen Sie, ob eine Einstellung der Firewall, des Unternehmensnetzwerks usw. die Website blockiert, und ergreifen Sie entsprechende Maßnahmen, um die oben genannte URL zuzulassen. 
+1.  Öffnen Sie die Sentinel-URL (https://scihub.copernicus.eu/dhus/) ) im Browser, und überprüfen Sie, ob auf die Website zugegriffen werden kann. 
+2.  Wenn kein Zugriff auf die Website möglich ist, überprüfen Sie, ob eine Einstellung der Firewall, des Unternehmensnetzwerks usw. die Website blockiert, und ergreifen Sie entsprechende Maßnahmen, um die oben genannte URL zuzulassen. 
 3.  Führen Sie den fehlerhaften Auftrag erneut aus, oder führen Sie einen Satellitenauftrag zur Indizierung für einen Datumsbereich von 5–7 Tagen aus, und überprüfen Sie, ob der Auftrag erfolgreich ausgeführt wird.  
 
 ### <a name="sentinel-server-down-for-maintenance"></a>Sentinel-Server zu Wartungszwecken heruntergefahren
 
-**Auftragsfehlermeldung**: Der Copernicus Open Access-Hub ist bald wieder verfügbar! Wir führen derzeit Wartungsarbeiten durch. Der Server ist in Kürze wieder online. 
+**Auftragsfehlermeldung**: Der Copernicus Open Access-Hub ist bald wieder verfügbar! Wir führen derzeit Wartungsarbeiten durch. Der Server ist in Kürze wieder online. 
 
 **Korrekturmaßnahme**:
 
-1.  Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten ausgeführt werden. 
-2.  Wenn bei einem Auftrag oder einer Pipeline aus dem oben genannten Grund ein Fehler auftritt, übermitteln Sie den Auftrag nach einiger Zeit erneut. 
-3.  Benutzer können unter https://scihub.copernicus.eu/news/ Informationen zu geplanten oder ungeplanten Wartungsaktivitäten von Sentinel erhalten.  
+1.  Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten ausgeführt werden. 
+2.  Wenn bei einem Auftrag oder einer Pipeline aus dem oben genannten Grund ein Fehler auftritt, übermitteln Sie den Auftrag nach einiger Zeit erneut. 
+3.  Benutzer können unter https://scihub.copernicus.eu/news/ Informationen zu geplanten oder ungeplanten Wartungsaktivitäten von Sentinel erhalten.  
 4.  Führen Sie den fehlerhaften Auftrag erneut aus, oder führen Sie einen Satellitenauftrag zur Indizierung für einen Datumsbereich von 5–7 Tagen aus, und überprüfen Sie, ob der Auftrag erfolgreich ausgeführt wird.
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Maximale Anzahl von Sentinel-Verbindungen erreicht
 
-**Auftragsfehlermeldung**: Die maximale Anzahl von zwei gleichzeitigen Flows wurde durch den Benutzer <username> erreicht. 
+**Auftragsfehlermeldung**: Die maximale Anzahl von zwei gleichzeitigen Flows wurde durch den Benutzer <username> erreicht. 
 
 **Korrekturmaßnahme**:
-1.  Wenn bei einem Auftrag aus dem oben genannten Grund ein Fehler auftritt, wird dasselbe Sentinel-Konto bereits in einer anderen Bereitstellung oder Software verwendet. 
+1.  Wenn bei einem Auftrag aus dem oben genannten Grund ein Fehler auftritt, wird dasselbe Sentinel-Konto bereits in einer anderen Bereitstellung oder Software verwendet. 
 2.  Der Benutzer kann ein neues Sentinel-Konto erstellen und das Installationsprogramm erneut ausführen, um den Datenhub mit einem neuen Benutzernamen und Kennwort für Sentinel zu aktualisieren.  
 3.  Führen Sie den fehlerhaften Auftrag erneut aus, oder führen Sie einen Satellitenauftrag zur Indizierung für einen Datumsbereich von 5–7 Tagen aus, und überprüfen Sie, ob der Auftrag erfolgreich ausgeführt wird.
 
-### <a name="sentinel-server-refused-connection"></a>Der Sentinel-Server hat die Verbindung verweigert 
+### <a name="sentinel-server-refused-connection"></a>Der Sentinel-Server hat die Verbindung verweigert 
 
 **Auftragsfehlermeldung**:
 
-Der Server hat die Verbindung unter http://172.30.175.69:8983/solr/dhus verweigert. 
+Der Server hat die Verbindung unter http://172.30.175.69:8983/solr/dhus verweigert. 
 
-**Korrekturmaßnahme**: Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten ausgeführt werden. 
-1.  Wenn bei einem Auftrag oder einer Pipeline aus dem oben genannten Grund ein Fehler auftritt, übermitteln Sie den Auftrag nach einiger Zeit erneut. 
-2.  Benutzer können unter https://scihub.copernicus.eu/news/ Informationen zu geplanten oder ungeplanten Wartungsaktivitäten von Sentinel erhalten.  
+**Korrekturmaßnahme**: Dieses Problem kann auftreten, wenn auf dem Sentinel-Server Wartungsaktivitäten ausgeführt werden. 
+1.  Wenn bei einem Auftrag oder einer Pipeline aus dem oben genannten Grund ein Fehler auftritt, übermitteln Sie den Auftrag nach einiger Zeit erneut. 
+2.  Benutzer können unter https://scihub.copernicus.eu/news/ Informationen zu geplanten oder ungeplanten Wartungsaktivitäten von Sentinel erhalten.  
 3.  Führen Sie den fehlerhaften Auftrag erneut aus, oder führen Sie einen Satellitenauftrag zur Indizierung für einen Datumsbereich von 5–7 Tagen aus, und überprüfen Sie, ob der Auftrag erfolgreich ausgeführt wird.
 
 
@@ -271,11 +281,11 @@ Suchen Sie auf dem Dashboard der Ressourcengruppe nach dem Speicherkonto, das mi
 
 ## <a name="high-cpu-usage"></a>Hohe CPU-Auslastung
 
-**Fehler**: Sie erhalten eine E-Mail-Benachrichtigung mit einer Warnung zu einer hohen CPU-Auslastung. 
+**Fehler**: Sie erhalten eine E-Mail-Benachrichtigung mit einer Warnung zu einer hohen CPU-Auslastung. 
 
-**Korrekturmaßnahme**: 
+**Korrekturmaßnahme**: 
 1.  Wechseln Sie zur Ressourcengruppe für Ihren FarmBeats-Datenhub.
-2.  Wählen Sie den App-Dienst aus.  
+2.  Wählen Sie den App-Dienst aus.  
 3.  Wechseln Sie zu „Zentral hochskalieren (App Service-Plan)“, und wählen Sie einen geeigneten [Tarif](https://azure.microsoft.com/pricing/details/app-service/windows/) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte

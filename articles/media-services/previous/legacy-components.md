@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2019
+ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 592fd8901fc7f8a82a390f3c125c712ef5829a52
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6a61c868da7b979b1ac5654f4be93b5245179105
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083716"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423916"
 ---
 # <a name="azure-media-services-legacy-components"></a>Legacy-Komponenten von Azure Media Services
 
@@ -26,7 +26,7 @@ Im Laufe der Zeit wurden die Media Service-Komponenten kontinuierlich verfeinert
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Deaktivierungspläne für Legacy-Komponenten und Hinweise zur Migration
 
-Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an. Diese Prozessoren werden am 30. November 2019 eingestellt.
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) an. Diese Prozessoren werden am 31. März 2020 eingestellt.
 
 * [Migrieren von Windows Azure Media Encoder zu Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migrieren von Azure Media Encoder zu Media Encoder Standard](migrate-azure-media-encoder.md)

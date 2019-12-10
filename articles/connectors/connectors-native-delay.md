@@ -1,21 +1,18 @@
 ---
-title: Verzögern der nächsten Aktion in Workflows – Azure Logic Apps
+title: Verzögern der nächsten Aktion in Workflows
 description: In diesem Artikel wird erläutert, wie Sie mit dem Ausführen der nächsten Aktion in Logik-App-Workflows warten, indem Sie die Aktion „Verzögern“ oder „Verzögern bis“ in Azure Logic Apps verwenden.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: deli, klam, LADocs
-tags: connectors
+ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 27475fb3f086dbc5166a473e9d657d2dab723938
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+tags: connectors
+ms.openlocfilehash: 5348ade1ba6eec6cbd360849411b4520cb3c2b19
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66297602"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74787335"
 ---
 # <a name="delay-running-the-next-action-in-azure-logic-apps"></a>Verzögern der Ausführung der nächsten Aktion in Azure Logic Apps
 
@@ -56,7 +53,7 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung dieser Aktion:
    | Eigenschaft | JSON-Name | Erforderlich | Typ | BESCHREIBUNG |
    |----------|-----------|----------|------|-------------|
    | Count | count | Ja | Integer | Die Anzahl von Zeiteinheiten für die Verzögerung. |
-   | Unit | unit | Ja | string | Die Zeiteinheit, z.B.: `Second`, `Minute`, `Hour`, `Day`, `Week` oder `Month` |
+   | Unit | unit | Ja | Zeichenfolge | Die Zeiteinheit, z.B.: `Second`, `Minute`, `Hour`, `Day`, `Week` oder `Month` |
    ||||||
 
 1. Fügen Sie weitere Aktionen hinzu, die in Ihrem Workflow ausgeführt werden sollen.
@@ -81,7 +78,7 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung dieser Aktion:
 
    | Eigenschaft | JSON-Name | Erforderlich | Typ | BESCHREIBUNG |
    |----------|-----------|----------|------|-------------|
-   | Timestamp | timestamp | Ja | string | Das Datum und die Uhrzeit für die Fortsetzung des Workflows in folgendem Format: <p>YYYY-MM-DDThh:mm:ssZ <p>Beispiel: Für den 18. September 2017 um 14:00 Uhr würden Sie „2017-09-18T14:00:00Z“ angeben. <p>**Hinweis:** Dieses Zeitformat muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Uhrzeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). |
+   | Timestamp | timestamp | Ja | Zeichenfolge | Das Datum und die Uhrzeit für die Fortsetzung des Workflows in folgendem Format: <p>YYYY-MM-DDThh:mm:ssZ <p>Beispiel: Für den 18. September 2017 um 14:00 Uhr würden Sie „2017-09-18T14:00:00Z“ angeben. <p>**Hinweis:** Dieses Zeitformat muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Uhrzeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). |
    ||||||
 
 1. Fügen Sie weitere Aktionen hinzu, die in Ihrem Workflow ausgeführt werden sollen.

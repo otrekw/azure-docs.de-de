@@ -1,28 +1,20 @@
 ---
-title: Übersicht über die Netzwerkarchitektur von App Service-Umgebungen – Azure
-description: Übersicht über die Architektur der Netzwerktopologie von App Service-Umgebungen
-services: app-service
-documentationcenter: ''
+title: Netzwerkarchitektur v1
+description: Übersicht über die Architektur der Netzwerktopologie von App Service-Umgebungen. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 98eb4d7440126bedb3d2e1de5711141eaac8b07a
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070062"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687349"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Übersicht über die Netzwerkarchitektur von App Service-Umgebungen
-## <a name="introduction"></a>Einführung
 App Service-Umgebungen werden stets in einem Subnetz eines [virtuellen Netzwerks][virtualnetwork] erstellt. Apps, die in einer App Service-Umgebung ausgeführt werden, können mit privaten Endpunkten kommunizieren, die sich in derselben virtuellen Netzwerktopologie befinden.  Da Kunden Teile ihrer virtuellen Netzwerkinfrastruktur sperren können, ist es wichtig, die Arten von Netzwerkkommunikationsabläufen zu kennen, die in einer App Service-Umgebung vorkommen.
 
 ## <a name="general-network-flow"></a>Allgemeiner Netzwerkdatenfluss

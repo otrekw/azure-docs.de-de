@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit Twitter aus Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Twitter aus Azure Logic Apps
 description: Automatisieren Sie Aufgaben und Workflows, die Tweets überwachen und verwalten, und erhalten Sie Daten über Follower, Ihre verfolgten Benutzer, andere Benutzer, Timelines und mehr aus Ihrem Twitter-Konto, indem Sie Azure Logic Apps verwenden.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 8bce2183-544d-4668-a2dc-9a62c152d9fa
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 22b75b2d2b47dbd496eda06c09b418ae66f6403a
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 8ffd0fd558cf759fadd912de9dff4acf49d9659f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050690"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789085"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>Überwachen und Verwalten von Twitter mithilfe von Azure Logic Apps
 

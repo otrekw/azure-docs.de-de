@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: brianem
 ms.custom: seodec18
-ms.openlocfilehash: f38e23f0648d802ba7b09391d6f6bbd0c093d989
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 74b34a1d65f6beb097a649658c508da6ff48f1ac
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888173"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816608"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -193,7 +193,7 @@ Dies ist ein Fehlerbehebungsrelease und betrifft nur das native/verwaltete SDK. 
 
 **Neue Features**
 
-- Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Speech-Dienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Funktion noch nicht verfügbar.
+- Das Speech SDK unterstützt die Auswahl des Eingangsmikrofons über die AudioConfig-Klasse. Dadurch können Sie Audiodaten über ein anderes als das Standardmikrofon an den Spracherkennungsdienst streamen. Weitere Informationen finden Sie in der Dokumentation, in der die [Auswahl eines Audioeingabegeräts](how-to-select-audio-input-devices.md) beschrieben wird. Für JavaScript ist diese Funktion noch nicht verfügbar.
 - Das Speech SDK unterstützt jetzt Unity in einer Betaversion. Senden Sie uns Feedback über den Abschnitt „Issue“ im [GitHub-Beispielrepository](https://aka.ms/csspeech/samples). Dieses Release unterstützt Unity unter Windows x86 und x64 (Desktopanwendungen oder Anwendungen der universellen Windows-Plattform) und unter Android (ARM32/64, x86). Weitere Informationen finden Sie in unserem [Unity-Schnellstart](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=unity).
 - Die Datei `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (im Lieferumfang von früheren Releases enthalten) ist nicht mehr erforderlich. Die Funktion ist jetzt in das Core-SDK integriert.
 

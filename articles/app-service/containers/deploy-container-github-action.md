@@ -1,24 +1,17 @@
 ---
-title: Bereitstellen Ihres Containers über eine CI/CD-Pipeline mithilfe von GitHub-Aktionen – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von GitHub-Aktionen Ihren Container in App Service bereitstellen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Benutzerdefinierte Container-CI/CD aus GitHub-Aktionen
+description: Erfahren Sie, wie Sie mithilfe von GitHub-Aktionen Ihren benutzerdefinierten Linux-Container aus einer CI/CD-Pipeline in App Service bereitstellen.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 7fbd7b571f5590ff35d52062cc621069a47b619c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 127dd8645596b605980bf3c6fbc87bf159f7c03e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620232"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671806"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Bereitstellen eines benutzerdefinierten Containers in App Service mithilfe von GitHub-Aktionen
 

@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111735"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185688"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Tutorial: Erstellen einer Pipeline für die KI-Anreicherung mit C# und dem .NET SDK
 
@@ -103,7 +103,7 @@ Wählen Sie zum Installieren des NuGet-Pakets `Microsoft.Extensions.Configuratio
 
 Um eine Verbindung mit Ihrem Azure Cognitive Search-Dienst herstellen zu können, müssen Sie Ihrem Projekt die Suchdienstinformationen hinzufügen. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Hinzufügen** > **Neues Element** aus. Geben Sie der Datei den Namen `appsettings.json`, und wählen Sie **Hinzufügen** aus. 
 
-Diese Datei muss in Ihr Ausgabeverzeichnis eingefügt werden. Klicken Sie dazu mit der rechten Maustaste auf `appsettings.json`, und wählen Sie **Eigenschaften** aus. Ändern Sie den Wert von **In Ausgabeverzeichnis kopieren** in **Neuere Kopie**.
+Diese Datei muss in Ihr Ausgabeverzeichnis eingefügt werden. Klicken Sie dazu mit der rechten Maustaste auf `appsettings.json`, und wählen Sie **Eigenschaften** aus. Ändern Sie den Wert von **In Ausgabeverzeichnis kopieren** in **Kopieren, wenn neuer**.
 
 Kopieren Sie den folgenden JSON-Code in die neue JSON-Datei.
 

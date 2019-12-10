@@ -1,25 +1,19 @@
 ---
-title: Konfigurieren der PHP-Runtime – Azure App Service
+title: Konfigurieren der PHP-Runtime
 description: Erfahren Sie mehr über das Konfigurieren der PHP-Standardinstallation oder das Hinzufügen einer benutzerdefinierten PHP-Installation für Azure App Service.
-services: app-service
-documentationcenter: php
-author: msangapu
-manager: cfowler
+author: msangapu-msft
 ms.assetid: 95c4072b-8570-496b-9c48-ee21a223fb60
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: PHP
+ms.devlang: php
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 38e0983830c540082a915332aa4158d2af84567b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2d35c31e23da7addcf0b4c341c6925f258d5c232
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65408884"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688261"
 ---
 # <a name="configure-php-in-azure-app-service"></a>Konfigurieren von PHP in Azure App Service
 
@@ -79,7 +73,7 @@ Um die Azure-Befehlszeilenschnittstelle verwenden zu können, muss die [Azure CL
 
 Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ändern, indem Sie diese Schritte ausführen. (Informationen zu php.ini-Direktiven finden Sie unter [Liste der php.ini-Direktiven]).
 
-### <a name="changing-phpiniuser-phpiniperdir-phpiniall-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_USER, PHP\_INI\_PERDIR, PHP\_INI\_ALL
+### <a name="changing-php_ini_user-php_ini_perdir-php_ini_all-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_USER, PHP\_INI\_PERDIR, PHP\_INI\_ALL
 
 1. Fügen Sie eine [.user.ini] -Datei zum Stammverzeichnis hinzu.
 1. Fügen Sie der Datei `.user.ini` die Konfigurationseinstellungen hinzu, und verwenden Sie dieselbe Syntax wie für eine `php.ini`-Datei. Wenn Sie zum Beispiel die Einstellung `display_errors` aktivieren und die Einstellung `upload_max_filesize` auf 10 M festlegen möchten, enthält die Datei `.user.ini` diesen Text:
@@ -95,7 +89,7 @@ Für jede integrierte PHP-Laufzeit können Sie alle Konfigurationsoptionen ände
 
 Alternativ zur Verwendung einer`.user.ini`-Datei können Sie auch die Funktion [ini_set()] in Skripts verwenden, um Konfigurationsoptionen festzulegen, die keine Direktiven auf Systemebene sind.
 
-### <a name="changing-phpinisystem-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_SYSTEM
+### <a name="changing-php_ini_system-configuration-settings"></a>Ändern der Konfigurationseinstellungen PHP\_INI\_SYSTEM
 
 1. Hinzufügen einer App-Einstellung zu Ihrer App mit Schlüssel `PHP_INI_SCAN_DIR` und Wert `d:\home\site\ini`
 1. Erstellen einer `settings.ini`-Datei über die Kudu-Konsole (http://&lt;site-name&gt;.scm.azurewebsite.net) im Verzeichnis `d:\home\site\ini`.

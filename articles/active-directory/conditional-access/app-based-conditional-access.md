@@ -1,26 +1,26 @@
 ---
-title: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs von Azure Active Directory | Microsoft-Dokumentation
+title: Genehmigte Client-Apps mit bedingtem Zugriff – Azure Active Directory
 description: Erfahren Sie, wie Sie die Verwendung genehmigter Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs von Azure Active Directory vorschreiben können.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45eeef7d96f194e224e5b44421e73eb5ee5d9c0d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515153"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381119"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Anleitung: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs 
 
-Ihre Mitarbeiter verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Während Sie einerseits die Produktivität der Mitarbeiter sicherstellen möchten, sollten Sie andererseits Datenverluste vermeiden. Mit dem bedingten Zugriff mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre Cloud-Apps auf genehmigte Client-Apps beschränken, die Ihre Unternehmensdaten schützen können.  
+Ihre Mitarbeiter verwenden mobile Geräte sowohl für private als auch für berufliche Zwecke. Während Sie einerseits die Produktivität der Mitarbeiter sicherstellen möchten, sollten Sie andererseits Datenverluste vermeiden. Mit dem bedingten Zugriff von Azure Active Directory (Azure AD) können Sie den Zugriff auf Ihre Cloud-Apps auf genehmigte Client-Apps beschränken, die Ihre Unternehmensdaten schützen können.  
 
 In diesem Thema wird erläutert, wie Sie Richtlinien für den bedingten Zugriff konfigurieren, die genehmigte Client-Apps erfordern.
 
@@ -30,7 +30,7 @@ Mit dem [bedingten Zugriff von Azure AD](overview.md) können Sie präzise steue
 
 Zum Schutz Ihrer Unternehmensdaten können Sie [Intune-Richtlinien für den App-Schutz](https://docs.microsoft.com/intune/app-protection-policy) verwenden. Da die Intune-Richtlinien für den App-Schutz keine MDM-Lösung (Mobile-Device Management, Verwaltung mobiler Geräte) erfordern, sind Ihre Unternehmensdaten unabhängig davon geschützt, ob Sie die Geräte in einer Lösung für die Geräteverwaltung registrieren oder nicht.
 
-Der bedingte Zugriff mit Azure Active Directory ermöglicht es Ihnen, den Zugriff auf Ihre Cloud-Apps auf Client-Apps zu beschränken, die Intune-Richtlinien für den App-Schutz unterstützen. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken.
+Der bedingte Zugriff mit Azure Active Directory ermöglicht es Ihnen, den Zugriff auf Ihre Cloud-Apps auf Client-Apps zu beschränken, die Richtlinien für den Intune-App-Schutz unterstützen. Sie können zum Beispiel den Zugriff auf Exchange Online für die Outlook-App einschränken.
 
 Im Kontext des bedingten Zugriffs werden diese Client-Apps als **genehmigte Client-Apps** bezeichnet.  
 
@@ -45,9 +45,9 @@ App-basierte bedingte Zugriffsrichtlinien lassen sich mit anderen Richtlinien wi
 In diesem Thema wird vorausgesetzt, dass Sie mit Folgendem vertraut sind:
 
 - Der technischen Referenz [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement)
-- Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md).
-- Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md).
-- Die [Migration von Richtlinien für bedingten Zugriff](best-practices.md#policy-migration).
+- Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md)
+- Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md)
+- Der [Migration von Richtlinien für bedingten Zugriff](best-practices.md#policy-migration)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

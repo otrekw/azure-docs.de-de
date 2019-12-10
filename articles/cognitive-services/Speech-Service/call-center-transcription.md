@@ -1,5 +1,5 @@
 ---
-title: Callcentertranskription – Speech Service
+title: Callcentertranskription – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Ein häufiges Szenario für die Spracherkennung ist das Transkribieren großer Mengen von Telefoniedaten, die von verschiedenen Systemen stammen, z. B. Systemen für interaktive Sprachantworten (Interactive Voice Response, IVR). Mithilfe von Speech-Diensten und dem Unified Speech-Modell kann ein Unternehmen qualitativ hochwertige Transkriptionen mit Systemen für die Erfassung von Audiodaten erzielen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 2a8bea01d67c1820dc4f5c0a4922872541449a9e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538176"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806319"
 ---
 # <a name="speech-service-for-telephony-data"></a>Speech-Dienste für Telefoniedaten
 

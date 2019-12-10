@@ -1,24 +1,16 @@
 ---
-title: Sichern von Apps – Azure App Service
-description: Erfahren Sie, wie Sie Sicherungen Ihrer Apps in Azure App Service erstellen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Sichern einer App
+description: Erfahren Sie, wie Sie Sicherungen Ihrer Apps in Azure App Service erstellen. Ausführen manueller oder geplanter Sicherungen. Anpassen von Sicherungen durch Einschließen der angefügten Datenbank.
 ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/16/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a56abbcb72afc1f45683259d3bd3bf13309cda07
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 783737729601bfef3bee8741a097d4319349f18e
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886069"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671654"
 ---
 # <a name="back-up-your-app-in-azure"></a>Sichern einer App in Azure
 Das Feature zum Sichern und Wiederherstellen in [Azure App Service](overview.md) ermöglicht Ihnen, App-Sicherungen einfach manuell oder nach einem Zeitplan zu erstellen. Sie können die Sicherungen so konfigurieren, dass Sie für einen bis zu unbestimmten Zeitraum aufbewahrt werden. Sie können die App mit einer Momentaufnahme eines früheren Zustands wiederherstellen, indem Sie die vorhandene App überschreiben oder als andere App wiederherstellen.
@@ -72,7 +64,7 @@ Die folgenden Datenbanklösungen werden von der Sicherungsfunktion unterstützt:
     > 
     > 
 
-2. Wählen Sie auf der Seite **Sicherung** die Option **Backup ist nicht konfiguriert.  Hier klicken, um die Sicherung für Ihre App zu konfigurieren.** aus.
+2. Wählen Sie auf der Seite **Sicherung** die Option **Sicherung ist nicht konfiguriert. Klicken Sie hier, um die Sicherung für Ihre App zu konfigurieren** aus.
 
     ![Klicken Sie auf „Konfigurieren“.](./media/manage-backup/configure-start.png)
 

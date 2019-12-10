@@ -1,21 +1,17 @@
 ---
-title: Erstellen und Verwalten von Variablen zum Speichern von Werten – Azure Logic Apps
+title: Erstellen und Verwalten von Variablen zum Speichern von Werten
 description: So speichern und verwalten Sie Werte, indem Sie Variablen in Azure Logic Apps verwenden.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-manager: carmonm
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 0f7947e4a96a49e3a7a3b0059a1b20b21ac8cbd1
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71180789"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793174"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Speichern und Verwalten von Werten mittels Variablen in Azure Logic Apps
 

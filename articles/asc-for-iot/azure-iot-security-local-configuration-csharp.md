@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zum Azure Security Center-Sicherheits-Agent – Lokale Konfigurationsdatei für C# | Microsoft-Dokumentation
-description: Erfahren Sie mehr über den Azure Security Center-Sicherheits-Agent, und zwar die lokale Konfigurationsdatei für C#.
+title: Grundlegendes zur lokalen Konfigurationsdatei für C# des Sicherheits-Agents von Azure Security Center für IoT | Microsoft-Dokumentation
+description: Erfahren Sie mehr über Azure Security Center für IoT und die lokale Konfigurationsdatei für C# des Sicherheits-Agents.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: cc7b9f0b6e537ca3bdcbb82a357b2f2b9451fab0
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 0172ada68ffa652fb0c301c89238beca4f4ce2f9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600337"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664191"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>Grundlegendes zur lokalen Konfigurationsdatei (C#-Agent)
 
@@ -130,4 +130,4 @@ Windows:
 - Lesen Sie [Häufig gestellte Fragen (FAQ)](resources-frequently-asked-questions.md) zum Dienst „Azure Security Center für IoT“.
 - Informieren Sie sich, wie Sie auf [Sicherheitsrohdaten](how-to-security-data-access.md) zugreifen.
 - Machen Sie sich mit [Empfehlungen](concept-recommendations.md) vertraut.
-- Grundlegendes zu [Sicherheitswarnungen](concept-security-alerts.md)
+- Machen Sie sich mit [Sicherheitswarnungen](concept-security-alerts.md) vertraut.

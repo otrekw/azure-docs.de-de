@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f6446a2dbe3f111c9c617e78a0bdd98f6cea9153
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58738c9180fcc45a6958ea61b26d898caf4f3061
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468780"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819121"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
-Das Speech-SDK (Software Development Kit) gewährt Ihren Anwendungen Zugriff auf die Funktionen der Speech-Dienste, sodass die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit ermöglichen die SDKs den Zugriff auf **Spracherkennung**, **Sprachsynthese**, **Sprachübersetzung**, **Absichtserkennung** und den **Direct Line Speech-Kanal von Bot Framework**. Eine allgemeine Übersicht über die Funktionen und unterstützten Plattformen finden Sie auf der [Einstiegsseite](https://aka.ms/csspeech) der Dokumentation.
+Das Speech-SDK (Software Development Kit) gewährt Ihren Anwendungen Zugriff auf die Funktionen des Speech-Diensts, sodass die Entwicklung sprachaktivierter Software erleichtert wird. Derzeit ermöglichen die SDKs den Zugriff auf **Spracherkennung**, **Sprachsynthese**, **Sprachübersetzung**, **Absichtserkennung** und den **Direct Line Speech-Kanal von Bot Framework**. Eine allgemeine Übersicht über die Funktionen und unterstützten Plattformen finden Sie auf der [Einstiegsseite](https://aka.ms/csspeech) der Dokumentation.
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

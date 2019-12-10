@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 39e0a512e42dd861c0ee2c833501c7594204cb8b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110076"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806149"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Anleitung: Ausführen der Befehle auf dem Client mit dem Speech SDK (Vorschau)
 
@@ -29,7 +29,7 @@ In diesem Artikel führen Sie Folgendes durch:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Azure-Abonnementschlüssel für Spracherkennungsdienste
+- Ein Azure-Abonnementschlüssel für den Spracherkennungsdienst
   - [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
 - Eine zuvor erstellte Anwendung für benutzerdefinierte Befehle
   - [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)

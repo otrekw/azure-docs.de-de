@@ -1,20 +1,17 @@
 ---
-title: Gruppieren und Ausführen von Aktionen nach Bereich – Azure Logic Apps
+title: Gruppieren und Ausführen von Aktionen nach Bereich
 description: Erstellen von auf Bereiche begrenzten Aktionen in Azure Logic Apps, die auf Grundlage des Gruppenstatus ausgeführt werden
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: b0f53d1dbcd5b8bbbe38ffe3dd9ba62087ed3432
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: b84db69f79b1611347a4c55d929e5426141e7ac6
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680005"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791493"
 ---
 # <a name="run-actions-based-on-group-status-by-using-scopes-in-azure-logic-apps"></a>Ausführen von Aktionen basierend auf dem Gruppenstatus unter Verwendung von Bereichen in Azure Logic Apps
 

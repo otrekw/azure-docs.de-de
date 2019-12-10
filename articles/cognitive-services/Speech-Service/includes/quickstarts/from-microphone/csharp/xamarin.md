@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, C# (Xamarin) – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, C# (Xamarin) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen Sie mithilfe des Cognitive Services Speech SDK eine plattformübergreifende C#-Xamarin-Anwendung für die universelle Windows-Plattform (UWP), Android und iOS. Sie transkribieren über das Mikrofon des Geräts oder Simulators Sprache in Echtzeit in Text. Die Anwendung basiert auf dem NuGet-Paket für das Speech SDK und auf Microsoft Visual Studio 2019.
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: d0d1cfee535a04203d9ff995b94fcad5d432ed3e
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ecfdc74c72284da97ebf3107140911e666a3a12d
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961187"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818778"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
+Bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=xamarin)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=xamarin)
+> * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 
 Wenn Sie dies bereits getan haben, umso besser. Wir fahren fort.
 
@@ -135,7 +136,7 @@ Fügen Sie nun den C#-Code hinzu, der den UWP-spezifischen Teil der Anwendung de
 
    ![Berechtigungsanforderung für den Mikrofonzugriff](../../../../media/sdk/qs-csharp-xamarin-uwp-access-prompt.png)
 
-1. Wählen Sie **Spracherkennung starten** aus, und sprechen Sie einen englischen Ausdruck oder Satz in das Mikrofon Ihres Geräts. Ihre Spracheingabe wird an die Speech-Dienste übermittelt, in Text transkribiert und im Fenster angezeigt.
+1. Wählen Sie **Spracherkennung starten** aus, und sprechen Sie einen englischen Ausdruck oder Satz in das Mikrofon Ihres Geräts. Ihre Spracheingabe wird an den Spracherkennungsdienst übermittelt und in Text transkribiert, der im Fenster angezeigt wird.
 
    ![Spracherkennungsbenutzeroberfläche](../../../../media/sdk/qs-csharp-xamarin-uwp-ui-result.png)
 * * *

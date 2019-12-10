@@ -1,25 +1,16 @@
 ---
-title: 'Konfigurieren der Azure Active Directory-Authentifizierung: Azure App Service'
-description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung für Ihre App Services-App konfigurieren.
-author: cephalin
-services: app-service
-documentationcenter: ''
-manager: gwallace
-editor: ''
+title: Konfigurieren von Azure AD-Authentifizierung
+description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung als Identitätsanbieter für Ihre App Services-App konfigurieren.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
-ms.service: app-service
-ms.workload: web,mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/03/2019
-ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 6812f99d8433ef318eca37eb2615d43f4749e944
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b833604ce18873e22c22990a26dcbae1d9928628
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886186"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670888"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service-App zur Verwendung der Azure AD-Anmeldung
 

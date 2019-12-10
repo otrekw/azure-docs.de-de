@@ -1,5 +1,5 @@
 ---
-title: Azure Front Door Service – Häufig gestellte Fragen zu Front Door | Microsoft-Dokumentation
+title: 'Azure Front Door Service: Häufig gestellte Fragen'
 description: Diese Seite enthält Antworten auf häufig gestellte Fragen zu Azure Front Door Service.
 services: frontdoor
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 4001b3ed8d7a92d8a751486ab4fd3a097d032373
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: fa9de74c89ba3f0351169f143146dc21b80ee666
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809736"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790526"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Front Door Service
 
@@ -180,6 +180,8 @@ Die folgenden Verschlüsselungssammlungen werden derzeit von Azure Front Door Se
 - TLS_RSA_WITH_AES_128_CBC_SHA256
 - TLS_RSA_WITH_AES_256_CBC_SHA
 - TLS_RSA_WITH_AES_128_CBC_SHA
+- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384
 
 ### <a name="does-azure-front-door-service-also-support-re-encryption-of-traffic-to-the-backend"></a>Unterstützt Azure Front Door Service auch eine erneute Verschlüsselung des Datenverkehrs an das Back-End?
 

@@ -6,17 +6,20 @@ ms.service: event-hubs
 documentationcenter: ''
 author: spelluru
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 63fe6c4a2d02489b5e25100aa6aa23407bbe6bc7
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809369"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705460"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Verschlüsselung ruhender Azure Event Hubs-Daten mithilfe des Azure-Portals (Vorschau)
 Azure Event Hubs ermöglicht die Verschlüsselung ruhender Daten mit Azure Storage Service Encryption (Azure SSE). Event Hubs verwendet Azure Storage zum Speichern der Daten. Standardmäßig werden alle Daten, die mit Azure Storage gespeichert werden, durch von Microsoft verwaltete Schlüssel verschlüsselt. 
+
+>[!NOTE]
+> Diese Funktion steht derzeit als Vorschau zur Verfügung. In einer Produktionsumgebung wird die Verwendung dieser Funktion nicht empfohlen.
 
 ## <a name="overview"></a>Übersicht
 Azure Event Hubs unterstützt jetzt die Option zum Verschlüsseln ruhender Daten mit von Microsoft oder vom Kunden verwalteten Schlüsseln (Bring your own Key, BYOK). Mit dieser Funktion können Sie kundenseitig verwaltete Schlüssel, die zum Verschlüsseln ruhender Azure Event Hubs-Daten verwendet werden, erstellen, rotieren, deaktivieren und den Zugriff darauf widerrufen.

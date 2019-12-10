@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 08/19/2019
+ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 587856be6ca1064e5d2487ba6740b51a8c645fee
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d2be8f7f2e8859301285e4b87cfb5da88e3317e3
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716640"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483357"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -23,7 +23,101 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2019-11-25"></a>25.11.2019
 
+### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK für Python, Version 1.0.76
+
++ **Wichtige Änderungen**
+  + Probleme beim Upgrade auf azureml-train-automl
+    + Ein Upgrade von azureml-train-automl<1.0.76 auf azureml-train-automl>=1.0.76 kann teilweise Installationen bewirken, wodurch einige automl-Importe fehlschlagen. Führen Sie das Setupskript unter https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/automl_setup.cmd, um dieses Problem zu beheben. Wenn Sie pip direkt verwenden, können Sie Folgendes ausführen:
+      + „pip install --upgrade azureml-train-automl“
+      + „pip install --ignore-installed azureml-train-automl-client“
+    + oder Sie können die alte Version vor dem Upgrade deinstallieren:
+      + „pip uninstall azureml-train-automl“
+      + „pip install azureml-train-automl“
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-runtime**
+    + AutoML berücksichtigt nun sowohl wahre als auch falsche Klassen, wenn gemittelte skalare Metriken für Binärklassifizierungsaufgaben berechnet werden.
+    + Machine Learning- und Trainingscode in AzureML-AutoML-Core wurde in das neue Paket AzureML-AutoML-Runtime verschoben.
+  + **azureml-contrib-dataset**
+    + Beim Aufrufen von `to_pandas_dataframe` für ein bezeichnetes Dataset mit der Download-Option können Sie nun angeben, ob vorhandene Dateien überschrieben oder nicht überschrieben werden sollen.
+    + Bei einem Aufruf von `keep_columns` oder `drop_columns`, der das Verwerfen einer Zeitreihen-, Beschriftungs- oder Bildspalte bewirkt, werden die entsprechenden Funktionen für das Dataset ebenfalls verworfen.
+    + Ein Problem mit dem PyTorch-Ladeprogramm für die Objekterkennungsaufgabe wurde behoben.
+  + **azureml-contrib-interpret**
+    + Das Erklärungsdashboard-Widget wurde aus azureml-contrib-interpret entfernt, das Paket verweist nun auf das neue in interpret_community.
+    + Version von interpret-community wurde auf 0.2.0 aktualisiert.
+  + **azureml-core**
+    + Die Leistung von `workspace.datasets` wurde verbessert.
+    + Die Möglichkeit zum Registrieren des Datenspeichers von Azure SQL-Datenbank mit Benutzername und Kennwortauthentifizierung wurde eingeführt.
+    + Fix für das Laden von RunConfigurations aus relativen Pfaden.
+    + Bei einem Aufruf von `keep_columns` oder `drop_columns`, der das Verwerfen einer Zeitreihenspalte bewirkt, werden die entsprechenden Funktionen für das Dataset ebenfalls verworfen.
+  + **azureml-interpret**
+    + Version von interpret-community wurde auf 0.2.0 aktualisiert.
+  + **azureml-pipeline-steps**
+    + Unterstützte Werte für `runconfig_pipeline_params` für Azure Machine Learning-Pipelineschritte wurden dokumentiert.
+  + **azureml-pipeline-core**
+    + Eine CLI-Option zum Herunterladen der Ausgabe im JSON-Format für Pipeline-Befehle wurde hinzugefügt.
+  + **azureml-train-automl**
+    + AzureML-Train-AutoML wurde in zwei Pakete aufgeteilt, ein Clientpaket AzureML-Train-AutoML-Client und ein ML-Training-Paket AzureML-Train-AutoML-Runtime.
+  + **azureml-train-automl-client**
+    + Es wurde ein Thin Client hinzugefügt, mit dem AutoML-Experimente übermittelt werden können, ohne dass lokal Machine Learning-Abhängigkeiten installiert werden müssen.
+    + Die Protokollierung von automatisch erkannten Verzögerungen, rollierenden Zeitfenstern und maximalen Horizonten in den Remoteausführungen wurde korrigiert.
+  + **azureml-train-automl-runtime**
+    + Es wurde ein neues AutoML-Paket hinzugefügt, um Machine Learning- und Runtime-Komponenten vom Client zu isolieren.
+  + **azureml-contrib-train-rl**
+    + Unterstützung für vertiefendes Lernen in SDK wurde hinzugefügt.
+    + AmlWindowsCompute-Unterstützung in RL SDK wurde hinzugefügt. 
+
+ 
+## <a name="2019-11-11"></a>11.11.2019
+
+### <a name="azure-machine-learning-sdk-for-python-v1074"></a>Azure Machine Learning SDK für Python, v1.0.74
+ 
+  + **Vorschaufunktionen**
+    + **azureml-contrib-dataset**
+      + Nach dem Importieren von azureml-contrib-dataset können Sie `Dataset.Labeled.from_json_lines` anstelle von `._Labeled` aufrufen, um ein bezeichnetes Dataset zu erstellen.
+      + Beim Aufrufen von `to_pandas_dataframe` für ein bezeichnetes Dataset mit der Download-Option können Sie nun angeben, ob vorhandene Dateien überschrieben oder nicht überschrieben werden sollen.
+      + Bei einem Aufruf von `keep_columns` oder `drop_columns`, der das Verwerfen einer Zeitreihen-, Beschriftungs- oder Bildspalte bewirkt, werden die entsprechenden Funktionen für das Dataset ebenfalls verworfen.
+      + Es wurden Probleme mit dem PyTorch-Ladeprogramm beim Aufrufen von `dataset.to_torchvision()` behoben.
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azure-cli-ml**
+    + In der Vorschau-CLI wurde die Profilerstellung für Modelle eingeführt.
+    + Breaking Change in Azure Storage, die einen Ausfall der AzureML-CLI bewirkte, wurde korrigiert.
+    + Der MLC wurde ein Typ des Lastenausgleichs für AKS-Typen hinzugefügt.
+  + **azureml-automl-core**
+    + Das Problem mit der Erkennung des maximalem Horizonts in Zeitreihen mit fehlenden Werten und mehreren Körnungen wurde behoben.
+    + Das Problem mit Ausfällen, welche die Generierung von Kreuzvalidierungsteilungen bewirkten, wurde behoben.
+    + Diesen Abschnitt durch eine Meldung im Markdown-Format für Versionshinweise ersetzen: – Verarbeitung von kurzen Körnungen in den Vorhersagedatasets wurde verbessert.
+    + Es wurde ein Problem behoben, bei dem einige Benutzerinformationen während der Protokollierung maskiert wurden. – Verbesserte Protokollierung der Fehler während der Ausführung von Vorhersagen.
+    + psutil wurde als der automatisch generierten YML-Bereitstellungsdatei als Conda-Abhängigkeit hinzugefügt.
+  + **azureml-contrib-mir**
+    + Breaking Change in Azure Storage, die einen Ausfall der AzureML-CLI bewirkte, wurde korrigiert.
+  + **azureml-core**
+    + Behebung eines Fehlers, der bewirkte, dass in Azure Functions bereitgestellte Modelle 500s produzieren.
+    + Es wurde ein Problem behoben, bei dem die amlignore-Datei nicht auf Momentaufnahmen angewendet wurde.
+    + Es wurde die neue API amlcompute.get_active_runs hinzugefügt, die einen Generator für die Ausführung und zwischengespeicherte Ausführungen für eine bestimmte amlcompute zurückgibt.
+    + Der MLC wurde ein Typ des Lastenausgleichs für AKS-Typen hinzugefügt.
+    + Der append_prefix-Bool-Parameter wurde download_files in run.py und download_artifacts_from_prefix in artifacts_client hinzugefügt. Dieses Flag wird verwendet, um den ursprünglichen Dateipfad so zu vereinfachen, dass dem output_directory nur der Datei- oder Ordnername hinzugefügt wird.
+    + Deserialisierungsproblem für `run_config.yml` mit Datasetverwendung wurde behoben.
+    + Bei einem Aufruf von `keep_columns` oder `drop_columns`, der das Verwerfen einer Zeitreihenspalte bewirkt, werden die entsprechenden Funktionen für das Dataset ebenfalls verworfen.
+  + **azureml-interpret**
+    + interpret-community wurde auf Version 0.1.0.3 aktualisiert.
+  + **azureml-train-automl**
+    + Es wurde ein Problem behoben, bei dem automl_step Validierungsprobleme möglicherweise nicht ausgibt.
+    + Es wurde ein Problem behoben, sodass register_model selbst dann erfolgreich ausgeführt wird, wenn in der Umgebung des Modells Abhängigkeiten lokal fehlen.
+    + Es wurde ein Problem behoben, bei dem einige Remoteausführung nicht Docker-fähig waren.
+    + Es wurde die Protokollierung der Ausnahme eingeführt, die einen vorzeitigen Abbruch einer lokalen Ausführung bewirkte.
+  + **azureml-train-core**
+    + resume_from-Ausführungen werden bei der Berechnung der besten untergeordneten Ausführungen der automatisierten Hyperparameteroptimierung berücksichtigt.
+  + **azureml-pipeline-core**
+    + Die Parameterverarbeitung bei der Erstellung von Pipeline-Argumenten wurde korrigiert.
+    + Es wurden eine Pipelinebeschreibung und ein Schritttyp-YAML-Parameter hinzugefügt.
+    + Neues YAML-Format für den Pipelineschritt und Warnung für veraltetes Format hinzugefügt.
+    
+    
+  
 ## <a name="2019-11-04"></a>2019-11-04
 
 ### <a name="web-experience"></a>Weboberfläche 
@@ -181,7 +275,7 @@ Eine vollständige Dokumentation finden Sie auf der [Website des Pakets](https:/
     + psutil wurde als Abhängigkeit von `automl` hinzugefügt, und psutil wurde als Conda-Abhängigkeit in amlcompute eingefügt.
     + Behebung eines Problems mit heuristischen Verzögerungen und Größen von rollierenden Zeitfenstern für die Vorhersagedatasets, von denen einige Serien zu Fehlern in Bezug auf die lineare Algebra führen können
       + Ausdruck für die heuristisch ermittelten Parameter in den Vorhersageläufen hinzugefügt.
-  + **[azureml-contrib-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
+  + **azureml-contrib-datadrift**
     + Schutz für die Erstellung von Ausgabemetriken hinzugefügt, falls die Abweichung auf Datasetebene nicht im ersten Abschnitt enthalten ist.
   + **azureml-contrib-interpret**
     + Paket „azureml-contrib-explain-model“ wurde in „azureml-contrib-interpret“ umbenannt
@@ -233,16 +327,16 @@ Eine vollständige Dokumentation finden Sie auf der [Website des Pakets](https:/
         experiment2 = Experiment(workspace, "Active Experiment")
         experiment1.reactivate(new_name="Previous Active Experiment")
         ```
-        Die statische [list()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly--)-Methode in einem Experiment kann einen Namensfilter und einen ViewType-Filter verwenden. Werte für ViewType sind „ACTIVE_ONLY“, „ARCHIVED_ONLY“ und „ALL“. Beispiel: 
+        Die statische [list()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment#list-workspace--experiment-name-none--view-type--activeonly---tags-none-)-Methode in einem Experiment kann einen Namensfilter und einen ViewType-Filter verwenden. Werte für ViewType sind „ACTIVE_ONLY“, „ARCHIVED_ONLY“ und „ALL“. Beispiel: 
         
         ```py
         archived_experiments = Experiment.list(workspace, view_type="ARCHIVED_ONLY")
         all_first_experiments = Experiment.list(workspace, name="First Experiment", view_type="ALL")
         ```
     + Unterstützung der Nutzung einer Umgebung für die Modellbereitstellung und Dienstupdate.
-  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift)**
-    + Das show-Attribut der [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector)-Klasse unterstützt nicht mehr das optionale Argument with_details. Das „show“-Attribut stellt nur den Datendriftkoeffizienten und den Beitrag zur Datenabweichung der Featurespalten dar.
-    + Änderungen des Verhaltens von [get_output](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector#get-output-start-time--end-time--run-id-none--daily-latest-only-true-) für die DataDriftDetector-Funktion:
+  + **[azureml-datadrift](https://docs.microsoft.com/python/api/azureml-datadrift)**
+    + Das show-Attribut der [DataDriftDetector](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector)-Klasse unterstützt nicht mehr das optionale Argument with_details. Das „show“-Attribut stellt nur den Datendriftkoeffizienten und den Beitrag zur Datenabweichung der Featurespalten dar.
+    + Änderung des Verhaltens von [get_output]https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#get-output-start-time-none--end-time-none--run-id-none-) für die DataDriftDetector-Funktion:
       + Eingabeparameter „start_time“ und „end_time“ sind nicht mehr obligatorisch, sondern optional.
       + Die Eingabe der spezifischen Angabe für start_time bzw. end_time mit einer spezifischen run_id im selben Aufruf führt zu einer Wertfehlerausnahme, da sich dies gegenseitig ausschließt. 
       + Wenn eine spezifische Eingabe für „start_time“ bzw. „end_time“ erfolgt, werden nur Ergebnisse von geplanten Ausführungen zurückgegeben. 
@@ -862,7 +956,7 @@ Wir haben eine Änderung rückgängig gemacht, die zwar die Leistung verbessert,
 + **Vorschaufunktionen**
     + Integration in [MLflow](https://mlflow.org) 1.0.0-Nachverfolgung über „azureml-mlflow“-Paket ([Beispielnotebooks](https://aka.ms/azureml-mlflow-examples)).
     + Übermitteln Sie Jupyter-Notebook als Lauf. [API-Referenzdokumentation](https://docs.microsoft.com/python/api/azureml-contrib-notebook/azureml.contrib.notebook?view=azure-ml-py)
-    + Public Preview von [Datenvariationserkennung](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift?view=azure-ml-py) über „azureml-contrib-datadrift“-Paket ([Beispielnotebooks](https://aka.ms/azureml-datadrift-example)). Datenvariation ist einer der Hauptgründe, warum die Modellgenauigkeit mit der Zeit abnimmt. Sie tritt auf, wenn sich die Daten, die ein Modell in der Produktion erhält, von den Daten unterscheiden, mit denen das Modell trainiert wurde. Die AML-Erkennung von Datenvariation hilft Kunden beim Überwachen der Datenvariation und sendet Benachrichtigungen, wenn eine Variation erkannt wird. 
+    + Public Preview von [Datenvariationserkennung](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector(class)) über „azureml-contrib-datadrift“-Paket ([Beispielnotebooks](https://aka.ms/azureml-datadrift-example)). Datenvariation ist einer der Hauptgründe, warum die Modellgenauigkeit mit der Zeit abnimmt. Sie tritt auf, wenn sich die Daten, die ein Modell in der Produktion erhält, von den Daten unterscheiden, mit denen das Modell trainiert wurde. Die AML-Erkennung von Datenvariation hilft Kunden beim Überwachen der Datenvariation und sendet Benachrichtigungen, wenn eine Variation erkannt wird. 
 
 + **Wichtige Änderungen**
 

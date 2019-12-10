@@ -1,26 +1,19 @@
 ---
-title: Vorgehensweise beim Arbeiten mit dem .NET Back-End Server SDK für Mobile Apps | Microsoft Docs
+title: Arbeiten mit dem .NET-Back-End-Server-SDK
 description: Informationen zum Arbeiten mit der .NET-Back-End-Server-SDK für Azure App Service Mobile Apps.
 keywords: App Service, Azure App Service, mobile App, mobiler Service, skalieren, skalierbar, App-Bereitstellung, Azure-App-Bereitstellung
-services: app-service\mobile
-documentationcenter: ''
 author: conceptdev
-manager: crdun
-editor: ''
 ms.assetid: 0620554f-9590-40a8-9f47-61c48c21076b
-ms.service: app-service-mobile
-ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: crdun
-ms.openlocfilehash: 5372385bd4de0f5592a7fff3e4a78fbb5e1648dc
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 019979307f6dff1dba2ef5f661a971f330b8a9cd
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388773"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668857"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
