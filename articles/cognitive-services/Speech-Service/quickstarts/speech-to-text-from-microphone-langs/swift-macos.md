@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon in Swift – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, Swift – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie unter macOS mit dem Speech SDK Sprache in Swift erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 06/28/2019
 ms.author: cbasoglu
-ms.openlocfilehash: af01ab7b3a3c9a93cc470646b40779ee0527d41e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 083ac49919bcf60fdd0b34a5007e03d215c23280
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505587"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815007"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-macos-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Swift unter macOS mit dem Speech SDK
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine macOS-App in Swift mit dem Cognitiv
 
 Folgendes wird vorausgesetzt:
 
-* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst.
+* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst
 * Ein macOS-Computer mit [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) oder höher und installierte [CocoaPods](https://cocoapods.org/).
 
 ## <a name="get-the-speech-sdk-for-macos"></a>Herunterladen des Speech SDK für macOS

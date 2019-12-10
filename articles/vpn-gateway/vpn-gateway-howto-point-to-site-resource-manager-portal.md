@@ -1,5 +1,6 @@
 ---
-title: 'Herstellen einer Verbindung mit einem virtuellen Azure-Netzwerk von einem Computer über eine Point-to-Site-VPN-Verbindung und native Azure-Zertifikatauthentifizierung: Azure-Portal | Microsoft-Dokumentation'
+title: 'Herstellen einer Verbindung mit einem VNet unter Verwendung eines Point-to-Site-VPN und der Zertifikatauthentifizierung: Portal'
+titleSuffix: Azure VPN Gateway
 description: Verbinden Sie Windows-, Mac OS X- und Linux-Clients auf sichere Weise mit einem virtuellen Azure-Netzwerk, indem Sie eine P2S-Verbindung und selbstsignierte oder von einer Zertifizierungsstelle ausgestellte Zertifikate verwenden. In diesem Artikel wird das Azure-Portal verwendet.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7d6941c347f1121654084c8d71ba7c0a293bf558
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c1435a2295804a0ad43f640d7317a6e1d3f56aea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72333251"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150096"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurieren einer Point-to-Site-VPN-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: Azure-Portal
 

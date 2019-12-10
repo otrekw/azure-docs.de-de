@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache in Sprache, Python – Spracherkennungsdienst'
+title: 'Schnellstart: Übersetzen von Sprache in Sprache, Python – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: e09d3fd2e880a01522b59d60a80f448192c0b689
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: db6cbce03805b904dbac80eb8d2c6fcd38ede6ee
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505227"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817414"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -101,7 +101,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
    python quickstart.py
    ```
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Spracherkennungsdienste, die ihn in Text übersetzen und transkribieren (in diesem Fall ins Deutsche). Die Spracherkennungsdienste senden die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der ihn in Text übersetzt und transkribiert (in diesem Fall ins Deutsche). Der Speech-Dienst sendet die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
 
    ```
    Say something...

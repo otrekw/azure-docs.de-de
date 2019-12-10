@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, C++ (Windows) – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, C++ (Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop erkennen.
 services: cognitive-services
@@ -10,21 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 1a08a5413ae41ef8c17e817a01be9e9efcb7ff99
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 74bc77fbb9436983c26c572b521d96795f14cfcd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505715"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818907"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
+Bevor Sie beginnen:
 
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=windows)
+> * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
@@ -40,13 +41,16 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Wählen Sie auf der Menüleiste **Datei** > **Alle speichern** aus.
 
+> [!NOTE]
+> Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
+
 ## <a name="build-and-run-the-application"></a>Erstellen und Ausführen der Anwendung
 
 1. Wählen Sie auf der Menüleiste **Erstellen** > **Projektmappe erstellen** aus, um die Anwendung zu erstellen. Der Code sollte nun ohne Fehler kompiliert werden.
 
 1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Speech-Dienste, die den Text transkribieren und zur Anzeige zurück an die Anwendung senden
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der den Text transkribiert und zur Anzeige zurück an die Anwendung sendet.
 
    ![Konsolenausgabe nach erfolgreicher Erkennung](~/articles/cognitive-services/Speech-Service/media/sdk/qs-cpp-windows-08-console-output-release.png)
 

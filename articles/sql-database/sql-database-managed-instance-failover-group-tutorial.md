@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 85d2e58d35ef233fda7c724f85152fc74bd11189
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826835"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286761"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Tutorial: Hinzufügen einer verwalteten SQL-Datenbank-Instanz zu einer Failovergruppe
 
@@ -385,18 +385,18 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Azure-Ressourcengruppe.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Erstellen Sie ein virtuelles Netzwerk.  |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu. | 
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Ruft ein virtuelles Netzwerk in einer Ressourcengruppe ab | 
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Erstellt eine Netzwerksicherheitsgruppe. | 
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Erstellt eine Routingtabelle. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Aktualisiert eine Subnetzkonfiguration für ein virtuelles Netzwerk.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Ruft eine Netzwerksicherheitsgruppe ab. |
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Erstellt eine Routingtabelle |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Aktualisiert eine Subnetzkonfiguration für ein virtuelles Netzwerk  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Ruft eine Netzwerksicherheitsgruppe ab |
 | [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Fügt einer Netzwerksicherheitsgruppe eine Netzwerksicherheits-Konfigurationsregel hinzu |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle.  |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu |
+| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz.  |
 
 ---
@@ -711,18 +711,18 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Azure-Ressourcengruppe.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Erstellen Sie ein virtuelles Netzwerk.  |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu. | 
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Ruft ein virtuelles Netzwerk in einer Ressourcengruppe ab | 
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Erstellt eine Netzwerksicherheitsgruppe. | 
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Erstellt eine Routingtabelle. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Aktualisiert eine Subnetzkonfiguration für ein virtuelles Netzwerk.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Ruft eine Netzwerksicherheitsgruppe ab. |
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Erstellt eine Routingtabelle |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Aktualisiert eine Subnetzkonfiguration für ein virtuelles Netzwerk  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Ruft eine Netzwerksicherheitsgruppe ab |
 | [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Fügt einer Netzwerksicherheitsgruppe eine Netzwerksicherheits-Konfigurationsregel hinzu |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle.  |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu |
+| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle  |
 | [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz.  |
 
 ---
@@ -814,7 +814,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks. |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk. |
 
 
@@ -895,7 +895,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 | [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
 | [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks. |
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks |
 | [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk. |
 
 ---
@@ -1063,7 +1063,7 @@ In diesem Teil des Tutorials werden die folgenden PowerShell-Cmdlets verwendet:
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Ruft die Failovergruppen der verwalteten Instanz ab oder listet sie auf.| 
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Ruft die Failovergruppen der verwalteten Instanz ab oder listet sie auf| 
 | [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Führt ein Failover einer Failovergruppe der verwalteten Instanz aus. | 
 
 ---
@@ -1075,7 +1075,7 @@ Bereinigen Sie Ressourcen, indem Sie zuerst die verwaltete Instanz, dann den vir
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Ressourcengruppe. 
-1. Wählen Sie die verwaltete Instanz und dann **Löschen** aus. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus. Dieser Vorgang kann im Hintergrund einige Zeit in Anspruch nehmen. Bis der Vorgang abgeschlossen ist, können Sie den *virtuellen Cluster* oder andere abhängige Ressourcen nicht löschen. Überwachen Sie den Löschvorgang auf der Registerkarte „Aktivität“, um zu bestätigen, dass die verwaltete Instanz gelöscht wurde. 
+1. Wählen Sie die verwaltete(n) Instanz(en) und dann **Löschen** aus. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus. Dieser Vorgang kann im Hintergrund einige Zeit in Anspruch nehmen. Bis der Vorgang abgeschlossen ist, können Sie den *virtuellen Cluster* oder andere abhängige Ressourcen nicht löschen. Überwachen Sie den Löschvorgang auf der Registerkarte „Aktivität“, um zu bestätigen, dass die verwaltete Instanz gelöscht wurde. 
 1. Nachdem die verwaltete Instanz gelöscht wurde, löschen Sie den *virtuellen Cluster*, indem Sie ihn in der Ressourcengruppe auswählen und dann **Löschen** auswählen. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus. 
 1. Löschen Sie alle verbleibenden Ressourcen. Geben Sie `yes` in das Textfeld ein, um zu bestätigen, dass Sie die Ressource löschen möchten, und wählen Sie dann **Löschen** aus. 
 1. Löschen Sie die Ressourcengruppe, indem Sie die Option **Ressourcengruppe löschen** auswählen, geben Sie den Namen der Ressourcengruppe (`myResourceGroup`) ein, und wählen Sie dann **Löschen** aus. 
@@ -1110,27 +1110,27 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Erstellt eine Azure-Ressourcengruppe.  |
 | [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) | Erstellen Sie ein virtuelles Netzwerk.  |
-| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu. | 
+| [Add-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/add-azvirtualnetworksubnetconfig) | Fügt einem virtuellen Netzwerk eine Subnetzkonfiguration hinzu | 
 | [Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) | Ruft ein virtuelles Netzwerk in einer Ressourcengruppe ab | 
-| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab. | 
+| [Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) | Ruft ein Subnetz in einem virtuellen Netzwerk ab | 
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Erstellt eine Netzwerksicherheitsgruppe. | 
-| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Erstellt eine Routingtabelle. |
-| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Aktualisiert eine Subnetzkonfiguration für ein virtuelles Netzwerk.  |
-| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk.  |
-| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Ruft eine Netzwerksicherheitsgruppe ab. |
+| [New-AzRouteTable](/powershell/module/az.network/new-azroutetable) | Erstellt eine Routingtabelle |
+| [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig) | Aktualisiert eine Subnetzkonfiguration für ein virtuelles Netzwerk  |
+| [Set-AzVirtualNetwork](/powershell/module/az.network/set-azvirtualnetwork) | Aktualisiert ein virtuelles Netzwerk  |
+| [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) | Ruft eine Netzwerksicherheitsgruppe ab |
 | [Add-AzNetworkSecurityRuleConfig](/powershell/module/az.network/add-aznetworksecurityruleconfig)| Fügt einer Netzwerksicherheitsgruppe eine Netzwerksicherheits-Konfigurationsregel hinzu |
-| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe.  | 
-| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu. |
-| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle.  |
-| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz.  |
-| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Gibt Informationen zur verwalteten Azure SQL-Datenbank-Instanz zurück. |
+| [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) | Aktualisiert eine Netzwerksicherheitsgruppe  | 
+| [Add-AzRouteConfig](/powershell/module/az.network/add-azrouteconfig) | Fügt einer Routingtabelle Routen hinzu |
+| [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable) | Aktualisiert eine Routingtabelle  |
+| [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) | Erstellt eine verwaltete Azure SQL-Datenbank-Instanz  |
+| [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)| Gibt Informationen zur verwalteten Azure SQL-Datenbank-Instanz zurück |
 | [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) | Erstellt eine öffentliche IP-Adresse.  | 
-| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks. |
-| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk. |
-| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Erstellt eine Verbindung zwischen den beiden Gateways der virtuellen Netzwerke.   |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Erstellt eine neue Failovergruppe für die verwaltete Azure SQL-Datenbank-Instanz.  |
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Ruft die Failovergruppen der verwalteten Instanz ab oder listet sie auf.| 
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Führt ein Failover einer Failovergruppe der verwalteten Instanz aus. | 
+| [New-AzVirtualNetworkGatewayIpConfig](/powershell/module/az.network/new-azvirtualnetworkgatewayipconfig) | Erstellt eine IP-Konfiguration für ein Gateway des virtuellen Netzwerks |
+| [New-AzVirtualNetworkGateway](/powershell/module/az.network/new-azvirtualnetworkgateway) | Erstellt ein Gateway für das virtuelle Netzwerk |
+| [New-AzVirtualNetworkGatewayConnection](/powershell/module/az.network/new-azvirtualnetworkgatewayconnection) | Erstellt eine Verbindung zwischen den beiden Gateways der virtuellen Netzwerke   |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup)| Erstellt eine Failovergruppe für die verwaltete Azure SQL-Datenbank-Instanz  |
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) | Ruft die Failovergruppen der verwalteten Instanz ab oder listet sie auf| 
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) | Führt ein Failover einer Failovergruppe der verwalteten Instanz aus | 
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Entfernt eine Ressourcengruppe. | 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal) 

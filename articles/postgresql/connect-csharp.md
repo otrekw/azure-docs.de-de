@@ -1,5 +1,5 @@
 ---
-title: Verwenden von C# zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver
+title: 'Herstellen einer Verbindung mit C#: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Schnellstart enthält ein C#(.NET)-Codebeispiel, das Sie nutzen können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter
 ms.devlang: csharp
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 546626b1bf655ce6755e0a34ae8d8a85bcf6990f
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 4ac462873d34faa5ffa9d1e1bd873734be88e442
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067336"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767975"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-net-c-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von .NET (C#) zum Herstellen einer Verbindung und Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der C#-Entwicklung vertraut sind und noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 07/05/2019
 ms.author: yinhew
-ms.openlocfilehash: ba0e04d4dadd9d3a4bea41aeb0a66b37f454f030
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fc5d0e0a7f693df87e754383a123dc1cebfdd94c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505275"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818375"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
    [!code-cpp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/cpp/linux/text-to-speech/helloworld.cpp#code)]
 
-1. Ersetzen Sie in dieser neuen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel für die Speech-Dienste.
+1. Ersetzen Sie in dieser neuen Datei die Zeichenfolge `YourSubscriptionKey` durch Ihren Abonnementschlüssel für den Spracherkennungsdienst.
 
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](~/articles/cognitive-services/Speech-Service/regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
    ./helloworld
    ```
 
-1. In dem Konsolenfenster wird eine Eingabeaufforderung angezeigt. Geben Sie einige Wörter oder einen Satz ein. Der eingegebene Text wird an die Speech-Dienste übermittelt und in Sprache synthetisiert, die dann über Ihren Lautsprecher ausgegeben wird.
+1. In dem Konsolenfenster wird eine Eingabeaufforderung angezeigt. Geben Sie einige Wörter oder einen Satz ein. Der eingegebene Text wird an den Speech-Dienst übermittelt und in Sprache synthetisiert, die dann über Ihren Lautsprecher ausgegeben wird.
 
    ```text
    Type some text that you want to speak...

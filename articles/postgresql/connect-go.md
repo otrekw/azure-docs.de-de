@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Go zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver
+title: 'Herstellen einer Verbindung mit Go: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Schnellstart enthält ein Beispiel für die Programmiersprache Go, das Sie nutzen können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 645d34961fb735542729091719dd55c42436db95
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b44759ce4e65e55a3d143fd178764e8ae6e16e89
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244481"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767924"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von Go zum Herstellen einer Verbindung und Abfragen von Daten
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Code in der Sprache [Go](https://golang.org/) (golang) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.

@@ -1,18 +1,18 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Database for MySQL-Servers – Azure-Portal'
+title: 'Schnellstart: Erstellen eines Servers – Azure-Portal – Azure Database for MySQL'
 description: Dieser Artikel führt Sie durch die Verwendung des Azure-Portals, um in etwa fünf Minuten schnell eine Azure-Beispieldatenbank für MySQL-Server zu erstellen.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 04/15/2019
-ms.openlocfilehash: ae19ff5adc220326e32b82bdba676a037e98fabe
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.date: 12/02/2019
+ms.openlocfilehash: 1dfe4840d49983c4ae273c16ae16f6df253d509e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70195133"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770355"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 

@@ -1,23 +1,18 @@
 ---
-title: Automatisieren von Aufgabenworkflows in Visual Studio – Azure Logic Apps
+title: Automatisieren von Aufgabenworkflows in Visual Studio
 description: Erstellen, Planen und Ausführen periodischer Workflows für die Integration in Unternehmen mit Azure Logic Apps und Visual Studio
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-ms.workload: azure-vs
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.manager: carmonm
+ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: e7ce31f489ae274eddb02c1bfb7e57eb486f5851
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796879"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819163"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -196,11 +191,11 @@ Wenn Sie mit Ihrer Logik-App fertig sind, löschen Sie die Ressourcengruppe mit 
 
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) mit demselben Konto an, das Sie zum Erstellen Ihrer Logik-App verwendet haben.
 
-1. Wählen Sie im Azure-Hauptmenü die Option **Ressourcengruppen**. Wählen Sie die Ressourcengruppe Ihrer Logik-App und dann **Übersicht** aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie auf einer beliebigen Seite nach **Ressourcengruppen**, und wählen Sie diese Option anschließend aus. Wählen Sie die Ressourcengruppe Ihrer Logik-App aus.
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Ressourcengruppe löschen** aus. Geben Sie zur Bestätigung den Ressourcengruppennamen ein, und wählen Sie **Löschen** aus.
 
-   ![„Ressourcengruppen“ > „Übersicht“ > „Ressourcengruppe löschen“](./media/quickstart-create-logic-apps-with-visual-studio/delete-resource-group.png)
+   ![„Ressourcengruppen“ > „Übersicht“ > „Ressourcengruppe löschen“](./media/quickstart-create-logic-apps-with-visual-studio/clean-up-resources.png)
 
 1. Löschen Sie die Visual Studio-Projektmappe von Ihrem lokalen Computer.
 

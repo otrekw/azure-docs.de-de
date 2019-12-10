@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 11/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6634920b1efa3cd24267aca8bcf53587754caa66
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 04c4192293cbfa96eefcc1c84083dd54042ebe8f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71239977"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484084"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nützliche Ressourcen für das Arbeiten mit Azure Sentinel
 
@@ -33,6 +33,39 @@ Azure Logic Apps-Connectoren: <https://docs.microsoft.com/connectors/>
 
 ## <a name="auditing-and-reporting"></a>Überwachung und Berichterstellung
 Überwachungsprotokolle von Azure Sentinel werden in [Azure-Aktivitätsprotokollen](../azure-monitor/platform/activity-logs-overview.md) verwaltet.
+
+Die folgenden unterstützten Vorgänge können überwacht werden.
+
+|Vorgangsname|    Ressourcentyp|
+|----|----|
+|Arbeitsmappe erstellen oder aktualisieren  |Microsoft.Insights/workbooks|
+|Arbeitsmappe löschen    |Microsoft.Insights/workbooks|
+|Workflow festlegen   |Microsoft.Logic/workflows|
+|Workflow löschen    |Microsoft.Logic/workflows|
+|Gespeicherte Suche erstellen    |Microsoft.OperationalInsights/workspaces/savedSearches|
+|Gespeicherte Suche löschen    |Microsoft.OperationalInsights/workspaces/savedSearches|
+|Dashboard festlegen  |Microsoft.Portal/dashboards|
+|Dashboard löschen   |Microsoft.Portal/dashboards|
+|Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|
+|Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules|
+|Antwortaktionen für Warnungsregeln aktualisieren |Microsoft.SecurityInsights/alertRules|
+|Antwortaktionen für Warnungsregeln löschen |Microsoft.SecurityInsights/alertRules|
+|Lesezeichen aktualisieren   |Microsoft.SecurityInsights/bookmarks|
+|Lesezeichen löschen   |Microsoft.SecurityInsights/bookmarks|
+|Fälle aktualisieren   |Microsoft.SecurityInsights/Cases|
+|Untersuchung von Fällen aktualisieren  |Microsoft.SecurityInsights/Cases|
+|Kommentare zu Fällen erstellen   |Microsoft.SecurityInsights/Cases|
+|Datenconnectors aktualisieren |Microsoft.SecurityInsights/dataConnectors|
+|Datenconnectors löschen |Microsoft.SecurityInsights/dataConnectors|
+|Einstellungen aktualisieren    |Microsoft.SecurityInsights/settings|
+
+### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Überwachungs- und Berichtserstellungsdaten in Azure Sentinel anzeigen
+
+Sie können diese Daten anzeigen, indem Sie sie aus dem Azure-Aktivitätsprotokoll in Azure Sentinel streamen, wo sie die Daten untersuchen und analysieren können.
+
+1. Stellen Sie eine Verbindung mit der Datenquelle der [Azure-Aktivität](connect-azure-activity.md) her. Anschließend werden Überwachungsereignisse in eine neue Tabelle namens AzureActivity im Bildschirm **Protokolle** gestreamt.
+2. Fragen Sie die Daten dann wie jede andere Tabelle mit KQL ab.
+
 
 
 ## <a name="vendor-documentation"></a>Herstellerdokumentation

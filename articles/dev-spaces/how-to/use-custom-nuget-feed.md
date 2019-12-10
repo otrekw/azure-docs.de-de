@@ -1,8 +1,6 @@
 ---
-title: Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
+title: Verwenden eines benutzerdefinierten NuGet-Feeds
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: zr-msft
 ms.author: zarhoads
 ms.date: 07/17/2019
@@ -10,14 +8,14 @@ ms.topic: conceptual
 description: Verwenden Sie einen benutzerdefinierten NuGet-Feed für den Zugriff auf und die Verwendung von NuGet-Paketen in Azure Dev Spaces.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, Container
 manager: gwallace
-ms.openlocfilehash: 019335cd73e8eaf0ada6897f08c88ef2b8bbf631
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 39984a3b3a1be64a497fb8088559ccfcdee4f1c6
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162805"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325727"
 ---
-#  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Verwenden eines benutzerdefinierten NuGet-Feeds in Azure Dev Spaces
+# <a name="use-a-custom-nuget-feed-with-azure-dev-spaces"></a>Verwenden eines benutzerdefinierten NuGet-Feeds mit Azure Dev Spaces
 
 Ein NuGet-Feed stellt eine einfache Möglichkeit dar, Paketquellen zu einem Projekt hinzuzufügen. Azure Dev Spaces muss auf diesen Feed zugreifen, damit die Abhängigkeiten im Docker-Container korrekt installiert werden.
 

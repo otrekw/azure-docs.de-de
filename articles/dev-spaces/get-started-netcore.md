@@ -5,12 +5,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: 2d863fbb5cb14d3a5e61d7b493bca45f21c597db
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: fa7b4b4dcd1883c7619faa6fcfe014f4fc8c036f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325816"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708576"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-net-core-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und .NET Core mit Azure Dev Spaces
 
@@ -40,9 +40,10 @@ az login
 Führen Sie zum Anzeigen Ihrer Abonnements Folgendes aus: 
 
 ```cmd
-az account list
+az account list --output table
 ```
-Suchen Sie nach dem Abonnement, dessen JSON-Ausgabe `isDefault: true` enthält.
+
+Suchen Sie nach dem Abonnement, bei dem *True* für *IsDefault* angegeben ist.
 Handelt es sich dabei nicht um das Abonnement, das Sie verwenden möchten, können Sie das Standardabonnement wie folgt ändern:
 
 ```cmd

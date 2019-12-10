@@ -10,27 +10,29 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: fdb747212914769b8551d9cd12f1fbc8a01245dc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7fc7edcb37b31022afb989199bd54e55589e1849
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506347"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819334"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie unbedingt die folgenden Schritte aus, bevor Sie beginnen:
+Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=dotnet)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="open-your-project-in-visual-studio"></a>Öffnen Sie Ihr Projekt in Visual Studio.
 
 Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio geöffnet ist.
 
-1. Starten Sie Visual Studio 2019.
+1. Starten Sie Visual Studio 2019.
 2. Laden Sie das Projekt, und öffnen Sie `Program.cs`.
 
 ## <a name="start-with-some-boilerplate-code"></a>Beginnen mit Codebausteinen
@@ -60,12 +62,13 @@ namespace helloworld
 
 ````
 
-## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
+## <a name="create-a-speech-configuration"></a>Erstellen einer Sprachkonfiguration
 
 Bevor Sie ein `SpeechRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, die den Abonnementschlüssel und die Abonnementregion verwendet. Fügen Sie diesen Code in die Methode `RecognizeSpeechAsync()` ein.
 
 > [!NOTE]
 > In diesem Beispiel wird die Methode `FromSubscription()` zum Erstellen von `SpeechConfig` verwendet. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+> Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
 
 ````C#
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
@@ -103,7 +106,7 @@ var result = await recognizer.RecognizeOnceAsync();
 
 ## <a name="display-the-recognition-results-or-errors"></a>Anzeigen der Erkennungsergebnisse (oder Fehler)
 
-Wird das Erkennungsergebnis vom Speech-Dienst zurückgegeben, möchten Sie es verwenden. Zur Vereinfachung wird das Ergebnis in der Konsole ausgegeben.
+Wenn das Erkennungsergebnis vom Speech-Dienst zurückgegeben wird, möchten Sie es natürlich in irgendeiner Form verwenden. Zur Vereinfachung wird das Ergebnis in der Konsole ausgegeben.
 
 Fügen Sie in der using-Anweisung unterhalb von `RecognizeOnceAsync()` den folgenden Code ein:
 ````C#
@@ -194,7 +197,7 @@ namespace helloworld
 
 Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
-1. **Kompilieren des Codes:** Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
+1. **Kompilieren des Codes**: Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
 2. **Starten der App:** Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
 3. **Starten der Erkennung:** Ihre Audiodatei wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole gerendert.
 

@@ -1,18 +1,18 @@
 ---
-title: Übersicht über den relationalen Datenbankdienst Azure Database for MySQL
+title: 'Übersicht: Azure Database for MySQL'
 description: Hier finden Sie Informationen zum Azure Database for MySQL-Dienst, einem relationalen Datenbankdienst in der Microsoft-Cloud, der auf der MySQL Community-Edition basiert.
 author: ajlam
 ms.service: mysql
 ms.author: andrela
 ms.custom: mvc
 ms.topic: overview
-ms.date: 11/25/2019
-ms.openlocfilehash: 680b5e9ef8e7e8ed59d3b502b49fc1b45d016e80
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: b7b29a07e9d56a9b961192352d0bfa13a8986d7a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483522"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775116"
 ---
 # <a name="what-is-azure-database-for-mysql"></a>Was ist Azure-Datenbank für MySQL?
 
@@ -48,7 +48,7 @@ Wie entscheiden Sie, wann Sie nach oben oder nach unten skalieren? Verwenden Sie
 Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die branchenführende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel (SLA) von 99,99 % sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jedem Azure-Datenbank für MySQL-Server nutzen Sie die integrierte Sicherheit, die Fehlertoleranz und die Datensicherheit, die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. Mit Azure-Datenbank für MySQL können Sie über die Point-in-Time-Wiederherstellung den früheren Status eines Servers innerhalb der letzten 35 Tage wiederherstellen.
 
 ## <a name="secure-your-data"></a>Sichern der Daten
-Azure-Datenbank für MySQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/trustcenter/security). Weitere Informationen zu Sicherheitsfeatures für Azure Database for MySQL finden Sie in der [Sicherheitsübersicht](concepts-security.md).
+Azure-Datenbank für MySQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/trustcenter/security). Weitere Informationen zu Sicherheitsfeatures von Azure Database for MySQL finden Sie in der [Übersicht über die Sicherheit](concepts-security.md).
 
 ## <a name="contacts"></a>Kontakte
 Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for MySQL haben, senden Sie eine E-Mail an das zuständige Team ([@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com)). Bei dieser E-Mail-Adresse handelt es sich nicht um einen Alias für den technischen Support.

@@ -1,19 +1,19 @@
 ---
 title: 'Schnellstart: Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode'
-description: Erfahren Sie, wie Sie Ihre Azure Spring Cloud-Anwendung direkt aus dem Quellcode starten.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre Azure Spring Cloud-Anwendung direkt aus dem Quellcode starten.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 7ca80966ccab83991246f0ed7ea35cf2c9524b1d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 6e18ac6c0fa97125b89ea5760a5d7da6c1545393
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721274"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708891"
 ---
-# <a name="launch-your-spring-cloud-application-from-source-code"></a>Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode
+# <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Schnellstart: Starten Ihrer Spring Cloud-Anwendung aus dem Quellcode
 
 Azure Spring Cloud ermöglicht Ihnen die einfache Ausführung von Spring Cloud-basierten Microserviceanwendungen in Azure.
 

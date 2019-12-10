@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9efaeb9d3fe0ec8684f10c58897f5490d0f28cb9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e1ec0dd844dea8cf98621130d6a19b415bda1cf0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74182232"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786485"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit F5
 
@@ -216,7 +216,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Sie müssen das Metadatenzertifikat in F5 importieren. Es wird später bei der Einrichtung benötigt.
 
-1. Navigieren Sie zu **System > Certificate Management > Traffic Certificate Management > SSL Certificate List** (System > Zertifikatverwaltung > Zertifikatverwaltung für Datenverkehr > SSL-Zertifikatliste). Wählen Sie auf der rechten Seite **Import** (Importieren) aus. Geben Sie unter **Certificate Name** (Zertifikatname) einen Zertifikatnamen an. (Auf diesen wird später in der Konfiguration verwiesen.) Wählen Sie unter **Certificate Source** (Zertifikatquelle) die Option „Upload File“ (Datei hochladen) aus, und geben Sie das Zertifikat an, das Sie beim Konfigurieren des einmaligen Anmeldens mit SAML heruntergeladen haben. Klicken Sie auf **Importieren**.
+1. Navigieren Sie zu **System > Certificate Management > Traffic Certificate Management > SSL Certificate List** (System > Zertifikatverwaltung > Zertifikatverwaltung für Datenverkehr > SSL-Zertifikatliste). Wählen Sie auf der rechten Seite **Import** (Importieren) aus. Geben Sie unter **Certificate Name** (Zertifikatname) einen Zertifikatnamen an. (Auf diesen wird später in der Konfiguration verwiesen.) Wählen Sie unter **Certificate Source** (Zertifikatquelle) die Option „Upload File“ (Datei hochladen) aus, und geben Sie das Zertifikat an, das Sie beim Konfigurieren des einmaligen Anmeldens mit SAML heruntergeladen haben. Klicken Sie auf **Importieren**.
 
     ![F5-Konfiguration (Kerberos)](./media/kerbf5-tutorial/configure01.png) 
 
@@ -269,7 +269,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
  
     ![F5-Konfiguration (Kerberos)](./media/kerbf5-tutorial/configure12.png)
 
-1. Klicken Sie nach Abschluss der Anwendungsbereitstellung auf **Finish** (Fertig stellen).
+1. Klicken Sie nach Abschluss der Anwendungskonfiguration auf **Finish** (Fertig stellen).
 
     ![F5-Konfiguration (Kerberos)](./media/kerbf5-tutorial/configure13.png)
 

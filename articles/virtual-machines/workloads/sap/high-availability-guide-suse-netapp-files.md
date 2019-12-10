@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 04/30/2019
+ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 3764ae9ff3a20de6d31f0438b73597933080e372
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8205497262c2c7a500769f32a473d628974220c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791730"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151802"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen
 
@@ -96,7 +96,7 @@ Jetzt ist es möglich, Hochverfügbarkeit für SAP NetWeaver mithilfe von freige
 
 ![Hochverfügbarkeit von SAP NetWeaver – Übersicht](./media/high-availability-guide-suse-anf/high-availability-guide-suse-anf.PNG)
 
-SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) erforderlich. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
+SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenbank verwenden einen virtuellen Hostnamen und virtuelle IP-Adressen. Für die Verwendung einer virtuellen IP-Adresse ist in Azure ein [Lastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) erforderlich. Es wird empfohlen, [Load Balancer Standard](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal) zu verwenden. Die folgende Liste zeigt die Konfiguration des A(SCS)- und ERS-Lastenausgleichs.
 
 > [!IMPORTANT]
 > Multi-SID-Clustering von SAP ASCS/ERS mit SUSE Linux als Gastbetriebssystem auf Azure-VMs wird **NICHT unterstützt**. Als Multi-SID-Clustering wird die Installation mehrerer SAP ASCS/ERS-Instanzen mit verschiedenen SIDs in einem Pacemaker-Cluster beschrieben.
@@ -111,13 +111,15 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 * Testport
   * Port 620<strong>&lt;Nr.&gt;</strong>
 * Lastenausgleichsregeln
-  * 32<strong>&lt;Nr.&gt;</strong> TCP
-  * 36<strong>&lt;Nr.&gt;</strong> TCP
-  * 39<strong>&lt;Nr.&gt;</strong> TCP
-  * 81<strong>&lt;Nr.&gt;</strong> TCP
-  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+  * Wenn Sie Load Balancer Standard verwenden, wählen Sie **HA-Ports** aus.
+  * Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
+    * 32<strong>&lt;Nr.&gt;</strong> TCP
+    * 36<strong>&lt;Nr.&gt;</strong> TCP
+    * 39<strong>&lt;Nr.&gt;</strong> TCP
+    * 81<strong>&lt;Nr.&gt;</strong> TCP
+    * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>16 TCP
 
 ### <a name="ers"></a>ERS
 
@@ -128,11 +130,13 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die SAP HANA-Datenb
 * Testport
   * Port 621<strong>&lt;nr&gt;</strong>
 * Lastenausgleichsregeln
-  * 32<strong>&lt;Nr.&gt;</strong> TCP
-  * 33<strong>&lt;Nr.&gt;</strong> TCP
-  * 5<strong>&lt;Nr.&gt;</strong>13 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>14 TCP
-  * 5<strong>&lt;Nr.&gt;</strong>16 TCP
+  * Wenn Sie Load Balancer Standard verwenden, wählen Sie **HA-Ports** aus.
+  * Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
+    * 32<strong>&lt;Nr.&gt;</strong> TCP
+    * 33<strong>&lt;Nr.&gt;</strong> TCP
+    * 5<strong>&lt;Nr.&gt;</strong>13 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>14 TCP
+    * 5<strong>&lt;Nr.&gt;</strong>16 TCP
 
 ## <a name="setting-up-the-azure-netapp-files-infrastructure"></a>Einrichten der Infrastruktur für Azure NetApp Files 
 
@@ -168,11 +172,10 @@ In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisys
 
 Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetWeaver unter SUSE in Betracht ziehen, beziehen Sie die folgenden wichtigen Überlegungen mit ein:
 
-- Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Größe des Kapazitätspools muss ein Vielfaches von 4 TiB sein.
+- Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Größe des Kapazitätspools kann in 1-TiB-Inkrementen erhöht werden.
 - Das kleinste Volume ist 100 GiB groß.
 - Azure NetApp Files und alle virtuellen Computer, auf denen Azure NetApp Files-Volumes eingebunden werden sollen, müssen sich im selben virtuellen Azure-Netzwerk oder in [über Peering gekoppelten virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in derselben Region befinden. Azure NetApp Files-Zugriff über VNET-Peering in derselben Region wird jetzt unterstützt. Azure NetApp-Zugriff über globales Peering wird noch nicht unterstützt.
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
-- Derzeit unterstützt Azure NetApp Files nur NFSv3. 
 - Azure NetApp Files bietet [Exportrichtlinien](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
 - Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen. 
 
@@ -207,7 +210,42 @@ In diesem Beispiel wurden die Ressourcen manuell über das [Azure-Portal](https:
 
 Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs bereit. Anschließend erstellen Sie einen Lastenausgleich und verwenden die virtuellen Computer in den Back-End-Pools.
 
-1. Erstellen Sie einen Load Balancer (intern)  
+1. Erstellen Sie einen Lastenausgleich (intern, Standard):  
+   1. Erstellen der Front-End-IP-Adressen
+      1. IP-Adresse 10.1.1.20 für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z. B. **frontend.QAS.ASCS**).
+         1. Legen Sie „Zuweisung“ auf „Statisch“ fest, und geben Sie die IP-Adresse ein (z. B. **10.1.1.20**).
+         1. OK klicken
+      1. IP-Adresse 10.1.1.21 für ASCS ERS
+         * Wiederholen Sie die oben unter „a“ angegebenen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.1.1.21** und **frontend.QAS.ERS**).
+   1. Erstellen der Back-End-Pools
+      1. Erstellen eines Back-End-Pools für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Back-End-Pools ein (z. B. **backend.QAS**).
+         1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
+         1. Wählen Sie „Virtueller Computer“ aus.
+         1. Wählen Sie die virtuellen Computer des (A)SCS-Clusters mit ihren IP-Adressen aus.
+         1. Klicken Sie auf "Hinzufügen".
+   1. Erstellen der Integritätstests
+      1. Port 620**00** für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen des neuen Integritätstests ein (z. B. **health.QAS.ASCS**).
+         1. Wählen Sie TCP als Protokoll und Port 620**00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
+         1. OK klicken
+      1. Port 621**01** für ASCS ERS
+            * Wiederholen Sie die oben unter „c“ angegebenen Schritte, um einen Integritätstest für ERS zu erstellen (z. B. 621**01** und **health.QAS.ERS**).
+   1. Lastenausgleichsregeln
+      1. Erstellen eines Back-End-Pools für ASCS
+         1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **lb.QAS.ASCS**).
+         1. Wählen Sie die Front-End-IP-Adresse für ASCS, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **frontend.QAS.ASCS**, **backend.QAS** und **health.QAS.ASCS**).
+         1. Wählen Sie **HA-Ports** aus.
+         1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
+         1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
+         1. OK klicken
+         * Wiederholen Sie die oben angegebenen Schritte, um Lastenausgleichsregeln für ERS zu erstellen (z. B. **lb.QAS.ERS**).
+1. Wenn Ihr Szenario einen grundlegenden Lastenausgleich (intern) erfordert, führen Sie stattdessen die folgenden Schritte aus:  
    1. Erstellen der Front-End-IP-Adressen
       1. IP-Adresse 10.1.1.20 für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
@@ -245,6 +283,9 @@ Zuerst müssen Sie die Azure NetApp Files-Volumes erstellen. Stellen Sie die VMs
          * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 36**00**, 39**00**, 81**00**, 5**00**13, 5**00**14, 5**00**16 und „TCP“ für ASCS.
       1. Zusätzliche Ports für ASCS ERS
          * Wiederholen Sie die oben unter „d“ angegebenen Schritte für die Ports 33**01**, 5**01**13, 5**01**14, 5**01**16 und „TCP“ für ASCS ERS.
+
+> [!Note]
+> Wenn virtuelle Computer ohne öffentliche IP-Adressen im Back-End-Pool einer internen Azure Load Balancer Standard-Instanz (ohne öffentliche IP-Adresse) platziert werden, liegt keine ausgehende Internetverbindung vor, sofern nicht in einer zusätzlichen Konfiguration das Routing an öffentliche Endpunkte zugelassen wird. Ausführliche Informationen zum Erreichen ausgehender Konnektivität finden Sie unter [Public endpoint connectivity for Virtual Machines using Azure Standard Load Balancer in SAP high-availability scenarios](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections) (Konnektivität mit öffentlichen Endpunkten für virtuelle Computer mithilfe von Azure Load Balancer Standard in SAP-Szenarien mit Hochverfügbarkeit).  
 
 > [!IMPORTANT]
 > Aktivieren Sie keine TCP-Zeitstempel auf Azure-VMs hinter Azure Load Balancer. Das Aktivieren von TCP-Zeitstempeln bewirkt, dass bei Integritätstests Fehler auftreten. Legen Sie den Parameter **net.ipv4.tcp_timestamps** auf **0** fest. Ausführliche Informationen finden Sie unter [Lastenausgleichs-Integritätstests](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview).
@@ -361,7 +402,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    </code></pre>
    
    > [!NOTE]
-   > Derzeit unterstützt Azure NetApp Files nur NFSv3. Lassen Sie den Schalter „nfsvers=3“ nicht aus.
+   > Stellen Sie sicher, dass Sie beim Einbinden der Volumes die NFS-Protokollversion der Azure NetApp Files-Volumes verwenden. In diesem Beispiel wurden die Azure NetApp Files-Volumes als NFSv3-Volumes erstellt.  
    
    Starten Sie `autofs` neu, um die neuen Freigaben einzubinden.
     <pre><code>

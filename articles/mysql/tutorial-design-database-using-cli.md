@@ -1,19 +1,19 @@
 ---
-title: 'Tutorial: Entwerfen einer Azure Database for MySQL-Instanz mithilfe der Azure CLI'
+title: 'Tutorial: Entwerfen eines Servers – Azure CLI – Azure Database for MySQL'
 description: In diesem Tutorial wird das Erstellen und Verwalten des Servers und der Datenbank für Azure Database for MySQL mithilfe der Azure CLI über die Befehlszeile erläutert.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 04/29/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 00c2efacab72c08d33b0004650bece2c369c757b
-ms.sourcegitcommit: c53a800d6c2e5baad800c1247dce94bdbf2ad324
+ms.openlocfilehash: 00beae5a65e61f814d3498dbb41af02aaf0287fb
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2019
-ms.locfileid: "64935997"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771211"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for MySQL-Instanz mithilfe der Azure CLI
 

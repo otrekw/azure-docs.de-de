@@ -1,21 +1,15 @@
 ---
-title: Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks| Microsoft-Dokumentation
+title: Verwenden von Azure Functions zum Ausführen eines Datenbank-Bereinigungstasks
 description: Verwenden Sie Azure Functions, um eine Aufgabe zu planen, die eine Verbindung mit Azure SQL-Datenbank herstellt, um regelmäßig Zeilen zu bereinigen.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: glenga
-ms.openlocfilehash: 469e0149a3b9dce22f0590240a053ee3b183c7b9
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: f70b5b83561e7c580dd7192850c8eb50be5aac0a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815976"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230379"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
 

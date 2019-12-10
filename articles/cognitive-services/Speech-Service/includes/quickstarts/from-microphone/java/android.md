@@ -10,20 +10,21 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: wolfma
-ms.openlocfilehash: f0d9a4d2a86b13d5e2d37a900f27d2977f63de14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e492381c4ab2f7ab41b5363ed70f9c5c6b12ce99
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505779"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818993"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie unbedingt die folgenden Schritte aus, bevor Sie beginnen:
+Bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=android)
+> * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 
 ## <a name="create-a-user-interface"></a>Erstellen einer Benutzeroberfläche
 
@@ -71,7 +72,7 @@ Der Text und die grafische Darstellung Ihrer Benutzeroberfläche sollten jetzt e
 
    ![Screenshot des Fensters „Bereitstellungsziel auswählen“](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-12-deploy.png)
 
-Wählen Sie die Schaltfläche in der Anwendung aus, um einen Spracherkennungsabschnitt zu beginnen. Die nächsten 15 Sekunden gesprochene englische Sprache werden an die Speech-Dienste gesendet und transkribiert. Das Ergebnis wird in der Android-Anwendung und im logcat-Fenster in Android Studio angezeigt.
+Wählen Sie die Schaltfläche in der Anwendung aus, um einen Spracherkennungsabschnitt zu beginnen. Die nächsten 15 Sekunden gesprochene englische Sprache werden an den Spracherkennungsdienst gesendet und transkribiert. Das Ergebnis wird in der Android-Anwendung und im logcat-Fenster in Android Studio angezeigt.
 
 ![Screenshot der Android-Anwendung](~/articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-13-gui-on-device.png)
 

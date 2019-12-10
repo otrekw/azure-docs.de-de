@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: faf3573178693ec806000eb89ce7a975955d61b9
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4d3c74db9a0c4e13ee7c17eb78552d8c11cd7afb
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084122"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422504"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Datenbankserver
 
@@ -102,8 +102,6 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-
-
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage
 
 In Azure Storage ist dasselbe Feature implementiert, mit dem Sie die Konnektivität mit Ihrem Azure Storage-Konto beschränken können. Wenn Sie dieses Feature mit einem Azure Storage-Konto verwenden, das von Azure SQL Server verwendet wird, können Probleme auftreten. Im Folgenden finden Sie eine Liste mit Erläuterungen der Features von Azure SQL-Datenbank und Azure SQL Data Warehouse, die hiervon betroffen sind.
@@ -114,25 +112,24 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
 
 #### <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+- Installieren Sie Azure PowerShell anhand [dieses Leitfadens](https://docs.microsoft.com/powershell/azure/install-az-ps).
+- Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das Upgrade auf Version 2 des universellen Speicherkontos durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
+- Im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos muss die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein. Weitere Informationen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul wird mindestens bis Dezember 2020 Fehlerbehebungen erhalten.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie unter [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
-1.  Installieren Sie Azure PowerShell anhand [dieses Leitfadens](https://docs.microsoft.com/powershell/azure/install-az-ps).
-2.  Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das Upgrade auf Version 2 des universellen Speicherkontos durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
-3.  Im Einstellungsmenü **Firewalls und virtuelle Netzwerke** des Azure Storage-Kontos muss die Option **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben** aktiviert sein. Weitere Informationen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
- 
 #### <a name="steps"></a>Schritte
+
 1. **Registrieren Sie Ihre Azure-SQL Server-Instanz**, die Ihre Azure SQL Data Warehouse-Instanz hostet, in PowerShell bei Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
-   Select-AzSubscription -SubscriptionId your-subscriptionId
+   Select-AzSubscription -SubscriptionId <subscriptionId>
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
-    
-   1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“** , indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) verwenden.
+
+1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“** , indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) verwenden.
 
    > [!NOTE]
    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) verwenden.
@@ -140,35 +137,38 @@ PolyBase wird häufig verwendet, um Daten aus Azure Storage-Konten in Azure SQL 
     
 1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und klicken Sie auf **Rollenzuweisung hinzufügen**. Weisen Sie Ihrer Azure-SQL Server-Instanz, auf der Ihre mit Azure Active Directory (AAD) registrierte Azure SQL Data Warehouse-Instanz gehostet wird, die RBAC-Rolle **Mitwirkender an Storage-Blobdaten** zu, wie in Schritt 1.
 
-   > [!NOTE] 
+   > [!NOTE]
    > Nur Mitglieder mit der Berechtigung „Besitzer“ können diesen Schritt ausführen. Verschiedene integrierte Rollen für Azure-Ressourcen finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **PolyBase-Konnektivität mit dem Azure Storage-Konto:**
 
    1. Erstellen Sie einen **[Masterschlüssel](https://docs.microsoft.com/sql/t-sql/statements/create-master-key-transact-sql)** für die Datenbank, falls Sie dies noch nicht durchgeführt haben:
-       ```SQL
+
+       ```sql
        CREATE MASTER KEY [ENCRYPTION BY PASSWORD = 'somepassword'];
        ```
-    
+
    1. Erstellen Sie mit **IDENTITY = 'Managed Service Identity'** datenbankweit gültige Anmeldeinformationen:
 
-       ```SQL
+       ```sql
        CREATE DATABASE SCOPED CREDENTIAL msi_cred WITH IDENTITY = 'Managed Service Identity';
        ```
-       > [!NOTE] 
+
+       > [!NOTE]
        > - Es ist nicht erforderlich, für den Azure Storage-Zugriffsschlüssel den Zusatz SECRET anzugeben, da bei diesem Vorgang die [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) im Hintergrund verwendet wird.
-       > - Der IDENTITY-Name sollte **'Managed Service Identity'** lauten, damit die PolyBase-Konnektivität mit dem im VNET gesicherten Azure Storage-Konto funktioniert.    
-    
+       > - Der IDENTITY-Name sollte **'Managed Service Identity'** lauten, damit die PolyBase-Konnektivität mit dem im VNET gesicherten Azure Storage-Konto funktioniert.
+
    1. Erstellen Sie mit dem Schema „abfss://“ eine externe Datenquelle für die Verbindungsherstellung mit Ihrem Speicherkonto vom Typ „Universell v2“, indem Sie PolyBase verwenden:
 
        ```SQL
        CREATE EXTERNAL DATA SOURCE ext_datasource_with_abfss WITH (TYPE = hadoop, LOCATION = 'abfss://myfile@mystorageaccount.dfs.core.windows.net', CREDENTIAL = msi_cred);
        ```
-       > [!NOTE] 
+
+       > [!NOTE]
        > - Falls dem Speicherkonto vom Typ „Universell v1“ oder dem Blobspeicherkonto bereits externe Tabellen zugeordnet sind, sollten Sie zuerst diese externen Tabellen und dann die entsprechende externe Datenquelle verwerfen. Erstellen Sie anschließend mit dem Schema „abfss://“ eine externe Datenquelle, um wie oben die Verbindung mit dem Speicherkonto vom Typ „Universell v2“ herzustellen, und erstellen Sie dann alle externen Tabellen neu, indem Sie diese neue externe Datenquelle verwenden. Sie können den [Assistenten zum Generieren und Veröffentlichen von Skripts](https://docs.microsoft.com/sql/ssms/scripting/generate-and-publish-scripts-wizard) verwenden, um auf einfache Weise Erstellungsskripts für alle externen Tabellen zu generieren.
        > - Weitere Informationen zum Schema „abfss://“ finden Sie in [diesem Leitfaden](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction-abfs-uri).
        > - Weitere Informationen zu CREATE EXTERNAL DATA SOURCE finden Sie in [diesem Leitfaden](https://docs.microsoft.com/sql/t-sql/statements/create-external-data-source-transact-sql).
-        
+
    1. Führen Sie Abfragen wie gewohnt durch, indem Sie [externe Tabellen](https://docs.microsoft.com/sql/t-sql/statements/create-external-table-transact-sql) verwenden.
 
 ### <a name="azure-sql-database-blob-auditing"></a>Azure SQL-Datenbank – Blobüberwachung
@@ -216,7 +216,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie im [Azure-Portal][http-azure-p
 
 ## <a name="powershell-alternative"></a>PowerShell-Alternative
 
-VNET-Regeln können auch mit einem PowerShell-Skript erstellt werden. Dazu dient das Cmdlet **New-AzSqlServerVirtualNetworkRule**. Lesen Sie bei Interesse [Verwenden von PowerShell zum Erstellen eines VNET-Dienstendpunkts und einer Regel für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Mit einem Skript können Sie auch Regeln für virtuelle Netzwerke mithilfe des PowerShell-Cmdlets **New-AzSqlServerVirtualNetworkRule** oder [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) erstellen. Lesen Sie bei Interesse [Verwenden von PowerShell zum Erstellen eines VNET-Dienstendpunkts und einer Regel für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>REST-API-Alternative
 
@@ -284,44 +284,28 @@ Das Feature für VNET-Regeln für Azure SQL-Datenbank wurde Ende September 2017 
 - [VNET-Regeln: Vorgänge][rest-api-virtual-network-rules-operations-862r] mit REST-APIs
 
 <!-- Link references, to images. -->
-
 [image-portal-firewall-vnet-add-existing-10-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-add-existing-10.png
-
 [image-portal-firewall-create-update-vnet-rule-20-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-create-update-vnet-rule-20.png
-
 [image-portal-firewall-vnet-result-rule-30-png]: media/sql-database-vnet-service-endpoint-rule-overview/portal-firewall-vnet-result-rule-30.png
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-
 [arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
-
 [expressroute-indexmd-744v]: ../expressroute/index.yml
-
 [rbac-what-is-813s]:../role-based-access-control/overview.md
-
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
-
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
-
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]: sql-database-vnet-service-endpoint-rule-powershell.md#a-verify-subnet-is-endpoint-ps-100
-
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
-
 [vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
-
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.yml
 
 <!-- Link references, to text, Outside this GitHub repo (HTTP). -->
-
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
-
 [rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
 
 <!-- ??2
 #### Syntax related articles
 - REST API Reference, including JSON
-
 - Azure CLI
-
 - ARM templates
 -->

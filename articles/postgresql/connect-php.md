@@ -1,5 +1,5 @@
 ---
-title: Verwenden von PHP zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver
+title: 'Herstellen einer Verbindung mit PHP: Azure Database for PostgreSQL-Einzelserver'
 description: Dieser Schnellstart enthält ein PHP-Codebeispiel, das Sie nutzen können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 2/28/2018
-ms.openlocfilehash: c6320eabd4d5808e8cfe1d39ec4a72bbbce42f77
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: 6e453201eb499f65ee7f3b8c17cbf0e5127182b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65067348"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766377"
 ---
 # <a name="azure-database-for-postgresql---single-server-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL-Einzelserver: Verwenden von PHP zum Herstellen einer Verbindung und Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer [PHP](https://secure.php.net/manual/intro-whatis.php)-Anwendung eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass Sie mit der PHP-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for PostgreSQL haben.

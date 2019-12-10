@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c9aa4200dc217e9c79290ca91b03810f0769bdc2
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 49aac37d298a1d2cd52e815ae6fa5e08e6cc80c2
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280450"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816170"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,6 +43,7 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 Damit Sie ein `IntentRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, in der Ihr LUIS-Endpunktschlüssel und Ihre Region verwendet werden. Fügen Sie den Code unter „Main“ in den Block „try/catch“ ein.
 
 In diesem Beispiel wird die Methode `FromSubscription()` zum Erstellen von `SpeechConfig` verwendet. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
+Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
 
 > [!NOTE]
 > Sie dürfen weder den Start- noch den Erstellungsschlüssel, sondern müssen den LUIS-Endpunktschlüssel verwenden, da nur der Endpunktschlüssel für die Erkennung vom Typ „Sprache-Absichts-Umsetzung“ zulässig ist. Eine Anleitung zum Abrufen des richtigen Schlüssels finden Sie unter [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md).

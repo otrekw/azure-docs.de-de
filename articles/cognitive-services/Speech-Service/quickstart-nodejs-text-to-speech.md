@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 72be99ec666bb9e04ffca6e14ab4fcafa889ae68
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1bfd9f53c54ac8ed374f11da188f2fade715cdfa
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68553932"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812826"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Schnellstart: Konvertieren von Text in Sprache mit Node.js
 
@@ -29,7 +29,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [Node 8.12.x oder höher](https://nodejs.org/en/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für die Speech-Dienste. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
+* Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-project-and-require-dependencies"></a>Erstellen eines Projekts und der erforderlichen Abhängigkeiten
 
@@ -52,9 +52,9 @@ const xmlbuilder = require('xmlbuilder');
 
 ## <a name="get-an-access-token"></a>Abrufen eines Zugriffstokens
 
-Alle Anforderungen an die Text-to-Speech-REST-API erfordern ein Zugriffstoken für die Authentifizierung. Um ein Zugriffstoken anzufordern, ist ein Austausch erforderlich. In dieser Funktion wird Ihr Abonnementschlüssel für den Speech-Dienst unter Verwendung des `issueToken`-Endpunkts gegen ein Zugriffstoken ausgetauscht.
+Alle Anforderungen an die Text-to-Speech-REST-API erfordern ein Zugriffstoken für die Authentifizierung. Um ein Zugriffstoken anzufordern, ist ein Austausch erforderlich. In dieser Funktion wird Ihr Abonnementschlüssel für den Speech-Dienst unter Verwendung des `issueToken`-Endpunkts gegen ein Zugriffstoken getauscht.
 
-In diesem Beispiel wird vorausgesetzt, dass Ihr Abonnement für den Speech-Dienst in der Region „USA, Westen“ enthalten ist. Wenn Sie eine andere Region verwenden, aktualisieren Sie den Wert für `uri`. Eine vollständige Liste finden Sie unter [Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+In diesem Beispiel wird vorausgesetzt, dass für Ihr Abonnement für den Speech-Dienst die Region „USA, Westen“ festgelegt ist. Wenn Sie eine andere Region verwenden, aktualisieren Sie den Wert für `uri`. Eine vollständige Liste finden Sie unter [Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
@@ -79,7 +79,7 @@ Im nächsten Abschnitt erstellen wir die Funktion zum Aufrufen der Text-to-Speec
 
 ## <a name="make-a-request-and-save-the-response"></a>Senden der Anforderung und Speichern der Antwort
 
-Hier erstellen Sie die Anforderung an die Text-to-Speech-API und speichern die Sprachantwort. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `uri` aktualisieren. Weitere Informationen finden Sie unter [Sprachdienstregionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Hier erstellen Sie die Anforderung an die Text-to-Speech-API und speichern die Sprachantwort. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `uri` aktualisieren. Weitere Informationen finden Sie unter [Vom Speech-Dienst unterstützte Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Als Nächstes müssen Sie erforderliche Header für die Anforderung hinzufügen. Stellen Sie sicher, dass Sie `User-Agent` mit dem Namen Ihrer Ressourcengruppe aktualisieren (befindet sich im Azure-Portal), und `X-Microsoft-OutputFormat` auf Ihre bevorzugte Audioausgabe festlegen. Eine vollständige Liste der Ausgabeformate finden Sie unter [Audioausgaben](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 

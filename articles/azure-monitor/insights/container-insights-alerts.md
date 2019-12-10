@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555448"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195015"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Einrichten von Warnungen für Leistungsprobleme in Azure Monitor für Container
 Azure Monitor für Container überwacht die Leistung von Containerworkloads, die in Azure Container Instances oder in Managed Kubernetes-Clustern bereitgestellt sind, die im Azure Kubernetes Service (AKS) gehostet werden.
@@ -308,4 +308,4 @@ Führen Sie die folgenden Schritte aus, um eine Protokollwarnung in Azure Monito
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sehen Sie sich die [Beispiele zu Protokollabfragen](container-insights-log-search.md#search-logs-to-analyze-data) an, die auch vordefinierte Abfragen enthalten. Mit diesen Materialien können Sie Auswertungen von bzw. Anpassungen für Warnungen, Visualisierungen und Analysen von Clustern vornehmen.
-- Weitere Informationen zu Azure Monitor und zum Überwachen anderer Aspekte Ihres AKS-Clusters finden Sie unter [Anzeigen der Azure Kubernetes Service-Integrität](container-insights-analyze.md).
+- Weitere Informationen zu Azure Monitor und darüber, wie Sie andere Aspekte Ihres Kubernetes-Clusters überwachen können, finden Sie unter [Überwachen der Leistung von Kubernetes-Clustern](container-insights-analyze.md) und [Überwachen der Integrität von Kubernetes-Clustern](container-insights-health.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei, C++ (Windows) – Spracherkennungsdienst'
+title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei, C++ (Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 0f166fedd1044ba3b7076f3fb7eb14becbc1272b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 024e6121e950ba27cf18b65434d712af80d1ec17
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505139"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817794"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 

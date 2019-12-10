@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 7/29/2019
+ms.date: 11/25/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2aa7926286be277c7ad0aa7054b4bd6fceb8229f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b2a9a7b0b759f5853d83a4b1999887414fd5f430
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685400"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483216"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problembehandlung bei Azure SQL Data Warehouse
 Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
@@ -41,6 +41,7 @@ Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Behandlung von Problemen mit der Abfrageleistung                            | Wenn Sie die Problembehandlung für eine bestimmte Abfrage durchführen möchten, sollten Sie sich zunächst über das [Untersuchen der Ausführung von Abfragen][Learning how to monitor your queries]informieren. |
+| TempDB-Speicherplatzprobleme | [Überwachen Sie die Speicherauslastung von TempDB.](sql-data-warehouse-manage-monitor.md#monitor-tempdb)  Häufige Ursachen für unzureichenden TempDB-Speicherplatz:<br>- Der Abfrage sind keine ausreichenden Ressourcen zugeordnet, wodurch ein Überlauf der Daten in TempDB stattfindet.  Siehe [Workloadverwaltung](resource-classes-for-workload-management.md). <br>- Fehlende oder veraltete Statistik, wodurch übermäßige Datenverschiebungen stattfinden.  Ausführliche Informationen zum Erstellen von Statistiken finden Sie unter [Tabellenstatistik in Azure SQL Data Warehouse][Statistics].<br>- Der TempDB-Speicherplatz wird nach Dienstebene zugeordnet.  [Skalieren Sie Ihr SQL Data Warehouse][Scaling your SQL Data Warehouse] auf eine höhere DWU-Einstellung, um mehr TempDB-Speicherplatz zuzuordnen.|
 | Schlechte Abfrageleistung und Planung ist häufig das Ergebnis fehlender Statistiken | Die häufigste Ursache für schlechte Leistung ist das Fehlen von Statistiken für Ihre Tabellen.  Ausführliche Informationen dazu, wie Sie Statistiken erstellen und warum sie für die Leistung wichtig sind, finden Sie unter [Tabellenstatistik in Azure SQL Data Warehouse][Statistics]. |
 | Geringe Parallelität/Abfragen in der Warteschlange                             | Das Verständnis der [Workloadverwaltung][Workload management] ist wichtig, damit Sie wissen, wie Sie die Speicherbelegung und die Parallelität abwägen sollen. |
 | Implementieren von bewährten Methoden                              | Wenn Sie die Leistung bei Ihren Abfragen verbessern möchten, ist der Artikel [Bewährte Methoden für SQL Data Warehouse][SQL Data Warehouse best practices] ein idealer Ausgangspunkt. |

@@ -1,26 +1,17 @@
 ---
-title: 'ASP.NET Core mit SQL-Datenbank unter Linux: Azure App Service | Microsoft-Dokumentation'
-description: Informationen zum Ausführen einer ASP.NET Core-App in Azure App Service für Linux mit einer Verbindung mit einer SQL-Datenbank.
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Tutorial: ASP.NET Core unter Linux mit SQL-Datenbank'
+description: Hier erfahren Sie, wie Sie eine datengesteuerte Linux-ASP.NET Core-App in Azure App Service ausführen, die mit einer SQL-Datenbank verbunden ist.
 ms.assetid: 0b4d7d0e-e984-49a1-a57a-3c0caa955f0e
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 532c6a45351f872260ea9383adaacacd486b9d9a
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 67ea11b2e1457bf4a788f54664ed54ff7ca9c8d9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532721"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688921"
 ---
 # <a name="build-an-aspnet-core-and-sql-database-app-in-azure-app-service-on-linux"></a>Erstellen einer ASP.NET Core- und SQL-Datenbank-App in Azure App Service für Linux
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63176c325fd42c46e988ab3798f46089a43e70bf
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 80d356426fe312708d64cc4284dbb1fd925e47c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326787"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233326"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -75,7 +75,7 @@ In diesem Abschnitt wird die Lösungsarchitektur der End-to-End-Benutzerbereitst
 
 1. Das Team der Personalabteilung führt Mitarbeitertransaktionen (Einstellungen/Wechsel/Kündigungen) in Workday HCM aus.
 2. Der Azure AD-Bereitstellungsdienst führt geplante Synchronisierungen von Identitäten aus Workday HR aus und ermittelt Änderungen, die für eine Synchronisierung mit dem lokalen Active Directory verarbeitet werden müssen.
-3. Der Azure AD-Bereitstellungsdienst ruft den lokalen AAD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, die die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das AD-Konto enthält.
+3. Der Azure AD-Bereitstellungsdienst ruft den lokalen Azure AD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, die die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das AD-Konto enthält.
 4. Der Azure AD Connect-Bereitstellungs-Agent verwendet ein Dienstkonto zum Hinzufügen/Aktualisieren von AD-Kontodaten.
 5. Die Azure AD Connect-/AAD Sync-Engine führt eine Deltasynchronisierung aus, um Updates in Active Directory zu pullen.
 6. Die Active Directory-Updates werden mit Azure Active Directory synchronisiert.
@@ -108,11 +108,11 @@ Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits ü
 
 Um Bereitstellungsworkflows für Workday und Active Directory zu ermöglichen, bietet Azure AD mehrere Bereitstellungsconnector-Apps, die über den Azure AD-App-Katalog hinzugefügt werden können:
 
-![AAD-App-Katalog](./media/workday-inbound-tutorial/wd_gallery.png)
+![Azure AD-Anwendungskatalog](./media/workday-inbound-tutorial/wd_gallery.png)
 
 * **Workday to Active Directory User Provisioning:** Diese App vereinfacht die Bereitstellung von Benutzerkonten aus Workday in eine einzelne Active Directory-Domäne. Wenn Sie über mehrere Domänen verfügen, können Sie eine Instanz dieser App aus dem Azure AD-App-Katalog für jede Active Directory-Domäne hinzufügen, in der die Bereitstellung erfolgen soll.
 
-* **Workday to Azure AD User Provisioning**: Wenngleich AAD Connect das Tool ist, das Sie zum Synchronisieren von Active Directory-Benutzern mit Azure Active Directory verwenden sollten, können Sie auch diese App nutzen, um die Bereitstellung reiner Cloudbenutzer aus Workday in einem einzelnen Azure Active Directory-Mandanten zu erleichtern.
+* **Workday to Azure AD User Provisioning**: Wenngleich Azure AD Connect das Tool ist, das Sie zum Synchronisieren von Active Directory-Benutzern mit Azure Active Directory verwenden sollten, können Sie auch diese App nutzen, um die Bereitstellung reiner Cloudbenutzer aus Workday in einem einzelnen Azure Active Directory-Mandanten zu erleichtern.
 
 * **Workday Writeback:** Diese App vereinfacht das Zurückschreiben von E-Mail-Adressen von Benutzern aus Azure Active Directory in Workday.
 
@@ -120,7 +120,7 @@ Um Bereitstellungsworkflows für Workday und Active Directory zu ermöglichen, b
 > Die reguläre „Workday“-App dient zum Einrichten des einmaligen Anmeldens zwischen Workday und Azure Active Directory.
 
 Verwenden Sie das untenstehende Entscheidungsflussdiagramm, um zu ermitteln, welche Workday-Bereitstellungs-App für Ihr Szenario relevant sind.
-    ![Entscheidungsflussdiagramm](./media/workday-inbound-tutorial/wday_app_flowchart.png "Entscheidungsflussdiagramm")
+    ![Entscheidungsflussdiagramm](./media/workday-inbound-tutorial/wday_app_flowchart.png "DecisEntscheidungsflussdiagramm“)
 
 Über das Inhaltsverzeichnis können Sie den relevanten Abschnitt aus diesem Tutorial aufrufen.
 
@@ -379,7 +379,7 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
    
 1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
 
-   ![Azure AD verbinden](./media/workday-inbound-tutorial/pa_install_screen_2.png "Azure AD verbinden")
+   ![Herstellen einer Verbindung mit Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Herstellen einer Verbindung mit Azure AD")
    
 1. Authentifizieren Sie Ihre Azure AD-Instanz mit den Anmeldeinformationen eines globalen Administrators.
 
@@ -414,7 +414,7 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
    
 1. Nach der erfolgreichen Agent-Registrierung können Sie auf **Beenden** klicken, um den Assistenten zu beenden.
   
-   ![Abschlussbildschirm](./media/workday-inbound-tutorial/pa_install_screen_9.png "Abschlussbildschirm")
+   ![Beendigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_9.png "Beendigungsbildschirm")
    
 1. Überprüfen Sie die Installation des Agents, und stellen Sie sicher, dass er ausgeführt wird, indem Sie das Snap-In „Dienste“ öffnen und nach dem Dienst mit der Bezeichnung „Microsoft Azure AD Connect Provisioning Agent“ suchen.
   
@@ -753,7 +753,7 @@ Nachdem die Konfiguration der Workday-Bereitstellungs-App abgeschlossen ist, kö
   * [Wie lautet die allgemein verfügbare Version des Bereitstellungs-Agents?](#what-is-the-ga-version-of-the-provisioning-agent)
   * [Wie kann ich die Version meines Bereitstellungs-Agents ermitteln?](#how-do-i-know-the-version-of-my-provisioning-agent)
   * [Überträgt Microsoft automatisch Updates des Bereitstellungs-Agents per Push?](#does-microsoft-automatically-push-provisioning-agent-updates)
-  * [Kann ich den Bereitstellungs-Agent auf demselben Server installieren, auf dem AAD Connect ausgeführt wird?](#can-i-install-the-provisioning-agent-on-the-same-server-running-aad-connect)
+  * [Kann ich den Bereitstellungs-Agent auf demselben Server installieren, auf dem Azure AD Connect ausgeführt wird?](#can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect)
   * [Wie konfiguriere ich den Bereitstellungs-Agent, damit dieser einen Proxyserver für die ausgehende HTTP-Kommunikation verwendet?](#how-do-i-configure-the-provisioning-agent-to-use-a-proxy-server-for-outbound-http-communication)
   * [Wie stelle ich sicher, dass der Bereitstellungs-Agent mit dem Azure AD-Mandanten kommunizieren kann, und dass keine Firewalls die vom Agenten benötigten Ports blockieren?](#how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent)
   * [Wie hebe ich die Registrierung der meinem Bereitstellungs-Agent zugeordneten Domäne wieder auf?](#how-do-i-de-register-the-domain-associated-with-my-provisioning-agent)
@@ -782,7 +782,7 @@ Nein, das Senden von E-Mail-Benachrichtigungen nach Abschluss der Bereitstellung
 
 Einer der letzten Schritte bei der Bereitstellung eines neuen AD-Kontos ist die Bereitstellung des temporären Kennworts, das dem AD-Konto des Benutzers zugewiesen wurde. Viele Unternehmen verwenden immer noch den traditionellen Ansatz, bei dem das temporäre Kennwort an den Manager des Benutzers übermittelt wird, der dann das Kennwort an den neuen Mitarbeiter übergibt. Dieser Prozess hat einen inhärenten Sicherheitsfehler und es gibt eine Option, um einen besseren Ansatz mit Hilfe der Azure AD-Funktionen zu implementieren.
 
-Im Rahmen des Einstellungsprozesses führen die HR-Teams in der Regel eine Hintergrundüberprüfung durch und überprüfen die Mobilfunknummer des neuen Mitarbeiters. Mit der Integration der „Workday to AD“-Benutzerbereitstellungs-App können Sie darauf aufbauen und bereits am ersten Tag eine Funktion für die Self-Service-Kennwortzurücksetzung für den Benutzer einführen. Dies erfolgt durch die Weitergabe des Attributs „Mobil Number“ des neuen Mitarbeiters von Workday zu AD und dann von AD zu Azure AD über AAD Connect. Sobald dieses Attribut in Azure AD vorhanden ist, können Sie die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](../authentication/howto-sspr-authenticationdata.md) für das Konto des Benutzers aktivieren, sodass ein neuer Mitarbeiter am ersten Tag die registrierte und verifizierte Mobilfunknummer zur Authentifizierung verwenden kann.
+Im Rahmen des Einstellungsprozesses führen die HR-Teams in der Regel eine Hintergrundüberprüfung durch und überprüfen die Mobilfunknummer des neuen Mitarbeiters. Mit der Integration der „Workday to AD“-Benutzerbereitstellungs-App können Sie darauf aufbauen und bereits am ersten Tag eine Funktion für die Self-Service-Kennwortzurücksetzung für den Benutzer einführen. Dies erfolgt durch die Weitergabe des Attributs „Mobil Number“ des neuen Mitarbeiters von Workday zu AD und dann von AD zu Azure AD über Azure AD Connect. Sobald dieses Attribut in Azure AD vorhanden ist, können Sie die [Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](../authentication/howto-sspr-authenticationdata.md) für das Konto des Benutzers aktivieren, sodass ein neuer Mitarbeiter am ersten Tag die registrierte und verifizierte Mobilfunknummer zur Authentifizierung verwenden kann.
 
 #### <a name="does-the-solution-cache-workday-user-profiles-in-the-azure-ad-cloud-or-at-the-provisioning-agent-layer"></a>Speichert die Lösung Workday-Benutzerprofile in der Azure AD Cloud oder auf der Ebene des Bereitstellungs-Agents zwischen?
 
@@ -843,9 +843,9 @@ Wenn Sie eine neue Idee vorschlagen, überprüfen Sie bitte, ob eine ähnliche F
 
 Ja, Microsoft aktualisiert den Bereitstellungs-Agent automatisch. Sie können automatische Updates deaktivieren, indem Sie den Windows-Dienst **Microsoft Azure AD Connect Agent Updater** beenden.
 
-#### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-aad-connect"></a>Kann ich den Bereitstellungs-Agent auf demselben Server installieren, auf dem AAD Connect ausgeführt wird?
+#### <a name="can-i-install-the-provisioning-agent-on-the-same-server-running-azure-ad-connect"></a>Kann ich den Bereitstellungs-Agent auf demselben Server installieren, auf dem Azure AD Connect ausgeführt wird?
 
-Ja, Sie können den Bereitstellungs-Agent auf demselben Server installieren, auf dem AAD Connect ausgeführt wird?
+Ja, Sie können den Bereitstellungs-Agent auf demselben Server installieren, auf dem Azure AD Connect ausgeführt wird.
 
 #### <a name="at-the-time-of-configuration-the-provisioning-agent-prompts-for-azure-ad-admin-credentials-does-the-agent-store-the-credentials-locally-on-the-server"></a>Bei der Konfiguration fordert der Bereitstellungs-Agent die Azure AD-Administratoranmeldeinformationen an. Speichert der Agent die Anmeldeinformationen lokal auf dem Server?
 

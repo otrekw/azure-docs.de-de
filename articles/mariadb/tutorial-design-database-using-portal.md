@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz mithilfe des Azure-Portals'
+title: 'Tutorial: Entwerfen einer Azure Database for MariaDB-Instanz – Azure-Portal'
 description: In diesem Tutorial wird erläutert, wie Sie einen Azure Database for MariaDB-Server und eine Azure Database for MariaDB-Datenbank mithilfe des Azure-Portals erstellen und verwalten.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: tutorial
-ms.date: 04/15/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 1938a84d3e9c0ba8c84cbdbd2eee5b7ca448554d
-ms.sourcegitcommit: adb6c981eba06f3b258b697251d7f87489a5da33
+ms.openlocfilehash: 28a20325fac92d0b296c336e2e1186487d1e0272
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66515657"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776707"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Datenbank mithilfe des Azure-Portals
 
@@ -52,8 +52,8 @@ Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Grup
     Einstellung | Empfohlener Wert | Feldbeschreibung 
     ---|---|---
     Servername | *Ein eindeutiger Servername* | Wählen Sie einen eindeutigen Namen aus, der Ihren Azure Database for MariaDB-Server identifiziert. Beispiel: **mydemoserver**. Der Domänenname *.mariadb.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss zwischen 3 und 63 Zeichen lang sein.
-    Abonnement | *Ihr Abonnement* | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
-    Ressourcengruppe | **myresourcegroup** | Geben Sie einen neuen Ressourcengruppennamen ein, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+    Subscription | *Ihr Abonnement* | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
+    Resource group | **myresourcegroup** | Geben Sie einen neuen Ressourcengruppennamen ein, oder wählen Sie eine vorhandene Ressourcengruppe aus.
     Quelle auswählen | **Leer** | Wählen Sie **Leer** aus, um einen neuen Server zu erstellen. (Wählen Sie **Sicherung** aus, wenn Sie einen Server auf der Grundlage einer Geosicherung eines vorhandenen Azure Database for MariaDB-Servers erstellen.)
     Serveradministratoranmeldung | **myadmin** | Ein Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratoranmeldename darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
     Kennwort | *Beliebig* | Geben Sie ein neues Kennwort für das Serveradministratorkonto ein. Es muss zwischen acht und 128 Zeichen lang sein. Das Kennwort muss Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0-9) und nicht alphanumerische Zeichen (!, $, #, % usw.).

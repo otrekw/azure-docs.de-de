@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/20/2019
 ms.author: erhopf
-ms.openlocfilehash: bee3b64ece3faac6258fe4d017f12833b12e370d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a72597163a8c11cd8b515d052dc69992784e61e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74536374"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818822"
 ---
 In diesem Schnellstart verwenden Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) zur interaktiven Erkennung von Sprache aus Mikrofoneingaben und erstellen ein Texttranskript der erfassten Audioinhalte. Es ist ganz einfach, dieses Feature in Ihre Apps oder Geräte zu integrieren, um häufige Erkennungsaufgaben wie das Transkribieren von Konversationen zu auszuführen. Es kann auch für komplexere Integrationen verwendet werden, z. B. das Verwenden von Bot Framework mit dem Speech SDK zum Erstellen von Sprachassistenten.
 

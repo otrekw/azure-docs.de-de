@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: b93cd87a354bf327628d97a3796b3e51d7c508cc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ebf289f22e9bffe926a641a12a0497fc7db0d9f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504859"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817480"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -127,7 +127,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Speech-Dienste, die ihn in Text übersetzen und transkribieren (in diesem Fall ins Deutsche). Die Speech-Dienste senden die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der ihn in Text übersetzt und transkribiert (in diesem Fall ins Deutsche). Der Speech-Dienst sendet die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
 
 ````
 Say something...

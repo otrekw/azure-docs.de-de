@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087054"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185528"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Behandeln von Problemen mit einem virtuellen Azure-Computer unter Verwendung der geschachtelten Virtualisierung in Azure
 
@@ -72,70 +72,55 @@ Um den virtuellen Computer mit dem Problem einbinden zu können, muss der virtue
 
 ## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Schritt 2: Erstellen des virtuellen Computers mit dem Problem auf dem Hyper-V-Server des virtuellen Rettungscomputers
 
-1.  Notieren Sie sich den Namen des Datenträgers des virtuellen Computers mit dem Problem, und löschen Sie anschließend den virtuellen Computer mit dem Problem. Bewahren Sie alle angefügten Datenträger auf. 
+1.  [Erstellen Sie einen Momentaufnahmendatenträger](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) für den Betriebssystemdatenträger des virtuellen Computers mit dem Problem, und fügen Sie den Momentaufnahmendatenträger an den virtuellen Rettungscomputer an.
 
-2.  Fügen Sie den Betriebssystemdatenträger des virtuellen Computers mit dem Problem als Datenträger des virtuellen Rettungscomputers an.
+2.  Remotedesktopverbindung mit der Rettungs-VM.
 
-    1.  Navigieren Sie nach dem Löschen des virtuellen Computers mit dem Problem zum virtuellen Rettungscomputer.
+3.  Öffnen Sie die Datenträgerverwaltung (diskmgmt.msc). Vergewissern Sie sich, dass der Datenträger des virtuellen Computers mit dem Problem den Status **Offline** hat.
 
-    2.  Klicken Sie auf **Datenträger** und anschließend auf **Datenträger hinzufügen**.
+4.  Öffnen Sie den Hyper-V Manager: Wählen Sie im **Server-Manager** die **Hyper-V-Rolle** aus. Klicken Sie mit der rechten Maustaste auf den Server, und wählen Sie den **Hyper-V Manager** aus.
 
-    3.  Wählen Sie den Datenträger des virtuellen Computers mit dem Problem aus, und klicken Sie anschließend auf **Speichern**.
+5.  Klicken Sie im Hyper-V-Manager mit der rechten Maustaste auf den virtuellen Rettungscomputer, und klicken Sie auf **Neu** > **Virtueller Computer** > **Weiter**.
 
-3.  Stellen Sie nach dem erfolgreichen Anfügen des Datenträgers eine Remotedesktopverbindung mit dem virtuellen Rettungscomputer her.
+6.  Geben Sie einen Namen für den virtuellen Computer ein, und klicken Sie auf **Weiter**.
 
-4.  Öffnen Sie die Datenträgerverwaltung (diskmgmt.msc). Vergewissern Sie sich, dass der Datenträger des virtuellen Computers mit dem Problem den Status **Offline** hat.
+7.  Wählen Sie **Generation 1** aus.
 
-5.  Öffnen Sie den Hyper-V Manager: Wählen Sie im **Server-Manager** die **Hyper-V-Rolle** aus. Klicken Sie mit der rechten Maustaste auf den Server, und wählen Sie den **Hyper-V Manager** aus.
+8.  Legen Sie den Startspeicher auf mindestens 1.024 MB fest.
 
-6.  Klicken Sie im Hyper-V-Manager mit der rechten Maustaste auf den virtuellen Rettungscomputer, und klicken Sie auf **Neu** > **Virtueller Computer** > **Weiter**.
+9. Wählen Sie ggf. den erstellten Hyper-V-Netzwerkswitch aus. Navigieren Sie andernfalls zur nächsten Seite.
 
-7.  Geben Sie einen Namen für den virtuellen Computer ein, und klicken Sie auf **Weiter**.
-
-8.  Wählen Sie **Generation 1** aus.
-
-9.  Legen Sie den Startspeicher auf mindestens 1.024 MB fest.
-
-10. Wählen Sie ggf. den erstellten Hyper-V-Netzwerkswitch aus. Navigieren Sie andernfalls zur nächsten Seite.
-
-11. Wählen Sie **Virtuelle Festplatte später zuordnen** aus.
+10. Wählen Sie **Virtuelle Festplatte später zuordnen** aus.
 
     ![Abbildung mit der Option „Virtuelle Festplatte später zuordnen“](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. Klicken Sie auf **Fertig stellen**, wenn der virtuelle Computer erstellt wurde.
+11. Klicken Sie auf **Fertig stellen**, wenn der virtuelle Computer erstellt wurde.
 
-13. Klicken Sie mit der rechten Maustaste auf den erstellten virtuellen Computer, und klicken Sie auf **Einstellungen**.
+12. Klicken Sie mit der rechten Maustaste auf den erstellten virtuellen Computer, und klicken Sie auf **Einstellungen**.
 
-14. Klicken Sie auf **IDE-Controller 0** > **Festplatte** > **Hinzufügen**.
+13. Klicken Sie auf **IDE-Controller 0** > **Festplatte** > **Hinzufügen**.
 
     ![Abbildung zum Hinzufügen der neuen Festplatte](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. Wählen Sie unter **Physische Festplatte** den Datenträger des virtuellen Computers mit dem Problem aus, den Sie an den virtuellen Azure-Computer angefügt haben. Sollten keine Datenträger aufgeführt werden, überprüfen Sie mithilfe der Datenträgerverwaltung, ob der Datenträger auf „Offline“ festgelegt ist.
+14. Wählen Sie unter **Physische Festplatte** den Datenträger des virtuellen Computers mit dem Problem aus, den Sie an den virtuellen Azure-Computer angefügt haben. Sollten keine Datenträger aufgeführt werden, überprüfen Sie mithilfe der Datenträgerverwaltung, ob der Datenträger auf „Offline“ festgelegt ist.
 
     ![Abbildung zum Einbinden des Datenträgers](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK**.
+15. Klicken Sie auf **Apply** (Anwenden) und dann auf **OK**.
 
-18. Doppelklicken Sie auf den virtuellen Computer, und starten Sie ihn.
+16. Doppelklicken Sie auf den virtuellen Computer, und starten Sie ihn.
 
-19. Der virtuelle Computer kann nun als lokaler virtueller Computer verwendet werden. Sie können beliebige Problembehandlungsschritte ausführen.
+17. Der virtuelle Computer kann nun als lokaler virtueller Computer verwendet werden. Sie können beliebige Problembehandlungsschritte ausführen.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>Schritt 3: Neuerstellen des virtuellen Azure-Computers in Azure
+## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>Schritt 3: Ersetzen des Betriebssystemdatenträgers, der vom virtuellen Computer mit dem Problem verwendet wird
 
 1.  Wenn Sie den virtuellen Computer wieder online geschaltet haben, fahren Sie den virtuellen Computer im Hyper-V-Manager herunter.
 
-2.  Klicken Sie im [Azure-Portal](https://portal.azure.com) auf den virtuellen Rettungscomputer und anschließend auf „Datenträger“. Kopieren Sie dann den Namen des Datenträgers. Der Name wird im nächsten Schritt benötigt. Trennen Sie den eingebauten Datenträger vom virtuellen Rettungscomputer.
-
-3.  Navigieren Sie zu **Alle Ressourcen**, suchen Sie nach dem Namen des Datenträgers, und wählen Sie den Datenträger aus.
-
-     ![Abbildung zur Suche nach dem Datenträger](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
-
-4. Klicken Sie auf **Virtuellen Computer erstellen**.
-
-     ![Abbildung zur Erstellung des virtuellen Computers auf der Grundlage des Datenträgers](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
-
-Der virtuelle Computer kann auch mithilfe von Azure PowerShell auf der Grundlage des Datenträgers erstellt werden. Weitere Informationen finden Sie unter [Erstellen des neuen virtuellen Computers](../windows/create-vm-specialized.md#create-the-new-vm). 
+2.  [Heben Sie die Bereitstellung auf, und trennen Sie den reparierten Betriebssystemdatenträger.](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+)
+3.  [Ersetzen Sie den verwendeten Betriebssystemdatenträger durch die VM mit dem reparierten Betriebssystemdatenträger.](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
+)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

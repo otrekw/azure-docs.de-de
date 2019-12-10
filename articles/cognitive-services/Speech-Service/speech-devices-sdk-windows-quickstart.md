@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Ausführen des Speech Devices SDK unter Windows'
+title: 'Schnellstart: Ausführen des Speech Devices SDK unter Windows – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Voraussetzungen und Anleitung für die ersten Schritte mit einem Windows Speech Devices SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e3764dbfa7de52bf210a1e6cc8bd240d64d64aeb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111671"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815558"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Windows
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK fü
 
 Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Windows erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
-Für diese Anleitung wird ein [Azure Cognitive Services-Konto](get-started.md) mit einer Ressource für die Speech-Dienste benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
+Für diese Anleitung wird ein [Azure Cognitive Services-Konto](get-started.md) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 Der Quellcode für die [Beispielanwendung](https://aka.ms/sdsdk-download-JRE) ist im Speech Devices SDK enthalten. Es ist auch auf [GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK) verfügbar.
 

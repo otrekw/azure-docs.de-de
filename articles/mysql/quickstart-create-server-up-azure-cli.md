@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az mysql up (Vorschau)'
+title: 'Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe von „az mysql up“'
 description: Schnellstart zum Erstellen von Azure Database for MySQL-Servern mithilfe des Befehls „up“ der Azure-Befehlszeilenschnittstelle.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 3/18/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: aa0d2a9e990faa8d99355744824f34e26aeb519e
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 4bb5c62a7df53548ff59a03c6ccc8fb28f1503d3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58137911"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765682"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-using-a-simple-azure-cli-command---az-mysql-up-preview"></a>Schnellstart: Erstellen einer Azure Database for MySQL-Instanz mithilfe eines einfachen Azure CLI-Befehls – az mysql up (Vorschau)
 
@@ -66,7 +66,7 @@ geo-redundant-backup | Deaktiviert | Gibt an, ob georedundante Sicherungen für 
 location | westus2 | Der Azure-Standort für den Server.
 ssl-enforcement | Deaktiviert | Gibt an, ob SSL für diesen Server aktiviert werden soll.
 storage-size | 5120 | Die Speicherkapazität des Servers (Einheit: MB).
-Version | 5.7 | Die MySQL-Hauptversion.
+version | 5.7 | Die MySQL-Hauptversion.
 admin-user | Systemgeneriert | Der Benutzername für die Administratoranmeldung.
 admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 

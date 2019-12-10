@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 0ba69715998f110d88015bdba2fbf340a6b64089
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73491639"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829012"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Worin besteht der Unterschied zwischen einem virtuellen Azure-Netzwerkgateway (VPN-Gateway) und einem Azure Virtual WAN-VPN-Gateway?
 
@@ -36,8 +36,6 @@ Informationen zu den Automatisierungsschritten für Partner finden Sie unter [Ko
 Nein. Sie können ein beliebiges VPN-fähiges Gerät nutzen, das die Anforderungen von Azure für die IKEv2/IKEv1-IPsec-Unterstützung erfüllt.
 
 ### <a name="how-do-virtual-wan-partners-automate-connectivity-with-azure-virtual-wan"></a>Wie automatisieren Virtual WAN-Partner die Konnektivität mit Azure Virtual WAN?
-
-Softwaredefinierte Konnektivitätslösungen verwalten ihre Branchgeräte normalerweise mithilfe eines Controllers oder über ein Center für die Gerätebereitstellung. Für den Controller können Azure-APIs verwendet werden, um die Konnektivität mit Azure Virtual WAN zu automatisieren. Weitere Informationen finden Sie unter „Konfigurieren von Virtual WAN-Automatisierung – für Virtual WAN-Partner“.
 
 Softwaredefinierte Konnektivitätslösungen verwalten ihre Branchgeräte normalerweise mithilfe eines Controllers oder über ein Center für die Gerätebereitstellung. Für den Controller können Azure-APIs verwendet werden, um die Konnektivität mit Azure Virtual WAN zu automatisieren. Die Automatisierung umfasst das Hochladen von Branchinformationen, Herunterladen der Azure-Konfiguration, Einrichten von IPSec-Tunneln zu virtuellen Azure-Hubs und automatische Einrichten der Konnektivität vom Branchgerät zu Azure Virtual WAN. Wenn Sie über Hunderte von Branches verfügen, ist das Verbinden über Virtual WAN-CPE-Partner einfach, weil aufgrund des Onboardingverfahrens das aufwändige Einrichten, Konfigurieren und Verwalten der IPsec-Konnektivität entfällt. Weitere Informationen finden Sie unter [Konfigurieren von Virtual WAN-Automatisierung – für Virtual WAN-Partner (Vorschauversion)](../articles/virtual-wan/virtual-wan-configure-automation-providers.md).
 
@@ -115,7 +113,9 @@ Sie können für ein VNET eine Verbindung in einer anderen Region als der Ihres 
 
 ### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Können Spoke-VNETs, die über einen virtuellen Hub verbunden sind, miteinander kommunizieren?
 
-Ja. Spoke-VNETs können direkt über das Peering virtueller Netzwerke kommunizieren. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../articles/virtual-network/virtual-network-peering-overview.md). Wir unterstützen auch VNETs, die transitiv über den Hub kommunizieren.
+Ja. Eine Virtual WAN-Instanz vom Typ „Standard“ unterstützt die transitive VNET-zu-VNET-Konnektivität über den Virtual WAN-Hub, mit dem die VNETs verbunden sind. Gemäß Virtual WAN-Terminologie bezeichnen wir diese Pfade für VNETs, die mit einem Virtual Wan Hub in einer einzelnen Region verbunden sind, als „lokale Virtual WAN-VNET-Übertragung“. Für VNETs, die über mehrere Virtual WAN-Hubs in mindestens zwei Regionen verbunden sind, werden sie als „globale Virtual WAN-VNET-Übertragung“ bezeichnet. Bei der VNET-Übertragung wird während der öffentlichen Vorschauphase ein Durchsatz von bis zu 3 GBit/s unterstützt. Der Durchsatz wird erhöht, wenn die globale Übertragung allgemein verfügbar ist.   
+
+In einigen Szenarien können Spoke-VNETs auch per direktem Peering miteinander verbunden werden. Dazu wird zusätzlich zu lokaler oder globaler Virtual WAN-VNET-Übertragung das [Peering virtueller Netzwerke](../articles/virtual-network/virtual-network-peering-overview.md) verwendet. In diesem Fall hat das VNET-Peering Vorrang vor der transitiven Verbindung über den Virtual WAN-Hub. 
 
 ### <a name="what-is-a-branch-connection-to-azure-virtual-wan"></a>Was ist eine Branchverbindung mit Azure Virtual WAN?
 

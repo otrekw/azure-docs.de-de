@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache (C#): Speech-Dienst'
+title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache, C# – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 77ab519ae966ab6b3dfc9fd309ce9a5740a5ce0f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 96062057a139e4ab2c91792b5c451e093f7f4c96
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505891"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829080"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=dotnet)
@@ -56,7 +56,7 @@ Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio g
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(Sie müssen die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte ersetzen.)
+(Ersetzen Sie die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte.)
 ## <a name="json-wrappers"></a>JSON-Wrapper
 
 Da für die REST-APIs Anforderungen im JSON-Format verwendet und Ergebnisse ebenfalls im JSON-Format zurückgegeben werden, können wir auch ausschließlich über Zeichenfolgen interagieren. Diese Vorgehensweise wird aber nicht empfohlen.
@@ -98,9 +98,9 @@ Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Komment
 
 Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
-1. **Kompilieren des Codes:** Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
-2. **Starten der App:** Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
-3. **Starten der Erkennung**: Sie werden aufgefordert, etwas auf Englisch zu sagen. Ihre Spracheingabe wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole gerendert.
+1. **Kompilieren des Codes**: Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
+2. **Starten der App**: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
+3. **Starten der Erkennung**: Sie werden aufgefordert, etwas auf Englisch zu sagen. Ihre Spracheingabe wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole ausgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

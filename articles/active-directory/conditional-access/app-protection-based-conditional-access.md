@@ -1,22 +1,22 @@
 ---
-title: Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs in Azure Active Directory | Microsoft-Dokumentation
+title: App-Schutzrichtlinien mit bedingtem Zugriff – Azure Active Directory
 description: Erfahren Sie, wie Sie die App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs in Azure Active Directory erzwingen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 4/4/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b7cc1f3a8431986ffbaac604ec5863236f112
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357103"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381027"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs (Vorschauversion)
 
@@ -57,8 +57,8 @@ In diesem Artikel wird davon ausgegangen, dass Sie mit Folgendem vertraut sind:
 
 - Der technischen Referenz [App-Schutzrichtlinie als Voraussetzung](technical-reference.md#app-protection-policy-requirement)
 - Der technischen Referenz [Genehmigte Client-App als Voraussetzung](technical-reference.md#approved-client-app-requirement)
-- Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md).
-- Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md).
+- Den grundlegenden Konzepten des [bedingten Zugriffs in Azure Active Directory](overview.md)
+- Der Vorgehensweise zum [Konfigurieren einer Richtlinie zum bedingten Zugriff](app-based-mfa.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

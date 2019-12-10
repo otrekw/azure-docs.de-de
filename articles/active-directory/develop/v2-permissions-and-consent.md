@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927150"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271514"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
@@ -41,6 +41,7 @@ Die Microsoft Identity Platform implementiert das [OAuth 2.0](active-directory-v
 * Microsoft Graph: `https://graph.microsoft.com`
 * API für Office 365-E-Mail: `https://outlook.office.com`
 * Microsoft Azure AD Graph: `https://graph.windows.net`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
 > Es wird dringend empfohlen, Microsoft Graph anstelle von Microsoft Azure AD Graph, der API für Office 365-E-Mail usw. zu verwenden.

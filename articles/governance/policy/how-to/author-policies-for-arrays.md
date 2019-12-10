@@ -1,14 +1,14 @@
 ---
 title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
-description: Erfahren Sie, wie Sie mit Azure Policy-Definitionsregeln Arrayparameter sowie Regeln für Arrayausdrücke erstellen, den [*]-Alias auswerten und Elemente an ein vorhandenes Array anfügen.
-ms.date: 03/06/2019
+description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: f28cffcf928f9c4da6b2dae2a0811200397c1f0d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 035f300d01efe80cc44687d3779d7a5fb6be2fc3
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959717"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555168"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -16,7 +16,9 @@ Azure Resource Manager-Eigenschaften werden häufig als Zeichenfolgen und booles
 
 - Als Typ eines [Definitionsparameters](../concepts/definition-structure.md#parameters), um mehrere Optionen bereitzustellen
 - Als Teil einer [Richtlinienregel](../concepts/definition-structure.md#policy-rule) mit den Bedingungen **in** oder **notIn**
-- Als Teil einer Richtlinienregel, die den [\[\*\]-Alias](../concepts/definition-structure.md#understanding-the--alias) zum Bewerten bestimmter Szenarien (z. B. **Kein(e)** , **Beliebig** oder **Alle**) auswertet
+- Als Teil einer Richtlinienregel, die den [\[\*\]-Alias](../concepts/definition-structure.md#understanding-the--alias) auswertet für:
+  - Szenarien wie **Keine**, **Beliebig** oder **Alle**
+  - Komplexe Szenarien mit **count**
 - In der [Auswirkung „append“](../concepts/effects.md#append), um ein vorhandenes Array zu ersetzen oder ihm Elemente hinzuzufügen
 
 Dieser Artikel befasst sich mit jedem dieser Verwendungsfälle in Azure Policy und enthält mehrere Beispieldefinitionen.
@@ -138,10 +140,10 @@ Der erwartete **Typ** der Bedingung `equals` ist _string_. Da **allowedLocations
 
 ### <a name="evaluating-the--alias"></a>Auswerten des [*]-Alias
 
-Wenn an den Namen von Aliasen **[\*]** angefügt ist, bedeutet dies, dass es sich um den **Typ** _array_ handelt. **[\*]** ermöglicht das Auswerten der einzelnen Elemente im Array, anstatt den Wert des gesamten Arrays auszuwerten. Die Auswertung jedes einzelnen Elements ist in drei Szenarien hilfreich: „Kein(e)“, „Beliebig“ und „Alle“.
+Wenn an den Namen von Aliasen **\[\*\]** angefügt ist, bedeutet dies, dass es sich um den **Typ** _array_ handelt. **\[\*\]** ermöglicht das Auswerten der einzelnen Elemente im Array, anstatt den Wert des gesamten Arrays auszuwerten. Die Auswertung jedes einzelnen Elements ist in drei Standardszenarien hilfreich: „Kein(e)“, „Beliebig“ und „Alle“. Verwenden Sie für komplexe Szenarien [count](../concepts/definition-structure.md#count).
 
 Das Richtlinienmodul löst die Auswirkung (**effect**) in **then** nur aus, wenn die **if**-Regel als „true“ ausgewertet wird.
-Dies ist wichtig für das Verständnis der Art und Weise, wie **[\*]** jedes einzelne Element des Arrays auswertet.
+Dies ist wichtig für das Verständnis der Art und Weise, wie **\[\*\]** jedes einzelne Element des Arrays auswertet.
 
 Die Beispielrichtlinienregel für die unten stehende Szenariotabelle sieht wie folgt aus:
 
@@ -194,10 +196,10 @@ Die Kombination der Bedingung, der Beispielrichtlinienregel und des Arrays der o
 
 ## <a name="the-append-effect-and-arrays"></a>Auswirkung „append“ und Arrays
 
-Das Verhalten der [Auswirkung „append“](../concepts/effects.md#append) hängt davon ab, ob das **details.field** ein **[\*]** -Alias ist.
+Das Verhalten der [Auswirkung „append“](../concepts/effects.md#append) hängt davon ab, ob das **details.field** ein **\[\*\]** -Alias ist.
 
-- Wenn es kein **[\*]** -Alias ist, wird durch „append“ das gesamte Array durch die **value**-Eigenschaft ersetzt.
-- Wenn es ein **[\*]** -Alias ist, wird durch „append“ die **value**-Eigenschaft dem vorhandenen Array hinzugefügt oder das neue Array erstellt.
+- Wenn es kein **\[\*\]** -Alias ist, wird durch „append“ das gesamte Array durch die **value**-Eigenschaft ersetzt.
+- Wenn es ein **\[\*\]** -Alias ist, wird durch „append“ die **value**-Eigenschaft dem vorhandenen Array hinzugefügt oder das neue Array erstellt.
 
 Weitere Informationen finden Sie unter [Beispiele für „append“](../concepts/effects.md#append-examples).
 

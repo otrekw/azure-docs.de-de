@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: acf1df6bb71f4ea8878d8f50f3f42f4ddd831fb5
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111884"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539237"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Erkennen von Datenabweichungen (Vorschauversion) bei in Azure Kubernetes Service (AKS) bereitgestellten Modellen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Im Zusammenhang mit maschinellem Lernen ist die Datenabweichung die Änderung de
 Mit Azure Machine Learning können Sie die Eingaben in ein auf AKS bereitgestelltes Modell überwachen und diese Daten mit dem Trainingsdataset für das Modell vergleichen. In regelmäßigen Abständen werden [Schnappschüsse und Profile](how-to-explore-prepare-data.md) der Rückschlussdaten erstellt, und dann erfolgt eine Berechnung gegen den Basisdatensatz, um eine Datenabweichungsanalyse zu erstellen, die Folgendes umfasst: 
 
 + Messen des Ausmaßes der Datenabweichung, das als Abweichungskoeffizient bezeichnet wird.
-+ Messen des Beitrags zur Datenabweichung nach Feature und Informieren, welche Features Datenabweichungen verursacht haben.
++ Messen des Beitrags zur Datenabweichung nach Feature, wobei angegeben wird, welche Features Datenabweichungen verursacht haben.
 + Messen von Abstandsmetriken. Derzeit werden Wasserstein und Energieabstand berechnet.
 + Messen von Featureverteilungen. Derzeit werden Kerneldichteschätzung und Histogramme berechnet.
 + Senden von Warnungen über Datenabweichungen per E-Mail.
@@ -80,7 +80,7 @@ Mit Azure Machine Learning werden Datenvariationen (Datenabweichungen) anhand vo
 ## <a name="configure-data-drift"></a>Konfigurieren von Datenabweichungen
 Importieren Sie die im folgenden Python-Beispiel gezeigten Abhängigkeiten, um die Datenabweichungen für Ihr Experiment zu konfigurieren. 
 
-Das folgende Python-Beispiel veranschaulicht die Konfiguration des [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py)-Objekts:
+Das folgende Python-Beispiel veranschaulicht die Konfiguration des [`DataDriftDetector`](/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector)-Objekts:
 
 ```python
 # Import Azure ML packages
@@ -90,7 +90,7 @@ from azureml.datadrift import DataDriftDetector, AlertConfiguration
 # if email address is specified, setup AlertConfiguration
 alert_config = AlertConfiguration('your_email@contoso.com')
 
-# create a new DatadriftDetector object
+# create a new DataDriftDetector object
 datadrift = DataDriftDetector.create(ws, model.name, model.version, services, frequency="Day", alert_config=alert_config)
     
 print('Details of Datadrift Object:\n{}'.format(datadrift))
@@ -112,7 +112,7 @@ run = datadrift.run(target_date, services, feature_list=feature_list, compute_ta
 
 # show details of the data drift run
 exp = Experiment(ws, datadrift._id)
-dd_run = Run(experiment=exp, run_id=run)
+dd_run = Run(experiment=exp, run_id=run.id)
 RunDetails(dd_run).show()
 ```
 
@@ -142,7 +142,7 @@ Das folgende Python-Beispiel veranschaulicht das Plotten von relevanten Datenabw
 # start and end are datetime objects 
 drift_metrics = datadrift.get_output(start_time=start, end_time=end)
 
-# Show all data drift result figures, one per serivice.
+# Show all data drift result figures, one per service.
 # If setting with_details is False (by default), only the data drift magnitude will be shown; if it's True, all details will be shown.
 drift_figures = datadrift.show(with_details=True)
 ```

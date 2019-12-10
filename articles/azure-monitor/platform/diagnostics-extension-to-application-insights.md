@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Azure-Diagnose zum Senden von Daten an Application Insights
+title: Senden von Daten von Azure-Diagnose an Application Insights
 description: Aktualisieren Sie die öffentliche Konfiguration von Azure-Diagnose, um Daten an Application Insights zu senden.
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2016
-ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552045"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285989"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights
 Cloud Services, Virtual Machines, VM-Skalierungsgruppen und Service Fabric verwenden die Azure-Diagnoseerweiterung zum Sammeln von Daten.  Die Azure-Diagnose sendet die Daten an Azure Storage-Tabellen.  Sie können jedoch auch alle oder einen Teil der Daten mithilfe der Azure-Diagnoseerweiterung 1.5 oder höher an andere Speicherorte weiterleiten.

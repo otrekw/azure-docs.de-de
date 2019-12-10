@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 description: Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“ zu Azure Policy.
-ms.date: 10/01/2019
+ms.date: 11/04/2019
 ms.topic: sample
-ms.openlocfilehash: 55abac9f7479f0ee7d1adddea64cb81a1c7cf2b5
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 34d38f34dcd4233706f9b4578bc2dc2a644e4c2c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74544547"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707430"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Empfehlungszuordnung des Blaupausenbeispiels „CIS Microsoft Azure Foundations Benchmark“
 
@@ -40,6 +40,12 @@ Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definiti
 - Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
 - Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden
 - Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.
+
+## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1.23 Sicherstellen, dass keine benutzerdefinierten Abonnementbesitzerrollen erstellt werden
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, die Sie bei der Überwachung auf benutzerdefinierte Abonnementbesitzerrollen unterstützen, die ggf. entfernt werden müssen.
+
+- Es dürfen keine benutzerdefinierten Abonnementbesitzerrollen vorhanden sein.
 
 ## <a name="21-ensure-that-standard-pricing-tier-is-selected"></a>2.1. Sicherstellen, dass der Tarif „Standard“ ausgewählt ist
 
@@ -243,11 +249,35 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 
 - Erzwingen einer SSL-Verbindung muss für MySQL-Datenbankserver aktiviert sein
 
+## <a name="412-ensure-server-parameter-log_checkpoints-is-set-to-on-for-postgresql-database-server"></a>4.12 Sicherstellen, dass der Serverparameter „log_checkpoints“ für den PostgreSQL-Datenbankserver auf „EIN“ festgelegt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass PostgreSQL-Datenbankserver Prüfpunkte protokollieren.
+
+- Die Protokollierung von Prüfpunkten sollte für PostgreSQL-Datenbankserver aktiviert sein.
+
 ## <a name="413-ensure-enforce-ssl-connection-is-set-to-enabled-for-postgresql-database-server"></a>4.13. Sicherstellen, dass „SSL-Verbindung erzwingen“ für den PostgreSQL-Datenbankserver auf „AKTIVIERT“ festgelegt ist
 
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass für PostgreSQL-Datenbankserver SSL-Verbindungen erzwungen werden.
 
 - Erzwingen einer SSL-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
+
+## <a name="414-ensure-server-parameter-log_connections-is-set-to-on-for-postgresql-database-server"></a>4.14 Sicherstellen, dass der Serverparameter „log_connections“ für den PostgreSQL-Datenbankserver auf „EIN“ festgelegt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass PostgreSQL-Datenbankserver Verbindungen protokollieren.
+
+- Die Protokollierung von Verbindungen sollte für PostgreSQL-Datenbankserver aktiviert sein.
+
+## <a name="415-ensure-server-parameter-log_disconnections-is-set-to-on-for-postgresql-database-server"></a>4.15 Sicherstellen, dass der Serverparameter „log_disconnections“ für den PostgreSQL-Datenbankserver auf „EIN“ festgelegt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass PostgreSQL-Datenbankserver Verbindungstrennungen protokollieren.
+
+- Verbindungstrennungen sollten für PostgreSQL-Datenbankserver protokolliert werden.
+
+## <a name="416-ensure-server-parameter-log_duration-is-set-to-on-for-postgresql-database-server"></a>4.16 Sicherstellen, dass der Serverparameter „log_duration“ für den PostgreSQL-Datenbankserver auf „EIN“ festgelegt ist
+
+Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass PostgreSQL-Datenbankserver die Dauer abgeschlossener Anweisungen protokollieren.
+
+- Die Protokollierung der Dauer sollte für PostgreSQL-Datenbankserver aktiviert sein.
 
 ## <a name="417-ensure-server-parameter-connection_throttling-is-set-to-on-for-postgresql-database-server"></a>4.17 Sicherstellen, dass der Serverparameter „connection_throttling“ für den PostgreSQL-Datenbankserver auf „EIN“ festgelegt ist
 
@@ -350,6 +380,71 @@ Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Defin
 Mit dieser Blaupause wird eine [Azure Policy](../../../policy/overview.md)-Definition zugewiesen, mit der Sie sicherstellen können, dass auf Webanwendungen nur über sichere Verbindungen zugegriffen werden kann.
 
 - Zugriff auf Webanwendung nur über HTTPS gestatten
+
+## <a name="93-ensure-web-app-is-using-the-latest-version-of-tls-encryption"></a>9.3 Sicherstellen, dass die Web-App die neueste Version der TLS-Verschlüsselung verwendet
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste TLS-Version verwenden.
+
+- In Ihrer API-App sollte die neueste TLS-Version verwendet werden.
+- In Ihrer Funktions-App sollte die neueste TLS-Version verwendet werden.
+- In Ihrer Web-App sollte die neueste TLS-Version verwendet werden.
+
+## <a name="94-ensure-the-web-app-has-client-certificates-incoming-client-certificates-set-to-on"></a>9.4 Sicherstellen, dass „Clientzertifikate (eingehende Clientzertifikate)“ für die Web-App auf „Ein“ festgelegt ist
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass eine Web-App nur für Clients mit gültigen Zertifikaten erreichbar ist.
+
+- Stellen Sie sicher, dass „Clientzertifikate (eingehende Clientzertifikate)“ für die API-App auf „Ein“ festgelegt ist.
+- Stellen Sie sicher, dass „Clientzertifikate (eingehende Clientzertifikate)“ für die Funktions-App auf „Ein“ festgelegt ist.
+- Stellen Sie sicher, dass „Clientzertifikate (eingehende Clientzertifikate)“ für die Web-App auf „Ein“ festgelegt ist.
+
+## <a name="95-ensure-that-register-with-azure-active-directory-is-enabled-on-app-service"></a>9.5 Sicherstellen, dass „Registrierung bei Azure Active Directory“ für die API-App aktiviert ist
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps eine verwaltete Identität verwenden.
+
+- Stellen Sie sicher, dass „Registrierung bei Azure Active Directory“ für die API-App aktiviert ist.
+- Stellen Sie sicher, dass „Registrierung bei Azure Active Directory“ für die Funktions-App aktiviert ist.
+- Stellen Sie sicher, dass „Registrierung bei Azure Active Directory“ für die Web-App aktiviert ist.
+
+## <a name="96-ensure-that-net-framework-version-is-the-latest-if-used-as-a-part-of-the-web-app"></a>9.6 Sicherstellen, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste Version von .NET Framework verwenden.
+
+- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste .NET Framework-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+
+## <a name="97-ensure-that-php-version-is-the-latest-if-used-to-run-the-web-app"></a>9.7 Sicherstellen, dass die neueste PHP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste Version von PHP verwenden.
+
+- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste PHP-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+
+## <a name="98-ensure-that-python-version-is-the-latest-if-used-to-run-the-web-app"></a>9.8 Sicherstellen, dass die neueste Python-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste Version von Python verwenden.
+
+- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Python-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+
+## <a name="99-ensure-that-java-version-is-the-latest-if-used-to-run-the-web-app"></a>9.9 Sicherstellen, dass die neueste Java-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste Version von Java verwenden.
+
+- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste Java-Version angegeben ist, wenn sie als Teil der Web-App verwendet wird.
+
+## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9.10 Sicherstellen, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird
+
+Mit dieser Blaupause werden [Azure Policy](../../../policy/overview.md)-Definitionen zugewiesen, mit denen Sie sicherstellen können, dass Web-Apps die neueste Version von HTTP verwenden.
+
+- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der API-App verwendet wird.
+- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Funktions-App verwendet wird.
+- Stellen Sie sicher, dass die neueste HTTP-Version angegeben ist, wenn sie zum Ausführen der Web-App verwendet wird.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

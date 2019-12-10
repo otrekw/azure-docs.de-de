@@ -1,19 +1,14 @@
 ---
-title: Sichern von Workloads in Azure mithilfe von Azure Backup Server
+title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.author: dacurwin
-ms.openlocfilehash: 789cc1d835024babb2482b2601503dbaf7247fc2
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747423"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172990"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -185,14 +180,14 @@ Aktivieren Sie nach Abschluss der Extrahierung das Kontrollkästchen, um die ger
 
     Verwenden Sie für die SSRS-Konfiguration die folgenden Werte:
     * Dienstkonto: „Integriertes Konto verwenden“ sollte „Netzwerkdienst“ lauten.
-    * Webdienst-URL: „Virtuelles Verzeichnis“ sollte „ReportServer_<SQLInstanceName>“ lauten.
-    * Datenbank: „DatabaseName“ sollte ReportServer$<SQLInstanceName> lauten.
-    * Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_<SQLInstanceName>“ lauten.
+    * Webdienst-URL: „Virtuelles Verzeichnis“ sollte „ReportServer_\<SQLInstanceName>“ lauten.
+    * Datenbank: „DatabaseName“ sollte „ReportServer$\<SQLInstanceName>“ lauten.
+    * Webportal-URL: „Virtuelles Verzeichnis“ sollte „Reports_\<SQLInstanceName>“ lauten.
 
     Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017).
 
     > [!NOTE]
-    > Die Lizenzierung für SQL Server, das als Datenbank für MABS verwendet wird, wird durch [Microsoft Online Services-Bestimmungen](https://www.microsoft.com/en-us/licensing/product-licensing/products) (OST) geregelt. Gemäß OST kann SQL Server, das mit MABS gebündelt ist, nur als Datenbank für MABS verwendet werden.
+    > Die Lizenzierung für SQL Server, das als Datenbank für MABS verwendet wird, wird durch [Microsoft Online Services-Bestimmungen](https://www.microsoft.com/licensing/product-licensing/products) (OST) geregelt. Gemäß OST kann SQL Server, das mit MABS gebündelt ist, nur als Datenbank für MABS verwendet werden.
 
 4. Geben Sie einen Speicherort für die Installation der Microsoft Azure Backup-Serverdateien an, und klicken Sie auf **Weiter**.
 
@@ -335,8 +330,6 @@ Führen Sie die folgenden Schritte aus, um ein Upgrade für MABS durchzuführen:
    > [!NOTE]
    >
    > Beenden Sie den Vorgang nicht, während das Upgrade für die SQL-Instanz durchgeführt wird, da die SQL-Berichtsinstanz durch eine Beendigung deinstalliert wird und bei dem Versuch, erneut ein Upgrade für MABS durchzuführen, ein Fehler auftritt.
-
-   Wichtige Hinweise:
 
    > [!IMPORTANT]
    >

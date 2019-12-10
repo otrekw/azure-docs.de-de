@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/26/2019
+ms.date: 11/25/2019
 ms.author: helohr
-ms.openlocfilehash: 1f5d1050815961f51c2bb1cfce256b1ea37d3ac1
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1e26d61e0b1ec50e7a3831970af1fd8fad7fed99
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605774"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483647"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Erstellen eines FSLogix-Profilcontainers für einen Hostpool mit Azure NetApp Files
 
-Wir empfehlen Ihnen die Verwendung des FSLogix-Profilcontainers als Benutzerprofillösung für den [Dienst „Windows Virtual Desktop“ (Vorschauversion)](overview.md). Bei FSLogix-Profilcontainern wird ein vollständiges Benutzerprofil in einem einzelnen Container gespeichert. Sie sind so konzipiert, dass für Profile in nicht persistenten Remotecomputingumgebungen, z. B. Windows Virtual Desktop, ein Roaming durchgeführt wird. Wenn Sie sich anmelden, wird der Container dynamisch an die Computingumgebung angefügt, indem eine lokal unterstützte virtuelle Festplatte (VHD) und eine virtuelle Hyper-V-Festplatte (VHDX) verwendet wird. Aufgrund dieser modernen Filtertreibertechnologie ist das Benutzerprofil sofort verfügbar und wird im System genauso wie ein lokales Benutzerprofil angezeigt. Weitere Informationen zu FSLogix-Profilcontainern finden Sie unter [FSLogix-Profilcontainer und Azure Files](fslogix-containers-azure-files.md).
+Wir empfehlen Ihnen die Verwendung des FSLogix-Profilcontainers als Benutzerprofillösung für den [Dienst „Windows Virtual Desktop“](overview.md). Bei FSLogix-Profilcontainern wird ein vollständiges Benutzerprofil in einem einzelnen Container gespeichert. Sie sind so konzipiert, dass für Profile in nicht persistenten Remotecomputingumgebungen, z. B. Windows Virtual Desktop, ein Roaming durchgeführt wird. Wenn Sie sich anmelden, wird der Container dynamisch an die Computingumgebung angefügt, indem eine lokal unterstützte virtuelle Festplatte (VHD) und eine virtuelle Hyper-V-Festplatte (VHDX) verwendet wird. Aufgrund dieser modernen Filtertreibertechnologie ist das Benutzerprofil sofort verfügbar und wird im System genauso wie ein lokales Benutzerprofil angezeigt. Weitere Informationen zu FSLogix-Profilcontainern finden Sie unter [FSLogix-Profilcontainer und Azure Files](fslogix-containers-azure-files.md).
 
 Sie können FSLogix-Profilcontainer erstellen, indem Sie [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) nutzen. Hierbei handelt es sich um einen einfach zu verwendenden nativen Azure-Plattformdienst, mit dem Kunden schnell und zuverlässig SMB-Volumes auf Unternehmensniveau für ihre Windows Virtual Desktop-Umgebungen bereitstellen können. Weitere Informationen zu Azure NetApp Files finden Sie unter [Was ist Azure NetApp Files?](../azure-netapp-files/azure-netapp-files-introduction.md).
 
@@ -179,6 +179,11 @@ Dieser Abschnitt basiert auf [Erstellen eines Profilcontainers für einen Hostpo
 11.  Erstellen Sie einen Wert mit dem Namen **Enabled**, für den der Typ **REG_DWORD** auf den Datenwert **1** festgelegt ist.
 
 12. Erstellen Sie einen Wert mit dem Namen **VHDLocations** mit dem Typ **Multi-String**, und legen Sie den Datenwert auf den URI für die Azure NetApp Files-Freigabe fest.
+
+13. Erstellen Sie vor dem Anmelden einen Wert namens **DeleteLocalProfileWhenVHDShouldApply** mit dem DWORD-Wert 1, um Probleme mit vorhandenen lokalen Profilen zu vermeiden.
+
+     >[!WARNING]
+     >Seien Sie beim Erstellen des Werts für DeleteLocalProfileWhenVHDShouldApply vorsichtig. Wenn das FSLogix Profiles-System feststellt, dass ein Benutzer über ein FSLogix-Profil verfügen muss, jedoch bereits ein lokales Profil vorhanden ist, wird das lokale Profil vom Profile-Container dauerhaft gelöscht. Der Benutzer wird dann mit dem neuen FSLogix-Profil angemeldet.
 
 ## <a name="assign-users-to-session-host"></a>Zuweisen von Benutzern zum Sitzungshost
 

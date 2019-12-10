@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: tvoellm
 ms.reviewer: sngun
-ms.openlocfilehash: 594367db838266a6d11f4fbf3b763b024f8e14d4
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 5ce8bfb593b1973e76b90223de9261134ec71dd4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70882844"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483250"
 ---
 # <a name="certificate-based-authentication-for-an-azure-ad-identity-to-access-keys-from-an-azure-cosmos-db-account"></a>Zertifikatbasierte Authentifizierung für eine Azure AD-Identität für den Zugriff auf Schlüssel aus einem Azure Cosmos DB-Konto
 
@@ -30,7 +30,7 @@ In diesem Schritt registrieren Sie eine beispielhafte Webanwendung in Ihrem Azur
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie den Bereich für das Azure **Active Directory**, wechseln Sie zum Bereich „App-Registrierungen“, und wählen Sie **Neue Registrierung** aus. 
+1. Öffnen Sie den Bereich für das Azure **Active Directory**, wechseln Sie zum Bereich **App-Registrierungen**, und wählen Sie **Neue Registrierung** aus. 
 
    ![Registrierung einer neuen Anwendung in Active Directory](./media/certificate-based-authentication/new-app-registration.png)
 
@@ -114,6 +114,19 @@ Der obige Befehl führt zu einer Ausgabe ähnlich dem Screenshot unten:
 
 1. Wählen Sie nach dem Ausfüllen des Formulars **Speichern** aus.
 
+## <a name="register-your-certificate-with-azure-ad"></a>Registrieren Ihres Zertifikats bei Azure AD
+
+Über das Azure-Portal können Sie die zertifikatbasierten Anmeldeinformationen in Azure AD mit der Clientanwendung verknüpfen. Um die Anmeldeinformationen zuzuordnen, müssen Sie die Zertifikatdatei hochladen. Führen Sie dazu die folgenden Schritte aus:
+
+In der Azure-App-Registrierung für die Clientanwendung:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+1. Öffnen Sie den Bereich für das Azure **Active Directory**, wechseln Sie zum Bereich **App-Registrierungen**, und öffnen Sie die Beispiel-App, die Sie im vorherigen Schritt erstellt haben. 
+
+1. Wählen Sie **Zertifikate & Geheimnisse** und dann **Zertifikat hochladen** aus. Suchen Sie nach der im vorherigen Schritt erstellten Zertifikatdatei, die Sie hochladen möchten.
+
+1. Wählen Sie **Hinzufügen**. Nachdem das Zertifikat hochgeladen wurde, werden der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt angezeigt.
 
 ## <a name="access-the-keys-from-powershell"></a>Zugriff auf Schlüssel über PowerShell
 

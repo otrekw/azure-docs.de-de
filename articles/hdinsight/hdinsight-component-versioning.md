@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/13/2019
-ms.openlocfilehash: a5632f4b7ca264f6fdeb88dc7f7cf843c73ddf54
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 11/21/2019
+ms.openlocfilehash: b5687d659103eed0fcba70319aa37030bd85165a
+ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123404"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74539122"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -24,32 +24,32 @@ Erfahren Sie mehr über die Komponenten und Versionen des [Apache Hadoop](https:
 
 Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bereitgestellt werden können. Ab dem 4. April 2017 ist die von Azure HDInsight derzeit als Standardclusterversion verwendete Version die Version 3.6.
 
-Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der folgenden Tabelle aufgeführt: 
+Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der folgenden Tabelle aufgeführt:
 
 > [!NOTE]  
 > Die Standardversion für den HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, geben Sie die HDInsight-Version an, wenn Sie Ihre Cluster mit dem .NET SDK mit Azure PowerShell und der klassischen Azure-Befehlszeilenschnittstelle erstellen.
 
-| Komponente | HDInsight 4.0 | HDInsight 3.6 (Standard) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 |
-|---------------------------|---------------|-----------------------------|---------------|---------------|---------------|----------------------|
-| Apache Hadoop und YARN | 3.1.1 | 2.7.3 | 2.7.3 | 2.7.1 | 2.7.1 | 2.6.0 |
-| Apache Tez | 0.9.1 | 0.7.0 | 0.7.0 | 0.7.0 | 0.7.0 | 0.5.2 |
-| Apache Pig | 0.16.0 | 0.16.0 | 0.16.0 | 0.15.0 | 0.15.0 | 0.14.0 |
-| Apache Hive | 3.1.0 | 2.1.0, 1.2.1 | - | - | - | - |
-| Apache Tez Hive2 | - | 0.8.4 | - | - | - | - |
-| Apache Ranger | 1.1.0 | 0.7.0 | 0.6.0 | - | - | - |
-| Apache HBase | 2.0.1 | 1.1.2 | 1.1.2 | 1.1.2 | 1.1.1 | 0.98.4 |
-| Apache Sqoop | 1.4.7 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.6 | 1.4.5 |
-| Apache Oozie | 4.3.1 | 4.2.0 | 4.2.0 | 4.2.0 | 4.2.0 | 4.1.0 |
-| Apache Zookeeper | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 | 3.4.6 |
-| Apache Storm | - | 1.1.0 | 1.0.1 | 0.10.0 | 0.10.0 | 0.9.3 |
-| Apache Mahout | - | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0+ | 0.9.0 |
-| Apache Phoenix | 5 | 4.7.0 | 4.7.0 | 4.4.0 | 4.4.0 | 4.2.0 |
-| Apache Spark | 2.3.1, 2.4 | 2.3.0, 2.2.0, 2.1.0 | 1.6.2, 2.0 | 1.6.0 | 1.5.2 | 1.3.1 (nur für Windows) |
-| Apache Livy | 0,5 | 0.4, 0.4, 0.3 | 0,3 | 0,3 | 0.2 | - |
-| Apache Kafka | 1.1.1, 2.1 | 1.1, 1.0 * (Siehe Hinweis unten) | 0.10.0 | 0.9.0 | - | - |
-| Apache Ambari | 2.7.0 | 2.6.0 | 2.4.0 | 2.2.1 | 2.1.0 | - |
-| Apache Zeppelin | 0.8.0 | 0.7.0 | - | - | - | - |
-| Mono | 4.2.1 | 4.2.1 | 4.2.1 | 3.2.8 | - | - |
+| Komponente              | HDInsight 4.0 | HDInsight 3.6 (Standard)     |
+|------------------------|---------------|-----------------------------|
+| Apache Hadoop und YARN | 3.1.1         | 2.7.3                       |
+| Apache Tez             | 0.9.1         | 0.7.0                       |
+| Apache Pig             | 0.16.0        | 0.16.0                      |
+| Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
+| Apache Tez Hive2       | -             | 0.8.4                       |
+| Apache Ranger          | 1.1.0         | 0.7.0                       |
+| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache Sqoop           | 1.4.7         | 1.4.6                       |
+| Apache Oozie           | 4.3.1         | 4.2.0                       |
+| Apache Zookeeper       | 3.4.6         | 3.4.6                       |
+| Apache Storm           | -             | 1.1.0                       |
+| Apache Mahout          | -             | 0.9.0+                      |
+| Apache Phoenix         | 5             | 4.7.0                       |
+| Apache Spark           | 2.3.1, 2.4    | 2.3.0, 2.2.0, 2.1.0         |
+| Apache Livy            | 0,5           | 0.4, 0.4, 0.3               |
+| Apache Kafka           | 1.1.1, 2.1    | 1.1, 1.0 * (Siehe Hinweis unten) |
+| Apache Ambari          | 2.7.0         | 2.6.0                       |
+| Apache Zeppelin        | 0.8.0         | 0.7.0                       |
+| Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
 > Aufgrund von Überlegungen zur Systemleistung ist die Unterstützung für Kafka Version 0.10 im März 2019 abgelaufen.
@@ -70,21 +70,21 @@ In den folgenden Tabellen sind die Versionen von HDInsight aufgeführt. Der Abla
 
 Die folgende Tabelle enthält die im Azure-Portal verfügbaren Versionen von HDInsight sowie andere Bereitstellungsmethoden wie z.B. PowerShell und .NET SDK.
 
-| HDInsight-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Verfügbarkeit im Azure-Portal | 
+| HDInsight-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Verfügbarkeit im Azure-Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
-| HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017 | 30. Juni 2020 |31. Dezember 2020 |Ja |Ja |
+| HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017 | 31. Dezember 2020 |31. Dezember 2020 |Ja |Ja |
 
+Die Unterstützung für Spark 2.1, 2.2 und Kafka 1.0 läuft am 30. Juni 2020 ab.
 
 > [!NOTE]  
 > Nachdem die Unterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Microsoft Azure-Portal verfügbar. Clusterversionen stehen jedoch bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) und das .NET SDK zur Verfügung.
->
 
 ### <a name="retired-versions"></a>Eingestellte Versionen
 
 Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit **nicht** im Azure-Portal verfügbar sind.
 
-| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal | 
+| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. September 2016 |5\. September 2017 |28. Juni 2018 |Ja |Nein |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. März 2016 |29. Dezember 2016 |9\. Januar 2018 |Ja |Nein |
@@ -105,7 +105,7 @@ Enterprise Security für HDInsight ist ein optionales Paket, das Sie während de
 
 - Integration in Active Directory für die Authentifizierung
 
-    Bisher konnten Sie HDInsight-Cluster ausschließlich mit einem lokalen Administratorbenutzer oder einem lokalen SSH-Benutzer erstellen. Der lokale Administratorbenutzer kann auf alle Dateien, Ordner, Tabellen und Spalten zugreifen.  Mit dem Enterprise Security Package können Sie die rollenbasierte Zugriffssteuerung aktivieren, indem Sie HDInsight-Cluster in Ihr eigenes Active Directory integrieren, zu dem das lokale Active Directory, Azure Active Directory Domain Services oder Active Directory auf dem virtuellen IaaS-Computer gehören. Der Domänenadministrator des Clusters kann Benutzern die Berechtigung erteilen, ihren eigenen Firmen- oder Domänenbenutzernamen und ihr eigenes Kennwort für den Zugriff auf den Cluster zu verwenden. 
+    Bisher konnten Sie HDInsight-Cluster ausschließlich mit einem lokalen Administratorbenutzer oder einem lokalen SSH-Benutzer erstellen. Der lokale Administratorbenutzer kann auf alle Dateien, Ordner, Tabellen und Spalten zugreifen.  Mit dem Enterprise Security Package können Sie die rollenbasierte Zugriffssteuerung aktivieren, indem Sie HDInsight-Cluster in Ihr eigenes Active Directory integrieren, zu dem das lokale Active Directory, Azure Active Directory Domain Services oder Active Directory auf dem virtuellen IaaS-Computer gehören. Der Domänenadministrator des Clusters kann Benutzern die Berechtigung erteilen, ihren eigenen Firmen- oder Domänenbenutzernamen und ihr eigenes Kennwort für den Zugriff auf den Cluster zu verwenden.
 
     Weitere Informationen finden Sie unter
 
@@ -123,7 +123,7 @@ Enterprise Security für HDInsight ist ein optionales Paket, das Sie während de
 
   - [Konfigurieren von Apache Hive-Richtlinien in HDInsight mit Domänenverknüpfung](./domain-joined/apache-domain-joined-run-hive.md)
 
-- Anzeigen der Überwachungsprotokolle zum Überwachen der Zugriffe und konfigurierten Richtlinien 
+- Anzeigen der Überwachungsprotokolle zum Überwachen der Zugriffe und konfigurierten Richtlinien
 
 ### <a name="supported-cluster-types"></a>Unterstützte Clustertypen
 
@@ -141,15 +141,14 @@ Das Enterprise-Sicherheitspaket unterstützt die Verwendung von Azure Data Lake 
 
 Informationen zu Preisen und SLA für das Enterprise Security Package finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) für HDInsight-Clusterversionen
 
 Die Vereinbarung zum Servicelevel (Service Level Agreement, SLA) ist als _Supportfenster_ definiert. Ein Supportfenster ist ein Zeitraum, in dem eine HDInsight-Clusterversion vom Microsoft-Kundendienst und -Support unterstützt wird. Wenn die Version ein verstrichenes _Supportablaufdatum_ hat, befindet sich das HDInsight-Cluster außerhalb des Supportfensters. Das Supportablaufdatum für eine bestimmte HDInsight-Version X (nachdem eine neuere X+1-Version verfügbar ist) wird berechnet als das spätere Datum von:  
 
-* Formel 1: Addieren Sie 180 Tage zum Releasedatum von HDInsight-Clusterversion X.
-* Formel 2: Addieren Sie 90 Tage zum Releasedatum von HDInsight-Clusterversion X+1 im Azure-Portal.
+- Formel 1: Addieren Sie 180 Tage zum Releasedatum von HDInsight-Clusterversion X.
+- Formel 2: Addieren Sie 90 Tage zum Releasedatum von HDInsight-Clusterversion X+1 im Azure-Portal.
 
-Das _Deaktivierungsdatum_ ist das Datum, nach dem die Clusterversion nicht mehr in HDInsight erstellt werden kann. Ab dem 31. Juli 2017 kann die Größe eines HDInsight-Clusters nicht mehr geändert werden. 
+Das _Deaktivierungsdatum_ ist das Datum, nach dem die Clusterversion nicht mehr in HDInsight erstellt werden kann. Ab dem 31. Juli 2017 kann die Größe eines HDInsight-Clusters nicht mehr geändert werden.
 
 > [!NOTE]  
 > Windows-basierte HDInsight-Cluster (einschließlich Version 2.1, 3.0, 3.1, 3.2 und 3.3) laufen unter der Azure-Gast-BS-Familie Version 4, die die 64-Bit-Version von Windows Server 2012 R2 verwendet. Die Azure-Gast-BS-Familie Version 4 unterstützt die .NET Framework-Versionen 4.0, 4.5, 4.5.1 und 4.5.2.
@@ -178,6 +177,7 @@ Dieser Abschnitt enthält Links zu den Anmerkungen zu dieser Version für Horton
 Weitere Informationen dazu, welche SKUs für virtuelle Computer für Ihren Cluster ausgewählt werden sollten, finden Sie in dem Artikel über [Details einer Azure HDInsight-Clusterkonfiguration](hdinsight-supported-node-configuration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - [Einrichten von Clustern in HDInsight mit Apache Hadoop, Spark, Kafka usw.](hdinsight-hadoop-provision-linux-clusters.md)
 - [Verwenden eines Windows-Computers mit Apache Hadoop in HDInsight](hdinsight-hadoop-windows-tools.md)
 

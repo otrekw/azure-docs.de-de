@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: c52bf372f21d9c2ef3d1a148aadd899435ad4181
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383059"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790331"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Tutorial: Visualisieren und Analysieren von Ereignissen über Azure Digital Twins mit Time Series Insights
 
@@ -145,7 +145,7 @@ Mit dem [Event Hubs](../event-hubs/event-hubs-about.md)-Dienst können Sie eine 
 
     [![Auswahl zum Erstellen einer Time Series Insights-Instanz](./media/tutorial-facilities-analyze/create-tsi.png)](./media/tutorial-facilities-analyze/create-tsi.png#lightbox)
 
-1. Geben Sie auf der Registerkarte **Ereignisquelle** einen **Namen** ein. Wählen Sie **Ereignishub** als **Quelltyp** aus, und stellen Sie sicher, dass die anderen Werte ordnungsgemäß ausgewählt sind. Wählen Sie unter **Event Hub-Richtlinienname** den Namen **ManageSend** und anschließend die im vorherigen Abschnitt erstellte Consumergruppe für **Event Hub-Consumergruppe** aus. Klicken Sie auf **Überprüfen + erstellen**.
+1. Geben Sie auf der Registerkarte **Ereignisquelle** einen **Namen** ein. Wählen Sie **Event Hub** als **Quelltyp** aus, und stellen Sie sicher, dass die anderen Werte ordnungsgemäß ausgewählt sind, um auf den erstellten Event Hub zu verweisen. Wählen Sie unter **Event Hub-Richtlinienname** den Namen **ManageSend** und anschließend die im vorherigen Abschnitt erstellte Consumergruppe für **Event Hub-Consumergruppe** aus. Klicken Sie auf **Überprüfen + erstellen**.
 
     [![Auswahl zum Erstellen einer Ereignisquelle](./media/tutorial-facilities-analyze/tsi-event-source.png)](./media/tutorial-facilities-analyze/tsi-event-source.png#lightbox)
 

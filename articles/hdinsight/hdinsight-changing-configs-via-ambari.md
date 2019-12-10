@@ -2,18 +2,18 @@
 title: Apache Ambari zum Optimieren von Clusterkonfigurationen – Azure HDInsight
 description: Verwenden Sie die Apache Ambari-Webbenutzeroberfläche, um Azure HDInsight-Cluster zu konfigurieren und zu optimieren.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.author: hrasheed
-ms.openlocfilehash: e0d94a41febdba1bea6818309e05d287bef6d3a1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 15a2c75a7619a815655be0fd9fd3044d86acd057
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492512"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150115"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>Verwenden von Apache Ambari zum Optimieren von HDInsight-Clusterkonfigurationen
 
@@ -143,7 +143,7 @@ Hive verarbeitet Daten zeilenweise. Bei der Vektorisierung wird Hive angewiesen,
 
 Standardmäßig wird für Hive eine Gruppe von Regeln befolgt, um einen optimalen Plan für die Abfrageausführung zu ermitteln. Bei der kostenbasierten Optimierung (Cost-Based Optimization, CBO) werden mehrere Pläne zum Ausführen einer Abfrage evaluiert, und jedem Plan werden Kosten zugewiesen. Anschließend wird der kostengünstigste Plan zum Ausführen einer Abfrage ermittelt.
 
-Navigieren Sie zum Aktivieren von CBO zur Hive-Registerkarte **Configs** (Konfigurationen), und suchen Sie nach `parameter hive.cbo.enable`. Legen Sie die Umschaltfläche auf **Ein** fest.
+Navigieren Sie zum Aktivieren der CBO zu **Hive** > **Configs** > **Settings** („Hive“ > „Konfigurationen“ > „Einstellungen“), suchen Sie nach **Enable Cost Based Optimizer** (Kostenbasierte Optimierung aktivieren), und schalten Sie dann die Umschaltfläche auf **On** (Ein) um.
 
 ![Kostenbasierter HDInsight-Optimierer](./media/hdinsight-changing-configs-via-ambari/hdinsight-cbo-config.png)
 
@@ -195,15 +195,13 @@ Hier gilt die folgende allgemeine Regel: Es ist wichtig, dass die Komprimierungs
 
 1. Gehen Sie wie folgt vor, um eine benutzerdefinierte Einstellung hinzuzufügen:
 
-    a. Navigieren Sie zur Hive-Registerkarte **Configs** (Konfigurationen), und wählen Sie die Registerkarte **Advanced** (Erweitert).
+    a. Navigieren Sie zu **Hive** > **Configs** > **Advanced** > **Custom hive-site** („Hive“ > „Erweitert“ > „Benutzerdefinierte Hive-Site“).
 
-    b. Suchen Sie unter der Registerkarte **Advanced** (Erweitert) nach dem Bereich **Custom hive-site** (Benutzerdefinierte Hive-Site), und erweitern Sie ihn.
+    b. Wählen Sie unten im Bereich „Custom hive-site“ (Benutzerdefinierte Hive-Site) die Option **Add Property** (Eigenschaft hinzufügen) aus.
 
-    c. Klicken Sie unten im Bereich „Custom hive-site“ (Benutzerdefinierte Hive-Site) auf **Add Property** (Eigenschaft hinzufügen).
+    c. Geben Sie im Fenster „Add Property“ (Eigenschaft hinzufügen) `mapred.map.output.compression.codec` als Schlüssel und `org.apache.hadoop.io.compress.SnappyCodec` als Wert ein.
 
-    d. Geben Sie im Fenster „Add Property“ (Eigenschaft hinzufügen) `mapred.map.output.compression.codec` als Schlüssel und `org.apache.hadoop.io.compress.SnappyCodec` als Wert ein.
-
-    e. Klicken Sie auf **Hinzufügen**.
+    d. Wählen Sie **Hinzufügen**.
 
     ![Apache Hive – Hinzufügen benutzerdefinierter Eigenschaften](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 

@@ -1,17 +1,17 @@
 ---
-title: Einrichten einer Appliance für die Azure Migrate-Serverbewertung/-migration für VMware-VMs | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Appliance unter Verwendung der Azure Migrate-Serverbewertung/-migration für die Ermittlung, Bewertung und Migration ohne Agent von VMware-VMs einrichten.
+title: Einrichten einer Azure Migrate-Appliance für VMware
+description: In diesem Artikel erfahren Sie, wie Sie eine Azure Migrate-Appliance für die Bewertung und Migration von VMware-VMs einrichten.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 77bf9a0f73519aa979da49614475daf70f582a9e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1489d29f854b02cf493493fe022c73dc050e2615
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467122"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185855"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -25,7 +25,7 @@ Bei der VMware-VM-Appliance handelt es sich um eine einfache Appliance, die von 
 [Weitere Informationen](migrate-appliance.md) zur Azure Migrate-Appliance.
 
 
-## <a name="appliance-deployment-steps"></a>Schritte der Appliancebereitstellung
+## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
 
 Die Einrichtung der Appliance umfasst Folgendes:
 - Herunterladen einer OVA-Vorlagendatei und Importieren der Datei in vCenter Server
@@ -48,11 +48,12 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die Applianceversion 1.0.0.5 muss der generierte Hash den folgenden Einstellungen entsprechen.
+3. Für die aktuelle Applianceversion muss der generierte Hash den folgenden Einstellungen entsprechen.
 
   **Algorithmus** | **Hashwert**
   --- | ---
-  MD5 | ddfdf21c64af02a222ed517ce300c977
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ## <a name="create-the-appliance-vm"></a>Erstellen der Appliance-VM
@@ -85,7 +86,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
    Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
 4. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
     - **Lizenz**: Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
-    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Sollte die VM einen Proxy verwenden, gehen Sie wie folgt vor:
+    - **Konnektivität**: Die App überprüft, ob die VM über Internetzugriff verfügt. Falls die VM einen Proxy verwendet, gehen Sie wie folgt vor:
         - Klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an (im Format http://ProxyIPAddress oder http://ProxyFQDN ).
         - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
         - Es werden nur HTTP-Proxys unterstützt.

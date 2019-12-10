@@ -1,19 +1,15 @@
 ---
-title: Erstellen einer Funktionen-App im Azure-Portal | Microsoft Docs
+title: Erstellen einer Funktions-App über das Azure-Portal
 description: Es wird beschrieben, wie Sie in Azure über das Portal eine neue Funktions-App erstellen.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 93bce0404c9b3bf630416557726dca0c856528c3
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170802"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230771"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Erstellen einer Funktionen-App im Azure-Portal
 
@@ -29,7 +25,7 @@ Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Z
 
 Nach der Erstellung der Funktionen-App können Sie einzelne Funktionen in einer oder mehreren Sprachen erstellen. Die Funktionen können Sie [über das Portal](functions-create-first-azure-function.md#create-function), über [Continuous Deployment](functions-continuous-deployment.md) oder durch [Hochladen mit FTP](https://github.com/projectkudu/kudu/wiki/Accessing-files-via-ftp) erstellen.
 
-## <a name="service-plans"></a>Diensttarife
+## <a name="service-plans"></a>Servicepläne
 
 Azure Functions verfügt über drei verschiedene Diensttarife: Verbrauchstarif, Premium-Tarif und Dedicated-Tarif (App Service). Sie müssen Ihren Diensttarif bei der Erstellung der Funktions-App auswählen. Anschließend kann er dann nicht mehr geändert werden. Weitere Informationen finden Sie unter [Auswählen eines Azure Functions-Hostingplans](functions-scale.md).
 

@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: ec1caadfa7b5dc9c671d30b188d86d33ef46948e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 52296305f4edd51acff92a6cc42a1bce0b6ec9a6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506043"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816068"
 ---
-Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-java">Speech SDK-Java-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.
+Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-java">Speech SDK-Java-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Fahren Sie andernfalls hier fort.

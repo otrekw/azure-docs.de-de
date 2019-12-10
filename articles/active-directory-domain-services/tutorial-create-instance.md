@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 84272336a9f70f663e134e16fe88c7e43bb73548
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ef203eec1398e9f23fb162845b9d570316083ecf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74208616"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703694"
 ---
 # <a name="tutorial-create-and-configure-an-azure-active-directory-domain-services-instance"></a>Tutorial: Erstellen und Konfigurieren einer Azure Active Directory Domain Services-Instanz
 
@@ -72,7 +72,7 @@ Beim Erstellen einer Azure AD DS-Instanz geben Sie einen DNS-Namen an. Bei der
 >
 > Sie können den DNS-Stammnamen für Ihre verwaltete Azure AD DS-Domäne verwenden, müssen aber möglicherweise einige zusätzliche DNS-Einträge für andere Dienste in Ihrer Umgebung erstellen. Beispiel: Wenn Sie einen Webserver ausführen, der unter Verwendung des DNS-Stammnamens eine Website hostet, können Namenskonflikte auftreten, aufgrund derer zusätzliche DNS-Einträge erforderlich sind.
 >
-> In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *contoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an, der unter Umständen ein eindeutiges Präfix enthält.
+> In diesen Tutorials und Anleitungen wird die benutzerdefinierte Domäne *aadds.contoso.com* als kurzes Beispiel verwendet. Geben Sie in allen Befehlen Ihren eigenen Domänennamen an, der unter Umständen ein eindeutiges Präfix enthält.
 >
 > Weitere Informationen finden Sie unter [Auswählen eines Namenspräfixes für die Domäne][naming-prefix].
 
@@ -117,7 +117,7 @@ Zum schnellen Erstellen einer verwalteten Azure AD DS-Domäne können Sie **Ü
     ![Benachrichtigung im Azure-Portal über den Fortschritt der Bereitstellung](./media/tutorial-create-instance/deployment-in-progress.png)
 
 1. Die Seite wird mit Aktualisierungen zum Bereitstellungsvorgang geladen, u. a. mit der Erstellung neuer Ressourcen in Ihrem Verzeichnis.
-1. Wählen Sie Ihre Ressourcengruppe aus (z. B. *myResourceGroup*), und wählen Sie dann aus der Liste der Azure-Ressourcen Ihre Azure AD DS-Instanz aus (z. B. *contoso.com*). Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
+1. Wählen Sie Ihre Ressourcengruppe (z. B. *myResourceGroup*) und dann aus der Liste der Azure-Ressourcen Ihre Azure AD DS-Instanz (z. B. *aadds.contoso.com*) aus. Die Registerkarte **Übersicht** zeigt an, dass die verwaltete Domäne sich im Status *Wird bereitgestellt* befindet. Sie können die verwaltete Domäne erst dann konfigurieren, wenn sie vollständig bereitgestellt ist.
 
     ![Status „Wird bereitgestellt“ der Domäne](./media/tutorial-create-instance/provisioning-in-progress.png)
 

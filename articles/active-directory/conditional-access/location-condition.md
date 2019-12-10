@@ -1,23 +1,23 @@
 ---
-title: Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? | Microsoft-Dokumentation
+title: Standortbedingung beim bedingten Zugriff in Azure Active Directory
 description: Erfahren Sie, wie Sie die auf dem Netzwerkstandort eines Benutzers beruhende Standortbedingung zum Steuern des Zugriffs auf Ihre Cloud-App verwenden können.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 04/12/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd62cda209a8ac95a41fa271ce3a96001a3b4811
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67164775"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380296"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? 
 

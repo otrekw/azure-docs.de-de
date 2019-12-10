@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren einer Web Application Firewall-Richtlinie (WAF) mit benutzerdefinierten Regeln und einem Standardregelsatz für Front Door – Azure PowerShell
+title: Konfigurieren von benutzerdefinierten WAF-Regeln und eines Standardregelsatzes für Azure Front Door
 description: Erfahren Sie, wie Sie eine WAF-Richtlinie mit benutzerdefinierten und verwalteten Regeln für einen vorhandenen Front Door-Endpunkt konfigurieren.
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510195"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186637"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Richtlinie mit Azure PowerShell
 

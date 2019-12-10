@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7327031a7cd05674e9823f21601aab34c859f540
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 686ac8013879eff8adc4476d56119bbb4a169900
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423566"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74813136"
 ---
 # <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Tutorial: Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -45,9 +45,12 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 > [!IMPORTANT]
 > Ihre ExpressRoute-Verbindung wird von dem Moment an berechnet, in dem ein Dienstschlüssel ausgegeben wird. Stellen Sie sicher, dass Sie diesen Vorgang ausführen, sobald der Konnektivitätsanbieter dazu bereit ist, die Verbindung bereitzustellen.
 
-1. Sie können eine ExpressRoute-Verbindung erstellen, indem Sie die Option zum Erstellen einer neuen Ressource auswählen. Klicken Sie auf **Ressource erstellen** > **Netzwerk** > **ExpressRoute**, wie in der Abbildung unten gezeigt:
+Sie können eine ExpressRoute-Verbindung erstellen, indem Sie die Option zum Erstellen einer neuen Ressource auswählen. 
 
-   ![Erstellen Sie eine ExpressRoute-Verbindung.](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
+1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. Wählen Sie **Netzwerk** > **ExpressRoute** aus, wie in der folgenden Abbildung gezeigt:
+
+   ![Erstellen Sie eine ExpressRoute-Verbindung.](./media/expressroute-howto-circuit-portal-resource-manager/create-an-expressroute-circuit.png)
+
 2. Nachdem Sie auf **ExpressRoute** geklickt haben, wird die Seite **ExpressRoute-Verbindung erstellen** angezeigt. Wenn Sie die Werte auf der Seite ausfüllen, stellen Sie sicher, dass Sie den richtigen SKU-Tarif (Standard oder Premium) sowie das richtige Abrechnungsmodell für die Datenmessung (Unbegrenzt oder Taktung) angeben.
 
    ![Konfigurieren von SKU-Tarif und Datenmessung](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
@@ -146,7 +149,7 @@ Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 
 Klicken Sie auf **Konfiguration**, um eine ExpressRoute-Verbindung zu bearbeiten.
 
-![Ändern der Verbindung](./media/expressroute-howto-circuit-portal-resource-manager/modifycircuit.png)
+![Ändern der Verbindung](./media/expressroute-howto-circuit-portal-resource-manager/modify-circuit-configuration.png)
 
 ## <a name="delete"></a>Aufheben der Bereitstellung und Löschen einer ExpressRoute-Verbindung
 

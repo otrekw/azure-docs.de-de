@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-Skript – Wiederherstellen eines Azure Database for MySQL-Servers
+title: 'CLI-Skript: Wiederherstellen eines Servers – Azure Database for MySQL'
 description: Dieses Beispielskript für die Azure-Befehlszeilenschnittstelle veranschaulicht das Wiederherstellen eines Azure Database for MySQL-Servers und seiner Datenbanken auf einen früheren Zeitpunkt.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
-ms.date: 02/28/2018
-ms.openlocfilehash: 7bc4b1533da272bed9b7b7b8a0abe9b509e02386
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 12/02/2019
+ms.openlocfilehash: 5a84a44a4ea941bf3b77f0762fc764ec069919c7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545109"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74771327"
 ---
 # <a name="restore-an-azure-database-for-mysql-server-using-azure-cli"></a>Wiederherstellen eines Azure Database for MySQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle
 Dieses CLI-Beispielskript stellt einen einzelnen Azure Database for MySQL-Server auf den Zustand auf einen früheren Zeitpunkt wieder her.

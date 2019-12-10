@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Sprachsynthese, Objective-C – Speech-Dienst'
+title: 'Schnellstart: Synthetisieren von Sprache, Objective-C – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zum Synthetisieren von Sprache in Objective-C unter iOS mit dem Speech SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 460d2069bea8809b7d453bbe1cf27284109df9b5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 09ee7f0918bce469186688a5d0e82441bb2e5457
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505523"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817770"
 ---
 # <a name="quickstart-synthesize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Schnellstart: Sprachsynthese in Objective-C unter iOS mit dem Speech SDK
 

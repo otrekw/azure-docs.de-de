@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 492fa7f4989a40ea1d5ec91a4fbf4dbbe79ef6ce
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383255"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790348"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Tutorial: Empfangen von Benachrichtigungen von den Azure Digital Twins-Gebäudebereichen mit Logic Apps
 
@@ -118,9 +118,9 @@ Mit dem [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst können 
 
 1. Öffnen Sie die Logic Apps-Ressource nach ihrer Bereitstellung, und öffnen Sie dann den Bereich **Logik-App-Designer**. 
 
-1. Wählen Sie den Trigger **Bei Auftreten eines Event Grid-Ressourcenereignisses** aus. Melden Sie sich mit Ihrem Azure-Konto bei Ihrem Mandanten an, wenn Sie dazu aufgefordert werden. Wählen Sie bei entsprechender Aufforderung für die Event Grid-Ressource **Zugriff zulassen** aus. Wählen Sie **Weiter**.
+1. Wählen Sie den Trigger **Bei Auftreten eines Event Grid-Ressourcenereignisses** aus. Erweitern Sie die Option **Azure Event Grid**, und melden Sie sich mit Ihrem Azure-Konto bei Ihrem Mandanten an, wenn Sie dazu aufgefordert werden. Wählen Sie bei entsprechender Aufforderung für die Event Grid-Ressource **Zugriff zulassen** aus. Wählen Sie **Weiter**.
 
-1. Führen Sie im Fenster **When a resource event occurs (Preview)** (Bei Auftreten eines Ressourcenereignisses (Vorschau)) die folgenden Schritte aus: 
+1. Führen Sie im Fenster **When a resource event occurs** (Bei Auftreten eines Ressourcenereignisses) die folgenden Schritte aus: 
    
    a. Wählen Sie das **Abonnement** aus, das Sie zum Erstellen des Event Grid-Themas verwendet haben.
 
@@ -186,7 +186,7 @@ Mit dem [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-Dienst können 
 
    [![Logic Apps: Auswahl für „E-Mail senden“](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
 
-1. Wählen Sie oben im Bereich **Logik-App-Designer** die Option **Speichern** aus.
+1. Wählen Sie oben im Bereich **Logik-App-Designer** die Schaltfläche **Speichern** aus.
 
 1. Stellen Sie sicher, dass Sie Sensordaten simulieren. Navigieren Sie dazu in einem Befehlsfenster zum Ordner **device-connectivity** des Digital Twins-Beispiels, und führen Sie den Befehl `dotnet run` aus.
 

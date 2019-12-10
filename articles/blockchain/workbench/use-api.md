@@ -1,21 +1,15 @@
 ---
-title: Verwenden der REST-API von Azure Blockchain Workbench
+title: Verwenden der REST-APIs von Azure Blockchain Workbench
 description: Szenarien für die Verwendung der REST-API der Vorschauversion von Azure Blockchain Workbench
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 2f751cc4f0037b8d60034636a0c512989113e441
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.reviewer: brendal
+ms.openlocfilehash: 188bbb9a9f6d289a7950ff74596352dff36e79f2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328870"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324203"
 ---
 # <a name="using-the-azure-blockchain-workbench-preview-rest-api"></a>Verwenden der REST-API der Vorschauversion von Azure Blockchain Workbench
 
@@ -28,6 +22,19 @@ Die REST-API der Vorschauversion von Azure Blockchain Workbench bietet Entwickle
 * Ausführen einer Aktion für einen Vertrag
 
 Die in diesen Szenarien verwendeten Blockchain-Beispielanwendungen können [von GitHub heruntergeladen werden](https://github.com/Azure-Samples/blockchain).
+
+## <a name="blockchain-workbench-api-endpoint"></a>Endpunkt der Blockchain Workbench-API
+
+Der Zugriff auf Blockchain Workbench-APIs erfolgt über einen Endpunkt für Ihre Bereitstellung. So rufen Sie die URL des API-Endpunkts für Ihre Bereitstellung ab:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wählen Sie im linken Navigationsbereich **Ressourcengruppen** aus.
+1. Wählen Sie den Namen der Ressourcengruppe für die bereitgestellte Blockchain Workbench aus.
+1. Klicken Sie auf die Spaltenüberschrift **TYP**, um die Liste alphabetisch nach Typ zu sortieren.
+1. Es gibt zwei Ressourcen vom Typ **App-Dienst**. Wählen Sie die Ressource vom Typ **App-Dienst** *mit* dem Suffix „-api“ aus.
+1. Kopieren Sie in der **Übersicht** des App-Diensts den Wert für **URL**. Dieser stellt die URL des API-Endpunkts für die bereitgestellte Blockchain Workbench dar.
+
+    ![URL des API-Endpunkts für den App-Dienst](media/use-api/app-service-api.png)
 
 ## <a name="list-applications"></a>Auflisten von Anwendungen
 

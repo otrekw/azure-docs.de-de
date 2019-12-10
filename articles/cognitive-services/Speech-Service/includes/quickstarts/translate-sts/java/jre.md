@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache in Sprache, Java (Windows, Linux) – Spracherkennungsdienst'
+title: 'Schnellstart: Übersetzen von Sprache in Sprache, Java (Windows, Linux) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a6ef6c0070642e1c2f762f5cb19f97bd4d1e8cb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6b49f7e79b72ff1f8de8ede4b34c8d7de1462b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505195"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817478"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -143,7 +143,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 Drücken Sie F11, oder wählen Sie **Ausführen** > **Debuggen** aus.
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Spracherkennungsdienste, die ihn in Text übersetzen und transkribieren (in diesem Fall ins Deutsche). Die Spracherkennungsdienste senden die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der ihn in Text übersetzt und transkribiert (in diesem Fall ins Deutsche). Der Speech-Dienst sendet die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
 
 ````
 Say something...

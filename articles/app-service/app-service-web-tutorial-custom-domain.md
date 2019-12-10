@@ -1,27 +1,18 @@
 ---
-title: 'Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens: Azure App Service | Microsoft-Dokumentation'
+title: 'Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens'
 description: Hier erfahren Sie, wie Sie einen vorhandenen benutzerdefinierten DNS-Domänennamen einer Web-App, einem Back-End einer mobilen App oder einer API-App in Azure App Service hinzufügen.
 keywords: App Service, Azure App Service, Domänenzuordnung, Domänenname, vorhandene Domäne, Hostname
-services: app-service\web
-documentationcenter: nodejs
-author: cephalin
-manager: erikre
-editor: ''
 ms.assetid: dc446e0e-0958-48ea-8d99-441d2b947a7c
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: fa8acbab8179eea752607c4410851d74ae4e9444
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 37bb1193056894ea824f4aa1723fb327f54bccae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835872"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672077"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 

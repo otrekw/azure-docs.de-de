@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/19/2019
 ms.author: yinhew
-ms.openlocfilehash: 3a88f4fc14286a60feb9d72676827b0cce91eb25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 276de42f2a37a0e48cd323e285760c00e6db9f32
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505131"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818186"
 ---
 > [!NOTE]
 > Mithilfe der universellen Windows-Plattform können Sie Apps entwickeln, die auf einem beliebigen Gerät mit Unterstützung für Windows 10 (z.B. PCs, Xbox, Surface Hub und andere Geräte) ausgeführt werden.
@@ -61,7 +61,7 @@ Nun können Sie Ihre Anwendung erstellen und testen.
 
    ![UWP-Beispielanwendung für die Sprachsynthese in C#: Schnellstart](~/articles/cognitive-services/Speech-Service/media/sdk/qs-text-to-speech-uwp-helloworld-window.png)
 
-1. Geben Sie Text in das Textfeld ein, und klicken Sie auf **Sprechen**. Ihr Text wird an die Spracherkennungsdienste übermittelt und in Sprache synthetisiert, die dann über Ihren Lautsprecher ausgegeben wird.
+1. Geben Sie Text in das Textfeld ein, und klicken Sie auf **Sprechen**. Ihr Text wird an den Speech-Dienst übermittelt und in Sprache synthetisiert, die dann über Ihren Lautsprecher ausgegeben wird.
 
     ![Benutzeroberfläche für die Sprachsynthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-uwp-ui-result.png)
 

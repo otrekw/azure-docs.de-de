@@ -1,25 +1,19 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Wiederherstellen einer App-Sicherung in einem anderen Abonnement | Microsoft-Dokumentation'
-description: 'Azure PowerShell-Skriptbeispiel: Wiederherstellen einer Web-App aus einer Sicherung in einem anderen Abonnement'
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jpconnoc
-editor: ''
+title: 'PowerShell: Wiederherstellen der Sicherung in einem anderen Abonnement'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine Sicherung in einem anderen Abonnement wiederherstellen.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: a2a27d94-d378-4c17-a6a9-ae1e69dc4a72
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 5f293f290bd0c8b6c5546d37a43dde64a5af4f82
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8168fbedd1a639dce0ab8bd076e14ab24e2f6d1e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098404"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685824"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Wiederherstellen einer Web-App aus einer Sicherung in einem anderen Abonnement mithilfe von PowerShell
 

@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: Erstellen von Recovery Services-Tresoren'
+title: Erstellen von Recovery Services-Tresoren
 description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore zum Speichern der Sicherungen und Wiederherstellungspunkte erstellen.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-keywords: Recovery Services-Tresor; Azure VM-Sicherung; Azure VM-Wiederherstellung;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 30e2f8812b14f27b57ef22e30aea89f19fa56e58
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074880"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273394"
 ---
 # <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
@@ -77,6 +72,13 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 
 > [!NOTE]
 > Die Änderung des **Speicherreplikationstyps** (lokal redundant/georedundant) für einen Recovery Services-Tresor muss vorgenommen werden, bevor Sicherungen im Tresor konfiguriert werden. Nachdem Sie die Sicherung konfiguriert haben, ist die Option für die Änderung deaktiviert, und Sie können den **Speicherreplikationstyp** nicht ändern.
+
+## <a name="modifying-default-settings"></a>Ändern der Standardeinstellungen
+
+Es wird dringend empfohlen, vor dem Konfigurieren von Sicherungen im Tresor die Standardeinstellungen für **Speicherreplikationstyp** und **Sicherheitseinstellungen** zu überprüfen. 
+* **Speicherreplikationstyp** ist standardmäßig auf **Georedundant** festgelegt. Nachdem Sie die Sicherung konfiguriert haben, ist die Option zum Ändern deaktiviert. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) aus, um die Einstellungen zu überprüfen und zu ändern. 
+* **Vorläufiges Löschen** ist für neu erstellte Tresore standardmäßig auf **Aktiviert** festgelegt, um das versehentliche oder bösartige Löschen von Sicherungsdaten zu verhindern. Führen Sie diese [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) aus, um die Einstellungen zu überprüfen und zu ändern.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: 1f47b01c4a9227d0e2ee45b17645b2ae97e4ba3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f111b19eb07c218a9f3250ef3ffdb8a97cf07542
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821231"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420734"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads
 
@@ -35,7 +35,7 @@ Die Funktion der horizontalen Leseskalierung ist bei Datenbanken in den Tarifen 
 Wenn Sie sicherstellen möchten, dass die Anwendung unabhängig von der Einstellung `ApplicationIntent` in der SQL-Verbindungszeichenfolge eine Verbindung mit dem primären Replikat herstellt, müssen Sie die horizontale Leseskalierung beim Erstellen der Datenbank oder beim Ändern ihrer Konfiguration explizit deaktivieren. Wenn Sie Ihre Datenbank z. B. vom Tarif Standard oder Universell auf den Tarif Premium, Unternehmenskritisch oder Hyperscale umstellen und sicherstellen möchten, dass weiterhin alle Verbindungen zum primären Replikat führen, deaktivieren Sie die horizontale Leseskalierung. Weitere Informationen zum Deaktivieren finden Sie unter [Aktivieren und Deaktivieren der horizontalen Leseskalierung](#enable-and-disable-read-scale-out).
 
 > [!NOTE]
-> Abfragedatenspeicher, erweiterte Ereignisse, SQL Profiler und Überwachungsfeatures werden in den schreibgeschützten Replikaten nicht unterstützt. 
+> Abfragedatenspeicher, erweiterte Ereignisse, SQL Profiler und Überwachungsfeatures werden in den schreibgeschützten Replikaten nicht unterstützt.
 
 ## <a name="data-consistency"></a>Datenkonsistenz
 
@@ -50,13 +50,13 @@ Wenn Sie die horizontale Leseskalierung für eine Datenbank aktivieren, bestimmt
 
 Ein Beispiel: Die folgende Verbindungszeichenfolge verbindet den Client mit einem schreibgeschützten Replikat (ersetzen Sie die Elemente in spitzen Klammern durch die richtigen Werte für Ihre Umgebung, und löschen Sie die Klammern):
 
-```SQL
+```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadOnly;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 ```
 
 Jede der folgenden Verbindungszeichenfolgen verbindet den Client mit einem Replikat mit Lese-/Schreibzugriff (ersetzen Sie die Elemente in spitzen Klammern durch die richtigen Werte für Ihre Umgebung, und löschen Sie die Klammern):
 
-```SQL
+```sql
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;ApplicationIntent=ReadWrite;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
 
 Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>;Password=<myPassword>;Trusted_Connection=False; Encrypt=True;
@@ -66,7 +66,7 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 Sie können durch Ausführen der folgenden Abfrage überprüfen, ob Sie mit einem schreibgeschützten Replikat verbunden sind. Bei Verbindung mit einem schreibgeschützten Replikat wird READ_ONLY zurückgegeben.
 
-```SQL
+```sql
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
@@ -80,10 +80,9 @@ Wenn Sie mit einem schreibgeschützten Replikat verbunden sind, können Sie mith
 > [!NOTE]
 > Die DMV `sys.resource_stats` in der logischen Masterdatenbank gibt CPU-Nutzung und Speicherdaten des primären Replikats zurück.
 
-
 ## <a name="enable-and-disable-read-scale-out"></a>Aktivieren und Deaktivieren der horizontalen Leseskalierung
 
-Die horizontale Leseskalierung ist bei den Dienstebenen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Für die Dienstebenen Basic, Standard oder Universell kann die horizontale Leseskalierung nicht aktiviert werden. Die horizontale Leseskalierung wird für Hyperscale-Datenbanken, die mit 0 Replikaten konfiguriert sind, automatisch deaktiviert. 
+Die horizontale Leseskalierung ist bei den Dienstebenen Premium, Unternehmenskritisch und Hyperscale standardmäßig aktiviert. Für die Dienstebenen Basic, Standard oder Universell kann die horizontale Leseskalierung nicht aktiviert werden. Die horizontale Leseskalierung wird für Hyperscale-Datenbanken, die mit 0 Replikaten konfiguriert sind, automatisch deaktiviert.
 
 Sie können die horizontale Leseskalierung für Singletons und Pools für elastische Datenbanken der Dienstebenen Premium oder Unternehmenskritisch mithilfe der folgenden Methoden deaktivieren und erneut aktivieren.
 
@@ -92,29 +91,33 @@ Sie können die horizontale Leseskalierung für Singletons und Pools für elasti
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Sie verwalten die Einstellung für die horizontale Leseskalierung auf dem Datenbankblatt **Konfigurieren**. 
+Sie verwalten die Einstellung für die horizontale Leseskalierung auf dem Datenbankblatt **Konfigurieren**.
 
 ### <a name="powershell"></a>PowerShell
 
+> [!IMPORTANT]
+> Das Azure Resource Manager-Modul von PowerShell wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
+
 Für die Verwaltung der horizontalen Leseskalierung in Azure PowerShell ist das Azure PowerShell-Release von Dezember 2016 oder eine neuere Version erforderlich. Das neueste PowerShell-Release finden Sie unter [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Sie aktivieren oder deaktivieren die horizontale Leseskalierung in Azure PowerShell, indem Sie das Cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) aufrufen und für den Parameter `-ReadScale` den gewünschten Wert übergeben: `Enabled` oder `Disabled`. 
+Sie aktivieren oder deaktivieren die horizontale Leseskalierung in Azure PowerShell, indem Sie das Cmdlet [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) aufrufen und für den Parameter `-ReadScale` den gewünschten Wert übergeben: `Enabled` oder `Disabled`.
 
 So deaktivieren Sie die horizontale Leseskalierung für eine vorhandene Datenbank (ersetzen Sie die Elemente in spitzen Klammern durch die richtigen Werte für Ihre Umgebung, und löschen Sie die Klammern)
 
 ```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled
 ```
+
 So deaktivieren Sie die horizontale Leseskalierung für eine neue Datenbank (ersetzen Sie die Elemente in spitzen Klammern durch die richtigen Werte für Ihre Umgebung, und löschen Sie die Klammern)
 
 ```powershell
-New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled -Edition Premium
+New-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Disabled -Edition Premium
 ```
 
 So aktivieren Sie die horizontale Leseskalierung für eine vorhandene Datenbank erneut (ersetzen Sie die Elemente in spitzen Klammern durch die richtigen Werte für Ihre Umgebung, und löschen Sie die Klammern)
 
 ```powershell
-Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
+Set-AzSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName <serverName> -DatabaseName <databaseName> -ReadScale Enabled
 ```
 
 ### <a name="rest-api"></a>REST-API
@@ -124,10 +127,8 @@ Verwenden Sie zum Erstellen einer Datenbank mit deaktivierter horizontaler Leses
 ```rest
 Method: PUT
 URL: https://management.azure.com/subscriptions/{SubscriptionId}/resourceGroups/{GroupName}/providers/Microsoft.Sql/servers/{ServerName}/databases/{DatabaseName}?api-version= 2014-04-01-preview
-Body:
-{
-   "properties":
-   {
+Body: {
+   "properties": {
       "readScale":"Disabled"
    }
 }
@@ -137,7 +138,7 @@ Weitere Informationen finden Sie unter [Databanken – Erstellen oder Aktualisie
 
 ## <a name="using-tempdb-on-read-only-replica"></a>Verwenden von TempDB auf einem schreibgeschützten Replikat
 
-Die TempDB-Datenbank wird nicht in die schreibgeschützten Replikate repliziert. Jedes Replikat verfügt über eine eigene Version der TempDB-Datenbank, die beim Erstellen des Replikats erstellt wird. Dadurch wird sichergestellt, dass TempDB aktualisiert werden kann und während der Abfrageausführung geändert werden kann. Wenn die schreibgeschützte Workload von der Verwendung von TempDB-Objekten abhängig ist, sollten Sie diese Objekte als Teil Ihres Abfrageskripts erstellen. 
+Die TempDB-Datenbank wird nicht in die schreibgeschützten Replikate repliziert. Jedes Replikat verfügt über eine eigene Version der TempDB-Datenbank, die beim Erstellen des Replikats erstellt wird. Dadurch wird sichergestellt, dass TempDB aktualisiert werden kann und während der Abfrageausführung geändert werden kann. Wenn die schreibgeschützte Workload von der Verwendung von TempDB-Objekten abhängig ist, sollten Sie diese Objekte als Teil Ihres Abfrageskripts erstellen.
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Verwenden der horizontalen Leseskalierung mit georeplizierten Datenbanken
 

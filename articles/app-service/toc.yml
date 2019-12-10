@@ -82,7 +82,11 @@
         - name: Sicherheitsübersicht
           href: overview-security.md
     - name: Netzwerkfeatures
-      href: networking-features.md
+      items:
+        - name: Übersicht
+          href: networking-features.md
+        - name: Application Gateway mit Dienstendpunkten
+          href: networking/app-gateway-with-service-endpoints.md
     - name: Eingehende und ausgehende IPs
       href: overview-inbound-outbound-ips.md
     - name: Virtual Network-Integration

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: fe969b45384568a41fe74415995b0173450eeaf4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 44fafa361744f3c405cdb5c7ad416146fc0b1de2
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505067"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817230"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -91,7 +91,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
    python quickstart.py
    ```
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Speech-Dienste, die den Text übersetzen und transkribieren (in diesem Fall ins Französische und Deutsche). Die Speech-Dienste senden den Text dann zum Anzeigen zurück an die Anwendung.
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der den Text übersetzt und transkribiert (in diesem Fall ins Französische und Deutsche). Der Speech-Dienst sendet den Text dann zum Anzeigen zurück an die Anwendung.
 
    ```
    Say something...

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache aus einer Audiodatei, C++ (Windows) – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von Sprache aus einer Audiodatei, C++ (Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Speech SDK Sprache in C++ unter Windows Desktop erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 09e0b6fbfcb8541a0756a855d4548e456a7b5c90
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506379"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819311"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -25,6 +25,8 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 > * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=windows)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=windows)
+
+[!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
@@ -84,13 +86,16 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Wählen Sie auf der Menüleiste **Datei** > **Alle speichern** aus.
 
+> [!NOTE]
+> Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
+
 ## <a name="build-and-run-the-application"></a>Erstellen und Ausführen der Anwendung
 
 1. Wählen Sie auf der Menüleiste **Erstellen** > **Projektmappe erstellen** aus, um die Anwendung zu erstellen. Der Code sollte nun ohne Fehler kompiliert werden.
 
 1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Ihre Audiodatei wird an die Spracherkennungsdienste übermittelt, und die erste Äußerung in der Datei wird in Text transkribiert, der im gleichen Fenster angezeigt wird.
+1. Ihre Audiodatei wird an den Speech-Dienst übermittelt, und die erste Äußerung in der Datei wird in Text transkribiert, der in demselben Fenster angezeigt wird.
 
    ```text
    Recognizing first result...

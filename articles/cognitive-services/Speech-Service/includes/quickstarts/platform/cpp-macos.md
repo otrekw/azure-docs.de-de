@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Speech SDK für C++ (macOS): Plattformeinrichtung – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie diesen Leitfaden, um Ihre Plattform mit dem Speech Services SDK für C++ unter macOS einzurichten.
+description: Verwenden Sie diesen Leitfaden, um Ihre Plattform mit dem Speech Service SDK für C++ unter macOS einzurichten.
 services: cognitive-services
 author: markamos
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/14/2019
 ms.author: erhopf
-ms.openlocfilehash: 2c6a186eef631372f08b876083dacede31cf1077
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1b01a7df286af65d3363956706ad2703a339a255
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504467"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818525"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für C++ unter macOS (ab 10.13) installieren.
 

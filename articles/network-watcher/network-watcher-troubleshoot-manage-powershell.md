@@ -1,5 +1,6 @@
 ---
-title: Problembehandlung bei Azure Virtual Network-Gateways und -Verbindungen – PowerShell | Microsoft-Dokumentation
+title: Problembehandlung bei Azure VNet-Gateways und -Verbindungen – Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird erläutert, wie Azure Network Watcher zur Problembehandlung von PowerShell verwendet wird.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163872"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277831"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit Azure Network Watcher und PowerShell
 

@@ -1,6 +1,6 @@
 ---
-title: Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen – Azure AD
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe Ihrer E-Mail-Adresse zu bestätigen.
+title: Einrichten einer E-Mail-Adresse als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Vorschau) einrichten, um Ihre Identität mithilfe einer E-Mail-Adresse als Überprüfungsmethode zu verifizieren.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a025005065174d5a6ca5fca27ee06ebb036b7b1d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dafa78e6f46a3d2d6b7a9c505defaeae21875946
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820341"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279021"
 ---
-# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen
+# <a name="set-up-an-email-address-as-your-verification-method"></a>Einrichten einer E-Mail-Adresse als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 

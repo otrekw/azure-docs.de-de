@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: erhopf
-ms.openlocfilehash: af3a070b714a9f86c8120f9bfd81bd41b8295f97
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d2750ba0336830d84f969a333a5aa30e9f10f8e6
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504819"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817071"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie unbedingt die folgenden Schritte aus, bevor Sie beginnen:
+Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=dotnet)
 
@@ -117,7 +117,7 @@ Führen Sie unbedingt die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Speech-Dienste, die den Text übersetzen und transkribieren (in diesem Fall ins Französische und Deutsche). Die Speech-Dienste senden den Text dann zum Anzeigen zurück an die Anwendung.
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der den Text übersetzt und transkribiert (in diesem Fall ins Französische und Deutsche). Der Speech-Dienst sendet den Text dann zum Anzeigen zurück an die Anwendung.
 
 ````
 Say something...

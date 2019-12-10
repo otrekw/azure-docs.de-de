@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen von Azure Machine Learning für ein Gerät: Azure IoT Edge'
+title: 'Tutorial: Bereitstellen von Azure Machine Learning für ein Gerät mithilfe von Azure IoT Edge'
 description: In diesem Tutorial erstellen Sie ein Azure Machine Learning-Modell und stellen es dann als Modul auf einem Edgegerät bereit.
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3f1bd4ce5b701652318679f3277bc7c9109fa529
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457638"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701927"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Tutorial: Bereitstellen von Azure Machine Learning als IoT Edge-Modul (Vorschauversion)
 
@@ -165,4 +165,3 @@ In diesem Tutorial haben Sie ein von Azure Machine Learning unterstütztes IoT E
 
 > [!div class="nextstepaction"]
 > [Tutorial: Perform image classification at the edge with Custom Vision Service](tutorial-deploy-custom-vision.md) (Tutorial: Ausführen der Bildklassifizierung im Edge-Bereich mit Custom Vision Service)
-

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 26f6c651b78099eff80b6af57d2047cc8696f4c2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112201"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555141"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -31,7 +31,7 @@ API-Versionen, NuGet-Pakete, Namespaces und Endpunkte sind unverändert. Ihre vo
 
 4\. November 2019 – Ignite-Konferenz
 
-+ Die [inkrementelle Indizierung (Vorschauversion)](cognitive-search-incremental-indexing-conceptual.md) ermöglicht es Ihnen, ausschließlich die Schritte zu verarbeiten bzw. erneut zu verarbeiten, die bei Änderungen an einer Anreicherungspipeline absolut notwendig sind. Dies ist besonders nützlich, wenn Sie über Bildinhalte verfügen, die Sie zuvor analysiert haben. Die Ausgabe der kostenintensiven Analyse wird gespeichert und dann als Grundlage für die zusätzliche Indizierung oder Anreicherung verwendet.
++ Mit der [inkrementellen Indizierung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) können Sie beim Ändern einer Anreicherungspipeline auswählen, welche Schritte erneut verarbeitet werden sollen. Die inkrementelle Indizierung ist besonders nützlich, wenn Sie über Bildinhalte verfügen, die Sie zuvor analysiert haben. Die Ausgabe der kostenintensiven Analyse wird gespeichert und dann als Grundlage für die zusätzliche Indizierung oder Anreicherung verwendet.
 
 <!-- 
 + Custom Entity Lookup is a cognitive skill used during indexing that allows you to provide a list of custom entities (such as part numbers, diseases, or names of locations you care about) that should be found within the text. It supports fuzzy matching, case-insensitive matching, and entity synonyms. -->
@@ -43,6 +43,10 @@ API-Versionen, NuGet-Pakete, Namespaces und Endpunkte sind unverändert. Ihre vo
 + [Power BI-Vorlagen](https://github.com/Azure-Samples/cognitive-search-templates/blob/master/README.md) können Ihren Visualisierungen und Analysen von angereicherten Inhalten in einem Wissensspeicher in Power BI Desktop neue Impulse verleihen. Diese Vorlage ist für Azure-Tabellenprojektionen konzipiert, die mithilfe des [Assistenten zum Importieren von Daten](knowledge-store-create-portal.md) erstellt wurden.
 
 + [Azure Data Lake Storage Gen2 (Vorschauversion)](search-howto-index-azure-data-lake-storage.md), die [Cosmos DB-Gremlin-API (Vorschauversion)](search-howto-index-cosmosdb.md) und die [Cosmos DB-Cassandra-API (Vorschauversion)](search-howto-index-cosmosdb.md) werden nun in Indexern unterstützt. Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, um sich zu registrieren. Sie erhalten eine Bestätigungs-E-Mail, sobald Sie in das Vorschauprogramm aufgenommen wurden.
+
+24. Juli 2019
+
++ In der [Azure Government-Cloud](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search) allgemein verfügbar.
 
 ## <a name="service-updates"></a>Dienstupdates
 

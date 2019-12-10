@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Übersetzen von Sprache in Sprache, C# (.NET Core Windows) – Spracherkennungsdienst'
+title: 'Schnellstart: Übersetzen von Sprache in Sprache, C# (.NET Core Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9dbb1dcb96ba8e46128e6996d78d95dfd43a8527
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1ef59f98cf27674b277c02c3e510ca100273bdcf
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504795"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817547"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -127,7 +127,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an die Spracherkennungsdienste, die ihn in Text übersetzen und transkribieren (in diesem Fall ins Deutsche). Die Spracherkennungsdienste senden die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
+1. Sprechen Sie einen englischen Ausdruck oder Satz. Die Anwendung überträgt ihn an den Speech-Dienst, der ihn in Text übersetzt und transkribiert (in diesem Fall ins Deutsche). Der Speech-Dienst sendet die synthetisierten Audiodaten und den Text dann zum Anzeigen zurück an die Anwendung.
 
 ````
 Say something...

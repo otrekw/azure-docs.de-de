@@ -6,15 +6,15 @@ keywords: Codierung; Encoder; Medien
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300948"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186038"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Empfohlene Livestreaming-Encoder
 
@@ -49,6 +49,9 @@ Media Services empfiehlt die Verwendung eines der nachfolgenden Liveencoder mit 
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [Ffmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Hero 7 und Hero 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Liveencoder mit Ausgabe im fragmentierten MP4-Format
 
@@ -60,9 +63,11 @@ Media Services empfiehlt den Einsatz eines der nachfolgenden Liveencoder, der Sm
 - Envivio-4Caster C4 Gen III
 - Imagine Communications Selenio MCP3
 - Media Excel Hero Live und Hero 4K (UHD/HEVC)
+- [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Wenn Sie Liveveranstaltungen in mehreren Sprachen streamen (z.B. eine englische Audiospur und eine spanische Audiospur), können Sie dies mit dem Media Excel Live Encoder erreichen, der so konfiguriert ist, dass er den Livefeed an ein Pass-Through-Liveereignis sendet.
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Konfigurieren von lokalen Liveencodereinstellungen
 

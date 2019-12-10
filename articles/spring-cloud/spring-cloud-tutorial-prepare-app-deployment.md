@@ -1,17 +1,17 @@
 ---
-title: Vorbereiten einer Spring-Anwendung für die Bereitstellung in Azure Spring Cloud | Microsoft-Dokumentation
-description: In dieser Schnellstartanleitung bereiten Sie eine Java Spring-Anwendung für die Bereitstellung vor.
+title: 'Tutorial: Vorbereiten einer Spring-Anwendung für die Bereitstellung in Azure Spring Cloud'
+description: In diesem Tutorial bereiten Sie eine Java Spring-Anwendung für die Bereitstellung vor.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 10/06/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c3048fd27c3d3d4fdba0841fb4ab21bd10e15fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3c567c54f887afe9ac112970a682b9466515d949
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721251"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708730"
 ---
 # <a name="tutorial-prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Tutorial: Vorbereiten einer Java Spring-Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -176,4 +176,3 @@ In diesem Tutorial haben Sie erfahren, wie Sie eine Java Spring-Anwendung für 
 
 > [!div class="nextstepaction"]
 > [Tutorial: Einrichten eines Spring Cloud-Konfigurationsservers für Ihren Dienst](spring-cloud-tutorial-config-server.md)
-

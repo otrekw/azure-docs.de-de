@@ -1,19 +1,19 @@
 ---
 title: Spark-Streaming in Azure HDInsight
 description: Verwendung von Apache Spark-Streaminganwendungen auf HDInsight-Spark-Clustern.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/11/2019
-ms.openlocfilehash: f990e5eb2761f1743c2731f499ecc341990edf53
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: 521d72642a27995d096402a4ca0e4af632b0788c
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813994"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406264"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Übersicht über Apache Spark-Streaming
 
@@ -27,7 +27,7 @@ Spark-Streaming-Anwendungen müssen einige Sekundenbruchteile warten, bis jeder 
 
 Spark-Streaming stellt einen kontinuierlichen Strom von eingehenden Daten mithilfe eines als DStream bezeichneten *diskretisierten Datenstroms* dar. Ein DStream kann aus Eingabequellen, z.B. Event Hubs oder Kafka, oder durch Anwenden von Transformationen auf einen anderen DStream erstellt werden.
 
-Ein DStream stellt eine Abstraktionsebene über den Ereignisrohdaten dar. 
+Ein DStream stellt eine Abstraktionsebene über den Ereignisrohdaten dar.
 
 Am Anfang steht ein einzelnes Ereignis, z.B. ein Temperaturwert auf einem vernetzten Thermostat. Wenn dieses Ereignis Ihre Spark-Streaming-Anwendung erreicht, wird es auf zuverlässige Weise gespeichert (auf mehreren Knoten repliziert). Diese Fehlertoleranz gewährleistet, dass der Ausfall eines einzelnen Knotens nicht zum Verlust des Ereignisses führt. Der Spark-Kern verwendet eine Datenstruktur, die Daten über mehrere Knoten im Cluster verteilt, wobei jeder Knoten in der Regel zur Leistungsoptimierung seinen eigenen internen Datenarbeitsspeicher verwaltet. Diese Datenstruktur wird als *Resilient Distributed Dataset* (RDD) bezeichnet.
 
@@ -139,7 +139,7 @@ stream.foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
         .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()
@@ -214,7 +214,7 @@ stream.window(org.apache.spark.streaming.Minutes(1)).foreachRDD { rdd =>
     val _sqlContext = org.apache.spark.sql.SQLContext.getOrCreate(rdd.sparkContext)
     _sqlContext.createDataFrame(rdd).toDF("value", "time")
     .registerTempTable("demo_numbers")
-} 
+}
 
 // Start the stream processing
 ssc.start()

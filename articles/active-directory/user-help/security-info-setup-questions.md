@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Sicherheitsinformationen (Vorschau) für Sicherheitsfragen – Azure AD
-description: So richten Sie Ihre Sicherheitsinformation ein, um Ihre Identität mithilfe vordefinierter Sicherheitsfragen zu bestätigen.
+title: Einrichten von Sicherheitsfragen als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie Ihre Seite mit den Sicherheitsinformationen (Vorschau) einrichten, um Ihre Identität mithilfe vordefinierter Sicherheitsfragen als Überprüfungsmethode zu verifizieren.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2513b52c347db428b5ac0236a2561e5d4f1cdd2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820306"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279000"
 ---
-# <a name="set-up-security-info-preview-to-use-security-questions"></a>Einrichten der Sicherheitsinformation (Vorschauversion) zur Verwendung von Sicherheitsfragen
+# <a name="set-up-security-questions-as-your-verification-method"></a>Einrichten von Sicherheitsfragen als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 

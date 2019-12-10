@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 04/04/2019
+ms.date: 11/29/2019
 ms.author: aahi
-ms.openlocfilehash: f11d23207a21af5c73831d0edd5ffc9eaa59c119
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 027e6ec829e9de9956451e48e5f9e1cdd749f9f7
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280676"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689335"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Beispielbenutzerszenarien für die Textanalyse-API
 
@@ -29,7 +29,7 @@ Gewinnen Sie Erkenntnisse aus den Ergebnissen von Kunden- und Mitarbeiterbefragu
 
 ## <a name="analyze-recorded-inbound-customer-calls"></a>Analysieren aufgezeichneter eingehender Kundenanrufe
 
-Gewinnen Sie Erkenntnisse aus Anrufen beim Kundendienst mithilfe der Sprachsynthese, Standpunktanalyse und Schlüsselbegriffserkennung. Zeigen Sie die Ergebnisse im Power BI-Dashboard oder in einem Portal an, um Kunden besser zu verstehen, Trends im Kundendienst aufzuzeigen und die Kundenbindung zu fördern. Senden Sie API-Anforderungen als Batch für die Berichterstellung oder in Echtzeit für Eingriffe. Siehe [Hinzufügen von Code](https://github.com/rlagh2/callcenteranalytics).
+Gewinnen Sie Erkenntnisse aus Anrufen beim Kundendienst mithilfe der Sprachsynthese, Standpunktanalyse und Schlüsselbegriffserkennung. Zeigen Sie die Ergebnisse im Power BI-Dashboard oder in einem Portal an, um Kunden besser zu verstehen, Trends im Kundendienst aufzuzeigen und die Kundenbindung zu fördern. Senden Sie API-Anforderungen als Batch für die Berichterstellung oder in Echtzeit für Eingriffe. Sehen Sie sich den Beispielcode auf [GitHub](https://github.com/rlagh2/callcenteranalytics) an.
 
 ![Abbildung mit einer Beschreibung, wie das Gewinnen von Erkenntnissen aus Anrufen beim Kundendienst mithilfe der Standpunktanalyse automatisiert werden kann](media/use-cases/azure-inbound.svg)
 

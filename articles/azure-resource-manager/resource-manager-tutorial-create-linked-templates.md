@@ -2,15 +2,15 @@
 title: Erstellen verknüpfter Vorlagen
 description: Informationen zum Erstellen verknüpfter Azure Resource Manager-Vorlagen zum Erstellen virtueller Computer
 author: mumian
-ms.date: 10/04/2019
+ms.date: 12/03/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9764edb986b2ee847e3fcecda228f53551b462c3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e8964335d8c436cc590c36c3ea01fac02ed2280a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325421"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815281"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen
 
@@ -45,6 +45,7 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie unter [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./resource-manager-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
@@ -55,42 +56,46 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 * **Die verknüpfte Vorlage**: Erstellen des Speicherkontos.
 
 1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
-2. Fügen Sie in **Dateiname** die folgende URL ein:
+1. Fügen Sie in **Dateiname** die folgende URL ein:
 
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
-3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Es gibt fünf Ressourcen, die von der Vorlage definiert werden:
+
+1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
+1. Es gibt sechs Ressourcen, die von der Vorlage definiert werden:
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
    * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
+   * [`Microsoft.Network/networkSecurityGroups`](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
    * [`Microsoft.Network/virtualNetworks`](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
      Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend mit dem Vorlagenschema vertraut machen.
-5. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
-6. Wählen Sie **Datei**>**Speichern unter** aus, um eine andere Kopie der Datei mit dem Namen **linkedTemplate.json** zu erstellen.
+1. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+1. Wählen Sie **Datei**>**Speichern unter** aus, um eine andere Kopie der Datei mit dem Namen **linkedTemplate.json** zu erstellen.
 
 ## <a name="create-the-linked-template"></a>Erstellen der verknüpften Vorlage
 
 Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann als eigenständige Vorlage verwendet werden, um ein Speicherkonto zu erstellen. In diesem Tutorial nimmt die verknüpfte Vorlage zwei Parameter an und gibt einen Wert an die Hauptvorlage zurück. Dieser „Rückgabewert“ wird im `outputs`-Element definiert.
 
 1. Öffnen Sie **linkedTemplate.json** in Visual Studio Code, falls die Datei nicht geöffnet ist.
-2. Nehmen Sie die folgenden Änderungen vor:
+1. Nehmen Sie die folgenden Änderungen vor:
 
     * Entfernen Sie alle Parameter außer **location**.
     * Fügen Sie einen Parameter namens **storageAccountName** hinzu.
-        ```json
-        "storageAccountName":{
-          "type": "string",
-          "metadata": {
-              "description": "Azure Storage account name."
-          }
-        },
-        ```
-        Der Name des Speicherkontos und der Speicherort werden aus der Hauptvorlage als Parameter an die verknüpfte Vorlage übergeben.
+
+      ```json
+      "storageAccountName":{
+        "type": "string",
+        "metadata": {
+            "description": "Azure Storage account name."
+        }
+      },
+      ```
+
+      Der Name des Speicherkontos und der Speicherort werden aus der Hauptvorlage als Parameter an die verknüpfte Vorlage übergeben.
 
     * Entfernen Sie das **variables**-Element und alle Variablendefinitionen.
     * Entfernen Sie alle Ressourcen mit Ausnahme des Speicherkontos. Sie entfernen insgesamt vier Ressourcen.
@@ -110,6 +115,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
             }
         }
         ```
+
        Die VM-Ressourcendefinition in der Hauptvorlage benötigt **storageUri**.  Sie geben den Wert als Ausgabewert an die Hauptvorlage zurück.
 
         Wenn Sie fertig sind, sollte die Vorlage etwa so aussehen:
@@ -138,7 +144,7 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
               "type": "Microsoft.Storage/storageAccounts",
               "name": "[parameters('storageAccountName')]",
               "location": "[parameters('location')]",
-              "apiVersion": "2018-07-01",
+              "apiVersion": "2018-11-01",
               "sku": {
                 "name": "Standard_LRS"
               },
@@ -154,7 +160,8 @@ Die verknüpfte Vorlage erstellt ein Speicherkonto. Die verknüpfte Vorlage kann
           }
         }
         ```
-3. Speichern Sie die Änderungen.
+
+1. Speichern Sie die Änderungen.
 
 ## <a name="upload-the-linked-template"></a>Hochladen der verknüpften Vorlage
 
@@ -208,9 +215,10 @@ $templateURI = New-AzStorageBlobSASToken `
     -ExpiryTime (Get-Date).AddHours(8.0) `
     -FullUri
 
-echo "You need the following values later in the tutorial:"
-echo "Resource Group Name: $resourceGroupName"
-echo "Linked template URI with SAS token: $templateURI"
+Write-Host "You need the following values later in the tutorial:"
+Write-Host "Resource Group Name: $resourceGroupName"
+Write-Host "Linked template URI with SAS token: $templateURI"
+Write-Host "Press [ENTER] to continue ..."
 ```
 
 1. Wählen Sie die grüne Schaltfläche **Jetzt testen** aus, um den Azure Cloud Shell-Bereich zu öffnen.
@@ -226,22 +234,7 @@ In der Praxis generieren Sie bei der Bereitstellung der Hauptvorlage ein SAS-Tok
 Die Hauptvorlage hat den Namen „azuredeploy.json“.
 
 1. Öffnen Sie **azuredeploy.json** in Visual Studio Code, falls die Datei nicht geöffnet ist.
-2. Löschen Sie die Ressourcendefinition des Speicherkontos aus der Vorlage:
-
-    ```json
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "apiVersion": "2018-07-01",
-      "sku": {
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {}
-    },
-    ```
-3. Fügen Sie dort, wo sich die Definition des Speicherkontos befand, den folgenden JSON-Codeausschnitt hinzu:
+1. Ersetzen Sie die Ressourcendefinition des Speicherkontos durch den folgenden JSON-Codeausschnitt:
 
     ```json
     {
@@ -251,7 +244,7 @@ Die Hauptvorlage hat den Namen „azuredeploy.json“.
       "properties": {
           "mode": "Incremental",
           "templateLink": {
-              "uri":"https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-linked-templates/linkedStorageAccount.json"
+              "uri":""
           },
           "parameters": {
               "storageAccountName":{"value": "[variables('storageAccountName')]"},
@@ -268,8 +261,8 @@ Die Hauptvorlage hat den Namen „azuredeploy.json“.
     * Beim Aufrufen verknüpfter Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](./deployment-modes.md) verwenden.
     * `templateLink/uri` enthält den URI der verknüpften Vorlage. Ersetzen Sie den Wert durch den URI, den Sie beim Hochladen der verknüpften Vorlage (also der Vorlage mit SAS-Token) erhalten.
     * Übergeben Sie mit `parameters` Werte aus der Hauptvorlage an die verknüpfte Vorlage.
-4. Vergewissern Sie sich, dass Sie den Wert des `uri`-Elements durch den Wert ersetzt haben, den Sie beim Hochladen der verknüpften Vorlage (also der Vorlage mit SAS-Token) erhalten haben. In der Praxis sollten Sie den URI mit einem Parameter angeben.
-5. Speichern Sie die geänderte Vorlage.
+1. Vergewissern Sie sich, dass Sie den Wert des `uri`-Elements durch den Wert ersetzt haben, den Sie beim Hochladen der verknüpften Vorlage (also der Vorlage mit SAS-Token) erhalten haben. In der Praxis sollten Sie den URI mit einem Parameter angeben.
+1. Speichern Sie die geänderte Vorlage.
 
 ## <a name="configure-dependency"></a>Konfigurieren der Abhängigkeit
 
@@ -290,6 +283,7 @@ Da das Speicherkonto nun in der verknüpften Vorlage definiert ist, müssen Sie 
             }
     }
     ```
+
     Die Hauptvorlage benötigt diesen Wert.
 
 1. Öffnen Sie „azuredeploy.json“ in Visual Studio Code, falls die Datei noch nicht geöffnet ist.

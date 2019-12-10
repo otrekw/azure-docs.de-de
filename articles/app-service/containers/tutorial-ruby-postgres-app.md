@@ -1,23 +1,16 @@
 ---
-title: 'Ruby (Rails) mit Postgres unter Linux: Azure App Service | Microsoft-Dokumentation'
-description: Hier erhalten Sie Informationen zum Ausführen einer Ruby-App in Azure, die Sie mit einer PostgreSQL-Datenbank in Azure verbinden. In diesem Tutorial wird Rails verwendet.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-ms.service: app-service-web
-ms.workload: web
+title: 'Tutorial: Linux-Ruby-App mit PostgresSQL'
+description: Hier erfahren Sie, wie Sie eine Linux-Ruby-App in Azure App Service ausführen, die mit einer PostgreSQL-Datenbank in Azure verbunden ist. In diesem Tutorial wird Rails verwendet.
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 03/27/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3ec19b1c564c09406ab1f29c38aef6332d80f8f1
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 6af9da060f7742fe2a9b9656199edd5feb67bec1
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544687"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687414"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-App in Azure App Service für Linux
 
@@ -173,7 +166,7 @@ Stellen Sie in Cloud Shell eine Verbindung mit dem Postgres-Server in Azure her.
 psql -U adminuser@<postgres-server-name> -h <postgres-server-name>.postgres.database.azure.com postgres
 ```
 
-Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie _My5up3r$tr0ngPa$w0rd!_, das Sie beim Erstellen des Datenbankservers angegeben haben.
+Wenn Sie zur Eingabe eines Kennworts aufgefordert werden, verwenden Sie _My5up3r$tr0ngPa$w0rd!_ , das Sie beim Erstellen des Datenbankservers angegeben haben.
 
 ### <a name="create-a-production-database"></a>Erstellen einer Produktionsdatenbank
 
@@ -302,7 +295,7 @@ In diesem Schritt stellen Sie die mit Postgres verbundene Rails-Anwendung in Azu
 
 Verwenden Sie in App Service den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell, um Umgebungsvariablen als _App-Einstellungen_ festzulegen.
 
-Mit dem folgenden Cloud Shell-Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;postgres-server-name>_.
+Mit dem folgenden Cloud Shell-Befehl werden die App-Einstellungen `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` und `DB_PASSWORD` konfiguriert. Ersetzen Sie die Platzhalter _&lt;appname>_ und _&lt;postgres-server-name>_ .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="railsappuser@<postgres-server-name>" DB_PASSWORD="MyPostgresAzure2017"
@@ -318,7 +311,7 @@ rails secret
 
 Konfigurieren Sie die für die Rails-Produktionsumgebung erforderlichen Variablen.
 
-Ersetzen Sie im folgenden Cloud Shell-Befehl die beiden _&lt;output-of-rails-secret>_-Platzhalter durch den neuen geheimen Schlüssel, den Sie im lokalen Terminal generiert haben.
+Ersetzen Sie im folgenden Cloud Shell-Befehl die beiden _&lt;output-of-rails-secret>_ -Platzhalter durch den neuen geheimen Schlüssel, den Sie im lokalen Terminal generiert haben.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
@@ -513,7 +506,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihrer App einen benutzerdefinierten DNS-Namen zuordnen.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service-web-tutorial-custom-domain.md)
+> [Tutorial: Zuordnen eines benutzerdefinierten DNS-Namens zu Ihrer App](../app-service-web-tutorial-custom-domain.md)
 
 Oder sehen Sie sich weitere Ressourcen an:
 

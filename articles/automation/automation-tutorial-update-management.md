@@ -6,15 +6,15 @@ author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/03/2019
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 44372f32227bbfef46a72afa6f9b0bd88b29905b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278783"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806557"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Verwalten von Updates und Patches für Ihre virtuellen Azure-Computer
 
@@ -127,6 +127,10 @@ Wenn Sie den Betreff der Warnungs-E-Mail anpassen möchten, klicken Sie unter **
 ## <a name="schedule-an-update-deployment"></a>Planen einer Updatebereitstellung
 
 Planen Sie als Nächstes eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht, um Updates zu installieren. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
+
+>[!NOTE]
+>Bei der Planung einer Updatebereitstellung wird eine [Zeitplanressource](shared-resources/schedules.md) erstellt, die mit dem Runbook **Patch-MicrosoftOMSComputers** verknüpft ist, das die Updatebereitstellung auf den Zielcomputern verarbeitet. Wenn Sie die Zeitplanressource nach der Bereitstellungserstellung über das Azure-Portal oder mithilfe von PowerShell löschen, wird die geplante Updatebereitstellung unterbrochen, und es wird ein Fehler angezeigt, wenn Sie sie erneut über das Portal konfigurieren möchten. Sie können die Zeitplanressource nur löschen, indem Sie den entsprechenden Bereitstellungszeitplan löschen.  
+>
 
 Um eine neue Updatebereitstellung für den virtuellen Computer zu planen, klicken Sie auf **Updateverwaltung** und dann auf **Updatebereitstellung planen**.
 

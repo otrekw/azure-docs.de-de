@@ -11,16 +11,18 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: f5eaed807e69dcc1a0b7ad426bab91abd2f8309a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283b4004f34372104eb083496400772884f5965e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827265"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420379"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Erstellen, Konfigurieren und Verwalten von Aufträgen für die elastische Datenbank
 
-In diesem Artikel erfahren Sie, wie Sie Aufträge für die elastische Datenbank erstellen, konfigurieren und verwalten. Falls Sie noch keine Aufträge für die elastische Datenbank verwendet haben, finden Sie [hier](sql-database-job-automation-overview.md) weitere Informationen zu den Auftragsautomatisierungskonzepten in Azure SQL-Datenbank.
+In diesem Artikel erfahren Sie, wie Sie Aufträge für die elastische Datenbank erstellen, konfigurieren und verwalten.
+
+Falls Sie noch keine Aufträge für die elastische Datenbank verwendet haben, finden Sie [hier](sql-database-job-automation-overview.md) weitere Informationen zu den Auftragsautomatisierungskonzepten in Azure SQL-Datenbank.
 
 ## <a name="create-and-configure-the-agent"></a>Erstellen und Konfigurieren des Agents
 
@@ -31,11 +33,11 @@ In diesem Artikel erfahren Sie, wie Sie Aufträge für die elastische Datenbank 
 
 ## <a name="create-run-and-manage-jobs"></a>Erstellen, Ausführen und Verwalten von Aufträgen
 
-1. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets) oder [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) Anmeldeinformationen für die Auftragsausführung in der *Auftragsdatenbank*.
-2. Definieren Sie mithilfe von [PowerShell](elastic-jobs-powershell.md#define-the-target-databases-you-want-to-run-the-job-against) oder [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) die Zielgruppe (also die Datenbanken, für die der Auftrag ausgeführt werden soll).
-3. Erstellen Sie in jeder Datenbank, für die der Auftrag ausgeführt wird, Anmeldeinformationen für den Auftrags-Agent, indem Sie [jeder Datenbank in der Gruppe den Benutzer (oder die Rolle) hinzufügen](sql-database-control-access.md). Ein Beispiel finden Sie im [PowerShell-Tutorial](elastic-jobs-powershell.md#create-job-credentials-so-that-jobs-can-execute-scripts-on-its-targets).
-4. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md#create-a-job) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) einen Auftrag.
-5. Fügen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md#create-a-job-step) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) Auftragsschritte hinzu.
+1. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#create-a-credential-for-job-execution) Anmeldeinformationen für die Auftragsausführung in der *Auftragsdatenbank*.
+2. Definieren Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#create-a-target-group-servers) die Zielgruppe (also die Datenbanken, für die der Auftrag ausgeführt werden soll).
+3. Erstellen Sie in jeder Datenbank, für die der Auftrag ausgeführt wird, Anmeldeinformationen für den Auftrags-Agent, indem Sie [jeder Datenbank in der Gruppe den Benutzer (oder die Rolle) hinzufügen](sql-database-control-access.md). Ein Beispiel finden Sie im [PowerShell-Tutorial](elastic-jobs-powershell.md).
+4. Erstellen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) einen Auftrag.
+5. Fügen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md) oder [T-SQL](elastic-jobs-tsql.md#deploy-new-schema-to-many-databases) Auftragsschritte hinzu.
 6. Führen Sie mithilfe von [PowerShell](elastic-jobs-powershell.md#run-the-job) oder [T-SQL](elastic-jobs-tsql.md#begin-ad-hoc-execution-of-a-job) einen Auftrag aus.
 7. Überwachen Sie den Status der Auftragsausführung über das Portal oder mithilfe von [PowerShell](elastic-jobs-powershell.md#monitor-status-of-job-executions) oder [T-SQL](elastic-jobs-tsql.md#monitor-job-execution-status).
 

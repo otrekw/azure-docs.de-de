@@ -1,17 +1,17 @@
 ---
-title: Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie eine Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung binden.
+title: 'Tutorial: Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung'
+description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung binden.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6c5cd4ac384affaedbd813f9395f997f92eb69c4
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a9911798e42db55d5aaae90c933cfb64945b244c
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151124"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708809"
 ---
 # <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Tutorial: Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung 
 
@@ -65,4 +65,3 @@ In diesem Tutorial haben Sie erfahren, wie Sie Ihre Azure Spring Cloud-Anwendung
 
 > [!div class="nextstepaction"]
 > [Aktivieren von Dienstermittlung und -registrierung über die Spring Cloud-Registrierung](spring-cloud-service-registration.md)
-

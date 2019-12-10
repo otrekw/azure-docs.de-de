@@ -1,61 +1,80 @@
 ---
-title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken – Azure Backup
+title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
-ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/7/2019
+ms.openlocfilehash: b4c39c631963a358dcdc9d1eafe954a85a9499ad
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968454"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554858"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
-Dieser Artikel enthält Informationen zur Problembehandlung beim Sichern von SAP HANA-Datenbanken in Azure Virtual Machines. Im folgenden Abschnitt werden wichtige konzeptionelle Daten behandelt, die für die Diagnose von häufigen Fehlern in SAP HANA-Sicherungen erforderlich sind.
+Dieser Artikel enthält Informationen zur Problembehandlung beim Sichern von SAP HANA-Datenbanken in Azure Virtual Machines. Weitere Informationen zu den derzeit unterstützten SAP HANA-Sicherungsszenarien finden Sie unter [Unterstützung von Szenarien](sap-hana-backup-support-matrix.md#scenario-support).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites-and-permissions"></a>Voraussetzungen und Berechtigungen
 
-Stellen Sie im Rahmen der [Voraussetzungen](backup-azure-sap-hana-database.md#prerequisites) sicher, dass auf dem virtuellen Computer, auf dem HANA installiert ist, das Vorregistrierungsskript ausgeführt wurde.
+Sehen Sie vor dem Konfigurieren von Sicherungen die Abschnitte [Voraussetzungen](tutorial-backup-sap-hana-db.md#prerequisites) und [Einrichten von Berechtigungen](tutorial-backup-sap-hana-db.md#setting-up-permissions) ein.
 
-### <a name="setting-up-permissions"></a>Einrichten von Berechtigungen
+## <a name="common-user-errors"></a>Häufige Benutzerfehler
 
-Aufgaben des Vorregistrierungsskripts:
+###  <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection 
 
-1. Erstellen von AZUREWLBACKUPHANAUSER im HANA-System und Hinzufügen der erforderlichen Rollen und Berechtigungen:
-    - DATABASE ADMIN: Erstellen neuer Datenbanken während der Wiederherstellung
-    - CATALOG READ: Lesen des Sicherungskatalogs
-    - SAP_INTERNAL_HANA_SUPPORT: Zugreifen auf einige private Tabellen
-2. Hinzufügen eines Schlüssels zum Hdbuserstore für das HANA-Plug-In, um alle Vorgänge (Datenbankabfragen, Wiederherstellungsvorgänge, Konfigurieren und Ausführen von Sicherungen) zu behandeln.
+| Fehlermeldung      | Fehler beim Herstellen der Verbindung mit dem HANA-System                             |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Die SAP HANA-Instanz ist möglicherweise ausgefallen.<br/>Die erforderlichen Berechtigungen für die Interaktion von Azure Backup mit der Hana-Datenbank sind nicht festgelegt. |
+| Empfohlene Maßnahme | Überprüfen Sie, ob die SAP HANA-Datenbank aktiv ist. Wenn die Datenbank ausgeführt wird, überprüfen Sie, ob alle erforderlichen Berechtigungen festgelegt sind. Wenn Berechtigungen nicht vorhanden sind, führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) aus, um die fehlenden Berechtigungen hinzuzufügen. |
 
-   Um die Schlüsselerstellung zu bestätigen, führen Sie auf dem HANA-Computer den Befehl HDBSQL mit SIDADM-Anmeldeinformationen aus:
+###  <a name="usererrorhanainstancenameinvalid"></a>UserErrorHanaInstanceNameInvalid 
 
-    ``` hdbsql
-    hdbuserstore list
-    ```
+| Fehlermeldung      | Die angegebene SAP HANA-Instanz ist entweder ungültig oder wurde nicht gefunden. |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Es können nicht mehrere SAP HANA-Instanzen auf einem einzelnen virtuellen Azure-Computer gesichert werden. |
+| Empfohlene Maßnahme | Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) auf der SAP HANA-Instanz aus, die gesichert werden soll. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support. |
 
-    Die Ausgabe des Befehls sollte den Schlüssel {SID} {DBNAME} und den Benutzer AZUREWLBACKUPHANAUSER enthalten.
+###  <a name="usererrorhanaunsupportedoperation"></a>UserErrorHanaUnsupportedOperation 
 
-> [!NOTE]
-> Stellen Sie sicher, dass sich unter **/usr/sap/{SID}/home/.hdb/** eine eindeutige Gruppe von SSFS-Dateien befindet. In diesem Pfad darf nur ein Ordner vorhanden sein.
+| Fehlermeldung      | Der angegebene SAP HANA-Vorgang wird nicht unterstützt.             |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Azure Backup für SAP HANA unterstützt keine inkrementellen Sicherungen und keine Aktionen, die für SAP HANA-native Clients (Studio/Cockpit/DBA Cockpit) ausgeführt werden. |
+| Empfohlene Maßnahme | Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
 
-### <a name="setting-up-backint-parameters"></a>Einrichten von backInt-Parametern
+###  <a name="usererrorhanapodoesnotsupportbackuptype"></a>UserErrorHANAPODoesNotSupportBackupType 
 
-Nachdem eine Datenbank für die Sicherung ausgewählt wurde, konfiguriert der Azure Backup-Dienst backInt-Parameter auf Datenbankebene:
+| Fehlermeldung      | Diese SAP HANA-Datenbank unterstützt nicht den angeforderten Sicherungstyp. |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Azure Backup unterstützt keine inkrementellen Sicherungen und keine Sicherungen mit Momentaufnahmen. |
+| Empfohlene Maßnahme | Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support). |
 
-- [catalog_backup_using_backint:true]
-- [enable_accumulated_catalog_backup:false]
-- [parallel_data_backup_backint_channels:1]
-- [log_backup_timeout_s:900)]
-- [backint_response_timeout:7200]
+###  <a name="usererrorhanalsnvalidationfailure"></a>UserErrorHANALSNValidationFailure 
 
-> [!NOTE]
-> Stellen Sie sicher, dass diese Parameter *nicht* auf HOST-Ebene vorhanden sind. Parameter auf HOST-Ebene überschreiben diese Parameter und können zu unerwartetem Verhalten führen.
+| Fehlermeldung      | Die Sicherungsprotokollkette ist unterbrochen.                                   |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Das Protokollsicherungsziel wurde möglicherweise von backint in das Dateisystem geändert, oder die ausführbare backint-Datei wurde geändert. |
+| Empfohlene Maßnahme | Lösen Sie eine vollständige Sicherung aus, um das Problem zu beheben.                   |
+
+###  <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore 
+
+| Fehlermeldung      | Das Quell- und das Zielsystem für die Wiederherstellung sind nicht kompatibel.   |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Das Zielsystem für die Wiederherstellung ist nicht mit dem Quellsystem kompatibel. |
+| Empfohlene Maßnahme | Informationen zu den derzeit unterstützten Wiederherstellungstypen finden Sie im SAP-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148). |
+
+###  <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected 
+
+| Fehlermeldung      | Upgrade von SDC auf MDC erkannt.                                  |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Es wurde ein Upgrade der SAP HANA-Instanz von SDC auf MDC ausgeführt. Sicherungen können nach dem Upgrade nicht mehr ausgeführt werden. |
+| Empfohlene Maßnahme | Führen Sie die Schritte im Abschnitt [Upgrade von SAP HANA 1.0 auf 2.0](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) aus, um das Problem zu beheben. |
+
+###  <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration 
+
+| Fehlermeldung      | Ungültige backint-Konfiguration erkannt.                       |
+| ------------------ | ------------------------------------------------------------ |
+| Mögliche Ursachen    | Die backint-Parameter sind nicht ordnungsgemäß für Azure Backup angegeben. |
+| Empfohlene Maßnahme | Überprüfen Sie, ob die folgenden backint-Parameter festgelegt sind:<br/>\* [catalog_backup_using_backint:true]<br/>\* [enable_accumulated_catalog_backup:false]<br/>\* [parallel_data_backup_backint_channels:1]<br/>\* [log_backup_timeout_s:900)]<br/>\* [backint_response_timeout:7200]<br/>Wenn in HOST backint-Parameter vorhanden sind, entfernen Sie sie. Wenn Parameter auf HOST-Ebene nicht vorhanden sind, aber auf Datenbankebene manuell geändert wurden, setzen Sie sie wie oben beschrieben auf die entsprechenden Werte zurück. Oder führen Sie im Azure-Portal [Schutz beenden und Sicherungsdaten beibehalten](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) aus, und wählen Sie dann **Sicherung fortsetzen** aus. |
 
 ## <a name="restore-checks"></a>Wiederherstellungsprüfungen
 
@@ -70,24 +89,32 @@ Angenommen, eine SDC HANA-Instanz „H21“ wird gesichert. Auf der Seite mit de
 Beachten Sie folgende Punkte:
 
 - Standardmäßig wird der Name der wiederhergestellten Datenbank mit dem Namen des Sicherungselements aufgefüllt, d.h. „h21(sdc)“.
-- Wenn Sie als Ziel „H11“ auswählen, wird der Name der wiederhergestellten Datenbank NICHT automatisch geändert. **Er sollte in „h11(sdc)“ geändert werden**. Im Fall von SDC ist der Name der wiederhergestellten Datenbank die ID der Zielinstanz in Kleinbuchstaben, der „sdc“ in Klammern angefügt wird.
+- Wenn Sie als Ziel „H11“ auswählen, wird der Name der wiederhergestellten Datenbank NICHT automatisch geändert. **Er sollte in „h11(sdc)“ geändert werden**. Im Fall von SDC ist der Name der wiederhergestellten Datenbank die ID der Zielinstanz in Kleinbuchstaben, an die „sdc“ in Klammern angefügt wird.
 - Da SDC nur über eine einzelne Datenbank verfügen kann, müssen Sie auch das Kontrollkästchen aktivieren, um das Überschreiben der vorhandenen Datenbankdaten mit den Daten des Wiederherstellungspunkts zuzulassen.
-- Bei Linux wird die Groß-/Kleinschreibung beachtet, achten Sie daher darauf, die Groß-/Kleinschreibung beizubehalten.
+- Bei Linux muss die Groß-/Kleinschreibung beachtet werden. Sie müssen daher unbedingt die Groß-/Kleinschreibung beibehalten.
 
 ### <a name="multiple-container-database-mdc-restore"></a>Wiederherstellung einer Datenbank mit mehreren Containern (MDC)
 
-In Datenbanken mit mehreren Containern (MDC) für HANA ist die Standardkonfiguration „SYSTEMDB + 1 oder mehr Mandantendatenbanken“. Das Wiederherstellen einer vollständigen SAP HANA-Instanz bedeutet, dass sowohl SYSTEMDB als auch die Mandantendatenbanken wiederhergestellt werden. Zuerst wird SYSTEMDB wiederhergestellt, und dann wird die Wiederherstellung für die Mandantendatenbank fortgesetzt. Systemdatenbank bedeutet im Wesentlichen, dass die Systeminformationen für das ausgewählte Ziel überschrieben werden. Dabei werden auch die BackInt-bezogenen Informationen in der-Zielinstanz überschrieben. Daher muss das Vorregistrierungsskript erneut ausgeführt werden, nachdem die Systemdatenbank auf einer Zielinstanz wiederhergestellt wurde. Nur dann ist die nachfolgende Wiederherstellung der Mandantendatenbanken erfolgreich.
+In Datenbanken mit mehreren Containern (MDC) für HANA ist die Standardkonfiguration „SYSTEMDB + 1 oder mehr Mandantendatenbanken“. Das Wiederherstellen einer vollständigen SAP HANA-Instanz bedeutet, dass sowohl SYSTEMDB als auch die Mandantendatenbanken wiederhergestellt werden. Zuerst wird SYSTEMDB wiederhergestellt, und dann wird die Wiederherstellung für die Mandantendatenbank fortgesetzt. Systemdatenbank bedeutet im Wesentlichen, dass die Systeminformationen für das ausgewählte Ziel überschrieben werden. Bei dieser Wiederherstellung werden auch die BackInt-bezogenen Informationen in der Zielinstanz überschrieben. Daher muss das Vorregistrierungsskript erneut ausgeführt werden, nachdem die Systemdatenbank auf einer Zielinstanz wiederhergestellt wurde. Nur dann ist die nachfolgende Wiederherstellung der Mandantendatenbanken erfolgreich.
 
-## <a name="common-user-errors"></a>Häufige Benutzerfehler
+## <a name="upgrading-from-sap-hana-10-to-20"></a>Upgrade von SAP HANA 1.0 auf 2.0
 
-### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
+Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die unten beschriebenen Schritte aus:
 
-data| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
-|---|---|---|
-| Fehler beim Herstellen der Verbindung mit dem HANA-System. Stellen Sie sicher, dass Ihr System ausgeführt wird.| Der Azure Backup-Dienst kann keine Verbindung mit HANA herstellen, da die HANA-Datenbank ausgefallen ist. Oder HANA wird ausgeführt, lässt jedoch die Verbindung mit dem Azure Backup-Dienst nicht zu. | Überprüfen Sie, ob die HANA-Datenbank oder der HANA-Dienst ausgefallen ist. Wenn die HANA-Datenbank oder der HANA-Dienst ausgeführt wird, überprüfen Sie, ob [alle Berechtigungen festgelegt sind](#setting-up-permissions). Wenn der Schlüssel fehlt, führen Sie das Vorregistrierungsskript erneut aus, um einen neuen Schlüssel zu erstellen. |
+- [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die alte SDC-Datenbank.
+- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit den richtigen Details (SID und MDC) erneut aus.
+- Registrieren Sie die Erweiterung erneut (Sicherung > Details anzeigen > relevante Azure-VM auswählen > erneut registrieren).
+- Klicken Sie auf „Datenbanken neu ermitteln“ für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 2 mit den richtigen Details (Systemdatenbank und Mandantendatenbank, nicht SDC) angezeigt werden.
+- Schützen Sie diese neuen Datenbanken.
 
-### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
+## <a name="upgrading-without-an-sid-change"></a>Upgrade ohne SID-Änderung
 
-| Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
-|---|---|---|
-| Ungültige backInt-Konfiguration erkannt. Beenden Sie den Schutz, und konfigurieren Sie die Datenbank neu.| Die backInt-Parameter sind nicht ordnungsgemäß für Azure Backup angegeben. | Überprüfen Sie, ob [die Parameter festgelegt sind](#setting-up-backint-parameters). Wenn in HOST backInt-Parameter vorhanden sind, entfernen Sie sie. Wenn Parameter auf HOST-Ebene nicht vorhanden sind, aber auf Datenbankebene manuell geändert wurden, setzen Sie sie wie oben beschrieben auf die entsprechenden Werte zurück. Oder führen Sie im Azure-Portal **Schutz beenden und Sicherungsdaten beibehalten** aus, und wählen Sie dann **Sicherung fortsetzen** aus.|
+Upgrades auf OS oder SAP HANA, die keine SID-Änderung bewirken, können wie unten beschrieben behandelt werden:
+
+- [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die Datenbank.
+- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus.
+- [Setzen Sie den Schutz](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) für die Datenbank fort.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Sehen Sie die [häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/sap-hana-faq-backup-azure-vm) zum Sichern von SAP HANA-Datenbanken auf Azure-VMs ein.

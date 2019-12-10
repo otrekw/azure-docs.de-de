@@ -1,23 +1,17 @@
 ---
-title: F#-Entwicklerreferenz zu Azure Functions | Microsoft Docs
+title: F#-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie in Azure Functions mithilfe von F#-Skripts entwickelt wird.
-services: functions
-documentationcenter: fsharp
 author: sylvanc
-manager: jbronsk
-keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Computing, serverlose Architektur, F#
 ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
-ms.service: azure-functions
-ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 23e9ffa5c86674cb34951f29573e033b4a904941
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442226"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226746"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 

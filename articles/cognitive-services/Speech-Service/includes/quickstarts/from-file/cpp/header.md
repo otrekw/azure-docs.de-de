@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache aus einer Audiodatei, C++ – Speech-Dienst'
+title: 'Schnellstart: Erkennen von Sprache aus einer Audiodatei, C++ – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 1a232108452db0fd879212311ecb1e8a8bb19cc6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e2a7cd7c2ae352f65a2e65e82d717afaafb3b516
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506307"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819384"
 ---
-Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-cpp">Speech SDK-C++-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.
+Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-cpp">Speech SDK-C++-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.

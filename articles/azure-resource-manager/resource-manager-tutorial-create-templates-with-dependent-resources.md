@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ef26074b0dd6450895c6aa81d5ab8853e652b41e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 61f9ff575c927cdafa4aa26fbad0ebb6e257b010
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325390"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815251"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen
 
@@ -111,15 +111,15 @@ Durch die Angabe der Abhängigkeiten wird die Lösung von Resource Manager effiz
 Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwenden Sie Cloud Shell aus dem Azure-Portal.
 
 1. Melden Sie sich bei [Cloud Shell](https://shell.azure.com) an.
-2. Wählen Sie links oben in der Cloudshell die Option **PowerShell** aus, und wählen Sie dann **Bestätigen**.  In diesem Tutorial können Sie PowerShell verwenden.
-3. Klicken Sie in Cloud Shell auf **Datei hochladen**:
+1. Wählen Sie links oben in der Cloudshell die Option **PowerShell** aus, und wählen Sie dann **Bestätigen**.  In diesem Tutorial können Sie PowerShell verwenden.
+1. Klicken Sie in Cloud Shell auf **Datei hochladen**:
 
     ![Azure-Portal, Cloud Shell, Datei hochladen](./media/resource-manager-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
-4. Wählen Sie die Vorlage aus, die Sie zuvor im Tutorial gespeichert haben. Der Standardname lautet **azuredeploy.json**.  Falls Sie eine Datei mit dem gleichen Dateinamen besitzen, wird die alte Datei ohne Benachrichtigung überschrieben.
+1. Wählen Sie die Vorlage aus, die Sie zuvor im Tutorial gespeichert haben. Der Standardname lautet **azuredeploy.json**.  Falls Sie eine Datei mit dem gleichen Dateinamen besitzen, wird die alte Datei ohne Benachrichtigung überschrieben.
 
     Sie können optional den Befehl **ls $HOME** und den Befehl **cat $HOME/azuredeploy.json** verwenden, um zu überprüfen, ob die Dateien hochgeladen wurden.
 
-5. Führen Sie in Cloud Shell die folgenden PowerShell-Befehle aus. Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Siehe [Voraussetzungen](#prerequisites).
+1. Führen Sie in Cloud Shell die folgenden PowerShell-Befehle aus. Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Siehe [Voraussetzungen](#prerequisites).
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -135,18 +135,20 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwe
         -adminPassword $adminPassword `
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile "$HOME/azuredeploy.json"
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
-8. Führen Sie den folgenden PowerShell-Befehl zum Auflisten des neu erstellen virtuellen Computers aus:
+1. Führen Sie den folgenden PowerShell-Befehl zum Auflisten des neu erstellen virtuellen Computers aus:
 
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
     Get-AzVM -Name SimpleWinVM -ResourceGroupName $resourceGroupName
+    Write-Host "Press [ENTER] to continue ..."
     ```
 
     Der Name des virtuellen Computers ist in der Vorlage als **SimpleWinVM** hartcodiert.
 
-9. Stellen Sie per RDP eine Verbindung mit dem virtuellen Computer her, um sich zu vergewissern, dass der virtuelle Computer erstellt wurde.
+1. Stellen Sie per RDP eine Verbindung mit dem virtuellen Computer her, um sich zu vergewissern, dass der virtuelle Computer erstellt wurde.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -1,5 +1,5 @@
 ---
-title: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
+title: Senden von Metriken klassischer Windows-VMs an die Azure Monitor-Metrikendatenbank
 description: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
 author: anirudhcavale
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844921"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286150"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an die Azure Monitor-Metrikendatenbank für einen virtuellen Windows-Computer (klassisch)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Die [Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) von Azure Monitor (auch „WAD“ oder „Diagnose“ genannt) ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
+Die [Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) von Azure Monitor (auch „WAD“ oder „Diagnose“ genannt) ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
-In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer (klassisch) an den Azure Monitor-Metrikspeicher senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
+In diesem Artikel erfahren Sie, wie Sie Leistungsmetriken des Gastbetriebssystems für einen virtuellen Windows-Computer (klassisch) an die Azure Monitor-Metrikendatenbank senden. Ab Version 1.11 der Diagnoseerweiterung können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. 
 
 Durch die Speicherung an diesem Ort stehen Ihnen die gleichen Aktionen zur Verfügung wie für Plattformmetriken. Dazu zählen unter anderem zeitnahe Benachrichtigungen, Diagrammerstellung, Routing und Zugriff über eine REST-API. In der Vergangenheit hat die Diagnoseerweiterung zwar in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher. 
 

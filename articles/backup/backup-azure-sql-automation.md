@@ -1,27 +1,21 @@
 ---
-title: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell – Azure Backup
+title: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 description: Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit Azure Backup und PowerShell.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; SQL;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 115eef3619f76f83f63c5e69e86393c032e0844e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090947"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172640"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Sichern und Wiederherstellen von SQL-Datenbanken auf virtuellen Azure-Computern mit PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell eine SQL-Datenbank auf einem virtuellen Azure-Computer mithilfe des [Azure Backup](backup-overview.md) Recovery Services-Tresors sichern und wiederherstellen.
 
-In diesem Tutorial werden folgende Punkte erläutert:
+In diesem Artikel werden die folgenden Aufgaben erläutert:
 
 > [!div class="checklist"]
 >

@@ -16,12 +16,12 @@ ms.date: 05/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a1906b8ac281620381176a2a11dff3841069f69
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 2d54ef06fd63a1064962aea6099a2289d04ff658
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062673"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462014"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Voraussetzungen für Azure AD Connect
 Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für Azure AD Connect.
@@ -62,7 +62,7 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 * Wenn Sie die **Kennwortsynchronisierung**verwenden möchten, muss der Azure AD Connect-Server unter Windows Server 2008 R2 SP1 oder höher ausgeführt werden.
 * Wenn Sie planen, ein **gruppenverwaltetes Dienstkonto** zu verwenden, muss auf dem Azure AD Connect-Server Windows Server 2012 oder höher ausgeführt werden.
 * Der Azure AD Connect-Server muss über [.NET Framework 4.5.1](#component-prerequisites) oder höher verfügen, und es muss [Microsoft PowerShell 3.0](#component-prerequisites) oder höher installiert sein.
-* Auf dem Azure AD Connect-Server darf nicht die Gruppenrichtlinie für die PowerShell-Aufzeichnung aktiviert sein.
+* Auf dem Azure AD Connect-Server darf nicht die PowerShell-Aufzeichnung-Gruppenrichtlinie aktiviert sein, wenn Sie die ADFS-Konfiguration mit dem Azure AD Connect-Assistenten verwalten. Sie können die PowerShell-Aufzeichnung aktivieren, wenn Sie den Azure AD Connect-Assistenten zur Verwaltung der Synchronisierungskonfiguration verwenden.
 * Wenn Active Directory-Verbunddienste bereitgestellt werden, müssen die Server, auf denen die Active Directory-Verbunddienste oder der Webanwendungsproxy installiert werden, Windows Server 2012 R2 oder höher ausführen. [Windows-Remoteverwaltung](#windows-remote-management) muss auf diesen Servern zur Remoteinstallation aktiviert werden.
 * Wenn Active Directory-Verbunddienste bereitgestellt werden, benötigen Sie [SSL-Zertifikate](#ssl-certificate-requirements).
 * Wenn Active Directory-Verbunddienste bereitgestellt werden, müssen Sie die [Namensauflösung](#name-resolution-for-federation-servers)konfigurieren.

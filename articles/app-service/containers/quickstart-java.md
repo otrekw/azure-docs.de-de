@@ -1,27 +1,19 @@
 ---
-title: 'Erstellen einer Java-Web-App unter Linux: Azure App Service'
-description: In dieser Schnellstartanleitung stellen Sie in wenigen Minuten Ihre erste Java-App „Hallo Welt“ in Azure App Service unter Linux bereit.
+title: 'Schnellstart: Erstellen einer Linux-Java-App'
+description: Führen Sie erste Schritte mit Linux-Apps in Azure App Service aus, indem Sie Ihre erste Java-App in einem Linux-Container in App Service bereitstellen.
 keywords: Azure, App Service, Web-App, Linux, Java, Maven, Schnellstart
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+author: msangapu-msft
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
-ms.author: msangapu
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 3b011d3d7dc881d44fdcafb29efacf9548866d7a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: eb5c6ef9b342b149851f907b7bc81370327b12ca
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747733"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689004"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Java-App in Azure App Service für Linux
 
@@ -53,7 +45,11 @@ Beim Prozess der Bereitstellung in Azure App Service werden Kontoanmeldeinformat
 az login
 ```
 
-Dann können Sie die Bereitstellung konfigurieren, den maven-Befehl `mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config` an der Eingabeaufforderung ausführen und die Standardkonfigurationen verwenden, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Confirm (Y/N)** (Bestätigen [ja/nein]) angezeigt wird. Drücken Sie dann **y**, um die Konfiguration abzuschließen.
+Dann können Sie die Bereitstellung konfigurieren, den maven-Befehl an der Eingabeaufforderung ausführen und die Standardkonfigurationen verwenden, indem Sie die **EINGABETASTE** drücken, bis die Eingabeaufforderung **Confirm (Y/N)** (Bestätigen [ja/nein]) angezeigt wird. Drücken Sie dann **y**, um die Konfiguration abzuschließen. 
+```cmd
+mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
+```
+Ein Beispielprozess sieht wie folgt aus:
 
 ```cmd
 ~@Azure:~/helloworld$ mvn com.microsoft.azure:azure-webapp-maven-plugin:1.8.0:config
@@ -105,6 +101,9 @@ Navigieren Sie erneut zu `pom.xml`, um zu prüfen, ob die Plug-In-Konfiguration 
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | true | Details zur Konfiguration der Laufzeitumgebung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting). | 0.1.0+
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | true | Details zur Konfiguration der Bereitstellung finden Sie [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting). | 0.1.0+
 
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=config)
+
 ## <a name="deploy-the-app"></a>Bereitstellen der App
 
 Stellen Sie Ihre Java-App mit dem folgenden Befehl in Azure bereit:
@@ -119,9 +118,12 @@ Navigieren Sie nach Abschluss der Bereitstellung zur bereitgestellten Anwendung,
 
 **Glückwunsch!** Sie haben Ihre erste Java-App für App Service unter Linux bereitgestellt.
 
+> [!div class="nextstepaction"]
+> [Ich bin auf ein Problem gestoßen](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Ressourcengruppe erstellt. Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe, indem Sie den folgenden Befehl in Cloud Shell ausführen:
+In den vorherigen Schritten haben Sie Azure-Ressourcen in einer Ressourcengruppe erstellt. Wenn Sie diese Ressourcen in Zukunft nicht mehr benötigen, löschen Sie die Ressourcengruppe im Portal, indem Sie den folgenden Befehl in Cloud Shell ausführen:
 
 ```azurecli-interactive
 az group delete --name <your resource group name; for example: helloworld-1558400876966-rg> --yes
@@ -142,3 +144,6 @@ Die Ausführung dieses Befehls kann eine Minute in Anspruch nehmen.
 
 > [!div class="nextstepaction"]
 > [Weitere Azure-Ressourcen für Java-Entwickler](/java/azure/)
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zu Maven-Plug-Ins für Azure](https://github.com/microsoft/azure-maven-plugins)

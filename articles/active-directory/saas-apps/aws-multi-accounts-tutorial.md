@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 322615203d188581dd04aadeff2a08307b733d06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cb528d71b94449b282947a487e4fc79b343df778
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65738201"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Tutorial: Azure Active Directory-Integration von mehreren Amazon Web Services-Konten (AWS-Konten)
 
@@ -142,7 +142,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | NAME  | Quellattribut  | Namespace |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
-    | Rolle            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
+    | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     | SessionDuration             | „Geben Sie einen Wert zwischen 900 Sekunden (15 Minuten) und 43.200 Sekunden (12 Stunden) an“ |  https://aws.amazon.com/SAML/Attributes |
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
@@ -363,6 +363,7 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
+* [Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-configure-api)
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 

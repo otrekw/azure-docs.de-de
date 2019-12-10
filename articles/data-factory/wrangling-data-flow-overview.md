@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 56c2d96e6e4a5900770aaefcabb424eddb1cbde6
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665646"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74531381"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Was sind Wranglingdatenflüsse?
 
@@ -37,6 +37,30 @@ Die Datenintegratoren ohne Programmiererfahrung verbringen mehr als 60 % ihrer 
 ### <a name="data-validation"></a>Datenüberprüfung
 
 Überprüfen Sie Ihre Daten visuell ohne Code, um alle Ausreißer sowie Anomalien zu entfernen und sie in eine Form zu bringen, die eine schnelle Analyse ermöglicht.
+
+## <a name="supported-sources"></a>Unterstützte Quellen
+
+| Connector | Datenformat | Authentifizierungsart |
+| -- | -- | --|
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Kontoschlüssel |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Dienstprinzipal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Kontoschlüssel, Dienstprinzipal |
+| [Azure SQL-Datenbank](connector-azure-sql-database.md) | - | SQL-Authentifizierung |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-Authentifizierung |
+
+## <a name="the-mashup-editor"></a>Mashup-Editor
+
+Wenn Sie einen Wranglingdatenfluss erstellen, werden alle Quelldatasets zu Datenbankabfragen, die im Ordner **ADFResource** platziert werden. Standardmäßig zeigt die UserQuery auf die erste Datasetabfrage. Alle Transformationen sind für die UserQuery durchzuführen, da Änderungen an Datasetabfragen weder unterstützt noch beibehalten werden. Das Umbenennen, Hinzufügen und Löschen von Abfragen werden derzeit nicht unterstützt.
+
+![Wrangling](media/wrangling-data-flow/editor.png)
+
+Derzeit werden nicht alle Power Query M-Funktionen für Data Wrangling unterstützt, obwohl sie während der Erstellung verfügbar sind. Beim Erstellen von Wranglingdatenflüssen wird die folgende Fehlermeldung angezeigt, wenn eine Funktion nicht unterstützt wird:
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+Weitere Informationen zu unterstützten Transformationen finden Sie unter [Funktionen im Wranglingdatenfluss](wrangling-data-flow-functions.md).
+
+Derzeit unterstützt der Wranglingdatenfluss nur das Schreiben in eine Senke.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

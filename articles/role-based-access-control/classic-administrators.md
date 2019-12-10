@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/01/2019
+ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c5e87d8d6fe49302bee2b2248f84ba98a650533
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802316"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74554225"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -32,9 +32,9 @@ In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Admin
 > [!TIP]
 > Sie müssen lediglich einen Co-Administrator hinzufügen, wenn der Benutzer klassische Azure-Bereitstellungen verwalten soll, indem Sie das [PowerShell-Modul „Azure Service Management“](https://docs.microsoft.com/powershell/module/servicemanagement/azure) verwenden. Wenn der Benutzer nur das Azure-Portal zum Verwalten der klassischen Ressourcen verwenden, müssen Sie den klassischen Administrator für den Benutzer nicht hinzufügen.
 
-1. Melden Sie sich als beim [Azure-Portal](https://portal.azure.com) als Dienstadministrator an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Dienstadministrator oder Co-Administrator an.
 
-1. Öffnen Sie [Abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
+1. Öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
 
     Co-Administratoren können nur auf Abonnementebene zugewiesen werden.
 
@@ -52,9 +52,17 @@ In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Admin
 
     ![Screenshot, auf dem der Co-Administrator hinzugefügt wird](./media/classic-administrators/add-coadmin.png)
 
-### <a name="adding-a-guest-user-as-a-co-administrator"></a>Hinzufügen eines Gastbenutzers als Co-Administrator
+## <a name="add-a-guest-user-as-a-co-administrator"></a>Hinzufügen eines Gastbenutzers als Co-Administrator
 
-Bei [Gastbenutzern](../active-directory/b2b/b2b-quickstart-add-guest-users-portal.md) mit der Rolle „Co-Administrator“ gibt es im Vergleich zu Mitgliedsbenutzern mit der Rolle „Co-Administrator“ unter Umständen gewisse Unterschiede. Stellen Sie sich folgendes Szenario vor:
+Wenn Sie einen Gastbenutzer als Co-Administrator hinzufügen möchten, führen Sie dieselben Schritte wie im obigen Abschnitt [Hinzufügen eines Co-Administrators](#add-a-co-administrator) aus. Der Gastbenutzer muss die folgenden Kriterien erfüllen:
+
+- Der Gastbenutzer muss in Ihrem Verzeichnis vorhanden sein. Dies bedeutet, dass der Benutzer eine Einladung zu Ihrem Verzeichnis erhalten und diese akzeptiert haben muss.
+
+Weitere Informationen zum Hinzufügen eines Gastbenutzers zu Ihrem Verzeichnis finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/b2b/add-users-administrator.md).
+
+### <a name="differences-for-guest-users"></a>Unterschiede für Gastbenutzer
+
+Bei Gastbenutzern mit der Rolle „Co-Administrator“ gibt es im Vergleich zu Mitgliedsbenutzern mit der Rolle „Co-Administrator“ unter Umständen gewisse Unterschiede. Stellen Sie sich folgendes Szenario vor:
 
 - Benutzer A verfügt über ein Azure AD-Konto (Geschäfts-, Schul- oder Unikonto) und ist Dienstadministrator für ein Azure-Abonnement.
 - Benutzer B verfügt über ein Microsoft-Konto.
@@ -63,15 +71,17 @@ Bei [Gastbenutzern](../active-directory/b2b/b2b-quickstart-add-guest-users-porta
 
 Man würde erwarten, dass Benutzer B alles verwalten kann. Der Grund für den Unterschied ist, dass das Microsoft-Konto dem Abonnement nicht als Mitgliedsbenutzer, sondern als Gastbenutzer hinzugefügt wird. Gastbenutzer haben im Vergleich zu Mitgliedsbenutzern andere Standardberechtigungen in Azure AD. So können Mitgliedsbenutzer im Gegensatz zu Gastbenutzern beispielsweise andere Benutzer in Azure AD lesen. Mitgliedsbenutzer können neue Dienstprinzipale in Azure AD registrieren, Gastbenutzer nicht.
 
-Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Administratorrollen zugewiesen werden, die der Gastbenutzer benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+Wenn ein Gastbenutzer in der Lage sein muss, diese Aufgaben auszuführen, können ihm die spezifischen Azure AD-Administratorrollen zugewiesen werden, die der Gastbenutzer benötigt. Im vorherigen Szenario könnten Sie ihm also die Rolle [Verzeichnis lesen](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) zum Lesen anderer Benutzer und die Rolle [Anwendungsentwickler](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) zum Erstellen von Dienstprinzipalen zuweisen. Weitere Informationen zu Mitglieds- und Gastbenutzern sowie zu deren Berechtigungen finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md). Weitere Informationen zum Gewähren des Zugriffs für Gastbenutzer finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen für externe Gastbenutzer mit RBAC](role-assignments-external-users.md).
 
 Beachten Sie, dass sich die [integrierten Rollen für Azure-Ressourcen](../role-based-access-control/built-in-roles.md) von den [Azure AD-Administratorrollen](../active-directory/users-groups-roles/directory-assign-admin-roles.md) unterscheiden. Die integrierten Rollen ermöglichen keinerlei Azure AD-Zugriff. Weitere Informationen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
+Eine vergleichende Betrachtung zu Mitglieds- und Gastbenutzern finden Sie unter [Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md).
+
 ## <a name="remove-a-co-administrator"></a>Entfernen eines Co-Administrators
 
-1. Melden Sie sich als beim [Azure-Portal](https://portal.azure.com) als Dienstadministrator an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Dienstadministrator oder Co-Administrator an.
 
-1. Öffnen Sie [Abonnement](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
+1. Öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 

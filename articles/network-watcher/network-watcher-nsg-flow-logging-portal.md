@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a5d600e761ce3c3cebbe155c6be7e0f5a377eb32
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: afa1d2ca59bacec2695aaff0cacb119a8fbf787b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419633"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766598"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -127,7 +127,7 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
    ![Herunterladen von Flowprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wählen Sie das in Schritt 2 unter [Aktivieren des NSG-Flussprotokolls](#enable-nsg-flow-log) konfigurierte Speicherkonto aus.
-4. Wählen Sie unter **Blob-Dienst** **Blobs** aus, und wählen Sie dann den Container **insights-logs-networksecuritygroupflowevent** aus.
+4. Wählen Sie unter **Blob-Dienst** die Option **Container** und dann den Container **insights-logs-networksecuritygroupflowevent** aus.
 5. Navigieren Sie in dem Container in der Ordnerhierarchie, bis Sie zu einer Datei „PT1H.json“ gelangen, wie in der folgenden Abbildung dargestellt. Protokolldateien werden in einer Ordnerhierarchie gespeichert, die der folgenden Namenskonvention folgt: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
    ![Flowprotokoll](./media/network-watcher-nsg-flow-logging-portal/log-file.png)

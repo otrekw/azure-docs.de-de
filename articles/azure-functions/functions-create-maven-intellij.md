@@ -1,23 +1,17 @@
 ---
-title: Erstellen einer Azure-Funktion mit Java und IntelliJ | Microsoft-Dokumentation
+title: Erstellen einer Azure-Funktion mit Java und IntelliJ
 description: Erfahren Sie, wie Sie mit Java und IntelliJ eine einfache, durch HTTP ausgelöste serverlose App auf Azure erstellen und veröffentlichen können.
-services: functions
-documentationcenter: na
 author: jeffhollan
-manager: jpconnock
-keywords: azure functions, funktionen, ereignisverarbeitung, compute, serverlose architektur, java
-ms.service: azure-functions
 ms.topic: conceptual
-ms.devlang: java
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5aa0763206289305e98960b6e03ad903eb4547ae
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1d3dd0f4f1da4d3815d4d879dd13ed5882f39e8f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70743991"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230731"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>Erstellen Ihrer ersten Azure-Funktion mit Java und IntelliJ
 

@@ -14,27 +14,219 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 9e5bdb574439378b91a243d5d36ebddeb8520d49
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 1adfb59843150ffaa6ed76411d07d8ec6cf6a44b
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037454"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555268"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Anmerkungen zu dieser Version vom Microsoft Azure Storage-Explorer
 
-Dieser Artikel enthält die Anmerkungen zu dieser Version für Azure Storage-Explorer 1.10.0 sowie die Anmerkungen für frühere Versionen.
+Dieser Artikel enthält die aktuellen Versionshinweise für Azure Storage-Explorer, sowie Versionshinweise für frühere Versionen. 
 
 Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie ganz einfach mit Azure Storage-Daten arbeiten können – unter Windows, macOS und Linux.
 
+Wenn Sie frühere Versionen von Storage-Explorer herunterladen möchten, können Sie die Seite [Releases](https://github.com/microsoft/AzureStorageExplorer/releases) unseres GitHub-Repositorys besuchen.
+
+## <a name="version-1110"></a>Version 1.11.0
+4\.11.2019
+
+### <a name="new"></a>Neu
+* Vorgänge für Blobs, ADLS Gen2 und Managed Disks verwenden das integrierte AzCopy. Konkret werden die folgenden Vorgänge mithilfe von AzCopy ausgeführt:
+   * Blobs (in englischer Sprache)
+      * Offen für Bearbeiten und Hochladen
+      * Hochladen, einschließlich Drag & Drop
+      * Download
+      * Kopieren und Einfügen #1249
+      * Löschen
+   * ADLS Gen2-Blobs
+      * Hochladen, einschließlich Drag & Drop
+      * Download
+      * Kopieren und Einfügen
+      * Löschen, einschließlich Löschen von Ordnern
+   * Managed Disks
+      * Hochladen
+      * Download
+      * Kopieren und Einfügen
+
+   Außerdem wurden der integrierten AzCopy-Oberfläche einige häufig angeforderte Features hinzugefügt:
+   * Konfliktlösungen – Sie werden nur während Übertragungen aufgefordert, Konflikte zu löschen. #1455
+   * Als Seitenblobs hochladen – Sie können auswählen, ob AzCopy VHD-Dateien und VHDX-Dateien als Seitenblobs hochlädt. #1164 und #1601
+   * Konfigurierbare AzCopy-Parameter – Es wurde eine Reihe von Einstellungen zum Optimieren der Leistung und Ressourcennutzung von AzCopy hinzugefügt. Weitere Einzelheiten finden Sie unten.
+
+* Um den ADLS Gen2- und Multi-Protokollzugriff für Blobs zu ermöglichen und die ADLS Gen2-Erfahrung weiter zu verbessern, haben wir für die ADLS Gen2-Konten die folgenden Features hinzugefügt:
+   * Suchen mithilfe von Anzeigenamen, um Berechtigungen für Zugriffssteuerungslisten festzulegen
+   * Anzeigen von ausgeblendeten Containern wie $logs und $web
+   * Abrufen und Unterbrechen von Containerleases
+   * Abrufen und Unterbrechen von Blob-Leases #848
+   * Verwalten von Zugriffsrichtlinien für Container
+   * Konfigurieren von Blob-Zugriffsebenen
+   * Kopieren und Einfügen von Blobs
+
+* In dieser Version gibt es eine Vorschau von 17 zusätzlichen Sprachen. Sie können auf der Seite für Einstellungen unter „Anwendung“ → „Regionale Einstellungen“ → „Sprache (Vorschau)“ zu einer Sprache Ihrer Wahl wechseln. Wir arbeiten weiterhin daran, weitere Zeichenfolgen zu übersetzen und die Übersetzungsqualität zu verbessern. Wenn Sie Feedback zu einer Übersetzung haben oder feststellen, dass eine Zeichenfolge noch nicht übersetzt wurde, [öffnen Sie ein Issue auf GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%F0%9F%8C%90%20localization&template=bug-report.md&title=).
+* In jeder Release versuchen wir, ein Onboarding einiger Einstellungen durchzuführen, um Storage-Explorer zu optimieren. Diese Version haben wir um Einstellungen für das weitere Konfigurieren von AzCopy sowie für das Ausblenden von Dienstknoten erweitert:
+   * AzCopy-Bandbreitenbegrenzung – hiermit kann gesteuert werden, in welchem Umfang AzCopy das Netzwerk nutzt. Sie finden diese Einstellung unter „Übertragungen“ → „AzCopy“ → „Maximale Übertragungsrate“. #1099
+   * AzCopy MD5-Überprüfung – hiermit können Sie konfigurieren ob und wie strikt AzCopy beim Download eine Überprüfung auf MD5-Hashes durchführt. Sie finden diese Einstellung unter „Übertragungen“ → „AzCopy“ → „MD5 überprüfen“.
+   * Parallelität und Arbeitsspeicher-Puffergröße von AzCopy – AzCopy analysiert standardmäßig Ihren Computer und bestimmt sinnvolle Standardwerte für diese Einstellungen. Sollten jedoch Leistungsprobleme auftreten, können Sie mithilfe dieser fortgeschrittenen Einstellungen die Ausführung von AzCopy auf Ihrem Computer weiter anpassen. Sie finden diese Einstellungen unter „Übertragungen“ → „AzCopy“. #994
+   * Einblenden und Ausblenden von Dienstknoten – diese Einstellungen bieten Ihnen Optionen zum Ein- und Ausblenden der von Storage-Explorer unterstützten Azure-Dienste. Sie finden diese Einstellungen im Abschnitt „Dienste“. #1877
+
+* Beim Erstellen einer Momentaufnahme eines verwalteten Datenträgers wird nun ein Standardname angegeben. #1847
+* Wenn Sie mit Azure AD einen ADLS Gen2 Blob-Container anfügen, wird „(ADLS Gen2)“ neben dem Knoten angezeigt. #1861
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Beim Kopieren, Hochladen oder Herunterladen großer Datenträger widerrief Storage-Explorer in einigen Fällen nicht den Zugriff auf die am Vorgang beteiligten Datenträger. Dies wurde korrigiert. #2048
+* Beim Anzeigen einer Partitionsschlüsselabfrage trat ein Tabellenstatistikfehler auf. Dies wurde korrigiert. #1886
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Storage-Explorer 1.11.0 erfordert nun einen DFS-Endpunkt (wie „myaccount.dfs.core.windows.net“) zum Anfügen an ADLS Gen2-Container. In früheren Versionen von Storage-Explorer konnte ein Blob-Endpunkt verwendet werden. Diese Anfügungen funktionieren nach dem Upgrade auf 1.11.0 nicht mehr. Sollte dieses Problem auftreten, müssen Sie die Anfügung mit dem DFS-Endpunkt erneut ausführen.
+* Es wird nicht überprüft, ob numerische Einstellungen in einem gültigen Bereich liegen. #2140
+* Beim Kopieren von Blobcontainern aus einem Speicherkonto in ein anderes Speicherkonto in der Strukturansicht kann ein Fehler auftreten. Wir untersuchen das Problem. #2124
+* Die Einstellung „Automatische Aktualisierung“ wirkt sich noch nicht auf alle Vorgänge im Blob-Explorer aus.
+* Die Features von verwalteten Datenträgern werden in Azure Stack nicht unterstützt.
+* Wenn beim Hochladen oder Einfügen eines Datenträgers ein Fehler auftritt und vor dem Fehler ein neuer Datenträger erstellt wurde, löscht Storage-Explorer den Datenträger nicht für Sie.
+* Je nachdem, wann Sie das Hochladen oder Einfügen eines Datenträgers abbrechen, ist es möglich, den neuen Datenträger in einem beschädigten Zustand zu belassen. In diesem Fall müssen Sie entweder den neuen Datenträger löschen oder die Datenträger-APIs manuell aufrufen, um den Inhalt des Datenträgers so zu ersetzen, dass er nicht mehr beschädigt ist.
+* Bei der Verwendung der RBAC erfordert der Storage-Explorer mehrere Berechtigungen auf Verwaltungsebene, damit er auf Ihre Speicherressourcen zugreifen kann. Weitere Informationen finden Sie im [Azure Storage-Explorer – Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+   * ADLS Gen2
+   * Managed Disks
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 1.10.1](#version-1101)
+* [Version 1.10.0](#version-1100)
+* [Version 1.9.0](#version-190)
+* [Version 1.8.1](#version-181)
+* [Version 1.8.0](#version-180)
+* [Version 1.7.0](#version-170)
+* [Version 1.6.2](#version-162)
+* [Version 1.6.1](#version-161)
+* [Version 1.6.0](#version-160)
+* [Version 1.5.0](#version-150)
+* [Version 1.4.4](#version-144)
+* [Version 1.4.3](#version-143)
+* [Version 1.4.2](#version-142)
+* [Version 1.4.1](#version-141)
+* [Version 1.3.0](#version-130)
+* [Version 1.2.0](#version-120)
+* [Version 1.1.0](#version-110)
+* [Version 1.0.0](#version-100)
+* [Version 0.9.6](#version-096)
+* [Version 0.9.5](#version-095)
+* [Version 0.9.4 und 0.9.3](#version-094-and-093)
+* [Version 0.9.2](#version-092)
+* [Version 0.9.1 und 0.9.0](#version-091-and-090)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
+* [Version 0.8.9 und 0.8.8](#version-089-and-088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-1101"></a>Version 1.10.1
+19.09.2019
+
+### <a name="hotfix"></a>Hotfix
+* Bei einigen Benutzern ist in 1.10.0 ein Problem aufgetreten, als sie versuchen, die Daten in ihren ADLS Gen 1-Konten anzuzeigen. Dieser Fehler hat das ordnungsgemäße Rendering des Explorer-Bereichs verhindert. Dies wurde korrigiert. #1853 #1865
+
+### <a name="new"></a>Neu
+* Storage-Explorer verfügt jetzt über eine dedizierte Benutzeroberfläche für Einstellungen. Sie können darauf entweder über „Bearbeiten → Einstellungen“ oder durch Klicken auf das Symbol „Einstellungen“ (das Zahnrad) auf der linken vertikalen Symbolleiste zugreifen. Dieses Feature ist der erste Schritt, der zum Bereitstellen einer Vielzahl von [vom Benutzer angeforderten Einstellungen](https://github.com/microsoft/AzureStorageExplorer/labels/%3Abulb%3A%20setting%20candidate) erforderlich ist. Ab dieser Version werden die folgenden Einstellungen unterstützt:
+  * Design
+  * Proxy
+  * Beim Beenden abmelden #6
+  * Aktivieren der Gerätecodeflow-Anmeldung
+  * Automatische Aktualisierung #1526
+  * Aktivieren von AzCopy
+  * AzCopy SAS-Dauer Wenn weitere Einstellungen hinzugefügt werden sollen, [öffnen Sie ein Problem in GitHub mit der Beschreibung der gewünschten Einstellung](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=%3Abulb%3A%20setting%20candidate&template=feature_request.md&title=).
+* Storage-Explorer unterstützt jetzt verwalteter Datenträger. Ihre Möglichkeiten:
+  * Hochladen einer lokalen virtuellen Festplatte (VHD) auf einen neuen Datenträger
+  * Herunterladen eines Datenträgers
+  * Kopieren und Einfügen von Datenträgern in Ressourcengruppen und Regionen
+  * Löschen von Datenträgern
+  * Erstellen einer Momentaufnahme eines Datenträgers Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträgern wird durch AzCopy v10 unterstützt.
+* Storage-Explorer kann jetzt über den Snap Store unter Linux installiert werden. Wenn die Installation über den Snap Store erfolgt, werden alle Abhängigkeiten für Sie installiert, einschließlich .NET Core. Derzeit haben wir überprüft, ob Storage-Explorer unter Ubuntu und CentOS ordnungsgemäß ausgeführt wird. Wenn bei der Installation aus dem Snap Store für andere Linux-Distributionen Probleme auftreten, [öffnen Sie ein Problem in GitHub](https://github.com/microsoft/AzureStorageExplorer/issues/new?assignees=&labels=snaps&template=bug-report.md&title=). Weitere Informationen zur Installation aus dem Snap Store finden Sie im [Leitfaden für erste Schritte](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=linux). #68
+* Es wurden zwei wichtige Änderungen vorgenommen, die an Azure Active Directory (Azure AD) angefügt werden sollen, um das Feature für ADLS Gen2-Benutzer hilfreicher zu gestalten:
+  * Sie wählen jetzt den Mandanten aus, in dem sich die von Ihnen anzufügende Ressource befindet. Dies bedeutet, dass Sie keinen RBAC-Zugriff mehr auf das Abonnement der Ressource haben müssen.
+  * Wenn Sie einen ADLS Gen2-Blobcontainer anfügen, können Sie ihn jetzt an einen bestimmten Pfad im Container anfügen.
+* Bei der Verwaltung von ACLs für ADLS Gen2-Dateien und -Ordner zeigt Storage-Explorer jetzt die Anzeigenamen für Objekte in der ACL an. #957
+* Beim Hinzufügen über OID zu einer ADLS Gen2 ACL bestätigt Storage-Explorer jetzt, dass die OID zu einer gültigen Entität in Ihrem Mandanten gehört. #1603
+* Die Tastenkombinationen für die Navigation zwischen den Registerkarten verwenden jetzt mehr Standardtastenkombinationen. #1018
+* Wenn Sie mit der mittleren Maustaste auf eine Registerkarte klicken, wird diese jetzt geschlossen. #1348
+* Wenn eine AzCopy-Übertragung Auslassungen und keine Fehler enthält, zeigt Storage-Explorer jetzt ein Warnsymbol an, um anzuzeigen, dass Auslassungen stattgefunden haben. #1490
+* Das integrierte AzCopy wurde auf Version 10.2.1 aktualisiert. Darüber hinaus können Sie jetzt die installierte Version von AzCopy im Dialogfeld „Info“ anzeigen. #1343
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Viele Benutzer sind bei der Arbeit mit angefügten Speicherkonten auf verschiedene Fehler vom Typ „Version von Undefiniert kann nicht gelesen werden“ oder „Verbindung von Undefiniert kann nicht gelesen werden“ gestoßen. Obwohl wir die Ursache dieses Problems weiterhin untersuchen, haben wir in 1.10.0 die Fehlerbehandlung beim Laden von angefügten Speicherkonten verbessert. #1626, #985 und #1532
+* Die Explorer-Struktur (auf der linken Seite) konnte in einen Zustand wechseln, in dem der Fokus wiederholt zum obersten Knoten springt. Dies wurde korrigiert. #1596
+* Bei der Verwaltung der Momentaufnahmen eines Blobs würden Sprachausgaben nicht den mit der Momentaufnahme verbundenen Zeitstempel lesen. Dies wurde korrigiert. #1202
+* Die Proxyeinstellung unter macOS wurde nicht rechtzeitig so festgelegt, dass sie vom Authentifizierungsprozess verwendet werden konnte. Dies wurde korrigiert. #1567
+* Wenn ein Speicherkonto in einer Sovereign Cloud mit Namen und Schlüssel angefügt wurde, würde AzCopy nicht funktionieren. Dies wurde korrigiert. #1544
+* Wenn das Anfügen über eine Verbindungszeichenfolge erfolgt, entfernt Storage-Explorer jetzt nachgestellte Leerzeichen. #1387
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Die Einstellung „Automatische Aktualisierung“ wirkt sich noch nicht auf alle Vorgänge im Blob-Explorer aus.
+* Die Features von verwalteten Datenträgern werden in Azure Stack nicht unterstützt.
+* Wenn beim Hochladen oder Einfügen eines Datenträgers ein Fehler auftritt und vor dem Fehler ein neuer Datenträger erstellt wurde, löscht Storage-Explorer den Datenträger nicht für Sie.
+* Je nachdem, wann Sie das Hochladen oder Einfügen eines Datenträgers abbrechen, ist es möglich, den neuen Datenträger in einem beschädigten Zustand zu belassen. In diesem Fall müssen Sie entweder den neuen Datenträger löschen oder die Datenträger-APIs manuell aufrufen, um den Inhalt des Datenträgers so zu ersetzen, dass er nicht mehr beschädigt ist.
+* Je nachdem, wann Sie das Hochladen oder Einfügen eines Datenträgers abbrechen, ist es möglich, den neuen Datenträger in einem beschädigten Zustand zu belassen. In diesem Fall müssen Sie entweder den neuen Datenträger löschen oder die Datenträger-APIs manuell aufrufen, um den Inhalt des Datenträgers so zu ersetzen, dass er nicht mehr beschädigt ist.
+* Beim Herunterladen eines Nicht-AzCopy-Blobs wird MD5 bei größeren Dateien nicht überprüft. Ursache hierfür ist ein Fehler im Storage SDK. [#1212](https://www.github.com/Microsoft/AzureStorageExplorer/issues/1212)
+* Bei der Verwendung der RBAC erfordert der Storage-Explorer mehrere Berechtigungen auf Verwaltungsebene, damit er auf Ihre Speicherressourcen zugreifen kann. Weitere Informationen finden Sie im [Azure Storage-Explorer – Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+* Das Trennen einer über einen SAS-URI angefügten Ressource, z.B. eines Blobcontainers, kann zu einem Fehler führen, durch den andere Anlagen nicht ordnungsgemäß angezeigt werden. Aktualisieren Sie zur Umgehung dieses Problems den Gruppenknoten. Siehe #537 für weitere Informationen.
+* Wenn Sie VS für Mac verwenden und irgendwann eine benutzerdefinierte AAD-Konfiguration erstellt haben, können Sie sich möglicherweise nicht anmelden. Um das Problem zu umgehen, löschen Sie den Inhalt von ~/.IdentityService/AadConfigurations. Wenn der Fehler dadurch nicht behoben wird, schreiben Sie einen Kommentar zu diesem Problem.
+* Azurite hat noch nicht alle Speicher-APIs vollständig implementiert. Deswegen können unerwartete Fehler oder ein unerwartetes Verhalten auftreten, wenn Azurite als Entwicklungsspeicher verwendet wird.
+* In seltenen Fällen kann der Fokus in der Struktur beim Schnellzugriff hängen bleiben. Klicken Sie auf „Alle aktualisieren“, um den Fokus zu lösen.
+* Wegen eines NodeJS-Fehlers können keine Inhalte aus dem OneDrive-Ordner hochgeladen werden. Der Fehler wurde behoben, jedoch noch nicht in Electron integriert. Um dieses Problem beim Hochladen oder Herunterladen aus einem Blobcontainer zu umgehen, können Sie das experimentelle AzCopy-Feature verwenden.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung im Storage-Explorer unwirksam gemacht wird.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Die folgenden Features werden von Azure Stack nicht unterstützt. Der Versuch, diese Features bei der Arbeit mit Azure Stack-Ressourcen zu verwenden, kann zu unerwarteten Fehlern führen.
+   * Dateifreigaben
+   * Zugriffsebenen
+   * Vorläufiges Löschen
+   * ADLS Gen2
+   * Managed Disks
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+
+    ```
+    ./StorageExplorer.exe --disable-gpu
+    ```
+
+* Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
+
+
 ## <a name="version-1100"></a>Version 1.10.0
 9/12/2019
-
-### <a name="download-azure-storage-explorer-1100"></a>Herunterladen von Azure Storage-Explorer 1.10.0
-- [Azure Storage-Explorer 1.10.0 für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 1.10.0 für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 1.10.0 im Snap Store](https://snapcraft.io/storage-explorer)
-- [Azure Storage-Explorer 1.10.0 für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Neu
 
@@ -105,48 +297,6 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ```
 
 * Bevor Sie Storage-Explorer unter Linux ausführen können, müssen Sie zunächst bestimmte Abhängigkeiten installieren. Weitere Informationen finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting?tabs=1804#linux-dependencies) zum Storage-Explorer.
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 1.9.0](#version-190)
-* [Version 1.8.1](#version-181)
-* [Version 1.8.0](#version-180)
-* [Version 1.7.0](#version-170)
-* [Version 1.6.2](#version-162)
-* [Version 1.6.1](#version-161)
-* [Version 1.6.0](#version-160)
-* [Version 1.5.0](#version-150)
-* [Version 1.4.4](#version-144)
-* [Version 1.4.3](#version-143)
-* [Version 1.4.2](#version-142)
-* [Version 1.4.1](#version-141)
-* [Version 1.3.0](#version-130)
-* [Version 1.2.0](#version-120)
-* [Version 1.1.0](#version-110)
-* [Version 1.0.0](#version-100)
-* [Version 0.9.6](#version-096)
-* [Version 0.9.5](#version-095)
-* [Version 0.9.4 und 0.9.3](#version-094-and-093)
-* [Version 0.9.2](#version-092)
-* [Version 0.9.1 und 0.9.0](#version-091-and-090)
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12, 0.8.11 und 0.8.10](#version-0812-and-0811-and-0810)
-* [Version 0.8.9 und 0.8.8](#version-089-and-088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
-
 
 ## <a name="version-190"></a>Version 1.9.0
 7/1/2019
@@ -369,7 +519,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -441,7 +591,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -510,7 +660,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -565,7 +715,7 @@ Beim [Microsoft Azure Storage-Explorer](./vs-azure-tools-storage-manage-with-sto
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -629,7 +779,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -686,7 +836,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -742,7 +892,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -797,7 +947,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -857,7 +1007,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -914,7 +1064,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -971,7 +1121,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -1025,7 +1175,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```
@@ -1091,7 +1241,7 @@ Eine Unterstützung der Verwendung von AzCopy mit Dateifreigaben ist geplant.
     ./StorageExplorer.exe --disable-gpu
     ```
 
-* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) installieren.
+* Für Linux-Benutzer müssen Sie [.NET Core 2.0](https://dotnet.microsoft.com/download/dotnet-core/2.0) installieren.
 * Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
 
     ```

@@ -1,17 +1,14 @@
 ---
-title: Bereitstellen auf der Abonnementebene – Azure Resource Manager-Vorlage
+title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 10/07/2019
-ms.author: tomfitz
-ms.openlocfilehash: d8b1be1d79ae0426d73c45408dd3c4f4f4660afb
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.date: 11/07/2019
+ms.openlocfilehash: d8a99a19038f98766df25551343a48b9789c8587
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532192"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147145"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
@@ -23,7 +20,7 @@ Um Vorlagen auf Abonnementebene bereitzustellen, verwenden Sie die Azure CLI, Po
 
 Sie können die folgenden Ressourcentypen auf der Abonnementebene bereitstellen:
 
-* [Bereitstellungen](/azure/templates/microsoft.resources/deployments) 
+* [Bereitstellungen](/azure/templates/microsoft.resources/deployments)
 * [peerAsns](/azure/templates/microsoft.peering/peerasns)
 * [policyAssignments](/azure/templates/microsoft.authorization/policyassignments)
 * [policyDefinitions](/azure/templates/microsoft.authorization/policydefinitions)
@@ -36,10 +33,16 @@ Sie können die folgenden Ressourcentypen auf der Abonnementebene bereitstellen:
 
 Das Schema, das Sie für Bereitstellungen auf Abonnementebene verwenden, unterscheidet sich von dem Schema für Ressourcengruppenbereitstellungen.
 
-Verwenden Sie für das Schema Folgendes:
+Verwenden Sie für Vorlagen Folgendes:
 
 ```json
 https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#
+```
+
+Verwenden Sie für Parameterdateien Folgendes:
+
+```json
+https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentParameters.json#
 ```
 
 ## <a name="deployment-commands"></a>Bereitstellungsbefehle
@@ -83,7 +86,7 @@ Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können
 Bei Bereitstellungen auf Abonnementebene müssen bei der Verwendung von Vorlagenfunktionen einige wichtige Aspekte berücksichtigt werden:
 
 * Die Funktion [resourceGroup()](resource-group-template-functions-resource.md#resourcegroup) wird **nicht** unterstützt.
-* Die Funktion [resourceId()](resource-group-template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Abonnementebene verwendet werden. Rufen Sie beispielsweise die Ressourcen-ID für eine Richtliniendefinition mit `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` ab.
+* Die Funktion [resourceId()](resource-group-template-functions-resource.md#resourceid) wird unterstützt. Verwenden sie diese Funktion zum Abrufen der Ressourcen-ID für Ressourcen, die in Bereitstellungen auf Abonnementebene verwendet werden. Rufen Sie beispielsweise die Ressourcen-ID für eine Richtliniendefinition mit `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))` ab. Sie können auch mit der Funktion [subscriptionResourceId()](resource-group-template-functions-resource.md#subscriptionresourceid) die Ressourcen-ID für eine Ressource auf der Abonnementebene abrufen.
 * Die Funktionen [reference()](resource-group-template-functions-resource.md#reference) und [list()](resource-group-template-functions-resource.md#list) werden unterstützt.
 
 ## <a name="create-resource-groups"></a>Erstellen von Ressourcengruppe

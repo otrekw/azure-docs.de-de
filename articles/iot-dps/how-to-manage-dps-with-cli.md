@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure CLI und der IoT-Erweiterung zum Verwalten des IoT Hub Device Provisioning Service | Microsoft-Dokumentation
+title: Verwalten des IoT Hub Device Provisioning Service über die Azure CLI und die IoT-Erweiterung
 description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle und die IoT-Erweiterung zum Verwalten des IoT Hub Device Provisioning Service verwenden.
 author: chrissie926
 ms.author: menchi
@@ -7,13 +7,12 @@ ms.date: 01/17/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: briz
-ms.openlocfilehash: 59d2277bd99fac1e8357c1b0d7336ca7451bf8dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0e276ca32d7cd02f9668b33b3729757404b13b00
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122862"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229739"
 ---
 # <a name="how-to-use-azure-cli-and-the-iot-extension-to-manage-the-iot-hub-device-provisioning-service"></a>Verwenden von Azure CLI und der IoT-Erweiterung zum Verwalten des IoT Hub Device Provisioning Service
 

@@ -1,19 +1,19 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Database for MariaDB-Servers – Azure-Befehlszeilenschnittstelle'
+title: 'Schnellstart: Erstellen eines Servers – Azure-Befehlszeilenschnittstelle – Azure Database for MariaDB'
 description: Dieser Schnellstart beschreibt die Verwendung der Azure-Befehlszeilenschnittstelle zum Erstellen eines Azure Database for MariaDB-Servers in einer Azure-Ressourcengruppe.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 12/02/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cfdcf2664871849d4488be4320f6aa03e296ce7
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66171424"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770032"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 

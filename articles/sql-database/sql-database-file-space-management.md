@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: a8fe58313bce6e9a21b07aa095672ec35ce572d2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 007bbffbd7c4fcad339f88eb78991eb39fb829e6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803056"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420986"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Einzel- und Pooldatenbanken in Azure SQL-Datenbank
 
@@ -26,10 +26,6 @@ Dieser Artikel beschreibt verschiedene Arten von Speicherplatz für Einzel- und 
 > Dieser Artikel gilt nicht für die Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank.
 
 ## <a name="overview"></a>Übersicht
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-> [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 In Azure SQL-Datenbank gibt es für Einzel- und Pooldatenbanken Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
 
@@ -56,7 +52,7 @@ Bei den folgenden APIs wird jedoch auch die Größe des Speicherplatzes ermittel
 Der SQL-Datenbank-Dienst verkleinert Datendateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen.
 
 > [!NOTE]
-> Im Gegensatz zu Datendateien verkleinert der SQL-Datenbankdienst die Protokolldateien automatisch, da dieser Vorgang die Datenbankleistung nicht beeinträchtigt. 
+> Im Gegensatz zu Datendateien verkleinert der SQL-Datenbankdienst die Protokolldateien automatisch, da dieser Vorgang die Datenbankleistung nicht beeinträchtigt.
 
 ## <a name="understanding-types-of-storage-space-for-a-database"></a>Grundlegendes zu den Arten von Speicherplatz für eine Datenbank
 
@@ -68,7 +64,6 @@ Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit 
 |**Zugeordneter Datenspeicherplatz**|Die Menge an formatiertem Dateispeicherplatz zum Speichern von Daten.|Die Menge des zugeordneten Speicherplatzes wächst automatisch an, wird aber nach dem Löschen nicht kleiner. Dieses Verhalten stellt sicher, dass Daten später schneller eingefügt werden, da der Platz nicht neu formatiert werden muss.|
 |**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge des zugeordneten Datenspeicherplatzes und des genutzten Datenspeicherplatzes.|Diese Menge ist die maximale Menge des freien Speicherplatzes, die freigegeben werden kann, indem Datendateien von Datenbanken verkleinert werden.|
 |**Maximale Datengröße**|Die maximale Speicherplatzmenge, die zum Speichern von Datenbankdaten verwendet werden kann.|Die Menge des zugeordneten Datenspeicherplatzes kann die maximale Datengröße nicht überschreiten.|
-||||
 
 Das folgende Diagramm veranschaulicht die Beziehung zwischen den verschiedenen Arten von Speicherplatz für eine Datenbank.
 
@@ -98,13 +93,13 @@ Verwenden Sie die folgende Abfrage, um die Menge des Datenbank-Datenspeicherplat
 ```sql
 -- Connect to database
 -- Database data space allocated in MB and database data space allocated unused in MB
-SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB, 
-SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB 
+SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
+SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
 HAVING type_desc = 'ROWS'
 ```
- 
+
 ### <a name="database-data-max-size"></a>Max. Größe für Datenbankdaten
 
 Ändern Sie die folgende Abfrage, um die maximale Größe für Datenbankdaten zurückgegeben.  Als Einheit für das Abfrageergebnis wird Byte verwendet.
@@ -125,7 +120,6 @@ Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit 
 |**Zugeordneter Datenspeicherplatz**|Die Summierung des Datenspeicherplatzes, der von allen Datenbanken im Pool für elastische Datenbanken zugeordnet wird.||
 |**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge an zugeordnetem Datenspeicherplatz und dem Datenspeicherplatz, der von allen Datenbanken im Pool für elastische Datenbanken verwendet wird.|Diese Menge gibt die maximale Menge von Speicherplatz an, der für den Pool für elastische Datenbanken zugeordnet wird und freigegeben werden kann, indem die Datenbank-Datendateien verkleinert werden.|
 |**Maximale Datengröße**|Die maximale Menge an Datenspeicherplatz, der vom Pool für elastische Datenbanken für alle seine Datenbanken verwendet werden kann.|Der zugeordnete Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  In diesem Fall kann zugeordneter Speicherplatz, der nicht genutzt wird, freigegeben werden, indem Datenbank-Datendateien verkleinert werden.|
-||||
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Abfragen von Speicherplatzinformationen für einen Pools für elastische Datenbanken
 
@@ -146,36 +140,29 @@ ORDER BY end_time DESC
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenspeicherplatz für Pool für elastische Datenbanken und ungenutzter zugeordneter Speicherplatz
 
-Ändern Sie das folgende PowerShell-Skript, um eine Tabelle zurückzugeben, in der der zugeordnete Speicherplatz und der ungenutzte zugeordnete Speicherplatz für jede Datenbank eines Pools für elastische Datenbanken aufgeführt ist. Die Datenbanken in der Tabelle werden absteigend sortiert – von der größten Menge an ungenutztem zugeordnetem Speicherplatz zur geringsten Menge an ungenutztem zugeordnetem Speicherplatz.  Als Einheit für das Abfrageergebnis wird MB verwendet.  
+Ändern Sie die folgenden Beispiele, um eine Tabelle zurückzugeben, in der der zugeordnete Speicherplatz und der ungenutzte zugeordnete Speicherplatz für jede Datenbank eines Pools für elastische Datenbanken aufgeführt ist. Die Datenbanken in der Tabelle werden absteigend sortiert – von der größten Menge an ungenutztem zugeordnetem Speicherplatz zur geringsten Menge an ungenutztem zugeordnetem Speicherplatz.  Als Einheit für das Abfrageergebnis wird MB verwendet.  
 
 Die Abfrageergebnisse zum Bestimmen des für jede Datenbank im Pool zugeordneten Speicherplatzes können addiert werden, um den gesamten Speicherplatz zu ermitteln, der für den Pool für elastische Datenbanken zugeordnet ist. Der zugewiesene Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  
+
+> [!IMPORTANT]
+> Das Azure Resource Manager-Modul von PowerShell wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Das AzureRM-Modul erhält mindestens bis Dezember 2020 weiterhin Fehlerbehebungen.  Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch. Weitere Informationen zur Kompatibilität finden Sie in der [Einführung in das neue Azure PowerShell Az-Modul](/powershell/azure/new-azureps-module-az).
 
 Für die Installation des PowerShell-Skripts ist das SQL Server PowerShell-Modul erforderlich – Siehe [Herunterladen des PowerShell-Moduls](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module).
 
 ```powershell
-# Resource group name
-$resourceGroupName = "rg1" 
-# Server name
-$serverName = "ls2" 
-# Elastic pool name
-$poolName = "ep1"
-# User name for server
-$userName = "name"
-# Password for server
-$password = "password"
+$resourceGroupName = "<resourceGroupName>"
+$serverName = "<serverName>"
+$poolName = "<poolName>"
+$userName = "<userName>"
+$password = "<password>"
 
-# Get list of databases in elastic pool
-$databasesInPool = Get-AzSqlElasticPoolDatabase `
-    -ResourceGroupName $resourceGroupName `
-    -ServerName $serverName `
-    -ElasticPoolName $poolName
+# get list of databases in elastic pool
+$databasesInPool = Get-AzSqlElasticPoolDatabase -ResourceGroupName $resourceGroupName `
+    -ServerName $serverName -ElasticPoolName $poolName
 $databaseStorageMetrics = @()
 
-# For each database in the elastic pool,
-# get its space allocated in MB and space allocated unused in MB.
-  
-foreach ($database in $databasesInPool)
-{
+# for each database in the elastic pool, get space allocated in MB and space allocated unused in MB
+foreach ($database in $databasesInPool) {
     $sqlCommand = "SELECT DB_NAME() as DatabaseName, `
     SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB, `
     SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB `
@@ -184,17 +171,13 @@ foreach ($database in $databasesInPool)
     HAVING type_desc = 'ROWS'"
     $serverFqdn = "tcp:" + $serverName + ".database.windows.net,1433"
     $databaseStorageMetrics = $databaseStorageMetrics + 
-        (Invoke-Sqlcmd -ServerInstance $serverFqdn `
-        -Database $database.DatabaseName `
-        -Username $userName `
-        -Password $password `
-        -Query $sqlCommand)
+        (Invoke-Sqlcmd -ServerInstance $serverFqdn -Database $database.DatabaseName `
+            -Username $userName -Password $password -Query $sqlCommand)
 }
-# Display databases in descending order of space allocated unused
+
+# display databases in descending order of space allocated unused
 Write-Output "`n" "ElasticPoolName: $poolName"
-Write-Output $databaseStorageMetrics | Sort `
-    -Property DatabaseDataSpaceAllocatedUnusedInMB `
-    -Descending | Format-Table
+Write-Output $databaseStorageMetrics | Sort -Property DatabaseDataSpaceAllocatedUnusedInMB -Descending | Format-Table
 ```
 
 Der folgende Screenshot zeigt ein Beispiel für die Ausgabe des Skripts:
@@ -230,20 +213,19 @@ DBCC SHRINKDATABASE (N'db1')
 
 Dieser Befehl kann die Datenbankleistung beeinträchtigen, während er ausgeführt wird, und sollte daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.  
 
-Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
+Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Automatisches Verkleinern
 
 Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu `SHRINKDATABASE` oder `SHRINKFILE` weniger stark auf die Datenbankleistung aus.  Insbesondere beim Verwalten von Pools für elastische Datenbanken mit zahlreichen Datenbanken kann automatisches Verkleinern äußerst hilfreich sein.  Verglichen mit `SHRINKDATABASE` und `SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
 Wenn Sie automatisches Verkleinern aktivieren möchten, ändern Sie im folgenden Befehl den Namen der Datenbank.
 
-
 ```sql
 -- Enable auto-shrink for the database.
 ALTER DATABASE [db1] SET AUTO_SHRINK ON
 ```
 
-Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current). 
+Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ### <a name="rebuild-indexes"></a>Neuerstellen von Indizes
 
@@ -256,5 +238,5 @@ Nach dem Verkleinern von Datenbankdateien sind Indizes möglicherweise fragmenti
   - [Ressourcenlimits für Einzeldatenbanken, die DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md)
   - [Limits des vCore-basierten Kaufmodells für Pools für elastische Datenbanken in Azure SQL-Datenbank](sql-database-vcore-resource-limits-elastic-pools.md)
   - [Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-basierte Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md)
-- Weitere Informationen zum `SHRINKDATABASE`-Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql). 
+- Weitere Informationen zum `SHRINKDATABASE`-Befehl finden Sie unter [SHRINKDATABASE](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 - Weitere Informationen zum Fragmentieren und Neuerstellen von Indizes finden Sie unter [Neuorganisieren und Neuerstellen von Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/reorganize-and-rebuild-indexes).

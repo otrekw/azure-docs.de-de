@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586883"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279037"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Anzeigen und Suchen Ihrer letzten Anmeldeaktivität auf der Seite „Meine Anmeldedaten“ (Vorschauversion)
 
@@ -49,7 +49,7 @@ Bevor Sie festlegen, dass etwas nicht richtig ist, stellen Sie sicher, dass Sie 
 
 ### <a name="if-you-see-an-unsuccessful-sign-in"></a>Wenn eine nicht erfolgreiche Anmeldung angezeigt wird
 
-Eine nicht erfolgreiche Anmeldung ohne Sitzungsaktivität bedeutet, dass die primäre Authentifizierungsmethode (Benutzername/Kennwort) nicht erfolgreich war. Dies könnte bedeuten, dass Sie Ihren Benutzernamen oder Ihr Kennwort falsch eingegeben haben, aber auch, dass ein Angreifer versucht hat, Ihr Kennwort zu erraten. Wenn Sie denken, dass ein Angreifer erfolglos versucht hat, Ihr Kennwort zu erraten, müssen Sie nicht unbedingt Ihr Kennwort ändern, aber wir empfehlen Ihnen dringend, sich für Azure Multi-Factor Authentication (MFA) zu registrieren. Mit MFA ist das Kennwort auch dann nicht ausreichend für die Anmeldung, wenn der Hacker Ihr Kennwort letztendlich erraten hat.
+Eine nicht erfolgreiche Anmeldung ohne Sitzungsaktivität bedeutet, dass die primäre Überprüfungsmethode (Benutzername/Kennwort) nicht erfolgreich war. Dies könnte bedeuten, dass Sie Ihren Benutzernamen oder Ihr Kennwort falsch eingegeben haben, aber auch, dass ein Angreifer versucht hat, Ihr Kennwort zu erraten. Wenn Sie denken, dass ein Angreifer erfolglos versucht hat, Ihr Kennwort zu erraten, müssen Sie nicht unbedingt Ihr Kennwort ändern, aber wir empfehlen Ihnen dringend, sich für Azure Multi-Factor Authentication (MFA) zu registrieren. Mit MFA ist das Kennwort auch dann nicht ausreichend für die Anmeldung, wenn der Hacker Ihr Kennwort letztendlich erraten hat.
 
 Wenn eine nicht erfolgreiche Anmeldung angezeigt wird, bei der für die Sitzungsaktivität der Hinweis **Zusätzliche Überprüfung fehlgeschlagen, ungültiger Code** angegeben ist, bedeutet dies, dass Ihre primäre Authentifizierungsmethode (Benutzername/Kennwort) erfolgreich war, die MFA aber fehlgeschlagen ist. Wenn es sich hierbei um einen Angreifer handelt, wurde Ihr Kennwort zwar richtig erraten, aber die MFA-Prüfung trotzdem nicht bestanden. In diesem Fall empfehlen wir Ihnen, Ihr Kennwort trotzdem zu ändern, da der Angreifer dieses Element richtig erraten hat, und dann auf der Seite [Sicherheitsinformation](https://mysignins.microsoft.com/security-info) Ihre Sicherheitseinstellungen zu aktualisieren.
 

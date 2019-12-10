@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten, C++ – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von Sprache, Absichten und Entitäten, C++ – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 277548c859370a700973d9f60556fe38e94548b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 78fbf35fab69dd91d5ba1841fee1fb5290fb1347
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280394"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816053"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,6 +46,7 @@ Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert. Beachten Sie, 
 Damit Sie ein `IntentRecognizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, in der Ihr LUIS-Endpunktschlüssel und Ihre Region verwendet werden. Fügen Sie diesen Code in die Methode `recognizeIntent()` ein.
 
 In diesem Beispiel wird die Methode `FromSubscription()` zum Erstellen von `SpeechConfig` verwendet. Eine vollständige Liste der verfügbaren Methoden finden Sie unter [SpeechConfig-Klasse](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig).
+Das Speech SDK verwendet für die Erkennung standardmäßig amerikanisches Englisch (en-us). Informationen zum Auswählen der Ausgangssprache finden Sie unter [Angeben der Ausgangssprache für die Spracherkennung](../../../../how-to-specify-source-language.md).
 
 > [!NOTE]
 > Sie dürfen weder den Start- noch den Erstellungsschlüssel, sondern müssen den LUIS-Endpunktschlüssel verwenden, da nur der Endpunktschlüssel für die Erkennung vom Typ „Sprache-Absichts-Umsetzung“ zulässig ist. Eine Anleitung zum Abrufen des richtigen Schlüssels finden Sie unter [Erstellen einer LUIS-Anwendung und Abrufen eines Endpunktschlüssels](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md).

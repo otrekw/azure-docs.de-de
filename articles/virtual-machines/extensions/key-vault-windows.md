@@ -1,5 +1,5 @@
 ---
-title: Azure Key Vault-VM-Erweiterung für Windows | Microsoft-Dokumentation
+title: Azure Key Vault-VM-Erweiterung für Windows
 description: Es wird beschrieben, wie Sie einen Agent zur automatischen Aktualisierung von Key Vault-Geheimnissen auf virtuellen Computern per VM-Erweiterung bereitstellen.
 services: virtual-machines-windows
 author: msmbaldwin
@@ -7,12 +7,12 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 09/23/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 7c730ad3f14cc26cd1251b497ef2d146fe99e448
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 03351e964fc7247f87d0b823fae06fc03ff18de7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584352"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152102"
 ---
 # <a name="key-vault-virtual-machine-extension-for-windows"></a>Key Vault-VM-Erweiterung für Windows
 
@@ -40,7 +40,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -68,7 +68,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | NAME | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 01.07.2019 | date |
-| publisher | Microsoft.Azure.KeyVault.Edp | Zeichenfolge |
+| publisher | Microsoft.Azure.KeyVault| Zeichenfolge |
 | type | KeyVaultForWindows | Zeichenfolge |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | Zeichenfolge |
@@ -95,7 +95,7 @@ Die JSON-Konfiguration für eine VM-Erweiterung muss im VM-Ressourcenfragment de
           "[concat('Microsoft.Compute/virtualMachines/', <vmName>)]"
       ],
       "properties": {
-            "publisher": "Microsoft.Azure.KeyVault.Edp",
+            "publisher": "Microsoft.Azure.KeyVault",
             "type": "KeyVaultForWindows",
             "typeHandlerVersion": "1.0",
             "autoUpgradeMinorVersion": true,
@@ -125,7 +125,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName =  "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
        
     
@@ -145,7 +145,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
             '", "certificateStoreLocation": "' + <certStoreLoc> + 
             '", "observedCertificates": ["' + <observedCerts> + '"] } }'
         $extName = "KeyVaultForWindows"
-        $extPublisher = "Microsoft.Azure.KeyVault.Edp"
+        $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForWindows"
         
         # Add Extension to VMSS

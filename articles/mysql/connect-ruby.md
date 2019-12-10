@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MySQL per Ruby
+title: 'Herstellen einer Verbindung unter Verwendung von Ruby: Azure Database for MySQL'
 description: Dieser Schnellstart enthält mehrere Ruby-Codebeispiele, die Sie nutzen können, um zu den Daten von Azure-Datenbank für MySQL eine Verbindung herzustellen und Abfragen dafür durchzuführen.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 5dbb2226e33928d9d79358a84192b57c44841de4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.date: 12/02/2019
+ms.openlocfilehash: dc8c7352856b11cb6cc4c9c404eb567cb72b720d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351626"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770644"
 ---
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden von Ruby zum Herstellen einer Verbindung und Abfragen von Daten
 In diesem Schnellstart wird gezeigt, wie Sie eine Verbindung mit einer Azure-Datenbank für MySQL per [Ruby](https://www.ruby-lang.org)-Anwendung und [mysql2](https://rubygems.org/gems/mysql2)-Gem auf Windows-, Ubuntu Linux- und Mac-Plattformen herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Ruby-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.

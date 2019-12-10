@@ -1,21 +1,15 @@
 ---
-title: Continuous Deployment für Azure Functions | Microsoft Docs
+title: Continuous Deployment für Azure Functions
 description: Hier erfahren Sie, wie Sie Ihre Funktionen mithilfe der Continuous Deployment-Features von Azure App Service verwenden veröffentlichen.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/25/2016
-ms.author: glenga
-ms.openlocfilehash: fb3cd885c0a16b3dc3a79150043b25cb271040bd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.date: 09/25/2019
+ms.openlocfilehash: cc1e100a0c2e652ab081869409fd24dbf88017a3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097099"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230898"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Continuous Deployment für Azure Functions
 
@@ -34,6 +28,9 @@ Die Bereitstellungseinheit für Funktionen in Azure ist die Funktions-App. Alle 
 Damit Continuous Deployment erfolgreich ausgeführt werden kann, muss Ihre Verzeichnisstruktur mit der grundlegenden Ordnerstruktur kompatibel sein, die von Azure Functions erwartet wird.
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
+
+>[!NOTE]  
+> Continuous Deployment wird derzeit nicht für Linux-Apps unterstützt, die mit einem Verbrauchstarif ausgeführt werden. 
 
 ## <a name="credentials"></a>Einrichten von Continuous Deployment
 

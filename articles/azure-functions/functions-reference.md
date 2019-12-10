@@ -1,20 +1,15 @@
 ---
-title: Leitfaden zur Entwicklung von Azure Functions | Microsoft-Dokumentation
+title: Leitfaden zur Entwicklung von Azure Functions
 description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, die Sie benötigen, um alle Programmiersprachen und Bindungen übergreifend Funktionen in Azure zu entwickeln.
-author: ggailey777
-manager: gwallace
-keywords: Entwicklerhandbuch, Azure Functions, Funktionen, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 4aa42e8aef2e2205523be0536cb5aceafd1aa829
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982636"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226655"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.

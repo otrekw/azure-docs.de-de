@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Sprachsynthese, Swift – Speech-Dienst'
+title: 'Schnellstart: Synthetisieren von Sprache, Swift – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie unter iOS mit dem Speech SDK Sprache in Swift synthetisieren.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 1ef473b36634c0e0bed8562f84d0de04d9e64383
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 49dc162f59c92cc8e4e154056adb1b27f711e463
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505491"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817750"
 ---
 # <a name="quickstart-synthesize-speech-in-swift-on-ios-using-the-speech-sdk"></a>Schnellstart: Sprachsynthese in Swift unter iOS mit dem Speech SDK
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie eine iOS-App in Swift mit dem Cognitive 
 
 Folgendes wird vorausgesetzt:
 
-* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst.
+* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst
 * Ein macOS-Computer mit [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) oder höher und installierte [CocoaPods](https://cocoapods.org/).
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Abrufen des Speech SDK für iOS

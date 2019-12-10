@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 22e8fa8fb6999828076ea5f8f34b1f601b920013
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f78b4c50f4cd65f3dc32c48cea81b705dc44de1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499570"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325945"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit der LUIS-API stoßen.
@@ -30,17 +30,16 @@ Bei der Erstellung handelt es sich um die Fähigkeit zum Erstellen, Verwalten un
 
 ## <a name="authoring-key"></a>Erstellungsschlüssel
 
-Früherer Name: „Programmierschlüssel“. Er wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-boundaries.md#key-limits).   
+Früherer Name: „Programmierschlüssel“. Er wird zum Erstellen der App verwendet. Er sollte nicht für Endpunktabfragen auf Produktionsebene verwendet werden. Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-boundaries.md#key-limits).
 
-## <a name="batch-test-json-file"></a>Batch-JSON-Textdatei
+## <a name="batch-test-json-file"></a>JSON-Datei für Batchtests
 
 Batchtests ermöglichen die Überprüfung des Modells einer aktuellen LUIS-App mit einem konsistenten und bekannten Testsatz von Benutzeräußerungen. Der Batchtest ist in einer [Datei im JSON-Format](luis-concept-batch-test.md#batch-file-format) definiert.
 
-Weitere Informationen: 
+Weitere Informationen:
 * [Konzepte](luis-concept-batch-test.md)
 * [Anleitung](luis-how-to-batch-test.md)
 * [Tutorial](luis-tutorial-batch-testing.md)
-
 
 ## <a name="collaborator"></a>Projektmitarbeiter
 

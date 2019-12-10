@@ -1,25 +1,18 @@
 ---
-title: Azure PowerShell-Skriptbeispiel – Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App | Microsoft-Dokumentation
-description: Azure PowerShell-Skriptbeispiel – Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App
-services: app-service\web
-documentationcenter: ''
-author: msangapu
-manager: jeconnoc
-editor: ''
+title: 'PowerShell: Hochladen und Binden von SSL'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. Dieses Beispiel zeigt, wie Sie ein benutzerdefiniertes SSL-Zertifikat an eine App binden.
+author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 23e83b74-614a-49a0-bc08-7542120eeec5
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 057d9beebc106d71183b3c979636bb9c5410b15c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4e5e1835927b135037d416ebaca84157c851d361
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098373"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74685613"
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app-using-powershell"></a>Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App mit PowerShell
 

@@ -1,17 +1,17 @@
 ---
-title: Wie funktioniert die Hyper-V-Migration mit Azure Migrate Servermigration? | Microsoft-Dokumentation
-description: Bietet eine Übersicht über die Hyper-V-Migration in Azure Migrate-Servermigration
+title: Wie funktioniert die Hyper-V-Migration in Azure Migrate?
+description: Hier wird die Hyper-V-Migration mit Azure Migrate erläutert.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/09/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 9148e76a9f2abd369ae595422d785a347e58dfab
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 8bca88fc63a7fc04a22d2a68adbe59259b07f50e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67810193"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185883"
 ---
 # <a name="how-does-hyper-v-replication-work"></a>Wie funktioniert die Hyper-V-Replikation?
 
@@ -77,10 +77,10 @@ I
 
 ### <a name="influence-upload-efficiency"></a>Beeinflussen der Effizienz beim Hochladen
 
-Wenn Sie über freie Bandbreite für die Replikation verfügen und Uploads beschleunigen möchten, können Sie die Anzahl der für die Uploadtask reservierten Threads wie folgt erhöhen:
+Wenn Sie über freie Bandbreite für die Replikation verfügen und Uploads beschleunigen möchten, können Sie die Anzahl der für den Uploadtask reservierten Threads wie folgt erhöhen:
 
 1. Öffnen Sie die Registrierung mit „Regedit“.
-2. Navigieren Sie zum Schüssel „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM“.
+2. Navigieren Sie zum Schlüssel „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM“.
 3. Erhöhen Sie den Wert für die Anzahl der Threads, die für den Datenupload für jede replizierende VM verwendet werden. Der Standardwert beträgt 4, der Maximalwert 32. 
 
 
