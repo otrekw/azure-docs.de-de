@@ -79,7 +79,7 @@
     - name: PowerShell DSC
       href: dsc-overview.md
       items:
-        - name: DSC und Fenster
+        - name: DSC und Windows
           href: dsc-windows.md
         - name: DSC und Linux
           href: dsc-linux.md
