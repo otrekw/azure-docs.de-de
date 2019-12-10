@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei, C# (.NET) – Spracherkennungsdienst'
+title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei, C# (.NET) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 24f44d02170866645711cb302453a009d2935fbf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0b34c65f6b7003cbdd4d99b684fe2b5a3249c410
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505099"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817869"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -91,7 +91,7 @@ using (var synthesizer = new SpeechSynthesizer(config, fileOutput))
 
 ## <a name="synthesize-text-using-speaktextasync"></a>Synthetisieren von Text mithilfe von SpeakTextAsync
 
-Sie rufen die Methode `SpeakTextAsync()` über das Objekt `SpeechSynthesizer` auf. Diese Methode sendet Ihren Text an den Spracherkennungsdienst, der ihn in Audiodaten konvertiert. Der `SpeechSynthesizer` verwendet die Standardstimme, wenn `config.VoiceName` nicht explizit angegeben wird.
+Rufen Sie die Methode `SpeakTextAsync()` über das Objekt `SpeechSynthesizer` auf. Diese Methode sendet Ihren Text an den Speech-Dienst, der ihn in Audiodaten konvertiert. Der `SpeechSynthesizer` verwendet die Standardstimme, wenn `config.VoiceName` nicht explizit angegeben wird.
 
 Fügen Sie in der using-Anweisung den folgenden Code hinzu:
 ````C#

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 5dc33de19ef71a0714052a6457bef9f32fc159c3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720162"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791035"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Einführung in die KI in Azure Cognitive Search
 
@@ -116,6 +116,8 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 | Indexer |  Ein Crawler, mit dem durchsuchbare Daten und Metadaten aus einer externen Datenquelle extrahiert werden und mit dem ein Index basierend auf Feld-zu-Feld-Zuordnungen zwischen dem Index und Ihrer Datenquelle zur Dokumententschlüsselung aufgefüllt wird. Bei der KI-Anreicherung ruft der Indexer ein Skillset auf und enthält die Feldzuordnungen, durch welche die Ausgabe der Anreicherung Zielfeldern im Index zugeordnet wird. Die Indexerdefinition enthält sämtliche Anweisungen und Verweise für Pipelinevorgänge. Die Pipeline wird bei Ausführung des Indexers aufgerufen. Darüber hinaus können Sie bereits vorhandene Verarbeitungsschritte wiederverwenden und nur die geänderten Schritte und Qualifikationen ausführen. Hierzu sind allerdings weitere Konfigurationsschritte erforderlich. | Siehe [Indexer in Azure Search](search-indexer-overview.md) und [Was ist die inkrementelle Indizierung in Azure Cognitive Search?](cognitive-search-incremental-indexing-conceptual.md) |
 | Data source  | Ein von einem Indexer verwendetes Objekt zum Verbinden mit einer externen Datenquelle von unterstützten Typen in Azure. | Siehe [Indexer in Azure Search](search-indexer-overview.md) |
 | Index | Ein persistenter Suchindex in Azure Cognitive Search, der aus einem Indexschema erstellt wurde, das die Feldstruktur und -verwendung definiert. | Siehe [Erstellen eines grundlegenden Index](search-what-is-an-index.md) | 
+| Wissensspeicher | Ein Speicherkonto, in dem die angereicherten Dokumente zusätzlich zum Suchindex geformt und projiziert werden können | Siehe [Einführung in Wissensspeicher in Azure Cognitive Search](knowledge-store-concept-intro.md) | 
+| Indexercache | Die Qualifikationsausgaben eines Speicherkontos werden vom Indexer zwischengespeichert. Der Cache ermöglicht es dem Indexer, die Kosten für die erneute Verarbeitung einer großen Anzahl von Dokumenten zu minimieren, wenn ein Skillset bearbeitet wird. | Siehe [Was ist die inkrementelle Indizierung in Azure Cognitive Search?](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 

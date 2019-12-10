@@ -1,26 +1,17 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Überwachen einer Web-App mit Webserverprotokollen | Microsoft-Dokumentation'
-description: 'Azure PowerShell-Skriptbeispiel: Überwachen einer Web-App mit Webserverprotokollen'
-services: app-service\web
-documentationcenter: ''
-author: syntaxc4
-manager: erikre
-editor: ''
+title: 'PowerShell: Überwachen mit Webserverprotokollen'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie eine App mit Webserverprotokollen überwachen.
 tags: azure-service-management
 ms.assetid: 5805d7cd-9e56-4eba-bd85-75b013690ff5
-ms.service: app-service
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: web
 ms.date: 03/20/2017
-ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: e9e376de3356a23df648f77738fd2c84cb26d97f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 79b5ef411abde3a4ef293516a43adaa1e669b6d9
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098313"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684622"
 ---
 # <a name="monitor-a-web-appwith-web-server-logs"></a>Überwachen einer Web-App mit Webserverprotokollen
 

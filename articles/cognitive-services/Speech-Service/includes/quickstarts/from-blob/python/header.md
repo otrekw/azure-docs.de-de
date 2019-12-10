@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache, Python – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache, Python – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -10,11 +10,11 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 747a8024ad400414f4fd93b339f8a45ecb822b4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af89b9856e7bbd62eb567d6073432ea08dd633d3
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506067"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828774"
 ---
-Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-python">Sprach-SDK-Python-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.
+Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-python">Speech SDK-Python-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.

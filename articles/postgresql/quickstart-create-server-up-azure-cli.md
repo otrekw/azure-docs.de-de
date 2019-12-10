@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure Database for PostgreSQL-Einzelservers mit dem CLI-Befehl „az postgres up“'
+title: 'Schnellstart: Erstellen eines Servers – az postgres up – Azure Database for PostgreSQL-Einzelserver'
 description: Schnellstartanleitung zum Erstellen eines Azure Database for PostgreSQL-Einzelservers mit dem „up“-Befehl der Azure CLI (Befehlszeilenschnittstelle).
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 49f71c199a2832d763bb3c19d878fade47dfb8e4
-ms.sourcegitcommit: 0ae3139c7e2f9d27e8200ae02e6eed6f52aca476
+ms.openlocfilehash: fe15c02286223ec0829b31664811b7f589cf16aa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65069077"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774831"
 ---
 # <a name="quickstart-use-an-azure-cli-command-az-postgres-up-preview-to-create-an-azure-database-for-postgresql---single-server"></a>Schnellstart: Verwenden des Azure CLI-Befehls „az postgres up“ (Vorschau) zum Erstellen eines Azure Database for PostgreSQL-Einzelservers
 
@@ -65,7 +65,7 @@ geo-redundant-backup | Deaktiviert | Gibt an, ob georedundante Sicherungen für 
 location | westus2 | Der Azure-Standort für den Server.
 ssl-enforcement | Deaktiviert | Gibt an, ob SSL für diesen Server aktiviert werden soll.
 storage-size | 5120 | Die Speicherkapazität des Servers (Einheit: MB).
-Version | 10 | Die PostgreSQL-Hauptversion.
+version | 10 | Die PostgreSQL-Hauptversion.
 admin-user | Systemgeneriert | Der Benutzername für den Administrator.
 admin-password | Systemgeneriert | Das Kennwort des Administratorbenutzers.
 

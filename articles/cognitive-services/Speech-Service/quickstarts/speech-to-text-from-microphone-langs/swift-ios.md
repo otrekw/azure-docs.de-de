@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon in Swift – Spracherkennungsdienst'
+title: 'Schnellstart: Erkennen von Spracheingaben per Mikrofon, Swift – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie unter iOS mit dem Speech SDK Sprache in Swift erkennen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 661dd94caa2a1998b26ec1270688c0729011c15a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 53ddf18c0ea102968db03bc4435b7615e724892a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505699"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818506"
 ---
 # <a name="quickstart-recognize-speech-in-swift-on-ios-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in Swift unter iOS mit dem Speech SDK
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine iOS-App in Swift mit dem Azure Cogn
 
 Bevor Sie beginnen, benötigen Sie Folgendes:
 
-* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst.
+* Ein [Abonnementschlüssel](~/articles/cognitive-services/Speech-Service/get-started.md) für den Speech-Dienst
 * Ein macOS-Computer mit [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) oder höher und installierte [CocoaPods](https://cocoapods.org/).
 
 ## <a name="get-the-speech-sdk-for-ios"></a>Abrufen des Speech SDK für iOS
@@ -36,7 +36,7 @@ Bevor Sie beginnen, benötigen Sie Folgendes:
 
 Ältere Versionen als 1.6.0 des SDK können für dieses Tutorial nicht verwendet werden.
 
-Das Cognitive Services Speech SDK für iOS wird als Frameworkpaket bereitgestellt. Es kann in Xcode-Projekten als [CocoaPod](https://cocoapods.org/) verwendet oder von https://aka.ms/csspeech/macosbinary heruntergeladen und manuell verknüpft werden. In diesem Artikel wird CocoaPods verwendet.
+Das Cognitive Services Speech SDK für iOS wird als Frameworkpaket bereitgestellt. Es kann in Xcode-Projekten als [CocoaPod](https://cocoapods.org/) verwendet oder von https://aka.ms/csspeech/iosbinary heruntergeladen und manuell verknüpft werden. In diesem Artikel wird CocoaPods verwendet.
 
 ## <a name="create-an-xcode-project"></a>Erstellen eines Xcode-Projekts
 

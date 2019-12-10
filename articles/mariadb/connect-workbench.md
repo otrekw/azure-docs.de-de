@@ -1,18 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MariaDB über MySQL Workbench
+title: 'Herstellen einer Verbindung mit MySQL Workbench: Azure Database for MariaDB'
 description: Diese Schnellstartanleitung veranschaulicht die Verwendung von MySQL Workbench – einem Tool, mit dem Sie eine Verbindung mit Azure Database for MariaDB herstellen und Daten daraus abfragen können.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 8f2ae27e19acb5bf324202b463d2b3027ad2ea5a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 12/02/2018
+ms.openlocfilehash: 85a38fe3e2d17eb53d1ed5f8f231898849bd01db
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888228"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772060"
 ---
 # <a name="azure-database-for-mariadb-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MariaDB: Verwenden von MySQL Workbench zum Verbinden und Abfragen von Daten
 

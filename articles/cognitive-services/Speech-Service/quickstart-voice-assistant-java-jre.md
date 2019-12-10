@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: bidishac
-ms.openlocfilehash: 54a5be769ace97ffa9a4f5f38a9227d9565abfd1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29f6596408a825a571682d14aceca01fa8108515
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111715"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815855"
 ---
 # <a name="quickstart-create-a-voice-assistant-with-the-speech-sdk-java-preview"></a>Schnellstart: Erstellen eines Sprach-Assistenten mit dem Speech SDK – Java (Vorschauversion)
 
@@ -30,7 +30,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 - Betriebssystem: Windows (64 Bit), Ubuntu Linux 16.04/18.04 (64 Bit) oder macOS (ab Version 10.13)
 - [Eclipse Java IDE](https://www.eclipse.org/downloads/)
 - [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) oder [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-- Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlosen Schlüssel](get-started.md), oder erstellen Sie einen im [Azure-Portal](https://portal.azure.com).
+- Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Beziehen Sie einen kostenlosen Schlüssel](get-started.md), oder erstellen Sie einen im [Azure-Portal](https://portal.azure.com).
 - Ein vorkonfigurierter Bot, der mit der Bot Framework-Version 4.2 oder einer höheren Version erstellt wurde. Der Bot muss den neuen Direct Line Speech-Kanal abonnieren, um Spracheingaben zu empfangen.
 
   > [!NOTE]
@@ -477,7 +477,7 @@ Weitere Beispiele, z.B. das Auslesen von Sprache aus einer Audiodatei, sind auf 
 ## <a name="see-also"></a>Weitere Informationen
 
 - [Informationen zu Sprach-Assistenten](voice-assistants.md)
-- [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+- [Kostenloses Testen des Speech-Diensts](get-started.md)
 - [Benutzerdefinierte Schlüsselwörter](speech-devices-sdk-create-kws.md)
 - [Verbinden von Direct Line Speech mit Ihrem Bot](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 - [Java-Beispiele auf GitHub](https://aka.ms/csspeech/samples)

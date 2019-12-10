@@ -1,26 +1,17 @@
 ---
-title: Umfassendes Authentifizieren und Autorisieren von Benutzern auf Linux – Azure App Service | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie die App Service-Authentifizierung und -Autorisierung zum Schützen Ihrer auf Linux ausgeführten App Service-Apps verwenden, einschließlich des Zugriffs auf Remote-APIs.
+title: 'Tutorial: Umfassendes Authentifizieren von Benutzern (Linux)'
+description: Hier wird beschrieben, wie Sie mit App Service-Authentifizierung und -Autorisierung Ihre App Service-Linux-Apps umfassend schützen (einschließlich des Zugriffs auf Remote-APIs).
 keywords: App Service, Azure App Service, AuthN, AuthZ, sicher, Sicherheit, mehrstufig, Azure Active Directory, Azure AD
-services: app-service\web
-documentationcenter: dotnet
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/14/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a50a1183cb2e57e8e98f1940f1c14284e89088c3
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 71aec33d5afe1a909f460ddae2d5cb0552857fee
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019264"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688939"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service-on-linux"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service unter Linux
 

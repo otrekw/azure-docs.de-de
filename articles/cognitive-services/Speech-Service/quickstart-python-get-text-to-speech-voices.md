@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Auflisten von Stimmen für Text-to-Speech, Python – Speech-Dienst'
+title: 'Schnellstart: Auflisten von Stimmen für die Sprachsynthese, Python – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Python die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: ac96c3ce3924b8b2fe834e2b350e95ce23c52e1f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: b20a8aabbd41c09efb6818cac2999a8c84b669fc
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559348"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816440"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>Schnellstart: Abrufen der Liste der Stimmen für Text-to-Speech mit Python
 
@@ -29,7 +29,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * Python 2.7.x oder 3.x
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für die Speech-Dienste
+* Ein Azure-Abonnementschlüssel für den Speech-Dienst
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
@@ -59,9 +59,9 @@ Der `subscription_key` ist Ihr individueller Schlüssel aus dem Azure-Portal.
 
 ## <a name="get-an-access-token"></a>Abrufen eines Zugriffstokens
 
-Dieser Endpunkt erfordert ein Zugriffstoken für die Authentifizierung. Um ein Zugriffstoken anzufordern, ist ein Austausch erforderlich. In diesem Beispiel wird Ihr Abonnementschlüssel für den Speech-Dienst unter Verwendung des Endpunkts `issueToken` gegen ein Zugriffstoken ausgetauscht.
+Dieser Endpunkt erfordert ein Zugriffstoken für die Authentifizierung. Um ein Zugriffstoken anzufordern, ist ein Austausch erforderlich. In diesem Beispiel wird Ihr Abonnementschlüssel für den Speech-Dienst unter Verwendung des Endpunkts `issueToken` gegen ein Zugriffstoken getauscht.
 
-In diesem Beispiel wird vorausgesetzt, dass Ihr Abonnement für den Speech-Dienst in der Region „USA, Westen“ enthalten ist. Wenn Sie eine andere Region verwenden, aktualisieren Sie den Wert für `fetch_token_url`. Eine vollständige Liste finden Sie unter [Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+In diesem Beispiel wird vorausgesetzt, dass für Ihr Abonnement für den Speech-Dienst die Region „USA, Westen“ festgelegt ist. Wenn Sie eine andere Region verwenden, aktualisieren Sie den Wert für `fetch_token_url`. Eine vollständige Liste finden Sie unter [Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Kopieren Sie diesen Code in die `GetVoices`-Klasse:
 
@@ -80,7 +80,7 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Senden der Anforderung und Speichern der Antwort
 
-An dieser Stelle werden Sie die Anforderung erstellen und die Liste der zurückgegebenen Stimmen speichern. Zunächst müssen Sie `base_url` und `path` festlegen. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `base_url` aktualisieren. Weitere Informationen finden Sie unter [Speech-Dienstregionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+An dieser Stelle werden Sie die Anforderung erstellen und die Liste der zurückgegebenen Stimmen speichern. Zunächst müssen Sie `base_url` und `path` festlegen. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `base_url` aktualisieren. Weitere Informationen finden Sie unter [Vom Speech-Dienst unterstützte Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Als Nächstes fügen Sie erforderliche Header für die Anforderung hinzu. Abschließend stellen Sie eine Anforderung an den Dienst. Wenn die Anforderung erfolgreich war und der Statuscode 200 zurückgegeben wird, wird die Antwort in eine Datei geschrieben.
 

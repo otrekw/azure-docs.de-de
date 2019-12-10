@@ -1,25 +1,17 @@
 ---
-title: 'Azure PowerShell-Skriptbeispiel: Erstellen einer Web-App und Bereitstellen über ein lokales Git-Repository | Microsoft-Dokumentation'
-description: Azure PowerShell-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: 'PowerShell: Bereitstellen über ein lokales Git-Repository'
+description: Hier erfahren Sie, wie Sie mit Azure PowerShell die Bereitstellung und Verwaltung von App Service automatisieren. In diesem Beispiel wird gezeigt, wie Sie Code über ein lokales Git-Repository bereitstellen.
 tags: azure-service-management
 ms.assetid: 5a927f23-8e70-45fd-9aae-980d4e7a007d
-ms.service: app-service-web
-ms.workload: web
 ms.topic: sample
 ms.date: 03/20/2017
-ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 670660c3618124339c6d6ab416aa9baa4d5ca2ca
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7355f2730cc54ca027e20c48e989e9f28dac7487
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098340"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684842"
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository
 

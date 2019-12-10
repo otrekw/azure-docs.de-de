@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/11/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 59708be1de53ab231ccb6dc89bd56c795734fccc
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 1b40f8e070606a4c21def592fb6104e42e25f9f6
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176824"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707934"
 ---
 # <a name="what-is-role-based-access-control-rbac-for-azure-resources"></a>Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?
 
@@ -61,7 +61,7 @@ Ein *Sicherheitsprinzipal* ist ein Objekt, das einen Benutzer, eine Gruppe, eine
 
 ### <a name="role-definition"></a>Rollendefinition
 
-Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Gelegentlich wird sie auch einfach als *Rolle* bezeichnet. Eine Rollendefinition listet die ausführbaren Vorgänge wie etwa Lesen, Schreiben und Löschen auf. Rollen können auf allgemeiner Ebene erteilt werden (z.B. Benutzer) oder spezifisch sein (z.B. Leser virtueller Computer).
+Eine *Rollendefinition* ist eine Sammlung von Berechtigungen. Sie wird in der Regel einfach *Rolle* genannt. Eine Rollendefinition listet die ausführbaren Vorgänge wie etwa Lesen, Schreiben und Löschen auf. Rollen können auf allgemeiner Ebene erteilt werden (z.B. Benutzer) oder spezifisch sein (z.B. Leser virtueller Computer).
 
 ![Rollenzuweisung zu Rollendefinition hinzufügen](./media/overview/rbac-role-definition.png)
 

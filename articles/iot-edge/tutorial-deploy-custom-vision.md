@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen einer Custom Vision-Klassifizierung auf einem Gerät – Azure IoT Edge | Microsoft-Dokumentation'
+title: 'Tutorial: Bereitstellen einer Custom Vision-Klassifizierung auf einem Gerät mithilfe von Azure IoT Edge'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Custom Vision und IoT Edge ein als Container ausgeführtes Modell für maschinelles Sehen erstellen.
 services: iot-edge
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 10/15/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3418c57493e19580f0d3dbd9ea979b0322d930b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457287"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701871"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Tutorial: Durchführen von Bildklassifizierungen im Edge-Bereich mit dem Custom Vision Service
 

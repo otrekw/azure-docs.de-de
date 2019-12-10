@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a9a68e9d71324ba05e24ba98802863211a569689
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839936"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815804"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal
 
@@ -51,16 +51,14 @@ Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den Adven
 
     | Einstellung | Empfohlener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
-    | **Datenbankname** | mySampleDataWarehouse | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). Hinweis: Ein Data Warehouse ist ein Datenbanktyp.|
     | **Abonnement** | Ihr Abonnement | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
     | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
-    | **Quelle auswählen** | Beispiel | Legt fest, dass eine Beispieldatenbank geladen wird. Hinweis: Ein Data Warehouse ist ein Datenbanktyp. |
-    | **Beispiel auswählen** | AdventureWorksDW | Legt fest, dass die Beispieldatenbank „AdventureWorksDW“ geladen wird. |
+    | **Data Warehouse-Name** | mySampleDataWarehouse | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). Hinweis: Ein Data Warehouse ist ein Datenbanktyp.|
     ||||
 
     ![Erstellen eines Data Warehouse](media/create-data-warehouse-portal/select-sample.png)
 
-4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
+4. Wählen Sie einen vorhandenen **Server** aus, oder klicken Sie auf **Neu erstellen**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
 
     | Einstellung | Empfohlener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
@@ -82,7 +80,7 @@ Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den Adven
 
 8. Klicken Sie auf **Anwenden**.
 
-9. Klicken Sie nach dem Ausfüllen des SQL Data Warehouse-Formulars auf **Erstellen**, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten.
+9. Klicken Sie nach dem Ausfüllen der Registerkarte „Grundlagen“ des SQL Data Warehouse-Formulars auf **Überprüfen und erstellen**, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten.
 
     ![Klicken auf „Erstellen“](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
 

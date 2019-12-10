@@ -1,24 +1,17 @@
 ---
-title: 'Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung: Azure App Service | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie ein App Service-Zertifikat erwerben und es an Ihre App Service-App binden.
-services: app-service
-author: cephalin
-manager: gwallace
+title: Schützen eines benutzerdefinierten DNS mit einer SSL-Bindung
+description: Schützen Sie den HTTPS-Zugriff auf Ihre benutzerdefinierte Domäne durch Erstellung einer TLS/SSL-Bindung mit einem Zertifikat. Verbessern Sie die Sicherheit Ihrer Website, indem Sie HTTPS oder TLS 1.2 erzwingen.
 tags: buy-ssl-certificates
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 10/25/2019
-ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 259a4d33ba6e8c072f8df906da4784119b299822
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73509054"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670681"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung: Azure App Service
 

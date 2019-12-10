@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 6c65fd9a504b5f399afa99280ca2a75b476c750c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: bc35c1efcad2ca9ebb5eaf23dd84f7189858a159
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504771"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817322"
 ---
 In dieser Schnellstartanleitung wird gesprochene Sprache mithilfe des [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) interaktiv in eine andere Sprache übersetzt. Nach der Erfüllung einiger Voraussetzungen sind für die mehrsprachige Übersetzung von Sprache in Text lediglich sechs Schritte erforderlich:
 > [!div class="checklist"]

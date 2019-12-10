@@ -4,18 +4,17 @@ description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des 
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
-manager: timlt
 ms.service: event-hubs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2019
+ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 209bdb919a505e55bdfb8868d556fa1ad08db2fe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a94e67af927365eda2b8b98240285e7cd3079a95
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717950"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688143"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
@@ -59,9 +58,11 @@ Ein Event Hubs-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf 
 
    ![Schaltfläche „Hinzufügen“](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Gehen Sie auf der Seite **Namespace erstellen** wie folgt vor:
-    1. Geben Sie einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-    2. Wählen Sie den Tarif (Basic oder Standard) aus.
-    3. Wählen Sie das **Abonnement** aus, in dem Sie den Namespace erstellen möchten.
+    1. Geben Sie einen **Namen** für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+    2. Wählen Sie den **Tarif** (Basic oder Standard) aus.
+    3. Beachten Sie, dass die Option **Kafka aktivieren** automatisch aktiviert ist. Von Azure Event Hubs wird ein Kafka-Endpunkt bereitgestellt. Dieser Endpunkt ermöglicht Ihrem Event Hubs-Namespace die native Erkennung des [Apache Kafka](https://kafka.apache.org/intro)-Nachrichtenprotokolls und der APIs. Mit dieser Funktion können Sie wie bei Kafka-Themen mit Ihrem Event Hubs kommunizieren, ohne Ihre Protokollclients ändern oder eigene Cluster ausführen zu müssen. Event Hubs unterstützt [Apache Kafka Version 1.0.](https://kafka.apache.org/10/documentation.html) und höher.
+    4. Wählen Sie das **Abonnement** aus, in dem Sie den Namespace erstellen möchten.
+    5. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe. 
     4. Wählen Sie einen **Standort** für den Namespace aus.
     5. Klicken Sie auf **Erstellen**. Möglicherweise müssen Sie ein paar Minuten warten, bis das System die Ressourcen vollständig bereitgestellt hat.
 

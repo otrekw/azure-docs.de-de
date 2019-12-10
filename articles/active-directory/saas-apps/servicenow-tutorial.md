@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65526fe501b190f9bf76c58ab1c14b5ec35fe49d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 52b3b7ea34d48c37a4e07ab073e611d5a60399a9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376024"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706924"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -97,7 +97,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird im weiteren Verlauf des Tutorials erläutert. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** nach **Zertifikat (Base64)** . Wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** nach **Zertifikat (Base64)** . 
 
    ![Screenshot: Abschnitt „SAML-Signaturzertifikat“ mit hervorgehobener Downloadoption](common/certificatebase64.png)
 
@@ -172,7 +172,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 7. Geben Sie im Formular **Anmeldung konfigurieren** Ihren ServiceNow-Instanznamen, Administratorbenutzernamen und Ihr Administratorkennwort ein. Wählen Sie **Jetzt konfigurieren** aus. Dem angegebenen Administratorbenutzernamen muss in ServiceNow die Rolle **security_admin** zugewiesen sein. Andernfalls müssen Sie ServiceNow manuell für die Verwendung von Azure AD als SAML-Identitätsanbieter konfigurieren, indem Sie **Einmaliges Anmelden manuell konfigurieren** auswählen. Kopieren Sie **die Abmelde-URL, den Azure AD-Bezeichner und die Anmelde-URL** aus der Kurzübersicht.
 
-    ![Screenshot: Formular zum Konfigurieren der Anmeldung mit hervorgehobener Option „Jetzt konfigurieren“](./media/servicenow-tutorial/configure.png "Konfigurieren der App-URL")
+    ![Screenshot: Formular zum Konfigurieren der Anmeldung mit hervorgehobener Option „Configure Now“ (Jetzt konfigurieren)](./media/servicenow-tutorial/configure.png "App-URL konfigurieren")
 
 ## <a name="configure-servicenow"></a>Konfigurieren von ServiceNow
 
@@ -194,15 +194,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     d. Wählen Sie **Aktivieren**aus.
 
-     ![Screenshot: Dialogfeld zum Aktivieren des Plug-Ins mit hervorgehobener Option „Aktivieren“](./media/servicenow-tutorial/tutorial_activate1.png "Aktivieren des Plug-Ins")
+     ![Screenshot: Dialogfeld zum Aktivieren des Plug-Ins mit hervorgehobener Option „Activate“ (Aktivieren)](./media/servicenow-tutorial/tutorial_activate1.png "Aktivieren des Plug-Ins")
 
 3. Suchen Sie im linken Bereich über die Suchleiste nach dem Abschnitt **Multi-Provider SSO** (Multi-Provider-SSO), und wählen Sie **Properties** (Eigenschaften) aus.
 
-    ![Screenshot: Abschnitt „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Multi-Provider SSO“ (Multi-Provider-SSO) und „Properties“ (Eigenschaften)](./media/servicenow-tutorial/tutorial_servicenow_06.png "Konfigurieren der App-URL")
+    ![Screenshot: Abschnitt „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Multi-Provider SSO“ (Multi-Provider-SSO) und „Properties“ (Eigenschaften)](./media/servicenow-tutorial/tutorial_servicenow_06.png "App-URL konfigurieren")
 
 4. Gehen Sie im Dialogfeld **Multiple Provider SSO Properties** (Eigenschaften von SSO für mehrere Anbieter) wie folgt vor:
 
-    ![Screenshot: Dialogfeld mit den Eigenschaften von SSO für mehrere Anbieter](./media/servicenow-tutorial/ic7694981.png "Konfigurieren der App-URL")
+    ![Screenshot: Dialogfeld mit den Eigenschaften von SSO für mehrere Anbieter](./media/servicenow-tutorial/ic7694981.png "App-URL konfigurieren")
 
     * Wählen Sie unter **Enable multiple provider SSO** (SSO für mehrere Anbieter aktivieren) die Option **Yes** (Ja) aus.
   
@@ -224,7 +224,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Geben Sie im Formular **Anmeldung konfigurieren** Ihren ServiceNow-Instanznamen, Administratorbenutzernamen und Ihr Administratorkennwort ein. Wählen Sie **Jetzt konfigurieren** aus. Dem angegebenen Administratorbenutzernamen muss in ServiceNow die Rolle **security_admin** zugewiesen sein. Andernfalls müssen Sie ServiceNow manuell für die Verwendung von Azure AD als SAML-Identitätsanbieter konfigurieren, indem Sie **Einmaliges Anmelden manuell konfigurieren** auswählen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus der Kurzübersicht.
 
-        ![Screenshot: Formular zum Konfigurieren der Anmeldung mit hervorgehobener Option „Jetzt konfigurieren“](./media/servicenow-tutorial/configure.png "Konfigurieren der App-URL")
+        ![Screenshot: Formular zum Konfigurieren der Anmeldung mit hervorgehobener Option „Configure Now“ (Jetzt konfigurieren)](./media/servicenow-tutorial/configure.png "App-URL konfigurieren")
 
     1. Melden Sie sich bei Ihrer ServiceNow-Anwendung als Administrator an.
 
@@ -232,15 +232,15 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
          1. Suchen Sie im linken Bereich über das Suchfeld nach dem Abschnitt **Multi-Provider SSO** (Multi-Provider-SSO), und wählen Sie **Identity Providers** (Identitätsanbieter) aus.
 
-            ![Screenshot: Abschnitt „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Identity Providers“ (Identitätsanbieter)](./media/servicenow-tutorial/tutorial_servicenow_07.png "Konfigurieren des einmaligen Anmeldens")
+            ![Screenshot: Abschnitt „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Identity Providers“ (Identitätsanbieter)](./media/servicenow-tutorial/tutorial_servicenow_07.png "Einmaliges Anmelden konfigurieren")
 
          1. Wählen Sie den automatisch generierten Identitätsanbieter aus.
 
-            ![Screenshot: Identitätsanbieter mit Hervorhebung des automatisch generierten Identitätsanbieters](./media/servicenow-tutorial/tutorial_servicenow_08.png "Konfigurieren des einmaligen Anmeldens")
+            ![Screenshot: Identitätsanbieter mit Hervorhebung des automatisch generierten Identitätsanbieters](./media/servicenow-tutorial/tutorial_servicenow_08.png "Einmaliges Anmelden konfigurieren")
 
          1.  Führen Sie im Abschnitt **Identitätsanbieter** die folgenden Schritte aus:
 
-             ![Screenshot: Abschnitt „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/automatic_config.png "Konfigurieren des einmaligen Anmeldens")
+             ![Screenshot: Abschnitt „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/automatic_config.png "Einmaliges Anmelden konfigurieren")
 
                * Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **Microsoft Azure Federated single sign-on**).
 
@@ -257,11 +257,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
          1. Scrollen Sie nach unten zum Abschnitt **X.509 Certificate** (X.509-Zertifikat), und wählen Sie **Edit** (Bearbeiten) aus.
 
-             ![Screenshot: Abschnitt „X.509 Certificate“ (X.509-Zertifikat) mit hervorgehobener Option „Edit“ (Bearbeiten)](./media/servicenow-tutorial/tutorial_servicenow_09.png "Konfigurieren des einmaligen Anmeldens")
+             ![Screenshot: Abschnitt „X.509 Certificate“ (X.509-Zertifikat) mit hervorgehobener Option „Edit“ (Bearbeiten)](./media/servicenow-tutorial/tutorial_servicenow_09.png "Einmaliges Anmelden konfigurieren")
 
          1. Wählen Sie das Zertifikat und anschließend den Pfeil nach rechts aus, um das Zertifikat hinzuzufügen.
 
-            ![Screenshot: Sammlung mit Hervorhebung des Zertifikats und des Rechtspfeils](./media/servicenow-tutorial/tutorial_servicenow_11.png "Konfigurieren des einmaligen Anmeldens")
+            ![Screenshot: Sammlung mit Hervorhebung des Zertifikats und des Rechtspfeils](./media/servicenow-tutorial/tutorial_servicenow_11.png "Einmaliges Anmelden konfigurieren")
 
           1. Wählen Sie **Speichern** aus.
 
@@ -271,7 +271,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
           1. Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Daraufhin wird die folgende Seite angezeigt. Der Fehler unter **SSO Logout Test Results** (Testergebnisse der SSO-Abmeldung) wird erwartet. Ignorieren Sie den Fehler, und wählen Sie **Activate** (Aktivieren) aus.
 
-             ![Screenshot: Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Konfigurieren des einmaligen Anmeldens")
+             ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
   
 6. Führen Sie für die manuelle Konfiguration von **ServiceNow** die folgenden Schritte aus:
 
@@ -279,19 +279,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Wählen Sie im linken Bereich **Identity Providers** (Identitätsanbieter) aus.
 
-        ![Screenshot: „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Identity Providers“ (Identitätsanbieter)](./media/servicenow-tutorial/tutorial_servicenow_07.png "Konfigurieren des einmaligen Anmeldens")
+        ![Screenshot: „Multi-Provider SSO“ (Multi-Provider-SSO) mit Hervorhebung von „Identity Providers“ (Identitätsanbieter)](./media/servicenow-tutorial/tutorial_servicenow_07.png "Einmaliges Anmelden konfigurieren")
 
     1. Wählen Sie im Dialogfeld **Identity Providers** (Identitätsanbieter) die Option **New** (Neu) aus.
 
-        ![Screenshot: Dialogfeld „Identity Providers“ (Identitätsanbieter) mit hervorgehobener Option „New“ (Neu)](./media/servicenow-tutorial/ic7694977.png "Konfigurieren des einmaligen Anmeldens")
+        ![Screenshot: Dialogfeld „Identity Providers“ (Identitätsanbieter) mit hervorgehobener Option „New“ (Neu)](./media/servicenow-tutorial/ic7694977.png "Einmaliges Anmelden konfigurieren")
 
     1. Wählen Sie im Dialogfeld **Identity Providers** (Identitätsanbieter) die Option **SAML** aus.
 
-        ![Screenshot: Dialogfeld „Identity Providers“ (Identitätsanbieter) mit hervorgehobener Option „SAML“](./media/servicenow-tutorial/ic7694978.png "Konfigurieren des einmaligen Anmeldens")
+        ![Screenshot: Dialogfeld „Identity Providers“ (Identitätsanbieter) mit hervorgehobener Option „SAML“](./media/servicenow-tutorial/ic7694978.png "Einmaliges Anmelden konfigurieren")
 
     1. Führen Sie unter **Import Identity Provider Metadata** (Metadaten des Identitätsanbieters importieren) die folgenden Schritte aus:
 
-        ![Screenshot: Dialogfeld „Import Identity Provider Metadata“ (Metadaten des Identitätsanbieters importieren) mit Hervorhebung der URL und der Option „Import“ (Importieren)](./media/servicenow-tutorial/idp.png "Konfigurieren des einmaligen Anmeldens")
+        ![Screenshot: Dialogfeld „Import Identity Provider Metadata“ (Metadaten des Identitätsanbieters importieren) mit Hervorhebung der URL und der Option „Import“ (Importieren)](./media/servicenow-tutorial/idp.png "Einmaliges Anmelden konfigurieren")
 
         1. Geben Sie die **Verbundmetadaten-URL der App** ein, die Sie aus dem Azure-Portal kopiert haben.
 
@@ -299,7 +299,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     1. Die URL für die Metadaten des Identitätsanbieters wird gelesen, und alle Felder werden aufgefüllt.
 
-        ![Screenshot: „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/ic7694982.png "Konfigurieren des einmaligen Anmeldens")
+        ![Screenshot: „Identity Provider“ (Identitätsanbieter)](./media/servicenow-tutorial/ic7694982.png "Einmaliges Anmelden konfigurieren")
 
         * Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **Microsoft Azure Federated single sign-on**).
 
@@ -323,7 +323,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
         * Geben Sie Ihre Anmeldeinformationen ein, wenn Sie dazu aufgefordert werden. Daraufhin wird die folgende Seite angezeigt. Der Fehler unter **SSO Logout Test Results** (Testergebnisse der SSO-Abmeldung) wird erwartet. Ignorieren Sie den Fehler, und wählen Sie **Activate** (Aktivieren) aus.
 
-          ![Screenshot: Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Konfigurieren des einmaligen Anmeldens")
+          ![Screenshot der Seite mit den Testergebnissen](./media/servicenow-tutorial/servicenowactivate.png "Einmaliges Anmelden konfigurieren")
 
 ### <a name="create-servicenow-test-user"></a>Erstellen eines ServiceNow-Testbenutzers
 
@@ -338,11 +338,11 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 2. Wählen Sie im linken Bereich **Single Sign-On** (Einmaliges Anmelden) aus.
 
-    ![Screenshot: ServiceNow Express-Anwendung mit hervorgehobener Option „Einmaliges Anmelden“](./media/servicenow-tutorial/ic7694980ex.png "Konfigurieren der App-URL")
+    ![Screenshot: ServiceNow Express-Anwendung mit hervorgehobener Option für einmaliges Anmelden](./media/servicenow-tutorial/ic7694980ex.png "App-URL konfigurieren")
 
 3. Wählen Sie rechts oben im Dialogfeld **Single Sign-On** (Einmaliges Anmelden) das Konfigurationssymbol aus, und legen Sie die folgenden Eigenschaften fest:
 
-    ![Screenshot: Dialogfeld „Single Sign-On“ (Einmaliges Anmelden)](./media/servicenow-tutorial/ic7694981ex.png "Konfigurieren der App-URL")
+    ![Screenshot des Dialogfelds „Single Sign-On“ (Einmaliges Anmelden)](./media/servicenow-tutorial/ic7694981ex.png "App-URL konfigurieren")
 
     a. Schieben Sie den Umschalter der Option **Enable multiple provider SSO** (SSO für mehrere Anbieter aktivieren) nach rechts.
 
@@ -352,11 +352,11 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 4. Klicken Sie im Dialogfeld **Single Sign-On** (Einmaliges Anmelden) auf **Add New Certificate** (Neues Zertifikat hinzufügen).
 
-    ![Screenshot: Dialogfeld „Single Sign-On“ (Einmaliges Anmelden) mit hervorgehobener Option „Add New Certificate“ (Neues Zertifikat hinzufügen)](./media/servicenow-tutorial/ic7694973ex.png "Konfigurieren des einmaligen Anmeldens")
+    ![Screenshot: Dialogfeld „Single Sign-On“ (Einmaliges Anmelden) mit hervorgehobener Option „Add New Certificate“ (Neues Zertifikat hinzufügen)](./media/servicenow-tutorial/ic7694973ex.png "Einmaliges Anmelden konfigurieren")
 
 5. Führen Sie im Dialogfeld **X.509 Certificates** (X.509-Zertifikate) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „X.509 Certificates“ (X.509-Zertifikate)](./media/servicenow-tutorial/ic7694975.png "Konfigurieren des einmaligen Anmeldens")
+    ![Screenshot: Dialogfeld „X.509 Certificates“ (X.509-Zertifikate)](./media/servicenow-tutorial/ic7694975.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **TestSAML2.0**).
 
@@ -372,11 +372,11 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 6. Wählen Sie im Dialogfeld **Single Sign-On** (Einmaliges Anmelden) die Option **Add New IdP** (Neuen Identitätsanbieter hinzufügen) aus.
 
-    ![Screenshot: Dialogfeld „Single Sign-On“ (Einmaliges Anmelden) mit hervorgehobener Option „Add New IdP“ (Neuen Identitätsanbieter hinzufügen)](./media/servicenow-tutorial/ic7694976ex.png "Konfigurieren des einmaligen Anmeldens")
+    ![Screenshot: Dialogfeld „Single Sign-On“ (Einmaliges Anmelden) mit hervorgehobener Option „Add New IdP“ (Neuen Identitätsanbieter hinzufügen)](./media/servicenow-tutorial/ic7694976ex.png "Einmaliges Anmelden konfigurieren")
 
 7. Führen Sie im Dialogfeld **Add New Identity Provider** (Neuen Identitätsanbieter hinzufügen) unter **Configure Identity Provider** (Identitätsanbieter konfigurieren) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen)](./media/servicenow-tutorial/ic7694982ex.png "Konfigurieren des einmaligen Anmeldens")
+    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen)](./media/servicenow-tutorial/ic7694982ex.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **Name** einen Namen für Ihre Konfiguration ein (beispielsweise **SAML 2.0**).
 
@@ -390,7 +390,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 8. Wählen Sie **Advanced Settings** (Erweiterte Einstellungen) aus. Führen Sie unter **Additional Identity Provider Properties** (Weitere Identitätsanbietereigenschaften) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit hervorgehobener Option „Advanced Settings“ (Erweiterte Einstellungen)](./media/servicenow-tutorial/ic7694983ex.png "Konfigurieren des einmaligen Anmeldens")
+    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit hervorgehobener Option „Advanced Settings“ (Erweiterte Einstellungen)](./media/servicenow-tutorial/ic7694983ex.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **Protocol Binding for the IDP's SingleLogoutRequest** (Protokollbindung für „SingleLogoutRequest“ des Identitätsanbieters) die Zeichenfolge **urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect** ein.
 
@@ -402,7 +402,7 @@ In diesem Abschnitt wird in ServiceNow ein Benutzer namens B.Simon erstellt. Ser
 
 9. Führen Sie unter **Additional Service Provider Properties** (Weitere Service Provider-Eigenschaften) die folgenden Schritte aus:
 
-    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit verschiedenen hervorgehobenen Eigenschaften](./media/servicenow-tutorial/ic7694984ex.png "Konfigurieren des einmaligen Anmeldens")
+    ![Screenshot: Dialogfeld „Add New Identity Provider“ (Neuen Identitätsanbieter hinzufügen) mit verschiedenen hervorgehobenen Eigenschaften](./media/servicenow-tutorial/ic7694984ex.png "Einmaliges Anmelden konfigurieren")
 
     a. Geben Sie unter **ServiceNow Homepage** (ServiceNow-Homepage) die URL der Homepage Ihrer ServiceNow-Instanz ein.
 

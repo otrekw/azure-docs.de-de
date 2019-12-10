@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten eines Stream Analytics-Auftrags über das Azure-Portal
+title: 'Tutorial: Erstellen und Verwalten eines Stream Analytics-Auftrags über das Azure-Portal'
 description: Dieses Tutorial zeigt ausführlich, wie Sie mithilfe von Azure Stream Analytics betrügerische Anrufe in einem Telefonanruf-Datenstrom analysieren können.
 services: stream-analytics
 author: mamccrea
@@ -9,14 +9,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/03/2019
-ms.openlocfilehash: 128859a00402c3381edfa65918a7135c9fd775de
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: cca9f25fae9646b4207db7aa98f4c334457fc426
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925272"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707382"
 ---
-# <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
+# <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Tutorial: Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
 In diesem Tutorial erfahren Sie, wie Sie Telefonanrufdaten mithilfe von Azure Stream Analytics analysieren. Die von einer Clientanwendung generierten Telefonanrufdaten enthalten einige betrügerische Anrufe, die durch den Stream Analytics-Auftrag herausgefiltert werden.
 

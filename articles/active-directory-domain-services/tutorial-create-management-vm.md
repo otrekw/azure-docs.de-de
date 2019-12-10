@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: iainfou
-ms.openlocfilehash: 2aec10ab07b78aaacf34340b268f9b7dfbe69eb5
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d8a5f4756f3a6799c7f1b08973e0a84603cb4571
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73172332"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703647"
 ---
 # <a name="tutorial-create-a-management-vm-to-configure-and-administer-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Erstellen einer Verwaltungs-VM zum Konfigurieren und Verwalten einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -105,7 +105,7 @@ Führen Sie die folgenden Schritte aus, um die Active Directory-Verwaltungstool
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.
-1. Wählen Sie auf der Seite **Serverauswahl** die aktuelle VM aus dem Serverpool aus (z. B. *myvm.contoso.com*), und klicken Sie dann auf **Weiter**.
+1. Wählen Sie auf der Seite **Serverauswahl** die aktuelle VM aus dem Serverpool (z. B. *myvm.aadds.contoso.com*) und anschließend **Weiter** aus.
 1. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**.
 1. Erweitern Sie auf der Seite **Features** den Knoten **Remote Server-Verwaltungstools** und anschließend den Knoten **Rollenverwaltungstools**.
 
@@ -125,7 +125,7 @@ Nachdem Sie die Verwaltungstools installiert haben, sehen wir uns nun an, wie Si
     ![Liste der auf dem Server installierten Verwaltungstools](./media/tutorial-create-management-vm/list-admin-tools.png)
 
 1. Wählen Sie **Active Directory-Verwaltungscenter** aus.
-1. Wählen Sie zum Durchsuchen der verwalteten Azure AD DS-Domäne im linken Bereich den Domänennamen aus (z. B. *contoso.com*). Am Anfang der Liste sehen Sie zwei Container mit den Namen *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer).
+1. Wählen Sie zum Durchsuchen der verwalteten Azure AD DS-Domäne im linken Bereich den Domänennamen aus (z. B. *aadds.contoso.com*). Am Anfang der Liste sehen Sie zwei Container mit den Namen *AADDC Computers* (Azure AD-DC-Computer) und *AADDC Users* (Azure AD-DC-Benutzer).
 
     ![Liste der verfügbaren Container, die Teil der verwalteten Azure AD DS-Domäne sind](./media/tutorial-create-management-vm/active-directory-administrative-center.png)
 

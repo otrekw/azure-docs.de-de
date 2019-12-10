@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: wolfma
-ms.openlocfilehash: 2ee2b25958feac2387779d9e60734a6600b60a2e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 23f0b459b67088518375fbb4fd0b106da3aaf57c
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682069"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815847"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Schnellstart: Abrufen eines LUIS-Endpunktschlüssels
 
@@ -27,7 +27,7 @@ Vergewissern Sie sich, dass folgende Elemente vorhanden sind, bevor Sie mit dies
 
 ## <a name="luis-and-speech"></a>LUIS und Spracherkennung
 
-LUIS ist in die Speech-Dienste integriert, um Absichten anhand von Sprache zu erkennen. Ein Abonnement der Speech-Dienste ist nicht erforderlich. Sie benötigen lediglich LUIS.
+LUIS ist in Speech Service integriert, um Absichten aus Sprache zu erkennen. Ein Speech Service-Abonnement ist nicht erforderlich, nur LUIS.
 
 LUIS verwendet drei Arten von Schlüsseln:
 
@@ -39,7 +39,7 @@ LUIS verwendet drei Arten von Schlüsseln:
 
 Für dieses Tutorial benötigen Sie den Endpunktschlüsseltyp. Dieses Tutorial verwendet die LUIS-Beispiel-App für die Gebäudeautomatisierung, die Sie erstellen können, indem Sie die Anleitung im Schnellstart [Verwenden der vordefinierten Home Automation-App](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) befolgen. Wenn Sie selbst eine LUIS-App erstellt haben, können Sie diese stattdessen verwenden.
 
-Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Integration von Spracherkennungsdiensten möglich, und er ist für dieses Tutorial nicht geeignet. Erstellen Sie eine LUIS-Ressource im Azure-Dashboard, und weisen Sie sie der LUIS-App zu. Sie können den Tarif für ein kostenloses Abonnement für dieses Tutorial verwenden.
+Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Integration des Speech-Diensts möglich, und er ist für dieses Tutorial nicht geeignet. Erstellen Sie eine LUIS-Ressource im Azure-Dashboard, und weisen Sie sie der LUIS-App zu. Sie können den Tarif für ein kostenloses Abonnement für dieses Tutorial verwenden.
 
 Nachdem Sie die LUIS-Ressource im Azure-Dashboard erstellt haben, melden Sie sich beim [LUIS-Portal](https://www.luis.ai/home) an, wählen Sie Ihre Anwendung auf der Seite **Eigene Anwendungen** aus, und wechseln Sie dann zur Seite **Verwalten** der App. Wählen Sie schließlich auf der Seitenleiste die Option **Schlüssel und Endpunkte** aus.
 

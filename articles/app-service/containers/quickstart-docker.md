@@ -1,19 +1,18 @@
 ---
-title: Bereitstellen einer Docker-App unter Linux – Azure App Service
-description: Bereitstellen eines Docker-Images für Azure App Services-Instanzen für Linux
-author: msangapu
+title: 'Schnellstart: Ausführen eines benutzerdefinierten Linux-Containers'
+description: Führen Sie erste Schritte mit Linux-Containern in Azure App Service aus, indem Sie Ihren ersten benutzerdefinierten Container mithilfe von Azure Container Registry-Instanzen bereitstellen.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.service: app-service
-ms.openlocfilehash: 2a7dc477b4cd0be0c50569d84e10cfe1d666eac9
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70392699"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688965"
 ---
-# <a name="deploy-to-azure-using-docker"></a>Bereitstellen in Azure mithilfe von Docker
+# <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Bereitstellen eines benutzerdefinierten Linux-Containers in Azure App Service
 
 Bei App Service für Linux werden vordefinierte Anwendungsstapel unter Linux mit Unterstützung für verschiedene Sprachen bereitgestellt, z. B. .NET, PHP, Node.js und andere. Sie können auch ein benutzerdefiniertes Docker-Image verwenden, um Ihre Web-App in einem Anwendungsstapel auszuführen, der nicht bereits in Azure definiert ist. In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Image aus einer [Azure Container Registry](/azure/container-registry)-Instanz (ACR) in App Service bereitstellen.
 

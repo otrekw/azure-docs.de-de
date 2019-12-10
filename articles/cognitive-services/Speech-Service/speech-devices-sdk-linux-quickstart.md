@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 18b96e9afbf2a83b917d6848b419fb76518035de
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: c9175f1f592c72e047b02a06a174d3013b0c7ef6
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090428"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815310"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-linux"></a>Schnellstart: Ausführen der Speech Devices SDK-Beispiel-App unter Linux
 
@@ -23,7 +23,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK fü
 
 Die Anwendung wird mit dem Speech SDK-Paket und der Eclipse Java-IDE (v4) unter 64-Bit-Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9) erstellt. Sie wird in einer 64-Bit Java 8-JRE (Runtime Environment) ausgeführt.
 
-Für diese Anleitung wird ein [Azure Cognitive Services-Konto](get-started.md) mit einer Ressource für die Speech-Dienste benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
+Für diese Anleitung wird ein [Azure Cognitive Services-Konto](get-started.md) mit einer Ressource für den Speech-Dienst benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
 
 Der Quellcode für die [Beispielanwendung](https://aka.ms/sdsdk-download-JRE) ist im Speech Devices SDK enthalten. Es ist auch auf [GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK) verfügbar.
 
@@ -80,7 +80,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
 
    ![Screenshot des Paket-Explorers](media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
-1. Öffnen Sie die Datei „pom.xml“, und bearbeiten Sie diese.
+1. Öffnen Sie die Datei „pom.xml“, und bearbeiten Sie sie.
 
     Erstellen Sie am Ende der Datei vor dem schließenden Tag `</project>` ein `repositories`- und ein `dependencies`-Element, wie hier zu sehen, und stellen Sie sicher, dass der Wert von `version` Ihrer aktuellen Version entspricht:
     ```xml    
@@ -141,7 +141,7 @@ Wenn Sie planen, die Absichten zu nutzen, benötigen Sie ein Abonnement des [Die
    > [!TIP]
    > Sie können auch [ein benutzerdefiniertes Schlüsselwort erstellen](speech-devices-sdk-create-kws.md).
 
-    Um ein neues Schlüsselwort zu verwenden, aktualisieren Sie die folgende Zeile in `FunctionsList.java`, und kopieren Sie das Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `machine.zip` verwenden möchten:
+    Wenn Sie ein neues Schlüsselwort verwenden möchten, aktualisieren Sie die folgende Zeile in `FunctionsList.java`, und kopieren Sie das Schlüsselwort in Ihre App. Gehen Sie beispielsweise wie folgt vor, wenn Sie das Schlüsselwort „Machine“ aus dem Schlüsselwortpaket `machine.zip` verwenden möchten:
 
    * Kopieren Sie die Datei `kws.table` aus dem ZIP-Paket in den Projektordner **target/classes**.
 

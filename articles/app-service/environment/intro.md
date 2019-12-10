@@ -1,24 +1,18 @@
 ---
-title: 'Einführung in App Service-Umgebungen: Azure'
-description: Kurze Übersicht über Azure App Service-Umgebungen
-services: app-service
-documentationcenter: na
+title: Einführung
+description: Hier erfahren Sie, wie Azure App Service-Umgebungen Ihnen helfen, Ihre Apps in einer vollständig isolierten und dedizierten Umgebung zu skalieren, zu schützen und zu optimieren.
 author: ccompy
-manager: stefsch
 ms.assetid: 3c7eaefa-1850-4643-8540-428e8982b7cb
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5a7374af71b262a72b680ac215f6960f961b3a15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 35b667056698fdb2563ad9b1be9af19bcc98c1cc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470614"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688611"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Einführung in die App Service-Umgebungen #
  

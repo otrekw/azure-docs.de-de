@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache (C++): Speech-Dienst'
+title: 'Schnellstart: Erkennen von im Blobspeicher gespeicherter Sprache, C++ – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: TBD
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2173dbabc83ff0a03c0cfd18e02a6f3183ef90e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 313332689b0f2df9698f868297c72be7d8bde5bb
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506091"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74829129"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 > [!div class="checklist"]
-> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
+> * [Erstellen einer Azure Speech-Ressource](../../../../get-started.md)
 > * [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [Einrichten Ihrer Entwicklungsumgebung](../../../../quickstarts/setup-platform.md?tabs=dotnet)
 > * [Erstellen eines leeren Beispielprojekts](../../../../quickstarts/create-project.md?tabs=dotnet)
@@ -53,7 +53,7 @@ vcpkg install nlohmann-json
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
-(Sie müssen die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte ersetzen.)
+(Ersetzen Sie die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte.)
 
 ## <a name="json-wrappers"></a>JSON-Wrapper
 
@@ -85,15 +85,15 @@ Hier ist der Abrufcode mit der Statusanzeige für alle Vorgänge mit Ausnahme de
 ## <a name="display-the-transcription-results"></a>Anzeigen der Transkriptionsergebnisse
 Nachdem der Dienst die Transkription erfolgreich abgeschlossen hat, werden die Ergebnisse unter einer anderen URL gespeichert, die wir in der Statusantwort erhalten.
 
-Wir laden den Inhalt dieser URL herunter, deserialisieren den JSON-Code und führen eine Schleife durch die Ergebnisse durch. Während dieses Vorgangs wird der Anzeigetext ausgegeben.
+Wir laden den Inhalt dieser URL herunter, deserialisieren den JSON-Code und durchlaufen die Ergebnisse in einer Schleife, wobei wir den Anzeigetext ausgeben.
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
-## <a name="check-your-code"></a>Überprüfen des Codes
+## <a name="check-your-code"></a>Überprüfen Ihres Codes
 Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Kommentare hinzugefügt.) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 
-Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
+Sie können nun Ihre App erstellen und die Spracherkennung mit dem Spracherkennungsdienst testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

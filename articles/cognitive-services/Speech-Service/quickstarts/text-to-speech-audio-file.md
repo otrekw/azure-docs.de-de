@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei: Speech-Dienst'
+title: 'Schnellstart: Synthetisieren von Sprache in eine Audiodatei – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird Text unter Verwendung des Speech SDK in synthetisierte Sprache in einer Audiodatei umgewandelt.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 4066e7ba3d0a2b5d16d70e360f14a18f6414999a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: db622d8b51f8d7ce877c2f8705771f80c58e284b
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681959"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74817928"
 ---
 # <a name="quickstart-synthesize-speech-into-an-audio-file"></a>Schnellstart: Synthetisieren von Sprache in eine Audiodatei
 

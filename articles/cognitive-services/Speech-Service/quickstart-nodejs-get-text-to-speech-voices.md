@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Auflisten von Stimmen für Text-to-Speech, Node.js – Speech-Dienst'
+title: 'Schnellstart: Auflisten von Stimmen für die Sprachsynthese, Node.js – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Node.js die vollständige Liste der Standard- und neuronalen Stimmen für eine Region bzw. einen Endpunkt erhalten. Die Liste wird als JSON zurückgegeben, und die Verfügbarkeit der Stimmen variiert je nach Region.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 1044519110d8b0ae7b5a50860c8116d73b6b70bc
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: bd063102a4c0cbdc4b62df027e643b117b412278
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68559376"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812857"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>Schnellstart: Abrufen der Liste der Stimmen für Text-to-Speech mit Node.js
 
@@ -29,7 +29,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 * [Node 8.12.x oder höher](https://nodejs.org/en/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) oder ein anderer Editor
-* Ein Azure-Abonnementschlüssel für die Speech-Dienste. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
+* Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 
 ## <a name="create-a-project-and-require-dependencies"></a>Erstellen eines Projekts und der erforderlichen Abhängigkeiten
 
@@ -48,9 +48,9 @@ const fs = require('fs');
 
 ## <a name="get-an-access-token"></a>Abrufen eines Zugriffstokens
 
-Alle Anforderungen an die Text-to-Speech-REST-API erfordern ein Zugriffstoken für die Authentifizierung. Um ein Zugriffstoken anzufordern, ist ein Austausch erforderlich. In dieser Funktion wird Ihr Abonnementschlüssel für den Speech-Dienst unter Verwendung des `issueToken`-Endpunkts gegen ein Zugriffstoken ausgetauscht.
+Alle Anforderungen an die Text-to-Speech-REST-API erfordern ein Zugriffstoken für die Authentifizierung. Um ein Zugriffstoken anzufordern, ist ein Austausch erforderlich. In dieser Funktion wird Ihr Abonnementschlüssel für den Speech-Dienst unter Verwendung des `issueToken`-Endpunkts gegen ein Zugriffstoken getauscht.
 
-In diesem Beispiel wird vorausgesetzt, dass Ihr Abonnement für den Speech-Dienst in der Region „USA, Westen“ enthalten ist. Wenn Sie eine andere Region verwenden, aktualisieren Sie den Wert für `uri`. Eine vollständige Liste finden Sie unter [Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+In diesem Beispiel wird vorausgesetzt, dass für Ihr Abonnement für den Speech-Dienst die Region „USA, Westen“ festgelegt ist. Wenn Sie eine andere Region verwenden, aktualisieren Sie den Wert für `uri`. Eine vollständige Liste finden Sie unter [Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
@@ -75,7 +75,7 @@ Im nächsten Abschnitt erstellen wir die Funktion, um die Liste der Stimmen zu e
 
 ## <a name="make-a-request-and-save-the-response"></a>Senden der Anforderung und Speichern der Antwort
 
-An dieser Stelle werden Sie die Anforderung erstellen und die Liste der zurückgegebenen Stimmen speichern. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `uri` aktualisieren. Weitere Informationen finden Sie unter [Speech-Dienstregionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+An dieser Stelle werden Sie die Anforderung erstellen und die Liste der zurückgegebenen Stimmen speichern. In diesem Beispiel wird davon ausgegangen, dass Sie den Endpunkt „USA, Westen“ verwenden. Wenn Ihre Ressource in einer anderen Region registriert ist, stellen Sie sicher, dass Sie die `uri` aktualisieren. Weitere Informationen finden Sie unter [Vom Speech-Dienst unterstützte Regionen](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Als Nächstes fügen Sie erforderliche Header für die Anforderung hinzu. Abschließend stellen Sie eine Anforderung an den Dienst. Wenn die Anforderung erfolgreich war und der Statuscode 200 zurückgegeben wird, wird die Antwort in eine Datei geschrieben.
 

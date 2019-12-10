@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Azure Database for MySQL per C++
+title: 'Herstellen einer Verbindung unter Verwendung von C++: Azure Database for MySQL'
 description: Diese Schnellstartanleitung enthält ein C++-Codebeispiel, mit dem Sie eine Verbindung mit den Daten aus Azure-Datenbank für MySQL herstellen und Daten abfragen können.
 author: ajlam
 ms.author: andrela
@@ -7,13 +7,13 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
-ms.date: 04/12/2018
-ms.openlocfilehash: ff5232c4569e94322d76928f19f202c8bad1a39a
-ms.sourcegitcommit: ef06b169f96297396fc24d97ac4223cabcf9ac33
+ms.date: 12/02/2019
+ms.openlocfilehash: 1cec92631208b446f5621c9010d8cb7b86ae38e9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66428506"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770797"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Verwenden eines Connectors/von C++ zum Herstellen einer Verbindung und Abfragen von Daten
 Dieser Schnellstart zeigt, wie Sie mit einer C#-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Thema wird davon ausgegangen, dass Sie mit der C++-Entwicklung vertraut sind, aber noch keine Erfahrung mit Azure Database for MySQL haben.

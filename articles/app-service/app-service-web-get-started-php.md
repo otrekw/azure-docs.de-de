@@ -1,25 +1,16 @@
 ---
-title: Erstellen einer PHP-Web-App – Azure App Service | Microsoft-Dokumentation
-description: Stellen Sie in wenigen Minuten Ihre erste „Hallo Welt“-PHP-App in einer Azure App Service-Web-App bereit.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
+title: 'Schnellstart: Erstellen einer PHP-Web-App'
+description: Stellen Sie in wenigen Minuten Ihre erste PHP-App vom Typ „Hallo Welt“ in Azure App Service bereit. Die Bereitstellung erfolgt mithilfe von Git. Dies ist eine von zahlreichen verschiedenen Möglichkeiten für die Bereitstellung in App Service.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 08/24/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 386229bc272a520ec8093c95bc861704ce9ea7eb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fb6451ce5e1e00bffc9195410125eb61b34555e4
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73471406"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672094"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Erstellen einer PHP-Web-App in Azure
 

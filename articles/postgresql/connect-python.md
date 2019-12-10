@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Python zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver
+title: 'Herstellen einer Verbindung mit Python: Azure Database for PostgreSQL-Einzelserver'
 description: Diese Schnellstartanleitung enthält Python-Codebeispiele, die Sie verwenden können, um eine Verbindung mit einem Azure Database for PostgreSQL-Einzelserver herzustellen und Daten daraus abzufragen.
 author: rachel-msft
 ms.author: raagyema
@@ -8,12 +8,12 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: 441ff1ebeffde36d1940520404050f6cc29ea53e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066293"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766394"
 ---
 # <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Verwenden von Python zum Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Einzelserver sowie zum Abfragen von Daten
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Python unter macOS, Ubuntu Linux oder Windows mit Azure Database for PostgreSQL arbeiten. Die Schnellstartanleitung zeigt, wie Sie eine Verbindung mit der Datenbank herstellen und SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit Python vertraut sind, aber noch keine Erfahrung mit Azure Database for PostgreSQL haben.

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache – Spracherkennungsdienst'
+title: 'Schnellstart: Synthetisieren von Sprache – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie mit dem Sprach-SDK Sprache synthetisieren.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 09/20/2019
 ms.author: yulili
-ms.openlocfilehash: 263a8e98c4c029728272c020efe00e82be20f5e2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d19f779f67cc0dea8cc7f06aa275885d75c3092e
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505075"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818353"
 ---
 In dieser Schnellstartanleitung wird Text unter Verwendung des [Sprach-SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) in synthetisierte Sprache umgewandelt. Nachdem Sie einige Voraussetzungen erfüllt haben, erfordert das Rendern synthetisierter Sprache über die Standardlautsprecher nur vier Schritte:
 > [!div class="checklist"]

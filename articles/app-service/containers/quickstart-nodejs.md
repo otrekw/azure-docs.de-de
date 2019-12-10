@@ -1,18 +1,17 @@
 ---
-title: 'Erstellen einer Node.js-Web-App: Azure App Service'
-description: Hier erfahren Sie, wie Sie eine Node.js-App in Azure App Service bereitstellen.
-author: msangapu
+title: 'Schnellstart: Erstellen einer Linux-Node.js-App'
+description: Führen Sie erste Schritte mit Linux-Apps in Azure App Service aus, indem Sie Ihre erste Node.js-App in einem Linux-Container in App Service bereitstellen.
+author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
-ms.service: app-service
 ms.devlang: javascript
-ms.openlocfilehash: 32e141cae98e3fe34c8207f1565a82d2d76bdd25
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: fb79f4b87d8ddc5303fea834c81329315401464a
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72439207"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688972"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Erstellen einer Node.js-App in Azure
 

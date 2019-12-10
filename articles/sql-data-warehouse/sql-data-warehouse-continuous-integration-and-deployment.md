@@ -10,12 +10,12 @@ ms.subservice: integration
 ms.date: 08/28/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: fd03072f4e69fac43874e822ebb06063436ef72c
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: e8d7e7764a01dbd0169efae093bac4d984982108
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646149"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74708666"
 ---
 # <a name="continuous-integration-and-deployment-for-azure-sql-data-warehouse"></a>Continuous Integration und Continuous Deployment für Azure SQL Data Warehouse
 
@@ -25,12 +25,8 @@ In diesem einfachen Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt 
 
 - Lesen Sie das Tutorial zur [Integration der Quellcodeverwaltung](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-source-control-integration).
 
-- Erstellen Sie einen [selbstgehosteten Agent](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops#install), bei dem die SSDT-Vorschaukomponenten (ab Version 16.3, Vorschauversion 2) für SQL Data Warehouse (Vorschauversion) installiert sind.
-
 - Einrichten von Azure DevOps und Herstellen einer Verbindung
 
-  > [!NOTE]
-  > SSDT befindet sich derzeit in der Vorschauphase, in der Sie einen selbstgehosteten Agent nutzen müssen. Die von Microsoft gehosteten Agents werden in den nächsten Monaten aktualisiert.
 
 ## <a name="continuous-integration-with-visual-studio-build"></a>Continuous Integration mit Visual Studio Build
 
@@ -49,13 +45,13 @@ In diesem einfachen Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt 
 Nun verfügen Sie über eine einfache Umgebung, in der jeder Check-In bei Ihrem Quellcoderepository-Masterbranch automatisch einen erfolgreichen Visual Studio-Build Ihres Datenbankprojekts auslösen sollte. Überprüfen Sie, ob die Automatisierung insgesamt funktioniert, indem Sie eine Änderung an Ihrem lokalen Datenbankprojekt vornehmen und diese Änderung beim Masterbranch einchecken.
 
 
-## <a name="continuous-deployment-with-the-azure-sql-database-deployment-task"></a>Continuous Deployment mit der Azure SQL-Datenbank-Bereitstellungsaufgabe
+## <a name="continuous-deployment-with-the-azure-sql-data-warehouse-or-database-deployment-task"></a>Continuous Deployment mit der Bereitstellungsaufgabe für Azure SQL Data Warehouse (oder SQL-Datenbank)
 
-1. Fügen Sie mithilfe der [Azure SQL-Datenbank-Bereitstellungsaufgabe](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) eine neue Aufgabe hinzu, und füllen Sie die erforderlichen Felder aus, um eine Verbindung mit dem Ziel-Data Warehouse herzustellen. Wenn diese Aufgabe ausgeführt wird, wird die DACPAC-Datei, die vom vorherigen Buildprozess generiert wurde, auf dem Ziel-Data Warehouse bereitgestellt.
+1. Fügen Sie mithilfe der [Azure SQL-Datenbank-Bereitstellungsaufgabe](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/sql-azure-dacpac-deployment?view=azure-devops) eine neue Aufgabe hinzu, und füllen Sie die erforderlichen Felder aus, um eine Verbindung mit dem Ziel-Data Warehouse herzustellen. Wenn diese Aufgabe ausgeführt wird, wird die DACPAC-Datei, die vom vorherigen Buildprozess generiert wurde, auf dem Ziel-Data Warehouse bereitgestellt. Sie können auch die [Azure SQL Data Warehouse-Bereitstellungsaufgabe](https://marketplace.visualstudio.com/items?itemName=ms-sql-dw.SQLDWDeployment) verwenden. 
 
       ![Bereitstellungsaufgabe](media/sql-data-warehouse-continuous-integration-and-deployment/4-deployment-task.png "Bereitstellungsaufgabe")
 
-2. Stellen Sie bei Verwendung eines selbstgehosteten Agents sicher, dass Sie die Umgebungsvariable so festlegen, dass sie die richtige Version von „SqlPackage.exe“ für Ihr SQL Data Warehouse verwendet. Der Pfad sollte in etwa wie folgt aussehen:
+2. Stellen Sie bei Verwendung eines selbstgehosteten Agents sicher, dass Sie die Umgebungsvariable so festlegen, dass sie die richtige Version von „SqlPackage.exe“ für SQL Data Warehouse verwendet. Der Pfad sollte in etwa wie folgt aussehen:
 
       ![Umgebungsvariable](media/sql-data-warehouse-continuous-integration-and-deployment/5-environment-variable-preview.png "Umgebungsvariable")
 

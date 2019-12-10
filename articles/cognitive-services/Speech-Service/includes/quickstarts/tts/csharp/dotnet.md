@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Synthetisieren von Sprache, C# (Windows) – Spracherkennungsdienst'
+title: 'Schnellstart: Synthetisieren von Sprache, C# (Windows) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In dieser Anleitung erfahren Sie, wie Sie mit .NET Framework für Windows und dem Speech SDK eine Konsolenanwendung für die Sprachsynthese erstellen. Anschließend können Sie Sprache aus Text synthetisieren und in Echtzeit über Ihren Lautsprecher ausgeben.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 08/27/2019
 ms.author: yinhew
-ms.openlocfilehash: af101862e824d6527c08c232812913565536bb4a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38dac73d253245fce86ac419c7a4eb3a106df3f0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73505155"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74818210"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,7 +32,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
    [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/text-to-speech/helloworld/Program.cs#code)]
 
-1. Suchen Sie nach der Zeichenfolge `YourSubscriptionKey`, und ersetzen Sie sie durch Ihren Abonnementschlüssel für die Speech-Dienste.
+1. Suchen Sie nach der Zeichenfolge `YourSubscriptionKey`, und ersetzen Sie sie durch Ihren Abonnementschlüssel für den Speech-Dienst.
 
 1. Suchen Sie nach der Zeichenfolge `YourServiceRegion`, und ersetzen Sie sie durch die [Region](~/articles/cognitive-services/Speech-Service/regions.md), die mit Ihrem Abonnement verknüpft ist. Bei Verwendung des kostenlosen Testabonnements ist die Region beispielsweise `westus`.
 
@@ -44,7 +44,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Wählen Sie **Debuggen** > **Debuggen starten** aus (oder drücken Sie**F5**), um die Anwendung **helloworld** zu starten.
 
-1. Geben Sie einen englischen Ausdruck oder Satz ein. Die Anwendung überträgt Ihren Text an die Speech-Dienste, die die synthetisierte Sprache zur Wiedergabe über den Lautspreche an die Anwendung sendet.
+1. Geben Sie einen englischen Ausdruck oder Satz ein. Die Anwendung überträgt Ihren Text an den Speech-Dienst, der die synthetisierte Sprache zur Wiedergabe über den Lautsprecher an die Anwendung sendet.
 
    ![Benutzeroberfläche für die Sprachsynthese](~/articles/cognitive-services/Speech-Service/media/sdk/qs-tts-csharp-dotnet-windows-console-output.png)
 

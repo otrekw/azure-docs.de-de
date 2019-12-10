@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Speichern von Daten mit dem SQL-Modul in Azure IoT Edge | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mit einem SQL Server-Modul Daten lokal auf Ihrem IoT Edge-Gerät speichern.
+title: 'Tutorial: Speichern von Daten mit dem SQL-Modul in Azure IoT Edge'
+description: In diesem Tutorial erfahren Sie, wie Sie mit einem SQL Server-Modul Daten lokal auf Ihrem IoT Edge-Gerät speichern.
 services: iot-edge
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5a3133100621cee2e786c4001df02f2316b1e4ec
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: dc8e3e92a9b843291643fe3a43092a6ac9b9c7cb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457050"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701907"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Tutorial: Speichern von Daten im Edge-Bereich mit SQL Server-Datenbanken
 

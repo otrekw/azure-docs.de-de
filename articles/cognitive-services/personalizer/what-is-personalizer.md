@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 6b55ce851bb12e37aed37039889aa8e69223a286
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467194"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707949"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
-Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren gemeinschaftlichem Verhalten lernen können.
+Die Azure-Personalisierung ist ein cloudbasierter API-Dienst, mit dem Ihre Anwendung die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren gemeinschaftlichem Verhalten lernen kann.
 
 * Stellen Sie Informationen über Ihre Benutzer und Inhalt bereit, und empfangen Sie die Top-Aktion, um Sie Ihren Benutzern anzuzeigen. 
 * Vor der Verwendung der Personalisierung müssen Sie keine Daten bereinigen oder bezeichnen.
@@ -60,8 +60,8 @@ Die Personalisierung ist kein Dienst zum Speichern und Verwalten von Benutzerpro
 
 Der Personalisierungsdienst verfügt über zwei APIs:
 
-* Senden von Informationen (_Features_) zu Ihren Benutzern und dem Inhalt (_Aktionen_), der personalisiert werden soll. Die Personalisierung antwortet mit der Top-Aktion.
-* Senden Sie an die Personalisierung Feedback dazu, wie gut die Rangfolge als [Relevanzbewertung](concept-rewards.md) funktioniert hat. 
+* *Rang*: Bestimmen Sie mithilfe der Rang-API, welche _Aktion_ im aktuellen _Kontext_ angezeigt werden soll. Aktionen werden als Array von JSON-Objekten mit einer ID und zugehörigen Informationen (_Features_) gesendet. Der Kontext wird als weiteres JSON-Objekt gesendet. Die API gibt das actionId-Element zurück, das Ihre Anwendung für den Benutzer rendern soll.
+* *Relevanz*: Nach der Interaktion eines Benutzers mit Ihrer Anwendung geben Sie mit einer Zahl zwischen 0 und 1 an, wie gut die Personalisierung funktioniert hat. Anschließend senden Sie diese Zahl als [Relevanzbewertung](concept-rewards.md). 
 
 ![Grundlegende Abfolge der Ereignisse für die Personalisierung](media/what-is-personalizer/personalization-intro.png)
 

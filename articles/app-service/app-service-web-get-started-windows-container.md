@@ -1,24 +1,15 @@
 ---
-title: Ausführen eines benutzerdefinierten Windows-Containers (Vorschauversion) – Azure App Service | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie einen benutzerdefinierten Windows-Container in Azure App Service bereitstellen.
-services: app-service\web
-documentationcenter: ''
-author: cephalin
-manager: jeconnoc
-editor: ''
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: na
+title: 'Schnellstart: Windows-Container (Vorschauversion)'
+description: Stellen Sie Ihren ersten benutzerdefinierten Windows-Container in Azure App Service bereit. Profitieren Sie von der Containerisierung, und passen Sie den Windows-Container gemäß Ihren Vorstellungen an.
 ms.topic: quickstart
 ms.date: 08/30/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 230ff96aaf2c78827c7c4da92abe0f356cc2643e
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241906"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671351"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Ausführen eines benutzerdefinierten Windows-Containers in Azure (Vorschau)
 
@@ -96,7 +87,7 @@ Führen Sie zum Erstellen einer ASP.NET-Web-App die folgenden Schritte aus:
 
 1. Wählen Sie auf der Seite für die Web-App-Erstellung Ihr **Abonnement** und eine **Ressourcengruppe** aus. Bei Bedarf kann eine neue Ressourcengruppe erstellt werden.
 
-1. Geben Sie einen App-Namen (beispielsweise *win-container-demo*) an, und wählen Sie unter **Betriebssystem** die Option **Windows** aus. Wählen Sie **Weiter: Docker** aus, um den Vorgang fortzusetzen.
+1. Geben Sie einen App-Namen (beispielsweise *win-container-demo*) an, und wählen Sie unter **Betriebssystem** die Option **Windows** aus. Klicken Sie auf **Weiter: Docker** aus, um den Vorgang fortzusetzen.
 
    ![Erstellen einer Web-App für Container](media/app-service-web-get-started-windows-container/create-web-app-continer.png)
 
