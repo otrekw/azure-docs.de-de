@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e77368c7c0c104e777595a16735a7cf1e797a48
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539022"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814938"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 In diesem Artikel finden Sie alle Informationen, die Sie benötigen, um Benutzerkennwörter aus einer lokalen Active Directory-Instanz mit einer cloudbasierten Azure Active Directory-Instanz (Azure AD) zu synchronisieren.
@@ -123,21 +123,18 @@ Normalerweise wird ein Benutzer gezwungen, sein Kennwort bei der ersten Anmeldun
   
 Mit der Funktion für das temporäre Kennwort können Sie sicherstellen, dass die Übertragung des Besitzes der Anmeldeinformationen bei der ersten Verwendung abgeschlossen wird, um die Zeitspanne zu minimieren, in der diese Anmeldeinformationen mehr als einer Person bekannt sind.
 
-Wenn Sie temporäre Kennwörter in Azure AD für synchronisierte Benutzer unterstützen möchten, können Sie das *ForcePasswordResetOnLogonFeature* aktivieren, indem Sie auf Ihrem Azure AD Connect-Server den folgenden Befehl ausführen, wobei Sie <AAD Connector Name> durch den Namen des für Ihre Umgebung spezifischen Connectors ersetzen:
+Wenn Sie in Azure AD temporäre Kennwörter für synchronisierte Benutzer unterstützen möchten, können Sie *ForcePasswordResetOnLogonFeature* aktivieren, indem Sie auf Ihrem Azure AD Connect-Server den folgenden Befehl ausführen:
 
-`Set-ADSyncAADCompanyFeature -ConnectorName "<AAD Connector name>" -ForcePasswordResetOnLogonFeature $true`
+`Set-ADSyncAADCompanyFeature  -ForcePasswordResetOnLogonFeature $true`
 
-Zum Ermitteln des Connectornamens können Sie den folgenden Befehl ausführen:
-
-`(Get-ADSyncConnector | where{$_.ListName -eq "Windows Azure Active Directory (Microsoft)"}).Name`
-
-Nachteil:  Wenn ein Benutzer gezwungen wird, sein Kennwort bei der nächsten Anmeldung zu ändern, muss gleichzeitig eine Kennwortänderung vorgenommen werden.  AD Connect wählt das Flag zum Erzwingen der Kennwortänderung nicht selbst aus. Es ist eine Ergänzung zur erkannten Kennwortänderung, die bei der Kennworthashsynchronisierung erfolgt.
+> [!NOTE]
+> Wenn ein Benutzer gezwungen wird, sein Kennwort bei der nächsten Anmeldung zu ändern, muss gleichzeitig eine Kennwortänderung vorgenommen werden.  AD Connect wählt das Flag zum Erzwingen der Kennwortänderung nicht selbst aus. Es ist eine Ergänzung zur erkannten Kennwortänderung, die bei der Kennworthashsynchronisierung erfolgt.
 
 > [!CAUTION]
 > Wenn Sie die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) in Azure AD nicht aktivieren, führt dies bei Benutzern zu einer verwirrenden Erfahrung, wenn sie ihr Kennwort in Azure AD zurücksetzen und dann versuchen, sich mit dem neuen Kennwort bei Active Directory anzumelden, weil das neue Kennwort in Active Directory nicht gültig ist. Sie sollten dieses Feature nur verwenden, wenn SSPR und Kennwortrückschreiben für den Mandanten aktiviert sind.
 
 > [!NOTE]
-> Dieses Feature befindet sich derzeit in der öffentlichen Vorschauphase.
+> Dieses Feature befindet sich derzeit in der Public Preview-Phase.
 
 #### <a name="account-expiration"></a>Kontoablauf
 

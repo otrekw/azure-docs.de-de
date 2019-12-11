@@ -56,6 +56,8 @@
           href: backup-support-matrix-mars-agent.md
         - name: "Unterstützungsmatrix für SAP\_HANA-Sicherungen"
           href: sap-hana-backup-support-matrix.md
+        - name: Unterstützte VM-SKUs für Azure Policy
+          href: backup-azure-policy-supported-skus.md
     - name: Sicherheit
       items:
         - name: Rollenbasierte Access Control
@@ -174,6 +176,10 @@
               href: backup-azure-vms-encryption.md
             - name: Wiederherstellen von Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer
               href: backup-azure-restore-key-secret.md
+    - name: Integrierte Azure Policy-Instanz für Azure Backup
+      items:
+        - name: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
+          href: backup-azure-auto-enable-backup.md
     - name: Diagnoseereignisse für Recovery Services-Tresore
       items:
         - name: Verwenden von Diagnoseeinstellungen für Recovery Services-Tresore

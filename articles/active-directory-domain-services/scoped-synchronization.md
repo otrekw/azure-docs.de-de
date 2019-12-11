@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 525ea421eb0fa0131fa91078b0619b8463f6fbb0
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: e6645a131766b7ec055ba1c8bb639f054f50c80b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546247"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704378"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD für Azure Active Directory Domain Services
 
@@ -70,7 +70,7 @@ Wenn im Azure-Portal angezeigt wird, dass die Bereitstellung für die verwaltete
 
 Führen Sie die folgenden Schritte aus, um die Liste der Gruppen zu ändern, deren Benutzer mit der verwalteten Azure AD DS-Domäne synchronisiert werden sollen:
 
-1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre Instanz aus (beispielsweise *contoso.com*).
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre Instanz aus (beispielsweise *aadds.contoso.com*).
 1. Wählen Sie im Menü auf der linken Seite **Synchronisierung** aus.
 1. Um eine Gruppe hinzuzufügen, wählen Sie im oberen Bereich **+ Gruppen auswählen** aus, und wählen Sie dann die hinzuzufügenden Gruppen aus.
 1. Um eine Gruppe aus dem Synchronisierungsbereich zu entfernen, wählen Sie diese in der Liste der derzeit synchronisierten Gruppen aus, und wählen Sie dann **Gruppen entfernen** aus.
@@ -82,7 +82,7 @@ Wenn Sie den Bereich der Synchronisierung ändern, werden zwangsläufig alle Dat
 
 Führen Sie die folgenden Schritte aus, um die gruppenbasierte bereichsbezogene Synchronisierung für eine verwaltete Azure AD DS-Domäne zu deaktivieren:
 
-1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre Instanz aus (beispielsweise *contoso.com*).
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre Instanz aus (beispielsweise *aadds.contoso.com*).
 1. Wählen Sie im Menü auf der linken Seite **Synchronisierung** aus.
 1. Legen Sie den Synchronisierungsbereich von **Bereichsbezogen** auf **Alle** fest, und wählen Sie dann **Synchronisierungsbereich speichern** aus.
 
@@ -194,11 +194,11 @@ Verwenden Sie PowerShell, um diese Schritte auszuführen. Lesen Sie die Anweisun
 
 1. Erstellen Sie jetzt die verwaltete Azure AD DS-Domäne, und aktivieren Sie die gruppenbasierte bereichsbezogene Synchronisierung. Nehmen Sie *"filteredSync" = "Enabled"* in den Parameter *-Properties* auf.
 
-    Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne an, z.B. *contoso.com*. Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen. Legen Sie den Namen der Ressourcengruppe, den Namen des virtuellen Netzwerks und die Region auf die Werte fest, die in den vorherigen Schritten zum Erstellen der unterstützenden Azure-Ressourcen verwendet wurden:
+    Legen Sie Ihre Azure-Abonnement-ID fest, und geben Sie dann einen Namen für die verwaltete Domäne an (z. B. *aadds.contoso.com*). Die ID Ihres Abonnements können Sie mithilfe des Cmdlets [Get-AzSubscription][Get-AzSubscription] abrufen. Legen Sie den Namen der Ressourcengruppe, den Namen des virtuellen Netzwerks und die Region auf die Werte fest, die in den vorherigen Schritten zum Erstellen der unterstützenden Azure-Ressourcen verwendet wurden:
 
    ```powershell
    $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-   $ManagedDomainName = "contoso.com"
+   $ManagedDomainName = "aadds.contoso.com"
    $ResourceGroupName = "myResourceGroup"
    $VnetName = "myVnet"
    $AzureLocation = "westus"

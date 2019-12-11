@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – Zeichenfolge
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zeichenfolgen verwendet werden können.
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: af972bac39890402cf75e83d10806e9a830c1d4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 37bf03f2934980d143edeec327a0c424216fd8a1
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149611"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784509"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Zeichenfolgenfunktionen für Azure Resource Manager-Vorlagen
 
@@ -253,10 +253,13 @@ Kombiniert mehrere Zeichenfolgenwerte und gibt die verkettete Zeichenfolge zurü
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |Zeichenfolge oder Array |Der erste Wert für die Verkettung. |
-| zusätzliche Argumente |Nein |string |Weitere Werte in sequenzieller Reihenfolge für die Verkettung. |
+| arg1 |Ja |Zeichenfolge oder Array |Die erste Zeichenfolge oder das erste Array für die Verkettung. |
+| zusätzliche Argumente |Nein |Zeichenfolge oder Array |Weitere Zeichenfolgen oder Arrays in sequenzieller Reihenfolge für die Verkettung. |
+
+Diese Funktion akzeptiert eine beliebige Anzahl von Argumenten und Zeichenfolgen oder Arrays für die Parameter. Sie können jedoch nicht sowohl Arrays als auch Zeichenfolgen für Parameter angeben. Zeichenfolgen werden nur mit anderen Zeichenfolgen verkettet.
 
 ### <a name="return-value"></a>Rückgabewert
+
 Eine Zeichenfolge oder ein Array aus verketteten Werten.
 
 ### <a name="examples"></a>Beispiele

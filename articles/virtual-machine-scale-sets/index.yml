@@ -10,8 +10,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: gwallace
-abstract:
-  description: 'Mit Azure-VM-Skalierungsgruppen können Sie einer Gruppe von identischen virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie VM-Skalierungsgruppen erstellen, konfigurieren, verwalten und automatisch skalieren.'
+  description: Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe von virtuellen Computern mit Lastenausgleich und automatischer Skalierung erstellen und verwalten.
 sections:
   - title: Schnellstarts
     items:

@@ -11,12 +11,12 @@ ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 4662e5047e981c74d2422830bc5b152dae738337
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559318"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672296"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -105,6 +105,7 @@ Hier sind die Details zu den Parametern und Eigenschaften der Anwendung angegebe
 | Eigenschaft                                                    | BESCHREIBUNG                                                  | Erforderlich |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
 | **RegisterNewNode** "`<AuthenticationKey>`"                     | Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel registrieren | Nein       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel und Knotennamen registrieren | Nein       |
 | **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters aktivieren. Oder Aktivierung des direkten Festlegens von Anmeldeinformationen für die selbstgehostete IR ohne Umweg über Azure Data Factory. Für Letzteres verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** auf einem Remotecomputer in demselben Netzwerk. | Nein       |
 | **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Remotezugriff auf den aktuellen Knoten aktivieren, wenn der Knoten in einem Container ausgeführt wird | Nein       |
 | **DisableRemoteAccess**                                         | Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch, wenn der Remotezugriff deaktiviert ist. Dies ist der Fall, sofern das Cmdlet auf demselben Computer ausgeführt wird, auf dem sich auch der Knoten für die selbstgehostete IR befindet. | Nein       |
@@ -119,7 +120,7 @@ Hier sind die Details zu den Parametern und Eigenschaften der Anwendung angegebe
 | **TurnOnAutoUpdate**                                            | Automatische Aktualisierung der selbstgehosteten Integration Runtime aktivieren        | Nein       |
 | **TurnOffAutoUpdate**                                           | Automatische Aktualisierung der selbstgehosteten Integration Runtime deaktivieren       | Nein       |
 | **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Legen Sie fest, dass DIAHostService als neues Konto ausgeführt wird. Verwenden Sie ein leeres Kennwort („“) für Systemkonten und virtuelle Konten. | Nein       |
-| **Loglevel** `<logLevel>`                                       | Legen Sie die Protokollebene der Ereignisablaufverfolgung für Windows (ETW) auf **Aus**, **Fehler**, **Ausführliche** oder **Alles** fest. Diese Eigenschaft wird hauptsächlich von Technikern des Microsoft-Supports beim Debuggen Ihrer Installation verwendet. | Nein       |
+
 
 ## <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
 

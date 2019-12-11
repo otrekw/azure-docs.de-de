@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 90dc42ed6ca16947902622cba0e5a81a2bc900e3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382026"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74785993"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -36,13 +36,16 @@ Dieses Thema:
 
 Damit Sie eine zertifikatbasierte Authentifizierung konfigurieren können, muss Folgendes zutreffen:
 
-- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen oder native Clients mit moderner Authentifizierung (ADAL) unterstützt. Die einzige Ausnahme ist das EAS-Protokoll (Exchange ActiveSync) für Exchange Online (EXO), das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann.
+- Die zertifikatbasierte Authentifizierung (Certificate-Based Authentication, CBA) wird nur für Verbundumgebungen für Browseranwendungen, native Clients mit moderner Authentifizierung (ADAL) oder MSAL-Bibliotheken unterstützt. Die einzige Ausnahme ist das EAS-Protokoll (Exchange ActiveSync) für Exchange Online (EXO), das sowohl für Verbund- als auch verwaltete Konten verwendet werden kann.
 - Die Stammzertifizierungsstelle und alle Zwischenzertifizierungsstellen müssen in Azure Active Directory konfiguriert sein.
 - Jede Zertifizierungsstelle muss über eine Zertifikatsperrliste verfügen, auf die über eine Internet-URL verwiesen werden kann.
 - Sie müssen mindestens eine Zertifizierungsstelle in Azure Active Directory konfiguriert haben. Die entsprechenden Schritte finden Sie im Abschnitt [Konfigurieren Sie die Zertifizierungsstellen](#step-2-configure-the-certificate-authorities).
 - Bei Exchange ActiveSync-Clients muss das Clientzertifikat über die routingfähige E-Mail-Adresse des Benutzers in Exchange Online verfügen (entweder als Prinzipalname oder als Wert des RFC822-Namens im Feld „Alternativer Antragstellername“). Azure Active Directory ordnet den RFC822-Wert dem Attribut für die Proxyadresse innerhalb des Verzeichnisses zu.
 - Ihr Clientgerät benötigt Zugriff auf mindestens eine Zertifizierungsstelle, die Clientzertifikate ausstellt.
 - Ein Clientzertifikat für die Clientauthentifizierung muss für Ihren Client ausgestellt sein.
+
+>[!IMPORTANT]
+>Eine Zertifikatsperrliste darf maximal 20 MB groß sein, damit sie erfolgreich von Azure Active Directory heruntergeladen und zwischengespeichert werden kann, und der Download der Zertifikatsperrliste darf maximal zehn Sekunden dauern.  Wenn Azure Active Directory eine Zertifikatsperrliste nicht herunterladen kann, sind zertifikatbasierte Authentifizierungen mit Zertifikaten, die von der entsprechenden Zertifizierungsstelle ausgestellt wurden, nicht erfolgreich. Zur Einhaltung der Größenbeschränkungen für CRL-Dateien empfiehlt es sich, eine angemessene Zertifikatlebensdauer zu verwenden und abgelaufene Zertifikate zu bereinigen. 
 
 ## <a name="step-1-select-your-device-platform"></a>Schritt 1: Auswählen Ihrer Geräteplattform
 

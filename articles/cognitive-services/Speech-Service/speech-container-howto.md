@@ -1,5 +1,5 @@
 ---
-title: Installieren von Speech-Containern – Spracherkennungsdienst
+title: Installieren von Speech-Containern – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Installieren Sie Speech-Container, und führen Sie sie aus. Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Die Sprachsynthese konvertiert Eingabetext in menschenähnliche synthetische Sprache.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/04/2019
 ms.author: dapine
-ms.openlocfilehash: 3d9373067c78f1fe0fa0b414886c30f2ed3c1c9f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: d5ecc104c7845a1881cbcdecfbccb75148f6e070
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325866"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815357"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Installieren und Ausführen von Containern für den Speech-Dienst (Vorschau)
 
@@ -371,12 +371,10 @@ Dieser Befehl:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Abfragen des Vorhersageendpunkts des Containers
 
-| Container | Endpunkt | Protocol |
+| Container | SDK-Host-URL | Protocol |
 |--|--|--|
-| Spracherkennung | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
-| Benutzerdefinierte Spracherkennung | `ws://localhost:5000/speech/recognition/dictation/cognitiveservices/v1` | WS |
-| Text-zu-Sprache | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
-| Benutzerdefinierte Sprachsynthese | `http://localhost:5000/speech/synthesize/cognitiveservices/v1` | HTTP |
+| Spracherkennung und benutzerdefinierte Spracherkennung | `ws://localhost:5000` | WS |
+| Sprachsynthese und benutzerdefinierte Sprachsynthese | `http://localhost:5000` | HTTP |
 
 Weitere Informationen zur Verwendung der Protokolle WSS und HTTPS finden Sie unter [Containersicherheit](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 

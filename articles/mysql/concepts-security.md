@@ -1,19 +1,19 @@
 ---
-title: Sicherheit in Azure Database for MySQL – Einzelserver
-description: Eine Übersicht über die Sicherheitsfeatures in Azure Database for MySQL – Einzelserver.
+title: Sicherheit – Azure Database for MySQL
+description: Eine Übersicht über die Sicherheitsfeatures in Azure Database for MySQL.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 06f895d2e8cd7936141c9f35c5ed0c81fb7e3e15
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484791"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764966"
 ---
-# <a name="security-in-azure-database-for-mysql---single-server"></a>Sicherheit in Azure Database for MySQL – Einzelserver
+# <a name="security-in-azure-database-for-mysql"></a>Sicherheit in Azure Database for MySQL
 
 Zum Schutz der Daten auf dem Azure Database for MySQL-Server stehen mehrere Sicherheitsebenen zur Verfügung. In diesem Artikel werden diese Sicherheitsoptionen beschrieben.
 

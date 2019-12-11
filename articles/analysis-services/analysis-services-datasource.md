@@ -4,102 +4,107 @@ description: Beschreibt Datenquellen und Connectors, die für tabellarische Date
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 11/14/2019
+ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170659"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707128"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
-Im Assistenten zum Abrufen oder Importieren von Daten in Visual Studio werden Datenquellen und Connectors für Azure Analysis Services und SQL Server Analysis Services angezeigt. Es werden jedoch nicht alle angezeigten Datenquellen und Connectors in Azure Analysis Services unterstützt. Mit welchen Typen von Datenquellen Sie eine Verbindung herstellen können, ist von vielen Faktoren abhängig, z.B. Modellkompatibilitätsgrad, verfügbare Datenconnectors, Authentifizierungstyp, Anbieter und Unterstützung lokaler Datengateways. 
+Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten in Visual Studio mit Analysis Services-Projekten angezeigt werden, werden sowohl für Azure Analysis Services als auch für SQL Server Analysis Services angezeigt. Allerdings werden nicht alle angezeigten Datenquellen und -connectors in Azure Analysis Services unterstützt. Mit welchen Arten von Datenquellen Sie eine Verbindung herstellen können, ist von vielen Faktoren abhängig. Hierzu zählen etwa der Modellkompatibilitätsgrad, verfügbare Datenconnectors, der Authentifizierungstyp und die Unterstützung lokaler Datengateways. In den folgenden Tabellen werden die unterstützten Datenquellen für Azure Analysis Services beschrieben:
 
 ## <a name="azure-data-sources"></a>Azure-Datenquellen
 
-|Datenquelle  |In-Memory  |DirectQuery  |
-|---------|---------|---------|
-|Azure SQL-Datenbank<sup>[2](#azsqlmanaged)</sup>     |   Ja      |    Ja      |
-|Azure SQL Data Warehouse     |   Ja      |   Ja       |
-|Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Ja       |    Nein      |
-|Azure-Tabellenspeicher<sup>[1](#tab1400a)</sup>    |   Ja       |    Nein      |
-|Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Ja        |  Nein        |
-|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Ja       |    Nein      |
-|Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Ja     |   Nein       |
-|Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup>[3](#databricks)</sup>     |   Ja       |   Nein       |
+|Datenquelle  |In-Memory  |DirectQuery  |Notizen |
+|---------|---------|---------|---------|
+|Azure SQL-Datenbank      |   Ja      |    Ja      |<sup>[2](#azprovider)</sup>, <sup>[3](#azsqlmanaged)</sup>|
+|Azure SQL Data Warehouse      |   Ja      |   Ja       |<sup>[2](#azprovider)</sup>|
+|Azure Blob Storage      |   Ja       |    Nein      | <sup>[1](#tab1400a)</sup> |
+|Azure Table Storage     |   Ja       |    Nein      | <sup>[1](#tab1400a)</sup>|
+|Azure Cosmos DB     |  Ja        |  Nein        |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen1      |   Ja       |    Nein      |<sup>[1](#tab1400a)</sup> |
+|Azure Data Lake Store Gen2       |   Ja       |    Nein      |<sup>[1](#tab1400a)</sup>, <sup>[5](#gen2)</sup>|
+|Azure HDInsight HDFS    |     Ja     |   Nein       |<sup>[1](#tab1400a)</sup> |
+|Azure HDInsight Spark     |   Ja       |   Nein       |<sup>[1](#tab1400a)</sup>, <sup>[4](#databricks)</sup>|
 ||||
 
-<a name="tab1400a">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
-<a name="azsqlmanaged">2</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz innerhalb von Azure VNet mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Ist das nicht der Fall, ist ein lokales Datengateway erforderlich.    
-<a name="databricks">3</a>: Azure Databricks unter Verwendung des Spark-Connectors wird derzeit nicht unterstützt.   
-<a name="gen2">4</a>: Der ADLS Gen2-Connector wird derzeit nicht unterstützt, jedoch kann der Blob Storage-Connector mit einer ADLS Gen2-Datenquelle verwendet werden.
-
-
-**Anbieter**   
-In-Memory- und DirectQuery-Modelle, die eine Verbindung mit Azure-Datenquellen herstellen, verwenden den .NET Framework-Datenanbieter für SQL Server.
+**Hinweise:**    
+<a name="tab1400a">1</a>: Nur für tabellarische Modelle 1400 und höhere.  
+<a name="azprovider">2</a>: Bei Angabe als *Anbieterdatenquelle* in tabellarischen Modellen ab 1200 ist sowohl für In-Memory- als auch für DirectQuery-Modelle der Microsoft OLE DB-Treiber für SQL Server (MSOLEDBSQL; empfohlen), SQL Server Native Client 11.0 oder der .NET Framework-Datenanbieter für SQL Server erforderlich.    
+<a name="azsqlmanaged">3</a>: Verwaltete Azure SQL-Datenbank-Instanz wird unterstützt. Da eine verwaltete Instanz innerhalb von Azure VNet mit einer privaten IP-Adresse ausgeführt wird, muss der öffentliche Endpunkt für die Instanz aktiviert sein. Andernfalls ist ein [lokales Datengateway](analysis-services-gateway.md) erforderlich.    
+<a name="databricks">4</a>: Azure Databricks mit Spark-Connector wird derzeit nicht unterstützt.   
+<a name="gen2">5</a>: Der ADLS Gen2-Connector wird derzeit zwar nicht unterstützt, aber der Azure Blob Storage-Connector kann mit einer ADLS Gen2-Datenquelle verwendet werden.   
 
 ## <a name="other-data-sources"></a>Weitere Datenquellen
 
-Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure Analysis Services-Server ist ein lokales Gateway erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich.
-
-### <a name="in-memory-and-directquery"></a>In-Memory und DirectQuery
-
-|Datenquelle | In-Memory-Anbieter | DirectQuery-Anbieter |
-|  --- | --- | --- |
-| SQL Server |Microsoft OLE DB-Treiber für SQL Server MSOLEDBSQL (empfohlen), SQL Server Native Client 11.0, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
-| SQL Server Data Warehouse |Microsoft OLE DB-Treiber für SQL Server MSOLEDBSQL (empfohlen), SQL Server Native Client 11.0, .NET Framework-Datenanbieter für SQL Server | .NET Framework-Datenanbieter für SQL Server |
-| Oracle | OLE DB-Anbieter für Oracle, Oracle-Datenanbieter für .NET |Oracle-Datenanbieter für .NET |
-| Teradata |OLE DB-Anbieter für Teradata, Teradata-Datenanbieter für .NET |Teradata-Datenanbieter für .NET |
+|Datenquelle | In-Memory | DirectQuery |Notizen   |
+|  --- | --- | --- | --- |
+|Access-Datenbank     |  Ja | Nein |  |
+|Active Directory     |  Ja | Nein | <sup>[6](#tab1400b)</sup>  |
+|Analysis Services     |  Ja | Nein |  |
+|Analytics Platform System     |  Ja | Nein |  |
+|CSV-Datei  |Ja | Nein |  |
+|Dynamics 365     |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|Excel-Arbeitsmappe     |  Ja | Nein |  |
+|Exchange      |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|Ordner      |Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|IBM Informix  |Ja | Nein |  |
+|JSON-Dokument      |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|Zeilen aus Binärdatei      | Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|MySQL Database     | Ja | Nein |  |
+|OData-Feed      |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|ODBC-Abfrage     | Ja | Nein |  |
+|OLE DB     |   Ja | Nein |  |
+|Oracle  | Ja  |Ja  | <sup>[9](#oracle)</sup> |
+|PostgreSQL-Datenbank   | Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|Salesforce-Objekte|  Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|Salesforce-Berichte |Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|SAP HANA     |  Ja | Nein |  |
+|SAP Business Warehouse    |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
+|SharePoint-Liste      |   Ja | Nein | <sup>[6](#tab1400b)</sup>, <sup>[11](#filesSP)</sup> |
+|SQL Server |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup>[8](#instgw)</sup> | 
+|SQL Server Data Warehouse |Ja   | Ja  | <sup>[7](#sqlim)</sup>, <sup>[8](#instgw)</sup> |
+|Sybase-Datenbank     |  Ja | Nein |  |
+|Teradata | Ja  | Ja  | <sup>[10](#teradata)</sup> |
+|TXT-Datei  |Ja | Nein |  |
+|XML-Tabelle    |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
 | | | |
 
-### <a name="in-memory-only"></a>Nur In-Memory
+**Hinweise:**    
+<a name="tab1400b">6</a>: Nur für tabellarische Modelle ab 1400.  
+<a name="sqlim">7</a>: Geben Sie bei Angabe als *Anbieterdatenquelle* in tabellarischen Modellen ab 1200 den Microsoft OLE DB-Treiber für SQL Server (MSOLEDBSQL; empfohlen), SQL Server Native Client 11.0 oder den .NET Framework-Datenanbieter für SQL Server an.  
+<a name="instgw">8</a>: Bei Angabe von MSOLEDBSQL als Datenanbieter muss ggf. der [Microsoft OLE DB-Treiber für SQL Server](https://docs.microsoft.com/sql/connect/oledb/oledb-driver-for-sql-server) heruntergeladen und auf dem Computer installiert werden, auf dem sich auch das lokale Datengateway befindet.  
+<a name="oracle">9</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Oracle-Datenanbieter für .NET an.  
+<a name="teradata">10</a>: Geben Sie für tabellarische Modelle vom Typ 1200 oder als *Anbieterdatenquelle* in tabellarischen Modellen ab 1400 den Teradata-Datenanbieter für .NET an.   
+<a name="filesSP">11</a>: Dateien in der lokalen SharePoint-Instanz werden nicht unterstützt.
 
-|Datenquelle  |  
-|---------|
-|Access-Datenbank     |  
-|Active Directory<sup>[1](#tab1400b)</sup>     |  
-|Analysis Services     |  
-|Analytics Platform System     |  
-|CSV-Datei  |
-|Dynamics CRM<sup>[1](#tab1400b)</sup>     |  
-|Excel-Arbeitsmappe     |  
-|Exchange<sup>[1](#tab1400b)</sup>     |  
-|Ordner<sup>[1](#tab1400b)</sup>     |
-|IBM Informix<sup>[1](#tab1400b)</sup> (Beta) |
-|JSON-Dokument<sup>[1](#tab1400b)</sup>     |  
-|Zeilen aus Binärdatei<sup>[1](#tab1400b)</sup>     | 
-|MySQL Database     | 
-|OData-Feed<sup>[1](#tab1400b)</sup>     |  
-|ODBC-Abfrage     | 
-|OLE DB     |   
-|PostgreSQL-Datenbank<sup>[1](#tab1400b)</sup>    | 
-|Salesforce-Objekte<sup>[1](#tab1400b)</sup> |  
-|Salesforce-Berichte<sup>[1](#tab1400b)</sup> |
-|SAP HANA<sup>[1](#tab1400b)</sup>    |  
-|SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint-Liste<sup>[1](#tab1400b)</sup>, <sup>[2](#filesSP)</sup>     |   
-|Sybase-Datenbank     |  
-|TXT-Datei  |
-|XML-Tabellen<sup>[1](#tab1400b)</sup>    |  
-||
- 
-<a name="tab1400b">1</a>: Nur für tabellarische Modelle 1400 und höhere.   
-<a name="filesSP">2:</a> Dateien in lokaler SharePoint-Instanz werden nicht unterstützt.
+Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure Analysis Services-Server ist ein [lokales Gateway](analysis-services-gateway.md) erforderlich. Wenn Sie ein Gateway verwenden, sind 64-Bit-Anbieter erforderlich. 
 
-## <a name="specifying-a-different-provider"></a>Angeben eines anderen Herstellers
+## <a name="understanding-providers"></a>Grundlegendes zu Anbietern
 
-Datenmodelle in Azure Analysis Services erfordern möglicherweise verschiedene Datenanbieter beim Verbinden mit bestimmten Datenquellen. Gelegentlich kann es vorkommen, dass tabellarische Modelle beim Herstellen einer Verbindung mit Datenquellen mithilfe von nativen Anbietern wie SQL Server Native Client (SQLNCLI11) einen Fehler zurückgeben. Wenn Sie andere native Anbieter als MSOLEDBSQL verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Der Anbieter „SQLNCLI11.1“ ist nicht registriert**. Wenn ein DirectQuery-Modell eine Verbindung mit lokalen Datenquellen herstellt und Sie native Anbieter verwenden, wird möglicherweise folgende Fehlermeldung angezeigt: **Fehler beim Erstellen des OLE DB-Rowsets. Incorrect syntax near „LIMIT“. (Fehler beim Erstellen eines OLE DB-Rowsets. Falsche Syntax bei „LIMIT“)** .
+Bei der Erstellung eines tabellarischen Modellprojekts ab 1400 in Visual Studio geben Sie standardmäßig keinen Datenanbieter an, wenn mithilfe von **Daten abrufen** eine Verbindung mit einer Datenquelle hergestellt wird. Tabellarische Modelle ab 1400 verwenden [Power Query](/power-query/power-query-what-is-power-query.md)-Connectors, um Verbindungen, Datenabfragen und Mashups zwischen Datenquelle und Analysis Services zu verwalten. Diese werden gelegentlich als *strukturierte* Datenquellenverbindungen bezeichnet, da Verbindungseigenschaftseinstellungen für Sie festgelegt werden. Sie können jedoch Legacydatenquellen aktivieren. In diesem Fall können Sie den **Tabellenimport-Assistenten** verwenden, um eine Verbindung mit bestimmten Datenquellen herzustellen, die in tabellarischen Modellen bis 1200 traditionell als *Legacy-* oder *Anbieterdatenquelle* unterstützt werden. Bei Angabe als Anbieterdatenquelle können Sie einen bestimmten Datenanbieter sowie andere erweiterte Verbindungseigenschaften angeben. So können Sie beispielsweise eine Verbindung mit einer lokalen SQL Server Data Warehouse-Instanz oder sogar mit einer Azure SQL-Datenbank als Legacydatenquelle herstellen. Anschließend können Sie den Datenanbieter „OLE DB-Treiber für SQL Server“ (MSOLEDBSQL) auswählen. In diesem Fall kann durch die Wahl eines OLE DB-Datenanbieters anstelle des Power Query-Connectors ggf. eine Verbesserung der Leistung erzielt werden. 
 
-Bei der Migration eines lokalen SQL Server Analysis Services-Tabellenmodells zu Azure Analysis Services muss möglicherweise der Anbieter gewechselt werden.
+Wenn Sie den Tabellenimport-Assistenten in Visual Studio verwenden, ist für Verbindungen mit einer Datenquelle ein Datenanbieter erforderlich. Es wird automatisch ein Standarddatenanbieter ausgewählt. Der Datenanbieter kann bei Bedarf geändert werden. Entscheidende Faktoren für die Wahl des Anbietertyps können die Leistung, die Verwendung von In-Memory-Speicher oder DirectQuery durch das Modell und die Analysis Services-Plattform sein, auf der das Modell bereitgestellt wird.
 
-**So geben Sie einen Anbieter an**
+### <a name="specify-provider-data-sources-in-tabular-1400-and-higher-model-projects"></a>Angeben von Anbieterdatenquellen in tabellarischen Modellprojekten ab 1400
 
-1. Klicken Sie unter Visual Studio > **Tabular Model Explorer** (Explorer für tabellarisches Modell)  > **Datenquellen** mit der rechten Maustaste auf eine Datenquellenverbindung, und klicken Sie anschließend auf **Datenquelle bearbeiten**.
-2. Klicken Sie unter **Verbindung bearbeiten** auf **Erweitert**, um das Fenster „Erweiterte Eigenschaften“ zu öffnen.
-3. Wählen Sie anschließend unter **Erweiterte Eigenschaften festlegen** > **Anbieter** den gewünschten Anbieter aus.
+Klicken Sie zum Aktivieren von Anbieterdatenquellen in Visual Studio auf **Tools** > **Optionen** > **Analysis Services Tabular** > **Datenimport**, und wählen Sie **Legacydatenquellen aktivieren** aus.
+
+![Aktivieren von Legacydatenquellen](media/analysis-services-datasource/aas-enable-legacy-datasources.png)
+
+Klicken Sie nach Aktivierung von Legacydatenquellen im **tabellarischen Modell-Explorer** auf **Datenquellen** > **Aus Datenquelle importieren (Legacy)** .
+
+![Legacydatenquellen im tabellarischen Modell-Explorer](media/analysis-services-datasource/aas-import-legacy-datasources.png)
+
+Verwenden Sie genau wie bei tabellarischen Modellprojekten vom Typ 1200 den **Tabellenimport-Assistenten**, um eine Verbindung mit einer Datenquelle herzustellen. Klicken Sie auf der Seite für die Verbindungsherstellung auf **Erweitert**. Geben Sie unter **Erweiterte Eigenschaften festlegen** den Datenanbieter und andere Verbindungseinstellungen an.
+
+![Legacy-Datenquellen: erweiterte Eigenschaften](media/analysis-services-datasource/aas-import-legacy-advanced.png)
+
 
 ## <a name="impersonation"></a>Identitätswechsel
 In einigen Fällen muss möglicherweise ein anderes Identitätswechselkonto angegeben werden. Das Identitätswechselkonto kann in Visual Studio oder SSMS angegeben werden.

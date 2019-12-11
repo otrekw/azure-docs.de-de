@@ -1,7 +1,7 @@
 ---
-title: Support- und Hilfeoptionen – Spracherkennungsdienst
+title: Support- und Hilfeoptionen – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie Hilfe und Support zu Fragen und Problemen beim Erstellen von Anwendungen, die in den Speech-Dienst integriert werden, erhalten.
+description: Hier erfahren Sie, wie Sie Hilfe und Support im Zusammenhang mit Fragen und Problemen beim Erstellen von Anwendungen erhalten, die in den Speech-Dienst integriert werden.
 services: cognitive-services
 author: jhakulin
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 925d21d22806ab2854be29b9648aab78138741ec
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422607"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815443"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -31,7 +31,7 @@ Beginnen Sie erst damit, die Funktionalität des Speech-Diensts zu untersuchen? 
 
 ## <a name="stay-informed"></a>Immer auf dem neuesten Stand
 
-Neuigkeiten zu Cognitive Services werden im [Cognitive Services-Blog](https://azure.microsoft.com/blog/topics/cognitive-services/) gesammelt. Verfolgen Sie das [Blog zum Speech-Dienst](https://azure.microsoft.com/blog/tag/speech-service/), um die aktuellsten Informationen zum Speech-Dienst zu erhalten.
+Neuigkeiten zu Cognitive Services werden im [Cognitive Services-Blog](https://azure.microsoft.com/blog/topics/cognitive-services/) gesammelt. Verfolgen Sie den [Blog zum Speech-Dienst](https://azure.microsoft.com/blog/tag/speech-service/), um aktuelle Informationen zum Speech-Dienst zu erhalten.
 
 ## <a name="release-notes"></a>Versionshinweise
 

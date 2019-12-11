@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentation zu virtuellen Computern
 metadata:
   document_id: na
-  title: 'Dokumentation zu virtuellen Azure-Computern: Tutorials, API-Referenz | Microsoft-Dokumentation'
+  title: 'Dokumentation für Azure Virtual Machines: Tutorials, API-Referenz'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
   author: georgewallace
@@ -13,8 +13,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: gwallace
-abstract:
-  description: 'Hier erfahren Sie, wie Sie virtuelle Azure-Computer erstellen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie virtuelle Windows- oder Linux-Computer sowie VM-Vorlagen erstellen und bereitstellen.'
+  description: 'Hier erfahren Sie, wie Sie virtuelle Windows- und Linux-Computer in Azure erstellen und bereitstellen.'
 sections:
   - title: null
     items:

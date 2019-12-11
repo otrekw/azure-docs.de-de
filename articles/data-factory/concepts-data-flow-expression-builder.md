@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/17/2019
-ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0eb2c2692ed2444a85e7253c6fdd8734385ff881
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184673"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672266"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Mappingdatenfluss: Ausdrucks-Generator
 
@@ -104,7 +104,13 @@ Wenn Sie einen Kommentar am Anfang des Ausdrucks einfügen, wird er im Transform
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Beachten Sie, dass die Konvertierung in einer toString()-Funktion erfolgen muss, damit Zeichenfolgenliterale in der Zeitstempelausgabe eingefügt werden.
+Beachten Sie, dass Ihre Konvertierung in ```toString()``` eingeschlossen werden muss, damit Zeichenfolgenliterale in Ihre Zeitstempelausgabe eingeschlossen werden.
+
+Das folgende Beispiel zeigt, wie Sie Sekunden von einer Epoche in ein Datum oder in einen Zeitstempel konvertieren:
+
+```toTimestamp(1574127407*1000l)```
+
+Beachten Sie das nachgestellte „l“ am Ende des obigen Ausdrucks. Hiermit wird eine Konvertierung in einen Long-Datentyp als Inline-Syntax angegeben.
 
 ## <a name="handling-column-names-with-special-characters"></a>Verarbeiten von Spaltennamen mit Sonderzeichen
 

@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines benutzerdefinierten Schlüsselworts – Speech Service
+title: Erstellen eines benutzerdefinierten Schlüsselworts – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Ihr Gerät lauscht immer auf ein Schlüsselwort (oder einen Ausdruck). Wenn der Benutzer das Schlüsselwort nennt, sendet das Gerät sämtliche nachfolgende Audioaufnahmen an die Cloud, bis der Benutzer aufhört zu sprechen. Durch das Anpassen Ihres Schlüsselworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a5b5de71ee290b39603968cf4309171689e22e4
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184833"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815297"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Erstellen eines benutzerdefinierten Schlüsselworts mit dem Speech Service
 

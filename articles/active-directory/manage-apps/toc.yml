@@ -389,6 +389,8 @@
       items:
         - name: SuccessFactors-Attributreferenz
           href: sap-successfactors-attribute-reference.md
+        - name: Workday-Attributreferenz
+          href: workday-attribute-reference.md
     - name: Azure AD Connect-Bereitstellungs-Agent
       items:
         - name: Versionsverlauf des Bereitstellungs-Agents

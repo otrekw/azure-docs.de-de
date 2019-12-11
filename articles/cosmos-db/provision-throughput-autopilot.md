@@ -6,19 +6,19 @@ ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2259343d2c7bca1f60a5256efcd572e6cc21b565
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383084"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706035"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Erstellen von Azure Cosmos-Containern und -Datenbanken im Autopilot-Modus (Vorschauversion)
 
 Mit Azure Cosmos DB können Sie Durchsatz für Ihre Container im manuellen oder Autopilot-Modus bereitstellen. In diesem Artikel werden die Vorteile des Autopilot-Modus und Anwendungsfälle beschrieben.
 
 > [!NOTE]
-> Der Autopilot-Modus ist derzeit in der öffentlichen Vorschau verfügbar. Informationen zur Aktivierung der Autopilot-Funktion für Ihr Azure Cosmos-Konto finden Sie im Abschnitt [Aktivieren des Autopilot-Modus](#enable-autopilot) dieses Artikels. Sie können den Autopilot-Modus nur für neue Datenbanken und Container aktivieren. Er ist für vorhandene Container und Datenbanken nicht verfügbar.
+> Der Autopilot-Modus ist derzeit in der öffentlichen Vorschau verfügbar. Informationen zur Aktivierung der Autopilot-Funktion für Ihr Azure Cosmos-Konto finden Sie im Abschnitt [Aktivieren des Autopilot-Modus](#enable-autopilot) dieses Artikels. Sie können den Autopilot-Modus nur für neue Datenbanken und Container aktivieren. Für vorhandene Container und Datenbanken ist er nicht verfügbar.
 
 Zusätzlich zur manuellen Bereitstellung von Durchsatz können Sie jetzt Azure Cosmos-Container im Autopilot-Modus konfigurieren. Bei Azure Cosmos-Containern und -Datenbanken, die im Autopilot-Modus konfiguriert wurden, wird **der bereitgestellte Durchsatz automatisch und sofort basierend auf Ihren Anwendungsanforderungen skaliert, ohne die SLAs zu beeinträchtigen**.
 

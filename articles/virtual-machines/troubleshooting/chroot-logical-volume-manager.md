@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/24/2019
 ms.author: vilibert
-ms.openlocfilehash: 9c3f054a1bae745e4ee7ce9e3bddca3c9bf31083
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20d710f717a9dff26f46ac7a201a9b694f3fbe84
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534982"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684129"
 ---
 # <a name="troubleshooting-a-linux-vm-when-there-is-no-access-to-the-azure-serial-console-and-the-disk-layout-is-using-lvm-logical-volume-manager"></a>Problembehandlung bei einem virtuellen Linux-Computer ohne Zugriff auf die serielle Azure-Konsole und bei Verwendung von LVM (Logical Volume Manager) im Datenträgerlayout
 
@@ -204,12 +204,35 @@ Fragen Sie den installierten **Kernel** ab.
 
 ![Erweitert](./media/chroot-logical-volume-manager/rpm-kernel.png)
 
-Aktualisieren Sie bei Bedarf den **Kernel**
+Entfernen oder upgraden Sie bei Bedarf den **Kernel**.
 ![Erweitert](./media/chroot-logical-volume-manager/rpm-remove-kernel.png)
 
 
 ### <a name="example-3---enable-serial-console"></a>Beispiel 3: Aktivieren der seriellen Konsole
 Wenn der Zugriff auf die serielle Azure-Konsole nicht möglich ist, überprüfen Sie die GRUB-Konfigurationsparameter für den virtuellen Linux-Computer, und korrigieren Sie sie. Ausführliche Informationen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-proactive-configuration).
+
+### <a name="example-4---kernel-loading-with-problematic-lvm-swap-volume"></a>Beispiel 4: Laden eines Kernels mit problematischem LVM-Auslagerungsvolume
+
+Ein virtueller Computer wird möglicherweise nicht vollständig gestartet und zeigt die Aufforderung **dracut** an.
+Weitere Details zu diesem Fehler finden Sie entweder in der seriellen Azure-Konsole oder im Azure-Portal unter „Startdiagnose“ > „Serielles Protokoll“.
+
+
+Gegebenenfalls ist ein Fehler wie der folgende vorhanden:
+
+```
+[  188.000765] dracut-initqueue[324]: Warning: /dev/VG/SwapVol does not exist
+         Starting Dracut Emergency Shell...
+Warning: /dev/VG/SwapVol does not exist
+```
+
+Die Konfiguration in „grub.cfg“ sieht vor, dass ein logisches Volume namens **rd.lvm.lv=VG/SwapVol** geladen wird, dieses wird vom virtuellen Computer aber nicht gefunden. Die folgende Zeile zeigt, wie der Kernel mit einem Verweis auf das logische Volume „SwapVol“ geladen wird:
+
+```
+[    0.000000] Command line: BOOT_IMAGE=/vmlinuz-3.10.0-1062.4.1.el7.x86_64 root=/dev/mapper/VG-OSVol ro console=tty0 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0 biosdevname=0 crashkernel=256M rd.lvm.lv=VG/OSVol rd.lvm.lv=VG/SwapVol nodmraid rhgb quiet
+[    0.000000] e820: BIOS-provided physical RAM map:
+```
+
+ Entfernen Sie das problematische logische Volume aus der Konfiguration unter „/etc/default/grub“, und erstellen Sie „grub2.cfg“ neu.
 
 
 ## <a name="exit-chroot-and-swap-the-os-disk"></a>Beenden von chroot und Austauschen des Betriebssystemdatenträgers
@@ -247,4 +270,8 @@ Wenn der virtuelle Computer ausgeführt wird, wird er beim Austausch des Datentr
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur [seriellen Azure-Konsole]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+Weitere Informationen
+
+ [Serielle Azure-Konsole]( https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-linux)
+
+[Verwenden der seriellen Konsole für den Zugriff auf den GRUB- und den Einzelbenutzermodus](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-grub-single-user-mode)

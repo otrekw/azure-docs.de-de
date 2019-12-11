@@ -1,19 +1,19 @@
 ---
-title: Sicherheit in Azure Database for MariaDB – Einzelserver
-description: Eine Übersicht über die Sicherheitsfeatures in Azure Database for MariaDB – Einzelserver.
+title: Sicherheit – Azure Database for MariaDB
+description: Eine Übersicht über die Sicherheitsfeatures in Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/25/2019
-ms.openlocfilehash: 1a2d7ac449c131519473afaa80eb3a57c287eb28
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 12/02/2019
+ms.openlocfilehash: d23eabdacc57a3f5a10d9e3b132a6daac42fbd4d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484831"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772147"
 ---
-# <a name="security-in-azure-database-for-mariadb---single-server"></a>Sicherheit in Azure Database for MariaDB – Einzelserver
+# <a name="security-in-azure-database-for-mariadb"></a>Sicherheit in Azure Database for MariaDB
 
 Zum Schutz der Daten auf dem Azure Database for MariaDB-Server stehen mehrere Sicherheitsebenen zur Verfügung. In diesem Artikel werden diese Sicherheitsoptionen beschrieben.
 
@@ -32,7 +32,7 @@ Verbindungen mit einem Azure Database for MariaDB-Server werden zunächst über 
 Ein neu erstellter Azure Database for MariaDB-Server verfügt über eine Firewall, die alle externen Verbindungen blockiert. Obwohl sie das Gateway erreichen, dürfen sie keine Verbindung mit dem Server herstellen. 
 
 ### <a name="ip-firewall-rules"></a>IP-Firewallregeln
-IP-Firewallregeln gewähren den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung. Weitere Informationen finden Sie in der Übersicht über [Firewallregeln](concepts-firewall-rules.md).
+IP-Firewallregeln gewähren den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung. Weitere Informationen finden Sie in der [Übersicht über Firewallregeln](concepts-firewall-rules.md).
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregeln für virtuelle Netzwerke
 Mit VNET-Dienstendpunkten wird die Konnektivität virtueller Netzwerke über den Azure-Backbone hinaus erweitert. Mithilfe von VNET-Regeln können Sie Ihren Azure Database for MariaDB-Server so konfigurieren, dass Verbindungen von ausgewählten Subnetzen in einem virtuellen Netzwerk zugelassen werden. Weitere Informationen finden Sie in der [Übersicht über VNET-Dienstendpunkte](concepts-data-access-security-vnet.md).
@@ -45,9 +45,9 @@ Beim Erstellen des Azure Database for MariaDB-Servers geben Sie Anmeldeinformati
 
 ## <a name="threat-protection"></a>Bedrohungsschutz
 
-Sie können [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) verwenden, damit Anomalien bei Aktivitäten erkannt werden, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Server zuzugreifen oder diese zu nutzen.
+Sie können [Advanced Threat Protection](concepts-data-access-and-security-threat-protection.md) verwenden. Diese Lösung erkennt anormale Aktivitäten, die darauf hindeuten, dass auf ungewöhnliche und potenziell schädliche Weise versucht wird, auf Server zuzugreifen oder diese auszunutzen.
 
-Das [Überwachungsprotokoll](concepts-audit-logs.md) ist für die Nachverfolgung von Aktivitäten in Datenbanken verfügbar. 
+Aktivitäten in Ihren Datenbanken können mithilfe der [Überwachungsprotokollierung](concepts-audit-logs.md) nachverfolgt werden. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

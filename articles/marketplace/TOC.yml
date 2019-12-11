@@ -513,3 +513,15 @@
       href: ./partner-center-portal/support.md
     - name: Partner Center Analytics
       href: ./partner-center-portal/analytics.md
+    - name: Erhalten der Bezahlung
+      items:
+        - name: Erhalten der Bezahlung
+          href: ./partner-center-portal/get-paid.md
+        - name: Einrichten von Auszahlungskonten und Steuerformularen
+          href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: 'Zahlungsschwellenwerte, -methoden und -zeitrahmen'
+          href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
+        - name: Auszahlungszusammenfassung
+          href: ./partner-center-portal/payout-summary.md
+        - name: Steuerdetails
+          href: ./partner-center-portal/tax-details-paid-transactions.md

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/25/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 26ebcc7f2196267719a5f49aeeb8de00d48b9c3e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 896fd41cff0ab8257da7b91687aaae389a1c81ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483736"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769658"
 ---
 # <a name="publish-built-in-apps-in-windows-virtual-desktop"></a>Veröffentlichen von integrierten Apps in Windows Virtual Desktop
 
@@ -45,5 +45,8 @@ Der Vorgang zum Veröffentlichen von Microsoft Edge unterscheidet sich etwas von
 New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -FriendlyName <remoteappname> -FilePath "shell:Appsfolder\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge" 
 ```
 
+## <a name="next-steps"></a>Nächste Schritte
 
+- Informieren Sie sich unter [Anpassen von Feeds für Windows Virtual Desktop-Benutzer](customize-feed-for-virtual-desktop-users.md), wie Sie Feeds konfigurieren, um festzulegen, wie Apps für Benutzer angezeigt werden.
+- Machen Sie sich unter [Einrichten des MSIX-Features zum Anfügen von Apps](app-attach.md) mit dem MSIX-Feature zum Anfügen von Apps vertraut.
 

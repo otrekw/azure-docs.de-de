@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 31e45906dfeafcd2af1651347dde9dc6d3c6fb7c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74274079"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769216"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie die Sicherheit ihrer Container und d
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Verwaltung von Sicherheitsrisiken: Scannen von Containerimages (Vorschau)
 Stellen Sie zur Überwachung Ihrer Azure Container Registry-Instanz sicher, dass Sie den Standard-Tarif von Security Center verwenden (siehe [Preise](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Aktivieren Sie anschließend das optionale Paket „Containerregistrierungen“. Wenn ein neues Image per Push bereitgestellt wird, überprüft Security Center das Image mithilfe eines Scanners von Qualys, dem branchenführenden Hersteller von Anwendungen zur Sicherheitsrisikoüberprüfung.
 
-Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie im Security Center-Dashboard benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen finden Sie in der Liste der Empfehlungen unter [Schutz von virtuellen Computern](security-center-virtual-machine-protection.md##compute-and-app-recs).
+Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie im Security Center-Dashboard benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen finden Sie in der Liste der Empfehlungen ([hier](recommendations-compute-and-apps.md)).
 
 ## <a name="environment-hardening"></a>Umgebungshärtung
 

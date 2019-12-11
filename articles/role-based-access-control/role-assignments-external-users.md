@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs auf Azure-Ressourcen für externe Gastbenutzer mit RBAC | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für organisationsexterne Benutzer mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten.
+title: Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal
+description: Hier erfahren Sie, wie Sie organisationsexternen Benutzern mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) Zugriff auf Azure-Ressourcen erteilen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,20 +12,26 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/12/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 51945940a0f0fd0346e9437c4ad0631f989e0a92
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: db43a3cce27da5f40986968b6573bfd58a1d3cb7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555561"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707884"
 ---
-# <a name="manage-access-to-azure-resources-for-external-guest-users-using-rbac"></a>Verwalten des Zugriffs auf Azure-Ressourcen für externe Gastbenutzer mit RBAC
+# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Hinzufügen oder Entfernen von Rollenzuweisungen für externe Gastbenutzer mithilfe von Azure RBAC und dem Azure-Portal
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Mithilfe der Funktionen in [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) können Sie mit externen Gastbenutzern zusammenarbeiten, und Sie können mithilfe von RBAC nur die Berechtigungen erteilen, die Gastbenutzer in Ihrer Umgebung benötigen.
+Die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure](overview.md) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern zusammenarbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Mithilfe der Funktionen in [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) können Sie mit externen Gastbenutzern zusammenarbeiten, und Sie können mithilfe von RBAC nur die Berechtigungen erteilen, die Gastbenutzer in Ihrer Umgebung benötigen.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um Rollenzuweisungen hinzufügen oder entfernen zu können, benötigen Sie Folgendes:
+
+- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>Wann würden Sie Gastbenutzer einladen?
 
@@ -61,9 +67,9 @@ Damit der Gastbenutzer auf Ihr Verzeichnis zugreifen kann, muss er den Einladung
 
 Weitere Informationen zum Einladungsprozess finden Sie unter [Azure Active Directory B2B-Zusammenarbeit: Einlösen von Einladungen](../active-directory/b2b/redemption-experience.md).
 
-## <a name="grant-access-to-a-guest-user"></a>Gewähren des Zugriffs für einen Gastbenutzer
+## <a name="add-a-role-assignment-for-a-guest-user"></a>Hinzufügen einer Rollenzuweisung für einen Gastbenutzer
 
-In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutzer den Zugriff zu gewähren, befolgen Sie [dieselben Schritte](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um einem Gastbenutzer Zugriff auf verschiedene Bereiche zu gewähren.
+In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Verwenden Sie zum Hinzufügen einer Rollenzuweisung für einen Gastbenutzer die [gleiche Vorgehensweise](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität. Gehen Sie wie folgt vor, um eine Rollenzuweisung für einen Gastbenutzer in verschiedenen Bereichen hinzuzufügen:
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**.
 
@@ -95,9 +101,9 @@ In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutz
 
     ![Rollenzuweisung für Mitwirkender von virtuellen Computern](./media/role-assignments-external-users/access-control-role-assignments.png)
 
-## <a name="grant-access-to-a-guest-user-not-yet-in-your-directory"></a>Gewähren des Zugriffs für einen Gastbenutzer, der sich noch nicht in Ihrem Verzeichnis befindet
+## <a name="add-a-role-assignment-for-a-guest-user-not-yet-in-your-directory"></a>Hinzufügen einer Rollenzuweisung für einen Gastbenutzer, der sich noch nicht in Ihrem Verzeichnis befindet
 
-In RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einen Gastbenutzer den Zugriff zu gewähren, befolgen Sie [dieselben Schritte](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität.
+Verwenden Sie zum Hinzufügen einer Rollenzuweisung für einen Gastbenutzer die [gleiche Vorgehensweise](role-assignments-portal.md#add-a-role-assignment) wie für einen Mitgliedsbenutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität.
 
 Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie den Benutzer direkt über den Bereich „Rollenzuweisung hinzufügen“ einladen.
 
@@ -179,7 +185,7 @@ Wenn ein Gastbenutzer zusätzliche Berechtigungen im Verzeichnis benötigt, kön
 
 ### <a name="guest-user-cannot-browse-users-groups-or-service-principals-to-assign-roles"></a>Gastbenutzer können keine Benutzer, Gruppen oder Dienstprinzipale durchsuchen, um Rollen zuzuweisen.
 
-Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Selbst wenn ein Gastbenutzer ein [Besitzer](built-in-roles.md#owner) eines Bereichs ist, kann er die Liste der Benutzer, Gruppen oder Dienstprinzipale nicht durchsuchen, wenn er versucht, eine Rollenzuweisung zu erstellen, um anderen Personen Zugriff zu gewähren.
+Gastbenutzer erhalten eingeschränkte Verzeichnisberechtigungen. Selbst wenn ein Gastbenutzer ein [Besitzer](built-in-roles.md#owner) in einem Bereich ist, kann er die Liste der Benutzer, Gruppen oder Dienstprinzipale nicht durchsuchen, wenn er versucht, eine Rollenzuweisung hinzuzufügen, um anderen Personen Zugriff zu gewähren.
 
 ![Gastbenutzer können keine Sicherheitsprinzipale durchsuchen, um Rollen zuzuweisen.](./media/role-assignments-external-users/directory-no-browse.png)
 

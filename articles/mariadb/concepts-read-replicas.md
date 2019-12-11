@@ -1,17 +1,17 @@
 ---
-title: Lesereplikate in Azure Database for MariaDB
+title: Lesereplikate – Azure Database for MariaDB
 description: 'Weitere Informationen zu Lesereplikaten in Azure Database for MariaDB: Auswählen von Regionen, Erstellen von Replikaten, Herstellen einer Verbindung mit Replikaten und Beenden der Replikation.'
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/17/2019
-ms.openlocfilehash: f761cb1c4e895cd0960a0a07033e609acf9ef601
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.date: 12/03/2019
+ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158412"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790422"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -45,7 +45,9 @@ Sie können einen Masterserver in jeder [Azure Database for MariaDB-Region](http
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
 Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Masterserver befindet. Folgende universelle Replikatregionen werden unterstützt:
 
-„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“.
+„Australien, Osten“, „Australien, Südosten“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen“.
+
+*„USA, Westen 2“ steht vorübergehend nicht als Standort für die regionsübergreifende Replikation zur Verfügung.
 
 
 ### <a name="paired-regions"></a>Regionspaare
@@ -74,7 +76,7 @@ Wenn Sie den Workflow zum Erstellen von Replikaten starten, wird ein leerer Azur
 
 ## <a name="connect-to-a-replica"></a>Herstellen einer Verbindung mit einem Replikat
 
-Ein Replikat erbt bei der Erstellung die Firewallregeln oder den VNet-Dienstendpunkt des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
+Ein Replikat erbt bei der Erstellung weder die Firewallregeln noch den VNET-Dienstendpunkt des Masterservers. Danach sind diese Regeln vom Masterserver unabhängig.
 
 Das Replikat erbt das Administratorkonto vom Masterserver. Alle Benutzerkonten auf dem Masterserver werden auf die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Masterserver verfügbar sind.
 

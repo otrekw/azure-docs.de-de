@@ -65,6 +65,7 @@ sections:
           - html: <a href="/azure/aks/tutorial-kubernetes-scale">Scale an application and Kubernetes infrastructure (Skalieren einer Anwendung und einer Kubernetes-Infrastruktur)</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Update an application running in Kubernetes (Aktualisieren einer in Kubernetes ausgeführten Anwendung)</a>
           - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Aktualisieren eines AKS-Clusters</a>
+          - html: <a href="/azure/architecture/reference-architectures/microservices/aks">Kennenlernen und Implementieren der Microservices-Referenzarchitektur</a>
   - title: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
     items:
       - type: list

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: 406f6f7a3db5f63fb50242a93f021c481631adaa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4b80004a3d818e66cc2fb61f3d611bbe3e3ded92
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209713"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807033"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -191,7 +191,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     deviceId | ID des Geräts |
     hubName | Name des IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-Zeitstempel des Vorgangs |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" oder "updateTwin" |
 
     Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
@@ -285,7 +285,7 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
 
 ## <a name="device-twin-size"></a>Größe des Gerätezwillings
 
-IoT Hub erzwingt eine Größenbegrenzung von je 8 KB für die jeweiligen Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
+IoT Hub erzwingt eine Größenbeschränkung von 8 KB für den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB für die Werte `properties/desired` und `properties/reported`. Diese Summen schließen keine schreibgeschützten Elemente ein.
 
 Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
 
