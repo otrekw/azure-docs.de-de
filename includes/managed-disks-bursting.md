@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/24/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: c2ce39c40ad535b4a66349fcbb4529333218555a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7564d40aa9344288c0368818b0b6501dc22a5a27
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510231"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705531"
 ---
-Bei SSD Premium wird das Bursting nur für Datenträgergrößen bis einschließlich 512 GiB (P20 oder niedriger) unterstützt. Diese Datenträgergrößen unterstützen das Bursting nach dem Prinzip des bestmöglichen Aufwands und nutzen ein Guthabensystem zum Verwalten von Bursts. Das Guthaben wird in einem Burstbucket gesammelt, wenn der Datenverkehr unter dem bereitgestellten Leistungsziel für die Datenträgergröße liegt, und verbraucht, wenn der Datenverkehr das Ziel übersteigt. Der Datenverkehr des Datenträgers wird auf IOPS und Bandbreite im bereitgestellten Ziel nachverfolgt.
+Datenträgerbursting ist zurzeit eine Previewfunktion für SSD Premium-Datenträger. Bursting wird für SSD Premium-Datenträger mit Größen bis einschließlich 512 GiB (P20 oder niedriger) unterstützt. Diese Datenträgergrößen unterstützen das Bursting nach dem Prinzip des bestmöglichen Aufwands und nutzen ein Guthabensystem zum Verwalten von Bursts. Das Guthaben wird in einem Burstbucket gesammelt, wenn der Datenverkehr unter dem bereitgestellten Leistungsziel für die Datenträgergröße liegt, und verbraucht, wenn der Datenverkehr das Ziel übersteigt. Der Datenverkehr des Datenträgers wird auf IOPS und Bandbreite im bereitgestellten Ziel nachverfolgt.
 
 Das Datenträgerbursting ist bei neuen Bereitstellungen der unterstützten Datenträgergrößen standardmäßig aktiviert. Bei vorhandenen Datenträgergrößen, die das Datenträgerbursting unterstützen, kann die Funktion durch eine der folgenden Methoden aktiviert werden:
 

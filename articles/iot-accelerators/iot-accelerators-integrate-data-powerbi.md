@@ -1,19 +1,19 @@
 ---
 title: Visualisieren von Remoteüberwachungsdaten mit Power BI – Azure | Microsoft-Dokumentation
-description: In diesem Tutorial werden Daten aus einer Remoteüberwachungslösung unter Verwendung von Power BI Desktop und Cosmos DB in eine benutzerdefinierte Visualisierung integriert. So können Benutzer ihre eigenen benutzerdefinierten Dashboards erstellen und sie mit Benutzern teilen, die die Lösung nicht verwenden.
-author: asdonald
+description: In diesem Tutorial werden Daten aus einer Remoteüberwachungslösung mithilfe von Power BI Desktop und Cosmos DB in eine benutzerdefinierte Visualisierung integriert. So können Benutzer ihre eigenen benutzerdefinierten Dashboards erstellen und sie mit Benutzern teilen, die die Lösung nicht verwenden.
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61448130"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184239"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Visualisieren von Remoteüberwachungsdaten mit Power BI
 
@@ -28,7 +28,7 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie die Daten Ihrer Re
 
 ## <a name="information-needed-from-azure-portal"></a>Erforderliche Informationen aus dem Azure-Portal
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich an (falls erforderlich).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich ggf. an.
 
 2. Klicken Sie im linken Bereich auf „Ressourcengruppen“.
 

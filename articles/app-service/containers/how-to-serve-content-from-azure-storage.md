@@ -1,23 +1,20 @@
 ---
-title: Bereitstellen von Inhalt aus Azure Storage in Linux – App Service
-description: Informationen zum Konfigurieren und Bereitstellen von Inhalten aus Azure Storage in Azure App Service unter Linux.
-author: msangapu
-manager: jeconnoc
-ms.service: app-service
-ms.workload: web
+title: Anfügen benutzerdefinierter Speichercontainer unter Linux
+description: Erfahren Sie, wie Sie eine benutzerdefinierte Netzwerkfreigabe an einen Linux-Container in Azure App Service anfügen. Nutzen Sie Dateien in verschiedenen Apps, verwalten Sie statische Inhalte remote, greifen Sie lokal darauf zu u. v. m.
+author: msangapu-msft
 ms.topic: article
 ms.date: 2/04/2019
 ms.author: msangapu
-ms.openlocfilehash: 97c03ad294bba1f8a0285fff4595991ca0acc8b5
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 00c60edeefa5fd8d1304aa5fc301a3b0304f5ca3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018278"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671790"
 ---
-# <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Bereitstellen von Inhalt aus Azure Storage in App Service unter Linux
+# <a name="attach-azure-storage-containers-to-linux-containers"></a>Anfügen von Azure Storage Containern an Linux-Container
 
-Diese Anleitung verdeutlicht die Bereitstellen statischen Inhalts in App Service unter Linux mithilfe von [Azure Storage](/azure/storage/common/storage-introduction). Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, persistente Speicherung, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
+In dieser Anleitung wird gezeigt, wie Sie Netzwerkfreigaben mithilfe von [Azure Storage](/azure/storage/common/storage-introduction) in App Service für Linux anfügen. Zu den Vorteilen gehören sicherer Inhalt, die Portabilität des Inhalts, persistente Speicherung, Zugriff auf mehrere Apps und mehrere Übertragungsmethoden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

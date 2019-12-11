@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: iainfou
-ms.openlocfilehash: 50b142acb457d16abeb24f22d56b653a38aca76d
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70898244"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705407"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Überprüfen der Integrität einer verwalteten Azure Active Directory Domain Services-Domäne
 
@@ -29,7 +29,7 @@ In diesem Artikel wird gezeigt, wie Sie den Integritätsstatus von Azure AD DS a
 Der Integritätsstatus für eine verwaltete Azure AD DS-Domäne wird im Azure-Portal angezeigt. Neben Informationen zum Zeitpunkt der letzten Sicherung und Synchronisierung mit Azure AD finden Sie auch mögliche Warnungen, die auf ein Problem mit der Integrität der verwalteten Domäne hinweisen. Zum Anzeigen des Integritätsstatus für eine verwaltete Azure AD DS-Domäne führen Sie die folgenden Schritte aus:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus.
-1. Wählen Sie die verwaltete Azure AD DS-Domäne aus, z.B. *contoso.com*.
+1. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aadds.contoso.com*) aus.
 1. Wählen Sie links im Azure AD DS-Ressourcenfenster die Option **Integrität** aus. Der folgende Screenshot zeigt als Beispiel eine fehlerfreie verwaltete Azure AD DS-Domäne sowie den Status der letzten Sicherung und Synchronisierung mit Azure AD:
 
     ![Übersicht über die Seite „Integrität“ im Azure-Portal mit dem Azure Active Directory Domain Services-Status](./media/check-health/health-page.png)
@@ -53,7 +53,7 @@ Der Integritätsstatus für eine verwaltete Azure AD DS-Domäne gibt zwei Arten 
 
 Monitore sind Bereiche einer verwalteten Azure AD DS-Domäne, die in regelmäßigen Abständen überprüft werden. Wenn aktive Warnungen für die verwaltete Azure AD DS-Domäne vorhanden sind, kann dies dazu führen, dass einer der Monitore ein Problem meldet. Azure AD Domain Services überwacht derzeit die folgenden Bereiche:
 
-* Sicherung
+* Backup
 * Synchronisierung mit Azure AD
 
 #### <a name="backup-monitor"></a>Monitor „Sicherung“
@@ -63,14 +63,14 @@ Der Monitor „Sicherung“ überprüft, ob regelmäßige automatische Sicherung
 | Detailwert | Erklärung |
 | --- | --- |
 | Nie gesichert | Dieser Status ist für eine neu erstellte verwaltete Azure AD DS-Domäne normal. Die erste Sicherung sollte 24 Stunden nach der Bereitstellung der verwalteten Azure AD DS-Domäne erstellt werden. Wenn dieser Status weiterhin auftritt, [erstellen Sie eine Azure-Supportanfrage][azure-support]. |
-| Letzte Sicherung vor 1 bis 14 Tagen | Dieser Zeitbereich ist der erwartete Status für den Monitor „Sicherung“. In diesem Zeitraum sollten regelmäßige automatische Sicherungen erfolgen. |
-| Letzte Sicherung vor mehr als 14 Tagen | Ein Zeitraum von mehr als zwei Wochen weist auf ein Problem mit den regelmäßigen automatischen Sicherungen hin. Unter Umständen wird das Erstellen von Sicherungen für die verwaltete Azure AD DS-Domäne durch aktive kritische Warnungen verhindert. Beheben Sie alle aktiven Warnungen für die verwaltete Azure AD DS-Domäne. Wenn der Monitor „Sicherung“ den Status nicht aktualisiert und keine aktuelle Sicherung meldet, [erstellen Sie eine Azure-Supportanfrage][azure-support]. |
+| Last backup was taken 1 to 14 days ago (Letzte Sicherung vor 1 bis 14 Tagen) | Dieser Zeitbereich ist der erwartete Status für den Monitor „Sicherung“. In diesem Zeitraum sollten regelmäßige automatische Sicherungen erfolgen. |
+| Last backup was taken more than 14 days ago (Letzte Sicherung vor mehr als 14 Tagen) | Ein Zeitraum von mehr als zwei Wochen weist auf ein Problem mit den regelmäßigen automatischen Sicherungen hin. Unter Umständen wird das Erstellen von Sicherungen für die verwaltete Azure AD DS-Domäne durch aktive kritische Warnungen verhindert. Beheben Sie alle aktiven Warnungen für die verwaltete Azure AD DS-Domäne. Wenn der Monitor „Sicherung“ den Status nicht aktualisiert und keine aktuelle Sicherung meldet, [erstellen Sie eine Azure-Supportanfrage][azure-support]. |
 
 #### <a name="synchronization-with-azure-ad-monitor"></a>Monitor „Synchronisierung mit Azure AD“
 
 Eine verwaltete Azure AD DS-Domäne wird regelmäßig mit Azure Active Directory synchronisiert. Die Anzahl der Benutzer- und Gruppenobjekte sowie die Anzahl der seit der letzten Synchronisierung im Azure AD Verzeichnis vorgenommenen Änderungen wirken sich auf die Dauer der Synchronisierung aus. Wenn die verwaltete Azure AD DS-Domäne zuletzt vor mehr als drei Tagen synchronisiert wurde, überprüfen Sie, ob aktive Warnungen vorhanden sind, und beheben Sie diese. Wenn der Monitor „Synchronisierung“ den Status nicht aktualisiert und keine aktuelle Synchronisierung anzeigt, [erstellen Sie eine Azure-Supportanfrage][azure-support].
 
-### <a name="alerts"></a>Warnungen
+### <a name="alerts"></a>Alerts
 
 Warnungen werden für Probleme in einer verwalteten Azure AD DS-Domäne generiert, die behoben werden müssen, damit der Dienst ordnungsgemäß ausgeführt werden kann. Jede Warnung enthält eine Beschreibung des Problems sowie eine URL, unter der Sie eine Erläuterung der Schritte zur Behebung des Problems finden. Weitere Informationen zu möglichen Warnungen und deren Behebung finden Sie unter [Problembehandlung von Warnungen](troubleshoot-alerts.md).
 

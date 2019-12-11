@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 6ff996129cc140c9154edb8fb60840cd48017a5e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569813"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704288"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services (Vorschau)
 
@@ -82,7 +82,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 > Azure AD DS-Sicherheitsüberwachungen gelten nicht rückwirkend. Sie können also keine Ereignisse aus der Vergangenheit abrufen oder wiedergeben. Azure AD DS kann nur Ereignisse senden, die nach der Aktivierung auftreten.
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne aus, z. B. *contoso.com*.
+1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aadds.contoso.com*) aus.
 1. Wählen Sie im Fenster „Azure AD DS“ auf der linken Seite **Diagnoseeinstellungen (Vorschau)** aus.
 1. Standardmäßig ist keine Diagnoseeinstellung konfiguriert. Wählen Sie als erstes **Diagnoseeinstellung hinzufügen** aus.
 

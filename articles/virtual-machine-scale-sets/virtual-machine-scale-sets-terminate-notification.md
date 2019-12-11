@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: 7269c76236b7cbe60995d84e85857da596bec961
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264677"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705924"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen (Vorschauversion)
 Für Skalierungsgruppeninstanzen kann der Empfang von Beendigungsbenachrichtigungen aktiviert und ein vordefiniertes Verzögerungstimeout für den Beendigungsvorgang festgelegt werden. Die Beendigungsbenachrichtigung wird über „Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)“ gesendet. Dieser Subdienst sendet Benachrichtigungen über die Durchführung und Verzögerung einschneidender Vorgänge, z. B. Neustarts und erneute Bereitstellungen. In der Vorschaulösung wurde der Scheduled Events-Liste mit „Terminate“ ein weiteres Ereignis hinzugefügt. Welche Verzögerung dem Beendigungsereignis zugeordnet wird, hängt von dem Verzögerungslimit ab, das der Benutzer in der Konfiguration des Skalierungsgruppenmodells festlegt.
@@ -67,7 +67,7 @@ Nachdem Sie *scheduledEventsProfile* für das Skalierungsgruppenmodell aktiviert
 >Beendigungsbenachrichtigungen für Skalierungsgruppeninstanzen können nur mit API-Version 2019-03-01 und höher aktiviert werden.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Beim Erstellen einer neuen Skalierungsgruppe können Sie Beendigungsbenachrichtigungen für die Skalierungsgruppe mithilfe des [New-AzVmssVM](/powershell/module/az.compute/new-azvmss)-Cmdlets aktivieren.
+Beim Erstellen einer neuen Skalierungsgruppe können Sie Beendigungsbenachrichtigungen für die Skalierungsgruppe mithilfe des Cmdlets [New-AzVmss](/powershell/module/az.compute/new-azvmss) aktivieren.
 
 ```azurepowershell-interactive
 New-AzVmss `
@@ -84,7 +84,7 @@ New-AzVmss `
 
 Im obigen Beispiel wird eine neue Skalierungsgruppe mit aktivierten Beendigungsbenachrichtigungen und einem Standardtimeout von fünf Minuten erstellt. Beim Erstellen einer neuen Skalierungsgruppe ist für den *TerminateScheduledEvents*-Parameter kein Wert erforderlich. Um den Timeoutwert zu ändern, geben Sie das gewünschte Timeout über den *TerminateScheduledEventNotBeforeTimeoutInMinutes*-Parameter an.
 
-Verwenden Sie das [Update-AzVmssVM](/powershell/module/az.compute/update-azvmss)-Cmdlet, um Beendigungsbenachrichtigungen für eine bestehende Skalierungsgruppe zu aktivieren.
+Verwenden Sie das Cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss), um Beendigungsbenachrichtigungen für eine bestehende Skalierungsgruppe zu aktivieren.
 
 ```azurepowershell-interactive
 Update-AzVmss `

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 6883d046078b5dccd2f1e83e87b41ca83edc92e3
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 2c3f733ad5af46c16a6880b8988754fd81ddabb0
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030603"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705547"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält eine Referenz für Situationen, in denen Sie vermuten, d
 
 ## <a name="solution"></a>Lösung
 
-Der in diesem Artikel beschriebene Prozess soll als Problemumgehung verwendet werden, damit Sie sich auf Ihre eigentliche Aufgabe konzentrieren können – die richtige Einrichtung der Firewallregeln. Es ist eine Microsoft Best Practice, die Windows Firewall-Komponente zu aktivieren. Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffsebene des virtuellen Computers ab.
+Der in diesem Artikel beschriebene Prozess soll als Problemumgehung verwendet werden, damit Sie sich auf Ihre eigentliche Aufgabe konzentrieren können – die richtige Einrichtung der Firewallregeln. Es ist eine bewährte Methode von Microsoft, die Windows Firewall-Komponente zu aktivieren. Wie Sie die Firewallregeln konfigurieren, hängt von der erforderlichen Zugriffsebene des virtuellen Computers ab.
 
 ### <a name="online-solutions"></a>Onlinelösungen 
 

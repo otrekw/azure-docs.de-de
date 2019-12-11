@@ -11,12 +11,12 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 715f891484458f3bf3febc6807c3490b88062d50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c9b4a15cd6cbae80d80407ba929bfbfa1402eeb5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229091"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689236"
 ---
 # <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Schneller Einstieg in Fivetran und SQL Data Warehouse
 
@@ -81,5 +81,5 @@ Um sich bei Fivetran anzumelden, geben Sie die Anmeldeinformationen ein, die Sie
 * Host (Ihr Servername).
 * Port.
 * Datenbank.
-* Benutzer (der Benutzername sollte **fivetran\@_Servername_** sein, wobei *Servername* Teil Ihres Azure-Host-URI ist: ***Servername*.database.windows.net**).
+* Benutzer (der Benutzername sollte **fivetran\@_Servername_** sein, wobei *Servername* Teil Ihres Azure-Host-URI ist: **_Server\_name_.database.windows.net**).
 * Password:

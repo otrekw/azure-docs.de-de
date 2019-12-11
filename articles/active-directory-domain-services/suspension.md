@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 31a1c7cd72d57b9c680452d5e84f8fe78f47cebb
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 106cd870a8ba52917ecabe6266bbb2c376296d79
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693314"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704272"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Grundlegendes zu den Integritätszuständen und dem Auflösen von angehaltenen Domänen in Azure Active Directory Domain Services
 
@@ -96,7 +96,7 @@ Sie sehen im Azure-Portal auf der Seite mit Informationen zur Integrität der Az
 Führen Sie die folgenden Schritte aus, um die Integrität einer von Azure AD DS verwalteten Domäne wiederherzustellen, die sich im Zustand *Angehalten* befindet:
 
 1. Suchen Sie im Azure-Portal nach dem Eintrag **Domain Services**, und wählen Sie ihn aus.
-1. Wählen Sie Ihre von Azure AD DS verwaltete Domäne aus der Liste aus, z.B. *contoso.com*. Wählen Sie dann **Integrität** aus.
+1. Wählen Sie in der Liste Ihre verwaltete Azure AD DS-Domäne (z. B. *aadds.contoso.com*) aus, und wählen Sie dann **Integrität** aus.
 1. Wählen Sie die Warnung aus,die je nach dem Grund für das Anhalten z.B. *AADDS503* oder *AADDS504* lautet.
 1. Wählen Sie den Auflösungslink in der Warnung, und führen Sie die Schritte zu deren Auflösung aus.
 

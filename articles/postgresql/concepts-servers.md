@@ -1,17 +1,17 @@
 ---
-title: Serverkonzepte in Azure Database for PostgreSQL (Einzelserver)
+title: Server – Azure Database for PostgreSQL (Einzelserver)
 description: Dieser Artikel enthält Überlegungen und Richtlinien zum Konfigurieren und Verwalten von Azure Database for PostgreSQL (Einzelserver).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bd7c24489e8ac7b26cb703923ddf9cbb741cfd68
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: d86170a53b4bfbe712bbca12db4d6063214aba21
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72029971"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768162"
 ---
 # <a name="azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL (Einzelserver)
 Dieser Artikel enthält Überlegungen und Richtlinien für die Arbeit mit Azure Database for PostgreSQL (Einzelserver).

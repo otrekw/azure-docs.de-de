@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 506eb38a2844ed8e8eb9739b116d7647bc1810ec
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806649"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480291"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>Verwalten von IoT Central über Azure PowerShell
 
@@ -61,28 +61,46 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe in der Region „East US“ (USA, Osten). In der folgenden Tabelle sind die Parameter beschrieben, die für den **New-AzIotCentralApp**-Befehl verwendet werden:
+Das Skript erstellt zuerst für die Anwendung eine Ressourcengruppe am Standort „USA, Osten“. In der folgenden Tabelle sind die Parameter beschrieben, die für den **New-AzIotCentralApp**-Befehl verwendet werden:
 
 |Parameter         |Beschreibung |
 |------------------|------------|
 |ResourceGroupName |Die Ressourcengruppe, die die Anwendung enthält. Diese Ressourcengruppe muss bereits in Ihrem Abonnement vorhanden sein. |
-|Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Derzeit können Sie eine IoT Central-Anwendung in den Regionen **USA, Osten**, **USA, Westen**, **Europa, Norden** oder **Europa, Westen** oder aber in den geografischen Regionen **Australien** oder **Asien, Osten** erstellen.  |
+|Location |Standardmäßig wird in diesem Cmdlet der Standort aus der Ressourcengruppe verwendet. Sie können derzeit eine IoT Central-Anwendung an den Standorten **USA**, **Australien**, **Asien, Osten** oder **Europa** erstellen.  |
 |NAME              |Der Name der Anwendung im Azure-Portal. |
 |Unterdomäne         |Die Unterdomäne in der URL der Anwendung. Im Beispiel lautet die Anwendungs-URL https://mysubdomain.azureiotcentral.com. |
 |Sku               |Zurzeit ist **S1** (Standard-Tarif) der einzige Wert. Weitere Informationen finden Sie unter [Azure IoT Central – Preise](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Vorlage          | Die zu verwendende Anwendungsvorlage. Weitere Informationen finden Sie in der Tabelle unten: |
 |DisplayName       |Der Name der Anwendung, wie er in der Benutzeroberfläche angezeigt wird. |
 
-**Anwendungsvorlagen**
+**Anwendungsvorlagen mit allgemein verfügbaren Funktionen**
 
-|Vorlagenname  |BESCHREIBUNG |
-|---------------|------------|
-|iotc-default@1.0.0 |Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
-|iotc-demo@1.0.0    |Erstellt eine Anwendung mit einer Gerätevorlage, die bereits für einen gekühlten Verkaufsautomaten erstellt wurde. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |
-|iotc-devkit-sample@1.0.0 |Erstellt eine Anwendung mit Gerätevorlagen, an die Sie ein MXChip- oder Raspberry Pi-Gerät anschließen können. Verwenden Sie diese Vorlage, wenn Sie als Geräteentwickler mit einem dieser Geräte experimentieren. |
+| Vorlagenname            | BESCHREIBUNG |
+| ------------------------ | ----------- |
+| iotc-default@1.0.0       | Erstellt eine leere Anwendung, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
+| iotc-demo@1.0.0          | Erstellt eine Anwendung mit einer Gerätevorlage, die bereits für einen gekühlten Verkaufsautomaten erstellt wurde. Verwenden Sie diese Vorlage, um mit der Erkundung von Azure IoT Central zu beginnen. |
+| iotc-devkit-sample@1.0.0 | Erstellt eine Anwendung mit Gerätevorlagen, an die Sie ein MXChip- oder Raspberry Pi-Gerät anschließen können. Verwenden Sie diese Vorlage, wenn Sie als Geräteentwickler mit einem dieser Geräte experimentieren. |
+
+
+**Anwendungsvorlagen mit öffentlichen Previewfunktionen**
+
+| Vorlagenname            | BESCHREIBUNG |
+| ------------------------ | ----------- |
+| iotc-pnp-preview@1.0.0   | Mit dieser Vorlage wird eine leere Plug & Play-Vorschauanwendung erstellt, die Sie mit Ihren eigenen Gerätevorlagen und Geräten füllen können. |
+| iotc-condition@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer In-Store-Analyse erstellt (Bedingungsüberwachungsvorlage). Verwenden Sie diese Vorlage, um eine Verbindung mit der Speicherumgebung herzustellen und sie zu überwachen. |
+| iotc-consumption@1.0.0   | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage zur Überwachung des Wasserverbrauchs erstellt. Verwenden Sie diese Vorlage, um den Wasserfluss zu überwachen und zu steuern. |
+| iotc-distribution@1.0.0  | Mit dieser Vorlage wird eine Anwendung mit Vorlage für die digitale Verteilung erstellt. Verwenden Sie diese Vorlage, um die Effizienz des Warenausgangs aus dem Lager durch die Digitalisierung wichtiger Ressourcen und Aktionen zu verbessern. |
+| iotc-inventory@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die intelligente Bestandsverwaltung erstellt. Verwenden Sie diese Vorlage, um Empfang, Produktbewegung, Zykluszählung und Nachverfolgung von Sensoren zu automatisieren. |
+| iotc-logistics@1.0.0     | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für vernetzte Logistik erstellt. Verwenden Sie diese Vorlage, um Ihre Sendung auf dem Luft-, Wasser- oder Landweg mit Standort- und Zustandsüberwachung in Echtzeit zu verfolgen. |
+| iotc-meter@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die intelligente Verbrauchseinheitenüberwachung erstellt. Verwenden Sie diese Vorlage zum Überwachen des Energieverbrauchs und des Netzwerkstatus, und identifizieren Sie Trends, um den Kundensupport und Verwaltungsvorgänge für intelligente Verbrauchseinheiten zu verbessern.  |
+| iotc-patient@1.0.0       | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die fortlaufende Patientenüberwachung erstellt. Verwenden Sie diese Vorlage, um die Patientenversorgung zu erweitern, Wiedereinweisungen zu vermeiden und Krankheiten zu behandeln. |
+| iotc-power@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für die Überwachung von Solarpaneln erstellt. Verwenden Sie diese Vorlage, um den Status von Solarpaneln zu überwachen und Trends bei der Energieerzeugung zu erkennen. |
+| iotc-quality@1.0.0       | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage zur Überwachung der Wasserqualität erstellt. Verwenden Sie diese Vorlage, um die Wasserqualität digital zu überwachen.|
+| iotc-store@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer In-Store-Analyse erstellt (Auftragsabschlussvorlage). Verwenden Sie diese Vorlage, um den Auftragsabschlussflow in Ihrem Unternehmen zu überwachen und zu verwalten. |
+| iotc-waste@1.0.0         | Mit dieser Vorlage wird eine Anwendung mit einer Vorlage für eine vernetzte Abfallwirtschaft erstellt. Verwenden Sie diese Vorlage, um Müllcontainer zu überwachen und Mitarbeiter für deren Leerung rechtzeitig loszuschicken. |
 
 > [!NOTE]
-> Die Vorlage **Vorschauanwendung** ist derzeit nur in den Regionen **Europa, Norden** und **USA, Mitte** verfügbar.
+> Die Vorlagen für Vorschauanwendungen sind derzeit nur an den Standorten **Europa** und **USA** verfügbar.
 
 ## <a name="view-your-iot-central-applications"></a>Anzeigen Ihrer IoT Central-Anwendungen
 

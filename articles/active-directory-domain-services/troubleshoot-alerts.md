@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 3286d3e786fc5b0e7a772f5b0e3caa3acf38671e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257944"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74703955"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Bekannte Probleme: Häufige Warnungen und deren Auflösung in Azure AD Domain Services
 
@@ -133,7 +133,7 @@ Azure AD DS erstellt bestimmte Ressourcen wie öffentliche IP-Adressen, NICs und
 
 Diese Warnung wird generiert, wenn eine dieser erforderlichen Ressourcen gelöscht wird. Wenn die Ressource vor weniger als 4 Stunden gelöscht wurde, besteht die Möglichkeit, dass die Azure-Plattform die gelöschte Ressource automatisch neu erstellen kann. In den folgenden Schritten wird beschrieben, wie Sie den Integritätsstatus und den Zeitstempel für das Löschen von Ressourcen überprüfen:
 
-1. Suchen Sie im Azure-Portal nach dem Eintrag **Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Azure AD DS-Domäne aus, z.B. *contoso.com*.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Azure AD DS-Domäne (z. B. *aadds.contoso.com*) aus.
 1. Wählen Sie im linken Navigationsbereich den Eintrag **Integrität** aus.
 1. Wählen Sie auf der Seite „Integrität“ die Warnung mit der ID *AADDS109* aus.
 1. Die Warnung enthält einen Zeitstempel für das erste Auftreten. Wenn dieser Zeitstempel vor weniger als 4 Stunden erstellt wurde, kann die Azure-Plattform die Ressource möglicherweise automatisch neu erstellen und die Warnung selbst auflösen.

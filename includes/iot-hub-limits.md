@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: 2d9549c88ace63997ff6d17568b6ba5131e8a15f
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 34de38e91d47457d215c7ebf65d04ed2dbae5324
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73083735"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224349"
 ---
 In der folgenden Tabelle sind die Grenzwerte aufgeführt, die den verschiedenen Dienstebenen S1, S2, S3 und F1 zugeordnet sind. Informationen zu den Kosten jeder *Einheit* finden Sie unter [Azure IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -41,9 +41,10 @@ Die folgende Tabelle enthält die für IoT Hub-Ressourcen geltenden Grenzwerte.
 | Maximale Warteschlangentiefe von der Cloud an das Gerät pro Gerät |50 |
 | Maximale Übermittlungsanzahl von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |100 |
 | Maximale Gültigkeitsdauer von Feedbacknachrichten <br/> als Reaktion auf eine Nachricht von der Cloud an das Gerät |2 Tage |
-| [Maximale Größe des Gerätezwillings](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) <br/> (Tags, gemeldete Eigenschaften und gewünschte Eigenschaften) | 8 KB |
-| Maximale Größe des Gerätezwilling-Zeichenfolgenwerts | 4 KB |
-| [Maximale Tiefe des Objekts im Gerätezwilling](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 5 |
+| [Maximale Größe des Gerätezwillings](../articles/iot-hub/iot-hub-devguide-device-twins.md#device-twin-size) | 8 KB für den Abschnitt „Tags“ sowie jeweils 32 KB für die Abschnitte „Gewünschte Eigenschaften“ und „Gemeldete Eigenschaften“ |
+| Maximale Länge des Zeichenfolgenschlüssels für den Gerätezwilling | 1 KB |
+| Maximale Länge des Zeichenfolgenwerts für den Gerätezwilling | 4 KB |
+| [Maximale Tiefe des Objekts im Gerätezwilling](../articles/iot-hub/iot-hub-devguide-device-twins.md#tags-and-properties-format) | 10 |
 | Maximale Größe der Nutzlast der direkten Methode | 128 KB |
 | Maximale Aufbewahrungsdauer des Auftragsverlaufs | 30 Tage |
 | Maximale Anzahl gleichzeitiger Aufträge | 10 (S3), 5 (S2), 1 (S1) |
