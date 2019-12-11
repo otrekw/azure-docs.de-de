@@ -4,19 +4,19 @@ description: Häufig gestellte Fragen und Antworten im Zusammenhang mit Azure Mu
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081549"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167769"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 
@@ -142,13 +142,11 @@ Wenn Ihre Organisation keine Legacyclients verwendet, sollten Sie die Erstellung
 >
 > App-Kennwörter werden nur für Apps benötigt, die keine moderne Authentifizierung unterstützen. Office 2013-Clients unterstützen moderne Authentifizierungsprotokolle, müssen aber konfiguriert werden. Die moderne Authentifizierung steht nun für alle Kunden zur Verfügung, die das Office 2013-Update vom März 2015 oder höher verwenden. Weitere Informationen finden Sie in dem Blogbeitrag [Updated Office 365 modern authentication (Aktualisierte moderne Authentifizierung in Office 365)](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/).
 
-**F: Meine Benutzer erhalten manchmal keine SMS, oder es tritt ein Timeout auf, nachdem sie auf eine bidirektionale SMS geantwortet haben.**
+**F: Meine Benutzer erhalten manchmal keine SMS, oder es tritt ein Timeout bei der Überprüfung auf.**
 
-Die Übermittlung von SMS und der Empfang von Antworten auf bidirektionale SMS können nicht garantiert werden, da die Zuverlässigkeit des Diensts durch unkontrollierbare Faktoren beeinträchtigt werden kann. Unter diese Faktoren fallen Bestimmungsland/-region, der Mobilfunkanbieter und die Signalstärke.
+Die Übermittlung von SMS-Nachrichten kann nicht garantiert werden, da die Zuverlässigkeit des Diensts durch unkontrollierbare Faktoren beeinträchtigt werden kann. Unter diese Faktoren fallen Bestimmungsland/-region, der Mobilfunkanbieter und die Signalstärke.
 
 Falls Ihre Benutzer häufig SMS-Empfangsprobleme haben, fordern Sie sie auf, die mobile App oder die Telefonanrufmethode zu verwenden. Die mobile App kann sowohl über Mobilfunk- als auch WLAN-Verbindungen Benachrichtigungen empfangen. Darüber hinaus kann die mobile App Überprüfungscodes auch dann generieren, wenn das Gerät noch gar kein Signal empfangen hat. Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) und [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) verfügbar.
-
-Wenn Sie Textnachrichten benutzen müssen, sollte nach Möglichkeit die unidirektionale SMS der bidirektionalen SMS vorgezogen werden. Das unidirektionale SMS-Verfahren ist zuverlässiger und verhindert, dass für die Benutzer zusätzliche SMS-Gebühren entstehen, wenn sie z.B. auf eine SMS antworten, die aus einem anderen Land / einer anderen Region gesendet wurde.
 
 **F: Kann ich ändern, wie lange meine Benutzer für die Eingabe des Überprüfungscodes aus einer SMS Zeit haben, bevor ein Timeout auftritt?**
 
@@ -162,7 +160,7 @@ Für unidirektionale SMS mit Azure MFA Server v7.0 oder höher können Sie die E
 >[!TIP] 
 >Wenn Sie über mehrere MFA-Server verfügen, ist der an den Benutzer gesendete Überprüfungscode nur demjenigen Server bekannt, der die ursprüngliche Authentifizierungsanforderung verarbeitet hat. Wenn der Benutzer den Code erfasst, muss die Authentifizierungsanforderung, mit der der Code überprüft wird, an denselben Server gesendet werden. Wird der Überprüfungscode an einen anderen Server gesendet, wird die Überprüfung verweigert. 
 
-Für bidirektionale SMS mit Azure MFA-Server können Sie die Zeitlimiteinstellung im MFA-Verwaltungsportal konfigurieren. Wenn die Benutzer nicht innerhalb des Zeiteinschränkungen auf die SMS antworten, wird ihre Authentifizierung verweigert. 
+Wenn die Benutzer nicht innerhalb des Zeiteinschränkungen auf die SMS antworten, wird ihre Authentifizierung verweigert. 
 
 Bei unidirektionalen SMS mit Azure MFA in der Cloud (auch AD FS-Adapter und Network Policy Server-Erweiterung) können Sie die Zeitlimiteinstellung nicht konfigurieren. Azure AD speichert den Überprüfungscode für 180 Sekunden. 
 

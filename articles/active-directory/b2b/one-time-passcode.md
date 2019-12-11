@@ -1,5 +1,5 @@
 ---
-title: Authentifizierung mit Einmalkennung für B2B-Gastbenutzer – Azure Active Directory | Microsoft-Dokumentation
+title: Authentifizierung mit Einmalkennung für B2B-Gastbenutzer – Azure AD
 description: Verwenden der Einmalkennung per E-Mail zum Authentifizieren von B2B-Gastbenutzern ohne Einrichten eines Microsoft-Kontos.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952860"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272324"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)
 

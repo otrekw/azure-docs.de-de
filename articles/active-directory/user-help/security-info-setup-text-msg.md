@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Sicherheitsinformationen (Vorschau) für SMS-Nachrichten – Azure AD
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe von SMS-Nachrichten auf Ihrem Mobilgerät zu bestätigen.
+title: Einrichten von SMS-Nachrichten als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie die Seite „Sicherheitsinformationen“ (Vorschau) einrichten, um Ihre Identität mithilfe von SMS-Nachrichten als Überprüfungsmethode zu verifizieren.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803834"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278920"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten
+# <a name="set-up-text-messaging-as-your-verification-method"></a>Einrichten von SMS-Nachrichten als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 

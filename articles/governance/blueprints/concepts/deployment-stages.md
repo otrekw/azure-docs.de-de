@@ -1,14 +1,14 @@
 ---
 title: Phasen einer Blaupausenbereitstellung
-description: Hier erfahren Sie, welche Schritte die Azure-Blaupausendienste während der Bereitstellung durchlaufen.
+description: Informieren Sie sich über die Schritte in Bezug auf Sicherheit und Artefakte, die von den Azure-Blaupausendiensten beim Erstellen einer Blaupausenzuweisung durchlaufen werden.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048611"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463549"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Phasen einer Blaupausenbereitstellung
 

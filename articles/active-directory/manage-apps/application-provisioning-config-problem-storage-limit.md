@@ -1,5 +1,5 @@
 ---
-title: Problem beim Speichern von Administratoranmeldeinformationen beim Konfigurieren einer Azure AD-Katalog-App | Microsoft-Dokumentation
+title: Problem beim Speichern von Administratoranmeldeinformationen beim Konfigurieren einer Azure AD-Katalog-App
 description: Problembehandlung für häufige Probleme beim Konfigurieren der Benutzerbereitstellung für eine bereits im Azure AD-Anwendungskatalog aufgeführte Anwendung
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 02/21/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 152b704ca597fb473a820124ee6147d6d9bc7845
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 77e48b8921a1ebe3affd981c068da7fa55fdf30f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381476"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275784"
 ---
 # <a name="problem-saving-administrator-credentials-while-configuring-user-provisioning-to-an-azure-active-directory-gallery-application"></a>Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung in einer Anwendung aus dem Azure Active Directory-Katalog 
 

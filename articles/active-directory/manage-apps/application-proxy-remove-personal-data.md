@@ -1,5 +1,5 @@
 ---
-title: Entfernen persönlicher Daten – Azure Active Directory-Anwendungsproxy | Microsoft-Dokumentation
+title: Entfernen persönlicher Daten – Azure Active Directory-Anwendungsproxy
 description: Entfernen persönlicher Daten von Connectors, die auf Geräten mit Azure Active Directory-Anwendungsproxy installiert sind
 documentationcenter: ''
 author: msmimart
@@ -15,12 +15,12 @@ ms.author: mimart
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ebb2a38e520c988ee7ca9a234aadd6ae2de4f0cb
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: fe97956d99bd5c677e499b532ef85a1bb4d324ef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807753"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275412"
 ---
 # <a name="remove-personal-data-for-azure-active-directory-application-proxy"></a>Entfernen persönlicher Daten für Azure Active Directory-Anwendungsproxy
 

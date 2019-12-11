@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111835"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74534310"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Erstellen von hochverfügbaren Azure Storage-Anwendungen mit zonenredundantem Speicher (GZRS): Vorschau
 
@@ -29,6 +29,7 @@ Nur Speicherkonten vom Typ „Allgemein v2“ unterstützen GZRS und RA-GZRS. We
 
 GZRS und RA-GZRS sind derzeit in den folgenden Regionen als Vorschau verfügbar:
 
+- Asien, Südosten
 - Europa, Norden
 - Europa, Westen
 - UK, Süden
@@ -84,6 +85,11 @@ Der RTO-Wert (Recovery Time Objective) ist eine Kennzahl dafür, wie lange es da
 ## <a name="migrate-a-storage-account-to-gzrs-or-ra-gzrs"></a>Migrieren eines Speicher Kontos zu GZRS oder RA-GZRS
 
 Sie können jedes vorhandenes Speicherkonto zu GZRS oder RA-GZRS migrieren. Die Migration von einem vorhandenen ZRS-Konto zu GZRS oder RA-GZRS ist einfach, während die Migration von einem LRS-, GRS-oder RA-GRS-Konto komplexer ist. In den folgenden Abschnitten wird beschrieben, wie die Migration in den einzelnen Fällen erfolgt.
+
+**Bekannte Einschränkungen**
+
+- Die Archivspeicherebene wird derzeit nicht für (RA-)GZRS-Konten unterstützt. Unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers) finden Sie weitere Details.
+- Verwaltete Datenträger unterstützen (RA-)GZRS nicht. Sie können Momentaufnahmen und Images für verwaltete SSD Standard-Datenträger auf HDD Standard Storage speichern und [zwischen LRS- und ZRS-Optionen wählen](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ### <a name="migrating-from-a-zrs-account"></a>Migrieren von einem ZRS-Konto
 

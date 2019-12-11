@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen eines persönlichen Microsoft-Kontos zu einer Authentifikator-App – Azure AD
-description: Hier finden Sie Informationen zum Hinzufügen Ihrer persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox LIVE) zur Microsoft Authenticator-App für die zweistufige Überprüfung.
+title: Hinzufügen eines persönlichen Microsoft-Kontos zur Microsoft Authenticator-App – Azure AD
+description: Fügen Sie der Microsoft Authenticator-App persönliche Microsoft-Konten (z. B. für Outlook.com oder Xbox LIVE) hinzu, um Ihre Identität mit der zweistufigen Überprüfung zu überprüfen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820237"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278902"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>Hinzufügen Ihrer persönlichen Microsoft-Konten
+# <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Hinzufügen persönlicher Microsoft-Konten zur Microsoft Authenticator-App
 
 Fügen Sie Ihre persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox LIVE) zur Microsoft Authenticator-App hinzu – sowohl für die standardmäßige zweistufige Überprüfung als auch für die Anmeldung per Telefon ohne Kennwort.
 

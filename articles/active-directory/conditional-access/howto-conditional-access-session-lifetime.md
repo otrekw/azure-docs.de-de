@@ -1,22 +1,22 @@
 ---
-title: Konfigurieren der Verwaltung von Authentifizierungssitzungen mit dem bedingten Zugriff in Azure Active Directory
+title: Konfigurieren der Verwaltung von Authentifizierungssitzungen – Azure Active Directory
 description: Anpassen der Konfiguration von Azure AD-Authentifizierungssitzungen einschließlich der Häufigkeit von Benutzeranmeldungen und Persistenz von Browsersitzungen
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 04/26/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb
+ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70de9da44d52bd6e93377776a2dbfc1b802dd412
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 797475bfe0f1ec077ad39c6fce1f0facdf679802
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241699"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483458"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -39,7 +39,17 @@ Die Standardkonfiguration von Azure Active Directory (Azure AD) sieht für die A
 
 Es klingt vielleicht beunruhigend, keine erneute Anmeldung von einem Benutzer zu fordern, tatsächlich wird die Sitzung bei einer Verletzung der IT-Richtlinien jedoch gesperrt. Einige Beispiele beinhalten u. a. eine Kennwortänderung, ein nicht kompatibles Gerät oder eine Kontodeaktivierung. Sie können [Benutzersitzungen auch explizit mit PowerShell sperren](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Die Standardkonfiguration von Azure AD basiert auf dem Grundprinzip „Benutzer nicht zur Angabe ihrer Anmeldeinformationen auffordern, solange der Sicherheitsstatus ihrer Sitzung unverändert ist“.
 
-Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardkonformer Implementierung des OAUTH2- oder OIDC-Protokolls. Die meisten nativen Microsoft-Apps für Windows, Mac und mobile Umgebungen sind mit der Einstellung kompatibel.
+Die Einstellung für die Anmeldehäufigkeit funktioniert bei Apps mit standardkonformer Implementierung des OAUTH2- oder OIDC-Protokolls. Die meisten nativen Microsoft-Apps für Windows, Mac und mobile Umgebungen, einschließlich der folgenden Webanwendungen, sind mit der Einstellung kompatibel.
+
+- Word, Excel, PowerPoint Online
+- OneNote Online
+- Office.com
+- O365-Verwaltungsportal
+- Exchange Online
+- SharePoint und OneDrive
+- Teams-Webclient
+- Dynamics CRM Online
+- Azure-Portal
 
 ## <a name="persistence-of-browsing-sessions"></a>Persistenz von Browsersitzungen
 

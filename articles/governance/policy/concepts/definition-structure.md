@@ -1,14 +1,14 @@
 ---
 title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
-ms.date: 11/04/2019
+ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6288a7d013256c39e83ee433e867d15f67c81e57
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 93b03622f03c095a61291f4a6d25284e5052c35a
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132824"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555179"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -394,6 +394,146 @@ Verwenden Sie stattdessen die [if()](../../../azure-resource-manager/resource-gr
 
 Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Namens**, bevor es versucht, einen `substring()` für einen Wert mit weniger als drei Zeichen abzurufen. Wenn der **Name** zu kurz ist, wird der Wert, der „nicht mit abc beginnt“, zurückgegeben und mit **abc** verglichen. Eine Ressource mit einem Kurznamen, der nicht mit **abc** beginnt, erzeugt zwar immer noch einen Fehler bei der Richtlinienregel, verursacht aber bei der Auswertung keinen Fehler mehr.
 
+### <a name="count"></a>Count
+
+Mithilfe eines **count**-Ausdrucks können Bedingungen erstellt werden, mit denen gezählt wird, wie viele Member eines Arrays in der Ressourcennutzlast einem Bedingungsausdruck entsprechen. Häufige Szenarien sind die Überprüfung, ob mindestens einer (at least one of), genau einer (exactly one of), alle (all of) oder keiner (none of) der Arraymember die Bedingung erfüllt. **count** wertet jeden Arraymember für einen Bedingungsausdruck aus und fasst die Ergebnisse mit dem Wert _true_ zusammen, die dann mit dem Ausdrucksoperator verglichen werden.
+
+Die Struktur des **count**-Ausdrucks sieht wie folgt aus:
+
+```json
+{
+    "count": {
+        "field": "<[*] alias>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Die folgenden Eigenschaften werden bei **count** verwendet:
+
+- **count.field** (erforderlich): Enthält den Pfad zum Array und muss ein Arrayalias sein. Wenn das Array fehlt, wird der Ausdruck ohne Berücksichtigung des Bedingungsausdrucks als _false_ ausgewertet.
+- **count.where** (optional): Der Bedingungsausdruck zum individuellen Auswerten der einzelnen Arraymember des Typs [\[\*\]-Alias](#understanding-the--alias) von **count.field**. Wenn diese Eigenschaft nicht angegeben wird, werden alle Arraymember mit dem Pfad „field“ als _true_ ausgewertet. Innerhalb dieser Eigenschaft kann eine beliebige [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
+  Es können [logische Operatoren](#logical-operators) innerhalb dieser Eigenschaft verwendet werden, um komplexe Auswertungsanforderungen zu erstellen.
+- **\<condition\>** (erforderlich): Der Wert wird mit der Anzahl der Elemente verglichen, die dem **count.where**-Bedingungsausdruck entsprachen. Es sollte eine numerische [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
+
+#### <a name="count-examples"></a>Beispiele für „count“
+
+Beispiel 1: Überprüfen, ob ein Array leer ist
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]"
+    },
+    "equals": 0
+}
+```
+
+Beispiel 2: Überprüfen, ob nur ein Arraymember dem Bedingungsausdruck entspricht
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My unique description"
+        }
+    },
+    "equals": 1
+}
+```
+
+Beispiel 3: Überprüfen, ob mindestens ein Arraymember dem Bedingungsausdruck entspricht
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "My common description"
+        }
+    },
+    "greaterOrEquals": 1
+}
+```
+
+Beispiel 4: Überprüfen, ob alle Objektarraymember dem Bedingungsausdruck entsprechen
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].description",
+            "equals": "description"
+        }
+    },
+    "equals": "[length(field(Microsoft.Network/networkSecurityGroups/securityRules[*]))]"
+}
+```
+
+Beispiel 5: Überprüfen, ob alle Zeichenfolgenarraymember dem Bedingungsausdruck entsprechen
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+            "like": "*@contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Beispiel 6: Verwenden von **field** innerhalb von **value**, um zu überprüfen, ob alle Arraymember dem Bedingungsausdruck entsprechen
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]",
+        "where": {
+            "value": "[last(split(first(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]')), '@'))]",
+            "equals": "contoso.com"
+        }
+    },
+    "equals": "[length(field('Microsoft.Sql/servers/securityAlertPolicies/emailAddresses[*]'))]"
+}
+```
+
+Beispiel 7: Überprüfen, ob mindestens ein Arraymember mehreren Eigenschaften im Bedingungsausdruck entspricht
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "where": {
+            "allOf": [
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                    "equals": "Inbound"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                    "equals": "Allow"
+                },
+                {
+                    "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                    "equals": "3389"
+                }
+            ]
+        }
+    },
+    "greater": 0
+}
+```
+
 ### <a name="effect"></a>Wirkung
 
 Azure Policy unterstützt die folgenden Auswirkungstypen:
@@ -490,14 +630,15 @@ Die Liste der Aliase wächst ständig. Um zu ermitteln, welche Aliase derzeit vo
 
 ### <a name="understanding-the--alias"></a>Grundlegendes zum [*]-Alias
 
-Einige der verfügbaren Aliase weisen eine Version auf, die als „normaler“ Name angezeigt wird, an andere wird **[\*]** angefügt. Beispiel:
+Einige der verfügbaren Aliase weisen eine Version auf, die als „normaler“ Name angezeigt wird, an andere wird **\[\*\]** angefügt. Beispiel:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
 Bei einem „normalen“ Alias wird das Feld als einzelner Wert dargestellt. Dieses Feld ist für genaue Vergleichs-/Übereinstimmungsszenarios bestimmt, wenn der gesamte Wertesatz exakt der Definition entsprechen muss (nicht mehr und nicht weniger).
 
-Beim einem Alias mit Stern **[\*]** ist ein Vergleich mit dem Wert jedes einzelnen Elements im Array und mit bestimmten Eigenschaften der einzelnen Elemente möglich. Dieser Ansatz ermöglicht das Vergleichen von Elementeigenschaften bei Szenarios wie „if none of“, „if any of“ oder „if all of“. Mit **IpRules [\*]** würden Sie beispielsweise überprüfen, ob jede _action_ auf _Deny_ eingestellt ist, aber nicht darüber nachdenken, wie viele Regeln vorhanden sind oder welchen _Wert_ die IP-Adresse hat. Diese Beispielregel überprüft alle Übereinstimmungen von **IpRules[\*].Wert** mit **10.0.4.1** und wendet den **Effektttyp** nur dann an, wenn nicht mindestens eine Übereinstimmung gefunden wird:
+Bei einem **\[\*\]** -Alias ist ein Vergleich mit dem Wert jedes einzelnen Elements im Array und mit bestimmten Eigenschaften der einzelnen Elemente möglich. Dieser Ansatz ermöglicht das Vergleichen von Elementeigenschaften bei Szenarios wie „if none of“, „if any of“ oder „if all of“. Verwenden Sie für komplexere Szenarien den [count](#count)-Bedinugsausdruck. Mit **IpRules\[\*\]** würden Sie beispielsweise überprüfen, ob jede Aktion (_action_) auf _Deny_ eingestellt ist, aber nicht darüber nachdenken, wie viele Regeln vorhanden sind oder welchen Wert (_value_) die IP-Adresse hat.
+Diese Beispielregel überprüft alle Übereinstimmungen von **IpRules\[\*\].value** mit **10.0.4.1** und wendet **effectType** nur dann an, wenn nicht mindestens eine Übereinstimmung gefunden wird:
 
 ```json
 "policyRule": {
@@ -518,6 +659,8 @@ Beim einem Alias mit Stern **[\*]** ist ein Vergleich mit dem Wert jedes einzeln
     }
 }
 ```
+
+
 
 Weitere Informationen finden Sie unter [Auswerten eines Alias mit Stern [\*]](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
@@ -604,6 +747,6 @@ Im folgenden Beispiel wird veranschaulicht, wie eine Initiative zur Behandlung d
 - Sehen Sie sich die Beispiele unter [Azure Policy-Beispiele](../samples/index.md) an.
 - Lesen Sie [Grundlegendes zu Richtlinienauswirkungen](effects.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

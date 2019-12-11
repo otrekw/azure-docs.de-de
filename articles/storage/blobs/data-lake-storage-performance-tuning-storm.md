@@ -1,21 +1,21 @@
 ---
-title: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Storm | Microsoft-Dokumentation
+title: 'Optimieren der Leistung: Storm, HDInsight und Azure Data Lake Storage Gen2 | Microsoft-Dokumentation'
 description: Leitlinien für die Leistungsoptimierung von Azure Data Lake Storage Gen2 Storm
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 108eeb03c0ed484e40b884372018bbbef686ee62
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159857"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327900"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Leitfaden zur Leistungsoptimierung für Storm in HDInsight und Azure Data Lake Storage Gen2
+# <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Optimieren der Leistung: Storm, HDInsight und Azure Data Lake Storage Gen2
 
 Es werden die Faktoren beschrieben, die berücksichtigt werden sollten, wenn Sie die Leistung einer Azure Storm-Topologie optimieren. Beispielsweise ist es wichtig, die Arbeitsschritte der Spouts und Bolts zu verstehen (ob der E/A- bzw. Arbeitsspeicheraufwand hoch ist). In diesem Artikel werden verschiedene Richtlinien der Leistungsoptimierung behandelt, z.B. die Problembehandlung für allgemeine Probleme.
 

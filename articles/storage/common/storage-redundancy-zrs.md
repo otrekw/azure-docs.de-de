@@ -9,12 +9,12 @@ ms.date: 06/28/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 0196e6fb4b2cd52fd66a26e07e8d4ce71983bc16
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a86d94110e78b7ace0e963469e9f236f7cc72ab4
+ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013189"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74555467"
 ---
 # <a name="zone-redundant-storage-zrs-for-building-highly-available-azure-storage-applications"></a>Zonenredundanter Speicher (ZRS) zum Erstellen hochverfügbarer Azure Storage-Anwendungen
 
@@ -22,15 +22,15 @@ ms.locfileid: "74013189"
 
 ## <a name="support-coverage-and-regional-availability"></a>Supportabdeckung und regionale Verfügbarkeit
 
-ZRS unterstützt derzeit Standardkonten vom Typ „Allgemein v2“ und Speicherkonten vom Typ „FileStorage“. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
+ZRS unterstützt derzeit Standardkonten vom Typ „Allgemein v2“ und Speicherkonten vom Typ „FileStorage“ und „BlockBlobStorage“. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md).
 
-ZRS ist für Blockblobs, Seitenblobs ohne Datenträger, Standarddateifreigaben, Tabellen und Warteschlangen verfügbar.
+ZRS-Konten vom Typ „Allgemein v2“ unterstützen Blockblobs, Seitenblobs ohne Datenträger, Standarddateifreigaben, Tabellen und Warteschlangen.
 
 Für Konten vom Typ „Allgemein v2“ ist ZRS allgemein in den folgenden Regionen verfügbar:
 
 - Asien, Südosten
-- Europa, Westen
 - Europa, Norden
+- Europa, Westen
 - Frankreich, Mitte
 - Japan, Osten
 - UK, Süden
@@ -39,7 +39,7 @@ Für Konten vom Typ „Allgemein v2“ ist ZRS allgemein in den folgenden Region
 - USA (Ost 2)
 - USA, Westen 2
 
-Für Konten vom Typ „FileStorage“ (Premium-Dateifreigaben) ist ZRS allgemein in den folgenden Regionen verfügbar:
+Für Konten vom Typ „FileStorage“ (Premium-Dateifreigaben) und „BlockBlobStorage“ (Premium-Blockblobs) ist ZRS allgemein in den folgenden Regionen verfügbar:
 
 - Europa, Westen
 - USA, Osten

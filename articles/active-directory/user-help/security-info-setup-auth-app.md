@@ -1,6 +1,6 @@
 ---
-title: Einrichten von Sicherheitsinformationen (Vorschau) für eine Authentifikator-App – Azure AD
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe der Microsoft Authenticator-App zu bestätigen.
+title: Einrichten der Microsoft Authenticator-App als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie die Seite „Sicherheitsinformationen“ (Vorschau) einrichten, um Ihre Identität mithilfe der Microsoft Authenticator-App als Überprüfungsmethode zu verifizieren.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19f44f4df9e3c17c376830c6a404a21e8a5d67b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73805087"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279066"
 ---
-# <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App
+# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Einrichten der Microsoft Authenticator-App als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 

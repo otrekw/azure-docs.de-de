@@ -1,17 +1,14 @@
 ---
 title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
-author: DCtheGeek
-ms.author: dacoulte
 ms.date: 09/30/2019
 ms.topic: conceptual
-ms.service: blueprints
-ms.openlocfilehash: 297c6a51c1f902cf7b5843b2dd47b658ebc705fd
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 00824ceed2e86683a86b172e529ba88704dbb050
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71981002"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210315"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -26,7 +23,7 @@ Das Modul muss hinzugefügt werden, um für Azure PowerShell das Verwalten von B
 Für das Azure Blueprints-Modul ist die folgende Software erforderlich:
 
 - Azure PowerShell 1.5.0 oder höher. Falls es noch nicht installiert ist, befolgen Sie [diese Anweisungen](/powershell/azure/install-az-ps).
-- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/gallery/installing-psget).
+- PowerShellGet 2.0.1 oder höher. Falls es nicht installiert oder aktuell ist, befolgen Sie [diese Anweisungen](/powershell/scripting/gallery/installing-psget).
 
 ### <a name="install-the-module"></a>Installieren des Moduls
 
@@ -42,7 +39,7 @@ Das Blueprints-Modul für PowerShell ist **Az.Blueprint**.
    > [!NOTE]
    > Falls bereits **Az.Accounts** installiert ist, muss unter Umständen `-AllowClobber` verwendet werden, um die Installation zu erzwingen.
 
-1. Vergewissern Sie sich, dass das Modul importiert wurde und die richtige Version (0.2.5) hat:
+1. Vergewissern Sie sich, dass das Modul importiert wurde und die richtige Version (0.2.6) hat:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.Blueprint module

@@ -1,22 +1,22 @@
 ---
-title: Erweiterte Szenarien mit Azure MFA-Server und Drittanbieter-VPNs – Azure Active Directory
+title: Azure MFA-Server und Drittanbieter-VPNs – Azure Active Directory
 description: Hier finden Sie Schritt-für-Schritt-Konfigurationsanleitungen für die Integration von Azure MFA-Server in Cisco, Citrix und Juniper.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f99df5daf559ef0d08b18104331c688503719e9b
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 50dc1d11b2a642e6569a74cb9052e09663f333d2
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68811795"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404094"
 ---
 # <a name="advanced-scenarios-with-azure-mfa-server-and-third-party-vpn-solutions"></a>Erweiterte Szenarien mit Azure MFA-Server und VPN-Lösungen von Drittanbietern
 

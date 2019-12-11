@@ -1,5 +1,5 @@
 ---
-title: Anzeigen des Dienstprinzipals einer verwalteten Identität über die Azure CLI
+title: Anzeigen des Dienstprinzipals einer verwalteten Identität – Azure CLI – Azure AD
 description: Schrittanleitungen zur Anzeige des Dienstprinzipals einer verwalteten Identität über die Azure CLI.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f379c78113a4edc1efc288617a8a1c205d03552a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ba60fdfefb5d741e92a56d2dc61eb058ac26b5ba
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60442283"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224609"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-azure-cli"></a>Anzeigen des Dienstprinzipals einer verwalteten Identität über die Azure CLI
 

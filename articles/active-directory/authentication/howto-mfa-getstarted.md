@@ -1,22 +1,22 @@
 ---
-title: Planen und Ausführen einer Azure Multi-Factor Authentication-Bereitstellung – Azure Active Directory
+title: Bereitstellen von Azure Multi-Factor Authentication – Azure Active Directory
 description: Microsoft Azure Multi-Factor Authentication – Bereitstellungsplanung
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22e3131a204589a506b2d5f1e2508c37ad3b4100
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 6e91a82442b2d436736719d629f70c8dec0e5a6c
+ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847219"
+ms.lasthandoff: 11/27/2019
+ms.locfileid: "74558553"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung
 
@@ -80,7 +80,7 @@ Einige der von Azure Active Directory Identity Protection erkannten Risikoerkenn
 
 ## <a name="define-network-locations"></a>Definieren von Netzwerkadressen
 
-Organisationen sollten den bedingten Zugriff verwenden, um ihr Netzwerk mithilfe von [benannten Orten](../conditional-access/location-condition.md#named-locations) zu definieren. Wenn Ihre Organisation Identity Protection verwendet, erwägen Sie die Nutzung risikobasierter Richtlinien statt benannter Orte.
+Wir empfehlen Organisationen, den bedingten Zugriff zu verwenden und ihr Netzwerk mithilfe von [benannten Orten](../conditional-access/location-condition.md#named-locations) zu definieren. Wenn Ihre Organisation Identity Protection verwendet, erwägen Sie die Nutzung risikobasierter Richtlinien statt benannter Orte.
 
 ### <a name="configuring-a-named-location"></a>Konfigurieren eines benannten Orts
 

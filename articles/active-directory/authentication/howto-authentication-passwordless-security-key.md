@@ -1,22 +1,22 @@
 ---
-title: Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei Azure AD (Vorschauversion) – Azure Active Directory
+title: Kennwortlose Anmeldung mit Sicherheitsschlüsseln (Vorschau) – Azure Active Directory
 description: Aktivieren der kennwortlosen Anmeldung mit FIDO2-Sicherheitsschlüsseln bei Azure AD (Vorschauversion)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50af82e79e7ba8b979ab28a1b3f608ec7e41bfb2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9f87f1b2561b65590dfe29d7d2c8d1318e3d35e1
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603445"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381855"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 

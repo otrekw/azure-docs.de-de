@@ -1,6 +1,6 @@
 ---
-title: 'Erstellen von App-Kennwörtern in Sicherheitsinfos (Vorschau): Azure AD'
-description: Richten Sie automatisch generierte Kennwörter (App-Kennwörter) ein, die in Ihrer Organisation mit nicht browserbasierten Apps oder mit Apps verwendet werden sollen, die keine zweistufige Überprüfung unterstützen. Dieses App-Kennwort ist kein normales Kennwort und kann auf der Seite „Sicherheitsinformationen“ eingerichtet werden.
+title: Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau) – Azure AD
+description: Erstellen Sie automatisch generierte Kennwörter (App-Kennwörter), die in Ihrer Organisation mit nicht browserbasierten Apps oder mit Apps verwendet werden sollen, die keine zweistufige Überprüfung unterstützen. Dieses App-Kennwort ist kein normales Kennwort und kann auf der Seite „Sicherheitsinformationen“ eingerichtet werden.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb26d90772fc9e3e3e506946363c76cf02e6b2ef
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee9f6bc1986cb31b1e21a0678e59bf8269988426
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820323"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231807"
 ---
-# <a name="create-app-passwords-from-your-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
 Bestimmte Apps wie z.B. Outlook 2010 unterstützen keine zweistufige Überprüfung. Das bedeutet, dass die App nicht funktioniert, wenn in Ihrer Organisation die zweistufige Überprüfung verwendet wird. Um dieses Problem zu umgehen, können Sie ein automatisch generiertes Kennwort für die Verwendung mit jeder Nicht-Browser-App separat von Ihrem normalen Kennwort erstellen.
 

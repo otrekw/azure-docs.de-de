@@ -1,5 +1,5 @@
 ---
-title: Veröffentlichen von Apps in getrennten Netzwerken mit Connectorgruppen im Azure AD-Anwendungsproxy | Microsoft-Dokumentation
+title: Veröffentlichen von Apps in separaten Netzwerken über Connectorgruppen – Azure AD
 description: Erläutert das Erstellen und Verwalten von Connectorgruppen im Azure AD-Anwendungsproxy.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381483"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275565"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
 
@@ -44,7 +44,7 @@ Erstellen Sie mit diesen Schritten beliebig viele Connectorgruppen.
 1. Wählen Sie **Azure Active Directory** > **Unternehmensanwendungen** > **Anwendungsproxy** aus.
 1. Wählen Sie **Neue Connectorgruppe**. Das Blatt „Neue Connectorgruppe“ wird geöffnet.
 
-   ![Zeigt den Auswahlbildschirm für eine neue Connectorgruppe](./media/application-proxy-connector-groups/new-group.png)
+   ![Zeigt den Bildschirm zum Auswählen einer neuen Connectorgruppe an](./media/application-proxy-connector-groups/new-group.png)
 
 1. Bennen Sie Ihre neue Connectorgruppe, und verwenden Sie das Dropdownmenü, um auszuwählen, welche Connectoren dieser Gruppe angehören sollen.
 1. Wählen Sie **Speichern** aus.
@@ -77,11 +77,11 @@ Für IaaS-Anwendungen mit Cloudzugriff bieten Connectorgruppen einen gemeinsamen
 
 Betrachten Sie z.B. eine Organisation, die über eine Reihe virtueller Computer verfügt, die über ein eigenes, per IaaS gehostetes virtuelles Netzwerk verbunden sind. Damit Mitarbeiter die Anwendungen verwenden können, sind diese privaten Netzwerke über Site-to-Site-VPN mit dem Unternehmensnetzwerk verbunden. Für Mitarbeiter, die vor Ort im lokalen Netzwerk arbeiten, funktioniert dieses Setup gut. Für Remotemitarbeiter ist die Konfiguration allerdings möglicherweise nicht ganz ideal, da sie weitere lokale Infrastruktur zum Weiterleiten des Zugriffs erfordert, wie in der folgenden Abbildung veranschaulicht:
 
-![Ein Diagramm, das das Azure AD IaaS-Netzwerk veranschaulicht](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
+![Diagramm zur Veranschaulichung des Azure AD IaaS-Netzwerks](./media/application-proxy-connector-groups/application-proxy-iaas-network.png)
   
 Mit Azure AD-Anwendungsproxy-Connectorgruppen können Sie einen gemeinsamen Dienst zum Sichern des Zugriffs auf alle Anwendungen verwenden, ohne weitere Abhängigkeiten in Ihrem Unternehmensnetzwerk einzuführen:
 
-![Mehrere Cloudanbieter für AzureAD-IaaS](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
+![Azure AD-IaaS – mehrere Cloudanbieter](./media/application-proxy-connector-groups/application-proxy-multiple-cloud-vendors.png)
 
 ### <a name="multi-forest--different-connector-groups-for-each-forest"></a>Mehrere Gesamtstrukturen – verschiedene Connectorgruppen für jede Gesamtstruktur
 
@@ -108,7 +108,7 @@ Im Folgenden finden Sie einige Beispiele, die Sie implementieren können, wie et
 
 Wenn Sie keine Connectorgruppen verwenden, sieht Ihre Konfiguration in etwa folgendermaßen aus:
 
-![Beispiel für Azure AD ohne Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
+![Beispiel: Azure AD ohne Connectorgruppen](./media/application-proxy-connector-groups/application-proxy-sample-config-1.png)
 
 Diese Konfiguration ist für kleine Bereitstellungen und Tests ausreichend. Sie funktioniert auch dann gut, wenn Ihre Organisation über eine flache Netzwerktopologie verfügt.
 
@@ -124,7 +124,7 @@ Bei der empfohlenen Konfiguration für große und komplexe Organisationen ist di
 
 Im folgenden Beispiel verfügt das Unternehmen über zwei Rechenzentren: A und B. Jeder Standort verfügt über zwei Connectors. In jedem Standort werden unterschiedliche Anwendungen ausgeführt.
 
-![Beispiel eines Unternehmens mit 2 Datencentern und 2 Connectors](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
+![Beispiel für ein Unternehmen mit zwei Rechenzentren und zwei Connectors](./media/application-proxy-connector-groups/application-proxy-sample-config-3.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

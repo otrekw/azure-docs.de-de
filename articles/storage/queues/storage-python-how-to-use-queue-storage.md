@@ -1,6 +1,6 @@
 ---
-title: 'Verwenden von Azure Queue Storage mit Python: Azure Storage'
-description: Erfahren Sie, wie Sie mit dem Azure-Warteschlangendienst mit Python Warteschlangen erstellen und löschen sowie Nachrichten einfügen, abrufen und löschen können.
+title: 'Verwenden von Azure Queue Storage v2.1 mit Python: Azure Storage'
+description: Erfahren Sie, wie Sie mit dem Azure-Warteschlangendienst v2.1 mit Python Warteschlangen erstellen und löschen sowie Nachrichten einfügen, abrufen und löschen können.
 author: mhopkins-msft
 ms.service: storage
 ms.author: mhopkins
@@ -9,14 +9,14 @@ ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 242ba7dbe4bfcc003899e95e76dc57d809dbc95a
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b5382a6a1ea381d57a026e9d42190152e38f7696
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72428008"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209522"
 ---
-# <a name="how-to-use-azure-queue-storage-from-python"></a>Verwenden von Azure Queue Storage mit Python
+# <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Verwenden von Azure Queue Storage v2.1 mit Python
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
@@ -41,7 +41,7 @@ Das [Azure Storage SDK für Python](https://github.com/azure/azure-storage-pytho
 Geben Sie für die Installation über Python Package Index (PyPI) folgenden Befehl ein:
 
 ```bash
-pip install azure-storage-queue
+pip install azure-storage-blob==2.1.0
 ```
 
 > [!NOTE]

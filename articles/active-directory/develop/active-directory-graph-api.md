@@ -12,31 +12,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0b677e9a8faf55f121d80f5a6112fbdaf78e6c0
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 30c1b5a3600c48dc548561df3cd2f955347a7e64
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853332"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533034"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory Graph-API
 
 > [!IMPORTANT]
->
-> Im Februar 2019 haben wir begonnen, einige frühere Versionen der Azure Active Directory Graph-API zugunsten der Microsoft Graph-API als veraltet zu markieren. 
->
-> Detaillierte Informationen, Updates und den Zeitrahmen finden Sie im Office Dev Center unter [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) (Microsoft Graph oder Azure AD Graph).
->
-> In Zukunft sollten Anwendungen die Microsoft Graph-API verwenden. 
+> Es wird dringend empfohlen, auf Azure Active Directory (Azure AD)-Ressourcen nicht mithilfe der Azure AD Graph-API, sondern mithilfe von [Microsoft Graph](https://developer.microsoft.com/graph) zuzugreifen. Unsere Entwicklungstätigkeiten konzentrieren sich nun auf Microsoft Graph, während für die Azure AD Graph-API keine weiteren Verbesserungen geplant sind. Es gibt nur eine sehr begrenzte Anzahl von Szenarien, in denen die Verwendung der Azure AD Graph-API möglicherweise weiterhin geeignet ist. Weitere Informationen finden Sie im Blogbeitrag [Microsoft Graph oder Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) und unter [Migrieren von Azure AD Graph-Apps zu Microsoft Graph](https://docs.microsoft.com/graph/migrate-azure-ad-graph-overview).
 
-
-
-Dieser Artikel gilt für die Azure AD Graph-API. Ähnliche Informationen bezogen auf die Microsoft Graph-API finden Sie unter [Verwenden der Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api). 
+Dieser Artikel gilt für die Azure AD Graph-API. Ähnliche Informationen bezogen auf die Microsoft Graph-API finden Sie unter [Verwenden der Microsoft Graph-API](https://docs.microsoft.com/graph/use-the-api).
 
 Die Azure Active Directory Graph-API ermöglicht programmgesteuerten Zugriff auf Azure AD über REST-API-Endpunkte. Anwendungen können die Azure AD Graph-API verwenden, um CRUD-Vorgänge (Erstellen, Lesen, Aktualisieren und Löschen) für Verzeichnisdaten und Objekte auszuführen. Die Azure AD Graph-API unterstützt beispielsweise die folgenden allgemeinen Vorgänge für ein Benutzerobjekt:
 

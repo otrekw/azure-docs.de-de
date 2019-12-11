@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 11/26/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, negoe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 975c7f18da9797305b0af3f81b00acca1ba14a1a
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e5a000d08afb3afba06d82aae4414e87b61e502f
+ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200317"
+ms.lasthandoff: 11/26/2019
+ms.locfileid: "74533058"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Gründe für eine Aktualisierung auf die Microsoft Identity Platform (v2.0)
 
@@ -62,9 +62,9 @@ Die Administratorzustimmung im Namen einer Organisation erfordert weiterhin die 
 
 ## <a name="scopes-not-resources"></a>Bereiche, keine Ressourcen
 
-Für Apps mit dem v1.0-Endpunkt kann sich eine App wie eine **Ressource** oder ein Empfänger von Token verhalten. Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth 2.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können. Betrachten Sie als Beispiel für eine Ressource die Azure AD Graph-API:
+Für Apps mit dem v1.0-Endpunkt kann sich eine App wie eine **Ressource** oder ein Empfänger von Token verhalten. Eine Ressource kann eine Anzahl von **Bereichen** oder **OAuth 2.0-Berechtigungen** definieren, die sie versteht, sodass Client-Apps Token für diese Ressource für einen bestimmten Satz von Bereichen anfordern können. Betrachten Sie die Microsoft Graph-API als Beispiel für eine Ressource:
 
-* Ressourcenbezeichner oder `AppID URI`: `https://graph.windows.net/`
+* Ressourcenbezeichner oder `AppID URI`: `https://graph.microsoft.com/`
 * Bereiche oder `oAuth2Permissions`: `Directory.Read`, `Directory.Write` usw.
 
 Dies gilt für den Microsoft Identity Platform-Endpunkt. Eine Anwendung kann sich immer noch als Ressource verhalten, Bereiche definieren und durch einen URI identifiziert werden. Clientanwendungen können immer noch den Zugriff auf diese Bereiche anfordern. Allerdings hat sich die Art und Weise geändert, wie ein Client solche Berechtigungen anfordert.

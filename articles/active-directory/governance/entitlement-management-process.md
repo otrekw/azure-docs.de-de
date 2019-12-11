@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/30/2019
+ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34d2c69cc808552a3b0c604804f3cd2597b379b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199952"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206911"
 ---
 # <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Anforderungsprozess und E-Mail-Benachrichtigungen in der Azure AD-Berechtigungsverwaltung
 
@@ -40,89 +40,115 @@ Ein Benutzer, der Zugriff auf ein Zugriffspaket benötigt, kann eine Zugriffsanf
 | Abgelaufen | Wenn keine der genehmigenden Personen die Anforderung innerhalb des Zeitlimits für die Genehmigungsanforderung genehmigt, läuft die Anforderung ab. In dem Fall muss der Benutzer seine Anforderung erneut senden. |
 | Verweigert | Eine genehmigende Person lehnt eine Anforderung ab. |
 | Genehmigt | Eine genehmigende Person genehmigt eine Anforderung. |
-| Übermitteln | Dem Benutzer wurde **noch kein** Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. Wenn es sich um einen externen Benutzer handelt, hat der Benutzer möglicherweise noch nicht auf das Ressourcenverzeichnis zugegriffen und die Zustimmungsaufforderung akzeptiert. |
+| Übermitteln | Dem Benutzer wurde **noch kein** Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. Wenn es sich um einen externen Benutzer handelt, hat der Benutzer möglicherweise noch nicht auf das Ressourcenverzeichnis zugegriffen. Außerdem hat er möglicherweise die Zustimmungsaufforderung noch nicht akzeptiert. |
 | Geliefert | Dem Benutzer wurde Zugriff auf alle Ressourcen im Zugriffspaket zugewiesen. |
 | Zugriff verlängern | Wenn in der Richtlinie Verlängerungen zulässig sind, hat der Benutzer die Zuweisung verlängert. |
 | Zugriff abgelaufen | Der Benutzerzugriff auf das Zugriffspaket ist abgelaufen. Um wieder Zugriff zu erhalten, muss der Benutzer eine Anforderung senden. |
 
 ## <a name="email-notifications"></a>E-Mail-Benachrichtigungen
 
-Wenn Sie eine genehmigende Person sind, werden Ihnen E-Mail-Benachrichtigungen gesendet, wenn Sie eine Zugriffsanforderung genehmigen müssen und wenn eine Zugriffsanforderung abgeschlossen wurde. Wenn Sie ein Anforderer sind, werden Ihnen E-Mail-Benachrichtigungen gesendet, die den Status Ihrer Anforderung angeben.
+Wenn Sie eine genehmigende Person sind, erhalten Sie E-Mail-Benachrichtigungen, wenn Sie eine Zugriffsanforderung genehmigen müssen. Außerdem erhalten Sie Benachrichtigungen, wenn eine Zugriffsanforderung abgeschlossen wurde. Wenn Sie ein Anforderer sind, erhalten Sie ebenfalls E-Mail-Benachrichtigungen, die den Status Ihrer Anforderung angeben.
 
-Die folgenden Diagramme zeigen, wann diese E-Mail-Benachrichtigungen an die genehmigenden Personen oder den Anforderer gesendet werden. Die entsprechende Nummer für die in den Diagrammen angezeigten E-Mail-Benachrichtigungen finden Sie in der [Tabelle der E-Mail-Benachrichtigungen](entitlement-management-process.md#email-notifications-table).
+Die folgenden Diagramme zeigen, wann diese E-Mail-Benachrichtigungen entweder an die genehmigenden Personen oder den Anforderer gesendet werden. Die entsprechende Nummer für die in den Diagrammen angezeigten E-Mail-Benachrichtigungen finden Sie in der [Tabelle der E-Mail-Benachrichtigungen](entitlement-management-process.md#email-notifications-table).
 
-### <a name="primary-approvers-and-alternate-approvers"></a>Primäre genehmigende Person und alternative genehmigende Personen
-Das folgende Diagramm zeigt den Ablauf für primäre genehmigende Personen und alternative genehmigende Personen sowie die E-Mail-Benachrichtigungen, die sie während des Anforderungsprozesses erhalten:
+### <a name="first-approvers-and-alternate-approvers"></a>Erste genehmigende Personen und alternative genehmigende Personen
+Das folgende Diagramm zeigt den Ablauf für erste und alternative genehmigende Personen sowie die E-Mail-Benachrichtigungen, die sie während des Anforderungsprozesses erhalten:
 
-![Ablauf für primäre genehmigende Personen und alternative genehmigende Personen](./media/entitlement-management-process/primary-approvers-and-alternate-with-escalation-flow.png)
+![Prozessablauf für erste und alternative genehmigende Personen](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Anforderer
 Das folgende Diagramm zeigt den Ablauf für die Anforderer sowie die E-Mail-Benachrichtigungen, die sie während des Anforderungsprozesses erhalten:
 
-![Ablauf für Anforderer](./media/entitlement-management-process/requestor-approval-and-expiration-request-flow.png)
+![Ablauf für Anforderer](./media/entitlement-management-process/requestor-approval-request-flow.png)
+
+### <a name="2-stage-approval"></a>Zweistufige Genehmigung
+Das folgende Diagramm zeigt den Ablauf für die genehmigenden Personen auf Stufe 1 und 2 sowie die E-Mail-Benachrichtigungen, die sie während des Anforderungsprozesses erhalten:
+
+![Ablauf des zweistufigen Genehmigungsprozesses](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
 
 ### <a name="email-notifications-table"></a>Tabelle der E-Mail-Benachrichtigungen
 Die folgende Tabelle enthält weitere Details zu den einzelnen E-Mail-Benachrichtigungen. Sie können zum Verwalten dieser E-Mails Regeln verwenden. Beispielsweise können Sie in Outlook Regeln erstellen, um die E-Mails in einen Ordner zu verschieben, wenn die Betreffzeile Wörter aus dieser Tabelle enthält:
 
 | # | E-Mail-Betreff | Sendeszenario | Gesendet an |
 | --- | --- | --- | --- |
-| 1 | Aktion erforderlich: Weitergeleitete Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an alternative genehmigende Personen der Stufe 1 gesendet (nachdem die Anforderung eskaliert wurde), um Maßnahmen zu ergreifen. | Alternative genehmigende Person der Stufe 1 |
-| 2 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an primäre genehmigende Personen der Stufe 1 gesendet (wenn die Eskalation deaktiviert wurde), um Maßnahmen zu ergreifen. | Primäre genehmigende Person der Stufe 1 |
-| 3 | Erinnerung: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an primäre genehmigende Personen der Stufe 1 gesendet (wenn die Eskalation deaktiviert wurde), um Maßnahmen zu ergreifen. Diese Erinnerung wird nur gesendet, wenn bisher keine Maßnahmen ergriffen wurden. | Primäre genehmigende Person der Stufe 1 |
-| 4 | Anforderung bis zum *[Datum]* um *[Uhrzeit]* genehmigen oder ablehnen | Diese E-Mail wird an primäre genehmigende Personen der Stufe 1 gesendet (wenn die Eskalation aktiviert wurde), um Maßnahmen zu ergreifen. | Primäre genehmigende Person der Stufe 1 |
-| 5 | Erinnerung – Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an primäre genehmigende Personen der Stufe 1 gesendet (wenn die Eskalation aktiviert wurde), um Maßnahmen zu ergreifen. Diese Erinnerung wird nur gesendet, wenn bisher keine Maßnahmen ergriffen wurden. | Primäre genehmigende Person der Stufe 1 |
-| 6 | Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird an primäre genehmigende Personen der Stufe 1 und/oder alternative genehmigende Personen der Stufe 1 einer einstufigen oder mehrstufigen Anforderung gesendet, nachdem die Anforderung abgelaufen ist. | Primäre genehmigende Person der Stufe 1, alternative genehmigende Person der Stufe 1 |
-| 7 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird an primäre genehmigende Personen der Stufe 1 und/oder alternative genehmigende Personen der Stufe 1 gesendet, wenn eine Anforderung abgeschlossen wurde. | Primäre genehmigende Person der Stufe 1, alternative genehmigende Person der Stufe 1 |
-| 8 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird für eine zweistufige Anforderung an primäre genehmigende Personen der Stufe 1 und/oder alternative genehmigende Personen der Stufe 1 gesendet, wenn nur Stufe 1 der Anforderung genehmigt wurde. | Primäre genehmigende Person der Stufe 1, alternative genehmigende Person der Stufe 1 |
-| 9 | Anforderung für *[Zugriffspaket]* abgelehnt | Diese E-Mail wird nur dann an den Anforderer gesendet, wenn die Anforderung abgelehnt wurde. | Anforderer |
-| 10 | Ihre Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird am Ende von Stufe 1 einer einstufigen oder mehrstufigen Anforderung an den Anforderer gesendet, nachdem die Anforderung abgelaufen ist. | Anforderer |
-| 18 | Sie haben jetzt Zugriff auf *[Zugriffspaket]* | Diese E-Mail wird an die Endbenutzer gesendet, sobald diese zugreifen können. | Anforderer |
-| 19 | Zugriff für *[Zugriffspaket]* bis *[Datum]* verlängern | Diese E-Mail wird an die Endbenutzer gesendet, bevor ihr Zugriff abläuft. | Anforderer |
+| 1 | Aktion erforderlich: Weitergeleitete Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an alternative genehmigende Personen auf Stufe 1 gesendet (nach Eskalieren der Anforderung), um Maßnahmen zu ergreifen. | Alternative genehmigende Personen auf Stufe 1 |
+| 2 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an die erste genehmigende Person gesendet (bei deaktivierter Eskalation), um Maßnahmen zu ergreifen. | Erste genehmigende Person |
+| 3 | Erinnerung: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die erste genehmigende Personen gesendet (bei deaktivierter Eskalation). In der E-Mail wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Erste genehmigende Person |
+| 4 | Anforderung bis zum *[Datum]* um *[Uhrzeit]* genehmigen oder ablehnen | Diese E-Mail wird an die erste genehmigende Person gesendet (bei aktivierter Eskalation), um Maßnahmen zu ergreifen. | Erste genehmigende Person |
+| 5 | Erinnerung – Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die erste genehmigende Person gesendet (bei aktivierter Eskalation). In der E-Mail wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Erste genehmigende Person |
+| 6 | Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird an die erste genehmigende Person und an die alternativen genehmigenden Personen auf Stufe 1 gesendet, nachdem die Anforderung abgelaufen ist. | Erste genehmigende Person, alternative genehmigende Personen auf Stufe 1 |
+| 7 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird an die erste genehmigende Person und an die alternativen genehmigenden Personen auf Stufe 1 gesendet, wenn die Anforderung abgeschlossen ist. | Erste genehmigende Person, alternative genehmigende Personen auf Stufe 1 |
+| 8 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird bei einer zweistufigen Anforderung an die erste genehmigende Person und alternative genehmigende Personen auf Stufe 1 gesendet, wenn die Anforderung auf Stufe 1 genehmigt wurde. | Erste genehmigende Person, alternative genehmigende Personen auf Stufe 1 |
+| 9 | Anforderung für *[Zugriffspaket]* abgelehnt | Diese E-Mail wird an den Anforderer gesendet, wenn seine Anforderung abgelehnt wurde. | Anforderer |
+| 10 | Ihre Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird am Ende einer Anforderung mit ein- oder zweistufiger Genehmigung an den Anforderer gesendet. In der E-Mail wird der Anforderer informiert, dass die Anforderung abgelaufen ist. | Anforderer |
+| 11 | Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an die zweite genehmigende Personen gesendet (bei deaktivierter Eskalation), um Maßnahmen zu ergreifen. | Zweite genehmigende Person |
+| 12 | Erinnerung – Aktion erforderlich: Anforderung bis zum *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die zweite genehmigende Person gesendet (bei deaktivierter Eskalation). In der Benachrichtigung wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Zweite genehmigende Person |
+| 13 | Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese E-Mail wird an die zweite genehmigende Person gesendet (bei aktivierter Eskalation), um Maßnahmen zu ergreifen. | Zweite genehmigende Person |
+| 14 | Erinnerung – Aktion erforderlich: Anforderung von *[Anforderer]* bis *[Datum]* genehmigen oder ablehnen | Diese Erinnerungs-E-Mail wird an die zweite genehmigende Personen gesendet (bei aktivierter Eskalation). In der Benachrichtigung wird sie aufgefordert, Maßnahmen zu ergreifen, sofern das noch nicht geschehen ist. | Zweite genehmigende Person |
+| 15 | Aktion erforderlich: Weitergeleitete Anforderung bis zum *[Datum]* genehmigen oder verweigern | Diese E-Mail wird an die alternativen genehmigenden Personen auf Stufe 2 gesendet (bei aktivierter Eskalation), um Maßnahmen zu ergreifen. | Alternative genehmigende Personen auf Stufe 2 |
+| 16 | Anforderung von *[Anforderer]* für *[Zugriffspaket]* genehmigt | Diese E-Mail wird an die zweite genehmigende Person und an die alternativen genehmigenden Personen auf Stufe 2 gesendet, wenn die Anforderung genehmigt wird. | Zweite genehmigende Person, alternative genehmigende Personen auf Stufe 2 |
+| 17 | Anforderung für *[Zugriffspaket]* ist abgelaufen | Diese E-Mail wird an die zweite genehmigende Person oder an alternative genehmigende Personen gesendet, nachdem die Anforderung abgelaufen ist. | Zweite genehmigende Person, alternative genehmigende Personen auf Stufe 2 |
+| 18 | Sie haben jetzt Zugriff auf *[Zugriffspaket]* | Diese E-Mail wird an die Endbenutzer gesendet, damit diese den Zugriff nutzen können. | Anforderer |
+| 19 | Zugriff für *[Zugriffspaket]* bis *[Datum]* verlängern | Diese E-Mail wird an die Endbenutzer gesendet, bevor deren Zugriff abläuft. | Anforderer |
 | 20 | Zugriff auf *[Zugriffspaket]* beendet | Diese E-Mail wird an die Endbenutzer gesendet, nachdem ihr Zugriff abgelaufen ist. | Anforderer |
 
 ### <a name="access-request-emails"></a>E-Mails zu Zugriffsanforderungen
 
-Wenn ein Anforderer eine Zugriffsanforderung für ein Zugriffspaket sendet, das eine Genehmigung erfordert, erhalten alle in der Richtlinie festgelegten genehmigenden Personen eine E-Mail-Benachrichtigung mit Details zur Anforderung. Zu den Details gehören der Name des Anforderers, die Organisation, das Start- und Enddatum für den Zugriff, (sofern angegeben) eine geschäftlichen Begründung sowie der Zeitpunkt der Anforderungsübermittlung und des Anforderungsablaufs.
+Wenn ein Anforderer eine Zugriffsanforderung für ein Zugriffspaket sendet, das eine Genehmigung erfordert, erhalten alle in der Richtlinie festgelegten genehmigenden Personen eine E-Mail-Benachrichtigung mit Details zur Anforderung. Die E-Mail enthält folgende Details: Name der Organisation des Anforderers und geschäftliche Begründung sowie Start- und Enddatum (sofern angegeben) des angeforderten Zugriffs. Zu den Details zählen auch Übermittlungs- und Ablaufzeitpunkt der Anforderung.
 
-Die E-Mail enthält einen Link, über den die genehmigenden Personen zu „Mein Zugriff“ wechseln können, um die Zugriffsanforderung zu genehmigen oder abzulehnen. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die an eine genehmigende Person gesendet wird, wenn ein Anforderer eine Zugriffsanforderung übermittelt:
+Die E-Mail enthält einen Link, über den die genehmigenden Personen zu „Mein Zugriff“ wechseln können, um die Zugriffsanforderung zu genehmigen oder abzulehnen. Hier finden Sie als Beispiel eine E-Mail-Benachrichtigung, die an die erste oder zweite genehmigende Person gesendet wird (wenn die zweistufige Genehmigung aktiviert ist), um eine Zugriffsanforderung abzuschließen:
 
 ![E-Mail für die Genehmigung der Anforderung zum Zugreifen auf ein Paket](./media/entitlement-management-shared/approver-request-email.png)
 
-Die primären genehmigenden Personen erhalten ebenfalls eine E-Mail-Benachrichtigung mit einer Erinnerung, Maßnahmen in Bezug auf die Anforderung zu ergreifen und eine Entscheidung zu treffen. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die primäre genehmigende Personen als Erinnerung erhalten, um Maßnahmen zu ergreifen:
+Genehmigende Personen können auch eine Erinnerungs-E-Mail erhalten. In der E-Mail wird die genehmigende Person aufgefordert, eine Entscheidung bezüglich der Anforderung zu treffen. Hier sehen Sie als Beispiel eine E-Mail-Benachrichtigung, welche die genehmigende Person als Erinnerung an das Ergreifen von Maßnahmen erhält:
 
 ![Erinnerungs-E-Mail für Zugriffsanforderung](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approver-request-emails"></a>E-Mails an alternative genehmigende Personen für Anforderungen
+### <a name="alternate-approvers-request-emails"></a>E-Mails an alternative genehmigende Personen für Anforderungen
 
-Wenn (per Weiterleitungsrichtlinie) eine Weiterleitung an alternative genehmigende Personen aktiviert ist, wird die Anforderung weitergeleitet, wenn die Anforderung noch aussteht. Die alternative genehmigende Person erhält eine E-Mail-Benachrichtigung, um die Anforderung zu genehmigen oder abzulehnen. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die die alternative genehmigende Person erhält:
+Wenn die Einstellung für alternative genehmigende Personen aktiviert ist und die Anforderung noch aussteht, wird sie weitergeleitet. Alternative genehmigende Personen erhalten eine E-Mail, um die Anforderung zu genehmigen oder abzulehnen. Alternative genehmigende Personen können auf Stufe 1 und 2 aktiviert werden. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die die alternative genehmigende Person erhält:
 
-![E-Mail an alternative genehmigende Personen für Anforderungen](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![E-Mail an alternative genehmigende Personen für die Anforderung](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Sowohl die primären genehmigenden Personen als auch die alternativen genehmigenden Personen können die Anforderung genehmigen oder ablehnen.
+Sowohl die ersten genehmigenden Personen als auch die alternativen genehmigenden Personen können die Anforderung genehmigen oder ablehnen.
 
 ### <a name="approved-or-denied-emails"></a>E-Mails über Genehmigung oder Ablehnung
 
-Anforderer werden benachrichtigt, wenn ihre Zugriffsanforderung genehmigt wurde und für den Zugriff verfügbar ist oder wenn die Zugriffsanforderung abgelehnt wurde. Wenn eine genehmigende Person eine von einem Anforderer gesendete Zugriffsanforderung empfängt, kann sie die Zugriffsanforderung genehmigen oder ablehnen. Die genehmigende Person muss eine geschäftliche Begründung der Entscheidung hinzufügen. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die primäre oder alternative genehmigende Personen erhalten, nachdem eine Anforderung genehmigt wurde:
+ Wenn eine genehmigende Person eine von einem Anforderer gesendete Zugriffsanforderung empfängt, kann sie die Zugriffsanforderung genehmigen oder ablehnen. Die genehmigende Person muss eine geschäftliche Begründung der Entscheidung hinzufügen. Hier sehen Sie als Beispiel eine E-Mail, die nach dem Genehmigen einer Anforderung an erste oder alternative genehmigende Personen gesendet wird:
 
-![E-Mail zur Überprüfung einer Zugriffsanforderung](./media/entitlement-management-process/approver-request-email-approved.png)
+![E-Mail bei genehmigter Anforderung des Paketzugriffs](./media/entitlement-management-process/approver-request-email-approved.png)
 
-Wenn eine Zugriffsanforderung genehmigt und der Zugriff erteilt wurde, wird der Anforderer per E-Mail benachrichtigt, dass er nun Zugriff auf das Zugriffspaket hat. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die an einen Anforderer gesendet wird, wenn ihm Zugriff auf ein Zugriffspaket gewährt wurde:
+Wenn eine Zugriffsanforderung genehmigt und der Zugriff erteilt wurde, wird der Anforderer per E-Mail benachrichtigt, dass er nun Zugriff auf das Zugriffspaket hat. Hier sehen Sie als Beispiel eine E-Mail-Benachrichtigung, die an einen Anforderer gesendet wird, wenn ihm Zugriff auf ein Zugriffspaket gewährt wurde:
 
-![E-Mail über abgelaufene Zugriffsanforderung](./media/entitlement-management-process/requestor-email-approved.png)
+![E-Mail an Anforderer bei genehmigter Zugriffsanforderung](./media/entitlement-management-process/requestor-email-approved.png)
 
 Wenn eine Zugriffsanforderung abgelehnt wird, erhält der Anforderer eine E-Mail-Benachrichtigung. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die an einen Anforderer gesendet wird, wenn die Zugriffsanforderung abgelehnt wurde:
 
 ![E-Mail an Anforderer bei abgelehnter Anforderung](./media/entitlement-management-process/requestor-email-denied.png)
 
+### <a name="2-stage-approval-access-request-emails"></a>E-Mails bei Zugriffsanforderung mit zweistufiger Genehmigung
+
+Wenn die zweistufige Genehmigung aktiviert ist, müssen mindestens zwei genehmigende Personen (eine auf jeder Stufe) die Anforderung genehmigen, bevor der Anforderer Zugriff erhalten kann.
+
+Auf Stufe 1 erhält die erste genehmigende Person die E-Mail mit der Zugriffsanforderung und trifft eine Entscheidung. Wird die Anforderung genehmigt, erhalten alle ersten und alternativen genehmigenden Personen auf Stufe 1 (bei aktivierter Eskalation) eine Benachrichtigung, dass Stufe 1 abgeschlossen ist. Hier sehen Sie als Beispiel eine E-Mail-Benachrichtigung, die bei Abschluss von Stufe 1 gesendet wird:
+
+![E-Mail bei Zugriffsanforderung mit zweistufiger Genehmigung](./media/entitlement-management-process/approver-request-email-2stage.png)
+
+Nachdem die erste oder alternative genehmigende Person die Anforderung auf Stufe 1 genehmigt hat, beginnt Stufe 2. Auf Stufe 2 erhält die zweite genehmigende Person eine E-Mail-Benachrichtigung für die Zugriffsanforderung. Wenn sich die zweite genehmigende Person oder alternative genehmigende Personen auf Stufe 2 (bei aktivierter Eskalation) entscheidet, die Anforderung zu genehmigen oder abzulehnen, werden E-Mail-Benachrichtigungen an die erste und zweite genehmigende Person und alle alternativen genehmigenden Personen auf Stufe 1 und 2 sowie an den Anforderer gesendet.
+
 ### <a name="expired-access-request-emails"></a>E-Mails über abgelaufene Zugriffsanforderungen
 
 Zugriffsanforderungen können ablaufen, wenn keiner der genehmigenden Personen die Anforderung genehmigt oder abgelehnt hat. 
 
-Wenn die Anforderung das konfigurierte Ablaufdatum erreicht und abläuft, kann sie von den genehmigenden Personen nicht mehr genehmigt oder abgelehnt werden. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die an alle primäre und alternative genehmigende Person gesendet wird:
+Wenn die Anforderung das konfigurierte Ablaufdatum erreicht und abläuft, kann sie von den genehmigenden Personen nicht mehr genehmigt oder abgelehnt werden. Hier sehen Sie als Beispiel eine E-Mail-Benachrichtigung, die an alle ersten und zweiten (bei aktivierter zweistufiger Genehmigung) und alternative genehmigende Personen gesendet wird:
 
- ![E-Mail über abgelaufene Zugriffsanforderung an genehmigende Personen](./media/entitlement-management-process/approver-request-email-expired.png)
+![E-Mail über abgelaufene Zugriffsanforderung an genehmigende Personen](./media/entitlement-management-process/approver-request-email-expired.png)
 
- Der Anforderer erhält ebenfalls eine E-Mail-Benachrichtigung, um ihn darüber zu informieren, dass die Zugriffsanforderung abgelaufen ist und er die Zugriffsanforderung erneut senden muss. Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die ein Anforderer erhält, wenn die Zugriffsanforderung abgelaufen ist:
+Der Anforderer erhält ebenfalls eine E-Mail-Benachrichtigung, um ihn darüber zu informieren, dass die Zugriffsanforderung abgelaufen ist und er die Zugriffsanforderung erneut senden muss. Das folgende Diagramm zeigt den Ablauf für den Anforderer sowie die E-Mail-Benachrichtigungen, die er bei der Anforderung des erweiterten Zugriffs erhält:
+
+![Prozessablauf für den Anforderer des erweiterten Zugriffs](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+
+Hier sehen Sie ein Beispiel einer E-Mail-Benachrichtigung, die ein Anforderer erhält, wenn die Zugriffsanforderung abgelaufen ist:
 
 ![E-Mail über abgelaufene Zugriffsanforderung an Anforderer](./media/entitlement-management-process/requestor-email-request-expired.png)
 

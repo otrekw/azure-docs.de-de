@@ -1,5 +1,5 @@
 ---
-title: In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
+title: In vier Schritten zu einem starken Identitätsfundament – Azure AD
 description: In diesem Thema werden vier Schritte beschrieben, die Hybrididentitätskunden durchführen können, um eine sichere Identitätsgrundlage zu erstellen.
 services: active-directory
 author: martincoetzer
@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cd080602ec879affb3ece978f14d5afc33ef9d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: d3eb98f543e17981be0d5b9ab08fa4e146659b47
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73173085"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206776"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
