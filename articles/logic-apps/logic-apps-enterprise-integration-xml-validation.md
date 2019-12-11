@@ -1,20 +1,19 @@
 ---
-title: 'Überprüfen von XML für die B2B-Unternehmensintegration: Azure Logic Apps'
+title: Validieren von XML für die B2B-Unternehmensintegration
 description: Überprüfen von XML mithilfe von Schemas in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 7813dcb375ff4a123b1314f8f9db453b1f0b187e
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680231"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792163"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML für die B2B-Unternehmensintegration in Azure Logic Apps mit Enterprise Integration Pack
 

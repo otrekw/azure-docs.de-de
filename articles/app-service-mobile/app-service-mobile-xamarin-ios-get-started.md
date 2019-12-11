@@ -1,25 +1,17 @@
 ---
-title: Erste Schritte mit Azure Mobile App Service-Apps für Xamarin.iOS-Apps | Microsoft Docs
+title: Erste Schritte mit Xamarin.iOS-Apps
 description: Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung von Mobile Apps für die Xamarin.iOS-Entwicklung.
-services: app-service\mobile
-documentationcenter: xamarin
-author: elamalani
-manager: crdun
-editor: ''
 ms.assetid: 14428794-52ad-4b51-956c-deb296cafa34
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 06/25/2019
-ms.author: emalani
-ms.openlocfilehash: 14fb925896fc94def59b753711eb74f155b2e139
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 2bb13393a9f348d85ab9fc964b784ba4d4d6a783
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388356"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668618"
 ---
 # <a name="create-a-xamarinios-app"></a>Erstellen einer Xamarin.iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

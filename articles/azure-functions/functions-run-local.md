@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 8604df894367ccc25d7e9ffae4453a6b3080b7d8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24bee8ffe23d524553143b2097560979a39329d7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226701"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784713"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -517,7 +517,7 @@ Für diese Art von Streamingprotokollen müssen Sie für Ihre Funktions-App die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Azure Functions Core Tools ist ein [Open Source-Programm und wird auf GitHub gehostet](https://github.com/azure/azure-functions-cli).  
+Erfahren Sie, wie Sie Azure Functions mithilfe Azure Functions Core Tools entwickeln, testen und veröffentlichen: [Microsoft Learn-Modul](https://docs.microsoft.com/learn/modules/develop-test-deploy-azure-functions-with-core-tools/). Azure Functions Core Tools ist [Open Source und wird auf GitHub gehostet](https://github.com/azure/azure-functions-cli).  
 Um einen Fehler zu melden oder ein Feature anzufordern, [öffnen Sie ein GitHub-Problem](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->

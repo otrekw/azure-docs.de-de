@@ -1,21 +1,21 @@
 ---
-title: Zugreifen auf Serverprotokolle in Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle
-description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI-Befehlszeile auf die Serverprotokolle in Azure Database for MariaDB zugreifen.
-author: rachel-msft
-ms.author: raagyema
+title: Zugreifen auf Protokolle zu langsamen Abfragen – Azure-Befehlszeilenschnittstelle – Azure Database for MariaDB
+description: In diesem Artikel wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle auf die Protokolle zu langsamen Abfragen in Azure Database for MariaDB zugreifen.
+author: ajlam
+ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.openlocfilehash: ffc724ef5133ee25643a966d2b6d8448a4c3a920
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: 32e73835732538813f90de5cb737429373c3762a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023614"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767380"
 ---
-# <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI
-Sie können die Serverprotokolle von Azure Database for MariaDB mithilfe der Azure CLI, dem Azure-Befehlszeilenprogramm, herunterladen.
+# <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI
+Sie können die Protokolle für langsame Abfragen von Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:

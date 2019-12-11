@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit OneDrive for Business – Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit OneDrive for Business
 description: Hochladen und Verwalten von Dateien mit OneDrive for Business-REST-APIs und Azure Logic Apps
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 08/18/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
 ms.suite: integration
+ms.reviewer: klam, logicappspm
+ms.topic: article
+ms.date: 08/18/2016
 tags: connectors
-ms.openlocfilehash: 87a162338cc67a3f2d2fc425bbcbefe2976661e5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48c819566db43e2f997309d1bea55a9436ec7085
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104917"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789449"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>Erste Schritte mit dem OneDrive for Business-Connector
 Stellen Sie eine Verbindung mit OneDrive for Business her und verwalten Sie dort Ihre Dateien. Sie mit den Dateien verschiedene Aktionen ausführen, z.B. Hochladen, Aktualisieren, Abrufen und Löschen.

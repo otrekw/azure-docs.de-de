@@ -1,18 +1,18 @@
 ---
-title: Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln für Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
+title: Verwalten von VNET-Endpunkten – Azure-Befehlszeilenschnittstelle – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle VNET-Dienstendpunkte und -Regeln für Azure Database for MariaDB erstellen und verwalten.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 02/26/2019
-ms.openlocfilehash: 5e0f2bb19e5c753c5b327781774d3fd96ec58592
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.date: 12/02/2019
+ms.openlocfilehash: eea6f6751f7e7f6ded1b1c7004115d101f1dcc94
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609845"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764336"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln für Azure Database for MariaDB mithilfe der Azure-Befehlszeilenschnittstelle
 

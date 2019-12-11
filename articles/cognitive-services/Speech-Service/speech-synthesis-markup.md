@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 3791b2d60b84299fc3b646f7e6585002078b607f
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6ffa17010f874eeb82fe8f4c367f0a0ac429979b
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350167"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815524"
 ---
 # <a name="speech-synthesis-markup-language-ssml"></a>Speech Synthesis Markup Language (SSML)
 
 Speech Synthesis Markup Language (SSML) ist eine XML-basierte Markupsprache, die Entwicklern ermöglicht, anzugeben, wie der Eingabetext mithilfe des Sprachsynthesediensts in synthetisierte Sprache konvertiert werden soll. Verglichen mit Nur-Text ermöglicht SSML Entwicklern, die Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und mehr für die Ausgabe der Sprachsynthese zu optimieren. Die normale Interpunktion, z.B. das Pausieren nach einem Punkt, oder die Verwendung der korrekten Intonation, wenn ein Satz mit einem Fragezeichen endet, werden automatisch verarbeitet.
 
-Die Speech Services-Implementierung von SSML basiert auf der [Markupsprache für Sprachsynthese, Version 1.0](https://www.w3.org/TR/speech-synthesis) des World Wide Web Consortiums.
+Die Speech-Dienstimplementierung von SSML basiert auf der [Markupsprache für Sprachsynthese, Version 1.0](https://www.w3.org/TR/speech-synthesis) des World Wide Web Consortiums.
 
 > [!IMPORTANT]
 > Chinesische, japanische und koreanische Zeichen zählen bei der Abrechnung jeweils als zwei Zeichen. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
@@ -120,7 +120,7 @@ Innerhalb des `speak`-Elements können Sie mehrere Stimmen für die Ausgabe der 
 > [!IMPORTANT]
 > Dieses Feature funktioniert nur bei neuronalen Stimmen.
 
-Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie die Sprechweise anpassen, um mit dem `<mstts:express-as>`-Element Fröhlichkeit, Einfühlungsvermögen oder Stimmung auszudrücken. Dies ist ein optionales Element und für Azure-Spracherkennungsdienste eindeutig.
+Standardmäßig synthetisiert der Sprachanalysedienst Text mithilfe einer neutralen Sprechweise sowohl bei Standard- als auch neuronalen Stimmen. Bei neuronalen Stimmen können Sie die Sprechweise anpassen, um mit dem `<mstts:express-as>`-Element Fröhlichkeit, Einfühlungsvermögen oder Stimmung auszudrücken. Dies ist ein optionales Element und für den Speech-Dienst eindeutig.
 
 Anpassungen der Sprechweise werden derzeit bei diesen neuronalen Stimmen unterstützt:
 * `en-US-JessaNeural`

@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: pabutler
-ms.openlocfilehash: 9aa41e63c275737874d57ba016e297a64f3eb124
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5219ff94b29d4fd02edb8567ae59884ced07b37e
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823019"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791349"
 ---
 # <a name="commercial-marketplace-transaction-capabilities-and-considerations"></a>Transaktionen auf dem kommerziellen Marketplace: Funktionen und Überlegungen
 
@@ -66,7 +66,7 @@ Abhängig von der verwendeten Transaktionsoption können die Softwarelizenzgebü
 
 * Nutzungsbasierte Bezahlung: Softwarelizenzgebühren werden basierend auf der verwendeten Azure-Infrastruktur als Preis pro Stunde und pro Kern (vCPU) ausgewiesen. Dies gilt nur für virtuelle Computer und Azure-Anwendungen.
 
-* • Abonnementpreise: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps und verwaltete Azure-Anwendungen.
+* Abonnementpreise: Softwarelizenzgebühren fallen als monatliche oder jährliche wiederkehrende Gebühren an, die als Pauschalgebühr oder pro Arbeitsplatz berechnet werden. Dies gilt nur für SaaS-Apps und verwaltete Azure-Anwendungen.
 
 * Kostenlose Testversion der Software: Keine Kosten für Softwarelizenzen für 30 bzw. 90 Tage.
 

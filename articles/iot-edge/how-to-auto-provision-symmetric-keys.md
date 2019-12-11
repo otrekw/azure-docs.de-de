@@ -1,5 +1,5 @@
 ---
-title: Automatische Bereitstellung von Geräten mit DPS mithilfe des Nachweises symmetrischer Schlüssel – Azure IoT Edge | Microsoft-Dokumentation
+title: Bereitstellen eines Geräts mithilfe des Nachweises des symmetrischen Schlüssels – Azure IoT Edge
 description: Verwenden des Nachweises symmetrischer Schlüssel zum Testen der automatischen Gerätebereitstellung für Azure IoT Edge mithilfe des Device Provisioning-Diensts
 author: kgremban
 manager: philmea
@@ -9,12 +9,12 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 53b1abca25119f4168aaf12a66c4347c53ed0a62
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c42d13f4d2e00b67a2ef471a07c80e1ef61e9c07
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828077"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666323"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mithilfe des Nachweises symmetrischer Schlüssel
 

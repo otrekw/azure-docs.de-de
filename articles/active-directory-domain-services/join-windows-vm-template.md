@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 9f35c9c3c6c974c79dc849425fc91b532aed4d22
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755700"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704993"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Informationen zum Einbinden eines virtuellen Windows Server-Computers in eine mit Azure Active Directory Domain Services verwaltete Domäne
 
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um eine Windows Server-VM zu erstellen u
     | Name des vorhandenen Subnetzes      | Der Name des vorhandenen Subnetzes des virtuellen Netzwerks, z. B. *Workloads*. |
     | Präfix der DNS-Bezeichnung          | Geben Sie einen DNS-Namen für die VM ein, z. B. *myvm*. |
     | Größe des virtuellen Computers                   | Geben Sie eine VM-Größe an, z. B. *Standard_DS2_v2*. |
-    | Domäne für den Beitritt            | Der DNS-Name der mit Azure AD DS verwalteten Domäne, z. B. *contoso.com*. |
+    | Domäne für den Beitritt            | Der DNS-Name der mit Azure AD DS verwalteten Domäne, z. B. *aadds.contoso.com*. |
     | Domänenbenutzername           | Das Benutzerkonto in der mit Azure AD DS verwalteten Domäne, das zum Einbinden der VM in die verwaltete Domäne verwendet werden soll. Dieses Konto muss Mitglied der Gruppe *Azure AD DC-Administratoren* sein. |
     | Domänenkennwort           | Das Kennwort des Benutzerkontos, das in der vorherigen Einstellung angegeben wurde. |
     | Optionaler OU-Pfad          | Die benutzerdefinierte Organisationseinheit, der die VM hinzugefügt wird. Wenn Sie für diesen Parameter keinen Wert angeben, wird die VM der Standardorganisationseinheit *AAD DC-Computer* hinzugefügt. |

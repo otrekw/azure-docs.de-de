@@ -1,17 +1,17 @@
 ---
-title: Verwenden von sys_schema zum Optimieren der Leistung und Verwalten von Azure Database for MySQL
+title: Verwenden von sys_schema – Azure Database for MySQL
 description: Erfahren Sie, wie Sie mit sys_schema Leistungsprobleme ermitteln und die Datenbank in Azure Database for MySQL verwalten können.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: troubleshooting
-ms.date: 08/01/2018
-ms.openlocfilehash: 7dc6b4744c74c56803127f63a8a6f29ca5a15090
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 50552b87fad9d8f58ff8c48dc03463d4c901bf99
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972789"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775944"
 ---
 # <a name="how-to-use-sys_schema-for-performance-tuning-and-database-maintenance-in-azure-database-for-mysql"></a>Verwenden von sys_schema zum Optimieren der Leistung und Datenbankwartung in Azure Database for MySQL
 

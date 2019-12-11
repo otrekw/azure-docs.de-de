@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/24/2019
-ms.openlocfilehash: 270bc5401e58f4e5c99cae3c5ab06b4f03ae9543
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 11/29/2019
+ms.openlocfilehash: 2bd25ad823217c5e9260142912a3d2d748b9c15a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123243"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767704"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>Verwenden von MirrorMaker zum Replizieren von Apache Kafka-Themen mit Kafka in HDInsight
 
@@ -80,17 +80,17 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
 1. Erstellen Sie virtuelle Netzwerkpeerings. Mit diesem Schritt werden zwei Peerings erstellt: eins von **kafka-primary-vnet** zu **kafka-secondary-vnet** und das andere von **kafka-secondary-vnet** zurück zu **kafka-primary-vnet**.
     1. Wählen Sie das virtuelle Netzwerk **kafka-primary-vnet** aus.
-    1. Klicken Sie unter **Einstellungen** auf **Peerings**.
-    1. Klicken Sie auf **Hinzufügen**.
+    1. Wählen Sie unter **Einstellungen** die Option **Peerings** aus.
+    1. Wählen Sie **Hinzufügen**.
     1. Geben Sie auf dem Bildschirm **Peering hinzufügen** die Informationen wie im Screenshot unten gezeigt ein.
 
         ![HDInsight Kafka – Hinzufügen von VNET-Peering](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)
 
 1. Konfigurieren der Ankündigung der IP-Adresse:
     1. Wechseln Sie zum Ambari-Dashboard für den primären Cluster: `https://PRIMARYCLUSTERNAME.azurehdinsight.net`.
-    1. Klicken Sie auf **Services** > **Kafka** (Dienste > Kafka). Klicken Sie auf die Registerkarte **Configs** .
-    1. Fügen Sie dem unteren Abschnitt **kafka-env template** folgende Konfigurationszeilen hinzu. Klicken Sie auf **Speichern**.
-    
+    1. Wählen Sie **Dienste** > **Kafka** aus. Wählen Sie die Registerkarte **Configs** aus.
+    1. Fügen Sie dem unteren Abschnitt **kafka-env template** folgende Konfigurationszeilen hinzu. Wählen Sie **Speichern** aus.
+
         ```
         # Configure Kafka to advertise IP addresses instead of FQDN
         IP_ADDRESS=$(hostname -i)
@@ -100,19 +100,19 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
         ```
 
     1. Geben Sie auf dem Bildschirm **Save Configuration** (Konfiguration speichern) einen Hinweis ein, und klicken Sie auf **Save** (Speichern).
-    1. Wenn eine Konfigurationswarnung angezeigt wird, klicken Sie auf **Proceed Anyway** (Trotzdem fortsetzen).
-    1. Klicken Sie bei **Save Configuration Changes** (Konfigurationsänderungen speichern) auf **OK**.
-    1. Klicken Sie in der Benachrichtigung **Restart Required** (Neustart erforderlich) auf **Restart** > **Restart All Affected** (Neustart > Alle betroffenen neu starten). Klicken Sie auf **Confirm Restart All** (Bestätigen: Alle neu starten).
+    1. Wenn eine Konfigurationswarnung angezeigt wird, klicken Sie auf **Proceed Anyway** (Trotzdem fortfahren).
+    1. Wählen Sie für **Save Configuration Changes** (Konfigurationsänderungen speichern) die Option **OK** aus.
+    1. Wählen Sie in der Benachrichtigung **Restart Required** (Neustart erforderlich) die Option **Restart** > **Restart All Affected** (Neustart > Alle betroffenen neu starten) aus. Wählen Sie **Confirm Restart All**.
 
         ![Apache Ambari – Neustarten aller betroffenen Instanzen](./media/apache-kafka-mirroring/ambari-restart-notification.png)
 
 1. Konfigurieren Sie Kafka zum Lauschen auf allen Netzwerkschnittstellen.
     1. Bleiben Sie auf der Registerkarte **Configs** (Konfigurationen) unter **Services** > **Kafka** (Dienste > Kafka). Legen Sie im Abschnitt **Kafka Broker** die Eigenschaft **listeners** auf `PLAINTEXT://0.0.0.0:9092` fest.
-    1. Klicken Sie auf **Speichern**.
-    1. Klicken Sie auf **Restart** (Neustart) und auf **Confirm Restart All** (Bestätigen: Alle neu starten).
+    1. Wählen Sie **Speichern** aus.
+    1. Wählen Sie **Restart** (Neustart) und **Confirm Restart All** (Bestätigen: Alle neu starten) aus.
 
 1. Notieren Sie sich die IP-Adressen der Broker und Zookeeper für den primären Cluster.
-    1. Klicken Sie auf dem Ambari-Dashboard auf **Hosts**.
+    1. Wählen Sie auf dem Ambari-Dashboard **Hosts** aus.
     1. Notieren Sie sich die IP-Adressen für Broker und Zookeeper. Die ersten beiden Buchstaben des Hostnamens lauten **wn** für die Brokerknoten und **zk** für die Zookeeperknoten.
 
         ![Apache Ambari – Ansicht mit IP-Adressknoten](./media/apache-kafka-mirroring/view-node-ip-addresses2.png)
@@ -127,24 +127,24 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
     ssh sshuser@PRIMARYCLUSTER-ssh.azurehdinsight.net
     ```
 
-    Ersetzen Sie **sshuser** durch den SSH-Benutzernamen, den Sie beim Erstellen des Clusters verwendet haben. Ersetzen Sie **BASENAME** durch den Basisnamen, der beim Erstellen des Clusters verwendet wurde.
+    Ersetzen Sie **sshuser** durch den SSH-Benutzernamen, den Sie beim Erstellen des Clusters verwendet haben. Ersetzen Sie **PRIMARYCLUSTER** durch den Basisnamen, den Sie beim Erstellen des Clusters verwendet haben.
 
     Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Verwenden Sie den folgenden Befehl, um eine Variable mit den Apache-Zookeeperhosts für den primären Cluster zu erstellen. Zeichenfolgen wie `ZOOKEEPER_IP_ADDRESS1` müssen durch die tatsächlichen IP-Adressen ersetzt werden, die Sie zuvor notiert haben, z.B. `10.23.0.11` und `10.23.0.7`. Wenn Sie die Auflösung von vollqualifizierten Domänennamen mit einem benutzerdefiniertem DNS-Server verwenden, führen Sie [diese Schritte](apache-kafka-get-started.md#getkafkainfo) aus, um die Namen der Broker und Zookeeper abzurufen:
+1. Verwenden Sie den folgenden Befehl, um eine Variable mit den Apache-Zookeeperhosts für den primären Cluster zu erstellen. Zeichenfolgen wie `ZOOKEEPER_IP_ADDRESS1` müssen durch die tatsächlichen IP-Adressen ersetzt werden, die Sie zuvor notiert haben, z.B. `10.23.0.11` und `10.23.0.7`. Wenn Sie die Auflösung von vollqualifizierten Domänennamen mit einem benutzerdefinierten DNS-Server durchführen, führen Sie [diese Schritte](apache-kafka-get-started.md#getkafkainfo) aus, um die Namen der Broker und ZooKeeper abzurufen:
 
     ```bash
     # get the zookeeper hosts for the primary cluster
     export PRIMARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181, ZOOKEEPER_IP_ADDRESS2:2181, ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-3. Um ein Thema mit Namen `testtopic` zu erstellen, nutzen Sie den folgenden Befehl:
+1. Um ein Thema mit Namen `testtopic` zu erstellen, nutzen Sie den folgenden Befehl:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $PRIMARY_ZKHOSTS
     ```
 
-3. Verwenden Sie den folgenden Befehl, um zu bestätigen, dass das Thema erstellt wurde:
+1. Verwenden Sie den folgenden Befehl, um zu bestätigen, dass das Thema erstellt wurde:
 
     ```bash
     /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $PRIMARY_ZKHOSTS
@@ -152,7 +152,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
     Die Antwort enthält `testtopic`.
 
-4. Verwenden Sie Folgendes, um die Informationen zum Zookeeperhost für diesen Cluster (den **primären** Cluster) anzuzeigen:
+1. Verwenden Sie Folgendes, um die Informationen zum Zookeeperhost für diesen Cluster (den **primären** Cluster) anzuzeigen:
 
     ```bash
     echo $PRIMARY_ZKHOSTS
@@ -176,7 +176,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
     Informationen hierzu finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Mit einer `consumer.properties`-Datei wird die Kommunikation mit dem **primären** Cluster konfiguriert. Verwenden Sie zum Erstellen der Datei den folgenden Befehl:
+1. Mit einer `consumer.properties`-Datei wird die Kommunikation mit dem **primären** Cluster konfiguriert. Verwenden Sie zum Erstellen der Datei den folgenden Befehl:
 
     ```bash
     nano consumer.properties
@@ -195,7 +195,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
     Drücken Sie zum Speichern der Datei **STRG+X**, **Y** und dann die **EINGABETASTE**.
 
-3. Bevor Sie den Producer konfigurieren, der mit dem sekundären Cluster kommuniziert, richten Sie eine Variable für die IP-Adressen der Broker des **sekundären** Clusters ein. Verwenden Sie die folgenden Befehle, um diese Variable zu erstellen:
+1. Bevor Sie den Producer konfigurieren, der mit dem sekundären Cluster kommuniziert, richten Sie eine Variable für die IP-Adressen der Broker des **sekundären** Clusters ein. Verwenden Sie die folgenden Befehle, um diese Variable zu erstellen:
 
     ```bash
     export SECONDARY_BROKERHOSTS='BROKER_IP_ADDRESS1:9092,BROKER_IP_ADDRESS2:9092,BROKER_IP_ADDRESS2:9092'
@@ -205,7 +205,7 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
     `10.23.0.14:9092,10.23.0.4:9092,10.23.0.12:9092`
 
-4. Eine `producer.properties`-Datei wird für die Kommunikation mit dem **sekundären** Cluster verwendet. Verwenden Sie zum Erstellen der Datei den folgenden Befehl:
+1. Eine `producer.properties`-Datei wird für die Kommunikation mit dem **sekundären** Cluster verwendet. Verwenden Sie zum Erstellen der Datei den folgenden Befehl:
 
     ```bash
     nano producer.properties
@@ -222,14 +222,14 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
     Weitere Informationen zur Producerkonfiguration finden Sie unter [Producer Configs](https://kafka.apache.org/documentation#producerconfigs) (Producerkonfigurationen) bei „kafka.apache.org“.
 
-5. Verwenden Sie die folgenden Befehle, um eine Umgebungsvariable mit den IP-Adressen der Zookeeperhosts für den sekundären Cluster zu erstellen:
+1. Verwenden Sie die folgenden Befehle, um eine Umgebungsvariable mit den IP-Adressen der Zookeeperhosts für den sekundären Cluster zu erstellen:
 
     ```bash
     # get the zookeeper hosts for the secondary cluster
     export SECONDARY_ZKHOSTS='ZOOKEEPER_IP_ADDRESS1:2181,ZOOKEEPER_IP_ADDRESS2:2181,ZOOKEEPER_IP_ADDRESS3:2181'
     ```
 
-7. Die Standardkonfiguration für Kafka auf HDInsight erlaubt keine automatische Erstellung von Themen. Bevor Sie mit der Spiegelung beginnen, müssen Sie sich für eine der folgenden Optionen entscheiden:
+1. Die Standardkonfiguration für Kafka auf HDInsight erlaubt keine automatische Erstellung von Themen. Bevor Sie mit der Spiegelung beginnen, müssen Sie sich für eine der folgenden Optionen entscheiden:
 
     * **Erstellen der Themen im sekundären Cluster**: Bei dieser Option haben Sie auch die Möglichkeit, die Anzahl von Partitionen und den Replikationsfaktor festzulegen.
 
@@ -247,9 +247,9 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
         1. Wechseln Sie zum Ambari-Dashboard für den sekundären Cluster: `https://SECONDARYCLUSTERNAME.azurehdinsight.net`.
         1. Klicken Sie auf **Services** > **Kafka** (Dienste > Kafka). Klicken Sie auf die Registerkarte **Configs** .
-        5. Geben Sie in das Feld __Filter__ den Wert `auto.create` ein. Dies filtert die Liste der Eigenschaften und zeigt die Einstellung `auto.create.topics.enable`.
-        6. Ändern Sie den Wert von `auto.create.topics.enable` in „true“, und wählen Sie dann __Speichern__. Fügen Sie einen Hinweis hinzu, und wählen Sie dann erneut __Speichern__.
-        7. Wählen Sie den Dienst __Kafka__, dann die Option __Neu starten__ und abschließend die Option __Neustart aller betroffenen__. Klicken Sie bei entsprechender Aufforderung auf __Neustart aller Dienste bestätigen__.
+        1. Geben Sie in das Feld __Filter__ den Wert `auto.create` ein. Dies filtert die Liste der Eigenschaften und zeigt die Einstellung `auto.create.topics.enable`.
+        1. Ändern Sie den Wert von `auto.create.topics.enable` in „true“, und wählen Sie dann __Speichern__. Fügen Sie einen Hinweis hinzu, und wählen Sie dann erneut __Speichern__.
+        1. Wählen Sie den Dienst __Kafka__, dann die Option __Neu starten__ und abschließend die Option __Neustart aller betroffenen__. Klicken Sie bei entsprechender Aufforderung auf __Neustart aller Dienste bestätigen__.
 
         ![Kafka – Aktivieren der automatischen Erstellung eines Themas](./media/apache-kafka-mirroring/kafka-enable-auto-create-topics.png)
 
@@ -263,13 +263,12 @@ In dieser Architektur befinden sich zwei Cluster in verschiedenen Ressourcengrup
 
     Die in diesem Beispiel verwendeten Parameter sind:
 
-    * **--consumer.config**: Gibt die Datei an, in der die Consumereigenschaften enthalten sind. Diese Eigenschaften werden verwendet, um einen Consumer zu erstellen, mit dem aus dem *primären* Kafka-Cluster gelesen wird.
-
-    * **--producer.config**: Gibt die Datei an, in der die Producereigenschaften enthalten sind. Diese Eigenschaften werden verwendet, um einen Producer zu erstellen, mit dem in den *sekundären* Kafka-Cluster geschrieben wird.
-
-    * **--whitelist**: Eine Liste mit Themen, die von MirrorMaker aus dem primären in den sekundären Cluster repliziert werden.
-
-    * **--num.streams**: Die Anzahl von Consumerthreads, die erstellt werden sollen.
+    |Parameter |BESCHREIBUNG |
+    |---|---|
+    |--consumer.config|Gibt die Datei an, in der die Consumereigenschaften enthalten sind. Diese Eigenschaften werden verwendet, um einen Consumer zu erstellen, mit dem aus dem *primären* Kafka-Cluster gelesen wird.|
+    |--producer.config|Gibt die Datei an, in der die Producereigenschaften enthalten sind. Diese Eigenschaften werden verwendet, um einen Producer zu erstellen, mit dem in den *sekundären* Kafka-Cluster geschrieben wird.|
+    |--whitelist|Eine Liste mit Themen, die von MirrorMaker aus dem primären in den sekundären Cluster repliziert werden.|
+    |--num.streams|Die Anzahl von Consumerthreads, die erstellt werden sollen.|
 
     Der Consumer auf dem sekundären Knoten wartet jetzt auf Nachrichten.
 

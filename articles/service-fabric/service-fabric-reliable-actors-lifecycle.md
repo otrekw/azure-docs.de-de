@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: f81fde441a2f0dc2504601f82e5b890eb6e216de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62105291"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706493"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-Lebenszyklus, automatische Garbage Collection und manuelles Löschen
 Ein Actor wird aktiviert, wenn zum ersten Mal eine seiner Methoden aufgerufen wird. Ein Actor wird deaktiviert (Garbage Collection durch die Actors-Laufzeit), wenn er innerhalb eines konfigurierbaren Zeitraums nicht verwendet wird. Ein Actor und sein Zustand können jederzeit auch manuell gelöscht werden.
@@ -94,7 +94,7 @@ public class Program
     }
 }
 ```
-Für jeden aktiven Actor verfolgt die Actors-Laufzeit die Zeitspanne, während der er sich im Leerlauf befand (d.h. nicht verwendet wurde). Die Actors-Laufzeit überprüft jeden Actor in einem festgelegten Abstand (`ScanIntervalInSeconds`), um festzustellen, ob eine Garbage Collection für ihn durchgeführt werden kann, und sammelt ihn auf, wenn er sich seit einem gewissen Zeitraum (`IdleTimeoutInSeconds`) im Leerlauf befindet.
+Für jeden aktiven Actor verfolgt die Actors-Laufzeit die Zeitspanne, während der er sich im Leerlauf befand (d.h. nicht verwendet wurde). Die Actors-Runtime überprüft jeden Akteur regelmäßig (`ScanIntervalInSeconds`), um festzustellen, ob eine Garbage Collection für ihn durchgeführt werden kann, und markiert ihn, wenn er sich seit einem gewissen Zeitraum (`IdleTimeoutInSeconds`) im Leerlauf befindet.
 
 Bei jeder Verwendung eines Actors wird seine Leerlaufzeit auf 0 zurückgesetzt. Danach kann für den Actor nur dann eine Garbage Collection ausgeführt werden, wenn er erneut `IdleTimeoutInSeconds`lang im Leerlauf bleibt. Denken Sie daran, dass ein Actor als verwendet gilt, wenn entweder eine Actor-Schnittstellenmethode oder ein Actor-Erinnerungsrückruf ausgeführt wird. Ein Actor gilt **nicht** als verwendet, wenn der Timer-Rückruf ausgeführt wird.
 

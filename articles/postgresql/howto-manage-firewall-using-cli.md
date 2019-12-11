@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwalten von Firewallregeln in Azure Database for PostgreSQL (Einzelserver) mit der Azure-Befehlszeilenschnittstelle
+title: Verwalten von Firewallregeln – Azure-Befehlszeilenschnittstelle – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI-Befehlszeile Firewallregeln in Azure Database for PostgreSQL (Einzelserver) erstellen und verwalten.
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 03b1c215994e4089ad0aed4eac3868b05c564c4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4af0fb288961689fb051bab8091c838f793cfcc3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067539"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765646"
 ---
 # <a name="create-and-manage-firewall-rules-in-azure-database-for-postgresql---single-server-using-azure-cli"></a>Erstellen und Verwalten von Firewallregeln in Azure Database for PostgreSQL (Einzelserver) mit der Azure-Befehlszeilenschnittstelle
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure-Datenbank für PostgreSQL-Server über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewallregeln für Azure-Datenbank für PostgreSQL finden Sie unter [Firewallregeln für Azure-Datenbank für PostgreSQL-Server](concepts-firewall-rules.md).

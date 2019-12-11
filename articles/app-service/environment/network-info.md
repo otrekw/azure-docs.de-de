@@ -1,24 +1,18 @@
 ---
-title: Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung – Azure
-description: In diesem Artikel wird der ASE-Netzwerkverkehr erläutert. Weiterhin wird darauf eingegangen, wie Sie mit Ihrer ASE NSGs und UDRs festlegen können
-services: app-service
-documentationcenter: na
+title: Überlegungen zum Netzwerkbetrieb
+description: Erfahren Sie etwas über den Netzwerkdatenverkehr in einer App Service-Umgebung (ASE) und das Festlegen von Netzwerksicherheitsgruppen und benutzerdefinierten Routen mit Ihrer ASE.
 author: ccompy
-manager: stefsch
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: ee7e3cb200a20b52a307dba31682a534e9f7b455
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7d181416123c96e2462180a82c6d0b9670ef5fc
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470644"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687124"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Überlegungen zum Netzwerkbetrieb in einer App Service-Umgebung #
 

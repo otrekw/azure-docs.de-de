@@ -4,17 +4,16 @@ description: Die Key Vault-Drosselung schränkt die Anzahl gleichzeitiger Aufruf
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
-tags: ''
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 05/10/2018
+ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f10f40551701cafd94692afc0916972b1fd73aff
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 28e79dffb206e8a62410bf3b4e0e239879b51224
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883050"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806676"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Anleitung zur Drosselung von Azure Key Vault
 
@@ -24,10 +23,34 @@ Die Grenzwerte für die Drosselung sind je nach Szenario unterschiedlich. So ist
 
 ## <a name="how-does-key-vault-handle-its-limits"></a>Wie geht Key Vault mit den Grenzen um?
 
-Bei Key Vault wird mithilfe von Diensteinschränkungen der Missbrauch von Ressourcen verhindert und die Qualität des Dienstes für alle Clients von Key Vault sichergestellt. Wenn der Schwellenwert für einen Dienst überschritten wird, begrenzt Key Vault weitere Anforderungen von diesem Client für eine bestimmte Zeitdauer. In diesem Fall gibt Key Vault den HTTP-Statuscode 429 (zu viele Anforderungen) zurück, und die Anforderungen schlagen fehl. Auch fehlgeschlagene Anforderungen, die 429 zurückgeben, zählen zu dem von Key Vault überwachten Drosselungsgrenzwert. 
+In Key Vault wird mithilfe von Diensteinschränkungen der Missbrauch von Ressourcen verhindert und die Qualität des Diensts für alle Clients von Key Vault sichergestellt. Wenn der Schwellenwert für einen Dienst überschritten wird, begrenzt Key Vault weitere Anforderungen von diesem Client für eine bestimmte Zeitdauer und gibt den HTTP-Statuscode 429 (Zu viele Anforderungen) zurück. Die Anforderung wird nicht ausgeführt. Anforderungen mit Fehlern, für die der Fehler 429 zurückgegeben wird, werden für den von Key Vault überwachten Drosselungsgrenzwert mitgezählt. 
+
+Key Vault wurde ursprünglich zum Speichern und Abrufen von Geheimnissen zum Zeitpunkt der Bereitstellung konzipiert.  Heute wird Key Vault aber auch zur Laufzeit zum Speichern und Abrufen von Geheimnissen verwendet. Außerdem soll Key Vault in Apps und Diensten häufig wie eine Datenbank verwendet werden.  Die aktuellen Grenzwerte unterstützen keine hohen Durchsatzraten.
+
+Key Vault wurde ursprünglich mit den unter [Grenzwerte des Azure Key Vault-Diensts](key-vault-service-limits.md) angegebenen Grenzwerten erstellt.  Zur Maximierung der Key Vault-Durchsatzraten werden hier einige empfohlene Richtlinien und bewährte Methoden genannt:
+1. Stellen Sie sicher, dass eine Drosselung eingerichtet ist.  Auf dem Client müssen Richtlinien für exponentielles Backoff für 429-Fehler berücksichtigt werden. Außerdem müssen Wiederholungsversuche entsprechend der folgenden Anleitung durchgeführt werden.
+1. Teilen Sie den Key Vault-Datenverkehr auf mehrere Tresore und verschiedene Regionen auf.   Verwenden Sie für jede Sicherheits- und Verfügbarkeitsdomäne einen separaten Tresor.   Bei fünf Apps in jeweils zwei Regionen empfiehlt sich die Verwendung von 10 Tresoren, die jeweils die für die App und die Region spezifischen Geheimnisse enthalten.  Für alle Transaktionstypen gilt als abonnementweiter Grenzwert das Fünffache des Grenzwerts der einzelnen Schlüsseltresore. „HSM – andere Transaktionen“ pro Abonnement ist beispielsweise auf 5.000 Transaktionen in 10 Sekunden pro Abonnent beschränkt. Sie können das Geheimnis in dem Dienst oder der App zwischenspeichern, um auch die RPS direkt im Schlüsseltresor zu reduzieren oder Datenverkehr mit Stoßzeiten zu verarbeiten.  Sie können den Datenverkehr auch zwischen verschiedenen Regionen aufteilen, sodass die Latenz minimiert und ein anderes Abonnement und sowie ein anderer Tresor verwendet werden.  Senden Sie nicht mehr Anforderungen als im Grenzwert des Abonnements angegeben an den Key Vault-Dienst in einer einzelnen Azure-Region.
+1. Sie sollten die aus Azure Key Vault abgerufenen Geheimnisse im Speicher zwischenspeichern und nach Möglichkeit aus dem Speicher wiederverwenden.  Erneutes Lesen aus Azure Key Vault sollte nur dann erfolgen, wenn die zwischengespeicherte Kopie nicht mehr funktioniert (z. B. weil sie in der Quelle ausgetauscht wurde). 
+1. Key Vault ist für die Geheimnisse Ihrer eigenen Dienste konzipiert.   Wenn Sie die Geheimnisse Ihrer Kunden speichern (insbesondere bei Schlüsselspeicherungen mit hohem Durchsatz), können Sie die Schlüssel in einer Datenbank oder einem Speicherkonto mit Verschlüsselung und nur den Hauptschlüssel in Azure Key Vault speichern.
+1. Das Verschlüsseln, Umschließen und Überprüfen von Vorgängen mit öffentlichen Schlüsseln kann ohne Zugriff auf Key Vault erfolgen, sodass sich nicht nur das Risiko einer Drosselung verringert, sondern auch die Zuverlässigkeit verbessert (solange Sie die öffentlichen Schlüssel ordnungsgemäß zwischenspeichern).
+1. Wenn Sie Key Vault zum Speichern von Anmeldeinformationen für einen Dienst verwenden, überprüfen Sie, ob der Dienst die AAD-Authentifizierung unterstützt, sodass die Authentifizierung direkt erfolgen kann. Dadurch wird die Last in Key Vault reduziert, die Zuverlässigkeit optimiert und der Code vereinfacht, da dann in Key Vault das AAD-Token verwendet werden kann.  Viele Dienste sind zur Verwendung der AAD-Authentifizierung übergegangen.  Die aktuelle Liste dieser Dienste finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources).
+1. Sie können die Auslastung und Bereitstellung über einen längeren Zeitraum staffeln, um die aktuellen RPS-Grenzwerte einzuhalten.
+1. Wenn Ihre App mehrere Knoten umfasst, die die gleichen Geheimnisse lesen müssen, empfiehlt sich eine Auffächerung, bei der eine Entität das Geheimnis aus Key Vault liest und an alle anderen Knoten verteilt.   Die abgerufenen Geheimnisse sollten nur im Speicher zwischengespeichert werden.
+Wenn die oben genannten Punkte noch nicht Ihren Anforderungen entsprechen, füllen Sie bitte die untenstehende Tabelle aus, und kontaktieren Sie uns, um zum ermitteln, welche zusätzlichen Kapazitäten hinzugefügt werden können. (Das Beispiel unten dient nur der Veranschaulichung.)
+
+| Name des Tresors | Region des Tresors | Objekttyp (Geheimnis, Schlüssel oder Zertifikat) | Vorgänge* | Schlüsseltyp | Schlüssellänge oder Kurve | HSM-Schlüssel?| RPS für gleichartige Auslastung erforderlich | RPS für Spitzenlasten erforderlich |
+|--|--|--|--|--|--|--|--|--|
+| https://mykeyvault.vault.azure.net/ | | Schlüssel | Signieren | EC | P-256 | Nein | 200 | 1000 |
+
+\* Eine vollständige Liste möglicher Werte finden Sie unter [Azure Key Vault-Vorgänge](/rest/api/keyvault/key-operations).
+
+Wenn zusätzliche Kapazität genehmigt wird, ist infolge der Kapazitätserweiterungen Folgendes zu beachten:
+1. Das Datenkonsistenzmodell ändert sich. Wenn ein Tresor mit zusätzlicher Durchsatzkapazität in einer Zulassungsliste aufgeführt ist, ändert sich die Datenkonsistenzgarantie des Key Vault-Diensts (notwendig, um RPS mit höherem Volumen zu ermöglichen, da der zugrunde liegende Azure Storage-Dienst nicht mithalten kann).  Kurz gesagt:
+  1. **Ohne Auflistung in Zulassungsliste:** Der Key Vault-Dienst übernimmt die Ergebnisse eines Schreibvorgangs (z. B. SecretSet, CreateKey) sofort in nachfolgenden Aufrufen (z. B. SecretGet, KeySign).
+  1. **Mit Auflistung in Zulassungsliste:** Der Key Vault-Dienst übernimmt die Ergebnisse eines Schreibvorgangs (z. B. SecretSet, CreateKey) innerhalb von 60 Sekunden in nachfolgenden Aufrufen (z. B. SecretGet, KeySign).
+1. Der Clientcode muss die Backoffrichtlinie für Wiederholungsversuche bei 429-Fehlern berücksichtigen. Mit dem Clientcode, mit dem der Key Vault-Dienst aufgerufen wird, dürfen Key Vault-Anforderungen beim Empfang eines 429-Antwortcodes nicht sofort wiederholt werden.  In dieser Anleitung zur Drosselung von Azure Key Vault wird empfohlen, ein exponentielles Backoff anzuwenden, wenn der HTTP-Antwortcode 429 zurückgegeben wird.
 
 Wenn bei Ihnen ein gültiger Geschäftsvorgang für höhere Drosselungsgrenzwerte vorliegt, wenden Sie sich bitte an uns.
-
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>Drosseln einer App als Reaktion auf Diensteinschränkungen
 
@@ -41,97 +64,24 @@ Verwenden Sie zur Implementierung der Fehlerbehandlung bei Ihrer App den HTTP-Fe
 
 Code zur Implementierung eines exponentiellen Backoffs wird unten dargestellt. 
 ```
-    public sealed class RetryWithExponentialBackoff
+SecretClientOptions options = new SecretClientOptions()
     {
-        private readonly int maxRetries, delayMilliseconds, maxDelayMilliseconds;
-
-        public RetryWithExponentialBackoff(int maxRetries = 50,
-            int delayMilliseconds = 200,
-            int maxDelayMilliseconds = 2000)
+        Retry =
         {
-            this.maxRetries = maxRetries;
-            this.delayMilliseconds = delayMilliseconds;
-            this.maxDelayMilliseconds = maxDelayMilliseconds;
-        }
-
-        public async Task RunAsync(Func<Task> func)
-        {
-            ExponentialBackoff backoff = new ExponentialBackoff(this.maxRetries,
-                this.delayMilliseconds,
-                this.maxDelayMilliseconds);
-            retry:
-            try
-            {
-                await func();
-            }
-            catch (Exception ex) when (ex is TimeoutException ||
-                ex is System.Net.Http.HttpRequestException)
-            {
-                Debug.WriteLine("Exception raised is: " +
-                    ex.GetType().ToString() +
-                    " –Message: " + ex.Message +
-                    " -- Inner Message: " +
-                    ex.InnerException.Message);
-                await backoff.Delay();
-                goto retry;
-            }
-        }
-    }
-
-    public struct ExponentialBackoff
-    {
-        private readonly int m_maxRetries, m_delayMilliseconds, m_maxDelayMilliseconds;
-        private int m_retries, m_pow;
-
-        public ExponentialBackoff(int maxRetries, int delayMilliseconds,
-            int maxDelayMilliseconds)
-        {
-            m_maxRetries = maxRetries;
-            m_delayMilliseconds = delayMilliseconds;
-            m_maxDelayMilliseconds = maxDelayMilliseconds;
-            m_retries = 0;
-            m_pow = 1;
-        }
-
-        public Task Delay()
-        {
-            if (m_retries == m_maxRetries)
-            {
-                throw new TimeoutException("Max retry attempts exceeded.");
-            }
-            ++m_retries;
-            if (m_retries < 31)
-            {
-                m_pow = m_pow << 1; // m_pow = Pow(2, m_retries - 1)
-            }
-            int delay = Math.Min(m_delayMilliseconds * (m_pow - 1) / 2,
-                m_maxDelayMilliseconds);
-            return Task.Delay(delay);
-        }
-    }
+            Delay= TimeSpan.FromSeconds(2),
+            MaxDelay = TimeSpan.FromSeconds(16),
+            MaxRetries = 5,
+            Mode = RetryMode.Exponential
+         }
+    };
+    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+                                 
+    //Retrieve Secret
+    secret = client.GetSecret(secretName);
 ```
 
 
-Die Verwendung dieses Codes in einer C\#-Clientanwendung ist einfach. Das folgende Beispiel zeigt dies mit der HttpClient-Klasse.
-
-```csharp
-public async Task<Cart> GetCartItems(int page)
-{
-    _apiClient = new HttpClient();
-    //
-    // Using HttpClient with Retry and Exponential Backoff
-    //
-    var retry = new RetryWithExponentialBackoff();
-    await retry.RunAsync(async () =>
-    {
-        // work with HttpClient call
-        dataString = await _apiClient.GetStringAsync(catalogUrl);
-    });
-    return JsonConvert.DeserializeObject<Cart>(dataString);
-}
-```
-
-Denken Sie daran, dass dieser Code nur als Proof of Concept geeignet ist. 
+Die Verwendung dieses Codes in einer C#-Clientanwendung ist einfach. 
 
 ### <a name="recommended-client-side-throttling-method"></a>Empfohlene Methode für die clientseitige Drosselungsmethode
 

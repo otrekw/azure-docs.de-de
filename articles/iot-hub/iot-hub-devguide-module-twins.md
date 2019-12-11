@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: cd0a9a66f3014a39a73cf04badfc67cd2ff4c3de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 064bfd7a51f3ccb0252f37fbaa11ebc122a4b97f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61363461"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807424"
 ---
 # <a name="understand-and-use-module-twins-in-iot-hub"></a>Verstehen und Verwenden von Modulzwillingen in IoT Hub
 
@@ -186,7 +186,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
     moduleId | ID des Moduls |
     hubName | Name des IoT Hub |
     operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-Zeitstempel des Vorgangs |
-    iothub-message-schema | deviceLifecycleNotification |
+    iothub-message-schema | twinChangeNotification |
     opType | "replaceTwin" oder "updateTwin" |
 
     Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
@@ -266,7 +266,7 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
 
 ## <a name="module-twin-size"></a>Größe des Modulzwillings
 
-IoT Hub erzwingt eine Größenbegrenzung von je 8 KB für die jeweiligen Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
+IoT Hub erzwingt eine Größenbeschränkung von 8 KB auf den Wert `tags` und eine Größenbeschränkung von jeweils 32 KB auf die Werte `properties/desired` und `properties/reported`. Diese Summen schließen keine schreibgeschützten Elemente ein.
 
 Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
 

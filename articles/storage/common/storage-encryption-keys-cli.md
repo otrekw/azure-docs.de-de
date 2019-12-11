@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe der Azure CLI
-description: Erfahren Sie, wie Sie die Azure CLI verwenden, um von Kunden verwaltete Schlüssel für die Azure Storage-Verschlüsselung zu konfigurieren. Mit von Kunden verwalteten Schlüsseln können Sie Zugriffssteuerungen erstellen, rotieren, deaktivieren und widerrufen.
+title: Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault mithilfe der Azure-Befehlszeilenschnittstelle – Azure Storage
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle von Kunden verwaltete Schlüssel mit Azure Key Vault für die Azure Storage-Verschlüsselung konfigurieren. Mit von Kunden verwalteten Schlüsseln können Sie Zugriffssteuerungen erstellen, rotieren, deaktivieren und widerrufen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 10/15/2019
+ms.topic: how-to
+ms.date: 12/03/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 18209816b5b73f58a8112efca0363b31dd47bd91
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: fd3b7767bad104f4074b2460ecba3fe89d5a23e1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374273"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806625"
 ---
-# <a name="configure-customer-managed-keys-for-azure-storage-encryption-from-azure-cli"></a>Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe der Azure CLI
+# <a name="configure-customer-managed-keys-for-azure-storage-by-using-azure-cli"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Azure Storage mithilfe der Azure-Befehlszeilenschnittstelle
 
 [!INCLUDE [storage-encryption-configure-keys-include](../../../includes/storage-encryption-configure-keys-include.md)]
 
-In diesem Artikel erfahren Sie, wie Sie einen Schlüsseltresor mit von Kunden verwalteten Schlüsseln mithilfe der Azure CLI konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie eine Azure Key Vault-Instanz mit von Kunden verwalteten Schlüsseln mithilfe der Azure-Befehlszeilenschnittstelle konfigurieren. Informationen zum Erstellen eines Schlüsseltresors über die Azure-Befehlszeilenschnittstelle finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe der Azure CLI](../../key-vault/quick-create-cli.md).
 
 > [!IMPORTANT]
 > Bei Verwendung kundenseitig verwalteter Schlüssel mit der Azure Storage-Verschlüsselung müssen für den Schlüsseltresor die beiden Eigenschaften **Vorläufiges Löschen** und **Nicht Bereinigen** festgelegt werden. Diese Eigenschaften sind standardmäßig nicht aktiviert. Um die Eigenschaften zu aktivieren, verwenden Sie entweder PowerShell oder Azure CLI.
@@ -91,7 +91,7 @@ az keyvault key create
 
 Die Azure Storage-Verschlüsselung verwendet standardmäßig von Microsoft verwaltete Schlüssel. Konfigurieren Sie Ihr Azure Storage-Konto für von Kunden verwaltete Schlüssel, und legen Sie fest, dass der Schlüssel dem Speicherkonto zugeordnet ist.
 
-Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um die Verschlüsselungseinstellungen der Speicherkontos zu aktualisieren. In diesem Beispiel werden außerdem der Schlüsseltresor-URI und die Schlüsselversion abgefragt. Beide dieser Werte sind erforderlich, um den Schlüssel dem Speicherkonto zuzuordnen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
+Rufen Sie [az storage account update](/cli/azure/storage/account#az-storage-account-update) auf, um die Verschlüsselungseinstellungen der Speicherkontos zu aktualisieren. In diesem Beispiel werden außerdem der Schlüsseltresor-URI und die neueste Schlüsselversion abgefragt. Beide Werte sind erforderlich, um den Schlüssel dem Speicherkonto zuzuordnen. Denken Sie daran, die Platzhalterwerte in den spitzen Klammern durch Ihre eigenen Werte zu ersetzen.
 
 ```azurecli-interactive
 key_vault_uri=$(az keyvault show \
@@ -102,7 +102,7 @@ key_vault_uri=$(az keyvault show \
 key_version=$(az keyvault key list-versions \
     --name <key> \
     --vault-name <key-vault> \
-    --query [].kid \
+    --query [-1].kid \
     --output tsv | cut -d '/' -f 6)
 az storage account update 
     --name <storage-account> \

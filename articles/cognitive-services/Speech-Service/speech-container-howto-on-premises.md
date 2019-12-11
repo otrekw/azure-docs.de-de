@@ -1,5 +1,5 @@
 ---
-title: Verwenden eines Containers für den Speech-Dienst mit Kubernetes und Helm
+title: Verwenden von Containern für den Speech-Dienst mit Kubernetes und Helm
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 42585ae09435e67b7cdea0b437681e2ce044ecd3
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b7f8b98e8241b4502c86cce8c893beb315767d55
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383649"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816496"
 ---
-# <a name="use-speech-service-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für den Speech-Dienst mit Kubernetes und Helm
+# <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>Verwenden von Containern für den Speech-Dienst mit Kubernetes und Helm
 
 Eine Möglichkeit zur lokalen Verwaltung Ihrer Speech-Container ist die Verwendung von Kubernetes und Helm. Hier erfahren Sie, wie Sie ein Kubernetes-Paket erstellen und dabei Kubernetes und Helm verwenden, um die Containerimages für Spracherkennung und Sprachsynthese zu definieren. Dieses Paket wird dann lokal für einen Kubernetes-Cluster bereitgestellt. Außerdem erfahren Sie, wie Sie die bereitgestellten Dienste testen, und es werden verschiedene Konfigurationsoptionen vorgestellt. Weitere Informationen zum Ausführen von Docker-Containern ohne Kubernetes-Orchestrierung finden Sie unter [Installieren und Ausführen von Containern für den Speech-Dienst](speech-container-howto.md).
 

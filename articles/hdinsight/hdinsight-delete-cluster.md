@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/17/2019
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a28d59cb35004fac6b069f2aa41042b4d46e443f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 11/29/2019
+ms.openlocfilehash: 2912777c001a36ec913e2cfd618091ada5aa107a
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091535"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807135"
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Löschen eines HDInsight-Clusters mithilfe von Browser, PowerShell oder Azure-Befehlszeilenschnittstelle
 
@@ -32,7 +32,7 @@ Die Abrechnung für einen HDInsight-Cluster beginnt, sobald der Cluster erstellt
 
     ![Schaltfläche zum Löschen des HDInsight-Clusters](./media/hdinsight-delete-cluster/hdinsight-delete-cluster.png)
 
-## <a name="azure-powershell-az-module"></a>Azure PowerShell Az-Modul
+## <a name="azure-powershell"></a>Azure PowerShell
 
 Ersetzen Sie im folgenden Code `CLUSTERNAME` durch den Namen Ihres HDInsight-Clusters. Geben Sie über eine PowerShell-Eingabeaufforderung den folgenden Befehl ein, um den Cluster zu löschen:
 

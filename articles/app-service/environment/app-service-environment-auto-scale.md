@@ -1,25 +1,18 @@
 ---
-title: Automatische Skalierung und App Service-Umgebung v1 – Azure
-description: Automatische Skalierung und App Service-Umgebung
-services: app-service
-documentationcenter: ''
+title: Automatische Skalierung v1
+description: Automatische Skalierung und App Service-Umgebung v1. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: btardif
-manager: erikre
-editor: ''
 ms.assetid: c23af2d8-d370-4b1f-9b3e-8782321ddccb
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f0c49e1835412b61817ff3571dd3ee1eaa29f21f
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 4f071c0d09fc2fa97eeea45bd82228b7eb8434a2
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070087"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687279"
 ---
 # <a name="autoscaling-and-app-service-environment-v1"></a>Automatische Skalierung und App Service-Umgebung v1
 

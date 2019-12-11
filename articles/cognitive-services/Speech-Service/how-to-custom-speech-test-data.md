@@ -1,5 +1,5 @@
 ---
-title: Vorbereiten von Testdaten für Custom Speech – Speech-Dienste
+title: Vorbereiten von Testdaten für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Ganz gleich, ob Sie die Genauigkeit der Microsoft-Spracherkennung testen oder Ihre eigenen Modelle trainieren möchten – Sie brauchen Daten (in Form von Audio und/oder Text). Auf dieser Seite werden die einzelnen Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 577a76b628e40b7651345698a46cba255b16a828
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b2d02ed5a9fb2cb10e4cf18fe7d878da5b032fe0
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464566"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816408"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -25,7 +25,7 @@ Ganz gleich, ob Sie die Genauigkeit der Microsoft-Spracherkennung testen oder Ih
 
 Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jeweilige Datentyp zu verwenden ist, und nennt die empfohlene Datenmenge. Nicht jeder Datentyp ist zum Erstellen eines Modells erforderlich. Die Datenanforderungen sind unterschiedlich, je nachdem, ob Sie einen Test erstellen oder ein Modell trainieren.
 
-| Datentyp | Für Tests verwendet | Menge | Für Training verwendet | Menge |
+| Datentyp | Für Tests verwendet | Empfohlene Menge | Für Training verwendet | Empfohlene Menge |
 |-----------|-----------------|----------|-------------------|----------|
 | [Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | Nicht zutreffend |
 | [Audio + menschenmarkierte Transkripte](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1 – 1.000 Stunden Audio |

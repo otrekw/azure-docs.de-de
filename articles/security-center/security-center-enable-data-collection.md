@@ -1,6 +1,6 @@
 ---
 title: Datensammlung in Azure Security Center | Microsoft-Dokumentation
-description: " Hier erfahren Sie, wie Sie die Datensammlung in Azure Security Center aktivieren. "
+description: Dieser Artikel beschreibt das Installieren eines Log Analytics Agent und Festlegen eines Log Analytics-Arbeitsbereichs, in dem die gesammelten Daten gespeichert werden.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,17 +8,17 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 8aa0adf03aef2085ed2374bcfc7ea774d002061c
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 795661912633f0d225aef4de8ea7620a8766e096
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162674"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766989"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Datensammlung in Azure Security Center
 Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Azure-fremden Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Analytics Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich. Beispiele für Daten dieser Art: Betriebssystemtyp und -version, Betriebssystemprotokolle (Windows-Ereignisprotokolle), ausgeführte Prozesse, Computername, IP-Adressen und angemeldeter Benutzer. Darüber hinaus kopiert der Log Analytics Agent Absturzabbilddateien in den Arbeitsbereich.
 
-Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, Aktivierung des Endpunktschutzes sowie Integrität und Bedrohungserkennung bereitzustellen. 
+Die Datensammlung ist erforderlich, um einen Einblick in fehlende Updates, falsch konfigurierte Sicherheitseinstellungen des Betriebssystems, den Status des Endpunktschutzes sowie die Integritäts- und Bedrohungserkennung bereitzustellen. 
 
 Dieser Artikel beschreibt das Installieren eines Log Analytics Agent und Festlegen eines Log Analytics-Arbeitsbereichs, in dem die gesammelten Daten gespeichert werden. Beide Vorgänge sind erforderlich, um die Datensammlung aktivieren. 
 
@@ -288,7 +288,7 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
 
       - Bei der Installation auf einem virtuellen Windows-Computer:
         
-            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
+            Set-AzVMExtension -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name -Name "MicrosoftMonitoringAgent" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "MicrosoftMonitoringAgent" -TypeHandlerVersion '1.0' -Location $vm.Location -settings $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True 
     
       - Bei der Installation auf einem virtuellen Linux-Computer:
         
@@ -304,7 +304,12 @@ Damit Security Center Sicherheitsdaten auf virtuellen Computern erfassen und Emp
 -  Informationen zum Identifizieren von Netzwerkanforderungen für den Überwachungs-Agent finden Sie unter [Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent](security-center-troubleshooting-guide.md#mon-network-req).
 -   Informationen zum Identifizieren von Problemen beim manuellen Onboarding finden Sie unter [Behandeln von Problemen beim Operations Management Suite-Onboarding](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- Informationen zum Identifizieren nicht überwachter VMs und Computer finden Sie unter [Nicht überwachte virtuelle und physische Computer](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
+- So identifizieren Sie Probleme mit nicht überwachten virtuellen und physischen Computern
+
+    Ein virtueller oder physischer Computer gilt als nicht von Security Center überwacht, wenn auf dem Computer die Microsoft Monitoring Agent-Erweiterung nicht ausgeführt wird. Auf einem Computer kann bereits ein lokaler Agent installiert sein, z.B. der OMS-Direkt-Agent oder der System Center Operations Manager-Agent. Computer mit diesen Agents werden als nicht überwacht angesehen, da diese Agents in Security Center nicht vollständig unterstützt werden. Die Microsoft Monitoring Agent-Erweiterung ist erforderlich, um von allen Security Center-Vorteilen vollständig profitieren zu können.
+
+    Weitere Informationen zu den Gründen, aus denen Security Center VMs und Computer, die für die automatische Bereitstellung initialisiert wurden, nicht erfolgreich überwachen kann, finden Sie unter [Integritätsprobleme von Monitoring Agent](security-center-troubleshooting-guide.md#mon-agent).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde die Funktionsweise der Datensammlung und der automatischen Bereitstellung in Security Center erläutert. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:

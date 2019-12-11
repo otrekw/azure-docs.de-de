@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 8b1c3184ada743fddb78e1a3d0ce8d67f1f1a94f
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71693328"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74704545"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure AD Domain Services-Domänen
 
@@ -26,7 +26,7 @@ In diesem Artikel wird erläutert, warum der Fehler auftritt und wie er behoben 
 
 ## <a name="what-causes-this-error"></a>Was verursacht diesen Fehler?
 
-Ein Verzeichniskonfliktfehler tritt auf, wenn eine von Azure AD DS verwaltete Domäne und ein virtuelles Netzwerk zu zwei verschiedenen Azure AD Mandanten gehören. Angenommen beispielsweise, Sie verfügen über die von Azure AD DS verwaltete Domäne *contoso.com*, die auf dem Azure AD Mandanten von Contoso ausgeführt wird. Das virtuelle Azure-Netzwerk für die verwaltete Domäne ist jedoch Teil des Azure AD-Mandanten von Fabrikam.
+Ein Verzeichniskonfliktfehler tritt auf, wenn eine von Azure AD DS verwaltete Domäne und ein virtuelles Netzwerk zu zwei verschiedenen Azure AD Mandanten gehören. Angenommen beispielsweise, Sie verfügen über die von Azure AD DS verwaltete Domäne *aadds.contoso.com*, die auf dem Azure AD-Mandanten von Contoso ausgeführt wird. Das virtuelle Azure-Netzwerk für die verwaltete Domäne ist jedoch Teil des Azure AD-Mandanten von Fabrikam.
 
 Azure verwendet die rollenbasierte Zugriffs Steuerung (Role-Based Access Control, RBAC), um den Zugriff auf Ressourcen einzuschränken. Wenn Sie Azure AD DS in einem Azure AD-Mandanten aktivieren, werden Anmeldeinformationshashes mit der verwalteten Domäne synchronisiert. Dieser Vorgang erfordert es, dass Sie ein Mandantenadministrator für das Azure AD-Verzeichnis sind, und der Zugriff auf die Anmeldeinformationen muss gesteuert werden. Zum Bereitstellen von Ressourcen in einem virtuellen Azure-Netzwerk und zum Steuern des Datenverkehrs müssen Sie über Administratorrechte für das virtuelle Netzwerk verfügen, in dem Sie Azure AD DS bereitstellen.
 

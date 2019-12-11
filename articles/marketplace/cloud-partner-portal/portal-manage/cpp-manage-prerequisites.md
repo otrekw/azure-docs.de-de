@@ -1,49 +1,20 @@
 ---
 title: Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal | Azure Marketplace
-description: Voraussetzungen für die Verwaltung von Azure Marketplace-Konten im Cloud-Partnerportal.
-services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+description: 'Veralteter CPP-Artikel, zeigt auf PC-Artikel; zuvor: „Voraussetzungen für die Verwaltung von Azure Marketplace-Konten im Cloud-Partnerportal“'
+services: Azure, Marketplace, Cloud Partner Portal, Partner Center
+author: ChJenk
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.author: pabutler
-ms.openlocfilehash: b0a9f312ba78e148a573064b81ff1f52fbd85c03
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/27/2019
+ms.author: v-chjen
+ms.openlocfilehash: 1b6e7df904b6c564935a3f34ca2da12bed459c4f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826667"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666459"
 ---
-# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal 
+# <a name="prerequisites-for-managing-accounts-on-the-cloud-partner-portal"></a>Voraussetzungen für die Verwaltung von Konten im Cloud-Partnerportal
 
-Um das [Cloud-Partnerportal](https://cloudpartner.azure.com/) für jegliche Funktionen verwenden zu können, einschließlich der Verwaltung von Konten, müssen Sie eine Reihe von Schritten ausführen, um sich und Ihre Organisation als Microsoft Cloud-Herausgeber zu registrieren.
-
-
-## <a name="account-terms-and-guidelines"></a>Bestimmungen und Richtlinien für Konten
-
-Überprüfen Sie sorgfältig Ihre Rechte und Pflichten im Rahmen des [Microsoft-Servicevertrags](https://www.microsoft.com/servicesagreement) und der [Microsoft-Nutzungsbedingungen](https://www.microsoft.com/en-us/legal/intellectualproperty/copyright), bevor Sie ein Konto erstellen.  
-
-Wählen Sie den Kontonamen mit Bedacht aus.  Er stellt Ihre Organisation dar und sollte daher keine geschützten oder strittigen Wörter enthalten.  Microsoft verbietet beispielsweise die Verwendung seiner urheberrechtlich geschützten Begriffe wie z. B. „Azure“ und „Microsoft“ in Kontonamen.  Weitere Informationen finden Sie unter [Richtlinien für Azure Marketplace](https://docs.microsoft.com/azure/marketplace/guidelines).
-
-
-## <a name="registration-steps"></a>Schritte für die Registrierung
-
-In der folgenden Tabelle sind die erforderlichen Schritte für die vollständige Registrierung als Microsoft Cloud-Herausgeber aufgeführt.  Vollständige Anweisungen finden Sie unter [Weg zum Cloud Marketplace-Herausgeber](https://docs.microsoft.com/azure/marketplace/become-publisher). 
-
-
-|                   Schritt                   |  Daraus resultierende Registrierung oder Ressource                     |
-|                  ------                  |  -----------------------------------                    |
-| 1. Registrieren im Microsoft Partner Network |  Eine Microsoft Partner Network-ID für Ihre Organisation |
-| 2. Erstellen eines Microsoft-Kontos*           |  Ein überprüftes Microsoft-Konto, das mit @outlook.com, @live.com usw. endet |
-| 3. Übermitteln des Marketplace-Registrierungsformulars | Ein Herausgeberkonto im Cloud-Partnerportal      |
-| 4. Anmelden beim Cloud-Partnerportal        | Berechtigung zum Erstellen und Veröffentlichen von Angeboten, Verwalten von Benutzern, Erfassen von Marketplace-Metriken usw. |
-| 5. Registrieren bei Microsoft Developer Center* | Ein überprüftes Dev Center-Konto; Berechtigung zum Durchführen von Marketplace-Transaktionen  |
-|   |   |
-
-\* Diese Schritte sind für Azure Marketplace-Transaktionsangebote erforderlich, werden jedoch für alle Angebote dringend empfohlen.  Nachdem Sie ein Microsoft-Konto eingerichtet und sich als Microsoft-Entwickler registriert haben, haben Sie Zugriff auf zusätzliche Ressourcen für Microsoft-Kunden und Microsoft-Entwickler sowie auf optionale Partnerangebote.  
-
-
-## <a name="next-steps"></a>Nächste Schritte
-
-Nach den Schritten für die Registrierung sollten Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) anmelden können.  Über dieses Portal können Sie Herausgeberprofile und Benutzerkonten verwalten.
+Diese Funktionalität wurde zum Microsoft [Partner Center-Portal](https://partner.microsoft.com/) migriert. Weitere Informationen finden Sie unter [Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/manage-account).

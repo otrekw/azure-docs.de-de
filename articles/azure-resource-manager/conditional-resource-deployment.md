@@ -2,13 +2,13 @@
 title: Bedingte Bereitstellung mit Vorlagen
 description: Beschreibt, wie eine Ressource in einer Azure Resource Manager-Vorlage bedingt bereitgestellt werden kann.
 ms.topic: conceptual
-ms.date: 09/03/2019
-ms.openlocfilehash: e3d78f875e39628194ac30310314e59e2ef19fdb
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/03/2019
+ms.openlocfilehash: ec2337686f92bb631ae4b08ce125eb576cd8bd69
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147167"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806472"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Bedingte Bereitstellung in Resource Manager-Vorlagen
 
@@ -78,6 +78,8 @@ Die komplette Vorlage finden Sie unter [Azure SQL logical server](https://github
 Bei Verwendung einer Funktion vom Typ [reference](resource-group-template-functions-resource.md#reference) oder [list](resource-group-template-functions-resource.md#list) mit einer Ressource, die bedingt bereitgestellt wird, wird die Funktion auch dann ausgewertet, wenn die Ressource nicht bereitgestellt wird. Es wird eine Fehlermeldung angezeigt, wenn die Funktion auf eine nicht vorhandene Ressource verweist.
 
 Verwenden Sie die [if](resource-group-template-functions-logical.md#if)-Funktion, um sicherzustellen, dass die Funktion nur für Bedingungen ausgewertet wird, wenn die Ressource bereitgestellt wird. Eine Beispielvorlage, die „if“ und „reference“ mit einer bedingt bereitgestellten Ressource verwendet, finden Sie unter der [if](resource-group-template-functions-logical.md#if)-Funktion.
+
+Sie legen eine [Ressource als abhängig](resource-group-define-dependencies.md) von einer bedingten Ressource fest, wie Sie auch jede andere Ressource festlegen. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
 
 ## <a name="condition-with-complete-mode"></a>Bedingung mit vollständigem Modus
 

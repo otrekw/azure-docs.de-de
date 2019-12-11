@@ -1,17 +1,17 @@
 ---
-title: Importieren und Exportieren in bzw. aus Azure Database for MySQL
+title: Importieren und Exportieren – Azure Database for MySQL
 description: In diesem Artikel werden gängige Möglichkeiten zum Importieren von Datenbanken in bzw. Exportieren von Datenbanken aus Azure-Datenbank für MySQL mithilfe von Tools wie MySQL Workbench erläutert.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/01/2018
-ms.openlocfilehash: fa72037c8f54271f5651667765c5d5e2e9c03619
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 8cf0b88ddc24bfc6bc293dd62416417f1eec3a06
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60838072"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770950"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrieren der MySQL-Datenbank durch Import und Export
 In diesem Artikel werden zwei gängige Vorgehensweisen beim Importieren von Daten zu bzw. Exportieren von Daten von einem Server für Azure-Datenbank für MySQL mithilfe von MySQL Workbench erläutert. 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a1c6f2d869d8d7ad865005ebd319beac56bdbacd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: aa32f671756b8ba7f17c25592b6a15b66de42b2c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720096"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790029"
 ---
 # <a name="introduction-to-knowledge-stores-in-azure-cognitive-search"></a>Einführung in Wissensspeicher in Azure Cognitive Search
 
@@ -61,7 +61,9 @@ Ein Wissensspeicher (`knowledgeStore`) besteht aus einer Verbindung und Projekti
 
 + Die Verbindung besteht mit einem Speicherkonto in der Region, in der sich auch Azure Cognitive Search befindet. 
 
-+ Projektionen sind Tabellen-Objekt-Paare. `Tables` definiert den physischen Ausdruck angereicherter Dokumente in Azure Table Storage. `Objects` definiert die physischen Objekte in Azure Blob Storage.
++ Projektionen können tabellarisch, JSON-Objekte oder Dateien sein. `Tables` definiert den physischen Ausdruck angereicherter Dokumente in Azure Table Storage. `Objects` definiert die physischen JSON-Objekte in Azure Blob Storage. `Files` sind Binärdateien wie aus dem Dokument extrahierte Bilder, die persistent gespeichert werden.
+
++ Projektionen sind Sammlungen von Projektionsobjekten, wobei jedes Projektionsobjekt `tables`, `objects` und `files` enthalten kann. In einer einzelnen Projektion projizierte Anreicherungen sind aufeinander bezogen, selbst wenn sie typübergreifend projiziert werden (Tabellen, Objekte oder Dateien). Projektionen über Projektionsobjekte hinweg sind nicht aufeinander bezogen und unabhängig. Dieselbe Form kann über mehrere Projektionsobjekte hinweg projiziert werden.
 
 ```json
 {
@@ -109,7 +111,10 @@ Ein Wissensspeicher (`knowledgeStore`) besteht aus einer Verbindung und Projekti
             ], 
             "objects": [ 
                
-            ]      
+            ], 
+            "files": [
+
+            ]  
         },
         { 
             "tables": [ 
@@ -121,13 +126,17 @@ Ein Wissensspeicher (`knowledgeStore`) besteht aus einer Verbindung und Projekti
                 "source": "/document/Review", 
                 "key": "/document/Review/Id" 
                 } 
-            ]      
+            ],
+            "files": [
+                
+            ]  
         }        
     ]     
     } 
 }
 ```
 
+Dieses Beispiel enthält keine Bilder. Ein Beispiel zur Verwendung von Dateiprojektionen finden Sie unter [Arbeiten mit Projektionen](knowledge-store-projection-overview.md).
 ### <a name="sources-of-data-for-a-knowledge-store"></a>Datenquellen für einen Wissensspeicher
 
 Wenn es sich bei einem Wissensspeicher um die Ausgabe einer KI-Anreicherungspipeline handelt, was wird dann als Eingabe verwendet? Die ursprünglichen Daten, die Sie extrahieren, anreichern und letztendlich in einem Wissensspeicher speichern möchten, können aus jeder beliebigen Azure-Datenquelle stammen, die von Suchindexern unterstützt wird: 

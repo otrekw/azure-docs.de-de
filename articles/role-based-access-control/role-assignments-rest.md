@@ -1,6 +1,6 @@
 ---
-title: 'Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API: Azure | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen und Anwendungen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
+title: Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
+description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API verwalten.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,52 +12,29 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 86ee030e8c97cf3033b9d2d76b8125c64ecf8065
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996470"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707830"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API
+# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API
 
-Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der REST-API verwalten.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In diesem Artikel wird die Zuweisung von Rollen mithilfe der REST-API beschrieben.
 
-## <a name="list-access"></a>Auflisten des Zugriffs
+## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an.
+Um Rollenzuweisungen hinzufügen oder entfernen zu können, benötigen Sie Folgendes:
 
-1. Beginnen Sie mit der folgenden Anforderung:
+- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
 
-    ```http
-    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
-    ```
+## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, für den die Rollen aufgelistet werden sollen.
-
-    | `Scope` | type |
-    | --- | --- |
-    | `providers/Microsoft.Management/managementGroups/{groupId1}` | Verwaltungsgruppe |
-    | `subscriptions/{subscriptionId1}` | Subscription |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resource group |
-    | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Resource |
-
-    Im vorherigen Beispiel ist „microsoft.web“ ein Ressourcenanbieter, der auf eine App Service-Instanz verweist. Analog dazu können Sie einen beliebigen anderen Ressourcenanbieter verwenden und den Bereich angeben. Weitere Informationen finden Sie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md) und unter unterstützten [Vorgängen für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md).  
-     
-1. Ersetzen Sie *{filter}* durch die Bedingung, die zum Filtern der Liste mit den Rollenzuweisungen angewendet werden soll.
-
-    | Filter | BESCHREIBUNG |
-    | --- | --- |
-    | `$filter=atScope()` | Listet nur die Rollenzuweisungen für den angegebenen Bereich auf, ohne die Rollenzuweisungen der Unterbereiche. |
-    | `$filter=principalId%20eq%20'{objectId}'` | Listet die Rollenzuweisungen für bestimmte Benutzer, Gruppen oder Dienstprinzipale auf. |
-    | `$filter=assignedTo('{objectId}')` | Listet die Rollenzuweisungen für bestimmte Benutzer oder Dienstprinzipale auf. Wenn der Benutzer Mitglied einer Gruppe ist, die über eine Rollenzuweisung verfügt, wird diese Rollenzuweisung ebenfalls aufgeführt. Dieser Filter ist für Gruppen transitiv, das heißt: Wenn der Benutzer Mitglied einer Gruppe und diese Gruppe wiederum Mitglied einer anderen Gruppe ist, die über eine Rollenzuweisung verfügt, wird diese Rollenzuweisung ebenfalls aufgeführt. Dieser Filter akzeptiert nur eine Objekt-ID für einen Benutzer oder einen Dienstprinzipal. Für eine Gruppe kann keine Objekt-ID übergeben werden. |
-
-## <a name="grant-access"></a>Gewähren von Zugriff
-
-In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Um eine Rollenzuweisung zu erstellen, verwenden Sie die REST-API unter [Rollenzuweisungen – Erstellen](/rest/api/authorization/roleassignments/create), und geben Sie das Sicherheitsprinzipal, die Rollendefinition und den Bereich an. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang.
+In RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu. Um eine Rollenzuweisung hinzuzufügen, verwenden Sie die REST-API unter [Rollenzuweisungen – Erstellen](/rest/api/authorization/roleassignments/create), und geben Sie den Sicherheitsprinzipal, die Rollendefinition und den Bereich an. Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/write`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang.
 
 1. Verwenden Sie die REST API unter [Rollendefinitionen – Auflisten](/rest/api/authorization/roledefinitions/list) oder lesen Sie [Integrierte Rollen in Azure](built-in-roles.md), um den Bezeichner für die zuzuweisende Rollendefinition zu ermitteln.
 
@@ -102,7 +79,7 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Um eine R
 
 1. Ersetzen Sie *{principalId}* durch den Objektbezeichner des Benutzers, der Gruppe oder des Dienstprinzipals, der bzw. die der Rolle zugewiesen wird.
 
-## <a name="remove-access"></a>Zugriff entfernen
+## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
 
 In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Zum Entfernen einer Rollenzuweisung verwenden Sie die REST-API [Rollenzuweisungen – Löschen](/rest/api/authorization/roleassignments/delete). Zum Aufrufen dieser API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/delete`. Von den integrierten Rollen verfügen nur [Besitzer](built-in-roles.md#owner) und [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) über Zugriff auf diesen Vorgang.
 
@@ -127,6 +104,7 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Zum Ent
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Auflisten von Rollenzuweisungen mithilfe von Azure RBAC und der REST-API](role-assignments-list-rest.md)
 - [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)
 - [Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API](custom-roles-rest.md)

@@ -1,17 +1,17 @@
 ---
-title: Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver)
+title: Sicherung und Wiederherstellung – Azure-Portal – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Portals einen Server in Azure Database for PostgreSQL (Einzelserver) wiederherstellen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 22522a3f577e8d0533f7c8926de12bd464cc2d92
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: fb13e4f062976e39c3cec607001e6982db228873
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965778"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765629"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver) mithilfe des Azure-Portals
 

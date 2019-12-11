@@ -1,24 +1,18 @@
 ---
-title: App Service-Umgebung Management-Adressen – Azure
-description: Listet die Management-Adressen auf, die verwendet werden, um eine App Service-Umgebung zu befehligen
-services: app-service
-documentationcenter: na
+title: Verwaltungsadressen
+description: Erfahren Sie, wie Sie Verwaltungsadressen zum Steuern einer App Service-Umgebung finden. Konfigurieren Sie diese in einer Routingtabelle, um asymmetrische Routingprobleme zu vermeiden.
 author: ccompy
-manager: stefsch
 ms.assetid: a7738a24-89ef-43d3-bff1-77f43d5a3952
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 80841988b997bd4caa776191bf9b8468e95a977d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 7d7f97552e8faadee1af928a9ce4e1eea2df476e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089495"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687112"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service-Umgebung Management-Adressen
 

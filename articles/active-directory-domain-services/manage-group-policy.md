@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 894396686a54ed3a685366fcf3e933fa8f03bee8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 32020341c7ac3bf33082ba365f053a613dcdffc2
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474526"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705081"
 ---
 # <a name="administer-group-policy-in-an-azure-ad-domain-services-managed-domain"></a>Verwalten von Gruppenrichtlinien in einer durch Azure AD Domain Services verwalteten Domäne
 
@@ -53,7 +53,7 @@ Um Gruppenrichtlinienobjekte (Group Policy Object, GPOs) zu erstellen und zu kon
 1. Wählen Sie im Bereich *Dashboard* des Fensters **Server-Manager** die Option **Rollen und Features hinzufügen** aus.
 1. Klicken Sie auf der Seite **Vorbereitung** des *Assistenten zum Hinzufügen von Rollen und Features* auf **Weiter**.
 1. Lassen Sie für *Installationstyp* die Option **Rollenbasierte oder featurebasierte Installation** aktiviert, und wählen Sie **Weiter** aus.
-1. Wählen Sie auf der Seite **Serverauswahl** die aktuelle VM aus dem Serverpool aus (z. B. *myvm.contoso.com*), und klicken Sie dann auf **Weiter**.
+1. Wählen Sie auf der Seite **Serverauswahl** die aktuelle VM aus dem Serverpool (z. B. *myvm.aadds.contoso.com*) und anschließend **Weiter** aus.
 1. Klicken Sie auf der Seite **Serverrollen** auf **Weiter**.
 1. Wählen Sie auf der Seite **Features** das Feature **Gruppenrichtlinienverwaltung** aus.
 
@@ -76,7 +76,7 @@ Für Benutzer und Computer in einer von Azure AD DS verwalteten Domäne sind Sta
 
 Es gibt zwei integrierte Gruppenrichtlinienobjekte (GPOs) in einer von Azure AD DS verwalteten Domäne – eines für den Container *AADDC-Computer* und eines für den Container *AADDC-Benutzer*. Sie können diese GPOs anpassen, um Gruppenrichtlinien nach Bedarf innerhalb Ihrer von Azure AD DS verwalteten Domäne zu konfigurieren.
 
-1. Erweitern Sie in der **Gruppenrichtlinien-Verwaltungskonsole** den Knoten **Gesamtstruktur: contoso.com**. Erweitern Sie anschließend die **Domänen**-Knoten.
+1. Erweitern Sie in der **Gruppenrichtlinien-Verwaltungskonsole** den Knoten **Gesamtstruktur: aadds.contoso.com**. Erweitern Sie anschließend die **Domänen**-Knoten.
 
     Es gibt zwei integrierte Container für *AADDC-Computer* und *AADDC-Benutzer*. Jedem dieser Container ist ein Standard-GPO zugeordnet.
 

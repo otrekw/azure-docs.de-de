@@ -1,17 +1,17 @@
 ---
-title: Abfragespeicher in Azure Database for MySQL
+title: Abfragespeicher – Azure Database for MySQL
 description: Erfahren Sie mehr über das Feature „Abfragespeicher“ in Azure Database for MySQL zum Nachverfolgen der Abfrageleistung im Zeitverlauf.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: c8891fc96e3e511e4127b4e114a45b5a865cf8eb
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.date: 12/02/2019
+ms.openlocfilehash: 4ac6e4c71b028b66ef50ac949c169a1e02a2c0e3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603029"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770838"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>Überwachen der Azure Database for MySQL-Leistung mit dem Abfragespeicher
 

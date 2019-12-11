@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit Slack über Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit Slack aus Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die Dateien überwachen und Kanäle, Gruppen und Nachrichten in Ihrem Slack-Konto mithilfe von Azure Logic Apps überwachen und verwalten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 2606fdc15194264bc3d84496d2de258adfc314be
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 5f61009ee7b43be618e37acb4a783a54dbf11e55
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050795"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789170"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Überwachen und Verwalten von Slack mit Azure Logic Apps
 

@@ -1,17 +1,17 @@
 ---
-title: Automatisches Vergrößern des Azure Database for MySQL-Speichers per Azure CLI
+title: Automatisches Vergrößern des Speichers – Azure-Befehlszeilenschnittstelle – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie Sie die automatische Speichervergrößerung für Azure Database for MySQL per Azure CLI aktivieren können.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 8/7/2019
-ms.openlocfilehash: c9faaa5d011a32dfbaa5a841d3bce824f7ba5c9d
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: fb39c3afa2977038df7c9a233ba6720771f545dc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390559"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770627"
 ---
 # <a name="auto-grow-azure-database-for-mysql-storage-using-the-azure-cli"></a>Automatisches Vergrößern des Azure Database for MySQL-Speichers per Azure CLI
 In diesem Artikel ist beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for MySQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.

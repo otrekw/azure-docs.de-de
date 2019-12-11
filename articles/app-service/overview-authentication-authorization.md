@@ -1,26 +1,17 @@
 ---
-title: Authentifizierung und Autorisierung – Azure App Service | Microsoft-Dokumentation
-description: Eine grundlegende Übersicht über das Authentifizierungs-/Autorisierungsfeature für Azure App Service.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-editor: ''
+title: Authentifizierung und Autorisierung
+description: Erfahren Sie etwas über die integrierte Authentifizierungs- und Autorisierungsunterstützung in Azure App Service und darüber, wie sie zum Schutz Ihrer App vor unbefugtem Zugriff beitragen kann.
 ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
-ms.service: app-service
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/12/2019
-ms.author: cephalin
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: 2179f4e7d5350cdf9d82413e4f70647c20c3c399
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808753"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672243"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Authentifizierung und Autorisierung in Azure App Service
 
@@ -32,8 +23,10 @@ Azure App Service bietet integrierte Authentifizierungs- und Autorisierungsunter
 
 Eine sichere Authentifizierung und Autorisierung erfordert umfassende Sicherheitskenntnisse, u.a. zu Verbund, Verschlüsselung, Verwaltung von [JSON-Webtoken (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) und [Gewährungstypen](https://oauth.net/2/grant-types/). App Service bietet diese Hilfsprogramme, damit Sie mehr Zeit und Energie für das Bereitstellen von geschäftlichem Nutzen für Ihre Kunden aufwenden können.
 
-> [!NOTE]
-> Die Nutzung von App Service für die Authentifizierung und Autorisierung ist nicht verpflichtend. Viele Webframeworks sind mit Sicherheitsfunktionen gebündelt und können bei Bedarf verwendet werden. Wenn Sie mehr Flexibilität benötigen, als App Service bietet, können Sie auch eigene Hilfsprogramme schreiben.  
+> [!IMPORTANT]
+> Die Nutzung von App Service für AuthN/AuthO ist nicht verpflichtend. Viele Webframeworks sind mit Sicherheitsfunktionen gebündelt und können bei Bedarf verwendet werden. Wenn Sie mehr Flexibilität benötigen, als App Service bietet, können Sie auch eigene Hilfsprogramme schreiben.  
+>
+> Wenn Sie jedoch eine der Optionen ohne App Service für die Remoteauthentifizierung nutzen, sollten Sie beachten, dass [Chrome 80 Breaking Changes an der Implementierung von SameSite für Cookies](https://www.chromestatus.com/feature/5088147346030592) vornimmt (Veröffentlichungsdatum ca. März 2020) und der Authentifizierungsmechanismus Ihrer App möglicherweise fehlerhaft wird, wenn Clientbrowser aktualisiert werden. Die ASP.NET Core-Dokumentation enthält Informationen dazu, wie Sie dies in Ihrer App behandeln: [HTTP: SameSite-Änderungen im Browser mit Auswirkungen auf die Authentifizierung](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Sie enthält hilfreiche Anleitungen zum Testen dieses Breaking Change mit den wichtigsten Browsern, unabhängig davon, ob Sie ASP.NET Core verwenden.
 >
 
 Spezielle Informationen zu nativen mobilen Apps finden Sie unter [Authentifizierung und Autorisierung in Azure Mobile Apps](../app-service-mobile/app-service-mobile-auth.md).

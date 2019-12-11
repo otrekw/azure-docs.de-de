@@ -1,24 +1,15 @@
 ---
-title: Kadenz für das Patchen von Betriebssystem und Runtime – Azure App Service | Microsoft-Dokumentation
-description: Beschreibt, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, und wie Sie Updateankündigungen erhalten.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Abfolge beim Betriebssystem- und Runtimepatching
+description: Erfahren Sie, wie Azure App Service das Betriebssystem und Runtimes aktualisiert, welche Runtimes und Patchebenen Ihre App hat und wie Sie Updateankündigungen erhalten.
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 3469c4f11a075ceb958e35e4cfc87a78e60b3882
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1a56fed04399325be315d8d977e5a72223bddac5
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70074131"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688567"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Patchen von Betriebssystem und Runtime in Azure App Service
 

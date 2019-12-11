@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/18/2019
-ms.openlocfilehash: 23e3116a0cc3283191d00079e0926dc206e677f0
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a1a0a1462c8a4e52a065eafad315aab3ddae5f3b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819335"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784594"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Untersuchen von Java-Ablaufverfolgungsprotokollen in Application Insights
 Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) verwenden, werden Ihre Ablaufverfolgungsprotokolle automatisch an Application Insights gesendet. Hier können Sie sie durchsuchen und untersuchen.
@@ -22,27 +22,41 @@ Wenn Sie für die Ablaufverfolgung Logback oder Log4J (Version 1.2 bzw. 2.0) ver
 
 ## <a name="using-the-application-insights-java-agent"></a>Verwenden des Java-Agents von Application Insights
 
-Sie können den Java-Agent von Application Insights so konfigurieren, dass Ihre Protokolle automatisch erfasst werden, indem Sie das Feature in der `AI-Agent.xml`-Datei aktivieren:
+Standardmäßig erfasst der Application Insights-Java-Agent automatisch die Protokollierung, die auf der Ebene `WARN` und höher ausgeführt wird.
+
+Sie können den Schwellenwert für die erfasste Protokollierung mithilfe der Datei `AI-Agent.xml` ändern:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsightsAgent>
    <Instrumentation>
-      <BuiltIn enabled="true">
-         <Logging enabled="true" />
+      <BuiltIn>
+         <Logging threshold="info"/>
       </BuiltIn>
    </Instrumentation>
-   <AgentLogger />
 </ApplicationInsightsAgent>
 ```
 
-Alternativ können Sie die folgenden Anweisungen befolgen.
+Sie können die durch den Java-Agent erfasste Protokollierung mithilfe der Datei `AI-Agent.xml` deaktivieren:
 
-## <a name="install-the-java-sdk"></a>Installieren des Java SDK
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<ApplicationInsightsAgent>
+   <Instrumentation>
+      <BuiltIn>
+         <Logging enabled="false"/>
+      </BuiltIn>
+   </Instrumentation>
+</ApplicationInsightsAgent>
+```
+
+## <a name="alternatively-as-opposed-to-using-the-java-agent-you-can-follow-the-instructions-below"></a>Alternativ können Sie (ohne Verwendung des Java-Agents) auch die folgenden Anweisungen befolgen.
+
+### <a name="install-the-java-sdk"></a>Installieren des Java SDK
 
 Führen Sie die Anweisungen zum Installieren des [Application Insights SDK für Java][java] durch, sofern dies noch nicht geschehen ist.
 
-## <a name="add-logging-libraries-to-your-project"></a>Hinzufügen von Protokollierungsbibliotheken zu Ihrem Projekt
+### <a name="add-logging-libraries-to-your-project"></a>Hinzufügen von Protokollierungsbibliotheken zu Ihrem Projekt
 *Wählen Sie die geeignete Methode für Ihr Projekt.*
 
 #### <a name="if-youre-using-maven"></a>Wenn Sie Maven verwenden...
@@ -123,7 +137,7 @@ Befolgen Sie die Richtlinien für die manuelle Installation des Application Insi
 | Log4J v1. 2 |[JAR-Datei für Log4J-v1.2-Appender](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
 
 
-## <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
+### <a name="add-the-appender-to-your-logging-framework"></a>Hinzufügen des Appenders zu Ihrem Protokollierungsframework
 Zum Starten von Ablaufverfolgungen führen Sie den relevanten Codeausschnitt mit der Konfigurationsdatei für Log4J oder Logback zusammen: 
 
 *Logback*

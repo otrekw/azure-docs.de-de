@@ -8,14 +8,14 @@ manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 05/15/2019
+ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: 66b11ef8e746222074eadab2348f8a2cf9dab39f
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 3b46c574ea47622ec97e70c0d2f2cdc3aa54ec0d
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479146"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706379"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -55,7 +55,9 @@ Ja, solange sich alle Event Hubs im gleichen Namespace befinden.
 
 ### <a name="what-is-the-maximum-retention-period-for-events"></a>Was ist die maximale Beibehaltungsdauer für Ereignisse?
 
-Im Standard-Tarif für Event Hubs wird derzeit ein maximaler Aufbewahrungszeitraum von sieben Tagen unterstützt. Event Hubs sind nicht als dauerhafter Datenspeicher vorgesehen. Beibehaltungsdauern größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben, wenn Sie beispielsweise ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen wollen. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen ausgewählte Azure Data Lake-Dienstkonto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.
+Im Standard-Tarif für Event Hubs wird derzeit ein maximaler Aufbewahrungszeitraum von sieben Tagen unterstützt. Event Hubs sind nicht als dauerhafter Datenspeicher vorgesehen. Aufbewahrungszeiträume größer als 24 Stunden sind für Szenarien vorgesehen, in denen es praktisch ist, einen Stream von Ereignissen in die gleichen Systeme wiederzugeben. Dies gilt beispielsweise, wenn Sie ein neues Computerlernmodell für vorhandene Daten trainieren oder überprüfen möchten. Wenn Sie Nachrichten länger als sieben Tage aufbewahren möchten, werden die Daten durch Aktivieren von [Event Hubs Capture](event-hubs-capture-overview.md) in Ihrem Event Hub von Ihrem Event Hub per Pull in das Storage-Konto oder das von Ihnen ausgewählte Azure Data Lake-Dienstkonto übertragen. Abhängig von Ihrer erworbenen Durchsatzeinheit entstehen durch das Aktivieren von „Capture“ Kosten.
+
+Sie können den Aufbewahrungszeitraum für die erfassten Daten in Ihrem Speicherkonto konfigurieren. Die **Lebenszyklusverwaltung** von Azure Storage bietet eine umfassende, regelbasierte Richtlinie für universelle v2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen. Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebenszyklus](../storage/blobs/storage-lifecycle-management-concepts.md). 
 
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Wie überwache ich Event Hubs?
 Event Hubs gibt umfassende Metriken aus, die den Zustand Ihrer Ressourcen in [Azure Monitor](../azure-monitor/overview.md) angeben. Mit den Metriken können Sie zudem die allgemeine Integrität des Event Hubs-Diensts nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Erfahren Sie mehr über die angebotene Überwachung für [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
@@ -83,7 +85,7 @@ Um die richtigen IP-Adressen für die Whitelist für Ihre Verbindungen zu ermitt
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Sie würde sich nur dann ändern, wenn Sie den Namespace auf einem anderen Cluster wiederherstellen.
+2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. Sie würde sich nur dann ändern, wenn Sie den Namespace in einem anderen Cluster wiederherstellen.
 
 Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
 
@@ -107,7 +109,7 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
 Event Hubs stellt einen Kafka-Endpunkt bereit, der in Ihren vorhandenen Apache Kafka-basierten Anwendungen verwendet werden kann. Es ist lediglich eine Konfigurationsänderung erforderlich, damit Sie die PaaS-Kafka-Funktionen nutzen können. Dies stellt eine Alternative zum Ausführen eines eigenen Kafka-Clusters dar. Event Hubs unterstützt Apache Kafka 1.0 und neuere Clientversionen und kann mit Ihren vorhandenen Kafka-Anwendungen, -Tools und -Frameworks verwendet werden. Weitere Informationen finden Sie unter [Event Hubs für Kafka-Repository](https://github.com/Azure/azure-event-hubs-for-kafka).
 
 ### <a name="what-configuration-changes-need-to-be-done-for-my-existing-application-to-talk-to-event-hubs"></a>Welche Konfigurationsänderungen muss ich an meiner vorhandenen Anwendung für die Kommunikation mit Event Hubs vornehmen?
-Um eine Verbindung mit einem Kafka-fähigen Event Hub herzustellen, müssen Sie die Kafka-Clientkonfigurationen aktualisieren. Dies erfolgt durch Erstellen eines Event Hubs-Namespace und Abrufen der [Verbindungszeichenfolge](event-hubs-get-connection-string.md). Ändern Sie „bootstrap.servers“ so, dass der Event Hubs-FQDN und der Port auf 9093 verweisen. Aktualisieren Sie „sasl.jaas.config“ so, dass der Kafka-Client mit der richtigen Authentifizierung wie folgt an den Kafka-fähigen Event Hubs-Endpunkt geleitet wird (dabei handelt es sich um die abgerufene Verbindungszeichenfolge):
+Um eine Verbindung mit einem Kafka-fähigen Event Hub herzustellen, müssen Sie die Kafka-Clientkonfigurationen aktualisieren. Dies erfolgt durch Erstellen eines Event Hub-Namespace und Abrufen der [Verbindungszeichenfolge](event-hubs-get-connection-string.md). Ändern Sie „bootstrap.servers“ so, dass der Event Hubs-FQDN und der Port auf 9093 verweisen. Aktualisieren Sie „sasl.jaas.config“ so, dass der Kafka-Client mit der richtigen Authentifizierung wie folgt an den Kafka-fähigen Event Hubs-Endpunkt geleitet wird (dabei handelt es sich um die abgerufene Verbindungszeichenfolge):
 
 bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093 request.timeout.ms=60000 security.protocol=SASL_SSL sasl.mechanism=PLAIN sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{YOUR.EVENTHUBS.CONNECTION.STRING}";
 
@@ -118,7 +120,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 Hinweis: Wenn „sasl.jaas.config“ in Ihrem Framework als Konfiguration nicht unterstützt wird, müssen Sie die Konfigurationen suchen, die zum Festlegen des SASL-Benutzernamens und -Kennworts verwendet werden, und diese stattdessen verwenden. Legen Sie den Benutzernamen auf $ConnectionString und das Kennwort auf Ihre Event Hubs-Verbindungszeichenfolge fest.
 
 ### <a name="what-is-the-messageevent-size-for-kafka-enabled-event-hubs"></a>Welche Nachrichten- oder Ereignisgröße gilt für Kafka-fähige Event Hubs?
-Die maximal zulässige Nachrichtengröße für Kafka-fähige Event Hubs beträgt 1 MB.
+Die maximal zulässige Nachrichtengröße für Kafka-fähige Event Hubs beträgt 1 MB.
 
 ## <a name="throughput-units"></a>Durchsatzeinheiten
 
@@ -161,15 +163,15 @@ Bei einem mehrinstanzenfähigen Angebot können die Durchsatzeinheiten auf maxim
 Event Hubs Dedicated-Cluster bieten Bereitstellungen mit einem Mandanten für Kunden mit äußerst anspruchsvollen Anforderungen. Bei diesem Angebot wird ein kapazitätsbasierter Cluster erstellt, der nicht durch Durchsatzeinheiten gebunden ist. Das heißt, dass Sie den Cluster verwenden können, um Daten nach Vorgabe von CPU und Speicherauslastung des Clusters zu erfassen und zu streamen. Weitere Informationen finden Sie unter [Event Hubs Dedicated-Cluster](event-hubs-dedicated-overview.md).
 
 ### <a name="how-much-does-a-single-capacity-unit-let-me-achieve"></a>Welche Limits gelten für eine Kapazitätseinheit?
-Welche Datenmengen Sie für einen dedizierten Cluster erfassen und streamen können, hängt von verschiedenen Faktoren ab, z.B. von den Producern, den Consumern, der Rate für die Erfassung und Verarbeitung und vielem mehr. 
+Welche Datenmengen Sie für einen dedizierten Cluster erfassen und streamen können, hängt von verschiedenen Faktoren ab, z. B. von den Producern, den Consumern, der Rate für die Erfassung und Verarbeitung u. v. m. 
 
 In der folgenden Tabelle sind die Ergebnisse aufgeführt, die bei unseren Vergleichstests erreicht wurden:
 
 | Form der Nutzlast | Empfänger | Eingangsbandbreite| Eingangsnachrichten | Ausgangsbandbreite | Ausgangsnachrichten | TUs gesamt | TUs pro CU |
 | ------------- | --------- | ---------------- | ------------------ | ----------------- | ------------------- | --------- | ---------- |
-| Batches von 100 x 1 KB | 2 | 400 MB/s | 400.000 Nachrichten/s | 800 MB/s | 800.000 Nachrichten/s | 400 TUs | 100 TUs | 
-| Batches von 10 x 10 KB | 2 | 666 MB/s | 666.000 Nachrichten/s | 1,33 GB/s | 133.000 Nachrichten/s | 666 TUs | 166 TUs |
-| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34.000 Nachrichten/s | 1,05 GB/s | 34.000 Nachrichten/s | 1\.000 TUs | 250 TUs |
+| Batches von 100 x 1 KB | 2 | 400 MB/s | 400T Nachrichten/Sek. | 800 MB/s | 800T Nachrichten/Sek. | 400 TUs | 100 TUs | 
+| Batches von 10 x 10 KB | 2 | 666 MB/s | 66,6T Nachrichten/Sek. | 1,33 GB/s | 133T Nachrichten/Sek. | 666 TUs | 166 TUs |
+| Batches von 6 x 32 KB | 1 | 1,05 GB/s | 34T Nachrichten/Sek. | 1,05 GB/s | 34T Nachrichten/Sek. | 1\.000 TUs | 250 TUs |
 
 Bei den Tests wurden folgende Kriterien verwendet:
 
@@ -187,9 +189,9 @@ Einen Event Hub Dedicated-Cluster erstellen Sie, indem Sie eine [Supportanfrage 
 ### <a name="how-many-partitions-do-i-need"></a>Wie viele Partitionen benötige ich?
 Die Anzahl der Partitionen wird bei der Erstellung angegeben und muss zwischen zwei und 32 liegen. Die Partitionenanzahl kann nicht geändert werden. Behalten Sie daher beim Festlegen der Partitionenanzahl die langfristige Skalierung im Hinterkopf. Partitionen sind ein Mechanismus zum Organisieren von Daten, der sich auf die erforderliche Downstreamparallelität in verarbeitenden Anwendungen bezieht. Die Anzahl der Partitionen in einem Event Hub steht in direktem Zusammenhang mit der erwarteten Anzahl von gleichzeitigen Lesern. Weitere Informationen zur Partitionen finden Sie unter [Partitionen](event-hubs-features.md#partitions).
 
-Möglicherweise möchten Sie zum Zeitpunkt der Erstellung den höchstmöglichen Wert (32) festlegen. Beachten Sie, dass mehr als eine Partition dazu führt, dass Ereignisse an mehrere Partitionen gesendet werden, ohne die Reihenfolge einzuhalten, es sei denn, Sie konfigurieren Absender so, dass sie nur an eine einzige der 32 Partitionen senden und somit die übrigen 31 redundant sind. Im ersten Fall müssen Sie Ereignisse über alle 32 Partitionen lesen. Im letzteren Fall gibt es keine offensichtlichen zusätzlichen Kosten außer der zusätzlichen Konfiguration, die Sie auf dem Ereignisprozessorhost vornehmen müssen.
+Möglicherweise möchten Sie zum Zeitpunkt der Erstellung den höchstmöglichen Wert (32) festlegen. Beachten Sie, dass bei Verwendung mehrerer Partitionen Ereignisse ohne Berücksichtigung der Reihenfolge an mehrere Partitionen gesendet werden – es sei denn, Sie konfigurieren die Absender so, dass sie Ereignisse nur an eine einzelne der 32 Partitionen senden und die anderen 31 Partitionen redundant sind. Im ersten Fall müssen Ereignisse für alle 32 Partitionen gelesen werden. Im zweiten Fall sind mit Ausnahme der zusätzlichen Konfiguration für den Ereignisprozessorhost keine offensichtlichen Zusatzschritte erforderlich.
 
-Event Hubs ist für einen einzelnen Partitionsleser pro Verbrauchergruppe ausgelegt. In den meisten Fällen reicht die Standardeinstellung von vier Partitionen aus. Wenn Sie Ihre Ereignisverarbeitung skalieren möchten, möchten Sie vielleicht die Möglichkeit haben, das Hinzufügen weiterer Partitionen zu erwägen. Es gibt keine bestimmte Durchsatzbegrenzung für eine Partition, aber der aggregierte Durchsatz in Ihrem Namespace ist durch die Anzahl der Durchsatzeinheiten beschränkt. Wenn Sie die Anzahl der Durchsatzeinheiten in Ihrem Namespace erhöhen, wünschen Sie vielleicht zusätzliche Partitionen, um gleichzeitigen Lesern zu ermöglichen, ihren eigenen maximalen Durchsatz zu erzielen.
+Event Hubs ist für einen einzelnen Partitionsleser pro Verbrauchergruppe ausgelegt. In den meisten Fällen reicht die Standardeinstellung von vier Partitionen aus. Wenn Sie Ihre Ereignisverarbeitung skalieren, möchten Sie vielleicht die Möglichkeit haben, das Hinzufügen weiterer Partitionen zu erwägen. Es gibt keine bestimmte Durchsatzbegrenzung für eine Partition, aber der aggregierte Durchsatz in Ihrem Namespace ist durch die Anzahl der Durchsatzeinheiten beschränkt. Wenn Sie die Anzahl der Durchsatzeinheiten in Ihrem Namespace erhöhen, wünschen Sie vielleicht zusätzliche Partitionen, um gleichzeitigen Lesern zu ermöglichen, ihren eigenen maximalen Durchsatz zu erzielen.
 
 Aber wenn Sie über ein Modell verfügen, in dem die Anwendung eine bestimmte Partition bevorzugt, ist eine höhere Anzahl von Partitionen für Sie nicht unbedingt von Vorteil. Weitere Informationen finden Sie unter [Verfügbarkeit und Konsistenz](event-hubs-availability-and-consistency.md).
 

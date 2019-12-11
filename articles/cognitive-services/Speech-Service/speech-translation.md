@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 17ad32cba18915bf7f83163cd876686d42323750
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a05a2bf81a278322bc4e07ed959aedb828c39b73
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468763"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815457"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
 
-Die Sprachübersetzung aus den Azure-Sprachdiensten ermöglicht eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
+Die Sprachübersetzung in Speech-Dienst ermöglicht eine mehrsprachige Sprache-zu-Sprache- und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
 
 Der Übersetzungsengine von Microsoft liegen zwei unterschiedliche Ansätze zugrunde: statistische maschinelle Übersetzung (Statistical Machine Translation, SMT) und neuronale maschinelle Übersetzung (Neural Machine Translation, NMT). SMT verwendet erweiterte statistische Analysen, um die bestmöglichen Übersetzungen im Kontext einiger weniger Wörter zu schätzen. Mit NMT werden neuronale Netze verwendet, um genauere, natürlich klingende Übersetzungen bereitzustellen, indem der gesamte Kontext von Sätzen zur Übersetzung von Wörtern genutzt wird.
 
@@ -55,9 +55,9 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 
 ## <a name="migration-guides"></a>Migrationsleitfäden
 
-Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zu den Sprachdiensten.
+Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator-speech/overview) verwenden, finden Sie in den nachfolgend aufgelisteten Leitfäden Informationen zur Migration zum Speech-Dienst.
 
-* [Migrieren von der Sprachübersetzungs-API zum Spracherkennungsdienst](how-to-migrate-from-translator-speech-api.md)
+* [Migrieren von der Sprachübersetzungs-API zum Speech-Dienst](how-to-migrate-from-translator-speech-api.md)
 
 ## <a name="reference-docs"></a>Referenz
 
@@ -69,5 +69,5 @@ Wenn Ihre Anwendungen, Tools oder Produkte die [Sprachübersetzungs-API](https:/
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](get-started.md)
 * [Abrufen des Speech SDK](speech-sdk.md)

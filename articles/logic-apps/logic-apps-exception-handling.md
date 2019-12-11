@@ -1,20 +1,19 @@
 ---
-title: Behandlung von Fehlern und Ausnahmen – Azure Logic Apps
+title: Fehler- und Ausnahmebehandlung
 description: Enthält eine Beschreibung der Muster für die Behandlung von Fehlern und Ausnahmen in Azure Logic Apps.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: dereklee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/31/2018
 ms.topic: article
-ms.openlocfilehash: 828bea50a66b90f35843901ae2d7c703ffa58f2d
-ms.sourcegitcommit: 5f67772dac6a402bbaa8eb261f653a34b8672c3a
+ms.openlocfilehash: 781abb1ce92a9d96a93ac0c6b04d55075d752db8
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/01/2019
-ms.locfileid: "70208177"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792086"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 

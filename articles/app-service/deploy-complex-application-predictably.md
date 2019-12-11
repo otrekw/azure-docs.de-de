@@ -1,25 +1,16 @@
 ---
-title: Vorhersagbares Bereitstellen von Microservices – Azure App Service
-description: Erfahren Sie, wie Sie eine aus Microservices bestehende Anwendung in Azure App Service als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitstellen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: jimbe
+title: Vorhersagbares Bereitstellen von Apps mit ARM
+description: Erfahren Sie, wie Sie mehrere Azure App Service-Apps als eine Einheit und in vorhersagbarer Weise mithilfe von Azure Resource Manager-Vorlagen und PowerShell-Skripts bereitstellen.
 ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/06/2016
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b13bc43595c09b3700798935f70c401c9311651c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070878"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671828"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Vorhersagbares Bereitstellen von Microservices in Azure
 Dieses Tutorial zeigt, wie eine aus [Microservices](https://en.wikipedia.org/wiki/Microservices) bestehende Anwendung in [Azure App Service](https://azure.microsoft.com/services/app-service/) als eine Einheit und in vorhersagbarer Weise mithilfe von JSON-Ressourcengruppenvorlagen und PowerShell-Skripts bereitgestellt wird. 

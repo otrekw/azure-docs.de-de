@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: a678039b3386c3df290327238d3bf968a803d2c1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229434"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666374"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Schema und Datenaggregation in Traffic Analytics
 
@@ -143,7 +143,7 @@ Im Folgenden werden die Felder im Schema und ihre Bedeutung aufgeführt.
 | LocalNetworkGateway1_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_lokalen_Netzwerkgateways> | Das lokale Netzwerkgateway, das der Quell-IP im Flow zugeordnet ist. |
 | LocalNetworkGateway2_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_des_lokalen_Netzwerkgateways> | Das lokale Netzwerkgateway, das der Ziel-IP im Flow zugeordnet ist. |
 | ConnectionType_s | Mögliche Werte: VNetPeering, VpnGateway und ExpressRoute. |    Verbindungstyp. |
-| ConnectionName_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_der_Verbindung> | Verbindungsname |
+| ConnectionName_s | \<Abonnement-ID>/\<Name_der_Ressourcengruppe>/\<Name_der_Verbindung> | Verbindungsname. Bei Flowtyp P2S wird dies als <gateway name>_<VPN Client IP> formatiert. |
 | ConnectingVNets_s | Durch Leerzeichen getrennte Liste mit Namen virtueller Netzwerke | Im Fall einer Hub-Spoke-Topologie werden hier virtuelle Hubnetzwerke aufgefüllt. |
 | Country_s | Zweibuchstabiger Ländercode (ISO 3166-1 Alpha-2) | Wird für den Flowtyp „ExternalPublic“ aufgefüllt. Alle IP-Adressen im Feld „PublicIPs_s“ weisen den gleichen Ländercode auf. |
 | AzureRegion_s | Standorte in der Azure-Region | Wird für den Flowtyp „AzurePublic“ aufgefüllt. Alle IP-Adressen im Feld „PublicIPs_s“ weisen die gleiche Azure-Region auf. |

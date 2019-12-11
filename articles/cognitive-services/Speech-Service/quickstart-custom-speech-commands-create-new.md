@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau) – Speech Service'
+title: 'Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschauversion) – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen und testen Sie eine gehostete Anwendung für benutzerdefinierte Befehle.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111371"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815815"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)
 

@@ -1,17 +1,17 @@
 ---
-title: Serverprotokolle für Azure Database for MySQL
+title: Protokolle für langsame Abfragen – Azure Database for MySQL
 description: Beschreibt die Protokolle für langsame Abfragen, die in Azure Database for MySQL verfügbar sind, sowie die verfügbaren Parameter zum Aktivieren verschiedener Protokolliergrade.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 05/29/2019
-ms.openlocfilehash: 90f3e80c92cd4409a77d4661462ae027c535eaf7
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: cd0d09e4d46747b7f3f8e6fb714dd711beef9484
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434285"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770837"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokolle für langsame Abfragen in Azure Database for MySQL
 In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.
@@ -23,7 +23,7 @@ Sie können Protokolle für langsame Abfragen von Azure Database for MySQL über
 
 Wählen Sie im Azure-Portal Ihren Azure Database for MySQL-Server aus. Wählen Sie unter der Überschrift **Überwachung** die Seite **Serverprotokolle** aus.
 
-Weitere Informationen zur Azure CLI finden Sie unter [Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI](howto-configure-server-logs-in-cli.md).
+Weitere Informationen zur Azure-Befehlszeilenschnittstelle finden Sie unter [Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure-Befehlszeilenschnittstelle](howto-configure-server-logs-in-cli.md).
 
 ## <a name="log-retention"></a>Protokollaufbewahrung
 Protokolle sind für bis zu sieben Tage nach ihrer Erstellung verfügbar. Wenn die Gesamtgröße der verfügbaren Protokolle 7 GB überschreitet, werden die ältesten Dateien gelöscht, bis Speicherplatz verfügbar ist. 

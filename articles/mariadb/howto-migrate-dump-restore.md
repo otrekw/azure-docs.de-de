@@ -1,17 +1,17 @@
 ---
-title: Migrieren der MariaDB-Datenbank mithilfe von Sicherungen und Wiederherstellungen auf Azure Database for MariaDB
+title: Migrieren durch Sicherungen und Wiederherstellungen – Azure Database for MariaDB
 description: In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Instanz von Azure Database for MariaDB beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 05626535a2ab2d8da29b8c817ebfe84c257c76aa
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 12/02/2019
+ms.openlocfilehash: 660b39a063496eb6566d51dbef2c914499dc70c9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845049"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776004"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>Migrieren der MariaDB-Datenbank auf Azure Database for MariaDB durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Ihrer Instanz von Azure Database for MariaDB beschrieben.

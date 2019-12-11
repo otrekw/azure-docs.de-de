@@ -1,17 +1,17 @@
 ---
 title: Zugreifen auf den Änderungsfeed in Azure Cosmos DB
 description: Dieser Artikel beschreibt die verschiedenen Optionen, die für das Lesen des Änderungsfeeds und den Zugriff darauf in Azure Cosmos DB zur Verfügung stehen.
-author: markjbrown
-ms.author: mjbrown
+author: TheovanKraay
+ms.author: thvankra
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.openlocfilehash: 3d30c9f946f97f06c1a3ba1cd2e77e1ab151a572
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.date: 11/25/2019
+ms.openlocfilehash: fc7e78a44d03af8952c1e178a3e92b1ee0c6fe66
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754882"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688129"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Lesen des Azure Cosmos DB-Änderungsfeeds
 
@@ -31,7 +31,13 @@ Mit der Änderungsfeed-Verarbeitungsbibliothek sind die Vorgänge weniger komple
 
 ## <a name="using-the-azure-cosmos-db-sql-api-sdk"></a>Verwenden des SQL-API SDK von Azure Cosmos DB
 
-Das SDK bietet eine detaillierte Steuerung des Änderungsfeeds. Sie können den Prüfpunkt verwalten, auf einen bestimmten Schlüssel für eine logische Partition zugreifen usw. Wenn Sie über mehrere Reader verfügen, können Sie mit `ChangeFeedOptions` die Leselast auf verschiedene Threads oder Clients verteilen. 
+Das SDK bietet eine detaillierte Steuerung des Änderungsfeeds. Sie können den Prüfpunkt verwalten, auf einen bestimmten Schlüssel für eine logische Partition zugreifen usw. Wenn Sie über mehrere Reader verfügen, können Sie mit `ChangeFeedOptions` die Leselast auf verschiedene Threads oder Clients verteilen.
+
+## <a name="change-feed-in-apis-for-cassandra-and-mongodb"></a>Änderungsfeed in APIs für Cassandra und MongoDB
+
+Die Funktionen des Änderungsfeeds werden in der MongoDB-API als Änderungsdatenstrom und in der Cassandra-API über Prädikate verfügbar gemacht. Weitere Informationen zu den Implementierungsdetails für die MongoDB-API finden Sie unter [Änderungsdatenströme in der Azure Cosmos DB-API für MongoDB](mongodb-change-streams.md).
+
+Natives Apache Cassandra bietet Change Data Capture (CDC), einen Mechanismus zum Markieren bestimmter Tabellen für die Archivierung sowie zum Ablehnen von Schreibvorgängen in diesen Tabellen, nachdem eine konfigurierbare Größe auf dem Datenträger für das CDC-Protokoll erreicht wurde. Der Änderungsfeed in der Azure Cosmos DB-API für Cassandra verbessert die Möglichkeit, Änderungen mit Prädikaten über CQL abzufragen. Weitere Informationen zu den Implementierungsdetails finden Sie unter [Änderungsfeed in der Azure Cosmos DB-API für Cassandra](cassandra-change-feed.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

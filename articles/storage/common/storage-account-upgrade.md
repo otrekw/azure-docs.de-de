@@ -7,16 +7,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: tamram
-ms.openlocfilehash: 3ad82a1312ccce5029685d903a3c5e3caff50f8a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e24b7efb9f4af9f730ce79751e2fc5a9d210edbd
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495985"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806965"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
-Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und von Blob-Speicherkonten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise.
+Speicherkonten vom Typ „Allgemein v2“ unterstützen die neuesten Azure Storage-Features und umfassen die gesamte Funktionalität von Konten des Typs „Allgemein v1“ und von Blob-Speicherkonten. Konten vom Typ „Allgemein v2“ werden für die meisten Speicherszenarien empfohlen. Konten vom Typ „Allgemein v2“ bieten die niedrigsten Preise pro Gigabyte für Azure Storage sowie wettbewerbsfähige Transaktionspreise. Konten vom Typ „Allgemein v2“ unterstützen die standardmäßigen Kontozugriffsebenen „Heiß“ oder „Kalt“ und das Blobebenentiering zwischen „Heiß“, „Kalt“ und „Archiv“.
 
 Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“ von einem Speicherkonto vom Typ „Allgemein v1“ oder einem Blob-Speicherkonto ist einfach. Sie können für das Upgrade das Azure-Portal, PowerShell oder die Azure CLI verwenden.
 
@@ -40,39 +40,39 @@ Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
 Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit PowerShell ein Upgrade auf ein Konto vom Typ „Allgemein v2“ durchführen möchten, sollten Sie zuerst PowerShell aktualisieren, damit die aktuelle Version des Moduls **Az.Storage** verwendet wird. Informationen zur Installation von PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie den Namen Ihrer Ressourcengruppe und des Speicherkontos:
+Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie dabei den Namen der Ressourcengruppe, den Namen des Speicherkontos und die gewünschte Kontozugriffsebene.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2
+Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-clitabazure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Wenn Sie für ein Konto vom Typ „Allgemein v1“ mit der Azure CLI ein Upgrade auf ein Konto vom Typ „Allgemein v2“ durchführen möchten, installieren Sie zuerst die aktuelle Version der Azure CLI. Informationen zum Installieren der CLI finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie den Namen Ihrer Ressourcengruppe und des Speicherkontos:
+Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie dabei den Namen der Ressourcengruppe, den Namen des Speicherkontos und die gewünschte Kontozugriffsebene.
 
 ```cli
-az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2
+az storage account update -g <resource-group> -n <storage-account> --set kind=StorageV2 --access-tier=<Hot/Cool>
 ```
 
 ---
 
 ## <a name="specify-an-access-tier-for-blob-data"></a>Angeben einer Zugriffsebene für Blobdaten
 
-Konten vom Typ „Allgemein v2“ unterstützen alle Azure Storage Services und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs im Blobspeicher verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine Zugriffsebene für Ihre Blobdaten angeben.
+Konten vom Typ „Allgemein v2“ unterstützen alle Azure Storage-Dienste und -Datenobjekte, aber Zugriffsebenen sind nur für Blockblobs in Blob Storage verfügbar. Wenn Sie ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ durchführen, können Sie eine der Standard-Kontozugriffsebenen „Heiß“ oder „Kalt“ angeben. Dies legt fest, in welche Standardebene Ihre Blobdaten hochgeladen werden, wenn kein Parameter für die einzelnen Blobzugriffsebenen angegeben wird.
 
-Zugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können auf der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Blobzugriffsebenen ermöglichen es, den kostengünstigsten Speicher basierend auf Ihren erwarteten Nutzungsmustern auszuwählen. Blockblobs können in der heißen, der kalten oder der Archivspeicherebene gespeichert werden. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Speicherebenen „Premium“ (Vorschauversion), „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
-Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ (Hot) erstellt, und für ein Speicherkonto vom Typ „Allgemein v1“ wird ein Upgrade auf die Zugriffsebene „Heiß“ durchgeführt. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade Ihrer Daten verwendet werden soll, sollten Sie Ihr Szenario berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
+Standardmäßig wird ein neues Speicherkonto auf der Zugriffsebene „Heiß“ erstellt. Für ein Speicherkonto vom Typ „Allgemein v1“ kann ein Upgrade auf eine der Zugriffsebenen „Heiß“ oder „Kalt“ durchgeführt werden. Wenn beim Upgrade keine Kontozugriffsebene angegeben wird, wird sie standardmäßig auf „Heiß“ aktualisiert. Wenn Sie untersuchen, welche Zugriffsebene nach dem Upgrade verwendet werden soll, sollten Sie das Szenario Ihrer aktuellen Datennutzung berücksichtigen. Es gibt zwei typische Benutzerszenarien für die Migration auf ein Konto vom Typ „Allgemein v2“:
 
 * Sie verfügen über ein vorhandenes Speicherkonto vom Typ „Allgemein v1“ und möchten ein Upgrade auf ein Speicherkonto vom Typ „Allgemein v2“ mit der richtigen Speicherzugriffsebene für Blobdaten bewerten.
-* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten bewerten, ob Sie die Speicherebene „Heiß“ oder „Kalt“ für Blobdaten verwenden sollten.
+* Sie haben sich für die Nutzung eines Speicherkontos vom Typ „Allgemein v2“ entschieden oder besitzen bereits ein Konto dieser Art und möchten bewerten, ob Sie eine der Speicherebenen „Heiß“ oder „Kalt“ für Blobdaten verwenden sollen.
 
 In beiden Fällen sollten Sie zuerst die Kosten für Speicherung, Zugriff und Arbeiten mit Ihren Daten in einem Speicherkonto vom Typ „Allgemein v2“ schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
-Ein Upgrade Ihres Speicherkontos vom Typ „v1“ auf ein Konto vom Typ „Allgemein v2“ ist kostenlos. Das Ändern der Speicherzugriffstarifs kann zu Änderungen an Ihrer Rechnung führen. 
+Ein Upgrade Ihres Speicherkontos vom Typ „v1“ auf ein Konto vom Typ „Allgemein v2“ ist kostenlos. Die gewünschte Zugriffsebene können Sie während des Upgradevorgangs angeben. Wenn beim Upgradevorgang keine Kontoebene angegeben wurde, wird die Standardkontoebene `Hot` für das aktualisierte Konto verwendet. Wenn Sie die Speicherzugriffsebene jedoch nach dem Upgrade ändern, kann dies zu Änderungen an der Rechnung führen. Es wird daher empfohlen, die neue Kontoebene während des Upgradevorgangs anzugeben.
 
 Für alle Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Speicherkontos sollten folgende Abrechnungsaspekte berücksichtigt werden:
 

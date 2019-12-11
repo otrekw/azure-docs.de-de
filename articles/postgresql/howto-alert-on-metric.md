@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren von Warnungen zu Metriken für Azure Database for PostgreSQL (Einzelserver) im Azure-Portal
+title: Konfigurieren von Warnungen – Azure-Portal – Azure Database for PostgreSQL (Einzelserver)
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for PostgreSQL (Einzelserver) konfigurieren und auf diese zugreifen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 000dfe2d3e594c71f9c7ebbff7bce7141243668a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: fe099dcb49d176d27466c08749a5873904d1ae2f
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067293"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766836"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---single-server"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL (Einzelserver)
 

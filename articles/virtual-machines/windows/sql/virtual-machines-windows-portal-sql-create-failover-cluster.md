@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 08549935c7a0651709a08bef61624e4e436d4aad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084087"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792183"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf virtuellen Azure-Computern
 
@@ -81,9 +81,7 @@ Sie sollten zudem über Grundlagenkenntnisse in Bezug auf die folgenden Technolo
 - [Azure-Ressourcengruppen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Zurzeit werden Failoverclusterinstanzen von SQL Server auf virtuellen Azure-Computern nur mit dem [schlanken](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) Verwaltungsmodus der [SQL Server IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) unterstützt. Deinstallieren Sie die vollständige Erweiterung von den VMs, die Teil des Failoverclusters sind, und registrieren Sie diese anschließend beim SQL VM-Ressourcenanbieter im Lightweight-Modus.
->
-> Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL Server-VMs nach der erneuten Installation im Lightweight-Verwaltungsmodus nicht zur Verfügung.
+> Zurzeit werden Failoverclusterinstanzen von SQL Server auf virtuellen Azure-Computern nur mit dem [Lightweight-Verwaltungsmodus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) der [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) unterstützt. Um aus dem vollständigen Erweiterungsmodus in den Lightweightmodus zu wechseln, löschen Sie die Ressource **Virtueller SQL-Computer** für die entsprechenden VMs, und registrieren Sie diese dann beim SQL-VM-Ressourcenanbieter im Lightweightmodus. **Deaktivieren Sie das Kontrollkästchen neben dem richtigen virtuellen Computer**, wenn Sie die Ressource **Virtueller SQL-Computer** mithilfe des Azure-Portals löschen. Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL-VMs nach der erneuten Installation im schlanken Verwaltungsmodus nicht zur Verfügung.
 
 ### <a name="what-to-have"></a>Voraussetzungen
 

@@ -1,21 +1,18 @@
 ---
-title: Austauschen von Nachrichten mit Azure Service Bus – Azure Logic Apps
+title: Austauschen von Meldungen mit Azure Service Bus
 description: Senden und Empfangen von Nachrichten mithilfe von Azure Service Bus in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 477fdc2291d875c57bfb0ae3cb87b6df9bd41398
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: c83e2bc0411c9bec3c3a5fa35dcc6565ed7f44f9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024307"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789398"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Austauschen von Nachrichten in der Cloud mit Azure Logic Apps und Azure Service Bus
 

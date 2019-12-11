@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren der Datenreplikation in Azure Database for MariaDB | Microsoft-Dokumentation
+title: Konfigurieren der Datenreplikation – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie die Datenreplikation in Azure Database for MariaDB eingerichtet wird.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 21e8a88cc6f03b4d54a6c5299b0b6be36cc32d6d
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 12/02/2019
+ms.openlocfilehash: 0dbbc9b09d5d4770296223db9dc909c17f574fe8
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444803"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767023"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurieren der Datenreplikation in Azure Database for MariaDB
 

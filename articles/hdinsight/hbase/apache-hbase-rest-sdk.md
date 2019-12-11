@@ -2,18 +2,18 @@
 title: Verwenden des HBase .NET SDK – Azure HDInsight
 description: Verwenden Sie das HBase .NET SDK zum Erstellen und Löschen von Tabellen und zum Lesen und Schreiben von Daten.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/02/2019
+ms.openlocfilehash: eba7d7ad009b2ef0442a916983489489eb5cceb8
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077165"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806659"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Verwenden des .NET SDK für Apache HBase
 
@@ -112,7 +112,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase implementiert [Cloud BigTable](https://cloud.google.com/bigtable/), daher hat das Datenformat folgendes Format:
+HBase implementiert [Cloud BigTable](https://cloud.google.com/bigtable/), daher ähnelt das Datenformat der folgenden Abbildung:
 
 ![Apache HBase – Beispieldatenausgabe](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 

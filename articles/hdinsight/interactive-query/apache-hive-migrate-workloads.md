@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 3d55e0e7ecbd52b6d96c657e333c5557388f2721
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406508"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706023"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrieren von Azure HDInsight 3.6-Hive-Workloads zu HDInsight 4.0
 
@@ -174,7 +174,7 @@ Zum Ausführen und Debuggen von Hive-/LLAP-Abfragen in einem HDInsight 3.6-Clus
 
 In HDInsight 4.0 wurde HiveCLI durch Beeline ersetzt. HiveCLI ist ein Thrift-Client für Hive-Server 1, und Beeline ist ein JDBC-Client, der Zugriff auf Hive-Server 2 bietet. Beeline kann auch zum Herstellen einer Verbindung mit einem beliebigen anderen JDBC-kompatiblen Datenbankendpunkt verwendet werden. Beeline ist in HDInsight 4.0 standardmäßig verfügbar und erfordert keinerlei Installation.
 
-In HDInsight 3.6 ist die Ambari-Hive-Ansicht der GUI-Client für die Interaktion mit dem Hive-Server. In HDInsight 4.0 wurde die Hive-Ansicht durch Hortonworks Data Analytics Studio (DAS) ersetzt. DAS ist nicht standardmäßig in HDInsight-Clustern enthalten und kein offiziell unterstütztes Paket. DAS kann jedoch mit einer [Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md) wie folgt auf dem Cluster installiert werden:
+In HDInsight 3.6 ist die Ambari-Hive-Ansicht der GUI-Client für die Interaktion mit dem Hive-Server. HDInsight 4.0 wird nicht mit Ambari View ausgeliefert. Wir haben unseren Kunden eine Möglichkeit zur Verfügung gestellt, Data Analytics Studio (DAS) zu verwenden, bei dem es sich nicht um einen HDInsight-Kerndienst handelt. DAS ist nicht standardmäßig in HDInsight-Clustern enthalten und kein offiziell unterstütztes Paket. DAS kann jedoch mit einer [Skriptaktion](../hdinsight-hadoop-customize-cluster-linux.md) wie folgt auf dem Cluster installiert werden:
 
 |Eigenschaft | Wert |
 |---|---|

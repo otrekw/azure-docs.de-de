@@ -1,5 +1,5 @@
 ---
-title: 'Speech Devices SDK „Roobo Smart Audio Dev Kit v1“: Speech-Dienst'
+title: Speech-Geräte-SDK „Roobo Smart Audio Dev Kit v1“ – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Voraussetzungen und Anweisungen für den Einstieg in das Speech Devices SDK „Roobo Smart Audio Dev Kit v1“
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 08bac7cd833f52d2dfec4561c2f87330a4119748
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9add5b063b67ddcc4cd5bf93e7f5b570b004e5ca
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68552863"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815576"
 ---
 # <a name="device-roobo-smart-audio-dev-kit"></a>Gerät: Roobo Smart Audio Dev Kit
 

@@ -1,5 +1,5 @@
 ---
-title: Automatisches Bereitstellen von Linux-Geräten mit DPS – Azure IoT Edge | Microsoft-Dokumentation
+title: Bereitstellen von Geräten mit einem virtuellen TPM auf Linux-VMs – Azure IoT Edge
 description: Verwenden eines simulierten TPM auf einem virtuellen Linux-Computer, um den Azure Device Provisioning Service für Azure IoT Edge zu testen
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 03/01/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 292ae570d4f2ddd0c09e667860ee2ba01b9fc6b8
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 8f664a2c503367410507ccba3bc9078d34acbe17
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457173"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666340"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Erstellen und Bereitstellen eines IoT Edge-Geräts mit einem virtuellen TPM auf einem virtuellen Linux-Computer
 

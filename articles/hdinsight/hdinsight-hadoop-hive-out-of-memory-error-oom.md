@@ -3,18 +3,18 @@ title: Beheben eines Fehlers vom Typ „Nicht genügend Hive-Arbeitsspeicher“ 
 description: Beheben Sie einen Fehler vom Typ „Nicht genügend Hive-Arbeitsspeicher“ in HDInsight. Das Kundenszenario ist eine viele große Tabellen übergreifende Abfrage.
 keywords: Fehler „Nicht genügend Arbeitsspeicher“, OOM, Hive-Einstellungen
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2e7328b95aecc8e644d7b9e2ec407a62551fff79
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/28/2019
+ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64712793"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687770"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Beheben eines Fehlers vom Typ „Nicht genügend Apache Hive-Arbeitsspeicher“ in Azure HDInsight
 
@@ -24,21 +24,23 @@ Erfahren Sie, wie Sie einen Fehler vom Typ „Nicht genügend Apache Hive-Arbeit
 
 Ein Kunde hat die folgende Hive-Abfrage ausgeführt:
 
-    SELECT
-        COUNT (T1.COLUMN1) as DisplayColumn1,
-        …
-        …
-        ….
-    FROM
-        TABLE1 T1,
-        TABLE2 T2,
-        TABLE3 T3,
-        TABLE5 T4,
-        TABLE6 T5,
-        TABLE7 T6
-    where (T1.KEY1 = T2.KEY1….
-        …
-        …
+```sql
+SELECT
+    COUNT (T1.COLUMN1) as DisplayColumn1,
+    …
+    …
+    ….
+FROM
+    TABLE1 T1,
+    TABLE2 T2,
+    TABLE3 T3,
+    TABLE5 T4,
+    TABLE6 T5,
+    TABLE7 T6
+where (T1.KEY1 = T2.KEY1….
+    …
+    …
+```
 
 Bestimmte Aspekte dieser Abfrage:
 
@@ -79,12 +81,11 @@ Bei Verwendung der Apache Tez-Ausführungs-Engine. Die gleiche Abfrage wurde 15 
 
 Bei Verwendung eines größeren virtuellen Computers (wie z. B. D12) wird die Fehlermeldung weiterhin angezeigt.
 
-
 ## <a name="debug-the-out-of-memory-error"></a>Debuggen des Fehlers „Nicht genügend Arbeitsspeicher“
 
 Unsere Support- und Entwicklerteams fanden heraus, dass eines der Probleme, das den Fehler vom Typ „Nicht genügend Arbeitsspeicher“ verursacht, ein [in der Apache JIRA beschriebenes bekanntes Problem](https://issues.apache.org/jira/browse/HIVE-8306) war:
 
-    When hive.auto.convert.join.noconditionaltask = true we check noconditionaltask.size and if the sum  of tables sizes in the map join is less than noconditionaltask.size the plan would generate a Map join, the issue with this is that the calculation doesn't take into account the overhead introduced by different HashTable implementation as results if the sum of input sizes is smaller than the noconditionaltask size by a small margin queries will hit OOM.
+„Wenn hive.auto.convert.join.noconditionaltask = true lautet, überprüfen wir noconditionaltask.size. Wenn die Summe der Tabellengrößen im Kartenjoin kleiner ist als noconditionaltask.size, würde der Plan einen Kartenjoin generieren. Das Problem dabei ist, dass bei der Berechnung der Mehraufwand, der durch unterschiedliche HashTable-Implementierungen als Ergebnisse verursacht wird, nicht berücksichtigt wird, da bei Abfragen ein OOM-Zustand auftritt, wenn die Summe der Eingabegrößen noconditionaltask.size geringfügig überschreitet.“
 
 In der Datei „hive-site.xml“ war **hive.auto.convert.join.noconditionaltask** auf **true** festgelegt:
 
@@ -100,7 +101,7 @@ In der Datei „hive-site.xml“ war **hive.auto.convert.join.noconditionaltask*
 </property>
 ```
 
-Wahrscheinlich war „Map Join“ die Ursache für den Java-Heapspeicher-OOM-Fehler. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
+Wahrscheinlich war der Kartenjoin die Ursache für den OOM-Fehler im Java-Heapspeicher. Wie im Blogbeitrag [Hadoop Yarn memory settings in HDInsight](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx) (Hadoop Yarn-Arbeitsspeichereinstellungen in HDInsight) erläutert, gehört der bei Einsatz der Tez-Ausführungs-Engine verwendete Heapspeicher tatsächlich zum Tez-Container. In der folgenden Abbildung ist der Tez-Containerspeicher dargestellt.
 
 ![Diagramm zum Tez-Containerspeicher: Fehler vom Typ „Nicht genügenden Hive-Arbeitsspeicher“](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
@@ -108,10 +109,8 @@ Wie im Blogbeitrag schon erwähnt, definieren die folgenden zwei Einstellungen d
 
 > [!NOTE]  
 > Die Einstellung **hive.tez.java.opts** muss stets kleiner sein als **hive.tez.container.size**.
-> 
-> 
 
-Da ein D12-Computer über einen Arbeitsspeicher von 28 GB verfügt, haben wir beschlossen, eine Containergröße von 10 GB (10.240 MB) zu verwenden und „java.opts“ 80 % zuzuweisen:
+Da ein D12-Computer über einen Arbeitsspeicher von 28 GB verfügt, haben wir beschlossen, eine Containergröße von 10 GB (10.240 MB) zu verwenden und java.opts 80 % zuzuweisen:
 
     SET hive.tez.container.size=10240
     SET hive.tez.java.opts=-Xmx8192m

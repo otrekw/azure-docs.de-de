@@ -6,13 +6,13 @@ ms.author: ashish
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 06/10/2019
-ms.openlocfilehash: 4a1d835ebe47ec36bb839da8dcbcd107ffcb9c4c
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.date: 11/22/2019
+ms.openlocfilehash: 15d44f95cccf15fd0f7615655f5bbac1b0c35127
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161974"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706059"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Skalieren von Azure HDInsight-Clustern
 
@@ -136,7 +136,7 @@ yarn application -kill "application_1499348398273_0003"
 
 Wenn Sie einen Cluster zentral herunterskalieren, werden in HDInsight Apache Ambari-Verwaltungsoberflächen verwendet, um zuerst die zusätzlichen Workerknoten außer Betrieb zu setzen, sodass deren HDFS-Blöcke auf andere Workerknoten repliziert werden, die online sind. Anschließend wird der Cluster in HDInsight sicher zentral herunterskaliert. HDFS wechselt während des Skalierungsvorgangs in den abgesicherten Modus und soll diesen nach Abschluss der Skalierung wieder verlassen. In einigen Fällen bleibt HDFS jedoch aufgrund der Unterreplikation des Dateiblocks während eines Skalierungsvorgangs im abgesicherten Modus hängen.
 
-Standardmäßig ist HDFS mit der `dfs.replication`-Einstellung 3 konfiguriert, mit der gesteuert wird, wie viele Kopien jedes Dateiblocks verfügbar sind. Jede Kopie eines Dateiblocks wird auf einem unterschiedlichen Knoten des Clusters gespeichert.
+Standardmäßig ist HDFS mit der `dfs.replication`-Einstellung 1 konfiguriert, mit der gesteuert wird, wie viele Kopien jedes Dateiblocks verfügbar sind. Jede Kopie eines Dateiblocks wird auf einem unterschiedlichen Knoten des Clusters gespeichert.
 
 Wenn HDFS erkennt, dass die erwartete Anzahl von Kopien der Dateiblöcke nicht verfügbar ist, wechselt HDFS in den abgesicherten Modus, und in Ambari werden Warnungen generiert. Wenn HDFS bei einem Skalierungsvorgang in den abgesicherten Modus wechselt, diesen dann jedoch nicht verlassen kann, da die erforderliche Anzahl der Knoten für die Replikation nicht erkannt wird, kann der Cluster im abgesicherten Modus hängen bleiben.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 10a3c2bf421c7182dca00dfcbf7c3f559141a745
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084083"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792196"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz mit einer Premium-Dateifreigabe für virtuelle Azure-Computer
 
@@ -45,9 +45,7 @@ Sie sollten zudem über Grundlagenkenntnisse in Bezug auf die folgenden Technolo
 - [Azure-Ressourcengruppen](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
-> Zurzeit werden Failoverclusterinstanzen von SQL Server auf virtuellen Azure-Computern nur mit dem [schlanken](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) Verwaltungsmodus der [SQL Server IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) unterstützt. Um aus dem vollständigen Erweiterungsmodus in den schlanken Modus zu wechseln, löschen Sie die Ressource **Virtueller SQL-Computer** für die entsprechenden VMs, und registrieren Sie sie dann beim SQL VM-Ressourcenanbieter im Modus [Schlank](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider). Deaktivieren Sie das Kontrollkästchen neben dem richtigen virtuellen Computer, wenn Sie die Ressource **Virtueller SQL-Computer** mithilfe des Azure-Portals löschen.
->
-> Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL Server-VMs nach der erneuten Installation im [schlanken](virtual-machines-windows-sql-register-with-resource-provider.md#register-with-sql-vm-resource-provider) Verwaltungsmodus nicht zur Verfügung.
+> Zurzeit werden Failoverclusterinstanzen von SQL Server auf virtuellen Azure-Computern nur mit dem [Lightweight-Verwaltungsmodus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) der [SQL Server-IaaS-Agent-Erweiterung](virtual-machines-windows-sql-server-agent-extension.md) unterstützt. Um aus dem vollständigen Erweiterungsmodus in den Lightweightmodus zu wechseln, löschen Sie die Ressource **Virtueller SQL-Computer** für die entsprechenden VMs, und registrieren Sie diese dann beim SQL-VM-Ressourcenanbieter im Lightweightmodus. **Deaktivieren Sie das Kontrollkästchen neben dem richtigen virtuellen Computer**, wenn Sie die Ressource **Virtueller SQL-Computer** mithilfe des Azure-Portals löschen. Die vollständige Erweiterung unterstützt Funktionen wie die automatische Sicherung, Patchen und erweiterte Portalverwaltung. Diese Funktionen stehen für SQL-VMs nach der erneuten Installation im schlanken Verwaltungsmodus nicht zur Verfügung.
 
 Premium-Dateifreigaben bieten IOPS und Durchsatzkapazitäten, die den Anforderungen vieler Workloads gerecht werden. Für E/A-intensive Workloads sollten Sie [SQL Server-Failoverclusterinstanzen mit „Direkte Speicherplätze“ ](virtual-machines-windows-portal-sql-create-failover-cluster.md) auf Basis von verwalteten Premium-Datenträgern oder Ultra-Datenträgern in Erwägung ziehen.  
 
@@ -65,7 +63,7 @@ Bei der Lizenzierung für nutzungsbasierte Bezahlung fallen für eine Failovercl
 
 Wenn Sie über ein Enterprise Agreement mit Software Assurance verfügen, können Sie für jeden aktiven Knoten einen kostenlosen passiven FCI-Knoten verwenden. Um diesen Vorteil in Azure zu nutzen, verwenden Sie BYOL-VM-Images, und verwenden Sie die gleiche Lizenz sowohl auf den aktiven als auch auf den passiven Knoten der FCI. Weitere Informationen finden Sie unter [Enterprise Agreement](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Einen Vergleich der Lizenzierung für nutzungsbasierte Bezahlung und der BYOL-Lizenzierung für SQL Server auf Azure Virtual Machines finden Sie unter [Erste Schritte mit virtuellen SQL-Computern](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
+Einen Vergleich der Lizenzierung für nutzungsbasierte Bezahlung und der BYOL-Lizenzierung für SQL Server auf virtuellen Azure-Computern finden Sie unter [Erste Schritte mit virtuellen SQL-Computern](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms).
 
 Umfassende Informationen zur Lizenzierung von SQL Server finden Sie unter [Preise](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -92,7 +90,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
 
 ## <a name="step-1-create-the-virtual-machines"></a>Schritt 1: Erstellen der virtuellen Computer
 
-1. Melden Sie sich mit Abonnement beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit Ihrem Abonnement beim [Azure-Portal](https://portal.azure.com) an.
 
 1. [Erstellen Sie eine Azure-Verfügbarkeitsgruppe](../tutorial-availability-sets.md).
 
@@ -133,7 +131,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
    >[!IMPORTANT]
    > Entfernen Sie nach dem Erstellen des virtuellen Computers die vorinstallierte eigenständige SQL Server-Instanz. Sie verwenden die vorinstallierten SQL Server-Medien, um die SQL Server-FCI nach dem Einrichten des Failoverclusters und der Premium-Dateifreigabe als Speicher zu erstellen.
 
-   Alternativ dazu können Sie auch Azure Marketplace-Images verwenden, die nur das Betriebssystem enthalten. Wählen Sie ein Image des Typs **Windows Server 2016 Datacenter** aus, und installieren Sie die SQL Server-FCI nach der Einrichtung des Failoverclusters und der Premium-Dateifreigabe als Speicher. Dieses Image enthält keine SQL Server-Installationsmedien. Speichern Sie die SQL Server-Installationsmedien an einem Speicherort, an dem Sie sie für jeden Server ausführen können.
+   Alternativ dazu können Sie auch Azure Marketplace-Images verwenden, die nur das Betriebssystem enthalten. Wählen Sie ein Image des Typs **Windows Server 2016 Datacenter** aus, und installieren Sie die SQL Server-FCI nach der Einrichtung des Failoverclusters und der Premium-Dateifreigabe als Speicher. Dieses Image enthält keine SQL Server-Installationsmedien. Speichern Sie die SQL Server-Installationsmedien an einem Speicherort, an dem sie für jeden Server ausgeführt werden können.
 
 1. Stellen Sie eine Verbindung mit jedem virtuellen Computer per RDP her, nachdem sie von Azure erstellt wurden.
 
@@ -190,8 +188,8 @@ Nachdem Sie die virtuellen Computer erstellt und konfiguriert haben, können Sie
 Im nächsten Schritt konfigurieren Sie den Failovercluster. In diesem Schritt führen Sie die folgenden untergeordneten Schritte aus:
 
 1. Hinzufügen des Features Windows Server-Failoverclustering
-1. Überprüfen des Clusters
-1. Erstellen des Failoverclusters
+1. Überprüfen des Clusters.
+1. Erstellen des Failoverclusters.
 1. Erstellen des Cloudzeugen
 
 
@@ -245,7 +243,7 @@ Erstellen Sie nach dem Validieren des Clusters den Failovercluster.
 ### <a name="create-the-failover-cluster"></a>Erstellen des Failoverclusters
 
 Für das Erstellen des Failoverclusters benötigen Sie Folgendes:
-- Die Namen der virtuellen Computer, die zu Clusterknoten werden
+- Die Namen der virtuellen Computer, die zu Clusterknoten werden.
 - Einen Namen für den Failovercluster
 - Eine IP-Adresse für den Failovercluster. Sie können eine IP-Adresse verwenden, die nicht in demselben virtuellen Azure-Netzwerk und Subnetz wie die Clusterknoten genutzt wird.
 
@@ -259,7 +257,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 #### <a name="windows-server-2019"></a>Windows Server 2019
 
-Mit dem folgenden PowerShell-Befehl wird ein Failovercluster für Windows Server 2019 erstellt. Weitere Informationen finden Sie unter [Failover cluster: Cluster Network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97). Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem virtuellen Azure-Netzwerk.
+Mit dem folgenden PowerShell-Befehl wird ein Failovercluster für Windows Server 2019 erstellt. Weitere Informationen finden Sie unter [Failovercluster: Cluster Network Object](https://blogs.windows.com/windowsexperience/2018/08/14/announcing-windows-server-2019-insider-preview-build-17733/#W0YAxO8BfwBRbkzG.97). Aktualisieren Sie das Skript mit den Namen der Knoten (Namen virtueller Computer) und einer verfügbaren IP-Adresse aus dem virtuellen Azure-Netzwerk.
 
 ```powershell
 New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAddress <n.n.n.n> -NoStorage -ManagementPointNetworkType Singleton 
@@ -326,17 +324,17 @@ So erstellen Sie den Lastenausgleich
 
 1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit den virtuellen Computern.
 
-1. Wählen Sie **Hinzufügen**. Durchsuchen Sie den Azure Marketplace nach **Load Balancer**. Wählen Sie **Azure Load Balancer** aus.
+1. Wählen Sie **Hinzufügen**. Durchsuchen Sie den Azure Marketplace nach **Load Balancer**. Wählen Sie **Load Balancer** aus.
 
 1. Klicken Sie auf **Erstellen**.
 
 1. Richten Sie den Lastenausgleich mit den folgenden Werten ein:
 
    - **Abonnement**: Ihr Azure-Abonnement.
-   - **Ressourcengruppe**: Die Ressourcengruppe, die Ihren virtuellen Computer enthält.
+   - **Ressourcengruppe**: Die Ressourcengruppe, die Ihre virtuellen Computer enthält.
    - **Name**: Ein Name, mit dem der Lastenausgleich identifiziert wird.
    - **Region**: Der Azure-Standort, der Ihre virtuellen Computer enthält.
-   - **Typ**: öffentlich oder privat. Auf einen privaten Lastenausgleich kann aus demselben virtuellen Netzwerk zugegriffen werden. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
+   - **Typ**: Öffentlich oder privat. Der Zugriff auf einen privaten Lastenausgleich ist innerhalb des virtuellen Netzwerks möglich. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
    - **SKU**: Standard.
    - **Virtuelles Netzwerk:** Dies ist dasselbe Netzwerk wie für die virtuellen Computer.
    - **IP-Adresszuweisung**: Statisch. 
@@ -357,7 +355,7 @@ So erstellen Sie den Lastenausgleich
 
 1. Aktivieren Sie unter **Zielnetzwerk-IP-Konfigurationen** die Option **VIRTUELLER COMPUTER**, und wählen Sie die virtuellen Computer aus, die als Clusterknoten eingeschlossen werden. Schließen Sie dabei alle virtuellen Computer ein, die die FCI hosten.
 
-1. Wählen Sie **OK**, um den Back-End-Pool zu erstellen.
+1. Wählen Sie **OK** aus, um den Back-End-Pool zu erstellen.
 
 ### <a name="configure-a-load-balancer-health-probe"></a>Konfigurieren eines Integritätstests für den Lastenausgleich
 
@@ -454,12 +452,12 @@ Melden Sie sich zum Testen der Konnektivität an einem anderen virtuellen Comput
 
 ## <a name="limitations"></a>Einschränkungen
 
-Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und einen [Load Balancer im Tarif „Standard“](../../../load-balancer/load-balancer-standard-overview.md).
+Virtuelle Azure-Computer unterstützen Microsoft Distributed Transaction Coordinator (MSDTC) auf Windows Server 2019 mit Speicher auf freigegebenen Clustervolumes (CSV) und einen [Standardlastenausgleich](../../../load-balancer/load-balancer-standard-overview.md).
 
 Auf virtuellen Azure-Computern wird MSDTC unter Windows Server 2016 und früheren Versionen aus folgenden Gründen nicht unterstützt:
 
-- Die gruppierte MSDTC-Ressource kann nicht für die Verwendung von freigegebenem Speicher konfiguriert werden. Wenn Sie unter Windows Server 2016 eine MSDTC-Ressource erstellen, wird kein freigegebener Speicher für die Verwendung angezeigt, selbst wenn der Speicher verfügbar ist. Dieses Problem wurde in Windows Server 2019 behoben.
-- Der Load Balancer im Tarif „Basic“ verarbeitet keine RPC-Ports.
+- Die MSDTC-Clusterressource kann nicht für die Verwendung von freigegebenem Speicher konfiguriert werden. Wenn Sie unter Windows Server 2016 eine MSDTC-Ressource erstellen, wird kein freigegebener Speicher für die Verwendung angezeigt, selbst wenn der Speicher verfügbar ist. Dieses Problem wurde in Windows Server 2019 behoben.
+- Der einfache Lastenausgleich verarbeitet keine RPC-Ports.
 
 ## <a name="see-also"></a>Weitere Informationen
 

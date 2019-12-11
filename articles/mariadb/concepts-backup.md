@@ -1,17 +1,17 @@
 ---
-title: Sichern und Wiederherstellen in Azure Database for MariaDB
+title: Sichern und Wiederherstellen – Azure Database for MariaDB
 description: Erfahren Sie mehr über das automatische Sichern und Wiederherstellen Ihres Azure Database for MariaDB-Servers.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: d6141c3184c8915c36f22d010db39aef2460dd1c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: 333e51782fd0dd88b3e8747fb831b841a22c8e6c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60483050"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773088"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Sichern und Wiederherstellen in Azure Database for MariaDB
 

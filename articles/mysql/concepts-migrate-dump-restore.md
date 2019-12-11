@@ -1,17 +1,17 @@
 ---
-title: Migrieren der MySQL-Datenbank mithilfe von Sicherungen und Wiederherstellungen auf Azure Database for MySQL
+title: Migrieren durch Sicherungen und Wiederherstellungen – Azure Database for MySQL
 description: In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Azure-Datenbank für MySQL beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 06/02/2018
-ms.openlocfilehash: a2a879ed677b981adcd50aea0468e0c5976c2a8a
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.date: 12/02/2019
+ms.openlocfilehash: 65cd5e637434c717ab9ba1b5598c467eea9b4a74
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390543"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770933"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen
 In diesem Artikel werden zwei allgemeine Verfahren zum Sichern und Wiederherstellen von Datenbanken in Azure-Datenbank für MySQL beschrieben

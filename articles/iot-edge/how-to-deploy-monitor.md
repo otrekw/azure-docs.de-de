@@ -1,5 +1,5 @@
 ---
-title: Erstellen automatischer Bereitstellungen im Azure-Portal – Azure IoT Edge | Microsoft-Dokumentation
+title: Bereitstellen von Modulen jeder Größenordnung im Azure-Portal – Azure IoT Edge
 description: Verwenden des Azure-Portals zum Erstellen automatischer Bereitstellungen für Gruppen von IoT Edge-Geräten
 keywords: ''
 author: kgremban
@@ -9,12 +9,12 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 286bab7b7fdbe42190c32dabb42c59d6fc094b2a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 068845bf8cda7ce6abf11eefad0ed176688b34c5
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457370"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665847"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 

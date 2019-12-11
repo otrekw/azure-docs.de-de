@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b24778434596f583be44572612c856fa4e0cecde
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 3740c42c6b6721af4d885f7b63ee4ca4e58f6fa6
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860228"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806705"
 ---
 # <a name="scenes-shots-and-keyframes"></a>Szenen, Aufnahmen und Keyframes
 
@@ -38,9 +38,71 @@ Der Video Indexer bestimmt, wann sich eine Aufnahme im Video aufgrund visueller 
 
 Wählt Sie die Frames aus, die die Aufnahme am besten darstellen. Keyframes sind die repräsentativen Einzelframes, die basierend auf ästhetischen Eigenschaften (z.B. Kontrast und Stabilität) aus dem gesamten Video ausgewählt werden. Video Indexer ruft eine Liste von Keyframe-IDs als Teil der Metadaten der Aufnahme ab, anhand derer Kunden das Keyframeminiaturbild extrahieren können. 
 
-Keyframes sind mit Aufnahmen in der Ausgabe-JSON verknüpft. 
+### <a name="extracting-keyframes"></a>Extrahieren von Keyframes
+
+Um Keyframes mit hoher Auflösung für das Video zu extrahieren, müssen Sie das Video zunächst hochladen und indizieren.
+
+![Keyframes](./media/scenes-shots-keyframes/extracting-keyframes.png)
+
+#### <a name="with-the-video-indexer-website"></a>Über die Video Indexer-Website
+
+Wenn Sie Keyframes über die Video Indexer-Website extrahieren möchten, laden Sie das Video hoch, und indizieren Sie es. Klicken Sie nach Abschluss des Indizierungsauftrags auf die Schaltfläche **Herunterladen**, und wählen Sie **Artefakte (ZIP)** aus. Dadurch wird der Ordner mit den Artefakten auf Ihren Computer heruntergeladen. 
+
+![Keyframes](./media/scenes-shots-keyframes/extracting-keyframes2.png)
+ 
+Entzippen und öffnen Sie den Ordner. Im Ordner *_KeyframeThumbnail* finden Sie alle Keyframes, die aus dem Video extrahiert wurden. 
+
+#### <a name="with-the-video-indexer-api"></a>Über die Video Indexer-API
+
+Wenn Sie Keyframes über die Video Indexer-API abrufen möchten, können Sie das Video mithilfe des Aufrufs zum Hochladen des Videos ([Upload Video](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Upload-Video?)) hochladen und indizieren. Rufen Sie [Get Video Index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Index?) (Videoindex abrufen) auf, nachdem der Indizierungsauftrag abgeschlossen wurde. Dadurch erhalten Sie alle Erkenntnisse, die mit Video Indexer aus den Inhalten in eine JSON-Datei extrahiert wurden.  
+
+Sie erhalten eine Liste der Keyframe-IDs als Teil der Metadaten der einzelnen Aufnahmen. 
+
+```json
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
+      ],
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+
+]
+```
+
+Sie müssen nun jede dieser Keyframe-IDs für den Aufruf zum Abrufen von Miniaturansichten ([Get Thumbnails](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Video-Thumbnail?)) ausführen. Dadurch werden alle Keyframe-Bilder auf Ihren Computer heruntergeladen. 
 
 ## <a name="editorial-shot-type-detection"></a>Erkennung von redaktionellen Aufnahmetypen
+
+Keyframes sind mit Aufnahmen in der Ausgabe-JSON verknüpft. 
 
 Der einer einzelnen Aufnahme im Erkenntnis-JSON zugeordnete Aufnahmetyp stellt deren redaktionellen Typ dar. Diese Art Aufnahmetyp-Charakterisierung kann beim Bearbeiten von Videos zu Clips oder Trailern oder bei der Suche nach einem bestimmten Stil oder Keyframe zu künstlerischen Zwecken nützlich sein. Die verschiedenen Typen werden auf der Grundlage einer Analyse des ersten Keyframes jeder Aufnahme bestimmt. Aufnahmen werden anhand des Maßstabs, der Größe und der Position der Gesichter identifiziert, die in ihrem ersten Keyframe abgebildet sind. 
 
@@ -63,6 +125,7 @@ Zusätzliche Merkmale:
 
 * Two shots (Zwei Aufnahmen): Zeigt die Gesichter von zwei Personen mit mittlerer Größe.
 * Multiple faces (Mehrere Gesichter): mehr als zwei Personen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

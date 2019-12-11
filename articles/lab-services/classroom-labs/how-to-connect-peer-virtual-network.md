@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c9b305beae1b385d4714e3a80e6843c7e76a4f60
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d3f6acef7491a07f94eec0b2c3b2f3bcd9c01a33
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65410997"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74701668"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services 
 Dieser Artikel bietet Informationen dazu, wie Sie eine Peerverbindung zwischen dem Netzwerk Ihres Labs und einem anderen Netzwerk herstellen. 
@@ -31,7 +31,7 @@ In einigen Szenarien, wie beispielsweise den folgenden, müssen Sie das Netzwerk
 - Auf den virtuellen Computern im Lab ist Software installiert, die eine Verbindung mit lokalen Lizenzservern herstellen muss, um eine Lizenz zu erhalten.
 - Die virtuellen Computer im Lab benötigen Zugriff auf Datasets (oder andere Dateien) auf Freigaben im Netzwerk einer Universität. 
 
-Einige lokale Netzwerke sind über [ExpressRoute](../../expressroute/expressroute-introduction.md) oder ein [Gateway für virtuelle Netzwerke](../../vpn-gateway/vpn-gateway-about-vpngateways.md) mit Azure Virtual Network verbunden. Diese Dienste müssen außerhalb von Azure Lab Services eingerichtet werden. Weitere Informationen über das Herstellen einer Verbindung zwischen einem lokalen Netzwerk und Azure über ExpressRoute finden Sie unter [Übersicht über ExpressRoute])(../expressroute/expressroute-introduction.md). Für die lokale Verbindung über ein Gateway für virtuelle Netzwerke müssen sich das Gateway, das angegebene virtuelle Netzwerk und das Labkonto in der gleichen Region befinden.
+Einige lokale Netzwerke sind über [ExpressRoute](../../expressroute/expressroute-introduction.md) oder ein [Gateway für virtuelle Netzwerke](../../vpn-gateway/vpn-gateway-about-vpngateways.md) mit Azure Virtual Network verbunden. Diese Dienste müssen außerhalb von Azure Lab Services eingerichtet werden. Weitere Informationen zum Herstellen einer Verbindung zwischen einem lokalen Netzwerk und Azure über ExpressRoute finden Sie unter [Übersicht über ExpressRoute](../../expressroute/expressroute-introduction.md). Für die lokale Verbindung über ein Gateway für virtuelle Netzwerke müssen sich das Gateway, das angegebene virtuelle Netzwerk und das Labkonto in der gleichen Region befinden.
 
 ## <a name="configure-at-the-time-of-lab-account-creation"></a>Konfigurieren zum Zeitpunkt der Labkontoerstellung
 Während Sie ein neues Labkonto erstellen, können Sie ein vorhandenes virtuelles Netzwerk auswählen, das in der Dropdownliste **Virtuelles Peernetzwerk** angezeigt wird. Das ausgewählte virtuelle Netzwerk ist (mittels Peering) mit Labs verbunden, die im Labkonto erstellt wurden. Alle virtuellen Computer in Labs, die nach Durchführen dieser Änderung erstellt werden, haben Zugriff auf die Ressourcen im virtuellen Peernetzwerk. 

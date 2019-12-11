@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren eines Azure Security Center für IoT-Agents | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Agents für die Verwendung mit Azure Security Center für IoT konfigurieren.
+description: Erfahren Sie, wie Sie Azure Security Center für IoT-Sicherheits-Agents für die Verwendung mit dem Sicherheitsdienst Azure Security Center für IoT konfigurieren.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 095c8fa080d96c9dc6d40261ee5afc559e9ca06b
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 6adb918bbc6d4718be8518019394582a6a843fb8
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933880"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664840"
 ---
 # <a name="tutorial-configure-security-agents"></a>Tutorial: Konfigurieren von Sicherheits-Agents
 

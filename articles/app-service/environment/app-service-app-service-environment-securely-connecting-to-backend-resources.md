@@ -1,28 +1,20 @@
 ---
-title: Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus – Azure
-description: Erfahren Sie, wie Sie von einer App Service-Umgebung aus eine sichere Verbindung mit Back-End-Ressourcen herstellen.
-services: app-service
-documentationcenter: ''
+title: Herstellen einer Verbindung mit einem Back-End v1
+description: Erfahren Sie, wie Sie von einer App Service-Umgebung aus eine sichere Verbindung mit Back-End-Ressourcen herstellen. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: f82eb283-a6e7-4923-a00b-4b4ccf7c4b5b
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: adb7c246a9f8c8d202d45b58f4d22eeb8d51a773
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 03f773e286697a12188f238cf2f422a18a20054f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069960"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687309"
 ---
 # <a name="connect-securely-to-back-end-resources-from-an-app-service-environment"></a>Sicheres Verbinden mit Back-End-Ressourcen von einer App Service-Umgebung aus
-## <a name="overview"></a>Übersicht
 Da eine App Service-Umgebung immer **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt wird, können aus einer App Service-Umgebung ausgehende Verbindungen zu anderen Back-End-Ressourcen ausschließlich über das virtuelle Netzwerk erfolgen.  Infolge einer im Juni 2016 vorgenommenen Änderung können ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (d.h. private Adressen) verwenden.  
 
 Beispielsweise kann ein SQL Server auf einem Cluster virtueller Computer ausgeführt werden, wenn Port 1433 gesperrt ist.  Der Endpunkt kann durch eine ACL geschützt werden, um nur den Zugriff von anderen Ressourcen im selben virtuellen Netzwerk aus zuzulassen.  

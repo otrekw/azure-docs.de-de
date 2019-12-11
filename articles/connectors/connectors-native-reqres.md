@@ -1,23 +1,18 @@
 ---
-title: Empfangen von und Antworten auf HTTPS-Aufrufe – Azure Logic Apps
+title: Empfangen von HTTPS-Aufrufen und Reagieren auf diese
 description: Behandeln von HTTPS-Anforderungen und -Ereignissen in Echtzeit mittels Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewers: klam, LADocs
-manager: carmonm
-ms.assetid: 566924a4-0988-4d86-9ecd-ad22507858c0
+ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: 6062ca1ce09eb243825b1fb9ae4ecb3d5ac95d1a
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264350"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786994"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Empfangen von und Antworten auf HTTPS-Aufrufe mittels Azure Logic Apps
 

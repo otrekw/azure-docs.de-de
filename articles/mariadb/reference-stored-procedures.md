@@ -1,17 +1,17 @@
 ---
-title: Gespeicherte Prozeduren für die Azure Database for MariaDB-Verwaltung
-description: Erfahren Sie, welche gespeicherten Prozeduren in Azure Database for MySQL hilfreich sind, um Datenreplikation zu konfigurieren, die Zeitzone festzulegen und Abfragen abzubrechen.
+title: Gespeicherte Prozeduren für die Verwaltung – Azure Database for MariaDB
+description: Erfahren Sie, welche gespeicherten Prozeduren in Azure Database for MariaDB hilfreich sind, um die Datenreplikation zu konfigurieren, die Zeitzone festzulegen und Abfragen abzubrechen.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 0a33edeac735502964427ddc3b05076fb9fac969
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 9378f2cc62172043dbcaf13e88e9df4b6e61df9b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973468"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769947"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Gespeicherte Prozeduren für die Azure Database for MariaDB-Verwaltung
 

@@ -1,17 +1,17 @@
 ---
-title: Replizieren von Daten in Azure Database for MariaDB
+title: Datenreplikation – Azure Database for MariaDB
 description: Erfahren Sie mehr über das Verwenden der Datenreplikation zum Synchronisieren von Daten von einem externen Server mit dem Dienst Azure Database for MariaDB.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 826a6db289bf8b938e85d270f91836b3d8790206
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: e98f0dffe1ae004905c2b0969d825a1bca89014a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973640"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772637"
 ---
 # <a name="replicate-data-into-azure-database-for-mariadb"></a>Replizieren von Daten in Azure Database for MariaDB
 

@@ -16,12 +16,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6c6e680de6253f5e822ba282df2e2397093d003
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 793b9d1b33c244354841402babbd9177ce7ed19b
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74270997"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687714"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -551,13 +551,13 @@ Weitere Informationen zum Einrichten von Azure Monitor finden Sie unter [Azure 
 
 Am 25. September 2019 werden wir die alte, nicht erweiterte Benutzeroberfläche für Sicherheitsinformationen zum Registrieren und Verwalten von Benutzersicherheitsinformationen einstellen und nur noch die neue, [erweiterte Version](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Cool-enhancements-to-the-Azure-AD-combined-MFA-and-password/ba-p/354271) aktivieren. Dies bedeutet, dass Ihre Benutzer die alte Benutzeroberfläche nicht mehr verwenden können.
 
-Weitere Informationen zur erweiterten Benutzeroberfläche für Sicherheitsinformationen finden Sie in unserer [Administratordokumentation](https://aka.ms/securityinfodocs) und in unserer [Benutzerdokumentation](https://aka.ms/securityinfoguide).
+Weitere Informationen zur erweiterten Benutzeroberfläche für Sicherheitsinformationen finden Sie in unserer [Administratordokumentation](https://aka.ms/securityinfodocs) und in unserer [Benutzerdokumentation](https://aka.ms/securityinfoguide).
 
 #### <a name="to-turn-on-this-new-experience-you-must"></a>So aktivieren Sie diese neue Funktion
 
 1. Melden Sie sich als globaler Administrator oder Benutzeradministrator beim Azure-Portal an.
 
-2. Navigieren Sie zu  **Azure Active Directory > Benutzereinstellungen > Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
+2. Navigieren Sie zu **Azure Active Directory > Benutzereinstellungen > Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
 
 3. Wählen Sie im Bereich **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden (erweitert)** die Option **Ausgewählt** aus, und wählen Sie dann entweder eine Gruppe von Benutzern aus oder **Alle**, um dieses Feature für alle Benutzer im Mandanten zu aktivieren.
 

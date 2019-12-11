@@ -1,21 +1,27 @@
 ---
-title: Wiederherstellen von gelöschten App Service-Apps – Azure App Service
-description: In diesem Artikel wird erläutert, wie eine gelöschte App Service-App mithilfe von PowerShell wiederhergestellt wird.
+title: Wiederherstellen gelöschter Apps
+description: Erfahren Sie, wie Sie eine gelöschte App in Azure App Service wiederherstellen. Bleiben Sie beim versehentlichen Löschern einer App gelassen.
 author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.service: app-service
-ms.openlocfilehash: 7dc3934f486b205febd5be3c0b484dfd2c97bb8f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a30ac638422f99134ebe9cc26e4b418f5de079b9
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755543"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672143"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Wiederherstellen einer gelöschten App Service-App mithilfe von PowerShell
 
 Wenn Sie Ihre App versehentlich in Azure App Service gelöscht haben, können Sie sie mithilfe der Befehle im [Azure PowerShell-Modul](https://docs.microsoft.com/powershell/azure/?view=azps-2.6.0&viewFallbackFrom=azps-2.2.0) wiederherstellen.
+
+## <a name="re-register-app-service-resource-provider"></a>Erneutes Registrieren eines App Service-Ressourcenanbieters
+Einige Kunden stoßen möglicherweise auf ein Problem, bei dem das Abrufen der Liste der gelöschten Apps nicht möglich ist. Führen Sie zum Beheben dieses Problems den folgenden Befehl aus:
+
+```powershell
+ Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
+```
 
 ## <a name="list-deleted-apps"></a>Auflisten gelöschter Apps
 
@@ -24,7 +30,7 @@ Zum Aufrufen der Auflistung gelöschter Apps können Sie `Get-AzDeletedWebApp` v
 Für Details zu einer bestimmten gelöschten App können Sie Folgendes verwenden:
 
 ```powershell
-Get-AzDeletedWebApp -Name <your_deleted_app>
+Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_location> 
 ```
 
 Die ausführlichen Informationen enthalten folgende Angaben:

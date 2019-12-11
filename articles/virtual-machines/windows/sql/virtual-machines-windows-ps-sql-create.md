@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 072c58377645c807328bfcd79028daad70df7338
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b1578547fbca4caaecb209021569f0fbb2f1ae24
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102110"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790633"
 ---
 # <a name="how-to-provision-sql-server-virtual-machines-with-azure-powershell"></a>Bereitstellen von SQL Server-VMs mit Azure PowerShell
 
@@ -337,12 +337,13 @@ Der virtuelle Computer wird erstellt.
 > Wenn Sie eine Fehlermeldung bezüglich der Startdiagnose erhalten haben, können Sie sie ignorieren. Für die Startdiagnose wird ein Standardspeicherkonto erstellt, da es sich bei dem angegebenen Speicherkonto für den Datenträger des virtuellen Computers um ein Premium-Speicherkonto handelt.
 
 ## <a name="install-the-sql-iaas-agent"></a>Installieren des SQL-IaaS-Agents
-SQL Server-VMs unterstützen mit der [Erweiterung für SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md) automatische Verwaltungsfunktionen. Führen Sie nach der Erstellung des virtuellen Computers den folgenden Befehl aus, um den Agent auf dem neuen virtuellen Computer zu installieren.
+SQL Server-VMs unterstützen mit der [Erweiterung für SQL Server-IaaS-Agent](virtual-machines-windows-sql-server-agent-extension.md) automatische Verwaltungsfunktionen. Um den Agent auf der neuen VM zu installieren und beim Ressourcenanbieter zu registrieren, führen Sie den Befehl [New-AzSqlVM](/powershell/module/az.sqlvirtualmachine/new-azsqlvm) aus, nachdem der virtuelle Computer erstellt wurde. Geben Sie den Lizenztyp für Ihre SQL Server-VM an, und wählen Sie über den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) eine Lizenz mit nutzungsbasierter Bezahlung oder eine BYOL-Lizenz (Bring Your Own License) aus. Weitere Informationen zur Lizenzierung finden Sie unter [Lizenzierungsmodell](virtual-machines-windows-sql-ahb.md). 
 
 
    ```powershell
-   Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+   New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
    ```
+
 
 ## <a name="stop-or-remove-a-vm"></a>Beenden oder Entfernen eines virtuellen Computers
 
@@ -419,8 +420,8 @@ $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName $Publis
 # Create the VM in Azure
 New-AzVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $VirtualMachine
 
-# Add the SQL IaaS Extension
-Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
+# Add the SQL IaaS Extension, and choose the license type
+New-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $VMName -Location $Location -LicenseType <PAYG/AHUB> 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

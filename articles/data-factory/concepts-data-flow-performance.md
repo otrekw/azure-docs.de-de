@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.date: 10/07/2019
-ms.openlocfilehash: 20a08345d8335b4857ca9777efb55f953ee63e9f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9ae6ff5fb5a5bfc6ba9299e06bad9afafc1403f3
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681548"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671589"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Anleitung zur Leistung und Optimierung der Mapping Data Flow-Funktion
 
@@ -120,6 +120,14 @@ Wenn Sie z.B. über eine Liste von Datendateien vom Juli 2019 verfügen, die Sie
 ```DateFiles/*_201907*.txt```
 
 Durch die Verwendung von Platzhaltern enthält die Pipeline nur eine Datenflussaktivität. Dadurch erzielen Sie eine bessere Leistung als bei einem Suchvorgang für den Blobspeicher, bei der dann alle entsprechenden Dateien mittels „ForEach“ mit einer eingeschlossenen Aktivität zum Ausführen des Datenflusses durchlaufen werden.
+
+### <a name="optimizing-for-cosmosdb"></a>Optimieren für Cosmos DB
+
+Die Festlegungen für Durchsatz- und Batcheigenschaften für Cosmos DB-Senken gelten nur während der Ausführung dieses Datenflusses von einer Pipeline-Datenflussaktivität. Nach der Datenflussausführung gelten in Cosmos DB wieder die ursprünglichen Sammlungseinstellungen.
+
+* Batchgröße: Berechnen Sie die ungefähre Zeilengröße der Daten, und stellen Sie sicher, dass Zeilengröße × Batchgröße kleiner als 2 Millionen ist. Erhöhen Sie andernfalls die Batchgröße, um einen besseren Durchsatz zu erzielen.
+* Durchsatz: Legen Sie hier einen höheren Durchsatz fest, damit Dokumente schneller in Cosmos DB geschrieben werden können. Beachten Sie die höheren RU-Kosten bei einer höheren Durchsatzeinstellung.
+*   Schreibdurchsatz: Verwenden Sie einen Wert, der kleiner als die Gesamtanzahl der RUs pro Minute ist. Wenn Ihr Datenfluss eine hohe Anzahl von Spark-Partitionierungen enthält, können Sie durch das Festlegen eines Durchsatzbudgets eine bessere Balance zwischen diesen Partitionen erzielen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

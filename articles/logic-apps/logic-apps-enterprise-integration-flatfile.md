@@ -1,21 +1,19 @@
 ---
-title: 'Codieren oder Decodieren von Flatfiles: Azure Logic Apps | Microsoft-Dokumentation'
+title: Codieren oder Decodieren von Flatfiles
 description: Codieren oder Decodieren von Flatfiles für die Unternehmensintegration mit Azure Logic Apps und Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 53d9935f68c21238cb4f90f78e543a7ab343ced2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467260"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792517"
 ---
 # <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Codieren oder Decodieren von Flatfiles mit Azure Logic Apps und Enterprise Integration Pack
 
@@ -24,7 +22,7 @@ Sie möchten XML-Inhalt ggf. codieren, bevor Sie ihn in einem B2B-Szenario (Busi
 ## <a name="create-the-flat-file-encoding-connector"></a>Erstellen eines Flatfile-Codierungsconnectors
 Führen Sie diese Schritte aus, um der Logik-App einen Flatfile-Codierungsconnector hinzuzufügen.
 
-1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](logic-apps-enterprise-integration-accounts.md "Erfahren Sie, wie Sie ein Integrationskonto mit einer Logik-App verknüpfen"). Dieses Konto enthält das Schema, das Sie zum Codieren der XML-Daten verwenden.  
+1. Erstellen Sie eine Logik-App, und [verknüpfen Sie sie mit Ihrem Integrationskonto](logic-apps-enterprise-integration-accounts.md "Weitere Informationen zum Verknüpfen eines Integrationskontos mit einer Logik-App"). Dieses Konto enthält das Schema, das Sie zum Codieren der XML-Daten verwenden.  
 1. Fügen Sie Ihrer Logik-App den Trigger **Anforderung – Wenn eine HTTP-Anforderung empfangen wird** hinzu.  
    ![Screenshot des auszuwählenden Triggers](./media/logic-apps-enterprise-integration-b2b/flatfile-1.png)    
 1. Fügen Sie die Flatfile-Codierungsaktion wie folgt hinzu:
@@ -80,5 +78,5 @@ An diesem Punkt ist das Einrichten des Flatfile-Decodierungsconnectors abgeschlo
 Sie können nun Ihren Connector testen, indem Sie eine Anforderung an den HTTP-Endpunkt richten und den XML-Inhalt, den Sie decodieren möchten, in den Text der Anforderung einbeziehen.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
+* [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
 

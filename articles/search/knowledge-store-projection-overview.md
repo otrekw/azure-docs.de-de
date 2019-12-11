@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e7ed7eef961e357b8c1e4e59790f9f150c286c61
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326590"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790003"
 ---
 # <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Arbeiten mit Projektionen in einem Wissensspeicher in der kognitiven Azure-Suche
 
@@ -28,11 +28,11 @@ Projektionen können tabellarisch sein, wobei die Daten in Zeilen und Spalten in
 
 Im Wissensspeicher werden drei Arten von Projektionen unterstützt:
 
-+ **Tabellen**: Für Daten, die am besten als Zeilen und Spalten dargestellt werden, können Sie mit Tabellenprojektionen eine schematisierte Form oder Projektion in Table Storage definieren.
++ **Tabellen**: Für Daten, die am besten als Zeilen und Spalten dargestellt werden, können Sie mit Tabellenprojektionen eine schematisierte Form oder Projektion in Table Storage definieren. Nur gültige JSON-Objekte können als Tabellen projiziert werden. Das erweiterte Dokument kann jedoch Knoten enthalten, die keine bezeichneten JSON-Objekte sind. Wenn Sie diese Objekte projizieren möchten, erstellen Sie ein gültiges JSON-Objekt mit einer Shaperqualifikation oder Inlinestrukturierung.
 
-+ **Objekte:** Wenn Sie eine JSON-Darstellung Ihrer Daten und Anreicherungen benötigen, werden Objektprojektionen als Blobs gespeichert.
++ **Objekte:** Wenn Sie eine JSON-Darstellung Ihrer Daten und Anreicherungen benötigen, werden Objektprojektionen als Blobs gespeichert. Nur gültige JSON-Objekte können als Objekte projiziert werden. Das erweiterte Dokument kann jedoch Knoten enthalten, die keine bezeichneten JSON-Objekte sind. Wenn Sie diese Objekte projizieren möchten, erstellen Sie ein gültiges JSON-Objekt mit einer Shaperqualifikation oder Inlinestrukturierung.
 
-+ **Dateien**: Wenn Sie die aus den Dokumenten extrahierten Bilder speichern müssen, können Sie mithilfe von Dateiprojektionen die normalisierten Bilder speichern.
++ **Dateien**: Wenn Sie die aus den Dokumenten extrahierten Bilder speichern müssen, können Sie mithilfe von Dateiprojektionen die normalisierten Bilder in Blob Storage speichern.
 
 Im Kontext definierte Projektionen finden Sie unter [Erste Schritte mit Wissensspeichern](knowledge-store-howto.md).
 
@@ -47,7 +47,7 @@ Diese Unabhängigkeit bedeutet, dass die gleichen Daten unterschiedlich geformt,
 
 ### <a name="relatedness"></a>Verbundenheit
 
-Projektionsgruppen ermöglichen es Ihnen jetzt, Ihre Dokumente übergreifend für alle Projektionstypen zu projizieren und gleichzeitig die Beziehungen zwischen den Projektionstypen zu erhalten. Alle Inhalte, die in einer einzelnen Projektionsgruppe projiziert werden, behalten die Beziehungen innerhalb der Daten für alle Projektionstypen bei. Innerhalb von Tabellen basieren Beziehungen auf einem generierten Schlüssel, und jeder untergeordnete Knoten behält einen Verweis auf den übergeordneten Knoten bei. Zwischen Typen (Tabellen, Objekte und Dateien) werden Beziehungen beibehalten, wenn ein einzelner Knoten typübergreifend projiziert wird. Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie über ein Dokument mit Bildern und Text verfügen. Sie können den Text in Tabellen oder Objekten und die Bilder in Dateien projizieren, wobei die Tabellen oder Objekte über eine Eigenschaft verfügen, die die Datei-URL enthält.
+Projektionsgruppen ermöglichen es Ihnen jetzt, Ihre Dokumente übergreifend für alle Projektionstypen zu projizieren und gleichzeitig die Beziehungen zwischen den Projektionstypen zu erhalten. Alle Inhalte, die in einer einzelnen Projektionsgruppe projiziert werden, behalten die Beziehungen innerhalb der Daten für alle Projektionstypen bei. Innerhalb von Tabellen basieren Beziehungen auf einem generierten Schlüssel, und jeder untergeordnete Knoten behält einen Verweis auf den übergeordneten Knoten bei. Zwischen Typen (Tabellen, Objekte und Dateien) werden Beziehungen beibehalten, wenn ein einzelner Knoten typübergreifend projiziert wird. Stellen Sie sich beispielsweise ein Szenario vor, in dem Sie über ein Dokument mit Bildern und Text verfügen. Sie können den Text in Tabellen oder Objekten und die Bilder in Dateien projizieren, wobei die Tabellen oder Objekte über eine Spalte/Eigenschaft verfügen, die die Datei-URL enthält.
 
 ## <a name="input-shaping"></a>Eingabestrukturierung
 

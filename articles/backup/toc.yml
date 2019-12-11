@@ -222,6 +222,8 @@
       items:
         - name: Erstellen eines Recovery Services-Tresors
           href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: Aktualisieren der Konfigurationen für den Recovery Services-Tresor
+          href: use-restapi-update-vault-properties.md
         - name: Erstellen und Aktualisieren einer Sicherungsrichtlinie
           href: backup-azure-arm-userestapi-createorupdatepolicy.md
         - name: Sichern von Azure-VMs

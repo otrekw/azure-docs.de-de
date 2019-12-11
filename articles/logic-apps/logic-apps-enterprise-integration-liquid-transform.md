@@ -1,20 +1,19 @@
 ---
-title: Konvertieren von JSON-Daten mit Liquid-Transformationen – Azure Logic Apps | Microsoft Docs
+title: Konvertieren von JSON-Daten mit Liquid-Transformationen
 description: Erstellen von Transformationen oder Zuordnungen für erweiterte JSON-Transformationen mithilfe von Logic Apps und einer Liquid-Vorlage
 services: logic-apps
-ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
-ms.suite: integration
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: 203c57a2755a3287566a774e2878a87b847337b9
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 962a3cf214d202fa9f7640d74036c6700196a5ee
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70900660"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792511"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Ausführen erweiterter JSON-Transformationen mit Liquid-Vorlagen in Azure Logic Apps
 
@@ -152,6 +151,6 @@ Liquid ist nicht beschränkt auf JSON-Transformationen. Hier finden Sie andere v
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
-* [Weitere Informationen zu Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md "Informationen zu Zuordnungen für die Unternehmensintegration")  
+* [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Erfahren Sie mehr zum Enterprise Integration Pack.")  
+* [Weitere Informationen über Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md "Weitere Informationen zu Zuordnungen für die Unternehmensintegration")  
 

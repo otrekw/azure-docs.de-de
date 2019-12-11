@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren von und Zugreifen auf Überwachungsprotokolle für Azure Database for MariaDB im Azure-Portal
+title: Zugreifen auf Überwachungsprotokolle – Azure-Portal – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie im Azure-Portal die Überwachungsprotokolle in Azure Database for MariaDB konfigurieren und auf diese zugreifen.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/24/2019
-ms.openlocfilehash: 8fadcc8cb418063662df45d4134bef0578ffccda
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 12/02/2019
+ms.openlocfilehash: e3c87143652895c57b464cba229a0e68049ffeb2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444816"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767516"
 ---
 # <a name="configure-and-access-audit-logs-in-the-azure-portal"></a>Konfigurieren von und Zugreifen auf Überwachungsprotokolle im Azure-Portal
 

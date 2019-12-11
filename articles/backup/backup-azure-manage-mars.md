@@ -1,21 +1,17 @@
 ---
-title: Verwalten und Überwachen von Microsoft Azure Recovery Services Agent-Sicherungen
-description: Erfahren Sie mehr über das Verwalten und Überwachen von Microsoft Azure Recovery Services Agent-Sicherungen mit dem Azure Backup-Dienst.
+title: Verwalten und Überwachen von MARS-Agent-Sicherungen
+description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst.
 ms.reviewer: srinathv
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: 756fd720b468681b8ea31dc867cfdb6e44c0bb0a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075000"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665592"
 ---
-# <a name="manage-microsoft-azure-recovery-services-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von Microsoft Azure Recovery Services Agent-Sicherungen mit dem Azure Backup-Dienst
+# <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
 In diesem Artikel wird beschrieben, wie Sie Dateien und Ordner verwalten, die mit Microsoft Azure Recovery Services Agent gesichert wurden.
 
@@ -128,7 +124,7 @@ Sie können Ausschlussregeln hinzufügen, um Dateien und Ordner zu überspringen
 
     ![Auswählen der Elemente](./media/backup-azure-manage-mars/select-items-exclude.png)
 
-4. Standardmäßig werden alle **Unterordner** in den ausgewählten Ordnern ausgeschlossen. Sie können dies ändern, indem Sie **Ja** oder **Nein** auswählen. Sie können die auszuschließenden Dateitypen bearbeiten und angeben, wie unten dargestellt:
+4. Standardmäßig werden alle **Unterordner** in den ausgewählten Ordnern ausgeschlossen. Sie können dies ändern, indem Sie **Ja** oder **Nein** auswählen. Sie können die auszuschließenden Dateitypen wie unten dargestellt bearbeiten und angeben:
 
     ![Auswählen der Elemente](./media/backup-azure-manage-mars/subfolders-type.png)
 
@@ -167,8 +163,8 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
     ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
 1. Wählen Sie auf der Seite **Geplante Sicherung ändern oder beenden** die Option **Stop using this backup schedule, but keep the stored backups until a schedule is activated again** (Diesen Sicherungszeitplan nicht länger verwenden, die gespeicherten Sicherungen jedoch beibehalten, bis erneut ein Sicherungszeitplan aktiviert wird) aus. Klicken Sie anschließend auf **Weiter**.  
     ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Überprüfen Sie in **Geplante Sicherung anhalten** die Informationen, und klicken Sie auf **Fertig stellen**. ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/pause-schedule-backup.png)
-1. Überprüfen Sie in **Sicherungsstatus ändern**, ob die geplante Sicherung erfolgreich angehalten wurde, und klicken Sie auf **Schließen**, um den Vorgang abzuschließen.
+1. Überprüfen Sie die Informationen in **Geplante Sicherung anhalten**, und klicken Sie auf **Fertig stellen**. ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. Überprüfen Sie in **Sicherungsstatus ändern**, ob der Status der geplanten Sicherung „Erfolgreich“ ist, und klicken Sie auf **Schließen**, um den Vorgang abzuschließen.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Schutz beenden und Sicherungsdaten löschen
 

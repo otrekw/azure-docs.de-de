@@ -1,26 +1,18 @@
 ---
-title: Häufig gestellte Fragen (FAQ) zu App Service unter Linux – Azure | Microsoft-Dokumentation
-description: Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux.
+title: Häufig gestellte Fragen zum Ausführen integrierter Container
+description: Hier finden Sie Antworten auf häufig gestellte Fragen zu den integrierten Linux-Containern in Azure App Service.
 keywords: Azure App Service, Web-App, FAQ, Linux, OSS, Web-App für Container, mehrere Container, Multicontainer
-services: app-service
-documentationCenter: ''
 author: msangapu-msft
-manager: stefsch
-editor: ''
-ms.assetid: ''
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fa7b6a02ba287c7f51284a28ce41b2291317f99c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bb0f2e3fc3b84f5e1f9fe999b31fffadaa5915d4
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066904"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687594"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 

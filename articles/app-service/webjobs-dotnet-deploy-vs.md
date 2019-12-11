@@ -1,21 +1,19 @@
 ---
-title: Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure
-description: Erfahren Sie, wie Sie Azure WebJobs mithilfe von Visual Studio in Azure App Service entwickeln und bereitstellen.
+title: Entwickeln und Bereitstellen von WebJobs mit Visual Studio
+description: Erfahren Sie, wie Sie Azure WebJobs in Visual Studio entwickeln und in Azure App Service bereitstellen, einschließlich der Erstellung einer geplanten Aufgabe.
 author: ggailey777
-manager: gwallace
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
-ms.service: app-service
 ms.topic: conceptual
 ms.custom: vs-azure
 ms.date: 02/18/2019
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: ac458b01135be8628fbf939e310f8bda02b8d290
-ms.sourcegitcommit: 9858ab651a520c26f0ed18215e650efbf1fc5de9
+ms.openlocfilehash: feacd463a10bae66dc8fa88a99b9ea60f399e9ec
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72303543"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684170"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Entwickeln und Bereitstellen von WebJobs mit Visual Studio – Azure App Service
 

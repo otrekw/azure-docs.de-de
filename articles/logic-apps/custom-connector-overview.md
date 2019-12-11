@@ -1,20 +1,17 @@
 ---
-title: Themenlinks für benutzerdefinierte Connectors – Azure Logic Apps | Microsoft-Dokumentation
+title: Links zu Themen über benutzerdefinierte Connectors
 description: Links zu Themen zum Erstellen, Verwenden, Freigeben und Zertifizieren von benutzerdefinierten Connectors
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 1/30/2018
-ms.openlocfilehash: c4cc0201b8ac61c54aadcc59b549877238b95e54
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: d91d46e0119c22f4f2538ab5ea982ca4418256cf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574459"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792659"
 ---
 # <a name="custom-connectors-in-logic-apps"></a>Benutzerdefinierte Connectors in Logic Apps
 

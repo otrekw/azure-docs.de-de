@@ -1,20 +1,19 @@
 ---
-title: Herstellen einer Verbindung mit lokalen Dateisystemen – Azure Logic Apps
+title: Herstellen von Verbindungen mit lokalen Dateisystemen
 description: Automatisieren von Aufgaben und Workflows, die über das lokale Datengateway in Azure Logic Apps eine Verbindung mit lokalen Dateisystemen mit dem Dateisystem-Connector herstellen
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, LADocs
+ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: 1b5cf27c49a003042086cd9452f288c7f348d343
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: bc2067dbde1e99619fb6e384be4e70f606c8518d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799708"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792773"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Dateisystemen mit Azure Logic Apps
 

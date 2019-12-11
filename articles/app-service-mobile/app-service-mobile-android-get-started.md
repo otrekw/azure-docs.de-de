@@ -1,25 +1,17 @@
 ---
-title: Erstellen einer Android-App für mobile Azure App Service-Apps | Microsoft Docs
-description: Befolgen Sie dieses Lernprogramm für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die Android-Entwicklung.
-services: app-service\mobile
-documentationcenter: android
-author: elamalani
-manager: crdun
-editor: ''
+title: Erstellen einer Android-App
+description: Befolgen Sie dieses Tutorial für die ersten Schritte bei der Verwendung mobiler Azure-App-Back-Ends für die Android-App-Entwicklung.
 ms.assetid: 355f0959-aa7f-472c-a6c7-9eecea3a34a9
-ms.service: app-service-mobile
-ms.workload: na
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.author: emalani
-ms.openlocfilehash: 0e12017918432ff264375a9489478ac81f3e69b2
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d63faf5c06e648e4bd886d6e62c35a2b451c8c44
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388932"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668585"
 ---
 # <a name="create-an-android-app"></a>Erstellen einer Android-App
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

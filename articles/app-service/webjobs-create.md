@@ -1,21 +1,19 @@
 ---
-title: 'Ausführen von Hintergrundaufgaben mit WebJobs: Azure App Service'
-description: Erfahren Sie, wie mithilfe von WebJobs Hintergrundaufgaben in Web-Apps, API-Apps oder mobilen Apps von Azure App Service ausgeführt werden.
+title: Ausführen von Hintergrundaufgaben mit WebJobs
+description: Erfahren Sie, wie Sie mithilfe von WebJobs Hintergrundaufgaben in Azure App Service ausführen. Wählen Sie aus einer Vielzahl von Skriptformaten aus, und führen Sie sie mit Cron-Ausdrücken aus.
 author: ggailey777
-manager: gwallace
-s.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
-ms.service: app-service
+ms.assetid: af01771e-54eb-4aea-af5f-f883ff39572b
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: glenga
 ms.reviewer: msangapu;david.ebbo;suwatch;pbatum;naren.soni
 ms.custom: seodec18
-ms.openlocfilehash: 293227352f27a724228136532c88e35fe877feb2
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 4c568c95a5dbc1799a765c95a2b224de53dfbe9f
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72312164"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74684210"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 

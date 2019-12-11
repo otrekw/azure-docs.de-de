@@ -1,18 +1,18 @@
 ---
-title: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver)
-description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Server in Azure Database for PostgreSQL (Einzelserver) sichern und wiederherstellen.
+title: Sicherung und Wiederherstellung – Azure-Befehlszeilenschnittstelle – Azure Database for PostgreSQL (Einzelserver)
+description: Erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle die Sicherung und Wiederherstellung eines Servers in Azure Database for PostgreSQL (Einzelserver) konfigurieren.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: c1706f72f894baa7d07c49880a82dc96ef03d7cf
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: f0ea24133d7b6acdc4b099ee21a8711a2d99095d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965798"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775703"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL (Einzelserver) mithilfe der Azure-Befehlszeilenschnittstelle
 

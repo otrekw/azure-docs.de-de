@@ -7,7 +7,7 @@ author: Brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/28/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 516637b812afece1966006ce6d894dd1e32e6293
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113603"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74666306"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Hinzufügen von Bewertungsprofilen zu einem Index für die kognitive Azure-Suche
 
@@ -37,7 +37,7 @@ ms.locfileid: "74113603"
  Das folgende Beispiel zeigt, wie ein Bewertungsprofil aussieht. Dieses einfache Profil hat die Bezeichnung "geo". In diesem Fall werden Elemente verstärkt, die den Suchbegriff im Feld **hotelName** enthalten. Darüber hinaus wird die `distance`-Funktion verwendet, um Elemente zu bevorzugen, die sich im Umkreis von zehn Kilometern um die aktuelle Position befinden. Wenn nach dem Begriff „inn“ gesucht wird und „inn“ Teil des Hotelnamens ist, werden die Dokumente in den Suchergebnissen weiter oben angezeigt, die Hotels in einem Umkreis von 10 km des aktuellen Standorts mit „inn“ im Namen enthalten.  
 
 
-```  
+```json
 "scoringProfiles": [
   {  
     "name":"geo",
@@ -92,7 +92,7 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
  In diesem Beispiel wird das Schema für einen Index mit zwei Bewertungsprofilen (`boostGenre`, `newAndHighlyRated`) gezeigt. Jede Abfrage für diesen Index, die eines der Profile als Abfrageparameter enthält, verwendet das Profil zum Bewerten des Resultsets.  
 
-```  
+```json
 {  
   "name": "musicstoreindex",  
   "fields": [  
@@ -234,14 +234,14 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
 |Attribut|BESCHREIBUNG|  
 |---------------|-----------------|  
-|`Name`|Erforderlich. Dies ist der Name des Bewertungsprofils. Er folgt denselben Benennungskonventionen, die für Felder gelten. Er muss mit einem Buchstaben beginnen, darf keine Punkte, Doppelpunkte oder @-Symbole enthalten und darf nicht mit dem Begriff „azureSearch“ (Groß-/Kleinschreibung wird berücksichtigt) beginnen.|  
-|`Text`|Enthält die Weights-Eigenschaft.|  
-|`Weights`|Optional. Ein Name-Wert-Paar, das einen Feldnamen und eine relative Gewichtung angibt. Die relative Gewichtung muss eine positive ganze oder Gleitkommazahl sein. Der maximale Wert ist „int32.MaxValue“.<br /><br /> Sie können den Feldnamen ohne eine entsprechende Gewichtung angeben. Gewichtungen werden dazu verwendet, um die Bedeutung der Felder untereinander anzugeben.|  
-|`Functions`|Optional. Eine Bewertungsfunktion kann nur auf filterbare Felder angewendet werden.|  
-|`Type`|Erforderlich für Bewertungsfunktionen. Gibt den Typ der zu verwendenden Funktion an. Gültige Werte sind „magnitude“, „freshness“, „distance“ und „tag“. Sie können in jedem Bewertungsprofil mehrere Funktionen einbeziehen. Der Funktionsname muss in Kleinbuchstaben angegeben werden.|  
-|`Boost`|Erforderlich für Bewertungsfunktionen. Eine positive Zahl, die als Multiplikator für die unformatierte Bewertung verwendet wird. Sie darf nicht gleich 1 sein.|  
-|`Fieldname`|Erforderlich für Bewertungsfunktionen. Eine Bewertungsfunktion kann nur auf Felder angewendet werden, die Teil der Feldauflistung für den Index und filterbar sind. Darüber hinaus führt jeder Funktionstyp zusätzliche Einschränkungen ein („freshness“ wird für Datetime-Felder, „magnitude“ für Integer- oder Double-Felder und „distance“ für Location-Felder verwendet). Sie können pro Funktionsdefinition nur ein einzelnes Feld angeben. Um z. B. "magnitude" zweimal in demselben Profil verwenden zu können, müssen Sie zwei Definitionen für "magnitude", eine für jedes Feld, einbeziehen.|  
-|`Interpolation`|Erforderlich für Bewertungsfunktionen. Definiert die Steigung, für die die Bewertungsverstärkung vom Anfang bis zum Ende des Bereichs zunimmt. Gültige Werte sind „Linear“ (Standard), „Constant“, „Quadratic“ und „Logarithmic“. Details finden Sie unter [Festlegen von Interpolationen](#bkmk_interpolation) .|  
+|`name`|Erforderlich. Dies ist der Name des Bewertungsprofils. Er folgt denselben Benennungskonventionen, die für Felder gelten. Er muss mit einem Buchstaben beginnen, darf keine Punkte, Doppelpunkte oder @-Symbole enthalten und darf nicht mit dem Begriff „azureSearch“ (Groß-/Kleinschreibung wird berücksichtigt) beginnen.|  
+|`text`|Enthält die weights-Eigenschaft.|  
+|`weights`|Optional. Enthält Name-Wert-Paare, die jeweils einen Feldnamen und eine relative Gewichtung angeben. Die relative Gewichtung muss eine positive ganze oder Gleitkommazahl sein.<br /><br /> Gewichtungen werden dazu verwendet, die Bedeutung eines durchsuchbaren Felds in Bezug auf ein anderes anzugeben.|  
+|`functions`|Optional. Eine Bewertungsfunktion kann nur auf filterbare Felder angewendet werden.|  
+|`type`|Erforderlich für Bewertungsfunktionen. Gibt den Typ der zu verwendenden Funktion an. Gültige Werte sind „magnitude“, „freshness“, „distance“ und „tag“. Sie können in jedem Bewertungsprofil mehrere Funktionen einbeziehen. Der Funktionsname muss in Kleinbuchstaben angegeben werden.|  
+|`boost`|Erforderlich für Bewertungsfunktionen. Eine positive Zahl, die als Multiplikator für die unformatierte Bewertung verwendet wird. Sie darf nicht gleich 1 sein.|  
+|`fieldname`|Erforderlich für Bewertungsfunktionen. Eine Bewertungsfunktion kann nur auf Felder angewendet werden, die Teil der Feldauflistung für den Index und filterbar sind. Darüber hinaus führt jeder Funktionstyp zusätzliche Einschränkungen ein („freshness“ wird für Datetime-Felder, „magnitude“ für Integer- oder Double-Felder und „distance“ für Location-Felder verwendet). Sie können pro Funktionsdefinition nur ein einzelnes Feld angeben. Um z. B. "magnitude" zweimal in demselben Profil verwenden zu können, müssen Sie zwei Definitionen für "magnitude", eine für jedes Feld, einbeziehen.|  
+|`interpolation`|Erforderlich für Bewertungsfunktionen. Definiert die Steigung, für die die Bewertungsverstärkung vom Anfang bis zum Ende des Bereichs zunimmt. Gültige Werte sind „Linear“ (Standard), „Constant“, „Quadratic“ und „Logarithmic“. Details finden Sie unter [Festlegen von Interpolationen](#bkmk_interpolation) .|  
 |`magnitude`|Die Bewertungsfunktion für die Größe wird dazu verwendet, um Rangfolgen auf Basis des Wertebereichs für ein numerisches Feld zu ändern. Einige der gängigsten Nutzungsbeispiele sind:<br /><br /> -   **Sternbewertungen:** Ändern Sie die Bewertung basierend auf dem Wert innerhalb des Felds für die Sternbewertung. Wenn zwei Elemente relevant sind, wird das Element mit der höheren Bewertung zuerst angezeigt.<br />-   **Gewinnspanne:** Wenn zwei Dokumente relevant sind, möchte ein Einzelhändler möglicherweise zuerst Dokumente verstärken, die eine höhere Gewinnspanne aufweisen.<br />-   **Anzahl der Klicks:** Für Anwendungen, bei denen das Klicken über Aktionen mit Produkten oder Seiten nachverfolgt wird, könnten Sie die „Größe“ verwenden, um Elemente zu verstärken, die in der Regel den meisten Datenverkehr aufweisen.<br />-   **Anzahl der Downloads:** Für Anwendungen, die Downloads nachverfolgen, können Sie mit der Größenfunktion die Elemente verstärken, die am meisten heruntergeladen wurden.|  
 |`magnitude` &#124; `boostingRangeStart`|Legt den Anfangswert des Bereichs fest, über den die Größe bewertet wird. Der Wert muss vom Typ „Integer“ oder „Gleitkomma“ sein. Für Sternbewertungen von 1 bis 4 wäre dies die 1. Für Gewinnspannen von über 50 % wäre dies die 50.|  
 |`magnitude` &#124; `boostingRangeEnd`|Legt den Endwert des Bereichs fest, über den die Größe bewertet wird. Der Wert muss vom Typ „Integer“ oder „Gleitkomma“ sein. Für Sternbewertungen von 1 bis 4 wäre dies die 4.|  
@@ -261,10 +261,10 @@ Eine Suchbewertung wird auf Basis der statistischen Eigenschaften der Daten und 
 
 |||  
 |-|-|  
-|`Linear`|Für Elemente, die sich innerhalb des maximalen und minimalen Bereichs befinden, erfolgt die auf das Element angewendete Verstärkung mit konstant abnehmender Stärke. "Linear" ist die Standardinterpolation für ein Bewertungsprofil.|  
-|`Constant`|Für Elemente, die sich innerhalb des Anfangs- und Endbereichs befinden, wird eine konstante Verstärkung auf die Rangfolgeergebnisse angewendet.|  
-|`Quadratic`|Im Vergleich zur linearen Interpolation, die eine konstant abnehmende Verstärkung aufweist, erfolgt die Abnahme bei „Quadratic“ anfänglich mit geringerer Geschwindigkeit, während zum Bereichsende hin die Abnahme in viel größeren Schritten erfolgt. Diese Interpolationsoption ist in Tag-Bewertungsfunktionen nicht zulässig.|  
-|`Logarithmic`|Im Vergleich zur linearen Interpolation, die eine konstant abnehmende Verstärkung aufweist, erfolgt die Abnahme bei „Logarithmic“ anfänglich mit höherer Geschwindigkeit, während zum Bereichsende hin die Abnahme in viel kleineren Schritten erfolgt. Diese Interpolationsoption ist in Tag-Bewertungsfunktionen nicht zulässig.|  
+|`linear`|Für Elemente, die sich innerhalb des maximalen und minimalen Bereichs befinden, erfolgt die auf das Element angewendete Verstärkung mit konstant abnehmender Stärke. "Linear" ist die Standardinterpolation für ein Bewertungsprofil.|  
+|`constant`|Für Elemente, die sich innerhalb des Anfangs- und Endbereichs befinden, wird eine konstante Verstärkung auf die Rangfolgeergebnisse angewendet.|  
+|`quadratic`|Im Vergleich zur linearen Interpolation, die eine konstant abnehmende Verstärkung aufweist, erfolgt die Abnahme bei „Quadratic“ anfänglich mit geringerer Geschwindigkeit, während zum Bereichsende hin die Abnahme in viel größeren Schritten erfolgt. Diese Interpolationsoption ist in Tag-Bewertungsfunktionen nicht zulässig.|  
+|`logarithmic`|Im Vergleich zur linearen Interpolation, die eine konstant abnehmende Verstärkung aufweist, erfolgt die Abnahme bei „Logarithmic“ anfänglich mit höherer Geschwindigkeit, während zum Bereichsende hin die Abnahme in viel kleineren Schritten erfolgt. Diese Interpolationsoption ist in Tag-Bewertungsfunktionen nicht zulässig.|  
 
  ![Linien „constant“, „linear“, „quadratic“, „log10“ im Diagramm](media/scoring-profiles/azuresearch_scorefunctioninterpolationgrapht.png "AzureSearch_ScoreFunctionInterpolationGrapht")  
 

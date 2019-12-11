@@ -1,7 +1,7 @@
 ---
-title: Text-zu-Sprache – Spracherkennungsdienst
+title: Text-zu-Sprache – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Text-zu-Sprache in Speech Service ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie voreingestellte Stimmen aus, oder erstellen Sie Ihre eigene benutzerdefinierte Stimme.
+description: Das Feature Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache umzuwandeln. Wählen Sie voreingestellte Stimmen aus, oder erstellen Sie Ihre eigene benutzerdefinierte Stimme.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 0d233f63879326f05cafb873d2a0243543b00c6b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 85022d52c9513e53da31cc3c962f3a54dd538371
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075706"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815487"
 ---
 # <a name="what-is-text-to-speech"></a>Was ist Text-zu-Sprache?
 
-Text-zu-Sprache aus den Azure-Spracherkennungsdiensten ist ein Dienst, der es Ihren Anwendungen, Tools oder Geräten ermöglicht, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
+Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache zu konvertieren. Wählen Sie aus Standard- und neuronalen Stimmen, oder erstellen Sie Ihre eigene, benutzerdefinierte Stimme, die einzigartig für Ihr Produkt oder Ihre Marke ist. Mehr als 75 Standardstimmen sind in mehr als 45 Sprachen und Gebietsschemas verfügbar, und 5 neuronale Stimmen sind in 4 Sprachen und Gebietsschemas verfügbar. Eine vollständige Liste finden Sie unter [Unterstützte Sprachen](language-support.md#text-to-speech).
 
 Die Text-zu-Sprache-Technologie ermöglicht Inhaltserstellern, auf unterschiedliche Weise mit ihren Benutzern zu interagieren. Text-zu-Sprache kann die Barrierefreiheit verbessern, indem Benutzern eine Option für die akustische Interaktion mit dem Inhalt zur Verfügung gestellt wird. Unabhängig davon, ob der Benutzer eine Sehbehinderung oder eine Lernbehinderung hat oder während der Fahrt Navigationsinformationen benötigt, kann Text-zu-Sprache ein vorhandenes Erlebnis verbessern. Sprachsynthese ist auch ein wertvolles Add-On für Sprachbots und Sprachassistenten.
 
@@ -125,5 +125,5 @@ Beispielcode für Text-zu-Sprache finden Sie auf GitHub. Diese Beispiele umfasse
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen eines kostenlosen Speech Services-Abonnements](get-started.md)
+- [Abrufen eines kostenlosen Speech-Dienstabonnements](get-started.md)
 - [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
