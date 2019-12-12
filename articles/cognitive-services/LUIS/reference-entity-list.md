@@ -10,23 +10,23 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 1307e6cfca0debe7623eb775c69527a74584033d
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4313a1d644750c0961298bbee3ae211946de360a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011987"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849767"
 ---
-# <a name="list-entity"></a>Entität vom Typ „List“ 
+# <a name="list-entity"></a>Entität vom Typ „List“
 
-Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben. 
+Listenentitäten stellen einen festen, abgeschlossenen Satz verwandter Wörter zusammen mit ihren Synonymen dar. LUIS ermittelt keine zusätzlichen Werte für Listenentitäten. Suchen Sie mithilfe des Features **Empfehlen** nach Vorschlägen für neue Wörter basierend auf der aktuellen Liste. Wenn mehr als eine Listenentität mit demselben Wert vorhanden ist, wird in der Endpunktabfrage jede Entität zurückgegeben.
 
-Eine Listenentität wird nicht maschinell gelernt. Sie stellt eine genaue Textübereinstimmung dar. LUIS kennzeichnet jede Übereinstimmung für ein Element in einer Liste in der Antwort als eine Entität. 
+Eine Listenentität wird nicht maschinell gelernt. Sie stellt eine genaue Textübereinstimmung dar. LUIS kennzeichnet jede Übereinstimmung für ein Element in einer Liste in der Antwort als eine Entität.
 
 **Diese Entität ist gut geeignet, wenn für die Textdaten Folgendes gilt**:
 
 * Es handelt sich um einen bekannten Satz.
-* Sie werden nicht oft geändert. Wenn Sie die Liste häufig ändern oder möchten, dass die Liste selbstständig erweitert wird, stellt eine einfache Entität, die um eine Begriffsliste erweitert wurde, eine bessere Wahl dar. 
+* Sie werden nicht oft geändert. Wenn Sie die Liste häufig ändern oder möchten, dass die Liste selbstständig erweitert wird, stellt eine einfache Entität, die um eine Begriffsliste erweitert wurde, eine bessere Wahl dar.
 * Für den Satz werden die maximalen LUIS-[Grenzen](luis-boundaries.md) dieses Entitätstyps nicht überschritten.
 * Der Text in der Äußerung ist eine exakte Übereinstimmung mit einem Synonym oder dem kanonischen Namen. LUIS verwendet die Liste über genaue Textübereinstimmungen hinaus nicht. Fuzzyübereinstimmungen, Nicht-Berücksichtigung der Groß- und Kleinschreibung, Wortstammerkennung, Pluralformen und andere Varianten lassen sich mit einer List-Entität nicht auflösen. Um Varianten zu behandeln, sollten Sie die Verwendung eines [Musters](reference-pattern-syntax.md#syntax-to-mark-optional-text-in-a-template-utterance) mit der optionalen Textsyntax in Erwägung ziehen.
 
@@ -54,7 +54,7 @@ Eine Listenentität wird nicht maschinell gelernt. Sie stellt eine genaue Textü
               "avacado"
           ]
       }
-  ]  
+  ]
   ```
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
@@ -130,7 +130,7 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 }
 ```
 
-* * * 
+* * *
 
 |Datenobjekt|Name der Entität|Wert|
 |--|--|--|
@@ -139,4 +139,4 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-quickstart-intent-and-list-entity.md) erfahren Sie, wie Sie eine **Listenentität** verwenden, um exakte Textübereinstimmungen aus einer Liste bekannter Elemente zu extrahieren. 
+In diesem [Tutorial](tutorial-list-entity.md) erfahren Sie, wie Sie eine **Listenentität** verwenden, um exakte Textübereinstimmungen aus einer Liste bekannter Elemente zu extrahieren.

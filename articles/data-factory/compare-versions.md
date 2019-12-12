@@ -4,19 +4,18 @@ description: In diesem Artikel wird Azure Data Factory mit Azure Data Factory Ve
 services: data-factory
 documentationcenter: ''
 author: kromerm
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: e0c92fbd06bec00f09c66c322ba2520bacb7bffb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e964be548a2f82ecc268a147dd20817b232f51a6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267786"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924810"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Vergleichen von Azure Data Factory mit Data Factory Version 1
 In diesem Artikel wird Data Factory mit Data Factory Version 1 verglichen. Eine Einführung in Data Factory finden Sie unter [Einführung in Azure Data Factory](introduction.md). Eine Einführung in Data Factory Version 1 finden Sie unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md). 
