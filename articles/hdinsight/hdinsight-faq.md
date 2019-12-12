@@ -8,13 +8,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 044a63274f7f24831b1f791982f36898199616a6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.date: 11/20/2019
+ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052508"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74706261"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -180,6 +180,11 @@ Ja, Sie können einen zusätzlichen virtuellen Computer im selben Subnetz wie ei
 - Edgeknoten: Sie können dem Cluster einen weiteren Edgeknoten hinzufügen, wie unter [Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight](hdinsight-apps-use-edge-node.md) beschrieben.
 
 - Eigenständige Knoten:  Sie können demselben Subnetz einen eigenständigen virtuellen Computer hinzufügen und über diesen virtuellen Computer auf den Cluster zugreifen, indem Sie den privaten Endpunkt `https://<CLUSTERNAME>-int.azurehdinsight.net` verwenden. Weitere Informationen finden Sie unter [Steuern des Netzwerkdatenverkehrs](hdinsight-plan-virtual-network-deployment.md#networktraffic).
+
+### <a name="should-i-store-data-on-the-local-disk-of-an-edge-node"></a>Sollten Daten auf dem lokalen Datenträger eines Edgeknotens gespeichert werden?
+
+Nein, das Speichern von Daten auf einem lokalen Datenträger ist keine gute Idee. Wenn der Knoten ausfällt, gehen alle lokal gespeicherten Daten verloren. Es wird empfohlen, Daten in Azure Data Lake Storage Gen2 oder Azure Blob Storage zu speichern, oder eine Azure Files-Freigabe zum Speichern der Daten bereitzustellen.
+
 
 ### <a name="can-i-add-an-existing-hdinsight-cluster-to-another-virtual-network"></a>Kann ich einen vorhandenen HDInsight-Cluster einem anderen virtuellen Netzwerk hinzufügen?
 

@@ -1,17 +1,17 @@
 ---
-title: Serverprotokolle für Azure Database for MariaDB
+title: Protokolle für langsame Abfragen – Azure Database for MariaDB
 description: Beschreibt die Protokolle, die in Azure Database for MariaDB verfügbar sind, sowie die verfügbaren Parameter zum Aktivieren verschiedener Protokolliergrade.
 author: rachel-msft
 ms.author: raagyema
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 10dbd4d7fa838ee7f8a3f70b3caadb570877d685
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.date: 12/02/2019
+ms.openlocfilehash: 8a451b06c8166b48fd892050e53204e2b65856c3
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71259967"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74772103"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Protokolle für langsame Abfragen in Azure Database for MariaDB
 In Azure Database for MariaDB ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.

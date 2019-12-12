@@ -1,20 +1,17 @@
 ---
-title: Hinzufügen von switch-Anweisungen zu Workflows – Azure Logic Apps | Microsoft-Dokumentation
+title: Hinzufügen von switch-Anweisungen zu Workflows
 description: Hier erfahren Sie, wie Sie switch-Anweisungen erstellen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps steuern.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
-ms.openlocfilehash: 2a3f8ee5cba3110d392555fad78c1cb2513b5d4e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5c40feec2dca65e4bc9617a71a6d0a8e4c872a3a
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60683135"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793240"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Erstellen von switch-Anweisungen, die Workflowaktionen auf der Grundlage bestimmter Werte in Azure Logic Apps ausführen
 

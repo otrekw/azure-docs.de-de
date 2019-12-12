@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verbinden einer App für benutzerdefinierte Befehle mit Speech SDK – Speech Service'
+title: 'Schnellstart: Speech-Dienst: Verbinden einer App für benutzerdefinierte Befehle mit Speech SDK'
 titleSuffix: Azure Cognitive Services
 description: In diesem Artikel erstellen Sie eine Sprach-SDK-Clientanwendung mit benutzerdefinierten Befehlen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: da90e1fb8ab6241cbe0bfa583e1b4a3fbe338ad8
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111148"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812964"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Schnellstart: Herstellen einer Verbindung mit einer Anwendung für benutzerdefinierte Befehle mit dem Sprach-SDK (Vorschau)
 
@@ -36,7 +36,7 @@ Eine Anwendung für benutzerdefinierte Befehle ist erforderlich, um diesen Artik
 Außerdem benötigen Sie:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Azure-Abonnementschlüssel für Spracherkennungsdienste. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com).
+- Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Beziehen Sie einen kostenlos](get-started.md), oder erstellen Sie ihn im [Azure-Portal](https://portal.azure.com)
 
 ## <a name="optional-get-started-fast"></a>Optional: Schneller Einstieg
 

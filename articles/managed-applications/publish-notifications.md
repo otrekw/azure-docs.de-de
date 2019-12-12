@@ -8,12 +8,12 @@ ms.reviewer: ''
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: a00e5be4493b8c8116e2925e88a3ce4bf8cfb722
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8cf9fc0b3d9c13ebc5309be6d27c7be0f2e60878
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085198"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805687"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure Managed Applications mit Benachrichtigungen
 
@@ -132,6 +132,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Succeeded",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -152,6 +155,9 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
     "applicationId": "subscriptions/<subId>/resourceGroups/<rgName>/providers/Microsoft.Solutions/applications/<applicationName>",
     "eventTime": "2019-08-14T19:20:08.1707163Z",
     "provisioningState": "Failed",
+    "billingDetails": {
+        "resourceUsageId":"<resourceUsageId>"
+    },
     "plan": {
         "publisher": "publisherId",
         "product": "offer",
@@ -178,6 +184,7 @@ eventType | Der Typ des Ereignisses, das die Benachrichtigung ausgelöst hat (Be
 applicationId | Der vollqualifizierte Ressourcenbezeichner der verwalteten Anwendung, für die die Benachrichtigung ausgelöst wurde. 
 eventTime | Der Zeitstempel des Ereignisses, das die Benachrichtigung ausgelöst hat (Datum und Uhrzeit im UTC ISO 8601-Format).
 provisioningState | Der Bereitstellungsstatus der Instanz der verwalteten Anwendung. (Beispiele: „Succeeded“, „Failed“, „Deleting“, „Deleted“)
+billingDetails | Hierbei handelt es sich um die Abrechnungsdetails der verwalteten Anwendungsinstanz. Mithilfe von „resourceUsageId“ kann der Marketplace nach Nutzungsdetails abgefragt werden.
 error | *Wird nur angegeben, wenn „provisioningState“ den Wert „Failed“ aufweist.* . Enthält den Fehlercode, die Meldung und Details zu dem Problem, das den Fehler verursacht hat.
 applicationDefinitionId | *Wird nur für verwaltete Dienstkataloganwendungen angegeben*. Stellt den vollqualifizierten Ressourcenbezeichner der Anwendungsdefinition dar, für die die Instanz der verwalteten Anwendung bereitgestellt wurde.
 Tarif | *Wird nur für verwaltete Marketplace-Anwendungen angegeben*. Stellt den Herausgeber, das Angebot, die SKU und die Version der Instanz der verwalteten Anwendung dar.

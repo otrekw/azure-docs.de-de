@@ -1,19 +1,14 @@
 ---
 title: Verwenden von PowerShell zum Sichern von Windows Server in Azure
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
-ms.reviewer: shivamg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
-ms.date: 08/20/2019
-ms.author: dacurwin
-ms.openlocfilehash: 78b83eb725da09dc98df05865ba4d41c505f0f4c
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.date: 12/2/2019
+ms.openlocfilehash: 54cfbb4a550ff14705d8d02b0589ee023cf9c225
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747259"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689188"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
 
@@ -547,9 +542,9 @@ IsExclude : True
 IsRecursive : True
 ```
 
-### <a name="performing-an-ad-hoc-backup"></a>Durchführen einer Ad-hoc-Sicherung
+### <a name="performing-an-on-demand-backup"></a>Durchführen einer bedarfsgesteuerten Sicherung
 
-Nachdem eine Sicherungsrichtlinie festgelegt wurde, werden die Sicherungen entsprechend dem Zeitplan ausgeführt. Mit dem [Start-OBBackup](https://technet.microsoft.com/library/hh770426)-Cmdlet kann auch eine Ad-hoc-Sicherung ausgelöst werden:
+Nachdem eine Sicherungsrichtlinie festgelegt wurde, werden die Sicherungen entsprechend dem Zeitplan ausgeführt. Mit dem [Start-OBBackup](https://technet.microsoft.com/library/hh770426)-Cmdlet kann auch eine bedarfsgesteuerte Sicherung ausgelöst werden:
 
 ```powershell
 Get-OBPolicy | Start-OBBackup
@@ -574,7 +569,7 @@ In diesem Abschnitt werden die Schritte zum Automatisieren der Wiederherstellung
 
 1. Auswählen des Quellvolumes
 2. Auswählen eines Sicherungspunkts für die Wiederherstellung
-3. Auswählen eines wiederherzustellenden Elements
+3. Angeben eines wiederherzustellenden Elements
 4. Auslösen des Wiederherstellungsvorgangs
 
 ### <a name="picking-the-source-volume"></a>Auswählen des Quellvolumes
@@ -598,95 +593,61 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>Auswählen eines Sicherungspunkts für die Wiederherstellung
 
-Die Liste der Sicherungspunkte kann durch Ausführen des Cmdlets [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) mit entsprechenden Parametern abgerufen werden. In unserem Beispiel wählen wir den neuesten Sicherungspunkt für das Quellvolume *D:* aus und verwenden ihn zum Wiederherstellen einer bestimmten Datei.
+Die Liste der Sicherungspunkte kann durch Ausführen des Cmdlets [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) mit entsprechenden Parametern abgerufen werden. In unserem Beispiel wählen wir den neuesten Sicherungspunkt für das Quellvolume *C:* aus und verwenden ihn zum Wiederherstellen einer bestimmten Datei.
 
 ```powershell
-$Rps = Get-OBRecoverableItem -Source $Source[1]
+$Rps = Get-OBRecoverableItem $Source[0]
+$Rps
 ```
 
 ```Output
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 
-IsDir : False
-ItemNameFriendly : D:\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : D:\
-PointInTime : 17-Jun-15 6:31:31 AM
-ServerName : myserver.microsoft.com
-ItemSize :
+IsDir                : False
+ItemNameFriendly     : C:\
+ItemNameGuid         : \\?\Volume{297cbf7a-0000-0000-0000-401f00000000}\
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : C:\
+PointInTime          : 10/16/2019 7:00:19 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime :
 ```
 
 Das `$Rps`-Objekt ist ein Array von Sicherungspunkten. Das erste Element ist der neueste Punkt und das n. Element der älteste Punkte. Um den neuesten Punkt auszuwählen, verwenden wir `$Rps[0]`.
 
-### <a name="choosing-an-item-to-restore"></a>Auswählen eines wiederherzustellenden Elements
+### <a name="specifying-an-item-to-restore"></a>Angeben eines wiederherzustellenden Elements
 
-Um die Datei oder den Ordner zu identifizieren, die bzw. der wiederhergestellt werden soll, verwenden Sie das [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx)-Cmdlet rekursiv. Auf diese Weise kann die Ordnerhierarchie ausschließlich mit `Get-OBRecoverableItem` durchsucht werden.
-
-Wenn wir in diesem Beispiel die Datei *finances.xls* wiederherstellen möchten, können wir mit dem `$FilesFolders[1]`-Objekt auf sie verweisen.
+Geben Sie den Dateinamen relativ zum Stammvolumen an, um eine bestimmte Datei wiederherzustellen. Führen Sie beispielsweise den folgenden Befehl aus, um C:\Test\Cat.job abzurufen. 
 
 ```powershell
-$FilesFolders = Get-OBRecoverableItem $Rps[0]
-$FilesFolders
+$Item = New-OBRecoverableItem $Rps[0] "Test\cat.jpg" $FALSE
+$Item
 ```
 
 ```Output
-IsDir : True
-ItemNameFriendly : D:\MyData\
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : MyData
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize :
-ItemLastModifiedTime : 15-Jun-15 8:49:29 AM
-```
-
-```powershell
-$FilesFolders = Get-OBRecoverableItem $FilesFolders[0]
-$FilesFolders
-```
-
-```Output
-IsDir : False
-ItemNameFriendly : D:\MyData\screenshot.oxps
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\screenshot.oxps
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : screenshot.oxps
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 228313
-ItemLastModifiedTime : 21-Jun-14 6:45:09 AM
-
-IsDir : False
-ItemNameFriendly : D:\MyData\finances.xls
-ItemNameGuid : \?\Volume{b835d359-a1dd-11e2-be72-2016d8d89f0f}\MyData\finances.xls
-LocalMountPoint : D:\
-MountPointName : D:\
-Name : finances.xls
-PointInTime : 18-Jun-15 6:41:52 AM
-ServerName : myserver.microsoft.com
-ItemSize : 96256
+IsDir                : False
+ItemNameFriendly     : C:\Test\cat.jpg
+ItemNameGuid         :
+LocalMountPoint      : C:\
+MountPointName       : C:\
+Name                 : cat.jpg
+PointInTime          : 10/17/2019 7:52:13 PM
+ServerName           : myserver.microsoft.com
+ItemSize             :
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
-```
 
-Sie können auch mit dem ```Get-OBRecoverableItem``` -Cmdlet nach wiederherzustellenden Elementen suchen. In unserem Beispiel können wir zum Suchen nach *finances.xls* den folgenden Befehl ausführen, um ein Handle für die Datei abzurufen:
-
-```powershell
-$Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
 ```
 
 ### <a name="triggering-the-restore-process"></a>Auslösen des Wiederherstellungsvorgangs

@@ -1,19 +1,18 @@
 ---
-title: Batchverarbeitung von EDI-Nachrichten als Gruppe – Azure Logic Apps
+title: Batchverarbeitung von EDI-Nachrichten als Gruppe
 description: Senden und Empfangen von EDI-Nachrichten als Batches, Gruppen oder Sammlungen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 28e51363ca99182c9b6520ab1dea5aa13b16ea12
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680178"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793006"
 ---
 # <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Senden von EDI-Nachrichten in Batches an Handelspartner mit Azure Logic Apps
 

@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren von Serverparametern in Azure Database for MariaDB
+title: Konfigurieren von Serverparametern in Azure Database for MariaDB über das Azure-Portal
 description: In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal MariaDB-Serverparameter in Azure Database for MariaDB konfigurieren.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 04/15/2019
-ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 3477820cb20d856c2e979cdfbe5528113bf4b562
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60922525"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769403"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Konfigurieren von Serverparametern in Azure Database for MariaDB über das Azure-Portal
 
@@ -44,8 +44,8 @@ Die Liste der unterstützten Serverparameter wächst ständig. Verwenden Sie die
 |Allgemeiner Zweck| 2| 3\.584| 300|
 |Allgemeiner Zweck| 4| 7\.680| 625|
 |Allgemeiner Zweck| 8| 15360| 1250|
-|Allgemeiner Zweck| 16| 31\.232| 2500|
-|Allgemeiner Zweck| 32| 62\.976| 5\.000|
+|Allgemeiner Zweck| 16| 31.232| 2500|
+|Allgemeiner Zweck| 32| 62.976| 5\.000|
 |Allgemeiner Zweck| 64| 125952| 10000|
 |Arbeitsspeicheroptimiert| 2| 7168| 600|
 |Arbeitsspeicheroptimiert| 4| 15360| 1250|

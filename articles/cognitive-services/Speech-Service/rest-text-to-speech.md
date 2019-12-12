@@ -1,5 +1,5 @@
 ---
-title: Text-to-Speech-API-Referenz (REST) – Speech Service
+title: 'Speech-Dienst: Sprachsynthese-API-Referenz (REST)'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Sprachsynthese-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 9fa0157bd458d2de028cab8ff9c836761e99562f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 779df2794267a1cb62d9918fc718da02e94c48cb
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73481216"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816624"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -167,7 +167,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Text-to-Speec
 
 ### <a name="audio-outputs"></a>Audioausgaben
 
-Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Spracherkennungsdienst unterstützt Audioausgaben mit 24 kHz, 16 kHz und 8 kHz.
+Dies ist eine Liste der unterstützten Audioformate, die in jeder Anforderung als `X-Microsoft-OutputFormat`-Header gesendet werden. Es wird jeweils eine Bitrate und ein Codierungstyp angegeben. Der Speech-Dienst unterstützt Audioausgaben mit 24 kHz, 16 kHz und 8 kHz.
 
 |||
 |-|-|

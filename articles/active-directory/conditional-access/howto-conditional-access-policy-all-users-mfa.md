@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 892171f3e275ebc405bc7a228185ebfabc61acfb
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: cc0d22e2e6478c265ba9219ae4df5d5ddb34d481
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164104"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803885"
 ---
 # <a name="conditional-access-require-mfa-for-all-users"></a>Bedingter Zugriff: Anfordern der MFA für alle Benutzer
 
-Wie Alex Weinert (Director des Identity Security-Teams bei Microsoft) in seinem Blogbeitrag [Your Pa$$word doesn't matter](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984) erwähnt:
+Wie Alex Weinert (Directory of Identity Security bei Microsoft) in seinem Blogbeitrag [Your Pa$$word doesn't matter](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Your-Pa-word-doesn-t-matter/ba-p/731984) erwähnt:
 
 > Ihr Kennwort ist nicht wichtig, MFA aber schon! Basierend auf unseren Studien ist Ihr Konto bei Verwendung von MFA mehr als 99,9 % weniger wahrscheinlich gefährdet.
 
@@ -44,7 +44,7 @@ In Organisationen werden möglicherweise viele Cloudanwendungen verwendet. Mögl
 Die folgenden Schritte helfen bei der Erstellung einer Richtlinie für bedingten Zugriff, nach der die zugewiesenen Administratorrollen eine mehrstufige Authentifizierung durchführen müssen.
 
 1. Melden Sie sich beim **Azure-Portal** als globaler Administrator, Sicherheitsadministrator oder Administrator für bedingten Zugriff an.
-1. Navigieren Sie zu **Azure Active Directory** > **Bedingter Zugriff**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Benennen Sie Ihre Richtlinie. Es wird empfohlen, dass Unternehmen einen aussagekräftigen Standard für die Namen ihrer Richtlinien erstellen.
 1. Wählen Sie unter **Zuweisungen** die Option **Benutzer und Gruppen** aus.

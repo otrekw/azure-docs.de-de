@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25d1aec836f66ae2ebc007e920cf6ef8a4450919
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473338"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786417"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -35,13 +35,13 @@ Bei der Benutzerbereitstellung wird die Grundlage für eine fortlaufende Identit
 
 Die Aktivierung der automatischen Benutzerbereitstellung bietet die folgenden Hauptvorteile:
 
-* **Höhere Produktivität**: Sie können Benutzeridentitäten in SaaS-Anwendungen mit einer einzigen Benutzeroberfläche für die Benutzerbereitstellungsverwaltung verwalten. Diese Oberfläche verfügt über einen einzelnen Satz von Bereitstellungsrichtlinien.
+* **Gesteigerte Produktivität:** Sie können Benutzeridentitäten in SaaS-Anwendungen mit einer einzigen Benutzeroberfläche für die Benutzerbereitstellungsverwaltung verwalten. Diese Oberfläche verfügt über einen einzelnen Satz von Bereitstellungsrichtlinien.
 
-* **Risikomanagement**: Sie können die Sicherheit erhöhen, indem Sie Änderungen basierend auf dem Mitarbeiterstatus oder den Gruppenmitgliedschaften automatisieren, die Rollen und/oder den Zugriff definieren.
+* **Risikomanagement:** Sie können die Sicherheit erhöhen, indem Sie Änderungen basierend auf dem Mitarbeiterstatus oder den Gruppenmitgliedschaften automatisieren, die Rollen und/oder den Zugriff definieren.
 
 * **Erfüllung von Compliance und Governance**: Azure AD unterstützt systemeigene Überwachungsprotokolle für jede Benutzerbereitstellungsanforderung. Die Anforderungen werden sowohl im Quell- als auch im Zielsystem ausgeführt. Dadurch können Sie über einen einzigen Bildschirm nachverfolgen, wer Zugriff auf Anwendungen hat.
 
-* **Kostensenkung**: Die automatische Benutzerbereitstellung reduziert Kosten, indem Ineffizienzen und menschliche Fehler vermieden werden, die bei einer manuellen Bereitstellung entstehen. Außerdem wird der Bedarf an benutzerdefinierten Benutzerbereitstellungslösungen, Skripts und Überwachungsprotokollen verringert.
+* **Kostensenkung:** Die automatische Benutzerbereitstellung reduziert Kosten, indem Ineffizienzen und menschliche Fehler vermieden werden, die bei einer manuellen Bereitstellung entstehen. Außerdem wird der Bedarf an benutzerdefinierten Benutzerbereitstellungslösungen, Skripts und Überwachungsprotokollen verringert.
 
 ### <a name="licensing"></a>Lizenzierung
 
@@ -70,7 +70,7 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 | Ressourcen| Link und Beschreibung |
 | - | - |
 | On-Demand-Webinare| [Verwalten von Unternehmensanwendungen mit Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>‎Erfahren Sie, wie Ihnen Azure AD das einmalige Anmelden bei Ihren SaaS-Unternehmensanwendungen ermöglicht, und lernen Sie bewährte Methoden zum Steuern des Zugriffs kennen. |
-| Videos| [Was ist die Benutzerbereitstellung in Azure Active Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Implementieren der Benutzerbereitstellung in Azure Active Directory](https://youtu.be/pKzyts6kfrw) <br> [Integrieren von Salesforce in Azure AD: Automatisieren der Benutzerbereitstellung](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
+| Videos| [Was ist die Benutzerbereitstellung in Azure Active Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Implementieren der Benutzerbereitstellung in Azure Active Directory](https://youtu.be/pKzyts6kfrw) <br> [Integrieren von Salesforce mit Azure AD: Automatisieren der Benutzerbereitstellung](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Onlinekurse| SkillUp Online:  [Verwalten von Identitäten](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Erfahren Sie, wie Sie Azure AD in viele SaaS-Anwendungen integrieren und den Benutzerzugriff auf diese Anwendungen schützen. |
 | Bücher| [Modern Authentication with Azure Active Directory for Web Applications (Developer Reference) 1st Edition](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0) (Moderne Authentifizierung mit Azure Active Directory für Webanwendungen (Entwicklerreferenz), 1. Auflage).  <br> ‎Dies ist ein autoritativer, ausführlicher Leitfaden für die Entwicklung von Active Directory-Authentifizierungslösungen für diese neuen Umgebungen. |
 | Lernprogramme| Weitere Informationen finden Sie in der [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list). |
@@ -90,15 +90,15 @@ In diesem Beispiel werden Benutzer und/oder Gruppen in einer mit einem lokalen V
 
 1. Benutzer/Gruppen werden in einer lokalen HR-Anwendung/einem lokalen HR-System (z. B. SAP) erstellt. 
 
-1. Der Azure AD Connect-Agent führt geplante Synchronisierungen von Identitäten (Benutzer und Gruppen) aus der lokalen AD-Instanz mit Azure AD aus.
+1. Der **Azure AD Connect-Agent** führt geplante Synchronisierungen von Identitäten (Benutzer und Gruppen) aus der lokalen AD-Instanz mit Azure AD aus.
 
-1. Der Azure AD-Bereitstellungsdienst startet einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) für das Quellsystem und das Zielsystem. 
+1. Der **Azure AD-Bereitstellungsdienst** startet einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) für das Quellsystem und das Zielsystem. 
 
-1. Der Azure AD-Bereitstellungsdienst fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus geändert wurden, und überträgt Änderungen mithilfe von Push in [inkrementellen Zyklen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. Der **Azure AD-Bereitstellungsdienst** fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus geändert wurden, und überträgt Änderungen mithilfe von Push in [inkrementellen Zyklen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatische Benutzerbereitstellung für reine Cloudunternehmen
 
-In diesem Beispiel erfolgt die Benutzererstellung in Azure AD, und der Azure AD-Bereitstellungsdienst verwaltet die automatische Benutzerbereitstellung für die SaaS-Zielanwendungen:
+In diesem Beispiel erfolgt die Benutzererstellung in Azure AD, und der Azure AD-Bereitstellungsdienst verwaltet die automatische Benutzerbereitstellung für die SaaS-Zielanwendungen.
 
 ![Abbildung 2](media/auto-user-provision-dp/cloudprovisioning.png)
 
@@ -106,22 +106,23 @@ In diesem Beispiel erfolgt die Benutzererstellung in Azure AD, und der Azure AD-
 
 1. Benutzer/Gruppen werden in Azure AD erstellt.
 
-1. Der Azure AD-Bereitstellungsdienst startet einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) für das Quellsystem und das Zielsystem. 
+1. Der **Azure AD-Bereitstellungsdienst** startet einen [ersten Zyklus](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) für das Quellsystem und das Zielsystem. 
 
-1. Der Azure AD-Bereitstellungsdienst fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus aktualisiert wurden, und führt [inkrementelle Zyklen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) aus.
+1. Der **Azure AD-Bereitstellungsdienst** fragt das Quellsystem nach Benutzern und Gruppen ab, die seit dem ersten Zyklus aktualisiert wurden, und führt [inkrementelle Zyklen](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) aus.
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>Automatische Benutzerbereitstellung für HR-Cloudanwendungen 
 
-In diesem Beispiel werden die Benutzer und/oder Gruppen in einer HR-Cloudanwendung wie Workday erstellt.
+In diesem Beispiel werden die Benutzer und/oder Gruppen in einer HR-Cloudanwendung wie Workday oder SuccessFactors erstellt. Der Azure AD-Bereitstellungsdienst und der Azure AD Connect-Bereitstellungs-Agent stellen die Benutzerdaten aus der HR-Cloud-App in AD zur Verfügung. Sobald die Konten in AD aktualisiert wurden, erfolgt über Azure AD Connect die Synchronisierung mit Azure AD, und die E-Mail-Adressen und Benutzernamenattribute können an den Mandanten der HR-Cloud-App zurückgeschrieben werden.
 
 ![Abbildung 2](media/auto-user-provision-dp/workdayprovisioning.png)
 
-1. Die Konten werden im HR-Cloudsystem erstellt.
-1. Die Daten fließen über den Azure AD-Bereitstellungsdienst und den Bereitstellungs-Agent in die lokale AD-Instanz.
-1. Azure AD Connect synchronisiert Daten mit Azure AD.
-1. E-Mail- und Benutzernamenattribute können in die HR-Cloudanwendung zurückgeschrieben werden.
-
-Weitere Informationen zur Lösungsarchitektur und zur Bereitstellung finden Sie unter [Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial).
+1.  Das **HR-Team** führt die Transaktionen im Mandanten der HR-Cloud-App durch.
+2.  Der **Azure AD-Bereitstellungsdienst** führt die geplanten Zyklen vom Mandanten der HR-Cloud-App aus und erkennt Änderungen, die zur Synchronisierung mit AD verarbeitet werden müssen.
+3.  Der **Azure AD-Bereitstellungsdienst** ruft den Azure AD Connect-Bereitstellungs-Agent mit einer Anforderungsnutzlast auf, die die Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgänge für das AD-Konto enthält.
+4.  Der **Azure AD Connect-Bereitstellungs-Agent** verwendet ein Dienstkonto zum Verwalten von AD-Kontodaten.
+5.  **Azure AD Connect** führt eine Deltasynchronisierung aus, um Updates in AD zu pullen.
+6.  **AD**-Updates werden mit Azure AD synchronisiert. 
+7.  Der **Azure AD-Bereitstellungsdienst** schreibt E-Mail-Attribut und Benutzername aus Azure AD in den Mandanten der HR-Cloud-App zurück.
 
 ## <a name="plan-the-deployment-project"></a>Planen des Bereitstellungsprojekts
 

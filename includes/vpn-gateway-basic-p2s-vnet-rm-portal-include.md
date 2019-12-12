@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3d9826e3eae2a60b217df1406d26d83c78fbdefb
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a826bb01a906153b4ca2a3c854623c83b6192aec
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67673357"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828777"
 ---
 Wenn Sie mit dem Azure-Portal ein VNET im Resource Manager-Bereitstellungsmodell erstellen, führen Sie die Schritte unten aus. Die Screenshots dienen als Beispiele. Achten Sie darauf, dass Sie die Werte durch Ihre eigenen Werte ersetzen. Weitere Informationen zur Arbeit mit virtuellen Netzwerken finden Sie unter [Virtuelle Netzwerke im Überblick](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,10 +22,12 @@ Wenn Sie mit dem Azure-Portal ein VNET im Resource Manager-Bereitstellungsmodell
 >
 >
 
-1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich, falls erforderlich, mit Ihrem Azure-Konto an.
-2. Klicken Sie unten auf der Seite auf **+** . Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge „Virtual Network“ ein. Klicken Sie in der zurückgegebenen Liste auf **Virtual Network**, um die Seite **Virtual Network** zu öffnen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  Klicken Sie im Menü des Azure-Portals oder auf der Seite **Home** auf die Option **Ressource erstellen**. Die Seite **Neu** wird geöffnet.
 
-   ![Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+2. Geben Sie *virtuelles Netzwerk* in das Feld **Marketplace durchsuchen** ein, und wählen Sie aus den Ergebnissen den Eintrag **Virtuelles Netzwerk** aus.
+
+   ![Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+
 3. Wählen Sie unten auf der Seite „Virtuelles Netzwerk“ in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie dann auf **Erstellen**.
 
    ![Auswählen von „Resource Manager“](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "Ressourcen-Manager auswählen")

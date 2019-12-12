@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4d970e61fc2628843ef847526dcdb4e44bf9796f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176933"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786944"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Arbeiten mit Datenbanken, Containern und Elementen in Azure Cosmos DB
 
@@ -82,7 +82,7 @@ Ein Azure Cosmos-Container enthält einen Satz von systemdefinierten Eigenschaft
 
 | Systemseitig definierte Eigenschaft | Vom System generiert oder vom Benutzer konfigurierbar | Zweck | SQL-API | Cassandra-API | Azure Cosmos DB-API für MongoDB | Gremlin-API | Tabelle-API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_id | Vom System generiert | Eindeutiger Bezeichner des Containers | Ja | Nein | Nein | Nein | Nein |
+|\_rid | Vom System generiert | Eindeutiger Bezeichner des Containers | Ja | Nein | Nein | Nein | Nein |
 |\_etag | Vom System generiert | Entitätstag, das zur Steuerung der optimistischen Nebenläufigkeit genutzt wird | Ja | Nein | Nein | Nein | Nein |
 |\_ts | Vom System generiert | Zuletzt aktualisierter Zeitstempel des Containers | Ja | Nein | Nein | Nein | Nein |
 |\_self | Vom System generiert | Adressierbarer URI des Containers | Ja | Nein | Nein | Nein | Nein |

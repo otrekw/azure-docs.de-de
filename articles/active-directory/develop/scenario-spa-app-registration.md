@@ -1,6 +1,6 @@
 ---
 title: Single-Page-Webanwendung (App-Registrierung) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Single-Page-Webanwendung (App-Registrierung) erstellen.
+description: Informieren Sie sich, wie Sie eine Single-Page-Webanwendung (App-Registrierung) erstellen.
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -15,30 +15,30 @@ ms.date: 05/07/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0ef23b08beeee4cd7e82a5fc33a01b4988ddffb6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080094"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74764694"
 ---
-# <a name="single-page-application---app-registration"></a>Single-Page-Webanwendung – App-Registrierung
+# <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
 Auf dieser Seite werden die Besonderheiten der App-Registrierung für eine Single-Page-Webanwendung (Single-Page App, SPA) erläutert.
 
-Befolgen Sie die Schritte, um [eine neue Anwendung bei Microsoft Identity Platform zu registrieren](quickstart-register-app.md), und wählen Sie die unterstützten Konten für Ihre Anwendung aus. Das SPA-Szenario kann die Authentifizierung mit Konten in Ihrer Organisation oder in anderen Organisation und persönlichen Microsoft-Konten unterstützen.
+Befolgen Sie die Schritte, um [eine neue Anwendung bei der Microsoft Identity Platform zu registrieren](quickstart-register-app.md), und wählen Sie die unterstützten Konten für Ihre Anwendung aus. Das SPA-Szenario kann die Authentifizierung mit Konten in Ihrer Organisation oder in anderen Organisation und persönlichen Microsoft-Konten unterstützen.
 
 Erfahren Sie nun mehr zu den Punkten der Anwendungsregistrierung, die für Single-Page-Webanwendungen gelten.
 
 ## <a name="register-a-redirect-uri"></a>Registrieren eines Umleitungs-URI
 
-Der implizite Fluss sendet die Token in einer Umleitung an die Single-Page-Webanwendung, die in einem Webbrowser ausgeführt wird. Deshalb wird vorausgesetzt, dass Sie einen Umleitungs-URI registrieren, über den Ihre Anwendung die Token empfangen kann. Achten Sie darauf, dass der Umleitungs-URI genau mit dem URI Ihrer Anwendung übereinstimmt.
+Der implizite Flow sendet die Token in einer Umleitung an die Single-Page-Webanwendung, die in einem Webbrowser ausgeführt wird. Es ist daher wichtig, dass Sie einen Umleitungs-URI registrieren, über den Ihre Anwendung die Token empfangen kann. Achten Sie darauf, dass der Umleitungs-URI genau mit dem URI Ihrer Anwendung übereinstimmt.
 
-Navigieren Sie im [Azure-Portal](https://go.microsoft.com/fwlink/?linkid=2083908) zu Ihrer registrierten Anwendung, wählen Sie auf der Seite **Authentifizierung** **Web** als Plattform aus, und geben Sie im Feld **Umleitungs-URI** den Wert des Umleitungs-URI für Ihre Anwendung ein.
+Navigieren Sie im [Azure-Portal](https://go.microsoft.com/fwlink/?linkid=2083908) zur registrierten Anwendung. Klicken Sie auf der Seite **Authentifizierung** auf die Plattform **Web**. Geben Sie den Wert des Umleitungs-URIs für Ihre Anwendung in das Feld **Umleitungs-URI** ein.
 
 ## <a name="enable-the-implicit-flow"></a>Aktivieren des impliziten Flows
 
-Aktivieren Sie außerdem auf der Seite **Authentifizierung** unter **Erweiterte Einstellungen** die Option **Implizite Genehmigung**. Wenn Ihre Anwendung nur Benutzer anmeldet und ID-Token abruft, reicht es aus, die Option **ID-Token** zu aktivieren.
+Aktivieren Sie außerdem auf der Seite **Authentifizierung** unter **Erweiterte Einstellungen** die Option **Implicit grant** (Implizite Genehmigung). Wenn Ihre Anwendung nur Benutzer anmeldet und ID-Token abruft, genügt es, das Kontrollkästchen **ID tokens** (ID-Token) zu aktivieren.
 
 Wenn Ihre Anwendung zudem Zugriffstoken zum Aufrufen von APIs benötigt, aktivieren Sie zusätzlich die Option **Zugriffstoken**. Weitere Informationen finden Sie unter [ID-Token](./id-tokens.md) und [Zugriffstoken](./access-tokens.md).
 

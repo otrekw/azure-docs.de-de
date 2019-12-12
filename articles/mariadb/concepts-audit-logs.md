@@ -1,17 +1,17 @@
 ---
-title: Überwachungsprotokolle für Azure Database for MariaDB
+title: Überwachungsprotokolle in Azure Database for MariaDB
 description: Informationen zu den Überwachungsprotokollen, die in Azure Database for MariaDB verfügbar sind, sowie die verfügbaren Parameter zum Aktivieren von Protokolliergraden.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.openlocfilehash: 13ea60c62283db35ce4bf9fde6c3b36ba7f88013
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.date: 12/02/2019
+ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67439219"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773072"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Überwachungsprotokolle in Azure Database for MariaDB
 

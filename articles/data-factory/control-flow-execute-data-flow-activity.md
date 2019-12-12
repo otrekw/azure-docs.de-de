@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 10/07/2019
-ms.openlocfilehash: 5623907346ee3882ad53a27695336ba4bc449db8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f05b9ae490ea2b9d8e7b89ce02c7c1eb818bb0a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679949"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769574"
 ---
 # <a name="data-flow-activity-in-azure-data-factory"></a>Datenflussaktivität in Azure Data Factory
 
@@ -98,6 +98,43 @@ Das Debuggen der Pipeline wird für den aktiven Debugcluster und nicht für die 
 ## <a name="monitoring-the-data-flow-activity"></a>Überwachen der Datenflussaktivität
 
 Die Datenflussaktivität verfügt über eine besondere Überwachungsoberfläche, auf der Sie Informationen zu Partitionierung, Phasenzeit und Datenherkunft anzeigen können. Sie öffnen den Überwachungsbereich über das Brillensymbol unter **Aktionen**. Weitere Informationen finden Sie unter [Überwachen von Datenflüssen](concepts-data-flow-monitoring.md).
+
+### <a name="use-data-flow-activity-results-in-a-subsequent-activity"></a>Verwenden der Ergebnisse der Datenflussaktivität in einer nachfolgenden Aktivität
+
+Die Datenflussaktivität gibt Metriken bezüglich der Anzahl der Zeilen aus, die in jeder Senke geschrieben werden und die in jeder Quelle gelesen werden. Diese Ergebnisse werden im Abschnitt `output` des Ergebnisses der Aktivitätsausführung zurückgegeben. Die zurückgegebenen Metriken weisen das Format des folgenden JSON auf.
+
+``` json
+{
+    "runStatus": {
+        "metrics": {
+            "<your sink name1>": {
+                "rowsWritten": <number of rows written>,
+                "sinkProcessingTime": <sink processing time in ms>,
+                "sources": {
+                    "<your source name1>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    "<your source name2>": {
+                        "rowsRead": <number of rows read>
+                    },
+                    ...
+                }
+            },
+            "<your sink name2>": {
+                ...
+            },
+            ...
+        }
+    }
+}
+```
+
+Verwenden Sie beispielsweise `@activity('dataflowActivity').output.runStatus.metrics.sink1.rowsWritten`, um die Anzahl der in eine Senke namens „sink1“ in einer Aktivität namens „dataflowActivity“ geschriebenen Zeile zu erhalten.
+
+Verwenden Sie `@activity('dataflowActivity').output.runStatus.metrics.sink1.sources.source1.rowsRead`, um die Anzahl der von einer Quelle namens „source1“ gelesenen Zeile abzurufen, die in dieser Senke verwendet wurde.
+
+> [!NOTE]
+> Wenn für eine Senke keine Zeilen geschrieben wurden, wird sie nicht in Metriken angezeigt. Vorhandene Zeilen können durch die `contains`-Funktion überprüft werden. Beispielsweise überprüft `contains(activity('dataflowActivity').output.runStatus.metrics, 'sink1')`, ob Zeilen in sink1 geschrieben wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

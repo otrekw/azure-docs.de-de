@@ -1,20 +1,17 @@
 ---
-title: Erstellen von Logik-App-Vorlagen zur Bereitstellung – Azure Logic Apps
+title: Erstellen von Logik-App-Vorlagen zur Bereitstellung
 description: Erfahren Sie, wie Sie Azure Resource Manager-Vorlagen zur automatischen Bereitstellung in Azure Logic Apps erstellen.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: 57e9cec16326068cc7de74b8f7266fbe47808fed
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845455"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793205"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 

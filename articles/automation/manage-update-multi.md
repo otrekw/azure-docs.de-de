@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278683"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806506"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -119,6 +119,10 @@ Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisi
 ## <a name="schedule-an-update-deployment"></a>Planen einer Updatebereitstellung
 
 Planen Sie zum Installieren von Updates eine Bereitstellung, die Ihrem Releasezeitplan und Wartungsfenster entspricht. Sie können auswählen, welche Updatetypen in die Bereitstellung eingeschlossen werden sollen. Beispielsweise können Sie kritische oder Sicherheitsupdates einschließen und Updaterollups ausschließen.
+
+>[!NOTE]
+>Bei der Planung einer Updatebereitstellung wird eine [Zeitplanressource](shared-resources/schedules.md) erstellt, die mit dem Runbook **Patch-MicrosoftOMSComputers** verknüpft ist, das die Updatebereitstellung auf den Zielcomputern verarbeitet. Wenn Sie die Zeitplanressource nach der Bereitstellungserstellung über das Azure-Portal oder mithilfe von PowerShell löschen, wird die geplante Updatebereitstellung unterbrochen, und es wird ein Fehler angezeigt, wenn Sie sie nochmal über das Portal konfigurieren möchten. Sie können die Zeitplanressource nur löschen, indem Sie den entsprechenden Bereitstellungszeitplan löschen.
+>
 
 Um eine neue Updatebereitstellung für einen oder mehrere virtuelle Computer zu planen, wählen Sie unter **Updateverwaltung** die Option **Updatebereitstellung planen** aus.
 

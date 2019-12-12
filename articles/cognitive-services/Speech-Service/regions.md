@@ -1,5 +1,5 @@
 ---
-title: 'Regionen: Speech-Dienst'
+title: Regionen für den Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Eine Liste der verfügbaren Regionen und Endpunkte für den Speech-Dienst, einschließlich Spracherkennung, Sprachsynthese und Sprachübersetzung.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 478a62eaddcf3b9b831812a0930ff10c1adce99d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 409ce8b904997f2ab75f70b2138ec5b1e70a0e69
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072458"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816648"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 

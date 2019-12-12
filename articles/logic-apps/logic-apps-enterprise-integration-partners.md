@@ -1,20 +1,19 @@
 ---
-title: 'Hinzufügen von Handelspartnern für B2B-Integrationen: Azure Logic Apps'
+title: Hinzufügen von Handelspartnern für B2B-Integrationen
 description: Erstellen von Handelspartnern in Ihrem Integrationskonto für die Verwendung von Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 681f16132c1de2ec5f3b27f80633d32879b0746c
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: e58cbe85f30ea09adde45d55bb7b80c710c45495
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67330277"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792441"
 ---
 # <a name="add-trading-partners-to-integration-accounts-for-azure-logic-apps"></a>Hinzufügen von Handelspartnern zu Integrationskonten für Azure Logic Apps
 

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 0be50ef43774be6082a4ede330f65296094552de
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c16fea8f710751a051995ecece8a3d0ce8f933c7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786842"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926454"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -99,7 +99,7 @@ AzCopy erstellt Protokoll- und Plandateien für jeden Auftrag. Sie können die P
 
 Die Protokolle enthalten den Status des Fehlers (`UPLOADFAILED`, `COPYFAILED` und `DOWNLOADFAILED`), den vollständigen Pfad und die Ursache des Fehlers.
 
-Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE$\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Allerdings können Sie den Speicherort ändern.
+Standardmäßig befinden sich die Protokoll- und Plandateien im Verzeichnis `%USERPROFILE%\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Allerdings können Sie den Speicherort ändern.
 
 > [!IMPORTANT]
 > Geben Sie beim Senden einer Anforderung an den Microsoft-Support (oder bei der Problembehandlung unter Einbeziehung eines Drittanbieters) die bearbeitete Version des Befehls an, den Sie ausführen möchten. So wird sichergestellt, dass die SAS nicht versehentlich offengelegt wird. Die editierte Version steht am Anfang der Protokolldatei.
@@ -151,7 +151,7 @@ Wenn Sie einen Auftrag fortsetzen, überprüft AzCopy die Plandatei. In der Plan
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Ändern des Speicherorts der Plan- und Protokolldateien
 
-Standardmäßig befinden sich die Plan- und Protokolldateien im Verzeichnis `%USERPROFILE$\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Sie können diesen Speicherort ändern.
+Standardmäßig befinden sich die Plan- und Protokolldateien im Verzeichnis `%USERPROFILE%\.azcopy` unter Windows bzw. im Verzeichnis `$HOME$\.azcopy` unter Mac und Linux. Sie können diesen Speicherort ändern.
 
 ### <a name="change-the-location-of-plan-files"></a>Ändern des Speicherorts der Plandateien
 

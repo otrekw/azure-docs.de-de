@@ -1,5 +1,5 @@
 ---
-title: Unterhaltungstranskription in Echtzeit (Vorschau) – Speech Service
+title: 'Speech-Dienst: Unterhaltungstranskription in Echtzeit (Vorschau)'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Unterhaltungstranskription in Echtzeit mit dem Speech SDK verwenden. Verfügbar für C++, C# und Java
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: weixu
-ms.openlocfilehash: 4ee597f96d28b43b9c69d1515634aadde2f0ab7c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 93f0117096a5601632ccced6b698e84a0714bbd4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73608018"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805806"
 ---
 # <a name="real-time-conversation-transcription-preview"></a>Unterhaltungstranskription in Echtzeit (Vorschau)
 
-Mit der **ConversationTranscriber**-API des Speech SDK können Sie Besprechungen und andere Unterhaltungen transkribieren und dabei mehrere Teilnehmer hinzufügen, entfernen und identifizieren, indem Sie Audio mithilfe von `PullStream` oder `PushStream` an die Speech Services streamen. Bei diesem Thema wird vorausgesetzt, dass Sie mit der Verwendung der Spracherkennung mit dem Speech SDK (ab Version 1.8.0) vertraut sind. Weitere Informationen finden Sie unter [Was ist Speech Services?](overview.md).
+Mit der **ConversationTranscriber**-API des Speech SDK können Sie Besprechungen und andere Unterhaltungen transkribieren und dabei mehrere Teilnehmer hinzufügen, entfernen und identifizieren, indem Sie Audio mithilfe von `PullStream` oder `PushStream` an die Speech-Dienste streamen. Bei diesem Thema wird vorausgesetzt, dass Sie mit der Verwendung der Spracherkennung mit dem Speech SDK (ab Version 1.8.0) vertraut sind. Weitere Informationen finden Sie unter [Was sind Speech-Dienste?](overview.md).
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -37,7 +37,7 @@ Das Speech-Geräte-SDK stellt Beispielcode in Java für die Audioerfassung in Ec
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Ein Speech Services-Abonnement. Falls Sie keines besitzen, können Sie ein [Speech-Testabonnement](https://azure.microsoft.com/try/cognitive-services/) erhalten.
+Ein Abonnementschlüssel für den Speech-Dienst. Falls Sie keines besitzen, können Sie ein [Speech-Testabonnement](https://azure.microsoft.com/try/cognitive-services/) erhalten.
 
 ## <a name="create-voice-signatures"></a>Erstellen von Stimmsignaturen
 

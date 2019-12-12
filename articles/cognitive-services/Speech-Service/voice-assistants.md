@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: d687d1d353c1734c5d98121f658003afde2eb182
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195938"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74812908"
 ---
 # <a name="about-voice-assistants"></a>Informationen zu Sprach-Assistenten
 
-Sprachassistenten, die Azure Speech-Dienste verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen.
+Sprachassistenten, die den Speech-Dienst verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen.
 
 Der Dienst für Sprachassistenten ermöglicht eine schnelle und zuverlässige Interaktion zwischen einem Gerät und einer Assistentenimplementierung. Hierbei kommt zur Aufgabenausführung entweder der Direct Line Speech-Kanal im Bot Framework oder die Lösung „Benutzerdefinierte Befehle (Vorschau)“ zum Einsatz.
 
@@ -29,7 +29,7 @@ Anwendungen stellen mit dem Speech Software Development Kit (SDK) eine Verbindun
 
 ## <a name="choosing-an-assistant-solution"></a>Auswählen einer Assistenten-Lösung
 
-Im ersten Schritt zur Erstellung eines Sprach-Assistenten wird festgelegt, welches Ziel erreicht werden soll. Die Speech-Dienste von Azure verfügen über mehrere Lösungen für die Entwicklung Ihrer Assistenten-Interaktionen, die sich gegenseitig ergänzen. Für den Einstieg ist die Wahl der richtigen Tools wichtig – unabhängig davon, ob Sie die Flexibilität und Vielseitigkeit des [Direct Line Speech](direct-line-speech.md)-Kanals des Bot Frameworks oder die Einfachheit von [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) für unkomplizierte Szenarien benötigen.
+Im ersten Schritt zur Erstellung eines Sprach-Assistenten wird festgelegt, welches Ziel erreicht werden soll. Der Speech-Dienst verfügt über mehrere Lösungen für die Entwicklung Ihrer Assistenten-Interaktionen, die sich gegenseitig ergänzen. Für den Einstieg ist die Wahl der richtigen Tools wichtig – unabhängig davon, ob Sie die Flexibilität und Vielseitigkeit des [Direct Line Speech](direct-line-speech.md)-Kanals des Bot Frameworks oder die Einfachheit von [Benutzerdefinierte Befehle (Vorschauversion)](custom-commands.md) für unkomplizierte Szenarien benötigen.
 
 | Zielsetzung | Optionen | Beispiel |
 |-------------------|------------------|----------------|
@@ -49,8 +49,8 @@ Sowohl bei Nutzung von [Direct Line Speech](direct-line-speech.md) als auch von 
 | Category | Features |
 |----------|----------|
 |[Benutzerdefiniertes Schlüsselwort](speech-devices-sdk-create-kws.md) | Benutzer können Konversationen mit Assistenten über ein benutzerdefiniertes Schlüsselwort wie z. B. „Hallo, Contoso“ starten. Eine App verwendet hierzu eine benutzerdefinierte Schlüsselwort-Engine im Speech SDK, um ein benutzerdefiniertes Schlüsselwort zu konfigurieren, [das Sie hier generieren können](speech-devices-sdk-create-kws.md). Sprachassistenten können eine dienstseitige Schlüsselwortüberprüfung nutzen, um die Genauigkeit der Schlüsselwortaktivierung zu verbessern (statt diesen Vorgang nur über das Gerät durchzuführen).
-|[Spracherkennung](speech-to-text.md) | Sprachassistenten wandeln mithilfe der [Spracherkennung](speech-to-text.md) der Azure Speech-Dienste Audiodaten in Echtzeit in erkannten Text um. Dieser Text ist während der Transkription sowohl für Ihre Assistentenimplementierung als auch für Ihre Clientanwendung verfügbar.
-|[Sprachsynthese](text-to-speech.md) | Textantworten von Ihrem Assistenten werden mithilfe der [Sprachsynthese](text-to-speech.md) der Azure Speech-Dienste synthetisiert. Diese Synthese wird dann Ihrer Clientanwendung als Audiostream zur Verfügung gestellt. Microsoft bietet die Möglichkeit, eine benutzerdefinierte, hochwertige neuronale TTS-Stimme zu erstellen, die Ihrer Marke eine Stimme verleiht. [Kontaktieren Sie uns](mailto:mstts@microsoft.com), wenn Sie mehr darüber erfahren möchten.
+|[Spracherkennung](speech-to-text.md) | Sprachassistenten wandeln mithilfe der [Spracherkennung](speech-to-text.md) des Speech-Diensts Audiodaten in Echtzeit in erkannten Text um. Dieser Text ist während der Transkription sowohl für Ihre Assistentenimplementierung als auch für Ihre Clientanwendung verfügbar.
+|[Sprachsynthese](text-to-speech.md) | Textantworten von Ihrem Assistenten werden mithilfe der [Sprachsynthese](text-to-speech.md) des Speech-Diensts synthetisiert. Diese Synthese wird dann Ihrer Clientanwendung als Audiostream zur Verfügung gestellt. Microsoft bietet die Möglichkeit, eine benutzerdefinierte, hochwertige neuronale TTS-Stimme zu erstellen, die Ihrer Marke eine Stimme verleiht. [Kontaktieren Sie uns](mailto:mstts@microsoft.com), wenn Sie mehr darüber erfahren möchten.
 
 ## <a name="getting-started-with-voice-assistants"></a>Erste Schritte mit Sprachassistenten
 
@@ -75,7 +75,7 @@ In diesem Tutorial erfahren Sie, wie Sie Ihren [Assistenten mithilfe des Speech 
 
 ## <a name="customization"></a>Anpassung
 
-Sprachassistenten, die mithilfe der Azure Speech-Dienste erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und die [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) zur Verfügung stehen.
+Sprachassistenten, die mithilfe des Speech-Dienstes erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und die [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) zur Verfügung stehen.
 
 > [!NOTE]
 > Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
@@ -87,7 +87,7 @@ Sprachassistenten, die mithilfe der Azure Speech-Dienste erstellt wurden, könne
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](get-started.md)
 * [Abrufen des Speech SDK](speech-sdk.md)
 * [Weitere Informationen zu „Benutzerdefinierte Befehle (Vorschau)“](custom-commands.md)
 * [Informationen zu Direct Line Speech](direct-line-speech.md)

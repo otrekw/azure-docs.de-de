@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc67fb216451bd19fe8cfb327c101aa989228b01
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 6e24442abd707706e035bc1f9dc0a46951e0711a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536912"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848067"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
 
@@ -51,7 +51,7 @@ Wiederholen Sie diese Schritte, um weitere LDAP-Clients hinzuzufügen.
 Wenn die Multi-Factor Authentication zum Empfangen von LDAP-Authentifizierungen konfiguriert ist, müssen diese Authentifizierungen per Proxy an das LDAP-Verzeichnis weitergegeben werden. Daher zeigt die Registerkarte "Ziel" nur eine einzelne, grau unterlegte Option zum Verwenden eines LDAP-Ziels an.
 
 > [!NOTE]
-> Es gibt keine Garantie dafür, dass die Verzeichnisintegration mit anderen Verzeichnissen als Active Directory Domain Services funktioniert.
+> Die Verzeichnisintegration funktioniert mit anderen Verzeichnissen als Active Directory Domain Services möglicherweise nicht.
 
 1. Zum Konfigurieren der LDAP-Verzeichnisverbindung klicken Sie auf das Symbol **Verzeichnisintegration**.
 2. Aktivieren Sie auf der Registerkarte „Einstellungen“ das Optionsfeld **Bestimmte LDAP-Konfiguration verwenden**.

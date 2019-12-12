@@ -1,17 +1,17 @@
 ---
-title: Vorauszahlung für Azure Database for MariaDB-Computeressourcen mit reservierter Kapazität
+title: Vorauszahlung für Compute mit reservierter Kapazität (Azure Database for MariaDB)
 description: Vorauszahlung für Azure Database for MariaDB-Computeressourcen mit reservierter Kapazität
 author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 61736d4f7e6b17c6037837bfdfe6d9cb8a00c5f6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.date: 12/02/2019
+ms.openlocfilehash: 5821fb03dcf4331cbab5744f056521468a56d5d2
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076868"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74773106"
 ---
 # <a name="prepay-for-azure-database-for-mariadb-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for MariaDB-Computeressourcen mit reservierter Kapazität
 

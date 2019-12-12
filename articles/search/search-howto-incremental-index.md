@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 09defe9648208e2300594169add990d4bcbd7a39
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 92da697c95f2b9ea544bb1f9bfa689c13bd0d2ae
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112578"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806761"
 ---
 # <a name="how-to-set-up-incremental-indexing-of-enriched-documents-in-azure-cognitive-search"></a>Einrichten der inkrementellen Indizierung von angereicherten Dokumenten in Azure Cognitive Search
 
@@ -41,13 +41,31 @@ api-key: [admin key]
 
 ### <a name="step-2-add-the-cache-property"></a>Schritt 2: Hinzufügen der cache-Eigenschaft
 
-Bearbeiten Sie die Antwort auf die GET-Anforderung, um dem Indexer die Eigenschaft `cache` hinzuzufügen. Das cache-Objekt erfordert nur eine einzelne Eigenschaft, nämlich die Verbindungszeichenfolge für ein Azure Storage-Konto.
+Bearbeiten Sie die Antwort auf die GET-Anforderung, um dem Indexer die Eigenschaft `cache` hinzuzufügen. Das Cacheobjekt erfordert nur eine einzelne Eigenschaft, `storageConnectionString`, die Verbindungszeichenfolge für das Speicherkonto. 
 
 ```json
-    "cache": {
-        "storageConnectionString": "[your storage connection string]"
+{
+    "name": "myIndexerName",
+    "targetIndexName": "myIndex",
+    "dataSourceName": "myDatasource",
+    "skillsetName": "mySkillset",
+    "cache" : {
+        "storageConnectionString" : "Your storage account connection string",
+        "enableReprocessing": true,
+        "id" : "Auto generated Id you do not need to set"
+    },
+    "fieldMappings" : [],
+    "outputFieldMappings": [],
+    "parameters": {
+        "configuration": {
+            "enableAnnotationCache": true
+        }
     }
+}
 ```
+#### <a name="enable-reporocessing"></a>Aktivieren der erneuten Verarbeitung
+
+Sie können die boolesche Eigenschaft `enableReprocessing` innerhalb des Cache optional festlegen. Standardmäßig ist sie auf „True“ festgelegt. Mithilfe des Flags `enableReprocessing` können Sie das Verhalten des Indexer steuern. Wenn der Indexer das Hinzufügen neuer Dokumente zum Index priorisieren soll, dann würden Sie das Flag auf „False“ festlegen. Sobald Ihr Indexer über die neuen Dokumente verfügt, würde das Umstellen des Flags auf „True“ dem Indexer erlauben, bei vorhandenen Dokumente für letztliche Konsistenz zu sorgen. Solange das Flag `enableReprocessing` auf „False“ festgelegt ist, schreibt der Indexer nur Daten in den Cache, aber er verarbeitet basierend auf den Änderungen an der Anreicherungspipeline keine vorhandenen Dokumente.
 
 ### <a name="step-3-reset-the-indexer"></a>Schritt 3: Zurücksetzen des Indexers
 

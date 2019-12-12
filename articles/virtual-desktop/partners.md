@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: helohr
-ms.openlocfilehash: 6b4e1a5024fec07ca73c79d2742933b7b115e6c2
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384298"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851178"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -28,16 +28,6 @@ Citrix macht Windows Virtual Desktop noch leistungsfähiger mit stabilen Enterpr
 
 - [Zur Partnerwebsite](https://more.citrix.com/wvd).
 
-## <a name="cloudhouse"></a>Cloudhouse
-
-![Cloudhouse-Logo](./media/partners/cloudhouse.png)
-
-Cloudhouse ist ein Anbieter von Mehrwertdiensten für Windows Virtual Desktop, der Kunden einen schlüsselfertigen Anwendungsmigrationsdienst anbietet, mit dem alle Anwendungen, auch solche, die mit modernen Windows-Betriebssystemen nicht kompatibel sind, in die Windows Virtual Desktop-Umgebung verschoben werden können, sodass Kunden die Vorteile von Windows 10 im Multisessioneinsatz voll ausschöpfen können. 
-
-Durch die Nutzung der bewährten Cloudhouse-Containerisierungstechnologie übernimmt der Cloudhouse-Dienst alle Anwendungen, auch solche, die für Windows XP, Windows 7 oder Windows 8 entwickelt wurden, und stellt sie auf einem modernen Windows Virtual Desktop bereit, ohne dass Codeänderungen erforderlich sind oder die Benutzerfreundlichkeit beeinträchtigt wird. Cloudhouse steigert den Wert von Windows Virtual Desktop noch weiter, indem es Anwendungen vom zugrunde liegenden Betriebssystem isoliert, sodass Windows-Wartungsupdates ohne Beeinträchtigung der containerisierten Anwendung bereitgestellt werden können. 
-
-- [Zur Partnerwebsite](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
-
 ## <a name="vmware"></a>VMware
 
 ![VMware-Logo](./media/partners/vmware.png)
@@ -48,6 +38,17 @@ Als genehmigter Anbieter werden die Vorteile von Windows Virtual Desktop für Mi
 
 - [Registrieren Sie sich für die Tech Preview von Horizon Cloud auf Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Zur Partnerwebsite](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
+
+
+## <a name="cloudhouse"></a>Cloudhouse
+
+![Cloudhouse-Logo](./media/partners/cloudhouse.png)
+
+Cloudhouse ist ein Anbieter von Mehrwertdiensten für Windows Virtual Desktop, der Kunden einen schlüsselfertigen Anwendungsmigrationsdienst anbietet, mit dem alle Anwendungen, auch solche, die mit modernen Windows-Betriebssystemen nicht kompatibel sind, in die Windows Virtual Desktop-Umgebung verschoben werden können, sodass Kunden die Vorteile von Windows 10 im Multisessioneinsatz voll ausschöpfen können. 
+
+Durch die Nutzung der bewährten Cloudhouse-Containerisierungstechnologie übernimmt der Cloudhouse-Dienst alle Anwendungen, auch solche, die für Windows XP, Windows 7 oder Windows 8 entwickelt wurden, und stellt sie auf einem modernen Windows Virtual Desktop bereit, ohne dass Codeänderungen erforderlich sind oder die Benutzerfreundlichkeit beeinträchtigt wird. Cloudhouse steigert den Wert von Windows Virtual Desktop noch weiter, indem es Anwendungen vom zugrunde liegenden Betriebssystem isoliert, sodass Windows-Wartungsupdates ohne Beeinträchtigung der containerisierten Anwendung bereitgestellt werden können. 
+
+- [Zur Partnerwebsite](https://cloudhouse.com/resources/migrate-everything-to-windows-10-on-microsoft-windows-virtua).
 
 ## <a name="cloudjumper"></a>CloudJumper
 

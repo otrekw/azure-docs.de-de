@@ -1,17 +1,17 @@
 ---
-title: Entwickeln und Konfigurieren von Anwendungen mit Azure Functions und SignalR Service
+title: 'Azure SignalR Service: Entwickeln und Konfigurieren der Azure Functions-App'
 description: Ausführliche Informationen zur Entwicklung und Konfiguration serverloser Echtzeitanwendungen unter Verwendung von Azure Functions und Azure SignalR Service
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: f86a63315798d982f7e78fd1ff293061daf50132
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882302"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786774"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions-Entwicklung und -Konfiguration mit Azure SignalR Service
 
@@ -40,7 +40,7 @@ Eine Clientanwendung benötigt ein gültiges Zugriffstoken, um eine Verbindung m
 
 Verwenden Sie eine Azure-Funktion mit HTTP-Trigger sowie die Eingabebindung *SignalRConnectionInfo*, um das Verbindungsinformationenobjekt zu generieren. Die Funktion muss über eine HTTP-Route verfügen, die mit `/negotiate` endet.
 
-Weitere Informationen zum Erstellen der Aushandlungsfunktion finden Sie in der [Referenz für die Eingabebindung *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
+Weitere Informationen zum Erstellen der Aushandlungsfunktion finden Sie in der [Referenz für die Eingabebindung *SignalRConnectionInfo*](../azure-functions/functions-bindings-signalr-service.md#input).
 
 Informationen zum Erstellen eines authentifizierten Tokens finden Sie unter [Verwenden der App Service-Authentifizierung](#using-app-service-authentication).
 
@@ -50,7 +50,7 @@ Verwenden Sie die Ausgabebindung *SignalR*, um Nachrichten an Clients zu senden,
 
 Benutzer können einer einzelnen Gruppe oder mehreren Gruppen hinzugefügt werden. Mit der Ausgabebindung *SignalR* können Benutzer auch zu Gruppen hinzugefügt oder aus Gruppen entfernt werden.
 
-Weitere Informationen finden Sie in der [Referenz für die Ausgabebindung *SignalR*](../azure-functions/functions-bindings-signalr-service.md#signalr-output-binding).
+Weitere Informationen finden Sie in der [Referenz für die Ausgabebindung *SignalR*](../azure-functions/functions-bindings-signalr-service.md#output).
 
 ### <a name="signalr-hubs"></a>SignalR-Hubs
 

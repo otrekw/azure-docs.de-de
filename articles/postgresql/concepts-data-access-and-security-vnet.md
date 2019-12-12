@@ -1,17 +1,17 @@
 ---
-title: Übersicht über VNET-Dienstendpunkte für Azure Database for PostgreSQL – Einzelserver
-description: Erfahren Sie, wie VNET-Dienstendpunkte für Azure Database for PostgreSQL (Einzelserver) funktionieren.
-author: bolzmj
-ms.author: mbolz
+title: VNET-Regeln – Azure Database for PostgreSQL – Einzelserver
+description: Informieren Sie sich, wie Sie VNET-Dienstendpunkte zum Herstellen einer Verbindung mit Azure Database for PostgreSQL (Einzelserver) verwenden.
+author: rachel-msft
+ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: b03be62a634d04f41513e7cf27c3cb55f69da438
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: 11ffd323c5f775a795899cc35706493cba6d933b
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68609976"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768655"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL – Einzelserver
 

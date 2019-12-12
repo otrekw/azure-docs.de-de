@@ -1,20 +1,17 @@
 ---
-title: Referenzhandbuch für Funktionen in Ausdrücken – Azure Logic Apps
+title: Referenzhandbuch für Funktionen in Ausdrücken
 description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.topic: reference
+ms.reviewer: klam, logicappspm
+ms.topic: conceptual
 ms.date: 08/23/2019
-ms.openlocfilehash: db33708fb96ff3e1982579c11a3928750a076f65
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e449eed0a8ae9ed6e1847ea70db6968bf9ede9bd
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582672"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74784526"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 

@@ -1,28 +1,20 @@
 ---
-title: Mehrstufige Sicherheitsarchitektur mit App Service-Umgebungen – Azure
-description: Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen.
-services: app-service
-documentationcenter: ''
+title: Mehrstufige Sicherheit v1
+description: Informieren Sie sich, wie Sie eine mehrstufige Sicherheitsarchitektur in Ihre App Service-Umgebung implementieren. Dieses Dokument wird nur für Kunden bereitgestellt, die die App Service-Legacyumgebung v1 verwenden.
 author: stefsch
-manager: erikre
-editor: ''
 ms.assetid: 73ce0213-bd3e-4876-b1ed-5ecad4ad5601
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 2d9eedcdc66dceabdd6506c5b64f0c15c874efee
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: a8920e97d315dc7bfd0ba22386b8b637afb7c05e
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070129"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688799"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>Implementieren einer mehrstufigen Sicherheitsarchitektur mit App Service-Umgebungen
-## <a name="overview"></a>Übersicht
 Da App Service-Umgebungen eine in einem virtuellen Netzwerk bereitgestellte isolierte Laufzeitumgebung bieten, können Entwickler eine mehrstufige Sicherheitsarchitektur erstellen, in der sie abgestuften Netzwerkzugriff für jede physische Anwendungsschicht gewähren können.
 
 Üblicherweise sollten API-Back-Ends nicht dem allgemeinen Internetzugriff preisgegeben werden, und APIs sollten nur von Upstream-Web-Apps aufgerufen werden können.  Um den öffentlichen Zugriff auf API-Anwendungen zu beschränken, können [Netzwerksicherheitsgruppen (Network Security Groups, NSGs)][NetworkSecurityGroups] in Subnetzen mit App Service-Umgebungen verwendet werden.

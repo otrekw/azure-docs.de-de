@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 01b853c59723a8ed79cb32b0ee9c245c9c3ffb3f
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9c93286329316d081f8fd99ebd360195931b7b09
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562758"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805925"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrieren vom Custom Speech Service zum Speech-Dienst
 
 Verwenden Sie die Informationen in diesem Artikel, um Ihre Anwendungen vom Custom Speech Service zum Speech-Dienst zu migrieren.
 
-Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zu den Sprachdiensten, um von den neuesten Updates zu Qualität und Features zu profitieren.
+Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zum Speech-Dienst, um von den neuesten Updates zu Qualität und Features zu profitieren.
 
 ## <a name="migration-for-new-customers"></a>Migration für Neukunden
 
@@ -39,11 +39,11 @@ Das Preismodell ist einfacher, da für den Speech-Dienst ein stundenbasiertes Pr
 
 3. Befolgen Sie die Schnellstarts und die SDK-Beispiele, um die richtigen APIs zu verwenden. Wenn Sie die REST-APIs verwenden, müssen Sie auch die richtigen Endpunkte und Ressourcenschlüssel verwenden.
 
-4. Aktualisieren Sie die Clientanwendung, um die Sprachdienste und APIs zu verwenden.
+4. Aktualisieren Sie die Clientanwendung, um den Speech-Dienst und die APIs zu verwenden.
 
 ## <a name="migration-for-existing-customers"></a>Migration für Bestandskunden
 
-Migrieren Sie Ihre vorhandenen Ressourcenschlüssel zu den Sprachdiensten im Sprachdiensteportal. Führen Sie die folgenden Schritte aus:
+Migrieren Sie Ihre vorhandenen Ressourcenschlüssel im Speech-Dienst-Portal zum Speech-Dienst. Führen Sie die folgenden Schritte aus:
 
 > [!NOTE]
 > Ressourcenschlüssel können nur innerhalb derselben Region migriert werden.
@@ -56,10 +56,10 @@ Migrieren Sie Ihre vorhandenen Ressourcenschlüssel zu den Sprachdiensten im Spr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Testen Sie die Sprachdienste kostenlos](get-started.md).
+* [Testen Sie den Speech-Dienst kostenlos](get-started.md).
 * Lernen Sie die Konzepte der [Spracherkennung](./speech-to-text.md) kennen.
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Worum handelt es sich beim Speech-Dienst?](overview.md)
-* [Dokumentation zu Sprachdiensten und zum Spracherkennungsdienst-SDK](speech-sdk.md#get-the-sdk)
+* [Worum handelt es sich beim Spracherkennungsdienst?](overview.md)
+* [Dokumentation zum Speech-Dienst und dem Speech SDK](speech-sdk.md#get-the-sdk)

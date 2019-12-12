@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60736638"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790514"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>Protokollunterstützung für HTTP-Header in Azure Front Door Service
 Dieser Artikel beschreibt das Protokoll, das Front Door Service mit Teilen des Aufrufpfads unterstützt (siehe Abbildung). Die folgenden Abschnitte enthalten weitere Informationen zu HTTP-Headern, die von Front Door Service unterstützt werden.
@@ -43,6 +43,7 @@ Front Door Service enthält Header aus einer eingehenden Anforderung, sofern sie
 | X-Forwarded-For | X-Forwarded-For: 127.0.0.1 </br> Das HTTP-Headerfeld „X-Forwarded-For (XFF)“ identifiziert oft die Ursprungs-IP-Adresse eines Clients, der über einen HTTP-Proxy oder Lastverteiler eine Verbindung zu einem Webserver herstellt. Falls ein XFF-Header vorhanden ist, fügt Front Door die Socket-IP-Adresse des Clients daran an, oder fügt den XFF-Header mit der Socket-IP-Adresse des Clients hinzu. |
 | X-Forwarded-Host | X-Forwarded-Host: contoso.azurefd.net </br> Das X-Forwarded-Host-HTTP-Headerfeld ist eine gängige Methode zum Identifizieren des ursprünglich vom Client im Host-HTTP-Anforderungsheader angeforderten Hosts. Dies liegt daran, dass der Hostname aus Front Door für den Back-End-Server, der die Anforderung verarbeitet, abweichen kann. |
 | X-Forwarded-Proto | X-Forwarded-Proto: http </br> Das X-Forwarded-Proto-HTTP-Headerfeld wird häufig zum Identifizieren des Ursprungsprotokolls einer HTTP-Anforderung verwendet, da Front Door basierend auf der Konfiguration über HTTPS mit dem Back-End kommunizieren könnte. Dies gilt auch, wenn eine HTTP-Anforderung an den Reverseproxy gesendet wird. |
+| X-FD-HealthProbe | Das HTTP-Headerfeld X-FD-HealthProbe wird verwendet, um den Integritätstest von Azure Front Door zu identifizieren. Wenn der Header auf 1 festgelegt ist, wird ein Integritätstest angefordert. Sie können ihn verwenden, um den Zugriff von Front Door mit dem Headerfeld für X-Forwarded-Host einzuschränken. |
 
 ## <a name="front-door-service-to-client"></a>Front Door Service zu Client
 

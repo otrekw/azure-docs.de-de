@@ -1,44 +1,44 @@
 ---
-title: Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Azure-Updateverwaltung
-description: Erfahren Sie, wie Sie Fehler mit dem Updateverwaltungs-Agent beheben können.
+title: Grundlegendes zur Integrität des Hybrid Runbook Workers unter Windows in der Azure-Updateverwaltung
+description: Erfahren Sie, wie Sie Probleme mit dem Hybrid Runbook Worker unter Windows beheben, der die Updateverwaltung unterstützt.
 services: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/22/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d3099498c3abea428e04d94ca0fcd553e6a0fec6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886396"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850124"
 ---
-# <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
+# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Grundlegendes zur Integrität des Hybrid Runbook Workers unter Windows in der Updateverwaltung
 
-Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Azure-fremde Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
+Es gibt viele mögliche Gründe dafür, dass Ihr Computer in der Updateverwaltung nicht als **Bereit** angezeigt wird. In der Updateverwaltung können Sie die Integrität eines Hybrid Runbook Worker-Agents überprüfen, um das zugrunde liegende Problem zu ermitteln. In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 
 In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich ein Computer befinden kann:
 
-* **Bereit**: Der Update-Agent ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt angezeigt.
-* **Getrennt**: Der Update-Agent ist bereitgestellt und wurde vor mehr als 1 Stunde zuletzt angezeigt.
-* **Nicht konfiguriert**: Der Update-Agent wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
+* **Bereit:** Der Hybrid Runbook Worker ist bereitgestellt und wurde vor weniger als 1 Stunde zuletzt gesehen.
+* **Verbindung getrennt:** Der Hybrid Runbook Worker ist bereitgestellt und wurde vor über 1 Stunde zuletzt gesehen.
+* **Nicht konfiguriert:** Der Hybrid Runbook Worker wurde nicht gefunden oder hat das Onboarding noch nicht abgeschlossen.
 
 > [!NOTE]
 > Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige des Azure-Portals und dem aktuellen Zustand des Computers.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#troubleshoot-offline) erfahren Sie, wie Sie Probleme mit einem Azure-fremden Computer behandeln.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Nicht-Azure-Computern führt dieser Link Sie zu diesem Artikel. In der [Offlineanleitung](#troubleshoot-offline) erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
 
 ![Updateverwaltung: Liste von virtuellen Computern](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
-> Um die Integrität eines Agents zu überprüfen, muss der virtuelle Computer ausgeführt werden. Wenn der virtuelle Computer nicht ausgeführt wird, wird die Schaltfläche **Start the VM** (Virtuellen Computer starten) angezeigt.
+> Zum Überprüfen der Integrität des Hybrid Runbook Workers muss die VM ausgeführt werden. Wenn der virtuelle Computer nicht ausgeführt wird, wird die Schaltfläche **Start the VM** (Virtuellen Computer starten) angezeigt.
 
-Wählen Sie auf der Seite **Problembehandlung von Update-Agent** die Option **Überprüfungen ausführen**, um mit der Problembehandlung zu beginnen. Die Problembehandlung verwendet [Befehl ausführen](../../virtual-machines/windows/run-command.md), um ein Skript auf dem Computer auszuführen, mit dem Agent-Abhängigkeiten überprüft werden. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
+Wählen Sie auf der Seite **Problembehandlung von Update-Agent** die Option **Überprüfungen ausführen**, um mit der Problembehandlung zu beginnen. Die Problembehandlung verwendet die [Skriptausführung](../../virtual-machines/windows/run-command.md), um ein Skript auf dem Computer auszuführen, mit dem Abhängigkeiten überprüft werden. Wenn die Problembehandlung abgeschlossen ist, werden die Ergebnisse der Überprüfungen zurückgegeben.
 
 ![Seite „Problembehandlung von Update-Agent“](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -55,11 +55,11 @@ Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem 
 |Betriebssystem  |Notizen  |
 |---------|---------|
 |Windows Server 2008 R2 RTM, Windows Server 2008 | Unterstützt nur Updatebewertungen.         |
-|Windows Server 2008 R2 SP1 und höher |.NET Framework 4.6.1 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 ist erforderlich.  ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 und höher |.NET Framework 4.6 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 5.1 ist erforderlich.  ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616))        |
 
-### <a name="net-461"></a>.NET 4.6.1+
+### <a name="net-462"></a>.NET 4.6.2
 
-Bei der .NET Framework-Überprüfung wird überprüft, ob auf dem System mindestens [.NET Framework 4.6.1](https://www.microsoft.com/en-us/download/details.aspx?id=49981) installiert ist.
+Bei der .NET Framework-Überprüfung wird überprüft, ob auf dem System mindestens [.NET Framework 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) installiert ist.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
@@ -206,4 +206,3 @@ CheckResultMessageArguments : {}
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Behandlung weiterer Probleme mit Ihren Hybrid Runbook Workern finden Sie unter [Problembehandlung für Hybrid Runbook Worker](hybrid-runbook-worker.md).
-

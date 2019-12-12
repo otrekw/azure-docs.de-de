@@ -2,28 +2,23 @@
 title: Microsoft Identity Platform – Glossar für Entwickler | Azure
 description: Eine Liste von Begriffen für häufig verwendete Konzepte und Features für Entwickler von Microsoft Identity Platform.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
-ms.assetid: 551512df-46fb-4219-a14b-9c9fc23998ba
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 221a491abad6c11ee12c75b1d69f1263f4abddc4
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8ffc9c0ed5787803fff01d929567bda23b698135
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322594"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843205"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 

@@ -2,13 +2,13 @@
 title: Bewährte Methoden für Vorlagen
 description: Beschreibt die empfohlenen Vorgehensweisen zum Erstellen von Azure Resource Manager-Vorlagen. Bietet Vorschläge zur Vermeidung häufig auftretender Probleme bei der Verwendung von Vorlagen.
 ms.topic: conceptual
-ms.date: 09/12/2019
-ms.openlocfilehash: 7e1b6496302af3edde4d888c67ec3e461d300a5a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 12/02/2019
+ms.openlocfilehash: d4cf4364b2e835db3d53fa64682a99710ceb2b29
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150299"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74689112"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Bewährte Methoden für Azure Resource Manager-Vorlagen
 
@@ -276,23 +276,6 @@ Die folgenden Informationen können bei der Arbeit mit [Ressourcen](resource-gro
    > Zum Sicherzustellen der Verschlüsselung von Geheimnissen, die als Parameter an virtuelle Computer und Erweiterungen übergeben werden, verwenden Sie die **protectedSettings**-Eigenschaft der entsprechenden Erweiterungen.
    > 
    > 
-
-## <a name="outputs"></a>Ausgaben
-
-Wenn Sie öffentliche IP-Adressen mithilfe einer Vorlage erstellen, sollte diese einen [Ausgabeabschnitt](template-outputs.md) enthalten, der Details zur IP-Adresse und den vollständig qualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) zurückgibt. Mit Ausgabewerten können Sie nach der Bereitstellung ganz einfach Details zu öffentlichen IP-Adressen und FQDNs abrufen.
-
-```json
-"outputs": {
-    "fqdn": {
-        "value": "[reference(parameters('publicIPAddresses_name')).dnsSettings.fqdn]",
-        "type": "string"
-    },
-    "ipaddress": {
-        "value": "[reference(parameters('publicIPAddresses_name')).ipAddress]",
-        "type": "string"
-    }
-}
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -3,27 +3,23 @@ title: Konfigurieren einer Keychain
 titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie eine Keychain so konfigurieren, dass Ihre App Token darin zwischenspeichert.
 services: active-directory
-documentationcenter: ''
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69991d105ff3523310f54e65596f2f379b547052
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 8b4599549e15d6ebe4d0bd04f96c89df86b0c0cd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803810"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917504"
 ---
 # <a name="configure-keychain"></a>Konfigurieren einer Keychain
 
@@ -51,7 +47,7 @@ Unter macOS 10.15 und höher (macOS Catalina) verwendet MSAL ähnlich wie unter 
 
 Wenn Sie eine andere Keychain-Zugriffsgruppe verwenden möchten, können Sie beim Erstellen von `MSALPublicClientApplicationConfig` eine benutzerdefinierte Gruppe übergeben, bevor Sie `MSALPublicClientApplication` erstellen:
 
-Objective-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 MSALPublicClientApplicationConfig *config = [[MSALPublicClientApplicationConfig alloc] initWithClientId:@"your-client-id"
@@ -67,9 +63,7 @@ MSALPublicClientApplication *application = [[MSALPublicClientApplication alloc] 
 // and only shared with other applications declaring the same access group
 ```
 
-
-
-Swift:
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 let config = MSALPublicClientApplicationConfig(clientId: "your-client-id",
@@ -85,25 +79,27 @@ do {
 }       
 ```
 
-
+---
 
 ## <a name="disable-keychain-sharing"></a>Deaktivieren der Keychainfreigabe
 
 Wenn Sie den SSO-Status nicht zwischen mehreren Apps freigeben oder wenn Sie keine Keychain-Zugriffsgruppen verwenden möchten, können Sie die Keychainfreigabe deaktivieren. Übergeben Sie hierzu die Anwendungspaket-ID als Wert für „keychainGroup“:
 
-Objective-C:
+# <a name="objective-ctabobjc"></a>[Objective-C](#tab/objc)
 
 ```objc
 config.cacheConfig.keychainSharingGroup = [[NSBundle mainBundle] bundleIdentifier];
 ```
 
-Swift:
+# <a name="swifttabswift"></a>[Swift](#tab/swift)
 
 ```swift
 if let bundleIdentifier = Bundle.main.bundleIdentifier {
     config.cacheConfig.keychainSharingGroup = bundleIdentifier
 }
 ```
+
+---
 
 ## <a name="handle--34018-error-failed-to-set-item-into-keychain"></a>Fehler -34018 (Fehler beim Festlegen des Elements in der Keychain)
 

@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f1c89b9ac7aeb51f43ef84267b20f83b408fd56c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 4bd42acbf682b51e17f60702e5695cfb29db812b
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172476"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806438"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -79,7 +79,7 @@ In der folgenden Tabelle werden die verschiedenen Typen der Konsistenz von Momen
 --- | --- | --- | ---
 **Anwendungskonsistent** | Anwendungskonsistente Sicherungen erfassen Speicherinhalte und ausstehende E/A-Vorgänge. App-konsistente Momentaufnahmen verwenden einen VSS Writer (oder Pre-/Post-Skripts für Linux), um die Konsistenz der App-Daten zu gewährleisten, ehe eine Sicherung erfolgt. | Wenn Sie die Wiederherstellung einer VM mit einer anwendungskonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Die Apps starten in einem konsistenten Zustand. | Windows: Alle VSS-Writer wurden erfolgreich abgeschlossen.<br/><br/> Linux: Pre-/Post-Skripts sind konfiguriert und erfolgreich abgeschlossen.
 **Dateisystemkonsistent** | Dateisystemkonsistente Sicherungen bieten Konsistenz, indem eine Momentaufnahme aller Dateien gleichzeitig erstellt wird.<br/><br/> | Wenn Sie die Wiederherstellung einer VM mit einer dateisystemkonsistenten Momentaufnahme durchführen, wird die VM hochgefahren. Es kommt weder zu einer Beschädigung noch zum Verlust von Daten. Apps müssen einen eigenen Reparaturmechanismus implementieren, um sicherzustellen, dass wiederhergestellte Daten konsistent sind. | Windows: Fehler bei einigen VSS-Writern <br/><br/> Linux: Standardmäßig (wenn Pre-/Post-Skripts nicht konfiguriert oder bei ihnen Fehler aufgetreten sind)
-**Absturzkonsistent** | Absturzkonsistente Momentaufnahmen treten in der Regel auf, wenn eine Azure-VM zum Zeitpunkt der Sicherung heruntergefahren wird. Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert.<br/><br/> Ein absturzkonsistenter Wiederherstellungspunkt garantiert keine Datenkonsistenz für das Betriebssystem oder die App. | Es gibt keine Garantien, aber normalerweise wird die VM hochgefahren. Anschließend erfolgt eine Datenträgerprüfung, um Beschädigungen zu beheben. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die vor dem Absturz nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Apps implementieren ihre eigene Datenüberprüfung. Beispielsweise kann eine Datenbank-App das Transaktionsprotokoll für die Überprüfung verwenden. Falls das Transaktionsprotokoll Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Transaktionenrollback durch, bis die Daten konsistent sind. | VM wird heruntergefahren.
+**Absturzkonsistent** | Absturzkonsistente Momentaufnahmen treten in der Regel auf, wenn eine Azure-VM zum Zeitpunkt der Sicherung heruntergefahren wird. Nur die Daten, die zum Zeitpunkt der Sicherung bereits auf dem Datenträger vorhanden sind, werden erfasst und gesichert. | Beginnt mit dem VM-Startvorgang, gefolgt von einer Überprüfung des Datenträgers, um Beschädigungen zu beheben. Alle Daten im Arbeitsspeicher oder Schreibvorgänge, die vor dem Absturz nicht vollständig auf den Datenträger übertragen wurden, gehen verloren. Apps implementieren ihre eigene Datenüberprüfung. Beispielsweise kann eine Datenbank-App das Transaktionsprotokoll für die Überprüfung verwenden. Falls das Transaktionsprotokoll Einträge enthält, die nicht in der Datenbank vorhanden sind, führt die Datenbanksoftware ein Transaktionenrollback durch, bis die Daten konsistent sind. | Der virtuelle Computer befindet sich im heruntergefahrenen (beendeten/neu zugeordneten) Zustand.
 
 ## <a name="backup-and-restore-considerations"></a>Überlegungen zu Sicherung und Wiederherstellung
 
@@ -134,16 +134,6 @@ Datenträger 1 | 4095 GB | 30 GB
 Datenträger 2 | 4095 GB | 0 GB
 
 Die tatsächliche Größe der VM beträgt in diesem Fall 17 GB + 30 GB + 0 GB = 47 GB. Diese Größe der geschützten Instanz (47GB) dient als Basis für die monatliche Rechnung. Mit zunehmender Datenmenge auf dem virtuellen Computer ändert sich entsprechend auch die Größe der geschützten Instanz, die für die Abrechnung verwendet wird.
-
-<a name="limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb"></a>
-
-## <a name="public-preview-backup-of-vm-with-disk-sizes-up-to-30-tb"></a>Public Preview: Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB
-
-Azure Backup unterstützt nun größere und leistungsfähigere [verwaltete Azure-Datenträger](https://azure.microsoft.com/blog/larger-more-powerful-managed-disks-for-azure-virtual-machines/) mit einer Größe von bis zu 30 TB im Rahmen einer Public Preview. Diese Vorschauversion unterstützt verwaltete virtuelle Computer auf Produktionsebene.
-
-Die Sicherungen für Ihre virtuellen Computer mit einer einzelnen Datenträgergröße bis zu 30 TB und maximal 256 TB für alle Datenträger in einem virtuellen Computer sollten nahtlos – ohne Auswirkung auf Ihre vorhandenen Sicherungen – funktionieren. Wenn der virtuelle Computer bereits mit Azure Backup konfiguriert wurde, ist für die Ausführung der Sicherungen bei großen Datenträgern keine Benutzeraktion erforderlich.
-
-Alle virtuellen Azure-Computer mit großen Datenträgern und konfigurierter Sicherung sollten erfolgreich gesichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

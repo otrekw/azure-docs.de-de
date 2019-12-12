@@ -3,27 +3,23 @@ title: Übergang vom Anwendungsregistrierungsportal zur neuen App-Registrierungs
 titleSuffix: Microsoft identity platform
 description: Einführung in die neue App-Registrierungsumgebung im Azure-Portal
 services: active-directory
-documentationcenter: ''
 author: archieag
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/8/2019
 ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9c09ce2d997c58e2725c411fff0b87a0f5071b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013026"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844515"
 ---
 # <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Übergang vom Anwendungsregistrierungsportal zur neuen App-Registrierungsumgebung im Azure-Portal
 

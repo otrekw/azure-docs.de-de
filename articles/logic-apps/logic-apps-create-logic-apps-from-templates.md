@@ -1,21 +1,19 @@
 ---
-title: Erstellen von Workflows aus Vorlagen – Azure Logic Apps | Microsoft-Dokumentation
+title: Erstellen von Workflows aus Vorlagen
 description: Schnelleres Erstellen von Workflows mit Logik-App-Vorlagen in Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: kevinlam1
 ms.author: klam
-ms.reviewer: estfan, LADocs
+ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7033185ac3a5411568195d788242a674b569183
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459624"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793186"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Erstellen von Logik-App-Workflows aus vorgefertigten Vorlagen
 
@@ -36,7 +34,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 ## <a name="create-logic-apps-from-templates"></a>Erstellen von Logik-Apps aus Vorlagen
 
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com "Azure-Portal") an, falls Sie dies noch nicht getan haben.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com "Azure-Portal") an, falls Sie dies noch nicht getan haben.
 
 2. Klicken Sie im Hauptmenü von Azure auf **Ressource erstellen** > **Unternehmensintegration** > **Logik-App**.
 
@@ -101,7 +99,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein 
 
 ## <a name="update-logic-apps-with-templates"></a>Aktualisieren von Logik-Apps mit Vorlagen
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com "Azure-Portal") im Designer für Logik-Apps nach Ihrer Logik-App, und öffnen Sie sie.
+1. Suchen oder öffnen Sie Ihre Logik-App im [Azure-Portal](https://portal.azure.com "Azure-Portal") im Logik-App-Designer.
 
 2. Wählen Sie in der Symbolleiste des Designers die Option **Vorlagen**. Bei dieser Aktion werden alle nicht gespeicherten Änderungen verworfen, und es wird eine Warnmeldung angezeigt, damit Sie das Fortfahren bestätigen können. Wählen Sie **OK**, um den Vorgang zu bestätigen. Beispiel:
 

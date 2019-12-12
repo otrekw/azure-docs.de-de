@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0cfcbdaee5a39a947bd89c677f49214c8c3cb98a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fdb7d9ed5164171407443596de256df02cb7e8de
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162845"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790604"
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 
@@ -116,13 +116,12 @@ $resourcegroupname = "resourcegroupname"
 
 Wenn die SQL Server-IaaS-Agent-Erweiterung installiert ist, wird „SqlIaaSAgent“ oder „SQLIaaSExtension“ aufgeführt. Außerdem muss für die Erweiterung unter **ProvisioningState** der Zustand „Succeeded“ angezeigt werden.
 
-Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet.
+Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region ( **$region**) angeben, in der sich Ihr virtueller Computer befindet. Geben Sie den Lizenztyp für Ihre SQL Server-VM an, indem Sie über [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) (Azure-Hybridvorteil) entweder eine Lizenz mit nutzungsbasierter Bezahlung oder die Verwendung Ihrer eigenen Lizenz (Bring-Your-Own-License, BYOL) auswählen. Weitere Informationen zur Lizenzierung finden Sie unter [Lizenzierungsmodell](virtual-machines-windows-sql-ahb.md). 
 
 ```powershell
-$region = "EASTUS2"
-Set-AzVMSqlServerExtension -VMName $vmname `
-    -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+New-AzSqlVM  -Name $vmname `
+    -ResourceGroupName $resourcegroupname `
+    -Location $region -LicenseType <PAYG/AHUB>
 ```
 
 > [!IMPORTANT]
@@ -237,7 +236,7 @@ $retentionperiod = 10
 
 Set-AzVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
-    -Version "1.2" -Location $region
+    -Version "2.0" -Location $region
 
 # Creates/use a storage account to store the backups
 

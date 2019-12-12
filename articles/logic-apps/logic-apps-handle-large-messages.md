@@ -1,25 +1,18 @@
 ---
-title: Verarbeiten von großen Nachrichten in Azure Logic Apps | Microsoft-Dokumentation
+title: Verarbeiten umfangreicher Nachrichten
 description: Erfahren Sie, wie Sie große Nachrichten durch Blockerstellung (Segmentierung) in Azure Logic Apps verarbeiten können
 services: logic-apps
-documentationcenter: ''
+ms.suite: integration
 author: shae-hurst
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: logic-apps
-ms.workload: logic-apps
-ms.devlang: ''
-ms.tgt_pltfrm: ''
-ms.topic: article
-ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: ed086c4c36711f92ba654a64856b43a5fdaadf5f
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.topic: article
+ms.date: 12/03/2019
+ms.openlocfilehash: 8c2e857808b0638fbba54cfe9a623ba3fd764119
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69989921"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815088"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Verarbeiten von großen Nachrichten durch Blockerstellung in Azure Logic Apps
 
@@ -46,6 +39,9 @@ Andernfalls erhalten Sie einen Laufzeitfehler, wenn Sie versuchen, auf große In
 Dienste, die mit Logic Apps kommunizieren, haben möglicherweise eigene Nachrichtengrößenbeschränkungen. Diese Beschränkungen sind häufig kleiner als die Logic Apps-Beschränkung. Nehmen Sie beispielsweise an, dass ein Connector, der Blockerstellung unterstützt, eine 30-MB-Nachricht als groß einstuft, während Logic Apps dies nicht tut. Um dieser Beschränkung des Connectors zu genügen, teilt Logic Apps jede Nachricht, die größer als 30 MB ist, in kleinere Blöcke auf.
 
 Für Connectors, die Blockerstellung unterstützen, ist das zugrunde liegende Blockerstellungsprotokolls für Endbenutzer nicht sichtbar. Allerdings unterstützen nicht alle Connectors Blockerstellung, sodass diese Connectors Laufzeitfehler generieren, wenn eingehende Nachrichten die Größenbeschränkungen des jeweiligen Connectors überschreiten.
+
+> [!NOTE]
+> Bei Aktionen mit Segmentierung können Sie den Triggertext nicht übergeben oder Ausdrücke wie `@triggerBody()?['Content']` verwenden. Stattdessen können Sie für Textdatei- oder JSON-Dateiinhalte die Aktionen [**Verfassen**](../logic-apps/logic-apps-perform-data-operations.md#compose-action) oder [Create a variable](../logic-apps/logic-apps-create-variables-store-values.md) (Variable erstellen) verwenden, um den Inhalt zu verarbeiten. Wenn der Triggertext andere Inhaltstypen wie beispielsweise Mediendateien enthält, müssen Sie weitere Schritte ausführen, um diesen Inhalt zu verarbeiten.
 
 <a name="set-up-chunking"></a>
 
@@ -128,7 +124,7 @@ In den folgenden Schritten ist die Vorgehensweise ausführlich beschrieben, in d
    | Endpunktfeld für Antwortheader | type | Erforderlich | BESCHREIBUNG |
    |--------------------------------|------|----------|-------------|
    | **x-ms-chunk-size** | Integer | Nein | Der vorgeschlagene Blockgröße in Bytes |
-   | **Location** | String | Ja | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
+   | **Location** | Zeichenfolge | Ja | Die URL-Adresse, an die die HTTP-PATCH-Nachrichten gesendet werden sollen |
    ||||
 
 3. Ihre Logik-App erstellt und sendet nacheinander HTTP-PATCH-Nachrichten, wobei jede Nachricht diese Informationen enthält:

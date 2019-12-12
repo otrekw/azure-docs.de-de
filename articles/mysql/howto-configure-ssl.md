@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren von SSL-Verbindungen für eine sichere Verbindung mit Azure Database for MySQL
+title: Konfigurieren von SSL – Azure Database for MySQL
 description: Anweisungen zum ordnungsgemäßen Konfigurieren der Azure-Datenbank für MySQL und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 07/02/2019
-ms.openlocfilehash: 7a6c42da3fb92dc7dda014faa64fb8daa8c58774
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.date: 12/02/2019
+ms.openlocfilehash: 590e2e7e735af55f8c7ad96f87f947115f8783fc
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359452"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770559"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit der Azure-Datenbank für MySQL
 Azure-Datenbank für MySQL unterstützt die Verbindung Ihres Servers mit Azure-Datenbank für MySQL mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.
@@ -29,11 +29,11 @@ Konfigurieren Sie MySQL Workbench, um eine sichere Verbindung über SSL herzuste
 
 1. Navigieren Sie im Dialogfeld „Setup New Connection“ (Neue Verbindung einrichten) zur Registerkarte **SSL**. 
 
-1. Aktualisieren Sie das Feld **„Verwenden von SSL“** auf „Erforderlich“.
+1. Aktualisieren Sie das Feld **Use SSL** (SSL verwenden) auf „Require“ (Anfordern).
 
 1. Geben Sie in das Feld für die **SSL-CA-Datei** den Speicherort der Datei **BaltimoreCyberTrustRoot.crt.pem** ein. 
     
-    ![Speichern Sie die SSL-Konfiguration](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+    ![SSL-Konfiguration speichern](./media/howto-configure-ssl/mysql-workbench-ssl.png)
 
 Für vorhandene Verbindungen können Sie SSL binden, indem Sie mit der rechten Maustaste auf das Verbindungssymbol klicken und dann „Bearbeiten“ auswählen. Navigieren Sie dann zur Registerkarte **SSL** und binden die Zertifikatsdatei.
 

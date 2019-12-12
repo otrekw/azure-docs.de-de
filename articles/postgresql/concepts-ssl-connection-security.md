@@ -1,17 +1,17 @@
 ---
-title: Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL – Einzelserver
-description: Hier finden Sie Anweisungen und Informationen zum Konfigurieren von Azure Database for PostgreSQL (Einzelserver) und zugehörigen Anwendungen für die ordnungsgemäße Verwendung von SSL-Verbindungen.
+title: SSL (Azure Database for PostgreSQL, Einzelserver)
+description: Hier finden Sie Anweisungen und Informationen zum Konfigurieren der SSL-Konnektivität für Azure Database for PostgreSQL (Einzelserver).
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 686adfb2998eff10ef4b9f378163b164ba970c56
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 21b4dffa135e1311be8c738c634de22304665695
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67461838"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768145"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Konfigurieren von SSL-Verbindungen in Azure Database for PostgreSQL – Einzelserver
 Azure-Datenbank für PostgreSQL stellt Verbindungen zwischen Clientanwendungen und dem PostgreSQL-Dienst hauptsächlich mittels Secure Sockets Layer (SSL) her. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.

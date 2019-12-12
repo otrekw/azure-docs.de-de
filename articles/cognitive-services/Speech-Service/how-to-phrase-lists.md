@@ -1,7 +1,7 @@
 ---
-title: Begriffslisten – Speech Service
+title: Begriffslisten – Speech-Dienst
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie den Speech-Diensten mithilfe des `PhraseListGrammar`-Objekts eine Begriffsliste zur Verfügung stellen, um die Ergebnisse der Spracherkennung zu verbessern.
+description: Informieren Sie sich, wie Sie dem Speech-Dienst mithilfe des `PhraseListGrammar`-Objekts eine Begriffsliste zur Verfügung stellen, um die Ergebnisse der Spracherkennung zu verbessern.
 services: cognitive-services
 author: rhurey
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: rhurey
-ms.openlocfilehash: 61d3e4d2de6b8707ee7433815f8002e5d5e3e3d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 052e02ef562da0637b6b5b9683120f0c397dbfd5
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464546"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805874"
 ---
 # <a name="phrase-lists-for-speech-to-text"></a>Begriffslisten für Spracherkennung
 
-Indem Sie den Speech-Diensten eine Begriffsliste zur Verfügung stellen, können Sie die Genauigkeit der Spracherkennung verbessern. Begriffslisten dienen zur Identifizierung bekannter Begriffe in Audiodaten, wie beispielsweise den Namen einer Person oder einen bestimmten Ort.
+Indem Sie dem Speech-Dienst eine Begriffsliste zur Verfügung stellen, können Sie die Genauigkeit der Spracherkennung verbessern. Begriffslisten dienen zur Identifizierung bekannter Begriffe in Audiodaten, wie beispielsweise den Namen einer Person oder einen bestimmten Ort.
 
 Wenn Sie beispielsweise den Befehl „Move to“ und „Ward“ als mögliches Ziel haben, das gesprochen werden kann, können Sie den Eintrag „Move to Ward“ hinzufügen. Das Hinzufügen eines Begriffs erhöht die Wahrscheinlichkeit, dass bei der Audioerkennung „Move to Ward“ anstelle von „Move toward“ erkannt wird.
 
@@ -68,7 +68,7 @@ phraseListGrammar.addPhrase("Move to Ted");
 ```
 
 >[!Note]
-> Die maximale Anzahl von Begriffslisten, die der Speech-Dienst zum Abgleich verwenden kann, beträgt 1024 Begriffe.
+> Die maximale Anzahl von Begriffslisten, die der Speech-Dienst zum Abgleich verwenden kann, beträgt 1024 Begriffe.
 
 Sie können die dem `PhraseListGrammar`-Objekt zugeordneten Begriffe auch löschen, indem Sie „clear()“ aufrufen.
 
@@ -93,7 +93,7 @@ phraseListGrammar.clear();
 ```
 
 > [!NOTE]
-> Änderungen an einem `PhraseListGrammar`-Objekt werden bei der nächsten Erkennung oder nach einer erneuten Verbindung zu den Speech-Diensten wirksam.
+> Änderungen an einem `PhraseListGrammar`-Objekt werden bei der nächsten Erkennung oder nach einer erneuten Verbindung zum Speech-Dienst wirksam.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: 137ab722df280d17fe5ccc5c07acfd323feb6531
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f617bed0d2d93d8c8586d5708e0e356934817f4a
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091209"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74816640"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
-Als Alternative zum [Speech SDK](speech-sdk.md) ermöglicht Speech Services das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten.
+Als Alternative zum [Speech SDK](speech-sdk.md) ermöglicht der Speech-Dienst das Konvertieren von Sprache in Text mithilfe einer REST-API. Jeder zugängliche Endpunkt ist einer Region zugeordnet. Ihre Anwendung benötigt einen Abonnementschlüssel für den Endpunkt, den Sie verwenden möchten.
 
 Vor der Verwendung der Spracherkennungs-REST-API müssen Sie Folgendes verstanden haben:
 
@@ -56,7 +56,7 @@ Diese Tabelle führt die erforderlichen und optionalen Header für Spracherkennu
 | `Authorization` | Ein Autorisierungstoken, dem das Wort `Bearer` vorangestellt ist. Weitere Informationen finden Sie unter [Authentifizierung](#authentication). | Entweder dieser Header oder `Ocp-Apim-Subscription-Key` ist erforderlich. |
 | `Content-type` | Beschreibt das Format und den Codec der bereitgestellten Audiodaten. Zulässige Werte sind `audio/wav; codecs=audio/pcm; samplerate=16000` und `audio/ogg; codecs=opus`. | Erforderlich |
 | `Transfer-Encoding` | Gibt an, dass segmentierte Audiodaten anstatt einer einzelnen Datei gesendet werden. Verwenden Sie diesen Header nur, wenn Sie Audiodaten segmentieren. | Optional |
-| `Expect` | Wenn Sie segmentierte Übertragung verwenden, senden Sie `Expect: 100-continue`. Der Speech-Dienst bestätigt die ursprüngliche Anforderung und wartet auf weitere Daten.| Erforderlich, wenn segmentierte Audiodaten gesendet werden. |
+| `Expect` | Wenn Sie segmentierte Übertragung verwenden, senden Sie `Expect: 100-continue`. Der Spracherkennungsdienst bestätigt die ursprüngliche Anforderung und wartet auf weitere Daten.| Erforderlich, wenn segmentierte Audiodaten gesendet werden. |
 | `Accept` | Wenn angegeben, muss der Wert `application/json` entsprechen. Der Speech-Dienst übermittelt Ergebnisse im JSON-Format. Einige Anforderungsframeworks bieten einen inkompatiblen Standardwert. Es ist eine bewährte Methode, `Accept` immer einzubeziehen. | Optional, wird jedoch empfohlen. |
 
 ## <a name="audio-formats"></a>Audioformate
@@ -69,7 +69,7 @@ Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in e
 | OGG | OPUS | 16 Bit | 16 kHz, mono |
 
 >[!NOTE]
->Die oben genannten Formate werden durch die REST-API und WebSocket im Spracherkennungsdienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig nur das WAV-Format mit dem PCM-Codec.
+>Die oben genannten Formate werden durch die REST-API und WebSocket im Speech-Dienst unterstützt. Das [Speech-SDK](speech-sdk.md) unterstützt gegenwärtig nur das WAV-Format mit dem PCM-Codec.
 
 ## <a name="sample-request"></a>Beispiel für eine Anforderung
 
@@ -99,7 +99,7 @@ Der HTTP-Statuscode jeder Antwort zeigt den Erfolg oder allgemeine Fehler an.
 
 ## <a name="chunked-transfer"></a>Segmentierte Übertragung
 
-Mithilfe der segmentierten Übertragung (`Transfer-Encoding: chunked`) kann die Erkennungslatenz verringert werden. Es ermöglicht den Speech-Diensten, mit der Verarbeitung der Audiodatei zu beginnen, während sie übertragen wird. Der REST-API bietet keine Teil- oder Zwischenergebnisse.
+Mithilfe der segmentierten Übertragung (`Transfer-Encoding: chunked`) kann die Erkennungslatenz verringert werden. Es ermöglicht dem Speech-Dienst, mit der Verarbeitung der Audiodatei zu beginnen, während sie übertragen wird. Der REST-API bietet keine Teil- oder Zwischenergebnisse.
 
 Dieses Codebeispiel zeigt, wie Sie Audio in Blöcken senden. Nur der erste Block sollte den Header der Audiodatei enthalten. `request` ist ein HTTPWebRequest-Objekt, das mit dem entsprechenden REST-Endpunkt verbunden ist. `audioFile` ist der Pfad zu einer Audiodatei auf dem Datenträger.
 

@@ -1,7 +1,7 @@
 ---
 title: Streamen von per Codec komprimierten Audiodaten mit dem Speech SDK unter iOS
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit dem Speech SDK unter iOS komprimierte Audiodaten an Azure Speech Services streamen.
+description: Informieren Sie sich, wie Sie mit dem Speech SDK unter iOS komprimierte Audiodaten an den Speech-Dienst streamen.
 services: cognitive-services
 author: chlandsi
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 1d78c690fd07eb974418f0ea17d71d1f394d863d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2089f4191ddd57fa8dc19862bd195756c166f2d4
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109587"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805857"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-ios"></a>Gewusst wie: Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK unter iOS
 
-Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an Speech Services mit Pull- oder Pushstream.
+Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an den Speech-Dienst mit Pull- oder Pushstream.
 
 > [!IMPORTANT]
 > Speech SDK Version 1.7.0 oder höher ist erforderlich, um komprimiertes Audio unter iOS zu streamen. Es wird auch für [C++, C# und Java unter Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) und [Java in Android](how-to-use-codec-compressed-audio-input-streams-android.md) unterstützt.
@@ -42,7 +42,7 @@ Um diese Wrapperbibliothek zu erstellen, laden Sie zunächst das [GStreamer SDK]
 
 Der Buildschritt generiert ein dynamisches Frameworkpaket mit einer dynamischen Bibliothek für alle erforderlichen Architekturen mit dem Namen `GStreamerWrapper.framework`.
 
-Dieses Framework muss in allen Anwendungen enthalten sein, die komprimierte Audiostreams mit dem Speech Services SDK verwenden.
+Dieses Framework muss in allen Anwendungen enthalten sein, die komprimierte Audiostreams mit dem SDK des Speech-Diensts verwenden.
 
 Wenden Sie dazu die folgenden Einstellungen in Ihrem Xcode-Projekt an:
 
@@ -54,7 +54,7 @@ Wenden Sie dazu die folgenden Einstellungen in Ihrem Xcode-Projekt an:
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Beispielcode für die Verwendung von per Codec komprimierter Audioeingabe
 
-Erstellen Sie zum Streamen von komprimierten Audioformaten an Speech Services `SPXPullAudioInputStream` oder `SPXPushAudioInputStream`.
+Erstellen Sie `SPXPullAudioInputStream` oder `SPXPushAudioInputStream` zum Streamen von komprimierten Audioformaten an den Speech-Dienst.
 
 Der folgende Codeausschnitt zeigt, wie Sie ein `SPXAudioConfiguration` aus einer Instanz eines `SPXPushAudioInputStream` erstellen, indem Sie MP3 als Komprimierungsformat des Datenstroms angeben.
 

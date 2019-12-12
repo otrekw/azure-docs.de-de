@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4cd8e483d6c189e311fdb1925ad0f2effc2affe1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278162"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849144"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -66,13 +66,13 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-   ![Slack-Bereitstellung](./media/slack-provisioning-tutorial/Slack1.PNG)
+   ![Slack-Bereitstellung](./media/slack-provisioning-tutorial/slack1.png)
 
 5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. Dadurch wird ein Slack-Autorisierungsdialogfeld in einem neuen Browserfenster geöffnet.
 
 6. Melden Sie sich im neuen Fenster mit Ihrem Teamadministratorkonto bei Slack an. Wählen Sie im daraufhin angezeigten Autorisierungsdialogfeld das Slack-Team aus, für das Sie die Bereitstellung aktivieren möchten, und wählen Sie dann **Autorisieren**. Kehren Sie anschließend zum Azure-Portal zurück, um die Konfiguration der Bereitstellung abzuschließen.
 
-    ![Autorisierungsdialogfeld](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![Autorisierungsdialogfeld](./media/slack-provisioning-tutorial/slackauthorize.png)
 
 7. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Slack-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Slack-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt zum Autorisieren.
 

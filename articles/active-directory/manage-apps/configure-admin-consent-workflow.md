@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5d1654556df455accb7f615442d3a97952c5e50
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73180074"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786434"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
 
@@ -33,10 +33,10 @@ Um Anforderungen zu genehmigen, muss ein Prüfer als globaler Administrator, Anw
 
 So aktivieren Sie den Workflow für die Administratoreinwilligung und wählen Prüfer aus
 
-1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie oben links im Navigationsmenü auf **Alle Dienste** . Die **Azure Active Directory-Erweiterung** wird geöffnet.
-3. Geben Sie im Filtersuchfeld „**Azure Active Directory**“ ein, und wählen Sie das Element **Azure Active Directory**  aus.
-4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**. 
+1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie oben im Navigationsmenü auf der linken Seite auf **Alle Dienste**. Die **Azure Active Directory-Erweiterung** wird geöffnet.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**. 
 5. Wählen Sie unter **Verwalten** die Option **Benutzereinstellungen** aus.
 6. Legen Sie unter **Anforderungen zur Administratoreinwilligung (Vorschau)** die Option **Benutzer können Administratoreinwilligungen für Apps anfordern, bei denen sie selbst keine Einwilligung erteilen können** auf **Ja** fest.
 
@@ -74,10 +74,10 @@ Nachdem der Workflow für die Administratoreinwilligung aktiviert wurde, können
 
 So überprüfen Sie die Anforderungen zur Administratoreinwilligung und ergreifen Maßnahmen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als einer der registrierten Prüfer für den Workflow für die Administratoreinwilligung an.
-2. Wählen Sie oben links im Navigationsmenü**Alle Dienste**  aus. Die **Azure Active Directory-Erweiterung** wird geöffnet.
-3. Geben Sie im Filtersuchfeld „**Azure Active Directory**“ ein, und wählen Sie das Element **Azure Active Directory** aus.
-4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
+1. Melden Sie sich beim[Azure-Portal](https://portal.azure.com) als einer der registrierten Prüfer für den Workflow für die Administratoreinwilligung an.
+2. Klicken Sie oben im Navigationsmenü auf der linken Seite auf **Alle Dienste**. Die **Azure Active Directory-Erweiterung** wird geöffnet.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+4. Klicken Sie im Navigationsmenü auf **Unternehmensanwendungen**.
 5. Wählen Sie unter **Aktivität** die Option **Anforderungen zur Administratoreinwilligung (Vorschau)** aus.
 
    > [!NOTE]
@@ -120,12 +120,12 @@ Die folgende Tabelle zeigt die Szenarien und Überwachungswerte, die für den Wo
 
 |Szenario  |Überwachungsdienst  |Überwachungskategorie  |Überwachungsaktivität  |Überwachungsakteur  |Überwachungsprotokolleinschränkungen  |
 |---------|---------|---------|---------|---------|---------|
-|Administrator aktiviert den Workflow für die Administratoreinwilligung        |Zugriffsüberprüfungen           |UserManagement           |Governancerichtlinienvorlage erstellen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.            |
-|Administrator deaktiviert den Workflow zum Anfordern der Administratoreinwilligung       |Zugriffsüberprüfungen           |UserManagement           |Governancerichtlinienvorlage löschen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.           |
-|Administrator aktualisiert die Konfiguration des Workflows für die Administratoreinwilligung        |Zugriffsüberprüfungen           |UserManagement           |Governancerichtlinienvorlage aktualisieren          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.           |
-|Endbenutzer erstellt eine Anforderung zur Administratoreinwilligung für eine App       |Zugriffsüberprüfungen           |Richtlinie         |Anforderung erstellen           |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.           |
-|Prüfer genehmigen eine Anforderung zur Administratoreinwilligung       |Zugriffsüberprüfungen           |UserManagement           |Alle Anforderungen im Geschäftsflow genehmigen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts oder der App-ID, für die eine Administratoreinwilligung erteilt wurde, nicht möglich.           |
-|Prüfer lehnen eine Anforderung zur Administratoreinwilligung ab       |Zugriffsüberprüfungen           |UserManagement           |Alle Anforderungen im Geschäftsflow genehmigen          |App-Kontext            | Aktuell ist eine Ermittlung des Benutzerkontexts des Akteurs, der eine Anforderung zur Administratoreinwilligung abgelehnt hat, nicht möglich.          |
+|Administrator aktiviert den Workflow für die Administratoreinwilligung        |Zugriffsüberprüfungen           |UserManagement           |Governancerichtlinienvorlage erstellen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.            |
+|Der Administrator deaktiviert den Workflow zum Anfordern der Administratoreinwilligung.       |Zugriffsüberprüfungen           |UserManagement           |Governancerichtlinienvorlage löschen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.           |
+|Administrator aktualisiert die Konfiguration des Workflows für die Administratoreinwilligung        |Zugriffsüberprüfungen           |UserManagement           |Governancerichtlinienvorlage aktualisieren          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.           |
+|Der Endbenutzer erstellt eine Anforderung zur Administratoreinwilligung für eine App.       |Zugriffsüberprüfungen           |Richtlinie         |Anforderung erstellen           |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts nicht möglich.           |
+|Die Prüfer genehmigen eine Anforderung zur Administratoreinwilligung.       |Zugriffsüberprüfungen           |UserManagement           |Alle Anforderungen im Geschäftsflow genehmigen          |App-Kontext            |Aktuell ist eine Ermittlung des Benutzerkontexts oder der App-ID, für die eine Administratoreinwilligung erteilt wurde, nicht möglich.           |
+|Die Prüfer lehnen eine Anforderung zur Administratoreinwilligung ab.       |Zugriffsüberprüfungen           |UserManagement           |Alle Anforderungen im Geschäftsflow genehmigen          |App-Kontext            | Aktuell ist eine Ermittlung des Benutzerkontexts des Akteurs, der eine Anforderung zur Administratoreinwilligung abgelehnt hat, nicht möglich.          |
 
 ## <a name="faq"></a>Häufig gestellte Fragen 
 

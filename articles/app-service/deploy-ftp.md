@@ -1,26 +1,17 @@
 ---
-title: Bereitstellen von Inhalt mithilfe von FTP/S – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Ihre App mithilfe von FTP oder FTPS in Azure App Service bereitstellen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: erikre
-editor: ''
+title: Bereitstellen von Inhalt mithilfe von FTP/S
+description: Erfahren Sie, wie Sie Ihre App mithilfe von FTP oder FTPS in Azure App Service bereitstellen. Verbessern Sie die Websitesicherheit, indem Sie das unverschlüsselte Dateiübertragungsprotokoll deaktivieren.
 ms.assetid: ae78b410-1bc0-4d72-8fc4-ac69801247ae
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 6e8a6820b3cf3031f11ab04d9baf4a7888491c81
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: bccf4fa0b17f261d41c0a80d9f75fe391f591bfb
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71098072"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671722"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 

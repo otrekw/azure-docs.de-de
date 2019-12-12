@@ -1,25 +1,17 @@
 ---
-title: Bereitstellen über ein lokales Git-Repository – Azure App Service
-description: Erfahren Sie, wie Sie die lokale Git-Bereitstellung in Azure App Service aktivieren.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
+title: Bereitstellen über ein lokales Git-Repository
+description: Erfahren Sie, wie Sie die lokale Git-Bereitstellung in Azure App Service aktivieren. Es handelt sich um einen der einfachsten Wege, Code von Ihrem lokalen Computer bereitzustellen.
 ms.assetid: ac50a623-c4b8-4dfd-96b2-a09420770063
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/18/2019
-ms.author: cephalin
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 9714052de5cdfbdbf0789c7b4711469ee9202bac
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070641"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671779"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 

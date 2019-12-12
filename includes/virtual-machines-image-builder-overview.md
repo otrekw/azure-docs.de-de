@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 04/30/2019
+ms.date: 11/25/2019
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2bd40db51d82bd2278bd716615636968adf8277b
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72391647"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795817"
 ---
 Standardisierte VM-Images ermöglichen es Organisationen, in die Cloud zu migrieren und die Konsistenz der Bereitstellung sicherzustellen. Die Images beinhalten üblicherweise vordefinierte Sicherheits- und Konfigurationseinstellungen und die notwendige Software. Das Einrichten Ihrer eigenen Imaging-Pipeline erfordert Zeit, Infrastruktur und Setup, aber mit dem Azure VM Image Builder stellen Sie eine einfache Konfiguration zur Verfügung, die Ihr Image beschreibt, senden es an den Dienst, und das Image wird erstellt und verteilt.
  
@@ -73,7 +73,7 @@ Der Azure Image Builder ist ein vollständig verwalteter Azure-Dienst, der für 
 
 1. Erstellen Sie die Imagevorlage als eine JSON-Datei an. Diese.json-Datei enthält Informationen über die Imagequelle, Anpassungen und Verteilung. Im [GitHub-Repository für Azure Image Builder](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts) finden Sie zahlreiche Beispiele.
 1. Durch Senden an den Dienst wird in der von Ihnen angegebenen Ressourcengruppe ein Image-Vorlagenartefakt erstellt. Im Hintergrund lädt der Image Builder das Quellimage oder ISO und bei Bedarf Skripts herunter. Diese werden in einer separaten Ressourcengruppe gespeichert, die automatisch in Ihrem Abonnement im folgenden Format erstellt wird: IT_\<Zielressourcengruppe>_\<Vorlagenname>. 
-1. Sobald die Imagevorlage erstellt ist, können Sie mit den Zusammenstelle des Images beginnen. Im Hintergrund verwendet der Image Builder die Vorlagen- und Quelldateien, um eine VM (D1v2), ein Netzwerk, eine öffentliche IP-Adresse und einen Speicher in der Ressourcengruppe „IT_\<Zielressourcengruppe>_\<Vorlagenname>“ zu erstellen.
+1. Sobald die Imagevorlage erstellt ist, können Sie mit den Zusammenstelle des Images beginnen. Im Hintergrund verwendet der Image Builder die Vorlagen- und Quelldateien, um eine VM (Standardgröße: Standard_D1_v2), ein Netzwerk, eine öffentliche IP-Adresse, NSG und einen Speicher in der Ressourcengruppe IT_\<DestinationResourceGroup>_\<TemplateName> zu erstellen.
 1. Im Rahmen der Imageerstellung verteilt Image Builder das Bild entsprechend der Vorlage und löscht dann die zusätzlichen Ressourcen in der Ressourcengruppe IT_\<Zielressourcengruppe>_\<Vorlagenname>, die für den Prozess erstellt wurde.
 
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/17/2019
+ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 277d8e3fe8f54b8e95d8acc93d26100d3ac64db1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110704"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74814859"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -65,11 +65,32 @@ Das alte und das neue Dataset müssen in einer einzigen ZIP-Datei (für akustisc
 
 Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt diese Bereitstellung unverändert. Kunden können die Bereitstellung des Modells aufheben, es mit einer neueren Version von Baseline neu anpassen und es neu bereitstellen.
 
+**F: Kann ich mein Modell herunterladen und lokal ausführen?**
+
+**A:** Modelle können nicht heruntergeladen und lokal ausgeführt werden.
+
+**F: Werden meine Anforderungen protokolliert?**
+
+**A:** Sie haben die Wahl, wenn Sie eine Bereitstellung erstellen, die Ablaufverfolgung zu deaktivieren. Ab diesem Zeitpunkt werden dann keine Audiodaten oder Transkriptionen mehr protokolliert. Andernfalls werden Anforderungen normalerweise im sicheren Speicher in Azure protokolliert.
+
+**F: Werden meine Anforderungen gedrosselt?**
+
+**A:** Die REST-API beschränkt Anforderungen auf 25 pro 5 Sekunden. Informationen finden Sie auf unseren Seiten für [Spracherkennung](speech-to-text.md).
+
+**F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
+
+**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Abrechnung für die Dauer der Datei in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt.
+
+> [!IMPORTANT]
+> Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
+
+## <a name="increasing-concurrency"></a>Erhöhen der Parallelität
+
 **F: Was geschieht, wenn ich eine höhere Parallelität für mein bereitgestelltes Modell benötige, als im Portal angeboten wird?**
 
 **A:** Sie können Ihr Modell in Schritten von 20 gleichzeitigen Anforderungen zentral hochskalieren.
 
-Kontaktieren Sie den [Support für die Sprachunterstützung](mailto:speechsupport@microsoft.com?subject=Request%20for%20higher%20concurrency%20for%20Speech-to-text), wenn Sie eine höhere Skalierung benötigen.
+Erstellen Sie im [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) mit den erforderlichen Informationen eine Supportanfrage. Veröffentlichen Sie die Informationen nicht auf den öffentlichen Kanälen (GitHub, Stackoverflow usw.), die auf der Seite [Support](support.md) erwähnt werden.
 
 Um die Parallelität für ein ***benutzerdefiniertes Modell*** zu erhöhen, sind folgende Informationen erforderlich:
 
@@ -97,25 +118,6 @@ oder
   - wählen Sie aus den angezeigten Diensten den Sprachdienst aus, für den Sie die Parallelität erhöhen möchten,
   - zeigen Sie die `Properties` für diesen Dienst an,
   - und kopieren Sie die gesamte Ressourcen-ID (`Resource ID`).
-
-**F: Kann ich mein Modell herunterladen und lokal ausführen?**
-
-**A:** Modelle können nicht heruntergeladen und lokal ausgeführt werden.
-
-**F: Werden meine Anforderungen protokolliert?**
-
-**A:** Sie haben die Wahl, wenn Sie eine Bereitstellung erstellen, die Ablaufverfolgung zu deaktivieren. Ab diesem Zeitpunkt werden dann keine Audiodaten oder Transkriptionen mehr protokolliert. Andernfalls werden Anforderungen normalerweise im sicheren Speicher in Azure protokolliert.
-
-**F: Werden meine Anforderungen gedrosselt?**
-
-**A:** Die REST-API beschränkt Anforderungen auf 25 pro 5 Sekunden. Informationen finden Sie auf unseren Seiten für [Spracherkennung](speech-to-text.md).
-
-**F: Wie werden Zweikanalaudiodaten in Rechnung gestellt?**
-
-**A:** Wenn Sie jeden Kanal separat übermitteln (jeden Kanal in seiner eigenen Datei), wird Ihnen die Abrechnung für die Dauer der Datei in Rechnung gestellt. Wenn Sie in jedem Kanal eine einzelne Datei übermitteln, wird Ihnen die Dauer der einzelnen Datei in Rechnung gestellt.
-
-> [!IMPORTANT]
-> Wenn Sie weitere Datenschutzbedenken im Hinblick auf die Nutzung von Custom Speech Service haben, wenden Sie sich an einen der Supportkanäle.
 
 ## <a name="importing-data"></a>Importieren von Daten
 
@@ -189,9 +191,9 @@ oder
 
 **F: Welche Sprachfunktion wird durch das Mandantenmodell verbessert?**
 
-**A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Spracherkennungsdiensts erstellt wurden. Dadurch wird auch ein AAD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt.
+**A:** Wenn das Mandantenmodell aktiviert, erstellt und veröffentlicht ist, wird es verwendet, um die Erkennung für Unternehmensanwendungen zu verbessern, die mithilfe des Speech-Diensts erstellt wurden. Dadurch wird auch ein AAD-Token übergeben, das die Mitgliedschaft im Unternehmen angibt.
 
-Die in Office 365 integrierten Sprachfunktionen, wie z. B. Diktat und PowerPoint-Untertitel, werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Spracherkennungsdienst-Anwendungen erstellen.
+Die in Office 365 integrierten Sprachfunktionen wie beispielsweise Diktat und PowerPoint-Untertitel werden nicht geändert, wenn Sie ein Mandantenmodell für Ihre Speech-Dienstanwendungen erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,17 +1,17 @@
 ---
-title: Automatische Speichervergrößerung über das Azure-Portal in Azure Database for PostgreSQL – Einzelserver
-description: In diesem Artikel erfahren Sie, wie Sie das automatische Vergrößern von Speicher über das Azure-Portal in Azure Database for PostgreSQL für einen Einzelserver aktivieren.
+title: Automatisches Vergrößern des Speichers – Azure-Portal – Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel wird beschrieben, wie Sie das automatische Vergrößern von Speicher über das Azure-Portal in Azure Database for PostgreSQL (Einzelserver) konfigurieren.
 author: ambhatna
 ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/29/2019
-ms.openlocfilehash: 1d028093b030e1f2cf00ceae9297563c36c314c5
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 5e4f9d68d02edf456394d4ce10b7b6af5f8643d9
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142864"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769233"
 ---
 # <a name="auto-grow-storage-using-the-azure-portal-in-azure-database-for-postgresql---single-server"></a>Automatische Speichervergrößerung über das Azure-Portal in Azure Database for PostgreSQL – Einzelserver
 In diesem Artikel wird beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for PostgreSQL-Server konfigurieren können, ohne die Workload zu beeinträchtigen.

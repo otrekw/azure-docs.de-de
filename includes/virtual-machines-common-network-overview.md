@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: cd3b7d6cc75afc5d83ff02a15b920d9f8b05f608
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e08860579ca3a18093375652e0243c994c66d75b
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66391339"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74796192"
 ---
 Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-subscription-service-limits.md#networking-limits) verstehen.
 
@@ -31,8 +31,6 @@ Zusätzlich zu diesen grundlegenden Ressourcen sollten Sie auch die folgenden op
 
 - Netzwerksicherheitsgruppen
 - Load Balancer 
-
-[!INCLUDE [updated-for-az](./updated-for-az.md)]
 
 ## <a name="network-interfaces"></a>Netzwerkschnittstellen
 
@@ -172,3 +170,4 @@ Es gibt auch Tutorials dazu, wie Sie den Lastenausgleich für VMs durchführen u
 - Informieren Sie sich, wie Sie [benutzerdefinierte Routen und die IP-Weiterleitung](../articles/virtual-network/virtual-networks-udr-overview.md) konfigurieren. 
 - Informieren Sie sich, wie Sie [VNet-zu-VNet-Verbindungen](../articles/vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) konfigurieren.
 - Lesen Sie die Informationen zur [Problembehandlung bei Routen](../articles/virtual-network/diagnose-network-routing-problem.md).
+- Weiter Informationen über den [Netzwerkdurchsatz virtueller Computer](../articles/virtual-network/virtual-machine-network-throughput.md)

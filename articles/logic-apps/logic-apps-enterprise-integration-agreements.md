@@ -1,20 +1,19 @@
 ---
-title: Handelspartnerverträge – Azure Logic Apps
+title: Handelspartnervereinbarungen
 description: Erstellen und Verwalten von Vereinbarungen zwischen Handelspartnern mithilfe von Azure Logic Apps und Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 35ebaab47edd110258f537dbbb044387515ed6c4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72680417"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790735"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Erstellen und Verwalten von Handelspartnerverträgen in Azure Logic Apps
 
