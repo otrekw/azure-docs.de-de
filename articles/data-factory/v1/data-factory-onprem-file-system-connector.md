@@ -4,21 +4,20 @@ description: Erfahren Sie, wie Daten mit Azure Data Factory in ein und aus einem
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: ce19f1ae-358e-4ffc-8a80-d802505c9c84
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 32649b1e13b49979af3ad5042054e1ee8917227a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 47dbd28f301009969ae02acfac6f4b272ef608f0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682465"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918643"
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein und aus einem lokalen Dateisystem mit Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
@@ -84,8 +83,8 @@ Sie können ein lokales Dateisystem mithilfe eines verknüpften Diensts vom Typ 
 ### <a name="sample-linked-service-and-dataset-definitions"></a>Beispieldefinitionen für verknüpfte Dienste und Datasets
 | Szenario | Host in der Definition des verknüpften Diensts | folderPath in der Datasetdefinition |
 | --- | --- | --- |
-| Lokaler Ordner auf dem Datenverwaltungsgateway-Computer: <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
-| Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\\* |\\\\\\\\MeinServer\\\\Freigabe |.\\\\ oder Ordner\\\\Unterordner |
+| Lokaler Ordner auf dem Datenverwaltungsgateway-Computer: <br/><br/>Beispiele: D:\\\* oder D:\Ordner\Unterordner\\\\* |D:\\\\ (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/> localhost (für ältere Versionen als Datenverwaltungsgateway 2.0) |.\\\\ oder Ordner\\\\Unterordner (für Datenverwaltungsgateway 2.0 und neuere Versionen) <br/><br/>D:\\\\ oder D:\\\\Ordner\\\\Unterordner (für Gatewayversionen unter 2.0) |
+| Freigegebener Remoteordner: <br/><br/>Beispiele: \\\\MeinServer\\Freigabe\\\* oder \\\\MeinServer\\Freigabe\\Ordner\\Unterordner\\\\* |\\\\\\\\MeinServer\\\\Freigabe |.\\\\ oder Ordner\\\\Unterordner |
 
 >[!NOTE]
 >Bei der Erstellung auf der Benutzeroberfläche müssen Sie keinen doppelten Rückwärtsschrägstrich (`\\`) wie bei JSON als Escapezeichen eingeben. Geben Sie einen einfachen Rückwärtsschrägstrich an.

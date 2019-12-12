@@ -1,23 +1,22 @@
 ---
-title: Kopieren von Dateien aus mehreren Containern mithilfe von Azure Data Factory
+title: Kopieren von Dateien aus mehreren Containern
 description: Erfahren Sie, wie Sie mit Azure Data Factory eine Lösungsvorlage verwenden, um Dateien aus mehreren Containern zu kopieren.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/1/2018
-ms.openlocfilehash: 004a623f0dfe251da9d452b53c2541e53339d965
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 35eff70c12e6f98fa74a4180bf82a369c1ecfaa4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684260"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927703"
 ---
 # <a name="copy-files-from-multiple-containers-with-azure-data-factory"></a>Kopieren von Dateien aus mehreren Containern mit Azure Data Factory
 

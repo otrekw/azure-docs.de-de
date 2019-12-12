@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 36035d844237115361ccb3c1e1bc0dcb91250881
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423874"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894422"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Übersicht: Azure Load Balancer Standard
 
@@ -38,11 +38,6 @@ Die Funktionen einer Load Balancer-Ressource werden immer als Front-End-, Regel-
 Ein Hauptaspekt ist der Bereich des virtuellen Netzwerks für die Ressource.  Während ein Basic Load Balancer im Bereich einer Verfügbarkeitsgruppe vorhanden ist, ist ein Standard Load Balancer vollständig in den Bereich eines virtuellen Netzwerks integriert, und es gelten alle Konzepte für ein virtuelles Netzwerk.
 
 Load Balancer-Ressourcen sind Objekte, in denen Sie formulieren können, wie Azure seine mehrinstanzenfähige Infrastruktur programmieren sollte, um das Szenario zu erzielen, das Sie erstellen möchten.  Es gibt keine direkte Beziehung zwischen Load Balancer-Ressourcen und tatsächlicher Infrastruktur. Durch Erstellen eines Load Balancers wird keine Instanz erstellt, Kapazität ist immer verfügbar, und es sind weder Start- noch Skalierungsverzögerungen zu berücksichtigen. 
-
->[!NOTE]
-> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, hilft Ihnen der Artikel [Was ist Azure Application Gateway?](../application-gateway/overview.md) weiter. Wenn Sie nach Informationen zum globalen DNS-Lastenausgleich suchen, hilft Ihnen der Artikel [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md) weiter. Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen zu kombinieren.
->
-> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
 
 ## <a name="why-use-standard-load-balancer"></a>Gründe zum Verwenden von Standard Load Balancer
 

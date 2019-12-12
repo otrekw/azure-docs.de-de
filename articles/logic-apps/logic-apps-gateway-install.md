@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 11/06/2019
-ms.openlocfilehash: 9f933a9ad63af11bcfee7c90f17318f5a237b962
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 12/05/2019
+ms.openlocfilehash: 4fbfb31feb2183e3175a96023cbb3b08c4d18027
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792097"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893673"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Installieren des lokalen Datengateways für Azure Logic Apps
 
@@ -85,14 +85,6 @@ Dieser Artikel zeigt, wie Sie Ihr lokales Datengateway herunterladen, installier
 ## <a name="install-data-gateway"></a>Installieren eines Datengateways
 
 1. [Laden Sie den Gateway-Installer auf einen lokalen Computer herunter, und führen Sie den Installer aus](https://aka.ms/on-premises-data-gateway-installer).
-
-1. Nachdem der Installer geöffnet wurde, wählen Sie **Weiter** aus.
-
-   ![Einführungsbildschirm für das Gatewayinstallationsprogramm](./media/logic-apps-gateway-install/gateway-intro-screen.png)
-
-1. Wählen Sie **Lokales Datengateway (empfohlen)** (den Standardmodus) aus, und klicken Sie dann auf **Weiter**.
-
-   ![Auswählen des Ausführungsmodus für das Datengateway](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
 1. Überprüfen Sie die Mindestanforderungen, behalten Sie den Standardinstallationspfad bei, akzeptieren Sie die Nutzungsbedingungen, und wählen Sie dann **Installieren** aus.
 

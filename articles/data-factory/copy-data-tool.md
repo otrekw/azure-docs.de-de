@@ -4,19 +4,19 @@ description: Stellt Informationen zum Tool zum Kopieren von Daten der Benutzerob
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: craigg
+manager: anandsub
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: b5c93213199cac399487f949a3a8cb04c2d9addb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a6de5c28115d3a451256cc43d26552c269ba245a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73678319"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927496"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
 Das Tool zum Kopieren von Daten in Azure Data Factory vereinfacht und optimiert die Verarbeitung der Sammelerfassung von Daten in einem Data Lake. Dies ist normalerweise ein erster Schritt in einem End-to-End-Szenario für die Datenintegration.  Sie sparen Zeit, insbesondere bei Verwendung von Azure Data Factory für die erstmalige Sammelerfassung von Daten aus einer Datenquelle. Die Verwendung dieses Tools ist z.B. mit den folgenden Vorteilen verbunden:

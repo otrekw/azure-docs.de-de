@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie die Protokolle für die
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 09/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d53e41fc902241d796cf8b10ae35c50c090a803a
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 4797e3a348b057fa21677649e4cb7de78de0d8b9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377383"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850617"
 ---
 # <a name="query-update-records-for-update-management-in-log-analytics"></a>Abfragen von Updatedatensätzen für die Updateverwaltung in Log Analytics
 

@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 1588a27453dbc223e6aa1dd993905d274e5e1242
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: d74bd67dedb70308061e54c05d23a4bb63adc8f8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480332"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851331"
 ---
 # <a name="create-and-manage-an-azure-iot-central-application-from-the-csp-portal"></a>Erstellen und Verwalten einer Azure IoT Central-Anwendung über das CSP-Portal
 
@@ -74,7 +74,7 @@ Weitere Informationen finden Sie unter [Azure-Abonnements](https://docs.microsof
 Wählen Sie die Region oder [Geografie](https://azure.microsoft.com/global-infrastructure/geographies/) aus, in der Sie Ihre Azure IoT Central-Anwendung erstellen möchten. Normalerweise sollten Sie die Region wählen, die Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen.
 
 > [!NOTE]
-> Die Vorlagen für Vorschauanwendungen sind derzeit nur in den Regionen **Europa** und **USA** verfügbar.
+> Die Vorlagen für Vorschauanwendungen sind derzeit nur an den Standorten **Europa** und **USA** verfügbar.
 
 Weitere Informationen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) und [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/).
 

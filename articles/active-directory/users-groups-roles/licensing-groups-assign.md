@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 497efda857dcd7de3079d702be00a094d221b779
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72034831"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900840"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Zuweisen von Lizenzen zu Benutzer nach Gruppenmitgliedschaft in Azure Active Directory
 
@@ -41,7 +41,7 @@ In diesem Beispiel enthält der Mandant eine Sicherheitsgruppe namens **HR Depar
 
 1. Wählen Sie unter **Alle Produkte** sowohl Office 365 Enterprise E5 als auch Enterprise Mobility + Security E3 aus, indem Sie die Produktnamen auswählen. Wählen Sie oben auf der Seite **Zuweisen** aus, um die Zuweisung zu starten.
 
-   ![Auswählen von Produkten zum Zuweisen von Lizenzen](./media/licensing-groups-assign/all-products-assign.png)
+   ![Auswählen von Produkten zum Zuweisen von Lizenzen](./media/licensing-groups-assign/licenses-all-products-assign.png)
   
 1. Wählen Sie auf der Seite **Lizenz zuweisen** die Option **Benutzer und Gruppen** aus, um eine Liste der Benutzer und Gruppen zu öffnen.
 
@@ -89,7 +89,7 @@ Beim Zuweisen von Lizenzen zu einer Gruppe werden in Azure AD alle vorhandenen 
 
 1. Wählen Sie einen Benutzer aus, um die Seite **Lizenzen** des Benutzers zu öffnen. Auf dieser Seite werden alle Lizenzen angezeigt, die dem Benutzer derzeit zugewiesen sind. In diesem Beispiel hat der Benutzer die Office 365 Enterprise E1-Lizenz von der Gruppe **Kiosk users** (Kioskbenutzer) geerbt. Dies steht in Konflikt mit der E3-Lizenz, die über die Gruppe **HR Department** angewendet werden sollte. Daher wurde dem Benutzer keine der Lizenzen aus dieser Gruppe zugewiesen.
 
-   ![Anzeigen aller Lizenzkonflikte für einen Benutzer](./media/licensing-groups-assign/user-license-view.png)
+   ![Anzeigen aller Lizenzkonflikte für einen Benutzer](./media/licensing-groups-assign/user-licence-conflicting-service-plans.png)
 
 1. Um dieses Problem zu beheben, entfernen Sie den Benutzer aus der Gruppe **Kiosk users** (Kioskbenutzer). Nachdem Azure AD die Änderung verarbeitet hat, sind die Lizenzen für **HR Department** richtig zugewiesen.
 

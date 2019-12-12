@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 90710176ec16d1c565e24ff7df56b0b838f2699e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229419"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851195"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link
 
@@ -129,9 +129,6 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 ## <a name="access-the-azure-cosmos-account-privately-from-the-vm"></a>Privates Zugreifen auf das Azure Cosmos-Konto über den virtuellen Computer
 
 In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine private Verbindung mit dem Azure Cosmos-Konto her. 
-
-> [!IMPORTANT]
-> Die DNS-Konfiguration für das Azure Cosmos-Konto muss manuell geändert werden, damit die hosts-Datei den FQDN des jeweiligen Kontos enthält. In Produktionsszenarien konfigurieren Sie den DNS-Server für die Verwendung der privaten IP-Adressen. Für Demozwecke können Sie jedoch Administratorberechtigungen auf der VM verwenden und die Datei `c:\Windows\System32\Drivers\etc\hosts` (unter Windows) oder `/etc/hosts` (unter Linux) so ändern, dass sie die IP-Adresse und die DNS-Zuordnung enthält.
 
 1. Um die IP-Adresse und die DNS-Zuordnung einzubeziehen, melden Sie sich bei Ihrem virtuellen Computer *myVM* an, öffnen Sie die Datei `c:\Windows\System32\Drivers\etc\hosts`, und fügen Sie die DNS-Informationen aus dem vorherigen Schritt im folgenden Format hinzu:
 

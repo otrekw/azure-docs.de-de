@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 61deb5361c9857956318f8b9b4ca836fcfa65d48
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: e11f560c2b101d86d41feb3f6c93cffe7c1a748d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797367"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851450"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Generieren eines Wärmebilds zur Bodenfeuchtigkeit
 
@@ -93,4 +93,4 @@ Führen Sie die folgenden Schritte aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfolgreich ein Wärmebild zur Bodenfeuchtigkeit generiert haben, können Sie sich über das [Generieren der Sensorplatzierung](generate-maps.md#sensor-placement-maps) und die [Erfassung von Telemetrieverlaufsdaten](ingest-historical-telemetry-data.md) informieren. 
+Nachdem Sie nun erfolgreich ein Wärmebild zur Bodenfeuchtigkeit generiert haben, können Sie sich über das [Generieren der Sensorplatzierung](generate-maps.md#sensor-placement-map) und die [Erfassung von Telemetrieverlaufsdaten](ingest-historical-telemetry-data.md) informieren. 

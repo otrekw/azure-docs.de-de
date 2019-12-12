@@ -4,17 +4,17 @@ description: Dieser Artikel beschreibt, wie DSC-Berichtsdaten (Desired State Con
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5905afdb9832f32e837dc4496e4a951fca41b8b0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9fa84b5e87581fad4a7ada5fda074429409d2f8f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243552"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850345"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Weiterleiten von Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle
 

@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 21f4e0aa339eb0c746f9b9b06f8aaada6c4d4b71
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7f00a99a31a4543ef45c90a86820e627134d8963
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61043406"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888698"
 ---
 # <a name="work-with-resources-in-the-managed-resource-group-for-azure-managed-application"></a>Verwenden von Ressourcen in der verwalteten Ressourcengruppe für eine verwaltete Azure-Anwendung
 
 In diesem Artikel wird beschrieben, wie Sie Ressourcen aktualisieren, die als Teil einer verwalteten Anwendung bereitgestellt werden. Wie der Herausgeber einer verwalteten Anwendung haben Sie Zugriff auf die Ressourcen in der verwalteten Ressourcengruppe. Zum Aktualisieren dieser Ressourcen müssen Sie die verwaltete Ressourcengruppe ermitteln, die einer verwalteten Anwendung zugeordnet ist, und auf die Ressource in dieser Ressourcengruppe zugreifen.
 
-In diesem Artikel wird davon ausgegangen, dass Sie die verwaltete Anwendung im Beispielprojekt [Managed Web Application (IaaS) with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) (Verwaltete Webanwendung (IaaS) mit Azure-Verwaltungsdiensten) bereitgestellt haben. Diese verwaltete Anwendung enthält einen virtuellen Computer vom Typ **Standard_D1_v2**. Wenn Sie diese verwaltete Anwendung nicht bereitgestellt haben, können Sie sich dennoch anhand dieses Artikels mit den Schritten zum Aktualisieren einer verwalteten Ressourcengruppe vertraut machen.
+In diesem Artikel wird davon ausgegangen, dass Sie die verwaltete Anwendung im Beispielprojekt [Managed Web Application (IaaS) with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/Managed%20Application%20Sample%20Packages/201-managed-web-app) (Verwaltete Webanwendung (IaaS) mit Azure-Verwaltungsdiensten) bereitgestellt haben. Diese verwaltete Anwendung enthält einen virtuellen Computer vom Typ **Standard_D1_v2**. Wenn Sie diese verwaltete Anwendung nicht bereitgestellt haben, können Sie sich dennoch anhand dieses Artikels mit den Schritten zum Aktualisieren einer verwalteten Ressourcengruppe vertraut machen.
 
 Die folgende Abbildung zeigt die bereitgestellte verwaltete Anwendung:
 

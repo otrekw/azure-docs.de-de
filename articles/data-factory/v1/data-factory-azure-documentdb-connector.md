@@ -4,21 +4,20 @@ description: Erfahren Sie, wie Daten mithilfe von Azure Data Factory in eine bzw
 services: data-factory, cosmosdb
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: c9297b71-1bb4-4b29-ba3c-4cf1f5575fac
 ms.service: multiple
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0ff1b9164f0e631bf148af88bd9efaaaa61f431
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683159"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930085"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Verschieben von Daten nach und aus Azure Cosmos DB mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

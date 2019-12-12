@@ -1,18 +1,19 @@
 ---
-title: Verwalten von Speicherkontoeinstellungen im Azure-Portal – Azure Storage | Microsoft-Dokumentation
+title: Verwalten von Speicherkontoeinstellungen im Azure-Portal
+titleSuffix: Azure Storage
 description: Sie erfahren, wie Sie Speicherkontoeinstellungen im Azure-Portal verwalten, einschließlich der Konfiguration von Einstellungen für die Zugriffssteuerung, der erneuten Generierung von Kontozugriffsschlüsseln, dem Ändern der Zugriffsebene oder dem Ändern des von dem Konto verwendeten Typs der Replikation. Ferner erfahren Sie, wie Sie ein Speicherkonto im Portal löschen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 11/06/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: 3c01cc870b20c8256b215eb700548e6cd69ad0d5
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93d3bf3d17348a0f5ad62118fcb9c9a0c6f2f656
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748983"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892378"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Verwalten von Speicherkontoeinstellungen im Azure-Portal
 

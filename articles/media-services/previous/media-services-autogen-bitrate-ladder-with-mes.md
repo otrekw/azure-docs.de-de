@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten/Auflösungs-Paaren – Azure | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie Sie mit Media Encoder Standard (MES) automatisch eine Reihe von Bitraten/Auflösungs-Paaren auf Basis der eingegebenen Auflösung und Bitrate generieren können. Eingegebene Auflösung und Bitrate werden nie überschritten. Ist die Eingabe beispielsweise 720p bei 3MBit/s, bleibt die Ausgabe bestenfalls bei 720p, und es beginnt mit niedrigeren Raten als 3MBit/s.
+description: In diesem Thema wird gezeigt, wie Sie mit Media Encoder Standard (MES) automatisch eine Reihe von Bitraten/Auflösungs-Paaren auf Basis der eingegebenen Auflösung und Bitrate generieren können.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 14575e0c95acf1345fc3358b323083d86d8eedee
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: b7f0b77ba11a0c9c1670ec240caf45fcf61a934d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543539"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896015"
 ---
 #  <a name="use-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Verwenden von Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten/Auflösungs-Paaren  
 

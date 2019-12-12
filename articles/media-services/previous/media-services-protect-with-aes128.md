@@ -1,6 +1,6 @@
 ---
 title: Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts | Microsoft-Dokumentation
-description: Übermitteln Sie Inhalte, die mit 128-Bit-AES-Verschlüsselungsschlüsseln verschlüsselt wurden, mithilfe von Microsoft Azure Media Services. Media Services stellt außerdem den Schlüsselübermittlungsdienst bereit, der Verschlüsselungsschlüssel an autorisierte Benutzer übermittelt. In diesem Thema werden das dynamische Verschlüsseln mit AES-128 und das Verwenden des Schlüsselübermittlungsdiensts behandelt.
+description: In diesem Thema werden das dynamische Verschlüsseln mit AES-128 und das Verwenden des Schlüsselübermittlungsdiensts behandelt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 2b96d968cb1ad2ec903dbf9788e1fbae22bd2b7d
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 01153317b49e4543f10faa517bce7bcc01ce22d4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69014967"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895836"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts
 > [!div class="op_single_selector"]

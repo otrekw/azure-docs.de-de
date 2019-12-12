@@ -3,27 +3,23 @@ title: Migrieren zu MSAL.NET
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Unterschiede zwischen der Microsoft-Authentifizierungsbibliothek für .NET (MSAL.NET) und der Azure AD-Authentifizierungsbibliothek für .NET (ADAL.NET) und über die Migration zu MSAL.NET.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5059acea753b4b8b7db80bfc79b4bb9718e0484e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175563"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74915671"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 

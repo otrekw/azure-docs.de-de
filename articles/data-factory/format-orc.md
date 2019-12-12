@@ -2,19 +2,19 @@
 title: ORC-Format in Azure Data Factory
 description: In diesem Thema wird der Umgang mit dem ORC-Format in Azure Data Factory beschrieben.
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: a5125b53d960ddead063435666de5b26ce0bc291
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 5f83e9bbcdfffdd9b19786012295ff5643116551
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674763"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927373"
 ---
 # <a name="orc-format-in-azure-data-factory"></a>ORC-Format in Azure Data Factory
 

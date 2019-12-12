@@ -2,28 +2,24 @@
 title: Migrieren aus dem Azure Access Control Service | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Optionen zum Verschieben von Apps und Diensten aus Azure Access Control Service (ACS).
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/03/2018
 ms.author: ryanwi
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59a2cc971fbc1df967bc2655c672ab8f419eef71
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: c04377877619c96f139f4b6c1cf826573524d900
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835522"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74845551"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Gewusst wie: Migrieren aus dem Azure Access Control Service
 

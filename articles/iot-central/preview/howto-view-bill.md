@@ -3,17 +3,17 @@ title: Verwalten Ihrer Rechnung und Umstellen von der Testversion auf die nutzun
 description: Hier erfahren Sie, wie Sie als Administrator Ihre Rechnung verwalten und in der Azure IoT Central-Anwendung von der Testversion auf die nutzungsbasierte Bezahlung umstellen.
 author: v-krghan
 ms.author: v-krghan
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 11bcdaab34cf4d82b688a578ab2d9ee686ffe07e
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0c1c1643fb8c8394ce3ce50e5926f05fd4d366f6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894162"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976416"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Verwalten Ihrer Rechnung in einer IoT Central-Anwendung
 

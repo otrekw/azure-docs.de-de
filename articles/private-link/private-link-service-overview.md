@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 8ac93e7ed1638137e70086ac22fa9bb97606830e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228061"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912980"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -101,7 +101,6 @@ Nachfolgend sind die bekannten Einschränkungen bei der Nutzung des Private Link
 - Wird nur von Load Balancer Standard unterstützt 
 - Unterstützt nur IPv4-Datenverkehr
 - Unterstützt nur TCP-Datenverkehr
-- Nur über private Endpunkte in derselben Region erreichbar
 - Erstellen und Verwalten von Erfahrungen aus dem Azure-Portal wird nicht unterstützt
 - Verbindungsinformationen von Clients, die das Proxyprotokoll verwenden, sind für den Dienstanbieter nicht verfügbar
 

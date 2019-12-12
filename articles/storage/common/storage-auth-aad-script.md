@@ -1,20 +1,21 @@
 ---
-title: Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten | Microsoft-Dokumentation
+title: Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten
+titleSuffix: Azure Storage
 description: Die Azure-Befehlszeilenschnittstelle (Azure CLI) und PowerShell unterstützen die Anmeldung mit Azure AD-Anmeldeinformationen zum Ausführen von Befehlen für Daten in Azure Storage-Blobs und -Warteschlangen. Ein Zugriffstoken wird jeweils für die Sitzung bereitgestellt und zum Autorisieren von Aufrufvorgängen verwendet. Die Berechtigungen hängen von der RBAC-Rolle (Role-Based Access Control = rollenbasierte Zugriffssteuerung) ab, die dem Azure AD-Sicherheitsprinzipal zugewiesen ist.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 07/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1c7f4531dee8673cc5b6dfe675e4c793144931e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 07abb9d604c14a5c78a088cb07f57088b84552a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71671101"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74891863"
 ---
 # <a name="run-azure-cli-or-powershell-commands-with-azure-ad-credentials-to-access-blob-or-queue-data"></a>Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten
 

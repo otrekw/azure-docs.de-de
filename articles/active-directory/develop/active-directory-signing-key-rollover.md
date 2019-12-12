@@ -2,27 +2,23 @@
 title: Rollover von Signaturschlüsseln in Azure AD
 description: Dieser Artikel beschreibt bewährte Verfahren für das Rollover von Signaturschlüsseln für Azure Active Directory.
 services: active-directory
-documentationcenter: .net
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/20/2018
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f20a10f7c6f98b352e8a2d794fabc3b6b3b57319
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f3c696b3fed36ca8ee7faf6ec78f833191cedf9d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835295"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74844650"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover von Signaturschlüsseln in Azure Active Directory
 In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Azure Active Directory (Azure AD) zum Signieren von Sicherheitstoken verwendet werden. Es sollte beachtet werden, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Azure AD verwenden, müssen den Schlüsselrolloverprozess programmgesteuert abwickeln können oder über einen regelmäßigen manuellen Rolloverprozess verfügen. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.

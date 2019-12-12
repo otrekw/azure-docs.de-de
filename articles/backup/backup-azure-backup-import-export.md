@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Backup mithilfe des Azure Import/Ex
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 47d4c4fb63c2aa0e2944456048b06070e235f012
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173302"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997359"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 
@@ -206,4 +206,4 @@ Nach Abschluss der Erstsicherung können die in den Azure-Speichercontainer impo
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md)weitere Informationen.
-* Bei Fragen zum Workflow finden Sie im Abschnitt zur Offlinesicherung in den [häufig gestellten Fragen](backup-azure-backup-faq.md) zu Azure Backup weitere Informationen.
+

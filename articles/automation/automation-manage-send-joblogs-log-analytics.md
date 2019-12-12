@@ -4,17 +4,17 @@ description: In diesem Artikel wird erläutert, wie Auftragsstatus und Runbookau
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ff455ed355d4412bcf042208d2fd1e7a2a11b965
-ms.sourcegitcommit: 7a6d8e841a12052f1ddfe483d1c9b313f21ae9e6
+ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70186787"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849733"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Azure Monitor-Protokolle
 
@@ -97,7 +97,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>- Neu<br>- Erstellt<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
-| Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
+| Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
 | OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Resource | Name des Automation-Kontos |
 | SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
@@ -120,7 +120,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>– In Bearbeitung |
-| Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
+| Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
 | OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Resource | Name des Automation-Kontos |
 | SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |

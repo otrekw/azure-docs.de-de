@@ -2,14 +2,11 @@
 title: Microsoft Identity Platform – Referenz zu ID-Token | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über die Verwendung von ID-Token, die von den Azure AD v1.0- und Microsoft Identity Platform (v2.0)-Endpunkten ausgegeben werden.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: ryanwi
@@ -17,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 271d00539d1e502fe172d086067664fe15000dcf
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1106692128f3272f59c80a8312d6ceea2500b3a7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554807"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917470"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 

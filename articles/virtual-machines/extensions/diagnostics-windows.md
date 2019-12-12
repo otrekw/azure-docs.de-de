@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: saurabh
-ms.openlocfilehash: 09aaa998bf011561bd73ad87eda6a2e211ffaa72
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 61b94e95c5292b4013409deed6565a90890b66d1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158942"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892633"
 ---
 # <a name="use-powershell-to-enable-azure-diagnostics-in-a-virtual-machine-running-windows"></a>Aktivieren der Azure-Diagnose auf einer virtuellen Azure-Maschine unter Windows mithilfe von PowerShell
 
@@ -64,9 +64,9 @@ Mit dem Cmdlet [Remove-AzVmDiagnosticsExtension](https://docs.microsoft.com/powe
 ## <a name="enable-the-diagnostics-extension-if-you-use-the-classic-deployment-model"></a>Aktivieren der Diagnoseerweiterung bei Verwendung des klassischen Bereitstellungsmodells
 Mit dem [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) -Cmdlet können Sie eine Diagnoseerweiterung auf einem virtuellen Computer aktivieren, den Sie mit dem klassischen Bereitstellungsmodell erstellt haben. Das folgende Beispiel zeigt, wie Sie mit dem klassischen Bereitstellungsmodell eine neue VM mit aktivierter Diagnoseerweiterung erstellen.
 
-    $VM = New-AzVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
+    $VM = New-AzureVMConfig -Name $VM -InstanceSize Small -ImageName $VMImage
     $VM = Add-AzureProvisioningConfig -VM $VM -AdminUsername $Username -Password $Password -Windows
-    $VM = Set-AzVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
+    $VM = Set-AzureVMDiagnosticsExtension -DiagnosticsConfigurationPath $Config_Path -VM $VM -StorageContext $Storage_Context
     New-AzVM -Location $Location -ServiceName $Service_Name -VM $VM
 
 Wenn Sie die Diagnoseerweiterung auf einem bereits vorhandenen virtuellen Computer aktivieren möchten, der mit dem klassischen Bereitstellungsmodell erstellt wurde, rufen Sie zunächst die VM-Konfiguration mit dem [Get-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azurevm) -Cmdlet ab. Aktualisieren Sie anschließend mithilfe des [Set-AzureVMDiagnosticsExtension](https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azurevmdiagnosticsextension) -Cmdlets die VM-Konfiguration, sodass diese die Diagnoseerweiterung beinhaltet. Wenden Sie abschließend mithilfe von [Update-AzureVM](https://docs.microsoft.com/powershell/module/servicemanagement/azure/update-azurevm)die aktualisierte Konfiguration auf die VM an.

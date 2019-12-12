@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 45cf376d54ef9f2e77acb2ece9529af640938853
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 72c66241965db1264cb508ed1f8f4c76a07883be
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931777"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974988"
 ---
 # <a name="quickstart-computer-vision-client-library-for-net"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für .NET
 
@@ -270,5 +270,5 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 > [!div class="nextstepaction"]
 >[Referenz zur Maschinelles Sehen-API (.NET)](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
 
-* [Was ist die Maschinelles Sehen-API?](../Home.md)
+* [Worum handelt es sich bei maschinellem Sehen?](../Home.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/ComputerVision/Program.cs).

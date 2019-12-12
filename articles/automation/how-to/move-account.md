@@ -4,17 +4,17 @@ description: In diesem Artikel wird beschrieben, wie Sie Ihr Automation-Konto in
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8187e4c6f2c7dc721c178bad50b6c3ada2a65367
-ms.sourcegitcommit: a52f17307cc36640426dac20b92136a163c799d0
+ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68717241"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849580"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement
 

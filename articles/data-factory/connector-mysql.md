@@ -4,20 +4,19 @@ description: Erfahren Sie mehr über den MySQL-Connector in Azure Data Factory, 
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: ecc6bdb9f46b5dbc544f5a9c74bdec4a58c1fd72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c03a7cb28820ef8aca4e10314a424ea068cb3cee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680621"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930071"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopieren von Daten aus MySQL mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
