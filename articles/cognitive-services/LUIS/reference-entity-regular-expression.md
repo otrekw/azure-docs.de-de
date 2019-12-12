@@ -10,23 +10,23 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: ae46df875d588186cd083134820f349158d7e307
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695221"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841216"
 ---
-# <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“ 
+# <a name="regular-expression-entity"></a>Entität vom Typ „RegEx“
 
 Eine RegEx-Entität extrahiert eine Entität anhand eines regulären Ausdrucks, den Sie bereitstellen.
 
-Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek. 
+Ein regulärer Ausdruck ist am besten für unformatierten Text von Äußerungen geeignet. Die Groß-/Kleinschreibung sowie die Kultur werden ignoriert.  Reguläre Ausdrücke werden nach Änderungen durch die Rechtschreibprüfung auf Zeichenebene (nicht auf Tokenebene) angewandt. Wenn der reguläre Ausdruck zu komplex ist (z.B. mit zu vielen Klammern), können Sie den Ausdruck dem Modell nicht hinzufügen. Es wird ein Teil der [.NET Regex](https://docs.microsoft.com/dotnet/standard/base-types/regular-expressions)-Bibliothek verwendet, aber nicht die gesamte Bibliothek.
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
 * Die Daten sind einheitlich formatiert, und auch bei den Abweichungen herrscht Einheitlichkeit.
-* Für den regulären Ausdruck sind nicht mehr als zwei Schachtelungsebenen erforderlich. 
+* Für den regulären Ausdruck sind nicht mehr als zwei Schachtelungsebenen erforderlich.
 
 ![Entität vom Typ „RegEx“](./media/luis-concept-entities/regex-entity.png)
 
@@ -36,7 +36,7 @@ Reguläre Ausdrücke finden möglicherweise mehr, als Sie erwarten. Ein Beispiel
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
-``` 
+```
 
 Dieser RegEx-Ausdruck findet auch alle Wörter, die auf diese Zahlen enden, wie z. B. `phone`. Um Probleme wie dieses zu beheben, stellen Sie sicher, dass bei Übereinstimmungen für reguläre Ausdrücke die Wortgrenzen berücksichtigt werden. Der reguläre Ausdruck mit Berücksichtigung von Wortgrenzen für dieses Beispiel wird im folgenden regulären Ausdruck verwendet:
 
@@ -102,8 +102,8 @@ Dies ist der JSON-Code, wenn `verbose=true` in der Abfragezeichenfolge festgeleg
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-quickstart-intents-regex-entity.md) erstellen Sie eine App zum Extrahieren einheitlich formatierter Daten aus einer Äußerung mithilfe der **RegEx**-Entität.
+In diesem [Tutorial](tutorial-regex-entity.md) erstellen Sie eine App zum Extrahieren einheitlich formatierter Daten aus einer Äußerung mithilfe der **RegEx**-Entität.
