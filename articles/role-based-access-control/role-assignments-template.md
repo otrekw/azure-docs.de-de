@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen und Anwendungen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure Resource Manager-Vorlagen verwalten.
+title: Hinzufügen von Rollenzuweisungen mithilfe von Azure RBAC- und Azure Resource Manager-Vorlagen
+description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure Resource Manager-Vorlagen gewähren.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 268913fb7aebd1d6c8b377b95939c3bc1f77daca
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383989"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707805"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure Resource Manager-Vorlagen
+# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Hinzufügen von Rollenzuweisungen mithilfe von Azure RBAC- und Azure Resource Manager-Vorlagen
 
-Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. Neben der Verwendung von Azure PowerShell oder der Azure CLI können Sie den Zugriff auf Azure-Ressourcen mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) verwalten. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird beschrieben, wie Sie den Zugriff mit der RBAC und Vorlagen verwalten können.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Neben der Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie Rollen auch mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zuweisen. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird das Zuweisen von Rollen mithilfe von Vorlagen beschrieben.
 
 ## <a name="get-object-ids"></a>Abrufen von Objekt-IDs
 
@@ -64,9 +64,13 @@ $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
 objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output tsv)
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-group-scope-without-parameters"></a>Erstellen einer Rollenzuweisung in einem Ressourcengruppenbereich (ohne Parameter)
+## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Die folgende Vorlage zeigt eine einfache Möglichkeit zum Erstellen einer Rollenzuweisung. Einige Werte werden in der Vorlage angegeben. Die folgende Vorlage veranschaulicht Folgendes:
+In RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
+
+### <a name="resource-group-without-parameters"></a>Ressourcengruppe (ohne Parameter)
+
+Die folgende Vorlage zeigt eine einfache Möglichkeit zum Hinzufügen einer Rollenzuweisung. Einige Werte werden in der Vorlage angegeben. Die folgende Vorlage veranschaulicht Folgendes:
 
 -  Zuweisen der Rolle [Leser](built-in-roles.md#reader) zu einem Benutzer, einer Gruppe oder einer Anwendung in einem Ressourcengruppenbereich
 
@@ -107,7 +111,7 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Leser“ zu ein
 
 ![Rollenzuweisung in einem Ressourcengruppenbereich](./media/role-assignments-template/role-assignment-template.png)
 
-## <a name="create-a-role-assignment-at-a-resource-group-or-subscription-scope"></a>Erstellen einer Rollenzuweisung in einem Ressourcengruppen- oder Abonnementbereich
+### <a name="resource-group-or-subscription"></a>Ressourcengruppe oder Abonnement
 
 Die vorherige Vorlage ist nicht sehr flexibel. Die folgende Vorlage enthält Parameter, die in unterschiedlichen Bereichen verwendet werden können. Die folgende Vorlage veranschaulicht Folgendes:
 
@@ -191,9 +195,9 @@ New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $
 az deployment create --location centralus --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-## <a name="create-a-role-assignment-at-a-resource-scope"></a>Erstellen einer Rollenzuweisung in einem Ressourcenbereich
+### <a name="resource"></a>Resource
 
-Wenn Sie eine Rollenzuweisung auf der Ebene einer Ressource erstellen müssen, ist das Format der Rollenzuweisung anders. Sie stellen den Namespace des Ressourcenanbieters und den Ressourcentyp der Ressource bereit, der die Rolle zugewiesen werden soll. Außerdem fügen Sie den Namen der Ressource in den Namen der Rollenzuweisung ein.
+Wenn Sie auf der Ebene einer Ressource eine Rollenzuweisung hinzufügen müssen, ist das Format der Rollenzuweisung anders. Sie stellen den Namespace des Ressourcenanbieters und den Ressourcentyp der Ressource bereit, der die Rolle zugewiesen werden soll. Außerdem fügen Sie den Namen der Ressource in den Namen der Rollenzuweisung ein.
 
 Verwenden Sie für den Typ und den Namen der Rollenzuweisung das folgende Format:
 
@@ -287,7 +291,7 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“
 
 ![Rollenzuweisung im Ressourcenbereich](./media/role-assignments-template/role-assignment-template-resource.png)
 
-## <a name="create-a-role-assignment-for-a-new-service-principal"></a>Erstellen einer Rollenzuweisung für einen neuen Dienstprinzipal
+### <a name="new-service-principal"></a>Neuer Dienstprinzipal
 
 Wenn Sie einen neuen Dienstprinzipal erstellen und sofort versuchen, diesem eine Rolle zuzuweisen, kann die Rollenzuweisung in einigen Fällen fehlschlagen. Wenn Sie z. B. eine neue verwaltete Identität erstellen und dann versuchen, in derselben Azure Resource Manager-Vorlage dem Dienstprinzipal eine Rolle zuzuweisen, kann die Rollenzuweisung fehlschlagen. Der Grund für diesen Fehler ist wahrscheinlich eine Replikationsverzögerung. Der Dienstprinzipal wird in einer Region erstellt, die Rollenzuweisung kann aber in einer anderen Region stattfinden, in die der Dienstprinzipal noch nicht repliziert wurde. Um dieses Szenario zu beheben, sollten Sie beim Erstellen der Rollenzuweisung die `principalType`-Eigenschaft auf `ServicePrincipal` festlegen.
 

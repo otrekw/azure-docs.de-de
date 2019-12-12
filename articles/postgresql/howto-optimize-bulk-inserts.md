@@ -1,17 +1,17 @@
 ---
-title: Optimieren von Masseneinfügungen auf einem Azure Database for PostgreSQL-Einzelserver
+title: Optimieren von Masseneinfügungen – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen auf einem Azure Database for PostgreSQL-Einzelserver optimieren können.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: c1ae29f7c498a79af09aaaf6d7aeae29561aa500
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4c4bac16917be0064ebb111328753d378d462a2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65067044"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770134"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Optimieren von Masseneinfügungen und Verwendung kurzlebiger Daten auf einem Azure Database for PostgreSQL-Einzelserver 
 In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen optimieren und kurzlebige Daten auf einem Azure Database for PostgreSQL-Server verwenden können.

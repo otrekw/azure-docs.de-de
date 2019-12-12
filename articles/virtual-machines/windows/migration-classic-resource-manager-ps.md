@@ -1,6 +1,6 @@
 ---
 title: Migrieren zu Resource Manager mit PowerShell
-description: In diesem Artikel wird die plattformgestützte Migration von IaaS-Ressourcen wie virtuellen Computern (VMs), virtuellen Netzwerken (VNETs) und Speicherkonten vom klassischen Bereitstellungsmodell zu Azure Resource Manager (ARM) mithilfe von Azure PowerShell-Befehlen erläutert.
+description: In diesem Artikel wird die plattformgestützte Migration von IaaS-Ressourcen wie virtuellen Computern (VMs), virtuellen Netzwerken und Speicherkonten vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell-Befehlen erläutert.
 services: virtual-machines-windows
 documentationcenter: ''
 author: singhkays
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 99650b090a84fd417fca5bbeb1ce3f58d32729bb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033213"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484370"
 ---
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von Azure PowerShell
+# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell
 Diese Schritte zeigen, wie Sie Azure PowerShell-Befehle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden.
 
-Wenn Sie möchten, können Sie Ressourcen auch mithilfe der [Azure-Befehlszeilenschnittstelle](../linux/migration-classic-resource-manager-cli.md)migrieren.
+Sie können Ressourcen auch mithilfe der [Azure-Befehlszeilenschnittstelle](../linux/migration-classic-resource-manager-cli.md) migrieren.
 
 * Hintergrundinformationen zu unterstützten Migrationsszenarien finden Sie unter [Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager](migration-classic-resource-manager-overview.md).
 * Detaillierte Anleitungen und eine exemplarische Vorgehensweise zur Migration finden Sie unter [Ausführliche technische Informationen zur plattformgestützten Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager](migration-classic-resource-manager-deep-dive.md).
-* [Überprüfen der häufigsten Fehler bei der Migration](migration-classic-resource-manager-errors.md)
+* [Informieren Sie sich über die häufigsten Fehler bei der Migration](migration-classic-resource-manager-errors.md).
 
 <br>
-Hier sehen Sie ein Flussdiagramm, das die Reihenfolge veranschaulicht, in der Schritte während einer Migration ausgeführt werden müssen.
+Im folgenden Flussdiagramm wird die Reihenfolge veranschaulicht, in der Schritte während einer Migration ausgeführt werden müssen.
 
 ![Screenshot that shows the migration steps](media/migration-classic-resource-manager/migration-flow.png)
 
  
 
 ## <a name="step-1-plan-for-migration"></a>Schritt 1: Planen der Migration
-Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie eine Migration von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Resource Manager in Erwägung ziehen:
+Hier finden Sie einige bewährte Methoden, die wir empfehlen, wenn Sie überlegen, ob Sie IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Resource Manager migrieren sollten:
 
-* Lesen Sie die Informationen zu [unterstützten und nicht unterstützten Funktionen und Konfigurationen](migration-classic-resource-manager-overview.md). Sollten Sie über virtuelle Computer mit nicht unterstützten Konfigurationen oder Features verfügen, empfiehlt es sich, auf die Ankündigung der Unterstützung der entsprechenden Features/Konfigurationen zu warten. Entfernen Sie alternativ ggf. die betroffenen Features, oder verwenden Sie eine andere Konfiguration, um die Migration zu ermöglichen.
+* Lesen Sie die Informationen zu [unterstützten und nicht unterstützten Funktionen und Konfigurationen](migration-classic-resource-manager-overview.md). Falls Sie über virtuelle Computer mit nicht unterstützten Konfigurationen oder Features verfügen, sollten Sie warten, bis die Unterstützung der entsprechenden Konfigurationen oder Features angekündigt wird. Entfernen Sie alternativ ggf. die betroffenen Features, oder verwenden Sie eine andere Konfiguration, um die Migration zu ermöglichen.
 * Wenn Sie derzeit über automatisierte Skripts zum Bereitstellen Ihrer Infrastruktur und Anwendungen verfügen, versuchen Sie, mithilfe dieser Skripts für die Migration eine ähnliche Testeinrichtung zu erstellen. Alternativ dazu können Sie über das Azure-Portal Beispielumgebungen einrichten.
 
 > [!IMPORTANT]
-> Application Gateways werden für die Migration vom klassischen zum Resource Manager-Modell derzeit nicht unterstützt. Entfernen Sie zum Migrieren eines klassischen virtuellen Netzwerks mit einem Application Gateway das Gateway, bevor Sie einen Vorbereitungsvorgang zum Verschieben des Netzwerks ausführen. Stellen Sie nach Abschluss der Migration die Verbindung zum Gateway im Azure Resource Manager wieder her.
+> Application Gateways werden für die Migration vom klassischen zum Resource Manager-Modell derzeit nicht unterstützt. Zum Migrieren eines virtuellen Netzwerks mit einem Application Gateway entfernen Sie das Gateway, bevor Sie einen Vorbereitungsvorgang zum Verschieben des Netzwerks ausführen. Stellen Sie nach Abschluss der Migration die Verbindung zum Gateway im Azure Resource Manager wieder her.
 >
->ExpressRoute-Gateways, die sich mit ExpressRoute-Verbindungen in einem anderen Abonnement verbinden, können nicht automatisch migriert werden. Entfernen Sie in solchen Fällen das ExpressRoute-Gateway, migrieren Sie das virtuelle Netzwerk, und erstellen Sie das Gateway neu. Weitere Informationen finden Sie unter [Migrieren von ExpressRoute-Verbindungen und zugeordneten virtuellen Netzwerken vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell](../../expressroute/expressroute-migration-classic-resource-manager.md).
+> Azure ExpressRoute-Gateways, die sich mit ExpressRoute-Verbindungen in einem anderen Abonnement verbinden, können nicht automatisch migriert werden. Entfernen Sie in solchen Fällen das ExpressRoute-Gateway, migrieren Sie das virtuelle Netzwerk, und erstellen Sie das Gateway neu. Weitere Informationen finden Sie unter [Migrieren von ExpressRoute-Verbindungen und zugeordneten virtuellen Netzwerken vom klassischen Bereitstellungsmodell zum Resource Manager-Bereitstellungsmodell](../../expressroute/expressroute-migration-classic-resource-manager.md).
 
-## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Schritt 2: Installieren der neuesten Version von Azure PowerShell
+## <a name="step-2-install-the-latest-version-of-powershell"></a>Schritt 2: Installieren der neuesten PowerShell-Version
 Für die Installation von Azure PowerShell stehen zwei Hauptoptionen zur Verfügung: [PowerShell-Katalog](https://www.powershellgallery.com/profiles/azure-sdk/) oder [Webplattform-Installer (WebPI)](https://aka.ms/webpi-azps). WebPI empfängt monatliche Updates. Der PowerShell-Katalog wird fortlaufend aktualisiert. Dieser Artikel basiert auf Azure PowerShell Version 2.1.0.
 
 Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 <br>
 
-## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>Schritt 3: Sicherstellen, dass Sie Administrator für das Abonnement im Azure-Portal sind
-Um diese Migration durchführen zu können, müssen Sie im [Azure-Portal](https://portal.azure.com) als Co-Administrator für das Abonnement hinzugefügt werden.
+## <a name="step-3-ensure-that-youre-an-administrator-for-the-subscription"></a>Schritt 3: Sicherstellen, dass Sie Administrator für das Abonnement sind
+Um diese Migration auszuführen, müssen Sie im [Azure-Portal](https://portal.azure.com) als Co-Administrator für das Abonnement hinzugefügt werden.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Menü „Hub“ die Option **Abonnement** aus. Wählen Sie **Alle Dienste** aus, falls die Option nicht angezeigt wird.
-3. Suchen Sie den entsprechenden Abonnementeintrag, und prüfen Sie dann das Feld **EIGENE ROLLE**. Der Wert muss bei einem Co-Administrator _Kontoadministrator_ lauten.
+2. Wählen Sie im Menü **Hub** die Option **Abonnement** aus. Wählen Sie **Alle Dienste** aus, falls die Option nicht angezeigt wird.
+3. Suchen Sie den entsprechenden Abonnementeintrag, und prüfen Sie dann das Feld **MEINE ROLLE**. Bei einem Co-Administrator muss der Wert _Kontoadministrator_ lauten.
 
-Wenn Sie keinen Co-Administrator hinzufügen können, wenden Sie sich an einen Dienstadministrator oder Co-Administrator für das Abonnement, um sich hinzufügen zu lassen.   
+Wenn Sie keinen Co-Administrator hinzufügen können, wenden Sie sich an einen Dienstadministrator oder Co-Administrator für das Abonnement, um sich hinzufügen zu lassen.
 
 ## <a name="step-4-set-your-subscription-and-sign-up-for-migration"></a>Schritt 4: Festlegen Ihres Abonnements und Registrieren für die Migration
-Starten Sie zunächst eine PowerShell-Eingabeaufforderung. Für die Migration müssen Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager einrichten.
+Starten Sie zunächst eine PowerShell-Eingabeaufforderung. Für die Migration richten Sie Ihre Umgebung sowohl für das klassische Bereitstellungsmodell als auch für Resource Manager ein.
 
 Melden Sie sich an Ihrem Konto für das Resource Manager-Modell an.
 
@@ -96,7 +96,7 @@ Registrieren Sie sich mithilfe des folgenden Befehls beim Migrationsressourcenan
     Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
-Der Abschluss der Registrierung kann bis zu fünf Minuten dauern. Der Genehmigungsstatus kann mithilfe des folgenden Befehls geprüft werden:
+Warten Sie fünf Minuten, bis die Registrierung abgeschlossen wird. Überprüfen Sie den Genehmigungsstatus mit dem folgenden Befehl:
 
 ```powershell
     Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
@@ -104,7 +104,7 @@ Der Abschluss der Registrierung kann bis zu fünf Minuten dauern. Der Genehmigun
 
 Stellen Sie sicher, dass der RegistrationState-Wert `Registered` lautet, bevor Sie fortfahren.
 
-Melden Sie sich jetzt an Ihrem Konto für das klassische Modell an.
+Melden Sie sich jetzt bei Ihrem Konto für das klassische Bereitstellungsmodell an.
 
 ```powershell
     Add-AzureAccount
@@ -124,8 +124,8 @@ Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. In diesem Beispie
 
 <br>
 
-## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Schritt 5: Sicherstellen, dass Sie über genügend vCPUs in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres VNET verfügen
-Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Schritt 5: Sicherstellen, dass genügend Resource Manager-VM-vCPUs verfügbar sind
+Vergewissern Sie sich, dass Sie über genügend vCPUs in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres aktuellen virtuellen Netzwerks verfügen. Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
 In diesem Beispiel wird die Verfügbarkeit in der Region **USA, Westen** geprüft. Ersetzen Sie den Regionsnamen im Beispiel durch den Namen Ihrer eigenen Region.
 
@@ -143,7 +143,7 @@ Get-AzVMUsage -Location "West US"
 
 
 ### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Schritt 6.1: Option 1 – Migrieren virtueller Computer in einem Clouddienst (nicht in einem virtuellen Netzwerk)
-Rufen Sie mithilfe des folgenden Befehls die Liste mit den Clouddiensten auf, und wählen Sie anschließend den zu migrierenden Clouddienst aus. Falls sich die virtuellen Computer im Clouddienst in einem virtuellen Netzwerk befinden oder über Web- oder Workerrollen verfügen, gibt der Befehl eine Fehlermeldung zurück.
+Verwenden Sie den folgenden Befehl, um die Liste der Clouddienste abzurufen. Wählen Sie dann den Clouddienst aus, den Sie migrieren möchten. Falls sich die virtuellen Computer im Clouddienst in einem virtuellen Netzwerk befinden oder über Web- oder Workerrollen verfügen, gibt der Befehl eine Fehlermeldung zurück.
 
 ```powershell
     Get-AzureService | ft Servicename
@@ -159,9 +159,9 @@ Rufen Sie den Bereitstellungsnamen für den Clouddienst ab. In diesem Beispiel l
 
 Bereiten Sie die virtuellen Computer des Clouddiensts auf die Migration vor. Dabei stehen Ihnen zwei Optionen zur Auswahl.
 
-* **Option 1. Migrieren der virtuellen Computer in ein von der Plattform erstelltes virtuelles Netzwerk**
+* **Option 1: Migrieren der virtuellen Computer zu einem über die Plattform erstellten virtuellen Netzwerk**
 
-    Überprüfen Sie zuerst, ob Sie den Clouddienst mithilfe des folgenden Befehls migrieren können:
+    Überprüfen Sie zuerst mit dem folgenden Befehl, ob Sie den Clouddienst migrieren können:
 
     ```powershell
     $validate = Move-AzureService -Validate -ServiceName $serviceName `
@@ -169,15 +169,15 @@ Bereiten Sie die virtuellen Computer des Clouddiensts auf die Migration vor. Dab
     $validate.ValidationMessages
     ```
 
-    Der folgende Befehl zeigt ggf. Warnungen und Fehler an, die die Migration blockieren. Wenn die Überprüfung erfolgreich ist, können Sie mit dem Schritt **Vorbereiten** fortfahren:
+    Der folgende Befehl zeigt ggf. Warnungen und Fehler an, die die Migration blockieren. Wenn die Überprüfung erfolgreich ist, können Sie mit dem Vorbereitungsschritt fortfahren.
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **Option 2. Migrieren zu einem vorhandenen virtuellen Netzwerk im Resource Manager-Bereitstellungsmodell**
+* **Option 2: Migrieren zu einem vorhandenen virtuellen Netzwerk im Resource Manager-Bereitstellungsmodell**
 
-    In diesem Beispiel wird der Name der Ressourcengruppe auf **myResourceGroup**, der Name des virtuellen Netzwerks auf **myVirtualNetwork** und der Subnetzname auf **mySubNet** festgelegt. Ersetzen Sie die Namen im Beispiel durch die Namen Ihrer eigenen Ressourcen.
+    In diesem Beispiel werden der Name der Ressourcengruppe auf **myResourceGroup**, der Name des virtuellen Netzwerks auf **myVirtualNetwork** und der Subnetzname auf **mySubNet** festgelegt. Ersetzen Sie die Namen im Beispiel durch die Namen Ihrer eigenen Ressourcen.
 
     ```powershell
     $existingVnetRGName = "myResourceGroup"
@@ -201,7 +201,7 @@ Bereiten Sie die virtuellen Computer des Clouddiensts auf die Migration vor. Dab
         -VirtualNetworkName $vnetName -SubnetName $subnetName
     ```
 
-Nachdem der Vorbereitungsvorgang mit einer der oben beschriebenen Optionen erfolgreich abgeschlossen wurde, fragen Sie den Migrationsstatus der virtuellen Computer ab. Stellen Sie sicher, dass sie sich im Status `Prepared` befinden.
+Nachdem der Vorbereitungsvorgang mit einer der oben beschriebenen Optionen erfolgreich abgeschlossen wurde, fragen Sie den Migrationsstatus der virtuellen Computer ab. Stellen Sie sicher, dass sie den Status `Prepared` aufweisen.
 
 In diesem Beispiel wird der Name des virtuellen Computers auf **myVM** festgelegt. Ersetzen Sie den Namen im Beispiel durch den Namen Ihrer eigenen VM.
 
@@ -227,11 +227,11 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 
 Um virtuelle Computer in einem virtuellen Netzwerk zu migrieren, migrieren Sie das virtuelle Netzwerk. Die virtuellen Computer werden automatisch zusammen mit dem virtuellen Netzwerk migriert. Wählen Sie das virtuelle Netzwerk aus, das Sie migrieren möchten.
 > [!NOTE]
-> [Migrieren Sie einzelne klassische virtuelle Computer](migrate-single-classic-to-resource-manager.md) durch Erstellen einer neuen Resource Manager-VM mit Managed Disks unter Verwendung der VHD-Dateien (Betriebssystem und Daten) des virtuellen Computers.
+> [Migrieren Sie einen einzelnen virtuellen Computer](migrate-single-classic-to-resource-manager.md), der mit dem klassischen Bereitstellungsmodell erstellt wurde, indem Sie einen neuen virtuellen Resource Manager-Computer mit Managed Disks unter Verwendung der VHD-Dateien (Betriebssystem und Daten) des virtuellen Computers erstellen.
 <br>
 
 > [!NOTE]
-> Der Name des virtuellen Netzwerks kann möglicherweise von dem Namen abweichen, der im neuen Portal angezeigt wird. Im neuen Azure-Portal wird der Name als `[vnet-name]` angezeigt, doch der tatsächliche Name des virtuellen Netzwerks ist vom Typ `Group [resource-group-name] [vnet-name]`. Suchen Sie vor der Migration anhand des Befehls `Get-AzureVnetSite | Select -Property Name` den tatsächlichen Namen des virtuellen Netzwerks, oder zeigen Sie ihn im alten Azure-Portal an. 
+> Der Name des virtuellen Netzwerks kann von dem Namen abweichen, der im neuen Portal angezeigt wird. Im neuen Azure-Portal wird der Name als `[vnet-name]` angezeigt, der tatsächliche Name des virtuellen Netzwerks ist jedoch vom Typ `Group [resource-group-name] [vnet-name]`. Suchen Sie vor dem Start der Migration anhand des Befehls `Get-AzureVnetSite | Select -Property Name` den tatsächlichen Namen des virtuellen Netzwerks, oder zeigen Sie ihn im alten Azure-Portal an. 
 
 In diesem Beispiel wird der Name des virtuellen Netzwerks auf **myVnet** festgelegt. Ersetzen Sie den Namen des virtuellen Netzwerks im Beispiel durch den Namen Ihres eigenen virtuellen Netzwerks.
 
@@ -267,38 +267,38 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 ```
 
 ### <a name="step-62-migrate-a-storage-account"></a>Schritt 6.2: Migrieren eines Speicherkontos
-Sobald Sie mit der Migration der virtuellen Computer fertig sind, sollten Sie die folgenden Überprüfungen der Voraussetzungen durchführen, bevor Sie die Speicherkonten migrieren.
+Sobald die Migration der virtuellen Computer abgeschlossen ist, überprüfen Sie, ob die folgenden Voraussetzungen erfüllt sind, bevor Sie die Speicherkonten migrieren.
 
 > [!NOTE]
-> Wenn Ihrem Speicherkonto keine Datenträger oder VM-Daten zugeordnet sind, können Sie direkt mit dem Abschnitt **Speicherkonto überprüfen und Migration starten** fortfahren.
+> Wenn Ihrem Speicherkonto keine Datenträger oder VM-Daten zugeordnet sind, können Sie direkt mit dem Abschnitt „Überprüfen von Speicherkonten und Starten der Migration“ fortfahren.
 
-* **Überprüfungen der Voraussetzungen, wenn Sie alle virtuellen Computer migriert haben oder Ihr Speicherkonto über Datenträgerressourcen verfügt**
-    * **Migrieren klassischer virtueller Computer, deren Datenträger im Speicherkonto gespeichert sind**
+* Voraussetzungsüberprüfungen, wenn Sie virtuelle Computer migriert haben oder Ihr Speicherkonto über Datenträgerressourcen verfügt:
+    * Migrieren virtueller Computer, deren Datenträger im Speicherkonto gespeichert sind
 
-        Der folgende Befehl gibt die Eigenschaften RoleName und DiskName aller klassischen VM-Datenträger im Speicherkonto zurück. RoleName ist der Name des virtuellen Computers, dem ein Datenträger angefügt ist. Wenn dieser Befehl Datenträger zurückgibt, stellen Sie sicher, dass virtuelle Computer, denen diese Datenträger angefügt sind, vor der Migration des Speicherkontos migriert werden.
+        Mit dem folgenden Befehl werden die Eigenschaften RoleName und DiskName aller VM-Datenträger im Speicherkonto zurückgegeben. RoleName ist der Name des virtuellen Computers, dem ein Datenträger angefügt ist. Wenn von diesem Befehl Datenträger zurückgegeben werden, stellen Sie sicher, dass virtuelle Computer, an die diese Datenträger angefügt sind, vor der Migration des Speicherkontos migriert werden.
         ```powershell
          $storageAccountName = 'yourStorageAccountName'
           Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
           DiskName | Format-List -Property RoleName, DiskName
 
         ```
-    * **Löschen nicht angefügter klassischer, im Speicherkonto gespeicherter VM-Datenträger**
+    * Löschen nicht angefügter VM-Datenträger, die im Speicherkonto gespeichert sind
 
-        Mit folgendem Befehl finden Sie nicht angefügte klassische, im Speicherkonto gespeicherte VM-Datenträger:
+        Mit folgendem Befehl finden Sie nicht angefügte VM-Datenträger im Speicherkonto:
 
         ```powershell
             $storageAccountName = 'yourStorageAccountName'
             Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
 
         ```
-        Wenn der obige Befehl Datenträger zurückgibt, dann löschen Sie diese Datenträger mit folgendem Befehl:
+        Wenn vom vorherigen Befehl Datenträger zurückgegeben werden, löschen Sie diese Datenträger mit folgendem Befehl:
 
         ```powershell
            Remove-AzureDisk -DiskName 'yourDiskName'
         ```
-    * **Löschen von VM-Images, die im Speicherkonto gespeichert sind**
+    * Löschen von VM-Images, die im Speicherkonto gespeichert sind
 
-        Der folgende Befehl gibt alle VM-Images mit Betriebssystemdatenträgern zurück, die im Speicherkonto gespeichert sind.
+        Durch den folgenden Befehl werden alle VM-Images mit Betriebssystemdatenträgern zurückgegeben, die im Speicherkonto gespeichert sind.
          ```powershell
             Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
                                     } | Select-Object -Property ImageName, ImageLabel
@@ -310,11 +310,11 @@ Sobald Sie mit der Migration der virtuellen Computer fertig sind, sollten Sie di
                                              -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
                                             } | Select-Object -Property ImageName, ImageLabel
          ```
-        Löschen Sie alle VM-Images, die von den vorherigen Befehlen zurückgegeben wurden, mit diesem Befehl:
+        Löschen Sie alle VM-Images, die durch die vorherigen Befehle zurückgegeben wurden, mit diesem Befehl:
         ```powershell
         Remove-AzureVMImage -ImageName 'yourImageName'
         ```
-* **Speicherkonto überprüfen und Migration starten**
+* Überprüfen von Speicherkonten und Starten der Migration
 
     Überprüfen Sie für die Migration jedes Speicherkonto mithilfe des folgenden Befehls. In diesem Beispiel lautet der Name des Speicherkontos **MyStorageAccount**. Ersetzen Sie den Namen im Beispiel durch den Namen Ihres eigenen Speicherkontos.
 

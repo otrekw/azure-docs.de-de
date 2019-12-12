@@ -8,12 +8,12 @@ ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: dd2b3bd584bb39810e0a5c9acde1a961330c273d
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093228"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74819142"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Integration von Azure Data Explorer und Azure Data Factory
 
@@ -118,13 +118,90 @@ In diesem Abschnitt wird die Verwendung der Kopieraktivität behandelt, wenn Azu
 | **Komplexität der Datenverarbeitung** | Die Latenz hängt jeweils vom Format der Quelldatei, von der Spaltenzuordnung und von der Komprimierung ab.|
 | **Die VM, auf der die Integration Runtime ausgeführt wird** | <ul><li>Für Azure-interne Kopiervorgänge können ADF-VMs und Computer-SKUs nicht geändert werden.</li><li> Bei Kopiervorgängen aus der lokalen Umgebung nach Azure muss sichergestellt sein, dass der virtuelle Hostcomputer für die selbstgehostete IR leistungsfähig genug ist.</li></ul>|
 
-## <a name="monitor-activity-progress"></a>Überwachen des Aktivitätsstatus
+## <a name="tips-and-common-pitfalls"></a>Tipps und häufige Probleme
+
+### <a name="monitor-activity-progress"></a>Überwachen des Aktivitätsstatus
 
 * Bei der Überwachung des Aktivitätsstatus ist die Eigenschaft *Daten geschrieben* möglicherweise wesentlich größer als die Eigenschaft *Daten gelesen*, da *Daten gelesen* basierend auf der Größe der Binärdatei berechnet wird, während *Daten geschrieben* basierend auf der Größe im Arbeitsspeicher berechnet wird, nachdem die Daten deserialisiert und dekomprimiert wurden.
 
 * Bei der Überwachung des Aktivitätsstatus können Sie sehen, dass Daten in die Azure Data Explorer-Senke geschrieben werden. Wenn Sie die Azure Data Explorer-Tabelle abfragen, sehen Sie, dass die Daten nicht angekommen sind. Dies liegt daran, dass das Kopieren in Azure Data Explorer in zwei Phasen erfolgt. 
     * In der ersten Phase werden die Quelldaten gelesen, in Blöcke zu je 900 MB aufgeteilt und die einzelnen Blöcke in ein Azure-Blob hochgeladen. Die erste Phase ist in der Statusansicht der ADF-Aktivität sichtbar. 
     * Die zweite Phase beginnt, sobald alle Daten in Azure-Blobs hochgeladen wurden. Die Knoten der Azure Data Explorer-Engine laden die Blobs herunter und erfassen die Daten in der Senkentabelle. Die Daten sind dann in der Azure Data Explorer-Tabelle sichtbar.
+
+### <a name="failure-to-ingest-csv-files-due-to-improper-escaping"></a>Fehler beim Erfassen von CSV-Dateien aufgrund einer unsachgemäßen Verwendung von Escapezeichen
+
+Azure Data Explorer erwartet, dass CSV-Dateien [RFC 4180](https://www.ietf.org/rfc/rfc4180.txt) entsprechen.
+Voraussetzungen:
+* Felder mit Zeichen, die mit einem Escapezeichen versehen werden müssen (z. B. " und Zeilenumbrüche), müssen mit einem Anführungszeichen ( **"** ) ohne Leerzeichen beginnen und enden. Für alle Anführungszeichen ( **"** ) *innerhalb* des Felds wird ein weiteres Anführungszeichen ( **"** ) als Escapezeichen verwendet ( **""** ). Beispielsweise ist _"Hello, ""World"""_ eine gültige CSV-Datei mit einem einzelnen Datensatz, der aus einer einzelnen Spalte oder einem einzelnen Feld mit dem Inhalt _Hello, "World"_ besteht.
+* Alle Datensätze in der Datei müssen über dieselbe Anzahl von Spalten und Feldern verfügen.
+
+Azure Data Factory unterstützt den umgekehrten Schrägstrich (Escapezeichen). Wenn Sie mit Azure Data Factory eine CSV-Datei mit umgekehrtem Schrägstrich generieren, schlägt die Erfassung der Datei in Azure Data Explorer fehl.
+
+#### <a name="example"></a>Beispiel
+
+Die Textwerte Hello, "World"<br/>
+ABC   DEF<br/>
+"ABC\D"EF<br/>
+"ABC DEF<br/>
+
+müssen in einer funktionsfähigen CSV-Datei wie folgt aussehen: "Hello, ""World"""<br/>
+"ABC   DEF"<br/>
+"""ABC DEF"<br/>
+"""ABC\D""EF"<br/>
+
+Wenn Sie das standardmäßige Escapezeichen (umgekehrter Schrägstrich) verwenden, wird die folgende CSV-Datei von Azure Data Explorer nicht unterstützt: "Hello, \"World\""<br/>
+"ABC   DEF"<br/>
+"\"ABC DEF"<br/>
+"\"ABC\D\"EF"<br/>
+
+### <a name="nested-json-objects"></a>Geschachtelte JSON-Objekte
+
+Beachten Sie beim Kopieren einer JSON-Datei in Azure Data Explorer Folgendes:
+* Arrays werden nicht unterstützt.
+* Wenn Ihre JSON-Struktur Objektdatentypen enthält, werden die untergeordneten Elemente des Objekts von Azure Data Factory vereinfacht. Anschließend wird versucht, jedes untergeordnete Element einer anderen Spalte in der Azure Data Explorer-Tabelle zuzuordnen. Wenn das gesamte Objektelement einer einzelnen Spalte in Azure Data Explorer zugeordnet werden soll, gehen Sie wie folgt vor:
+    * Erfassen Sie die gesamte JSON-Zeile in einer einzelnen dynamischen Spalte in Azure Data Explorer.
+    * Bearbeiten Sie die Pipelinedefinition manuell mit dem JSON-Editor von Azure Data Factory. Unter **Mappings**
+       * Entfernen Sie die verschiedenen Zuordnungen, die für jedes untergeordnete Element erstellt wurden, und fügen Sie eine einzelne Zuordnung hinzu, durch die der Objekttyp der Tabellenspalte zugeordnet wird.
+       * Fügen Sie nach der schließenden eckigen Klammer ein Komma hinzu, auf das nachstehende Zeichenfolge folgt:<br/>
+       `"mapComplexValuesToString": true`.
+
+### <a name="specify-additionalproperties-when-copying-to-azure-data-explorer"></a>Angeben von „AdditionalProperties“ beim Kopieren in Azure Data Explorer
+
+> [!NOTE]
+> Diese Funktion ist zurzeit nur verfügbar, wenn die JSON-Nutzlast manuell bearbeitet wird. 
+
+Fügen Sie im Abschnitt „Sink“ der Kopieraktivität wie folgt eine einzelne Zeile hinzu:
+
+```json
+"sink": {
+    "type": "AzureDataExplorerSink",
+    "additionalProperties": "{\"tags\":\"[\\\"drop-by:account_FiscalYearID_2020\\\"]\"}"
+},
+```
+
+Es kann schwierig sein, die richtigen Escapezeichen für den Wert zu verwenden. Der folgende Codeausschnitt soll als Referenz dienen:
+
+```csharp
+static void Main(string[] args)
+{
+       Dictionary<string, string> additionalProperties = new Dictionary<string, string>();
+       additionalProperties.Add("ignoreFirstRecord", "false");
+       additionalProperties.Add("csvMappingReference", "Table1_mapping_1");
+       IEnumerable<string> ingestIfNotExists = new List<string> { "Part0001" };
+       additionalProperties.Add("ingestIfNotExists", JsonConvert.SerializeObject(ingestIfNotExists));
+       IEnumerable<string> tags = new List<string> { "ingest-by:Part0001", "ingest-by:IngestedByTest" };
+       additionalProperties.Add("tags", JsonConvert.SerializeObject(tags));
+       var additionalPropertiesForPayload = JsonConvert.SerializeObject(additionalProperties);
+       Console.WriteLine(additionalPropertiesForPayload);
+       Console.ReadLine();
+}
+```
+
+Der ausgegebene Wert:
+
+```json
+{"ignoreFirstRecord":"false","csvMappingReference":"Table1_mapping_1","ingestIfNotExists":"[\"Part0001\"]","tags":"[\"ingest-by:Part0001\",\"ingest-by:IngestedByTest\"]"}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,17 +1,17 @@
 ---
-title: Neustarten von Azure Database for PostgreSQL – Einzelserver mithilfe der Azure CLI
+title: Neustarten eines Servers – Azure CLI – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel wird beschrieben, wie Sie eine Instanz von Azure Database for PostgreSQL neu starten können – Einzelserver mithilfe der Azure CLI
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 0a7cd815724fcebd6311860576e620eb9273523b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13b26b545f9e95ce2457e4f8d9cf32da59cd91e6
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65068977"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770151"
 ---
 # <a name="restart-azure-database-for-postgresql---single-server-using-the-azure-cli"></a>Neustarten von Azure Database for PostgreSQL – Einzelserver mithilfe der Azure CLI
 In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Server neu starten können. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.

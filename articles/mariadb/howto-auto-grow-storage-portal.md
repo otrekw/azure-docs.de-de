@@ -1,17 +1,17 @@
 ---
-title: Automatische Speichervergrößerung in Azure Database for MariaDB über das Azure-Portal
+title: Automatisches Vergrößern des Speichers – Azure-Portal – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie die automatische Speichervergrößerung für Azure Database for MariaDB über das Azure-Portal aktivieren können.
 author: ambhatna
 ms.author: ambhatna
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 5/29/2019
-ms.openlocfilehash: 9d7b126b5c07cc8661cf50b4c4e13f78592b118e
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.date: 12/02/2019
+ms.openlocfilehash: 5c5e9154260a255d9e9b8bc5775a479df7e41522
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70136679"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74767499"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-using-the-azure-portal"></a>Automatische Speichervergrößerung in Azure Database for MariaDB über das Azure-Portal
 In diesem Artikel wird beschrieben, wie Sie die Speichervergrößerung für einen Azure Database for MariaDB-Server konfigurieren können, ohne die Workload zu beeinträchtigen.

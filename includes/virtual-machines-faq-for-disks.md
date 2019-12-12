@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 92aa28c131d81c41d515762ac2a346048c143790
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008568"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74795570"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -137,7 +137,9 @@ Verwaltete Datenträger können nicht umbenannt werden. Sie können jedoch einen
 
 **Kann ich die GPT-Partitionierung auf Azure-Datenträgern verwenden?**
 
-Die GPT-Partitionierung kann nur auf Datenträgern für Daten, nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
+Bei Images der Generation 1 kann die GPT-Partitionierung nur auf Datenträgern und nicht auf Betriebssystem-Datenträgern verwendet werden. Betriebssystem-Datenträger müssen den MBR-Partitionstyp verwenden.
+
+[Bei Images der Generation 2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2) kann die GPT-Partitionierung sowohl auf dem Betriebssystem-Datenträger als auch auf den Datenträgern verwendet werden.
 
 **Welche Datenträgertypen unterstützen Momentaufnahmen?**
 

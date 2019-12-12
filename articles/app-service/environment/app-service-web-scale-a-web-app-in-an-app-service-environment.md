@@ -1,27 +1,20 @@
 ---
-title: 'Gewusst wie: Skalieren von Apps in einer App Service-Umgebung – Azure'
-description: Skalierung einer Web-App in einer App Service-Umgebung
-services: app-service
-documentationcenter: ''
+title: Skalieren einer App in der ASE v1
+description: Hier erfahren Sie, wie Sie eine App in einer ASE (App Service Environment, App Service-Umgebung) skalieren können. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
 author: ccompy
-manager: stefsch
-editor: jimbe
 ms.assetid: 78eb1e49-4fcd-49e7-b3c7-f1906f0f22e3
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 711dc4d59785418d6637eb144b644948ed495e2c
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 43849ca7084f2237c37ad537c50f4e94ac4ea7c0
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069726"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688679"
 ---
-# <a name="scaling-apps-in-an-app-service-environment"></a>Skalieren von Apps in einer App Service-Umgebung
+# <a name="scaling-apps-in-an-app-service-environment-v1"></a>Skalieren von Apps in einer ASE v1
 In Azure App Service können üblicherweise drei Faktoren skaliert werden:
 
 * Tarif

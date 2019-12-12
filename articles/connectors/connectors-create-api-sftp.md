@@ -1,21 +1,19 @@
 ---
-title: Herstellen einer Verbindung mit einem SFTP-Konto – Azure Logic Apps
+title: Verbindung zum SFTP-Konto
 description: Automatisieren von Aufgaben und Prozessen, die Dateien auf einem SFTP-Server über SSH mithilfe von Azure Logic Apps überwachen, erstellen, verwalten, senden und empfangen
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, klam, LADocs
+author: divyaswarnkar
+ms.reviewer: divswa, klam, logicappspm
 ms.topic: article
 ms.date: 11/01/2019
 tags: connectors
-ms.openlocfilehash: 20702f5bc0dfc513d1fba84b69595dec885613ac
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d0da98070fa8da5403677e1a67bda75456c74d80
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837106"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789272"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von Azure Logic Apps
 

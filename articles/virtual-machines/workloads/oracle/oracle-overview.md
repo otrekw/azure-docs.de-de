@@ -1,6 +1,6 @@
 ---
 title: Oracle-Lösungen in Microsoft Azure | Microsoft-Dokumentation
-description: Informationen zu Optionen zum Bereitstellen von Oracle-Anwendungen und -Lösungen in Microsoft Azure, einschließlich der vollständigen Ausführung in einer Azure-Infrastruktur oder der Verwendung von cloudübergreifender Konnektivität mit einer Oracle Cloud Infrastructure (OCI).
+description: Lernen Sie Optionen zum Bereitstellen von Oracle-Anwendungen und -Lösungen in Microsoft Azure kennen, einschließlich der vollständigen Ausführung in einer Azure-Infrastruktur oder der Verwendung von cloudübergreifender Konnektivität mit Oracle Cloud Infrastructure (OCI).
 services: virtual-machines-linux
 documentationcenter: ''
 author: romitgirdhar
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/04/2019
 ms.author: rogirdh
-ms.openlocfilehash: 71caa6730e3a00f3aa80329d6b87d2531fdd8049
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 6ab41182d59f8c96edfca4854aad5f9a13f53436
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891462"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806608"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Übersicht über Oracle-Anwendungen und -Lösungen in Azure
 
@@ -42,7 +42,7 @@ Unternehmensanwendungen führen Sie in Azure unter unterstützten Oracle-Betrieb
 
 * Oracle WebLogic Server 12.1.2
 
-* Oracle Linux (UEK) 6.8, 6.9, 6.10, 7.3, 7.4, 7.5 und 7.6
+* Oracle Linux mit Unbreakable Enterprise Kernel (UEK) 6.8, 6.9, 6.10, 7.3, 7.4, 7.5 und 7.6 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Hochverfügbarkeits- und Notfallwiederherstellungsoptionen
 
@@ -91,3 +91,5 @@ Die Bereitstellung von Oracle-Anwendungen in Azure basiert auf einem BYOL-Modell
 * Weitere Informationen zum Bereitstellen von [Oracle VM-Images](oracle-vm-solutions.md) in der Azure-Infrastruktur.
 
 * Weitere Informationen zum [Verbinden von Azure mit OCI](oracle-oci-overview.md).
+
+* Sehen Sie sich die [Sitzung der Oracle in Azure-Übersicht](https://myignite.techcommunity.microsoft.com/sessions/82915) von Ignite 2019 an. 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 29014674cee4d6498ca7b56582313265da886122
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: eb44163922e318d17d675143ca2d6a3a1fa4ed75
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083673"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74793321"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI
 
@@ -61,6 +61,9 @@ Der beschleunigte Netzwerkbetrieb wird in den meisten universellen, computeoptim
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens 4 vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, E/Esv3, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
 
 Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+### <a name="custom-images"></a>Custom Images
+Wenn Sie ein benutzerdefiniertes Image verwenden und dieses den beschleunigten Netzwerkbetrieb unterstützt, stellen Sie sicher, dass Sie über die erforderlichen Treiber verfügen, damit Mellanox ConnectX-3- und ConnectX-4 LX-Netzwerkadapter in Azure unterstützt werden.
 
 ### <a name="regions"></a>Regions
 Verfügbar in allen öffentlichen Azure-Regionen und in Azure Government-Clouds

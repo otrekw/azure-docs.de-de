@@ -1,26 +1,20 @@
 ---
-title: 'Häufig gestellte Fragen zu Open Source-Technologien: Azure App Service | Microsoft-Dokumentation'
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Open-Source-Technologien in Azure App Service-Web-Apps.
-services: app-service\web
-documentationcenter: ''
+title: Häufig gestellte Fragen zu Open-Source-Technologien
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Open-Source-Technologien in Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: b92fe0a8073437d2cf0e908b4e734a0c01c342eb
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33590f9fc7e6c4d46123cbc7088086a3197d52ae
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169684"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672428"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 

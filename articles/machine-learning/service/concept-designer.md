@@ -6,59 +6,69 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.author: sgilley
-author: sdgilley
-ms.date: 11/04/2019
-ms.openlocfilehash: ee97322e58fe7ab3a1474f55c6294822b8ce90da
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: peterlu
+author: peterclu
+ms.date: 11/12/2019
+ms.openlocfilehash: 9301f3e685116c8496dd5e0ec986218a046f0c98
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511831"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707728"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Was ist der Azure Machine Learning-Designer (Vorschau)? 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Der Designer für Azure Machine Learning unterstützt Sie bei der Datenaufbereitung für und beim Trainieren, Testen, Bereitstellen, Verwalten und Überwachen von Machine Learning-Modellen – ganz ohne Programmierung.
+Mit dem Azure Machine Learning-Designer können Sie [Datasets](#datasets) und [Module](#module) auf einem interaktiven Zeichenbereich visuell miteinander verbinden, um Machine Learning-Modelle zu erstellen. Informationen zu den ersten Schritten mit dem Designer finden Sie hier: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
 
-Für das Erstellen Ihres Modells ist keine Programmierung erforderlich, sondern einfach nur das visuelle Verbinden von [Datasets](#datasets) und [Modulen](#module).
+![Azure Machine Learning-Designer: Beispiel](./media/concept-ml-pipelines/designer-drag-and-drop.gif)
 
-Der Designer verwendet Ihren Azure Machine Learning-[Arbeitsbereich](concept-workspace.md) zu folgenden Zwecken:
+Der Designer verwendet Ihren Azure Machine Learning-[Arbeitsbereich](concept-workspace.md), um gemeinsame Ressourcen wie die folgenden zu organisieren:
 
-+ Erstellen, Bearbeiten und Ausführen von [Pipelines](#pipeline) im Arbeitsbereich
-+ Zugriff auf [Datasets](#datasets)
-+ Verwenden der [Computeressourcen](#compute) im Arbeitsbereich, um die Pipeline auszuführen 
-+ Registrieren von [Modellen](concept-azure-machine-learning-architecture.md#models)
-+ [Veröffentlichen](#publish) von Pipelines als REST-Endpunkte
-+ [Bereitstellen](#deployment) von Modellen als Pipelineendpunkte (für Batchrückschlüsse) oder Echtzeitendpunkte für Computeressourcen im Arbeitsbereich
++ [Pipelines](#pipeline)
++ [Datasets](#datasets)
++ [Computeressourcen](#compute)
++ [Registrierte Modelle](concept-azure-machine-learning-architecture.md#models)
++ [Veröffentliche Pipelines](#publish)
++ [Echtzeitendpunkte](#deploy)
 
-![Übersicht über den Designer](media/ui-concept-visual-interface/overview.png)
+## <a name="model-training-and-deployment"></a>Trainieren und Bereitstellen des Modells
 
-## <a name="workflow"></a>Workflow
+Der Designer bietet Ihnen einen visuellen Zeichenbereich zum Erstellen, Testen und Bereitstellen von Machine Learning-Modellen. Folgendes ist mit dem Designer möglich:
 
-Der Designer stellt eine interaktive, visuelle Canvas bereit, um ein Modell schnell erstellen, testen und durchlaufen zu können. 
++ Platzieren von [Datasets](#datasets) und [Modulen](#module) auf der Canvas per Drag & Drop-Verfahren
++ Verbinden der Module miteinander, um einen [Pipelineentwurf](#pipeline-draft) zu erstellen
++ Übermitteln einer [Pipelineausführung](#pipeline-run) mithilfe der Computeressourcen in Ihrem Azure Machine Learning-Arbeitsbereich
++ Konvertieren Ihrer **Trainingspipelines** in die **Rückschlusspipelines**
++ [Veröffentlichen](#publish) Ihrer Pipelines in einen REST-**Pipelineendpunkt** zum Übermitteln neuer Pipelineausführungen mit unterschiedlichen Parametern und Datasets
+    + Veröffentlichen einer **Trainingspipeline**, um beim Ändern von Parametern und Datasets eine einzelnen Pipeline zum Trainieren mehrerer Modelle nochmal zu verwenden
+    + Veröffentlichen einer **Batchrückschlusspipeline**, um Vorhersage zu neuen Daten zu treffen, indem ein zuvor trainiertes Modell verwendet wird
++ [Bereitstellen](#deploy) einer **Echtzeit-Rückschlusspipeline** für einen Echtzeitendpunkt, um in Echtzeit Vorhersagen zu neuen Daten zu treffen
 
-+ [Datasets](#datasets) und [Module](#module) können per Drag & Drop-Verfahren auf der Canvas platziert werden.
-+ Verbinden Sie die Module miteinander, um eine [Pipeline](#pipeline) zu erstellen.
-+ Führen Sie die Pipeline mithilfe der Computeressource des Machine Learning Service-Arbeitsbereichs aus.
-+ Durchlaufen Sie Ihren Modellentwurf, indem Sie die Pipeline bearbeiten und erneut ausführen.
-+ Wenn Sie dazu bereit sind, konvertieren Sie Ihre **Trainingspipeline** in eine **Rückschlusspipeline**.
-+ [Veröffentlichen](#publish) Sie Ihre Pipeline als REST-Endpunkt, wenn Sie sie ohne den zur Erstellung verwendeten Python-Code erneut übermitteln möchten.
-+ Führen Sie eine [Bereitstellung](#deployment) der Rückschlusspipeline als Pipelineendpunkt oder Echtzeitendpunkt durch, damit andere Benutzer auf Ihr Modell zugreifen können.
+![Workflowdiagramm für Training, Batchrückschluss und Echtzeitrückschluss im Designer](media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Pipeline
 
-Sie können eine ML-[Pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) von Grund auf neu erstellen, oder Sie können eine vorhandene Beispielpipeline als Vorlage verwenden. Jedes Mal, wenn Sie eine Pipeline ausführen, werden Artefakte in Ihrem Arbeitsbereich gespeichert. Pipelineausführungen werden in [Experimenten](concept-azure-machine-learning-architecture.md#experiments) gruppiert.
+Eine [Pipeline](concept-azure-machine-learning-architecture.md#ml-pipelines) besteht aus Datasets und Analysemodulen, die Sie miteinander verbinden. Pipelines haben viele Verwendungsmöglichkeiten: Sie können eine Pipeline erstellen, die ein einzelnes Modell trainiert, oder eine, die mehrere Modelle trainiert. Sie können eine Pipeline erstellen, die Vorhersagen in Echtzeit oder im Batch erstellt, oder eine, die nur Daten bereinigt. Mit Pipelines können Sie Ihre Arbeit wiederverwenden und Ihre Projekte organisieren.
 
-Eine Pipeline besteht aus Datasets und Analysemodulen, die Sie miteinander verbinden, um ein Modell zu konstruieren. Eine gültige Pipeline weist diese Merkmale auf:
+### <a name="pipeline-draft"></a>Pipelineentwurf
 
-* Datasets können nur mit Modulen verbunden sein.
-* Module können entweder mit Datasets oder mit anderen Modulen verbunden sein.
+Wenn Sie eine Pipeline im Designer bearbeiten, wird der Fortschritt als **Pipelineentwurf**gespeichert. Sie können einen Pipelineentwurf jederzeit bearbeiten, indem Sie Module hinzufügen oder entfernen, Computeziele konfigurieren, Parameter erstellen usw.
+
+Eine gültige Pipeline weist diese Merkmale auf:
+
+* Datasets können nur mit Modulen eine Verbindung herstellen.
+* Module können nur entweder mit Datasets oder mit anderen Modulen eine Verbindung herstellen.
 * Alle Eingangsports für Module müssen eine Verbindung zum Datenfluss aufweisen.
 * Alle erforderlichen Parameter der einzelnen Module müssen festgelegt sein.
 
+Wenn Sie bereit sind, den Pipelineentwurf auszuführen, übermitteln Sie eine Pipelineausführung.
 
-Informationen zu den ersten Schritten mit dem Designer finden Sie hier: [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md).
+### <a name="pipeline-run"></a>Ausführen der Pipeline
+
+Jedes Mal, wenn Sie eine Pipeline ausführen, werden die Konfiguration der Pipeline und ihre Ergebnisse in Ihrem Arbeitsbereich als **Pipelineausführung** gespeichert. Sie können zu jeder Pipelineausführung zurückkehren, um sie zur Problembehandlung oder zu Überwachungszwecken zu überprüfen. **Klonen** Sie eine Pipelineausführung, um einen neuen Pipelineentwurf zu erstellen, den Sie bearbeiten können.
+
+Pipelineausführungen werden in [Experimenten](concept-azure-machine-learning-architecture.md#experiments) gruppiert, um den Ausführungsverlauf zu organisieren. Sie können das Experiment für jede Pipelineausführung festlegen. 
 
 ## <a name="datasets"></a>Datasets
 
@@ -68,9 +78,9 @@ Ein Azure Machine Learning-Dataset erleichtert Ihnen den Zugriff auf Ihre Daten 
 
 Ein Modul ist ein Algorithmus, den Sie auf Ihre Daten anwenden können. Der Designer verfügt über eine Reihe von Modulen, die von Funktionen für die Datenerfassung bis zu Trainings-, Bewertungs- und Überprüfungsvorgängen reichen.
 
-Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der internen Algorithmen des Moduls einsetzen können. Wenn Sie ein Modul auf der Canvas auswählen, werden dessen Parameter rechts neben der Canvas im Bereich „Eigenschaften“ angezeigt. Sie können die Parameter in diesem Bereich zur Abstimmung Ihres Modells verändern.
+Ein Modul kann eine Reihe von Parametern haben, die Sie zum Konfigurieren der internen Algorithmen des Moduls einsetzen können. Wenn Sie ein Modul auf der Canvas auswählen, werden dessen Parameter rechts neben der Canvas im Bereich „Eigenschaften“ angezeigt. Sie können die Parameter in diesem Bereich zur Abstimmung Ihres Modells verändern. Sie können die Computeressourcen für einzelne Module im Designer festlegen. 
 
-![Moduleigenschaften](media/ui-concept-visual-interface/properties.png)
+![Moduleigenschaften](media/concept-designer/properties.png)
 
 Unterstützung bei der Navigation durch die Bibliothek der verfügbaren Machine Learning-Algorithmen finden Sie unter [Algorithmen und Module: Referenzübersicht](../algorithm-module-reference/module-reference.md).
 
@@ -85,21 +95,24 @@ Verwenden Sie Computeressourcen aus Ihrem Arbeitsbereich, um Ihre Pipeline auszu
 
 Computeziele sind in Ihren Machine Learning-[Workspace](concept-workspace.md) integriert. Ihre Computeziele verwalten Sie in Ihrem Arbeitsbereich im [Azure Machine Learning-Studio](https://ml.azure.com).
 
-## <a name="publish"></a>Veröffentlichen
+## <a name="deploy"></a>Bereitstellen
 
-Sobald Ihre Pipeline bereit ist, können Sie sie als REST-Endpunkt veröffentlichen. Eine [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py) kann ohne den für ihre Erstellung verwendeten Python-Code übermittelt werden.
+Zum Ausführen von Rückschlüssen in Echtzeit müssen Sie eine Pipeline als **Echtzeitendpunkt** bereitstellen. Der Echtzeitendpunkt erstellt eine Schnittstelle zwischen einer externen Anwendung und Ihrem Bewertungsmodell. Durch den Aufruf eines Echtzeitendpunkts werden Vorhersageergebnisse in Echtzeit an die Anwendung zurückgegeben. Für einen Aufruf eines Echtzeitendpunkts übergeben Sie den API-Schlüssel, der beim Bereitstellen des Endpunkts erstellt wurde. Der Endpunkt basiert auf REST, einer gängigen Architektur für Webprogrammierungsprojekte.
 
-Zusätzlich kann eine PublishedPipeline verwendet werden, um eine Pipeline mit anderen PipelineParameter-Werten und -Eingaben erneut zu übermitteln.
-
-## <a name="deployment"></a>Bereitstellung
-
-Sobald Ihr Vorhersagemodell bereit ist, können Sie es direkt aus dem Designer als Pipelineendpunkt oder Echtzeitendpunkt bereitstellen.
-
-Der Pipelineendpunkt ist eine PublishedPipeline, mit der Sie für Batchrückschlüsse eine Pipelineausführung mit anderen PipelineParameter-Werten und -Eingaben übermitteln können.
-
-Der Echtzeitendpunkt stellt eine Schnittstelle zwischen einer Anwendung und Ihrem Bewertungsmodell zur Verfügung. Eine externe Anwendung kann in Echtzeit mit einem Bewertungsmodell kommunizieren. Durch den Aufruf eines Echtzeitendpunkts werden Vorhersageergebnisse an eine externe Anwendung zurückgegeben. Für einen Aufruf eines Echtzeitendpunkts übergeben Sie einen API-Schlüssel, der beim Bereitstellen des Endpunkts erstellt wurde. Der Endpunkt basiert auf REST, einer gängigen Architektur für Webprogrammierungsprojekte.
+Echtzeitendpunkte müssen in einem Azure Kubernetes Service-Cluster bereitgestellt werden.
 
 Informationen dazu, wie Sie Ihr Modell bereitstellen, finden Sie unter [Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer](tutorial-designer-automobile-price-deploy.md).
+
+## <a name="publish"></a>Veröffentlichen
+
+Sie können eine Pipeline auch in einem **Pipelineendpunkt** veröffentlichen. Ähnlich wie bei einem Echtzeitendpunkt ermöglicht Ihnen ein Pipelineendpunkt das Übermitteln von neuen Pipelineausführungen aus externen Anwendungen mithilfe von REST-Aufrufen. Es ist jedoch nicht möglich, Daten in Echtzeit mithilfe eines Pipelineendpunkts zu senden oder zu empfangen.
+
+Veröffentlichte Pipelines sind flexibel und können zum Trainieren oder erneuten Trainieren von Modellen, zum [Ausführen von Batchrückschlüssen](how-to-run-batch-predictions-designer.md), Verarbeiten neuer Daten und vieles mehr verwendet werden. Sie können mehrere Pipelines in einem einzigen Pipelineendpunkt veröffentlichen und angeben, welche Pipelineversion ausgeführt werden soll.
+
+Eine veröffentliche Pipeline wird auf den Computeressourcen ausgeführt, die Sie im Pipelineentwurf für jedes Modul definieren.
+
+Der Designer erstellt dasselbe [PublishedPipeline](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.publishedpipeline?view=azure-ml-py)-Objekt wie das SDK.
+
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Die grafische Benutzeroberfläche wird zum Designer
 

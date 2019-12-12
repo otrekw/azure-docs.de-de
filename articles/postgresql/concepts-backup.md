@@ -1,17 +1,17 @@
 ---
-title: Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
+title: Sichern und Wiederherstellen – Azure Database for PostgreSQL – Einzelserver
 description: Hier finden Sie Informationen zu automatischen Sicherungen und zur Wiederherstellung Ihres Azure Database for PostgreSQL-Einzelservers.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: cbd434f2f9e1217a3a481a28988f4e1d855ba08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: be6b9c30fe462b0754ae5e5c1a7eeac242af00f1
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74209641"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74769862"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Sicherung und Wiederherstellung in Azure Database for PostgreSQL – Einzelserver
 
@@ -23,7 +23,7 @@ Azure Database for PostgreSQL nimmt Sicherungen der Datendateien und der Transak
 
 ### <a name="backup-frequency"></a>Sicherungshäufigkeit
 
-Für Server mit einer maximal unterstützten Speicherkapazität von 4 TB werden vollständige Sicherungen üblicherweise einmal pro Woche und differenzielle Sicherungen zweimal täglich durchgeführt. Für Server mit einer unterstützten Speicherkapazität von bis zu 16 TB wird mindestens einmal täglich eine Momentaufnahmesicherung durchgeführt. Transaktionsprotokollsicherungen finden in beiden Fällen alle fünf Minuten statt. Die erste Momentaufnahme der vollständigen Sicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Für einen großen wiederhergestellten Server kann die erste vollständige Sicherung länger dauern. Der früheste Zeitpunkt, der für einen neuen Server wiederhergestellt werden kann, ist der Zeitpunkt, zu dem die erste vollständige Sicherung erstellt wurde. Da Momentaufnahmen sofort vorliegen, können Server, die bis zu 16 TB Speicherkapazität unterstützen, auf den Zeitpunkt der Erstellung wiederhergestellt werden.
+Für Server mit einer maximal unterstützten Speicherkapazität von 4 TB werden vollständige Sicherungen üblicherweise einmal pro Woche und differenzielle Sicherungen zweimal täglich durchgeführt. Für Server mit einer unterstützten Speicherkapazität von bis zu 16 TB wird mindestens einmal täglich eine Momentaufnahmesicherung durchgeführt. Transaktionsprotokollsicherungen finden in beiden Fällen alle fünf Minuten statt. Die erste Momentaufnahme der vollständigen Sicherung wird unmittelbar nach der Erstellung des Servers eingeplant. Für einen großen wiederhergestellten Server kann die erste vollständige Sicherung länger dauern. Der früheste Zeitpunkt, der für einen neuen Server wiederhergestellt werden kann, ist der Zeitpunkt, zu dem die erste vollständige Sicherung erstellt wurde. Da Momentaufnahmen sofort vorliegen, können Server, die bis zu 16 TB Speicherkapazität unterstützen, in dem Zustand wiederhergestellt werden, der zum Zeitpunkt der Erstellung vorlag.
 
 ### <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
 

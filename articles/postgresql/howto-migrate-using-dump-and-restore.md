@@ -1,17 +1,17 @@
 ---
-title: Sichern und Wiederherstellen in Azure Database for PostgreSQL (Einzelserver)
+title: Sicherung und Wiederherstellung – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel wird beschrieben, wie Sie eine PostgreSQL-Datenbank in eine Sicherungsdatei extrahieren und mithilfe einer mit pg_dump erstellten Datei in Azure Database for PostgreSQL (Einzelserver) wiederherstellen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/24/2019
-ms.openlocfilehash: 4291db0bb1edbc366c42febed992a7c27d46eb15
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 4365338efa56593e80edcc19cba5944b213d2b72
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796755"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770236"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrieren der PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 Sie können mit [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) eine PostgreSQL-Datenbank in eine Sicherungsdatei extrahieren und mit [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) die PostgreSQL-Datenbank aus einer mit pg_dump erstellten Archivdatei wiederherstellen.

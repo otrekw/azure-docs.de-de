@@ -1,17 +1,17 @@
 ---
-title: Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL
+title: Verwalten von Lesereplikaten in Azure Database for MySQL mit der Azure-Befehlszeilenschnittstelle oder REST-API
 description: Erfahren Sie, wie Sie mit der Azure CLI oder der REST-API Lesereplikate in Azure Database for MySQL einrichten und verwalten.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/14/2019
-ms.openlocfilehash: 741b50bdb2ec9c8d29a9f759e46209856de3a49c
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 12/02/2019
+ms.openlocfilehash: 56ba530c4f684bf89db9c5b87306592fbfeee7fa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970307"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774093"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-cli-and-rest-api"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe der Azure CLI und REST-API
 

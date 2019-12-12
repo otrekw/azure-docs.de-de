@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 389404f59b5a0cba1acd7aa097ddd3dd929d8082
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 14465e918fd4ac4e436e64d468c58e1d2ed83bb3
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821993"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688173"
 ---
 # <a name="sql-database-audit-log-format"></a>Überwachungsprotokollformate in SQL-Datenbank
 
@@ -31,6 +31,8 @@ Bei der [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) werden Date
 Für die Datenbank `Database1` unter `Server1` wäre beispielsweise folgender Pfad gültig:
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
+
+Schreibgeschützte Replikatüberwachungsprotokolle werden im selben Container gespeichert. Die Verzeichnishierarchie innerhalb des Containers weist das Format `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` auf. Der Name der Blobdatei liegt im selben Format vor.
 
 ### <a name="event-hub"></a>Event Hub
 

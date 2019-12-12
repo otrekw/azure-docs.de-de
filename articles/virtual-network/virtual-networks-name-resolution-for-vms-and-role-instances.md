@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: ebacd386221ed12e1171034eb5d23236bd234849
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176042"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707571"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -206,7 +206,7 @@ Wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, können Sie
 Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server für das virtuelle Netzwerk im Portal oder in der [Netzwerkkonfigurationsdatei](https://msdn.microsoft.com/library/azure/jj157100) angeben. Für Clouddienste können Sie DNS-Server über die [Dienstkonfigurationsdatei](https://msdn.microsoft.com/library/azure/ee758710) oder mithilfe von PowerShell mit [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) angegeben.
 
 > [!NOTE]
-> Wenn Sie die DNS-Einstellungen für virtuelle Netzwerke oder virtuelle Computer ändern, die bereits bereitgestellt wurden, müssen Sie alle betroffenen virtuellen Computer neu starten, damit die Änderungen wirksam werden.
+> Wenn Sie die DNS-Einstellungen für ein virtuelles Netzwerk oder einen virtuellen Computer ändern, das bzw. der schon bereitgestellt wurde, müssen Sie für alle betroffenen virtuellen Computer im virtuellen Netzwerk die DHCP-Leasedauer verlängern, damit die neuen DNS-Einstellungen wirksam werden. Bei virtuellen Computern, auf denen das Windows-Betriebssystem ausgeführt wird, können Sie dazu `ipconfig /renew` direkt auf dem virtuellen Computer eingeben. Die Schritte unterscheiden sich je nach Betriebssystem. Weitere Informationen finden Sie in der jeweiligen Dokumentation für Ihren Betriebssystemtyp. 
 >
 >
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/09/2019
 ms.author: victorh
-ms.openlocfilehash: 8f3a732d5d6128ff38f81f715113e87710b11c47
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 66978f313f5cb3881f8befc61289d7de0f4214cb
+ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847270"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74668148"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatische Skalierung und zonenredundantes Application Gateway v2 
 
@@ -35,7 +35,7 @@ Die neue v2-SKU enthält die folgenden Verbesserungen:
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Die Standard_v2- und WAF_v2-SKU ist in den folgenden Regionen verfügbar: USA, Norden-Mitte, USA, Süden-Mitte, USA, Westen, USA, Westen 2, USA, Osten, USA, Osten 2, USA, Mitte, Europa, Norden, Europa, Westen, Asien, Südosten, Frankreich, Mitte, Vereinigtes Königreich, Westen, Japan, Osten, Japan, Westen, Australien, Osten, Australien, Südosten, Brasilien, Süden, Kanada, Mitte, Kanada, Osten, Asien, Osten, Südkorea, Mitte, Südkorea, Süden, Indien, Süden, Vereinigtes Königreich, Süden, Indien, Mitte, Indien, Westen, Indien, Süden.
+Die Standard_v2- und WAF_v2-SKU ist in den folgenden Regionen verfügbar: USA, Norden-Mitte, USA, Süden-Mitte, USA, Westen, USA, Westen 2, USA, Osten, USA, Osten 2, USA, Mitte, Europa, Norden, Europa, Westen, Asien, Südosten, Frankreich, Mitte, Vereinigtes Königreich, Westen, Japan, Osten, Japan, Westen, Australien, Osten, Australien, Südosten, Brasilien, Süden, Kanada, Mitte, Kanada, Osten, Asien, Osten, Südkorea, Mitte, Südkorea, Süden, Vereinigtes Königreich, Süden, Indien, Mitte, Indien, Westen, Indien, Süden.
 
 ## <a name="pricing"></a>Preise
 

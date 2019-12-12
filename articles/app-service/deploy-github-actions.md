@@ -1,24 +1,17 @@
 ---
-title: Bereitstellen Ihres Codes über eine CI/CD-Pipeline mithilfe von GitHub-Aktionen – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von GitHub-Aktionen Ihren Code in App Service bereitstellen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
+title: Konfigurieren von CI/CD mit GitHub-Aktionen
+description: Erfahren Sie, wie Sie Azure App Service Codes über eine CI/CD-Pipeline mit GitHub-Aktionen bereitstellen. Passen Sie die Buildaufgaben an, und führen Sie komplexe Bereitstellungen aus.
 ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 9842057a590b08f2207a1ea166e0ce0d457e4381
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: e3d6e730846388c4b74cfa0b6361629e836b0517
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620518"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74670195"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 

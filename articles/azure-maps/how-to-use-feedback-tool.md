@@ -9,22 +9,22 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 076f98cb240014bcc88a395902203413e31fe0f1
-ms.sourcegitcommit: 36e9cbd767b3f12d3524fadc2b50b281458122dc
+ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69641870"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776591"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Bereitstellen von Datenfeedback in Azure Maps
 
-Azure Maps ist seit Mai 2018 allgemein verfügbar und bietet aktuelle Kartendaten, einfach zu verwendende REST-APIs und leistungsstarke SDKs zur Unterstützung unserer Unternehmenskunden in einer Vielzahl von geschäftlichen Anwendungsfällen. Die reale Welt ändert sich jede Sekunde, und es ist entscheidend für uns, dass wir für unsere Kunden eine tatsachenbasierte digitale Repräsentation bereitstellen. Unsere Kunden, die das Öffnen oder Schließen von Einrichtungen planen, müssen sicherstellen, dass unsere Karten umgehend aktualisiert werden, damit Sie Lieferung, Wartung oder Kundendiensteinsätze in den richtigen Einrichtungen effizient planen können. Wir haben das Azure Maps-Datenfeedbacktool erstellt, um unseren Kunden die Bereitstellung von direktem Datenfeedback zu ermöglichen. Das Datenfeedback der Kunden geht direkt an unsere Datenanbieter und deren Karten-Editoren, die Feedback schnell beurteilen und in unsere Kartenprodukte integrieren können.  
+Azure Maps ist seit Mai 2018 allgemein verfügbar und bietet aktuelle Kartendaten, einfach zu verwendende REST-APIs und leistungsstarke SDKs zur Unterstützung unserer Unternehmenskunden in einer Vielzahl von geschäftlichen Anwendungsfällen. Die reale Welt ändert sich jede Sekunde, und es ist entscheidend für uns, dass wir für unsere Kunden eine tatsachenbasierte digitale Repräsentation bereitstellen. Unsere Kunden, die das Öffnen oder Schließen von Einrichtungen planen, müssen sicherstellen, dass unsere Karten umgehend aktualisiert werden, damit Sie Lieferung, Wartung oder Kundendiensteinsätze in den richtigen Einrichtungen effizient planen können. Wir haben die Website für Datenfeedback zu Azure Maps erstellt, um unseren Kunden die Bereitstellung von direktem Datenfeedback zu ermöglichen. Das Datenfeedback der Kunden geht direkt an unsere Datenanbieter und deren Karten-Editoren, die Feedback schnell beurteilen und in unsere Kartenprodukte integrieren können.  
 
-Das [Azure Maps-Datenfeedback](https://feedback.azuremaps.com)tool bietet unseren Kunden eine einfache Möglichkeit zum Bereitstellen von Feedback zu Kartendaten, insbesondere für geschäftliche POIs (Point of Interest) und Wohnadressen. In diesem Artikel werden Sie angeleitet, wie Sie mit dem Azure Maps-Feedbacktool verschiedene Arten von Feedback bereitstellen.
+Die [Website für Datenfeedback zu Azure Maps](https://feedback.azuremaps.com) bietet unseren Kunden eine einfache Möglichkeit, Feedback zu Kartendaten zu geben, insbesondere für geschäftliche POIs (Point of Interest) und Wohnadressen. In diesem Artikel erhalten Sie Informationen dazu, wie Sie mit der Website für Feedback zu Azure Maps auf verschiedene Weisen Feedback bereitstellen können.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Hinzufügen eines Geschäftsorts oder einer Wohnadresse 
 
-Möglicherweise möchten Sie Feedback zu einem fehlenden Point of Interest oder einer fehlenden Wohnadresse auf der Karte geben. Hierfür gibt es zwei Möglichkeiten: Öffnen Sie das Azure Map-Datenfeedbacktool, und suchen Sie nach den Koordinaten des fehlenden Standorts, und klicken Sie dann auf „Ort hinzufügen“.
+Möglicherweise möchten Sie Feedback zu einem fehlenden Point of Interest oder einer fehlenden Wohnadresse auf der Karte geben. Hierfür gibt es zwei Möglichkeiten: Öffnen Sie die Website für Datenfeedback zu Azure Maps, suchen Sie nach den Koordinaten des fehlenden Standorts, und klicken Sie dann auf „Ort hinzufügen“.
 
   ![Suchen eines fehlenden Orts](./media/how-to-use-feedback-tool/search-poi.png)
 
@@ -38,7 +38,7 @@ Nachdem Sie geklickt haben, werden Sie zu einem Formular weitergeleitet, um die 
 
 ## <a name="fix-a-business-place-or-a-residential-address"></a>Korrigieren eines Geschäftsorts oder einer Wohnadresse 
 
-Das Feedbacktool ermöglicht Ihnen außerdem das Suchen und Auffinden eines Geschäftsorts oder einer Adresse und das Bereitstellen von Feedback zur Korrektur der Adresse oder der Stecknadelposition, wenn diese nicht korrekt sind. Um Feedback zur Korrektur der Adresse bereitzustellen, verwenden Sie die Suchleiste, um nach einem Geschäftsort oder einer Wohnadresse zu suchen. Klicken Sie in der Ergebnisliste auf den gewünschten Ort, und klicken Sie auf „Diesen Ort korrigieren“.
+Die Feedbackwebsite ermöglicht Ihnen außerdem das Suchen und Finden eines Geschäftsorts oder einer Adresse und das Bereitstellen von Feedback zur Korrektur der Adresse oder der Stecknadelposition, wenn diese nicht korrekt sind. Um Feedback zur Korrektur der Adresse bereitzustellen, verwenden Sie die Suchleiste, um nach einem Geschäftsort oder einer Wohnadresse zu suchen. Klicken Sie in der Ergebnisliste auf den gewünschten Ort, und klicken Sie auf „Diesen Ort korrigieren“.
 
   ![Suchen des zu korrigierenden Orts](./media/how-to-use-feedback-tool/fix-place.png)
 

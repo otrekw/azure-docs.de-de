@@ -1,17 +1,17 @@
 ---
-title: Herstellen einer Verbindung zwischen Anwendungen und Azure Database for MySQL
+title: Verbindungszeichenfolgen – Azure Database for MySQL
 description: In diesem Dokument sind alle derzeit unterstützten Verbindungszeichenfolgen für Anwendungen aufgeführt, um eine Verbindung mit Azure-Datenbank für MySQL herzustellen. Hierzu zählen ADO.NET (C#), JDBC, Node.js, ODBC, PHP, Python und Ruby.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 503b7764ba7958a5448903b217b00e204ffcbf61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: bee98accd8ac404eb223975571b082dae754571a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61459268"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770491"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Herstellen einer Verbindung zwischen Anwendungen und Azure-Datenbank für MySQL
 In diesem Thema sind alle von Azure Database for MySQL unterstützten Typen von Verbindungszeichenfolgen sowie Vorlagen und Beispiele aufgeführt. Ihre Verbindungszeichenfolge enthält unter Umständen andere Parameter und Einstellungen.

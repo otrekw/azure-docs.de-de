@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Custom Speech – Speech Service
+title: 'Speech-Dienst: Erste Schritte mit Custom Speech'
 titleSuffix: Azure Cognitive Services
 description: Bei Custom Speech handelt es sich um eine Reihe von Onlinetools, mit denen Sie die Genauigkeit unserer Spracherkennung für Ihre Anwendungen, Tools und Produkte bewerten und verbessern können. Für den Einstieg benötigen Sie lediglich eine Handvoll Audiotestdateien. Verwenden Sie die unten angegebenen Links, um mit dem Erstellen einer benutzerdefinierten Spracherkennung zu beginnen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 1d8e473afa2c8e7c0abf58e2dbc9caea030f2f5f
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c8c849cb83ecb1db5e972c660d94c795092c458e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554984"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806010"
 ---
 # <a name="what-is-custom-speech"></a>Was ist Custom Speech?
 
@@ -29,13 +29,13 @@ Das folgende Diagramm zeigt die Teile, aus denen sich das [Custom Speech-Portal]
 
 ![Zeigt die verschiedenen Komponenten, aus denen sich das Custom Speech-Portal zusammensetzt.](./media/custom-speech/custom-speech-overview.png)
 
-1. [Abonnieren und Erstellen eines Projekts](#set-up-your-azure-account): Erstellen Sie ein Azure-Konto, und abonnieren Sie die Speech-Dienste. Durch dieses einheitliche Abonnement erhalten Sie Zugriff auf die Spracherkennung, Sprachsynthese, Sprachübersetzung und das [Custom Speech-Portal](https://speech.microsoft.com/customspeech). Erstellen Sie dann mit Ihrem Abonnement für Speech-Dienste Ihr erstes Custom Speech-Projekt.
+1. [Abonnieren und Erstellen eines Projekts:](#set-up-your-azure-account) Erstellen Sie ein Azure-Konto, und abonnieren Sie die Speech-Dienste. Durch dieses einheitliche Abonnement erhalten Sie Zugriff auf die Spracherkennung, Sprachsynthese, Sprachübersetzung und das [Custom Speech-Portal](https://speech.microsoft.com/customspeech). Erstellen Sie dann mit Ihrem Abonnement für Speech-Dienste Ihr erstes Custom Speech-Projekt.
 
 2. [Hochladen von Testdaten](how-to-custom-speech-test-data.md): Laden Sie Testdaten (Audiodateien) hoch, um das Spracherkennungsangebot von Microsoft für Ihre Anwendungen, Tools und Produkte zu bewerten.
 
 3. [Überprüfen der Erkennungsqualität](how-to-custom-speech-inspect-data.md): Verwenden Sie das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) zur Wiedergabe hochgeladener Audiodateien, und überprüfen Sie die Qualität der Spracherkennung Ihrer Testdaten. Informationen zu quantitativen Messungen finden Sie unter [Überprüfen von Daten](how-to-custom-speech-inspect-data.md).
 
-4. [Bewerten der Genauigkeit](how-to-custom-speech-evaluate-data.md): Bewerten Sie die Genauigkeit des Spracherkennungsmodells. Das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) stellt eine *Wort-Fehler-Rate* bereit, mit der bestimmt werden kann, ob zusätzliches Training erforderlich ist. Wenn Sie mit der Genauigkeit zufrieden sind, können Sie die Spracherkennungsdienst-APIs direkt verwenden. Wenn Sie die Genauigkeit um durchschnittlich 5 – 20 % verbessern möchten, verwenden Sie die Registerkarte **Training** im Portal, um zusätzliche Trainingsdaten hochzuladen, z.B. menschenmarkierte Transkripte und zugehörigen Text.
+4. [Bewerten der Genauigkeit](how-to-custom-speech-evaluate-data.md): Bewerten Sie die Genauigkeit des Spracherkennungsmodells. Das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) stellt eine *Wort-Fehler-Rate* bereit, mit der bestimmt werden kann, ob zusätzliches Training erforderlich ist. Wenn Sie mit der Genauigkeit zufrieden sind, können Sie die Speech-Dienst-APIs direkt verwenden. Wenn Sie die Genauigkeit um durchschnittlich 5 – 20 % verbessern möchten, verwenden Sie die Registerkarte **Training** im Portal, um zusätzliche Trainingsdaten hochzuladen, z.B. menschenmarkierte Transkripte und zugehörigen Text.
 
 5. [Trainieren des Modells](how-to-custom-speech-train-model.md): Verbessern Sie die Genauigkeit Ihres Spracherkennungsmodells, indem Sie schriftliche Transkripte (10 – 1.000 Stunden) und zugehörigen Text (< 200 MB) zusammen mit Ihren Audiotestdaten bereitstellen. Mithilfe dieser Daten kann das Spracherkennungsmodell trainiert werden. Testen Sie das Modell nach dem Training erneut. Wenn Sie mit dem Ergebnis zufrieden sind, können Sie das Modell bereitstellen.
 

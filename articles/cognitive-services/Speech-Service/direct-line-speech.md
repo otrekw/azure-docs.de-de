@@ -1,5 +1,5 @@
 ---
-title: Direct Line Speech – Spracherkennungsdienst
+title: Direct Line Speech (Speech-Dienst)
 titleSuffix: Azure Cognitive Services
 description: Ein Überblick über die Features, Funktionen und Einschränkungen für Sprachassistenten, die Direct Line Speech mit dem Speech Software Development Kit (SDK) verwenden.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 72029d1d56c9d561e629cc750244fd7de8ec113a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: cec3131d791d591375fd87d1c080294c9034a815
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506565"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806217"
 ---
 # <a name="about-direct-line-speech"></a>Informationen zu Direct Line Speech
 
@@ -50,7 +50,7 @@ Beispielcode für die Erstellung eines Sprachassistenten ist auf GitHub verfügb
 
 ## <a name="customization"></a>Anpassung
 
-Sprachassistenten, die mithilfe von Azure Speech-Diensten erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für die [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) verfügbar sind.
+Sprachassistenten, die mithilfe des Speech-Diensts erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und die [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) zur Verfügung stehen.
 
 > [!NOTE]
 > Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
@@ -64,7 +64,7 @@ Direct Line Speech und die damit verbundene Funktionalität für Sprachassistent
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](get-started.md)
 * [Abrufen des Speech SDK](speech-sdk.md)
 * [Erstellen und Bereitstellen eines Basisbots](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
 * [Abrufen der Lösung für virtuelle Assistenten und der Unternehmensvorlage](https://github.com/Microsoft/AI)

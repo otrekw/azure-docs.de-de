@@ -1,5 +1,5 @@
 ---
-title: Was ist automatisiertes maschinelles Lernen?/ automl
+title: Was ist automatisiertes maschinelles Lernen? / AutoML
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Azure Machine Learning automatisch einen Algorithmus für Sie auswählen und ein Modell daraus generieren kann, um Ihnen Zeit zu sparen, indem er die von Ihnen angegebenen Parameter und Kriterien verwendet, um den besten Algorithmus für Ihr Modell auszuwählen.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: f8a83fccefe3310fe1a582ef44d72cfbef7e9469
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d8628bd62df650d76b0666b650af88038dbbda1f
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133075"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74807118"
 ---
 # <a name="what-is-automated-machine-learning"></a>Was ist automatisiertes maschinelles Lernen?
 
@@ -98,10 +98,60 @@ Zusätzliche erweiterte Vorverarbeitung und Featurebereitstellung sind ebenfalls
 
 + Azure Machine Learning Studio: Auswählen von **Einstellungen für die Merkmalserstellung anzeigen** im Abschnitt **Configuration Run** (Konfigurationsausführung) [über diese Schritte](how-to-create-portal-experiments.md).
 
-+ Python SDK: Angeben von `"feauturization": auto' / 'off' / FeaturizationConfig` für die [`AutoMLConfig`-Klasse](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py).
++ Python SDK: Angeben von `"feauturization": auto' / 'off' / FeaturizationConfig` für die [`AutoMLConfig`-Klasse](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig).
 
+## <a name="prevent-over-fitting"></a>Verhindern von Überanpassung
+
+Überanpassung bei maschinellem Lernen tritt auf, wenn ein Modell zu gut zu den Trainingsdaten passt und daher nicht in der Lage ist, eine genaue Vorhersage für unbekannte Testdaten zu bieten. Mit anderen Worten, das Modell hat sich schlicht bestimmte Muster und bestimmtes Rauschen in den Trainingsdaten gemerkt, ist aber nicht flexibel genug, um Vorhersagen zu echten Daten zu treffen. In den gravierendsten Fällen führt ein überangepasstes Modell zu der Annahme, dass die beim Training verwendeten Featurewertkombinationen immer die exakt selbe Ausgabe für das Ziel bringen. 
+
+Die beste Möglichkeit, eine über Anpassung zu verhindern, besteht darin, die bewährten Methoden für maschinelles Lernen (ML) zu befolgen. Dazu gehören:
+
+* Verwenden von möglichst vielen Trainingsdaten und Eliminieren statistischer systematischer Abweichungen
+* Verhindern von Zielungenauigkeit (target leakage)
+* Verwenden von weniger Merkmalen (Features)
+* **Regularisierung und Hyperparameteroptimierung**
+* **Einschränkungen der Modellkomplexität**
+* **Kreuzvalidierung**
+
+Im Kontext von automatisiertem ML sind die ersten drei dieser Aspekte **bewährte Methoden, die Sie implementieren**. Die letzten drei fett formatierten Aspekte sind **bewährte Methoden, die standardmäßig von automatischem ML implementiert werden**, um Überanpassung zu vermeiden. In Konfigurationen ohne automatisiertes ML sollten alle sechs bewährten Methoden beachtet werden, um Überanpassung von Modellen zu verhindern.
+
+### <a name="best-practices-you-implement"></a>Bewährte Methoden, die Sie implementieren
+
+Die Verwendung von **mehr Daten** ist die einfachste und beste Möglichkeit, eine Überanpassung zu verhindern, und erhöht als Zusatzbonus in den meisten Fällen die Genauigkeit. Wenn Sie mehr Daten verwenden, wird es für das Modell schwieriger, sich genaue Muster zu merken, und es ist gezwungen, Lösungen zu finden, die flexibler sind, um mehr Bedingungen zu erfüllen. Außerdem ist es wichtig, **statistische systematische Abweichungen** zu erkennen, um sicherzustellen, dass die Trainingsdaten keine isolierten Muster enthalten, die in echten Vorhersagedaten nicht vorhanden sind. Ein Auflösen dieses Szenarios kann schwierig sein, da möglicherweise keine Überanpassung zwischen Ihren Trainings- und Testsätzen vorliegt, beim Vergleich mit echten Testdaten aber Überanpassung vorhanden ist.
+
+Zielungenauigkeit (target leakage) ist ein ähnliches Problem, bei dem Sie möglicherweise keine Überanpassung zwischen den Trainings- und Testsätzen feststellen, aber Überanpassung zur Vorhersagezeit auftritt. Zielungenauigkeit tritt auf, wenn Ihr Modell während des Trainings „betrügt“, indem es Zugriff auf Daten hat, auf die es zur Vorhersagezeit normalerweise keinen Zugriff haben sollte. Angenommen, Ihr Problem darin besteht, am Montag den Preis vorherzusagen, den eine Ware am Freitag haben wird, aber eines Ihrer Features enthielt versehentlich Daten von Donnerstagen, und dies wären Daten, die das Modell zur Vorhersagezeit nicht zur Verfügung hat, weil es nicht in die Zukunft schauen kann. Zielungenauigkeit ist ein Fehler, der sich leicht übersehen lässt, ist aber häufig durch eine ungewöhnlich hohe Genauigkeit für Ihr Problem gekennzeichnet. Wenn Sie versuchen, den Aktienkurs vorherzusagen und ein Modell mit einer Genauigkeit von 95 % trainiert haben, gibt es sehr wahrscheinlich eine Zielungenauigkeit in ihren Features.
+
+Ein Entfernen von Features kann ebenfalls gegen Überanpassung helfen, indem verhindert wird, dass das Modell zu viele Felder verwendet, um sich bestimmte Muster zu merken. Dies führt dazu, dass das Modell flexibler wird. Ein quantitatives Messen ist möglicherweise schwierig, aber wenn Sie Features entfernen und dieselbe Genauigkeit beibehalten können, haben Sie das Modell wahrscheinlich flexibler gestaltet und das Risiko einer Überanpassung verringert.
+
+### <a name="best-practices-automated-ml-implements"></a>Bewährte Methoden, die von automatisiertem ML implementiert werden
+
+Regularisierung ist der Prozess, bei dem eine Kostenfunktion minimiert wird, um komplexe und überangepasste Modelle zu pönalisieren. Es gibt unterschiedliche Arten von Regularisierungsfunktionen, aber normalerweise pönalisieren diese alle die Modellkoeffizientengröße, -varianz und -komplexität. Automatisiertes ML verwendet L1 (Lasso), L2 (Ridge) und ElasticNet (L1 und L2 gleichzeitig) in verschiedenen Kombinationen mit unterschiedlichen Modellhyperparametereinstellungen, die Überanpassung steuern. In einfachen Worten, automatisiertes ML variiert, wie stark ein Modell reguliert wird, und wählt das beste Ergebnis aus.
+
+Automatisiertes ML implementiert auch explizite Einschränkungen der Modellkomplexität, um Überanpassung zu verhindern. In den meisten Fällen erfolgt dies speziell für Entscheidungsstruktur- oder Gesamtstrukturalgorithmen, bei denen die maximale Tiefe der einzelnen Strukturen und die Gesamtzahl der in der Gesamtstruktur oder in den Kombinationstechniken verwendeten Strukturen begrenzt sind.
+
+Kreuzvalidierung ist der Prozess, bei dem viele Teilmengen Ihrer vollständigen Trainingsdaten erstellt werden und ein Modell mit jeder Teilmenge trainiert wird. Die Idee ist, dass ein Modell „glücklich“ werden und eine große Genauigkeit mit einer Teilmenge erzielen könnte, aber durch Verwenden vieler Teilmengen wird das Modell diese hohe Genauigkeit nicht jedes Mal erzielen. Wenn Sie eine Kreuzvalidierung vornehmen, stellen Sie ein Validierungsdataset mit zurückgehaltenen Daten bereit, und geben Sie Ihre Kreuzvalidierungsfalten (Anzahl der Teilmengen) an. Automatisiertes ML trainiert daraufhin Ihr Modell und optimiert Hyperparameter, um den Fehler für Ihren Validierungssatz zu minimieren. Eine Kreuzvalidierungsfalte könnte überangepasst sein, aber dadurch, dass viele von ihnen verwendet werden, wird die Wahrscheinlichkeit verringert, dass das endgültige Modell überangepasst ist. Der Nachteil ist, dass Kreuzvalidierung längere Trainingszeiten und somit höhere Kosten verursacht, denn anstatt ein Modell einmal zu trainieren, trainieren Sie es einmal mit jeder der *n* Kreuzvalidierungsteilmengen.
+
+> [!NOTE]
+> Kreuzvalidierung ist nicht standardmäßig aktiviert. Sie muss in den Einstellungen für automatisiertes ML konfiguriert werden. Nachdem Kreuzvalidierung konfiguriert und ein Validierungsdataset bereitgestellt wurde, wird der Prozess aber für Sie automatisiert.
+
+### <a name="identifying-over-fitting"></a>Erkennen von Überanpassung
+
+Sehen Sie sich die folgenden trainierten Modelle und deren entsprechende Trainings- und Testgenauigkeiten an.
+
+| Modell | Trainingsgenauigkeit | Testgenauigkeit |
+|-------|----------------|---------------|
+| Eine Datei | 99,9 % | 95 % |
+| b | 87 % | 87 % |
+| C | 99,9 % | 45 % |
+
+Bei Betrachtung von Modell **A** gibt es ein gängiges Missverständnis: Wenn die Testgenauigkeit bei unbekannten Daten niedriger ist als die Trainingsgenauigkeit, ist das Modell überangepasst. Die Testgenauigkeit sollte jedoch immer kleiner als die Trainingsgenauigkeit sein, und die Unterscheidung zwischen „überangepasst“ und „angemessen angepasst“ wird heruntergebrochen auf *wie viel* ungenauer. 
+
+Wenn die Modelle **A** und **B** verglichen werden, ist das Modell **A** ein besseres Modell, da es eine höhere Testgenauigkeit hat, und obwohl die Testgenauigkeit geringfügig niedriger bei 95 % liegt, ist dies kein bedeutender Unterschied, der nahelegt, dass eine Überanpassung vorliegt. Modell **B** würde einfach deshalb nicht ausgewählt, weil die Trainings- und die Testgenauigkeit näher beieinander liegen.
+
+Model **C** repräsentiert einen eindeutigen Fall von Überanpassung. Die Trainingsgenauigkeit ist sehr hoch, aber die Testgenauigkeit ist nirgends annähernd so hoch. Diese Unterscheidung ist etwas subjektiv, ergibt aber aus der Kenntnis Ihres Problems und Ihrer Daten und daraus, welche Fehlergrößenordnung akzeptierbar ist. 
 
 ## <a name="time-series-forecasting"></a>Zeitreihenvorhersagen
+
 Die Erstellung von Vorhersagen ist ein integraler Bestandteil jedes Unternehmens, unabhängig davon, ob es sich um Einnahmen, Lagerbestände, Umsätze oder Kundennachfrage handelt. Sie können automatisiertes maschinelles Lernen verwenden, um verschiedene Techniken und Ansätze zu kombinieren. Außerdem erhalten Sie dabei eine beliebte und hochwertige Zeitreihenprognose.
 
 Automatisierte Zeitreihenexperimente werden als multivariate Regressionsprobleme behandelt. Zeitreihenwerte aus der Vergangenheit werden pivotiert und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz hat im Gegensatz zu klassischen Zeitreihenmethoden den Vorteil, dass mehrere kontextbezogene Variablen und deren Beziehungen zueinander beim Training auf natürliche Weise integriert werden. Beim automatisierten maschinellen Lernen wird ein zwar einfaches, aber häufig in interne Verzweigungen unterteiltes Modell für alle Elemente im Dataset und in den Vorhersagehorizonten erlernt. Dadurch sind mehr Daten verfügbar, um Modellparameter zu schätzen, und die Generalisierung von unbekannten Reihen wird möglich.

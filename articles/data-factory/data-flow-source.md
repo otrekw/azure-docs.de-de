@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/06/2019
-ms.openlocfilehash: 33a63b8a887594747aba03e19c107653e438853f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 27d9b3061794e5673d5ab24fe30d44f46e217c64
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217747"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74702038"
 ---
 # <a name="source-transformation-for-mapping-data-flow"></a>Quelltransformation für Mapping Data Flow 
 
@@ -156,7 +156,7 @@ Sie können die Spaltendatentypen in einer späteren Transformation für nachges
 
 ### <a name="import-schema"></a>Schema importieren
 
-Datasets wie Avro und CosmosDB, die komplexe Datenstrukturen unterstützen, erfordern keine Schemadefinitionen, die im Dataset vorhanden sind. Daher können Sie bei diesen Quellentypen auf der Registerkarte „Projektion“ auf die Schaltfläche „Schema importieren“ klicken.
+Datasets wie Avro und CosmosDB, die komplexe Datenstrukturen unterstützen, erfordern keine Schemadefinitionen, die im Dataset vorhanden sind. Daher können Sie bei diesen Quellentypen auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren** klicken.
 
 ## <a name="cosmosdb-specific-settings"></a>CosmosDB-spezifische Einstellungen
 

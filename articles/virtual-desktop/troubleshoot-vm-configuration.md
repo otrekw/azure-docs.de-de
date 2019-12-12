@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 10/02/2019
+ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 1470bb049cffce52ae921057bdaece40f3d3161c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607397"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791155"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -333,7 +333,7 @@ Wenn die Versionsnummer „1809“ lautet, installieren Sie das [KB4516077-Updat
 
 ### <a name="version-1903"></a>Version 1903
 
-Wenn die Versionsnummer „1903“ lautet, installieren Sie das [KB4517211-Update ](https://support.microsoft.com/help/4517211).
+Stellen Sie das Hostbetriebssystem mit der neuesten Windows 10-Imageversion (1903) aus dem Azure-Katalog erneut bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

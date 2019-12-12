@@ -1,5 +1,5 @@
 ---
-title: Was ist Custom Voice? – Speech Service
+title: Was ist Custom Voice? – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Bei Custom Voice handelt es sich um eine Reihe von Onlinetools, mit denen Sie eine wiedererkennbare, einzigartige Stimme für Ihre Marke erstellen können. Für den Einstieg benötigen Sie lediglich einige Audiodateien und die dazugehörigen Transkriptionen. Nutzen Sie die unten angegebenen Links, um mit der Erstellung einer benutzerdefinierten Spracherkennung zu beginnen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: f8b963c456e4d4318c6b28cd33c18ebd615487de
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e40ca55a9cd198e1b086362a2559ab2fc0ba95e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464516"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805959"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 
@@ -23,13 +23,13 @@ Bei [Custom Voice](https://aka.ms/customvoice) handelt es sich um eine Reihe von
 
 ## <a name="whats-in-custom-voice"></a>Was ist in Custom Voice enthalten?
 
-Bevor Sie mit der Verwendung von Custom Voice beginnen können, benötigen Sie ein Azure-Konto und ein Abonnement für die Speech-Dienste. Nachdem Sie ein Konto erstellt haben, können Sie Ihre Daten vorbereiten, Ihre Modelle trainieren und testen, die Stimmqualität bewerten und schließlich Ihr benutzerdefiniertes Stimmmodell bereitstellen.
+Bevor Sie mit der Verwendung von Custom Voice beginnen können, benötigen Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst. Nachdem Sie ein Konto erstellt haben, können Sie Ihre Daten vorbereiten, Ihre Modelle trainieren und testen, die Stimmqualität bewerten und schließlich Ihr benutzerdefiniertes Stimmmodell bereitstellen.
 
 Im folgenden Diagramm sind die Schritte zum Erstellen eines benutzerdefinierten Stimmmodells über das [Custom Voice-Portal](https://aka.ms/customvoice) hervorgehoben. Weitere Informationen finden Sie unter den Links.
 
 ![Custom Voice-Architekturdiagramm](media/custom-voice/custom-voice-diagram.png)
 
-1.  [Abonnieren und Erstellen eines Projekts:](#set-up-your-azure-account) Erstellen Sie ein Azure-Konto und ein Abonnement für die Speech-Dienste. Durch dieses konsolidierte Abonnement erhalten Sie Zugriff auf die Spracherkennung, Sprachsynthese, Sprachübersetzung und das Custom Voice-Portal. Erstellen Sie anschließend unter Verwendung Ihres Abonnements für die Speech-Dienste Ihr erstes Custom Voice-Projekt.
+1.  [Abonnieren und Erstellen eines Projekts:](#set-up-your-azure-account) Erstellen Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst. Durch dieses konsolidierte Abonnement erhalten Sie Zugriff auf die Spracherkennung, Sprachsynthese, Sprachübersetzung und das Custom Voice-Portal. Erstellen Sie anschließend unter Verwendung Ihres Abonnements für den Speech-Dienst Ihr erstes Custom Voice-Projekt.
 
 2.  [Hochladen von Daten:](how-to-custom-voice-create-voice.md#upload-your-datasets) Laden Sie Daten (Audio und Text) über das Custom Voice-Portal oder über die Custom Voice-API hoch. Über das Portal können Sie Aussprachebewertungen und Signal-Rausch-Verhältnisse untersuchen und bewerten. Weitere Informationen finden Sie unter [Prepare data to create a custom voice](how-to-custom-voice-prepare-data.md) (Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme).
 
@@ -46,11 +46,11 @@ Die neuronale Stimmenanpassungsfunktion befindet sich derzeit in der öffentlich
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
-Sie benötigen ein Abonnement für die Speech-Dienste, um das Custom Speech-Portal zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Gehen Sie wie folgt vor, um in Azure ein Abonnement für die Speech-Dienste zu erstellen. Sollten Sie über kein Azure-Konto verfügen, können Sie sich für ein neues Konto registrieren.  
+Sie benötigen ein Abonnement für den Speech-Dienst, um das Custom Speech-Portal zum Erstellen eines benutzerdefinierten Modells verwenden zu können. Befolgen Sie diese Anweisungen, um in Azure ein Abonnement für den Speech-Dienst zu erstellen. Sollten Sie über kein Azure-Konto verfügen, können Sie sich für ein neues Konto registrieren.  
 
-Nachdem Sie ein Azure-Konto und ein Abonnement für die Speech-Dienste erstellt haben, müssen Sie sich beim Custom Voice-Portal anmelden und eine Verbindung mit Ihrem Abonnement herstellen.
+Nachdem Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst erstellt haben, müssen Sie sich beim Custom Voice-Portal anmelden und eine Verbindung mit Ihrem Abonnement herstellen.
 
-1. Rufen Sie über das Azure-Portal Ihren Abonnementschlüssel für die Speech-Dienste ab.
+1. Rufen Sie über das Azure-Portal Ihren Abonnementschlüssel für den Speech-Dienst ab.
 2. Melden Sie sich beim [Custom Voice-Portal](https://aka.ms/custom-voice) an.
 3. Wählen Sie Ihr Abonnement aus, und erstellen Sie ein Speech-Projekt.
 4. Wenn Sie zu einem anderen Speech-Abonnement wechseln möchten, verwenden Sie das Zahnradsymbol auf der oberen Navigationsleiste.

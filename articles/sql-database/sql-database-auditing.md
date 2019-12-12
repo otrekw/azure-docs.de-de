@@ -11,12 +11,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 65d092b36ed0e339a77bb423f24079caae38ab84
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e7d79b15b6f55d925713e4ef7e49df391e087162
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821971"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74687706"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -148,10 +148,13 @@ Führen Sie die folgenden Schritte aus, wenn Sie Überwachungsprotokolle in Azur
 
 Wenn Sie Überwachungsprotokolle in Event Hub schreiben möchten:
 
-- Um die Überwachungsprotokolldaten von Event Hub zu nutzen, müssen Sie einen Stream zum Nutzen von Ereignissen einrichten und diese in ein Ziel schreiben. Weitere Informationen finden Sie in der [Dokumentation zu Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
-- Überwachungsprotokolle werden in Event Hub derzeit im Text von [Apache Avro](https://avro.apache.org/)-Ereignissen erfasst und im JSON-Format mit UTF-8-Codierung gespeichert. Zum Lesen der Überwachungsprotokolle können Sie [Avro Tools](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) oder ähnliche Tools verwenden, die dieses Format verarbeiten können.
+- Um die Überwachungsprotokolldaten von Event Hub zu nutzen, müssen Sie einen Stream zum Nutzen von Ereignissen einrichten und diese in ein Ziel schreiben. Weitere Informationen finden Sie in der [Dokumentation zu Azure Event Hubs](../event-hubs/index.yml).
+- Überwachungsprotokolle werden in Event Hub derzeit im Text von [Apache Avro](https://avro.apache.org/)-Ereignissen erfasst und im JSON-Format mit UTF-8-Codierung gespeichert. Zum Lesen der Überwachungsprotokolle können Sie [Avro Tools](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) oder ähnliche Tools verwenden, die dieses Format verarbeiten können.
 
 Wenn Sie die Überwachungsprotokolle in ein Azure-Speicherkonto schreiben möchten, gibt es mehrere Methoden zum Anzeigen der Protokolle:
+
+> [!NOTE] 
+> Überwachung von schreibgeschützten Replikaten ist automatisch aktiviert. Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie im [Format für SQL-Datenbank-Überwachungsprotokolle](sql-database-audit-log-format.md). 
 
 - Überwachungsprotokolle werden in dem Konto aggregiert, das Sie während der Einrichtung ausgewählt haben. Sie können Überwachungsprotokolle mithilfe eines Tools wie [Azure Storage-Explorer](https://storageexplorer.com/) untersuchen. In Azure Storage werden Überwachungsprotokolle als Sammlung von Blobdateien in einem Container namens **sqldbauditlogs** gespeichert. Weitere Informationen zur Hierarchie des Speicherordners, zu Namenskonventionen und zum Protokollformat finden Sie im [Format für SQL-Datenbank-Überwachungsprotokolle](https://go.microsoft.com/fwlink/?linkid=829599).
 

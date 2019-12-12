@@ -1,5 +1,5 @@
 ---
-title: 'Bereitstellen des Azure Blob Storage-Moduls für Geräte: Azure IoT Edge | Microsoft-Dokumentation'
+title: Bereitstellen von Blob Storage im Modul auf Ihrem Gerät (Azure IoT Edge)
 description: Stellen Sie ein Azure Blob Storage-Modul für Ihr IoT Edge-Gerät bereit, um Daten am Edge zu speichern.
 author: arduppal
 ms.author: arduppal
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 manager: mchad
-ms.openlocfilehash: e5241e078cd8d36a9e43b4b55a649c1e24c85345
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: b89532038b00e28eb7c43232683349652af6bc3f
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456863"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665864"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Bereitstellen des Moduls „Azure Blob Storage auf IoT Edge“ auf Ihrem Gerät
 

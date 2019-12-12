@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: e218877ee0d29e493a31091ccbce406ed888f8cc
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114641"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74705972"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Visualisieren der Daten von Time Series Insights in Power BI
 
@@ -32,7 +32,10 @@ Stellen Sie sicher, dass Sie sich für ein [kostenloses Azure-Abonnement](https:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Herunterladen und Installieren der aktuellen Version von [Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-* Besitzen oder Erstellen einer [Azure Time Series Insights GA-Instanz](time-series-insights-get-started.md) oder [Azure Time Series Insights Preview-Instanz](time-series-insights-update-how-to-manage.md)
+* Besitzen oder Erstellen einer [Azure Time Series Insights Preview-Instanz](time-series-insights-update-how-to-manage.md)
+
+> [!IMPORTANT]
+> Der Power BI-Connector wird derzeit in den Umgebungen mit *nutzungsbasierter Bezahlung* der Time Series Insights-Vorschau unterstützt, die als **Warm Storage** konfiguriert werden.
 
 ## <a name="connect-data-from-time-series-insights-to-power-bi"></a>Verbinden der Daten von Time Series Insights mit Power BI
 
@@ -65,12 +68,12 @@ Erste Schritte:
 
        [![Verbinden](media/how-to-connect-power-bi/connect-to-power-bi.png)](media/how-to-connect-power-bi/connect-to-power-bi.png#lightbox)
 
-   1. Wenn Sie Ihre Time Series Insights-Instanz nicht für Warm Storage konfiguriert haben, erhalten Sie eine Warnung.
+   1. Wenn Sie Ihre Time Series Insights-Instanz nicht für **Warm Storage** konfiguriert haben, erhalten Sie eine Warnung.
 
        [![Verbinden](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
-       > Sie können Ihre bestehende Instanz im Azure-Portal für Warm Storage konfigurieren.
+       > Sie können Ihre bestehende Instanz im Azure-Portal für **Warm Storage** konfigurieren.
 
 1. Wählen Sie **Abfrage in Zwischenablage kopieren** aus.
 1. Starten Sie jetzt Power BI Desktop.

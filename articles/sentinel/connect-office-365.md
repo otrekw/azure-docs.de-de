@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 481acfdccb54077f18c1f4bf0375c0dc66e66007
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: df5aade7244f69e7264f901364ecc164351eec50
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240660"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815789"
 ---
 # <a name="connect-data-from-office-365-logs"></a>Herstellen der Verbindung von Daten aus Office 365-Protokollen
 
@@ -42,12 +42,12 @@ Sie können Überwachungsprotokolle von [Office 365](https://docs.microsoft.com/
 
 1. Wählen Sie in Azure Sentinel die Option **Datenkonnektoren** aus, und klicken Sie dann auf die Kachel **Office 365**.
 
-2. Wenn Sie die Office 365-Lösung noch nicht aktiviert haben, verwenden Sie unter **Verbindung** die Schaltfläche **Aktivieren**, um die Aktivierung vorzunehmen. War die Office 365-Lösung bereits aktiviert, wird sie in der Verbindungsanzeige als bereits aktiviert gekennzeichnet.
+2. Wenn Sie ihn noch nicht aktiviert haben, können Sie dies tun, indem Sie zum Blatt **Datenconnectors** navigieren und den **Office 365**-Connector auswählen. Hier können Sie auf **Connectorseite öffnen** klicken, und den Connector aktivieren, indem Sie im Konfigurationsabschnitt **Office 365-Lösung für Ihren Arbeitsbereich aktivieren** auf **Lösung installieren** klicken. War die Office 365-Lösung bereits aktiviert, wird sie in der Verbindungsanzeige als bereits aktiviert gekennzeichnet.
 1. Office 365 ermöglicht es Ihnen, Daten von mehreren Mandanten an Azure Sentinel zu streamen. Für jeden Mandanten, mit dem Sie eine Verbindung herstellen möchten, fügen Sie den Mandanten unter **Mandanten mit Azure Sentinel verbinden** (Connect tenants to Azure Sentinel) hinzu. 
 1. Es wird eine Active Directory-Anzeige geöffnet. Sie werden aufgefordert, sich für jeden Mandanten, den Sie mit Azure Sentinel verbinden möchten, mit einem globalen Administratorbenutzer zu authentifizieren und für Azure Sentinel Berechtigungen bereitzustellen, um dessen Protokolle lesen zu können. 
-5. Klicken Sie unter „Office 365-Aktivitätsprotokolle streamen“ auf **Auswählen**, und wählen Sie die Protokolltypen aus, die an Azure Sentinel gestreamt werden sollen. Derzeit unterstützt Azure Sentinel Exchange und SharePoint.
+5. In der Mandantenliste werden die Azure AD-Verzeichnis-IDs (Mandanten-IDs) und zwei Kontrollkästchen für Exchange- und SharePoint-Protokolle angezeigt. Sie können beliebige oder alle aufgeführten Dienste auswählen, die Sie in Azure Sentinel einspeisen möchten. Azure Sentinel unterstützt derzeit Exchange- und SharePoint-Protokolle in vorhandenen Office 365-Diensten.
 
-4. Klicken Sie auf **Änderungen übernehmen**.
+4. Sobald Sie die Dienste ausgewählt haben (Exchange, SharePoint usw.), können Sie auf der Seite im Bereich zum Hinzufügen des Mandanten auf „Speichern“ klicken. 
 
 3. Um das entsprechende Schema in Log Analytics für die Office 365-Protokolle zu verwenden, suchen Sie nach **OfficeActivity**.
 

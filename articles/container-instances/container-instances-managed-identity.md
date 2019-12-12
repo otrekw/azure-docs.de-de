@@ -3,12 +3,12 @@ title: Aktivieren einer verwalteten Identität in einer Containergruppe
 description: Erfahren Sie, wie Sie in Azure Container Instances eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten aktivieren können.
 ms.topic: article
 ms.date: 10/22/2018
-ms.openlocfilehash: b5546e8c4b512b584a57e8e4c2ff46c52ab856a0
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: ccf754fac0d884c8a2af9db01578f97b73d54ac4
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533675"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74776522"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -31,7 +31,7 @@ Passen Sie die Beispiele an, um Identitäten in Azure Container Instances zu akt
 Mit einer verwalteten Identität in einem ausgeführten Container können Sie sich [bei jedem Dienst authentifizieren, der die Azure Active Directory-Authentifizierung unterstützt](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), ohne Anmeldeinformationen im Code verwalten zu müssen. Für Dienste, die die Azure AD-Authentifizierung nicht unterstützen, können Sie Geheimnisse in Azure Key Vault speichern und mithilfe der verwalteten Identität auf Key Vault zugreifen, um Anmeldeinformationen abzurufen. Weitere Informationen zur Verwendung einer verwalteten Identität finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!IMPORTANT]
-> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert. Verwaltete Identitäten werden zurzeit nur auf Linux-Containerinstanzen unterstützt.
+> Diese Funktion steht derzeit als Vorschau zur Verfügung. Vorschauversionen werden Ihnen zur Verfügung gestellt, wenn Sie die [zusätzlichen Nutzungsbedingungen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) akzeptieren. Einige Aspekte dieses Features werden bis zur allgemeinen Verfügbarkeit unter Umständen noch geändert. Derzeit werden verwaltete Identitäten in Azure Container Instances nur für Linux-Container und noch nicht für Windows-Container unterstützt.
 >  
 
 ### <a name="enable-a-managed-identity"></a>Aktivieren einer verwalteten Identität

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 3bc17830a4852aa3af1a22f53e54c86ee002150d
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099753"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775737"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -551,9 +551,11 @@ az group deployment create \
 >
 > Die metrische Warnung könnte zwar in einer anderen Ressourcengruppe erstellt werden als der, wo sich die Zielressource befindet, Sie sollten jedoch die Ressourcengruppe der Zielressource verwenden.
 
-## <a name="template-for-a-more-advanced-static-threshold-metric-alert"></a>Vorlage für eine erweiterte Metrikwarnung mit statischem Schwellenwert
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-multiple-criteria"></a>Vorlage für eine Metrikwarnung mit statischem Schwellenwert, mit der mehrere Kriterien überwacht werden
 
-Neuere metrische Warnungen unterstützen das Warnen bei mehrdimensionalen Metriken, und sie unterstützen mehrere Kriterien. Mit der folgenden Vorlage können Sie eine erweiterte metrische Warnung zu dimensionalen Metriken erstellen und mehrere Kriterien angeben.
+Neuere metrische Warnungen unterstützen das Warnen bei mehrdimensionalen Metriken, und sie unterstützen mehrere Kriterien. Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel für dimensionale Metriken erstellen und mehrere Kriterien angeben.
+
+Beachten Sie, dass die Verwendung von Dimensionen in den einzelnen Kriterien auf einen Wert pro Dimension beschränkt ist, wenn die Warnungsregel mehrere Kriterien enthält.
 
 Speichern Sie den JSON-Code unten als „advancedstaticmetricalert.json“ für diese exemplarische Vorgehensweise.
 
@@ -784,13 +786,243 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Die metrische Warnung könnte zwar in einer anderen Ressourcengruppe erstellt werden als der, wo sich die Zielressource befindet, Sie sollten jedoch die Ressourcengruppe der Zielressource verwenden.
+> Wenn eine Warnungsregel mehrere Kriterien enthält, ist die Verwendung von Dimensionen in den einzelnen Kriterien auf einen Wert pro Dimension beschränkt.
 
-## <a name="template-for-a-more-advanced-dynamic-thresholds-metric-alert"></a>Vorlage für eine erweiterte Metrikwarnung mit dynamischem Schwellenwert
+## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Vorlage für eine statische Metrikwarnung, mit der mehrere Dimensionen überwacht werden
 
-Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnung mit dynamischem Schwellenwert erstellen. Mehrere Kriterien werden derzeit nicht unterstützt.
+Mit der folgenden Vorlage können Sie eine statische Metrikwarnungsregel für dimensionale Metriken erstellen.
 
-Warnungsregeln mit dynamischem Schwellenwert können angepasste Schwellenwerte für Hunderte von Metrikreihen (selbst mit verschiedenen Typen) gleichzeitig erstellen, sodass weniger Warnungsregeln zu verwalten sind.
+Mit einer einzelnen Warnungsregel können mehrere metrische Zeitreihen gleichzeitig überwacht werden, sodass weniger Warnungsregeln zu verwalten sind.
+
+Im folgenden Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **Response Type** und **ApiName** für die Metrik **Transactions** überwacht:
+1. **ResponseType**: Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **Response Type**, einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
+2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
+
+Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
+
+Speichern Sie den JSON-Code unten als „multidimensionalstaticmetricalert.json“ für diese exemplarische Vorgehensweise.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Resource ID of the resource emitting the metric that will be used for the comparison."
+            }
+        },
+        "criterion":{
+            "type": "object",
+            "metadata": {
+                "description": "Criterion includes metric name, dimension values, threshold and an operator. The alert rule fires when ALL criteria are met"
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "how often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": { 
+        "criteria": "[array(parameters('criterion'))]"
+     },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": "[variables('criteria')]"
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Sie können die obige Vorlage zusammen mit der unten angegebenen Parameterdatei verwenden. 
+
+Ändern Sie den unten angegebenen JSON-Code, und speichern Sie ihn für diese exemplarische Vorgehensweise als „multidimensionalstaticmetricalert.parameters.json“.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New multi-dimensional metric alert rule (replace with your alert name)"
+        },
+        "alertDescription": {
+            "value": "New multi-dimensional metric alert rule created via template (replace with your alert description)"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
+        },
+        "criterion": {
+            "value": {
+                    "name": "Criterion",
+                    "metricName": "Transactions",
+                    "dimensions": [
+                        {
+                            "name":"ResponseType",
+                            "operator": "Include",
+                            "values": ["*"]
+                        },
+                        {
+                "name":"ApiName",
+                            "operator": "Include",
+                            "values": ["GetBlob", "PutBlob"]    
+                        }
+                    ],
+                    "operator": "GreaterThan",
+                    "threshold": "5",
+                    "timeAggregation": "Total"
+                }
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
+        }
+    }
+}
+```
+
+
+Sie können die metrische Warnung mithilfe der Vorlage und Parameterdatei mit PowerShell oder Azure CLI in Ihrem aktuellen Arbeitsverzeichnis erstellen.
+
+Verwenden von Azure PowerShell
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
+  -TemplateFile multidimensionalstaticmetricalert.json -TemplateParameterFile multidimensionalstaticmetricalert.parameters.json
+```
+
+
+
+Verwenden der Azure-Befehlszeilenschnittstelle
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupofTargetResource \
+    --template-file multidimensionalstaticmetricalert.json \
+    --parameters @multidimensionalstaticmetricalert.parameters.json
+```
+
+
+## <a name="template-for-a-dynamic-thresholds-metric-alert-that-monitors-multiple-dimensions"></a>Vorlage für eine Metrikwarnung mit dynamischem Schwellenwert, mit der mehrere Dimensionen überwacht werden
+
+Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel mit dynamischem Schwellenwert für dimensionale Metriken erstellen.
+
+Eine einzige Warnungsregel mit dynamischem Schwellenwert kann angepasste Schwellenwerte für Hunderte von Metrikzeitreihen (selbst mit verschiedenen Typen) gleichzeitig erstellen, sodass weniger Warnungsregeln zu verwalten sind.
+
+Im folgenden Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **Response Type** und **ApiName** für die Metrik **Transactions** überwacht:
+1. **ResponseType**: Für jeden Wert der Dimension **Response Type**, einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
+2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
+
+Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
 Speichern Sie den JSON-Code unten als „advanceddynamicmetricalert.json“ für diese exemplarische Vorgehensweise.
 
@@ -936,7 +1168,7 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
         "resourceId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourcegroup-name/providers/Microsoft.Storage/storageAccounts/replace-with-storage-account"
         },
-        "criterion1": {
+        "criterion": {
             "value": {
                     "criterionType": "DynamicThresholdCriterion",
                     "name": "1st criterion",
@@ -945,12 +1177,12 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
                         {
                             "name":"ResponseType",
                             "operator": "Include",
-                            "values": ["Success"]
+                            "values": ["*"]
                         },
                         {
                             "name":"ApiName",
                             "operator": "Include",
-                            "values": ["GetBlob"]
+                            "values": ["GetBlob", "PutBlob"]
                         }
                     ],
                     "operator": "GreaterOrLessThan",
@@ -961,7 +1193,7 @@ Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als �
                     },
                     "timeAggregation": "Total"
                 }
-        }
+        },
         "actionGroupId": {
             "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-actiongroup-name"
         }
@@ -997,11 +1229,11 @@ az group deployment create \
 
 >[!NOTE]
 >
-> Die metrische Warnung könnte zwar in einer anderen Ressourcengruppe erstellt werden als der, wo sich die Zielressource befindet, Sie sollten jedoch die Ressourcengruppe der Zielressource verwenden.
+> Für Metrikwarnungsregeln mit dynamischem Schwellenwert werden derzeit mehrere Kriterien nicht unterstützt.
 
-## <a name="template-for-metric-alert-that-monitors-multiple-resources"></a>Vorlage für Metrikwarnung, mit der mehrere Ressourcen überwacht werden
+## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Vorlage für eine Metrikwarnung, mit der mehrere Ressourcen überwacht werden
 
-In den vorherigen Abschnitten wurden Beispiele für Azure Resource Manager-Vorlagen beschrieben, in denen Metrikwarnungen zur Überwachung einer einzelnen Ressource erstellt wurden. Azure Monitor unterstützt jetzt die Überwachung von mehreren Ressourcen mit nur einer Metrikwarnungsregel. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer und DataBox Edge-Geräte unterstützt.
+In den vorherigen Abschnitten wurden Beispiele für Azure Resource Manager-Vorlagen beschrieben, in denen Metrikwarnungen zur Überwachung einer einzelnen Ressource erstellt wurden. Azure Monitor unterstützt jetzt die Überwachung von mehreren Ressourcen mit nur einer Metrikwarnungsregel. Dieses Feature wird derzeit nur in der öffentlichen Azure-Cloud und nur für virtuelle Computer, SQL-Datenbanken, Pools für elastische SQL-Datenbanken und Databox Edge-Geräte unterstützt.
 
 Warnungsregeln mit dynamischem Schwellenwert können auch dazu beitragen, angepasste Schwellenwerte für Hunderte von Metrikreihen (selbst mit verschiedenen Typen) gleichzeitig zu erstellen, sodass weniger Warnungsregeln zu verwalten sind.
 
@@ -1836,6 +2068,7 @@ Speichern Sie den unten angegebenen JSON-Code für diese exemplarische Vorgehens
             "type": "string",
             "defaultValue": "PT1M",
             "allowedValues": [
+                "PT1M",
                 "PT5M",
                 "PT15M",
                 "PT30M",

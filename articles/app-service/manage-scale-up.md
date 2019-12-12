@@ -1,24 +1,16 @@
 ---
-title: Zentrales Hochskalieren von Features und Kapazitäten – Azure App Service | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren, um Kapazität und Features hinzuzufügen.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: gwallace
+title: Zentrales Hochskalieren von Features und Funktionen
+description: Hier erfahren Sie, wie Sie eine App in Azure App Service zentral hochskalieren. Profitieren Sie von mehr CPU, Speicher, Speicherplatz und zusätzlichen Features.
 ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/19/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74089457"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672312"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Zentrales Hochskalieren einer App in Azure App Service
 

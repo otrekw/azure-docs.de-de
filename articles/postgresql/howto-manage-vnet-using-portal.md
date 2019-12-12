@@ -1,17 +1,17 @@
 ---
-title: Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln in Azure Database for PostgreSQL – Einzelserver, im Azure-Portal
+title: Verwenden von VNET-Regeln im Azure-Portal (Azure Database for PostgreSQL, Einzelserver)
 description: Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln in Azure Database for PostgreSQL – Einzelserver, im Azure-Portal
 author: bolzmj
 ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 35120f835d4baf3cda8bd1e742071a2fa01ae1cc
-ms.sourcegitcommit: 6cff17b02b65388ac90ef3757bf04c6d8ed3db03
+ms.openlocfilehash: e3146554cf9fa49e50f6ae24d3c0984bbc081760
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68610352"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770253"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>Erstellen und Verwalten von VNET-Dienstendpunkten und VNET-Regeln in Azure Database for PostgreSQL – Einzelserver, im Azure-Portal
 VNet-Dienstendpunkte und -regeln (Virtual Network) erweitern den privaten Adressraum eines virtuellen Netzwerks auf Ihren Azure Database for PostgreSQL-Server. Eine Übersicht über die VNet-Dienstendpunkte für Azure Database for PostgreSQL, einschließlich Einschränkungen, finden Sie unter [Azure Database for PostgreSQL Server VNet service endpoints (VNet-Dienstendpunkte für Azure Database for PostgreSQL Server)](concepts-data-access-and-security-vnet.md). VNET-Dienstendpunkte sind in allen unterstützten Regionen für Azure Database for PostgreSQL verfügbar.

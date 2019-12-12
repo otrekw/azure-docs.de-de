@@ -1,17 +1,17 @@
 ---
-title: Erstellen und Verwalten von Firewallregeln in Azure Database for PostgreSQL – Einzelserver
+title: Verwalten von Firewallregeln – Azure-Portal – Azure Database for PostgreSQL – Einzelserver
 description: Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL (Einzelserver) im Azure-Portal
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 7eed2e81c6781ca660cffa909f27962a7c5112cb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aeef22bf96221061a444f40e16e33343fafe511c
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65069006"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770304"
 ---
 # <a name="create-and-manage-firewall-rules-for-azure-database-for-postgresql---single-server-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL (Einzelserver) im Azure-Portal
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Server für Azure-Datenbank für PostgreSQL über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden.

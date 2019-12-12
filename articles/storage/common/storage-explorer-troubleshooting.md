@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 4aa9e93831b902ff9f0a0659c650cd2ca123b1a3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d9967b6f1177281759dd66122ffd0183bb2b813d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124005"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74775832"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -95,7 +95,7 @@ Wenn Sie durch Befolgen dieser Schritte keine selbstsignierten Zertifikate finde
 
 Leere Anmeldedialogfelder treten am häufigsten auf, wenn Active Directory-Verbunddienste (AD FS) Storage-Explorer auffordern, eine Umleitung durchzuführen, die von Electron nicht unterstützt wird. Als Problemumgehung können Sie versuchen, den Gerätecodefluss für die Anmeldung zu verwenden. Gehen Sie dazu folgendermaßen vor:
 
-1. Wechseln Sie im Menü zu **Vorschau** > **Gerätecodeanmeldung verwenden**.
+1. Wählen Sie auf der linken vertikalen Symbolleiste die Option **Einstellungen** aus. Wechseln Sie im Bereich „Einstellungen“ zu **Anwendung** > **Anmelden**. Aktivieren Sie die Option **Anmeldung per Gerätecodeflow verwenden**.
 2. Öffnen Sie das Dialogfeld **Verbinden** (über das Steckersymbol in der vertikalen Leiste auf der linken Seite oder durch Auswählen der Option **Konto hinzufügen** im Kontobereich).
 3. Wählen Sie die Umgebung aus, an der Sie sich anmelden möchten.
 4. Wählen Sie **Anmelden** aus.

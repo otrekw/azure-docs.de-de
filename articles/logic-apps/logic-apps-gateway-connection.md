@@ -1,20 +1,17 @@
 ---
-title: 'Zugreifen auf lokale Datenquellen: Azure Logic Apps'
+title: Zugriff auf lokale Datenquellen
 description: Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logik-Apps durch Erstellen einer lokalen Azure-Datengatewayressource
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: arthii, LADocs
+ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 20cdcfdd3795a7614c054ed96b82cc99fc2c5894
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74068894"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74815187"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -73,7 +70,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, erstellen 
 
 1. Geben Sie im Suchfeld des Azure-Portals den Begriff „lokales Datengateway“ ein, und wählen Sie dann **Lokale Datengateways** aus.
 
-   ![Nach „Lokales Datengateway“ suchen](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
+   ![Nach „Lokales Datengateway“ suchen](./media/logic-apps-gateway-connection/search-for-on-premises-data-gateway.png)
 
 1. Wählen Sie unter **Lokale Datengateways** die Option **Hinzufügen** aus.
 
@@ -92,7 +89,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, erstellen 
 
    Im folgenden Beispiel wird eine Gatewayinstallation gezeigt, die sich in derselben Region wie die Gatewayressource befindet und mit demselben Azure-Konto verknüpft ist:
 
-   ![Angeben von Details zum Erstellen der Datengatewayressource](./media/logic-apps-gateway-connection/add-azure-data-gateway-information.png)
+   ![Angeben von Details zum Erstellen der Datengatewayressource](./media/logic-apps-gateway-connection/on-premises-data-gateway-create-connection.png)
 
 <a name="connect-logic-app-gateway"></a>
 
@@ -131,7 +128,7 @@ Zum Aktualisieren der Einstellungen für eine Gatewayverbindung können Sie die 
 
 1. Um alle API-Verbindungen nur für Ihre Logik-App zu suchen, wählen Sie im Menü Ihrer Logik-App unter **Entwicklungstools** die Option **API-Verbindungen** aus.
 
-   ![Wählen Sie im Menü Ihrer Logik-App „API-Verbindungen“ aus.](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
+   ![Wählen Sie im Menü Ihrer Logik-App „API-Verbindungen“ aus.](./media/logic-apps-gateway-connection/logic-app-api-connections.png)
 
 1. Wählen Sie die gewünschte Gatewayverbindung und dann **API-Verbindung bearbeiten** aus.
 
@@ -140,8 +137,8 @@ Zum Aktualisieren der Einstellungen für eine Gatewayverbindung können Sie die 
 
 So suchen Sie alle API-Verbindungen, die mit Ihrem Azure-Abonnement verknüpft sind:
 
-* Wechseln Sie über das Azure-Hauptmenü zu **Alle Dienste** > **Web** > **API-Verbindungen**.
-* Wechseln Sie alternativ über das Azure-Hauptmenü zu **Alle Ressourcen**. Legen Sie Filter **Typ** auf **API-Verbindung** fest.
+* Wählen Sie im Menü des Azure-Portals **Alle Dienste** > **Web** > **API-Verbindungen** aus.
+* Sie können im Menü des Azure-Portals auch **Alle Ressourcen** auswählen. Legen Sie Filter **Typ** auf **API-Verbindung** fest.
 
 <a name="change-delete-gateway-resource"></a>
 
@@ -149,13 +146,13 @@ So suchen Sie alle API-Verbindungen, die mit Ihrem Azure-Abonnement verknüpft s
 
 Um eine andere Gatewayressource zu erstellen, Ihre Gatewayinstallation mit einer anderen Gatewayressource zu verknüpfen oder die Gatewayressource zu entfernen, können Sie die Gatewayressource löschen, ohne dass sich dies auf die Gatewayinstallation auswirkt.
 
-1. Wählen Sie im Azure-Menü die Option **Alle Ressourcen** aus. Suchen Sie Ihre Gatewayressource, und wählen Sie sie aus.
+1. Wählen Sie im Menü des Azure-Portals die Option **Alle Ressourcen** aus, oder suchen Sie **Alle Ressourcen** auf einer beliebigen Seite, und wählen Sie die Option aus. Suchen Sie Ihre Gatewayressource, und wählen Sie sie aus.
 
 1. Wenn nicht bereits ausgewählt, wählen Sie in Ihrem Gatewayressourcenmenü **Lokales Datengateway** aus. Wählen Sie auf der Gatewayressourcen-Symbolleiste die Option **Löschen** aus.
 
    Beispiel:
 
-   ![Löschen der Gatewayressource in Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway-resource.png)
+   ![Löschen der Gatewayressource in Azure](./media/logic-apps-gateway-connection/delete-on-premises-data-gateway.png)
 
 <a name="faq"></a>
 

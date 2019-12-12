@@ -1,5 +1,5 @@
 ---
-title: Benutzerdefinierte Befehle (Vorschau) – Spracherkennungsdienst
+title: 'Speech-Dienst: Benutzerdefinierte Befehle (Vorschau)'
 titleSuffix: Azure Cognitive Services
 description: Ein Überblick über die Features, Funktionen und Einschränkungen für Benutzerdefinierte Befehle (Vorschau), einer Lösung zum Erstellen von Sprachassistenten.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: 62210bf480d09ce2a256a44b7554ac53aa06eb0c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: dd3e27aefe03ee30e721fcbb915d9ad4b3821618
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579698"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806302"
 ---
 # <a name="custom-commands-preview"></a>Benutzerdefinierte Befehle (Vorschau)
 
@@ -49,7 +49,7 @@ Beispielcode für die Erstellung eines Sprachassistenten mit Benutzerdefinierte 
 
 ## <a name="customization"></a>Anpassung
 
-Sprachassistenten, die mithilfe von Azure Speech-Diensten erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für die [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) verfügbar sind.
+Sprachassistenten, die mithilfe des Speech-Dienstes erstellt wurden, können die gesamte Bandbreite der Anpassungsoptionen nutzen, die für [Spracherkennung](speech-to-text.md), [Sprachsynthese](text-to-speech.md) und die [Auswahl benutzerdefinierter Stichwörter](speech-devices-sdk-create-kws.md) zur Verfügung stehen.
 
 > [!NOTE]
 > Die Anpassungsoptionen unterscheiden sich je nach Sprache/Gebietsschema. Weitere Informationen erhalten Sie unter [Unterstützte Sprachen](supported-languages.md).
@@ -60,5 +60,5 @@ Sprachassistenten, die mithilfe von Azure Speech-Diensten erstellt wurden, könn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Beziehen eines kostenlosen Abonnementschlüssels für die Spracherkennungsdienste](get-started.md)
+* [Kostenloses Testen des Speech-Diensts](get-started.md)
 * [Abrufen des Speech SDK](speech-sdk.md)

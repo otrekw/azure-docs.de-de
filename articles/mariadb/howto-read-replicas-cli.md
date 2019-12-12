@@ -1,17 +1,17 @@
 ---
-title: Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB – Azure CLI, REST-API
+title: Verwalten von Lesereplikaten – Azure-Befehlszeilenschnittstelle, REST-API – Azure Database for MariaDB
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der Azure CLI und REST-API Lesereplikate in Azure Database for MariaDB einrichten und verwalten.
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 8b3572182832dc7692f6475be44281f56cf58571
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.date: 12/02/2019
+ms.openlocfilehash: e9353bb5d472cc8dc798e7e09aed2183e48124ed
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122775"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765833"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-cli-and-rest-api"></a>Erstellen und Verwalten von Lesereplikaten in Azure Database for MariaDB mithilfe der Azure CLI und REST-API
 

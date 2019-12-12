@@ -1,7 +1,7 @@
 ---
 title: Streamen von per Codec komprimierten Audiodaten mit dem Speech SDK unter Android
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie mit dem Speech SDK unter Android komprimierte Audiodaten an Azure Speech Services streamen.
+description: Informieren Sie sich, wie Sie mit dem Speech SDK unter Android komprimierte Audiodaten an den Speech-Dienst streamen.
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 01135229167dde3784137ab1b06dfc931766a2e0
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109901"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805840"
 ---
 # <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Gewusst wie: Verwenden von per Codec komprimierter Audioeingabe mit dem Speech SDK unter Android
 
-Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an Speech Services mit PullStream oder PushStream.
+Die Speech SDK-API für **komprimierte Audioeingabestreams** bietet eine Möglichkeit zum Streamen von komprimierten Audiodaten an den Speech-Dienst mit PullStream oder PushStream.
 
 > [!IMPORTANT]
 > Das Streamen komprimierter Eingabeaudiodaten wird derzeit nur für [C++, C# und Java unter Linux (Ubuntu 16.04, Ubuntu 18.04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md) unterstützt. Es wird auch für Java in Android und [Objective-C in iOS](how-to-use-codec-compressed-audio-input-streams-ios.md) unterstützt.
@@ -133,7 +133,7 @@ Nachdem das freigegebene Objekt (libgstreamer_android.so) erstellt wurde, muss d
 
 ## <a name="example-code-using-codec-compressed-audio-input"></a>Beispielcode für die Verwendung von per Codec komprimierter Audioeingabe
 
-Erstellen Sie zum Streamen von komprimierten Audioformaten an Speech Services `PullAudioInputStream` oder `PushAudioInputStream`. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.
+Erstellen Sie `PullAudioInputStream` oder `PushAudioInputStream` zum Streamen von komprimierten Audioformaten an den Speech-Dienst. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.
 
 Angenommen, Sie verfügen über die Eingabestreamklasse `myPullStream` und verwenden OPUS/OGG. Ihr Code kann folgendermaßen aussehen:
 

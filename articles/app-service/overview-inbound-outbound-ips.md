@@ -1,24 +1,15 @@
 ---
-title: Ein-/ausgehende IP-Adressen – Azure App Service | Microsoft-Dokumentation
-description: Beschreibt, wie ein- und ausgehende IP-Adressen in App Service verwendet werden und wie Sie Informationen zu diesen Adressen für Ihre App ermitteln.
-services: app-service
-documentationcenter: ''
-author: cephalin
-manager: cfowler
-editor: ''
-ms.service: app-service
-ms.workload: web
-ms.tgt_pltfrm: na
+title: Eingehende/ausgehende IP-Adressen
+description: Hier wird beschrieben, wie ein- und ausgehende IP-Adressen in Azure App Service verwendet werden, wann sie sich ändern und wie Sie diese Adressen für Ihre App ermitteln.
 ms.topic: article
 ms.date: 06/06/2019
-ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 26033192ee841262345b0fc7f6aec76872379070
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: aebce04fe2f1b055a4d498021dcd25144cd122a9
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470182"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74671600"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 

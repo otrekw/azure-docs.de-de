@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit SharePoint über Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit SharePoint über Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die mithilfe von Azure Logic Apps Ressourcen in SharePoint Online oder SharePoint Server lokal überwachen und verwalten
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 8a34ee4e90b551da35aff8802c8badc0d74ff539
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: bb82ef2d6fb83c2e1b0fa81aa9504c9bb7d8234b
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050773"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789255"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Überwachen und Verwalten von SharePoint-Ressourcen mit Azure Logic Apps
 

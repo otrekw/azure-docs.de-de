@@ -1,17 +1,17 @@
 ---
-title: Kompatibilität von Azure Database for MySQL-Treibern und -Verwaltungstools
+title: Kompatibilität von Treibern und Tools – Azure Database for MySQL
 description: In diesem Artikel werden die MySQL-Treiber und -Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 11/06/2019
-ms.openlocfilehash: 916c02c30f6d54aef44459775a7a437fe96a4ff9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 12/02/2019
+ms.openlocfilehash: 83c1463beec47ed3535811de822348cc7706f757
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720137"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74765340"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>MySQL-Treiber und -Verwaltungstools, die mit Azure Database for MySQL kompatibel sind
 In diesem Artikel werden die Treiber und Verwaltungstools beschrieben, die mit Azure Database for MySQL kompatibel sind.
@@ -22,9 +22,9 @@ Azure Database for MySQL verwendet die weltweit am häufigsten verwendete Commun
 | **Programmiersprache** | **Treiber** | **Links** | **Kompatible Versionen** | **Nicht kompatible Versionen** | **Hinweise** |
 | :----------------------- | :--------- | :-------- | :---------------------- | :------------------------ | :-------- |
 | PHP | mysqli, pdo_mysql, mysqlnd | https://secure.php.net/downloads.php | 5.5, 5.6, 7.x | 5.3 | Fügen Sie für PHP-7.0-Verbindungen mit SSL MySQLi das MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT in die Verbindungszeichenfolge ein. <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> Für PDO legen Sie die Option ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT```auf FALSE fest.|
-| .NET | Asynchroner MySQL-Connector für .NET | [https://doi.org/10.13012/J8PN93H8](https://github.com/mysql-net/MySqlConnector ) <br> [Installationspaket von Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0.27 und höher | 0.26.5 und früher | |
+| .NET | Asynchroner MySQL-Connector für .NET | https://github.com/mysql-net/MySqlConnector <br> [Installationspaket von Nuget](https://www.nuget.org/packages/MySqlConnector/) | 0.27 und höher | 0.26.5 und früher | |
 | .NET | MySQL-Connector/NET | https://github.com/mysql/mysql-connector-net | 8.0, 7.0, 6.10 |  | Bei einigen UTF8-fremden Windows-Systemen tritt unter Umständen ein Verbindungsfehler aufgrund eines Codierungsfehlers auf. |
-| Node.js | mysqljs | [https://doi.org/10.13012/J8PN93H8](https://github.com/mysqljs/mysql/ ) <br> Installationspaket von NPM:<br> Führen Sie `npm install mysql` von NPM aus. | 2.15 | 2.14.1 und früher | |
+| Node.js | mysqljs | https://github.com/mysqljs/mysql/ <br> Installationspaket von NPM:<br> Führen Sie `npm install mysql` von NPM aus. | 2.15 | 2.14.1 und früher | |
 | Node.js | node-mysql2 | https://github.com/sidorares/node-mysql2 | 1.3.4+ | | |
 | Go | Go MySQL-Treiber | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 und früher | Verwenden Sie für Version 1.3 `allowNativePasswords=true` in der Verbindungszeichenfolge. Version 1.4 enthält eine Korrektur, sodass `allowNativePasswords=true` nicht mehr erforderlich ist. |
 | Python | MySQL-Connector/Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3, 2.0, 2.1, 2.2 verwenden 8.0.16+ mit MySQL 8.0  | 1.2.2 und früher | |

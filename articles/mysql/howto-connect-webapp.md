@@ -1,17 +1,17 @@
 ---
-title: Verbinden einer vorhandenen Azure App Service-Instanz mit Azure Database for MySQL
+title: Verbinden mit Azure App Service – Azure Database for MySQL
 description: Anweisungen zum ordnungsgemäßen Verbinden einer vorhandenen Azure App Service-Instanz mit Azure-Datenbank für MySQL
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 5/21/2019
-ms.openlocfilehash: 3fbffc805afb540499e38f1c0853260968228b22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 63ef9ac55fcfaebfd58ae1ccdb34107d41900be5
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66002004"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770542"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>Verbinden vorhandener Azure App Service-Instanzen mit Azure-Datenbank für MySQL
 Dieses Thema erläutert das Verbinden vorhandener Azure App Service-Instanzen mit Ihrem Azure Database for MySQL-Server.

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 8fada1d944a3d6bb6c0f85b3fd456581b2b0bdc6
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.custom: hdinsightactive
+ms.date: 11/27/2019
+ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71720014"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688051"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Autorisieren von Benutzern für Apache Ambari-Ansichten
 
@@ -28,7 +28,7 @@ Falls noch nicht geschehen, führen Sie [diese Anweisungen](./domain-joined/apac
 
 ## <a name="access-the-ambari-management-page"></a>Zugreifen auf die Ambari-Verwaltungsseite
 
-Navigieren Sie zur **Ambari-Verwaltungsseite** der [Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) und rufen Sie **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`** auf. Geben Sie den Benutzernamen und das Kennwort für den Clusteradministrator ein, die Sie beim Erstellen des Clusters definiert haben. Wählen Sie anschließend im Ambari-Dashboard die Option **Ambari verwalten** unterhalb des **Administrator**-Menüs aus:
+Um zur **Ambari-Verwaltungsseite** in der [Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md) zu navigieren, rufen Sie `https://CLUSTERNAME.azurehdinsight.net` auf. Geben Sie den Benutzernamen und das Kennwort für den Clusteradministrator ein, die Sie beim Erstellen des Clusters definiert haben. Wählen Sie anschließend im Ambari-Dashboard die Option **Ambari verwalten** unterhalb des **Administrator**-Menüs aus:
 
 ![Apache Ambari-Dashboard – Verwalten](./media/hdinsight-authorize-users-to-ambari/manage-apache-ambari.png)
 
@@ -230,7 +230,7 @@ Wechseln Sie zum Verwalten der Rollen zur **Ambari-Verwaltungsseite**, und wähl
 
 Klicken Sie auf der Seite „Rollen“ auf das blaue Fragezeichen neben der Tabellenüberschrift **Rollen**, um die Liste der Berechtigungen anzuzeigen, die den Rollen jeweils zugeordnet sind.
 
-![Apache Ambari – Berechtigungen für den Menülink „Rollen“](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache Ambari – Berechtigungen für den Menülink „Rollen“")
+![Apache Ambari – Menülink „Rollen“ und Berechtigungen](./media/hdinsight-authorize-users-to-ambari/roles-menu-permissions.png "Apache Ambari – Menülink „Rollen“ und Berechtigungen")
 
 Auf dieser Seite stehen Ihnen zwei verschiedene Ansichten zur Verwaltung der Rollen für Benutzer und Gruppen zur Verfügung: Block- und Listenansicht.
 
@@ -248,7 +248,7 @@ Die Listenansicht stellt schnelle Bearbeitungsfunktionen in zwei Kategorien bere
 
     ![Apache Ambari – Listenansicht für Rollen – Benutzer](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-*  Bei der Kategorie „Gruppen“ der Listenansicht werden alle Gruppen und die der jeweiligen Gruppe zugewiesene Rolle angezeigt. In diesem Beispiel wird die Liste der Gruppen mit den Azure AD-Gruppen synchronisiert, die in der Eigenschaft **Zugriff auf die Benutzergruppe** der Domäneneinstellungen für den Cluster angegeben sind. Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen eines HDInsight-Clusters mit dem ESP](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
+* Bei der Kategorie „Gruppen“ der Listenansicht werden alle Gruppen und die der jeweiligen Gruppe zugewiesene Rolle angezeigt. In diesem Beispiel wird die Liste der Gruppen mit den Azure AD-Gruppen synchronisiert, die in der Eigenschaft **Zugriff auf die Benutzergruppe** der Domäneneinstellungen für den Cluster angegeben sind. Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen eines HDInsight-Clusters mit dem ESP](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
     ![Apache Ambari – Listenansicht für Rollen – Gruppen](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279691"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664946"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Konfigurationsleitfaden für Integritätsmonitore in Azure Monitor für Container
 
@@ -82,7 +82,7 @@ Azure Monitor für Container umfasst eine Reihe wichtiger Überwachungsszenarien
 |Knoten (dem Knotenpool übergeordnet) |Hierbei handelt es sich um einen Aggregatmonitor aller Knotenpools. Sein Status basiert auf dem schlechtesten Status der untergeordneten Monitore (d.h. den im Cluster vorhandenen Knotenpools). |Schlechtester |
 |Cluster (den Knoten übergeordnet/<br> Kubernetes-Infrastruktur) |Dies ist der übergeordnete Monitor, der mit dem Status des untergeordneten Monitors mit dem schlechtesten Integritätsstatus (Kubernetes-Infrastruktur und Knoten) übereinstimmt. |Schlechtester |
 |Kubernetes-Infrastruktur |Dieser Monitor meldet den kombinierten Integritätsstatus der verwalteten Infrastrukturkomponenten des Clusters. Sein Status wird als „schlechtester“ der untergeordneten Monitorstatus (Kube-Systemworkloads und API-Serverstatus) berechnet. |Schlechtester|
-|Systemworkload |Dieser Monitor meldet den Integritätsstatus einer Kube-Systemworkload. Dieser Monitor stimmt mit dem Status des untergeordneten Monitors mit dem schlechtesten Integritätsstatus überein, d.h. dem Monitor für **Pods im Zustand „Bereit“** und den Containern in der Workload. |Schlechtester |
+|Systemworkload |Dieser Monitor meldet den Integritätsstatus einer Kube-Systemworkload. Dieser Monitor stimmt mit dem untergeordneten Monitor mit dem schlechtesten Integritätszustand überein, also **Pods im Zustand „Bereit“** (Monitor und Container in der Workload). |Schlechtester |
 |Container |Dieser Monitor meldet den Gesamtintegritätsstatus eines Containers in einer bestimmten Workload. Dieser Monitor stimmt mit dem Status des untergeordneten Monitors mit dem schlechtesten Integritätsstatus überein, d.h. den Monitoren für **CPU-Auslastung** und **Arbeitsspeicherauslastung**. |Schlechtester |
 
 ## <a name="next-steps"></a>Nächste Schritte

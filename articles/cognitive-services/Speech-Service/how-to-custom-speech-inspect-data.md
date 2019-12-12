@@ -1,5 +1,5 @@
 ---
-title: Überprüfen der Datenqualität für Custom Speech – Speech Service
+title: Überprüfen der Datenqualität für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Sie können hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist.
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/06/2019
+ms.date: 12/02/2019
 ms.author: erhopf
-ms.openlocfilehash: cf0deffb6fe484f7e3ee38b95f285bb4b7cc809c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 60b415f69800885f37ee53cc4f090098f5ebf1f1
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072560"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806078"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 
@@ -40,6 +40,8 @@ Gehen Sie wie folgt vor, um einen Test zu erstellen:
 6. Klicken Sie auf **Create**.
 
 Nach erfolgreicher Testerstellung können Sie die Modelle nebeneinander vergleichen.
+
+[!INCLUDE [service-pricing-advisory](includes/service-pricing-advisory.md)]
 
 ## <a name="side-by-side-model-comparisons"></a>Gegenüberstellung der Modelle
 

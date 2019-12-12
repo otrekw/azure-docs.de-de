@@ -1,20 +1,19 @@
 ---
-title: XML-Nachrichten und Flatfiles – -Azure Logic Azure Logic Apps
+title: XML-Nachrichten und Flatfiles
 description: Verarbeiten, Überprüfen und Transformieren von XML-Nachrichten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 730adf3e6ef3ddab5a8b0e927f94ffe3725358f4
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: 3cb3472572abbd891f8d36ea036b371c1224f38c
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679901"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792152"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-Nachrichten und Flatfiles in Azure Logic Apps mit Enterprise Integration Pack
 
@@ -24,7 +23,7 @@ Das Enterprise Integration Pack enthält beispielsweise diese Funktionen:
 
 * [XML-Überprüfung](logic-apps-enterprise-integration-xml-validation.md): Überprüfen einer ein- oder ausgehenden XML-Nachricht anhand eines bestimmten Schemas.
 
-* [XML-Transformation](logic-apps-enterprise-integration-transform.md)  Konvertieren oder Anpassen einer XML-Nachricht basierend auf Ihren Anforderungen oder den Anforderungen eines Partners mithilfe von Zuordnungen.
+* [XML-Transformation:](logic-apps-enterprise-integration-transform.md) Konvertieren oder Anpassen einer XML-Nachricht basierend auf Ihren Anforderungen oder den Anforderungen eines Partners mithilfe von Zuordnungen.
 
 * [Flatfile-Codierung und Flatfile-Decodierung](logic-apps-enterprise-integration-flatfile.md): Codieren oder Decodieren einer Flatfile.
 

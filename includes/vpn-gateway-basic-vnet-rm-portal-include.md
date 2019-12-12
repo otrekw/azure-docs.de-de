@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a601b0c40f84832101e97a7abf7dd7418a0a5c69
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
+ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67673354"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74828841"
 ---
 Sie können ein VNET wie im Folgenden beschrieben mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal erstellen. Weitere Informationen zu virtuellen Netzwerken finden Sie in der [Übersicht über Azure Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,11 +22,13 @@ Sie können ein VNET wie im Folgenden beschrieben mit dem Resource Manager-Berei
 >
 >
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressource erstellen**. Die Seite **Neu** wird geöffnet.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. Die Seite **Neu** wird geöffnet.
 
-2. Geben Sie *virtuelles Netzwerk* in das Feld **Marketplace durchsuchen** ein, und wählen Sie in der zurückgegebenen Liste den Eintrag **Virtuelles Netzwerk** aus. Die Seite **Virtuelles Netzwerk** wird geöffnet.
+2. Geben Sie *virtuelles Netzwerk* in das Feld **Marketplace durchsuchen** ein, und wählen Sie aus den Ergebnissen den Eintrag **Virtuelles Netzwerk** aus.
 
-   ![Zur Seite mit den Ressourcen des virtuellen Netzwerks navigieren](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "Zur Seite mit den Ressourcen des virtuellen Netzwerks navigieren")
+   ![Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks](./media/vpn-gateway-basic-vnet-rm-portal-include/search-marketplace-for-virtual-network.png "Navigieren zur Seite mit den Ressourcen des virtuellen Netzwerks")
+
+   Die Seite **Virtuelles Netzwerk** wird geöffnet.
 
 3. Wählen Sie unten auf der Seite in der Liste **Bereitstellungsmodell auswählen** die Option **Resource Manager** aus, und klicken Sie anschließend auf **Erstellen**. Die Seite **Virtuelles Netzwerk erstellen** wird geöffnet.
 

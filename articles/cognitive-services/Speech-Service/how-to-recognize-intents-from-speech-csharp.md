@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: wolfma
-ms.openlocfilehash: 1c61f8c0fe1c2a04d390567cc0bc94f22bc5e897
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 554a7cbd79dbb6e1306686600474f727c99defed
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110164"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805891"
 ---
 # <a name="how-to-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>Erkennen von Absichten anhand gesprochener Sprache mit dem Speech SDK für C#
 
@@ -44,7 +44,7 @@ Vergewissern Sie sich, dass folgende Elemente vorhanden sind, bevor Sie mit dies
 
 ## <a name="luis-and-speech"></a>LUIS und Spracherkennung
 
-LUIS ist in die Speech-Dienste integriert, um Absichten anhand von Sprache zu erkennen. Ein Abonnement der Speech-Dienste ist nicht erforderlich. Sie benötigen lediglich LUIS.
+LUIS ist in Speech Service integriert, um Absichten aus Sprache zu erkennen. Ein Speech Service-Abonnement ist nicht erforderlich, nur LUIS.
 
 LUIS verwendet drei Arten von Schlüsseln:
 
@@ -56,7 +56,7 @@ LUIS verwendet drei Arten von Schlüsseln:
 
 Für diesen Leitfaden benötigen Sie den Endpunktschlüsseltyp. Dieser Leitfaden verwendet die LUIS-Beispiel-App für die Gebäudeautomatisierung, die Sie erstellen können, indem Sie die Anleitung im Schnellstart [Verwenden der vordefinierten Home Automation-App](https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app) befolgen. Wenn Sie selbst eine LUIS-App erstellt haben, können Sie diese stattdessen verwenden.
 
-Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Integration von Spracherkennungsdiensten möglich, und er ist für diesen Leitfaden nicht geeignet. Erstellen Sie eine LUIS-Ressource im Azure-Dashboard, und weisen Sie sie der LUIS-App zu. Sie können den Tarif für ein kostenloses Abonnement für diesen Leitfaden verwenden.
+Wenn Sie eine LUIS-App erstellen, wird automatisch ein Startschlüssel generiert, mit dem Sie die App mithilfe von Textabfragen testen können. Mit diesem Schlüssel ist keine Integration des Speech-Diensts möglich und eignet sich nicht für diesen Leitfaden. Erstellen Sie eine LUIS-Ressource im Azure-Dashboard, und weisen Sie sie der LUIS-App zu. Sie können den Tarif für ein kostenloses Abonnement für diesen Leitfaden verwenden.
 
 Nachdem Sie die LUIS-Ressource im Azure-Dashboard erstellt haben, melden Sie sich beim [LUIS-Portal](https://www.luis.ai/home) an, wählen Sie Ihre Anwendung auf der Seite **Eigene Anwendungen** aus, und wechseln Sie dann zur Seite **Verwalten** der App. Wählen Sie schließlich auf der Seitenleiste die Option **Schlüssel und Endpunkte** aus.
 
@@ -128,7 +128,7 @@ Die folgenden Abschnitte enthalten eine Erläuterung des Codes.
 Zunächst müssen Sie eine Sprachkonfiguration aus dem LUIS-Endpunktschlüssel und der Region erstellen. Sprachkonfigurationen können verwendet werden, um Erkennungen für die verschiedenen Funktionen des Speech SDK zu erstellen. Die Sprachkonfiguration bietet mehrere Möglichkeiten, um das Abonnement anzugeben, das Sie verwenden möchten. Hier verwenden wir `FromSubscription`. Diese Angabe übernimmt den Abonnementschlüssel und die Region.
 
 > [!NOTE]
-> Verwenden Sie den Schlüssel und die Region Ihres LUIS-Abonnements (nicht den Schlüssel und die Region eines Speech-Dienste-Abonnements).
+> Verwenden Sie den Schlüssel und die Region Ihres LUIS-Abonnements und nicht die des Abonnements für den Speech-Dienst.
 
 Als nächstes erstellen Sie eine Absichtserkennung mit `new IntentRecognizer(config)`. Da die Konfiguration bereits weiß, welches Abonnement verwendet werden soll, entfällt die erneute Angabe von Abonnementschlüssel und Endpunkt beim Erstellen der Erkennung.
 

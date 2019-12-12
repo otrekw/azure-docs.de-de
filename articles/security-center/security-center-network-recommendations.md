@@ -13,15 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2019
 ms.author: memildin
-ms.openlocfilehash: bf33fe29b18b09bf903e1fc331f1c378eacb3e17
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 21feed73d025e0c0a4b2c7bb07d23f450780126e
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201719"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766785"
 ---
-# <a name="protect-your-network-resources-in-azure-security-center"></a>Schützen Ihrer Netzwerkressourcen in Azure Security Center
+# <a name="protect-your-network-resources"></a>Schützen von Netzwerkressourcen
 Azure Security Center analysiert ständig den Sicherheitsstatus Ihrer Azure-Ressourcen anhand bewährter Methoden für Netzwerksicherheit. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
+
+In diesem Artikel wird die Seite **Netzwerk** des Abschnitts „Ressourcensicherheit“ im Azure Security Center erläutert, und Sie erhalten einige Empfehlungen.
+
+Eine vollständige Liste der Empfehlungen für das Netzwerk finden Sie unter [Netzwerkempfehlungen](recommendations-network.md).
 
 Dieser Artikel behandelt Empfehlungen, die aus Sicht der Netzwerksicherheit auf Ihre Azure-Ressourcen zutreffen. Bei Netzwerkempfehlungen stehen Firewalls der nächsten Generation, Netzwerksicherheitsgruppen, Regeln für den eingehenden Datenverkehr mit übermäßigem JIT-VM-Zugriff und vieles mehr im Mittelpunkt. Eine Liste von Netzwerkempfehlungen und Aktionen zur Problembehebung finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
@@ -131,31 +135,8 @@ In dieser Topologieansicht werden auf der ersten Ebene VNETs angezeigt. Die zwei
 
 Die dritte Ebene zeigt virtuelle Computer, ähnlich wie in der Beschreibung oben. Sie können auf eine beliebige Ressource klicken, um weitere Informationen zu erhalten oder die erforderliche Sicherheitskontrolle/-konfiguration anzuwenden.
 
-## <a name="network-recommendations"></a>Netzwerkempfehlungen
-
-|Name der Empfehlung|BESCHREIBUNG|severity|Sicherheitsbewertung|Ressourcentyp|
-|----|----|----|----|----|----|
-|Netzwerksicherheitsgruppen auf Subnetzebene sollten aktiviert werden.|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für in Ihren Subnetzen bereitgestellte Ressourcen.|Hoch/Mittel|30|Subnet|
-|Virtuellen Computern muss eine Netzwerksicherheitsgruppe zugeordnet sein.|Aktivieren Sie Netzwerksicherheitsgruppen zum Steuern des Netzwerkzugriffs für Ihre virtuellen Computer.|Hoch/Mittel|30|Virtueller Computer|
-|Der Zugriff sollte für tolerante Netzwerksicherheitsgruppen mit VMs mit Internetzugriff eingeschränkt werden.|Stärken Sie die Netzwerksicherheitsgruppen Ihrer VMs mit Internetzugriff, indem Sie den Zugriff auf Ihre bestehenden Zulassungsregeln einschränken.|Hoch|20|Virtueller Computer|
-|Die Regeln für Webanwendungen in IaaS-Netzwerksicherheitsgruppen sollten verstärkt werden.|Härten Sie die Netzwerksicherheitsgruppe (NSG) Ihrer virtuellen Computer, auf denen Webanwendungen ausgeführt werden, mit NSG-Regeln, die in Bezug auf Webanwendungsports zu tolerant sind.|Hoch|20|Virtueller Computer|
-|Der Zugriff auf App Services sollte eingeschränkt werden.|Schränken Sie den Zugriff auf Ihre App Services ein, indem Sie die Netzwerkkonfiguration ändern, um eingehenden Datenverkehr aus Bereichen abzulehnen, die zu weit gefasst sind.|Hoch|10|App Service|
-|Verwaltungsports sollten auf Ihren virtuellen Computern geschlossen werden.|Härten Sie die Netzwerksicherheitsgruppe Ihrer virtuellen Computer, um den Zugriff auf Verwaltungsports einzuschränken.|Hoch|10|Virtueller Computer|
-DDoS Protection Standard sollte aktiviert sein.|Schützen Sie virtuelle Netzwerke, die Anwendungen mit öffentlichen IP-Adressen enthalten, indem Sie den DDoS-Schutzdienststandard aktivieren. DDoS-Schutz ermöglicht die Entschärfung von volumetrischen Netzwerk- und Protokollangriffen.|Hoch|10|Virtuelles Netzwerk|
-|Die IP-Weiterleitung auf dem virtuellen Computer muss deaktiviert sein.|Aktivieren Sie die IP-Weiterleitung. Wenn die IP-Weiterleitung auf der NIC eines virtuellen Computers aktiviert ist, kann der Computer Datenverkehr empfangen, der für andere Ziele bestimmt ist. Da die IP-Weiterleitung nur selten benötigt wird (z. B. bei Verwendung des virtuellen Computers als virtuelles Netzwerkgerät), sollte dieser Vorgang vom Netzwerksicherheitsteam geprüft werden.|Mittel|10|Virtueller Computer|
-|Zugriff auf Webanwendung nur über HTTPS gestatten|Aktivieren Sie Zugriff vom Typ „Nur HTTPS“ für Webanwendungen. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.|Mittel|20|Webanwendung|
-|Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden.|Wenden Sie die Just-In-Time-VM-Zugriffssteuerung (JIT) an, um den Zugriff auf ausgewählte Ports dauerhaft zu sperren und autorisierten Benutzern zu ermöglichen, sie per JIT nur für einen begrenzten Zeitraum zu öffnen.|Hoch|20|Virtueller Computer|
-|Zugriff auf Funktions-App nur über HTTPS gestatten|Aktivieren Sie den Zugriff vom Typ „Nur HTTPS“ für Funktions-Apps. Durch die Verwendung von HTTPS wird die Server-/Dienstauthentifizierung sichergestellt, und Daten werden bei der Übertragung vor Abhörangriffen auf der Vermittlungsschicht geschützt.|Mittel|20|Funktionen-App|
-|Sichere Übertragung in Speicherkonten sollte aktiviert werden.|Ermöglichen Sie die sichere Übertragung auf Speicherkonten. Sichere Übertragung ist eine Option, die erzwingt, dass Ihr Storage-Konto nur Anforderungen von sicheren Verbindungen (HTTPS) akzeptiert. Durch die Verwendung von HTTPS wird eine Authentifizierung zwischen dem Server und dem Dienst sichergestellt, und die übertragenen Daten werden vor Angriffen auf Netzwerkebene geschützt, z. B. Man-in-the-Middle-Angriffe, Abhörangriffe und Session Hijacking.|Hoch|20|Speicherkonto|
-
 ## <a name="see-also"></a>Weitere Informationen
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Themen:
 
 * [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 * [Schützen Ihres Azure SQL-Diensts in Azure Security Center](security-center-sql-service-recommendations.md)
-
-Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
-
-* [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](tutorial-security-policy.md) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center:](security-center-managing-and-responding-alerts.md) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.

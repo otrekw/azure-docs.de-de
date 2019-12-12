@@ -1,7 +1,7 @@
 ---
-title: Vorbereiten von Daten für Custom Voice – Speech Service
+title: 'Speech-Dienst: Vorbereiten von Daten für Custom Voice'
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie mit Speech Service eine benutzerdefinierte Stimme für Ihre Marke. Sie stellen Studioaufnahmen und die zugehörigen Skripts bereit, und der Dienst generiert ein einzigartiges Stimmmodell, das auf die aufgezeichnete Stimme abgestimmt ist. Verwenden Sie diese Stimme dann, um Sprache in Ihren Produkten, Tools und Anwendungen zu synthetisieren.
+description: Erstellen Sie mit Speech-Dienst eine benutzerdefinierte Stimme für Ihre Marke. Sie stellen Studioaufnahmen und die zugehörigen Skripts bereit, und der Dienst generiert ein einzigartiges Stimmmodell, das auf die aufgezeichnete Stimme abgestimmt ist. Verwenden Sie diese Stimme dann, um Sprache in Ihren Produkten, Tools und Anwendungen zu synthetisieren.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: a954118cd0697213674bb9981f0d94100488fb38
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464509"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74805976"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme
 
-Wenn Sie bereit sind, eine benutzerdefinierte Stimme für die Sprachsynthese zu erstellen, besteht der erste Schritt darin, Audioaufnahmen und zugehörige Skripts für das Training des Stimmmodells zusammenzustellen. Der Dienst erstellt anhand dieser Daten eine einzigartige Stimme, die der Stimme in den Aufnahmen entspricht. Nachdem Sie die Stimme trainiert haben, können Sie mit dem Synthetisieren von Sprache in Ihren Anwendungen beginnen.
+Wenn Sie bereit sind, eine benutzerdefinierte Stimme für die Sprachsynthese zu erstellen, besteht der erste Schritt darin, Audioaufnahmen und zugehörige Skripts für das Training des Stimmmodells zusammenzustellen. Der Speech-Dienst erstellt anhand dieser Daten eine einzigartige Stimme, die der Stimme in den Aufnahmen entspricht. Nachdem Sie die Stimme trainiert haben, können Sie mit dem Synthetisieren von Sprache in Ihren Anwendungen beginnen.
 
 Zu Beginn sind für einen Proof of Concept nur wenige Daten erforderlich. Je mehr Daten Sie bereitstellen, desto natürlicher klingt Ihre benutzerdefinierte Stimme jedoch. Bevor Sie Ihr eigenes Stimmmodell für die Sprachsynthese trainieren können, benötigen Sie Audioaufnahmen und die zugehörigen Texttranskriptionen. Auf dieser Seite werden die Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 

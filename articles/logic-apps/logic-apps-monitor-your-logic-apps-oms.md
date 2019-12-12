@@ -1,20 +1,19 @@
 ---
-title: Überwachen von Logik-Apps mit Azure Monitor – Azure Logic Apps
+title: Überwachen von Logik-Apps mit Azure Monitor
 description: Sammeln Sie mit Azure Monitor-Protokollen Erkenntnisse und Debuggingdaten für die Problembehandlung und Diagnose von Logik-App-Ausführungen.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: divswa, LADocs
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/29/2019
-ms.openlocfilehash: a038a05f03ce7a209ae82203441750749bc6c4c4
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 305b50c86a468354f049fcc57fcb79b537e8dfed
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70138806"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74791894"
 ---
 # <a name="get-insights-and-debugging-data-for-logic-apps-by-using-azure-monitor-logs"></a>Sammeln Sie mit Azure Monitor-Protokollen Erkenntnisse und Debuggingdaten für Logik-Apps.
 

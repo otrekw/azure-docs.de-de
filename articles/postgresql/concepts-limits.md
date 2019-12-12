@@ -1,5 +1,5 @@
 ---
-title: Beschränkungen in Azure Database for PostgreSQL – Einzelserver
+title: Beschränkungen – Azure Database for PostgreSQL – Einzelserver
 description: In diesem Artikel werden die Beschränkungen in Azure Database for PostgreSQL für Einzelserver beschrieben, z. B. die Anzahl der Verbindungen und Optionen für die Speicher-Engine.
 author: rachel-msft
 ms.author: raagyema
@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b9cef4753b6fd324b38d7254139fe288463a0c0c
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d74206ebdf35a8f5b353553cb89e954cb2313611
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123896"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74768536"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Beschränkungen in Azure Database for PostgreSQL – Einzelserver
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben. Informationen zu den Tarifen für Ressourcen (Compute, Arbeitsspeicher, Speicher) finden Sie im Artikel [Tarife](concepts-pricing-tiers.md).

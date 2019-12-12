@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/20/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 30e2b880f32f896098778942deb67d7ced9f5c2d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: ba3535679f37916a18aae5fe7dbe4e9114cea695
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484226"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74664912"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -1130,6 +1130,9 @@ Azure Monitor bietet verschiedene Methoden für die Interaktion mit Metriken, z.
 |---|---|---|---|---|---|
 |ApplicationRuleHit|Trefferanzahl für Anwendungsregeln|Count|Gesamt|Häufigkeit, mit der Anwendungsregeln aufgerufen wurden|Status, Grund, Protokoll|
 |NetworkRuleHit|Trefferanzahl für Netzwerkregeln|Count|Gesamt|Häufigkeit, mit der Netzwerkregeln aufgerufen wurden|Status, Grund, Protokoll|
+|DataProcessed|Verarbeitete Daten|Byte|Gesamt|Datenmenge, die die Firewall durchläuft|Keine Dimensionen|
+|FirewallHealthState|„Firewall Health State“ (Integritätszustand der Firewall)|Percent|Durchschnitt|Zeigt die Integrität der Firewall an|Status, Ursache|
+|SNATPortUtilization|„SNAT Port Utilization“ (SNAT-Portnutzung)|Percent|Durchschnitt|Anzahl der SNAT-Ports in Prozent, die durch die Firewall genutzt werden|Keine Dimensionen|
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 

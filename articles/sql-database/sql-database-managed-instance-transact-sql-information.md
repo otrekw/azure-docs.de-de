@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e517b6030aa1c9549e33c00425851afae90aac42
+ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186442"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74707644"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>Verwaltete Instanz, T-SQL-Unterschiede, Einschränkungen und bekannte Probleme
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Unterschiede in der Syntax und dem Verhalten zwisch
 
 Es gibt einige PaaS-Einschränkungen, die in der verwalteten Instanz eingeführt werden, und einige Verhaltensänderungen im Vergleich zu SQL Server. Die Unterschiede sind in die folgenden Kategorien unterteilt: <a name="Differences"></a>
 
-- [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
+- [Verfügbarkeit](#availability) umfasst die Unterschiede in [Always On-Verfügbarkeitsgruppen](#always-on-availability-groups) und [Sicherungen](#backup).
 - [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credential), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen und Benutzern](#logins-and-users) sowie [Dienstschlüsseln und Diensthauptschlüsseln](#service-key-and-service-master-key)
 - [Konfiguration](#configuration), einschließlich der Unterschiede bei [Pufferpoolerweiterung](#buffer-pool-extension), [Sortierung](#collation), [Kompatibilitätsgraden](#compatibility-levels),[Datenbankspiegelung](#database-mirroring), [Datenbankoptionen](#database-options), [SQL Server-Agent](#sql-server-agent) und [Tabellenoptionen](#tables)
 - [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Dateitabelle](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker) sowie [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-and-triggers).
@@ -38,7 +38,7 @@ Auf dieser Seite werden auch [temporäre bekannte Probleme](#Issues) erläutert,
 
 ## <a name="availability"></a>Verfügbarkeit
 
-### <a name="always-on-availability"></a>Always On
+### <a name="always-on-availability-groups"></a>Always On-Verfügbarkeitsgruppen
 
 [Hochverfügbarkeit](sql-database-high-availability.md) ist in verwalteten Instanzen integriert und kann von Benutzern nicht gesteuert werden. Folgende Anweisungen werden nicht unterstützt:
 

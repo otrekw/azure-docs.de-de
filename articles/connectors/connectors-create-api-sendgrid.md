@@ -1,22 +1,18 @@
 ---
-title: Herstellen einer Verbindung mit SendGrid über Azure Logic Apps | Microsoft-Dokumentation
+title: Herstellen einer Verbindung mit SendGrid über Azure Logic Apps
 description: Automatisieren von Aufgaben und Workflows, die E-Mails senden und Adressenlisten in SendGrid mithilfe von Azure Logic Apps
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
-ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
+ms.reviewer: klam, logicappspm
 ms.topic: article
-tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 4f5efd73ef2a08069e3b9f2c7d60be99c209ddca
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+tags: connectors
+ms.openlocfilehash: 998020c5e39c8d50e8a14c74c43b7b435752f43d
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050809"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74789306"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Senden von E-Mails und Verwalten von Adressenlisten in SendGrid mithilfe von Azure Logic Apps
 

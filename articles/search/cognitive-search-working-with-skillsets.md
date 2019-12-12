@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 340e6d3feaf0265597a70229fd2658f009c01f64
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113648"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74790881"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Qualifikationsgruppenkonzepte und Komposition in Azure Cognitive Search
 
@@ -65,7 +65,7 @@ Jede Qualifikation erfordert einen Kontext. Ein Kontext bestimmt Folgendes:
 
 ### <a name="sourcecontext"></a>SourceContext
 
-`sourceContext` wird nur in [Shaper-Qualifikationen](cognitive-search-skill-shaper.md) und [Projektionen](knowledge-store-projection-overview.md) verwendet. Es wird verwendet, um geschachtelte Objekte mit mehreren Ebenen zu erstellen. Mit `sourceContext` können Sie ein hierarchisches, anonymes Typobjekt erstellen, für das mehrere Qualifikationen erforderlich wären, wenn Sie nur den Kontext verwenden würden. Die Verwendung von `sourceContext` wird im nächsten Abschnitt gezeigt.
+`sourceContext` wird nur in Qualifikationseingaben und [Projektionen](knowledge-store-projection-overview.md) verwendet. Es wird verwendet, um geschachtelte Objekte mit mehreren Ebenen zu erstellen. Möglicherweise müssen Sie ein neues Objekt erstellen, um es als Eingabe an eine Qualifikation oder ein Projekt an den Wissensspeicher zu übergeben. Da es sich bei Anreicherungsknoten möglicherweise nicht um ein gültiges JSON-Objekt in der Anreicherungsstruktur handelt und das Verweisen auf einen Knoten in der Struktur nur den Zustand des Knotens zum Zeitpunkt der Erstellung zurückgibt, müssen Sie ein ordnungsgemäß formatiertes JSON-Objekt erstellen, um die Anreicherungen als Qualifikationseingaben oder Projektionen verwenden zu können. Mit `sourceContext` können Sie ein hierarchisches, anonymes Typobjekt erstellen, für das mehrere Qualifikationen erforderlich wären, wenn Sie nur den Kontext verwenden würden. Die Verwendung von `sourceContext` wird im nächsten Abschnitt gezeigt. Sehen Sie sich die Qualifikationsausgabe an, die eine Anreicherung generiert hat, um zu ermitteln, ob es sich um ein gültiges JSON-Objekt und nicht um einen primitiven Typ handelt.
 
 ### <a name="projections"></a>Projektionen
 

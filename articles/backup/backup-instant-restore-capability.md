@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: c87dc98ddd1d5799f3363d7574063ef752fd8239
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172345"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806370"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -21,7 +21,7 @@ Das neue Modell für die sofortige Wiederherstellung bietet die folgenden Featur
 
 * Die als Teil eines Sicherungsauftrags erstellte Momentaufnahme kann genutzt werden, um für die Wiederherstellung verfügbar zu sein, ohne das Ende der Datenübertragung an den Tresor abzuwarten. Die Wartezeit, bis Momentaufnahmen vor dem Auslösen einer Wiederherstellung in den Tresor kopiert werden, wird reduziert.
 * Die Sicherungs- und Wiederherstellungszeiten werden reduziert, indem Momentaufnahmen standardmäßig zwei Tage lang lokal gespeichert werden. Dieser Standardwert für die Aufbewahrung von Momentaufnahmen kann auf einen beliebigen Wert zwischen 1 und 5 Tagen konfiguriert werden.
-* Unterstützt Datenträgergrößen bis zu 4 TB. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen. Wenn Sie sich für eine eingeschränkte Public Preview der Azure Backup-Unterstützung für große Datenträger mit einer Größe von mehr als 4 TB und bis zu 30 TB registrieren möchten, finden Sie weitere Informationen unter [Sicherung des virtuellen Computers mit Datenträgergrößen von bis zu 30 TB](backup-azure-vms-introduction.md#limited-public-preview-backup-of-vm-with-disk-sizes-up-to-30tb).
+* Es werden Datenträgergrößen von bis zu 32 TB unterstützt. Ein Ändern der Datenträgergröße wird von Azure Backup nicht empfohlen.
 * Unterstützt SSD Standard-Datenträger sowie HDD Standard-Datenträger und SSD Premium-Datenträger.
 * Die Möglichkeit zur Verwendung der ursprünglichen Speicherkonten (pro Datenträger) eines nicht verwalteten virtuellen Computers bei der Wiederherstellung. Diese Funktion ist auch dann vorhanden, wenn die VM Datenträger enthält, die an mehrere Speicherkonten verteilt werden. Sie beschleunigt Wiederherstellungsvorgänge für verschiedene VM-Konfigurationen.
 * Wenn Sie virtuelle Computer, die Storage Premium verwenden, mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuweisen, der **nur** für die erste Sicherung erforderlich ist. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.

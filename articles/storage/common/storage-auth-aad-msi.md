@@ -9,12 +9,12 @@ ms.date: 11/25/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: ea1d286d00564587a9692dac1b04c5bbb04742cc
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3bb3b632a184985f9a3a27d0e56e940ec7c30885
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561473"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74806581"
 ---
 # <a name="authorize-access-to-blobs-and-queues-with-azure-active-directory-and-managed-identities-for-azure-resources"></a>Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory und verwalteten Identitäten für Azure-Ressourcen
 
@@ -36,13 +36,13 @@ Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind ver
 
 ## <a name="authenticate-with-the-azure-identity-library"></a>Authentifizieren mit der Azure Identity-Bibliothek
 
-Ein Vorteil der Azure Identity-Clientbibliothek besteht darin, dass Sie den gleichen Code verwenden können, um zu authentifizieren, ob Ihre Anwendung in der Entwicklungsumgebung oder in Azure läuft. Beim Ausführen von Code in der Azure-Umgebung authentifiziert die Clientbibliothek eine verwaltete Identität für Azure-Ressourcen. In der Entwicklungsumgebung ist die verwaltete Identität nicht vorhanden, sodass die Clientbibliothek für Testzwecke entweder den Benutzer oder einen Dienstprinzipal authentifiziert.
+Mit der Azure Identity-Clientbibliothek wird die Azure AD-Tokenauthentifizierung für das [Azure SDK](https://github.com/Azure/azure-sdk) unterstützt. Die neuesten Versionen der Azure Storage-Clientbibliotheken für .NET, Java, Python und JavaScript sind in die Azure Identity-Bibliothek integriert und stellen so eine einfache und sichere Möglichkeit dar, ein OAuth 2.0-Token für die Autorisierung von Azure Storage-Anforderungen abzurufen.
 
-Die Azure Identity-Clientbibliothek für .NET dient zur Authentifizierung eines Sicherheitsprinzipals. Wenn Ihr Code in Azure ausgeführt wird, ist der Sicherheitsprinzipal eine verwaltete Identität für Azure-Ressourcen.
+Ein Vorteil der Azure Identity-Clientbibliothek besteht darin, dass Sie den gleichen Code verwenden können, um zu authentifizieren, ob Ihre Anwendung in der Entwicklungsumgebung oder in Azure läuft. Die Azure Identity-Clientbibliothek für .NET dient zur Authentifizierung eines Sicherheitsprinzipals. Wenn Ihr Code in Azure ausgeführt wird, ist der Sicherheitsprinzipal eine verwaltete Identität für Azure-Ressourcen. In der Entwicklungsumgebung ist die verwaltete Identität nicht vorhanden, sodass die Clientbibliothek für Testzwecke entweder den Benutzer oder einen Dienstprinzipal authentifiziert.
 
 Nach der Authentifizierung erhält die Azure Identity-Clientbibliothek Tokenanmeldeinformationen. Diese Tokenanmeldeinformationen werden im Dienstclientobjekt gekapselt, das Sie erstellen, um Vorgänge für Azure Storage auszuführen. Die Bibliothek führt diesen Schritt automatisch für Sie durch und ruft die entsprechenden Tokenanmeldeinformationen ab.
 
-Weitere Informationen zur Azure Identity-Clientbibliothek finden Sie unter [Azure Identity-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity).
+Weitere Informationen zur Azure Identity-Clientbibliothek für .NET finden Sie unter [Azure Identity-Clientbibliothek für .NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/identity/Azure.Identity). Die Referenzdokumentation zur Azure Identity-Clientbibliothek finden Sie unter [Azure.Identity-Namespace](/dotnet/api/azure.identity).
 
 ### <a name="assign-role-based-access-control-rbac-roles-for-access-to-data"></a>Zuweisen der rollenbasierten Zugriffssteuerung (RBAC) für den Datenzugriff
 
@@ -50,7 +50,7 @@ Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blob- oder Warteschlangend
 
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Authentifizieren des Benutzers in der Entwicklungsumgebung
 
-Wenn Ihr Code in der Entwicklungsumgebung ausgeführt wird, erfolgt die Authentifizierung ggf. automatisch. Abhängig von den verwendeten Tools kann aber auch eine Browseranmeldung erforderlich sein. Microsoft Visual Studio unterstützt einmaliges Anmelden (Single Sign-On, SSO), sodass automatisch das aktive Azure AD-Benutzerkonto für die Authentifizierung verwendet wird. Weitere Informationen zu SSO finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md).
+Wenn Ihr Code in der Entwicklungsumgebung ausgeführt wird, erfolgt die Authentifizierung ggf. automatisch. Abhängig von den verwendeten Tools kann aber auch eine Browseranmeldung erforderlich sein. Microsoft Visual Studio unterstützt beispielsweise einmaliges Anmelden (SSO), sodass automatisch das aktive Azure AD-Benutzerkonto für die Authentifizierung verwendet wird. Weitere Informationen zu SSO finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md).
 
 Bei anderen Entwicklungstools ist ggf. eine Anmeldung über einen Webbrowser erforderlich.
 
@@ -103,19 +103,7 @@ Mit dem Befehl `az ad sp create-for-rbac` wird eine Liste der Dienstprinzipaleig
 
 Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-## <a name="install-client-library-packages"></a>Installieren von Clientbibliothekspaketen
-
-In den Beispielen in diesem Artikel wird die neueste Version der Azure Storage-Clientbibliothek für Blob Storage verwendet. Führen Sie zum Installieren des Pakets den folgenden Befehl über die NuGet-Paket-Manager-Konsole aus:
-
-```powershell
-Install-Package Azure.Storage.Blobs
-```
-
-In den Beispielen in diesem Artikel wird auch die neueste Version der [Azure Identity-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Identity/) zur Authentifizierung mit Azure AD-Anmeldeinformationen verwendet. Führen Sie zum Installieren des Pakets den folgenden Befehl über die NuGet-Paket-Manager-Konsole aus:
-
-```powershell
-Install-Package Azure.Identity
-```
+[!INCLUDE [storage-install-packages-blob-and-identity-include](../../../includes/storage-install-packages-blob-and-identity-include.md)]
 
 ## <a name="net-code-example-create-a-block-blob"></a>Codebeispiel für .NET: Erstellen eines Blockblobs
 
@@ -173,6 +161,6 @@ async static Task CreateBlockBlobAsync(string accountName, string containerName,
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu RBAC-Rollen für Azure Storage finden Sie unter [Verwalten der Zugriffsrechte für Speicherdaten mit RBAC](storage-auth-aad-rbac.md).
-- Informationen zum Autorisieren des Zugriffs auf Container und Warteschlangen aus Ihren Speicheranwendungen finden Sie unter [Verwenden von Azure AD mit Speicheranwendungen](storage-auth-aad-app.md).
-- Informationen zum Ausführen von Azure CLI- und PowerShell-Befehlen mit Azure AD-Anmeldeinformationen finden Sie unter [Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](storage-auth-aad-script.md).
+- [Verwalten von Rechten für den Zugriff auf Speicherdaten mithilfe der RBAC](storage-auth-aad-rbac.md)
+- [Verwenden von Azure AD mit Speicheranwendungen](storage-auth-aad-app.md)
+- [Ausführen von Azure CLI- oder PowerShell-Befehlen mit Azure AD-Anmeldeinformationen für den Zugriff auf Blob- oder Warteschlangendaten](storage-auth-aad-script.md)

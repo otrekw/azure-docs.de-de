@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: sukishen
-ms.openlocfilehash: 3151d72c0e74e7eb694ef2bdd5737f65992fe905
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 10c27c18b8003bf286789e478f504bca98ebe7ca
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824382"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74766481"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informationen zu Azure Networking-MSP-Partnern
 
@@ -28,12 +28,13 @@ Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwe
 
 Über die Links in diesem Abschnitt erhalten Sie weitere Informationen zu verwalteten Cloudnetzwerkdiensten, die von Azure Networking MSP-Partnern angeboten werden. Sollte Ihr Partner für Cloudnetzwerkdienste im folgenden Abschnitt nicht aufgeführt sein, bitten Sie den Anbieter, sich mit uns in Verbindung zu setzen. Hierzu kann er uns eine E-Mail senden: ManagedVirtualWAN@microsoft.com. 
 
-| **MSP** | **Cloudnetzwerk-Transformationsdienste** | **Verwaltete ExpressRoute-Instanz** | **Verwaltete Virtual WAN-Instanz** | **Verwaltete Netzwerksicherheitsdienste** |**Verwaltetes Netzwerkedgecomputing** |
+| **MSP** | **Cloudnetzwerk-Transformationsdienste** | **Verwaltete ExpressRoute-Instanz** | **Verwaltete Virtual WAN-Instanz** | **Verwaltete Netzwerksicherheitsdienste** |**Verwaltetes Edgecomputing mit mehreren Zugriffen** |
 | ---| ---| ---| ---| ---| ---|
 |[Amdocs](https://www.amdocs.com/)|||||Ja|
 |[ANS Group UK](https://www.ans.co.uk/)|Ja|Ja||||
 |[Aryaka Networks](https://www.aryaka.com/azure-msp-vwan-managed-service-provider-launch-partner-aryaka/)|Ja |Ja |Ja | | |
 |[BT](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)|Ja|Ja|Ja|||
+|[Coevolve](https://www.coevolve.com/services/azure-networking-services/)|Ja||Ja|Ja||
 |[Colt](https://www.colt.net/why-colt/strategic-alliances/microsoft-partnership/msp/)|Ja|||||
 |[Dimension Data](https://www.dimensiondata.com/)|Ja|||||
 |[Equinix](https://www.equinix.com/)|Ja|Ja||||

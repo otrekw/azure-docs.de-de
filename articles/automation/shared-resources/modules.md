@@ -3,17 +3,17 @@ title: Verwenden von Modulen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Module in Azure Automation verwalten.
 services: automation
 ms.service: automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/05/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/03/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 492dd182c782b0f6375c2f857cfa4921b065c546
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 65759b32889f9a99b0322823bb8a4924788e8c09
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231576"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74786468"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwenden von Modulen in Azure Automation
 
@@ -32,6 +32,14 @@ Sie können das Cmdlet [New-AzureRmAutomationModule](/powershell/module/azurerm.
 
 ```azurepowershell-interactive
 New-AzureRmAutomationModule -Name <ModuleName> -ContentLinkUri <ModuleUri> -ResourceGroupName <ResourceGroupName> -AutomationAccountName <AutomationAccountName>
+```
+
+Sie können das gleiche Cmdlet verwenden, um ein Modul direkt aus dem PowerShell-Katalog zu importieren. Rufen Sie auf jeden Fall **ModuleName** und **ModuleVersion** aus dem [PowerShell-Katalog](https://www.powershellgallery.com) ab.
+
+```azurepowershell-interactive
+$moduleName = <ModuleName>
+$moduleVersion = <ModuleVersion>
+New-AzAutomationModule -AutomationAccountName <AutomationAccountName> -ResourceGroupName <ResourceGroupName> -Name $moduleName -ContentLinkUri "https://www.powershellgallery.com/api/v2/package/$moduleName/$moduleVersion"
 ```
 
 ### <a name="azure-portal"></a>Azure-Portal
@@ -69,6 +77,10 @@ Remove-AzureRmAutomationModule -Name <moduleName> -AutomationAccountName <automa
 ## <a name="internal-cmdlets"></a>Interne Cmdlets
 
 Nachfolgend finden Sie eine Liste der Cmdlets im internen `Orchestrator.AssetManagement.Cmdlets`-Modul, das in jedes Automation-Konto importiert wird. Diese Cmdlets sind in Ihren Runbooks und DSC-Konfigurationen verfügbar und ermöglichen Ihnen die Interaktion mit den Ressourcen in Ihrem Automation-Konto. Zudem ermöglichen die internen-Cmdlets das Abrufen von Geheimnissen aus verschlüsselten **Variablenwerten**, **Anmeldeinformationen** und verschlüsselten **Verbindungsfeldern**. Die Azure PowerShell-Cmdlets können diese Geheimnisse nicht abrufen. Wenn Sie diese Cmdlets verwenden, müssen Sie keine implizite Verbindung mit Azure herstellen, z. B. „Als Konto ausführen“, um sich bei Azure zu authentifizieren.
+
+>[!NOTE]
+>Diese internen Cmdlets sind nicht auf einem Hybrid Runbook Worker verfügbar. Auf sie kann nur über Runbooks zugegriffen werden, die in Azure ausgeführt werden. Verwenden Sie die entsprechenden Cmdlets [AzureRM.Automation](https://docs.microsoft.com/powershell/module/AzureRM.Automation/?view=azurermps-6.13.0) oder [Az-Module](../az-modules.md) für Runbooks, die direkt auf Ihrem Computer oder mit Ressourcen in Ihrer Umgebung ausgeführt werden. 
+>
 
 |NAME|BESCHREIBUNG|
 |---|---|

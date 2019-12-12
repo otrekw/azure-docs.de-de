@@ -1,17 +1,17 @@
 ---
-title: SSL-Konnektivität für Azure Database for MySQL
+title: SSL-Konnektivität in Azure Database for MySQL
 description: Informationen zum Konfigurieren von Azure-Datenbank für MySQL und zugehörigen Anwendungen für die richtige Verwendung von SSL-Verbindungen
-author: JasonMAnderson
-ms.author: janders
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 129f90d495627edb25dfafdeb1b274aa2c4c71cb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 12/02/2019
+ms.openlocfilehash: d677e7c80d98b15a638b00c5b8f4d390a492c7fa
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60525818"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770814"
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mysql"></a>SSL-Konnektivität in Azure-Datenbank für MySQL
 Azure-Datenbank für MySQL unterstützt die Verbindung Ihres Datenbankservers mit Clientanwendungen, die Secure Sockets Layer (SSL) verwenden. Das Erzwingen von SSL-Verbindungen zwischen dem Datenbankserver und Clientanwendungen trägt zum Schutz vor Man-in-the-Middle-Angriffen bei, indem der Datenstrom zwischen dem Server und der Anwendung verschlüsselt wird.

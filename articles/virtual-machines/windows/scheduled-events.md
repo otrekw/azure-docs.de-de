@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: 7889ee66ec80ee0b77b92efc5755e1a84a5cbf04
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f6e3e370201b49da149c09d87ed7cec63fef8ebf
+ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073280"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74792251"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Instance Metadata Service: Scheduled Events für Windows-VMs
 
@@ -47,7 +47,7 @@ Geplante Ereignisse umfasst Ereignisse in den folgenden Anwendungsfällen:
 - [Von der Plattform ausgelöste Wartung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates) (z. B. Neustart des virtuellen Computers, Livemigration oder Updates für den Host mit Speicherbeibehaltung)
 - Heruntergestufte Hardware
 - Benutzerinitiierte Wartung (z.B. Neustart oder erneute Bereitstellung eines virtuellen Computers durch den Benutzer)
-- [Entfernung von VMs mit niedriger Priorität](https://azure.microsoft.com/blog/low-priority-scale-sets) in Skalierungsgruppen
+- Instanzentfernungen von [Spot-VM](spot-vms.md) und [Spot-Skalierungsgruppen](../../virtual-machine-scale-sets/use-spot.md)
 
 ## <a name="the-basics"></a>Die Grundlagen  
 

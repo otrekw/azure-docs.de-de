@@ -1,18 +1,18 @@
 ---
-title: Zugreifen auf Protokolle für langsame Abfragen in Azure Database for MySQL mithilfe der Azure-Befehlszeilenschnittstelle
+title: Zugreifen auf Protokolle zu langsamen Abfragen in Azure Database for MySQL über die Azure-Befehlszeilenschnittstelle
 description: In diesem Artikel wird beschrieben, wie Sie über die Azure CLI auf die Protokolle für langsame Abfragen in Azure Database for MySQL zugreifen.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 06/12/2019
-ms.openlocfilehash: 0ab4162d11642ec7df53040bd744711002227497
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.date: 12/02/2019
+ms.openlocfilehash: 44c35d6e997b4a9a6d3dfcf3e7eba5328b125fdf
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72030635"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770593"
 ---
 # <a name="configure-and-access-slow-query-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Protokolle für langsame Abfragen mithilfe der Azure CLI
 Sie können die Protokolle für langsame Abfragen von Azure Database for MySQL mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI, das Azure-Befehlszeilenhilfsprogramm) herunterladen.

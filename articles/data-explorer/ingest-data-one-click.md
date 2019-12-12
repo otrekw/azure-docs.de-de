@@ -7,16 +7,16 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 98598a28e14dfd8175cbb019ff1b001c65503580
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: c4ee4ed81cd4cc443a8f412462a5a7f204c91898
+ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73644591"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74688195"
 ---
 # <a name="use-one-click-ingestion-to-ingest-data-into-azure-data-explorer"></a>Erfassen von Daten in Azure Data Explorer mithilfe der 1-Klick-Erfassung
 
-In diesem Artikel wird gezeigt, wie Sie mit der 1-Klick-Erfassung schnell eine neue Tabelle im JSON- oder CSV-Format aus Speicher in Azure Data Explorer erfassen. Sobald die Daten erfasst wurden, können Sie die Tabelle bearbeiten und Abfragen mithilfe der Webbenutzeroberfläche ausführen.
+Der Artikel veranschaulicht, wie Sie mit der 1-Klick-Erfassung schnell eine neue Tabelle im JSON- oder CSV-Format aus dem Speicher oder einer lokalen Datei in einer vorhandenen oder neuen Tabelle in Azure Data Explorer erfassen. Bei Verwendung des intuitiven Assistenten sind Ihre Daten innerhalb weniger Minuten erfasst. Anschließend können Sie die Tabelle bearbeiten und Abfragen mithilfe der Webbenutzeroberfläche ausführen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

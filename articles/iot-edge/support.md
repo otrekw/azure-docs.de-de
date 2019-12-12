@@ -1,5 +1,5 @@
 ---
-title: Unterstützte Betriebssystem, Containerengines – Azure IoT Edge | Microsoft-Dokumentation
+title: Unterstützte Betriebssysteme, Container-Engines (Azure IoT Edge)
 description: Erfahren Sie, welche Betriebssysteme zur Ausführung von Azure IoT Edge-Daemon und -Runtime verwendet werden können, und welche Containerengines für Ihre Produktionsgeräte unterstützt werden.
 author: kgremban
 manager: philmea
@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0fe4a13a33b6d93266d68e632864e0b61a7eaf29
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
+ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452513"
+ms.lasthandoff: 12/01/2019
+ms.locfileid: "74665881"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 

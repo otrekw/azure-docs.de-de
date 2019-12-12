@@ -1,18 +1,18 @@
 ---
-title: Konfigurieren von Serverprotokollen für PostgreSQL (Einzelserver) und Zugreifen auf diese mithilfe der Azure CLI
-description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI die Serverprotokolle in Azure Database for PostgreSQL (Einzelserver) konfigurieren und auf diese zugreifen.
+title: Verwalten von Protokollen – Azure CLI – Azure Database for PostgreSQL – Einzelserver
+description: In diesem Artikel wird beschrieben, wie Sie mit der Azure CLI die Serverprotokolle (.log-Dateien) in Azure Database for PostgreSQL (Einzelserver) konfigurieren und auf diese zugreifen.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: bb33debaa23ad8625b6ddc1cc63738b13bcd19e1
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: be679be91d49516bd2f6c672eb53640cfad2ae2a
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72023629"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74763571"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle mithilfe der Azure CLI
 Sie können die PostgreSQL-Serverfehlerprotokolle mithilfe der Befehlszeilenschnittstelle (Azure CLI) herunterladen. Der Zugriff auf Transaktionsprotokolle wird jedoch nicht unterstützt. 

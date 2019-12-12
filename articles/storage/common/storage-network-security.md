@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c4ce0d4ecd64273bcb3226b4b543ba378aad538c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 71922a9da594de3402caf778b1e066da9d20505c
+ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078953"
+ms.lasthandoff: 12/02/2019
+ms.locfileid: "74672544"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -385,13 +385,15 @@ Wenn Sie die Einstellung **Vertrauenswürdige Microsoft-Dienste zulassen** festl
 
 Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...** ermöglicht auch einer bestimmten Instanz der folgenden Dienste den Zugriff auf das Speicherkonto, wenn Sie der [vom System zugewiesenen verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) für diese Ressourceninstanz explizit [eine RBAC-Rolle zuweisen](storage-auth-aad.md#assign-rbac-roles-for-access-rights). In diesem Fall entspricht der Zugriffsbereich für die Instanz der RBAC-Rolle, die der verwalteten Identität zugewiesen ist.
 
-| Dienst                        | Name des Ressourcenanbieters          | Zweck                            |
-| :----------------------------- | :------------------------------ | :--------------------------------- |
-| Azure Data Factory             | Microsoft.DataFactory/factories | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
-| Azure Logic Apps               | Microsoft.Logic/workflows       | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity) |
-| Azure Machine Learning-Dienst | Microsoft.MachineLearningServices | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
-| Azure SQL Data Warehouse       | Microsoft.Sql                   | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics       | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity) |
+| Dienst                        | Name des Ressourcenanbieters          | Zweck            |
+| :----------------------------- | :------------------------------------- | :---------- |
+| Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | ACR Tasks können beim Erstellen von Containerimages auf Speicherkonten zugreifen. |
+| Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md) |
+| Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
+| Azure SQL Data Warehouse       | Microsoft.Sql                          | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity.md) |
+| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Synapse Analytics. |
 
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten

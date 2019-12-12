@@ -1,17 +1,17 @@
 ---
-title: Neustarten eines Azure Database for MySQL-Servers mithilfe der Azure CLI
+title: Neustarten von Servern – Azure-Befehlszeilenschnittstelle – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie Sie einen Azure Database for MySQL-Server über die Azure CLI neu starten.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/28/2019
-ms.openlocfilehash: d00aa35437f93c010ce48f3036b4a684910702c0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 12/02/2019
+ms.openlocfilehash: 146c531805ff22544797c44c8df32b0e5d1e83b0
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160425"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74774206"
 ---
 # <a name="restart-azure-database-for-mysql-server-using-the-azure-cli"></a>Neustarten eines Azure Database for MySQL-Servers mithilfe der Azure CLI
 In diesem Thema wird erläutert, wie Sie einen Azure Database for MySQL-Server neu starten. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.

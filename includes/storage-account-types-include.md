@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 1a9cebe334b266dfcf7f06608fd6a526ded7179b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0c0f1f4dfd873c8c9a18d300b249ace0295e450e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73992479"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74174012"
 ---
 Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
 
@@ -27,10 +27,10 @@ Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funkt
 
 | Speicherkontotyp | Unterstützte Dienste                       | Unterstützte Leistungsstufen      | Unterstützte Zugriffsebenen         | Replikationsoptionen               | Bereitstellungsmodell<div role="complementary" aria-labelledby="deployment-model"><sup>1</sup></div> | Verschlüsselung<div role="complementary" aria-labelledby="encryption"><sup>2</sup></div> |
 |----------------------|------------------------------------------|-----------------------------|--------------------------------|-----------------------------------|------------------------------|------------------------|
-| Allgemein v2   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Heiß, Kalt, Archiv<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (Vorschau), RA-GZRS (Vorschau)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Ressourcen-Manager             | Verschlüsselt              |
+| Allgemein v2   | Blob, Datei, Warteschlange, Tabelle, Datenträger und Data Lake Gen2<div role="complementary" aria-labelledby="data-lake-gen2"><sup>6</sup></div>      | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | Heiß, Kalt, Archiv<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS, ZRS, GZRS (Vorschau), RA-GZRS (Vorschau)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div> | Ressourcen-Manager             | Verschlüsselt              |
 | Allgemein v1   | Blob, Datei, Warteschlange, Tabelle und Datenträger       | Standard, Premium<div role="complementary" aria-labelledby="premium-performance"><sup>5</sup></div> | –                            | LRS, GRS, RA-GRS                  | Resource Manager, klassisch    | Verschlüsselt              |
 | BlockBlobStorage   | Blob (nur Blockblobs und Anfügeblobs) | Premium                       | –                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Ressourcen-Manager             | Verschlüsselt              |
-| FileStorage   | Nur Dateien | Premium                       | –                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Ressourcen-Manager             | Verschlüsselt              |
+| FileStorage   | Nur Datei | Premium                       | –                            | LRS, ZRS<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>4</sup></div>                               | Ressourcen-Manager             | Verschlüsselt              |
 | BlobStorage         | Blob (nur Blockblobs und Anfügeblobs) | Standard                      | Heiß, Kalt, Archiv<div role="complementary" aria-labelledby="archive"><sup>3</sup></div> | LRS, GRS, RA-GRS                  | Ressourcen-Manager             | Verschlüsselt              |
 
 <div id="deployment-model"><sup>1</sup>Die Verwendung des Azure Resource Manager-Bereitstellungsmodells wird empfohlen. Speicherkonten, die das klassische Bereitstellungsmodell verwenden, können an einigen Standorten weiterhin erstellt werden, und vorhandene klassische Konten werden weiterhin unterstützt. Weitere Informationen finden Sie unter <a href="https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model">Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen</a>.</div>
@@ -41,4 +41,6 @@ Die folgende Tabelle beschreibt die Speicherkontotypen und ihre jeweiligen Funkt
 
 <div id="zone-redundant-storage"><sup>4</sup>Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS) (Vorschau) sind in bestimmten Regionen nur für Standardkonten des Typs „General Purpose V2“ sowie für Konten des Typs „BlockBlobStorage“ und „FileStorage“ verfügbar. Weitere Informationen zu ZRS finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs">Zonenredundanter Speicher (ZRS): Hochverfügbare Azure Storage-Anwendungen</a>. Weitere Informationen zu GZRS/RA-GZRS finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy-gzrs">Geozonenredundante Speicher für Hochverfügbarkeit und maximale Dauerhaftigkeit (Vorschau)</a>. Weitere Informationen zu weiteren Replikationsoptionen finden Sie unter <a href="https://docs.microsoft.com/azure/storage/common/storage-redundancy">Azure Storage-Replikation</a>.</div>
 
-<div id="premium-performance"><sup>5</sup>Premium-Leistung für Konten vom Typ „Allgemein v2“ und „Allgemein v1“ ist nur für Datenträger und Seitenblob verfügbar.</div>
+<div id="premium-performance"><sup>5</sup>Premium-Leistung für Konten vom Typ „Allgemein v2“ und „Allgemein v1“ ist nur für Datenträger und Seitenblob verfügbar. Premium-Leistung für Block- oder Anfügeblobs ist nur für BlockBlobStorage-Konten verfügbar. Premium-Leistung für Dateien ist nur für FileStorage-Konten verfügbar.</div>
+
+<div id="data-lake-gen2"><sup>6</sup>Azure Data Lake Storage Gen2 setzt auf Azure Blob Storage auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. Data Lake Storage Gen2 wird nur für Speicherkonten vom Typ „GPv2“ mit aktiviertem hierarchischen Namespace unterstützt. Weitere Informationen zu Data Lake Storage Gen2 finden Sie in der <a href="https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction">Einführung in Azure Data Lake Storage Gen2</a>.</div>

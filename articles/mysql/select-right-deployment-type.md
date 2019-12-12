@@ -1,17 +1,17 @@
 ---
-title: Auswählen des richtigen Bereitstellungstyps für Azure Database for MySQL
+title: Auswählen des richtigen Bereitstellungstyps – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, welche Faktoren vor der Bereitstellung von Azure Database for MySQL als IaaS (Infrastructure-as-a-Service) oder PaaS (Platform-as-a-Service) zu berücksichtigen sind.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 08/05/2019
-ms.openlocfilehash: 5cdd65d5509d8f46f095d91c509a1fda288517c4
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/02/2019
+ms.openlocfilehash: 3cc03ba1670299f1ea43a1fde666c2917eaf6b9d
+ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132431"
+ms.lasthandoff: 12/03/2019
+ms.locfileid: "74770457"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
