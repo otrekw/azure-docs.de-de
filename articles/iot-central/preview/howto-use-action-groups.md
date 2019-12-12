@@ -4,16 +4,16 @@ description: Führen Sie mehrere Aktionen über eine einzelne IoT Central-Regel 
 services: iot-central
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/21/2019
+ms.date: 12/06/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
-ms.openlocfilehash: e51a2fc7e3af9a56b90a66935ef01ac907ebce3b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: a93e96dd14411302bf5368b4825044e060b54a43
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929897"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974358"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules-preview-features"></a>Gruppieren mehrerer Aktionen für die Ausführung über eine oder mehrere Regeln (Vorschaufeatures)
 

@@ -4,21 +4,20 @@ description: Erfahren Sie mehr über die Push-Übertragung von Daten in einen Az
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.assetid: f8d46e1e-5c37-4408-80fb-c54be532a4ab
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: da867ae62ce4480c5d5854ae3f28ad258421905d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73809168"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929983"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Push-Übertragung von Daten in einen Azure Cognitive Search-Index mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -59,8 +58,8 @@ Die folgende Tabelle enthält Beschreibungen der JSON-Elemente, die für den mit
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSearch**. | Ja |
-| url | URL für den Suchdienst. | Ja |
-| key | Administratorschlüssel für den Suchdienst. | Ja |
+| url | URL für den Suchdienst | Ja |
+| key | Administratorschlüssel für den Suchdienst | Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 

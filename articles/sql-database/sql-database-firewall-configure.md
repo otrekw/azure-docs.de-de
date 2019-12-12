@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: ed13b5028341637d71dee95f38cc44cc91aa2376
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5c1a146a12fd8881982826e0a87868a6eaf05cb1
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481429"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851819"
 ---
 # <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse
 
@@ -127,13 +127,15 @@ Navigieren Sie zum Festlegen einer IP-Firewallregel auf Serverebene im Azure-Por
 
 #### <a name="from-the-database-overview-page"></a>Vorgehensweise auf der Datenbankübersichtsseite
 
-1. Wählen Sie zum Festlegen einer IP-Firewallregel auf Serverebene auf der Symbolleiste der Datenbankübersichtsseite die Option **Serverfirewall festlegen** aus, wie in der folgenden Abbildung zu sehen. Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet.
+1. Wählen Sie zum Festlegen einer IP-Firewallregel auf Serverebene auf der Symbolleiste der Datenbankübersichtsseite die Option **Serverfirewall festlegen** aus, wie in der folgenden Abbildung zu sehen. 
 
-      ![IP-Firewallregel auf Serverebene](./media/sql-database-get-started-portal/server-firewall-rule.png)
+    ![IP-Firewallregel auf Serverebene](./media/sql-database-get-started-portal/sql-database-server-set-firewall-rule.png)
+
+    Die Seite **Firewalleinstellungen** für den SQL-Datenbank-Server wird geöffnet.
 
 2. Wählen Sie auf der Symbolleiste die Option **Client-IP-Adresse hinzufügen** aus, um die IP-Adresse des verwendeten Computers hinzuzufügen, und wählen Sie anschließend **Speichern** aus. Eine IP-Firewallregel auf Serverebene wird für Ihre aktuelle IP-Adresse erstellt.
 
-      ![Festlegen einer IP-Firewallregel auf Serverebene](./media/sql-database-get-started-portal/server-firewall-rule-set.png)
+    ![Festlegen einer IP-Firewallregel auf Serverebene](./media/sql-database-get-started-portal/sql-database-server-firewall-settings.png)
 
 #### <a name="from-the-server-overview-page"></a>Vorgehensweise auf der Serverübersichtsseite
 

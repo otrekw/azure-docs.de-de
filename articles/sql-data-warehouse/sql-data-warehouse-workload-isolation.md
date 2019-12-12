@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 51990e02eada52263006627be803c4073b9361ac
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555406"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974647"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse: Isolation mit Arbeitsauslastungsgruppen (Vorschau)
 
@@ -24,13 +24,13 @@ In diesem Artikel wird erläutert, wie mithilfe von Arbeitsauslastungsgruppen di
 
 ## <a name="workload-groups"></a>Workloadgruppen
 
-Arbeitsauslastungsgruppen sind Container für eine Reihe von Anforderungen und bilden die Grundlage für die Konfiguration der Workloadverwaltung, einschließlich der Workloadisolation, auf einem System.  Arbeitsauslastungsgruppen werden mithilfe der Syntax [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) erstellt.  Bei einer einfachen Konfiguration der Workloadverwaltung können Datenladevorgänge und Benutzerabfragen verwaltet werden.  Beispielsweise werden mit einer Arbeitsauslastungsgruppe namens `wgDataLoads` Workloadaspekte für Daten definiert, die in das System geladen werden. Mit einer Arbeitsauslastungsgruppe namens `wgUserQueries` werden Workloadaspekte für Benutzer definiert, die Abfragen zum Lesen von Daten aus dem System ausführen.
+Arbeitsauslastungsgruppen sind Container für eine Reihe von Anforderungen und bilden die Grundlage für die Konfiguration der Workloadverwaltung, einschließlich der Workloadisolation, auf einem System.  Arbeitsauslastungsgruppen werden mithilfe der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) erstellt.  Bei einer einfachen Konfiguration der Workloadverwaltung können Datenladevorgänge und Benutzerabfragen verwaltet werden.  Beispielsweise werden mit einer Arbeitsauslastungsgruppe namens `wgDataLoads` Workloadaspekte für Daten definiert, die in das System geladen werden. Mit einer Arbeitsauslastungsgruppe namens `wgUserQueries` werden Workloadaspekte für Benutzer definiert, die Abfragen zum Lesen von Daten aus dem System ausführen.
 
 In den folgenden Abschnitten wird erläutert, wie Arbeitsauslastungsgruppen die Möglichkeit zum Definieren der Isolation und Kapselung, Anfordern der Ressourcendefinition und Einhalten von Ausführungsregeln bietet.
 
 ## <a name="workload-isolation"></a>Workloadisolation
 
-Workloadisolation bedeutet, dass Ressourcen ausschließlich für eine Arbeitsauslastungsgruppe reserviert sind.  Workloadisolation wird erreicht, indem der Parameter MIN_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) auf einen Wert größer als 0 (null) festgelegt wird.  Bei Workloads mit kontinuierlicher Ausführung, bei denen strenge SLAs eingehalten werden müssen, wird durch Isolation sichergestellt, dass immer Ressourcen für die Arbeitsauslastungsgruppe verfügbar sind. 
+Workloadisolation bedeutet, dass Ressourcen ausschließlich für eine Arbeitsauslastungsgruppe reserviert sind.  Workloadisolation wird erreicht, indem der Parameter MIN_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) auf einen Wert größer als 0 (null) festgelegt wird.  Bei Workloads mit kontinuierlicher Ausführung, bei denen strenge SLAs eingehalten werden müssen, wird durch Isolation sichergestellt, dass immer Ressourcen für die Arbeitsauslastungsgruppe verfügbar sind. 
 
 Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert.  Wenn MIN_PERCENTAGE_RESOURCE auf 30 % und REQUEST_MIN_RESOURCE_GRANT_PERCENT auf 2 % festgelegt wird, ist für die Arbeitsauslastungsgruppe ein Grad an Parallelität von 15 garantiert.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
 
@@ -50,7 +50,7 @@ Benutzer sollten eine Lösung für die Workloadverwaltung vermeiden, bei der ein
 
 ## <a name="workload-containment"></a>Workloadkapselung
 
-Workloadkapselung bezieht sich auf das Begrenzen der Ressourcenmenge, die von einer Arbeitsauslastungsgruppe genutzt werden kann.  Workloadkapselung wird erreicht, indem der Parameter CAP_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) auf einen Wert kleiner als 100 festgelegt wird.  Stellen Sie sich ein Szenario vor, in dem Benutzer Lesezugriff auf das System benötigen, damit eine Was-wäre-wenn-Analyse über Ad-hoc-Abfragen ausgeführt werden kann.  Diese Arten von Anforderungen können negative Auswirkungen auf andere Workloads haben, die auf dem System ausgeführt werden.  Durch Konfigurieren der Kapselung wird sichergestellt, dass die Ressourcenmenge begrenzt ist.
+Workloadkapselung bezieht sich auf das Begrenzen der Ressourcenmenge, die von einer Arbeitsauslastungsgruppe genutzt werden kann.  Workloadkapselung wird erreicht, indem der Parameter CAP_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) auf einen Wert kleiner als 100 festgelegt wird.  Stellen Sie sich ein Szenario vor, in dem Benutzer Lesezugriff auf das System benötigen, damit eine Was-wäre-wenn-Analyse über Ad-hoc-Abfragen ausgeführt werden kann.  Diese Arten von Anforderungen können negative Auswirkungen auf andere Workloads haben, die auf dem System ausgeführt werden.  Durch Konfigurieren der Kapselung wird sichergestellt, dass die Ressourcenmenge begrenzt ist.
 
 Durch Konfigurieren der Workloadkapselung wird implizit ein maximaler Grad an Parallelität definiert.  Wenn CAP_PERCENTAGE_RESOURCE auf 60 % und REQUEST_MIN_RESOURCE_GRANT_PERCENT auf 1 % festgelegt wird, ist für die Arbeitsauslastungsgruppe ein Grad an Parallelität von 60 zulässig.  Sehen Sie sich die folgende Methode zur Bestimmung der maximalen Parallelität an:
 
@@ -61,7 +61,7 @@ Durch Konfigurieren der Workloadkapselung wird implizit ein maximaler Grad an Pa
 
 ## <a name="resources-per-request-definition"></a>Definition von Ressourcen pro Anforderung
 
-Arbeitsauslastungsgruppen bieten mit den Parametern REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT in der Syntax [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) einen Mechanismus zum Definieren der Mindest- und Höchstmenge an Ressourcen, die pro Anforderung zugewiesen werden.  Ressourcen sind in diesem Fall CPU und Arbeitsspeicher.  Durch Konfigurieren dieser Werte wird bestimmt, wie viele Ressourcen und welcher Grad an Parallelität auf dem System erreicht werden können.
+Arbeitsauslastungsgruppen bieten mit den Parametern REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) einen Mechanismus zum Definieren der Mindest- und Höchstmenge an Ressourcen, die pro Anforderung zugewiesen werden.  Ressourcen sind in diesem Fall CPU und Arbeitsspeicher.  Durch Konfigurieren dieser Werte wird bestimmt, wie viele Ressourcen und welcher Grad an Parallelität auf dem System erreicht werden können.
 
 > [!NOTE] 
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT ist ein optionaler Parameter, der standardmäßig auf den gleichen Wert gesetzt wird, der für REQUEST_MIN_RESOURCE_GRANT_PERCENT angegeben ist.
@@ -75,7 +75,7 @@ Wenn REQUEST_MAX_RESOURCE_GRANT_PERCENT auf einen höheren Wert als REQUEST_MIN_
 
 ## <a name="execution-rules"></a>Ausführungsregeln
 
-Bei Ad-hoc-Berichterstellungssystemen können Kunden versehentlich Endlosabfragen ausführen, die sich erheblich auf die Produktivität anderer Anwendungen auswirken.  Systemadministratoren sind gezwungen, Zeit mit dem Abbrechen von Endlosabfragen zu verbringen, um Systemressourcen freizugeben.  Arbeitsauslastungsgruppen bieten die Möglichkeit, eine Überschreitungsregel für die Abfrageausführung zu konfigurieren, um Abfragen abzubrechen, die den angegebenen Wert überschritten haben.  Die Regel wird durch Festlegen des Parameters `QUERY_EXECUTION_TIMEOUT_SEC` in der Syntax [CREATE WORKLOAD GROUP](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) konfiguriert.
+Bei Ad-hoc-Berichterstellungssystemen können Kunden versehentlich Endlosabfragen ausführen, die sich erheblich auf die Produktivität anderer Anwendungen auswirken.  Systemadministratoren sind gezwungen, Zeit mit dem Abbrechen von Endlosabfragen zu verbringen, um Systemressourcen freizugeben.  Arbeitsauslastungsgruppen bieten die Möglichkeit, eine Überschreitungsregel für die Abfrageausführung zu konfigurieren, um Abfragen abzubrechen, die den angegebenen Wert überschritten haben.  Die Regel wird durch Festlegen des Parameters `QUERY_EXECUTION_TIMEOUT_SEC` in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) konfiguriert.
 
 ## <a name="shared-pool-resources"></a>Ressourcen im freigegebenen Pool
 
@@ -88,5 +88,5 @@ Der Zugriff auf Ressourcen im freigegebenen Pool wird auf Basis der [Priorität]
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schnellstart: Konfigurieren der Workloadisolation](quickstart-configure-workload-isolation-tsql.md)
-- [CREATE WORKLOAD GROUP](https://docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
 - [Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen](sql-data-warehouse-how-to-convert-resource-classes-workload-groups.md)

@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/01/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ab6a0d5c2a4c4623506d90b76b77462abb8fe4af
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 1e91b204401033c7c6c47484140720ab8076f9f9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71719494"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971694"
 ---
 # <a name="quickstart-computer-vision-client-library-for-python"></a>Schnellstart: Clientbibliothek der Maschinelles Sehen-API für Python
 
@@ -136,9 +136,9 @@ Mit dem folgenden Code werden die erkannten Gesichter im Bild mit den Rechteckko
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_faces)]
 
-### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von jugendgefährdenden, rassistischen oder gewaltverherrlichenden Inhalten
+### <a name="detect-adult-racy-or-gory-content"></a>Erkennen von nicht jugendfreien, freizügigen oder gewaltverherrlichenden Inhalten
 
-Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Nicht jugendfreie, rassistische und gewaltverherrlichende Inhalte](../concept-detecting-adult-content.md).
+Der folgende Code gibt an, ob nicht jugendfreie Inhalte im Bild erkannt wurden. Weitere Informationen finden Sie unter [Erkennen von nicht jugendfreien und freizügigen Inhalten](../concept-detecting-adult-content.md).
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_adult)]
 
@@ -206,5 +206,5 @@ In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Bibliothek für m
 > [!div class="nextstepaction"]
 >[Referenz zur Maschinelles Sehen-API (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)
 
-* [Was ist die Maschinelles Sehen-API?](../Home.md)
+* [Worum handelt es sich bei maschinellem Sehen?](../Home.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/ComputerVision/ComputerVisionQuickstart.py).

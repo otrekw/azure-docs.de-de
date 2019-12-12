@@ -1,18 +1,18 @@
 ---
 title: Einbinden einer Azure-Dateifreigabe über SMB mit macOS | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mit macOS eine Azure-Dateifreigabe über SMB einbinden.
-author: roygara
+author: RenaShahMSFT
 ms.service: storage
 ms.topic: conceptual
 ms.date: 09/19/2017
-ms.author: rogarana
+ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 6bd696ce5a314b0c849256311d0629b917036ea2
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 0e3420e469b117d90efb2949dab828021bfedcb6
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699547"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924704"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Einbinden einer Azure-Dateifreigabe über SMB mit macOS
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können von macOS El Capitan 10.11 oder höher mit dem SMB 3-Protokoll nach Branchenstandard eingebunden werden. In diesem Artikel werden zwei Methoden zum Einbinden einer Azure-Dateifreigabe unter macOS behandelt: über die Finder-Benutzeroberfläche und mithilfe des Terminals.

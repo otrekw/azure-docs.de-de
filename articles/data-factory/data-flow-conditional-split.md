@@ -1,18 +1,19 @@
 ---
-title: Transformation für bedingtes Teilen im Azure Data Factory-Zuordnungsdatenfluss
+title: Transformation für bedingtes Teilen im Zuordnungsdatenfluss
 description: Es wird beschrieben, wie Sie Daten auf verschiedene Streams aufteilen, indem Sie die Transformation für bedingtes Teilen im Azure Data Factory-Zuordnungsdatenfluss verwenden.
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/16/2019
-ms.openlocfilehash: 9ace415aa725a82d8feda5702d25d7e5ff9875d9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d7e2af6c98951e685192656b37226716e4340bfe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676810"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930445"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Transformation für bedingtes Teilen im Zuordnungsdatenfluss
 

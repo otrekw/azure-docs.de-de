@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 77442eda6c8b2aae71c5d647127ead9f851ec485
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 1754168478caf3ca029e003ad0187fc29e85fa8a
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421425"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997291"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -115,7 +115,7 @@ Wenn Sie Ihre Datenbank von einer DTU-basierten Dienstebene mit einer PITR-Stand
 
 ## <a name="how-to-change-the-pitr-backup-retention-period"></a>Ändern des Zeitraums für die Aufbewahrung von PITR-Sicherungen
 
-Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit dem Azure-Portal, PowerShell oder der REST-API ändern. Die unterstützten Werte sind: 7, 14, 21, 28 oder 35 Tage. In den folgenden Beispielen wird veranschaulicht, wie Sie die PITR-Aufbewahrungsdauer in 28 Tage ändern.
+Sie können den Standardzeitraum für die Aufbewahrung von PITR-Sicherungen mit dem Azure-Portal, PowerShell oder der REST-API ändern. In den folgenden Beispielen wird veranschaulicht, wie Sie die PITR-Aufbewahrungsdauer in 28 Tage ändern.
 
 > [!WARNING]
 > Wenn Sie die aktuelle Aufbewahrungsdauer reduzieren, sind alle vorhandenen Sicherungen, die außerhalb der neuen Aufbewahrungsdauer liegen, nicht mehr verfügbar. Wenn Sie die aktuelle Aufbewahrungsdauer erhöhen, behält SQL-Datenbank die vorhandenen Sicherungen bei, bis die längere Aufbewahrungsdauer erreicht ist.

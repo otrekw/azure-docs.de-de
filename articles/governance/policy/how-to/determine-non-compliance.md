@@ -2,13 +2,13 @@
 title: Ermitteln der Ursachen für Nichtkonformität
 description: Wenn eine Ressource nicht konform ist, kann das viele mögliche Ursachen haben. Erfahren Sie, wie Sie die Ursache für die Nichtkonformität ermitteln können.
 ms.date: 04/26/2019
-ms.topic: conceptual
-ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: how-to
+ms.openlocfilehash: 213797a1eafda10d5e97fbc60fc143de975fe221
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279417"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873130"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Ermitteln der Ursachen für Nichtkonformität
 

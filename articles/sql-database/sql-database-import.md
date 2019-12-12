@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 4d6997475099420319c52abbbce34b2756e215ed
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8d147248245ca06c145c68ee8ca9cfd02015aa9c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687663"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929173"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Schnellstart: Importieren einer BACPAC-Datei in eine Datenbank in Azure SQL-Datenbank
 
@@ -43,19 +43,19 @@ Das Migrieren einer Datenbank in eine [verwaltete Instanz](sql-database-managed-
 
 1. Wenn Sie über das Azure-Portal aus einer BACPAC-Datei in eine neue Einzeldatenbank importieren möchten, öffnen Sie die entsprechende Seite für den Datenbankserver, und wählen Sie auf der Symbolleiste **Datenbank importieren** aus.  
 
-   ![Datenbankimport 1](./media/sql-database-import/import1.png)
+   ![Datenbankimport 1](./media/sql-database-import/sql-server-import-database.png)
 
 1. Wählen Sie das Speicherkonto und den Container für die BACPAC-Datei aus, und wählen Sie dann die BACPAC-Datei, aus der importiert werden soll.
 
 1. Geben Sie die Größe der neuen Datenbank (in der Regel identisch mit dem Ursprung) und die SQL Server-Anmeldeinformationen für das Ziel an. Eine Liste der möglichen Werte für eine neue Azure SQL-Datenbank finden Sie unter [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
-   ![Datenbankimport 2](./media/sql-database-import/import2.png)
+   ![Datenbankimport 2](./media/sql-database-import/sql-server-import-database-settings.png)
 
 1. Klicken Sie auf **OK**.
 
 1. Um den Fortschritt eines Importvorgangs zu überwachen, öffnen Sie die Seite für den Server der Datenbank, und wählen Sie unter **Einstellungen** die Option **Import-/Exportverlauf** aus. Bei erfolgreicher Ausführung weist der Import den Status **Abgeschlossen** auf.
 
-   ![Datenbankimportstatus](./media/sql-database-import/import-status.png)
+   ![Datenbankimportstatus](./media/sql-database-import/sql-server-import-database-history.png)
 
 1. Zum Überprüfen, ob die Datenbank auf dem Datenbankserver aktiv ist, wählen Sie **SQL-Datenbanken** aus, und prüfen Sie, ob der Status der neuen Datenbank **Online** lautet.
 

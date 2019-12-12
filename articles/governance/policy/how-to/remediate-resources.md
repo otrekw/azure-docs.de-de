@@ -2,13 +2,13 @@
 title: Korrigieren nicht konformer Ressourcen
 description: Dieser Leitfaden führt Sie schrittweise durch den Korrekturprozess von Ressourcen, die mit Richtlinien in Azure Policy nicht konform sind.
 ms.date: 09/09/2019
-ms.topic: conceptual
-ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: how-to
+ms.openlocfilehash: 341a325aa7a82c8b1f6366c3a674848c60a8fb5e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267358"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873045"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korrigieren nicht konformer Ressourcen mit Azure Policy
 

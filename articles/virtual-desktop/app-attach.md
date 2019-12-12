@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: helohr
-ms.openlocfilehash: 54f2c39260ecaf643b0f2add8758ceb866e71afe
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561118"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972387"
 ---
 # <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
 
@@ -185,7 +185,7 @@ Wenn Ihre App ein Zertifikat verwendet, das nicht öffentlich vertrauenswürdig 
 Das MSIX-Feature zum Anfügen von Apps weist vier verschiedene Phasen auf, die in der folgenden Reihenfolge ausgeführt werden müssen:
 
 1. Phase
-2. Registrieren
+2. Register
 3. Registrierung aufheben
 4. Staging aufheben
 
@@ -337,7 +337,7 @@ $path = "C:\Program Files\WindowsApps\" + $packageName + "\AppxManifest.xml"
 
 #region register
 
-Add-AppxPackage -Path \$path -DisableDevelopmentMode -Register
+Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 #endregion
 ```

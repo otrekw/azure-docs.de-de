@@ -4,16 +4,16 @@ description: In diesem Artikel wird erläutert, wie Azure EA-Kunden das Azure EA
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/07/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: d5fe93f1d3297fbdfb879a515c502025b49eab1e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223993"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841369"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Erste Schritte mit dem Azure EA-Portal
 

@@ -1,23 +1,22 @@
 ---
-title: 'Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime '
+title: Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 description: Dieser Artikel enthält Anleitungen zur Problembehandlung bei der Ausführung von SSIS-Paketen in der SSIS Integration Runtime.
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/15/2019
-author: wenjiefu
 ms.author: wenjiefu
+author: wenjiefu
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 9692c754e59eba02d3d483d44430150107d703a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+manager: shwang
+ms.custom: seo-lt-2019
+ms.date: 04/15/2019
+ms.openlocfilehash: c0aa33cce8dc163722557b1ef868cf0de8bea8fe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74217539"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928731"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 

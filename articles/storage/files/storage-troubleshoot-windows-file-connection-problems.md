@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: d54075da10671bb9a48c84844cab67841fa0aec0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560132"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927847"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -97,8 +97,7 @@ Wenn das Verbinden erfolgreich war, wird die folgende Ausgabe angezeigt:
 Mit der Azure-Dateisynchronisierung können Ihre lokalen Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe werden. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Die Azure-Dateisynchronisierung erfolgt über Port 443 und kann daher als Umgehung für den Zugriff auf Azure Files von Clients verwendet werden, bei denen Port 445 gesperrt ist. [Erfahren Sie, wie Sie die Azure-Dateisynchronisierung einrichten](https://docs.microsoft.com/azure/storage/files/storage-sync-files-extend-servers).
 
 #### <a name="solution-2---use-vpn"></a>Lösung 2: VPN
-Indem Sie ein VPN für Ihr spezifisches Speicherkonto einrichten, durchläuft der Datenverkehr im Vergleich zum Internet einen sicheren Tunnel. Befolgen Sie die [Anweisungen zur Einrichtung eines VPN](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
-) für den Zugriff auf Azure Files aus Windows.
+Indem Sie ein VPN für Ihr spezifisches Speicherkonto einrichten, durchläuft der Datenverkehr im Vergleich zum Internet einen sicheren Tunnel. Befolgen Sie die [Anweisungen zur Einrichtung eines VPN](storage-files-configure-p2s-vpn-windows.md) für den Zugriff auf Azure Files aus Windows.
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>Lösung 3: Aufheben der Sperre von Port 445 mithilfe Ihres ISP/IT-Administrators
 Arbeiten Sie mit Ihrer IT-Abteilung oder dem ISP zusammen, um den Ausgang von Datenverkehr über Port 445 für [IP-Bereiche von Azure](https://www.microsoft.com/download/details.aspx?id=41653) zu öffnen.

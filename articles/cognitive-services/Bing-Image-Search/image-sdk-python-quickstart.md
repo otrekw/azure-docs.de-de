@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: b5a4cd36f204dfe708e5acd8818d9925b5accc30
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 85aa1bda395240d0f11b0654ee48b9f1a0401eaa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034696"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930591"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Python
 
@@ -25,7 +25,6 @@ Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bi
 Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 * [Python 2.7 oder 3.4](https://www.python.org/) und höher
 

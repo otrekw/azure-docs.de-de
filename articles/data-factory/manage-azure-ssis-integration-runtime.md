@@ -5,19 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
-manager: craigg
-ms.openlocfilehash: 09ef8560edc47a6bb12fad782ae3d34987471127
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: anandsub
+ms.openlocfilehash: fbac52d65433f2137d565ca60fcf754e49199640
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672533"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931395"
 ---
 # <a name="reconfigure-the-azure-ssis-integration-runtime"></a>Neukonfigurieren der Azure-SSIS-Integration Runtime
 In diesem Artikel erfahren Sie, wie Sie eine Instanz von Azure-SSIS Integration Runtime neu konfigurieren. Informationen zum Erstellen einer Azure-SSIS-Integration Runtime (IR) in Azure Data Factory finden Sie im Artikel [Erstellen einer Azure SSIS Integration Runtime](create-azure-ssis-integration-runtime.md).  

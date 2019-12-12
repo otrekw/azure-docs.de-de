@@ -4,17 +4,17 @@ description: In diesem Artikel werden die Zuordnungen beschrieben, die zwischen 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cd4500b4ef6492f0b6499bb1e9aa1a773313e860
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 965d6b206bb64e90fe59798ce0c37ccf029117f5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68498364"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849512"
 ---
 # <a name="workspace-mappings"></a>Arbeitsbereichzuordnungen
 

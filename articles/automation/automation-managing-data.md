@@ -4,17 +4,17 @@ description: Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Au
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9de5909ddca5fd36f3fafcb79e2a4ad519402c9c
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476580"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850770"
 ---
 # <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten
 Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.
@@ -26,7 +26,7 @@ Aufträge, die älter sind als 90 Tage, werden in Azure Automation automatisch 
 
 Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Ressourcen.
 
-| Daten | Richtlinie |
+| Data | Richtlinie |
 |:--- |:--- |
 | Konten |Dauerhafte Entfernung 90 Tage nach dem Löschen des Kontos durch einen Benutzer. |
 | Objekte |Dauerhafte Entfernung 90 Tage nach dem Löschen des Objekts durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit dem Objekt durch einen Benutzer. |

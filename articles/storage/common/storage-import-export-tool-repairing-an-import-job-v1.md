@@ -1,19 +1,19 @@
 ---
 title: Reparieren eines Importauftrags in Azure Import/Export (V1) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen Importauftrag reparieren, der mithilfe des Azure Import/Export-Diensts erstellt und ausgeführt wurde.
-author: muralikk
+author: twooley
 services: storage
 ms.service: storage
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: muralikk
+ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f5db321d8c4a6e42591a82b0ed8eb6bc6e93bad4
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61477585"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973882"
 ---
 # <a name="repairing-an-import-job"></a>Reparieren eines Importauftrags
 Der Microsoft Azure Import/Export-Dienst kann möglicherweise einige Ihrer Dateien oder Teile einer Datei nicht in den Windows Azure-Blobdienst kopieren. Mögliche Fehlerursachen sind:  

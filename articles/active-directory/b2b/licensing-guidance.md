@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5968536d0bd0fbe2496fd9bf5fca86c7a1c4053d
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 28d02160163da4081ad8adbe233b27fee970a0df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162264"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868846"
 ---
 # <a name="azure-active-directory-b2b-collaboration-licensing-guidance"></a>Leitfaden zur Lizenzierung von Azure Active Directory B2B-Kollaboration
 
@@ -25,7 +25,7 @@ Mit der Azure Active Directory Business-to-Business-Kollaboration (Azure AD B2B-
 > [!NOTE]
 > Weitere Informationen zu den Preisen von Azure AD und den Features für die B2B-Zusammenarbeit finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Die Lizenzierung von B2B-Gastbenutzern wird basierend auf dem Verhältnis von 1:5 automatisch berechnet und gemeldet. Derzeit ist es nicht möglich, Lizenzen für B2B-Gastbenutzer direkt Gastbenutzern zuzuweisen.
+Die Lizenzierung von B2B-Gastbenutzern wird basierend auf dem Verhältnis von 1:5 automatisch berechnet und gemeldet. 
 
 Darüber hinaus können Gastbenutzer kostenlose Azure AD-Features ohne zusätzliche Lizenzanforderungen nutzen. Gastbenutzer haben Zugriff auf kostenlose Azure AD-Features, auch wenn sie über keine kostenpflichtigen Azure AD-Lizenzen verfügen. 
 

@@ -2,18 +2,18 @@
 title: Beheben von Fehlern bei freigegebenen Azure Automation-Ressourcen
 description: Erfahren Sie, wie Sie Probleme mit freigegebenen Azure Automation-Ressourcen beheben.
 services: automation
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: a2836f40b55a71e080288fce7e48275747962c16
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9313b042433489307a2bd2822a96d1e0e127362b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231532"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849291"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Beheben von Fehlern bei freigegebenen Ressourcen
 

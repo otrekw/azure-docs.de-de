@@ -3,21 +3,21 @@ title: Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory
 description: Erfahren Sie, wie Daten aus Google BigQuery mithilfe einer Kopieraktivität in eine Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/04/2019
-ms.author: jingwang
-ms.openlocfilehash: d57260db74a1373eb461c560e013be620910eee9
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0eb043ce040f154050ef4c3675f165dad326e32
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680935"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929424"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Kopieren von Daten aus Google BigQuery mithilfe von Azure Data Factory
 

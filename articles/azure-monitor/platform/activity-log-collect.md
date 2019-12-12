@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 07062ea9ce10b99e0f03a66247bb97795b45aedc
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212591"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931412"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
 
-> [!NOTE]
+> [!WARNING]
 > Sie können das Aktivitätsprotokoll jetzt mithilfe einer Diagnoseeinstellung in einem Log Analytics-Arbeitsbereich erfassen (ähnlich wie bei der Erfassung von Ressourcenprotokollen). Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-subscription.md).
 
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Dieser Artikel beschreibt, wie Sie das Aktivitätsprotokoll in einem Log Analytics-Arbeitsbereich erfassen und die [Überwachungslösung](../insights/solutions.md) der Aktivitätsprotokollanalyse verwenden, die Protokollabfragen und Ansichten zum Analysieren dieser Daten bereitstellt. 

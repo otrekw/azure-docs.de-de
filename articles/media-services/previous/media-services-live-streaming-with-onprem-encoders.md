@@ -1,6 +1,6 @@
 ---
 title: Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen – Azure | Microsoft-Dokumentation
-description: 'In diesem Thema wird das Einrichten eines Kanals beschrieben, der einen Livestream mit Mehrfachbitrate von einem lokalen Encoder empfängt. Der Datenstrom kann über einen oder mehrere Streamingendpunkte an Wiedergabe-Clientanwendungen übermittelt werden. Hierzu dienen die folgenden adaptiven Streamingprotokolle: HLS, Smooth Streaming, DASH.'
+description: In diesem Thema wird das Einrichten eines Kanals beschrieben, der einen Livestream mit Mehrfachbitrate von einem lokalen Encoder empfängt.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: a299c050be37d53acd01ddc2db580c4881eeae07
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: f6366f162cb09898b694b14440718401c57c0adf
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "69015482"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887100"
 ---
 # <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders"></a>Arbeiten mit Kanälen, die Livestreams mit Mehrfachbitrate von lokalen Encodern empfangen
 

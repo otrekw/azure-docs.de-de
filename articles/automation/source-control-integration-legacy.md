@@ -4,17 +4,17 @@ description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/01/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2567536cd81eb2339622868a731948b1380614ad
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 74d4cb80fbac41294b57bf13f23c2c63babb71ef
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478444"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849444"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -65,7 +65,7 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
      | **Parameter** | **Wert** |
      |:--- |:--- |
      | `Name`  |Microsoft.Azure.Automation.SourceControl.Connection |
-     | `Type`  |string |
+     | `Type`  |Zeichenfolge |
      | `Value` |{„Verzweigung“:\<*Name Ihrer Verzweigung*>, „Runbook-Ordnertyp“:\<*Runbook-Ordnerpfad*>, „Anbietertyp“:\<*hat einen Wert 1 für GitHub*>, „Verzeichnis“:\<*Name Ihres Repositorys*>, „Benutzername“:\<*Ihr GitHub-Benutzername*>} |
 
    * Die Variable **Microsoft.Azure.Automation.SourceControl.OauthToken**enthält den sicher verschlüsselten Wert Ihres OAuth-Tokens.  
@@ -139,5 +139,4 @@ Mit der Synchronisierungsschaltfläche auf der Seite „Repositorysynchronisieru
 Weitere Informationen zur Integration einer Quellcodeverwaltung finden Sie unter den folgenden Ressourcen:  
 
 * [Azure Automation: Integration der Quellcodeverwaltung in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  
-* [Stimmen Sie für Ihr bevorzugtes Quellcodeverwaltungssystem ab.](https://www.surveymonkey.com/r/?sm=2dVjdcrCPFdT0dFFI8nUdQ%3d%3d)  
 * [Azure Automation: Integrating Runbook Source Control using Visual Studio Online](https://azure.microsoft.com/blog/azure-automation-integrating-runbook-source-control-using-visual-studio-online/) (Azure Automation: Integrieren der Runbook-Quellcodeverwaltung mithilfe von Visual Studio Online)  

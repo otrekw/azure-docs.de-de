@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 12/03/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 08c1db1a8e377edd1bf9b8f1b942e65b970edf56
+ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322736"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74803678"
 ---
 # <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Bedingter Zugriff: Vorschreiben eines vertrauenswürdigen Standorts für die MFA-Registrierung
 
@@ -26,7 +26,7 @@ Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann jetzt sicherg
 
 Die folgende Richtlinie gilt für alle ausgewählten Benutzer, die versuchen, sich über die Benutzeroberfläche für die kombinierte Registrierung zu registrieren. Der Zugriff wird blockiert, sofern die Verbindung nicht von einem Standort aus hergestellt wird, der als ein vertrauenswürdiges Netzwerk gekennzeichnet ist.
 
-1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Bedingter Zugriff**.
+1. Navigieren Sie im **Azure-Portal** zu **Azure Active Directory** > **Sicherheit** > **Bedingter Zugriff**.
 1. Wählen Sie **Neue Richtlinie**.
 1. Geben Sie unter „Name“ einen Namen für diese Richtlinie ein. Beispiel: **Kombinierte Registrierung mit Sicherheitsinformationen in vertrauenswürdigen Netzwerken**.
 1. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**, und wählen Sie die Benutzer und Gruppen aus, auf die Sie diese Richtlinie anwenden möchten.

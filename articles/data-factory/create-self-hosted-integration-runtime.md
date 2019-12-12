@@ -1,22 +1,22 @@
 ---
-title: Erstellen einer selbstgehosteten Integration Runtime in Azure Data Factory
+title: Erstellen einer selbstgehosteten Integration Runtime
 description: Es wird beschrieben, wie Sie in Azure Data Factory eine selbstgehostete Integration Runtime erstellen, mit der Data Factorys das Zugreifen auf Datenspeicher in einem privaten Netzwerk ermöglicht wird.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/18/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: f4eb275d8e1303ba68a23ac4ea0135c81c6a452a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 06/18/2019
+ms.openlocfilehash: 0d04ea7d7003f274b252e057b7afced7759bfaae
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672296"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928507"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 

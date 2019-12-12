@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: a2a3bdeb0ee454185c92c6e49a17bda7e4e5d5f0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e421a534b04f74d2a2eb0bc06aeffa52684ae17a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083578"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931977"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Ändern einer ExpressRoute-Verbindung mit PowerShell (klassisch)
 
@@ -35,20 +35,7 @@ In diesem Artikel werden die Schritte beschrieben, die zum Überprüfen des Stat
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Installieren Sie die aktuellen Versionen der PowerShell-Module für die Azure-Dienstverwaltung und das ExpressRoute-Modul. Sie können die Azure Cloud Shell-Umgebung nicht zum Ausführen von SM-Modulen verwenden.
-
-1. Befolgen Sie die Anweisungen im Artikel [Installieren des Azure PowerShell-Dienstverwaltungsmoduls](/powershell/azure/servicemanagement/install-azure-ps), um das Azure-Dienstverwaltungsmodul zu installieren. Wenn Sie das Az- oder RM-Modul bereits installiert haben, achten Sie darauf, „-AllowClobber“ zu verwenden.
-2. Importieren Sie die installierten Module. Wenn Sie das folgende Beispiel verwenden, passen Sie den Pfad an, um den Speicherort der installierten PowerShell-Module widerzuspiegeln.
-
-   ```powershell
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\Azure.psd1'
-   Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.3.0\ExpressRoute\ExpressRoute.psd1'
-   ```
-3. Melden Sie sich bei Ihrem Azure-Konto an, öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und stellen Sie eine Verbindung mit Ihrem Konto her. Verwenden Sie das folgende Beispiel, um eine Verbindung mit dem Dienstverwaltungsmodul herzustellen:
-
-   ```powershell
-   Add-AzureAccount
-   ```
+[!INCLUDE [classic powershell install instructions](../../includes/expressroute-poweshell-classic-install-include.md)]
 
 ## <a name="get-the-status-of-a-circuit"></a>Abrufen des Status einer Verbindung
 

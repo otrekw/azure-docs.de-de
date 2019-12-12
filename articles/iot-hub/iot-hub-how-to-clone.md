@@ -2,18 +2,17 @@
 title: Klonen eines Azure IoT Hubs
 description: Klonen eines Azure IoT Hubs
 author: robinsh
-manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/05/2019
+ms.date: 12/09/2019
 ms.author: robinsh
-ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 6e4d110221c7f360e8177505de2a7789f9616d51
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083280"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976144"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Klonen eines Azure IoT Hubs in eine andere Region
 
@@ -73,9 +72,7 @@ Dies ist die von uns empfohlene allgemeine Methode zum Verschieben eines IoT Hub
    1. Fügen Sie alles hinzu, was nicht in die Vorlage exportiert wurde. 
    
        So werden beispielsweise Consumergruppen nicht in die Vorlage exportiert. Sie müssen die Consumergruppen der Vorlage entweder manuell hinzufügen oder dazu das [Azure-Portal](https://portal.azure.com) verwenden, nachdem der Hub erstellt wurde. Im Artikel [Verwendung einer Azure Resource Manager-Vorlage zum Konfigurieren des IoT Hub-Nachrichtenroutings](tutorial-routing-config-message-routing-rm-template.md) gibt es ein Beispiel dazu, wie eine Consumergruppe einer Vorlage hinzugefügt wird.
-
-       Auch [Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md) werden nicht in die Vorlage exportiert. Sie werden zusammen mit Routingnachrichten verwendet und müssen im neuen Hub bei der Aktualisierung der Nachrichtenroutingkonfiguration manuell aktualisiert werden.
-
+       
    1. Kopieren Sie die Geräte aus dem ursprünglichen Hub in den Klon. Die dazu erforderlichen Schritte finden Sie im Abschnitt [Verwalten der im IoT Hub registrierten Geräte](#managing-the-devices-registered-to-the-iot-hub).
 
 ## <a name="how-to-handle-message-routing"></a>Verarbeiten des Nachrichtenroutings
@@ -103,9 +100,6 @@ Wenn der Hub Nachrichtenrouting verwendet, haben Sie zwei Wahlmöglichkeiten.
    * Der Hub verweist weiterhin auf die ursprünglichen Routingressourcen und leitet Nachrichten entsprechend der Konfiguration dorthin weiter.
 
    * Es wird nur eine geringe Leistungssteigerung erzielt, weil sich der Hub und die Routingendpunktressourcen nicht an demselben Standort befinden.
-
-> [!NOTE]
-> Wenn Ihr Hub [Nachrichtenanreicherungen](iot-hub-message-enrichments-overview.md) verwendet, müssen Sie diese im neuen IoT Hub manuell einrichten, da sie nicht zusammen mit der Resource Manager-Vorlage exportiert werden.
 
 ## <a name="prepare-to-migrate-the-hub-to-another-region"></a>Vorbereitungen zum Migrieren des Hubs in eine andere Region
 

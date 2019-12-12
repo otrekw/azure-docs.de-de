@@ -1,15 +1,15 @@
 ---
-author: larryfr
+author: Blackmist
 ms.service: machine-learning
 ms.topic: include
 ms.date: 10/06/2019
 ms.author: larryfr
-ms.openlocfilehash: 0463dbd67f27f6664ab246ad56af9c6fb95c52ee
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 2124b5241015ca74ff6507767396b1a27bd1191d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682083"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935887"
 ---
 Die Einträge im Dokument `deploymentconfig.json` werden den Parametern für [AksWebservice.deploy_configuration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aks.aksservicedeploymentconfiguration?view=azure-ml-py) zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
 

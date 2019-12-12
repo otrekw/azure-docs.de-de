@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4d7a3d92322fed44086fd72bbb1c19e10de605b6
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: e41c3409ac5b81fe9e099ab34abd7256ef39d330
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034688"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930576"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Node.js
 
@@ -25,7 +25,6 @@ Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bi
 Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) mit zusätzlichen Fehlerbehandlungen und Anmerkungen verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Rufen Sie unter **Suchen** einen [Cognitive Services-Zugriffsschlüssel](https://azure.microsoft.com/try/cognitive-services/) ab.  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)  Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
 
 * Das [Cognitive Services-Bildersuche-SDK für Node.js](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
     * Installation mithilfe von `npm install azure-cognitiveservices-imagesearch`

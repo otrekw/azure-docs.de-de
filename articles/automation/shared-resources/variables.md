@@ -4,17 +4,17 @@ description: Variablenobjekte sind Werte, die allen Runbooks und DSC-Konfigurati
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fe008d20ab43636b59861bcc5a7914ba0fca17e
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910064"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849427"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 

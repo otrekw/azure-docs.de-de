@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: be223245c634b8e38dc5e4c89df4c265c22c0b57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6dbe61c47a7323e2dec599d2f3c77453aa6f8d82
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821265"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973525"
 ---
 # <a name="choose-between-the-vcore-and-the-dtu-purchasing-models"></a>Wählen zwischen den Kaufmodellen „V-Kern“ und „DTU“
 
@@ -129,7 +129,7 @@ Wenn Sie die vorhandene Workload eines lokalen oder virtuellen SQL Server-Comput
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Workloads, die von einem elastischen Ressourcenpool profitieren
 
-Pools eignen sich sehr gut für Datenbanken mit einer geringen durchschnittlichen Ressourcennutzung und mit relativ seltenen Nutzungsspitzen. SQL-Datenbank ermittelt automatisch den Verlauf der Ressourcennutzung von Datenbanken auf einem vorhandenen SQL-Datenbank-Server und empfiehlt eine geeignete Poolkonfiguration im Azure-Portal. Weitere Informationen finden Sie unter [Wann sollten Sie einen Pool für elastische SQL-Datenbank-Instanzen erwägen?](sql-database-elastic-pool.md)
+Pools eignen sich sehr gut für Datenbanken mit einer geringen durchschnittlichen Ressourcennutzung und mit relativ seltenen Nutzungsspitzen. Weitere Informationen finden Sie unter [Wann sollten Sie einen Pool für elastische SQL-Datenbank-Instanzen erwägen?](sql-database-elastic-pool.md)
 
 ## <a name="frequently-asked-questions-faqs"></a>Häufig gestellte Fragen (FAQs)
 

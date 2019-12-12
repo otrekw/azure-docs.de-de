@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/2/2019
-ms.openlocfilehash: 07feb3ebf9720d70da441486fd0b2e6e274b68e4
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/9/2019
+ms.openlocfilehash: 8b3d6ea46c4a88187b70b520457ad34f7e7f36ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770916"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975141"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
@@ -23,17 +23,17 @@ Die folgende Tabelle enthält die maximale Anzahl von Verbindungen nach Tarif un
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
-|Allgemeiner Zweck| 2| 300|
-|Allgemeiner Zweck| 4| 625|
-|Allgemeiner Zweck| 8| 1250|
-|Allgemeiner Zweck| 16| 2500|
-|Allgemeiner Zweck| 32| 5\.000|
-|Allgemeiner Zweck| 64| 10000|
-|Arbeitsspeicheroptimiert| 2| 600|
-|Arbeitsspeicheroptimiert| 4| 1250|
-|Arbeitsspeicheroptimiert| 8| 2500|
-|Arbeitsspeicheroptimiert| 16| 5\.000|
-|Arbeitsspeicheroptimiert| 32| 10000|
+|Allgemeiner Zweck| 2| 600|
+|Allgemeiner Zweck| 4| 1250|
+|Allgemeiner Zweck| 8| 2500|
+|Allgemeiner Zweck| 16| 5\.000|
+|Allgemeiner Zweck| 32| 10000|
+|Allgemeiner Zweck| 64| 20000|
+|Arbeitsspeicheroptimiert| 2| 1250|
+|Arbeitsspeicheroptimiert| 4| 2500|
+|Arbeitsspeicheroptimiert| 8| 5\.000|
+|Arbeitsspeicheroptimiert| 16| 10000|
+|Arbeitsspeicheroptimiert| 32| 20000|
 
 Wenn Verbindungen den Grenzwert übersteigen, erhalten Sie möglicherweise den folgenden Fehler:
 > FEHLER 1040 (08004): Zu viele Verbindungen

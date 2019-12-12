@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: fb69e0b797243a3403e8899d3f4ef23a9be9451d
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: a756518688b5b1f8b854165de69d3444b772eabc
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534277"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931222"
 ---
 # <a name="use-net-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von .NET für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie .NET zum Erstellen und Verwalten von Ver
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
-Installieren Sie zunächst das NuGet-Paket [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/12.0.0-preview.6).
+Installieren Sie zunächst das NuGet-Paket [Azure.Storage.Files.DataLake](https://www.nuget.org/packages/Azure.Storage.Files.DataLake/).
 
 Weitere Informationen zum Installieren von NuGet-Paketen finden Sie unter [Installieren und Verwalten von Paketen in Visual Studio mit dem NuGet-Paket-Manager](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-visual-studio).
 

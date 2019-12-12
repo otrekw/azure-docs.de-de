@@ -1,19 +1,19 @@
 ---
 title: Verwalten von IoT Plug & Play Vorschaumodellen im Repository | Microsoft-Dokumentation
 description: Erfahren Sie mehr über das Verwalten von Gerätefunktionsmodellen im Repository mithilfe des Azure Certified for IoT-Portals, der Azure CLI und Visual Studio Code.
-author: YasinMSFT
+author: Philmea
 manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
 ms.date: 06/12/2019
-ms.author: yahajiza
-ms.openlocfilehash: 1b71d8bd0f0417c7dc408c580a1c73ac654743ce
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.author: philmea
+ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932860"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979103"
 ---
 # <a name="manage-models-in-the-repository"></a>Verwalten von Modellen im Repository
 

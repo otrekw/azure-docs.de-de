@@ -4,12 +4,12 @@ description: Mit Azure Backup können Sie mithilfe des Azure Import/Export-Diens
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 259be99efdef29e3f7971632adf76c03175bba01
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173249"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996322"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
 
@@ -218,4 +218,4 @@ Zum nächsten geplanten Sicherungszeitpunkt führt Azure Backup eine inkrementel
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Falls Sie Fragen zum Azure Import/Export-Workflow haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md)weitere Informationen.
-* Bei Fragen zum Workflow finden Sie im Abschnitt zur Offlinesicherung in den [häufig gestellten Fragen](backup-azure-backup-faq.md) zu Azure Backup weitere Informationen.
+

@@ -2,26 +2,22 @@
 title: Bewährte Methoden für Microsoft Identity Platform | Azure
 description: Hier finden Sie bewährten Methoden, Empfehlungen und häufige Fehler im Zusammenhang mit der Microsoft Identity Platform-Integration.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/11/2019
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1ce33e90cab1c5172cbf14470f24345d0446b0de
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e3ec9a96c15cb1f337a3c750b41b22c3b7a13d20
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200282"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917453"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
