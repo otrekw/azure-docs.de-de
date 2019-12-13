@@ -9,28 +9,28 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: 3e85067439fe412822ac34a065753e9a13c7a506
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488729"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894607"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Tutorial: Extrahieren von Daten mit ähnlichem Kontext aus einer Äußerung
 
-In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Ein Beispiel wären etwa Ursprungs- und Zielorte bei der Versetzung in eine andere Stadt. Beide Teilinformationen können erforderlich sein und stehen miteinander in Verbindung.  
+In diesem Tutorial wird das kontextbasierte Finden aufeinander bezogener Teildaten behandelt. Ein Beispiel wären etwa Ursprungs- und Zielorte bei der Versetzung in eine andere Stadt. Beide Teilinformationen können erforderlich sein und stehen miteinander in Verbindung.
 
-Eine Rolle kann mit allen vordefinierten oder benutzerdefinierten Entitätstypen und sowohl in Beispieläußerungen als auch in Mustern verwendet werden. 
+Eine Rolle kann mit allen vordefinierten oder benutzerdefinierten Entitätstypen und sowohl in Beispieläußerungen als auch in Mustern verwendet werden.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
 > [!div class="checklist"]
 > * Erstellen einer neuen App
-> * Hinzufügen einer Absicht 
+> * Hinzufügen einer Absicht
 > * Abrufen von Ursprungs- und Zielinformationen mithilfe von Rollen
 > * Trainieren
 > * Veröffentlichen
@@ -57,9 +57,9 @@ Eine Rolle sollte verwendet werden, wenn für die zu extrahierenden Entitätsdat
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus. 
+1. Wählen Sie **Create new intent** (Neue Absicht erstellen) aus.
 
-1. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployeeToCity` ein, und klicken Sie anschließend auf **Fertig**. 
+1. Geben Sie im Popupdialogfeld die Zeichenfolge `MoveEmployeeToCity` ein, und klicken Sie anschließend auf **Fertig**.
 
     ![Screenshot: Dialogfenster „Create new intent“ (Neue Absicht erstellen)](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
@@ -85,24 +85,24 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
 
 1. Wählen Sie im linken Navigationsmenü die Option **Entitäten**.
 
-1. Wählen Sie **Vordefinierte Entität hinzufügen** und dann in der Suchleiste die Option `geo`, um die vordefinierten Entitäten zu filtern. 
+1. Wählen Sie **Vordefinierte Entität hinzufügen** und dann in der Suchleiste die Option `geo`, um die vordefinierten Entitäten zu filtern.
 
     ![Hinzufügen einer vordefinierten geographyV2-Entität zur App](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
 1. Aktivieren Sie das Kontrollkästchen, und wählen Sie **Fertig**.
-1. Wählen Sie in der Liste **Entitäten** die Option **geographyV2**, um die neue Entität zu öffnen. 
-1. Fügen Sie die beiden Rollen `Origin` und `Destination` hinzu. 
+1. Wählen Sie in der Liste **Entitäten** die Option **geographyV2**, um die neue Entität zu öffnen.
+1. Fügen Sie die beiden Rollen `Origin` und `Destination` hinzu.
 
     ![Hinzufügen von Rollen zur vordefinierten Entität](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 1. Wählen Sie im Navigationsbereich auf der linken Seite die Option **Absichten** und dann die Absicht **MoveEmployeeToCity** aus. Beachten Sie, dass die Städtenamen mit der vordefinierten Entität **geographyV2** bezeichnet sind.
 1. Wählen Sie in der ersten Äußerung der Liste den Standort des Ursprungs aus. Ein Dropdownmenü wird angezeigt. Wählen Sie in der Liste den Eintrag **geographyV2** aus, und wählen Sie dann im angezeigten Menü die Option **Ursprung**.
-1. Verwenden Sie die Methode aus dem vorherigen Schritt, um alle Rollen der Standorte in allen Äußerungen zu kennzeichnen. 
+1. Verwenden Sie die Methode aus dem vorherigen Schritt, um alle Rollen der Standorte in allen Äußerungen zu kennzeichnen.
 
 
-## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“ 
+## <a name="add-example-utterances-to-the-none-intent"></a>Hinzufügen von Beispieläußerungen zur Absicht „None“
 
 [!INCLUDE [Follow these steps to add the None intent to the app](../../../includes/cognitive-services-luis-create-the-none-intent.md)]
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -152,9 +152,9 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
       ]
     }
     ```
-    
+
     Die richtige Absicht wird vorhergesagt, und das Entitätenarray weist sowohl die Ursprungs- als auch die Zielrolle in der entsprechenden Eigenschaft vom Typ **entities** auf.
-    
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
@@ -173,5 +173,5 @@ Mit der vordefinierten Entität „geographyV2“ werden Standortinformationen e
 
 In diesem Tutorial wurden eine neue Absicht erstellt und Beispieläußerungen für die im Kontext gelernten Daten von Ursprungs- und Zielort hinzugefügt. Nachdem die App trainiert und veröffentlicht ist, kann eine Clientanwendung diese Informationen für einen Verlegungsauftrag mit den relevanten Informationen verwenden.
 
-> [!div class="nextstepaction"] 
-> [Hinzufügen einer zusammengesetzten Entität](luis-tutorial-composite-entity.md) 
+> [!div class="nextstepaction"]
+> [Hinzufügen einer zusammengesetzten Entität](luis-tutorial-composite-entity.md)
