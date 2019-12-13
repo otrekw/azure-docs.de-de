@@ -88,7 +88,7 @@ Wenn es von einer früheren Ausführung Ihrer Logik-App noch Ausgaben gibt, die 
 
 1. Führen Sie alle unter [Einrichten von statischen Ergebnissen](#set-up-static-results) beschriebenen notwendigen Schritte aus, um das Feld **Statisches Ergebnis** zu öffnen.
 
-1. Wählen Sie anschließend eine der folgenden beiden Optionen aus: ****
+1. Wählen Sie anschließend eine der folgenden beiden Optionen aus **:**
 
    * Klicken Sie auf **Zum JSON-Modus wechseln** (![Auf „Zum JSON-Modus wechseln“ klicken](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)), um ein ganzes JSON-Objekt einzufügen:
 
