@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprints-Funktionen
 description: Beschreibt die Funktionen, die mit Blaupausenartefakten in Azure Blueprints-Definitionen und -Zuweisungen verwendet werden können.
-ms.date: 04/15/2019
+ms.date: 12/09/2019
 ms.topic: reference
-ms.openlocfilehash: 92539da02ddbe22f943454aff54dae4ccb5af3ce
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0aab2fe0511ccc11842d0e132a83d6e3f7fac27f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128754"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970889"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktionen für die Verwendung mit Azure Blueprints
 
@@ -28,6 +28,9 @@ Folgende Funktionen werden unterstützt:
 `artifacts(artifactName)`
 
 Gibt ein Objekt von Eigenschaften zurück, die mit den Ausgaben dieses Blaupausenartefakts aufgefüllt sind.
+
+> [!NOTE]
+> Die `artifacts()`-Funktion kann nicht innerhalb einer Resource Manager-Vorlage verwendet werden. Die-Funktion kann nur im JSON-Code der Blaupausendefinition oder des Artifakts verwendet werden, wenn die Blaupause mit Azure PowerShell oder REST-API im Rahmen von [Blaupausen als Code](https://github.com/Azure/azure-blueprints/blob/master/README.md) verwaltet wird.
 
 ### <a name="parameters"></a>Parameter
 

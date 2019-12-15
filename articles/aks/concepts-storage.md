@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120495"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913714"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Speicheroptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -60,8 +60,8 @@ Sie können zum Definieren verschiedener Speicherstufen, z.B. „Premium“ und 
 
 In AKS werden anfänglich zwei StorageClasses erstellt:
 
-- *default*: Verwendet Azure-Standardspeicher zum Erstellen eines verwalteten Datenträgers. Die Freigaberichtlinie gibt an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn der Pod gelöscht wird, der ihn verwendet hat.
-- *managed-premium*: Verwendet Azure Storage Premium zum Erstellen verwalteter Datenträger. Die Freigaberichtlinie gibt wieder an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn der Pod gelöscht wird, der ihn verwendet hat.
+- *default*: Verwendet Azure-Standardspeicher zum Erstellen eines verwalteten Datenträgers. Die Freigaberichtlinie gibt an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
+- *managed-premium*: Verwendet Azure Storage Premium zum Erstellen verwalteter Datenträger. Die Freigaberichtlinie gibt wieder an, dass der zugrunde liegende Azure Disk-Datenträger gelöscht wird, wenn das persistente Volume gelöscht wird, das ihn verwendet hat.
 
 Wenn keine StorageClass für ein persistentes Volume angegeben wird, wird die standardmäßige StorageClass verwendet. Achten Sie beim Anfordern von persistenten Volumes darauf, dass sie den Speicher verwenden, den Sie benötigen. Sie können eine StorageClass für zusätzliche Anforderungen mit `kubectl` erstellen. Im folgenden Beispiel werden Managed Disks Premium verwendet und festgelegt, dass der zugrunde liegende Azure Disk-Datenträger *beibehalten* werden soll, wenn der Pod gelöscht wird:
 

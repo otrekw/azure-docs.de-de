@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c0d49c3ce06f6fa72daf7aff466ef65e09ced09a
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 6c88fec4e6bea34dd3cf2e45300ae2c1ac15a1c6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241811"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851535"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die in den einzelnen Buildtasks verfügbaren Konfigurat
 ## <a name="anti-malware-scanner-task"></a>Schadsoftwarescanner-Task
 
 >[!NOTE]
-> Der Schadsoftwarescanner-Buildtask erfordert einen Build-Agent mit aktiviertem Windows Defender. Ein derartiger Agent ist ab Hosted Visual Studio 2017 verfügbar. Der Buildtask kann nicht unter Verwendung des gehosteten Agents von Visual Studio 2015 ausgeführt werden.
+> Der Schadsoftwarescanner-Buildtask erfordert einen Build-Agent mit aktiviertem Windows Defender. Ein solcher Agent ist ab Hosted Visual Studio 2017 verfügbar. Der Buildtask kann nicht unter Verwendung des gehosteten Agents von Visual Studio 2015 ausgeführt werden.
 >
 > Obwohl Signaturen für diese Agents nicht aktualisiert werden können, sollten sie immer weniger als drei Stunden alt sein.
 
@@ -40,12 +40,14 @@ Windows Defender verwendet den Windows Update-Client, um Signaturen herunterzula
 
 Weitere Informationen zu Windows Update-Fehlern und dazu, wie Sie sie vermeiden, finden Sie unter [Windows Update-Fehlercodes nach Komponente](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) und im TechNet-Artikel zu [Fehlercodes des Windows Update-Agents](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
 
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für die Antischadsoftware](yaml-configuration.md#anti-malware-scanner-task).
+
 ## <a name="binskim-task"></a>BinSkim-Task
 
 > [!NOTE]
 > Bevor Sie den BinSkim-Task ausführen können, muss Ihr Build eine der folgenden Bedingungen erfüllen:
->    - Der Build erstellt binäre Artefakte aus verwaltetem Code.
->    - Sie haben binäre Artefakte committet, die Sie mit BinSkim analysieren möchten.
+>  - Der Build erstellt binäre Artefakte aus verwaltetem Code.
+>  - Sie haben binäre Artefakte committet, die Sie mit BinSkim analysieren möchten.
 
 Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der Liste.
 
@@ -79,6 +81,8 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
 
 Weitere Informationen zu BinSkim-Befehlszeilenargumenten, Regeln nach ID oder Exitcodes finden Sie im [BinSkim-Benutzerhandbuch](https://github.com/Microsoft/binskim/blob/master/docs/UserGuide.md).
 
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für BinSkim](yaml-configuration.md#binskim-task).
+
 ## <a name="credential-scanner-task"></a>Credential Scanner-Task
 
 Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der Liste.
@@ -99,6 +103,8 @@ Folgende Optionen sind verfügbar:
   - **Maximum File Scan Read Bytes** (Maximale Anzahl gelesener Bytes der Dateiüberprüfung): Die maximale Anzahl von Bytes, die während der Inhaltsanalyse aus einer Datei gelesen werden. Der Standardwert lautet 104.857.600.
   - **Control Options (Steuerungsoptionen)**  > **Run this task (Diesen Task ausführen)** : Gibt an, wann der Task ausgeführt wird. Wählen Sie **Custom Conditions** (Benutzerdefinierte Bedingungen) aus, um komplexere Bedingungen festzulegen.
   - **Version**: Die Buildtaskversion in Azure DevOps. Diese Option wird selten verwendet.
+
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Credential Scanner](yaml-configuration.md#credential-scanner-task).
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft Security Risk Detection (MSRD)-Task
 
@@ -128,10 +134,13 @@ Details zum Konfigurieren dieses Tasks finden Sie in der folgenden Liste. Um Hil
        - **Test Driver Can Be Renamed (Testtreiber kann umbenannt werden)** : Aktivieren Sie dieses Kontrollkästchen, wenn die ausführbare Datei des Testtreibers umbenannt werden kann und trotzdem weiterhin ordnungsgemäß funktioniert.
        - **The Fuzzing Application Runs as a Single OS Process (Die Fuzzinganwendung wird als einzelner Betriebssystemprozess ausgeführt)** : Aktivieren Sie dieses Kontrollkästchen, wenn der Testtreiber unter einem einzelnen Betriebssystemprozess ausgeführt wird. Deaktivieren Sie es, wenn der Testtreiber zusätzliche Prozesse erzeugt.
 
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Microsoft Security Risk Detection](yaml-configuration.md#microsoft-security-risk-detection-task).
+
 ## <a name="roslyn-analyzers-task"></a>Roslyn Analyzers-Task
 
 > [!NOTE]
 > Ihr Build muss folgende Bedingungen erfüllen, bevor Sie den Roslyn Analyzers-Task ausführen können:
+>
 > - Ihre Builddefinition enthält den integrierten MSBuild- oder VSBuild-Buildtask zum Kompilieren von C#- oder Visual Basic-Code. Der Analyzers-Task nutzt die Eingabe und Ausgabe des integrierten Tasks, um die MSBuild-Kompilierung mit aktivierten Roslyn Analyzers auszuführen.
 > - Für den zur Ausführung dieses Buildtasks verwendeten Build-Agent ist Visual Studio 2017, Version 15.5 oder höher, installiert, sodass mindestens Compilerversion 2.6 genutzt wird.
 
@@ -145,6 +154,7 @@ Folgende Optionen sind verfügbar:
 - **Control Options (Steuerungsoptionen)**  > **Run this task (Diesen Task ausführen)** : Gibt an, wann der Task ausgeführt wird. Wählen Sie **Custom conditions** (Benutzerdefinierte Bedingungen) aus, um komplexere Bedingungen festzulegen.
 
 > [!NOTE]
+>
 > - Roslyn Analyzers sind in den Compiler integriert und können nur im Rahmen der Kompilierung von „csc.exe“ ausgeführt werden. Daher muss für diesen Task der Compilerbefehl, der zuvor im Build ausgeführt wurde, wiedergegeben oder erneut ausgeführt werden. Bei der Wiedergabe oder Ausführung werden die Protokolle des MSBuild-Buildtasks von Visual Studio Team Services (VSTS) abgefragt.
 >
 >   Es gibt keine andere Möglichkeit für den Task, die Befehlszeile für die MSBuild-Kompilierung zuverlässig aus der Builddefinition abzurufen. Wir haben überlegt, ein Freiform-Textfeld hinzuzufügen, in dem Benutzer ihre Befehlszeilen eingeben können. Dann wäre es allerdings schwierig, diese Befehlszeilen auf dem neuesten Stand und synchron mit dem Hauptbuild zu halten.
@@ -161,12 +171,16 @@ Weitere Ressourcen für den Roslyn Analyzers-Task finden Sie unter [Die auf Rosl
 
 Sie finden das Analyzer-Paket, das von diesem Buildtask installiert und verwendet wird, auf der NuGet-Seite [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Roslyn Analyzers](yaml-configuration.md#roslyn-analyzers-task).
+
 ## <a name="tslint-task"></a>TSLint-Task
 
 Weitere Informationen zu TSLint finden Sie im [TSLint GitHub-Repository](https://github.com/palantir/tslint).
 
 >[!NOTE] 
 >Wie Sie vielleicht wissen, ist auf der Homepage des [TSLint GitHub-Repositorys](https://github.com/palantir/tslint) angegeben, dass TSLint im Laufe des Jahres 2019 als veraltet eingestuft wird. Microsoft prüft, ob [ESLint](https://github.com/eslint/eslint) als alternativer Task infrage kommt.
+
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für TSLint](yaml-configuration.md#tslint-task).
 
 ## <a name="publish-security-analysis-logs-task"></a>Task zum Veröffentlichen von Sicherheitsanalyseprotokollen
 
@@ -175,8 +189,10 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
 ![Konfigurieren des Buildtasks zum Veröffentlichen von Sicherheitsanalyseprotokollen](./media/security-tools/9-publish-security-analsis-logs600.png)  
 
 - **Artifact Name** (Artefaktname): Eine beliebige Zeichenfolgen-ID.
-- **Artifact Type** (Artefakttyp): Je nach Auswahl können Sie Protokolle auf dem Azure DevOps-Server oder in einer freigegebenen Datei veröffentlichen, die für den Build-Agent zugänglich ist.
+- **Artifact Type** (Artefakttyp): Je nach Auswahl können Sie Protokolle auf Ihrer Azure DevOps Server-Instanz oder in einer freigegebenen Datei veröffentlichen, die für den Build-Agent zugänglich ist.
 - **Tools:** Sie können auswählen, ob Sie Protokolle für spezifische Tools beibehalten möchten, oder **All Tools** (Alle Tools) auswählen, um alle Protokolle beizubehalten.
+
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen zum Veröffentlichen von Sicherheitsprotokollen](yaml-configuration.md#publish-security-analysis-logs-task).
 
 ## <a name="security-report-task"></a>Sicherheitsberichts-Task
 
@@ -189,6 +205,8 @@ Details zur Konfiguration von Sicherheitsberichten finden Sie im folgenden Scree
 - **Advanced Options** (Erweiterte Optionen): Wenn für eines der ausgewählten Tools keine Protokolle vorhanden sind, können Sie auswählen, ob eine Warnung oder ein Fehler protokolliert werden soll. Wenn Sie einen Fehler protokollieren, verursacht der Task einen Fehler.
 - **Base Logs Folder** (Basisprotokollordner): Sie können den Ordner für Basisprotokolle anpassen, in dem die Protokolle gespeichert werden. Diese Option wird jedoch in der Regel nicht verwendet.
 
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Sicherheitsberichte](yaml-configuration.md#security-report-task).
+
 ## <a name="post-analysis-task"></a>Nachanalyse-Task
 
 Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der Liste.
@@ -199,6 +217,10 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
 - **Report** (Bericht): Die Ergebnisse, die die Buildunterbrechung verursachen, können optional ausgegeben werden. Die Ergebnisse werden in das Azure DevOps-Konsolenfenster und in die Protokolldatei geschrieben.
 - **Advanced Options** (Erweiterte Optionen): Wenn für eines der ausgewählten Tools keine Protokolle vorhanden sind, können Sie auswählen, ob eine Warnung oder ein Fehler protokolliert werden soll. Wenn Sie einen Fehler protokollieren, verursacht der Task einen Fehler.
 
+Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für die Nachanalyse](yaml-configuration.md#post-analysis-task).
+
 ## <a name="next-steps"></a>Nächste Schritte
+
+Informationen zur YAML-basierten Konfiguration finden Sie im [YAML-Konfigurationshandbuch](yaml-configuration.md).
 
 Wenn Sie weitere Fragen zur Erweiterung „Sicherheitscodeanalyse“ und zu den angebotenen Tools haben, lesen Sie unsere [Seite mit FAQs](security-code-analysis-faq.md).

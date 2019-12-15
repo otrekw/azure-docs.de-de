@@ -2,13 +2,13 @@
 title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
 ms.date: 09/30/2019
-ms.topic: conceptual
-ms.openlocfilehash: 00824ceed2e86683a86b172e529ba88704dbb050
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.topic: how-to
+ms.openlocfilehash: 765ed5e1849443d6ac73fe4507327e97e4fdc4c2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210315"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973644"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 
@@ -246,6 +246,8 @@ Anstatt der Übergabe von Parametern an das Cmdlet zeigt das Beispiel die Verwen
 $bpAssignment = New-AzBlueprintAssignment -Name 'my-blueprint-assignment' -SubscriptionId '{subId}' `
     -AssignmentFile '.\assignment.json'
 ```
+
+Ein Beispiel für die JSON-Zuweisungsdefinitionsdatei für eine benutzerseitig zugewiesene verwaltete Identität finden Sie im Anforderungstext unter [Beispiel: Zuweisung mit benutzerseitig zugewiesener verwaltete Identität](/rest/api/blueprints/assignments/createorupdate#assignment-with-user-assigned-managed-identity) für die Rest-API.
 
 ## <a name="update-blueprint-assignments"></a>Aktualisieren von Blaupausenzuweisungen
 
