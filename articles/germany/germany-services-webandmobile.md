@@ -22,6 +22,14 @@ ms.lasthandoff: 06/13/2019
 ms.locfileid: "60685859"
 ---
 # <a name="azure-germany-web-and-mobile-services"></a>Webdienste und Mobile Services von Azure Deutschland
+
+> [!IMPORTANT]
+> Seit [August 2018](https://news.microsoft.com/de-de/microsoft-cloud-2019-rechenzentren-deutschland/) haben wir keine neuen Kunden mehr akzeptiert und stellen keine neuen Funktionen und Services an den ursprünglichen Standorten von Microsoft Cloud Deutschland mehr bereit.
+>
+> Basierend auf die Entwicklung der Kundenbedürfnisse konzentriert sich unsere Cloudstrategie für Deutschland auf die Bereitstellung der [neuen Cloudregionen in Deutschland](https://news.microsoft.com/de-de/microsoft-eroeffnet-neue-cloud-rechenzentrumsregionen-in-deutschland/), die zu unserem globalen Cloudangebot passen.
+>
+> Starten Sie Ihre [Migration](https://docs.microsoft.com/de-de/azure/germany/germany-migration-main) noch heute und nutzen Sie die Vorteile der umfangreichen Funktionalität, Sicherheit auf Unternehmensebene und zahlreichen verfügbaren Funktionen, die in unseren neuen Rechenzentrumsregionen in Deutschland verfügbar sind.
+
 ## <a name="app-service"></a>App Service
 Azure App Service ist in Azure Deutschland allgemein verfügbar.
 ### <a name="variations"></a>Abweichungen
