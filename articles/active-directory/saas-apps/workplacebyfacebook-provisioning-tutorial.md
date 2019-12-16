@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 12/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee091d1c8f0f477354f6bb422d041278ec5668e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c10171ae59772f58411997d16dc4ad1472e94e29
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574265"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996934"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workplace by Facebook für die automatische Benutzerbereitstellung
 
@@ -99,7 +99,7 @@ Weitere Informationen zum Konfigurieren der automatischen Bereitstellung finden 
 Sie können nun ein Testkonto erstellen. Warten Sie bis zu 20 Minuten, um zu überprüfen, ob das Konto mit Workplace by Facebook synchronisiert wurde.
 
 > [!NOTE]
-> Wir arbeiten eng mit dem Workplace by Facebook-Team zusammen, um sicherzustellen, dass die Azure AD-Anwendung genehmigt wird und die neuen Richtlinien erfüllt. Als Termin für Workplace by Facebook gilt der 16. Dezember. Diesen Termin werden wir höchstwahrscheinlich auch einhalten. Von den Kunden wird zu diesem Zeitpunkt keine Aktion erwartet. Bis 28. Februar 2020 müssen Kunden auf die neue Integration umsteigen. Wir werden den Migrationspfad hier veröffentlichen, sobald er verfügbar ist.    
+> Die Azure AD-Drittanbieteranwendung in Workplace by Facebook wurde genehmigt. Kunden erfahren am 16. Dezember keine Dienstunterbrechung. In der Verwaltungskonsole für Workplace by Facebook wird ein Hinweis angezeigt, der den Stichtag 28. Februar 2020 angibt, an dem Sie auf die neue Anwendung umsteigen müssen. Wir arbeiten daran, den Übergang so einfach wie möglich zu halten, und werden hier bis zum Ende des Monats ein Update für den Übergang bereitstellen.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

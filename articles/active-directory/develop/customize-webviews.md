@@ -1,29 +1,25 @@
 ---
-title: Anpassen von Browsern und Webansichten
+title: Anpassen von Browsern und WebViews | Azure
 titleSuffix: Microsoft identity platform
-description: Hier erfahren Sie, wie Sie die Browseroberfläche von MSAL für iOS und macOS beim Anmelden von Benutzern anpassen.
+description: Erfahren Sie, wie Sie die Browseroberfläche von MSAL für iOS und macOS zum Anmelden von Benutzern anpassen können.
 services: active-directory
-documentationcenter: dev-center-name
 author: tylermsft
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/28/2019
 ms.author: twhitney
-ms.reviewer: ''
+ms.reviewer: oldalton
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fcb314e46094bb6c283a17508c35b7fc17e010e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: d5dbdadc6afa3a6822a76fdcecdfcaa6f2ad8c98
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803376"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963714"
 ---
 # <a name="how-to-customize-browsers-and-webviews-for-iosmacos"></a>Gewusst wie: Anpassen von Browsern und Webansichten für iOS/macOS
 

@@ -1,28 +1,24 @@
 ---
-title: Geltungsbereiche für eine v1.0-Anwendung (Microsoft Authentication Library) | Azure
+title: MSAL-Geltungsbereiche für eine v1.0-Anwendung | Azure
 description: Hier finden Sie Informationen zu den Geltungsbereichen für eine v1.0-Anwendung in der Microsoft Authentication Library (MSAL).
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a8a5859c7f1e2353b53d01a25a0ca39e0b04dd
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0606376c455733ca90f1bff3d0295cbd1a075637
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532979"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963255"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
@@ -30,7 +26,7 @@ OAuth2-Berechtigungen sind Berechtigungsbereiche, die eine Azure AD-Web-API-Anwe
 
 ## <a name="scopes-to-request-access-to-specific-oauth2-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf bestimmte OAuth2-Berechtigungen einer v1.0-Anwendung angefordert wird
 
-Wenn Sie Token für bestimmte Geltungsbereiche einer v1.0-Anwendung (z. B. Azure AD-Graph unter https:\//graph.windows.net) abrufen möchten, müssen Sie Geltungsbereiche erstellen, indem Sie einen beliebigen Ressourcenbezeichner mit einer beliebigen OAuth2-Berechtigung für die entsprechende Ressource verketten.
+Um Token für bestimmte Geltungsbereiche einer v1.0-Anwendung (z.B. Azure AD-Graph unter https://graph.windows.net) ) abzurufen, müssen Sie Geltungsbereiche erstellen, indem Sie einen gewünschten Ressourcenbezeichner mit einer gewünschten OAuth2-Berechtigung für die entsprechende Ressource verketten.
 
 Beispiel für den Zugriff auf eine v1. 0-Web-API im Auftrag des Benutzers mit dem App-ID-URI `ResourceId`:
 

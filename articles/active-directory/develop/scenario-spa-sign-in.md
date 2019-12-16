@@ -1,5 +1,5 @@
 ---
-title: Single-Page-Webanwendung (Anmeldung) – Microsoft Identity Platform
+title: Single-Page-App-Anmeldung – Microsoft Identity Platform | Azure
 description: Hier erfahren Sie, wie Sie eine Single-Page-Webanwendung (Anmeldung) erstellen.
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 05/06/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0fd546724b8d684746a9f4d63a03bc6b58ded52
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5d2494a7ad89c9e9b3a525ddd04290a08eb3af58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764643"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962422"
 ---
 # <a name="single-page-application-sign-in"></a>Single-Page-Webanwendung: Anmeldung
 

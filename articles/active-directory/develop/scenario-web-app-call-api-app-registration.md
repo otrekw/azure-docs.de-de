@@ -1,6 +1,6 @@
 ---
-title: Web-App, die Web-APIs aufruft (App-Registrierung) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (App-Registrierung).
+title: Registrieren einer Web-App, die Web-APIs aufruft – Microsoft Identity Platform | Azure
+description: Erfahren Sie, wie Sie eine Web-App registrieren, die Web-APIs aufruft.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5becdc287f7cad28aa6c7c07ebc107586e9a2b2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 784de823e94aace6f91222c19c1ff8130c3f995f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080142"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962932"
 ---
 # <a name="web-app-that-calls-web-apis---app-registration"></a>Web-App, die Web-APIs aufruft – App-Registrierung
 

@@ -12,16 +12,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 12/09/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/23/2019
-ms.openlocfilehash: 66388f139b63c63e1f0f8ee8ee063e0ddd0f9da5
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 236e222da9e9a64d4b93002d28c94fa6fe469c08
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213036"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971988"
 ---
 # <a name="routing-and-tag-expressions"></a>Weiterleitung und Tagausdrücke
 
@@ -41,7 +41,7 @@ Die einzige Möglichkeit zum Verwenden bestimmter Benachrichtigungsregistrierung
 
 Ein Tag kann eine beliebige bis zu 120 Zeichen umfassende Zeichenfolge mit alphanumerischen und den folgenden nicht-alphanumerischen Zeichen sein: „_“, „@“ „#“, „.“, „:“, „-“. Das folgende Beispiel zeigt eine Anwendung, von der Sie Popupbenachrichtigungen zu bestimmten Musikgruppen empfangen können. In diesem Szenario besteht eine einfache Möglichkeit zum Weiterleiten von Benachrichtigungen im Kennzeichnen von Registrierungen mit Tags, die die verschiedenen Gruppen angeben. Dies ist in der folgenden Abbildung dargestellt:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
+![Übersicht über Tags](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags.png)
 
 In dieser Abbildung erreicht die als **Beatles** markierte Nachricht nur den Tablet PC, der mit dem Tag **Beatles** registriert ist.
 
@@ -65,7 +65,7 @@ outcome = await Notifications.Instance.Hub.SendWindowsNativeNotificationAsync(to
 
 Tags müssen nicht vorab bereitgestellt werden und können sich auf mehrere App-spezifische Konzepte beziehen. Beispielsweise können Benutzer dieser Beispielanwendung Musikgruppen kommentieren und Popups erhalten. Dies gilt nicht nur für die Kommentare zu ihren Lieblingsgruppen, sondern für alle Kommentare von ihren Freunden, unabhängig von den Gruppen, die diese bewerteten. Die folgende Abbildung zeigt ein Beispiel für dieses Szenario:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags2.png)
+![Freunde markieren](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags2.png)
 
 In dieser Abbildung ist Alice an Nachrichten über die Beatles interessiert, und Bob ist an Nachrichten über die Wailers interessiert. Bob ist außerdem an Charlies Kommentaren interessiert, und Charlie ist an den Wailers interessiert. Wenn eine Benachrichtigung für Charlies Kommentar zu den Beatles gesendet wird, empfangen Alice und Bob diese.
 
@@ -80,7 +80,7 @@ Ein vollständiges schrittweises Tutorial zur Verwendung von Tags zum Senden an 
 
 Eine weitere Möglichkeit zur Verwendung von Tags ist das Identifizieren aller Geräte eines bestimmten Benutzers. Registrierungen können mit einem Tag gekennzeichnet werden, das eine Benutzer-ID enthält. Dies ist in der folgenden Abbildung dargestellt:
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags3.png)
+![Benutzer markieren](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags3.png)
 
 In dieser Abbildung erreicht die Nachricht mit dem Tag „uid: Alice“ alle Registrierungen, die mit dem Tag „uid:Alice“ gekennzeichnet sind, d.h. alle Geräte von Alice.
 
@@ -94,7 +94,7 @@ Beispiel: Eine Sportanwendung sendet eine Erinnerung an alle Benutzer in Boston 
 (follows_RedSox || follows_Cardinals) && location_Boston
 ```
 
-![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags4.png)
+![Tagausdrücke](./media/notification-hubs-tags-segment-push-message/notification-hubs-tags4.png)
 
 Tagausdrücke können alle boolesche Operatoren enthalten, z. B. AND (&&), OR (||) oder NOT (!). Sie können auch Klammern enthalten. Tagausdrücke sind auf 20 Tags beschränkt, wenn sie nur OR enthalten. Andernfalls sind sie auf 6 Tags beschränkt.
 

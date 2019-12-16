@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c487ed02abda652a384f2f295c3edac4b56fc654
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027241"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900925"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Erstellen einer dynamischen Gruppe und Überprüfen des Status
 
@@ -47,10 +47,10 @@ Beispiele für Syntax, unterstützte Eigenschaften, Operatoren und Werte für ei
 ## <a name="to-create-a-group-membership-rule"></a>So erstellen Sie eine Regel für die Gruppenmitgliedschaft
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit einem Konto an, das der Rolle des globalen Administrators, Intune-Administrators oder Benutzeradministrators in dem Mandanten angehört.
-1. Wählen Sie **Gruppen** aus.
+1. Suchen Sie nach **Gruppen**, und wählen Sie diese Option aus.
 1. Wählen Sie **Alle Gruppen** und **Neue Gruppe** aus.
 
-   ![Auswählen des Befehls zum Hinzufügen einer neuen Gruppe](./media/groups-create-rule/new-group-creation.png)
+   ![Auswählen des Befehls zum Hinzufügen einer neuen Gruppe](./media/groups-create-rule/create-new-group-azure-active-directory.png)
 
 1. Geben Sie auf der Seite **Gruppe** einen Namen und eine Beschreibung für die neue Gruppe ein. Wählen Sie einen **Mitgliedschaftstyp** für Benutzer oder Geräte und anschließend die Option **Dynamische Abfrage hinzufügen** aus. Der Regel-Generator unterstützt bis zu fünf Ausdrücke. Falls Sie mehr als fünf Ausdrücke hinzufügen möchten, müssen Sie das Textfeld verwenden.
 

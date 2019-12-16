@@ -1,18 +1,18 @@
 ---
 title: Konsistenzebenen und Azure Cosmos DB-APIs
-description: Grundlegendes zu den Konsistenzebenen von APIs in Azure Cosmos DB.
+description: Grundlegendes zur Zuordnung der Konsistenzebene zwischen verschiedenen APIs in Azure Cosmos DB und Apache Cassandra, MongoDB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: c72c65c9d27810ce4ec2df0062dc41d83ed37a6b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 8bfff7790fa4984241e1c3dda19a20c8b13591fb
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559100"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872178"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 

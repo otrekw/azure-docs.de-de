@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: 143a05944799ff04f9c21384f85a4b00cc65b750
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: de36f760fb637ad02446265927e7df7aa91b2abf
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545729"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928377"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -26,7 +26,7 @@ Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](ht
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x oder höher
 
 Der Zeitgebertrigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) der Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/).
 
@@ -327,7 +327,7 @@ Wenn Sie Speicherkonten für Funktions-Apps freigeben, die nicht für App Servic
 
 | Functions-Version | Einstellung                                              |
 | ----------------- | ---------------------------------------------------- |
-| 2.x               | Umgebungsvariable `AzureFunctionsWebHost__hostid` |
+| 2.x (oder höher)  | Umgebungsvariable `AzureFunctionsWebHost__hostid` |
 | 1.x               | `id` in *host.json*                                  |
 
 Sie können den identifizierenden Wert auslassen oder die identifizierende Konfiguration für jede Funktions-App manuell auf einen anderen Wert festlegen.

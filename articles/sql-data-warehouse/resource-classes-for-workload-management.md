@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 558a6e3faa207e15000657a17bec99a7b1ac99e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 30a3be1365f152a88713604570169091f09f0536
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685928"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975430"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Workloadverwaltung mit Ressourcenklassen in Azure SQL Data Warehouse
 
@@ -24,7 +24,7 @@ Enthält eine Anleitung für die Verwendung von Ressourcenklassen zum Verwalten 
 
 ## <a name="what-are-resource-classes"></a>Was sind Ressourcenklassen?
 
-Die Leistungskapazität einer Abfrage richtet sich nach der Ressourcenklasse des Benutzers.  Ressourcenklassen sind vorab festgelegte Ressourcenlimits in Azure SQL Data Warehouse, die Computeressourcen und Parallelität für die Abfrageausführung zu steuern. Ressourcenklassen können Sie bei der Verwaltung Ihrer Workload unterstützen, indem sie Ihnen die Festlegung von Grenzwerten für die Anzahl der gleichzeitig ausgeführten Abfragen und für die Serverressourcen, die den einzelnen Abfragen zugewiesen sind, ermöglichen.  Dabei erfolgt ein Ausgleich zwischen Speicher und Parallelität.
+Die Leistungskapazität einer Abfrage richtet sich nach der Ressourcenklasse des Benutzers.  Ressourcenklassen sind vorab festgelegte Ressourcenlimits in Azure SQL Data Warehouse, die Computeressourcen und Parallelität für die Abfrageausführung zu steuern. Ressourcenklassen können Sie beim Konfigurieren von Ressourcen für Ihre Abfragen unterstützen, indem sie Ihnen die Festlegung von Grenzwerten für die Anzahl der gleichzeitig ausgeführten Abfragen und für die Serverressourcen, die den einzelnen Abfragen zugewiesen sind, ermöglichen.  Dabei erfolgt ein Ausgleich zwischen Speicher und Parallelität.
 
 - Kleinere Ressourcenklassen verringern den maximalen Speicher pro Abfrage, erhöhen jedoch die Parallelität.
 - Größere Ressourcenklassen erhöhen den maximalen Speicher pro Abfrage, verringern jedoch die Parallelität.
@@ -36,7 +36,7 @@ Es gibt zwei Arten von Ressourcenklassen:
 
 Ressourcenklassen verwenden Parallelitätsslots zum Messen des Ressourcenverbrauchs.  [Parallelitätsslots](#concurrency-slots) werden weiter unten in diesem Artikel erläutert.
 
-- Die Ressourcenauslastung für die Ressourcenklassen finden Sie unter [Speicher- und Parallelitätsgrenzwerte]memory-concurrency-limits.md).
+- Die Ressourcenauslastung für die Ressourcenklassen finden Sie unter [Speicher- und Parallelitätsgrenzwerte](memory-concurrency-limits.md).
 - Um die Ressourcenklasse anzupassen, können Sie die Abfrage unter einem anderen Benutzerkonto ausführen oder [Ressourcenklassenmitgliedschaft des aktuellen Benutzers ändern](#change-a-users-resource-class).
 
 ### <a name="static-resource-classes"></a>Statische Ressourcenklassen
@@ -65,14 +65,18 @@ Die dynamischen Ressourcenklassen werden mit diesen vordefinierten Datenbankroll
 - largerc
 - xlargerc
 
-Die Speicherbelegung für jede Ressourcenklasse lautet **unabhängig von der Dienstebene** wie folgt.  Die minimalen Parallelitätsabfragen werden ebenfalls aufgelistet.  Bei einigen Dienstebenen kann mehr als die minimale Parallelität erreicht werden.
+Die Speicherbelegung für jede Ressourcenklasse lautet wie folgt. 
 
-| Ressourcenklasse | Arbeitsspeicher in Prozent | Minimale gleichzeitige Abfragen |
-|:--------------:|:-----------------:|:----------------------:|
-| smallrc        | 3 %                | 32                     |
-| mediumrc       | 10%               | 10                     |
-| largerc        | 22 %               | 4                      |
-| xlargerc       | 70 %               | 1                      |
+| Service Level  | smallrc           | mediumrc               | largerc                | xlargerc               |
+|:--------------:|:-----------------:|:----------------------:|:----------------------:|:----------------------:|
+| DW100c         | 25%               | 25%                    | 25%                    | 70 %                    |
+| DW200c         | 12,5 %             | 12,5 %                  | 22 %                    | 70 %                    |
+| DW300c         | 8 %                | 10%                    | 22 %                    | 70 %                    |
+| DW400c         | 6,25 %             | 10%                    | 22 %                    | 70 %                    |
+| DW500c         | 20%               | 10%                    | 22 %                    | 70 %                    |
+| DW1000c bis<br> DW30000c | 3 %       | 10%                    | 22 %                    | 70 %                    |
+
+
 
 ### <a name="default-resource-class"></a>Standardressourcenklasse
 
@@ -105,6 +109,8 @@ Die folgenden Vorgänge werden über Ressourcenklassen gesteuert:
 
 > [!NOTE]  
 > SELECT-Anweisungen für dynamische Verwaltungssichten (Dynamic Management Views, DMVs) oder andere Systemsichten werden nicht durch Einschränkungen der Parallelität gesteuert. Sie können das System unabhängig von der Anzahl der darin ausgeführten Abfragen überwachen.
+>
+>
 
 ### <a name="operations-not-governed-by-resource-classes"></a>Nicht über Ressourcenklassen gesteuerte Vorgänge
 
@@ -178,6 +184,11 @@ Benutzer können Mitglieder mehrerer Ressourcenklassen sein. Wenn ein Benutzer m
 - Größere Ressourcenklassen haben Vorrang vor kleineren Ressourcenklassen. Wenn ein Benutzer beispielsweise Mitglied von mediumrc und largerc ist, werden Abfragen mit largerc ausgeführt. Wenn ein Benutzer sowohl Mitglied von staticrc20 als auch von statirc80 ist, werden Abfragen entsprechend mit staticrc80-Ressourcenzuteilungen ausgeführt.
 
 ## <a name="recommendations"></a>Empfehlungen
+
+>[!NOTE]
+>Nutzen Sie die Vorteile der Workloadverwaltungsfunktionen ([Workloadisolation](sql-data-warehouse-workload-isolation.md), [Klassifizierung](sql-data-warehouse-workload-classification.md) und [Wichtigkeit](sql-data-warehouse-workload-importance.md)), um eine bessere Kontrolle über Ihre Workload und die vorhersagbare Leistung zu erhalten.  
+>
+>
 
 Wir empfehlen Ihnen, einen Benutzer zu erstellen, der speziell für das Ausführen eines bestimmten Typs von Abfrage- oder Ladevorgängen dediziert ist. Versehen Sie den Benutzer mit einer permanenten Ressourcenklasse, anstatt die Ressourcenklasse häufig zu ändern. Da bei statischen Ressourcenklassen eine stärkere umfassende Steuerung der Workload möglich ist, sollten Sie diese zuerst verwenden, bevor Sie den Einsatz von dynamischen Ressourcenklassen erwägen.
 

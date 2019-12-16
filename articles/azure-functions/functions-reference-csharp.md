@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: cshoe
-ms.openlocfilehash: 89c05d0582844f7b4c3e15c669c2c3aa81c4817d
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 13e16fef2ae66851909e03dddab293e9c7955acb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665507"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978780"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions
 
@@ -51,7 +51,7 @@ FunctionsProject
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (CSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
 
-Die in [Version 2.x](functions-versions.md) der Functions-Laufzeit erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 
@@ -370,7 +370,7 @@ Informationen zum Hochladen von Dateien in Ihren Funktionenordner finden Sie im 
 Das Verzeichnis, das die Skriptdatei für die Funktion enthält, wird automatisch im Hinblick auf Änderungen an Assemblys überwacht. Um Änderungen an Assemblys in anderen Verzeichnissen zu überwachen, fügen Sie sie der Liste `watchDirectories` in der Datei [host.json](functions-host-json.md) hinzu.
 
 ## <a name="using-nuget-packages"></a>Verwenden von NuGet-Paketen
-Um NuGet-Pakete in einer 2.x C#-Funktion zu verwenden, laden Sie die Datei *function.proj* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für die Datei *function.proj*, die einen Verweis auf *Microsoft.ProjectOxford.Face* (Version *1.1.0*) hinzufügt:
+Um NuGet-Pakete in einer 2.x C#-Funktion oder höher zu verwenden, laden Sie die Datei *function.proj* in den Ordner der Funktion im Dateisystem der Funktions-App hoch. Hier sehen Sie ein Beispiel für die Datei *function.proj*, die einen Verweis auf *Microsoft.ProjectOxford.Face* (Version *1.1.0*) hinzufügt:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">

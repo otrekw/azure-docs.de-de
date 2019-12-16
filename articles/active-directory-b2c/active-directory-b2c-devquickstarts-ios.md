@@ -1,6 +1,7 @@
 ---
-title: Verwenden von AppAuth in einer iOS-Anwendung in Azure Active Directory B2C | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie eine iOS-App erstellen, die AppAuth mit Azure Active Directory B2C zum Verwalten von Benutzeridentitäten und Authentifizieren von Benutzern verwendet.
+title: Verwenden von AppAuth in einer iOS-Anwendung
+titleSuffix: Azure AD B2C
+description: Informationen zum Erstellen einer iOS-App, die AppAuth mit Azure Active Directory B2C zum Verwalten von Benutzeridentitäten und Authentifizieren von Benutzern verwendet.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0fb5341c2e7ee55391cb38251b0ea66b55b93301
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a61b97ade6513785c1cd298f33a5158a14efad82
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469161"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948203"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C: Anmelden mit einer iOS-Anwendung
 

@@ -1,18 +1,18 @@
 ---
 title: LOG in der Abfragesprache für Azure Cosmos DB
-description: Erfahren Sie mehr über die SQL-Systemfunktion LOG in Azure Cosmos DB.
+description: Erfahren Sie mehr über die SQL-Systemfunktion LOG in Azure Cosmos DB, die den natürlichen Logarithmus des angegebenen numerischen Ausdrucks zurückgibt.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 16f2321eb48afacbc9636b5c0588b1ea3a01a284
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: ae7812670da836efa326b9224547e4d1b64374c2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349735"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873283"
 ---
 # <a name="log-azure-cosmos-db"></a>LOG (Azure Cosmos DB)
  Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks zurück.  

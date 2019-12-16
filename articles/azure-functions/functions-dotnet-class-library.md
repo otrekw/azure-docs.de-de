@@ -3,12 +3,12 @@ title: C#-Entwicklerreferenz zu Azure Functions
 description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.openlocfilehash: 9ecaff438eb30e6a05a7e744e17d2d713eef21cd
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: f412e5ea358fe7b97476802f432616c37b05dbd9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665575"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975481"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -25,7 +25,15 @@ In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Artikel bereits
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
-Die Azure Functions 2.x-Runtime verwendet .NET Core 2.2. Ihr Funktionscode kann .NET Core 2.2-APIs nutzen, indem Sie die Visual Studio-Projekteinstellungen aktualisieren. Von den Funktionsvorlagen wird .NET Core 2.2 nicht standardmäßig verwendet, um Probleme für Kunden zu vermeiden, bei denen .NET Core 2.2 nicht installiert ist.
+Versionen der Functions-Laufzeit funktionieren mit bestimmten Versionen von .NET. Die folgende Tabelle zeigt die höchste Ebene von .NET Core und .NET Framework und .NET Core, die mit einer bestimmten Version von Functions in Ihrem Projekt verwendet werden kann. 
+
+| Version der Functions-Laufzeit | Maximale .NET-Version |
+| ---- | ---- |
+| Functions 3.x | .NET Core 3.1 |
+| Functions 2.x | .NET Core 2.2 |
+| Functions 1.x | .NET Framework 4.6 |
+
+Weitere Informationen finden Sie unter [Versionen der Azure Functions-Laufzeit: Übersicht](functions-versions.md).
 
 ## <a name="functions-class-library-project"></a>Funktionsklassenbibliotheks-Projekt
 
@@ -49,7 +57,7 @@ Wenn Sie das Projekt erstellen, wird im Buildausgabeverzeichnis eine Ordnerstruk
 Dieses Verzeichnis wird in Ihrer Funktions-App in Azure bereitgestellt. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen werden [dem Projekt als NuGet-Pakete hinzugefügt](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md#functions-2x---c-class-libraries).
+> Im Buildprozess wird für jede Funktion eine Datei vom Typ *function.json* erstellt. Die Datei *function.json* ist nicht für die direkte Bearbeitung vorgesehen. Sie können weder die Bindungskonfiguration ändern noch die Funktion deaktivieren, indem Sie diese Datei bearbeiten. Informationen zum Deaktivieren einer Funktion finden Sie unter [Gewusst wie: Deaktivieren von Funktionen](disable-function.md).
 
 
 ## <a name="methods-recognized-as-functions"></a>Methoden, die als Funktionen erkannt werden

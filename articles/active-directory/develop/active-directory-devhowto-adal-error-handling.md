@@ -1,26 +1,23 @@
 ---
-title: Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Active Directory-Authentifizierungsbibliothek)
+title: Bewährte Methoden für die Fehlerbehandlung der ADAL-Client-App | Azure
 description: Stellt Anleitungen für die Fehlerbehandlung und bewährten Methoden für ADAL-Clientanwendungen bereit.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.author: ryanwi
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/27/2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7008a5909d8f530920628125fec1b826be3f984
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: f4e0f434831f624dbd8c9c1302aab6816cd3d148
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374192"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966162"
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Bewährte Methoden bei der Fehlerbehandlung von ADAL-Clients (Azure Active Directory Authentication Library)
 
@@ -577,6 +574,7 @@ window.Logging = {
     }
 };
 ```
+
 ## <a name="related-content"></a>Verwandte Inhalte
 
 * [Entwicklerhandbuch zu Azure AD][AAD-Dev-Guide]

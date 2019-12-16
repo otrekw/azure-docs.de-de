@@ -1,5 +1,5 @@
 ---
-title: Daemon-App, die Web-APIs aufruft (Aufrufen von Token für die App) – Microsoft Identity Platform
+title: Abrufen von Token in Daemon-Apps, die Web-APIs aufrufen – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie eine Daemon-App erstellen, die Web-APIs aufruft (beim Aufrufen von Token)
 services: active-directory
 documentationcenter: dev-center-name
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a5a3ac1438d5e958317f1899fc6c447f5c149ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 0588e20467701512da6542da0d87fca786dcc793
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175518"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920292"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens
 

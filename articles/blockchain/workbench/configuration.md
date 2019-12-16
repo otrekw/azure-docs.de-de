@@ -1,15 +1,15 @@
 ---
 title: Referenz zu Azure Blockchain Workbench-Konfigurationsmetadaten
 description: Übersicht über die Anwendungskonfigurationsmetadaten in Azure Blockchain Workbench (Vorschauversion)
-ms.date: 09/05/2019
+ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
-ms.openlocfilehash: 2ee1d1da1a9a5d8e890a6578eaec42cc6bf9f3ed
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 661e795f0e85f872b1072a8f641b8938115c5d7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74326062"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972441"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Referenz zur Azure Blockchain Workbench-Konfiguration
 
@@ -391,6 +391,7 @@ Bezeichner stellen eine Sammlung von Informationen zur Beschreibung von Workflow
 | Name | Der eindeutige Name der Eigenschaft bzw. des Parameters. Der entsprechende intelligente Vertrag muss den gleichen **Namen** für die jeweilige Eigenschaft bzw. den jeweiligen Parameter verwenden. | Ja | 50 |
 | DisplayName | Der Anzeigename der Eigenschaft bzw. des Parameters | Ja | 255 |
 | Description | Die Beschreibung der Eigenschaft bzw. des Parameters | Nein | 255 |
+| type | Eigenschaft [data type](#type). | Ja |
 
 ### <a name="identifiers-example"></a>Beispiel zu Bezeichnern
 

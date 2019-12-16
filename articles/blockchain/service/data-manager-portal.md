@@ -4,12 +4,12 @@ description: Erstellen und Verwalten von Blockchain Data Manager-Instanzen für 
 ms.date: 11/04/2019
 ms.topic: article
 ms.reviewer: chroyal
-ms.openlocfilehash: 9c682f449fbab823134d626870c7dcfe8a8f2847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 03c22a7a23f1579a846746f21ce048b3425399c3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455816"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977017"
 ---
 # <a name="configure-blockchain-data-manager-using-the-azure-portal"></a>Konfigurieren von Blockchain Data Manager über das Azure-Portal
 
@@ -78,13 +78,15 @@ Mit der Vertrags-ABI werden die Smart Contract-Schnittstellen definiert. Sie bes
 
 1. Speichern Sie das **abi**-Array als JSON-Datei. Beispiel: *abi.json*. Sie verwenden die Datei in einem späteren Schritt.
 
-Blockchain Data Manager benötigt den bereitgestellten Bytecode für den Smart Contract. Der bereitgestellte Bytecode unterscheidet sich von Smart Contract-Bytecode. Sie können den bereitgestellten Bytecode aus der kompilierten Vertragsmetadatendatei abrufen.
+Blockchain Data Manager benötigt den bereitgestellten Bytecode für den Smart Contract. Der bereitgestellte Bytecode unterscheidet sich von Smart Contract-Bytecode. Sie verwenden die Erweiterung für das Azure Blockchain Development Kit, um den Bytecode in die Zwischenablage zu kopieren.
 
-1. Öffnen Sie die Vertragsmetadatendatei, die im Ordner **build/contracts** Ihres Solidity-Projekts enthalten ist. Der Dateiname ist der Smart Contract-Name gefolgt von der Erweiterung **.json**.
-1. Suchen Sie in der JSON-Datei nach dem Element **deployedBytecode**.
-1. Kopieren Sie den Hexadezimalwert ohne die Anführungszeichen.
+1. Erweitern Sie im Explorer-Bereich von Visual Studio Code den Ordner **build/contracts** Ihres Solidity-Projekts.
+1. Klicken Sie mit der rechten Maustaste auf die Vertragsmetadaten-JSON-Datei. Der Dateiname ist der Smart Contract-Name gefolgt von der Erweiterung **.json**.
+1. Wählen Sie **Copy Transaction Bytecode** (Transaktionsbytecode kopieren) aus.
 
-    ![Visual Studio Code-Bereich mit Bytecode in den Metadaten](./media/data-manager-portal/bytecode-metadata.png)
+    ![Visual Studio Code-Bereich mit Auswahl von „Copy Transaction Bytecode“ (Transaktionsbytecode kopieren)](./media/data-manager-portal/bytecode-devkit.png)
+
+    Der Bytecode wird in die Zwischenablage kopiert.
 
 1. Speichern Sie den **bytecode**-Wert als JSON-Datei. Beispiel: *bytecode.json*. Sie verwenden die Datei in einem späteren Schritt.
 

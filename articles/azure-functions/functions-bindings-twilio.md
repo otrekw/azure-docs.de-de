@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee78234b43e94a5c537161556410ee6246e625ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3c24e8b6098ba33a2e738a7f5f310ae7e65ee516
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230941"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925276"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
 
@@ -25,7 +25,7 @@ Die Twilio-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.T
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
-## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x oder höher
 
 Die Twilio-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Twilio](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio), Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/).
 
@@ -197,15 +197,15 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="example---functions-2x"></a>Beispiel: Functions 2.x
+## <a name="example---functions-2x-and-higher"></a>Beispiel: Functions 2.x oder höher
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [2.x – C#](#2x-c-example)
-* [2.x – C#-Skript (CSX)](#2x-c-script-example)
-* [2.x – JavaScript](#2x-javascript-example)
+* [2.x oder höher: C#](#2x-c-example)
+* [2.x oder höher: C#-Skript (CSX-Datei)](#2x-c-script-example)
+* [2.x oder höher: JavaScript](#2x-javascript-example)
 
-### <a name="2x-c-example"></a>2.x – C#-Beispiel
+### <a name="2x-c-example"></a>2.x oder höher: C#-Beispiel
 
 Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Textnachricht sendet, wenn sie durch eine Warteschlangennachricht ausgelöst wird.
 
@@ -240,7 +240,7 @@ namespace TwilioQueueOutput
 
 Dieses Beispiel verwendet das `TwilioSms`-Attribut mit dem Rückgabewert der Methode. Alternativ können Sie das Attribut auch mit einem `out CreateMessageOptions`-Parameter oder den Parametern `ICollector<CreateMessageOptions>` oder `IAsyncCollector<CreateMessageOptions>` verwenden.
 
-### <a name="2x-c-script-example"></a>2.x – C#-Skriptbeispiel
+### <a name="2x-c-script-example"></a>2.x oder höher: C#-Skriptbeispiel
 
 Das folgende Beispiel zeigt eine Twilio-Ausgabebindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion verwendet einen `out`-Parameter, um eine Textnachricht zu senden.
 
@@ -326,7 +326,7 @@ public static async Task Run(string myQueueItem, IAsyncCollector<CreateMessageOp
 }
 ```
 
-### <a name="2x-javascript-example"></a>2.x – JavaScript-Beispiel
+### <a name="2x-javascript-example"></a>2.x oder höher: JavaScript-Beispiel
 
 Das folgende Beispiel zeigt eine Twilio-Ausgabebindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet.
 

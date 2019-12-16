@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2018
-ms.openlocfilehash: 763a45446771f7b13178e22b0f7a35bd68bfc8bd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4b1c1a963b065411f1a0ab84141bdf1835930ebb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821278"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973542"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Öffentliche Datasets zum Testen und Erstellen von Prototypen
 
@@ -26,7 +26,7 @@ Durchsuchen Sie diese Liste mit öffentlichen Datasets nach Daten, mit denen Sie
 
 | Datenquelle | Informationen zu den Daten | Informationen zu den Dateien |
 |---|---|---|
-| [Daten von US-Regierungsbehörden](https://www.census.gov/data.html) | Über 190.000 Datasets zu Landwirtschaft, Klima, Verbrauchern, Ökosystemen, Bildung, Energie, Finanzen, Gesundheit, kommunalen Behörden, Fertigung, Seefahrt, Ozeanen, öffentlicher Sicherheit sowie Wissenschaft und Forschung in den USA | Dateien unterschiedlicher Größe in vielen verschiedenen Formaten, u.a. HTML, XML, CSV, JSON, Excel. Sie können die verfügbaren Datasets nach Dateiformat filtern. |
+| [Daten von US-Regierungsbehörden](https://catalog.data.gov/dataset) | Über 250.000 Datasets zu Landwirtschaft, Klima, Verbrauchern, Ökosystemen, Bildung, Energie, Finanzen, Gesundheit, kommunalen Behörden, Fertigung, Seefahrt, Ozeanen, öffentlicher Sicherheit sowie Wissenschaft und Forschung in den USA | Dateien unterschiedlicher Größe in vielen verschiedenen Formaten, u.a. HTML, XML, CSV, JSON, Excel. Sie können die verfügbaren Datasets nach Dateiformat filtern. |
 | [Daten der Bundesbehörde „United States Census Bureau“](https://www.census.gov/data.html) | Statistische Daten zur Bevölkerungszahl der USA | Die Datasets liegen in verschiedenen Formaten vor. |
 | [Geowissenschaftliche Daten der NASA](https://earthdata.nasa.gov/) | Über 32.000 Datensammlungen zu Landwirtschaft, Atmosphäre, Biosphäre, Klima, Kryosphäre, Personenmaßen, Hydrosphäre, Landoberfläche, Ozeanen, Wechselwirkung zwischen Sonne und Erde und vielem mehr. | Die Datasets liegen in verschiedenen Formaten vor. |
 | [Flugverspätungen bei Fluggesellschaften und andere Daten des Transportwesens](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | „Das Bureau of Transportation Statistics (BTS) des US-Verkehrsministeriums verfolgt die Pünktlichkeit von Inlandsflügen großer Fluggesellschaften. Zusammenfassende Informationen zur Anzahl der pünktlichen, verspäteten, annullierten und umgeleiteten Flüge werden ... in Zusammenfassungstabellen auf dieser Website angezeigt.“ | Die Dateien werden im CSV-Format bereitgestellt. |

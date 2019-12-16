@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von PowerShell Funktionen entwickeln
 author: eamonoreilly
 ms.topic: conceptual
 ms.date: 04/22/2019
-ms.openlocfilehash: 26e52e8aa498c37bd4cef95fb2b54b2fe9322f90
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2fa510e447d4d9b054a37f7665d010382a5db819
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226680"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974239"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>PowerShell-Entwicklerhandbuch für Azure Functions
 
@@ -50,7 +50,7 @@ PSFunctionApp
 
 Im Stammverzeichnis des Projekts befindet sich eine freigegebene Datei [`host.json`](functions-host-json.md), die zum Konfigurieren der Funktions-App verwendet werden kann. Jede Funktion verfügt über einen Ordner mit einer eigenen Codedatei (PS1-Datei) und Bindungskonfigurationsdatei (`function.json`). Der Name des übergeordneten Verzeichnisses der Datei „function.json“ ist immer der Name Ihrer Funktion.
 
-Bestimmte Bindungen erfordern das Vorhandensein einer Datei mit dem Namen `extensions.csproj`. Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Bestimmte Bindungen erfordern das Vorhandensein einer Datei mit dem Namen `extensions.csproj`. Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 PowerShell-Funktions-Apps enthalten möglicherweise optional eine Datei `profile.ps1`, die ausgeführt wird, wenn eine Funktions-App gestartet wird (auch als *[Kaltstart](#cold-start)* bezeichnet). Weitere Informationen finden Sie unter [PowerShell-Profil](#powershell-profile).
 

@@ -1,5 +1,6 @@
 ---
-title: In Azure Active Directory B2C verwendbare Anwendungstypen
+title: In Azure AD B2C unterstützte Anwendungstypen
+titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, welche Anwendungstypen mit Azure Active Directory B2C verwendet werden können.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 5643f1df6cefa9ca6c60453939be533b2c00eaf4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 753943116edab443509b7d5747e749910e366806
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533084"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948793"
 ---
 # <a name="application-types-that-can-be-used-in-active-directory-b2c"></a>In Active Directory B2C verwendbare Anwendungstypen
 

@@ -1,17 +1,17 @@
 ---
 title: FROM-Klausel in Azure Cosmos DB
-description: Erfahren Sie mehr über die FROM-Klausel von SQL für Azure Cosmos DB.
+description: Erfahren Sie mehr über die SQL-Syntax, und untersuchen Sie ein Beispiel für die FROM-Klausel für Azure Cosmos DB. In diesem Artikel werden auch Beispiele für die Bereichsergebnisse und das Abrufen von untergeordneten Elementen mithilfe der FROM-Klausel gezeigt.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 06/10/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: 79bb17277a041f71c095ed724737012f9501f16f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 4f6d7580ea7ff0e8968c0c3ce4b3ca6111c86ac8
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72326993"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873368"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>FROM-Klausel in Azure Cosmos DB
 

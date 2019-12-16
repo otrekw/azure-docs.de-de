@@ -1,5 +1,5 @@
 ---
-title: Web-App, die Web-APIs aufruft (Aufrufen einer Web-API) – Microsoft Identity Platform
+title: Aufrufen einer Web-API aus einer Web-App – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Aufrufen einer Web-API).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d971ec3c7cd82d6e028d0f96c8f52b897cedc351
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: de972c4efcfa544227649581d7c3441aae0bfb4f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175299"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964938"
 ---
 # <a name="web-app-that-calls-web-apis---call-a-web-api"></a>Web-App, die Web-APIs aufruft – Aufrufen einer Web-API
 

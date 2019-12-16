@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/12/2019
+ms.date: 12/09/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: seodec18
-ms.openlocfilehash: edb46bc361c515439a93d9c3d0b9987bebe4b1b1
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4b0e5be0e5f71fa61e3a6c6fa39e720c4c298898
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229881"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967938"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Tutorial: Erstellen und Verwalten von Azure-Budgets
 
@@ -27,7 +27,7 @@ Die Budgets werden am Ende eines Zeitraums (monatlich, vierteljährlich oder jä
 
 Die Beispiele in diesem Tutorial führen Sie durch die Erstellung und Bearbeitung eines Budgets für ein Abonnement von Azure Enterprise Agreement (EA).
 
-Sehen Sie sich das Video [Erstellen von Budgets zur Überwachung Ihrer Ausgaben mit Azure Cost Management](https://www.youtube.com/watch?v=ExIVG_Gr45A) an, um zu erfahren, wie Sie in Azure Budgets erstellen können, um Ausgaben zu überwachen.
+Sehen Sie sich das Video [Anwenden von Budgets auf Abonnements im Azure-Portal](https://www.youtube.com/watch?v=UrkHiUx19Po) an, um zu erfahren, wie Sie Budgets in Azure erstellen können, um Ausgaben zu überwachen.
 
 
 In diesem Tutorial lernen Sie Folgendes:
@@ -62,7 +62,7 @@ Um ein Budget zu erstellen oder anzuzeigen, öffnen Sie den gewünschten Bereich
 
 Nachdem Sie Budgets erstellt haben, wird eine einfache Ansicht Ihrer aktuellen Ausgaben im Abgleich mit dem Budget angezeigt.
 
-Klicken Sie auf **Hinzufügen**.
+Wählen Sie **Hinzufügen**.
 
 ![Beispiel für eine Liste von bereits erstellten Budgets](./media/tutorial-acm-create-budgets/budgets01.png)
 
@@ -115,6 +115,12 @@ Das folgende Beispiel zeigt Budgetschwellenwerte für 50 %, 75 % und 100 %. J
 ![Beispiel mit Warnungsbedingungen, die mit verschiedenen Aktionsgruppen und Aktionenstypen konfiguriert wurden](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 Die Budgetintegration in Aktionsgruppen funktioniert nur bei Aktionsgruppen, für die das allgemeine Warnungsschema deaktiviert ist. Weitere Informationen zum Deaktivieren des Schemas finden Sie unter [Wie kann ich das allgemeine Warnungsschema aktivieren?](../azure-monitor/platform/alerts-common-schema.md#how-do-i-enable-the-common-alert-schema)
+
+## <a name="edit-an-existing-budget"></a>Bearbeiten eines vorhandenen Budgets
+Wenn Sie Änderungen an einem vorhandenen Budget vornehmen möchten, navigieren Sie zum Hauptbudgetfenster, und wählen Sie das Budget aus, das Sie bearbeiten möchten. Wählen Sie im Fenster mit den Budgetdetails **Budget bearbeiten** aus, und nehmen Sie die erforderlichen Änderungen vor, und wählen Sie dann **Speichern** aus.
+
+![Beispiel für das Bearbeiten eines Budgets](./media/tutorial-acm-create-budgets/edit-budget.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

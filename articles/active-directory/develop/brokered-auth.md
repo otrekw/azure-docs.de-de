@@ -1,32 +1,27 @@
 ---
-title: Brokerauthentifizierung unter Android | Azure
+title: Brokerauthentifizierung in Android | Azure
+titlesuffix: Microsoft identity platform
 description: Eine Übersicht über Brokerauthentifizierung und Autorisierung für Android in der Microsoft Identity Platform
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
-ms.reviewer: shoatman
+ms.reviewer: shoatman, hahamil, brianmel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a535cbefc3520cbf0c0fc14fbcfd0dd9ebd92ac
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f5204ad71efa2587341600d2c5c1e5195d15445e
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175658"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74843715"
 ---
-# <a name="brokered-auth-in-android"></a>Brokerauthentifizierung unter Android
-
-## <a name="introduction"></a>Einführung
+# <a name="brokered-authentication-in-android"></a>Brokerauthentifizierung in Android
 
 Sie müssen einen der Authentifizierungsbroker von Microsoft verwenden, um am geräteweiten einmaligen Anmelden (Single Sign-On, SSO) teilnehmen und die Organisationsrichtlinien für bedingten Zugriff erfüllen zu können. Die Integration eines Brokers bietet die folgenden Vorteile:
 
@@ -39,7 +34,7 @@ Sie müssen einen der Authentifizierungsbroker von Microsoft verwenden, um am ge
   -  über Android-AccountManager und Kontoeinstellungen
   - „Geschäftskonto“ – benutzerdefinierter Kontotyp
 
-Unter Android ist der Microsoft-Authentifizierungsbroker eine Komponente, die in der [Microsoft Authenticator-App](https://play.google.com/store/apps/details?id=com.azure.authenticator) und in [Intune-Unternehmensportal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) enthalten ist.
+Unter Android ist der Microsoft-Authentifizierungsbroker eine Komponente, die in der [Microsoft Authenticator-App](https://play.google.com/store/apps/details?id=com.azure.authenticator) und im [Intune-Unternehmensportal](https://play.google.com/store/apps/details?id=com.microsoft.windowsintune.companyportal) enthalten ist.
 
 > [!TIP]
 > Es ist jeweils nur eine den Broker hostende Anwendung als Broker aktiv. Welche Anwendung als Broker aktiv ist, hängt von der Installationsreihenfolge auf dem Gerät ab. Die erste zu installierende oder die letzte auf dem Gerät vorhandene Anwendung wird zum aktiven Broker.
@@ -52,9 +47,9 @@ Im folgenden Diagramm wird die Beziehung zwischen Ihrer App, der Microsoft Authe
 
 Brokerhosting-Apps können vom Gerätebesitzer jederzeit über den App Store (in der Regel Google Play Store) installiert werden. Einige APIs (Ressourcen) sind jedoch durch Richtlinien für bedingten Zugriff geschützt, die erfordern, dass Geräte:
 
-- registriert (in den Arbeitsplatz eingebunden) sind und/oder
-- bei der Geräteverwaltung registriert sind oder
-- bei Intune-App-Schutz registriert sind
+- Registriert (in den Arbeitsplatz eingebunden) sind und/oder
+- Bei der Geräteverwaltung registriert sind oder
+- Bei Intune-App-Schutz registriert sind
 
 Wenn auf einem Gerät noch keine Broker-App installiert ist, weist MSAL den Benutzer an, eine zu installieren, sobald die App versucht, ein Token interaktiv abzurufen. Anschließend muss die App den Benutzer durch die entsprechenden Schritte führen, um sicherzustellen, dass das Gerät der erforderlichen Richtlinie entspricht.
 

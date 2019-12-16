@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: cfe0caaf199821358f8a66ac65ae75c38336c725
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228092"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899806"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
@@ -151,7 +151,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
 
-1. Öffnen Sie die heruntergeladene RDP*-Datei.
+1. Öffnen Sie die Datei *downloaded.rdp*.
 
     1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 
@@ -170,10 +170,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine private Verbindung mit dem Speicherkonto her.
 
-> [!IMPORTANT]
-> Die DNS-Konfiguration für den Speicher erfordert eine manuelle Änderung der Hostsdatei, um den FQDN des jeweiligen Kontos einzuschließen. Ändern Sie die folgende Datei unter Verwendung von Administratorberechtigungen unter Windows: „c:\Windows\System32\Drivers\etc\hosts“ oder „Linux/etc/hosts“. Fügen Sie die DNS-Informationen für das Konto aus dem vorherigen Schritt im folgenden Format ein: „[Private IP-Adresse] myaccount.blob.core.windows.net“.
-
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVm*.
+1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
 2. Geben Sie `nslookup mystorageaccount.blob.core.windows.net` ein. Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
     Server:  UnKnown

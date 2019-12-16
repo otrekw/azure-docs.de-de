@@ -1,30 +1,26 @@
 ---
-title: Erstellen einer App, die beliebige Azure AD-Benutzer anmelden kann
+title: Erstellen von Apps, die Azure AD-Benutzer anmelden
 titleSuffix: Microsoft identity platform
 description: Es wird veranschaulicht, wie Sie eine mehrinstanzenfähige Anwendung erstellen, mit der ein Benutzer über jeden Azure Active Directory-Mandanten angemeldet werden kann.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 35af95cb-ced3-46ad-b01d-5d2f6fd064a3
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/22/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7f31e0254ad4963ce6946a108d84c97027f30b
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 73a5d30761b25f6233e298cac2602fb701a2987f
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803933"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917776"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 

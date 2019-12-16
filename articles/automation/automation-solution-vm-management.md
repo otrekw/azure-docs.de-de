@@ -4,17 +4,17 @@ description: Mit dieser Lösung für die VM-Verwaltung werden Ihre virtuellen Az
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 11/06/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d7a43ee2ed8719df2c38d00c9a50811c6d5ea70d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c0b022ed759837fc6d922386dd48a2f3a109527a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718680"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951495"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zum Starten/Beenden von V
    - Geben Sie einen Namen für den neuen **Log Analytics-Arbeitsbereich** ein, z. B. „ContosoLAWorkspace“.
    - Wählen Sie ein **Abonnement** aus, mit dem eine Verknüpfung erstellt werden soll, indem Sie in der Dropdownliste einen anderen Eintrag auswählen, falls der Standardeintrag nicht geeignet ist.
    - Unter **Ressourcengruppe** können Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe auswählen.
-   - Wählen Sie einen **Speicherort**aus. Derzeit sind nur die Standorte **Australien, Südosten**, **Kanada, Mitte**, **Indien, Mitte**, **USA, Osten**, **Japan, Osten**, **Asien, Südosten**, **Vereinigtes Königreich, Süden**, **Europa, Westen** und **USA, Westen 2** verfügbar.
+   - Wählen Sie einen **Speicherort**aus.
    - Wählen Sie einen **Tarif**aus. Wählen Sie die Option **Pro GB (eigenständig)** aus. Für Azure Monitor-Protokolle wurden die [Preise](https://azure.microsoft.com/pricing/details/log-analytics/) aktualisiert, und der Tarif „Pro GB“ ist die einzige Option.
 
    > [!NOTE]
@@ -428,7 +428,7 @@ Führen Sie die folgenden Schritte aus, um die Lösung zu löschen:
 
 Das Automation-Konto und der Log Analytics-Arbeitsbereich werden bei diesem Vorgang nicht gelöscht. Wenn Sie den Log Analytics-Arbeitsbereich nicht beibehalten möchten, müssen Sie ihn manuell löschen. Dies ist über das Azure-Portal möglich:
 
-1. Wählen Sie auf der Startseite des Azure-Portals die Option **Log Analytics-Arbeitsbereiche** aus.
+1. Suchen Sie im Azure-Portal nach **Log Analytics-Arbeitsbereiche**, und wählen Sie diese Option aus.
 1. Wählen Sie auf der Seite **Log Analytics-Arbeitsbereiche** den Arbeitsbereich aus.
 1. Wählen Sie auf der Seite mit den Einstellungen für den Arbeitsbereich die Menüoption **Löschen** aus.
 

@@ -1,18 +1,18 @@
 ---
 title: LOWER in der Abfragesprache für Azure Cosmos DB
-description: Erfahren Sie mehr über die SQL-Systemfunktion LOWER in Azure Cosmos DB.
+description: Erfahren Sie mehr über die SQL-Systemfunktion LOWER in Azure Cosmos DB, die einen Zeichenfolgenausdruck zurückgibt, nachdem Zeichendaten aus Großbuchstaben in Kleinbuchstaben konvertiert wurden.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 3a9c122ef65772458b832d3b1651e7e63e42985e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349708"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873300"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  Gibt eine Zeichenfolge zurück, nachdem Großbuchstaben in Kleinbuchstaben konvertiert wurden.  

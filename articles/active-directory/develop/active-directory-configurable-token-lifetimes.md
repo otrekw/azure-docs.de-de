@@ -1,30 +1,26 @@
 ---
-title: Konfigurierbare Tokenlebensdauern in Azure Active Directory
+title: Konfigurierbare Azure AD-Tokenlebensdauer
 titleSuffix: Microsoft identity platform
 description: Es wird beschrieben, wie Sie Gültigkeitsdauern für Token festlegen, die von Azure AD ausgestellt werden.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: ryanwi
 ms.custom: aaddev, annaba, identityplatformtop40
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 021d0c19ecc4bf63861bf95d99b6ba6b8e910220
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: c195a5da6b04a919947c0ae65d7d6109115627d2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74046554"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918388"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -41,7 +37,6 @@ Sie können eine Richtlinie als Standardrichtlinie für Ihre Organisation festle
 > Die Richtlinie für konfigurierbare Tokengültigkeitsdauer wird für SharePoint Online nicht unterstützt.  Sie haben zwar die Möglichkeit, diese Richtlinie über PowerShell zu erstellen, sie wird von SharePoint Online aber nicht akzeptiert. Im [SharePoint Online-Blog](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208) finden Sie weitere Informationen zum Konfigurieren von Timeouts für Leerlaufsitzungen.
 >* Die Standardlebensdauer für das SharePoint Online-Zugriffstoken beträgt eine Stunde. 
 >* Die standardmäßige maximale Inaktivitätsdauer für das SharePoint Online-Aktualisierungstoken beträgt 90 Tage.
-
 
 ## <a name="token-types"></a>Tokentypen
 

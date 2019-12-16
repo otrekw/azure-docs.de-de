@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Sie Computer mit Azure Automation DSC (Desir
 services: automation
 ms.service: automation
 ms.subservice: dsc
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: cf95a66cf68cf0b33444a17cf762bae79db4b50c
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 89b51af3beaad645dc27b599c2493be4d4bdf30f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243436"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951410"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -305,6 +305,15 @@ Die für das DSC-Registrierungsprotokoll erforderlichen Informationen finden Sie
 
 Für eine verbesserte Sicherheit können die primären und sekundären Zugriffsschlüssel eines Automation-Kontos jederzeit generiert werden (auf der Seite **Schlüssel verwalten**), um künftige Knotenregistrierungen mit alten Schlüsseln zu verhindern.
 
+## <a name="certificate-expiration-and-re-registration"></a>Ablauf und erneute Registrierung eines Zertifikats
+
+Nach der Registrierung eines Computers als DSC-Knoten in Azure Automation DSC gibt es eine Reihe von Gründen, warum Sie diesen Knoten in Zukunft erneut registrieren müssen:
+
+- Für Versionen von Windows Server vor Windows Server 2019 handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, das nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, kann der Knoten nicht mit Azure Automation kommunizieren und wird als „Nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.  Eine Lösung für dieses Problem ist in Windows Server 2019 und höher enthalten.
+- Zum Ändern von [Werten des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4), die während der anfänglichen Registrierung des Knotens festgelegt wurden, z.B. „ConfigurationMode“. Diese DSC-Agent-Werte können derzeit nur über eine erneute Registrierung geändert werden. Die einzige Ausnahme ist die Knotenkonfiguration, die dem Knoten zugewiesen ist. Diese kann in Azure Automation DSC direkt geändert werden.
+
+Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrieren des Knotens mithilfe einer der in diesem Dokument beschriebenen Methoden für die Integration erfolgen. Sie müssen die Registrierung eines Knotens in Azure Automation DSC nicht aufheben, bevor Sie ihn erneut registrieren.
+
 ## <a name="troubleshooting-azure-virtual-machine-onboarding"></a>Problembehandlung bei der Integration virtueller Azure-Computer
 
 Mit Azure Automation DSC können Sie problemlos Azure-VMs für die Konfigurationsverwaltung integrieren. Die Azure-VM-Erweiterung für DSC wird verwendet, um virtuelle Computer bei Azure Automation DSC zu registrieren. Da die Azure-VM-Erweiterung für DSC asynchron ausgeführt wird, können die Überwachung des Fortschritts und die Problembehandlung bei der Ausführung wichtig sein.
@@ -314,14 +323,7 @@ Mit Azure Automation DSC können Sie problemlos Azure-VMs für die Konfiguration
 
 Zur Problembehandlung oder Anzeige des Status der Azure-VM-Erweiterung für DSC navigieren Sie im Azure-Portal zu dem virtuellen Computer, der integriert wird, und klicken Sie dann auf unter **Einstellungen** auf **Erweiterungen**. Klicken Sie dann je nach Betriebssystem auf **DSC** oder **DSCForLinux**. Weitere Details erhalten Sie, indem Sie auf **Detaillierten Status anzeigen**klicken.
 
-## <a name="certificate-expiration-and-reregistration"></a>Ablauf und erneute Registrierung eines Zertifikats
-
-Nach der Registrierung eines Computers als DSC-Knoten in Azure Automation DSC gibt es eine Reihe von Gründen, warum Sie diesen Knoten in Zukunft erneut registrieren müssen:
-
-- Für Versionen von Windows Server vor Windows Server 2019 handelt jeder Knoten automatisch ein eindeutiges Zertifikat für die Authentifizierung aus, das nach einem Jahr abläuft. Gegenwärtig kann das PowerShell DSC-Registrierungsprotokoll Zertifikate nicht automatisch erneuern, wenn sie sich dem Ablaufdatum nähern, weshalb Sie die Knoten nach einem Jahr erneut registrieren müssen. Stellen Sie vor einer erneuten Registrierung sicher, dass jeder Knoten Windows Management Framework 5.0 RTM ausführt. Wenn das Authentifizierungszertifikat eines Knotens abläuft und er nicht erneut registriert wird, kann der Knoten nicht mit Azure Automation kommunizieren und wird als „Nicht reagierend“ markiert. Eine erneute Registrierung, die 90 Tage oder weniger vor Ablaufzeitpunkt des Zertifikats oder zu einem beliebigen Zeitpunkt nach dessen Ablaufzeitpunkt durchgeführt wird, hat zur Folge, dass ein neues Zertifikat generiert und verwendet wird.  Eine Lösung für dieses Problem ist in Windows Server 2019 und höher enthalten.
-- Zum Ändern von [Werten des lokalen Konfigurations-Managers von PowerShell DSC](/powershell/scripting/dsc/managing-nodes/metaConfig4), die während der anfänglichen Registrierung des Knotens festgelegt wurden, z.B. „ConfigurationMode“. Diese DSC-Agent-Werte können derzeit nur über eine erneute Registrierung geändert werden. Die einzige Ausnahme ist die Knotenkonfiguration, die dem Knoten zugewiesen ist. Diese kann in Azure Automation DSC direkt geändert werden.
-
-Eine erneute Registrierung kann auf die gleiche Weise wie beim ersten Registrieren des Knotens mithilfe einer der in diesem Dokument beschriebenen Methoden für die Integration erfolgen. Sie müssen die Registrierung eines Knotens in Azure Automation DSC nicht aufheben, bevor Sie ihn erneut registrieren.
+Weitere Informationen zur Problembehandlung finden Sie unter [Behandeln von Problemen mit der Azure Automation-Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)](./troubleshoot/desired-state-configuration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

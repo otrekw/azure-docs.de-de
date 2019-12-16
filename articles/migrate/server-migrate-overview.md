@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: raynew
-ms.openlocfilehash: 9ddb63fcf4d960d2d8ed2671eba83fc38cddcbe4
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71710048"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974664"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -45,6 +45,7 @@ Nachdem Sie sich über die Einschränkungen informiert haben, hilft Ihnen die Ke
 
 **Aufgabe** | **Details** |**Ohne Agent** | **Agent-basiert**
 --- | --- | --- | ---
+**Bewertung** | Bewerten von Servern vor der Migration.  Die Bewertung ist optional. Wir empfehlen, dass Sie die Computer bewerten, bevor Sie sie migrieren, aber Sie müssen nicht so vorgehen. <br/><br/> Zur Bewertung richtet Azure Migrate eine schlanke Appliance zum Ermitteln und Bewerten von VMs ein. | Wenn Sie nach der Bewertung eine Migration ohne Agent ausführen, wird die gleiche Azure Migrate-Appliance, die für die Bewertung eingerichtet wurde, für die Migration ohne Agent verwendet.  |  Wenn Sie nach der Bewertung eine agent-basierte Migration ausführen, wird die für die Bewertung eingerichtete Azure Migrate-Appliance während der Migration ohne Agent nicht verwendet. Sie können die Appliance belassen oder sie entfernen, wenn Sie keine weitere Ermittlung und Bewertung durchführen möchten.
 **Vorbereiten der VMware-Server und -VMs für die Migration** | Konfigurieren Sie eine Reihe von Einstellungen für VMware-Server und -VMs. | Erforderlich | Erforderlich
 **Hinzufügen des Tools für die Servermigration** | Fügen Sie das Tool für die Azure Migrate-Servermigration im Azure Migrate-Projekt hinzu. | Erforderlich | Erforderlich
 **Bereitstellen der Azure Migrate-Appliance** | Richten Sie auf einer VMware-VM eine einfache Appliance für die VM-Ermittlung und -Bewertung ein. | Erforderlich | Nicht erforderlich.

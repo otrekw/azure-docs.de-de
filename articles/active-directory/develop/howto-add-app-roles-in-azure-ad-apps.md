@@ -1,29 +1,26 @@
 ---
-title: Hinzufügen von App-Rollen in Ihrer in Azure Active Directory registrierten App und Empfangen der Rollen im Token
+title: Hinzufügen von App-Rollen und Abrufen dieser Rollen aus einem Token | Azure
 titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie App-Rollen in einer bei Azure Active Directory registrierten Anwendung hinzufügen, diesen Rollen Benutzer und Gruppen zuweisen und die Rollen im `roles`-Anspruch im Token empfangen.
 services: active-directory
 documentationcenter: ''
 author: kkrishna
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: kkrishna
-ms.reviewer: ''
+ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84275be5c85570a44d968dca8887b448fce09979
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 0fe116b5ae26522c9bce0322123836a6e08d3cfd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546839"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917913"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 

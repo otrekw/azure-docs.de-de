@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/03/2019
+ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b4a8005cf308d5cfce02976e3b2eff39d5fe8c0
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958632"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997070"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>Überspringen des Löschens von Benutzerkonten außerhalb des gültigen Bereichs
 
@@ -30,7 +30,7 @@ In diesem Leitfaden wird beschrieben, wie Sie die Microsoft Graph-API und den Mi
 * Wenn ***SkipOutOfScopeDeletions*** auf „0“ (false) festgelegt ist, werden Konten, die sich außerhalb des gültigen Bereichs befinden, im Ziel deaktiviert.
 * Wenn ***SkipOutOfScopeDeletions*** auf „1“ (true) festgelegt ist, werden Konten, die sich außerhalb des gültigen Bereichs befinden, nicht im Ziel deaktiviert. Dieses Flag wird auf der Ebene der *Bereitstellungs-App* festgelegt und kann mithilfe der Graph-API konfiguriert werden. 
 
-Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von Workday in Active Directory* verwendet wird, enthalten die folgenden Schritte Screenshots der Workday-Anwendung. Diese Konfiguration kann jedoch auch bei anderen Bereitstellungs-Apps verwendet werden.
+Da diese Konfiguration häufig bei der App für die *Benutzerbereitstellung von Workday in Active Directory* verwendet wird, enthalten die folgenden Schritte Screenshots der Workday-Anwendung. Diese Schritte können jedoch auch mit **allen anderen Apps** wie etwa ServiceNow, Salesforce, Dropbox usw. verwendet werden.
 
 ## <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>Schritt 1: Abrufen der Dienstprinzipal-ID der Bereitstellungs-App (Objekt-ID)
 

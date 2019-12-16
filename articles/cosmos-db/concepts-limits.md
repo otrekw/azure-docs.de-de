@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 7ce15a0fe55c32ad7e381ba70e4dffee11c76bee
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383394"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951818"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -115,13 +115,14 @@ Es gibt keine Einschränkungen für die Elementnutzlasten wie z.B. Anzahl von Ei
 
 ## <a name="per-request-limits"></a>Grenzwerte pro Anforderung
 
-Cosmos DB unterstützt [CRUD- und Abfragevorgänge](https://docs.microsoft.com/rest/api/cosmos-db/) für Ressourcen wie Datenbanken, Elemente und Container.  
+Azure Cosmos DB unterstützt [CRUD- und Abfragevorgänge](https://docs.microsoft.com/rest/api/cosmos-db/) für Ressourcen wie Container, Elemente und Datenbanken. Außerdem werden [transaktionale Batchanforderungen](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.transactionalbatch) für mehrere Elemente mit demselben Partitionsschlüssel in einem Container unterstützt.
 
 | Resource | Standardlimit |
 | --- | --- |
 | Maximale Ausführungszeit für einen einzelnen Vorgang (z.B. die Ausführung einer gespeicherten Prozedur oder Abrufen einer einzelnen Abfrageseite)| 5 Sekunden |
-| Maximale Größe der Anforderung (gespeicherte Prozedur, CRUD)| 2 MB |
+| Maximale Größe der Anforderung (z.B. gespeicherte Prozedur, CRUD)| 2 MB |
 | Maximale Größe der Antwort (z.B. paginierte Abfrage) | 4 MB |
+| Maximale Anzahl von Vorgängen in einem transaktionalen Batch | 100 |
 
 Sobald das Ausführungstimeout oder der Antwortgrößen-Grenzwert für einen Vorgang wie eine Abfrage erreicht ist, wird an den Client eine Seite mit Ergebnissen und ein Fortsetzungstoken zum Fortsetzen der Ausführung zurückgegeben. Es gibt praktisch keine Begrenzung der Dauer der Ausführung einer einzelnen Abfrage hinsichtlich Seiten/Fortsetzungen.
 

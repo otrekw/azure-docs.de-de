@@ -1,5 +1,6 @@
 ---
-title: Hinzufügen eigener Attribute zu benutzerdefinierten Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Hinzufügen eigener Attribute zu benutzerdefinierten Richtlinien
+titleSuffix: Azure AD B2C
 description: Eine exemplarische Vorgehensweise zur Verwendung von Erweiterungseigenschaften und benutzerdefinierten Attributen sowie zu ihrer Einbindung in die Benutzeroberfläche.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 82a796a3252a4de6eacabcad45c61c864e963fe0
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 92050261777482bae8055f697ef50c2295675c5b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066170"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948776"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
 
@@ -302,3 +303,4 @@ Weitere Informationen zur umfassenden Behandlung von Erweiterungseigenschaften f
 > * Ein **TechnicalProfile** ist ein Elementtyp oder eine Funktion, die den Namen eines Endpunkts, Metadaten und das Protokoll definiert. Das **TechnicalProfile** beschreibt die Austausch von Ansprüchen, die das Identity Experience Framework ausführt. Wenn diese Funktion in einem Orchestrierungsschritt oder über ein anderes **TechnicalProfile** aufgerufen wird, werden die **InputClaims** und **OutputClaims** vom Aufrufer als Parameter bereitgestellt.
 > * Erweiterungsattribute in der Graph-API werden mithilfe der Konvention `extension_ApplicationObjectID_attributename` benannt.
 > * Benutzerdefinierte Richtlinien verweisen auf Erweiterungsattribute als **extension_attributename**. Dieser Verweis lässt die **ApplicationObjectId** im XML-Format aus.
+> * Sie müssen die Attribut-ID überall dort im Format **erweiterung_attributname** angeben, wo auf sie verwiesen wird.

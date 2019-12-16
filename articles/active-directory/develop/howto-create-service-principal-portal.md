@@ -1,28 +1,24 @@
 ---
-title: Erstellen einer Identität für eine Azure-App im Portal
+title: Erstellen einer Azure AD-App und eines Dienstprinzipals mit dem Portal
 titleSuffix: Microsoft identity platform
-description: Beschreibt das Erstellen einer neuen Azure Active Directory-Anwendung und eines Dienstprinzipals, der mit der rollenbasierten Zugriffskontrolle in Azure Resource Manager zum Verwalten des Zugriffs auf Ressourcen verwendet werden kann.
+description: Erstellen Sie eine neue Azure Active Directory-App und einen Dienstprinzipal, um den Zugriff auf Ressourcen mit rollenbasierter Zugriffssteuerung in Azure Resource Manager zu verwalten.
 services: active-directory
-documentationcenter: na
 author: rwike77
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03ae780f86512ac401fcb7f6936e8f74cb595ca7
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 249c313f8f6195371985f3dad2e707638e52d0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473850"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967115"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 

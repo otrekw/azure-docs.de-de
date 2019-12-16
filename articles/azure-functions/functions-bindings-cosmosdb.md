@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.topic: reference
 ms.date: 11/21/2017
 ms.custom: seodec18
-ms.openlocfilehash: 18bbfd1b54947bb88ba8f06c65a17b90430b38a3
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: bae027fc5a3b6ce7b4246c403841fa529b8884cb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305208"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925944"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Cosmos DB-Bindungen für Azure Functions 1.x
 
@@ -22,7 +22,7 @@ ms.locfileid: "74305208"
 Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](../cosmos-db/serverless-computing-database.md)-Bindungen in Azure Functions. Azure Functions unterstützt Trigger sowie Ein- und Ausgabebindungen für Azure Cosmos DB.
 
 > [!NOTE]
-> Dieser Artikel gilt für Azure Functions 1.x. Informationen zur Verwendung dieser Bindungen in Functions 2.x finden Sie unter [Azure Cosmos DB-Bindungen für Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
+> Dieser Artikel gilt für Azure Functions 1.x. Informationen zur Verwendung dieser Bindungen in Functions 2.x oder höher finden Sie unter [Azure Cosmos DB-Bindungen für Azure Functions 2.x](functions-bindings-cosmosdb-v2.md).
 >
 >Diese Bindung hatte ursprünglich die Bezeichnung „DocumentDB“. In Functions Version 1.x wurde nur der Trigger in „Cosmos DB“ umbenannt. Die Eingabebindung, die Ausgabebindung und das NuGet-Paket behalten den Namen „DocumentDB“.
 

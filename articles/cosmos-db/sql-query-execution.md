@@ -1,17 +1,17 @@
 ---
 title: Ausführen von SQL-Abfragen in Azure Cosmos DB
-description: Erfahren Sie mehr über das Ausführen von SQL-Abfragen in Azure Cosmos DB.
+description: Erfahren Sie, wie Sie eine SQL-Abfrage erstellen und in Azure Cosmos DB ausführen. In diesem Artikel wird beschrieben, wie Sie eine SQL-Abfrage mithilfe der REST-API, dem .NET SDK, dem JavaScript SDK und verschiedenen anderen SDKs erstellen und ausführen.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: c42732df1bcfa8649c89899febc364bb1f5f9b5a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 70eb81b6d13c57a7ebc131244c7aa318cb2b2fd4
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999912"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871260"
 ---
 # <a name="azure-cosmos-db-sql-query-execution"></a>Ausführen von SQL-Abfragen in Azure Cosmos DB
 

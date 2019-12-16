@@ -1,5 +1,6 @@
 ---
-title: Übergeben eines Zugriffstokens über einen Benutzerflow an Ihre Anwendung – Azure Active Directory B2C
+title: Übergeben eines Zugriffstokens über einen Benutzerflow an Ihre App
+titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie ein Zugriffstoken für OAuth 2.0-Identitätsanbieter als Anspruch in einem Benutzerflow in Azure Active Directory B2C übergeben können.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1a9ad0c615e50db746548a1ed5b557fe6fdea5a
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064295"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948810"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über einen Benutzerflow an Ihre Anwendung in Azure Active Directory B2C
 

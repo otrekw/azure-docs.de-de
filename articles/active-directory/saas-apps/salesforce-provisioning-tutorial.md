@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 32f3c439460ddc61dbf08fc4e8d7b7a000aa20f9
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120540"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849172"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Salesforce für die automatische Benutzerbereitstellung
 
@@ -129,6 +129,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 * **SalesforceDuplicateUserName:** Der Benutzer kann nicht bereitgestellt werden, da sein Salesforce.com-Benutzername bereits in einem anderen Salesforce.com-Mandanten vorhanden ist.  In Salesforce.com müssen Werte für das Username-Attribut für alle Salesforce.com-Mandanten eindeutig sein.  Standardmäßig wird der „userPrincipalName“ eines Benutzers in Azure Active Directory sein „Username“ in Salesforce.com.   Sie haben zwei Möglichkeiten.  Eine Möglichkeit besteht darin, den Benutzer mit dem doppelten „Username“ im anderen Salesforce.com-Mandanten zu suchen und umzubenennen, wenn Sie diesen anderen Mandanten ebenfalls verwalten.  Die andere Möglichkeit ist das Entfernen des Zugriffs des Azure Active Directory-Benutzers auf den Salesforce.com-Mandanten, in dem Ihr Verzeichnis integriert ist. Dieser Vorgang wird beim nächsten Synchronisierungsversuch wiederholt. 
 * **SalesforceRequiredFieldMissing:** Für Salesforce müssen bestimmte Attribute des Benutzers vorhanden sein, damit der Benutzer erfolgreich erstellt oder aktualisiert werden kann. Für diesen Benutzer fehlt eines der erforderlichen Attribute. Stellen Sie sicher, dass Attribute wie „email“ und „alias“ für alle Benutzer aufgefüllt werden, die Sie in Salesforce bereitstellen möchten. Sie können Benutzer, für die diese Attribute nicht vorhanden sind, mithilfe [attributbasierter Bereichsfilter](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) ausschließen. 
 * Die Standardattributzuordnung für die Bereitstellung in Salesforce enthält den Ausdruck „SingleAppRoleAssignments“, um „appRoleAssignments“in Azure AD zu „ProfileName“ in Salesforce zuzuordnen. Stellen Sie sicher, dass die Benutzer nicht über mehrere Anwendungsrollenzuweisungen in Azure AD verfügen, da die Attributzuordnung nur die Bereitstellung einer Rolle unterstützt. 
+* Salesforce erfordert, dass E-Mail-Updates manuell genehmigt werden, bevor sie geändert werden. Folglich werden möglicherweise mehrere Einträge in den Bereitstellungsprotokollen angezeigt, um die E-Mail des Benutzers zu aktualisieren (bis die E-Mail-Änderung genehmigt wurde).
 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen

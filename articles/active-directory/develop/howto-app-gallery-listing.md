@@ -1,29 +1,25 @@
 ---
-title: Listen Ihrer Anwendung im Azure Active Directory-Anwendungskatalog | Microsoft-Dokumentation
+title: Auflisten Ihrer App im Azure AD-Anwendungskatalog | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie eine Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog listen.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 12/06/2019
 ms.author: ryanwi
-ms.reviewer: elisol, bryanla
+ms.reviewer: jeedes
 ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c77657101f5cd8a117b2163386f6d551b7985458
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 3bfdeaba26e98f600b81b3a473326ff4086f1aa2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374074"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74967149"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -46,6 +42,10 @@ In diesem Artikel wird erläutert, wie eine Anwendung im Anwendungskatalog von A
 - Stellen Sie beim Kennwort-SSO sicher, dass Ihre Anwendung die Formularauthentifizierung unterstützt, sodass Kennworttresore verwendet werden können, damit einmaliges Anmelden wie erwartet funktioniert.
 - Für Tests benötigen Sie ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern.
 
+**Wie erhalte ich Azure AD für Entwickler?**
+
+Sie können ein kostenloses Testkonto mit allen Premium-Features von Azure AD erhalten. Dieses ist 90 Tage lang kostenlos mit einer Verlängerungsmöglichkeit, solange Sie Entwicklungsaufgaben ausführen: https://docs.microsoft.com/office/developer-program/office-365-developer-program
+
 ## <a name="submit-the-request-in-the-portal"></a>Übermitteln der Anforderung im Portal
 
 Nachdem Sie mit einem Test sichergestellt haben, dass die Integration Ihrer Anwendung in Azure AD funktioniert, senden Sie Ihre Anforderung für den Zugriff auf das [Anwendungsnetzwerkportal](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Wenn Sie über ein Office 365-Konto verfügen, verwenden Sie dieses für die Anmeldung bei diesem Portal. Verwenden Sie andernfalls Ihr Microsoft-Konto (z. B. Outlook oder Hotmail) für die Anmeldung.
@@ -63,6 +63,26 @@ Wenn nach der Anmeldung die folgende Seite angezeigt wird, geben Sie eine gesch�
 Unser Team überprüft die Details und gewährt Ihnen entsprechend Zugriff. Nachdem Ihre Anforderung genehmigt wurde, können Sie sich beim Portal anmelden und die Anforderung senden, indem Sie auf der Startseite auf die Kachel **Anforderung senden (ISV)** klicken.
 
 ![Kachel „Anforderung senden (ISV)“ auf der Startseite](./media/howto-app-gallery-listing/homepage.png)
+
+## <a name="issues-on-logging-into-portal"></a>Probleme bei der Anmeldung am Portal
+
+Wenn dieser Fehler angezeigt wird, während Sie sich anmelden, finden Sie hier die Details zu diesem Problem sowie zum Beheben des Fehlers.
+
+* Wenn Ihre Anmeldung blockiert wurde, wie unten gezeigt:
+
+  ![Fehler beim Auflösen einer Anwendung im Katalog](./media/howto-app-gallery-listing/blocked.png)
+
+**Hintergrund:**
+
+Der Gastbenutzer befindet sich in einem Verbund mit einem Basismandanten, der ebenfalls in Azure AD enthalten ist. Der Gastbenutzer wird als hohes Risiko eingestuft. Microsoft gestattet Benutzern mit hohem Risiko keinen Zugriff auf Ressourcen. Alle Benutzer mit hohem Risiko (Mitarbeiter oder Gäste/Lieferanten) müssen Ihr Risiko für den Zugriff auf Microsoft-Ressourcen korrigieren bzw. eliminieren. Für Gastbenutzer stammt dieses Benutzerrisiko vom Basismandanten, und die Richtlinie stammt vom Ressourcenmandanten (in diesem Fall Microsoft).
+ 
+**Sichere Lösungen:**
+
+* Über MFA registrierte Gastbenutzer korrigieren ihre eigenen Benutzerrisiken. Dies kann durch den Gastbenutzer erfolgen, der eine gesicherte Kennwortänderung oder -zurücksetzung durchführt (https://aka.ms/sspr) in seinem Basismandanten (dazu sind MFA und SSPR im Basismandanten erforderlich)). Die gesicherte Kennwortänderung oder -zurücksetzung muss in Azure AD und nicht lokal initiiert werden.
+
+* Gastbenutzer bitten ihre Administratoren, das Risiko zu korrigieren. In diesem Fall führt der Administrator eine Kennwortzurücksetzung aus (temporäre Kennwortgenerierung). Dies erfordert keinen Identitätsschutz. Der Administrator des Gastbenutzers kann zu https://aka.ms/RiskyUsers navigieren und auf „Kennwort zurücksetzen“ klicken.
+
+* Gastbenutzer bitten ihre Administratoren, das Risiko zu schließen bzw. zu verwerfen. Auch dies erfordert keinen Identitätsschutz. Der Administrator kann zu https://aka.ms/RiskyUsers navigieren und dann auf „Benutzerrisiko verwerfen“ klicken. Administratoren müssen jedoch die erforderliche Sorgfalt walten lassen, um sicherzustellen, dass es sich um eine falsch positive Risikobewertung handelt, bevor sie das Benutzerrisiko schließen. Andernfalls setzen sie ihre und die Ressourcen von Microsoft aufs Spiel, indem sie eine Risikobewertung ohne Untersuchung unterdrücken.
 
 > [!NOTE]
 > Wenn Sie Probleme beim Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
@@ -83,6 +103,7 @@ Damit eine Anwendung im Azure AD-App-Katalog aufgelistet werden kann, müssen Si
   ![Auflisten einer SAML 2.0- oder WS-Fed-Anwendung im Katalog](./media/howto-app-gallery-listing/saml.png)
 
   * Wenn Sie Ihre im Katalog aufzulistende Anwendung mithilfe von **SAML 2.0** oder **WS-Fed** hinzufügen möchten, wählen Sie **SAML 2.0/WS-Fed** (wie hier gezeigt) aus.
+
   * Wenn Sie Probleme beim Zugriff haben, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implement-sso-by-using-the-password-sso"></a>Implementieren des einmaligen Anmeldens mithilfe von Kennwort-SSO

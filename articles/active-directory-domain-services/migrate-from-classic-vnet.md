@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: iainfou
-ms.openlocfilehash: 8cba2cbf8fcbad1acae8c36892308c3249fc4181
-ms.sourcegitcommit: 9a4296c56beca63430fcc8f92e453b2ab068cc62
+ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2019
-ms.locfileid: "72674904"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893058"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Vorschauversion: Migrieren von Azure AD Domain Services vom klassischen VNET-Modell zu Resource Manager
 
@@ -306,12 +306,13 @@ Für Azure AD DS wird eine Netzwerksicherheitsgruppe benötigt, um die Ports zu
 
 Falls beim Ausführen des PowerShell-Cmdlets zur Vorbereitung der Migration in Schritt 2 oder für die eigentliche Migration in Schritt 3 ein Fehler auftritt, kann für die verwaltete Azure AD DS-Domäne ein Rollback zur ursprünglichen Konfiguration ausgeführt werden. Für dieses Rollback ist das ursprüngliche klassische virtuelle Netzwerk erforderlich. Beachten Sie, dass sich die IP-Adressen nach dem Rollback weiterhin ändern können.
 
-Führen Sie das Cmdlet `Migrate-Aadds` mit dem Parameter *-Abort* aus. Geben Sie *-ManagedDomainFqdn* für Ihre eigene verwaltete Azure AD DS-Domäne ein, für die in einem der vorherigen Schritte die Vorbereitung durchgeführt wurde, z. B. *contoso.com*:
+Führen Sie das Cmdlet `Migrate-Aadds` mit dem Parameter *-Abort* aus. Geben Sie *-ManagedDomainFqdn* für Ihre eigene verwaltete Azure AD DS-Domäne ein, für die in einem der vorherigen Schritte die Vorbereitung durchgeführt wurde, z.B. *contoso.com*, sowie den Namen des klassischen virtuellen Netzwerks, z.B. *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
     -Abort `
     -ManagedDomainFqdn contoso.com `
+    -ClassicVirtualNetworkName myClassicVnet `
     -Credentials $creds
 ```
 
@@ -360,4 +361,4 @@ Nachdem für Ihre verwaltete Azure AD DS-Domäne die Migration zum Resource Man
 [get-credential]: /powershell/module/microsoft.powershell.security/get-credential
 
 <!-- EXTERNAL LINKS -->
-[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/1.0
+[powershell-script]: https://www.powershellgallery.com/packages/Migrate-Aadds/

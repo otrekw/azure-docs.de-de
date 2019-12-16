@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e65714f67dde79847bf07efda358a4e1f9ea938d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028457"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900802"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -94,7 +94,7 @@ Nach dem Aktivieren von Azure AD Privileged Identity Management:
 
 2. Um den Mandanten auszuwählen, in dem Sie Privileged Identity Management verwenden möchten, wählen Sie Ihren Benutzernamen in der oberen rechten Ecke des Azure-Portals aus.
 
-3. Wählen Sie **Alle Dienste** aus, und filtern Sie die Liste nach **Azure AD Privileged Identity Management**.
+3. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus, und filtern Sie die Liste nach **Azure AD Privileged Identity Management**.
 
 4. Öffnen Sie Privileged Identity Management in der Liste **Alle Dienste**, und heften Sie Privileged Identity Management an Ihr Dashboard.
 

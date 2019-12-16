@@ -1,27 +1,23 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Ändern der Konfiguration der Azure AD Connect-Synchronisierung | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung: Vornehmen einer Konfigurationsänderung in der Azure AD Connect-Synchronisierung'
 description: Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konfiguration in der Azure AD Connect-Synchronisierung vornehmen.
 services: active-directory
-documentationcenter: ''
 author: billmath
 manager: daveba
-editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5844d440da768ae2647ea7f15c4c913f83078ce1
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: d77882817934d5ad98f16965aeb9dc246931c495
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672967"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919068"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -204,7 +200,7 @@ Standardmäßig ist das UserType-Attribut nicht für die Synchronisierung aktivi
 
 - Azure AD akzeptiert nur zwei Werte für das UserType-Attribut: **Member** und **Guest**.
 - Wenn das UserType-Attribut nicht für die Synchronisierung in Azure AD Connect aktiviert ist, ist das UserType-Attribut von Azure AD-Benutzern, die über die Verzeichnissynchronisierung erstellt wurden, auf **Member** festgelegt.
-- Azure AD erlaubt nicht das Ändern des UserType-Attributs vorhandener Azure AD-Benutzer durch Azure AD Connect. Es kann nur während der Erstellung des Azure AD-Benutzers festgelegt werden.
+- Azure AD erlaubt nicht das Ändern des UserType-Attributs vorhandener Azure AD-Benutzer durch Azure AD Connect. Es kann nur während der Erstellung des Azure AD-Benutzers festgelegt und [über PowerShell geändert](/powershell/module/azuread/set-azureaduser?view=azureadps-2.0) werden.
 
 Vor dem Aktivieren der Synchronisierung des UserType-Attributs müssen Sie entscheiden, wie das Attribut vom lokalen Active Directory abgeleitet wird. Folgende Vorgehensweisen sind die gängigsten:
 

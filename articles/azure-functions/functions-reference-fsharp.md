@@ -6,19 +6,19 @@ ms.assetid: e60226e5-2630-41d7-9e5b-9f9e5acc8e50
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: cf080b841e5fb3bbf3b36a2629a619f77fe52ddd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 669701f91ab28a4eb734b0346be6515dc44e8685
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226746"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975005"
 ---
 # <a name="azure-functions-f-developer-reference"></a>F#-Entwicklerreferenz zu Azure Functions
 
 F# für Azure Functions ist eine Lösung, mit der Sie ganz einfach kleinere Codeelemente (Funktionen) in der Cloud ausführen können. Daten fließen über Funktionsargumente in Ihre F#-Funktion. Argumentnamen werden in `function.json`angegeben, und es gibt vordefinierte Namen für den Zugriff auf Elemente wie die Funktionsprotokollierung und Abbruchtoken. 
 
 >[!IMPORTANT]
->F#-Skripts („.fsx“) werden nur von [Version 1.x](functions-versions.md#creating-1x-apps) der Azure Functions-Runtime unterstützt. Wenn Sie F# mit der Runtimeversion 2.x verwenden möchten, müssen Sie ein vorkompiliertes F#-Klassenbibliotheksprojekt („.fs“) verwenden. Sie erstellen, verwalten und veröffentlichen ein F#-Klassenbibliotheksprojekt mithilfe von Visual Studio wie ein [C#-Klassenbibliotheksprojekt](functions-dotnet-class-library.md). Weitere Informationen zu den Versionen von Functions finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
+>F#-Skripts („.fsx“) werden nur von [Version 1.x](functions-versions.md#creating-1x-apps) der Azure Functions-Runtime unterstützt. Wenn Sie F# mit der Runtimeversion 2.x oder höher verwenden möchten, müssen Sie ein vorkompiliertes F#-Klassenbibliotheksprojekt („.fs“) verwenden. Sie erstellen, verwalten und veröffentlichen ein F#-Klassenbibliotheksprojekt mithilfe von Visual Studio wie ein [C#-Klassenbibliotheksprojekt](functions-dotnet-class-library.md). Weitere Informationen zu den Versionen von Functions finden Sie unter [Übersicht über die Runtimeversionen von Azure Functions](functions-versions.md).
 
 In diesem Artikel wird davon ausgegangen, dass Sie bereits die [Entwicklerreferenz zu Azure Functions](functions-reference.md)gelesen haben.
 
@@ -48,7 +48,7 @@ FunctionsProject
 
 Sie können die freigegebene Datei [host.json](functions-host-json.md) zum Konfigurieren der Funktions-App verwenden. Jede Funktion verfügt über eine eigene Codedatei (FSX-Datei) sowie über eine eigene Bindungskonfigurationsdatei (function.json).
 
-Die in [Version 2.x](functions-versions.md) der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
+Die in [Version 2.x](functions-versions.md) oder höher der Functions-Runtime erforderlichen Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, die eigentlichen Bibliotheksdateien befinden sich im Ordner `bin`. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#extension-bundles). Wenn Sie Funktionen im Azure-Portal entwickeln, wird diese Registrierung für Sie ausgeführt.
 
 ## <a name="binding-to-arguments"></a>Binden an Argumente
 Jede Bindung unterstützt eine Gruppe von Argumenten. Dies ist in der [Entwicklerreferenz zu Triggern und Bindungen in Azure Functions](functions-triggers-bindings.md) ausführlich beschrieben. Eine Argumentbindung, die von einem Blobtrigger beispielsweise unterstützt wird, ist ein POCO-Element. Dies kann mit einem F#-Eintrag ausgedrückt werden. Beispiel:

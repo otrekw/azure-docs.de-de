@@ -1,18 +1,18 @@
 ---
 title: COS in der Abfragesprache für Azure Cosmos DB
-description: Erfahren Sie mehr über die SQL-Systemfunktion COS in Azure Cosmos DB.
+description: Erfahren Sie, wie die SQL-Systemfunktion „Kosinus“ (COS) in Azure Cosmos DB den trigonometrischen Kosinus des angegebenen Winkels im Bogenmaß im angegebenen Ausdruck zurückgibt.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 7e64127b7af749af87b90331c3f175957cfa7f09
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 05546ef531059e05a1426a288a48446d63d8e5df
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351070"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873402"
 ---
 # <a name="cos-azure-cosmos-db"></a>COS (Azure Cosmos DB)
  Gibt den trigonometrischen Kosinus des angegebenen Winkels in „rad“ (Bogenmaß) im angegebenen Ausdruck zurück.  

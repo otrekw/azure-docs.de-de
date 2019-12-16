@@ -1,18 +1,18 @@
 ---
 title: EXP in der Abfragesprache für Azure Cosmos DB
-description: Erfahren Sie mehr über die SQL-Systemfunktion EXP in Azure Cosmos DB.
+description: Erfahren Sie mehr über die SQL-Systemfunktion Exponent (EXP) in Azure Cosmos DB, die den exponentiellen Wert des angegebenen numerischen Ausdrucks zurückgibt.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 21c7ae63f46f2acd961245c59805220174c106f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 76d614264124e1ce4138663b702ff6d899b3aa4e
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351043"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873317"
 ---
 # <a name="exp-azure-cosmos-db"></a>EXP (Azure Cosmos DB)
  Gibt den Exponentialwert des angegebenen numerischen Ausdrucks zurück.  

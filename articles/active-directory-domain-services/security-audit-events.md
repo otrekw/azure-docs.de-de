@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 493ccceb2156b454f485d48c76b776f97ffd65c7
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad4a30b9bcd537a59f3d2ef17d3d2f215c1f4b98
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704288"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74848889"
 ---
-# <a name="enable-security-audits-for-azure-active-directory-domain-services-preview"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services (Vorschau)
+# <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
 Sicherheitsüberwachungen für Azure Active Directory Domain Services (Azure AD DS) ermöglichen Azure das Streamen von Sicherheitsereignissen an Zielressourcen. Zu diesen Ressourcen zählen Azure Storage, Azure Log Analytics-Arbeitsbereiche oder Azure Event Hub. Nach dem Aktivieren von Sicherheitsüberwachungsereignissen sendet Azure AD DS alle überwachten Ereignisse für die ausgewählte Kategorie an die Zielressource. Sie können Ereignisse in Azure Storage archivieren und mit Azure Event Hubs Ereignisse an SIEM-Software (Security Information & Event Management) oder eine vergleichbare Lösung streamen oder über das Azure-Portal mithilfe von Azure Log Analytics-Arbeitsbereichen eigene Analysen durchführen.
 
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 1. Suchen Sie oben im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne (z. B. *aadds.contoso.com*) aus.
-1. Wählen Sie im Fenster „Azure AD DS“ auf der linken Seite **Diagnoseeinstellungen (Vorschau)** aus.
+1. Wählen Sie im Fenster „Azure AD DS“ auf der linken Seite **Diagnoseeinstellungen** aus.
 1. Standardmäßig ist keine Diagnoseeinstellung konfiguriert. Wählen Sie als erstes **Diagnoseeinstellung hinzufügen** aus.
 
     ![Hinzufügen einer Diagnoseeinstellung für Azure AD Domain Services](./media/security-audit-events/add-diagnostic-settings.png)

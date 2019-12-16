@@ -4,16 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 5d2608d1c374fadac18cebc093ce50ef93f9656a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 193968b5acf8288cb3f602c90374535fc2046b01
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597371"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941703"
 ---
-Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der Azure Functions-Runtime unterstützt werden:
+Die folgende Tabelle zeigt die Bindungen, die in den Hauptversionen der Azure Functions-Runtime unterstützt werden:
 
-| type | 1.x | 2.x<sup>1</sup> | Trigger | Eingabe | Output |
+
+| type | 1.x | 2.x und höher<sup>1</sup> | Trigger | Eingabe | Output |
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔|✔|✔|✔|
@@ -36,4 +37,4 @@ Die folgende Tabelle zeigt die Bindungen, die in den beiden Hauptversionen der A
 | [Zeitgeber](../articles/azure-functions/functions-bindings-timer.md)                         |✔|✔|✔| | |
 | [Twilio](../articles/azure-functions/functions-bindings-twilio.md)                       |✔|✔| | |✔|
 
-<sup>1</sup> In Version 2.x der Runtime müssen alle Bindungen mit Ausnahme von HTTP und Timer registriert werden. Siehe [Registrieren von Bindungserweiterungen](../articles/azure-functions/functions-bindings-register.md). Alle unterstützten 2.x-Bindungen werden auch in Version 3.x unterstützt, falls nichts anderes angegeben ist.   
+<sup>1</sup> Ab Version 2.x der Runtime müssen alle Bindungen mit Ausnahme von HTTP und Timer registriert werden. Siehe [Registrieren von Bindungserweiterungen](../articles/azure-functions/functions-bindings-register.md).

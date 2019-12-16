@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/12/2019
-ms.openlocfilehash: f2a153b1eef974c8c73df49a6eed53ef5dbf2353
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.date: 12/06/2019
+ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076211"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951852"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Apache Sqoop mit Hadoop in HDInsight
 
@@ -61,6 +61,7 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
 In diesem Artikel verwenden Sie diese beiden Datasets zum Testen des Sqoop-Imports- und -Exports.
 
 ## <a name="create-cluster-and-sql-database"></a>Einrichten der Testumgebung
+
 Der Cluster, die SQL-Datenbank und andere Objekte werden über das Azure-Portal mithilfe einer Azure Resource Manager-Vorlage erstellt. Die Vorlage finden Sie in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Die Resource Manager-Vorlage ruft ein BACPAC-Paket auf, um die Tabellenschemas in einer SQL-Datenbank bereitzustellen.  Das BACPAC-Paket befindet sich in einem öffentlichen Blobcontainer, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Wenn Sie einen privaten Container für die bacpac-Dateien verwenden möchten, verwenden Sie die folgenden Werte in der Vorlage:
 
 ```json
@@ -116,8 +117,9 @@ HDInsight kann Sqoop-Aufträge mit verschiedenen Methoden ausführen. Die folgen
 * Batchverarbeitung: Wenn Sie in Linux-basiertem HDInsight zum Ausführen von Einfügevorgängen den Schalter `-batch` verwenden, führt Sqoop mehrere Einfügevorgänge aus, anstatt diese zu einem Batch zusammenzufassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unter:
+
+Sie haben nun gelernt, wie Sie Sqoop verwenden. Weitere Informationen finden Sie unter:
 
 * [Verwenden von Apache Hive mit HDInsight](../hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit HDInsight](../hdinsight-use-pig.md)
 * [Hochladen von Daten in HDInsight](../hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
+* [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop](./apache-hadoop-use-sqoop-mac-linux.md)

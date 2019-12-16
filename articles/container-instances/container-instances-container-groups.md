@@ -4,12 +4,12 @@ description: Informationen zu Containergruppen in Azure Container Instances, ein
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: bba0aa35ef52d498bdb2028c7180f01b6c5f81ec
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706331"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896576"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
@@ -68,7 +68,9 @@ Weitere Informationen finden Sie unter der Eigenschaft [ResourceRequirements][re
 
 ## <a name="networking"></a>Netzwerk
 
-Containergruppen nutzen eine IP-Adresse und einen Portnamespace dieser IP-Adresse gemeinsam. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. Container in einer Gruppe können einander per Localhost auf den Ports erreichen, die sie verfügbar gemacht haben. Dies gilt auch, wenn diese Ports für die IP-Adresse der Gruppe nicht extern verfügbar gemacht werden.
+Containergruppen können eine extern ansprechbare IP-Adresse und einen Portnamespace dieser IP-Adresse gemeinsam nutzen. Sie müssen den Port unter der IP-Adresse und für den Container verfügbar machen, um es externen Clients zu ermöglichen, einen Container in der Gruppe zu erreichen. Da Container in der Gruppe einen Portnamespace gemeinsam nutzen, wird die Portzuordnung nicht unterstützt. 
+
+Innerhalb einer Containergruppe können sich Containerinstanzen über localhost auf jedem Port gegenseitig erreichen, auch wenn diese Ports nicht extern über die IP-Adresse der Gruppe oder aus dem Container verfügbar gemacht werden.
 
 Durch die optionale Bereitstellung von Containergruppen in einem [virtuellen Azure-Netzwerk][virtual-network] (Vorschau) können Container sicher mit anderen Ressourcen im virtuellen Netzwerk kommunizieren.
 

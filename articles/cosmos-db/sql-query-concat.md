@@ -1,18 +1,18 @@
 ---
 title: CONCAT in der Abfragesprache für Azure Cosmos DB
-description: Erfahren Sie mehr über die SQL-Systemfunktion CONCAT in Azure Cosmos DB.
+description: Erfahren Sie, wie die SQL-Systemfunktion CONCAT in Azure Cosmos DB verwendet wird, um eine Zeichenfolge zurückzugeben, die das Ergebnis der Verkettung von mindestens zwei Zeichenfolgenwerten ist.
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 1e61d61a3d64ca7d7808619159e4dfc8e8b33d68
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: adb8564d4addaaa3f4a383b32941549aed3d53bd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351261"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871549"
 ---
 # <a name="concat-azure-cosmos-db"></a>CONCAT (Azure Cosmos DB)
  Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt.  

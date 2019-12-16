@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 64662499b4ee782bbf04e9e706cd659e84c90eec
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: 9c5f6aa2900570aa00ddbc50ec8be4dbb0d16a34
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773072"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978048"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Überwachungsprotokolle in Azure Database for MariaDB
 
@@ -27,6 +27,9 @@ Das Überwachungsprotokoll ist standardmäßig deaktiviert. Um sie zu aktivieren
 Weitere Parameter, die Sie anpassen können:
 
 - `audit_log_events`: steuert die zu protokollierenden Ereignisse. In der nachstehenden Tabelle finden Sie spezifische Überwachungsereignisse.
+- `audit_log_include_users`: MariaDB-Benutzer, die zur Protokollierung einbezogen werden sollen. Der Standardwert für diesen Parameter ist leer, wodurch alle Benutzer zur Protokollierung einbezogen werden. Dies hat eine höhere Priorität als `audit_log_exclude_users`. Die maximale Länge des Parameters ist 512 Zeichen.
+> [!Note]
+> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Wenn z.B. `audit_log_include_users` = `demouser` und `audit_log_exclude_users` = `demouser` einbezogen werden, wird der Benutzer in die Überwachungsprotokolle eingeschlossen, weil `audit_log_include_users` eine höhere Priorität besitzt.
 - `audit_log_exclude_users`: MariaDB-Benutzer, die von der Protokollierung ausgeschlossen werden sollen. Maximal sind vier Benutzer zulässig. Die maximale Länge des Parameters ist 256 Zeichen.
 
 | **Event** | **Beschreibung** |

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/19/2018
-ms.openlocfilehash: a770fca4f14e5441e5ef4f7bc99d9c0abd9a59d3
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 4a1e621570f3bf5fdb78a2fd7b29ce0d1b51187f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241628"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951784"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Machine Learning in HDInsight
 
@@ -31,7 +31,7 @@ Die Microsoft Machine Learning-Bibliothek für Apache Spark ist [MMLSpark](https
 
 ![Training für die Vorhersage mit R Server](./media/hdinsight-machine-learning-overview/training-for-prediction.png)
 
-Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts.  Außerdem können Sie R-Skripts über die Knoten des Clusters hinweg ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Computekontexte verwenden.
+Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherstellung mit dem Cluster und die Ausführung Ihrer R-Skripts.  Außerdem können Sie R-Skripts in allen Knoten des Clusters ausführen, indem Sie Hadoop MapReduce von ScaleR oder Spark-Computekontexte verwenden.
 
 Mit ML Services in HDInsight mit Spark können Sie das Training auf den Knoten eines Clusters durch Verwenden eines Spark-Computekontexts parallel ausführen. Sie können R-Skripts direkt auf dem Edgeknoten ausführen und bei Bedarf alle verfügbaren Kerne parallel verwenden. Alternativ können Sie den Code auch über den Edgeknoten ausführen, um die Verarbeitung zu starten, die auf alle Knoten im Cluster verteilt wird. ML Services in HDInsight mit Spark ermöglicht zudem bei Bedarf das Parallelisieren der Funktionen von Open-Source-R-Paketen.
 

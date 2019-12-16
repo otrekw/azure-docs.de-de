@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e88f6f344c77109ee01cd6b0332138518f70270d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 10c778025c3def384f621cb5311d0d71ccb457d7
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795337"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951121"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Was ist die Azure AD Connect-Cloudbereitstellung?
 Die Azure AD Connect-Cloudbereitstellung ist ein neuer Microsoft-Agent, der entwickelt wurde, um Ihre Hybrididentitätsziele für die Synchronisierung von Benutzern, Gruppen und Kontakten mit Azure AD zu erfüllen und zu erreichen.  Die Azure AD Connect-Cloudbereitstellung kann zusammen mit der Azure AD Connect-Synchronisierung verwendet werden und bietet die folgenden Vorteile:
@@ -59,8 +59,10 @@ Die folgende Tabelle bietet einen Vergleich zwischen der Azure AD Connect-Synchr
 | Zulassen der Entfernung von Attributen aus dem Attributfluss von AD nach Azure AD |● |● |
 | Zulassen einer erweiterten Anpassung des Attributflusses |● | |
 | Unterstützung des Rückschreibens (Kennwörter, Geräte, Gruppen) |● | |
+| Azure AD Domain Services-Unterstützung|● | |
+| Exchange-Hybridkonfiguration |● | |
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
-- [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
+- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Installieren der Cloudbereitstellung](how-to-install.md)

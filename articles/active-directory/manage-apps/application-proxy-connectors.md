@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c4666a9d084f6fc12cd68b69d5c71cafc3de0439
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 1c2036bf9995725e4bbef44e4c039f8336eb81a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807783"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997036"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -102,7 +102,9 @@ Im Allgemeinen gilt: Je mehr Benutzer Sie haben, desto größer muss der Compute
 \* Dieser Computer hat eine benutzerdefinierte Einstellung verwendet, um einige der Standardgrenzwerte für Verbindungen über die für .NET empfohlenen Einstellungen zu erhöhen. Es wird empfohlen, vor der Kontaktaufnahme mit dem Support einen Test mit den Standardeinstellungen durchzuführen, um diesen Grenzwert für Ihren Mandanten ändern zu lassen.
 
 > [!NOTE]
-> Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.  
+> Bei Computern mit vier, acht und 16 Kernen ist der Unterschied beim TPS-Maximalwert minimal. Sie unterscheiden sich hauptsächlich bei der erwarteten Wartezeit.
+>
+> Diese Tabelle nennt auch auf die erwartete Leistung eines Connectors basierend auf dem Computertyp, auf dem er installiert ist. Dies ist unabhängig von den Drosselungsgrenzwerten des Anwendungsproxydiensts, siehe [Dienstgrenzwerte und Einschränkungen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions).
 
 ## <a name="security-and-networking"></a>Sicherheit und Netzwerk
 

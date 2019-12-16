@@ -1,6 +1,7 @@
 ---
-title: „Predicates“ und „PredicateValidations“ – Azure Active Directory B2C | Microsoft-Dokumentation
-description: Hier finden Sie Beispiele für die Transformation von Social Media-Kontoansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
+title: „Predicates“ und „PredicateValidations“
+titleSuffix: Azure AD B2C
+description: Verhindern mit benutzerdefinierten Richtlinien in Azure Active Directory B2C, dass falsch formatierte Daten dem Azure AD B2C-Mandanten hinzugefügt werden.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 10/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a1f08589ae28b3e19d2a4fdb3e3862e127a810cc
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: a09478bd2e32a1ab484b85fec33ae03878ebb10c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73099703"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951019"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 

@@ -1,5 +1,6 @@
 ---
-title: Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C
+title: Verwalten von Bedrohungen für Ressourcen und Daten
+titleSuffix: Azure AD B2C
 description: Informieren Sie sich über Verfahren zur Erkennung und Abwehr von Denial-of-Service- und Kennwortangriffen in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/26/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eae82fbd56782faf5b15479c13fe530e189a0e3e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b236dba9b682bc4d62ef8cfc8b95e67370b3e0ea
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71256902"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947739"
 ---
 # <a name="manage-threats-to-resources-and-data-in-azure-active-directory-b2c"></a>Verwalten von Bedrohungen für Ressourcen in Azure Active Directory B2C
 
@@ -38,8 +39,8 @@ Die ersten 10 Sperrzeiträume sind eine Minute lang. Die nächsten 10 Sperrzeitr
 So verwalten Sie die Kennwortschutzeinstellungen, einschließlich des Sperrschwellenwerts:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
-1. Verwenden Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter**, und wählen Sie das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
+1. Wählen Sie im Hauptmenü über den Filter **Verzeichnis + Abonnement** das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie unter **Sicherheit** die Option **Authentifizierungsmethoden (Vorschau)** und dann **Kennwortschutz** aus.
 1. Geben Sie die gewünschten Kennwortschutzeinstellungen ein, und klicken Sie dann auf **Speichern**.
 

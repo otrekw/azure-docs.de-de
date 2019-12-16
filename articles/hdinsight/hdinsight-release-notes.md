@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/08/2019
-ms.openlocfilehash: 54e28a9d434500915aa8cc8e07ade3592e5aa96c
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d9ca8d0df3eb0186add5c40765c87a4409a5660
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185604"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926421"
 ---
 # <a name="release-notes"></a>Versionshinweise
 
@@ -55,7 +55,7 @@ Bei „Beschleunigte Schreibvorgänge“ werden verwaltete Azure-Premium-SSD-Dat
 
 ### <a name="custom-ambari-db"></a>Benutzerdefinierte Ambari-Datenbank
 
-HDInsight bietet jetzt eine neue Kapazität, mit der Kunden ihre eigene SQL-Datenbank für Ambari verwenden können. Jetzt können Kunden die richtige SQL-Datenbank für Ambari auswählen und diese auf Basis ihrer eigenen Anforderungen an das Unternehmenswachstum einfach aktualisieren. Die Bereitstellung erfolgt über eine Azure Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Einrichten von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
+HDInsight bietet jetzt eine neue Kapazität, mit der Kunden ihre eigene SQL-Datenbank für Ambari verwenden können. Kunden können nun die richtige SQL-Datenbank für Ambari auswählen und sie auf einfache Weise basierend auf ihren eigenen geschäftlichen Wachstumsanforderungen aktualisieren. Die Bereitstellung erfolgt über eine Azure Resource Manager-Vorlage. Weitere Informationen finden Sie unter [Einrichten von HDInsight-Clustern mit einer benutzerdefinierten Ambari-Datenbank](https://docs.microsoft.com/azure/hdinsight/hdinsight-custom-ambari-db).
 
 ### <a name="f-series-virtual-machines-are-now-available-with-hdinsight"></a>Virtuelle Computer der F-Serie sind jetzt mit HDInsight verfügbar.
 

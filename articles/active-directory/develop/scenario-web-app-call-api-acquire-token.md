@@ -1,5 +1,5 @@
 ---
-title: Web-App, die Web-APIs aufruft (Abrufen eines Tokens für die App) – Microsoft Identity Platform
+title: Abrufen eines Tokens in Web-Apps, die Web-APIs aufrufen – Microsoft Identity Platform | Azure
 description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Abruf eines Tokens für die App).
 services: active-directory
 documentationcenter: dev-center-name
@@ -15,12 +15,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a259fbcf3fde84edccafbcd2fd6594ddb623edfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 398b68221681f0d14dbcc20ac7c0cb603313eaee
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175332"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919462"
 ---
 # <a name="web-app-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-App, die Web-APIs aufruft – Abrufen eines Tokens für die App
 

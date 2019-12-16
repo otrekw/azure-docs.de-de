@@ -1,5 +1,6 @@
 ---
-title: 'Verwendungsberichts-API: Beispiele und Definitionen in Azure Active Directory B2C | Microsoft-Dokumentationen'
+title: 'Beispiele und Definitionen: Nutzungsberichterstellungs-API'
+titleSuffix: Azure AD B2C
 description: Leitfaden und Beispiele zum Abrufen von Berichten zu Azure AD B2C-Mandantenbenutzern, Authentifizierungen und mehrstufigen Authentifizierungen.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.workload: identity
 ms.date: 08/04/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fe7dd90bdec816ee433310a803d85c57f4892f8c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f81acf28b502965f896cd8b38767e7c2e925156c
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66508715"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949337"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Zugriff auf Verwendungsberichte in Azure AD B2C über die Berichterstattungs-API
 
@@ -29,7 +30,7 @@ Dieser Artikel konzentriert sich auf Berichte, die an Abrechnungsaktivität, Ben
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie beginnen, müssen Sie die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-APIs](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/) erfüllen. Erstellen Sie eine Anwendung, beschaffen Sie sich einen geheimen Schlüssel für sie, und gewähren Sie ihr Zugriffsrechte für die Berichte Ihres Azure AD B2C-Mandanten. *Bash-Skript*- und *Python-Skript*-Beispiele werden auch hier zur Verfügung gestellt. 
+Bevor Sie beginnen, müssen Sie die [Voraussetzungen zum Zugriff auf die Azure AD-Berichterstellungs-APIs](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/) erfüllen. Erstellen Sie eine Anwendung, beschaffen Sie sich einen geheimen Schlüssel für sie, und gewähren Sie ihr Zugriffsrechte für die Berichte Ihres Azure AD B2C-Mandanten. *Bash-Skript*- und *Python-Skript*-Beispiele werden auch hier zur Verfügung gestellt.
 
 ## <a name="powershell-script"></a>PowerShell-Skript
 Dieses Skript veranschaulicht die Erstellung von vier Nutzungsberichten mithilfe des `TimeStamp`-Parameters und des `ApplicationId`-Filters.
@@ -38,10 +39,10 @@ Dieses Skript veranschaulicht die Erstellung von vier Nutzungsberichten mithilfe
 # This script will require the Web Application and permissions setup in Azure Active Directory
 
 # Constants
-$ClientID      = "your-client-application-id-here"  
+$ClientID      = "your-client-application-id-here"
 $ClientSecret  = "your-client-application-secret-here"
 $loginURL      = "https://login.microsoftonline.com"
-$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"  
+$tenantdomain  = "your-b2c-tenant-domain.onmicrosoft.com"
 # Get an Oauth 2 access token based on client id, secret and tenant domain
 $body          = @{grant_type="client_credentials";resource=$resource;client_id=$ClientID;client_secret=$ClientSecret}
 $oauth         = Invoke-RestMethod -Method Post -Uri $loginURL/$tenantdomain/oauth2/token?api-version=1.0 -Body $body

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/15/2018
-ms.openlocfilehash: 18c7a06e656cbd5c16151381a76ec7725eb2785e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/06/2019
+ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468414"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74995914"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -275,6 +275,10 @@ Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie re
 
 Wenn Sie eine Tabelle namens **Kontakte** erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter [Apache HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight](apache-hbase-tutorial-get-started-linux.md).
 
+> [!NOTE]
+> Wenn Sie Tabellen aus einem benutzerdefinierten Namespace replizieren möchten, müssen Sie sicherstellen, dass auch die entsprechenden benutzerdefinierten Namespaces auch auf dem Zielcluster definiert sind.
+>
+
 ## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azure-Portal aufrufen. Informationen zum Ausführen einer Skriptaktion mithilfe von Azure PowerShell und der klassischen Azure CLI finden Sie unter [Anpassen von Linux-basierten HDInsight-Clustern mithilfe von Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md).
@@ -296,6 +300,8 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
     
       > [!NOTE]
       > Verwenden Sie für den DNS-Namen des Quell- und des Zielclusters jeweils den Hostnamen anstelle des FQDN.
+      >
+      > In dieser exemplarischen Vorgehensweise wird hn1 als aktiver Hauptknoten angenommen. Überprüfen Sie den Cluster, um den aktiven Hauptknoten zu identifizieren.
 
 6. Klicken Sie auf **Erstellen**. Die Ausführung des Skripts kann einige Zeit in Anspruch nehmen, insbesondere dann, wenn Sie das Argument **-copydata** verwenden.
 
@@ -315,7 +321,7 @@ Optionale Argumente:
 |-su, --src-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Quellcluster an. Der Standardwert lautet **admin**. |
 |-du, --dst-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Zielcluster an. Der Standardwert lautet **admin**. |
 |-t, --table-list | Gibt die zu replizierenden Tabellen an. Beispiel: --table-list="table1;table2;table3". Wenn Sie keine Tabellen angeben, werden alle vorhandenen HBase-Tabellen repliziert.|
-|-m, --machine | Gibt den Hauptknoten an, auf dem die Skriptaktion ausgeführt werden soll. Der Wert lautet entweder **hn0** oder **hn1** und ist abhängig davon, welcher Knoten der aktive Hauptknoten ist. Verwenden Sie diese Option, wenn Sie das $0-Skript als Skriptaktion im HDInsight-Portal oder in Azure PowerShell ausführen.|
+|-m, --machine | Gibt den Hauptknoten an, auf dem die Skriptaktion ausgeführt werden soll. Der Wert muss basierend auf dem aktiven Hauptknoten ausgewählt werden. Verwenden Sie diese Option, wenn Sie das $0-Skript als Skriptaktion im HDInsight-Portal oder in Azure PowerShell ausführen.|
 |-cp, -copydata | Aktiviert die Migration vorhandener Daten in den Tabellen, in denen die Replikation aktiviert ist. |
 |-rpm, -replicate-phoenix-meta | Aktiviert die Replikation in Phoenix-Systemtabellen. <br><br>*Verwenden Sie diese Option mit Vorsicht.* Es wird empfohlen, die Phoenix-Tabellen in Replikatclustern neu zu erstellen, bevor Sie dieses Skript verwenden. |
 |-h, --help | Zeigt Informationen zur Nutzung an. |
@@ -393,6 +399,10 @@ Der Abschnitt `print_usage()` des [Skripts](https://raw.githubusercontent.com/Az
 - **Deaktivieren der Replikation in angegebenen Tabellen („table1“, „table2“ und „table3“)** :
 
         -m hn1 -s <source hbase cluster name> -sp <source cluster Ambari password> -t "table1;table2;table3"
+
+> [!NOTE]
+> Wenn Sie beabsichtigen, den Zielcluster zu löschen, stellen Sie sicher, dass Sie ihn aus der Peerliste des Quellclusters entfernen. Dies können Sie erreichen, indem Sie den Befehl remove_peer '1' in der hBase-Shell auf dem Quellcluster ausführen. Wenn sie nicht so vorgehen, funktioniert der Quellcluster möglicherweise nicht ordnungsgemäß.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

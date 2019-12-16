@@ -1,29 +1,25 @@
 ---
-title: Informationen zu den von Microsoft Identity Platform unterstützten Autorisierungsprotokollen | Azure
+title: Von Microsoft Identity Platform unterstützte Autorisierungsprotokolle | Azure
 description: Anleitung für die OAuth 2.0- und OpenID Connect-Protokolle, die vom Microsoft Identity Platform-Endpunkt unterstützt werden.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.assetid: 5fb4fa1b-8fc4-438e-b3b0-258d8c145f22
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 446d7178973c1d43d55ff89c429b05c2a10118ba
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f04ba26f592c02814412493cf4811e30aefa6ee3
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68835275"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918287"
 ---
 # <a name="microsoft-identity-platform-protocols"></a>Microsoft Identity Platform-Protokolle
 

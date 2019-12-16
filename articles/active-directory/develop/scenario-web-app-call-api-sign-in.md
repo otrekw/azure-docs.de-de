@@ -1,6 +1,6 @@
 ---
-title: Web-App, die Web-APIs aufruft (Anmelden) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Web-App erstellen, die Web-APIs aufruft (Anmelden)
+title: 'Entfernen von Konten aus dem Cache bei der Abmeldung: Microsoft Identity Platform | Azure'
+description: Erfahren Sie, wie Sie ein Konto beim Abmelden aus dem Tokencache entfernen.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,14 +15,14 @@ ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cb0190f76ddce79012a5bf97e2d813f40f9f018
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 375382b1245186197657c5067e3c5b4ec2b15655
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596375"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961657"
 ---
-# <a name="web-app-that-calls-web-apis---sign-in"></a>Web-App, die Web-APIs aufruft – Anmelden
+# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Entfernen von Konten aus dem Cache bei der globalen Abmeldung
 
 Sie wissen bereits, wie Ihrer Web-App Anmeldedaten hinzugefügt werden. Dies lernen Sie in [Web app that signs-in users - add sign-in (Web-App, die Benutzer anmeldet – Hinzufügen von Anmeldedaten)](scenario-web-app-sign-user-sign-in.md).
 

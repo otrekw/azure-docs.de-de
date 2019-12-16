@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: bee8c1d2a1cd313c7fe59d8e53379dc57554e98c
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4cd5fc50c35f4c4adb63c9d91af05dcf8b2dda40
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68618572"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74924633"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -67,6 +67,8 @@ Weitere Informationen zum Service Bus-Messaging finden Sie in folgenden Themen:
 * [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 * [Erste Schritte mit Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verwenden von Service Bus-Themen und -Abonnements](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+
+In Szenarien, in denen der Clientcode eine Nachricht mit der gleichen *MessageId* wie zuvor nicht erneut übermitteln kann, ist es wichtig, Nachrichten zu entwerfen, die sicher erneut verarbeitet werden können. In diesem [Blogbeitrag zu Idempotenz](https://particular.net/blog/what-does-idempotent-mean) werden verschiedene Verfahren für diese Vorgehensweise beschrieben.
 
 [1]: ./media/duplicate-detection/create-queue.png
 [2]: ./media/duplicate-detection/queue-prop.png

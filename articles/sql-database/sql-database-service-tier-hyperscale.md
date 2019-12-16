@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b09e5366584e9974e67d47d34f22a3483be14f7a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805755"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978627"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -196,11 +196,9 @@ Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, die nicht
 
 So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht aufgelisteten Regionen an:
 
-1. Navigieren Sie zum Azure-Blatt [Hilfe und Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
+1. Wählen Sie im Menü des Azure-Portals die Option **Hilfe und Support** aus, oder suchen Sie **Hilfe und Support** auf einer beliebigen Seite, und wählen Sie die Option dann aus.
 
-2. Klicken Sie auf [**Neue Supportanfrage**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-
-    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/request-screen-1.png)
+2. Wählen Sie auf der Seite [Azure-Hilfe und -Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) die Option [**Neue Supportanfrage**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) aus.
 
 3. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
@@ -208,9 +206,11 @@ So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht 
 
 5. Wählen Sie unter **Kontingenttyp** den Eintrag **SQL-Datenbank** aus.
 
+    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
+
 6. Klicken Sie auf **Weiter: Lösungen**.
 
-1. Klicken Sie auf **Details angeben**.
+7. Klicken Sie auf **Details angeben**.
 
     ![Problemdetails](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
@@ -240,18 +240,19 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | :---- | :--------- |
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
 | Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
-| Wiederherstellung einer Nicht-Hypserscale-DB in einer Hypserscale-DB und umgekehrt | Sie können weder eine Hyperscale-Datenbank in einer Nicht-Hyperscale-Datenbank noch eine Nicht-Hyperscale-Datenbank in einer Hyperscale-Datenbank wiederherstellen.|
+| Wiederherstellung einer Nicht-Hyperscale-DB in einer Hyperscale-DB und umgekehrt | Sie können weder eine Hyperscale-Datenbank in einer Nicht-Hyperscale-Datenbank noch eine Nicht-Hyperscale-Datenbank in einer Hyperscale-Datenbank wiederherstellen.|
 | Wenn eine Datenbank mindestens eine Datendatei enthält, die größer als 1 TB ist, schlägt die Migration fehl. | In einigen Fällen kann es möglich sein, dieses Problem zu umgehen, indem die großen Dateien auf weniger als 1 TB verkleinert werden. Wenn Sie eine Datenbank migrieren, die während des Migrationsvorgangs verwendet wird, stellen Sie sicher, dass keine Datei größer als 1 TB wird. Verwenden Sie die folgende Abfrage, um die Größe von Datenbankdateien zu ermitteln. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Verwaltete Instanz | Die verwaltete Azure SQL-Datenbank-Instanz wird bei Hyperscale-Datenbanken derzeit nicht unterstützt. |
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperskalierung für SQL-Datenbank derzeit nicht unterstützt.|
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren.|
-| Migration von Datenbanken mit beständigen speicherinternen Objekten | Hyperscale unterstützt nur nicht persistente, speicherinterne Objekte (Tabellentypen, native SPs und Funktionen).  Persistente speicherinterne Tabellen und andere Objekte müssen gelöscht und als nicht speicherinterne Objekte neu erstellt werden, bevor eine Datenbank zur Dienstebene „Hyperscale“ migriert wird.|
+| Migration von Datenbanken mit In-Memory-OLTP-Objekten | Hyperscale unterstützt nur eine Teilmenge der In-Memory-OLTP-Objekttypen, einschließlich speicheroptimierter Tabellentypen, nativ kompilierter gespeicherter Prozeduren und Funktionen. Wenn allerdings In-Memory-OLTP-Objekte in der Datenbank vorhanden sind, wird die direkte Migration von Premium- und unternehmenskritischen Dienstebenen zu Hyperscale nicht unterstützt. Zum Migrieren einer solchen Datenbank zu Hyperscale sind drei Schritte erforderlich: (1) Löschen aller In-Memory-OLTP-Objekte und ihrer Abhängigkeiten. Um Daten in speicheroptimierte dauerhaften Tabellen beizubehalten, konvertieren Sie sie in Datenträgertabellen. (2) Ändern der Dienstebene der Datenbank in „Hyperscale“. (3) Erneutes Erstellen von zuvor gelöschten Objekten. Speicheroptimierte dauerhafte und nicht dauerhafte Tabellen werden derzeit in Hyperscale nicht unterstützt und müssen Datenträgertabellen bleiben. Speicheroptimierte Tabellenvariablen werden unterstützt. |
 | Change Tracking | Die Änderungsnachverfolgung befindet sich derzeit in der Public Preview-Phase und kann für neue oder bereits vorhandene Hyperscale-Datenbanken aktiviert werden. |
 | Georeplikation  | Sie können noch keine Georeplikation für Hyperskalierung für Azure SQL-Datenbank-Instanzen konfigurieren. |
 | Datenbankkopie | Sie können Datenbankkopie noch nicht verwenden, um eine neue Datenbank in Azure SQL Azure Hyperscale zu erstellen. |
 | TDE/AKV-Integration | Transparent Data Encryption mit Azure Key Vault (häufig als Bring-Your-Own-Key oder BYOK bezeichnet) wird noch nicht für Hyperskalierung für Azure SQL-Datenbank-Instanzen unterstützt, TDE mit vom Dienst verwalteten Schlüsseln jedoch vollständig. |
 |Intelligente Datenbankfeatures | Mit Ausnahme der Option „Plan erzwingen“ werden alle anderen Optionen zur automatischen Optimierung für Hyperscale noch nicht unterstützt: Optionen scheinen möglicherweise aktiviert zu sein, es erfolgen jedoch keine Empfehlungen oder Aktionen. |
-| Verkleinern der Datenbank | DBCC SHRINKDATABASE oder DBCC SHRINKFILE wird derzeit bei Azure SQL Hyperscale-Datenbanken nicht unterstützt. |
+| Verkleinern der Datenbank | DBCC SHRINKDATABASE oder DBCC SHRINKFILE wird derzeit für Hyperscale-Datenbanken nicht unterstützt. |
+| Datenbankintegritätsprüfung | DBCC CHECKDB wird für Hyperscale-Datenbanken derzeit nicht unterstützt. Ausführliche Informationen zur Datenintegritätsverwaltung in Azure SQL-Datenbank finden Sie unter [Datenintegrität in Azure SQL-Datenbank](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

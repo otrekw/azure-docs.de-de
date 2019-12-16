@@ -1,5 +1,5 @@
 ---
-title: 'Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL: Hyperscale (Citus)'
+title: 'Beheben von Verbindungsproblemen – Hyperscale (Citus): Azure Database for PostgreSQL'
 description: 'Dieser Artikel erläutert das Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL: Hyperscale (Citus)'
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
 author: jonels-msft
@@ -7,12 +7,12 @@ ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b812b730cebba4dbf0735f49f544e53bf7f8787c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c064aca484f85c44dada9888012140784a96863f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72942087"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977504"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---hyperscale-citus"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -50,7 +50,7 @@ Wenn die Anwendung dauerhaft keine Verbindung mit Hyperscale (Citus) herstellen 
 
 * Firewallkonfiguration für Koordinatorknoten: Stellen Sie sicher, dass die Hyperscale-Serverfirewall so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
 * Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. Für einige Firewalls müssen Anwendungen nicht allein nach Namen zugelassen werden, sondern es müssen auch die IP-Adressen und Ports des Servers zugelassen werden.
-* Benutzerfehler: Überprüfen Sie die Verbindungszeichenfolge. Möglicherweise haben Sie Parameter wie den Servernamen falsch eingegeben oder ein *\@Servername*-Suffix im Benutzernamen vergessen.
+* Benutzerfehler: Überprüfen Sie die Verbindungszeichenfolge. Möglicherweise verfügen Sie über falsch eingegebene Parameter wie den Servernamen. Sie können Verbindungszeichenfolgen für verschiedene Sprachframeworks und psql im Azure-Portal finden. Navigieren Sie zur Registerkarte **Verbindungszeichenfolgen** in Ihrer Hyperscale-Servergruppe (Citus). Beachten Sie außerdem, dass Hyperscale-Cluster (Citus) nur eine Datenbank aufweisen und der vordefinierte Name **citus** ist.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 

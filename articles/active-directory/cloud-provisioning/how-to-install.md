@@ -1,5 +1,5 @@
 ---
-title: Installieren des Azure AD Connect-Bereitstellungs-Agents
+title: Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
 description: In diesem Artikel wird ausführlich beschrieben, wie Sie den Bereitstellungs-Agent installieren können.
 services: active-directory
 author: billmath
@@ -11,14 +11,14 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf479d4962f6d7aa9a0ba43b48f99bd67566fb6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 11e3b2a113d46ff3d8799927f56fa66601c94ed5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795525"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74846231"
 ---
-# <a name="install-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
+# <a name="install-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
 In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent und dessen Konfiguration im Azure-Portal.
 
 >[!IMPORTANT]
@@ -60,10 +60,10 @@ Die Agent-Überprüfung erfolgt im Azure-Portal und auf dem lokalen Server, auf 
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azure erkannt wird:
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
+2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
 ![Azure-Portal](media/how-to-install/install6.png)</br>
 
-3.  Klicken Sie auf dem Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
+3.  Klicken Sie im Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
 ![Azure AD-Bereitstellung](media/how-to-install/install7.png)</br>
  
 4. Auf dem Bildschirm **On-premises provisioning agents** (Lokale Bereitstellungs-Agents) werden die von Ihnen installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als **Aktiviert** markiert ist.

@@ -1,5 +1,6 @@
 ---
-title: Entwicklerhinweise zu benutzerdefinierten Richtlinien (Azure Active Directory B2C) | Microsoft-Dokumentation
+title: Entwicklerhinweise zu benutzerdefinierten Richtlinien
+titleSuffix: Azure AD B2C
 description: Dieser Artikel enthält Hinweise für Entwickler, die das Konfigurieren und Verwalten von Azure AD B2C mit benutzerdefinierten Richtlinien betreffen.
 services: active-directory-b2c
 author: mmacy
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f8d1ac217647ee292338da875671ef8bd3f79db
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: edbd31434715c380badf15118b0779885aed700f
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227194"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949754"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 

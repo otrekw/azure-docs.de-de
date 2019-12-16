@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a1cba2c4572b2f898f631aefbbf316fae1195ac
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7b431cee3b8e5fc168dec2766442d6f6b9869d1e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596354"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900370"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -44,10 +44,11 @@ Bevor Sie die Geräteidentitäten in Azure AD für Ihre VDI-Umgebung konfigurier
 | Geräteidentitätstyp | Identitätsinfrastruktur | Windows-Geräte | VDI-Plattformversion | Unterstützt |
 | --- | --- | --- | --- | --- |
 | Hybrid in Azure AD eingebunden | Im Verbund* | Aktuelle Windows-Geräte*** und kompatible Windows-Geräte**** | Beständig | Ja |
-|   |   |   | Nicht beständig | Ja |
-|   | Verwaltet** | Aktuelle Windows-Geräte und kompatible Windows-Geräte | Beständig | Ja |
-|   |   | Kompatible Windows-Geräte | Nicht beständig | Ja |
 |   |   | Aktuelle Windows-Geräte | Nicht beständig | Nein |
+|   |   | Kompatible Windows-Geräte | Nicht beständig | Ja |
+|   | Verwaltet** | Aktuelle Windows-Geräte und kompatible Windows-Geräte | Beständig | Ja |
+|   |   | Aktuelle Windows-Geräte | Nicht beständig | Nein |
+|   |   | Kompatible Windows-Geräte | Nicht beständig | Ja |
 | In Azure AD eingebunden | Im Verbund | Aktuelle Windows-Geräte | Beständig | Nein |
 |   |   |   | Nicht beständig | Nein |
 |   | Verwaltet | Aktuelle Windows-Geräte | Beständig | Nein |
@@ -79,8 +80,7 @@ Wenn Sie zusätzliche VMs mit einer Momentaufnahme des virtuellen Computers erst
 Bei der Bereitstellung einer nicht beständigen VDI-Plattform müssen IT-Administratoren besonders auf die Verwaltung veralteter Geräte in Azure AD achten. Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementieren. Versäumnisse in diesem Bereich führen dazu, dass das Verzeichnis eine Vielzahl veralteter Geräte mit Azure AD-Hybrideinbindung enthält, die von der nicht beständigen VDI-Plattform aus registriert wurden.
 
 - Erstellen und verwenden Sie ein Präfix für den Anzeigenamen des Computers, das darauf hinweist, dass der Desktop VDI-basiert ist.
-- Implementieren Sie die folgenden Befehle als Teil des Abmeldeskripts. Mit diesen Befehlen wird der bestmögliche Aufruf an Azure AD zum Löschen des Geräts ausgegeben.
-   - Aktuelle Windows-Geräte: dsregcmd.exe /leave
+- Implementieren Sie den folgenden Befehl als Teil des Abmeldeskripts. Mit diesem Befehl wird der bestmögliche Aufruf an Azure AD zum Löschen des Geräts ausgegeben.
    - Kompatible Windows-Geräte: autoworkplace.exe /leave
 - Definieren und implementieren Sie einen Prozess zum [Verwalten veralteter Geräte](manage-stale-devices.md).
    - Sobald Sie über eine Strategie zum Identifizieren Ihrer nicht beständigen Geräte mit Azure AD-Hybrideinbindung verfügen, können Sie die Bereinigung dieser Geräte aggressiver betreiben, um sicherzustellen, dass Ihr Verzeichnis nicht von vielen veralteten Geräten genutzt wird.
