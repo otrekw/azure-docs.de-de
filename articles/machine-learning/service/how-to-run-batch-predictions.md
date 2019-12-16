@@ -11,21 +11,21 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 62a2c3324df70c7ccdbbac273d314ff94cbb7b9a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 207e8def168227cb419d25c8e98aa15c09c72b2c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671566"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851603"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Ausführen von Batchrückschlüssen für große Datenmengen mithilfe von Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dieser Anleitung erfahren Sie, wie Sie mithilfe von Azure Machine Learning asynchron und parallel Rückschlüsse für große Datenmengen erhalten. Die hier beschriebene Funktion für Batchrückschlüsse befindet sich in der Public Preview-Phase. Sie ermöglicht die Generierung von Rückschlüssen sowie die Verarbeitung von Daten mit hoher Leistung und hohem Durchsatz. Darüber hinaus bietet sie vorgefertigte asynchrone Funktionen.
+Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning asynchron und parallel Rückschlüsse für große Datenmengen erhalten. Die hier beschriebene Funktion für Batchrückschlüsse befindet sich in der Public Preview-Phase. Sie ermöglicht die Generierung von Rückschlüssen sowie die Verarbeitung von Daten mit hoher Leistung und hohem Durchsatz. Darüber hinaus bietet sie vorgefertigte asynchrone Funktionen.
 
 Mithilfe von Batchrückschlüssen lassen sich Offlinerückschlüsse für mehrere Terabytes an Produktionsdaten ganz einfach auf umfangreiche Computercluster skalieren, was zu Produktivitätssteigerungen und Kostenoptimierungen führt.
 
-In dieser Anleitung lernen Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 > * Erstellen einer Remotecomputeressource
 > * Schreiben eines benutzerdefinierten Rückschlussskripts
@@ -237,6 +237,15 @@ def run(mini_batch):
     return resultList
 ```
 
+### <a name="how-to-access-other-files-in-init-or-run-functions"></a>Zugreifen auf andere Dateien in Funktionen vom Typ `init()` oder `run()`
+
+Wenn das Verzeichnis mit Ihrem Rückschlussskript noch andere Dateien oder Ordner enthält, können Sie einen Verweis darauf erstellen, indem Sie das aktuelle Arbeitsverzeichnis ermitteln.
+
+```python
+script_dir = os.path.realpath(os.path.join(__file__, '..',))
+file_path = os.path.join(script_dir, "<file_name>")
+```
+
 ## <a name="build-and-run-the-batch-inference-pipeline"></a>Erstellen und Ausführen der Batch-Rückschlusspipeline
 
 Sie verfügen nun über alles, was Sie zum Erstellen der Pipeline benötigen.
@@ -265,7 +274,7 @@ batch_env.spark.precache_packages = False
 - `entry_script`: Ein Benutzerskript als lokaler Dateipfad, das parallel auf mehreren Knoten ausgeführt wird. Ist `source_directly` vorhanden, verwenden Sie einen relativen Pfad. Verwenden Sie andernfalls einen beliebigen Pfad, auf den auf dem Computer zugegriffen werden kann.
 - `mini_batch_size`: Die Größe des Minibatchs, der an einen einzelnen Aufruf von `run()` übergeben wird (optional; Standardwert: `1`).
     - Bei `FileDataset` handelt es sich um die Anzahl von Dateien (Mindestwert: `1`). Mehrere Dateien können zu einem Minibatch zusammengefasst werden.
-    - Bei `TabularDataset` handelt es sich um die Datengröße. Beispielwerte: `1024`, `1024KB`, `10MB`, `1GB`. Empfohlener Wert: `1MB`. Beachten Sie, dass der Minibatch auf der Grundlage von `TabularDataset` nie über Dateigrenzen hinausgeht. Ein Beispiel: Angenommen, Sie verfügen über unterschiedlich große CSV-Dateien. Die kleinste Datei hat eine Größe von 100 KB, die größte Datei ist 10 MB groß. Wenn Sie nun `mini_batch_size = 1MB` festlegen, werden Dateien mit einer Größe von weniger als 1 MB als einzelner Minibatch behandelt. Dateien mit einer Größe von mehr als 1 MB werden dagegen in mehrere Minibatches aufgeteilt.
+    - Bei `TabularDataset` handelt es sich um die Datengröße. Beispielwerte: `1024`, `1024KB`, `10MB`, `1GB`. Empfohlener Wert: `1MB`. Der Minibatch auf der Grundlage von `TabularDataset` geht nie über Dateigrenzen hinaus. Ein Beispiel: Angenommen, Sie verfügen über unterschiedlich große CSV-Dateien. Die kleinste Datei hat eine Größe von 100 KB, die größte Datei ist 10 MB groß. Wenn Sie nun `mini_batch_size = 1MB` festlegen, werden Dateien mit einer Größe von weniger als 1 MB als einzelner Minibatch behandelt. Dateien mit einer Größe von mehr als 1 MB werden dagegen in mehrere Minibatches aufgeteilt.
 - `error_threshold`: Die Anzahl von Datensatzfehlern für `TabularDataset` bzw. Dateifehlern für `FileDataset`, die während der Verarbeitung ignoriert werden sollen. Übersteigt die Fehleranzahl für die gesamte Eingabe diesen Wert, wird der Auftrag beendet. Der Fehlerschwellenwert gilt für die gesamte Eingabe und nicht für einzelne Minibatches, die an die Methode `run()` gesendet werden. Zulässiger Bereich: `[-1, int.max]`. Der Teil `-1` gibt an, dass bei der Verarbeitung alle Fehler ignoriert werden sollen.
 - `output_action`: Gibt an, wie die Ausgabe strukturiert werden soll:
     - `summary_only`: Das Benutzerskript speichert die Ausgabe. `ParallelRunStep` verwendet die Ausgabe nur zur Berechnung des Fehlerschwellenwerts.
@@ -348,6 +357,8 @@ pipeline_run.wait_for_completion(show_output=True)
 ## <a name="next-steps"></a>Nächste Schritte
 
 Den gesamten Ablauf dieses Prozesses können Sie sich anhand des [Notebooks für Batchrückschlüsse](https://aka.ms/batch-inference-notebooks) ansehen. 
+
+Informationen zum Debugging und zur Problembehandlung für ParallelRunStep finden Sie in der [Schrittanleitung](how-to-debug-batch-predictions.md).
 
 Informationen zum Debugging und zur Problembehandlung für Pipelines finden Sie in der [Schrittanleitung](how-to-debug-pipelines.md).
 

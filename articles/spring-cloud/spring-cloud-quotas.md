@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 41a2b1a7d9aa5089ba2ee73cd3c5c5c5e31f5225
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 0518b13ea228b4834a095a9bf126b131e70a5f45
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607668"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851552"
 ---
 # <a name="quotas-and-service-plans-for-azure-spring-cloud"></a>Kontingente und Servicepläne für Azure Spring Cloud
 
@@ -25,11 +25,10 @@ Während der Vorschauphase bietet Azure Spring Cloud nur eine Dienstebene.
 
 Resource | Amount
 ------- | -------
-vCPU | 4
-Arbeitsspeicher | 8 GB
-Azure Spring Cloud-Abonnement | 1
-Azure Spring Cloud-Dienstinstanzen pro Region und Abonnement | 2
-Gesamtanzahl der App-Instanzen pro Azure Spring Cloud-Dienstinstanz | 50
+vCPU | 4 pro Dienstinstanz
+Arbeitsspeicher | 8 GB pro Dienstinstanz
+Azure Spring Cloud-Dienstinstanzen pro Region und Abonnement | 10
+Gesamtanzahl der App-Instanzen pro Azure Spring Cloud-Dienstinstanz | 500
 Gesamtanzahl der App-Instanzen pro Spring-Anwendung | 20
 Persistente Volumes | 10 × 50 GB
 

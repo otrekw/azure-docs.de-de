@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-Konzepte | Microsoft Docs
-description: Dieses Thema bietet eine Übersicht über Azure Media Services-Konzepte.
+description: Dieser Artikel bietet eine kurze Übersicht über die Konzepte von Azure Media Services und stellt Links zu weiteren Artikeln mit zusätzlichen Details zur Verfügung.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: 2b28dde812dcce120c951730c27809f7f024e122
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2126fed5231f2264ba9a0bbc13be9410bb8294da
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64681558"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978831"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
 
@@ -160,7 +160,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Schützen mit PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Übermitteln
-### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>Dynamische Paketerstellung
+### <a name="a-iddynamic_packagingdynamic-packaging"></a><a id="dynamic_packaging"/>Dynamische Paketerstellung
 Bei der Arbeit mit Media Services empfiehlt es sich, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren.
 
 ### <a name="streaming-endpoint"></a>Streamingendpunkt
@@ -227,6 +227,10 @@ http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46
 {Streamingendpunktname-Media Services-Kontoname}.streaming.mediaservices.windows.net/{Locator-ID}/{Dateiname}.ism/Manifest(Format=m3u8-aapl-v3)
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

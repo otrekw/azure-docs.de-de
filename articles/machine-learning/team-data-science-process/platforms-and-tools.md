@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8ad5c4cb4d17443144febd716391803064ccdad1
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626374"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978508"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
@@ -124,28 +124,30 @@ Führen Sie den folgenden Bash-Befehl aus, um Git auf Computern unter Linux (Cen
 
 Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, müssen Sie Ihrer Azure DevOps Services-Instanz den öffentlichen SSH-Schlüssel Ihres Computers hinzufügen, damit dieser von Azure DevOps Services erkannt wird. Zunächst müssen Sie einen öffentlichen SSH-Schlüssel generieren und ihn den öffentlichen SSH-Schlüsseln auf der Seite mit der Azure DevOps Services-Sicherheitseinstellung hinzufügen. 
 
-- Führen Sie zum Generieren des SSH-Schlüssels die beiden folgenden Befehle aus: 
+1. Führen Sie zum Generieren des SSH-Schlüssels die beiden folgenden Befehle aus: 
 
-        ssh-keygen
-        cat .ssh/id_rsa.pub
+   ```
+   ssh-keygen
+   cat .ssh/id_rsa.pub
+   ```
+   
+   ![Befehle zum Generieren des SSH-Schlüssels](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-![Befehle zum Generieren des SSH-Schlüssels](./media/platforms-and-tools/resources-1-generate_ssh.png)
-
-- Kopieren Sie den gesamten SSH-Schlüssel (einschließlich *ssh-rsa*). 
-- Melden Sie sich bei Azure DevOps Services an. 
-- Klicken Sie rechts oben auf der Seite auf **<Ihr Name\>** und dann auf **Sicherheit**. 
+1. Kopieren Sie den gesamten SSH-Schlüssel (einschließlich *ssh-rsa*). 
+1. Melden Sie sich bei Azure DevOps Services an. 
+1. Klicken Sie rechts oben auf der Seite auf **<Ihr Name\>** und dann auf **Sicherheit**. 
     
-    ![Klicken Sie auf Ihren Namen, und klicken Sie dann auf „Sicherheit“.](./media/platforms-and-tools/resources-2-user-setting.png)
+   ![Klicken Sie auf Ihren Namen, und klicken Sie dann auf „Sicherheit“.](./media/platforms-and-tools/resources-2-user-setting.png)
 
-- Klicken Sie auf **Öffentlicher SSH-Schlüssel** und anschließend auf **+ Hinzufügen**. 
+1. Klicken Sie auf **Öffentlicher SSH-Schlüssel** und anschließend auf **+ Hinzufügen**. 
 
-    ![Klicken Sie auf „Öffentliche SSH-Schlüssel“ und anschließend auf „+ Hinzufügen“.](./media/platforms-and-tools/resources-3-add-ssh.png)
+   ![Klicken Sie auf „Öffentliche SSH-Schlüssel“ und anschließend auf „+ Hinzufügen“.](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-- Fügen Sie den zuvor kopierten SSH-Schlüssel in das Textfeld ein, und speichern Sie ihn.
+1. Fügen Sie den zuvor kopierten SSH-Schlüssel in das Textfeld ein, und speichern Sie ihn.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Vollständige exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Thema [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 
-Beispiele zum Ausführen der Schritte im Team Data Science-Prozess mit Azure Machine Learning Studio finden Sie im Lernpfad [Mit Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Beispiele, die zeigen, wie Sie die Schritte im Team Data Science-Prozess mithilfe von Azure Machine Learning Studio (klassisch) ausführen, finden Sie im Lernpfad [Mit Azure ML](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).

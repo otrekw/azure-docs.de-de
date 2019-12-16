@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 7a2e9d39629e4fdb349652c9c48d0084d051f9f8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122841"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951427"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Was ist Azure Arc für Server?
 
@@ -108,6 +108,40 @@ az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
 Sie können die Ressourcenanbieter auch über das Portal registrieren, indem Sie die Schritte unter [Azure-Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) ausführen.
+
+## <a name="machine-changes-after-installing-the-agent"></a>Computeränderungen nach der Installation des Agents
+
+Haben Sie in Ihrer Umgebung eine Lösung für die Änderungsnachverfolgung bereitgestellt, können Sie anhand der folgenden Liste die Änderungen nachverfolgen, identifizieren und zulassen, die vom Installationspaket für den **Agent für verbundene Azure-Computer (AzCMAgent)** vorgenommenen werden.
+
+Nach der Installation des Agents sehen Sie, dass die folgenden Änderungen an Ihren Servern vorgenommen werden.
+
+### <a name="windows"></a>Windows
+
+Installierte Dienste:
+
+* `Himds`: Der Dienst für den **Agent für verbundene Azure-Computer**
+* `Dscservice` oder `gcd`: Der Dienst für die **Gastkonfiguration**
+
+Dem Server hinzugefügte Dateien:
+
+* `%ProgramFiles%\AzureConnectedMachineAgent\*.*`: Speicherort der Dateien für den **Agent für verbundene Azure-Computer**
+* `%ProgramData%\GuestConfig\*.*` - Protokolle der **Gastkonfiguration**
+
+Speicherorte für Registrierungsschlüssel:
+
+* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent`: Registrierungsschlüssel für den **Agent für verbundene Azure-Computer**
+
+### <a name="linux"></a>Linux
+
+Installierte Dienste:
+
+* `Himdsd`: Der Dienst für den **Agent für verbundene Azure-Computer**
+* `dscd` oder `gcd`: Der Dienst für die **Gastkonfiguration**
+
+Dem Server hinzugefügte Dateien:
+
+* `/var/opt/azcmagent/**`: Speicherort der Dateien für den **Agent für verbundene Azure-Computer**
+* `/var/lib/GuestConfig/**` - Protokolle der **Gastkonfiguration**
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 

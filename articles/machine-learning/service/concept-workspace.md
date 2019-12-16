@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 4fe405d4027535eb6b0211f7a3f997194b8819aa
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9f3dd3c7d1a1352d40f9a15ba9aa1c012d1784d6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580750"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978269"
 ---
 # <a name="what-is-an-azure-machine-learning-workspace"></a>Was ist ein Azure Machine Learning-Arbeitsbereich?
 
@@ -73,8 +73,8 @@ Sie können auch die folgenden Arbeitsbereichsverwaltungsaufgaben ausführen:
 |---------------------------|---------|---------|------------|------------|
 | Erstellen eines Arbeitsbereichs        | **&check;**     | | **&check;** | **&check;** |
 | Verwalten des Arbeitsbereichszugriffs    | **&check;**   || |  **&check;**    |
-| Upgrade auf Enterprise Edition    | **&check;** |  | |     |
-| Erstellen und Verwalten von Computeressourcen    |   | **&check;** | **&check;** |  **&check;**   |
+| Upgrade auf Enterprise Edition    | **&check;** | **&check;**  | |     |
+| Erstellen und Verwalten von Computeressourcen    | **&check;**   | **&check;** | **&check;** |  **&check;**   |
 | Erstellen einer Notebook-VM |   | **&check;** | |     |
 
 
@@ -113,6 +113,6 @@ Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie unte
 + [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Verwalten eines Arbeitsbereichs](how-to-manage-workspace.md)
 + [Tutorial: Erste Schritte beim Erstellen Ihres ersten ML-Experiments mit dem Python SDK](tutorial-1st-experiment-sdk-setup.md)
-+ [Tutorial: Erste Schritte mit Azure Machine Learning mit dem R SDK]( tutorial-1st-r-experiment.md).
++ [Tutorial: Erste Schritte mit Azure Machine Learning mit dem R SDK]( tutorial-1st-r-experiment.md)
 + [Tutorial: Erstellen Ihres ersten Klassifizierungsmodells mit automatisiertem maschinellem Lernen](tutorial-first-experiment-automated-ml.md) (nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar)
 + [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer](tutorial-designer-automobile-price-train-score.md) (nur in [Enterprise Edition](overview-what-is-azure-ml.md#sku)-Arbeitsbereichen verfügbar)

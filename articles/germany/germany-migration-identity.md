@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Azure-Identitätsressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Identitätsressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Identitätsressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 07ecaa564f2fda21967ab6f0c30c06fa876e4171
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 47b5fe668b1ab7cc91e6a5976f972c7b6d4d0c69
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60780814"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912397"
 ---
 # <a name="migrate-identity-resources-to-global-azure"></a>Migrieren von Identitätsressourcen zu Azure weltweit
 

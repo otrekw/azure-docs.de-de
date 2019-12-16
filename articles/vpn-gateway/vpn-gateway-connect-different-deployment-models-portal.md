@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 722907328fe17c4116f4f8d948e081f9582ca712
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c26c4c47cb17acf88bc545af3a1fc979138d56b1
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266573"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951733"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -99,8 +99,8 @@ Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, da
 ### 2. <a name="local"></a>Konfigurieren des lokalen Standorts
 
 1. Navigieren Sie zu **Alle Ressourcen** und suchen Sie in der Liste nach **ClassicVNet**.
-2. Klicken Sie auf der Seite **Übersicht** im Abschnitt **VPN-Verbindungen** auf **Gateway**, um ein Gateway zu erstellen.
-  ![Konfigurieren von VPN-Gateways](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "Konfigurieren von VPN-Gateways")
+2. Klicken Sie im Abschnitt **Einstellungen** des Menüs auf **Gateway**, und klicken Sie dann auf das Banner, um ein Gateway zu erstellen.
+  ![Konfigurieren eines VPN-Gateways](./media/vpn-gateway-connect-different-deployment-models-portal/gatewaygraphic.png "CKonfigurieren eines VPN-Gateways)
 3. Wählen Sie auf die Seite **Neue VPN-Verbindung** unter **Verbindungstyp** die Option **Standort-zu-Standort** aus.
 4. Klicken Sie unter **Lokaler Standort** auf **Erforderliche Einstellungen konfigurieren**. Daraufhin wird die Seite **Lokaler Standort** geöffnet.
 5. Erstellen Sie auf die Seite **Lokaler Standort** einen Namen, um auf das Ressourcen-Manager-VNET zu verweisen. Beispiel: „RMVNetLocal“.
@@ -187,16 +187,16 @@ In diesem Abschnitt ersetzen Sie die Platzhalter-IP-Adresse, die Sie beim Festle
 2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk auf **Übersicht**.
 3. Klicken Sie unter **VPN-Verbindungen** auf den Namen des lokalen Standorts in der Abbildung.
 
-   ![VPN-Verbindungen](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-Verbindungen")
+   ![VPN-connections](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN Connections")
 4. Klicken Sie auf der Seite **Standort-zu-Standort-VPN-Verbindungen** auf den Namen des Standorts.
 
-   ![Standortname](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Lokaler Standortname")
+   ![Site-name](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Name des lokalen Standorts")
 5. Klicken Sie auf der Seite „Verbindung“ für den lokalen Standort auf den Namen des lokalen Standorts, um die Seite **Lokaler Standort** zu öffnen.
 
-   ![Öffnen von „Lokaler Standort“](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen von „Lokaler Standort“")
+   ![Open-local-site](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen des lokalen Standorts")
 6. Ersetzen Sie auf der Seite **Lokaler Standort** die **IP-Adresse des VPN-Gateways** durch die IP-Adresse des Ressourcen-Manager-Gateways.
 
-   ![Gateway-IP-Adresse](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
+   ![Gateway-ip-address](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
 7. Klicken Sie auf **OK**, um die IP-Adresse zu aktualisieren.
 
 ## <a name="RMtoclassic"></a>Abschnitt 4 – Erstellen der Verbindung zwischen dem Resource Manager-VNET und dem klassischen VNET

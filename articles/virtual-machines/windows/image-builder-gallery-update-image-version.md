@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder (Vorschauversion)
-description: Erstellen Sie mit Azure Image Builder eine neue Imageversion aus einer vorhandenen Imageversion.
+description: Erstellen Sie mit Azure Image Builder eine neue VM-Imageversion aus einer vorhandenen Imageversion.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: d60a7680bc283ba015d0649fb1d2671f8e5cf793
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 160de4521f4035ba3abd01137955cafc27071a05
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718637"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976093"
 ---
-# <a name="preview-create-a-new-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Vorschau: Erstellen einer neuen Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder
+# <a name="preview-create-a-new-vm-image-version-from-an-existing-image-version-using-azure-image-builder"></a>Vorschau: Erstellen einer neuen VM-Imageversion aus einer vorhandenen Imageversion mit Azure Image Builder
 
 In diesem Artikel erfahren Sie, wie Sie eine vorhandene Imageversion in einem [Katalog mit freigegebenen Images](shared-image-galleries.md) aktualisieren und als neue Imageversion im Katalog veröffentlichen.
 

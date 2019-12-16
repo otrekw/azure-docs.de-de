@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ac292f020bb64c7c70ce3ea5c7f66fe9e9ed1bb7
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7c83350dbecaf20e9b35f159b2c01824777bc665
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73604651"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973712"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
 In diesem Tutorial wird beschrieben, wie Sie den Azure-Dienst „Maschinelles Sehen“ in eine Web-App integrieren, um Metadaten für hochgeladene Bilder zu generieren. Dies ist für [Digital Asset Management](../Home.md#computer-vision-for-digital-asset-management)-Szenarien (DAM) nützlich, wenn ein Unternehmen z. B. beschreibende Titel oder durchsuchbare Schlüsselwörter für alle seine Bilder schnell generieren möchte.
 
-Einen vollständigen App-Leitfaden finden Sie unter [Azure Storage and Cognitive Services Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) (Lab für Azure Storage und Cognitive Services) auf GitHub. Dieses Tutorial deckt im Wesentlichen Übung 5 des Labs ab. Es kann sein, dass Sie die End-to-End-Anwendung erstellen möchten, indem Sie jeden einzelnen Schritt ausführen. Falls Sie aber nur wissen möchten, wie Maschinelles Sehen in eine vorhandene Web-App integriert werden kann, sollten Sie weiterlesen.
+Einen vollständigen App-Leitfaden finden Sie unter [Azure Storage and Cognitive Services Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md) (Lab für Azure Storage und Cognitive Services) auf GitHub. Dieses Tutorial deckt im Wesentlichen Übung 5 des Labs ab. Es kann sein, dass Sie die vollständige Anwendung erstellen möchten, indem Sie jeden einzelnen Schritt ausführen. Falls Sie aber nur wissen möchten, wie Maschinelles Sehen in eine vorhandene Web-App integriert werden kann, sollten Sie hier weiterlesen.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - [Visual Studio 2017 Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs.aspx) oder höher mit Installation der Workloads „ASP.NET und Webentwicklung“ und „Azure-Entwicklung“.
-- Ein Azure Storage-Konto mit einem Blobcontainer, der für Bilder zugeordnet ist. (Falls Sie Hilfe zu diesem Schritt benötigen, helfen Ihnen die Informationen unter [Exercise 1 of the Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) (Übung 1 des Azure Storage-Labs) weiter.)
+- Ein Azure Storage-Konto mit einem für die Bildspeicherung eingerichteten Blobcontainer. (Falls Sie Hilfe bei diesem Schritt benötigen, helfen Ihnen die Informationen unter [Übung 1 des Azure Storage-Labs](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise1) weiter.)
 - Azure Storage-Explorer-Tool (Falls Sie Hilfe zu diesem Schritt benötigen, helfen Ihnen die Informationen unter [Exercise 2 of the Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise2) (Übung 2 des Azure Storage-Labs) weiter.)
 - Eine ASP.NET-Webanwendung mit Zugriff auf Azure Storage (Unter [Exercise 3 of the Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) (Übung 3 des Azure Storage-Labs) ist beschrieben, wie Sie diese App schnell erstellen können.)
 
@@ -72,7 +72,7 @@ Klicken Sie im Projektmappen-Explorer dann mit der rechten Maustaste auf das Pro
 
 ## <a name="add-metadata-generation-code"></a>Hinzufügen des Codes zum Generieren von Metadaten
 
-Als Nächstes fügen Sie den Code hinzu, mit dem der Dienst Maschinelles Sehen genutzt wird, um Metadaten für Bilder zu erstellen. Diese Schritte gelten für die ASP.NET-App im Lab, aber Sie können sie auch an Ihre eigene App anpassen. An diesem Punkt ist es wichtig, dass Sie über eine ASP.NET-Webanwendung verfügen, mit der Bilder in einen Azure Storage-Container hochgeladen und Bilder daraus gelesen und dann in der Ansicht angezeigt werden können. Falls Sie nicht sicher sind, wie Sie vorgehen sollen, hilft Ihnen [Exercise 3 of the Azure Storage Lab](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) (Übung 3 des Azure Storage-Labs) weiter. 
+Als Nächstes fügen Sie den Code hinzu, der den Dienst „Maschinelles Sehen“ nutzt, um Metadaten für Bilder zu erstellen. Diese Schritte gelten für die ASP.NET-App im Lab, aber Sie können sie auch an Ihre eigene App anpassen. An diesem Punkt ist es wichtig, dass Sie über eine ASP.NET-Webanwendung verfügen, mit der Bilder in einen Azure Storage-Container hochgeladen und Bilder daraus gelesen und dann in der Ansicht angezeigt werden können. Falls Sie nicht sicher sind, wie Sie vorgehen sollen, hilft Ihnen [Übung 3 des Azure Storage-Labs](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise3) weiter. 
 
 1. Öffnen Sie die Datei *HomeController.cs* im Ordner **Controllers** des Projekts, und fügen Sie oben in der Datei die folgenden `using`-Anweisungen hinzu:
 
@@ -105,7 +105,7 @@ Als Nächstes fügen Sie den Code hinzu, mit dem der Dienst Maschinelles Sehen g
     await photo.SetMetadataAsync();
     ```
 
-1. Navigieren Sie anschließend in derselben Datei zur **Index**-Methode. Mit dieser Methode werden die gespeicherten Bildblobs im betreffenden Blobcontainer enumeriert (als **IListBlobItem**-Instanzen) und an die Anwendungsansicht übergeben. Ersetzen Sie den `foreach`-Block in dieser Methode durch den folgenden Code. Mit diesem Code wird **CloudBlockBlob.FetchAttributes** aufgerufen, um die angefügten Metadaten für jedes Blob abzurufen. Die per Computer generierte Beschreibung (`caption`) wird aus den Metadaten extrahiert und dem **BlobInfo**-Objekt hinzugefügt, das dann an die Ansicht übergeben wird.
+1. Navigieren Sie als Nächstes in derselben Datei zur **Index**-Methode. Mit dieser Methode werden die gespeicherten Bildblobs im betreffenden Blobcontainer enumeriert (als **IListBlobItem**-Instanzen) und an die Anwendungsansicht übergeben. Ersetzen Sie den `foreach`-Block in dieser Methode durch den folgenden Code. Mit diesem Code wird **CloudBlockBlob.FetchAttributes** aufgerufen, um die angefügten Metadaten für jedes Blob abzurufen. Die per Computer generierte Beschreibung (`caption`) wird aus den Metadaten extrahiert und dem **BlobInfo**-Objekt hinzugefügt, das dann an die Ansicht übergeben wird.
     
     ```csharp
     foreach (IListBlobItem item in container.ListBlobs())
@@ -139,13 +139,13 @@ Verwenden Sie zum Anzeigen aller angefügten Metadaten den Azure Storage-Explore
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Falls Sie mit Ihrer Web-App weiterarbeiten möchten, helfen Ihnen die Informationen im Abschnitt [Nächste Schritte](#next-steps) weiter. Wenn Sie nicht planen, diese Anwendung weiter zu nutzen, sollten Sie alle App-spezifischen Ressourcen löschen. Hierzu können Sie einfach die Ressourcengruppe löschen, die Ihr Azure Storage-Abonnement und die Maschinelles Sehen-Ressource enthält. Das Speicherkonto, die dafür hochgeladenen Blobs und die App Service-Ressource, die zum Herstellen der Verbindung mit der ASP.NET-Web-App benötigt werden, werden entfernt. 
+Falls Sie mit Ihrer Web-App weiterarbeiten möchten, helfen Ihnen die Informationen im Abschnitt [Nächste Schritte](#next-steps) weiter. Wenn Sie nicht planen, diese Anwendung weiter zu nutzen, sollten Sie alle App-spezifischen Ressourcen löschen. Zum Löschen von Ressourcen können Sie die Ressourcengruppe löschen, die Ihr Azure Storage-Abonnement und die Maschinelles Sehen-Ressource enthält. Das Speicherkonto, die dafür hochgeladenen Blobs und die App Service-Ressource, die zum Herstellen der Verbindung mit der ASP.NET-Web-App benötigt werden, werden entfernt. 
 
-Öffnen Sie zum Löschen der Ressourcengruppe im Portal das Blatt **Ressourcengruppe**, navigieren Sie zu der Ressourcengruppe, die Sie für dieses Projekt verwendet haben, und klicken Sie oben in der Ansicht auf **Ressourcengruppe löschen**. Sie werden aufgefordert, den Namen der Ressourcengruppe einzugeben, um zu bestätigen, dass Sie den Löschvorgang durchführen möchten. Der Grund ist, dass eine Ressourcengruppe nach dem Löschen nicht wiederhergestellt werden kann.
+Öffnen Sie zum Löschen der Ressourcengruppe im Portal die Registerkarte **Ressourcengruppe**, navigieren Sie zu der Ressourcengruppe, die Sie für dieses Projekt verwendet haben, und klicken Sie oben in der Ansicht auf **Ressourcengruppe löschen**. Sie werden aufgefordert, den Namen der Ressourcengruppe einzugeben, um zu bestätigen, dass Sie den Löschvorgang durchführen möchten. Der Grund ist, dass eine Ressourcengruppe nach dem Löschen nicht wiederhergestellt werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie den Azure-Dienst Maschinelles Sehen in eine vorhandene Web-App integriert, um beim Hochladen automatisch Beschriftungstext und Schlüsselwörter für Blobbilder zu generieren. Fahren Sie mit Übung 6 des Azure Storage-Labs fort, um zu erfahren, wie Sie Ihrer Web-App Suchfunktionalität hinzufügen. Hierbei werden die Schlüsselwörter für die Suche verwendet, die vom Dienst Maschinelles Sehen generiert wurden.
+In diesem Tutorial haben Sie den Azure-Dienst „Maschinelles Sehen“ in einer vorhandenen Web-App eingerichtet, um beim Hochladen automatisch Beschriftungstext und Schlüsselwörter für Blobbilder zu generieren. Fahren Sie mit Übung 6 des Azure Storage-Labs fort, um zu erfahren, wie Sie Ihrer Web-App Suchfunktionalität hinzufügen. Hierbei werden die Schlüsselwörter für die Suche verwendet, die vom Dienst Maschinelles Sehen generiert wurden.
 
 > [!div class="nextstepaction"]
 > [Add search to your app](https://github.com/Microsoft/computerscience/blob/master/Labs/Azure%20Services/Azure%20Storage/Azure%20Storage%20and%20Cognitive%20Services%20(MVC).md#Exercise6) (Hinzufügen der Suchfunktion zu Ihrer App)

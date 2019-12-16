@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 47c7e35f71fd33cc53d498867ef015364252d5ea
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.openlocfilehash: 39bdcc94b785371044b5d49fd844a06a176a8fba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910321"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970035"
 ---
 # <a name="media-services-concepts"></a>Media Services-Konzepte
 
@@ -100,6 +100,9 @@ Sie können **dynamische Manifeste** von Media Services verwenden, um nur eine b
 - [Inhaltsschutz](content-protection-overview.md)
 - [Dynamische Manifeste](filters-dynamic-manifest-overview.md)
 - [Filter](filters-concept.md)
+
+> [!NOTE]
+> Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="live-streaming"></a>Livestreaming
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: f4d94536a8c1b509e0ce435a764e69984b5d415e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 11c964bedce7a8b979434b888d756c2121d06a60
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60425545"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873827"
 ---
 # <a name="interoperability-in-azure-back-end-connectivity-features-data-plane-analysis"></a>Interoperabilität in Azure-Back-End-Konnektivitätsfeatures: Analyse der Datenebene
 
@@ -40,7 +40,7 @@ Beim VNET-Peering (virtuelles Netzwerk) wird die Funktionalität der Netzwerkbr�
 Die folgende Abbildung zeigt die grafische Verbindung des Hub-VNET und des Spoke-VNET aus der Perspektive von Azure Network Watcher:
 
 
-[![1]][1]
+![1][1]
 
 ### <a name="path-to-the-branch-vnet"></a>Pfad zum Branch-VNET
 
@@ -60,11 +60,11 @@ In dieser Traceroute-Ausgabe ist der erste Hop das VPN-Gateway in Azure zum VPN-
 
 Die folgende Abbildung zeigt die grafische Verbindung des Hub-VNET und des Branch-VNET von Network Watcher aus betrachtet:
 
-[![2]][2]
+![2][2]
 
 Die folgende Abbildung zeigt die Rasteransicht in Network Watcher für dieselbe Verbindung:
 
-[![3]][3]
+![3][3]
 
 ### <a name="path-to-on-premises-location-1"></a>Pfad zum lokalen Standort 1
 
@@ -302,7 +302,7 @@ Network Watcher stellt nur eine Azure-bezogene Ansicht bereit. Für eine lokale 
 
 Die folgende Abbildung zeigt die Topologieansicht der Konnektivität zwischen der VM am lokalen Standort 1 und der VM im Hub-VNET per ExpressRoute:
 
-[![4]][4]
+![4][4]
 
 Wie weiter oben erläutert, wird für die Testeinrichtung ein Site-to-Site-VPN als Reserveverbindung für ExpressRoute zwischen dem lokalen Standort 1 und dem Hub-VNET genutzt. Zum Testen des Datenpfads in umgekehrter Richtung lösen wir einen ExpressRoute-Verbindungsausfall zwischen dem primären CE-Router am lokalen Standort 1 und dem zugehörigen MSEE aus. Um den ExpressRoute-Verbindungsausfall herbeizuführen, fahren Sie die für die MSEE-Instanz bestimmte CE-Schnittstelle herunter:
 
@@ -318,7 +318,7 @@ Wie weiter oben erläutert, wird für die Testeinrichtung ein Site-to-Site-VPN a
 
 Die folgende Abbildung zeigt die Topologieansicht der Konnektivität zwischen der VM am lokalen Standort 1 und der VM im Hub-VNET per Site-to-Site-VPN-Verbindung, wenn keine ExpressRoute-Konnektivität vorhanden ist:
 
-[![5]][5]
+![5][5]
 
 ### <a name="path-to-the-spoke-vnet"></a>Pfad zum Spoke-VNET
 
@@ -476,7 +476,7 @@ Die Traceroute-Ausgabe vom Remote-VNET zu einer VM am lokalen Standort 1:
 
 ###  <a name="site-to-site-vpn-over-expressroute"></a>Site-to-Site-VPN über ExpressRoute
 
-Sie können ein Site-to-Site-VPN mithilfe von ExpressRoute-Microsoft-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per ExpressRoute-Microsoft-Peering finden Sie unter [Site-to-Site-VPN über ExpressRoute-Microsoft-Peering][S2S-Over-ExR]. 
+Sie können ein Site-to-Site-VPN mithilfe von ExpressRoute-Microsoft-Peering konfigurieren, um Daten privat zwischen Ihrem lokalen Netzwerk und Ihren Azure-VNETs auszutauschen. Mit dieser Konfiguration können Sie Daten mit Vertraulichkeit, Authentizität und Integrität austauschen. Der Datenaustausch ist außerdem Anti-Replay-konform. Weitere Informationen zur Konfiguration eines Site-to-Site-IPsec-VPN im Tunnelmodus per ExpressRoute-Microsoft-Peering finden Sie unter [Konfigurieren eines Site-to-Site-VPN über ExpressRoute-/Microsoft-Peering][S2S-Over-ExR]. 
 
 Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit Microsoft-Peering ist der Durchsatz. Der Durchsatz des IPsec-Tunnels wird durch die Kapazität des VPN-Gateways eingeschränkt. Der Durchsatz des VPN-Gateways ist niedriger als der ExpressRoute-Durchsatz. In diesem Szenario stellt die Verwendung des IPsec-Tunnels für hoch sicheren Datenverkehr und des privaten Peerings für sämtlichen anderen Datenverkehr einen Beitrag zur Optimierung der ExpressRoute-Bandbreitenauslastung dar.
 
@@ -484,7 +484,7 @@ Die wesentliche Einschränkung für die Konfiguration eines Site-to-Site-VPN mit
 
 ExpressRoute dient als redundantes Verbindungspaar, um Hochverfügbarkeit sicherzustellen. Sie können die georedundante ExpressRoute-Konnektivität in unterschiedlichen Azure-Regionen konfigurieren. Sie können außerdem wie in unserer Testeinrichtung demonstriert in einer Azure-Region mithilfe eines Site-to-Site-VPN einen Failoverpfad für Ihre ExpressRoute-Verbindung einrichten. Wenn über ExpressRoute und das Site-to-Site-VPN die gleichen Präfixe angekündigt werden, priorisiert Azure ExpressRoute. Zur Vermeidung von asymmetrischem Routing zwischen ExpressRoute und dem Site-to-Site-VPN sollte in der lokalen Netzwerkkonfiguration die ExpressRoute-Verbindung ebenfalls den Vorzug vor Site-to-Site-VPN-Verbindungen erhalten.
 
-Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Parallele ExpressRoute- und Site-to-Site-Verbindungen][ExR-S2S-CoEx].
+Weitere Informationen zur Konfiguration von parallelen ExpressRoute- und Site-to-Site-VPN-Verbindungen finden Sie unter [Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell][ExR-S2S-CoEx].
 
 ## <a name="extend-back-end-connectivity-to-spoke-vnets-and-branch-locations"></a>Erweitern der Back-End-Konnektivität auf Spoke-VNETs und Branchstandorte
 
@@ -498,23 +498,23 @@ Beim VNET-Peering in einer Region können Spoke-VNETs Hub-VNET-Gateways verwende
 
 VNETs in verschiedenen Regionen und lokale Netzwerke sollten miteinander über ein Hub-VNET kommunizieren. Die native Azure-Lösung für diese Konfiguration ist Site-to-Site-VPN-Konnektivität über ein VPN. Eine Alternative ist die Verwendung eines virtuellen Netzwerkgeräts (NVA) für das Routing im Hub.
 
-Weitere Informationen finden Sie unter [Was ist VPN-Gateway?][VPN] und [Bereitstellen eines hoch verfügbaren virtuellen Netzwerkgeräts][Deploy-NVA].
+Weitere Informationen finden Sie unter [Was ist VPN Gateway?][VPN] und [Bereitstellen hochverfügbarer virtueller Netzwerkgeräte][Deploy-NVA].
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
+Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden Themen:
 -   Erfahren Sie, wie viele ExpressRoute-Verbindungen Sie mit einem ExpressRoute-Gateway verbinden können.
 -   Anzahl der ExpressRoute-Gateways, die Sie per ExpressRoute verbinden können
 -   Erfahren Sie mehr über andere Skalierungslimits von ExpressRoute.
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg " Network Watcher-Ansicht zur Konnektivität von einem Hub-VNET zu einem Spoke-VNET"
-[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg " Network Watcher-Ansicht zur Konnektivität von einem Hub-VNET zu einem Branch-VNET"
-[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg " Network Watcher-Rasteransicht zur Konnektivität von einem Hub-VNET zu einem Branch-VNET"
-[4]: ./media/backend-interoperability/Loc1-HubVM.jpg " Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET über ExpressRoute 1"
-[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg " Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET ein Site-to-Site-VPN"
+[1]: ./media/backend-interoperability/HubVM-SpkVM.jpg "Network Watcher-Ansicht zur Konnektivität von einem Hub-VNET zu einem Spoke-VNET"
+[2]: ./media/backend-interoperability/HubVM-BranchVM.jpg "Network Watcher-Ansicht zur Konnektivität von einem Hub-VNET zu einem Branch-VNET"
+[3]: ./media/backend-interoperability/HubVM-BranchVM-Grid.jpg "Network Watcher-Rasteransicht zur Konnektivität von einem Hub-VNET zu einem Branch-VNET"
+[4]: ./media/backend-interoperability/Loc1-HubVM.jpg "Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET über ExpressRoute 1"
+[5]: ./media/backend-interoperability/Loc1-HubVM-S2S.jpg "Netzwerkleistungsmonitor-Ansicht zur Konnektivität von der VM am Standort 1 zum Hub-VNET ein Site-to-Site-VPN"
 
 <!--Link References-->
 [Setup]: https://docs.microsoft.com/azure/networking/connectivty-interoperability-preface

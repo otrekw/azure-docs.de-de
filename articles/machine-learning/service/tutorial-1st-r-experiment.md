@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 52dc0ff27ad2f04b9faeab24c6bdba68d9ec138e
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 62c9ac0020db92c1540d0ecb4fa996d9b8405a58
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307275"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974256"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Tutorial: Trainieren und Bereitstellen Ihres ersten Modells in R mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -142,7 +142,7 @@ saveRDS(accidents, file="accidents.Rd")
 ```
 
 ### <a name="upload-data-to-the-datastore"></a>Hochladen von Daten in den Datenspeicher
-Laden Sie Daten in die Cloud hoch, damit über Ihre Umgebung für das Remotetraining darauf zugegriffen werden kann. Jeder Azure ML-Arbeitsbereich verfügt über einen Standarddatenspeicher, in dem die Verbindungsinformationen in dem Azure-Blobcontainer gespeichert werden, der unter dem an den Arbeitsbereich angefügten Speicherkonto bereitgestellt wird. Mit dem folgenden Code werden die oben erstellten Unfalldaten in diesen Datenspeicher hochgeladen.
+Laden Sie Daten in die Cloud hoch, damit über Ihre Umgebung für das Remotetraining darauf zugegriffen werden kann. Jeder Azure Machine Learning-Arbeitsbereich verfügt über einen Standarddatenspeicher, in dem die Verbindungsinformationen in dem Azure-Blobcontainer gespeichert werden, der unter dem an den Arbeitsbereich angefügten Speicherkonto bereitgestellt wird. Mit dem folgenden Code werden die oben erstellten Unfalldaten in diesen Datenspeicher hochgeladen.
 
 ```R
 ds <- get_default_datastore(ws)
@@ -164,10 +164,10 @@ Passen Sie für dieses Tutorial ein logistisches Regressionsmodell an Ihre hochg
 * Übermitteln des Auftrags
 
 ### <a name="prepare-the-training-script"></a>Vorbereiten des Trainingsskripts
-Ein Trainingsskript mit dem Namen `accidents.R` wurde für Sie in demselben Verzeichnis wie dieses Tutorial bereitgestellt. Beachten Sie die folgenden Details **im Trainingsskript**, die angegeben wurden, um den Azure ML-Dienst für das Training zu nutzen:
+Ein Trainingsskript mit dem Namen `accidents.R` wurde für Sie in demselben Verzeichnis wie dieses Tutorial bereitgestellt. Beachten Sie die folgenden Details **im Trainingsskript**, die angegeben wurden, um den Azure Machine Learning-Dienst für das Training zu nutzen:
 
 * Für das Trainingsskript wird das Argument `-d` genutzt, um das Verzeichnis mit den Trainingsdaten zu ermitteln. Wenn Sie Ihren Auftrag definieren und später dann senden, verweisen Sie auf den Datenspeicher für dieses Argument. Azure ML stellt den Speicherordner im Remotecluster für den Trainingsauftrag bereit.
-* Mit dem Trainingsskript wird die endgültige Genauigkeit als Metrik für die Ausführungsaufzeichnung in Azure ML mit `log_metric_to_run()` protokolliert. Das Azure ML SDK verfügt über Protokollierungs-APIs zum Protokollieren verschiedener Metriken bei Trainingsausführungen. Diese Metriken werden aufgezeichnet und in der Ausführungsaufzeichnung des Experiments dauerhaft gespeichert. Auf die Metriken kann dann jederzeit zugegriffen werden, oder sie können in [Azure Machine Learning Studio](https://ml.azure.com) auf der Seite mit den Ausführungsdetails angezeigt werden. In der [Referenz](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) finden Sie alle Protokollierungsmethoden (`log_*()`).
+* Mit dem Trainingsskript wird die endgültige Genauigkeit als Metrik für die Ausführungsaufzeichnung in Azure ML mit `log_metric_to_run()` protokolliert. Das Azure ML SDK verfügt über Protokollierungs-APIs zum Protokollieren verschiedener Metriken bei Trainingsausführungen. Diese Metriken werden aufgezeichnet und in der Ausführungsaufzeichnung des Experiments dauerhaft gespeichert. Auf die Metriken kann dann jederzeit zugegriffen werden, oder sie können in [Studio](https://ml.azure.com) auf der Seite mit den Ausführungsdetails angezeigt werden. In der [Referenz](https://azure.github.io/azureml-sdk-for-r/reference/index.html#section-training-experimentation) finden Sie alle Protokollierungsmethoden (`log_*()`).
 * Das Trainingsskript speichert Ihr Modell in einem Verzeichnis namens **outputs**. Der Ordner `./outputs` erhält von Azure ML eine Sonderbehandlung. Während des Trainings werden in `./outputs` geschriebene Dateien von Azure ML automatisch in Ihre Ausführungsaufzeichnung hochgeladen und dauerhaft als Artefakte gespeichert. Indem Sie das trainierte Modell in `./outputs` speichern, können Sie auch nach Abschluss der Ausführung auf Ihr Modell zugreifen und es abrufen. Der Zugriff auf Ihre Umgebung für das Remotetraining ist dann nicht mehr möglich.
 
 ### <a name="create-an-estimator"></a>Erstellen eines Estimators

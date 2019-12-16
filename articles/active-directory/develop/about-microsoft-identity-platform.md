@@ -2,27 +2,23 @@
 title: Entwicklung der Microsoft Identity Platform – Azure
 description: Erfahren Sie mehr über Microsoft Identity Platform, eine Weiterentwicklung des Azure Active Directory-Identitätsdiensts (Azure AD) und der zugehörigen Entwicklerplattform.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: overview
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/03/2019
+ms.date: 12/09/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5fdc1c937136eb512eccf1d4df02a4fcdc3911
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 7e5faf9db9a6ba97f353b54a4fb8123fde072574
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533101"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996985"
 ---
 # <a name="evolution-of-microsoft-identity-platform"></a>Entwicklung der Microsoft Identity Platform
 
@@ -30,13 +26,13 @@ Microsoft Identity Platform ist eine Weiterentwicklung der Azure AD-Entwicklerp
 
 Bisher haben die meisten Entwickler mit der Azure AD v1.0-Plattform gearbeitet, um (von Azure AD bereitgestellte) Geschäfts-, Schul- und Unikonten zu authentifizieren, indem sie Token vom Azure AD v1.0-Endpunkt angefordert, die Azure AD-Authentifizierungsbibliothek (ADAL), das Azure-Portal für die Anwendungsregistrierung und -konfiguration und die Azure AD Graph-API für die programmgesteuerte Anwendungskonfiguration verwendet haben.
 
-Mit Microsoft Identity Platform (v2.0) dehnen Sie Ihre Reichweite auf folgende Benutzertypen aus:
+Dank der einheitlichen Microsoft Identity Platform-Instanz (v2.0) können Sie einmalig Code schreiben und beliebige Microsoft-Identitäten in Ihrer Anwendung authentifizieren. Für verschiedene Plattformen wird die Verwendung der vollständig unterstützten Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für die Identity Platform-Endpunkte empfohlen. MSAL ist einfach zu verwenden und bietet Benutzern hervorragende Funktionen für einmaliges Anmelden (SSO). Sie ist auf hohe Zuverlässigkeit und Leistung ausgelegt und wurde unter Verwendung von Microsoft Secure Development Lifecycle (SDL) entwickelt. Sie können Ihre Anwendung so konfigurieren, dass sie beim Aufrufen von APIs die inkrementelle Zustimmung nutzt. Dadurch wird eine Zustimmung für invasivere Geltungsbereiche erst angefordert, wenn dies durch die Anwendungsnutzung zur Laufzeit erforderlich wird.  MSAL unterstützt darüber hinaus Azure Active Directory B2C, sodass Ihre Kunden ihre bevorzugten Identitäten für soziale Netzwerke, Unternehmen oder lokale Konten nutzen können, um mit einmaligem Anmelden Zugriff auf Ihre Anwendungen und APIs zu erhalten.
+
+Mit Microsoft Identity Platform dehnen Sie Ihre Reichweite auf folgende Benutzertypen aus:
 
 - Geschäfts-, Schul- oder Unikonten (von Azure AD bereitgestellte Konten)
 - Persönliche Konten (z. B. Outlook.com oder Hotmail.com)
-- Kunden mit eigenen E-Mail-Adressen oder Social Media-Konten (z. B. LinkedIn, Facebook, Google) über das Azure AD B2C-Angebot
-
-Dank der einheitlichen Microsoft Identity Platform können Sie einmalig Code schreiben und beliebige Microsoft-Identitäten in Ihrer Anwendung authentifizieren. Die Microsoft-Authentifizierungsbibliothek (MSAL) ist eine vollständig unterstützte Open Source-Bibliothek und steht für verschiedene Plattformen zur Verfügung. MSAL ist einfach zu verwenden und bietet Benutzern hervorragende Funktionen für einmaliges Anmelden (SSO). Sie ist auf hohe Zuverlässigkeit und Leistung ausgelegt und wurde unter Verwendung von Microsoft Secure Development Lifecycle (SDL) entwickelt. Sie können Ihre Anwendung so konfigurieren, dass sie beim Aufrufen von APIs die inkrementelle Zustimmung nutzt. Dadurch wird eine Zustimmung für invasivere Geltungsbereiche erst angefordert, wenn dies durch die Anwendungsnutzung zur Laufzeit erforderlich wird.
+- Kunden mit eigenen E-Mail-Adressen oder Social Media-Konten (z. B. LinkedIn, Facebook, Google) über MSAL und Azure AD B2C
 
 Sie können das Azure-Portal zum Registrieren und Konfigurieren Ihrer Anwendung und die Microsoft Graph-API für die programmgesteuerte Anwendungskonfiguration verwenden.
 

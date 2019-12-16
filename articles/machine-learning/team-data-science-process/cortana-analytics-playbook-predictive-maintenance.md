@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: ec87146c721222702073eae067a259aa9848d0f7
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048990"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977130"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure KI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -203,7 +203,9 @@ Anhand der geschäftlichen Anforderungen wird definiert, wie weit mit dem Modell
 #### <a name="rolling-aggregates"></a>Gleitende Aggregate
 Für jeden Datensatz einer Ressource wird die Gleitfenstergröße „W“ als Anzahl von Zeiteinheiten zur Berechnung der Aggregate gewählt. Anschließend werden Verzögerungsfeatures berechnet, indem die W-Zeiträume _vor dem Datum_ dieses Datensatzes verwendet werden. In Abbildung 1 veranschaulichen die blauen Linien Sensorwerte einer Ressource für jede Zeiteinheit. Sie geben einen gleitenden Durchschnitt der Featurewerte für ein Fenster mit der Größe W=3 an. Der gleitende Durchschnitt wird für alle Datensätze mit Zeitstempeln im Bereich t<sub>1</sub> (orange) bis t<sub>2</sub> (grün) berechnet. Der Wert für W wird je nach Art der Daten normalerweise in Minuten oder Stunden angegeben. Bei bestimmten Problemen kann durch die Auswahl eines hohen Werts für W (z.B. 12 Monate) der gesamte Verlauf einer Ressource bis zum Zeitpunkt des Datensatzes angegeben werden.
 
-![Abbildung 1: Gleitendes Aggregat – Features](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png) Abbildung 1: Gleitendes Aggregat – Features
+![Abbildung 1. Gleitendes Aggregat – Features](./media/cortana-analytics-playbook-predictive-maintenance/rolling-aggregate-features.png)
+
+Abbildung 1. Gleitendes Aggregat – Features
 
 Beispiele für gleitende Aggregate eines Zeitfensters sind Werte vom Typ „Anzahl“, „Mittelwert“, CUMESUM-Measures (Cumulative Sum) und Minimal-/Maximalwerte. Außerdem werden häufig Varianz, Standardabweichung und Anzahl von Ausreißern für N Standardabweichungen verwendet. Beispiele für Aggregate, die auf [Anwendungsfälle](#sample-pdm-use-cases) in diesem Leitfaden angewendet werden können, sind unten aufgeführt. 
 - _Flugverspätung_: Anzahl von Fehlercodes für den letzten Tag bzw. die letzte Woche.
@@ -217,7 +219,9 @@ Ein weiteres nützliches Verfahren bei PdM ist die Erfassung von Trendänderunge
 #### <a name="tumbling-aggregates"></a>Rollierende Aggregate
 Für jeden bezeichneten Datensatz einer Ressource wird ein Fenster der Größe _W-<sub>k</sub>_ definiert, wobei _k_ für die Anzahl von Fenstern der Größe _W_ steht. Aggregate werden dann für _k_ _rollierende Fenster_ _W-k, W-<sub>(k-1)</sub>, …, W-<sub>2</sub>, W-<sub>1</sub>_ für die Zeiträume erstellt, die vor dem Zeitstempel eines Datensatzes liegen. _k_ kann eine niedrige Zahl sein, um kurzfristige Auswirkungen zu erfassen, oder eine hohe Zahl, um langfristige Leistungsabfallmuster zu erfassen. (Siehe Abbildung 2.)
 
-![Abbildung 2: Rollierendes Aggregat – Features](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png) Abbildung 2: Rollierendes Aggregat – Features
+![Abbildung 2. Rollierendes Aggregat – Features](./media/cortana-analytics-playbook-predictive-maintenance/tumbling-aggregate-features.png)
+
+Abbildung 2. Rollierendes Aggregat – Features
 
 Verzögerungsfeatures für den Anwendungsfall mit den Windturbinen können beispielsweise mit den Werten W=1 und k=3 erstellt werden. Diese Werte implizieren jeweils die Verzögerung für die letzten drei Monate, und es werden Ausreißer nach oben und unten verwendet.
 
@@ -262,7 +266,9 @@ Bei diesem Verfahren werden zwei Arten von Trainingsbeispielen identifiziert. Ei
 #### <a name="label-construction-for-binary-classification"></a>Erstellung von Bezeichnungen für die binäre Klassifizierung
 Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, dass die Ressource innerhalb der nächsten X Zeiteinheiten ausfällt?“ Zur Beantwortung dieser Frage bezeichnen Sie X Datensätze im Zeitraum vor dem Ausfall einer Ressource als „Ausfall wahrscheinlich“ (label = 1) und alle anderen Datensätze als „normal“ (label =0). (Siehe Abbildung 3.)
 
-![Abbildung 3: Bezeichnungen für binäre Klassifizierung](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png) Abbildung 3: Bezeichnungen für binäre Klassifizierung
+![Abbildung 3. Bezeichnungen für binäre Klassifizierung](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-binary-classification.png)
+
+Abbildung 3. Bezeichnungen für binäre Klassifizierung
 
 Beispiele für die Bezeichnungsstrategie einiger Anwendungsfälle sind unten aufgeführt.
 - _Flugverspätungen_: Für X kann „1 Tag“ gewählt werden, um Verspätungen für die nächsten 24 Stunden vorherzusagen. Alle Flüge, die innerhalb von 24 Stunden vor einem Ausfall liegen, erhalten dann die Bezeichnung „1“.
@@ -277,7 +283,9 @@ Regressionsmodelle werden verwendet, um _die verbleibende Nutzungsdauer einer Re
 #### <a name="label-construction-for-regression"></a>Erstellung von Bezeichnungen für die Regression
 Hier wird die folgende Frage gestellt: „Welche Restnutzungsdauer hat das Gerät?“ Berechnen Sie für jeden Datensatz vor dem Fehler die Bezeichnung als Anzahl von Zeiteinheiten, die bis zum nächsten Fehler verbleiben. Bei dieser Methode handelt es sich bei den Bezeichnungen um fortlaufende Variablen. (Siehe Abbildung 4.)
 
-![Abbildung 4: Bezeichnungen für die Regression](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png) Abbildung 4: Bezeichnungen für die Regression
+![Abbildung 4. Bezeichnungen für die Regression](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-regression.png)
+
+Abbildung 4. Bezeichnungen für die Regression
 
 Für die Regression erfolgt die Bezeichnung per Verweis auf einen Fehlerpunkt. Die Berechnung ist nicht möglich ohne Informationen dazu, wie lange eine Ressource vor einem Fehler fehlerfrei betrieben wurde. Im Gegensatz zur binären Klassifizierung können Ressourcen ohne jegliche Fehler in den Daten nicht für die Modellierung verwendet werden. Dieses Problem lässt sich am besten mit einem anderen statistischen Verfahren lösen, das als [Ereigniszeitanalyse](https://en.wikipedia.org/wiki/Survival_analysis) bezeichnet wird. Es kann aber zu potenziellen Komplikationen kommen, wenn dieses Verfahren auf PdM-Anwendungsfälle angewendet wird, die zeitbezogene Daten mit häufigen Intervallen umfassen. Weitere Informationen zur Ereigniszeitanalyse finden Sie auf [dieser Seite](https://www.cscu.cornell.edu/news/news.php/stnews78.pdf).
 
@@ -289,11 +297,15 @@ Verfahren mit der Klassifizierung mit mehreren Klassen können in PdM-Lösungen 
 #### <a name="label-construction-for-multi-class-classification"></a>Erstellung von Bezeichnungen für die Klassifizierung mit mehreren Klassen
 Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, dass eine Ressource innerhalb der nächsten _nZ_ Zeiteinheiten ausfällt?“ Hierbei steht _n_ für die Anzahl von Zeiträumen. Bezeichnen Sie zur Beantwortung dieser Frage nZ Datensätze vor dem Ausfall einer Ressource, indem Sie sog. Zeittöpfe (3Z, 2Z, Z) verwenden. Bezeichnen Sie alle anderen Datensätze als „normal“ (label = 0). Bei dieser Methode enthält die Zielvariable _kategoriebezogene_ Werte. (Siehe Abbildung 5.)
 
-![Abbildung 5: Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png) Abbildung 5. Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts
+![Abbildung 5. Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-failure-time-prediction.png)
+
+Abbildung 5. Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts
 
 Hier wird die folgende Frage gestellt: „Wie hoch ist die Wahrscheinlichkeit, dass die Ressource innerhalb der nächsten X Zeiteinheiten aufgrund der Grundursache bzw. des Problems _P<sub>i</sub>_ ausfällt?“ Hierbei steht _i_ für die Anzahl von möglichen Grundursachen. Bezeichnen Sie zur Beantwortung dieser Frage X Datensätze vor dem Ausfall einer Ressource als „Ausfall wahrscheinlich aufgrund von Grundursache _P<sub>i</sub>_ “ (label = _P<sub>i</sub>_ ). Bezeichnen Sie alle anderen Datensätze als „normal“ (label = 0). Auch bei dieser Methode sind die Bezeichnungen kategoriebezogen (siehe Abbildung 6).
 
-![Abbildung 6: Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage der Grundursache](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png) Abbildung 6. Bezeichnung für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts
+![Abbildung 6. Bezeichnungen für die Klassifizierung mit mehreren Klassen zur Vorhersage der Grundursache](./media/cortana-analytics-playbook-predictive-maintenance/labelling-for-multiclass-classification-for-root-cause-prediction.png)
+
+Abbildung 6. Bezeichnung für die Klassifizierung mit mehreren Klassen zur Vorhersage des Fehlerzeitpunkts
 
 Bei diesem Modell wird jedem _P<sub>i</sub>_ eine anstehende Fehlerwahrscheinlichkeit sowie die Wahrscheinlichkeit für das Nichtauftreten eines Fehlers zugewiesen. Diese Wahrscheinlichkeiten können nach Größenordnung sortiert werden, um die Vorhersage der Probleme zu ermöglichen, die in Zukunft mit der höchsten Wahrscheinlichkeit auftreten.
 
@@ -329,7 +341,9 @@ Angenommen, es ist ein Datenstrom von Ereignissen mit Zeitstempel, z.B. Messunge
 
 Wählen Sie für die zeitabhängige Aufteilung einen _Trainingstrennzeitpunkt T<sub>c</sub>_ für das Modelltraining, wobei die Hyperparameter Verlaufsdaten bis zum Zeitpunkt T<sub>c</sub> nutzen. Um zu verhindern, dass zukünftige Bezeichnungen nach dem Zeitpunkt T<sub>c</sub> in die Trainingsdaten einfließen, wählen Sie als spätesten Zeitpunkt der Bezeichnung von Trainingsbeispielen einen Zeitpunkt, der X Einheiten vor T<sub>c</sub> liegt. Im Beispiel in Abbildung 7 steht jedes Quadrat für einen Datensatz des Datasets, für das die Features und Bezeichnungen wie oben beschrieben berechnet werden. In der Abbildung sind die Datensätze dargestellt, die in die Trainings- und Testsätze für X=2 und W=3 einfließen sollen:
 
-![Abbildung 7: Zeitabhängige Aufteilung für binäre Klassifizierung](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png) Abbildung 7: Zeitabhängige Aufteilung für binäre Klassifizierung
+![Abbildung 7. Zeitabhängige Aufteilung für binäre Klassifizierung](./media/cortana-analytics-playbook-predictive-maintenance/time-dependent-split-for-binary-classification.png)
+
+Abbildung 7. Zeitabhängige Aufteilung für binäre Klassifizierung
 
 Die grünen Quadrate stehen für Datensätze der Zeiteinheiten, die für das Training verwendet werden können. Bei der Generierung jedes Trainingsbeispiels werden die letzten drei Zeiträume für die Featuregenerierung und zwei zukünftige Zeiträume für die Bezeichnung vor dem Zeitpunkt T<sub>c</sub> berücksichtigt. Wenn ein Teil der beiden zukünftigen Zeiträume nach dem Zeitpunkt T<sub>c</sub> liegt, sollten Sie dieses Beispiel aus dem Trainingsdataset ausschließen, da keine Sichtbarkeit über T<sub>c</sub> hinweg vorausgesetzt wird.
 
@@ -411,7 +425,7 @@ Der letzte Abschnitt dieses Leitfadens enthält eine Liste mit den PdM-Lösungsv
 
 | # | Titel | BESCHREIBUNG |
 |--:|:------|-------------|
-| 2 | [Azure Predictive Maintenance Solution Template](https://github.com/Azure/AI-PredictiveMaintenance) (Azure Predictive Maintenance-Lösungsvorlage) | Eine Open-Source-Lösungsvorlage zur Veranschaulichung von ML-Modellierung in einer vollständigen Azure-Infrastruktur, die Szenarien für Predictive Maintenance im Kontext von IoT-Remoteüberwachung unterstützen kann. |
+| 2 | [Azure Predictive Maintenance Solution Template](https://github.com/Azure/AI-PredictiveMaintenance) (Azure Predictive Maintenance-Lösungsvorlage) | Eine Open-Source-Lösungsvorlage zur Veranschaulichung von Azure ML-Modellierung in einer vollständigen Azure-Infrastruktur, die Szenarien für Predictive Maintenance im Kontext von IoT-Remoteüberwachung unterstützen kann. |
 | 3 | [Deep Learning for Predictive Maintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) (Deep Learning für Predictive Maintenance) | Azure Notebook mit einer Demolösung für die Verwendung von LSTM-Netzwerken (Long Short-Term Memory) – einer Klasse von wiederkehrenden neuronalen Netzwerken – für Predictive Maintenance mit einem [Blogbeitrag für dieses Beispiel](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Predictive Maintenance Modeling Guide in R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) (Predictive Maintenance – Leitfaden zur Modellierung in R) | Leitfaden zur PdM-Modellierung mit Skripts in R.|
 | 5 | [Azure Predictive Maintenance for Aerospace](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) (Azure Predictive Maintenance für die Luft- und Raumfahrt) | Eine der ersten PdM-Lösungsvorlagen, die auf Azure ML v1.0 für die Wartung von Flugzeugen basieren. Dieser Leitfaden ist aus diesem Projekt entstanden. |

@@ -1,20 +1,20 @@
 ---
-title: Abrufen von Beschriftungen für Daten
+title: Erstellen eines Datenbeschriftungsprojekts
 titleSuffix: Azure Machine Learning
-description: Dieser Artikel zeigt, wie Sie Beschriftungsprojekte zum Kennzeichnen von Daten für das maschinelle Lernen erstellen und ausführen.
+description: In diesem Artikel wird gezeigt, wie Sie Beschriftungsprojekte zum Kennzeichnen von Daten für das maschinelle Lernen erstellen und ausführen.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: e66a9f8a775a46c906601ea08be52ca9dfbe0171
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: bdedc3ee0c76eafc4b4bc95116fb5be846f4bee5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689296"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978235"
 ---
-# <a name="get-labels-for-data"></a>Abrufen von Beschriftungen für Daten
+# <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
 Das Beschriften großer Datenmengen in Projekten für maschinelles Lernen bereitet häufig Kopfzerbrechen. Projekte mit einer Komponente für maschinelles Sehen – z. B. zur Bildklassifizierung oder Objekterkennung – erfordern im Allgemeinen Beschriftungen für Tausende von Bildern.
  
@@ -24,6 +24,9 @@ Machine Learning verfolgt den Fortschritt nach und verwaltet die Warteschlange m
 
 In Machine Learning können Sie das Projekt starten und beenden, Personen und Teams hinzufügen und entfernen und den Fortschritt überwachen. Sie können beschriftete Daten im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
 
+> [!Important]
+> Derzeit werden nur Beschriftungsprojekte für die Bildklassifizierung und Objektidentifizierung unterstützt. Außerdem müssen die Datenbilder in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Bilder während der Projekterstellung hochladen.) 
+
 In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -32,6 +35,7 @@ In diesem Artikel lernen Sie Folgendes:
 > * Verwalten der Teams und Personen, die am Projekt arbeiten
 > * Ausführen und Überwachen des Projekts
 > * Exportieren der Beschriftungen
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

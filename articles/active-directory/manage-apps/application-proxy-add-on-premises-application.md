@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f1f812bb7d31319476e6b940443e067fac895f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7b00fff9c979fe6bd2c52f67801a94cb50b1c660
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420456"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970345"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -217,8 +217,9 @@ So fügen Sie einen Testbenutzer hinzu:
 
 Testen Sie wie folgt das Anmelden an der Anwendung:
 
-1. Navigieren Sie in Ihrem Browser zur externen URL, die Sie beim Veröffentlichen konfiguriert haben. Der Startbildschirm sollte angezeigt werden.
-1. Melden Sie sich als der Benutzer an, den Sie im vorherigen Abschnitt erstellt haben.
+1. Wählen Sie in der zu testenden Anwendung **Anwendungsproxy** aus.
+2. Wählen Sie oben auf der Seite **Anwendung testen** aus, um einen Test für die Anwendung auszuführen und Konfigurationsprobleme zu ermitteln.
+3. Starten Sie unbedingt zuerst die Anwendung, um die Anmeldung zu testen, und laden Sie anschließend den Diagnosebericht herunter, um den Leitfaden zur Problemlösung für ermittelte Probleme anzuzeigen.
 
 Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen](application-proxy-troubleshoot.md).
 

@@ -10,12 +10,12 @@ ms.author: maxluk
 author: maxluk
 ms.reviewer: sdgilley
 ms.date: 08/02/2019
-ms.openlocfilehash: f384a6a870d891bbaf6fa20a896b0251e62b8d4f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 40c1b7e1e4089db3e95b0da810a961b7fd202aac
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224976"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969172"
 ---
 # <a name="train-and-register-chainer-models-at-scale-with-azure-machine-learning"></a>Trainieren und Registrieren von Chainer-Modellen in großem Umfang mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ os.makedirs(project_folder, exist_ok=True)
 
 In diesem Tutorial ist das Trainingsskript **chainer_mnist.py** bereits bereitgestellt. In der Praxis sollten Sie benutzerdefinierte Trainingsskripts unverändert übernehmen und mit Azure ML ausführen können, ohne Ihren Code ändern zu müssen.
 
-Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript mit Azure ML-Code.  Das Trainingsskript **chainer_mnist.py** zeigt, wie Sie mit dem Objekt `Run` innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
+Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript um einen geringe Menge Azure ML-Code.  Das Trainingsskript **chainer_mnist.py** zeigt, wie Sie mit dem Objekt `Run` innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
 
 Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der chainer-Funktion `datasets.mnist.get_mnist`.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md#data-upload)) ausführen, um Daten während des Trainings verfügbar zu machen.
 

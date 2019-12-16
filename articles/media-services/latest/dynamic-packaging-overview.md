@@ -1,7 +1,7 @@
 ---
 title: Dynamische Paketerstellung in Media Services
 titleSuffix: Azure Media Services
-description: Übersicht über die dynamische Paketerstellung in Azure Media Services.
+description: Dieser Artikel bietet eine Übersicht über die dynamische Paketerstellung in Azure Media Services.
 author: Juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: 304a6168ee5a4c60369b541d4a8cc7ac961913b6
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73574890"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977759"
 ---
 # <a name="dynamic-packaging-in-media-services"></a>Dynamische Paketerstellung in Media Services
 
@@ -269,6 +269,9 @@ Zur Steuerung der Anzahl von Spuren sowie der Formate, Bitraten und Präsentatio
 ## <a name="dynamic-encryption"></a>Dynamische Verschlüsselung
 
 Mit der *dynamischen Verschlüsselung* können Sie Ihre Live- oder On-Demand-Inhalte mit AES-128 oder einem der drei hauptsächlichen DRM-Systeme (Digital Rights Management) dynamisch verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet außerdem einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen an autorisierte Clients. Weitere Informationen finden Sie unter [Dynamische Verschlüsselung](content-protection-overview.md).
+
+> [!NOTE]
+> Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="more-information"></a>Weitere Informationen
 

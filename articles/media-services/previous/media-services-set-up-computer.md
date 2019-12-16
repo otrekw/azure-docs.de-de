@@ -1,6 +1,6 @@
 ---
 title: Einrichten der Azure Media Services-Entwicklungsumgebung | Microsoft-Dokumentation
-description: Einrichten der Umgebung für die Entwicklung mit Azure Media Services
+description: In diesem Artikel wird das Einrichten der Umgebung für die Entwicklung mit Azure Media Services beschrieben.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 546e8e50bc34307c46d33e217d5bc0887b548774
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ef9b3d6f13de70cdf2fff87d9aed0a8efc2b782
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60410024"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895804"
 ---
 # <a name="set-up-your-media-services-development-environment"></a>Einrichten der Media Services-Entwicklungsumgebung  
 

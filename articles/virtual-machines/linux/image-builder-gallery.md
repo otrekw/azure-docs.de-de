@@ -1,18 +1,18 @@
 ---
-title: Verwenden von Azure Image Builder mit einem Imagekatalog für virtuelle Linux-Computer (Vorschauversion)
-description: Erstellen Sie Linux-Images mit Azure Image Builder und einem Katalog für freigegebene Images.
+title: Verwenden von Azure Image Builder mit einem Imagekatalog für Linux-VMs (Vorschauversion)
+description: Erstellen Sie Linux-VM-Images mit Azure Image Builder und einem Katalog für freigegebene Images.
 author: cynthn
 ms.author: cynthn
 ms.date: 04/20/2019
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9fc624ab24cd98d0025fe2a34bf48c29b47c50e9
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 09dceb84a20ef49b3e9d5264b94bb5e74180cd2b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695418"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976127"
 ---
 # <a name="preview-create-a-linux-image-and-distribute-it-to-a-shared-image-gallery"></a>Vorschau: Erstellen eines Linux-Images und Verteilen des Images über einen Katalog für freigegebene Images 
 

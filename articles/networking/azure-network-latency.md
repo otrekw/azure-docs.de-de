@@ -2,21 +2,17 @@
 title: Roundtrip-Latenzstatistiken von Azure-Netzwerken | Microsoft-Dokumentation
 description: Erfahren Sie mehr über Statistiken zur Roundtrip-Latenz zwischen Azure-Regionen.
 services: networking
-documentationcenter: na
 author: nayak-mahesh
 ms.service: virtual-network
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 11/04/2019
+ms.date: 12/04/2019
 ms.author: mnayak
-ms.openlocfilehash: 500676983233f943fdc9638d75758645dee65564
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3947df81b67d5aefc1b628b6ddaf8275152a4cd3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586871"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893083"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Roundtrip-Latenzstatistiken von Azure-Netzwerken
 
@@ -26,18 +22,18 @@ Azure überwacht kontinuierlich die Latenz (Geschwindigkeit) der Kernbereiche de
 
 Die Latenzmessungen werden von ThousandEyes-Agents erfasst, die weltweit in Azure-Cloudregionen gehostet werden und fortlaufend in Intervallen von 1 Minute untereinander Netzwerktests senden. Die monatlichen Latenzstatistiken werden aus dem Mittelwert der erfassten Stichproben für den Monat abgeleitet.
 
-## <a name="october-2019-latency-figures"></a>Latenzzahlen vom Oktober 2019
+## <a name="november-2019-latency-figures"></a>Latenzzahlen vom November 2019
 
-Für den Zeitraum von 31 Tagen, der am 31. Oktober 2019 endet, lauten die monatlichen minimalen und maximalen Roundtrip-Latenzzeiten in aggregierten Regionen wie folgt:
+**November-Update:** 3 Regionen hinzugefügt.
 
-- **5 ms** bis **72 ms** für Roundtrips innerhalb der Regionen in **Nordamerika**.
-- **3 ms** bis **28 ms** für Roundtrips innerhalb der Regionen in **Europa**.
-- **4 ms** bis **134 ms** für Roundtrips innerhalb der Regionen in **Asien**.
+* Norwegen, Osten
+* Norwegen, Westen
+* Australien
 
-Die folgenden Latenzmessungen bei regionsübergreifender Datenübertragung werden von [ThousandEyes](https://thousandeyes.com) unterstützt. Die Maßeinheit in der folgenden Tabelle ist Millisekunden (ms).
+Die monatlichen durchschnittlichen Roundtripzeiten zwischen Azure-Regionen für die letzten 30 Tage (Ende am 30. November 2019) sind unten dargestellt. Die folgenden Messungen werden von [ThousandEyes](https://thousandeyes.com) unterstützt.
 
-![Latenzstatistiken zu regionsübergreifender Datenübertragung in Azure](media/azure-network-latency/azure-inter-region-latency.png)
-
+![Latenzstatistiken zu regionsübergreifender Datenübertragung in Azure](media/azure-network-latency/latency-nov-2019.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
+
+Weitere Informationen zu [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).

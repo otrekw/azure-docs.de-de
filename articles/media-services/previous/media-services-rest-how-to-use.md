@@ -1,6 +1,6 @@
 ---
 title: Übersicht über die Media Services Operations-REST-API | Microsoft-Dokumentation
-description: Übersicht über die Media Services-REST-API
+description: Die „Media Services Operations-REST“-API wird zum Erstellen von Aufträgen, Medienobjekten, Livekanälen und anderen Ressourcen in einem Media Services-Konto verwendet. Dieser Artikel bietet eine Übersicht über die Azure Media Services v2-REST-API.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 29b995d722cd304cc85580ac4f2f38a0b0d9cecd
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014846"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895812"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API 
 

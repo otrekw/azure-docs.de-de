@@ -1,6 +1,6 @@
 ---
 title: IoT-Dienste von Azure Deutschland | Microsoft-Dokumentation
-description: Ihr Einstiegspunkt in die IoT Suite für Azure Deutschland
+description: Dieser Artikel bietet einen Einstiegspunkt in die Azure IoT Suite für Azure Deutschland.
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: ralfwi
-ms.openlocfilehash: 932f9457cc5d33063714ae9c9678174a8b64d156
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b6aa35406e199d266c4597768ea902fd97430ac7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684761"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890444"
 ---
 # <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
 

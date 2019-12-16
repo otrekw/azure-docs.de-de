@@ -1,6 +1,6 @@
 ---
 title: Verbinden mit der Azure Media Services v3-API – .NET
-description: Erfahren Sie, wie Sie mit .NET eine Verbindung mit der Media Services v3-API herstellen.
+description: In diesem Artikel wird demonstriert, wie Sie mit .NET eine Verbindung mit der Media Services v3-API herstellen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b2cfe8014e6ffbd7a6d5449192acde9780a2d303
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122885"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899893"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Verbinden mit der Media Services v3-API – .NET
 

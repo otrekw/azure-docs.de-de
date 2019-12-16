@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 93932fac9a5e5d4c21adc99bd31e9366a9709cc2
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70859116"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977963"
 ---
-# <a name="tutorial-create-a-wpf-app-to-display-face-data-in-an-image"></a>Tutorial: Erstellen einer WPF-App zum Anzeigen von Gesichtserkennungsdaten in einem Bild
+# <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Tutorial: Erstellen einer WPF-App (Windows Presentation Framework) zum Anzeigen von Gesichtserkennungsdaten in einem Bild
 
-In diesem Tutorial erfahren Sie, wie sie die Azure-Gesichtserkennungs-API über das .NET Client SDK verwenden, um Gesichter in einem Bild zu erkennen und diese Daten anschließend auf der Benutzeroberfläche darzustellen. Sie erstellen eine WPF-Anwendung (Windows Presentation Foundation), die Gesichter erkennt, einen Rahmen um jedes Gesicht zeichnet und eine Beschreibung des Gesichts auf der Statusleiste anzeigt. 
+In diesem Tutorial erfahren Sie, wie sie die Azure-Gesichtserkennungs-API über das .NET Client SDK verwenden, um Gesichter in einem Bild zu erkennen und diese Daten anschließend auf der Benutzeroberfläche darzustellen. Sie erstellen eine WPF-Anwendung, die Gesichter erkennt, einen Rahmen um jedes Gesicht zeichnet und eine Beschreibung des Gesichts auf der Statusleiste anzeigt. 
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 

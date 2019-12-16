@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 740b3fae81521fec2cba31e3b8fd161f767c4380
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858968"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977793"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Tutorial: Erstellen einer Android-App zum Erkennen und Umranden von Gesichtern in einem Bild
 
-In diesem Tutorial erstellen Sie eine einfache Android-App, die mithilfe der Azure-Gesichtserkennungs-API über das Java SDK Gesichter in einem Bild erkennt und umrandet. Die Anwendung zeigt ein ausgewähltes Bild und zeichnet einen Rahmen um jedes erkannte Gesicht.
+In diesem Tutorial erstellen Sie eine Android-App, die mithilfe der Azure-Gesichtserkennungs-API über das Java SDK menschliche Gesichter in einem Bild erkennt. Die Anwendung zeigt ein ausgewähltes Bild und zeichnet einen Rahmen um jedes erkannte Gesicht.
 
 Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
@@ -103,7 +103,7 @@ Ihre App erkennt Gesichter durch Aufrufen der **faceClient.Face.DetectWithStream
 
 Die Position jedes zurückgegebenen **Face**-Elements wird mit einem Rechteck angegeben, und außerdem werden einige optionale Gesichtsmerkmale angezeigt. In diesem Beispiel werden nur die Rechtecke um Gesichter angefordert.
 
-Fügen Sie die folgenden beiden Methoden in die **MainActivity**-Klasse ein. Beachten Sie, dass die App nach Abschluss der Gesichtserkennung die **drawFaceRectanglesOnBitmap**-Methode aufruft, um **ImageView** zu ändern. Diese Methode definieren Sie als Nächstes.
+Fügen Sie die folgenden beiden Methoden in die **MainActivity**-Klasse ein. Die App ruft nach Abschluss der Gesichtserkennung die **drawFaceRectanglesOnBitmap**-Methode auf, um **ImageView** zu ändern. Diese Methode definieren Sie als Nächstes.
 
 [!code-java[](~/cognitive-services-face-android-detect/FaceTutorial/app/src/main/java/com/contoso/facetutorial/MainActivity.java?name=snippet_detection_methods)]
 

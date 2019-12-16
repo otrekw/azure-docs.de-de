@@ -1,6 +1,6 @@
 ---
 title: Informationen zu von Azure Media Services empfohlenen Encodern | Microsoft-Dokumentation
-description: Informationen zu von Media Services empfohlenen Encodern
+description: In diesem Artikel werden die von Azure Media Services empfohlenen lokalen Encoder aufgelistet.
 services: media-services
 keywords: Codierung; Encoder; Medien
 author: dbgeorge
@@ -9,12 +9,12 @@ ms.author: johndeu
 ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: fc481129e652c6dacd15a5a6d039a9118393e8f1
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 4a0af9d040c801c125d04a5af72b2ea53322ccdb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854240"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74886570"
 ---
 # <a name="recommended-on-premises-encoders"></a>Empfohlene lokale Encoder
 Beim Livestreaming mit Azure Media Services können Sie angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Wenn Sie sich für die Verwendung eines lokalen Encoders mit einem Livecodierkanal entscheiden, sollte der Encoder einen qualitativ hochwertigen Datenstrom mit Einzelbitrate als Ausgabe übertragen. Ziehen Sie dagegen einen lokalen Encoder mit Pass-Through-Kanal vor, dann muss Ihr Encoder einen Stream mit Mehrfachbitrate als Ausgabe übertragen. Weitere Informationen finden Sie unter [Livestreaming mit lokalen Encodern](media-services-live-streaming-with-onprem-encoders.md).

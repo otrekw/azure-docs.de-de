@@ -1,6 +1,6 @@
 ---
 title: Erstellen einer Azure Media Services-Auftragseingabe aus einer HTTPS-URL | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie Sie eine Auftragseingabe aus einer HTTP(S)-URL erstellen.
+description: In diesem Thema wird gezeigt, wie Sie eine Azure Media Services-Auftragseingabe aus einer HTTPS-URL erstellen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f6eee912bb3bba112bd13969f1a8d9cb5748e387
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a3d4568dd237491f28ae2880bdd78dd236870c3f
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65413829"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899828"
 ---
 # <a name="create-a-job-input-from-an-https-url"></a>Erstellen einer Auftragseingabe aus einer HTTPS-URL
 

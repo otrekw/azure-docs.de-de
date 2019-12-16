@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ebfe5f75d5d8546e0f5e8ad6f8c5d0063e5bda2
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: cc73d7ec81ea0105a5868ec698289bd27526a43b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72377282"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893500"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ezofficeinventory"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit EZOfficeInventory
 
@@ -94,7 +94,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Die EZOfficeInventory-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
-    ![image](common/edit-attribute.png)
+    ![image](common/default-attributes.png)
 
 1. Darüber hinaus wird von der EZOfficeInventory-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
@@ -144,13 +144,21 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ## <a name="configure-ezofficeinventory-sso"></a>Konfigurieren des einmaligen Anmeldens für EZOfficeInventory
 
-1. Melden Sie sich in einem neuen Webbrowserfenster bei der EZOfficeInventory-Unternehmenswebsite als Administrator an.
+1. Wenn Sie die Konfiguration in EZOfficeInventory automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
 
-2. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **Settings** > **Add Ons** (Einstellungen > Add-Ons).
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **EZOfficeInventory einrichten**, um zur Anwendung EZOfficeInventory weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei EZOfficeInventory anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 5.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+1. Wenn Sie EZOfficeInventory manuell einrichten möchten, melden Sie sich in einem neuen Webbrowserfenster bei der EZOfficeInventory-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
+
+1. Klicken Sie in der oberen rechten Ecke der Seite auf **Profile** (Profil), und navigieren Sie dann zu **Settings** > **Add Ons** (Einstellungen > Add-Ons).
 
     ![EZOfficeInventory-Konfiguration](./media/ezofficeinventory-tutorial/configure01.png)
 
-3. Scrollen Sie nach unten zum Abschnitt **SAML Integration** (SAML-Integration), und führen Sie die folgenden Schritte aus:
+1. Scrollen Sie nach unten zum Abschnitt **SAML Integration** (SAML-Integration), und führen Sie die folgenden Schritte aus:
 
     ![EZOfficeInventory-Konfiguration](./media/ezofficeinventory-tutorial/configure02.png)
 
@@ -176,7 +184,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 In diesem Abschnitt wird in EZOfficeInventory ein Benutzer mit dem Namen Britta Simon erstellt. EZOfficeInventory unterstützt die Just-in-Time-Benutzerbereitstellung (standardmäßig aktiviert). Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in EZOfficeInventory vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -191,4 +199,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „EZOfficeInventory“ klicken, soll
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [EZOfficeInventory mit Azure AD ausprobieren](https://aad.portal.azure.com/)
-

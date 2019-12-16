@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Blaupausenbeispiels für UK OFFICIAL und UK NHS
 description: Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele. Jede Steuerung wird mindestens einer Azure-Richtlinie zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 06/26/2019
+ms.date: 12/04/2019
 ms.topic: sample
-ms.openlocfilehash: 79c39ee058a74bc740e72b75fe85882a89f9cd85
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546449"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851365"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Zuordnungssteuerung für UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 
@@ -25,16 +25,19 @@ Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview
 
 - Nur sichere Verbindungen mit Ihrer Redis Cache-Instanz sollten aktiviert werden
 - Sichere Übertragung in Speicherkonten sollte aktiviert werden.
+- Überwachungsergebnisse von Windows-Webservern anzeigen, die keine sicheren Kommunikationsprotokolle verwenden
+- Erforderliche Komponenten zum Überwachen von Windows-Webservern bereitstellen, die keine sicheren Kommunikationsprotokolle verwenden
+- In Ihrer API-App sollte die neueste TLS-Version verwendet werden.
+- In Ihrer Web-App sollte die neueste TLS-Version verwendet werden.
+- In Ihrer Funktions-App sollte die neueste TLS-Version verwendet werden.
 
 ## <a name="23-data-at-rest-protection"></a>2.3 Schutz von ruhenden Daten
 
 Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Erzwingen bestimmter kryptografischer Steuerungen und zum Überwachen der Verwendung schwacher kryptografischer Einstellungen hilft Ihnen die Blaupause, Ihre Richtlinien für die Verwendung von kryptografischen Steuerungen durchzusetzen.
 Wenn Sie wissen, wo Ihre Azure-Ressourcen möglicherweise nicht optimale kryptografische Konfigurationen aufweisen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Ressourcen entsprechend Ihrer Richtlinie zur Informationssicherheit konfiguriert sind. Insbesondere setzen die durch diese Blaupause zugewiesenen Richtlinien Folgendes voraus: Verschlüsselung für Speicherkonten von Data Lake, transparente Datenverschlüsselung für SQL-Datenbanken, Überwachung auf fehlende Verschlüsselung für Speicherkonten, SQL-Datenbanken, Festplatten virtueller Computer und Automatisierungskontenvariablen, Überwachung auf unsichere Verbindungen zu Speicherkonten und Redis Cache, Überwachung schwacher Passwortverschlüsselungen für virtuelle Computer sowie Überwachung der unverschlüsselten Kommunikation mit Service Fabric.
 
-- Transparent Data Encryption für SQL-Datenbanken sollte aktiviert werden.
 - Die Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden.
 - Automation-Kontovariablen sollten verschlüsselt werden.
-- Sichere Übertragung in Speicherkonten sollte aktiviert werden.
 - Service Fabric Cluster sollten die Eigenschaft ClusterProtectionLevel auf EncryptAndSign setzen
 - Transparent Data Encryption für SQL-Datenbanken sollte aktiviert werden.
 - Bereitstellen der transparenten SQL DB-Datenbankverschlüsselung
@@ -48,22 +51,43 @@ Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview
 
 - Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen
 - Systemupdates sollten auf Ihren Computern installiert sein.
+- Systemupdates für VM-Skalierungsgruppen sollten installiert werden.
 - Sicherheitsrisiken in der Sicherheitskonfiguration für Ihre Computer sollten beseitigt werden.
 - Sicherheitsrisiken in SQL-Datenbanken sollten beseitigt werden.
 - Sicherheitsrisiken sollten durch eine Lösung zur Sicherheitsrisikobewertung beseitigt werden.
+- Für Ihre SQL Server-Instanzen muss eine Sicherheitsrisikobewertung aktiviert sein.
+- Bewertung von Sicherheitsrisiken für verwaltete SQL-Instanzen aktivieren
+- Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen sollten beseitigt werden.
+- Advanced Data Security muss für Ihre verwalteten SQL-Instanzen aktiviert werden.
+- Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
 
 ## <a name="53-protective-monitoring"></a>5.3 Vorbeugende Überwachung
 
-Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md), die eine vorbeugende Überwachung auf nicht eingeschränkten Zugriff, von Whitelist-Aktivitäten und Bedrohungen ermöglichen, hilft Ihnen die Blaupause beim Schutz der Assets des Informationssystems.
+Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md), die eine vorbeugende Überwachung auf nicht eingeschränkten Zugriff, von Zulassungslistenaktivitäten und Bedrohungen ermöglichen, hilft Ihnen die Blaupause beim Schutz der Ressourcen des Informationssystems.
 
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
+- Überwachen von virtuellen Computern ohne konfigurierte Notfallwiederherstellung
+- DDoS Protection Standard sollte aktiviert sein.
+- Advanced Threat Protection-Typen sollten in den Advanced Data Security-Einstellungen für verwaltete SQL-Instanzen auf „Alle“ festgelegt werden.
+- Advanced Threat Protection-Typen sollten in den Advanced Data Security-Einstellungen für SQL Server auf „Alle“ festgelegt werden.
 - Bereitstellen von Bedrohungserkennung auf SQL-Servern
-- Bereitstellen der standardmäßigen Microsoft IaaS-Antischadsoftware-Erweiterung für Windows Server
+- Bereitstellung der standardmäßigen Microsoft IaaSAntimalware-Erweiterung für Windows Server
 
-## <a name="9-secure-user-management--10-identity-and-authentication"></a>9 Sichere Benutzerverwaltung / 10 Identität und Authentifizierung
+## <a name="9-secure-user-management"></a>9 Sichere Benutzerverwaltung 
 
 Azure implementiert eine rollenbasierte Zugriffskontrolle (RBAC), die Ihnen hilft, zu verwalten, wer Zugriff auf Ressourcen in Azure hat. Über das Azure-Portal können Sie überprüfen, wer Zugriff auf Azure-Ressourcen und die zugehörigen Berechtigungen hat. Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Überwachen von externen Konten mit Besitzer- und/oder Lese-/Schreibberechtigungen sowie von Konten mit Besitzer-, Lese- und/oder Schreibberechtigungen, für die keine mehrstufige Authentifizierung (MFA) aktiviert ist, hilft Ihnen die Blaupause, Zugriffsrechte einzuschränken und zu steuern.
+
+- MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
+- MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
+- MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein
+- Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.
+- Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.
+- Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden
+
+## <a name="10-identity-and-authentication"></a>10 Identität und Authentifizierung
+
+Durch die Zuweisung von [Azure-Richtliniendefinitionen](../../../policy/overview.md) zum Überwachen von externen Konten mit Besitzer- und/oder Lese-/Schreibberechtigungen sowie von Konten mit Besitzer-, Lese- und/oder Schreibberechtigungen, für die keine mehrstufige Authentifizierung (MFA) aktiviert ist, hilft Ihnen die Blaupause, Zugriffsrechte einzuschränken und zu steuern.
 
 - MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.
 - MFA sollte für Konten mit Schreibrechten für Ihr Abonnement aktiviert werden
@@ -86,20 +110,20 @@ Die Blaupause weist auch Azure-Richtliniendefinitionen zu Auditkonten zu, die zu
 
 Die Blaupause weist auch eine Azure-Richtliniendefinition zum Überwachen der Dateiberechtigungen für Passwörter von virtuellen Linux-Computern zu, um bei einer fehlerhaften Festlegung eine Warnung auszugeben. Dieses Design ermöglicht Ihnen Korrekturmaßnahmen, die sicherstellen, dass Authentifikatoren nicht kompromittiert werden.
 
-- \[Vorschau\]: Festlegung der /etc/passwd-Dateiberechtigungen auf 0644 auf Linux-VMs überwachen
+- \[Vorschau\]: Überwachungsergebnisse von Linux-VMs anzeigen, bei denen die passwd-Dateiberechtigungen nicht auf 0644 festgelegt sind
 
 Durch die Zuweisung von Azure-Richtliniendefinitionen zum Überwachen virtueller Windows-Computer, die keine Mindestsicherheitsanforderungen oder andere Anforderungen an Passwörter erfüllen, hilft Ihnen die Blaupause bei der Durchsetzung sicherer Passwörter. Aufgrund der Informationen zu virtuellen Computern, die gegen die Richtlinie zur Kennwortsicherheit verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass die Kennwörter für alle Benutzerkonten auf virtuellen Computern mit der Richtlinie konform sind.
 
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
-- \[Vorschau\]: Anforderungen zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
-- \[Vorschau\]: Windows-VMs überwachen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
-- \[Vorschau\]: Windows-VMs überwachen, für die kein maximales Kennwortalter von 70 Tagen gilt
-- \[Vorschau\]: Windows-VMs überwachen, die kein Mindestkennwortalter von 1 Tag verwenden
-- \[Vorschau\]: Windows-VMs überwachen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
-- \[Vorschau\]: Windows-VMs überwachen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Erforderliche Komponenten zum Überwachen von Windows-VMs bereitstellen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
+- \[Vorschau\]: Erforderliche Komponenten zum Überwachen von Windows-VMs bereitstellen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- \[Vorschau\]: Erforderliche Komponenten zum Überwachen von Windows-VMs bereitstellen, für die kein minimales Kennwortalter von 1 Tag gilt
+- \[Vorschau\]: Erforderliche Komponenten zum Überwachen von Windows-VMs bereitstellen, für die keine Mindestkennwortlänge von 14 Zeichen gilt
+- \[Vorschau\]: Erforderliche Komponenten zum Überwachen von Windows-VMs bereitstellen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, auf denen nicht die Einstellung für die Kennwortkomplexität aktiviert ist
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, für die kein maximales Kennwortalter von 70 Tagen gilt
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, für die kein minimales Kennwortalter von 1 Tag gilt
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, für die keine Mindestkennwortlänge von 14 Zeichen festgelegt ist
+- \[Vorschau\]: Überwachungsergebnisse von Windows-VMs anzeigen, die eine Wiederverwendung der vorherigen 24 Kennwörter zulassen
 
 Durch die Zuweisung von Azure-Richtliniendefinitionen hilft Ihnen die Blaupause auch, den Zugriff auf Azure-Ressourcen zu steuern. Mit diesen Richtlinien wird die Verwendung von Ressourcentypen und Konfigurationen überwacht, die einen weniger restriktiven Zugriff auf Ressourcen ermöglichen. Durch Kenntnis der Ressourcen, die gegen diese Richtlinien verstoßen, können Sie Korrekturmaßnahmen ergreifen, um sicherzustellen, dass der Zugriff auf Azure-Ressourcen auf autorisierte Benutzer beschränkt ist.
 
@@ -117,6 +141,18 @@ Sofern Sie nicht mehr als 25 Richtlinien für eine angemessene sichere Benutzerv
 
 - Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
 - Die adaptive Anwendungssteuerung sollte auf virtuellen Computern aktiviert werden.
+- Die NSG-Regeln für Webanwendungen in IaaS sollten verstärkt werden.
+- Zugriff über Endpunkt mit Internetzugriff sollte eingeschränkt werden
+- NSG-Regeln für VMs mit Internetzugriff sollten verstärken werden.
+- Die Endpoint Protection-Lösung sollte für VM-Skalierungsgruppen installiert sein.
+- Die Just-In-Time-Netzwerkzugriffssteuerung sollte auf virtuelle Computer angewendet werden.
+- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
+- Remotedebuggen sollte für Funktions-Apps deaktiviert werden
+- Remotedebuggen muss für Webanwendung deaktiviert werden
+- Remotedebuggen für API-App deaktivieren
+- Zugriff auf Webanwendung nur über HTTPS gestatten
+- Zugriff auf Funktions-App nur über HTTPS gestatten
+- Auf API-Apps sollte nur über HTTPS zugegriffen werden können
 
 ## <a name="12-secure-service-administration"></a>12 Sichere Dienstverwaltung
 
@@ -151,7 +187,6 @@ Diese Blaupause hilft Ihnen, sicherzustellen, dass Systemereignisse protokollier
 
 - Überwachung muss für Advanced Data Security-Einstellungen für SQL Server aktiviert sein
 - Überwachen der Diagnoseeinstellung
-- Überwachungseinstellungen auf SQL Server-Ebene überwachen
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Linux-VMs
 - \[Vorschau\]: Bereitstellen des Log Analytics-Agents für Windows-VMs
 - Bereitstellen von Network Watcher beim Erstellen virtueller Netzwerke

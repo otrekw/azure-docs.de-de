@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Azure-Analyseressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Analyseressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Analyseressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 37baf361a34df1629d3e05f5e40b2d2f8912ce27
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 11a2c85a1a9e3f1db92a7809a3ec6ef90a13f3d4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272530"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928887"
 ---
 # <a name="migrate-analytics-resources-to-global-azure"></a>Migrieren von Analyseressourcen zu Azure weltweit
 

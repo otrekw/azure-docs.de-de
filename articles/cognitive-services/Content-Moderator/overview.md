@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a78a92a33075a97ddadb2e1fe677b7ded541d12c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: c1ff74bc358f167612b2bfe05ca47e21203d8702
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565575"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973491"
 ---
 # <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
-Die Azure Content Moderator-API gehört zu Cognitive Services und überprüft Text-, Bild- und Videoinhalte auf potenziell anstößiges, riskantes oder anderweitig unerwünschtes Material. Gefundenes Material dieser Art wird mithilfe von Flags entsprechend gekennzeichnet. Mit Flags versehene Inhalte können dann von Ihrer App angemessen behandelt werden, um Vorgaben zu erfüllen oder den Benutzern die vorgesehene Umgebung zu bieten. Weitere Informationen zur Bedeutung der verschiedenen Inhaltsflags finden Sie im Abschnitt [Moderations-APIs](#moderation-apis).
+Azure Content Moderator gehört zu Cognitive Services und überprüft Text-, Bild- und Videoinhalte auf potenziell anstößiges, riskantes oder anderweitig unerwünschtes Material. Gefundenes Material dieser Art wird mithilfe von Flags entsprechend gekennzeichnet. Mit Flags versehene Inhalte können dann von Ihrer App angemessen behandelt werden, um Vorgaben zu erfüllen oder den Benutzern die vorgesehene Umgebung zu bieten. Weitere Informationen zur Bedeutung der verschiedenen Inhaltsflags finden Sie im Abschnitt [Moderations-APIs](#moderation-apis).
 
-## <a name="where-it-is-used"></a>Einsatzgebiete
+## <a name="where-its-used"></a>Verwendung des Diensts
 
 Im Anschluss finden Sie einige Szenarien, in denen ein Softwareentwickler oder Team Content Moderator verwenden kann:
 
@@ -32,7 +32,7 @@ Im Anschluss finden Sie einige Szenarien, in denen ein Softwareentwickler oder T
 - Anbieter im Bildungswesen, die unangemessene Inhalte für Schüler und Lehrer herausfiltern
 
 > [!NOTE]
-> Sie können Content Moderator nicht verwenden, um nach Bildern zu suchen, auf denen Kinder in nicht zulässiger Weise dargestellt sind. Qualifizierte Organisationen können jedoch den [PhotoDNA Cloud Service](https://www.microsoft.com/photodna "Microsoft PhotoDNA Cloud Service") verwenden, um nach derartigen Inhalten zu suchen.
+> Sie können Content Moderator nicht verwenden, um nach Bildern zu suchen, auf denen Kinder in nicht zulässiger Weise dargestellt sind. Qualifizierte Organisationen können jedoch den [PhotoDNA-Clouddienst](https://www.microsoft.com/photodna "Microsoft PhotoDNA-Clouddienst") verwenden, um nach derartigen Inhalten zu suchen.
 
 ## <a name="what-it-includes"></a>Lieferumfang
 
@@ -65,7 +65,7 @@ Mithilfe der Review-APIs können Sie Ihre Moderationspipeline für menschliche R
 
 ## <a name="the-review-tool"></a>Das Prüfungstool
 
-Der Content Moderator-Dienst enthält auch das webbasierte [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md), das die Inhaltsüberprüfungen für menschliche Moderatoren hostet. Der Dienst wird durch die menschlichen Eingaben nicht trainiert. Die Zusammenarbeit zwischen Dienst und menschlichen Überprüfungsteams ermöglicht es Entwicklern jedoch, ein ausgewogenes Verhältnis zwischen Effizienz und Genauigkeit zu erzielen. Das Überprüfungstool bietet auch ein benutzerfreundliches Front-End für eine Vielzahl von Content Moderator-Ressourcen.
+Der Content Moderator-Dienst enthält auch das webbasierte [Überprüfungstool](Review-Tool-User-Guide/human-in-the-loop.md), das die Inhaltsüberprüfungen für menschliche Moderatoren hostet. Der Dienst wird durch die menschlichen Eingaben nicht trainiert. Die Zusammenarbeit zwischen Dienst und menschlichen Überprüfungsteams ermöglicht es Entwicklern jedoch, ein ausgewogenes Verhältnis zwischen Effizienz und Genauigkeit zu erzielen. Das Überprüfungstool bietet auch ein benutzerfreundliches Front-End für verschiedene Content Moderator-Ressourcen.
 
 ![Startseite des Content Moderator-Tools für die Überprüfung durch Personen](images/homepage.PNG)
 

@@ -1,6 +1,6 @@
 ---
-title: Media Services – Anmerkungen zu dieser Version | Microsoft Docs
-description: Versionsanmerkungen zu Media Services
+title: Azure Media Services – Anmerkungen zu dieser Version | Microsoft-Dokumentation
+description: In diesem Artikel werden die Anmerkungen zu dieser Version von Microsoft Azure Media Services v2 erläutert.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: 7c6cac925ad53e08ecc10c828765153c905f1c1d
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423888"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968509"
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 
@@ -58,7 +58,7 @@ Weitere Informationen finden Sie unter [Migration von Azure Media Indexer v1 und
 
 ### <a name="deprecation-of-media-processors"></a>Einstellung von Medienprozessoren
 
-Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) am 31. November 2020 an.
+Wir kündigen die Einstellung der Medienprozessoren *Windows Azure Media Encoder* (WAME) und *Azure Media Encoder* (AME) am 31. März 2020 an.
 
 Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) und [Migrieren von AME zu Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 
@@ -554,6 +554,10 @@ Die folgende Funktion war im November-Release des SDK neu:
 * Unterstützung der asynchronen Methode
   
     * Für alle Methoden wurde asynchrone Unterstützung hinzugefügt.
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

@@ -5,7 +5,6 @@ services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
 manager: gwallace
-editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
@@ -14,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: 89c98379a8e79d1b00db47021ae737ae471f79b3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 44df85a94ad26d3abcd48f01c31e7aa093c1123f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035012"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978695"
 ---
-# <a name="create-a-shared-image-gallery-using-the-azure-portal"></a>Erstellen eines Katalogs mit freigegebenen Images über das Azure-Portal
+# <a name="create-an-azure-shared-image-gallery-using-the-portal"></a>Erstellen einer Azure Shared Image Gallery über das Portal
 
 Der [Katalog mit freigegebenen Images](shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
 
@@ -42,15 +41,15 @@ Die Funktion „Katalog mit freigegebenen Images“ verfügt über mehrere Resso
 <br>
 
 > [!IMPORTANT]
-> Spezialisierte Images befinden sich zurzeit in der Public Preview-Phase.
+> Spezialisierte Images befinden sich zurzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> **Bekannte Einschränkungen der Vorschau** Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
+> **Bekannte Einschränkungen der Vorschau**: Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für das Beispiel in diesem Artikel muss ein verwaltetes Image eines generalisierten virtuellen Computers oder eine Momentaufnahme eines spezialisierten virtuellen Computers vorhanden sein. Sie können im [Tutorial: Erstellen Sie ein benutzerdefiniertes Image eines virtuellen Azure-Computers mit Azure PowerShell](tutorial-custom-images.md), um ein verwaltetes Image zu erstellen, oder [erstellen Sie eine Momentaufnahme](../windows/snapshot-copy-managed-disk.md) für einen spezialisierten virtuellen Computer. Für verwaltete Images und Momentaufnahmen darf der Datenträger nicht größer als 1 TB sein.
+Für das Beispiel in diesem Artikel muss ein verwaltetes Image eines generalisierten virtuellen Computers oder eine Momentaufnahme eines spezialisierten virtuellen Computers vorhanden sein. Sie können im [Tutorial: Erstellen eines benutzerdefinierten Images eines virtuellen Azure-Computers mit Azure PowerShell](tutorial-custom-images.md) lesen, wie ein verwaltetes Image erstellt wird, oder [erstellen Sie eine Momentaufnahme](../windows/snapshot-copy-managed-disk.md) für einen spezialisierten virtuellen Computer. Für verwaltete Images und Momentaufnahmen darf der Datenträger nicht größer als 1 TB sein.
 
 Ersetzen Sie beim Durcharbeiten dieses Artikels bei Bedarf den Namen der Ressourcengruppe und des virtuellen Computers.
 

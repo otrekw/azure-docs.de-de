@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 12/05/2019
 ms.author: cherylmc
-ms.openlocfilehash: d076e2b0057f0ba666fa47ffd0b3d7d1fcc14631
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: c13e7b507291d7671ac861fc7a8683c87be947a1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725599"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896645"
 ---
 # <a name="about-zone-redundant-virtual-network-gateways-in-azure-availability-zones"></a>Informationen zu zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen
 
@@ -39,21 +39,9 @@ Um Gateways in einer bestimmten Zone bereitzustellen, verwenden Sie zonenbasiert
 
 ## <a name="gwskus"></a>Gateway-SKUs
 
-Zonenredundante und zonenbasierte Gateways sind als neue Gateway-SKUs verfügbar. In Regionen mit Azure-Verfügbarkeitszonen haben wir neue SKUs für virtuelle Netzwerkgateways hinzugefügt. Diese SKUs ähneln den entsprechenden SKUs für ExpressRoute und VPN Gateway, sind aber speziell auf zonenredundante und zonenbasierte Gateways ausgelegt.
+Zonenredundante und zonenbasierte Gateways sind als neue Gateway-SKUs verfügbar. In Regionen mit Azure-Verfügbarkeitszonen haben wir neue SKUs für virtuelle Netzwerkgateways hinzugefügt. Diese SKUs ähneln den entsprechenden SKUs für ExpressRoute und VPN Gateway, sind aber speziell auf zonenredundante und zonenbasierte Gateways ausgelegt. Sie können diese SKUs am „AZ“ im SKU-Namen identifizieren.
 
-Folgende neue Gateway-SKUs stehen zur Verfügung:
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
+Weitere Informationen zu Gateway-SKUs finden Sie unter [VPN-Gateway-SKUs](vpn-gateway-about-vpngateways.md#gwsku) und [ExpressRoute-Gateway-SKUs](../expressroute/expressroute-about-virtual-network-gateways.md#gwsku).
 
 ## <a name="pipskus"></a>SKUs für öffentliche IP-Ressourcen
 

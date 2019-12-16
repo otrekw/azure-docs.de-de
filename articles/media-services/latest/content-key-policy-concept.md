@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 07/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8809bf25c3bcfb26fb0ad251a2b09dfdca2a3e04
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7ddef1e78b4f8f62145e10b4cabc4537e28aba2f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68679185"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74969903"
 ---
 # <a name="content-key-policies"></a>Richtlinien für Inhaltsschlüssel
 
@@ -26,9 +26,6 @@ Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhal
 Um Verschlüsselungsoptionen für Ihren Datenstrom festzulegen, müssen Sie die [Streamingrichtlinie](streaming-policy-concept.md) erstellen und sie mit Ihrem [Streaminglocator](streaming-locators-concept.md) verknüpfen. Sie erstellen die [Richtlinie für den Inhaltsschlüssel](https://docs.microsoft.com/rest/api/media/contentkeypolicies), um zu konfigurieren, wie der Inhaltsschlüssel (der den sicheren Zugriff auf Ihre [Medienobjekte](assets-concept.md) ermöglicht) an Endclients übermittelt wird. Sie müssen die Anforderungen (Einschränkungen) für die Richtlinie für den Inhaltsschlüssel festlegen, die erfüllt sein müssen, damit Schlüssel mit der angegebenen Konfiguration an Clients übermittelt werden. Die Richtlinie für den Inhaltsschlüssel ist zum Streamen oder Herunterladen als Klartext nicht erforderlich. 
 
 Normalerweise ordnen Sie Ihre Richtlinie für Inhaltsschlüssel Ihrem [Streaminglocator](streaming-locators-concept.md) zu. Alternativ können Sie die Richtlinie für Inhaltsschlüssel auch in einer [Streamingrichtlinie](streaming-policy-concept.md) angeben (beim Erstellen einer benutzerdefinierten Streamingrichtlinie für erweiterte Szenarien). 
-
-> [!NOTE]
-> Eigenschaften von Richtlinien für Inhaltsschlüssel vom Typ `Datetime` liegen immer im UTC-Format vor.
 
 ## <a name="best-practices-and-considerations"></a>Bewährte Methoden und Überlegungen
 
@@ -55,6 +52,11 @@ Verwenden Sie `GetPolicyPropertiesWithSecretsAsync`, um den Schlüssel abzurufen
 ## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 
 Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Eigenschaften von Richtlinien für Inhaltsschlüssel vom Typ `Datetime` liegen immer im UTC-Format vor.
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: iainfou
-ms.openlocfilehash: a67d3a9fb74b1a4f07fc4995c268bb40a84834f7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cccdb54b89dff7c6a1fc9dac55c63b19d661ab65
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035922"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951308"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -67,6 +67,19 @@ Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Re
 
 
 Wenn Sie die Befehlszeilenschnittstelle lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.31 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+
+## <a name="network-requirements"></a>Netzwerkanforderungen
+
+Zum Aktivieren der Azure AD-Authentifizierung für Ihre virtuellen Linux-Computer in Azure müssen Sie sicherstellen, dass die Netzwerkkonfiguration der virtuellen Computer den ausgehenden Zugriff auf die folgenden Endpunkte über TCP-Port 443 zulässt:
+
+* https://login.microsoftonline.com
+* https://device.login.microsoftonline.com
+* https://pas.windows.net
+* https://management.azure.com
+* https://packages.microsoft.com
+
+> [!NOTE]
+> Derzeit können Azure-Netzwerksicherheitsgruppen nicht für VMs konfiguriert werden, die mit Azure AD-Authentifizierung aktiviert sind.
 
 ## <a name="create-a-linux-virtual-machine"></a>Erstellen einer virtuellen Linux-Maschine
 
@@ -193,6 +206,10 @@ Nachdem Sie die Authentifizierung in einem Webbrowser erfolgreich abgeschlossen 
 - Überprüfen Sie, ob der an der SSH-Eingabeaufforderung angegebene Anmeldename richtig ist. Ein Tippfehler im Anmeldenamen kann dazu führen, dass der an der SSH-Eingabeaufforderung angegebene Anmeldename nicht mit dem Konto übereinstimmt, mit dem Sie sich bei Azure AD angemeldet haben. Beispiel: Sie geben *azuresuer\@contoso.onmicrosoft.com* anstelle von *azureuser\@contoso.onmicrosoft.com* ein.
 - Wenn Sie über mehrere Benutzerkonten verfügen, achten Sie darauf, dass Sie im Browserfenster kein anderes Benutzerkonto als bei der Anmeldung bei Azure AD angeben.
 - Linux ist ein Betriebssystem, bei dem die Groß-/Kleinschreibung berücksichtigt wird. Es besteht also ein Unterschied zwischen „Azureuser@contoso.onmicrosoft.com“ und „azureuser@contoso.onmicrosoft.com“. Dies kann zu einer Nichtübereinstimmung führen. Stellen Sie sicher, dass Sie den Benutzerprinzipalnamen (UPN) an der SSH-Eingabeaufforderung mit der richtigen Groß- und Kleinschreibung angeben.
+
+### <a name="other-limitations"></a>Weitere Einschränkungen
+
+Benutzer, die Zugriffsrechte über geschachtelte Gruppen oder Rollenzuweisungen erben, werden zurzeit nicht unterstützt. Dem Benutzer oder der Gruppe müssen die [erforderlichen Rollenzuweisungen ](#configure-role-assignments-for-the-vm) direkt zugewiesen werden. Beispielsweise werden dem Benutzer durch die Verwendung von Verwaltungsgruppen oder geschachtelten Gruppenrollenzuweisungen nicht die richtigen Berechtigungen erteilt, damit er sich anmelden kann.
 
 ## <a name="preview-feedback"></a>Feedback zur Vorschauversion
 

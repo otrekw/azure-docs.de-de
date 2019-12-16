@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: d628bbe889617464fe97695a17687d5f02cc61bc
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 934899a74362ec9354c772c341d38d6a8f988ab4
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305329"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951869"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Einrichten und Verwenden von Computezielen für das Modelltraining 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Mehr über das [Übermitteln von Experimenten](#submit) finden Sie am Ende diese
 
 ## <a name="whats-an-estimator"></a>Was ist ein Kalkulator?
 
-Um das Modelltraining mit beliebten Frameworks zu erleichtern, bietet das Python SDK für Azure Machine Learning eine alternative allgemeine Abstraktion, die Kalkulatoren-Klasse. Diese Klasse erlaubt es Ihnen, Laufzeitkonfigurationen mühelos zu erstellen. Sie können einen generischen [Kalkulator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn).
+Um das Modelltraining mit beliebten Frameworks zu erleichtern, bietet das Python SDK für Azure Machine Learning eine alternative allgemeine Abstraktion, die Kalkulatoren-Klasse.  Diese Klasse erlaubt es Ihnen, Laufzeitkonfigurationen mühelos zu erstellen. Sie können einen generischen [Kalkulator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) erstellen und verwenden, um Trainingsskripts zu übermitteln, die ein beliebiges, von Ihnen ausgewähltes Learning-Framework verwenden (z. B. scikit-learn). Es wird empfohlen, einen Schätzwert für das Training zu verwenden, da es eingebettete Objekte wie Umgebungs- oder RunConfiguration-Objekte automatisch für Sie erstellt. Wenn Sie mehr Kontrolle darüber haben möchten, wie diese Objekte erstellt werden, und angeben möchten, welche Pakete für Ihre Experimentausführung installiert werden sollen, befolgen Sie [diese Schritte](#amlcompute), um Ihre Trainingsexperimente mithilfe eines RunConfiguration-Objekts an ein Azure Machine Learning Compute zu übermitteln.
 
 Für PyTorch-, TensorFlow- und Chainer-Aufgaben bietet Azure Machine Learning außerdem die passenden [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)-, [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)- und [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)-Kalkulatoren, um die Verwendung dieser Frameworks zu vereinfachen.
 

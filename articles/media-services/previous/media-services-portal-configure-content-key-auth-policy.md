@@ -1,6 +1,6 @@
 ---
 title: Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel im Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfigurieren.
+description: In diesem Artikel wird gezeigt, wie Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfigurieren.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: b046ce5a8647abe601a6327667241d98445ce1e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8580bafd4d68ef6567b09fefcaa01c682ae2cafe
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61130543"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968789"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -79,6 +79,10 @@ Wenn Sie Inhalte mit PlayReady schützen, müssen Sie in Ihrer Autorisierungsric
         </PlayReadyLicenseResponseTemplate>
 
 Sie können die Schaltfläche **XML für Importrichtlinie** auswählen und einen anderen XML-Code angeben, der dem in [Media Services PlayReady-Lizenzvorlage – Übersicht](media-services-playready-license-template-overview.md) definierten XML-Schema entspricht.
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

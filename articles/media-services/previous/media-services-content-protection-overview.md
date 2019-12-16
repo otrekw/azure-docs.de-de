@@ -1,6 +1,6 @@
 ---
 title: Schützen Ihrer Inhalte mit Azure Media Services | Microsoft-Dokumentation
-description: In diesem Artikel finden Sie eine Übersicht über die Content Protection mit Media Services.
+description: In diesem Artikel finden Sie eine Übersicht über den Inhaltsschutz mit Azure Media Services v2.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8259b58c7f30b63084e970bd9aed99642a43226f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ff4025941e9a77148daa91995ecf182231d1f0b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61216168"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976280"
 ---
 # <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz 
 
@@ -87,6 +87,10 @@ Es gelten die folgenden Bedingungen:
   * **cenc:** Für PlayReady oder Widevine (Common Encryption)
   * **cbcs-aapl:** Für FairPlay (AES-CBC-Verschlüsselung)
   * **cbc:** Für AES-Umschlagverschlüsselung
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln werden die nächsten Schritte für den Einstieg in den Inhaltsschutz beschrieben:

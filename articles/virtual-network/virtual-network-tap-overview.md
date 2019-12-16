@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: 99cd9fc1da009660023a246c5210e7f54bdebcfd
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177420"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931342"
 ---
 # <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
@@ -52,7 +52,7 @@ Mit dem TAP (Terminal Access Point) für virtuelle Azure-Netzwerke können Sie I
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
-In der folgenden Abbildung wird gezeigt, wie der TAP des virtuellen Netzwerks funktioniert. Sie können eine [Netzwerkschnittstelle](virtual-network-network-interface.md) um eine TAP-Konfiguration erweitern, die einem in Ihrem virtuellen Netzwerk bereitgestellten virtuellen Computer angefügt ist. Das Ziel ist eine IP-Adresse eines virtuellen Netzwerks, das sich im gleichen virtuellen Netzwerk wie die überwachte Netzwerkschnittstelle oder einem [mittels Peering verknüpften virtuellen Netzwerk](virtual-network-peering-overview.md) befindet. Die Collectorlösung für den TAP des virtuellen Netzwerks kann für Hochverfügbarkeitszwecke hinter einem [internen Azure-Lastenausgleich](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) bereitgestellt werden. Informationen zur Auswertung von Bereitstellungsoptionen für einzelne Lösungen finden Sie unter [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions).
+In der folgenden Abbildung wird gezeigt, wie der TAP des virtuellen Netzwerks funktioniert. Sie können eine [Netzwerkschnittstelle](virtual-network-network-interface.md) um eine TAP-Konfiguration erweitern, die einem in Ihrem virtuellen Netzwerk bereitgestellten virtuellen Computer angefügt ist. Das Ziel ist eine IP-Adresse eines virtuellen Netzwerks, das sich im gleichen virtuellen Netzwerk wie die überwachte Netzwerkschnittstelle oder einem [mittels Peering verknüpften virtuellen Netzwerk](virtual-network-peering-overview.md) befindet. Die Collectorlösung für den TAP des virtuellen Netzwerks kann für Hochverfügbarkeitszwecke hinter einem internen Azure-Lastenausgleich bereitgestellt werden. Informationen zur Auswertung von Bereitstellungsoptionen für einzelne Lösungen finden Sie unter [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions).
 
 ![Funktionsweise eines TAP eines virtuellen Netzwerks](./media/virtual-network-tap/architecture.png)
 

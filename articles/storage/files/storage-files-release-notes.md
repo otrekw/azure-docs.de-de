@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/8/2019
+ms.date: 12/6/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 633465e9123d679b1aa0e7f7ad048b17c18f2acb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8caa66801dda223681c38e966ba3d08b1b0c5921
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771035"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931080"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -77,7 +77,8 @@ Die folgenden Versionshinweise gelten für Version 9.0.0.0 des Azure-Dateisynch
     - Die Anzahl der Fehler bei nochmaligem Aufrufen wurde verringert. Die Größe erneuter Aufrufe wird nun automatisch gemäß der Netzwerkbandbreite angepasst. 
     - Die Downloadleistung beim Hinzufügen eines neuen Servers zu einer Synchronisierungsgruppe wurde verbessert. 
     - Die Anzahl der Dateien wurde verringert, die aufgrund von Einschränkungskonflikten nicht synchronisiert werden. 
-
+    - In bestimmten Szenarien schlagen mehrstufige Dateien fehl oder werden unerwartet abgerufen, wenn der Serverendpunktpfad ein Volumebereitstellungspunkt ist.
+    
 ### <a name="evaluation-tool"></a>Auswertungstool
 Vor der Bereitstellung der Azure-Dateisynchronisierung müssen Sie mit dem Auswertungstool für die Azure-Dateisynchronisierung auswerten, ob Kompatibilität mit Ihrem System gegeben ist. Dieses Tool ist ein Azure PowerShell-Cmdlet, das auf potenzielle Probleme mit Ihrem Dateisystem und Dataset prüft, z.B. nicht unterstützte Zeichen oder eine nicht unterstützte Betriebssystemversion. Anweisungen zur Installation und Verwendung finden Sie im Planungshandbuch im Abschnitt [Auswertungstools](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#evaluation-cmdlet). 
 
