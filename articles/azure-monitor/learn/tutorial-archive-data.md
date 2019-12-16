@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304711"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893347"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archivieren von Azure-Metriken und -Protokolldaten mithilfe von Azure Storage
 
@@ -70,7 +70,7 @@ Zu Ihrem Abonnement gehörige Überwachungsdaten werden nun in das Speicherkonto
 
 ## <a name="route-resource-data-to-the-storage-account"></a>Weiterleiten von Ressourcendaten an das Speicherkonto
 
-Jetzt konfigurieren wir Daten auf Ressourcenebene (Ressourcenmetriken und Diagnoseprotokolle), die an das Speicherkonto weitergeleitet werden sollen, indem wir **Diagnoseeinstellungen für Ressourcen** vornehmen.
+Jetzt konfigurieren wir Daten auf Ressourcenebene (Ressourcenmetriken und -protokolle), die an das Speicherkonto weitergeleitet werden sollen, indem wir **Diagnoseeinstellungen für Ressourcen** einrichten.
 
 1. Klicken Sie im Navigationsbereich auf der linken Seite auf die Schaltfläche **Überwachen** und dann auf **Diagnoseeinstellungen**. Es wird eine Liste aller Ressourcen in Ihrem Abonnement eingeblendet, die mithilfe von Azure Monitor Überwachungsdaten generieren. Wenn diese Liste keine Ressourcen enthält, können Sie, bevor Sie fortfahren, [eine Logik-App erstellen](../../logic-apps/quickstart-create-first-logic-app-workflow.md), damit Sie über eine Ressource verfügen, für die Sie eine Diagnoseeinstellung konfigurieren können.
 

@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/19/2019
+ms.date: 12/10/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196424"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974783"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Vorbereiten von lokalen Computern für die Migration zu Azure
 
@@ -99,7 +99,7 @@ Wenn für Ihre lokale Installation beispielsweise ein Datenträger genutzt wird,
 1. Öffnen Sie auf dem lokalen Computer (nicht auf dem Hostserver) eine Eingabeaufforderung mit erhöhten Rechten.
 2. Geben Sie **diskpart** ein.
 3. Geben Sie **SAN** ein. Wenn der Laufwerkbuchstabe des Gastbetriebssystems nicht beibehalten wird, wird **Offline – Alle** oder **Offline – Freigegeben** zurückgegeben.
-4. Geben Sie an der **DISKPART**-Eingabeaufforderung den Befehl **SANPOLICY=ONLINEALL** ein. Mit dieser Einstellung wird sichergestellt, dass Datenträger in den Onlinezustand versetzt werden und sowohl lesbar als auch beschreibbar sind.
+4. Geben Sie an der Eingabeaufforderung **DISKPART** Folgendes ein: **SAN Policy=OnlineAll**. Mit dieser Einstellung wird sichergestellt, dass Datenträger in den Onlinezustand versetzt werden und sowohl lesbar als auch beschreibbar sind.
 5. Während der Testmigration können Sie überprüfen, ob die Laufwerkbuchstaben beibehalten werden.
 
 

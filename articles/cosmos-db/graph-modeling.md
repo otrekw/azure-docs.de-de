@@ -1,18 +1,18 @@
 ---
 title: Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie mithilfe der Gremlin-API von Cosmos DB eine Graphdatenbank modellieren.
+description: Hier erfahren Sie, wie Sie mithilfe der Gremlin-API von Azure Cosmos DB eine Graphdatenbank modellieren. In diesem Artikel wird beschrieben, in welchen Fällen eine Graphdatenbank verwendet werden sollte. Außerdem enthält er Informationen zu bewährten Methoden zum Modellieren von Entitäten und Beziehungen.
 author: LuisBosquez
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: overview
-ms.date: 06/24/2019
+ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 2bd8c07b384872f3107b5938380cea4c8eb0abae
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559126"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873725"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 

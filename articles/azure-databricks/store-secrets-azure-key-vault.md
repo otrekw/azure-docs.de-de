@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: f1472d7043a092f35e10fdedbf4c52740e87c51c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706138"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849274"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Tutorial: Zugreifen auf Azure Blob Storage über Azure Databricks unter Verwendung von Azure Key Vault
 
@@ -129,7 +129,8 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 4. Nachdem Ihr Azure Databricks-Arbeitsbereich in einem separaten Fenster geöffnet wurde, fügen Sie **#secrets/createScope** an die URL an. Das Format der URL muss wie folgt aussehen: 
 
-   **https://<\Standort>.azuredatabricks.net/#secrets/createScope**.
+   **https://<\Standort>.azuredatabricks.net/?o=<\Organisations-ID>#secrets/createScope**.
+   
 
 5. Geben Sie einen Bereichsnamen sowie den DNS-Namen und die Ressourcen-ID von Azure Key Vault ein, die Sie zuvor gespeichert haben. Speichern Sie den Bereichsnamen zur späteren Verwendung in diesem Tutorial in einem Text-Editor. Wählen Sie anschließend **Erstellen**.
 

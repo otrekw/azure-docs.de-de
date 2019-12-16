@@ -1,6 +1,6 @@
 ---
 title: Wie werden Abfragen von Tabellendaten in Azure Cosmos DB durchgeführt?
-description: Erfahren Sie, wie Sie Tabellendaten in Azure Cosmos DB abfragen.
+description: Hier erfahren Sie, wie Sie Daten, die im Tabellen-API-Konto für Azure Cosmos DB gespeichert sind, mithilfe von OData-Filtern und LINQ-Abfragen abfragen.
 author: wmengmsft
 ms.author: wmeng
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.topic: tutorial
 ms.date: 05/21/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 161b424c5c89d34eaa55181c0d6ca0515b376168
-ms.sourcegitcommit: 59fd8dc19fab17e846db5b9e262a25e1530e96f3
+ms.openlocfilehash: 7dc2c00f273f327755dab52a4bda02840d911f96
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65978768"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869917"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>Tutorial: Abfragen von Azure Cosmos BD mithilfe der Tabellen-API
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 
 Die Abfragen in diesem Artikel verwenden die folgende Beispieltabelle `People`:
 
-| PartitionKey | RowKey | E-Mail | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -50,7 +50,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **Ergebnisse**
 
-| PartitionKey | RowKey | E-Mail | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -76,7 +76,7 @@ Weitere Informationen zum Erstellen von Filterausdrücken für verschiedene Date
 
 **Ergebnisse**
 
-| PartitionKey | RowKey | E-Mail | PhoneNumber |
+| PartitionKey | RowKey | Email | PhoneNumber |
 | --- | --- | --- | --- |
 | Smith |Ben | Ben@contoso.com| 425-555-0102 |
 

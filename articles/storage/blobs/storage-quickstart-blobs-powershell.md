@@ -1,21 +1,22 @@
 ---
-title: 'Azure-Schnellstart: Erstellen eines Blobs im Objektspeicher mithilfe von Azure PowerShell | Microsoft-Dokumentation'
+title: 'Schnellstart: Erstellen eines Blobs mit PowerShell'
+titleSuffix: Azure Storage
 description: In dieser Schnellstartanleitung verwenden Sie Azure PowerShell im Objektspeicher (Blobspeicher). Anschließend verwenden Sie PowerShell, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: b0e9cc37f6269c3b878e16b754ec3a49aee13f72
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: c5d32b91043d310e51143357ad51631463f7e991
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698998"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892497"
 ---
-# <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Azure PowerShell
+# <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell
 
 Verwenden Sie das Azure PowerShell-Modul, um Azure-Ressourcen zu erstellen und zu verwalten. Die Erstellung und Verwaltung von Azure-Ressourcen kann über die PowerShell-Befehlszeile oder mithilfe von Skripts durchgeführt werden. In dieser Anleitung erfahren Sie, wie Sie Dateien mit PowerShell zwischen der lokalen Festplatte und Azure Blob Storage übertragen.
 

@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/21/2019
+ms.date: 12/06/2019
 ms.author: victorh
-ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: cf8e6ca3a532dea29a413b1afdfc684ac8f08f17
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267952"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869560"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Was ist Azure Firewall Manager (Vorschau)?
 
@@ -70,12 +70,13 @@ Für Azure Firewall Manager (Vorschau) sind die folgenden Probleme bekannt:
 
 |Problem  |BESCHREIBUNG  |Lösung  |
 |---------|---------|---------|
-|Keine Unterstützung von manuell erstellten zentralen VNETs|Aktuell unterstützt Azure Firewall Manager Netzwerke, die mit virtuellen Hubs erstellt werden. Die Verwendung eigener, manuell erstellter Hub-VNETs wird noch nicht unterstützt.|Verwenden Sie Azure Firewall Manager vorerst mit Hub-and-Spoke-Netzwerken, die mit virtuellen Hubs erstellt wurden.<br>Das Problem wird zurzeit untersucht.
+|Keine Unterstützung von manuell erstellten zentralen VNETs|Aktuell unterstützt Azure Firewall Manager Netzwerke, die mit virtuellen Hubs erstellt werden. Die Verwendung eigener, manuell erstellter Hub-VNETs wird noch nicht unterstützt.|Verwenden Sie Azure Firewall Manager vorerst mit Hub-and-Spoke-Netzwerken, die mit virtuellen Hubs erstellt wurden.<br>Fix wird angewendet.
 |Einschränkungen für Drittanbieterfilterung|Eine V2I-Datenverkehrsfilterung mit Anbietern von Drittanbietern wird mit Azure Firewall B2V und V2V nicht unterstützt.|Das Problem wird zurzeit untersucht.|
 |Aktuell keine Unterstützung für eine Trennung des Datenverkehrs|Die Trennung von Office 365- und öffentlichem Azure-PaaS-Datenverkehr wird aktuell nicht unterstützt. Daher wird bei Auswahl eines Drittanbieters für V2I oder B2I auch der gesamte öffentliche Azure-PaaS- und Office 365-Datenverkehr über den Partnerdienst gesendet.|Die Datenverkehrstrennung am Hub wird aktuell untersucht.
 |Ein Hub pro Region|Sie können nicht mehr als einen Hub pro Region verwenden.|Erstellen Sie mehrere virtuelle WANs in einer Region.|
 |Basisrichtlinien müssen in derselben Region wie die lokale Richtlinie vorliegen|Erstellen Sie sämtliche Ihrer lokalen Richtlinien in derselben Region wie die Basisrichtlinie. Eine in einer Region erstellte Richtlinie kann weiterhin auf einen geschützten Hub aus einer anderen Region angewendet werden.|Das Problem wird zurzeit untersucht.|
 |Die Kommunikation zwischen Hubs funktioniert nicht mit dem geschützten virtuellen Hub.|Die Kommunikation zwischen geschützten virtuellen Hubs wird noch nicht unterstützt.|Das Problem wird zurzeit untersucht.|
+|Alle geschützten virtuellen Hubs, die das gleiche virtuelle WAN nutzen, müssen sich in derselben Ressourcengruppe befinden.|Dieses Verhalten orientiert sich heute an Virtual WAN-Hubs.|Erstellen Sie mehrere Virtual WAN-Instanzen, um die Erstellung von geschützten virtuellen Hubs in verschiedenen Ressourcengruppen zu ermöglichen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

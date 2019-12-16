@@ -1,6 +1,6 @@
 ---
 title: Datentreuhänder für Azure Deutschland | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zum Datentreuhändermodell.
+description: Dieser Artikel enthält Informationen zum Datentreuhändermodell. Darüber hinaus finden Sie hier relevante Links.
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.openlocfilehash: 6513e0fc9a1576cd3c856ca5e8ea76c34e6ae832
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9cf1665c772f217a06e3245e2c8e218b76a5bb7d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685182"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896302"
 ---
 # <a name="data-trustee-principle"></a>Das Microsoft Datentreuhänderprinzip
 
@@ -34,8 +34,6 @@ Der deutsche Datentreuhänder ist ein unabhängiges Unternehmen mit Hauptsitz in
 Microsoft verwaltet alle Aspekte von Betrieb und Bereitstellung der Azure Deutschland-Dienste, die keinen Zugriff auf Kundendaten erfordern. Es wird sichergestellt, dass keine Verbindung mit anderen globalen Clouddiensten von Microsoft besteht. Microsoft bleibt seinen Kunden gegenüber verantwortlich für die Erfüllung der Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) und für die meisten betrieblichen Aspekte, die keinen Zugriff auf Kundendaten erfordern.
 
 Dagegen ist der deutsche Datentreuhänder für alle Aufgaben und Prozesse verantwortlich, die physischen oder logischen Zugriff auf die Infrastruktur und Daten der Kunden in Deutschland erfordern. Der Datentreuhänder regelt alle Zugriffe auf Kundendaten, die nicht vom Kunden oder von Endbenutzern eingeleitet werden. 
-
-
 
 Die folgenden Merkmale sind charakteristisch für Azure Deutschland:
 

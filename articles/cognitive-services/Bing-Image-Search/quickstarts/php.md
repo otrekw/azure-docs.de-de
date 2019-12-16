@@ -9,15 +9,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/26/2019
+ms.date: 12/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ef38013d2c5d7f41db0eaf8d6e444471387d7ff6
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3778ec9bb44c1e78da152d4bde525884098fd445
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327058"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930754"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und PHP
 
@@ -41,7 +41,7 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
 
 1. Achten Sie darauf, dass die Unterstützung des sicheren HTTP in Ihrer `php.ini`-Datei aktiviert ist. Unter Windows befindet sich diese Datei in `C:\windows`.
 2. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues PHP-Projekt.
-3. Definieren Sie den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff.
+3. Definieren Sie den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff. Der Endpunkt kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```php
     $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
@@ -49,7 +49,8 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-   ## <a name="construct-and-perform-an-http-request"></a>Erstellen und Ausführen einer HTTP-Anforderung
+
+## <a name="construct-and-perform-an-http-request"></a>Erstellen und Ausführen einer HTTP-Anforderung
 
 1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine HTTP-Anforderung für die Bildersuche-API vorzubereiten.
 
@@ -59,6 +60,7 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
+
 2. Senden Sie die Webanforderung, und rufen Sie die JSON-Antwort ab.
 
     ```php
@@ -70,16 +72,16 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
 
 Verarbeiten Sie die zurückgegebene JSON-Antwort, und geben Sie sie aus.
 
-    ```php
-    $headers = array();
-        foreach ($http_response_header as $k => $v) {
-            $h = explode(":", $v, 2);
-            if (isset($h[1]))
-                if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
-                    $headers[trim($h[0])] = trim($h[1]);
-        }
-        return array($headers, $result);
-    ```
+```php
+$headers = array();
+    foreach ($http_response_header as $k => $v) {
+        $h = explode(":", $v, 2);
+        if (isset($h[1]))
+            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                $headers[trim($h[0])] = trim($h[1]);
+    }
+    return array($headers, $result);
+```
 
 ## <a name="example-json-response"></a>JSON-Beispielantwort
 

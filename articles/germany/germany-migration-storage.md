@@ -1,5 +1,5 @@
 ---
-title: Migration von Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Speicherressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 572313f65d5d97211dcb664d79122ea6be520bab
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: 04fc99a62253e2d2f984681c4fea5c973fa429e9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67786550"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928882"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 

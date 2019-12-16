@@ -1,5 +1,5 @@
 ---
-title: 'Erste Schritte mit iOS und macOS: Microsoft Identity Platform | Azure'
+title: Erste Schritte mit iOS und macOS – Microsoft Identity Platform | Azure
 description: So können iOS- und macOS-Anwendungen (Swift) über Microsoft Identity Platform eine API aufrufen, für die Zugriffstoken erforderlich sind
 services: active-directory
 documentationcenter: dev-center-name
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3892a03ffe097a51f294e698168f00e1359f92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960664"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964667"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App
 

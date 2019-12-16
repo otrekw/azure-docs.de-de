@@ -8,13 +8,13 @@ ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.date: 09/23/2019
-ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.date: 12/05/2019
+ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133098"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900431"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -24,18 +24,8 @@ Wenn Sie Azure Sentinel integrieren wollen, müssen Sie Azure Sentinel zuerst ak
 
 Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von professionell erstellten Arbeitsmappen zur Anzeige der Erkenntnisse, die Sie aus Ihren Daten gewinnen, zur Auswahl. Diese Arbeitsmappen können einfach an Ihre Anforderungen angepasst werden.
 
->[!NOTE] 
-> Der [Azure Sentinel-Preis](https://azure.microsoft.com/pricing/details/azure-sentinel/) basiert auf der Menge der Daten, die im zugeordneten Azure Monitor Log Analytics-Arbeitsbereich erfasst wurden. Einige der folgenden Datenconnectors werden nicht für die Erfassung in Rechnung gestellt, es fallen jedoch Gebühren an, wenn Sie eine beliebige Warnung mithilfe der erfassten Daten generieren, die im Log Analytics-Arbeitsbereich gespeichert werden. Dies wird gemäß den [Azure Monitor Log Analytics-Preisen](https://azure.microsoft.com/pricing/details/monitor/) abgerechnet. 
-  > - Azure-Aktivität (Aktivitätsprotokolle für Azure-Vorgänge)
-  > - Azure Active Directory Identity Protection (für Mandanten mit AAD P2-Lizenzen)
-  > - Azure Information Protection
-  > - Azure Advanced Threat Protection (Warnungen)
-  > - Azure Security Center (Warnungen)
-  > - Microsoft Cloud App Security (nur Warnungen)
-  > - Microsoft Defender Advanced Threat Protection (Überwachen von Agent-Warnungen)
-  > - Office 365 (Exchange- und SharePoint-Protokolle)
->
-> Azure AD/Office 365-Überwachungsprotokolle sind nicht kostenlos und werden als Premium-Tarif angeboten, daher wird die Erfassung dieser Daten pro GB berechnet. 
+>[!IMPORTANT] 
+> Informationen zu den Gebühren im Zusammenhang mit Azure Sentinel finden Sie unter [Azure Sentinel – Preise](https://azure.microsoft.com/pricing/details/azure-sentinel/).
   
 
 ## <a name="global-prerequisites"></a>Globale Voraussetzungen
@@ -44,7 +34,7 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
 
 - Log Analytics-Arbeitsbereich. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](../log-analytics/log-analytics-quick-create-workspace.md). Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../azure-monitor/platform/design-logs-deployment.md).
 
--  Für das Abonnement, in dem sich der Azure Sentinel-Arbeitsbereich befindet, benötigen Sie Berechtigungen für Mitwirkende, um Azure Sentinel zu aktivieren. 
+- Für das Abonnement, in dem sich der Azure Sentinel-Arbeitsbereich befindet, benötigen Sie Berechtigungen für Mitwirkende, um Azure Sentinel zu aktivieren. 
 - Für die Ressourcengruppe, zu der der Arbeitsbereich gehört, benötigen Sie entweder Berechtigungen für Mitwirkende oder für Leser, um Azure Sentinel zu verwenden.
 - Möglicherweise sind für die Verbindung mit bestimmten Datenquellen zusätzliche Berechtigungen erforderlich.
 - Azure Sentinel ist ein kostenpflichtiger Dienst. Preisinformationen finden Sie in den [Informationen zu Azure Sentinel](https://go.microsoft.com/fwlink/?linkid=2104058).

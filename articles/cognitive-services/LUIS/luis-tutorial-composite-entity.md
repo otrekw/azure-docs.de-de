@@ -9,27 +9,27 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 10/14/2019
+ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: adb8941fd60a955a44a04717958c5203b721639a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e72563f366330f841d1a61ed67956b6314c769a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498992"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893183"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Tutorial: Gruppieren und Extrahieren zugehöriger Daten
 In diesem Tutorial fügen Sie eine zusammengesetzte Entität hinzu, um extrahierte Daten verschiedenen Typs in einer einzelnen enthaltenden Entität zu bündeln. Durch Bündeln der Daten kann die Clientanwendung aufeinander bezogene Daten verschiedener Datentypen leicht extrahieren.
 
-Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten. 
+Zusammengesetzte Entitäten dienen dazu, verknüpfte Entitäten in einer Entität der übergeordneten Kategorie zu gruppieren. Die Informationen sind vor dem Erstellen einer zusammengesetzten Entität jeweils separate Entitäten.
 
 Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da für die Daten Folgendes gilt:
 
-* Sind aufeinander bezogen. 
+* Sind aufeinander bezogen.
 * Verwenden eine Vielzahl von Entitätstypen.
 * Müssen gruppiert und von einer Client-App als eine Informationseinheit verarbeitet werden.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -37,7 +37,7 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 > [!div class="checklist"]
 > * Importieren der Beispiel-App
 > * Erstellen einer Absicht
-> * Zusammengesetzte Entität hinzufügen 
+> * Zusammengesetzte Entität hinzufügen
 > * Trainieren
 > * Veröffentlichen
 > * Abrufen von Absichten und Entitäten vom Endpunkt
@@ -54,9 +54,9 @@ Die zusammengesetzte Entität ist eine gute Wahl für diese Art von Daten, da f�
 
 ## <a name="composite-entity"></a>Entität vom Typ „Composite“
 
-In dieser App ist der Abteilungsname in der Listenentität **Department** (Abteilung) definiert (einschließlich Synonymen). 
+In dieser App ist der Abteilungsname in der Listenentität **Department** (Abteilung) definiert (einschließlich Synonymen).
 
-Die Absicht **TransferEmployeeToDepartment** verfügt über Beispieläußerungen, um die Versetzung eines Mitarbeiters in eine neue Abteilung anzufordern. 
+Die Absicht **TransferEmployeeToDepartment** verfügt über Beispieläußerungen, um die Versetzung eines Mitarbeiters in eine neue Abteilung anzufordern.
 
 Im Anschluss finden Sie einige Beispieläußerungen für diese Absicht:
 
@@ -64,12 +64,12 @@ Im Anschluss finden Sie einige Beispieläußerungen für diese Absicht:
 |--|
 |„move John W. Smith to the accounting department“ (John W. Smith in die Buchhaltungsabteilung versetzen)|
 |„transfer Jill Jones to R&D“ (Jill Jones in die Abteilung für Forschung und Entwicklung versetzen)|
- 
-Die Versetzungsanforderung muss den Namen der Abteilung und den Namen des Mitarbeiters enthalten. 
+
+Die Versetzungsanforderung muss den Namen der Abteilung und den Namen des Mitarbeiters enthalten.
 
 ## <a name="add-the-personname-prebuilt-entity-to-help-with-common-data-type-extraction"></a>Hinzufügen der vordefinierten Entität „PersonName“, um die Extraktion allgemeiner Datentypen zu vereinfachen
 
-LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner Daten. 
+LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner Daten.
 
 1. Wählen Sie im oberen Navigationsbereich die Option **Erstellen** und anschließend im linken Navigationsmenü die Option **Entitäten** aus.
 
@@ -87,11 +87,11 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 1. Wählen Sie in der Liste mit den Absichten die Option **TransferEmployeeToDepartment** aus.
 
-1. Wählen Sie in der Äußerung `place John Jackson in engineering` die personName-Entität `John Jackson` aus. Wählen Sie anschließend im Popupmenü für die folgende Äußerung die Option **In zusammengesetzter Entität umschließen** aus. 
+1. Wählen Sie in der Äußerung `place John Jackson in engineering` die personName-Entität `John Jackson` aus. Wählen Sie anschließend im Popupmenü für die folgende Äußerung die Option **In zusammengesetzter Entität umschließen** aus.
 
     ![Screenshot: Auswahl des Umschließens in der zusammengesetzten Entität im Dropdowndialogfeld](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
-1. Wählen Sie dann die letzte Entität `engineering` in der Äußerung aus. Die markierten Wörter werden grün unterstrichen, was auf eine zusammengesetzte Entität hinweist. Geben Sie im Popupmenü den zusammengesetzten Namen `TransferEmployeeInfo` ein, und drücken Sie die EINGABETASTE. 
+1. Wählen Sie dann die letzte Entität `engineering` in der Äußerung aus. Die markierten Wörter werden grün unterstrichen, was auf eine zusammengesetzte Entität hinweist. Geben Sie im Popupmenü den zusammengesetzten Namen `TransferEmployeeInfo` ein, und drücken Sie die EINGABETASTE.
 
     ![Screenshot: Eingabe des zusammengesetzten Namens im Dropdowndialogfeld](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
@@ -103,11 +103,11 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 1. Wählen Sie in jeder Beispieläußerung die Entität ganz links aus, die sich in der zusammengesetzten Entität befinden sollte. Klicken Sie dann auf **Zusammengesetzte Entität umschließen**.
 
-1. Wählen Sie das letzte Wort in der zusammengesetzten Entität und anschließend im Popupmenü die Option **TransferEmployeeInfo** aus. 
+1. Wählen Sie das letzte Wort in der zusammengesetzten Entität und anschließend im Popupmenü die Option **TransferEmployeeInfo** aus.
 
-1. Überprüfen Sie, ob alle Äußerungen in der Absicht mit der zusammengesetzten Entität bezeichnet sind. 
+1. Überprüfen Sie, ob alle Äußerungen in der Absicht mit der zusammengesetzten Entität bezeichnet sind.
 
-## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können 
+## <a name="train-the-app-so-the-changes-to-the-intent-can-be-tested"></a>Trainieren der App, um die Absichtsänderungen testen zu können
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
@@ -115,11 +115,11 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt 
+## <a name="get-intent-and-entity-prediction-from-endpoint"></a>Abrufen von Absicht und Entitätsvorhersage vom Endpunkt
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Geben Sie in der Adressleiste am Ende der URL `Move Jill Jones to DevOps` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (query) der Äußerung). 
+2. Geben Sie in der Adressleiste am Ende der URL `Move Jill Jones to DevOps` ein. Der letzte Parameter der Abfragezeichenfolge lautet `q` (für die Abfrage (query) der Äußerung).
 
     Da mit diesem Test überprüft werden soll, ob die zusammengesetzte Entität korrekt extrahiert wurde, kann ein Test entweder eine vorhandene Beispieläußerung oder eine neue Äußerung enthalten. Ein guter Test beinhaltet alle untergeordneten Entitäten in der zusammengesetzten Entität.
 
@@ -185,7 +185,7 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
     }
     ```
 
-   Diese Äußerung gibt ein Array von zusammengesetzten Entitäten zurück. Jede Entität ist mit einem Typ und einem Wert versehen. Um die Genauigkeit für jede untergeordnete Entität zu erhöhen, verwenden Sie die Kombination aus Typ und Wert des Arrays von zusammengesetzten Elementen, um nach dem entsprechenden Element im Entitätenarray zu suchen.  
+   Diese Äußerung gibt ein Array von zusammengesetzten Entitäten zurück. Jede Entität ist mit einem Typ und einem Wert versehen. Um die Genauigkeit für jede untergeordnete Entität zu erhöhen, verwenden Sie die Kombination aus Typ und Wert des Arrays von zusammengesetzten Elementen, um nach dem entsprechenden Element im Entitätenarray zu suchen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -202,7 +202,7 @@ LUIS enthält mehrere vordefinierte Entitäten für das Extrahieren allgemeiner 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde eine zusammengesetzte Entität zur Verkapselung vorhandener Entitäten verwendet. Dadurch kann die Clientanwendung eine Gruppe auf einander bezogener Daten in verschiedenen Datentypen finden, um die Unterhaltung fortzusetzen. Eine Clientanwendung für diese Personalwesen-App könnte fragen, an welchem Tag und um welche Uhrzeit die Verlegung beginnen und enden muss. Sie kann auch nach anderen Logistikdetails fragen (etwa nach einem physischen Telefon). 
+In diesem Tutorial wurde eine zusammengesetzte Entität zur Verkapselung vorhandener Entitäten verwendet. Dadurch kann die Clientanwendung eine Gruppe auf einander bezogener Daten in verschiedenen Datentypen finden, um die Unterhaltung fortzusetzen. Eine Clientanwendung für diese Personalwesen-App könnte fragen, an welchem Tag und um welche Uhrzeit die Verlegung beginnen und enden muss. Sie kann auch nach anderen Logistikdetails fragen (etwa nach einem physischen Telefon).
 
-> [!div class="nextstepaction"] 
-> [Erfahren Sie, wie eine einfache Entität mit einer Ausdrucksliste hinzugefügt wird.](luis-quickstart-primary-and-secondary-data.md)  
+> [!div class="nextstepaction"]
+> [Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen](luis-tutorial-review-endpoint-utterances.md)

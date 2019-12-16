@@ -1,6 +1,6 @@
 ---
 title: Datenbankdienste von Azure Deutschland | Microsoft-Dokumentation
-description: Vergleich der Datenbankdienste für Azure Deutschland
+description: Dieser Artikel enthält einen Vergleich der SQL-Datenbank-Dienste für Azure Deutschland.
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 33d5a5aebf572c3fb7757bc66e1a1e05a2489741
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ba36e3b82a3e91941a2b5062759aa67077b7c295
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755942"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896301"
 ---
 # <a name="azure-germany-database-services"></a>Datenbankdienste von Azure Deutschland
 ## <a name="sql-database"></a>SQL-Datenbank

@@ -1,19 +1,19 @@
 ---
 title: Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt?
-description: Erfahren Sie, wie Sie Abfragen von Diagrammdaten in Azure Cosmos DB durchführen.
+description: Hier erfahren Sie, wie Sie Diagrammdaten von Azure Cosmos DB mithilfe von Gremlin-Abfragen abfragen.
 author: luisbosquez
 ms.author: lbosq
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 01/02/2018
+ms.date: 12/03/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 2bc79801864481562967702a7c52a7670950199b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1dde7bfc74c6a7b0c03d8f192f4e6eaf72e2de6b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043973"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870172"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Tutorial: Abfragen der Gremlin-API von Azure Cosmos DB mithilfe von Gremlin
 

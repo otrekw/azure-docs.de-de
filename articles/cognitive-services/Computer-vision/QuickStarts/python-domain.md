@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/17/2019
+ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 06bffb1339edddf14d3eccaf989707369ac54393
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8e5ff917e7283457e7ff1d4c5fd0cbd91a1b0ace
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177109"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973746"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Schnellstart: Verwenden eines Domänenmodells mit der REST-API und Python in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell, um in einem Bild Sehenswürdigkeiten oder wahlweise Prominente zu identifizieren, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie ein domänenspezifisches Modell anwenden, um Inhalte in einem Bild zu erkennen.
+In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell und die Maschinelles Sehen-REST-API, um Sehenswürdigkeiten oder Prominente auf einem Bild an einem Remotespeicherort zu identifizieren. Mit der Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie ein domänenspezifisches Modell anwenden, um Inhalte in einem Bild zu erkennen.
 
 Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-Notebook in [MyBinder](https://mybinder.org) ausführen. Klicken Sie zum Starten von Binder auf die folgende Schaltfläche:
 

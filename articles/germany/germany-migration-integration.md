@@ -1,5 +1,5 @@
 ---
-title: Migrieren von Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Integrationsressourcen – Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Integrationsressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 1de27216085ae304ea61a2c731a7be4a19d2f63a
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 77b9521bfe78c063385a114e91addff5970fe31d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272550"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928884"
 ---
 # <a name="migrate-integration-resources-to-global-azure"></a>Migrieren von Integrationsressourcen zu Azure weltweit
 

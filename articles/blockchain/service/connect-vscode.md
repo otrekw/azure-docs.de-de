@@ -1,15 +1,15 @@
 ---
 title: Herstellen einer Verbindung mit Azure Blockchain Service mithilfe von Visual Studio Code
 description: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe des Azure Blockchain Development Kit für die Ethereum-Erweiterung in Visual Studio Code
-ms.date: 11/19/2019
+ms.date: 12/05/2019
 ms.topic: quickstart
 ms.reviewer: chrisseg
-ms.openlocfilehash: 4d4625df1cb07818dcadb88e2c98bf9ae1da1b1f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1bcdfdafa9253fc4dc20ccb7cc237cb794b0af53
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455985"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977065"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Schnellstart: Herstellen einer Verbindung mit einem Azure Blockchain Service-Konsortiumsnetzwerk mithilfe von Visual Studio Code
 
@@ -24,13 +24,13 @@ In diesem Schnellstart installieren und verwenden Sie das Azure Blockchain Devel
 * [Azure Blockchain Development Kit für Ethereum-Erweiterung](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
 * [Node.js 10.15.x oder höher](https://nodejs.org/download)
 * [Git 2.10.x oder höher](https://git-scm.com)
-* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Fügen Sie Ihrem Pfad „python.exe“ hinzu. Python Version 2.7.15 ist in Ihrem Pfad für das Azure Blockchain Development Kit erforderlich.
+* [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Fügen Sie Ihrem Pfad „python.exe“ hinzu. Python-Version 2.7.15 ist in Ihrem Pfad für das Azure Blockchain Development Kit erforderlich.
 * [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Unter Windows ist ein installierter C++-Compiler für das Modul „node-gyp“ erforderlich. Sie können die MSBuild-Tools verwenden:
 
-* Ist Visual Studio 2017 installiert, konfigurieren Sie npm mit dem Befehl `npm config set msvs_version 2017 -g` für die Verwendung der MSBuild-Tools.
+* Wenn Visual Studio 2017 installiert ist, konfigurieren Sie npm mit dem Befehl `npm config set msvs_version 2017 -g` für die Verwendung der MSBuild-Tools.
 * Ist Visual Studio 2019 installiert, legen Sie den Pfad der MSBuild-Tools für npm fest. Zum Beispiel, `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
 * Installieren Sie andernfalls die eigenständigen VS-Buildtools. Verwenden Sie hierzu `npm install --global windows-build-tools` in einer Befehlsshell mit erhöhten Rechten (*Als Administrator ausführen*).
 
@@ -59,12 +59,12 @@ Sie können eine Verbindung mit Konsortiumsmitgliedern herstellen, indem Sie die
 Falls Sie keinen Zugriff auf ein Azure Blockchain Service-Konsortiumsmitglied haben, müssen Sie als Voraussetzung [Quickstart: Create a blockchain member using the Azure portal (Schnellstart: Erstellen eines Blockchainmitglieds über das Azure-Portal)](create-member.md) oder [Schnellstart: Erstellen eines Blockchainmitglieds für den Azure Blockchain-Dienst mithilfe der Azure CLI](create-member-cli.md) durcharbeiten.
 
 1. Erweitern Sie im VS Code-Explorer-Bereich die Erweiterung **Azure Blockchain**.
-1. Wählen Sie die Option **Connect to Consortium** (Verbindung mit Konsortium herstellen).
+1. Wählen Sie **Connect to network** (Mit Netzwerk verbinden) aus.
 
-   ![Herstellen einer Verbindung mit einem Konsortium](./media/connect-vscode/connect-consortium.png)
+   ![Herstellen einer Netzwerkverbindung](./media/connect-vscode/connect-consortium.png)
 
     Befolgen Sie die Anweisungen zum Authentifizieren per Browser, wenn Sie zum Durchführen der Azure-Authentifizierung aufgefordert werden.
-1. Wählen Sie in der Dropdownliste der Befehlspalette die Option **Connect to Azure Blockchain Service consortium** (Verbindung mit Azure Blockchain Service-Konsortium herstellen).
+1. Wählen Sie in der Dropdownliste der Befehlspalette die Option **Azure Blockchain Service** aus.
 1. Wählen Sie das Abonnement und die Ressourcengruppe aus, das bzw. die Ihrem Azure Blockchain Service-Konsortiumsmitglied zugeordnet ist.
 1. Wählen Sie Ihr Konsortium in der Liste aus.
 

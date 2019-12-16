@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Azure Database for PostgreSQL – Hyperscale (Citus)'
+title: Erstellen verteilter Tabellen – Hyperscale (Citus) – Azure Database for PostgreSQL
 description: Schnellstartanleitung zum Erstellen und Abfragen verteilter Tabellen in Azure Database for PostgreSQL – Hyperscale (Citus)
 author: jonels-msft
 ms.author: jonels
@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/14/2019
-ms.openlocfilehash: 6b5bfbf16e76cbf90a5536332d8e3bf1035f983a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02e009e6fff2e717693d1579d409199ab179d941
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500071"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973413"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---hyperscale-citus-in-the-azure-portal"></a>Schnellstart: Erstellen einer Instanz von Azure Database for PostgreSQL – Hyperscale (Citus) über das Azure-Portal
 

@@ -1,7 +1,7 @@
 ---
 title: Was versteht man unter Azure Load Balancer?
 titleSuffix: Azure Load Balancer
-description: Übersicht über Features, Architektur und Implementierung des Azure Load Balancers. Erfahren Sie, wie Load Balancer funktioniert, und nutzen Sie den Dienst in der Cloud.
+description: Übersicht über Features, Architektur und Implementierung des Azure Load Balancers. Hier erfahren Sie, wie Load Balancer funktioniert und wie Sie den Dienst in der Cloud verwenden.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -12,96 +12,56 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 12/05/2019
 ms.author: allensu
-ms.openlocfilehash: 335549f4ccae01fa36921e0e4668fa15e8b33835
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 50cb61394043bb8d0e67cae2aea8be4285f3432c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423910"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74926264"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
-Mit Azure Load Balancer können Sie Ihre Anwendungen skalieren und Dienste mit Hochverfügbarkeit bereitstellen. Load Balancer unterstützt Szenarios mit eingehenden sowie ausgehenden Verbindungen, bietet niedrige Latenzen und einen hohen Durchsatz und skaliert Datenflüsse aller TCP- und UDP-Anwendungen im Millionenbereich hoch.
+*Lastenausgleich* bezieht sich auf die effiziente Verteilung von Last oder eingehendem Netzwerkdatenverkehr auf eine Gruppe von Back-End-Ressourcen oder Server. Azure bietet [verschiedene Lastenausgleichsoptionen](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) für unterschiedliche Anforderungen. In diesem Dokument wird Azure Load Balancer behandelt.
 
-Load Balancer verteilt neue eingehende Datenflüsse, die am Front-End des Load Balancers eintreffen, gemäß den angegebenen Regeln und Integritätstests auf die Instanzen des Back-End-Pools.
+Azure Load Balancer setzt in der vierten Schicht des OSI-Modells (Open Systems Interconnection) an. Der Dienst ist der zentrale Kontaktpunkt für Clients. Load Balancer verteilt neue eingehende Datenflüsse, die das Front-End von Load Balancer erreichen, gemäß den angegebenen Lastenausgleichsregeln und Integritätstests auf Back-End-Poolinstanzen. Bei den Back-End-Poolinstanzen kann es sich um virtuelle Azure-Computer oder um Instanzen in einer VM-Skalierungsgruppe handeln. 
 
-Ein öffentlicher Load Balancer kann ausgehende Verbindungen für virtuelle Computer in Ihrem virtuellen Netzwerk bereitstellen, indem er deren private IP-Adressen in öffentliche IP-Adressen übersetzt.
+Mit Azure Load Balancer können Sie Ihre Anwendungen skalieren und hochverfügbare Dienste bereitstellen. Load Balancer unterstützt Szenarien mit eingehenden und ausgehenden Verbindungen, bietet eine geringe Wartezeit und einen hohen Durchsatz und kann Millionen von Datenflüssen für alle TCP- und UDP-Anwendungen zentral hochskalieren.
 
-Für Azure Load Balancer sind zwei Tarife bzw. *SKUs* erhältlich: Basic und Standard. Diese unterscheiden sich hinsichtlich Staffelung, Funktionen und Preisen. Jedes Szenario, das mit dem Load Balancer im Tarif „Basic“ möglich ist, kann auch mit Load Balancer Standard erstellt werden – auch wenn sich die Vorgehensweise leicht unterscheidet. Bei der Beschäftigung mit den Load Balancer-Aspekten sollten Sie sich mit den Grundlagen und den SKU-spezifischen Unterschieden vertraut machen.
+Eine **[öffentliche Load Balancer-Instanz](#publicloadbalancer)** kann ausgehende Verbindungen für virtuelle Computer in Ihrem virtuellen Netzwerk bereitstellen, indem sie deren private IP-Adressen in öffentliche IP-Adressen übersetzt. Öffentliche Load Balancer-Instanzen werden verwendet, um einen Lastenausgleich für den eingehenden Internetdatenverkehr Ihrer virtuellen Computer vorzunehmen.
 
-## <a name="why-use-load-balancer"></a>Gründe für die Verwendung von Load Balancer
+Eine **[interne (oder private) Load Balancer-Instanz](#internalloadbalancer)** kann für Szenarien verwendet werden, in denen am Front-End nur private IP-Adressen benötigt werden. Interne Load Balancer-Instanzen werden verwendet, um einen Lastenausgleich für Datenverkehr innerhalb eines virtuellen Netzwerks vorzunehmen. Sie können ein Load Balancer-Front-End auch aus einem lokalen Netzwerk in einem Hybridszenario erreichen.
 
-Sie können Azure Load Balancer für Folgendes verwenden:
+## <a name="load-balancer-components"></a>Load Balancer-Komponenten
+* **Front-End-IP-Konfigurationen**: Die IP-Adresse der Load Balancer-Instanz. Sie ist der Kontaktpunkt für Clients. Die IP-Adressen können öffentlich oder privat sein. Je nach gewählter Option wird entweder eine öffentliche oder eine interne Load Balancer-Instanz erstellt.
+* **Back-End-Pool**: Die Gruppe virtueller Computer oder Instanzen in der VM-Skalierungsgruppe, von denen die eingehende Anforderung verarbeitet wird. Für eine kosteneffiziente Skalierung zur Bewältigung großer Mengen an eingehendem Datenverkehr empfiehlt es sich in der Regel, dem Back-End-Pool weitere Instanzen hinzuzufügen. Die Konfiguration von Load Balancer wird automatisch angepasst, wenn Sie Instanzen hoch- oder herunterskalieren. Das Hinzufügen oder Entfernen von virtuellen Computern zum bzw. aus dem Back-End-Pool bewirkt, dass Load Balancer neu konfiguriert wird. Es werden aber keine zusätzlichen Vorgänge für die Load Balancer-Ressource ausgeführt.
+* **Integritätstests**: Mithilfe eines Integritätstest wird die Integrität der Instanzen im Back-End-Pool ermittelt. Sie können den gewünschten Fehlerschwellenwert für Ihre Integritätstests definieren. Wenn ein Test nicht reagiert, beendet Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Ein Testfehler wirkt sich nicht auf vorhandene Verbindungen aus. Die Verbindung ist weiterhin verfügbar, bis der Flow von der Anwendung beendet wird, eine Leerlaufzeitüberschreitung auftritt oder die VM heruntergefahren wird. Load Balancer verfügt über verschiedene Integritätstesttypen für TCP-, HTTP- und HTTPS-Endpunkte. Weitere Informationen finden Sie unter [Testtypen](load-balancer-custom-probe-overview.md#types).
+* **Lastenausgleichsregeln:** Mithilfe von Lastenausgleichsregeln wird gesteuert, welche Aktionen die Load Balancer-Instanz wann ausführen soll. 
+* **NAT-Eingangsregeln:** Mit einer NAT-Regel für eingehenden Datenverkehr wird Datenverkehr von einem bestimmten Port einer Front-End-IP-Adresse an einen bestimmten Port einer Back-End-Instanz im virtuellen Netzwerk weitergeleitet. Der Portweiterleitung liegt die gleiche hashbasierte Verteilung zugrunde wie dem Lastenausgleich. Allgemeine Szenarien für diese Funktion sind RDP- (Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) für einzelne VM-Instanzen in einem Azure Virtual Network. Sie können Ports mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zuordnen. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
+* **Ausgangsregeln**: Eine Ausgangsregel konfiguriert die Netzwerkadressenübersetzung (Network Address Translation, NAT) für ausgehenden Datenverkehr für alle virtuellen Computer oder Instanzen, die vom Back-End-Pool für die Front-End-Übersetzung identifiziert wurden.
 
-* Führen Sie einen Lastenausgleich für den eingehenden Internetdatenverkehr für virtuelle Computer durch. Diese Konfiguration wird als ein [öffentlicher Load Balancer](#publicloadbalancer) bezeichnet.
-* Führen Sie einen Lastenausgleich des Datenverkehrs für mehrere VMs in einem virtuellen Netzwerk durch. Sie können ein Load Balancer-Front-End in einem Hybridszenario auch aus einem lokalen Netzwerk erreichen. Für beide Szenarien wird eine Konfiguration verwendet, die als ein [interner Load Balancer](#internalloadbalancer) bezeichnet wird.
-* Der Port leitet den Datenverkehr an einen bestimmten Port auf bestimmten virtuellen Computern mit Regeln für die Netzwerkadressenübersetzung für eingehenden Datenverkehr weiter.
-* Stellen Sie [ausgehende Verbindungen](load-balancer-outbound-connections.md) für virtuelle Computer in Ihrem virtuellen Netzwerk durch Verwenden eines öffentlichen Load Balancers bereit.
-
->[!NOTE]
-> Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, hilft Ihnen der Artikel [Was ist Azure Application Gateway?](../application-gateway/overview.md) weiter. Wenn Sie nach Informationen zum globalen DNS-Lastenausgleich suchen, hilft Ihnen der Artikel [Was ist Traffic Manager?](../traffic-manager/traffic-manager-overview.md) weiter. Für Ihre End-to-End-Szenarien kann es vorteilhaft sein, diese Lösungen zu kombinieren.
->
-> Einen Vergleich der Azure-Lastenausgleichsoptionen finden Sie unter [Übersicht über Lastenausgleichsoptionen in Azure](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview).
-
-## <a name="what-are-load-balancer-resources"></a>Was sind Load Balancer-Ressourcen?
-
-Load Balancer-Ressourcen sind Objekte, mit denen angegeben werden kann, wie Azure die mehrinstanzenfähige Infrastruktur programmieren muss, um das zu erstellende Szenario zu erzielen. Es gibt keine direkte Beziehung zwischen Load Balancer-Ressourcen und der tatsächlichen Infrastruktur. Beim Erstellen eines Load Balancers wird keine Instanz erstellt, und die Kapazität ist stets verfügbar.
-
-Bei einer Load Balancer-Ressource kann es sich entweder um einen öffentlichen oder einen internen Load Balancer handeln. Die Funktionen einer Load Balancer-Ressource werden festgelegt, indem die Elemente Front-End, Regel, Integritätstest und Back-End-Pool definiert werden. Sie ordnen VMs im Back-End-Pool an, indem Sie diesen über die VM angeben.
-
-## <a name="fundamental-load-balancer-features"></a>Grundlegende Load Balancer-Features
+## <a name="load-balancer-concepts"></a>Load Balancer-Konzepte
 
 Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anwendungen bereit:
 
-* **Lastenausgleich**
-
-  Mit Azure Load Balancer können Sie eine Lastenausgleichsregel erstellen, mit der Datenverkehr, der am Front-End eintrifft, auf Back-End-Poolinstanzen verteilt wird. Load Balancer verwendet einen Hashalgorithmus für die Verteilung von eingehenden Flows (Datenflüssen) und schreibt die Header der Flows für Back-End-Poolinstanzen um. Wenn der Integritätstest einen fehlerfreien Back-End-Endpunkt angibt, ist ein Server verfügbar, der neue Flows empfangen kann.
-
-  Standardmäßig wird für Load Balancer ein 5-Tupel-Hash verwendet. Der Hash umfasst die Elemente IP-Quelladresse, Quellport, IP-Zieladresse, Zielport und IP-Protokollnummer, um Flows den verfügbaren Servern zuzuordnen. Sie können eine Affinität zu einer IP-Quelladresse erstellen, indem Sie für eine bestimmte Regel einen 2- oder 3-Tupel-Hash verwenden. Alle Pakete desselben Paketflows treffen bei derselben Instanz hinter dem Front-End mit Lastenausgleich ein. Wenn der Client einen neuen Flow von derselben IP-Quelladresse initiiert, wird der Quellport geändert. Dies kann dazu führen, dass der Datenverkehr aufgrund des 5-Tupel-Hashs an einen anderen Back-End-Endpunkt gesendet wird.
-
-  Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](load-balancer-distribution-mode.md). In der folgenden Abbildung wird die hashbasierte Verteilung angezeigt:
+* **Lastenausgleichsalgorithmus**: Mit Azure Load Balancer können Sie eine Lastenausgleichsregel erstellen, nach der Datenverkehr, der beim Front-End eintrifft, auf Back-End-Poolinstanzen verteilt wird. Load Balancer verwendet einen Hashalgorithmus für die Verteilung von eingehenden Datenflüssen und schreibt die Header von Datenflüssen an Back-End-Poolinstanzen um. Wenn der Integritätstest einen fehlerfreien Back-End-Endpunkt angibt, ist ein Server verfügbar, der neue Flows empfangen kann.
+Standardmäßig wird für Load Balancer ein 5-Tupel-Hash verwendet. Der Hash umfasst die Elemente IP-Quelladresse, Quellport, IP-Zieladresse, Zielport und IP-Protokollnummer, um Flows den verfügbaren Servern zuzuordnen. Sie können eine Affinität zu einer IP-Quelladresse erstellen, indem Sie für eine bestimmte Regel einen 2- oder 3-Tupel-Hash verwenden. Alle Pakete desselben Paketflows treffen bei derselben Instanz hinter dem Front-End mit Lastenausgleich ein. Wenn der Client einen neuen Flow von derselben IP-Quelladresse initiiert, wird der Quellport geändert. Dies kann dazu führen, dass der Datenverkehr aufgrund des 5-Tupel-Hashs an einen anderen Back-End-Endpunkt gesendet wird.
+Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](load-balancer-distribution-mode.md). In der folgenden Abbildung wird die hashbasierte Verteilung angezeigt:
 
   ![Hash-basierte Verteilung](./media/load-balancer-overview/load-balancer-distribution.png)
 
   *Abbildung: Hashbasierte Verteilung*
 
-* **Portweiterleitung**
-
-  Mit Load Balancer können Sie eine NAT-Regel für eingehenden Datenverkehr erstellen. Mit dieser NAT-Regel wird Datenverkehr von einem bestimmten Port einer Front-End-IP-Adresse an einen bestimmten Port einer Back-End-Instanz im virtuellen Netzwerk weitergeleitet. Diese Weiterleitung basiert auf der gleichen hashbasierten Verteilung wie beim Lastenausgleich. Allgemeine Szenarien für diese Funktion sind RDP- (Remotedesktopprotokoll) oder SSH-Sitzungen (Secure Shell) für einzelne VM-Instanzen in einem Azure Virtual Network.
-  
-  Sie können Ports mehrere interne Endpunkte unter derselben Front-End-IP-Adresse zuordnen. Sie können die Front-End-IP-Adressen verwenden, um für Ihre VMs die Remoteverwaltung ohne zusätzliche Jumpbox durchzuführen.
-
-* **Anwendungsunabhängigkeit und -transparenz**
-
-  Load Balancer interagiert nicht direkt mit TCP oder UDP oder der Anwendungsschicht. Alle TCP- oder UDP-Anwendungsszenarien können unterstützt werden. Von Load Balancer werden keine Flows beendet oder angestoßen, es erfolgt keine Interaktion mit der Nutzlast des Flows, und es wird auch keine Gatewayfunktion auf der Anwendungsschicht bereitgestellt. Protokollhandshakes werden immer direkt zwischen dem Client und der Back-End-Poolinstanz durchgeführt. Bei einer Antwort auf einen eingehenden Flow handelt es sich immer um die Antwort eines virtuellen Computers. Wenn der Flow auf dem virtuellen Computer eingeht, wird auch die IP-Adresse der ursprünglichen Quelle gespeichert.
-
+* **Anwendungsunabhängigkeit und -transparenz**: Load Balancer interagiert nicht direkt mit TCP oder UDP oder der Anwendungsschicht. Alle TCP- oder UDP-Anwendungsszenarien können unterstützt werden. Von Load Balancer werden keine Flows beendet oder angestoßen, es erfolgt keine Interaktion mit der Nutzlast des Flows, und es wird auch keine Gatewayfunktion auf der Anwendungsschicht bereitgestellt. Protokollhandshakes werden immer direkt zwischen dem Client und der Back-End-Poolinstanz durchgeführt. Bei einer Antwort auf einen eingehenden Flow handelt es sich immer um die Antwort eines virtuellen Computers. Wenn der Flow auf dem virtuellen Computer eingeht, wird auch die IP-Adresse der ursprünglichen Quelle gespeichert.
   * Jeder Endpunkt erhält nur über eine VM eine Antwort. Zum Beispiel wird ein TCP-Handshake immer zwischen dem Client und der ausgewählten Back-End-VM ausgeführt. Eine Antwort auf eine Anforderung, die an ein Front-End gesendet wird, wird von einer Back-End-VM generiert. Wenn Sie eine erfolgreiche Überprüfung der Konnektivität für ein Front-End durchführen, bedeutet dies, dass Sie eine End-to-End-Konnektivität für mindestens eine Back-End-VM überprüfen.
-  * Anwendungsnutzlasten sind für Load Balancer transparent. Alle UDP- oder TCP-Anwendungen können unterstützt werden. Für Workloads, die eine Verarbeitung pro HTTP-Anforderung oder eine Manipulation der Nutzlasten auf Anwendungsschicht (z. B. Analysieren von HTTP-URLs) erfordern, sollten Sie einen Layer 7-Lastenausgleich (z. B. [Application Gateway](https://azure.microsoft.com/services/application-gateway)) verwenden.
-  * Da der Load Balancer nicht mit der TCP-Nutzlast interagiert und keine TLS-Abladung bereitstellt, können Sie verschlüsselte End-to-End-Szenarien erstellen. Die Verwendung des Load Balancers ermöglicht ein hohes Maß an horizontaler Skalierung für TLS-Anwendungen, indem die TLS-Verbindung auf dem virtuellen Computer selbst beendet wird. Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der VMs beschränkt, die Sie zum Back-End-Pool hinzufügen. Wenn bei Ihnen eine „SSL-Abladung“ oder eine Behandlung der Anwendungsschicht erforderlich ist oder Sie die Zertifikatverwaltung an Azure delegieren möchten, sollten Sie stattdessen den Layer 7-Lastenausgleich von Azure ([Application Gateway](https://azure.microsoft.com/services/application-gateway)) verwenden.
+  * Anwendungsnutzlasten sind für Load Balancer transparent. Alle UDP- oder TCP-Anwendungen können unterstützt werden.
+  * Da der Load Balancer nicht mit der TCP-Nutzlast interagiert und keine TLS-Abladung bereitstellt, können Sie verschlüsselte End-to-End-Szenarien erstellen. Die Verwendung des Load Balancers ermöglicht ein hohes Maß an horizontaler Skalierung für TLS-Anwendungen, indem die TLS-Verbindung auf dem virtuellen Computer selbst beendet wird. Beispielsweise ist die TLS-Funktion zum erstellen von Sitzungsschlüsseln vom Typ und der Nummer der VMs beschränkt, die Sie zum Back-End-Pool hinzufügen.
 
-* **Automatische Neukonfiguration**
-
-  Der Load Balancer konfiguriert sich selbst sofort, wenn Sie Instanzen nach oben oder nach unten skalieren. Das Hinzufügen oder Entfernen von virtuellen Computern für den Back-End-Pool bewirkt, dass der Load Balancer neu konfiguriert wird. Es werden aber keine zusätzlichen Vorgänge für die Load Balancer-Ressource ausgeführt.
-
-* **Integritätstests**
-
-  Der Load Balancer verwendet von Ihnen definierte Integritätstests, um die Integrität von Instanzen im Back-End-Pool zu ermitteln. Wenn ein Test nicht reagiert, beendet Load Balancer das Senden neuer Verbindungen an die fehlerhaften Instanzen. Ein Testfehler wirkt sich nicht auf vorhandene Verbindungen aus. Die Verbindung ist weiterhin verfügbar, bis der Flow von der Anwendung beendet wird, eine Leerlaufzeitüberschreitung auftritt oder die VM heruntergefahren wird.
-
-  Load Balancer verfügt über verschiedene Integritätstesttypen für TCP-, HTTP- und HTTPS-Endpunkte. Weitere Informationen finden Sie unter [Testtypen](load-balancer-custom-probe-overview.md#types).
-
-  Bei Verwendung von klassischen Clouddiensten ist ein weiterer Typ zulässig: [Gast-Agent](load-balancer-custom-probe-overview.md#guestagent). Ein Gast-Agent sollte als letztmögliche Option für einen Integritätstest angesehen werden. Microsoft rät von der Nutzung ab, falls andere Optionen zur Verfügung stehen.
-
-* **Ausgehende (SNAT-)Verbindungen**
-
-  Alle ausgehenden Flows von privaten IP-Adressen in Ihrem virtuellen Netzwerk zu öffentlichen IP-Adressen im Internet können in eine Front-End-IP-Adresse des Load Balancers übersetzt werden. Wenn ein öffentliches Front-End per Lastenausgleichsregel an einen virtuellen Back-End-Computer gebunden ist, übersetzt Azure ausgehende Verbindungen in die IP-Adresse des öffentlichen Front-Ends. Diese Konfiguration hat die folgenden Vorteile:
-
+* **Ausgehende Verbindungen (SNAT)** : Alle ausgehenden Flows von privaten IP-Adressen in Ihrem virtuellen Netzwerk zu öffentlichen IP-Adressen im Internet können in eine Front-End-IP-Adresse des Load Balancers übersetzt werden. Wenn ein öffentliches Front-End per Lastenausgleichsregel an einen virtuellen Back-End-Computer gebunden ist, übersetzt Azure ausgehende Verbindungen in die IP-Adresse des öffentlichen Front-Ends. Diese Konfiguration hat die folgenden Vorteile:
   * Einfache Upgrades und eine Notfallwiederherstellung von Diensten, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann.
   * Vereinfachte Verwaltung von Zugriffssteuerungslisten. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste zentral hoch- oder herunterskaliert oder erneut bereitgestellt werden. Die Übersetzung von ausgehenden Verbindungen in eine Anzahl von IP-Adressen, die geringer als die Anzahl von Computern ist, verringert den Aufwand für die Implementierung sicherer Empfängerlisten.
-
-  Weitere Informationen finden Sie unter [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md).
-
+Weitere Informationen finden Sie unter [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md).
 Load Balancer Standard verfügt über zusätzliche SKU-spezifische Funktionen, die über diese Grundlagen hinausgehen. Dies ist unten beschrieben.
 
 ## <a name="skus"></a> Vergleich der Load Balancer-SKUs
@@ -111,20 +71,14 @@ Load Balancer unterstützt sowohl Basic- als auch Standard-SKUs. Diese SKUs unte
 Die Konfiguration des gesamten Szenarios kann sich je nach SKU leicht unterscheiden. In der Load Balancer-Dokumentation wird darauf hingewiesen, wenn ein Artikel nur für eine bestimmte SKU gilt. Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](load-balancer-standard-overview.md).
 
 >[!NOTE]
-> Für neue Entwürfe sollte Load Balancer Standard verwendet werden.
-
+> Microsoft empfiehlt Load Balancer Standard.
 Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgruppen können nur mit einer SKU, nie mit beiden verbunden werden. Die Load Balancer-SKU muss mit der SKU für öffentliche IP-Adressen übereinstimmen, wenn Sie sie mit öffentlichen IP-Adressen verwenden. Load Balancer-SKUs und SKUs für öffentliche IP-Adressen sind nicht änderbar.
-
-Die bewährte Methode besteht darin, die SKUs explizit anzugeben. Zu diesem Zeitpunkt werden notwendige Änderungen auf ein Minimum beschränkt. Wenn keine SKU angegeben ist, wird standardmäßig die API-Version `2017-08-01` der SKU „Basic“ verwendet.
-
->[!IMPORTANT]
->Load Balancer Standard ist ein neues Load Balancer-Produkt. Es handelt sich im Prinzip um eine Erweiterung von Load Balancer im Tarif „Basic“, aber es gibt einige wichtige Unterschiede zwischen den beiden Produkten. Jedes End-to-End-Szenario, das mit dem Basic-Load Balancer möglich ist, kann auch mit dem Standard-Load Balancer erstellt werden. Falls Sie bereits mit dem Load Balancer im Tarif „Basic“ vertraut sind, sollten Sie einen Vergleich mit Load Balancer Standard durchführen, um sich über die aktuellen Änderungen in Bezug auf das Verhalten zu informieren.
 
 [!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
 
 Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](https://aka.ms/lblimits). Lesen Sie für den Standard-Load Balancer auch die ausführlicheren Informationen unter [Übersicht](load-balancer-standard-overview.md), [Preise](https://aka.ms/lbpricing) und [SLA](https://aka.ms/lbsla).
 
-## <a name="concepts"></a>Konzepte
+## <a name="load-balancer-types"></a>Load Balancer-Typen
 
 ### <a name = "publicloadbalancer"></a>Öffentlicher Load Balancer
 
@@ -139,7 +93,7 @@ Die folgende Abbildung zeigt einen Endpunkt für Webdatenverkehr mit Lastenausgl
 
 *Abbildung: Durchführen des Lastenausgleichs für Webdatenverkehr mit einem öffentlichen Load Balancer*
 
-Internetclients senden Webseitenanforderungen an die öffentliche IP-Adresse einer Web-App über TCP-Port 80. Azure Load Balancer verteilt die Anforderungen auf die drei VMs in der Gruppe mit Lastenausgleich. Weitere Informationen zu Load Balancer-Algorithmen finden Sie unter [Grundlegende Load Balancer-Features](load-balancer-overview.md##fundamental-load-balancer-features).
+Internetclients senden Webseitenanforderungen an die öffentliche IP-Adresse einer Web-App über TCP-Port 80. Azure Load Balancer verteilt die Anforderungen auf die drei VMs in der Gruppe mit Lastenausgleich. Weitere Informationen zu Load Balancer-Algorithmen finden Sie unter [Load Balancer-Konzepte](load-balancer-overview.md##load-balancer-concepts).
 
 Standardmäßig verteilt Azure Load Balancer Netzwerkdatenverkehr gleichmäßig auf mehrere Instanzen virtueller Computer. Sie können auch Sitzungsaffinität konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren des Verteilungsmodus für Azure Load Balancer](load-balancer-distribution-mode.md).
 
@@ -195,4 +149,4 @@ Informationen zur Vereinbarung zum Servicelevel (SLA) für Load Balancer Standar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu den ersten Schritten mit einem Load Balancer finden Sie unter [Erstellen eines Load Balancers im Tarif „Basic“](quickstart-create-basic-load-balancer-portal.md). Es wird beschrieben, wie Sie einen Load Balancer und VMs mit einer installierten benutzerdefinierten IIS-Erweiterung erstellen und den Lastenausgleich für die Web-App zwischen den VMs einrichten.
+Informationen zu den ersten Schritten mit einer Load Balancer-Instanz finden Sie unter [Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal](quickstart-load-balancer-standard-public-portal.md). Dort erfahren Sie, wie Sie eine Load Balancer-Instanz und virtuelle Computer mit einer installierten benutzerdefinierten IIS-Erweiterung erstellen und den Lastenausgleich für die Web-App zwischen den virtuellen Computern vornehmen.

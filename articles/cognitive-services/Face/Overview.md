@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 95ea1718682340967d5d39fe5f550f2638273796
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743706"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961538"
 ---
 # <a name="what-is-the-azure-face-api"></a>Was ist die Azure-Gesichtserkennungs-API?
 
@@ -45,7 +45,7 @@ Das folgende Beispiel zeigt das Zielgesicht:
 
 ![Lächelnde Frau](./Images/FaceFindSimilar.QueryFace.jpg)
 
-Und dies sind die Kandidatengesichter:
+Und diese Bilder sind die Kandidatengesichter:
 
 ![Fünf Bilder mit lächelnden Personen. Die Bilder a und b gehören zu derselben Person.](./Images/FaceFindSimilar.Candidates.jpg)
 

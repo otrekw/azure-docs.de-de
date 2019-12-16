@@ -1,6 +1,6 @@
 ---
 title: Computedienste von Microsoft Azure Deutschland | Microsoft-Dokumentation
-description: Vergleich der Computedienste für Azure Deutschland
+description: Dieser Artikel enthält einen ausführlichen Vergleich der Computedienste für Azure Deutschland.
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: 579e5138d5bfe93fcdc1f53f28c442125b8a69b3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82c658debe8207c6f023dcc9653fcedb510b37c1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685562"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890445"
 ---
 # <a name="azure-germany-compute-services"></a>Computedienste von Microsoft Azure Deutschland
 ## <a name="virtual-machines"></a>Virtual Machines

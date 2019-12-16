@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 2ae0e5b53d735b95ce1c3d2f9275456e41319242
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406996"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901005"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -268,7 +268,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Obwohl das Portal für die erste Erkundung und kleinere Aufgaben nützlich ist, sollten Sie sich schon frühzeitig mit den APIs beschäftigen, um die Konzepte und den Workflow besser zu verstehen:
+Verwenden Sie einen Portal-Assistenten, um eine sofort einsatzbereite Web-App zu erstellen, die in einem Browser ausgeführt wird. Sie können diesen Assistenten mit dem soeben von Ihnen erstellten kleinen Index testen oder eins der integrierten Beispieldatasets für umfassendere Suchfunktionen verwenden.
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Index mit dem .NET SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
+> [Schnellstart: Erstellen einer Such-App im Portal (Azure Cognitive Search)](search-create-app-portal.md)

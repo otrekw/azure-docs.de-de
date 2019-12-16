@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cb3c1d798e48017604d72d8a438d6a1071199ea
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419766"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74899863"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
@@ -144,7 +144,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     | **INSTANZDETAILS** |  |
-    | NAME | Geben Sie * myPrivateEndpoint* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen. |
+    | NAME | Geben Sie *myPrivateEndpoint* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen. |
     |Region|Wählen Sie **WestCentralUS** aus.|
     |||
 5. Klicken Sie auf **Weiter: Ressource** aus.
@@ -177,7 +177,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
 ## <a name="connect-to-a-vm-using-remote-desktop-rdp"></a>Herstellen einer Verbindung mit einem virtuellen Computer mithilfe von Remotedesktop (RDP)
 
 
-Nachdem Sie **myVm* erstellt haben, stellen Sie über das Internet eine Verbindung mit diesem virtuellen Computer her: 
+Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung mit diesem virtuellen Computer her: 
 
 1. Geben Sie in der Suchleiste des Portals *myVm* ein.
 
@@ -185,7 +185,7 @@ Nachdem Sie **myVm* erstellt haben, stellen Sie über das Internet eine Verbindu
 
 1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
 
-1. Öffnen Sie die heruntergeladene RDP*-Datei.
+1. Öffnen Sie die Datei *downloaded.rdp*.
 
     1. Wenn Sie dazu aufgefordert werden, wählen Sie **Verbinden** aus.
 

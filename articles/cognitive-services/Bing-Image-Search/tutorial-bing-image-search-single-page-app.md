@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: aahi
-ms.openlocfilehash: 7b530b3d415761956cbdb45fdc92bfed55a1bae5
-ms.sourcegitcommit: 10251d2a134c37c00f0ec10e0da4a3dffa436fb3
+ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2019
-ms.locfileid: "67868258"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930695"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
 
@@ -40,7 +40,7 @@ Den vollständigen Quellcode für dieses Tutorial finden Sie auf [GitHub](https:
 
 ## <a name="manage-and-store-user-subscription-keys"></a>Verwalten und Speichern von Benutzerabonnementschlüsseln
 
-Diese Anwendung verwendet den beständigen Speicher des Webbrowsers zum Speichern von API-Abonnementschlüsseln. Wenn kein Schlüssel gespeichert ist, fordert die Webseite den Benutzer zur Eingabe seines Schlüssels auf. Dieser wird dann für die spätere Verwendung gespeichert. Wenn der Schlüssel später von der API abgelehnt wird, entfernt die App ihn aus dem Speicher.
+Diese Anwendung verwendet den beständigen Speicher des Webbrowsers zum Speichern von API-Abonnementschlüsseln. Wenn kein Schlüssel gespeichert ist, fordert die Webseite den Benutzer zur Eingabe seines Schlüssels auf. Dieser wird dann für die spätere Verwendung gespeichert. Wenn der Schlüssel später von der API abgelehnt wird, entfernt die App ihn aus dem Speicher. In diesem Beispiel wird der globale Endpunkt verwendet. Sie können auch den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 
 Definieren Sie die Funktionen `storeValue` und `retrieveValue`, um das `localStorage`-Objekt (sofern vom Browser unterstützt) oder ein Cookie zu verwenden.

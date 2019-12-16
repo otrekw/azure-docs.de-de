@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/12/2019
 ms.author: jonels
 ms.custom: include file
-ms.openlocfilehash: c20159d0583e18d0f5e71152fdb600d03db43224
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: e7a6f7b4ba4219483cd3eb8f4600bc94213df131
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73993368"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973412"
 ---
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -46,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
    ![Hinzugefügte Client-IP-Adresse](./media/azure-postgresql-hyperscale-create-db/network-add-client-ip.png)
 
    > [!NOTE]
-   > Der Azure-PostgreSQL-Server kommuniziert über Port 5432. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 5432 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbank-Server herstellen, wenn Ihre IT-Abteilung Port 5432 öffnet.
+   > Der Azure-PostgreSQL-Server kommuniziert über Port 5432. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 5432 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Hyperscale (Citus)-Cluster herstellen, wenn Ihre IT-Abteilung den Port 5432 öffnet.
    >
 
 9. Klicken Sie auf **Bewerten + erstellen** und dann auf **Erstellen**, um den Server bereitzustellen. Die Bereitstellung dauert einige Minuten.
@@ -57,10 +57,10 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Datenbank für PostgreSQL-
 
 Wenn Sie Ihren Azure Database for PostgreSQL-Server erstellt haben, wird eine Standarddatenbank mit dem Namen **citus** erstellt. Um eine Verbindung mit Ihrem Datenbankserver herzustellen, benötigen Sie eine Verbindungszeichenfolge und das Administratorkennwort.
 
-1. Rufen Sie die Verbindungszeichenfolge ab. Klicken Sie auf der Seite der Servergruppe auf das Menüelement **Verbindungszeichenfolgen**. (Sie finden es unter **Einstellungen**.) Suchen Sie die markierte Zeichenfolge **C++ (libpq)** . Sie hat folgendes Format:
+1. Rufen Sie die Verbindungszeichenfolge ab. Klicken Sie auf der Seite der Servergruppe auf das Menüelement **Verbindungszeichenfolgen**. (Sie finden es unter **Einstellungen**.) Suchen Sie die mit **psql** markierte Zeichenfolge. Sie hat folgendes Format:
 
    ```
-   host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require
+   psql "host=hostname.postgres.database.azure.com port=5432 dbname=citus user=citus password={your_password} sslmode=require"
    ```
 
    Kopieren Sie die Zeichenfolge. Sie müssen „{your\_password}“ durch das Administratorkennwort ersetzen, das Sie weiter oben ausgewählt haben. Das System speichert Ihr Kennwort nicht als Klartext, daher kann es in der Verbindungszeichenfolge nicht angezeigt werden.
@@ -69,7 +69,7 @@ Wenn Sie Ihren Azure Database for PostgreSQL-Server erstellt haben, wird eine St
 
 3. Stellen Sie an der Eingabeaufforderung mit dem Hilfsprogramm [psql](https://www.postgresql.org/docs/current/app-psql.html) eine Verbindung mit Ihrem Azure Database for PostgreSQL-Server her. Übergeben Sie die Verbindungszeichenfolge in Anführungszeichen, und achten Sie darauf, dass sie Ihr Kennwort enthält:
    ```bash
-   psql "{connection_string}"
+   psql "host=..."
    ```
 
    Der folgende Befehl stellt z. B. eine Verbindung mit dem Koordinatorknoten der Servergruppe **mydemoserver** her:

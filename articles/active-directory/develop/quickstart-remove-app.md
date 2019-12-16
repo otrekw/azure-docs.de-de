@@ -1,28 +1,24 @@
 ---
-title: Entfernen einer bei der Microsoft Identity Platform registrierten Anwendung | Azure
+title: Entfernen einer bei der Microsoft Identity Platform registrierten App | Azure
 description: Es wird beschrieben, wie Sie eine Anwendung entfernen, die bei der Microsoft Identity Platform registriert ist.
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/08/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eddf16ea4179d3c254538a367ceb80ed02598345
-ms.sourcegitcommit: f6c85922b9e70bb83879e52c2aec6307c99a0cac
+ms.openlocfilehash: fff6d07bd0e353541dec23fd8c3edf7407ef6d68
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2019
-ms.locfileid: "65545744"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963289"
 ---
 # <a name="quickstart-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Schnellstart: Entfernen einer bei Microsoft Identity Platform registrierten Anwendung
 

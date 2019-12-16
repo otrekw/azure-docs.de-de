@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für den MARS-Agent
 description: Dieser Artikel enthält eine Übersicht über die Azure Backup-Unterstützung beim Sichern von Computern, auf denen der MARS-Agent (Microsoft Azure Recovery Services) ausgeführt wird.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195002"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893976"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Supportmatrix für die Sicherung mit dem Microsoft Azure Recovery Services (MARS)-Agent
 
@@ -45,7 +45,7 @@ Wenn Sie Daten mit dem MARS-Agent sichern, wird eine Momentaufnahme der Daten er
 --- | ---
 Size |  Der freie Speicherplatz im Cacheordner muss mindestens 5 bis 10 Prozent der Gesamtgröße Ihrer Sicherungsdaten betragen.
 Location | Der Cacheordner muss lokal auf dem Computer gespeichert werden, der gesichert wird, und er muss online sein. Der Cacheordner darf sich nicht in einer Netzwerkfreigabe, auf Wechselmedien oder in einem Offline-Volume befinden.
-Ordner | Der Cacheordner muss verschlüsselt sein und sich auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
+Ordner | Der Cacheordner sollte nicht verschlüsselt sein und sich nicht auf einem deduplizierten Volume oder in einem Ordner befinden, der komprimiert ist, eine geringe Dichte aufweist oder einen Analysepunkt hat.
 Andere Speicherorte | Sie können den Cachespeicherort ändern, indem Sie die Sicherungs-Engine beenden (`net stop bengine`) und den Cacheordner in ein neues Laufwerk kopieren. (Stellen Sie sicher, dass genügend Platz vorhanden ist.) Dann aktualisieren Sie zwei Registrierungseinträge unter **HKLM\SOFTWARE\Microsoft\Windows Azure Backup** (**Config/ScratchLocation** und **Config/CloudBackupProvider/ScratchLocation**) auf den neuen Speicherort und starten die Engine neu.
 
 ## <a name="networking-and-access-support"></a>Netzwerk und Zugriffsunterstützung

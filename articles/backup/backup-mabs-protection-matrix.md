@@ -3,12 +3,12 @@ title: Was kann Azure Backup Server sichern?
 description: Dieser Artikel bietet eine Unterstützungsmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server geschützt werden.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: b375dd5869da85f09a58c77742b7246c5c25c605
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172293"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996152"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server-Schutzmatrix
 
@@ -38,7 +38,8 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 |Server (32 Bit und 64 Bit)|Windows Server 2008 SP2|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|Nicht unterstützt|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
 |Server (32 Bit und 64 Bit)|Windows Server 2008 SP2|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
 |Server (32 Bit und 64 Bit)|Windows Storage Server 2008|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal|
-|SQL Server|SQL Server 2017|Physischer Server <br /><br /> Lokaler virtueller Hyper-V-Computer <br /> <br /> Virtueller Azure-Computer <br /><br /> Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3|Alle Bereitstellungsszenarien: Datenbank|
+|SQL Server|SQL Server 2019|Physischer Server <br /><br /> Lokaler virtueller Hyper-V-Computer <br /> <br /> Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird) <br /><br /> Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3|Alle Bereitstellungsszenarien: Datenbank|
+|SQL Server|SQL Server 2017|Physischer Server <br /><br /> Lokaler virtueller Hyper-V-Computer <br /> <br /> Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird) <br /><br /> Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3|Alle Bereitstellungsszenarien: Datenbank|
 |SQL Server|SQL Server 2016 SP2|Physischer Server <br /><br /> Lokaler virtueller Hyper-V-Computer <br /> <br /> Virtueller Azure-Computer <br /><br /> Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Alle Bereitstellungsszenarien: Datenbank|
 |SQL Server|SQL Server 2016 SP1|Physischer Server <br /><br /> Lokaler virtueller Hyper-V-Computer <br /> <br /> Virtueller Azure-Computer <br /><br /> Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Alle Bereitstellungsszenarien: Datenbank|
 |SQL Server|SQL Server 2016|Physischer Server <br /><br /> Lokaler virtueller Hyper-V-Computer <br /> <br /> Virtueller Azure-Computer <br /><br /> Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Alle Bereitstellungsszenarien: Datenbank|
@@ -56,7 +57,7 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 |SQL Server|SQL Server 2008|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2|Alle Bereitstellungsszenarien: Datenbank|
 |SQL Server|SQL Server 2008|Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)<br /> <br /> Azure Stack|V3, V2|Alle Bereitstellungsszenarien: Datenbank|
 |SQL Server|SQL Server 2008|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Alle Bereitstellungsszenarien: Datenbank|
-|Exchange|Exchange 2016|Physischer Server<br/><br/> Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2|Schützen (alle Bereitstellungsszenarien): Eigenständiger Exchange-Server, Datenbank unter einer Database Availability Group (DAG)<br /><br />Wiederherstellen (alle Bereitstellungsszenarien): Postfach, Postfachdatenbanken unter einer DAG<br/><br/> Die Sicherung von Exchange über ReFS wird nicht unterstützt. |
+|Exchange|Exchange 2016|Physischer Server<br/><br/> Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack<br /> <br />Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)|V3, V2|Schützen (alle Bereitstellungsszenarien): Eigenständiger Exchange-Server, Datenbank unter einer Database Availability Group (DAG)<br /><br />Wiederherstellen (alle Bereitstellungsszenarien): Postfach, Postfachdatenbanken unter einer DAG<br/><br/> Die Sicherung von Exchange über ReFS wird nicht unterstützt. |
 |Exchange|Exchange 2016|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Schützen (alle Bereitstellungsszenarien): Eigenständiger Exchange-Server, Datenbank unter einer Database Availability Group (DAG)<br /><br />Wiederherstellen (alle Bereitstellungsszenarien): Postfach, Postfachdatenbanken unter einer DAG<br/><br/> Die Sicherung von Exchange über ReFS wird nicht unterstützt. |
 |Exchange|Exchange 2013|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3, V2|Schützen (alle Bereitstellungsszenarien): Eigenständiger Exchange-Server, Datenbank unter einer Database Availability Group (DAG)<br /><br />Wiederherstellen (alle Bereitstellungsszenarien): Postfach, Postfachdatenbanken unter einer DAG<br/><br/> Die Sicherung von Exchange über ReFS wird nicht unterstützt. |
 |Exchange|Exchange 2013|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /> <br /> Azure Stack|V3, V2|Schützen (alle Bereitstellungsszenarien): Eigenständiger Exchange-Server, Datenbank unter einer Database Availability Group (DAG)<br /><br />Wiederherstellen (alle Bereitstellungsszenarien): Postfach, Postfachdatenbanken unter einer DAG<br/><br/> Die Sicherung von Exchange über ReFS wird nicht unterstützt. |

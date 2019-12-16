@@ -1,5 +1,5 @@
 ---
-title: Migration von Azure-Netzwerkressourcen von Azure Deutschland zu Azure weltweit
+title: Migrieren von Azure-Netzwerkressourcen von Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Netzwerkressourcen von Azure Deutschland zu Azure weltweit.
 author: gitralf
 services: germany
@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 3de61bb1ed7044ef3c2eb8005500712e36fd3b67
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: 9b695dff993c5d63cd606e4fadac9ea45c34208e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272532"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928883"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 

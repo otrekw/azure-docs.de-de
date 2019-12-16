@@ -6,12 +6,12 @@ ms.assetid: 53e6a15a-370a-48df-8618-c6737e26acec
 ms.topic: sample
 ms.date: 12/12/2017
 ms.custom: mvc
-ms.openlocfilehash: 06f03e0005c4f98370bb1f6430fff506f9145d5a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 0b3acb1b421962cde7d90398f42bdfeefda578e3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688511"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971501"
 ---
 # <a name="cli-samples-for-azure-app-service"></a>CLI-Beispiele für Azure App Service
 
@@ -32,6 +32,8 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe der Azure CLI 
 |**Skalieren der App**||
 | [Manuelles Skalieren einer App](./scripts/cli-scale-manual.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt eine App Service-App und skaliert sie über zwei Instanzen. |
 | [Weltweites Skalieren einer App mit einer Hochverfügbarkeitsarchitektur](./scripts/cli-scale-high-availability.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt zwei App Service-Apps in zwei verschiedenen geografischen Regionen und macht sie mithilfe von Azure Traffic Manager über einen zentralen Endpunkt verfügbar. |
+|**Schützen einer App**||
+| [Integrieren in Azure Application Gateway](./scripts/cli-integrate-app-service-with-application-gateway.md?toc=%2fcli%2fazure%2ftoc.json) | Erstellt mithilfe eines Dienstendpunkts und mithilfe von Zugriffsbeschränkungen eine App Service-App und integriert sie in Application Gateway. |
 |**Verbinden der App mit Ressourcen**||
 | [Verbinden einer App mit einer SQL-Datenbank](./scripts/cli-connect-to-sql.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und eine SQL-Datenbank und fügt dann die Datenbank-Verbindungszeichenfolge den App-Einstellungen hinzu. |
 | [Verbinden einer App mit einem Speicherkonto](./scripts/cli-connect-to-storage.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt eine App Service-App und ein Speicherkonto und fügt dann die Speicherverbindungszeichenfolge den App-Einstellungen hinzu. |

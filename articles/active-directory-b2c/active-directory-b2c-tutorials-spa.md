@@ -1,6 +1,7 @@
 ---
-title: 'Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung – Azure Active Directory B2C'
-description: In diesem Tutorial wird beschrieben, wie Sie Azure Active Directory B2C zum Bereitstellen einer Benutzeranmeldung für eine Single-Page-Webanwendung (JavaScript) verwenden.
+title: 'Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung'
+titleSuffix: Azure AD B2C
+description: In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory B2C zum Bereitstellen von Benutzeranmeldungen für eine JavaScript-basierte Single-Page-Webanwendung verwenden.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.custom: mvc, seo-javascript-september2019
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 8ece6401484d8f32483d4673384fcce6d7afac4a
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 2f18a7ddeb5256c660c6458fc8d2d29f83e04429
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420341"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950157"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-using-azure-active-directory-b2c-azure-ad-b2c"></a>Tutorial: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mit Azure Active Directory B2C (Azure AD B2C)
 

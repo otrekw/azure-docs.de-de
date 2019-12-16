@@ -1,21 +1,22 @@
 ---
-title: 'Tutorial: Simulieren eines Fehlers bei Zugriff auf georedundanten Speicher mit Lesezugriff in Azure | Microsoft-Dokumentation'
-description: Simulieren eines Fehlers bei Zugriff auf georedundanten Speicher mit Lesezugriff
+title: 'Tutorial: Simulieren eines Fehlers beim Lesen von Daten aus der primären Region'
+titleSuffix: Azure Storage
+description: Simulieren Sie einen Fehler beim Lesen von Daten aus der primären Region, wenn georedundanter Speicher mit Lesezugriff (RA-GRS) für das Speicherkonto aktiviert ist.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
-ms.openlocfilehash: 1f5c404e410ded2714be761e35060f3c07379bd3
-ms.sourcegitcommit: 8fc5f676285020379304e3869f01de0653e39466
+ms.openlocfilehash: 44c5d037797d845aa9c68af2d7b8e5e45bf418fb
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/09/2019
-ms.locfileid: "65508093"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892446"
 ---
-# <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Tutorial: Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff
+# <a name="tutorial-simulate-a-failure-in-reading-data-from-the-primary-region"></a>Tutorial: Simulieren eines Fehlers beim Lesen von Daten aus der primären Region
 
 Dieses Tutorial ist der zweite Teil einer Reihe. In diesem Teil erfahren Sie, welchen Nutzen ein [georedundanter Speicher mit Lesezugriff](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (Read-Access Geographically Redundant Storage, RA-GRS) bietet, indem Sie einen Fehler simulieren.
 
@@ -32,7 +33,7 @@ Im zweiten Teil der Reihe lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie vor Beginn dieses Tutorials das vorherige Tutorial durch: [Herstellen von Hochverfügbarkeit für Anwendungsdaten mit Azure Storage][previous-tutorial].
+Führen Sie vor Beginn dieses Tutorials das vorherige Tutorial durch: [Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher][previous-tutorial].
 
 Zum Simulieren eines Fehlers mit statischem Routing verwenden Sie eine Eingabeaufforderung mit erhöhten Rechten.
 

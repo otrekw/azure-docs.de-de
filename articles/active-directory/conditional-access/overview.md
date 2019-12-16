@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0463ffad87d00421c2fcb5c8357406d5f692144
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a4c85fbc2c1f926f89dbfe9f2a5ae47cc48edf73
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71075321"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966276"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -80,6 +80,13 @@ Viele Organisationen haben allgemeine Bedenken in Bezug auf den Zugriff, bei den
 - Blockieren oder Gewähren von Zugriff von bestimmten Standorten aus
 - Blockieren riskanter Anmeldeverhalten
 - Erzwingen von durch die Organisation verwaltete Geräte für bestimmte Anwendungen
+
+## <a name="customer-case-studies"></a>Fallstudien
+
+Erfahren Sie, wie andere Organisationen mit dem bedingten Azure AD-Zugriff automatisierte Zugriffssteuerungsentscheidungen definieren und implementieren. Die folgenden Berichte zeigen, wie diese Kundenanforderungen erfüllt werden können.
+
+* [Wipro steigert die mobile Produktivität mit Microsoft Cloud-Sicherheitstools zur Verbesserung der Kundenbindung.](https://customers.microsoft.com/story/wipro-professional-services-enterprise-mobility-security) Die Richtlinien für bedingten Zugriff in Azure AD haben es dem Unternehmen ermöglicht, Dokumente, Ressourcen und Anwendungen für vertrauenswürdige externe Entitäten freizugeben – die ihre eigenen Anmeldeinformationen verwenden können – und gleichzeitig die Kontrolle über die Unternehmensdaten zu behalten.
+* [Aramex delivery limited – Globales Logistik- und Transportunternehmen erstellt Büro mit Cloudkonnektivität mit einer Lösung zur Identitäts- und Zugriffsverwaltung.](https://customers.microsoft.com/story/aramex-azure-active-directory-travel-transportation-united-arab-emirates-en) Die Gewährleistung eines sicheren Zugriffs war bei den Remotemitarbeitern von Aramex besonders schwierig. Das Unternehmen nutzt jetzt den bedingten Zugriff, damit Remotemitarbeiter von außerhalb des Netzwerks auf die SaaS-Anwendungen zugreifen können. Über die Regel für bedingten Zugriff wird festgelegt, ob die mehrstufige Authentifizierung erzwungen wird, sodass nur autorisierten Personen der entsprechende Zugriff gewährt wird.
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 

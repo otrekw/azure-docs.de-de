@@ -3,12 +3,12 @@ title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: db6a7c592213b0ef8a17466300c37c859e96476b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484009"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885465"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -16,7 +16,9 @@ Anhand von Governance wird überprüft, ob Ihre Organisation ihre Ziele basieren
 
 Tritt in Ihrem Unternehmen eine erhebliche Anzahl von IT-Problemen auf, die anscheinend nie gelöst werden? Eine gute IT-Governance zeichnet sich durch die Planung von Initiativen und das Setzen von Prioritäten auf strategischer Ebene aus, um Probleme managen und verhindern zu können. Bei dieser strategischen Anforderung kommt Azure Policy ins Spiel.
 
-Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy erfüllt diese Anforderung, indem Ihre Ressourcen auf die Nichteinhaltung der zugewiesenen Richtlinien überprüft werden. Beispielsweise können Sie eine Richtlinie erstellen, die besagt, dass in Ihrer Umgebung für virtuelle Computer nur eine bestimmte SKU-Größe zulässig ist. Nachdem diese Richtlinie implementiert wurde, wird die Konformität der neuen und vorhandenen Ressourcen ausgewertet. Mit dem richtigen Typ von Richtlinie kann für vorhandene Ressourcen Konformität erzielt werden. Weiter unten in dieser Dokumentation werden noch weitere Details zur Erstellung und Implementierung von Richtlinien mit Azure Policy beschrieben.
+Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweisen und verwalten können. Mit diesen Richtlinien werden unterschiedliche Regeln und Auswirkungen für Ihre Ressourcen erzwungen, damit diese stets mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel konform bleiben. Azure Policy erfüllt diese Anforderung, indem Ihre Ressourcen auf die Nichteinhaltung der zugewiesenen Richtlinien überprüft werden. Alle von Azure Policy gespeicherten Daten werden im Ruhezustand verschlüsselt.
+
+Beispielsweise können Sie eine Richtlinie erstellen, die besagt, dass in Ihrer Umgebung für virtuelle Computer nur eine bestimmte SKU-Größe zulässig ist. Nachdem diese Richtlinie implementiert wurde, wird die Konformität der neuen und vorhandenen Ressourcen ausgewertet. Mit dem richtigen Typ von Richtlinie kann für vorhandene Ressourcen Konformität erzielt werden. Weiter unten in dieser Dokumentation werden noch weitere Details zur Erstellung und Implementierung von Richtlinien mit Azure Policy beschrieben.
 
 > [!IMPORTANT]
 > Die Kompatibilitätsprüfung von Azure Policy wird nun unabhängig vom Tarif für alle Zuweisungen bereitgestellt. Sollten die Kompatibilitätsdaten für Ihre Zuweisungen nicht angezeigt werden, vergewissern Sie sich, dass das Abonnement beim Ressourcenanbieter „Microsoft.PolicyInsights“ registriert ist.

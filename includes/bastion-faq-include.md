@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ada64d6bbce4fe7401bbfc078ba0903a28f06971
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: d31e30991056cc891e63347a2c88e7fc4caeab28
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795926"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875512"
 ---
 ### <a name="regions"></a>Welche Regionen sind verfügbar?
 
@@ -59,3 +59,7 @@ Azure Bastion unterstützt derzeit das Tastaturlayout „en-us-qwerty“ innerha
 
 Nein. UDR wird in einem Azure Bastion-Subnetz nicht unterstützt.
 In Szenarien, bei denen Azure Bastion und Azure Firewall bzw. ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) im gleichen virtuellen Netzwerk vorhanden sind, müssen Sie den Datenverkehr zwischen einem Azure Bastion-Subnetz und Azure Firewall nicht erzwingen, da die Kommunikation zwischen Azure Bastion und Ihren VMs privat ist. Weitere Informationen finden Sie unter [Zugreifen auf virtuelle Computer hinter Azure Firewall mit Bastion](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
+
+### <a name="filetransfer"></a>Wird die Dateiübertragung mit einer Azure Bastion-RDP-Sitzung unterstützt?
+
+Wir arbeiten daran, neue Funktionen hinzuzufügen. Derzeit wird die Dateiübertragung nicht unterstützt, sie ist jedoch Teil unserer Roadmap. Sie können uns Ihr Feedback zu neuen Features auf der [Azure Bastion-Feedbackseite](https://feedback.azure.com/forums/217313-networking?category_id=367303) mitteilen.

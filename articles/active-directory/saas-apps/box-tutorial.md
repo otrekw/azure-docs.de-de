@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b808e13ec37b9667a3ab1aaa233532a076bf4970
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: aceec8ad6ca23a1bd89b93a6442d48aa81597e55
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558921"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964173"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-box"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Box
 
@@ -45,8 +45,8 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Box unterstützt **SP**-initiiertes einmaliges Anmelden.
+* Box unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial) (empfohlen).
 * Box unterstützt die **bedarfsabhängige** Benutzerbereitstellung.
-* Box unterstützt die [**automatisierte** Benutzerbereitstellung](https://docs.microsoft.com/azure/active-directory/saas-apps/box-userprovisioning-tutorial).
 
 ## <a name="adding-box-from-the-gallery"></a>Hinzufügen von Box aus dem Katalog
 

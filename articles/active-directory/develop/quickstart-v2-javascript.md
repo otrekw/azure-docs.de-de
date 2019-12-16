@@ -1,28 +1,24 @@
 ---
-title: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA | Azure
+title: Anmelden von Benutzern in JavaScript-Single-Page-Web-Apps | Azure
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie, wie JavaScript-Anwendungen über Microsoft Identity Platform eine API aufrufen können, für die Zugriffstoken erforderlich sind.
+description: Hier erfahren Sie, wie eine JavaScript-App über Microsoft Identity Platform eine API aufrufen kann, für die Zugriffstoken erforderlich sind.
 services: active-directory
-documentationcenter: dev-center-name
 author: navyasric
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.devlang: na
 ms.topic: quickstart
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ca9a8b87713508a581a833f60fbe863fd93919a
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 77763ac30b4ba98e4849a25690302469843b4d06
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795613"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74920632"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -80,11 +76,12 @@ Wählen Sie die Option aus, die für Ihre Entwicklungsumgebung geeignet ist:
 
 * (Optional:) Um das Projekt mit dem IIS-Server auszuführen, [laden Sie das Visual Studio-Projekt herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip). Extrahieren Sie die ZIP-Datei in einen lokalen Ordner (z.B. *C:\Azure-Samples*).
 
-> [!div renderon="docs"]
-> #### <a name="step-3-configure-your-javascript-app"></a>Schritt 3: Konfigurieren Ihrer JavaScript-App
-> Bearbeiten Sie *index.html* im Ordner *JavaScriptSPA*, und legen Sie die Werte `clientID` und `authority` unter `msalConfig` fest.
+#### <a name="step-3-configure-your-javascript-app"></a>Schritt 3: Konfigurieren Ihrer JavaScript-App
 
 > [!div renderon="docs"]
+> Bearbeiten Sie *index.html* im Ordner *JavaScriptSPA*, und legen Sie die Werte `clientID` und `authority` unter `msalConfig` fest.
+
+> [!div class="sxs-lookup" renderon="portal"]
 > Bearbeiten Sie *index.html* im Ordner *JavaScriptSPA*, und ersetzen Sie `msalConfig` durch folgenden Code:
 
 ```javascript
@@ -101,6 +98,10 @@ var msalConfig = {
 };
 
 ```
+> [!div renderon="portal"]
+> > [!NOTE]
+> > Dieser Schnellstart unterstützt Enter_the_Supported_Account_Info_Here.
+
 
 > [!div renderon="docs"]
 >
@@ -115,12 +116,7 @@ var msalConfig = {
 > > Die Werte für **Anwendungs-ID (Client)** , **Verzeichnis-ID (Mandant)** und **Unterstützte Kontotypen** finden Sie im Azure-Portal auf der Seite **Übersicht** der App.
 >
 
-> [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit
-> Wir haben das Projekt mit Werten der Eigenschaften ihrer App konfiguriert. 
-
-> [!div renderon="docs"]
-> #### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
+#### <a name="step-4-run-the-project"></a>Schritt 4: Ausführen des Projekts
 
 * Wenn Sie [Node.js](https://nodejs.org/en/download/) verwenden, gehen Sie wie folgt vor:
 

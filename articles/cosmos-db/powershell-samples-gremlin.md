@@ -1,17 +1,17 @@
 ---
 title: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API'
-description: 'Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API'
+description: Hier erfahren Sie, wie Sie Azure PowerShell-Beispiele zum Ausführen verschiedener gängiger Aufgaben in Azure Cosmos DB-Gremlin-API-Konten abrufen.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 09/20/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: b8b986facc01a963d2ca87121337988c4c650ba1
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 23ede06274f6e929bd04bf9ced60f349ae06caa9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154789"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871940"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db-gremlin-api"></a>Azure PowerShell-Beispiele für Azure Cosmos DB: Gremlin-API
 

@@ -4,12 +4,13 @@ description: Erfahren Sie mehr über die Symptome, Ursachen und Lösungen von Az
 ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: c4ee8cbeeec21c4af0cc3a7fd83844bc8c676add
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.service: backup
+ms.openlocfilehash: 8331d74528703df1d7c56f25af7df0f53cd1f9be
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172603"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996271"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -22,10 +23,11 @@ Dieser Artikel enthält Schritte für die Problembehandlung, mit denen Sie Azure
 **Fehlercode**: UserErrorGuestAgentStatusUnavailable <br>
 **Fehlermeldung**: VM-Agent kann nicht mit Azure Backup kommunizieren<br>
 
-Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich in einem inkonsistenten Zustand oder ist nicht installiert und verhindert, dass der Azure Backup-Dienst Momentaufnahmen auslöst.  
+Der Azure-VM-Agent wurde möglicherweise angehalten, ist veraltet, befindet sich in einem inkonsistenten Zustand oder ist nicht installiert und verhindert, dass der Azure Backup-Dienst Momentaufnahmen auslöst.
 
-- Wenn der VM-Agent angehalten wurde oder sich in einem inkonsistenten Zustand befindet, **starten Sie den Agent neu**, und wiederholen Sie den Sicherungsvorgang (probieren Sie es mit einer On-Demand-Sicherung). Die Schritte zum Neustarten des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).
-- Falls der VM-Agent nicht installiert wurde oder veraltet ist, installieren bzw. aktualisieren Sie den VM-Agent, und wiederholen Sie den Sicherungsvorgang. Die Schritte zum Installieren/Aktualisieren des Agents finden Sie im Artikel zu [Windows-VMs](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) bzw. [Linux-VMs](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent).  
+- **Navigieren Sie im Azure-Portal zu „VM“ > „Einstellungen“ > Blatt „Eigenschaften“** , und stellen Sie sicher, dass der **VM-Status** **Wird ausgeführt** und der **Agent-Status** **Bereit** lautet. Wenn der VM-Agent beendet wurde oder sich in einem inkonsistenten Zustand befindet, starten Sie den Agent neu.<br>
+  - Führen Sie für virtuelle Windows-Computer die folgenden [Schritte](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms) aus, um den Gast-Agent zu starten.<br>
+  - Führen Sie für virtuelle Linux-Computer die folgenden [Schritte](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms) aus, um den Gast-Agent zu starten.
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError: Could not communicate with the VM agent for snapshot status (Kommunikation mit dem VM-Agent für Momentaufnahmestatus nicht möglich).
 
@@ -41,6 +43,18 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 **Ursache 3: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**
 
 **Ursache 4: [Die Sicherungserweiterung wird nicht aktualisiert oder geladen](#the-backup-extension-fails-to-update-or-load)**
+
+**Ursache 5: [Konfigurationsoptionen für den VM-Agent sind nicht festgelegt (für virtuelle Linux-Computer)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+
+## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed: Der virtuelle Computer befindet sich im Zustand „Fehler bei der Bereitstellung“
+
+**Fehlercode**: UserErrorVmProvisioningStateFailed<br>
+**Fehlermeldung**: Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“<br>
+
+Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird.<br>**Navigieren Sie im Azure-Portal zu „VM“ > „Einstellungen“ > „Erweiterungen“ > „Status der Erweiterungen“** , und überprüfen Sie, ob der Zustand aller Erweiterungen **Bereitstellung erfolgreich** lautet.
+
+- Wenn die VMSnapshot-Erweiterung den Status „Fehler“ aufweist, klicken Sie mit der rechten Maustaste auf die fehlerhafte Erweiterung, und entfernen Sie sie. Lösen Sie eine Ad-hoc-Sicherung aus. Dadurch werden die Erweiterungen neu installiert, und der Sicherungsauftrag wird ausgeführt.  <br>
+- Wenn eine andere Erweiterung den Status „Fehler“ aufweist, kann die Sicherung beeinträchtigt werden. Stellen Sie sicher, dass diese Erweiterungsprobleme gelöst sind, und wiederholen Sie den Sicherungsvorgang.  
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached: The Restore Point collection max limit has reached (Maximale Grenze der Wiederherstellungspunktsammlung wurde erreicht).
 
@@ -183,6 +197,11 @@ Führen Sie die folgenden Schritte aus, falls die ausführliche Protokollierung 
 1. Suchen Sie in der Datei „/etc/waagent.conf“ nach der folgenden Zeile: **Enable verbose logging (y|n)**
 2. Ändern Sie den Wert für **Logs.Verbose** von *n* in *y*.
 3. Speichern Sie die Änderung, und starten Sie waagent neu, indem Sie die weiter oben in diesem Abschnitt beschriebenen Schritte ausführen.
+
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Konfigurationsoptionen für den VM-Agent sind nicht festgelegt (für virtuelle Linux-Computer)
+
+Eine Konfigurationsdatei (/etc/waagent.conf) steuert die Aktionen von waagent. Die Konfigurationsdateioptionen **Extensions.Enable** und **Provisioning.Agent** müssen auf **y** festgelegt werden, damit die Sicherung funktioniert.
+Eine vollständige Liste der Optionen für die VM-Agent-Konfigurationsdatei finden Sie unter <https://github.com/Azure/WALinuxAgent#configuration-file-options>.
 
 ### <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden
 

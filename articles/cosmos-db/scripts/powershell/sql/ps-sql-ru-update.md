@@ -1,18 +1,18 @@
 ---
 title: 'Azure PowerShell-Skript: Azure Cosmos DB – Aktualisieren von RU/s für die SQL (Core)-API'
-description: 'Azure PowerShell-Skript: Azure Cosmos DB – Aktualisieren von RU/s für die SQL (Core)-API'
+description: Hier erfahren Sie, wie Sie den Durchsatz für eine Azure Cosmos-Datenbank oder einen entsprechenden Container unter Verwendung eines PowerShell-Skripts und der SQL (Core)-API aktualisieren.
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 05/18/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6b54b6021baf7a91c79309f8fa69b4df67d3887e
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 5a03c992e1ce1dc17c53bf414f0b07d2b60ddcce
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178751"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74871889"
 ---
 # <a name="update-rus-for-a-database-or-container-for-azure-cosmos-db---sql-core-api"></a>Aktualisieren von RU/s für eine Datenbank oder einen Container für Azure Cosmos DB – SQL (Core)-API
 

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 07/03/2019
+ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 042fc22e66924fb2ea1a6985f442c46061b7fc31
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 9a76d4f083c791bb1e3c29b4068c2f82f3cd0bc5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176391"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973695"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und Python
 
-In dieser Schnellstartanleitung generieren Sie eine Miniaturansicht eines Bilds unter Verwendung der REST-API für maschinelles Sehen. Mit der Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) können Sie die gewünschte Höhe und Breite angeben. Maschinelles Sehen identifiziert dann mittels intelligentem Zuschneiden den gewünschten Bereich und generiert Zuschnittkoordinaten auf der Grundlage dieser Region.
+In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um eine Miniaturansicht von einem Bild zu generieren. Mit der Methode [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) können Sie die gewünschte Höhe und Breite angeben. Maschinelles Sehen identifiziert dann mittels intelligentem Zuschneiden den gewünschten Bereich und generiert Zuschnittkoordinaten auf der Grundlage dieser Region.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/try/cognitive-services/) erstellen, bevor Sie beginnen.
 

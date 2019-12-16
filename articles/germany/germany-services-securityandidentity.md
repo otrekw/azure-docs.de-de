@@ -1,6 +1,6 @@
 ---
 title: Sicherheits- und Identitätsdienste von Azure Deutschland | Microsoft-Dokumentation
-description: Vergleich der Sicherheits- und Identitätsdienste für Azure Deutschland
+description: Dieser Artikel enthält einen Vergleich der Sicherheits- und Identitätsdienste für Azure Deutschland.
 services: germany
 cloud: na
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: ee98e074b8bf21abe198506899b99be4e2908f14
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f189abdfda62e306f520ebec22bded84ab069e5d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60685929"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74890410"
 ---
 # <a name="azure-germany-security-and-identity-services"></a>Sicherheits- und Identitätsdienste von Azure Deutschland
 ## <a name="key-vault"></a>Key Vault

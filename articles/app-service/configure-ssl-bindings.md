@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 10/25/2019
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: b967e4cfad2444e39c7df8cfddcc2154bd48367d
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 60a4646b77f083590a6eb8a8648d6dea932f0bdd
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670681"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849750"
 ---
 # <a name="secure-a-custom-dns-name-with-an-ssl-binding-in-azure-app-service"></a>Schützen eines benutzerdefinierten DNS-Namens mit einer SSL-Bindung: Azure App Service
 
@@ -107,6 +107,8 @@ Die Seite **Benutzerdefinierte Domäne** Ihrer App wird mit der neuen, dediziert
 Rufen Sie in verschiedenen Browsern `https://<your.custom.domain>` auf, um zu überprüfen, ob Ihre App angeboten wird.
 
 ![Portalnavigation zur Azure-App](./media/configure-ssl-bindings/app-with-custom-ssl.png)
+
+Der Anwendungscode kann das Protokoll anhand des Headers „x-appservice-proto“ untersuchen. Der Header hat den Wert `http` oder `https`. 
 
 > [!NOTE]
 > Wenn Ihre App Zertifikatüberprüfungsfehler meldet, verwenden Sie wahrscheinlich ein selbstsigniertes Zertifikat.

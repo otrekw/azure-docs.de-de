@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: d6758fc5434406e42acf65ff3b712227b5cec0f8
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991620"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977215"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Schnellstart: Verwenden des Bing-Websuche-SDK für Python
 
@@ -23,16 +23,14 @@ Das Bing-Websuche-SDK erleichtert die Integration der Bing-Websuche in Ihre Pyth
 
 Möchten Sie den Code jetzt sehen? Die [Beispiele zum Bing-Websuche-SDK für Python](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) sind auf GitHub verfügbar.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
-
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="prerequisites"></a>Voraussetzungen
 Das Bing-Websuche-SDK ist mit Python 2.7, 3.3, 3.4, 3.5 und 3.6 kompatibel. Es wird empfohlen, für diese Schnellstartanleitung eine virtuelle Umgebung zu verwenden.
 
 * Python 2.7, 3.3, 3.4, 3.5 oder 3.6
 * [virtualenv](https://docs.python.org/3/tutorial/venv.html) für Python 2.7
 * [venv](https://pypi.python.org/pypi/virtualenv) für Python 3.x
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-and-configure-your-virtual-environment"></a>Erstellen und Konfigurieren der virtuellen Umgebung
 
@@ -82,7 +80,7 @@ Wenn die Antwort Webseiten, Bilder, Nachrichten oder Videos enthält, wird jewei
 
 1. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Python-Projekt.
 
-1. Kopieren Sie diesen Beispielcode in Ihr Projekt:  
+1. Kopieren Sie den folgenden Beispielcode in Ihr Projekt: `endpoint` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.  
 
     ```python
     # Import required modules.

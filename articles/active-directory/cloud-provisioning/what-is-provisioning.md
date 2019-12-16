@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acde7f30649e03d44fd891c959b53113b0e46f51
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794936"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868642"
 ---
 # <a name="what-is-identity-provisioning"></a>Was ist die Identitätsbereitstellung?
 
@@ -66,5 +66,5 @@ Hierzu werden die Azure AD Connect-Synchronisierung, die Azure AD Connect-Cl
  
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
+- [Installieren des Azure AD Connect-Bereitstellungs-Agents](how-to-install.md)

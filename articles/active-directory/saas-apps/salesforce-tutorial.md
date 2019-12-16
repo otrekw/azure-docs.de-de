@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63cc4b902c0bd0281228e23076be6e0a18461597
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4d137a96a967e017c67da7dfabf25502de32ba7a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241418"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970005"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Salesforce
 
@@ -46,9 +46,9 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Salesforce unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-* Salesforce unterstützt die **Just-in-Time**-Benutzerbereitstellung.
+* Salesforce unterstützt die [**automatisierte** Benutzerbereitstellung und Bereitstellungsaufhebung](salesforce-provisioning-tutorial.md) (empfohlen).
 
-* Salesforce unterstützt die [**automatisierte** Benutzerbereitstellung](salesforce-provisioning-tutorial.md).
+* Salesforce unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 * Die mobile Salesforce-Anwendungen kann nun mit Azure AD konfiguriert werden, um SSO zu ermöglichen. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 

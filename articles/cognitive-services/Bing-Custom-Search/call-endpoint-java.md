@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: afb804dd3fd0fecd676f04f18db577f87861a163
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 6a470979ce4276d510f1a89bc9bc192d609c2083
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564680"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973508"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit Java
 
@@ -50,7 +50,7 @@ Verwenden Sie diese Schnellstartanleitung, um mit dem Anfordern von Suchergebnis
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie eine Klasse namens `CustomSrchJava`, und erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt für die benutzerdefinierte Suche und die benutzerdefinierte Konfigurations-ID Ihrer Suchinstanz. 
+2. Erstellen Sie eine Klasse namens `CustomSrchJava`, und erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt für die benutzerdefinierte Suche und die benutzerdefinierte Konfigurations-ID Ihrer Suchinstanz. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";

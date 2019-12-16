@@ -4,16 +4,19 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Azure Container Regi
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8af8daa4233fe6461b4e129f56a063e7cc212245
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a26f1207eccd615804babe230df689d27beae49f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454762"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840781"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages in der Cloud beim Committen von Quellcode
 
-Neben einer [Schnellaufgabe](container-registry-tutorial-quick-task.md) unterstützt ACR Tasks automatisierte Docker-Containerimagebuilds in der Cloud, wenn Sie Quellcode in ein Git-Repository committen.
+Neben einer [Schnellaufgabe](container-registry-tutorial-quick-task.md) unterstützt ACR Tasks automatisierte Docker-Containerimagebuilds in der Cloud, wenn Sie Quellcode in ein Git-Repository committen. Zu den unterstützten Git-Kontexten für ACR Tasks zählen öffentliche oder private GitHub- oder Azure-Repositorys.
+
+> [!NOTE]
+> Derzeit unterstützt ACR Tasks keine Anforderungstrigger für Commit- oder Pullvorgänge in GitHub Enterprise-Repositorys.
 
 In diesem Tutorial erstellt und pusht Ihre ACR-Aufgabe ein einzelnes Containerimage, das in einer Dockerfile-Datei angegeben ist, wenn Sie Quellcode in ein Git-Repository committen. Informationen zum Erstellen einer [mehrstufigen Aufgabe](container-registry-tasks-multi-step.md), die mithilfe einer YAML-Datei Schritte zum Erstellen, Pushen und optionalen Testen mehrerer Container beim Codecommit definiert, finden Sie unter [Tutorial: Ausführen eines mehrstufigen Containerworkflows in der Cloud, wenn Sie Quellcode committen](container-registry-tutorial-multistep-task.md). Eine Übersicht über ACR Tasks finden Sie unter [Automatisieren von Betriebssystem- und Frameworkpatches mit ACR Tasks](container-registry-tasks-overview.md).
 

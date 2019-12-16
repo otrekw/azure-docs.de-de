@@ -1,6 +1,6 @@
 ---
-title: 'Erste Schritte mit Android: Microsoft Identity Platform | Azure'
-description: So kann eine Android-App ein Zugriffstoken von Microsoft Identity Platform abrufen und die Microsoft Graph-API oder APIs aufrufen, die Zugriffstoken erfordern
+title: 'Anmelden von Benutzern und Aufrufen von Microsoft Graph (Android): Microsoft Identity Platform | Azure'
+description: Hier erfahren Sie, wie Sie ein Zugriffstoken von Microsoft Identity Platform abrufen und die Microsoft Graph-API oder APIs aufrufen, die Zugriffstoken erfordern (Android).
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -16,12 +16,12 @@ ms.author: jmprieur
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5417c29b62414468064338a67b188c7b7f832ac5
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242204"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74961556"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Tutorial: Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer Android-App
 

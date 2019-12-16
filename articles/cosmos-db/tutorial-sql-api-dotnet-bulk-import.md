@@ -1,20 +1,20 @@
 ---
-title: Optimieren des Durchsatzes beim Massenimport von Daten in ein SQL-API-Konto von Azure Cosmos DB
-description: Enthält eine Beschreibung der Erstellung einer .NET-Konsolenanwendung, mit der der bereitgestellte Durchsatz (RU/s), der zum Importieren von Daten in Azure Cosmos DB benötigt wird, optimiert wird.
+title: Ausführen eines Massenimports von Daten in ein Azure Cosmos DB-SQL-API-Konto mithilfe des .NET SDK
+description: Hier erfahren Sie, wie Sie Daten in Azure Cosmos DB importieren oder erfassen, um eine .NET-Konsolenanwendung zu erstellen, mit der der bereitgestellte Durchsatz (RU/s), der zum Importieren von Daten benötigt wird, optimiert wird.
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.reviewer: sngun
-ms.openlocfilehash: d80d762338744c0ca783d1768bacb8443dbc5020
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 79771e082a4a6ffae15f33f636b0300e93bcdaba
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606216"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896278"
 ---
-# <a name="optimize-throughput-when-bulk-importing-data-to-azure-cosmos-db-sql-api-account"></a>Optimieren des Durchsatzes beim Massenimport von Daten in ein SQL-API-Konto von Azure Cosmos DB
+# <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Ausführen eines Massenimports von Daten in ein Azure Cosmos DB-SQL-API-Konto mithilfe des .NET SDK
 
 Dieses Tutorial enthält eine Beschreibung der Erstellung einer .NET-Konsolenanwendung, mit der der bereitgestellte Durchsatz (RU/s), der zum Importieren von Daten in Azure Cosmos DB benötigt wird, optimiert wird. In diesem Artikel lesen Sie Daten aus einer Beispieldatenquelle aus und importieren diese in einen Azure Cosmos-Container.
 In diesem Tutorial wird [mindestens Version 3.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) des Azure Cosmos DB .NET SDK verwendet, das auf .NET Framework oder .NET Core ausgerichtet werden kann.

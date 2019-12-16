@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93c88b167884c455ffb995f35356b121bce8a207
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74794990"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997087"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -42,7 +42,7 @@ Ja. Mit der Cloudbereitstellung können mehrere Active Directory-Gesamtstruktur
 
 **F: Wie wird der Agent aktualisiert?**
 
-Die Agents werden von Microsoft automatisch aktualisiert. Dadurch entfällt für die IT-Abteilung das Testen und Überprüfen neuer Agent-Versionen. 
+Die Agents werden von Microsoft automatisch aktualisiert. Dadurch entfällt für das IT-Team das Testen und Überprüfen neuer Agent-Versionen. 
 
 **F: Kann ich die automatische Aktualisierung deaktivieren?**
 
@@ -70,5 +70,5 @@ Wenn Sie die Konfiguration löschen, werden die synchronisierten Objekte in Azur
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was bedeutet Bereitstellung?](what-is-provisioning.md)
-- [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
+- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)

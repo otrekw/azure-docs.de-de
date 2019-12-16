@@ -9,13 +9,13 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 08/08/2019
-ms.openlocfilehash: d0734763ca1dd5ab3162ca00748361bee29cefc1
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.date: 12/05/2019
+ms.openlocfilehash: 986dbc48bae6cd133e74648ad6e900ba7e515f91
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378742"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970498"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-go-sdk"></a>Schnellstart: Erstellen eines Objekterkennungsprojekts mit dem Custom Vision-SDK für Go
 
@@ -111,7 +111,7 @@ scissorsTag, _ := trainer.CreateTag(ctx, *project.ID, "scissors", "Pair of sciss
 
 Wenn Sie Bilder in Objekterkennungsprojekten mit Tags versehen, müssen Sie mithilfe normalisierter Koordinaten die Region des jeweiligen markierten Objekts angeben.
 
-Wenn Sie Bilder, Tags und Regionen zum Projekt hinzufügen möchten, fügen Sie nach der Tagerstellung den folgenden Code ein. Beachten Sie, dass die Bereiche für dieses Tutorial inline mit dem Code hartcodiert werden. Die Regionen geben den Begrenzungsrahmen in normalisierten Koordinaten an, und die Koordinaten werden in der folgenden Reihenfolge angegeben: links, oben, Breite, Höhe.
+Wenn Sie Bilder, Tags und Regionen zum Projekt hinzufügen möchten, fügen Sie nach der Tagerstellung den folgenden Code ein. Hinweis: In diesem Tutorial sind die Regionen inline hartcodiert. Die Regionen geben den Begrenzungsrahmen in normalisierten Koordinaten an, und die Koordinaten werden in der folgenden Reihenfolge angegeben: links, oben, Breite, Höhe.
 
 ```Go
 forkImageRegions := map[string][4]float64{
@@ -225,7 +225,7 @@ if (!*scissor_batch.IsBatchSuccessful) {
 
 ### <a name="train-the-project-and-publish"></a>Trainieren des Projekts und Veröffentlichen
 
-Dieser Code erstellt die erste Iteration im Projekt und veröffentlicht anschließend diese Iteration im Vorhersageendpunkt. Der Name der veröffentlichten Iteration kann zum Senden von Vorhersageanforderungen verwendet werden. Eine Iteration ist erst im Vorhersageendpunkt verfügbar, wenn sie veröffentlicht wurde.
+Dieser Code erstellt die erste Iteration im Projekt und veröffentlicht anschließend diese Iteration im Vorhersageendpunkt. Der Name der veröffentlichten Iteration kann zum Senden von Vorhersageanforderungen verwendet werden. Eine Iteration ist erst am Vorhersageendpunkt verfügbar, wenn sie veröffentlicht wurde.
 
 ```go
 iteration, _ := trainer.TrainProject(ctx, *project.ID)
