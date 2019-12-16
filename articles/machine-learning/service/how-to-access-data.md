@@ -11,27 +11,27 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2b76d8f25cfb8bd1dfda43c8383a538f8cf9769b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 94cdf683bc8524786e1f32607ef18f976990ba07
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818456"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74979120"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Zugreifen auf Daten in Azure Storage-Diensten
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen. Aus diesen [Azure Storage-Lösungen](#matrix) können Sie Datenspeicher erstellen. Für nicht unterstützte Speicherlösungen empfiehlt es sich, Ihre Daten in unsere unterstützten Azure Storage-Lösungen zu verschieben, um bei Machine Learning-Experimenten Kosten für ausgehende Daten zu sparen. [Weitere Informationen zum Verschieben von Daten](#move). 
+In diesem Artikel erfahren Sie, wie Sie auf einfache Weise über Azure Machine Learning-Datenspeicher auf Ihre Daten in Azure Storage-Diensten zugreifen können. Datenspeicher werden zum Speichern von Verbindungsinformationen wie z. B. Ihrer Abonnement-ID und Tokenautorisierung verwendet. Mithilfe von Datenspeichern können Sie auf Ihren Speicher zugreifen, ohne die Verbindungsinformationen in Ihren Skripts hartcodieren zu müssen. Aus diesen [Azure Storage-Lösungen](#matrix) können Sie Datenspeicher erstellen. Für nicht unterstützte Speicherlösungen sowie um bei Machine Learning-Experimenten Kosten für ausgehende Daten zu sparen, empfiehlt es sich, Ihre Daten in unsere unterstützten Azure Storage-Lösungen zu verschieben. [Weitere Informationen zum Verschieben von Daten](#move). 
 
 In dieser Vorgehensweise finden Sie Beispiele für die folgenden Aufgaben:
-* [Registrieren von Datenspeichern](#access)
-* [Abrufen von Datenspeichern aus Arbeitsbereichen](#get)
-* [Hochladen und Herunterladen von Daten mithilfe von Datenspeichern](#up-and-down)
-* [Zugreifen auf Daten während des Trainings](#train)
-* [Verschieben von Daten nach Azure](#move)
+* Registrieren von Datenspeichern
+* Abrufen von Datenspeichern aus Arbeitsbereichen
+* Hochladen und Herunterladen von Daten mithilfe von Datenspeichern
+* Zugreifen auf Daten während des Trainings
+* Verschieben von Daten in einen Azure Storage-Dienst
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
+Sie benötigen
 - Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
 - Ein Azure-Speicherkonto mit einem [Azure-Blobcontainer](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) oder einer [Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-files-introduction).
@@ -58,7 +58,13 @@ Wenn Sie eine Azure Storage-Lösung als Datenspeicher registrieren, erstellen Si
 
 Alle Registriermethoden befinden sich in der [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py)-Klasse und weisen das Format „register_azure_*“ auf.
 
-Die erforderlichen Informationen zum Festlegen der „register()“-Methode sind über [Azure Machine Learning-Studio](https://ml.azure.com) zu finden. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Zum Abrufen von Authentifizierungsinformationen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**. 
+Die Informationen, die Sie zum Auffüllen der register()-Methode benötigen, finden Sie in [Azure Machine Learning Studio](https://ml.azure.com) und den folgenden Schritten.
+
+1. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. 
+2. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. 
+3. Zum Abrufen von Authentifizierungsinformationen, wie dem Kontoschlüssel oder dem SAS-Token, navigieren Sie im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**. 
+
+>[WICHTIG] Wenn sich Ihr Speicherkonto in einem VNET befindet, wird nur die Erstellung von Azure-Blobdatenspeichern unterstützt. Legen Sie den-Parameter `grant_workspace_access` auf `True` fest, um für Ihren Arbeitsbereich Zugriff auf Ihr Speicherkonto zu gewähren.
 
 In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Datenspeicher registrieren können.
 
@@ -74,7 +80,6 @@ In den folgenden Beispielen wird gezeigt, wie Sie einen Azure-Blobcontainer oder
                                                           account_key='your storage account key',
                                                           create_if_not_exists=True)
     ```
-    Befindet sich Ihr Speicherkonto in einem virtuellen Netzwerk, wird nur die Erstellung von Azure-Blobdatenspeicher unterstützt. Legen Sie den-Parameter `grant_workspace_access` auf `True` fest, um für Ihren Arbeitsbereich Zugriff auf Ihr Speicherkonto zu gewähren.
 
 + Verwenden Sie [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-) für einen **Azure-Dateifreigabe-Datenspeicher**. 
 
@@ -102,9 +107,9 @@ Erstellen Sie einen neuen Datenspeicher in wenigen Schritten in Azure Machine Le
 1. Wählen Sie **+ Neuer Datenspeicher** aus.
 1. Füllen Sie das Formular „Neuer Datenspeicher“ aus. Das Formular wird ausgehend von den gewählten Optionen für den Azure-Speichertyp und den Authentifizierungstyp intelligent aktualisiert.
   
-Die erforderlichen Informationen zum Ausfüllen des Formulars sind über [Azure Machine Learning-Studio](https://ml.azure.com) zu finden. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Navigieren Sie zum Abrufen von Authentifizierungselementen wie Kontoschlüssel oder SAS-Token im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**.
+Die Informationen, die Sie zum Ausfüllen des Formulars benötigen, lassen sich über das [Azure-Portal](https://portal.azure.com) ermitteln. Wählen Sie im linken Bereich **Speicherkonten** und dann das Speicherkonto aus, das Sie registrieren möchten. Die Seite **Übersicht** enthält Informationen wie den Kontonamen und den Namen des Containers oder der Dateifreigabe. Navigieren Sie zum Abrufen von Authentifizierungselementen wie Kontoschlüssel oder SAS-Token im Bereich **Einstellungen** auf der linken Seite zu **Kontoschlüssel**.
 
-Das folgende Beispiel veranschaulicht das Aussehen des Formulars, wenn ein Azure-Blobdatenspeicher erstellt werden soll. 
+Das folgende Beispiel veranschaulicht das Aussehen des Formulars, wenn ein Azure-Blobdatenspeicher erstellt wird. 
     
  ![Neuer Datenspeicher](media/how-to-access-data/new-datastore-form.png)
 
@@ -128,7 +133,7 @@ for name, datastore in datastores.items():
     print(name, datastore.datastore_type)
 ```
 
-Wenn Sie einen Arbeitsbereich erstellen, werden ein Azure-Blob-Container und eine Azure-Dateifreigabe in dem Arbeitsbereich namens `workspaceblobstore` bzw. `workspacefilestore` registriert. Darin werden die Verbindungsinformationen des Blobcontainers und der Dateifreigabe, die im Speicherkonto bereitgestellt wird, das mit dem Arbeitsbereich verbunden ist, gespeichert. `workspaceblobstore` wird als Standarddatenspeicher festgelegt.
+Wenn Sie einen Arbeitsbereich erstellen, werden ein Azure-Blob-Container und eine Azure-Dateifreigabe automatisch in dem Arbeitsbereich namens `workspaceblobstore` bzw. `workspacefilestore` registriert. Darin werden die Verbindungsinformationen des Blobcontainers und der Dateifreigabe, die im Speicherkonto bereitgestellt wird, das mit dem Arbeitsbereich verbunden ist, gespeichert. `workspaceblobstore` wird als Standarddatenspeicher festgelegt.
 
 So rufen Sie den Standarddatenspeicher des Arbeitsbereichs ab:
 
@@ -189,7 +194,7 @@ Die folgende Tabelle listet die Methoden auf, die dem Computeziel mitteilen, wie
 
 Weg|Methode|BESCHREIBUNG|
 ----|-----|--------
-Einbinden| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Wird zum Einbinden des Datenspeichers auf dem Computeziel verwendet.
+Einbinden| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-mount--)| Wird zum Einbinden des Datenspeichers auf dem Computeziel verwendet. Wenn sie eingebunden sind, werden alle Dateien Ihres Datenspeicher für Ihr Computeziel zugänglich gemacht.
 Download|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-download-path-on-compute-none-)|Wird zum Herunterladen der Inhalte Ihres Datenspeichers in den unter `path_on_compute` angegebenen Speicherort verwendet. <br><br> Dieser Download findet vor der Ausführung statt.
 Hochladen|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.abstractazurestoragedatastore?view=azure-ml-py#as-upload-path-on-compute-none-)| Wird zum Hochladen einer Datei aus dem von `path_on_compute` angegebenen Speicherort in Ihren Datenspeicher verwendet. <br><br> Dieser Upload findet nach der Ausführung statt.
 
@@ -199,7 +204,7 @@ Um auf bestimmte Ordner oder Dateien in Ihrem Datenspeicher zu verweisen und sie
 #to mount the full contents in your storage to the compute target
 datastore.as_mount()
 
-#to download the contents of the `./bar` directory in your storage to the compute target
+#to download the contents of only the `./bar` directory in your storage to the compute target
 datastore.path('./bar').as_download()
 ```
 > [!NOTE]
@@ -207,13 +212,14 @@ datastore.path('./bar').as_download()
 
 ### <a name="examples"></a>Beispiele 
 
-Die folgenden Codebeispiele beziehen sich speziell auf die [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)-Klasse für den Zugriff auf Daten während des Trainings. 
+Wir empfehlen die Verwendung der [`Estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py)-Klasse für den Zugriff auf Daten während des Trainings. 
 
-`script_params` ist ein Wörterbuch, das Parameter für entry_script enthält. Verwenden Sie es, um einen Datenspeicher als Eingabe zu übergeben und zu beschreiben, wie Daten auf dem Computeziel verfügbar gemacht werden. Weitere Informationen finden Sie in unserem End-to-End-[Tutorial](tutorial-train-models-with-aml.md).
+Die Variable `script_params` ist ein Wörterbuch, das Parameter für entry_script enthält. Verwenden Sie es, um einen Datenspeicher als Eingabe zu übergeben und zu beschreiben, wie Daten auf dem Computeziel verfügbar gemacht werden. Weitere Informationen finden Sie in unserem End-to-End-[Tutorial](tutorial-train-models-with-aml.md).
 
 ```Python
 from azureml.train.estimator import Estimator
 
+# notice '/' is in front, this indicates the absolute path
 script_params = {
     '--data_dir': datastore.path('/bar').as_mount()
 }
@@ -235,6 +241,24 @@ est = Estimator(source_directory='your code directory',
                 compute_target=compute_target,
                 entry_script='train.py',
                 inputs=[datastore1.as_download(), datastore2.path('./foo').as_download(), datastore3.as_upload(path_on_compute='./bar.pkl')])
+```
+Wenn Sie lieber ein RunConfig-Objekt für das Training verwenden möchten, müssen Sie ein [DataReference](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py)-Objekt einrichten. 
+
+Der folgende Code zeigt, wie Sie mit einem DataReference-Objekt in einer Schätzpipeline arbeiten. Ein vollständiges Beispiel finden Sie in diesem [Notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/aml-pipelines-how-to-use-estimatorstep.ipynb).
+
+```Python
+from azureml.core import Datastore
+from azureml.data.data_reference import DataReference
+from azureml.pipeline.core import PipelineData
+
+def_blob_store = Datastore(ws, "workspaceblobstore")
+
+input_data = DataReference(
+       datastore=def_blob_store,
+       data_reference_name="input_data",
+       path_on_datastore="20newsgroups/20news.pkl")
+
+   output = PipelineData("output", datastore=def_blob_store)
 ```
 <a name="matrix"></a>
 
