@@ -18,6 +18,13 @@ ms.locfileid: "60686372"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 
+> [!IMPORTANT]
+> Seit [August 2018](https://news.microsoft.com/de-de/microsoft-cloud-2019-rechenzentren-deutschland/) haben wir keine neuen Kunden mehr akzeptiert und stellen keine neuen Funktionen und Services an den ursprünglichen Standorten von Microsoft Cloud Deutschland mehr bereit.
+>
+> Basierend auf die Entwicklung der Kundenbedürfnisse konzentriert sich unsere Cloudstrategie für Deutschland auf die Bereitstellung der [neuen Cloudregionen in Deutschland](https://news.microsoft.com/de-de/microsoft-eroeffnet-neue-cloud-rechenzentrumsregionen-in-deutschland/), die zu unserem globalen Cloudangebot passen.
+>
+> Starten Sie Ihre [Migration](https://docs.microsoft.com/de-de/azure/germany/germany-migration-main) noch heute und nutzen Sie die Vorteile der umfangreichen Funktionalität, Sicherheit auf Unternehmensebene und zahlreichen verfügbaren Funktionen, die in unseren neuen Rechenzentrumsregionen in Deutschland verfügbar sind.
+
 Die Artikel in diesem Abschnitt wurden erstellt, um Sie beim Migrieren Ihrer Workloads von Azure Deutschland zu Azure weltweit zu unterstützen. Im [Azure-Migrationscenter](https://azure.microsoft.com/migration/) werden zwar Tools bereitgestellt, mit denen Sie Ressourcen migrieren können, einige dieser Tools sind aber nur für Migrationen nützlich, die im selben Mandanten oder in derselben Region erfolgen.
 
 Die beiden Regionen in Deutschland sind vollständig getrennt von Azure weltweit. Die Clouds in Azure weltweit und in Azure Deutschland haben ihre eigenen getrennten Azure Active Directory-Instanzen. Aus diesem Grund sind Azure Deutschland-Mandanten von Azure weltweit-Mandanten getrennt. In diesem Artikel sind die Migrationstools beschrieben, die Sie verwenden können, wenn Sie zwischen *verschiedenen* Mandanten migrieren.
