@@ -23,6 +23,13 @@ ms.locfileid: "74896302"
 ---
 # <a name="data-trustee-principle"></a>Das Microsoft Datentreuhänderprinzip
 
+> [!IMPORTANT]
+> Seit [August 2018](https://news.microsoft.com/de-de/microsoft-cloud-2019-rechenzentren-deutschland/) haben wir keine neuen Kunden mehr akzeptiert und stellen keine neuen Funktionen und Services an den ursprünglichen Standorten von Microsoft Cloud Deutschland mehr bereit.
+>
+> Basierend auf die Entwicklung der Kundenbedürfnisse konzentriert sich unsere Cloudstrategie für Deutschland auf die Bereitstellung der [neuen Cloudregionen in Deutschland](https://news.microsoft.com/de-de/microsoft-eroeffnet-neue-cloud-rechenzentrumsregionen-in-deutschland/), die zu unserem globalen Cloudangebot passen.
+>
+> Starten Sie Ihre [Migration](https://docs.microsoft.com/de-de/azure/germany/germany-migration-main) noch heute und nutzen Sie die Vorteile der umfangreichen Funktionalität, Sicherheit auf Unternehmensebene und zahlreichen verfügbaren Funktionen, die in unseren neuen Rechenzentrumsregionen in Deutschland verfügbar sind.
+
 Microsoft hat Azure Deutschland entwickelt, um die Anforderungen von Kunden und potenziellen Kunden in der Europäischen Union (European Union, EU), der Europäischen Freihandelszone (European Free Trade Association, EFTA) und dem Vereinigten Königreich (United Kingdom, UK) zu erfüllen. Diese Anforderungen beziehen sich unter anderem darauf, Bedenken hinsichtlich Sicherheit und Schutz von Onlinedaten gerecht zu werden. Azure Deutschland umfasst branchenführende Clouddienste, die *unter Anwendung spezieller Sicherheitsmaßnahmen vollständig in Deutschland gehostet und betrieben werden*.
 
 Ist ein Zugriff auf Kundendaten erforderlich, so muss der Benutzer zunächst eine Genehmigung für ein gewisses Zeitfenster erteilen. Ein deutsches Unternehmen gewährleistet hierbei als Datentreuhänder, dass der Zugriff gemäß deutschem Recht erfolgt. Dieses Modell stellt sicher, dass die Datenbesitzer die Verfügungs- und Entscheidungsgewalt über ihre Daten behalten – insbesondere gegenüber Dritten, z.B. in- oder ausländischen Aufsichts- und Strafverfolgungsbehörden. Diese Behörden können nur in berechtigten Fällen gemäß den Vorgaben der deutschen Gesetzgebung auf Kundendaten zugreifen.
