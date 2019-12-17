@@ -3,19 +3,19 @@ title: Verstehen von automatisierten ML-Ergebnissen
 titleSuffix: Azure Machine Learning
 description: Es wird beschrieben, wie Sie Diagramme und Metriken für Ihre verschiedenen automatisierten Machine Learning-Ausführungen anzeigen und sich damit vertraut machen.
 services: machine-learning
-author: cartacioS
-ms.author: sacartac
+author: RachelKellam
+ms.author: rakellam
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 7f8789076b00cd2b5a0694cf1f52e5dfe1569aee
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.date: 12/05/2019
+ms.openlocfilehash: 81f17de7627658b756edd19438a80fb32add859d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571286"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974086"
 ---
 # <a name="understand-automated-machine-learning-results"></a>Grundlagen von Ergebnissen des automatisierten maschinellen Lernens
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -98,65 +98,109 @@ recall_score_macro|Der Abruf ist der prozentuale Anteil der richtig bezeichneten
 recall_score_micro|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. „Micro“ wird global durch Zählen der insgesamt echt positiven, falsch negativen und falsch positiven Ergebnisse berechnet.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="micro"|
 recall_score_weighted|Der Abruf ist der prozentuale Anteil der richtig bezeichneten Elemente in einer bestimmten Klasse. Der gewichtete Wert ist das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|Die gewichtete Genauigkeit ist die Genauigkeit, bei der die Gewichtung, die jedem Beispiel zugewiesen wird, gleich dem Anteil der TRUE-Instanzen in der TRUE-Klasse dieses Beispiels ist.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight ist ein Vektor gleich dem Anteil der betreffenden Klasse für jedes Element im Ziel.|
-
+<a name="confusion-matrix"></a>
 ### <a name="confusion-matrix"></a>Konfusionsmatrix
+#### <a name="what-is-a-confusion-matrix"></a>Was ist eine Konfusionsmatrix?
+Eine Konfusionsmatrix wird verwendet, um die Leistung eines Klassifizierungsmodells zu beschreiben. Jede Zeile zeigt die Instanzen der wahren bzw. tatsächlichen Klasse in Ihrem Dataset an, und jede Spalte stellt die Instanzen der Klasse dar, die vom Modell vorhergesagt wurde. 
 
-Eine Konfusionsmatrix wird verwendet, um die Leistung eines Klassifizierungsmodells zu beschreiben. Jede Zeile zeigt die Instanzen der wahren Klasse an, und jede Spalte repräsentiert die Instanzen der vorhergesagten Klasse. Die Konfusionsmatrix zeigt die richtig klassifizierten Bezeichnungen und die falsch klassifizierten Bezeichnungen für ein bestimmtes Modell.
+#### <a name="what-does-automated-ml-do-with-the-confusion-matrix"></a>Was macht automatisiertes ML mit der Konfusionsmatrix?
+Für Klassifizierungsprobleme stellt Azure Machine Learning automatisch eine Konfusionsmatrix für jedes Modell zur Verfügung, das erstellt wird. Von automatisiertem Machine Learning wird für jede Konfusionsmatrix die Häufigkeit der einzelnen vorhergesagten Bezeichnungen (Spalte) im Vergleich mit der tatsächlichen Bezeichnung (Zeile) angezeigt. Je dunkler die Farbe, desto höher die Anzahl in diesem bestimmten Teil der Matrix. 
 
-Für Klassifizierungsprobleme stellt Azure Machine Learning automatisch eine Konfusionsmatrix für jedes Modell zur Verfügung, das erstellt wird. Von automatisiertem Machine Learning wird für jede Konfusionsmatrix die Häufigkeit der einzelnen vorhergesagten Bezeichnungen und der einzelnen tatsächlichen Bezeichnungsüberschneidungen angezeigt. Je dunkler die Farbe, desto höher die Anzahl in diesem bestimmten Teil der Matrix. Im Idealfall verlaufen die dunkelsten Farben entlang der Diagonalen der Matrix. 
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+Wir vergleichen den tatsächlichen Wert des Datasets mit den vorhergesagten Werten, die das Modell geliefert hat. Aus diesem Grund haben Machine Learning-Modelle eine höhere Genauigkeit, wenn die meisten Werte des Modells entlang der Diagonalen liegen, was bedeutet, dass das Modell den richtigen Wert vorhergesagt hat. Wenn ein Modell ein Klassenungleichgewicht aufweist, hilft die Konfusionsmatrix dabei, ein verzerrtes Modell zu erkennen.
 
-Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit ![Ein Klassifizierungsmodell mit schlechter Genauigkeit](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
+##### <a name="example-1-a-classification-model-with-poor-accuracy"></a>Beispiel 1: Ein Klassifizierungsmodell mit schlechter Genauigkeit.
+![Ein Klassifizierungsmodell mit schlechter Genauigkeit.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix1.png)
 
-Beispiel 2: Ein Klassifizierungsmodell mit hoher Genauigkeit (ideal) ![Ein Klassifizierungsmodell mit hoher Genauigkeit](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
+##### <a name="example-2-a-classification-model-with-high-accuracy"></a>Beispiel 2: Ein Klassifizierungsmodell mit hoher Genauigkeit. 
+![Ein Klassifizierungsmodell mit hoher Genauigkeit.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-confusion-matrix2.png)
 
+##### <a name="example-3-a-classification-model-with-high-accuracy-and-high-bias-in-model-predictions"></a>Beispiel 3: Ein Klassifizierungsmodell mit hoher Genauigkeit und hoher Verzerrung bei Modellvorhersagen.
+![Ein Klassifizierungsmodell mit hoher Genauigkeit und hoher Verzerrung bei Modellvorhersagen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-biased-model.png)
 
+<a name="precision-recall-chart"></a>
 ### <a name="precision-recall-chart"></a>Genauigkeit-Trefferquote-Diagramm
+#### <a name="what-is-a-precision-recall-chart"></a>Was ist ein Genauigkeit-Trefferquote-Diagramm?
+Die Genauigkeit-Trefferquote-Kurve zeigt die Beziehung zwischen Genauigkeit und Trefferquote eines Modells. Der Begriff „Genauigkeit“ steht für die Fähigkeit eines Modells, alle Instanzen richtig zu bezeichnen. „Trefferquote“ stellt die Möglichkeit für einen Klassifizierer dar, alle Instanzen einer bestimmten Bezeichnung zu finden.
 
-Mit diesem Diagramm können Sie die Genauigkeit-Trefferquote-Kurven für jedes Modell vergleichen, um festzustellen, welches Modell eine akzeptable Beziehung zwischen Genauigkeit und Trefferquote für Ihr spezielles Geschäftsproblem aufweist. Dieses Diagramm zeigt die durchschnittliche Makro-Genauigkeit-Trefferquote, die durchschnittliche Mikro-Genauigkeit-Trefferquote und die Genauigkeit-Trefferquote, die allen Klassen für ein Modell zugeordnet ist.
+#### <a name="what-does-automated-ml-do-with-the-precision-recall-chart"></a>Was macht automatisiertes ML mit dem Genauigkeit-Trefferquote-Diagramm?
 
-Der Begriff „Genauigkeit“ steht für die Fähigkeit eines Klassifizierers, alle Instanzen richtig zu kennzeichnen. „Trefferquote“ stellt die Möglichkeit für einen Klassifizierer dar, alle Instanzen einer bestimmten Bezeichnung zu finden. Die Genauigkeit-Trefferquote-Kurve zeigt die Beziehung zwischen diesen beiden Konzepten. Im Idealfall würde das Modell 100 % Genauigkeit und 100 % Trefferquote aufweisen.
+Mit diesem Diagramm können Sie die Genauigkeit-Trefferquote-Kurven für jedes Modell vergleichen, um festzustellen, welches Modell eine akzeptable Beziehung zwischen Genauigkeit und Trefferquote für Ihr spezielles Geschäftsproblem aufweist. Dieses Diagramm zeigt die durchschnittliche Makro-Genauigkeit-Trefferquote, die durchschnittliche Mikro-Genauigkeit-Trefferquote und die Genauigkeit-Trefferquote, die allen Klassen für ein Modell zugeordnet ist. 
 
-Beispiel 1: Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote ![Ein Klassifizierungsmodell mit geringer Genauigkeit und geringer Trefferquote](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
+Der Makrodurchschnitt berechnet die Metrik unabhängig für jede Klasse und nimmt dann den Durchschnitt, sodass alle Klassen gleich behandelt werden. Der Mikrodurchschnitt aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. Der Mikrodurchschnitt ist vorzuziehen, wenn im Dataset ein Klassenungleichgewicht vorhanden ist.
 
-Beispiel 2: Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote (ideal) ![Ein Klassifizierungsmodell mit ca. 100 % Genauigkeit und ca. 100 % Trefferquote](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+Abhängig vom Ziel des Geschäftsproblems kann sich die ideale Genauigkeit-Trefferquote-Kurve unterscheiden. Im Folgenden finden Sie einige Beispiele
 
-### <a name="roc"></a>ROC
+##### <a name="example-1-a-classification-model-with-low-precision-and-low-recall"></a>Beispiel 1: Ein Klassifizierungsmodell mit niedriger Genauigkeit und niedriger Trefferquote.
+![Ein Klassifizierungsmodell mit niedriger Genauigkeit und niedriger Trefferquote.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall1.png)
 
+##### <a name="example-2-a-classification-model-with-100-precision-and-100-recall"></a>Beispiel 2: Ein Klassifizierungsmodell mit ~100 % Genauigkeit und ~100 % Trefferquote. 
+![Ein Klassifizierungsmodell mit hoher Genauigkeit und hoher Trefferquote.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-precision-recall2.png)
+<a name="roc"></a>
+### <a name="roc-chart"></a>ROC-Diagramm
+
+#### <a name="what-is-a-roc-chart"></a>Was ist ein ROC-Diagramm?
 Receiver Operating Characteristic (oder ROC) ist ein Diagramm der richtig klassifizierten Bezeichnungen im Vergleich zu den falsch klassifizierten Bezeichnungen für ein bestimmtes Modell. Die ROC-Kurve kann weniger aussagekräftig sein, wenn Modelle mit Datasets mit einem großen Bias trainiert werden, da sie die falsch-positiven Bezeichnungen nicht anzeigt.
 
-Beispiel 1: Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit geringen wahren Bezeichnungen und hohen falschen Bezeichnungen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+#### <a name="what-does-automated-ml-do-with-the-roc-chart"></a>Was macht automatisiertes ML mit dem ROC-Diagramm?
+Automatisiertes ML generiert die durchschnittliche Makro-Genauigkeit-Trefferquote, die durchschnittliche Mikro-Genauigkeit-Trefferquote und die Genauigkeit-Trefferquote, die allen Klassen für ein Modell zugeordnet ist. 
 
-Beispiel 2: Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen ![Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und geringen falschen Bezeichnungen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+Der Makrodurchschnitt berechnet die Metrik unabhängig für jede Klasse und nimmt dann den Durchschnitt, sodass alle Klassen gleich behandelt werden. Der Mikrodurchschnitt aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. Der Mikrodurchschnitt ist vorzuziehen, wenn im Dataset ein Klassenungleichgewicht vorhanden ist.
 
-### <a name="lift-curve"></a>Prognosegütekurve
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+Im Idealfall weist das Modell eine True Positive-Rate in der Nähe von 100 % und eine False Positive-Rate in der Nähe von 0 % auf. 
 
+##### <a name="example-1-a-classification-model-with-low-true-labels-and-high-false-labels"></a>Beispiel 1: Ein Klassifizierungsmodell mit niedrigen wahren Bezeichnungen und hohen falschen Bezeichnungen.
+![Ein Klassifizierungsmodell mit niedrigen wahren Bezeichnungen und hohen falschen Bezeichnungen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-1.png)
+
+##### <a name="example-2-a-classification-model-with-high-true-labels-and-low-false-labels"></a>Beispiel 2: Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und niedrigen falschen Bezeichnungen.
+![Ein Klassifizierungsmodell mit hohen wahren Bezeichnungen und niedrigen falschen Bezeichnungen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-roc-2.png)
+<a name="lift-curve"></a>
+### <a name="lift-chart"></a>Prognosegütediagramm
+#### <a name="what-is-a-lift-chart"></a>Was ist ein Prognosegütediagramm?
+Prognosegütediagramme werden verwendet, um die Leistung eines Klassifizierungsmodells auszuwerten. Sie zeigen, wie viel bessere Ergebnisse hinsichtlich der Genauigkeit Sie bei der Verwendung des generierten Modells im Vergleich dazu erwarten können, wenn kein Modell verwendet wird.
+#### <a name="what-does-automated-ml-do-with-the-lift-chart"></a>Was macht automatisiertes ML mit dem Prognosegütediagramm?
 Sie können die Prognosegüte des automatisch mit Azure Machine Learning erstellten Modells mit der Baseline vergleichen, um den Wertzuwachs dieses bestimmten Modells anzuzeigen.
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
 
-Prognosegütediagramme werden verwendet, um die Leistung eines Klassifizierungsmodells auszuwerten. Sie zeigen, wie viel bessere Ergebnisse bei der Verwendung eines Modells im Vergleich dazu zu erwarten sind, wenn kein Modell verwendet wird. 
-
-Beispiel 1: Das Modell schneidet schlechter ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
-
-Beispiel 2: Das Modell schneidet besser ab als ein Zufallsauswahlmodell ![Ein Klassifizierungsmodell, das besser abschneidet](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
-
-### <a name="gains-curve"></a>Gewinnkurve
+##### <a name="example-1-a-classification-model-that-does-worse-than-a-random-selection-model"></a>Beispiel 1: Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell.
+![Ein Klassifizierungsmodell, das schlechter abschneidet als ein Zufallsauswahlmodell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve1.png)
+##### <a name="example-2-a-classification-model-that-performs-better-than-a-random-selection-model"></a>Beispiel 2: Ein Klassifizierungsmodell, das besser abschneidet als ein Zufallsauswahlmodell.
+![Ein Klassifizierungsmodell, das besser abschneidet.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-lift-curve2.png)
+<a name="gains-curve"></a>
+### <a name="gains-chart"></a>Gewinndiagramm
+#### <a name="what-is-a-gains-chart"></a>Was ist ein Gewinndiagramm?
 
 Ein Gewinndiagramm wertet die Leistung eines Klassifizierungsmodells anhand jedes Teils der Daten aus. Es zeigt für jedes Perzentil des Datensatzes an, wie viel besser Sie im Vergleich zu einem Zufallsauswahlmodell abschneiden können.
 
+#### <a name="what-does-automated-ml-do-with-the-gains-chart"></a>Was macht automatisiertes ML mit dem Gewinndiagramm?
 Verwenden Sie das kumulierte Gewinndiagramm, um die Auswahl der Klassifizierungsgrenze anhand eines Prozentsatzes zu erleichtern, der einem gewünschten Gewinn aus dem Modell entspricht. Diese Informationen bieten eine weitere Möglichkeit, die Ergebnisse im zugehörigen Prognosegütediagramm zu untersuchen.
 
-Beispiel 1: Ein Klassifizierungsmodell mit einem minimalen Gewinn ![Ein Klassifizierungsmodell mit einem minimalen Gewinn](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+##### <a name="example-1-a-classification-model-with-minimal-gain"></a>Beispiel 1: Ein Klassifizierungsmodell mit minimalem Gewinn.
+![Ein Klassifizierungsmodell mit minimalem Gewinn.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve1.png)
 
-Beispiel 2: Ein Klassifizierungsmodell mit einem erheblichen Gewinn ![Ein Klassifizierungsmodell mit einem erheblichen Gewinn](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+##### <a name="example-2-a-classification-model-with-significant-gain"></a>Beispiel 2: Ein Klassifizierungsmodell mit signifikantem Gewinn.
+![Ein Klassifizierungsmodell mit signifikantem Gewinn.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-gains-curve2.png)
+<a name="calibration-plot"></a>
+### <a name="calibration-chart"></a>Kalibrierungsdiagramm
 
-### <a name="calibration-plot"></a>Kalibrierungsdiagramm
+#### <a name="what-is-a-calibration-chart"></a>Was ist ein Kalibrierungsdiagramm?
+Ein Kalibrierungsdiagramm wird verwendet, um die Sicherheit eines Vorhersagemodells anzuzeigen. Dies geschieht, indem es die Beziehung zwischen der vorhergesagten Wahrscheinlichkeit und der tatsächlichen Wahrscheinlichkeit zeigt, wobei die „Wahrscheinlichkeit“ die Wahrscheinlichkeit darstellt, dass eine bestimmte Instanz zu einer bestimmten Bezeichnung gehört.
+#### <a name="what-does-automated-ml-do-with-the-calibration-chart"></a>Was macht automatisiertes ML mit dem Kalibrierungsdiagramm?
+Für alle Klassifizierungsprobleme können Sie die Kalibrierungskurve auf Mikrodurchschnitt, Makrodurchschnitt und jede Klasse in einem bestimmten Vorhersagemodell überprüfen.
 
-Für alle Klassifizierungsprobleme können Sie die Kalibrierungskurve auf Mikrodurchschnitt, Makrodurchschnitt und jede Klasse in einem bestimmten Vorhersagemodell überprüfen. 
+Der Makrodurchschnitt berechnet die Metrik unabhängig für jede Klasse und nimmt dann den Durchschnitt, sodass alle Klassen gleich behandelt werden. Der Mikrodurchschnitt aggregiert jedoch die Beiträge aller Klassen, um den Durchschnitt zu berechnen. 
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+ Ein gut kalibriertes Modell richtet sich nach der y=x-Linie aus, wo es in Bezug auf seine Vorhersagen recht zuverlässig ist. Ein übermäßig zuverlässiges Modell richtet sich nach der y=0-Linie aus, wobei die vorhergesagte Wahrscheinlichkeit vorhanden ist, aber keine tatsächliche Wahrscheinlichkeit vorliegt. 
 
-Ein Kalibrierungsdiagramm wird verwendet, um die Sicherheit eines Vorhersagemodells anzuzeigen. Dies geschieht, indem es die Beziehung zwischen der vorhergesagten Wahrscheinlichkeit und der tatsächlichen Wahrscheinlichkeit zeigt, wobei die „Wahrscheinlichkeit“ die Wahrscheinlichkeit darstellt, dass eine bestimmte Instanz zu einer bestimmten Bezeichnung gehört. Ein gut kalibriertes Modell richtet sich nach der y=x-Linie aus, wo es in Bezug auf seine Vorhersagen recht zuverlässig ist. Ein übermäßig zuverlässiges Modell richtet sich nach der y=0-Linie aus, wobei die vorhergesagte Wahrscheinlichkeit vorhanden ist, aber keine tatsächliche Wahrscheinlichkeit vorliegt.
 
-Beispiel 1: Ein gut kalibriertes Modell ![ Ein gut kalibriertes Modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
+##### <a name="example-1-a-well-calibrated-model"></a>Beispiel 1: Ein gut kalibriertes Modell.
+![ Ein besser kalibriertes Modell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve1.png)
 
-Beispiel 2: Ein übermäßig zuverlässiges Modell ![Ein übermäßig zuverlässiges Modell](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
+##### <a name="example-2-an-over-confident-model"></a>Beispiel 2: Ein übermäßig zuverlässiges Modell.
+![Ein übermäßig zuverlässiges Modell.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-calib-curve2.png)
 
 ## <a name="regression"></a> Regressionsergebnisse
 
@@ -185,37 +229,41 @@ normalized_root_mean_squared_error|Die normalisierte Wurzel aus dem mittleren qu
 root_mean_squared_log_error|Die Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Quadratwurzel des erwarteten quadratischen logarithmischen Fehlers.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Keine|
 normalized_root_mean_squared_log_error|Die normalisierte Wurzel aus dem mittleren quadratischen logarithmischen Fehler ist die Wurzel aus dem mittleren quadratischen logarithmischen Fehler dividiert durch den Datenbereich.|[Berechnung](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_log_error.html)|Division durch den Datenbereich|
 
-### <a name="pvt"></a> Vorhergesagt im Vergleich zu True
-
+### <a name="pvt"></a> Vorhergesagt im Vergleich zu Wahr-Diagramm
+#### <a name="what-is-a-predicted-vs-true-chart"></a>Was ist ein Diagramm mit vorhergesagten Werten gegenüber  einem mit wahren Werten?
 Vorhergesagt im Vergleich zu TRUE zeigt die Beziehung zwischen einem vorhergesagten Wert und seinem korrelierenden wahren Wert für ein Regressionsproblem. Dieses Diagramm kann verwendet werden, um die Leistung eines Modells zu messen, da Folgendes gilt: Je näher die vorhergesagten Werte an der y=x-Linie liegen, desto besser ist die Genauigkeit eines Vorhersagemodells.
 
+#### <a name="what-does-automated-ml-do-with-the-predicted-vs-true-chart"></a>Was macht automatisiertes ML mit dem Diagramm mit vorhergesagten Werten  gegenüber einem Diagramm mit wahren Werten?
 Nach jeder Ausführung wird für jedes Regressionsmodell ein Diagramm mit den vorhergesagten im Vergleich zu den wahren Werten angezeigt. Zum Schutz der Privatsphäre werden die Werte in Behältern zusammengeführt, und die Größe jedes Behälters wird als Balkendiagramm im unteren Teil des Diagrammbereichs angezeigt. Sie können das Vorhersagemodell (mit dem helleren Farbbereich, der die Fehlergrenzen anzeigt) mit dem Idealwert des Modells vergleichen.
 
-Beispiel 1: Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen ![Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+##### <a name="example-1-a-classification-model-with-low-accuracy"></a>Beispiel 1: Ein Klassifizierungsmodell mit niedriger Genauigkeit.
+![Ein Regressionsmodell mit niedriger Genauigkeit bei Vorhersagen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression1.png)
 
-Beispiel 2: Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen [![Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
+##### <a name="example-2-a-regression-model-with-high-accuracy"></a>Beispiel 2: Ein Regressionsmodell mit hoher Genauigkeit. 
+[![Ein Regressionsmodell mit hoher Genauigkeit bei seinen Vorhersagen.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2.png)](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression2-expanded.png)
 
 
 
-### <a name="histo"></a> Residualhistogramm
-
+### <a name="histo"></a> Histogramm der Residualwerte
+#### <a name="what-is-a-residuals-chart"></a>Was ist ein Residualwertediagramm?
 Ein Residual stellt ein beobachtetes y dar: das vorhergesagte y. Um eine Fehlerspanne mit geringem Bias darzustellen, sollte das Histogramm der Residualwerte als Glockenkurve geformt sein, die um 0 zentriert ist. 
+#### <a name="what-does-automated-ml-do-with-the-residuals-chart"></a>Was macht automatisiertes ML mit dem Residualwertediagramm?
+Automatisiertes ML stellt automatisch ein Residualwertediagramm bereit, um die Fehlerverteilung in den Vorhersagen zu zeigen.
+#### <a name="what-does-a-good-model-look-like"></a>Wie sieht ein gutes Modell aus?
+Ein gutes Modell weist in der Regel eine Glockenkurvenform oder Fehler um Null herum auf.
 
-Beispiel 1: Ein Regressionsmodell mit einem Bias in seinen Fehlern ![SA-Regressionsmodell mit einem Bias in seinen Fehlern](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
+##### <a name="example-1-a-regression-model-with-bias-in-its-errors"></a>Beispiel 1: Ein Regressionsmodell mit Verzerrung bei seinen Fehlern.
+![Ein Regressionsmodell mit Verzerrung bei seinen Fehlern.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression3.png)
 
-Beispiel 2: Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern ![Ein Regressionsmodell mit einer gleichmäßigeren Verteilung von Fehlern](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
+##### <a name="example-2-a-regression-model-with-more-even-distribution-of-errors"></a>Beispiel 2: Ein Regressionsmodell mit gleichmäßigerer Verteilung von Fehlern.
+![Ein Regressionsmodell mit gleichmäßigerer Verteilung von Fehlern.](./media/how-to-understand-automated-ml/azure-machine-learning-auto-ml-regression4.png)
 
 ## <a name="explain-model"></a> Interpretierbarkeit von Modellen und Featurepriorität
-
-Mit der Featurepriorität können Sie anzeigen, wie wertvoll jedes Feature bei der Erstellung eines Modells war. Diese Berechnung ist standardmäßig deaktiviert, da sie zu einer erheblichen Verlängerung der Laufzeit führen kann.   Sie können die Modellerklärung für alle Modelle oder nur für das am besten geeignete Modell aktivieren.
-
-Sie können die Featuregewichtung für das Modell insgesamt sowie pro Klasse für ein Vorhersagemodell überprüfen. Sie können pro Feature erkennen, wie sich die Gewichtung im Vergleich zu jeder Klasse und insgesamt darstellt.
-
-![Featureerklärbarkeit](./media/how-to-understand-automated-ml/feature-importance.gif)
-
+Automatisiertes ML bietet ein Dashboard für die Machine Learning-Interpretierbarkeit für Ihre Ausführungen.
 Weitere Informationen zum Aktivieren von Features der Interpretierbarkeit finden Sie unter [Interpretierbarkeit von Modellen für automatisiertes ML](how-to-machine-learning-interpretability-automl.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 + Erfahren Sie mehr über [automatisiertes Machine Learning](concept-automated-ml.md) in Azure Machine Learning.
-+ Probieren Sie das Beispielnotebook für die [Modellerklärung zum automatisierten maschinellen Lernen](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/model-explanation) aus.
++ Probieren Sie die Beispielnotebooks für die [Modellerklärung zum automatisierten Machine Learning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) aus.

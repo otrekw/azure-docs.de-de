@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 82db94dd201676b769f1ea151b23fa1b149f609c
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: eea58c700b370531247a51630af478c56f2b551a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807101"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973678"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -23,6 +23,27 @@ In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
 
+## <a name="2019-12-09"></a>2019-12-09
+
+### <a name="azure-machine-learning-sdk-for-python-v1079"></a>Azure Machine Learning SDK für Python v1.0.79
+
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    + Die zu protokollierende featurizationConfig wurde entfernt.
+      + Protokollierung wurde auf nur noch „auto“/„off“/„customized“ (automatisch/aus/angepasst) aktualisiert.
+  + **azureml-automl-runtime**
+    + Unterstützung für pandas wurde hinzugefügt. Reihen und pandas.Categorical zum Erkennen des Datentyps von Spalten. Bislang wurde nur numpy.ndarray unterstützt.
+      + Verwandte Codeänderungen zum ordnungsgemäßen Verarbeiten des kategorischen dtype wurden hinzugefügt.
+    + Die Vorhersagefunktions-Schnittstelle wurde verbessert: der y_pred-Parameter ist jetzt optional. \- Die docstrings wurden verbessert.
+  + **azureml-contrib-dataset**
+    + Ein Fehler wurde behoben, bei dem Datasets mit Bezeichnungen nicht eingebunden werden konnten.
+  + **azureml-core**
+    + Fehlerkorrektur für `Environment.from_existing_conda_environment(name, conda_environment_name)`. Der Benutzer kann eine Instanz der Umgebung erstellen, die ein exaktes Replikat der lokalen Umgebung ist.
+    + Zeitreihenbezogene Datasets-Methoden wurden standardmäßig auf `include_boundary=True` geändert.
+  + **azureml-train-automl-client**
+    + Ein Problem wurde behoben, bei dem Validierungsergebnisse nicht gedruckt werden, wenn das Anzeigen von Ausgaben auf „false“ festgelegt ist.
+
+  
 ## <a name="2019-11-25"></a>25.11.2019
 
 ### <a name="azure-machine-learning-sdk-for-python-v1076"></a>Azure Machine Learning SDK für Python, Version 1.0.76
@@ -78,7 +99,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + **azureml-contrib-dataset**
       + Nach dem Importieren von azureml-contrib-dataset können Sie `Dataset.Labeled.from_json_lines` anstelle von `._Labeled` aufrufen, um ein bezeichnetes Dataset zu erstellen.
       + Beim Aufrufen von `to_pandas_dataframe` für ein bezeichnetes Dataset mit der Download-Option können Sie nun angeben, ob vorhandene Dateien überschrieben oder nicht überschrieben werden sollen.
-      + Bei einem Aufruf von `keep_columns` oder `drop_columns`, der das Verwerfen einer Zeitreihen-, Beschriftungs- oder Bildspalte bewirkt, werden die entsprechenden Funktionen für das Dataset ebenfalls verworfen.
+      + Bei einem Aufruf von `keep_columns` oder `drop_columns`, der das Verwerfen einer Zeitreihen-, Bezeichnungs- oder Bildspalte bewirkt, werden die entsprechenden Funktionen für das Dataset ebenfalls verworfen.
       + Es wurden Probleme mit dem PyTorch-Ladeprogramm beim Aufrufen von `dataset.to_torchvision()` behoben.
 
 + **Fehlerbehebungen und Verbesserungen**
@@ -287,7 +308,7 @@ Eine vollständige Dokumentation finden Sie auf der [Website des Pakets](https:/
     + Dataset-API zum Überprüfen des Zeitpunkts von Datenänderungen hinzugefügt. `dataset.data_changed_time`.
     + Nutzung von `FileDataset` und `TabularDataset` als Eingaben für `PythonScriptStep`, `EstimatorStep` und `HyperDriveStep` in Azure Machine Learning-Pipeline
     + Leistung von `FileDataset.mount` für Ordner mit einer großen Zahl von Dateien wurde verbessert
-    + Neue Möglichkeit, [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) und [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) als Eingaben für [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep) und [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) in Azure Machine Learning-Pipeline zu nutzen.
+    + Neue Möglichkeit, [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset) und [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset) als Eingaben für [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep), [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep) und [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyperdrivestep) in der Azure Machine Learning-Pipeline zu nutzen.
     + Die Leistung von FileDataset.[mount()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.filedataset#mount-mount-point-none-) für Ordner mit einer großen Anzahl von Dateien wurde verbessert.
     + URL wurde bekannten Fehlerempfehlungen in den Ausführungsdetails hinzugefügt.
     + Fehler in „run.get_metrics“ behoben, bei dem Anforderungen nicht erfolgreich waren, wenn eine Ausführung zu viele untergeordnete Elemente aufgewiesen hat
@@ -312,7 +333,7 @@ Eine vollständige Dokumentation finden Sie auf der [Website des Pakets](https:/
   + **azureml-train-core**
     + Unterstützung für TensorFlow 2.0 in TensorFlow Estimator hinzugefügt
   + **azureml-train-automl**
-    + Beim Erstellen eines [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment)-Objekts wird das Experiment im Azure Machine Learning-Arbeitsbereich für die Nachverfolgung des Ausführungsverlaufs abgerufen bzw. erstellt. Die Experiment-ID und die archivierte Zeit werden bei der Erstellung in das Experiment-Objekt eingefügt. Beispiel:
+    + Beim Erstellen eines [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment)-Objekts wird das Experiment im Azure Machine Learning-Arbeitsbereich für die Nachverfolgung des Ausführungsverlaufs abgerufen bzw. erstellt. Die Experiment-ID und die archivierte Zeit werden bei der Erstellung in das Experimentobjekt eingefügt. Beispiel:
 
         ```py
         experiment = Experiment(workspace, "New Experiment")
@@ -344,7 +365,7 @@ Eine vollständige Dokumentation finden Sie auf der [Website des Pakets](https:/
     + Unterstützung des Abrufs von Datendriftausgaben, die auf Datasets basieren.
   + **[azureml-explain-model](https://docs.microsoft.com/python/api/azureml-explain-model)**
     + Das Paket „AzureML-explain-model“ wurde in „AzureML-interpret“ umbenannt. Das alte Paket wird vorerst aus Gründen der Abwärtskompatibilität beibehalten.
-    + Der automl-Fehler wurde behoben, bei dem unformatierte Erklärungen beim Download von ExplanationClient standardmäßig nicht als Regression, sondern als Klassifizierungsaufgabe festgelegt wurden.
+    + Der AutoML-Fehler wurde behoben, bei dem unformatierte Erklärungen beim Download von ExplanationClient standardmäßig nicht als Regression, sondern als Klassifizierungsaufgabe festgelegt wurden.
     + Unterstützung für die direkte Erstellung von [ScoringExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.scoring.scoring_explainer.scoringexplainer) mit [MimicWrapper](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic_wrapper.mimicwrapper) wurde hinzugefügt.
   + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Die Leistung beim Erstellen einer großen Pipeline wurde verbessert.
@@ -426,7 +447,7 @@ Die Registerkarte „Experiment“ im [Portal für neue Arbeitsbereiche](https:/
   + **azureml-pipeline-core**
     + Ein Notebook zum Beschreiben von Module, ModuleVersion und ModuleStep wurde hinzugefügt.
   + **azureml-pipeline-steps**
-    + RScriptStep zur Unterstützung von R-Skript-Ausführungen über die AML-Pipeline wurde hinzugefügt.
+    + RScriptStep wurde zur Unterstützung von R-Skript-Ausführungen über die AML-Pipeline hinzugefügt.
     + Die Analyse von Metadatenparametern in AzureBatchStep wurde korrigiert. Dies war die Ursache der Fehlermeldung über eine nicht angegebene Zuweisung für den SubscriptionId-Parameter.
   + **azureml-train-automl**
     + training_data, validation_data, label_column_name und weight_column_name werden jetzt als Format für die Dateneingabe unterstützt.
@@ -517,7 +538,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 1. Die Datei kann in Notebooks und Dateien nicht gelöscht oder umbenannt werden. Während der Public Preview können Sie die Jupyter-Benutzeroberfläche oder das Terminal in der Notebook-VM verwenden, um Aktualisierungsdateivorgänge auszuführen. Da es sich um ein eingebundenes Netzwerkdateisystem handelt, spiegeln sich alle Änderungen, die Sie an der Notebook-VM vornehmen, sofort im Notebook-Arbeitsbereich wider. 
 
 1. So stellen Sie eine SSH-Verbindung mit der Notebook-VM her:
-   1. Suchen Sie die SSH-Schlüssel, die während der VM-Einrichtung erstellt wurden. Alternativ können Sie die Schlüssel im Azure ML-Azure-Portal suchen: Öffnen Sie die Registerkarte „Compute“, suchen Sie die Notebook-VM in der Liste, öffnen Sie ihre Eigenschaften, und kopieren Sie die Schlüssel aus dem Dialogfeld.
+   1. Suchen Sie die SSH-Schlüssel, die während der VM-Einrichtung erstellt wurden. Alternativ können Sie die Schlüssel im Azure Machine Learning-Arbeitsbereich suchen: Öffnen Sie die Registerkarte „Compute“, suchen Sie die Notebook-VM in der Liste, öffnen Sie deren Eigenschaften, und kopieren Sie die Schlüssel aus dem Dialogfeld.
    1. Importieren Sie diese öffentlichen und privaten SSH-Schlüssel auf Ihren lokalen Computer.
    1. Verwenden Sie sie, um eine SSH-Verbindung mit der Notebook-VM herzustellen. 
 
@@ -555,7 +576,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
     + `partition_format` wurde als Argument für `Dataset.Tabular.from_delimited_files` und `Dataset.Tabular.from_parquet.files` eingeführt. Die Partitionsinformationen für die einzelnen Datenpfade werden basierend auf dem angegebenen Format in Spalten extrahiert. „{column_name}“ erstellt eine Zeichenfolgenspalte, und „{column_name:yyyyyy/MM/dd/HH/mm/ss}' erstellt eine datetime-Spalte, wobei „yyyy“, „MM“, „dd“, „HH“, „mm“ und „ss“ verwendet werden, um Jahr, Monat, Tag, Stunde, Minute und Sekunde für den datetime-Typ zu extrahieren. Das partition_format sollte an der Position des ersten Partitionsschlüssels beginnen und bis zum Ende des Dateipfads reichen. Beispielpfad: „../USA/2019/01/01/data.csv“. Dabei wird die Partition durch das Land und das Datum festgelegt, partition_format='/{Country}/{PartitionDate:yyyy/MM/dd}/data.csv' erstellt die Zeichenfolgenspalte „Country“ mit dem Wert „USA“ und die datetime-Spalte „PartitionDate“ mit dem Wert „2019-01-01“.
     + Die Methoden `to_csv_files` und `to_parquet_files` wurden `TabularDataset` hinzugefügt. Diese Methoden ermöglichen die Konvertierung zwischen `TabularDataset` und `FileDataset`, indem die Daten in Dateien des angegebenen Formats konvertiert werden.
     + Automatische Anmeldung bei der Basisimageregistrierung beim Speichern der von Model.package() erstellten Dockerfile-Datei.
-    + „gpu_support“ ist nicht mehr erforderlich. AzureML erkennt und verwendet nun automatisch die Nvidia-Docker-Erweiterung, wenn sie verfügbar ist. Dieses Element wird in einer späteren Version entfernt.
+    + „gpu_support“ ist nicht mehr erforderlich. AML erkennt und verwendet nun automatisch die Nvidia-Docker-Erweiterung, wenn sie verfügbar ist. Dieses Element wird in einer späteren Version entfernt.
     + Unterstützung für das Erstellen, Aktualisieren und Verwenden von PipelineDrafts wurde hinzugefügt.
     + Dieses Release verbessert die Ausführungsleistung automatisierter lokaler Machine Learning-Ausführungen.
     + Benutzer können Metriken aus dem Ausführungsverlauf nach Namen abfragen.
@@ -794,13 +815,17 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
     + Es wurde ein Fehler gepatcht, bei dem „mlflow.log_artifacts("my_dir")“ Artefakte unter „my_dir/<artifact-paths>“ gespeichert hat, anstatt unter „<artifact-paths>“.
   + **azureml-opendatasets**
     + `pyarrow` von `opendatasets` wurde an alte Versionen (< 0.14.0) angeheftet, da dort ein Arbeitsspeicherproblem eingeführt wurde.
-    +  „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben. - Open Dataset-Klassen wurde gestattet, sich bei einem AML-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen. - Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
+    + „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben.
+    + Open Dataset-Klassen wurde gestattet, sich bei einem Azure Machine Learning-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen.
+    + Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
   + **azureml-pipeline-steps**
     + DBFS Datastore wird in DatabricksStep jetzt für Ein- und Ausgaben unterstützt.
     + Aktualisierung der Dokumentation für Azure Batch-Schritt in Bezug auf Ein-/Ausgaben.
     + In AzureBatchStep wurde der Standardwert von *delete_batch_job_after_finish* in *true* geändert.
   + **azureml-telemetry**
-    +  „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben. - Open Dataset-Klassen wurde gestattet, sich bei einem AML-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen. - Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
+    +  „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben.
+    + Open Dataset-Klassen wurde gestattet, sich bei einem Azure Machine Learning-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen.
+    + Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
   + **azureml-train-automl**
     + Aktualisierung der Dokumentation zu „get_output“, damit der tatsächliche Rückgabetyp widergespiegelt wird, und zusätzliche Hinweise zum Abrufen wichtiger Eigenschaften.
     + Aktualisierung der NimbusML-Abhängigkeit auf Version 1.2.0 (derzeitige aktuelle Version).
@@ -829,7 +854,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 + **Neue Features**
   + **azureml-opendatasets**
     + **azureml-contrib-opendatasets** ist jetzt verfügbar als **azureml-opendatasets**. Das alte Paket kann weiterhin funktionieren, aber wir empfehlen Ihnen die Verwendung von **azureml-opendatasets**, um in den Genuss umfangreicherer Funktionen und Verbesserungen zu kommen.
-    + Mit diesem neuen Paket können Sie geöffnete Datasets als Dataset im AML-Arbeitsbereich registrieren und jegliche Funktionen nutzen, die dieses Dataset bietet.
+    + Mit diesem neuen Paket können Sie geöffnete Datasets als Dataset im Azure Machine Learning-Arbeitsbereich registrieren und jegliche Funktionen nutzen, die dieses Dataset bietet.
     + Es umfasst außerdem vorhandene Funktionen, wie das Nutzen geöffneter Datasets als Pandas/SPARK-Dataframes sowie Standortverknüpfungen für einige Datasets wie Wetter.
 
 + **Vorschaufunktionen**
@@ -844,7 +869,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
     + Das Problem, das die Verwendung der Vorverarbeitung verhindert hat, wenn AutoML im Kontext von Azure ML-Pipelines verwendet worden wäre, wurde behoben.
   + **azureml-opendatasets**
     + „azureml-contrib-opendatasets“ wurde in „azureml-opendatasets“ verschoben.
-    + Open Dataset-Klassen wurde gestattet, sich bei einem AML-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen.
+    + Open Dataset-Klassen wurde gestattet, sich bei einem Azure Machine Learning-Arbeitsbereich zu registrieren und nahtlos AML-Dataset-Funktionen zu nutzen.
     + Die NoaaIsdWeather-Erweiterungsleistung in Nicht-Spark-Versionen wurde erheblich verbessert.
   + **azureml-explain-model**
     + Die Onlinedokumentation für Interpretierbarkeitsobjekte wurde aktualisiert.
@@ -1029,7 +1054,7 @@ Wir haben eine Änderung rückgängig gemacht, die zwar die Leistung verbessert,
 Im Azure-Portal haben Sie jetzt folgende Möglichkeiten:
 + Erstellen und Ausführen automatisierter ML-Experimente 
 + Erstellen eines virtuellen Notebook-Computers, um selbst Jupyter-Notebooks zu testen
-+ Brandneuer Erstellungsbereich (Vorschauversion) im Machine Learning Service-Arbeitsbereich, der automatisiertes maschinelles Lernen, eine grafische Benutzeroberfläche und gehostete virtuelle Notebook-Computer umfasst
++ Brandneuer Erstellungsbereich (Vorschauversion) im Azure Machine Learning-Arbeitsbereich, der automatisiertes maschinelles Lernen, eine grafische Benutzeroberfläche und gehostete virtuelle Notebook-Computer umfasst
     + Automatisches Erstellen eines Modells mithilfe von automatisiertem maschinellem Lernen 
     + Verwenden einer grafischen Benutzeroberfläche mit Drag & Drop-Funktion zum Ausführen von Experimenten
     + Erstellen eines virtuellen Notebook-Computers zum Untersuchen von Daten, Erstellen von Modellen und Bereitstellen von Diensten
@@ -1037,7 +1062,7 @@ Im Azure-Portal haben Sie jetzt folgende Möglichkeiten:
 + Aktualisierte Dateianzeige für Protokolle, Ausgaben und Snapshots auf den Detailseiten der Ausführung
 + Neue und verbesserte Berichterstellung auf der Registerkarte „Experimente“ 
 + Neue Möglichkeit zum Herunterladen der Datei „config.json“ von der Übersichtsseite des Azure Machine Learning-Arbeitsbereichs
-+ Unterstützung der Erstellung von Machine Learning Service-Arbeitsbereichen über den Azure Databricks-Arbeitsbereich 
++ Unterstützung der Erstellung von Azure Machine Learning-Arbeitsbereichen über den Azure Databricks-Arbeitsbereich.
 
 ## <a name="2019-04-26"></a>2019-04-26
 
@@ -1233,10 +1258,10 @@ Hinweis: Die Pakete `numpy` und `pandas` des Data Prep Python SDK werden nicht m
   + Azure Machine Learning bietet jetzt erstklassige Unterstützung für das beliebte DNN-Framework Chainer. Mithilfe von [`Chainer`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) können Klassenbenutzer Chainer-Modelle auf einfache Weise trainieren und bereitstellen.
     + Erfahren Sie mehr über das [Ausführen von verteiltem Training mit ChainerMN](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
     + Erfahren Sie mehr über die [Hyperparameteroptimierung mit Chainer mithilfe von HyperDrive](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
-  + Azure Machine Learning Pipelines haben neu die Funktionalität zum Auslösen einer Pipelineausführung auf der Grundlage von Änderungen im Datenspeicher erhalten. Die Pipeline [Notizbuch planen](https://aka.ms/pl-schedule) wurde aktualisiert, um diese Funktion ins rechte Licht zu rücken.
+  + Azure Machine Learning-Pipelines haben neu die Funktionalität zum Auslösen einer Pipelineausführung auf der Grundlage von Änderungen im Datenspeicher erhalten. Die Pipeline [Notizbuch planen](https://aka.ms/pl-schedule) wurde aktualisiert, um diese Funktion ins rechte Licht zu rücken.
 
 + **Fehlerbehebungen und Verbesserungen**
-  + Wir haben unterstützende Azure Machine Learning Pipelines zum Festlegen der source_directory_data_store-Eigenschaft auf einen gewünschten Datenspeicher (wie etwa einen Blob-Speicher) auf [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) hinzugefügt, die im [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) verfügbar sind. Standardmäßig wird in den Schritten der Azure File-Speicher als unterstützender Datenspeicher verwendet, bei dem es zu Drosselungsproblemen kommen kann, wenn eine große Anzahl von Schritten parallel abgearbeitet wird.
+  + Wir haben Azure Machine Learning-Pipelines die Unterstützung für das Festlegen der source_directory_data_store-Eigenschaft auf einen gewünschten Datenspeicher (wie etwa einen Blob-Speicher) auf [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) hinzugefügt, die im [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) verfügbar sind. Standardmäßig wird in den Schritten der Azure File-Speicher als unterstützender Datenspeicher verwendet, bei dem es zu Drosselungsproblemen kommen kann, wenn eine große Anzahl von Schritten parallel abgearbeitet wird.
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -1455,7 +1480,7 @@ Erfahren Sie mehr zum Data Prep SDK, indem Sie die [Referenzdokumente](https://a
    * Fehler mit Ausdrücken behoben bzw. an Verarbeitung durch `pandas` angepasst
    * Fehler beim Lesen aus dem dbfs-Pfad behoben
    * Verständlichkeit von Fehlermeldungen verbessert 
-   * Fehler behoben, der beim Lesen auf dem Remotecomputeziel mit dem AML-Token aufgetreten ist
+   * Fehler behoben, der beim Lesen auf dem Remotecomputeziel unter Verwendung eines AML-Tokens aufgetreten ist
    * Fehler für Linux DSVM behoben
    * Kein Absturz mehr, wenn in Zeichenfolgenprädikaten andere Werte als Zeichenfolgen enthalten sind
    * Assertionsfehler werden bei Dataflow-Fehler jetzt richtig behandelt
