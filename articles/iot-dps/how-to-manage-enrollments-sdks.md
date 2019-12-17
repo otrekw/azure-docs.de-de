@@ -1,18 +1,18 @@
 ---
 title: Verwalten von Geräteregistrierungen mithilfe von Azure-DPS-SDKs
-description: 'Gewusst wie: Verwalten von Geräteregistrierungen im IoT Hub Device Provisioning-Dienst mithilfe der Dienst-SDKs'
+description: Verwalten von Geräteregistrierungen im IoT Hub Device Provisioning Service (DPS) mithilfe der Service-SDKs
 author: robinsh
 ms.author: robinsh
 ms.date: 04/04/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 75a24fd6b8cafe03ae8090e6f8bf71a27459c7eb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5cb0e25ec70956e66f7b867f0d0b9473160fc3ad
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228802"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975073"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs
 Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts oder einer Gruppe von Geräten, die sich jederzeit beim Device Provisioning-Dienst registrieren können. Der Registrierungsdatensatz enthält die erste gewünschte Konfiguration für die Geräte im Rahmen dieser Registrierung, einschließlich des gewünschten IoT Hubs. In diesem Artikel wird erläutert, wie Geräteregistrierungen für Ihren Bereitstellungsdienst programmgesteuert mithilfe von Azure IoT Provisioning Service-SDKs verwaltet werden.  Die SDKs sind auf GitHub im gleichen Repository wie Azure IoT-SDKs verfügbar.

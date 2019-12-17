@@ -1,18 +1,18 @@
 ---
 title: Übertragen zusätzlicher Daten zwischen dem Gerät und dem Device Provisioning-Dienst von Azure
-description: In diesem Dokument wird beschrieben, wie Sie zusätzliche Daten zwischen Gerät und DPS übertragen.
+description: In diesem Dokument wird beschrieben, wie Sie zusätzliche Daten zwischen Gerät und Device Provisioning-Dienst (Device Provisioning Service, DPS) übertragen.
 author: menchi
 ms.author: menchi
 ms.date: 10/29/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 90402dd6fbe19811b5bb6d5ac0fbdd984b71fd33
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e9482f7069616d61efb98f66590ce33cfe3cf350
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123182"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974852"
 ---
 # <a name="how-to-transfer-additional-data-between-device-and-dps"></a>Übertragen zusätzlicher Daten zwischen Gerät und DPS
 Mitunter benötigt DPS weitere Daten von Geräten, um sie ordnungsgemäß im richtigen IoT Hub bereitzustellen, und diese Daten müssen vom Gerät bereitgestellt werden. Ebenso kann DPS Daten an das Gerät zurückgeben, um clientseitige Logik zu ermöglichen. 

@@ -1,25 +1,25 @@
 ---
-title: Kopieren von Daten nach und aus Azure Table Storage mit Data Factory
+title: Kopieren von Daten nach und aus Azure Table Storage
 description: Erfahren Sie, wie mithilfe von Data Factory Daten aus unterstützten Quellspeichern in Azure Table Storage oder aus Table Storage in unterstützte Senkenspeicher kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.author: jingwang
-ms.openlocfilehash: 9960c8cba2f1b9eb8c427163d02ecb337ef5ddfe
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e23bf7b3e111d9945ac3eaab942fa77ddba9d9ed
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681139"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929613"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-azure-table-connector.md)
 > * [Aktuelle Version](connector-azure-table-storage.md)

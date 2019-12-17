@@ -1,24 +1,23 @@
 ---
-title: Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
+title: Kopieren von Daten in oder aus Azure Data Explorer
 description: Erfahren Sie, wie Daten mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in oder aus Azure Data Explorer kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: orspodek
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 11/26/2019
-ms.author: orspodek
-ms.openlocfilehash: 0ffec2639d9dfbf3a82a3c24248d65a53e114745
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4cc315b91b5dbedcb22091149ca37061ff956efa
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547146"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74913426"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-by-using-azure-data-factory"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory
 

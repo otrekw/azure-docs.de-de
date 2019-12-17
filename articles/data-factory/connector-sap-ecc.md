@@ -1,23 +1,22 @@
 ---
-title: Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
+title: Kopieren von Daten aus SAP ECC
 description: Erfahren Sie, wie Daten aus SAP ECC mithilfe einer Kopieraktivität in einer Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 09/02/2019
-ms.author: jingwang
-ms.openlocfilehash: 526f85ca4b8854a36232c75a55847a73a8d372cc
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f875d8f4603a8f51b8b8fed2438e6f3a30c87aeb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680308"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931172"
 ---
 # <a name="copy-data-from-sap-ecc-by-using-azure-data-factory"></a>Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
 

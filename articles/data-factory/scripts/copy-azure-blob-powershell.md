@@ -1,22 +1,21 @@
 ---
-title: 'PowerShell-Skript: Kopieren von Daten in der Cloud mithilfe von Azure Data Factory '
+title: Kopieren von Daten in der Cloud mithilfe von PowerShell
 description: Dieses PowerShell-Skript kopiert Daten aus einem Speicherort in einem Azure Blob Storage in einen anderen Speicherort im gleichen Blob Storage.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
-editor: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
+ms.custom: seo-lt-2019
 ms.date: 09/12/2017
-ms.author: jingwang
-ms.openlocfilehash: 7ff9bd39a6a2d9785009d0f8bd8cb4c46fc09882
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: abc372355ce1a5350d205bce72a093fbfb1622e1
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684387"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929845"
 ---
 # <a name="use-powershell-to-create-a-data-factory-pipeline-to-copy-data-in-the-cloud"></a>Verwenden von PowerShell zum Erstellen einer Data Factory-Pipeline zum Kopieren von Daten in die Cloud
 

@@ -1,25 +1,26 @@
 ---
-title: Kopieren von Daten von einem SFTP-Server mithilfe von Azure Data Factory
+title: Kopieren von Daten von einem SFTP-Server
 description: Erfahren Sie mehr über den MySQL-Connector in Azure Data Factory, mit dem Sie Daten von einem SFTP-Server in einem als Senke unterstützten Datenspeicher kopieren können.
 services: data-factory
 documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.author: jingwang
-ms.openlocfilehash: a3eb3193e0c1cd508bc1fc269cd75254d9392885
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16ec2bfc23d5ebd7bc72cfff266ff284936b5a6a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680199"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931094"
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Kopieren von Daten von einem SFTP-Server mithilfe von Azure Data Factory
+
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-sftp-connector.md)
 > * [Aktuelle Version](connector-sftp.md)

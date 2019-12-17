@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d26ccd47ada4f1f1fd87f315e05f822bb2463114
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74079266"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976178"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Wettervorhersage mithilfe von Sensordaten Ihres IoT Hub in Azure Machine Learning
 
@@ -45,20 +45,20 @@ Sie erfahren, wie Sie Azure Machine Learning für eine Wettervorhersage (Regenri
   - Ein aktives Azure-Abonnement.
   - Ein Azure IoT Hub in Ihrem Abonnement.
   - Eine Clientanwendung, die Nachrichten an Ihren Azure IoT Hub sendet.
-- Ein [Azure Machine Learning Studio](https://studio.azureml.net/)-Konto.
+- Ein [Azure Machine Learning Studio-Konto (klassisch)](https://studio.azureml.net/).
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Bereitstellen des Wettervorhersagemodells als Webdienst
 
 1. Wechseln Sie zur [Seite des Wettervorhersagemodells](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1).
-1. Klicken Sie in Microsoft Azure Machine Learning Studio auf **In Studio öffnen**.
+1. Klicken Sie in Microsoft Azure Machine Learning Studio (klassisch) auf **In Studio öffnen**.
    ![Öffnen des Wettervorhersagemodells in Cortana Intelligence Gallery](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. Klicken Sie auf **Run**, um die Schritte im Modell zu überprüfen. Die Ausführung dieses Schritts kann 2 Minuten dauern.
-   ![Öffnen des Wettervorhersagemodells in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![Öffnen des Wettervorhersagemodells in Azure Machine Learning Studio (klassisch)](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Klicken Sie auf **SET UP WEB SERVICE** > **Predictive Web Service**.
-   ![Bereitstellen des Wettervorhersagemodells in Azure Machine Learning Studio](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
+   ![Bereitstellen des Wettervorhersagemodells in Azure Machine Learning Studio (klassisch)](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. Ziehen Sie im Diagramm das **Web service input**-Modul an eine beliebige Stelle in der Nähe des **Score Model**-Moduls.
 1. Stellen Sie eine Verbindung des **Web service input**-Moduls mit dem **Score Model**-Modul her.
-   ![Herstellen einer Verbindung von zwei Modulen in Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![Herstellen einer Verbindung von zwei Modulen in Azure Machine Learning Studio (klassisch)](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. Klicken Sie auf **RUN**, um die Schritte im Modell zu überprüfen.
 1. Klicken Sie auf **DEPLOY WEB SERVICE**, um das Modell als Webdienst bereitzustellen.
 1. Laden Sie auf dem Dashboard des Modells das **Excel 2010 or earlier workbook** für **REQUEST/RESPONSE** herunter.

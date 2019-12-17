@@ -1,23 +1,22 @@
 ---
-title: 'Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory '
+title: Problembehandlung bei der SSIS Integration Runtime-Verwaltung
 description: Dieser Artikel enthält eine Anleitung zur Fehlerbehebung bei Problemen mit der Verwaltung von SSIS Integration Runtime (SSIS IR).
 services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 07/08/2019
 author: chinadragon0515
 ms.author: dashe
 ms.reviewer: sawinark
-manager: craigg
-ms.openlocfilehash: 3452fc2274eb646acb19c0e6a203ebadcb81cad5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: mflasko
+ms.custom: seo-lt-2019
+ms.date: 07/08/2019
+ms.openlocfilehash: 52b1d93935e6428563c72361655893ffddf8a507
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684025"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941853"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory
 
@@ -157,3 +156,38 @@ Wenn Sie SSIS IR beenden, werden alle auf Virtual Network bezogenen Ressourcen 
 ### <a name="nodeunavailable"></a>NodeUnavailable
 
 Dieser Fehler tritt bei der Ausführung der IR auf und gibt an, dass die IR fehlerhaft ist. Dieser Fehler wird immer durch eine Änderung in der Konfiguration des DNS-Servers oder der Netzwerksicherheitsgruppe verursacht, die verhindert, dass SSIS IR eine Verbindung mit einem erforderlichen Dienst herstellen kann. Da die Konfiguration des DNS-Servers und der Netzwerksicherheitsgruppe vom Kunden gesteuert wird, muss der Kunde die entsprechenden Probleme beheben. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Wenn weiterhin Probleme auftreten, wenden Sie sich an das Azure Data Factory-Supportteam.
+
+## <a name="static-public-ip-addresses-configuration"></a>Konfiguration der statischen öffentlichen IP-Adressen
+
+Wenn Sie die Azure-SSIS IR mit Azure Virtual Network verknüpfen, können Sie auch Ihre eigenen statischen öffentlichen IP-Adressen für die IR verwenden. Dann kann die IR auf Datenquellen zugreifen, die den Zugriff auf bestimmte IP-Adressen einschränken. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+
+Neben den oben genannten Problemen beim virtuellen Netzwerk können auch Probleme im Zusammenhang mit statischen öffentlichen IP-Adressen auftreten. Überprüfen Sie die folgenden Fehler, um Hilfe zu erhalten.
+
+### <a name="InvalidPublicIPSpecified"></a>InvalidPublicIPSpecified
+
+Dieser Fehler kann beim Starten der Azure-SSIS IR aus verschiedenen Gründen auftreten:
+
+| Fehlermeldung | Lösung|
+|:--- |:--- |
+| The provided static public IP address is already used, please provide two unused ones for your Azure-SSIS Integration Runtime. (Die angegebene statische öffentliche IP-Adresse wird bereits verwendet. Geben Sie zwei nicht verwendete für Ihre Azure-SSIS Integration Runtime an.) | Sie sollten zwei nicht verwendete statische öffentliche IP-Adressen auswählen oder aktuelle Verweise auf die angegebene öffentliche IP-Adresse entfernen und dann die Azure-SSIS IR neu starten. |
+| The provided static public IP address has no DNS name, please provide two of them with DNS name for your Azure-SSIS Integration Runtime. (Die angegebene statische öffentliche IP-Adresse hat keinen DNS-Namen. Geben Sie zwei davon mit DNS-Name für Ihre Azure-SSIS Integration Runtime an.) | Sie können den DNS-Namen der öffentlichen IP-Adresse im Azure-Portal einrichten, wie in der folgenden Abbildung gezeigt wird. Führen Sie dazu die folgenden Schritte aus: (1) Öffnen Sie das Azure-Portal, und navigieren Sie zur Ressourcenseite dieser öffentlichen IP-Adresse. (2) Wählen Sie den Abschnitt **Konfiguration** aus, und richten Sie den DNS-Namen ein. Klicken Sie dann auf die Schaltfläche **Speichern**; (3) Starten Sie Ihre Azure-SSIS IR neu. |
+| Die angegebenen VNET-Adressen und statischen öffentlichen IP-Adressen für Ihre Azure-SSIS Integration Runtime müssen sich an demselben Standort befinden. | Entsprechend den Anforderungen des Azure-Netzwerks sollten sich die statische öffentliche IP-Adresse und das virtuelle Netzwerk an demselben Standort und in demselben Abonnement befinden. Geben Sie zwei gültige statische öffentliche IP-Adressen an, und starten Sie die Azure-SSIS IR neu. |
+| Die angegebene statische öffentliche IP-Adresse ist ein grundlegender Wert. Geben Sie zwei Standardwerte für Ihre Azure-SSIS Integration Runtime an. | Hilfe finden Sie unter [SKUs der öffentlichen IP-Adresse](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#sku). |
+
+![Azure-SSIS-Integrationslaufzeit](media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png)
+
+### <a name="publicipresourcegrouplockedduringstart"></a>PublicIPResourceGroupLockedDuringStart
+
+Wenn bei der Azure-SSIS IR-Bereitstellung Fehler auftreten, werden alle erstellten Ressourcen gelöscht. Gibt es jedoch eine Sperre für das Löschen von Ressourcen auf Abonnementebene oder Ebene der Ressourcengruppe (die Ihre statische öffentliche IP-Adresse enthält), werden die Netzwerkressourcen nicht wie erwartet gelöscht. Entfernen Sie zum Beheben des Fehlers die Löschsperre, und starten Sie die IR neu.
+
+### <a name="publicipresourcegrouplockedduringstop"></a>PublicIPResourceGroupLockedDuringStop
+
+Wenn Sie die Azure-SSIS IR beenden, werden alle Netzwerkressourcen gelöscht, die in der Ressourcengruppe mit Ihrer öffentlichen IP-Adresse erstellt wurden. Das Löschen kann jedoch fehlschlagen, wenn es eine Sperre für das Löschen von Ressourcen auf Abonnementebene oder Ebene der Ressourcengruppe gibt (die Ihre statische öffentliche IP-Adresse enthält). Entfernen Sie die Löschsperre, und starten Sie die IR neu.
+
+### <a name="publicipresourcegrouplockedduringupgrade"></a>PublicIPResourceGroupLockedDuringUpgrade
+
+Die Azure-SSIS IR wird regelmäßig automatisch aktualisiert. Während des Upgrades werden neue IR-Knoten erstellt, und die alten Knoten werden gelöscht. Außerdem werden die erstellten Netzwerkressourcen (z.B. der Lastenausgleich und die Netzwerksicherheitsgruppe) für die alten Knoten gelöscht; die neuen Netzwerkressourcen werden unter Ihrem Abonnement erstellt. Dieser Fehler bedeutet, dass das Löschen der Netzwerkressourcen für die alten Knoten aufgrund einer Löschsperre bei dem Abonnement oder der Ressourcengruppe (die Ihre statische öffentliche IP-Adresse enthält) fehlgeschlagen ist. Entfernen Sie die Löschsperre, damit wir die alten Knoten bereinigen und deren statische öffentliche IP-Adresse freigeben können. Andernfalls kann die statische öffentliche IP-Adresse nicht freigegeben werden, und wir können Ihre IR nicht weiter aktualisieren.
+
+### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
+
+Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen verwenden möchten, sollten zwei öffentliche IP-Adressen angegeben werden. Eine wird verwendet, um die IR-Knoten sofort zu erstellen, und die andere wird während des Upgrades der IR verwendet. Dieser Fehler kann auftreten, wenn die andere öffentliche IP-Adresse während des Upgrades nicht verwendet werden kann. Informationen zu möglichen Ursachen finden Sie unter [InvalidPublicIPSpecified](#InvalidPublicIPSpecified).

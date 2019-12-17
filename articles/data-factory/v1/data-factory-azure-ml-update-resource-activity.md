@@ -1,6 +1,6 @@
 ---
 title: Aktualisieren von Machine Learning-Modellen mithilfe von Azure Data Factory
-description: Beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning
+description: Beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning.
 services: data-factory
 documentationcenter: ''
 author: djpmsft
@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: 190a4e704b002a4d6d4876d048c693a5fffe0114
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683121"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978712"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 
@@ -41,8 +41,8 @@ Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Azure Machine Le
 ## <a name="overview"></a>Übersicht
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure ML-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten ML-Modell aktualisieren. Typische Schritte, um das erneute Trainieren und das Aktualisieren von Azure ML-Modellen über Webdienste zu ermöglichen:
 
-1. Erstellen Sie ein Experiment in [Azure ML Studio](https://studio.azureml.net).
-2. Wenn Sie mit dem Modell zufrieden sind, verwenden Sie Azure ML Studio, um Webdienste für das **Trainingsexperiment** und das Bewertungs-/**Vorhersageexperiment** zu veröffentlichen.
+1. Erstellen Sie ein Experiment in [Azure Machine Learning Studio (klassisch)](https://studio.azureml.net).
+2. Wenn Sie mit dem Modell zufrieden sind, verwenden Sie Azure Machine Learning Studio (klassisch), um Webdienste für das **Trainingsexperiment** und das Bewertungs-/**Vorhersageexperiment** zu veröffentlichen.
 
 In der folgenden Tabelle werden die in diesem Beispiel verwendeten Webdienste beschrieben.  Details finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](../../machine-learning/machine-learning-retrain-models-programmatically.md) .
 
@@ -88,7 +88,7 @@ Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-E
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-Beim Abfragen des Webdiensts im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen. Der neue Typ der Ressourcenendpunktaktualisierung erfordert ein AAD (Azure Active Directory)-Token. Geben Sie **servicePrincipalId** und **servicePrincipalKey** im verknüpften AzureML-Dienst an. Informationen dazu finden Sie im Artikel zum [Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen zum Verwalten einer Azure-Ressource](../../active-directory/develop/howto-create-service-principal-portal.md). Hier sehen Sie ein Beispiel für eine Definition des verknüpften AzureML-Diensts: 
+Beim Abfragen des Webdiensts im [Azure Machine Learning Web Services-Portal](https://services.azureml.net/) können Sie Werte für Platzhalter in der URL abrufen. Der neue Typ der Ressourcenendpunktaktualisierung erfordert ein AAD (Azure Active Directory)-Token. Geben Sie im mit Azure Machine Learning verknüpften Dienst **servicePrincipalId** und **servicePrincipalKey** an. Informationen dazu finden Sie im Artikel zum [Erstellen eines Dienstprinzipals und Zuweisen von Berechtigungen zum Verwalten einer Azure-Ressource](../../active-directory/develop/howto-create-service-principal-portal.md). Hier sehen Sie ein Beispiel für eine Definition des verknüpften AzureML-Diensts: 
 
 ```json
 {
@@ -138,7 +138,7 @@ Dies ist die JSON-Beispieldefinition des verknüpften-Diensts:
 ```
 
 ### <a name="training-input-dataset"></a>Trainingseingabedataset:
-Das folgende Dataset stellt die Trainingseingabedaten für den Azure ML-Trainingswebdienst dar. Die Azure ML-Batchausführungsaktivität verwendet dieses Dataset als Eingabe.
+Das folgende Dataset stellt die Trainingseingabedaten für den Azure Machine Learning-Trainingswebdienst dar. Die Azure Machine Learning-Batchausführungsaktivität verwendet dieses Dataset als Eingabe.
 
 ```JSON
 {
@@ -192,7 +192,7 @@ Das folgende Dataset stellt die iLearner-Ausgabedatei des Azure ML-Trainingsweb
 }
 ```
 
-### <a name="linked-service-for-azure-ml-training-endpoint"></a>Verknüpfter Dienst für den Azure ML-Trainingsendpunkt
+### <a name="linked-service-for-azure-machine-learning-training-endpoint"></a>Verknüpfter Dienst für den Azure Machine Learning-Trainingsendpunkt
 Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verknüpften Dienst, der auf den Standardendpunkt des Trainingswebdiensts verweist.
 
 ```JSON
@@ -208,12 +208,12 @@ Der folgende JSON-Codeausschnitt definiert einen mit Azure Machine Learning verk
 }
 ```
 
-Führen Sie in **Azure ML Studio** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
+Führen Sie in **Azure Machine Learning Studio (klassisch)** folgende Schritte aus, um Werte für **mlEndpoint** und **apiKey** abzurufen:
 
 1. Klicken Sie im linken Menü auf **WEB SERVICES** .
 2. Klicken Sie in der Liste der Webdienste auf den **Trainingswebdienst** .
 3. Klicken Sie neben dem Textfeld **API-Schlüssel** auf „Kopieren“. Fügen Sie den Schlüssel aus der Zwischenablage in den Data Factory-JSON-Editor ein.
-4. Klicken Sie in **Azure ML Studio** auf den Link **BATCHAUSFÜHRUNG**.
+4. Klicken Sie in **Azure Machine Learning Studio (klassisch)** auf den Link **BATCHAUSFÜHRUNG**.
 5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung**, und fügen Sie ihn in den Data Factory-JSON-Editor ein.   
 
 ### <a name="linked-service-for-azure-ml-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Azure ML-Bewertungsendpunkt

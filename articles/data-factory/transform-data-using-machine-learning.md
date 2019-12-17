@@ -1,22 +1,21 @@
 ---
-title: Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data Factory
+title: Erstellen von Vorhersagepipelines für Daten
 description: Erfahren Sie, wie Sie eine Vorhersagepipeline mithilfe der Azure Machine Learning-Batchausführungsaktivität in Azure Data Factory erstellen.
-services: data-factory
-documentationcenter: ''
-ms.service: data-factory
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.topic: conceptual
-ms.date: 02/20/2019
 author: nabhishek
 ms.author: abnarain
-manager: craigg
-ms.openlocfilehash: 24568940a0f6e550ae0fe7658b81ba1c3b3d3556
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+manager: shwang
+services: data-factory
+ms.service: data-factory
+ms.workload: data-services
+ms.topic: conceptual
+ms.custom: seo-lt-2019
+ms.date: 02/20/2019
+ms.openlocfilehash: b5b7b69f49efa6cc0d5f3e42fc8a3aca855bca9a
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73683763"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74912994"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]

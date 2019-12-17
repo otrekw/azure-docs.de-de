@@ -1,23 +1,22 @@
 ---
-title: Verschieben von Dateien zwischen dateibasiertem Speicher mithilfe von Azure Data Factory
+title: Verschieben von Dateien zwischen dateibasiertem Speicher
 description: Hier erfahren Sie, wie Sie mit Azure Data Factory eine Lösungsvorlage verwenden, um Dateien zwischen dateibasiertem Speicher zu verschieben.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
-manager: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 7/12/2019
-ms.openlocfilehash: f6f83917e84a880fb86b5f592c4d51b03462753d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3165daa06ed975df9ccb677699d3ceb449327ab
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684094"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941912"
 ---
 # <a name="move-files-with-azure-data-factory"></a>Verschieben von Dateien mit Azure Data Factory
 
@@ -37,9 +36,11 @@ Die Vorlage enthält fünf Aktivitäten:
 - **Copy** kopiert eine Datei aus dem Quellspeicher in den Zielspeicher.
 - **Delete** löscht dieselbe Datei aus dem Quellspeicher.
 
-Die Vorlage definiert zwei Parameter:
-- *FolderPath_SourceStore* stellt den Ordnerpfad des Quellspeichers dar, aus dem Dateien verschoben werden sollen. 
-- *FolderPath_DestinationStore* stellt den Ordnerpfad des Zielspeichers dar, in den Dateien verschoben werden sollen. 
+Die Vorlage definiert vier Parameter:
+- *SourceStore_Location* stellt den Ordnerpfad des Quellspeichers dar, aus dem Dateien verschoben werden sollen. 
+- *SourceStore_Directory* stellt den Unterordnerpfad des Quellspeichers dar, aus dem Dateien verschoben werden sollen.
+- *DestinationStore_Location* stellt den Ordnerpfad des Zielspeichers dar, in den Dateien verschoben werden sollen. 
+- *DestinationStore_Directory* stellt den Ordnerpfad des Zielspeichers dar, in den Dateien verschoben werden sollen.
 
 ## <a name="how-to-use-this-solution-template"></a>So verwenden Sie diese Lösungsvorlage
 
@@ -51,9 +52,7 @@ Die Vorlage definiert zwei Parameter:
 
     ![Erstellen einer neuen Verbindung mit dem Ziel](media/solution-template-move-files/move-files2.png)
 
-3. Klicken Sie auf **Diese Vorlage verwenden**.
-
-    ![„Diese Vorlage verwenden“](media/solution-template-move-files/move-files3.png)
+3. Wählen Sie die Registerkarte **Diese Vorlage verwenden** aus.
     
 4. Daraufhin wird die Pipeline wie im folgenden Beispiel angezeigt:
 

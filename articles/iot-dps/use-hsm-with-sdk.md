@@ -1,6 +1,6 @@
 ---
 title: Verwenden verschiedener Nachweismechanismen mit dem Client SDK für IoT Hub Device Provisioning Service
-description: 'Azure-Anleitung: Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts in Azure'
+description: 'Azure-Anleitung: Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts (Device Provisioning Service, DPS) in Azure'
 author: robinsh
 ms.author: robinsh
 ms.date: 03/30/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: 0cde591d2ec8c6f2f51c83b3f263c188c8cf2605
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c85d958074ea5d41d32f71350164c3c983e372a2
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228271"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976654"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>Verwenden verschiedener Nachweismechanismen mit dem Client-SDK des Device Provisioning-Diensts für C
 

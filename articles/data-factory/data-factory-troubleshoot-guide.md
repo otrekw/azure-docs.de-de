@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 8/26/2019
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 0026aa377a58f6b766a400860692a35440deb962
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 2ae0f3033b88b3229d3dbef35c8bc9a32510c00e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748361"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972335"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
 
@@ -43,9 +43,9 @@ Informationen zu Connectorproblemen, z. B. Auftreten eines Fehlers bei der Kopi
 
 - **Empfehlung**: Geben Sie den Notebook-Pfad in der Databricks-Aktivität an.
 
-<br/>    
-              
-- **Meldung**: `Cluster   ... does not exist.`
+<br/>  
+
+- **Meldung**: `Cluster... does not exist.`
 
 - **Ursache**: `Authoring error: Databricks cluster does not exist or has been deleted.`
 
@@ -53,7 +53,7 @@ Informationen zu Connectorproblemen, z. B. Auftreten eines Fehlers bei der Kopi
 
 <br/>  
 
-- **Meldung**: `Invalid Python file URI.... Please visit Databricks user guide for supported URI schemes.`
+- **Meldung**: `Invalid Python file URI... Please visit Databricks user guide for supported URI schemes.`
 
 - **Ursache**: `Bad authoring.`
 
@@ -334,56 +334,56 @@ Die folgende Tabelle gilt für U-SQL.
 
 ### <a name="error-code--4121"></a>Fehlercode:  4121
 
-- **Meldung**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Meldung**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Ursache:** Die für den Zugriff auf Azure ML Service verwendeten Anmeldeinformationen sind abgelaufen.
+- **Ursache:** Die für den Zugriff auf Azure Machine Learning verwendeten Anmeldeinformationen sind abgelaufen.
 
 - **Empfehlung**:  Überprüfen Sie, ob die Anmeldeinformationen gültig sind, und versuchen Sie es noch mal.
 
 
 ### <a name="error-code--4122"></a>Fehlercode:  4122
 
-- **Meldung**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Meldung**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Ursache:** Die im verknüpften Dienst für Azure ML Service angegebenen Anmeldeinformationen sind ungültig oder verfügen über keine Berechtigungen für diesen Vorgang.
+- **Ursache:** Die im verknüpften Dienst für Azure Machine Learning angegebenen Anmeldeinformationen sind ungültig oder verfügen über keine Berechtigungen für diesen Vorgang.
 
-- **Empfehlung**:  Überprüfen Sie, ob die Anmeldeinformationen im verknüpften Dienst gültig sind und Berechtigungen zum Zugriff auf Azure ML Service vorhanden sind.
+- **Empfehlung**:  Überprüfen Sie, ob die Anmeldeinformationen im verknüpften Dienst gültig und Berechtigungen zum Zugriff auf Azure Machine Learning vorhanden sind.
 
 
 ### <a name="error-code--4123"></a>Fehlercode:  4123
 
-- **Meldung**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Meldung**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Ursache**: `Properties of the activity such as pipelineParamters are invalid for the Azure ML pipeline.`
+- **Ursache:** Eigenschaften der Aktivität, z.B. „pipelineParameters“, sind bei der Azure ML-Pipeline ungültig.
 
 - **Empfehlung**:  Überprüfen Sie den Wert der Aktivitätseigenschaften, um die erwartete Nutzlast der im verknüpften Dienst angegebenen veröffentlichten Azure ML-Pipeline abzugleichen.
 
 
 ### <a name="error-code--4124"></a>Fehlercode:  4124
 
-- **Meldung**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Meldung**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
 - **Ursache:** Der veröffentlichte Azure ML-Pipeline-Endpunkt ist nicht vorhanden.
 
-- **Empfehlung**:  Überprüfen Sie, ob der im verknüpften Dienst angegebene veröffentlichte Azure ML-Pipeline-Endpunkt in Azure ML Service vorhanden ist.
+- **Empfehlung**:  Überprüfen Sie, ob der im verknüpften Dienst angegebene veröffentlichte Azure Machine Learning-Pipeline-Endpunkt in Azure Machine Learning vorhanden ist.
 
 
 ### <a name="error-code--4125"></a>Fehlercode:  4125
 
-- **Meldung**: `Request sent to Azure ML Service for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure ML Service: '%externalMessage;'.`
+- **Meldung**: `Request sent to Azure Machine Learning for operation '%operation;' failed with http status code '%statusCode;'. Error message from Azure Machine Learning: '%externalMessage;'.`
 
-- **Ursache:** Serverfehler in Azure ML Service.
+- **Ursache:** Serverfehler bei Azure Machine Learning.
 
-- **Empfehlung**:  Versuchen Sie es später noch mal. Wenn das Problem weiterhin besteht, wenden Sie sich an das Azure ML Service-Team.
+- **Empfehlung**:  Versuchen Sie es später noch mal. Wenn das Problem weiterhin besteht, wenden Sie sich an das Azure Machine Learning-Team.
 
 
 ### <a name="error-code--4126"></a>Fehlercode:  4126
 
-- **Meldung**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure ML Service for more error logs.`
+- **Meldung**: `Azure ML pipeline run failed with status: '%amlPipelineRunStatus;'. Azure ML pipeline run Id: '%amlPipelineRunId;'. Please check in Azure Machine Learning for more error logs.`
 
 - **Ursache:** Fehler beim Ausführen der Azure ML-Pipeline
 
-- **Empfehlung**:  Überprüfen Sie in Azure ML Service, ob weitere Fehlerprotokolle vorhanden sind, und korrigieren Sie die ML-Pipeline.
+- **Empfehlung**:  Überprüfen Sie in Azure Machine Learning, ob weitere Fehlerprotokolle vorhanden sind, und korrigieren Sie die ML-Pipeline.
 
 
 
@@ -422,7 +422,7 @@ Die folgende Tabelle gilt für U-SQL.
 
 - **Ursache:** Die Verbindungszeichenfolge für den Speicher ist ungültig oder hat ein falsches Format.
 
-- **Empfehlung**:  Navigieren Sie im Azure-Portal zu Ihrem Speicher, kopieren Sie die Verbindungszeichenfolge, und fügen Sie sie in den verknüpften Dienst ein. Wiederholen Sie anschließend den Vorgang.
+- **Empfehlung**:  Navigieren Sie im Azure-Portal zu Ihrem Speicher, kopieren Sie die Verbindungszeichenfolge, und fügen Sie sie in Ihren verknüpften Dienst ein. Wiederholen Sie anschließend den Vorgang.
 
 
 ### <a name="error-code--2108"></a>Fehlercode:  2108
@@ -522,7 +522,7 @@ Die folgende Tabelle gilt für Azure Batch.
 
 ### <a name="error-code--2507"></a>Fehlercode:  2507
 
-- **Meldung**: `The folder path does not exist or is empty: ....`
+- **Meldung**: `The folder path does not exist or is empty: ...`
 
 - **Ursache:** Unter dem angegebenen Pfad sind im Speicherkonto keine Dateien vorhanden.
 
@@ -1018,7 +1018,7 @@ Verwenden Sie Fiddler zum Erstellen einer HTTP-Sitzung der überwachten Webanwen
 
 1. Wenn Ihre Webanwendung HTTPS verwendet, wechseln Sie zu **Tools** > **Fiddler-Optionen** > **HTTPS**. Wählen Sie **Capture HTTPS CONNECTs** (HTTPS CONNECTs erfassen) und **Decrypt HTTPS Traffic** (HTTPS-Datenverkehr entschlüsseln) aus.
 
-![Fiddler-Optionen](media/data-factory-troubleshoot-guide/fiddler-options.png)
+   ![Fiddler-Optionen](media/data-factory-troubleshoot-guide/fiddler-options.png)
 
 1. Wenn in der Anwendung SSL-Zertifikate verwendet werden, fügen Sie das Fiddler-Zertifikat auf Ihrem Gerät hinzu. Wechseln Sie zu **Tools** > **Fiddler-Optionen** > **HTTPS** > **Aktionen** > **Stammzertifikat auf Desktop exportieren**.
 
@@ -1028,17 +1028,17 @@ Verwenden Sie Fiddler zum Erstellen einer HTTP-Sitzung der überwachten Webanwen
 
 1. Erstellen Sie eine Anforderung:
 
-a. Wählen Sie die Registerkarte **Composer** aus.
+   1. Wählen Sie die Registerkarte **Composer** aus.
 
-b. Legen Sie die HTTP-Methode und die HTTP-URL fest.
+   1. Legen Sie die HTTP-Methode und die HTTP-URL fest.
+   
+   1. Fügen Sie bei Bedarf Header und den Anforderungstext hinzu.
 
-c. Fügen Sie bei Bedarf Header und den Anforderungstext hinzu.
+   1. Wählen Sie **Execute**(Ausführen).
 
-d. Wählen Sie **Execute**(Ausführen).
+1. Starten Sie die Erfassung des Datenverkehrs wieder, und schließen Sie die entsprechende Transaktion auf Ihrer Seite ab.
 
-9. Starten Sie die Erfassung des Datenverkehrs wieder, und schließen Sie die entsprechende Transaktion auf Ihrer Seite ab.
-
-10. Navigieren Sie anschließend zu **Datei** > **Speichern** > **Alle Sitzungen**.
+1. Navigieren Sie anschließend zu **Datei** > **Speichern** > **Alle Sitzungen**.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Fiddler](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureFiddler).
 

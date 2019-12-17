@@ -1,6 +1,6 @@
 ---
 title: Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub DPS
-description: Erfahren Sie, wie Sie häufige Fehler anhand der Gerätekonnektivität für Azure IoT Hub DPS (Device Provisioning Service, Device Provisioning-Dienst) diagnostizieren und behandeln können.
+description: Hier erfahren Sie, wie Sie häufig auftretende Fehler im Zusammenhang mit Gerätekonnektivität beim Azure IoT Hub Device Provisioning-Dienst (Azure IoT Hub Device Provisioning Service, DPS) diagnostizieren und beheben können.
 author: xujing-ms
 manager: nberdy
 ms.service: iot-dps
@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: b596a09e2185b38e6161ea4af2aa109e80faf248
-ms.sourcegitcommit: dd69b3cda2d722b7aecce5b9bd3eb9b7fbf9dc0a
+ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70963372"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974818"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Problembehandlung beim Azure IoT Hub Device Provisioning-Dienst
 

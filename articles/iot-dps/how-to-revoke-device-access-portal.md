@@ -1,6 +1,6 @@
 ---
 title: Aufheben der Registrierung eines Geräts bei Azure IoT Hub Device Provisioning Service
-description: Aufheben der Registrierung eines Geräts, um die Bereitstellung durch IoT Hub Device Provisioning Service zu verhindern
+description: Aufheben der Registrierung eines Geräts, um die Bereitstellung über Azure IoT Hub Device Provisioning Service (DPS) zu verhindern
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/05/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6efbc4483e4768014678822e82f4ca4178f51863
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: af883da67f4e1bc819514e88ff480526e16124db
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228765"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974920"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Aufheben der Registrierung eines Geräts bei IoT Hub Device Provisioning Service
 
