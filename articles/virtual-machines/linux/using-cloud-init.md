@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: danis
-ms.openlocfilehash: d372b94ac0df4cef3c43fab10686e9bf20633bfe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6c522af44be51eb89ee9f64bae2dc4e9e7b24123
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034245"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873946"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>cloud-init-Unterstützung für virtuelle Computer in Azure
 In diesem Artikel wird die vorhandene Unterstützung für [cloud-init](https://cloudinit.readthedocs.io) zum Konfigurieren von virtuellen Computern (VMs) oder VM-Skalierungsgruppen während der Bereitstellung in Azure erläutert. Diese cloud-init-Skripts werden beim erstmaligen Starten ausgeführt, nachdem die Ressourcen von Azure bereitgestellt wurden.  
@@ -39,6 +39,7 @@ Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-in
 |Canonical |UbuntuServer |14.04.5-LTS |latest |Ja |
 |CoreOS |CoreOS |Stable |latest |Ja |
 |OpenLogic 7.7 |CentOS |7-CI |7.7.20190920 |preview |
+|Oracle 7.7 |Oracle-Linux |77-ci |7.7.01|preview |
 |RedHat 7.6 |RHEL |7-RAW-CI |7.6.2019072418 |Ja |
 |RedHat 7.7 |RHEL |7-RAW-CI |7.7.2019081601 |preview |
     
@@ -47,6 +48,7 @@ Derzeit unterstützt Azure Stack die Bereitstellung von RHEL 7.x und CentOS 7.
 * Für RHEL 7.6 (cloud-init-Paket) wird das folgende Paket unterstützt: *18.2-1.el7_6.2* 
 * Für RHEL 7.7 (Vorschau), cloud-init-Paket, ist das Vorschaupaket: *18.5-3.el7*
 * Für CentOS 7.7 (Vorschau), cloud-init-Paket, ist das Vorschaupaket: *18.5-3.el7.centos*
+* Für Oracle 7.7 (Vorschau), cloud-init-Paket, ist das Vorschaupaket: *18.5-3.0.1.el7*
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>Was ist der Unterschied zwischen cloud-init und Linux-Agent (WALA)?
 WALA ist ein für die Azure-Plattform spezifischer Agent zum Bereitstellen und Konfigurieren von virtuellen Computern und zum Behandeln von Azure-Erweiterungen. Wir ergänzen das Konfigurieren von virtuellen Computern um cloud-init anstelle des Linux-Agents, damit cloud-init-Kunden ihre vorhandenen cloud-init-Skripts verwenden können.  Wenn Sie in cloud-init-Skripts zum Konfigurieren von Linux-Systemen investiert haben, sind für die Aktivierung **keine zusätzlichen Einstellungen erforderlich**. 

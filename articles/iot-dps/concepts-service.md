@@ -1,6 +1,6 @@
 ---
 title: Dienstkonzepte beim Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
-description: Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit dem Device Provisioning Service und IoT Hub gelten
+description: Beschreibt Konzepte der Dienstbereitstellung, die speziell für Geräte mit Device Provisioning Service (DPS) und IoT Hub gelten
 author: nberdy
 ms.author: nberdy
 ms.date: 09/18/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 51486da6b34c0ff1e9b6d05558c2132a416913e9
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: f42502ac4db12a060af5906243d3f8e7584c5df3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104361"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975600"
 ---
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Konzepte beim IoT Hub Device Provisioning-Dienst
 

@@ -1,17 +1,17 @@
 ---
 title: SQL-Abfrageoperatoren für Azure Cosmos DB
-description: Erfahren Sie mehr über SQL-Operatoren für Azure Cosmos DB.
+description: Erfahren Sie mehr über SQL-Operatoren wie Gleichheit, Vergleich und logische Operatoren, die von Azure Cosmos DB unterstützt werden.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: 899355ad7331a3df8cd5d647a573dc15e3a0bb14
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: f3efe4bee749f0d3132206ca68a33a60f0e16b81
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003391"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870937"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>Operatoren in Azure Cosmos DB
 

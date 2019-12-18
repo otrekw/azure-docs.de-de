@@ -1,20 +1,20 @@
 ---
-title: Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung analysieren und Daten protokollieren können.
+title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 8bb3ac1905167989e27d47304ae539e49a1412e8
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132342"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872977"
 ---
-# <a name="understand-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
+# <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload von Kubernetes-Clustern, die in Azure Kubernetes Service (AKS), Azure Stack oder einer anderen Umgebung gehostet werden, aus zwei Perspektiven zu überwachen. Sie können die Überwachung direkt aus dem Cluster durchführen, oder Sie können alle Cluster unter einem Abonnement mit Azure Monitor anzeigen. Die Anzeige von Azure Container Instances ist auch bei Überwachung eines bestimmten AKS-Clusters möglich.
 

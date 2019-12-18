@@ -1,6 +1,7 @@
 ---
-title: Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie ein technisches Azure Active Directory-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
+title: Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie
+titleSuffix: Azure AD B2C
+description: Validieren Sie Ansprüche mithilfe eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: facef1e1288f2a64872efbf37a9a31fa05244a7e
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167563"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950798"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Validierungsprofils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -40,7 +41,7 @@ Technische Validierungsprofile können bedingt ausgeführt werden, basierend auf
 Ein selbstbestätigtes technisches Profil kann definieren, dass ein technisches Validierungsprofil verwendet wird, um einige oder alle seiner Ausgabeansprüche zu validieren. Alle Eingabeansprüche des technischen Profils, auf das verwiesen wird, müssen in den Ausgabeansprüchen des verweisenden technischen Validierungsprofils enthalten sein.
 
 > [!NOTE]
-> Nur selbstbestätigte technische Profile können technische Validierungsprofile verwenden. Wenn Sie die Ausgabeansprüche von nicht selbst bestätigten technischen Profilen überprüfen müssen, sollten Sie einen zusätzlichen Orchestrierungsschritt in Ihrer User Journey in Betracht ziehen, um das technische Profil für die Validierung zu unterstützen.    
+> Nur selbstbestätigte technische Profile können technische Validierungsprofile verwenden. Wenn Sie die Ausgabeansprüche von nicht selbst bestätigten technischen Profilen überprüfen müssen, sollten Sie einen zusätzlichen Orchestrierungsschritt in Ihrer User Journey in Betracht ziehen, um das technische Profil für die Validierung zu unterstützen.
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 

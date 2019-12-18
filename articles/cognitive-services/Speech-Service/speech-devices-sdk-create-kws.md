@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: erhopf
-ms.openlocfilehash: 15a0e27f3f96eda27182e8437dc95d047f56e260
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 42bcc336bfeb325a08c3d65438d66690c0b35100
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815297"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74896414"
 ---
 # <a name="create-a-custom-keyword-by-using-the-speech-service"></a>Erstellen eines benutzerdefinierten Schlüsselworts mit dem Speech Service
 
@@ -50,17 +50,29 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 1. Wechseln Sie zu [Speech Studio](https://aka.ms/sdsdk-speechportal), und **melden Sie sich an**. Wenn Sie kein Speech-Abonnement haben, wählen Sie [**Abonnement erstellen**](https://go.microsoft.com/fwlink/?linkid=2086754) aus.
 
-1. Geben Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) das Schlüsselwort Ihrer Wahl ein, und klicken Sie auf **Schlüsselwort hinzufügen**. Wir haben einige [Richtlinien](#choose-an-effective-keyword), die bei der Auswahl eines effektiven Stichworts helfen. Der Support ist derzeit auf die Sprache „en-US“ beschränkt.
+1. Erstellen Sie auf der Seite [Benutzerdefiniertes Schlüsselwort](https://aka.ms/sdsdk-wakewordportal) ein **neues Projekt**. 
 
-    ![Eingeben Ihres Schlüsselworts](media/speech-devices-sdk/custom-kws-portal-enter-keyword.png)
+1. Geben Sie unter **Name** einen Namen und unter **Beschreibung** eine optionale Beschreibung ein, und wählen Sie die Sprache aus. Sie benötigen jeweils ein Projekt pro Sprache, und der Support ist derzeit auf die Sprache „en-US“ beschränkt.
 
-1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich die einzelnen Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken. Deaktivieren Sie dann alle nicht ordnungsgemäßen Aussprachevarianten. Wenn nur noch geeignete Aussprachen aktiviert sind, wählen Sie **Übermitteln** aus, um mit dem Generieren des Schlüsselworts zu beginnen. Wenn Sie das Schlüsselwort ändern möchten, entfernen Sie zunächst das vorhandene, indem Sie auf die Schaltfläche „Löschen“ klicken, die rechts in der Zeile angezeigt wird, wenn Sie den Mauszeiger darüber bewegen.
+    ![Beschreiben Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kws-portal-new-project.png)
 
-    ![Überprüfen Ihres Schlüsselworts](media/speech-devices-sdk/custom-kws-portal-review-keyword.png)
+1. Wählen Sie Ihr Projekt in der Liste aus. 
 
-1. Es kann bis zu einer Minute dauern, bis das Modell generiert ist. Sie werden dann aufgefordert, die Datei herunterzuladen.
+    ![Auswählen Ihres Schlüsselwortprojekts](media/custom-keyword/custom-kws-portal-project-list.png)
 
-    ![Herunterladen Ihres Schlüsselworts](media/speech-devices-sdk/custom-kws-portal-download-keyword.png)
+1. Klicken Sie zum Starten eines neuen Schlüsselwortmodells auf **Modell trainieren**.
+
+1. Geben Sie unter **Name** einen Namen für das Schlüsselwortmodell, unter **Beschreibung** eine optionale Beschreibung und unter **Schlüsselwort** das gewünschte Schlüsselwort ein, und klicken Sie anschließend auf **Weiter**. Wir haben einige [Richtlinien](#choose-an-effective-keyword), die bei der Auswahl eines effektiven Stichworts helfen.
+
+    ![Eingeben Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-new-model.png) 
+
+1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich die einzelnen Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken. Deaktivieren Sie dann alle nicht ordnungsgemäßen Aussprachevarianten. Wenn nur noch geeignete Aussprachen aktiviert sind, klicken Sie auf **Trainieren**, um mit dem Generieren des Schlüsselworts zu beginnen. 
+
+    ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-choose-prons.png) 
+
+1. Die Generierung des Modells kann bis zu zehn Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. Nun können Sie die Datei herunterladen.
+
+    ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-download-model.png) 
 
 1. Speichern Sie die ZIP-Datei auf Ihrem Computer. Sie benötigen diese Datei, um Ihr benutzerdefiniertes Schlüsselwort auf Ihrem Gerät bereitzustellen.
 

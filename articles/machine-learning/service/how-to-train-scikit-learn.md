@@ -1,7 +1,7 @@
 ---
 title: Trainieren von Scikit-learn-Machine Learning-Modellen
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Ihre Scikit-learn-Trainingsskripts auf Unternehmensebene mit der SKlearn-Estimator-Klasse von Azure Machine Learning ausführen. Das Beispielskript klassifiziert Irisbilder zum Erstellen eines Machine Learning-Modells auf der Grundlage des Iris-Datasets von Scikit-learn.
+description: Erfahren Sie, wie Sie Ihre scikit-learn-Trainingsskripts auf Unternehmensebene mit der sklearn-Estimator-Klasse von Azure Machine Learning ausführen. Das Beispielskript klassifiziert Irisbilder zum Erstellen eines Machine Learning-Modells auf der Grundlage des Iris-Datasets von Scikit-learn.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ ms.author: maxluk
 author: maxluk
 ms.date: 08/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: a85d33a804c8aaf3081439806bf69dab5263dcf2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 2b6cdf9350d95de901e8a0f1e875d90513b33f1a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224843"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976110"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Erstellen von Scikit-learn-Modellen nach Maß mit Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In diesem Artikel erfahren Sie, wie Sie Ihre Scikit-learn-Trainingsskripts auf Unternehmensebene mit der [SKlearn-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen. 
+In diesem Artikel erfahren Sie, wie Sie Ihre scikit-learn-Trainingsskripts auf Unternehmensebene mit der [sklearn-Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py)-Klasse von Azure Machine Learning ausführen. 
 
 Mit den Beispielskripts in diesem Artikel werden Irisbilder zum Erstellen eines Machine Learning-Modells auf der Grundlage des [Iris-Datasets](https://archive.ics.uci.edu/ml/datasets/iris) von Scikit-learn klassifiziert.
 
@@ -89,7 +89,7 @@ exp = Experiment(workspace=ws, name='sklearn-iris')
 
 In diesem Tutorial wurde das Trainingsskript **train_iris.py** bereits bereitgestellt. In der Praxis sollten Sie benutzerdefinierte Trainingsskripts unverändert übernehmen und mit Azure ML ausführen können, ohne Ihren Code ändern zu müssen.
 
-Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript mit Azure ML-Code.  Das Trainingsskript **train_iris.py** zeigt, wie Sie mit dem `Run`-Objekt innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
+Wenn Sie die Nachverfolgungs- und Metrikfunktionen von Azure ML nutzen möchten, ergänzen Sie Ihr Trainingsskript um eine geringe Menge Azure ML-Code.  Das Trainingsskript **train_iris.py** zeigt, wie Sie mit dem `Run`-Objekt innerhalb des Skripts einige Metriken zu Ihrer Azure ML-Ausführung protokollieren können.
 
 Das bereitgestellte Trainingsskript verwendet Beispieldaten aus der `iris = datasets.load_iris()`-Funktion.  Für Ihre eigenen Daten müssen Sie unter Umständen einige Schritte (etwa [Hochladen von Dataset und Skripts](how-to-train-keras.md#data-upload)) ausführen, um Daten während des Trainings verfügbar zu machen.
 

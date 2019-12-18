@@ -1,28 +1,25 @@
 ---
-title: Konten und Mandantenprofile für Microsoft Identity Platform (Android) | Azure
+title: Konten und Mandantenprofile für Microsoft Identity Platform auf Android | Azure
 description: Übersicht über Microsoft Identity Platform-Konten für Android
 services: active-directory
-documentationcenter: ''
 author: shoatman
-manager: nadima
-editor: ''
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
+ms.devlang: java
 ms.date: 09/14/2019
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7beab6759524037f86c83429644c1bb1fffe4d07
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f2a61176f43960d14cecf4db881b94b24ae580bc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678858"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963884"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Konten und Mandantenprofile (Android)
 
@@ -32,10 +29,10 @@ Die Microsoft Authentication Library (MSAL) API ersetzt den Begriff *Benutzer* d
 
 Ein Microsoft Identity Platform-Konto umfasst folgende Komponenten:
 
-  - Einen eindeutigen Bezeichner.
-  - Anmeldeinformationen, um den Kontobesitzer bzw. die Befugnis zur Kontrolle zu bestätigen.
-  - Ein oder mehrere Profile, die aus Attributen bestehen, z. B.:
-    - Bild, Vorname, Familienname, Titel, Büro
+- Einen eindeutigen Bezeichner.  
+- Anmeldeinformationen, um den Kontobesitzer bzw. die Befugnis zur Kontrolle zu bestätigen.
+- Ein oder mehrere Profile, die aus Attributen bestehen, z. B.:
+  - Bild, Vorname, Familienname, Titel, Büro
 - Ein Konto verfügt über eine Autoritätsquelle oder ein bevorzugtes System. Das Konto wird im bevorzugten System erstellt, und die diesem Konto zugeordneten Anmeldeinformationen sind dort gespeichert. In Systemen mit mehreren Mandanten, wie der Microsoft Identity Platform, ist das bevorzugte System der `tenant`, auf dem das Konto erstellt wurde. Dieser Mandant wird auch als „`home tenant`“ bezeichnet.
 - Konten auf der Microsoft Identity Platform haben folgende bevorzugte Systeme:
   - Azure Active Directory, einschließlich Azure Active Directory B2C.
@@ -49,7 +46,6 @@ Ein Microsoft Identity Platform-Konto umfasst folgende Komponenten:
   - Dieser lokale Datensatz stellt das Konto dar und ist an das ursprüngliche Konto gebunden.
   - MSAL macht diesen lokalen Datensatz als `Tenant Profile` verfügbar.
   - Mandantenprofile können über verschiedene, dem lokalen Kontext entsprechende Attribute verfügen, z. B. die Position, das Büro, Kontaktinformationen usw.
- 
 - Da ein Konto in einem oder mehreren Mandanten vorhanden sein kann, ist auch mehr als ein Profil möglich.
 
 > [!NOTE]

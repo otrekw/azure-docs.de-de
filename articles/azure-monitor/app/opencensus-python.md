@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132211"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74929002"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung (Vorschau)
 
@@ -61,7 +61,16 @@ Eine vollständige Liste der Pakete und Integrationen finden Sie unter [OpenCens
 
 Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten von Telemetriedaten an Azure Monitor zu senden: Ablaufverfolgung, Metriken und Protokolle. Weitere Informationen zu diesen Telemetrietypen finden Sie in der [Übersicht über die Datenplattform](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform). Befolgen Sie die nachstehenden Anweisungen, um diese Telemetrietypen über die drei Exportprogramme zu senden.
 
+## <a name="telemetry-type-mappings"></a>Zuordnungen von Telemetriedatentypen
+
+Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Exportprogramme zu den in Azure Monitor angezeigten Typen von Telemetriedaten.
+
+![Screenshot der Zuordnungen von Telemetrietypen von OpenCensus zu Azure Monitor](./media/opencensus-python/0012-telemetry-types.png)
+
 ### <a name="trace"></a>Trace
+
+> [!NOTE]
+> `Trace` in OpenCensus bezieht sich auf die [verteilte Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing). `AzureExporter` sendet Telemetrie zu `requests` und `dependency` an Azure Monitor.
 
 1. Zuerst generieren wir lokal einige Ablaufverfolgungsdaten. Geben Sie in Python IDLE oder einem Editor Ihrer Wahl den unten angegebenen Code ein.
 
@@ -268,7 +277,7 @@ Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten 
     90
     ```
 
-3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, aber wir möchten eigentlich die Metrikdaten für Azure Monitor ausgeben. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
+3. Das Eingeben von Werten ist zu Demonstrationszwecken zwar hilfreich, wir möchten jedoch eigentlich die Protokolldaten für Azure Monitor ausgeben. Ändern Sie Ihren Code aus dem vorherigen Schritt basierend auf dem folgenden Codebeispiel:
 
     ```python
     import logging
@@ -293,9 +302,58 @@ Das SDK verwendet drei Azure Monitor-Exportprogramme, um unterschiedliche Arten 
         main()
     ```
 
-4. Das Exportprogramm sendet Protokolldaten an Azure Monitor. Sie finden die Daten unter `traces`.
+4. Das Exportprogramm sendet Protokolldaten an Azure Monitor. Sie finden die Daten unter `traces`. 
 
-5. Ausführliche Informationen dazu, wie Sie die Protokolle um Daten im Ablaufverfolgungskontext erweitern können, finden Sie unter [Integration von Protokollen](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation) für OpenCensus Python.
+> [!NOTE]
+> `traces` in diesem Kontext ist nicht identisch mit `Tracing`. `traces` bezieht sich auf den Typ der Telemetrie, der bei der Verwendung von `AzureLogHandler` in Azure Monitor angezeigt wird. `Tracing` bezieht sich auf ein Konzept in OpenCensus und betrifft die [verteilte Ablaufverfolgung](https://docs.microsoft.com/azure/azure-monitor/app/distributed-tracing).
+
+5. Zum Formatieren der Protokollmeldungen können Sie `formatters` in der integrierten Python-[Protokollierungs-API](https://docs.python.org/3/library/logging.html#formatter-objects) verwenden.
+
+    ```python
+    import logging
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    
+    format_str = '%(asctime)s - %(levelname)-8s - %(message)s'
+    date_format = '%Y-%m-%d %H:%M:%S'
+    formatter = logging.Formatter(format_str, date_format)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    handler = AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    handler.setFormatter(formatter)
+    logger.addHandler(handler)
+    
+    def valuePrompt():
+        line = input("Enter a value: ")
+        logger.warning(line)
+    
+    def main():
+        while True:
+            valuePrompt()
+    
+    if __name__ == "__main__":
+        main()
+    ```
+
+6. Sie können Ihren Protokollen auch benutzerdefinierte Dimensionen hinzufügen. Diese werden als Schlüssel-Wert-Paare in `customDimensions` in Azure Monitor angezeigt.
+> [!NOTE]
+> Damit dieses Feature funktioniert, müssen Sie ein Wörterbuch als Argument an Ihre Protokolle übergeben. Andere Datenstrukturen werden ignoriert. Um die Formatierung der Zeichenfolgen beizubehalten, speichern Sie sie in einem Wörterbuch, und übergeben Sie sie als Argumente.
+
+    ```python
+    import logging
+    
+    from opencensus.ext.azure.log_exporter import AzureLogHandler
+    
+    logger = logging.getLogger(__name__)
+    # TODO: replace the all-zero GUID with your instrumentation key.
+    logger.addHandler(AzureLogHandler(
+        connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
+    )
+    logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
+    ```
+
+7. Ausführliche Informationen dazu, wie Sie die Protokolle um Daten im Ablaufverfolgungskontext erweitern können, finden Sie unter [Integration von Protokollen](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation) für OpenCensus Python.
 
 ## <a name="view-your-data-with-queries"></a>Anzeigen Ihrer Daten mit Abfragen
 

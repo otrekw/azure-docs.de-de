@@ -1,24 +1,23 @@
 ---
-title: Ausführen von Deltakopiervorgängen mit Steuertabelle für eine Datenbank mithilfe von Azure Data Factory
+title: Deltakopiervorgänge aus einer Datenbank mithilfe einer Steuertabelle
 description: Hier erfahren Sie, wie Sie eine Lösungsvorlage verwenden, um mit Azure Data Factory nur neue oder aktualisierte Zeilen inkrementell aus einer Datenbank zu kopieren.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: douglasl
-manager: craigg
+manager: anandsub
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 12/24/2018
-ms.openlocfilehash: c9ab1d005cf71dbe03546ce5b6014f616a872f8d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 4c72bd37a636ec31c13737705c22aaa895b9ad72
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73684209"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928213"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Deltakopiervorgänge aus einer Datenbank mit einer Steuertabelle
 

@@ -1,6 +1,6 @@
 ---
 title: Häufig gestellte Fragen zu Azure Media Services | Microsoft-Dokumentation
-description: Häufig gestellte Fragen (FAQs)
+description: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 3164445dc28a2436d8492902d865414da8d75702
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3aeff680392fbe966682b57ca1318fac9f0d1d93
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61463905"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895981"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

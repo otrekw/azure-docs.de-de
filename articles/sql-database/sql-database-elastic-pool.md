@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 0cda55d42f0d89d61919b751335ec95ef8143274
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186468"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901173"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren mehrerer Azure SQL-Datenbank-Instanzen
 
@@ -24,7 +24,7 @@ Pools für elastische SQL-Datenbank-Instanzen sind eine einfache, kostengünstig
 
 ## <a name="what-are-sql-elastic-pools"></a>Was sind Pools für elastische SQL-Datenbanken?
 
-SaaS-Entwickler erstellen Anwendungen, die auf der obersten von umfangreichen Datenebenen aufsetzen, die wiederum aus zahlreichen Datenbanken bestehen können. In einem üblichen Anwendungsmuster wird jedem Kunden eine eigene Datenbank zur Verfügung gestellt. Verschiedene Kunden weisen jedoch oft unterschiedliche und unvorhersehbare Verwendungsmuster auf, und es ist schwierig, den Ressourcenbedarf jedes einzelnen Datenbankbenutzers vorherzusagen. Bisher hatten Sie zwei Optionen:
+SaaS-Entwickler erstellen Anwendungen, die auf der obersten von umfangreichen Datenebenen aufsetzen, die wiederum aus zahlreichen Datenbanken bestehen können. In einem üblichen Anwendungsmuster wird jedem Kunden eine eigene Datenbank zur Verfügung gestellt. Verschiedene Kunden haben jedoch häufig unterschiedliche und unvorhersehbare Verwendungsmuster, und es ist schwierig, den Ressourcenbedarf jedes einzelnen Datenbankbenutzers vorherzusagen. Bisher hatten Sie zwei Optionen:
 
 - Überdimensionierte Bereitstellung der Ressourcen, die sich an der Nutzung zu Spitzenzeiten orientiert (samt der damit verbundenen Kosten) oder
 - Unterdimensionierte Bereitstellung, um Kosten zu Lasten von Leistung und Kundenzufriedenheit während Spitzenzeiten einzusparen.
@@ -155,7 +155,7 @@ Pooldatenbanken unterstützen in der Regel die gleichen [Geschäftskontinuitäts
 
 Zur Erstellung eines Pools für elastische Datenbanken im Azure-Portal gibt es zwei Möglichkeiten.
 
-1. Wählen Sie im linken Menü im Azure-Portal die Option **Azure SQL** aus. Wenn Azure SQL nicht in der Liste aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* in das Suchfeld ein.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um einen Pool für elastische Datenbanken zu erstellen. Suchen Sie nach **Azure SQL**, und wählen Sie die entsprechende Option aus.
 2. Wählen Sie **+Hinzufügen** aus, um die Seite **SQL-Bereitstellungsoption auswählen** zu öffnen. Sie können weitere Informationen zu Pools für elastische Datenbanken anzeigen, indem Sie **Details anzeigen** auf der Kachel **Datenbanken** auswählen.
 3. Wählen Sie auf der Kachel **Datenbanken** in der Dropdownliste **Ressourcentyp** die Option **Pool für elastische Datenbanken** und anschließend **Erstellen** aus:
 

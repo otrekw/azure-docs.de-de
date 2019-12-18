@@ -1,5 +1,5 @@
 ---
-title: Kopieren von Daten aus Amazon Marketplace Web Service
+title: Kopieren von Daten aus dem AWS Marketplace
 description: Erfahren Sie, wie Daten aus Amazon Marketplace Web Service mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
 ms.service: data-factory
@@ -9,13 +9,14 @@ ms.author: jingwang
 author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
+ms.custom: seo-lt-2019
 ms.date: 08/01/2018
-ms.openlocfilehash: 24e0de3efec4e2d442f746e19f4c30363f0b4bfa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: db4173cdaf18d827c6a3c047777f7d5e67d79b84
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218751"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931117"
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory
 

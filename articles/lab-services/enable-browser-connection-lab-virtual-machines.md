@@ -11,17 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/19/2019
+ms.date: 12/09/2019
 ms.author: takamath
-ms.openlocfilehash: 080dd91b2ab6792debfae3a3ccc97b0927015de4
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e2dd642139ae082cc0d0838e61399c549d2d812a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580148"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970771"
 ---
 # <a name="enable-browser-connection-on-lab-virtual-machines"></a>Aktivieren der Browserverbindung auf Lab-VMs 
-
 DevTest Labs und [Azure Bastion](https://docs.microsoft.com/azure/bastion/) sind integriert, sodass Sie über einen Browser eine Verbindung mit Ihren virtuellen Computern herstellen können. Zuerst müssen Sie die Browserverbindung auf Lab-VMs aktivieren.
 
 Als Besitzer eines Labs können Sie den Zugriff auf alle Lab-VMs über einen Browser ermöglichen. Dazu sind kein zusätzlicher Client oder Agent und keine zusätzliche Software erforderlich. Azure Bastion bietet direkt im Azure-Portal sichere und nahtlose RDP- und SSH-Verbindungen mit Ihren virtuellen Computern über SSL. Beim Herstellen einer Verbindung über Azure Bastion benötigen Ihre virtuellen Computer keine öffentliche IP-Adresse. Weitere Informationen finden Sie unter [Was ist Azure Bastion?](../bastion/bastion-overview.md)
@@ -30,11 +29,19 @@ Als Besitzer eines Labs können Sie den Zugriff auf alle Lab-VMs über einen Bro
 Dieser Artikel erläutert, wie Sie die Browserverbindung auf Lab-VMs aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen 
-Sie können entweder einen Bastion-Host im virtuellen Netzwerk Ihres bestehenden Labs bereitstellen **(ODER)** Ihr Lab mit einem von Bastion konfigurierten VNet verbinden. 
+Sie können einen Bastionhost im virtuellen Netzwerk Ihres bestehenden Labs bereitstellen **ODER** Ihr Lab mit einem mit Bastion konfigurierten virtuellen Netzwerk verbinden. 
 
-Informationen zum Bereitstellen eines Bastion-Hosts in einem VNet finden Sie unter [Erstellen eines Azure Bastion-Hosts (Vorschau)](../bastion/bastion-create-host-portal.md). Wenn Sie den Bastion-Host erstellen, wählen Sie das virtuelle Netzwerk des Labs aus. 
+Informationen zum Bereitstellen eines Bastionhosts in einem virtuellen Netzwerk finden Sie unter [Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md). Wenn Sie den Bastion-Host erstellen, wählen Sie das virtuelle Netzwerk des Labs aus. 
 
-Um zu erfahren, wie Sie Ihr Lab mit einem von Bastion konfigurierten VNet verbinden können, siehe [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md). Wählen Sie das VNet aus, in dem der Bastion-Host und das **AzureBastionSubnet** bereitgestellt sind. Ausführliche Erläuterung der Schritte: 
+Zunächst müssen Sie ein zweites Subnetz im virtuellen Bastion-Netzwerk erstellen, da in AzureBastionSubnet keine Nicht-Bastion-Ressourcen erstellt werden können. 
+
+## <a name="create-a-second-sub-net-in-the-bastion-virtual-network"></a>Erstellen eines zweiten Subnetzes im virtuellen Bastion-Netzwerk
+Sie können in einem Azure Bastion-Subnetz keine Lab-VMs erstellen. Erstellen Sie ein weiteres Subnetz innerhalb des virtuellen Bastion-Netzwerks, wie in der folgenden Abbildung dargestellt:
+
+![Zweites Subnetz in einem virtuellen Azure Bastion-Netzwerk](./media/connect-virtual-machine-through-browser/second-subnet.png)
+
+## <a name="enable-vm-creation-in-the-subnet"></a>Aktivieren der VM-Erstellung im Subnetz
+Aktivieren Sie nun die Erstellung von VMs in diesem Subnetz über die folgenden Schritte: 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsmenü die Option **Alle Dienste** aus. 
@@ -47,23 +54,23 @@ Um zu erfahren, wie Sie Ihr Lab mit einem von Bastion konfigurierten VNet verbin
 1. Wählen Sie im Abschnitt **Einstellungen** die Option **Konfiguration und Richtlinien** aus. 
 1. Wählen Sie **Virtuelle Netzwerke** aus.
 1. Klicken Sie auf der Symbolleiste auf **Hinzufügen**. 
-1. Wählen Sie das **VNet** aus, in dem der Bastion-Host bereitgestellt ist. 
-1. Wählen Sie das Subnetz aus: **AzureBastionSubnet**. 
+1. Wählen Sie das **virtuelle Netzwerk** aus, in dem der Bastionhost bereitgestellt ist. 
+1. Wählen Sie das Subnetz für VMs aus, nicht das zuvor erstellte **AzureBastionSubnet**. Wenn das Subnetz nicht unten in der Liste angezeigt wird, schließen Sie die Seite, und öffnen Sie sie erneut. 
 
-    ![Subnet](./media/enable-browser-connection-lab-virtual-machines/subnet.png)
+    ![Aktivieren der VM-Erstellung im Subnetz](./media/connect-virtual-machine-through-browser/enable-vm-creation-subnet.png)
 1. Wählen Sie in die Option **Beim Erstellen virtueller Computer verwenden** aus. 
 1. Wählen Sie auf der Symbolleiste **Speichern** aus. 
-1. Wenn Sie ein altes VNet für das Lab haben, entfernen Sie es, indem Sie * *...* und **Entfernen** auswählen. 
+1. Wenn Sie über ein altes virtuelles Netzwerk für das Lab verfügen, entfernen Sie es, indem Sie * *...* und **Entfernen** auswählen. 
 
 ## <a name="enable-browser-connection"></a>Aktivieren der Browserverbindung 
 
-Sobald Sie ein mit Bastion konfiguriertes VNet im Lab haben, können Sie als Besitzer des Labs die Browserverbindung auf Lab-VMs aktivieren.
+Sobald Sie über ein mit Bastion konfiguriertes virtuelles Netzwerk im Lab verfügen, können Sie als Besitzer des Labs die Browserverbindung auf Lab-VMs aktivieren.
 
 Gehen Sie wie folgt vor, um die Browserverbindung auf Lab-VMs zu aktivieren:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem *Lab*.
 1. Wählen Sie **Konfiguration und Richtlinien** aus.
-1. Wählen Sie unter **Einstellungen** die Option **Browser verbinden (Vorschau)** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Browserverbindung** aus. Wenn diese Option nicht angezeigt wird, schließen Sie die Seite **Konfigurationsrichtlinien**, und öffnen Sie sie erneut. 
 
     ![Aktivieren der Browserverbindung](./media/enable-browser-connection-lab-virtual-machines/browser-connect.png)
 

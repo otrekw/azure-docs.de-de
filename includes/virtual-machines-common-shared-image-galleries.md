@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74085243"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74875541"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -83,7 +83,7 @@ Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informa
 > Spezialisierte Images befinden sich zurzeit in der Public Preview-Phase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> **Bekannte Einschränkungen der Vorschau** Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
+> **Bekannte Einschränkungen der Vorschau**: Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
 
 
 ## <a name="regional-support"></a>Regionsunterstützung
@@ -113,6 +113,7 @@ Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ress
 - 100 Kataloge mit freigegebenen Images pro Abonnement und Region
 - 1\.000 Imagedefinitionen pro Abonnement und Region
 - 10.000 Imageversionen pro Abonnement und Region
+- Alle an das Image angefügten Datenträger dürfen höchstens 1 TB groß sein.
 
 Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
  

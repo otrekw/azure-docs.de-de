@@ -7,12 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
-ms.openlocfilehash: 5a0a7e59e71e51a109af0f89cbb7ba580b2b97e6
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68967184"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971654"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -60,6 +61,12 @@ Informationen zum Einrichten der Endpunkte und der Weiterleitung finden Sie unte
 ### <a name="layer-7-application-routing-with-azure-front-door-service"></a>Layer-7-Anwendungsrouting mit Azure Front Door Service
 
 Traffic Manager verwendet DNS (Layer 3) zum Formen des Datenverkehrs. [Azure Front Door Service](https://docs.microsoft.com/azure/frontdoor/front-door-overview) stellt eine Routingoption über HTTP/HTTPS (Layer 7) bereit. Zu den weiteren Features von Azure Front Door Service gehören SSL-Terminierung, benutzerdefinierte Domänen, Web Application Firewall, URL-Rewrite und Sitzungsaffinität. Überprüfen Sie die Anforderungen des Anwendungsdatenverkehrs, um zu ermitteln, welche Lösung sich am besten eignet.
+
+### <a name="interconnect-regions-with-global-virtual-network-peering"></a>Verbinden von Regionen mit globalem Peering virtueller Netzwerke
+
+Wenn die Cluster miteinander kommunizieren müssen, verbinden Sie die beiden virtuellen Netzwerke über [Peering virtueller Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) miteinander. Diese Technologie verbindet virtuelle Netzwerke miteinander und bietet eine hohe Bandbreite für das Backbone-Netzwerk von Microsoft, auch über geografische Regionen hinweg.
+
+Eine Voraussetzung für das Peering virtueller Netzwerke, in denen AKS-Cluster ausgeführt werden, besteht in der Verwendung der Standard-Lastenausgleichsmodule in Ihrem AKS-Cluster, damit über das Peering virtueller Netzwerke Kubernetes-Dienste erreichbar sind.
 
 ## <a name="enable-geo-replication-for-container-images"></a>Aktivieren der Georeplikation für Containerimages
 
@@ -115,7 +122,7 @@ Die typische Strategie ist, einen gemeinsamen Speicherpunkt bereitzustellen, in 
 
 Wenn Sie Azure Managed Disks verwenden, können Sie Lösungen zu Replikation und Notfallwiederherstellung (Disaster Recovery, DR) wie diese auswählen:
 
-* [Velero on Azure (Velero in Azure)](https://github.com/heptio/velero/blob/master/site/docs/master/azure-config.md)
+* [Velero on Azure (Velero in Azure)](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure/blob/master/README.md)
 * [Azure Site Recovery](https://azure.microsoft.com/blog/asr-managed-disks-between-azure-regions/)
 
 ### <a name="application-based-asynchronous-replication"></a>Anwendungsbasierte asynchrone Replikation

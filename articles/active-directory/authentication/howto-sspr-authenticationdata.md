@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/09/2019
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a0d7edb6c7faafcad55e827c2d9e3d2eeea40f5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a14338e552250ac63c344365099a16f20616ea9a
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60358027"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964026"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung
 
-Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) bereitgestellt werden kann, müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen überlassen es ihren Benutzern, dass diese ihre Authentifizierungsdaten selbst eingeben. Aber viele Organisationen bevorzugen ein Synchronisieren mit Daten, die bereits in Active Directory vorhanden ist. Die synchronisierten Daten werden für Azure AD und SSPR verfügbar gemacht, ohne dass ein Eingreifen eines Benutzers erforderlich ist, wenn Sie:
+Damit die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) bereitgestellt werden kann, müssen Authentifizierungsdaten vorhanden sein. Einige Organisationen überlassen es ihren Benutzern, dass diese ihre Authentifizierungsdaten selbst eingeben. Andere Organisationen bevorzugen ein Synchronisieren mit Daten, die bereits in Active Directory vorhanden ist. Die synchronisierten Daten werden für Azure AD und SSPR verfügbar gemacht, ohne dass ein Eingreifen eines Benutzers erforderlich ist, wenn die folgenden Voraussetzungen erfüllt sind:
 
 * Die Daten ordnungsgemäß in Ihrem lokalen Verzeichnis formatieren.
 * [Azure AD Connect durch Verwenden der Express-Einstellungen](../hybrid/how-to-connect-install-express.md) konfigurieren.
@@ -41,21 +41,18 @@ Wenn Sie die Standardeinstellungen in Azure AD Connect verwenden, werden die fol
 | telephoneNumber | Bürotelefon |
 | mobile | Mobiltelefon |
 
-Nachdem ein Benutzer die Mobiltelefonnummer verifiziert hat, wird diese Nummer in Azure AD unter den „Kontaktinformationen für Authentifizierung“ in das Feld „Telefon“ eingefügt.
+Nachdem ein Benutzer die Mobiltelefonnummer verifiziert hat, wird diese Nummer in Azure AD unter den **Kontaktinformationen für Authentifizierung** in das Feld *Telefon* eingefügt.
 
 ## <a name="authentication-contact-info"></a>Kontaktinformationen für Authentifizierung
 
-Ein globaler Administrator kann die Kontaktinformationen eines Benutzers für die Authentifizierung manuell festlegen, wie im folgenden Screenshot gezeigt.
+Auf der Seite **Authentifizierungsmethoden** für einen Azure AD-Benutzer im Azure-Portal kann ein globaler Administrator die Kontaktinformationen für die Authentifizierung manuell festlegen, wie im folgenden Beispielscreenshot gezeigt:
 
 ![Kontaktinformationen für die Authentifizierung eines Benutzers in Azure AD][Contact]
 
-Wenn das Feld „Telefon“ ausgefüllt und „Mobiltelefon“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
-
-Das Feld „Alternatives Telefon“ wird nicht für die Kennwortzurücksetzung verwendet.
-
-Wenn das Feld „E-Mail“ ausgefüllt und „E-Mail“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
-
-Wenn das Feld „Alternative E-Mail-Adresse“ ausgefüllt und „E-Mail“ in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung **nicht** angezeigt – aber während des Workflows für die Kennwortzurücksetzung.
+* Wenn das Feld **Telefon** ausgefüllt und **Mobiltelefon** in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese Nummer auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
+* Das Feld **Alternative Telefonnummer** wird nicht für die Kennwortzurücksetzung verwendet.
+* Wenn das Feld **E-Mail** ausgefüllt und **E-Mail** in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung und während des Workflows für die Kennwortzurücksetzung angezeigt.
+* Wenn das Feld **Alternative E-Mail-Adresse** ausgefüllt und **E-Mail** in der SSPR-Richtlinie aktiviert ist, wird dem Benutzer diese E-Mail-Adresse auf der Registrierungsseite für die Kennwortzurücksetzung **nicht** angezeigt – aber während des Workflows für die Kennwortzurücksetzung.
 
 ## <a name="security-questions-and-answers"></a>Sicherheitsfragen und -antworten
 

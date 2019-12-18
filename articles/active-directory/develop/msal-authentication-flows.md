@@ -1,29 +1,25 @@
 ---
-title: Authentifizierungsflows (Microsoft-Authentifizierungsbibliothek)
+title: MSAL-Authentifizierungsflows | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die von der Microsoft-Authentifizierungsbibliothek (MSAL) verwendeten Authentifizierungsflüsse/-zuweisungen.
 services: active-directory
-documentationcenter: dev-center-name
 author: TylerMSFT
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55d618a24b957fedb6fc2af3e75b7a7d2bd23d96
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473813"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917198"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -187,7 +183,7 @@ IWA ist für Apps bestimmt, die für die .NET Framework- und .NET Core-Plattform
 
 Die mehrstufige Authentifizierung (MFA) wird von der IWA nicht umgangen. Wenn eine solche Authentifizierung konfiguriert ist, kann die IWA im Fall einer MFA-Aufforderung fehlschlagen. Die MFA erfordert eine Interaktion mit dem Benutzer.
 
-Sie haben keinen Einfluss darauf, wann der Identitätsanbieter eine MFA anfordert. Diese Einschränkung gilt allerdings nicht für den Mandantenadministrator. Die MFA ist üblicherweise erforderlich, wenn Sie sich beim Anmeldevorgang in einem anderen Land befinden oder sich mit einem Firmennetzwerk verbinden und dabei kein VPN verwenden. Gelegentlich ist allerdings selbst bei Nutzung eines VPN eine MFA notwendig. Azure AD greift auf KI zurück, um zu ermitteln, ob eine MFA erforderlich ist. Wenn die integrierte Windows-Authentifizierung zu einem Fehler führt, sollten Sie auf eine [interaktive Benutzeraufforderung](#Interactive) zurückgreifen.
+Sie haben keinen Einfluss darauf, wann der Identitätsanbieter eine MFA anfordert. Diese Einschränkung gilt allerdings nicht für den Mandantenadministrator. Die MFA ist üblicherweise erforderlich, wenn Sie sich beim Anmeldevorgang in einem anderen Land befinden oder sich mit einem Firmennetzwerk verbinden und dabei kein VPN verwenden. Gelegentlich ist allerdings selbst bei Nutzung eines VPN eine MFA notwendig. Azure AD greift auf KI zurück, um zu ermitteln, ob eine MFA erforderlich ist. Wenn die integrierte Windows-Authentifizierung zu einem Fehler führt, sollten Sie auf eine [interaktive Benutzeraufforderung]\(#Interactive) zurückgreifen.
 
 Die beim Erstellen der öffentlichen Clientanwendung übergebene Autorität muss eine der folgenden Voraussetzungen erfüllen:
 - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` entweder die GUID ist, die die Mandanten-ID darstellt, oder eine Domäne, die dem Mandanten zugeordnet ist).

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: iainfou
+author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6261de14f80f966718507d2d3506e55db9786df9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 46195a0a799f9edabcd8cd5a27e1b79752d03a45
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74785856"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964054"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
 
@@ -52,7 +52,10 @@ Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Z
 
 Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer für Azure MFA registriert hat und ob der Registrierungsprozess abgeschlossen ist.
 
-Der Anfangsstatus aller Benutzer lautet *Deaktiviert*. Wenn Sie Benutzer für Azure MFA registrieren, ändert sich der Status in *Aktiviert*. Wenn aktivierte Benutzer sich anmelden und den Registrierungsprozess abschließen, ändert sich ihr Status in *Erzwungen*.  
+Der Anfangsstatus aller Benutzer lautet *Deaktiviert*. Wenn Sie Benutzer für Azure MFA registrieren, ändert sich der Status in *Aktiviert*. Wenn aktivierte Benutzer sich anmelden und den Registrierungsprozess abschließen, ändert sich ihr Status in *Erzwungen*.
+
+> [!NOTE]
+> Wenn MFA für ein Benutzerobjekt reaktiviert wird, das bereits über Registrierungsdetails wie Telefonnummer oder E-Mail-Adresse verfügt, müssen die Administratoren den betreffenden Benutzer zur erneuten MFA-Registrierung über das Azure-Portal oder über PowerShell auffordern. Wenn sich der Benutzer nicht erneut registriert, ändert sich der MFA-Zustand auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*.
 
 ### <a name="view-the-status-for-a-user"></a>Anzeigen des Status eines Benutzers
 
@@ -100,10 +103,15 @@ Installieren Sie zuerst das Modul mithilfe von:
 > [!TIP]
 > Vergessen Sie nicht, zuerst eine Verbindung mithilfe von **Connect-MsolService** herzustellen.
 
+   ```PowerShell
+   Connect-MsolService
+   ```
+
 Dieses PowerShell-Beispielskript aktiviert die MFA für einen einzelnen Benutzer:
 
    ```PowerShell
    Import-Module MSOnline
+   Connect-MsolService
    $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
    $st.RelyingParty = "*"
    $st.State = "Enabled"
@@ -179,6 +187,8 @@ Get-MsolUser -All | Set-MfaState -State Disabled
 
 > [!NOTE]
 > Wir haben kürzlich das Verhalten und das PowerShell-Skript entsprechend geändert. Zuvor hat das Skript die MFA-Methoden gespeichert, MFA deaktiviert und die Methoden wiederhergestellt. Dies ist jetzt nicht mehr erforderlich, weil die Methoden beim Standardverhalten für die Deaktivierung nicht mehr gelöscht werden.
+>
+> Wenn MFA für ein Benutzerobjekt reaktiviert wird, das bereits über Registrierungsdetails wie Telefonnummer oder E-Mail-Adresse verfügt, müssen die Administratoren den betreffenden Benutzer zur erneuten MFA-Registrierung über das Azure-Portal oder über PowerShell auffordern. Wenn sich der Benutzer nicht erneut registriert, ändert sich der MFA-Zustand auf der MFA-Verwaltungsoberfläche nicht von *Aktiviert* in *Erzwungen*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

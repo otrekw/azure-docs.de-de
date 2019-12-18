@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory-Authentifizierungs- und -Autorisierungsfehlercodes | Microsoft Docs
+title: Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung | Azure
 description: Erfahren Sie mehr über die AADSTS-Fehlercodes, die vom Azure AD-Sicherheitstokendienst (STS) zurückgegeben werden.
 services: active-directory
 documentationcenter: ''
@@ -17,14 +17,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261fe2142fc3bc45625b5d088a46ad92c34222db
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 02ed0b84a29ea0c3ce3b58db1c029798655bfb06
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70193168"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965805"
 ---
-# <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
+# <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
 Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Directory-Sicherheitstokendienst (STS) zurückgegeben werden? Lesen Sie dieses Dokument, um AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige vorgeschlagene Problemumgehungen zu erhalten.
 

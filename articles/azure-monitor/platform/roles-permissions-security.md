@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d223c3483becdc8ba44bc14ec16150cf1b001943
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305159"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894540"
 ---
 # <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, Berechtigungen und Sicherheit in Azure Monitor
 
@@ -182,7 +182,7 @@ Azure Monitor benötigt Zugriff auf Ihre Azure-Ressourcen, um die von Ihnen akti
 ### <a name="secured-storage-accounts"></a>Geschützte Speicherkonten 
 
 Überwachungsdaten werden häufig in ein Speicherkonto geschrieben. Sie sollten sicherstellen, dass die auf ein Speicherkonto kopierten Daten nicht von nicht autorisierten Benutzern eingesehen werden können. Für zusätzliche Sicherheit können Sie den Netzwerkzugriff sperren, um nur Ihren autorisierten Ressourcen und vertrauenswürdigen Microsoft-Diensten den Zugriff auf ein Speicherkonto zu ermöglichen, indem Sie ein Speicherkonto auf die Verwendung durch „ausgewählte Netzwerke“ beschränken.
-![Dialogfeld „Azure Storage-Einstellungen“](./media/roles-permissions-security/secured-storage-example.png): Azure Monitor gilt als einer dieser „vertrauenswürdigen Microsoft-Dienste“. Wenn Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf Ihren geschützten Speicher erlauben, hat Azure Monitor Zugriff auf Ihr geschütztes Speicherkonto und kann unter diesen geschützten Bedingungen Diagnoseprotokolle, Aktivitätsprotokolle und Metriken von Azure Monitor in Ihr Speicherkonto schreiben. Dadurch kann Log Analytics auch Protokolle aus dem geschützten Speicher lesen.   
+![Dialogfeld „Einstellungen“ von Azure Storage:](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor gilt als einer dieser vertrauenswürdigen Microsoft-Dienste. Wenn Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf Ihren geschützten Speicher erlauben, hat Azure Monitor Zugriff auf Ihr geschütztes Speicherkonto und kann unter diesen geschützten Bedingungen Ressourcenprotokolle, Aktivitätsprotokolle und Metriken von Azure Monitor in Ihr Speicherkonto schreiben. Dadurch kann Log Analytics auch Protokolle aus dem geschützten Speicher lesen.   
 
 
 Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen und Azure Storage](../../storage/common/storage-network-security.md).

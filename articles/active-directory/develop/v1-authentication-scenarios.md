@@ -1,5 +1,5 @@
 ---
-title: Authentifizierung in Microsoft Identity Platform (v1.0) | Azure
+title: Microsoft Identity Plattform-Authentifizierung (v1.0) | Azure
 description: Hier erhalten Sie grundlegende Informationen zur Authentifizierung in Microsoft Identity Platform, zum App-Modell, zur API und Bereitstellung sowie zu den gängigsten Authentifizierungsszenarien, die Microsoft Identity Platform unterstützt.
 services: active-directory
 documentationcenter: dev-center-name
@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7bf80c0471853008573bbcbb918fb33c6c43cd
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 445f301e2a526dc8f9e2c261e897fe8b1abe2f1e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149176"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74966774"
 ---
 # <a name="what-is-authentication"></a>Was ist Authentifizierung?
 

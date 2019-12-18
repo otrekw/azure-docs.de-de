@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 8820818528835df6379c894eb06c154f4120f507
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b1717b9b336d31c86db1ec38eb97c7e8814b76d7
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227316"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74925997"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-Trigger für Azure Functions
 
@@ -24,7 +24,7 @@ Bei Bedarf können Sie einen HTTP-Trigger zur Behandlung von Event Grid-Ereignis
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x und höher
 
 Der Event Grid-Trigger wird im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid), Version 2.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension/tree/v2.x).
 
@@ -48,9 +48,9 @@ Siehe das jeweilige sprachspezifische Beispiel für einen Event Grid-Trigger:
 
 Ein Beispiel für einen HTTP-Trigger finden Sie unter [Verwenden eines HTTP-Triggers als Event Grid-Trigger](#use-an-http-trigger-as-an-event-grid-trigger) weiter unten in diesem Artikel.
 
-### <a name="c-2x"></a>C# (2.x)
+### <a name="c-2x-and-higher"></a>C# (ab 2.x)
 
-Das folgende Beispiel zeigt eine Functions 2.x-[C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `EventGridEvent`:
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) für die Bindung an `EventGridEvent`:
 
 ```cs
 using Microsoft.Azure.EventGrid.Models;
@@ -118,9 +118,9 @@ Bindungsdaten in der Datei *function.json*:
 }
 ```
 
-#### <a name="c-script-version-2x"></a>C#-Skript (Version 2.x)
+#### <a name="c-script-version-2x-and-higher"></a>C#-Skript (ab Version 2.x)
 
-Functions 2.x-C#-Skriptcode für die Bindung an `EventGridEvent`:
+Hier sehen Sie ein Beispiel mit einer Bindung an `EventGridEvent`:
 
 ```csharp
 #r "Microsoft.Azure.EventGrid"
@@ -326,7 +326,7 @@ In C#- und F#-Funktionen in Azure Functions 1.x können Sie die folgenden Parame
 * `JObject`
 * `string`
 
-In C#- und F#-Funktionen in Azure Functions 2.x können Sie optional auch den folgenden Parametertyp für den Event Grid-Trigger verwenden:
+Ab Version 2.x können Sie für C#- und F#-Funktionen in Azure Functions optional auch den folgenden Parametertyp für den Event Grid-Trigger verwenden:
 
 * `Microsoft.Azure.EventGrid.Models.EventGridEvent` definiert Eigenschaften für die Felder, die für alle Ereignistypen gelten.
 
@@ -395,7 +395,7 @@ Verwenden Sie den Befehl [az eventgrid event-subscription create](https://docs.m
 
 Für den Befehl ist die Endpunkt-URL erforderlich, über die die Funktion aufgerufen wird. Das folgende Beispiel zeigt das versionsabhängige URL-Muster:
 
-#### <a name="version-2x-runtime"></a>Laufzeit der Version 2.x
+#### <a name="version-2x-and-higher-runtime"></a>Runtime ab Version 2.x
 
     https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
 
@@ -407,7 +407,7 @@ Der Systemschlüssel ist ein Autorisierungsschlüssel, der in der Endpunkt-URL f
 
 Beispiel, in dem ein Blob Storage-Konto abonniert wird (mit einem Platzhalter für den Systemschlüssel):
 
-#### <a name="version-2x-runtime"></a>Laufzeit der Version 2.x
+#### <a name="version-2x-and-higher-runtime"></a>Runtime ab Version 2.x
 
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
@@ -435,7 +435,7 @@ Weitere Informationen zum Erstellen eines Abonnements finden Sie im [Schnellstar
 
 Sie können den Systemschlüssel mithilfe der folgenden API (HTTP GET) abrufen:
 
-#### <a name="version-2x-runtime"></a>Laufzeit der Version 2.x
+#### <a name="version-2x-and-higher-runtime"></a>Runtime ab Version 2.x
 
 ```
 http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgrid_extension?code={masterkey}
@@ -522,7 +522,7 @@ Verwenden Sie ein Tool wie z.B. [Postman](https://www.getpostman.com/) oder [cUR
 * Legen Sie einen `aeg-event-type: Notification`-Header fest.
 * Fügen Sie die RequestBin-Daten im Anforderungstext ein.
 * Stellen Sie die Anforderung für die URL der Event Grid-Triggerfunktion bereit.
-  * Verwenden Sie für 2.x das folgende Muster:
+  * Verwenden Sie ab der Version 2.x das folgende Muster:
 
     ```
     http://localhost:7071/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}
@@ -591,7 +591,7 @@ Die ngrok-URL erhält in Event Grid keine spezielle Behandlung, daher muss die F
 
 Erstellen Sie ein Event Grid-Abonnement des Abonnementtyps, der getestet werden soll, und legen Sie für das Abonnement Ihren ngrok-Endpunkt fest.
 
-Verwenden Sie dieses Endpunktmuster für Functions 2.x:
+Verwenden Sie für Functions 2.x und höhere Versionen das folgende Endpunktmuster:
 
 ```
 https://{SUBDOMAIN}.ngrok.io/runtime/webhooks/eventgrid?functionName={FUNCTION_NAME}

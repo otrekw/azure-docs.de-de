@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
-ms.date: 07/01/2019
-ms.openlocfilehash: 9566ac7169144d984f9200734c99eb10368b3142
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/05/2019
+ms.openlocfilehash: 827fab0661a58bfa7d28452960ea6df64d18bf84
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823743"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873742"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Übersicht über elastische Abfragen in Azure SQL-Datenbank (Vorschau)
 
@@ -56,10 +56,10 @@ Außerdem ermöglicht eine elastische Abfrage den einfachen Zugriff auf eine gan
 Kundenszenarien für elastische Abfragen zeichnen sich durch die folgenden Topologien aus:
 
 * **Vertikale Partitionierung – datenbankübergreifende Abfragen** (Topologie 1): Die Daten werden zwischen mehreren Datenbanken auf einer Datenschicht vertikal partitioniert. In der Regel befinden sich verschiedene Sätze von Tabellen in verschiedenen Datenbanken. Das bedeutet, dass das Schema bei verschiedenen Datenbanken unterschiedlich ist. Beispielsweise befinden sich alle bestandsbezogenen Tabellen in einer Datenbank, während alle Buchhaltungstabellen in einer zweiten Datenbank enthalten sind. Gängige Anwendungsfälle mit dieser Topologie erfordern zum Erstellen von Berichten das Abfragen von Tabellen in mehreren Datenbanken.
-* **Horizontale Partitionierung – Sharding** (Topologie 2): Die Daten werden horizontal partitioniert, um Zeilen auf einer horizontal hochskalierten Datenschicht zu verteilen. Bei diesem Ansatz ist das Schema für alle teilnehmenden Datenbanken identisch. Dieser Ansatz wird auch „Sharding“ genannt. Sharding kann (1.) mithilfe der Bibliothek für elastische Datenbanktools oder (2.) eines eigenständigen Shardings ausgeführt und verwaltet werden. Eine elastische Abfrage dient zum viele Shards übergreifenden Abfragen oder Erstellen von Berichten.
+* **Horizontale Partitionierung – Sharding** (Topologie 2): Die Daten werden horizontal partitioniert, um Zeilen auf einer horizontal hochskalierten Datenschicht zu verteilen. Bei diesem Ansatz ist das Schema für alle teilnehmenden Datenbanken identisch. Dieser Ansatz wird auch „Sharding“ genannt. Sharding kann (1.) mithilfe der Bibliothek für elastische Datenbanktools oder (2.) eines eigenständigen Shardings ausgeführt und verwaltet werden. Eine elastische Abfrage dient zum viele Shards übergreifenden Abfragen oder Erstellen von Berichten. Shards sind normalerweise Datenbanken in einem Pool für elastische Datenbanken. Sie können sich elastische Abfragen als effiziente Methode für die gleichzeitige Abfrage aller Datenbanken des Pools für elastische Datenbanken vorstellen, sofern die Datenbanken ein gemeinsames Schema teilen.
 
 > [!NOTE]
-> Die elastische Abfrage eignet sich am besten für Berichtsszenarios, bei denen der Großteil der Verarbeitung (Filterung, Aggregation) auf der Seite der externen Quelle ausgeführt werden kann. Sie eignet sich nicht für ETL-Vorgänge, bei denen große Datenmengen von Remotedatenbanken übertragen werden. Bei hohen Reporting-Arbeitslasten oder Data Warehousing-Szenarien mit komplexeren Abfragen, sollten Sie auch die Verwendung von [Azure SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/)in Betracht ziehen.
+> Die elastische Abfrage eignet sich am besten für Berichtsszenarios, bei denen der Großteil der Verarbeitung (Filterung, Aggregation) auf der Seite der externen Quelle ausgeführt werden kann. Sie eignet sich nicht für ETL-Vorgänge, bei denen große Datenmengen von Remotedatenbanken übertragen werden. Bei umfangreichen Berichtsworkloads oder Data Warehousing-Szenarien mit komplexeren Abfragen, sollten Sie auch die Verwendung von [Azure Synapse Analytics](https://azure.microsoft.com/services/synapse-analytics) in Betracht ziehen.
 >  
 
 ## <a name="vertical-partitioning---cross-database-queries"></a>Vertikale Partitionierung – datenbankübergreifende Abfragen
@@ -117,6 +117,9 @@ Nachdem Sie diese Schritte ausgeführt haben können Sie auf die horizontal part
 Weitere Informationen zu den Schritten, die für das Szenario der horizontalen Partitionierung erforderlich sind, finden Sie unter [Elastische Abfrage für die horizontale Partitionierung](sql-database-elastic-query-horizontal-partitioning.md).
 
 Lesen Sie zum Einstieg in die Programmierung [Erste Schritte mit elastischen Abfragen für horizontale Partitionierung (Sharding)](sql-database-elastic-query-getting-started.md).
+
+> [!IMPORTANT]
+> Die erfolgreiche Ausführung elastischer Abfragen für eine große Anzahl von Datenbanken hängt stark von der Verfügbarkeit der einzelnen Datenbanken während der Abfrageausführung ab. Wenn eine der Datenbanken nicht verfügbar ist, kann die gesamte Abfrage nicht ausgeführt werden. Wenn Sie mehrere Hundert oder Tausend Datenbanken gleichzeitig abfragen möchten, stellen Sie sicher, dass in die Clientanwendung Wiederholungslogik eingebettet ist, oder nutzen Sie [Aufträge für die elastische Datenbanken](https://docs.microsoft.com/azure/sql-database/sql-database-job-automation-overview#elastic-database-jobs-preview) (Vorschauversion), um kleinere Teilmengen der Datenbanken abzufragen, und führen Sie die Ergebnisse der einzelnen Abfragen in einem einzigen Ziel zusammen.
 
 ## <a name="t-sql-querying"></a>T-SQL-Abfragen
 

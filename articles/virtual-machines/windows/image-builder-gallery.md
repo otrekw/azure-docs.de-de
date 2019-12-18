@@ -1,18 +1,18 @@
 ---
-title: Verwenden Sie Azure Image Builder mit einem Imagekatalog für Windows-VMs (Vorschauversion)
-description: Erstellen Sie Windows-Images mit Azure Image Builder und einem Katalog für freigegebene Images.
+title: Verwenden von Azure Image Builder mit einem Imagekatalog für Windows-VMs (Vorschauversion)
+description: Erstellen Sie Windows-VM-Images mit Azure Image Builder und Shared Image Gallery.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
 ms.topic: article
 ms.service: virtual-machines-windows
 manager: gwallace
-ms.openlocfilehash: 33f13c09a06885523298bd7c23744e79f68e5301
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 1d9763ccc5f5967b9fc9932a11fff655e6120fd0
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68698671"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976076"
 ---
 # <a name="preview-create-a-windows-image-and-distribute-it-to-a-shared-image-gallery"></a>Vorschau: Erstellen eines Windows-Image und Verteilen in einem Katalog für freigegebene Images 
 

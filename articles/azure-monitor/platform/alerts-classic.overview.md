@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 3ad0bdc2ec5db2f34a3bb6a1b8fda54cf9037483
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555678"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893585"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
 > [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md). Es ist [geplant, klassische Warnungen einzustellen](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).  
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md). Klassische Warnungen werden [eingestellt](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. 
 >
 
 Mit Warnungen können Sie Bedingungen für Daten konfigurieren und benachrichtigt werden, wenn die Bedingungen Übereinstimmungen mit den aktuellen Überwachungsdaten ergeben.
@@ -54,7 +54,7 @@ Es sind zwei Arten von klassischen Warnungen verfügbar – Metrikwarnungen und 
 
 * **Klassische Aktivitätsprotokollwarnungen**: Eine Streamingprotokollwarnung, die bei einem Aktivitätsprotokollereignis-Eintrag ausgelöst wird, der Ihren Filterkriterien entspricht. Diese Warnungen haben nur ein Status, nämlich „Aktiviert“. Die Warnungs-Engine wendet die Filterkriterien einfach auf jedes neue Ereignis an. Sie sucht nicht nach älteren Einträgen. Diese Warnungen können Sie darüber informieren, dass ein neuer Service Health-Vorfall eintritt oder ein Benutzer oder eine Anwendung in Ihrem Abonnement einen Vorgang durchführt, z. B. „Virtuellen Computer löschen“.
 
-Für Diagnoseprotokolldaten, die über Azure Monitor verfügbar sind, leiten Sie die Daten zu Log Analytics (ehemals OMS) um und verwenden dann eine Log Analytics-Abfragewarnung. Log Analytics verwendet jetzt die [neue Warnmethode](../../azure-monitor/platform/alerts-overview.md) 
+Für Ressourcenprotokolldaten, die über Azure Monitor verfügbar sind, leiten Sie die Daten zu Log Analytics weiter und verwenden dann eine Protokollabfragewarnung. Log Analytics verwendet jetzt die [neue Warnmethode](../../azure-monitor/platform/alerts-overview.md) 
 
 Das folgende Diagramm enthält eine Zusammenfassung der Quellen von Daten in Azure Monitor und des Konzepts zum Erzeugen von Warnungen aus diesen Daten.
 

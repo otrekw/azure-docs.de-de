@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: 68ce0dca3bc7c5d408bd6e8f267d238ac812a84d
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74130585"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996659"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Häufig gestellte Fragen zu Application Gateway
 
@@ -128,7 +128,7 @@ Nein. Instanzen sind auf Upgrade- und Fehlerdomänen verteilt.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Unterstützt Application Gateway den Verbindungsausgleich?
 
-Ja. Sie können den Verbindungsausgleich einrichten, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Mit dieser Einrichtung können vorhandene Verbindungen weiterhin an ihr vorheriges Ziel gesendet werden, bis entweder diese Verbindung geschlossen wird oder ein konfigurierbares Zeitlimit abläuft. Der Verbindungsausgleich wartet nur auf die Beendigung der aktuellen aktiven Verbindungen. Application Gateway kennt den Status der Anwendungssitzung nicht.
+Ja. Sie können den Verbindungsausgleich einrichten, um die Mitglieder in einem Back-End-Pool ohne Unterbrechung zu ändern. Weitere Informationen finden Sie unter [Application Gateway im Abschnitt „Verbindungsausgleich“](overview.md#connection-draining).
 
 ### <a name="can-i-change-instance-size-from-medium-to-large-without-disruption"></a>Kann ich Instanzgröße ohne Unterbrechung von mittel zu groß ändern?
 

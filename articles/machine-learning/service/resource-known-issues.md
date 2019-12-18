@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3563b56e596f5c79f2107bdbf74219a19c6c0d06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ed67981a79e2bc998d0f1f64858206243c0a7070
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784611"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997206"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning
 
@@ -90,9 +90,22 @@ Seit dem 12. April werden Diagramme für die binäre Klassifizierung (Genauigkei
 
 Die folgenden Probleme sind bekannte Probleme für Azure Machine Learning-Datasets.
 
+### <a name="typeerror-filenotfound-no-such-file-or-directory"></a>TypeError: FileNotFound: Datei oder Verzeichnis nicht vorhanden
+
+Dieser Fehler tritt auf, wenn sich die Datei nicht an dem von Ihnen angegebenen Dateipfad befindet. Sie müssen sicherstellen, dass Ihre Verweise auf die Datei konsistent mit dem Einbindungsort des Datasets auf Ihrem Computeziel ist. Um einen deterministischen Zustand sicherzustellen, empfiehlt es sich, für die Einbindung eines Datasets an einem Computeziel den abstrakten Pfad zu verwenden. Im folgenden Code wird das Dataset beispielsweise unter dem Stammverzeichnis des Dateisystems des Computeziels eingebunden: `/tmp`. 
+
+```python
+# Note the leading / in '/tmp/dataset'
+script_params = {
+    '--data-folder': dset.as_named_input('dogscats_train').as_mount('/tmp/dataset'),
+} 
+```
+
+Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll. 
+
 ### <a name="fail-to-read-parquet-file-from-http-or-adls-gen-2"></a>Fehler beim Lesen einer Parquet-Datei über HTTP oder ADLS Gen 2
 
-Es gibt ein bekanntes Problem in AzureML DataPrep SDK Version 1.1.25, das einen Fehler verursacht, wenn ein Dataset erstellt wird, indem Parquet-Dateien über HTTP oder ADLS Gen 2 gelesen werden. Ein Leseversuch schlägt mit `Cannot seek once reading started.` fehl. Um dieses Problem zu beheben, führen Sie ein Upgrade von `azureml-dataprep` auf eine höhere Version als 1.1.26 oder ein Downgrade auf eine niedrigere Version als 1.1.24 durch.
+Es gibt ein bekanntes Problem im AzureML DataPrep SDK Version 1.1.25, das einen Fehler verursacht, wenn ein Dataset durch Lesen von Parquet-Dateien über HTTP oder ADLS Gen 2 erstellt wird. Ein Leseversuch schlägt mit `Cannot seek once reading started.` fehl. Um dieses Problem zu beheben, führen Sie ein Upgrade von `azureml-dataprep` auf eine höhere Version als 1.1.26 oder ein Downgrade auf eine niedrigere Version als 1.1.24 durch.
 
 ```python
 pip install --upgrade azureml-dataprep
@@ -128,7 +141,7 @@ Wenn Sie Funktionen für automatisiertes maschinelles Lernen in Azure Databricks
 
 Sofern in den Einstellungen für automatisiertes maschinelles Lernen mehr als 10 Iterationen vorgesehen sind, legen Sie `show_output` auf `False` fest, wenn Sie die Ausführung übermitteln.
 
-### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Widget für das Azure Machine Learning SDK/automatisiertes maschinelles Lernen
+### <a name="widget-for-the-azure-machine-learning-sdk-and-automated-machine-learning"></a>Widget für das Azure Machine Learning SDK und automatisiertes maschinelles Lernen
 
 Das Azure Machine Learning SDK-Widget wird in Databricks-Notebooks nicht unterstützt, da die Notebooks keine HTML-Widgets analysieren können. Sie können das Widget im Portal anzeigen, indem Sie diesen Python-Code in die Zelle Ihres Azure Databricks-Notebooks einfügen:
 
@@ -213,9 +226,9 @@ az aks get-credentials -g <rg> -n <aks cluster name>
 Updates für Azure Machine Learning-Komponenten, die in einem Azure Kubernetes Service-Cluster installiert sind, müssen manuell angewendet werden. 
 
 > [!WARNING]
-> Überprüfen Sie die Version Ihres Azure Kubernetes Service-Clusters, bevor Sie die folgenden Aktionen ausführen. Wenn die Clusterversion größer oder gleich 1.14 ist, können Sie Ihren Cluster nicht erneut mit dem Azure Machine Learning Arbeitsbereich verbinden.
+> Überprüfen Sie die Version Ihres Azure Kubernetes Service-Clusters, bevor Sie die folgenden Aktionen ausführen. Wenn die Clusterversion mindestens 1.14 ist, können Sie Ihren Cluster nicht erneut an den Azure Machine Learning-Arbeitsbereich anfügen.
 
-Sie können diese Updates anwenden, indem Sie den Cluster vom Azure Machine Learning-Arbeitsbereich trennen und ihn dann dem Arbeitsbereich erneut zuordnen. Ist SSL im Cluster aktiviert, müssen Sie das SSL-Zertifikat und den privaten Schlüssel bereitstellen, wenn Sie den Cluster erneut zuordnen. 
+Sie können diese Updates anwenden, indem Sie den Cluster vom Azure Machine Learning-Arbeitsbereich trennen und ihn dann erneut an den Arbeitsbereich anfügen. Wenn SSL im Cluster aktiviert ist, müssen Sie das SSL-Zertifikat und den privaten Schlüssel bereitstellen, wenn Sie den Cluster erneut anfügen. 
 
 ```python
 compute_target = ComputeTarget(workspace=ws, name=clusterWorkspaceName)
@@ -248,23 +261,34 @@ kubectl get secret/azuremlfessl -o yaml
 ## <a name="recommendations-for-error-fix"></a>Empfehlungen zur Fehlerbehebung
 Auf der Grundlage allgemeiner Beobachtungen finden Sie hier Empfehlungen für Azure ML zur Behebung einiger der häufigsten Fehler in Azure ML.
 
+### <a name="metric-document-is-too-large"></a>Metrikdokument ist zu groß.
+Azure Machine Learning Service weist interne Beschränkungen der Größe von Metrikobjekten auf, die gleichzeitig aus einem Trainingsdurchlauf protokolliert werden können. Wenn bei der Protokollierung einer Metrik mit Listenwert der Fehler „Metrikdokument ist zu groß“ angezeigt wird, versuchen Sie, die Liste in kleinere Blöcke aufzuteilen, z. B.:
+
+```python
+run.log_list("my metric name", my_metric[:N])
+run.log_list("my metric name", my_metric[N:])
+```
+
+ Intern verkettet der Dienst für den Ausführungsverlauf die Blöcke mit demselben Metriknamen zu einer zusammenhängenden Liste.
+
 ### <a name="moduleerrors-no-module-named"></a>ModuleErrors (Kein Modul benannt)
 Wenn Sie beim Übermitteln von Experimenten in Azure ML auf „ModuleErrors“ treffen, bedeutet dies, dass das Trainingsskript die Installation eines Pakets erwartet, es aber nicht hinzugefügt wird. Nachdem Sie den Paketnamen angegeben haben, installiert Azure ML das Paket in der für Ihr Training verwendeten Umgebung. 
 
 Wenn Sie [Estimators](concept-azure-machine-learning-architecture.md#estimators) verwenden, um Experimente zu übermitteln, können Sie einen Paketnamen über den Parameter `pip_packages` oder `conda_packages` im Estimator auf der Grundlage angeben, aus welcher Quelle Sie das Paket installieren möchten. Sie können auch eine YML-Datei mit allen Ihren Abhängigkeiten mit `conda_dependencies_file` angeben oder alle Ihre pip-Anforderungen in einer TXT-Datei mit dem Parameter `pip_requirements_file` auflisten.
 
-Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und SKLearn. Die Verwendung dieser Estimators stellt sicher, dass die Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
+Azure ML bietet auch frameworkspezifische Estimators für Tensorflow, PyTorch, Chainer und sklearn. Die Verwendung dieser Estimators stellt sicher, dass die Frameworkabhängigkeiten in Ihrem Namen in der für das Training verwendeten Umgebung installiert werden. Sie haben die Möglichkeit, zusätzliche Abhängigkeiten wie oben beschrieben anzugeben. 
  
- Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
-Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
+Die von Azure ML verwalteten Docker-Images und deren Inhalt werden unter [AzureML-Container](https://github.com/Azure/AzureML-Containers) angezeigt.
+Frameworkspezifische Abhängigkeiten sind in der jeweiligen Dokumentation des Frameworks aufgeführt: [Chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py#remarks), [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py#remarks), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py#remarks), [sklearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py#remarks).
 
->[Hinweis!] Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
+> [!Note]
+> Wenn Sie der Meinung sind, dass ein bestimmtes Paket häufig genug vorkommt, um in von Azure ML verwalteten Images und Umgebungen hinzugefügt zu werden, erstellen Sie ein GitHub-Problem unter [AzureML-Container](https://github.com/Azure/AzureML-Containers). 
  
  ### <a name="nameerror-name-not-defined-attributeerror-object-has-no-attribute"></a>NameError (Name nicht definiert), AttributeError (Objekt besitzt kein Attribut)
 Diese Ausnahme sollte von Ihren Trainingsskripts stammen. Sie können sich die Protokolldateien des Azure-Portals ansehen, um weitere Informationen über den nicht definierten Namen oder den Attributfehler zu erhalten. Aus dem SDK können Sie `run.get_details()` verwenden, um die Fehlermeldung anzuzeigen. Dadurch werden auch alle für Ihre Ausführung generierten Protokolldateien aufgelistet. Werfen Sie unbedingt einen Blick auf das Trainingsskript, und beheben Sie den Fehler, bevor Sie den Vorgang wiederholen. 
 
-### <a name="horovod-is-shutdown"></a>Horovod ist heruntergefahren
-In den meisten Fällen bedeutet diese Ausnahme, dass es in einem der Prozesse, die horovod zum Herunterfahren veranlasst haben, eine zugrunde liegende Ausnahme aufgetreten ist. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfache Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
+### <a name="horovod-is-shut-down"></a>Horovod ist heruntergefahren.
+In den meisten Fällen bedeutet diese Ausnahme, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfache Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
 
 ## <a name="labeling-projects-issues"></a>Probleme beim Bezeichnen von Projekten
 
@@ -282,6 +306,6 @@ Aktualisieren Sie die Seite manuell. Die Initialisierung sollte mit ungefähr 20
 
 Wählen Sie die Schaltfläche **Erste** aus, um alle bezeichneten Bilder zu laden. Mit der Schaltfläche **Erste** gelangen Sie zurück an den Anfang der Liste, aber es werden alle bezeichneten Daten geladen.
 
-### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Wird während der Erstellung von Bezeichnungen für die Objekterkennung ESC gedrückt, wird in der linken oberen Ecke eine Bezeichnung mit der Größe Null erstellt. In diesem Fall ist die Übermittlung von Bezeichnungen nicht erfolgreich.
+### <a name="pressing-esc-key-while-labeling-for-object-detection-creates-a-zero-size-label-on-the-top-left-corner-submitting-labels-in-this-state-fails"></a>Wird während der Erstellung von Bezeichnungen für die Objekterkennung ESC gedrückt, wird in der linken oberen Ecke eine Bezeichnung mit der Größe null erstellt. In diesem Fall ist die Übermittlung von Bezeichnungen nicht erfolgreich.
 
 Löschen Sie die Bezeichnung, indem Sie auf das daneben angezeigte Kreuzsymbol klicken.

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 79867bd048be882414e247af11c133ed481788a0
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74108724"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996630"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway – Konfigurationsübersicht
 
@@ -256,7 +256,7 @@ Dieses Feature ist nützlich, wenn eine Benutzersitzung auf dem gleichen Server 
 
 ### <a name="connection-draining"></a>Verbindungsausgleich
 
-Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen eines Back-End-Pools, deren Registrierung aufgehoben wird, keine neuen Anforderungen erhalten. Vorhandene Anforderungen können in der Zwischenzeit innerhalb eines konfigurierten Zeitlimits abgeschlossen werden. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
+Mit dem Verbindungsausgleich können Sie Elemente des Back-End-Pools bei geplanten Dienstupdates korrekt entfernen. Sie können diese Einstellung bei der Erstellung einer Regel auf alle Elemente eines Back-End-Pools anwenden. Dadurch wird sichergestellt, dass alle Instanzen, deren Registrierung aufgehoben wird, bestehende Verbindungen aufrechterhalten, die Verarbeitung laufender Anforderungen für einen konfigurierbaren Zeitraum fortsetzen und keine neuen Anforderungen oder Verbindungen empfangen. Die einzige Ausnahme hierbei sind Anforderungen zur Aufhebung der Registrierung von Instanzen aufgrund der durch das Gateway verwalteten Sitzungsaffinität. Diese Anforderungen werden weiterhin per Proxy an die Instanzen weitergeleitet, deren Registrierung aufgehoben wird. Verbindungsausgleich gilt für Back-End-Instanzen, die explizit aus dem Back-End-Pool entfernt werden.
 
 ### <a name="protocol"></a>Protocol
 

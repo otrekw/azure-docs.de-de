@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: ea536742b6481cb06fbd3130279ca5d08ba1bc08
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.date: 12/09/2019
+ms.openlocfilehash: eae7e434ce21b5f9d9f3e6c40f94261df8baa426
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74773567"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972352"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Überwachungsprotokolle in Azure Database for MySQL
 
@@ -29,7 +29,7 @@ Weitere Parameter, die Sie anpassen können:
 - `audit_log_events`: steuert die zu protokollierenden Ereignisse. In der nachstehenden Tabelle finden Sie spezifische Überwachungsereignisse.
 - `audit_log_include_users`: MySQL-Benutzer, die zur Protokollierung einbezogen werden sollen. Der Standardwert für diesen Parameter ist leer, wodurch alle Benutzer zur Protokollierung einbezogen werden. Dies hat eine höhere Priorität als `audit_log_exclude_users`. Die maximale Länge des Parameters ist 512 Zeichen.
 > [!Note]
-> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Beispiel: Wenn „audit_log_include_users“ = `demouser` und „audit_log_exclude_users“ = `demouser` lautet, werden die Protokolle überwacht, weil `audit_log_include_users` eine höhere Priorität hat.
+> `audit_log_include_users` hat eine höhere Priorität als `audit_log_exclude_users`. Wenn z. B. `audit_log_include_users` = `demouser` und `audit_log_exclude_users` = `demouser` einbezogen werden, wird der Benutzer in die Überwachungsprotokolle eingeschlossen, da `audit_log_include_users` eine höhere Priorität hat.
 - `audit_log_exclude_users`: MySQL-Benutzer, die aus der Protokollierung ausgeschlossen werden sollen. Die maximale Länge des Parameters ist 512 Zeichen.
 
 > [!Note]

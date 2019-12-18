@@ -2,18 +2,18 @@
 title: 'Architektur: Lokales Apache Hadoop zu Azure HDInsight'
 description: Erfahren Sie mehr über bewährte Methoden für die Architektur bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4ef3cded9aba7bd95ecc48e1feadf6c55acd7bdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499264"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951529"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für die Architektur
 
@@ -25,7 +25,7 @@ Viele lokale Bereitstellungen von Apache Hadoop bestehen aus einem einzelnen gro
 
 Azure HDInsight-Cluster sind für einen bestimmten Typ von Computenutzung ausgelegt. Da der Speicher von mehreren Clustern gemeinsam genutzt werden kann, ist es möglich, mehrere für Workloads optimierte Computecluster zu erstellen, um die Anforderungen verschiedener Aufträge zu erfüllen. Jeder Clustertyp weist die optimale Konfiguration für die jeweilige Workload auf. In der folgenden Tabelle sind die unterstützten Clustertypen in HDInsight und die jeweiligen Workloads aufgeführt.
 
-|**Workload**|**HDInsight-Clustertyp**|
+|Workload|HDInsight-Clustertyp|
 |---|---|
 |Batchverarbeitung (ETL/ELT)|Hadoop, Spark|
 |Data Warehousing|Hadoop, Spark, Interactive Query|
@@ -36,7 +36,7 @@ Azure HDInsight-Cluster sind für einen bestimmten Typ von Computenutzung ausgel
 
 In der folgenden Tabelle sind die verschiedenen Methoden angegeben, die zum Erstellen eines HDInsight-Clusters verwendet werden können.
 
-|**Tool**|**Browserbasiert**|**Befehlszeile**|**REST-API**|**SDK**|
+|Tool|Browserbasiert|Befehlszeile|REST-API|SDK|
 |---|---|---|---|---|
 |[Azure-Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
@@ -62,7 +62,7 @@ Mit Azure Data Factory kann die Erstellung bedarfsgesteuerter HDInsight-Cluster 
 
 Übliche lokale Hadoop-Bereitstellungen verwenden die gleiche Gruppe von Computern für die Datenspeicherung und die Datenverarbeitung. Da sie am gleichen Ort vorhanden sind, müssen Compute und Speicher gemeinsam skaliert werden.
 
-Bei HDInsight-Clustern muss der Speicher nicht mit Compute am gleichen Ort vorhanden sein und kann sich in Azure Storage, Azure Data Lake Storage oder beidem befinden. Das Entkoppeln von Speicher und Compute bietet folgende Vorteile:
+Bei HDInsight-Clustern muss der Speicher nicht am gleichen Ort vorhanden sein wie Compute und kann sich in Azure Storage, in Azure Data Lake Storage oder in beidem befinden. Das Entkoppeln von Speicher und Compute bietet folgende Vorteile:
 
 - Datenfreigabe zwischen Clustern
 - Verwendung kurzlebiger Cluster, da die Daten nicht vom Cluster abhängig sind
@@ -74,9 +74,7 @@ Computecluster werden in der Nähe von Speicherkontoressourcen in einer Azure-Re
 
 ## <a name="use-external-metadata-stores"></a>Verwenden von externen Metadatenspeichern
 
-
 Es gibt zwei wichtige Metastores, die mit HDInsight-Clustern verwendet werden können: [Apache Hive](https://hive.apache.org/) und [Apache Oozie](https://oozie.apache.org/). Der Hive-Metastore ist das zentrale Schemarepository, das von Datenverarbeitungsmodulen verwendet werden kann. Dazu gehören Hadoop, Spark, LLAP, Presto und Apache Pig. Im Oozie-Metastore werden Details zur Zeitplanung sowie der Status von laufenden und abgeschlossenen Hadoop-Aufträgen gespeichert.
-
 
 HDInsight verwendet Azure SQL-Datenbank für Hive- und Oozie-Metastores. Ein Metastore kann in HDInsight-Clustern auf zwei Arten eingerichtet werden:
 
@@ -105,7 +103,7 @@ Es folgen einige bewährte Methoden für den Hive-Metastore in HDInsight:
 - Sichern Sie den benutzerdefinierten Metastore regelmäßig.
 - Belassen Sie den Metastore und den HDInsight-Cluster in derselben Region.
 - Überwachen Sie den Metastore in Hinblick auf Leistung und Verfügbarkeit. Verwenden Sie dazu Überwachungstools für die Azure SQL-Datenbank, z.B. das Azure-Portal oder Azure Monitor-Protokolle.
-- Führen Sie den Befehl **ANALYZE TABLE** nach Bedarf aus, um Statistiken für Tabellen und Spalten zu generieren. Beispiel: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
+- Führen Sie bei Bedarf den Befehl `ANALYZE TABLE` aus, um Statistiken für Tabellen und Spalten zu generieren. Beispiel: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Bewährte Methoden für verschiedene Workloads
 

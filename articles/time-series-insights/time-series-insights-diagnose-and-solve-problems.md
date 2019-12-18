@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: v-mamcge, jasonh, kfile
 ms.workload: big-data
 ms.topic: troubleshooting
-ms.date: 10/10/2019
+ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca38ebb015552042591fb4cc6b7edfe99527e79f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007065"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900258"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung
 
@@ -38,7 +38,7 @@ Azure Time Series Insights unterstützt nur JSON-Daten. JSON-Beispiele finden Si
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Ursache B: Dem Schlüssel der Ereignisquelle fehlt eine erforderliche Berechtigung.
 
-* Für einen IoT-Hub in Azure IoT Hub müssen Sie den Schlüssel angeben, der die Berechtigung **Dienstverbindung** besitzt. Beide Richtlinien **iothubowner** oder **service** funktionieren, da beide mit der Berechtigung **Dienstverbindung** ausgestattet sind.
+* Für einen IoT-Hub in Azure IoT Hub müssen Sie den Schlüssel angeben, der die Berechtigung **Dienstverbindung** besitzt. Wählen Sie eine der Richtlinien **iothubowner** oder **service** aus, da beide über die Berechtigung **Dienstverbindung** verfügen.
 
    [![Berechtigungen zum Verbinden mit dem IoT Hub-Dienst](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png#lightbox)
 
@@ -50,13 +50,17 @@ Azure Time Series Insights unterstützt nur JSON-Daten. JSON-Beispiele finden Si
 
 Wenn Sie einen IoT-Hub oder einen Event Hub registrieren, ist es wichtig, die Consumergruppe festzulegen, die Sie zum Lesen der Daten verwenden möchten. Diese Consumergruppe darf *nicht freigegeben* sein. Wenn die Consumergruppe freigegeben wird, trennt der zugrunde liegende IoT-Hub bzw. Event Hub automatisch und zufällig einen der Leser. Stellen Sie eine eindeutige Consumergruppe bereit, aus der Time Series Insights lesen soll.
 
+### <a name="cause-d-the-environment-has-just-been-provisioned"></a>Ursache D: Die Umgebung wurde soeben bereitgestellt.
+
+Die Daten werden innerhalb weniger Minuten nach der erstmaligen Erstellung der Umgebung und der zugehörigen Daten in Time Series Insights-Explorer angezeigt.
+
 ## <a name="problem-some-data-is-shown-but-data-is-missing"></a>Problem: Einige Daten werden angezeigt, andere hingegen fehlen.
 
 Wenn Daten nur teilweise angezeigt werden, und die Daten im Rückstand zu sein scheinen, sollten Sie mehrere Möglichkeiten in Betracht ziehen.
 
 ### <a name="cause-a-your-environment-is-being-throttled"></a>Ursache A: Ihre Umgebung wird gedrosselt.
 
-Drosselung ist ein häufiges Problem, wenn Umgebungen nach der Erstellung einer Ereignisquelle, die über Daten verfügt, bereitgestellt werden. In Azure IoT Hubs und Azure Events Hubs werden Daten bis zu sieben Tage lang gespeichert. Time Series Insights beginnt immer mit dem ältesten Ereignis in der Ereignisquelle (First In, First Out, auch *FIFO*).
+[Drosselung](time-series-insights-environment-mitigate-latency.md) ist ein häufiges Problem, wenn Umgebungen bereitgestellt werden, nachdem eine Ereignisquelle mit Daten erstellt wurde. In Azure IoT Hubs und Azure Events Hubs werden Daten bis zu sieben Tage lang gespeichert. Time Series Insights beginnt immer mit dem ältesten Ereignis in der Ereignisquelle (First In, First Out, auch *FIFO*).
 
 Wenn Sie beispielsweise in einer Ereignisquelle über fünf 5 Millionen Ereignisse verfügen und eine Verbindung mit einer Time Series Insights-Umgebung vom Typ „S1, eine Einheit“ herstellen, liest Time Series Insights also ca. 1 Million Ereignisse pro Tag. Es kann aussehen, als ob bei Time Series Insights eine fünf Tage lange Wartezeit auftritt. Was aber tatsächlich passiert, ist, dass die Umgebung gedrosselt wird.
 

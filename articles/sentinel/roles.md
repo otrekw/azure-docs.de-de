@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/09/2019
 ms.author: rkarlin
-ms.openlocfilehash: cf02708ae4ba3f203448398fdf954e8f48cce614
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0479eba13fd747ea1bcab2672fce1df2156802e8
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762701"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74947585"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Berechtigungen in Azure Sentinel
 
@@ -70,7 +70,7 @@ In der folgenden Tabelle sind die Rollen und zulässigen Aktionen in Azure Senti
 >
 ## <a name="building-custom-rbac-roles"></a>Erstellen benutzerdefinierter RBAC-Rollen
 
-Zusätzlich zu oder anstelle von integrierten RBAC-Rollen können Sie benutzerdefinierte RBAC-Rollen für Azure Sentinel erstellen. Benutzerdefinierte RBAC-Rollen für Azure Sentinel werden auf dieselbe Weise erstellt, wie Sie andere [benutzerdefinierte Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)-Rollen basierend auf bestimmten Berechtigungen für Azure Sentinel-Ressourcen erstellen.
+Zusätzlich zu oder anstelle von integrierten RBAC-Rollen können Sie benutzerdefinierte RBAC-Rollen für Azure Sentinel erstellen. Benutzerdefinierte RBAC-Rollen für Azure Sentinel werden auf dieselbe Weise erstellt, wie Sie andere [benutzerdefinierte Azure RBAC](../role-based-access-control/custom-roles-rest.md#create-a-custom-role)-Rollen basierend auf [bestimmten Berechtigungen für Azure Sentinel](../role-based-access-control/resource-provider-operations.md#microsoftsecurityinsights)- und [Azure Log Analytics](../role-based-access-control/resource-provider-operations.md#microsoftoperationalinsights)-Ressourcen erstellen.
 
 ## <a name="advanced-rbac-on-the-data-you-store-in-azure-sentinel"></a>Erweitertes RBAC für die Daten, die Sie in Azure Sentinel speichern.
   

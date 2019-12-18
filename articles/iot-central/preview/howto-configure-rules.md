@@ -3,17 +3,17 @@ title: Konfigurieren von Regeln und Aktionen in Azure IoT Central | Microsoft-Do
 description: In diesem Gewusst-wie-Artikel wird gezeigt, wie Sie als Ersteller telemetriebasierte Regeln und Aktionen in Ihrer Azure IoT Central-Anwendung konfigurieren.
 author: vavilla
 ms.author: vavilla
-ms.date: 11/11/2019
+ms.date: 11/27/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 76a9d8302d53d50bc3c1e306e31fbb26ed230436
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484747"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895747"
 ---
 # <a name="configure-rules-preview-features"></a>Konfigurieren von Regeln (Vorschaufeatures)
 
@@ -45,7 +45,7 @@ Regeln werten aggregierte Zeitfenster als rollierende Fenster aus. Im nachstehen
 
 ## <a name="use-rules-with-iot-edge-modules"></a>Verwenden von Regeln bei IoT Edge-Modulen
 
-Für Regeln, die auf IoT Edge-Module angewendet werden, gilt eine Einschränkung. Regeln für Telemetriedaten aus verschiedenen Modulen werden nicht als gültige Regeln ausgewertet. Verwenden Sie die nachstehende Regel als Beispiel. Die erste Bedingung der Regel bezieht sich auf Temperaturtelemetriedaten aus Modul A. Die zweite Bedingung der Regel bezieht sich auf Luftfeuchtigkeitstelemetriedaten aus Modul B. Da die beiden Bedingungen aus verschiedenen Modulen stammen, ist dies eine ungültige Gruppe von Bedingungen. Die Regel ist ungültig und wird beim Versuch, sie zu speichern, einen Fehler auslösen.
+Für Regeln, die auf IoT Edge-Module angewendet werden, gilt eine Einschränkung. Regeln für Telemetriedaten aus verschiedenen Modulen werden nicht als gültige Regeln ausgewertet. Verwenden Sie die nachstehende Regel als Beispiel. Die erste Bedingung der Regel bezieht sich auf Temperaturtelemetriedaten von Modul A. Die zweite Bedingung der Regel bezieht sich auf Luftfeuchtigkeitstelemetriedaten von Modul B. Da die beiden Bedingungen von unterschiedlichen Modulen stammen, handelt es sich hierbei um eine ungültige Gruppe von Bedingungen. Die Regel ist ungültig und wird beim Versuch, sie zu speichern, einen Fehler auslösen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

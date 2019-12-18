@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: b0056df16dccaf1dc7e94aad1a2c6c262ffd89ee
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383373"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922155"
 ---
 # <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Data Lake mit Azure Data Explorer (Vorschau)
 
@@ -21,13 +21,8 @@ Azure Data Lake Storage ist eine hochgradig skalierbare und kostengünstige Data
 Azure Data Explorer ist in Azure Blob Storage und Azure Data Lake Storage Gen2 integriert und bietet schnellen, zwischengespeicherten und indizieren Zugriff auf Daten im Lake. Sie können Daten im Lake analysieren und abfragen, ohne sie vorher in Azure Data Explorer erfassen zu müssen. Sie können auch erfasste und nicht erfasste native Lake-Daten gleichzeitig abfragen.  
 
 > [!TIP]
-> Zur Erzielung der besten Abfrageleistung ist die Datenerfassung in Azure Data Explorer erforderlich. Die Möglichkeit des Abfragens von Daten in Azure Data Lake Storage Gen2 ohne vorherige Erfassung sollte nur für Verlaufsdaten oder für Daten genutzt werden, die nur selten abgefragt werden.
+> Zur Erzielung der besten Abfrageleistung ist die Datenerfassung in Azure Data Explorer erforderlich. Die Möglichkeit des Abfragens von Daten in Azure Data Lake Storage Gen2 ohne vorherige Erfassung sollte nur für Verlaufsdaten oder für Daten genutzt werden, die nur selten abgefragt werden. [Optimieren Sie die Abfrageleistung im Lake](#optimize-your-query-performance), um optimale Ergebnisse zu erzielen.
  
-## <a name="optimize-query-performance-in-the-lake"></a>Optimieren der Abfrageleistung im Lake 
-
-* Partitionieren Sie Daten, um die Leistung zu verbessern und die Ausführungszeit für Abfragen zu optimieren.
-* Komprimieren Sie Daten, um die Leistung zu verbessern (mit gzip erzielen Sie die beste Komprimierung, mit LZ4 die beste Leistung).
-* Verwenden Sie für Azure Blob Storage oder Azure Data Lake Storage Gen2 die gleiche Region wie für Ihren Azure Data Explorer-Cluster. 
 
 ## <a name="create-an-external-table"></a>Erstellen einer externen Tabelle
 
@@ -231,6 +226,37 @@ Diese Abfrage verwendet Partitionierung, wodurch Ausführungszeit und Leistung o
 ![Rendern einer partitionierten Abfrage](media/data-lake-query-data/taxirides-with-partition.png)
   
 Sie können weitere Abfragen zur Ausführung für die externe Tabelle *TaxiRides* schreiben und weitere Erkenntnisse über die Daten gewinnen. 
+
+## <a name="optimize-your-query-performance"></a>Optimieren der Abfrageleistung
+
+Optimieren Sie die Abfrageleistung im Lake anhand der folgenden bewährten Methoden für das Abfragen externer Daten. 
+ 
+### <a name="data-format"></a>Datenformat
+ 
+Verwenden Sie aus folgenden Gründen ein Spaltenformat für analytische Abfragen:
+* Nur die für eine Abfrage relevanten Spalten können gelesen werden. 
+* Die Codierungsverfahren für Spalten können die Datengröße erheblich verringern.  
+Azure Data Explorer unterstützt die Spaltenformate Parquet und ORC. Das Parquet-Format wird aufgrund der optimierten Implementierung empfohlen. 
+ 
+### <a name="azure-region"></a>Azure-Region 
+ 
+Stellen Sie sicher, dass sich die externen Daten in derselben Azure-Region wie Ihr Azure Data Explorer-Cluster befinden. Dies reduziert die Kosten und die Zeit für den Datenabruf.
+ 
+### <a name="file-size"></a>Dateigröße
+ 
+Die optimale Dateigröße beträgt Hunderte MB (bis zu 1 GB) pro Datei. Vermeiden Sie eine große Anzahl kleiner Dateien, die unnötigen Mehraufwand bedeuten, z. B. durch eine Verlangsamung der Dateienumeration und Einschränkungen bei der Verwendung des Spaltenformats. Beachten Sie, dass die Anzahl der Dateien größer als die Anzahl der CPU-Kerne in Ihrem Azure Data Explorer-Cluster sein sollte. 
+ 
+### <a name="compression"></a>Komprimierung
+ 
+Verwenden Sie Komprimierung, um die Datenmenge zu reduzieren, die vom Remotespeicher abgerufen wird. Verwenden Sie für das Parquet-Format den internen Parquet-Komprimierungsmechanismus, der Spaltengruppen separat komprimiert, sodass sie einzeln gelesen werden können. Wenn Sie die Verwendung des Komprimierungsmechanismus überprüfen möchten, vergewissern Sie sich, dass die Dateien wie folgt benannt wurden: „<filename>.gz.parquet“ oder „<filename>.snappy.parquet“ und nicht „<filename>.parquet.gz“. 
+ 
+### <a name="partitioning"></a>Partitionierung
+ 
+Organisieren Sie Ihre Daten mithilfe von „Ordnerpartitionen“, mit deren Hilfe bei der Abfrage irrelevante Pfade übersprungen werden können. Berücksichtigen Sie bei der Partitionierung die Dateigröße und allgemeine Filter in Ihren Abfragen, wie z. B. Zeitstempel oder Mandanten-ID.
+ 
+### <a name="vm-size"></a>Größe des virtuellen Computers
+ 
+Wählen Sie VM-SKUs mit mehr Kernen und höherem Netzwerkdurchsatz aus (Arbeitsspeicher ist weniger wichtig). Weitere Informationen finden Sie unter [Auswählen der passenden VM-SKU für Ihren Azure Data Explorer-Cluster](manage-cluster-choose-sku.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/29/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eeb1dc44341768984bd6e337a2fe65a277f5aa77
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1ae8645f3e782305ed5e1b7847b019a978e48dde
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581214"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977776"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
 
@@ -244,7 +244,10 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 `ContentKeyId` enthält den Wert des angeforderten Schlüssels. Sie können `AlternativeMediaId` verwenden, wenn Sie die Anforderung einer Ihrer Entitäten zuordnen möchten. `AlternativeMediaId` kann beispielsweise verwendet werden, um nach Berechtigungen zu suchen.
 
- Unter [Streaming Policies – Create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) (Streamingrichtlinien: Erstellung) finden Sie REST-Beispiele, in denen URLs für den benutzerdefinierten Lizenz-/Schlüsselerwerb verwendet werden.
+Unter [Streaming Policies – Create](https://docs.microsoft.com/rest/api/media/streamingpolicies/create) (Streamingrichtlinien: Erstellung) finden Sie REST-Beispiele, in denen URLs für den benutzerdefinierten Lizenz-/Schlüsselerwerb verwendet werden.
+
+> [!NOTE]
+> Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 

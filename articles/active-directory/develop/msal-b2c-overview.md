@@ -1,28 +1,25 @@
 ---
-title: Informationen zur Interoperabilität von Anwendungen mit Azure AD B2C mithilfe von Microsoft Authentication Library (MSAL)
+title: Verwenden von MSAL mit Azure Active Directory B2C – Learn | Azure
+titleSuffix: Microsoft identity platform
 description: Microsoft Authentication Library (MSAL) gibt Anwendungen die Möglichkeit, mit Azure AD B2C zusammenzuarbeiten und Token zum Aufrufen gesicherter Web-APIs abzurufen. Bei diesen Web-APIs kann es sich um Microsoft Graph, andere Microsoft-APIs, Web-APIs von Dritten oder um Ihre eigene Web-API handeln.
 services: active-directory
-documentationcenter: dev-center-name
 author: negoe
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/16/2019
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eea0fd03b1df49e912a867b0c667ff0fd28c08a
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: f080c14cd0aa20bd312b4be8d9eacd8d901b7cef
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71097621"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917028"
 ---
 # <a name="use-microsoft-authentication-library-to-interoperate-with-azure-active-directory-b2c"></a>Verwenden von Microsoft Authentication Library (MSAL) für die Interoperabilität mit Azure Active Directory B2C
 

@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in SAP HANA-Datenbanken
 description: Beschreibt, wie häufige Fehler behoben werden, die auftreten können, wenn Sie SAP HANA-Datenbanken mithilfe von Azure Backup sichern.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: e8bb1d3328f95b647a788c53afe3ac1455eefa13
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 9958b241c44d619efea2f9ad516a2bd6d4f33d6e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665337"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892599"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Behandeln von Problemen beim Sichern von SAP HANA-Datenbanken in Azure
 
@@ -102,17 +102,19 @@ In Datenbanken mit mehreren Containern (MDC) für HANA ist die Standardkonfigura
 Wenn Sie SAP HANA 1.0-Datenbanken schützen und ein Upgrade auf 2.0 durchführen möchten, führen Sie die unten beschriebenen Schritte aus:
 
 - [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die alte SDC-Datenbank.
+- Führen Sie das Upgrade durch. Nach Abschluss des Vorgangs ist die HANA-Instanz eine MDC-Instanz mit einer Systemdatenbank und mindestens einer Mandantendatenbank.
 - Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) mit den richtigen Details (SID und MDC) erneut aus.
-- Registrieren Sie die Erweiterung erneut (Sicherung > Details anzeigen > relevante Azure-VM auswählen > erneut registrieren).
+- Registrieren Sie die Erweiterung im Azure-Portal erneut für den gleichen Computer (unter „Sicherung“ > „Details anzeigen“ > <entsprechender virtueller Azure-Computer> > „Erneut registrieren“).
 - Klicken Sie auf „Datenbanken neu ermitteln“ für denselben virtuellen Computer. Durch diese Aktion sollten die neuen Datenbanken in Schritt 2 mit den richtigen Details (Systemdatenbank und Mandantendatenbank, nicht SDC) angezeigt werden.
-- Schützen Sie diese neuen Datenbanken.
+- Konfigurieren Sie die Sicherung für diese neuen Datenbanken.
 
 ## <a name="upgrading-without-an-sid-change"></a>Upgrade ohne SID-Änderung
 
 Upgrades auf OS oder SAP HANA, die keine SID-Änderung bewirken, können wie unten beschrieben behandelt werden:
 
 - [Beenden Sie den Schutz](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) mit Beibehaltung der Daten für die Datenbank.
-- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus.
+- Führen Sie das Upgrade durch.
+- Führen Sie das [Vorregistrierungsskript](https://aka.ms/scriptforpermsonhana) erneut aus. Beim Upgradeprozess werden in der Regel die erforderlichen Rollen entfernt. Durch Ausführen des Vorregistrierungsskripts werden alle erforderlichen Rollen überprüft.
 - [Setzen Sie den Schutz](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) für die Datenbank fort.
 
 ## <a name="next-steps"></a>Nächste Schritte

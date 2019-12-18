@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 247378461a99d42f21a67a2c0aebc7019727f3a0
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b1df328f151a4085ec0aadd1b880048f81483a51
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555141"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901320"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -29,7 +29,11 @@ API-Versionen, NuGet-Pakete, Namespaces und Endpunkte sind unverändert. Ihre vo
 
 ## <a name="feature-announcements"></a>Featureankündigungen
 
-4\. November 2019 – Ignite-Konferenz
+### <a name="december-2019"></a>Dezember 2019
+
++ [Such-App erstellen (Vorschau)](search-create-app-portal.md) ist ein neuer Assistent im Portal, der eine herunterladbare HTML-Datei generiert. Die Datei enthält ein eingebettetes Skript zum Rendern einer funktionierenden, Localhost-ähnlichen Web-App, die an einen Index Ihres Suchdiensts gebunden ist. Seiten können im Assistenten konfiguriert werden und eine Suchleiste, einen Ergebnisbereich, Randleistennavigation sowie Unterstützung von Eingabevorschlägen für Abfragen umfassen. Der HTML-Code kann offline geändert werden, um den Workflow oder die Darstellung zu erweitern oder anzupassen.
+
+### <a name="november-2019---ignite-conference"></a>November 2019 – Ignite-Konferenz
 
 + Mit der [inkrementellen Indizierung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) können Sie beim Ändern einer Anreicherungspipeline auswählen, welche Schritte erneut verarbeitet werden sollen. Die inkrementelle Indizierung ist besonders nützlich, wenn Sie über Bildinhalte verfügen, die Sie zuvor analysiert haben. Die Ausgabe der kostenintensiven Analyse wird gespeichert und dann als Grundlage für die zusätzliche Indizierung oder Anreicherung verwendet.
 
@@ -44,7 +48,7 @@ API-Versionen, NuGet-Pakete, Namespaces und Endpunkte sind unverändert. Ihre vo
 
 + [Azure Data Lake Storage Gen2 (Vorschauversion)](search-howto-index-azure-data-lake-storage.md), die [Cosmos DB-Gremlin-API (Vorschauversion)](search-howto-index-cosmosdb.md) und die [Cosmos DB-Cassandra-API (Vorschauversion)](search-howto-index-cosmosdb.md) werden nun in Indexern unterstützt. Füllen Sie [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) aus, um sich zu registrieren. Sie erhalten eine Bestätigungs-E-Mail, sobald Sie in das Vorschauprogramm aufgenommen wurden.
 
-24. Juli 2019
+### <a name="july-2019"></a>Juli 2019
 
 + In der [Azure Government-Cloud](../azure-government/documentation-government-services-webandmobile.md#azure-cognitive-search) allgemein verfügbar.
 

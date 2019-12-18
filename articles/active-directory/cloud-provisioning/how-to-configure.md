@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 956962503dcb3a6355d455ff96744143c5965d1e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f08a1359cfd8a2793d92315a6b03567b0b3f847d
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795469"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997121"
 ---
 # <a name="azure-ad-connect-cloud-provisioning-new-configuration"></a>Neue Konfiguration für die Azure AD Connect-Cloudbereitstellung
 
@@ -32,8 +32,7 @@ Führen Sie die folgenden Schritte aus, um die Bereitstellung zu konfigurieren:
 
 4.  Klicken Sie auf **Neue Konfiguration**.
 5.  Auf dem Konfigurationsbildschirm ist die lokale Domäne bereits eingetragen.
-6. Geben Sie eine **E-Mail-Adresse für Benachrichtigungen** ein. Diese E-Mail-Adresse wird benachrichtigt, 
-7. wenn die Bereitstellung nicht fehlerfrei ist.  
+6. Geben Sie eine **E-Mail-Adresse für Benachrichtigungen** ein. An diese E-Mail-Adresse wird eine Benachrichtigung gesendet, wenn die Bereitstellung nicht fehlerfrei ist.  
 8. Verschieben Sie den Auswahlregler auf **Aktivieren**, und klicken Sie auf **Speichern**.
 ![](media/tutorial-single-forest/configure2.png)
 

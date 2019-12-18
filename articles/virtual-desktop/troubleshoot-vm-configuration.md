@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: ae02b09278acef6498d5b94d1af6fa93abe205a9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791155"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869526"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -81,10 +81,10 @@ Die empfohlene Methode zur Bereitstellung von VMs ist die Verwendung der Azure R
 Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätigen und nach Fehlermeldungen zu suchen.
 
 1. Vergewissern Sie sich, dass die beiden Komponenten installiert sind, indem Sie **Systemsteuerung** > **Programme** > **Programme und Funktionen** auswählen. Wenn **Windows Virtual Desktop-Agent** und das **Windows Virtual Desktop-Agent-Startladeprogramm** nicht angezeigt werden, sind sie auf der VM nicht installiert.
-2. Öffnen Sie den **Datei-Explorer**, und navigieren Sie zu **C:\Windows\Temp\scriptlogs.log**. Wenn die Datei nicht vorhanden ist, zeigt dies an, dass die PowerShell-DSC, die die beiden Komponenten installiert hat, nicht in der Lage war, im bereitgestellten Sicherheitskontext ausgeführt zu werden.
-3. Wenn die Datei **C:\Windows\Temp\scriptlogs.log** vorhanden ist, öffnen Sie sie, und suchen Sie nach Fehlermeldungen.
+2. Öffnen Sie den **Datei-Explorer**, und navigieren Sie zu **C:\Windows\Temp\ScriptLog.log**. Wenn die Datei nicht vorhanden ist, zeigt dies an, dass die PowerShell-DSC, die die beiden Komponenten installiert hat, nicht in der Lage war, im bereitgestellten Sicherheitskontext ausgeführt zu werden.
+3. Wenn die Datei **C:\Windows\Temp\ScriptLog.log** vorhanden ist, öffnen Sie sie, und suchen Sie nach Fehlermeldungen.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptlogslog-is-also-missing"></a>Fehler Der Windows Virtual Desktop-Agent und das Windows Virtual Desktop-Agent--Startladeprogramm sind nicht vorhanden. „C:\Windows\Temp\scriptlogs.log“ fehlt ebenfalls.
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Fehler Der Windows Virtual Desktop-Agent und das Windows Virtual Desktop-Agent--Startladeprogramm sind nicht vorhanden. „C:\Windows\Temp\ScriptLog.log“ fehlt ebenfalls.
 
 **Ursache 1:** Die bei der Eingabe für die Azure Resource Manager-Vorlage angegebenen Anmeldeinformationen waren falsch, oder die Berechtigungen waren unzureichend.
 
@@ -98,7 +98,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 - Bestätigen Sie, dass der Mandantenname richtig und der Mandant in Windows Virtual Desktop vorhanden ist.
 - Bestätigen Sie, dass das Konto mindestens über die Berechtigung „RDS-Mitwirkender“ verfügt.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptlogslog"></a>Fehler Authentifizierungsfehler, Fehler in „C:\Windows\Temp\scriptlogs.log“.
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Fehler Authentifizierungsfehler, Fehler in „C:\Windows\Temp\ScriptLog.log“.
 
 **Ursache:** Die PowerShell-DSC konnte ausgeführt werden, aber keine Verbindung mit Windows Virtual Desktop herstellen.
 

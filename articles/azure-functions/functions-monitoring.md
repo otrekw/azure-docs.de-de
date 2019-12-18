@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Application Insights mit Azure Function
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 5f7f6c130226080cba635f89280f655498e5db27
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226897"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978082"
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -169,11 +169,11 @@ Die Protokollebene `None` wird im nächsten Abschnitt beschrieben.
 
 ### <a name="log-configuration-in-hostjson"></a>Protokollkonfiguration in „host.json“
 
-Mit der Datei [host.json] wird konfiguriert, welcher Protokollierungsgrad von einer Funktionen-App an Application Insights gesendet wird. Für jede Kategorie geben Sie zu sendende Mindestprotokollebene an. Es gibt zwei Beispiele: Das erste hat die Zielplattform [Functions Version 2.x-Runtime](functions-versions.md#version-2x) (.NET Core), das zweite bezieht sich auf die Version 1.x-Runtime.
+Mit der Datei [host.json] wird konfiguriert, welcher Protokollierungsgrad von einer Funktionen-App an Application Insights gesendet wird. Für jede Kategorie geben Sie zu sendende Mindestprotokollebene an. Es gibt zwei Beispiele: Das erste hat die Functions-Runtime [Version 2.x und höher](functions-versions.md#version-2x) (mit .NET Core) als Ziel, und das zweite bezieht sich auf die Version 1.x-Runtime.
 
-### <a name="version-2x"></a>Version 2.x
+### <a name="version-2x-and-higher"></a>Version 2.x und höher
 
-Die v2.x-Runtime verwendet jetzt die [.NET Core-Protokollfilterhierarchie](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
+Version 2.x und höher der Functions-Runtime verwenden die [Protokollierungsfilterhierarchie von .NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering). 
 
 ```json
 {
@@ -216,7 +216,7 @@ Der Kategoriewert in [host.json] steuert die Protokollierung für alle Kategorie
 
 Wenn [host.json] mehrere Kategorien enthält, die mit der gleichen Zeichenfolge beginnen, werden zuerst die längeren abgeglichen. Nehmen Sie an, Sie möchten alles für die Runtime mit Ausnahme von `Host.Aggregator` auf der Ebene `Error` protokollieren, während `Host.Aggregator` auf der Ebene `Information` protokolliert werden soll:
 
-### <a name="version-2x"></a>Version 2.x 
+### <a name="version-2x-and-later"></a>Version 2.x und höher
 
 ```json
 {
@@ -298,7 +298,7 @@ Wie im vorherigen Abschnitt erwähnt, werden von der Laufzeit Daten zu den Funkt
 
 Application Insights verfügt über ein Feature zur [Stichprobenentnahme](../azure-monitor/app/sampling.md) als Schutz davor, dass bei Spitzenlast zu viele Telemetriedaten für erfolgte Vorgänge produziert werden. Wenn die Rate der eingehenden ausgeführten Vorgänge einen bestimmten Schwellenwert übersteigt, beginnt Application Insights, einige der eingehenden ausgeführten Vorgänge nach dem Zufallsprinzip zu ignorieren. Die Standardeinstellung für die maximale Anzahl ausgeführter Vorgänge pro Sekunde ist 20 (5 in Version 1.x). Sie können das Sampling in der Datei [host.json] konfigurieren.  Hier sehen Sie ein Beispiel:
 
-### <a name="version-2x"></a>Version 2.x 
+### <a name="version-2x-and-later"></a>Version 2.x und höher
 
 ```json
 {
@@ -396,7 +396,7 @@ context.log('JavaScript HTTP trigger function processed a request.' + context.in
 
 ### <a name="custom-metrics-logging"></a>Protokollieren von benutzerdefinierten Metriken
 
-Bei der Ausführung von [Version 1.x](functions-versions.md#creating-1x-apps) der Functions-Runtime können Node.js-Funktionen die `context.log.metric`-Methode verwenden, um in Application Insights benutzerdefinierte Metriken zu erstellen. Diese Methode wird derzeit in Version 2.x nicht unterstützt. Hier ist ein Beispiel für einen Methodenaufruf angegeben:
+Bei der Ausführung von [Version 1.x](functions-versions.md#creating-1x-apps) der Functions-Runtime können Node.js-Funktionen die `context.log.metric`-Methode verwenden, um in Application Insights benutzerdefinierte Metriken zu erstellen. Diese Methode wird derzeit in Version 2.x und höher nicht unterstützt. Hier ist ein Beispiel für einen Methodenaufruf angegeben:
 
 ```javascript
 context.log.metric("TestMetric", 1234);
@@ -408,9 +408,9 @@ Dieser Code ist eine Alternative zum Aufrufen von `trackMetric` mithilfe des Nod
 
 Sie können das NuGet-Paket [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) verwenden, um benutzerdefinierte Telemetriedaten an Application Insights zu senden. Das folgenden C#-Beispiel verwendet die [benutzerdefinierte Telemetrie-API](../azure-monitor/app/api-custom-events-metrics.md). Das Beispiel gilt für eine .NET-Klassenbibliothek, aber der Application Insights-Code ist für C#-Skript identisch.
 
-### <a name="version-2x"></a>Version 2.x
+### <a name="version-2x-and-later"></a>Version 2.x und höher
 
-Die Version 2.x-Runtime verwendet neue Features in Application Insights-Telemetriedaten, um die Telemetrie automatisch mit dem aktuellen Vorgang zu korrelieren. Es ist nicht erforderlich, für den Vorgang die Felder `Id`, `ParentId` oder `Name` festzulegen.
+Die Runtime ab Version 2.x verwendet neuere Features in Application Insights, um die Telemetrie automatisch mit dem aktuellen Vorgang zu korrelieren. Es ist nicht erforderlich, für den Vorgang die Felder `Id`, `ParentId` oder `Name` festzulegen.
 
 ```cs
 using System;

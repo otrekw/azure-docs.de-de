@@ -1,20 +1,18 @@
 ---
 title: Sicherheitskontrollen für Azure Cosmos DB
-description: Eine Prüfliste mit Sicherheitskontrollen zur Evaluierung von Azure Cosmos DB
+description: Hier finden Sie eine Prüfliste für Sicherheitskontrollen wie Netzwerk, Überwachung, Identität und Datenschutz zur Auswertung von Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
-author: msmbaldwin
-manager: rkarlin
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 20cdfc61a4cdfe5263e48d049aab14cad2458b06
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.date: 12/02/2019
+ms.author: sngun
+ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886317"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872144"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Sicherheitskontrollen für Azure Cosmos DB
 
@@ -27,8 +25,8 @@ In diesem Artikel werden die in Azure Cosmos DB integrierten Sicherheitskontroll
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
 | Unterstützung des Dienstendpunkts| Ja |  |
-| Unterstützung der VNet-Einschleusung| Ja | Bei einem VNET-Dienstendpunkt können Sie ein Azure Cosmos DB-Konto so konfigurieren, dass der Zugriff nur aus einem bestimmten Subnetz eines virtuellen Netzwerks (VNET) zugelassen wird. Sie können den VNET-Zugriff auch mit Firewallregeln kombinieren.  Siehe [Zugreifen auf Azure Cosmos DB über virtuelle Netzwerke](VNet-service-endpoint.md). |
-| Netzwerkisolation und Firewallunterstützung| Ja | Durch die Firewallunterstützung können Sie Ihr Azure Cosmos-Konto so konfigurieren, dass der Zugriff nur über eine genehmigte Gruppe von IP-Adressen, einen IP-Adressbereich und/oder Clouddienste zugelassen wird. Siehe [Konfigurieren der IP-Firewall in Azure Cosmos DB](how-to-configure-firewall.md).|
+| Unterstützung der VNet-Einschleusung| Ja | Bei einem VNET-Dienstendpunkt können Sie ein Azure Cosmos DB-Konto so konfigurieren, dass der Zugriff nur aus einem bestimmten Subnetz eines virtuellen Netzwerks (VNET) zugelassen wird. Sie können den VNET-Zugriff auch mit Firewallregeln kombinieren. Weitere Informationen finden Sie unter [Zugreifen auf Azure Cosmos DB über virtuelle Netzwerke](VNet-service-endpoint.md). |
+| Netzwerkisolation und Firewallunterstützung| Ja | Durch die Firewallunterstützung können Sie Ihr Azure Cosmos-Konto so konfigurieren, dass der Zugriff nur über eine genehmigte Gruppe von IP-Adressen, einen IP-Adressbereich und/oder Clouddienste zugelassen wird. Weitere Informationen finden Sie unter [Konfigurieren der IP-Firewall in Azure Cosmos DB](how-to-configure-firewall.md).|
 | Unterstützung der Tunnelerzwingung| Ja | Kann auf Clientseite in dem VNET konfiguriert werden, in dem sich die virtuellen Computer befinden.   |
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung
@@ -50,7 +48,7 @@ In diesem Artikel werden die in Azure Cosmos DB integrierten Sicherheitskontroll
 
 | Sicherheitskontrolle | Ja/Nein | Notizen |
 |---|---|--|
-| Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Alle Cosmos-Datenbanken und -Sicherungen werden standardmäßig verschlüsselt. Weitere Informationen finden Sie unter [Datenverschlüsselung in Azure Cosmos DB](database-encryption-at-rest.md). Die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln wird nicht unterstützt. |
+| Serverseitige Verschlüsselung ruhender Daten: Von Microsoft verwaltete Schlüssel | Ja | Alle Azure Cosmos-Datenbanken und -Sicherungen werden standardmäßig verschlüsselt. Weitere Informationen finden Sie unter [Datenverschlüsselung in Azure Cosmos DB](database-encryption-at-rest.md). Die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln wird nicht unterstützt. |
 | Serverseitige Verschlüsselung ruhender Daten: vom Kunden verwaltete Schlüssel (BYOK) | Nein |  |
 | Verschlüsselung auf Spaltenebene (Azure Data Services)| Ja | Nur in der Tabellen-API (Premium). Diese Funktion wird nicht von allen APIs unterstützt. Siehe [Einführung in Azure Cosmos DB: Tabellen-API](table-introduction.md). |
 | Verschlüsselung während der Übertragung (z. B. ExpressRoute-Verschlüsselung, Verschlüsselung im VNET und VNET-zu-VNET-Verschlüsselung)| Ja | Alle Azure Cosmos DB-Daten werden während der Übertragung verschlüsselt. |

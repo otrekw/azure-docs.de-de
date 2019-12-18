@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 33302d7252c56badfed1dc7adea6a4f7cbf961b6
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ff8956d942aa54500a08cac4ebd94127b14b0bd4
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048248"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74931777"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 
-> [!NOTE]
-> Sie können das Aktivitätsprotokoll jetzt in einem Log Analytics-Arbeitsbereich erfassen, indem Sie eine Diagnoseeinstellung ähnlich wie bei der Erfassung von Ressourcenprotokollen verwenden. Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](activity-log-collect.md).
+> [!WARNING]
+> Sie können das Aktivitätsprotokoll jetzt in einem Log Analytics-Arbeitsbereich erfassen, indem Sie eine Diagnoseeinstellung ähnlich wie bei der Erfassung von Ressourcenprotokollen verwenden. Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-subscription.md).
 
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
 
@@ -33,7 +33,7 @@ Das Archivieren des Aktivitätsprotokolls in einem Speicherkonto ist hilfreich, 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="storage-account"></a>Speicherkonto
-Wenn Sie Ihr Aktivitätsprotokoll archivieren, müssen Sie [ein Speicherkonto erstellen](../../storage/common/storage-quickstart-create-account.md), falls Sie noch keines besitzen. Um den Zugriff auf Überwachungsdaten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie auch Diagnoseprotokolle und Metriken in einem Speicherkonto archivieren, können Sie dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
+Wenn Sie Ihr Aktivitätsprotokoll archivieren, müssen Sie [ein Speicherkonto erstellen](../../storage/common/storage-quickstart-create-account.md), falls Sie noch keines besitzen. Um den Zugriff auf Überwachungsdaten besser steuern zu können, sollten Sie kein bereits vorhandenes Speicherkonto mit anderen, nicht überwachungsbezogenen Daten verwenden. Wenn Sie auch Protokolle und Metriken in einem Speicherkonto archivieren, können Sie dasselbe Speicherkonto verwenden, damit sich alle Überwachungsdaten an einem zentralen Ort befinden.
 
 Das Speicherkonto muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 > [!NOTE]
@@ -169,7 +169,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
 Die Aktivitätsprotokolldaten werden im folgenden Format in JSON geschrieben, unabhängig davon, ob sie an den Azure-Speicher oder Event Hub gesendet werden.
 
 
-> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden](diagnostic-logs-append-blobs.md).
+> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](diagnostic-logs-append-blobs.md).
 
 ``` JSON
 {

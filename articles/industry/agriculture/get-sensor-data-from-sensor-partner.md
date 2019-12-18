@@ -1,61 +1,60 @@
 ---
 title: Abrufen der Sensordaten von Partnern
-description: Es wird beschrieben, wie Sie Sensordaten von Partnern abrufen.
+description: In diesem Artikel erfahren Sie, wie Sie Sensordaten von Partnern abrufen.
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b985dfc1f16372c3fad1b0a5c0894931b4c15dcc
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: ece310a248140b7913ffcc9f7146d382ee44fb5d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406490"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851297"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Abrufen der Sensordaten von Sensorpartnern
 
-Mit Azure FarmBeats können Sie Streamingdaten von Ihren IoT-Geräten und -Sensoren an den Datenhub übertragen. Derzeit werden die folgenden Partnerunternehmen für Sensorgeräte unterstützt:
+Mit Azure FarmBeats können Sie Streamingdaten von Ihren IoT-Geräten und -Sensoren an den Datenhub übertragen. Derzeit werden folgende Sensorgerätepartner unterstützt:
 
-  ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats-Partner](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
 
-Durch die Integration von Gerätedaten in Azure FarmBeats können Sie Bodendaten von den IoT-Sensoren, die auf der Fläche Ihres landwirtschaftlichen Betriebs angeordnet sind, an Ihren Datenhub übertragen. Wenn die Daten verfügbar sind, können sie mit dem FarmBeats Accelerator visualisiert und für die Datenfusion und Erstellung von KI/ML-Modellen mit FarmBeats genutzt werden.
+Durch die Integration von Gerätedaten in Azure FarmBeats können Sie Bodendaten von den IoT-Sensoren Ihres landwirtschaftlichen Betriebs an Ihren Datenhub übertragen. Die verfügbaren Daten können dann über den FarmBeats-Accelerator visualisiert werden. Die Daten können für die Datenfusion und für die Erstellung von ML-/KI-Modellen (Machine Learning/künstliche Intelligenz) mit FarmBeats verwendet werden.
 
 Stellen Sie Folgendes sicher, bevor Sie mit dem Streamen von Sensordaten beginnen:
 
--  Sie haben FarmBeats über Azure Marketplace installiert.
--  Sie haben die Sensoren und Geräte ausgewählt, die Sie auf der Fläche Ihres landwirtschaftlichen Betriebs installieren möchten.
--  Falls Sie den Einsatz von Sensoren zur Ermittlung der Bodenfeuchtigkeit planen, können Sie die FarmBeats-Karte zur Platzierung von Bodenfeuchtigkeitssensoren verwenden. Sie erhalten hierbei eine Empfehlung zur Anzahl von Sensoren und ihrer genauen Platzierung. Weitere Informationen finden Sie unter [Generieren von Karten](generate-maps.md).
+-  Sie haben FarmBeats aus dem Azure Marketplace installiert.
+-  Sie haben die Sensoren und Geräte ausgewählt, die Sie in Ihrem landwirtschaftlichen Betrieb installieren möchten.
+-  Falls Sie Bodenfeuchtigkeitssensoren verwenden möchten, können Sie die FarmBeats-Karte zur Platzierung von Bodenfeuchtigkeitssensoren verwenden, um eine Empfehlung hinsichtlich der Anzahl und Platzierung der Sensoren zu erhalten. Weitere Informationen finden Sie unter [Generieren von Karten](generate-maps.md).
+- Geräte und Sensoren müssen bei Ihrem Gerätepartner erworben und in Ihrem landwirtschaftlichen Betrieb installiert werden. Vergewissern Sie sich, dass Sie mit der Lösung Ihres Gerätepartners auf die Sensordaten zugreifen können.
 
-- Erwerben Sie Geräte und Sensoren von Ihrem Gerätepartner, und stellen Sie sie auf der Fläche Ihres landwirtschaftlichen Betriebs bereit. Vergewissern Sie sich, dass Sie mit der Lösung Ihres Gerätepartners auf die Sensordaten zugreifen können.
+## <a name="enable-device-integration-with-farmbeats"></a>Ermöglichen der Geräteintegration mit FarmBeats 
 
-### <a name="enable-device-integration-with-farmbeats"></a>Ermöglichen der Geräteintegration mit FarmBeats   
+Nachdem Sie das Streamen von Sensordaten gestartet haben, können Sie mit dem Abrufen der Daten für Ihr FarmBeats-System beginnen. Geben Sie die folgenden Informationen an Ihren Geräteanbieter weiter, um die Integration in FarmBeats zu ermöglichen:
 
-Nachdem Sie mit dem Streamen von Sensordaten begonnen haben, können Sie den Prozess zum Abrufen der Daten für Ihr FarmBeats-System starten. Sie müssen Ihrem Geräteanbieter die folgenden Informationen bereitstellen, um die Integration in FarmBeats zu ermöglichen:  
-
- - API-Endpunkt  
- - Mandanten-ID  
- - Client-ID  
- - Geheimer Clientschlüssel  
+ - API-Endpunkt
+ - Mandanten-ID
+ - Client-ID
+ - Geheimer Clientschlüssel
  - EventHub-Verbindungszeichenfolge
 
 Die obigen Informationen erhalten Sie von Ihrem Systemintegrator. Wenden Sie sich an Ihren Systemintegrator, falls Sie Probleme beim Aktivieren der Geräteintegrationen haben.
 
-Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie dieses Skript über die Azure Cloud Shell ausführen. Führen Sie die folgenden Schritte aus:
+Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie dieses Skript über Azure Cloud Shell ausführen. Führen Sie folgende Schritte durch:
 
-1. Laden Sie die [ZIP-Datei](https://aka.ms/farmbeatspartnerscript) herunter, und extrahieren Sie sie auf Ihrem lokalen Laufwerk. Die ZIP-Datei enthält zwei Dateien.
-2. Melden Sie sich bei https://portal.azure.com/ an, und öffnen Sie Cloud Shell. (Die entsprechende Option finden Sie auf der Leiste oben rechts im Portal.)  
+1. Laden Sie die [ZIP-Datei](https://aka.ms/farmbeatspartnerscript) herunter, und extrahieren Sie sie auf Ihrem lokalen Laufwerk. In der ZIP-Datei befinden sich zwei Dateien.
+2. Melden Sie sich bei https://portal.azure.com/ an, und öffnen Sie Cloud Shell. Diese Option ist auf der Symbolleiste in der rechten oberen Ecke des Azure-Portals verfügbar.
 
-    ![FarmBeats-Projekt](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
+    ![Symbolleiste im Azure-Portal](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-3. Stellen Sie sicher, dass die Umgebung auf **PowerShell** festgelegt ist. Die Standardeinstellung ist „Bash“.
+3. Vergewissern Sie sich, dass die Umgebung auf **PowerShell** festgelegt ist. Standardmäßig ist sie auf „Bash“ festgelegt.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
+    ![Einstellung „PowerShell“ auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-4. Laden Sie die beiden Dateien (oben aus Schritt 1) in Ihre Cloud Shell-Instanz hoch.
+4. Laden Sie die beiden Dateien aus dem ersten Schritt in Ihre Cloud Shell-Instanz hoch.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+    ![Uploadschaltfläche auf der Symbolleiste](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
 
-5. Navigieren Sie zu dem Verzeichnis, in das die Dateien hochgeladen wurden (standardmäßig „basisverzeichnis>benutzername“).
+5. Navigieren Sie zum Uploadverzeichnis der Dateien. Die Dateien werden standardmäßig unter dem Benutzernamen in das Basisverzeichnis hochgeladen.
 6. Führen Sie das folgende Skript aus:
 
     ```azurepowershell-interactive 
@@ -63,17 +62,17 @@ Alternativ können Sie die Anmeldeinformationen auch generieren, indem Sie diese
     ./generateCredentials.ps1   
 
     ```
-7. Befolgen Sie die Anweisungen auf dem Bildschirm, um die Werte zu erfassen. (Dies sind die Werte für API-Endpunkt, Mandanten-ID, Client-ID, geheimer Clientschlüssel und EventHub-Verbindungszeichenfolge.) Die EventHub-Verbindungszeichenfolge wird als Teil der API-Antwort in Swagger zur Verfügung gestellt.
+7. Folgen Sie den Anweisungen auf dem Bildschirm, um die Werte für **API-Endpunkt**, **Mandanten-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **EventHub-Verbindungszeichenfolge** zu erfassen. Die EventHub-Verbindungszeichenfolge ist in der API-Antwort in Swagger enthalten.
 
-**Integrieren von Gerätedaten mit den generierten Anmeldeinformationen**
+### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Integrieren von Gerätedaten unter Verwendung der generierten Anmeldeinformationen
 
-Greifen Sie auf das Portal des Gerätepartners zu, um die Verknüpfung mit FarmBeats mit den Anmeldeinformationen durchzuführen, die Sie im vorherigen Abschnitt generiert haben.
+Navigieren Sie zum Portal des Gerätepartners, um unter Verwendung der Anmeldeinformationen, die Sie im vorherigen Abschnitt generiert haben, eine Verknüpfung mit FarmBeats einzurichten:
 
- - API-Endpunkt  
- - EventHub-Verbindungszeichenfolge  
- - Client-ID  
- - Geheimer Clientschlüssel  
- - Mandanten-ID  
+ - API-Endpunkt
+ - EventHub-Verbindungszeichenfolge
+ - Client-ID
+ - Geheimer Clientschlüssel
+ - Mandanten-ID
 
  Die erfolgreiche Integration wird vom Geräteanbieter bestätigt. Nach Erhalt der Bestätigung können Sie in Azure FarmBeats alle Geräte und Sensoren anzeigen.
 
@@ -83,76 +82,76 @@ Verwenden Sie den folgenden Abschnitt, um die Geräte und Sensoren Ihres landwir
 
 ### <a name="view-devices"></a>Anzeigen von Geräten
 
-Derzeit werden für FarmBeats die folgenden Geräte unterstützt:
+Für FarmBeats werden derzeit folgende Geräte unterstützt:
 
-- **Knoten**: Ein Gerät, an das mindestens ein Sensor angefügt ist.
-- **Gateway**: Ein Gerät, an das mindestens ein Knoten angefügt ist.
+- **Knoten:** Ein Gerät, das mit mindestens einem Sensor verknüpft ist.
+- **Gateway**: Ein Gerät, das mit mindestens einem Knoten verknüpft ist.
 
-Führen Sie die folgenden Schritte aus:
+Führen Sie folgende Schritte durch:
 
 1. Wählen Sie auf der Startseite im Menü die Option **Geräte** aus.
-  Auf der Seite „Geräte“ werden Typ, Modell und Status des Geräts, der zugehörige landwirtschaftliche Betrieb und das letzte Aktualisierungsdatum der Metadaten angezeigt. Standardmäßig ist die Spalte für den landwirtschaftlichen Betrieb auf NULL festgelegt. Sie können angeben, dass ein Gerät einem landwirtschaftlichen Betrieb zugewiesen werden soll. Weitere Informationen finden Sie unter [Zuweisen von Geräten](#assign-devices).
-2. Wählen Sie das Gerät aus, um die Geräteeigenschaften, Telemetriedaten und untergeordneten Geräte anzuzeigen, die mit dem Gerät verbunden sind.  
+  Auf der Seite **Geräte** werden Typ, Modell und Status des Geräts, der zugehörige landwirtschaftliche Betrieb und das letzte Aktualisierungsdatum der Metadaten angezeigt. Die Spalte für den landwirtschaftlichen Betrieb ist standardmäßig auf *NULL* festgelegt. Sie können angeben, dass ein Gerät einem landwirtschaftlichen Betrieb zugewiesen werden soll. Weitere Informationen finden Sie unter [Zuweisen von Geräten](#assign-devices).
+2. Wählen Sie das Gerät aus, um die Geräteeigenschaften, Telemetriedaten und untergeordneten Geräte anzuzeigen, die mit dem Gerät verbunden sind.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
+    ![Seite "Geräte"](./media/get-sensor-data-from-sensor-partner/view-devices-1.png)
 
 ### <a name="view-sensors"></a>Anzeigen von Sensoren
 
-Führen Sie die folgenden Schritte aus:
+Führen Sie folgende Schritte durch:
 
 1. Wählen Sie auf der Startseite im Menü die Option **Sensoren** aus.
-  Auf der Seite „Sensoren“ werden Details wie Sensortyp, zugehöriger landwirtschaftlicher Betrieb, übergeordnetes Gerät, Portname, Porttyp und letzte Aktualisierung angezeigt.
+  Auf der Seite **Sensoren** werden Details wie Sensortyp, zugehöriger landwirtschaftlicher Betrieb, übergeordnetes Gerät, Portname, Porttyp und letzter aktualisierter Status angezeigt.
 2. Wählen Sie den Sensor aus, um Sensoreigenschaften, aktive Warnungen und Telemetriedaten für den Sensor anzuzeigen.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
+    ![Seite „Sensoren“](./media/get-sensor-data-from-sensor-partner/view-sensors-1.png)
 
 ## <a name="assign-devices"></a>Zuweisen von Geräten  
 
-Wenn die Sensordaten fließen, können Sie sie dem landwirtschaftlichen Betrieb zuweisen, für den Sie die Sensoren bereitgestellt haben.
+Die eingehenden Sensordaten können dem landwirtschaftlichen Betrieb zugewiesen werden, für den Sie die Sensoren bereitgestellt haben.
 
-1. Wählen Sie auf der Startseite im Menü die Option **Farms** (Landwirtschaftliche Betriebe) aus. Die Seite **Farms** (Landwirtschaftliche Betriebe) mit einer Liste wird angezeigt.  
-2. Wählen Sie den landwirtschaftlichen Betrieb aus, dem Sie das Gerät zuweisen möchten, und wählen Sie die Option **Geräte hinzufügen** aus.  
+1. Wählen Sie im Menü auf der Startseite die Option **Farms** (Landwirtschaftliche Betriebe) aus. Die Seite **Farms** (Landwirtschaftliche Betriebe) wird angezeigt.
+2. Wählen Sie den landwirtschaftlichen Betrieb aus, dem Sie das Gerät zuweisen möchten, und wählen Sie **Geräte hinzufügen** aus.
 3. Das Fenster **Geräte hinzufügen** wird angezeigt. Wählen Sie das Gerät aus, das Sie dem landwirtschaftlichen Betrieb zuweisen möchten.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
+    ![Fenster „Geräte hinzufügen“](./media/get-sensor-data-from-sensor-partner/add-devices-1.png)
 
-4. Wählen Sie **Geräte hinzufügen** aus. Alternativ können Sie zum Menü **Geräte** navigieren, die Geräte auswählen, die einem landwirtschaftlichen Betrieb zugewiesen werden sollen, und dann **Geräte zuordnen** auswählen.  
+4. Wählen Sie **Geräte hinzufügen** aus. Alternativ können Sie zum Menü **Geräte** navigieren, die Geräte auswählen, die einem landwirtschaftlichen Betrieb zugewiesen werden sollen, und dann **Geräte zuordnen** auswählen.
 5. Wählen Sie im Fenster **Geräte zuordnen** in der Dropdownliste den landwirtschaftlichen Betrieb und dann **Auf alle anwenden** aus, um den landwirtschaftlichen Betrieb allen ausgewählten Geräten zuzuordnen.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
+    ![Fenster „Geräte zuordnen“](./media/get-sensor-data-from-sensor-partner/associate-devices-1.png)
 
-6. Um jedes Gerät einem anderen landwirtschaftlichen Betrieb zuzuordnen, wählen Sie die Dropdownliste in der Spalte **Assign to Farm** (Landwirtschaftlichem Betrieb zuweisen) und dann einen landwirtschaftlichen Betrieb für jede Gerätezeile aus.  
-7. Wählen Sie **Zuweisen** aus, um die Zuweisung der Geräte durchzuführen.
+6. Wenn Sie die einzelnen Geräte jeweils einem anderen landwirtschaftlichen Betrieb zuordnen möchten, wählen Sie in der Spalte **Assign to Farm** (Landwirtschaftlichem Betrieb zuweisen) den Dropdownpfeil und anschließend einen landwirtschaftlichen Betrieb für jede Gerätezeile aus.
+7. Wählen Sie **Zuweisen** aus, um die Gerätezuweisung abzuschließen.
 
 ### <a name="visualize-sensor-data"></a>Visualisieren von Sensordaten
 
-Führen Sie die folgenden Schritte aus:
+Führen Sie folgende Schritte durch:
 
-1. Wählen Sie auf der Startseite im Menü die Option **Farms** (Landwirtschaftliche Betriebe) aus, um die Seite **Farms** (Landwirtschaftliche Betriebe) anzuzeigen.  
-2. Wählen Sie den **landwirtschaftlichen Betrieb** aus, für den Sie die Sensordaten anzeigen möchten.  
+1. Wählen Sie auf der Startseite im Menü die Option **Farms** (Landwirtschaftliche Betriebe) aus, um die Seite **Farms** (Landwirtschaftliche Betriebe) anzuzeigen.
+2. Wählen Sie den **landwirtschaftlichen Betrieb** aus, für den Sie die Sensordaten anzeigen möchten.
 3. Im Dashboard **Farm** (Landwirtschaftlicher Betrieb) können Sie die Telemetriedaten anzeigen. Sie können auch Livetelemetriedaten anzeigen oder **Benutzerdefinierter Bereich** verwenden, um einen bestimmten Datumsbereich für die Anzeige anzugeben.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
+    ![Dashboard für den landwirtschaftlichen Betrieb](./media/get-sensor-data-from-sensor-partner/telemetry-data-1.png)
 
-## <a name="delete-sensor"></a>Löschen eines Sensors
+## <a name="delete-a-sensor"></a>Löschen eines Sensors
 
-Folgen Sie diesen Schritten:
+Führen Sie folgende Schritte durch:
 
-1. Wählen Sie auf der Startseite im Menü die Option **Sensoren** aus, um die Seite **Sensoren** zu öffnen.  
-2. Wählen Sie das zu löschende Gerät und im Bestätigungsfenster dann die Option **Löschen** aus.
+1. Wählen Sie auf der Startseite im Menü die Option **Sensoren** aus, um die Seite **Sensoren** zu öffnen.
+2. Wählen Sie das zu löschende Gerät und anschließend im Bestätigungsfenster die Option **Löschen** aus.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
+    ![Schaltfläche „Löschen“](./media/get-sensor-data-from-sensor-partner/delete-sensors-1.png)
 
-Eine Bestätigungsmeldung mit dem Hinweis, dass das Löschen des Sensors erfolgreich war, wird angezeigt.  
+Eine Bestätigungsmeldung mit dem Hinweis, dass das Löschen des Sensors erfolgreich war, wird angezeigt.
 
 ## <a name="delete-devices"></a>Löschen von Geräten
 
-Folgen Sie diesen Schritten:
+Führen Sie folgende Schritte durch:
 
-1. Wählen Sie auf der Startseite im Menü die Option **Geräte** aus, um die Seite „Geräte“ zu öffnen.  
-2. Wählen Sie das zu löschende Gerät und im Bestätigungsfenster dann die Option **Löschen** aus.
+1. Wählen Sie im Menü auf der Startseite die Option **Geräte** aus, um die Seite **Geräte** zu öffnen.
+2. Wählen Sie das zu löschende Gerät und anschließend im Bestätigungsfenster die Option **Löschen** aus.
 
-    ![FarmBeats-Projekt](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
+    ![Schaltfläche „Löschen“](./media/get-sensor-data-from-sensor-partner/delete-device-1.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 5557028304d0e2bd5940dd9b01dddf525806d0c6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 01619027ddc79530dc9541584efa9a3e518f5136
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033664"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842057"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -70,9 +70,9 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 ## <a name="create-a-managed-image-in-the-portal"></a>Erstellen eines verwalteten Images im Portal 
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um das VM-Image zu verwalten. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
 
-2. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus, und wählen Sie dann den virtuellen Computer aus der Liste aus.
+2. Wählen Sie Ihren virtuellen Computer in der Liste aus.
 
 3. Wählen Sie auf der Seite **Virtueller Computer** des virtuellen Computers im oberen Menü die Option **Erfassen** aus.
 
@@ -80,7 +80,7 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 4. Übernehmen Sie unter **Name** entweder den bereits angegebenen Wert, oder geben Sie einen Namen ein, der für das Image verwendet werden soll.
 
-5. Wählen Sie unter **Ressourcengruppe** entweder **Neu erstellen** aus, und geben Sie einen Namen ein, oder wählen Sie die Option **Vorhandene verwenden** und dann aus der Dropdownliste eine Ressourcengruppe aus.
+5. Wählen Sie unter **Ressourcengruppe** entweder **Neu erstellen** aus, und geben Sie einen Namen ein, oder wählen Sie in der Dropdownliste eine Ressourcengruppe aus.
 
 6. Wenn Sie die Quell-VM nach der Erstellung des Image löschen möchten, wählen Sie **Diesen virtuellen Computer nach dem Erstellen des Images automatisch löschen** aus.
 
@@ -88,7 +88,7 @@ Führen Sie zum Generalisieren Ihres virtuellen Windows-Computers die folgenden 
 
 8. Wählen Sie **Erstellen** aus, um das Image zu erstellen.
 
-9. Nachdem das Image erstellt wurde, wird es in der Ressourcengruppe in der Liste der Ressourcen als **Image** angezeigt.
+Nachdem das Image erstellt wurde, wird es in der Ressourcengruppe in der Liste der Ressourcen als **Image** angezeigt.
 
 
 

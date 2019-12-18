@@ -2,13 +2,13 @@
 title: Übersicht über die Runtimeversionen von Azure Functions
 description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen Sie die Unterschiede kennen, und erfahren Sie, wie Sie die Version auswählen, die sich am besten für Ihre Anforderungen eignet.
 ms.topic: conceptual
-ms.date: 10/10/2019
-ms.openlocfilehash: 53da5869b4768c95fd225fb15db60f4301e537d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/09/2019
+ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226552"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74941705"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
@@ -16,16 +16,13 @@ Die Hauptversionen der Azure Functions-Runtime sind mit der Version von .NET ver
 
 | Laufzeitversion | Releaseebene<sup>1</sup> | .NET-Version | 
 | --------------- | ------------- | ------------ |
-| 3.x  | preview | .NET Core 3.x | 
+| 3.x | Allgemein verfügbar | .NET Core 3.1 | 
 | 2.x | Allgemein verfügbar | .NET Core 2.2 |
 | 1.x | GA<sup>2</sup> | .NET Framework 4.6<sup>3</sup> |
 
-<sup>1</sup>GA-Releases werden für Produktionsszenarien unterstützt.   
-<sup>2</sup>Version 1.x befindet sich im Wartungsmodus. Erweiterungen werden nur in höheren Versionen bereitgestellt.   
-<sup>3</sup>Unterstützt nur die Entwicklung im Azure-Portal oder lokal auf Windows-Computern.
-
->[!NOTE]  
-> Version 3. x der Functions-Runtime befindet sich in der Vorschauphase und wird für Produktionsumgebungen nicht unterstützt. Weitere Informationen zum Testen von Version 3.x finden Sie in [dieser Ankündigung](https://dev.to/azure/develop-azure-functions-using-net-core-3-0-gcm).
+<sup>1</sup> GA-Releases werden für Produktionsszenarien unterstützt.   
+<sup>2</sup> Die Version 1.x befindet sich im Wartungsmodus. Erweiterungen werden nur in höheren Versionen bereitgestellt.   
+<sup>3</sup> Unterstützt nur die Entwicklung im Azure-Portal oder lokal auf Windows-Computern.
 
 In diesem Artikel werden einige Unterschiede zwischen den verschiedenen Versionen, das Erstellen der einzelnen Versionen und das Ändern von Versionen erläutert.
 
@@ -41,23 +38,23 @@ Weitere Informationen finden Sie unter [Unterstützte Sprachen](supported-langua
 
 ## <a name="creating-1x-apps"></a>Ausführen auf einer spezifischen Version
 
-Im Azure-Portal und durch die Azure CLI erstellte Funktions-Apps sind standardmäßig auf Version 2.x festgelegt. Nach Möglichkeit sollte diese Runtimeversion verwendet werden. Bei Bedarf können Sie eine Funktions-App auch weiterhin in der Runtimeversion 1.x ausführen. Sie können die Runtimeversion nur ändern, nachdem Sie die Funktions-App erstellt haben, aber bevor Sie Funktionen hinzufügen. Informationen dazu, wie Sie die Runtimeversion auf 1.x festlegen, finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
-
-Sie können auch ein Upgrade auf Version 3.x der Runtime durchführen, die sich in der Vorschauphase befindet. Dies empfiehlt sich, wenn Sie Ihre Funktionen unter .NET Core 3.x ausführen möchten. Informationen dazu, wie Sie ein Upgrade auf 3.x durchführen, finden Sie unter [Anzeigen und Aktualisieren der aktuellen Runtimeversion](set-runtime-version.md#view-and-update-the-current-runtime-version).
+Im Azure-Portal und durch die Azure CLI erstellte Funktions-Apps sind standardmäßig auf Version 2.x festgelegt. Diese Version kann bei Bedarf geändert werden. Die Runtimeversion kann nur in 1.x geändert werden, wenn Sie Ihre Funktions-App erstellt, aber noch keine Funktionen hinzugefügt haben.  Der Wechsel zwischen 2.x und 3.x ist auch bei Apps möglich, die bereits über Funktionen verfügen. Es empfiehlt sich allerdings trotzdem, zuerst einen Test in einer neuen App durchzuführen.
 
 ## <a name="migrating-from-1x-to-later-versions"></a>Migrieren von 1.x zu neueren Versionen
 
-Sie können eine vorhandene App, die für die Runtimeversion 1.x geschrieben wurde, zur Version 2.x migrieren. Die meisten Änderungen, die Sie vornehmen müssen, betreffen die Sprachruntime, z.B. die Unterschiede in der C#-API zwischen .NET Framework 4.7 und .NET Core 2. Sie müssen auch sicherstellen, dass Ihr Code und Ihre Bibliotheken mit den ausgewählten Sprachruntimes kompatibel sind. Beachten Sie nicht zuletzt auch die unten genannten Änderungen an Triggern, Bindungen und Funktionen. Um ein optimales Migrationsergebnis zu erzielen, sollten Sie eine neue Funktions-App für Version 2.x erstellen und Ihren vorhandenen Funktionscode für Version 1.x in die neue App portieren.  
+Eine vorhandene App, die für die Runtimeversion 1.x geschrieben wurde, kann zu einer neueren Version migriert werden. Die meisten erforderlichen Änderungen hängen mit der Sprachruntime zusammen – also beispielsweise C#-API-Änderungen zwischen .NET Framework 4.7 und .NET Core. Sie müssen auch sicherstellen, dass Ihr Code und Ihre Bibliotheken mit den ausgewählten Sprachruntimes kompatibel sind. Beachten Sie nicht zuletzt auch die unten genannten Änderungen an Triggern, Bindungen und Funktionen. Um ein optimales Migrationsergebnis zu erzielen, sollten Sie eine neue Funktions-App in einer neuen Version erstellen und Ihren vorhandenen Funktionscode der Version 1.x zur neuen App portieren.  
 
-### <a name="changes-in-triggers-and-bindings"></a>Änderungen an Triggern und Bindungen
+Es besteht zwar die Möglichkeit eines direkten Upgrades durch manuelles Aktualisieren der App-Konfiguration, die Umstellung von 1.x auf eine höhere Version beinhaltet jedoch einige Breaking Changes. In C# ändert sich beispielsweise das Debuggingobjekt von `TraceWriter` in `ILogger`. Durch die Erstellung eines neuen Projekts mit der Version 3.x stehen die aktualisierten Funktionen auf der Grundlage der neuesten Vorlagen der Version 3.x zur Verfügung.
 
-In Version 2.x müssen Sie die Erweiterungen für bestimmte Trigger und Bindungen installieren, die von den Funktionen in Ihrer App verwendet werden. Die einzigen Ausnahmen sind HTTP- und Timertrigger, für die keine Erweiterung erforderlich ist.  Weitere Informationen finden Sie unter [Registrieren und Installieren von Bindungserweiterungen](./functions-bindings-register.md).
+### <a name="changes-in-triggers-and-bindings-after-version-1x"></a>Änderungen bei Triggern und Bindungen nach der Version 1.x
 
-Es gibt zwischen den Versionen auch einige Unterschiede in der `function.json` und den Attributen der Funktion. Die Event Hub-Eigenschaft `path` beispielsweise lautet jetzt `eventHubName`. Links zur Dokumentation für die einzelnen Bindungen finden Sie in der [Tabelle der vorhandenen Bindungen](#bindings).
+Ab der Version 2.x müssen die Erweiterungen für bestimmte Trigger und Bindungen installiert werden, die von den Funktionen in Ihrer App verwendet werden. Die einzigen Ausnahmen sind HTTP- und Timertrigger, für die keine Erweiterung erforderlich ist.  Weitere Informationen finden Sie unter [Registrieren und Installieren von Bindungserweiterungen](./functions-bindings-register.md).
 
-### <a name="changes-in-features-and-functionality"></a>Änderungen bei Features und Funktionalität
+Zwischen den Versionen gibt es auch einige Änderungen an der Datei *function.json* sowie an Attributen der Funktion. Die Event Hub-Eigenschaft `path` beispielsweise lautet jetzt `eventHubName`. Links zur Dokumentation für die einzelnen Bindungen finden Sie in der [Tabelle der vorhandenen Bindungen](#bindings).
 
-Einige Features wurden in der neuen Version entfernt, aktualisiert oder ersetzt. Dieser Abschnitt erläutert die Änderungen, die Sie in Version 2.x im Vergleich zu Version 1.x bemerken werden.
+### <a name="changes-in-features-and-functionality-after-version-1x"></a>Änderungen bei Features und Funktionen nach der Version 1.x
+
+Einige Features wurden nach der Version 1.x entfernt, aktualisiert oder ersetzt. In diesem Abschnitt werden die Änderungen nach der Version 1.x erläutert.
 
 In Version 2.x wurden die folgenden Änderungen vorgenommen:
 
@@ -79,9 +76,46 @@ In Version 2.x wurden die folgenden Änderungen vorgenommen:
 
 * Das URL-Format von Event Grid-Triggerwebhooks wurde zu `https://{app}/runtime/webhooks/{triggerName}` geändert.
 
-### <a name="migrating-a-locally-developed-application"></a>Migrieren einer lokal entwickelten Anwendung
+## <a name="migrating-from-2x-to-3x"></a>Migrieren von 2.x zu 3.x
 
-Möglicherweise verfügen Sie über vorhandene Funktions-App-Projekte, die Sie lokal mit der Runtimeversion 1.x entwickelt haben. Um ein Upgrade auf Version 2.x durchführen zu können, müssen Sie ein lokales Funktions-App-Projekt mit Version 2.x erstellen und Ihren vorhandenen Code in die neue App portieren. Sie könnten das vorhandene Projekt und den vorhandenen Code auch manuell aktualisieren – in einer Art „direktem Upgrade“. Allerdings gibt es eine Vielzahl weiterer Verbesserungen in Version 2.x gegenüber Version 1.x, die Sie dann auch noch anwenden müssten. Beispielsweise wurde das Debuggingobjekt in C# von `TraceWriter` zu `ILogger` geändert. Indem Sie ein neues Projekt mit Version 2.x erstellen, stehen Ihnen die aktualisierten Funktionen basierend auf den neuesten Vorlagen der Version 2.x direkt zur Verfügung.
+Die Azure Functions-Version 3.x bietet eine hohe Abwärtskompatibilität mit der Version 2.x.  Bei vielen Apps sollte problemlos ein Upgrade auf die Version 3.x möglich sein, ohne Codeänderungen vornehmen zu müssen.  Die Migration zur Version 3.x wird zwar empfohlen, trotzdem sollten ausführliche Tests durchgeführt werden, bevor die Hauptversion in Produktions-Apps geändert wird.
+
+### <a name="breaking-changes-between-2x-and-3x"></a>Breaking Changes zwischen 2.x und 3.x
+
+In diesem Abschnitt werden die Änderungen erläutert, die vor einem App-Upgrade von 2.x auf 3.x beachtet werden müssen.
+
+#### <a name="javascript"></a>JavaScript
+
+* Über `context.done` oder Rückgabewerte zugewiesene Ausgabebindungen weisen nun das gleiche Verhalten auf wie die Einstellung in `context.bindings`.
+
+* Das Zeitgebertrigger-Objekt wird im camelCase-Format angegeben (nicht im PascalCase-Format).
+
+* Funktionen, die von Event Hub mit binärem Datentyp (`dataType`) ausgelöst werden, erhalten ein Array vom Typ `binary` (anstelle von `string`).
+
+* Auf die Nutzlast von HTTP-Anforderungen kann nicht mehr über `context.bindingData.req` zugegriffen werden.  Der Zugriff darauf ist aber weiterhin als Eingabeparameter (`context.req`) und in `context.bindings` möglich.
+
+* Node.js 8 wird nicht mehr unterstützt und in Funktionen der Version 3.x nicht ausgeführt.
+
+#### <a name="net"></a>.NET
+
+* [Synchrone Servervorgänge sind standardmäßig deaktiviert.](https://docs.microsoft.com/dotnet/core/compatibility/2.2-3.0#http-synchronous-io-disabled-in-all-servers)
+
+### <a name="changing-version-of-apps-in-azure"></a>Ändern der Version von Apps in Azure
+
+Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwendet wird, wird durch die [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)-Anwendungseinstellung bestimmt. Für die Hauptversion der Runtime werden folgende Werte unterstützt:
+
+| Wert | Runtimeziel |
+| ------ | -------- |
+| `~3` | 3.x |
+| `~2` | 2.x |
+| `~1` | 1.x |
+
+>[!IMPORTANT]
+> Ändern Sie diese Einstellung mit Bedacht, da hierdurch unter Umständen weitere Änderungen an App-Einstellungen und Ihrem Funktionscode nötig werden.
+
+### <a name="locally-developed-application-versions"></a>Lokal entwickelte Anwendungsversionen
+
+Sie können folgende Aktualisierungen für Funktions-Apps vornehmen, um die Zielversionen lokal zu ändern.
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio-Runtimeversionen
 
@@ -97,21 +131,56 @@ In Visual Studio wählen Sie die Runtimeversion beim Erstellen eines Projekts au
 ##### <a name="version-2x"></a>Version 2.x
 
 ```xml
-<TargetFramework>netcoreapp2.2</TargetFramework>
+<TargetFramework>netcoreapp2.1</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
-Wenn Sie Ihr Projekt debuggen oder veröffentlichen, wird die richtige Version der Runtime verwendet.
+##### <a name="version-3x"></a>Version 3.x
+
+```xml
+<TargetFramework>netcoreapp3.1</TargetFramework>
+<AzureFunctionsVersion>v3</AzureFunctionsVersion>
+```
+
+> [!NOTE]
+> Für Azure Functions 3.x und .NET muss die `Microsoft.Sdk.NET.Functions` Erweiterung mindestens die Version `3.0.0` haben.
+
+###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>Aktualisieren von Apps der Version 2.x auf die Version 3.x in Visual Studio
+
+Sie können eine bereits vorhandene, für die Version 2.x konzipierte Funktion öffnen und zu 3.x migrieren, indem Sie die Datei `.csproj` bearbeiten und die obigen Werte aktualisieren.  Visual Studio verwaltet Runtimeversionen automatisch auf der Grundlage der Projektmetadaten.  Sollten Sie allerdings bislang noch keine App der Version 3.x erstellt haben, kann es sein, dass Visual Studio auf Ihrem Computer noch nicht über die Vorlagen und die Runtime für die Version 3.x verfügt.  In diesem Fall tritt ggf. ein Fehler wie der folgende auf: „Es ist keine Functions-Laufzeit verfügbar, die der im Projekt angegebenen Version entspricht.“  Führen Sie die Schritte zum Erstellen eines neuen Funktionsprojekts aus, um die neuesten Vorlagen und die Runtime abzurufen.  Wenn Sie zum Auswahlbildschirm für die Version und die Vorlage gelangen, warten Sie, bis Visual Studio die neuesten Vorlagen abgerufen hat.  Wenn die neuesten .NET Core 3-Vorlagen verfügbar sind und angezeigt werden, können Sie jedes beliebige Projekt ausführen und debuggen, das für die Version 3.x konfiguriert wurde.
+
+> [!IMPORTANT]
+> Funktionen der Version 3.x können nur in Visual Studio entwickelt werden, wenn Sie mindestens die Version 16.4 verwenden.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>Visual Studio Code und Azure Functions Core Tools
 
-[Azure Functions Core Tools](functions-run-local.md) werden für die Entwicklung über die Befehlszeile und auch von der [Azure Functions-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) für Visual Studio Code verwendet. Um für Version 2.x zu entwickeln, installieren Sie Version 2.x der Core Tools. Für die Entwicklung für Version 1.x ist Version 1.x der Core Tools erforderlich. Weitere Informationen finden Sie unter [Installieren der Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
+[Azure Functions Core Tools](functions-run-local.md) werden für die Entwicklung über die Befehlszeile und auch von der [Azure Functions-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) für Visual Studio Code verwendet. Wenn Sie für die Version 3.x entwickeln möchten, müssen Sie die Core Tools-Version 3.x installieren. Bei der Entwicklung für die Version 2.x benötigen Sie die Core Tools-Version 2.x. Und so weiter. Weitere Informationen finden Sie unter [Installieren der Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools).
 
-Für die Visual Studio Code-Entwicklung müssen Sie möglicherweise auch die Benutzereinstellung für die `azureFunctions.projectRuntime` entsprechend der installierten Version der Tools aktualisieren.  Diese Einstellung aktualisiert auch die Vorlagen und Sprachen, die während der Erstellung von Funktions-Apps verwendet werden.
+Für die Visual Studio Code-Entwicklung müssen Sie möglicherweise auch die Benutzereinstellung für die `azureFunctions.projectRuntime` entsprechend der installierten Version der Tools aktualisieren.  Diese Einstellung aktualisiert auch die Vorlagen und Sprachen, die während der Erstellung von Funktions-Apps verwendet werden.  Wenn Sie Apps in `~3` erstellen möchten, müssen Sie die Benutzereinstellung `azureFunctions.projectRuntime` auf `~3`aktualisieren.
 
-### <a name="changing-version-of-apps-in-azure"></a>Ändern der Version von Apps in Azure
+![Runtimeeinstellung der Azure Functions-Erweiterung](./media/functions-versions/vs-code-version-runtime.png)
 
-Welche Version der Functions-Runtime von veröffentlichten Apps in Azure verwendet wird, wird durch die [`FUNCTIONS_EXTENSION_VERSION`](functions-app-settings.md#functions_extension_version)-Anwendungseinstellung bestimmt. Der Wert `~2` gilt für die Runtimeversion 2.x, der Wert `~1` für die Version 1.x. Ändern Sie diese Einstellung nicht unüberlegt, da sehr wahrscheinlich weitere Änderungen an App-Einstellungen sowie am Code in Ihren Funktionen erforderlich sind. Informationen zur empfohlenen Methode für die Migration Ihrer Funktions-App zu einer anderen Runtimeversion finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md).
+#### <a name="maven-and-java-apps"></a>Maven- und Java-Apps
+
+Sie können Java-Apps der Version 2.x zur Version 3.x migrieren, indem Sie die [Version 3.x von Core Tools installieren](functions-run-local.md#install-the-azure-functions-core-tools), die für die lokale Ausführung benötigt wird.  Nachdem Sie sich vergewissert haben, dass Ihre lokal ausgeführte App unter der Version 3.x ordnungsgemäß funktioniert, können Sie die Datei `POM.xml` der App aktualisieren, um die Einstellung `FUNCTIONS_EXTENSION_VERSION` in `~3` zu ändern, wie im folgenden Beispiel zu sehen:
+
+```xml
+<configuration>
+    <resourceGroup>${functionResourceGroup}</resourceGroup>
+    <appName>${functionAppName}</appName>
+    <region>${functionAppRegion}</region>
+    <appSettings>
+        <property>
+            <name>WEBSITE_RUN_FROM_PACKAGE</name>
+            <value>1</value>
+        </property>
+        <property>
+            <name>FUNCTIONS_EXTENSION_VERSION</name>
+            <value>~3</value>
+        </property>
+    </appSettings>
+</configuration>
+```
 
 ## <a name="bindings"></a>Bindungen
 

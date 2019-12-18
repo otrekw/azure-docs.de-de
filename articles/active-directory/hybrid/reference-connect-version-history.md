@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 893b617a965b0823b8d630e036d5d5f923647f8f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73944225"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74922293"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -38,9 +38,23 @@ Download| [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?Link
 Während dieses Prozesses enthält die Versionsnummer des Releases ein „X“ an der Position der Nebenversion (z.B. 1.3.X.0). Dies bedeutet, dass die Versionshinweise in diesem Dokument für alle Versionen gültig sind, die mit „1.3“ beginnen. Sobald wir den Veröffentlichungsprozess beendet haben, wird die Versionsnummer auf die aktuell veröffentliche Version und der Releasestatus auf „Für den Download und für automatisches Upgrade veröffentlicht“ aktualisiert.
 Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md) erhalten Sie weitere Informationen zu diesem Thema.
 
+## <a name="14380"></a>1.4.38.0
+### <a name="release-status"></a>Releasestatus
+6\.12.2019: Release zum Herunterladen Nicht als automatisches Upgrade verfügbar
+### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
+- Wir haben die Kennworthash-Synchronisierung für Azure AD Domain Services aktualisiert, um das Auffüllen in Kerberos-Hashes ordnungsgemäß umzusetzen.  Dies führt zu einer Leistungsverbesserung bei der Kennwortsynchronisierung zwischen AAD und Azure AD Domain Services.
+- Wir haben Unterstützung für zuverlässige Sitzungen zwischen dem Authentifizierungs-Agent und Service Bus hinzugefügt.
+- Dieses Release erzwingt TLS 1.2 für die Kommunikation zwischen dem Authentifizierungs-Agent und Clouddiensten.
+- Wir haben einen DNS-Cache für WebSocket-Verbindungen zwischen dem Authentifizierungs-Agent und Clouddiensten hinzugefügt.
+- Wir haben die Möglichkeit hinzugefügt, einen bestimmten Agent aus der Cloud als Ziel für Tests der Konnektivität mit dem Agent zu verwenden.
+
+### <a name="fixed-issues"></a>Behobene Probleme
+- Release 1.4.18.0 enthielt einen Fehler, bei dem das PowerShell-Cmdlet für DSSO die Windows-Anmeldeinformationen anstelle der Administratoranmeldeinformationen verwendet hat, die während der Ausführung von PowerShell angegeben wurden. Dies hatte zur Folge, dass es nicht möglich war, DSSO in mehreren Gesamtstrukturen über die AADConnect-Benutzeroberfläche zu aktivieren. 
+- Durch die Korrektur kann DSSO über die AADConnect-Benutzeroberfläche gleichzeitig in allen Gesamtstrukturen aktiviert werden.
+
 ## <a name="14320"></a>1.4.32.0
 ### <a name="release-status"></a>Releasestatus
-08.11.2019: Für den Download veröffentlicht. Nicht für automatisches Upgrade verfügbar
+08.11.2019: Für den Download veröffentlicht. Nicht als automatisches Upgrade verfügbar
 
 >[!IMPORTANT]
 >Wenn Sie Konfigurationseinstellungen für die AD FS-Vertrauensstellung mithilfe von MSOnline PowerShell verwalten, müssen Sie Ihr MSOnline PowerShell-Modul aufgrund einer internen Schemaänderung in dieser Version von Azure AD Connect auf Version 1.1.183.57 oder höher aktualisieren.
@@ -70,7 +84,7 @@ In bestimmten Fällen wurden die Self-Service-Kennwortzurücksetzung und das Ken
 
 
 ### <a name="release-status"></a>Releasestatus
-25.09.2019: Entfernung aus dem manuellen Download, bis die Untersuchung des Incidents abgeschlossen ist.
+25.09.2019: Nur für automatisches Upgrade veröffentlicht
 
 ### <a name="new-features-and-improvements"></a>Neue Features und Verbesserungen
 - Neue Tools zur Problembehandlung helfen bei der Behandlung folgender Szenarien: „Benutzer wird nicht synchronisiert“, „Gruppe wird nicht synchronisiert“ oder „Gruppenmitglied wird nicht synchronisiert“.

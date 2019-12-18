@@ -3,28 +3,24 @@ title: Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines 
 description: Dieser Artikel beschreibt Schritte zum horizontalen Hoch- und Herunterskalieren eines Azure Data Explorer-Clusters basierend auf sich änderndem Bedarf.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/14/2019
-ms.openlocfilehash: eb204701b42436a5ae95bac97ed6fd97cf272860
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.date: 12/09/2019
+ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
+ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561864"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74942238"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>Verwalten des horizontalen Skalierens (horizontales Hochskalieren) eines Clusters in Azure Data Explorer zur Anpassung an sich ändernden Bedarf
 
-Die richtige Größe eines Clusters ist entscheidend für die Leistung von Azure-Daten-Explorer. Eine statische Clustergröße kann zu einer Unter- oder Überauslastung führen, was beides nicht ideal ist.
-
-Da der Bedarf für einen Cluster nicht mit absoluter Genauigkeit vorhergesagt werden kann, ist es besser, einen Cluster zu *skalieren* und je nach Bedarf Kapazität und CPU-Ressourcen hinzuzufügen bzw. zu entfernen. 
+Die richtige Größe eines Clusters ist entscheidend für die Leistung von Azure-Daten-Explorer. Eine statische Clustergröße kann zu einer Unter- oder Überauslastung führen, was beides nicht ideal ist. Da der Bedarf für einen Cluster nicht mit absoluter Genauigkeit vorhergesagt werden kann, ist es besser, einen Cluster zu *skalieren* und je nach Bedarf Kapazität und CPU-Ressourcen hinzuzufügen bzw. zu entfernen. 
 
 Es gibt zwei Workflows für die Skalierung eines Azure Data Explorer-Clusters: 
-
 * Horizontales Hoch- oder Herunterskalieren
 * [Zentrales Hoch- oder Herunterskalieren](manage-cluster-vertical-scaling.md)
-
 In diesem Artikel wird der Workflow für die horizontale Skalierung beschrieben.
 
 ## <a name="configure-horizontal-scaling"></a>Konfigurieren der horizontalen Skalierung
@@ -54,6 +50,33 @@ Die optimierte Autoskalierung ist die empfohlene Methode für die Autoskalierung
    ![Optimierte Autoskalierung](media/manage-cluster-horizontal-scaling/optimized-autoscale-method.png)
 
 Die optimierte automatische Skalierung beginnt mit der Arbeit. Ihre Aktionen sind im Azure-Aktivitätsprotokoll des Clusters jetzt sichtbar.
+
+#### <a name="logic-of-optimized-autoscale"></a>Logik der optimierten Autoskalierung 
+
+**Horizontales Skalieren**
+
+Wenn sich der Cluster einem Status mit zu hoher Auslastung nähert, wird er horizontal hochskaliert, damit die optimale Leistung erhalten bleibt. Das horizontale Hochskalieren tritt in folgenden Situationen auf:
+* Die Anzahl der Clusterinstanzen liegt unter der maximalen Anzahl von Instanzen, die vom Benutzer definiert wurden.
+* Die Cacheauslastung ist länger als eine Stunde sehr hoch.
+
+> [!NOTE]
+> Die Logik für das horizontale Hochskalieren berücksichtigt derzeit nicht die Erfassungsauslastung und die CPU-Metriken. Wenn diese Metriken für Ihren Anwendungsfall wichtig sind, verwenden Sie die [benutzerdefinierte Autoskalierung](#custom-autoscale).
+
+**Horizontales Herunterskalieren**
+
+Wenn sich der Cluster einem Status mit zu niedriger Auslastung nähert, wird er horizontal herunterskaliert, um bei gleichbleibender Leistung die Kosten zu senken. Es werden mehrere Metriken verwendet, um zu überprüfen, ob das horizontale Herunterskalieren des Clusters sicher ist. Die folgenden Regeln werden 7 Tage lang täglich ausgewertet, bevor ein horizontales Herunterskalierung erfolgt:
+* Die Anzahl der Instanzen liegt über 2 und über der definierten Mindestanzahl von Instanzen.
+* Um sicherzustellen, dass keine Ressourcen überladen werden, müssen die folgenden Metriken überprüft werden, bevor ein horizontales Herunterskalieren erfolgt: 
+    * Die Cacheauslastung ist nicht hoch.
+    * Die CPU-Auslastung liegt unter dem Durchschnitt. 
+    * Die Erfassungsauslastung liegt unter dem Durchschnitt. 
+    * Die Auslastung bei der Streamingerfassung (sofern verwendet) ist nicht hoch.
+    * Keep-Alive-Ereignisse liegen oberhalb eines definierten Mindestwerts und werden ordnungsgemäß und rechtzeitig verarbeitet.
+    * Es erfolgt keine Abfragedrosselung. 
+    * Die Anzahl der fehlerhaften Abfragen liegt unter einem definierten Mindestwert.
+
+> [!NOTE]
+> Die Logik zum horizontalen Herunterskalieren erfordert derzeit eine 7-tägige Auswertung, bevor eine optimierte horizontale Herunterskalierung erfolgt. Diese Auswertung erfolgt einmal alle 24 Stunden. Wenn eine schnelle Änderung erforderlich ist, nutzen Sie die [manuelle Skalierung](#manual-scale).
 
 ### <a name="custom-autoscale"></a>Benutzerdefinierte Autoskalierung
 
@@ -108,5 +131,4 @@ Sie haben nun die horizontale Skalierung für Ihren Azure Data Explorer-Cluster 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Überwachen der Azure Data Explorer-Leistung, -Integrität und -Auslastung mit Metriken](using-metrics.md)
-
 * [Manage cluster vertical scaling (scale up) in Azure Data Explorer to accommodate changing demand](manage-cluster-vertical-scaling.md) (Verwalten der vertikalen Clusterskalierung (Hochskalieren) in Azure Data Explorer bei sich änderndem Bedarf)

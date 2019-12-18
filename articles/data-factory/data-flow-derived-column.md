@@ -1,17 +1,18 @@
 ---
-title: Transformation für abgeleitete Spalten im Azure Data Factory-Zuordnungsdatenfluss
+title: Transformation für abgeleitete Spalten in Mapping Data Flow
 description: Informationen zum bedarfsorientierten Transformieren von Daten in Azure Data Factory mithilfe der Mapping Data Flow-Transformation für abgeleitete Spalten.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 10/15/2019
-ms.openlocfilehash: 387af25b87fdedff5d15ccb6a03819ad8b020e9a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c2d4c9b089a6673a5cff716d2901cc2b9483ede1
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676886"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972250"
 ---
 # <a name="derived-column-transformation-in-mapping-data-flow"></a>Transformation für abgeleitete Spalten in Mapping Data Flow
 
@@ -26,6 +27,16 @@ Sie können eine bereits vorhandene Spalte löschen, indem Sie diese über die D
 Sie können weitere abgeleitete Spalten hinzufügen, indem Sie mit dem Mauszeiger auf eine vorhandene Spalte zeigen und auf das Pluszeichen klicken. Klicken Sie entweder auf **Spalte hinzufügen** oder auf **Spaltenmuster hinzufügen**. Spaltenmuster können nützlich sein, wenn sich Ihre Spaltennamen von den Quellen unterscheiden. Weitere Informationen finden Sie unter [Column Patterns (Spaltenmuster)](concepts-data-flow-column-pattern.md).
 
 ![Auswahl für neue abgeleitete Spalte](media/data-flow/columnpattern.png "Auswahl für neue abgeleitete Spalte")
+
+## <a name="build-schemas-in-output-schema-pane"></a>Erstellen von Schemas im Ausgabeschemabereich
+
+Die Spalten, die Sie ändern und dem Schema hinzufügen, werden im Ausgabeschemabereich aufgeführt. Hier können Sie auf interaktive Weise einfache und komplexe Datenstrukturen erstellen. Wenn Sie weitere Felder hinzufügen möchten, wählen Sie **Spalte hinzufügen** aus. Wenn Sie Hierarchien erstellen möchten, wählen Sie **Unterspalte hinzufügen** aus.
+
+![Hinzufügen einer Unterspalte](media/data-flow/addsubcolumn.png "Hinzufügen einer Unterspalte")
+
+Weitere Informationen zum Umgang mit komplexen Typen im Datenfluss finden Sie unter [JSON-Verarbeitung mit Mapping Data Flow](concepts-data-flow-json.md).
+
+![Hinzufügen einer komplexen Spalte](media/data-flow/complexcolumn.png "Hinzufügen von Spalten")
 
 ## <a name="data-flow-script"></a>Datenflussskript
 

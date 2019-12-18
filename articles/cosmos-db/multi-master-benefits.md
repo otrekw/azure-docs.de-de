@@ -1,17 +1,17 @@
 ---
 title: Vorteile der Multimasterunterstützung von Azure Cosmos DB
-description: Informationen zum Verständnis der Vorteile der Multimasterunterstützung in Azure Cosmos DB.
+description: Erfahren Sie etwas über die Vorteile der Multimasterunterstützung in Azure Cosmos DB durch einen Vergleich der Latenz und der SLA-Anforderungen bei einem einzelnen und bei mehreren Schreibstandorten.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/08/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: c78e5e4f8d396d777738bddfd6baf086c0b2ecf4
-ms.sourcegitcommit: 1572b615c8f863be4986c23ea2ff7642b02bc605
+ms.openlocfilehash: b21b6ba82ba1ada0103501b8beeca270df86abd9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67788581"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872008"
 ---
 # <a name="understand-multi-master-benefits-in-azure-cosmos-db"></a>Vorteile der Multimasterunterstützung in Azure Cosmos DB
 

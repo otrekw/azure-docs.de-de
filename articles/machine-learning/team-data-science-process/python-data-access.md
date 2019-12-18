@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e9daf1be1f931bb13cda446cbb9d6e37acce3bcf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7b86d643540e46f9a4fc86c83fc77d739bfba418
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498107"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978491"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Zugriff auf Datasets mit Python mithilfe der Azure Machine Learning Python-Clientbibliothek
 Die Vorschau von Microsoft Azure Machine Learning Python-Clientbibliothek kann einen sicheren Zugriff auf Ihre Azure Machine Learning-Datasets aus einer lokalen Python-Umgebung aktivieren und ermöglicht die Erstellung und Verwaltung von Datasets im Arbeitsbereich.
@@ -56,13 +56,13 @@ Wenn Sie Git auf Ihrem Computer installiert haben, können Sie mit Pip direkt vo
     pip install git+https://github.com/Azure/Azure-MachineLearning-ClientLibrary-Python.git
 
 
-## <a name="datasetAccess"></a>Verwenden von Studio Codeausschnitten, um auf Datasets zuzugreifen
+## <a name="datasetAccess"></a>Verwenden von Codeausschnitten, um auf Datasets zuzugreifen
 Mit der Python-Clientbibliothek erhalten Sie programmgesteuerten Zugriff auf Ihre vorhandenen Datasets aus durchgeführten Experimenten.
 
-Über die Studio Web-Schnittstelle können Sie Codeausschnitte generieren, die alle notwendigen Informationen zum Herunterladen und Deserialisieren von Datasets als Pandas DataFrame-Objekte auf Ihrem lokalen Computer enthalten.
+Über die Studio Weboberfläche von Azure Machine Learning Studio (klassisch) können Sie Codeausschnitte generieren, die alle notwendigen Informationen zum Herunterladen und Deserialisieren von Datasets als Pandas DataFrame-Objekte auf Ihrem lokalen Computer enthalten.
 
 ### <a name="security"></a>Sicherheit für den Datenzugriff
-Die von Studio bereitgestellten Codeausschnitte zur Verwendung mit Python-Clientbibliotheken umfassen Ihre Arbeitsbereichs-ID und Authentifizierungstoken. Diese bieten vollständigen Zugriff auf den Arbeitsbereich und müssen wie ein Kennwort geschützt werden.
+Die von Azure Machine Learning Studio (klassisch) bereitgestellten Codeausschnitte zur Verwendung mit Python-Clientbibliotheken enthalten Ihre Arbeitsbereichs-ID und Ihr Authentifizierungstoken. Diese bieten vollständigen Zugriff auf den Arbeitsbereich und müssen wie ein Kennwort geschützt werden.
 
 Aus Sicherheitsgründen ist die Codeausschnitt-Funktionalität nur für Benutzer verfügbar, deren Rolle als **Besitzer** für den Arbeitsbereich eingestellt ist. Die Rolle wird in Azure Machine Learning Studio (klassisch) auf der Seite **BENUTZER** unter **Einstellungen** angezeigt.
 
@@ -72,18 +72,18 @@ Wenn Ihre Rolle nicht als **Besitzer**festgelegt ist, können Sie darum bitten, 
 
 Um das Autorisierungstoken zu erhalten, führen Sie eine der folgenden Aktionen durch:
 
-* Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihren Autorisierungstoken auf der Seite „Einstellungen“ von ihrem Arbeitsbereich im Studio zugreifen. Wählen Sie im linken Bereich **Einstellungen**, und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen. Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
+* Fragen Sie bei einem Besitzer nach einem Token. Besitzer können auf ihr Autorisierungstoken auf der Seite „Einstellungen“ ihres Arbeitsbereichs in Azure Machine Learning Studio (klassisch) zugreifen. Wählen Sie im linken Bereich **Einstellungen**, und klicken Sie auf **AUTORISIERUNGSTOKEN**, um die primären und sekundären Token zu sehen. Im Codebeispiel können zwar entweder das primäre oder das sekundäre Autorisierungstoken verwendet werden, es empfiehlt sich jedoch, dass Besitzer nur das sekundäre Autorisierungstoken freigeben.
 
-![Autorisierungstoken](./media/python-data-access/ml-python-access-settings-tokens.png)
+   ![Autorisierungstoken](./media/python-data-access/ml-python-access-settings-tokens.png)
 
 * Bitten Sie darum, zur Rolle „Besitzer“ hochgestuft zu werden. Zu diesem Zweck muss ein aktueller Besitzer des Arbeitsbereichs Sie zuerst aus dem Arbeitsbereich entfernen und dann erneut als Besitzer einladen.
 
-Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben, können sie auf den Arbeitsbereich mithilfe des Codeausschnitts unabhängig von ihrer Rolle zugreifen.
+Wenn Entwickler die Arbeitsplatz-ID und das Autorisierungstoken abgerufen haben, können sie unabhängig von ihrer Rolle mithilfe des Codeausschnitts auf den Arbeitsbereich zugreifen.
 
 Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTELLUNGEN** verwaltet. Sie können sie erneut generieren, aber dieses Verfahren hebt den Zugriff auf das vorherige Token auf.
 
 ### <a name="accessingDatasets"></a>Zugriff auf Datasets aus einer lokalen Python-Anwendung
-1. Klicken Sie in Machine Learning Studio auf der Navigationsleiste auf der linken Seite auf **DATASETS** .
+1. Klicken Sie in Machine Learning Studio (klassisch) auf der Navigationsleiste auf der linken Seite auf **DATASETS**.
 2. Wählen Sie das Dataset, auf das Sie zugreifen möchten. Wählen Sie eines der Datasets aus der Liste **MEINE DATASETS** oder aus der Liste **BEISPIELE** aus.
 3. Klicken Sie auf der unteren Symbolleiste auf **Datenzugriffscode generieren**. Diese Schaltfläche ist deaktiviert, wenn die Daten ein mit der Python-Clientbibliothek nicht kompatibles Format haben.
    
@@ -96,7 +96,7 @@ Autorisierungstoken werden auf der Seite **AUTORISIERUNGSTOKEN** unter **EINSTEL
     ![Einfügen von Code in das Notebook][ipython-dataset]
 
 ## <a name="accessingIntermediateDatasets"></a>Zugriff auf Zwischen-Datasets von Machine Learning-Experimenten
-Nachdem ein Experiment in Machine Learning Studio ausgeführt wurde, ist es möglich, von den Ausgabeknoten der Module auf die Zwischen-Datasets zuzugreifen. Zwischen-Datasets sind Daten, die für Zwischenschritte erstellt und verwendet wurden, wenn ein Modell-Werkzeug ausgeführt wurde.
+Nachdem ein Experiment in der klassischen Version von Machine Learning Studio ausgeführt wurde, ist es möglich, von den Ausgabeknoten der Module auf die Zwischen-Datasets zuzugreifen. Zwischen-Datasets sind Daten, die für Zwischenschritte erstellt und verwendet wurden, wenn ein Modell-Werkzeug ausgeführt wurde.
 
 Auf Zwischen-Datasets kann zugegriffen werden, solange das Datenformat mit der Python-Clientbibliothek kompatibel ist.
 
@@ -141,7 +141,7 @@ Die folgenden Schritte zeigen ein Beispiel, das ein Experiment erstellt, dieses 
 
 ## <a name="clientApis"></a>Verwenden Sie die Machine Learning Python-Clientbibliothek, um auf Datasets zuzugreifen, diese zu lesen, zu erstellen und zu verwalten.
 ### <a name="workspace"></a>Arbeitsbereich
-Der Arbeitsbereich ist der Einstiegspunkt für die Python-Clientbibliothek. Geben Sie zum Erstellen einer Instanz die `Workspace` Klasse mit Ihrer Arbeitsbereich-ID und Ihrem Autorisierungstoken an:
+Der Arbeitsbereich ist der Einstiegspunkt für die Python-Clientbibliothek. Geben Sie zum Erstellen einer Instanz die Klasse `Workspace` mit Ihrer Arbeitsbereich-ID und Ihrem Autorisierungstoken an:
 
     ws = Workspace(workspace_id='4c29e1adeba2e5a7cbeb0e4f4adfb4df',
                    authorization_token='f4f3ade2c6aefdb1afb043cd8bcf3daf')

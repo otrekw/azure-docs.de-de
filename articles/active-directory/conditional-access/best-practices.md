@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b8402279b5c2717b1f73a28f2efc02ade5e479c
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: ccfbb31c29b9e240a4865c8d7d98d7b6af00d1fd
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175770"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74963935"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -45,17 +45,18 @@ Damit Ihre Richtlinie funktioniert, müssen Sie Folgendes konfigurieren:
 
 ### <a name="how-are-conditional-access-policies-applied"></a>Wie werden Richtlinien für bedingten Zugriff angewendet?
 
-Wenn Sie auf eine Cloud-App zugreifen, können mehrere Richtlinien für bedingten Zugriff angewendet werden. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der MFA und die zweite Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. 
+Wenn Sie auf eine Cloud-App zugreifen, können mehrere Richtlinien für bedingten Zugriff angewendet werden. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) und eine weitere Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. 
 
 Alle Richtlinien werden in zwei Phasen erzwungen:
 
-- In der **ersten** Phase werden alle Richtlinien ausgewertet und alle nicht erfüllten Zugriffssteuerungen gesammelt. 
-
-- In der **zweiten** Phase werden Sie aufgefordert, die nicht erfüllten Anforderungen zu erfüllen. Wenn eine der Richtlinien den Zugriff blockiert, werden Sie blockiert und nicht zur Erfüllung weiterer Richtlinienanforderungen aufgefordert. Falls Sie durch keine der Richtlinien blockiert wurden, werden Sie aufgefordert, weitere Richtlinienanforderungen zu erfüllen. Dabei gilt die folgende Reihenfolge:
-
-   ![Reihenfolge](./media/best-practices/06.png)
-    
-   Danach folgen externe MFA-Anbieter und die Nutzungsbedingungen.
+- Phase 1: 
+   - Detailsammlung: Sammeln von Details, um Richtlinien zu ermitteln, die bereits erfüllt sind.
+   - In dieser Phase wird von Benutzern unter Umständen ein Zertifikat angefordert, wenn die Gerätekonformität Teil Ihrer Richtlinien für bedingten Zugriff ist. Diese Anforderung kann für Browser-Apps angezeigt werden, wenn das Gerät nicht das Windows 10-Betriebssystem verwendet.
+   - Die erste Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien sowie für Richtlinien im Modus [Nur Bericht](concept-conditional-access-report-only.md) durchlaufen.
+- Phase 2:
+   - Erzwingung: Sicherstellen, dass der Benutzer sämtliche noch nicht erfüllten Anforderungen erfüllt (unter Berücksichtigung der gesammelten Details aus Phase 1).
+   - Anwenden der Ergebnisse auf die Sitzung. 
+   - Die zweite Phase der Richtlinienauswertung wird für alle aktivierten Richtlinien durchlaufen.
 
 ### <a name="how-are-assignments-evaluated"></a>Wie werden Zuweisungen ausgewertet?
 

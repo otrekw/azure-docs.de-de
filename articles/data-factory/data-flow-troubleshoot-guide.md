@@ -1,18 +1,20 @@
 ---
-title: Problembehandlung für Azure Data Factory-Datenflüsse
+title: Beheben von Problemen mit Datenflüssen
 description: In diesem Artikel wird beschrieben, wie Sie in Azure Data Factory Datenflussprobleme beheben.
 services: data-factory
+ms.author: makromer
 author: kromerm
+manager: anandsub
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/08/2019
-ms.author: makromer
-ms.openlocfilehash: 1b2309ec71cb3d43f4e5a39b80db593ab201c614
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.custom: seo-lt-2019
+ms.date: 12/06/2019
+ms.openlocfilehash: b972bbeac419d88afdd257a7fd19587dbaedf0d9
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721353"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930176"
 ---
 # <a name="troubleshoot-azure-data-factory-data-flows"></a>Problembehandlung für Azure Data Factory-Datenflüsse
 
@@ -83,6 +85,14 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Datenflü
 - **Ursache:** Beim Lesen aus einer JSON-Quelle mit einem einzelnen Dokument in zahlreichen geschachtelten Zeilen kann ADF nicht über Spark ermitteln, wo das vorherige Dokument endet und ein neues Dokument beginnt.
 
 - **Lösung:** Erweitern Sie in der Quelltransformation, die ein JSON-Dataset verwendet, die Option „JSON-Einstellungen“, und aktivieren Sie „Einzelnes Dokument“.
+
+### <a name="error-message-duplicate-columns-found-in-join"></a>Fehlermeldung: Doppelte Spalten bei Join gefunden
+
+- **Symptome:** Die JOIN-Transformation führte zu Spalten auf der linken und der rechten Seite, die doppelte Spaltennamen enthalten.
+
+- **Ursache:** Die verknüpften Datenströme enthalten identische Spaltennamen.
+
+- **Lösung:** Fügen Sie nach dem Join eine SELECT-Transformation hinzu, und wählen Sie „Doppelte Spalten entfernen“ für die Eingabe und die Ausgabe aus.
 
 
 ## <a name="general-troubleshooting-guidance"></a>Allgemeine Anleitungen zur Problembehandlung

@@ -2,18 +2,18 @@
 title: 'Infrastruktur: Lokales Apache Hadoop zu Azure HDInsight'
 description: Erfahren Sie mehr zu Best Practices für die Infrastruktur bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/04/2019
-ms.author: hrasheed
-ms.openlocfilehash: adc0e5f5eef41dcb1f826ffbf0cfe91a937fac01
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499230"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951512"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – Best Practices für Infrastruktur
 
@@ -23,10 +23,17 @@ Dieser Artikel enthält Empfehlungen für die Verwaltung der Infrastruktur von A
 
 Die wichtigsten Entscheidungen für die Kapazitätsplanung von HDInsight-Clustern sind die folgenden:
 
-- **Region auswählen** – Die Azure-Region bestimmt, wo Ihr Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte sich der Cluster in der gleichen Region wie Ihre Daten befinden.
-- **Speicherort und Größe auswählen** – Der Standardspeicher muss sich in der gleichen Region wie der Cluster befinden. Für einen Cluster mit 48 Knoten wird empfohlen, 4 bis 8 Speicherkonten zu verwenden. Es mag bereits ausreichend Gesamtspeicher verfügbar sein, doch jedes Speicherkonto bietet zusätzliche Netzwerkbandbreite für die Serverknoten. Wenn Sie mehrere Speicherkonten haben, verwenden Sie für jedes Speicherkonto einen zufälligen Namen ohne Präfix. Die zufällige Benennung soll die Wahrscheinlichkeit alle Konten übergreifender Speicherengpässe (Drosselung) oder üblicher Fehler reduzieren. Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbessern.
-- **VM-Größe und Typ auswählen (unterstützt jetzt die G-Serie)** – Jeder Clustertyp hat einen Satz von Knotentypen, und jeder Knotentyp hat bestimmte Optionen für VM-Größe und -Typ. Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleistung, RAM-Größe und Netzwerklatenz. Mit einer simulierten Workload kann für jeden Knotentyp die optimale VM-Größe und der richtige Typ ermittelt werden.
-- **Anzahl der Workerknoten auswählen** -Die anfängliche Anzahl von Workerknoten kann mit simulierten Workloads bestimmt werden. Der Cluster kann später durch Hinzufügen weiterer Workerknoten skaliert werden, um Spitzenlastanforderungen zu erfüllen. Der Cluster kann später herunterskaliert werden, wenn die zusätzlichen Workerknoten nicht benötigt werden.
+**Region**  
+Die Azure-Region bestimmt, wo der Cluster physisch bereitgestellt wird. Um die Latenz der Lese- und Schreibvorgänge zu minimieren, sollte sich der Cluster in der gleichen Region wie Ihre Daten befinden.
+
+**Speicherort und -größe**  
+Der Standardspeicher muss sich in derselben Region wie der Cluster befinden. Für einen Cluster mit 48 Knoten wird empfohlen, 4 bis 8 Speicherkonten zu verwenden. Es mag bereits ausreichend Gesamtspeicher verfügbar sein, doch jedes Speicherkonto bietet zusätzliche Netzwerkbandbreite für die Serverknoten. Wenn Sie mehrere Speicherkonten haben, verwenden Sie für jedes Speicherkonto einen zufälligen Namen ohne Präfix. Die zufällige Benennung soll die Wahrscheinlichkeit alle Konten übergreifender Speicherengpässe (Drosselung) oder üblicher Fehler reduzieren. Verwenden Sie nur einen Container pro Speicherkonto, um die Leistung zu verbessern.
+
+**VM-Größe und -Typ (unterstützt jetzt die G-Serie)**  
+Jeder Clustertyp hat einen Satz von Knotentypen, und jeder Knotentyp hat bestimmte Optionen für VM-Größe und -Typ. Größe und Typ des virtuellen Computers richten sich nach CPU-Verarbeitungsleistung, RAM-Größe und Netzwerklatenz. Mit einer simulierten Workload kann für jeden Knotentyp die optimale VM-Größe und der richtige Typ ermittelt werden.
+
+**Anzahl der Workerknoten**  
+Die anfängliche Anzahl von Workerknoten kann mit den simulierten Workloads bestimmt werden. Der Cluster kann später durch Hinzufügen weiterer Workerknoten skaliert werden, um Spitzenlastanforderungen zu erfüllen. Der Cluster kann später herunterskaliert werden, wenn die zusätzlichen Workerknoten nicht benötigt werden.
 
 Weitere Informationen finden Sie im Artikel [Kapazitätsplanung für HDInsight-Cluster](../hdinsight-capacity-planning.md).
 
@@ -191,6 +198,4 @@ Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung von HDI
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie den nächsten Artikel in dieser Reihe:
-
-- [Best Practices für den Speicher bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight](apache-hadoop-on-premises-migration-best-practices-storage.md)
+Lesen Sie den nächsten Artikel in dieser Reihe: [Best Practices für den Speicher bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight](apache-hadoop-on-premises-migration-best-practices-storage.md)

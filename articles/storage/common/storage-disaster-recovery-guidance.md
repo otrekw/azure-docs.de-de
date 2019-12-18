@@ -1,22 +1,23 @@
 ---
-title: Notfallwiederherstellung und Speicherkontofailover (Vorschau) – Azure Storage
+title: Notfallwiederherstellung und Speicherkontofailover (Vorschauversion)
+titleSuffix: Azure Storage
 description: Azure Storage unterstützt Kontofailover (Vorschau) für georedundante Speicherkonten. Mit Kontofailover können Sie den Failoverprozess für Ihr Speicherkonto einleiten, wenn der primäre Endpunkt nicht mehr verfügbar ist.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d9daff390aa1678c25f4bf9c29b0293d96c43f48
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 7bbad4adce88b8b669c5c5739bfa45b079f321d0
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775927"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895348"
 ---
-# <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
+# <a name="disaster-recovery-and-account-failover-preview"></a>Notfallwiederherstellung und Kontofailover (Vorschauversion)
 
 Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kann jedoch zu ungeplanten Dienstausfällen kommen. Wenn Ihre Anwendung Resilienz erfordert, empfiehlt Microsoft die Verwendung eines georedundanten Speichers, sodass Ihre Daten in einer zweiten Region repliziert werden. Darüber hinaus müssen Kunden einen Notfallwiederherstellungsplan haben, um einen regionalen Dienstausfall handhaben zu können. Ein wichtiger Teil eines Notfallwiederherstellungsplans ist die Vorbereitung auf den Ausfall des sekundären Endpunkts, falls der primäre Endpunkt nicht mehr verfügbar ist. 
 

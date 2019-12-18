@@ -1,5 +1,5 @@
 ---
-title: Programmgesteuertes Verwalten von Azure Monitor-Arbeitsmappen mit Azure Resource Manager-Vorlagen | Microsoft-Dokumentation
+title: Azure Monitor-Arbeitsmappen und Azure Resource Manager-Vorlagen
 description: Vereinfachen Sie die komplexe Berichterstellung mit vordefinierten und benutzerdefinierten parametrisierten Azure Monitor-Arbeitsmappen, die über Azure Resource Manager-Vorlagen bereitgestellt werden.
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: d5e22093fa796a9fbd60dc2bc242f37a6cac7cf0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e3d29beab7b1d82f73c706897af9650b68be11f5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164496"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872909"
 ---
 # <a name="programmatically-manage-workbooks"></a>Programmgesteuertes Verwalten von Arbeitsmappen
 

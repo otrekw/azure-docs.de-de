@@ -7,12 +7,12 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/30/2019
-ms.openlocfilehash: 18c6499afe450a0387b0d9f0f13ee4378e0a21a9
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 42f52581d8f2f80deb5d6250ed54ab64fc1ba4d3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70174489"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849053"
 ---
 # <a name="visualize-data-using-the-azure-data-explorer-connector-for-excel"></a>Visualisieren von Daten mithilfe des Azure Data Explorer-Connectors für Excel
 
@@ -31,7 +31,7 @@ Der native Excel-Connector von Azure Data Explorer ermöglicht das Exportieren v
 
     ![Fenster „Azure Data Explorer (Kusto)“](media/excel-connector/adx-connection-window.png)
     
-    |Feld   |Beschreibung |
+    |Feld   |BESCHREIBUNG |
     |---------|---------|
     |**Cluster**   |   Name des Clusters (Pflichtfeld)      |    
     |**Datenbank**     |    Name der Datenbank      |    
@@ -39,7 +39,7 @@ Der native Excel-Connector von Azure Data Explorer ermöglicht das Exportieren v
     
     **Erweiterte Optionen:**
 
-     |Feld   |Beschreibung |
+     |Feld   |BESCHREIBUNG |
     |---------|---------|
     |**Datensatzanzahl für Abfrageergebnisse einschränken**     |     Begrenzt die Anzahl von Datensätzen, die in Excel geladen werden  |    
     |**Datengröße in Bytes für Abfrageergebnisse einschränken**    |    Begrenzt die Datengröße      |   
@@ -75,3 +75,6 @@ Nachdem die Daten in Excel geladen wurden und in der Excel-Tabelle verfügbar si
 
 1. Erstellen Sie umfassende Dashboards für die Datenüberwachung.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+[Visualisieren von Daten mithilfe einer in Microsoft Excel importierten Azure Data Explorer-Kusto-Abfrage](excel-blank-query.md)

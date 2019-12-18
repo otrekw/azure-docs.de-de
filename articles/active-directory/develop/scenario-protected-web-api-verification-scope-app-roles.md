@@ -1,5 +1,5 @@
 ---
-title: Überprüfen von Bereichen und App-Rollen mit geschützter Web-API
+title: Überprüfen von Bereichen und App-Rollen | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine geschützte Web-API erstellen und den Code Ihrer Anwendung konfigurieren.
 services: active-directory
@@ -17,12 +17,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4340d92bdfe871010021edcbefcde62ab8202462
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a20a7a5a0df87910d2093bfee47e46c9c1a06530
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73149238"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965380"
 ---
 # <a name="protected-web-api-verify-scopes-and-app-roles"></a>Geschützte Web-API: Überprüfen von Bereichen und App-Rollen
 

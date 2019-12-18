@@ -1,6 +1,6 @@
 ---
-title: Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle
-description: Beschreibt die Auswirkungen und die Vorgehensweise beim Aktualisieren Ihrer Tools, um die neuen Azure-Diagnoseprotokolle zu verarbeiten, die am 1. November 2018 auf die Verwendung von Anfügeblobs umgestellt wurden.
+title: Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle
+description: Beschreibt die Auswirkungen und die Vorgehensweise beim Aktualisieren Ihrer Tools, um die neuen Azure-Ressourcenprotokolle zu verarbeiten, die am 1. November 2018 auf die Verwendung von Anfügeblobs umgestellt wurden.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: dc7fd8916f356414437d4def21f26f0b651ee76f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307064"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893517"
 ---
-# <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Diagnoseprotokolle, die in einem Speicherkonto archiviert werden
+# <a name="prepare-for-format-change-to-azure-monitor-resource-logs-archived-to-a-storage-account"></a>Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden
 
 > [!WARNING]
-> Wenn Sie [mithilfe von Ressourcendiagnoseeinstellungen Azure-Ressourcendiagnoseprotokolle oder -metriken an ein Speicherkonto](./../../azure-monitor/platform/archive-diagnostic-logs.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](./../../azure-monitor/platform/archive-activity-log.md) senden, ändert sich das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren. 
+> Wenn Sie [mithilfe von Ressourcendiagnoseeinstellungen Azure-Ressourcenprotokolle oder -metriken an ein Speicherkonto](./../../azure-monitor/platform/archive-diagnostic-logs.md) oder [Aktivitätsprotokolle mithilfe von Protokollprofilen an ein Speicherkonto](./../../azure-monitor/platform/archive-activity-log.md) senden, ändert sich das Format der Daten im Speicherkonto am 1. November 2018 in JSON Lines. Unten wird beschrieben, welche Auswirkungen sich ergeben und wie Sie Ihre Tools für die Verarbeitung des neuen Formats aktualisieren. 
 >
 > 
 
@@ -31,13 +31,13 @@ Azure Monitor verfügt über eine Funktion, mit der Sie Ressourcendiagnosedaten 
 * Wenn zwischen dem heutigen Datum und dem 1. November eine Diagnoseeinstellung festgelegt wird, werden die Daten bis zum 1. November weiterhin im derzeitigen Format ausgegeben.
 * Diese Änderung tritt für alle öffentlichen Cloudregionen gleichzeitig in Kraft. Die Änderung wird noch nicht für von 21Vianet betriebenen Microsoft Azure-, Azure Deutschland- oder Azure Government-Clouds durchgeführt.
 * Diese Änderung wirkt sich auf die folgenden Datentypen aus:
-  * [Azure-Ressourcendiagnoseprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
+  * [Azure-Ressourcenprotokolle](archive-diagnostic-logs.md) ([Liste mit Ressourcen](diagnostic-logs-schema.md))
   * [Von Diagnoseeinstellungen exportierte Azure-Ressourcenmetriken](diagnostic-settings.md)
   * [Von Protokollprofilen exportierte Azure-Aktivitätsprotokolldaten](archive-activity-log.md)
 * Diese Änderung wirkt sich nicht auf Folgendes aus:
   * Netzwerkflussprotokolle
-  * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Diagnoseprotokolle, Speicheranalyseprotokolle)
-  * Routing von Azure-Diagnoseprotokollen und Aktivitätsprotokollen an andere Ziele (Event Hubs, Log Analytics)
+  * Azure-Dienstprotokolle, die noch nicht über Azure Monitor verfügbar gemacht werden (z. B. Azure App Service-Ressourcenprotokolle, Speicheranalyseprotokolle)
+  * Routing von Azure-Ressourcenprotokollen und Aktivitätsprotokollen an andere Ziele (Event Hubs, Log Analytics)
 
 ### <a name="how-to-see-if-you-are-impacted"></a>Ermitteln der Auswirkungen für Sie
 
@@ -135,6 +135,6 @@ Benutzerdefinierte Tools sollten aktualisiert werden, damit diese sowohl das akt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informieren Sie sich über das [Archivieren von Azure-Diagnoseprotokollen](./../../azure-monitor/platform/archive-diagnostic-logs.md).
+* Informieren Sie sich über das [Archivieren von Ressourcenprotokollen in einem Speicherkonto](./../../azure-monitor/platform/archive-diagnostic-logs.md).
 * Informieren Sie sich über das [Archivieren des Azure-Aktivitätsprotokolls](./../../azure-monitor/platform/archive-activity-log.md).
 

@@ -13,23 +13,23 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/26/2019
+ms.date: 12/06/2019
 ms.author: cabailey
-ms.openlocfilehash: e72b9012b41f50b36ba7d92582d0c697e6db0683
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 5b347848c9c6a58a70ab1093a6f9c70b62f3f769
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546864"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900457"
 ---
 # <a name="use-hunting-livestream-in-azure-sentinel-to-detect-threats"></a>Verwenden des Hunting-Livestreams in Azure Sentinel zum Erkennen von Bedrohungen
 
 > [!IMPORTANT]
-> Der Hunting-Livestream in Azure Sentinel ist derzeit als öffentliche Vorschau verfügbar und der Rollout auf die Mandanten erfolgt schrittweise.
+> Der Hunting-Livestream in Azure Sentinel ist derzeit als Public Preview verfügbar, und der Rollout auf die Mandanten erfolgt in mehreren Stufen.
 > Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-Verwenden Sie den Hunting-Livestream, um interaktive Sitzungen zu erstellen, mit denen Sie neu erstellte Abfragen beim Eintreten von Ereignissen testen, Benachrichtigungen von den Sitzungen bei einer Übereinstimmung erhalten und bei Bedarf Untersuchungen starten können. Sie können schnell eine Livestreamsitzung erstellen, indem Sie eine beliebige Log Analytics-Abfrage verwenden.
+Verwenden Sie den Hunting-Livestream, um interaktive Sitzungen zu erstellen, mit denen Sie neu erstellte Abfragen beim Eintreten von Ereignissen testen, Benachrichtigungen von den Sitzungen bei einer Übereinstimmung erhalten und bei Bedarf Untersuchungen starten können. Sie können schnell mithilfe einer beliebigen Log Analytics-Abfrage eine Livestreamsitzung erstellen.
 
 - **Testen neu erstellter Abfragen, wenn Ereignisse auftreten**
     
@@ -37,7 +37,7 @@ Verwenden Sie den Hunting-Livestream, um interaktive Sitzungen zu erstellen, mit
 
 - **Benachrichtigung beim Auftreten von Bedrohungen erhalten**
     
-    Sie können Bedrohungsdatenfeeds mit aggregierten Protokolldaten vergleichen und eine Benachrichtigung erhalten, wenn eine Entsprechung auftritt. Bedrohungsdatenfeeds sind fortlaufende Datenströme, die sich auf potenzielle oder aktuelle Bedrohungen beziehen, sodass die Benachrichtigung möglicherweise auf eine potenzielle Bedrohung für Ihre Organisation hinweist. Erstellen Sie eine Livestreamsitzung anstelle einer benutzerdefinierten Warnungsregel, wenn Sie über ein mögliches Problem benachrichtigt werden möchten, ohne dass Mehraufwand für die Verwaltung einer benutzerdefinierten Warnungsregel anfällt.
+    Sie können Bedrohungsdatenfeeds mit aggregierten Protokolldaten vergleichen und eine Benachrichtigung erhalten, wenn eine Entsprechung auftritt. Bedrohungsdatenfeeds sind fortlaufende Datenströme, die sich auf potenzielle oder aktuelle Bedrohungen beziehen, sodass die Benachrichtigung möglicherweise auf eine potenzielle Bedrohung für Ihre Organisation hinweist. Erstellen Sie eine Livestreamsitzung anstelle einer benutzerdefinierten Warnungsregel, wenn Sie über ein mögliches Problem benachrichtigt werden möchten, ohne dass der Mehraufwand für die Verwaltung einer benutzerdefinierten Warnungsregel anfällt.
 
 - **Starten von Untersuchungen**
     
@@ -46,34 +46,34 @@ Verwenden Sie den Hunting-Livestream, um interaktive Sitzungen zu erstellen, mit
 
 ## <a name="create-a-livestream-session"></a>Erstellen einer Livestreamsitzung
 
-Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage oder eine Sitzung von Grund auf neu erstellen.
+Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage erstellen oder eine Sitzung von Grund auf neu erstellen.
 
 1. Navigieren Sie im Azure-Portal zu **Sentinel** > **Bedrohungsverwaltung** > **Hunting**.
 
-2. So erstellen Sie eine Livestreamsitzung aus einer Hunting-Abfrage:
+2. So erstellen Sie eine Livestreamsitzung aus einer Hunting-Abfrage
     
     1. Ermitteln Sie auf der Registerkarte **Abfragen** die zu verwendende Hunting-Abfrage.
-    2. Klicken Sie mit der rechten Maustaste auf die Abfrage, und wählen Sie **Zu Livestream hinzufügen** aus. Beispiel:
+    2. Klicken Sie mit der rechten Maustaste auf die Abfrage, und wählen Sie **Add to livestream** (Zu Livestream hinzufügen) aus. Beispiel:
     
     > [!div class="mx-imgBorder"]
     > ![Erstellen einer Livestreamsitzung aus der Hunting-Abfrage von Azure Sentinel](./media/livestream/livestream-from-query.png)
 
-3. So erstellen Sie eine Livestreamsitzung von Grund auf neu: 
+3. So erstellen Sie eine Livestreamsitzung von Grund auf neu 
     
     1. Wählen Sie die Registerkarte **Livestream** aus.
-    2. Wählen Sie **Zu Livestream wechseln** aus.
+    2. Wählen Sie **Go to livestream** (Zu Livestream wechseln) aus.
     
 4. Im Bereich **Livestream**:
     
-    - Wenn Sie Livestream aus einer Abfrage gestartet haben, überprüfen Sie die Abfrage, und nehmen Sie die gewünschten Änderungen vor.
-    - Wenn Sie Livestream von Grund auf neu gestartet haben, erstellen Sie Ihre Abfrage. 
+    - Wenn Sie den Livestream aus einer Abfrage gestartet haben, überprüfen Sie die Abfrage, und nehmen Sie die gewünschten Änderungen vor.
+    - Wenn Sie den Livestream von Grund auf neu gestartet haben, erstellen Sie Ihre Abfrage. 
 
 5. Wählen Sie in der Befehlsleiste **Wiedergeben** aus.
     
-    Die Statusleiste unter der Befehlsleiste gibt an, ob der Livestream ausgeführt wird oder angehalten ist. Im folgenden Beispiel wird die Sitzung ausgeführt:
+    Die Statusleiste unter der Befehlsleiste gibt an, ob die Livestreamsitzung ausgeführt wird oder angehalten ist. Im folgenden Beispiel wird die Sitzung ausgeführt:
     
     > [!div class="mx-imgBorder"]
-    > ![Erstellen einer Livestreamsitzung aus der Hunting-Abfrage von Azure Sentinel](./media/livestream/livestream-session.png)
+    > ![Erstellen einer Livestreamsitzung aus Azure Sentinel Hunting](./media/livestream/livestream-session.png)
 
 6. Wählen Sie in der Befehlsleiste **Speichern** aus.
     
@@ -86,31 +86,30 @@ Sie können eine Livestreamsitzung aus einer vorhandenen Hunting-Abfrage oder ei
 2. Wählen Sie die Livestreamsitzung aus, die Sie anzeigen oder bearbeiten möchten. Beispiel:
     
     > [!div class="mx-imgBorder"]
-    > ![Erstellen einer Livestreamsitzung aus der Hunting-Abfrage von Azure Sentinel](./media/livestream/livestream-tab.png)
+    > ![Erstellen einer Livestreamsitzung aus einer Azure Sentinel Hunting-Abfrage](./media/livestream/livestream-tab.png)
     
     Ihre ausgewählte Livestreamsitzung wird geöffnet, damit Sie sie wiedergeben, anhalten, bearbeiten usw. können.
 
 ## <a name="receive-notifications-when-new-events-occur"></a>Empfangen von Benachrichtigungen, wenn neue Ereignisse auftreten
 
-Da Livestreambenachrichtigungen für neue Ereignisse Benachrichtigungen des Azure-Portals verwenden, werden diese Benachrichtigungen immer dann angezeigt, wenn Sie das Azure-Portal verwenden. Beispiel:
+Da für Livestreambenachrichtigungen für neue Ereignisse Benachrichtigungen des Azure-Portals verwendet werden, erhalten Sie diese immer, wenn Sie das Azure-Portal verwenden. Beispiel:
 
-![Benachrichtigung des Azure-Portals für Livestream](./media/livestream/notification.png)
+![Benachrichtigung des Azure-Portals für Livestreams](./media/livestream/notification.png)
 
 Wählen Sie die Benachrichtigung aus, um den Bereich **Livestream** zu öffnen.
  
 ## <a name="elevate-a-livestream-session-to-an-alert"></a>Erhöhen einer Livestreamsitzung zu einer Warnung
 
-Sie können eine Livestreamsitzung in eine neue Warnung höher stufen, indem Sie in der Befehlsleiste der relevanten Livestreamsitzung **Auf Warnung höherstufen** auswählen:
+Sie können eine Livestreamsitzung in eine neue Warnung höher stufen, indem Sie auf der Befehlsleiste der relevanten Livestreamsitzung **Auf Warnung erhöhen** auswählen:
 
 > [!div class="mx-imgBorder"]
-> ![Erhöhen einer Livestreamsitzung zu einer Warnung](./media/livestream/elevate-to-alert.png)
+> ![Höherstufen einer Livestreamsitzung in eine Warnung](./media/livestream/elevate-to-alert.png)
 
 Mit dieser Aktion wird der Regelerstellungs-Assistent geöffnet, der mit der Abfrage, die der Livestreamsitzung zugeordnet ist, bereits aufgefüllt ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben Sie gelernt, wie der Hunting-Livestream in Azure Sentinel verwendet wird. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
-
 
 - [Proactively hunt for threats (Proaktive Ermittlung von Bedrohungen)](hunting.md)
 - [Verwenden von Notebooks zur Ermittlung von Anomalien](notebooks.md)

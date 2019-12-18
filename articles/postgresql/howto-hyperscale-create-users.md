@@ -1,17 +1,17 @@
 ---
-title: 'Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)'
+title: Erstellen von Benutzern – Hyperscale (Citus) – Azure Database for PostgreSQL
 description: In diesem Artikel wird beschrieben, wie Sie neue Benutzerkonten für die Interaktion mit einer Azure Database for PostgreSQL – Hyperscale (Citus) erstellen können.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7187135b29f0a9a790c032330c73bcb1ae27229b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d093d4c23fcc44e7e9f3461f875607926f4b612d
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511239"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977572"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Erstellen von Benutzern in Azure Database for PostgreSQL: Hyperscale (Citus)
 
@@ -26,15 +26,13 @@ Eine neu erstellte Hyperscale-Servergruppe (Citus) verfügt über mehrere vordef
 * *postgres*
 * *citus*
 
-Der Serveradministratorbenutzer (*citus*) ist ein Mitglied der Rolle *azure_pg_admin*.
-Er ist jedoch nicht Teil der Rolle *postgres* (Administrator oder superuser).  Da Hyperscale ein verwalteter PaaS-Dienst ist, ist nur Microsoft Mitglied der Administratorrolle.
-
 Die PostgreSQL-Engine nutzt Berechtigungen zum Steuern des Zugriffs auf Datenbankobjekte, wie in der [PostgreSQL-Produktdokumentation](https://www.postgresql.org/docs/current/static/sql-createrole.html) erläutert.
-In Azure Database for PostgreSQL werden dem Serveradministrator folgende Berechtigungen gewährt: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
+Der Serveradministratorbenutzer (*citus*) ist ein Mitglied der Rolle *azure_pg_admin*.
+Er ist jedoch nicht Teil der Rolle *postgres* (Administrator oder superuser).  Da Hyperscale ein verwalteter PaaS-Dienst ist, ist nur Microsoft Mitglied der Administratorrolle. Der Benutzer *citus* verfügt nur über eingeschränkte Berechtigungen und kann z. B. keine neuen Datenbanken erstellen.
 
 ## <a name="how-to-create-additional-users"></a>So erstellen Sie zusätzliche Benutzer
 
-Das *citus*-Administratorkontos verfügt nicht über die Berechtigung zum Erstellen zusätzlicher Benutzer. Um einen Benutzer hinzuzufügen, verwenden Sie stattdessen das Azure-Portal.
+Das *citus*-Administratorkontos verfügt nicht über die Berechtigung zum Erstellen zusätzlicher Benutzer. Um einen Benutzer hinzuzufügen, verwenden Sie das Azure-Portal.
 
 1. Navigieren Sie zur Seite **Rollen** für Ihre Hyperscale-Servergruppe, und klicken Sie auf **+ Hinzufügen**:
 

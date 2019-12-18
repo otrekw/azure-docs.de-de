@@ -11,12 +11,12 @@ ms.date: 05/01/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fea35325f11878373db8dd52b9b2bf08a25b81d1
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 28d239d47b46a5aafdf65c72ef826a0efb79f52b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692368"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974632"
 ---
 # <a name="azure-sql-data-warehouse-workload-importance"></a>Workloadpriorität für Azure SQL Data Warehouse
 
@@ -26,11 +26,11 @@ In diesem Artikel wird erläutert, wie sich die Workloadpriorität auf die Ausf�
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-Unternehmensanforderungen können erfordern, dass Data Warehousing-Workloads über mehr Priorität verfügen als andere.  Stellen Sie sich ein Szenario vor, in dem unternehmenskritische Vertriebsdaten vor der Abrechnung des Geschäftsjahres geladen werden.  Datenladevorgänge für andere Quellen wie Wetterdaten verfügen über keine strikten SLAs (Vereinbarungen zum Servicelevel).   Durch Festlegen einer hohen Priorität für eine Anforderung zum Laden von Vertriebsdaten und einer niedrigen Priorität für eine Anforderung zum Laden von Wetterdaten wird sichergestellt, dass der Ladevorgang für die Vertriebsdaten zuerst auf Ressourcen zugreifen kann und schneller abgeschlossen wird.
+Unternehmensanforderungen können erfordern, dass Data Warehousing-Workloads über mehr Priorität verfügen als andere.  Stellen Sie sich ein Szenario vor, in dem unternehmenskritische Vertriebsdaten vor der Abrechnung des Geschäftsjahres geladen werden.  Datenladevorgänge für andere Quellen wie Wetterdaten verfügen über keine strikten SLAs (Vereinbarungen zum Servicelevel). Durch Festlegen einer hohen Priorität für eine Anforderung zum Laden von Vertriebsdaten und einer niedrigen Priorität für eine Anforderung zum Laden von Wetterdaten wird sichergestellt, dass der Ladevorgang für die Vertriebsdaten zuerst auf Ressourcen zugreifen kann und schneller abgeschlossen wird.
 
 ## <a name="importance-levels"></a>Prioritätsstufen
 
-Es gibt fünf Prioritätsstufen: „low“, „below_normal“, „normal“, „above_normal“ und „high“.  Anforderungen, für die keine Priorität festgelegt wird, weisen die Standardstufe „normal“ auf.  Anforderungen mit der gleichen Prioritätsstufe weisen das herkömmliche Planungsverhalten auf.
+Es gibt fünf Prioritätsstufen: „low“, „below_normal“, „normal“, „above_normal“ und „high“.  Anforderungen, für die keine Priorität festgelegt wird, weisen die Standardstufe „normal“ auf. Anforderungen mit der gleichen Prioritätsstufe weisen das herkömmliche Planungsverhalten auf.
 
 ## <a name="importance-scenarios"></a>Prioritätsszenarios
 
@@ -38,7 +38,7 @@ Neben dem oben beschriebenen herkömmlichen Prioritätsszenario mit Vertriebs- u
 
 ### <a name="locking"></a>Sperren
 
-Der Zugriff auf Sperren für Lese- und Schreibaktivitäten ist ein Bereich, in dem natürliche Konflikte entstehen.  Aktivitäten wie [Partitionswechsel](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) oder [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql) erfordern Sperren mit erhöhten Rechten.  Ohne Workloadpriorität optimiert SQL Data Warehouse den Durchsatz.  Die Optimierung des Durchsatzes bedeutet, dass Anforderungen in der Warteschlange Anforderungen mit höheren Sperranforderungen umgehen können, die vorher in die Anforderungswarteschlange aufgenommen wurden, wenn ausgeführte Anforderungen und Anforderungen in der Warteschlange die gleichen Sperranforderungen und Ressourcen aufweisen.  Sobald die Workloadpriorität für Anforderungen mit höheren Sperranforderungen angewendet wurde, werden Anforderungen mit höherer Priorität vor Anforderungen mit niedriger Priorität ausgeführt.
+Der Zugriff auf Sperren für Lese- und Schreibaktivitäten ist ein Bereich, in dem natürliche Konflikte entstehen. Aktivitäten wie [Partitionswechsel](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition) oder [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql) erfordern Sperren mit erhöhten Rechten.  Ohne Workloadpriorität optimiert SQL Data Warehouse den Durchsatz.  Die Optimierung des Durchsatzes bedeutet, dass Anforderungen in der Warteschlange Anforderungen mit höheren Sperranforderungen umgehen können, die vorher in die Anforderungswarteschlange aufgenommen wurden, wenn ausgeführte Anforderungen und Anforderungen in der Warteschlange die gleichen Sperranforderungen und Ressourcen aufweisen.  Wenn auf Anforderungen mit höheren Sperranforderungen die Workloadpriorität angewandt wird, werden Anforderungen mit höherer Wichtigkeit vor Anforderungen mit niedrigerer Wichtigkeit ausgeführt.
 
 Betrachten Sie das folgende Beispiel:
 
@@ -50,7 +50,7 @@ Wenn die Abfragen „Q2“ und „Q3“ dieselbe Priorität aufweisen und „Q1�
 
 ### <a name="non-uniform-requests"></a>Nicht einheitliche Anforderungen
 
-Die Priorität ist auch zum Erfüllen von Abfrageanforderungen in Szenarios nützlich, in denen Anforderungen mit verschiedenen Ressourcenklassen übermittelt werden.  Wie bereits erwähnt, optimiert SQL Data Warehouse den Durchsatz bei gleicher Priorität.  Wenn Anforderungen mit gemischten Größen (z. B. „smallrc“ oder „mediumrc“) in die Warteschlange eingereiht werden, wählt SQL Data Warehouse die erste eingegangene Anforderung aus, die von den verfügbaren Ressourcen abgedeckt werden kann.  Wenn die Workloadpriorität angewendet wird, wird als Nächstes die Anforderung mit der höchsten Priorität geplant.
+Die Priorität ist auch zum Erfüllen von Abfrageanforderungen in Szenarios nützlich, in denen Anforderungen mit verschiedenen Ressourcenklassen übermittelt werden.  Wie bereits erwähnt, optimiert SQL Data Warehouse den Durchsatz bei gleicher Priorität. Wenn Anforderungen mit gemischten Größen (z. B. „smallrc“ oder „mediumrc“) in die Warteschlange eingereiht werden, wählt SQL Data Warehouse die erste eingegangene Anforderung aus, die von den verfügbaren Ressourcen abgedeckt werden kann. Wenn die Workloadpriorität angewendet wird, wird als Nächstes die Anforderung mit der höchsten Priorität geplant.
   
 Betrachten Sie das folgende Beispiel für DW500c:
 
@@ -58,11 +58,11 @@ Mit „Q1“, „Q2“, „Q3“ und „Q4“ werden smallrc-Abfragen ausgeführ
 „Q5“ wird um 9:00 Uhr mit der Ressourcenklasse „mediumrc“ übermittelt.
 „Q6“ wird um 9:01 Uhr mit der Ressourcenklasse „smallrc“ übermittelt.
 
-Da die Abfrage „Q5“ die Klasse „mediumrc“ aufweist, erfordert sie zwei Parallelitätsslots.  Die Abfrage „Q5“ muss warten, bis zwei der aktiven Abfragen abgeschlossen sind.  Jedoch wird sofort „Q6“ geplant, da die Ressourcen zum Ausführen der Abfrage vorhanden sind, wenn eine der aktiven Abfragen (Q1-Q4) abgeschlossen wird.  Wenn „Q5“ über eine höhere Priorität als „Q6“ verfügt, wartet „Q6“ darauf, dass „Q5“ ausgeführt wird.
+Da die Abfrage „Q5“ die Klasse „mediumrc“ aufweist, erfordert sie zwei Parallelitätsslots. Die Abfrage „Q5“ muss warten, bis zwei der aktiven Abfragen abgeschlossen sind.  Jedoch wird sofort „Q6“ geplant, da die Ressourcen zum Ausführen der Abfrage vorhanden sind, wenn eine der aktiven Abfragen (Q1-Q4) abgeschlossen wird.  Wenn „Q5“ über eine höhere Priorität als „Q6“ verfügt, wartet „Q6“ darauf, dass „Q5“ ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  
+- Weitere Informationen zum Erstellen einer Klassifizierung finden Sie unter [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql).  
 - Weitere Informationen zur Workloadklassifizierung in SQL Data Warehouse finden Sie unter [Workloadklassifizierung](sql-data-warehouse-workload-classification.md).  
 - Lesen Sie für die Erstellung eines Workloadklassifizierers den Schnellstart [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-tsql.md).
 - Lesen Sie die Anleitungsartikel zum [Konfigurieren der Workloadpriorität](sql-data-warehouse-how-to-configure-workload-importance.md) und zum [Verwalten und Überwachen der Workloadpriorität](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

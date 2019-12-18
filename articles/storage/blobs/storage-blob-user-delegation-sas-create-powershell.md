@@ -1,20 +1,21 @@
 ---
-title: Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau) – Azure Storage
-description: Erfahren Sie, wie Sie eine SAS (Shared Access Signature) mithilfe von Azure Active Directory-Anmeldeinformationen in Azure Storage mit PowerShell erstellen können.
+title: Verwenden von PowerShell zum Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie mit PowerShell eine SAS für die Benutzerdelegierung (Vorschauversion) mit Azure Active Directory-Anmeldeinformationen erstellen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 08/29/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: 0164c97adf720a618179908298223c54bf48824e
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 5f4947921a77f2bc94d1810c9b1d1951431d3d71
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673336"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892514"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-powershell-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit PowerShell (Vorschau)
 

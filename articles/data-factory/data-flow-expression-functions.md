@@ -1,22 +1,22 @@
 ---
-title: Ausdrucksfunktionen im Mapping Data Flow-Feature von Azure Data Factory
+title: Ausdrucksfunktionen im Zuordnungsdatenfluss
 description: Hier erhalten Sie Informationen zu Ausdrucksfunktionen in Mapping Data Flow.
 author: kromerm
 ms.author: makromer
+manager: anandsub
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: dc742fc625604e71909f49c7453a9215dce71e35
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 230305b66ec093043e4c2dca9515da4ce0793712
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596961"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930377"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Datentransformationsausdrücke in Mapping Data Flow 
-
-
 
 ## <a name="expression-functions"></a>Ausdrucksfunktionen
 
@@ -312,7 +312,7 @@ Die CumeDist-Funktion berechnet die Position eines Werts relativ zu allen Werten
 ___
 ### <code>currentDate</code>
 <code><b>currentDate([<i>&lt;value1&gt;</i> : string]) => date</b></code><br/><br/>
-Ruft das aktuelle Datum ab, wenn dieser Auftrag ausgeführt wird. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Ruft das aktuelle Datum ab, wenn dieser Auftrag ausgeführt wird. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``currentDate() == toDate('2250-12-31') -> false``
 
@@ -465,7 +465,7 @@ Gibt den größten Integerwert zurück, der nicht größer als die Zahl ist:
 ___
 ### <code>fromUTC</code>
 <code><b>fromUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Wird in den Zeitstempel von UTC konvertiert. Sie können die Zeitzone optional in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Wird in den Zeitstempel von UTC konvertiert. Sie können die Zeitzone optional in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``fromUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
 
@@ -515,7 +515,7 @@ ___
 ___
 ### <code>hour</code>
 <code><b>hour(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Ruft den Stundenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Ruft den Stundenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``hour(toTimestamp('2009-07-30 12:58:59')) -> 12``
 
@@ -863,7 +863,7 @@ Ruft das Mittel der Werte einer Spalte basierend auf einem Kriterium ab. Entspri
 ___
 ### <code>millisecond</code>
 <code><b>millisecond(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Ruft den Millisekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Ruft den Millisekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``millisecond(toTimestamp('2009-07-30 12:58:59.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``
 
@@ -908,7 +908,7 @@ Subtrahiert Zahlen. Subtrahiert eine Anzahl von Tagen von einem Datum. Subtrahie
 ___
 ### <code>minute</code>
 <code><b>minute(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Ruft den Minutenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Ruft den Minutenwert eines Zeitstempels ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``minute(toTimestamp('2009-07-30 12:58:59')) -> 58``
 
@@ -940,7 +940,7 @@ Ruft den Monatswert eines Datums oder Zeitstempels ab:
 ___
 ### <code>monthsBetween</code>
 <code><b>monthsBetween(<i>&lt;from date/timestamp&gt;</i> : datetime, <i>&lt;to date/timestamp&gt;</i> : datetime, [<i>&lt;roundoff&gt;</i> : boolean], [<i>&lt;time zone&gt;</i> : string]) => double</b></code><br/><br/>
-Ruft die Anzahl der Monate zwischen zwei Datumsangaben ab. Sie können die Berechnung abrunden und eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Ruft die Anzahl der Monate zwischen zwei Datumsangaben ab. Sie können die Berechnung abrunden und eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``monthsBetween(toTimestamp('1997-02-28 10:30:00'), toDate('1996-10-30')) -> 3.94959677``
 
@@ -1181,7 +1181,7 @@ Entfernt nachgestellte Zeichen aus einer Zeichenfolge. Wenn der zweite Parameter
 ___
 ### <code>second</code>
 <code><b>second(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => integer</b></code><br/><br/>
-Ruft den Sekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Ruft den Sekundenwert eines Datums ab. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Standardmäßig wird die lokale Zeitzone verwendet. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``second(toTimestamp('2009-07-30 12:58:59')) -> 59``
 
@@ -1536,7 +1536,7 @@ Wandelt einen primitiven Datentyp in eine Zeichenfolge um. Für Zahlen und Datum
 ___
 ### <code>toTimestamp</code>
 <code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Wandelt eine Zeichenfolge in einen Zeitstempel mit einem optionalen Zeitstempelformat um. Alle zulässigen Formate finden Sie unter „Java SimpleDateFormat“. Wenn das Zeitstempelformat nicht angegeben ist, wird das Standardmuster jjjj-[M]M-[t]t hh:mm:ss[.f...] verwendet. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Zeitstempel unterstützt die Genauigkeit auf Millisekunden mit dem Wert 999. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Wandelt eine Zeichenfolge in einen Zeitstempel mit einem optionalen Zeitstempelformat um. Alle zulässigen Formate finden Sie unter „Java SimpleDateFormat“. Wenn das Zeitstempelformat nicht angegeben ist, wird das Standardmuster jjjj-[M]M-[t]t hh:mm:ss[.f...] verwendet. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Zeitstempel unterstützt die Genauigkeit auf Millisekunden mit dem Wert 999. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
 
@@ -1549,7 +1549,7 @@ Wandelt eine Zeichenfolge in einen Zeitstempel mit einem optionalen Zeitstempelf
 ___
 ### <code>toUTC</code>
 <code><b>toUTC(<i>&lt;value1&gt;</i> : timestamp, [<i>&lt;value2&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Wandelt den Zeitstempel in UTC um. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. [https://doi.org/10.13012/J8PN93H8](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html )
+Wandelt den Zeitstempel in UTC um. Sie können eine optionale Zeitzone in der Form „GMT“, „PST“, „UTC“, „America/Cayman“ übergeben. Der Standardwert ist die aktuelle Zeitzone. Verfügbare Formate finden Sie unter SimpleDateFormat von Java. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html
 
 * ``toUTC(currentTimeStamp()) == toTimestamp('2050-12-12 19:18:12') -> false``
 

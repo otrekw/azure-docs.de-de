@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 9146430f512b065553d4c5362af8655eb01c1206
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d14b81075d1e1f98449ef655c3e00f172c7f407b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74530955"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873776"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -89,12 +89,11 @@ Windows Server 2019 | Unterstützt für Server Core, Server mit Desktopdarstellu
 Windows Server 2016  | Unterstützt für Server Core, Server mit Desktopdarstellung.
 Windows Server 2012 R2 | Unterstützt.
 Windows Server 2012 | Unterstützt.
-Windows Server 2008 R2 mit SP1/SP2 | Unterstützt.<br/><br/> Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen Sie eine [Windows-Wartungsstapelaktualisierung (SSU)](https://support.microsoft.com/help/4490628) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) auf Computern installieren, die unter Windows Server 2008 R2 SP1/SP2 ausgeführt werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
-Windows Server 2008 mit SP2 | Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen Sie eine [Windows-Wartungsstapelaktualisierung (SSU)](https://support.microsoft.com/help/4493730) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) auf Computern installieren, die unter Windows Server 2008 SP2 mit SP2 ausgeführt werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+Windows Server 2008 R2 mit SP1/SP2 | Unterstützt.<br/><br/> Ab Version [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen auf Computern unter Windows Server 2008 R2 SP1/SP2 eine [Windows-Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4474419) und ein [SHA-2-Update](https://support.microsoft.com/help/4490628) installiert werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn die SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
 Windows 10 (x64) | Unterstützt.
 Windows 8.1 (x64) | Unterstützt.
 Windows 8 (x64) | Unterstützt.
-Windows 7 (x64) mit SP1 und höher | Ab Version 9.30.x.x (Veröffentlichung vermutlich Anfang November 2019) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen Sie eine [Windows-Wartungsstapelaktualisierung (SSU)](https://support.microsoft.com/help/4490628) und ein [SHA-2-Update](https://support.microsoft.com/help/4474419) auf Computern installieren, die unter Windows 7 mit SP1 ausgeführt werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
+Windows 7 (x64) mit SP1 und höher | Ab Version [9.30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) der Mobility Service-Erweiterung für virtuelle Azure-Computer müssen auf Computern unter Windows 7 mit SP1 eine [Windows-Wartungsstapelaktualisierung (Servicing Stack Update, SSU)](https://support.microsoft.com/help/4474419) und ein [SHA-2-Update](https://support.microsoft.com/help/4490628) installiert werden.  SHA-1 wird ab September 2019 nicht mehr unterstützt, und wenn SHA-2-Codesignierung nicht aktiviert ist, wird die Installation bzw. das Upgrade der Agent-Erweiterung nicht ordnungsgemäß durchgeführt. Weitere Informationen zum [SHA-2-Upgrade und den Anforderungen](https://aka.ms/SHA-2KB).
 
 
 

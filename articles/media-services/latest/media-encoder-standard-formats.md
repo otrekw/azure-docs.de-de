@@ -1,6 +1,6 @@
 ---
 title: 'Media Encoder Standard-Formate und -Codecs: Azure'
-description: Dieses Thema bietet eine Übersicht über Media Encoder Standard-Formate und -Codecs.
+description: Dieser Artikel enthält eine Liste der gängigsten Import- und Exportdateiformate, die Sie mit „StandardEncoderPreset“ verwenden können.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.reviewer: anilmur
-ms.openlocfilehash: 195bbb70ac5062c6bbf6034e6a6e9abac018c62f
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: f1d4d4f4006702ebe0d057e56cf24a022e73b83e
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677969"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74888069"
 ---
 # <a name="standard-encoder-formats-and-codecs"></a>Media Encoder Standard-Formate und -Codecs
 

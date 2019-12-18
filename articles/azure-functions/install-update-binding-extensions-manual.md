@@ -3,16 +3,16 @@ title: Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserw
 description: Erfahren Sie, wie Azure Functions-Bindungserweiterungen für bereitgestellte Funktions-App installiert oder aktualisiert werden.
 ms.topic: reference
 ms.date: 09/26/2018
-ms.openlocfilehash: 49e8e2ce7eb0267d5a4e6fc0f5566dffaed82661
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 83ae2cdd16bce0b0a5b11b8c24e996306453a7a9
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226506"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74977487"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen aus dem Portal
 
-Die Azure Functions Runtime-Version 2.x verwendet Bindungserweiterungen zum Implementieren von Code für Trigger und Bindungen. Bindungserweiterungen stehen in Form von NuGet-Paketen zur Verfügung. Zum Registrieren einer Erweiterung installieren Sie im Wesentlichen ein Paket. Die Art, wie Sie beim Entwickeln von Funktionen Bindungserweiterungen installieren, hängt von der Entwicklungsumgebung ab. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen](./functions-bindings-register.md) in den Artikeln zu Triggern und Bindungen.
+Ab der Version 2.x der Azure Functions-Runtime werden Bindungserweiterungen verwendet, um Code für Trigger und Bindungen zu implementieren. Bindungserweiterungen stehen in Form von NuGet-Paketen zur Verfügung. Zum Registrieren einer Erweiterung installieren Sie im Wesentlichen ein Paket. Die Art, wie Sie beim Entwickeln von Funktionen Bindungserweiterungen installieren, hängt von der Entwicklungsumgebung ab. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen](./functions-bindings-register.md) in den Artikeln zu Triggern und Bindungen.
 
 Manchmal müssen Sie Ihre Bindungserweiterungen im Azure-Portal manuell installieren oder aktualisieren. Beispielsweise kann es erforderlich sein, eine registrierte Bindung auf eine neuere Version zu aktualisieren. Möglicherweise müssen Sie auch eine unterstützte Bindung registrieren, die nicht über die Registerkarte **Integrieren** im Portal installiert werden kann.
 

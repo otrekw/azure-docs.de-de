@@ -1,20 +1,21 @@
 ---
-title: Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
+title: Gewähren von eingeschränktem Zugriff auf Daten mithilfe von SAS (Shared Access Signature)
+titleSuffix: Azure Storage
 description: Erfahren Sie, wie SAS (Shared Access Signatures) verwendet wird, um Zugriff auf Azure Storage-Ressourcen (einschließlich Blobs, Warteschlangen, Tabellen und Dateien) zu delegieren.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 9623152bdea5cc56e6b9bcb7d9911a730fd7a4a4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e4a5f83e3f4d26c2321ed1b4c48a385d07e6489d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382012"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895153"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 

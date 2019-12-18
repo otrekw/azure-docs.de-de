@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6f6aa90553f3a69d2d287c7d59e166884a1a8f66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113730"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978116"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Vorläufiges Löschen für Azure Storage-Blobs
 
@@ -152,7 +152,17 @@ Die folgenden Schritte zeigen, wie Sie mit dem vorläufigen Löschen beginnen.
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-Navigieren Sie zum Aktivieren von vorläufigem Löschen unter **Blobdienst** zur Option **Vorläufiges Löschen**. Klicken Sie dann auf **Aktiviert**, und geben Sie die Anzahl der Tage ein, die vorläufig gelöschte Daten beibehalten werden sollen.
+Aktivieren Sie das vorläufige Löschen für Blobs in Ihrem Speicherkonto über das Azure-Portal:
+
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Speicherkonto aus. 
+
+2. Navigieren Sie unter **Blob-Dienst** zur Option **Datenschutz**.
+
+3. Klicken Sie unter **Vorläufiges Löschen von Blobs** auf **Aktiviert**.
+
+4. Geben Sie unter **Aufbewahrungsrichtlinien** die Anzahl der Tage für die *Aufbewahrung* ein.
+
+5. Klicken Sie auf die Schaltfläche **Speichern**, um Ihre Datenschutzeinstellungen zu bestätigen.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
 

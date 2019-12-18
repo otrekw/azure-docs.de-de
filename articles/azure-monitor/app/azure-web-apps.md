@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/04/2019
-ms.openlocfilehash: e4fc00d3889d10dddb9ec147a19f06a7211f53be
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/04/2019
+ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230296"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850073"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -37,7 +37,9 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 > [!NOTE]
 > Wenn sowohl die Agent-basierte Überwachung als auch die manuelle SDK-basierte Instrumentierung erkannt wird, werden nur die Einstellungen der manuellen Instrumentierung berücksichtigt. Dadurch wird verhindert, dass doppelte Daten gesendet werden. Weitere Informationen dazu finden Sie im [Abschnitt zur Problembehandlung](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting) weiter unten.
 
-## <a name="enable-agent-based-monitoring-for-net-applications"></a>Aktivieren der Agent-basierten Überwachung für .NET-Anwendungen
+## <a name="enable-agent-based-monitoring"></a>Aktivieren der Agent-basierten Überwachung
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 > [!NOTE]
 > Die Kombination von APPINSIGHTS_JAVASCRIPT_ENABLED und urlCompression wird nicht unterstützt. Weitere Informationen enthält die Erläuterung im [Problembehandlungsabschnitt](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting).
@@ -73,7 +75,7 @@ Es gibt zwei Methoden, um die Überwachung für in Azure App Services gehostete 
 
     * Eine Liste der unterstützten Einstellungen des Telemetrieprozessors für die adaptive Stichprobenerstellung finden Sie im [Code](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs) und der [zugehörigen Dokumentation](https://docs.microsoft.com/azure/azure-monitor/app/sampling).
 
-## <a name="enable-agent-based-monitoring-for-net-core-applications"></a>Aktivieren der Agent-basierten Überwachung für .NET Core-Anwendungen
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Unterstützte .NET Core-Versionen: ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2
 
@@ -94,7 +96,23 @@ Die Agent-/Erweiterung-basierte Überwachung für das vollständige Framework au
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new-net-core.png)
 
-## <a name="enable-client-side-monitoring-for-net-applications"></a>Aktivieren der clientseitigen Überwachung für .NET-Anwendungen
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Wählen Sie in Ihrer App Service-Web-App die Option **Einstellungen** > **Application Insights** > **Aktivieren** aus. Die Agent-basierte Überwachung für Node.js befindet sich derzeit in der Vorschauphase.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Auf App Service basierende Java-Webanwendungen unterstützen derzeit keine automatische Überwachung mit Agents/Erweiterungen. Um die Überwachung für Ihre Java-Anwendung zu aktivieren, müssen Sie [Ihre Anwendung manuell instrumentieren](https://docs.microsoft.com/azure/azure-monitor/app/java-get-started).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Auf App Service basierende Python-Webanwendungen unterstützen derzeit keine automatische Überwachung mit Agents/Erweiterungen. Um die Überwachung für Ihre Python-Anwendung zu aktivieren, müssen Sie [Ihre Anwendung manuell instrumentieren](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
+
+---
+
+## <a name="enable-client-side-monitoring"></a>Aktivieren der clientseitigen Überwachung
+
+# <a name="nettabnet"></a>[.NET](#tab/net)
 
 Die clientseitige Überwachung für ASP.NET ist optional. Zum Aktivieren der clientseitigen Überwachung gehen Sie folgendermaßen vor:
 
@@ -111,7 +129,7 @@ Die clientseitige Überwachung für ASP.NET ist optional. Zum Aktivieren der cli
 
 Zum Deaktivieren der clientseitigen Überwachung entfernen Sie entweder das zugeordnete Schlüssel-Wert-Paar aus den Anwendungseinstellungen oder legen Sie den Wert auf „false“ fest.
 
-## <a name="enable-client-side-monitoring-for-net-core-applications"></a>Aktivieren der clientseitigen Überwachung für .NET Core-Anwendungen
+# <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
 Die clientseitige Überwachung für .NET Core-Apps ist mit **Empfohlene Sammlung** **standardmäßig aktiviert**, unabhängig davon, ob die App-Einstellung „APPINSIGHTS_JAVASCRIPT_ENABLED“ vorhanden ist.
 
@@ -127,6 +145,20 @@ Wenn Sie aus irgendeinem Grund die clientseitige Überwachung deaktivieren möch
    * **Speichern** Sie die Einstellungen, und **starten Sie die App neu**.
 
 ![Screenshot der Benutzeroberfläche für Anwendungseinstellungen](./media/azure-web-apps/appinsights-javascript-disabled.png)
+
+# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+
+Um die clientseitige Überwachung für Ihre Node.js-Anwendung zu aktivieren, müssen Sie [Ihrer Anwendung das clientseitige JavaScript-SDK manuell hinzufügen](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Um die clientseitige Überwachung für Ihre Java-Anwendung zu aktivieren, müssen Sie [Ihrer Anwendung das clientseitige JavaScript-SDK manuell hinzufügen](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Um die clientseitige Überwachung für Ihre Python-Anwendung zu aktivieren, müssen Sie [Ihrer Anwendung das clientseitige JavaScript-SDK manuell hinzufügen](https://docs.microsoft.com/azure/azure-monitor/app/javascript).
+
+---
 
 ## <a name="automate-monitoring"></a>Automatisieren der Überwachung
 
@@ -322,7 +354,7 @@ Wenn das Upgrade für eine frühere Version als 2.5.1 ausgeführt wird, vergewis
 Nachfolgend finden Sie schrittweise Anleitungen zur Problembehandlung für die Erweiterung/Agent-basierte Überwachung für Anwendungen, die auf .NET und .NET Core basieren und unter Azure App Services ausgeführt werden.
 
 > [!NOTE]
-> Java- und Node.js-Anwendungen werden unter Azure App Services nur über die manuelle SDK-basierte Instrumentierung unterstützt. Daher gelten die folgenden Schritte nicht für diese Szenarien.
+> Java-Anwendungen werden unter Azure App Services nur über die manuelle SDK-basierte Instrumentierung unterstützt. Daher gelten die folgenden Schritte nicht für diese Szenarien.
 
 1. Überprüfen Sie, ob die Anwendung über `ApplicationInsightsAgent` überwacht wird.
     * Überprüfen Sie, ob die App-Einstellung `ApplicationInsightsAgent_EXTENSION_VERSION` auf den Wert „~2“ festgelegt ist.

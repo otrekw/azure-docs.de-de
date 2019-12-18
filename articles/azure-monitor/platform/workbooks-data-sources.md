@@ -1,5 +1,5 @@
 ---
-title: Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen aus mehreren Azure-Datenquellen | Microsoft-Dokumentation
+title: Datenquellen für Azure Monitor-Arbeitsmappen | Microsoft-Dokumentation
 description: Vereinfachen Sie die komplexe Berichterstellung mit vordefinierten und benutzerdefiniert parametrisierten Azure Monitor-Arbeitsmappen, die aus mehreren Datenquellen erstellt werden.
 services: azure-monitor
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: dd5068da31c3aa863fc56022834a28b60ee15004
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 368da2baaea1be41331d77f4dae1bdd9567b8cc5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164524"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872892"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Datenquellen für Azure Monitor-Arbeitsmappen
 
@@ -35,7 +35,7 @@ Arbeitsmappenautoren können KQL-Abfragen verwenden, mit denen die zugrunde lieg
 
 Arbeitsmappenautoren können problemlos Abfragen für mehrere Ressourcen durchführen und so eine wirklich einheitliche und umfassende Berichtsoberfläche erstellen.
 
-## <a name="metrics"></a>Metriken
+## <a name="metrics"></a>metrics
 
 Azure-Ressourcen geben [Metriken](data-platform-metrics.md) aus, auf die über Arbeitsmappen zugegriffen werden kann. Der Zugriff auf Metriken kann in Arbeitsmappen über ein spezielles Steuerelement erfolgen, das Ihnen die Angabe der Zielressourcen, der gewünschten Metriken und deren Aggregation ermöglicht. Diese Daten können dann in Diagrammen oder Rastern dargestellt werden.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167864"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74842729"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -178,7 +178,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![G Suite: Gruppenzuordnungen](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+12. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. Auf der Benutzeroberfläche wird der Standardsatz von Attributzuordnungen zwischen Azure AD und G Suite angezeigt. Sie können zusätzliche Attribute hinzufügen (z. B. die Organisationseinheit), indem Sie auf „Neue Zuordnung hinzufügen“ klicken. 
 
     ![G Suite: Gruppenattribute](media/google-apps-provisioning-tutorial/groupattributes.png)
 
@@ -204,6 +204,9 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+
+## <a name="common-issues"></a>Häufige Probleme
+* Autorisierungsfehler können auftreten, wenn das Konto zum Herstellen einer Verbindung kein Administratorkonto in G Suite ist. Stellen Sie sicher, dass das Konto für die Zugriffsautorisierung über Administratorberechtigungen für **alle Domänen** verfügt, in denen Benutzer bereitgestellt werden müssen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Media Services-Entitäten mit REST | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten.
+description: In diesem Artikel erfahren Sie, wie Sie Media Services-Entitäten mit der REST-API verwalten.
 author: juliako
 manager: femila
 editor: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ffbf30f2bfdf0a175513a8d2b9182b35c39f6aae
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ecbca99a65d99cc3b8d842a7b61d858398a80ff
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761708"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885703"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>Verwalten von Media Services-Entitäten mit REST  
 

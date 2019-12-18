@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a1fd99ee595c4ae91ccd06aa41fa421ca8fcc074
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151314"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851699"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -184,13 +184,11 @@ Wenn Sie Nachrichten vor dem Senden von Telemetriedaten filtern möchten, könne
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beschränkungen bei den Ereignissen „Gerät verbunden“ und „Gerät getrennt“
 
-Um die Ereignisse „Gerät verbunden“ und „Gerät getrennt“ zu erhalten, müssen Sie den D2C-Link oder den C2D-Link für Ihr Gerät öffnen. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [ReceiveAsync-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) aufrufen.
+Um Geräteverbindungsstatus-Ereignisse zu empfangen, muss ein Gerät einen D2C-Vorgang zum Senden von Telemetrie oder einen C2D-Vorgang zum Empfangen von Nachrichten bei IoT Hub ausführen. Beachten Sie jedoch: Wenn ein Gerät für die Verbindung mit IoT Hub das AMQP-Protokoll verwendet, empfiehlt sich der C2D-Vorgang zum Empfangen einer Nachricht, andernfalls können die Benachrichtigungen zum Verbindungszustand um einige Minuten verzögert werden. Wenn Ihr Gerät das MQTT-Protokoll verwendet, hält IoT Hub den C2D-Link geöffnet. Bei AMQP können Sie den C2D-Link öffnen, indem Sie die [Receive Async-API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) für das IoT Hub-C-SDK oder den [Geräteclient für AMQP](iot-hub-amqp-support.md#device-client) aufrufen.
 
 Der D2C-Link ist offen, wenn Sie Telemetriedaten senden. 
 
-Wenn die Geräteverbindung instabil ist, das Gerät also häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Der *letzte* Verbindungsstatus, der letztendlich konsistent ist, wird aber veröffentlicht. Wenn Ihr Gerät beispielsweise zunächst im verbundenen Zustand war, wird die Konnektivität für ein paar Sekunden wiederhergestellt, und dann ist die Verbindung wieder im verbundenen Zustand. Es werden keine neuen Ereignisse zum Geräteverbindungsstatus seit dem Anfangsverbindungsstatus veröffentlicht. 
-
-Bei einem Ausfall von IoT Hub wird der Geräteverbindungsstatus veröffentlicht, sobald der Ausfall beendet ist. Wenn das Gerät während dieses Ausfalls getrennt wird, wird das Ereignis „Gerät getrennt“ innerhalb von 10 Minuten veröffentlicht.
+Wenn die Geräteverbindung instabil ist und das Gerät häufig verbunden und getrennt wird, wird nicht jeder einzelne Verbindungsstatus gesendet. Stattdessen wird der aktuelle Verbindungsstatus als regelmäßig abgerufene Momentaufnahme veröffentlicht, bis die Verbindung wieder instabil wird. Wenn dasselbe Verbindungszustandsereignis mit unterschiedlichen Folgenummern oder unterschiedliche Verbindungszustandsereignissen empfangen werden, bedeutet dies, dass sich der Geräteverbindungsstatus geändert hat.
 
 ## <a name="tips-for-consuming-events"></a>Tipps zum Nutzen von Ereignissen
 

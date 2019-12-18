@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: b01370bb8c86da07549775ec1a1399e09c80f9af
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0a57e87cc408d111893cbb2beaf4fc5afee2eca2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534249"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930781"
 ---
 # <a name="use-java-for-files--acls-in-azure-data-lake-storage-gen2-preview"></a>Verwenden von Java für Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2 (Vorschau)
 
@@ -32,17 +32,9 @@ In diesem Artikel erfahren Sie, wie Sie Java zum Erstellen und Verwalten von Ver
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
-Öffnen Sie zunächst die Datei *pom.xml* in Ihrem Text-Editor. Fügen Sie der Gruppe „dependencies“ das folgende Abhängigkeitselement hinzu.
+Öffnen Sie zunächst [diese Seite](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake), und suchen Sie die neueste Version der Java-Bibliothek. Öffnen Sie dann die Datei *pom.xml* in Ihrem Text-Editor. Fügen Sie ein Abhängigkeitselement hinzu, das auf diese Version verweist.
 
-```xml
-<dependency>
-  <groupId>com.azure</groupId>
-  <artifactId>azure-storage-file-datalake</artifactId>
-  <version>12.0.0-preview.6</version>
-</dependency>
-```
-
-Fügen Sie dann die folgenden Import-Anweisungen zu Ihrer Codedatei hinzu.
+Fügen Sie als Nächstes Ihrer Codedatei die folgenden Import-Anweisungen hinzu.
 
 ```java
 import com.azure.storage.common.StorageSharedKeyCredential;
@@ -59,9 +51,9 @@ import com.azure.storage.file.datalake.models.PathPermissions;
 import com.azure.storage.file.datalake.models.RolePermissions;
 ```
 
-## <a name="connect-to-the-account"></a>Herstellen einer Verbindung zum Konto 
+## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto 
 
-Sie müssen eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt, um die Codeausschnitte in diesem Artikel zu verwenden. Die einfachste Möglichkeit, diese zu erhalten, ist die Verwendung eines Kontoschlüssels. 
+Wenn Sie die Codeausschnitte in diesem Artikel verwenden möchten, müssen Sie eine **DataLakeServiceClient**-Instanz erstellen, die das Speicherkonto darstellt. Am einfachsten können Sie dafür einen Kontoschlüssel verwenden. 
 
 In diesem Beispiel wird eine **DataLakeServiceClient**-Instanz mithilfe eines Kontoschlüssels erstellt.
 

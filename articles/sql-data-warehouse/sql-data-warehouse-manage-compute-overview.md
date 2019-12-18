@@ -2,21 +2,21 @@
 title: Verwalten von Computeressourcen
 description: Erfahren Sie mehr über die Funktionen zur horizontalen Leistungsskalierung in Azure SQL Data Warehouse. Skalieren Sie durch Anpassen der DWUs horizontal hoch, oder senken Sie die Kosten durch Anhalten des Data Warehouse.
 services: sql-data-warehouse
-author: kevinvngo
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
 ms.date: 11/12/2019
-ms.author: kevin
+ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 936d92d085420e1386e29a924470b9bac9200d43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 305b17a9118bddac53b19462cb8c3be887395311
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039096"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923599"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen in Azure SQL Data Warehouse
 Erfahren Sie mehr über die Verwaltung von Computeressourcen in Azure SQL Data Warehouse. Senken Sie die Kosten, indem Sie das Data Warehouse anhalten, oder skalieren Sie das Data Warehouse, um Leistungsanforderungen zu erfüllen. 
@@ -59,7 +59,7 @@ Um von den Leistungsvorteilen der Skalierung insbesondere für größere Data Wa
 
 Empfehlungen für die Ermittlung der besten Anzahl von Data Warehouse-Einheiten:
 
-- Beginnen Sie bei einem in der Entwicklung befindlichen Data Warehouse mit einer geringen Anzahl von Data Warehouse-Einheiten.  Ein guter Ausgangspunkt ist DW400 oder DW200.
+- Beginnen Sie bei einem in der Entwicklung befindlichen Data Warehouse mit einer geringen Anzahl von Data Warehouse-Einheiten.  Ein guter Ausgangspunkt ist DW400c oder DW200c.
 - Überwachen Sie die Anwendungsleistung, und beobachten Sie dabei die Anzahl der ausgewählten Data Warehouse-Einheiten im Vergleich zur beobachteten Leistung.
 - Gehen Sie von einer linearen Skalierung aus, und bestimmen Sie, um wie viel Sie die Data Warehouse-Einheiten erhöhen oder verringern müssen. 
 - Nehmen Sie weitere Anpassungen vor, bis Sie die optimale Leistungsstufe für Ihre geschäftlichen Anforderungen erreichen.

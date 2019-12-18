@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e8dc6181660f0c1545df0688e2749f8f0187027
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b387c9d595898158ff8b5ab8c25f705825b8c248
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496892"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978218"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Was sind Field Programmable Gate Arrays (FPGA) und wie werden sie bereitgestellt?
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -136,9 +136,9 @@ Befolgen Sie die Anweisungen für folgende Punkte:
 
 Verwenden Sie das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), um eine Dienstdefinition zu erstellen. Eine Dienstdefinition ist eine Datei, die eine Pipeline mit auf TensorFlow basierenden Diagrammen (Eingabe, Featurizer und Klassifizierung) beschreibt. Durch den Bereitstellungsbefehl werden die Definition und die Diagramme automatisch in einer ZIP-Datei komprimiert, die dann in Azure Blob Storage hochgeladen wird. Das DNN wurde bereits zur Ausführung im FPGA bereitgestellt.
 
-### <a name="load-azure-ml-workspace"></a>Laden des Azure ML-Arbeitsbereichs
+### <a name="load-azure-machine-learning-workspace"></a>Azure Machine Learning-Arbeitsbereich
 
-Laden Sie Ihren Azure ML-Arbeitsbereich.
+Laden Sie Ihren Azure Machine Learning-Arbeitsbereich.
 
 ```python
 import os
@@ -380,7 +380,7 @@ ssl_enabled = address.startswith("https")
 address = address[address.find('/')+2:].strip('/')
 port = 443 if ssl_enabled else 80
 
-# Initialize AzureML Accelerated Models client
+# Initialize Azure ML Accelerated Models client
 client = PredictionClient(address=address,
                           port=port,
                           use_ssl=ssl_enabled,
@@ -432,9 +432,9 @@ Zum Absichern von FPGA-Webdiensten lesen Sie das Dokument [Absichern von Webdien
 
 Sehen Sie sich diese Notebooks, Videos und Blogs an:
 
-+ Einige [Beispielnotebooks](https://aka.ms/aml-accel-models-notebooks).
++ Verschiedene [Beispielnotebooks](https://aka.ms/aml-accel-models-notebooks)
 
-+ [Hyperscalehardware: ML at scale on top of Azure + FPGA (ML mit Skalierung über Azure und FPGA): Build 2018 (Video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
++ [Hyperscalehardware: ML mit Skalierung über Azure und FPGA: Build 2018 (Video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 
 + [Einblicke in die FPGA-basierte konfigurierbare Cloud von Microsoft (Video)](https://channel9.msdn.com/Events/Build/2017/B8063)
 

@@ -1,12 +1,12 @@
 ---
 title: Abrufen von Vorgängen mit langen Laufzeiten | Microsoft-Dokumentation
-description: In diesem Thema wird gezeigt, wie Vorgänge mit langen Laufzeiten abgerufen werden.
+description: Azure Media Services bietet APIs, die Anforderungen zum Starten von Vorgängen an Media Services senden (z. B. zum Erstellen, Starten, Beenden oder Löschen eines Kanals). Diese Vorgänge weisen lange Laufzeiten auf. In diesem Thema wird gezeigt, wie Vorgänge mit langen Laufzeiten abgerufen werden.
 services: media-services
 documentationcenter: ''
-author: juliako
+author: Juliako
+writer: juliako
 manager: femila
 editor: ''
-ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 752c502268ef53d3c0575d92e75ce6a965fccd9f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 43d9a6adc935010eab6e5e52d73f2019c8afcf5f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61464979"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887157"
 ---
 # <a name="delivering-live-streaming-with-azure-media-services"></a>Bereitstellen von Livestreaming mit Azure Media Services
 

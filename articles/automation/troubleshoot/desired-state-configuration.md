@@ -4,17 +4,17 @@ description: Dieser Artikel enthält Informationen zur Behandlung von Problemen 
 services: automation
 ms.service: automation
 ms.subservice: ''
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d358ac1fb766804b35d969f4d06bc6c07e62661
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231551"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951461"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Behandeln von Problemen mit Konfiguration des gewünschten Zustands (Desired State Configuration, DSC)
 
@@ -89,6 +89,68 @@ Dieser Fehler wird normalerweise durch eine Firewall, durch einen Computer hinte
 #### <a name="resolution"></a>Lösung
 
 Stellen Sie sicher, dass Ihr Computer Zugriff auf die richtigen Endpunkte für Azure Automation DSC hat, und wiederholen Sie den Vorgang. Eine Liste der erforderlichen Ports und Adressen finden Sie unter [Übersicht über Azure Automation State Configuration](../automation-dsc-overview.md#network-planning).
+
+### <a name="a-nameunauthorizedascenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>Szenario: Antwortcode „Nicht autorisiert“ in Statusberichten
+
+#### <a name="issue"></a>Problem
+
+Wenn Sie einen Knoten mit State Configuration (DSC) registrieren, erhalten Sie eine der folgenden Fehlermeldungen:
+
+```error
+The attempt to send status report to the server https://{your automation account url}/accounts/xxxxxxxxxxxxxxxxxxxxxx/Nodes(AgentId='xxxxxxxxxxxxxxxxxxxxxxxxx')/SendReport returned unexpected response code Unauthorized.
+```
+
+```error
+VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / Registration of the Dsc Agent with the server failed.
+```
+
+### <a name="cause"></a>Ursache
+
+Dieses Problem wird durch ein ungültiges oder abgelaufenes Zertifikat verursacht.  Weitere Informationen finden Sie unter [Ablauf und erneute Registrierung eines Zertifikats](../automation-dsc-onboarding.md#certificate-expiration-and-re-registration).
+
+### <a name="resolution"></a>Lösung
+
+Führen Sie folgenden Schritte aus, um den fehlerhaften DSC-Knoten neu zu registrieren:
+
+Heben Sie zunächst die Registrierung des Knotens auf:
+
+1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Automation-Konten** > {Ihr Automation-Konto} > **State Configuration (DSC)** .
+2. Klicken Sie auf „Knoten“ und anschließend auf den fehlerhaften Knoten.
+3. Klicken Sie auf „Registrierung aufheben“, um die Registrierung des Knotens aufzuheben.
+
+Deinstallieren Sie als Nächstes die DSC-Erweiterung auf dem Knoten.
+
+1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Virtueller Computer** > {fehlerhafter Knoten} > **Erweiterungen**.
+2. Klicken Sie auf „Microsoft.Powershell.DSC“.
+3. Klicken Sie auf „Deinstallieren“, um die PowerShell DSC-Erweiterung zu deinstallieren.
+
+Entfernen Sie nun alle ungültigen oder abgelaufenen Zertifikate aus dem Knoten.
+
+Führen Sie auf dem fehlerhaften Knoten den folgenden Befehl an einer PowerShell-Eingabeaufforderung mit erhöhten Rechten aus:
+
+```powershell
+$certs = @()
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC"}
+$certs += dir cert:\localmachine\my | ?{$_.FriendlyName -like "DSC-OaaS Client Authentication"}
+$certs += dir cert:\localmachine\CA | ?{$_.subject -like "CN=AzureDSCExtension*"}
+"";"== DSC Certificates found: " + $certs.Count
+$certs | FL ThumbPrint,FriendlyName,Subject
+If (($certs.Count) -gt 0)
+{ 
+    ForEach ($Cert in $certs) 
+    {
+        RD -LiteralPath ($Cert.Pspath) 
+    }
+}
+```
+
+Registrieren Sie abschließend den fehlerhaften Knoten wieder:
+
+1. Navigieren Sie im Azure-Portal zu **Startseite** -> **Automation-Konten** > {Ihr Automation-Konto} > **State Configuration (DSC)** .
+2. Klicken Sie auf „Knoten“.
+3. Klicken Sie auf die Schaltfläche „Hinzufügen“.
+4. Wählen Sie den fehlerhaften Knoten aus.
+5. Klicken Sie auf „Verbinden“, und wählen Sie die gewünschten Optionen aus.
 
 ### <a name="failed-not-found"></a>Szenario: Knoten hat den Fehlerstatus „Nicht gefunden“
 
@@ -187,6 +249,49 @@ Dieser Fehler tritt in der Regel auf, wenn dem Knoten ein Knotenkonfigurationsna
 
 * Stellen Sie sicher, dass Sie dem Knoten einen Knotenkonfigurationsnamen zuweisen, der genau mit dem im Dienst vorhandenen Namen übereinstimmt.
 * Sie können festlegen, dass kein Knotenkonfigurationsname angegeben werden soll. In dem Fall erfolgt ein Onboarding des Knotens, aber keine Zuweisung einer Knotenkonfiguration.
+
+### <a name="cross-subscription"></a>Szenario: Fehler „Es ist mindestens ein Fehler aufgetreten.“ beim Registrieren eines Knotens mit PowerShell
+
+#### <a name="issue"></a>Problem
+
+Wenn Sie einen Knoten mithilfe von `Register-AzAutomationDSCNode` oder `Register-AzureRMAutomationDSCNode`registrieren, tritt der folgende Fehler auf:
+
+```error
+One or more errors occurred.
+```
+
+#### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt auf, wenn Sie versuchen, einen Knoten zu registrieren, der sich in einem anderen Abonnement befindet als das Automation-Konto.
+
+#### <a name="resolution"></a>Lösung
+
+Behandeln Sie den Knoten aus dem anderen Abonnement wie einen Knoten in einer separaten Cloud oder wie einen lokalen Knoten.
+
+Gehen Sie wie folgt vor, um den Knoten zu registrieren:
+
+* Windows: [Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS](../automation-dsc-onboarding.md#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws)
+* Linux: [Physische/virtuelle Linux-Computer, lokal oder in einer anderen Cloud als Azure](../automation-dsc-onboarding.md#physicalvirtual-linux-machines-on-premises-or-in-a-cloud-other-than-azure)
+
+### <a name="agent-has-a-problem"></a>Szenario: Fehlermeldung „Fehler beim Bereitstellen“
+
+#### <a name="issue"></a>Problem
+
+Beim Registrieren eines Knotens tritt der folgende Fehler auf:
+
+```error
+Provisioning has failed
+```
+
+#### <a name="cause"></a>Ursache
+
+Diese Meldung ist auf ein Konnektivitätsproblem zwischen dem Knoten und Azure zurückzuführen.
+
+#### <a name="resolution"></a>Lösung
+
+Ermitteln Sie, ob sich Ihr Knoten in einem privaten virtuellen Netzwerk befindet oder ob andere Probleme beim Herstellen einer Verbindung mit Azure vorliegen.
+
+Weitere Informationen finden Sie unter [Beheben von Fehlern beim Integrieren von Lösungen](onboarding.md).
 
 ### <a name="failure-linux-temp-noexec"></a>Szenario: Anwenden einer Konfiguration in Linux, dabei tritt allgemeiner Fehler auf
 

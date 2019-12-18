@@ -1,6 +1,6 @@
 ---
 title: Media Encoder Standard-Schema | Microsoft Docs
-description: Dieser Artikel enthält eine Übersicht über das Media Encoder Standard-Schema.
+description: In diesem Artikel werden einige Elemente und Typen des XML-Schemas beschrieben, auf dem Media Encoder Standard-Voreinstellungen basieren.
 author: Juliako
 manager: femila
 editor: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 837235e04ce190a4481e1f19789d8e9ff9cb7578
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 622f14beabb1f2f109dff5d28c1591ffdd5aa000
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61131554"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901447"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-Schema
 In diesem Artikel werden einige Elemente und Typen des XML-Schemas beschrieben, auf dem [Media Encoder Standard-Voreinstellungen](media-services-mes-presets-overview.md) basieren. Der Artikel enthält eine Beschreibung der Elemente und der dazugehörigen gültigen Werte.  
@@ -28,7 +28,7 @@ Dient zum Definieren einer Voreinstellung für die Codierung.
 
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Codieren** |[Codieren](media-services-mes-schema.md#Encoding) |Stammelement, mit dem angegeben wird, dass die Eingabequellen codiert werden sollen. |
 | **Ausgaben** |[Ausgaben](media-services-mes-schema.md#Output) |Auflistung der gewünschten Ausgabedateien. |
@@ -36,7 +36,7 @@ Dient zum Definieren einer Voreinstellung für die Codierung.
 
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Version**<br/><br/> Erforderlich |**xs: decimal** |Die voreingestellte Version. Es gelten die folgenden Einschränkungen: xs:fractionDigits value="1" und xs:minInclusive value="1", z.B. **version="1.0"** . |
 
@@ -45,7 +45,7 @@ Enthält eine Sequenz der unten angegebenen Elemente:
 
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |Einstellungen für die H.264-Videocodierung |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |Einstellungen für die AAC-Codierung von Audiodaten |
@@ -56,7 +56,7 @@ Enthält eine Sequenz der unten angegebenen Elemente:
 ## <a name="H264Video"></a> H264Video
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |Derzeit wird nur die Einwegverschlüsselung unterstützt. |
 | **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |Bestimmt den festen Abstand zwischen IDR-Frames in Sekunden. Wird auch als GOP-Dauer bezeichnet. Siehe **SceneChangeDetection** um festzulegen, ob der Encoder von diesem Wert abweichen kann. |
@@ -67,7 +67,7 @@ Enthält eine Sequenz der unten angegebenen Elemente:
 
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | Wenn die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur hinzuzufügen. Verwenden Sie zu diesem Zweck Condition="InsertBlackIfNoVideoBottomLayerOnly" (Video nur für die unterste Bitrate hinzufügen) oder Condition="InsertBlackIfNoVideo" (Video für alle Ausgabebitraten hinzufügen). Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-advanced-encoding-with-mes.md#no_video).|
 
@@ -77,7 +77,7 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
               
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |Auflistung von H264-Ebenen |
 
@@ -89,7 +89,7 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
 
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs="0"<br/><br/> default="Auto" |**xs: string** |Es kann sich um einen der folgenden **xs: string**-Werte handeln: **Auto**, **Baseline**, **Main**, **High**. |
 | **Level**<br/><br/> minOccurs="0"<br/><br/> default="Auto" |**xs: string** | |
@@ -112,13 +112,13 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
 
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs="0"<br/><br/> default="AACLC" |**xs: string** |Es kann sich um einen der folgenden Werte handeln: **AACLC**, **HEAACV1** oder **HEAACV2**. |
 
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs: string** |Um zu erzwingen, dass der Encoder ein Asset erstellt, das bei einer Eingabe ohne Audio eine stille Audiospur enthält, geben Sie den Wert „InsertSilenceIfNoAudio“ an.<br/><br/> Wenn Sie eine Eingabe an den Encoder senden, die keine Audiodaten, sondern nur Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig nur aus Dateien mit Videodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine stille Audiospur hinzuzufügen. |
 
@@ -133,7 +133,7 @@ Ausführliche Informationen dazu, welche Werte für die einzelnen Profile gelten
 
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Channels**<br/><br/> minOccurs="0" |**xs: int** |Gibt die Anzahl von codierten Audiokanälen an. Folgende Optionen sind gültig: 1, 2, 5, 6, 8.<br/><br/> Standardwert: 2. |
 | **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |Audiosamplingrate in Hz |
@@ -150,7 +150,7 @@ Audiocodec|Details
 ## <a name="Clip"></a> Clip
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |Gibt die Startzeit einer Darstellung an. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn beispielsweise das erste Bild des Eingabevideos den Zeitstempel 12:00:10.000 hat, sollte „StartTime“ mindestens 12:00:10.000 betragen. |
 | **Duration** |**xs:duration** |Gibt die Dauer einer Darstellung an (z.B. die Einblendung einer Überlagerung im Video). |
@@ -158,7 +158,7 @@ Audiocodec|Details
 ## <a name="Output"></a> Ausgabe
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **FileName** |**xs:string** |Der Name der Ausgabedatei.<br/><br/> Sie können die Makros in der folgenden Tabelle verwenden, um die Ausgabedateinamen zu erstellen. Beispiel:<br/><br/> **"Outputs": [      {       "FileName": "{Basename} *{Resolution}* {Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
 
@@ -178,7 +178,7 @@ Audiocodec|Details
 ## <a name="Video"></a> Video (komplexer Typ erbt vom Codec)
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Starten** |**xs:string** | |
 | **Schritt** |**xs:string** | |
@@ -203,7 +203,7 @@ Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden un
 ## <a name="FormatGroup"></a> FormatGroup (Gruppe)
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -212,35 +212,35 @@ Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden un
 ## <a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>Element
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>Element
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>Element
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
@@ -248,49 +248,49 @@ Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden un
 
 ### <a name="attributes"></a>Attribute
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="BmpImage"></a> BmpImage (komplexer Typ erbt vom Video)
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-Ebenen |
 
 ## <a name="JpgImage"></a> JpgImage (komplexer Typ erbt vom Video)
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-Ebenen |
 
 ## <a name="PngImage"></a> PngImage (komplexer Typ erbt vom Video)
 ### <a name="elements"></a>Elemente
 
-| NAME | Type | BESCHREIBUNG |
+| NAME | type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-Ebenen |
 

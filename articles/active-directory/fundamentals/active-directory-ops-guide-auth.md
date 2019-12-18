@@ -11,25 +11,25 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 40e0ba21d472097e34938878ddc1fa0c47b30417
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74803732"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919340"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
 In diesem Abschnitt des [Referenzleitfadens zu Azure AD-Vorgängen](active-directory-ops-guide-intro.md) werden die Überprüfungen und Aktionen beschrieben, die Sie zum Sichern und Verwalten Ihrer Anmeldeinformationen, Definieren der Authentifizierungsfunktion, Delegieren von Zuweisungen, Messen der Nutzung und zum Definieren der Zugriffsrichtlinien basierend auf dem Sicherheitsstatus des Unternehmens vornehmen sollten.
 
 > [!NOTE]
-> Diese Empfehlungen sind auf dem Stand des Veröffentlichungsdatums, können sich aber im Laufe der Zeit ändern. Organisationen sollten ihre Identitätsmethoden fortlaufend überprüfen, da sich die Produkte und Dienste von Microsoft mit der Zeit entwickeln.
+> Diese Empfehlungen sind auf dem Stand des Veröffentlichungsdatums, können sich aber im Laufe der Zeit ändern. Organisationen sollten ihre Identitätsmethoden fortlaufend überprüfen, da die Produkte und Dienste von Microsoft mit der Zeit weiterentwickelt werden.
 
 ## <a name="key-operational-processes"></a>Wichtige Betriebsabläufe
 
 ### <a name="assign-owners-to-key-tasks"></a>Zuweisen von Besitzern zu wichtigen Aufgaben
 
-Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die möglicherweise nicht Teil einer Projektveröffentlichung sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu optimieren. Im Folgenden werden die wichtigen Aufgaben und empfohlene Besitzer für diese aufgeführt:
+Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die möglicherweise nicht Teil eines Rolloutprojekts sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu optimieren. Im Folgenden werden die wichtigen Aufgaben und empfohlene Besitzer für diese aufgeführt:
 
 | Aufgabe | Owner (Besitzer) |
 | :- | :- |
@@ -292,16 +292,16 @@ Wenn die Legacyauthentifizierung in Ihrer Umgebung umfassend verwendet wird, sol
 
 ### <a name="consent-grants"></a>Zuweisung von Einwilligungen
 
-Bei Angriffen zur Zuweisung unrechtmäßiger Einwilligung erstellen Angreife eine in Azure AD registrierte Anwendung, die Zugriff auf Daten wie Kontaktinformationen, E-Mails oder Dokumente anfordert. Benutzer können dadurch böswilligen Anwendung Einwilligung bei Phishingangriffen oder indirekt gewähren, wenn sie nicht vorsichtig sind und böswillige Websites aufrufen.
+Bei Angriffen zur Zuweisung unrechtmäßiger Einwilligung erstellen Angreife eine in Azure AD registrierte Anwendung, die Zugriff auf Daten wie Kontaktinformationen, E-Mails oder Dokumente anfordert. Benutzer können schädlichen Anwendung im Rahmen von Phishingangriffen ihre Einwilligung erteilen, wenn sie auf schädlichen Websites landen.
 
-Im Folgenden werden die Berechtigungen aufgeführt, die Sie bei Microsoft Cloud Services überprüfen sollten:
+Im Anschluss sind Apps mit Berechtigungen aufgeführt, die Sie für Microsoft Cloud Services überprüfen sollten:
 
-- Anwendungen mit App- oder delegierten \*.ReadWrite-Berechtigungen.
-- Anwendungen mit delegierten Berechtigungen, die E-Mails im Namen des Benutzers lesen, senden oder verwalten können.
-- Anwendungen, denen die Verwendung der folgenden Berechtigungen gewährt wurde:
+- Apps mit App-basierten oder delegierten \*.ReadWrite-Berechtigungen
+- Apps mit delegierten Berechtigungen, die E-Mails im Namen des Benutzers lesen, senden oder verwalten können
+- Apps, denen die folgenden Berechtigungen gewährt wurden:
 
 | Resource | Berechtigung |
-| -------------------------- | -------------------- |
+| :- | :- |
 | Microsoft Office 365 Exchange Online | EAS.AccessAsUser.All |
 | | EWS.AccessAsUser.All |
 | | Mail.Read |
@@ -309,11 +309,19 @@ Im Folgenden werden die Berechtigungen aufgeführt, die Sie bei Microsoft Cloud 
 | | Mail.Read.Shared |
 | | Mail.ReadWrite |
 
-Informationen zum Vermeiden dieses Szenarios und zum Identifizieren und Beheben von Anwendungen mit unrechtmäßigen Einwilligungen oder Anwendungen mit mehr Einwilligungen als nötig finden Sie unter [Ermitteln und Beheben unrechtmäßiger Gewährungen von Einwilligungen in Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants). Planen Sie regelmäßige Überprüfungen der App-Berechtigungen, und entfernen Sie diese, wenn sie nicht erforderlich sind. Alternativ können Sie Self-Service komplett entfernen und Governanceverfahren einrichten.
+- Apps mit der Berechtigung zum uneingeschränkten Benutzeridentitätswechsel für den angemeldeten Benutzer. Beispiel:
+
+|Resource | Berechtigung |
+| :- | :- |
+| Azure AD Graph | Directory.AccessAsUser.All |
+| Microsoft Graph | Directory.AccessAsUser.All |
+| Azure-REST-API | user_impersonation |
+
+Informationen zur Vermeidung dieses Szenarios sowie zur Identifizierung und Behandlung von Anwendungen mit unrechtmäßigen Einwilligungen oder Anwendungen mit mehr Einwilligungen als nötig finden Sie unter [Ermitteln und Beheben unrechtmäßiger Gewährungen von Einwilligungen in Office 365](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants). Als Nächstes sollten Sie [Self-Service vollständig entfernen](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-user-consent) und [Governanceverfahren einrichten](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow). Planen Sie abschließend regelmäßige Überprüfungen der App-Berechtigungen, und entfernen Sie sie, wenn sie nicht erforderlich sind.
 
 #### <a name="consent-grants-recommended-reading"></a>Empfohlene Artikel zu Einwilligungsgewährungen
 
-- [Berechtigungsbereiche der Graph-API in Azure Active Directory](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes)
+- [Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference)
 
 ### <a name="user-and-group-settings"></a>Einstellungen für Benutzer und Gruppen
 

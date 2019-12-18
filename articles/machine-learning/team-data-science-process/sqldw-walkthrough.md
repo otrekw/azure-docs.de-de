@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76afafb59de762776b7d2614e383320b7d8f79e4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b32e2abcffda24fa82d3911575fe48acfc294ccc
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669406"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973168"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Der Team Data Science-Prozess in Aktion: Verwenden von SQL Data Warehouse
 In diesem Tutorial führen wir Sie durch die Erstellung und Bereitstellung eines Machine Learning-Modells mit SQL Data Warehouse (SQL DW) für ein öffentlich zugängliches Dataset: das Dataset [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/). Das erstellte binäre Klassifizierungsmodell sagt voraus, ob ein Trinkgeld für eine Fahrt bezahlt wird. Zudem werden Modelle für Multiklassenklassifizierung und Regression behandelt, die die Verteilung der gezahlten Trinkgeldbeträge vorhersagen.
@@ -540,7 +540,7 @@ Es folgt ein Beispiel zum Aufrufen dieser Funktion, um Features in Ihrer SQL-Abf
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0,7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Vorbereiten von Daten für die Modellerstellung
-Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert der binäre Klassifikationsbezeichner **tipped**, den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit.  Diese Abfrage kann kopiert und dann direkt in das Modul [Import Data](https://studio.azureml.net) in [Azure Machine Learning Studio][import-data] eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbank-Instanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
+Die folgende Abfrage führt die Tabellen **nyctaxi\_trip** und **nyctaxi\_fare** zusammen, generiert der binäre Klassifikationsbezeichner **tipped**, den Bezeichner **tip\_class** für die Multi-Klassen-Klassifizierung und extrahiert eine Stichprobe aus dem vollständig verbundenen Dataset. Die Stichprobennahme erfolgt durch das Abrufen einer Teilmenge der Fahrten basierend auf der Startzeit.  Diese Abfrage kann kopiert und dann direkt in das Modul [Import Data][import-data] in [Azure Machine Learning Studio (klassisch)](https://studio.azureml.net) eingefügt werden, um eine direkte Datenerfassung aus der SQL-Datenbank-Instanz in Azure zu erzielen. Die Abfrage schließt DataSets mit falschen Koordinaten (0, 0) aus.
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -567,15 +567,15 @@ In diesem Abschnitt werden wir Daten durchsuchen und Features generieren, und zw
 
 Die erforderlichen Azure SQL Data Warehouse-Informationen im IPython Notebook-Beispiel und die auf Ihren lokalen Computer heruntergeladene Python-Skriptdatei wurden zuvor vom PowerShell-Skript eingebunden. Sie sind ohne Änderung ausführbar.
 
-Wenn Sie bereits einen AzureML-Arbeitsbereich eingerichtet haben, können Sie das IPython Notebook-Beispiel direkt in den AzureML IPython Notebook-Dienst hochladen und dessen Ausführung starten. Im Folgenden werden die Schritte zum Hochladen in den AzureML IPython Notebook-Dienst aufgeführt:
+Wenn Sie bereits einen Azure Machine Learning-Arbeitsbereich eingerichtet haben, können Sie das IPython-Notebook-Beispiel direkt in den AzureML-IPython-Notebook-Dienst hochladen und ausführen. Im Folgenden werden die Schritte zum Hochladen in den AzureML-IPython-Notebook-Dienst aufgeführt:
 
-1. Melden Sie sich bei Ihrem AzureML-Arbeitsbereich an, klicken Sie oben auf „Studio“, und klicken Sie auf der linken Seite der Webseite auf „NOTEBOOKS“.
+1. Melden Sie sich bei Ihrem Azure Machine Learning-Arbeitsbereich an, klicken Sie oben auf **Studio**, und klicken Sie auf der linken Seite der Webseite auf **NOTEBOOKS**.
 
     ![Klicken auf „Studio“ und dann auf „NOTEBOOKS“][22]
-2. Klicken Sie in der linken unteren Ecke der Webseite auf „NEW“, und wählen Sie „Python 2“ aus. Geben Sie dann einen Namen für das Notebook ein, und klicken Sie auf das Häkchen, um das neue, leere IPython Notebook zu erstellen.
+2. Klicken Sie in der linken unteren Ecke der Webseite auf **NEW** (Neu), und wählen Sie **Python 2** aus. Geben Sie dann einen Namen für das Notebook ein, und klicken Sie auf das Häkchen, um das neue, leere IPython Notebook zu erstellen.
 
     ![Klicken auf „Neu“ und Auswählen von „Python 2“][23]
-3. Klicken Sie auf das Symbol „Jupyter“ in der linken oberen Ecke des neuen IPython Notebook.
+3. Klicken Sie auf das Symbol **Jupyter** in der linken oberen Ecke des neuen IPython-Notebooks.
 
     ![Klicken auf das Jupyter-Symbol][24]
 4. Ziehen Sie das IPython Notebook-Beispiel auf die **Strukturseite** Ihres AzureML IPython Notebook-Diensts, und klicken Sie auf **Upload**. Das IPython Notebook-Beispiel wird dann in den AzureML IPython Notebook-Dienst hochgeladen.
@@ -590,7 +590,7 @@ Zum Ausführen des IPython Notebook-Beispiels oder der Python-Skriptdatei sind d
 - pyodbc
 - PyTables
 
-Die empfohlene Reihenfolge beim Erstellen fortgeschrittener Analyselösungen mit großen Datenmengen in AzureML lautet wie folgt:
+Die empfohlene Reihenfolge beim Erstellen fortgeschrittener Analyselösungen mit großen Datenmengen in Azure Machine Learning lautet wie folgt:
 
 * Einlesen eines kleinen Teils der Daten in ein DataFrame im Speicher
 * Durchführen von Visualisierungen und Suchvorgängen mit den Beispieldaten
@@ -811,14 +811,14 @@ Wir können nun mit der Modellerstellung und -bereitstellung in [Azure Machine L
 
 Melden Sie sich zum Starten der Modellierungsübung bei Ihrem **(klassischen) Azure Machine Learning**-Arbeitsbereich an. Wenn Sie noch keinen Machine Learning-Arbeitsbereich erstellt haben, siehe [Erstellen eines (klassischen) Azure Machine Learning Studio-Arbeitsbereichs](../studio/create-workspace.md).
 
-1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio?](../studio/what-is-ml-studio.md)
-2. Melden Sie sich in [Azure Machine Learning Studio](https://studio.azureml.net)an.
-3. Die Startseite von Studio enthält eine Vielzahl an Informationen, Videos, Tutorials, Links zu Modulreferenzen und andere Ressourcen. Weitere Informationen zu Azure Machine Learning finden Sie im [Azure Machine Learning-Dokumentationscenter](https://azure.microsoft.com/documentation/services/machine-learning/).
+1. Informationen zu den ersten Schritten in Azure Machine Learning finden Sie unter [Was ist Azure Machine Learning Studio (klassisch)?](../studio/what-is-ml-studio.md)
+2. Melden Sie sich bei [Azure Machine Learning Studio (klassisch)](https://studio.azureml.net) an.
+3. Die Startseite von Machine Learning Studio (klassisch) bietet eine Vielzahl von Informationen, Videos, Tutorials, Links zu Modulreferenzen und anderen Ressourcen. Weitere Informationen zu Azure Machine Learning finden Sie im [Azure Machine Learning-Dokumentationscenter](https://azure.microsoft.com/documentation/services/machine-learning/).
 
 Ein typisches Trainingsexperiment umfasst die folgenden Schritte:
 
 1. Erstellen eines **+NEW** -Experiments
-2. Abrufen der Daten in Azure Machine Learning Studio.
+2. Abrufen der Daten in Azure Machine Learning Studio (klassisch)
 3. Vorverarbeiten, Transformieren und Ändern der Daten nach Bedarf
 4. Generieren von Funktionen nach Bedarf
 5. Aufteilen der Daten in DataSets für Training/Überprüfung/Tests (oder Verwenden verschiedener DataSets für alles)
@@ -828,7 +828,7 @@ Ein typisches Trainingsexperiment umfasst die folgenden Schritte:
 9. Evaluieren der Modelle zur Berechnung der relevanten Kennzahlen für das Lernproblem
 10. Optimieren der Modelle und Auswählen des geeignetsten Modells für die Bereitstellung
 
-Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning Studio entschieden. Im Folgenden ist das Verfahren zum Erstellen eines oder mehrerer der Vorhersagemodelle aufgeführt:
+Sie haben in dieser Übung bereits die Daten in SQL Data Warehouse untersucht und bearbeitet und sich für eine Stichprobengröße für die Erfassung in Azure Machine Learning Studio (klassisch) entschieden. Im Folgenden ist das Verfahren zum Erstellen eines oder mehrerer der Vorhersagemodelle aufgeführt:
 
 1. Übertragen Sie die Daten mithilfe des Moduls [Import Data][import-data] im Abschnitt **Data Input and Output** (Datenein- und -ausgabe) in Azure Machine Learning Studio (klassisch). Weitere Informationen finden Sie auf der Referenzseite zum Modul [Import Data][import-data].
 
@@ -881,7 +881,9 @@ Zusammenfassend haben Sie in diesem Tutorial eine Azure Data Science-Umgebung er
 Diese exemplarische Vorgehensweise und die zugehörigen Skripts und IPython Notebook(s) werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei „LICENSE.txt“ im Verzeichnis mit dem Beispielcode auf GitHub.
 
 ## <a name="references"></a>Referenzen
-•    [Andrés Monroy NYC Taxi Trips – Downloadseite](https://www.andresmh.com/nyctaxitrips/) •    [FOILing NYC’s Taxi Trip-Daten von Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/) •    [NYC Taxi and Limousine Commission Research and Statistics](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+- [Andrés Monroy NYC Taxi Trips – Downloadseite](https://www.andresmh.com/nyctaxitrips/)
+- [„FOILing NYC’s Taxi Trip Data“ (Freigeben der Taxifahrtendaten für NYC mit FOIL) von Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)
+- [NYC Taxi and Limousine Commission Research and Statistics (Forschung und Statistiken der NYC Taxi and Limousine Commission)](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

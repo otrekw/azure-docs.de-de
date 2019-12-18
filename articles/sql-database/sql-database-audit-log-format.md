@@ -4,19 +4,17 @@ description: Erfahren Sie mehr über die Struktur von Überwachungsprotokollen i
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
-ms.devlang: ''
 ms.topic: conceptual
 author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 01/03/2019
-ms.openlocfilehash: 14465e918fd4ac4e436e64d468c58e1d2ed83bb3
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 5bd3a3ae5ab95076129e2565a578bdc6ac0e1e38
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688173"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928640"
 ---
 # <a name="sql-database-audit-log-format"></a>Überwachungsprotokollformate in SQL-Datenbank
 
@@ -32,15 +30,16 @@ Für die Datenbank `Database1` unter `Server1` wäre beispielsweise folgender Pf
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-Schreibgeschützte Replikatüberwachungsprotokolle werden im selben Container gespeichert. Die Verzeichnishierarchie innerhalb des Containers weist das Format `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` auf. Der Name der Blobdatei liegt im selben Format vor.
+Überwachungsprotokolle für [schreibgeschützte Replikate](sql-database-read-scale-out.md) werden im selben Container gespeichert. Die Verzeichnishierarchie innerhalb des Containers weist das Format `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` auf. Der Name der Blobdatei liegt im selben Format vor. Die Überwachungsprotokolle für schreibgeschützte Replikate werden im selben Container gespeichert.
+
 
 ### <a name="event-hub"></a>Event Hub
 
-Überwachungsereignisse werden in den Namespace und Event Hub geschrieben, der während der Konfiguration festgelegt wurde, im Textkörper von [Apache Avro](https://avro.apache.org/)-Ereignissen erfasst und im JSON-Format mit UTF-8-Codierung gespeichert. Zum Lesen der Überwachungsprotokolle können Sie [Avro Tools](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) oder ähnliche Tools verwenden, die dieses Format verarbeiten können.
+Überwachungsereignisse werden in den Namespace und Event Hub geschrieben, der während der Konfiguration festgelegt wurde, im Textkörper von [Apache Avro](https://avro.apache.org/)-Ereignissen erfasst und im JSON-Format mit UTF-8-Codierung gespeichert. Zum Lesen der Überwachungsprotokolle können Sie [Avro Tools](../event-hubs/event-hubs-capture-overview.md#use-avro-tools) oder ähnliche Tools verwenden, die dieses Format verarbeiten können.
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Überwachungsereignisse werden in eine `AzureDiagnostics`-Tabelle mit der Kategorie `SQLSecurityAuditEvents` in dem Log Analytics-Arbeitsbereich protokolliert, der während der Konfiguration festgelegt wurde. Weitere nützliche Informationen zu Log Analytics-Suchsprache und -Suchbefehlen finden Sie unter [Referenz zur Log Analytics-Suche](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-search).
+Überwachungsereignisse werden in eine `AzureDiagnostics`-Tabelle mit der Kategorie `SQLSecurityAuditEvents` in dem Log Analytics-Arbeitsbereich protokolliert, der während der Konfiguration festgelegt wurde. Weitere nützliche Informationen zu Log Analytics-Suchsprache und -Suchbefehlen finden Sie unter [Referenz zur Log Analytics-Suche](../log-analytics/log-analytics-log-search.md).
 
 ## <a id="subheading-1"></a>Felder eines Überwachungsprotokolls
 

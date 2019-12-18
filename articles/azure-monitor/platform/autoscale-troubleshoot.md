@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/4/2019
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 14e2f79383aa45125ce6955f3611a75ece1df10d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74152343"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893568"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problembehandlung für automatische Skalierung in Azure
  
@@ -115,7 +115,7 @@ Wie bei jedem von Azure Monitor unterstützten Dienst können Sie diese Protokol
 
 ![Diagnoseeinstellungen für Autoskalierung](media/autoscale-troubleshoot/diagnostic-settings.png)
 
-In der vorherigen Abbildung wurden die Diagnoseeinstellungen für die Autoskalierung im Azure-Portal veranschaulicht. Dort können Sie die Registerkarte „Diagnoseprotokolle“ auswählen und die Protokollaufzeichnung und -weiterleitung aktivieren. Sie können dieselbe Aktion für Diagnoseeinstellungen auch mit der REST-API, CLI, PowerShell und Resource Manager-Vorlagen ausführen, indem Sie als Ressourcentyp *Microsoft.Insights/AutoscaleSettings* auswählen. 
+In der vorherigen Abbildung wurden die Diagnoseeinstellungen für die Autoskalierung im Azure-Portal veranschaulicht. Dort können Sie die Registerkarte „Diagnose-/Ressourcenprotokolle“ auswählen und die Protokollaufzeichnung und -weiterleitung aktivieren. Sie können dieselbe Aktion für Diagnoseeinstellungen auch mit der REST-API, CLI, PowerShell und Resource Manager-Vorlagen ausführen, indem Sie als Ressourcentyp *Microsoft.Insights/AutoscaleSettings* auswählen. 
 
 ## <a name="troubleshooting-using-autoscale-logs"></a>Problembehandlung mithilfe von Autoskalierungsprotokollen 
 

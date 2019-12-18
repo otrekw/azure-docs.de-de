@@ -1,17 +1,17 @@
 ---
-title: Firewallregeln in Azure Database for PostgreSQL – Hyperscale (Citus)
+title: Firewallregeln – Hyperscale (Citus) – Azure Database for PostgreSQL
 description: In diesem Artikel werden die Firewallregeln für Azure Database for PostgreSQL – Hyperscale (Citus) beschrieben.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 9/12/2019
-ms.openlocfilehash: 567fb27ed942a24ab7d031d791e18fa487956fad
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b843cd1528630a21255053f623356a0379daacf6
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71275304"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975566"
 ---
 # <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Firewallregeln in Azure Database for PostgreSQL – Hyperscale (Citus)
 Die Azure Database for PostgreSQL-Serverfirewall verhindert jeglichen Zugriff auf Ihren Hyperscale (Citus)-Koordinatorknoten, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.

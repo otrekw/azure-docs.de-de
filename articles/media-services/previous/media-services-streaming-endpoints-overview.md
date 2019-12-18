@@ -1,6 +1,6 @@
 ---
 title: Azure Media Services-Streamingendpunkte – Übersicht | Microsoft-Dokumentation
-description: Dieses Thema bietet eine Übersicht über Azure Media Services-Streamingendpunkte.
+description: Dieser Artikel enthält eine Übersicht über Azure Media Services-Streamingendpunkte.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ac9c9a73e52c678c8a6d9b1e1779d9ec75cab2c8
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 95d8d819aa1b418b4a7ec736cef64cb989f7e37b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "69016451"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74885635"
 ---
 # <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht  
 

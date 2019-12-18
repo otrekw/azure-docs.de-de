@@ -7,12 +7,12 @@ ms.date: 11/26/2019
 ms.author: fauhse
 ms.subservice: files
 description: StorSimple ist ein Produkt, das das Ende seiner Lebensdauer erreicht hat, und die Azure-Dateisynchronisierung ist die Lösung, zu der migriert werden sollte. Erfahren Sie mehr über das Migrationskonzept, und wenden Sie sich an AzureFiles@microsoft.com, um angepasste Migrationshilfe zu erhalten.
-ms.openlocfilehash: edad4d1c6be2c39dbf8150b6ab8979ae3924fb53
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 1cc88080522a62085d9a515223512ef25c20a9e4
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666538"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895077"
 ---
 # <a name="storsimple-migration-to-azure-file-sync"></a>StorSimple-Migration zur Azure-Dateisynchronisierung
 
@@ -26,7 +26,7 @@ In diesem Artikel wird das Konzept zum Einleiten einer Migration beschrieben.
 Es ist unbedingt zu beachten, dass Kunden, für die eine Migration von StorSimple zur Azure-Dateisynchronisierung erforderlich ist, dies nicht alleine durchführen müssen.
 
 > [!IMPORTANT]
-> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFiles@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung während der Migration zu erhalten.
+> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFiles@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung bei der Migration zu erhalten.
 
 ## <a name="migration-approach"></a>Migrationsansatz
 Die Migration zur Azure-Dateisynchronisierung beginnt cloudseitig mit minimalen Auswirkungen auf lokale Systeme und begrenzter Ausfallzeit.
@@ -67,7 +67,7 @@ Außerdem kann eine einzige Azure-Dateifreigabe mit vielen verschiedenen Servern
 Machen Sie sich mit Azure Files und der Azure-Dateisynchronisierung vertraut. Für eine erfolgreiche Migration ist es wichtig, die Terminologie und das Bereitstellungsmuster der Azure-Dateisynchronisierung zu verstehen. Zu jedem Schritt in diesem Übersichtsartikel stehen ausführlichere Informationen bereit. Wenden Sie sich an Microsoft, um während der Planung und Ausführung der Migration angepasste Hilfe zu erhalten.
 
 > [!IMPORTANT]
-> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFiles@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung während der Migration zu erhalten.
+> Microsoft ist bestrebt, Kunden bei der Migration zu unterstützen. Senden Sie eine E-Mail an AzureFiles@microsoft.com, um einen angepassten Migrationsplan sowie Unterstützung bei der Migration zu erhalten.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 Für die Azure-Dateisynchronisierung als Zieldienst stehen zwei grundlegende Dokumente bereit, die Sie lesen sollten, wenn Sie noch nicht mit der Azure-Dateisynchronisierung vertraut sind.

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82c1a536bb86f0b3a4fe6a24af00379686ccc292
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73641508"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997053"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -78,12 +78,12 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
   - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Abgleichen von Benutzern im Quell- und Zielsystem
-Der Azure AD-Bereitstellungsdienst kann sowohl im Szenario „Greenfield“ (Benutzer sind im Zielsystem nicht vorhanden) als auch im Szenario „Brownfield“ (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
+Der Azure AD-Bereitstellungsdienst kann sowohl in „Greenfield“-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in „Brownfield“-Szenarien (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
 
 - **Übereinstimmende Attribute sollten eindeutig sein:** Kunden verwenden häufig Attribute wie „userPrincipalName“, „mail“ oder „objectID“ als übereinstimmendes Attribut.
-- **Als übereinstimmende Attribute können auch mehrere Attribute verwendet werden:** Sie können mehrere Attribute festlegen, die beim Abgleich von Benutzern ausgewertet werden sollen, und auch die Auswertungsreihenfolge angeben (auf der Benutzeroberfläche als „Rangfolge für Abgleich“ definiert). Wenn Sie z.B. drei Attribute als übereinstimmende Attribute definieren und ein Benutzer nach der Auswertung der ersten beiden Attribute eindeutig zugeordnet werden kann, wertet der Dienst das dritte Attribut nicht mehr aus. Der Dienst wertet übereinstimmende Attribute in der angegebenen Reihenfolge aus und beendet die Auswertung, wenn eine Übereinstimmung gefunden wird.  
+- **Als übereinstimmende Attribute können auch mehrere Attribute verwendet werden:** Sie können mehrere Attribute festlegen, die beim Abgleich von Benutzern ausgewertet werden sollen, und auch die Auswertungsreihenfolge angeben (auf der Benutzeroberfläche als „Rangfolge für Abgleich“ definiert). Wenn Sie z. B. drei Attribute als übereinstimmende Attribute definieren und ein Benutzer nach der Auswertung der ersten beiden Attribute eindeutig zugeordnet werden kann, wertet der Dienst das dritte Attribut nicht mehr aus. Der Dienst wertet übereinstimmende Attribute in der angegebenen Reihenfolge aus und beendet die Auswertung, wenn eine Übereinstimmung gefunden wird.  
 - **Der Wert im Quell- und Zielsystem muss nicht genau übereinstimmen:** Der Wert im Zielsystem kann eine einfache Funktion des Werts im Quellsystem sein. Daher könnten die Attribute „emailAddress“ im Quellsystem und „userPrincipalName“ im Zielsystem anhand einer Funktion des Attributs „emailAddress“ abgeglichen werden, bei der einige Zeichen durch einen konstanten Wert ersetzt werden.  
-- **Der Abgleich anhand einer Kombination von Attributen wird nicht unterstützt:** Die meisten Anwendungen unterstützen keine Abfragen, die auf zwei Eigenschaften basieren. Daher ist es nicht möglich, einen Abgleich anhand einer Kombination von Attributen vorzunehmen. Es ist jedoch möglich, einzelne Eigenschaften nacheinander auszuwerten.
+- **Der Abgleich anhand einer Kombination von Attributen wird nicht unterstützt:** Die meisten Anwendungen unterstützen keine Abfragen, die auf zwei Eigenschaften basieren. Daher ist es nicht möglich, eine Übereinstimmung basierend auf einer Kombination von Attributen zu finden. Es ist jedoch möglich, einzelne Eigenschaften nacheinander auszuwerten.
 - **Alle Benutzer müssen über einen Wert für mindestens ein übereinstimmendes Attribut verfügen:** Wenn Sie ein übereinstimmendes Attribut definieren, müssen im Quellsystem alle Benutzer einen Wert für dieses Attribut aufweisen. Wenn Sie beispielsweise „userPrincipalName“ als übereinstimmendes Attribut definieren, müssen alle Benutzer über das Attribut „userPrincipalName“ verfügen. Wenn Sie mehrere übereinstimmende Attribute (z.B. „extensionAttribute1“ und „mail“) definieren, müssen nicht alle Benutzer das gleiche übereinstimmende Attribut aufweisen. Ein Benutzer könnte über das Attribut „extensionAttribute1“, aber nicht über das Attribut „mail“, ein anderer Benutzer über „mail“, aber nicht über „extensionAttribute1“ verfügen. 
 - **Die Zielanwendung muss das Filtern nach dem übereinstimmenden Attribut unterstützen:** Anwendungsentwickler können bei ihrer Benutzer- oder Gruppen-API das Filtern nach einer Teilmenge von Attributen erlauben. Bei Anwendungen im Katalog stellen wir sicher, dass die Standardattributzuordnung für ein Attribut gilt, das die API der Zielanwendung beim Filtern unterstützt. Wenn Sie das standardmäßige übereinstimmende Attribut für die Zielanwendung ändern, müssen Sie anhand der Dokumentation für die Drittanbieter-API sicherstellen, dass nach dem Attribut gefiltert werden kann.  
 
@@ -134,7 +134,61 @@ Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaf
 - **API-Ausdruck**: Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu aufgefordert werden.
 - **Referenced Object Attribute** (Referenziertes Objektattribut): Im Fall eines Attributs vom Typ „Reference“ können Sie in diesem Menü die Tabelle und das Attribut in der Zielanwendung auswählen, die den zugehörigen Wert für das Attribut enthält. Bei einem Attribut mit dem Namen „Abteilung“, dessen gespeicherter Wert auf ein Objekt in einer separaten Tabelle „Abteilungen“ verweist, würden Sie beispielsweise „Abteilungen.Name“ auswählen. Die unterstützten Verweistabellen und Felder für die primäre ID für eine bestimmte Anwendung sind vorkonfiguriert und können derzeit nicht im Azure-Portal, aber mit der [Graph-API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) bearbeitet werden.
 
-Um ein neues Attribut hinzuzufügen, scrollen Sie zum Ende der Liste der unterstützten Attribute, füllen Sie die obigen Felder anhand der verfügbaren Eingaben auf, und klicken Sie auf **Attribut hinzufügen**. Klicken Sie nach dem Hinzufügen von Attributen auf **Speichern**. Sie müssen die Registerkarte **Bereitstellung** anschließend erneut laden, damit die neuen Attribute im Attributzuordnungs-Editor verfügbar werden.
+#### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Bereitstellen eines benutzerdefinierten Erweiterungsattributs für eine SCIM-konforme Anwendung
+Die SCIM-RFC definiert ein zentrales Benutzer- und Gruppenschema, erlaubt aber gleichzeitig die Erweiterung des Schemas, um spezifische Anwendungsanforderungen zu erfüllen. So fügen Sie einer SCIM-Anwendung ein benutzerdefiniertes Attribut hinzu
+   1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an, wählen Sie **Unternehmensanwendungen**, anschließend Ihre Anwendung und dann **Bereitstellung** aus.
+   2. Wählen Sie unter **Zuordnungen** das Objekt (Benutzer oder Gruppe) aus, für das Sie ein benutzerdefiniertes Attribut hinzufügen möchten.
+   3. Wählen Sie am unteren Rand der Seite die Option **Erweiterte Optionen anzeigen** aus.
+   4. Wählen Sie **Attributliste für Anwendungsname bearbeiten** aus.
+   5. Geben Sie unten in der Attributliste Informationen zum benutzerdefinierten Attribut in den angezeigten Feldern ein. Wählen Sie dann **Attribut hinzufügen** aus.
+
+Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel folgen. „CustomExtensionName“ und „CustomAttribute“ können gemäß den Anforderungen Ihrer Anwendung angepasst werden, z. B.: urn:ietf:params:scim:schemas:extension:2.0:CustomExtensionName:CustomAttribute.
+
+Diese Anweisungen gelten nur für SCIM-konforme Anwendungen. Anwendungen wie ServiceNow und Salesforce sind nicht per SCIM mit Azure AD integriert. Aus diesem Grund benötigen sie nicht diesen spezifischen Namespace, wenn ein benutzerdefiniertes Attribut hinzugefügt wird.
+
+Benutzerdefinierte Attribute können keine referenziellen Attribute oder Attribute mit mehreren Werten sein. Benutzerdefinierte Erweiterungsattribute mit mehreren Werten werden zurzeit nur für Anwendungen im Katalog unterstützt.  
+ 
+**Beispieldarstellung eines Benutzers mit einem Erweiterungsattribut:**
+
+```json
+   {
+     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+      "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
+     "userName":"bjensen",
+     "externalId":"bjensen",
+     "name":{
+       "formatted":"Ms. Barbara J Jensen III",
+       "familyName":"Jensen",
+       "givenName":"Barbara"
+     },
+     "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+     "employeeNumber": "701984",
+     "costCenter": "4130",
+     "organization": "Universal Studios",
+     "division": "Theme Park",
+     "department": "Tour Operations",
+     "manager": {
+       "value": "26118915-6090-4610-87e4-49d8ca9f808d",
+       "$ref": "../Users/26118915-6090-4610-87e4-49d8ca9f808d",
+       "displayName": "John Smith"
+     }
+   },
+     "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:CustomAttribute:User": {
+     "CustomAttribute": "701984",
+   },
+   "meta": {
+     "resourceType": "User",
+     "created": "2010-01-23T04:56:22Z",
+     "lastModified": "2011-05-13T04:42:34Z",
+     "version": "W\/\"3694e05e9dff591\"",
+     "location":
+ "https://example.com/v2/Users/2819c223-7f76-453a-919d-413861904646"
+   }
+ }
+```
+
+
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Bereitstellen einer Rolle für eine SCIM-App
 Führen Sie die folgenden Schritte aus, um für Ihre Anwendung Rollen für einen Benutzer bereitzustellen. Beachten Sie, dass die folgende Beschreibung speziell für benutzerdefinierte SCIM-Anwendungen gilt. Verwenden Sie bei Kataloganwendungen wie Salesforce und ServiceNow die vordefinierten Rollenzuordnungen. In der folgenden Auflistung wird beschrieben, wie Sie das Attribut „AppRoleAssignments“ in das von Ihrer Anwendung erwartete Format umwandeln.
 
