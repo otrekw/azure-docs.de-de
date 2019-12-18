@@ -27,27 +27,27 @@ Ein Azure Active Directory B2B-Gastbenutzer (Azure AD) kann eine Organisation je
 
 ## <a name="leave-an-organization"></a>Verlassen einer Organisation
 
-Um eine Organisation zu verlassen, führen Sie de folgenden Schritte aus.
+Um eine Organisation zu verlassen, führen Sie die folgenden Schritte aus.
 
 1. Wechseln Sie zu Ihrer Seite „Zugriffspanel – Profil“, indem Sie einen der folgenden Schritte ausführen:
    
-   - Klicken Sie im [Azur-Portal](https://portal.azure.com) oben rechts auf Ihren Namen, und wählen Sie **Konto anzeigen** aus.
-   - Öffnen Sie Ihren [Zugriffsbereich](https://myapps.microsoft.com), klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.
+   - Klicken Sie im [Azure-Portal](https://portal.azure.com) oben rechts auf Ihren Namen, und wählen Sie **Konto anzeigen** aus.
+   - Öffnen Sie Ihren [Zugriffsbereich für Apps](https://myapps.microsoft.com), klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.
  
    ![Screenshot mit Benutzereinstellungen im Zugriffsbereich](media/leave-the-organization/UserSettings.png) 
 
    > [!NOTE]
-   > Wenn Sie noch nicht bei der Organisation angemeldet sind, die Sie verlassen möchten, klicken Sie unter **Organisationen** auf den Link **Anmelden, um die Organisation zu verlassen** neben dem Namen der Organisation. Wenn Sie angemeldet sind, klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.
+   > Wenn Sie noch nicht bei der Organisation angemeldet sind, die Sie verlassen möchten, klicken Sie unter **Organisationen** auf den Link **Zum Verlassen der Organisation anmelden** neben dem Namen der Organisation. Wenn Sie bei der Organisation angemeldet sind, klicken Sie oben rechts auf Ihren Namen, und wählen Sie neben **Organisationen** das Einstellungssymbol (Zahnrad) aus.
 
 3. Suchen Sie unter **Organisationen** nach der Organisation, die Sie verlassen möchten, und wählen Sie **Organisation verlassen** aus.
 
    ![Screenshot der Option „Organisation verlassen“ auf der Benutzeroberfläche](media/leave-the-organization/LeaveOrg.png)
 
-4. Wenn Sie aufgefordert werden, Ihre Auswahl zu bestätigen, wählen Sie **Verlassen** aus. 
+4. Wenn Sie aufgefordert werden, Ihre Auswahl zu bestätigen, wählen Sie **Beenden** aus. 
 
 ## <a name="account-removal"></a>Entfernen des Kontos
 
-Wenn ein Benutzer eine Organisation verlässt, wird das Benutzerkonto im Verzeichnis vorläufig gelöscht. Das Benutzerobjekt wird in Azure AD standardmäßig in den Bereich **Gelöschte Benutzer** verschoben, aber erst nach 30 Tagen endgültig gelöscht. Bei einer solchen vorläufigen Löschung kann der Administrator das Benutzerkonto (einschließlich Gruppen und Berechtigungen) wiederherstellen, wenn der Benutzer innerhalb eines Zeitraums von 30 Tagen eine Anfrage zur Kontowiederherstellung sendet.
+Wenn ein Benutzer eine Organisation verlässt, wird das Benutzerkonto im Verzeichnis vorläufig gelöscht. Das Benutzerobjekt wird in Azure AD der Organisation standardmäßig in den Bereich **Gelöschte Benutzer** verschoben, aber erst nach 30 Tagen endgültig gelöscht. Bei einer solchen vorläufigen Löschung kann der Administrator das Benutzerkonto (einschließlich Gruppen und Berechtigungen) wiederherstellen, wenn der Benutzer innerhalb eines Zeitraums von 30 Tagen eine Anfrage zur Kontowiederherstellung sendet.
 
 Falls gewünscht, kann ein Mandantenadministrator das Konto innerhalb des Zeitraums von 30 Tagen jederzeit endgültig löschen. Gehen Sie dazu folgendermaßen vor:
 
