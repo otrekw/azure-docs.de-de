@@ -1,6 +1,6 @@
 ---
 title: 'Gewusst wie: Prüfen des Auftragsfortschritts mit der REST-API | Microsoft Docs'
-description: Erfahren Sie, wie Sie den Auftragsfortschritt verfolgen.
+description: In diesem Artikel wird das Überprüfen des Auftragsstatus mithilfe der Azure Media Services v2-REST-API veranschaulicht.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 378a90b712af031f9d89758939afb993cee5aafd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ec72b7e7bf4c2b859e8ceecf617c90a4853cb517
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64869505"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901499"
 ---
 # <a name="how-to-check-job-progress"></a>Vorgehensweise: Prüfen des Auftragsfortschritts
 

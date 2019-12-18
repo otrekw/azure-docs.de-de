@@ -1,6 +1,6 @@
 ---
 title: 'IoT Hub Device Provisioning-Dienst: Konzepte für automatische Bereitstellung'
-description: Dieser Artikel bietet einen konzeptionellen Überblick über die Phasen der automatischen Gerätebereitstellung mit dem IoT Device Provisioning-Dienst, IoT Hub und Client-SDKs.
+description: Dieser Artikel bietet einen konzeptionellen Überblick über die Phasen der automatischen Gerätebereitstellung mit IoT Device Provisioning Service (DPS), IoT Hub und Client-SDKs.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/04/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c94fa6b851dfc9923628a738a15f7c245204f73f
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60746001"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975328"
 ---
 # <a name="auto-provisioning-concepts"></a>Konzepte für die automatische Bereitstellung
 
@@ -47,7 +47,7 @@ Die automatische Bereitstellung stellt auch Anforderungen an den Geräteherstell
 
 Im Inhaltsverzeichnis auf der linken Seite finden Sie eine Reihe von Schnellstarts, um die automatische Bereitstellung durch praktische Erfahrungen zu verdeutlichen. Um den Lernprozess zu ermöglichen/vereinfachen, wird Software verwendet, die ein physisches Gerät für die Anmeldung und Registrierung simuliert. Einige Schnellstarts erfordern aufgrund ihrer Simulationsnatur, dass Sie Vorgänge für mehrere Rollen ausführen, z.B. auch Vorgänge für nicht vorhandene Rollen.
 
-| Rolle | Vorgang | BESCHREIBUNG |
+| Role | Vorgang | BESCHREIBUNG |
 |------| --------- | ------------|
 | Hersteller | Codieren der Identität und Registrierungs-URL | Basierend auf dem verwendeten Bestätigungsmechanismus ist der Hersteller für die Verschlüsselung der Geräteidentitätsinformationen und der Registrierungs-URL des Device Provisioning-Diensts verantwortlich.<br><br>**Schnellstarts**: Da das Gerät simuliert wird, ist keine Rolle „Hersteller“ vorhanden. Weitere Informationen darüber, wie Sie diese Informationen abrufen können, finden Sie in der Rolle „Entwickler“, die beim Codieren einer Beispielregistrierungsanwendung verwendet wird. |
 | | Bereitstellen der Geräteidentität | Als Urheber der Geräteidentitätsinformationen ist der Hersteller dafür verantwortlich, diese an den Operator (oder einen bestimmten Agent) zu übermitteln oder sie über APIs direkt beim Device Provisioning-Dienst zu registrieren.<br><br>**Schnellstarts**: Da das Gerät simuliert wird, ist keine Rolle „Hersteller“ vorhanden. Weitere Informationen darüber, wie Sie die Geräteidentität abrufen, mit der ein simuliertes Gerät in Ihrer Instanz des Device Provisioning-Diensts registriert wird, finden Sie in der Rolle „Operator“. |

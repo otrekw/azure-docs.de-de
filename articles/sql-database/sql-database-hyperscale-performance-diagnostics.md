@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: a7c64284c958fa8b3ec89c2b27515fe167a04011
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2e162b30a0227c5f04c74dae01413177d1623235
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811145"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74901246"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnose zur Problembehandlung bei SQL-Hyperscale
 
@@ -44,13 +44,14 @@ Die Computereplikate können eine vollständige Kopie der Datenbank nicht lokal 
  
 Wenn bei der Ausgabe eines Lesevorgangs in einem Computereplikat die Daten im Pufferpool oder lokalen RBPEX-Cache nicht vorhanden sind, wird ein Aufruf der „getPage(pageId, LSN)“-Funktion ausgegeben und die Seite vom entsprechenden Seitenserver abgerufen. Lesevorgänge von Seitenservern aus sind Remotelesevorgänge und folglich langsamer als Lesevorgänge aus dem lokalen RBPEX-Cache. Bei der Behandlung von E/A-bezogenen Leistungsproblemen müssen wir ermitteln können, wie viele E/A-Vorgänge über relativ langsamere Remoteseitenserver-Lesevorgänge erfolgten.
 
-Mehrere DMVs und erweiterte Ereignisse enthalten Spalten und Felder, die die Anzahl von Remotelesevorgängen von einem Seitenserver angeben und mit der Gesamtanzahl an Lesevorgängen verglichen werden können. 
+Mehrere DMVs und erweiterte Ereignisse enthalten Spalten und Felder, die die Anzahl von Remotelesevorgängen von einem Seitenserver angeben und mit der Gesamtanzahl an Lesevorgängen verglichen werden können. Der Abfragespeicher erfasst auch Remotelesevorgänge als Teil der Abfragelaufzeitstatistiken.
 
-- Spalten zum Berichten über Seitenserver-Lesevorgänge stehen in Ausführungs-DMVs zur Verfügung, z.B. die Spalten:
+- Spalten zum Berichten über Seitenserver-Lesevorgänge stehen in Ausführungs-DMVs und Katalogsichten zur Verfügung, z. B.:
     - [sys.dm_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql/)
     - [sys.dm_exec_query_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql/)
     - [sys.dm_exec_procedure_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-procedure-stats-transact-sql/)
     - [sys.dm_exec_trigger_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-trigger-stats-transact-sql/)
+    - [sys.query_store_runtime_stats](/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql/)
 - Seitenserver-Lesevorgänge werden den folgenden erweiterten Ereignissen hinzugefügt:
     - sql_statement_completed
     - sp_statement_completed

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: d25b9b3bb155dced973d415b396ebfaa4403b011
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 12/04/2019
+ms.openlocfilehash: 0d6615d832059a8b58c0d5d52533b8c8c962640d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510831"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74841573"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
@@ -282,6 +282,25 @@ Nachdem Sie das Chart erfolgreich bereitgestellt haben, können Sie im Azure-Por
 
 >[!NOTE]
 >Die Latenz bei der Erfassung liegt bei rund fünf bis zehn Minuten, vom Agent bis zum Commit im Azure Log Analytics-Arbeitsbereich. Als Status des Clusters wird der Wert **Keine Daten** oder **Unbekannt** angegeben, bis alle erforderlichen Überwachungsdaten in Azure Monitor verfügbar sind. 
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Tritt beim Aktivieren der Überwachung für Ihren Kubernetes-Hybridcluster ein Fehler auf, kopieren Sie das PowerShell-Skript [TroubleshootError_nonAzureK8s.ps1](https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/Troubleshoot/TroubleshootError_nonAzureK8s.ps1), und speichern Sie es in einem Ordner auf Ihrem Computer. Dieses Skript soll Ihnen beim Erkennen und Beheben von Problemen helfen. Es wurde entworfen, um die folgenden Probleme zu erkennen und zu beheben:
+
+* Der angegebene Log Analytics-Arbeitsbereich ist gültig. 
+* Der Log Analytics-Arbeitsbereich ist mit der Lösung „Azure Monitor für Container“ konfiguriert. Ist das nicht der Fall, konfigurieren Sie den Arbeitsbereich.
+* Der ReplicaSet-Pod des OMS-Agents wird ausgeführt.
+* Der DaemonSet-Pod des OMS-Agents wird ausgeführt.
+* Der Integritätsdienst des OMS-Agents wird ausgeführt. 
+* Die ID und der Schlüssel des Log Analytics-Arbeitsbereichs, die für den Container-Agent konfiguriert wurden, entsprechen dem Arbeitsbereich, mit dem Insight konfiguriert ist.
+* Überprüfen Sie, ob alle Linux-Workerknoten über die Bezeichnung `kubernetes.io/role=agent` verfügen, um den RS-Pod zu planen. Fügen Sie sie anderenfalls hinzu.
+* Vergewissern Sie sich, dass `cAdvisor port: 10255` für alle Knoten im Cluster geöffnet ist.
+
+Verwenden Sie zum Ausführen mit Azure PowerShell die folgenden Befehle in dem Ordner mit dem Skript:
+
+```powershell
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

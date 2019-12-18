@@ -1,17 +1,17 @@
 ---
 title: SQL-Unterabfragen für Azure Cosmos DB
-description: Erfahren Sie mehr über SQL-Unterabfragen und ihre gängigen Anwendungsfälle in Azure Cosmos DB.
+description: Hier erfahren Sie mehr über SQL-Unterabfragen und ihre gängigen Anwendungsfälle sowie über verschiedene Arten von Unterabfragen in Azure Cosmos DB.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 12/02/2019
 ms.author: tisande
-ms.openlocfilehash: cea9963f5073834a24ede44306eb89414909fc83
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 42d9e8b190747a3ffaf0e46ea1eddda33d09bb24
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003493"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74870563"
 ---
 # <a name="sql-subquery-examples-for-azure-cosmos-db"></a>SQL-Unterabfragenbeispiele für Azure Cosmos DB
 

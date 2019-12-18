@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/11/2019
+ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: d8a2c456c725a3170bc940bf17dec6b0c4ad2c3e
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3de34c1da20df17fb5fb65cef28669fb73ff33a5
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584523"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74978559"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Überwachen von Azure ML-Experimentausführungen und -metriken
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -232,6 +232,25 @@ Im Artikel [Starten, Überwachen und Abbrechen von Trainingsausführungen in Pyt
 
 ## <a name="view-run-details"></a>Anzeigen von Ausführungsdetails
 
+### <a name="view-activequeued-runs-from-the-browser"></a>Anzeigen von aktiven/in der Warteschlange befindlichen Ausführungen über den Browser
+
+Computeziele, die zum Trainieren von Modellen verwendet werden, sind eine freigegebene Ressource. Aus diesem Grund können jederzeit mehrere Ausführungen aktiv oder in die Warteschlange eingereiht sein. Führen Sie die folgenden Schritte aus, um die Ausführungen für ein bestimmtes Computeziel in Ihrem Browser anzuzeigen:
+
+1. Wählen Sie in [Azure Machine Learning Studio](https://ml.azure.com/) Ihren Arbeitsbereich aus, und wählen Sie dann links __Compute__ aus.
+
+1. Wählen Sie __Trainingscluster__ aus, um eine Liste der für das Training verwendeten Computeziele anzuzeigen. Wählen Sie dann den Cluster aus.
+
+    ![Auswählen des Trainingsclusters](./media/how-to-track-experiments/select-training-compute.png)
+
+1. Wählen Sie __Ausführungen__ aus. Die Liste der Ausführungen wird angezeigt, die diesen Cluster verwenden. Zum Anzeigen von Details für eine bestimmte Ausführung verwenden Sie den Link in der Spalte __Ausführung__. Zum Anzeigen von Details für ein bestimmtes Experiment verwenden Sie den Link in der Spalte __Experiment__.
+
+    ![Auswählen von Ausführungen für Trainingscluster](./media/how-to-track-experiments/show-runs-for-compute.png)
+    
+    > [!TIP]
+    > Eine Ausführung kann untergeordnete Ausführungen enthalten, sodass ein Trainingsauftrag zu mehreren Einträgen führen kann.
+
+Sobald eine Ausführung abgeschlossen ist, wird sie nicht mehr auf dieser Seite angezeigt. Informationen zu abgeschlossenen Ausführungen finden Sie in Studio im Abschnitt __Experimente__. Wählen Sie dazu das Experiment und die Ausführung aus. Weitere Informationen finden Sie im Abschnitt [Metriken der Abfrageausführung](#queryrunmetrics).
+
 ### <a name="monitor-run-with-jupyter-notebook-widget"></a>Überwachen der Ausführung mit einem Jupyter-Notebook-Widget
 Wenn Sie Ausführungen mithilfe der Methode **ScriptRunConfig** übermitteln, können Sie den Fortschritt der Ausführung mit einem [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py) überwachen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
 
@@ -244,11 +263,11 @@ Wenn Sie Ausführungen mithilfe der Methode **ScriptRunConfig** übermitteln, k�
 
    ![Screenshot des Jupyter-Notebook-Widgets](./media/how-to-track-experiments/run-details-widget.png)
 
-Sie können auch einen Link zur gleichen Anzeige in Ihrem Arbeitsbereich abrufen.
+   Sie können auch einen Link zur gleichen Anzeige in Ihrem Arbeitsbereich abrufen.
 
-```python
-print(run.get_portal_url())
-```
+   ```python
+   print(run.get_portal_url())
+   ```
 
 2. **[Für automatisierte Machine Learning-Ausführungen]** Für den Zugriff auf die Diagramme aus einer vorherigen Ausführung. Ersetzen Sie `<<experiment_name>>` durch den entsprechenden Experimentnamen:
 
@@ -271,6 +290,7 @@ Zum Anzeigen weiterer Details zu einer Pipeline klicken Sie in der Tabelle auf d
 
 Modelltraining und -überwachung erfolgen im Hintergrund, sodass Sie währenddessen andere Aufgaben ausführen können. Sie können auch warten, bis das Training des Modells abgeschlossen ist, bevor Sie weiteren Code ausführen. Bei der Verwendung von **ScriptRunConfig** können Sie ```run.wait_for_completion(show_output = True)``` einsetzen,um anzuzeigen, wenn das Modelltraining abgeschlossen ist. Mithilfe des ```show_output```-Flags erhalten Sie eine ausführlichen Ausgabe. 
 
+<a id="queryrunmetrics"></a>
 
 ### <a name="query-run-metrics"></a>Metriken der Abfrageausführung
 

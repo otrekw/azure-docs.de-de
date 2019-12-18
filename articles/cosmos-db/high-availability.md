@@ -1,18 +1,18 @@
 ---
 title: Hochverfügbarkeit in Azure Cosmos DB
-description: Dieser Artikel beschreibt, wie Azure Cosmos DB Hochverfügbarkeit bietet.
+description: In diesem Artikel wird beschrieben, wie Azure Cosmos DB durch das transparente Replizieren der Daten in allen Regionen, die Ihrem Cosmos-Konto zugeordnet sind, Hochverfügbarkeit bereitstellt.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ab6544e4535f2d2c2e88284f61251f177d457a84
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 1dab10592c8a34bc9df4425785e6dae95e44f219
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71146665"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872093"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 

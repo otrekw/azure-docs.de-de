@@ -5,17 +5,17 @@ keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9b2bcdf3d74c6946b8c9f0dacaeabf28d9c76f94
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67477730"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850787"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
@@ -216,12 +216,12 @@ Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die bei
 
 |**Aktion**  |**Berechtigung**  |**Mindestumfang**  |
 |---------|---------|---------|
-|Neue Bereitstellung schreiben      | Microsoft.Resources/deployments/*          |Abonnement          |
-|Neue Ressourcengruppe schreiben      | Microsoft.Resources/subscriptions/resourceGroups/write        | Abonnement          |
-|Neuen Standardarbeitsbereich erstellen      | Microsoft.OperationalInsights/workspaces/write         | Ressourcengruppe         |
-|Neues Konto erstellen      |  Microsoft.Automation/automationAccounts/write        |Ressourcengruppe         |
+|Neue Bereitstellung schreiben      | Microsoft.Resources/deployments/*          |Subscription          |
+|Neue Ressourcengruppe schreiben      | Microsoft.Resources/subscriptions/resourceGroups/write        | Subscription          |
+|Neuen Standardarbeitsbereich erstellen      | Microsoft.OperationalInsights/workspaces/write         | Resource group         |
+|Neues Konto erstellen      |  Microsoft.Automation/automationAccounts/write        |Resource group         |
 |Arbeitsbereich mit Konto verknüpfen      |Microsoft.OperationalInsights/workspaces/write</br>Microsoft.Automation/automationAccounts/read|Arbeitsbereich</br>Automation-Konto
-|Lösung erstellen      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Ressourcengruppe          |
+|Lösung erstellen      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write |Resource group          |
 |MMA-Erweiterung erstellen      | Microsoft.Compute/virtualMachines/write         | Virtual Machine         |
 |Gespeicherten Suchvorgang erstellen      | Microsoft.OperationalInsights/workspaces/write          | Arbeitsbereich         |
 |Bereichskonfiguration erstellen      | Microsoft.OperationalInsights/workspaces/write          | Arbeitsbereich         |
@@ -231,8 +231,8 @@ Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die bei
 |Statusüberprüfung des Onboardings – Lösung lesen      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | Lösung         |
 |Statusüberprüfung des Onboardings – VM lesen      | Microsoft.Compute/virtualMachines/read         | Virtual Machine         |
 |Statusüberprüfung des Onboardings – Konto lesen      | Microsoft.Automation/automationAccounts/read  |  Automation-Konto   |
-| Arbeitsbereichsüberprüfung des Onboardings für die VM<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Abonnement         |
-| Registrieren Sie den Log Analytics-Anbieter. |Microsoft.Insights/register/action | Abonnement|
+| Arbeitsbereichsüberprüfung des Onboardings für die VM<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | Subscription         |
+| Registrieren des Log Analytics-Anbieters |Microsoft.Insights/register/action | Subscription|
 
 <sup>1</sup> Diese Berechtigung ist für das Onboarding über die VM-Portal-Benutzeroberfläche erforderlich.
 
@@ -240,9 +240,9 @@ Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die bei
 
 |**Aktion**  |**Berechtigung** |**Mindestumfang**  |
 |---------|---------|---------|
-|Neue Bereitstellung erstellen     | Microsoft.Resources/deployments/*        | Abonnement         |
-|Erstellen einer neuen Ressourcengruppe     | Microsoft.Resources/subscriptions/resourceGroups/write         | Abonnement        |
-|AutomationOnboarding-Blatt – neuen Arbeitsbereich erstellen     |Microsoft.OperationalInsights/workspaces/write           | Ressourcengruppe        |
+|Neue Bereitstellung erstellen     | Microsoft.Resources/deployments/*        | Subscription         |
+|Erstellen einer neuen Ressourcengruppe     | Microsoft.Resources/subscriptions/resourceGroups/write         | Subscription        |
+|AutomationOnboarding-Blatt – neuen Arbeitsbereich erstellen     |Microsoft.OperationalInsights/workspaces/write           | Resource group        |
 |AutomationOnboarding-Blatt – verknüpften Arbeitsbereich lesen     | Microsoft.Automation/automationAccounts/read        | Automation-Konto       |
 |AutomationOnboarding-Blatt – Lösung lesen     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | Lösung        |
 |AutomationOnboarding-Blatt – Arbeitsbereich lesen     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | Arbeitsbereich        |
@@ -252,7 +252,7 @@ Die folgenden Tabellen zeigen die minimal erforderlichen Berechtigungen, die bei
 |Gespeicherten Suchvorgang erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write        | Arbeitsbereich        |
 |Bereichskonfiguration erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write        | Arbeitsbereich        |
 |Lösung mit Bereichskonfiguration verknüpfen      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | Lösung         |
-| Registrieren Sie den Log Analytics-Anbieter. |Microsoft.Insights/register/action | Abonnement|
+| Registrieren des Log Analytics-Anbieters |Microsoft.Insights/register/action | Subscription|
 |**Schritt 2 – Integrieren mehrerer VMs**     |         |         |
 |VMOnboarding-Blatt – MMA-Erweiterung erstellen     | Microsoft.Compute/virtualMachines/write           | Virtual Machine        |
 |Gespeicherten Suchvorgang erstellen/bearbeiten     | Microsoft.OperationalInsights/workspaces/write           | Arbeitsbereich        |
@@ -267,7 +267,7 @@ Die Updateverwaltung erstreckt sich über mehrere Dienste, um deren Dienst berei
 |Automation-Konto     | Log Analytics-Mitwirkender       | Automation-Konto        |
 |Automation-Konto    | Mitwirkender von virtuellen Computern        | Ressourcengruppe für das Konto        |
 |Log Analytics-Arbeitsbereich     | Log Analytics-Mitwirkender| Log Analytics-Arbeitsbereich        |
-|Log Analytics-Arbeitsbereich |Log Analytics-Leser| Abonnement|
+|Log Analytics-Arbeitsbereich |Log Analytics-Leser| Subscription|
 |Lösung     |Log Analytics-Mitwirkender         | Lösung|
 |Virtual Machine     | Mitwirkender von virtuellen Computern        | Virtual Machine        |
 

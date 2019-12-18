@@ -1,6 +1,6 @@
 ---
 title: Ausführen von Azure Table Storage-Vorgängen mit PowerShell | Microsoft-Dokumentation
-description: Ausführen von Azure Table Storage-Vorgängen mit PowerShell.
+description: Hier erfahren Sie, wie Sie häufige Aufgaben wie das Erstellen, Abfragen und Löschen von Daten im Azure Table Storage-Konto mithilfe von PowerShell ausführen.
 services: cosmos-db
 author: roygara
 ms.service: cosmos-db
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: b1cae7dc553ce324349e66f1bcb8a281d7c7c7e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4591cded820bbefb741d55a22d10a91bd4fff383
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101291"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74868506"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Ausführen von Azure Table Storage-Vorgängen mit Azure PowerShell 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]

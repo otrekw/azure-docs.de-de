@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3cbb6afb96ccea32aa78d1f587377e5d67e1a5b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bbbe882acda532a54333ca8013693121d5b677b7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74381027"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74964088"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>Erzwingen der App-Schutzrichtlinie für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs (Vorschauversion)
 
@@ -330,7 +330,7 @@ Alle Intune-App-Schutzrichtlinien sind erforderlich, bevor der Zugriff auf Unter
 
 ### <a name="configuration"></a>Konfiguration
 
-**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online**
+**Schritt 1: Konfigurieren einer Azure AD-Richtlinie für bedingten Zugriff für Exchange Online und SharePoint Online**
 
 Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie folgende Komponenten:
 
@@ -338,7 +338,7 @@ Für die Richtlinie zum bedingten Zugriff in diesem Schritt konfigurieren Sie fo
 
 1. Geben Sie den Namen Ihrer Richtlinie für den bedingten Zugriff ein.
 1. Wählen Sie unter **Zuweisungen** in **Benutzer und Gruppen** mindestens einen Benutzer oder eine Gruppe für jede Richtlinie für bedingten Zugriff aus.
-1. Wählen Sie in **Cloud-Apps** die Option **Office 365 Exchange Online** aus. 
+1. Wählen Sie unter **Cloud-Apps** die Optionen **Office 365 Exchange Online** und **Office 365 SharePoint Online** aus. 
 
    ![Bedingter Zugriff](./media/app-protection-based-conditional-access/02.png)
 

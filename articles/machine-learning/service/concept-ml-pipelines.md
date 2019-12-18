@@ -1,7 +1,7 @@
 ---
 title: Beschreibung von ML-Pipelines
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel lernen Sie die Vorteile von Machine Learning-Pipelines kennen, die Sie mit dem Azure Machine Learning SDK für Python erstellen können. Machine Learning-Pipelines werden von Data Scientists verwendet, um Workflows für das maschinelle Lernen zu erstellen, zu optimieren und zu verwalten.
+description: In diesem Artikel lernen Sie die Vorteile von ML-Pipelines (Machine Learning) kennen, die Sie mit dem Azure Machine Learning SDK für Python erstellen können. Machine Learning-Pipelines werden von Data Scientists verwendet, um Workflows für das maschinelle Lernen zu erstellen, zu optimieren und zu verwalten.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 84a01597570a488652e3db2345bdf68b52d4bf5b
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112403"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74973576"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Beschreibung von Azure Machine Learning-Pipelines
 

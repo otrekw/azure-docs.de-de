@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 425266e2a7ca42bb17ca598ddfc2f2b86591f32e
+ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171607"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74900180"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Übereinstimmungsbedingungen in der Standardregel-Engine für Azure CDN
 
@@ -109,7 +109,7 @@ Keine IP-Übereinstimmung | IP-Adresse (durch Leerzeichen getrennt)
 - Verwenden Sie die CIDR-Notation.
 - Verwenden Sie zum Angeben mehrerer IP-Adressen und IP-Adressblöcke ein einzelnes Leerzeichen zwischen den Werten:
   - **IPv4-Beispiel:** *1.2.3.4 10.20.30.30.40* entspricht allen Anforderungen, die entweder von der Adresse 1.2.3.4 oder 10.20.30.40 eingehen.
-  - **IPv6-Beispiel:** *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:70:80* entspricht allen Anforderungen, die von einer der Adressen 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80 eingehen.
+  - **IPv6-Beispiel:** *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80* entspricht allen Anforderungen, die von einer der Adressen 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80 eingehen.
 - Die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel:
   - **IPv4-Beispiel:** *5.5.5.64/26* entspricht allen Anforderungen, die von den Adressen 5.5.5.64 bis 5.5.5.127 eingehen.
   - **IPv6-Beispiel:** Die Angabe *1:2:3:/48* führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.

@@ -1,6 +1,6 @@
 ---
 title: Übersicht über Protokolle der Azure-Plattform | Microsoft-Dokumentation
-description: Übersicht über Diagnoseprotokolle in Azure, die regelmäßig umfassende Daten zum Betrieb einer Azure-Ressource liefern.
+description: Übersicht über Protokolle in Azure Monitor, die regelmäßig umfassende Daten zum Betrieb einer Azure-Ressource liefern.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: c1602b9beb5e667caf1688901c7ae4e67e5f5839
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 480c028f11de9a7c44168b217ad3553d721d01e1
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71263041"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894552"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Übersicht über Protokolle der Azure-Plattform
 Plattformprotokolle liefern detaillierte Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. Sie werden automatisch generiert, obwohl Sie bestimmte Plattformprotokolle so konfigurieren müssen, dass sie an mindestens ein Ziel weitergeleitet werden, damit sie gespeichert werden. Dieser Artikel bietet einen Überblick über die Plattformprotokolle, einschließlich der Informationen, die sie liefern und wie Sie sie für die Erfassung und Analyse konfigurieren können.
@@ -34,10 +34,10 @@ In der folgenden Tabelle werden die spezifischen Plattformprotokolle aufgeführt
 Sie können das [Aktivitätsprotokoll](activity-log-view.md) und [Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/overview-reports.md) im Azure-Portal anzeigen. Sie müssen Ressourcenprotokolle an ein [Ziel](#destinations) senden, um Sie anzeigen zu können.
 
 
-## <a name="destinations"></a>Ziele
+## <a name="destinations"></a>Destinations
 Abhängig von den Überwachungsanforderungen können Sie Plattformprotokolle an mindestens ein in der folgenden Tabelle genanntes Ziel senden. 
 
-| Ziel | Szenario | Referenzen |
+| Destination | Szenario | Referenzen |
 |:---|:---|:---|:---|
 | Log Analytics-Arbeitsbereich | Analysieren Sie die Protokolle mit anderen Überwachungsdaten, und nutzen Sie Azure Monitor-Features, etwa Protokollabfragen und Warnungen. | [Ressourcenprotokolle](resource-logs-collect-storage.md)<br>[Aktivitätsprotokoll](activity-log-collect.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
 | Azure-Speicher | Archivieren Sie die Protokolle für Überwachung, statische Analyse oder Sicherung. |[Ressourcenprotokolle](archive-diagnostic-logs.md)<br>[Aktivitätsprotokoll](activity-log-export.md)<br>[Azure Active Directory-Protokolle](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |

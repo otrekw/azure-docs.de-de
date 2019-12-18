@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 6ee156efb5512c92d86ba05513b6a2b91df4eae8
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422583"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976960"
 ---
 # <a name="entities-and-their-purpose-in-luis"></a>Entitäten und ihr Zweck in LUIS
 
@@ -75,7 +75,7 @@ Der Entwurf für die Analyse bietet LUIS eine genauere Aufschlüsselung der Enti
 
 Eine durch maschinelles Lernen erworbene Entität wird basierend auf dem Kontext ausgelöst, der durch Trainingsäußerungen erlernt wird. **Einschränkungen** sind optionale Regeln, die auf eine durch maschinelles Lernen erworbene Entität angewendet werden. Die Auslösung wird hierbei anhand der Definition der genauen Textübereinstimmung einer nicht durch maschinelles Lernen erworbenen Entität, z. B. [List](reference-entity-list.md) oder [Regex](reference-entity-regular-expression.md), weiter eingeschränkt. Die durch maschinelles Lernen erworbene Entität `size` kann beispielsweise über eine Einschränkung der Listenentität `sizeList` verfügen. Hiermit wird die Entität `size` dahingehend eingeschränkt, dass die Auslösung nur erfolgt, wenn in der Entität `sizeList` enthaltene Werte vorkommen.
 
-[**Deskriptoren**](luis-concept-feature.md) sind Features, mit denen die Relevanz von Wörtern oder Ausdrücken für die Vorhersage erhöht wird. Sie werden als *Deskriptoren* bezeichnet, weil sie zum *Beschreiben* einer Absicht oder Entität verwendet werden. Mit Deskriptoren werden eindeutige Merkmale oder Datenattribute, z. B. wichtige Wörter oder Ausdrücke, beschrieben. Mit LUIS werden sie erkannt und erlernt.
+[**Deskriptoren**](luis-concept-feature.md) sind Features, mit denen die Relevanz von Wörtern oder Ausdrücken für die Vorhersage erhöht wird. Sie werden als *Deskriptoren* bezeichnet, weil sie zum *Beschreiben* einer Absicht oder Entität verwendet werden. Mit Deskriptoren werden eindeutige Merkmale oder Datenattribute beschrieben, z. B. wichtige Wörter oder Ausdrücke, die LUIS erkennt und lernt.
 
 Wenn Sie in Ihrer LUIS-App ein Feature für eine Ausdrucksliste erstellen, ist sie standardmäßig global aktiviert und gilt einheitlich für alle Absichten und Entitäten. Wenn Sie die Ausdrucksliste aber als Deskriptor (Feature) einer durch maschinelles Lernen erworbenen Entität (oder eines *Modells*) anwenden, gilt der jeweilige Bereich nur für dieses Modell und wird für alle anderen Modelle nicht mehr genutzt. Die Verwendung einer Ausdrucksliste als Deskriptor für ein Modell ist hilfreich für die Zerlegung, weil dies die Genauigkeit für das entsprechende Modell erhöht.
 
@@ -141,3 +141,4 @@ Erfahren Sie mehr über die Konzepte für gute [Äußerungen](luis-concept-utter
 Weitere Informationen zum Hinzufügen von Entitäten zu LUIS-Apps finden Sie unter [Hinzufügen von Entitäten](luis-how-to-add-entities.md).
 
 Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe der durch maschinelles Lernen erworbenen Entitäten in Language Understanding (LUIS)](tutorial-machine-learned-entity.md). Darin wird beschrieben, wie Sie strukturierte Daten mithilfe der durch maschinelles Lernen erworbenen Entität aus einer Äußerung extrahieren.
+ 

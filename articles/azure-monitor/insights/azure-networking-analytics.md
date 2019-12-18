@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 8a8a2f32de905ab7c12f4886d889b2a6fc20c449
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 5cce4ccd3acd9df896f6c28bd010a92ed4ec1a7a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899148"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74893313"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure-Netzwerküberwachungslösungen in Azure Monitor
 
@@ -45,7 +45,7 @@ Verwendung der Lösungen:
 
 Sie können die Diagnose und die entsprechende Lösung für Application Gateway und/oder Netzwerksicherheitsgruppen aktivieren.
 
-Wenn Sie die Diagnoseprotokollierung für einen bestimmten Ressourcentyp nicht aktivieren, aber die Lösung installieren, sind die Dashboardblätter für diese Ressource leer und enthalten eine Fehlermeldung.
+Wenn Sie die Ressourcenprotokollierung für einen bestimmten Ressourcentyp nicht aktivieren, aber die Lösung installieren, sind die Dashboardblätter für diese Ressource leer und enthalten eine Fehlermeldung.
 
 > [!NOTE]
 > Im Januar 2017 wurde die unterstützte Vorgehensweise zum Senden von Protokollen von Application Gateways und Netzwerksicherheitsgruppen an einen Log Analytics-Arbeitsbereich geändert. Wenn Sie die **Azure Networking Analytics**-Lösung (veraltet) sehen, finden Sie unter [Migrieren von der alten Networking Analytics-Lösung](#migrating-from-the-old-networking-analytics-solution) Schritte, die Sie befolgen müssen.
@@ -100,7 +100,7 @@ Gehen Sie folgendermaßen vor, um die Azure Application Gateway-Analyselösung z
 
 #### <a name="enable-azure-network-diagnostics-using-powershell"></a>Aktivieren der Azure-Netzwerkdiagnose mit PowerShell
 
-Das folgende PowerShell-Skript zeigt ein Beispiel für die Aktivierung der Diagnoseprotokollierung für Application Gateways.
+Das folgende PowerShell-Skript zeigt ein Beispiel für die Aktivierung der Ressourcenprotokollierung für Application Gateways.
 
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
@@ -141,7 +141,7 @@ Sie können auf jeder Seite für die Protokollsuche die Ergebnisse nach Zeit, de
 > Die Netzwerksicherheitsgruppen-Analyselösung wird in den Community-Support verlagert, da ihre Funktionalität durch [Traffic Analytics](../../network-watcher/traffic-analytics.md) ersetzt wurde.
 > - Die Lösung ist jetzt in den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) verfügbar und schon bald nicht mehr über den Azure Marketplace zu beziehen.
 > - Für Bestandskunden, die die Lösung bereits ihrem Arbeitsbereich hinzugefügt haben, bleibt die Funktion ohne Änderungen erhalten.
-> - Microsoft unterstützt das Senden von NSG-Diagnoseprotokollen an Ihren Arbeitsbereich mithilfe von Diagnostics Settings auch weiterhin.
+> - Microsoft unterstützt das Senden von NSG-Ressourcenprotokollen an Ihren Arbeitsbereich mithilfe von Diagnostics Settings auch weiterhin.
 
 Die folgenden Protokolle werden für Netzwerksicherheitsgruppen unterstützt:
 
@@ -171,7 +171,7 @@ Gehen Sie folgendermaßen vor, um die Azure Networking Analytics-Lösung zu inst
 
 ### <a name="enable-azure-network-diagnostics-using-powershell"></a>Aktivieren der Azure-Netzwerkdiagnose mit PowerShell
 
-Das folgende PowerShell-Skript zeigt ein Beispiel für die Aktivierung der Diagnoseprotokollierung für die Netzwerksicherheitsgruppen:
+Das folgende PowerShell-Skript zeigt ein Beispiel für die Aktivierung der Ressourcenprotokollierung für die Netzwerksicherheitsgruppen:
 ```powershell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

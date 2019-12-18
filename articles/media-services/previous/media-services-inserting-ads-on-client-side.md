@@ -1,6 +1,6 @@
 ---
 title: Einfügen von Anzeigen auf Clientseite | Microsoft Docs
-description: In diesem Thema wird gezeigt, wie Anzeigen auf Clientseite eingefügt werden.
+description: In diesem Artikel wird veranschaulicht, wie Sie Anzeigen in Ihre Medien auf der Clientseite einfügen.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 37ee600a2f7d621d3fefb2f70c26b6c29f738ea9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f56c897fd6f5ce7e5129a4500ecaacbaf0a75f3b
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162694"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895967"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Einfügen von Anzeigen auf Clientseite
 Dieser Artikel enthält Informationen zum Einfügen verschiedener Typen von Anzeigen auf Clientseite.

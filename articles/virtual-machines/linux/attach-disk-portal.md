@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3071effeb2d5eeaafc48fd742559b093a0517c1c
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279131"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851671"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Anfügen eines Datenträgers an einen virtuellen Linux-Computer mithilfe des Portals 
 In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal neue und vorhandene Datenträger an einen virtuellen Linux-Computer anfügen können. Sie können auch [einen Datenträger an eine Windows-VM im Azure-Portal anfügen](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -33,10 +33,9 @@ Bevor Sie Datenträger an Ihren virtuellen Computer anfügen, lesen Sie diese Ti
 
 
 ## <a name="find-the-virtual-machine"></a>Suchen des virtuellen Computers
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im linken Menü auf **Virtuelle Computer**.
-3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
-4. Klicken Sie auf der Seite „Virtuelle Computer“ unter **Zusammenfassung** auf **Datenträger**.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach dem virtuellen Computer. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
+2. Wählen Sie die VM aus der Liste aus.
+3. Wählen Sie auf der Seitenleiste der Seite **Virtuelle Computer** unter **Einstellungen** die Option **Datenträger** aus.
    
     ![Öffnen der Datenträgereinstellungen](./media/attach-disk-portal/find-disk-settings.png)
 

@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 9/27/2018
+ms.date: 12/5/2019
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 0d3cbe8c3d2d7931e3e4cc052eedc844a296ccf0
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 496e8673e1cbf31f4c71db00b7eaf1c0618e509f
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775737"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872943"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
@@ -794,8 +794,8 @@ Mit der folgenden Vorlage können Sie eine statische Metrikwarnungsregel für di
 
 Mit einer einzelnen Warnungsregel können mehrere metrische Zeitreihen gleichzeitig überwacht werden, sodass weniger Warnungsregeln zu verwalten sind.
 
-Im folgenden Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **Response Type** und **ApiName** für die Metrik **Transactions** überwacht:
-1. **ResponseType**: Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **Response Type**, einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
+Im folgenden Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **ResponseType** und **ApiName** für die Metrik **Transactions** überwacht:
+1. **ResponseType**: Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **ResponseType**, einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
 2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
 
 Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
@@ -1014,8 +1014,8 @@ Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel mit dy
 
 Eine einzige Warnungsregel mit dynamischem Schwellenwert kann angepasste Schwellenwerte für Hunderte von Metrikzeitreihen (selbst mit verschiedenen Typen) gleichzeitig erstellen, sodass weniger Warnungsregeln zu verwalten sind.
 
-Im folgenden Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **Response Type** und **ApiName** für die Metrik **Transactions** überwacht:
-1. **ResponseType**: Für jeden Wert der Dimension **Response Type**, einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
+Im folgenden Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **ResponseType** und **ApiName** für die Metrik **Transactions** überwacht:
+1. **ResponseType**: Für jeden Wert der Dimension **ResponseType**, einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
 2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
 
 Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
@@ -1230,6 +1230,270 @@ az group deployment create \
 >[!NOTE]
 >
 > Für Metrikwarnungsregeln mit dynamischem Schwellenwert werden derzeit mehrere Kriterien nicht unterstützt.
+
+
+## <a name="template-for-a-static-threshold-metric-alert-that-monitors-a-custom-metric"></a>Vorlage für eine Metrikwarnung mit statischem Schwellenwert, mit der eine benutzerdefinierte Metrik überwacht wird
+
+Mit der folgenden Vorlage können Sie eine erweiterte Metrikwarnungsregel mit statischem Schwellenwert für eine benutzerdefinierte Metrik erstellen.
+
+Weitere Informationen zu benutzerdefinierten Metriken in Azure Monitor finden Sie unter [Benutzerdefinierte Metriken in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview).
+
+Wenn Sie eine Warnungsregel für eine benutzerdefinierte Metrik erstellen, müssen Sie sowohl den Metriknamen als auch den Metriknamespace angeben.
+
+Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als „customstaticmetricalert.json“.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertDescription": {
+            "type": "string",
+            "defaultValue": "This is a metric alert",
+            "metadata": {
+                "description": "Description of alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 3,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "isEnabled": {
+            "type": "bool",
+            "defaultValue": true,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "resourceId": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Full Resource ID of the resource emitting the metric that will be used for the comparison. For example /subscriptions/00000000-0000-0000-0000-0000-00000000/resourceGroups/ResourceGroupName/providers/Microsoft.compute/virtualMachines/VM_xyz"
+            }
+        },
+        "metricName": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the metric used in the comparison to activate the alert."
+            }
+        },
+        "metricNamespace": {
+            "type": "string",
+            "minLength": 1,
+            "metadata": {
+                "description": "Namespace of the metric used in the comparison to activate the alert."
+            }
+        },
+        "operator": {
+            "type": "string",
+            "defaultValue": "GreaterThan",
+            "allowedValues": [
+                "Equals",
+                "NotEquals",
+                "GreaterThan",
+                "GreaterThanOrEqual",
+                "LessThan",
+                "LessThanOrEqual"
+            ],
+            "metadata": {
+                "description": "Operator comparing the current value with the threshold value."
+            }
+        },
+        "threshold": {
+            "type": "string",
+            "defaultValue": "0",
+            "metadata": {
+                "description": "The threshold value at which the alert is activated."
+            }
+        },
+        "timeAggregation": {
+            "type": "string",
+            "defaultValue": "Average",
+            "allowedValues": [
+                "Average",
+                "Minimum",
+                "Maximum",
+                "Total",
+                "Count"
+            ],
+            "metadata": {
+                "description": "How the data that is collected should be combined over time."
+            }
+        },
+        "windowSize": {
+            "type": "string",
+            "defaultValue": "PT5M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H",
+                "PT6H",
+                "PT12H",
+                "PT24H"
+            ],
+            "metadata": {
+                "description": "Period of time used to monitor alert activity based on the threshold. Must be between one minute and one day. ISO 8601 duration format."
+            }
+        },
+        "evaluationFrequency": {
+            "type": "string",
+            "defaultValue": "PT1M",
+            "allowedValues": [
+                "PT1M",
+                "PT5M",
+                "PT15M",
+                "PT30M",
+                "PT1H"
+            ],
+            "metadata": {
+                "description": "How often the metric alert is evaluated represented in ISO 8601 duration format"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "The ID of the action group that is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": {  },
+    "resources": [
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {},
+            "properties": {
+                "description": "[parameters('alertDescription')]",
+                "severity": "[parameters('alertSeverity')]",
+                "enabled": "[parameters('isEnabled')]",
+                "scopes": ["[parameters('resourceId')]"],
+                "evaluationFrequency":"[parameters('evaluationFrequency')]",
+                "windowSize": "[parameters('windowSize')]",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": [
+                        {
+                            "name" : "1st criterion",
+                            "metricName": "[parameters('metricName')]",
+                            "metricNamespace": "[parameters('metricNamespace')]",
+                            "dimensions":[],
+                            "operator": "[parameters('operator')]",
+                            "threshold" : "[parameters('threshold')]",
+                            "timeAggregation": "[parameters('timeAggregation')]"
+                        }
+                    ]
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[parameters('actionGroupId')]"
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Sie können die obige Vorlage zusammen mit der unten angegebenen Parameterdatei verwenden. 
+
+Speichern Sie den JSON-Code unten für diese exemplarische Vorgehensweise als „customstaticmetricalert.parameters.json“, und ändern Sie ihn.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "alertName": {
+            "value": "New alert rule on a custom metric"
+        },
+        "alertDescription": {
+            "value": "New alert rule on a custom metric created via template"
+        },
+        "alertSeverity": {
+            "value":3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "resourceId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/replace-with-resourceGroup-name/providers/microsoft.insights/components/replace-with-application-insights-resource-name"
+        },
+        "metricName": {
+            "value": "The custom metric name"
+        },
+        "metricNamespace": {
+            "value": "Azure.ApplicationInsights"
+        },
+        "operator": {
+          "value": "GreaterThan"
+        },
+        "threshold": {
+            "value": "80"
+        },
+        "timeAggregation": {
+            "value": "Average"
+        },
+        "actionGroupId": {
+            "value": "/subscriptions/replace-with-subscription-id/resourceGroups/resource-group-name/providers/Microsoft.Insights/actionGroups/replace-with-action-group"
+        }
+    }
+}
+```
+
+
+Sie können die metrische Warnung mithilfe der Vorlage und Parameterdatei mit PowerShell oder Azure CLI in Ihrem aktuellen Arbeitsverzeichnis erstellen.
+
+Verwenden von Azure PowerShell
+```powershell
+Connect-AzAccount
+
+Select-AzSubscription -SubscriptionName <yourSubscriptionName>
+ 
+New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupOfTargetResource `
+  -TemplateFile customstaticmetricalert.json -TemplateParameterFile customstaticmetricalert.parameters.json
+```
+
+
+
+Verwenden der Azure-Befehlszeilenschnittstelle
+```azurecli
+az login
+
+az group deployment create \
+    --name AlertDeployment \
+    --resource-group ResourceGroupOfTargetResource \
+    --template-file customstaticmetricalert.json \
+    --parameters @customstaticmetricalert.parameters.json
+```
+
+>[!NOTE]
+>
+> Sie können den Metriknamespace einer bestimmten benutzerdefinierten Metrik ermitteln, indem Sie [Ihre benutzerdefinierten Metriken über das Azure-Portal durchsuchen](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview#browse-your-custom-metrics-via-the-azure-portal).
+
 
 ## <a name="template-for-a-metric-alert-that-monitors-multiple-resources"></a>Vorlage für eine Metrikwarnung, mit der mehrere Ressourcen überwacht werden
 
@@ -3180,7 +3444,7 @@ az group deployment create \
     --parameters @list-of-vms-dynamic.parameters.json
 ```
 
-## <a name="template-for-a-availability-test-along-with-availability-test-alert"></a>Vorlage für einen Verfügbarkeitstest zusammen mit einer Warnung zum Verfügbarkeitstest
+## <a name="template-for-an-availability-test-along-with-a-metric-alert"></a>Vorlage für einen Verfügbarkeitstest zusammen mit einer Metrikwarnung
 
 Mithilfe von [Application Insights-Verfügbarkeitstests](../../azure-monitor/app/monitor-web-app-availability.md) können Sie die Verfügbarkeit Ihrer Website/Anwendung an verschiedenen Standorten auf der ganzen Welt überwachen. Durch Warnungen zu Verfügbarkeitstests werden Sie benachrichtigt, wenn Verfügbarkeitstests an einer bestimmten Anzahl von Standorten fehlschlagen.
 Warnungen zu Verfügbarkeitstests sind vom gleichen Ressourcentyp wie Metrikwarnungen (Microsoft.Insights/metricAlerts). Mit der folgende Azure Resource Manager-Beispielvorlage können Sie einen einfachen Verfügbarkeitstest und eine zugehörige Warnung einrichten.

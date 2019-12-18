@@ -1,6 +1,7 @@
 ---
-title: Migrieren von Benutzern mit Identitäten sozialer Netzwerke in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Hier werden grundlegende Konzepte für die Migration von Benutzern mit Identitäten sozialer Netzwerke zu Azure AD B2C mithilfe der Graph-API erläutert.
+title: Migrieren von Benutzern mit Identitäten in sozialen Netzwerken
+titleSuffix: Azure AD B2C
+description: Hier werden grundlegende Konzepte im Zusammenhang mit der Migration von Benutzern mit Identitäten sozialer Netzwerke zu Azure AD B2C mithilfe der Graph-API erläutert.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 03/03/2018
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0117a0881422584e3cb949661b1d58cd0257cf67
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c34535454f80b424fc0500363313a799efbdc001
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853864"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950119"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Migrieren von Benutzern mit Identitäten in sozialen Netzwerken
 Wenn Sie Ihren Identitätsanbieter zu Azure AD B2C migrieren möchten, müssen Sie unter Umständen auch Benutzer mit Identitäten sozialer Netzwerke migrieren. Dieser Artikel erklärt, wie man bestehende Konten für soziale Identitäten migriert, wie z.B.: Facebook-, LinkedIn-, Microsoft- und Google-Konten zu Azure AD B2C. Dieser Artikel gilt auch für Verbundidentitäten, jedoch sind diese Migrationen weniger gängig. Im restlichen Teil dieses Artikels gelten die Informationen für Konten sozialer Netzwerke auch für andere Typen von Verbundkonten.
@@ -47,32 +48,33 @@ Dieser Artikel ist eine Fortsetzung des Artikels „Azure Active Directory B2C: 
 * Abhängig vom Identitätsanbieter handelt es sich bei der **Benutzer-ID des Zertifikatausstellers** um einen eindeutigen Wert für einen bestimmten Benutzer pro Anwendung oder ein Entwicklungskonto. Konfigurieren Sie die Azure AD B2C-Richtlinie mit der gleichen Anwendungs-ID, die zuvor vom Anbieter des sozialen Netzwerks zugewiesen wurde, oder mit der einer anderen Anwendung im selben Entwicklungskonto.
 
 ## <a name="use-graph-api-to-migrate-users"></a>Migrieren von Benutzern mithilfe der Graph-API
-Das Azure AD B2C-Benutzerkonto wird über die [Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) erstellt. Um mit der Graph-API zu kommunizieren, benötigen Sie zuerst ein Dienstkonto mit Administratorberechtigungen. In Azure AD registrieren Sie eine Anwendung und eine Authentifizierung für Azure AD. Die Anwendungsanmeldeinformationen bestehen aus Anwendungs-ID und Anwendungsgeheimnis. Die Anwendung verhält sich beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer. Befolgen Sie die Anweisungen im Artikel [Azure Active Directory B2C: Benutzermigration](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) unter Schritt 1.
+Das Azure AD B2C-Benutzerkonto wird über die [Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) erstellt.
+Um mit der Graph-API zu kommunizieren, benötigen Sie zuerst ein Dienstkonto mit Administratorberechtigungen. In Azure AD registrieren Sie eine Anwendung und eine Authentifizierung für Azure AD. Die Anwendungsanmeldeinformationen bestehen aus Anwendungs-ID und Anwendungsgeheimnis. Die Anwendung verhält sich beim Aufrufen der Graph-API wie sie selbst und nicht wie ein Benutzer. Befolgen Sie die Anweisungen im Artikel [Azure Active Directory B2C: Benutzermigration](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-user-migration) unter Schritt 1.
 
 ## <a name="required-properties"></a>Erforderliche Eigenschaften
 Die folgende Liste enthält die Eigenschaften, die beim Erstellen eines Benutzers erforderlich sind.
 * **accountEnabled**: true
 * **displayName**: Der Name, der im Adressbuch für den Benutzer angezeigt wird.
-* **passwordProfile**: Das Kennwortprofil für den Benutzer. 
+* **passwordProfile**: Das Kennwortprofil für den Benutzer.
 
 > [!NOTE]
 > Dieses gilt nur für Konten sozialer Netzwerke (ohne Anmeldeinformationen des lokalen Kontos), und Sie müssen weiterhin das Kennwort angeben. Azure AD B2C ignoriert das Kennwort, das Sie für Konten sozialer Netzwerke angeben.
 
 * **userPrincipalName**: Der Benutzerprinzipalname (someuser@contoso.com). Der Benutzerprinzipalname muss eine der überprüften Domänen des Mandanten enthalten. Generieren Sie zur Angabe des UPN einen neuen GUID-Wert, und verketten Sie ihn mit `@` und Ihrem Mandantennamen.
-* **mailNickname**: Der E-Mail-Alias für den Benutzer. Dieser Wert kann die gleiche ID sein, die Sie für userPrincipalName verwenden. 
+* **mailNickname**: Der E-Mail-Alias für den Benutzer. Dieser Wert kann die gleiche ID sein, die Sie für userPrincipalName verwenden.
 * **signInNames**: Ein oder mehrere SignInName-Datensätze, die die Anmeldenamen für den Benutzer angeben. Jeder Anmeldename muss unter den Unternehmen/Mandanten eindeutig sein. Diese Eigenschaft gilt nur für Konten sozialer Netzwerke und darf leer gelassen werden.
 * **userIdentities**: Ein oder mehrere UserIdentity-Datensätze, die den Kontotyp des sozialen Netzwerks und die eindeutige Benutzer-ID vom Identitätsanbieter des sozialen Netzwerks angeben.
-* [optional] **otherMails**: Die E-Mail-Adressen des Benutzers (nur bei Konten sozialer Netzwerke) 
+* [optional] **otherMails**: Die E-Mail-Adressen des Benutzers (nur bei Konten sozialer Netzwerke)
 
 Weitere Informationen finden Sie unter [Referenz zur Graph-API](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>Migrieren von ausschließlich Konten sozialer Netzwerke
-Um ausschließlich Konten sozialer Netzwerke ohne die Anmeldeinformationen eines lokalen Kontos zu erstellen, senden Sie eine HTTPS POST-Anforderung an die Graph-API. Der Anforderungstext enthält die Eigenschaften des zu erstellenden Kontobenutzers eines sozialen Netzwerks. Sie müssen mindestens die erforderlichen Eigenschaften angeben. 
+Um ausschließlich Konten sozialer Netzwerke ohne die Anmeldeinformationen eines lokalen Kontos zu erstellen, senden Sie eine HTTPS POST-Anforderung an die Graph-API. Der Anforderungstext enthält die Eigenschaften des zu erstellenden Kontobenutzers eines sozialen Netzwerks. Sie müssen mindestens die erforderlichen Eigenschaften angeben.
 
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-Übermitteln Sie die folgenden Formulardaten: 
+Übermitteln Sie die folgenden Formulardaten:
 
 ```JSON
 {
@@ -99,11 +101,11 @@ Um ausschließlich Konten sozialer Netzwerke ohne die Anmeldeinformationen eines
 }
 ```
 ## <a name="migrate-social-account-with-local-account"></a>Migrieren eines Kontos eines sozialen Netzwerks mit einem lokalen Konto
-Wenn Sie ein kombiniertes lokales Konto mit Identitäten sozialer Netzwerke erstellen möchten, senden Sie eine HTTPS POST-Anforderung an die Graph-API. Der Anforderungstext enthält die Eigenschaften des zu erstellenden Kontobenutzers eines sozialen Netzwerks, einschließlich des Anmeldenamens für das lokale Konto. Sie müssen mindestens die erforderlichen Eigenschaften angeben. 
+Wenn Sie ein kombiniertes lokales Konto mit Identitäten sozialer Netzwerke erstellen möchten, senden Sie eine HTTPS POST-Anforderung an die Graph-API. Der Anforderungstext enthält die Eigenschaften des zu erstellenden Kontobenutzers eines sozialen Netzwerks, einschließlich des Anmeldenamens für das lokale Konto. Sie müssen mindestens die erforderlichen Eigenschaften angeben.
 
 **POST**  https://graph.windows.net/tenant-name.onmicrosoft.com/users
 
-Übermitteln Sie folgende Formulardaten: 
+Übermitteln Sie folgende Formulardaten:
 
 ```JSON
 {
@@ -149,11 +151,11 @@ Der Name des Ausstellers oder des Identitätsanbieters ist in Ihrer Richtlinie k
 > Verwenden Sie ein B2C-Mandantenadministratorkonto, das für den B2C-Mandanten lokal angeordnet ist. Die Syntax für den Kontonamen lautet admin@tenant-name.onmicrosoft.com.
 
 ### <a name="is-it-possible-to-add-a-social-identity-to-an-existing-user"></a>Ist es möglich, einem vorhandenen Benutzer eine Identität eines sozialen Netzwerks hinzuzufügen?
-Ja. Nachdem das Azure AD B2C Konto erstellt wurde, können Sie die Identität des sozialen Netzwerks hinzufügen (unabhängig davon, ob es sich um ein lokales Konto, ein Konto eines sozialen Netzwerks oder eine Kombination aus beiden handelt). Führen Sie eine HTTPS PATCH-Anforderung aus. Ersetzen Sie userObjectId durch die zu aktualisierende Benutzer-ID. 
+Ja. Nachdem das Azure AD B2C Konto erstellt wurde, können Sie die Identität des sozialen Netzwerks hinzufügen (unabhängig davon, ob es sich um ein lokales Konto, ein Konto eines sozialen Netzwerks oder eine Kombination aus beiden handelt). Führen Sie eine HTTPS PATCH-Anforderung aus. Ersetzen Sie userObjectId durch die zu aktualisierende Benutzer-ID.
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
-Übermitteln Sie folgende Formulardaten: 
+Übermitteln Sie folgende Formulardaten:
 
 ```JSON
 {
@@ -167,11 +169,11 @@ Ja. Nachdem das Azure AD B2C Konto erstellt wurde, können Sie die Identität d
 ```
 
 ### <a name="is-it-possible-to-add-multiple-social-identities"></a>Ist es möglich, mehrere Identitäten sozialer Netzwerke hinzuzufügen?
-Ja. Sie können mehrere Identitäten sozialer Netzwerke für ein einzelnes Azure AD B2C-Konto hinzufügen. Führen Sie die HTTPS-PATCH-Anforderung aus. Ersetzen Sie userObjectId durch die Benutzer-ID. 
+Ja. Sie können mehrere Identitäten sozialer Netzwerke für ein einzelnes Azure AD B2C-Konto hinzufügen. Führen Sie die HTTPS-PATCH-Anforderung aus. Ersetzen Sie userObjectId durch die Benutzer-ID.
 
 **PATCH** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 
-Übermitteln Sie folgende Formulardaten: 
+Übermitteln Sie folgende Formulardaten:
 
 ```JSON
 {

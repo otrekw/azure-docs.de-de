@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren von Multimaster-Features in Azure Cosmos DB
-description: Hier erfahren Sie, wie Sie Multimaster in Ihren Anwendungen in Azure Cosmos DB konfigurieren.
+description: Hier erfahren Sie, wie Sie mithilfe verschiedener SDKs Multimaster für Ihre Anwendungen in Azure Cosmos DB konfigurieren.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/03/2019
+ms.date: 12/02/2019
 ms.author: mjbrown
-ms.openlocfilehash: e86cacbd76a70c8b114d65a77ff013d32327a2d0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 654baed649093add2aa62f4ba81bf6ce7c3e0df5
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093100"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873640"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Multimaster in Ihren Anwendungen, die Azure Cosmos DB verwenden
 

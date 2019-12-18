@@ -10,20 +10,20 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 27eb4d827c1488b0d051505e62286fd66d6a286b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73671521"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894761"
 ---
-# <a name="simple-entity"></a>Entität vom Typ „Simple“ 
+# <a name="simple-entity"></a>Entität vom Typ „Simple“
 
-Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken. 
+Eine einfache Entität ist eine generische Entität, die ein einzelnes Konzept beschreibt und im Kontext des maschinellen Lernens erworben wurde. Da es sich bei einfachen Entitäten normalerweise um Namen handelt, z.B. Unternehmensnamen, Produktnamen oder andere Namen, sollten Sie wie folgt vorgehen: Fügen Sie eine [Liste mit Ausdrücken](luis-concept-feature.md) hinzu, wenn Sie eine einfache Entität verwenden, um das Signal für die verwendeten Namen zu verstärken.
 
 **Diese Entität ist gut geeignet, wenn Folgendes gilt**:
 
-* Die Daten sind nicht einheitlich formatiert, aber weisen auf denselben Sachverhalt hin. 
+* Die Daten sind nicht einheitlich formatiert, aber weisen auf denselben Sachverhalt hin.
 
 ![Entität vom Typ „Simple“](./media/luis-concept-entities/simple-entity.png)
 
@@ -86,7 +86,7 @@ This is the JSON if `verbose=true` is set in the query string:
 }
 ```
 
-* * * 
+* * *
 
 |Datenobjekt|Name der Entität|Wert|
 |--|--|--|
@@ -94,4 +94,5 @@ This is the JSON if `verbose=true` is set in the query string:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem [Tutorial](luis-quickstart-primary-and-secondary-data.md) werden maschinell gelernte Daten einer Stellenbezeichnung mithilfe einer **einfachen Entität** aus einer Äußerung extrahiert. Um die Genauigkeit beim Extrahieren zu erhöhen, fügen Sie der einfachen Entität eine [Begriffsliste](luis-concept-feature.md) mit spezifischen Ausdrücken hinzu.
+> [!div class="nextstepaction"]
+> [Informieren Sie sich über die Mustersyntax.](reference-pattern-syntax.md)

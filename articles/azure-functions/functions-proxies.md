@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: dffdffdfa80d940c4a50d0a6630c665164f24d5c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230456"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849189"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -184,7 +184,7 @@ Proxys lesen alle Zeichenfolgen aus einer JSON-Datei und verwenden \ als Escapes
 Das requestOverrides-Objekt definiert Änderungen an der Anforderung, wenn die Back-End-Ressource aufgerufen wird. Das Objekt wird durch folgende Eigenschaften definiert:
 
 * **backend.request.method**: Die HTTP-Methode, mit der das Back-End aufgerufen wird.
-* **backend.request.querystring.\<Parametername\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Wenn die leere Zeichenfolge angegeben wird, wird der Parameter nicht in die Back-End-Anforderung einbezogen.
+* **backend.request.querystring.\<Parametername\>** : Ein Abfragezeichenfolgen-Parameter, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<ParameterName\>* durch den Namen des Parameters, den Sie festlegen möchten. Beachten Sie Folgendes: Wenn die leere Zeichenfolge angegeben wird, wird der Parameter weiterhin in die Back-End-Anforderung einbezogen.
 * **backend.request.headers.\<Headername\>** : Ein Header, der für den Aufruf des Back-Ends festgelegt werden kann. Ersetzen Sie *\<HeaderName\>* durch den Namen des Headers, den Sie festlegen möchten. Wenn Sie die leere Zeichenfolge angeben, wird der Header nicht in die Back-End-Anforderung einbezogen.
 
 Die Werte können auf Anwendungseinstellungen und Parameter aus der ursprünglichen Clientanforderung verweisen.

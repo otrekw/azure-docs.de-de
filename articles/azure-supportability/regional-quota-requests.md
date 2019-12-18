@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 6c2d7dc64bca00ce664dc470e7c4405d69b49779
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 132cf6ccfec5af9951f5dc6d6a3c6d3c81363d81
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531516"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850005"
 ---
 # <a name="standard-quota-regional-vcpu-limit-increase"></a>Standardkontingent: Erhöhung des Grenzwerts für regionale vCPUs 
 
-Resource Manager unterstützt für virtuelle Computer zwei Arten von vCPU-Kontingenten. Für **VMs mit nutzungsbasierter Bezahlung** und **reservierte VM-Instanzen** wird das Standardkontingent verwendet. Für **VMs mit niedriger Priorität** wird das Kontingent mit niedriger Priorität verwendet. 
+Resource Manager unterstützt für virtuelle Computer zwei Arten von vCPU-Kontingenten. Für **VMs mit nutzungsbasierter Bezahlung** und **reservierte VM-Instanzen** wird das Standardkontingent verwendet. **Spot-VMs** nutzen Spotkontingent. 
 
 vCPU-Standardkontingente für VMs mit nutzungsbasierter Bezahlung und reservierte VM-Instanzen werden für jedes Abonnement in jeder Region auf zwei Ebenen erzwungen.
  
@@ -26,7 +26,7 @@ Wenn ein neues Abonnement erstellt wird, entspricht der Standardwert für „Reg
 
 Weitere Informationen zu vCPU-Standardkontingenten finden Sie auf den Seiten [vCPU-Kontingente für virtuelle Computer](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) und [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://aka.ms/quotalimits).
 
-Weitere Informationen zum **Erhöhen der vCPU-Grenzwerte für VMs mit niedriger Priorität** finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+Weitere Informationen zum **Erhöhen der vCPU-Grenzwerte für Spot-VMs** finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
 
 Über das Blatt **Hilfe und Support** oder über das Blatt **Nutzung und Kontingente** können Sie im Portal eine Erhöhung des **Grenzwert der gesamten regionalen vCPUs für Standard-VMs** anfordern.
 
@@ -42,9 +42,9 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Hi
 
 ![Neue Supportanfrage](./media/resource-manager-core-quotas-request/newsupportrequest.png)
 
-3. Wählen Sie in der Dropdownliste „Issuetyp“ die Option **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
+3. Wählen Sie in der Dropdownliste „Problemtyp“ die Option **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
-![Dropdownliste „Issuetyp“](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+![Dropdownliste „Problemtyp“](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
 
 4. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
 

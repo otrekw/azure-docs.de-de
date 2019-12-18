@@ -1,6 +1,7 @@
 ---
-title: 'Einrichten der Registrierung und Anmeldung mit OpenID Connect: Azure Active Directory B2C | Microsoft-Dokumentation'
-description: Einrichten der Registrierung und Anmeldung mit OpenID Connect mithilfe von Azure Active Directory B2C
+title: Einrichten der Registrierung und Anmeldung mit OpenID Connect
+titleSuffix: Azure AD B2C
+description: Hier erfahren Sie, wie Sie die Registrierung und Anmeldung mit einem beliebigen OpenID Connect-Identitätsanbieter (Identity Provider, IdP) in Azure Active Directory B2C einrichten.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 0303f8c7e18a5c229bc5a8c5e9b90d95cdaccbe7
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 471163fc8fe8c5bad550d0615683ef2b97b818dc
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672919"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74950464"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-openid-connect-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit OpenID Connect mithilfe von Azure Active Directory B2C
 

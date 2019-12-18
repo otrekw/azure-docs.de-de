@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 73b5c86030d9e106cb3ea24d3100faa56e323815
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 54606b4fbbf7ae459298b3842f957de5256ba0df
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348947"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74971144"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-Komponenten
 
@@ -53,7 +53,7 @@ Application Gateway unterstützt vier Protokolle: HTTP, HTTPS, HTTP/2 und WebSoc
 >Die Unterstützung des HTTP/2-Protokolls ist nur für Clients verfügbar, die mit Application Gateway-Listenern verbunden sind. Die Kommunikation mit Back-End-Serverpools erfolgt immer über HTTP/1.1. Die HTTP/2-Unterstützung ist standardmäßig deaktiviert. Sie können es aktivieren.
 
 - Sie geben die Option für HTTP- und HTTPS-Protokolle in der Listenerkonfiguration an.
-- Unterstützung für [die Protokolle WebSocket und HTTP/2](https://docs.microsoft.com/azure/application-gateway/overview#websocket-and-http2-traffic) wird systemintern bereitgestellt, und [WebSocket-Unterstützung](https://docs.microsoft.com/azure/application-gateway/application-gateway-websocket) ist standardmäßig aktiviert. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
+- Unterstützung für [die Protokolle WebSocket und HTTP/2](overview.md#websocket-and-http2-traffic) wird systemintern bereitgestellt, und [WebSocket-Unterstützung](application-gateway-websocket.md) ist standardmäßig aktiviert. Die WebSocket-Unterstützung kann von Benutzern nicht selektiv aktiviert oder deaktiviert werden. Sie können das WebSocket-Protokoll sowohl mit HTTP- als auch mit HTTPS-Listenern verwenden.
 
 Verwenden Sie einen HTTPS-Listener für die SSL-Terminierung. Ein HTTPS-Listener lagert die Ver- und Entschlüsselung an Ihr Anwendungsgateway aus, sodass Ihre Webserver mit diesem Overhead nicht belastet werden.
 
@@ -61,7 +61,7 @@ Verwenden Sie einen HTTPS-Listener für die SSL-Terminierung. Ein HTTPS-Listener
 
 Mit Application Gateway können Sie benutzerdefinierte Fehlerseiten erstellen, anstatt Standardfehlerseiten anzuzeigen. Sie können für eine benutzerdefinierte Fehlerseite Ihr eigenes Branding und Layout verwenden. Application Gateway zeigt eine benutzerdefinierte Fehlerseite an, wenn eine Anforderung das Back-End nicht erreichen kann.
 
-Weitere Informationen finden Sie unter [Benutzerdefinierte Application Gateway-Fehlerseiten](https://docs.microsoft.com/azure/application-gateway/custom-error).
+Weitere Informationen finden Sie unter [Benutzerdefinierte Application Gateway-Fehlerseiten](custom-error.md).
 
 ### <a name="types-of-listeners"></a>Arten von Listenern
 
@@ -71,11 +71,11 @@ Es gibt zwei Arten von Listenern:
 
 - **Mehrere Websites**. Diese Listenerkonfiguration ist erforderlich, wenn Sie mehrere Webanwendungen in der gleichen Anwendungsgateway-Instanz konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu 100 Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispiel: Drei Unterdomänen („abc.contoso.com“, „xyz.contoso.com“ und „pqr.contoso.com“) zeigen auf die IP-Adresse des Anwendungsgateways. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung.
 
-    Weitere Informationen finden Sie unter [Hosten von mehreren Websites](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview).
+    Weitere Informationen finden Sie unter [Hosten von mehreren Websites](application-gateway-web-app-overview.md).
 
 Nachdem Sie einen Listener erstellt haben, ordnen Sie ihm eine Anforderungsroutingregel zu. Diese Regel bestimmt, wie die vom Listener empfangene Anforderung an das Back-End weitergeleitet werden soll.
 
-Application Gateway verarbeitet Listener in der gezeigten Reihenfolge. Wenn ein einfacher Listener zu einer eingehenden Anforderung passt, wird diese zuerst verarbeitet. Konfigurieren Sie einen Listener für mehrere Websites vor einem einfachen Listener, Datenverkehr an das richtige Back-End weiterzuleiten.
+Application Gateway verarbeitet Listener in der [gezeigten Reihenfolge](configuration-overview.md#order-of-processing-listeners).
 
 ## <a name="request-routing-rules"></a>Anforderungsroutingregeln
 
@@ -89,7 +89,7 @@ Es gibt zwei Arten von Anforderungsroutingregeln:
 
 - **Pfadbasiert**. Mit einer solchen Routingregel können Sie Anforderungen für den zugeordneten Listener basierend auf der URL in der Anforderung an einen bestimmten Back-End-Pool weiterleiten. Wenn der Pfad der URL in einer Anforderung dem Pfadmuster in einer pfadbasierten Regel entspricht, wird die Anforderung anhand dieser Regel geroutet. Das Pfadmuster wird nur auf den URL-Pfad angewendet, nicht auf die zugehörigen Abfrageparameter. Wenn der URL-Pfad einer Anforderung in einem Listener keiner pfadbasierten Regel entspricht, wird die Anforderung mit den HTTP-Standardeinstellungen an den standardmäßigen Back-End-Pool weitergeleitet.
 
-Weitere Informationen finden Sie unter [URL-basiertes Routing](https://docs.microsoft.com/azure/application-gateway/url-route-overview).
+Weitere Informationen finden Sie unter [URL-basiertes Routing](url-route-overview.md).
 
 ### <a name="redirection-support"></a>Umleitungsunterstützung
 
@@ -97,7 +97,7 @@ Die Routingregel für Anforderungen ermöglicht es Ihnen auch, Datenverkehr im A
 
 Sie können als Umleitungsziel einen anderen Listener (wodurch die automatische Umleitung von HTTP zu HTTPS ermöglicht werden kann) oder eine externe Website auswählen. Sie können außerdem auswählen, ob die Umleitung temporär oder dauerhaft erfolgen soll, oder angeben, dass der URI-Pfad und die Abfragezeichenfolge an die Umleitungs-URL angefügt werden sollen.
 
-Weitere Informationen finden Sie unter [Umleiten von Datenverkehr im Application Gateway](https://docs.microsoft.com/azure/application-gateway/redirect-overview).
+Weitere Informationen finden Sie unter [Umleiten von Datenverkehr im Application Gateway](redirect-overview.md).
 
 ### <a name="rewrite-http-headers"></a>Erneutes Generieren von HTTP-Headern
 
@@ -105,7 +105,7 @@ Mit Anwendungsroutingregeln können Sie HTTP(S)-Anforderungs- und -Antwortheader
 
 Die Header können auf statische Werte und auf andere Header und Servervariablen festgelegt werden. Dies ist hilfreich bei wichtigen Anwendungsfällen, z.B. beim Extrahieren von Client-IP-Adressen, beim Entfernen vertraulicher Informationen zum Back-End, beim Verbessern der Sicherheit usw.
 
-Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern im Application Gateway](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers).
+Weitere Informationen finden Sie unter [Erneutes Generieren von HTTP-Headern im Application Gateway](rewrite-http-headers.md).
 
 ## <a name="http-settings"></a>HTTP-Einstellungen
 
@@ -115,9 +115,9 @@ Die Angaben für Port und Protokoll in den HTTP-Einstellungen bestimmen, ob der 
 
 Diese Komponente wird außerdem für folgende Zwecke verwendet:
 
-- Bestimmen, ob eine Benutzersitzung durch [cookiebasierte Sitzungsaffinität](https://docs.microsoft.com/azure/application-gateway/overview#session-affinity) auf demselben Server beibehalten wird.
+- Bestimmen, ob eine Benutzersitzung durch [cookiebasierte Sitzungsaffinität](overview.md#session-affinity) auf demselben Server beibehalten wird.
 
-- Ordnungsgemäßes Entfernen von Mitgliedern des Back-End-Pools über den [Verbindungsausgleich](https://docs.microsoft.com/azure/application-gateway/overview#connection-draining).
+- Ordnungsgemäßes Entfernen von Mitgliedern des Back-End-Pools über den [Verbindungsausgleich](overview.md#connection-draining).
 
 - Zuordnen eines benutzerdefinierten Tests zum Überwachen der Integrität des Back-Ends, Überschreiben von Hostname und -pfad in der Anforderung und benutzerfreundliches Angeben von Einstellungen für das App Service-Back-End mit nur einem Klick.
 
@@ -134,7 +134,7 @@ Ein Back-End-Adresspool leitet die Anforderung an Back-End-Server weiter, die si
 
 Mitglieder des Application Gateway-Back-End-Pools sind nicht an eine Verfügbarkeitsgruppe gebunden. Ein Anwendungsgateway kann mit Instanzen außerhalb des eigenen virtuellen Netzwerks kommunizieren. Mitglieder von Back-End-Pools können auf mehrere Cluster und Rechenzentren verteilt sein oder sich außerhalb von Azure befinden, sofern sie über IP-Konnektivität verfügen.
 
-Wenn Sie interne IP-Adressen als Back-End-Pool-Mitglieder verwenden, ist das [Peering virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) oder ein [VPN-Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) erforderlich. Das Peering virtueller Netzwerke wird unterstützt und bietet Vorteile für den Lastenausgleich von Datenverkehr in anderen virtuellen Netzwerken.
+Wenn Sie interne IP-Adressen als Back-End-Pool-Mitglieder verwenden, ist das [Peering virtueller Netzwerke](../virtual-network/virtual-network-peering-overview.md) oder ein [VPN-Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) erforderlich. Das Peering virtueller Netzwerke wird unterstützt und bietet Vorteile für den Lastenausgleich von Datenverkehr in anderen virtuellen Netzwerken.
 
 Ein Anwendungsgateway kann auch mit lokalen Servern kommunizieren, wenn diese über Azure ExpressRoute oder VPN-Tunnel verbunden sind und Datenverkehr zulässig ist.
 
@@ -146,7 +146,7 @@ In der Standardeinstellung überwacht ein Anwendungsgateway die Integrität alle
 
 Zusätzlich zur Nutzung der standardmäßigen Überwachung der Integritätsüberprüfung können Sie die Integritätsüberprüfung auch an die Anforderungen Ihrer Anwendung anpassen. Benutzerdefinierte Überprüfungen ermöglichen Ihnen eine präzisere Kontrolle über die Überwachung des Systemzustands. Bei Verwendung von benutzerdefinierten Überprüfungen können Sie das Überprüfungsintervall, die URL und den zu überprüfenden Pfad konfigurieren und festlegen, wie viele fehlerhafte Antworten akzeptiert werden, bevor die Back-End-Pool-Instanz als fehlerhaft gekennzeichnet wird. Wir empfehlen, benutzerdefinierte Überprüfungen zu konfigurieren, um die Integrität jedes Back-End-Pools zu überwachen.
 
-Weitere Informationen finden Sie unter [Überwachen der Integrität Ihres Anwendungsgateways](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview).
+Weitere Informationen finden Sie unter [Überwachen der Integrität Ihres Anwendungsgateways](../application-gateway/application-gateway-probe-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 10/16/2019
+ms.date: 12/04/2019
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: adwise
 ms.custom: ''
-ms.openlocfilehash: 01087f3e40e278490abb87d0ab3b7b6ab5052b6b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4798b6908069af229c2bed4a2e5f38fa60e0d554
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74219487"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849104"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 
@@ -64,6 +64,8 @@ Durch die Betrachtung der täglichen und monatlichen Kosten können Sie besser v
 ## <a name="view-costs-for-a-specific-tag"></a>Anzeigen der Kosten für ein bestimmtes Tag
 
 Viele Azure-Benutzer wenden Tags auf Ihre Ressourcen an, z.B. für eine Kostenstelle oder Entwicklungsumgebung (Produktion und Test), um Kosten besser zu kategorisieren. Tags werden in der Kostenanalyse als Dimension angezeigt. Mit der Dimension können Sie Einblicke in Ihre Kategorisierung mit benutzerdefinierten Tags erhalten.
+
+Die Tag-Unterstützung betrifft nur die Nutzung, die gemeldet wird, *nachdem* das Tag auf die Ressource angewendet wurde. Tags werden nicht rückwirkend für die Kostenkalkulation angewendet.
 
 1. Navigieren Sie im Azure-Portal zur Kostenanalyse für Ihren Bereich. Beispiel:  **Kostenverwaltung + Abrechnung** > **Kostenverwaltung** > **Kostenanalyse**.
 1. Wählen Sie **Gruppieren nach** für das Tag aus.

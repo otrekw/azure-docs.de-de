@@ -3,19 +3,19 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2db1cfd7cc8145ff3020bf232021b4f1a63b2ddd
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464033"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928004"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
 Als Dienstanbieter können Sie mit der [delegierten Azure-Ressourcenverwaltung](../concepts/azure-delegated-resource-management.md) Azure-Ressourcen für mehrere Kunden in Ihrem eigenen Mandanten im [Azure-Portal](https://portal.azure.com) verwalten. Die meisten Aufgaben und Dienste können auf delegierten Azure-Ressourcen über verwaltete Mandanten ausgeführt werden. In diesem Artikel werden einige der erweiterten Szenarien beschrieben, in denen die delegierte Azure-Ressourcenverwaltung effektiv sein kann.
 
 > [!NOTE]
-> Die delegierte Azure-Ressourcenverwaltung kann auch in einem Unternehmen verwendet werden, das über mehrere eigene Mandanten verfügt, um die mandantenübergreifende Verwaltung zu vereinfachen.
+> Die delegierte Azure-Ressourcenverwaltung kann auch [in einem Unternehmen verwendet werden, das über mehrere eigene Mandanten verfügt](enterprise.md), um die mandantenübergreifende Verwaltung zu vereinfachen.
 
 ## <a name="understanding-customer-tenants"></a>Grundlegendes zu Kundenmandanten
 

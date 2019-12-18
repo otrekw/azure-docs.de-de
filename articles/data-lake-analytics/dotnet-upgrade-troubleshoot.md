@@ -9,12 +9,12 @@ ms.service: data-lake-analytics
 ms.topic: troubleshooting
 ms.workload: big-data
 ms.date: 10/11/2019
-ms.openlocfilehash: 851a405e5143ea5bb3a26de76f713914aa4bb569
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 2be2f50558fef41659c9a3313871b17961f6ad6d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648191"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873232"
 ---
 # <a name="azure-data-lake-analytics-is-upgrading-to-the-net-framework-v472"></a>Azure Data Lake Analytics wird auf .NET Framework 4.7.2 aktualisiert
 
@@ -39,7 +39,7 @@ Aufgrund dieses Upgrades auf .NET 4.7.2 besteht die Möglichkeit, dass Breaking
 1. Führen Sie die Überprüfung zur Abwärtskompatibilität für die .NET-DLLs auf eine der folgenden Weisen aus:
    1. Verwenden der Visual Studio-Erweiterung [.NET Portability Analyzer](https://marketplace.visualstudio.com/items?itemName=ConnieYau.NETPortabilityAnalyzer)
    1. Herunterladen und Verwenden des eigenständigen Tools ([GitHub dotnetapiport](https://github.com/microsoft/dotnet-apiport)). Anweisungen zum Ausführen des eigenständigen Tools finden Sie unter [GitHub dotnetapiport Breaking Changes](https://github.com/microsoft/dotnet-apiport/blob/dev/docs/HowTo/BreakingChanges.md).
-   1. Bei 4.7.2. sind „compatibility read isRetargeting == True“ die Breaking Changes.
+   1. Mit `read isRetargeting == True` werden mögliche Probleme im Zusammenhang mit der Kompatibilität mit 4.7.2 ermittelt.
 2. Wenn in dem Tool angegeben wird, dass der Code unter Umständen durch eine der möglichen Abwärtsinkompatibilitäten beeinträchtigt ist (einige häufige Beispiele für Inkompatibilitäten sind nachfolgend aufgeführt), können Sie zusätzlich folgende Überprüfungen durchführen:
    1. Analysieren des Codes und Ermitteln, ob der Code Werte an die betroffenen APIs übergibt
    1. Ausführen einer Runtimeüberprüfung. Die Runtimebereitstellung wird in Azure Data Lake Analytics nicht parallel ausgeführt. Sie können vor dem Upgrade eine Runtimeüberprüfung ausführen. Verwenden Sie dazu die lokale Visual Studio-Ausführung mit einem lokalen .NET Framework 4.7.2 für ein repräsentatives Dataset.

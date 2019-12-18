@@ -1,6 +1,7 @@
 ---
-title: Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien | Microsoft-Dokumentation
-description: Erfahren Sie, wie technische Profile in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
+title: Übersicht über technische Profile in benutzerdefinierten Richtlinien
+titleSuffix: Azure AD B2C
+description: Hier erfahren Sie, wie technische Profile in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f90b69cde4a961457c987f004e2605e6884bf323
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063321"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74951036"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu technischen Profilen in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 

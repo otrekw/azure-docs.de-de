@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 5739883984d4087d2b2a1bda66c01ff3cfa10eb0
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.custom: hdinsightactive
+ms.date: 12/04/2019
+ms.openlocfilehash: d4263b8b338f057893c9dfcda1541fc338c2577f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122595"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894261"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analysieren von Protokollen für Apache Kafka in HDInsight
 
@@ -56,7 +56,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(CounterValue) by Computer, bin(TimeGenerated, 1h)
     ```
 
-* Eingehende Nachrichten pro Sekunde:
+* Eingehende Nachrichten pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen Ihres Clusters.)
 
     ```kusto
     metrics_kafka_CL 
@@ -64,7 +64,7 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_MessagesInPerSec_Count_value_d) by HostName_s, bin(TimeGenerated, 1h)
     ```
 
-* Eingehende Bytes pro Sekunde:
+* Eingehende Bytes pro Sekunde: (Ersetzen Sie `wn0-kafka` durch den Hostnamen eines Workerknotens.)
 
     ```kusto
     metrics_kafka_CL 
@@ -72,16 +72,13 @@ Die Schritte zum Aktivieren von Azure Monitor-Protokollen für HDInsight sind f�
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesInPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
 
-* Ausgehende Bytes pro Sekunde:
+* Ausgehende Bytes pro Sekunde: (Ersetzen Sie `your_kafka_cluster_name` durch den Namen Ihres Clusters.)
 
     ```kusto
     metrics_kafka_CL 
     | where ClusterName_s == "your_kafka_cluster_name" and InstanceName_s == "kafka-BrokerTopicMetrics-BytesOutPerSec-Count" 
     | summarize AggregatedValue = avg(kafka_BrokerTopicMetrics_BytesOutPerSec_Count_value_d) by bin(TimeGenerated, 1h)
     ```
-
-    > [!IMPORTANT]  
-    > Ersetzen Sie die Abfragewerte durch die jeweiligen Informationen Ihres Clusters. Beispielsweise muss `ClusterName_s` auf den Namen Ihres Clusters festgelegt werden. `HostName_s` muss auf den Domänennamen eines Workerknotens im Cluster festgelegt werden.
 
     Sie können auch `*` eingeben, um alle protokollierte Typen zu suchen. Derzeit sind folgende Protokolle für Abfragen verfügbar:
 
@@ -100,6 +97,6 @@ Weitere Informationen zu Azure Monitor finden Sie unter [Azure Monitor – Übe
 Weitere Informationen zum Arbeiten mit Apache Kafka finden Sie in den folgenden Dokumenten:
 
 * [Spiegeln von Apache Kafka zwischen HDInsight-Clustern](apache-kafka-mirroring.md)
-* [Erhöhen der Skalierbarkeit von Apache Kafka in HDInsight](apache-kafka-scalability.md)
+* [Konfigurieren von Speicher und Skalierbarkeit für Apache Kafka in HDInsight](apache-kafka-scalability.md)
 * [Verwenden von Apache Spark-Streaming (DStream) mit Apache Kafka](../hdinsight-apache-spark-with-kafka.md)
 * [Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka](../hdinsight-apache-kafka-spark-structured-streaming.md)

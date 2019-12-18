@@ -1,17 +1,17 @@
 ---
 title: Indizierung in Azure Cosmos DB
-description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB.
+description: Hier finden Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB sowie zu verschiedenen unterstützten Indextypen (etwa zu Bereichsindizes, räumlichen Indizes und zusammengesetzten Indizes).
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: thweiss
-ms.openlocfilehash: d679208914eb7d1f74bfaec77fbcff196909a2f4
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 65186262095560d7ae54d32b218d1c01f1fb921d
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299785"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873623"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 
@@ -116,7 +116,7 @@ Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Bereichsindizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
+Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
 
 ### <a name="spatial-index"></a>Räumlicher Index
 
@@ -140,7 +140,7 @@ Bereichsindizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werd
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Räumliche Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](geospatial.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
 
 ### <a name="composite-indexes"></a>Zusammengesetzte Indizes
 

@@ -1,6 +1,7 @@
 ---
-title: Verwenden der Microsoft Identity Platform zum Anmelden von Benutzern mithilfe der Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC) | Azure
-description: Support für nicht browserbasierte Authentifizierungsflows mit der Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers
+title: Anmelden mit der Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers | Azure
+titleSuffix: Microsoft identity platform
+description: Support für nicht browserbasierte Authentifizierungsflows mit der Gewährung der Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credential, ROPC)
 services: active-directory
 documentationcenter: ''
 author: rwike77
@@ -17,14 +18,14 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4504a1ae60aaac790ca15c120433159c2ff78fa
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 24c6bfdc7efc8f15378d4a126b978bc77741b43c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74207784"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74919323"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und die OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
+# <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity Platform und OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers
 
 Die Microsoft Identity Platform unterstützt die [Gewährung für OAuth 2.0-Kennwortanmeldeinformationen des Ressourcenbesitzers (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3). So kann eine Anwendung Benutzer anmelden, indem sie ihr Kennwort direkt verarbeitet.  In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 

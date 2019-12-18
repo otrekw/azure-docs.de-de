@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 598074a6d5093c4febd4d62266a1c852200e3f69
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f1bb2731f5f14b80ca46f4fb28b9b9cb4284c4d7
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231166"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74972369"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>HTTP-Trigger und -Bindungen in Azure Functions
 
@@ -22,7 +22,7 @@ Ein HTTP-Trigger kann so angepasst werden, dass er auf [Webhooks](https://en.wik
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-Der Code in diesem Artikel weist standardmäßig die Functions 2.x-Syntax auf, die .NET Core verwendet. Informationen zur 1.x-Syntax finden Sie in den [1.x-Functions-Vorlagen](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
+Der Code in diesem Artikel nutzt standardmäßig die Syntax mit .NET Core, die in Functions ab Version 2.x verwendet wird. Informationen zur 1.x-Syntax finden Sie in den [1.x-Functions-Vorlagen](https://github.com/Azure/azure-functions-templates/tree/v1.x/Functions.Templates/Templates).
 
 ## <a name="packages---functions-1x"></a>Pakete: Functions 1.x
 
@@ -30,7 +30,7 @@ Die HTTP-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Htt
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
-## <a name="packages---functions-2x"></a>Pakete: Functions 2.x
+## <a name="packages---functions-2x-and-higher"></a>Pakete: Functions 2.x und höher
 
 Die HTTP-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Http](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) der Version 3.x bereitgestellt. Den Quellcode für das Paket finden Sie im GitHub-Repository [azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Http/).
 
@@ -40,7 +40,7 @@ Die HTTP-Bindungen werden im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Htt
 
 Mit dem HTTP-Trigger können Sie eine Funktion mit einer HTTP-Anforderung aufrufen. Sie können einen HTTP-Trigger zum Erstellen von serverlosen APIs und zum Antworten auf Webhooks verwenden.
 
-Standardmäßig gibt ein HTTP-Trigger in Functions 1.x den HTTP-Statuscode 200 „OK“ ohne Text oder in Functions 2.x den HTTP-Statuscode 204 „No Content“ ohne Text zurück. Um diese Antwort zu ändern, konfigurieren Sie eine [HTTP-Ausgabebindung](#output).
+Ein HTTP-Trigger gibt in Functions 1.x standardmäßig den HTTP-Status „200 OK“ ohne Text und in Functions 2.x und höher den HTTP-Status „204 Kein Inhalt“ ohne Text zurück. Um diese Antwort zu ändern, konfigurieren Sie eine [HTTP-Ausgabebindung](#output).
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 
@@ -680,11 +680,29 @@ Standardmäßig verfügen alle Funktionsrouten über das Präfix *api*. Sie kön
 }
 ```
 
+### <a name="using-route-parameters"></a>Verwenden von Routenparametern
+
+Routenparameter, die das Muster `route` einer Funktion definiert haben, sind für jede Bindung verfügbar. Wenn Sie beispielsweise eine Route als `"route": "products/{id}"` definiert haben, kann eine Tabellenspeicherbindung den Wert des Parameters `{id}` in der Bindungskonfiguration verwenden.
+
+Die folgende Konfiguration zeigt, wie der Parameter `{id}` an das `rowKey`-Element der Bindung übergeben wird:
+
+```json
+{
+    "type": "table",
+    "direction": "in",
+    "name": "product",
+    "partitionKey": "products",
+    "tableName": "products",
+    "rowKey": "{id}"
+}
+```
+
+
 ### <a name="working-with-client-identities"></a>Arbeiten mit Clientidentitäten
 
 Wenn Ihre Funktions-App [App Service-Authentifizierung/-Autorisierung](../app-service/overview-authentication-authorization.md) verwendet, können Sie Informationen über authentifizierte Clients aus Ihrem Code anzeigen. Diese Informationen sind als [von der Plattform eingefügter Anforderungsheader](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar. 
 
-Sie können diese Informationen auch aus Datenbindungen auslesen. Diese Funktion ist nur für die Functions-Runtime 2.x verfügbar. Sie ist derzeit auch nur für .NET-Sprachen verfügbar.
+Sie können diese Informationen auch aus Datenbindungen auslesen. Diese Funktion ist nur für die Functions-Runtime 2.x und höher verfügbar. Sie ist derzeit auch nur für .NET-Sprachen verfügbar.
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -774,7 +792,7 @@ Mit Functions können Sie Schlüssel verwenden, wodurch der Zugriff auf Ihre HTT
 > Schlüssel helfen zwar Ihre HTTP-Endpunkte während der Entwicklung zu verschleiern, sie sind jedoch nicht als Möglichkeit zum Schützen eines HTTP-Triggers in einer Produktionsumgebung vorgesehen. Weitere Informationen hierzu finden Sie unter [Schützen eines HTTP-Endpunkts in einer Produktionsumgebung](#secure-an-http-endpoint-in-production).
 
 > [!NOTE]
-> In der Functions Laufzeit 1.x können Webhookanbieter Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird. Dieses Thema wird unter [Webhooks und Schlüssel](#webhooks-and-keys) behandelt. Die Version 2.x der Laufzeit beinhaltet keine Unterstützung für Webhookanbieter.
+> In der Functions Laufzeit 1.x können Webhookanbieter Schlüssel verwenden, um Anforderungen auf unterschiedliche Arten zu autorisieren, je nachdem, welche Methode vom Anbieter unterstützt wird. Dieses Thema wird unter [Webhooks und Schlüssel](#webhooks-and-keys) behandelt. Die Functions-Runtime in Version 2.x und höheren Versionen beinhaltet keine integrierte Unterstützung für Webhookanbieter.
 
 Es gibt zwei Arten von Schlüsseln:
 
@@ -825,9 +843,9 @@ Wenn Sie eine dieser Sicherheitsmethoden auf Funktions-App-Ebene verwenden, soll
 ### <a name="webhooks"></a>webhooks
 
 > [!NOTE]
-> Der Webhookmodus ist nur für die Version 1.x der Functions-Laufzeit verfügbar. Diese Änderung wurde vorgenommen, um die Leistung von HTTP-Triggern in Version 2.x zu verbessern.
+> Der Webhookmodus ist nur für die Version 1.x der Functions-Laufzeit verfügbar. Diese Änderung wurde vorgenommen, um die Leistung von HTTP-Triggern in Version 2.x und höheren Versionen zu verbessern.
 
-In Version 1.x stellen Webhookvorlagen zusätzliche Überprüfungsoptionen für Webhooknutzlasten bereit. In Version 2.x kann der HTTP-Basistrigger weiterhin verwendet werden. Zudem wird er für Webhooks empfohlen. 
+In Version 1.x stellen Webhookvorlagen zusätzliche Überprüfungsoptionen für Webhooknutzlasten bereit. In Version 2.x und höheren Versionen kann der HTTP-Basistrigger weiterhin verwendet werden. Zudem wird er für Webhooks empfohlen. 
 
 #### <a name="github-webhooks"></a>GitHub-Webhooks
 
@@ -854,7 +872,7 @@ Wenn eine Funktion, die den HTTP-Trigger verwendet, nicht innerhalb von etwa 2,5
 
 ## <a name="output"></a>Output
 
-Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht Ihnen, die Antwort, die der Anforderung des Triggers zugeordnet ist, benutzerdefiniert anzupassen. Wenn keine HTTP-Ausgabebindung angegeben wird, gibt ein HTTP-Trigger in Functions 1.x den HTTP-Statuscode 200 „OK“ ohne Text oder in Functions 2.x den HTTP-Statuscode 204 „No Content“ ohne Text zurück.
+Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht Ihnen, die Antwort, die der Anforderung des Triggers zugeordnet ist, benutzerdefiniert anzupassen. Wenn keine HTTP-Ausgabebindung angegeben wird, gibt ein HTTP-Trigger in Functions 1.x den HTTP-Status „200 OK“ ohne Text und in Functions 2.x und höher den HTTP-Status „204 Kein Inhalt“ ohne Text zurück.
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
@@ -874,7 +892,7 @@ Beispielantworten finden Sie im [Triggerbeispiel](#trigger---example).
 
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 
-In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Version 2.x beschrieben. Die nachfolgende Beispieldatei „host.json“ enthält nur die Einstellungen für Version 2.x für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen in Version 2.x finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
+In diesem Abschnitt werden die verfügbaren globalen Konfigurationseinstellungen für diese Bindung in Version 2.x und höheren Versionen beschrieben. Die nachfolgende Beispieldatei „host.json“ enthält nur die Einstellungen für Version 2.x und höhere Versionen für diese Bindung. Weitere Informationen zu globalen Konfigurationseinstellungen in Version 2.x und höheren Versionen finden Sie unter [host.json-Referenz für Azure Functions 2.x](functions-host-json.md).
 
 > [!NOTE]
 > Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md#http).

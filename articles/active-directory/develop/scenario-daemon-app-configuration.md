@@ -1,6 +1,6 @@
 ---
-title: Daemon-App, die Web-APIs aufruft (App-Konfiguration) – Microsoft Identity Plattform
-description: Erfahren Sie, wie Sie eine Daemon-App erstellen, die Web-APIs aufruft (App-Konfiguration).
+title: 'Konfigurieren von Daemon-Apps, die Web-APIs aufrufen: Microsoft Identity Platform | Azure'
+description: Hier erfahren Sie, wie Sie den Code Ihrer Daemonanwendung konfigurieren, die Web-APIs aufruft (App-Konfiguration).
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,12 +16,12 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32fbd4af78e02dad2a8a74ee21f9cb8c6ef0a976
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b0fd50f730c604ba1359218cf5268bd20e570d3c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175494"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74962643"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Daemon-App, die Web-APIs aufruft – Codekonfiguration
 
@@ -105,7 +105,7 @@ Beim Erstellen eines vertraulichen Clients mit Zertifikaten sieht die Konfigurat
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Dies ist die Klasse, die in den MSAL Java-Entwicklungsbeispielen zum Konfigurieren der Beispiele verwendet wird: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Dies ist die Klasse, mit der die Beispiele in den MSAL Java-Entwicklungsbeispielen konfiguriert werden: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 public class TestData {

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/16/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80d356426fe312708d64cc4284dbb1fd925e47c7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bd8e46ecf7e65d768d16c8680fb7ab6796c74ea6
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233326"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74849332"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -238,14 +238,14 @@ Eine häufige Anforderung aller Workday-Bereitstellungsconnectors ist, dass sie 
 
 1. Melden Sie sich mithilfe eines Administratorkontos bei Ihrem Workday-Mandanten an. Geben Sie in der **Workday-Anwendung** die Suchzeichenfolge „Benutzer erstellen“ in das Suchfeld ein, und klicken Sie dann auf den Link **Create Integration System User** (Integrationssystembenutzer erstellen).
 
-    ![Benutzer erstellen](./media/workday-inbound-tutorial/wd_isu_01.png "Benutzer erstellen")
+   ![Benutzer erstellen](./media/workday-inbound-tutorial/wd_isu_01.png "Benutzer erstellen")
 2. Führen Sie die Aufgabe **Integrationssystembenutzer erstellen** aus, indem Sie einen Benutzernamen und ein Kennwort für einen neuen Integrationssystembenutzer angeben.  
   
-* Lassen Sie das Kontrollkästchen **Bei der nächsten Anmeldung neues Kennwort anfordern** deaktiviert. Dieser Benutzer meldet sich programmgesteuert an.
-* Übernehmen Sie für **Sitzungstimeout in Minuten** den Standardwert 0. Diese Einstellung verhindert, dass Sitzungen des Benutzers vorzeitig beendet werden.
-* Wählen Sie die Option **Do Not Allow UI Sessions** (Keine Sitzungen mit Benutzeroberfläche zulassen) aus. Sie bietet zusätzliche Sicherheit, da sie verhindert, dass sich ein Benutzer mit dem Kennwort für das Integrationssystem bei Workday anmeldet.
+   * Lassen Sie das Kontrollkästchen **Bei der nächsten Anmeldung neues Kennwort anfordern** deaktiviert. Dieser Benutzer meldet sich programmgesteuert an.
+   * Übernehmen Sie für **Sitzungstimeout in Minuten** den Standardwert 0. Diese Einstellung verhindert, dass Sitzungen des Benutzers vorzeitig beendet werden.
+   * Wählen Sie die Option **Do Not Allow UI Sessions** (Keine Sitzungen mit Benutzeroberfläche zulassen) aus. Sie bietet zusätzliche Sicherheit, da sie verhindert, dass sich ein Benutzer mit dem Kennwort für das Integrationssystem bei Workday anmeldet.
 
-    ![Integrationssystembenutzer erstellen](./media/workday-inbound-tutorial/wd_isu_02.png "Integrationssystembenutzer erstellen")
+   ![Integrationssystembenutzer erstellen](./media/workday-inbound-tutorial/wd_isu_02.png "Integrationssystembenutzer erstellen")
 
 ### <a name="creating-an-integration-security-group"></a>Erstellen einer Integrationssicherheitsgruppe
 
@@ -356,20 +356,44 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherh
 
 Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von Benutzerkonten aus Workday in jeder Active Directory-Domäne im Geltungsbereich Ihrer Integration.
 
-* [Installieren und Konfigurieren der lokalen Bereitstellungs-Agents](#part-1-install-and-configure-on-premises-provisioning-agents)
-* [Hinzufügen der Bereitstellungsconnector-App und Herstellen der Verbindung mit Workday](#part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday)
-* [Konfigurieren von Attributzuordnungen](#part-3-configure-attribute-mappings)
+* [Hinzufügen der Bereitstellungsconnector-App und Herunterladen des Bereitstellungs-Agents](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent)
+* [Installieren und Konfigurieren der lokalen Bereitstellungs-Agents](#part-2-install-and-configure-on-premises-provisioning-agents)
+* [Konfigurieren der Konnektivität zwischen Workday und Active Directory](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory)
+* [Konfigurieren von Attributzuordnungen](#part-4-configure-attribute-mappings)
 * [Aktivieren und Starten der Benutzerbereitstellung](#enable-and-launch-user-provisioning)
 
-### <a name="part-1-install-and-configure-on-premises-provisioning-agents"></a>Teil 1: Installieren und Konfigurieren der lokalen Bereitstellungs-Agents
+### <a name="part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent"></a>Teil 1: Hinzufügen der Bereitstellungsconnector-App und Herunterladen des Bereitstellungs-Agents
 
-Um Active Directory lokal bereitzustellen, muss ein Agent auf einem Server installiert mit .NET Framework 4.7.1 oder höher und Netzwerkzugriff auf die gewünschten Active Directory-Domänen installiert werden.
+**So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
+
+1. Besuchen Sie <https://portal.azure.com>.
+
+2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
+
+3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
+
+4. Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie die Kategorie **Alle** aus.
+
+5. Suchen Sie nach **Workday Provisioning to Active Directory**, und fügen Sie die App aus dem Katalog hinzu.
+
+6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
+
+7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
+
+8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
+
+   ![Herunterladen des Agents](./media/workday-inbound-tutorial/pa-download-agent.png "Bildschirm für das Herunterladen des Agents")
+
+
+### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Teil 2: Installieren und Konfigurieren der lokalen Bereitstellungs-Agents
+
+Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf einem Server mit .NET Framework 4.7.1 oder höher und Netzwerkzugriff auf die gewünschten Active Directory-Domänen installiert werden.
 
 > [!TIP]
 > Sie können die Version von .NET Framework auf dem Server mithilfe der Anweisungen [hier](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) überprüfen.
 > Wenn auf dem Server nicht .NET 4.7.1 oder höher installiert ist, können Sie es [hier](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows) herunterladen.  
 
-Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[lokalen Bereitstellungs-Agent hier](https://go.microsoft.com/fwlink/?linkid=847801)** herunterladen. Führen Sie die folgenden Schritte aus, um die Agent-Konfiguration abzuschließen.
+Übertragen Sie das heruntergeladene Installationsprogramm für den Agent auf den Serverhost, und führen Sie die unten angegebenen Schritte aus, um die Konfiguration des Agents abzuschließen.
 
 1. Melden Sie sich bei dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
 
@@ -420,25 +444,12 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
   
    ![Dienste](./media/workday-inbound-tutorial/services.png)
 
-### <a name="part-2-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>Teil 2: Hinzufügen der Bereitstellungsconnector-App und Herstellen der Verbindung mit Workday
+### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory"></a>Teil 3: Konfigurieren der Konnektivität zwischen Workday und Active Directory in der Bereitstellungs-App
+In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday und Active Directory her. 
 
-**So konfigurieren Sie die Bereitstellung aus Workday in Active Directory**
+1. Wechseln Sie im Azure-Portal zurück zu der in [Teil 1](#part-1-add-the-provisioning-connector-app-and-download-the-provisioning-agent) erstellten App zur Benutzerbereitstellung von Workday zu Active Directory.
 
-1. Besuchen Sie <https://portal.azure.com>.
-
-2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
-
-3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
-
-4. Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie die Kategorie **Alle** aus.
-
-5. Suchen Sie nach **Workday Provisioning to Active Directory**, und fügen Sie die App aus dem Katalog hinzu.
-
-6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
-
-7. Legen Sie **Bereitstellungsmodus** **auf** **Automatisch** fest.
-
-8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
+1. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
    * **Administratorbenutzername**: Geben Sie den Benutzernamen des Workday-Systemintegrationskontos mit angefügtem Mandantendomänennamen ein. Es sollte etwa so aussehen: **benutzername\@mandantenname**
 
@@ -465,7 +476,7 @@ Nachdem Sie .NET 4.7.1 oder höher bereitgestellt haben, können Sie den **[loka
 
    * Sobald die Anmeldeinformationen erfolgreich gespeichert wurden, wird im Abschnitt **Zuordnungen** die Standardzuordnung **Workday-Worker mit lokalem Active Directory synchronisieren** angezeigt.
 
-### <a name="part-3-configure-attribute-mappings"></a>Teil 3: Konfigurieren von Attributzuordnungen
+### <a name="part-4-configure-attribute-mappings"></a>Teil 4: Konfigurieren von Attributzuordnungen
 
 In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in Active Directory.
 

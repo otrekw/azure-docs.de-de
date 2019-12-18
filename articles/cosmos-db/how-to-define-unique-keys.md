@@ -1,17 +1,17 @@
 ---
 title: Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
-description: Erfahren Sie, wie Sie eindeutige Schlüssel für einen Azure Cosmos-Container definieren.
+description: Hier erfahren Sie, wie Sie eindeutige Schlüssel für einen Azure Cosmos-Container mithilfe des Azure-Portals, mit PowerShell, .NET, Java und verschiedenen anderen SDKs definieren.
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/28/2019
+ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 2f61afd12a50b1b135419585bfada52d7ef98f3a
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811640"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872110"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definieren von eindeutigen Schlüsseln für einen Azure Cosmos-Container
 

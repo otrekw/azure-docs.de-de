@@ -1,6 +1,7 @@
 ---
-title: Beispiele und Definitionen für Überwachungsprotokolle in Azure Active Directory B2C
-description: Leitfaden und Beispiele für den Zugriff auf die Azure AD B2C-Überwachungsprotokolle
+title: Zugreifen auf und Überprüfen von Überwachungsprotokollen
+titleSuffix: Azure AD B2C
+description: Hier erfahren Sie, wie Sie programmgesteuert und im Azure-Portal auf Azure AD B2C-Überwachungsprotokolle zugreifen.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -11,12 +12,12 @@ ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: b1070314767f280ec9d15390dc838fa80b5508e2
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: feefe7cf6d559360defd7c7f830a9e3f2e583cd6
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643604"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948231"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 
@@ -119,7 +120,7 @@ Führen Sie die folgenden Schritte zum Registrieren einer Anwendung aus, erteile
 1. Wählen Sie **Microsoft Graph**.
 1. Wählen Sie **Anwendungsberechtigungen**.
 1. Erweitern Sie **AuditLog**, und aktivieren Sie dann das Kontrollkästchen **AuditLog.Read.All**.
-1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie gemäß der Anweisung einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
+1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
 1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
 1. Wählen Sie Ihr aktuell angemeldetes Konto aus, wenn ihm die Rolle *Globaler Administrator* zugewiesen wurde, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem die Rolle *Globaler Administrator* zugewiesen wurde.
 1. Wählen Sie **Akzeptieren** aus.

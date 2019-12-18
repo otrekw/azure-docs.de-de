@@ -7,14 +7,15 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 07/23/2018
-ms.openlocfilehash: 857188ebb5ddc3c24f6a225819c47fc1643417e6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: a1e299f195a148ebd1bdbda91e5a56e297f34d31
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887529"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889174"
 ---
-# <a name="troubleshooting-no-data---application-insights-for-net"></a>Problembehandlung ohne Daten – Application Insights für .NET
+# <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Problembehandlung ohne Daten – Application Insights für .NET/.NET Core
+
 ## <a name="some-of-my-telemetry-is-missing"></a>Einige meiner Telemetriedaten fehlen
 *In Application Insights wird nur ein Bruchteil der Ereignisse angezeigt, die von meiner App generiert werden.*
 
@@ -212,7 +213,7 @@ Befolgen Sie diese Anweisungen, um Problembehandlungsprotokolle für Ihr Framewo
 
 1. Installieren Sie das Paket [Microsoft.AspNet.ApplicationInsights.HostingStartup](https://www.nuget.org/packages/Microsoft.AspNet.ApplicationInsights.HostingStartup) von NuGet. Die Version, die Sie installieren, muss mit der aktuell installierten Version von `Microsoft.ApplicationInsights` übereinstimmen.
 
-Die neuste Version von Microsoft.ApplicationInsights.AspNetCore ist 2.7.1. Sie bezieht sich auf Microsoft.ApplicationInsights Version 2.10. Deswegen sollten Sie Version 2.10.0 von Microsoft.AspNet.ApplicationInsights.HostingStartup installieren.
+Die neuste Version von Microsoft.ApplicationInsights.AspNetCore ist 2.8.2. Sie bezieht sich auf Microsoft.ApplicationInsights Version 2.11.2. Deswegen sollten Sie Version 2.11.2 von Microsoft.AspNet.ApplicationInsights.HostingStartup installieren.
 
 2. Ändern Sie die `ConfigureServices`-Methode in Ihrer `Startup.cs`-Klasse:
 

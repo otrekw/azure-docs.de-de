@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: fb092a3c6b473680480c3bba0ad6f437176833de
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 3e344afc29ae398394a1aa2aa527f2f32e24eef7
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576402"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997189"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features
 
@@ -176,10 +176,10 @@ Zur Vereinfachung können Sie direkt von der Seite des virtuellen Computers in S
 
 Um den Rollout des Just-In-Time-Zugriffs auf Ihre virtuellen Computer zu vereinfachen, können Sie einen virtuellen Computer so einrichten, dass er nur den direkten Just-In-Time-Zugriff innerhalb des virtuellen Computers gestattet.
 
-1. Wählen Sie im Azure-Portal die Option für **virtuelle Computer** aus.
-2. Klicken Sie auf den virtuellen Computer, den Sie auf den Just-In-Time-Zugriff beschränken möchten.
-3. Klicken Sie im Menü auf **Konfiguration**.
-4. Klicken Sie unter **Just-In-Time-Zugriff** auf **Just-In-Time-Richtlinie aktivieren**. 
+1. Suchen Sie im [Azure-Portal](https://ms.portal.azure.com) nach **Virtuelle Computer**, und wählen Sie die Option aus. 
+2. Wählen Sie den virtuellen Computer aus, den Sie auf den Just-In-Time-Zugriff beschränken möchten.
+3. Wählen Sie im Menü die Option **Konfiguration** aus.
+4. Wählen Sie unter **Just-In-Time-Zugriff** die Option **Just-In-Time-Richtlinie aktivieren** aus. 
 
 Dies ermöglicht den Just-In-Time-Zugriff auf den virtuellen Computer mit den folgenden Einstellungen:
 

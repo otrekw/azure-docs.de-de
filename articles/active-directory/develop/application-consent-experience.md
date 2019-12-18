@@ -1,9 +1,8 @@
 ---
-title: Grundlegendes zu Einwilligungserfahrungen für Azure AD-Anwendungen
+title: Umgebungen für die Azure AD-App-Zustimmung
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie mehr über die Azure AD-Einwilligungserfahrungen und deren Verwendung beim Verwalten und Entwickeln von Anwendungen in Azure AD
 services: active-directory
-documentationcenter: ''
 author: rwike77
 manager: CelesteDG
 ms.assetid: ''
@@ -11,19 +10,17 @@ ms.service: active-directory
 ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4356a0a26aa586f99766cc5166c17d301a9a194d
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 1f16278304b4d536b1ef2cf46291b481bf319b6c
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803902"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74918150"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Grundlegendes zu Einwilligungserfahrungen für Azure AD-Anwendungen
 

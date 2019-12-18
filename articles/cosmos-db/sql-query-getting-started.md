@@ -1,17 +1,17 @@
 ---
 title: Erste Schritte mit SQL-Abfragen in Azure Cosmos DB
-description: Einführung in SQL-Abfragen
+description: Hier erfahren Sie, wie Sie SQL-Abfragen zum Abfragen von Daten aus Azure Cosmos DB verwenden. Sie können Beispieldaten in einen Container in Azure Cosmos DB hochladen und abfragen.
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: tisande
-ms.openlocfilehash: 8de5140d0146ccbb18f41867e1c716aa2f3897b7
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1d24261edea843fa928ad00e3ce7babcb84acd3b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001909"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873334"
 ---
 # <a name="getting-started-with-sql-queries"></a>Erste Schritte mit SQL-Abfragen
 

@@ -7,16 +7,16 @@ ms.date: 06/07/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: ccd0c88c95ae9a752ef8ea2387bbde4f8559bc68
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 280561126186e4c70399b3a1ddd177ff4eb54400
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531698"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74850039"
 ---
 # <a name="standard-quota-per-vm-series-vcpu-limit-increase"></a>Standardkontingent: Erhöhung des vCPU-Grenzwerts pro VM-Serie
 
-Der Ressourcen-Manager unterstützt zwei Arten von vCPU-Kontingenten für virtuelle Computer. **VMs mit nutzungsbasierter Bezahlung und reservierte VM-Instanzen** verwenden Standardkontingente. **VMs mit niedriger Priorität** verwenden Kontingente mit niedriger Priorität. Die standardmäßigen vCPU-Kontingente für nutzungsbasierte Bezahlung und reservierte VM-Instanzen werden für jedes Abonnement in jeder Region auf zwei Ebenen erzwungen.
+Der Ressourcen-Manager unterstützt zwei Arten von vCPU-Kontingenten für virtuelle Computer. **VMs mit nutzungsbasierter Bezahlung und reservierte VM-Instanzen** verwenden Standardkontingente. **Spot-VMs** nutzen Spotkontingent. Die standardmäßigen vCPU-Kontingente für nutzungsbasierte Bezahlung und reservierte VM-Instanzen werden für jedes Abonnement in jeder Region auf zwei Ebenen erzwungen.
 
 Die erste Ebene ist der Grenzwert **Regionale vCPUs gesamt** (für alle VM-Serien). Die zweite Ebene ist der Grenzwert **vCPUs pro VM-Serie** (z.B. vCPUs der Dv3-Serie). Bei jeder Bereitstellung eines neuen virtuellen Computers darf die Summe aus neuer und bereits vorhandener vCPU-Nutzung für diese VM-Serie das für diese spezielle VM-Serie genehmigte vCPU-Kontingent nicht überschreiten. Ferner darf die Gesamtzahl der neuen und vorhandenen vCPUs, die insgesamt für alle VM-Serien bereitgestellt werden, das für das Abonnement genehmigte Kontingent „Regionale vCPUs gesamt“ nicht überschreiten. Wird eines dieser Kontingente überschritten, wird die VM-Bereitstellung nicht zugelassen.
 Über das Azure-Portal können Sie eine Erhöhung des vCPU-Kontingentlimits für die VM-Serie anfordern. Bei einer Erhöhung des Kontingents für die VM-Serie erhöht sich automatisch auch der Grenzwert „Regionale vCPUs gesamt“ um den gleichen Wert. 
@@ -25,7 +25,7 @@ Weitere Informationen zu standardmäßigen vCPU-Kontingenten finden Sie auf den 
 
 Weitere Informationen zum Erhöhen des regionalen vCPU-Grenzwerts für Standardkontingente finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests). 
 
-Weitere Informationen zum **Erhöhen von vCPU-Grenzwerten für VMs mit niedriger Priorität** finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+Weitere Informationen zum **Erhöhen der vCPU-Grenzwerte für Spot-VMs** finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
 
 Sie können eine Erhöhung der **vCPU-Grenzwerte für Standardkontingente pro VM-Serie** über das Blatt **Hilfe und Support** oder das Blatt **Nutzung und Kontingente** im Portal anfordern.
 
@@ -63,7 +63,7 @@ Sie können auch Kontingente für mehrere Regionen über eine einzige Supportanf
 
    ![Kontingentdetails (Bereitstellungsmodell)](./media/resource-manager-core-quotas-request/1-7.png)
 
-8. Wählen Sie für den ausgewählten Speicherort den Wert **Typ** als **Standard** aus. Sie können sowohl Standardkontingenttypen als auch Kontingenttypen mit niedriger Priorität über eine einzige Supportanfrage anfordern, indem Sie die Mehrfachauswahl im Feld **Typ** verwenden. Weitere Informationen zum **Erhöhen von Kontingentgrenzwerten für VMs mit niedriger Priorität** finden Sie auf **Seite <>** .
+8. Wählen Sie für den ausgewählten Speicherort den Wert **Typ** als **Standard** aus. Sie können sowohl Standardkontingenttypen als auch Spotkontingenttypen über eine einzige Supportanfrage anfordern, indem Sie die Mehrfachauswahl im Feld **Typ** verwenden. Weitere Informationen zum **Erhöhen von Spotkontingentlimits** finden Sie auf dieser [Seite](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
    ![SKU-Familie](./media/resource-manager-core-quotas-request/1-8.png)
 
@@ -111,7 +111,7 @@ Sie können auch **Kontingente für mehrere Regionen** über eine einzige Suppor
 
    ![Blatt für das Kontingentproblem](./media/resource-manager-core-quotas-request/1-1-6.png)
 
-7. Wählen Sie für den ausgewählten Speicherort den Wert **Typ** als **Standard** aus. Sie können sowohl Standardkontingenttypen als auch Kontingenttypen mit niedriger Priorität über eine einzige Supportanfrage anfordern, indem Sie die Mehrfachauswahl im Feld **Typ** verwenden. Weitere Informationen zum **Erhöhen von vCPU-Grenzwerten für VMs mit niedriger Priorität** finden Sie diese [Seite](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+7. Wählen Sie für den ausgewählten Speicherort den Wert **Typ** als **Standard** aus. Sie können sowohl Standardkontingenttypen als auch Kontingenttypen mit niedriger Priorität über eine einzige Supportanfrage anfordern, indem Sie die Mehrfachauswahl im Feld **Typ** verwenden. Weitere Informationen zum **Erhöhen von vCPU-Spotlimits** finden Sie auf dieser [Seite](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
 
    ![Ausgewählte SKU-Serie](./media/resource-manager-core-quotas-request/1-1-7.png)
    

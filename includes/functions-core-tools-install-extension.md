@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 05/25/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: ffd9e54c0f39b4256dbc83a336328797a8b53c45
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a050ce62f745591608249b41ba56992d8fd35204
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608192"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74935850"
 ---
 ## <a name="register-extensions"></a>Registrieren von Erweiterungen
 
-Mit Ausnahme von HTTP- und Zeitauslösern werden Functions-Bindungen in der Laufzeitversion 2.x als Erweiterungspakete implementiert. In Version 2.x der Azure Functions Runtime müssen Sie die in Ihren Funktionen für die Bindungstypen verwendeten Erweiterungen explizit registrieren. Die Ausnahmen hierbei sind HTTP-Bindungen und Zeitauslöser, die keine Erweiterungen erfordern.
+Mit Ausnahme von HTTP- und Zeitgebertriggern werden Functions-Bindungen in der Runtimeversion 2.x und höher als Erweiterungspakete implementiert. In Version 2.x und höheren Versionen der Azure Functions-Runtime müssen Sie die in Ihren Funktionen für die Bindungstypen verwendeten Erweiterungen explizit registrieren. Die Ausnahmen hierbei sind HTTP-Bindungen und Zeitauslöser, die keine Erweiterungen erfordern.
 
 Sie können auch Bindungserweiterungen einzeln installieren, oder Sie können einen Erweiterungsbündelverweis in der Datei „host.json“ hinzufügen. Erweiterungsbündel wirken eventuellen Kompatibilitätsproblemen bei Paketen entgegen, wenn mehrere Bindungstypen verwendet werden. Es handelt sich hierbei um den empfohlenen Ansatz zum Registrieren von Bindungserweiterungen. Erweiterungsbündel beseitigen außerdem die Notwendigkeit der Installation des .NET Core 2.x SDK. 
 

@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7d7744aab6d83b3415f32ca9e311940836c6f93c
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123212"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74997240"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problembehandlung bei der Bereitstellung von Azure Machine Learning, Azure Kubernetes Service und Azure Container Instances
 
@@ -505,7 +505,7 @@ Um Änderungen an Dateien im Image vornehmen, können Sie eine Verbindung mit de
     docker exec -it debug /bin/bash
     ```
 
-1. Um die vom Dienst verwendeten Dateien zu ermitteln, verwenden Sie den folgenden Befehl in der Bash-Shell im Container:
+1. Um die vom Dienst verwendeten Dateien zu ermitteln, verwenden Sie den folgenden Befehl in der Bash-Shell im Container, falls das Standardverzeichnis nicht `/var/azureml-app` lautet:
 
     ```bash
     cd /var/azureml-app

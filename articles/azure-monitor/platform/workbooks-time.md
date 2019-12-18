@@ -1,5 +1,5 @@
 ---
-title: Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen | Zeitparameter | Microsoft-Dokumentation
+title: Zeitparameter in Azure Monitor-Arbeitsmappen
 description: Vereinfachen der komplexen Berichterstellung mit vordefinierten und benutzerdefiniert parametrisierten Arbeitsmappen
 services: azure-monitor
 author: mrbullwinkle
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 906ebcc49eca72744abf5854a1b320407d0384dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1d1ee243fa9df8a77a6ce80ecb9d8e5336e8b19b
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164312"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74872756"
 ---
 # <a name="workbook-time-parameters"></a>Arbeitsmappen-Zeitparameter
 
@@ -43,7 +43,7 @@ So sieht die Arbeitsmappe im Lesemodus aus.
 1. Fügen Sie der Arbeitsmappe ein Abfragesteuerelement hinzu, und wählen Sie eine Application Insights-Ressource aus.
 2. Die meisten Arbeitsmappen-Steuerelemente unterstützen eine _Zeitbereich_-Bereichsauswahl. Öffnen Sie das Dropdown _Zeitbereich_, und wählen Sie in der Gruppe der Zeitbereichsparameter unten `{TimeRange}` aus.
 3. Dadurch wird der Zeitbereichsparameter an den Zeitbereich des Diagramms gebunden. Der Zeitbereich der Beispielabfrage ist nun auf „Letzte 24 Stunden“ festgelegt.
-4. Ausführen einer Abfrage, um die Ergebnisse anzuzeigen
+4. Führen Sie die Abfrage aus, um die Ergebnisse anzuzeigen.
 
     ![Abbildung eines Zeitbereichsparameters, auf den über Bindungen verwiesen wird](./media/workbooks-time/time-binding.png)
 
@@ -51,7 +51,7 @@ So sieht die Arbeitsmappe im Lesemodus aus.
 1. Fügen Sie der Arbeitsmappe ein Abfragesteuerelement hinzu, und wählen Sie eine Application Insights-Ressource aus.
 2. Geben Sie in der KQL einen Zeitbereichsfilter mit dem folgenden Parameter an: `| where timestamp {TimeRange}`
 3. Dadurch wird die Abfrageauswertungszeit auf `| where timestamp > ago(1d)` erweitert, den Zeitbereichswert des Parameters.
-4. Ausführen einer Abfrage, um die Ergebnisse anzuzeigen
+4. Führen Sie die Abfrage aus, um die Ergebnisse anzuzeigen.
 
     ![Abbildung eines Zeitbereichs, auf den in einer KQL verwiesen wird](./media/workbooks-time/time-in-code.png)
 

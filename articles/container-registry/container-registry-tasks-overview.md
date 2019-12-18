@@ -3,12 +3,12 @@ title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: b4710591dfd78f0633d5071c78d80e300349f498
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 96997f963f0bcb319d5318e2dd88a6e1e21fb36b
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456159"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74840764"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -52,7 +52,7 @@ Informationen zur Verwendung der Schnelltasks finden Sie im ersten ACR Tasks-Tut
 
 ## <a name="trigger-task-on-source-code-update"></a>Auslösen des Tasks beim Update des Quellcodes
 
-Lösen Sie einen Containerimage-Buildvorgang oder Task in mehreren Schritten aus, wenn Code in ein Git-Repository in GitHub oder Azure DevOps committet oder ein Pull Request erstellt oder aktualisiert wird. Konfigurieren Sie z. B. einen Buildtask mithilfe des Azure CLI-Befehls [az acr task create][az-acr-task-create], indem Sie ein Git-Repository und optional einen Branch und eine Dockerfile-Datei angeben. Wenn Ihr Team Code im Repository aktualisiert, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus. 
+Lösen Sie einen Containerimage-Buildvorgang oder Task in mehreren Schritten aus, wenn Code in ein öffentliches oder privates Git-Repository in GitHub oder Azure DevOps committet oder ein Pull Request erstellt oder aktualisiert wird. Konfigurieren Sie z. B. einen Buildtask mithilfe des Azure CLI-Befehls [az acr task create][az-acr-task-create], indem Sie ein Git-Repository und optional einen Branch und eine Dockerfile-Datei angeben. Wenn Ihr Team Code im Repository aktualisiert, löst ein von ACR Tasks erstellter Webhook einen Buildvorgang für das im Repository definierte Containerimage aus. 
 
 ACR Tasks unterstützt die folgenden Trigger, wenn Sie ein Git-Repository als Taskkontext festlegen:
 
@@ -61,7 +61,10 @@ ACR Tasks unterstützt die folgenden Trigger, wenn Sie ein Git-Repository als T
 | Commit | Ja |
 | Pull Request | Nein |
 
-Um den Trigger zu konfigurieren, stellen Sie dem Task ein persönliches Zugriffstoken (Personal Access Token, PAT) zur Verfügung, um den Webhook im GitHub- oder Azure DevOps-Repository festzulegen.
+Um den Trigger für die Quellcodeaktualisierung zu konfigurieren, stellen Sie dem Task ein persönliches Zugriffstoken (Personal Access Token, PAT) zur Verfügung, um den Webhook im öffentlichen oder privaten GitHub- oder Azure DevOps-Repository festzulegen.
+
+> [!NOTE]
+> Derzeit unterstützt ACR Tasks keine Anforderungstrigger für Commit- oder Pullvorgänge in GitHub Enterprise-Repositorys.
 
 Informationen zum Auslösen von Buildvorgängen nach dem Committen von Quellcode finden Sie im zweiten ACR Tasks-Tutorial: [Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks](container-registry-tutorial-build-task.md).
 
@@ -116,11 +119,14 @@ Die folgende Tabelle zeigt einige Beispiele von unterstützten Kontextspeicheror
 | Kontextspeicherort | BESCHREIBUNG | Beispiel |
 | ---------------- | ----------- | ------- |
 | Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
-| GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines GitHub-Repositorys.  | `https://github.com/gituser/myapp-repo.git` |
-| GitHub-Branch | Bestimmter Branch eines GitHub-Repositorys.| `https://github.com/gituser/myapp-repo.git#mybranch` |
-| GitHub-Unterordner | Dateien in einem Unterordner in einem GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
-| Azure DevOps-Unterordner | Dateien in einem Unterordner in einem Azure-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
+| GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines öffentlichen oder privaten GitHub-Repositorys  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-Branch | Bestimmter Branch eines öffentlichen oder privaten GitHub-Repositorys| `https://github.com/gituser/myapp-repo.git#mybranch` |
+| GitHub-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
+| Azure DevOps-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten Azure-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://dev.azure.com/user/myproject/_git/myapp-repo#mybranch:myfolder` |
 | Remotetarball | Dateien in einem komprimierten Archiv auf einem Remotewebserver. | `http://remoteserver/myapp.tar.gz` |
+
+> [!NOTE]
+> Wenn Sie ein privates Git-Repository als Kontext für eine Aufgabe verwenden, müssen Sie ein persönliches Zugriffstoken (PAT) bereitstellen.
 
 ## <a name="image-platforms"></a>Imageplattformen
 

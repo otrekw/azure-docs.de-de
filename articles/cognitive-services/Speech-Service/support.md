@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 741217cde5068468a7063a64361df8425346b590
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815443"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928647"
 ---
 # <a name="support-and-help-options"></a>Support- und Hilfeoptionen
 
@@ -62,7 +62,7 @@ Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
 
 Stack Overflow ist der bevorzugte Kanal für entwicklungsbezogene Fragen. Dort sind Mitglieder der Community und Microsoft-Teammitglieder direkt an der Lösung Ihrer Probleme beteiligt.
 
-Wenn Sie über die Suche keine Lösung für Ihr Problem finden, übermitteln Sie eine neue Frage in Stack Overflow unter Verwendung des Tags [microsoft-cognitive-speech](https://stackoverflow.com/questions/tagged/microsoft-cognitive-speech).
+Wenn Sie über die Suche keine Lösung für Ihr Problem finden, übermitteln Sie unter Verwendung der Tags [\[microsoft-cognitive\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech) eine neue Frage in Stack Overflow.
 
 > [!TIP]
 > Die folgenden Beiträge aus Stack Overflow enthalten Tipps zum Formulieren von Fragen und zum Hinzufügen von Quellcode. Das Befolgen dieser Hinweis kann dazu beitragen, dass Mitglieder der Community schneller auf Ihre Frage reagieren:  

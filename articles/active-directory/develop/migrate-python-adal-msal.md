@@ -4,25 +4,23 @@ description: Erfahren Sie, wie Sie Ihre Python-App mit ADAL (Azure Active Direct
 services: active-directory
 titleSuffix: Microsoft identity platform
 author: rayluo
-manager: henrikm
-editor: twhitney
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: Python
 ms.workload: identity
 ms.date: 11/11/2019
 ms.author: rayluo
-ms.reviewer: ''
+ms.reviewer: rayluo, nacanuma, twhitney
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b31000c8b5e64cbd0edb2fc062f1c6e077a75f4
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 72a4af690a1433f6a185ab17f06748d67927edea
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481931"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74917232"
 ---
 # <a name="adal-to-msal-migration-guide-for-python"></a>Leitfaden für die Migration von ADAL zu MSAL für Python
 
@@ -30,7 +28,7 @@ In diesem Artikel werden die Änderungen beschrieben, die Sie durchführen müss
 
 ## <a name="difference-highlights"></a>Wichtige Unterschiede
 
-ADAL arbeitet mit dem Azure Active Directory v1.0-Endpunkt. MSAL (Microsoft Authentication Library) arbeitet mit Microsoft Identity Platform (ehemals bekannt als Azure Active Directory v2.0-Endpunkt). Microsoft Identity Platform weist einige Unterschiede im Vergleich zu Azure Active Directory v1.0 auf:
+ADAL arbeitet mit dem Azure Active Directory v1.0-Endpunkt (Azure AD). MSAL (Microsoft Authentication Library) arbeitet mit Microsoft Identity Platform (ehemals bekannt als Azure Active Directory v2.0-Endpunkt). Microsoft Identity Platform weist einige Unterschiede im Vergleich zu Azure AD v1.0 auf:
 
 Unterstützt:
   - Geschäfts-, Schul- oder Unikonten (von Azure AD bereitgestellte Konten)

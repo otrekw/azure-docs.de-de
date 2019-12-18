@@ -1,20 +1,21 @@
 ---
-title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff (RA-GZRS oder RA-GRS) | Microsoft-Dokumentation
-description: Verwenden Sie Azure RA-GZRS- oder RA-GRS-Speicher, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann.
+title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher
+titleSuffix: Azure Storage
+description: Hier erfahren Sie, wie Sie georedundanten Speicher mit Lesezugriff verwenden, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: a6d724f834fb8a4c54cd613c61ca90a77a36bdea
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71673109"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74895339"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff
 

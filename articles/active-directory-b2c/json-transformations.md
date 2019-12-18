@@ -1,6 +1,7 @@
 ---
-title: Beispiele für die Transformation von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C | Microsoft-Dokumentation
-description: Hier finden Sie Beispiele für die Transformation von JSON-Ansprüchen für das Schema des Frameworks für die Identitätsfunktion von Azure Active Directory B2C.
+title: Beispiele für die Transformation von JSON-Ansprüchen für benutzerdefinierte Richtlinien
+titleSuffix: Azure AD B2C
+description: Beispiele für die Transformation von JSON-Ansprüchen für das IEF-Schema (Identity Experience Framework) von Azure Active Directory B2C
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: ff70b2f54304c83f70ff578e1947d752aafb34a7
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0ff6f24e30febd57a3a9740ec72a927225b37933
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064161"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74948865"
 ---
 # <a name="json-claims-transformations"></a>Transformationen von JSON-Ansprüchen
 

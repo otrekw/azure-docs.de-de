@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
-ms.openlocfilehash: 3f742d4cd2a5285c7c52611a0c4c4735dedc2f19
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 350b8d111652511627ddf67236f63248a5489015
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844786"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74970447"
 ---
 # <a name="offline-playready-streaming-for-windows-10"></a>Offlinestreaming mit PlayReady für Windows 10  
 
@@ -125,6 +125,10 @@ Zusammengefasst haben wir den Offlinemodus in Azure Media Services erreicht:
 * Für den progressiven Download können Inhalte in Azure Media Services oder Azure Storage gehostet werden.
 * Die PlayReady-Lizenzübermittlung kann aus Azure Media Services oder einem anderen Dienst erfolgen.
 * Die vorbereiteten Smooth Streaming-Inhalte können weiterhin für Onlinestreaming über DASH oder Smooth Streaming mit PlayReady als DRM verwendet werden.
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

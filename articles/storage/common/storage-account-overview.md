@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 11/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc5869acffe9a42d154bca61b9de7821121c85ec
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174033"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851627"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -53,17 +53,17 @@ Speicherkonten vom Typ „Universell v1“ ermöglichen Zugriff auf alle Azure S
 - Warteschlangen
 - Tabellen
 
-Während Allgemein v2-Konten für die meisten Fälle empfohlen werden, eignen sich Allgemein v1-Konten am besten für folgende Szenarien:
+In den meisten Fällen sollten Sie Konten vom Typ „Allgemein v2“ verwenden. Konten vom Typ „Allgemein v1“ können für folgende Szenarien verwendet werden:
 
 * Ihre Anwendungen erfordern das klassische Azure-Bereitstellungsmodell. Allgemein v2- und Blob Storage-Konten unterstützen nur das Azure Resource Manager-Bereitstellungsmodell.
 
 * Ihre Anwendungen verursachen eine hohe Transaktionslast oder nutzen eine erhebliche Bandbreite für die Georeplikation, erfordern aber keine großen Kapazitäten. In diesem Fall sind Allgemein v1-Konten möglicherweise die wirtschaftlich sinnvollste Wahl.
 
-* Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.
+* Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x. Sie können kein Upgrade für Ihre Anwendung durchführen.
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-Konten
 
-Ein BlockBlobStorage-Konto ist ein spezielles Speicherkonto, das zum Speichern von unstrukturierten Objektdaten als Blockblobs und Erstellen von Premium-Blockblobs verwendet wird. Diese Speicherkontoart unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
+Ein BlockBlobStorage-Konto ist ein spezielles Speicherkonto, das Sie zum Speichern von unstrukturierten Objektdaten als Blockblobs verwenden. Sie können ein BlockBlobStorage-Konto auch zum Erstellen von Premium-Blockblobs verwenden. Dieser Speicherkontotyp unterstützt Block- und Anfügeblobs, nicht jedoch Seitenblobs, Tabellen oder Warteschlangen.
 
 Gegenüber universellen V2- und BlobStorage-Konten bieten BlockBlobStorage-Konten niedrige und einheitliche Latenzzeiten und höhere Transaktionsraten.
 
@@ -99,11 +99,11 @@ Azure Storage bietet verschiedene Optionen für den Zugriff auf Blockblobdaten b
 
 Folgende Zugriffsebenen sind verfügbar:
 
-* Die Zugriffsebene **Heiß**, die für häufigen Zugriff auf Objekte im Speicherkonto optimiert ist. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
-* Die Zugriffsebene **Kalt**, die für die Speicherung von großen Datenmengen optimiert ist, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
-* Die Ebene **Archiv**, die nur für einzelne Blockblobs verfügbar ist. Diese Ebene ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Archivebene ist die kosteneffektivste Option für das Speichern von Daten, der Zugriff auf die Daten ist jedoch kostenintensiver als der Zugriff auf Daten auf der heißen oder kalten Ebene.
+* Die Zugriffsebene **Heiß**. Diese Ebene ist für häufigen Zugriff auf Objekte im Speicherkonto optimiert. Der Zugriff auf Daten auf der Zugriffsebene „Heiß“ ist besonders kostengünstig, dafür liegen aber die Speicherkosten etwas höher. Neue Speicherkonten werden standardmäßig auf dieser Ebene erstellt.
+* Die Zugriffsebene **Kalt**. Diese Ebene ist für die Speicherung von großen Datenmengen optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Das Speichern von Daten auf der Ebene „Kalt“ ist kostengünstiger, doch kann der Zugriff auf die Daten teurer sein als der Zugriff auf der Ebene „Heiß“.
+* Die Zugriffsebene **Archiv**. Diese Ebene ist nur für einzelne Blockblobs verfügbar. Die Zugriffsebene „Archiv“ ist für Daten optimiert, die mehrere Stunden Abruflatenz tolerieren und die mindestens 180 Tage lang auf der Ebene „Archiv“ verbleiben. Die Zugriffsebene „Archiv“ ist die kosteneffizienteste Option zum Speichern von Daten. Der Zugriff auf diese Daten ist jedoch teurer als der Zugriff auf Daten auf den Ebenen „Heiß“ oder „Kalt“.
 
-Wenn sich das Nutzungsmusters Ihrer Daten ändern, können Sie jederzeit zwischen den Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+Wenn sich das Nutzungsmuster Ihrer Daten ändert, können Sie jederzeit zwischen diesen Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
 > [!IMPORTANT]
 > Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie im Abschnitt [Speicherkontoabrechnung](#storage-account-billing).
@@ -132,7 +132,7 @@ Wenn Ihr allgemeines Speicherkonto beispielsweise *meinspeicherkonto*heißt, lau
 > [!NOTE]
 > Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blobdiensts verfügbar.
 
-Die URL für den Zugriff auf ein Objekt in einem Speicherkonto wird durch Anhängen des Objektstandorts im Speicherkonto an den Endpunkt generiert. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http://*meinspeicherkonto*.blob.core.windows.net/*meincontainer*/*meinblob*.
+Erstellen Sie die URL für den Zugriff auf ein Objekt in einem Speicherkonto, indem Sie den Objektstandort im Speicherkonto an den Endpunkt anhängen. Eine Blob-Adresse kann beispielsweise das folgende Format haben: http://*meinspeicherkonto*.blob.core.windows.net/*meincontainer*/*meinblob*.
 
 Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten Domäne konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure Storage-Konto](../blobs/storage-custom-domain-name.md).  
 
@@ -140,7 +140,7 @@ Sie können Ihr Speicherkonto auch für die Verwendung einer benutzerdefinierten
 
 Standardmäßig sind die Daten in Ihrem Konto nur für Sie als Kontobesitzer verfügbar. Sie können steuern, welche Personen auf Ihre Daten zugreifen dürfen und welche Berechtigungen diese Personen besitzen.
 
-Jede Anforderung, die für Ihr Speicherkonto gesendet wird, muss autorisiert werden. Auf Ebene des Diensts muss die Anforderung einen gültigen *Autorisierungsheader* aufweisen. Dieser enthält alle Informationen, die der Dienst benötigt, um die Anforderung vor der Ausführung zu überprüfen.
+Jede Anforderung, die für Ihr Speicherkonto gesendet wird, muss autorisiert werden. Auf Ebene des Diensts muss die Anforderung einen gültigen *Autorisierungsheader* aufweisen. Dieser Header enthält insbesondere alle Informationen, die der Dienst benötigt, um die Anforderung vor der Ausführung zu überprüfen.
 
 Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in Ihrem Speicherkonto zu gewähren:
 
@@ -157,7 +157,7 @@ Sie können eine der folgenden Methoden verwenden, um Zugriff auf die Daten in I
 
 Microsoft bietet Hilfsprogramme und Bibliotheken für den Import Ihrer Daten von lokalen Speichergeräten oder Drittanbietern von Cloudspeichern. Welche Lösung Sie nutzen, richtet sich nach der Menge an Daten, die Sie übertragen müssen. 
 
-Wenn Sie ein Upgrade eines Allgemein v1- oder Blob Storage-Kontos auf ein Allgemein v2-Konto durchführen, werden Ihre Daten automatisch migriert. Microsoft empfiehlt diese Vorgehensweise für das Upgrade Ihres Kontos. Wenn Sie jedoch Daten aus einem Allgemein v1-Konto in ein Blob Storage-Konto verschieben möchten, müssen Sie die Daten manuell mithilfe der unten beschriebenen Tools und Bibliotheken migrieren. 
+Wenn Sie ein Upgrade eines Allgemein v1- oder Blob Storage-Kontos auf ein Allgemein v2-Konto durchführen, werden Ihre Daten automatisch migriert. Microsoft empfiehlt diese Vorgehensweise für das Upgrade Ihres Kontos. Wenn Sie jedoch Daten aus einem Allgemein v1-Konto in ein Blob Storage-Konto verschieben möchten, migrieren Sie die Daten manuell mithilfe der unten beschriebenen Tools und Bibliotheken. 
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -165,22 +165,16 @@ AzCopy ist ein Windows-Befehlszeilenprogramm, mit dem sehr effizient Daten in un
 
 ### <a name="data-movement-library"></a>Data Movement-Bibliothek
 
-Die Azure Storage Data Movement-Bibliothek für .NET basiert auf dem Kernframework für die Datenverschiebung, das AzCopy zugrunde liegt. Die Bibliothek ist ähnlich wie AzCopy auf leistungsfähige, zuverlässige und einfache Datenübertragungsvorgänge ausgelegt. Sie ermöglicht Ihnen die native Verwendung aller Vorteile der AzCopy-Features in Ihrer Anwendung, ohne externe Instanzen von AzCopy ausführen und überwachen zu müssen. Weitere Informationen finden Sie unter [Azure Storage Data Movement-Bibliothek für .NET](https://github.com/Azure/azure-storage-net-data-movement).
+Die Azure Storage Data Movement-Bibliothek für .NET basiert auf dem Kernframework für die Datenverschiebung, das AzCopy zugrunde liegt. Die Bibliothek ist ähnlich wie AzCopy auf leistungsfähige, zuverlässige und einfache Datenübertragungsvorgänge ausgelegt. Bei Verwendung der Data Movement-Bibliothek können Sie die AzCopy-Funktionen nativ nutzen. Weitere Informationen finden Sie unter [Azure Storage Data Movement-Bibliothek für .NET](https://github.com/Azure/azure-storage-net-data-movement).
 
 ### <a name="rest-api-or-client-library"></a>REST-API oder Clientbibliothek
 
-Sie können eine benutzerdefinierte Anwendung erstellen, um Ihre Daten mithilfe einer der Azure-Clientbibliotheken oder mithilfe der REST-API der Azure Storage-Dienste in ein Blob-Speicherkonto zu migrieren. Azure Storage bietet umfassende Clientbibliotheken für mehrere Programmiersprachen und Plattformen wie .NET, Java, C++, Node.JS, PHP, Ruby und Python. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
+Sie können eine benutzerdefinierte Anwendung erstellen, um Ihre Daten aus einem Speicherkonto vom Typ „Allgemein v1“ in ein Blob Storage-Konto zu migrieren. Verwenden Sie eine der Azure-Clientbibliotheken oder die REST-API für Azure Storage-Dienste. Azure Storage bietet umfassende Clientbibliotheken für mehrere Programmiersprachen und Plattformen wie .NET, Java, C++, Node.JS, PHP, Ruby und Python. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
 
 Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage-Dienste – REST-API-Referenz](https://docs.microsoft.com/rest/api/storageservices/). 
 
 > [!IMPORTANT]
 > Mit clientseitiger Verschlüsselung verschlüsselte Blobs speichern Metadaten im Zusammenhang mit der Verschlüsselung mit dem Blob. Wenn Sie einen mit clientseitiger Verschlüsselung verschlüsselten Blob kopieren, müssen Sie sicherstellen, dass die Blobmetadaten und insbesondere die verschlüsselungsbezogenen Metadaten beim Kopiervorgang erhalten bleiben. Wenn Sie einen Blob ohne die Verschlüsselungsmetadaten kopieren, ist der Blobinhalt nicht mehr abrufbar. Weitere Informationen zu den auf die Verschlüsselung bezogenen Metadaten finden Sie unter [Clientseitige Azure Storage-Verschlüsselung](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-### <a name="azure-importexport-service"></a>Azure Import/Export-Dienst
-
-Wenn Sie eine große Menge an Daten in Ihr Speicherkonto importieren müssen, ziehen Sie den Azure Import/Export-Dienst in Betracht. Mit dem Import/Export-Dienst können Sie große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum senden. 
-
-Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage auf Festplattenlaufwerke und zum Versand an lokale Standorte nutzen. Daten von einem oder mehreren Datenträgern können in Azure Blob Storage oder in Azure Files importiert werden. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](https://docs.microsoft.com/azure/storage/common/storage-import-export-service).
 
 ## <a name="storage-account-billing"></a>Speicherkontoabrechnung
 
@@ -188,6 +182,6 @@ Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Blob Storage 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Erstellen eines universellen Azure-Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
-* Informationen zum Erstellen eines BlockBlobStorage-Kontos finden Sie unter [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md).
-* Informationen zum Verwalten oder Löschen eines vorhandenen Speicherkontos finden Sie unter [Verwalten von Azure Storage-Konten](storage-account-manage.md).
+* [Erstellen eines Speicherkontos](storage-quickstart-create-account.md)
+* [Erstellen eines Blockblob-Speicherkontos](../blobs/storage-blob-create-account-block-blob.md)
+* [Verwalten von Azure Storage-Konten](storage-account-manage.md)

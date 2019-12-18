@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 6ad5bafe66e6e39503d3987aa6ddd9159c532fa0
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: cdcbe993bd1100b2060a1f8d38eb82ac97121c0d
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72237355"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851626"
 ---
 Die Rechnungsstellung für Azure Storage basiert auf der Nutzung Ihres Speicherkontos. Alle Objekte in einem Speicherkonto werden zusammen als Gruppe abgerechnet. 
 
-Speicherkosten werden gemäß den folgenden Faktoren berechnet: Region/Standort, Kontotyp, Zugriffsebene, Speicherkapazität, Replikationsschema, Speichertransaktionen und Datenausgang.
+Die Speicherkosten werden nach den folgenden Faktoren berechnet: 
 
 * **Region** bezieht sich auf die geografische Region, in der sich Ihr Konto befindet.
 * **Kontotyp** verweist auf den Typ des Speicherkontos, das Sie verwenden. 
-* **Zugriffsebene** bezieht sich auf das Datenverwendungsmuster, das Sie für Ihr Konto vom Typ „general-purpose v2“ oder Ihr Blobspeicherkonto angegeben haben.
+* **Zugriffsebene** bezieht sich auf das Datenverwendungsmuster, das Sie für Ihr Konto vom Typ „Allgemein v2“ oder Ihr Blobspeicherkonto angegeben haben.
 * **Speicherkapazität** bezieht sich darauf, wie viel von Ihrer Speicherkontozuweisung zum Speichern von Daten verwendet wird.
 * Die **Replikation** bestimmt, wie viele Kopien Ihrer Daten jeweils an welchen Standorten unterhalten werden.
 * **Transaktionen** beziehen sich auf alle Lese- und Schreibvorgänge in Azure Storage.

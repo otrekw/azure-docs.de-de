@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 593c9ea9c37cc5684e85604340f8aae3d84d9afb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 4f9a2842f99c7f8b0bb9f820584fb2cd4e41a2b2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546367"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74927889"
 ---
 # <a name="deploy-azure-file-sync"></a>Bereitstellen der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -400,6 +400,10 @@ Für das Vorabseeding gelten aktuell einige Einschränkungen:
 - Nachdem der Cloudendpunkt erstellt wurde, führt die Azure-Dateisynchronisierung einen Prozess aus, um die Dateien in der Cloud zu erkennen, bevor die anfängliche Synchronisierung gestartet wird. Die zum Abschluss dieses Prozesses benötigte Zeit variiert je nach den verschiedenen Faktoren wie Netzwerkgeschwindigkeit, verfügbare Bandbreite und Anzahl der Dateien und Ordner. Grob geschätzt schafft der Erkennungsprozess in der Vorschauversion ca. 10 Dateien pro Sekunde. Selbst wenn das Vorabseeding schnell erfolgt, kann die Gesamtzeit bis zur Inbetriebnahme eines voll funktionsfähigen Systems erheblich länger sein, wenn für die Daten in der Cloud vorab ein Seeding durchgeführt wird.
 
 ## <a name="self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service"></a>Self-Service-Wiederherstellung mit „Vorherige Versionen“ und Volumeschattenkopie-Dienst (VSS)
+
+> [!IMPORTANT]
+> Die folgenden Informationen können nur für Version 9 (oder höhere Versionen) des Speichersynchronisierungs-Agents verwendet werden. Niedrigere Versionen als Version 9 verfügen nicht über die StorageSyncSelfService-Cmdlets.
+
 „Vorherige Versionen“ ist ein Windows-Feature, mit dem Sie serverseitige VSS-Momentaufnahmen eines Volumes nutzen können, um wiederherstellbare Versionen einer Datei auf einem SMB-Client darzustellen.
 Dies ermöglicht ein leistungsfähiges Szenario, das häufig als Self-Service-Wiederherstellung bezeichnet wird. Es ist für die direkte Nutzung durch Information-Worker gedacht, ohne dass die Wiederherstellung von einem IT-Administrator durchgeführt werden muss.
 

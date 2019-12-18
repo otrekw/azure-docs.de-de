@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b28d02dd0ca375451f6ff75b1253ae8874bf2ab4
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: de76467cc741a65a851e5f3a7ec424d0326aebb2
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828246"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851518"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Haben Sie Fragen? Weitere Informationen finden Sie in den folgenden häufig gestellten Fragen.
@@ -222,9 +222,6 @@ Durch den Roslyn Analyzers-Buildtask müssen Azure DevOps für das MSBuild-Proto
 
 Wenn Sie zusätzliche Unterstützung benötigen, ist Support für die Microsoft-Sicherheitscodeanalyse von Montag bis Freitag zwischen 9:00 Uhr und 17:00 Uhr (Pazifik-Standardzeit) verfügbar.
 
-  - Onboarding: Wenden Sie sich an Ihren Technical Account Manager, um zu beginnen.
+- Onboarding: Weitere Informationen finden Sie in unserer [Onboardingdokumentation](security-code-analysis-onboard.md).
   
-  - Support: Senden Sie eine E-Mail an unser Team unter [Support für die Microsoft-Sicherheitscodeanalyse](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
-
-  >[!NOTE] 
-  >Möglicherweise verfügen Sie nicht über eine kostenpflichtige Supportbeziehung mit Microsoft. Oder Sie nutzen ein Supportangebot, das Sie daran hindert, Dienste aus dem Phoenix-Katalog zu erwerben. Wenn eine dieser Bedingungen zutrifft, besuchen Sie unsere [Support Services-Startseite](https://www.microsoft.com/enterprise/services/support), um weitere Informationen zu erhalten.
+- Support: Senden Sie eine E-Mail an unser Team unter [Support für die Microsoft-Sicherheitscodeanalyse](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).

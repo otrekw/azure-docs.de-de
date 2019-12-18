@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/27/2019
-ms.openlocfilehash: 8863280407de5d02b53a203b2b6385477aa9f8ae
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 8d9c5f63a00179903c0920912aba642311a354e7
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899210"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74889106"
 ---
 # <a name="azure-key-vault-analytics-solution-in-azure-monitor"></a>Azure Key Vault-Analyse-Lösung in Azure Monitor
 
@@ -51,7 +51,7 @@ Gehen Sie folgendermaßen vor, um die Azure Key Vault-Lösung zu installieren un
 8. Klicken Sie auf *Speichern*, um die Protokollierung der Diagnose im Log Analytics-Arbeitsbereich zu aktivieren.
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>Aktivieren der Key Vault-Diagnose mit PowerShell
-Das folgende PowerShell-Skript zeigt ein Beispiel für die Verwendung von `Set-AzDiagnosticSetting` zur Aktivierung der Diagnoseprotokollierung für Key Vault:
+Das folgende PowerShell-Skript zeigt ein Beispiel für die Verwendung von `Set-AzDiagnosticSetting` zur Aktivierung der Ressourcenprotokollierung für Key Vault:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 

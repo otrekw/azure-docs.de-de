@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Azure ML-Arbeitsbereichen im Portal
+title: Erstellen von Azure Machine Learning-Arbeitsbereichen im Portal
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Azure Machine Learning-Arbeitsbereiche im Azure-Portal erstellen, anzeigen und löschen.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9e3915a2f55680fc2e24ac63d5e7170ada026c2e
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 80b554b7dd4f37e1a215892962d8ec5622d8ae5c
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615185"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974035"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces-in-the-azure-portal"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen im Azure-Portal
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -73,15 +73,15 @@ Zum Erstellen eines Arbeitsbereichs benötigen Sie ein Azure-Abonnement. Wenn Si
 
 Sie können Ihren Arbeitsbereich von der Basic Edition auf die Enterprise Edition upgraden, um die erweiterten Features zu nutzen, z. B. weitgehend codefreie Umgebungen und verbesserte Sicherheitsfeatures.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
 1. Wählen Sie den Arbeitsbereich aus, den Sie upgraden möchten.
 
-1. Wählen Sie **Upgrade** entweder oben oder in der Upgrademeldung aus.
+1. Wählen Sie oben rechts auf der Seite **Weitere Informationen** aus.
 
-    ![Upgraden eines Arbeitsbereichs](media/how-to-manage-workspace/upgrade.png)
+   [ ![Upgraden eines Arbeitsbereichs](media/how-to-manage-workspace/upgrade.png) ](media/how-to-manage-workspace/upgrade.png#lightbox)
 
-1. Wählen Sie **Aktualisierung bestätigen** aus.
+1. Wählen Sie im angezeigten Fenster **Upgrade** aus.
 
 
 > [!IMPORTANT]

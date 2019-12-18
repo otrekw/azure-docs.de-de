@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 8b40d89920208eaf15e01b3519b667a77baf8671
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bd6590ebbd33dc5c9b65fc193679f4bf99760c3a
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932578"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894146"
 ---
 # <a name="log-data-ingestion-time-in-azure-monitor"></a>Protokolldatenerfassungszeit in Azure Monitor
 Azure Monitor ist ein Hochleistungs-Datendienst, der Tausende Kunden bedient, die mit zunehmender Tendenz jeden Monat Terabytes von Daten senden. Häufig werden Fragen nach dem Zeitbedarf gestellt, der nach dem Sammeln der Protokolldaten bis zu ihrer Verfügbarkeit zu veranschlagen ist. Dieser Artikel erläutert die verschiedenen Faktoren, die sich auf diese Wartezeit auswirken.
@@ -40,10 +40,10 @@ Agents und Managementlösungen verwenden verschiedene Strategien, um Daten eines
 ### <a name="agent-upload-frequency"></a>Uploadhäufigkeit des Agents
 Um einen schlanken Log Analytics-Agent zu gewährleisten, speichert der Agent Protokolle zwischen und lädt sie in regelmäßigen Abständen nach Azure Monitor hoch. Die Uploadhäufigkeit schwankt zwischen 30 Sekunden und 2 Minuten, abhängig vom Datentyp. Die meisten Daten werden in unter 1 Minute hochgeladen. Die Netzwerkbedingungen können sich für diese Daten nachteilig auf die Wartezeit bis zum Erreichen des Azure Monitor-Erfassungspunkts auswirken.
 
-### <a name="azure-activity-logs-diagnostic-logs-and-metrics"></a>Azure-Aktivitätsprotokolle, -Diagnoseprotokolle und -Metriken
+### <a name="azure-activity-logs-resource-logs-and-metrics"></a>Azure-Aktivitätsprotokolle, -Ressourcenprotokolle und -Metriken
 Für Azure-Daten ist zusätzliche Zeit erforderlich, bis sie am Log Analytics-Erfassungspunkt zur Verarbeitung verfügbar sind:
 
-- Das Senden von Daten aus Diagnoseprotokollen nimmt je nach Azure-Dienst 2 bis 15 Minuten in Anspruch. Mit der [folgenden Abfrage](#checking-ingestion-time) können Sie die Wartezeit in Ihrer Umgebung ermitteln.
+- Das Senden von Daten aus Ressourcenprotokollen nimmt je nach Azure-Dienst 2 bis 15 Minuten in Anspruch. Mit der [folgenden Abfrage](#checking-ingestion-time) können Sie die Wartezeit in Ihrer Umgebung ermitteln.
 - Das Senden von Metriken der Azure-Plattform an den Log Analytics-Erfassungspunkt nimmt drei Minuten in Anspruch.
 - Das Senden von Daten des Aktivitätsprotokolls an den Log Analytics-Erfassungspunkt nimmt 10 bis 15 Minuten in Anspruch.
 

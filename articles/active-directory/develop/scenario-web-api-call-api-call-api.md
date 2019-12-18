@@ -1,6 +1,6 @@
 ---
-title: Web-API, die Web-APIs aufruft (APIs aufrufen) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Web-API erstellen, die Downstream-Web-APIs aufruft (Aufrufen von Web-APIs).
+title: 'Web-API, die Web-APIs aufruft: Microsoft Identity Platform | Azure'
+description: Hier erfahren Sie, wie Sie eine Web-API erstellen, die Web-APIs aufruft.
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -15,12 +15,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cd093cc68a21558dc326221eeaa8c034c24f1c2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6063d143e2f217426bdf1db217fde46f8542d314
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080080"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74965210"
 ---
 # <a name="web-api-that-calls-web-apis---call-an-api"></a>Web-API, die Web-APIs aufruft – Aufrufen einer API
 

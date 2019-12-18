@@ -1,5 +1,5 @@
 ---
-title: 'Behandeln von Problemen mit der Leistung des virtuellen Netzwerks: Azure | Microsoft-Dokumentation'
+title: 'Beheben von Problemen mit der Leistung der Netzwerkverbindung: Azure'
 description: Diese Seite enthält eine standardisierte Methode zum Testen der Leistung der Azure-Netzwerkverbindung.
 services: expressroute
 author: tracsman
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bb68919fba731caa32dcca3f4c991b8881afc6f9
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60883315"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74869645"
 ---
 # <a name="troubleshooting-network-performance"></a>Beheben von Problemen bei der Netzwerkleistung
 ## <a name="overview"></a>Übersicht
@@ -28,7 +28,7 @@ In diesem Dokument wird erläutert, wie Sie die Netzwerklatenz und Bandbreite zw
 
 ## <a name="network-components"></a>Netzwerkkomponenten
 Bevor wir uns der Problembehandlung zuwenden, erörtern wir einige allgemeine Begriffe und Komponenten. Dadurch wird sichergestellt, dass jede Komponente in der durchgehenden Kette berücksichtigt wird, die Verbindungen in Azure ermöglicht.
-[![1]][1]
+![1][1]
 
 Auf der obersten Ebene beschreibe ich drei wesentliche Netzwerkroutingdomänen:
 
@@ -93,7 +93,7 @@ Die Verwendung des Toolkits für Leistungstests erfolgt in drei grundlegenden Sc
 
     Das Format der PowerShell-Ausgabe sieht in etwa wie folgt aus:
 
-    [![4]][4]
+    ![4][4]
 
     Die detaillierten Ergebnisse aller iPerf- und PSPing-Tests befinden sich in einzelnen Textdateien im Verzeichnis der AzureCT-Tools unter „C:\ACTTools“.
 
@@ -118,7 +118,7 @@ Vergessen Sie auch nicht, andere Schichten des OSI-Modells zu überprüfen. Es g
 ## <a name="advanced-expressroute-troubleshooting"></a>Erweiterte ExpressRoute-Problembehandlung
 Wenn Sie nicht sicher sind, wo sich der Rand der Cloud tatsächlich befindet, kann die Isolierung der Azure-Komponenten eine Herausforderung darstellen. Bei Verwendung von ExpressRoute ist der Rand die Netzwerkkomponente Microsoft Enterprise Edge (MSEE). **Bei Verwendung von ExpressRoute** ist MSEE der erste Kontaktpunkt in das Microsoft-Netzwerk und der letzte Hop beim Verlassen des Microsoft-Netzwerks. Wenn Sie ein Verbindungsobjekt zwischen dem VNET-Gateway und der ExpressRoute-Verbindung erstellen, stellen Sie eigentlich eine Verbindung mit MSEE her. Die Erkennung von MSEE als erster oder letzter Hop (abhängig von der jeweiligen Richtung) ist entscheidend zum Isolieren von Problemen im Azure-Netzwerk, entweder als Nachweis dafür, dass das Problem in Azure auftritt, oder um weiter im WAN oder im Unternehmensnetzwerk zu suchen. 
 
-[![2]][2]
+![2][2]
 
 >[!NOTE]
 > Beachten Sie, dass sich MSEE nicht in der Azure-Cloud befindet. ExpressRoute befindet sich am Rand des Microsoft-Netzwerks und nicht in Azure. Nachdem Sie mit ExpressRoute eine Verbindung mit einem MSEE hergestellt haben, wird eine Verbindung mit dem Microsoft-Netzwerk hergestellt. Von hier aus gelangen Sie zu allen Clouddiensten, z.B. zu Office 365 (mit Microsoft-Peering) oder Azure (mit privatem Peering und/oder Microsoft-Peering).
@@ -169,7 +169,7 @@ Testeinrichtung:
  - Die Daten in der Spalte „Latenz“ stammen vom Test „No Load“ (ein Test der TCP-Latenz ohne Ausführung von iPerf).
  - Die Daten der Spalte „Maximum Bandbreite“ stammen vom 16-TCP-Fluss-Auslastungstest mit einer Fenstergröße von 1 MB.
 
-[![3]][3]
+![3][3]
 
 ### <a name="latencybandwidth-results"></a>Ergebnisse für Latenz/Bandbreite
 >[!IMPORTANT]
@@ -186,19 +186,19 @@ Testeinrichtung:
 | Seattle | USA Süd Mitte |  2\.877 km |  51 ms |  30,6 MBit/s |  2,49 GBit/s |
 | Seattle | USA Nord Mitte |  2\.792 km |  55 ms |  27,7 MBit/s |  2,19 GBit/s |
 | Seattle | USA (Ost) 2        |  3\.769 km |  73 ms |  21,3 MBit/s |  1,79 GBit/s |
-| Seattle | USA (Ost)          |  3\.699 km |  74 ms |  21,1 MBit/s |  1,78 GBit/s |
+| Seattle | East US          |  3\.699 km |  74 ms |  21,1 MBit/s |  1,78 GBit/s |
 | Seattle | Japan, Osten       |  7\.705 km | 106 ms |  14,6 MBit/s |  1,22 GBit/s |
 | Seattle | UK, Süden         |  7\.708 km | 146 ms |  10,6 MBit/s |   896 MBit/s |
 | Seattle | Europa, Westen      |  7\.834 km | 153 ms |  10,2 MBit/s |   761 MBit/s |
-| Seattle | Australien (Osten)   | 12\.484 km | 165 ms |   9,4 MBit/s |   794 MBit/s |
-| Seattle | Asien, Südosten   | 12\.989 km | 170 ms |   9,2 MBit/s |   756 MBit/s |
-| Seattle | Brasilien, Süden *   | 10\.930 km | 189 ms |   8,2 MBit/s |   699 MBit/s |
-| Seattle | Indien (Süden)      | 12\.918 km | 202 ms |   7,7 MBit/s |   634 MBit/s |
+| Seattle | Australien (Osten)   | 12.484 km | 165 ms |   9,4 MBit/s |   794 MBit/s |
+| Seattle | Asien, Südosten   | 12.989 km | 170 ms |   9,2 MBit/s |   756 MBit/s |
+| Seattle | Brasilien, Süden *   | 10.930 km | 189 ms |   8,2 MBit/s |   699 MBit/s |
+| Seattle | Indien (Süden)      | 12.918 km | 202 ms |   7,7 MBit/s |   634 MBit/s |
 
 \* Die Latenz für Brasilien ist ein gutes Beispiel dafür, dass sich die Luftlinie erheblich von der Entfernung der Faserstrecke unterscheiden kann. Ich würde erwarten, dass die Latenz ungefähr bei 160 ms liegt, tatsächlich sind es aber 189 ms. Dieser Unterschied gegenüber meiner Erwartung kann auf ein Netzwerkproblem in einem Bereich hindeuten, aber sehr wahrscheinlich verläuft die Faserstrecke nicht in einer direkten Linie durch Brasilien, sodass sich zusätzlich ca. 1.000 km zwischen Brasilien und Seattle ergeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-1. Laden Sie das Azure Connectivity Toolkit von GitHub unter [https://aka.ms/AzCT][ACT].
+1. Laden Sie das Azure Connectivity Toolkit von GitHub unter [https://aka.ms/AzCT][ACT] herunter.
 2. Befolgen Sie die Anweisungen zum [Testen der Verbindungsleistung][Performance Doc].
 
 <!--Image References-->

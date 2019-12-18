@@ -1,18 +1,18 @@
 ---
-title: Intelligente Erkennung – Anormaler Anstieg in Ausnahmevolume in Azure Application Insights | Microsoft Docs
-description: Überwachen Sie Anwendungsausnahmen mit Azure Application Insights auf ungewöhnliche Muster im Ausnahmevolume.
+title: Anormaler Anstieg in Ausnahmevolume – Azure Application Insights
+description: Überwachen Sie Anwendungsausnahmen auf ungewöhnliche Muster im Ausnahmevolume mit der intelligenten Erkennung in Azure Application Insights.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/08/2017
-ms.openlocfilehash: fa7669b78caabb95b08200e83ed18ea982ce9ac9
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 02c4fca42f3d5d7494dc8fd6fe0e33161904ddbe
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820604"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74928221"
 ---
 # <a name="abnormal-rise-in-exception-volume-preview"></a>Anormaler Anstieg in Ausnahmevolume (Vorschau)
 

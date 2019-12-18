@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 41e1228d127ddbbf0749036fc6f0129da1208bc7
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f5578d00d633b4b1ccce41236526e1696744f59f
+ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077118"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74851773"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
 
@@ -51,10 +51,12 @@ Sie können eine Richtlinie hinzufügen, bearbeiten oder entfernen, indem Sie ei
 * [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [REST-APIs](https://docs.microsoft.com/rest/api/storagerp/managementpolicies)
 
-In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
+Eine Richtlinie kann vollständig gelesen oder geschrieben werden. Teilaktualisierungen werden nicht unterstützt. 
 
 > [!NOTE]
 > Wenn Sie Firewallregeln für Ihr Speicherkonto aktivieren, werden Anforderungen für die Lebenszyklusverwaltung möglicherweise blockiert. Sie können die Sperre dieser Anforderungen durch Bereitstellen von Ausnahmen für vertrauenswürdige Microsoft-Dienste aufheben. Weitere Informationen finden Sie im Abschnitt „Ausnahmen“ unter [Konfigurieren von Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+
+In diesem Artikel wird die Verwaltung einer Richtlinie über das Portal und über PowerShell erläutert.  
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 

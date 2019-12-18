@@ -1,17 +1,18 @@
 ---
-title: 'Azure Data Factory Mapping Data Flow: Zeilenänderungstransformation'
+title: 'Zuordnungsdatenfluss: Zeilenänderungstransformation'
 description: Hier erfahren Sie, wie Sie das Datenbankziel mithilfe der Zeilenänderungstransformation von Azure Data Factory Mapping Data Flow aktualisieren.
 author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a782c62165aa6f2641c2ebe8e4600198ec373c5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1301b89ef1a6fb02356c6dcd4e568401eb5e9cd2
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486204"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74930477"
 ---
 # <a name="azure-data-factory-alter-row-transformation"></a>Azure Data Factory: Zeilenänderungstransformation
 

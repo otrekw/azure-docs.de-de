@@ -1,18 +1,18 @@
 ---
 title: Skalieren des Durchsatzes in Azure Cosmos DB
-description: Dieser Artikel beschreibt, wie Azure Cosmos DB den Durchsatz elastisch skaliert.
-author: dharmas-cosmos
+description: In diesem Artikel wird beschrieben, wie Azure Cosmos DB den Durchsatz in verschiedenen Regionen skaliert, in denen das Azure Cosmos-Konto bereitgestellt wird.
+author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: dharmas
+ms.date: 12/02/2019
+ms.author: sngun
 ms.reviewer: sngun
-ms.openlocfilehash: 29a92f04a1d36004fa082bfafe2310f9e0e3e5c6
-ms.sourcegitcommit: c72ddb56b5657b2adeb3c4608c3d4c56e3421f2c
+ms.openlocfilehash: 440f23afcd08326261be30432ad1f0ecb16f55fd
+ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68467601"
+ms.lasthandoff: 12/05/2019
+ms.locfileid: "74873504"
 ---
 # <a name="globally-scale-provisioned-throughput"></a>Globales Skalieren von bereitgestelltem Durchsatz 
 

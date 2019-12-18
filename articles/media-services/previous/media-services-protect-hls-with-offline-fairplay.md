@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: willzhan
 ms.reviewer: dwgeo
-ms.openlocfilehash: 228b00a19bac9c773fce8e502d302314821fbf39
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 1644c00aea8eefa78550c8d0238dbedab0378492
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871641"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74968697"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>FairPlay-Streaming im Offlinemodus für iOS 
 
@@ -245,6 +245,10 @@ Beispieldatei für „boot.xml“:
 </HLSMoviePackage>
 ```
 
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
+
 ## <a name="summary"></a>Zusammenfassung
 Dieses Dokument enthält die folgenden Schritte und Informationen, mit denen Sie den FPS-Offlinemodus implementieren können:
 
@@ -252,3 +256,7 @@ Dieses Dokument enthält die folgenden Schritte und Informationen, mit denen Sie
 * Ein iOS-Player, der auf dem Beispiel aus dem FPS Server SDK basiert, richtet einen iOS-Player ein, der FPS-Inhalte entweder im Onlinestreamingmodus oder im Offlinemodus wiedergeben kann.
 * Beispielvideos für FPS werden zum Testen von Offlinemodus und Onlinestreaming verwendet.
 * Eine häufig gestellte Fragen beantwortet Fragen zum FPS-Offlinemodus.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

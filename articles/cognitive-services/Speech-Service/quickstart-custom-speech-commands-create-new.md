@@ -8,14 +8,14 @@ manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5c90c91791af8a9a16039e9650765bd24433ff38
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 056dd4331d30335078ea68350f711e37a7b42070
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815815"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74976620"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Schnellstart: Erstellen eines benutzerdefinierten Befehls (Vorschau)
 
@@ -28,16 +28,6 @@ Die Anwendung erkennt eine Äußerung wie „Schalte Fernseher ein“ und antwor
 
   > [!NOTE]
   > Während der Vorschau wird für Abonnementschlüssel nur die Region „westus2“ unterstützt.
-
-- Ein LUIS-Erstellungsschlüssel ([Language Understanding](https://www.luis.ai/home)):
-  1. Öffnen Sie einen Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-  1. Wählen Sie „Ressource erstellen“ aus.
-  1. Suchen Sie nach [Language Understanding](https://aka.ms/sc-luis-all), und wählen Sie diese Option aus.
-  1. Wählen Sie „Erstellung“ in den Erstellungsoptionen aus.
-  1. Nachdem die Ressource bereitgestellt wurde, wechseln Sie zur Ressource, und kopieren Sie den Schlüssel aus dem Abschnitt „Schnellstart“ oder „Schlüssel“.
-
-      > [!div class="mx-imgBorder"]
-      > ![Erstellen einer Erstellungsressource](media/custom-speech-commands/resources-lu-authoring.png)
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Wechseln Sie zum Speech Studio für benutzerdefinierte Befehle.
 
@@ -58,10 +48,20 @@ Die Standardansicht ist eine Liste der von Ihnen erstellten Anwendungen für ben
 1. Wählen Sie **Neues Projekt** aus, um ein neues Projekt zu erstellen.
 
    > [!div class="mx-imgBorder"]
-   > ![Erstellen eines neuen Projekts](media/custom-speech-commands/create-new-project.png)
+   > ![Erstellen eines Projekts](media/custom-speech-commands/create-new-project.png)
 
-1. Geben Sie den Projektnamen und die Sprache ein, und wählen Sie dann **Weiter** aus, um den Vorgang fortzusetzen.
-1. Geben Sie Ihren LUIS-Erstellungsschlüssel ein.
+1. Geben Sie den Projektnamen und die Sprache ein.
+1. Wählen Sie eine Erstellungsressource aus. Sind keine gültigen Erstellungsressourcen vorhanden, erstellen Sie eine, indem Sie **Neue Ressource erstellen** auswählen.
+
+   > [!div class="mx-imgBorder"]
+   > ![Erstellen einer Ressource](media/custom-speech-commands/create-new-resource.png)
+
+   1. Geben Sie den Ressourcennamen, die Gruppe, den Speicherort und den Tarif ein.
+
+         > [!NOTE]
+         > Sie können Ressourcengruppen erstellen, indem Sie den gewünschten Ressourcengruppennamen in das Feld „Ressourcengruppe“ eingeben. Die Ressourcengruppe wird erstellt, wenn **Erstellen** ausgewählt wird.
+
+1. Klicken Sie auf **Erstellen**, um Ihr Projekt zu erstellen.
 1. Wählen Sie nach der Erstellung Ihr Projekt aus.
 
 Ihre Ansicht sollte jetzt eine Übersicht über Ihre Anwendung für benutzerdefinierte Befehle darstellen.
@@ -99,8 +99,23 @@ Im Moment verfügen wir über keine Parameter, sodass wir zu den Vervollständig
 
 Fügen Sie jetzt eine Vervollständigungsregel hinzu, um dem Benutzer zu antworten, die anzeigt, dass eine Aktion ausgeführt wird.
 
+1. Erstellen Sie eine neue Vervollständigungsregel, indem Sie neben „Vervollständigungsregel“ das Symbol `+` auswählen.
+1. Eingeben des Regelnamens
+1. Hinzufügen einer Aktion
+   1. Erstellen Sie eine neue Sprachantwortaktion, indem Sie neben „Aktionen“ das Symbol `+` und dann `SpeechResponse` auswählen.
+   1. Eingeben der Antwort
+
+   > [!NOTE]
+   > Normaler Text muss mit einem Bindestrich beginnen. Ausführlichere Informationen finden Sie [hier](https://aka.ms/sc-lg-format).
+
+   > [!div class="mx-imgBorder"]
+   > ![Erstellen einer Sprachantwort](media/custom-speech-commands/create-speech-response-action.png)
+
+1. Klicken Sie zum Speichern der Regel auf **Speichern**.
+
 > [!div class="mx-imgBorder"]
 > ![Erstellen einer Vervollständigungsregel](media/custom-speech-commands/create-basic-completion-response-rule.png)
+
 
 | Einstellung    | Empfohlener Wert                        | BESCHREIBUNG                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
@@ -119,5 +134,6 @@ Testen Sie das Verhalten über den Testchatbereich.
 - Erwartete Antwort: „OK, schalte Fernseher ein“
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 > [!div class="nextstepaction"]
 > [Schnellstart: Erstellen eines benutzerdefinierten Befehls mit Parametern (Vorschau)](./quickstart-custom-speech-commands-create-parameters.md)

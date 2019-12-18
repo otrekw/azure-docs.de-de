@@ -4,17 +4,17 @@ description: In diesem Artikel wird die Integration der Quellcodeverwaltung mit 
 services: automation
 ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/26/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 12/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 44ab9688471a87e6db3712cc61b8abb194d54ac3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
+ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886529"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74996509"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integration der Quellcodeverwaltung in Azure Automation
 
@@ -30,7 +30,7 @@ Azure Automation unterstützt drei Arten von Quellcodeverwaltung:
 
 * Ein Quellcodeverwaltungsrepository (GitHub oder Azure Repos)
 * Ein [ausführendes Konto](manage-runas-account.md)
-* Stellen Sie sicher, dass Sie im Automation-Konto über die neuesten [Azure-Module](automation-update-azure-modules.md) verfügen.
+* Stellen Sie sicher, dass Sie im Automation-Konto über die [neuesten Azure-Module](automation-update-azure-modules.md) verfügen, u. a. das Modul **AzureRM.Profile**. 
 
 > [!NOTE]
 > Synchronisierungsaufträge für die Quellcodeverwaltung werden unter dem Automation-Konto eines Benutzers ausgeführt und mit der gleichen Rate wie andere Automation-Aufträge berechnet.

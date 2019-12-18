@@ -1,6 +1,6 @@
 ---
 title: Implementieren von Failoverstreaming mit Azure Media Services | Microsoft-Dokumentation
-description: Dieses Thema zeigt die Implementierung eines Failoverstreamingszenarios.
+description: In diesem Artikel wird gezeigt, wie ein Failoverstreamingszenario mit Azure Media Services implementiert wird.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: ea5238df50ff050140453ce655ea041669f6080c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 195f7f089b84e1665f4dd078a7da141d531c2185
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67051656"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74887180"
 ---
 # <a name="implement-failover-streaming-with-media-services"></a>Implementieren von Failoverstreaming mit Media Services 
 

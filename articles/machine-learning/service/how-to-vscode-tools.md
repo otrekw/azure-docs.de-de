@@ -10,12 +10,12 @@ ms.author: jimgries
 author: greazer
 ms.date: 09/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: dd85f3a495b90b3a1dc9d3f021d3600496792759
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 84b7f56ebcbb87a31fbfb85ea6d88c3388870872
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824354"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74975991"
 ---
 # <a name="get-started-with-azure-machine-learning-for-visual-studio-code"></a>Erste Schritte mit Azure Machine Learning für Visual Studio Code
 
@@ -94,8 +94,8 @@ So ändern Sie das Projekt, damit Azure wichtige Informationen in Ihren Ausführ
     import azureml
     from azureml.core import Run
 
-    # access the Azure ML run
-    # init run param to check if running within AML
+    # Access the Azure ML run
+    # Init run param to check if running within AML
     def get_AMLRun():
         try:
             run = Run.get_submitted_run()
@@ -128,7 +128,7 @@ So ändern Sie das Projekt, damit Azure wichtige Informationen in Ihren Ausführ
     ...
             acc_val = acc_op.eval(feed_dict = {X: X_test, y: y_test})
 
-            # log accuracies to AML logger if using AML
+            # Log accuracies to AML logger if using AML
             if run != None:
                 run.log('Validation Accuracy', np.float(acc_val))
                 run.log('Training Accuracy', np.float(acc_train))
@@ -137,14 +137,14 @@ So ändern Sie das Projekt, damit Azure wichtige Informationen in Ihren Ausführ
     ...
     ```
 ### <a name="run-the-script-in-azure"></a>Führen Sie das Skript in Azure aus.
-Das ist alles! Verwenden Sie jetzt einfach die Erweiterung, um Ihr Skript in der Cloud auszuführen. Beachten Sie, dass im folgenden Video zur exemplarischen Vorgehensweise der zeitliche Aufwand für das Erstellen eines neuen Azure ML-Arbeitsbereichs und neuer Computeressourcen sowie für das Ausführen des Trainingsskripts verkürzt dargestellt wird.
+Das ist alles! Verwenden Sie jetzt einfach die Erweiterung, um Ihr Skript in der Cloud auszuführen. Beachten Sie, dass im folgenden Video zur exemplarischen Vorgehensweise der zeitliche Aufwand für das Erstellen eines neuen Azure Machine Learning-Arbeitsbereichs und neuer Computeressourcen sowie für das Ausführen des Trainingsskripts verkürzt dargestellt wird.
 
    [![Starten eines Azure ML-Experiments](./media/vscode-tools-for-ai/start-golden-path.gif)](./media/vscode-tools-for-ai/start-golden-path.gif#lightbox)
 
 Nachdem Sie auf die Schaltfläche „Run Experiment“ (Experiment ausführen) geklickt haben, beantworten Sie die Eingabeaufforderungen wie folgt:
 
 1. Wählen Sie Ihr Azure-Abonnement aus.
-1. Wählen Sie aus, einen *neuen* Azure ML-Arbeitsbereich zu erstellen.
+1. Wählen Sie die Erstellung eines *neuen* Azure Machine Learning-Arbeitsbereichs.
 1. Treffen Sie eine Auswahl in einem Satz vorkonfigurierter Vorlagen, um die Python-Umgebung für die Ausführungen zu initialisieren. Die Vorlagen bilden einen Ausgangspunkt und enthalten Einstellungen für Folgendes:
     1. **PyTorch**, **TensorFlow** oder **Scikit-learn**
     1. **Einzelnes** oder **verteiltes** Computetraining

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 92de47041791c8b6c540844adb62391268b81c34
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73200501"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894526"
 ---
 # <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
 [Ressourcenprotokolle](resource-logs-overview.md) in Azure liefern regelmäßig umfassende Daten zum internen Betrieb einer Azure-Ressource. In diesem Artikel wird beschrieben, wie Sie Ressourcenprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Dies gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen in Azure Monitor-Protokollen erfasst werden, zu analysieren sowie andere Azure Monitor-Features wie Warnungen und Visualisierungen zu nutzen. 
@@ -110,7 +110,7 @@ Sehen Sie regelmäßig im Blog [Azure-Updates](https://azure.microsoft.com/updat
 ### <a name="column-limit-in-azurediagnostics"></a>Spaltenlimit in AzureDiagnostics
 Für jede Tabelle in Azure Monitor-Protokollen besteht ein Eigenschaftenlimit von 500. Sobald dieses Limit erreicht ist, werden alle Zeilen, die Daten mit einer Eigenschaft außerhalb der ersten 500 enthalten, zum Zeitpunkt der Erfassung gelöscht. Die Tabelle *AzureDiagnostics* ist besonders anfällig für dieses Limit, da sie Eigenschaften für alle Azure-Dienste enthält, die in diese Tabelle schreiben.
 
-Wenn Sie Diagnoseprotokolle von mehreren Diensten erfassen, kann _AzureDiagnostics_ diesen Grenzwert überschreiten, wodurch Daten fehlen. Bis alle Azure-Dienste den Modus „Ressourcenspezifisch“ unterstützen, sollten Sie Ressourcen so konfigurieren, dass sie in mehrere Arbeitsbereiche schreiben, um die Wahrscheinlichkeit zu verringern, dass das Limit von 500 Spalten erreicht wird.
+Wenn Sie Ressourcenprotokolle von mehreren Diensten erfassen, kann _AzureDiagnostics_ diesen Grenzwert überschreiten, wodurch Daten fehlen. Bis alle Azure-Dienste den Modus „Ressourcenspezifisch“ unterstützen, sollten Sie Ressourcen so konfigurieren, dass sie in mehrere Arbeitsbereiche schreiben, um die Wahrscheinlichkeit zu verringern, dass das Limit von 500 Spalten erreicht wird.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 Azure Data Factory ist aufgrund eines sehr detaillierten Satzes von Protokollen ein Dienst, der bekanntermaßen eine große Anzahl von Spalten schreibt und möglicherweise dazu führt, dass _AzureDiagnostics_ den Grenzwert überschreitet. Für alle Diagnoseeinstellungen, die vor dem Aktivieren des Modus „Ressourcenspezifisch“ konfiguriert wurden, wird eine neue Spalte für jeden Benutzerparameter mit eindeutigem Namen zu jeder Aktivität erstellt. Aufgrund der Ausführlichkeit von Aktivitätseingaben und -ausgaben werden weitere Spalten erstellt.

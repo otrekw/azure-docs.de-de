@@ -3,12 +3,12 @@ title: Bereinigen von Tags und Manifesten
 description: Verwenden Sie einen Bereinigungsbefehl zum Löschen mehrerer Tags und Manifeste aus einer Azure-Containerregistrierung, basierend auf dem Alter und einem Tagfilter, und planen Sie optional Bereinigungsvorgänge.
 ms.topic: article
 ms.date: 08/14/2019
-ms.openlocfilehash: 65169927f7a1cffa88a2d909217e636417f695cc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0ec1f5f6f5c3c572b8558c971b58e46cce36e3fd
+ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456484"
+ms.lasthandoff: 12/08/2019
+ms.locfileid: "74923107"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Automatisches Bereinigen von Images aus einer Azure-Containerregistrierung
 
@@ -33,11 +33,10 @@ Der Containerbefehl `acr purge` löscht Images nach Tag in einem Repository, die
 > [!NOTE]
 > `acr purge` löscht kein Imagetag oder Repository, wo das Attribut `write-enabled` auf `false` festgelegt ist. Informationen hierzu finden Sie unter [Sperren von Containerimages in einer Azure-Containerregistrierung](container-registry-image-lock.md).
 
-`acr purge` ist darauf ausgelegt, als Containerbefehl in einer [ACR-Aufgabe](container-registry-tasks-overview.md) ausgeführt zu werden, sodass er sich automatisch bei der Registrierung authentifiziert, in der die Aufgabe ausgeführt wird. 
+`acr purge` ist darauf ausgelegt, als Containerbefehl in einer [ACR-Aufgabe](container-registry-tasks-overview.md) ausgeführt zu werden, sodass er sich automatisch bei der Registrierung authentifiziert, in der die Aufgabe ausgeführt wird, und dort Aktionen ausführt. Die Aufgabenbeispiele in diesem Artikel verwenden den [Befehlsalias](container-registry-tasks-reference-yaml.md#aliases) `acr purge` anstelle eines vollqualifizierten Containerimagebefehls.
 
 Geben Sie beim Ausführen des Befehls `acr purge` mindestens Folgendes an:
 
-* `--registry`: Die Azure-Containerregistrierung, in der Sie den Befehl ausführen. 
 * `--filter`: Ein Repository und ein *regulärer Ausdruck* zum Filtern von Tags im Repository. Beispiele: `--filter "hello-world:.*"` gleicht alle Tags im Repository `hello-world` ab, und `--filter "hello-world:^1.*"` gleicht Tags ab, die mit `1` beginnen. Übergeben Sie mehrere `--filter`-Parameter, um mehrere Repositorys zu bereinigen.
 * `--ago`: Eine Go-artige [Dauerzeichenfolge](https://golang.org/pkg/time/), die eine Dauer angibt, nach der Images gelöscht werden sollen. Die Dauer besteht aus einer Abfolge von einer oder mehreren Dezimalzahlen, von denen jede über ein Einheitensuffix verfügt. Gültige Zeiteinheiten sind z. B. „d“ für Tage, „h“ für Stunden und „m“ für Minuten. `--ago 2d3h6m` beispielsweise wählt alle gefilterten Images aus, die zuletzt vor mehr als 2 Tagen, 3 Stunden und 6 Minuten geändert wurden, und `--ago 1.5h` wählt Images aus, die zuletzt vor mehr als 1,5 Stunden geändert wurden.
 
@@ -54,12 +53,10 @@ Der Befehl `acr purge` unterstützt weitere Funktionen von ACR Tasks-Befehlen (e
 
 Das folgende Beispiel verwendet den Befehl [az acr run][az-acr-run], um den Befehl `acr purge` bedarfsgesteuert auszuführen. In diesem Beispiel werden alle Imagetags und Manifeste im Repository `hello-world` in *myregistry* gelöscht, die vor mehr als 1 Tag geändert wurden. Der Containerbefehl wird mithilfe einer Umgebungsvariablen übergeben. Die Aufgabe wird ohne Quellkontext ausgeführt.
 
-In diesem und den folgenden Beispielen wird die Registrierung mit dem Befehl `acr purge` mithilfe des Alias `$Registry` angegeben, der für die Registrierung steht, in der die Aufgabe ausgeführt wird.
-
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -73,8 +70,8 @@ Im folgenden Beispiel wird der Befehl [az acr task create][az-acr-task-create] v
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -93,8 +90,8 @@ Beispielsweise wird mit der folgenden bedarfsgesteuerten Aufgabe eine Timeoutzei
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="acr purge --filter 'hello-world:.*' \
+  --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -115,13 +112,12 @@ Im folgenden Beispiel wählt der Filter in jedem Repository alle Tags aus. Der P
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
 az acr run \
-  --cmd  "$PURGE_CMD" \
+  --cmd "$PURGE_CMD" \
   --registry myregistry \
   /dev/null
 ```
@@ -156,8 +152,7 @@ Nachdem Sie den Trockenlauf überprüft haben, erstellen Sie eine geplante Aufga
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
-  --registry {{.Run.Registry}} \
+PURGE_CMD="acr purge \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

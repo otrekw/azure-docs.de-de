@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 48357adccea201aaeb99863b39e9c8cabce915ce
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 4e9779f612bc4a2521459bf76a6e2b399fc89e07
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262064"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894129"
 ---
 # <a name="azure-monitor-data-platform"></a>Azure Monitor-Datenplattform
 
@@ -48,7 +48,7 @@ Weitere Informationen zu Azure Monitor-Metriken, einschließlich ihrer Datenquel
 Protokolle in Azure Monitor werden in einem Log Analytics-Arbeitsbereich basierend auf [Azure Data Explorer](/azure/data-explorer/) gespeichert, der eine leistungsstarke Analyse-Engine und eine [umfangreiche Abfragesprache](/azure/kusto/query/) bereitstellt. Protokolle bieten in der Regel ausreichende Informationen zum Bereitstellen des vollständigen Kontexts des zu identifizierenden Problems und sind beim Ermitteln der zugrunde liegenden Ursache von Problemen hilfreich.
 
 > [!NOTE]
-> Es ist wichtig, zwischen Azure Monitor-Protokollen und Quellen von Protokolldaten in Azure zu unterscheiden. Beispielsweise werden Ereignisse auf Abonnementebene in Azure in ein [Aktivitätsprotokoll](activity-logs-overview.md) geschrieben, das Sie über das Azure Monitor-Menü anzeigen können. Die meisten Ressourcen schreiben Betriebsinformationen in ein [Diagnoseprotokoll](resource-logs-overview.md), das Sie an verschiedene Speicherorte weiterleiten können. Azure Monitor-Protokolle ist eine Protokolldatenplattform, die Aktivitätsprotokolle und Diagnoseprotokolle zusammen mit anderen Überwachungsdaten erfasst, um umfassende Analysen für die gesamte Gruppe von Ressourcen zu ermöglichen.
+> Es ist wichtig, zwischen Azure Monitor-Protokollen und Quellen von Protokolldaten in Azure zu unterscheiden. Beispielsweise werden Ereignisse auf Abonnementebene in Azure in ein [Aktivitätsprotokoll](activity-logs-overview.md) geschrieben, das Sie über das Azure Monitor-Menü anzeigen können. Die meisten Ressourcen schreiben Betriebsinformationen in ein [Ressourcenprotokoll](resource-logs-overview.md), das Sie an verschiedene Speicherorte weiterleiten können. Azure Monitor-Protokolle ist eine Protokolldatenplattform, die Aktivitätsprotokolle und Ressourcenprotokolle zusammen mit anderen Überwachungsdaten erfasst, um umfassende Analysen für die gesamte Gruppe von Ressourcen zu ermöglichen.
 
 
  Sie können mit [Log Analytics](../log-query/portals.md) im Azure-Portal interaktiv mit [Protokollabfragen](../log-query/log-query-overview.md) arbeiten oder die Ergebnisse einem [Azure-Dashboard](../learn/tutorial-app-dashboards.md) zur Visualisierung in Kombination mit anderen Daten hinzufügen. Sie können auch [Protokollwarnungen](alerts-log.md) erstellen, die eine Warnung basierend auf den Ergebnissen einer geplanten Abfrage auslösen.
@@ -74,7 +74,7 @@ Die folgende Tabelle enthält einen Vergleich zwischen Metriken und Protokollen 
 | Strukturdefinition | Standardsatz von Eigenschaften, z.B. Stichprobenzeit, überwachte Ressource, ein numerischer Wert. Einige Metriken umfassen mehrere Dimensionen für die weitere Definition. | Eindeutiger Satz von Eigenschaften je nach Protokolltyp. |
 | Collection | Werden in regelmäßigen Abständen gesammelt. | Werden möglicherweise sporadisch gesammelt, wenn Ereignisse das Erstellen eines Datensatzes auslösen. |
 | Ansicht im Azure-Portal | Metrik-Explorer | Log Analytics |
-| Enthaltene Datenquellen | Von Azure-Ressourcen gesammelte Plattformmetriken<br>Von Application Insights überwachte Anwendungen<br>Benutzerdefiniert nach Anwendung oder API | Anwendungs- und Diagnoseprotokolle<br>Überwachungslösungen<br>Agents und VM-Erweiterungen<br>Anwendungsanforderungen und -ausnahmen<br>Azure Security Center<br>Datensammler-API |
+| Enthaltene Datenquellen | Von Azure-Ressourcen gesammelte Plattformmetriken<br>Von Application Insights überwachte Anwendungen<br>Benutzerdefiniert nach Anwendung oder API | Anwendungs- und Ressourcenprotokolle<br>Überwachungslösungen<br>Agents und VM-Erweiterungen<br>Anwendungsanforderungen und -ausnahmen<br>Azure Security Center<br>Datensammler-API |
 
 ## <a name="collect-monitoring-data"></a>Sammeln von Überwachungsdaten
 Verschiedene [Datenquellen für Azure Monitor](data-sources.md) schreiben entweder in einen Log Analytics-Arbeitsbereich (Protokolle), die Azure Monitor-Metrikdatenbank (Metriken) oder beides. Einige Quellen schreiben direkt in diese Datenspeicher, während andere möglicherweise an einen anderen Speicherort schreiben (z.B. Azure-Speicher) und eine Konfiguration erfordern, um Protokolle oder Metriken auszufüllen. 

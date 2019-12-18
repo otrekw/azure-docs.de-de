@@ -1,6 +1,7 @@
 ---
-title: Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien | Microsoft-Dokumentation
-description: Erfahren Sie, wie Anspruchskonfliktlöser in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
+title: Anspruchskonfliktlöser in benutzerdefinierten Richtlinien
+titleSuffix: Azure AD B2C
+description: Hier erfahren Sie, wie Anspruchskonfliktlöser in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C verwendet werden.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,12 +11,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f08c85cee2378f4a879daf197af7a2adf0c20f45
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
+ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064399"
+ms.lasthandoff: 12/09/2019
+ms.locfileid: "74949873"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 

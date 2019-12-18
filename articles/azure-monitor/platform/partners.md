@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: 8e04369e3e070054c5095abde29ecca99d071cb8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 61b43329fcc840bc68f454400a4b5e917f43110c
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144440"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894582"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -255,7 +255,7 @@ Turbonomic automatisiert Workloads für Hybrid Clouds durch gleichzeitige Optimi
 - [Weitere Informationen zu Azure Monitor](../../azure-monitor/overview.md)
 - [Zugreifen auf Metriken über die REST-API](rest-api-walkthrough.md)
 - [Streamen des Aktivitätsprotokolls an einen Nicht-Microsoft-Dienst](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-- [Streamen von Diagnoseprotokollen an einen Nicht-Microsoft-Dienst](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
+- [Streamen von Ressourcenprotokollen an einen Nicht-Microsoft-Dienst](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 
 
 

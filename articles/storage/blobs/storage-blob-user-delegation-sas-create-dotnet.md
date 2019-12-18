@@ -1,20 +1,21 @@
 ---
-title: Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET (Vorschau) – Azure Storage
-description: Erfahren Sie, wie Sie mit der .NET-Clientbibliothek eine SAS für die Benutzerdelegierung (Vorschau) mithilfe von Azure Active Directory-Anmeldeinformationen in Azure Storage erstellen.
+title: Verwenden von .NET zum Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob
+titleSuffix: Azure Storage
+description: Erfahren Sie, wie Sie mithilfe der .NET-Clientbibliothek für Azure Storage eine SAS für die Benutzerdelegierung (Vorschau) mit Azure Active Directory-Anmeldeinformationen erstellen.
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
-ms.date: 12/03/2019
+ms.topic: how-to
+ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: dada27f1fa08cdaa6c2495246375869ea5a8ab9e
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 915f2895fbc1e543fbbfbb408ba27eb758a40515
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806931"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892531"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net-preview"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET (Vorschau)
 

@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: bdb59e5ec461288c89e4c7d036488b5eaeb9472a
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 1fb739c8d517654c7258fd3a58c93ab29602f228
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554876"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74894061"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -51,7 +51,8 @@ Nachdem sich die Daten im Log Analytics-Arbeitsbereich befinden, stellen Sie ein
 
 ### <a name="view-azure-backup-data-by-using-log-analytics"></a>Anzeigen von Azure Backup-Daten mit Log Analytics
 
-Nach der Bereitstellung der Vorlage wird die Lösung zur Überwachung und Berichterstellung von Azure Backup im Übersichtsbereich des Arbeitsbereichs angezeigt. Gehen Sie folgendermaßen vor, um zur Zusammenfassung zu gelangen:
+> [!IMPORTANT]
+> Die Log Analytics-Berichtsvorlage unterstützt derzeit Daten aus dem Legacy-Ereignis „AzureBackupReport“ im AzureDiagnostics-Modus. Damit Sie diese Vorlage verwenden können, müssen Sie [Tresordiagnoseeinstellungen im Modus „Azure-Diagnose“ konfigurieren](https://docs.microsoft.com/azure/backup/backup-azure-diagnostic-events#legacy-event). 
 
 - **Azure Monitor**: Wählen Sie im Abschnitt **Insights** die Option **Weitere** aus, und wählen Sie dann den entsprechenden Arbeitsbereich aus.
 - **Log Analytics-Arbeitsbereiche**: Wählen Sie den relevanten Arbeitsbereich aus, und wählen Sie dann unter **Allgemein** die Option **Zusammenfassung des Arbeitsbereichs** aus.

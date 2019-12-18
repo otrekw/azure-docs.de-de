@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 4d4823e8dcce0d1296ebe39a0b7a7c4bbc180317
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 275fa173c5005c4d1609a858c8edb39b5c307c5e
+ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015426"
+ms.lasthandoff: 12/10/2019
+ms.locfileid: "74974613"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom 
 > [!div class="op_single_selector"]
@@ -177,6 +177,7 @@ Es stehen mehrere Verfahren zum Abrufen der Schlüssel-ID zur Verfügung. Die Sc
     }
 
 ## <a name="summary"></a>Zusammenfassung
+
 Dank der jüngsten Hinzufügung der Widevine-Unterstützung in Azure Media Services Content Protection und Azure Media Player können wir das Streaming von DASH und Multi-Native-DRM (PlayReady + Widevine) mit sowohl dem PlayReady-Lizenzdienst in AMS als auch dem Widevine-Lizenzserver von Axinom für die folgenden modernen Browser implementieren:
 
 * Chrome
@@ -193,6 +194,10 @@ Die folgenden Parameter sind in der Minilösung erforderlich, die den Widevine-L
 | Schlüsselwert |Muss verwendet werden, um den Inhaltsschlüssel mit einer angegebenen Inhaltsschlüssel-ID zu generieren (siehe [diesen](media-services-axinom-integration.md#content-protection) Abschnitt). |
 | Widevine-Lizenzerwerbs-URL |Muss beim Konfigurieren der Übermittlungsrichtlinie für Medienobjekte für DASH-Streaming verwendet werden (siehe [dieser](media-services-axinom-integration.md#content-protection) Abschnitt). |
 | Inhaltsschlüssel-ID |Muss als Teil des Werts des Anspruchs "entitlement_message" des JWT-Tokens eingeschlossen werden (siehe [diesen](media-services-axinom-integration.md#jwt-token-generation) Abschnitt). |
+
+## <a name="additional-notes"></a>Zusätzliche Hinweise
+
+* Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google Inc. unterliegt.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

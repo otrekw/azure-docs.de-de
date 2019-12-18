@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zum Sichern von Azure Files
 description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bf04458d859601de7ca0e9d07f6a3dbf506a51e6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
+ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173111"
+ms.lasthandoff: 12/06/2019
+ms.locfileid: "74892567"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Fragen zum Sichern von Azure Files
 
@@ -70,6 +70,18 @@ Die Sicherung für Azure-Dateifreigaben befindet sich derzeit in der Vorschaupha
 - US Gov Arizona (UGA)
 - US Gov Texas (UGT)
 - US Gov Virginia (UGV)
+- Australien, Mitte (ACL)
+- Indien, Westen (INW)
+- Südafrika, Norden (SAN)
+- VAE, Norden (UAN)
+- Frankreich, Mitte (FRC)
+- Deutschland, Norden (GN)                       
+- Deutschland, Westen-Mitte (GWC)
+- Südafrika, Westen (SAW)
+- VAE, Mitte (UAC)
+- NWE (Norwegen, Osten)     
+- NWW (Norwegen, Westen)
+- SNZ (Schweiz, Norden)
 
 Schreiben Sie an [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com), wenn Sie die Version an einem bestimmten geografischen Standort verwenden müssen, der oben nicht aufgeführt ist.
 
