@@ -30,7 +30,7 @@ Dieses Thema beschreibt die Voraussetzungen und die Hardwareanforderungen für A
 Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötigen.
 
 ### <a name="azure-ad"></a>Azure AD
-* Einen Azure AD-Mandanten. Sie erhalten einen mit einer [kostenlosen Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/). Sie können eins der folgenden Portale verwenden, um Azure AD Connect zu verwalten:
+* Einen Azure AD-Mandanten. Sie können diesen mit einer [kostenlosen Azure-Testversion erhalten](https://azure.microsoft.com/pricing/free-trial/). Sie können eines der folgenden Portale verwenden, um Azure AD Connect zu verwalten:
   * [Azure-Portal](https://portal.azure.com)
   * [Office-Portal](https://portal.office.com)  
 * [Fügen Sie die Domäne hinzu](../active-directory-domains-add-azure-portal.md) , die Sie in Azure AD verwenden möchten, und überprüfen Sie sie. Wenn Sie beispielsweise planen, „contoso.com“ für Ihre Benutzer zu verwenden, sollten Sie sicherstellen, dass diese Domäne überprüft wurde und nicht nur die Standarddomäne „contoso.onmicrosoft.com“ verwendet wird.
