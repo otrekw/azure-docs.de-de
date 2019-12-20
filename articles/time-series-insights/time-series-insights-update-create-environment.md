@@ -284,7 +284,7 @@ In diesem Abschnitt wenden Sie ein Modell zum Strukturieren der Daten an. Um das
    | Parameter | Aktion |
    | --- | ---|
    | **Name** | Geben Sie **Location Hierarchy** ein. |
-   |**Ebenen**| Geben Sie **Country** (Land) als Namen der ersten Ebene ein. <br> Wählen Sie **+ Add Level** (Ebene hinzufügen) aus. <br> Geben Sie **City** (Ort) für die zweite Ebene ein, und wählen Sie dann **+ Add Level** (Ebene hinzufügen) aus. <br> Geben Sie **Building** (Gebäude) als Namen der dritten und letzten Ebene ein. |
+   |**Ebenen**| Geben Sie **Country** (Land/Region) als Namen der ersten Ebene ein. <br> Wählen Sie **+ Add Level** (Ebene hinzufügen) aus. <br> Geben Sie **City** (Ort) für die zweite Ebene ein, und wählen Sie dann **+ Add Level** (Ebene hinzufügen) aus. <br> Geben Sie **Building** (Gebäude) als Namen der dritten und letzten Ebene ein. |
 
    Wählen Sie **Speichern** aus.
 

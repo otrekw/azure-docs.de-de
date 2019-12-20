@@ -82,7 +82,7 @@ Sprachen:
 
 #### <a name="government-and-country-specific-identification"></a>Behördliche und landesspezifische Informationen zur Identifikation
 
-Die nachstehenden Entitäten werden nach Land gruppiert und aufgeführt:
+Die nachstehenden Entitäten werden nach Land/Region gruppiert und aufgeführt:
 
 Argentinien
 * Nationale argentinische ID-Nummer (DNI)
