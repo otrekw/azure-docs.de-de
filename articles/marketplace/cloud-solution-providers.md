@@ -65,9 +65,9 @@ Um Partner zu autorisieren, klicken Sie auf **CSP-Partner auswählen**. Ein Men�
 
 ![Menü „CSP auswählen“](media/marketplace-publishers-guide/csp-pop-up-module.png)
 
-Sie können Suchfilter anwenden, z.B. **Land**, **Kompetenz**oder **Qualifikation**.
+Sie können Suchfilter anwenden, z.B. **Land/Region**, **Kompetenz**oder **Qualifikation**.
 
-![Länder-, Kompetenz- und Qualifikationsfilter für die Partnersuche](media/marketplace-publishers-guide/csp-add-resellers.png)
+![Länder-/Regions-, Kompetenz- und Qualifikationsfilter für die Partnersuche](media/marketplace-publishers-guide/csp-add-resellers.png)
 
 Nachdem Sie die Partnerliste zusammengestellt haben, wählen Sie **Hinzufügen** aus.
 

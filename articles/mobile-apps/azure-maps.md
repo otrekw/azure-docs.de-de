@@ -25,7 +25,7 @@ ms.locfileid: "72795226"
 - **Routenplanung**, um die kürzesten oder schnellsten Routen – zu mehreren Zielorten gleichzeitig – zu berechnen oder spezielle Routen und Hintergrundinformationen für Wanderer, Radwanderer und gewerblich genutzte Fahrzeuge bereitzustellen.
 - **Zeitzonen** geben Benutzern einen schnellen Überblick über Uhrzeiten an anderen Orten der Welt.
 - **Räumliche Operationen**, um die Speicherortintelligenz zu erhöhen.
-- **Geolocation**, um das Land einer IP-Adresse nachzuschlagen.
+- **Geolocation**, um das Land/die Region einer IP-Adresse nachzuschlagen.
 - **Datendienst**, um räumliche Daten hochzuladen und zu speichern, die mit räumlichen Operationen oder mit der Bildkomposition verwendet werden können.
 - **Mobilität** stellt Standortintelligenz (Location Intelligence) in Echtzeit zu öffentlichen Verkehrsmitteln in der Nähe bereit, z. B. Informationen zu Haltestellen, Routen und geschätzte Fahrtdauer.
 

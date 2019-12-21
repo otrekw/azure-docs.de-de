@@ -141,7 +141,7 @@ df_cosmos.head(10)
 
 In diesem Abschnitt führen Sie einige Abfragen für die abgerufenen Daten aus.
 
-* **Abfrage 1:** Führen Sie eine Gruppierungsabfrage für den Datenrahmen aus, um die Summe der Gesamtumsätze für jedes Land zu erhalten und 5 Elemente aus den Ergebnissen anzuzeigen. Führen Sie in einer neuen Notebookzelle den folgenden Befehl aus:
+* **Abfrage 1:** Führen Sie eine Gruppierungsabfrage für den Datenrahmen aus, um die Summe der Gesamtumsätze für jedes Land/jede Region zu erhalten und 5 Elemente aus den Ergebnissen anzuzeigen. Führen Sie in einer neuen Notebookzelle den folgenden Befehl aus:
 
    ```python
    df_revenue = df_cosmos.groupby("Country").sum().reset_index()

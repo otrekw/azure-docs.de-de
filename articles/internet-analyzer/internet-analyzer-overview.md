@@ -99,7 +99,7 @@ Sobald ein Test gestartet wurde, werden in der Internet Analyzer-Ressource auf d
 
 * **Test (Testen):** Wählen Sie den Test aus, dessen Ergebnisse Sie anzeigen möchten. Testdaten werden angezeigt, sobald genügend Daten vorhanden sind, um die Analyse abzuschließen – in den meisten Fällen innerhalb von 24 Stunden. 
 * **Zeitraum und Enddatum**: Internet Analyzer generiert drei Scorecards pro Tag, von denen jede einen anderen Aggregationszeitraum reflektiert: 24 Stunden vorher (Tag), sieben Tage vorher (Woche) und 30 Tage vorher (Monat). Verwenden Sie den Filter „Enddatum“, um den Zeitraum auszuwählen, den Sie anzeigen möchten. 
-* **Land**: Verwenden Sie diesen Filter, um Daten für Endbenutzer in einem bestimmten Land anzuzeigen. Der globale Filter zeigt Daten über alle Geografien hinweg an.  
+* **Land**: Verwenden Sie diesen Filter, um Daten für Endbenutzer in einem bestimmten Land/Region anzuzeigen. Der globale Filter zeigt Daten über alle Geografien hinweg an.  
 
 Weitere Informationen zu Scorecards finden Sie auf der Seite [Interpretieren Ihrer Scorecard](internet-analyzer-scorecard.md). 
 
