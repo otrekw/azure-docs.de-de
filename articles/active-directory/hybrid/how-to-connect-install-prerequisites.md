@@ -59,13 +59,13 @@ Vor der Installation von Azure AD Connect gibt es einige Dinge, die Sie benötig
 
 * Azure AD Connect muss unter Windows Server 2008 R2 oder höher installiert werden. Dieser Server muss in die Domäne eingebunden werden und könnte ein Domänencontroller oder Mitgliedsserver sein.
 * Stellen Sie beim Installieren von Azure AD Connect unter Windows Server 2008 R2 sicher, dass Sie die neuesten Hotfixes über Windows Update anwenden. Die Installation kann mit einem nicht gepatchten Server nicht gestartet werden.
-* Wenn Sie die **Kennwortsynchronisierung**verwenden möchten, muss der Azure AD Connect-Server unter Windows Server 2008 R2 SP1 oder höher ausgeführt werden.
+* Wenn Sie die **Kennwortsynchronisierung** verwenden möchten, muss der Azure AD Connect-Server unter Windows Server 2008 R2 SP1 oder höher ausgeführt werden.
 * Wenn Sie planen, ein **gruppenverwaltetes Dienstkonto** zu verwenden, muss auf dem Azure AD Connect-Server Windows Server 2012 oder höher ausgeführt werden.
 * Der Azure AD Connect-Server muss über [.NET Framework 4.5.1](#component-prerequisites) oder höher verfügen, und es muss [Microsoft PowerShell 3.0](#component-prerequisites) oder höher installiert sein.
 * Auf dem Azure AD Connect-Server darf nicht die PowerShell-Aufzeichnung-Gruppenrichtlinie aktiviert sein, wenn Sie die ADFS-Konfiguration mit dem Azure AD Connect-Assistenten verwalten. Sie können die PowerShell-Aufzeichnung aktivieren, wenn Sie den Azure AD Connect-Assistenten zur Verwaltung der Synchronisierungskonfiguration verwenden.
 * Wenn Active Directory-Verbunddienste bereitgestellt werden, müssen die Server, auf denen die Active Directory-Verbunddienste oder der Webanwendungsproxy installiert werden, Windows Server 2012 R2 oder höher ausführen. [Windows-Remoteverwaltung](#windows-remote-management) muss auf diesen Servern zur Remoteinstallation aktiviert werden.
 * Wenn Active Directory-Verbunddienste bereitgestellt werden, benötigen Sie [SSL-Zertifikate](#ssl-certificate-requirements).
-* Wenn Active Directory-Verbunddienste bereitgestellt werden, müssen Sie die [Namensauflösung](#name-resolution-for-federation-servers)konfigurieren.
+* Wenn Active Directory-Verbunddienste bereitgestellt werden, müssen Sie die [Namensauflösung](#name-resolution-for-federation-servers) konfigurieren.
 * Wenn Ihre globalen Administratoren MFA aktiviert haben, muss die URL **https://secure.aadcdn.microsoftonline-p.com** in der Liste vertrauenswürdiger Websites enthalten sein. Sie werden aufgefordert, diese Website der Liste vertrauenswürdigen Websites hinzuzufügen, wenn Sie zu einem MFA-Captcha aufgefordert werden und diese zuvor noch nicht hinzugefügt wurde. Sie können dafür den Internet Explorer verwenden.
 * Microsoft empfiehlt die Härtung des Azure AD Connect-Servers, um die Angriffsfläche für Sicherheitsangriffe für diese wichtige Komponente der IT-Umgebungen zu verringern.  Wenn Sie die unten genannten Empfehlungen befolgen, verringern Sie die Sicherheitsrisiken für Ihre Organisation.
 
@@ -144,8 +144,8 @@ Azure AD Connect ist abhängig von Microsoft PowerShell und .NET Framework 4.
   * Microsoft PowerShell ist standardmäßig installiert. Es ist keine Aktion erforderlich.
   * .NET Framework 4.5.1 und neuere Versionen werden über Windows Update angeboten. Stellen Sie in der Systemsteuerung sicher, dass die neuesten Updates von Windows Server installiert sind.
 * Windows Server 2008 R2 und Windows Server 2012
-  * Die neueste Version von Microsoft PowerShell steht im **Microsoft Download Center**unter [Windows Management Framework 4.0](https://www.microsoft.com/downloads)zur Verfügung.
-  * .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](https://www.microsoft.com/downloads)verfügbar.
+  * Die neueste Version von Microsoft PowerShell steht im **Microsoft Download Center** unter [Windows Management Framework 4.0](https://www.microsoft.com/downloads) zur Verfügung.
+  * .NET Framework 4.5.1 und neuere Versionen sind im [Microsoft Download Center](https://www.microsoft.com/downloads) verfügbar.
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Aktivieren von TLS 1.2 für Azure AD Connect
