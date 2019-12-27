@@ -356,7 +356,7 @@ Dieses Release stellt Hive 1.2.1 und Hive 2.1.0 mit den folgenden Patches bereit
 
 -   [*HIVE-10697*](https://issues.apache.org/jira/browse/HIVE-10697): ObjectInspectorConvertors\#UnionConvertor does a faulty conversion. (ObjectInspectorConvertors#UnionConvertor führt eine fehlerhafte Konvertierung durch.)
 
--   [*HIVE-11266*](https://issues.apache.org/jira/browse/HIVE-11266): count(\*) wrong result based on table statistics for external tables. (count(*) führt basierend auf den Tabellenstatistiken für externe Tabellen zu einem falschen Ergebnis.)
+-   [*HIVE-11266*](https://issues.apache.org/jira/browse/HIVE-11266): count(\*) wrong result based on table statistics for external tables. (count führt basierend auf den Tabellenstatistiken für externe Tabellen zu einem falschen Ergebnis.)
 
 -   [*HIVE-12245*](https://issues.apache.org/jira/browse/HIVE-12245): Support column comments for an HBase backed table. (Unterstützung für Spaltenkommentare für eine HBase-Tabelle.)
 
