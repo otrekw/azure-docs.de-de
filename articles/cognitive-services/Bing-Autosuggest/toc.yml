@@ -22,11 +22,17 @@
       href: quickstarts/python.md
     - name: Ruby
       href: quickstarts/ruby.md
+- name: Clientbibliothek
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp-sdk.md
+    - name: Go
+      href: quickstarts/go-sdk.md
 - name: Lernprogramme
   items:
     - name: Einzelseiten-Web-App
       href: tutorials/autosuggest.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Upgrade von v5 auf v7
       href: bing-autosuggest-upgrade-guide-v5-to-v7.md
@@ -78,5 +84,5 @@
     - name: Analysen für die Bing-Vorschlagssuche-API
       maintainContext: true
       href: ../bing-web-search/bing-web-stats.md
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'

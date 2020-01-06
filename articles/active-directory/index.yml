@@ -12,12 +12,12 @@ metadata:
   ms.author: mtillman
   manager: daveba
   ms.date: 07/27/2019
-  ms.openlocfilehash: 11d32abbcd07f16bd21d512d36cd08abd8ca97df
-  ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+  ms.openlocfilehash: d212a7223eea2ccbaaddeb9c45db85e13c7ff9c8
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/05/2019
-  ms.locfileid: "74842305"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443456"
 highlightedContent:
   items:
   - title: Was ist Azure AD?
@@ -53,7 +53,7 @@ conceptualContent:
       text: Anwendungsproxy für lokale Apps
     footerLink:
       url: ./manage-apps/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Authentication
     links:
     - url: ./authentication/concept-mfa-howitworks.md
@@ -67,7 +67,7 @@ conceptualContent:
       text: Kennwortschutz für Azure AD
     footerLink:
       url: ./authentication/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Business-to-Business (B2B)
     links:
     - url: ./b2b/what-is-b2b.md
@@ -81,7 +81,7 @@ conceptualContent:
       text: B2B und Office 365-Freigabe
     footerLink:
       url: ./b2b/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Business-to-Consumer (B2C)
     links:
     - url: ../active-directory-b2c/active-directory-b2c-overview.md
@@ -95,7 +95,7 @@ conceptualContent:
       text: Benutzerdefinierte Richtlinien in Azure AD B2C
     footerLink:
       url: ../active-directory-b2c/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Cloudbereitstellung
     links:
     - url: ./cloud-provisioning/what-is-cloud-provisioning.md
@@ -103,13 +103,13 @@ conceptualContent:
       text: Was ist Cloudbereitstellung?
     - url: ./cloud-provisioning/tutorial-single-forest.md
       itemType: tutorial
-      text: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
+      text: Integrieren einer einzelnen Gesamtstruktur in einen einzelnen Azure AD-Mandanten
     - url: ./cloud-provisioning/how-to-install.md
       itemType: how-to-guide
       text: Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
     footerLink:
       url: ./cloud-provisioning/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Bedingter Zugriff
     links:
     - url: ./conditional-access/overview.md
@@ -123,7 +123,7 @@ conceptualContent:
       text: Standortbasierte Bedingungen
     footerLink:
       url: ./conditional-access/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Entwickler
     links:
     - url: ./develop/about-microsoft-identity-platform.md
@@ -137,7 +137,7 @@ conceptualContent:
       text: Registrieren einer App bei Microsoft Identity Platform
     footerLink:
       url: ./develop/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Geräteverwaltung
     links:
     - url: ./devices/overview.md
@@ -151,7 +151,7 @@ conceptualContent:
       text: Planen einer Azure AD-Einbindung
     footerLink:
       url: ./devices/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Domänendienste
     links:
     - url: ../active-directory-domain-services/active-directory-ds-overview.md
@@ -165,7 +165,7 @@ conceptualContent:
       text: Verwalten einer Gruppenrichtlinie
     footerLink:
       url: ../active-directory-domain-services/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Unternehmensbenutzer
     links:
     - url: ./users-groups-roles/groups-create-rule.md
@@ -179,7 +179,7 @@ conceptualContent:
       text: Dienst- und andere Einschränkungen für Azure AD
     footerLink:
       url: ./users-groups-roles/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Hybrididentität
     links:
     - url: ./hybrid/whatis-hybrid-identity.md
@@ -193,7 +193,7 @@ conceptualContent:
       text: 'Azure AD Connect: benutzerdefinierte Installation'
     footerLink:
       url: ./hybrid/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Identitätsgovernance
     links:
     - url: ./governance/create-access-review.md
@@ -207,21 +207,21 @@ conceptualContent:
       text: Vorschreiben der Verwendung von Nutzungsbedingungen
     footerLink:
       url: ./governance/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Schutz der Identität (Identity Protection)
     links:
-    - url: ./identity-protection/overview.md
+    - url: ./identity-protection/overview-identity-protection.md
       itemType: overview
       text: Worum handelt es sich beim Identitätsschutz?
-    - url: ./identity-protection/quickstart-sign-in-risk-policy.md
-      itemType: quickstart
-      text: Blockieren des Zugriffs bei erkanntem Sitzungsrisiko
-    - url: ./identity-protection/howto-unblock-user.md
+    - url: ./identity-protection/howto-identity-protection-configure-risk-policies.md
+      itemType: how-to-guide
+      text: Konfigurieren von Richtlinien zu Risiken
+    - url: ./identity-protection/howto-identity-protection-remediate-unblock.md
       itemType: how-to-guide
       text: Entsperren von Benutzern
     footerLink:
       url: ./identity-protection/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Verwaltete Identitäten für Azure-Ressourcen
     links:
     - url: ./managed-identities-azure-resources/tutorial-windows-vm-access-sql.md
@@ -235,7 +235,7 @@ conceptualContent:
       text: Dienste, die verwaltete Identitäten unterstützen
     footerLink:
       url: ./managed-identities-azure-resources/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Privileged Identity Management (PIM)
     links:
     - url: ./privileged-identity-management/pim-getting-started.md
@@ -249,7 +249,7 @@ conceptualContent:
       text: Zuweisen von Verzeichnisrollen
     footerLink:
       url: ./privileged-identity-management/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Berichte und Überwachung
     links:
     - url: ./reports-monitoring/concept-audit-logs.md
@@ -263,7 +263,7 @@ conceptualContent:
       text: Referenz zu Anmeldefehlercodes
     footerLink:
       url: ./reports-monitoring/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
 additionalContent:
   sections:
   - items:

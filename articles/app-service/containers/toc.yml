@@ -192,7 +192,7 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Informationen zum Kontingent
-      href: '../../azure-subscription-service-limits.md#app-service-limits'
+      href: '../../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Leitfäden zu Migration Assistant

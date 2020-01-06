@@ -3,9 +3,9 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Was ist die kognitive Azure-Suche?
+    - name: Was ist Azure Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Neuigkeiten
+    - name: Neues
       href: whats-new.md
 - name: Schnellstarts
   items:
@@ -13,9 +13,9 @@
       href: search-create-service-portal.md
     - name: Portal
       items:
-        - name: Erstellen eines Suchindex
+        - name: Erstellen eines Index
           href: search-get-started-portal.md
-        - name: Erstellen einer App (Vorschau)
+        - name: Erstellen einer App
           href: search-create-app-portal.md
         - name: Erstellen eines kognitiven Skillset
           href: cognitive-search-quickstart-blob.md
@@ -95,7 +95,7 @@
       href: knowledge-store-projection-overview.md
     - name: Inkrementelle Indizierung
       href: cognitive-search-incremental-indexing-conceptual.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Planung
       items:

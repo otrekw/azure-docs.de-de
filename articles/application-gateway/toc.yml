@@ -4,7 +4,7 @@
   items:
     - name: Informationen zu Anwendungsgateways
       href: overview.md
-    - name: Neuerungen
+    - name: Neuigkeiten
       href: whats-new.md
 - name: Schnellstarts
   expanded: true
@@ -83,7 +83,7 @@
       href: application-gateway-websocket.md
     - name: Häufig gestellte Fragen
       href: application-gateway-faq.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Hosten einer einzelnen Website
       items:
@@ -247,7 +247,7 @@
       href: /rest/api/applicationgateway
     - name: Azure Resource Manager
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
     - name: Resource Manager-Vorlage
       displayName: ARM
       href: 'https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways'
@@ -255,7 +255,7 @@
   items:
     - name: Verfassen von Vorlagen
       displayName: ARM
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communityvorlagen

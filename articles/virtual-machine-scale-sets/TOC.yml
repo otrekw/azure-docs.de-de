@@ -64,7 +64,7 @@
 - name: Konzepte
   items:
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
       maintainContext: true
     - name: Regions
       href: ../virtual-machines/windows/regions.md
@@ -171,7 +171,7 @@
           maintainContext: true
     - name: Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen
       href: virtual-machine-scale-sets-faq.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Planen und Entwerfen
       items:

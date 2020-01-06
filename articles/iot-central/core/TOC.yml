@@ -4,8 +4,6 @@
   items:
     - name: Was ist Azure IoT Central?
       href: overview-iot-central.md
-    - name: IoT-Lösungsoptionen
-      href: overview-iot-options.md
     - name: Überblick über die Benutzeroberfläche
       href: overview-iot-central-tour.md
 - name: Schnellstarts
@@ -27,13 +25,13 @@
       href: tutorial-add-device.md
 - name: Konzepte
   items:
-    - name: Architecture
+    - name: Aufbau
       href: concepts-architecture.md
     - name: Konnektivität
       href: concepts-connectivity.md
     - name: Was sind Anwendungsvorlagen?
       href: concepts-app-templates.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
       items:
@@ -129,7 +127,7 @@
           href: howto-create-personal-dashboards.md
         - name: Verwalten Ihrer Einstellungen
           href: howto-manage-preferences.md
-        - name: Livechat ein-/ausschalten
+        - name: Ein-/Ausschalten des Livechats
           href: howto-show-hide-chat.md
 - name: Verwandte Themen
   items:

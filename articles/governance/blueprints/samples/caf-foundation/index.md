@@ -3,18 +3,18 @@ title: 'CAF-Basisblaupausenbeispiel: Übersicht'
 description: Übersicht und Architektur des Framework für die Cloudeinführung (Cloud Adoption Framework, CAF) für das Basisblaupausenbeispiel für Azure
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: 8339b7335ff2946dcd602db6ece4637ac4bc1d92
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 79b47127b81caf148054f4223e5fa7ad9fbf86fe
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545449"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562560"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Übersicht über das Microsoft Cloud Adoption Framework-Basisblaupausenbeispiel für Azure
 
 Die Microsoft CAF-Basisblaupause (Cloud Adoption Framework) für Azure stellt eine Reihe zentraler Infrastrukturressourcen und Richtlinienkontrollen bereit, die für Ihre erste produktionsbereite Azure-Anwendung erforderlich sind. Diese Basisblaupause basiert auf dem empfohlenen CAF-Muster.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Das CAF-Basisblaupausenbeispiel stellt empfohlene Infrastrukturressourcen in Azure bereit, mit denen Organisationen die grundlegenden Kontrollen einrichten können, die sie zur Verwaltung ihrer Cloudressourcen benötigen. In diesem Beispiel werden Ressourcen, Richtlinien und Vorlagen bereitgestellt und erzwungen, die Organisationen einen problemlosen Einstieg in Azure ermöglichen.
 
@@ -43,7 +43,7 @@ Für alle diese Elemente werden die bewährten Methoden befolgt, die unter [Azur
 > Die CAF-Basis richtet eine grundlegende Architektur für Workloads ein.
 > Im Hintergrund dieser grundlegenden Architektur müssen Sie weiterhin Workloads bereitstellen.
 
-Weitere Informationen finden Sie unter [Governance, Sicherheit und Konformität in Azure](/azure/architecture/cloud-adoption/ready/azure-readiness-guide/govern-org-compliance?tabs=AzurePolicy).
+Weitere Informationen finden Sie unter [Governance, Sicherheit und Konformität in Azure](/azure/cloud-adoption-framework/ready/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

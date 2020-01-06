@@ -20,7 +20,7 @@
       href: pim-email-notifications.md
     - name: Microsoft Graph-APIs
       href: pim-apis.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Bereitstellen von PIM
@@ -45,6 +45,8 @@
           href: pim-resource-roles-activate-your-roles.md
     - name: Verwalten von Azure AD-Rollen
       items:
+        - name: Featureupdate
+          href: azure-ad-roles-features.md
         - name: Zuweisen von Rollen
           href: pim-how-to-add-role-to-user.md
         - name: Genehmigen von Anforderungen

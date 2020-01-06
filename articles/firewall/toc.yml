@@ -35,7 +35,7 @@
       href: rule-processing.md
     - name: Diensttags
       href: service-tags.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Bereitstellen mit Azure PowerShell
       href: deploy-ps.md
@@ -70,13 +70,13 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
       href: firewall-faq.md
     - name: Verfassen von Vorlagen
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communityvorlagen

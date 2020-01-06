@@ -48,7 +48,7 @@
       href: iot-visual-alerts-tutorial.md
     - name: Erkennen von Logos auf mobilen Geräten
       href: logo-detector-mobile.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Testen des Modells
       href: test-your-model.md
@@ -68,8 +68,6 @@
           href: export-model-python.md
     - name: Exportieren oder Löschen von Kontodaten
       href: ./export-delete-data.md
-    - name: Verschieben Ihres Projekts aus der eingeschränkten Testversion in Azure
-      href: ./move-your-project-to-azure.md
     - name: Aktualisieren Ihrer App auf die 3.0-API
       href: ./update-application-to-3.0-sdk.md
 - name: Verweis
@@ -108,7 +106,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Versionsinformationen
       href: release-notes.md

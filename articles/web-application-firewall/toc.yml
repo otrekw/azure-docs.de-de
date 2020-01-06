@@ -8,7 +8,7 @@
       items:
         - name: Web Application Firewall für Application Gateway
           href: ./ag/ag-overview.md
-        - name: Neuigkeiten
+        - name: Neues
           href: ./ag/whats-new.md
     - name: Front Door
       items:
@@ -50,7 +50,7 @@
           href: ./afds/waf-front-door-geo-filtering.md
         - name: Häufig gestellte Fragen
           href: ./afds/waf-faq.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Application Gateway
       items:
@@ -127,11 +127,11 @@
     - name: REST
       href: /rest/api/firewall
     - name: Azure Resource Manager
-      href: ../azure-resource-manager/resource-group-overview.md
+      href: ../azure-resource-manager/management/overview.md
 - name: Ressourcen
   items:
     - name: Verfassen von Vorlagen
-      href: ../azure-resource-manager/resource-group-authoring-templates.md
+      href: ../azure-resource-manager/templates/template-syntax.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Communityvorlagen

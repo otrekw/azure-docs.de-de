@@ -1,5 +1,5 @@
 - name: Dokumentation zu Azure Cache for Redis
-  href: index.md
+  href: index.yml
 - name: Übersicht
   items:
     - name: Informationen zu Azure Cache for Redis
@@ -39,9 +39,9 @@
       href: cache-best-practices.md
     - name: 'Architektur: bewährte Methoden für die Zwischenspeicherung'
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
-    - name: Plan
+    - name: Planen
       items:
         - name: Auswählen einer Cacheebene
           href: 'cache-faq.md#what-redis-cache-offering-and-size-should-i-use'

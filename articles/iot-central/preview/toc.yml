@@ -4,8 +4,6 @@
   items:
     - name: Was ist Azure IoT Central?
       href: overview-iot-central.md
-    - name: IoT-Lösungsoptionen
-      href: ../core/overview-iot-options.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
     - name: Überblick über die Benutzeroberfläche
       href: overview-iot-central-tour.md
     - name: Herstellen einer Verbindung
@@ -49,11 +47,11 @@
           href: 'https://docs.microsoft.com/learn/modules/manage-iot-central-apps-with-rest-api/'
 - name: Konzepte
   items:
-    - name: Architecture
+    - name: Aufbau
       href: concepts-architecture.md
     - name: Was sind Anwendungsvorlagen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herstellen einer Verbindung
       items:

@@ -80,7 +80,7 @@
       href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-overview'
 - name: Anleitungen
   items:
-    - name: Plan
+    - name: Planen
       items:
         - name: Architekturen von Webanwendungen
           href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/basic-web-app'
@@ -112,7 +112,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm'
     - name: Speichern von Daten
       items:
-        - name: Blobs (in englischer Sprache)
+        - name: BLOBs
           href: 'https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs'
         - name: Dateifreigaben
           href: 'https://docs.microsoft.com/azure/storage/files/storage-dotnet-how-to-use-files'
@@ -132,7 +132,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Microservice-Apps
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
-    - name: Schützen
+    - name: Sicher
       items:
         - name: Web-Apps und mobile Apps
           href: 'https://docs.microsoft.com/azure/app-service/configure-ssl-bindings'
@@ -189,7 +189,7 @@
 - name: Ressourcen
   items:
     - name: Azure-Grenzwerte und -Kontingente
-      href: ../../azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
+      href: ../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json
     - name: Azure-Regionen
       href: 'https://azure.microsoft.com/regions/'
     - name: Azure-Roadmap

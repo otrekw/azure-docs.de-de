@@ -32,7 +32,7 @@
       href: pim-azure-resource.md
     - name: Bedingter Zugriff für die Azure-Verwaltung
       href: conditional-access-azure-management.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Auflisten der Rollendefinitionen
       items:
@@ -99,7 +99,7 @@
     - name: Ressourcenanbietervorgänge
       href: resource-provider-operations.md
     - name: RBAC-Grenzwerte
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources
     - name: Azure-Befehlszeilenschnittstelle

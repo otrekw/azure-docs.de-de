@@ -18,13 +18,13 @@
       href: virtual-wan-locations-partners.md
     - name: IPsec-Richtlinien
       href: virtual-wan-ipsec.md
-    - name: Architecture
+    - name: Aufbau
       items:
         - name: Migrieren zu Virtual WAN
           href: migrate-from-hub-spoke-topology.md
         - name: Globale Übertragungsnetzwerkarchitektur
           href: virtual-wan-global-transit-network-architecture.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen einem Gateway für virtuelle Netzwerke und Virtual WAN
       href: connect-virtual-network-gateway-vwan.md
@@ -73,7 +73,7 @@
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Einschränkungen bei Abonnements und Diensten
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/virtual-wan'
     - name: Preisrechner

@@ -74,7 +74,7 @@
       href: team-data-science-process-for-data-scientists.md
     - name: Für DevOps
       href: team-data-science-process-for-devops.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Einrichten von Data Science-Umgebungen
       href: environment-setup.md
@@ -134,7 +134,7 @@
           items:
             - name: Vorbereiten von Daten
               href: prepare-data.md
-            - name: Erkunden von Daten
+            - name: Durchsuchen von Daten
               items:
                 - name: Übersicht
                   href: explore-data.md
@@ -193,7 +193,7 @@
 - name: Verwandte Themen
   items:
     - name: Azure Machine Learning
-      href: ../service/
+      href: ../
     - name: Azure KI-Katalog
       href: 'https://gallery.azure.ai'
     - name: Cortana Analytics Suite
@@ -206,7 +206,7 @@
           items:
             - name: Übersicht
               href: cortana-analytics-playbook-predictive-maintenance.md
-            - name: Architecture
+            - name: Aufbau
               href: cortana-analytics-architecture-predictive-maintenance.md
             - name: Technischer Leitfaden
               href: cortana-analytics-technical-guide-predictive-maintenance.md

@@ -14,12 +14,12 @@ metadata:
   ms.author: terrylan
   manager: rkarlin
   ms.date: 08/29/2019
-  ms.openlocfilehash: c3f75decc72cbc314309b8cfb0bd81d9c0be2774
-  ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+  ms.openlocfilehash: a25189e75bcf313a5e2e8eee410a581d50f70584
+  ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/06/2019
-  ms.locfileid: "73686315"
+  ms.lasthandoff: 12/31/2019
+  ms.locfileid: "75563750"
 highlightedContent:
   items:
   - title: Einführung in die Azure-Sicherheit
@@ -46,7 +46,7 @@ conceptualContent:
       text: Sicherheitskontrollen für Azure-Dienste
     footerLink:
       url: ./fundamentals/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Entwickler
     links:
     - url: ./develop/secure-dev-overview.md
@@ -60,20 +60,23 @@ conceptualContent:
       text: Microsoft Threat Modeling Tool
     footerLink:
       url: ./develop/index.yml
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Benchmarks und Empfehlungen
     links:
-    - url: https://azure.microsoft.com/resources/azure-cloud-security-benchmark-draft/
+    - url: ./benchmarks/introduction.md
       itemType: download
       text: Benchmark für die Azure-Cloudsicherheit
     - url: ../security-center/security-center-using-recommendations.md
       itemType: overview
       text: Azure Security Center-Empfehlungen
+    footerLink:
+      url: ./benchmarks/index.yml
+      text: Weitere Informationen
   - title: Geheimnisse und Schlüssel
     links:
     - url: ../key-vault/key-vault-overview.md
       itemType: overview
-      text: Was ist der Azure-Schlüsseltresor?
+      text: Was ist Azure Key Vault?
     - url: ../key-vault/quick-create-cli.md
       itemType: quickstart
       text: Festlegen und Abrufen eines Geheimnisses
@@ -82,8 +85,8 @@ conceptualContent:
       text: Was ist Azure Dedicated HSM?
     footerLink:
       url: /azure/key-vault/
-      text: Mehr Informationen
-  - title: Datenschutz
+      text: Weitere Informationen
+  - title: Schutz von Daten
     links:
     - url: ./fundamentals/encryption-atrest.md
       itemType: concept
@@ -96,7 +99,7 @@ conceptualContent:
       text: Speichersicherheit
     footerLink:
       url: ./fundamentals/encryption-overview.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Identitätsverwaltung
     links:
     - url: ./fundamentals/choose-ad-authn.md
@@ -107,10 +110,10 @@ conceptualContent:
       text: Schützen Ihrer Identitätsinfrastruktur
     - url: ./fundamentals/identity-management-best-practices.md
       itemType: concept
-      text: Bewährte Methoden für die Sicherheit
+      text: Bewährte Sicherheitsmethoden
     footerLink:
       url: ./fundamentals/identity-management-overview.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Sicherheitsüberwachung
     links:
     - url: ../security-center/security-center-get-started.md
@@ -124,7 +127,7 @@ conceptualContent:
       text: Arbeiten mit Sicherheitsrichtlinien
     footerLink:
       url: /azure/security-center/
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: IoT-Sicherheitsüberwachung
     links:
     - url: ../asc-for-iot/overview.md
@@ -138,7 +141,7 @@ conceptualContent:
       text: Erste Schritte mit Azure Security Center für IoT
     footerLink:
       url: /azure/asc-for-iot/
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Sicherheitsanalysen
     links:
     - url: ../sentinel/overview.md
@@ -152,7 +155,7 @@ conceptualContent:
       text: Erste Schritte mit Azure Sentinel (Vorschauversion)
     footerLink:
       url: /azure/sentinel/
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Bedrohungsschutz
     links:
     - url: ../security-center/security-center-alerts-overview.md
@@ -166,7 +169,7 @@ conceptualContent:
       text: Advanced Threat Protection für Azure SQL-Datenbank
     footerLink:
       url: ./fundamentals/threat-detection.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Protokollierung und Überwachung
     links:
     - url: ./fundamentals/log-audit.md
@@ -185,7 +188,7 @@ conceptualContent:
       text: Sicherheitsübersicht
     - url: ./fundamentals/network-best-practices.md
       itemType: concept
-      text: Bewährte Methoden für die Sicherheit
+      text: Bewährte Sicherheitsmethoden
     - url: ./fundamentals/ddos-best-practices.md
       itemType: concept
       text: DDoS Protection
@@ -202,7 +205,7 @@ conceptualContent:
       text: Schutz von Kundendaten
     footerLink:
       url: ./fundamentals/infrastructure.md
-      text: Mehr Informationen
+      text: Weitere Informationen
   - title: Sicherheit virtueller Computer
     links:
     - url: ./fundamentals/virtual-machines-overview.md
@@ -221,7 +224,7 @@ conceptualContent:
       text: Sicherheitsübersicht
     - url: ./fundamentals/database-best-practices.md
       itemType: concept
-      text: Bewährte Methoden für die Sicherheit
+      text: Bewährte Sicherheitsmethoden
     - url: ./fundamentals/database-security-checklist.md
       itemType: concept
       text: Checkliste für die Sicherheit
@@ -235,4 +238,4 @@ conceptualContent:
       text: Azure Blueprints-Dienst
     footerLink:
       url: /azure/governance/
-      text: Mehr Informationen
+      text: Weitere Informationen
