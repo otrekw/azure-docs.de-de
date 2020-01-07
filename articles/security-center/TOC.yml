@@ -49,6 +49,8 @@
       items:
         - name: Übersicht zu Sicherheitswarnungen
           href: security-center-alerts-overview.md
+        - name: Referenzliste der Warnungen
+          href: alerts-reference.md
         - name: Verwalten von Sicherheitswarnungen
           href: security-center-managing-and-responding-alerts.md
         - name: Verwalten von Sicherheitsvorfällen
@@ -61,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Bedrohungserkennung für Azure-Dienstebenen
           href: security-center-alerts-service-layer.md
-        - name: Integration in Azure Security-Produkte
+        - name: Bedrohungserkennung für Azure WAF und Azure DDoS Protection
           href: security-center-alerts-integration.md
         - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
           href: security-center-alerts-cloud-smart.md
@@ -69,12 +71,20 @@
           href: security-center-threat-intel.md
         - name: Warnungsüberprüfung (EICAR-Testdatei)
           href: security-center-alert-validation.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verbessern Ihrer Sicherheitsbewertung
       href: security-center-secure-score.md
     - name: Ausführen eines Upgrades auf erweiterte Sicherheit
       href: security-center-onboarding.md
+    - name: Überprüfen Ihrer virtuellen Computer auf Sicherheitsrisiken
+      items:
+        - name: "Überprüfung auf Sicherheitsrisiken\_– Übersicht"
+          href: security-center-vulnerability-assessment-recommendations.md
+        - name: Integrierte Überprüfung auf Sicherheitsrisiken für virtuelle Computer
+          href: built-in-vulnerability-assessment.md
+        - name: Verwenden externer Überprüfungen
+          href: partner-vulnerability-assessment.md
     - name: Schützen Ihrer Server mit Microsoft Defender ATP
       href: security-center-wdatp.md
     - name: Verwenden von Advanced Data Security für SQL auf virtuellen Azure-Computern
@@ -125,14 +135,12 @@
           href: security-center-remediate-recommendations.md
         - name: Stärken des Sicherheitsstatus
           href: security-center-monitoring.md
+        - name: Referenzliste der Empfehlungen
+          href: recommendations-reference.md
         - name: Schützen Ihrer Computer und Apps
           href: security-center-virtual-machine-protection.md
-        - name: Referenz mit Computer- und App-Empfehlungen
-          href: recommendations-compute-and-apps.md
         - name: Schützen von Netzwerkressourcen
           href: security-center-network-recommendations.md
-        - name: Referenz mit Netzwerkempfehlungen
-          href: recommendations-network.md
         - name: Schützen von Daten und Speicherdiensten
           href: security-center-sql-service-recommendations.md
         - name: Schützen von Identität und Zugriff
@@ -155,8 +163,6 @@
           href: security-center-apply-system-updates.md
         - name: Endpoint Protection installieren
           href: security-center-install-endpoint-protection.md
-        - name: Keine Sicherheitsrisikobewertung installiert
-          href: security-center-vulnerability-assessment-recommendations.md
         - name: Berichte zu Bedrohungen
           href: security-center-threat-report.md
         - name: Zuverlässigkeitsbewertung für Warnungen

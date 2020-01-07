@@ -44,7 +44,7 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Integrierte Sicherheitskontrollen
       href: vpn-gateway-security-controls.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen und Verwalten eines VPN-Gateways
       items:
@@ -136,6 +136,8 @@
           items:
             - name: Konfigurieren eines Mandanten
               href: openvpn-azure-ad-tenant.md
+            - name: Konfigurieren eines Mandanten mit mehreren Client-Apps
+              href: openvpn-azure-ad-tenant-multi-app.md
             - name: Konfigurieren von Multi-Factor Authentication (MFA)
               href: openvpn-azure-ad-mfa.md
             - name: Konfigurieren eines VPN-Clients
@@ -266,7 +268,7 @@
     - name: Forum
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork'
     - name: Einschränkungen bei Abonnements und Diensten
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
     - name: Preisrechner

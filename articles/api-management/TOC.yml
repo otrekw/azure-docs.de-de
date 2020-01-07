@@ -6,6 +6,8 @@
       href: api-management-key-concepts.md
     - name: Verfügbarkeit von API Management-Features
       href: api-management-features.md
+    - name: Verwalten von in AKS bereitgestellten Mikrodiensten
+      href: api-management-kubernetes.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -63,7 +65,7 @@
       href: api-management-api-import-restrictions.md
     - name: Übersicht über das selbstgehostete Gateway
       href: self-hosted-gateway-overview.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Definieren von APIs
       items:
@@ -165,7 +167,7 @@
           href: api-management-api-templates.md
         - name: Produkte
           href: api-management-product-templates.md
-        - name: ANWENDUNGEN
+        - name: Anwendungen
           href: api-management-application-templates.md
         - name: Probleme
           href: api-management-issue-templates.md
@@ -229,7 +231,7 @@
           items:
             - name: Übersicht
               href: ../service-fabric/service-fabric-api-management-overview.md
-            - name: Tutorial
+            - name: Lernprogramm
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Verweis
   items:

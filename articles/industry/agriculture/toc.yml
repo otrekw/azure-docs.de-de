@@ -1,42 +1,42 @@
 - name: Übersicht
   items:
-    - name: Was ist FarmBeats?
-      href: overview.md
+    - name: Was ist Azure FarmBeats?
+      href: overview-azure-farmbeats.md
 - name: Lernprogramme
   expanded: true
   items:
     - name: Struktur für Bodenfeuchtigkeit generieren
-      href: generate-soil-moisture-map.md
-    - name: Verlaufstelemetriedaten erfassen
-      href: ingest-historical-telemetry-data.md
+      href: generate-soil-moisture-map-in-azure-farmbeats.md
+    - name: Erfassen historischer Telemetriedaten
+      href: ingest-historical-telemetry-data-in-azure-farmbeats.md
 - name: Konzepte
   items:
     - name: Integrationsmuster
-      href: integration-patterns.md
-    - name: Partnerintegration für Sensor
-      href: sensor-partner-integration.md
-    - name: Partnerintegration für Bilder
-      href: imagery-partner-integration.md
+      href: integration-patterns-in-azure-farmbeats.md
+    - name: Integration von Partnern für Sensordaten
+      href: sensor-partner-integration-in-azure-farmbeats.md
+    - name: Integration eines Partnerunternehmens für Bilder
+      href: imagery-partner-integration-in-azure-farmbeats.md
 - name: Anleitungen
   items:
-    - name: Bereitstellen von FarmBeats
-      href: prepare-for-deployment.md
+    - name: Installieren von Azure FarmBeats
+      href: install-azure-farmbeats.md
     - name: Verwalten von Benutzern
-      href: manage-users.md
+      href: manage-users-in-azure-farmbeats.md
     - name: Verwalten landwirtschaftlicher Betriebe
-      href: manage-farms.md
+      href: manage-farms-in-azure-farmbeats.md
     - name: Sensordaten abrufen
       href: get-sensor-data-from-sensor-partner.md
-    - name: Karten generieren
-      href: generate-maps.md
+    - name: Generieren von Karten
+      href: generate-maps-in-azure-farmbeats.md
     - name: Regeln konfigurieren und Warnungen verwalten
-      href: configure-rules-alerts.md
-    - name: Drohnenbilder abrufen
-      href: get-drone-imagery.md
+      href: configure-rules-alerts-in-azure-farmbeats.md
+    - name: Abrufen von Drohnenbildern
+      href: get-drone-imagery-in-azure-farmbeats.md
 - name: Problembehandlung
   items:
-    - name: Troubleshooting für FarmBeats
-      href: troubleshoot-project-farmbeats.md
+    - name: Problembehandlung in Azure FarmBeats
+      href: troubleshoot-azure-farmbeats.md
 - name: Verweis
   items: null
-  href: references-for-farmbeats.md
+  href: references-for-azure-farmbeats.md

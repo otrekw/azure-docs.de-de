@@ -56,6 +56,8 @@
           href: customize-rdp-properties.md
         - name: Lastenausgleich für in einem Pool zusammengefasste Hostpools
           href: configure-host-pool-load-balancing.md
+        - name: Persönlicher Desktopzuweisungstyp
+          href: configure-host-pool-personal-desktop-assignment-type.md
     - name: Verwenden einer Windows Virtual Desktop-Lizenz
       href: apply-windows-license.md
     - name: Anpassen des Sitzungshostimages
@@ -68,8 +70,12 @@
       href: set-up-scaling-script.md
     - name: Feed anpassen
       href: customize-feed-for-virtual-desktop-users.md
-    - name: Bereitstellen des Diagnosetools
-      href: deploy-diagnostics.md
+    - name: Verwenden der Service-Diagnose
+      items:
+        - name: Bereitstellen des Diagnosetools
+          href: deploy-diagnostics.md
+        - name: Verwenden von Diagnosedaten mit Log Analytics
+          href: diagnostics-log-analytics.md
     - name: Veröffentlichen von integrierten Apps
       href: publish-apps.md
     - name: Einrichten des MSIX-Features zum Anfügen von Apps
@@ -78,8 +84,6 @@
   items:
     - name: Windows Virtual Desktop-Umgebung
       href: environment-setup.md
-    - name: Bandbreitenempfehlungen für Remotesitzungen
-      href: bandwidth-recommendations.md
     - name: Bestimmen der Wartezeit für Benutzerverbindungen
       href: connection-latency.md
     - name: Delegierter Zugriff in Windows Virtual Desktop
@@ -110,8 +114,10 @@
       href: troubleshoot-windows-7-vm.md
     - name: Problembehandlung für das Windows Virtual Desktop-Verwaltungstool
       href: troubleshoot-management-tool.md
-    - name: Remotedesktop-Clientverbindungen
-      href: troubleshoot-client-connection.md
+    - name: Verbindungen des Remotedesktopdiensts
+      href: troubleshoot-service-connection.md
+    - name: Probleme des Remotedesktopclients
+      href: troubleshoot-client.md
     - name: 'Windows Virtual Desktop: PowerShell'
       href: troubleshoot-powershell.md
     - name: Diagnostizieren von Problemen mit der Grafikleistung

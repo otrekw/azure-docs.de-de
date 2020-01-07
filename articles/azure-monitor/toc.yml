@@ -8,7 +8,17 @@
       href: terminology.md
 - name: Schnellstarts
   items:
-    - name: ANWENDUNGEN
+    - name: Überwachen einer Azure-Ressource
+      href: learn/quick-monitor-azure-resource.md
+    - name: Überwachen virtueller Maschinen
+      items:
+        - name: Sammeln – Azure-VMs
+          href: learn/quick-collect-azurevm.md
+        - name: Sammeln – Linux-Computer
+          href: learn/quick-collect-linux-computer.md
+        - name: Sammeln – Windows-Computer
+          href: learn/quick-collect-windows-computer.md
+    - name: Überwachen von Anwendungen
       items:
         - name: .NET-Anwendung
           href: learn/quick-monitor-portal.md
@@ -20,26 +30,20 @@
           href: learn/mobile-center-quickstart.md
         - name: Webanwendung
           href: app/website-monitoring.md
-    - name: Virtuelle Computer
-      items:
-        - name: Sammeln – Azure-VMs
-          href: learn/quick-collect-azurevm.md
-        - name: Sammeln – Linux-Computer
-          href: learn/quick-collect-linux-computer.md
-        - name: Sammeln – Windows-Computer
-          href: learn/quick-collect-windows-computer.md
 - name: Lernprogramme
   items:
-    - name: Protokolle
-      items:
-        - name: Log Analytics
-          href: log-query/get-started-portal.md
-        - name: Protokollabfragen
-          href: log-query/get-started-queries.md
-        - name: Dashboard mit Protokolldaten
-          href: learn/tutorial-logs-dashboards.md
-        - name: Warnungen zu Protokolldaten
-          href: learn/tutorial-response.md
+    - name: Erstellen eines Metrikdiagramms
+      href: learn/tutorial-metrics-explorer.md
+    - name: Erfassen von Protokollen von Azure-Ressourcen
+      href: learn/tutorial-resource-logs.md
+    - name: Schreiben von Protokollabfragen
+      href: log-query/get-started-queries.md
+    - name: Erstellen eines Dashboards aus einer Protokollabfrage
+      href: learn/tutorial-logs-dashboards.md
+    - name: Erstellen einer Warnung aus einer Protokollabfrage
+      href: learn/tutorial-response.md
+    - name: Automatische Skalierung von Leistung und Zeitplan
+      href: learn/tutorial-autoscale-performance-schedule.md
     - name: Application Insights
       items:
         - name: Suchen von Laufzeitausnahmen für Anwendungen
@@ -52,10 +56,6 @@
           href: learn/tutorial-users.md
         - name: Dashboard mit Anwendungsdaten
           href: learn/tutorial-app-dashboards.md
-    - name: Archivieren von Plattformmetriken und -protokolldaten
-      href: learn/tutorial-archive-data.md
-    - name: Automatische Skalierung von Leistung und Zeitplan
-      href: learn/tutorial-autoscale-performance-schedule.md
 - name: Beispiele
   items:
     - name: Azure PowerShell
@@ -117,7 +117,7 @@
         - name: Application Insights
           displayName: FAQ
           href: app/troubleshoot-faq.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwalten von Azure Monitor
       items:
@@ -449,7 +449,7 @@
                   href: app/separate-resources.md
                 - name: Gewusst wie – in Application Insights
                   href: app/how-do-i.md
-        - name: Export
+        - name: Exportieren
           items:
             - name: Fortlaufendem Export
               href: app/export-telemetry.md
@@ -479,50 +479,46 @@
           href: insights/monitor-azure-resource.md
         - name: Überwachen von Ressourcengruppen
           href: insights/resource-group-insights.md
-        - name: Übersicht über Plattformprotokolle
-          href: platform/platform-logs-overview.md
-        - name: Ressourcenprotokolle
+        - name: Plattformprotokolle
           items:
             - name: Übersicht
-              displayname: Resource logs
-              href: platform/resource-logs-overview.md
-            - name: "Erfassen in Azure\_Monitor-Protokollen"
-              displayname: Resource logs
-              href: platform/resource-logs-collect-workspace.md
-            - name: Archivieren im Speicher
-              displayname: Resource logs
-              href: platform/resource-logs-collect-storage.md
-            - name: Stream für Event Hubs
-              displayname: Resource logs
-              href: platform/resource-logs-stream-event-hubs.md
-        - name: Aktivitätsprotokoll
-          items:
-            - name: Übersicht
-              displayname: Activity log
-              href: platform/activity-logs-overview.md
-            - name: Erfassen von Daten mit der Diagnoseeinstellung
-              displayname: Activity log
-              href: platform/diagnostic-settings-subscription.md
-            - name: Anzeigen und Abrufen
-              displayname: Activity log
+              displayName: 'Platform logs, Resource logs, Activity log'
+              href: platform/platform-logs-overview.md
+            - name: Anzeigen des Aktivitätsprotokolls
+              displayName: Platform logs
               href: platform/activity-log-view.md
-            - name: Sammeln und Analysieren
-              displayname: Activity log
-              href: platform/activity-log-collect.md
-            - name: Mandantenübergreifendes Sammeln
-              displayname: Activity log
-              href: platform/activity-log-collect-tenants.md
-            - name: Export
-              displayname: Activity log
-              href: platform/activity-log-export.md
-            - name: Schema
-              displayname: Activity log
-              href: platform/activity-log-schema.md
+            - name: Senden an Ziele
+              items:
+                - name: Log Analytics-Arbeitsbereich
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-workspace.md
+                - name: Azure-Speicher
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-collect-storage.md
+                - name: Event Hubs
+                  displayname: 'Resource logs, Activity log, Platform logs'
+                  href: platform/resource-logs-stream-event-hubs.md
+            - name: Legacy-Aktivitätsprotokollsammlung
+              items:
+                - name: Übersicht
+                  displayName: Resource logs
+                  href: platform/diagnostic-settings-legacy.md
+                - name: Sammeln und Analysieren
+                  displayname: Activity log
+                  href: platform/activity-log-collect.md
+                - name: Mandantenübergreifendes Sammeln
+                  displayname: Activity log
+                  href: platform/activity-log-collect-tenants.md
+                - name: Exportieren
+                  displayname: Activity log
+                  href: platform/activity-log-export.md
         - name: Diagnoseeinstellungen
           items:
             - name: Erstellen einer Diagnoseeinstellung
+              displayName: 'Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings.md
-            - name: Erstellen einer Diagnoseeinstellung mit Resource Manager
+            - name: Erstellen mit Resource Manager
+              displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
               href: platform/diagnostic-settings-template.md
             - name: Ändern in das Blobspeicherformat
               displayname: Diagnostic settings
@@ -579,6 +575,8 @@
                   href: platform/log-analytics-agent.md
                 - name: Windows-Agents
                   href: platform/agent-windows.md
+                - name: Linux-Agents
+                  href: platform/agent-linux.md
                 - name: VM-Erweiterung für Windows
                   href: ../virtual-machines/windows/extensions-oms.md
                 - name: VM-Erweiterung für Linux
@@ -700,7 +698,7 @@
               items:
                 - name: Übersicht über Livedaten (Vorschau)
                   href: insights/container-insights-livedata-overview.md
-                - name: Einrichtung
+                - name: Einrichten
                   href: insights/container-insights-livedata-setup.md
                 - name: Anzeigen von Clustermetriken
                   href: insights/container-insights-livedata-metrics.md
@@ -745,7 +743,7 @@
               href: insights/cosmosdb-insights-overview.md
         - name: Netzwerke
           items:
-            - name: Azure Monitor für Networks
+            - name: Azure Monitor für Netzwerke
               href: insights/network-insights-overview.md
             - name: Netzwerkanalysen
               href: insights/azure-networking-analytics.md
@@ -897,9 +895,9 @@
           href: platform/rest-api-walkthrough.md
     - name: Visualisieren von Daten
       items:
-        - name: Ansichten
+        - name: Sichten
           items:
-            - name: Ansicht-Designer
+            - name: Sicht-Designer
               href: platform/view-designer.md
             - name: Kachelreferenz
               href: platform/view-designer-tiles.md
@@ -1109,7 +1107,7 @@
               href: insights/solutions-resources-automation.md
             - name: Protokollsuchen und -warnungen
               href: insights/solutions-resources-searches-alerts.md
-            - name: Ansichten
+            - name: Sichten
               href: insights/solutions-resources-views.md
             - name: Bewährte Methoden
               href: insights/solutions-best-practices.md
@@ -1161,10 +1159,16 @@
       items:
         - name: Unterstützte Metriken
           href: platform/metrics-supported.md
+        - name: Über Diagnoseeinstellungen exportierbare Metriken
+          href: platform/metrics-supported-export-diagnostic-settings.md
         - name: Unterstützte Metriken für neuere Warnungen
           href: platform/alerts-metric-near-real-time.md
-    - name: 'Plattformprotokolldienste, -kategorien und -schemas'
-      href: platform/diagnostic-logs-schema.md
+    - name: Plattformprotokolle
+      items:
+        - name: 'Ressourcenprotokoll: Dienste, Kategorien und Schemas'
+          href: platform/diagnostic-logs-schema.md
+        - name: Aktivitätsprotokollschema
+          href: platform/activity-log-schema.md
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/monitor?view=azure-cli-latest
     - name: 'Azure CLI: Application Insights (Vorschau)'
