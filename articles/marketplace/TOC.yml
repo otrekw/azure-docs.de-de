@@ -51,6 +51,9 @@
           items:
             - name: Bewährte Methoden für Angebotslistung
               href: ./gtm-offer-listing-best-practices.md
+              items:
+                - name: Kategorien
+                  href: ./gtm-offer-listing-best-practices-categories.md
             - name: Kriterien für eine Empfehlung
               href: ./gtm-how-to-get-featured.md
             - name: Überprüfung von Marketplace-Inhalten

@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 – Sichern virtueller Computer
       href: tutorial-backup-vms.md
-    - name: '10: Steuern virtueller Computer'
+    - name: '10: Verwalten von virtuellen Computern'
       href: tutorial-govern-resources.md
     - name: '11: Nachverfolgen und Aktualisieren von virtuellen Computern'
       href: tutorial-config-management.md

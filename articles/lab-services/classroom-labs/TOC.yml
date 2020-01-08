@@ -26,8 +26,10 @@
       items:
         - name: Verwenden von Labs für das Abhalten von Kursen
           href: classroom-labs-scenarios.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
+    - name: Administratorhandbuch
+      href: administrator-guide.md
     - name: 'Classroom-Labs: Klassentypen'
       items:
         - name: Übersicht über Klassentypen
@@ -52,6 +54,8 @@
           href: how-to-connect-peer-virtual-network.md
         - name: Anfügen oder Trennen eines Katalogs mit freigegebenen Images
           href: how-to-attach-detach-shared-image-gallery.md
+        - name: Hinzufügen eines Benutzers als Besitzer zu einem Classroom-Lab
+          href: how-to-add-user-lab-owner.md
     - name: Erstellen und Konfigurieren von Classroom-Labs (Kursleiter)
       items:
         - name: Erstellen und Verwalten von Classroom-Labs
@@ -70,6 +74,8 @@
           href: how-to-use-shared-image-gallery.md
         - name: Aktivieren der Remotedesktopverbindung für Linux
           href: how-to-enable-remote-desktop-linux.md
+        - name: Aktivieren des automatischen Herunterfahrens beim Trennen
+          href: how-to-enable-shutdown-disconnect.md
         - name: Aktivieren der geschachtelten Virtualisierung auf einem virtuellen Vorlagencomputer
           href: how-to-enable-nested-virtualization-template-vm.md
         - name: Vorbereiten eines virtuellen Windows-Vorlagencomputers
