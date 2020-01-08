@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a76515fdeb7d812c42a83d8a53fb83ac71407a2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 9fb093312365ce965c6baf3c9f50d74359cec0a7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099781"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647695"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern
 
@@ -76,8 +76,8 @@ ms.locfileid: "70099781"
 [azure-ps]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 [dbms-guide-2.1]:../../virtual-machines-windows-sap-dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f
@@ -362,7 +362,7 @@ ms.locfileid: "70099781"
 [sap-ha-guide-figure-6003]:media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]: https://support.sap.com/pam (SAP-Produktverfügbarkeitsmatrix [Product Availability Matrix, PAM])
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -379,15 +379,15 @@ ms.locfileid: "70099781"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-windows-attach-disk-portal]:../../virtual-machines-windows-attach-disk-portal.md
-[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/resource-group-overview.md
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture]:../../../azure-resource-manager/management/overview.md
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 [virtual-machines-azurerm-versus-azuresm]:virtual-machines-windows-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md
@@ -478,7 +478,7 @@ Diese SAP-Hinweise beziehen sich auf das Thema SAP in Azure:
 | [1999351] |Virtualisierung unter Windows: Erweiterte Überwachung |
 | [2243692] |Verwendung von Azure Storage Premium (SSD) für SAP-DBMS-Instanz |
 
-Informieren Sie sich auch über die [Einschränkungen von Azure-Abonnements][azure-subscription-service-limits-subscription], einschließlich der allgemeinen Standard- und Maximaleinschränkungen.
+Informieren Sie sich auch über die [Einschränkungen von Azure-Abonnements][azure-resource-manager/management/azure-subscription-service-limits-subscription], einschließlich der allgemeinen Standard- und Maximaleinschränkungen.
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Vergleich zwischen dem Azure Resource Manager- und dem klassischen Azure-Bereitstellungsmodell für SAP mit hoher Verfügbarkeit
 Das Azure Resource Manager-Bereitstellungsmodell und das klassische Azure-Bereitstellungsmodell unterscheiden sich in den folgenden Bereichen:
@@ -488,7 +488,7 @@ Das Azure Resource Manager-Bereitstellungsmodell und das klassische Azure-Bereit
 - Unterstützung für SAP-Multi-SID-Szenarien
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a> Ressourcengruppen
-In Azure Resource Manager können Sie mit Ressourcengruppen alle Anwendungsressourcen im Azure-Abonnement verwalten. Bei einem integrierten Ansatz in einer Ressourcengruppe haben alle Ressourcen denselben Lebenszyklus. So werden z.B. alle Ressourcen zur gleichen Zeit erstellt und gelöscht. Weitere Informationen zu [Ressourcengruppen](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+In Azure Resource Manager können Sie mit Ressourcengruppen alle Anwendungsressourcen im Azure-Abonnement verwalten. Bei einem integrierten Ansatz in einer Ressourcengruppe haben alle Ressourcen denselben Lebenszyklus. So werden z.B. alle Ressourcen zur gleichen Zeit erstellt und gelöscht. Weitere Informationen zu [Ressourcengruppen](../../../azure-resource-manager/management/overview.md#resource-groups).
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Abhängigkeit des internen Azure Load Balancer von der Azure-Ressourcengruppe
 
@@ -1016,7 +1016,7 @@ Wenn Sie andere Nummern für die SAP ASCS- oder SCS-Instanzen verwenden möchten
 1. Wählen Sie im Azure-Portal **<*SID*>-lb-ascs load balancer** > **Lastenausgleichsregeln**.
 2. Ändern Sie für alle zur SAP ASCS- oder SCS-Instanz gehörenden Lastenausgleichsregeln die folgenden Werte:
 
-   * NAME
+   * Name
    * Port
    * Back-End-Port
 
@@ -1046,7 +1046,7 @@ Fügen Sie zuerst diese Windows-Registrierungseinträge auf beiden Windows-Clust
 | --- | --- |
 | Variablenname |`KeepAliveTime` |
 | Variablentyp |REG_DWORD-Wert (dezimal) |
-| Wert |120000 |
+| value |120000 |
 | Link zur Dokumentation |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**Tabelle 3:** Ändern des ersten TCP/IP-Parameters_
@@ -1057,7 +1057,7 @@ Fügen Sie diese Windows-Registrierungseinträge dann auf beiden Windows-Cluster
 | --- | --- |
 | Variablenname |`KeepAliveInterval` |
 | Variablentyp |REG_DWORD-Wert (dezimal) |
-| Wert |120000 |
+| value |120000 |
 | Link zur Dokumentation |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**Tabelle 4:** Ändern des zweiten TCP/IP-Parameters_

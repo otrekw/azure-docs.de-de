@@ -1,18 +1,14 @@
 ---
 title: Konfigurieren der Prometheus-Integration in Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie den Azure Monitor für Container-Agent so konfigurieren können, dass Metriken aus Prometheus mit Ihrem Azure Kubernetes Service-Cluster abgerufen werden.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 51bdf0cfedb30fbd95f9a44e8f4a0efe4e857104
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1da2142f287bde83be7cede282bd854ce822d23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510747"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403516"
 ---
 # <a name="configure-scraping-of-prometheus-metrics-with-azure-monitor-for-containers"></a>Konfigurieren des Abrufs von Prometheus-Metriken mit Azure Monitor für Container
 
@@ -38,20 +34,20 @@ Das aktive Abrufen von Metriken von Prometheus erfolgt aus einer von zwei Perspe
 
 Wenn eine URL angegeben wird, erfasst Azure Monitor für Container nur den Endpunkt. Wenn „Kubernetes-Dienst“ angegeben wird, wird der Dienstname mit dem Cluster-DNS-Server aufgelöst, um die IP-Adresse abzurufen. Anschließend wird der aufgelöste Dienst abgerufen.
 
-|`Scope` | Schlüssel | Datentyp | Wert | BESCHREIBUNG |
+|`Scope` | Key | Datentyp | value | BESCHREIBUNG |
 |------|-----|-----------|-------|-------------|
 | Clusterweit | | | | Geben Sie eine der folgenden drei Methoden zum Abrufen von Endpunkten für Metriken an. |
-| | `urls` | Zeichenfolge | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Azure Monitor für Containerparameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
-| | `kubernetes_services` | Zeichenfolge | Durch Trennzeichen getrenntes Array | Ein Array von Kubernetes Services zum Abrufen von Metriken aus „kube-state-metrics“. Beispiel: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Boolean | "true" oder "false" | Wenn die Option in den clusterweiten Einstellungen auf `true` festgelegt ist, ruft der Azure Monitor für Container-Agent Kubernetes Pods aus dem gesamten Cluster für die folgenden Prometheus-Anmerkungen ab:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Boolean | "true" oder "false" | Ermöglicht das Abrufen des Pods. `monitor_kubernetes_pods` muss auf `true` festgelegt werden. |
-| | `prometheus.io/scheme` | Zeichenfolge | HTTP oder HTTPS | Nimmt den Standardwert Abrufen über HTTP an. Legen Sie diesen Wert bei Bedarf auf `https` fest. | 
-| | `prometheus.io/path` | Zeichenfolge | Durch Trennzeichen getrenntes Array | Der HTTP-Ressourcenpfad, aus dem Metriken abgerufen werden sollen. Wenn der Metrikpfad nicht `/metrics` lautet, definieren Sie ihn mit dieser Anmerkung. |
-| | `prometheus.io/port` | Zeichenfolge | 9102 | Geben Sie einen Port an, von dem abgerufen werden soll. Wenn der Port nicht festgelegt ist, wird standardmäßig 9102 verwendet. |
-| | `monitor_kubernetes_pods_namespaces` | Zeichenfolge | Durch Trennzeichen getrenntes Array | Eine Zulassungsliste von Namespaces zum Abrufen von Metriken von Kubernetes-Pods.<br> Zum Beispiel, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| Knotenweit | `urls` | Zeichenfolge | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Azure Monitor für Containerparameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
-| Knotenweit oder clusterweit | `interval` | Zeichenfolge | 60s | Der Standardwert für das Sammlungsintervall ist eine Minute (60 Sekunden). Sie können die Sammlung entweder für *[prometheus_data_collection_settings.node]* und/oder für *[prometheus_data_collection_settings.cluster]* in Zeiteinheiten wie s, m, h ändern. |
-| Knotenweit oder clusterweit | `fieldpass`<br> `fielddrop`| Zeichenfolge | Durch Trennzeichen getrenntes Array | Sie können bestimmte Metriken angeben, die vom Endpunkt erfasst werden sollen oder nicht, indem Sie die Zulassungs- (`fieldpass`) und Sperrauflistung (`fielddrop`) festlegen. Sie müssen die Zulassungsliste zuerst festlegen. |
+| | `urls` | String | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Azure Monitor für Containerparameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
+| | `kubernetes_services` | String | Durch Trennzeichen getrenntes Array | Ein Array von Kubernetes Services zum Abrufen von Metriken aus „kube-state-metrics“. Beispiel: `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Boolean | true oder false | Wenn die Option in den clusterweiten Einstellungen auf `true` festgelegt ist, ruft der Azure Monitor für Container-Agent Kubernetes Pods aus dem gesamten Cluster für die folgenden Prometheus-Anmerkungen ab:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Boolean | true oder false | Ermöglicht das Abrufen des Pods. `monitor_kubernetes_pods` muss auf `true` festgelegt werden. |
+| | `prometheus.io/scheme` | String | HTTP oder HTTPS | Nimmt den Standardwert Abrufen über HTTP an. Legen Sie diesen Wert bei Bedarf auf `https` fest. | 
+| | `prometheus.io/path` | String | Durch Trennzeichen getrenntes Array | Der HTTP-Ressourcenpfad, aus dem Metriken abgerufen werden sollen. Wenn der Metrikpfad nicht `/metrics` lautet, definieren Sie ihn mit dieser Anmerkung. |
+| | `prometheus.io/port` | String | 9102 | Geben Sie einen Port an, von dem abgerufen werden soll. Wenn der Port nicht festgelegt ist, wird standardmäßig 9102 verwendet. |
+| | `monitor_kubernetes_pods_namespaces` | String | Durch Trennzeichen getrenntes Array | Eine Zulassungsliste von Namespaces zum Abrufen von Metriken von Kubernetes-Pods.<br> Zum Beispiel, `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
+| Knotenweit | `urls` | String | Durch Trennzeichen getrenntes Array | HTTP-Endpunkt (entweder IP-Adresse oder gültiger URL-Pfad angegeben). Beispiel: `urls=[$NODE_IP/metrics]`. („$NODE_IP“ ist ein spezifischer Azure Monitor für Containerparameter und kann anstelle der Knoten-IP-Adresse verwendet werden. Muss alles in Großbuchstaben sein.) |
+| Knotenweit oder clusterweit | `interval` | String | 60s | Der Standardwert für das Sammlungsintervall ist eine Minute (60 Sekunden). Sie können die Sammlung entweder für *[prometheus_data_collection_settings.node]* und/oder für *[prometheus_data_collection_settings.cluster]* in Zeiteinheiten wie s, m, h ändern. |
+| Knotenweit oder clusterweit | `fieldpass`<br> `fielddrop`| String | Durch Trennzeichen getrenntes Array | Sie können bestimmte Metriken angeben, die vom Endpunkt erfasst werden sollen oder nicht, indem Sie die Zulassungs- (`fieldpass`) und Sperrauflistung (`fielddrop`) festlegen. Sie müssen die Zulassungsliste zuerst festlegen. |
 
 ConfigMaps ist eine globale Liste, und es kann nur eine ConfigMap auf den Agent angewendet werden. Es kann keine andere ConfigMaps vorhanden sein, die die Sammlungen außer Kraft setzt.
 
@@ -182,7 +178,7 @@ InsightsMetrics
 ```
 Die Ausgabe zeigt ähnliche Ergebnisse wie die folgenden an:
 
-![Protokollabfrageergebnisse von Datenerfassungsvolumen](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
+![Protokollabfrageergebnisse zur Menge der erfassten Daten](./media/container-insights-prometheus-integration/log-query-example-usage-03.png)
 
 Um abzuschätzen, was jede Metrikgröße in GB für einen Monat bedeutet, um zu verstehen, ob das Volumen der im Arbeitsbereich empfangenen Erfassungsdaten hoch ist, wird die folgende Abfrage bereitgestellt.
 
@@ -197,7 +193,7 @@ InsightsMetrics
 
 Die Ausgabe zeigt ähnliche Ergebnisse wie die folgenden an:
 
-![Protokollabfrageergebnisse von Datenerfassungsvolumen](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
+![Protokollabfrageergebnisse zur Menge der erfassten Daten](./media/container-insights-prometheus-integration/log-query-example-usage-02.png)
 
 Weitere Informationen zum Überwachen der Datenverwendung und zum Analysieren von Kosten finden Sie unter [Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen](../platform/manage-cost-storage.md).
 
