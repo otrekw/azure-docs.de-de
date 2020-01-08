@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 23e8e4f9a092e871e62da27c8bf0c58a3bb8eb5b
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f61d4beac5b5285b80fb05521cffc961f7f702c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084683"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356505"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architektur der Notfallwiederherstellung physischer Server in Azure
 
@@ -45,7 +45,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
     - Der Konfigurationsserver orchestriert die Replikationsverwaltung mit Azure über Port HTTPS 443 für ausgehenden Datenverkehr.
     - Der Prozessserver empfängt Daten von Quellcomputern, optimiert und verschlüsselt sie und sendet sie über Port 443 für ausgehenden Datenverkehr an den Azure-Speicher.
     - Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Multi-VM wird verwendet, wenn Sie mehrere Computer in Replikationsgruppen zusammenfassen, für die bei einem Failover gemeinsame ausfallsichere und anwendungskonsistente Wiederherstellungspunkte verwendet werden. Dies ist hilfreich, wenn auf Computern dieselbe Workload ausgeführt wird und die Computer einheitlich sein müssen.
-4. Der Datenverkehr wird auf öffentlichen Endpunkten des Azure-Speichers über das Internet repliziert. Alternativ hierzu können Sie das [öffentliche Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) von Azure ExpressRoute verwenden. Das Replizieren von Datenverkehr über ein Site-to-Site-VPN von einem lokalen Standort nach Azure wird nicht unterstützt.
+4. Der Datenverkehr wird auf öffentlichen Endpunkten des Azure-Speichers über das Internet repliziert. Alternativ hierzu können Sie das [öffentliche Peering](../expressroute/about-public-peering.md) von Azure ExpressRoute verwenden. Das Replizieren von Datenverkehr über ein Site-to-Site-VPN von einem lokalen Standort nach Azure wird nicht unterstützt.
 
 
 **Physisch-zu-Azure-Replikationsprozess**
@@ -54,7 +54,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 ## <a name="failover-and-failback-process"></a>Failover- und Failbackprozesse
 
-Nachdem die Replikation eingerichtet ist und Sie einen Notfallwiederherstellungsdrill (Testfailover) ausgeführt haben, um zu prüfen, ob alles wie erwartet arbeitet, können Sie bei Bedarf ein Failover und Failback ausführen. Beachten Sie Folgendes:
+Nachdem die Replikation eingerichtet ist und Sie einen Notfallwiederherstellungsdrill (Testfailover) ausgeführt haben, um zu prüfen, ob alles wie erwartet arbeitet, können Sie bei Bedarf ein Failover und Failback ausführen. Beachten Sie dabei Folgendes:
 
 - Geplante Failover werden nicht unterstützt.
 - Sie müssen ein Failback auf einer lokalen virtuellen VMware-VM durchführen. Daher benötigen Sie eine lokale VMware-Infrastruktur, auch wenn Sie lokale physische Server nach Azure replizieren.

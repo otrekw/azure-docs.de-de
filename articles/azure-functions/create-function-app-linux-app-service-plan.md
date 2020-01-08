@@ -3,12 +3,12 @@ title: Erstellen einer Funktions-App unter Linux im Azure-Portal
 description: Erfahren Sie, wie Sie Ihre erste Azure-Funktion für die serverlose Ausführung mit dem Azure-Portal erstellen.
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: fdc2d9c7b5945e48cc87f3edd918498c3d45f55e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d48bfc8888afe6b7a46151d2030519f752169551
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233088"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410498"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Erstellen einer Funktions-App unter Linux in einem Azure App Service-Plan
 
@@ -34,11 +34,11 @@ Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funkti
 
     ![Definieren neuer Funktions-App-Einstellungen](./media/create-function-app-linux-app-service-plan/function-app-create-flow2.png)
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **App-Name** | Global eindeutiger Name | Der Name, der Ihre neue Funktionen-App bezeichnet Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. | 
-    | **[Ressourcengruppe](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird |
+    | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)** |  myResourceGroup | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird |
     | **Betriebssystem** | Linux | Die Funktions-App wird unter Linux ausgeführt. |
     | **Veröffentlichen** | Code | Der standardmäßige Linux-Container für Ihren **Runtimestapel** wird verwendet. Sie müssen lediglich den Projektcode Ihrer Funktions-App bereitstellen. Eine weitere Option ist die Veröffentlichung eines benutzerdefinierten [Docker-Images](functions-create-function-linux-custom-image.md). |
     | **[Hostingplan](functions-scale.md)** | App Service-Plan | Der Hostingplan, der definiert, wie Ihre Ressourcen der Funktionen-App zugewiesen werden Bei der Ausführung in einem App Service-Plan können Sie die [Skalierung Ihrer Funktions-App](functions-scale.md) steuern.  |

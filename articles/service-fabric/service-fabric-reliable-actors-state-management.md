@@ -1,25 +1,16 @@
 ---
-title: Reliable Actors-Zustandsverwaltung | Microsoft Docs
+title: Reliable Actors-Zustandsverwaltung
 description: Hier wird beschrieben, wie der Reliable Actors-Zustand für Hochverfügbarkeit verwaltet, persistent gespeichert und repliziert wird.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 65dd47ab21ca4b1c50e0f17b73e7bc4eae8a96e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348914"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable Actors-Zustandsverwaltung
 Reliable Actors sind Singlethread-Objekte, die sich zum Kapseln von Logik und Zustand eignen. Da Akteure unter Reliable Services ausgeführt werden, können Sie den Zustand zuverlässig beibehalten, indem sie die gleichen Persistenz- und Replikationsmechanismen verwenden. Daher verlieren Akteure ihren Zustand nicht nach Fehlern, bei der Reaktivierung nach einer Garbage Collection oder beim Verschieben zwischen Knoten in einem Cluster aufgrund von Ressourcenausgleich oder Upgrades.

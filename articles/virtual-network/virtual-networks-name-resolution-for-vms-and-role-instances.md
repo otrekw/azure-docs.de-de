@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 69e9e09b3f2c488f62732e0a74d212126826e8bf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 246af99cfec5ca41347da70e80bfc6dfff448eb3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368034"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -43,8 +43,8 @@ Welche Art der Namensauflösung Sie verwenden, hängt davon ab, wie die Ressourc
 | Namensauflösung aus App Service-Web-Apps in einem virtuellen Netzwerk in virtuelle Computer in einem anderen virtuellen Netzwerk. |Vom Kunden verwaltete DNS-Server, die Abfragen zwischen virtuellen Netzwerken zur Auflösung durch Azure weiterleiten (DNS-Proxy). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Auflösung lokaler Computer- und Dienstnamen von VMs oder Rolleninstanzen in Azure. |Vom Kunden verwaltete DNS-Server (z. B. lokale Domänencontroller, lokale schreibgeschützte Domänencontroller oder ein sekundärer DNS-Server, der mithilfe von Zonenübertragungen synchronisiert wird). Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
 | Auflösung von Azure-Hostnamen von lokalen Computern |Weiterleiten von Abfragen an einen vom Kunden verwalteten DNS-Proxyserver im zugehörigen virtuellen Netzwerk. Der Proxyserver leitet Abfragen zur Auflösung an Azure weiter. Siehe [Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nur FQDN |
-| Reverse-DNS für interne IPs |[Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nicht zutreffend |
-| Namensauflösung zwischen virtuellen Computern oder Rolleninstanzen in unterschiedlichen Clouddiensten, nicht in einem virtuellen Netzwerk |Nicht zutreffend Die Konnektivität zwischen virtuellen Computern und Rolleninstanzen in verschiedenen Clouddiensten wird außerhalb eines virtuellen Netzwerks nicht unterstützt. |Nicht zutreffend|
+| Reverse-DNS für interne IPs |[Namensauflösung mithilfe eines eigenen DNS-Servers](#name-resolution-that-uses-your-own-dns-server). |Nicht verfügbar |
+| Namensauflösung zwischen virtuellen Computern oder Rolleninstanzen in unterschiedlichen Clouddiensten, nicht in einem virtuellen Netzwerk |Nicht zutreffend Die Konnektivität zwischen virtuellen Computern und Rolleninstanzen in verschiedenen Clouddiensten wird außerhalb eines virtuellen Netzwerks nicht unterstützt. |Nicht verfügbar|
 
 ## <a name="azure-provided-name-resolution"></a>Von Azure bereitgestellte Namensauflösung
 
@@ -193,22 +193,16 @@ Wenn Sie eigene DNS-Server verwenden, bietet Azure die Möglichkeit, für jedes 
 
 > [!NOTE]
 > Netzwerkverbindungseigenschaften wie die IP-Adressen von DNS-Servern sollten nicht direkt auf VMs bearbeitet werden. Dies liegt daran, dass sie während der Dienstreparatur gelöscht werden können, wenn der virtuelle Netzwerkadapter ersetzt wird. Dies gilt für Windows- und Linux-VMs.
->
->
 
 Wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, können Sie DNS-Server für ein virtuelles Netzwerk und eine Netzwerkschnittstelle angeben. Weitere Informationen finden Sie unter [Erstellen, Ändern oder Löschen eines virtuellen Netzwerks](manage-virtual-network.md) und [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md).
 
 > [!NOTE]
 > Wenn Sie sich für den benutzerdefinierten DNS-Server für Ihr virtuelles Netzwerk entscheiden, müssen Sie mindestens eine DNS-Server-IP-Adresse angeben; andernfalls ignoriert das virtuelle Netzwerk die Konfiguration und verwendet stattdessen das von Azure bereitgestellte DNS.
->
->
 
 Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server für das virtuelle Netzwerk im Portal oder in der [Netzwerkkonfigurationsdatei](https://msdn.microsoft.com/library/azure/jj157100) angeben. Für Clouddienste können Sie DNS-Server über die [Dienstkonfigurationsdatei](https://msdn.microsoft.com/library/azure/ee758710) oder mithilfe von PowerShell mit [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm) angegeben.
 
 > [!NOTE]
-> Wenn Sie die DNS-Einstellungen für ein virtuelles Netzwerk oder einen virtuellen Computer ändern, das bzw. der schon bereitgestellt wurde, müssen Sie für alle betroffenen virtuellen Computer im virtuellen Netzwerk die DHCP-Leasedauer verlängern, damit die neuen DNS-Einstellungen wirksam werden. Bei virtuellen Computern, auf denen das Windows-Betriebssystem ausgeführt wird, können Sie dazu `ipconfig /renew` direkt auf dem virtuellen Computer eingeben. Die Schritte unterscheiden sich je nach Betriebssystem. Weitere Informationen finden Sie in der jeweiligen Dokumentation für Ihren Betriebssystemtyp. 
->
->
+> Wenn Sie die DNS-Einstellungen für ein virtuelles Netzwerk oder einen virtuellen Computer ändern, das bzw. der schon bereitgestellt wurde, müssen Sie für alle betroffenen virtuellen Computer im virtuellen Netzwerk die DHCP-Leasedauer verlängern, damit die neuen DNS-Einstellungen wirksam werden. Bei virtuellen Computern, auf denen das Windows-Betriebssystem ausgeführt wird, können Sie dazu `ipconfig /renew` direkt auf dem virtuellen Computer eingeben. Die Schritte unterscheiden sich je nach Betriebssystem. Weitere Informationen finden Sie in der jeweiligen Dokumentation für Ihren Betriebssystemtyp.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

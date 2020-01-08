@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 9635798720667e38a767f26fc2e5f5374e420059
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 838145f8573e11deff8566c932a9c73c6f59f03b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795547"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561659"
 ---
 # <a name="what-is-application-gateway-ingress-controller"></a>Was ist der Application Gateway-Eingangscontroller?
 Der Application Gateway-Eingangscontroller (Application Gateway Ingress Controller, AGIC) ist eine Kubernetes-Anwendung, die es Kunden von [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service/) ermöglicht, den nativen L7-Lastenausgleich von [Application Gateway](https://azure.microsoft.com/services/application-gateway/) zu nutzen, um Cloudsoftware im Internet bereitzustellen. AGIC überwacht den Kubernetes-Cluster, auf dem er gehostet wird, und aktualisiert fortlaufend eine Application Gateway-Instanz, sodass ausgewählte Dienste im Internet bereitgestellt werden.
@@ -28,7 +28,7 @@ Die Verwendung von Application Gateway zusätzlich zu AGIC schützt auch Ihren A
 
 ![Azure Application Gateway und AKS](./media/application-gateway-ingress-controller-overview/architecture.png)
 
-AGIC wird über die Kubernetes-[Eingangsressource](http://kubernetes.io/docs/user-guide/ingress/) sowie über Dienste und Bereitstellungen/Pods konfiguriert. Er bietet eine Reihe von Features und nutzt dabei den nativen L7-Lastenausgleich von Application Gateway in Azure. Beispiele für solche Features:
+AGIC wird über die Kubernetes-[Eingangsressource](https://kubernetes.io/docs/user-guide/ingress/) sowie über Dienste und Bereitstellungen/Pods konfiguriert. Er bietet eine Reihe von Features und nutzt dabei den nativen L7-Lastenausgleich von Application Gateway in Azure. Beispiele für solche Features:
   - URL-Routing
   - Cookiebasierte Affinität
   - SSL-Terminierung

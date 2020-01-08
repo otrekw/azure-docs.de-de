@@ -16,12 +16,12 @@ ms.date: 10/26/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e76e5c5d2cfcfd983f2b5cdc279f0c13fa6706e4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bf8a2cf6c50e05a0fecff387f2e125c50931b95f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832709"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608719"
 ---
 # <a name="govern-access-for-external-users-in-azure-ad-entitlement-management"></a>Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung
 
@@ -105,7 +105,7 @@ Um zu gewährleisten, dass Benutzer außerhalb Ihrer Organisation Zugriffspakete
 
 ### <a name="review-your-office-365-group-sharing-settings"></a>Überprüfen der Freigabeeinstellungen der Office 365-Gruppe
 
-- Wenn Sie Office 365-Gruppen in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass **Benutzer dürfen neue Gastbenutzer zur Organisation hinzufügen** auf **Ein** gesetzt ist, damit Gastbenutzer zugreifen können. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs auf Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-guest-access-to-office-365-groups).
+- Wenn Sie Office 365-Gruppen in Ihre Zugriffspakete für externe Benutzer aufnehmen möchten, stellen Sie sicher, dass **Benutzer dürfen neue Gastbenutzer zur Organisation hinzufügen** auf **Ein** gesetzt ist, damit Gastbenutzer zugreifen können. Weitere Informationen finden Sie unter [Verwalten des Gastzugriffs auf Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?view=o365-worldwide#manage-groups-guest-access).
 
 - Wenn Sie möchten, dass externe Benutzer auf die SharePoint Online-Website und die der Office 365-Gruppe zugeordneten Ressourcen zugreifen können, müssen Sie sicherstellen, dass die externe SharePoint Online-Freigabe aktiviert ist. Weitere Informationen finden Sie unter [Aktivieren oder Deaktivieren der externen Freigabe](https://docs.microsoft.com/sharepoint/turn-external-sharing-on-or-off#change-the-organization-level-external-sharing-setting).
 
@@ -125,7 +125,7 @@ Sie können auswählen, was passiert, wenn ein externer Benutzer, der per Genehm
 
 1. Klicken Sie im linken Menü im Abschnitt **Berechtigungsverwaltung** auf **Einstellungen**.
 
-1. Klicken Sie auf **Edit**.
+1. Klicken Sie auf **Bearbeiten**.
 
     ![Einstellungen für die Verwaltung des Lebenszyklus von externen Benutzern](./media/entitlement-management-external-users/settings-external-users.png)
 

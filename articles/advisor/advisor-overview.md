@@ -1,21 +1,14 @@
 ---
-title: Einführung in Azure Advisor | Microsoft Docs
+title: Einführung in Azure Advisor
 description: Nutzen Sie Azure Advisor, um Ihre Azure-Bereitstellungen zu optimieren.
-services: advisor
-documentationcenter: NA
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: sagupt
-ms.openlocfilehash: 1a1ed13697d838041d1ac98b966695e24c06edbe
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74145378"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443094"
 ---
 # <a name="introduction-to-azure-advisor"></a>Einführung in Azure Advisor
 
@@ -34,10 +27,10 @@ Der Zugriff auf Advisor erfolgt im [Azure-Portal](https://aka.ms/azureadvisordas
 Auf dem Advisor-Dashboard werden personalisierte Empfehlungen für alle Ihre Abonnements angezeigt.  Sie können Filter zum Anzeigen von Empfehlungen für bestimmte Abonnements und Ressourcentypen anwenden.  Die Empfehlungen sind in vier Kategorien unterteilt: 
 
 * **Hochverfügbarkeit**: Der Ratgeber hilft, die ununterbrochene Verfügbarkeit Ihrer unternehmenskritischen Anwendungen zu gewährleisten und zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md).
-* **Sicherheit:** Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
+* **Sicherheit**: Der Ratgeber hilft beim Erkennen von Bedrohungen und Sicherheitsrisiken, die zu Sicherheitslücken führen können. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Sicherheit](advisor-security-recommendations.md).
 * **Leistung**: Der Ratgeber hilft, die Geschwindigkeit Ihrer Anwendungen zu verbessern. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md).
 * **Kosten**: Mit dem Ratgeber können Sie Ihre Gesamtausgaben für Azure senken und optimieren. Weitere Informationen finden Sie unter [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md).
-* **Optimaler Betrieb**: Dieser Ratgeber hilft Ihnen bei der Implementierung effizienter Prozesse und Workflows, unterstützt Sie bei der Ressourcenverwaltung und enthält bewährte Methoden für die Bereitstellung. . Weitere Informationen finden Sie unter [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md).
+* **Optimaler Betrieb**: Dieser Ratgeber hilft Ihnen bei der Implementierung effizienter Prozesse und Workflows, unterstützt Sie bei der Ressourcenverwaltung und enthält bewährte Methoden für die Bereitstellung. erforderlich. Weitere Informationen finden Sie unter [Advisor-Empfehlungen für einen optimalen Betrieb](advisor-operational-excellence-recommendations.md).
 
   ![Typen von Advisor-Empfehlungen](./media/advisor-overview/advisor-dashboard.png)
 

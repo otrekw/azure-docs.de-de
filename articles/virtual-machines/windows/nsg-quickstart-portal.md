@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: fe9b0f590dbb728a54ac66fcaa49bf3d00417e41
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 130d3315b5a9a6f175bd3d67ed33a034ab5f8dda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033110"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371410"
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Öffnen von Ports zu einem virtuellen Computer mit dem Azure-Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -51,7 +51,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
     ![Hinzufügen einer Eingangsregel](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-3. Wählen Sie **Advanced** (Erweitert). 
+3. Wählen Sie **Erweitert**aus. 
 
 4. Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. **HTTP**, aus. Sie können auch **Benutzerdefiniert** auswählen, wenn Sie einen bestimmten zu verwendenden Port angeben möchten. 
 
@@ -85,5 +85,5 @@ Bei hochverfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter e
 In diesem Artikel haben Sie eine Netzwerksicherheitsgruppe sowie eine Eingangsregel erstellt, die HTTP-Datenverkehr über Port 80 ermöglicht, und dann haben Sie diese Regel einem Subnetz zugeordnet. 
 
 Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
-- [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+- [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 - [Sicherheitsgruppen](../../virtual-network/security-overview.md)

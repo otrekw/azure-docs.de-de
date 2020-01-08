@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 40697925d399962399da499e0469198a0e997f66
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: d6e3d4d059e464795c712af1226d8202d00bfd74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038628"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461157"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -201,4 +201,4 @@ Weitere Möglichkeiten zum Aktualisieren der Skalierungsgruppe finden Sie unter 
 - Weitere ausführliche Informationen finden Sie unter [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://docs.microsoft.com/windows-server/get-started/azure-hybrid-benefit).
 - Weitere Informationen zur [Nutzung des Azure-Hybridvorteils für Windows Server und Azure Site Recovery für eine noch kosteneffizientere Anwendungsmigration zu Azure](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)
 - Weitere Informationen zum [Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
-- Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-overview.md)
+- Weitere Informationen zum [Verwenden von Resource Manager-Vorlagen](../../azure-resource-manager/management/overview.md)

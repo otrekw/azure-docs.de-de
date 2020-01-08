@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 4a8f7383a298fdb66456eaadeb99b22478c9f39b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 28c900adadf7d942c9e331e7b77a369db64acf55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382700"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und C#
 
@@ -42,7 +42,7 @@ Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples
     using System.Collections.Generic;
     ```
 
-2. Fügen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und den Suchbegriff hinzu.
+2. Fügen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und den Suchbegriff hinzu. `uriBase` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
     const string accessKey = "enter your key here";

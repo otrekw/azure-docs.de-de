@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 082ef9753f84aef3f867a9dee4b4e9fbf73dd379
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e9647c1833416b9b225be988acaffb4022f655c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670112"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422092"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -44,7 +44,7 @@ Sie stellen Ressourcen in der folgenden Reihenfolge bereit:
 * Azure Application Insights-Instanz, die auf die Web-App ausgerichtet ist: Hängt von der Web-App ab.
 
 **Ebene 4**
-* App Service Certificate: Hängt von der Quellcodeverwaltung oder MSDeploy ab, falls vorhanden. Hängt andernfalls von der Web-App ab.
+* App Service Certificate: Hängt von der Quellcodeverwaltung oder MSDeploy ab, falls vorhanden. Hängen andernfalls von der Web-App ab.
 * Konfigurationseinstellungen (Verbindungszeichenfolgen, Werte in „web.config“, App-Einstellungen): Hängen von der Quellcodeverwaltung oder von MSDeploy ab, falls vorhanden. Hängen andernfalls von der Web-App ab.
 
 **Ebene 5**
@@ -94,7 +94,7 @@ Wenn Ihre Resource Manager-Vorlage MS Deploy verwendet, sind die Bereitstellungs
 
 ## <a name="choose-a-unique-web-app-name"></a>Auswählen eines eindeutigen Web-App-Namens
 
-Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonvention verwenden, die höchstwahrscheinlich eindeutig ist, oder Sie können beim Erstellen eines eindeutigen Namens die [uniqueString-Funktion](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) verwenden.
+Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonvention verwenden, die höchstwahrscheinlich eindeutig ist, oder Sie können beim Erstellen eines eindeutigen Namens die [uniqueString-Funktion](../azure-resource-manager/templates/template-functions-string.md#uniquestring) verwenden.
 
 ```json
 {

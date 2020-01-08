@@ -3,17 +3,17 @@ title: Allgemeine Verwaltungsaufgaben für Clouddienste | Microsoft-Dokumentatio
 description: Hier erfahren Sie mehr über die Verwaltung von Clouddiensten im Azure-Portal. In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359596"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360904"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Verwalten von Clouddiensten im Azure-Portal
 Im Bereich **Clouddienste** des Azure-Portals haben Sie folgende Möglichkeiten:
@@ -124,3 +124,6 @@ Oben auf dem Blatt **Übersicht** befindet sich eine Statusleiste. Wenn Sie auf 
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+
+
+

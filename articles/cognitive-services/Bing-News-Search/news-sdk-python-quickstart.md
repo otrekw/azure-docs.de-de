@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2f3d8c88e7949265f12405760acbccebb89d1df5
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b84b5ee8682007191953bef34579973c7c24ca45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379053"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448514"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-python"></a>Schnellstart: Durchführen einer News-Suche mit dem Bing-News-Suche-SDK für Python
 

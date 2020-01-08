@@ -4,8 +4,16 @@
   items:
     - name: Informationen zu Azure Migrate
       href: migrate-services-overview.md
-    - name: Neuigkeiten
+    - name: Neues
       href: whats-new.md
+    - name: Häufig gestellte Fragen
+      items:
+        - name: Fragen zu Azure Migrate
+          href: resources-faq.md
+        - name: Fragen zur Azure Migrate-Appliance
+          href: common-questions-appliance.md
+        - name: 'Fragen zur Ermittlung, Bewertung/Abhängigkeitsvisualisierung'
+          href: common-questions-discovery-assessment.md
 - name: Lernprogramme
   items:
     - name: Bewerten und Migrieren von virtuellen VMware-Computern
@@ -44,8 +52,6 @@
           href: tutorial-assess-import.md
 - name: Konzepte
   items:
-    - name: Häufig gestellte Fragen
-      href: resources-faq.md
     - name: Supportmatrizen
       items:
         - name: Unterstützungsmatrix für Azure Migrate
@@ -70,7 +76,7 @@
       href: concepts-assessment-calculation.md
     - name: Visualisierung von Abhängigkeiten
       href: concepts-dependency-visualization.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Arbeiten mit einer vorherigen Version
       href: migrate-v1.md

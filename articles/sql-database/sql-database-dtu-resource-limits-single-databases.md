@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 75611dd36196c722254d694e9753deb982e2570d
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: a4c435b4874301fe6fb804085c5b265954cd4f5a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539334"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637591"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model"></a>Ressourcenlimits für Einzeldatenbanken, die das DTU-Kaufmodell verwenden
 
@@ -33,7 +33,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 
 ### <a name="basic-service-tier"></a>Basic-Dienstebene
 
-| **Computegröße** | **Basic** |
+| **Computegröße** | **Grundlegend** |
 | :--- | --: |
 | Max. DTU-Anzahl | 5 |
 | Inbegriffener Speicher (GB) | 2 |
@@ -76,7 +76,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. Speicherlösungen (GB) | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 | 250, 500, 750, 1024 |
 | Max. In-Memory-OLTP-Speicher (GB) | – | – | – | – |– |
 | Max. gleichzeitige Worker (Anforderungen)| 400 | 800 | 1600 | 3200 |6000 |
-| Max. gleichzeitige Sitzungen |4800 | 9600 | 19200 | 30000 |30000 |
+| Max. gleichzeitige Sitzungen |4800 | 9600 | 19200 | 30.000 |30.000 |
 |||||||
 
 ### <a name="premium-service-tier"></a>Premium-Dienstebene
@@ -88,7 +88,7 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 | Max. Speicherlösungen (GB) | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 500, 750, 1024 | 4096* | 4096* |
 | Max. In-Memory-OLTP-Speicher (GB) | 1 | 2 | 4 | 8 | 14 | 32 |
 | Max. gleichzeitige Worker (Anforderungen)| 200 | 400 | 800 | 1600 | 2400 | 6400 |
-| Max. gleichzeitige Sitzungen | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Max. gleichzeitige Sitzungen | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 |||||||
 
 \* Von 1024 GB bis zu 4096 GB in Inkrementen von 256 GB
@@ -104,5 +104,5 @@ Die folgende Tabelle enthält die verfügbaren Ressourcen für Einzeldatenbanken
 - Informationen zu V-Kern-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).
 - Informationen zu DTU-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden](sql-database-dtu-resource-limits-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](sql-database-managed-instance-resource-limits.md).
-- Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+- Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem Datenbankserver finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).

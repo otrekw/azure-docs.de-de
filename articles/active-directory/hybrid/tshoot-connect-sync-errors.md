@@ -15,12 +15,12 @@ ms.date: 10/29/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d824606b1b602d006e53be619d6d955ac2cfb71f
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 745ddcc95bb91e61478307265aec1ac8a7ebba54
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213025"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609195"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>Beheben von Fehlern während der Synchronisierung
 Fehler können auftreten, wenn Identitätsdaten aus Windows Server Active Directory (AD DS) mit Azure Active Directory (Azure AD) synchronisiert werden. Dieser Artikel bietet einen Überblick über verschiedene Fehlertypen, die während der Synchronisierung auftreten können, einige der möglichen Szenarios, die solche Fehler verursachen, und Möglichkeiten, diese Fehler zu beheben. In diesem Artikel werden die häufigsten Fehlertypen behandelt, daher sind eventuell nicht alle möglichen Fehler enthalten.
@@ -53,7 +53,7 @@ Ein Azure Active Directory Schema lässt es nicht zu, dass zwei oder mehr Objekt
 * ProxyAddresses
 * UserPrincipalName
 * onPremisesSecurityIdentifier
-* ObjectId
+* ObjectID
 
 > [!NOTE]
 > Das Feature [Azure Active Directory Resilienz bei doppelten Attributen](how-to-connect-syncservice-duplicate-attribute-resiliency.md) wird auch als Standardverhalten von Azure Active Directory eingeführt.  Dadurch wird die Anzahl der Synchronisierungsfehler, die in Azure AD Connect (sowie in anderen Clients für die Synchronisierung) auftreten, verringert, nachdem Azure AD weniger fehleranfällig beim Umgang mit duplizierten Attributen „ProxyAddresses“ und „UserPrincipalName“ ist, die in lokalen AD-Umgebungen vorkommen. Dieses Feature behebt allerdings nicht die Duplizierungsfehler. Daher müssen die Daten immer noch bereinigt werden. Allerdings wird die Bereitstellung neuer Objekte ermöglicht, die sonst aufgrund der Duplizierungswerte in Azure AD nicht bereitgestellt werden konnten. Dadurch wird auch die Anzahl der Fehler bei der Synchronisierung verringert, die an den Client für Synchronisierung zurückgegeben werden.
@@ -235,12 +235,12 @@ Azure AD Connect darf keinen Soft Match eines Benutzerobjekts aus dem lokalen AD
 
 
 ### <a name="how-to-fix"></a>So behebt man den Fehler
-Führen Sie einen der folgenden Schritte aus, um dieses Problem zu beheben:
+Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
 
- - Entfernen Sie das Azure AD-Konto (Besitzer) aus allen Administratorrollen. 
- - Führen Sie für das Objekt „Unter Quarantäne“ in der Cloud das **endgültige Löschen** durch. 
- - Beim nächsten Synchronisierungszyklus wird der lokale Benutzer dem Cloudkonto per Soft Match-Vorgang hinzugefügt (da es sich beim Cloudbenutzer nicht mehr um einen globalen Administrator handelt). 
- - Stellen Sie die Rollenmitgliedschaften für den Besitzer wieder her. 
+1. Entfernen Sie das Azure AD-Konto (Besitzer) aus allen Administratorrollen. 
+2. Führen Sie für das Objekt „Unter Quarantäne“ in der Cloud das **endgültige Löschen** durch. 
+3. Beim nächsten Synchronisierungszyklus wird der lokale Benutzer dem Cloudkonto per Soft Match-Vorgang hinzugefügt (da es sich beim Cloudbenutzer nicht mehr um einen globalen Administrator handelt). 
+4. Stellen Sie die Rollenmitgliedschaften für den Besitzer wieder her. 
 
 >[!NOTE]
 >Sie können die Administratorrolle dem vorhandenen Benutzerobjekt erneut zuweisen, nachdem der Soft Match zwischen dem lokalen Benutzerobjekt und dem Azure AD-Benutzerobjekt abgeschlossen ist.

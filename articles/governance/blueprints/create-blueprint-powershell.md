@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit PowerShell'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe von PowerShell zu erstellen, zu definieren und bereitzustellen.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: ed337fa040804159dae3194de1befc43ff2b698f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8b418fa2b5244c42b8597bbbe7ed4773133d03a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436634"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit PowerShell
 
@@ -379,7 +379,9 @@ Nachdem eine Blaupause mithilfe von PowerShell veröffentlicht wurde, kann sie e
      > [!IMPORTANT]
      > Die benutzerseitig zugewiesene verwaltete Identität wird nicht durch Blaupausen verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
 
-## <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+### <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
 
 Sie können eine Blaupause aus einem Abonnement entfernen. Dieser Schritt wird häufig ausgeführt, wenn die Artefaktressourcen nicht mehr benötigt werden. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Verwenden Sie zum Entfernen einer Blaupausenzuweisung das Cmdlet `Remove-AzBlueprintAssignment`:
 
@@ -391,7 +393,7 @@ Remove-AzBlueprintAssignment -Name 'assignMyBlueprint'
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Blaupause mit PowerShell erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+In dieser Schnellstartanleitung haben Sie eine Blaupause mit PowerShell erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
 
 > [!div class="nextstepaction"]
 > [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)

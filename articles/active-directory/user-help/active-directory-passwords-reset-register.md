@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279053"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681360"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrieren Ihrer Überprüfungsmethode zum Zurücksetzen Ihres Kennworts
 
@@ -29,10 +29,10 @@ Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzun
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrieren oder Bestätigen von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung
 
-1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auf.
+1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup) auf.
 2. Geben Sie Ihren vom Administrator bereitgestellten Benutzernamen und das dazugehörige Kennwort ein.
 3. Abhängig von der Konfiguration durch Ihr IT-Team können einige der folgenden Optionen konfiguriert und überprüft werden. Wenn der Administrator von Ihnen zur Verwendung Ihrer Informationen autorisiert wurde, kann er einige der Informationen für Sie auffüllen.
-    * **Bürotelefon**: Diese Option kann nur vom Administrator festgelegt werden.
+    * **Bürotelefon:** Diese Option kann nur vom Administrator festgelegt werden.
     * **Authentifizierungstelefon**: Legen Sie diese Option auf eine andere Telefonnummer fest, unter der Sie erreichbar sind. Ein Beispiel wäre ein Mobiltelefon, das Textnachrichten oder Anrufe empfangen kann.
     * **E-Mail für Authentifizierung**: Legen Sie diese Option auf eine alternative E-Mail-Adresse fest, auf die Sie zugreifen können, ohne das zurückzusetzende Kennwort zu verwenden.
     * **Sicherheitsfragen**: Diese Liste mit Fragen wurde vom Administrator zur Beantwortung freigegeben. Fragen und Antworten dürfen nicht mehrmals verwendet werden.

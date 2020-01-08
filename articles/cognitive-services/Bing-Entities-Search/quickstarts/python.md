@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 52695cca2fe49829705ac2283c9f083ada8ae0b0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 07b563308e80055d699d1cefeb3b2db71ffa4cd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448616"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-python"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Python
 
@@ -31,7 +31,7 @@ Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RES
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor eine neue Python-Datei, und fügen Sie die folgenden Importe hinzu. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt, den Markt und eine Suchabfrage. Ihren Endpunkt finden Sie auf dem Azure-Dashboard.
+1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor eine neue Python-Datei, und fügen Sie die folgenden Importe hinzu. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt, den Markt und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```python
     import http.client, urllib.parse

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 527ab905997d18433d1dba5c16ee67c8146f5afa
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 90995b1c9d10c7b589706f5abf37f92d76e4362b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73126456"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560350"
 ---
 # <a name="configure-a-point-to-site-p2s-vpn-on-windows-for-use-with-azure-files"></a>Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files
 Sie können eine P2S-VPN-Verbindung (Point-to-Site) verwenden, um Ihre Azure-Dateifreigaben außerhalb von Azure über SMB einzubinden, ohne Port 445 zu öffnen. Eine P2S-VPN-Verbindung ist eine VPN-Verbindung zwischen Azure und einem einzelnen Client. Um eine P2S-VPN-Verbindung mit Azure Files zu verwenden, muss für jeden Client, der eine Verbindung herstellen möchte, eine P2S-VPN-Verbindung konfiguriert werden. Wenn Sie über viele Clients verfügen, die sich über Ihr lokales Netzwerk mit Ihren Azure-Dateifreigaben verbinden müssen, können Sie anstelle einer P2S-Verbindung für jeden Client eine S2S-VPN-Verbindung (Site-to-Site) verwenden. Weitere Informationen finden Sie unter [Konfigurieren eines S2S-VPN (Site-to-Site) zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md).
@@ -161,7 +161,7 @@ foreach($ipconfig in $internalNic.Properties.ipConfigurations) {
         $recordName = $fqdn.split('.', 2)[0]
         $dnsZone = $fqdn.split('.', 2)[1]
         New-AzPrivateDnsRecordSet `
-            -ResourceGroupName $resourceGroupName ` 
+            -ResourceGroupName $resourceGroupName `
             -Name $recordName `
             -RecordType A `
             -ZoneName $zone.Name `

@@ -1,14 +1,14 @@
 ---
 title: Behandeln von Problemen in System Center Data Protection Manager
 description: Entdecken Sie in diesem Artikel Lösungen von Problemen, die bei der Verwendung von System Center Data Protection Manager auftreten könnten.
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 01/30/2019
-ms.openlocfilehash: 8ecd2f469c8fcaea9761a1a3033fa0c44a255ae7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bcb30fa7eb3e05099761fc751b09a9fb16134e34
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172696"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664752"
 ---
 # <a name="troubleshoot-system-center-data-protection-manager"></a>Behandeln von Problemen in System Center Data Protection Manager
 
@@ -16,7 +16,7 @@ Dieser Artikel beschreibt Lösungen für Probleme, die bei der Verwendung von Da
 
 Die neuesten Versionshinweise für System Center Data Protection Manager finden Sie in der [Dokumentation zu System Center](https://docs.microsoft.com/system-center/dpm/dpm-release-notes?view=sc-dpm-2016). Weitere Informationen zur Unterstützung von Data Protection Manager finden Sie in [dieser Matrix](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-2016).
 
-## <a name="error-replica-is-inconsistent"></a>Fehler Replikat inkonsistent
+## <a name="error-replica-is-inconsistent"></a>Error: Replikat inkonsistent
 
 Ein Replikat kann aus den folgenden Gründen inkonsistent sein:
 
@@ -38,7 +38,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 - Stellen Sie sicher, dass der Datenträger fehlerfrei und genügend Speicherplatz für das Replikat vorhanden ist.
 - Stellen Sie sicher, dass keine doppelten Sicherungsaufträge gleichzeitig ausgeführt werden.
 
-## <a name="error-online-recovery-point-creation-failed"></a>Fehler Fehler bei der Erstellung eines Onlinewiederherstellungspunkts.
+## <a name="error-online-recovery-point-creation-failed"></a>Error: Fehler bei der Erstellung eines Onlinewiederherstellungspunkts.
 
 Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 - Stellen Sie sicher, dass das Replikat vorhanden ist und nicht fehlt.
 - Stellen Sie sicher, dass im Replikat ausreichend Speicherplatz für das Aktualisieren des USN-Journals (Updatesequenznummer) vorhanden ist.
 
-## <a name="error-unable-to-configure-protection"></a>Fehler Der Schutz kann nicht konfiguriert werden.
+## <a name="error-unable-to-configure-protection"></a>Error: Der Schutz kann nicht konfiguriert werden.
 
 Dieser Fehler tritt auf, wenn der Data Protection Manager-Server keinen Kontakt zum geschützten Server herstellen kann.
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 - Stellen Sie sicher, dass eine Verbindung (Netzwerk/Firewall/Proxy) zwischen dem Data Protection Manager-Server und dem geschützten Server besteht.
 - Wenn Sie einen SQLServer schützen, stellen Sie sicher, dass in der Eigenschaft **Anmeldungseigenschaften** > **NT AUTHORITY\SYSTEM** die Einstellung **Sysadmin** aktiviert ist.
 
-## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Fehler Serverregistrierung entspricht nicht den Tresoranmeldeinformationen.
+## <a name="error-server-not-registered-as-specified-in-vault-credential-file"></a>Error: Serverregistrierung entspricht nicht den Tresoranmeldeinformationen.
 
 Dieser Fehler tritt während des Wiederherstellungsprozesses von Data Protection Manager/Azure Backup-Server-Daten aus. Die im Wiederherstellungsprozess verwendete Datei mit den Tresoranmeldeinformationen gehört nicht zum Recovery Services-Tresor für den Data Protection Manager/Azure Backup-Server.
 
@@ -69,7 +69,7 @@ Gehen Sie folgendermaßen vor, um das Problem zu beheben:
 1. Laden Sie die Datei mit den Tresoranmeldeinformationen aus dem Recovery Services-Tresor herunter, bei dem der Data Protection Manager/Azure Backup-Server registriert ist.
 2. Versuchen Sie, den Server mit der neuesten heruntergeladenen Datei mit den Tresoranmeldeinformationen bei dem Tresor zu registrieren.
 
-## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Fehler Keine wiederherstellbaren Daten oder gewählter Server ist kein Data Protection Manager-Server
+## <a name="error-no-recoverable-data-or-selected-server-not-a-data-protection-manager-server"></a>Error: Keine wiederherstellbaren Daten oder gewählter Server ist kein Data Protection Manager-Server
 
 Dieser Fehler tritt aus den folgenden Gründen auf:
 
@@ -82,7 +82,7 @@ Führen Sie zum Beheben des Problems die folgenden Schritte aus, wenn keine ande
 1. Prüfen Sie, ob der neueste Azure Backup-Agent installiert ist.
 2. Wenn Sie sichergestellt haben, dass der aktuelle Agent installiert ist, warten Sie ein Tag, bis Sie den Wiederherstellungsprozess starten. Im nächtlichen Sicherungsauftrag werden die Metadaten für alle geschützten Sicherungen in die Cloud hochgeladen. Die Sicherungsdaten sind dann für die Wiederherstellung verfügbar.
 
-## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>Fehler Angegebene Verschlüsselungspassphrase stimmt nicht mit Passphrase für Server überein.
+## <a name="error-provided-encryption-passphrase-doesnt-match-passphrase-for-server"></a>Error: Angegebene Verschlüsselungspassphrase stimmt nicht mit Passphrase für Server überein.
 
 Dieser Fehler tritt bei der Verschlüsselung während des Wiederherstellungsprozesses von Data Protection Manager/Azure Backup-Server-Daten aus. Die im Wiederherstellungsprozess verwendete Verschlüsselungspassphrase stimmt nicht mit der Verschlüsselungspassphrase des Servers überein. Daher kann der Agent die Daten nicht entschlüsseln, und die Wiederherstellung schlägt fehl.
 

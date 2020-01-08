@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: aahi
-ms.openlocfilehash: 9b148e413bc7dc6af7eff064e5ff3ec6385cfef4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 75d32cc038d3dbf0f06a844d35a3e626ffaa67f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446209"
 ---
 [Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | [Paket (GitHub)](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/textanalytics) | [Beispiele](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
 
@@ -90,13 +90,23 @@ Mit den Codeausschnitten wird veranschaulicht, wie die folgenden Vorgänge mit d
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 
-Erstellen Sie in einer neuen Funktion Variablen für den Azure-Endpunkt und den Abonnementschlüssel Ihrer Ressource. Rufen Sie diese Werte aus den Umgebungsvariablen `TEXT_ANALYTICS_SUBSCRIPTION_KEY` und `TEXT_ANALYTICS_ENDPOINT` ab. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, muss der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
+Erstellen Sie in einer neuen Funktion Variablen für den Azure-Endpunkt und den Abonnementschlüssel Ihrer Ressource.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
 Erstellen Sie ein neues [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics#New)-Objekt. Übergeben Sie Ihren Schlüssel an die Funktion [autorest.NewCognitiveServicesAuthorizer()](https://godoc.org/github.com/Azure/go-autorest/autorest#NewCognitiveServicesAuthorizer), die dann an die `authorizer`-Eigenschaft des Clients übergeben wird.
 
-[!code-go[Client creation ](~/azure-sdk-for-go-samples/cognitiveservices/textanalytics.go?name=client)]
+```go
+func GetTextAnalyticsClient() textanalytics.BaseClient {
+    var key string = "<paste-your-text-analytics-key-here>"
+    var endpoint string = "<paste-your-text-analytics-endpoint-here>"
+
+    textAnalyticsClient := textanalytics.New(endpoint)
+    textAnalyticsClient.Authorizer = autorest.NewCognitiveServicesAuthorizer(key)
+
+    return textAnalyticsClient
+}
+```
 
 ## <a name="sentiment-analysis"></a>Stimmungsanalyse
 

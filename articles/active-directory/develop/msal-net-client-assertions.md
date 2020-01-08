@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4731a7265265c48bed02e836de91d61971b9be14
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 17f02d38c77fce6a256e3c42d887f2b7d560add9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921902"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424242"
 ---
 # <a name="confidential-client-assertions"></a>Assertionen für vertrauliche Clients
 
@@ -42,7 +42,7 @@ MSAL.NET verfügt über vier Methoden, um für die vertrauliche Client-App Anmel
 
 Eine signierte Client Assertion hat die Form eines signierten, Base64-codierten JWT mit der Nutzlast, die die erforderlichen Authentifizierungsansprüche enthält, die von Azure AD vorgeschrieben sind. Gehen Sie zur Verwendung wie folgt vor:
 
-```CSharp
+```csharp
 string signedClientAssertion = ComputeAssertion();
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .WithClientAssertion(signedClientAssertion)
@@ -51,7 +51,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
 
 Von Azure AD werden folgende Ansprüche erwartet:
 
-Anspruchstyp | Wert | BESCHREIBUNG
+Anspruchstyp | value | BESCHREIBUNG
 ---------- | ---------- | ----------
 aud | https://login.microsoftonline.com/{tenantId}/v2.0 | Der Anspruch „aud“ (Zielgruppe) identifiziert die Empfänger, für die das JWT vorgesehen ist (hier Azure AD). [RFC 7519, Abschnitt 4.1.3]
 exp | Thu Jun 27 2019 15:04:17 GMT+0200 (Romance Daylight Time) | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. [RFC 7519 Abschnitt 4.1.4]
@@ -62,7 +62,7 @@ sub | {ClientID} | Der Anspruch „sub“ (Antragsteller) identifiziert den Antr
 
 Im folgenden Beispiel wird das Erstellen dieser Ansprüche veranschaulicht:
 
-```CSharp
+```csharp
 private static IDictionary<string, string> GetClaims()
 {
       //aud = https://login.microsoftonline.com/ + Tenant ID + /v2.0
@@ -88,7 +88,7 @@ private static IDictionary<string, string> GetClaims()
 
 So erstellen Sie eine signierte Client-Assertion:
 
-```CSharp
+```csharp
 string Encode(byte[] arg)
 {
     char Base64PadCharacter = '=';
@@ -138,7 +138,7 @@ string GetSignedClientAssertion()
 
 Sie haben auch die Möglichkeit, [Microsoft.IdentityModel.JsonWebTokens](https://www.nuget.org/packages/Microsoft.IdentityModel.JsonWebTokens/) zu verwenden, um die Assertion für Sie erstellen zu lassen. Der Code wird somit etwas eleganter, wie im folgenden Beispiel zu sehen ist:
 
-```CSharp
+```csharp
         string GetSignedClientAssertion()
         {
             var cert = new X509Certificate2("Certificate.pfx", "Password", X509KeyStorageFlags.EphemeralKeySet);
@@ -171,7 +171,7 @@ Sie haben auch die Möglichkeit, [Microsoft.IdentityModel.JsonWebTokens](https:/
 
 Sobald Sie Ihre signierte Clientassertion besitzen, können Sie sie wie unten gezeigt mit den MSAL-APIs verwenden.
 
-```CSharp
+```csharp
             string signedClientAssertion = GetSignedClientAssertion();
 
             var confidentialApp = ConfidentialClientApplicationBuilder
@@ -184,7 +184,7 @@ Sobald Sie Ihre signierte Clientassertion besitzen, können Sie sie wie unten ge
 
 `WithClientClaims(X509Certificate2 certificate, IDictionary<string, string> claimsToSign, bool mergeWithDefaultClaims = true)` erzeugt standardmäßig eine signierte Assertion, die die von Azure AD erwarteten Ansprüche sowie zusätzliche Clientansprüche enthält, die Sie senden möchten. Im folgenden Codeausschnitt wird die Vorgehensweise gezeigt.
 
-```CSharp
+```csharp
 string ipAddress = "192.168.1.2";
 X509Certificate2 certificate = ReadCertificate(config.CertificateName);
 app = ConfidentialClientApplicationBuilder.Create(config.ClientId)

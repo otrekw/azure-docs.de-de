@@ -1,19 +1,18 @@
 ---
 title: Echtzeitereignisverarbeitung mithilfe von Azure Stream Analytics
 description: Dieser Artikel beschreibt die Referenzarchitektur für die Echtzeitereignisverarbeitung und -analyse mithilfe von Azure Stream Analytics.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
-ms.openlocfilehash: 21a0e4e468b606ec7bb7e33bf1a616e68cd6cf50
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d219b3fcb27b23527c0a651bc8e842a9e036bfc2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431482"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Referenzarchitektur: Echtzeitereignisverarbeitung mit Microsoft Azure Stream Analytics
 Die Referenzarchitektur für die Echtzeitereignisverarbeitung mit Azure Stream Analytics soll als allgemeiner Plan dienen, mit dem eine Plattform-as-a-Service (PaaS) für die Datenstromverarbeitung in Echtzeit auf der Basis von Microsoft Azure bereitgestellt werden kann.
@@ -23,13 +22,13 @@ In der Vergangenheit stützten sich Analyselösungen auf Funktionen, wie z. B. E
 
 Microsoft Azure stellt einen umfassenden Katalog von Analysetechnologien bereit, die ein ganzes Spektrum an verschiedenen Lösungsszenarien und Anforderungen unterstützen können. Angesichts der vielfältigen Angebote kann die Auswahl der für eine End-to-End-Lösung bereitzustellenden Azure-Dienste eine Herausforderung darstellen. In diesem Artikel werden die Funktionen und die Interaktion zwischen verschiedenen Azure-Diensten beschrieben, die eine Ereignis-Streaming-Lösung unterstützen. Darüber hinaus werden einige Szenarien erläutert, in denen Kunden von diesem Ansatz profitieren können.
 
-## <a name="contents"></a>Inhalt:
+## <a name="contents"></a>Contents
 * Kurzfassung
 * Einführung in Echtzeitanalysen
 * Nutzen von Echtzeitdaten in Azure
 * Allgemeine Szenarien für Echtzeitanalysen
 * Architektur und Komponenten
-  * Datenquellen
+  * Projektmappen-Explorer
   * Datenintegrationsebene
   * Echtzeitanalysenebene
   * Datenspeicherebene
@@ -38,7 +37,7 @@ Microsoft Azure stellt einen umfassenden Katalog von Analysetechnologien bereit,
 
 **Autor**: Charles Feddersen, Lösungsarchitekt, Data Insights Center of Excellence, Microsoft Corporation
 
-**Veröffentlicht**: Januar 2015
+**Veröffentlicht:** Januar 2015
 
 **Version**: 1.0
 

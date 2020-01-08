@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dec950f5475a8a64cfecfac1fb25246d6a7aa29
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: bd57523dd41eadcf64ceb1e4a1c8d8ba083c17f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561920"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608736"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -112,5 +112,5 @@ Wenn die Beziehung mit einem externen Azure AD-Verzeichnis bzw. einer externe Do
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau)](entitlement-management-organization.md)
+- [Steuern des Zugriffs für externe Benutzer in der Azure AD-Berechtigungsverwaltung (Vorschau)](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users)
 - [Für Benutzer, die sich nicht in Ihrem Verzeichnis befinden](entitlement-management-access-package-request-policy.md#for-users-not-in-your-directory)

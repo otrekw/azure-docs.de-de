@@ -11,12 +11,12 @@ ms.date: 11/27/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 82270c126d8a0894cd3a388dcab62017ed63c2cd
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cd1d57643f9a1eb7c50d0de06d42fbbcec085f34
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974647"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458787"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse: Isolation mit Arbeitsauslastungsgruppen (Vorschau)
 
@@ -32,18 +32,18 @@ In den folgenden Abschnitten wird erläutert, wie Arbeitsauslastungsgruppen die 
 
 Workloadisolation bedeutet, dass Ressourcen ausschließlich für eine Arbeitsauslastungsgruppe reserviert sind.  Workloadisolation wird erreicht, indem der Parameter MIN_PERCENTAGE_RESOURCE in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) auf einen Wert größer als 0 (null) festgelegt wird.  Bei Workloads mit kontinuierlicher Ausführung, bei denen strenge SLAs eingehalten werden müssen, wird durch Isolation sichergestellt, dass immer Ressourcen für die Arbeitsauslastungsgruppe verfügbar sind. 
 
-Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert.  Wenn MIN_PERCENTAGE_RESOURCE auf 30 % und REQUEST_MIN_RESOURCE_GRANT_PERCENT auf 2 % festgelegt wird, ist für die Arbeitsauslastungsgruppe ein Grad an Parallelität von 15 garantiert.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
+Durch Konfigurieren der Workloadisolation wird implizit ein garantierter Grad an Parallelität definiert. Wenn MIN_PERCENTAGE_RESOURCE auf 30 % und REQUEST_MIN_RESOURCE_GRANT_PERCENT auf 2 % festgelegt wird, ist für die Arbeitsauslastungsgruppe ein Grad an Parallelität von 15 garantiert.  Sehen Sie sich die folgende Methode zur Bestimmung der garantierten Parallelität an:
 
 [Garantierte Parallelität] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Für MIN_PERCENTAGE_RESOURCE gibt es bestimmte Mindestwerte für das Servicelevel.  Weitere Informationen finden Sie unter [Gültige Werte](https://review.docs.microsoft.com/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values).
+> Für MIN_PERCENTAGE_RESOURCE gibt es bestimmte Mindestwerte für das Servicelevel.  Weitere Informationen finden Sie unter [Gültige Werte](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest#effective-values).
 
 Wenn keine Workloadisolation vorhanden ist, werden Anforderungen im [freigegebenen Pool](#shared-pool-resources) von Ressourcen ausgeführt.  Der Zugriff auf Ressourcen im freigegebenen Pool ist nicht garantiert und wird auf Basis der [Priorität](sql-data-warehouse-workload-importance.md) zugewiesen.
 
-Die Workloadisolation sollte mit Vorsicht konfiguriert werden, da die Ressourcen der Arbeitsauslastungsgruppe auch dann zugeordnet werden, wenn keine aktiven Anforderungen in der Arbeitsauslastungsgruppe vorhanden sind.  Eine überkonfigurierte Isolation kann zu einer verringerten Gesamtsystemauslastung führen.
+Die Workloadisolation sollte mit Vorsicht konfiguriert werden, da die Ressourcen der Arbeitsauslastungsgruppe auch dann zugeordnet werden, wenn keine aktiven Anforderungen in der Arbeitsauslastungsgruppe vorhanden sind. Eine überkonfigurierte Isolation kann zu einer verringerten Gesamtsystemauslastung führen.
 
-Benutzer sollten eine Lösung für die Workloadverwaltung vermeiden, bei der eine Workloadisolation von 100 % konfiguriert ist: Eine Isolation von 100 % wird erreicht, wenn die Summe von MIN_PERCENTAGE_RESOURCE, die für alle Arbeitsauslastungsgruppen konfiguriert ist, 100 % beträgt.  Diese Art der Konfiguration ist zu restriktiv und starr und lässt wenig Raum für Ressourcenanforderungen, die versehentlich falsch klassifiziert werden.  Es gibt eine Regelung, die es erlaubt, dass eine Anforderung aus Arbeitsauslastungsgruppen ausgeführt wird, die nicht für die Isolation konfiguriert sind.  Die Ressourcen, die dieser Anforderung zugeordnet sind, werden in den DMVs des Systems als 0 (null) angezeigt und nehmen eine „smallrc“-Ebene der Ressourcenzuweisung von reservierten Ressourcen des Systems an.
+Benutzer sollten eine Lösung für die Workloadverwaltung vermeiden, bei der eine Workloadisolation von 100 % konfiguriert ist: Eine Isolation von 100 % wird erreicht, wenn die Summe von MIN_PERCENTAGE_RESOURCE, die für alle Arbeitsauslastungsgruppen konfiguriert ist, 100 % beträgt.  Diese Art der Konfiguration ist zu restriktiv und starr und lässt wenig Raum für Ressourcenanforderungen, die versehentlich falsch klassifiziert werden. Es gibt eine Regelung, die es erlaubt, dass eine Anforderung aus Arbeitsauslastungsgruppen ausgeführt wird, die nicht für die Isolation konfiguriert sind. Die Ressourcen, die dieser Anforderung zugeordnet sind, werden in den DMVs des Systems als 0 (null) angezeigt und nehmen eine „smallrc“-Ebene der Ressourcenzuweisung von reservierten Ressourcen des Systems an.
 
 > [!NOTE] 
 > Um optimale Ressourcennutzung zu gewährleisten, sollten Sie eine Lösung für die Workloadverwaltung in Betracht ziehen, die eine gewisse Isolation zur Sicherstellung, dass SLAs eingehalten werden, und eine Mischung mit freigegebenen Ressourcen, auf die basierend auf der [Workloadpriorität](sql-data-warehouse-workload-importance.md) zugegriffen wird, bietet.
@@ -57,7 +57,7 @@ Durch Konfigurieren der Workloadkapselung wird implizit ein maximaler Grad an Pa
 [Maximale Parallelität] = [`CAP_PERCENTAGE_RESOURCE`] / [`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 
 > [!NOTE] 
-> Der gültige Wert für CAP_PERCENTAGE_RESOURCE einer Arbeitsauslastungsgruppe erreicht keine 100 %, wenn Arbeitsauslastungsgruppen mit einem Wert für MIN_PERCENTAGE_RESOURCE höher als 0 (null) erstellt werden.  Informationen zu gültigen Laufzeitwerten finden Sie unter [sys.dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest).
+> Der gültige Wert für CAP_PERCENTAGE_RESOURCE einer Arbeitsauslastungsgruppe erreicht keine 100 %, wenn Arbeitsauslastungsgruppen mit einem Wert für MIN_PERCENTAGE_RESOURCE höher als 0 (null) erstellt werden.  Informationen zu gültigen Laufzeitwerten finden Sie unter [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest).
 
 ## <a name="resources-per-request-definition"></a>Definition von Ressourcen pro Anforderung
 
@@ -71,7 +71,7 @@ Wie beim Auswählen einer Ressourcenklasse wird beim Konfigurieren von REQUEST_M
 Wenn REQUEST_MAX_RESOURCE_GRANT_PERCENT auf einen höheren Wert als REQUEST_MIN_RESOURCE_GRANT_PERCENT festgelegt wird, kann das System mehr Ressourcen pro Anforderung zuordnen.  Beim Planen einer Anforderung bestimmt das System die tatsächliche Ressourcenzuordnung für die Anforderung, die zwischen REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT liegt, basierend auf der Verfügbarkeit von Ressourcen im freigegebenen Pool und der aktuellen Systemauslastung.  Die Ressourcen müssen beim Planen der Abfrage im [freigegebenen Pool](#shared-pool-resources) von Ressourcen vorhanden sein.  
 
 > [!NOTE] 
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT weisen gültige Werte auf, die von den gültigen Werten für MIN_PERCENTAGE_RESOURCE und CAP_PERCENTAGE_RESOURCE abhängig sind.  Informationen zu gültigen Laufzeitwerten finden Sie unter [sys.dm_workload_management_workload_groups_stats](https://review.docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest).
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT weisen gültige Werte auf, die von den gültigen Werten für MIN_PERCENTAGE_RESOURCE und CAP_PERCENTAGE_RESOURCE abhängig sind.  Informationen zu gültigen Laufzeitwerten finden Sie unter [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?view=azure-sqldw-latest).
 
 ## <a name="execution-rules"></a>Ausführungsregeln
 

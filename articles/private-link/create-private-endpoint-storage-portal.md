@@ -2,23 +2,25 @@
 title: Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 description: Erfahren Sie, wie Sie eine private Verbindung mit einem Speicherkonto in Azure mithilfe eines privaten Endpunkts herstellen.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2a2a96a823867ea7700933c8253a0ba500b0e1cf
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899806"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357565"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Herstellen einer privaten Verbindung mit einem Speicherkonto mithilfe eines privaten Azure-Endpunkts
 Der private Azure-Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren.
 
 In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Azure-Netzwerk und ein Speicherkonto mit einem privaten Endpunkt im Azure-Portal erstellen. Anschließend können Sie vom virtuellen Computer sicher auf das Speicherkonto zugreifen.
 
+> [!NOTE]
+> Private Endpunkte sind in Verbindung mit Dienstendpunkten im selben Subnetz unzulässig!
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -34,9 +36,9 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *MyVirtualNetwork* ein. |
+    | Name | Geben Sie *MyVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
@@ -53,7 +55,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -80,7 +82,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
     | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
@@ -101,7 +103,7 @@ In diesem Abschnitt erstellen Sie ein privates Speicherkonto und verwenden für 
 
 1. Geben Sie in **Speicherkonto erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -119,13 +121,13 @@ In diesem Abschnitt erstellen Sie ein privates Speicherkonto und verwenden für 
 5. Wählen Sie in **Speicherkonto erstellen – Netzwerke** die Option **Privaten Endpunkt hinzufügen** aus. 
 6. Geben Sie unter **Privaten Endpunkt erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     |Location|Wählen Sie **WestCentralUS** aus.|
-    |NAME|Geben Sie *myPrivateEndpoint* ein.  |
+    |Name|Geben Sie *myPrivateEndpoint* ein.  |
     |Speicherunterressource|Übernehmen Sie den Standardwert **Blob**. |
     | **NETZWERK** |  |
     | Virtuelles Netzwerk  | Wählen Sie *MyVirtualNetwork* in der Ressourcengruppe *myResourceGroup* aus. |
@@ -184,10 +186,10 @@ In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine pri
 4. Klicken Sie mit der rechten Maustaste auf **Speicherkonten**.
 5. Wählen Sie **Connect to an azure storage** (Mit Azure-Speicher verbinden) aus.
 6. Wählen Sie **Verbindungszeichenfolge verwenden** aus.
-7. Klicken Sie auf **Weiter**.
+7. Wählen Sie **Weiter** aus.
 8. Geben Sie die Verbindungszeichenfolge ein, indem Sie die zuvor kopierten Informationen einfügen.
-9. Klicken Sie auf **Weiter**.
-10. Wählen Sie **Verbinden**aus.
+9. Wählen Sie **Weiter** aus.
+10. Wählen Sie **Verbinden**.
 11. Durchsuchen Sie die Blobcontainer aus „mystorageaccount“. 
 12. (Optional) Erstellen Sie Ordner, und/oder laden Sie Dateien in *mystorageaccount* hoch. 
 13. Schließen Sie die Remotedesktopverbindung mit  *myVM*. 

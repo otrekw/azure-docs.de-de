@@ -1,18 +1,14 @@
 ---
 title: Überwachen eines bereitgestellten Azure Kubernetes Service-Clusters | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Überwachung eines Azure Kubernetes Service-Clusters (AKS) mit Azure Monitor für bereits in Ihrem Abonnement bereitgestellte Container aktivieren.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/12/2019
-ms.openlocfilehash: 5d68c343fee5807c430ce42777b988a48b9227f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: eced371f7d44b486d671c2c22ca9fbb4c0b65fbb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73478600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405488"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 

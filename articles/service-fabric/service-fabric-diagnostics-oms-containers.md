@@ -1,25 +1,16 @@
 ---
-title: Überwachen von Containern in Azure Service Fabric mit Azure Monitor-Protokollen | Microsoft-Dokumentation
+title: Überwachen von Containern mit Azure Monitor-Protokollen
 description: Verwenden Sie Azure Monitor-Protokolle zum Überwachen von Containern, die in Azure Service Fabric-Clustern ausgeführt werden.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: d03d68560502821b9c343be983d9f7b5a83ed977
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8d4231de13da3f8b2960bd4852136f803a97a546
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60321900"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614433"
 ---
 # <a name="monitor-containers-with-azure-monitor-logs"></a>Überwachen von Containern mit Azure Monitor-Protokollen
  
@@ -57,5 +48,5 @@ Der Agent ermöglicht das Sammeln verschiedener containerspezifischer Protokolle
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über [Containerüberwachungslösung in Log Analytics](../azure-monitor/insights/containers.md).
 * Weitere Informationen zur Containerorchestrierung in Service Fabric finden Sie unter [Service Fabric und Container](service-fabric-containers-overview.md).
-* Machen Sie sich mit den Features zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokollen vertraut.
+* Machen Sie sich mit den Funktionen zur [Protokollsuche und -abfrage](../log-analytics/log-analytics-log-searches.md) in Azure Monitor-Protokolle vertraut.
 * Konfigurieren Sie Azure Monitor-Protokolle für die Einrichtung von Regeln zu [automatisierten Warnungen](../log-analytics/log-analytics-alerts.md) zur Unterstützung bei der Erkennung und Diagnose.

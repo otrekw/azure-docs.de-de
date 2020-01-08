@@ -2,16 +2,16 @@
 title: Häufig gestellte Fragen zu Azure Cache for Redis
 description: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.author: yegu
-ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122781"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433448"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Häufig gestellte Fragen zu Azure Cache for Redis
 In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -131,12 +131,12 @@ Aus dieser Tabelle können folgende Schlussfolgerungen gezogen werden:
 | C0 | 250 MB | Shared | 100 / 12,5  |  15.000 |   7\.500 |
 | C1 |   1 GB | 1      | 500 / 62,5  |  38.000 |  20.720 |
 | C2 | 2,5 GB | 2      | 500 / 62,5  |  41.000 |  37.000 |
-| C3 |   6 GB | 4      | 1\.000 / 125  | 100.000 |  90.000 |
+| C3 |   6 GB | 4      | 1\.000 / 125  | 100.000 |  90.000 |
 | C4 |  13 GB | 2      | 500 / 62,5  |  60.000 |  55.000 |
 | C5 |  26 GB | 4      | 1\.000/125 | 102.000 |  93.000 |
 | C6 |  53 GB | 8      | 2\.000/250 | 126.000 | 120.000 |
 | **Premium-Cachegröße** | |**CPU-Kerne pro Shard** | **Megabits pro Sekunde (MBit/s)/Megabyte pro Sekunde (MB/s)** |**Anforderungen pro Sekunde (RPS), kein SLL, pro Shard** |**Anforderungen pro Sekunde (RPS), SLL, pro Shard** |
-| P1 |   6 GB |  2 | 1\.500/187,5 | 180.000 | 172.000 |
+| P1 |   6 GB |  2 | 1\.500/187,5 | 180.000 | 172.000 |
 | P2 |  13 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
 | P3 |  26 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
 | P4 |  53 GB |  8 | 6\.000/750   | 400.000 | 373.000 |
@@ -300,7 +300,7 @@ Anweisungen zum Herunterladen der Redis-Tools finden Sie im Abschnitt [Wie führ
 
 #### <a name="stackexchangeredis-best-practices"></a>Best Practices für StackExchange.Redis
 * Legen Sie `AbortConnect` auf „false“ fest, und lassen Sie dann den ConnectionMultiplexer automatisch eine neue Verbindung herstellen. [Ausführliche Informationen finden Sie hier](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md).
-* Verwenden Sie den ConnectionMultiplexer wieder – erstellen Sie nicht für jede Anforderung einen neuen ConnectionMultiplexer. Sie sollten das [hier gezeigte](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache) `Lazy<ConnectionMultiplexer>`-Muster verwenden.
+* Verwenden Sie den ConnectionMultiplexer wieder – erstellen Sie nicht für jede Anforderung einen neuen ConnectionMultiplexer. Sie sollten das [hier gezeigte](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)`Lazy<ConnectionMultiplexer>`-Muster verwenden.
 * Redis funktioniert am besten mit kleineren Werten, deshalb sollten Sie die Aufteilung großer Daten in mehrere Schlüssel erwägen. In [dieser Diskussion zu Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) werden 100 KB als groß betrachtet. Lesen Sie [diesen Artikel](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) über ein beispielhaftes Problem, das durch große Werte verursacht werden kann.
 * Konfigurieren Sie Ihre [ThreadPool-Einstellungen](#important-details-about-threadpool-growth) , um Timeouts zu verhindern.
 * Verwenden Sie mindestens den Standardwert von 5 Sekunden für connectTimeout. Dieses Intervall gibt StackExchange.Redis bei einer Netzwerkunterbrechung genügend Zeit zur erneuten Verbindungsherstellung.
@@ -471,7 +471,7 @@ Im Gegensatz zu traditionellen Caches, die nur mit Schlüssel-Wert-Paaren arbeit
 
 Ein weiterer wichtiger Aspekt für den Erfolg von Redis ist das gesunde, lebendige Open Source-Ökosystem. Dies spiegelt sich in den verschiedenen verfügbaren Redis-Clients in mehreren Sprachen wider. Dieses Ökosystem und eine breite Palette von Clients ermöglichen, dass Azure Cache for Redis von nahezu allen Workloads verwendet werden kann, die Sie in Azure erstellen können.
 
-Weitere Informationen zu den ersten Schritten mit Azure Cache for Redis finden Sie unter [Verwenden von Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) und in der [Azure Cache for Redis-Dokumentation](index.md).
+Weitere Informationen zu den ersten Schritten mit Azure Cache for Redis finden Sie unter [Verwenden von Azure Cache for Redis](cache-dotnet-how-to-use-azure-redis-cache.md) und in der [Azure Cache for Redis-Dokumentation](index.yml).
 
 ### <a name="managed-cache-service"></a>Managed Cache Service
 [Managed Cache Service wurde am 30. November 2016 außer Betrieb gesetzt.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

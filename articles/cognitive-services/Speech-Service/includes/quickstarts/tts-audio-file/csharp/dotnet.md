@@ -7,15 +7,15 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 0b34c65f6b7003cbdd4d99b684fe2b5a3249c410
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469673"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +60,7 @@ namespace helloworld
 
 ````
 
-## <a name="create-a-speech-configuration"></a>Erstellen einer Sprachkonfiguration
+## <a name="create-a-speech-configuration"></a>Erstellen einer Speech-Konfiguration
 
 Bevor Sie ein `SpeechSynthesizer`-Objekt initialisieren können, müssen Sie eine Konfiguration erstellen, die den Abonnementschlüssel und die Abonnementregion verwendet. Fügen Sie diesen Code in die Methode `SynthesisToAudioFileAsync()` ein.
 
@@ -70,7 +70,7 @@ var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRe
 
 ## <a name="create-an-audio-configuration"></a>Erstellen einer Audiokonfiguration
 
-Nun müssen Sie ein ````AudioConfig````-Objekt erstellen, das auf Ihre Audiodatei verweist. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `SynthesisToAudioFileAsync()` direkt unterhalb der Sprachkonfiguration ein.
+Nun müssen Sie ein ````AudioConfig````-Objekt erstellen, das auf Ihre Audiodatei verweist. Dieses Objekt wird in einer using-Anweisung erstellt, um die ordnungsgemäße Freigabe nicht verwalteter Ressourcen sicherzustellen. Fügen Sie diesen Code in die Methode `SynthesisToAudioFileAsync()` direkt unterhalb der Speech-Konfiguration ein.
 
 ````C#
 var fileName = "helloworld.wav";
@@ -186,7 +186,7 @@ namespace helloworld
 Sie können nun Ihre App erstellen und die Sprachsynthese mit dem Spracherkennungsdienst testen.
 
 1. **Kompilieren des Codes:** Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
-2. **Starten der App:** Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
+2. **Starten der App**: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie **F5**.
 3. **Starten der Synthese**: Ihr Text wird in Sprache konvertiert und in den angegebenen Audiodaten gespeichert.
 
    ```text

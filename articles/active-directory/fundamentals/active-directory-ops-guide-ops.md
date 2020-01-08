@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 46e5af9d54cf818366bd2730de0da85dcbe6cade
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: d039373d3e70076149da2b970a234b59d7aa661a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534766"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422948"
 ---
 # <a name="azure-active-directory-general-operations-guide-reference"></a>Allgemeiner Betriebsleitfaden für Azure Active Directory – Referenz
 
@@ -31,9 +31,9 @@ In diesem Abschnitt des [Azure AD-Referenzleitfaden](active-directory-ops-guide-
 
 Für die Verwaltung von Azure Active Directory ist die kontinuierliche Ausführung wichtiger betrieblicher Aufgaben und Prozesse erforderlich, die möglicherweise nicht Teil eines Rolloutprojekts sind. Es ist außerdem wichtig, dass Sie diese Aufgaben einrichten, um Ihre Umgebung zu optimieren. Im Folgenden werden die wichtigen Aufgaben und empfohlene Besitzer für diese aufgeführt:
 
-| Aufgabe | Owner (Besitzer) |
+| Aufgabe | Besitzer |
 | :- | :- |
-| Vorantreiben von Verbesserungen bei der Identitätssicherheitsbewertung | Team für Informationssicherheitsvorgänge |
+| Vorantreiben von Verbesserungen bei der Identitätssicherheitsbewertung | Team für Informationssicherheitvorgänge |
 | Verwalten von Azure AD Connect-Servern | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Regelmäßiges Ausführen und Sichten von IdFix-Berichten | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
 | Sichten von Azure AD Connect Health-Warnungen für die Synchronisierung und AD FS | Team für IAM-Vorgänge (Identity & Access Management, Identitäts- und Zugriffsverwaltung) |
@@ -107,7 +107,7 @@ Die Einführung von bewährten Methoden kann den optimalen Einsatz von lokalen A
 #### <a name="on-premises-agents-management-recommended-reading"></a>Empfohlene Artikel für die Verwaltung lokaler Agents
 
 - [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors)
-- [Agent für die Azure AD-Passthrough-Authentifizierung: Schnellstart](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start#step-5-ensure-high-availability)
+- [Agent für die Azure AD-Passthrough-Authentifizierung: Schnellstart](../hybrid/how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)
 
 ## <a name="management-at-scale"></a>Bedarfsorientierte Verwaltung
 
@@ -131,7 +131,7 @@ Es werden zwei Absenderadressen („Von“) von Azure AD verwendet: <o365mc@emai
 
 - [Azure AD-Zugriffsüberprüfungen](https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview)
 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-operations#enable-email-notifications)
-- [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/notifications)
+- [Azure AD Identity Protection](/azure/active-directory/identity-protection/howto-identity-protection-configure-notifications)
 - [Azure AD Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-email-notifications)
 - [Benachrichtigungen zu ablaufenden Zertifikaten von Unternehmen-Apps](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-certificates-for-federated-single-sign-on#add-email-notification-addresses-for-certificate-expiration)
 - Benachrichtigungen zum Bereitstellungsdienst von Unternehmen-Apps

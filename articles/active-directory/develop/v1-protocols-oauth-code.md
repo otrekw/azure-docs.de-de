@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 12/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 051565d984196edce0404b12677cf27de9006f29
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 72486b1a67218d78afec9bf798f69b0484795fb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423301"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autorisieren des Zugriffs auf Azure Active Directory-Webanwendungen mit dem Flow zum Erteilen des OAuth 2.0-Codes
 
@@ -63,7 +63,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | tenant |required |Mit dem `{tenant}` -Wert im Pfad der Anforderung kann festgelegt werden, welche Benutzer sich bei der Anwendung anmelden können. Die zulässigen Werte sind Mandantenbezeichner (also etwa `8eaef023-2b34-4da1-9baa-8bc8c9d6a490`, `contoso.onmicrosoft.com` oder für mandantenunabhängige Token `common`). |
 | client_id |required |Die Anwendungs-ID, die Ihrer App zugewiesen wird, wenn Sie sie bei Azure AD registrieren. Diese finden Sie im Azure-Portal. Klicken Sie auf der Randleiste mit den Diensten auf **Azure Active Directory** und auf **App-Registrierungen**. Wählen Sie dann die Anwendung. |
 | response_type |required |Muss `code` für den Autorisierungscodefluss enthalten. |
-| redirect_uri |empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `urn:ietf:wg:oauth:2.0:oob` verwenden. |
+| redirect_uri |empfohlen |Der Umleitungs-URI der App, in dem Authentifizierungsantworten gesendet und von der App empfangen werden können. Er muss genau mit einer der Umleitungs-URIs übereinstimmen, die Sie im Portal registriert haben, mit dem Unterschied, dass er URL-codiert sein muss. Für native und mobile Apps sollten Sie den Standardwert `https://login.microsoftonline.com/common/oauth2/nativeclient` verwenden. |
 | response_mode |optional |Gibt die Methode an, die zum Senden des resultierenden Tokens zurück an Ihre App verwendet werden soll. Kann `query`, `fragment` oder `form_post` sein. `query` gibt den Code als ein Abfragezeichenfolgen-Parameter in der Umleitungs-URI an. Wenn Sie ein ID-Token mit dem impliziten Flow anfordern, können Sie `query` nicht gemäß [OpenID-Spezifikation](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations) verwenden. Wenn Sie lediglich den Code anfordern, können Sie `query`, `fragment` oder `form_post` verwenden. `form_post` führt ein POST-Element mit dem Code zu Ihrer Umleitungs-URI aus. Der Standardwert ist `query` für einen Codefluss.  |
 | state |empfohlen |Ein in der Anforderung enthaltener Wert, der ebenfalls in der Tokenantwort zurückgegeben wird. Ein zufällig generierter eindeutiger Wert wird normalerweise verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird auch verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z. B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
 | resource | empfohlen |Der App-ID-URI der Ziel-Web-API (geschützte Ressource). Klicken Sie zum Ermitteln des App-ID-URI im Azure-Portal auf **Azure Active Directory** und auf **App-Registrierungen**. Öffnen Sie anschließend die Seite **Einstellungen**, und klicken Sie auf **Eigenschaften**. Es kann sich auch um eine externe Ressource wie `https://graph.microsoft.com` handeln. Dieser Parameter muss in einer der Autorisierungs- oder Tokenanforderungen vorhanden sein, um sicherzustellen, dass weniger Authentifizierungsanforderungen diesen in die Autorisierungsanforderung platzieren und so die Zustimmung des Benutzers empfangen wird. |
@@ -223,7 +223,7 @@ Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-En
 | HTTP-Code | BESCHREIBUNG |
 | --- | --- |
 | 400 |Standard-HTTP-Code. Wird in den meisten Fällen verwendet und wird in der Regel aufgrund einer fehlerhaften Anforderung ausgegeben. Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
-| 401 |Fehler bei der Authentifizierung. Tritt beispielsweise auf, wenn die Anforderung den Parameter „client_secret“ nicht enthält. |
+| 401 |Die Authentifizierung ist fehlgeschlagen. Tritt beispielsweise auf, wenn die Anforderung den Parameter „client_secret“ nicht enthält. |
 | 403 |Fehler bei der Autorisierung. Der Benutzer verfügt beispielsweise nicht über die Berechtigung zum Zugriff auf die Ressource. |
 | 500 |Ein interner Fehler ist beim Dienst aufgetreten. Wiederholen Sie die Anforderung. |
 

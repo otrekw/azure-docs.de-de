@@ -8,12 +8,12 @@ ms.topic: include
 author: sgilley
 ms.author: sgilley
 ms.date: 11/06/2019
-ms.openlocfilehash: 96ede63b097999247675364217cf458a268e54d9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 754c9799ed4c2fd90cbcf1e9717b0be21edd54cb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929679"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659870"
 ---
 >[!IMPORTANT]
 >Sie können die von Ihnen bei der Vorbereitung erstellten Ressourcen auch in anderen Tutorials und Anleitungen für Azure Machine Learning verwenden.
@@ -42,7 +42,7 @@ Das hier erstellte Computeziel wird *automatisch auf null Knoten skaliert*, wen
 
 Die Registrierung von Datasets im Arbeitsbereich kann aufgehoben werden, indem Sie die einzelnen Datasets und anschließend **Registrierung aufheben** auswählen.
 
-![Aufheben der Registrierung eines Datasets](./media/aml-ui-cleanup/unregister-dataset.png)
+![Aufheben der Registrierung eines Datasets](./media/aml-ui-cleanup/unregister-dataset1225.png)
 
 Zum Löschen eines Datasets wechseln Sie im Azure-Portal oder Azure Storage-Explorer zum Speicherkonto, und löschen Sie diese Ressourcen manuell.
 

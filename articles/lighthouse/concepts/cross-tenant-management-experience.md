@@ -3,12 +3,12 @@ title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
 ms.date: 11/7/2019
 ms.topic: conceptual
-ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: df6866e93e19d79b34bbbe430c7466e5f6686325
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928004"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453605"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -19,7 +19,7 @@ Als Dienstanbieter können Sie mit der [delegierten Azure-Ressourcenverwaltung](
 
 ## <a name="understanding-customer-tenants"></a>Grundlegendes zu Kundenmandanten
 
-Ein Azure Active Directory-Mandant (Azure AD) ist eine Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die Organisationen bereitgestellt wird, wenn diese sich für Azure, Microsoft 365 oder andere Dienste registrieren und damit eine Geschäftsbeziehung mit Microsoft eingehen. Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt und verfügt über eine eigene Mandanten-ID (eine GUID). Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
+Ein Azure Active Directory-Mandant (Azure AD) ist eine Darstellung einer Organisation. Es handelt sich um eine dedizierte Instanz von Azure AD, die Organisationen bereitgestellt wird, wenn diese sich für Azure, Microsoft 365 oder andere Dienste registrieren und damit eine Geschäftsbeziehung mit Microsoft eingehen. Jeder Azure AD-Mandant ist eindeutig und von anderen Azure AD-Mandanten getrennt und verfügt über eine eigene Mandanten-ID (eine GUID). Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md).
 
 Um Azure-Ressourcen für einen Kunden zu verwalten, müssten sich Dienstanbieter in der Regel mit einem Konto beim Azure-Portal anmelden, das dem Mandanten dieses Kunden zugeordnet ist, wofür ein Administrator im Mandanten des Kunden benötigt wird, um Benutzerkonten für den Dienstanbieter zu erstellen und zu verwalten.
 
@@ -43,31 +43,31 @@ Wir stellen auch APIs bereit, um die Aufgaben der delegierten Azure-Ressourcenve
 
 Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwaltete Mandanten ausgeführt werden. Im Folgenden finden Sie einige wichtige Szenarien, in denen die mandantenübergreifende Verwaltung effektiv sein kann.
 
-[Azure Arc für Server (Vorschauversion):](https://docs.microsoft.com/azure/azure-arc/servers/overview)
+[Azure Arc für Server (Vorschauversion):](../../azure-arc/servers/overview.md)
 
-- [Verbinden von Windows Server- oder Linux-Computern außerhalb von Azure](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) mit delegierten Abonnements oder Ressourcengruppen in Azure
+- [Verbinden von Windows Server- oder Linux-Computern außerhalb von Azure](../../azure-arc/servers/quickstart-onboard-portal.md) mit delegierten Abonnements oder Ressourcengruppen in Azure
 - Verwalten von verbundenen Computern mithilfe von Azure-Konstrukten, z. B. Azure Policy und Tagging
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/):
+[Azure Automation](../../automation/index.yml):
 
 - Verwenden von Automation-Konten für den Zugriff auf und die Arbeit mit delegierten Kundenressourcen
 
-[Azure Backup](https://docs.microsoft.com/azure/backup/):
+[Azure Backup](../../backup/index.yml):
 
 - Sichern und Wiederherstellen von Kundendaten in Kundenmandanten
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - Verwalten gehosteter Kubernetes-Umgebungen und Bereitstellen und Verwalten von Containeranwendungen innerhalb von Kundenmandanten
 
-[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure Monitor](../../azure-monitor/index.yml):
 
 - Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
 - Log Analytics: Abfragen von Daten aus Remote-Kundenarbeitsbereichen in mehreren Mandanten
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im Dienstanbietermandanten über Webhooks
 
-[Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
+[Azure Policy](../../governance/policy/index.yml):
 
 - Compliancemomentaufnahmen zeigen Details von zugewiesenen Richtlinien innerhalb delegierter Abonnements
 - Erstellen und Bearbeiten von Richtliniendefinitionen innerhalb eines delegierten Abonnements
@@ -75,11 +75,11 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Kunden werden Richtlinien, die vom Dienstanbieter erstellt wurden, zusammen mit allen Richtlinien angezeigt, die sie selbst erstellt haben.
 - [Beheben von „deployIfNotExists“ oder Ändern von Zuweisungen innerhalb des Kundenmandanten](../how-to/deploy-policy-remediation.md)
 
-[Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Azure Resource Graph](../../governance/resource-graph/index.yml):
 
 - Enthält jetzt die Mandanten-ID in zurückgegebenen Abfrageergebnissen, sodass Sie ermitteln können, ob ein Abonnement zum Mandanten des Kunden oder dem des Dienstanbieters gehört.
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/):
+[Azure Security Center](../../security-center/index.yml):
 
 - Mandantenübergreifende Sichtbarkeit
   - Überwachen der Compliance mit Sicherheitsrichtlinien und Sicherstellen der Sicherheitsabdeckung für alle Ressourcen der Mandanten
@@ -96,27 +96,27 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
   - Sicherstellung mittels adaptiver Anwendungssteuerung, dass auf Servern nur die Anwendungen und Prozesse ausgeführt werden, die ausgeführt werden sollten
   - Überwachen von Änderungen an wichtigen Dateien und Registrierungseinträgen mittels Überwachung der Dateiintegrität (FIM)
 
-[Azure Sentinel:](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers)
+[Azure Sentinel:](../../sentinel/multiple-tenants-service-providers.md)
 
 - Verwalten von Azure Sentinel-Ressourcen in Kundenmandanten
 
-[Azure Service Health](https://docs.microsoft.com/azure/service-health/):
+[Azure Service Health](../../service-health/index.yml):
 
 - Überwachen der Integrität von Kundenressourcen mittels Azure Resource Health
 - Verfolgen der Integrität der Azure-Dienste, die von ihren Kunden verwendet werden
 
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
+[Azure Site Recovery](../../site-recovery/index.yml):
 
 - Verwalten von Notfallwiederherstellungsoptionen für virtuelle Azure-Computer in Kundenmandanten (beachten Sie, dass Sie keine „RunAs“-Konten zum Kopieren von VM-Erweiterungen verwenden können)
 
-[Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/):
+[Azure Virtual Machines](../../virtual-machines/index.yml):
 
 - Verwenden von VM-Erweiterungen, um nach der Bereitstellung Konfigurations- und Automatisierungsaufgaben auf virtuellen Azure-Computern in Kundenmandanten auszuführen
 - Verwenden der Startdiagnose zur Problembehandlung von Azure-VMs in Kundenmandanten
 - Zugreifen auf VMs mit der seriellen Konsole in Kundenmandanten
 - Beachten Sie, dass Sie Azure Active Directory nicht für die Remoteanmeldung bei einem virtuellen Computer verwenden können, und dass Sie keine VM mit einem Key Vault für Kennwörter, geheime Schlüssel oder Kryptografieschlüssel für die Datenträgerverschlüsselung integrieren können.
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](../../virtual-network/index.yml):
 
 - Bereitstellen und Verwalten virtueller Netzwerke und virtueller Netzwerkschnittstellenkarten (vNICs) innerhalb von Kundenmandanten
 
@@ -128,9 +128,9 @@ Supportanfragen:
 Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 
 - Von Azure Resource Manager verarbeitete Anforderungen können mithilfe der delegierten Azure-Ressourcenverwaltung durchgeführt werden. Die Vorgangs-URIs für diese Anforderungen beginnen mit `https://management.azure.com`. Anforderungen, die von einer Instanz eines Ressourcentyps verarbeitet werden (z. B. Zugriff auf Key Vault-Geheimnisse oder Zugriff auf Speicherdaten) verarbeitet werden, werden nicht von der delegierten Azure-Ressourcenverwaltung unterstützt. Die Vorgangs-URIs für diese Anforderungen beginnen in der Regel mit einer Adresse, die für Ihre Instanz eindeutig ist, z. B. `https://myaccount.blob.core.windows.net` oder `https://mykeyvault.vault.azure.net/`. Letzteres sind in der Regel auch eher Datenvorgänge als Verwaltungsvorgänge. 
-- Rollenzuweisungen müssen [integrierte Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) werden nicht unterstützt.
+- Rollenzuweisungen müssen [integrierte Rollen](../../role-based-access-control/built-in-roles.md) für die rollenbasierte Zugriffssteuerung (RBAC) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [DataActions](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 - Derzeit ist es nicht möglich, ein Abonnement (oder eine Ressourcengruppe innerhalb eines Abonnements) für die delegierte Azure-Ressourcenverwaltung zu integrieren, wenn das Abonnement Azure Databricks verwendet. Ähnlich können Sie, wenn ein Abonnement für das Onboarding mit dem **Microsoft.ManagedServices**-Ressourcenanbieter registriert wurde, zu diesem Zeitpunkt auch keinen Databricks-Arbeitsbereich für dieses Abonnement erstellen.
-- Sie können zwar Abonnements und Ressourcengruppen mit Ressourcensperren in die delegierte Azure-Ressourcenverwaltung integrieren, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
+- Sie können zwar Abonnements und Ressourcengruppen mit Ressourcensperren in die delegierte Azure-Ressourcenverwaltung integrieren, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](../../role-based-access-control/deny-assignments.md), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

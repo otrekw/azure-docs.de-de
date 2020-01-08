@@ -3,19 +3,15 @@ title: Mein erstes PowerShell-Workflowrunbook in Azure Automation
 description: Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentlichen eines einfachen Textrunbooks unter Verwendung eines PowerShell-Workflows vertraut machen können.
 keywords: PowerShell-Workflow, Beispiele für Powershell-Workflows, Workflow PowerShell
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/24/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: dea13d084d80ce787cb8d6cf6146325d8c556b37
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: cdaadcfa3108ca847443e100bc624c2458c34115
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850838"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365953"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Mein erstes PowerShell-Workflow-Runbook
 
@@ -84,7 +80,7 @@ Bevor Sie das Runbook für die Verwendung in der Produktionsumgebung veröffentl
 
 1. Nach Abschluss des Runbookauftrags wird die Ausgabe angezeigt. In Ihrem Fall sollte *Hello World* angezeigt werden.
 
-   ![Hallo Welt](media/automation-first-runbook-textual/test-output-hello-world.png)
+   ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 
 1. Schließen Sie den Testbereich, um zum Zeichenbereich zurückzukehren.
 
@@ -117,7 +113,7 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 1. Schließen Sie die Seiten „Streams“ und „Auftrag“, um zur Seite „MyFirstRunbook“ zurückzukehren.
 1. Klicken Sie auf **Aufträge**, um den Auftragsbereich für dieses Runbook zu öffnen. Diese Seite enthält alle von diesem Runbook erstellten Aufträge. Hier ist nur ein einzelner Auftrag aufgeführt, da Sie den Auftrag bislang erst einmal ausgeführt haben.
 
-   ![Aufträge](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+   ![Jobs](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
 1. Wenn Sie auf diesen Auftrag klicken, wird wieder der Auftragsbereich geöffnet, den Sie sich beim Starten des Runbooks angesehen haben. Mit dieser Aktion können Sie bereits ausgeführte Aufträge öffnen und Details zu jedem Auftrag anzeigen, der für ein bestimmtes Runbook erstellt wurde.
 
@@ -150,7 +146,7 @@ Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist 
 1. Klicken Sie auf den **Testbereich**, um das Runbook zu testen.
 1. Klicken Sie auf **Starten** , um den Test zu starten. Nach Abschluss des Tests erhalten Sie in der Regel eine Ausgabe wie in der Abbildung unten mit allgemeinen Informationen aus Ihrem Konto. Diese Aktion bestätigt, dass die Anmeldeinformationen gültig sind.
 
-   ![Authentifizieren](media/automation-first-runbook-textual/runbook-auth-output.png)
+   ![Authenticate](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Schritt 6: Hinzufügen von Code zum Starten eines virtuellen Computers
 
@@ -210,8 +206,8 @@ Ihr Runbook startet zwar jetzt den virtuellen Computer, den Sie im Runbook hartc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Erste Schritte mit PowerShell-Runbooks werden in [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md)
 * Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
-* Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
+* Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)

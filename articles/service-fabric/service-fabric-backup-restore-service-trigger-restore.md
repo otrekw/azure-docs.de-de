@@ -1,25 +1,16 @@
 ---
-title: Wiederherstellen von Sicherungsdaten in Azure Service Fabric | Microsoft-Dokumentation
+title: Wiederherstellen von Sicherungsdaten in Azure Service Fabric
 description: Verwenden Sie das Feature zum regelmäßigen Sichern und Wiederherstellen in Service Fabric, um gesicherte Anwendungsdaten wiederherzustellen.
-services: service-fabric
-documentationcenter: .net
 author: aagup
-manager: chackdan
-editor: aagup
-ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: ff705eabde111b5ebac1e2d714e3ece221c36e90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1737102ee652cc2263bd0a908c1336bc93a6757b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819325"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75377904"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Wiederherstellen von Sicherungsdaten in Azure Service Fabric
 
@@ -283,7 +274,7 @@ $restoreResponse | Format-List
 
 Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebenen Reihenfolge:
 
-1. **Accepted** (Akzeptiert): Der Wiederherstellungszustand _Accepted_ (Akzeptiert) gibt an, dass die angeforderte Partition mit korrekten Anforderungsparametern ausgelöst wurde.
+1. **Akzeptiert**: Der Wiederherstellungszustand _Accepted_ (Akzeptiert) gibt an, dass die angeforderte Partition mit korrekten Anforderungsparametern ausgelöst wurde.
     ```
     RestoreState  : Accepted
     TimeStampUtc  : 0001-01-01T00:00:00Z
@@ -298,7 +289,7 @@ Die Wiederherstellungsanforderung durchläuft folgende Zustände in der angegebe
     RestoredLsn   : 3552
     ```
     
-3. **Success** (Erfolgreich), **Failure** (Fehler) oder **Timeout**: Eine angeforderte Wiederherstellung kann mit einem der folgenden Zustände abgeschlossen werden. Im Anschluss werden die Bedeutung und die Antwortdetails der einzelnen Zustände erläutert:
+3. **Erfolg**, **Fehler** oder **Timeout**: Eine angeforderte Wiederherstellung kann mit einem der folgenden Zustände abgeschlossen werden. Im Anschluss werden die Bedeutung und die Antwortdetails der einzelnen Zustände erläutert:
     - **Erfolg**: Der Wiederherstellungszustand _Success_ (Erfolgreich) gibt an, dass ein Partitionszustand wiederhergestellt wurde. Die Partition meldet die Zustände _RestoredEpoch_ und _RestoredLSN_ sowie die Zeit im UTC-Format.
 
         ```

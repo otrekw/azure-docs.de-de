@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38f28f153eff11e2b4d705b874609a95a9def8d4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9aa2bf2bb2e77f5e543b53b583ddeeacd46de243
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424194"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrieren von Anwendungen zu MSAL.NET
 
@@ -66,7 +66,7 @@ In MSAL.NET kann auch auf v1.0-Ressourcen zugegriffen werden. Ausführliche Info
 
 In ADAL.NET wurden Benutzer bearbeitet. Ein Benutzer ist jedoch eine Person oder ein Software-Agent, kann aber eines oder mehrere Konten im Microsoft-Identitätssystem (mehrere Azure AD-Konten, Azure AD B2C, persönliche Microsoft-Konten) besitzen bzw. dafür verantwortlich sein. 
 
-In MSAL.NET 2.x wird jetzt (durch die IAccount-Schnittstelle) das Konzept des Kontos definiert. Diese wichtige Änderung sorgt für die richtige Semantik, da jetzt derselbe Benutzer über mehrere Konten in verschiedenen Azure AD-Verzeichnissen verfügen kann. Zudem bietet MSAL.NET bessere Informationen in Gastszenarien, da Informationen zum Stammkonto bereitgestellt werden.
+In MSAL.NET 2.x wird jetzt (durch die IAccount-Schnittstelle) das Konzept des Kontos definiert. Dieser Breaking Change sorgt für die richtige Semantik, um die Tatsache widerzuspiegeln, dass ein und derselbe Benutzer über mehrere Konten in verschiedenen Azure AD-Verzeichnissen verfügen kann. Zudem bietet MSAL.NET bessere Informationen in Gastszenarien, da Informationen zum Stammkonto bereitgestellt werden.
 
 Weitere Informationen zu den Unterschieden zwischen IUser und IAccount finden Sie unter [MSAL.NET 2.x](https://aka.ms/msal-net-2-released).
 
@@ -119,7 +119,7 @@ In MSAL.NET und dem v2.0-Endpunkt werden noch nicht alle Gewährungstypen unters
 
 Die folgenden Gewährungstypen werden in ADAL.NET und MSAL.NET für Desktop- und mobile Anwendungen unterstützt:
 
-Gewährung | ADAL.NET | MSAL.NET
+Erteilen | ADAL.NET | MSAL.NET
 ----- |----- | -----
 Interactive | [Interaktive Authentifizierung](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Acquiring-tokens-interactively---Public-client-application-flows) | [Interaktiver Abruf von Token in MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Acquiring-tokens-interactively)
 Integrierte Windows-Authentifizierung | [Integrierte Authentifizierung in Windows (Kerberos)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AcquireTokenSilentAsync-using-Integrated-authentication-on-Windows-(Kerberos)) | [Integrierte Windows-Authentifizierung](msal-authentication-flows.md#integrated-windows-authentication)
@@ -130,7 +130,7 @@ Gerätecodefluss | [Geräteprofil für Geräte ohne Webbrowser](https://github.c
 
 Die folgenden Gewährungstypen werden in ADAL.NET und MSAL.NET für Webanwendungen, Web-APIs und Daemonanwendungen unterstützt:
 
-Anwendungstyp | Gewährung | ADAL.NET | MSAL.NET
+Anwendungstyp | Erteilen | ADAL.NET | MSAL.NET
 ----- | ----- | ----- | -----
 Web-App, Web-API, Daemon | Clientanmeldeinformationen | [Flow von Clientanmeldeinformationen in ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Client-credential-flows) | [Flow von Clientanmeldeinformationen in MSAL.NET](msal-authentication-flows.md#client-credentials)
 Web-API | OBO (Im Namen von) | [Dienst-zu-Dienst-Aufrufe im Namen des Benutzers mit ADAL.NET](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Service-to-service-calls-on-behalf-of-the-user) | [OBO in MSAL.NET](msal-authentication-flows.md#on-behalf-of)
@@ -223,7 +223,7 @@ MSAL.NET stellt aus Sicherheitsgründen keine Aktualisierungstoken bereit: MSAL 
 
 Praktischerweise verfügt MSAL.NET nun über eine API, die die Migration früherer Aktualisierungstoken (mit ADAL abgerufen) zu `IConfidentialClientApplication` unterstützt.
 
-```CSharp
+```csharp
 /// <summary>
 /// Acquires an access token from an existing refresh token and stores it and the refresh token into 
 /// the application user token cache, where it will be available for further AcquireTokenSilent calls.

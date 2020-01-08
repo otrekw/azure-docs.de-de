@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 0dccefa47789b4658a7bca828b5a820db0d448e5
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ce51c6415389ee52cf0371dfbddb98cb48747b05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688651"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430470"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -66,8 +66,8 @@ Der ASE muss ein SSL-Zertifikat als SSL-Standardzertifikat zugeordnet werden, da
 
 Ein gültiges SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. Unabhängig von der Quelle des SSL-Zertifikats müssen die folgenden Zertifikatattribute ordnungsgemäß konfiguriert werden:
 
-* **Betreff**: Dieses Attribut muss auf * *.your-root-domain-here.com* festgelegt werden.
-* **Alternativer Antragstellername**: Dieses Attribut muss sowohl * *.your-root-domain-here.com* als auch * *.scm.your-root-domain-here.com* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*.
+* **Antragsteller:** Dieses Attribut muss auf * *.your-root-domain-here.com* festgelegt werden.
+* **Alternativer Antragstellername:** Dieses Attribut muss sowohl * *.your-root-domain-here.com* als auch * *.scm.your-root-domain-here.com* enthalten. SSL-Verbindungen mit der SCM/Kudu-Website, die jeder App zugeordnet ist, verwenden eine Adresse im Format *your-app-name.scm.your-root-domain-here.com*.
 
 Wenn ein gültiges SSL-Zertifikat vorhanden ist, sind zwei weitere Vorbereitungsschritte erforderlich. Konvertieren Sie das SSL-Zertifikat in eine PFX-Datei, und speichern Sie es. Denken Sie daran, dass die PFX-Datei alle Zwischenzertifikate und Stammzertifikate enthalten muss. Sichern Sie es mit einem Kennwort.
 
@@ -181,7 +181,7 @@ Informationen zum Erstellen einer ASEv1 mithilfe einer Resource Manager-Vorlage 
 [mobileapps]: ../../app-service-mobile/app-service-mobile-value-prop.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../../app-service/configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md

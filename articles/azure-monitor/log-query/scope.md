@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/25/2019
-ms.openlocfilehash: 03e5e1bc79702a979be352095bb4833a7f5fe1c6
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: dec81bfde160cd9913db07bb99629b8fbcc37364
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900232"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365205"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics
 Wenn Sie eine [Protokollabfrage](log-query-overview.md) in [Log Analytics im Azure-Portal](get-started-portal.md) ausführen, sind die von der Abfrage ausgewerteten Daten von dem von Ihnen ausgewählten Bereich und Zeitbereich abhängig. In diesem Artikel wird der Bereich, der Zeitbereich und das Festlegen dieser Bereiche je nach Ihren Anforderungen beschrieben. Außerdem erfahren Sie mehr über das Verhalten von verschiedenen Bereichstypen.
@@ -33,7 +33,7 @@ Der Bereich wird von der Methode bestimmt, die Sie zum Starten von Log Analytics
 | Application Insights-Anwendung | Alle Datensätze in der Application Insights-Anwendung. | Klicken Sie auf der Seite **Übersicht** von Application Insights auf **Analytics**. | Bereich kann nur in eine andere Application Insights-Anwendung geändert werden. |
 | Resource group | Datensätze, die von allen Ressourcen in der Ressourcengruppe erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen. | Klicken Sie im Ressourcengruppenmenü auf **Protokolle**. | Bereich kann nicht geändert werden.|
 | Subscription | Datensätze, die von allen Ressourcen im Abonnement erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen. | Klicken Sie im Abonnementmenü auf **Protokolle**.   | Bereich kann nicht geändert werden. |
-| Andere Azure-Ressourcen | Datensätze, die von der Ressource erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen.  | Wählen Sie im Ressourcenmenü auf **Protokolle**.<br>OR<br>Klicken Sie im Menü **Azure Monitor** auf **Protokolle**, und wählen Sie dann einen neuen Bereich aus. | Bereich kann nur in denselben Ressourcentyp geändert werden. |
+| Andere Azure-Ressourcen | Datensätze, die von der Ressource erstellt werden. Diese enthalten möglicherweise Daten aus mehreren Log Analytics-Arbeitsbereichen.  | Wählen Sie im Ressourcenmenü auf **Protokolle**.<br>oder<br>Klicken Sie im Menü **Azure Monitor** auf **Protokolle**, und wählen Sie dann einen neuen Bereich aus. | Bereich kann nur in denselben Ressourcentyp geändert werden. |
 
 ### <a name="limitations-when-scoped-to-a-resource"></a>Einschränkungen bei Begrenzungen auf eine Ressource
 
@@ -63,7 +63,7 @@ Die Ausführung Ihrer Abfrage wird blockiert, wenn der Bereich Arbeitsbereiche i
 ![Fehler bei Abfrage](media/scope/query-failed.png)
 
 
-## <a name="time-range"></a>Zeitbereich
+## <a name="time-range"></a>Uhrzeitbereich
 Der Zeitbereich gibt, basierend auf dem Zeitpunkt der Erstellung des Datensatzes, die Gruppe der für die Abfrage auszuwertenden Datensätzen an. Er wird durch eine in der folgenden Tabelle angegebene Standardeigenschaft in jedem Datensatz im Arbeitsbereich oder in der Anwendung definiert.
 
 | Location | Eigenschaft |

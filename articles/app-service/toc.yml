@@ -163,7 +163,7 @@
               href: configure-authentication-provider-twitter.md
         - name: Erweiterte Authentifizierung
           href: app-service-authentication-how-to.md
-        - name: Beschränken von IP-Adressen
+        - name: Beschränken des Zugriffs
           href: app-service-ip-restrictions.md
         - name: Verwenden einer verwalteten Identität
           href: overview-managed-identity.md
@@ -203,6 +203,8 @@
           href: app-service-web-app-cloning.md
         - name: Verschieben von Ressourcen
           href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
+        - name: Wiederherstellen eines gelöschten App Service
+          href: app-service-undelete.md
     - name: Ausführen von Hintergrundaufgaben
       items:
         - name: Erstellen von Webaufträgen
@@ -234,7 +236,7 @@
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/app-service/'
     - name: Informationen zum Kontingent
-      href: '../azure-subscription-service-limits.md#app-service-limits'
+      href: '../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits'
     - name: Dienstupdates
       href: 'https://azure.microsoft.com/updates/?product=app-service'
     - name: Leitfäden zu Migration Assistant

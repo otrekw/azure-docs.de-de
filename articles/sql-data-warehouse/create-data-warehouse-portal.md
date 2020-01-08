@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 841041cb9fa20b034dd4522a5231813b71558bd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457812"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal
 
@@ -37,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-data-warehouse"></a>Erstellen eines Data Warehouse
 
-Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-logical-servers.md) erstellt. 
+Eine Azure SQL Data Warehouse-Instanz wird mit einem definierten Satz von [Computeressourcen](memory-concurrency-limits.md) erstellt. Die Datenbank wird innerhalb einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-logical-servers.md) erstellt. 
 
 Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den AdventureWorksDW-Beispieldaten zu erstellen. 
 
@@ -49,7 +49,7 @@ Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den Adven
 
 3. Füllen Sie das SQL Data Warehouse-Formular mit den folgenden Informationen aus:
 
-    | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
     | **Abonnement** | Ihr Abonnement | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
     | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
@@ -60,7 +60,7 @@ Führen Sie diese Schritte aus, um eine SQL Data Warehouse-Instanz mit den Adven
 
 4. Wählen Sie einen vorhandenen **Server** aus, oder klicken Sie auf **Neu erstellen**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
 
-    | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
     | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
     | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
@@ -138,20 +138,20 @@ In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-s
 
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
 
-   | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    | :------ | :-------------- | :---------- |
    | Servertyp | Datenbank-Engine | Dieser Wert ist erforderlich. |
    | Servername | Der vollqualifizierte Servername | Beispiel: **mynewserver-20180430.database.windows.net**. |
    | Authentication | SQL Server-Authentifizierung | In diesem Tutorial ist die SQL-Authentifizierung der einzige konfigurierte Authentifizierungstyp. |
-   | Anmeldung | Das Serveradministratorkonto | Dies ist das Konto, das Sie bei der Servererstellung angegeben haben. |
+   | Anmeldename | Das Serveradministratorkonto | Dies ist das Konto, das Sie bei der Servererstellung angegeben haben. |
    | Kennwort | Das Kennwort für das Serveradministratorkonto | Dies ist das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
    ||||
 
     ![Verbindung mit dem Server herstellen](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird in SSMS geöffnet. 
+3. Klicken Sie auf **Verbinden**. Das Fenster „Objekt-Explorer“ wird in SSMS geöffnet. 
 
-4. Erweitern Sie im Objekt-Explorer die Option **Datenbanken**. Erweitern Sie dann **mySampleDatabase**, um die Objekte in der neuen Datenbank anzuzeigen.
+4. Erweitern Sie im Objekt-Explorer den Eintrag **Datenbanken**. Erweitern Sie dann **mySampleDatabase**, um die Objekte in der neuen Datenbank anzuzeigen.
 
     ![Datenbankobjekte](media/create-data-warehouse-portal/connected.png) 
 

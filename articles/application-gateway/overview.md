@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 11/23/2019
 ms.author: victorh
-ms.openlocfilehash: 29962fa217c34088ed17fdea68c2c1189a3bfcd2
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: a72e98341ecafcda98cc2fde34cf1f9d4eaff94c
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996577"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658269"
 ---
 # <a name="what-is-azure-application-gateway"></a>Was ist Azure Application Gateway?
 
@@ -139,14 +139,14 @@ Die Standard_v2- und WAF_v2-SKU von Application Gateway kann für die automatisc
 
 Die Standard- und WAF-SKU von Application Gateway werden zurzeit in drei Größen angeboten: **klein**, **mittel** und **groß**. Kleine Instanzen sind für Entwicklungs- und Testszenarien vorgesehen.
 
-Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
+Eine vollständige Liste mit den Einschränkungen von Anwendungsgateways finden Sie unter [Application Gateway service limits (Einschränkungen von Application Gateway)](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits).
 
 Die folgende Tabelle zeigt den durchschnittlichen Leistungsdurchsatz für jede v1-Application Gateway-Instanz mit aktivierter SSL-Auslagerung:
 
-| Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Mittel | Groß |
+| Durchschnittliche Größe der Back-End-Seitenantwort | Klein | Medium | Groß |
 | --- | --- | --- | --- |
 | 6 KB |7,5 MBit/s |13 MBit/s |50 MBit/s |
-| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
+| 100 KB |35 MBit/s |100 MBit/s |200 MBit/s |
 
 > [!NOTE]
 > Hierbei handelt es sich um ungefähre Werte für den Durchsatz des Anwendungsgateways. Der tatsächliche Durchsatz ist abhängig von verschiedenen Umgebungsdetails wie etwa durchschnittliche Seitengröße, Speicherort der Back-End-Instanzen und Verarbeitungszeit für die Seitenbereitstellung. Für genaue Leistungsangaben sollten Sie Ihre eigenen Tests ausführen. Diese Werte dienen nur als Leitfaden für die Kapazitätsplanung.

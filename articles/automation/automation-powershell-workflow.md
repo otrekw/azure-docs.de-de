@@ -2,25 +2,21 @@
 title: Grundlagen des PowerShell-Workflows für Azure Automation
 description: Dieser Artikel ist als kurze Lektion für Autoren gedacht, die mit PowerShell vertraut sind, um die Grundlagen der speziellen Unterschiede zwischen PowerShell und dem PowerShell-Workflow sowie Konzepte, die für Automation-Runbooks gelten, zu verdeutlichen.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/14/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d656e97448bebe7019a63824b9de6e322b787a92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6e4c8057322b6208ea3b447b264e2bde1344540c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850736"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421552"
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Grundlagen der wichtigsten Windows PowerShell-Workflowkonzepte für Automation-Runbooks
 
 Runbooks in Azure Automation sind als Windows PowerShell-Workflows implementiert.  Ein Windows PowerShell-Workflow ähnelt einem Windows PowerShell-Skript, weist aber einige wesentliche Unterschiede auf, die für einen neuen Benutzer verwirrend sein können.  Dieser Artikel ist zwar dazu vorgesehen, Sie beim Schreiben von Runbooks mithilfe des PowerShell-Workflows zu schreiben, wir empfehlen jedoch, dass Sie die Runbooks mithilfe von PowerShell schreiben, sofern Sie keine Prüfpunkte benötigen.  Beim Erstellen von PowerShell-Workflow-Runbooks gelten mehrere Syntaxunterschiede, die etwas mehr Aufwand beim Schreiben effektiver Workflows erfordern.
 
-Bei einem Workflow handelt es sich um eine Sequenz von programmierten, zusammenhängenden Schritten, mit denen zeitaufwändige Aufgaben ausgeführt werden oder für die mehrere Schritte auf verschiedenen Geräten oder verwalteten Knoten koordiniert werden müssen. Die Vorteile eines Workflows gegenüber einem normalen Skript liegen darin, dass eine Aktion gleichzeitig für mehrere Geräte ausgeführt und bei Auftreten von Fehlern eine automatische Wiederherstellung durchgeführt werden kann. Ein Windows PowerShell-Workflow ist ein Windows PowerShell-Skript, das Windows Workflow Foundation nutzt. Wenngleich der Workflow mit Windows PowerShell-Syntax geschrieben und über Windows PowerShell gestartet wird, erfolgt die Verarbeitung durch Windows Workflow Foundation.
+Bei einem Workflow handelt es sich um eine Sequenz von programmierten, zusammenhängenden Schritten, mit denen zeitaufwendige Aufgaben ausgeführt werden oder für die mehrere Schritte auf mehreren Geräten oder verwalteten Knoten koordiniert werden müssen. Die Vorteile eines Workflows gegenüber einem normalen Skript liegen darin, dass eine Aktion gleichzeitig für mehrere Geräte ausgeführt und bei Auftreten von Fehlern eine automatische Wiederherstellung durchgeführt werden kann. Ein Windows PowerShell-Workflow ist ein Windows PowerShell-Skript, das Windows Workflow Foundation nutzt. Wenngleich der Workflow mit Windows PowerShell-Syntax geschrieben und über Windows PowerShell gestartet wird, erfolgt die Verarbeitung durch Windows Workflow Foundation.
 
 Ausführliche Informationen zu den Themen in diesem Artikel finden Sie unter [Erste Schritte mit dem Windows PowerShell-Workflow](https://technet.microsoft.com/library/jj134242.aspx).
 
@@ -154,7 +150,7 @@ InlineScript-Aktivitäten können in bestimmten Workflows wichtig sein, aber sie
 
 Weitere Informationen zur Verwendung von InlineScript finden Sie unter [Ausführen von Windows PowerShell-Befehlen in einem Workflow](https://technet.microsoft.com/library/jj574197.aspx) und [about_InlineScript](https://technet.microsoft.com/library/jj649082.aspx).
 
-## <a name="parallel-processing"></a>Parallele Verarbeitung
+## <a name="parallel-processing"></a>Parallelverarbeitung
 
 Ein Vorteil von Windows PowerShell-Workflows besteht darin, dass sie einen Satz an Befehlen parallel – und nicht wie in einem typischen Skript sequenziell – ausführen können.
 

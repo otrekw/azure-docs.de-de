@@ -104,7 +104,7 @@
       href: security-hardened-vm-host-image.md
     - name: Übersicht über die Azure Kubernetes Service-Diagnose
       href: concepts-diagnostics.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Clustervorgänge
       items:
@@ -218,6 +218,8 @@
           maintainContext: true
         - name: Rotieren von Zertifikaten
           href: certificate-rotation.md
+        - name: Erstellen eines privaten Clusters
+          href: private-clusters.md
     - name: Überwachung und Protokollierung
       items:
         - name: Azure Monitor für Container
@@ -309,6 +311,9 @@
         - name: Verwenden von Azure Database for PostgreSQL
           href: ../postgresql/concepts-aks.md
           maintainContext: true
+        - name: Verwenden von Azure API Management
+          href: ../api-management/api-management-kubernetes.md
+          maintainContext: true
     - name: Auswählen und Bereitstellen eines Dienstnetzes
       items:
         - name: Informationen zu Dienstnetzen
@@ -355,7 +360,7 @@
           href: kube-advisor-tool.md
         - name: SSH-Knotenzugriff
           href: ssh.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks

@@ -49,7 +49,7 @@
           href: stream-analytics-define-inputs.md
         - name: Verweisdateneingaben
           href: stream-analytics-use-reference-data.md
-        - name: Schreiben von benutzerdefinierten .NET-Deserialisierern
+        - name: Lesen von Eingaben in beliebigen Formaten mithilfe benutzerdefinierter Deserialisierer
           href: custom-deserializer-examples.md
     - name: Ausgabetypen für einen Auftrag
       items:
@@ -79,7 +79,7 @@
       href: stream-analytics-concepts-checkpoint-replay.md
     - name: Fehlerrichtlinie
       href: stream-analytics-output-error-policy.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwalten
       items:
@@ -154,7 +154,7 @@
           href: stream-analytics-streaming-unit-consumption.md
         - name: Skalieren mit Parallelisierung
           items:
-            - name: Abfrageparallelisierung
+            - name: Parallelisierung der Abfragen
               href: stream-analytics-parallelization.md
             - name: Erhöhen des Durchsatzes
               href: stream-analytics-scale-jobs.md
@@ -174,9 +174,9 @@
       items:
         - name: Installieren von Tools
           href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Test mit Beispieldaten
+        - name: Lokales Testen mit Beispieldaten
           href: stream-analytics-vs-tools-local-run.md
-        - name: Test mit Livedaten
+        - name: Lokales Testen mit Livedaten
           href: stream-analytics-live-data-local-testing.md
         - name: Anzeigen von Aufträgen in Visual Studio
           href: stream-analytics-vs-tools.md
@@ -188,12 +188,14 @@
           href: stream-analytics-edge-csharp-udf-methods.md
     - name: Visual Studio Code
       items:
-        - name: Test mit Beispieldaten
-          href: vscode-local-run.md
+        - name: Lokales Testen mit Beispieldaten
+          href: visual-studio-code-local-run.md
+        - name: Lokales Testen mit Livedaten
+          href: visual-studio-code-local-run-live-input.md
         - name: Einrichten von CI-/CD-Pipelines
           href: setup-cicd-vs-code.md
         - name: Untersuchen von Aufträgen
-          href: vscode-explore-jobs.md
+          href: visual-studio-code-explore-jobs.md
     - name: Problembehandlung
       items:
         - name: Eingabe
@@ -255,7 +257,7 @@
             - name: STDEV
               href: /stream-analytics-query/stdev-azure-stream-analytics
               maintainContext: true
-            - name: STDEVP
+            - name: STDABWEICHUNGAUFFÜLL
               href: /stream-analytics-query/stdevp-azure-stream-analytics
               maintainContext: true
             - name: SUM
@@ -264,10 +266,10 @@
             - name: TopOne
               href: /stream-analytics-query/topone-azure-stream-analytics
               maintainContext: true
-            - name: VAR
+            - name: VARIANZ
               href: /stream-analytics-query/var-azure-stream-analytics
               maintainContext: true
-            - name: VARP
+            - name: VARIANZAUFFÜLL
               href: /stream-analytics-query/varp-azure-stream-analytics
               maintainContext: true
         - name: Analysefunktionen

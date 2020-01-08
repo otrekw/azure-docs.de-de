@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: e78b647d27b162c55eb262a7590e1d3ed997de41
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7f527d3c57f086e7941505a9ca4396885c746762
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929905"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440078"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Schnellstart: Erstellen einer Azure Data Factory mithilfe von PowerShell
 
@@ -63,7 +63,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"ADFQuickStartRG"`.
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"ADFQuickStartRG"`.
 
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";

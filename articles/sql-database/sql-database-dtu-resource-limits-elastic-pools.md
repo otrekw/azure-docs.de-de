@@ -11,12 +11,12 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 ms.date: 03/14/2019
-ms.openlocfilehash: 1dd0f90a9844bb3afbd15e1f8c804d3a7c6b7fff
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 1c9d3256f3898d57eb9f7fe5d758bcaffb37aca6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687675"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75637574"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
 
@@ -31,18 +31,18 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 > [!IMPORTANT]
 > Anleitungen und Überlegungen zur Skalierung finden Sie unter [Skalieren eines Pools für elastische Datenbanken](sql-database-elastic-pool-scale.md).
 > [!NOTE]
-> Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen hinsichtlich DTU-Anzahl und Dienstebene denen einzelner Datenbanken außerhalb von Pools. Auf eine S2-Datenbank können z.B. maximal 120 Mitarbeiter gleichzeitig zugreifen. Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn max. 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
+> Die Ressourcengrenzwerte einzelner Datenbanken in Pools für elastische Datenbanken entsprechen im Allgemeinen hinsichtlich DTU-Anzahl und Dienstebene denen einzelner Datenbanken außerhalb von Pools. Auf eine S2-Datenbank können z.B. max. 120 Mitarbeiter gleichzeitig zugreifen. Also können auch 120 Mitarbeiter gleichzeitig auf eine Datenbank in einem Standard-Pool zugreifen, wenn max. 50 DTUs pro Datenbank im Pool zulässig sind (entspricht S2).
 
 ### <a name="basic-elastic-pool-limits"></a>Grenzwerte für Pools für elastische Datenbanken – Basic
 
 | eDTUs pro Pool | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
-| Inbegriffener Speicher pro Pool (GB) | 5 | 10 | 20 | 29 | 11,9 | 78 | 117 | 156 |
-| Max. Speicherlösungen pro Pool (GB) | 5 | 10 | 20 | 29 | 11,9 | 78 | 117 | 156 |
+| Inbegriffener Speicher pro Pool (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
+| Max. Speicherlösungen pro Pool (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
-| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
+| Max. gleichzeitige Sitzungen pro Pool | 30.000 | 30.000 | 30.000 | 30.000 |30.000 | 30.000 | 30.000 | 30.000 |
 | Min. Anzahl von eDTU-Lösungen pro Datenbank | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
 | Max. Anzahl von eDTU-Lösungen pro Datenbank | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
 | Max. Speicherkapazität pro Datenbank (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
@@ -57,7 +57,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 | Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool | 100 | 200 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool | 100 | 200 | 400 | 600 | 800 | 1600 |
-| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Max. gleichzeitige Sitzungen pro Pool | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 | Min. Anzahl von eDTU-Lösungen pro Datenbank | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
 | Max. Anzahl von eDTU-Lösungen pro Datenbank | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Max. Speicherkapazität pro Datenbank (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
@@ -72,7 +72,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 | Max. In-Memory-OLTP-Speicher pro Pool (GB) | – | – | – | – | – |
 | Max. Anzahl Datenbanken pro Pool | 500 | 500 | 500 | 500 | 500 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool | 2400 | 3200 | 4000 | 5\.000 | 6000 |
-| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Max. gleichzeitige Sitzungen pro Pool | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 | Min. Anzahl von eDTU-Lösungen pro Datenbank | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Max. Anzahl von eDTU-Lösungen pro Datenbank | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
 | Max. Speicherlösungen pro Datenbank (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
@@ -87,7 +87,7 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 | Max. In-Memory-OLTP-Speicher pro Pool (GB) | 1 | 2 | 4 | 10 | 12 |
 | Max. Anzahl Datenbanken pro Pool | 50 | 100 | 100 | 100 | 100 |
 | Max. gleichzeitige Worker pro Pool (Anforderungen) | 200 | 400 | 800 | 1600 | 2400 |
-| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Max. gleichzeitige Sitzungen pro Pool | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 | Min. Anz. von eDTUs pro Datenbank | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 |
 | Max. Anz. von eDTUs pro Datenbank | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000|
 | Max. Speicherkapazität pro Datenbank (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
@@ -97,12 +97,12 @@ Die folgenden Tabellen enthalten die verfügbaren Ressourcen für Pools für ela
 
 | eDTUs pro Pool | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: |
-| Inbegriffener Speicher pro Pool (GB) | 2048 | 2\.560 | 3072 | 3548 | 4096 |
-| Max. Speicherlösungen pro Pool (GB) | 2048 | 2\.560 | 3072 | 3548 | 4096|
+| Inbegriffener Speicher pro Pool (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
+| Max. Speicherlösungen pro Pool (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
 | Max. In-Memory-OLTP-Speicher pro Pool (GB) | 16 | 20 | 24 | 28 | 32 |
 | Max. Anzahl Datenbanken pro Pool | 100 | 100 | 100 | 100 | 100 |
 | Max. gleichzeitige Worker (Anforderungen) pro Pool | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Max. gleichzeitige Sitzungen pro Pool | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Max. gleichzeitige Sitzungen pro Pool | 30.000 | 30.000 | 30.000 | 30.000 | 30.000 |
 | Min. Anzahl von eDTU-Lösungen pro Datenbank | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Max. Anzahl von eDTU-Lösungen pro Datenbank | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
 | Max. Speicherkapazität pro Datenbank (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
@@ -130,8 +130,8 @@ Die folgende Tabelle beschreibt die Eigenschaften von Pooldatenbanken.
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zu V-Kern-Ressourcenlimits für eine Einzeldatenbank finden Sie unter [Ressourcenlimits für Einzeldatenbanken, die das V-Kern-Kaufmodell verwenden](sql-database-vcore-resource-limits-single-databases.md).
-- Informationen zu DTU-Ressourcenlimits für eine Einzeldatenbank finden Sie unter [Ressourcenlimits für Einzeldatenbanken, die das DTU-Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
+- Informationen zu DTU-Ressourcenlimits für einen Singleton finden Sie unter [Ressourcenlimits für Singletons, die das DTU-Kaufmodell verwenden](sql-database-dtu-resource-limits-single-databases.md).
 - Informationen zu V-Kern-Ressourcenlimits für Pools für elastische Datenbanken finden Sie unter [Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden](sql-database-vcore-resource-limits-elastic-pools.md).
 - Informationen zu den Ressourcenlimits für verwaltete Instanzen finden Sie unter [Ressourcenlimits bei verwalteten Instanzen](sql-database-managed-instance-resource-limits.md).
-- Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+- Informationen zu allgemeinen Azure-Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Informationen zu Ressourcenlimits auf Server- und Abonnementebene auf einem Datenbankserver finden Sie unter [Übersicht über Ressourcenlimits für einen SQL-Datenbank-Server](sql-database-resource-limits-database-server.md).

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 77fc5a53c8bdc389c24cd1e6406415eefc3f167b
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: d50c07d78c15d26a191b982d24da8a4808a31ecd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256188"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415059"
 ---
 # <a name="authorize-non-owners-to-deploy-avere-vfxt"></a>Autorisieren von Nicht-Besitzern zur Bereitstellung von Avere vFXT
 
@@ -19,11 +19,11 @@ Diese Anleitung ist ein Problemumgehung, die es einem Benutzer ohne Berechtigung
 
 (Die empfohlene Methode zur Bereitstellung des Avere vFXT-Systems besteht darin, dass ein Benutzer mit Besitzerberechtigungen die Erstellungsschritte durchführt, wie in [Vorbereiten der Avere vFXT-Erstellung](avere-vfxt-prereqs.md) beschrieben.  
 
-Die Problemumgehung umfasst die Erstellung einer zusätzlichen Zugriffsrolle, die ihren Benutzern ausreichende Berechtigungen für die Installation des Clusters gibt. Die Rolle muss von einem Abonnementbesitzer erstellt werden und ein Besitzer muss sie geeigneten Benutzern zuordnen. 
+Die Problemumgehung umfasst die Erstellung einer zusätzlichen Zugriffsrolle, die ihren Benutzern ausreichende Berechtigungen für die Installation des Clusters gibt. Die Rolle muss von einem Abonnementbesitzer erstellt werden und ein Besitzer muss sie geeigneten Benutzern zuordnen.
 
-Ein Abonnementbesitzer muss auch die Nutzungsbedingungen für das Marketplace-Image für Avere vFXT [akzeptieren](avere-vfxt-prereqs.md). 
+Ein Abonnementbesitzer muss auch die Nutzungsbedingungen für das Marketplace-Image für Avere vFXT [akzeptieren](avere-vfxt-prereqs.md).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Sämtliche dieser Schritte müssen von einem Benutzer mit Besitzerberechtigungen für das Abonnement durchgeführt werden, das für den Cluster verwendet wird.
 
 1. Kopieren Sie diese Zeilen, und speichern Sie sie in einer Datei (z. B. `averecreatecluster.json`). Verwenden Sie Ihre Abonnement-ID in der `AssignableScopes`-Anweisung.
@@ -49,7 +49,7 @@ Ein Abonnementbesitzer muss auch die Nutzungsbedingungen für das Marketplace-Im
            "Microsoft.Network/routeTables/routes/delete",
            "Microsoft.Network/virtualNetworks/subnets/join/action",
            "Microsoft.Network/virtualNetworks/subnets/read",
-   
+
            "Microsoft.Resources/subscriptions/resourceGroups/read",
            "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
            "Microsoft.Storage/*/read",
@@ -63,6 +63,7 @@ Ein Abonnementbesitzer muss auch die Nutzungsbedingungen für das Marketplace-Im
    `az role definition create --role-definition <PATH_TO_FILE>`
 
     Beispiel:
+
     ```azurecli
     az role definition create --role-definition ./averecreatecluster.json
     ```
@@ -71,7 +72,7 @@ Ein Abonnementbesitzer muss auch die Nutzungsbedingungen für das Marketplace-Im
 
    `az role assignment create --assignee <USERNAME> --scope /subscriptions/<SUBSCRIPTION_ID> --role 'avere-create-cluster'`
 
-Nach diesem Vorgang hat jeder Benutzer, dem diese Rolle zugeordnet ist, die folgenden Berechtigungen für das Abonnement: 
+Nach diesem Vorgang hat jeder Benutzer, dem diese Rolle zugeordnet ist, die folgenden Berechtigungen für das Abonnement:
 
 * Erstellen und Konfigurieren der Netzwerkinfrastruktur
 * Erstellen des Clustercontrollers

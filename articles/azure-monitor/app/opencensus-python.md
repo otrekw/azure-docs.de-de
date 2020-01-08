@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: af16643ed877ca427a22428afec028264de7a5d8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83b4e1e10af8e398f6671f6b2561485bfdb6b7f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929002"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432480"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Einrichten von Azure Monitor für Ihre Python-Anwendung (Vorschau)
 
@@ -21,7 +21,7 @@ Azure Monitor unterstützt durch die Integration mit [OpenCensus](https://opence
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 - Python-Installation. In diesem Artikel wird [Python 3.7.0](https://www.python.org/downloads/) verwendet, aber auch frühere Versionen können mit kleineren Änderungen wahrscheinlich verwendet werden.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
@@ -38,7 +38,7 @@ Zuerst müssen Sie eine Application Insights-Ressource in Azure Monitor erstelle
 
 1. Ein Konfigurationsfeld wird angezeigt. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus.
 
-   | Einstellung        | Wert           | BESCHREIBUNG  |
+   | Einstellung        | value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
@@ -353,7 +353,7 @@ Im Folgenden finden Sie die Zuordnungen der von OpenCensus bereitgestellten Expo
     logger.warning('action', {'key-1': 'value-1', 'key-2': 'value2'})
     ```
 
-7. Ausführliche Informationen dazu, wie Sie die Protokolle um Daten im Ablaufverfolgungskontext erweitern können, finden Sie unter [Integration von Protokollen](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation) für OpenCensus Python.
+7. Ausführliche Informationen dazu, wie Sie die Protokolle um Daten im Ablaufverfolgungskontext erweitern können, finden Sie unter [Integration von Protokollen](https://docs.microsoft.com/azure/azure-monitor/app/correlation#log-correlation) für OpenCensus Python.
 
 ## <a name="view-your-data-with-queries"></a>Anzeigen Ihrer Daten mit Abfragen
 

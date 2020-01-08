@@ -3,17 +3,17 @@ title: 'Schnellstart: Hinzufügen eines simulierten Geräts zu Azure IoT Central
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Gerätevorlage erstellen und Ihrer IoT Central-Anwendung ein simuliertes Gerät hinzufügen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/10/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 46d325fd609363a5425fc16845552e75b575c231
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 669bdcddc7e4bb0c63250d9b571ff7ef4343ef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706712"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434823"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application-preview-features"></a>Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung (Previewfunktionen)
 
@@ -73,7 +73,7 @@ Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind n
     | Anzeigename      | Semantischer Typ | Schema |
     | ----------------- | ------------- | ------ |
     | Datum der letzten Wartung | Keine          | Date   |
-    | Customer Name     | Keine          | Zeichenfolge |
+    | Customer Name     | Keine          | String |
 
 1. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern:
 
@@ -170,7 +170,7 @@ Nach der Erstellung eines neuen simulierten Geräts kann der Ersteller dieses Ge
 
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie eine Gerätevorlage vom Typ **Environmental Sensor** (Umgebungssensor) erstellen und Ihrer Anwendung ein simuliertes Gerät hinzufügen.
 
-Weitere Informationen zum Überwachen von Geräten, die mit Ihrer Anwendung verbunden sind, finden Sie in der folgenden Schnellstartanleitung:
+Weitere Informationen zur Überwachung von Geräten, die mit Ihrer Anwendung verbunden sind, finden Sie in der folgenden Schnellstartanleitung:
 
 > [!div class="nextstepaction"]
 > [Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central (Previewfunktionen)](./quick-configure-rules.md)

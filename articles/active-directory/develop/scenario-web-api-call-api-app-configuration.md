@@ -16,12 +16,12 @@ ms.date: 07/16/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 219724186e3fa69fec35e89435af495b662c871d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2082265b96388b4fbf860118efc3eefd4c5c67af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919748"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423592"
 ---
 # <a name="web-api-that-calls-web-apis---code-configuration"></a>Web-API, die Web-APIs aufruft – Codekonfiguration
 
@@ -33,7 +33,7 @@ Der Code zum Konfigurieren Ihrer Web-API, sodass diese Downstream-Web-APIs aufru
 
 Über die Codekonfiguration für alle geschützten Web-APIs hinaus müssen Sie die Validierung des Bearertokens abonnieren, das beim Aufruf Ihrer API empfangen wird:
 
-```CSharp
+```csharp
 /// <summary>
 /// Protects the web API with Microsoft Identity Platform (a.k.k AAD v2.0)
 /// This supposes that the configuration files have a section named "AzureAD"
@@ -79,7 +79,7 @@ Dieser Flow ist nur im vertraulichen Clientflow verfügbar, sodass die geschütz
 
 ![image](https://user-images.githubusercontent.com/13203188/55967244-3d8e1d00-5c7a-11e9-8285-a54b05597ec9.png)
 
-```CSharp
+```csharp
 IConfidentialClientApplication app;
 
 #if !VariationWithCertificateCredentials
@@ -108,7 +108,7 @@ Der Aufruf „Im Auftrag von (on behalf of, OBO)“ erfolgt durch das Aufrufen d
 
 In der Praxis wird der OBO-Fluss häufig zum Abrufen eines Token für eine Downstream-API verwendet und im MSAL.NET-Benutzertokencache gespeichert, sodass andere Teile der Web-API später die [Außerkraftsetzung](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.clientapplicationbase.acquiretokensilent?view=azure-dotnet) von ``AcquireTokenOnSilent`` aufrufen kann, um die Downstream-APIs aufzurufen. Dieser Aufruf hat zur Folge, dass die Token aktualisiert werden, wenn dies erforderlich ist.
 
-```CSharp
+```csharp
 private void AddAccountToCacheFromJwt(IEnumerable<string> scopes, JwtSecurityToken jwtToken, ClaimsPrincipal principal, HttpContext httpContext)
 {
     try

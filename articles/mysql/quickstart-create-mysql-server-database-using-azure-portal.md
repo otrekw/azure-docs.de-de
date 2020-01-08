@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 1dfe4840d49983c4ae273c16ae16f6df253d509e
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bbf2e3204cb1e703aba445822bfb699fae13a112
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454314"
 ---
 # <a name="create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 
@@ -24,7 +24,7 @@ Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azu
 Navigieren Sie in Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Erstellen eines Servers für Azure-Datenbank für MySQL
-Ein Server für Azure-Datenbank für MySQL wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt.
+Ein Server für Azure-Datenbank für MySQL wird mit einer definierten Gruppe von [Compute- und Speicherressourcen](./concepts-compute-unit-and-storage.md) erstellt. Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt.
 
 Führen Sie die folgenden Schritte aus, um einen Server für Azure-Datenbank für MySQL zu erstellen:
 
@@ -109,7 +109,7 @@ Herstellen einer Serververbindung mit dem Befehlszeilentool **mysql.exe** Sie k�
     mysql --host mydemoserver.mysql.database.azure.com --user myadmin@mydemoserver -p
     ```
 
-    mysql-Parameter |Empfohlener Wert|BESCHREIBUNG
+    mysql-Parameter |Vorgeschlagener Wert|BESCHREIBUNG
     ---|---|---
     --host | *Servername* | Der Servername, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Unser Beispielserver heißt **mydemoserver.mysql.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen ( **\*.mysql.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie sich nicht an Ihren Servernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. 
     --user | *Anmeldename des Serveradministrators* |Der Anmeldename des Serveradministrators, den Sie zuvor beim Erstellen des Servers für Azure-Datenbank für MySQL verwendet haben. Sollten Sie sich nicht an Benutzernamen erinnern, ermitteln Sie die Verbindungsinformationen gemäß den Schritten aus dem vorherigen Abschnitt. Das Format lautet: *Benutzername\@Servername*.
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte aus, um über das GUI-Tool MySQL Workbench ei
 
    ![Einrichten einer neuen Verbindung](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
-    |Einstellung |Empfohlener Wert|Feldbeschreibung|
+    |Einstellung |Vorgeschlagener Wert|Feldbeschreibung|
     |---|---|---|
      Verbindungsname | Beispielverbindung | Eine Bezeichnung für diese Verbindung. |
     Verbindungsmethode | Standard (TCP/IP) | Standard (TCP/IP) ist ausreichend. |
@@ -194,7 +194,7 @@ Führen Sie die folgenden Schritte aus, um über das GUI-Tool MySQL Workbench ei
     > Auf dem Server wird standardmäßig SSL erzwungen, sodass für eine erfolgreiche Verbindungsherstellung zusätzliche Konfigurationsschritte erforderlich sind. Weitere Informationen finden Sie unter [Konfigurieren von SSL-Verbindungen in der Anwendung für eine sichere Verbindung mit Azure-Datenbank für MySQL](./howto-configure-ssl.md). Um SSL für diese Schnellstartanleitung zu deaktivieren, wechseln Sie zum Azure-Portal. Navigieren Sie zur Seite „Verbindungssicherheit“, und deaktivieren Sie SSL mithilfe der Umschaltfläche **SSL-Verbindung erzwingen**.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die einzelne Serverressource.
+Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die einzelne Serverressource.
 
 > [!TIP]
 > Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie weitere Schnellstartanleitungen verwenden möchten, überspringen Sie die Bereinigung der in dieser Schnellstartanleitung erstellten Ressourcen. Falls Sie nicht fortfahren möchten, gehen Sie wie folgt vor, um alle Ressourcen zu löschen, die im Rahmen dieser Schnellstartanleitung erstellt wurden.

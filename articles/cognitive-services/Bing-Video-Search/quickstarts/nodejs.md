@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: e9d7aeabceb77597d826d6c76dbdddc625ad45cc
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 6ae8afefae9a539812748c0ae5380ddaf1fb084c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383813"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382666"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-nodejs"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Node.js
 
@@ -39,7 +39,7 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
     let https = require('https');
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Endpunkt, den Abonnementschlüssel und den Suchbegriff.
+2. Erstellen Sie Variablen für Ihren API-Endpunkt, den Abonnementschlüssel und den Suchbegriff. `host` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```javascript
     let subscriptionKey = 'enter key here';
@@ -77,7 +77,7 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
 
 ## <a name="create-and-send-the-search-request"></a>Erstellen und Senden der Suchanforderung
 
-1. Erstellen Sie eine Funktion namens `bing_video_search()`. Fügen Sie die Parameter für die Anforderung hinzu, einschließlich Hostname und Header. Codieren Sie den Suchbegriff, und fügen sie ihn mit dem Parameter `?q=` an den path-Parameter an. Senden Sie die Anforderung dann mit `req.end()`.
+1. Erstellen Sie eine Funktion mit dem Namen `bing_video_search()`. Fügen Sie die Parameter für die Anforderung hinzu, einschließlich Hostname und Header. Codieren Sie den Suchbegriff, und fügen sie ihn mit dem Parameter `?q=` an den path-Parameter an. Senden Sie die Anforderung dann mit `req.end()`.
 
     ```javascript
     let bing_video_search = function (search_term) {

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422958"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459104"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -80,7 +80,7 @@ Das Senden einer Nachricht an ein Service Bus-Relay wird als vollständiger Send
 Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln Nachrichten nicht als einzelne Nachrichten, sondern als Datenstrom, der durch das System fließt. Wenn Sie diese Bindung verwenden, erhalten nur der Sender und der Listener Einblick in das Framing der einzelnen Nachrichten, die gesendet/empfangen werden. Bei Relays, die die **netTCPRelay**-Bindung verwenden, werden zur Ermittlung abrechenbarer Nachrichten alle Daten als Datenstrom behandelt. In diesen Fall berechnet Service Bus die Gesamtmenge der über jedes einzelne Relay gesendeten oder empfangenen Daten für einen Zeitraum von 5 Minuten. Dann wird diese Gesamtmenge durch 64 KB dividiert, um die Anzahl von abrechenbaren Nachrichten für dieses Relay in diesem Zeitraum zu ermitteln.
 
 ## <a name="quotas"></a>Kontingente
-| Namen des Kontingents | `Scope` |  Notizen | Wert |
+| Namen des Kontingents | `Scope` |  Notizen | value |
 | --- | --- | --- | --- |
 | Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
 | Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5\.000 |
@@ -106,7 +106,7 @@ Um einen Namespace aus einem Azure-Abonnement in ein anderes zu verschieben, kö
 
 #### <a name="azure-portal"></a>Azure-Portal
 
-Informationen zum Migrieren von Azure Relay-Namespaces aus einem Abonnement in ein anderes finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md#use-the-portal). 
+Informationen zum Migrieren von Azure Relay-Namespaces aus einem Abonnement in ein anderes finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal). 
 
 #### <a name="powershell"></a>PowerShell
 

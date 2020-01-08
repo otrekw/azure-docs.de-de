@@ -1,5 +1,5 @@
 ---
-title: Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher | Microsoft Docs
+title: Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 description: Erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) mit Azure Storage verwenden, um Speicherkonten zu erstellen und zu verwalten sowie mit Azure-Blobs und -Dateien zu arbeiten.
 services: storage
 author: tamram
@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: 46ae70bf4f1c2fe0276a3327ff37650dd57341d0
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70259386"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460457"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 

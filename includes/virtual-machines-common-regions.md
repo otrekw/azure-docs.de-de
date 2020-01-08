@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/28/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4b2dcf8f156f231041d7636d103eea59816ec65f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 09179ff0cf8275e96cb87e0c183eb4a384dcb37b
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008442"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564725"
 ---
 Es ist wichtig zu verstehen, wie und wo Ihre virtuellen Computer (VMs) in Azure betrieben werden. Dies gilt auch für die Optionen zum Verbessern der Leistung, Verfügbarkeit und Redundanz. Dieser Artikel enthält eine Übersicht über die Verfügbarkeits- und Redundanzfunktionen von Azure.
 
@@ -29,7 +29,7 @@ Azure stellt einige spezielle Regionen zur Verfügung, die Sie aus Compliancegr�
 * **US Gov Virginia** und **US Gov Iowa**
   * Eine physische und logische vom Netzwerk isolierte Instanz von Azure für US-Regierungsbehörden und Partner, die von überprüften Personen aus den USA betreiben wird. Sie umfasst zusätzliche Compliancezertifizierungen, z.B. [FedRAMP](https://www.microsoft.com/en-us/TrustCenter/Compliance/FedRAMP) und [DISA](https://www.microsoft.com/en-us/TrustCenter/Compliance/DISA). Erfahren Sie mehr über [Azure Government](https://azure.microsoft.com/features/gov/).
 * **China, Osten** und **China, Norden**
-  * Diese Regionen sind über eine einzigartige Partnerschaft zwischen Microsoft und 21Vianet verfügbar, wobei Microsoft die Rechenzentren nicht direkt betreut. Weitere Informationen finden Sie unter [Azure China 21Vianet](http://www.windowsazure.cn/).
+  * Diese Regionen sind über eine einzigartige Partnerschaft zwischen Microsoft und 21Vianet verfügbar, wobei Microsoft die Rechenzentren nicht direkt betreut. Weitere Informationen finden Sie unter [Azure China 21Vianet](https://www.windowsazure.cn/).
 * **Deutschland, Mitte** und **Deutschland, Nordosten**
   * Diese Regionen werden über ein Treuhändermodell für Daten bereitgestellt, bei dem Kundendaten in Deutschland verbleiben und von T-Systems als Treuhänder für deutsche Daten kontrolliert werden. (T-Systems ist ein Unternehmen von Deutsche Telekom.)
 
@@ -42,11 +42,11 @@ Jede Azure-Region ist mit einer anderen Region innerhalb desselben Gebiets (z.B.
 
 Beispiele für Regionspaare:
 
-| Primär | Sekundär |
+| Primär | Secondary |
 |:--- |:--- |
 | USA (Westen) |East US |
 | Nordeuropa |Europa, Westen |
-| Asien, Südosten |Asien (Osten) |
+| Asien, Südosten |Asien, Osten |
 
 Sie können die vollständige [Liste von Regionspaaren hier](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)anzeigen.
 

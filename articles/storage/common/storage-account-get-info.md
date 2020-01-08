@@ -1,5 +1,6 @@
 ---
-title: 'Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET: Azure Storage'
+title: Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET
+titleSuffix: Azure Storage
 description: Hier erfahren Sie, wie Sie den Typ und den SKU-Namen eines Azure Storage-Kontos mit der .NET-Clientbibliothek abrufen.
 services: storage
 author: mhopkins-msft
@@ -8,12 +9,12 @@ ms.date: 08/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0008d8fa9a33db95b0695ce998d4fc267d6222da
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 1cff950f2c420651ffa09ffe76a0d1389da84c10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68985342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457471"
 ---
 # <a name="get-storage-account-type-and-sku-name-with-net"></a>Abrufen des Typs und des SKU-Namens eines Speicherkontos mit .NET
 
@@ -63,6 +64,4 @@ private static async Task GetAccountInfoAsync(CloudBlob blob)
 
 Erfahren Sie mehr über andere Vorgänge, die Sie über das [Azure-Portal](https://portal.azure.com) und die Azure-Rest-API für ein Speicherkonto ausführen können.
 
-- [Verwalten eines Speicherkontos](storage-account-manage.md)
-- [Aktualisieren eines Speicherkontos](storage-account-upgrade.md)
 - [Abrufen von Kontoinformationen (REST)](/rest/api/storageservices/get-account-information)

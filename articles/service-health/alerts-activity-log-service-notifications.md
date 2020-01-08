@@ -1,18 +1,14 @@
 ---
 title: Empfangen von Aktivitätsprotokollwarnungen zu Azure-Dienstbenachrichtigungen
 description: Lassen Sie sich per SMS, E-Mail oder Webhook benachrichtigen, wenn Ereignisse beim Azure-Dienst eintreten.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: bc8e935b9d44cb5236c7a1ef38da24e12b877e14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383164"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464024"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen
 ## <a name="overview"></a>Übersicht

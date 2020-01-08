@@ -27,75 +27,83 @@
       href: roles.md
     - name: Erweiterte mehrstufige Angriffserkennung
       href: fusion.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herstellen einer Verbindung mit Datenquellen
       href: connect-data-sources.md
       items:
-        - name: Herstellen einer Verbindung mit Microsoft-Diensten
+        - name: Herstellen einer Verbindung zwischen Diensten
           items:
-            - name: Herstellen einer Verbindung mit Azure AD
+            - name: AWS
+              href: connect-aws.md
+            - name: Azure AD
               href: connect-azure-active-directory.md
-            - name: Herstellen einer Verbindung mit Office 365
+            - name: Office 365
               href: connect-office-365.md
-            - name: Herstellen einer Verbindung mit Cloud App Security
+            - name: Cloud App Security
               href: connect-cloud-app-security.md
-            - name: Herstellen einer Verbindung mit Azure-Aktivitätsprotokollen
+            - name: Azure-Aktivitätsprotokoll
               href: connect-azure-activity.md
-            - name: Herstellen einer Verbindung mit Azure AD Identity Protection
+            - name: Azure AD Identity Protection
               href: connect-azure-ad-identity-protection.md
-            - name: Herstellen einer Verbindung mit Azure Information Protection
+            - name: Azure Information Protection
               href: connect-azure-information-protection.md
-            - name: Herstellen einer Verbindung mit Microsoft Defender ATP
+            - name: Microsoft Defender ATP
               href: connect-microsoft-defender-advanced-threat-protection.md
-            - name: Herstellen einer Verbindung mit Azure ATP
+            - name: Azure ATP
               href: connect-azure-atp.md
-            - name: Herstellen einer Verbindung mit Azure Security Center
+            - name: Azure Security Center
               href: connect-azure-security-center.md
-            - name: Verbinden eines Domänennamenservers
+            - name: Domänennamenserver
               href: connect-dns.md
-            - name: Herstellen einer Verbindung mit Microsoft Web Application Firewall
+            - name: Microsoft Web Application Firewall
               href: connect-microsoft-waf.md
-            - name: Herstellen einer Verbindung mit der Windows-Firewall
+            - name: Windows-Firewall
               href: connect-windows-firewall.md
-            - name: Herstellen einer Verbindung mit Windows-Sicherheitsereignissen
+            - name: Windows-Sicherheitsereignisse
               href: connect-windows-security-events.md
         - name: Herstellen einer Verbindung mit externen Lösungen
           items:
-            - name: Herstellen einer Verbindung mit CEF (generisch)
-              href: connect-common-event-format.md
-            - name: Herstellen einer Verbindung mit AWS
-              href: connect-aws.md
-            - name: Herstellen einer Verbindung mit Barracuda
+            - name: Barracuda
               href: connect-barracuda.md
-            - name: Herstellen einer Verbindung mit Check Point
-              href: connect-checkpoint.md
-            - name: Herstellen einer Verbindung mit Palo Alto Networks
-              href: connect-paloalto.md
-            - name: Herstellen einer Verbindung mit Fortinet
-              href: connect-fortinet.md
-            - name: Herstellen einer Verbindung mit F5
-              href: connect-f5.md
-            - name: "Herstellen einer Verbindung mit F5\_BIG-IP"
+            - name: F5 BIG-IP
               href: connect-f5-big-ip.md
-            - name: Herstellen einer Verbindung mit Syslog
+            - name: syslog
               href: connect-syslog.md
-            - name: Herstellen einer Verbindung mit Symantec ICDX
+            - name: Symantec ICDX
               href: connect-symantec.md
-            - name: Herstellen einer Verbindung mit Cisco
-              href: connect-cisco.md
-            - name: Herstellen einer Verbindung mit Barracuda CloudGen Firewall
+            - name: Barracuda CloudGen Firewall
               href: connect-barracuda-cloudgen-firewall.md
-            - name: Herstellen einer Verbindung mit Citrix Analytics (Security)
+            - name: Citrix Analytics (Security)
               href: connect-citrix-analytics.md
-            - name: Herstellen einer Verbindung mit ExtraHop Reveal(x)
-              href: connect-extrahop.md
-            - name: One Identity Safeguard
-              href: connect-one-identity.md
-            - name: Trend Micro Deep Security
-              href: connect-trend-micro.md
-            - name: Herstellen einer Verbindung mit Zscaler
-              href: connect-zscaler.md
+            - name: CEF-basierte Lösungen
+              href: connect-common-event-format.md
+              items:
+                - name: "SCHRITT\_1: Bereitstellen des Agents"
+                  href: connect-cef-agent.md
+                - name: "SCHRITT\_2: Konfigurieren Ihrer Sicherheitslösung"
+                  href: connect-cef-solution-config.md
+                  items:
+                    - name: Check Point
+                      href: connect-checkpoint.md
+                    - name: Cisco
+                      href: connect-cisco.md
+                    - name: ExtraHop Reveal(x)
+                      href: connect-extrahop.md
+                    - name: F5
+                      href: connect-f5.md
+                    - name: Fortinet
+                      href: connect-fortinet.md
+                    - name: One Identity Safeguard
+                      href: connect-one-identity.md
+                    - name: Palo Alto Networks
+                      href: connect-paloalto.md
+                    - name: Trend Micro Deep Security
+                      href: connect-trend-micro.md
+                    - name: Zscaler
+                      href: connect-zscaler.md
+                - name: "SCHRITT\_3: Überprüfen der Konnektivität"
+                  href: connect-cef-verify.md
         - name: Herstellen einer Verbindung mit Threat Intelligence
           href: connect-threat-intelligence.md
         - name: Herstellen einer Verbindung mit virtuellen Azure Stack-Computern

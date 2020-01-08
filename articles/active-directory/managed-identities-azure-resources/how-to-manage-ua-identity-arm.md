@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1f113366363de40f8934a9db6cb3a82cc477f03
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 244965da4e22c0808fd1ea9088aa182b27eaf484
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996968"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430015"
 ---
 # <a name="create-list-and-delete-a-user-assigned-managed-identity-using-azure-resource-manager"></a>Erstellen, Auflisten und Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe des Azure Resource Manager
 
@@ -42,10 +42,10 @@ Das Auflisten und Löschen einer vom Benutzer zugewiesenen verwalteten Identitä
 
 Wie beim Azure-Portal und der Skripterstellung bieten Azure Resource Manager-Vorlagen die Möglichkeit, von einer Azure-Ressourcengruppe definierte neue bzw. geänderte Ressourcen bereitzustellen. Für die Vorlagenbearbeitung und -bereitstellung sind mehrere Optionen sowohl lokal als auch portalbasiert verfügbar, einschließlich:
 
-- Verwenden einer [benutzerdefinierten Vorlage vom Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template). Dies ermöglicht Ihnen, eine ganz neue Vorlage zu erstellen oder eine Vorlage, die auf einer vorhandenen, oft verwendeten Vorlage oder [Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) basiert.
-- Ableiten von einer vorhandenen Ressourcengruppe, indem eine Vorlage aus [der ursprünglichen Bereitstellung](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates) oder aus dem [aktuellen Status der Bereitstellung](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates) exportiert wird.
+- Verwenden einer [benutzerdefinierten Vorlage vom Azure Marketplace](../../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Dies ermöglicht Ihnen, eine ganz neue Vorlage zu erstellen oder eine Vorlage, die auf einer vorhandenen, oft verwendeten Vorlage oder [Schnellstartvorlage](https://azure.microsoft.com/documentation/templates/) basiert.
+- Ableiten von einer vorhandenen Ressourcengruppe, indem eine Vorlage aus [der ursprünglichen Bereitstellung](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates) oder aus dem [aktuellen Status der Bereitstellung](../../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates) exportiert wird.
 - Verwenden eines lokalen [JSON-Editors (z.B. VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md) und anschließendes Hochladen und Bereitstellen mithilfe von PowerShell oder CLI.
-- Verwenden des [Azure-Ressourcengruppenprojekts](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage. 
+- Verwenden des [Azure-Ressourcengruppenprojekts](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) von Visual Studio für das Erstellen und Bereitstellen einer Vorlage. 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität 
 

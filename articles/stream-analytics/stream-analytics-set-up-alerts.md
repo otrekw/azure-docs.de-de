@@ -1,19 +1,18 @@
 ---
 title: Einrichten von Überwachungswarnungen für Azure Stream Analytics-Aufträge
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung und Warnungen für Azure Stream Analytics-Aufträge mithilfe des Azure-Portals einrichten.
-services: stream-analytics
 author: jseb225
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 0fd489d856a16953a5a450a347c9737fe440ad28
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 836b7a489e3c73d745b128cbbc0c3566220ac409
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621762"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458722"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Einrichten von Warnungen für Azure Stream Analytics-Aufträge
 

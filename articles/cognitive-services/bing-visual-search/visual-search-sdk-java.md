@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ''
 ms.topic: quickstart
-ms.date: 09/30/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 7fb00fd3ce588aeeba4f315f191f6b82d6b75715
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 5a6d39fa6e10ad0ad102f9d25ffd252ec9e0fa8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "71695724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379492"
 ---
 # <a name="quickstart-bing-visual-search-client-library-for-java"></a>Schnellstart: Clientbibliothek der visuellen Bing-Suche für Java
 
@@ -33,14 +33,7 @@ Verwenden Sie die Clientbibliothek der visuellen Bing-Suche für Java für Folge
 * Aktuelle Version des [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle-Buildtool](https://gradle.org/install/) oder ein anderer Abhängigkeits-Manager
 
-## <a name="setting-up"></a>Einrichten
-
-### <a name="create-a-bing-visual-search-azure-resource"></a>Erstellen einer Azure-Ressource für die visuelle Bing-Suche
-
-Azure Cognitive Services werden von Azure-Ressourcen dargestellt, die Sie abonnieren. Erstellen Sie mithilfe des [Azure-Portals](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) oder der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) auf Ihrem lokalen Computer eine Ressource für die visuelle Bing-Suche. Weitere Funktionen:
-
-* Rufen Sie einen kostenlosen [Testschlüssel](https://azure.microsoft.com/try/cognitive-services/#decision) ab, der sieben Tage lang gültig ist. Nach der Registrierung steht dieser auf der [Azure-Website](https://azure.microsoft.com/try/cognitive-services/my-apis/) zur Verfügung.  
-* Zeigen Sie Ihre Ressource im [Azure-Portal](https://portal.azure.com/) an.
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 Nachdem Sie einen Schlüssel für Ihr Testabonnement bzw. Ihre Ressource erhalten haben, [erstellen Sie eine Umgebungsvariable](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel (`BING_SEARCH_V7_SUBSCRIPTION_KEY`).
 
@@ -133,7 +126,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 > [!NOTE]
-> In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie für den Schlüssel für die visuelle Bing-Suche mit dem Namen `BING_SEARCH_V7_SUBSCRIPTION_KEY` [eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
+> In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie für den Schlüssel für die visuelle Bing-Suche mit dem Namen `BING_SEARCH_V7_SUBSCRIPTION_KEY`[eine Umgebungsvariable erstellt haben](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication).
 
 
 Verwenden Sie in der Main-Methode unbedingt Ihren Abonnementschlüssel, um ein [BingVisualSearchAPI](https://docs.microsoft.com/java/api/com.microsoft.azure.cognitiveservices.search.visualsearch.bingvisualsearchapi?view=azure-java-stable)-Objekt zu instanziieren.

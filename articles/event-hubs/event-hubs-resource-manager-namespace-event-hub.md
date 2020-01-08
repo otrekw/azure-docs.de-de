@@ -14,18 +14,18 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 11/05/2019
 ms.author: shvija
-ms.openlocfilehash: b262f5f4122256a55c005002c4323205a5b564f0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: faff7800ea4436d58ed72e8179c7845a6d8f65a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437130"
 ---
 # <a name="quickstart-create-an-event-hub-by-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines Event Hubs mithilfe einer Azure Resource Manager-Vorlage
 
 Azure Event Hubs ist eine Big Data-Streamingplattform und ein Ereigniserfassungsdienst, der pro Sekunde Millionen von Ereignissen empfangen und verarbeiten kann. Event Hubs kann Ereignisse, Daten oder Telemetriedaten, die von verteilter Software und verteilten Geräten erzeugt wurden, verarbeiten und speichern. An einen Event Hub gesendete Daten können transformiert und mit einem beliebigen Echtzeitanalyse-Anbieter oder Batchverarbeitungs-/Speicheradapter gespeichert werden. Eine ausführliche Übersicht über Event Hubs finden Sie unter [Was ist Azure Event Hubs?](event-hubs-about.md) und [Event Hubs-Features im Überblick](event-hubs-features.md).
 
-In dieser Schnellstartanleitung erstellen Sie einen Event Hub mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md). Sie stellen eine Azure Resource Manager-Vorlage bereit, um einen Namespace vom Typ [Event Hubs](event-hubs-what-is-event-hubs.md) mit einem Event Hub zu erstellen. Dieser Artikel zeigt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates]. Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollen, finden Sie unter [Microsoft.EventHub-Ressourcentypen](/azure/templates/microsoft.eventhub/allversions).
+In dieser Schnellstartanleitung erstellen Sie einen Event Hub mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md). Sie stellen eine Azure Resource Manager-Vorlage bereit, um einen Namespace vom Typ [Event Hubs](event-hubs-what-is-event-hubs.md) mit einem Event Hub zu erstellen. Dieser Artikel zeigt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen][Authoring Azure Resource Manager templates]. Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollen, finden Sie unter [Microsoft.EventHub-Ressourcentypen](/azure/templates/microsoft.eventhub/allversions).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -103,7 +103,7 @@ In diesem Artikel haben Sie einen Event Hubs-Namespace und einen Event Hub im Na
 [4]: ./media/event-hubs-quickstart-powershell/receiver1.png
 [5]: ./media/event-hubs-quickstart-powershell/metrics.png
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
 [Using Azure PowerShell with Azure Resource Manager]: ../powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../xplat-cli-azure-resource-manager.md

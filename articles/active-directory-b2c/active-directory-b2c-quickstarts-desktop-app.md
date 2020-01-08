@@ -12,12 +12,12 @@ ms.custom: mvc
 ms.date: 09/12/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 8265bad5b756ee2ac23bc41c9c58452251ce0717
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 48362b269f38928fec8b1987ea21397b74e7dfb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368027"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C
 
@@ -77,9 +77,9 @@ Azure AD B2C umfasst Funktionen, mit denen Benutzer ihre Profile aktualisieren k
 
 Klicken Sie auf **API aufrufen**, um eine Anforderung an die geschützte Ressource zu übermitteln.
 
-    ![Call API](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
+![API aufrufen](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
-    The application includes the Azure AD access token in the request to the protected web API resource. The web API sends back the display name contained in the access token.
+Die Anwendung enthält das Azure AD-Zugriffstoken in der Anforderung, die an die geschützte Web-API-Ressource gesendet wird. Die Web-API sendet den Anzeigenamen zurück, der im Zugriffstoken enthalten ist.
 
 Sie haben Ihr Azure AD B2C-Benutzerkonto verwendet, um einen autorisierten Aufruf einer geschützten Azure AD B2C-Web-API durchzuführen.
 

@@ -2,19 +2,15 @@
 title: Konfigurieren von Servern auf einen gewünschten Status und Verwalten der Abweichung mit Azure Automation
 description: 'Tutorial: Verwalten von Serverkonfigurationen mit der Azure Automation-Zustandskonfiguration'
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
-manager: carmonm
 ms.topic: conceptual
 ms.date: 08/08/2018
-ms.openlocfilehash: 0339796f028a0cc0b19533be06127544db396f92
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9e2f04f59a56be6c516eb90de45fdf7327673086
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416591"
 ---
 # <a name="configure-servers-to-a-desired-state-and-manage-drift"></a>Konfigurieren von Servern mit einem gewünschten Status und Verwalten der Abweichung mit Azure Automation
 
@@ -29,7 +25,7 @@ Mit der Azure Automation-Zustandskonfiguration können Sie Konfigurationen für 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um dieses Lernprogramm abzuschließen, benötigen Sie:
+Zum Durcharbeiten dieses Tutorials benötigen Sie Folgendes:
 
 - Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
 - Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)

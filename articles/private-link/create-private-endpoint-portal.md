@@ -2,17 +2,17 @@
 title: 'Schnellstart: Verwalten von privaten Endpunkten in Azure'
 description: In diesem Schnellstart erfahren Sie, wie Sie über das Azure-Portal einen privaten Endpunkt erstellen.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 22614b28023a0628fb12c170e934aaab4d1ddfe4
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74899863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459933"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Schnellstart: Erstellen eines privaten Endpunkts mit dem Azure-Portal
 
@@ -20,9 +20,6 @@ Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-
-> [!NOTE]
-> Private Endpunkte sind in Verbindung mit Dienstendpunkten im selben Subnetz unzulässig!
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -39,9 +36,9 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk** aus.
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *MyVirtualNetwork* ein. |
+    | Name | Geben Sie *MyVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
@@ -58,7 +55,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -85,7 +82,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
     | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
@@ -107,7 +104,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure.
 
 1. Geben Sie unter **SQL-Datenbank erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **Datenbankdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -118,7 +115,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Datenbank-Server in Azure.
 5. Wählen Sie unter **Server** die Option **Neu erstellen** aus. 
 6. Geben Sie bei **Neuer Server** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     |Servername  | Geben Sie *myserver* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen.|
     | Serveradministratoranmeldung| Geben Sie einen Administratornamen Ihrer Wahl ein. |
@@ -138,19 +135,19 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
 2. Wählen Sie unter **Privat Link-Center – Übersicht** bei der Option **Build a private connection to a service** (Private Verbindung mit einem Dienst herstellen) **Start** aus.
 1. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **Projektdetails** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
     | Resource group | Wählen Sie **myResourceGroup** aus. Diese haben Sie im vorherigen Abschnitt erstellt.|
     | **INSTANZDETAILS** |  |
-    | NAME | Geben Sie *myPrivateEndpoint* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen. |
+    | Name | Geben Sie *myPrivateEndpoint* ein. Wenn dieser Name vergeben ist, erstellen Sie einen eindeutigen Namen. |
     |Region|Wählen Sie **WestCentralUS** aus.|
     |||
 5. Klicken Sie auf **Weiter: Ressource** aus.
 6. Geben Sie unter **Privaten Endpunkt erstellen – Ressource** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     |Verbindungsmethode  | Wählen Sie das Herstellen einer Verbindung mit einer Azure-Ressource im eigenen Verzeichnis aus.|
     | Subscription| Wählen Sie Ihr Abonnement aus. |
@@ -161,7 +158,7 @@ In diesem Abschnitt erstellen Sie einen SQL-Server und fügen ihm einen privaten
 7. Klicken Sie auf **Weiter: Konfiguration** aus.
 8. Geben Sie unter **Privaten Endpunkt erstellen (Vorschau) – Konfiguration** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     |**NETZWERK**| |
     | Virtuelles Netzwerk| Wählen Sie *MyVirtualNetwork* aus. |
@@ -202,9 +199,9 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Privates Zugreifen auf den SQL-Datenbank-Server vom virtuellen Computer
 
-1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVm*.
+1. Öffnen Sie PowerShell auf dem Remotedesktop von  *myVM*.
 
-2. Geben Sie  `nslookup myserver.database.windows.net` ein. 
+2. Geben Sie `nslookup myserver.database.windows.net` ein. 
 
     Sie erhalten eine Meldung wie die folgende:
     ```azurepowershell
@@ -219,7 +216,7 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
 
 4. Geben Sie unter **Mit Server verbinden** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Servertyp| Wählen Sie **Datenbank-Engine** aus.|
     | Servername| Wählen Sie *myserver.database.windows.net* aus. |
@@ -227,14 +224,14 @@ Stellen Sie nach der Erstellung von **myVm** über das Internet eine Verbindung 
     |Kennwort |Geben Sie ein während der Erstellung des SQL-Servers angegebenes Kennwort ein. |
     |Kennwort speichern|Wählen Sie **Ja** aus.|
     |||
-1. Wählen Sie **Verbinden**aus.
+1. Wählen Sie **Verbinden**.
 2. Durchsuchen Sie Datenbanken im linken Menü.
 3. (Optional) Erstellen Sie oder fragen Sie Informationen aus „mydatabase“ ab.
 4. Schließen Sie die Remotedesktopverbindung mit  *myVm*. 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
 Wenn Sie Ihre Arbeit mit dem privaten Endpunkt, dem SQL-Server und dem virtuellen Computer abgeschlossen haben, löschen Sie die Ressourcengruppe und alle darin enthaltenen Ressourcen: 
-1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen**ein, und wählen Sie in den Suchergebnissen  *myResourceGroup* aus. 
+1. Geben Sie oben im Portal die Zeichenfolge  *myResourceGroup* im Feld **Suchen** ein, und wählen Sie in den Suchergebnissen *myResourceGroup* aus. 
 2. Wählen Sie die Option **Ressourcengruppe löschen**. 
 3. Geben Sie „myResourceGroup“ für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 

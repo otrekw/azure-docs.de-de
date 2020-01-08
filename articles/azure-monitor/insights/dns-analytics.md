@@ -4,15 +4,15 @@ description: Richten Sie die DNS-Analyse-Lösung in Azure Monitor ein, und verwe
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/20/2018
-ms.openlocfilehash: a4123ed4633cbb8195639766e7b23e3ea9f14e71
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6500020d9d1c7c735206efe8ebb08fd908eee10d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899089"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403243"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -160,7 +160,7 @@ Sie können diese Abfragen als Ausgangspunkt für das Erstellen eigener Abfragen
 
 Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die Suchergebnisse mit Facetsteuerelementen filtern. Sie können auch erweiterte Abfragen zum Transformieren, Filtern und Berichten für Ihre Ergebnisse erstellen. Beginnen Sie mit folgenden Abfragen:
 
-1. Geben Sie im **Feld für die Suchabfrage** `DnsEvents` ein, um alle DNS-Ereignisse anzuzeigen, die von den DNS-Servern generiert wurden, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für alle Ereignisse im Zusammenhang mit Suchabfragen, dynamischen Registrierungen und Konfigurationsänderungen auf.
+1. Geben Sie im **Feld für die Suchabfrage**`DnsEvents` ein, um alle DNS-Ereignisse anzuzeigen, die von den DNS-Servern generiert wurden, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für alle Ereignisse im Zusammenhang mit Suchabfragen, dynamischen Registrierungen und Konfigurationsänderungen auf.
 
     ![DnsEvents-Protokollsuche](./media/dns-analytics/log-search-dnsevents.png)  
 
@@ -170,7 +170,7 @@ Auf der Protokollsucheseite können Sie eine Abfrage erstellen. Sie können die 
 
     c. Um die Protokolldaten für Konfigurationsänderungen anzuzeigen, wählen Sie auf der linken Seite im Facetsteuerelement **ConfigurationChange** als **Untertyp**-Filter aus. Eine Tabelle mit allen Konfigurationsänderungsereignissen für den ausgewählten Zeitraum wird angezeigt.
 
-1. Geben Sie im **Feld für die Suchabfrage** `DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
+1. Geben Sie im **Feld für die Suchabfrage**`DnsInventory` ein, um alle DNS-Inventardaten für die DNS-Server anzuzeigen, die von der Lösung verwaltet werden. Die Ergebnisse listen die Protokolldaten für DNS-Server, DNS-Zonen und Ressourceneinträge auf.
 
     ![DnsInventory-Protokollsuche](./media/dns-analytics/log-search-dnsinventory.png)
     

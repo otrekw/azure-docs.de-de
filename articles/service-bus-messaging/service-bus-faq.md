@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 8a2a704f39aa678be819a7297b30f8926e414e56
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75352870"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
@@ -49,11 +49,11 @@ Sie können die folgenden Protokolle mit Azure Service Bus verwenden, um Nachric
 - Service Bus Messaging Protocol (SBMP)
 - HTTP
 
-In der folgenden Tabelle finden Sie die Ports für ausgehenden Datenverkehr, die Sie öffnen müssen, um diese Protokolle für die Kommunikation mit Azure Event Hubs zu verwenden. 
+In der folgenden Tabelle finden Sie die ausgehenden Ports, die Sie öffnen müssen, um diese Protokolle für die Kommunikation mit Azure Event Hubs verwenden zu können. 
 
 | Protocol | Ports | Details | 
 | -------- | ----- | ------- | 
-| AMQP | 5671 und 5672 | Siehe [Leitfaden zum AMQP-Protokoll](service-bus-amqp-protocol-guide.md) | 
+| AMQP | 5671 und 5672 | Weitere Informationen finden Sie im [AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden](service-bus-amqp-protocol-guide.md). | 
 | SBMP | 9350 bis 9354 | Siehe [Konnektivitätsmodus](/dotnet/api/microsoft.servicebus.connectivitymode?view=azure-dotnet) |
 | HTTP, HTTPS | 80, 443 | 
 
@@ -81,7 +81,7 @@ Wenn Sie die Zonenredundanz für Ihren Namespace verwenden, müssen Sie einige z
     <name>-s2.servicebus.windows.net
     <name>-s3.servicebus.windows.net
     ```
-3. Führen Sie nslookup für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
+3. Führen Sie den Befehl „nslookup“ für jeden Namen mit den Suffixen s1, s2 und s3 aus, um die IP-Adressen aller drei Instanzen zu erhalten, die in drei Verfügbarkeitszonen ausgeführt werden. 
 
 
 ## <a name="best-practices"></a>Bewährte Methoden
@@ -150,7 +150,7 @@ Sie können einen Namespace entweder über das [Azure-Portal](https://portal.azu
 
 #### <a name="portal"></a>Portal
 
-Wenn Sie Service Bus-Namespaces mithilfe des Azure-Portals auf ein anderes Abonnement übertragen möchten, folgen Sie den [hier](../azure-resource-manager/resource-group-move-resources.md#use-the-portal) aufgeführten Anweisungen. 
+Wenn Sie Service Bus-Namespaces mithilfe des Azure-Portals auf ein anderes Abonnement übertragen möchten, folgen Sie den [hier](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal) aufgeführten Anweisungen. 
 
 #### <a name="powershell"></a>PowerShell
 

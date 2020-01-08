@@ -1,5 +1,5 @@
 ---
-title: Übersicht über Hyperscale
+title: Übersicht zu Hyperscale in Azure SQL-Datenbank | Microsoft-Dokumentation
 description: In diesem Artikel wird die Dienstebene „Hyperscale“ im vCore-basierten Kaufmodell in Azure SQL-Datenbank beschrieben. Zudem werden die Unterschiede zu den Dienstebenen „Universell“ und „Unternehmenskritisch“ erläutert.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dimitri-furman
-ms.author: dfurman
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978627"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614930"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-Dienstebene
 
@@ -38,7 +38,7 @@ Die Dienstebene „Hyperscale“ in Azure SQL-Datenbank bietet folgende zusätzl
 
 - Unterstützung für eine Datenbankgröße von bis zu 100 TB
 - Nahezu sofortige Datenbanksicherungen (basierend auf in Azure Blob Storage gespeicherten Dateimomentaufnahmen) unabhängig von der Größe und ohne E/A-Auswirkung auf Computeressourcen  
-- Schnelle Point-in-Time-Wiederherstellungen (Zeitpunktwiederherstellungen) von Datenbanken (basierend auf Dateimomentaufnahmen) innerhalb von Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
+- Schnelle Datenbankwiederherstellungen (basierend auf Dateimomentaufnahmen) in Minuten statt Stunden oder Tagen (kein von der Datengröße abhängiger Vorgang)
 - Höhere Gesamtleistung aufgrund eines höheren Protokolldurchsatzes und schnellere Transaktionscommits unabhängig von Datenmengen
 - Schnelle horizontale Hochskalierung: Sie können einen oder mehrere schreibgeschützte Knoten zur Abladung Ihrer Leseworkload und zur Verwendung als unmittelbar betriebsbereite Standbyserver bereitstellen.
 - Schnelle zentrale Hochskalierung: Sie können Ihre Computeressourcen in konstanter Zeit zentral hochskalieren, um hohe Workloads nach Bedarf zu bewältigen, und anschließend wieder zentral herunterskalieren, sobald sie nicht mehr benötigt werden.
@@ -70,7 +70,7 @@ Die Dienstebene „Hyperscale“ ist nur im [V-Kern-Modell](sql-database-service
 
   Der Preis für Compute-Einheiten bei „Hyperscale“ ist pro Replikat. Der Preis für den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-benefit/) wird automatisch auf Replikate mit Leseskalierung angewendet. Wir erstellen standardmäßig ein primäres Replikat und ein schreibgeschütztes Replikat pro Hyperscale-Datenbank.  Benutzer können die Gesamtanzahl der Replikate einschließlich des primären Replikats von 1 bis 5 anpassen.
 
-- **Speicher**:
+- **Storage**:
 
   Beim Konfigurieren einer Hyperscale-Datenbank müssen Sie keine maximale Datengröße angeben. Im Hyperscaletarif werden Gebühren für den Speicher Ihrer Datenbank basierend auf der tatsächlichen Nutzung berechnet. Speicher wird automatisch schrittweise zwischen 10 GB und 100 TB zugeordnet, und die Schritte werden dynamisch zwischen 10 GB und 40 GB angepasst.  
 
@@ -82,7 +82,7 @@ Im Gegensatz zu herkömmlichen Datenbank-Engines, in denen alle Datenverwaltungs
 
 Das folgende Diagramm veranschaulicht die verschiedenen Typen von Knoten in einer Hyperscale-Datenbank:
 
-![Architektur](./media/sql-database-hyperscale/hyperscale-architecture2.png)
+![Architektur](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Eine Hyperscale-Datenbank enthält die folgenden verschiedenen Komponententypen:
 
@@ -104,7 +104,7 @@ Azure Storage enthält alle Datendateien in einer Datenbank. Seitenserver halten
 
 ## <a name="backup-and-restore"></a>Sichern und Wiederherstellen
 
-Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Ebenso werden Wiederherstellungen durch das Wiederherstellen von Dateimomentaufnahmen durchgeführt. Sie sind daher nicht abhängig von der Größe der Daten. Die Wiederherstellung ist ein konstanter Vorgang, und sogar mehrere TB große Datenbanken können innerhalb von Minuten anstelle von Stunden oder Tagen wieder hergestellt werden. Bei der Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung wird diese Funktion ebenfalls genutzt: Das Erstellen von Datenbankkopien auf demselben logischen Server für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
+Sicherungen basieren auf Dateimomentaufnahmen und erfolgen daher nahezu unmittelbar. Durch die Trennung von Speicher- und Computeressourcen kann der Sicherungs-/Wiederherstellungsvorgang auf die Speicherebene verlegt werden, um die Verarbeitungslast auf das primäre Computereplikat zu reduzieren. Folglich wirkt sich die Datenbanksicherung nicht auf die Leistung des primären Computeknotens aus. Ebenso werden Wiederherstellungen durch das Wiederherstellen von Dateimomentaufnahmen durchgeführt. Sie sind daher nicht abhängig von der Größe der Daten. Die Wiederherstellung ist ein konstanter Vorgang, und sogar mehrere TB große Datenbanken können innerhalb von Minuten anstelle von Stunden oder Tagen wieder hergestellt werden. Die Erstellung neuer Datenbanken durch Wiederherstellen einer vorhandenen Sicherung nutzt diese Funktion ebenfalls: Das Erstellen von Datenbankkopien für Entwicklungs- oder Testzwecke (auch von Datenbanken im TB-Bereich) ist innerhalb weniger Minuten möglich.
 
 ## <a name="scale-and-performance-advantages"></a>Skalierungs- und Leistungsvorteile
 
@@ -114,7 +114,7 @@ Mit der Möglichkeit, weitere Computeknoten schnell hoch- bzw. herunterzufahren,
 
 Eine Hyperscale-Datenbank kann über das [Azure-Portal](https://portal.azure.com) oder mit [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) oder [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create) erstellt werden. Hyperscale-Datenbanken stehen nur bei Verwendung des [vCore-basierten Kaufmodells](sql-database-service-tiers-vcore.md) zur Verfügung.
 
-Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben. Eine Liste mit gültigen Dienstzielen finden Sie in den [Ressourceneinschränkungen](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5).
+Mit dem folgenden T-SQL-Befehl wird eine Hyperscale-Datenbank erstellt. Sie müssen sowohl die Edition als auch das Dienstziel in der `CREATE DATABASE`-Anweisung angeben. Eine Liste mit gültigen Dienstzielen finden Sie in den [Ressourceneinschränkungen](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4).
 
 ```sql
 -- Create a HyperScale Database
@@ -196,9 +196,11 @@ Wenn Sie eine Hyperscale-Datenbank in einer Region erstellen möchten, die nicht
 
 So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht aufgelisteten Regionen an:
 
-1. Wählen Sie im Menü des Azure-Portals die Option **Hilfe und Support** aus, oder suchen Sie **Hilfe und Support** auf einer beliebigen Seite, und wählen Sie die Option dann aus.
+1. Navigieren Sie zum Azure-Blatt [Hilfe und Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-2. Wählen Sie auf der Seite [Azure-Hilfe und -Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) die Option [**Neue Supportanfrage**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) aus.
+2. Klicken Sie auf [**Neue Supportanfrage**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
 3. Wählen Sie unter **Problemtyp** den Eintrag **Grenzwerte für Dienste und Abonnements (Kontingente)** aus.
 
@@ -206,11 +208,9 @@ So fordern Sie die Fähigkeit zum Erstellen von Hyperscale-Datenbanken in nicht 
 
 5. Wählen Sie unter **Kontingenttyp** den Eintrag **SQL-Datenbank** aus.
 
-    ![Azure-Blatt „Hilfe und Support“](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
-
 6. Klicken Sie auf **Weiter: Lösungen**.
 
-7. Klicken Sie auf **Details angeben**.
+1. Klicken Sie auf **Details angeben**.
 
     ![Problemdetails](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
@@ -239,13 +239,13 @@ Hierbei handelt es sich um die aktuellen Einschränkungen der Hyperscale-Dienste
 | Problem | BESCHREIBUNG |
 | :---- | :--------- |
 | Im Bereich „Sicherungen verwalten“ für einen logischen Server werden Hyperscale-Datenbanken nicht angezeigt und vom SQL-Server gefiltert.  | Hyperscale verfügt über eine separate Methode zum Verwalten von Sicherungen, sodass die Einstellungen für langfristige Aufbewahrung und Aufbewahrung von Point-in-Time-Sicherungen nicht gelten/ungültig werden. Deshalb werden Hyperscale-Datenbanken nicht im Bereich „Sicherungen verwalten“ angezeigt. |
-| Point-in-Time-Wiederherstellung | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
+| Wiederherstellung bis zu einem bestimmten Zeitpunkt | Nachdem eine Datenbank zur Dienstebene „Hyperscale“ migriert wurde, wird die Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt vor der Migration nicht unterstützt.|
 | Wiederherstellung einer Nicht-Hyperscale-DB in einer Hyperscale-DB und umgekehrt | Sie können weder eine Hyperscale-Datenbank in einer Nicht-Hyperscale-Datenbank noch eine Nicht-Hyperscale-Datenbank in einer Hyperscale-Datenbank wiederherstellen.|
 | Wenn eine Datenbank mindestens eine Datendatei enthält, die größer als 1 TB ist, schlägt die Migration fehl. | In einigen Fällen kann es möglich sein, dieses Problem zu umgehen, indem die großen Dateien auf weniger als 1 TB verkleinert werden. Wenn Sie eine Datenbank migrieren, die während des Migrationsvorgangs verwendet wird, stellen Sie sicher, dass keine Datei größer als 1 TB wird. Verwenden Sie die folgende Abfrage, um die Größe von Datenbankdateien zu ermitteln. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
-| Verwaltete Instanz | Die verwaltete Azure SQL-Datenbank-Instanz wird bei Hyperscale-Datenbanken derzeit nicht unterstützt. |
+| SQL-Datenbank-Instanz | Die verwaltete Azure SQL-Datenbank-Instanz wird bei Hyperscale-Datenbanken derzeit nicht unterstützt. |
 | Pools für elastische Datenbanken |  Pools für elastische Datenbanken werden mit Hyperskalierung für SQL-Datenbank derzeit nicht unterstützt.|
 | Migration zu „Hyperscale“ ist derzeit ein unidirektionaler Vorgang | Nach der Migration einer Datenbank zu „Hyperscale“ kann sie nicht direkt zu einer anderen Dienstebene migriert werden. Derzeit besteht die einzige Möglichkeit zum Migrieren einer Datenbank aus Hyperscale zu Nicht-Hyperscale darin, sie mithilfe einer BACPAC-Datei oder anderer Datenverschiebungstechnologien (Massenkopieren, Azure Data Factory, Azure Databricks, SSIS usw.) zu exportieren/importieren.|
-| Migration von Datenbanken mit In-Memory-OLTP-Objekten | Hyperscale unterstützt nur eine Teilmenge der In-Memory-OLTP-Objekttypen, einschließlich speicheroptimierter Tabellentypen, nativ kompilierter gespeicherter Prozeduren und Funktionen. Wenn allerdings In-Memory-OLTP-Objekte in der Datenbank vorhanden sind, wird die direkte Migration von Premium- und unternehmenskritischen Dienstebenen zu Hyperscale nicht unterstützt. Zum Migrieren einer solchen Datenbank zu Hyperscale sind drei Schritte erforderlich: (1) Löschen aller In-Memory-OLTP-Objekte und ihrer Abhängigkeiten. Um Daten in speicheroptimierte dauerhaften Tabellen beizubehalten, konvertieren Sie sie in Datenträgertabellen. (2) Ändern der Dienstebene der Datenbank in „Hyperscale“. (3) Erneutes Erstellen von zuvor gelöschten Objekten. Speicheroptimierte dauerhafte und nicht dauerhafte Tabellen werden derzeit in Hyperscale nicht unterstützt und müssen Datenträgertabellen bleiben. Speicheroptimierte Tabellenvariablen werden unterstützt. |
+| Migration von Datenbanken mit beständigen speicherinternen Objekten | Hyperscale unterstützt nur nicht persistente, speicherinterne Objekte (Tabellentypen, native SPs und Funktionen).  Persistente speicherinterne Tabellen und andere Objekte müssen gelöscht und als nicht speicherinterne Objekte neu erstellt werden, bevor eine Datenbank zur Dienstebene „Hyperscale“ migriert wird.|
 | Change Tracking | Die Änderungsnachverfolgung befindet sich derzeit in der Public Preview-Phase und kann für neue oder bereits vorhandene Hyperscale-Datenbanken aktiviert werden. |
 | Georeplikation  | Sie können noch keine Georeplikation für Hyperskalierung für Azure SQL-Datenbank-Instanzen konfigurieren. |
 | Datenbankkopie | Sie können Datenbankkopie noch nicht verwenden, um eine neue Datenbank in Azure SQL Azure Hyperscale zu erstellen. |

@@ -1,19 +1,18 @@
 ---
 title: Verwenden von Referenzdaten für Suchvorgänge in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Referenzdaten nutzen, um nach Daten in einem Abfragedesign eines Azure Stream Analytics-Auftrags zu suchen oder diese zu korrelieren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: d058fdd48b8a271c8a2db7d327267de053c02c44
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369563"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
@@ -86,7 +85,7 @@ Mit der Deltaabfrage wird in Stream Analytics zunächst die Momentaufnahmeabfrag
 
 Um die SQL-Datenbank-Verweisdaten zu konfigurieren, müssen Sie zunächst eine Eingabe für **Verweisdaten** erstellen. Die folgende Tabelle enthält den Namen jeder Eigenschaft, die Sie beim Erstellen der Verweisdateneingabe angeben müssen, sowie die entsprechenden Beschreibungen. Weitere Informationen finden Sie unter [Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag](sql-reference-data.md).
 
-Sie können eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Verweisdateneingabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten Azure SQL-Datenbank-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und dann in Azure Stream Analytics die folgenden Einstellungen manuell konfigurieren. Für virtuelle Azure-Computer mit SQL Server und angefügter Datenbank wird ebenfalls das manuelle Konfigurieren der untenstehenden Einstellungen unterstützt.
+Sie können eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Verweisdateneingabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten Azure SQL-Datenbank-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und dann in Azure Stream Analytics die folgenden Einstellungen manuell konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
 
 |**Eigenschaftenname**|**Beschreibung**  |
 |---------|---------|

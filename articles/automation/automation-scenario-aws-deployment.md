@@ -2,19 +2,15 @@
 title: Automatisieren der Bereitstellung einer VM in Amazon Web Services
 description: In diesem Artikel wird gezeigt, wie Sie Azure Automation nutzen, um das Erstellen einer Amazon Web Service-VM zu automatisieren
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b149a21ef60b22c2e549c91007265ce99babdbe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420922"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation-Szenario – Bereitstellen eines virtuellen AWS-Computers
 In diesem Artikel erfahren Sie, wie Sie Azure Automation zur Bereitstellung eines virtuellen Computers in Ihrem AWS-Abonnement (Amazon Web Services) nutzen und für diesen virtuellen Computer einen bestimmten Namen festlegen können – ein Vorgang, der in AWS als „Tagging“ des virtuellen Computers bezeichnet wird.
@@ -101,9 +97,9 @@ Bevor Sie mit dem Testen des Runbooks fortfahren, müssen einige Dinge überprü
 5. Um die Bereitstellung der VM zu bestätigen, melden Sie sich bei der AWS-Verwaltungskonsole an (sofern Sie noch nicht angemeldet sind).<br><br> ![Per AWS-Konsole bereitgestellte VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen über die ersten Schritte mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
+* Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
-* Informationen über die verschiedenen Runbooktypen, ihre Vorteile und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
+* Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
 * Weitere Informationen zur PowerShell-Skriptunterstützung finden Sie unter [Native PowerShell Script Support in Azure Automation (Native PowerShell-Skriptunterstützung in Azure Automation)](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
 
 

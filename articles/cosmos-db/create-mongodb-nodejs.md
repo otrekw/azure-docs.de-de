@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 05/21/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: c2a689f7c3ac1308e12d0e371a9ad7f7187417d6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 2abf6187be78ee6cb78676284848051a935b150b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792173"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445464"
 ---
 # <a name="quickstart-migrate-an-existing-mongodb-nodejs-web-app-to-azure-cosmos-db"></a>Schnellstart: Migrieren einer vorhandenen MongoDB-Node.js-Web-App zu Azure Cosmos DB 
 
@@ -97,7 +97,7 @@ Wenn `cosmosdb` nicht in der Liste der Basisbefehle enthalten ist, installieren 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen wie Web-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden. 
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine [Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen wie Web-Apps, Datenbanken und Speicherkonten bereitgestellt und verwaltet werden. 
 
 Im folgenden Beispiel wird eine Ressourcengruppe in der Region „Europa, Westen“ erstellt. Wählen Sie einen eindeutigen Namen für die Ressourcengruppe aus.
 

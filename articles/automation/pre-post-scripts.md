@@ -2,19 +2,15 @@
 title: Konfigurieren von Pre- und Post-Skripts für die Bereitstellung mit der Updateverwaltung in Azure
 description: In diesem Artikel erfahren Sie, wie Sie Pre- und Post-Skripts für Updatebereitstellungen konfigurieren und verwalten.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a5d68b64fc24577621c82be62f833c356e8fb9c2
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 35fba966fcdb6d1c5cd7c531bb22c9c78ae16ff3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850243"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417804"
 ---
 # <a name="manage-pre-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 

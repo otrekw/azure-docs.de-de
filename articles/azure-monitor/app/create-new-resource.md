@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/02/2019
-ms.openlocfilehash: 11b581649e6d7a048899394d69e574e8f9a4d22c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 1ba6d6e1774db4e9c95b107e1482a0c6ce532bb5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689212"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432613"
 ---
 # <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 
@@ -28,7 +28,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und erstellen 
 
 ![Klicken Sie links oben auf das Pluszeichen (+). Auswählen von „Entwicklertools“ und „Application Insights“](./media/create-new-resource/new-app-insights.png)
 
-   | Einstellungen        |  Wert           | BESCHREIBUNG  |
+   | Einstellungen        |  value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Eindeutiger Wert | Der Name, der die zu überwachende App identifiziert |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen oder vorhandenen Ressourcengruppe, die Application Insights-Daten hosten soll |

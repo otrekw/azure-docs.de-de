@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 06d1895a807b4e618be3dc1f816da2c1b3faaf3b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122145"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530917"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Verwalten von Azure Cache for Redis mit Azure PowerShell
 > [!div class="op_single_selector"]
@@ -95,7 +95,7 @@ Verwenden Sie zum Erstellen eines Caches in der Azure China-Cloud einen der folg
 * China, Osten
 * China, Norden
 
-Weitere Informationen zur Azure China-Cloud finden Sie unter [AzureChinaCloud für Azure wird in China von 21Vianet betrieben](http://www.windowsazure.cn/).
+Weitere Informationen zur Azure China-Cloud finden Sie unter [AzureChinaCloud für Azure wird in China von 21Vianet betrieben](https://www.windowsazure.cn/).
 
 ### <a name="to-connect-to-microsoft-azure-germany"></a>So stellen Sie eine Verbindung mit Microsoft Azure Deutschland her
 Verwenden Sie zum Herstellen einer Verbindung mit Microsoft Azure Deutschland einen der folgenden Befehle.
@@ -103,7 +103,7 @@ Verwenden Sie zum Herstellen einer Verbindung mit Microsoft Azure Deutschland ei
     Connect-AzAccount -EnvironmentName AzureGermanCloud
 
 
-or
+oder
 
     Connect-AzAccount -Environment (Get-AzEnvironment -Name AzureGermanCloud)
 
@@ -342,7 +342,7 @@ Das folgende Beispiel veranschaulicht, wie ein Cache mit Namen `myCache` zu eine
 
     Set-AzRedisCache -ResourceGroupName myGroup -Name myCache -Size 2.5GB
 
-Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich wie beim Aufruf von `Get-AzRedisCache`). Beachten Sie, dass der `ProvisioningState` `Scaling` ist.
+Nach Eingabe dieses Befehls wird der Status des Caches zurückgegeben (ähnlich wie beim Aufruf von `Get-AzRedisCache`). Beachten Sie, dass der `ProvisioningState``Scaling` ist.
 
     PS C:\> Set-AzRedisCache -Name myCache -ResourceGroupName myGroup -Size 2.5GB
 

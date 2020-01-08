@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ee9d651e1ec7807d191bc3393c0c280ce1e52f9
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 015aa4c209a99921a930a51b15c3d0230722519a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790556"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353881"
 ---
 # <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Massenregistrierung von SQL-VMs in Azure beim SQL-VM-Ressourcenanbieter
 
@@ -214,11 +214,11 @@ Der Bericht wird als `.txt`-Datei mit dem Namen `RegisterSqlVMScriptReport<Times
 | Anzahl der virtuellen Computer, die übersprungen wurden, weil auf ihnen nicht SQL Server unter Windows ausgeführt wird | Anzahl der virtuellen Computer, die übersprungen wurden, weil auf ihnen nicht SQL Server ausgeführt wird oder weil sie keine Windows-VM sind. Die virtuellen Computer werden im Format `SubscriptionID, Resource Group, Virtual Machine` aufgelistet. | 
 | &nbsp; | &nbsp; |
 
-### <a name="log"></a>Protokoll 
+### <a name="log"></a>Log 
 
 Fehler werden in der Protokolldatei mit dem Namen `VMsNotRegisteredDueToError<Timestamp>.log` protokolliert, wobei der Zeitstempel der Zeitpunkt ist, an dem das Skript gestartet wurde. Wenn der Fehler auf Abonnementebene liegt, enthält das Protokoll die kommagetrennte Abonnement-ID und die Fehlermeldung. Wenn der Fehler bei der Registrierung des virtuellen Computers aufgetreten ist, enthält das Protokoll die Abonnement-ID, den Ressourcengruppennamen, den VM-Namen, den Fehlercode und die Fehlermeldung mit Kommas als Trennzeichen. 
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 Wenn Sie SQL Server-VMs mithilfe des bereitgestellten Skripts beim Ressourcenanbieter registrieren, müssen Sie Folgendes beachten:
 
@@ -232,8 +232,6 @@ Das vollständige Skript auf GitHub finden Sie unter [Massenregistrierung von SQ
 Kopieren Sie das vollständige Skript und speichern Sie es als `RegisterSqLVMs.psm1`.
 
 [!code-powershell-interactive[main](../../../../powershell_scripts/sql-virtual-machine/register-sql-vms/RegisterSqlVMs.psm1 "Bulk register SQL Server virtual machines")]
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

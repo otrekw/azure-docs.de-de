@@ -1,19 +1,18 @@
 ---
 title: Allgemeine Abfragemuster in Azure Stream Analytics
 description: In diesem Artikel werden verschiedene allgemeine Abfragemuster und -designs beschrieben, die nützlich in Azure Stream Analytics-Aufträgen sind.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/16/2019
-ms.openlocfilehash: 729385a2ce9feb6e69f9be29c2175b403093be3f
-ms.sourcegitcommit: c556477e031f8f82022a8638ca2aec32e79f6fd9
+ms.openlocfilehash: 61f9e128fa9299a743012e18882fe32591fdd3f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68413366"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369948"
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster
 
@@ -31,18 +30,18 @@ Sowohl JSON als auch Avro können komplexe Typen enthalten, z.B. geschachtelte O
 
 ## <a name="query-example-convert-data-types"></a>Abfragebeispiel: Konvertieren von Datentypen
 
-**Beschreibung:** Definieren der Arten von Eigenschaften im Eingabestream. Beispiel: Das Fahrzeuggewicht ist im Eingabestream als Zeichenfolge angegeben und muss zur Durchführung von **SUM** in **INT** konvertiert werden.
+**Beschreibung**: Definieren der Arten von Eigenschaften im Eingabestream. Beispiel: Das Fahrzeuggewicht ist im Eingabestream als Zeichenfolge angegeben und muss zur Durchführung von **SUM** in **INT** konvertiert werden.
 
 **Eingabe**:
 
-| Stellen | Time | Weight |
+| Make | Time | Weight |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |"1000" |
 | Honda |2015-01-01T00:00:02.0000000Z |"2000" |
 
 **Ausgabe**:
 
-| Stellen | Weight |
+| Make | Weight |
 | --- | --- |
 | Honda |3000 |
 
@@ -63,12 +62,12 @@ Sowohl JSON als auch Avro können komplexe Typen enthalten, z.B. geschachtelte O
 
 ## <a name="query-example-use-likenot-like-to-do-pattern-matching"></a>Abfragebeispiel: Musterabgleich mithilfe von LIKE und NOT LIKE
 
-**Beschreibung:** Sicherstellen, dass ein Feldwert im Ereignis einem bestimmten Muster entspricht.
+**Beschreibung**: Sicherstellen, dass ein Feldwert im Ereignis einem bestimmten Muster entspricht.
 Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden, die mit „A“ beginnen und mit „9“ enden.
 
 **Eingabe**:
 
-| Stellen | LicensePlate | Time |
+| Make | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -76,7 +75,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 **Ausgabe**:
 
-| Stellen | LicensePlate | Time |
+| Make | LicensePlate | Time |
 | --- | --- | --- |
 | Toyota |AAA-999 |2015-01-01T00:00:02.0000000Z |
 | Nissan |ABC-369 |2015-01-01T00:00:03.0000000Z |
@@ -96,11 +95,11 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 ## <a name="query-example-specify-logic-for-different-casesvalues-case-statements"></a>Abfragebeispiel: Logik für verschiedene Fälle/Werte (CASE-Anweisungen)
 
-**Beschreibung:** Angeben einer abweichenden kriterienbasierten Berechnung für ein Feld. Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge der gleichen Marke vorbeigefahren sind (mit einem Sonderfall für „1“).
+**Beschreibung**: Angeben einer abweichenden kriterienbasierten Berechnung für ein Feld. Beispiel: Bereitstellen einer Zeichenfolge, die beschreibt, wie viele Fahrzeuge der gleichen Marke vorbeigefahren sind (mit einem Sonderfall für „1“).
 
 **Eingabe**:
 
-| Stellen | Time |
+| Make | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
@@ -133,11 +132,11 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 ## <a name="query-example-send-data-to-multiple-outputs"></a>Abfragebeispiel: Senden von Daten an mehrere Ausgaben
 
-**Beschreibung:** Senden von Daten an mehrere Ausgabeziele über einen einzelnen Auftrag. Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Archivieren aller Ereignisse in Blob Storage.
+**Beschreibung**: Senden von Daten an mehrere Ausgabeziele über einen einzelnen Auftrag. Beispiel: Analysieren von Daten für eine schwellenwertbasierte Warnung und Archivieren aller Ereignisse in Blob Storage.
 
 **Eingabe**:
 
-| Stellen | Time |
+| Make | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -147,7 +146,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 **Ausgabe 1**:
 
-| Stellen | Time |
+| Make | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -157,7 +156,7 @@ Beispiel: Überprüfen des Ergebnisses, ob Nummernschilder zurückgegeben werden
 
 **Ausgabe 2**:
 
-| Stellen | Time | Count |
+| Make | Time | Anzahl |
 | --- | --- | --- |
 | Toyota |2015-01-01T00:00:10.0000000Z |3 |
 
@@ -207,11 +206,11 @@ Beispiel:
 
 ## <a name="query-example-count-unique-values"></a>Abfragebeispiel: Zählen eindeutiger Werte
 
-**Beschreibung:** Zählen der Anzahl eindeutiger Feldwerte, die im Datenstrom innerhalb eines bestimmten Zeitraums vorkommen. Beispiel: Wie viele individuelle Fahrzeugmarken passieren in einem Zeitraum von zwei Sekunden die Mautstation?
+**Beschreibung**: Zählen der Anzahl eindeutiger Feldwerte, die im Datenstrom innerhalb eines bestimmten Zeitraums vorkommen. Beispiel: Wie viele individuelle Fahrzeugmarken passieren in einem Zeitraum von zwei Sekunden die Mautstation?
 
 **Eingabe**:
 
-| Stellen | Time |
+| Make | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Honda |2015-01-01T00:00:02.0000000Z |
@@ -243,18 +242,18 @@ GROUP BY
 
 ## <a name="query-example-determine-if-a-value-has-changed"></a>Abfragebeispiel: Ermitteln, ob ein Wert geändert wurde
 
-**Beschreibung:** Überprüfen eines früheren Werts zur Bestimmung, ob er sich von dem aktuellen Wert unterscheidet. Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wie das aktuelle Fahrzeug?
+**Beschreibung**: Überprüfen eines früheren Werts zur Bestimmung, ob er sich von dem aktuellen Wert unterscheidet. Beispiel: Weist das vorherige Fahrzeug auf der Mautstraße dieselbe Marke auf wie das aktuelle Fahrzeug?
 
 **Eingabe**:
 
-| Stellen | Time |
+| Make | Time |
 | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
 **Ausgabe**:
 
-| Stellen | Time |
+| Make | Time |
 | --- | --- |
 | Toyota |2015-01-01T00:00:02.0000000Z |
 
@@ -274,11 +273,11 @@ GROUP BY
 
 ## <a name="query-example-find-the-first-event-in-a-window"></a>Abfragebeispiel: Ermitteln des ersten Ereignisses in einem Zeitfenster
 
-**Beschreibung:** Ermitteln des jeweils ersten Fahrzeugs in einem 10-Minuten-Intervall.
+**Beschreibung**: Ermitteln des jeweils ersten Fahrzeugs in einem 10-Minuten-Intervall.
 
 **Eingabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -290,7 +289,7 @@ GROUP BY
 
 **Ausgabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | QYF 9358 |Honda |2015-07-27T00:12:02.0000000Z |
@@ -310,7 +309,7 @@ GROUP BY
 
 Ändern Sie nun die Aufgabe, und ermitteln Sie jeweils das erste Fahrzeug einer bestimmten Marke in einem Zehn-Minuten-Intervall.
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -333,11 +332,11 @@ GROUP BY
 
 ## <a name="query-example-find-the-last-event-in-a-window"></a>Abfragebeispiel: Ermitteln des letzten Ereignisses in einem Zeitfenster
 
-**Beschreibung:** Ermitteln des jeweils ersten Fahrzeugs in einem 10-Minuten-Intervall.
+**Beschreibung**: Ermitteln des jeweils ersten Fahrzeugs in einem 10-Minuten-Intervall.
 
 **Eingabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:05.0000000Z |
 | YZK 5704 |Ford |2015-07-27T00:02:17.0000000Z |
@@ -349,7 +348,7 @@ GROUP BY
 
 **Ausgabe**:
 
-| LicensePlate | Stellen | Time |
+| LicensePlate | Make | Time |
 | --- | --- | --- |
 | VFE 1616 |Toyota |2015-07-27T00:09:31.0000000Z |
 | MDR 6128 |BMW |2015-07-27T00:13:45.0000000Z |
@@ -381,11 +380,11 @@ GROUP BY
 
 ## <a name="query-example-locate-correlated-events-in-a-stream"></a>Abfragebeispiel: Suchen von korrelierten Ereignissen in einem Stream
 
-**Beschreibung:** Suchen Sie nach korrelierten Ereignissen in einem Stream. Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von zwei aufeinanderfolgenden Fahrzeugen der gleichen Marke befahren?
+**Beschreibung**: Suchen Sie nach korrelierten Ereignissen in einem Stream. Beispiel: Wurde die mautpflichtige Straße innerhalb der letzten 90 Sekunden von zwei aufeinanderfolgenden Fahrzeugen der gleichen Marke befahren?
 
 **Eingabe**:
 
-| Stellen | LicensePlate | Time |
+| Make | LicensePlate | Time |
 | --- | --- | --- |
 | Honda |ABC-123 |2015-01-01T00:00:01.0000000Z |
 | Honda |AAA-999 |2015-01-01T00:00:02.0000000Z |
@@ -394,7 +393,7 @@ GROUP BY
 
 **Ausgabe**:
 
-| Stellen | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
+| Make | Time | CurrentCarLicensePlate | FirstCarLicensePlate | FirstCarTime |
 | --- | --- | --- | --- | --- |
 | Honda |2015-01-01T00:00:02.0000000Z |AAA-999 |ABC-123 |2015-01-01T00:00:01.0000000Z |
 
@@ -417,18 +416,18 @@ GROUP BY
 
 ## <a name="query-example-detect-the-duration-between-events"></a>Abfragebeispiel: Ermitteln der Dauer zwischen Ereignissen
 
-**Beschreibung:** Ermitteln der Dauer eines bestimmten Ereignisses. Beispiel: Ermitteln der für eine Funktion aufgewendeten Zeit mit einem bestimmten Webclickstream.
+**Beschreibung**: Ermitteln der Dauer eines bestimmten Ereignisses. Beispiel: Ermitteln der für eine Funktion aufgewendeten Zeit mit einem bestimmten Webclickstream.
 
 **Eingabe**:  
 
-| Benutzer | Feature | Ereignis | Time |
+| Benutzer | Funktion | Ereignis | Time |
 | --- | --- | --- | --- |
 | user@location.com |RightMenu |Start |2015-01-01T00:00:01.0000000Z |
-| user@location.com |RightMenu |End |2015-01-01T00:00:08.0000000Z |
+| user@location.com |RightMenu |Ende |2015-01-01T00:00:08.0000000Z |
 
 **Ausgabe**:  
 
-| Benutzer | Feature | Duration |
+| Benutzer | Funktion | Duration |
 | --- | --- | --- |
 | user@location.com |RightMenu |7 |
 
@@ -450,12 +449,12 @@ GROUP BY
 **Erläuterung**: Verwenden Sie die **LAST**-Funktion, um den letzten **TIME**-Wert mit dem Ereignistyp **Start** zu ermitteln. Die **LAST**-Funktion verwendet **PARTITION BY [user]** , um anzuzeigen, dass das Ergebnis einzeln pro Benutzer berechnet wird. Die Abfrage hat einen maximalen Schwellenwert von einer Stunde für die Zeitdifferenz zwischen **Start**- und **Stopp**-Ereignissen, ist aber nach Bedarf konfigurierbar **(LIMIT DURATION(hour, 1)** .
 
 ## <a name="query-example-detect-the-duration-of-a-condition"></a>Abfragebeispiel: Ermitteln der Dauer einer Bedingung
-**Beschreibung:** Ermitteln, wie lange eine Bedingung angedauert hat.
+**Beschreibung**: Ermitteln, wie lange eine Bedingung angedauert hat.
 Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht (über 20.000 Pfund) erfasst. Nun soll ermittelt werden, wie lange dieser Fehler aufgetreten ist.
 
 **Eingabe**:
 
-| Stellen | Time | Weight |
+| Make | Time | Weight |
 | --- | --- | --- |
 | Honda |2015-01-01T00:00:01.0000000Z |2000 |
 | Toyota |2015-01-01T00:00:02.0000000Z |25000 |
@@ -497,7 +496,7 @@ Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht 
 
 ## <a name="query-example-fill-missing-values"></a>Abfragebeispiel: Auffüllen fehlender Werte
 
-**Beschreibung:** Erstellen Sie für den Ereignisdatenstrom mit fehlenden Werten einen Ereignisdatenstrom mit regelmäßigen Intervallen. Generieren Sie z.B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten Datenpunkt meldet.
+**Beschreibung**: Erstellen Sie für den Ereignisdatenstrom mit fehlenden Werten einen Ereignisdatenstrom mit regelmäßigen Intervallen. Generieren Sie z.B. alle 5 Sekunden ein Ereignis, das den zuletzt angezeigten Datenpunkt meldet.
 
 **Eingabe**:
 
@@ -541,7 +540,7 @@ Beispiel: Aufgrund eines Fehlers wurde für alle Fahrzeuge ein falsches Gewicht 
 
 ## <a name="query-example-correlate-two-event-types-within-the-same-stream"></a>Abfragebeispiel: Korrelieren von zwei Ereignistypen in demselben Datenstrom
 
-**Beschreibung:** Generieren von Warnungen basierend auf mehreren Ereignistypen, die in einem bestimmten Zeitbereich aufgetreten sind. Beispiel: In einem IoT-Szenario für Küchenöfen soll eine Warnung ausgelöst werden, wenn die Lüftertemperatur unter 40 und die maximale Leistung während der letzten drei Minuten unter 10 gelegen hat.
+**Beschreibung**: Generieren von Warnungen basierend auf mehreren Ereignistypen, die in einem bestimmten Zeitbereich aufgetreten sind. Beispiel: In einem IoT-Szenario für Küchenöfen soll eine Warnung ausgelöst werden, wenn die Lüftertemperatur unter 40 und die maximale Leistung während der letzten drei Minuten unter 10 gelegen hat.
 
 **Eingabe**:
 
@@ -614,11 +613,11 @@ WHERE
 
 ## <a name="query-example-process-events-independent-of-device-clock-skew-substreams"></a>Abfragebeispiel: Verarbeiten von Ereignissen unabhängig von Geräteuhrabweichungen (Unterdatenströme)
 
-**Beschreibung:** Eintreffen von Ereignissen mit Verzögerung oder in falscher Reihenfolge aufgrund von Uhrabweichungen zwischen Ereignisproduzenten oder Partitionen bzw. Netzwerklatenz. Im folgenden Beispiel liegt die Geräteuhr für TollId 2 fünf Sekunden hinter TollId 1 und die Geräteuhr für TollId 3 zehn Sekunden hinter TollId 1. 
+**Beschreibung**: Eintreffen von Ereignissen mit Verzögerung oder in falscher Reihenfolge aufgrund von Uhrabweichungen zwischen Ereignisproduzenten oder Partitionen bzw. Netzwerklatenz. Im folgenden Beispiel liegt die Geräteuhr für TollId 2 fünf Sekunden hinter TollId 1 und die Geräteuhr für TollId 3 zehn Sekunden hinter TollId 1. 
 
 **Eingabe**:
 
-| LicensePlate | Stellen | Time | TollId |
+| LicensePlate | Make | Time | TollId |
 | --- | --- | --- | --- |
 | DXE 5291 |Honda |2015-07-27T00:00:01.0000000Z | 1 |
 | YHN 6970 |Toyota |2015-07-27T00:00:05.0000000Z | 1 |
@@ -631,7 +630,7 @@ WHERE
 
 **Ausgabe**:
 
-| TollId | Count |
+| TollId | Anzahl |
 | --- | --- |
 | 1 | 2 |
 | 2 | 2 |
@@ -655,11 +654,11 @@ GROUP BY TUMBLINGWINDOW(second, 5), TollId
 
 ## <a name="query-example-remove-duplicate-events-in-a-window"></a>Abfragebeispiel: Entfernen duplizierter Ereignisse in einem Fenster
 
-**Beschreibung:** Wenn Sie einen Vorgang ausführen, wie z. B. die Berechnung von Durchschnittswerten für Ereignisse in einem bestimmten Zeitfenster, müssen duplizierte Ereignisse herausgefiltert werden. Im folgenden Beispiel ist das zweite Ereignis ein Duplikat des ersten.
+**Beschreibung**: Wenn Sie einen Vorgang ausführen, wie z. B. die Berechnung von Durchschnittswerten für Ereignisse in einem bestimmten Zeitfenster, müssen duplizierte Ereignisse herausgefiltert werden. Im folgenden Beispiel ist das zweite Ereignis ein Duplikat des ersten.
 
 **Eingabe**:  
 
-| deviceId | Time | Attribut | Wert |
+| deviceId | Time | attribute | value |
 | --- | --- | --- | --- |
 | 1 |2018-07-27T00:00:01.0000000Z |Temperatur |50 |
 | 1 |2018-07-27T00:00:01.0000000Z |Temperatur |50 |

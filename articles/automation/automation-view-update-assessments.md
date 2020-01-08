@@ -2,19 +2,15 @@
 title: Anzeigen von Updatebewertungen der Azure-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Updatebewertungen für Updatebereitstellungen anzeigen.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d27df57e9371f16a15d3a18b7722598062377d88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419880"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Anzeigen von Updatebewertungen der Azure-Updateverwaltung
 
@@ -38,7 +34,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="windows"></a>Windows
 
-|Classification  |BESCHREIBUNG  |
+|Klassifizierung  |BESCHREIBUNG  |
 |---------|---------|
 |Kritische Updates     | Ein Update für ein bestimmtes Problem, mit dem ein entscheidender, nicht sicherheitsrelevanter Fehler behoben wird.        |
 |Sicherheitsupdates     | Ein Update für ein produktspezifisches, sicherheitsrelevantes Problem.        |
@@ -51,7 +47,7 @@ Die folgenden Tabellen enthalten eine Liste der Updateklassifizierungen in der U
 
 ### <a name="linux-2"></a>Linux
 
-|Classification  |BESCHREIBUNG  |
+|Klassifizierung  |BESCHREIBUNG  |
 |---------|---------|
 |Kritische Updates und Sicherheitsupdates     | Updates für ein spezielles oder produktspezifisches, sicherheitsrelevantes Problem.         |
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |

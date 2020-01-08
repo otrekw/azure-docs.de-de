@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 58309133a46e32f409a0414be71791de73db9bed
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f6943a95cd327785d4907bb675958be99b902764
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075948"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644935"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Mehrere Front-Ends für Azure Load Balancer
 
@@ -29,7 +29,7 @@ Wenn Sie einen Azure Load Balancer definieren, sind eine Front-End- und eine Bac
 
 Die folgende Tabelle enthält einige Beispielkonfigurationen des Front-Ends:
 
-| Front-End | IP-Adresse | protocol | port |
+| Front-End | IP-Adresse | Protokoll | port |
 | --- | --- | --- | --- |
 | 1 |65.52.0.1 |TCP |80 |
 | 2 |65.52.0.1 |TCP |*8080* |
@@ -53,7 +53,7 @@ Wir untersuchen diese Szenarien näher und beginnen mit dem Standardverhalten.
 
 In diesem Szenario werden die Front-Ends wie folgt konfiguriert:
 
-| Front-End | IP-Adresse | protocol | port |
+| Front-End | IP-Adresse | Protokoll | port |
 | --- | --- | --- | --- |
 | ![Front-End (grün)](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Front-End (lila)](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -69,7 +69,7 @@ Wir definieren zwei Regeln:
 
 Die vollständige Zuordnung in Azure Load Balancer sieht jetzt wie folgt aus:
 
-| Regel | Front-End-IP-Adresse | protocol | port | Destination | port |
+| Regel | Front-End-IP-Adresse | Protokoll | port | Destination | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Regel (grün)](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |DIP-IP-Adresse |80 |
 | ![Regel (lila)](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |DIP-IP-Adresse |81 |
@@ -103,7 +103,7 @@ In diesem Szenario hat jede VM im Back-End-Pool drei Netzwerkschnittstellen:
 
 Gehen wir von der gleichen Front-End-Konfiguration wie im vorherigen Szenario aus:
 
-| Front-End | IP-Adresse | protocol | port |
+| Front-End | IP-Adresse | Protokoll | port |
 | --- | --- | --- | --- |
 | ![Front-End (grün)](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |
 | ![Front-End (lila)](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |*65.52.0.2* |TCP |80 |
@@ -117,7 +117,7 @@ Wir definieren zwei Regeln:
 
 Die folgende Tabelle veranschaulicht die vollständige Zuordnung im Load Balancer:
 
-| Regel | Front-End-IP-Adresse | protocol | port | Destination | port |
+| Regel | Front-End-IP-Adresse | Protokoll | port | Destination | port |
 | --- | --- | --- | --- | --- | --- |
 | ![Regel (grün)](./media/load-balancer-multivip-overview/load-balancer-rule-green.png) 1 |65.52.0.1 |TCP |80 |Identisch mit dem Front-End (65.52.0.1) |Identisch mit dem Front-End (80) |
 | ![Regel (lila)](./media/load-balancer-multivip-overview/load-balancer-rule-purple.png) 2 |65.52.0.2 |TCP |80 |Identisch mit dem Front-End (65.52.0.2) |Identisch mit dem Front-End (80) |
@@ -133,7 +133,7 @@ Der Floating IP-Regeltyp bildet die Grundlage für mehrere Load Balancer-Konfigu
 * Konfigurationen mit mehreren Front-Ends werden nur für IaaS-VMs unterstützt.
 * Bei der Floating IP-Regel muss die Anwendung die primäre IP-Konfiguration für ausgehende SNAT-Datenflüsse verwenden. Wenn Ihre Anwendung an die Front-End-IP-Adresse gebunden ist, die an der Loopbackschnittstelle im Gastbetriebssystem konfiguriert ist, ist die Azure-SNAT für ausgehenden Datenverkehr nicht verfügbar, um den ausgehenden Datenfluss umzuschreiben, und beim Datenfluss tritt ein Fehler auf.  Lesen Sie die Informationen unter [Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md).
 * Öffentliche IP-Adressen haben Auswirkungen auf die Abrechnung. Weitere Informationen finden Sie unter [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/)
-* Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-subscription-service-limits.md#networking-limits) .
+* Es gelten Grenzwerte für Abonnements. Weitere Informationen finden Sie unter [Einschränkungen für Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

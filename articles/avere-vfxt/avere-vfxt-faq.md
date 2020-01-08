@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: rohogue
-ms.openlocfilehash: 7839530463ea834ed5f8ae2ae06854985a77c673
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847368"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415357"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT für Azure: Häufig gestellte Fragen
 
@@ -77,7 +77,7 @@ Ja, Avere vFXT wird ausschließlich als Hochverfügbarkeitslösung betrieben.
 
 Ja, Kunden können mit dem Avere vFXT-Cluster mehrere Cloudanbieter verwenden. Es unterstützt Standardbuckets von AWS S3 und Google Cloud Services sowie Azure-Blobcontainer.
 
-> [!NOTE] 
+> [!NOTE]
 > Für die Nutzung von Avere vFXT in AWS oder Google Cloud fällt eine Softwaregebühr an, jedoch nicht bei Azure.
 
 ## <a name="technical-compute"></a>Technisch: Compute
@@ -97,7 +97,6 @@ No, you must choose one virtual machine type or the other.
 ### Can I move between virtual machine types?
 
 Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
-
 -->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>Kann die Avere vFXT-Umgebung skaliert werden?
@@ -130,7 +129,7 @@ Nein. Das in Avere vFXT verwendete Hochverfügbarkeitsmodell unterstützt derzei
 
 ### <a name="can-i-clone-avere-vfxt-virtual-machines"></a>Können virtuelle Avere vFXT-Computer geklont werden?
 
-Nein, Sie müssen das unterstützte Python-Skript verwenden, um Knoten im Avere vFXT-Cluster hinzuzufügen oder zu entfernen. Weitere Informationen finden Sie unter [Verwalten des Avere vFXT-Clusters](avere-vfxt-manage-cluster.md).  
+Nein, Sie müssen das unterstützte Python-Skript verwenden, um Knoten im Avere vFXT-Cluster hinzuzufügen oder zu entfernen. Weitere Informationen finden Sie unter [Verwalten des Avere vFXT-Clusters](avere-vfxt-manage-cluster.md).
 
 ### <a name="is-there-a-vm-version-of-the-software-i-can-run-in-my-own-local-environment"></a>Gibt es eine „VM“-Version der Software, die ich in meiner eigenen lokalen Umgebung ausführen kann?
 

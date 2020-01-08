@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: d8dfbf3f86a2233571a99c4ad832ef7bd3c3ed48
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: a24eb4608e7630d5b613751fa2120361eccd7672
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077930"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644816"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Verschieben des externen Azure Load Balancers in eine andere Region mit Azure PowerShell
 
@@ -32,11 +32,11 @@ Externe Azure Load Balance können nicht aus einer Region in eine andere verscho
 
 - Vergewissern Sie sich, dass Ihr Azure-Abonnement das Erstellen externer Load Balancer in der verwendeten Zielregion zulässt. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement über genügend Ressourcen verfügt, um das Hinzufügen von Load Balancern für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement über genügend Ressourcen verfügt, um das Hinzufügen von Load Balancern für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
-## <a name="prepare-and-move"></a>Vorbereiten und verschieben
-Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Verschiebung mit einer Resource Manager-Vorlage vorbereiten und die Konfiguration des externen Load Balancers dann mithilfe von Azure PowerShell in die Zielregion verschieben.  Im Rahmen dieses Vorgangs muss die Konfiguration der öffentlichen IP-Adresse des externen Load Balancers eingeschlossen und vor dem Verschieben des externen Load Balancers zuerst durchgeführt werden.
+## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
+Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Verschiebung mit einer Resource Manager-Vorlage vorbereiten und die Konfiguration des externen Load Balancers dann mithilfe von Azure PowerShell in die Zielregion verschieben.  Im Rahmen dieses Vorgangs muss die Konfiguration der öffentlichen IP-Adresse des externen Load Balancers eingeschlossen und vor dessen Verschieben zuerst durchgeführt werden.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -60,13 +60,13 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
    ```
 
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die über den Befehl **namens \<resource-goup-name>.json** exportiert wurde, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
    ```
 
-5. Um den Parameter für den Namen der öffentlichen IP-Adresse zu bearbeiten, ändern Sie die Eigenschaft **defaultValue** des Namens der öffentlichen IP-Quelladresse in den Namen der öffentliche IP-Zieladresse. Stellen Sie sicher, dass der Name in Anführungszeichen eingeschlossen ist:
+5. Um den Parameter für den Namen der öffentlichen IP-Adresse zu bearbeiten, ändern Sie die Eigenschaft **defaultValue** des Namens der öffentlichen IP-Adresse der Quelle in den Namen der öffentlichen IP-Adresse des Ziels. Stellen Sie sicher, dass der Name in Anführungszeichen eingeschlossen ist:
     
     ```json
         {
@@ -114,9 +114,9 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
     Get-AzLocation | format-table
     
     ```
-8. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
+8. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
 
-    * **SKU**: Sie können die SKU der öffentlichen IP-Adresse in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
+    * **SKU**: Sie können die SKU (Tarif) der öffentlichen IP-Adresse in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
 
          ```json
             "resources": [
@@ -209,7 +209,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceExtLBID -IncludeParameterDefaultValue
    ```
-4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die über den Befehl **namens \<resource-goup-name>.json** exportiert wurde, und öffnen Sie sie in einem Editor Ihrer Wahl:
+4. Die heruntergeladene Datei wird nach der Ressourcengruppe benannt, aus der die Ressource exportiert wurde.  Suchen Sie nach der Datei, die mit dem Befehl exportiert wurde und den Namen **\<source-resource-goup-name>.json** hat, und öffnen Sie sie in einem Editor Ihrer Wahl:
    
    ```azurepowershell
    notepad.exe <source-resource-group-name>.json
@@ -261,7 +261,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
 
     ```
 
-8.  Wenn Sie ausgehende NAT und Regeln für ausgehenden Datenverkehr für den Load Balancer konfiguriert haben, ist in dieser Datei ein dritter Eintrag für die externe ID für die ausgehende öffentliche IP-Adresse vorhanden.  Wiederholen Sie die oben genannten Schritte in der **Zielregion**, um die ID für die ausgehende öffentliche IP-Adresse zu ermitteln, und fügen Sie diesen Eintrag in die Datei **\<resource-group-name>.json** ein:
+8.  Wenn Sie für den Load Balancer NAT-Ausgangsregeln konfiguriert haben, ist in dieser Datei ein dritter Eintrag für die externe ID der ausgehenden öffentlichen IP-Adresse vorhanden.  Wiederholen Sie die oben genannten Schritte in der **Zielregion**, um die ID für die ausgehende öffentliche IP-Adresse zu ermitteln, und fügen Sie diesen Eintrag in die Datei **\<resource-group-name>.json** ein:
 
     ```json
             "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -304,7 +304,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
     Get-AzLocation | format-table
     
     ```
-12. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
+12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
     
     * **SKU**: Sie können die SKU des externen Load Balancers in der Konfiguration aus „standard“ in „basic“ oder aus „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **\<resource-group-name>.json** ändern:
 
@@ -448,7 +448,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
                 ]
         ```
 
-         Weitere Informationen zu Regeln für ausgehenden Datenverkehr finden Sie unter [Load Balancer-Regeln für ausgehenden Datenverkehr](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).
+         Weitere Informationen zu Regeln für ausgehenden Datenverkehr finden Sie unter [Load Balancer-Ausgangsregeln](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).
 
 13. Speichern Sie die Datei **\<resource-group-name>.json**.
     
@@ -481,7 +481,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
 
 ## <a name="discard"></a>Verwerfen 
 
-Wenn Sie nach der Bereitstellung die öffentliche IP-Adresse und den Load Balancer im Ziel neu starten oder verwerfen möchten, löschen Sie die im Ziel erstellte Ressourcengruppe. Die verschobene öffentliche IP-Adresse und der Load Balancer werden dann gelöscht.  Verwenden Sie zum Entfernen der Ressourcengruppe [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Wenn Sie nach der Bereitstellung die öffentliche IP-Adresse und den Load Balancer im Ziel neu starten oder verwerfen möchten, löschen Sie die im Ziel erstellte Ressourcengruppe. Die verschobene öffentliche IP-Adresse und der Load Balancer werden dann gelöscht.  Um die Ressourcengruppe zu entfernen, verwenden Sie [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
 
 ```azurepowershell-interactive
 
@@ -489,7 +489,7 @@ Remove-AzResourceGroup -Name <resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und die Verschiebung der NSG abzuschließen, löschen Sie die Quell-NSG oder die Ressourcengruppe, verwenden Sie [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) oder [Remove-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0) und [Remove-AzLoadBalancer](https://docs.microsoft.com/powershell/module/az.network/remove-azloadbalancer?view=azps-2.6.0).
 

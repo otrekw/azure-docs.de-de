@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: 62a16a6a96fbfdfbb4ed2d70b74470e29efaa844
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 03464fca6d7e0694d9492de698c70d5caac89358
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849852"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644476"
 ---
 # <a name="understand-azure-enterprise-agreement-administrative-roles-in-azure"></a>Informationen zu Azure Enterprise Agreement-Administratorrollen in Azure
 
@@ -93,11 +93,11 @@ Die folgende Tabelle zeigt die Beziehungen zwischen den Enterprise Agreement-Adm
 
 |Enterprise Agreement-Administratorrolle|Richtlinie zum Anzeigen von Gebühren für die Rolle|RBAC-Rolle|Preisansicht|
 |---|---|---|---|
-|Kontobesitzer ODER Abteilungsadministrator|✔ Aktiviert|Owner (Besitzer)|EA-Preise der Organisation|
-|Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert|Owner (Besitzer)|Einzelhandelspreise|
+|Kontobesitzer ODER Abteilungsadministrator|✔ Aktiviert|Besitzer|EA-Preise der Organisation|
+|Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert|Besitzer|Einzelhandelspreise|
 |Kontobesitzer ODER Abteilungsadministrator|✔ Aktiviert |none|Keine Preise|
 |Kontobesitzer ODER Abteilungsadministrator|✘ Deaktiviert |none|Keine Preise|
-|Keine|Nicht zutreffend |Owner (Besitzer)|Einzelhandelspreise|
+|Keine|Nicht verfügbar |Besitzer|Einzelhandelspreise|
 
 Sie legen die Enterprise-Administratorrolle und die Richtlinien zum Anzeigen von Gebühren im Enterprise-Portal fest. Die RBAC-Rolle kann im Azure-Portal aktualisiert werden. Weitere Informationen finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md).
 

@@ -1,26 +1,26 @@
 ---
 title: 'Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Java'
 titleSuffix: Azure Cognitive Services
-description: Erfahren Sie, wie Sie schnell beginnen können, mit der Bing-Vorschlagssuche-API Suchbegriffe in Echtzeit vorzuschlagen.
+description: Hier erfahren Sie, wie Sie schnell loslegen und mit der Bing-Vorschlagssuche-API Suchbegriffe in Echtzeit vorschlagen können.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 0a0fb1e8f79587223ae1f25ca8a7e0d6dc7cc5bb
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1593d4079cf7f50d5473f24ecf57351c9d7786e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384916"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Java
 
 
-Verwenden Sie diese Schnellstartanleitung, um zu beginnen, die Bing-Vorschlagssuche-API aufzurufen und die JSON-Antwort zu erhalten. Diese einfache Java-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchen zurück. Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-API aufrufen und die JSON-Antwort erhalten. Diese einfache Java-Anwendung sendet eine partielle Suchabfrage an die API und gibt Vorschläge für Suchen zurück. Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingAutosuggestv7.java).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,7 +44,7 @@ Verwenden Sie diese Schnellstartanleitung, um zu beginnen, die Bing-Vorschlagssu
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den API-Host und Pfad, Ihren [Market Code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage.
+2. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den API-Host und Pfad, Ihren [Market Code](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```java
     static String subscriptionKey = "enter key here";
@@ -73,7 +73,7 @@ public static String prettify(String json_text) {
 
 1. Erstellen Sie eine neue Methode namens `get_suggestions()`, und führen Sie die folgenden Schritte aus:
 
-   1. Erstellen Sie die URL für Ihre Anforderung, indem Sie Ihren API-Host und -Pfad kombinieren und Ihre Suchabfrage codieren. Führen Sie unbedingt eine URL-Codierung der Abfrage durch, bevor Sie sie anfügen. Erstellen Sie eine Parameterzeichenfolge für die Abfrage, indem Sie den Market Code dem `mkt=`-Parameter und Ihre Abfrage dem `q=`-Parameter anfügen.
+   1. Erstellen Sie die URL für Ihre Anforderung, indem Sie Ihren API-Host und -Pfad kombinieren und Ihre Suchabfrage codieren. Führen Sie unbedingt eine URL-Codierung der Abfrage durch, bevor Sie sie anfügen. Erstellen Sie eine Parameterzeichenfolge für die Abfrage, indem Sie den Marktcode an den Parameter `mkt=` und Ihre Abfrage an den Parameter `q=` anfügen.
     
       ```java
   

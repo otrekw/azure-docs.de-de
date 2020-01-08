@@ -129,6 +129,8 @@
           href: set-throughput.md
         - name: 'Bereitstellungsdurchsatz: Autopilot'
           href: provision-throughput-autopilot.md
+        - name: Häufig gestellte Fragen zu Autopilot
+          href: autopilot-faq.md
     - name: SQL-Abfragereferenz
       items:
         - name: Erste Schritte
@@ -166,7 +168,7 @@
         - name: Arrays und Objekte
           displayName: 'object and array creation, object and array'
           href: sql-query-object-array.md
-        - name: Schlüsselwörter
+        - name: Keywords
           displayName: 'keywords, distinct, between, in, top'
           href: sql-query-keywords.md
         - name: Operatoren
@@ -532,7 +534,7 @@
       items:
         - name: Onlinesicherung und bedarfsgesteuerte Wiederherstellung
           href: online-backup-and-restore.md
-        - name: Compliance
+        - name: Kompatibilität
           href: compliance.md
     - name: Dienstkontingente
       href: concepts-limits.md
@@ -566,7 +568,7 @@
             - name: '4: Migrieren von Daten'
               displayName: import
               href: cassandra-import-data.md
-        - name: Anleitungen
+        - name: Gewusst-wie-Anleitungen
           items:
             - name: Änderungsfeed
               href: cassandra-change-feed.md
@@ -653,7 +655,7 @@
               href: tutorial-query-mongodb.md
             - name: 4. Globale Verteilung von Daten
               href: tutorial-global-distribution-mongodb.md
-        - name: Anleitungen
+        - name: Gewusst-wie-Anleitungen
           items:
             - name: Leitfaden zur Migrationsvorbereitung
               href: mongodb-pre-migration.md
@@ -725,7 +727,7 @@
               href: gremlin-limits.md
             - name: Kompatibilität
               href: gremlin-compatibility.md
-        - name: Anleitungen
+        - name: Gewusst-wie-Anleitungen
           items:
             - name: Modellierung von Diagrammdaten
               href: graph-modeling.md
@@ -796,7 +798,7 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
-        - name: Anleitungen
+        - name: Gewusst-wie-Anleitungen
           items:
             - name: Erstellen von Apps mit der Tabellen-API
               href: table-support.md
@@ -828,13 +830,13 @@
           href: etcd-api-introduction.md
         - name: Azure Kubernetes mit Azure Cosmos DB
           href: bootstrap-kubernetes-cluster.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Arbeiten mit einem Azure Cosmos-Konto
       href: how-to-manage-database-account.md
     - name: Arbeiten mit Azure Cosmos DB-Ressourcen
       items:
-        - name: Verwenden von PowerShell
+        - name: PowerShell
           href: manage-with-powershell.md
         - name: Verwenden der Azure-Befehlszeilenschnittstelle
           href: manage-with-cli.md
@@ -912,7 +914,7 @@
           href: key-value-store-cost.md
     - name: Problembehandlung
       items:
-        - name: Beheben von Problemen mit der Abfrageleistung
+        - name: Problembehandlung der Abfrageleistung
           href: troubleshoot-query-performance.md
         - name: Problembehandlung für das Java Async SDK
           href: troubleshoot-java-async-sdk.md
@@ -982,6 +984,8 @@
       items:
         - name: Überwachen von Cosmos DB
           href: monitor-cosmos-db.md
+        - name: Überwachen mit Diagnoseprotokollen
+          href: cosmosdb-monitor-resource-logs.md
         - name: Azure Monitor für Cosmos (Vorschauversion)
           href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
         - name: Anzeigen von Metriken über das Cosmos DB-Konto

@@ -3,25 +3,25 @@ title: Häufige Starttasks für Clouddienste | Microsoft-Dokumentation
 description: Enthält einige Beispiele für häufige Starttasks, die Sie vielleicht in der Web- oder Workerrolle des Clouddiensts ausführen möchten.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 2eb299ad841444a3100eac207b225d5377959f85
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5c6173971ac5272c2c2d769551fc9caf3dfa2573
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385795"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
-Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Starttasks können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
+Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
 
 In [diesem Artikel](cloud-services-startup-tasks.md) erfahren Sie etwas über die Funktionsweise von Starttasks und insbesondere darüber, wie die Einträge zum Definieren einer Starttask erstellt werden.
 
 > [!NOTE]
-> Starttasks gelten nicht für virtuelle Computer, sondern nur für Web- und Workerrollen von Clouddiensten.
+> Startaufgaben gelten nicht für virtuelle Computer, sondern nur für Web- und Workerrollen von Clouddiensten.
 > 
 
 ## <a name="define-environment-variables-before-a-role-starts"></a>Definieren von Umgebungsvariablen vor dem Starten einer Rolle
@@ -119,7 +119,7 @@ EXIT %ERRORLEVEL%
 ```
 
 ## <a name="add-firewall-rules"></a>Hinzufügen von Firewallregeln
-In Azure sind tatsächlich zwei Firewalls vorhanden. Die erste Firewall kontrolliert Verbindungen zwischen dem virtuellen Computer und der Außenwelt. Diese Firewall wird durch das [EndPoints]-Element in der Datei [ServiceDefinition.csdef] gesteuert.
+In Azure sind tatsächlich zwei Firewalls vorhanden. Die erste Firewall kontrolliert Verbindungen zwischen dem virtuellen Computer und der Außenwelt. Diese Firewall wird durch das [Endpunkte]-Element in der Datei [ServiceDefinition.csdef] gesteuert.
 
 Die zweite Firewall kontrolliert Verbindungen zwischen einem virtuellen Computer und den Prozessen innerhalb dieses virtuellen Computers. Diese Firewall kann durch das Befehlszeilentool `netsh advfirewall firewall` gesteuert werden.
 
@@ -508,7 +508,10 @@ Erfahren Sie mehr über die Funktionsweise von [Tasks](cloud-services-startup-ta
 [Variable]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[Endpunkte]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
+
+
+

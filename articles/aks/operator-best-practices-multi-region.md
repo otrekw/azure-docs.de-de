@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 5fdb189fcab3da4dad52642571ac42e669828fe3
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74971654"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613107"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Best Practices für Geschäftskontinuität und Notfallwiederherstellung in Azure Kubernetes Service (AKS)
 
@@ -114,7 +114,7 @@ Ihre Anwendungen nutzen möglicherweise Azure Storage für ihre Daten. Weil Ihre
 
 Ihre Anwendungen erfordern möglicherweise auch dann noch einen beständigen Speicher, nachdem ein Pod gelöscht wurde. In Kubernetes können Sie persistente Volumes verwenden, um Daten dauerhaft zu speichern. Persistente Volumes werden auf einem virtuellen Computerknoten bereitgestellt und dann für die Pods verfügbar gemacht. Persistente Volumes folgen Pods, auch dann, wenn ein Pod auf einen anderen Knoten im gleichen Cluster verschoben wird.
 
-Welche Replikationsstrategie Sie verwenden, hängt von Ihrer Speicherlösung ab. Für gängige Speicherlösungen wie [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [Rook](https://rook.io/docs/rook/master/disaster-recovery.html) und [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) gibt es jeweils eigene Leitfäden zu Notfallwiederherstellung und Replikation.
+Welche Replikationsstrategie Sie verwenden, hängt von Ihrer Speicherlösung ab. Für gängige Speicherlösungen wie [Gluster](https://docs.gluster.org/en/latest/Administrator%20Guide/Geo%20Replication/), [CEPH](https://docs.ceph.com/docs/master/cephfs/disaster-recovery/), [Rook](https://rook.io/docs/rook/v1.2/ceph-disaster-recovery.html) und [Portworx](https://docs.portworx.com/scheduler/kubernetes/going-production-with-k8s.html#disaster-recovery-with-cloudsnaps) gibt es jeweils eigene Leitfäden zu Notfallwiederherstellung und Replikation.
 
 Die typische Strategie ist, einen gemeinsamen Speicherpunkt bereitzustellen, in den Anwendungen ihre Daten schreiben können. Diese Daten werden regionsübergreifend gespeichert, der Zugriff auf die Daten erfolgt lokal.
 

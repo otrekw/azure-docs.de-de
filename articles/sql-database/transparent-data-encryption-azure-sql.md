@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 19414a6f09f4bc61cd9b1b09ae98ea070e577d7f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995880"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354879"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse
 
@@ -54,7 +54,7 @@ Weitere Informationen zur Verwendung der transparenten Datenverschlüsselung mit
 
 Für Vorgänge in Azure müssen Datenbanken nicht entschlüsselt werden. Die Einstellungen der transparenten Datenverschlüsselung für die Quelldatenbank oder die primäre Datenbank werden transparent an das Ziel vererbt. Dies gilt für folgende Vorgänge:
 
-- Geografische Wiederherstellung
+- Geowiederherstellung
 - Self-Service-Point-in-Time-Wiederherstellung
 - Wiederherstellung einer gelöschten Datenbank
 - Aktive Georeplikation
@@ -79,7 +79,7 @@ Sie müssen eine Verbindung als Azure-Besitzer, -Mitwirkender oder SQL-Sicherhei
 
 Die transparente Datenverschlüsselung wird auf Datenbankebene aktiviert und deaktiviert. Rufen Sie das [Azure-Portal](https://portal.azure.com) auf, und melden Sie sich mit Ihrem Azure-Administrator- oder Mitwirkendenkonto an, um die transparente Datenverschlüsselung für eine Datenbank zu aktivieren. Suchen Sie die Einstellungen für die transparente Datenverschlüsselung in Ihrer Benutzerdatenbank. Standardmäßig wird die von einem Dienst verwaltete transparente Datenverschlüsselung verwendet. Für den Server, der die Datenbank enthält, wird automatisch ein Zertifikat für die transparente Datenverschlüsselung generiert. Bei einer verwalteten Azure SQL-Instanz verwenden Sie T-SQL, um die transparente Datenverschlüsselung für eine Datenbank zu aktivieren oder deaktivieren.
 
-![Von einem Dienst verwaltete transparente Datenverschlüsselung](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
+![Von einem Dienst verwaltete transparente Datenverschlüsselung](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
 
 Der Hauptschlüssel für die transparente Datenverschlüsselung, der auch als Schutzvorrichtung für die transparente Datenverschlüsselung bezeichnet wird, wird auf Serverebene festgelegt. Öffnen Sie die Einstellungen für die transparente Datenverschlüsselung auf Ihrem Server, um diese mit Bring Your Own Key-Unterstützung zu verwenden und Ihre Datenbank mit einem Schlüssel von Key Vault zu schützen.
 
@@ -90,7 +90,7 @@ Verwalten Sie Transparent Data Encryption mithilfe von PowerShell.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Sie müssen eine Verbindung als Azure-Besitzer, -Mitwirkender oder SQL-Sicherheitsmanager herstellen, um die transparente Datenverschlüsselung über PowerShell zu konfigurieren.
 

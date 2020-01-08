@@ -1,19 +1,15 @@
 ---
 title: Erste Schritte mit der automatischen Skalierung in Azure
 description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, virtueller Computer oder VM-Skalierungsgruppe in Azure.
-author: rajram
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 07/07/2017
-ms.author: rajram
 ms.subservice: autoscale
-ms.openlocfilehash: 0535c84a8ee0776c2c35a46d3c7510a2cd615cf6
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 0a40496e4d496d0062c6ee7a6ab935c1ad9b35a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "60788493"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396347"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -34,8 +30,8 @@ Sie können alle Ressourcen ermitteln, für die die automatische Skalierung in A
 Zu jeder Ressource finden Sie die aktuelle Anzahl der Instanzen sowie den jeweiligen Autoskalierungsstatus. Der Autoskalierungsstatus kann wie folgt lauten:
 
 - **Nicht konfiguriert:** Sie haben die automatische Skalierung für diese Ressource noch nicht aktiviert.
-- **Aktiviert:** Sie haben die automatische Skalierung für diese Ressource aktiviert.
-- **Deaktiviert**: Sie haben die automatische Skalierung für diese Ressource deaktiviert.
+- **Enabled**: Sie haben die automatische Skalierung für diese Ressource aktiviert.
+- **Disabled**: Sie haben die automatische Skalierung für diese Ressource deaktiviert.
 
 ## <a name="create-your-first-autoscale-setting"></a>Erstellen Ihrer ersten Autoskalierungseinstellung
 
@@ -46,7 +42,7 @@ Nun können Sie eine einfache schrittweise exemplarische Vorgehensweise zum Erst
   ![Skalierungseinstellung für die neue Web-App][5]
 1. Geben Sie einen Namen für die Skalierungseinstellung an, und klicken Sie dann auf **Regel hinzufügen**. Beachten Sie die Optionen für die Skalierungsregel, die auf der rechten Seite als Kontextbereich geöffnet wird. Standardmäßig wird die Option zum Skalieren der Anzahl Ihrer Instanzen auf „1“ festgelegt, wenn der CPU-Prozentsatz der Ressource 70 % überschreitet. Behalten Sie die Standardwerte bei, und klicken Sie auf **Hinzufügen**.
   ![Erstellen der Skalierungseinstellung für eine Web-App][6]
-1. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Gehen Sie dazu wie folgt vor:
+1. Nun haben Sie Ihre erste Skalierungsregel erstellt. Beachten Sie, dass die UX bewährte Methoden empfiehlt und angibt, dass empfohlen wird, mindestens eine Skala in der Regel einzufügen. Gehen Sie folgendermaßen vor:
 
     a. Klicken Sie auf **Hinzufügen einer Regel**
 

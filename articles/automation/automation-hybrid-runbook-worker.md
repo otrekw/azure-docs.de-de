@@ -2,19 +2,15 @@
 title: Azure Automation – Hybrid Runbook Worker
 description: In diesem Artikel werden Informationen zum Installieren und Verwenden des Azure Automation-Features „Hybrid Runbook Worker“ bereitgestellt, mit dem Sie Runbooks auf Computern in Ihrem lokalen Datencenter oder Cloudanbieter ausführen können.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fd90b98f4df195297e31a5dda91f64efcc1f5212
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850260"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658036"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
 
@@ -26,7 +22,7 @@ Diese Funktionalität wird in der folgenden Abbildung veranschaulicht:
 
 Jeder Hybrid-Runbook-Worker ist ein Mitglied einer Hybrid-Runbook-Workergruppe, die Sie beim Installieren des Agents angeben. Eine Gruppe kann einen einzelnen Agent umfassen, aber für Hochverfügbarkeit können Sie mehrere Agents installieren. Jeder Computer kann einen Hybrid Worker hosten, der einem Automation-Konto Bericht erstattet.
 
-Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Für Hybrid Runbook Worker gelten viele der Grenzwerte von Azure-Sandboxes nicht. Sie unterliegen nicht den gleichen Beschränkungen für Speicherplatz, Arbeitsspeicher oder Netzwerksockets. Hybrid Runbook Worker werden nur durch die eigenen Ressourcen beschränkt. Auch das 180-minütige Zeitlimit für die [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share), dem Azure-Sandboxes unterliegen, gilt bei Hybrid Runbook Workern nicht. Weitere Informationen zu den Diensteinschränkungen für Azure-Sandboxes und Hybrid Runbook Worker finden Sie auf der [Seite mit auftragsspezifischen Grenzwerten](../azure-subscription-service-limits.md#automation-limits).
+Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Für Hybrid Runbook Worker gelten viele der Grenzwerte von Azure-Sandboxes nicht. Sie unterliegen nicht den gleichen Beschränkungen für Speicherplatz, Arbeitsspeicher oder Netzwerksockets. Hybrid Runbook Worker werden nur durch die eigenen Ressourcen beschränkt. Auch das 180-minütige Zeitlimit für die [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share), dem Azure-Sandboxes unterliegen, gilt bei Hybrid Runbook Workern nicht. Weitere Informationen zu den Diensteinschränkungen für Azure-Sandboxes und Hybrid Runbook Worker finden Sie auf der [Seite mit auftragsspezifischen Grenzwerten](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Installieren eines Hybrid Runbook Workers
 

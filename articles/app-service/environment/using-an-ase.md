@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/28/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: e5c127673e4b0cb6c68aaf0a9790abbf78758670
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 806d6ddb09cbaf14c9c488e3d3b39909c22ef284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687095"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374929"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung #
 
@@ -21,7 +21,7 @@ Die Azure App Service-Umgebung ist eine Bereitstellung des Azure App Service in 
 - **Front-Ends**: In den Front-Ends endet HTTP/HTTPS in einer App Service-Umgebung (ASE).
 - **Worker**: Bei Workern handelt es sich um die Ressourcen, die Ihre Apps hosten.
 - **Datenbank**: Die Datenbank enthält Informationen, durch die die Umgebung festgelegt ist.
-- **Speicher**: Der Speicher wird zum Hosten der vom Kunden veröffentlichten Apps verwendet.
+- **Storage**: Der Speicher wird zum Hosten der vom Kunden veröffentlichten Apps verwendet.
 
 > [!NOTE]
 > Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. In ASEv1 müssen Sie die Ressourcen verwalten, bevor Sie sie verwenden können. Informationen zum Konfigurieren und Verwalten von ASEv1 finden Sie unter [Konfigurieren einen App Service-Umgebung v1][ConfigureASEv1]. Im weiteren Verlauf dieses Artikels liegt der Schwerpunkt auf ASEv2.
@@ -172,7 +172,7 @@ So löschen Sie eine ASE
 [ASEv1Intro]: app-service-app-service-environment-intro.md
 [Functions]: ../../azure-functions/index.yml
 [Pricing]: https://azure.microsoft.com/pricing/details/app-service/
-[ARMOverview]: ../../azure-resource-manager/resource-group-overview.md
+[ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
 [AppDeploy]: ../deploy-local-git.md

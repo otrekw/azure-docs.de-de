@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 2d3bffd025d484ac928e21003b7cba9c63d2c514
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e1709a5e86c8fed8d7f724ad1b105bd02df9fa56
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381765"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learned-entities-in-language-understanding-luis"></a>Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe der durch maschinelles Lernen erworbenen Entitäten in Language Understanding (LUIS)
 
 In diesem Tutorial extrahieren Sie strukturierte Daten aus einer Äußerung mithilfe der durch maschinelles Lernen erworbenen Entität.
 
 Die durch maschinelles Lernen erworbene Entität unterstützt das [Modellaufschlüsselungskonzept](luis-concept-model.md#v3-authoring-model-decomposition), indem sie Unterkomponentenentitäten mit ihren Deskriptoren und Einschränkungen bereitstellt.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -66,7 +64,7 @@ Sie können weitere Aufschlüsselungen hinzufügen, um z. B. Unterkomponenten f
 
 ## <a name="import-example-json-to-begin-app"></a>Importieren von JSON-Beispielcode zum Starten einer App
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-intents-only.json) herunter, und speichern Sie sie.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

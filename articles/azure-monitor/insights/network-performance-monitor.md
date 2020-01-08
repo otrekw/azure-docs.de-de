@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: f7859dbef486d4afa825b289f3991464dacf702c
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 396652e3f8a0a8d9e18effb94a48a362054dde96
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665643"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75403147"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -37,17 +37,25 @@ Weitere Informationen zu den verschiedenen vom [Netzwerkleistungsmonitor](https:
  
 ## <a name="supported-regions"></a>Unterstützte Regionen
 NPM kann die Konnektivität zwischen Netzwerken und Anwendungen in jedem Teil der Welt von einem Arbeitsbereich aus überwachen, der in einer der folgenden Regionen gehostet wird:
+* Nordeuropa
 * Europa, Westen
+* Frankreich, Mitte
+
 * USA, Westen-Mitte
 * USA Nord Mitte
+* USA Süd Mitte
+* USA (Mitte)
 * East US
 * USA (Ost) 2
+* USA, Westen 2
 * Japan, Osten
 * Südostasien
 * Australien, Südosten
 * Australien, Mitte
 * Australien (Osten)
 * Vereinigtes Königreich, Süden
+* Asien, Osten
+* Korea, Mitte
 * Indien, Mitte
 * US-Regierung Virginia
 * China, Osten 2

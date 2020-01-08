@@ -2,14 +2,14 @@
 title: Beheben von Sicherungsfehlern mit Azure-VMs
 description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die bei der Sicherung und Wiederherstellung von virtuellen Azure-Computern auftreten.
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: e5ee0e06d444db809ce3e168f8883048eaf45e27
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172464"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75664639"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -61,7 +61,6 @@ Beim Sicherungsvorgang ist ein Fehler aufgetreten, da sich der virtuelle Compute
 Fehlercode: UserErrorFsFreezeFailed <br/>
 Fehlermeldung: Fehler beim Einfrieren mindestens eines Bereitstellungspunkts der VM zum Erfassen einer dateisystemkonsistenten Momentaufnahme.
 
-* Überprüfen Sie den Dateisystemzustand aller eingebundenen Geräte mit dem **tune2fs**-Befehl, z.B. **tune2fs -l /dev/sdb1 \\** .\| grep **Dateisystemstatus**.
 * Heben Sie mit dem Befehl **umount** die Bereitstellung der Geräte auf, deren Dateisystemstatus nicht bereinigt wurde.
 * Führen Sie mit dem Befehl **fsck** eine Dateisystem-Konsistenzprüfung für diese Geräte aus.
 * Stellen Sie die Geräte erneut bereit, und versuchen Sie, die Sicherung auszuführen.</ol>
@@ -184,7 +183,6 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | Fehlerdetails | Problemumgehung |
 | ------ | --- |
 | **Fehlercode**: 320001, ResourceNotFound <br/> **Fehlermeldung**: Der Vorgang konnte nicht ausgeführt werden, da der virtuelle Computer nicht mehr vorhanden ist. <br/> <br/> **Fehlercode**: 400094, BCMV2VMNotFound <br/> **Fehlermeldung**: Der virtuelle Computer ist nicht vorhanden <br/> <br/>  Der virtuelle Azure-Computer wurde nicht gefunden.  |Dieser Fehler tritt auf, wenn der primäre virtuelle Computer gelöscht wird, die Sicherungsrichtlinie jedoch weiterhin einen zu sichernden virtuellen Computer sucht. Führen Sie zum Beheben dieses Fehlers die folgenden Schritte aus: <ol><li> Erstellen Sie den virtuellen Computer mit dem gleichen Namen und dem gleichen Ressourcengruppennamen (**Clouddienstname**) neu.<br>**or**</li><li> Beenden Sie den Schutz für den virtuellen Computer mit oder ohne Löschung der Sicherungsdaten. Weitere Informationen finden Sie unter [Beenden des Schutzes für virtuelle Computer](backup-azure-manage-vms.md#stop-protecting-a-vm).</li></ol>|
-| **Fehlercode**: UserErrorVmProvisioningStateFailed<br/> **Fehlermeldung**: Der VM befindet sich im Zustand „Fehler bei der Bereitstellung“: <br>Starten Sie den virtuellen Computer neu, und stellen Sie sicher, dass der VM ausgeführt oder heruntergefahren wird. | Dieser Fehler tritt auf, wenn einer der Erweiterungsfehler dazu führt, dass der virtuelle Computer in den Zustand „Fehler bei der Bereitstellung“ versetzt wird. Wechseln Sie zur Liste der Erweiterungen, überprüfen Sie, ob eine fehlerhafte Erweiterung vorliegt, entfernen Sie diese, und wiederholen Sie den Neustart des virtuellen Computers. Wenn alle Erweiterungen ausgeführt werden, überprüfen Sie, ob der VM-Agent-Dienst ausgeführt wird. Wenn dies nicht der Fall ist, starten Sie den VM-Agent-Dienst neu. |
 |**Fehlercode**: UserErrorBCMPremiumStorageQuotaError<br/> **Fehlermeldung**: Die Momentaufnahme des virtuellen Computers konnte nicht kopiert werden, weil das Speicherkonto nicht über genügend freien Speicherplatz verfügt | Bei Premium-VMs mit dem VM-Sicherungsstapel V1 wird die Momentaufnahme in das Speicherkonto kopiert. Durch diesen Schritt wird sichergestellt, dass der Sicherungsverwaltungsdatenverkehr für die Momentaufnahme nicht die Anzahl der IOPS begrenzt, die der Anwendung zur Verfügung stehen, die Premium-Datenträger verwendet. <br><br>Wir empfehlen Ihnen, nur 50 % (17,5 TB) des gesamten Speicherplatzes des Speicherkontos zuzuordnen. Der Azure Backup-Dienst kann dann die Momentaufnahme in das Speicherkonto kopieren und Daten von diesem Kopierspeicherort in das Speicherkonto des Tresors übertragen. |
 | **Fehlercode**: 380008, AzureVmOffline <br/> **Fehlermeldung**: Fehler beim Installieren der Microsoft Recovery Services-Erweiterung, da der virtuelle Computer nicht ausgeführt wird | Der VM-Agent ist eine erforderliche Komponente für die Azure Recovery Services-Erweiterung. Installieren Sie den Agent für virtuelle Azure-Computer, und starten Sie den Registrierungsvorgang erneut. <br> <ol> <li>Überprüfen Sie, ob der VM-Agent ordnungsgemäß installiert ist. <li>Stellen Sie sicher, dass das Flag für die VM-Konfiguration richtig festgelegt wurde.</ol> Erfahren Sie mehr über das Installieren des VM-Agents und das Überprüfen der VM-Agent-Installation. |
 | **Fehlercode**: ExtensionSnapshotBitlockerError <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist mit dem folgenden Vorgangsfehler des Volumeschattenkopie-Diensts (Volume Shadow Copy Service, VSS) fehlgeschlagen: **Dieses Laufwerk ist durch die BitLocker-Laufwerkverschlüsselung gesperrt. Das Laufwerk muss mithilfe der Systemsteuerung entsperrt werden.** |Deaktivieren Sie BitLocker für alle Laufwerke auf dem virtuellen Computer, und überprüfen Sie, ob der VSS-Fehler behoben wurde. |
@@ -193,7 +191,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 | **Fehlercode**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Erstellen eines sicheren Netzwerkkommunikationskanals fehlgeschlagen. | <ol><li> Öffnen Sie den Registrierungs-Editor, indem Sie **regedit.exe** im Modus mit erhöhten Rechten ausführen. <li> Identifizieren Sie alle auf Ihrem System vorhandenen Versionen von .NET Framework. Sie werden unter der Hierarchie des Registrierungsschlüssels **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft** aufgeführt. <li> Fügen Sie für jede im Registrierungsschlüssel vorhandene .NET Framework-Version den folgenden Schlüssel hinzu: <br> **SchUseStrongCrypto"=dword:00000001** </ol>|
 | **Fehlercode**: ExtensionVCRedistInstallationFailure <br/> **Fehlermeldung**: Der Momentaufnahmevorgang ist aufgrund eines Fehlers beim Installieren von Visual C++ Redistributable für Visual Studio 2012 fehlgeschlagen. | Navigieren Sie zu „C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion“, und installieren Sie „vcredist2013_x64“.<br/>Stellen Sie sicher, dass der richtige Registrierungsschlüsselwert zum Zulassen der Dienstinstallation festgelegt wird. Das heißt, legen Sie den Wert für **Start** in **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** auf **3** und nicht auf **4** fest. <br><br>Wenn immer noch Probleme bei der Installation bestehen, starten Sie den Installationsdienst neu, indem Sie an einer Eingabeaufforderung mit erhöhten Rechten den Befehl **MSIEXEC /UNREGISTER** und dann **MSIEXEC /REGISTER** ausführen.  |
 
-## <a name="jobs"></a>Aufträge
+## <a name="jobs"></a>Jobs
 
 | Fehlerdetails | Problemumgehung |
 | --- | --- |

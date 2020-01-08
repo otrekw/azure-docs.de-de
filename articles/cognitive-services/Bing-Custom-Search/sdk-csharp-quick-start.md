@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit dem C# SDK | Microsoft-Dokumentation'
+title: 'Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit dem C# SDK'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um unter Verwendung des C# SDK Suchergebnisse von Ihrer Instanz der benutzerdefinierten Bing-Suche anzufordern.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: scottwhi
-ms.openlocfilehash: 21b192d29f30d66e3d5f0ce6e04317d3ca7c860e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5e932b1ff597fc0170a6bb83841bc6ca7306693a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448714"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-the-c-sdk"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit dem C# SDK 
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: b7e5b0725049fa5de95f435c848502c36a3a1726
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 4ac8fe2e5bf1c338fa67619a675225eb80256c3f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72598123"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690990"
 ---
 # <a name="list-blob-containers-with-net"></a>Auflisten von Blobcontainern mit .NET
 
@@ -49,7 +49,8 @@ Um mit den Ergebnissen Containermetadaten zurückzugeben, geben Sie für die Enu
 Im folgenden Beispiel werden die Container in einem Speicherkonto, die mit einem angegebenen Präfix beginnen, asynchron aufgelistet. Im Beispiel werden Container in Inkrementen von jeweils 5 Ergebnissen aufgelistet, und zum Abrufen des nächsten Segments von Ergebnissen wird das Fortsetzungstoken verwendet. Im Beispiel werden mit den Ergebnissen auch Containermetadaten zurückgegeben.
 
 ```csharp
-private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient, string prefix)
+private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClient,
+                                                        string prefix)
 {
     Console.WriteLine("List all containers beginning with prefix {0}, plus container metadata:", prefix);
 

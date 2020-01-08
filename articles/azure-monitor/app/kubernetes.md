@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 3056b6c56be32cf5c054c4526a88157650a3e30b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a7821db85d4218cbccb6c10f12ecbc624f2702fe
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432526"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Anwendungsüberwachung ohne Instrumentierung für gehostete Kubernetes-Anwendungen
 
@@ -24,7 +24,7 @@ ms.locfileid: "72820776"
 Azure Monitor nutzt jetzt die Service Mesh-Technologie in Ihrem Kubernetes-Cluster, um vorgefertigte Anwendungsüberwachung für jegliche gehosteten Kubernetes-Apps bereitzustellen. Mit standardmäßigen Application Insight-Features wie [Anwendungszuordnung](../../azure-monitor/app/app-map.md) zum Modellieren Ihrer Abhängigkeiten, [Live Metrics Stream](../../azure-monitor/app/live-stream.md) für die Überwachung in Echtzeit, leistungsfähige Visualisierungen mit dem [Standarddashboard](../../azure-monitor/app/overview-dashboard.md), [Metrik-Explorer](../../azure-monitor/platform/metrics-getting-started.md) und [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md). Mit diesem Feature können Benutzer innerhalb eines ausgewählten Kubernetes-Namespaces Leistungsengpässe und Fehlerhotspots in allen ihren Kubernetes-Workloads erkennen. Mit Nutzung Ihrer vorhandenen Service Mesh-Investitionen in Technologien wie Istio ermöglicht Azure Monitor automatisch instrumentierte App-Überwachung ohne Änderungen des Codes Ihrer Anwendung.
 
 > [!NOTE]
-> Dies ist eine von vielen Möglichkeiten, Anwendungsüberwachung in Kubernetes durchzuführen. Sie können auch alle in Kubernetes gehosteten Apps mit dem [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.md) instrumentieren, ohne dass ein Service Mesh notwendig ist. Um Kubernetes ohne Instrumentierung der Anwendung mit einem SDK zu überwachen, können Sie die folgende Methode verwenden.
+> Dies ist eine von vielen Möglichkeiten, Anwendungsüberwachung in Kubernetes durchzuführen. Sie können auch alle in Kubernetes gehosteten Apps mit dem [Application Insights SDK](../../azure-monitor/azure-monitor-app-hub.yml) instrumentieren, ohne dass ein Service Mesh notwendig ist. Um Kubernetes ohne Instrumentierung der Anwendung mit einem SDK zu überwachen, können Sie die folgende Methode verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

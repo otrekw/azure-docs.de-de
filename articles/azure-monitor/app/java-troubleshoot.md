@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
-ms.openlocfilehash: 941dcc268c2af9e011af01d3da224b90e9ee5018
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: aea0adc9217a7729c9bf14211cf5da422ac9e198
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820803"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432539"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
@@ -52,7 +52,6 @@ Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights i
 * Haben Sie den Java-Agent gemäß [Überwachen von Abhängigkeiten, Ausnahmen und Ausführungszeiten in Java-Web-Apps](java-agent.md) konfiguriert?
 * Stellen Sie sicher, dass sich Java-Agent-JAR-Datei und AI-Agent.xml-Datei im gleichen Ordner befinden.
 * Stellen Sie sicher, dass die Abhängigkeit, die Sie automatisch erfassen möchten, für die automatische Sammlung unterstützt wird. Wir unterstützen derzeit nur MySQL-, MsSQL-, Oracle DB- und Azure Cache for Redis-Abhängigkeitssammlung.
-* Verwenden Sie JDK 1.7 oder 1.8? Derzeit unterstützen wir keine Abhängigkeitssammlung in JDK 9.
 
 ## <a name="no-usage-data"></a>Keine Nutzungsdaten
 **Ich sehe Daten zu Anforderungen und Antwortzeiten, aber keine Seitenzugriffs-, Browser- oder Benutzerdaten.**

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/15/2018
-ms.openlocfilehash: 99f26bb2b89ef9642a36aa2be2037d04aafcdcd4
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: ef67801fee574ae43d83af650d6b715e12426c7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432561"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Sammeln verteilter Ablaufverfolgungsdaten von Go (Vorschau)
 
@@ -43,13 +43,13 @@ Zuerst müssen Sie eine Application Insights-Ressource erstellen, die einen Inst
 
    Ein Dialogfeld für die Konfiguration wird geöffnet. Füllen Sie die Eingabefelder anhand der Informationen in der folgenden Tabelle aus:
 
-    | Einstellungen        | Wert           | BESCHREIBUNG  |
+   | Einstellungen        | value           | BESCHREIBUNG  |
    | ------------- |:-------------|:-----|
    | **Name**      | Global eindeutiger Wert | Der Name, der die zu überwachende App identifiziert. |
    | **Ressourcengruppe**     | myResourceGroup      | Der Name der neuen Ressourcengruppe, die Application Insights-Daten hosten soll. |
    | **Location** | East US | Wählen Sie einen Standort in Ihrer Nähe oder in der Nähe des Standorts, in dem Ihre App gehostet wird. |
 
-2. Klicken Sie auf **Create**.
+2. Klicken Sie auf **Erstellen**.
 
 ## <a name="configure-local-forwarder"></a>Konfigurieren der lokalen Weiterleitung
 

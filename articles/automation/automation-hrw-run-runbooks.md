@@ -2,19 +2,15 @@
 title: Ausführen von Runbooks für Hybrid Runbook Worker in Azure Automation
 description: Dieser Artikel enthält Informationen zur Ausführung von Runbooks auf Computern in Ihrem lokalen Datencenter oder bei Ihrem Cloudanbieter mit der Hybrid Runbook Worker-Rolle.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/29/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c8da5736869a39815d9abf33cf4a03353681b193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac31783f0eb270823b71c86cc8d7f0975d3a586a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452263"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
@@ -141,7 +137,6 @@ This allows the use of the AzureRunAsConnection to authenticate to Azure and man
 .\Export-RunAsCertificateToHybridWorker
 
 .NOTES
-AUTHOR: Azure Automation Team
 LASTEDIT: 2016.10.13
 #>
 
@@ -315,4 +310,4 @@ Das signierte Runbook kann jetzt in Azure Automation hochgeladen und wie ein nor
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
 * Informationen dazu, wie Sie auf unterschiedliche Weise in einem Text-Editor mit PowerShell-Runbooks in Azure Automation arbeiten, finden Sie unter [Bearbeiten eines Runbooks in Azure Automation](automation-edit-textual-runbook.md).
 * Wenn Ihre Runbooks nicht erfolgreich ausgeführt werden, lesen Sie den Problembehandlungsleitfaden zu [Fehlern bei der Ausführung von Runbooks](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
-* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).

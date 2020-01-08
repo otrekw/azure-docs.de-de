@@ -1,26 +1,17 @@
 ---
 title: Schnelles Erstellen einer .NET-App unter Service Fabric in Azure
 description: In diesem Schnellstart erstellen Sie eine .NET-Anwendung für Azure, indem Sie die Service Fabric Reliable Services-Beispielanwendung verwenden.
-services: service-fabric
-documentationcenter: .net
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 545e3efc0815e48d5bd16beabbf9f6ef283fea8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464420"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric
 

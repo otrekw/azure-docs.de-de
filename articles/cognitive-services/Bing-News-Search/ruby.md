@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/19/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ab16a54269c2afe820d9d17d1400152d078186ed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ce1ef2b6c586ddd688bacb755d7c6f2ffd16a0a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423678"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448552"
 ---
 # <a name="quickstart-perform-a-news-search-using-ruby-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Ruby und der REST-API der Bing-News-Suche
 
@@ -30,8 +30,6 @@ Diese Anwendung ist zwar in Python geschrieben, an sich ist die API aber ein RES
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
 1. Importieren Sie die folgenden Pakete in Ihre Codedatei.
@@ -42,7 +40,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie Variablen für den API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und einen Suchbegriff. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```ruby
     accessKey = "enter key here"

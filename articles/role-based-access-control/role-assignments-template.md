@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a183dc3b318cb9d740fe91bf553dc9f0c7ec99c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462194"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Hinzufügen von Rollenzuweisungen mithilfe von Azure RBAC- und Azure Resource Manager-Vorlagen
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Neben der Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie Rollen auch mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) zuweisen. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird das Zuweisen von Rollen mithilfe von Vorlagen beschrieben.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Neben der Verwendung von Azure PowerShell oder der Azure-Befehlszeilenschnittstelle können Sie Rollen auch mit [Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md) zuweisen. Vorlagen können hilfreich sein, wenn Sie Ressourcen konsistent und wiederholt bereitstellen müssen. In diesem Artikel wird das Zuweisen von Rollen mithilfe von Vorlagen beschrieben.
 
 ## <a name="get-object-ids"></a>Abrufen von Objekt-IDs
 
@@ -52,7 +52,7 @@ $objectid = (Get-AzADGroup -DisplayName "{name}").id
 objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 ```
 
-### <a name="application"></a>Anwendung
+### <a name="application"></a>Application
 
 Zum Abrufen eines Dienstprinzipals (eine von einer Anwendung verwendete Identität) können Sie die Befehle [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) oder [az ad sp list](/cli/azure/ad/sp#az-ad-sp-list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>Hinzufügen einer Rollenzuweisung
 
-In RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
+In der RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu.
 
 ### <a name="resource-group-without-parameters"></a>Ressourcengruppe (ohne Parameter)
 
@@ -362,6 +362,6 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
-- [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+- [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 - [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../azure-resource-manager/deploy-to-subscription.md)
 - [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=rbac)

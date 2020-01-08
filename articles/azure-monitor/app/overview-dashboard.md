@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/03/2019
-ms.openlocfilehash: 218ae158512326bcad8efd6c598f68d296fe9370
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 45c04cc32733873061bd6ff44b2e5484b106a893
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819154"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406656"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights-Übersichtsdashboard
 
@@ -28,7 +28,7 @@ Das neue Übersichtsdashboard wird jetzt standardmäßig gestartet:
 
 Die Auswahl des Zeitbereichs wurde zu einer 1-Klick-Oberfläche vereinfacht.
 
-![Zeitbereich](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
+![Uhrzeitbereich](./media/overview-dashboard/app-insights-overview-dashboard-03.png)
 
 Die Gesamtleistung wurde deutlich erhöht. Mit nur einem Klick haben Sie Zugriff auf beliebte Features wie **Suche** und **Analyse**. Jede KPI-Kachel, die standardmäßig dynamisch aktualisiert wird, bietet Einblick in die entsprechenden Application Insights-Features. Um weitere Informationen über Fehler bei Anforderungen zu erhalten, wählen Sie **Fehler** unter dem Header **Untersuchen** aus:
 
@@ -62,5 +62,5 @@ Wenn Sie **Kacheleinstellungen konfigurieren** auswählen und einen benutzerdefi
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Trichter](../../azure-monitor/app/usage-funnels.md)
-- [Aufbewahrung](../../azure-monitor/app/usage-retention.md)
+- [Vermerkdauer](../../azure-monitor/app/usage-retention.md)
 - [Benutzerabläufe](../../azure-monitor/app/usage-flows.md)

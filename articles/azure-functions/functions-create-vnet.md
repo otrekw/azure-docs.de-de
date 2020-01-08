@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 5/03/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 12815d3ca0136cec8af294118ff192a4f31df6a0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227080"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433211"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Tutorial: Integrieren von Functions in ein virtuelles Azure-Netzwerk
 
@@ -58,10 +58,10 @@ Als Nächstes erstellen Sie eine vorkonfigurierte VM, auf der WordPress in einem
 
     ![Registerkarte „Grundeinstellungen“ zum Erstellen eines virtuellen Computers](./media/functions-create-vnet/create-vm-1.png)
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
-    | **[Ressourcengruppe](../azure-resource-manager/resource-group-overview.md)**  | myResourceGroup | Wählen Sie `myResourceGroup` oder die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. Durch Verwenden derselben Ressourcengruppe für die Funktions-App, die WordPress-VM und den Hostingplan lassen sich die Ressourcen einfacher bereinigen, wenn Sie dieses Tutorial abgeschlossen haben. |
+    | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Wählen Sie `myResourceGroup` oder die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. Durch Verwenden derselben Ressourcengruppe für die Funktions-App, die WordPress-VM und den Hostingplan lassen sich die Ressourcen einfacher bereinigen, wenn Sie dieses Tutorial abgeschlossen haben. |
     | **Name des virtuellen Computers** | VNET-Wordpress | Der VM-Name muss in der Ressourcengruppe eindeutig sein. |
     | **[Region](https://azure.microsoft.com/regions/)** | (Europa) Europa, Westen | Wählen Sie eine Region in Ihrer Nähe oder in der Nähe der Funktionen aus, die auf die VMs zugreifen. |
     | **Größe** | B1s | Klicken Sie auf **Größe ändern**, und wählen Sie das Standardimage „B1s“ aus, das eine vCPU und 1 GB Arbeitsspeicher aufweist. |
@@ -73,7 +73,7 @@ Als Nächstes erstellen Sie eine vorkonfigurierte VM, auf der WordPress in einem
 
     ![Registerkarte für Netzwerkeinstellungen in „Virtuelles Netzwerk erstellen“](./media/functions-create-vnet/create-vm-2.png)
 
-    | Einstellung      | Empfohlener Wert  | Beschreibung      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Name** | myResourceGroup-vnet | Sie können den für Ihr virtuelles Netzwerk generierten Standardnamen verwenden. |
     | **Adressbereich** | 10.10.0.0/16 | Verwenden Sie einen einzelnen Adressbereich für das virtuelle Netzwerk. |
@@ -116,7 +116,7 @@ Damit haben Sie eine WordPress-Website eingerichtet, die ausschließlich in Ihre
 
     ![Definieren des virtuellen Netzwerks für die Funktions-App](./media/functions-create-vnet/networking-3.png)
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
     | **Virtual Network** | MyResourceGroup-vnet | Das virtuelle Netzwerk ist dasjenige, das Sie zuvor erstellt haben. |
     | **Subnetz** | Neues Subnetz erstellen | Erstellen Sie ein Subnetz in dem virtuellen Netzwerk zur Verwendung durch Ihre Funktions-App. Die VNET-Integration muss so konfiguriert werden, dass ein leeres Subnetz verwendet wird. Es spielt keine Rolle, dass Ihre Funktionen ein anderes Subnetz verwenden als Ihre VM. Das virtuelle Netzwerk leitet den Datenverkehr automatisch zwischen den beiden Subnetzen weiter. |
@@ -136,7 +136,7 @@ Wenn die VNET-Integration aktiviert ist, können Sie einen Proxy in Ihrer Funkti
 
     ![Definieren der Proxyeinstellungen](./media/functions-create-vnet/create-proxy.png)
 
-    | Einstellung  | Empfohlener Wert  | Beschreibung      |
+    | Einstellung  | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | -------- | ---------------- | ---------------- |
     | **Name** | Plant | Der Name kann ein beliebiger Wert sein. Er wird zum Identifizieren des Proxys verwendet. |
     | **Routenvorlage** | /plant | Die Route, die einer VM-Ressource zugeordnet ist. |

@@ -1,25 +1,16 @@
 ---
-title: Polymorphie im Reliable Actors-Framework | Microsoft Docs
+title: Polymorphie im Reliable Actors-Framework
 description: Erstellen Sie Hierarchien von .NET-Schnittstellen und -Typen im Reliable Actors-Framework zur Wiederverwendung von Funktionen und API-Definitionen.
-services: service-fabric
-documentationcenter: .net
 author: vturecek
-manager: chackdan
-editor: vturecek
-ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: c14b3006184f7bd6dcd1eb67be11bd0214957d72
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4e485463f41cdfbadeb166ecbb3a86d4a32c1589
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348936"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorphie im Reliable Actors-Framework
 Das Reliable Actors-Framework ermöglicht es Ihnen, Actors mit vielen der Vorgehensweisen zu erstellen, die Sie auch beim objektorientierten Entwerfen verwenden würden. Eine dieser Techniken ist Polymorphie, bei der Typen und Schnittstellen von allgemeineren übergeordneten Elementen erben. Die Vererbung im Reliable Actors-Framework folgt normalerweise dem .NET-Modell mit einigen zusätzlichen Einschränkungen. Im Fall von Java/Linux folgt sie dem Java-Modell.

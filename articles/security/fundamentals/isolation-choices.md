@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 5e6910db7765c4cb8f151401a6803e6d4d3f998e
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459178"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 Mit Azure können Sie Anwendungen und virtuelle Computer (VMs) auf gemeinsam genutzter physischer Infrastruktur ausführen. Einer der wichtigsten ökonomischen Gründe für die Ausführung von Anwendungen in einer Cloudumgebung ist die Möglichkeit, die Kosten für gemeinsame Ressourcen auf mehrere Kunden zu verteilen. Diese Nutzung der Mehrinstanzenfähigkeit sorgt für eine Verbesserung der Effizienz, indem das Ressourcen-Multiplexing für verschiedene Kunden zu niedrigen Kosten durchgeführt wird. Leider ist dies auch mit dem Risiko verbunden, physische Server und andere Infrastrukturressourcen für die Ausführung Ihrer sensiblen Anwendungen und VMs freizugeben, die sich ggf. im Besitz eines unbekannten und potenziell böswilligen Benutzers befinden.
@@ -205,7 +205,7 @@ Verschlüsselung während der Übertragung ist ein Mechanismus zum Schutz der Da
 
 -   [Verschlüsselung auf Transportebene](../../storage/common/storage-security-guide.md)(etwa HTTPS), wenn Sie Daten in oder aus Azure Storage übertragen.
 
--   [Wire-Verschlüsselung](../../storage/common/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
+-   [Wire-Verschlüsselung](../../storage/common/storage-security-guide.md) (etwa SMB 3.0-Verschlüsselung für Azure-Dateifreigaben).
 
 -   [Clientseitiger Verschlüsselung](../../storage/common/storage-security-guide.md), um die Daten zu verschlüsseln, bevor sie in den Speicher übertragen werden, und nach der Übertragung aus dem Speicher zu entschlüsseln.
 

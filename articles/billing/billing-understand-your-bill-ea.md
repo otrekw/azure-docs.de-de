@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: banders
-ms.openlocfilehash: cc4b552143917f5a9ca66ad402cca79956186d08
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 112bcf7f5cb33fec56cdc36c5fe8cfe92145705a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841268"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644493"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
@@ -110,8 +110,8 @@ In der folgenden Tabelle werden die Begriffe und Beschreibungen auf der Rechnung
 |Total Extended Amount (Erweiterter Gesamtbetrag)|Nutzung gesamt|Die Gebühr für Gesamtnutzung vor Steuern für den jeweiligen Zeitraum vor dem Anwenden des Guthabens.|
 |Commitment Usage (Nutzung der Mindestabnahme)|Commitment Usage (Nutzung der Mindestabnahme)|Das angewandte Guthaben für diesen spezifischen Zeitraum.|
 |Verkauf gesamt|Überschreitung gesamt|Die Gebühr für Gesamtnutzung, die Ihren Guthabenbetrag überschreitet. Dieser Betrag schließt keine Steuern ein.|
-|Steuerbetrag|Nicht zutreffend|Steuern für den gesamten Umsatz für den jeweiligen Zeitraum.|
-|Gesamtbetrag|Nicht zutreffend|Der für die Rechnung fällige Betrag nach Anwendung des Guthabens und Hinzufügung der Steuern.|
+|Steuerbetrag|Nicht verfügbar|Steuern für den gesamten Umsatz für den jeweiligen Zeitraum.|
+|Gesamtbetrag|Nicht verfügbar|Der für die Rechnung fällige Betrag nach Anwendung des Guthabens und Hinzufügung der Steuern.|
 
 ### <a name="marketplace-invoice"></a>Marketplace-Rechnung
 
@@ -129,7 +129,7 @@ Vergleichen Sie Ihren Azure Marketplace-Gesamtbetrag unter **Berichte** > **Nutz
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
 
-Wenn Sie Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren](billing-download-azure-daily-usage.md)

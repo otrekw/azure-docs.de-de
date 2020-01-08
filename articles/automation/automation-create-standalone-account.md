@@ -2,19 +2,15 @@
 title: Erstellen eines eigenständigen Azure Automation-Kontos
 description: Dieser Artikel führt Sie anhand eines Beispiels durch die Schritte zum Erstellen, Testen und Verwenden der Authentifizierung per Sicherheitsprinzipal in Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/15/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0dcfcfe5bc6e59eeb4ccb7272ed3f68edc9c4172
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 22efb5e94049b975780c6f6ea69aa94a71cc9992
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850396"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366650"
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 
@@ -24,7 +20,7 @@ Mit einem Automation-Konto können Sie Runbooks authentifizieren, indem Sie Ress
 
 Wenn Sie im Azure-Portal ein Automation-Konto erstellen, werden automatisch folgende Konten erstellt:
 
-* **Ausführendes Konto:** Das Konto führt folgende Aufgaben aus:
+* **Ausführendes Konto:** Das Konto führt die folgenden Aufgaben aus:
   * Erstellen eines Dienstprinzipals in Azure Active Directory (Azure AD)
   * Erstellen eines Zertifikats
   * Zuweisen der Rolle „Mitwirkender“ der rollenbasierten Zugriffssteuerung (RBAC), die zum Verwalten von Azure Resource Manager-Ressourcen mit Runbooks verwendet wird
@@ -33,7 +29,7 @@ Dank der automatischen Erstellung dieser Konten können Sie schnell Runbooks fü
 
 ## <a name="permissions-required-to-create-an-automation-account"></a>Erforderliche Berechtigungen zum Erstellen eines Automation-Kontos
 
-Zum Erstellen oder Aktualisieren eines Automation-Kontos sowie zum Durchführen der Aufgaben in diesem Artikel müssen Sie über folgende Berechtigungen verfügen:
+Zum Erstellen oder Aktualisieren eines Automation-Kontos und zum Abschließen der Aufgaben in diesem Artikel müssen Sie über die folgenden Berechtigungen verfügen:
 
 * Für die Erstellung eines Automation-Kontos muss Ihr Azure AD-Benutzerkonto einer Rolle mit Berechtigungen hinzugefügt werden, die der Rolle „Besitzer“ für **Microsoft. Automation**-Ressourcen entspricht. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Automation](automation-role-based-access-control.md).
 * Wenn im Azure-Portal unter **Azure Active Directory** > **VERWALTEN** > **Benutzereinstellungen** die Option **App-Registrierungen** auf **Ja** festgelegt ist, können Benutzer ohne Administratorrechte in Ihrem Azure AD-Mandanten [Active Directory-Anwendungen registrieren](../active-directory/develop/howto-create-service-principal-portal.md#check-azure-subscription-permissions). Wenn **App-Registrierungen** auf **Nein** festgelegt ist, muss ein Benutzer, der diese Aktion ausführt, ein globaler Administrator in Azure AD sein.

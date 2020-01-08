@@ -1,25 +1,14 @@
 ---
 title: ReliableConcurrentQueue in Azure Service Fabric
 description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz, die paralleles Einreihen in die und Entfernen aus der Warteschlange ermöglicht.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: raja,tyadam,masnider,vturecek
-ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/1/2017
-ms.author: atsenthi
-ms.openlocfilehash: 776d330e36e6bcafe610bbab54e13ff6c41e2edf
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: a7115db8259fde0e87e53557ecef730f8e82d2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350278"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462729"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Einführung in ReliableConcurrentQueue in Azure Service Fabric
 ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und replizierte Warteschlange, die ein hohes Maß an Parallelität für Einreihungs- und Entfernungsvorgänge bietet. Die Warteschlange bietet hohen Durchsatz und niedrige Latenz, indem die strikte FIFO-Reihenfolge von [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx) gelockert wird. Stattdessen wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet.

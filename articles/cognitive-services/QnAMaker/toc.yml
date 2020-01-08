@@ -4,7 +4,7 @@
   items:
     - name: Was ist QnA Maker?
       href: Overview/overview.md
-    - name: Neuigkeiten
+    - name: Neues
       href: whats-new.md
 - name: Schnellstarts
   items:
@@ -14,6 +14,8 @@
       href: quickstarts/add-question-metadata-portal.md
     - name: Abrufen einer Antwort mit Postman oder cURL
       href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
+    - name: Mit Batchdatei testen
+      href: Quickstarts/batch-testing.md
     - name: Verwenden von REST-APIs
       items:
         - name: Erstellen einer neuen Wissensdatenbank
@@ -25,7 +27,7 @@
             - name: Java
               href: Quickstarts/create-new-kb-java.md
             - name: Node.js
-              href: Quickstarts/create-knowledge-rest-api-nodejs.md
+              href: Quickstarts/publish-kb-nodejs.md
             - name: Python
               href: Quickstarts/create-new-kb-python.md
         - name: Veröffentlichen einer Wissensdatenbank
@@ -37,7 +39,7 @@
             - name: Java
               href: Quickstarts/publish-kb-java.md
             - name: Node.js
-              href: 'Quickstarts/create-knowledge-rest-api-nodejs.md##publish-a-knowledge-base'
+              href: 'Quickstarts/publish-kb-nodejs.md#publish-a-knowledge-base'
             - name: Python
               href: Quickstarts/publish-kb-python.md
         - name: Abrufen der Antwort
@@ -71,7 +73,7 @@
       href: Tutorials/create-qna-bot.md
 - name: Konzepte
   items:
-    - name: Wissensdatenbank
+    - name: Knowledge Base
       href: Concepts/knowledge-base.md
       displayName: 'metadata, pair'
     - name: Verwenden von LUIS und QnA Maker
@@ -88,7 +90,7 @@
     - name: Unterstützte Datenquellen
       href: Concepts/data-sources-supported.md
       displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Bearbeiten der Knowledge Base
       items:
@@ -126,7 +128,7 @@
           displayName: 'active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting, accept, reject, filter by suggestion, filter active learning, clusterHead, totalAutoSuggestedCount, totalUserSuggestedCount, autoSuggestedCount, userSuggestedCount'
     - name: Verwalten eines Diensts
       items:
-        - name: Verwalten von Ressourcen
+        - name: Ressourcen verwalten
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
         - name: Abrufen von Analysen
@@ -202,7 +204,7 @@
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: c0f06f02a274780085fdb3c4c270ad541a0daa8c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: decfeb9c46c32c6388228de6597db0c840354c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930695"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448586"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
 
@@ -104,7 +104,7 @@ bingSearchOptions(this), getSubscriptionKey())">
 
 ## <a name="send-search-requests"></a>Senden von Suchanforderungen
 
-Diese Anwendung verwendet ein HTML-`<form>`-Objekt, um anfangs Suchanforderungen von Benutzern zu senden, und ruft mit dem Attribut `onsubmit` `newBingImageSearch()` auf.
+Diese Anwendung verwendet ein HTML-`<form>`-Objekt, um anfangs Suchanforderungen von Benutzern zu senden, und ruft mit dem Attribut `onsubmit``newBingImageSearch()` auf.
 
 ```html
 <form name="bing" onsubmit="return newBingImageSearch(this)">
@@ -347,7 +347,7 @@ Für diese Rendererfunktionen können die folgenden Parameter angegeben werden:
 Die Parameter `index` und `count` werden verwendet, um Ergebnisse zu nummerieren, HTML für Auflistungen zu generieren und Inhalte zu organisieren. Diese Parameter:
 
 * Berechnet die Miniaturbildgröße (die Breite variiert und weist einen Mindestwert von 120 Pixel auf, die Höhe ist auf 90 Pixel festgelegt).
-* Erstellt das HTML-`<img>`-Tag, mit dem das Miniaturbild angezeigt wird.
+* Erstellt das HTML-Tag `<img>`, mit dem das Miniaturbild angezeigt wird.
 * Erstellt die `<a>`-HTML-Tags, die eine Verknüpfung mit dem Bild und der Seite, die das Bild enthält, darstellen.
 * Erstellt die Beschreibung, die Informationen über das Bild und die Website, auf der sich das Bild befindet, angibt.
 
@@ -381,10 +381,10 @@ Erstens kann die Bing-Suchmaschine auf diese Weise Kontextinformationen aus vorh
 
 Zweitens wählt Bing möglicherweise Benutzer zufällig aus, die die Möglichkeit haben, neue Features zu testen, bevor diese allen Benutzern zur Verfügung gestellt werden. Indem Sie bei jeder Anforderung dieselbe Client-ID bereitstellen, stellen Sie sicher, dass Benutzer, die zur Nutzung eines neuen Features ausgewählt wurden, dieses Feature dauerhaft nutzen können. Ohne die Client-ID wird das Feature in den Suchergebnissen möglicherweise scheinbar willkürlich aus- oder eingeblendet.
 
-Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da die Herkunft des Skripts mit derjenigen der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
+Durch Browsersicherheitsrichtlinien (CORS) kann der `X-MSEdge-ClientID`-Header möglicherweise nicht von JavaScript verwendet werden. Diese Einschränkung tritt auf, wenn sich der Ursprung der Suchantwort von dem der Seite unterscheidet, die den Suchvorgang angefordert hat. In einer Produktionsumgebung sollten Sie zum Umgang mit dieser Richtlinie ein serverseitiges Skript hosten, das den API-Aufruf für die Domain durchführt, die auch für die Webseite genutzt wird. Da der Ursprung des Skripts mit dem Ursprung der Webseite übereinstimmt, kann der `X-MSEdge-ClientID`-Header von JavaScript verwendet werden.
 
 > [!NOTE]
-> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls müsste der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
+> In einer Webanwendung für eine Produktionsumgebung sollten Sie die Anforderung in jedem Fall serverseitig ausführen. Andernfalls muss der Schlüssel der Bing-Suche-API auf der Webseite hinterlegt werden, wo er im Quelltext für alle Personen zugänglich ist. Dies müssen Sie vermeiden, da ansonsten unbefugte Dritte Anforderungen unter Verwendung Ihres API-Abonnementschlüssels Anforderungen senden können, die Ihnen in Rechnung gestellt werden.
 
 In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über einen CORS-Proxy senden. In der Antwort eines solchen Proxys befindet sich ein `Access-Control-Expose-Headers`-Header, der Antwortheader zulässt und für JavaScript zur Verfügung stellt.
 

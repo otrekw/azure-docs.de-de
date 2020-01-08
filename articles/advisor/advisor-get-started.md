@@ -1,20 +1,14 @@
 ---
-title: Erste Schritte mit Azure Advisor | Microsoft Docs
+title: Erste Schritte mit Azure Advisor
 description: Erste Schritte mit Azure Advisor.
-services: advisor
-author: kasparks
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/01/2019
-ms.author: kasparks
-ms.openlocfilehash: f91e48a532a278c95d50775e135ac6379e8d8070
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 8c2699030b1a6d428ddc2a4db40a66003824cf10
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67332058"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443134"
 ---
 # <a name="get-started-with-azure-advisor"></a>Erste Schritte mit Azure Advisor
 
@@ -88,7 +82,7 @@ Für manche Ressourcengruppen oder Abonnements möchten Sie möglicherweise kein
 
     ![Beispiel für das Konfigurieren von Ressourcen im Advisor](./media/advisor-get-started/advisor-configure-resources.png)
 
-1. Klicken Sie auf die Schaltfläche **Apply** (Anwenden).
+1. Klicken Sie auf die Schaltfläche **Übernehmen**.
 
 ## <a name="configure-low-usage-vm-recommendation"></a>Empfehlung für das Konfigurieren von VMs mit geringer Auslastung
 

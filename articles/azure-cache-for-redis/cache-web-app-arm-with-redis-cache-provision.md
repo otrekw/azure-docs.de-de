@@ -7,12 +7,12 @@ ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 8e15d51062993bc6e9913d49d3fe67c1a8b9cd03
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 11c854491ab030394eb61964979cb04a5a4b489b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433382"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Erstellen einer Web-App und eines Azure Cache for Redis mithilfe einer Vorlage
 
@@ -20,7 +20,7 @@ ms.locfileid: "74122638"
 
 In diesem Thema erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage erstellen, die eine Azure Web-App mit einem Azure Cache for Redis bereitstellt. Sie erfahren, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
-Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md). Weitere Informationen zur JSON-Syntax und den Eigenschaften für Cacheressourcentypen finden Sie unter [Microsoft.Cache-Ressourcentypen](/azure/templates/microsoft.cache/allversions).
+Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure-Ressourcen-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md). Weitere Informationen zur JSON-Syntax und den Eigenschaften für Cacheressourcentypen finden Sie unter [Microsoft.Cache resource types](/azure/templates/microsoft.cache/allversions) (Microsoft.Cache-Ressourcentypen).
 
 Die vollständige Vorlage finden Sie unter [Web-App mit Azure Cache for Redis-Vorlage](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
 
@@ -32,7 +32,7 @@ In dieser Vorlage stellen Sie Folgendes bereit:
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
 
-[![Bereitstellen in Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
+[![In Azure bereitstellen](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters-to-specify"></a>Anzugebende Parameter
 [!INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
@@ -40,7 +40,7 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Variablen für Namen
-Diese Vorlage verwendet Variablen für die Erstellung von Namen für die Ressourcen. Sie nutzt die [uniqueString](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) -Funktion, um einen Wert basierend auf der Ressourcengruppen-ID zu erstellen.
+Diese Vorlage verwendet Variablen für die Erstellung von Namen für die Ressourcen. Sie nutzt die [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) -Funktion, um einen Wert basierend auf der Ressourcengruppen-ID zu erstellen.
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",

@@ -13,12 +13,12 @@ ms.devlang: rest-api
 ms.topic: quickstart
 ms.date: 06/10/2019
 ms.author: jingwang
-ms.openlocfilehash: 6e46965442e3f95c98a7d55a645b237c22740ff4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: bfe786405ad32f68af33fcea1131fe856c9f38d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929833"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440053"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Schnellstart: Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API
 
@@ -494,7 +494,7 @@ Hier ist die Beispielausgabe:
 Verwenden Sie Azure Storage-Explorer, um zu überprüfen, ob die Datei wie von Ihnen beim Erstellen der Pipelineausführung angegeben von „inputPath“ nach „outputPath“ kopiert wird.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die Data Factory, die Sie in diesem Tutorial erstellt haben.
+Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwei Arten bereinigt werden. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) einschließlich aller darin enthaltenen Ressourcen löschen. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die Data Factory, die Sie in diesem Tutorial erstellt haben.
 
 Führen Sie den folgenden Befehl aus, um die gesamte Ressourcengruppe zu löschen:
 ```powershell

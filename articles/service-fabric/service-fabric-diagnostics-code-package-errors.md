@@ -1,25 +1,16 @@
 ---
-title: Diagnostizieren von häufigen Fehlern im Zusammenhang mit Codepaketen mit Service Fabric | Microsoft-Dokumentation
+title: Diagnostizieren von häufigen Fehlern im Zusammenhang mit Codepaketen mit Service Fabric
 description: Beheben von häufigen Fehlern im Zusammenhang mit Codepaketen mit Azure Service Fabric
-services: service-fabric
-documentationcenter: .net
 author: grzuber
-manager: gkhanna
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/09/2019
 ms.author: grzuber
-ms.openlocfilehash: 320a55e8b14648b1d7e256855582ab31846a63cf
-ms.sourcegitcommit: a6873b710ca07eb956d45596d4ec2c1d5dc57353
+ms.openlocfilehash: 344fef70522240da2236a020c96308c472c9c545
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68249217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463098"
 ---
 # <a name="diagnose-common-code-package-errors-by-using-service-fabric"></a>Diagnostizieren von häufigen Fehlern im Zusammenhang mit Codepaketen mit Service Fabric
 
@@ -58,7 +49,7 @@ Exitcode | BESCHREIBUNG
 
 ## <a name="other-common-error-codes-and-their-potential-fixes"></a>Weitere häufige Fehlercodes und deren potenzielle Korrekturen
 
-Exitcode | Hexadezimalwert | Kurzbeschreibung | Grundursache | Mögliche Lösung
+Exitcode | Hexadezimalwert | Kurze Beschreibung | Grundursache | Mögliche Lösung
 --------- | --------- | ----------------- | ---------- | -------------
 3221225794 | 0xc0000142 | STATUS_DLL_INIT_FAILED | Dieser Fehler bedeutet manchmal, dass der Computer über keinen Desktopheapspeicher mehr verfügt. Diese Ursache ist besonders wahrscheinlich, wenn zahlreiche Prozesse Ihrer Anwendung auf dem Knoten ausgeführt werden. | Wenn Ihr Programm so konfiguriert ist, dass es nicht auf „STRG+C“-Signale antwortet, können Sie die Einstellung **EnableActivateNoWindow** im Clustermanifest aktivieren. Wenn Sie diese Einstellung aktivieren, wird das Codepaket ohne ein GUI-Fenster ausgeführt, und es werden keine „STRG+C“-Signale empfangen. Durch diese Aktion wird auch die Menge des Desktopheapspeichers reduziert, den jeder Prozess beansprucht. Sie können die Größe des Desktopheaps Ihres Knotens erhöhen, wenn Ihr Codepaket „STRG+C“-Signale empfangen muss.
 3762504530 | 0xe0434352 | – | Dieser Wert stellt einen Fehlercode für einen Ausnahmefehler von verwaltetem Code (also .NET) dar. | Dieser Exitcode gibt an, dass Ihre Anwendung eine Ausnahme ausgelöst hat, die nicht verarbeitet wurde und den Prozess beendet hat. Debuggen Sie als ersten Schritt bei der Ermittlung des Auslösers dieses Fehlers Ihre Anwendungsprotokolle und Absturzabbilder.

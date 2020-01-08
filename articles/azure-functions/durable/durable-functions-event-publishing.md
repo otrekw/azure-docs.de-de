@@ -3,12 +3,12 @@ title: Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 description: Erfahren Sie, wie Sie eine automatische Veröffentlichung in Azure Event Grid für Durable Functions konfigurieren.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: f0fbb46320b896008b6a1343357f016a9f57b0fe
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d1960f0e8d249ac77f3c64e18b332a3d55d5180
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231447"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613124"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Veröffentlichungen von Durable Functions in Azure Event Grid (Vorschau)
 
@@ -86,7 +86,7 @@ Fügen Sie `eventGridTopicEndpoint` und `eventGridKeySettingName` einer `durable
 
 Die möglichen Konfigurationseigenschaften von Azure Event Grid finden Sie in der [host.json-Dokumentation](../functions-host-json.md#durabletask). Nach dem Konfigurieren der Datei `host.json` sendet die Funktions-App Lebenszyklusereignisse an das Event Grid-Thema. Dies funktioniert, wenn Sie die Funktions-App lokal und in Azure ausführen.
 
-Legen Sie die App-Einstellung für den Schlüssel des Themas in der Funktions-App und in der Datei `local.setting.json` fest. Die folgende JSON-Datei dient als Beispiel für die Datei `local.settings.json` für lokales Debuggen. Ersetzen Sie `<topic_key>` durch den Schlüssel für das Thema.  
+Legen Sie die App-Einstellung für den Schlüssel des Themas in der Funktions-App und in der Datei `local.settings.json` fest. Die folgende JSON-Datei dient als Beispiel für die Datei `local.settings.json` für lokales Debuggen. Ersetzen Sie `<topic_key>` durch den Schlüssel für das Thema.  
 
 ```json
 {
@@ -143,7 +143,7 @@ public static void Run(JObject eventGridEvent, ILogger log)
 }
 ```
 
-Wählen Sie `Add Event Grid Subscription` aus. Durch diesen Vorgang wird dem erstellten Event Grid-Thema ein Event Grid-Abonnement hinzugefügt. Weitere Informationen finden Sie unter [Begriffe in Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts).
+Wählen Sie `Add Event Grid Subscription`aus. Durch diesen Vorgang wird dem erstellten Event Grid-Thema ein Event Grid-Abonnement hinzugefügt. Weitere Informationen finden Sie unter [Begriffe in Azure Event Grid](https://docs.microsoft.com/azure/event-grid/concepts).
 
 ![Wählen Sie den Link zum Event Grid-Trigger aus.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
 
@@ -262,7 +262,7 @@ Wenn Sie `Sample_HttpStart` mit Postman oder in Ihrem Browser aufrufen, beginnt 
 In der folgenden Liste wird das Schema für Lebenszyklusereignisse erläutert:
 
 * **`id`** : Eindeutiger Bezeichner für das Event Grid-Ereignis.
-* **`subject`** : Pfad zum Ereignisbetreff. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
+* **`subject`** : Pfad zum Ereignisbetreff. [https://login.microsoftonline.com/consumers/](`durable/orchestrator/{orchestrationRuntimeStatus}`). `{orchestrationRuntimeStatus}` kann `Running`, `Completed`, `Failed` und `Terminated` sein.  
 * **`data`** : Spezielle Durable Functions-Parameter.
   * **`hubName`** : Name des [TaskHub](durable-functions-task-hubs.md).
   * **`functionName`** : Name der Orchestratorfunktion.

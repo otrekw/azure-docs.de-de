@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fd72aea9087b03dcd5c6072676e8f98e7cfc1ee
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8be047caf8631cda4e48b7bf10987db616a9b86f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816445"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608607"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -48,7 +48,7 @@ Diese Funktion wird derzeit nicht unterstützt. Wenn für den Zugriff auf die Re
 Es kann vorkommen, dass eine Organisation Benutzer der B2B-Zusammenarbeit hinzufügen, diese bei Bedarf für Anwendungen bereitstellen und erst dann die Einladungen senden möchte. Sie können die Einladungs-API für die B2B-Zusammenarbeit verwenden, um den Onboardingworkflow benutzerdefiniert anzupassen.
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Gastobjekte sind in der globalen Adressliste (GAL) Ihrer Organisation standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter [Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
+Ja. Gastobjekte sind in der globalen Adressliste (GAL) Ihrer Organisation standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter [Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>Kann ich einen Gastbenutzer in einen eingeschränkten Administrator konvertieren?
 Absolut. Weitere Informationen finden Sie unter [Zuweisen einer Rolle für Gastbenutzer](add-guest-to-role.md).
@@ -117,7 +117,7 @@ Wir heben die Unterschiede zwischen der B2B- und B2C-Zusammenarbeit (Business-to
 Alle in Azure AD integrierten Anwendungen unterstützen Azure B2B-Gastbenutzer, aber sie müssen einen als Mandant eingerichteten Endpunkt verwenden, um Gastbenutzer zu authentifizieren. Sie müssen möglicherweise auch [die Ansprüche im SAML-Token anpassen](claims-mapping.md), das ausgegeben wird, wenn sich ein Gastbenutzer bei der App authentifiziert. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Kann Multi-Factor Authentication für B2B-Gastbenutzer erzwungen werden, wenn unsere Partner nicht über Multi-Factor Authentication verfügen?
-Ja. Weitere Informationen finden Sie unter [Conditional Access for B2B collaboration users (Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit)](conditional-access.md).
+Ja. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).
 
 ### <a name="in-sharepoint-you-can-define-an-allow-or-deny-list-for-external-users-can-we-do-this-in-azure"></a>In SharePoint können Listen für das Zulassen und Ablehnen des Zugriffs durch externe Benutzer definiert werden. Ist dies in Azure möglich?
 Ja. Die Azure AD B2B-Zusammenarbeit unterstützt Zulassungs- und Verweigerungslisten. 

@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585391"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645088"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Benutzerdefinierte Regeln für Web Application Firewall v2 in Azure Application Gateway
 
@@ -29,7 +29,7 @@ Verschiedene Abgleichsbedingungen innerhalb der gleichen Regel sind immer durch 
 Wenn Sie zwei Bedingungen mit **oder** verknüpfen möchten, müssen sich diese in unterschiedlichen Regeln befinden. Beispiel: Blockieren des Datenverkehrs einer bestimmten IP-Adresse oder Blockieren von Datenverkehr bei Verwendung eines bestimmten Browsers.
 
 > [!NOTE]
-> Es können maximal 100 benutzerdefinierte WAF-Regeln verwendet werden. Weitere Informationen zu Application Gateway-Grenzwerten finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../../azure-subscription-service-limits.md#application-gateway-limits).
+> Es können maximal 100 benutzerdefinierte WAF-Regeln verwendet werden. Weitere Informationen zu Application Gateway-Grenzwerten finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 In benutzerdefinierten Regeln werden genau wie in den Kernregelsätzen auch reguläre Ausdrücke unterstützt. Entsprechende Beispiele finden Sie unter [Create and use Web Application Firewall custom rules](create-custom-waf-rules.md) (Erstellen und Verwenden benutzerdefinierter Web Application Firewall-Regeln) in den Beispielen 3 und 5.
 
@@ -126,7 +126,7 @@ Muss einer der folgenden Operatoren sein:
 
 - IPMatch: Wird nur verwendet, wenn die Abgleichsvariable *RemoteAddr* lautet.
 - Equals: Die Eingabe entspricht dem Abgleichswert (MatchValue).
-- Contains
+- Enthält
 - LessThan
 - GreaterThan
 - LessThanOrEqual
@@ -145,7 +145,7 @@ Negiert die aktuelle Bedingung.
 Eine Zeichenfolgenliste mit Namen von Transformationen, die vor dem Abgleich ausgeführt werden sollen. Mögliche Transformationen:
 
 - Kleinbuchstaben
-- Trim
+- Glätten
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
@@ -175,7 +175,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | AD | Andorra |
 | AE | Vereinigte Arabische Emirate|
 | AF | Afghanistan|
-| AG | Antigua und Barbuda|
+| Verfügbarkeitsgruppe | Antigua und Barbuda|
 | AL | Albanien|
 | AM | Armenien|
 | AO | Angola|
@@ -183,7 +183,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | AS | Amerikanisch-Samoa|
 | AT | Österreich|
 | AU | Australien|
-| AZ | Aserbaidschan|
+| RP | Aserbaidschan|
 | BA | Bosnien und Herzegowina|
 | BB | Barbados|
 | BD | Bangladesch|
@@ -202,7 +202,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | BW | Botsuana|
 | BY | Belarus|
 | BZ | Belize|
-| CA | Kanada|
+| CA | Canada|
 | CD | Demokratische Republik Kongo|
 | CF | Zentralafrikanische Republik|
 | CH | Schweiz|
@@ -229,7 +229,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | FJ | Fidschi|
 | FM | Föderierte Staaten von Mikronesien|
 | BV | Frankreich|
-| GB | Vereinigtes Königreich|
+| GB | United Kingdom|
 | GE | Georgien|
 | GF | Französisch-Guayana|
 | GH | Ghana|
@@ -245,7 +245,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | HU | Ungarn|
 | id | Indonesien|
 | IE | Irland|
-| IL | Israel|
+| BY | Israel|
 | IN | Indien|
 | IQ | Irak|
 | IR | Islamische Republik Iran|
@@ -262,7 +262,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | KP | Demokratische Volksrepublik Korea|
 | KR | Republik Korea|
 | KW | Kuwait|
-| KY | Kaimaninseln|
+| HE | Kaimaninseln|
 | KZ | Kasachstan|
 | LA | Demokratische Volksrepublik Laos|
 | LB | Libanon|
@@ -274,13 +274,13 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | LU | Luxemburg|
 | LV | Lettland|
 | LY | Libyen |
-| MA | Marokko|
+| NI | Marokko|
 | MD | Republik Moldau|
 | MG | Madagaskar|
 | MK | Nordmazedonien|
 | ML | Mali|
 | MM | Myanmar|
-| MN | Mongolei|
+| BB | Mongolei|
 | MO | Macau (SAR)|
 | MQ | Martinique|
 | MR | Mauretanien|
@@ -295,7 +295,7 @@ Wenn Sie den Geomatch-Operator verwenden, kann es sich bei den Selektoren um ein
 | NG | Nigeria|
 | NI | Nicaragua|
 | NL | Niederlande|
-| NO | Norwegen|
+| Nein | Norwegen|
 | NP | Nepal|
 | NR | Nauru|
 | NZ | Neuseeland|

@@ -2,19 +2,15 @@
 title: Migrieren von OMS-Updatebereitstellungen zu Azure
 description: In diesem Artikel wird beschrieben, wie Sie Ihre vorhandenen OMS-Updatebereitstellungen zu Azure migrieren.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 08b3f11f3e44c6580df9942aab2a890115c79ba3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2660e4a348d2ffd71f912ff80c36a5a9a3c9fe88
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849495"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417778"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Migrieren von OMS-Updatebereitstellungen zu Azure
 
@@ -57,9 +53,9 @@ Der Bereich **Neue Updatebereitstellung** wird geöffnet. Geben Sie Werte für d
 
 Wählen Sie für zu aktualisierende Computer die gespeicherte Suche aus, die von der vorhandenen OMS-Bereitstellung verwendet wird.
 
-| Eigenschaft | Description |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-|NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
+|Name |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 |Betriebssystem| Wählen Sie zwischen **Linux** und **Windows** aus.|
 |Zu aktualisierende Computer |Wählen Sie eine gespeicherte Suche oder eine importierte Gruppe aus, oder wählen Sie im Dropdownmenü „Computer“ und dann einzelne Computer aus. Bei Auswahl von **Computer** wird die Bereitschaft des Computers in der Spalte **BEREITSCHAFT DES UPDATE-AGENTS** angezeigt.</br> Weitere Informationen zu den verschiedenen Methoden zum Erstellen von Computergruppen in Azure Monitor-Protokollen finden Sie unter [Computergruppen in Azure Monitor-Protokollen](../azure-monitor/platform/computer-groups.md). |
 |Updateklassifizierungen|Wählen Sie alle benötigten Updateklassifizierungen aus. CentOS unterstützt dies nicht standardmäßig.|

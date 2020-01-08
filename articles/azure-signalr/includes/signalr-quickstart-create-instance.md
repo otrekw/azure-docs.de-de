@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/14/2018
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: ac77f0b6a1d90fd78db64618c1e03ade198a67c0
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 0a228f6d8b4f72acd3783f27bf192fe6bd13f988
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392140"
 ---
 ## <a name="create-an-azure-signalr-service-instance"></a>Erstellen einer Instanz des Azure SignalR-Diensts
 
@@ -26,14 +26,14 @@ Ihre Anwendung stellt eine Verbindung mit einer Instanz des SignalR-Diensts in A
 
 1. Geben Sie folgende Einstellungen ein.
 
-    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                        |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Ressourcenname** | Global eindeutiger Name | Der Name, der die neue Instanz des SignalR -Diensts identifiziert. Gültige Zeichen sind `a-z`, `0-9` und `-`.  | 
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Instanz des SignalR-Diensts erstellt wird. | 
-    | **[Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Der Name für die neue Ressourcengruppe, in der Ihre Instanz des SignalR-Diensts erstellt werden soll. | 
+    | **[Ressourcengruppe](../../azure-resource-manager/management/overview.md)** |  myResourceGroup | Der Name für die neue Ressourcengruppe, in der Ihre Instanz des SignalR-Diensts erstellt werden soll. | 
     | **Location** | USA (Westen) | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe aus. |
     | **Preisstufe** | Kostenlos | Testen Sie den Azure SignalR-Dienst kostenlos. |
-    | **Einheitenanzahl** |  Nicht zutreffend | Die Einheitenanzahl gibt an, wie viele Verbindungen Ihre Instanz des SignalR-Diensts akzeptieren kann. Dies kann nur im Tarif „Standard“ konfiguriert werden. |
+    | **Einheitenanzahl** |  Nicht verfügbar | Die Einheitenanzahl gibt an, wie viele Verbindungen Ihre Instanz des SignalR-Diensts akzeptieren kann. Dies kann nur im Tarif „Standard“ konfiguriert werden. |
     | **Dienstmodus** |  Serverlos | Zur Verwendung mit Azure Functions oder der REST-API. |
 
     ![Erstellen des SignalR-Diensts](../media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-create.png)

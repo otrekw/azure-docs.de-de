@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200ba1e227c0e2e116e368a65ce7f2c4d42661f2
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 2f2efaceefc53b3c0b5dfd899baf9fd30fdf9a76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430055"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-azure-cli"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer mithilfe der Azure-Befehlszeilenschnittstelle
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Verwaltete Dienstidentitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
+Verwaltete Identitäten für Azure-Ressourcen stellen für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory bereit. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle die folgenden Vorgänge für verwaltete Identitäten für Azure-Ressourcen auf einer Azure-VM ausführen können:
 
@@ -61,7 +61,7 @@ Zum Erstellen eines virtuellen Azure-Computers, auf dem die systemseitig zugewie
    az login
    ```
 
-2. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#terminology) für das Einschließen und Bereitstellen des virtuellen Computers und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az-group-create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
+2. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/management/overview.md#terminology) für das Einschließen und Bereitstellen des virtuellen Computers und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az-group-create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -117,13 +117,13 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnit
 
 Für die Zuweisung einer benutzerseitig zugewiesenen Identität an einen virtuellen Computer während dessen Erstellung benötigt Ihr Konto die Rollenzuweisungen [Mitwirkender für virtuelle Computer](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) und [Operator für verwaltete Identität](/azure/role-based-access-control/built-in-roles#managed-identity-operator). Es sind keine weiteren Azure AD-Verzeichnisrollenzuweisungen erforderlich.
 
-1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](/cli/azure/group/#az-group-create) eine [Ressourcengruppe](~/articles/azure-resource-manager/resource-group-overview.md#terminology) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. :
+1. Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie verwenden möchten. Erstellen Sie mit [az group create](/cli/azure/group/#az-group-create) eine [Ressourcengruppe](~/articles/azure-resource-manager/management/overview.md#terminology) zum Einschließen und Bereitstellen Ihrer vom Benutzer zugewiesenen verwalteten Identität. Ersetzen Sie die Parameterwerte `<RESOURCE GROUP>` und `<LOCATION>` durch Ihre eigenen Werte. decodiert werden:
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
    ```
 
-2. Erstellen Sie mit [az identity create](/cli/azure/identity#az-identity-create) eine vom Benutzer zugewiesene verwaltete Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene verwaltete Identität erstellt wird, und der Parameter `-n` gibt den Namen an.    
+2. Erstellen Sie mit [az identity create](/cli/azure/identity#az-identity-create) eine benutzerseitig zugewiesene verwaltete Identität.  Der Parameter `-g` gibt die Ressourcengruppe an, in der die vom Benutzer zugewiesene verwaltete Identität erstellt wird, und der Parameter `-n` gibt den Namen an.    
     
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 

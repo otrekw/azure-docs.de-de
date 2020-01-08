@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 0196d39f5b131bc54e00412beb7fdf10b7352336
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 4e01dbb0036761215a9a05c464b20ead340a2e3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178274"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423761"
 ---
 ### <a name="authenticationresult-properties-in-msalnet"></a>AuthenticationResult-Eigenschaften in MSAL.NET
 
@@ -62,7 +62,7 @@ Die `IAccount`-Schnittstelle stellt Informationen über ein einziges Konto dar. 
 
 Sobald das `AuthenticationResult` von MSAL zurückgegeben wurde (in `result`), müssen Sie es zum HTTP-Autorisierungsheader hinzufügen, bevor der Aufruf zum Zugriff auf die geschützte Web-API erfolgt.
 
-```CSharp
+```csharp
 httpClient = new HttpClient();
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 

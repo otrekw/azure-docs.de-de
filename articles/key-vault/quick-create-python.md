@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: aeac3b5ab1894e4392152ff255d582c338ceff18
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972424"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75527925"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Schnellstart: Azure Key Vault-Clientbibliothek für Python
 
@@ -119,7 +119,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Objektmodell
 
-Mit der Azure Key Vault-Clientbibliothek für Python können Sie Schlüssel und zugehörige Objekte wie z. B. Zertifikate und Geheimnisse verwalten. In den folgenden Codebeispielen wird gezeigt, wie Sie einen Client erstellen, ein Geheimnis festlegen, ein Geheimnis abrufen und ein Geheimnis löschen.
+Mit der Azure Key Vault-Clientbibliothek für Python können Sie Schlüssel und zugehörige Objekte wie z. B. Zertifikate und Geheimnisse verwalten. In den folgenden Codebeispielen wird gezeigt, wie Sie einen Client erstellen und ein Geheimnis festlegen, abrufen und löschen.
 
 Die gesamte Konsolen-App steht unter https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app zur Verfügung.
 
@@ -142,7 +142,7 @@ Die Authentifizierung bei Ihrem Schlüsseltresor und die Erstellung eines Schlü
 ```python
 credential = DefaultAzureCredential()
 
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 ```
 
 ### <a name="save-a-secret"></a>Speichern eines Geheimnisses
@@ -150,7 +150,7 @@ client = SecretClient(vault_endpoint=KVUri, credential=credential)
 Nachdem Ihre Anwendung authentifiziert wurde, können Sie Ihrem Schlüsseltresor mithilfe der client.SetSecret-Methode ein Geheimnis hinzufügen.](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) Hierzu benötigen Sie einen Namen für das Geheimnis. In diesem Beispiel verwenden wir „mySecret“.  
 
 ```python
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 ```
 
 Mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) können Sie sich vergewissern, dass das Geheimnis festgelegt wurde:
@@ -174,7 +174,7 @@ Ihr Geheimnis ist jetzt als `retrieved_secret.value` gespeichert.
 Abschließend löschen wir das Geheimnis mithilfe der [client.DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync)-Methode aus dem Schlüsseltresor.
 
 ```python
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 ```
 
 Sie können sich mithilfe des Befehls [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) vergewissern, dass das Geheimnis entfernt wurde:
@@ -203,37 +203,37 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-keyVaultName = os.environ["KEY_VAULT_NAME"];
-KVUri = "https://" + keyVaultName + ".vault.azure.net";
+keyVaultName = os.environ["KEY_VAULT_NAME"]
+KVUri = "https://" + keyVaultName + ".vault.azure.net"
 
 credential = DefaultAzureCredential()
-client = SecretClient(vault_endpoint=KVUri, credential=credential)
+client = SecretClient(vault_url=KVUri, credential=credential)
 
-secretName = "mySecret";
+secretName = "mySecret"
 
-print("Input the value of your secret > ");
-secretValue = raw_input();
+print("Input the value of your secret > ")
+secretValue = raw_input()
 
-print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...");
+print("Creating a secret in " + keyVaultName + " called '" + secretName + "' with the value '" + secretValue + "` ...")
 
-client.set_secret(secretName, secretValue);
+client.set_secret(secretName, secretValue)
 
-print(" done.");
+print(" done.")
 
-print("Forgetting your secret.");
-secretValue = "";
-print("Your secret is '" + secretValue + "'.");
+print("Forgetting your secret.")
+secretValue = ""
+print("Your secret is '" + secretValue + "'.")
 
-print("Retrieving your secret from " + keyVaultName + ".");
+print("Retrieving your secret from " + keyVaultName + ".")
 
 retrieved_secret = client.get_secret(secretName)
 
-print("Your secret is '" + retrieved_secret.value + "'.");
-print("Deleting your secret from " + keyVaultName + " ...");
+print("Your secret is '" + retrieved_secret.value + "'.")
+print("Deleting your secret from " + keyVaultName + " ...")
 
-client.delete_secret(secretName);
+client.delete_secret(secretName)
 
-print(" done.");
+print(" done.")
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

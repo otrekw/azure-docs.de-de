@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 0f55f3ce4856e7b6eccf665faaa1b1fa45b84b58
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 49dc69eb73bd19509b5e14c5a4976cfa7208545a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72302308"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392302"
 ---
 **Umfang und Aufbewahrung der Datensammlung** 
 
@@ -33,7 +33,7 @@ ms.locfileid: "72302308"
 | Free-Tarif  | 10 | Dieser Grenzwert kann nicht erhöht werden. |
 | Alle anderen Tarife | Keine Begrenzung | Sie sind durch die Anzahl der Ressourcen innerhalb einer Ressourcengruppe und die Anzahl der Ressourcengruppen pro Abonnement eingeschränkt. |
 
-**Azure-Portal**
+**Azure portal**
 
 | Category | Einschränkungen | Kommentare |
 |:---|:---|:---|
@@ -62,7 +62,6 @@ ms.locfileid: "72302308"
 |:---|:---|:---|
 | Maximale Anzahl von Spalten in einer Tabelle         | 500 | |
 | Maximale Anzahl an Zeichen für einen Spaltennamen | 500 | |
-| Verfügbare Regionen | USA, Westen-Mitte | Sie können derzeit keine neuen Arbeitsbereiche in dieser Region erstellen, da deren Kapazitäten vorübergehend ausgeschöpft sind. Diese Einschränkung soll bis Ende November 2019 angegangen werden. |
 | Datenexport | Derzeit nicht verfügbar | Verwenden Sie Azure Functions oder Logic Apps, um Daten zu aggregieren und zu exportieren. | 
 
 **Rate für Datenerfassungsvolumen**

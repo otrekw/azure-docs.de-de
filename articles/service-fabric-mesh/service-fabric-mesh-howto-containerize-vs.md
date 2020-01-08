@@ -1,20 +1,16 @@
 ---
-title: Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh | Microsoft-Dokumentation
+title: Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
 description: Fügen Sie Service Fabric Mesh-Containerorchestrierungsunterstützung zu ASP.NET- und Konsolenprojekten hinzu, die .NET-Framework vollständig verwenden.
-services: service-fabric-mesh
-keywords: Packen von Service Fabric Mesh in einen Container
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.service: service-fabric-mesh
-manager: chakdan
-ms.openlocfilehash: 070d07316c0ff06a45e76936e75cb5345548e78f
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462048"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
 

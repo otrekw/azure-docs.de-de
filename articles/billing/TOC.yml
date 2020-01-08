@@ -3,6 +3,12 @@
 - name: Erläuterungen zur Azure-Abrechnung
   expanded: true
   items:
+    - name: Abrechnungskonten und Bereiche
+      href: billing-view-all-accounts.md
+    - name: Abrechnungskonten für Microsoft-Kundenvereinbarung
+      href: billing-mca-overview.md
+    - name: Abrechnungskonten für Microsoft-Partnervereinbarung
+      href: mpa-overview.md
     - name: Erläuterungen zur Rechnung
       href: billing-understand-your-bill.md
     - name: 'Erläuterungen zur Rechnung: Microsoft-Kundenvereinbarung'
@@ -29,10 +35,6 @@
       href: billing-mpa-invoice-terms-explained.md
     - name: 'Bezahlen Ihrer Rechnung: Microsoft-Kundenvereinbarung'
       href: billing-how-to-pay-bill.md
-    - name: Abrechnungskonten für Microsoft-Kundenvereinbarung
-      href: billing-mca-overview.md
-    - name: Abrechnungskonten für Microsoft-Partnervereinbarung
-      href: mpa-overview.md
 - name: Verwalten von Kosten
   items:
     - name: Vermeiden unerwarteter Kosten
@@ -147,8 +149,6 @@
       href: billing-understand-mca-roles.md
     - name: Verknüpfen der Partner-ID
       href: billing-partner-admin-link-started.md
-    - name: Anzeigen der Abrechnungskonten
-      href: billing-view-all-accounts.md
     - name: Organisieren von Kosten in Rechnungsabschnitten
       href: billing-mca-section-invoice.md
     - name: EA-Aufgaben in Microsoft-Kundenvereinbarung
@@ -216,7 +216,7 @@
     - name: Verknüpfen des Azure AD-Mandanten
       href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
     - name: Grenzen und Kontingente
-      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: Problembehandlung
   items:
     - name: Keine Abonnements gefunden

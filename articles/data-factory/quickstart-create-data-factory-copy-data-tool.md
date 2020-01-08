@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.openlocfilehash: 4ead3472e1706742781cb64a12103f3dec1fd27a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: edf03b663383f10168ee5b78a3ad5f1a9fdac288
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440126"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Schnellstart: Kopieren von Daten mithilfe des Tools zum Kopieren von Daten
 
@@ -54,7 +54,7 @@ In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Data Fac
    - Wählen Sie die Option **Use existing** (Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-   Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+   Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 1. Wählen Sie **V2** als **Version** aus.
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus.
 

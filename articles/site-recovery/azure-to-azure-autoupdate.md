@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/24/2019
 ms.author: rajanaki
-ms.openlocfilehash: 9479ccce534f9c9d48a0aa08d4ea887bc4f30acb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 3a9b0717368fa67f5a7dd477e018a68e048b6740
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451404"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatische Updates von Mobility Service bei der Replikation zwischen Azure-Regionen
 
@@ -347,7 +347,7 @@ $JobsFailedToStart = 0
 $JobsTimedOut = 0
 $Header = @{}
 
-$AzureRMProfile = Get-Module -ListAvailable -Name Az.Accounts | Select Name, Version, Path
+$AzureRMProfile = Get-Module -ListAvailable -Name AzureRM.Profile | Select Name, Version, Path
 $AzureRmProfileModulePath = Split-Path -Parent $AzureRMProfile.Path
 Add-Type -Path (Join-Path $AzureRmProfileModulePath "Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
 
@@ -521,7 +521,7 @@ Wenn ein Problem mit den automatischen Updates auftritt, werden Sie mit einer Fe
 
 Wenn Sie keine automatischen Updates aktivieren konnten, finden Sie in den häufigen Problemen und empfohlenen Maßnahmen weitere Informationen finden:
 
-- **Fehler**: Sie verfügen nicht über die Berechtigungen, um ein ausführendes Azure-Konto (Dienstprinzipal) zu erstellen und dem Dienstprinzipal die Rolle „Mitwirkender“ zuzuweisen.
+- **Fehler:** Sie verfügen nicht über die Berechtigungen, um ein ausführendes Azure-Konto (Dienstprinzipal) zu erstellen und dem Dienstprinzipal die Rolle „Mitwirkender“ zuzuweisen.
 
    **Empfohlene Maßnahme:** Achten Sie darauf, dass das angemeldete Konto als Mitwirkender zugewiesen ist, und versuchen Sie es erneut. Im Abschnitt mit den erforderlichen Berechtigungen unter [Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) finden Sie weitere Informationen zum Zuweisen von Berechtigungen.
  
@@ -529,15 +529,15 @@ Wenn Sie keine automatischen Updates aktivieren konnten, finden Sie in den häuf
 
    ![Schaltfläche „Reparieren“ im Site Recovery-Dienst in den Erweiterungsupdateeinstellungen](./media/azure-to-azure-autoupdate/repair.png)
 
-- **Fehler**: Das ausführende Konto verfügt nicht über die Berechtigung zum Zugriff auf die Recovery Services-Ressource.
+- **Fehler:** Das ausführende Konto verfügt nicht über die Berechtigung zum Zugriff auf die Recovery Services-Ressource.
 
     **Empfohlene Maßnahme:** Löschen Sie das Konto, und [erstellen Sie das ausführende Konto neu](https://docs.microsoft.com/azure/automation/automation-create-runas-account). Stellen Sie alternativ sicher, dass das ausführende Automatisierungskonto der Azure Active Directory-Anwendung Zugriff auf die Recovery Services-Ressource hat.
 
-- **Fehler**: Das ausführende Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung. 
+- **Fehler:** Das ausführende Konto wurde nicht gefunden. Eine der folgenden Komponenten wurde gelöscht oder nicht erstellt – Azure Active Directory-Anwendung, Dienstprinzipal, Rolle, Automation-Zertifikatasset, Automation-Verbindungsasset – oder der Fingerabdruck im Zertifikat ist nicht identisch mit dem der Verbindung. 
 
     **Empfohlene Maßnahme:** Löschen Sie das Konto, und [erstellen Sie das ausführende Konto neu](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
--  **Fehler**: Das vom Automatisierungskonto verwendete Zertifikat für das ausführende Azure-Konto wird bald ablaufen. 
+-  **Fehler:** Das vom Automatisierungskonto verwendete Zertifikat für das ausführende Azure-Konto wird bald ablaufen. 
 
     Das für das ausführende Konto erstellte selbstsignierte Zertifikat läuft ein Jahr nach dem Datum seiner Erstellung ab. Sie können es vor dem Ablaufdatum jederzeit erneuern. Wenn Sie sich für E-Mail-Benachrichtigungen registriert haben, erhalten Sie außerdem E-Mails, wenn Ihrerseits eine Maßnahme erforderlich ist. Dieser Fehler wird zwei Monate vor dem Ablaufdatum angezeigt und in einen kritischen Fehler geändert, wenn das Zertifikat abgelaufen ist. Nach Ablauf des Zertifikats funktioniert die automatische Aktualisierung erst wieder, wenn es erneuert wurde.
 

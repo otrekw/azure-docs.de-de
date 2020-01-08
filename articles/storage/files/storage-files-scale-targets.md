@@ -1,5 +1,5 @@
 ---
-title: Skalierbarkeits- und Leistungsziele für Azure Files | Microsoft-Dokumentation
+title: Skalierbarkeits- und Leistungsziele für Azure Files
 description: Informationen zu den Skalierbarkeits- und Leistungszielen für Azure Files, einschließlich Kapazität, Anforderungsrate sowie Grenzwerte für ein- und ausgehende Bandbreite.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 267a63eba90c74b79078a7c04c1d2d8929cf2a44
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 060b4a8992ab1c48cceb9506b4f556d9098b9be0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615777"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452948"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -24,7 +24,7 @@ Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckt,
 
 Die übergeordnete Ressource einer Azure-Dateifreigabe ist ein Azure-Speicherkonto. Ein Speicherkonto stellt einen Speicherpool in Azure dar, der von mehreren Speicherdiensten, einschließlich Azure Files, zum Speichern von Daten verwendet werden kann. Andere Dienste, die Daten in Speicherkonten speichern, sind Azure Blob Storage, Azure Queue Storage und Azure Table Storage. Die folgenden Ziele gelten für alle Speicherdienste, die Daten in einem Speicherkonto speichern:
 
-[!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+[!INCLUDE [azure-storage-account-limits-standard](../../../includes/azure-storage-account-limits-standard.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

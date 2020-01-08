@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ffcbeb311a91791432bb285b59f5486393ffe4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083074"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386985"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Schnellstart: Integrieren eines Azure-Speicherkontos in CDN
 In dieser Schnellstartanleitung aktivieren Sie das [Azure Content Delivery Network (CDN)](cdn-overview.md) für die Zwischenspeicherung von Inhalten aus Azure Storage. Azure CDN bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hoher Bandbreite. Sie können Blobs und statische Inhalte von Compute-Instanzen auf physischen Knoten in den USA, Europa, Asien, Australien und Südamerika zwischenspeichern.
@@ -66,7 +66,7 @@ Es gibt mehrere Methoden zum Erstellen eines Speicherkontos, einschließlich Azu
     
 4. Verwenden Sie für die restlichen Einstellungen die Werte aus der folgenden Tabelle:
 
-    | Einstellung  | Wert |
+    | Einstellung  | value |
     | -------- | ----- |
     | **Bereitstellungsmodell** | Verwenden Sie den Standardwert. |
     | **Kontoart** | Verwenden Sie den Standardwert. |
@@ -75,7 +75,7 @@ Es gibt mehrere Methoden zum Erstellen eines Speicherkontos, einschließlich Azu
     | **Leistung** | Verwenden Sie den Standardwert. |
     | **Sichere Übertragung erforderlich** | Verwenden Sie den Standardwert. |
     | **Abonnement** | Wählen Sie in der Dropdownliste ein Azure-Abonnement aus. |
-    | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, und geben Sie *my-resource-group-123* als Ressourcengruppennamen ein. Dieser Name muss global eindeutig sein. Sollte er bereits verwendet werden, können Sie die Option **Vorhandenes Element verwenden** und anschließend **my-resource-group-123** in der Dropdownliste auswählen. <br />Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).| 
+    | **Ressourcengruppe** | Klicken Sie auf **Neu erstellen**, und geben Sie *my-resource-group-123* als Ressourcengruppennamen ein. Dieser Name muss global eindeutig sein. Sollte er bereits verwendet werden, können Sie die Option **Vorhandenes Element verwenden** und anschließend **my-resource-group-123** in der Dropdownliste auswählen. <br />Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md#resource-groups).| 
     | **Konfigurieren virtueller Netzwerke** | Verwenden Sie den Standardwert. |  
     
 5. Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um das Speicherkonto in Ihrem Dashboard zu speichern.
@@ -94,7 +94,7 @@ Sie können Azure CDN direkt über Ihr Speicherkonto für Ihr Speicherkonto akti
     
 2. Erstellen Sie einen neuen Endpunkt, indem Sie die erforderlichen Informationen aus der folgenden Tabelle angeben:
 
-    | Einstellung  | Wert |
+    | Einstellung  | value |
     | -------- | ----- |
     | **CDN-Profil** | Klicken Sie auf **Neu erstellen**, und geben Sie Ihren Profilnamen ein (beispielsweise *my-cdn-profile-123*). Dieser Name muss global eindeutig sein.  |
     | **Preisstufe** | Wählen Sie in der Dropdownliste die Option **Verizon Standard** aus. |

@@ -2,18 +2,18 @@
 title: Dokumentation zu Azure Database Migration Service
 summary: Azure Database Migration Service ermöglicht die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen bei minimaler Ausfallzeit. Der Dienst verwendet den Datenmigrations-Assistenten, um Bewertungsberichte zu generieren, die Empfehlungen bezüglich der Änderungen enthalten, die vor einer Migration erforderlich sind. Wenn Sie bereit sind, den Migrationsprozess zu starten, führt Azure Database Migration Service alle erforderlichen Schritte aus.
 metadata:
-  description: " Erfahren Sie, wie Azure Database Migration Service nahtlose Migrationen von mehreren Datenbankquellen zu Azure-Datenplattformen bei minimaler Ausfallzeit ermöglicht."
+  description: Erfahren Sie, wie Azure Database Migration Service nahtlose Migrationen von mehreren Datenbankquellen zu Azure-Datenplattformen bei minimaler Ausfallzeit ermöglicht.
   author: HJToland3
   ms.author: jtoland
-  ms.date: 10/25/2019
+  ms.date: 12/19/2019
   ms.service: dms
   ms.topic: landing-page
-  ms.openlocfilehash: 1d064144d040a45fbc655879a6869da4ceaa4b79
-  ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+  ms.openlocfilehash: 8ca7f2618c6415dd3dbe22cada35bccb56be50ee
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/04/2019
-  ms.locfileid: "73584011"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75437878"
 landingContent:
 - title: Informationen zu Azure Database Migration Service
   linkLists:
@@ -33,6 +33,10 @@ landingContent:
       url: quickstart-create-data-migration-service-portal.md
     - text: 'Erstellen eines Diensts im Hybridmodus: Portal'
       url: quickstart-create-data-migration-service-hybrid-portal.md
+  - linkListType: reference
+    links:
+    - text: 'Bekannte Probleme: Verwenden des Hybridmodus'
+      url: known-issues-dms-hybrid-mode.md
   - linkListType: video
     links:
     - text: Einführung in Azure Database Migration Service
@@ -65,6 +69,8 @@ landingContent:
     links:
     - text: 'Bekannte Probleme: Onlinemigration zu einer Einzeldatenbank in SQL-Datenbank'
       url: known-issues-azure-sql-online.md
+    - text: 'Bekannte Probleme: Onlinemigration zu einer verwalteten Instanz in SQL-Datenbank'
+      url: known-issues-azure-sql-db-managed-instance-online.md
     - text: Netzwerktopologien für Migrationen vom Typ „Verwaltete SQL-Datenbank-Instanz“
       url: resource-network-topologies.md
     - text: Benutzerdefinierte Rollen für Onlinemigrationen von SQL Server zur verwalteten SQL-Datenbank-Instanz

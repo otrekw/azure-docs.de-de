@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 068747fd51779bd8a20636355a9ce2b032f6151d
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8a371f902703287ed3105ed53a57d6341b9528d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255376"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415110"
 ---
 # <a name="get-help-with-your-system"></a>Abrufen von Hilfe zu Ihrem System
 
@@ -19,13 +19,13 @@ Wenn Sie Hilfe bei der Verwendung von Avere vFXT für Azure benötigen, folgen h
 
 * **Avere vFXT-Problem** – Verwenden Sie das Azure-Portal, um ein Supportticket wie [unten](#open-a-support-ticket-for-your-avere-vfxt) beschrieben für Avere vFXT zu öffnen.
 * **Kontingent** – Wenn ein kontingentsbezogenes Problem vorliegt, f[ordern Sie eine Kontingenterhöhung an](#request-a-quota-increase).
-* **Dokumentation und Beispiele** – Wenn Probleme mit dieser Dokumentation oder Beispielen vorliegen, scrollen Sie zum Ende der Seite mit dem Problem und verwenden Sie den Abschnitt **Feedback**, um nach vorhandenen Problemen zu suchen und bei Bedarf ein neues Problem zu melden.  
+* **Dokumentation und Beispiele** – Wenn Probleme mit dieser Dokumentation oder Beispielen vorliegen, scrollen Sie zum Ende der Seite mit dem Problem und verwenden Sie den Abschnitt **Feedback**, um nach vorhandenen Problemen zu suchen und bei Bedarf ein neues Problem zu melden.
 
 ## <a name="open-a-support-ticket-for-your-avere-vfxt"></a>Öffnen eines Supporttickets für Avere vFXT
 
-Wenn bei der Bereitstellung oder Verwendung von Avere vFXT Probleme auftreten, fordern Sie Hilfe über das Azure-Portal an.  
+Wenn bei der Bereitstellung oder Verwendung von Avere vFXT Probleme auftreten, fordern Sie Hilfe über das Azure-Portal an.
 
-Führen Sie diese Schritte aus, um sicherzustellen, dass Ihr Supportticket mit einer Ressource Ihres Clusters verknüpft ist. Durch die Markierung des Tickets können wir es an die richtige Supportressource weiterleiten. 
+Führen Sie diese Schritte aus, um sicherzustellen, dass Ihr Supportticket mit einer Ressource Ihres Clusters verknüpft ist. Durch die Markierung des Tickets können wir es an die richtige Supportressource weiterleiten.
 
 1. Wählen Sie unter [https://portal.azure.com](https://portal.azure.com) die Option **Ressourcengruppen** aus.
 
@@ -43,7 +43,7 @@ Führen Sie diese Schritte aus, um sicherzustellen, dass Ihr Supportticket mit e
 
     ![Screenshot des neuen Bildschirms für Supportanfragen im Azure-Portal mit der Überschrift „Grundlagen“ und einem Kreis um die Position „Dienst“ Die Schaltfläche „Alle Dienste“ ist aktiviert und das Dropdownmenü zeigt den Wert „Avere vFXT“ an.](media/avere-vfxt-ticket-service.png)
 
-1. Wählen Sie auf der zweiten Seite den Problemtyp und die Kategorie aus, die Ihrem Problem am ehesten entsprechen. Fügen Sie einen kurzen Titel und eine Beschreibung hinzu, die den Zeitpunkt enthält, zu dem das Problem aufgetreten ist. 
+1. Wählen Sie auf der zweiten Seite den Problemtyp und die Kategorie aus, die Ihrem Problem am ehesten entsprechen. Fügen Sie einen kurzen Titel und eine Beschreibung hinzu, die den Zeitpunkt enthält, zu dem das Problem aufgetreten ist.
 
    ![Screenshot des neuen Bildschirms für Supportanfragen mit der Überschrift „Problem“, der viele Felder enthält, die ausgefüllt werden müssen](media/avere-vfxt-ticket-problem.png)
 

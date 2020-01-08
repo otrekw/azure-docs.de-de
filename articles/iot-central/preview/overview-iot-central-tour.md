@@ -3,18 +3,18 @@ title: Kennenlernen der Benutzeroberfläche von Azure IoT Central | Microsoft-Do
 description: Machen Sie sich mit den wichtigsten Bereichen der Benutzeroberfläche von Azure IoT Central vertraut, die Sie zum Erstellen, Verwalten und Nutzen Ihrer IoT-Lösung verwenden.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/21/2019
+ms.date: 12/09/2019
 ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: f8aa467f95bb97c42e726d1392deca53e15df624
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 23deb77b6fda0b3801057d2ae97a740301449e28
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73896488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434899"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-preview-features"></a>Kennenlernen der Benutzeroberfläche von Azure IoT Central (Previewfunktionen)
 
@@ -153,7 +153,7 @@ Auf der Seite „Regeln“ können Sie Regeln basierend auf den Telemetriedaten,
 
 Mit der Analyse können Sie benutzerdefinierte Ansichten auf der Grundlage von Gerätedaten erstellen, um mit Ihrer Anwendung Erkenntnisse zu gewinnen. Weitere Informationen finden Sie im Artikel zum Thema [Erstellen einer Analyse für Ihre Azure IoT Central-Anwendung](howto-create-analytics.md).
 
-### <a name="jobs"></a>Aufträge
+### <a name="jobs"></a>Jobs
 
 > [!div class="mx-imgBorder"]
 > ![Seite „Aufträge“](media/overview-iot-central-tour/jobs-pnp.png)
@@ -168,9 +168,9 @@ Auf der Seite „Aufträge“ können Sie Massenvorgänge für die Geräteverwal
 Auf der Seite „Gerätevorlagen“ können Ersteller die Gerätevorlagen in der Anwendung erstellen und verwalten. In einer Gerätevorlage werden Gerätemerkmale angegeben, z. B.:
 
 * Telemetriedaten, Status und Ereignismessungen
-* Properties
+* Eigenschaften
 * Befehle
-* Ansichten
+* Sichten
 
 Der *Lösungsentwickler* kann auch Formulare und Dashboards für Bediener erstellen, die zum Verwalten von Geräten verwendet werden.
 

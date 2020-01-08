@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: f87e7795416431305141de24497e9760eb03641e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 4ee5f06a7256a2092cfed923cf40c6b74254c4a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484370"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647559"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell
 Diese Schritte zeigen, wie Sie Azure PowerShell-Befehle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden.
@@ -125,7 +125,7 @@ Legen Sie Ihr Azure-Abonnement für die aktuelle Sitzung fest. In diesem Beispie
 <br>
 
 ## <a name="step-5-have-enough-resource-manager-vm-vcpus"></a>Schritt 5: Sicherstellen, dass genügend Resource Manager-VM-vCPUs verfügbar sind
-Vergewissern Sie sich, dass Sie über genügend vCPUs in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres aktuellen virtuellen Netzwerks verfügen. Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+Vergewissern Sie sich, dass Sie über genügend vCPUs in virtuellen Azure Resource Manager-Computern in der Azure-Region Ihrer aktuellen Bereitstellung oder Ihres aktuellen virtuellen Netzwerks verfügen. Mit dem folgenden PowerShell-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
 In diesem Beispiel wird die Verfügbarkeit in der Region **USA, Westen** geprüft. Ersetzen Sie den Regionsnamen im Beispiel durch den Namen Ihrer eigenen Region.
 
@@ -159,7 +159,7 @@ Rufen Sie den Bereitstellungsnamen für den Clouddienst ab. In diesem Beispiel l
 
 Bereiten Sie die virtuellen Computer des Clouddiensts auf die Migration vor. Dabei stehen Ihnen zwei Optionen zur Auswahl.
 
-* **Option 1: Migrieren der virtuellen Computer zu einem über die Plattform erstellten virtuellen Netzwerk**
+* **Option 1: Migrieren der virtuellen Computer zu einem über die Plattform erstellten virtuellen Netzwerk**
 
     Überprüfen Sie zuerst mit dem folgenden Befehl, ob Sie den Clouddienst migrieren können:
 
@@ -175,7 +175,7 @@ Bereiten Sie die virtuellen Computer des Clouddiensts auf die Migration vor. Dab
     Move-AzureService -Prepare -ServiceName $serviceName `
         -DeploymentName $deploymentName -CreateNewVirtualNetwork
     ```
-* **Option 2: Migrieren zu einem vorhandenen virtuellen Netzwerk im Resource Manager-Bereitstellungsmodell**
+* **Option 2: Migrieren zu einem vorhandenen virtuellen Netzwerk im Resource Manager-Bereitstellungsmodell**
 
     In diesem Beispiel werden der Name der Ressourcengruppe auf **myResourceGroup**, der Name des virtuellen Netzwerks auf **myVirtualNetwork** und der Subnetzname auf **mySubNet** festgelegt. Ersetzen Sie die Namen im Beispiel durch die Namen Ihrer eigenen Ressourcen.
 

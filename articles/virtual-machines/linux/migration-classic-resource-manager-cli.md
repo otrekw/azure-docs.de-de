@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 69107052d84f28dfd08f59dec40ea66eca79ecaa
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1ebb1ee5056d3b1e6e85bea43473de5918ddba5c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035778"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645173"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle
 Diese Schritte zeigen, wie Sie Befehle der Azure-Befehlszeilenschnittstelle zum Migrieren von IaaS-Ressourcen (Infrastructure as a Service) aus dem klassischen Bereitstellungsmodell in das Azure Resource Manager-Bereitstellungsmodell verwenden. Für diesen Artikel ist die [klassische Azure CLI](../../cli-install-nodejs.md) erforderlich. Da die Azure CLI nur für Azure Resource Manager-Ressourcen gilt, kann sie nicht für diese Migration verwendet werden.
@@ -69,7 +69,7 @@ Registrieren Sie sich mithilfe des folgenden Befehls beim Migrationsressourcenan
 
     azure provider register Microsoft.ClassicInfrastructureMigrate
 
-Der Abschluss der Registrierung kann bis zu fünf Minuten dauern. Warten Sie daher etwas. Der Genehmigungsstatus kann mithilfe des folgenden Befehls geprüft werden. Stellen Sie sicher, dass der RegistrationState-Wert `Registered` lautet, bevor Sie fortfahren.
+Der Abschluss der Registrierung kann bis zu fünf Minuten dauern. Der Genehmigungsstatus kann mithilfe des folgenden Befehls geprüft werden. Stellen Sie sicher, dass der RegistrationState-Wert `Registered` lautet, bevor Sie fortfahren.
 
     azure provider show Microsoft.ClassicInfrastructureMigrate
 
@@ -84,7 +84,7 @@ Für diesen Schritt müssen in den `arm` -Modus wechseln. Führen Sie dazu den f
 azure config mode arm
 ```
 
-Mit dem folgenden CLI-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-azure-resource-manager).
+Mit dem folgenden CLI-Befehl können Sie die aktuelle Anzahl von vCPUs in Azure Resource Manager überprüfen. Weitere Informationen zu vCPU-Kontingenten finden Sie unter [Grenzwerte und der Azure Resource Manager](../../azure-resource-manager/management/azure-subscription-service-limits.md#limits-and-azure-resource-manager).
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"

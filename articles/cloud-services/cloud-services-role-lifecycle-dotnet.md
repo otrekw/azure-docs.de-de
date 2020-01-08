@@ -3,17 +3,17 @@ title: Behandlung von Lebenszyklusereignissen für Clouddienste | Microsoft-Doku
 description: Erfahren Sie, wie die Lebenszyklusmethoden einer Clouddienstrolle in .NET verwendet werden können.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: fa4eebfa64a296e6830db3730de31ca9b0565678
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0a9c32affc50a6d357d4160e00486c896d762e3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358967"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385812"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
 Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) -Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.
@@ -76,4 +76,7 @@ Sie können die ASP.NET-Lebenszyklusmethoden zusätzlich zu den Methoden der **R
 
 ## <a name="next-steps"></a>Nächste Schritte
 Hier erfahren Sie, wie Sie ein [Clouddienstpaket erstellen](cloud-services-model-and-package.md).
+
+
+
 

@@ -2,14 +2,14 @@
 author: erhopf
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/06/2019
+ms.date: 12/17/2019
 ms.author: erhopf
-ms.openlocfilehash: 0dbfab9b1886b39f166b94447fed8dc6707404bd
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 0f8d0c0b1f65cdbb9ae456d134696f6564078080
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468725"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -107,7 +107,7 @@ ms.locfileid: "74796046"
 
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](~/articles/cognitive-services/Speech-Service/regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
-1. Ersetzen Sie die Zeichenfolge `whatstheweatherlike.wav` durch ihren eigenen Dateinamen.
+1. Ersetzen Sie die Zeichenfolge `whatstheweatherlike.wav` durch Ihren eigenen Dateinamen.
 
 1. Speichern Sie die Änderungen am Projekt.
 
@@ -117,7 +117,7 @@ ms.locfileid: "74796046"
 ## <a name="build-and-run-the-app"></a>Erstellen und Ausführen der App
 
 Drücken Sie F11, oder wählen Sie **Ausführen** > **Debuggen** aus.
-Die ersten 15 Sekunden der Spracheingabe von Ihrer Audiodatei werden erkannt und im Konsolenfenster protokolliert.
+Die ersten 15 Sekunden der Spracheingabe aus Ihrer Audiodatei werden erkannt und im Konsolenfenster protokolliert.
 
    ```text
    Recognizing first result...

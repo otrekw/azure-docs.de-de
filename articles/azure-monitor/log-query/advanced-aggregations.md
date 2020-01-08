@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: f34e71c4e15e3bb09676e366313e90a7261439e5
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 882582191b5794e3978d955dfa9bded294064037
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900442"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398299"
 ---
 # <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Erweiterte Aggregationen in Azure Monitor-Protokollabfragen
 
@@ -187,5 +187,5 @@ Informationen zur Verwendung der [Abfragesprache Kusto](/azure/kusto/query/) mit
 - [Aggregationsfunktionen](aggregations.md)
 - [Erweiterte Aggregationen](advanced-aggregations.md)
 - [JSON und Datenstrukturen](json-data-structures.md)
-- [Verknüpfungen](joins.md)
+- [Joins](joins.md)
 - [Diagramme](charts.md)

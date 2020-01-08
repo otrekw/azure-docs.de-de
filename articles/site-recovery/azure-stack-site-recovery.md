@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 08/05/2019
 ms.author: raynew
-ms.openlocfilehash: 1932221e18241d8a2d921f61375019f969e61912
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 15cd729063545914f791de39a075af9084f72bef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782678"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426568"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>Replizieren virtueller Azure Stack-Computer in Azure
 
@@ -30,18 +30,18 @@ Site Recovery unterstützt Ihre Strategie für Geschäftskontinuität und Notfal
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
-> * **Schritt 1: Vorbereiten virtueller Azure Stack-Computer für die Replikation**. Vergewissern Sie sich, dass die virtuellen Computer die Site Recovery-Anforderungen erfüllen, und bereiten Sie die Installation des Site Recovery-Mobilitätsdiensts vor. Dieser Dienst wird auf jedem virtuellen Computer installiert, den Sie replizieren möchten.
-> * **Schritt 2: Einrichten eines Recovery Services-Tresors**. Richten Sie einen Tresor für Site Recovery ein, und geben Sie an, was Sie replizieren möchten. Site Recovery-Komponenten und -Aktionen werden im Tresor konfiguriert und verwaltet.
-> * **Schritt 3: Einrichten der Quellreplikationsumgebung**. Richten Sie einen Site Recovery-Konfigurationsserver ein. Der Konfigurationsserver ist ein einzelner virtueller Azure Stack-Computer, auf dem alle von Site Recovery benötigten Komponenten ausgeführt werden. Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im Tresor.
+> * **Schritt 1: Vorbereiten virtueller Azure Stack-Computer für die Replikation**. Vergewissern Sie sich, dass die virtuellen Computer die Site Recovery-Anforderungen erfüllen, und bereiten Sie die Installation des Site Recovery-Mobilitätsdiensts vor. Dieser Dienst wird auf jedem virtuellen Computer installiert, den Sie replizieren möchten.
+> * **Schritt 2: Einrichten eines Recovery Services-Tresors**. Richten Sie einen Tresor für Site Recovery ein, und geben Sie an, was Sie replizieren möchten. Site Recovery-Komponenten und -Aktionen werden im Tresor konfiguriert und verwaltet.
+> * **Schritt 3: Einrichten der Quellreplikationsumgebung**. Richten Sie einen Site Recovery-Konfigurationsserver ein. Der Konfigurationsserver ist ein einzelner virtueller Azure Stack-Computer, auf dem alle von Site Recovery benötigten Komponenten ausgeführt werden. Nachdem Sie den Konfigurationsserver eingerichtet haben, registrieren Sie ihn im Tresor.
 > * **Schritt 4: Einrichten der Replikationszielumgebung**. Wählen Sie Ihr Azure-Konto sowie das zu verwendende Azure-Speicherkonto und -Netzwerk aus. Während der Replikation werden Daten der virtuellen Computer in Azure Storage kopiert. Nach dem Failover werden virtuelle Azure-Computer mit dem angegebenen Netzwerk verbunden.
 > * **Schritt 5: Aktivieren der Replikation**. Konfigurieren Sie Replikationseinstellungen, und aktivieren Sie die Replikation für virtuelle Computer. Bei aktivierter Replikation wird der Mobilitätsdienst auf dem virtuellen Computer installiert. Site Recovery führt eine erste Replikation des virtuellen Computers aus, und anschließend beginnt die laufende Replikation.
 > * **Schritt 6: Durchführen eines Notfallwiederherstellungsverfahrens**: Sobald die Replikation betriebsbereit ist, vergewissern Sie sich, dass das Failover erwartungsgemäß funktioniert. Dazu führen Sie ein Testverfahren durch. Zum Einleiten des Testverfahrens führen Sie ein Testfailover in Site Recovery aus. Das Testfailover hat keinerlei Auswirkungen auf Ihre Produktionsumgebung.
 
 Wenn diese Schritte abgeschlossen sind, können Sie anschließend im Bedarfsfall ein vollständiges Failover zu Azure durchführen.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
-![Architecture](./media/azure-stack-site-recovery/architecture.png)
+![Aufbau](./media/azure-stack-site-recovery/architecture.png)
 
 **Location** | **Komponente** |**Details**
 --- | --- | ---
@@ -68,7 +68,7 @@ Zum Einrichten dieses Szenarios benötigen Sie Folgendes:
 **Anforderung** | **Details**
 --- | ---
 **Azure-Abonnementkonto** | Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
-**Azure-Kontoberechtigungen** | Das verwendete Azure-Konto benötigt Berechtigungen für Folgendes:<br/><br/> – Erstellen eines Recovery Service-Tresors<br/><br/> – Erstellen eines virtuellen Computers in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie für das Szenario verwenden<br/><br/> – Schreiben in das angegebene Speicherkonto<br/><br/> Beachten Sie Folgendes:<br/><br/> – Wenn Sie ein Konto erstellen, sind Sie der Administrator Ihres Abonnements und können alle Aktionen durchführen.<br/><br/> – Falls Sie ein vorhandenes Abonnement verwenden und nicht der Administrator sind, müssen Sie mit dem Administrator zusammenarbeiten, damit er Ihnen Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ zuweist.<br/><br/> – Wenn Sie detailliertere Berechtigungen benötigen, lesen Sie [diesen Artikel](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
+**Azure-Kontoberechtigungen** | Das verwendete Azure-Konto benötigt Berechtigungen für Folgendes:<br/><br/> – Erstellen eines Recovery Service-Tresors<br/><br/> – Erstellen eines virtuellen Computers in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie für das Szenario verwenden<br/><br/> – Schreiben in das angegebene Speicherkonto<br/><br/> Beachten Sie dabei Folgendes:<br/><br/> – Wenn Sie ein Konto erstellen, sind Sie der Administrator Ihres Abonnements und können alle Aktionen durchführen.<br/><br/> – Falls Sie ein vorhandenes Abonnement verwenden und nicht der Administrator sind, müssen Sie mit dem Administrator zusammenarbeiten, damit er Ihnen Berechtigungen vom Typ „Besitzer“ oder „Mitwirkender“ zuweist.<br/><br/> – Wenn Sie detailliertere Berechtigungen benötigen, lesen Sie [diesen Artikel](https://docs.microsoft.com/azure/site-recovery/site-recovery-role-based-linked-access-control). 
 **Virtueller Azure Stack-Computer** | Sie benötigen einen virtuellen Azure Stack-Computer im Mandantenabonnement, der als Site Recovery-Konfigurationsserver bereitgestellt wird. 
 
 
@@ -158,7 +158,7 @@ Die IP-Adresse für jeden zu replizierenden Computer finden Sie wie folgt:
 2. Wählen Sie unter **Erste Schritte** die Option „Site Recovery“ aus. Klicken Sie anschließend auf **Infrastruktur vorbereiten**.
 3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
 4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren?** die Option **Nach Azure** aus.
-5. Wählen Sie unter **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus. Wählen Sie dann **OK**aus.
+5. Wählen Sie unter **Sind Ihre Computer virtualisiert?** die Option **Nicht virtualisiert/Andere** aus. Klicken Sie anschließend auf **OK**.
 
     ![Schutzziel](./media/azure-stack-site-recovery/protection-goal.png)
 
@@ -332,7 +332,7 @@ Wenn der primäre Standort wieder betriebsbereit ist, können Sie ein Failback v
         - VHD-Name: copied-3676553984.vhd
 
 5. Verwenden Sie nun Azure Storage-Explorer zum Herunterladen der VHD.
-6. Laden Sie die VHD mithilfe [dieser Schritte](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) in Azure Stack hoch.
+6. Laden Sie die VHD mithilfe [dieser Schritte](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-disks#use-powershell-to-add-multiple-disks-to-a-vm) in Azure Stack hoch.
 7. Fügen Sie die hochgeladenen VHDs im vorhandenen oder neuen virtuellen Computer an.
 8. Stellen Sie sicher, dass der Betriebssystemdatenträger korrekt ist, und starten Sie den virtuellen Computer.
 

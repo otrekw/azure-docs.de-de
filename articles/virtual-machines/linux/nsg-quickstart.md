@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 424dfc1dac21f227869f23e7401a083b06cef1d9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cfcea8c775b2d6a9bee3c078cf67f0a942af5984
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035548"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354048"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure-CLI
 
@@ -92,5 +92,5 @@ Bei hoch verfügbaren Webanwendungen sollten Sie die virtuellen Computer hinter 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Beispiel haben Sie eine einfache Regel erstellt, die HTTP-Datenverkehr zulässt. Informationen zum Erstellen von detaillierteren Umgebungen finden Sie in den folgenden Artikeln:
 
-* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+* [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 * [Was ist eine Netzwerksicherheitsgruppe (NSG)?](../../virtual-network/security-overview.md)

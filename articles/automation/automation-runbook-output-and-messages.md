@@ -2,19 +2,15 @@
 title: Runbookausgabe und -meldungen in Azure Automation
 description: Hier wird beschrieben, wie Ausgaben und Fehlermeldungen von Runbooks in Azure Automation erstellt und abgerufen werden.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849648"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421037"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbookausgabe und -meldungen in Azure Automation
 
@@ -22,11 +18,11 @@ Die meisten Azure Automation-Runbooks besitzen eine Form von Ausgabe. Diese Ausg
 
 Die folgende Tabelle enthält eine kurze Beschreibung der einzelnen Datenströme und erläutert ihr Verhalten im Azure-Portal für veröffentlichte Runbooks und beim [Testen von Runbooks](automation-testing-runbook.md). Ausführlichere Informationen zu den verschiedenen Datenströmen finden Sie in nachfolgenden Abschnitten.
 
-| Datenstrom | BESCHREIBUNG | Veröffentlicht | Test |
+| STREAM | BESCHREIBUNG | Veröffentlicht | Test |
 |:--- |:--- |:--- |:--- |
 | Output |Objekte, die von anderen Runbooks genutzt werden. |Wird in den Auftragsverlauf geschrieben. |Wird im Testausgabebereich angezeigt. |
 | Warnung |Für den Benutzer vorgesehene Warnmeldung. |Wird in den Auftragsverlauf geschrieben. |Wird im Testausgabebereich angezeigt. |
-| Error |Für den Benutzer vorgesehene Fehlermeldung. Anders als bei einer Ausnahme wird das Runbook nach einer Fehlermeldung standardmäßig fortgesetzt. |Wird in den Auftragsverlauf geschrieben. |Wird im Testausgabebereich angezeigt. |
+| Fehler |Für den Benutzer vorgesehene Fehlermeldung. Anders als bei einer Ausnahme wird das Runbook nach einer Fehlermeldung standardmäßig fortgesetzt. |Wird in den Auftragsverlauf geschrieben. |Wird im Testausgabebereich angezeigt. |
 | Ausführlich |Meldungen mit allgemeinen Informationen oder Debuginformationen. |Wird nur in den Auftragsverlauf geschrieben, wenn die ausführliche Protokollierung für das Runbook aktiviert ist. |Wird nur im Testausgabebereich angezeigt, wenn „$VerbosePreference“ im Runbook auf „Continue“ festgelegt ist. |
 | Status |Datensätze, die automatisch vor und nach jeder Aktivität im Runbook generiert werden. Das Runbook sollte nicht versuchen, eigene Statusdatensätze zu erstellen, da diese für einen interaktiven Benutzer vorgesehen sind. |Wird nur in den Auftragsverlauf geschrieben, wenn die Statusprotokollierung für das Runbook aktiviert ist. |Wird nicht im Testausgabebereich angezeigt. |
 | Debuggen |Für einen interaktiven Benutzer vorgesehene Meldungen. Sollte nicht in Runbooks verwendet werden. |Wird nicht in den Auftragsverlauf geschrieben. |Wird nicht im Testausgabebereich angezeigt. |
@@ -172,15 +168,15 @@ In der folgenden Tabelle sind die Einstellungsvariablen, die in Runbooks verwend
 
 | Variable | Standardwert | Gültige Werte |
 |:--- |:--- |:--- |
-| WarningPreference |Weiter |Beenden<br>Weiter<br>SilentlyContinue |
-| ErrorActionPreference |Weiter |Beenden<br>Weiter<br>SilentlyContinue |
-| VerbosePreference |SilentlyContinue |Beenden<br>Weiter<br>SilentlyContinue |
+| WarningPreference |Continue |Beenden<br>Continue<br>SilentlyContinue |
+| ErrorActionPreference |Continue |Beenden<br>Continue<br>SilentlyContinue |
+| VerbosePreference |SilentlyContinue |Beenden<br>Continue<br>SilentlyContinue |
 
 In der folgenden Tabelle wird das Verhalten für die in Runbooks zulässigen Einstellungsvariablenwerte beschrieben.
 
-| Wert | Verhalten |
+| value | Verhalten |
 |:--- |:--- |
-| Weiter |Protokolliert die Meldung und setzt die Ausführung des Runbooks fort. |
+| Continue |Protokolliert die Meldung und setzt die Ausführung des Runbooks fort. |
 | SilentlyContinue |Setzt die Ausführung des Runbooks ohne Protokollierung der Meldung fort. Dieser Wert hat den Effekt, dass die Meldung ignoriert wird. |
 | Beenden |Protokolliert die Meldung und hält das Runbook an. |
 
@@ -190,7 +186,7 @@ In der folgenden Tabelle wird das Verhalten für die in Runbooks zulässigen Ein
 
 Sie können die Details eines Runbookauftrags im Azure-Portal auf der Registerkarte „Aufträge“ eines Runbooks anzeigen. Die Zusammenfassung des Auftrags zeigt die Eingabeparameter und den [Ausgabestream](#output-stream) sowie allgemeine Informationen zum Auftrag und alle aufgetretenen Ausnahmen. Der Verlauf enthält Meldungen aus dem [Ausgabestream](#output-stream), den [Warnungs- und Fehlerdatenströmen](#warning-and-error-streams) sowie dem [ausführlichen Datenstrom](#verbose-stream) und den [Statusdatensätzen](#progress-records), wenn das Runbook zum Protokollieren von ausführlichen Meldungen und Statusdatensätzen konfiguriert ist.
 
-### <a name="windows-powershell"></a>Windows PowerShell
+### <a name="windows-powershell"></a>Windows PowerShell
 
 In Windows PowerShell können Sie Ausgaben und Meldungen mithilfe des Cmdlets [Get-AzureAutomationJobOutput](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjoboutput) aus einem Runbook abrufen. Dieses Cmdlet erfordert die ID des Auftrags und verfügt über einen Stream-Parameter, mit dem der zurückzugebende Datenstrom angegeben wird. Wenn Sie **Any** angeben, werde alle Datenströme für den Auftrag zurückgegeben.
 

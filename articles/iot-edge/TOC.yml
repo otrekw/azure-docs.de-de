@@ -107,7 +107,7 @@
       href: production-checklist.md
     - name: IoT Edge-Glossar
       href: iot-edge-glossary.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Registrieren eines IoT Edge-Geräts
       href: how-to-register-device.md
@@ -123,8 +123,12 @@
           href: how-to-install-iot-edge-windows-server-vm.md
         - name: Virtueller Ubuntu-Computer
           href: how-to-install-iot-edge-ubuntuvm.md
-        - name: kubernetes
+        - name: Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
+        - name: Installieren von Produktionszertifikaten
+          href: how-to-install-production-certificates.md
+        - name: Erstellen von Testzertifikaten
+          href: how-to-create-test-certificates.md
         - name: Aktualisieren der Runtimeversion
           href: how-to-update-iot-edge.md
     - name: Automatische Bereitstellung mit DPS

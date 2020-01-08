@@ -4,15 +4,15 @@ description: Daten zur Kommunikation sind konsolidierte Netzwerk- und Leistungsd
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/03/2018
-ms.openlocfilehash: 5e19c9bd47fe253f9a416b923ec0cb1748682842
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 031a09203ab2ab2bcfcdf4352e975c1374446c25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900587"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365800"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Wire Data 2.0-Lösung (Vorschauversion) in Azure Monitor
 
@@ -99,7 +99,7 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 - Windows 10 1803
 - Windows 10
 - Windows 8.1
-- Windows 8
+- Windows 8
 - Windows 7
 
 #### <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme

@@ -3,19 +3,19 @@ title: Verwenden der Azure-Diagnose (.NET) mit Cloud Services | Microsoft Docs
 description: Verwenden von Azure-Diagnose zum Sammeln von Daten von Azure Cloud Services für Fehlerbehebung, Leistungsmessung, Überwachung, Datenverkehrsanalysen und mehr.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: gwallace
-ms.openlocfilehash: 5f2ec77452b90d4270de043955fc0b443f045d5b
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: d5a4e5ce40726ea36734a0dcf751b79225d5e153
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359689"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361112"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Aktivieren der Azure-Diagnose in Azure Cloud Services
 Hintergrundinformationen über Azure-Diagnose finden Sie unter [Übersicht über Azure-Diagnose](../azure-diagnostics.md) .
@@ -136,7 +136,7 @@ namespace WorkerRole1
     ```powershell
     (Get-AzureServiceAvailableExtension -ExtensionName 'PaaSDiagnostics' -ProviderNamespace 'Microsoft.Azure.Diagnostics').PublicConfigurationSchema | Out-File -Encoding utf8 -FilePath 'WadConfig.xsd'
     ```
-2. Fügen Sie Ihrem Projekt **WorkerRole1** eine XML-Datei hinzu. Klicken Sie dazu mit der rechten Maustaste auf das Projekt **WorkerRole1**, und wählen Sie **Hinzufügen** -> **Neues Element…** -> **Visual C# Elemente**  -> **Daten**  -> **XML Datei** aus. Nennen Sie die Datei "WadExample.xml".
+2. Fügen Sie Ihrem Projekt **WorkerRole1** eine XML-Datei hinzu. Klicken Sie dazu mit der rechten Maustaste auf das Projekt **WorkerRole1**, und wählen Sie **Hinzufügen** -> **Neues Element…** -> **Visual C# Elemente** -> **Daten** -> **XML Datei** aus. Nennen Sie die Datei "WadExample.xml".
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
 3. Ordnen Sie die Datei "WadConfig.xsd" der Konfigurationsdatei zu. Stellen Sie sicher, dass das Editorfenster mit "WadExample.xml" das aktive Fenster ist. Drücken Sie die Taste **F4**, um das Fenster **Eigenschaften** zu öffnen. Klicken Sie im Fenster **Eigenschaften** auf die Eigenschaft **Schemas**. Klicken Sie auf **...** . in the **…** . Klicken Sie in der Eigenschaft **Hinzufügen…** , navigieren Sie zum Speicherort der XSD-Datei, und wählen Sie die Datei "WadConfig.xsd" aus. Klicken Sie auf **OK**.
@@ -201,3 +201,6 @@ Unter [Problembehandlung bei Azure-Diagnose](../azure-diagnostics-troubleshootin
 [Collect Logging Data by Using Azure Diagnostics]: https://msdn.microsoft.com/library/windowsazure/gg433048.aspx
 [Free Trial]: https://azure.microsoft.com/pricing/free-trial/
 [Install and configure Azure PowerShell version 0.8.7 or later]: https://azure.microsoft.com/documentation/articles/install-configure-powershell/
+
+
+

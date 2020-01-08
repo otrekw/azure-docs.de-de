@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/14/2019
 ms.reviewer: vitalyg
-ms.openlocfilehash: 4b0dca1215cfecea5c9943bd27ee8a5c1de45311
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d88df0c7e17d297162a1921021b89f02077c2ac7
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893364"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560384"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -361,7 +361,7 @@ Verwenden Sie diese Art der Stichprobenerstellung, wenn Ihre App häufig das mon
 
 Legen Sie die Samplingrate auf der Seite „Nutzung und geschätzte Kosten“ fest:
 
-![Klicken Sie auf dem Blatt zur Anwendungsübersicht auf „Einstellungen“ > „Kontingent“ > „Stichproben“. Wählen Sie anschließend eine Stichprobenrate aus, und klicken Sie auf „Aktualisieren“.](./media/sampling/04.png)
+![Klicken Sie auf dem Blatt zur Anwendungsübersicht auf „Einstellungen“ > „Kontingent“ > „Stichproben“. Wählen Sie anschließend eine Stichprobenrate aus, und klicken Sie auf „Aktualisieren“.](./media/sampling/data-sampling.png)
 
 Wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorithmus zugehörige Telemetrieelemente bei. So sind Sie beispielsweise in der Lage, in Search die zu einer bestimmten Ausnahme gehörende Anforderung in den Telemetriedaten zu ermitteln. Metrikwerte wie z. B. die Anforderungs- und Ausnahmerate werden korrekt beibehalten.
 
@@ -543,7 +543,7 @@ Befolgen Sie [diese](https://docs.microsoft.com/azure/azure-functions/functions-
         {
             if(somecondition)
             {
-                ((ISupportSampling)item).SamplingPercentage = 100;
+                ((ISupportSampling)telemetry).SamplingPercentage = 100;
             }
         }
       }

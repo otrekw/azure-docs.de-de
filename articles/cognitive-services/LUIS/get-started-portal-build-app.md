@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 55ba025b9174f727a54ce0cd63da11c8661af91c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381986"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Zuerst erstellen Sie die Grundbestandteile einer App, **Absichten** und **Entitäten**. Anschließend testen Sie die App, indem Sie im interaktiven Testbereich eine Beispielbenutzeräußerung eingeben, um die vorhergesagte Absicht zu erhalten.
 
@@ -35,9 +33,9 @@ Das Erstellen einer App ist kostenlos, und es ist kein Azure-Abonnement erforder
 
 1. Konfigurieren Sie die App im Popupfenster mit den folgenden Einstellungen, und wählen Sie dann **Fertig** aus.
 
-   |Einstellungsname| Wert | Zweck|
+   |Einstellungsname| value | Zweck|
    |--|--|--|
-   |NAME|`myEnglishApp`|Eindeutiger Name der LUIS-App<br>required|
+   |Name|`myEnglishApp`|Eindeutiger Name der LUIS-App<br>required|
    |Kultur|**Englisch**|Sprache der Äußerungen von Benutzern, **en-us**<br>required|
    |Beschreibung (optional)|`App made with LUIS Portal`|Beschreibung der App<br>optional|
    |Vorhersageressource (optional) |-  |Nicht auswählen. Sie erhalten von LUIS einen Startschlüssel für die kostenlose Erstellung sowie für 1.000 Vorhersageendpunktanforderungen. |
@@ -53,7 +51,7 @@ Nachdem die LUIS-App erstellt wurde, müssen Sie Absichten erstellen. Absichten 
 
 Die zwei verschiedenen _Absichten_ der App richten sich an den folgenden Absichten aus:
 
-|Absicht|Beispieltext vom Benutzer<br>bezeichnet als _Äußerung_|
+|Intent|Beispieltext vom Benutzer<br>bezeichnet als _Äußerung_|
 |--|--|
 |ApplyForJob|`I want to apply for the new software engineering position in Cairo.`|
 |FindForm|`Where is the job transfer form hrf-123456?`|

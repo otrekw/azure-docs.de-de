@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63e09bacd1ce70f05f04798f092d3eb4b3e36ab5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d55af7354ea7d78263e55872e257a2814ebe4130
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401823"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Hinzufügen von Azure Automation-Ressourcen zu einer Verwaltungslösung (Vorschau)
 > [!NOTE]
@@ -31,7 +31,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den folgenden Inf
 
 - [Erstellen einer Verwaltungslösung]( solutions-creating.md)
 - Struktur einer [Lösungsdatei]( solutions-solution-file.md)
-- [Erstellen von Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md)
+- [Erstellen von Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md)
 
 ## <a name="automation-account"></a>Automation-Konto
 Alle Ressourcen in Azure Automation befinden sich einem [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview).  Wie unter [Log Analytics-Arbeitsbereich und Automation-Konto]( solutions.md#log-analytics-workspace-and-automation-account) beschrieben, ist das Automation-Konto nicht in der Verwaltungslösung enthalten, muss aber vor der Installation der Lösung vorhanden sein.  Ist es nicht verfügbar, schlägt die Installation der Lösung fehl.
@@ -276,7 +276,7 @@ Wenn Sie den Anfangswert für die Variable festlegen, muss er mit dem richtigen 
 | Datentyp | BESCHREIBUNG | Beispiel | Aufgelöst in |
 |:--|:--|:--|:--|
 | string   | Wert in doppelte Anführungszeichen einschließen  | "\"Hello world\"" | "Hello world" |
-| numeric  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |
+| NUMERIC  | Numerische Werte in einfache Anführungszeichen einschließen| "64" | 64 |
 | boolean  | **true** oder **false** in Anführungszeichen einschließen.  Beachten Sie, dass dieser Wert klein geschrieben werden muss. | "true" | true |
 | datetime | Serialisierter Datumswert.<br>Mit dem Cmdlet ConvertTo-Json in PowerShell können Sie diesen Wert für ein bestimmtes Datum generieren.<br>Beispiel: Get-Date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 

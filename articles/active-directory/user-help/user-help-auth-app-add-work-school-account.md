@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: d1d781ee16cd1c78f03b58288bf75e036e38cf00
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267142"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681224"
 ---
 # <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos in der Microsoft Authenticator-App
 
@@ -28,7 +28,7 @@ Wenn Ihre Organisation eine zweistufige Überprüfung verwendet, können Sie Ihr
 
 ## <a name="add-your-work-or-school-account"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos
 
-1. Navigieren Sie auf Ihrem Computer zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/mfasetup).
+1. Navigieren Sie auf Ihrem Computer zur Seite [Zusätzliche Sicherheitsüberprüfung](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1).
 
     >[!Note]
     >Wenn die Seite **Zusätzliche Sicherheitsüberprüfung** nicht angezeigt wird, hat Ihr Administrator möglicherweise die Sicherheitsinformation (Vorschau) aktiviert. Befolgen Sie in diesem Fall die Anweisungen im Abschnitt [Einrichten der Sicherheitsinformation zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md). Ist dies nicht der Fall, bitten Sie den Helpdesk Ihrer Organisation um Unterstützung. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Übersicht über die Sicherheitsinformationen (Vorschau)](user-help-security-info-overview.md).

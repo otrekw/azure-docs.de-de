@@ -1,33 +1,30 @@
 ---
 title: Entwickeln von .NET Standard-Funktionen für Azure Stream Analytics-Aufträge (Vorschau)
 description: Erfahren Sie, wie Sie benutzerdefinierte C#-Funktionen für Stream Analytics-Aufträge schreiben.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-manager: kfile
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0bc59ac3e55466f8ac06a3a8fa9cf08fecbb5ce3
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73024948"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426316"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>Entwickeln von benutzerdefinierten .NET Standard-Funktionen für Azure Stream Analytics-Aufträge (Vorschau)
 
 Azure Stream Analytics bietet eine SQL-ähnliche Abfragesprache zum Durchführen von Transformationen und Berechnungen über Datenströme von Ereignisdaten. Es gibt viele integrierte Funktionen, für einige komplexere Szenarien ist jedoch zusätzliche Flexibilität erforderlich. Mit benutzerdefinierten Funktionen (UDF) in .NET Standard können Sie Ihre eigenen Funktionen in einer beliebigen .NET Standard-Sprache (C#, F# usw.) schreiben, um die Stream Analytics-Abfragesprache zu erweitern. UDFs ermöglichen das Durchführen komplexer mathematischer Berechnungen, das Importieren benutzerdefinierter ML-Modelle mit ML.NET und das Verwenden von benutzerdefinierter eingefügter Logik für die fehlenden Daten. Das UDF-Feature für Stream Analytics-Aufträge befindet sich derzeit in der Vorschauphase und sollte nicht für Produktionsworkloads verwendet werden.
 
 Das .NET-UDF-Feature für Cloudaufträge ist in den folgenden Regionen verfügbar:
-* USA, Westen-Mitte (verfügbar)
-* Europa, Norden (verfügbar)
-* USA, Osten (verfügbar)
-* USA, Westen (Rollout in Kürze)
-* USA, Osten 2 (Rollout in Kürze)
-* Europa, Westen (Rollout in Kürze)
+* USA, Westen-Mitte
+* Nordeuropa
+* East US
+* USA (Westen)
+* USA (Ost) 2
+* Europa, Westen
 
 Wenn Sie dieses Feature in einer anderen Region verwenden möchten, können Sie den [Zugriff anfordern](https://aka.ms/ccodereqregion).
 
@@ -48,12 +45,12 @@ Der Pfad aller UDF-Pakete hat das Format `/UserCustomCode/CLR/*`. Dynamic Link L
 
 |**UDF-Typ (C#)**  |**Azure Stream Analytics-Typ**  |
 |---------|---------|
-|long  |  bigint   |
+|long  |  BIGINT   |
 |double  |  double   |
-|Zeichenfolge  |  nvarchar(max)   |
+|string  |  nvarchar(max)   |
 |dateTime  |  dateTime   |
 |struct  |  IRecord   |
-|object  |  IRecord   |
+|Objekt (object)  |  IRecord   |
 |Array\<Objekt>  |  IArray   |
 |dictionary<Zeichenfolge, Objekt>  |  IRecord   |
 

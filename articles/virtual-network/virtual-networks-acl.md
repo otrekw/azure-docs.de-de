@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 38655a9da103d1d669f87c6195be7f17702f9348
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056674"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647763"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Was ist eine Endpunkt-Zugriffssteuerungsliste?
 
@@ -39,7 +39,7 @@ Netzwerk-ACLs bieten folgende Möglichkeiten:
 * Sie können Regel aufsteigend sortieren, um sicherzustellen, dass für einen bestimmten Endpunkt eines virtuellen Computers die richtigen Regeln angewendet werden.
 * Sie können eine ACL für eine bestimmte IPv4-Adresse des Remote-Subnetzes angeben.
 
-Informationen zu ACL-Einschränkungen finden Sie im Artikel zu [Azure-Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+Informationen zu ACL-Einschränkungen finden Sie im Artikel zu [Azure-Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ## <a name="how-acls-work"></a>Funktionsweise von ACLs
 Eine ACL ist ein Objekt mit einer Regelliste. Wenn Sie eine ACL erstellen und auf einen Endpunkt eines virtuellen Computers anwenden, erfolgt die Paketfilterung auf dem Hostknoten des virtuellen Computers. Das bedeutet, dass der Hostknoten (nicht Ihr virtueller Computer) den Datenverkehr von Remote-IP-Adressen filtert und nach passenden ACL-Regeln sucht. Dadurch wird verhindert, dass Ihr virtueller Computer wertvolle CPU-Zyklen für die Paketfilterung verwendet.

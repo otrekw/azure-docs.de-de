@@ -3,12 +3,12 @@ title: Azure Lighthouse in Unternehmensszenarien
 description: Die Funktionen von Azure Lighthouse können zum Vereinfachen der mandantenübergreifenden Verwaltung in einem Unternehmen, in dem mehrere Azure AD-Mandanten vorhanden sind, verwendet werden.
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ae10ef2a18ace13d7b86347674c04f972e1ab8d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456903"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in Unternehmensszenarien
 
@@ -38,7 +38,7 @@ Achten Sie aber jeweils darauf, dass Sie sich [beim Festlegen, welche Benutzer Z
 
 Bei Azure Lighthouse und der delegierten Azure-Ressourcenverwaltung werden nur Verknüpfungen zwischen einem verwaltenden Mandanten und den verwalteten Mandanten bereitgestellt, anstatt Daten oder Ressourcen physisch zu verschieben. Außerdem ist der Zugriff immer nur in einer Richtung möglich, und zwar vom verwaltenden Mandanten zu den verwalteten Mandanten.  Für Benutzer und Gruppen auf dem verwaltenden Mandanten sollte weiterhin die mehrstufige Authentifizierung genutzt werden, wenn Verwaltungsvorgänge auf verwalteten Mandantenressourcen durchgeführt werden.
 
-Unternehmen mit Leitlinien für interne oder externe Governance und Compliance können [Azure-Aktivitätsprotokolle](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) verwenden, um die jeweiligen Transparenzanforderungen zu erfüllen. Wenn für Unternehmensmandanten Beziehungen zwischen verwaltenden und verwalteten Mandanten eingerichtet wurden, können die Benutzer auf den Mandanten Aktionen überwachen und Einblicke in die Aktionen erlangen, die von Benutzern auf dem anderen Mandanten durchgeführt werden, indem sie die protokollierte Aktivität anzeigen.
+Unternehmen mit Leitlinien für interne oder externe Governance und Compliance können [Azure-Aktivitätsprotokolle](../../azure-monitor/platform/activity-logs-overview.md) verwenden, um die jeweiligen Transparenzanforderungen zu erfüllen. Wenn für Unternehmensmandanten Beziehungen zwischen verwaltenden und verwalteten Mandanten eingerichtet wurden, können die Benutzer auf den Mandanten Aktionen überwachen und Einblicke in die Aktionen erlangen, die von Benutzern auf dem anderen Mandanten durchgeführt werden, indem sie die protokollierte Aktivität anzeigen.
 
 ## <a name="onboarding-process-considerations"></a>Aspekte des Onboardingprozesses
 

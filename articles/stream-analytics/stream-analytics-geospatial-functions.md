@@ -1,19 +1,18 @@
 ---
 title: Einführung in Azure Stream Analytics-Geofunktionen
 description: Dieser Artikel beschreibt Geofunktionen, die in Azure Stream Analytics-Aufträgen verwendet werden.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dfbe7e607395006f9bd7da0be0d5673353e2801f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: f47f34b60c858bb9a0feafd25176e4a811046630
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426226"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Einführung in Stream Analytics-Geofunktionen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 7676077f0122cb731d2d5d2c7acf78acbd8aa1a7
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464994"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz mit einer Premium-Dateifreigabe für virtuelle Azure-Computer
 
@@ -84,7 +84,6 @@ Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie �
    - Eine IP-Adresse für jede FCI
 - DNS-Konfiguration im Azure-Netzwerk mit Verweis auf die Domänencontroller
 - Eine [Premium-Dateifreigabe ](../../../storage/files/storage-how-to-create-premium-fileshare.md) basierend auf dem Speicherkontingent Ihrer Datenbank für Ihre Datendateien.
-- Eine Dateifreigabe für Sicherungen, die sich von der für Ihre Datendateien verwendeten Premium-Dateifreigabe unterscheidet. Dabei kann es sich um eine Standard- oder Premium-Dateifreigabe handeln.
 
 Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Failoverclusters beginnen. Der erste Schritt ist die Erstellung der virtuellen Computer.
 
@@ -187,10 +186,10 @@ Nachdem Sie die virtuellen Computer erstellt und konfiguriert haben, können Sie
 
 Im nächsten Schritt konfigurieren Sie den Failovercluster. In diesem Schritt führen Sie die folgenden untergeordneten Schritte aus:
 
-1. Hinzufügen des Features Windows Server-Failoverclustering
+1. Hinzufügen des Features „Windows Server-Failoverclustering“.
 1. Überprüfen des Clusters.
 1. Erstellen des Failoverclusters.
-1. Erstellen des Cloudzeugen
+1. Erstellen des Cloudzeugen.
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Hinzufügen von Windows Server-Failoverclustering
@@ -205,7 +204,7 @@ Im nächsten Schritt konfigurieren Sie den Failovercluster. In diesem Schritt f�
    1. Wählen Sie in **Features auswählen** die Option **Failoverclustering** aus. Schließen Sie alle erforderlichen Features und Verwaltungstools ein. Wählen Sie **Features hinzufügen** aus.
    1. Wählen Sie **Weiter** und dann **Fertig stellen** aus, um die Features zu installieren.
 
-   Führen Sie zum Installieren von Failoverclustering mithilfe von  PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
+   Führen Sie zum Installieren von Failoverclustering mithilfe von PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
 
    ```powershell
    $nodes = ("<node1>","<node2>")
@@ -220,19 +219,19 @@ Führen Sie die folgenden Schritte auf einem der beiden virtuellen Computer aus,
 
 1. Wählen Sie unter **Server-Manager** die Option **Tools** aus, und wählen Sie dann **Failovercluster-Manager** aus.
 1. Wählen Sie unter **Failovercluster-Manager** die Option **Aktion** aus, und wählen Sie dann **Konfiguration überprüfen** aus.
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
-1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. Klicken Sie auf **Weiter**.
+1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. Wählen Sie **Weiter** aus.
 1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze**, wie hier gezeigt:
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/cluster-validation.png" alt-text="Auswählen von Tests zur Überprüfung des Clusters":::
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 1. Wählen Sie unter **Bestätigung** die Option **Weiter** aus.
 
 Mit dem **Konfigurationsüberprüfungs-Assistenten** werden die Validierungstests durchgeführt.
 
-Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus.
+Führen Sie zum Validieren des Clusters mit PowerShell das folgende Skript in einer PowerShell-Administratorsitzung auf einem der virtuellen Computer aus:
 
    ```powershell
    Test-Cluster –Node ("<node1>","<node2>") –Include "Inventory", "Network", "System Configuration"
@@ -307,12 +306,12 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 1. Öffnen Sie das **SQL Server-Installationscenter**. Wählen Sie **Installation** aus.
 
-1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anleitung im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
+1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
    >[!NOTE]
    >Wenn Sie ein Azure Marketplace-Katalogimage mit SQL Server verwendet haben, sind die SQL Server-Tools im Image enthalten. Wenn Sie keines dieser Images verwendet haben, müssen Sie die SQL Server-Tools separat installieren. Weitere Informationen finden Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx).
 
-## <a name="step-6-create-the-azure-load-balancer"></a>Schritt 6: Erstellen der Azure Load Balancer-Instanz
+## <a name="step-6-create-the-azure-load-balancer"></a>Schritt 6: Erstellen des Azure-Lastenausgleichs
 
 Auf virtuellen Azure-Computern wird für Cluster ein Lastenausgleich für eine IP-Adresse verwendet, die zu einem bestimmten Zeitpunkt auf einem Clusterknoten vorhanden sein muss. In dieser Lösung enthält der Lastenausgleich die IP-Adresse für die SQL Server-FCI.
 
@@ -334,7 +333,7 @@ So erstellen Sie den Lastenausgleich
    - **Ressourcengruppe**: Die Ressourcengruppe, die Ihre virtuellen Computer enthält.
    - **Name**: Ein Name, mit dem der Lastenausgleich identifiziert wird.
    - **Region**: Der Azure-Standort, der Ihre virtuellen Computer enthält.
-   - **Typ**: Öffentlich oder privat. Der Zugriff auf einen privaten Lastenausgleich ist innerhalb des virtuellen Netzwerks möglich. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
+   - **Typ:** Öffentlich oder privat. Der Zugriff auf einen privaten Lastenausgleich ist innerhalb des virtuellen Netzwerks möglich. Für die meisten Azure-Anwendungen kann ein privater Lastenausgleich verwendet werden. Verwenden Sie einen öffentlichen Lastenausgleich, wenn Ihre Anwendung direkten Zugriff auf SQL Server über das Internet benötigt.
    - **SKU**: Standard.
    - **Virtuelles Netzwerk:** Dies ist dasselbe Netzwerk wie für die virtuellen Computer.
    - **IP-Adresszuweisung**: Statisch. 
@@ -387,7 +386,7 @@ So erstellen Sie den Lastenausgleich
    - **Back-End-Port**: Hierfür wird der gleiche Port verwendet, den Sie als Wert für **Port** angeben, wenn Sie **Floating IP (Direct Server Return)** aktivieren.
    - **Back-End-Pool**: Der Name des Back-End-Pools, den Sie zuvor konfiguriert haben.
    - **Integritätstest**: Der Integritätstest, den Sie zuvor konfiguriert haben.
-   - **Sitzungspersistenz**: None (Keine):
+   - **Sitzungspersistenz**: Keine.
    - **Leerlaufzeitüberschreitung (Minuten)** : 4.
    - **Floating IP (Direct Server Return)** : Aktiviert.
 

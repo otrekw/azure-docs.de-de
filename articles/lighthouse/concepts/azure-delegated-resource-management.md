@@ -3,12 +3,12 @@ title: Delegierte Azure-Ressourcenverwaltung
 description: Angebote für verwaltete Dienste gestatten Dienstanbietern, Ressourcenverwaltungsangebote an Kunden in Azure Marketplace zu verkaufen.
 ms.date: 07/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: ccbd09cd51216f9076e3b5bd462ee2180ac8f3ab
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464008"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453641"
 ---
 # <a name="azure-delegated-resource-management"></a>Delegierte Azure-Ressourcenverwaltung
 
@@ -33,7 +33,7 @@ Sie können [den neuen Angebotstyp für verwaltete Dienste im Azure Marketplace 
 
 Generell funktioniert die delegierte Azure-Ressourcenverwaltung wie folgt:
 
-1. Als Dienstanbieter identifizieren Sie den Zugriff (Rollen), den ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten. Die Zugriffsdefinition enthält die Mandanten-ID des Dienstanbieters zusammen mit dem erforderlichen Zugriff für das Angebot, definiert mithilfe der **principalid**-Identitäten aus Ihrem Mandanten, die den [integrierten **roleDefinition**-Werten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) zugeordnet sind (Mitwirkender, Mitwirkender für virtuelle Computer, Leser usw.).
+1. Als Dienstanbieter identifizieren Sie den Zugriff (Rollen), den ihre Gruppen, Dienstprinzipale oder Benutzer benötigen, um die Azure-Ressourcen des Kunden zu verwalten. Die Zugriffsdefinition enthält die Mandanten-ID des Dienstanbieters zusammen mit dem erforderlichen Zugriff für das Angebot, definiert mithilfe der **principalid**-Identitäten aus Ihrem Mandanten, die den [integrierten **roleDefinition**-Werten](../../role-based-access-control/built-in-roles.md) zugeordnet sind (Mitwirkender, Mitwirkender für virtuelle Computer, Leser usw.).
 2. Sie geben diesen Zugriff an und integrieren den Kunden in die delegierte Azure-Ressourcenverwaltung auf eine der zwei Arten:
    - [Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace](../how-to/publish-managed-services-offers.md) (privat oder öffentlich), das der Kunde annimmt
    - [Bereitstellen einer Azure Resource Manager Vorlage im Mandanten des Kunden](../how-to/onboard-customer.md) für ein oder mehrere bestimmte Abonnements oder Ressourcengruppen

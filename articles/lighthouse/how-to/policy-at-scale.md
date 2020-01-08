@@ -3,22 +3,22 @@ title: Bereitstellen von Azure Policy für delegierte Abonnements in großem Umf
 description: Hier erfahren Sie, wie Sie mit der delegierten Azure-Ressourcenverwaltung eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten bereitstellen können.
 ms.date: 11/8/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 9e061995b728e2864d1bd33a32d530634ab794d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456840"
 ---
 # <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Bereitstellen von Azure Policy für delegierte Abonnements in großem Umfang
 
 Als Dienstanbieter haben Sie möglicherweise mehrere Kundenmandanten für die delegierte Azure-Ressourcenverwaltung integriert. [Azure Lighthouse](../overview.md) ermöglicht Dienstanbietern das gleichzeitige Ausführen von skalierbaren Vorgängen für mehrere Mandanten, wodurch Verwaltungsaufgaben effizienter werden.
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten mithilfe von PowerShell-Befehlen bereitstellen. In diesem Beispiel stellt die Richtliniendefinition sicher, dass Speicherkonten geschützt werden, indem nur HTTPS-Datenverkehr zugelassen wird.
+In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure Policy](../../governance/policy/index.yml) eine Richtliniendefinition und eine Richtlinienzuweisung für mehrere Mandanten mithilfe von PowerShell-Befehlen bereitstellen. In diesem Beispiel stellt die Richtliniendefinition sicher, dass Speicherkonten geschützt werden, indem nur HTTPS-Datenverkehr zugelassen wird.
 
 ## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Verwenden von Azure Resource Graph zum Abfragen von Kundenmandanten
 
-Sie können [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) verwenden, um Abfragen bei allen Abonnements in den von Ihnen verwalteten Kundenmandanten auszuführen. In diesem Beispiel werden alle Speicherkonten in diesen Abonnements identifiziert, für die derzeit kein HTTPS-Datenverkehr erforderlich ist.  
+Sie können [Azure Resource Graph](../../governance/resource-graph/index.yml) verwenden, um Abfragen bei allen Abonnements in den von Ihnen verwalteten Kundenmandanten auszuführen. In diesem Beispiel werden alle Speicherkonten in diesen Abonnements identifiziert, für die derzeit kein HTTPS-Datenverkehr erforderlich ist.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
+- Informieren Sie sich über [Azure Policy](../../governance/policy/index.yml).
 - Erfahren Sie über [Mandantenübergreifende Verwaltungsmöglichkeiten](../concepts/cross-tenant-management-experience.md).

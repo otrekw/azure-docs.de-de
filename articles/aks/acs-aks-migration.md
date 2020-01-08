@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 0c243d216e00adf49a6425e5b7be0d38caeef043
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929046"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658541"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrieren zu Azure Kubernetes Service (AKS)
 
@@ -91,7 +91,7 @@ Da während der Migration zusätzliche VMs in Ihrem Abonnement bereitgestellt we
 
 Möglicherweise müssen Sie eine Erhöhung der [Netzwerkkontingente](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) anfordern, um sicherzustellen, dass Sie die IPs nicht erschöpfen. Weitere Informationen finden Sie unter [Netzwerke und IP-Adressbereiche für AKS](https://docs.microsoft.com/azure/aks/configure-kubenet).
 
-Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits). Um Ihre aktuellen Kontingente zu überprüfen, wechseln Sie im Azure-Portal zum [Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie Ihr Abonnement und dann **Nutzung + Kontingente** aus.
+Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Um Ihre aktuellen Kontingente zu überprüfen, wechseln Sie im Azure-Portal zum [Blatt „Abonnements“](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie Ihr Abonnement und dann **Nutzung + Kontingente** aus.
 
 ## <a name="high-availability-and-business-continuity"></a>Hohe Verfügbarkeit und Geschäftskontinuität
 

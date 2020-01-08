@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 809e40f6616e8ab022a31d8dd29d4a5386c5e844
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 288dcf828dd046ad69bc4f61b1837361ea600980
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373354"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -49,7 +49,7 @@ Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine N
 
     |Einstellung|Erforderlich?|Details|
     |---|---|---|
-    |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Lauf der Zeit verfügen Sie wahrscheinlich über mehrere Netzwerkschnittstellen in Ihrem Azure-Abonnement. Vorschläge zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer Netzwerkschnittstellen finden Sie unter [Benennungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Nach dem Erstellen kann der Name der Netzwerkschnittstelle nicht mehr geändert werden.|
+    |Name|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Lauf der Zeit verfügen Sie wahrscheinlich über mehrere Netzwerkschnittstellen in Ihrem Azure-Abonnement. Vorschläge zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer Netzwerkschnittstellen finden Sie unter [Benennungskonventionen](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#resource-naming). Nach dem Erstellen kann der Name der Netzwerkschnittstelle nicht mehr geändert werden.|
     |Virtuelles Netzwerk|Ja|Wählen Sie das virtuelle Netzwerk für die Netzwerkschnittstelle aus. Sie können eine Netzwerkschnittstelle nur einem virtuellen Netzwerk zuweisen, das dasselbe Abonnement und denselben Standort wie die Netzwerkschnittstelle hat. Nachdem eine Netzwerkschnittstelle erstellt wurde, können Sie das virtuelle Netzwerk, dem sie zugewiesen ist, nicht mehr ändern. Der virtuelle Computer, dem Sie die Netzwerkschnittstelle hinzufügen, muss auch denselben Standort und dasselbe Abonnement wie die Netzwerkschnittstelle aufweisen.|
     |Subnet|Ja|Wählen Sie ein Subnetz innerhalb des ausgewählten virtuellen Netzwerks aus. Das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, kann nach der Erstellung geändert werden.|
     |Zuweisung der privaten IP-Adresse|Ja| Mit dieser Einstellung wählen Sie die Zuweisungsmethode für die IPv4-Adresse aus. Die folgenden Zuweisungsmethoden stehen zur Wahl: **Dynamisch:** Bei Wahl dieser Option weist Azure automatisch die nächste verfügbare Adresse aus dem Adressraum des Subnetzes zu, das Sie ausgewählt haben. **Statisch:** Bei Wahl dieser Option müssen Sie eine verfügbare IP-Adresse innerhalb des Adressraums des ausgewählten Subnetzes manuell zuweisen. Statische und dynamische Adressen bleiben unverändert, bis Sie sie ändern oder die Netzwerkschnittstelle gelöscht wird. Die Zuweisungsmethode kann nach Erstellung der Netzwerkschnittstelle geändert werden. Der DHCP-Server von Azure weist diese Adresse der Netzwerkschnittstelle innerhalb des Betriebssystems des virtuellen Computers zu.|
@@ -83,14 +83,14 @@ Sie können die meisten Einstellungen für eine Netzwerkschnittstelle anzeigen u
 3. Die folgenden Elemente werden für die Netzwerkschnittstelle aufgelistet, die Sie ausgewählt haben:
    - **Übersicht:** enthält Informationen über die Netzwerkschnittstelle, z.B. die zugewiesenen IP-Adressen, das virtuelle Netzwerk/Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, und den virtuellen Computer, an den die Netzwerkschnittstelle angefügt ist (sofern zutreffend). Die folgende Abbildung zeigt die Übersichtseinstellungen für eine Netzwerkschnittstelle mit dem Namen **mywebserver256**: ![Übersicht über die Netzwerkschnittstelle](./media/virtual-network-network-interface/nic-overview.png)
 
-     Sie können eine Netzwerkschnittstelle in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben, indem Sie (**Ändern**) neben dem Namen der **Ressourcengruppe** oder des **Abonnements** auswählen. Wenn Sie die Netzwerkschnittstelle verschieben, müssen Sie alle Ressourcen für die Netzwerkschnittstelle ebenfalls verschieben. Wenn die Netzwerkschnittstelle an einen virtuellen Computer angefügt ist, müssen Sie z.B. auch den virtuellen Computer und andere mit dem virtuellen Computer verknüpfte Ressourcen verschieben. Informationen zum Verschieben von Netzwerkschnittstellen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal). Hier erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben.
+     Sie können eine Netzwerkschnittstelle in eine andere Ressourcengruppe oder ein anderes Abonnement verschieben, indem Sie (**Ändern**) neben dem Namen der **Ressourcengruppe** oder des **Abonnements** auswählen. Wenn Sie die Netzwerkschnittstelle verschieben, müssen Sie alle Ressourcen für die Netzwerkschnittstelle ebenfalls verschieben. Wenn die Netzwerkschnittstelle an einen virtuellen Computer angefügt ist, müssen Sie z.B. auch den virtuellen Computer und andere mit dem virtuellen Computer verknüpfte Ressourcen verschieben. Informationen zum Verschieben von Netzwerkschnittstellen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-the-portal). Hier erfahren Sie, welche Voraussetzungen erfüllt sein müssen und wie Sie Ressourcen über das Azure-Portal, mithilfe von PowerShell oder unter Verwendung der Azure CLI verschieben.
    - **IP-Konfigurationen:** Hier werden die öffentlichen und privaten IPv4- und IPv6-Adressen aufgeführt, die IP-Konfigurationen zugewiesen sind. Wenn einer IP-Konfiguration eine IPv6-Adresse zugewiesen ist, wird die Adresse nicht angezeigt. Weitere Informationen zu IP-Konfigurationen und zum Hinzufügen und Entfernen von IP-Adressen finden Sie unter [Konfigurieren von IP-Adressen für eine Azure-Netzwerkschnittstelle](virtual-network-network-interface-addresses.md). Die IP-Weiterleitung und Subnetzzuweisung werden auch in diesem Abschnitt konfiguriert. Weitere Informationen zu diesen Einstellungen finden Sie unter [Aktivieren oder Deaktivieren der IP-Weiterleitung](#enable-or-disable-ip-forwarding) und [Ändern der Subnetzzuweisung](#change-subnet-assignment).
    - **DNS-Server:** Sie können angeben, welcher DNS-Server einer Netzwerkschnittstelle durch die Azure-DHCP-Server zugewiesen wird. Die Netzwerkschnittstelle kann die Einstellung vom virtuellen Netzwerk, dem die Netzwerkschnittstelle zugewiesen ist, erben. Sie können aber auch benutzerdefinierte Einstellungen festlegen, die die entsprechenden Einstellungen für das virtuelle Netzwerk, dem sie zugewiesen ist, überschreiben. Um zu ändern, was angezeigt wird, lesen Sie [Ändern von DNS-Servern](#change-dns-servers).
    - **Netzwerksicherheitsgruppe (NSG)** : zeigt an, welche Netzwerksicherheitsgruppe (NSG) der Netzwerkschnittstelle zugeordnet ist (falls vorhanden). Eine NSG enthält ein- und ausgehende Regeln zum Filtern von Netzwerkdatenverkehr für die Netzwerkschnittstelle. Falls der Netzwerkschnittstelle eine NSG zugeordnet ist, wird der Name der zugeordneten NSG angezeigt. Wie Sie ändern, was angezeigt wird, erfahren Sie unter [Zuordnen oder Trennen einer Netzwerksicherheitsgruppe](#associate-or-dissociate-a-network-security-group).
    - **Eigenschaften:** zeigt wichtige Einstellungen für die Netzwerkschnittstelle an, z.B. die MAC-Adresse (leer, wenn die Netzwerkschnittstelle an keine VM angefügt ist) und das Abonnement, dem sie angehört.
    - **Effektive Sicherheitsregeln:**  Sicherheitsregeln werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt und der Netzwerkschnittstelle oder dem Subnetz, mit dem sie verbunden ist, eine NSG zugeordnet ist. Weitere Informationen darüber, was angezeigt wird, finden Sie unter [Anzeigen effektiver Sicherheitsregeln](#view-effective-security-rules). Weitere Informationen zu NSGs finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](security-overview.md).
    - **Effektive Routen:** Routen werden aufgelistet, wenn die Netzwerkschnittstelle an einen aktiven virtuellen Computer angefügt ist. Bei den Routen handelt es sich um eine Kombination aus den Azure-Standardrouten, benutzerdefinierten Routen und BGP-Routen, die ggf. für das Subnetz vorhanden sind, dem die Netzwerkschnittstelle zugewiesen ist. Weitere Informationen darüber, was angezeigt wird, finden Sie unter [Anzeigen effektiver Routen](#view-effective-routes). Weitere Informationen zu Azure-Standardrouten und benutzerdefinierten Routen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](virtual-networks-udr-overview.md).
-   - **Allgemeine Azure Resource Manager-Einstellungen:**  Weitere Informationen zu allgemeinen Azure Resource Manager-Einstellungen finden Sie unter [Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md), [Zugriffssteuerung (IAM, Identity and Access Management)](../role-based-access-control/overview.md), [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Exportieren der Vorlage aus der Ressourcengruppe](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - **Allgemeine Azure Resource Manager-Einstellungen:**  Weitere Informationen zu allgemeinen Azure Resource Manager-Einstellungen finden Sie unter [Aktivitätsprotokolle](../azure-monitor/platform/activity-logs-overview.md), [Zugriffssteuerung (IAM, Identity and Access Management)](../role-based-access-control/overview.md), [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Exportieren der Vorlage aus der Ressourcengruppe](../azure-resource-manager/templates/export-template-portal.md).
 
 <a name="view-settings-commands"></a>**Befehle**
 
@@ -189,7 +189,7 @@ Sie können eine Netzwerkschnittstelle im Portal nur dann einer Anwendungssicher
 **Befehle**
 
 - Azure CLI: [az network nic update](/cli/azure/network/nic#az-network-nic-update)
-- PowerShell: [Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
+- Mit PowerShell: [Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>Löschen einer Netzwerkschnittstelle
 
@@ -228,7 +228,7 @@ Die IP-Flussüberprüfungsfunktion von Azure Network Watcher kann Ihnen ebenfall
 **Befehle**
 
 - Azure CLI: [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
-- PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
+- Mit PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ### <a name="view-effective-routes"></a>Anzeigen effektiver Routen
 
@@ -245,13 +245,13 @@ Die „Nächster Hop“-Funktion von Azure Network Watcher kann Ihnen ebenfalls 
 **Befehle**
 
 - Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
-- PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
+- Mit PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="permissions"></a>Berechtigungen
 
 Zum Durchführen von Aufgaben für Netzwerkschnittstellen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, die über die entsprechenden Berechtigungen in der folgenden Tabelle verfügt:
 
-| Aktion                                                                     | NAME                                                      |
+| Action                                                                     | Name                                                      |
 | ---------                                                                  | -------------                                             |
 | Microsoft.Network/networkInterfaces/read                                   | Netzwerkschnittstelle abrufen                                     |
 | Microsoft.Network/networkInterfaces/write                                  | Netzwerkschnittstelle erstellen oder aktualisieren                        |

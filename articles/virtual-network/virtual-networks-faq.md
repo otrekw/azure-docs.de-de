@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457044"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646879"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -66,7 +66,7 @@ Alle in [RFC 1918](https://tools.ietf.org/html/rfc1918) definierten IP-Adressber
 Ja. Weitere Informationen zu öffentlichen IP-Adressbereichen finden Sie unter [Create, change, or delete a virtual network](manage-virtual-network.md#create-a-virtual-network) (Erstellen, Ändern oder Löschen eines virtuellen Netzwerks). Auf öffentliche IP-Adressen kann nicht direkt über das Internet zugegriffen werden.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Ist die Anzahl von Subnetzen im VNet begrenzt?
-Ja. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Die Adressräume von Subnetzen können sich nicht überlappen.
+Ja. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits). Die Adressräume von Subnetzen können sich nicht überlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Unterliegen die in den Subnetzen verwendeten IP-Adressen bestimmten Beschränkungen?
 Ja. Azure reserviert fünf IP-Adressen in jedem Subnetz. Dies sind x.x.x.0-x.x.x.3 und die letzte Adresse des Subnetzes. x.x.x.1-x.x.x.3 ist in jedem Subnetz für Azure-Dienste reserviert.   
@@ -128,7 +128,7 @@ Eine Übersicht über die verfügbaren DNS-Optionen finden Sie in der Entscheidu
 Ja. Sie haben die Möglichkeit, IP-Adressen von DNS-Servern in den Einstellungen des VNet anzugeben. Die Einstellung gilt als DNS-Standardserver für alle virtuellen Computer im VNET.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Wie viele DNS-Server können angegeben werden?
-Siehe [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)
+Siehe [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Können DNS-Server geändert werden, nachdem das Netzwerk erstellt wurde?
 Ja. Sie können die Liste der DNS-Server für das VNet jederzeit ändern. Wenn Sie Ihre DNS-Serverliste ändern, müssen Sie für alle betroffenen VMs im VNET eine Verlängerung der DHCP-Lease durchführen, damit die neuen DNS-Einstellungen wirksam werden. Für VMs, auf denen das Windows-Betriebssystem ausgeführt wird, können Sie hierzu `ipconfig /renew` direkt auf der VM eingeben. Informationen zu anderen Betriebssystemtypen finden Sie in der Dokumentation zur Verlängerung der DHCP-Lease für den jeweiligen Betriebssystemtyp. 

@@ -3,12 +3,12 @@ title: 'Schnellstart: Neue Richtlinienzuweisung mit Vorlagen'
 description: In dieser Schnellstartanleitung erstellen Sie mit einer Resource Manager-Vorlage eine Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen.
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482352"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436469"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren von nicht konformen Ressourcen mit einer Resource Manager-Vorlage
 
@@ -39,13 +39,13 @@ Hier ist eine Kopie der Vorlage angegeben:
 
 1. Wählen Sie die folgenden Werte aus, bzw. geben Sie sie ein:
 
-   | NAME | Wert |
+   | Name | value |
    |------|-------|
    | Subscription | Wählen Sie Ihr Azure-Abonnement. |
    | Resource group | Wählen Sie **Neu erstellen**, geben Sie einen Namen an, und wählen Sie dann **OK**. Im Screenshot lautet der Name der Ressourcengruppe _mypolicyquickstart\<Datum in MMTT\>rg_. |
    | Location | Wählen Sie eine Region aus. Beispiel: **USA, Mitte**. |
    | Name der Richtlinienzuweisung | Geben Sie einen Namen für die Richtlinienzuweisung an. Bei Bedarf können Sie die Anzeige für die Richtliniendefinitionen verwenden. Beispiel: **Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden**. |
-   | Ressourcengruppenname | Geben Sie den Namen einer Ressourcengruppe an, der Sie die Richtlinie zuweisen möchten. In dieser Schnellstartanleitung verwenden Sie den Standardwert **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** ist eine Vorlagenfunktion, mit der die Ressourcengruppe abgerufen wird. |
+   | Ressourcengruppenname | Geben Sie den Namen einer Ressourcengruppe an, der Sie die Richtlinie zuweisen möchten. In dieser Schnellstartanleitung verwenden Sie den Standardwert **[resourceGroup().name]** . **[resourceGroup()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** ist eine Vorlagenfunktion, mit der die Ressourcengruppe abgerufen wird. |
    | Richtliniendefinitions-ID | Geben Sie **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a** an. |
    | Ich stimme den oben genannten Geschäftsbedingungen zu | (Auswählen) |
 
@@ -55,7 +55,7 @@ Einige zusätzliche Ressourcen:
 
 - Weitere Beispielvorlagen finden Sie unter [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular).
 - Navigieren Sie zur [Azure-Vorlagenreferenz](/azure/templates/microsoft.authorization/allversions), um die Vorlagenreferenz anzuzeigen.
-- Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/resource-group-overview.md).
+- Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/management/overview.md).
 - Informationen zur Bereitstellung auf Abonnementebene finden Sie unter [Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene](../../azure-resource-manager/deploy-to-subscription.md).
 
 ## <a name="identify-non-compliant-resources"></a>Identifizieren nicht konformer Ressourcen

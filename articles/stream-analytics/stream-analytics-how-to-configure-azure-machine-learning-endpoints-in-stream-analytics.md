@@ -1,19 +1,18 @@
 ---
 title: Verwenden von Machine Learning-Endpunkten in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie benutzerdefinierte Machine Language-Funktionen in Azure Stream Analytics verwendet werden.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 1adb7d58246ea37fd8322cb6fc6ffd53c5f19efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 239955025f21d8679cbcf0bbfe68f9070f0217c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467820"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426196"
 ---
 # <a name="azure-machine-learning-studio-classic-integration-in-stream-analytics-preview"></a>Azure Machine Learning Studio-Integration (klassisch) in Stream Analytics (Vorschau)
 Stream Analytics unterstützt benutzerdefinierte Funktionen, die Azure Machine Learning Studio-Endpunkte (klassisch) kontaktieren. Die REST-API-Unterstützung für dieses Feature ist in der [Stream Analytics-REST-API-Bibliothek](https://msdn.microsoft.com/library/azure/dn835031.aspx)ausführlich beschrieben. Dieser Artikel enthält zusätzliche Informationen, die für die erfolgreiche Implementierung dieser Funktion in Stream Analytics erforderlich sind. Es wurde ein Tutorial bereitgestellt, das [hier](stream-analytics-machine-learning-integration-tutorial.md)verfügbar ist.

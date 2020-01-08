@@ -1,24 +1,21 @@
 ---
-title: Qualifikation „Textübersetzung“ der kognitiven Suche (Vorschau)
+title: Die Qualifikation „Textübersetzung“ der kognitiven Suche
 titleSuffix: Azure Cognitive Search
-description: Wertet Text aus und gibt für jeden Datensatz Text zurück, der in einer KI-Anreicherungspipeline in Azure Cognitive Search in die angegebene Zielsprache übersetzt wurde. Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar.
+description: Wertet Text aus und gibt für jeden Datensatz Text zurück, der in einer KI-Anreicherungspipeline in Azure Cognitive Search in die angegebene Zielsprache übersetzt wurde.
 manager: nitinme
 author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7c42c9033fac057c12426726a96ae6079f3080da
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715410"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460769"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Die Qualifikation „Textübersetzung“ der kognitiven Suche
-
-> [!IMPORTANT] 
-> Diese Qualifikation ist zurzeit als öffentliche Vorschauversion verfügbar. Die Vorschaufunktion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previewfunktionen werden von der [REST-API-Version 2019-05-06-Preview](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
 Die Qualifikation **Textübersetzung** wertet Text aus und gibt für jeden Datensatz Text zurück, der in die angegebene Zielsprache übersetzt wurde. Diese Qualifikation verwendet die in Cognitive Services verfügbare [Textübersetzungs-API Version 3.0](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
@@ -35,7 +32,7 @@ Die [Textübersetzungs-API 3.0](https://docs.microsoft.com/azure/cognitive-serv
 Microsoft.Skills.Text.TranslationSkill
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Die maximale Größe eines Datensatzes ist 50.000 Zeichen, gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Übersetzungsqualifikation senden, denken Sie daran, die [Qualifikation „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
+Die maximale Größe eines Datensatzes beträgt 50.000 Zeichen (gemessen durch [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)). Wenn Sie Ihre Daten teilen müssen, bevor Sie sie an die Übersetzungsqualifikation senden, denken Sie daran, die [Qualifikation „Text teilen“](cognitive-search-skill-textsplit.md) zu verwenden.
 
 ## <a name="skill-parameters"></a>Skillparameter
 

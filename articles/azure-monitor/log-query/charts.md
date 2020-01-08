@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
-ms.openlocfilehash: 34975a1752467c61ea5b329210473eee266c98d1
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ca60ed68277486ca5ed7d7d90ad72506a4844936
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398086"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Erstellen von Grafiken und Diagrammen aus Azure Monitor-Protokollabfragen
 
@@ -34,7 +34,7 @@ Heartbeat
 
 Standardmäßig werden Ergebnisse als Tabelle angezeigt:
 
-![Table](media/charts/table-display.png)
+![Tabelle](media/charts/table-display.png)
 
 Wählen Sie **Chart** (Diagramm) und dann die Option **Pie** (Kreisdiagramm), um die Ergebnisse anzuzeigen, damit Sie eine bessere Ansicht erhalten:
 
@@ -95,4 +95,4 @@ Informationen zur Verwendung der [Abfragesprache Kusto](/azure/kusto/query/) mit
 - [Erweiterte Aggregationen](advanced-aggregations.md)
 - [JSON und Datenstrukturen](json-data-structures.md)
 - [Schreiben von erweiterten Abfragen](advanced-query-writing.md)
-- [Verknüpfungen](joins.md)
+- [Joins](joins.md)

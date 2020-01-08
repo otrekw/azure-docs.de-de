@@ -36,6 +36,14 @@
       href: tutorial-backup-windows-server-to-azure.md
     - name: Wiederherstellen von Dateien auf Windows Server
       href: tutorial-backup-restore-files-windows-server.md
+    - name: "SAP HANA-Datenbanken auf virtuellen Azure-Computern\_– mithilfe der CLI"
+      items:
+        - name: "Sichern von SAP HANA-Datenbanken\_– CLI"
+          href: tutorial-sap-hana-backup-cli.md
+        - name: "Wiederherstellen von SAP HANA-Datenbanken\_– CLI"
+          href: tutorial-sap-hana-restore-cli.md
+        - name: "Verwalten von gesicherten SAP HANA-Datenbanken\_– CLI"
+          href: tutorial-sap-hana-manage-cli.md
 - name: Beispiele
   items:
     - name: Azure PowerShell
@@ -100,7 +108,7 @@
       items:
         - name: Azure Backup Server-Schutzmatrix
           href: backup-mabs-protection-matrix.md
-        - name: Installieren oder Aktualisieren
+        - name: Installation oder Upgrade
           items:
             - name: Installieren von Azure Backup Server
               href: backup-azure-microsoft-azure-backup.md
@@ -244,6 +252,8 @@
           href: manage-monitor-sql-database-backup.md
     - name: SAP HANA-Datenbanken auf virtuellen Azure-Computern
       items:
+        - name: Informationen zu SAP HANA-Sicherungen auf virtuellen Azure-Computern
+          href: sap-hana-db-about.md
         - name: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
           href: backup-azure-sap-hana-database.md
         - name: Wiederherstellen von SAP HANA-Datenbanken auf virtuellen Azure-Computern

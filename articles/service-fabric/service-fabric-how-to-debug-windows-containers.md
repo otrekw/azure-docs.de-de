@@ -1,24 +1,15 @@
 ---
-title: Debuggen von Windows-Containern mit Service Fabric und VS | Microsoft-Dokumentation
+title: Debuggen von Windows-Containern mit Service Fabric und VS
 description: Erfahren Sie, wie Sie Windows-Container in Azure Service Fabric mit Visual Studio 2019 debuggen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: msfussell
-editor: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/14/2019
 ms.author: mikhegn
-ms.openlocfilehash: a5ccf527850e1c05c5d7e273ada905d65d64cee4
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2a00a352d09562ffe46dc8e6e63a5d4963ac3a3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073961"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464570"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2019"></a>Gewusst wie: Debuggen von Windows-Containern in Azure Service Fabric mit Visual Studio 2019
 

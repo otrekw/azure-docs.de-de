@@ -63,6 +63,17 @@
         - name: Schritte zum Bereitstellen
           displayName: 'standards, fedramp, moderate'
           href: ./samples/fedramp-m/deploy.md
+    - name: HIPAA HITRUST
+      items:
+        - name: Übersicht
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/index.md
+        - name: Steuerungszuordnung
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/control-mapping.md
+        - name: Schritte zum Bereitstellen
+          displayName: 'standards, HIPAA HITRUST'
+          href: ./samples/HIPAA-HITRUST/deploy.md
     - name: IRS 1075
       items:
         - name: Übersicht
@@ -184,7 +195,7 @@
     - name: Ressourcensperrung in Blaupausen
       displayName: 'mode, state, read only, edit, denyAssignments'
       href: ./concepts/resource-locking.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwalten von Zuweisungen mit PowerShell
       displayName: 'create, update, remove'

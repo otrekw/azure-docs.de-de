@@ -2,18 +2,15 @@
 title: Erstellen eines Watcher-Tasks im Azure Automation-Konto
 description: Erfahren Sie, wie Sie einen Watchertask im Azure Automation-Konto erstellen, um die Erstellung neuer Dateien in einem Ordner zu überwachen.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989246"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419758"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Erstellen von Azure Automation-Watchertasks zum Nachverfolgen von Dateiänderungen auf einem lokalen Computer
 

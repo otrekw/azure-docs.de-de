@@ -3,12 +3,12 @@ title: Matrix zur Azure Backup-Unterstützung
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für den Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 603bbc715176515afd21f286ea64e79e974266ae
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449871"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Tresore im Abonnement** | Bis zu 500 Recovery Services-Tresore pro Abonnement.
 **Computer in einem Tresor** | Bis zu 1.000 virtuelle Azure-Computer pro Tresor.<br/><br/> Bis zu 50 MABS-Server können in einem einzigen Tresor registriert werden.
 **Datenquelle im Tresorspeicher** | Maximal 54.400 GB. Für Azure-VM-Sicherungen gilt kein Grenzwert.
-**Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal pro Tag.<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
+**Sicherungen im Tresor** | **Virtuelle Azure-Computer:** Einmal täglich<br/><br/>**Per DPM/MABS geschützte Computer:** Zweimal pro Tag.<br/><br/> **Computer mit direkter Sicherung per MARS-Agent:** Dreimal pro Tag.
 **Sicherungen zwischen Tresoren** | Die Sicherung erfolgt innerhalb einer Region.<br/><br/> Sie benötigen einen Tresor in jeder Azure-Region, die VMs enthält, die Sie sichern möchten. Eine Sicherung in eine andere Region ist nicht möglich.
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](https://review.docs.microsoft.com/azure/backup/backup-azure-move-recovery-services-vault).
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
@@ -54,7 +54,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von lokale
 
 **Begrenzung** | **Details**
 --- | ---
-**Azure-VM-Datenträger** | Maximal 16
+**Azure-VM-Datenträger** | Maximal 16 <br> Wenn Sie sich für die private Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (bis zu 32 Datenträger) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
 **Größe des Azure-VM-Datenträgers** | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 
 ### <a name="azure-vm-backup-options"></a>Optionen für Azure-VM-Sicherungen
@@ -74,7 +74,7 @@ Im Folgenden werden die Informationen zur Unterstützung beim Sichern von Linux-
 
 **Sicherungstyp** | **Linux (von Azure unterstützt)**
 --- | ---
-**Direkte Sicherung lokaler Linux-Computer** | Nicht unterstützt. Der MARS-Agent kann nur auf Windows-Computern installiert werden.
+**Direkte Sicherung lokaler Linux-Computer** | Wird nicht unterstützt. Der MARS-Agent kann nur auf Windows-Computern installiert werden.
 **Verwendung der Agent-Erweiterung zum Sichern von Azure-VMs, auf denen Linux ausgeführt wird** | App-konsistente Sicherung mit [benutzerdefinierten Skripts](backup-azure-linux-app-consistent.md)<br/><br/> Wiederherstellung auf Dateiebene.<br/><br/> Wiederherstellung, indem über einen Wiederherstellungspunkt oder Datenträger eine VM erstellt wird.
 **Verwendung von DPM zum Sichern lokaler Computer oder Azure-VMs, auf denen Linux ausgeführt wird** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs<br/><br/> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
 **Verwendung von MABS zum Sichern lokaler Computer oder Azure-VMs, auf denen Linux ausgeführt wird** | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs<br/><br/> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar.
@@ -119,7 +119,7 @@ Azure Backup unterstützt die Verschlüsselung für Daten während der Übertrag
 
 ## <a name="compression-support"></a>Unterstützung für die Komprimierung
 
-Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs, wie in der folgenden Tabelle zusammengefasst.
+Azure Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs. In der folgenden Tabelle finden Sie eine Zusammenfassung.
 
 - Für Azure-VMs liest die VM-Erweiterung die Daten über das Speichernetzwerk direkt aus dem Azure-Speicherkonto, sodass es nicht erforderlich ist, diesen Datenverkehr zu komprimieren.
 - Wenn Sie DPM oder MABS verwenden, können Sie Bandbreite sparen, indem Sie die Daten vor der Sicherung komprimieren.

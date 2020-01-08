@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/19/2019
+ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 30234758761e06c65e621c7f512ed8cafa02e090
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 8cab88b9d3a861c72d382534705ea5c087fe9ecb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74378662"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382649"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-java"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Java
 
@@ -59,7 +59,7 @@ Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufru
     }
     ```
 
-3. Erstellen Sie eine neue Methode namens `SearchVideos()` mit Variablen für Ihren API-Endpunkthost und -pfad, Ihren Abonnementschlüssel und einen Suchbegriff. Sie gibt ein `SearchResults`-Objekt zurück. 
+3. Erstellen Sie eine neue Methode namens `SearchVideos()` mit Variablen für Ihren API-Endpunkthost und -pfad, Ihren Abonnementschlüssel und einen Suchbegriff. Sie gibt ein `SearchResults`-Objekt zurück. `host` kann der unten angegebene globale Endpunkt oder der Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) sein, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     public static SearchResults SearchVideos (String searchQuery) throws Exception {

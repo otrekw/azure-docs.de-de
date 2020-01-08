@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 07/24/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 13e25ce0a237d34b98ec42140b86c4955f9058cb
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c4335e1ac0f0ffc7ee5570a8f0819827fc77dd18
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75384150"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Java
 
@@ -50,7 +50,7 @@ Diese Anwendung ist zwar in Java geschrieben, an sich ist die API aber ein RESTf
    import com.google.gson.JsonParser;
    ```
 
-2. Erstellen Sie in einer neuen Klasse Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und eine Suchabfrage.
+2. Erstellen Sie in einer neuen Klasse Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
    ```java
    public class EntitySearch {

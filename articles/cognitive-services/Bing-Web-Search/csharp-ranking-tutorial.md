@@ -9,14 +9,14 @@ ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: tutorial
-ms.date: 06/18/2019
+ms.date: 12/19/2019
 ms.author: aahi
-ms.openlocfilehash: cfe198352cae95227a76535544d55a6be0c66abc
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 1c8e0bb136fddeb84dc991e63a761378b38cc470
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75382326"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Erstellen einer Suchclient-Konsolen-App in C#
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: a0917f2649f1b780429f78406900c599c5ac853e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: acfa10ea506e063bf6b230386ca0722f1c959d18
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472011"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442556"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Erstellen einer neuen Azure API Management-Dienstinstanz
 
@@ -47,11 +47,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
    
    ![Neue Instanz](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
    
-   | Einstellung                 | Empfohlener Wert                               | Beschreibung                                                                                                                                                                                                                                                                                                                         |
+   | Einstellung                 | Vorgeschlagener Wert                               | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                         |
 |-------------------------|-----------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Name**                | Eindeutiger Name für Ihren API Management-Dienst | Den Namen können Sie später nicht mehr ändern. Der Name des Diensts wird verwendet, um einen Standarddomänennamen in der Form *{Name}.azure-api.net* zu generieren. Wenn Sie einen benutzerdefinierten Domänennamen verwenden möchten, lesen Sie [Configure a custom domain name](configure-custom-domain.md) (Konfigurieren eines benutzerdefinierten Domänennamens). <br/> Der Dienstname wird verwendet, um auf den Dienst und die entsprechende Azure-Ressource zu verweisen. |
 | **Abonnement**        | Ihr Abonnement                             | Das Abonnement, unter dem diese neue Dienstinstanz erstellt wird. Sie können aus den verschiedenen Azure-Abonnements, auf die Sie Zugriff haben, ein Abonnement auswählen.                                                                                                                                                            |
-| **Ressourcengruppe**      | *apimResourceGroup*                           | Sie können eine neue oder eine vorhandene Ressource auswählen. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../azure-resource-manager/resource-group-overview.md#resource-groups)erhalten Sie weitere Informationen.                                                                                                  |
+| **Ressourcengruppe**      | *apimResourceGroup*                           | Sie können eine neue oder eine vorhandene Ressource auswählen. Eine Ressourcengruppe ist eine Sammlung von Ressourcen mit gleichem Lebenszyklus, gleichen Berechtigungen und gleichen Richtlinien. [Hier](../azure-resource-manager/management/overview.md#resource-groups)erhalten Sie weitere Informationen.                                                                                                  |
 | **Location**            | *USA, Westen*                                    | Wählen Sie die geografische Region in Ihrer Nähe aus. Im Dropdownlistenfeld werden nur die verfügbaren Regionen für den API Management-Dienst angezeigt.                                                                                                                                                                                                          |
 | **Name der Organisation**   | Der Name Ihrer Organisation                 | Dieser Name wird an verschiedenen Stellen verwendet, u.a. im Titel des Entwicklerportals und im Absender von Benachrichtigungs-E-Mails.                                                                                                                                                                                                             |
 | **Administrator-E-Mail** | *admin\@org.com*                               | Legen Sie die E-Mail-Adresse fest, an die alle Benachrichtigungen von **API Management** gesendet werden.                                                                                                                                                                                                                                              |

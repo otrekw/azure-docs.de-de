@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 10/28/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 427cf87a8907482ae5346372c2997ce6e01084d0
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: e6911c51ecfe1c8f6924bf403e9ad00e14558a09
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73027108"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448475"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Schnellstart: Suchen nach Nachrichten mit C# und der Bing-News-Suche-REST-API
 
@@ -32,8 +32,6 @@ Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
 1. Erstellen Sie eine neue C#-Konsolenprojektmappe in Visual Studio. Fügen Sie dann die folgenden Namespaces in die Hauptcodedatei ein.
@@ -46,7 +44,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     using System.Collections.Generic;
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
     const string accessKey = "enter key here";

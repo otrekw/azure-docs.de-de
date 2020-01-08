@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6f371d07fdf09aae6ce4396f0916758f8588506b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670308"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75526769"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Bereitstellen von Modellen in der Produktion, um eine aktive Rolle bei geschäftlichen Entscheidungen zu spielen
 
@@ -25,7 +25,7 @@ Bei einer Produktionsbereitstellung kann ein Modell eine aktive Rolle in einem U
 
 Es gibt verschiedene Ansätze und Plattformen für das Einführen von Modellen in die Produktion. Hier sind einige Optionen angegeben:
 
-- [Bereitstellen von Modellen mit Azure Machine Learning](../service/how-to-deploy-and-where.md)
+- [Bereitstellen von Modellen mit Azure Machine Learning](../how-to-deploy-and-where.md)
 - [Bereitstellung eines Modells in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 

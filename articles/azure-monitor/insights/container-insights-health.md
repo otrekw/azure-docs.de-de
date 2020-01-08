@@ -1,23 +1,14 @@
 ---
 title: Überwachen der Integrität von Kubernetes-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Integrität Ihrer AKS- und Nicht-AKS-Cluster anzeigen und analysieren können.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/18/2019
-ms.author: magoedte
-ms.openlocfilehash: 08f7cf5a26108608aa3719085d69ec9543f4aa51
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.date: 12/01/2019
+ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279652"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405100"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Verstehen der Integrität von Kubernetes-Clustern mit Azure Monitor für Container
 

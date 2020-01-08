@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 40797c1b46bc88ecdaab6e28ef64f05a73e3ba8d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c522e88b5c7a759f72704e44e041c01d8541cc7c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495915"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646811"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -105,7 +105,7 @@ Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien ver
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-Hostnamenauflösung
-Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichnung* am Azure-*Standort* **USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst.
+Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichnung* am Azure-*Standort***USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst.
 
 > [!IMPORTANT]
 > Jede erstellte Domänennamensbezeichnung muss innerhalb des Azure-Standorts eindeutig sein.  
@@ -170,21 +170,21 @@ Beim Erstellen eines virtuellen Computers wird den von Azure verwalteten DNS-Ser
 
 Virtuelle Computer, die mit von Azure verwalteten DNS-Servern konfiguriert sind, können die Hostnamen aller virtuellen Computer in demselben virtuellen Netzwerk in ihre privaten IP-Adressen auflösen. Sie müssen einen benutzerdefinierten DNS-Server verwenden, um Hostnamen von virtuellen Computern in verbundenen virtuellen Netzwerken aufzulösen.
 
-### <a name="internal-load-balancers-ilb--application-gateways"></a>Interner Lastenausgleich (Internal Load Balancer, ILB) und Anwendungsgateways
+### <a name="internal-load-balancers-ilb--application-gateways"></a>Interne Load Balancer (ILB) und Anwendungsgateways
 
 Sie können der **Front-End**-Konfiguration eines [internen Azure-Lastenausgleichs](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) oder eines [Azure Application Gateways](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eine private IP-Adresse zuweisen. Diese private IP-Adresse fungiert als interner Endpunkt und steht nur den Ressourcen innerhalb des entsprechenden virtuellen Netzwerks und der damit verbundenen Remotenetzwerke zur Verfügung. Der Front-End-Konfiguration kann eine dynamische oder eine statische private IP-Adresse zugewiesen werden.
 
 ### <a name="at-a-glance"></a>Auf einen Blick
 In der Tabelle unten sind die spezifischen Eigenschaften, über die eine private IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann, und die möglichen Zuweisungsverfahren (dynamisch oder statisch) angegeben.
 
-| Ressource der obersten Ebene | Zuordnung der IP-Adresse | dynamisch | statischen |
+| Ressource der obersten Ebene | Zuordnung der IP-Adresse | Dynamisch | statischen |
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Load Balancer |Front-End-Konfiguration |Ja |Ja |
 | Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
 
 ## <a name="limits"></a>Einschränkungen
-Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.
+Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.
 
 ## <a name="pricing"></a>Preise
 Für öffentliche IP-Adressen wird unter Umständen eine geringe Gebühr berechnet. Weitere Informationen zu den Preisen für IP-Adressen in Azure finden Sie auf der Seite [Preise für IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses).

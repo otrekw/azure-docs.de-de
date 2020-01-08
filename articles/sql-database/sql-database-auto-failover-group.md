@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 11/07/2019
-ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 48eb9cfe16062ac587a12b845b2fb226ac5faf23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75348859"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -31,9 +31,10 @@ Darüber hinaus bieten Gruppen für automatisches Failover Lese-/Schreib-Listene
 
 Wenn Sie Autofailover-Gruppen mit einer Richtlinie für ein automatisches Failover verwenden, führt jeder Ausfall, der Datenbanken auf dem SQL-Datenbank-Server oder in der verwalteten Instanz betrifft, zu einem automatischen Failover. Sie können Autofailover-Gruppen über folgende Komponenten verwalten:
 
-- Das [Azure-Portal](sql-database-implement-geo-distributed-database.md)
+- [Azure portal](sql-database-implement-geo-distributed-database.md)
+- [Azure-Befehlszeilenschnittstelle: Failovergruppe](scripts/sql-database-add-single-db-to-failover-group-cli.md)
 - [PowerShell: Failovergruppe](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [REST-API: Failovergruppe](https://docs.microsoft.com/rest/api/sql/failovergroups)
+- [REST-API: Failovergruppe](/rest/api/sql/failovergroups)
 
 Stellen Sie nach dem Failover sicher, dass die Authentifizierungsanforderungen für Ihren Server und Ihre Datenbank auf der neuen primären konfiguriert sind. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 

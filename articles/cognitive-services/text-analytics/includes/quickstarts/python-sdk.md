@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/05/2019
 ms.author: aahi
-ms.openlocfilehash: 6d4076563ac803c72f3749399bed6aaa235a0343
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7f113a9f1cc13278b7949570fec394ccee7f7437
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795894"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446264"
 ---
 <a name="HOLTop"></a>
 
@@ -42,11 +42,15 @@ Erstellen Sie eine neue Python-Datei, und importieren Sie die folgenden Biblioth
 
 [!code-python[import statements](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=imports)]
 
-Erstellen Sie Variablen für den Azure-Endpunkt und den Abonnementschlüssel Ihrer Ressource. Rufen Sie diese Werte aus den Umgebungsvariablen „TEXT_ANALYTICS_SUBSCRIPTION_KEY“ und „TEXT_ANALYTICS_ENDPOINT“ ab. Wenn Sie diese Umgebungsvariablen erstellt haben, nachdem Sie mit der Bearbeitung der Anwendung begonnen haben, muss der Editor, die IDE oder die Shell, den bzw. die Sie für den Zugriff auf die Variablen verwenden, geschlossen und erneut geöffnet werden.
+Erstellen Sie Variablen für den Azure-Endpunkt und den Abonnementschlüssel Ihrer Ressource.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
-[!code-python[endpoint and key variables](~/samples-cognitive-services-python-sdk/samples/language/text_analytics_samples.py?name=initialVars)]
+```python
+subscription_key = "<paste-your-text-analytics-key-here>"
+endpoint = "<paste-your-text-analytics-endpoint-here>"
+```
+
 
 ## <a name="object-model"></a>Objektmodell
 

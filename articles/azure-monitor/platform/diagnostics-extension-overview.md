@@ -4,15 +4,15 @@ description: Verwenden Sie die Azure-Diagnose zur Problembehandlung, zur Leistun
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: d1721411b57fc3542af48fc5f48eca7e4a2d06c8
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1bdefc6b61e4e5cc5b8648880c5fdd8662af1bc1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395368"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
 Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Skalierungsgruppen von Virtual Machines und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).

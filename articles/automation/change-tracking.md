@@ -2,20 +2,16 @@
 title: Nachverfolgen von Änderungen mit Azure Automation
 description: Mit der Lösung für die Änderungsnachverfolgung können Sie Änderungen an Software und Windows-Diensten in Ihrer Umgebung besser erkennen.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/29/2019
 ms.topic: conceptual
-manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd800062c4a8362919b1818550b2fca9fa3eb88
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418748"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -272,7 +268,7 @@ Zusätzlich zu den Details, die im Portal bereitgestellt werden, können Sie auc
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Änderungsdatensätze, die mit dieser Lösung erfasst wurden:
 
-|Abfragen  |BESCHREIBUNG  |
+|Abfrage  |BESCHREIBUNG  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Zeigt die aktuellen Bestandsdatensätze für Windows-Dienste an, die auf „Auto“ festgelegt, aber als „Beendet“ gemeldet wurden.<br>Die Ergebnisse werden auf den aktuellen Datensatz für den betreffenden Softwarenamen und Computer beschränkt.      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|Zeigt die Änderungsdatensätze für entfernte Software an.|
@@ -301,7 +297,7 @@ Nachdem alle Parameter und die Logik festgelegt sind, können wir die Warnung au
 
 Die Warnung zu Änderungen an der Hostdatei ist eine gute Anwendung von Warnungen für Änderungsnachverfolgung oder Bestandsdaten, aber es gibt noch viel mehr Szenarien für die Warnung, wie zum Beispiel die Fälle, die zusammen mit ihren Beispielabfragen im folgenden Abschnitt definiert sind.
 
-|Abfragen  |BESCHREIBUNG  |
+|Abfrage  |BESCHREIBUNG  |
 |---------|---------|
 |ConfigurationChange <br>&#124; where ConfigChangeType == "Files" and FileSystemPath contains " c:\\windows\\system32\\drivers\\"|Nützlich für das Nachverfolgen von Änderungen an kritischen Systemdateien|
 |ConfigurationChange <br>&#124; where FieldsChanged contains "FileContentChecksum" and FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"|Nützlich für das Nachverfolgen von Änderungen an wichtige Konfigurationsdateien|

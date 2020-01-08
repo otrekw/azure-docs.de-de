@@ -10,12 +10,12 @@ ms.date: 02/20/2019
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d7cafa6ec385ed296a5341efdaec1b16f7742683
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ad0367a89730c3aba37c5f75158cb42ae4ae668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440062"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory-Instanz mit einer Azure Resource Manager-Vorlage
 
@@ -38,7 +38,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
 
-Allgemeine Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+Allgemeine Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum Definieren von Data Factory-Entitäten, damit Sie das Tutorial schnell durchlaufen und die Vorlage testen können. Informationen zum Definieren der einzelnen Data Factory-Entitäten finden Sie im Abschnitt [Data Factory-Entitäten in der Vorlage](#data-factory-entities-in-the-template).
 

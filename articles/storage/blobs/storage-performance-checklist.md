@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 24d601dc2116b7daf315bb3c6f20c4dc0b6f6ce5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72382039"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613889"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Checkliste zu Leistung und Skalierbarkeit für Blob Storage
 
@@ -58,7 +58,7 @@ In diesem Artikel werden bewährte Methoden für die Leistung in einer Checklist
 
 Wenn Ihre Anwendung eines der Skalierbarkeitsziele erreicht oder überschreitet, kann es zu erhöhter Transaktionslatenz oder Drosselung kommen. Wenn Azure Storage Ihre Anwendung drosselt, beginnt der Dienst, die Fehlercodes 503 (Server ausgelastet) oder 500 (Timeout bei Vorgang) zurückzugeben. Diese Fehler zu vermeiden, indem Sie innerhalb der Grenzwerte der Skalierbarkeitsziele bleiben, trägt maßgeblich dazu bei, die Leistung Ihrer Anwendung zu verbessern.
 
-Weitere Informationen zu den Skalierbarkeitszielen für den Warteschlangendienst finden Sie unter [Azure Storage-Skalierbarkeits- und Leistungsziele](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-blob-storage-scale-targets).
+Weitere Informationen zu den Skalierbarkeitszielen für den Warteschlangendienst finden Sie unter [Skalierbarkeits- und Leistungsziele in Azure Storage](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage).
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximale Anzahl von Speicherkonten
 
@@ -74,7 +74,7 @@ Wenn sich Ihre Anwendung den Skalierbarkeitszielen für ein Speicherkonto näher
 
 - Wenn Ihre Anwendung das Transaktionsziel erreicht, sollten Sie die Verwendung von Blockblob-Speicherkonten in Erwägung ziehen, die für hohe Transaktionsraten und niedrige, gleichbleibende Wartezeiten optimiert sind. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 - Berücksichtigen Sie die Arbeitsauslastung, aufgrund derer Ihre Anwendung das Skalierbarkeitsziel erreicht oder überschreitet. Können Sie diese anders konzipieren, um weniger Bandbreite bzw. Kapazität oder weniger Transaktionen zu verwenden?
-- Wenn Ihre Anwendung eines der Skalierbarkeitsziele überschreiten muss, erstellen Sie mehrere Speicherkonten, und partitionieren Sie Ihre Anwendungsdaten über diese Speicherkonten. Konzipieren Sie in diesem Fall die Anwendung so, dass Sie künftig weitere Speicherkonten für den Lastenausgleich hinzufügen können. Speicherkonten selbst verursachen abgesehen von den Nutzungskosten für gespeicherte Daten, durchgeführte Transaktionen oder übertragene Daten keine Kosten.
+- Wenn Ihre Anwendung eines der Skalierbarkeitsziele überschreiten muss, erstellen Sie mehrere Speicherkonten, und partitionieren Sie Ihre Anwendungsdaten über diese Speicherkonten hinweg. Konzipieren Sie in diesem Fall die Anwendung so, dass Sie künftig weitere Speicherkonten für den Lastenausgleich hinzufügen können. Speicherkonten selbst verursachen abgesehen von den Nutzungskosten für gespeicherte Daten, durchgeführte Transaktionen oder übertragene Daten keine Kosten.
 - Wenn sich Ihre Anwendung den Bandbreitenzielen nähert, versuchen Sie, Daten clientseitig zu komprimieren, um die erforderliche Bandbreite zum Senden der Daten an Azure Storage zu reduzieren.
     Die Komprimierung von Daten kann zwar Bandbreite sparen und die Netzwerkleistung verbessern, aber auch negative Auswirkungen auf die Leistung haben. Beobachten Sie, wie sich der zusätzliche Verarbeitungsbedarf für das Komprimieren und Dekomprimieren der Daten auf dem Client auf die Leistung auswirkt. Bedenken Sie, dass das Speichern von komprimierten Daten die Problembehandlung erschweren kann, da es schwieriger sein kann, die Daten mithilfe von Standardtools anzuzeigen.
 - Wenn sich Ihre Anwendung den Skalierbarkeitszielen nähert, sollten Sie unbedingt ein exponentielles Backoff für Wiederholungsversuche verwenden. Sie sollten die in diesem Artikel beschriebenen Empfehlungen umsetzen, um zu verhindern, dass die Skalierbarkeitsziele erreicht werden. Wenn Sie ein exponentielles Backoff für Wiederholungsversuche verwenden, kann Ihre Anwendung Vorgänge jedoch nicht schnell wiederholen, wodurch sich die Drosselung verschlechtern kann. Weitere Informationen finden Sie im Abschnitt [Timeoutfehler und Fehler durch ausgelasteten Server](#timeout-and-server-busy-errors).
@@ -145,7 +145,7 @@ Angenommen, Sie müssen im Webbrowser eines Benutzers oder in einer Mobiltelefon
 
 Mit SAS (Shared Access Signature) können Sie die Verwendung einer Dienstanwendung als Proxy für Azure Storage vermeiden. SAS ermöglicht es dem Benutzergerät, Anforderungen mithilfe eines beschränkten Zugriffstokens direkt an Azure Storage zu senden. Wenn ein Benutzer beispielsweise ein Foto in Ihre Anwendung hochladen möchte, kann die Dienstanwendung eine SAS generieren und an das Gerät des Benutzers senden. Das SAS-Token kann die Berechtigung zum Schreiben in eine Azure Storage Ressource für einen bestimmten Zeitraum erteilen, nach dem das SAS-Token dann abläuft. Weitere Informationen zu SAS finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signatures)](../common/storage-sas-overview.md).  
 
-Normalerweise lässt ein Webbrowser nicht zu, dass von JavaScript-Code in einer Seite, die von einer Website in einer Domäne gehostet wird, bestimmte Vorgänge wie Schreibvorgänge in einer anderen Domäne ausgeführt werden. Diese als Richtlinie des gleichen Ursprungs bezeichnete Richtlinie verhindert, dass ein schädliches Skript auf einer Seite Zugriff auf Daten auf einer anderen Webseite erhält. Beim Erstellen einer Lösung in der Cloud kann sich die Richtlinie des gleichen Ursprungs jedoch als Einschränkung erweisen. CORS (Cross-Origin Resource Sharing) ist eine Browserfunktion, mit deren Hilfe die Zieldomäne dem Browser mitteilen kann, dass sie Anforderungen aus der Quelldomäne vertraut.
+Normalerweise lässt ein Webbrowser nicht zu, dass JavaScript-Code in einer Seite, die von einer Website in einer Domäne gehostet wird, bestimmte Vorgänge (z. B. Schreibvorgänge) in einer anderen Domäne ausführt. Diese als Richtlinie des gleichen Ursprungs bezeichnete Richtlinie verhindert, dass ein schädliches Skript auf einer Seite Zugriff auf Daten auf einer anderen Webseite erhält. Beim Erstellen einer Lösung in der Cloud kann sich die Richtlinie des gleichen Ursprungs jedoch als Einschränkung erweisen. CORS (Cross-Origin Resource Sharing) ist eine Browserfunktion, mit deren Hilfe die Zieldomäne dem Browser mitteilen kann, dass sie Anforderungen aus der Quelldomäne vertraut.
 
 Angenommen, eine in Azure ausgeführte Webanwendung sendet eine Ressourcenanforderung an ein Azure Storage-Konto. Die Webanwendung ist die Quelldomäne und das Speicherkonto die Zieldomäne. Sie können CORS für alle Azure Storage-Dienste konfigurieren, um dem Webbrowser mitzuteilen, dass Azure Storage Anforderungen aus der Quelldomäne als vertrauenswürdig einstuft. Weitere Informationen zu CORS finden Sie unter [Unterstützung von Cross-Origin Resource Sharing (CORS) für Azure Storage](/rest/api/storageservices/Cross-Origin-Resource-Sharing--CORS--Support-for-the-Azure-Storage-Services).  
   
@@ -208,7 +208,7 @@ Weitere Informationen finden Sie unter der [ThreadPool.SetMinThreads](/dotnet/ap
 
 ## <a name="unbounded-parallelism"></a>Uneingeschränkte Parallelität
 
-Parallelität kann großartig für die Leistung sein. Bei der Verwendung von uneingeschränkter Parallelität ist jedoch Vorsicht geboten, da in diesem Fall keine Beschränkung für die Anzahl der Threads oder parallelen Anforderungen erzwungen wird. Beschränken Sie parallele Anforderungen zum Hoch- oder Herunterladen von Daten auf den Zugriff auf mehrere Partitionen im selben Speicherkonto oder auf mehrere Elemente in derselben Partition. Bei uneingeschränkter Parallelität können die Kapazität des Clientgeräts oder die Skalierbarkeitsziele des Speicherkontos von der Anwendung überschritten werden, sodass es zu längeren Wartezeiten und Drosselung kommt.  
+Parallelität kann großartig für die Leistung sein. Bei der Verwendung von uneingeschränkter Parallelität ist jedoch Vorsicht geboten, da in diesem Fall keine Beschränkung für die Anzahl der Threads oder parallelen Anforderungen erzwungen wird. Beschränken Sie parallele Anforderungen zum Hoch- oder Herunterladen von Daten auf den Zugriff auf mehrere Partitionen im selben Speicherkonto oder auf mehrere Elemente in derselben Partition. Bei uneingeschränkter Parallelität können die Kapazität des Clientgeräts oder die Skalierbarkeitsziele des Speicherkontos überschritten werden, sodass es zu längeren Wartezeiten und Drosselung kommt.  
 
 ## <a name="client-libraries-and-tools"></a>Clientbibliotheken und -tools
 

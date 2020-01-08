@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: mlearned
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: b233c5dd639bb6652f201727748a081f6a8a4c64
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 382895c1b5a4cb2bc88ff2371cec59267ea4e176
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71950337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442940"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -23,12 +23,21 @@ Mit [Azure Container Networking Interface (CNI)][cni-networking] erhält jeder P
 
 Dieser Artikel veranschaulicht die Verwendung von *kubenet*-Netzwerken zum Erstellen und Verwenden eines virtuellen Netzwerksubnetzes für einen AKS-Cluster. Weitere Informationen zu Netzwerkoptionen und -überlegungen finden Sie unter [Netzwerkkonzepte für Kubernetes und AKS][aks-network-concepts].
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+* Das virtuelle Netzwerk des AKS-Clusters muss ausgehende Internetkonnektivität zulassen.
+* In einem Subnetz sollte nicht mehr als ein AKS-Cluster erstellt werden.
+* AKS-Cluster verwenden möglicherweise nicht `169.254.0.0/16`, `172.30.0.0/16`, `172.31.0.0/16` oder `192.0.2.0/24` für den Kubernetes-Dienstadressbereich.
+* Der vom AKS-Cluster verwendete Dienstprinzipal muss zumindest über Berechtigungen [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md#network-contributor) für das Subnetz in Ihrem virtuellen Netzwerk verfügen. Wenn Sie eine [benutzerdefinierte Rolle](../role-based-access-control/custom-roles.md) anstelle der integrierten Rolle des Netzwerkmitwirkenden definieren möchten, sind die folgenden Berechtigungen erforderlich:
+  * `Microsoft.Network/virtualNetworks/subnets/join/action`
+  * `Microsoft.Network/virtualNetworks/subnets/read`
+
 > [!WARNING]
 > Um Windows Server-Knotenpools (derzeit als Vorschau in AKS) verwenden zu können, müssen Sie Azure CNI verwenden. Die Verwendung von „kubenet“ als das Netzwerkmodell ist für Windows Server-Container nicht verfügbar.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure-Befehlszeilenschnittstelle][install-azure-cli].
+Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Übersicht über kubenet-Netzwerke mit eigenem Subnetz
 
@@ -131,7 +140,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Weisen Sie nun dem Dienstprinzipal für den AKS-Cluster mithilfe des Befehls [az role assignment create][az-role-assignment-create] *Mitwirkender*-Berechtigungen für das virtuelle Netzwerk zu. Geben Sie Ihre eigene *\<App-ID>* wie in der Ausgabe des vorherigen Befehls an, um den Dienstprinzipal zu erstellen:
+Weisen Sie nun dem Dienstprinzipal für den AKS-Cluster mithilfe des Befehls [az role assignment create][az-role-assignment-create]*Mitwirkender*-Berechtigungen für das virtuelle Netzwerk zu. Geben Sie Ihre eigene *\<App-ID>* wie in der Ausgabe des vorherigen Befehls an, um den Dienstprinzipal zu erstellen:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor

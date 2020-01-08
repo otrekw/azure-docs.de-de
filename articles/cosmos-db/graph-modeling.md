@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 12/02/2019
 ms.author: lbosq
-ms.openlocfilehash: 7bc5544249b7e476afde08281aa005569ef6f8ce
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: d1e21827dda26f1c577f6cc70a5e34bb09a34d9c
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873725"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75500058"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Modellieren von Graphdaten für die Gremlin-API von Azure Cosmos DB
 
@@ -23,7 +23,7 @@ Das folgende Dokument enthält Empfehlungen für die Modellierung von Graphdaten
 Der in dieser Anleitung beschriebene Prozess basiert auf folgenden Annahmen:
  * Die **Entitäten** im Aufgabenbereich sind bekannt. Diese Entitäten müssen bei jeder Anforderung _atomisch_ genutzt werden. Das heißt, das Datenbanksystem ist nicht darauf ausgelegt, die Daten einer einzelnen Entität in mehreren Abfrageanforderungen abzurufen.
  * Die **Lese- und Schreibanforderungen** für das Datenbanksystem sind bekannt. Von diesen Anforderungen hängt ab, welche Optimierungen für das Graphdatenmodell erforderlich sind.
- * Die Prinzipien des [Eigenschaftsgraph-Standards von Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) sind bekannt.
+ * Die Prinzipien des [Eigenschaftsgraph-Standards von Apache Tinkerpop](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) sind bekannt.
 
 ## <a name="when-do-i-need-a-graph-database"></a>Wann benötige ich eine Graphdatenbank?
 
@@ -41,18 +41,18 @@ Im nächsten Schritt muss bestimmt werden, ob der Graph für Analysen oder für 
 
 ## <a name="how-to-use-graph-objects"></a>Verwenden von Graphobjekten
 
-Im [Eigenschaftsgraph-Standard von Apache Tinkerpop](http://tinkerpop.apache.org/docs/current/reference/#graph-computing) sind zwei Arten von Objekten definiert: **Scheitelpunkte** und **Kanten**. 
+Im [Eigenschaftsgraph-Standard von Apache Tinkerpop](https://tinkerpop.apache.org/docs/current/reference/#graph-computing) sind zwei Arten von Objekten definiert: **Scheitelpunkte** und **Kanten**. 
 
 Im Anschluss finden Sie die bewährten Methoden für die Eigenschaften in den Graphobjekten:
 
 | Object | Eigenschaft | type | Notizen |
 | --- | --- | --- |  --- |
-| Scheitelpunkt | id | Zeichenfolge | Individuell pro Partition erzwungen. Ist beim Einfügen kein Wert angegeben, wird ein automatisch generierter GUID gespeichert. |
-| Scheitelpunkt | label | Zeichenfolge | Diese Eigenschaft dient zum Definieren der Art von Entität, die der Scheitelpunkt darstellt. Ist kein Wert angegeben, wird der Standardwert „vertex“ verwendet. |
+| Scheitelpunkt | id | String | Individuell pro Partition erzwungen. Ist beim Einfügen kein Wert angegeben, wird ein automatisch generierter GUID gespeichert. |
+| Scheitelpunkt | label | String | Diese Eigenschaft dient zum Definieren der Art von Entität, die der Scheitelpunkt darstellt. Ist kein Wert angegeben, wird der Standardwert „vertex“ verwendet. |
 | Scheitelpunkt | properties | Zeichenfolge, boolescher Wert, numerischer Wert | Eine Liste separater Eigenschaften, die in jedem Scheitelpunkt als Schlüssel-Wert-Paare gespeichert sind. |
 | Scheitelpunkt | Partitionsschlüssel | Zeichenfolge, boolescher Wert, numerischer Wert | Diese Eigenschaft definiert den Speicherort für den Scheitelpunkt und die zugehörigen ausgehenden Kanten. Weitere Informationen zur Graphpartitionierung finden Sie [hier](graph-partitioning.md). |
-| Microsoft Edge | id | Zeichenfolge | Individuell pro Partition erzwungen. Standardmäßig automatisch generiert. Kanten müssen in der Regel nicht individuell anhand einer ID abgerufen werden. |
-| Microsoft Edge | label | Zeichenfolge | Diese Eigenschaft dient zum Definieren der Art von Beziehung zwischen zwei Scheitelpunkten. |
+| Microsoft Edge | id | String | Individuell pro Partition erzwungen. Standardmäßig automatisch generiert. Kanten müssen in der Regel nicht individuell anhand einer ID abgerufen werden. |
+| Microsoft Edge | label | String | Diese Eigenschaft dient zum Definieren der Art von Beziehung zwischen zwei Scheitelpunkten. |
 | Microsoft Edge | properties | Zeichenfolge, boolescher Wert, numerischer Wert | Eine Liste separater Eigenschaften, die in jeder Kante als Schlüssel-Wert-Paare gespeichert sind. |
 
 > [!NOTE]

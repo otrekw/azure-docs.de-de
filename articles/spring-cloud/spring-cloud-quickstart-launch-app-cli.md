@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: c00749191b83423e771535525afcbdd7892da88e
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: a5b2c2610adb2754f378be4a06343537d5728196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895438"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461673"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Schnellstart: Starten einer Java Spring-Anwendung mit der Azure CLI
 
@@ -54,7 +54,7 @@ az extension add --name spring-cloud
 
 ## <a name="provision-a-service-instance-on-the-azure-cli"></a>Bereitstellen einer Dienstinstanz über die Azure CLI
 
-1. Melden Sie sich bei der Azure CLI an, und wählen Sie Ihr aktives Abonnement aus. Vergewissern Sie sich, dass Sie das aktive Abonnement auswählen, das in der Whitelist für Azure Spring Cloud enthalten ist.
+1. Melden Sie sich bei der Azure-Befehlszeilenschnittstelle an, und wählen Sie Ihr aktives Abonnement aus. Vergewissern Sie sich, dass Sie das aktive Abonnement auswählen, das in der Whitelist für Azure Spring Cloud enthalten ist.
 
     ```azurecli
         az login
@@ -69,9 +69,9 @@ az extension add --name spring-cloud
     ```azurecli
         az group create --location eastus --name <resource group name>
     ```
-    Erfahren Sie mehr über [Azure-Ressourcengruppen](../azure-resource-manager/resource-group-overview.md).
+    Erfahren Sie mehr über [Azure-Ressourcengruppen](../azure-resource-manager/management/overview.md).
 
-4. Öffnen Sie ein Azure CLI-Fenster, und führen Sie die folgenden Befehle aus, um eine Instanz von Azure Spring Cloud bereitzustellen.
+4. Öffnen Sie ein Fenster der Azure-Befehlszeilenschnittstelle, und führen Sie die folgenden Befehle aus, um eine Instanz von Azure Spring Cloud bereitzustellen.
 
     ```azurecli
         az spring-cloud create -n <service name> -g <resource group name>
@@ -79,7 +79,7 @@ az extension add --name spring-cloud
 
     Die Bereitstellung der Dienstinstanz dauert etwa fünf Minuten.
 
-5. Legen Sie mithilfe der folgenden Befehle den Standardnamen für die Ressourcengruppe und den Clusternamen fest:
+5. Legen Sie den Standardnamen für die Ressourcengruppe und den Clusternamen mithilfe der folgenden Befehle fest:
 
     ```azurecli
         az configure --defaults group=<service group name>

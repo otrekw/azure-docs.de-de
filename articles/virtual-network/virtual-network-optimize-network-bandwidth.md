@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67202915"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690888"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer
 
@@ -143,12 +143,10 @@ Um die Optimierungen zu erhalten, empfiehlt es sich, einen virtuellen Computer m
 Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein. Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.2. Geben Sie die folgenden Befehle ein, um LIS herunterzuladen und zu installieren:
 
 ```bash
-mkdir lis4.2.3-5
-cd lis4.2.3-5
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
-tar xvzf lis-rpms-4.2.3-5.tar.gz
+wget https://aka.ms/lis
+tar xvf lis
 cd LISISO
-install.sh #or upgrade.sh if prior LIS was previously installed
+sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 ```
 
 Weitere Informationen zu Linux Integration Services Version 4.2 für Hyper-V erhalten Sie auf der [Downloadseite](https://www.microsoft.com/download/details.aspx?id=55106).

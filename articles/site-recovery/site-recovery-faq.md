@@ -1,18 +1,14 @@
 ---
 title: Allgemeine Fragen zum Azure Site Recovery-Dienst
 description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azure Site Recovery behandelt.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078540"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497539"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -158,7 +154,7 @@ Unser Partner Riverbed bietet eine detaillierte Anleitung zum Arbeiten mit Azure
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kann ich virtuelle Computer mithilfe von ExpressRoute zu Azure replizieren?
 Ja, [ExpressRoute kann zum Replizieren virtueller Computer zu Azure verwendet werden](concepts-expressroute-with-site-recovery.md).
 
-- Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (für neue Verbindungen veraltet) einrichten.
+- Azure Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) oder ein vorhandenes [öffentliches Peering](../expressroute/about-public-peering.md) (für neue Verbindungen veraltet) einrichten.
 - Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation.
 - Replikation über privates Peering wird nicht unterstützt.
 - Falls Sie VMware-Computer oder physische Computer schützen, stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für den Konfigurationsserver erfüllt sind. Der Konfigurationsserver muss für die Orchestrierung der Site Recovery-Replikation eine Verbindung mit bestimmten URLs herstellen können. Für diese Verbindung kann ExpressRoute nicht verwendet werden.
@@ -219,7 +215,7 @@ Zum Automatisieren können Sie den lokalen Orchestrator oder Operations Manager 
 Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ein Failback auf einen anderen Host als Azure ausführen.
 
 * [Für virtuelle VMware-Computer](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Für virtuelle Hyper-V-Computer](hyper-v-azure-failback.md#perform-failback)
+* [Für virtuelle Hyper-V-Computer](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
 ## <a name="automation"></a>Automation
 

@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7fe95a35a6b78bae66521a09d63d376ec8757479
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 43d19f5b3f291f69e7b6f765dcee230345421d1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699672"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431771"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das branchenübliche Protokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig durch die Cloud oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. Außerdem können Azure-Dateifreigaben auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.

@@ -4,15 +4,15 @@ description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben besc
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 8dec91a3987aed978bb088d1aeab48a6fd0f9fb4
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7e9725c2a33bd63b7ce6751f346da17eb68fe6f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364780"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
 
@@ -99,7 +99,7 @@ Die Schritte in diesem Abschnitt sind notwendig, wenn Sie den Windows-Agent nich
 
 5. Wenn Sie einen Arbeitsbereich hinzufügen, klicken Sie auf **Hinzufügen**. Fügen Sie dann im Dialogfeld **Log Analytics-Arbeitsbereich hinzufügen** die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel (Primärschlüssel) ein. Wenn der Computer in einen Log Analytics-Arbeitsbereich in Azure Government Cloud melden soll, wählen Sie „Azure US-Regierung“ aus der Dropdownliste „Azure Cloud“ aus.
 
-6. Klicken Sie zum Speichern der Änderungen auf **OK** .
+6. Klicken Sie auf **OK** , um die Änderungen zu speichern.
 
 #### <a name="remove-a-workspace-using-powershell"></a>Entfernen eines Arbeitsbereichs mithilfe von PowerShell
 

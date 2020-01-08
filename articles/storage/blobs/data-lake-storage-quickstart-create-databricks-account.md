@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.reviewer: jeking
-ms.openlocfilehash: 5badd4aeabd8ec322ea5fb847cf134f302269c27
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: a19a6e7e74fc645c891754e5afdbd2a6a1bdefd4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331014"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443815"
 ---
 # <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Schnellstart: Analysieren von Daten in Azure Data Lake Storage Gen2 mit Azure Databricks
 
@@ -29,7 +29,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
   Fügen Sie den Namen des Speicherkontos in eine Textdatei ein. Sie benötigen ihn in Kürze.
 
-* Erstellen eines Dienstprinzipals Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
   Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
 
@@ -58,7 +58,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md). |
+    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md). |
     |**Location**     | Wählen Sie **USA, Westen 2** aus. Sie können auch eine andere öffentliche Region auswählen.        |
     |**Tarif**     |  Wählen Sie zwischen **Standard** und **Premium**. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/).       |
 
@@ -76,7 +76,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-    ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+    ![Erstellen eines Databricks Spark-Clusters in Azure](./media/data-lake-storage-quickstart-create-databricks-account/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
     Geben Sie Werte für die folgenden Felder an, und übernehmen Sie bei den anderen Feldern die Standardwerte:
 
@@ -96,11 +96,11 @@ In diesem Abschnitt erstellen Sie ein Notizbuch im Azure Databricks-Arbeitsberei
 
 2. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** > **Notebook** aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
 3. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen für das Notebook ein. Wählen Sie **Scala** als Sprache und anschließend den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-details.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 
@@ -173,7 +173,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 
 3. Sie erhalten eine tabellarische Ausgabe wie im folgenden Screenshot, der allerdings nur einen Teil der Spalten zeigt:
 
-    ![JSON-Beispieldaten](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-Beispieldaten")
+    ![JSON-Beispieldaten](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sample-csv-data.png "JSON-Beispieldatei")
 
     Neben verschiedenen anderen Details enthalten die Beispieldaten das Geschlecht der Zielgruppe eines Radiokanals (Spalte **gender**) und die Information, ob die jeweilige Person ein kostenloses oder ein kostenpflichtiges Abonnement nutzt (Spalte **level**).
 
@@ -183,7 +183,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 
 5. Platzieren Sie per Drag & Drop Werte in **Customize Plot** (Zeichnung anpassen), wie im folgenden Screenshot zu sehen.
 
-    ![Anpassen des Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Anpassen des Balkendiagramms")
+    ![Anpassen eines Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-notebook-customize-plot.png "Anpassen eines Balkendiagramms")
 
     - Legen Sie **Schlüssel** auf **gender** fest.
     - Legen Sie **Series groupings** (Reihengruppierungen) auf **level** fest.
@@ -194,7 +194,7 @@ Führen Sie die folgenden Aufgaben aus, um einen Spark SQL-Auftrag für die Date
 
 7. Die Ausgabe zeigt die visuelle Darstellung wie im folgenden Screenshot dargestellt:
 
-     ![Anpassen des Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Anpassen des Balkendiagramms")
+     ![Anpassen eines Balkendiagramms](./media/data-lake-storage-quickstart-create-databricks-account/databricks-sql-query-output-bar-chart.png "Anpassen eines Balkendiagramms")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

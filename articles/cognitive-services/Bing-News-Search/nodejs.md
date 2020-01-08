@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 501ae6107232287011388bb67e64a1ae3fe5f7e3
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 42ac6cac972374dbd1db42b75742212046d2ce3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423729"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383131"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Node.js und der REST-API der Bing-News-Suche
 
@@ -34,8 +34,6 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
 1. Erstellen Sie eine neue JavaScript-Datei in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor, und legen Sie die Genauigkeit sowie die HTTPS-Anforderungen fest.
@@ -45,7 +43,8 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     let https = require('https');
     ```
 
-2. Erstellen Sie Variablen für den API-Endpunkt, den Bildersuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie Variablen für den API-Endpunkt, den Bildersuche-API-Pfad, Ihren Abonnementschlüssel und einen Suchbegriff. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird. 
+
     ```javascript
     let subscriptionKey = 'enter key here';
     let host = 'api.cognitive.microsoft.com';

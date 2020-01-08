@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0748047581945d513300d929c2d34d20099bf4d6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888783"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529693"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -30,7 +30,7 @@ Sobald Sie eine Azure-Ressource erstellen, wird Azure Monitor aktiviert und begi
 
 
 ## <a name="costs-associated-with-monitoring"></a>Kosten für die Überwachung
-Das Analysieren der Überwachungsdaten, die standardmäßig erfasst werden, ist kostenlos. Dies umfasst Folgendes:
+Das Analysieren der Überwachungsdaten, die standardmäßig erfasst werden, ist kostenlos. Dazu gehören:
 
 - Sammeln von Plattformmetriken und deren Analyse mit dem Metrik-Explorer
 - Sammeln von Aktivitätsprotokollen und deren Analyse im Azure-Portal
@@ -127,7 +127,7 @@ Azure Monitor-Protokolle konsolidieren Protokolle und Metriken aus mehreren Dien
 
 - Ein Tutorial zur Verwendung der Abfragesprache zum Schreiben von Protokollabfragen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../log-query/get-started-queries.md).
 - Informationen zur Erfassung von Ressourcenprotokollen in Azure Monitor-Protokollen und Details dazu, wie Sie in einer Abfrage darauf zugreifen, finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../platform/resource-logs-collect-workspace.md).
-- Eine Erläuterung der Struktur von Ressourcenprotokolldaten in Azure Monitor-Protokollen finden Sie unter [Sammlungsmodus](../platform/resource-logs-collect-workspace.md#collection-mode).
+- Eine Erläuterung der Struktur von Ressourcenprotokolldaten in Azure Monitor-Protokollen finden Sie unter [Sammlungsmodus](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode).
 - Ausführliche Informationen zu den Tabellen der einzelnen Azure-Dienste in Azure Monitor Protokollen finden Sie in der jeweiligen Dokumentation.
 
 ![Protokolle](media/monitor-azure-resource/logs.png)

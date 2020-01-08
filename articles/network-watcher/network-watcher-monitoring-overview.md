@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e6ff3e6798fadca89455790efa28891c02e9e459
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 45470733c9cfed104e39786be48a6edae20ad489
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996955"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645207"
 ---
 # <a name="what-is-azure-network-watcher"></a>Was ist Azure Network Watcher?
 
@@ -79,7 +79,7 @@ Die geltenden Sicherheitsregeln für eine Netzwerkschnittstelle stellen eine Kom
 
 ## <a name="metrics"></a>metrics
 
-Es gibt [Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) für die Anzahl von Netzwerkressourcen, die Sie in einem Azure-Abonnement und einer Region erstellen können. Wenn Sie die Grenzwerte erreicht haben, ist es nicht möglich, unter dem Abonnement oder in der Region weitere Ressourcen zu erstellen. Bei der Funktion *Limit für Netzwerkabonnement* wird eine Zusammenfassung dazu angezeigt, wie viele der einzelnen Netzwerkressourcen Sie für ein Abonnement und eine Region jeweils bereitgestellt haben und welche Grenzen für eine Ressource gelten. In der folgenden Abbildung ist die Teilausgabe für Netzwerkressourcen dargestellt, die in der Region „USA, Osten“ für ein Beispielabonnement bereitgestellt wurden:
+Es gibt [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) für die Anzahl von Netzwerkressourcen, die Sie in einem Azure-Abonnement und einer Region erstellen können. Wenn Sie die Grenzwerte erreicht haben, ist es nicht möglich, unter dem Abonnement oder in der Region weitere Ressourcen zu erstellen. Bei der Funktion *Limit für Netzwerkabonnement* wird eine Zusammenfassung dazu angezeigt, wie viele der einzelnen Netzwerkressourcen Sie für ein Abonnement und eine Region jeweils bereitgestellt haben und welche Grenzen für eine Ressource gelten. In der folgenden Abbildung ist die Teilausgabe für Netzwerkressourcen dargestellt, die in der Region „USA, Osten“ für ein Beispielabonnement bereitgestellt wurden:
 
 ![Grenzwerte für Abonnements](./media/network-watcher-monitoring-overview/subscription-limit.png)
 

@@ -2,19 +2,15 @@
 title: Erfahren Sie, wie Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs in Azure Automation integriert werden
 description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand integrieren, die Bestandteil von Azure Automation sind
 services: automation
-ms.service: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/11/2019
 ms.topic: article
-manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cc6e3f3aaa77d7691e0443ee74405058bde2dfa0
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850804"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421856"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Aktivieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand für mehrere VMs
 
@@ -89,7 +85,7 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
-   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png)erforderlich.
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
@@ -107,7 +103,7 @@ Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ v
 * Starten und beenden Sie VM-Runbooks.
 * Variables
 
-Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto** aus. Klicken Sie auf der Seite **Automation-Konto** auf {0}Verknüpfung zu diesem Konto aufheben{0}.
+Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

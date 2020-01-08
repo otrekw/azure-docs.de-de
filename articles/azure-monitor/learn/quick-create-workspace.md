@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie einen Log Analytics-Arbeitsbereich erste
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 6dd4486d52cc5c2fb568241ebaefad454e50cb2c
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 0ab8019a8537d4080afdb457459f09cd156ff4ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72894897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365528"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal
 Im Menü **Log Analytics-Arbeitsbereiche** können Sie einen Log Analytics-Arbeitsbereich über das Azure-Portal einrichten. Ein Log Analytics-Arbeitsbereich ist eine spezifische Umgebung für Azure Monitor-Protokolldaten. Jeder Arbeitsbereich verfügt über ein eigenes Datenrepository und eine eigene Konfiguration. Datenquellen und Lösungen sind so konfiguriert, dass die zugehörigen Daten in einem bestimmten Arbeitsbereich gespeichert werden. Ein Log Analytics-Arbeitsbereich ist erforderlich, wenn Sie Daten aus den folgenden Quellen erfassen möchten:
@@ -46,7 +46,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
    * Wählen Sie einen verfügbaren **Standort** aus.  Weitere Informationen finden Sie auf der Seite zur [Verfügbarkeit von Log Analytics in den einzelnen Regionen](https://azure.microsoft.com/regions/services/), und suchen Sie im Feld **Nach einem Produkt suchen** nach Azure Monitor.  
    * Wenn Sie einen Arbeitsbereich in einem neuen Abonnement erstellen, das nach dem 2. April 2018 erstellt wurde, wird automatisch der Tarif *Pro GB* verwendet. In diesem Fall ist keine Tarifauswahloption verfügbar.  Wenn Sie einen Arbeitsbereich für ein Abonnement erstellen, das vor dem 2. April erstellt oder mit einer vorhandenen Enterprise Agreement-Registrierung verknüpft wurde, wählen Sie Ihren bevorzugten Tarif aus.  Weitere Informationen zu den einzelnen Tarifen finden Sie unter [Log Analytics – Preise](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-        ![Blatt zum Erstellen von Log Analytics-Ressourcen](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
+        ![Erstellen des Log Analytics-Ressourcenblatts](media/quick-create-workspace/create-loganalytics-workspace-02.png)  
 
 3. Klicken Sie nach dem Bereitstellen der erforderlichen Informationen im Bereich **Log Analytics-Arbeitsbereich** auf **OK**.  
 

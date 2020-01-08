@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f757819e16db9908e80c5e7350c082dbf1573677
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: dce9894b26d03c351a2209792cc076de91feba54
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547230"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429978"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-rest-api-calls"></a>Konfigurieren von verwalteten Identitäten für Azure-Ressourcen in einer VM-Skalierungsgruppe mithilfe von REST-API-Aufrufen
 
@@ -56,11 +56,11 @@ In diesem Artikel erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe a
 
 In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe an den Azure Resource Manager-REST-Endpunkt eine systemzugewiesene verwaltete Identität in einer VM-Skalierungsgruppe aktivieren und deaktivieren können.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-a-virtual-machine-scale-set"></a>Aktivieren einer vom System zugewiesenen verwalteten Identität bei der Erstellung einer VM-Skalierungsgruppe
+### <a name="enable-system-assigned-managed-identity-during-creation-of-a-virtual-machine-scale-set"></a>Aktivieren der vom System zugewiesenen verwalteten Identität bei der Erstellung einer VM-Skalierungsgruppe
 
 Zum Erstellen einer VM-Skalierungsgruppe mit aktivierter systemzugewiesener verwalteter Identität müssen Sie eine VM-Skalierungsgruppe erstellen und ein Zugriffstoken abrufen, um CURL zum Aufrufen des Resource Manager-Endpunkts mit dem Wert für den systemzugewiesenen verwalteten Identitätstyp zu verwenden.
 
-1. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md#terminology) für das Einschließen und Bereitstellen der VM-Skalierungsgruppe und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az-group-create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
+1. Erstellen Sie eine [Ressourcengruppe](../../azure-resource-manager/management/overview.md#terminology) für das Einschließen und Bereitstellen der VM-Skalierungsgruppe und der zugehörigen Ressourcen. Verwenden Sie hierfür [az group create](/cli/azure/group/#az-group-create). Sie können diesen Schritt überspringen, wenn Sie bereits über eine Ressourcengruppe verfügen, die Sie stattdessen verwenden möchten:
 
    ```azurecli-interactive 
    az group create --name myResourceGroup --location westus
@@ -337,7 +337,7 @@ In diesem Abschnitt erfahren Sie, wie Sie unter Verwendung von CURL für Aufrufe
    az account get-access-token
    ``` 
 
-4. Erstellen Sie eine benutzerseitig zugewiesene Identität anhand der Anweisungen unter [Erstellen, Auflisten oder Löschen einer vom Benutzer zugewiesenen verwalteten Identität mithilfe von REST-API-Aufrufen](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
+4. Erstellen Sie eine benutzerseitig zugewiesene Identität anhand der Anweisungen unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](how-to-manage-ua-identity-rest.md#create-a-user-assigned-managed-identity).
 
 5. Erstellen Sie eine VM-Skalierungsgruppe mithilfe von CURL zum Aufrufen des Azure Resource Manager-REST-Endpunkts. Im folgenden Beispiel wird eine VM-Skalierungsgruppe namens *myVMSS* in der Ressourcengruppe *myResourceGroup* mit einer benutzerzugewiesenen verwaltete Identität `ID1` erstellt, wie es im Anforderungstext durch den Wert `"identity":{"type":"UserAssigned"}` angegeben ist. Ersetzen Sie `<ACCESS TOKEN>` durch den Wert, den Sie im vorherigen Schritt zum Anfordern eines Bearer-Zugriffstokens erhalten haben, und ersetzen Sie den Wert `<SUBSCRIPTION ID>` entsprechend Ihrer Umgebung.
  

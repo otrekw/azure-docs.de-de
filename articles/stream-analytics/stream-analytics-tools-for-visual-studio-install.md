@@ -1,20 +1,18 @@
 ---
 title: Einrichten der Azure Stream Analytics-Tools für Visual Studio
 description: In diesem Artikel werden die Installationsanforderungen und die Einrichtung der Azure Stream Analytics-Tools für Visual Studio beschrieben.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: 447fa07953c15fe67b8a2e313fe9534164f47bbd
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: fa3990d2239da71fb27f4c9a06699f758fcfe7a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354362"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Installieren der Azure Stream Analytics-Tools für Visual Studio
 

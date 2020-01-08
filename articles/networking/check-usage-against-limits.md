@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jeconnoc
-ms.openlocfilehash: b8bcbabe4b355e4e9cd617e9003902885b8edd88
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 5c807397af3ee06b490017b7e14f7b64123b5075
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67872450"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645224"
 ---
 # <a name="check-resource-usage-against-limits"></a>Vergleichen der Ressourcennutzung mit Grenzwerten
 
-In diesem Artikel erfahren Sie, wie Sie die Anzahl von Ressourcen für jeden im Abonnement bereitgestellten Netzwerkressourcentyp und die [Abonnementgrenzen](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) anzeigen. Die Möglichkeit, die Ressourcennutzung mit Grenzwerten zu vergleichen, hilft beim Nachverfolgung der aktuellen und Planen der zukünftigen Nutzung. Zum Nachverfolgen der Nutzung können Sie das [Azure-Portal](#azure-portal), [PowerShell](#powershell) oder die [Azure CLI](#azure-cli) verwenden.
+In diesem Artikel erfahren Sie, wie Sie die Anzahl von Ressourcen für jeden im Abonnement bereitgestellten Netzwerkressourcentyp und die [Abonnementgrenzen](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) anzeigen. Die Möglichkeit, die Ressourcennutzung mit Grenzwerten zu vergleichen, hilft beim Nachverfolgung der aktuellen und Planen der zukünftigen Nutzung. Zum Nachverfolgen der Nutzung können Sie das [Azure-Portal](#azure-portal), [PowerShell](#powershell) oder die [Azure CLI](#azure-cli) verwenden.
 
 ## <a name="azure-portal"></a>Azure-Portal
 
@@ -43,7 +43,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anzahl von Ressourcen für jeden im 
 
        ![Anzeigen von Verbrauchsdaten](./media/check-usage-against-limits/view-usage.png)
 
-     Sie können die Spalten sortieren, indem Sie auf die Spaltenüberschrift klicken. Die gezeigten Grenzwerte sind die Grenzwerte für Ihr Abonnement. Wenn Sie den Standardgrenzwert erhöhen müssen, wählen Sie **Erhöhung anfordern** aus, geben Sie die erforderlichen Informationen in der Anforderung an, und übermitteln Sie diese. Für alle Ressourcen gilt ein maximaler Grenzwert, der unter Azure-[Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) aufgeführt ist. Wenn Ihr aktueller Grenzwert bereits der Maximalwert ist, kann der Grenzwert nicht erhöht werden.
+     Sie können die Spalten sortieren, indem Sie auf die Spaltenüberschrift klicken. Die gezeigten Grenzwerte sind die Grenzwerte für Ihr Abonnement. Wenn Sie den Standardgrenzwert erhöhen müssen, wählen Sie **Erhöhung anfordern** aus, geben Sie die erforderlichen Informationen in der Anforderung an, und übermitteln Sie diese. Für alle Ressourcen gilt ein maximaler Grenzwert, der unter Azure-[Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetworking%2ftoc.json#networking-limits) aufgeführt ist. Wenn Ihr aktueller Grenzwert bereits der Maximalwert ist, kann der Grenzwert nicht erhöht werden.
 
 ## <a name="powershell"></a>PowerShell
 

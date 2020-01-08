@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2018
-ms.openlocfilehash: 68c90f6c763fe7cd634aee886c5c8c6b8153253e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 4ce1272c38bcb066f9e88ca739561ccd7696c989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72551825"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363505"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 

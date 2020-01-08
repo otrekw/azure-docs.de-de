@@ -2,21 +2,17 @@
 title: Azure-Schnellstart – Konfigurieren einer VM per DSC | Microsoft-Dokumentation
 description: Konfigurieren eines LAMP-Stapels auf einem virtuellen Linux-Computer per Desired State Configuration
 services: automation
-ms.service: automation
 ms.subservice: dsc
 keywords: DSC, Konfiguration, Automatisierung
-author: KrisBash
-ms.author: krbash
 ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: d5eca6ffce8390b2f8b4deae589d43f40897756d
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6c3ff10f37233294b75eceddd62c0a33f8864484
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243458"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421642"
 ---
 # <a name="configure-a-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Computers mit Desired State Configuration
 
@@ -26,7 +22,7 @@ Indem Sie die Desired State Configuration (DSC) aktivieren, können Sie die Konf
 
 Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/).
 * Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
 * Eine Azure Resource Manager-VM (nicht klassisch) mit Red Hat Enterprise Linux, CentOS oder Oracle Linux. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Linux-Computers im Azure-Portal](../virtual-machines/linux/quick-create-portal.md).
 

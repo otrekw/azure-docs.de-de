@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 08/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 076fad8c1fc6fdd4bccf07f5eb3223800eddd4a0
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 69e4d992e2ef89b4d3d9408d6e50591fb8166c79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74323554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385778"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Schnellstart für die Bing-Entitätssuche-API mit Ruby
 
@@ -39,7 +39,7 @@ Diese Anwendung ist zwar in Ruby geschrieben, an sich ist die API aber ein RESTf
     require 'json'
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und eine Suchabfrage.
+2. Erstellen Sie Variablen für Ihren API-Endpunkt, die News-Suche-URL, Ihren Abonnementschlüssel und eine Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
     
     ```ruby
     host = 'https://api.cognitive.microsoft.com'

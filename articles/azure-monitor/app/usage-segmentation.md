@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 88dccd3a33c4a6e64de30ef7e7df4723a17f0c44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dbda6debe2412f1756bc707cf3b587c77f466fdc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930633"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432316"
 ---
 # <a name="users-sessions-and-events-analysis-in-application-insights"></a>Benutzer-, Sitzungs- und Ereignisanalyse in Azure Application Insights
 
@@ -62,7 +62,7 @@ Der Abschnitt **Meet your users** (Informationen zu Benutzern) enthält Informat
 - Um mit der Nutzung zu beginnen, senden Sie [benutzerdefinierte Ereignisse](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) oder [Seitenansichten](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
 - Wenn Sie bereits benutzerdefinierte Ereignisse oder Seitenansichten senden, finden Sie mithilfe der Nutzungstools heraus, wie Benutzer den Dienst verwenden.
     - [Trichter](usage-funnels.md)
-    - [Aufbewahrung](usage-retention.md)
+    - [Vermerkdauer](usage-retention.md)
     - [Benutzerabläufe](usage-flows.md)
     - [Arbeitsmappen](../../azure-monitor/app/usage-workbooks.md)
     - [Hinzufügen von Benutzerkontext](usage-send-user-context.md)

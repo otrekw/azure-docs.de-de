@@ -15,15 +15,15 @@ ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1191fb5c9aefb55896d5c44714f1061ff2674a8d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3b83f10cd021f54dc16e196cb7a9ccd7c46fd2ee
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64415229"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659643"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Dienst- und andere Einschränkungen für Azure AD
-Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschränkungen für den Azure Active Directory-Dienst. Einen vollständigen Überblick über die Microsoft Azure-Diensteinschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md).
+Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschränkungen für den Azure Active Directory-Dienst. Einen vollständigen Überblick über die Microsoft Azure-Diensteinschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 [!INCLUDE [AAD-service-limits](../../../includes/active-directory-service-limits-include.md)]
 

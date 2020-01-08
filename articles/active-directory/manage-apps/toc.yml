@@ -21,6 +21,10 @@
       href: /azure/active-directory/saas-apps/
     - name: Hinzufügen einer lokalen App mit dem Anwendungsproxy
       href: application-proxy-add-on-premises-application.md
+- name: Beispiele
+  items:
+    - name: Azure PowerShell-Beispiele für den Anwendungsproxy
+      href: application-proxy-powershell-samples.md
 - name: Konzepte
   expanded: true
   items:
@@ -70,12 +74,10 @@
               href: end-user-experiences.md
     - name: Anwendungsbereitstellung (SCIM)
       items:
+        - name: Funktionsweise der Bereitstellung
+          href: how-provisioning-works.md
         - name: Planen einer automatischen Benutzerbereitstellung
           href: plan-auto-user-provisioning.md
-        - name: Automatisieren der Bereitstellung für SCIM-fähige Apps
-          href: use-scim-to-provision-users-and-groups.md
-        - name: Manuelle und automatische Bereitstellung
-          href: application-provisioning-config-how-to.md
     - name: HR-Cloudbereitstellung
       items:
         - name: Planen einer HR-Cloudbenutzerbereitstellung
@@ -98,7 +100,7 @@
           href: application-proxy-high-availability-load-balancing.md
         - name: Vergleichen von Remotezugriffslösungen
           href: application-proxy-migration.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Cloud-Apps und einmaliges Anmelden
@@ -139,6 +141,8 @@
           items:
             - name: Konfigurieren der Benutzereinwilligung
               href: configure-user-consent.md
+            - name: Erteilen einer mandantenweiten Administratoreinwilligung
+              href: grant-admin-consent.md
             - name: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
               href: configure-admin-consent-workflow.md
             - name: Methoden zum Zuweisen von Benutzern und Gruppen zu einer App
@@ -233,28 +237,32 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Anwendungsbereitstellung (SCIM)
       items:
-        - name: Konfigurieren der App-Bereitstellung
+        - name: Konfigurieren der Bereitstellung für eine Katalog-App
+          href: configure-automatic-user-provisioning-portal.md
+        - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
+          href: use-scim-to-provision-users-and-groups.md
+        - name: Bearbeiten der Attributzuordnungen
           items:
-            - name: Konfigurieren der automatischen Benutzerbereitstellung
-              href: configure-automatic-user-provisioning-portal.md
-            - name: Verwenden von SCIM für die automatische Bereitstellung
-              href: use-scim-to-provision-users-and-groups.md
             - name: Anpassen von Attributzuordnungen
               href: Customize-application-attributes.md
             - name: Schreiben von Ausdrücken für Attributzuordnungen
               href: functions-for-customizing-application-data.md
+        - name: Einschließen oder Ausschließen von Benutzern und Gruppen aus dem Bereich
+          items:
             - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeitsbereichs
               href: skip-out-of-scope-deletions.md
+        - name: Überwachen und Melden der Bereitstellung
+          items:
             - name: Überwachen des Bereitstellungsstatus und der Leistung
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
             - name: Berichterstellung zur App-Bereitstellung
               href: check-status-user-account-provisioning.md
             - name: Exportieren und Importieren Ihrer Konfiguration
               href: export-import-provisioning-configuration.md
-            - name: Automatisieren der Konfiguration mit MS Graph
-              href: application-provisioning-configure-api.md
+        - name: Automatisieren der Konfiguration mit MS Graph
+          href: application-provisioning-configure-api.md
         - name: Problembehandlung bei der Benutzerbereitstellung
           items:
             - name: Problembehandlung bei der App-Bereitstellung

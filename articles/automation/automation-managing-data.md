@@ -2,19 +2,15 @@
 title: Verwalten von Azure Automation-Daten
 description: Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.  Er enthält derzeit die Themen "Datenaufbewahrung", "Sichern von Azure Automation" und "Notfallwiederherstellung in Azure Automation".
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da1b151a150dfbf602593451d3d68043352b73eb
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: daa5bab7c8d4cbe98ffe9a8a8a4b66da029fef5c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850770"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421890"
 ---
 # <a name="managing-azure-automation-data"></a>Verwalten von Azure Automation-Daten
 Dieser Artikel enthält mehrere Themen zum Verwalten einer Azure Automation-Umgebung.
@@ -32,7 +28,7 @@ Die folgende Tabelle zeigt die Aufbewahrungsrichtlinie für unterschiedliche Res
 | Objekte |Dauerhafte Entfernung 90 Tage nach dem Löschen des Objekts durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit dem Objekt durch einen Benutzer. |
 | Module |Dauerhafte Entfernung 90 Tage nach dem Löschen des Moduls durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit dem Modul durch einen Benutzer. |
 | Runbooks |Dauerhafte Entfernung 90 Tage nach dem Löschen der Ressource durch einen Benutzer, oder 90 Tage nach dem Löschen des Kontos mit der Ressource durch einen Benutzer. |
-| Aufträge |Löschung und dauerhafte Entfernung 90 Tage nach der letzten Änderung. Dies kann der Fall sein, wenn der Job abgeschlossen, gestoppt oder angehalten wurde. |
+| Jobs |Löschung und dauerhafte Entfernung 90 Tage nach der letzten Änderung. Dies kann der Fall sein, wenn der Job abgeschlossen, gestoppt oder angehalten wurde. |
 | Knotenkonfigurationen/MOF-Dateien |Die alte Knotenkonfiguration wird 90 Tage nach dem Generieren einer neuen Knotenkonfiguration dauerhaft entfernt. |
 | DSC-Knoten |Diese werden 90 Tage nach Aufhebung der Registrierung im Automation-Konto über das Azure-Portal oder mit dem Cmdlet [Unregister-AzureRMAutomationDscNode](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) in Windows PowerShell dauerhaft entfernt. Wenn ein Benutzer das Konto löscht, in dem die Knoten enthalten sind, werden diese ebenfalls nach 90 Tagen dauerhaft entfernt. |
 | Knotenberichte |90 Tage nach dem Generieren eines neuen Berichts für diesen Knoten dauerhaft entfernt |
@@ -67,12 +63,12 @@ Sie können Ihre Konfigurationen unter Verwendung des Azure-Portals oder mithilf
 
 In der folgenden Tabelle werden die verfügbaren Paare primärer und sekundärer Regionen gezeigt:
 
-| Primär | Sekundär |
+| Primär | Secondary |
 | --- | --- |
 | USA Süd Mitte |USA Nord Mitte |
 | USA (Ost 2) |USA (Mitte) |
 | Europa, Westen |Nordeuropa |
-| Südostasien |Ostasien |
+| Südostasien |Asien, Osten |
 | Japan, Osten |Japan, Westen |
 
 Microsoft versucht im unwahrscheinlichen Fall, dass Daten der primären Region verloren gehen, diese wiederherzustellen. Wenn die Daten der primären Region nicht wiederhergestellt werden können, erfolgt ein Geofailover, über das die betroffenen Kunden durch ihr Abonnement benachrichtigt werden.

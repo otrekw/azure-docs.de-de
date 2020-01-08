@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 950b014d7e08eeeeed40ba7b294e53e1c200474b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 21026a3de2b9feb11bc84cbdb60d4a363bd5a05c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278016"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454260"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-azure-cli"></a>Konfigurieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit der Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
@@ -74,8 +74,6 @@ Wenn ein Speicherkonto angegeben wird, werden die Dateien der Flowprotokolle in 
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
 
-> [!IMPORTANT]
-> Zurzeit gibt es ein Problem, bei dem die [Flowprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobspeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Löschen von Speicherblobs mit NSG-Flowprotokollen](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

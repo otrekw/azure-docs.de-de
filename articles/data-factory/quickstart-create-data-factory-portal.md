@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: ea218da5316e921c44b7e80fa5f072417d98ca05
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c6a7755b692ec796707e4a22ed7e15ae2b60dfe7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929929"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440120"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche
 
@@ -56,7 +56,7 @@ Dieses Video enthält Informationen zur Data Factory-Benutzeroberfläche:
    - Wählen Sie die Option **Use existing** (Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-   Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+   Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 1. Wählen Sie **V2** als **Version** aus.
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus.
 

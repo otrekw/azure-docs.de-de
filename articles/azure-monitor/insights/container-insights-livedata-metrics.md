@@ -1,24 +1,14 @@
 ---
 title: Anzeigen von Metriken in Echtzeit mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird die Echtzeitansicht von Metriken ohne Verwendung von kubectl mit Azure Monitor für Container beschrieben.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 4608058d347888ab77bd4303600f00b270d6fed5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fbb08a8ed3deeff061065916241ee2d724603be3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510827"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404936"
 ---
 # <a name="how-to-view-metrics-in-real-time"></a>Anzeigen von Metriken in Echtzeit
 
@@ -34,7 +24,7 @@ Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwend
 
 Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten (Vorschau) finden Sie in unserem [Einrichtungsleitfaden](container-insights-livedata-setup.md).
 
-## <a name="how-it-works"></a>So funktioniert's 
+## <a name="how-it-works"></a>Funktionsweise 
 
 Informationen zum Direktzugriff auf die Kubernetes-API über die Funktion für Livedaten (Vorschau) sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 

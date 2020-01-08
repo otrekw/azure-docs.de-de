@@ -2,19 +2,15 @@
 title: Untergeordnete Runbooks in Azure Automation
 description: Beschreibt die verschiedenen Methoden, die verwendet werden können, um ein Runbook in Azure Automation über ein anderes Runbook zu starten und Informationen zwischen über- und untergeordnetem Runbook freizugeben.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/17/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: e7341a8c270d16497430a70c2a1b21354a775787
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a35ee69e6a167f4907294c88710d0484353d4cb2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850447"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367008"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 

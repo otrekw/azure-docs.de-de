@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: e52a32c1897a7add939880fbe27d6b4b7fbee0bd
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 64b90afd598b96604fc9c3ddc4bc10586e714363
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883576"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75657980"
 ---
 # <a name="overview-of-ssl-termination-and-end-to-end-ssl-with-application-gateway"></a>Übersicht über SSL-Terminierung und End-to-End-SSL mit Application Gateway
 
@@ -50,7 +50,7 @@ Das Anwendungsgateway unterstützt die folgenden Arten von Zertifikaten:
 Weitere Informationen finden Sie im Artikel zum [Konfigurieren der SSL-Terminierung mit Application Gateway](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal).
 
 ### <a name="size-of-the-certificate"></a>Größe des Zertifikats
-Lesen Sie den Abschnitt [Application Gateway-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits#application-gateway-limits) durch, um die maximal unterstützte Größe von SSL-Zertifikaten zu erfahren.
+Lesen Sie den Abschnitt [Application Gateway-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#application-gateway-limits) durch, um die maximal unterstützte Größe von SSL-Zertifikaten zu erfahren.
 
 ## <a name="end-to-end-ssl-encryption"></a>End-to-End-SSL-Verschlüsselung
 

@@ -7,20 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: 7b1fb26adc49067c35745011414ada7b33d7e55e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 83ba10dc0df68009666badcc8c673a6f504f80ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430800"
 ---
 # <a name="create-an-ingress-controller-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers in Azure Kubernetes Service (AKS)
 
 Ein Eingangscontroller ist eine Softwarekomponente, die einen Reverseproxy, konfigurierbare Datenverkehrsweiterleitung und TLS-Terminierung für Kubernetes-Dienste bereitstellt. Mithilfe von Ressourcen für eingehende Kubernetes-Daten werden Eingangsregeln und Routen für einzelne Kubernetes-Dienste konfiguriert. Durch die Verwendung von einem Eingangscontroller und Eingangsregeln kann eine einzelne IP-Adresse zum Weiterleiten von Datenverkehr an mehrere Dienste in einem Kubernetes-Cluster verwendet werden.
 
-Dieser Artikel beschreibt, wie Sie den [NGINX-Eingangscontroller][nginx-ingress] in einem Azure Kubernetes Service-Cluster (AKS) bereitstellen. Es werden zwei Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne IP-Adresse zugänglich sind.
+Dieser Artikel beschreibt, wie Sie den [NGINX-Eingangscontroller][nginx-ingress] in einem AKS-Cluster (Azure Kubernetes Service) bereitstellen. Es werden zwei Anwendungen im AKS-Cluster ausgeführt, die jeweils über eine einzelne IP-Adresse zugänglich sind.
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
 - [Erstellen eines Eingangscontrollers, der ein internes, privates Netzwerk und eine IP-Adresse verwendet][aks-ingress-internal]
@@ -52,6 +52,7 @@ kubectl create namespace ingress-basic
 # Use Helm to deploy an NGINX ingress controller
 helm install stable/nginx-ingress \
     --namespace ingress-basic \
+    --name nginx-ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -210,7 +211,7 @@ In diesem Artikel werden einige externe Komponenten in AKS berücksichtigt. Weit
 - [Helm-Befehlszeilenschnittstelle][helm-cli]
 - [NGINX-Eingangscontroller][nginx-ingress]
 
-Weitere Funktionen:
+Sie können außerdem:
 
 - [Aktivieren des Add-Ons für das HTTP-Anwendungsrouting][aks-http-app-routing]
 - [Erstellen eines Eingangscontrollers, der ein internes, privates Netzwerk und eine IP-Adresse verwendet][aks-ingress-internal]

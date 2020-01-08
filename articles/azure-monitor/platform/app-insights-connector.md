@@ -4,15 +4,15 @@ description: Sie können die Application Insights-Connector-Lösung verwenden, u
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 02/13/2019
-ms.openlocfilehash: b956c3bc7d04908db1cc45092cf5926ecfcc305c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d0cfca44878130e870c633040afcfbdd55ba8b7b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75396538"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -175,7 +175,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="generic-fields"></a>Generische Felder
 
-| Eigenschaft | Description |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | type | ApplicationInsights |
 | ClientIP |   |
@@ -195,8 +195,8 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 | IsAuthenticated | „true“ oder „false“ |
 | OperationID | Elemente mit derselben Vorgangs-ID werden im Portal als verwandte Elemente angezeigt. Normalerweise die Anforderungs-ID. |
 | ParentOperationID | ID des übergeordneten Vorgangs |
-| OperationName |   |
-| SessionId | GUID zum eindeutigen Identifizieren der Sitzung, in der die Anforderung erstellt wurde |
+| Vorgangsname |   |
+| SessionID | GUID zum eindeutigen Identifizieren der Sitzung, in der die Anforderung erstellt wurde |
 | SourceSystem | ApplicationInsights |
 
 ### <a name="availability-specific-fields"></a>Verfügbarkeitsfelder
@@ -243,7 +243,7 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 
 ### <a name="request-specific-fields"></a>Anforderungsfelder
 
-| Eigenschaft | Description |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | type | ApplicationInsights |
 | TelemetryType | Anforderung |

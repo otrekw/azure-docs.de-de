@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 2610afe9df06d28f2b75bd0023f7ec5a3fe9e56c
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 6d10265e8383b68ebe13c95d8b2a9632668e85da
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219225"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641398"
 ---
 # <a name="move-azure-public-ip-to-another-region-using-the-azure-portal"></a>Verschieben einer öffentlichen Azure-IP-Adresse in eine andere Region mit dem Azure-Portal
 
@@ -32,7 +32,7 @@ Es gibt verschiedene Szenarien, in denen Sie Ihre vorhandenen öffentlichen Azur
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement öffentliche IP-Adressen in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von öffentlichen IP-Adressen für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von öffentlichen IP-Adressen für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
@@ -91,7 +91,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 11. Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
 
-12. Sie können wahlweise auch andere Parameter in der Vorlage ändern. Diese sind abhängig von Ihren Anforderungen optional:
+12. Sie können wahlweise auch andere Parameter in der Vorlage ändern, die abhängig von Ihren Anforderungen optional sind:
 
     * **SKU**: Sie können die SKU der öffentlichen IP-Adresse in der Konfiguration von „standard“ in „basic“ oder von „basic“ in „standard“ ändern, indem Sie die Eigenschaft **sku** > **name** in der Datei **template.json** ändern:
 
@@ -147,15 +147,15 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 17. Stellen Sie unter **EINSTELLUNGEN** sicher, dass der Name mit dem Namen übereinstimmt, den Sie oben im Parameter-Editor eingegeben haben.
 
-18. Aktivieren Sie das Kontrollkästchen unter **GESCHÄFTSBEDINGUNGEN**.
+18. Aktivieren Sie das Kontrollkästchen unter **NUTZUNGSBEDINGUNGEN**.
 
-19. Klicken Sie auf die Schaltfläche **Erwerben**, um die IP-Adresse des Ziels bereitzustellen.
+19. Klicken Sie auf die Schaltfläche **Kaufen**, um die öffentliche IP-Adresse des Ziels bereitzustellen.
 
 ## <a name="discard"></a>Verwerfen
 
 Wenn Sie die öffentliche IP-Adresse des Ziels verwerfen möchten, löschen Sie die Ressourcengruppe, die die öffentliche IP-Adresse des Ziels enthält.  Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf der Übersichtsseite auf **Löschen**.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und das Verschieben der öffentlichen IP-Adresse abzuschließen, löschen Sie die öffentliche IP-Adresse der Quelle oder die Quellressourcengruppe. Wählen Sie hierzu im Portal die öffentliche IP-Adresse oder die Ressourcengruppe im Dashboard aus, und klicken Sie oben auf jeder Seite auf **Löschen**.
 

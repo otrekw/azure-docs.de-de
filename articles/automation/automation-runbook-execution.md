@@ -2,19 +2,15 @@
 title: Ausführen von Runbooks in Azure Automation
 description: Beschreibt ausführlich, wie ein Runbook in Azure Automation verarbeitet wird.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddeeaeccc0a10d19a070a91d7bd9bef2b31c0570
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4f9fd3a94cf2b6d6ca077b7363e01085e134babd
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850753"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658116"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 
@@ -37,12 +33,12 @@ Runbooks in Azure Automation können entweder in einer Sandbox in Azure oder auf
 |Integration in Azure-Ressourcen|Azure-Sandbox|In Azure gehostet ist die Authentifizierung einfacher. Wenn Sie einen Hybrid Runbook Worker auf einer Azure-VM verwenden, können Sie [verwaltete Identitäten für Azure-Ressourcen](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) verwenden.|
 |Optimale Leistung zum Verwalten von Azure-Ressourcen|Azure-Sandbox|Skript wird in der gleichen Umgebung ausgeführt, wodurch die Latenz gesenkt wird|
 |Betriebskosten minimieren|Azure-Sandbox|Kein Computemehraufwand, kein virtueller Computer erforderlich|
-|Zeitintensives Skript|Hybrid Runbook Worker|Für Azure-Sandboxes bestehen [Einschränkungen in Bezug auf Ressourcen](../azure-subscription-service-limits.md#automation-limits)|
+|Zeitintensives Skript|Hybrid Runbook Worker|Für Azure-Sandboxes bestehen [Einschränkungen in Bezug auf Ressourcen](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
 |Mit lokalen Diensten interagieren|Hybrid Runbook Worker|Kann direkten Zugriff auf den Hostcomputer haben|
 |Software und ausführbare Dateien von Drittanbietern erforderlich|Hybrid Runbook Worker|Sie verwalten das Betriebssystem und können Software installieren|
 |Datei oder Ordner mit einem Runbook überwachen|Hybrid Runbook Worker|[Watchertask](automation-watchers-tutorial.md) auf einem Hybrid Runbook Worker verwenden|
-|Ressourcenintensives Skript|Hybrid Runbook Worker| Für Azure-Sandboxes bestehen [Einschränkungen in Bezug auf Ressourcen](../azure-subscription-service-limits.md#automation-limits)|
-|Verwenden von Modulen mit spezifischen Anforderungen| Hybrid Runbook Worker|Hier einige Beispiele:</br> **WinSCP** – Abhängigkeit von „winscp.exe“ </br> **IISAdministration** – benötigt IIS zur Aktivierung|
+|Ressourcenintensives Skript|Hybrid Runbook Worker| Für Azure-Sandboxes bestehen [Einschränkungen in Bezug auf Ressourcen](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits)|
+|Verwenden von Modulen mit spezifischen Anforderungen| Hybrid Runbook Worker|Beispiele:</br> **WinSCP** – Abhängigkeit von „winscp.exe“ </br> **IISAdministration** – benötigt IIS zur Aktivierung|
 |Modul installieren, das Installationsprogramm erfordert|Hybrid Runbook Worker|Module für Sandbox müssen kopiert werden können|
 |Verwenden von Runbooks oder Modulen, die eine andere .NET Framework-Version als 4.7.2 erfordern|Hybrid Runbook Worker|Automation-Sandboxes haben .NET Framework 4.7.2, und es gibt keine Möglichkeit zum Upgraden|
 |Skripts, für die eine Rechteerweiterung erforderlich ist|Hybrid Runbook Worker|Sandboxes lassen keine Rechteerweiterung zu. Verwenden Sie in einem solchen Fall einen Hybrid Runbook Worker. Dann können Sie die Benutzerkontensteuerung deaktivieren und `Invoke-Command` verwenden, wenn Sie den Befehl ausführen, für den eine Rechteerweiterung erforderlich ist.|
@@ -320,11 +316,11 @@ $JobInfo.GetEnumerator() | sort key -Descending | Select-Object -First 1
 
 Damit Ressourcen von allen Runbooks in der Cloud verwendet werden können, beendet oder entlädt Azure Automation jeden Auftrag vorübergehend, der seit mehr als drei Stunden ausgeführt wird. Aufträge für [PowerShell-basierte Runbooks](automation-runbook-types.md#powershell-runbooks) und [Python-Runbooks](automation-runbook-types.md#python-runbooks) werden beendet und nicht neu gestartet, und der Auftragsstatus zeigt „Beendet“.
 
-Für zeitintensive Aufgaben sollten Sie einen [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers. Während Hybrid Runbook Workers nicht durch die dreistündige Begrenzung für die gleichmäßige Verteilung eingeschränkt sind, sollten Runbooks, die auf Hybrid Runbook Workers ausgeführt werden, so entwickelt werden, dass sie Neustartverhalten bei unerwarteten lokalen Infrastrukturproblemen unterstützen.
+Für zeitintensive Aufgaben sollten Sie einen [Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) verwenden. Hybrid Runbook Worker unterliegen nicht der gleichmäßigen Verteilung und keiner Einschränkung hinsichtlich der Ausführungszeit eines Runbooks. Die anderen [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) für Aufträge gelten sowohl für Azure-Sandboxes als auch für Hybrid Runbook Workers. Während Hybrid Runbook Workers nicht durch die dreistündige Begrenzung für die gleichmäßige Verteilung eingeschränkt sind, sollten Runbooks, die auf Hybrid Runbook Workers ausgeführt werden, so entwickelt werden, dass sie Neustartverhalten bei unerwarteten lokalen Infrastrukturproblemen unterstützen.
 
 Eine weitere Möglichkeit ist das Optimieren des Runbooks durch die Verwendung von untergeordneten Runbooks. Wenn Ihr Runbook für mehrere Ressourcen eine Schleife durch die gleiche Funktion durchführt, z.B. für einen Datenbankvorgang in mehreren Datenbanken, können Sie diese Funktion in ein [untergeordnetes Runbook](automation-child-runbooks.md) verschieben und mit dem Cmdlet [Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) aufrufen. Jedes dieser untergeordneten Runbooks wird parallel in separaten Prozessen ausgeführt. Dieses Verhalten führt dazu, dass die Gesamtdauer der Verarbeitung für das übergeordnete Runbook verringert wird. Mit dem Cmdlet [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) in Ihrem Runbook können Sie den Auftragsstatus für jedes untergeordnete Element überprüfen, wenn Vorgänge vorhanden sind, die nach Abschluss des untergeordneten Runbooks durchgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den verschiedenen Methoden, die zum Starten eines Runbooks in Azure Automation verwendet werden können, finden Sie unter [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md).
-* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodule, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).
+* Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](https://docs.microsoft.com/powershell/scripting/overview).

@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d9b2dc7432ee1b847c8c7900a3e91daa71b5a771
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428729"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Erstellen von Azure Resource Manager-Vorlagen, um die Bereitstellung für Azure Logic Apps zu automatisieren
 
-Um Sie dabei zu unterstützen, das Erstellen und Bereitstellen einer Logik-App zu automatisieren, sind in diesem Artikel die Möglichkeiten beschrieben, wie Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für Ihre Logik-App erstellen. Eine Übersicht über die Struktur und die Syntax einer Vorlage, die Ihre Workflowdefinition und weitere Ressourcen enthält, die zur Bereitstellung erforderlich sind, finden Sie unter [Overview: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](logic-apps-azure-resource-manager-templates-overview.md).
+Um Sie dabei zu unterstützen, das Erstellen und Bereitstellen einer Logik-App zu automatisieren, sind in diesem Artikel die Möglichkeiten beschrieben, wie Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) für Ihre Logik-App erstellen. Eine Übersicht über die Struktur und die Syntax einer Vorlage, die Ihre Workflowdefinition und weitere Ressourcen enthält, die zur Bereitstellung erforderlich sind, finden Sie unter [Overview: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](logic-apps-azure-resource-manager-templates-overview.md).
 
 Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für Logik-Apps](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json), die Sie nicht nur zum Erstellen von Logik-Apps, sondern auch zum Definieren der Ressourcen und Parameter für die Bereitstellung wiederverwenden können. Die Vorlage kann für eigene Unternehmensszenarien verwendet oder an Ihre individuellen Anforderungen angepasst werden.
 
@@ -24,8 +24,8 @@ Azure Logic Apps bietet eine [vordefinierte Azure Resource Manager-Vorlage für 
 
 Weitere Informationen zu Azure Resource Manager-Vorlagen finden Sie in den folgenden Themen:
 
-* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
+* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 * [Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz](../azure-resource-manager/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>

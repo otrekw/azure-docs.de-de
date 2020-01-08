@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769981"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432046"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Erstellen eines Azure Database for MariaDB-Servers über das Azure-Portal
 
@@ -26,7 +26,7 @@ Wechseln Sie Ihrem Webbrowser zum [Azure-Portal](https://portal.azure.com/). Geb
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Erstellen eines Azure Database for MariaDB-Servers
 
-Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Gruppe von [Compute- und Speicherressourcen](concepts-pricing-tiers.md). Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt.
+Sie erstellen einen Azure Database for MariaDB-Server mit einer definierten Gruppe von [Compute- und Speicherressourcen](concepts-pricing-tiers.md). Der Server wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt.
 
 So erstellen Sie einen Azure Database for MariaDB-Server:
 
@@ -40,7 +40,7 @@ So erstellen Sie einen Azure Database for MariaDB-Server:
    
    ![Formular für die Servererstellung](./media/quickstart-create-mariadb-server-database-using-azure-portal/4-create-form.png)
 
-    Einstellung | Empfohlener Wert | BESCHREIBUNG
+    Einstellung | Vorgeschlagener Wert | BESCHREIBUNG
     ---|---|---
     Servername | *Ein eindeutiger Servername* | Wählen Sie einen eindeutigen Namen aus, der Ihren Azure Database for MariaDB-Server identifiziert. Beispiel: **mydemoserver**. Der Domänenname *.mariadb.database.azure.com* wird an den angegebenen Servernamen angefügt. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss zwischen 3 und 63 Zeichen lang sein.
     Subscription | *Ihr Abonnement* | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet wird.
@@ -123,7 +123,7 @@ Als Erstes verwenden wir das [MySQL](https://dev.mysql.com/doc/refman/5.7/en/mys
     mysql --host mydemoserver.mariadb.database.azure.com --user myadmin@mydemoserver -p
     ```
 
-    mysql-Parameter |Empfohlener Wert|BESCHREIBUNG
+    mysql-Parameter |Vorgeschlagener Wert|BESCHREIBUNG
     ---|---|---
     --host | *Servername* | Der Servername, den Sie zum Erstellen des Azure Database for MariaDB-Servers verwendet haben. Unser Beispielserver heißt **mydemoserver.mariadb.database.azure.com**. Verwenden Sie den vollqualifizierten Domänennamen ( **\*.mariadb.database.azure.com**), wie im Beispiel gezeigt. Sollten Sie Ihren Servernamen vergessen haben, führen Sie die Schritte zum Abrufen der Verbindungsinformationen im vorherigen Abschnitt aus.
     --user | *Anmeldename des Serveradministrators* |Der Benutzername für die Serveradministratoranmeldung, den Sie zum Erstellen des Azure Database for MariaDB-Servers verwendet haben. Sollten Sie den Benutzernamen vergessen haben, führen Sie die Schritte zum Abrufen der Verbindungsinformationen im vorherigen Abschnitt aus. Das Format lautet: *Benutzername\@Servername*.
@@ -196,7 +196,7 @@ So stellen Sie mit MySQL Workbench eine Verbindung mit dem Server her:
 
    ![Einrichten einer neuen Verbindung](./media/quickstart-create-mariadb-server-database-using-azure-portal/setup-new-connection.png)
 
-    |Einstellung |Empfohlener Wert|Feldbeschreibung|
+    |Einstellung |Vorgeschlagener Wert|Feldbeschreibung|
     |---|---|---|
      Verbindungsname | **Beispielverbindung** | Eine Bezeichnung für diese Verbindung. |
     Verbindungsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) ist ausreichend. |
@@ -213,7 +213,7 @@ So stellen Sie mit MySQL Workbench eine Verbindung mit dem Server her:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Zum Bereinigen der Ressourcen, die Sie in diesem Schnellstart erstellt haben, stehen Ihnen zwei Methoden zur Auswahl. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) löschen. Bei dieser Methode werden alle Ressourcen in der Ressourcengruppe gelöscht. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die einzelne Serverressource.
+Zum Bereinigen der Ressourcen, die Sie in diesem Schnellstart erstellt haben, stehen Ihnen zwei Methoden zur Auswahl. Sie können die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) löschen. Bei dieser Methode werden alle Ressourcen in der Ressourcengruppe gelöscht. Falls die anderen Ressourcen erhalten bleiben sollen, löschen Sie nur die einzelne Serverressource.
 
 > [!TIP]
 > Andere Schnellstarts in dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie weitere Schnellstarts für Azure Database for MariaDB nutzen möchten, bereinigen Sie die hier erstellten Ressourcen nicht. Falls Sie nicht mit den Schnellstarts fortfahren möchten, gehen Sie wie folgt vor, um alle Ressourcen zu löschen, die Sie im Rahmen dieses Schnellstarts erstellt haben.

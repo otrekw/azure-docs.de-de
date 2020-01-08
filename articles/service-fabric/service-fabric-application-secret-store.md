@@ -1,18 +1,14 @@
 ---
-title: Service Fabric-Geheimnisspeicher | Microsoft-Dokumentation
+title: Service Fabric-Geheimnisspeicher
 description: In diesem Artikel wird beschrieben, wie Sie den Service Fabric-Geheimnisspeicher verwenden.
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5315a8806f45e40204e8500e97c3440bfa9ab8b2
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077336"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457507"
 ---
 #  <a name="service-fabric-secrets-store"></a>Service Fabric-Geheimnisspeicher
 In diesem Artikel wird beschrieben, wie Sie Geheimnisse in Service Fabric-Anwendungen mithilfe des Service Fabric-Geheimnissen Geheimnisspeichers (CSS) erstellen und verwenden. CSS ist ein lokaler Geheimnisspeichercache, der verwendet wird, um vertrauliche Daten wie Kennwörter, Token und Schlüssel im Arbeitsspeicher verschlüsselt zu halten.
@@ -24,8 +20,8 @@ In diesem Artikel wird beschrieben, wie Sie Geheimnisse in Service Fabric-Anwend
     [
         ...
     {
+        "name":  "CentralSecretService",
         "parameters":  [
-            "name":  "CentralSecretService"
                 {
                     "name":  "IsEnabled",
                     "value":  "true"
@@ -46,6 +42,9 @@ In diesem Artikel wird beschrieben, wie Sie Geheimnisse in Service Fabric-Anwend
                 ],
             },
             ]
+     }
+        ...
+     ]
 ```
 ## <a name="declare-secret-resource"></a>Deklarieren der Geheimnisressource
 Sie können eine Geheimnisressource entweder mithilfe der Resource Manager-Vorlage oder mithilfe der REST-API erstellen.

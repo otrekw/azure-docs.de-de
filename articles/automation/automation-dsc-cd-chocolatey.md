@@ -2,19 +2,15 @@
 title: Continuous Deployment mit Azure Automation State Configuration und Chocolatey
 description: DevOps-Continuous Deployment mit Azure Automation State Configuration, DSC und Chocolatey-Paket-Manager.  Beispiel mit vollständiger JSON-Resource Manager-Vorlage und PowerShell-Quelle.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/08/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: ddbf652c35c4f1504e3253838a983fd0f6039401
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850362"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366429"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Anwendungsbeispiel: Continuous Deployment auf virtuellen Computern mit Automation State Configuration und Chocolatey
 
@@ -185,7 +181,7 @@ Dieses Nuspec-Element muss auf Ihrem NuGet-Server kompiliert und gespeichert wer
 Jedes Mal, wenn eine Version den Qualitätssicherungstest besteht und für die Bereitstellung genehmigt wird, wird das Pakt erstellt, und nuspec und nupkg werden aktualisiert und auf dem NuGet-Server bereitgestellt. Darüber hinaus muss die Konfiguration (Schritt 4 oben) aktualisiert werden, damit sie mit der neuen Versionsnummer übereinstimmt. Sie muss an den Pullserver gesendet und kompiliert werden.
 Ab diesem Punkt liegt es an den virtuellen Computern, die von dieser Konfiguration abhängig sind, das Update abzurufen und zu installieren. Diese Updates sind einfach und umfassen nur ein oder zwei PowerShell-Codezeilen. Im Fall von Azure DevOps sind einige davon in Buildaufgaben gekapselt, die in einem Build miteinander verkettet werden können. Dieser [Artikel](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) enthält hierzu weitere Details. In diesem [GitHub-Repository](https://github.com/Microsoft/vso-agent-tasks) finden Sie Details zu den verschiedenen verfügbaren Buildaufgaben.
 
-## <a name="notes"></a>Hinweisen
+## <a name="notes"></a>Notizen
 
 Dieses Anwendungsbeispiel beginnt mit einem virtuellen Computer aus einem generischen Windows Server 2012 R2-Image aus dem Azure-Katalog. Sie können mithilfe eines beliebigen gespeicherten Image starten und dann mit der Optimierung mithilfe der DSC-Konfiguration beginnen.
 Das Ändern einer Konfiguration, die in ein Image integriert ist, ist aber deutlich schwieriger als das dynamische Aktualisieren der Konfiguration per DSC.

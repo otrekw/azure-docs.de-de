@@ -2,18 +2,16 @@
 title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 6b3d1ff76d4f7611da8e08dd4ce42293c805978e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423850"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659830"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -24,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie Aktionsgruppen im Azure-Portal erste
 
 Jede Aktion besteht aus den folgenden Eigenschaften:
 
-* **Name:** Ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
+* **Name**: Ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
 * **Aktionstyp:** Die ausgeführte Aktion. Beispiele sind das Senden eines Sprachanrufs, SMS, E-Mail oder das Auslösen verschiedener Arten von automatisierten Aktionen. Siehe „Typen“ weiter unten in diesem Artikel.
 * **Details**: Die entsprechenden Details. Diese können je nach *Aktionstyp* variieren.
 
@@ -72,10 +70,10 @@ Nachdem Sie eine Aktionsgruppe erstellt haben, wird diese im Abschnitt **Aktions
 ## <a name="action-specific-information"></a>Aktionsspezifische Informationen
 
 > [!NOTE]
-> Informationen zu den numerischen Grenzwerten für die unten angegebenen Elemente finden Sie unter [Grenzwerte für Monitor](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-monitor-limits).  
+> Informationen zu den numerischen Grenzwerten für die unten angegebenen Elemente finden Sie unter [Grenzwerte für Monitor](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits).  
 
 ### <a name="automation-runbook"></a>Automation Runbook
-Informationen zu den Einschränkungen für Runbook-Nutzlasten finden Sie unter [Azure-Abonnementdienstgrenzen](../../azure-subscription-service-limits.md).
+Informationen zu den Einschränkungen für Runbook-Nutzlasten finden Sie unter [Azure-Abonnementdienstgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Runbook-Aktionen verfügen. 
 

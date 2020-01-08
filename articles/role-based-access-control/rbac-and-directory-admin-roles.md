@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 1fe1d50f24c70c89ea0fbaa952673cdeacc4f1bf
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71803162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357520"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 
@@ -50,7 +50,7 @@ Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rolle
 
 Im Azure-Portal können Sie auf der Registerkarte **Klassische Administratoren** Co-Administratoren verwalten oder den Dienstadministrator anzeigen.
 
-![Klassische Azure-Abonnementadministratoren im Azure-Portal](./media/rbac-and-directory-admin-roles/classic-administrators.png)
+![Klassische Azure-Abonnementadministratoren im Azure-Portal](./media/rbac-and-directory-admin-roles/subscription-view-classic-administrators.png)
 
 Im Azure-Portal können Sie auf dem Eigenschaftenblatt Ihres Abonnements den Dienstadministrator anzeigen/ändern oder den Kontoadministrator anzeigen.
 
@@ -70,7 +70,7 @@ Konten und Abonnements werden im [Azure-Kontocenter](https://account.azure.com/S
 
 ## <a name="azure-rbac-roles"></a>Azure RBAC-Rollen
 
-Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen, z.B. Compute und Speicher, ermöglicht. Azure RBAC umfasst mehr als 70 integrierte Rollen. Es gibt vier grundlegende RBAC-Rollen. Die ersten drei Rollen gelten für alle Ressourcentypen:
+Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierungssystem, das auf [Azure Resource Manager](../azure-resource-manager/management/overview.md) basiert und eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen, z.B. Compute und Speicher, ermöglicht. Azure RBAC umfasst mehr als 70 integrierte Rollen. Es gibt vier grundlegende RBAC-Rollen. Die ersten drei Rollen gelten für alle Ressourcentypen:
 
 | Azure RBAC-Rolle | Berechtigungen | Notizen |
 | --- | --- | --- |
@@ -79,7 +79,7 @@ Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierung
 | [Leser](built-in-roles.md#reader) | <ul><li>Anzeigen von Azure-Ressourcen</li></ul> | Gilt für alle Ressourcentypen. |
 | [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) | <ul><li>Verwalten des Benutzerzugriffs auf Azure-Ressourcen</li></ul> |  |
 
-Die verbleibenden integrierten Rollen ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Eine Liste mit allen integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
+Die verbleibenden integrierten Rollen ermöglichen die Verwaltung bestimmter Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Eine Liste mit allen integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
 
 Nur das Azure-Portal und die Azure Resource Manager-APIs unterstützen RBAC. Benutzer, Gruppen und Anwendungen, denen RBAC-Rollen zugewiesen sind, können die [APIs des klassischen Azure-Bereitstellungsmodells](../azure-resource-manager/resource-manager-deployment-model.md) nicht verwenden.
 

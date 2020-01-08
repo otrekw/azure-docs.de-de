@@ -8,12 +8,12 @@ ms.author: b-majude
 ms.date: 07/19/2019
 ms.topic: conceptual
 ms.service: container-service
-ms.openlocfilehash: 5028ce3c71538e67b50a15abb6076871d5af7050
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: d88be50468f55a848b43613e1f7851621202052d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69559148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378227"
 ---
 # <a name="manage-projects-templates-image-streams-in-an-azure-red-hat-openshift-cluster"></a>Verwalten von Projekten, Vorlagen, Imagestreams in einem Azure Red Hat OpenShift-Cluster 
 
@@ -66,7 +66,7 @@ Sie können verhindern, dass eine authentifizierte Benutzergruppe neue Projekte 
 2. Bearbeiten Sie die Clusterrollenbindung für eigenständige Bereitstellung.
 
    ```
-   oc edit clusterrolebinding self-provisioners
+   oc edit clusterrolebinding.rbac.authorization.k8s.io self-provisioners
    ```
 
 3. Fügen Sie die folgende Anmerkung hinzu, um die Rolle aus dem ARO-Updateprozess zu entfernen: `openshift.io/reconcile-protect: "true"`
@@ -82,7 +82,7 @@ Sie können verhindern, dass eine authentifizierte Benutzergruppe neue Projekte 
 4. Ändern Sie die Clusterrollenbindung, um das Erstellen von Projekten durch `system:authenticated:oauth` zu verhindern:
 
    ```
-   apiVersion: authorization.openshift.io/v1
+   apiVersion: rbac.authorization.k8s.io/v1
    groupNames:
    - osa-customer-admins
    kind: ClusterRoleBinding

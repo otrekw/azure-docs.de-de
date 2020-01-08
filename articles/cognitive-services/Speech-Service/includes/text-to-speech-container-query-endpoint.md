@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: dapine
 ms.openlocfilehash: 8460ddca5cff2b3da540b5fa8cf66e0687892789
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
+ms.lasthandoff: 12/28/2019
 ms.locfileid: "73491102"
 ---
 Der Container stellt [REST-basierte Endpunkt-APIs](../rest-text-to-speech.md) bereit. Es gibt viele [Beispielquellcodeprojekte](https://azure.microsoft.com/resources/samples/cognitive-speech-tts/) für Plattform-, Framework- und Sprachvarianten.

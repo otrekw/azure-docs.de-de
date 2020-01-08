@@ -9,43 +9,38 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 4d096ee829a425af3763c212daf5049acccf9f19
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 508fa192a014501bad6488e5be8278731230913b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325922"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381561"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
-In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt. 
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
+In diesem Tutorial erstellen Sie eine benutzerdefinierte App, die die Absicht eines Benutzers auf der Grundlage seiner Äußerung (Text) vorhersagt.
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
 > [!div class="checklist"]
-> * Erstellen einer neuen App 
+> * Erstellen einer neuen App
 > * Erstellen von Absichten
 > * Hinzufügen von Beispieläußerungen
 > * Trainieren der App
 > * App veröffentlichen
 > * Abrufen der Absichtsvorhersage vom Endpunkt
 
-
-[!INCLUDE [LUIS Free account](includes/quickstart-tutorial-use-free-starter-key.md)]
-
 ## <a name="user-intentions-as-intents"></a>Benutzerintentionen als Absichten
 
-Der Zweck der App besteht darin, die Intention von dialogorientiertem, natürlichsprachigem Text zu erkennen: 
+Der Zweck der App besteht darin, die Intention von dialogorientiertem, natürlichsprachigem Text zu erkennen:
 
 `I'd like to order a veggie pizza with a salad on the side.`
 
-Diese Intentionen sind in **Absichten** kategorisiert. 
+Diese Intentionen sind in **Absichten** kategorisiert.
 
-|Absicht|Zweck|
+|Intent|Zweck|
 |--|--|
 |`ModifyOrder`|Ermitteln Sie die Pizzabestellung des Benutzers.|
 |`Greeting`|Beginnen Sie mit der Bot-Konversation.|
@@ -56,11 +51,11 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
 [!INCLUDE [Follow these steps to create a new LUIS app](includes/create-pizza-app.md)]
 
-## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht 
+## <a name="create-a-new-intent"></a>Erstellen einer neuen Absicht
 
 1. Wählen Sie im Portal im Abschnitt **Erstellen** der App die Option **+ Erstellen** aus. Geben Sie den neuen Namen der Absicht ein (`OrderPizza`), und wählen Sie dann **Fertig** aus.
 
-    Die `OrderPizza`-Absicht wird vorhergesagt, wenn ein Benutzer eine Pizza bestellen möchte. 
+    Die `OrderPizza`-Absicht wird vorhergesagt, wenn ein Benutzer eine Pizza bestellen möchte.
 
 1. Fügen Sie dieser Absicht mehrere voraussichtliche Beispieläußerungen von Benutzern hinzu:
 
@@ -74,9 +69,9 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
     ![Hinzufügen von Beispieläußerungen](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Durch die Bereitstellung von _Beispieläußerungen_ trainieren Sie LUIS, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollten. 
+    Durch die Bereitstellung von _Beispieläußerungen_ trainieren Sie LUIS, welche Art von Äußerungen für diese Absicht vorhergesagt werden sollten.
 
-    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]    
+    [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Erstellen verbleibender Absichten
 
@@ -90,7 +85,7 @@ Diese Intentionen sind in **Absichten** kategorisiert.
     |`Start`|
     |`Begin`|
 
-1. Erstellen Sie die `Confirm`-Absicht, und fügen Sie die folgenden Beispieläußerungen hinzu. Dies ist die Absicht zur Ermittlung, ob ein Benutzer die Bestellung abgeschlossen hat und die Details der Bestellung annimmt. 
+1. Erstellen Sie die `Confirm`-Absicht, und fügen Sie die folgenden Beispieläußerungen hinzu. Dies ist die Absicht zur Ermittlung, ob ein Benutzer die Bestellung abgeschlossen hat und die Details der Bestellung annimmt.
 
     |`Confirm`-Beispieläußerungen|
     |--|
@@ -104,13 +99,13 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
 [!INCLUDE [Follow these steps to add the None intent to the app](includes/add-example-utterances-none-intent.md)]
 
-## <a name="train-the-app"></a>Trainieren der App 
+## <a name="train-the-app"></a>Trainieren der App
 
 [!INCLUDE [LUIS How to Train steps](includes/howto-train.md)]
 
-## <a name="publish-the-app"></a>Veröffentlichen der App 
+## <a name="publish-the-app"></a>Veröffentlichen der App
 
-[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)] 
+[!INCLUDE [LUIS How to Publish steps](includes/howto-publish.md)]
 
 ## <a name="get-intent-prediction"></a>Abrufen der Absichtsvorhersage
 
@@ -118,11 +113,11 @@ Diese Intentionen sind in **Absichten** kategorisiert.
 
 1. Geben Sie in der Adressleiste am Ende der URL Folgendes ein:
 
-    `get a medium vegetarian pizza for delivery` 
+    `get a medium vegetarian pizza for delivery`
 
     Dies ist nicht genau dasselbe wie eine Beispieläußerung, also ist es ein guter Test, um zu prüfen, ob LUIS lernen kann, was mit dieser Absicht vorhergesagt werden sollte.
 
-    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `OrderPizza` als Absicht mit der höchsten Bewertung zurückgeben. 
+    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung). Diese Äußerung stimmt nicht mit einer der Beispieläußerungen überein. Sie stellt einen guten Test dar und sollte die Absicht `OrderPizza` als Absicht mit der höchsten Bewertung zurückgeben.
 
     ```JSON
     {
@@ -148,15 +143,15 @@ Diese Intentionen sind in **Absichten** kategorisiert.
     }
     ```
 
-    Das Entitätenarray ist leer, da diese App aktuell keine Entitäten (Dateneinheiten in der zu extrahierenden Äußerung) aufweist. 
+    Das Entitätenarray ist leer, da diese App aktuell keine Entitäten (Dateneinheiten in der zu extrahierenden Äußerung) aufweist.
 
-    Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht als **`prediction.topIntent`** -Eigenschaft. Alle Bewertungen liegen zwischen 1 und 0. Die bessere Bewertung liegt näher bei 1. 
+    Das JSON-Ergebnis identifiziert die am höchsten bewertete Absicht als **`prediction.topIntent`** -Eigenschaft. Alle Bewertungen liegen zwischen 1 und 0. Die bessere Bewertung liegt näher bei 1.
 
 1. Ändern Sie den **query**-Parameter der URL, um ihn auf die Absicht **Grußformel** auszurichten:
 
     `Howdy`
 
-    Dies ist nicht genau dasselbe wie eine Beispieläußerung, also ist es ein guter Test, um zu prüfen, ob LUIS lernen kann, was mit dieser Absicht vorhergesagt werden sollte. 
+    Dies ist nicht genau dasselbe wie eine Beispieläußerung, also ist es ein guter Test, um zu prüfen, ob LUIS lernen kann, was mit dieser Absicht vorhergesagt werden sollte.
 
     ```json
     {
@@ -179,14 +174,14 @@ Diese Intentionen sind in **Absichten** kategorisiert.
             },
             "entities": {}
         }
-    }    
+    }
     ```
- 
-    Diese Vorhersage weist eine Zuverlässigkeitsbewertung von 44 % auf. Um die Zuverlässigkeitsbewertung zu erhöhen, fügen Sie zwischen 15 und 30 Beispieläußerungen hinzu.  
+
+    Diese Vorhersage weist eine Zuverlässigkeitsbewertung von 44 % auf. Um die Zuverlässigkeitsbewertung zu erhöhen, fügen Sie zwischen 15 und 30 Beispieläußerungen hinzu.
 
 ## <a name="client-application-next-steps"></a>Nächste Schritte in der Clientanwendung
 
-Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erledigt. LUIS gibt keine Antworten auf Benutzeräußerungen, es identifiziert lediglich, nach welcher Art Information in natürlicher Sprache gefragt wird. Der Dialoganschluss wird von der Clientanwendung, etwa einem Azure Bot, bereitgestellt. 
+Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erledigt. LUIS gibt keine Antworten auf Benutzeräußerungen, es identifiziert lediglich, nach welcher Art Information in natürlicher Sprache gefragt wird. Der Dialoganschluss wird von der Clientanwendung, etwa einem Azure Bot, bereitgestellt.
 
 
 [!INCLUDE [LUIS How to clean up resources](includes/quickstart-tutorial-cleanup-resources.md)]
@@ -194,15 +189,15 @@ Nachdem LUIS die JSON-Antwort zurückgegeben hat, hat LUIS diese Anforderung erl
 ## <a name="related-information"></a>Verwandte Informationen
 
 * [Typen von Entitäten](luis-concept-entity-types.md)
-* [Gewusst wie: trainieren](luis-how-to-train.md)
+* [Informationen zum Trainieren](luis-how-to-train.md)
 * [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
-* [Gewusst wie: Testen im LUIS-Portal](luis-interactive-test.md)
+* [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
 * [Azure Bot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden die LUIS-App und Absichten erstellt, Beispieläußerungen für jede Absicht hinzugefügt, Beispieläußerungen zur Absicht „None“ (Keine) hinzugefügt, die App trainiert, veröffentlicht und am Endpunkt getestet. Dies sind die grundlegenden Schritte bei der Erstellung eines LUIS-Modells. 
+In diesem Tutorial wurden die LUIS-App und Absichten erstellt, Beispieläußerungen für jede Absicht hinzugefügt, Beispieläußerungen zur Absicht „None“ (Keine) hinzugefügt, die App trainiert, veröffentlicht und am Endpunkt getestet. Dies sind die grundlegenden Schritte bei der Erstellung eines LUIS-Modells.
 
 > [!div class="nextstepaction"]
 > [Hinzufügen einer zerlegbaren Entität zu dieser App](tutorial-machine-learned-entity.md)

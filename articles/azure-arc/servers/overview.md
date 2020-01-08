@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Update
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: d091b89342570b73ccde5fe496a3432102617918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951427"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659620"
 ---
 # <a name="what-is-azure-arc-for-servers"></a>Was ist Azure Arc für Server?
 
@@ -41,7 +41,7 @@ Das Public Preview-Release ist für Evaluierungszwecke bestimmt und sollte nicht
 
 ## <a name="azure-subscription-and-service-limits"></a>Einschränkungen von Azure-Abonnements und -Diensten
 
-Sie sollten sich über die Azure Resource Manager-Einschränkungen informieren und die Anzahl von zu verbindenden Computern planen, indem Sie sich an die Hinweise zum [Abonnement](../../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) und zu den [Ressourcengruppen](../../azure-subscription-service-limits.md#resource-group-limits) halten. Standardmäßig gilt ein Grenzwert von 800 Servern pro Ressourcengruppe.
+Sie sollten sich über die Azure Resource Manager-Einschränkungen informieren und die Anzahl von zu verbindenden Computern planen, indem Sie sich an die Hinweise zum [Abonnement](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) und zu den [Ressourcengruppen](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) halten. Standardmäßig gilt ein Grenzwert von 800 Servern pro Ressourcengruppe.
 
 ## <a name="networking-configuration"></a>Netzwerkkonfiguration
 
@@ -99,7 +99,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
 Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
-Azure-Befehlszeilenschnittstelle:
+Azure CLI:
 
 ```azurecli-interactive
 az account set --subscription "{Your Subscription Name}"
@@ -107,7 +107,7 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Sie können die Ressourcenanbieter auch über das Portal registrieren, indem Sie die Schritte unter [Azure-Portal](../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) ausführen.
+Sie können die Ressourcenanbieter auch über das Portal registrieren, indem Sie die Schritte unter [Azure-Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) ausführen.
 
 ## <a name="machine-changes-after-installing-the-agent"></a>Computeränderungen nach der Installation des Agents
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 876e64cd29aabe1fd4274872800a29cf1a83a0d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60731599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350487"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Einrichten des DPDK auf einem virtuellen Linux-Computer
 
@@ -73,6 +73,7 @@ sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev lib
 ### <a name="ubuntu-1804"></a>Ubuntu 18.04
 
 ```bash
+sudo add-apt-repository ppa:canonical-server/dpdk-azure -y
 sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
@@ -252,7 +253,7 @@ Mit den folgenden Befehlen werden Pakete in einem regelmäßigen Sekundentakt ge
 
 Wenn Sie die vorherigen Befehle auf einer VM ausführen, ändern Sie *IP_SRC_ADDR* und *IP_DST_ADDR* in `app/test-pmd/txonly.c` vor dem Kompilieren entsprechend der tatsächlichen IP-Adresse der VM. Andernfalls werden die Pakete gelöscht, bevor sie die Weiterleitung erreichen. Es ist nicht möglich, dass ein dritter Computer den weitergeleiteten Datenverkehr empfängt, da die *testpmd*-Weiterleitung die Adressen der Schicht 3 nicht ändert, es sei denn, Sie nehmen einige Codeänderungen vor.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * [EAL-Optionen](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#eal-command-line-options) (in englischer Sprache)
 * [Testpmd-Befehle](https://dpdk.org/doc/guides/testpmd_app_ug/run_app.html#testpmd-command-line-options) (in englischer Sprache)

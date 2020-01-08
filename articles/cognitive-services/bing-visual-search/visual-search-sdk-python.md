@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 06/18/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 4d5679e75f0feb4fd502abc92fc7c1de16b53bc8
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 2a5fb6d72ab2259b2c11d1d71e93aa635da36946
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446562"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-python"></a>Schnellstart: Gewinnen von Erkenntnissen zu Bildern mit dem SDK für die visuelle Bing-Suche für Python
 
-Verwenden Sie diese Schnellstartanleitung, um Erkenntnisse zu Bildern aus dem Dienst für die visuelle Bing-Suche mithilfe des Python SDK zu gewinnen. Zwar verfügt die visuelle Bing-Suche über eine REST-API, die mit den meisten Programmiersprachen kompatibel ist, doch bietet das SDK eine einfache Möglichkeit, den Dienst in Ihre Anwendungen zu integrieren. Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py). 
+Verwenden Sie diese Schnellstartanleitung, um Erkenntnisse zu Bildern aus dem Dienst für die visuelle Bing-Suche mithilfe des Python SDK zu gewinnen. Die visuelle Bing-Suche verfügt zwar über eine REST-API, die mit den meisten Programmiersprachen kompatibel ist, aber das SDK ist eine einfache Möglichkeit, den Dienst in Ihre Anwendungen zu integrieren. Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,9 +29,7 @@ Verwenden Sie diese Schnellstartanleitung, um Erkenntnisse zu Bildern aus dem Di
     1. `cd mytestenv`
     2. `python -m pip install azure-cognitiveservices-search-visualsearch`
 
-
-
-[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
+[!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung

@@ -1,25 +1,16 @@
 ---
-title: Hinzufügen von Service Fabric-Integritätsberichten | Microsoft Docs
+title: Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 description: Beschreibt, wie benutzerdefinierte Integritätsberichte an Integritätsentitäten von Azure Service Fabric gesendet werden. Enthält Empfehlungen zum Entwerfen und Implementieren hochwertiger Integritätsberichte.
-services: service-fabric
-documentationcenter: .net
 author: oanapl
-manager: chackdan
-editor: ''
-ms.assetid: 0a00a7d2-510e-47d0-8aa8-24c851ea847f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d00f740085b15bdb5fe698a069d97f168507f31f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723443"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451588"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Hinzufügen von benutzerdefinierten Service Fabric-Integritätsberichten
 Azure Service Fabric bietet ein [Integritätsmodell](service-fabric-health-introduction.md) , das fehlerhafte Cluster- und Anwendungsbedingungen auf bestimmten Entitäten kennzeichnet. Das Integritätsmodell verwendet **Integritäts-Reporter** (Systemkomponenten und Watchdogs). Das Ziel ist die einfache und schnelle Diagnose und Reparatur. Dienstautoren müssen im Vorfeld an die Integrität denken. Jede Bedingung, die zur Beeinträchtigung der Integrität führen kann, sollte gemeldet werden, insbesondere wenn damit die Ursachen von Problemen ermittelt werden können. Die Integritätsinformationen können Zeit und Aufwand beim Debuggen und Untersuchen einsparen. Besonders deutlich wird der Nutzen, wenn der Dienst im gewünschten Umfang in der Cloud ausgeführt wird (private oder Azure-Cloud).

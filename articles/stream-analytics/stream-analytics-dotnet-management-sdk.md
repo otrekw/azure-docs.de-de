@@ -1,20 +1,19 @@
 ---
 title: Management .NET SDK für Azure Stream Analytics
 description: Führen Sie erste Schritte mit dem Stream Analytics Management .NET SDK durch. Erfahren Sie, wie Analytics-Aufträge eingerichtet und ausgeführt werden. Erstellen Sie ein Projekt, Eingaben, Ausgaben und Transformationen.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426256"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: Einrichten und Ausführen von Analyseaufträgen mit der Azure Stream Analytics-API für .NET
 Erfahren Sie, wie Sie mit der Azure Stream Analytics-API für .NET über das Management .NET SDK Analyseaufträge einrichten und ausführen. Richten Sie ein Projekt ein, erstellen Sie Eingabe- und Ausgabequellen sowie Transformationen, und starten und beenden Sie Aufträge. Für Ihre Analyseaufträge können Sie Daten aus dem Blob-Speicher oder einem Event Hub streamen.
@@ -289,7 +288,7 @@ Die Methode **Delete** löscht den Auftrag sowie die zugrunde liegenden Unterres
 Um Hilfe zu erhalten, nutzen Sie unser [Azure Stream Analytics-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben nun die Grundlagen der Verwendung eines .NET SDK zum Erstellen und Ausführen von Analyseaufträgen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
+Sie haben nun die Grundlagen der Verwendung eines .NET SDK zum Erstellen und Ausführen von Analyseaufträgen kennengelernt. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * [Einführung in Azure Stream Analytics](stream-analytics-introduction.md)
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

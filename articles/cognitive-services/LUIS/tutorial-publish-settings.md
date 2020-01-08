@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 0e105d70ff7f590a84e0a82c15bcdd83052b63a8
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74808003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447693"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Tutorial:  Hinzufügen der Standpunktanalyse als Veröffentlichungseinstellung
 
@@ -35,7 +35,7 @@ In diesem Tutorial ändern Sie die Veröffentlichungseinstellungen, um die Stimm
 
 Die folgenden Äußerungen sind Beispiele für die Stimmung:
 
-|Stimmung|Punkte|Äußerung|
+|Stimmung|Ergebnis|Äußerung|
 |:--|:--|:--|
 |Negativ|0.01 |Die Pizza war furchtbar.|
 |Positiv|0,97 |Die Käsepizza war sehr lecker.|
@@ -46,7 +46,7 @@ Da es sich um eine Veröffentlichungseinstellung handelt, wird diese nicht auf d
 
 ## <a name="import-example-json-to-begin-app"></a>Importieren von JSON-Beispielcode zum Starten einer App
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json) herunter, und speichern Sie sie.
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 

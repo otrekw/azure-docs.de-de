@@ -1,20 +1,18 @@
 ---
 title: Datengesteuertes Debuggen in Azure Stream Analytics
 description: Dieser Artikel beschreibt die Behandlung von Problemen in Azure Stream Analytics-Aufträgen mithilfe von Auftragsdiagrammen und Metriken im Azure-Portal.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 472d7fcbca1a221b69d681ce33d39978b53a3204
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3c0c29e1793e56efae8d13cb01d57faf257d8805
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426072"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Datengesteuertes Debuggen mithilfe des Auftragsdiagramms
 

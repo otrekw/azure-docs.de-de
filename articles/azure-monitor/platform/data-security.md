@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Log Analytics Ihre Privatsphäre und Daten schüt
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/04/2019
-ms.openlocfilehash: 3ff69928f4d6aa1692cdb1d4fd7e846b3a6b7a5c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 4ad762cc3a7388628b7385afb07b45819ef882b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363845"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument dient der Bereitstellung von spezifischen Informationen zu Log Analytics, einem Feature von Azure Monitor, in Ergänzung der Informationen im [Azure Trust Center](../../security/fundamentals/trust-center.md).  
@@ -25,7 +25,7 @@ Der Log Analytics-Dienst verwaltet Ihre Daten in der Cloud sicher mithilfe der f
 * Beibehaltung von Daten
 * Physische Sicherheit
 * Incident Management
-* Compliance
+* Kompatibilität
 * Sicherheitsstandard-Zertifizierungen
 
 Sollten Sie Fragen, Vorschläge oder Probleme im Zusammenhang mit den folgenden Informationen (einschließlich unserer Sicherheitsrichtlinien) haben, können Sie sich über die [Azure-Supportoptionen](https://azure.microsoft.com/support/options/) mit uns in Verbindung setzen.
@@ -67,7 +67,7 @@ Die folgende Tabelle enthält einige der verfügbaren Lösungen sowie Beispiele 
 
 Die folgende Tabelle zeigt Beispiele für Datentypen:
 
-| **Datentyp** | **Felder** |
+| **Datentyp** | **Fields** |
 | --- | --- |
 | Warnung |AlertName, AlertDescription, BaseManagedEntityId, ProblemId, IsMonitorAlert, RuleId, ResolutionState, Priority, Severity, Category, Owner, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved, TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, RepeatCount |
 | Konfiguration |CustomerID, AgentID, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
@@ -103,7 +103,7 @@ Im Falle des Verlusts von Kundendaten benachrichtigen wir jeden Kunden innerhalb
 
 Weitere Informationen über die Reaktion von Microsoft auf Sicherheitsvorfälle finden Sie unter [Microsoft Azure Security Response in the Cloud (Microsoft Azure Security Response in der Cloud)](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
-## <a name="compliance"></a>Compliance
+## <a name="compliance"></a>Kompatibilität
 Das Informationssicherheits- und Governance-Programm des Softwareentwicklungs- und Serviceteams für Log Analytics unterstützt die geschäftlichen Anforderungen und entspricht Gesetzen und Vorschriften, wie unter [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) und [Microsoft Trust Center Compliance](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx) beschrieben. Außerdem wird beschrieben, wie Log Analytics Sicherheitsanforderungen einrichtet, Sicherheitskontrollen identifiziert und Risiken verwaltet und überwacht. Richtlinien, Standards, Verfahren und Leitlinien werden jährlich überprüft.
 
 Jedes Mitglied des Entwicklungsteams erhält eine formale Anwendungssicherheitsschulung. Intern verwenden wir ein Versionskontrollsystem für die Softwareentwicklung. Jedes Softwareprojekt wird durch das Versionskontrollsystem geschützt.

@@ -1,5 +1,6 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple – Schnellstart: Erstellen einer privaten Cloud'
+title: 'Schnellstart: Erstellen einer privaten Cloud'
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Erfahren Sie, wie Sie eine private Cloud mit der Azure-VMware-Lösung von CloudSimple erstellen und konfigurieren können.
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c32045c6d68a813eaeb6e4e5de433160c2a30634
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: e4890186022842179ef4b66c03db03dd9b58a3d8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901462"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452396"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Schnellstart: Konfigurieren einer privaten Cloudumgebung
 
@@ -31,7 +32,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 Eine private Cloud ist ein isolierter VMware-Stapel, der ESXi-Hosts, vCenter, vSAN und NSX unterstützt.
 
-Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen über einen eigenen vCenter-Server in ihrer eigenen Verwaltungsdomäne. Der Stapel wird auf dedizierten Knoten und isolierten Bare-Metal-Hardwareknoten ausgeführt.
+Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen über einen eigenen vCenter-Server in einer eigenen Verwaltungsdomäne. Der Stapel wird auf dedizierten Knoten und isolierten Bare-Metal-Hardwareknoten ausgeführt.
 
 1. Wählen Sie **Alle Dienste** aus.
 2. Suchen Sie nach **CloudSimple Services**.
@@ -57,7 +58,7 @@ Private Clouds werden über das CloudSimple-Portal verwaltet. Sie verfügen übe
 
 11. Klicken Sie auf **Weiter: Überprüfen und erstellen**.
 12. Überprüfen Sie die Einstellungen. Wenn Sie irgendeine der Einstellungen ändern müssen, klicken Sie auf **Zurück**.
-13. Klicken Sie auf **Create**.
+13. Klicken Sie auf **Erstellen**.
 
 Der Prozess der Bereitstellung der privaten Cloud wird gestartet.  Es kann bis zu zwei Stunden dauern, bis die private Cloud bereitgestellt wird.
 
@@ -139,7 +140,7 @@ Nach dem Erstellen einer privaten Clouds erstellen Sie ein VLAN, in dem Sie Ihre
 5. Wählen Sie eine VLAN-ID in der Liste aus.  
 6. Geben Sie einen Subnetznamen ein, um das Subnetz zu bezeichnen.
 7. Geben Sie den CIDR-Bereich und die Maske des Subnetzes an.  Dieser Bereich darf sich nicht mit irgendeinem vorhandenen Subnetz überlappen.
-8. Klicken Sie auf **Submit**.
+8. Klicken Sie auf **Submit**(Senden).
 
     ![Details zum Erstellen des VLANs/Subnetzes](media/create-new-vlan-subnet-details.png)
 

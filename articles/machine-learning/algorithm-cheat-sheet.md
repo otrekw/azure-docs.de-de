@@ -1,5 +1,5 @@
 ---
-title: 'Machine Learning: Spickzettel für Algorithmen'
+title: Spickzettel für Machine Learning-Algorithmen
 titleSuffix: Azure Machine Learning
 description: Eine druckbare Version des Spickzettels für Machine Learning-Algorithmen, mit dem Sie den richtigen Algorithmus für Ihr Vorhersagemodell im Azure Machine Learning-Designer auswählen können.
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: 10714e155bebdd7acc5d7febb345c17fa81bab13
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d8b381c1afdea05618d9ad5d791a7597092c8519
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511347"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530781"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>Spickzettel mit Machine Learning-Algorithmen für Azure Machine Learning-Designer
 
@@ -22,7 +22,7 @@ Mithilfe des **Cheat Sheet für Azure Machine Learning-Algorithmen** können Sie
 
 Azure Machine Learning bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Klassifizierung***, ***Empfehlungssystem***, ***Clustering***, ***Anomalieerkennung***, ***Regression*** und ***Textanalyse***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
-## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Download: Spickzettel für Machine Learning-Algorithmen
+## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Herunterladen: Spickzettel für Machine Learning-Algorithmen
 
 **Laden Sie das Cheat Sheet hier herunter: [Machine Learning – Cheat Sheet für Algorithmen (11x17 Zoll)](https://download.microsoft.com/download/3/5/b/35bb997f-a8c7-485d-8c56-19444dafd757/azure-machine-learning-algorithm-cheat-sheet-nov2019.pdf?WT.mc_id=docs-article-lazzeri)**
 
@@ -56,10 +56,10 @@ Beim vertiefenden Lernen wählt der Algorithmus eine Aktion als Reaktion auf jed
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr zu Studio in Azure Machine Learning und zum Azure-Portal](service/overview-what-is-azure-ml.md).
+* [Erfahren Sie mehr zu Studio in Azure Machine Learning und zum Azure-Portal](overview-what-is-azure-ml.md).
 
 * In der [Referenz zu Algorithmen und Modulen](algorithm-module-reference/module-reference.md) finden Sie eine Liste mit Algorithmen und Modulen.
 
 * [Tutorial: Erstellen eines Vorhersagemodells im Azure Machine Learning-Designer](service/ui-tutorial-automobile-price-train-score.md).
 
-* [Weitere Informationen zu Deep Learning im Vergleich zum maschinellen Lernen](service/concept-deep-learning-vs-machine-learning.md).
+* [Weitere Informationen zu Deep Learning im Vergleich zum maschinellen Lernen](concept-deep-learning-vs-machine-learning.md).

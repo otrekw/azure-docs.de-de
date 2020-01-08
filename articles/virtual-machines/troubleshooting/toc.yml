@@ -159,6 +159,8 @@
       href: troubleshoot-deploy-vm-linux.md
     - name: Windows
       href: troubleshoot-deploy-vm-windows.md
+    - name: 'Neustarten, Herunterfahren oder Beenden von Diensten'
+      href: boot-error-troubleshoot-windows.md
 - name: Änderung von Gerätenamen
   href: troubleshoot-device-names-problems.md
 - name: Zugriff auf die VM-Wiederherstellung

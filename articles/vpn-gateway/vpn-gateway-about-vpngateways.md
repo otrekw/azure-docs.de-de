@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 11187b403b9bc23a0aa20eb5ee7a5e4923bb7276
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 1a5859517d2f858086c9034c8ee190e99bce5cd5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896664"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647746"
 ---
 # <a name="what-is-vpn-gateway"></a>Was ist VPN Gateway?
 
@@ -82,7 +82,7 @@ Eine VPN Gateway-S2S-Verbindung (Site-to-Site) ist eine Verbindung über einen V
 
 ### <a name="Multi"></a>Multi-Site
 
-Bei dieser Art von Verbindung handelt es sich um eine Abwandlung der Site-to-Site-Verbindung. Sie erstellen mehrere VPN-Verbindung über Ihr Gateway für virtuelle Netzwerke, durch die in der Regel mehrere lokale Standorte verbunden werden. Bei Verwendung mehrerer Verbindungen müssen Sie den VPN-Typ „RouteBased“ verwenden (wird bei Verwendung klassischer VNets als dynamisches Gateway bezeichnet). Da jedes virtuelle Netzwerk nur über ein einzelnes VPN-Gateway verfügen kann, wird die verfügbare Bandbreite von allen über das Gateway laufenden Verbindungen gemeinsam genutzt. Diese Art von Verbindung wird häufig als Multi-Site-Verbindung bezeichnet.
+Bei dieser Art von Verbindung handelt es sich um eine Abwandlung der Site-to-Site-Verbindung. Sie erstellen mehrere VPN-Verbindungen über Ihr Gateway für virtuelle Netzwerke, durch die in der Regel mehrere lokale Standorte verbunden werden. Bei Verwendung mehrerer Verbindungen müssen Sie den VPN-Typ „RouteBased“ verwenden (wird bei Verwendung klassischer VNets als dynamisches Gateway bezeichnet). Da jedes virtuelle Netzwerk nur über ein einzelnes VPN-Gateway verfügen kann, wird die verfügbare Bandbreite von allen über das Gateway laufenden Verbindungen gemeinsam genutzt. Diese Art von Verbindung wird häufig als Multi-Site-Verbindung bezeichnet.
 
 ![Beispiel für Multi-Site-Verbindung per Azure VPN Gateway](./media/vpn-gateway-about-vpngateways/vpngateway-multisite-connection-diagram.png)
 
@@ -159,5 +159,5 @@ Häufig gestellte Fragen zu VPN-Gateways finden Sie unter [Häufig gestellte Fra
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum VPN-Gateway](vpn-gateway-vpn-faq.md).
-- Sehen Sie sich die [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md#networking-limits) an.
+- Sehen Sie sich die [Abonnements und Diensteinschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) an.
 - Erfahren Sie mehr über die anderen zentralen [Netzwerkfunktionen](../networking/networking-overview.md) von Azure.

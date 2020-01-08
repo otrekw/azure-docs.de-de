@@ -4,15 +4,15 @@ description: Die Dienstzuordnung ist ein Feature von Azure Monitor für VMs. Sie
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 7ca79b0df55dbfea6a0e2c016773f9f32bf29667
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: d91c4f7c3abdb06bfe0116e0fadf67c5b7a7a394
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450721"
 ---
 # <a name="use-the-map-feature-of-azure-monitor-for-vms-preview-to-understand-application-components"></a>Verwenden des Zuordnungsfeatures in Azure Monitor für VMs (Vorschauversion) zum Analysieren von Anwendungskomponenten
 In Azure Monitor für VMs können Sie sich ermittelte Anwendungskomponenten für Windows- und Linux-VMs anzeigen lassen, die in Azure oder in Ihrer eigenen Umgebung ausgeführt werden. Sie können die VMs auf zwei Arten überwachen. Entweder rufen Sie die Zuordnung direkt über eine VM oder über Azure Monitor auf, um sich die Komponenten in den verschiedenen VM-Gruppen anzusehen. In diesem Artikel werden die beiden Anzeigemethoden beschrieben. Außerdem wird erklärt, wie Sie das Zuordnungsfeature verwenden. 

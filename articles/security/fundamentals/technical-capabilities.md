@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 45ef5c2feb7365384980fd002d89c243ed7772e2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468076"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353172"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische Funktionen der Azure-Sicherheit
 Dieser Artikel enthält eine Einführung in die Sicherheitsdienste in Azure, die helfen, Ihre Daten, Ressourcen und Anwendungen in der Cloud zu schützen, und die Sicherheitsanforderungen Ihres Unternehmens erfüllen.
@@ -183,7 +183,7 @@ Unterstützung von mindestens einem der empfohlenen Verschlüsselungsmodelle zum
 | ----------------  | ----------------- | ----------------- | --------------- |
 | Serververschlüsselung | Serververschlüsselung | Serververschlüsselung | Clientverschlüsselung
 | Serverseitige Verschlüsselung mit vom Dienst verwalteten Schlüsseln | Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault | Serverseitige Verschlüsselung mit lokalen vom Kunden verwalteten Schlüsseln |
-| • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch <br> • Microsoft verwaltet die Schlüssel <br>• Vollständige Cloud-Funktionen | • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch<br>• Kunde steuert Schlüssel per Azure Key Vault<br>• Vollständige Cloud-Funktionen | • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch <br>• Kunde steuert Schlüssel lokal <br> • Vollständige Cloud-Funktionen| • Azure-Dienste können entschlüsselte Daten nicht erkennen <br>• Kunden bewahren die Schlüssel lokal auf (oder in anderen sicheren Speichern). Schlüssel sind für Azure-Dienste nicht verfügbar. <br>• Reduzierte Cloud-Funktionen|
+| • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch <br> • Microsoft verwaltet die Schlüssel <br>• Vollständige Cloud-Funktionen | • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch<br>• Kunde steuert Schlüssel per Azure Key Vault<br>• Vollständige Cloud-Funktionen | • Azure-Ressourcenanbieter führen die Verschlüsselungs- und Entschlüsselungsvorgänge durch <br>• Kunde steuert Schlüssel lokal <br> • Vollständige Cloud-Funktionen| • Azure-Dienste können entschlüsselte Daten nicht erkennen <br>• Kunden bewahren die Schlüssel lokal auf (oder in anderen sicheren Speichern). Schlüssel sind für Azure-Dienste nicht verfügbar <br>• Reduzierte Cloud-Funktionen|
 
 ### <a name="enabling-encryption-at-rest"></a>Aktivieren der Verschlüsselung ruhender Daten
 
@@ -476,7 +476,7 @@ Der Dienst überwacht:
 
 - **Benutzerdefinierte Ereignisse und Metriken**, die Sie selbst im Client- oder Servercode schreiben, um Geschäftsereignisse zu verfolgen, z.B. verkaufte Artikel oder gewonnene Spiele.
 
-Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten: womöglich ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten.
+Die Infrastruktur für Ihre Anwendung besteht normalerweise aus vielen Komponenten: womöglich ein virtueller Computer, ein Speicherkonto und ein virtuelles Netzwerk oder eine Web-App, eine Datenbank, ein Datenbankserver und Drittanbieterdienste. Sie sehen diese Komponenten nicht als separate Entitäten, sondern als verwandte und voneinander abhängige Teile einer einzelnen Entität. Diese möchten Sie als Gruppe bereitstellen, verwalten und überwachen. Mit dem [Azure Resource Manager](../../azure-resource-manager/management/overview.md) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten.
 
 Sie können alle Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen. Sie verwenden eine Vorlage für die Bereitstellung, die für unterschiedliche Umgebungen geeignet sein kann, z.B. Testing, Staging und Produktion. Der Ressourcen-Manager bietet Sicherheits-, Überwachungs- und Kennzeichnungsfunktionen, mit denen Sie Ihre Ressourcen nach der Bereitstellung verwalten können.
 

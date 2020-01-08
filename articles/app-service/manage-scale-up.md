@@ -5,19 +5,19 @@ ms.assetid: f7091b25-b2b6-48da-8d4a-dcf9b7baccab
 ms.topic: article
 ms.date: 08/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 37120377f87bee53f73fe4d3dd7ced59551a491f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: dfd9297e80836978b8a185df3fc4659676383802
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672312"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659898"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Zentrales Hochskalieren einer App in Azure App Service
 
 In diesem Artikel wird die Vorgehensweise beim Skalieren Ihrer App in Azure App Service beschrieben. Es gibt zwei Workflows für die Skalierung: zentrales Hochskalieren und horizontales Hochskalieren. Dieser Artikel befasst sich mit dem Workflow zum zentralen Hochskalieren.
 
 * [Zentrales Hochskalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Bei dieser Methode erhalten Sie mehr CPUs, mehr Arbeitsspeicher und mehr Speicherplatz sowie zusätzliche Features wie dedizierte virtuelle Computer, benutzerdefinierte Domänen und Zertifikate, Stagingslots, automatische Skalierung und mehr. Zum zentralen Hochskalieren muss der Tarif des App Service-Plans geändert werden, zu dem die App gehört.
-* [Horizontales Skalieren](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Bei dieser Methode wird die Anzahl von VM-Instanzen erhöht, die Ihre App ausführen.
+* [Horizontales Skalieren:](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling) Bei dieser Methode wird die Anzahl von VM-Instanzen erhöht, die Ihre App ausführen.
   Die Instanzenanzahl kann je nach Tarif auf bis zu 30 erhöht werden. [App Service-Umgebungen](environment/intro.md) im Tarif **Isolated** erhöhen die Anzahl der Instanzen beim horizontalen Hochskalieren weiter auf 100. Weitere Informationen zum horizontalen Hochskalieren finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl). Dort erfahren Sie, wie Sie die automatische Skalierung verwenden, d.h. das automatische Skalieren der Instanzenzahl basierend auf vordefinierten Regeln und Zeitplänen.
 
 Diese Skalierungseinstellungen werden innerhalb von Sekunden angewendet und wirken sich auf alle Apps im [App Service-Plan](../app-service/overview-hosting-plans.md)aus.
@@ -71,7 +71,7 @@ Wenn Ihre App von anderen Diensten abhängt, beispielsweise von Azure SQL-Datenb
 
 Ausführliche Informationen, z.B. VM-Größen für jeden Tarif, finden Sie unter [App Service-Preisdetails](https://azure.microsoft.com/pricing/details/app-service).
 
-Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie unterstützte Features in jedem Tarif finden Sie unter [App Service-Grenzwerte](../azure-subscription-service-limits.md#app-service-limits).
+Eine Tabelle der Dienstbeschränkungen, Kontingente und Einschränkungen sowie unterstützte Features in jedem Tarif finden Sie unter [App Service-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).
 
 <a name="Next Steps"></a>
 

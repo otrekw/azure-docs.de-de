@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 636a422cd46dc6b6274766b92753f04195a829a0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a45896e796011edd97fb1fd63fc3bda4a669927c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277932"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360071"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
 > [!div class="op_single_selector"]
-> - [Azure-Portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure-Befehlszeilenschnittstelle](network-watcher-nsg-flow-logging-cli.md)
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
@@ -36,7 +36,7 @@ Datenflussprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Fe
 
 ARMclient dient zum Aufrufen der REST-API mithilfe von PowerShell. Sie finden [ARMClient auf Chocolatey](https://chocolatey.org/packages/ARMClient).
 
-Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits durchgeführt haben, um eine Network Watcher-Instanz zu erstellen.
+Dieses Szenario setzt voraus, dass Sie die Schritte unter [Erstellen einer Network Watcher-Instanz](network-watcher-create.md) bereits ausgeführt haben.
 
 > [!Important]
 > Für Network Watcher-REST-API-Aufrufe ist der Ressourcengruppenname im Anforderungs-URI die Ressourcengruppe, die die Network Watcher-Instanz enthält, nicht die Ressourcen, für die Sie die Diagnoseaktionen ausführen.
@@ -59,7 +59,7 @@ Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei ARMClient an.
 armclient login
 ```
 
-## <a name="register-insights-provider"></a>Registrieren eines Anbieters von Insights
+## <a name="register-insights-provider"></a>Registrieren von Insights-Anbietern
 
 Der Anbieter **Microsoft.Insights** muss registriert sein, damit die Datenflussprotokollierung ordnungsgemäß funktioniert. Wenn Sie sich nicht sicher sind, ob der Anbieter **Microsoft.Insights** registriert ist, führen Sie folgendes Skript aus.
 
@@ -217,9 +217,6 @@ Wenn ein Speicherkonto angegeben wird, werden Paketerfassungsdateien in einem Sp
 ```
 https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 ```
-
-> [!IMPORTANT]
-> Zurzeit gibt es ein Problem, bei dem die [Datenflussprotokolle für Netzwerksicherheitsgruppen (NSG)](network-watcher-nsg-flow-logging-overview.md) für Network Watcher nicht auf Grundlage der Einstellungen für die Aufbewahrungsrichtlinie automatisch aus dem Blobpeicher gelöscht werden. Wenn eine Aufbewahrungsrichtlinie ungleich Null vorhanden ist, wird empfohlen, die Speicherblobs mit überschrittenem Aufbewahrungszeitraum regelmäßig zu löschen, um Gebühren zu vermeiden. Weitere Informationen zum Löschen des Speicherblobs mit NSG-Flowprotokoll finden Sie unter [Löschen von Speicherblobs mit NSG-Flowprotokollen](network-watcher-delete-nsg-flow-log-blobs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

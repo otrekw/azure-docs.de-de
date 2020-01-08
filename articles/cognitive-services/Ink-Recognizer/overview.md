@@ -3,19 +3,19 @@ title: Was ist die Freihanderkennung? – Freihanderkennungs-API
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie die Freihanderkennung in Anwendungen, Websites, Tools und andere Lösungen integrieren, um Freihandschriftdaten zu erkennen und als Eingabe zu nutzen.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448148"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Was ist die Freihanderkennungs-API?
 
@@ -28,7 +28,7 @@ Der Cognitive Service Freihanderkennung bietet eine cloudbasierte-REST-API zum A
 
 Mit der Freihanderkennungs-API können Sie handschriftlichen Inhalt in Ihren Anwendungen leicht erkennen. 
 
-|Feature  |BESCHREIBUNG  |
+|Funktion  |BESCHREIBUNG  |
 |---------|---------|
 | Handschrifterkennung | Erkennen von handschriftlichem Inhalt in 63 [Kernsprachen und Gebietsschemas](language-support.md). | 
 | Layouterkennung | Rufen Sie strukturelle Informationen über den Inhalt von Freihandschrifteingaben ab. Schlüsseln Sie den Inhalt in Schreibregionen, Absätze, Zeilen, Wörter, Listen mit Aufzählungszeichen auf. Ihre Anwendungen können dann mit den Layoutinformationen zusätzliche Funktionen wie automatische Listenformatierung und Formausrichtung erstellen. |
@@ -52,9 +52,9 @@ Nach der Registrierung:
 Probieren Sie einen Schnellstart in den folgenden Sprachen aus, um mit dem Senden von Aufrufen an die Freihanderkennungs-API zu beginnen.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
-Um zu sehen, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert, sehen Sie sich die folgenden Beispielanwendungen auf GitHub an:
+Sehen Sie sich in den folgenden Beispielanwendungen auf GitHub an, wie die Freihanderkennungs-API in einer Freihandschriftinhalte-App funktioniert:
 * [C# und universelle Windows-Plattform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  
 * [C# und Windows Presentation Foundation (WPF)](https://go.microsoft.com/fwlink/?linkid=2089804)
 * [JavaScript-Webbrowser-App](https://go.microsoft.com/fwlink/?linkid=2089908)       

@@ -1,5 +1,5 @@
 ---
-title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux – Microsoft Azure
+title: Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux
 description: Hier finden Sie Informationen zu Skalierbarkeits- und Leistungszielen für VM-Datenträger, die an unter Linux ausgeführte virtuelle Computer angefügt sind.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 11/15/2017
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 8bc355c4658ae3f410fb8852008752cf4497751d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7298b54d94effaa5bd7e600ec2d8d1045aa263ec
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036336"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647610"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux
 
@@ -33,4 +33,4 @@ Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in 
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits)
+[Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)

@@ -15,22 +15,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 208cff3c816b8243bc31b3db819f13dafe58c1d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e278172bc1c3ec4e81860c3f6d6a4b644731e2c
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683202"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647780"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie können einen virtuellen Computer mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einer VM kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
+Sie können einen virtuellen Computer (VM) mit einer statischen öffentlichen IP-Adresse erstellen. Mit einer öffentlichen IP-Adresse können Sie über das Internet mit einer VM kommunizieren. Um sicherzustellen, dass sich die Adresse niemals ändert, weisen Sie anstelle einer dynamischen Adresse eine statische öffentliche IP-Adresse zu. Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine öffentliche dynamische IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit privaten IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md). Für öffentliche IP-Adressen fällt eine [Schutzgebühr](https://azure.microsoft.com/pricing/details/ip-addresses) an, und für die Anzahl der öffentlichen IP-Adressen, die Sie pro Abonnement verwenden können, ist ein [Grenzwert](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) festgelegt.
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. Um den lokalen Computer zu verwenden, stellen Sie sicher, dass [Azure PowerShell installiert ist](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Klicken Sie zum Verwenden von Azure Cloud Shell in der oberen rechten Ecke eines beliebigen Befehlsfelds auf **Testen**. Cloud Shell meldet Sie in Azure an.
+Auf dem lokalen Computer oder mithilfe von Azure Cloud Shell können Sie die folgenden Schritte durchführen. Um den lokalen Computer zu verwenden, stellen Sie sicher, dass [Azure PowerShell installiert ist](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Wählen Sie oben rechts in einem beliebigen Befehlsfelds **Testen** aus, um Azure Cloud Shell zu verwenden. Cloud Shell meldet Sie in Azure an.
 
 1. Wenn Sie Cloud Shell bereits verwenden, fahren Sie mit Schritt 2 fort. Öffnen Sie eine Befehlssitzung, und melden Sie sich mit `Connect-AzAccount` in Azure an.
 2. Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe in der Azure-Region „USA, Osten“ erstellt:

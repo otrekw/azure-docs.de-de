@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6aaa98bea5e6cf1bdffc3dbe28e42e9545a626ea
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 4158df06b4eea175a4225e478325f8f151795850
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593609"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660629"
 ---
 # <a name="what-is-a-content-delivery-network-on-azure"></a>Was ist ein Content Delivery Network in Azure?
 Ein Content Delivery Network (CDN) ist ein verteiltes Netzwerk mit Servern, über die Webinhalte auf effiziente Weise für Benutzer bereitgestellt werden können. In CDNs werden zwischengespeicherte Inhalte auf Edgeservern an POP-Standorten (Point of Presence) gespeichert, die sich in der Nähe der Endbenutzer befinden, um die Wartezeit zu verringern. 
@@ -35,7 +35,7 @@ Die Bereitstellung von Websiteressourcen über Azure CDN bietet folgende Vorteil
 
 Eine Liste mit aktuellen CDN-Knotenstandorten finden Sie unter [Azure CDN-POP-Standorte nach Region](cdn-pop-locations.md).
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 ![Übersicht über CDN](./media/cdn-overview/cdn-overview.png)
 
 1. Ein Benutzer (Alice) fordert eine Datei (auch Ressource genannt) über eine URL mit einem speziellen Domänennamen an. Beispiel: _&lt;Endpunktname&gt;_ .azureedge.net. Dieser Name kann ein Endpunkt-Hostname oder eine benutzerdefinierte Domäne sein. Das DNS leitet die Anforderung an den POP-Standort mit der besten Leistung weiter. Dabei handelt es sich in der Regel um den POP, der dem Benutzer geografisch am nächsten ist.
@@ -59,7 +59,7 @@ Bei jedem Azure-Abonnement gelten Standardgrenzwerte für folgende Ressourcen:
  - Anzahl von Endpunkten, die in einem CDN-Profil erstellt werden können 
  - Anzahl von benutzerdefinierten Domänen, die einem Endpunkt zugeordnet werden können
 
-Weitere Informationen zu Grenzwerten für CDN-Abonnements finden Sie unter [CDN-Grenzwerte](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Weitere Informationen zu Grenzwerten für CDN-Abonnements finden Sie unter [CDN-Grenzwerte](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
     
 ## <a name="azure-cdn-features"></a>Azure CDN-Features
 Azure CDN bietet folgende Schlüsselfeatures:

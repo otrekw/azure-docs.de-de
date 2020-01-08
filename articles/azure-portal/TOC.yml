@@ -14,8 +14,12 @@
       href: azure-portal-dashboard-share-access.md
     - name: Programmgesteuertes Erstellen von Azure-Dashboards
       href: azure-portal-dashboards-create-programmatically.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
+    - name: Festlegen Ihrer Azure-Portaleinstellungen
+      href: set-preferences.md
+    - name: Festlegen inaktiver Timeouteinstellungen für alle Benutzer
+      href: admin-timeout.md
     - name: Aktivieren des hohen Kontrasts oder Ändern des Designs
       href: azure-portal-change-theme-high-contrast.md
     - name: 'Hinzufügen, Entfernen und Sortieren von Favoriten'

@@ -2,17 +2,17 @@
 title: Was ist Azure Cloud Services? | Microsoft-Dokumentation
 description: Weitere Informationen zu Azure Cloud Services
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: multiple
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 61369d51056607d8176d301afa945c7c77895b12
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c531e02656c9f6342670024b2220386e789a2d98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359703"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386849"
 ---
 # <a name="overview-of-azure-cloud-services"></a>Übersicht zu Azure Cloud Services
 Azure Cloud Services sind ein Beispiel für [Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS). Diese Technologie unterstützt genau wie [Azure App Service](../app-service/overview.md) skalierbare und zuverlässige Anwendungen mit geringen Betriebskosten. Azure Cloud Services werden wie App Service auf virtuellen Computern (VMs) gehostet. Sie haben jedoch mehr Kontrolle über die virtuellen Computer. Sie können Ihre eigene Software auf virtuellen Computern installieren, die Azure Cloud Services verwenden, und remote darauf zugreifen.
@@ -48,6 +48,9 @@ Das PaaS-Konzept von Azure Cloud Services hat noch weitere Auswirkungen. So müs
 * [Erstellen einer Clouddienst-App in Node.js](cloud-services-nodejs-develop-deploy-app.md) 
 * [Erstellen einer Clouddienst-App in PHP](../cloud-services-php-create-web-role.md) 
 * [Erstellen einer Clouddienst-App in Python](cloud-services-python-ptvs.md)
+
+
+
 
 
 

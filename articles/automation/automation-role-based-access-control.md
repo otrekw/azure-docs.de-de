@@ -3,19 +3,15 @@ title: Rollenbasierte Zugriffssteuerung in Azure Automation
 description: Die rollenbasierte Zugriffssteuerung (RBAC) ermöglicht eine präzise Zugriffsverwaltung für Azure-Ressourcen. Dieser Artikel beschreibt, wie eine rollenbasierte Zugriffssteuerung in Azure Automation eingerichtet wird.
 keywords: Automation RBAC, rollenbasierte Zugriffssteuerung, Azure RBAC
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 05/17/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 0ee524768f46de965b1755f2cfffdf9e2034bec8
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 122e1f69e952acc00aba3cad2d75cb87b8fd08ee
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850787"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421587"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Rollenbasierte Zugriffssteuerung in Azure Automation
 
@@ -27,7 +23,7 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 
 | **Rolle** | **Beschreibung** |
 |:--- |:--- |
-| Owner (Besitzer) |Die Rolle „Besitzer“ erlaubt den Zugriff auf alle Ressourcen und Aktionen innerhalb eines Automation-Kontos, z.B. den Zugriff auf andere Benutzer, Gruppen und Anwendungen, um das Automation-Konto zu verwalten. |
+| Besitzer |Die Rolle „Besitzer“ erlaubt den Zugriff auf alle Ressourcen und Aktionen innerhalb eines Automation-Kontos, z.B. den Zugriff auf andere Benutzer, Gruppen und Anwendungen, um das Automation-Konto zu verwalten. |
 | Mitwirkender |Die Rolle „Mitwirkender“ erlaubt Ihnen, fast alles zu verwalten. Das Einzige, was Sie nicht können, ist das Ändern der Zugriffsberechtigungen für ein Automation-Konto anderer Benutzer. |
 | Leser |Die Rolle „Leser“ erlaubt Ihnen, alle Ressourcen im Automation-Konto zu betrachten, aber Sie können keine Änderungen vornehmen. |
 | Operator für Automation |Die Rolle „Operator für Automation“ ermöglicht das Anzeigen des Namens und der Eigenschaften des Runbooks sowie das Erstellen und Verwalten von Aufträgen für alle Runbooks in einem Automation-Konto. Diese Rolle ist hilfreich, wenn Sie Ihre Automation-Konten-Ressourcen wie Anmeldeinformationsobjekte und Runbooks vor Einblicken und Änderungen schützen wollen, es Mitgliedern Ihrer Organisation aber dennoch ermöglichen wollen, diese Runbooks auszuführen. |
@@ -43,7 +39,7 @@ Der Zugriff wird in Azure Automation erteilt, indem den Benutzern, Gruppen und A
 
 Die folgenden Tabellen beschreiben die spezifischen Berechtigungen der einzelnen Rollen. Dazu gehören „Aktionen“, die Berechtigungen erteilen, und „Keine Aktionen“, die sie einschränken.
 
-### <a name="owner"></a>Owner (Besitzer)
+### <a name="owner"></a>Besitzer
 
 Ein Besitzer kann alles verwalten, einschließlich des Zugriffs. Die folgende Tabelle zeigt die Berechtigungen für die Rolle:
 

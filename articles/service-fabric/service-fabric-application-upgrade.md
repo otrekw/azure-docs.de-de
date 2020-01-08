@@ -1,25 +1,14 @@
 ---
-title: Service Fabric-Anwendungsupgrade | Microsoft Docs
+title: Service Fabric-Anwendungsupgrade
 description: Dieser Artikel bietet eine Einführung in das Upgrade einer Service Fabric-Anwendung, einschließlich Wahl des Upgrademodus und der Durchführung der Integritätsüberprüfungen.
-services: service-fabric
-documentationcenter: .net
-author: mani-ramaswamy
-manager: chackdan
-editor: ''
-ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3c50ee149f5bcdda6cbb697830945cdc7f7a15f4
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72167284"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426770"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
 Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
@@ -80,7 +69,7 @@ Steuern Sie die Upgrades von Anwendungen mithilfe von [Upgradeparametern](servic
 
 Machen Sie Ihre Anwendungsupgrades kompatibel, indem Sie sich mit der [Datenserialisierung](service-fabric-application-upgrade-data-serialization.md)vertraut machen.
 
-Informieren Sie sich in [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)darüber, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen.
+Erfahren Sie, wie Sie erweiterte Funktionen beim Upgrade Ihrer Anwendung nutzen, indem Sie sich mit den [weiterführenden Themen](service-fabric-application-upgrade-advanced.md)beschäftigen.
 
 Informationen zum Beheben gängiger Probleme bei Anwendungsupgrades finden Sie in den Anweisungen unter [Problembehandlung bei Anwendungsupgrades](service-fabric-application-upgrade-troubleshooting.md).
 

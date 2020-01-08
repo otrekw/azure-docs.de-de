@@ -1,17 +1,14 @@
 ---
-title: Übersicht über Azure Resource Health | Microsoft-Dokumentation
+title: Übersicht über Azure Resource Health
 description: Übersicht über Azure Resource Health
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356797"
 ---
 # <a name="resource-health-overview"></a>Übersicht über Resource Health
  

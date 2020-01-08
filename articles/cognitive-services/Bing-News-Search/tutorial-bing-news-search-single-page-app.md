@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: e128daa82eca8142a636df0958ddca574e398713
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423606"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383114"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
 
@@ -61,7 +61,7 @@ Der HTML-Teil enthält auch die Bereiche (`<div>`-HTML-Tags), in denen die Suche
 
 Zum Speichern des Schlüssels wird der persistente Browserspeicher verwendet. Auf diese Weise müssen Sie nicht den Abonnementschlüssel der Bing-Suche-API im Code hinterlegen. Vor dem Speichern des Schlüssels wird der Benutzer zur Eingabe des Schlüssels aufgefordert. Wird der Schlüssel zu einem späteren Zeitpunkt von der API zurückgewiesen, wird der gespeicherte Schlüssel für ungültig erklärt, und der Benutzer wird zur erneuten Eingabe aufgefordert.
 
-In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (nicht von allen Browsern unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet.
+In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (nicht von allen Browsern unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ``` javascript
 // Cookie names for data we store

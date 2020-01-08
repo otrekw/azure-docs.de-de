@@ -7,15 +7,15 @@ author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 08/19/2019
 ms.author: wolfma
-ms.openlocfilehash: 024e6121e950ba27cf18b65434d712af80d1ec17
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 17e986954e98b7a3c0ea85324afbf77ce1428d68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74817794"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75468138"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 1. Ersetzen Sie die Zeichenfolge `YourServiceRegion` durch die [Region](~/articles/cognitive-services/Speech-Service/regions.md), die mit Ihrem Abonnement verknüpft ist (z. B. `westus` für das kostenlose Testabonnement).
 
-1. Ersetzen Sie die Zeichenfolge `helloworld.wav` durch ihren eigenen Dateinamen.
+1. Ersetzen Sie die Zeichenfolge `helloworld.wav` durch Ihren eigenen Dateinamen.
 
 1. Wählen Sie auf der Menüleiste **Datei** > **Alle speichern** aus.
 

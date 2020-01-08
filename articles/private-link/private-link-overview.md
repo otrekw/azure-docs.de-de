@@ -2,17 +2,17 @@
 title: Was ist Azure Private Link?
 description: Erfahren Sie, wie Sie mit Azure Private Link über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen können.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 03fdd67adf5df440cafe4e7411064437b8ef89ac
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671556"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647355"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Was ist Azure Private Link? (Vorschau)
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage, Azure Cosmos DB und SQL Database) sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbone-Netzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können auch Ihren eigenen [Private Link-Dienst](private-link-service-overview.md) in Ihrem virtuellen Netzwerk (VNet) erstellen und Ihren Kunden privat zur Verfügung stellen. Die Einrichtung und Nutzung von Azure Private Links ist in Azure-PaaS-, Kunden- und gemeinsamen Partnerdiensten konsistent.
@@ -65,7 +65,7 @@ Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise
 Häufig gestellte Fragen finden Sie unter [Häufig gestellte Fragen zu Azure Private Link](private-link-faq.md).
  
 ## <a name="limits"></a>Einschränkungen  
-Informationen zu Einschränkungen finden Sie unter [Einschränkungen für Azure Private Link](../azure-subscription-service-limits.md#private-link-limits).
+Informationen zu Einschränkungen finden Sie unter [Einschränkungen für Azure Private Link](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen eines privaten Endpunkts mit dem Azure-Portal](create-private-endpoint-portal.md)

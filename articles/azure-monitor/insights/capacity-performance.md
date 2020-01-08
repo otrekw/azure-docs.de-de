@@ -4,15 +4,15 @@ description: Die Lösung „Kapazität und Leistung“ in Monitor hilft Ihnen, d
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 8b130b800b53afadc40e0c9b9a2b730f24da396e
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c444991166d9c7d3f1d8ed39e19e333d3c27f982
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899056"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405745"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (veraltet)
 
@@ -118,7 +118,7 @@ Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazitä
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapazität und Leistung, die mit dieser Lösung gesammelt und berechnet werden.
 
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:--- |:--- |
 | Alle Konfigurationen des Hostarbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | Alle Konfigurationen des VM-Arbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |

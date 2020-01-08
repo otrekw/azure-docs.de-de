@@ -1,19 +1,18 @@
 ---
 title: Twitter-Standpunktanalyse in Echtzeit mit Azure Stream Analytics
 description: In diesem Artikel erfahren Sie, wie Sie Stream Analytics für Twitter-Standpunktanalysen in Echtzeit verwenden. Schrittweise Anleitung von der Ereignisgenerierung bis hin zu Daten im Live-Dashboard.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 8561789d53c3c1b00ac1477909bcbe356fe6a85d
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: f3ab21d55b7d59bb58760bfba452b4ea2d103496
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173117"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369897"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Twitter-Standpunktanalyse in Echtzeit in Azure Stream Analytics
 
@@ -61,7 +60,7 @@ Erstellen Sie einen Event Hub-Namespace, und fügen Sie diesem Namespace dann ei
 
     ![Blatt zum Erstellen eines neuen Event Hubs](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 
 
 ### <a name="grant-access-to-the-event-hub"></a>Gewähren des Zugriffs auf den Event Hub
@@ -79,7 +78,7 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 
     ![Blatt zum Erstellen einer neuen Event Hub-Zugriffsrichtlinie](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  Klicken Sie auf **Create**.
+4.  Klicken Sie auf **Erstellen**.
 
 5.  Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
@@ -199,7 +198,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 
     ![Erstellen eines neuen Stream Analytics-Auftrags](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
     Der Auftrag wird erstellt, und die Auftragsdetails werden im Portal angezeigt.
 
@@ -220,7 +219,7 @@ Nun, da wir einen Datenstrom von Tweet-Ereignissen von Twitter in Echtzeit haben
 
      ![Erstellen einer neuen Eingabe für einen Stream Analytics-Auftrag](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
 
 ## <a name="specify-the-job-query"></a>Festlegen der Auftragsabfrage
@@ -305,7 +304,7 @@ In dieser Schrittanleitung schreiben Sie die aggregierten Tweet-Ereignisse aus d
     
      ![Blatt „Neue Ausgabe“ für den Stream Analytics-Auftrag](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. Klicken Sie auf **Create**. 
+4. Klicken Sie auf **Erstellen**. 
 
     Azure erstellt das Speicherkonto und generiert automatisch einen Schlüssel. 
 

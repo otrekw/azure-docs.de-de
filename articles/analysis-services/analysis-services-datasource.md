@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7616bcdaf2a2ae6f80b0c1e964f311ef5409a64f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707128"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442760"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -47,7 +47,7 @@ Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten
 |Access-Datenbank     |  Ja | Nein |  |
 |Active Directory     |  Ja | Nein | <sup>[6](#tab1400b)</sup>  |
 |Analysis Services     |  Ja | Nein |  |
-|Analytics Platform System     |  Ja | Nein |  |
+|Analyseplattformsystem     |  Ja | Nein |  |
 |CSV-Datei  |Ja | Nein |  |
 |Dynamics 365     |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
 |Excel-Arbeitsmappe     |  Ja | Nein |  |
@@ -56,7 +56,7 @@ Datenquellen und -connectors, die im Datenabruf- oder Tabellenimport-Assistenten
 |IBM Informix  |Ja | Nein |  |
 |JSON-Dokument      |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
 |Zeilen aus Binärdatei      | Ja | Nein | <sup>[6](#tab1400b)</sup> |
-|MySQL Database     | Ja | Nein |  |
+|MySQL-Datenbank     | Ja | Nein |  |
 |OData-Feed      |  Ja | Nein | <sup>[6](#tab1400b)</sup> |
 |ODBC-Abfrage     | Ja | Nein |  |
 |OLE DB     |   Ja | Nein |  |
@@ -87,7 +87,7 @@ Zum Herstellen einer Verbindung zwischen lokalen Datenquellen und dem Azure Ana
 
 ## <a name="understanding-providers"></a>Grundlegendes zu Anbietern
 
-Bei der Erstellung eines tabellarischen Modellprojekts ab 1400 in Visual Studio geben Sie standardmäßig keinen Datenanbieter an, wenn mithilfe von **Daten abrufen** eine Verbindung mit einer Datenquelle hergestellt wird. Tabellarische Modelle ab 1400 verwenden [Power Query](/power-query/power-query-what-is-power-query.md)-Connectors, um Verbindungen, Datenabfragen und Mashups zwischen Datenquelle und Analysis Services zu verwalten. Diese werden gelegentlich als *strukturierte* Datenquellenverbindungen bezeichnet, da Verbindungseigenschaftseinstellungen für Sie festgelegt werden. Sie können jedoch Legacydatenquellen aktivieren. In diesem Fall können Sie den **Tabellenimport-Assistenten** verwenden, um eine Verbindung mit bestimmten Datenquellen herzustellen, die in tabellarischen Modellen bis 1200 traditionell als *Legacy-* oder *Anbieterdatenquelle* unterstützt werden. Bei Angabe als Anbieterdatenquelle können Sie einen bestimmten Datenanbieter sowie andere erweiterte Verbindungseigenschaften angeben. So können Sie beispielsweise eine Verbindung mit einer lokalen SQL Server Data Warehouse-Instanz oder sogar mit einer Azure SQL-Datenbank als Legacydatenquelle herstellen. Anschließend können Sie den Datenanbieter „OLE DB-Treiber für SQL Server“ (MSOLEDBSQL) auswählen. In diesem Fall kann durch die Wahl eines OLE DB-Datenanbieters anstelle des Power Query-Connectors ggf. eine Verbesserung der Leistung erzielt werden. 
+Bei der Erstellung eines tabellarischen Modellprojekts ab 1400 in Visual Studio geben Sie standardmäßig keinen Datenanbieter an, wenn mithilfe von **Daten abrufen** eine Verbindung mit einer Datenquelle hergestellt wird. Tabellarische Modelle ab 1400 verwenden [Power Query](/power-query/power-query-what-is-power-query)-Connectors, um Verbindungen, Datenabfragen und Mashups zwischen Datenquelle und Analysis Services zu verwalten. Diese werden gelegentlich als *strukturierte* Datenquellenverbindungen bezeichnet, da Verbindungseigenschaftseinstellungen für Sie festgelegt werden. Sie können jedoch Legacydatenquellen aktivieren. In diesem Fall können Sie den **Tabellenimport-Assistenten** verwenden, um eine Verbindung mit bestimmten Datenquellen herzustellen, die in tabellarischen Modellen bis 1200 traditionell als *Legacy-* oder *Anbieterdatenquelle* unterstützt werden. Bei Angabe als Anbieterdatenquelle können Sie einen bestimmten Datenanbieter sowie andere erweiterte Verbindungseigenschaften angeben. So können Sie beispielsweise eine Verbindung mit einer lokalen SQL Server Data Warehouse-Instanz oder sogar mit einer Azure SQL-Datenbank als Legacydatenquelle herstellen. Anschließend können Sie den Datenanbieter „OLE DB-Treiber für SQL Server“ (MSOLEDBSQL) auswählen. In diesem Fall kann durch die Wahl eines OLE DB-Datenanbieters anstelle des Power Query-Connectors ggf. eine Verbesserung der Leistung erzielt werden. 
 
 Wenn Sie den Tabellenimport-Assistenten in Visual Studio verwenden, ist für Verbindungen mit einer Datenquelle ein Datenanbieter erforderlich. Es wird automatisch ein Standarddatenanbieter ausgewählt. Der Datenanbieter kann bei Bedarf geändert werden. Entscheidende Faktoren für die Wahl des Anbietertyps können die Leistung, die Verwendung von In-Memory-Speicher oder DirectQuery durch das Modell und die Analysis Services-Plattform sein, auf der das Modell bereitgestellt wird.
 

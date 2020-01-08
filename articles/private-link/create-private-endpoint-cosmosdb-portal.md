@@ -1,17 +1,17 @@
 ---
 title: Herstellen einer Verbindung mit einem Azure Cosmos-Konto mit Azure Private Link
 description: Erfahren Sie, wie Sie über einen virtuellen Computer sicher auf das Azure Cosmos-Konto zugreifen, indem Sie einen privaten Endpunkt erstellen.
-author: asudbring
+author: malopMSFT
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: e54aa00df9efa60cce0fd6fa1da32720f2947b12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851195"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430301"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Herstellen einer privaten Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link
 
@@ -33,9 +33,9 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Geben Sie in **Virtuelles Netzwerk erstellen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
-    | NAME | Geben Sie *MyVirtualNetwork* ein. |
+    | Name | Geben Sie *MyVirtualNetwork* ein. |
     | Adressraum | Geben Sie *10.1.0.0/16* ein. |
     | Subscription | Wählen Sie Ihr Abonnement aus.|
     | Resource group | Wählen Sie **Neue erstellen** aus, geben Sie *myResourceGroup* ein, und wählen Sie **OK** aus. |
@@ -52,7 +52,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Geben Sie in **Virtuellen Computer erstellen – Grundlagen** diese Informationen ein, oder wählen Sie sie aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | **PROJEKTDETAILS** | |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
@@ -79,7 +79,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Ho
 
 1. Wählen Sie in **Virtuellen Computer erstellen – Netzwerk** diese Informationen aus:
 
-    | Einstellung | Wert |
+    | Einstellung | value |
     | ------- | ----- |
     | Virtuelles Netzwerk | Übernehmen Sie den Standardwert **MyVirtualNetwork**.  |
     | Adressraum | Übernehmen Sie den Standardwert **10.1.0.0/24**.|
@@ -141,7 +141,7 @@ In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine pri
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. Installieren Sie im Remotedesktop von  *myVM* [Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+1. Installieren Sie im Remotedesktop von  *myVM*[Microsoft Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
 
 1. Wählen Sie mit der rechten Maustaste **Cosmos DB-Konten (Vorschau)** aus.
 
@@ -151,9 +151,9 @@ In diesem Abschnitt stellen Sie unter Verwendung des privaten Endpunkts eine pri
 
 1. Geben Sie die Verbindungszeichenfolge ein, indem Sie die zuvor kopierten Informationen einfügen.
 
-1. Klicken Sie auf **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
-1. Wählen Sie **Verbinden**aus.
+1. Wählen Sie **Verbinden**.
 
 1. Durchsuchen Sie die Azure Cosmos-Datenbanken und -Container aus *mycosmosaccount*.
 

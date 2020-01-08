@@ -31,6 +31,16 @@
           href: tutorial-ev-routing.md
         - name: Analysieren von Wetterdaten mit Azure Notebooks (Python)
           href: weather-service-tutorial.md
+    - name: Migrieren von Google Maps
+      items:
+        - name: Migrieren von Google Maps
+          href: migrate-from-google-maps.md
+        - name: Migrieren einer Web-App
+          href: migrate-from-google-maps-web-app.md
+        - name: Migrieren einer Android-App
+          href: migrate-from-google-maps-android-app.md
+        - name: Migrieren eines Webdiensts
+          href: migrate-from-google-maps-web-services.md
 - name: Konzepte
   items:
     - name: Authentifizierung mit Azure Maps
@@ -63,7 +73,7 @@
       href: mobility-service-data-structure.md
     - name: Konzepte des Wetterdiensts
       href: weather-services-concepts.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten
       items:
@@ -103,44 +113,48 @@
               href: create-data-source-web-sdk.md
             - name: Hinzufügen einer Symbolebene
               href: map-add-pin.md
+            - name: Hinzufügen eines Popups
+              href: map-add-popup.md
             - name: Hinzufügen einer Blasenebene
               href: map-add-bubble-layer.md
+            - name: Hinzufügen von HTML-Markern
+              href: map-add-custom-html.md
             - name: Hinzufügen einer Linienebene
               href: map-add-line-layer.md
             - name: Hinzufügen einer Polygonebene
               href: map-add-shape.md
-            - name: Hinzufügen einer Polygonebene für die Extrusion
+            - name: Hinzufügen einer Polygonextrusionsebene
               href: map-extruded-polygon.md
             - name: Hinzufügen einer Wärmebildebene
               href: map-add-heat-map-layer.md
-            - name: Hinzufügen eines Popups
-              href: map-add-popup.md
+            - name: Hinzufügen einer Bildebene
+              href: map-add-image-layer.md
+            - name: Hinzufügen von Kachelebenen
+              href: map-add-tile-layer.md
+            - name: Anzeigen des Verkehrs
+              href: map-show-traffic.md
             - name: Clusterpunktdaten
               href: clustering-point-data-web-sdk.md
             - name: Verwenden von datengesteuerten Formatvorlagenausdrücken
               href: data-driven-style-expressions-web-sdk.md
             - name: Verwenden von Imagevorlagen
               href: how-to-use-image-templates-web-sdk.md
-            - name: Hinzufügen einer Bildebene
-              href: map-add-image-layer.md
-            - name: Hinzufügen von Kachelebenen
-              href: map-add-tile-layer.md
-            - name: HTML-Marker
-              href: map-add-custom-html.md
-            - name: Anzeigen des Verkehrs
-              href: map-show-traffic.md
             - name: Reagieren auf Ereignisse
               href: map-events.md
             - name: Ermöglichen des Zugriffs auf Ihre App
               href: map-accessibility.md
         - name: Zeichentools
           items:
+            - name: Verwenden des Zeichentools-Moduls
+              href: set-drawing-options.md
             - name: Hinzufügen einer Symbolleiste zum Zeichnen
               href: map-add-drawing-toolbar.md
-            - name: Festlegen von Optionen zum Zeichnen
-              href: set-drawing-options.md
             - name: Abrufen von Formdaten
               href: map-get-shape-data.md
+            - name: Reagieren auf Zeichnungsereignisse
+              href: drawing-tools-events.md
+            - name: Interaktionstypen und Tastenkombinationen
+              href: drawing-tools-interactions-keyboard-shortcuts.md
         - name: Dienstmodule
           items:
             - name: Verwenden der Dienstmodule
@@ -231,6 +245,8 @@
       href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=azurelbs'
     - name: Azure Maps-Videos
       href: 'https://aka.ms/AzureMapsVideos'
+    - name: Open Source-Projekte
+      href: open-source-projects.md
     - name: Azure Maps-Fallstudien
       href: 'https://aka.ms/AzureMapsCaseStudies'
     - name: Azure Maps-Glossar

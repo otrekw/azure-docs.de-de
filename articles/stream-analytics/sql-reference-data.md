@@ -1,19 +1,18 @@
 ---
 title: Verwenden von SQL-Datenbank-Verweisdaten in einem Azure Stream Analytics-Auftrag
 description: In diesem Artikel wird beschrieben, wie Sie eine SQL-Datenbank-Instanz als Verweisdateneingabe für einen Azure Stream Analytics-Auftrag im Azure-Portal und in Visual Studio verwenden.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 733ac7d1ff1d50e5fdcfa0dec2ad3fd3f30f6d86
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72926686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426502"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
@@ -157,7 +156,7 @@ Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL
  
 2. Erstellen Sie die Deltaabfrage. 
    
-   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte  **_operation_** . Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. 
+   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_** . Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. 
 
    Für Datensätze, die aktualisiert wurden, übernimmt die temporale Tabelle die Buchführung durch Erfassen eines Einfüge- und Löschvorgangs. Die Stream Analytics-Runtime wendet dann die Ergebnisse auf die an die vorhergehende Momentaufnahme gerichtete Deltaabfrage an, um die Verweisdaten auf dem neuesten Stand zu halten. Ein Beispiel der Deltaabfrage wird unten gezeigt:
 

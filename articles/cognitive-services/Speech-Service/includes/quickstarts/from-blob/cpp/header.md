@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: 23f01f91268189de9c8747b694d92a51a39285b1
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 2bc38b75a5239e31eb98dab94989e6dc15b3fbf1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74829066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469406"
 ---
 Wenn Sie direkt loslegen möchten, können Sie sich alle <a href="https://aka.ms/speech/github-cpp">Speech SDK-C++-Beispiele</a> auf GitHub ansehen oder diese herunterladen. Machen Sie andernfalls hier weiter.

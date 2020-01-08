@@ -3,12 +3,12 @@ title: Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 description: Erfahren Sie mehr über die Konzepte von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien.
 ms.date: 11/05/2019
 ms.topic: conceptual
-ms.openlocfilehash: a1ad004c79f90f4642640405da9e8876b9202e98
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463923"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453572"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Mandanten, Rollen und Benutzer in Azure Lighthouse-Szenarien
 
@@ -22,13 +22,13 @@ Unabhängig von der gewählten Onboardingmethode müssen Sie *Autorisierungen* d
 
 ## <a name="role-support-for-azure-delegated-resource-management"></a>Rollenunterstützung für die delegierte Azure-Ressourcenverwaltung
 
-Beim Definieren einer Autorisierung muss jedem Benutzerkonto eine der [integrierten Rollen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) zugewiesen werden. Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) werden nicht unterstützt.
+Beim Definieren einer Autorisierung muss jedem Benutzerkonto eine der [integrierten Rollen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../../role-based-access-control/built-in-roles.md) zugewiesen werden. Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 
-Für die delegierte Azure-Ressourcenverwaltung werden aktuell alle [integrierten Rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) unterstützt. Dabei gelten die folgenden Ausnahmen:
+Für die delegierte Azure-Ressourcenverwaltung werden aktuell alle [integrierten Rollen](../../role-based-access-control/built-in-roles.md) unterstützt. Dabei gelten die folgenden Ausnahmen:
 
-- Die Rolle [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) wird nicht unterstützt.
-- Integrierte Rollen mit der Berechtigung [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) werden nicht unterstützt.
-- Die integrierte Rolle [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) wird unterstützt, aber nur für den eingeschränkten Zweck der [Zuweisung von Rollen zu einer verwalteten Identität im Kundenmandanten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Weitere Berechtigungen, die üblicherweise über diese Rolle gewährt werden, werden nicht angewendet. Wenn Sie einen Benutzer mit dieser Rolle definieren, müssen Sie auch die integrierten Rollen angeben, die dieser Benutzer verwalteten Identitäten zuweisen kann.
+- Die Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) wird nicht unterstützt.
+- Integrierte Rollen mit der Berechtigung [DataActions](../../role-based-access-control/role-definitions.md#dataactions) werden nicht unterstützt.
+- Die integrierte Rolle [Benutzerzugriffsadministrator](../../role-based-access-control/built-in-roles.md#user-access-administrator) wird unterstützt, aber nur für den eingeschränkten Zweck der [Zuweisung von Rollen zu einer verwalteten Identität im Kundenmandanten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Weitere Berechtigungen, die üblicherweise über diese Rolle gewährt werden, werden nicht angewendet. Wenn Sie einen Benutzer mit dieser Rolle definieren, müssen Sie auch die integrierten Rollen angeben, die dieser Benutzer verwalteten Identitäten zuweisen kann.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Best Practices für das Definieren von Benutzern und Rollen
 
@@ -36,8 +36,8 @@ Beim Erstellen Ihrer Autorisierungen empfehlen wir die Einhaltung der folgenden 
 
 - In den meisten Fällen sollten Sie einer Azure AD-Benutzergruppe oder einem Dienstprinzipal Berechtigungen zuzuweisen, anstatt eine Reihe einzelner Benutzerkonten. Auf diese Weise können Sie den Zugriff für einzelne Benutzer hinzufügen oder entfernen, ohne den Plan aktualisieren und erneut veröffentlichen zu müssen, wenn sich ihre Zugriffsanforderungen ändern.
 - Beachten Sie, dass Sie das Prinzip der geringsten Rechte befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen Ihrer Aufgaben erforderlich sind, um die Wahrscheinlichkeit von unbeabsichtigten Fehlern zu verringern. Weitere Informationen finden Sie unter [Empfohlene Sicherheitsmaßnahmen](../concepts/recommended-security-practices.md).
-- Fügen Sie einen Benutzer mit der [Rolle „Registrierungszuweisung für verwaltete Dienste löschen“](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) hinzu, damit Sie den [Zugriff auf die Delegierung](../how-to/onboard-customer.md#remove-access-to-a-delegation) später bei Bedarf entfernen können. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
-- Stellen Sie sicher, dass allen Benutzern, die die [Seite „Meine Kunden“ im Azure-Portal anzeigen](../how-to/view-manage-customers.md) müssen, die Rolle [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) (oder eine andere integrierte Rolle mit Lesezugriff) zugewiesen wird.
+- Fügen Sie einen Benutzer mit der [Rolle „Registrierungszuweisung für verwaltete Dienste löschen“](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) hinzu, damit Sie den [Zugriff auf die Delegierung](../how-to/onboard-customer.md#remove-access-to-a-delegation) später bei Bedarf entfernen können. Wenn diese Rolle nicht zugewiesen wird, können delegierte Ressourcen nur durch einen Benutzer im Kundenmandanten entfernt werden.
+- Stellen Sie sicher, dass allen Benutzern, die die [Seite „Meine Kunden“ im Azure-Portal anzeigen](../how-to/view-manage-customers.md) müssen, die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle mit Lesezugriff) zugewiesen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

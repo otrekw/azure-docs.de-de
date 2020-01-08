@@ -15,16 +15,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: kumud
-ms.openlocfilehash: c553e3f2de963abb4a3c23a4114eecfa33d0aa61
-ms.sourcegitcommit: 4cdd4b65ddbd3261967cdcd6bc4adf46b4b49b01
+ms.openlocfilehash: 675c222bfbacf8207c7b3f906452251bedd64a66
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66735330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350165"
 ---
 # <a name="azure-resource-manager-template-samples-for-virtual-network"></a>Azure Resource Manager-Vorlagenbeispiele für virtuelle Netzwerke
 
-Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagenbeispielen. Sie können Vorlagen über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), mithilfe der [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder mithilfe von [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bereitstellen. Informationen zum Erstellen eigener Vorlagen finden Sie unter [Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-create-first-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sowie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagenbeispielen. Sie können Vorlagen über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), mithilfe der [Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder mithilfe von [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json) bereitstellen. Informationen zum Erstellen eigener Vorlagen finden Sie unter [Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-create-first-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sowie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Informationen zur JSON-Syntax und zu den Eigenschaften, die in Vorlagen verwendet werden sollen, finden Sie unter [Microsoft.Network resource types](/azure/templates/microsoft.network/allversions) (Microsoft.Network-Ressourcentypen).
 

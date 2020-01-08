@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/23/2019
 ms.author: mhopkins
 ms.custom: include file
-ms.openlocfilehash: 7e6bdf8f2cede2d55163932bfe8ab58e9ee96e0f
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7dd22886d11c3a35a7a866ff7c9a4f56ea74cab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422036"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351219"
 ---
 ### <a name="copy-your-credentials-from-the-azure-portal"></a>Kopieren Ihrer Anmeldeinformationen aus dem Azure-Portal
 
@@ -33,7 +33,7 @@ Schreiben Sie die Verbindungszeichenfolge nach dem Kopieren in eine neue Umgebun
 #### <a name="windows"></a>Windows
 
 ```cmd
-setx CONNECT_STR "<yourconnectionstring>"
+setx AZURE_STORAGE_CONNECTION_STRING "<yourconnectionstring>"
 ```
 
 Sie müssen nach dem Hinzufügen der Umgebungsvariablen unter Windows eine neue Instanz des Befehlsfensters öffnen.
@@ -41,13 +41,13 @@ Sie müssen nach dem Hinzufügen der Umgebungsvariablen unter Windows eine neue 
 #### <a name="linux"></a>Linux
 
 ```bash
-export CONNECT_STR="<yourconnectionstring>"
+export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 ```
 
 #### <a name="macos"></a>macOS
 
 ```bash
-export CONNECT_STR="<yourconnectionstring>"
+export AZURE_STORAGE_CONNECTION_STRING="<yourconnectionstring>"
 ```
 
 #### <a name="restart-programs"></a>Neustarten von Programmen

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange | Microsoft-Dokumentation'
+title: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Service Bus-Warteschlange erstellen. Anschließend nutzen Sie eine Beispielanwendung, um Nachrichten an die Warteschlange zu senden und Nachrichten von der Warteschlange zu empfangen.
 services: service-bus-messaging
 author: spelluru
@@ -8,14 +8,14 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/10/2019
+ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 80cef3efd65a3f68dba1856a892a9a120f7d95cd
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: 890e8d3a7592a6794fd19ac28b6ca613ac7201c6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65990296"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426937"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>Schnellstart: Verwenden von Azure PowerShell zum Erstellen einer Service Bus-Warteschlange
 In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an eine Service Bus-Warteschlange senden und von dieser empfangen. Sie verwenden Azure PowerShell, um einen Messaging-Namespace und eine Warteschlange innerhalb dieses Namespace zu erstellen und die Anmeldeinformationen dieses Namespace für die Autorisierung zu beschaffen. Anschließend wird gezeigt, wie Sie für diese Warteschlange das Senden und Empfangen von Nachrichten über die [.NET-Standardbibliothek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) durchführen.
@@ -29,7 +29,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie Nachrichten an eine Se
 
 Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten installiert sein:
 
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen. 
+- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][] erstellen, bevor Sie beginnen. 
 - [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher Sie verwenden Visual Studio zum Erstellen eines Beispiels, in dem Nachrichten an eine Warteschlange gesendet bzw. von dort empfangen werden. Das Beispiel dient zum Testen der Warteschlange, die Sie im Portal erstellt haben. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
 

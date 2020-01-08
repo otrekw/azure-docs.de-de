@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 0479918ad2afa99dcd9f18d3ba81f94a3e262e9e
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7174003485d51cf582c798c4b18404b1b72de0fb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74479384"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530951"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -135,7 +135,7 @@ Weitere Informationen finden Sie im folgenden Artikel: [Streamen des Azure-Aktiv
 
 Die Weiterleitung Ihrer Überwachungsdaten an einen Event Hub mit Azure Monitor ermöglicht eine einfache Integration in SIEM- und Überwachungstools von Partnern.
 
-Im folgenden Artikel finden Sie die Liste der [unterstützten SIEMs](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-resource-logs-sent-to-an-event-hub).
+Im folgenden Artikel finden Sie die Liste der [unterstützten SIEMs](../azure-monitor/platform/resource-logs-stream-event-hubs.md#what-you-can-do-with-platform-logs-sent-to-an-event-hub).
 
 ### <a name="example-for-querying-data"></a>Beispiel zum Abfragen von Daten 
 

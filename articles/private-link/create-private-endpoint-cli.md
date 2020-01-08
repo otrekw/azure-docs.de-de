@@ -2,17 +2,17 @@
 title: 'Schnellstart: Erstellen eines privaten Azure-Endpunkts mit der Azure-Befehlszeilenschnittstelle'
 description: In diesem Schnellstart erfahren Sie etwas über den privaten Azure-Endpunkt.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 67513c2155e956e005b143c3049abe70a2f126f2
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: dbcb833e6f8b90cebd3d013e58168558bcd96827
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419810"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459972"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Schnellstart: Erstellen eines privaten Endpunkts mit Azure CLI
 Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. Mit ihm können Azure-Ressourcen wie virtuelle Computer (VMs) privat mit Private Link-Ressourcen kommunizieren. In diesem Schnellstart erfahren Sie, wie Sie einen virtuellen Computer in einem virtuellen Netzwerk und einen SQL-Datenbank-Server mit einem privaten Endpunkt unter Verwendung von Azure CLI erstellen. Anschließend können Sie auf den virtuellen Computer zugreifen und sicher auf die Private Link-Ressource zugreifen (in diesem Beispiel auf eine private Azure SQL-Datenbank-Server-Instanz). 
@@ -165,7 +165,7 @@ In diesem Abschnitt stellen Sie eine Verbindung mit dem SQL-Datenbank-Server von
  Password (Kennwort): Geben Sie ein während der Erstellung angegebenes Kennwort ein.
  Kennwort speichern: Wählen Sie „Ja“ aus.
  
- 5. Wählen Sie **Verbinden**aus.
+ 5. Wählen Sie **Verbinden**.
  6. Durchsuchen Sie **Datenbanken** im linken Menü.
  7. (Optional) Erstellen oder Abfragen von Informationen aus *mydatabase*
  8. Schließen Sie die Remotedesktopverbindung mit *myVm*.

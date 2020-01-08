@@ -7,15 +7,15 @@ author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: 6e661b7a54666d511c4203326001406a68775344
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: db435c29737c5861fc28f3f90606bf662784eada
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980944"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466814"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
-1. Öffnen Sie `quickstart.py`, und ersetzen Sie den gesamten in der Datei enthaltenen Code wie folgt.
+1. Öffnen Sie `quickstart.py`, und ersetzen Sie den gesamten in dieser Datei enthaltenen Code durch Folgendes.
 
     ````python
     import azure.cognitiveservices.speech as speechsdk

@@ -2,20 +2,16 @@
 title: Verwalten eines virtuellen Azure-Computers mit Bestandserfassung | Microsoft-Dokumentation
 description: Verwalten eines virtuellen Computers mit Bestandserfassung
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgung
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61304101"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419812"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
@@ -74,7 +70,7 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 |Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Enter Path     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“
+|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z. B. „c:\temp\meinedatei.txt“
 
 ### <a name="linux-files"></a>Linux-Dateien
 
@@ -83,9 +79,9 @@ Die folgenden Tabellen enthalten Informationen zu den einzelnen Eigenschaften, d
 |Enabled     | Bestimmt, ob die Einstellung angewendet wird        |
 |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
 |Group     | Ein Gruppenname für die logische Gruppierung von Dateien        |
-|Enter Path     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
-|Path Type     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
-|Recursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
+|Pfad eingeben     | Der zu überprüfende Pfad für die Datei, z.B. „/etc/*.conf“       |
+|Pfadtyp     | Typ des nachzuverfolgenden Elements (mögliche Werte sind „File“ und „Directory“)        |
+|Rekursion     | Bestimmt, ob beim Suchen nach dem nachzuverfolgenden Element die Rekursion verwendet wird        |
 |Sudo verwenden     | Diese Einstellung bestimmt, ob „sudo“ bei der Suche nach dem Element verwendet wird         |
 |Links     | Diese Einstellung bestimmt, wie symbolische Verknüpfungen beim Durchlaufen von Verzeichnissen behandelt werden<br> **Ignore**: Symbolische Links werden ignoriert, und die referenzierten Dateien/Verzeichnisse werden nicht einbezogen.<br>**Follow**: Folgt den symbolischen Links während der Rekursion und bindet auch die referenzierten Dateien/Verzeichnisse ein.<br>**Manage**: Folgt den symbolischen Links und ermöglicht eine Änderung von zurückgegebenen Inhalten.      |
 

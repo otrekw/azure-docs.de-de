@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 22c1e3050915fc697a62862620ef492ef22f80b8
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67542832"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638271"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -61,7 +61,7 @@ Sie können Ihre lokalen Computer und Netzwerke unter Verwendung einer beliebige
 
 - **Point-to-Site-VPN (virtuelles privates Netzwerk)** : Wird zwischen einem virtuellen Netzwerk und einem einzelnen Computer in Ihrem Netzwerk eingerichtet. Jeder Computer, der eine Verbindung mit einem virtuellen Netzwerk herstellen möchte, muss eine eigene Verbindung konfigurieren. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Die Kommunikation zwischen Ihrem Computer und einem virtuellen Netzwerk wird durch einen verschlüsselten Tunnel über das Internet gesendet. Weitere Informationen finden Sie unter [Point-to-Site (VPN über IKEv2 oder SSTP)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#P2S).
 - **Site-to-Site-VPN**: Wird zwischen Ihrem lokalen VPN-Gerät und einem Azure-VPN-Gateway eingerichtet, das in einem virtuellen Netzwerk bereitgestellt ist. Bei diesem Verbindungstyp können alle lokalen Ressourcen, die von Ihnen autorisiert werden, auf ein virtuelles Netzwerk zugreifen. Die Kommunikation zwischen Ihrem lokalen VPN-Gerät und einem Azure-VPN-Gateway wird durch einen verschlüsselten Tunnel über das Internet gesendet. Weitere Informationen finden Sie unter [Site-to-Site und Multi-Site (IPsec-/IKE-VPN-Tunnel)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#s2smulti).
-- **Azure ExpressRoute**: Wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Weitere Informationen finden Sie unter [ExpressRoute (private Verbindung)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ExpressRoute).
+- **Azure ExpressRoute:** Wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Weitere Informationen finden Sie unter [ExpressRoute (private Verbindung)](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ExpressRoute).
 
 ## <a name="filter-network-traffic"></a>Filtern des Netzwerkdatenverkehrs
 
@@ -79,7 +79,7 @@ Azure leitet standardmäßig Datenverkehr zwischen Subnetzen, verbundenen virtue
 
 ## <a name="azure-vnet-limits"></a>Einschränkungen von Azure VNET
 
-Es gibt bestimmte Grenzwerte für die Anzahl der Azure-Ressourcen, die Sie bereitstellen können. Die meisten Grenzwerte für Azure-Netzwerke sind auf die Maximalwerte festgelegt. Sie können jedoch [bestimmte Grenzwerte für Netzwerke erhöhen](../azure-supportability/networking-quota-requests.md), wie unter [Grenzwerte für Netzwerke](../azure-subscription-service-limits.md#networking-limits) angegeben. 
+Es gibt bestimmte Grenzwerte für die Anzahl der Azure-Ressourcen, die Sie bereitstellen können. Die meisten Grenzwerte für Azure-Netzwerke sind auf die Maximalwerte festgelegt. Sie können jedoch [bestimmte Grenzwerte für Netzwerke erhöhen](../azure-supportability/networking-quota-requests.md), wie unter [Grenzwerte für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) angegeben. 
 
 ## <a name="pricing"></a>Preise
 

@@ -1,5 +1,5 @@
 ---
-title: Migrieren von XAMARIN iOS ADAL zu MSAL.NET
+title: Migrieren von Xamarin-Apps zu MSAL.NET
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Xamarin iOS-Apps, die Microsoft Authenticator verwenden, von ADAL.NET zu MSAL.NET migriert werden.
 author: jmprieur
@@ -13,12 +13,12 @@ ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e70865c897e408f1cebb7359d0890d27b11243b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c830b7f6d13d9b85eae34b6193ad2a10e7bfb410
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921822"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424212"
 ---
 # <a name="migrate-ios-applications-that-use-microsoft-authenticator-from-adalnet-to-msalnet"></a>Migrieren von iOS-Anwendungen mit Microsoft Authenticator von ADAL.NET zu MSAL.NET
 
@@ -52,14 +52,14 @@ In ADAL.NET wurde die Brokerunterstützung pro Authentifizierung aktiviert. Stan
 
 im `PlatformParameters`-Konstruktor ein `useBroker`-Flag auf „true“ festlegen, um den Broker aufzurufen:
 
-```CSharp
+```csharp
 public PlatformParameters(
         UIViewController callerViewController, 
         bool useBroker)
 ```
 Legen Sie auch im plattformspezifischen Code in diesem Beispiel im Seitenrenderer für iOS das `useBroker`-Flag 
 auf „true“ fest:
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -67,7 +67,7 @@ page.BrokerParameters = new PlatformParameters(
 ```
 
 Fügen Sie dann die Parameter in den Aufruf zum Abrufen eines Tokens (AcquireToken-Aufruf) ein:
-```CSharp
+```csharp
  AuthenticationResult result =
                     await
                         AuthContext.AcquireTokenAsync(
@@ -83,7 +83,7 @@ In MSAL.NET wird die Brokerunterstützung wird pro PublicClientApplication aktiv
 
 `WithBroker()`-Parameter (standardmäßig auf „true“ festgelegt) zum Aufrufen des Brokers:
 
-```CSharp
+```csharp
 var app = PublicClientApplicationBuilder
                 .Create(ClientId)
                 .WithBroker()
@@ -91,7 +91,7 @@ var app = PublicClientApplicationBuilder
                 .Build();
 ```
 Im AcquireToken-Aufruf:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -107,7 +107,7 @@ Ein UIViewController wird an den
 
 `PlatformParameters` in der iOS-spezifischen Plattform übergeben.
 
-```CSharp
+```csharp
 page.BrokerParameters = new PlatformParameters(
           this, 
           true, 
@@ -116,22 +116,22 @@ page.BrokerParameters = new PlatformParameters(
 </td><td>
 In MSAL.NET führen Sie zwei Schritte aus, um das Objektfenster für iOS festzulegen:
 
-1. Legen Sie in `AppDelegate.cs` den `App.RootViewController`-Parameter auf einen neuen `UIViewController()` fest. Durch diese Zuweisung wird sichergestellt, dass ein UIViewController mit dem Aufruf des Brokers vorhanden ist. Wenn der Controller nicht ordnungsgemäß festgelegt wird, erhalten Sie möglicherweise den folgenden Fehler: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
+1. Legen Sie in `AppDelegate.cs` den `App.RootViewController`-Parameter auf einen neuen `UIViewController()` fest. Durch diese Zuweisung wird sichergestellt, dass ein UIViewController mit dem Aufruf des Brokers vorhanden ist. Wenn der Controller nicht ordnungsgemäß festgelegt wird, erhalten Sie möglicherweise folgende Fehlermeldung: `"uiviewcontroller_required_for_ios_broker":"UIViewController is null, so MSAL.NET cannot invoke the iOS broker. See https://aka.ms/msal-net-ios-broker"`
 1. Verwenden Sie im AcquireTokenInteractive-Aufruf den `.WithParentActivityOrWindow(App.RootViewController)`-Parameter, und übergeben Sie den Verweis an das verwendete Objektfenster.
 
 **Beispiel:**
 
 In `App.cs`:
-```CSharp
+```csharp
    public static object RootViewController { get; set; }
 ```
 In `AppDelegate.cs`:
-```CSharp
+```csharp
    LoadApplication(new App());
    App.RootViewController = new UIViewController();
 ```
 Im AcquireToken-Aufruf:
-```CSharp
+```csharp
 result = await app.AcquireTokenInteractive(scopes)
              .WithParentActivityOrWindow(App.RootViewController)
              .ExecuteAsync();
@@ -140,7 +140,7 @@ result = await app.AcquireTokenInteractive(scopes)
 </table>
 
 ### <a name="step-3-update-appdelegate-to-handle-the-callback"></a>Schritt 3: Aktualisieren von AppDelegate zum Verarbeiten des Rückrufs
-ADAL und MSAL rufen beide den Broker auf, und der Broker wiederum führt über die `OpenUrl`-Methode der `AppDelegate`-Klasse einen Rückruf zu Ihrer Anwendung aus. Weitere Informationen finden Sie in [dieser Dokumentation](msal-net-use-brokers-with-xamarin-apps.md#step-2-update-appdelegate-to-handle-the-callback).
+ADAL und MSAL rufen beide den Broker auf, und der Broker wiederum führt über die `OpenUrl`-Methode der `AppDelegate`-Klasse einen Rückruf zu Ihrer Anwendung aus. Weitere Informationen finden Sie in [dieser Dokumentation](msal-net-use-brokers-with-xamarin-apps.md#step-3-update-appdelegate-to-handle-the-callback).
 
 Hier gibt es keine Änderungen bei MSAL.NET gegenüber ADAL.NET.
 
@@ -162,7 +162,7 @@ gefolgt von Ihrem `CFBundleURLName` enthalten
 
 Beispiel: `$"msauth.(BundleId")`
 
-```CSharp
+```csharp
  <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -183,7 +183,7 @@ Beispiel: `$"msauth.(BundleId")`
 
 </table>
 
-### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Schritt 5: Hinzufügen der Broker-ID im Abschnitt „LSApplicationQueriesSchemes“
+### <a name="step-5-add-the-broker-identifier-to-the-lsapplicationqueriesschemes-section"></a>Schritt 5: Hinzufügen der Broker-ID im Abschnitt LSApplicationQueriesSchemes
 
 ADAL.NET und MSAL.NET verwenden `-canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerät installiert ist. Fügen Sie in der Datei „Info.plist“ dem Abschnitt „LSApplicationQueriesSchemes“ den richtigen Bezeichner für den iOS-Broker wie folgt hinzu:
 
@@ -195,7 +195,7 @@ Verwendung
 `msauth`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauth</string>
@@ -207,10 +207,11 @@ Verwendung
 `msauthv2`
 
 
-```CSharp
+```csharp
 <key>LSApplicationQueriesSchemes</key>
 <array>
      <string>msauthv2</string>
+     <string>msauthv3</string>
 </array>
 ```
 </table>
@@ -237,7 +238,7 @@ Beispiel:
 
 </table>
 
-Weitere Informationen zum Registrieren des Umleitungs-URIs im Portal finden Sie unter [Verwenden von Brokern mit Xamarin.iOS-Anwendungen](msal-net-use-brokers-with-xamarin-apps.md#step-7-make-sure-the-redirect-uri-is-registered-with-your-app).
+Weitere Informationen zum Registrieren des Umleitungs-URIs im Portal finden Sie unter [Verwenden von Brokern mit Xamarin.iOS-Anwendungen](msal-net-use-brokers-with-xamarin-apps.md#step-8-make-sure-the-redirect-uri-is-registered-with-your-app).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

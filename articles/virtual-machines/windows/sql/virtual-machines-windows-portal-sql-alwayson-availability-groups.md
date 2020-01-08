@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: a06ea59af0776fe3decb0b56a3ef886f08b2dfda
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d7c88e500886453fbfb53655748ccf7025ab7d3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374253"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatisches Konfigurieren von Always On-Verfügbarkeitsgruppen in Azure Virtual Machines: Ressourcen-Manager
 
@@ -76,7 +76,7 @@ Klicken Sie auf **Grundlagen**, und konfigurieren Sie die folgenden Einstellunge
 * **Administratorbenutzername** ist ein Benutzerkonto mit Domänenadministratorberechtigungen und ein Mitglied der festen Serverrolle „sysadmin“ von SQL Server für beide Instanzen von SQL Server. Verwenden Sie für dieses Tutorial **DomainAdmin**.
 * **Kennwort** ist das Kennwort für das Domänenadministratorkonto. Verwenden Sie ein komplexes Kennwort. Bestätigen Sie das Kennwort.
 * **Abonnement** ist das Abonnement, das von Azure belastet wird, um alle für die Verfügbarkeitsgruppe bereitgestellten Ressourcen auszuführen. Gibt es für Ihr Konto mehrere Abonnements, können Sie ein anderes Abonnement angeben.
-* **Ressourcengruppe** ist der Name der Gruppe, zu der alle Azure-Ressourcen gehören, die über diese Vorlage erstellt werden. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+* **Ressourcengruppe** ist der Name der Gruppe, zu der alle Azure-Ressourcen gehören, die über diese Vorlage erstellt werden. Verwenden Sie für dieses Tutorial **SQL-HA-RG**. Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](../../../azure-resource-manager/management/overview.md#resource-groups).
 * **Standort** ist die Azure-Region, in der die Ressourcen in diesem Tutorial erstellt werden. Wählen Sie eine Azure-Region aus.
 
 Der folgende Screenshot zeigt ein ausgefülltes Blatt **Grundeinstellungen**:
@@ -197,7 +197,7 @@ Das Azure-Portal erstellt die Ressourcengruppe und alle Ressourcen.
 
 ![Azure-Dashboard](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/11-deploydashboard.png)
 
-## <a name="connect-to-sql-server"></a>Herstellen einer Verbindung mit SQL Server
+## <a name="connect-to-sql-server"></a>Verbindung mit SQL Server herstellen
 Die neuen Instanzen von SQL Server werden auf virtuellen Computern ausgeführt, die IP-Adressen mit Internetzugang haben. Sie können Remotedesktop (RDP) direkt für jeden virtuellen Computer mit SQL Server nutzen.
 
 Gehen Sie folgendermaßen vor, um eine RDP-Verbindung mit einer SQL Server-Instanz herzustellen:

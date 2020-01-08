@@ -2,17 +2,17 @@
 title: Was ist der Azure Private Link-Dienst?
 description: Erfahren Sie mehr über den Azure Private Link-Dienst.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: f9bdc180bf0dfd6f35fb18f5c76176a68d8f1644
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f8d49a62ae9006e65ef86db1ae90cd5a5e9f1c6d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912980"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647372"
 ---
 # <a name="what-is-azure-private-link-service"></a>Was ist der Azure Private Link-Dienst?
 
@@ -42,7 +42,7 @@ Nachdem ein Consumer eine Verbindung hergestellt hat, kann der Dienstanbieter di
 
 Wenn der Private Link-Dienst nicht mehr verwendet wird, können Sie ihn löschen. Bevor Sie den Dienst jedoch löschen, stellen Sie sicher, dass ihm keine privaten Endpunktverbindungen zugeordnet sind. Sie können alle Verbindungen ablehnen und den Dienst löschen.
 
-## <a name="properties"></a>Properties
+## <a name="properties"></a>Eigenschaften
 
 Ein Private Link-Dienst legt die folgenden Eigenschaften fest: 
 
@@ -68,7 +68,7 @@ Ein Private Link-Dienst legt die folgenden Eigenschaften fest:
  
 - Auf einen einzelnen Private Link-Dienst kann von mehreren privaten Endpunkten zugegriffen werden, die zu verschiedenen VNets, Abonnements und/oder Active Directory-Mandanten gehören. Die Verbindung wird über einen Verbindungsworkflow hergestellt. 
  
-- Mehrere Private Link-Dienste können auf demselben Load Balancer Standard mit unterschiedlichen Front-End-IP-Konfigurationen erstellt werden. Die Anzahl der Private Link-Dienste, die Sie pro Load Balancer Standard und pro Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Mehrere Private Link-Dienste können auf demselben Load Balancer Standard mit unterschiedlichen Front-End-IP-Konfigurationen erstellt werden. Die Anzahl der Private Link-Dienste, die Sie pro Load Balancer Standard und pro Abonnement erstellen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
  
 - Der Private Link-Dienst kann mit mehr als einer NAT-IP-Konfiguration verknüpft sein. Die Auswahl von mehreren NAT-IP-Konfigurationen kann Dienstanbietern bei der Skalierung helfen. Heute können Dienstanbieter bis zu acht NAT-IP-Adressen pro Private Link-Dienst zuweisen. Mit jeder NAT-IP-Adresse können Sie mehr Ports für Ihre TCP-Verbindungen zuweisen und auf diese Weise horizontal hochskalieren. Nachdem Sie mehrere NAT-IP-Adressen zu einem Private Link-Dienst hinzugefügt haben, können Sie die NAT-IP-Adressen nicht mehr löschen. Dadurch wird sichergestellt, dass beim Löschen der NAT-IP-Adressen die aktiven Verbindungen nicht beeinträchtigt werden.
 

@@ -8,12 +8,12 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73511827"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75535714"
 ---
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com) an.
 
@@ -38,5 +38,5 @@ ms.locfileid: "73511827"
 
 - Module **Daten importieren** oder **Daten exportieren**
         
-    Wenn Sie über ein Modul **Daten importieren** oder **Daten exportieren** im Experiment verfügen, müssen Sie die Datenquelle aktualisieren, um Datenspeicher zu verwenden. Informationen zum Erstellen eines Datenspeichers finden Sie unter [Informationen zum Zugriff auf Daten in Azure-Speicherdiensten](../articles/machine-learning/service/how-to-access-data.md). Die Informationen für Ihr Cloudspeicherkonto wurden der Einfachheit halber in den Kommentaren des Moduls **Daten importieren** oder **Daten exportieren** hinzugefügt. 
+    Wenn Sie über ein Modul **Daten importieren** oder **Daten exportieren** im Experiment verfügen, müssen Sie die Datenquelle aktualisieren, um Datenspeicher zu verwenden. Informationen zum Erstellen eines Datenspeichers finden Sie unter [Informationen zum Zugriff auf Daten in Azure-Speicherdiensten](../articles/machine-learning/how-to-access-data.md). Die Informationen für Ihr Cloudspeicherkonto wurden der Einfachheit halber in den Kommentaren des Moduls **Daten importieren** oder **Daten exportieren** hinzugefügt. 
       

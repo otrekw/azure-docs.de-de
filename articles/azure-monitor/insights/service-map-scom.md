@@ -4,15 +4,15 @@ description: Azure Monitor für VMs ermittelt automatisch Anwendungskomponenten 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: f1acf3c1574fd94606d75c6250dedd40a9c7ea4d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a8d0e0980b0d3634626bc1332e8219bdca7fbe01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402636"
 ---
 # <a name="integrate-system-center-operations-manager-with-azure-monitor-for-vms-map-feature"></a>Integrieren des Zuordnungsfeatures von Azure Monitor für VMs in System Center Operations Manager
 
@@ -127,7 +127,7 @@ Die Regel *Microsoft.SystemCenter.ServiceMapImport.Rule* ruft regelmäßig Infor
 * **TimeoutSeconds**: Gibt die Zeitspanne bis zum Timeout der Anforderung an.
 * **TimeWindowMinutes**: Gibt das Zeitfenster zum Abfragen von Daten an. Der Standardwert ist 60 Minuten. Dies ist das maximal zulässige Intervall.
 
-## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen
+## <a name="known-issues-and-limitations"></a>Einschränkungen und bekannte Probleme
 
 Das aktuelle Design weist folgende Probleme und Einschränkungen auf:
 

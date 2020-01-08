@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e4ebde6295c3f3467dd615b58d2140302aa86a61
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949982"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75367653"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Festlegen von Umleitungs-URLs zu b2clogin.com für Azure Active Directory B2C
 
@@ -93,7 +93,7 @@ Informationen zur Migration von Azure API Management-APIs, die durch Azure AD B2
 
 Wenn Sie [MSAL.NET][msal-dotnet] v2 oder früher verwenden, legen Sie die **ValidateAuthority**-Eigenschaft bei der Clientinstanziierung auf `false` fest, um Umleitungen zu *b2clogin.com* zuzulassen. Diese Einstellung ist für MSAL.NET v3 und höher nicht erforderlich.
 
-```CSharp
+```csharp
 ConfidentialClientApplication client = new ConfidentialClientApplication(...); // Can also be PublicClientApplication
 client.ValidateAuthority = false; // MSAL.NET v2 and earlier **ONLY**
 ```

@@ -4,15 +4,15 @@ description: Dieser Artikel beschreibt die Schritte zum Verbinden von Configurat
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: fee6f09ba8e290ae6599f07d4ed831fb89427f76
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932636"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364049"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Configuration Manager und Azure Monitor
 Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Monitor verbinden, um die Daten der Gerätesammlung zu synchronisieren und in Azure Monitor und Azure Automation auf diese Sammlungen zu verweisen.  

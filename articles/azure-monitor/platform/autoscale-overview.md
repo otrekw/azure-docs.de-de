@@ -1,18 +1,15 @@
 ---
 title: Übersicht über die automatische Skalierung in Virtual Machines, Cloud Services und Web-Apps
 description: Automatische Skalierung in Microsoft Azure. Gilt für Virtual Machines, VM-Skalierungsgruppen, Clouddienste und Web-Apps.
-ms.service: azure-monitor
 ms.subservice: autoscale
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
 ms.date: 09/24/2018
-ms.openlocfilehash: 2aeb0bc174eb5a94d485f4eafe000ecb3f693e5f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: a60c03f1928b38c78a59edca4b5493307d7d19d3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364372"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -94,7 +91,7 @@ Bei der vertikalen Skalierung ist dies anders. Hierbei wird die gleiche Anzahl v
 ## <a name="methods-of-access"></a>Zugriffsmethoden
 Zum Einrichten der automatischen Skalierung können Sie Folgendes verwenden:
 
-* [Azure-Portal](../../azure-monitor/platform/autoscale-get-started.md)
+* [Azure portal](../../azure-monitor/platform/autoscale-get-started.md)
 * [PowerShell](../../azure-monitor/platform/powershell-quickstart-samples.md#create-and-manage-autoscale-settings)
 * [Plattformübergreifende Befehlszeilenschnittstelle](../../azure-monitor/platform/cli-samples.md#autoscale)
 * [Azure Monitor-REST-API](https://msdn.microsoft.com/library/azure/dn931953.aspx)

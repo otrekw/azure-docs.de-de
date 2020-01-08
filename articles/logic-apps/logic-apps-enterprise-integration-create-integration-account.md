@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 650355bc79e786839377a9b3e574dfbfa08868d6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453413"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -35,7 +35,7 @@ In diesem Thema wird gezeigt, wie Sie die folgenden Aufgaben ausführen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 ## <a name="create-integration-account"></a>Integrationskonto erstellen
 
@@ -55,11 +55,11 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
 
    ![Bereitstellen von Details zum Integrationskonto](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | <*integration-account-name*> | Der Name Ihres Integrationskontos, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten kann. In diesem Beispiel wird „Fabrikam-Integration“ verwendet. |
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
-   | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet werden soll. Erstellen Sie für dieses Beispiel eine neue Ressourcengruppe mit dem Namen „FabrikamIntegration-RG“. |
+   | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet werden soll. Erstellen Sie für dieses Beispiel eine neue Ressourcengruppe mit dem Namen „FabrikamIntegration-RG“. |
    | **Tarif** | Ja | <*Preisstufe*> | Der Tarif für das Integrationskonto – diesen können Sie später ändern. Wählen Sie für dieses Beispiel die Option **Free** aus. Weitere Informationen finden Sie in den folgenden Themen: <p>- [Logic Apps – Preismodell](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps – Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/) |
    | **Location** | Ja | <*Azure-Region*> | Die Region, in der die Metadaten zu Ihrem Integrationskonto gespeichert werden sollen. Wählen Sie entweder den gleichen Standort wie für die Logik-App aus, oder erstellen Sie Ihre Logik-Apps am gleichen Standort, an dem sich das Integrationskonto befindet. Verwenden Sie für dieses Beispiel „USA, Westen“. <p>**Hinweis**: Um ein Integrationskonto in einer [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (ISE) zu erstellen, wählen Sie diese ISE als Standort aus. Weitere Informationen finden Sie unter [Erstellen von Integrationskonten in einer ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Nein | Aus, Ein | Behalten Sie für dieses Beispiel die Einstellung **Aus** bei. |

@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5badcbe2a76c41bdc1431abae617e35b7555eb88
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9544d086eb9535af779bf2febe0cc63c180f7fd3
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497893"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529591"
 ---
 # <a name="export-data-module"></a>Modul „Export Data“ (Daten exportieren)
 
@@ -29,7 +29,7 @@ Dieses Modul unterstützt das Exportieren von Daten in folgende Clouddatendienst
 - Azure Data Lake
 - Azure Data Lake Gen2
 
-Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen hierzu finden Sie unter [Zugreifen auf Daten](../service/how-to-access-data.md).
+Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher in Ihrem Azure Machine Learning-Arbeitsbereich registrieren. Weitere Informationen hierzu finden Sie unter [Zugreifen auf Daten](../how-to-access-data.md).
 
 ## <a name="how-to-configure-export-data"></a>Gewusst wie: Konfigurieren von „Export Data“
 
@@ -39,7 +39,7 @@ Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher
 
 1. Wählen Sie **Export Data** aus, um den Bereich **Properties** (Eigenschaften) zu öffnen.
 
-1. Wählen Sie für **Datastore** (Datenspeicher) in der Dropdownliste einen vorhandenen Datenspeicher aus. Sie können auch einen neuen Datenspeicher erstellen. Informationen, wie Sie dazu vorgehen, finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../service/how-to-access-data.md).
+1. Wählen Sie für **Datastore** (Datenspeicher) in der Dropdownliste einen vorhandenen Datenspeicher aus. Sie können auch einen neuen Datenspeicher erstellen. Informationen, wie Sie dazu vorgehen, finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](../how-to-access-data.md).
 
 1. Geben Sie den Pfad im Datenspeicher an, in den die Daten geschrieben werden sollen. 
 
@@ -50,4 +50,4 @@ Bevor Sie Ihre Daten exportieren können, müssen Sie zuerst einen Datenspeicher
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

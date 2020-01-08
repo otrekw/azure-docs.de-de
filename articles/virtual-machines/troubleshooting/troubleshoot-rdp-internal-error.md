@@ -12,18 +12,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dac941b621c8df6b5c242bb5d0e0d5cdd1f864a9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9eb7a80599966345d90cc4a079b586e743ca37d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451224"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Interner Fehler beim Herstellen einer Verbindung mit einem virtuellen Azure-Computer über Remotedesktop
 
 Dieser Artikel beschreibt einen Fehler, der beim Herstellen einer Verbindung mit einem virtuellen Computer in Microsoft Azure auftreten kann.
 > [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
+> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -135,7 +135,7 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 4. Starten Sie den virtuellen Computer neu, und versuchen Sie dann, eine Remotedesktopverbindung mit dem virtuellen Computer herzustellen. Falls der Fehler weiterhin auftritt, fahren Sie mit dem nächsten Schritt fort.
 
-Schritt 3: Aktivieren aller unterstützten TLS-Versionen
+#### <a name="step-3-enable-all-supported-tls-versions"></a>Schritt 3: Aktivieren aller unterstützten TLS-Versionen
 
 Der RDP-Client verwendet TLS 1.0 als Standardprotokoll. Dies kann jedoch in den neuen Standard TLS 1.1 geändert werden. Wenn TLS 1.1 auf dem virtuellen Computer deaktiviert ist, tritt bei der Verbindung ein Fehler auf.
 1.  Aktivieren Sie in einer CMD-Instanz das TLS-Protokoll:
@@ -160,7 +160,7 @@ Der RDP-Client verwendet TLS 1.0 als Standardprotokoll. Dies kann jedoch in den 
 #### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
 1. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md).
-2. Stellen Sie nach dem Anfügen des Betriebssystemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Notieren Sie sich den Laufwerkbuchstaben des angefügten Betriebssystemdatenträgers.
+2. Stellen Sie nach dem Anfügen des Betriebssystemdatenträgers an den virtuellen Wiederherstellungscomputer sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als **Online** gekennzeichnet ist. Beachten Sie den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 3. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Wiederherstellungscomputer her.
 
 #### <a name="enable-dump-log-and-serial-console"></a>Aktivieren des Sicherungsprotokolls und der seriellen Konsole
@@ -168,7 +168,7 @@ Der RDP-Client verwendet TLS 1.0 als Standardprotokoll. Dies kann jedoch in den 
 Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie das folgende Skript aus.
 
 1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (**Als Administrator ausführen**).
-2. Führen Sie das folgende Skript aus:
+2. Führen Sie folgendes Skript aus:
 
     In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
@@ -263,7 +263,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v UserAuthentication /t REG_DWORD /d 1 /f
 
         REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\Terminal Server\WinStations\RDP-Tcp" /v fAllowSecProtocolNegotiation /t REG_DWORD /d 1 /f reg unload HKLM\BROKENSYSTEM
-5.  [Trennen Sie den Betriebssystemdatenträger, und erstellen Sie den virtuellen Computer erneut](../windows/troubleshoot-recovery-disks-portal.md). Überprüfen Sie dann, ob das Problem behoben wurde.
+5.  [Trennen Sie den Betriebssystemdatenträger, und erstellen Sie den virtuellen Computer erneut.](../windows/troubleshoot-recovery-disks-portal.md) Überprüfen Sie dann, ob das Problem behoben wurde.
 
 
 

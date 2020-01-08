@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/16/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ad322d9418d81c516b97cd8bd4b039b1640aa9c0
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 1a3e98afacf85bde8180253078cb53eae9a03d2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75383611"
 ---
 # <a name="quickstart-perform-a-news-search-using-java-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Java und der REST-API der Bing-News-Suche
 
@@ -35,8 +35,6 @@ Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Sam
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="create-and-initialize-a-project"></a>Erstellen und Initialisieren eines Projekts
 
 1. Erstellen Sie in Ihrer bevorzugten IDE oder in Ihrem bevorzugten Editor ein neues Java-Projekt, und importieren Sie die folgenden Bibliotheken.
@@ -52,7 +50,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     import com.google.gson.JsonParser;
     ```
 
-2. Erstellen Sie eine neue Klasse mit Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff.
+2. Erstellen Sie eine neue Klasse mit Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und einen Suchbegriff. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```java
     public static SearchResults SearchNews (String searchQuery) throws Exception {

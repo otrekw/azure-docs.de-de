@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 47665171ee5ae137e0503b3e5fa1d369aeabb356
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840059"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449797"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -27,7 +27,7 @@ In diesem Beispiel erstellen wir eine Build- und Releaseepipeline, um eine Azure
 
 ![Diagramm des Bereitstellungsablaufs in unserer Pipeline](media/batch-ci-cd/DeploymentFlow.png)
 
-### <a name="setup"></a>Einrichtung
+### <a name="setup"></a>Einrichten
 
 Um den Schritten in diesem Artikel folgen zu können, benötigen Sie eine Azure DevOps-Organisation und ein Teamprojekt.
 
@@ -52,7 +52,7 @@ Die in diesem Beispiel verwendete Codebasisstruktur ähnelt dem Folgenden:
 In diesem Abschnitt wird davon ausgegangen, dass Sie mit der Versionskontrolle und dem Entwerfen von Resource Manager-Vorlagen vertraut sind. Wenn Sie mit diesen Konzepten nicht vertraut sind, finden Sie auf den folgenden Seiten weitere Informationen.
 
 * [Was ist Quellcodeverwaltung?](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
-* [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Grundlegendes zur Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 
 #### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
 
@@ -303,7 +303,7 @@ Dieses Repository hat vier Hauptabschnitte:
 * Der **arm-templates**-Ordner, in dem unsere Infrastruktur als Code gespeichert wird.
 * Der **hpc-application**-Ordner mit den Binärdateien für ffmpeg.
 * Der **pipelines**-Ordner, der die Definition für unsere Buildpipeline enthält.
-* **Optional:** Der **client-application**-Ordner zum Speichern von Code für die .NET Anwendung. Wir verwenden dies nicht im Beispiel, aber in Ihrem eigenen Projekt können Sie die HPC-Batch-Anwendung über eine Clientanwendung ausführen.
+* **Optional**: Der **client-application**-Ordner zum Speichern von Code für die .NET Anwendung. Wir verwenden dies nicht im Beispiel, aber in Ihrem eigenen Projekt können Sie die HPC-Batch-Anwendung über eine Clientanwendung ausführen.
 
 > [!NOTE]
 > Dies ist nur ein Beispiel einer Struktur einer Codebasis. Dieser Ansatz soll veranschaulichen, dass Anwendungs-, Infrastruktur- und Pipelinecode im selben Repository gespeichert werden.

@@ -2,19 +2,15 @@
 title: Weiterleiten von Azure Automation-Auftragsdaten an Azure Monitor-Protokolle
 description: In diesem Artikel wird erläutert, wie Auftragsstatus und Runbookauftrags-Datenströme an Azure Monitor-Protokolle gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2433e8193026b8aaa3cbf29eb1411c7449a4953
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: beb69edc57b5a13db0f6d2e5e1536804f3472aff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421918"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Azure Monitor-Protokolle
 
@@ -33,7 +29,7 @@ Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Log Anal
 Zum Senden Ihrer Automation-Protokolle an Azure Monitor-Protokolle benötigen Sie:
 
 * Das aktuelle Release von [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)
-* Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollen](../log-analytics/log-analytics-get-started.md).
+* Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Azure Monitor-Protokolle](../log-analytics/log-analytics-get-started.md).
 * Die Ressourcen-ID für Ihr Azure Automation-Konto
 
 So ermitteln Sie die Ressourcen-ID für Ihr Azure Automation-Konto:
@@ -98,7 +94,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>- Neu<br>- Erstellt<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
 | Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
-| OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
+| Vorgangsname | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Resource | Name des Automation-Kontos |
 | SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
 | ResultDescription |Beschreibt den resultierenden Zustand des Runbookauftrags. Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen |
@@ -121,7 +117,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Azure 
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
 | ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>– In Bearbeitung |
 | Category | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
-| OperationName | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
+| Vorgangsname | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Resource | Name des Automation-Kontos |
 | SourceSystem | So erfasst Azure Monitor-Protokolle die Daten Immer *Azure* für Azure-Diagnose. |
 | ResultDescription |Enthält den Ausgabedatenstrom des Runbooks. |

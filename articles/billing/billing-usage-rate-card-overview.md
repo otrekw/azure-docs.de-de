@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: a8e189e8070de0fccf9428e26337e1091ba7f7b4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34fcaef5416fe976c051317c0273d245f1ff8358
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225630"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449122"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen
 Verwenden Sie Azure-Abrechnungs-APIs, um Nutzungs- und Ressourcendaten mittels Pull in Ihre bevorzugten Datenanalysetools abzurufen. Mithilfe der Azure-Ressourcennutzungs- und -Gebührenkarten-APIs können Sie Ihre Kosten genau vorhersagen und verwalten. Die APIs werden als Ressourcenanbieter implementiert und sind Teil der API-Familie, die von Azure Resource Manager verfügbar gemacht wird.  
@@ -71,4 +71,4 @@ Hier sind einige Szenarios angegeben, die aufgrund der Kombination aus Nutzungs-
 
   * [Codebeispiel der RateCard-API](https://github.com/Azure-Samples/billing-dotnet-ratecard-api)
 
-* Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-overview.md) .
+* Weitere Informationen zum Azure-Ressourcen-Manager finden Sie unter [Übersicht über den Azure-Ressourcen-Manager](../azure-resource-manager/management/overview.md) .

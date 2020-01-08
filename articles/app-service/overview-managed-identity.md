@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/30/2019
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 6fa8e560dc50859fc0501dde8109ddc7cbd596b8
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: f341f5bbf7221664301ca53eea1edd6af7544950
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422009"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -40,7 +40,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 
 4. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**. Klicken Sie auf **Speichern**.
 
-    ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/msi-blade-system.png)
+    ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-the-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
@@ -169,7 +169,7 @@ Zunächst müssen Sie eine Ressource für eine benutzerseitig zugewiesene Identi
 
 6. Suchen Sie nach der zuvor erstellten Identität, und wählen Sie sie aus. Klicken Sie auf **Hinzufügen**.
 
-    ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/msi-blade-user.png)
+    ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
 ### <a name="using-an-azure-resource-manager-template"></a>Verwenden einer Azure Resource Manager-Vorlage
 
@@ -253,10 +253,10 @@ Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die 
 
 > |Parametername|Geben Sie in|BESCHREIBUNG|
 > |-----|-----|-----|
-> |resource|Abfragen|Der AAD-Ressourcen-URI der Ressource, für die ein Token abgerufen werden soll. Dies kann einer der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), oder ein anderer Ressourcen-URI sein.|
-> |api-version|Abfragen|Die Version der zu verwendenden Token-API. Die einzige derzeit unterstützte Version lautet „2017-09-01“.|
+> |resource|Abfrage|Der AAD-Ressourcen-URI der Ressource, für die ein Token abgerufen werden soll. Dies kann einer der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication), oder ein anderer Ressourcen-URI sein.|
+> |api-version|Abfrage|Die Version der zu verwendenden Token-API. Die einzige derzeit unterstützte Version lautet „2017-09-01“.|
 > |secret|Header|Der Wert der Umgebungsvariable „MSI_SECRET“. Dieser Header wird als Maßnahme gegen SSRF-Angriffe (Server-Side Request Forgery) verwendet.|
-> |clientid|Abfragen|(Optional, sofern nicht benutzerseitig zugewiesene Identität) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
+> |clientid|Abfrage|(Optional, sofern nicht benutzerseitig zugewiesene Identität) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
 
 > [!IMPORTANT]
 > Wenn Sie Token für vom benutzerseitig zugewiesene Identitäten abrufen möchten, müssen Sie die `clientid`-Eigenschaft einbinden. Andernfalls versucht der Tokendienst, ein Token für eine vom System zugewiesene Identität abzurufen, die möglicherweise nicht vorhanden ist.

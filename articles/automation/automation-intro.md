@@ -2,20 +2,17 @@
 title: Azure Automation – Übersicht
 description: Es wird beschrieben, wie Sie Azure Automation zum Automatisieren des Lebenszyklus für die Infrastruktur und Anwendungen verwenden.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 keywords: Azure Automation, DSC, PowerShell, Desired State Configuration, Updateverwaltung, Änderungsnachverfolgung, Bestand, Runbooks, Python, grafisch
 ms.date: 10/18/2018
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: b14550d0e03382a6709924ca5671cb26d09fcc35
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3037f96464b0902ca3923bdaea2bddff39c47733
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434052"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421948"
 ---
 # <a name="an-introduction-to-azure-automation"></a>Einführung in Azure Automation
 
@@ -44,14 +41,14 @@ Aktualisieren Sie Windows- und Linux-Systeme mit Azure Automation übergreifend 
 
 Azure Automation besteht aus einem Satz von gemeinsam genutzten Ressourcen, die Ihnen das bedarfsabhängige Automatisieren und Konfigurieren Ihrer Umgebungen erleichtern.
 
-* **[Zeitpläne](automation-schedules.md)**: Werden im Dienst verwendet, um die Automatisierung zu vordefinierten Zeiten auszulösen.
-* **[Module](automation-integration-modules.md)**: Module werden zum Verwalten von Azure und anderen Systemen verwendet. Importieren Sie sie in das Automation-Konto für Microsoft-, Drittanbieter-, Community- oder benutzerdefinierte Cmdlets und DSC-Ressourcen.
-* **[Modulkatalog](automation-runbook-gallery.md)**: Native PowerShell-Katalogintegration zum Anzeigen von Runbooks und Importieren in das Automation-Konto.
-* **[Python 2-Pakete](python-packages.md)**: Fügen Sie Ihrem Automation-Konto Python 2-Pakete für die Verwendung in Ihren Python-Runbooks hinzu.
-* **[Anmeldeinformationen](automation-credentials.md)**: Ermöglichen das sichere Speichern von vertraulichen Informationen, die zur Laufzeit von Runbooks und Konfigurationen verwendet werden können.
-* **[Verbindungen](automation-connections.md)**: Dienen zum Speichern eines Name-Wert-Paars mit allgemeinen Informationen für die Verbindungsherstellung mit Systemen in Verbindungsressourcen. Verbindungen werden vom Autor eines Moduls für die Nutzung in Runbooks und Konfigurationen zur Laufzeit definiert.
-* **[Zertifikate](automation-certificates.md)**: Sie können Zertifikate zur Laufzeit speichern und verfügbar machen, damit sie für die Authentifizierung und zum Schützen von bereitgestellten Ressourcen verwendet werden können.
-* **[Variablen](automation-variables.md)**: Variablen können Inhalt enthalten, der dann für alle Runbooks und Konfigurationen verwendet werden kann. Sie können Werte ändern, ohne dass Sie die Runbooks oder Konfigurationen modifizieren müssen, die darauf verweisen.
+* **[Zeitpläne](automation-schedules.md)** : Werden im Dienst verwendet, um die Automatisierung zu vordefinierten Zeiten auszulösen.
+* **[Module](automation-integration-modules.md)** : Module werden zum Verwalten von Azure und anderen Systemen verwendet. Importieren Sie sie in das Automation-Konto für Microsoft-, Drittanbieter-, Community- oder benutzerdefinierte Cmdlets und DSC-Ressourcen.
+* **[Modulkatalog](automation-runbook-gallery.md)** : Native PowerShell-Katalogintegration zum Anzeigen von Runbooks und Importieren in das Automation-Konto.
+* **[Python 2-Pakete](python-packages.md)** : Fügen Sie Ihrem Automation-Konto Python 2-Pakete für die Verwendung in Ihren Python-Runbooks hinzu.
+* **[Anmeldeinformationen](automation-credentials.md)** : Ermöglichen das sichere Speichern von vertraulichen Informationen, die zur Laufzeit von Runbooks und Konfigurationen verwendet werden können.
+* **[Verbindungen](automation-connections.md)** : Dienen zum Speichern eines Name-Wert-Paars mit allgemeinen Informationen für die Verbindungsherstellung mit Systemen in Verbindungsressourcen. Verbindungen werden vom Autor eines Moduls für die Nutzung in Runbooks und Konfigurationen zur Laufzeit definiert.
+* **[Zertifikate](automation-certificates.md)** : Sie können Zertifikate zur Laufzeit speichern und verfügbar machen, damit sie für die Authentifizierung und zum Schützen von bereitgestellten Ressourcen verwendet werden können.
+* **[Variablen](automation-variables.md)** : Variablen können Inhalt enthalten, der dann für alle Runbooks und Konfigurationen verwendet werden kann. Sie können Werte ändern, ohne dass Sie die Runbooks oder Konfigurationen modifizieren müssen, die darauf verweisen.
 
 ### <a name="source-control-integration"></a>Integration der Quellcodeverwaltung
 

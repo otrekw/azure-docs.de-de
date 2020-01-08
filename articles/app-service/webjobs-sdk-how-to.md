@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8e29c632ff3920c77a757fe45475a12c212cf579
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 2d9de5e7294fdca7514989ba009e9dee8985a084
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684003"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421963"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -84,7 +84,7 @@ Der Prozess zum Aktivieren des Entwicklungsmodus hängt von der SDK-Version ab.
 In Version 3.*x* werden die standardmäßigen ASP.NET Core-APIs verwendet. Rufen Sie die [`UseEnvironment`](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment)-Methode für die [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)-Instanz auf. Übergeben Sie eine Zeichenfolge namens `development` wie in diesem Beispiel:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.UseEnvironment("development");
@@ -95,7 +95,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -236,7 +236,7 @@ Der Prozess zum Installieren und Verwalten von Bindungstypen hängt davon ab, ob
 In Version 3.*x* sind die Speicherbindungen im Paket `Microsoft.Azure.WebJobs.Extensions.Storage` enthalten. Rufen Sie die Erweiterungsmethode `AddAzureStorage` in der `ConfigureWebJobs`-Methode auf, wie hier gezeigt:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -247,7 +247,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -255,7 +255,7 @@ static void Main()
 Wenn Sie andere Trigger- und Bindungstypen verwenden möchten, installieren Sie das NuGet-Paket, das diese Typen enthält, und rufen Sie die in der Erweiterung implementierte Erweiterungsmethode `Add<binding>` auf. Wenn Sie also beispielsweise eine Azure Cosmos DB-Bindung verwenden möchten, installieren Sie `Microsoft.Azure.WebJobs.Extensions.CosmosDB`, und rufen Sie `AddCosmosDB` wie folgt auf:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -266,7 +266,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -318,7 +318,7 @@ Der Prozess zum Binden an den [`ExecutionContext`] hängt von Ihrer SDK-Version 
 Rufen Sie die Erweiterungsmethode `AddExecutionContextBinding` in der `ConfigureWebJobs`-Methode auf, wie hier gezeigt:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -329,7 +329,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -373,7 +373,7 @@ Sie können die folgenden Bindungen konfigurieren:
 Dieses Beispiel zeigt, wie der Azure Cosmos DB-Trigger konfiguriert wird:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -390,8 +390,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -403,7 +402,7 @@ Weitere Informationen finden Sie im Artikel [Azure Cosmos DB-Bindung](../azure-f
 Dieses Beispiel zeigt, wie der Event Hubs-Trigger konfiguriert wird:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -419,8 +418,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -434,7 +432,7 @@ Diese Beispiele zeigen, wie der Queue Storage-Trigger konfiguriert wird:
 #### <a name="version-3x"></a>Version 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -450,8 +448,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -480,7 +477,7 @@ Weitere Informationen finden Sie in der [host.json v1.x-Referenz](../azure-funct
 In diesem Beispiel wird gezeigt, wie die SendGrid-Ausgabebindung konfiguriert wird:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -495,8 +492,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -508,7 +504,7 @@ Weitere Informationen finden Sie im Artikel [SendGrid-Bindung](../azure-function
 Dieses Beispiel zeigt, wie der Service Bus-Trigger konfiguriert wird:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -523,8 +519,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -538,7 +533,7 @@ Einige Trigger- und Bindungstypen definieren ihre eigenen benutzerdefinierten Ko
 #### <a name="version-3x"></a>Version 3.*x*
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -549,8 +544,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```
@@ -690,7 +684,7 @@ Die Azure Functions-Dokumentation enthält Referenzinformationen zu den einzelne
 * [Beispiele](../azure-functions/functions-bindings-storage-queue.md#trigger---example). Codebeispiele. Das Beispiel für die C#-Klassenbibliothek bezieht sich auf das WebJobs SDK. Lassen Sie nur das `FunctionName`Attribut weg.
 * [Attribute](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes). Die für den Bindungstyp zu verwendenden Attribute.
 * [Konfiguration](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration). Erläuterungen der Attributeigenschaften und Konstruktorparameter.
-* [Verwendung](../azure-functions/functions-bindings-storage-queue.md#trigger---usage): Die Typen, die Sie binden können, und Informationen zur Funktionsweise der Bindung. Beispiele: Abrufalgorithmus, Verarbeitung der Warteschlange für nicht verarbeitete Nachrichten.
+* [Verwendung:](../azure-functions/functions-bindings-storage-queue.md#trigger---usage) Die Typen, die Sie binden können, und Informationen zur Funktionsweise der Bindung. Beispiele: Abrufalgorithmus, Verarbeitung der Warteschlange für nicht verarbeitete Nachrichten.
   
 Eine Liste der Bindungsreferenzartikel finden Sie im Artikel [Trigger und Bindungen](../azure-functions/functions-triggers-bindings.md#supported-bindings) für Azure Functions unter „Unterstützte Bindungen“. Die in dieser Liste aufgeführten Bindungen „HTTP“, „Webhook“ und „Event Grid“ werden nur von Azure Functions und nicht vom WebJobs SDK unterstützt.
 
@@ -749,9 +743,9 @@ public static async Task ProcessImage([BlobTrigger("images")] Stream image)
 
 In einige Trigger ist die Unterstützung der Parallelitätsverwaltung integriert:
 
-* **QueueTrigger**. Setzen Sie `JobHostConfiguration.Queues.BatchSize` auf `1`.
-* **ServiceBusTrigger**. Setzen Sie `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` auf `1`.
-* **FileTrigger**. Setzen Sie `FileProcessor.MaxDegreeOfParallelism` auf `1`.
+* **QueueTrigger**. Legen Sie `JobHostConfiguration.Queues.BatchSize` auf `1` fest.
+* **ServiceBusTrigger**. Legen Sie `ServiceBusConfiguration.MessageOptions.MaxConcurrentCalls` auf `1` fest.
+* **FileTrigger**. Legen Sie `FileProcessor.MaxDegreeOfParallelism` auf `1` fest.
 
 Sie können diese Einstellungen verwenden, um sicherzustellen, dass Ihre Funktion als Singleton auf einer einzigen Instanz ausgeführt wird. Wenn Sie sicherstellen möchten, dass nur eine Instanz der Funktion ausgeführt wird, wenn die Web-App auf mehrere Instanzen skaliert wird, wenden Sie eine Singleton-Sperre auf Listener-Ebene für die Funktion an (`[Singleton(Mode = SingletonMode.Listener)]`). Listener-Sperren werden beim Starten des JobHosts abgerufen. Wenn drei horizontal skalierte Instanzen zur selben Zeit gestartet werden, erhält nur eine der Instanzen die Sperre, und es wird nur ein Listener gestartet.
 
@@ -833,7 +827,7 @@ Jedem von einer `ILogger`-Instanz erstellten Protokoll ist eine `Category` und e
 |Debuggen       | 1 |
 |Information | 2 |
 |Warnung     | 3 |
-|Error       | 4 |
+|Fehler       | 4 |
 |Kritisch    | 5 |
 |Keine        | 6 |
 
@@ -924,7 +918,7 @@ internal class CustomTelemetryInitializer : ITelemetryInitializer
 Rufen Sie im Generator [`ConfigureServices`] auf, um der Pipeline Ihre benutzerdefinierte Instanz von [`ITelemetryInitializer`] hinzuzufügen:
 
 ```cs
-static void Main()
+static async Task Main()
 {
     var builder = new HostBuilder();
     builder.ConfigureWebJobs(b =>
@@ -951,8 +945,7 @@ static void Main()
     var host = builder.Build();
     using (host)
     {
-
-        host.Run();
+        await host.RunAsync();
     }
 }
 ```

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 46d0e8aa1fa934f778e950f0187a853ba46772d1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495032"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647304"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 
@@ -56,7 +56,7 @@ Wo müssen sich Ihre Daten für Verarbeitungs- oder Modellierungszwecke befinden
 
 * Azure Blob Storage
 * SQL Azure-Datenbanken
-* SQL Server auf Azure VM
+* SQL Server auf Azure-VMs
 * HDInsight (Hadoop in Azure) oder Hive-Tabellen
 * Azure Machine Learning
 * Bereitstellbare virtuelle Azure-Datenträger
@@ -109,7 +109,7 @@ Diese Fragen sind wichtig für die Planung Ihrer Speicher- und Verarbeitungsumge
 Nehmen wir beispielsweise die (klassische) Azure Machine Learning Studio-Umgebung:
 
 * Eine Liste der Datenformate und -typen, die von Azure Machine Learning Studio unterstützt werden, finden Sie im Abschnitt [Unterstützte Datenformate und Datentypen](../studio/import-data.md#supported-data-formats-and-data-types) .
-* Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseprozess verwendet werden, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md).
+* Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseprozess verwendet werden, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Fragen zur Datenqualität: Untersuchung und Vorverarbeitung
 
@@ -149,7 +149,7 @@ Es gibt viele Optionen für Tools, Sprachen und Entwicklungsumgebungen. Achten S
 * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
 * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
 * [RStudio](https://www.rstudio.com)
-* [Python Tools für Visual Studio](https://aka.ms/ptvsdocs)
+* [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
 * [Jupyter-Notebooks](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)

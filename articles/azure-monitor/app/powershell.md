@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 75490edfd30541aa641656a2ccc17a259bfbe927
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f9a04d767ffeb5112e2b06ed319a3c28f3b7f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951359"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406516"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Verwalten von Application Insights-Ressourcen mithilfe von PowerShell
 
@@ -164,7 +164,8 @@ Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json
                 "location": "[parameters('appLocation')]",
                 "tags": {},
                 "properties": {
-                    "ApplicationId": "[parameters('appName')]"
+                    "ApplicationId": "[parameters('appName')]",
+                    "retentionInDays": "[parameters('retentionInDays')]"
                 },
                 "dependsOn": []
             },
@@ -178,7 +179,6 @@ Erstellen Sie eine neue JSON-Datei, in diesem Beispiel die Datei `template1.json
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -394,7 +394,7 @@ Um die Erstellung von beliebigen anderen Ressourcen zu automatisieren, erstellen
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>Parametrisieren der Vorlage
-Nun müssen Sie die Namen durch Parameter ersetzen. Zum [Parametrisieren einer Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md) schreiben Sie Ausdrücke mithilfe einer [Reihe von Hilfsfunktionen](../../azure-resource-manager/resource-group-template-functions.md). 
+Nun müssen Sie die Namen durch Parameter ersetzen. Zum [Parametrisieren einer Vorlage](../../azure-resource-manager/templates/template-syntax.md) schreiben Sie Ausdrücke mithilfe einer [Reihe von Hilfsfunktionen](../../azure-resource-manager/resource-group-template-functions.md). 
 
 Sie können nicht einen Teil einer Zeichenfolge parametrisieren. Verwenden Sie daher `concat()` zum Erstellen von Zeichenfolgen.
 

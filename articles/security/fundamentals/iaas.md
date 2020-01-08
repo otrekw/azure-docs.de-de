@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: barclayn
-ms.openlocfilehash: 3368f72aeb7909c3e0a8653bb5b094729c4c45ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 44542fb299d769a3916407e09691a72efed01c79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462433"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -99,7 +99,7 @@ Wenn Sie Windows Update verwenden, lassen Sie die Einstellung für automatische 
 **Detail**: Suchen Sie bei jeder Bereitstellung zuerst alle Windows-Updates, und installieren Sie diese. Dies ist besonders wichtig, wenn Sie Images bereitstellen, die von Ihnen selbst oder aus Ihrer eigenen Bibliothek stammen. Obwohl Images aus dem Azure Marketplace standardmäßig automatisch aktualisiert werden, kann nach einem öffentlichen Release eine Verzögerung (bis zu ein paar Wochen) eintreten.
 
 **Bewährte Methode**: Stellen Sie in regelmäßigen Abständen Ihre virtuellen Computer erneut bereit, um eine neue Version des Betriebssystems zu erzwingen.   
-**Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
+**Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
 
 **Bewährte Methode**: Wenden Sie Sicherheitsupdates zügig auf virtuelle Computer an.   
 **Detail**: Aktivieren Sie Azure Security Center (Free-Tarif oder Standard-Tarif), um [fehlende Sicherheitsupdates zu erkennen und anzuwenden](../../security-center/security-center-apply-system-updates.md).

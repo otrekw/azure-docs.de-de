@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: diberry
-ms.openlocfilehash: a199821c4db7fd8131ec54700b8c999dfe604a6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1bde70dadbe1e5b8ba9bf90bd9ca2f48a4c65491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222021"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381799"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>Ändern von Äußerungsdaten vor oder während der Vorhersage
 LUIS bietet Möglichkeiten zum Bearbeiten einer Äußerung vor oder während der Vorhersage. Dazu gehören eine [Korrektur der Rechtschreibung](luis-tutorial-bing-spellcheck.md) und das Beheben von Zeitzonenproblemen für die vordefinierte Entität [datetimeV2](luis-reference-prebuilt-datetimev2.md). 
@@ -37,7 +37,7 @@ Usage of the key in the test panel and at the endpoint count toward the [key usa
 
 Der Endpunkt benötigt zwei Parameter, damit Rechtschreibkorrekturen funktionieren:
 
-|Parameter|Wert|
+|Parameter|value|
 |--|--|
 |`spellCheck`|boolean|
 |`bing-spell-check-subscription-key`|[Bing-Rechtschreibprüfungs-API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) – Endpunktschlüssel|
@@ -87,7 +87,7 @@ Wenn eine LUIS-App die vordefinierte Entität [datetimeV2](luis-reference-prebui
 ### <a name="endpoint-querystring-parameter"></a>QueryString-Parameter für den Endpunkt
 Sie korrigieren die Zeitzone, indem Sie am [Endpunkt](https://go.microsoft.com/fwlink/?linkid=2092356) mithilfe des `timezoneOffset`-Parameters die Zeitzone des Benutzers hinzufügen. Der Wert von `timezoneOffset` sollte die positive oder negative Zahl in Minuten sein, um die die Zeit geändert werden soll.  
 
-|Parameter|Wert|
+|Parameter|value|
 |--|--|
 |`timezoneOffset`|Positive oder negative Zahl, in Minuten|
 
@@ -121,7 +121,7 @@ Erfahren Sie mehr über den [V3-Vorhersageendpunkt](luis-migration-api-v3.md).
 ## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>C#-Code zur Bestimmung des richtigen Werts für timezoneOffset
 Der folgende C#-Code verwendet die [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples)-Methode der [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo)-Klasse, um das richtige `timezoneOffset` basierend auf der Systemzeit zu bestimmen:
 
-```CSharp
+```csharp
 // Get CST zone id
 TimeZoneInfo targetZone = TimeZoneInfo.FindSystemTimeZoneById("Central Standard Time");
 

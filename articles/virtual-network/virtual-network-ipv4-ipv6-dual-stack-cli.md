@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/08/2019
+ms.date: 12/17/2019
 ms.author: kumud
-ms.openlocfilehash: b8440efa08e47685d21b0222861f749e8bdffbc9
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: b2dfdbafe0e72e550e44ef12fd53903d947ab3c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368266"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli-preview"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – Befehlszeilenschnittstelle (Vorschauversion)
 
@@ -151,7 +151,12 @@ az network lb address-pool create \
 --name dsLbBackEndPool_v6  \
 --resource-group DsResourceGroup01
 ```
+### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
+Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
 
+```azurecli
+az network lb probe create -g DsResourceGroup01  --lb-name dsLB -n dsProbe --protocol tcp --port 3389
+```
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. 
@@ -167,6 +172,7 @@ az network lb rule create \
 --protocol Tcp  \
 --frontend-port 80  \
 --backend-port 80  \
+--probe-name dsProbe \
 --backend-pool-name dsLbBackEndPool_v4
 
 
@@ -178,6 +184,7 @@ az network lb rule create \
 --protocol Tcp  \
 --frontend-port 80 \
 --backend-port 80  \
+--probe-name dsProbe \
 --backend-pool-name dsLbBackEndPool_v6
 
 ```

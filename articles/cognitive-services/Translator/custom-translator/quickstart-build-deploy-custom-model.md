@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: d93c6333b811885eec37e8401bee27afeedf1475
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 82f2acb811bcb239f6329ab8d8b4008e13ac6490
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446744"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Schnellstart: Erstellen, Bereitstellen und Verwenden eines benutzerdefinierten Modells für die Übersetzung
 
@@ -37,7 +37,7 @@ Klicken Sie auf der Startseite des Custom Translator-Portals auf „Neues Projek
 
 ## <a name="upload-documents"></a>Hochladen von Dokumenten
 
-Laden Sie als Nächstes Dokumente für [Training](training-and-model.md#training-dataset-for-custom-translator), [Optimierung](training-and-model.md#tuning-dataset-for-custom-translator) und [Tests](training-and-model.md#testing-dataset-for-custom-translator) hoch. Sie können sowohl [parallele](what-are-parallel-documents.md) als auch kombinierte Dokumente hochladen. Darüber hinaus können Sie ein [Wörterbuch](what-is-dictionary.md) hochladen.
+Laden Sie als Nächstes Dokumente für [Training](training-and-model.md#training-document-type-for-custom-translator), [Optimierung](training-and-model.md#tuning-document-type-for-custom-translator) und [Tests](training-and-model.md#testing-dataset-for-custom-translator) hoch. Sie können sowohl [parallele](what-are-parallel-documents.md) als auch kombinierte Dokumente hochladen. Darüber hinaus können Sie ein [Wörterbuch](what-is-dictionary.md) hochladen.
 
 Dokumente können entweder über die Registerkarte für Dokumente oder über die Seite eines bestimmten Projekts hochgeladen werden.
 
@@ -45,13 +45,13 @@ Dokumente können entweder über die Registerkarte für Dokumente oder über die
 
 Wählen Sie beim Hochladen von Dokumenten den Dokumenttyp (Training, Optimierung oder Test) und das Sprachpaar aus. Beim Hochladen paralleler Dokumente müssen Sie darüber hinaus einen Dokumentnamen angeben. Weitere Informationen finden Sie unter [Upload document](how-to-upload-document.md) (Hochladen eines Dokuments).
 
-## <a name="create-a-model"></a>Modellerstellung
+## <a name="create-a-model"></a>Erstellen eines Modells
 
 Wurden alle erforderlichen Dokumente hochgeladen, erstellen Sie als Nächstes Ihr Modell.
 
-Wählen Sie das von Ihnen erstellte Projekt aus. Sie sehen alle hochgeladenen Dokumente, die das gleiche Sprachpaar wie dieses Projekt aufweisen. Wählen Sie die Dokumente aus, die im Modell enthalten sein sollen. Sie können [Trainingsdaten](training-and-model.md#training-dataset-for-custom-translator), [Optimierungsdaten](training-and-model.md#tuning-dataset-for-custom-translator) und [Testdaten](training-and-model.md#testing-dataset-for-custom-translator) oder nur Trainingsdaten auswählen und von Custom Translator automatisch Optimierungs- und Testsätze für Ihr Modell erstellen lassen.
+Wählen Sie das von Ihnen erstellte Projekt aus. Sie sehen alle hochgeladenen Dokumente, die das gleiche Sprachpaar wie dieses Projekt aufweisen. Wählen Sie die Dokumente aus, die im Modell enthalten sein sollen. Sie können [Trainingsdaten](training-and-model.md#training-document-type-for-custom-translator), [Optimierungsdaten](training-and-model.md#tuning-document-type-for-custom-translator) und [Testdaten](training-and-model.md#testing-dataset-for-custom-translator) oder nur Trainingsdaten auswählen und von Custom Translator automatisch Optimierungs- und Testsätze für Ihr Modell erstellen lassen.
 
-![Modellerstellung](media/quickstart/ct-how-to-train.png)
+![Erstellen eines Modells](media/quickstart/ct-how-to-train.png)
 
 Wenn Sie die gewünschten Dokumente ausgewählt haben, klicken Sie auf die Schaltfläche „Create Model“ (Modell erstellen), um Ihr Modell zu erstellen und mit dem Training zu beginnen. Auf der Registerkarte „Modelle“ können Sie den Status des Trainings und Details zu allen trainierten Modellen anzeigen.
 

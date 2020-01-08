@@ -1,25 +1,16 @@
 ---
-title: Java-Client-APIs für Azure Service Fabric | Microsoft-Dokumentation
+title: Java-Client-APIs für Azure Service Fabric
 description: Generieren und verwenden Sie Java-Client-APIs für Service Fabric mithilfe der Spezifikation der Service Fabric-Client-REST-API.
-services: service-fabric
-documentationcenter: java
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: 97bba87331965b0f7ce20ec2ee089e0e18f72457
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0a243c1cd0ab0dcb93a1cc6169c89ba18606f346
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60720279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451683"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Java-Client-APIs für Azure Service Fabric
 

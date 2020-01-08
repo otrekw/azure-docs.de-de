@@ -24,24 +24,24 @@
 - name: Konzepte
   items:
     - name: Deep Learning und KI-Frameworks
-      href: dsvm-deep-learning-ai-frameworks.md
+      href: dsvm-tools-deep-learning-frameworks.md
     - name: Programmiersprachen
-      href: dsvm-languages.md
+      href: dsvm-tools-languages.md
     - name: Entwicklungstools
       href: dsvm-tools-development.md
     - name: ML- und Data Science-Tools
-      href: dsvm-ml-data-science-tools.md
+      href: dsvm-tools-data-science.md
     - name: Datenplattformen
-      href: dsvm-data-platforms.md
+      href: dsvm-tools-data-platforms.md
     - name: Datenerfassungstools
       href: dsvm-tools-ingestion.md
-    - name: Tools zum Durchsuchen und Visualisieren von Daten
-      href: dsvm-tools-explore-and-visualize.md
+    - name: Produktivitätstools
+      href: dsvm-tools-productivity.md
     - name: Unternehmenssicherheit und -leitfäden
       href: dsvm-enterprise-overview.md
 - name: Beispiele
   href: dsvm-samples-and-walkthroughs.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Verwenden einer DSVM-Instanz für Windows
       href: vm-do-ten-things.md

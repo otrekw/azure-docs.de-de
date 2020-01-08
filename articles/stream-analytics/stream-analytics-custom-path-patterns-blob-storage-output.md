@@ -1,7 +1,6 @@
 ---
 title: Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 description: In diesem Artikel werden die Funktionen für benutzerdefinierte DateTime-Pfadmuster und für benutzerdefinierte Felder oder Attribute für die Blobspeicherausgabe von Azure Stream Analytics-Aufträgen beschrieben.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: e06313cf83768421bedc6c7baddd30c2ef2e4846
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e978771eaafafe4120f9eec802525c293fb9c7c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65789419"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426379"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 

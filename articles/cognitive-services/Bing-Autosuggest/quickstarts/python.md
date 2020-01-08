@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 07/26/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: 5f6d92037bd588f96e9345ad1c7bc2e1f49e580c
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: db69763edeefdcd46f455082e7d878c1340a9f76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68564649"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385743"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-python"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Python
 
@@ -35,7 +35,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     import http.client, urllib.parse, json
     ```
 
-2. Erstellen Sie Variablen für Ihren API-Host und -Pfad, Ihren [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine partielle Suchabfrage.
+2. Erstellen Sie Variablen für Ihren API-Host und -Pfad, Ihren [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine partielle Suchabfrage. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```python
     subscriptionKey = 'enter key here'

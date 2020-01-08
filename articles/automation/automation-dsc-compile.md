@@ -2,19 +2,15 @@
 title: Kompilieren von Konfigurationen in Azure Automation DSC
 description: In diesem Artikel wird das Kompilieren von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands) für Azure Automation beschrieben.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 09/10/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: fdea8ed9a9e59a169a6ffb525ed286eb7d1ada53
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 9d8efce09c2981e4ee256228d4792bcf97172e6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366412"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilieren von DSC-Konfigurationen in Azure Automation DSC
 
@@ -24,7 +20,7 @@ Sie können DSC-Konfigurationen (Desired State Configuration, Konfiguration des 
   - Einfache Methode mit interaktiver Benutzeroberfläche
    - Einfaches Nachverfolgen des Auftragsstatus
 
-- Windows PowerShell
+- Windows PowerShell
   - Aufruf in Windows PowerShell auf der lokalen Arbeitsstation oder im Builddienst
   - Integration in Pipeline für Entwicklungstests
   - Bereitstellen komplexer Parameterwerte
@@ -191,7 +187,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 Objektverweise in Azure Automation DSC und -Runbooks sind gleich. Weitere Informationen finden Sie unter
 
-- [Certificates](automation-certificates.md)
+- [Zertifikate](automation-certificates.md)
 - [Verbindungen](automation-connections.md)
 - [Anmeldeinformationen](automation-credentials.md)
 - [Variablen](automation-variables.md)

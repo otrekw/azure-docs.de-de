@@ -10,13 +10,13 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: b9bc7d077acd3e6e3716cf0a012205e6de54a4b7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 12/31/2019
+ms.openlocfilehash: b37430ed7f23088c9bcacd555d68e484310de700
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827056"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562152"
 ---
 # <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-an-azure-sql-database"></a>Schnellstart: Herstellen einer Verbindung mit einer Azure SQL-Datenbank und Abfragen der Datenbank mit .NET und C# in Visual Studio
 
@@ -35,7 +35,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
   |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
-  |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |Laden der Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
   |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
@@ -101,7 +101,6 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
                        Console.WriteLine("\nQuery data example:");
                        Console.WriteLine("=========================================\n");
                        
-                       connection.Open();       
                        StringBuilder sb = new StringBuilder();
                        sb.Append("SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName ");
                        sb.Append("FROM [SalesLT].[ProductCategory] pc ");
@@ -111,6 +110,7 @@ Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindu
    
                        using (SqlCommand command = new SqlCommand(sql, connection))
                        {
+                           connection.Open();
                            using (SqlDataReader reader = command.ExecuteReader())
                            {
                                while (reader.Read())

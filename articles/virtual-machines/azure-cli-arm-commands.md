@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 1ec1856508588d07e55e60e251a1369ecc3fa985
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 7fd06a620c695b3be49a116c89f63507cee9c07c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355929"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Befehle der Azure-Befehlszeilenschnittstelle im Resource Manager-Modus
-Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
+Dieser Artikel enthält Informationen zur Syntax und zu den Optionen für Befehle der Azure-Befehlszeilenschnittstelle (Azure CLI), die Sie für gewöhnlich zum Erstellen und Verwalten von Azure-Ressourcen im Azure Resource Manager-Bereitstellungsmodell verwenden. Sie können auf diese Befehle zugreifen, indem Sie die Befehlszeilenschnittstelle im ARM-Modus ausführen. Dies ist keine vollständige Referenz, und Ihre CLI-Version kann unter Umständen einige etwas andere Befehle oder Parameter aufweisen. Eine allgemeine Übersicht über Azure-Ressourcen und -Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).  
 
 > [!NOTE]
 > In diesem Artikel werden Befehle der Azure CLI (auch als klassische Azure CLI bezeichnet) im Resource Manager-Modus vorgestellt. Um im Resource Manager-Modell zu arbeiten, können Sie auch die [Azure CLI](/cli/azure/install-az-cli2) testen, unsere Multi-Plattform-CLI der nächsten Generation.

@@ -2,19 +2,15 @@
 title: Verbindungsobjekte in Azure Automation
 description: Verbindungsobjekte in Azure Automation enthalten die Informationen, die zur Verbindungsherstellung mit einem externen Dienst oder einer externen Anwendung aus einem Runbook oder einer DSC-Konfiguration erforderlich sind. Dieser Artikel stellt eine ausführliche Beschreibung von Verbindungen bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: mgoedtel
-ms.author: magoedte
 ms.date: 01/16/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 621441afaa9bef08a8ebf3b0af082c6a17c77b1b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 0843277ce74bcc10865792367096aefa7591b244
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850430"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75366789"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Verbindungsobjekte in Azure Automation
 
@@ -37,7 +33,7 @@ In den meisten Fällen müssen Sie keine Verbindungsressource erstellen, weil si
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell-Cmdlets
 
-Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Verbindungen mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [Azure PowerShell-Moduls](/powershell/azure/overview) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
+Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Verbindungen mit Windows PowerShell verwendet. Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azure/overview) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
 |Cmdlet|BESCHREIBUNG|
 |:---|:---|
@@ -108,7 +104,7 @@ Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $
 > [!IMPORTANT]
 > **Add-AzureRmAccount** ist jetzt ein Alias für **Connect-AzureRMAccount**. Sollte **Connect-AzureRMAccount** beim Durchsuchen der Bibliothekselemente nicht angezeigt werden, können Sie **Add-AzureRmAccount** verwenden oder die Module in Ihrem Automation-Konto aktualisieren.
 
-### <a name="graphical-runbook-samples"></a>Beispiel für grafische Runbooks
+### <a name="graphical-runbook-samples"></a>Beispiel für ein grafisches Runbook
 
 Sie können einem grafischen Runbook eine **Get-AutomationConnection**-Aktivität hinzufügen, indem Sie im Bibliotheksbereich des grafischen Editors mit der rechten Maustaste auf die Verbindung klicken und **Zum Zeichenbereich hinzufügen** auswählen.
 

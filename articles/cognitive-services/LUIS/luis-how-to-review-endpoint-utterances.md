@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/15/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 67953f552b5b2bcdd7d13253548227e57dab8548
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: b04a17c893f748670eb1c79f0ada879c0d5c401f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132653"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75381714"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>Verbessern der LUIS-App durch Überprüfen der Endpunktäußerungen
 
 Der Prozess der Überprüfung von Endpunktäußerungen auf korrekte Vorhersagen wird als [Aktives Lernen](luis-concept-review-endpoint-utterances.md) bezeichnet. Beim aktiven Lernen werden Endpunktabfragen erfasst und die Äußerungen des Benutzers ausgewählt, bei denen es sich nicht sicher ist. Sie überprüfen diese Äußerungen, um die Absicht auszuwählen und Entitäten für diese realen Äußerungen zu markieren. Akzeptieren Sie diese Änderungen in Ihren Beispieläußerungen, dann trainieren und veröffentlichen Sie sie. Dann werden Äußerungen von LUIS genauer identifiziert.
-
-Wenn viele Personen an einer LUIS-App beteiligt sind, 
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
@@ -32,21 +30,21 @@ Um das aktive Lernen zu aktivieren, müssen Sie Benutzerabfragen protokollieren.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>Korrigieren von Absichtsvorhersagen zum Ausrichten von Äußerungen
 
-Für jede Äußerung wird eine vorgeschlagene Absicht in der Spalte **Aligned intent** (Zugeordnete Absicht) angezeigt. 
+Für jede Äußerung wird eine vorgeschlagene Absicht in der Spalte **Aligned intent** (Zugeordnete Absicht) angezeigt.
 
 > [!div class="mx-imgBorder"]
 > [![Überprüfen der Endpunktäußerungen, bei denen LUIS unsicher ist](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-Wenn Sie dieser Absicht zustimmen, aktivieren Sie das Kontrollkästchen. Wenn Sie mit dem Vorschlag nicht einverstanden sind, wählen Sie die richtige Absicht in der Dropdownliste der zugeordneten Absichten aus, und aktivieren Sie dann rechts neben der zugeordneten Absicht das Kontrollkästchen. Nachdem Sie das Kontrollkästchen aktiviert haben, wird die Äußerung zu der Absicht verschoben und aus der Liste **Endpunktäußerungen überprüfen** entfernt. 
+Wenn Sie dieser Absicht zustimmen, aktivieren Sie das Kontrollkästchen. Wenn Sie mit dem Vorschlag nicht einverstanden sind, wählen Sie die richtige Absicht in der Dropdownliste der zugeordneten Absichten aus, und aktivieren Sie dann rechts neben der zugeordneten Absicht das Kontrollkästchen. Nachdem Sie das Kontrollkästchen aktiviert haben, wird die Äußerung zu der Absicht verschoben und aus der Liste **Endpunktäußerungen überprüfen** entfernt.
 
 > [!TIP]
 > Es ist wichtig, zur Seite mit den Absichtsdetails zu wechseln, um die Entitätsvorhersagen aus allen Beispieläußerungen aus der Liste **Endpunktäußerungen überprüfen** zu überprüfen und zu korrigieren.
 
 ## <a name="delete-utterance"></a>Löschen einer Äußerung
 
-Jede Äußerung kann aus der Überprüfungsliste gelöscht werden. Nach dem Löschen wird sie nicht mehr in der Liste angezeigt. Dies gilt auch dann, wenn der Benutzer die gleiche Äußerung am Endpunkt eingibt. 
+Jede Äußerung kann aus der Überprüfungsliste gelöscht werden. Nach dem Löschen wird sie nicht mehr in der Liste angezeigt. Dies gilt auch dann, wenn der Benutzer die gleiche Äußerung am Endpunkt eingibt.
 
-Wenn Sie nicht wissen, ob Sie die Äußerung löschen sollten, verschieben Sie sie zur Absicht „None“, oder erstellen Sie eine neue Absicht, z. B. `miscellaneous`, und verschieben Sie die Äußerung in diese Absicht. 
+Wenn Sie nicht wissen, ob Sie die Äußerung löschen sollten, verschieben Sie sie zur Absicht „None“, oder erstellen Sie eine neue Absicht, z. B. `miscellaneous`, und verschieben Sie die Äußerung in diese Absicht.
 
 ## <a name="disable-active-learning"></a>Deaktivieren des aktiven Lernens
 

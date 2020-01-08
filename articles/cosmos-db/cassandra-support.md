@@ -1,5 +1,5 @@
 ---
-title: Apache Cassandra-Features und -Befehle, die von der Cassandra-API für Azure Cosmos DB unterstützt werden
+title: Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden
 description: Informationen zur Unterstützung der Apache Cassandra-Features in der Cassandra-API für Azure Cosmos DB
 author: kanshiG
 ms.author: govindk
@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: c0a47e922ae8cdca3c70cb53f9fa2f7dafe191c6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8598be504f62089cf20123918779c310b2fb8ec8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445638"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 
@@ -42,25 +42,25 @@ Die folgenden Versionen von Cassandra-Treibern werden von der Cassandra-API für
 Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Datentypen:
 
 * ascii  
-* bigint  
+* BIGINT  
 * Blob  
 * boolean  
 * Zähler  
 * date  
-* decimal  
+* Decimal  
 * double  
 * float  
 * frozen  
 * inet  
-* int  
+* INT  
 * list  
 * set  
-* smallint  
+* SMALLINT  
 * text  
 * time  
 * timestamp  
 * timeuuid  
-* tinyint  
+* TINYINT  
 * tuple  
 * uuid  
 * varchar  
@@ -73,7 +73,7 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Datentypen
 
 Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Funktionen:
 
-* Tokenverschlüsselung  
+* Token  
 * Aggregatfunktionen
   * min, max, avg, count
 * Blob-Konvertierungsfunktionen 
@@ -151,7 +151,7 @@ Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für Cassandra-API-K
 * SELECT 
 * UPDATE 
 * BATCH – nur nicht protokollierte Befehle werden unterstützt. 
-* DELETE
+* Delete
 
 Alle CRUD-Vorgänge geben bei Ausführung über ein CQL v4-kompatibles SDK zusätzliche Informationen zu Fehlern und beanspruchten Anforderungseinheiten zurück. Bei der Verarbeitung der Befehle DELETE und UPDATE sollte die Ressourcenkontrolle in Erwägung gezogen werden, um die effizienteste Verwendung des bereitgestellten Durchsatzes sicherzustellen.
 

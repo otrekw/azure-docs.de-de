@@ -1,23 +1,14 @@
 ---
 title: Konfiguration der Integritätsmonitore in Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird die Konfiguration der Integritätsmonitore in Azure Monitor für Container ausführlich beschrieben.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.workload: infrastructure-services
-ms.date: 11/12/2019
-ms.author: magoedte
-ms.openlocfilehash: 7d4400b563a1d0b8bf094f946a37d7ff4a17e7cf
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.date: 12/01/2019
+ms.openlocfilehash: d2d602d767fa6a39b7f72650c426c90be210a6ed
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74664946"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405041"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Konfigurationsleitfaden für Integritätsmonitore in Azure Monitor für Container
 
@@ -77,8 +68,8 @@ Azure Monitor für Container umfasst eine Reihe wichtiger Überwachungsszenarien
 
 |**Monitorname** | **Beschreibung** | **Algorithmus** |
 |-----------------|-----------------|---------------|
-|Knoten |Dieser Monitor ist ein Aggregat aller Knotenmonitore. Sein Status entspricht dem Status des untergeordneten Monitors mit dem schlechtesten Integritätsstatus:<br> Knoten-CPU-Auslastung<br> Knotenspeicherauslastung<br> Knotenstatus | Schlechtester|
-|Knotenpool |Dieser Monitor meldet den kombinierten Integritätsstatus aller Knoten im Knotenpool *agentpool*. Hierbei handelt es sich um einen Monitor mit drei möglichen Statuswerten, dessen jeweiliger Status auf dem schlechtesten Status von 80 % der Knoten im Knotenpool, sortiert in absteigender Reihenfolge nach Schweregrad des Knotenstatus (Kritisch, Warnung, Fehlerfrei), basiert.|Prozentsatz |
+|Node |Dieser Monitor ist ein Aggregat aller Knotenmonitore. Sein Status entspricht dem Status des untergeordneten Monitors mit dem schlechtesten Integritätsstatus:<br> Knoten-CPU-Auslastung<br> Knotenspeicherauslastung<br> Knotenstatus | Schlechtester|
+|Knotenpool |Dieser Monitor meldet den kombinierten Integritätsstatus aller Knoten im Knotenpool *agentpool*. Hierbei handelt es sich um einen Monitor mit drei möglichen Statuswerten, dessen jeweiliger Status auf dem schlechtesten Status von 80 % der Knoten im Knotenpool, sortiert in absteigender Reihenfolge nach Schweregrad des Knotenstatus (Kritisch, Warnung, Fehlerfrei), basiert.|Prozentwert |
 |Knoten (dem Knotenpool übergeordnet) |Hierbei handelt es sich um einen Aggregatmonitor aller Knotenpools. Sein Status basiert auf dem schlechtesten Status der untergeordneten Monitore (d.h. den im Cluster vorhandenen Knotenpools). |Schlechtester |
 |Cluster (den Knoten übergeordnet/<br> Kubernetes-Infrastruktur) |Dies ist der übergeordnete Monitor, der mit dem Status des untergeordneten Monitors mit dem schlechtesten Integritätsstatus (Kubernetes-Infrastruktur und Knoten) übereinstimmt. |Schlechtester |
 |Kubernetes-Infrastruktur |Dieser Monitor meldet den kombinierten Integritätsstatus der verwalteten Infrastrukturkomponenten des Clusters. Sein Status wird als „schlechtester“ der untergeordneten Monitorstatus (Kube-Systemworkloads und API-Serverstatus) berechnet. |Schlechtester|

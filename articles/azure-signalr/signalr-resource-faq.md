@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 9a8c3fd6c591f25aadc696c3c71f8c4cdfca745f
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74157571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450214"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service FAQ
 
@@ -67,4 +67,4 @@ Nein.
 
 Azure SignalR Service bietet alle drei Transporte, die von ASP.NET Core SignalR standardmäßig unterstützt werden. Dies ist nicht konfigurierbar. SignalR Service verarbeitet Verbindungen und Transporte für alle Clientverbindungen.
 
-Sie können die clientseitigen Transporte wie [hier](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports) dokumentiert konfigurieren.
+Sie können die clientseitigen Transporte wie [hier](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1&tabs=dotnet#configure-allowed-transports-2) dokumentiert konfigurieren.

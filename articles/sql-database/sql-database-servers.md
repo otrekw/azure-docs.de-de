@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: a3ad3314b8a18ec6a63b5d51bc7d8b3f9d7a6260
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7557ed43d9ecb8fc7a584e7e8239bc7ccb972e99
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818287"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647168"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL-Datenbank-Server und ihre Verwaltung
 
@@ -40,7 +40,7 @@ Ein SQL-Datenbank-Server:
 - bietet eine Verbindungsendpunkt für den Datenbankzugriff (`<serverName>`.database.windows.net)
 - bietet Zugriff auf Metadaten bezüglich der darin enthaltenen Ressourcen über DMVs (dynamic management views), indem eine Verbindung mit einer Masterdatenbank hergestellt wird
 - stellt den Bereich für Verwaltungsrichtlinien bereit, die für seine Datenbanken gelten: Anmeldungen, Firewall, Überwachung, Bedrohungserkennung usw.
-- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig sechs Server pro Abonnement – [siehe Grenzwerte für Abonnements hier](../azure-subscription-service-limits.md))
+- ist durch ein Kontingent innerhalb des übergeordneten Abonnements eingeschränkt (standardmäßig sechs Server pro Abonnement – [siehe Grenzwerte für Abonnements hier](../azure-resource-manager/management/azure-subscription-service-limits.md))
 - stellt den Bereich für Datenbank- und DTU- bzw. V-Kern-Kontingente für die darin enthaltenen Ressourcen (z.B. 45.000 DTU) bereit
 - ist der Versionsverwaltungsbereich für Funktionen, die in enthaltenen Ressourcen aktiviert wurden
 - Serverebenenprinzipal-Anmeldungen können alle Datenbanken auf einem Server verwalten
@@ -75,7 +75,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
    ![Serverfirewallregel](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
-> Informationen zum Konfigurieren der Leistungseigenschaften für eine Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
+> Informationen zum Konfigurieren der Leistungseigenschaften für eine Datenbank finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [vCore-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
 > [!TIP]
 > Eine Schnellstartanleitung zum Azure-Portal finden Sie unter [Erstellen einer Azure SQL-Datenbank im Azure-Portal](sql-database-single-database-get-started.md).
 
@@ -83,7 +83,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> Das PowerShell Azure Resource Manager-Modul wird von der Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az- und den AzureRm-Modulen sind im Wesentlichen identisch.
+> Das PowerShell Azure Resource Manager-Modul wird von Azure SQL-Datenbank weiterhin unterstützt, aber alle zukünftigen Entwicklungen erfolgen für das Az.Sql-Modul. Informationen zu diesen Cmdlets finden Sie unter [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Die Argumente für die Befehle im Az-Modul und den AzureRm-Modulen sind im Wesentlichen identisch.
 
 Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter. Informationen zum Erstellen und Verwalten von Pools für elastische Datenbanken finden Sie unter [Pools für elastische Datenbanken](sql-database-elastic-pool.md).
 
@@ -148,24 +148,24 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 | Get-Help | BESCHREIBUNG |
 | --- | --- |
-|[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-azure-sql-database)|Erstellt eine neue Datenbank. Sie müssen über eine Verbindung mit der Masterdatenbank verfügen, um eine neue Datenbank erstellen zu können.|
+|[CREATE DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/create-database-azure-sql-database)|Erstellt eine neue Datenbank. Es muss eine Verbindung mit der master-Datenbank bestehen, um eine neue Datenbank zu erstellen.|
 | [ALTER DATABASE (Azure SQL-Datenbank)](/sql/t-sql/statements/alter-database-azure-sql-database) |Ändert eine Azure SQL-Datenbank. |
 |[ALTER DATABASE (Azure SQL Data Warehouse)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse)|Ändert ein Azure SQL Data Warehouse.|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Löscht eine Datenbank.|
 |[sys.database_service_objectives (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Gibt die Edition (Dienstebene), das Dienstziel (Tarif) und den Namen des Pools für elastische Datenbanken, falls vorhanden, für eine Azure SQL-Datenbank oder ein Azure SQL Data Warehouse zurück. Wenn eine Anmeldung an der Masterdatenbank in einem Azure SQL-Datenbank-Server besteht, werden Informationen zu allen Datenbanken zurückgegeben. Für Azure SQL Data Warehouse müssen Sie über eine Verbindung mit der Masterdatenbank verfügen.|
-|[sys.dm_db_resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine Azure SQL-Datenbank zurück. Für alle 15 Sekunden ist eine Zeile vorhanden, selbst wenn keine Aktivität in der Datenbank erfolgt ist.|
-|[sys.resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Gibt CPU-Nutzungs- und Speicherdaten für eine Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
+|[sys.dm_db_resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)| Gibt die CPU-, E/A- und Arbeitsspeichernutzung für eine Azure SQL-Datenbank zurück. Jede Zeile wird für 15 Sekunden beibehalten, auch wenn keine Aktivität in der Datenbank vorhanden ist.|
+|[sys.resource_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)|Gibt die CPU-Nutzung und Speicherdaten für eine Azure SQL-Datenbank zurück. Die Daten werden in Intervallen von fünf Minuten gesammelt und aggregiert.|
 |[sys.database_connection_stats (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-connection-stats-azure-sql-database)|Enthält Statistiken zu Verbindungsereignissen für SQL-Datenbank und eine Übersicht über erfolgreiche und nicht erfolgreiche Datenbankverbindungen. |
 |[sys.event_log (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database)|Gibt erfolgreiche Datenbankverbindungen, Verbindungsfehler und Deadlocks für Azure SQL-Datenbank zurück. Sie können diese Informationen nutzen, um die Datenbankaktivität mit SQL-Datenbank nachzuverfolgen oder um Probleme zu beheben.|
-|[sp_set_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Erstellt oder aktualisiert die Firewalleinstellungen auf Serverebene für Ihre SQL-Datenbank-Server. Diese gespeicherte Prozedur ist nur in der Masterdatenbank für die Prinzipalanmeldung auf Serverebene verfügbar. Eine Firewallregel auf Serverebene kann erst mithilfe von Transact-SQL erstellt werden, nachdem die erste Firewallregel auf Serverebene von einem Benutzer mit Azure-Berechtigungen erstellt wurde.|
+|[sp_set_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-set-firewall-rule-azure-sql-database)|Erstellt oder aktualisiert die Firewalleinstellungen auf Serverebene für Ihre SQL-Datenbank-Server. Diese gespeicherte Prozedur ist nur in der master-Datenbank für den Prinzipalanmeldenamen auf Serverebene verfügbar. Eine Firewallregel auf Serverebene kann erst mithilfe von Transact-SQL erstellt werden, nachdem die erste Firewallregel auf Serverebene von einem Benutzer mit Azure-Berechtigungen erstellt wurde.|
 |[sys.firewall_rules (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Serverebene im Zusammenhang mit Ihrer Microsoft Azure SQL-Datenbank zurück.|
-|[sp_delete_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Entfernt Firewalleinstellungen auf Serverebene von Ihrem SQL-Datenbank-Server. Diese gespeicherte Prozedur ist nur in der Masterdatenbank für die Prinzipalanmeldung auf Serverebene verfügbar.|
+|[sp_delete_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-delete-firewall-rule-azure-sql-database)|Entfernt Firewalleinstellungen auf Serverebene von Ihrem SQL-Datenbank-Server. Diese gespeicherte Prozedur ist nur in der master-Datenbank für den Prinzipalanmeldenamen auf Serverebene verfügbar.|
 |[sp_set_database_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database)|Erstellt oder aktualisiert die Firewallregeln auf Datenbankebene für Ihre Azure SQL-Datenbank oder SQL Data Warehouse. Datenbank-Firewallregeln können für die Masterdatenbank und für Benutzerdatenbanken in SQL-Datenbank konfiguriert werden. Datenbank-Firewallregeln sind bei der Verwendung von Benutzern eigenständiger Datenbanken nützlich. |
 |[sys.database_firewall_rules (Azure SQL-Datenbank)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Gibt Informationen zu den Firewalleinstellungen auf Datenbankebene im Zusammenhang mit Ihrer Microsoft Azure SQL-Datenbank zurück. |
 |[sp_delete_database_firewall_rule (Azure SQL-Datenbank)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Entfernt die Firewalleinstellung auf Datenbankebene von Ihrer Azure SQL-Datenbank oder SQL Data Warehouse. |
 
 > [!TIP]
-> Eine Schnellstartanleitung mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Einen Schnellstart mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
+> Einen Schnellstart mit SQL Server Management Studio unter Microsoft Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md). Einen Schnellstart mit Visual Studio Code unter macOS, Linux oder Windows finden Sie unter [Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten](sql-database-connect-query-vscode.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>Verwalten von Azure SQL-Servern, -Datenbanken und -Firewalls mithilfe der REST-API
 
@@ -176,7 +176,7 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 |[Servers - Create oder Update](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Erstellt oder aktualisiert einen neuen Server.|
 |[Servers - Delete](https://docs.microsoft.com/rest/api/sql/servers/delete)|Löscht eine SQL Server-Instanz.|
 |[Servers - Get](https://docs.microsoft.com/rest/api/sql/servers/get)|Ruft einen Server ab.|
-|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|Gibt eine Serverliste zurück.|
+|[Servers - List](https://docs.microsoft.com/rest/api/sql/servers/list)|Gibt eine Liste mit Servern zurück.|
 |[Servers - List by resource group](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|Gibt eine Liste aller Server in einer Ressourcengruppe zurück.|
 |[Server - Update](https://docs.microsoft.com/rest/api/sql/servers/update)|Aktualisiert einen vorhandenen Server.|
 |[Databases - Create oder update](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|Erstellt eine neue Datenbank oder aktualisiert eine bereits vorhandene Datenbank|

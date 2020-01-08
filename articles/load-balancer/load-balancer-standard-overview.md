@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 3b6a16436b2719d1571f5d5a3c16711a9100b75d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894422"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552813"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Übersicht: Azure Load Balancer Standard
 
@@ -182,14 +182,6 @@ SKUs sind nicht änderbar. Führen Sie die Schritte in diesem Abschnitt aus, um 
 3. Entfernen Sie die Basic-SKU-Ressourcen (Load Balancer und Public IPs nach Bedarf) aus allen VM-Instanzen. Stellen Sie sicher, dass auch alle VM-Instanzen einer Verfügbarkeitsgruppe entfernt werden.
 
 4. Fügen Sie alle VM-Instanzen an die neuen SKU-Ressourcen vom Typ „Standard“ an.
-
-### <a name="migrate-from-standard-to-basic-sku"></a>Migrieren von der SKU „Standard“ zu „Basic“
-
-1. Erstellen Sie eine neue Basic-Ressource (Load Balancer bzw. Public IP nach Bedarf). Erstellen Sie Ihre Regeln und Prüfdefinitionen erneut.  Ändern Sie einen HTTPS-Test in einen TCP-Test für 443/TCP. 
-
-2. Entfernen Sie die Standard-SKU-Ressourcen (Load Balancer und Public IPs nach Bedarf) aus allen VM-Instanzen. Stellen Sie sicher, dass auch alle VM-Instanzen einer Verfügbarkeitsgruppe entfernt werden.
-
-3. Fügen Sie alle VM-Instanzen an die neuen SKU-Ressourcen vom Typ „Basic“ an.
 
 >[!IMPORTANT]
 >

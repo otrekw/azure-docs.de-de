@@ -3,17 +3,17 @@ title: Übersicht über Azure Stream Analytics
 description: Erfahren Sie mehr über Stream Analytics, einen verwalteten Dienst, der Ihnen bei der Analyse der Streamingdaten aus dem Internet der Dinge (IoT) in Echtzeit hilft.
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: overview
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 0982cc90d26c9f04e8d547c7d634e09280d7fca2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3399cc47af20df05d6315a4bd77965f799eaf5f9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73467899"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426181"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Was ist Azure Stream Analytics?
 
@@ -31,7 +31,7 @@ Die folgenden Szenarien sind Beispiele für Situationen, in denen Azure Stream A
 
 Ein Azure Stream Analytics-Auftrag besteht aus einer Eingabe, Abfrage und Ausgabe. Stream Analytics erfasst Daten aus Azure Event Hubs, Azure IoT Hub oder Azure Blob Storage. Mit der Abfrage, die auf SQL (Structured Query Language) basiert, können Streamingdaten über einen bestimmten Zeitraum einfach gefiltert, sortiert, aggregiert und verknüpft werden. Sie können diese SQL-Sprache auch mit JavaScript und benutzerdefinierten C#-Funktionen (UDFs) erweitern. Sie können die Optionen für die Ereignisreihenfolge und die Dauer der Zeitfenster bei der Durchführung von Aggregationsvorgängen mithilfe einfacher Sprachkonstrukte und/oder Konfigurationen einfach anpassen.
 
-Zu jedem Auftrag gehört eine Ausgabe für die transformierten Daten. Sie können die Reaktion auf die analysierten Informationen steuern. Sie haben beispielsweise folgende Möglichkeiten:
+Zu jedem Auftrag gehört eine Ausgabe für die transformierten Daten. Sie können die Reaktion auf die analysierten Informationen steuern. Beispielsweise können Sie folgende Aktionen ausführen:
 
 * Senden von Daten an Dienste wie Azure Functions, Service Bus Topics oder Queues, um Kommunikation oder benutzerdefinierte Workflows nachgelagert auszulösen.
 * Senden von Daten an ein Power BI-Dashboard für die Echtzeitvisualisierung
@@ -91,7 +91,7 @@ Als verwalteter Dienst wird für Stream Analytics eine Ereignisverarbeitung mit 
 
 Azure Stream Analytics verschlüsselt jegliche ein- und ausgehende Kommunikation und unterstützt TLS 1.2. Integrierte Prüfpunkte werden ebenfalls verschlüsselt. Die eingehenden Daten werden von Stream Analytics nicht gespeichert, da die gesamte Verarbeitung im Arbeitsspeicher stattfindet.
 
-### <a name="compliance"></a>Compliance
+### <a name="compliance"></a>Kompatibilität
 
 Azure Stream Analytics erfüllt die Anforderungen mehrerer Compliancezertifizierungen, wie in der [Übersicht über die Azure-Compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) beschrieben. 
 

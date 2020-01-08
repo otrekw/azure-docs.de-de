@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8a4ebf6c2ddf3e361e306ae37ad8dabb052e0efc
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: f788f7827f778029a0f34ec1f7e73b174738e1f0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351287"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
@@ -29,7 +29,7 @@ Mit der Azure Blob Storage-Clientbibliothek v12 für .NET ist Folgendes möglich
 * Herunterladen des Blobs auf den lokalen Computer
 * Löschen eines Containers
 
-[API-Referenzdokumentation](/dotnet/api/azure.storage.blobs) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/12.0.0) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
+[API-Referenzdokumentation](/dotnet/api/azure.storage.blobs) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -103,7 +103,7 @@ namespace BlobQuickstartV12
 }
 ```
 
-[!INCLUDE [storage-quickstart-connection-string-include](../../../includes/storage-quickstart-credentials-include.md)]
+[!INCLUDE [storage-quickstart-credentials-include](../../../includes/storage-quickstart-credentials-include.md)]
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -120,7 +120,7 @@ Im folgenden Diagramm ist die Beziehung zwischen diesen Ressourcen dargestellt.
 Verwenden Sie die folgenden .NET-Klassen zur Interaktion mit folgenden Ressourcen:
 
 * [BlobServiceClient:](/dotnet/api/azure.storage.blobs.blobserviceclient) Die `BlobServiceClient`-Klasse ermöglicht Ihnen, Azure Storage-Ressourcen und Blobcontainer zu bearbeiten.
-* [BlobContainerClient:](/dotnet/api/azure.storage.blobs.blobcontainerclient) Die `BlobContainerClient`-Klasse ermöglicht Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
+* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): Die `BlobContainerClient`-Klasse ermöglicht Ihnen, Azure Storage-Container und deren Blobs zu bearbeiten.
 * [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): Die `BlobClient`-Klasse ermöglicht Ihnen, Azure Storage-Blobs zu bearbeiten.
 * [BlobDownloadInfo:](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo) Die `BlobDownloadInfo`-Klasse stellt die Eigenschaften und den Inhalt dar, die beim Herunterladen eines Blobs zurückgegeben werden.
 
@@ -146,11 +146,11 @@ Console.WriteLine("Azure Blob storage v12 - .NET quickstart sample\n");
 
 // Retrieve the connection string for use with the application. The storage
 // connection string is stored in an environment variable on the machine
-// running the application called CONNECT_STR. If the
+// running the application called AZURE_STORAGE_CONNECTION_STRING. If the
 // environment variable is created after the application is launched in a
 // console or with Visual Studio, the shell or application needs to be closed
 // and reloaded to take the environment variable into account.
-string connectionString = Environment.GetEnvironmentVariable("CONNECT_STR");
+string connectionString = Environment.GetEnvironmentVariable("AZURE_STORAGE_CONNECTION_STRING");
 ```
 
 ### <a name="create-a-container"></a>Erstellen eines Containers

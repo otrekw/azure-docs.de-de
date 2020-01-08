@@ -3,18 +3,18 @@ title: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erstellen Sie eine neue Azure IoT Central-Anwendung. Erstellen Sie unter Verwendung einer Anwendungsvorlage eine Testversion oder eine Anwendung mit nutzungsbasierter Zahlung.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 10/24/2019
+ms.date: 12/18/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 1fcaf694e7a628232ea252585d6d9a507a9850da
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bbb287805ac0351153778191d484bae2ef319705
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74287046"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434789"
 ---
 # <a name="create-an-azure-iot-central-application-preview-features"></a>Erstellen einer Azure IoT Central-Anwendung (Previewfunktionen)
 
@@ -49,7 +49,7 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung:
     - Anwendungen mit **nutzungsbasierter Bezahlung** werden pro Gerät berechnet, wobei die ersten zwei Geräte kostenlos sind. Weitere Informationen finden Sie unter [IoT Central – Preise](https://aka.ms/iotcentral-pricing). Wenn Sie eine Anwendung mit nutzungsbasierter Bezahlung erstellen, müssen Sie Ihr *Verzeichnis*, Ihr *Azure-Abonnement* und Ihren *Standort* auswählen:
         - Bei *Verzeichnis* handelt es sich um das Azure Active Directory (AAD), in dem Sie Ihre Anwendung erstellen. Ein Azure AD enthält Benutzeridentitäten, Anmeldeinformationen und andere organisatorische Informationen. Falls Sie über keine Azure AD-Instanz verfügen, wird eine erstellt, wenn Sie ein Azure-Abonnement erstellen.
         - Mit einem *Azure-Abonnement* können Sie Instanzen von Azure-Diensten erstellen. IoT Central stellt Ressourcen in Ihrem Abonnement bereit. Wenn Sie kein Azure-Abonnement besitzen, können Sie auf der Seite [Azure-Anmeldeseite](https://aka.ms/createazuresubscription) eins erstellen. Nachdem Sie das Azure-Abonnement erstellt haben, navigieren Sie zurück zur Seite **Anwendung erstellen**. Ihr neues Abonnement wird in der Dropdownliste **Azure-Abonnement** angezeigt.
-        - *Standort* ist die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Die Public Preview von Azure IoT Central ist derzeit in den **USA** und in **Europa** verfügbar. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
+        - Der *Standort* beschreibt die [geografische Region](https://azure.microsoft.com/global-infrastructure/geographies/), in der Sie Ihre Anwendung erstellen möchten. Normalerweise wählen Sie den Standort aus, der Ihren Geräten physisch am nächsten liegt, um eine optimale Leistung zu erzielen. Die Public Preview von Azure IoT Central ist derzeit in den **USA** und in **Europa** verfügbar. Nachdem Sie einen Standort ausgewählt haben, können Sie Ihre Anwendung nicht zu einem späteren Zeitpunkt an einen anderen Standort verschieben.
 
         > [!NOTE]
         > Während der Public Preview sind für **Vorschauanwendungen** nur die Standorte **Europa** und **USA** verfügbar.

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: kumud
-ms.openlocfilehash: 1b201957a33acd609eed8a2373c8201bdefe9d7d
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 5acda69ce08bc493d5349b084d1cfafc8432145b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64691976"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647457"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Zuordnen einer öffentlichen IP-Adresse zu einem virtuellen Computer
 
-In diesem Artikel erfahren Sie, wie Sie einem vorhandenen virtuellen Computer eine öffentliche IP-Adresse zuordnen. Wenn Sie einen virtuellen Computer mit dem Internet verbinden möchten, muss dem Computer eine öffentliche IP-Adresse zugeordnet sein. Wenn Sie einen neuen virtuellen Computer mit einer öffentlichen IP-Adresse erstellen möchten, können Sie dafür das [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md), die [Azure-Befehlszeilenschnittstelle (CLI)](virtual-network-deploy-static-pip-arm-cli.md) oder [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) verwenden. Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/ip-addresses/). Die Anzahl der öffentlichen IP-Adressen, die pro Abonnement verwendet werden können, ist begrenzt. Informationen dazu finden unter [Einschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address).
+In diesem Artikel erfahren Sie, wie Sie einem vorhandenen virtuellen Computer eine öffentliche IP-Adresse zuordnen. Wenn Sie einen virtuellen Computer mit dem Internet verbinden möchten, muss dem Computer eine öffentliche IP-Adresse zugeordnet sein. Wenn Sie einen neuen virtuellen Computer mit einer öffentlichen IP-Adresse erstellen möchten, können Sie dafür das [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md), die [Azure-Befehlszeilenschnittstelle (CLI)](virtual-network-deploy-static-pip-arm-cli.md) oder [PowerShell](virtual-network-deploy-static-pip-arm-ps.md) verwenden. Für öffentliche IP-Adressen fällt eine geringe Gebühr an. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/ip-addresses/). Die Anzahl der öffentlichen IP-Adressen, die pro Abonnement verwendet werden können, ist begrenzt. Informationen dazu finden unter [Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#publicip-address).
 
 Sie können das [Azure-Portal](#azure-portal), die [Azure CLI](#azure-cli) oder [PowerShell](#powershell) verwenden, um einem virtuellen Computer eine öffentliche IP-Adresse zuzuordnen.
 

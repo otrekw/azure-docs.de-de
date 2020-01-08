@@ -67,7 +67,7 @@
       items:
         - name: Resilienz und Notfallwiederherstellung
           href: concept-disaster-recovery.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Integrieren mit verwalteter Azure-Identität
       href: howto-integrate-azure-managed-service-identity.md
@@ -87,15 +87,15 @@
           href: 'https://go.microsoft.com/fwlink/?linkid=2074664'
         - name: .NET Framework-Generator
           href: 'https://go.microsoft.com/fwlink/?linkid=2074663'
-        - name: .NET Azure SDK
+        - name: Azure SDK für .Net
           href: 'https://go.microsoft.com/fwlink/?linkid=2092056'
         - name: Java Spring-Anbieter
           href: 'https://go.microsoft.com/fwlink/?linkid=2074659'
-        - name: Java Azure SDK
+        - name: Azure SDK für Java
           href: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-        - name: Python Azure SDK
+        - name: Azure SDK für Python
           href: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-        - name: JavaScript Azure SDK
+        - name: Azure SDK für JavaScript
           href: 'https://go.microsoft.com/fwlink/?linkid=2103664'
         - name: REST
           href: 'https://go.microsoft.com/fwlink/?linkid=2078296'

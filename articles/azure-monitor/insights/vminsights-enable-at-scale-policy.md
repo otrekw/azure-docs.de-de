@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: 4a89eb36c9aa7369d6145304b572b4245cef3483
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: d9458230d07c1c40a3eec2d51879f58fac6543b5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109315"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365817"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-by-using-azure-policy"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) mithilfe von Azure Policy
 
@@ -77,7 +77,7 @@ Weitere Informationen zur Zuweisung von Azure Policy finden Sie unter [Azure Pol
 
 Die Richtliniendefinitionen für eine Azure-VM sind in der folgenden Tabelle aufgeführt.
 
-|NAME |BESCHREIBUNG |type |
+|Name |BESCHREIBUNG |type |
 |-----|------------|-----|
 |\[Vorschau\]: Aktivieren von Azure Monitor für VMs |Hiermit aktivieren Sie Azure Monitor für die virtuellen Computer in dem angegebenen Bereich (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. |Initiative |
 |\[Vorschau\]: Überwachen der Bereitstellung des Dependency-Agents – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VMs als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
@@ -91,7 +91,7 @@ Die Richtliniendefinitionen für eine Azure-VM sind in der folgenden Tabelle auf
 
 Die Richtliniendefinitionen für eine Azure-VM-Skalierungsgruppe sind in der folgenden Tabelle aufgeführt.
 
-|NAME |BESCHREIBUNG |type |
+|Name |BESCHREIBUNG |type |
 |-----|------------|-----|
 |\[Vorschau\]: Aktivieren von Azure Monitor für VM-Skalierungsgruppen |Hiermit aktivieren Sie Azure Monitor für VM-Skalierungsgruppen im angegebenen Umfang (Verwaltungsgruppe, Abonnement oder Ressourcengruppe). Akzeptiert den Log Analytics-Arbeitsbereich als Parameter. Hinweis: Wenn die Upgraderichtlinie für Skalierungsgruppen auf „Manuell“ festgelegt ist, wenden Sie die Erweiterung auf alle VMs in der Gruppe an, indem Sie für diese ein Upgrade durchführen. In der CLI lautet der Befehl `az vmss update-instances`. |Initiative |
 |\[Vorschau\]: Überwachen der Bereitstellung des Dependency-Agents in VM-Skalierungsgruppen – VM-Image (Betriebssystem) nicht aufgelistet |Meldet VM-Skalierungsgruppen als nicht konform, wenn das VM-Image (Betriebssystem) nicht in der Liste definiert und der Agent nicht installiert ist. |Richtlinie |
@@ -103,7 +103,7 @@ Die Richtliniendefinitionen für eine Azure-VM-Skalierungsgruppe sind in der fol
 
 Die eigenständige Richtlinie (nicht in der Initiative enthalten) wird hier beschrieben:
 
-|NAME |BESCHREIBUNG |type |
+|Name |BESCHREIBUNG |type |
 |-----|------------|-----|
 |\[Vorschau\]: Überwachen des Log Analytics-Arbeitsbereichs für VM – Berichtskonflikt |Meldet VMs als nicht konform, wenn sie keine Protokolle an den in der Richtlinien- oder Initiativenzuweisung angegebenen Log Analytics-Arbeitsbereich senden. |Richtlinie |
 

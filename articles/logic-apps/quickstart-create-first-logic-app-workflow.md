@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: 45b9cdc74fc57e53ca2cd76f8b1f98671f5bbc7e
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fd9166168a5b21900aa49d42a1dd5b81039dbcd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428762"
 ---
 # <a name="quickstart-create-your-first-workflow-by-using-azure-logic-apps---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Workflows mithilfe von Azure Logic Apps – Azure-Portal
 
@@ -42,11 +42,11 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
    ![Angeben von Details für eine neue Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*logic-app-name*> | Der Name Ihrer Logik-App, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten darf. In diesem Beispiel wird „My-First-Logic-App“ verwendet. |
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
-   | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |
+   | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |
    | **Location** | <*Azure-Region*> | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. |
    ||||
@@ -77,7 +77,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
    ![Einrichten eines Triggers mit RSS-Feed, Häufigkeit und Intervall](./media/quickstart-create-first-logic-app-workflow/add-rss-trigger-settings.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Die URL des RSS-Feeds** | `http://feeds.reuters.com/reuters/topNews` | Der Link für den RSS-Feed, den Sie überwachen möchten |
    | **Intervall** | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen |

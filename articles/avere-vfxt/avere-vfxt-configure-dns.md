@@ -6,24 +6,24 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: c28189bf227a6a81ae9e72e889a0dc598cd7949e
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 11ff310dae3c4733283d965a518df42a0711ce01
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256264"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416041"
 ---
 # <a name="avere-cluster-dns-configuration"></a>DNS-Konfiguration des Avere-Clusters
 
-In diesem Abschnitt werden die Grundlagen der Konfiguration eines DNS-Systems für den Lastenausgleich Ihres Avere vFXT-Clusters erläutert. 
+In diesem Abschnitt werden die Grundlagen der Konfiguration eines DNS-Systems für den Lastenausgleich Ihres Avere vFXT-Clusters erläutert.
 
-Dieses Dokument *enthält keine* Anweisungen zur Einrichtung und Verwaltung eines DNS-Servers in der Azure-Umgebung. 
+Dieses Dokument *enthält keine* Anweisungen zur Einrichtung und Verwaltung eines DNS-Servers in der Azure-Umgebung.
 
-Anstatt Roundrobin-DNS für den Lastenausgleich in einem vFXT-Cluster in Azure zu verwenden, sollten Sie IP-Adressen mithilfe manueller Methoden gleichmäßig zwischen den Clients zuzuweisen, wenn sie eingebunden sind. Mehrere Methoden sind unter [Einbinden des Avere-Clusters](avere-vfxt-mount-clients.md) beschrieben. 
+Anstatt Roundrobin-DNS für den Lastenausgleich in einem vFXT-Cluster in Azure zu verwenden, sollten Sie IP-Adressen mithilfe manueller Methoden gleichmäßig zwischen den Clients zuzuweisen, wenn sie eingebunden sind. Mehrere Methoden sind unter [Einbinden des Avere-Clusters](avere-vfxt-mount-clients.md) beschrieben.
 
-Beachten Sie diese Faktoren bei der Entscheidung, ob Sie einen DNS-Server verwenden: 
+Beachten Sie diese Faktoren bei der Entscheidung, ob Sie einen DNS-Server verwenden:
 
-* Wenn nur über NFS-Clients auf Ihr System zugegriffen wird, ist die Verwendung von DNS nicht erforderlich. Alle Netzwerkadressen können über numerische IP-Adressen angegeben werden. 
+* Wenn nur über NFS-Clients auf Ihr System zugegriffen wird, ist die Verwendung von DNS nicht erforderlich. Alle Netzwerkadressen können über numerische IP-Adressen angegeben werden.
 
 * Wenn Ihr System den SMB-Zugriff (CIFS) unterstützt, ist DNS erforderlich, da Sie eine DNS-Domäne für den Active Directory-Server angeben müssen.
 
@@ -41,12 +41,12 @@ Konfigurieren Sie Ihren DNS-Server so, dass er clientseitige Clusteradressen wie
 
 Auf der linken Seite wird ein virtueller Clusterserver und in der Mitte und auf der rechten Seite werden IP-Adressen angezeigt. Konfigurieren Sie die einzelnen Clientzugriffspunkte mit A-Einträgen und Zeigern, wie in der Abbildung gezeigt.
 
-![Diagramm zum Avere-Cluster mit Roundrobin-DNS](media/avere-vfxt-rrdns-diagram.png) 
+![Diagramm zum Avere-Cluster mit Roundrobin-DNS](media/avere-vfxt-rrdns-diagram.png)
 <!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Jede clientseitige IP-Adresse muss einen eindeutigen Namen für die interne Verwendung durch den Cluster aufweisen. (In diesem Diagramm werden die Client-IPs aus Gründen der Übersichtlichkeit mit „vs1-client-IP-*“ bezeichnet, aber in der Produktionsumgebung sollten Sie eine prägnantere Bezeichnung verwenden, z. B. „client*“.)
 
-Clients binden den Cluster über den VServer-Namen als Serverargument ein. 
+Clients binden den Cluster über den VServer-Namen als Serverargument ein.
 
 Ändern Sie die Datei ``named.conf`` Ihres DNS-Servers, um die Reihenfolge für Abfragen an Ihren VServer festzulegen. Diese Option stellt sicher, dass alle verfügbaren Werte durchlaufen werden. Fügen Sie eine Anweisung wie die folgende hinzu:
 
@@ -58,7 +58,7 @@ options {
 };
 ```
 
-Die folgenden nsupdate-Befehle zeigen ein Beispiel für die ordnungsgemäße Konfiguration von DNS:
+Die folgenden ``nsupdate``-Befehle sind ein Beispiel für die ordnungsgemäße Konfiguration von DNS:
 
 ```
 update add vserver1.example.com. 86400 A 10.0.0.10
@@ -81,5 +81,3 @@ Geben Sie auf der Einstellungsseite **Cluster** > **Verwaltungsnetzwerk** den DN
 * DNS-Suchdomänen
 
 Weitere Informationen zur Verwendung dieser Seite finden Sie in der Anleitung zur Konfiguration des Avere-Clusters unter [DNS-Einstellungen](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>).
-
-

@@ -2,19 +2,15 @@
 title: Starten eines Azure Automation-Runbooks mit einem Webhook
 description: Ein Webhook, der es einem Client ermöglicht, ein Runbook in Azure Automation über einen HTTP-Aufruf zu starten.  In diesem Artikel wird beschrieben, wie Sie einen Webhook erstellen und aufrufen, um ein Runbook zu starten.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/19/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: bc03425a64486e449b4df93ea187435a1e893dda
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849597"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418969"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
@@ -30,9 +26,9 @@ In [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md
 
 Die folgende Tabelle beschreibt die Eigenschaften, die Sie für einen Webhook konfigurieren müssen.
 
-| Eigenschaft | Description |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| NAME |Sie können einem Webhook einen beliebigen Namen zuweisen, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. <br> Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
+| Name |Sie können einem Webhook einen beliebigen Namen zuweisen, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. <br> Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
 | URL |Die URL des Webhooks ist die eindeutige Adresse, die ein Client mit einer HTTP POST-Anforderung aufruft, um das mit dem Webhook verknüpfte Runbook zu starten. Sie wird beim Erstellen des Webhooks automatisch generiert. Sie können keine benutzerdefinierte URL angeben. <br> <br> Die URL enthält ein Sicherheitstoken, das es ermöglicht, dass das Runbook ohne weitere Authentifizierung von einem Drittanbietersystem aufgerufen werden kann. Daher sollte sie wie ein Kennwort behandelt werden. Aus Sicherheitsgründen können Sie die URL im Azure-Portal nur zu dem Zeitpunkt anzeigen, zu dem der Webhook erstellt wird. Sie sollten die URL zur späteren Verwendung an einem sicheren Ort speichern. |
 | Ablaufdatum |Ebenso wie ein Zertifikat verfügt jeder Webhook über ein Ablaufdatum, nach dem er nicht mehr verwendet werden kann. Dieses Ablaufdatum kann nach dem Erstellen des Webhooks geändert werden, solange der Webhook noch nicht abgelaufen ist. |
 | Enabled |Ein Webhook ist bei Erstellung standardmäßig aktiviert. Wenn Sie "Deaktiviert" festlegen, kann er von keinem Client verwendet werden. Sie können die Eigenschaft **Aktiviert** beim Erstellen des Webhooks oder zu einem anderen Zeitpunkt nach der Erstellung festlegen. |

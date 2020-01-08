@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: bf6efbdbe19be28c005e2081c99827734ef10174
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446471"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Tutorial: Verwenden der Formularerkennung mit Azure Logic Apps zum Analysieren von Rechnungen
 
@@ -81,11 +81,11 @@ Fangen wir an! Führen Sie die unten angegebenen Schritte aus, um Ihren Workflow
 
 1. Geben Sie unter **Logik-App erstellen** Details zur Logik-App wie hier gezeigt ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*logic-app-name*> | Der Name Ihrer Logik-App, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten darf. In diesem Beispiel wird „My-First-Logic-App“ verwendet. |
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
-   | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](./../../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |
+   | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](./../../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |
    | **Location** | <*Azure-Region*> | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. |
    ||||
@@ -131,7 +131,7 @@ Bevor Sie den Dienst „Formularerkennung“ zum Analysieren von Rechnungen verw
     > [!div class="mx-imgBorder"]
     > ![Verbindungsname für Formularerkennung](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-create-connection.png)
 
-    Klicken Sie auf **Create**.
+    Klicken Sie auf **Erstellen**.
 
 1. Geben Sie im Dialogfeld **Modell trainieren** unter **Quelle** die URL für den Container ein, in den Sie die Beispieldaten hochgeladen haben.
 

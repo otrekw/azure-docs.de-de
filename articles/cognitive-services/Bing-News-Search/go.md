@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/21/2019
+ms.date: 12/16/2019
 ms.author: aahi
-ms.openlocfilehash: e08fe23f99cbf2fac7fc0528b04360f36d22b875
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a72859e378bc1f97ebaed6a11ea3b250a33651d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74222119"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448523"
 ---
 # <a name="quickstart-get-news-results-using-the-bing-news-search-rest-api-and-go"></a>Schnellstart: Abrufen von Ergebnissen für Nachrichten mit der Bing-News-Suche-REST-API und Go
 
@@ -26,13 +26,13 @@ In dieser Schnellstartanleitung wird Go zum Aufrufen der Bing-News-Suche-API ver
 * Installieren Sie die Bibliothek „go-spew“ zum Anzeigen der Ergebnisse mit Pretty Printer
     * Installieren Sie diese Bibliothek: `$ go get -u https://github.com/davecgh/go-spew`.
 
-[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
 ## <a name="create-a-project-and-import-libraries"></a>Erstellen eines Projekts und Importieren von Bibliotheken
 
 Erstellen Sie in Ihrer IDE oder in einem Editor ein neues Go-Projekt. Importieren Sie anschließend `net/http` für Anforderungen, `ioutil` zum Lesen der Antwort und `encoding/json` zum Verarbeiten des JSON-Texts der Ergebnisse. Die Bibliothek „go-spew“ ist zum Analysieren des JSON-Texts erforderlich. 
 
-```
+```go
 package main
 
 import (
@@ -49,7 +49,7 @@ import (
 
 Mit der `NewsAnswer`-Struktur werden die in der Antwort bereitgestellten Daten formatiert. Die JSON-Antwort enthält mehrere Ebenen und ist sehr komplex.  Mit der folgenden Implementierung sind die Grundlagen abgedeckt.
 
-```
+```go
 // This struct formats the answer provided by the Bing News Search API.
 type NewsAnswer struct {
     ReadLink       string `json: "readLink"` 
@@ -87,9 +87,9 @@ type NewsAnswer struct {
 
 ## <a name="declare-the-main-function-and-define-variables"></a>Deklarieren der main-Funktion und Definieren der Variablen  
 
-Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto.
+Der folgende Code dient zum Deklarieren der main-Funktion und zum Zuweisen der erforderlichen Variablen. Vergewissern Sie sich, dass der Endpunkt korrekt ist, und ersetzen Sie den Wert `token` durch einen gültigen Abonnementschlüssel aus Ihrem Azure-Konto. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
-```
+```go
 func main() {
     // Verify the endpoint URI and replace the token string with a valid subscription key.  
     const endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/news/search"
@@ -110,7 +110,7 @@ func main() {
 
 Fügen Sie die Abfragezeichenfolge und den Zugriffsschlüsselheader hinzu.
 
-```
+```go
 // Add the query to the request.  
 param := req.URL.Query()
 param.Add("q", searchTerm)
@@ -125,7 +125,7 @@ req.Header.Add("Ocp-Apim-Subscription-Key", token)
 
 Erstellen Sie den Client, und senden Sie die Get-Anforderung. 
 
-```
+```go
 // Instantiate a client.  
 client := new(http.Client)
 
@@ -141,7 +141,7 @@ if err != nil {
 
 Senden Sie die Anforderung, und lesen Sie die Antwort mit `ioutil`.
 
-```
+```go
 resp, err := client.Do(req)
     if err != nil {
         panic(err)
@@ -162,7 +162,7 @@ if err != nil {
 
 Die Funktion `Unmarshall` extrahiert Informationen aus dem JSON-Text, der von der News-Suche-API zurückgegeben wird.  Anschließend können Sie Knoten aus den Ergebnissen mit Pretty Printer von `go-spew` anzeigen.
 
-```
+```go
 // Create a new answer object 
 ans := new(NewsAnswer)
 err = json.Unmarshal(body, &ans)

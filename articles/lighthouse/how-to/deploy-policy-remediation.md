@@ -3,20 +3,20 @@ title: Bereitstellen einer Richtlinie, die gewartet werden kann
 description: Erfahren Sie, wie Sie einen Kunden für delegierte Azure-Ressourcenverwaltung integrieren, sodass Sie von Ihrem eigenen Mandanten aus auf dessen Ressourcen zugreifen und sie verwalten können.
 ms.date: 10/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4522c9ebad741f5ec0cb7e56e68467312ef8f037
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: c06ed4ea597808aee18d4a848bcfea7152b9cf8e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463875"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456856"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Bereitstellen einer Richtlinie, die innerhalb eines delegierten Abonnements gewartet werden kann
 
-Mit [Azure Lighthouse](../overview.md) können Dienstanbieter Richtliniendefinitionen innerhalb eines delegierten Abonnements erstellen und bearbeiten. Wenn Sie allerdings Richtlinien mit einem [Wartungstask](https://docs.microsoft.com/azure/governance/policy/how-to/remediate-resources) (sprich: Richtlinien mit [deployIfNotExists](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deployifnotexists)- oder [modify](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify)-Effekt) bereitstellen möchten, müssen Sie eine [verwaltete Identität](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) im Kundenmandanten erstellen. Diese verwaltete Identität kann von Azure Policy verwendet werden, um die Vorlage innerhalb der Richtlinie bereitzustellen. Für dieses Szenario sind bestimmte Schritte erforderlich – sowohl beim Onboarding des Kunden für die delegierte Azure-Ressourcenverwaltung als auch bei der Bereitstellung der eigentlichen Richtlinie.
+Mit [Azure Lighthouse](../overview.md) können Dienstanbieter Richtliniendefinitionen innerhalb eines delegierten Abonnements erstellen und bearbeiten. Wenn Sie allerdings Richtlinien mit einem [Wartungstask](../../governance/policy/how-to/remediate-resources.md) (sprich: Richtlinien mit [deployIfNotExists](../../governance/policy/concepts/effects.md#deployifnotexists)- oder [modify](../../governance/policy/concepts/effects.md#modify)-Effekt) bereitstellen möchten, müssen Sie eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten erstellen. Diese verwaltete Identität kann von Azure Policy verwendet werden, um die Vorlage innerhalb der Richtlinie bereitzustellen. Für dieses Szenario sind bestimmte Schritte erforderlich – sowohl beim Onboarding des Kunden für die delegierte Azure-Ressourcenverwaltung als auch bei der Bereitstellung der eigentlichen Richtlinie.
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Erstellen eines Benutzers, der einer verwalteten Identität im Kundenmandanten Rollen zuweisen kann
 
-Im Rahmen des Kunden-Onboardings für die delegierte Azure-Ressourcenverwaltung verwenden Sie eine [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/lighthouse/how-to/onboard-customer#create-an-azure-resource-manager-template) sowie eine Parameterdatei, die die Benutzer, Benutzergruppen und Dienstprinzipale in Ihrem Verwaltungsmandanten definiert, der auf die delegierten Ressourcen im Kundenmandanten zugreifen kann. In Ihrer Parameterdatei wird jedem dieser Benutzer (**principalId**) eine [integrierte Rolle](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) (**roleDefinitionId**) zugewiesen, die die Zugriffsebene definiert.
+Im Rahmen des Kunden-Onboardings für die delegierte Azure-Ressourcenverwaltung verwenden Sie eine [Azure Resource Manager-Vorlage](onboard-customer.md#create-an-azure-resource-manager-template) sowie eine Parameterdatei, die die Benutzer, Benutzergruppen und Dienstprinzipale in Ihrem Verwaltungsmandanten definiert, der auf die delegierten Ressourcen im Kundenmandanten zugreifen kann. In Ihrer Parameterdatei wird jedem dieser Benutzer (**principalId**) eine [integrierte Rolle](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) zugewiesen, die die Zugriffsebene definiert.
 
 Damit von einer Prinzipal-ID (**principalId**) eine verwaltete Identität im Kundenmandanten erstellt werden kann, muss die zugehörige Rollendefinitions-ID (**roleDefinitionId**) auf **Benutzerzugriffsadministrator** festgelegt werden. Diese Rolle wird zwar nicht allgemein unterstützt, kann aber in diesem speziellen Szenario verwendet werden. Benutzer mit dieser Berechtigung können verwalteten Identitäten spezifische integrierte Rollen zuweisen. Diese Rollen werden in der Eigenschaft **delegatedRoleDefinitionIds** definiert. Sie können hier jede beliebige integrierte Rolle einschließen (mit Ausnahme von „Benutzerzugriffsadministrator“ und „Besitzer“).
 
@@ -66,5 +66,5 @@ Das folgende Beispiel zeigt eine Rollenzuweisung mit **delegatedManagedIdentityR
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
-- Informieren Sie sich über [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+- Informieren Sie sich über [Azure Policy](../../governance/policy/index.yml).
+- Informieren Sie sich über [verwaltete Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md).

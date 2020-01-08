@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: 0e2dcec15566749b58c439b68532829b67716754
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 29c1aaf18ea45d869d32a8817aeb03faa3b67c32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815187"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456576"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -82,7 +82,7 @@ Nachdem Sie das Gateway auf einem lokalen Computer installiert haben, erstellen 
    |----------|-------------|
    | **Ressourcenname** | Geben Sie einen Namen für Ihre Gatewayressource an, der nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten darf. |
    | **Abonnement** | Wählen Sie das Azure-Abonnement für das Azure-Konto aus, das für die Gatewayinstallation verwendet wurde. Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben. |
-   | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die Sie verwenden möchten. |
+   | **Ressourcengruppe** | Die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die Sie verwenden möchten. |
    | **Location** | Die gleiche Region oder der gleiche Standort, der während der [Gatewayinstallation](../logic-apps/logic-apps-gateway-install.md) für den Gatewayclouddienst ausgewählt wurde. Andernfalls wird Ihre Gatewayinstallation nicht in der Liste **Installationsname** angezeigt. Der Standort Ihrer Logik-App kann sich vom Standort Ihrer Gatewayressource unterscheiden. |
    | **Installationsname** | Wählen Sie eine Gatewayinstallation aus, die in der Liste nur angezeigt wird, wenn die folgenden Bedingungen erfüllt sind: <p><p>– Die Gatewayinstallation verwendet dieselbe Region wie die Gatewayressource, die Sie erstellen möchten. <br>– Die Gatewayinstallation ist nicht mit einer anderen Azure-Gatewayressource verknüpft. <br>– Die Gatewayinstallation ist mit demselben Azure-Konto verknüpft, das Sie zum Erstellen der Gatewayressource verwenden. <br>– Ihr Azure-Konto gehört zu einem einzigen [Azure Active Directory-Mandanten (Azure AD) oder -Verzeichnis](../active-directory/fundamentals/active-directory-whatis.md#terminology) und ist das gleiche Konto, das für die Gatewayinstallation verwendet wurde. <p><p>Weitere Informationen finden Sie im Abschnitt [Häufig gestellte Fragen](#faq). |
    |||

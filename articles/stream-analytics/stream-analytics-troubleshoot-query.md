@@ -1,7 +1,6 @@
 ---
 title: Problembehandlung von Azure Stream Analytics-Abfragen
 description: In diesem Artikel werden Verfahren zur Problembehandlung Ihrer Abfragen in Azure Stream Analytics-Aufträgen beschrieben.
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 586ddb237144daddf0cbfd19785fcba7658469a0
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354261"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 

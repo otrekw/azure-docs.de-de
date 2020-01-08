@@ -1,33 +1,28 @@
 ---
 title: Anzeigen von Bereitstellungen in Azure Monitor für Container (Vorschau) | Microsoft-Dokumentation
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Bereitstellungen in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: c7135aec98936b5247b39ae659e21735168bd289
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510759"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404774"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Anzeigen von Bereitstellungen (Vorschau) in Echtzeit
 
 Mit Azure Monitor für Container emuliert die Funktion „Bereitstellungen anzeigen“ (Vorschau) den direkten Zugriff auf Kubernetes-Bereitstellungsobjekte in Echtzeit, indem die Befehle `kubeclt get deployments` und `kubectl describe deployment {your deployment}` verfügbar gemacht werden. 
 
 >[!NOTE]
->Als [private Cluster](https://azure.microsoft.com/updates/aks-private-cluster/) aktivierte AKS-Cluster werden bei dieser Funktion nicht unterstützt. Diese Funktion basiert auf dem direkten Zugriff auf die Kubernetes-API über einen Proxyserver im Browser. Durch die Aktivierung der Netzwerksicherheit zum Blockieren der Kubernetes-API über den Proxy wird der Datenverkehr blockiert. 
+>Als [private Cluster](https://azure.microsoft.com/updates/aks-private-cluster/) aktivierte AKS-Cluster werden mit dieser Funktion nicht unterstützt. Diese Funktion basiert auf dem direkten Zugriff auf die Kubernetes-API über einen Proxyserver im Browser. Durch die Aktivierung der Netzwerksicherheit zum Blockieren der Kubernetes-API über den Proxy wird der Datenverkehr blockiert. 
 
 >[!NOTE]
 >Diese Funktion steht in allen Azure-Regionen zur Verfügung, einschließlich Azure China. In Azure US Government ist sie derzeit nicht verfügbar.
 
 Weitere Informationen finden Sie in der Kubernetes-Dokumentation zu [Bereitstellungen](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/). 
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 
 Informationen zum Direktzugriff auf die Kubernetes-API über die Funktion für Livedaten (Vorschau) sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 

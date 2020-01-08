@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350915"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
 
@@ -67,7 +67,7 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
     ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Die Verwendung einer neuen Ressourcengruppe ist hilfreich, wenn Sie SQL Server-Bereitstellungen in Azure testen oder sich gerade damit vertraut machen. Löschen Sie nach Beendigung des Tests die Ressourcengruppe, um die VM und alle Ressourcen, die dieser Ressourcengruppe zugeordnet sind, automatisch zu löschen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../../../azure-resource-manager/resource-group-overview.md).
+  > Die Verwendung einer neuen Ressourcengruppe ist hilfreich, wenn Sie SQL Server-Bereitstellungen in Azure testen oder sich gerade damit vertraut machen. Löschen Sie nach Beendigung des Tests die Ressourcengruppe, um die VM und alle Ressourcen, die dieser Ressourcengruppe zugeordnet sind, automatisch zu löschen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../../../azure-resource-manager/management/overview.md).
 
 
 * Gehen Sie unter **Instanzendetails** wie folgt vor:
@@ -185,7 +185,7 @@ Um Sicherheitsgeheimnisse in Azure zur Verschlüsselung zu speichern, wählen Si
 
 In der folgenden Tabelle sind die Parameter aufgeführt, die zum Konfigurieren der Azure-Schlüsseltresor-Integration erforderlich sind.
 
-| PARAMETER | Beschreibung | BEISPIEL |
+| PARAMETER | DESCRIPTION | BEISPIEL |
 | --- | --- | --- |
 | **Schlüsseltresor-URL** |Gibt den Speicherort des Schlüsseltresors an. |https:\//contosokeyvault.vault.azure.net/ |
 | **Prinzipalname** |Gibt den Namen des Azure Active Directory-Dienstprinzipals an. Dieser Name wird auch als Client-ID bezeichnet. |fde2b411-33d5-4e11-af04eb07b669ccf2 |

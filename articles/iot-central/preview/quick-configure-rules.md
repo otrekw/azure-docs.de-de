@@ -3,18 +3,18 @@ title: 'Schnellstart: Konfigurieren von Regeln und Aktionen in Azure IoT Central
 description: In dieser Schnellstartanleitung wird gezeigt, wie Sie als Ersteller telemetriebasierte Regeln und Aktionen in Ihrer Azure IoT Central-Anwendung konfigurieren.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/24/2019
+ms.date: 12/09/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: f81171d0f545bbf7f903d54bee761817e9451d9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 489a512ea5658aaeaccdba4b91eae7def14a589c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706720"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434816"
 ---
 # <a name="quickstart-configure-rules-and-actions-for-your-device-in-azure-iot-central-preview-features"></a>Schnellstart: Konfigurieren von Regeln und Aktionen für Ihr Gerät in Azure IoT Central (Previewfunktionen)
 
@@ -40,11 +40,11 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
 1. Im Abschnitt **Bedingungen** definieren Sie, wodurch Ihre Regel ausgelöst wird. Verwenden Sie die folgenden Informationen, um eine Bedingung basierend auf Temperaturtelemetrie zu definieren:
 
-    | Feld                                        | Wert                             |
+    | Feld                                        | value                             |
     | -------------------------------------------- | ------------------------------    |
     | Messung                                  | Temperatur                       |
     | Operator                                     | größer als                   |
-    | Wert                                        | 90                                |
+    | value                                        | 90                                |
 
     Wählen Sie **+ Bedingung** aus, um weitere Bedingungen hinzuzufügen.
 
@@ -54,7 +54,7 @@ Erstellen Sie zunächst mithilfe der beiden vorherigen Schnellstartanleitungen [
 
 1. Nutzen Sie beim Festlegen der Aktion die Informationen in der folgenden Tabelle:
 
-    | Einstellung   | Wert                                             |
+    | Einstellung   | value                                             |
     | --------- | ------------------------------------------------- |
     | `Display name` | Operator-E-Mail-Aktion                          |
     | To        | Ihre E-Mail-Adresse                                |

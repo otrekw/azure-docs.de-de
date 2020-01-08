@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 6/18/2019
+ms.date: 12/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 2fc67cbfedccd69ff9063b0575ae51197eceb09d
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 1c424c75a4df193ec412355607c68abeda0560a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423698"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448493"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Schnellstart: Durchführen einer Neuigkeitensuche mit Python und der REST-API der Bing-News-Suche
 
@@ -32,11 +32,9 @@ Den Quellcode des Beispiels finden Sie auch auf [GitHub](https://github.com/Azur
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
-Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/)
-
 ## <a name="create-and-initialize-the-application"></a>Erstellen und Initialisieren der Anwendung
 
-1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor eine neue Python-Datei, und importieren Sie das Anforderungsmodul. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und einen Suchbegriff. Ihren Endpunkt finden Sie auf dem Azure-Dashboard.
+1. Erstellen Sie in Ihrer bevorzugten IDE bzw. in einem Editor eine neue Python-Datei, und importieren Sie das Anforderungsmodul. Erstellen Sie Variablen für Ihren Abonnementschlüssel, den Endpunkt und einen Suchbegriff. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ```python
 import requests

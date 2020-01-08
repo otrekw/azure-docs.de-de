@@ -1,5 +1,5 @@
 ---
-title: Was ist die Azure AD-Berechtigungsverwaltung? – Azure Active Directory
+title: Was ist Berechtigungsverwaltung? – Azure AD
 description: Verschaffen Sie sich einen Überblick über die Berechtigungsverwaltung von Azure Active Directory, und lesen Sie, wie Sie mit ihr den Zugriff auf Gruppen, Anwendungen und SharePoint Online-Websites für interne und externe Benutzer verwalten können.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422570"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 

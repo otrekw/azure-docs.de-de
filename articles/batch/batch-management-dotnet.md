@@ -15,17 +15,17 @@ ms.workload: big-compute
 ms.date: 04/24/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f7554993e2e3d8d2f6bce71db57a746a4392ce1a
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 32133fc5c01544250075ece2458babe2f0b6a62a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095073"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660697"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Verwalten von Batch-Konten und -Kontingenten mit der Batch Management-Clientbibliothek für .NET
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](batch-account-create-portal.md)
+> * [Azure portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 > 
 > 
@@ -95,7 +95,7 @@ BatchAccountRegenerateKeyResponse newKeys =
 > 
 
 ## <a name="check-azure-subscription-and-batch-account-quotas"></a>Überprüfen des Azure-Abonnements und der Batch-Kontokontingente
-Azure-Abonnements und die einzelnen Azure-Dienste wie z. B. Batch verfügen über Standardkontingente, die die Anzahl von bestimmten darin enthaltenen Entitäten begrenzen. Die Standardkontingente für Azure-Abonnements finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md). Die Standardkontingente für den Batch-Dienst finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Mithilfe der Batch Management .NET-Bibliothek können Sie diese Kontingente in Ihren Anwendungen überprüfen. Dadurch können Sie Zuordnungsentscheidungen treffen, bevor Sie Konten oder Computeressourcen hinzufügen (z. B. Pools und Computeknoten).
+Azure-Abonnements und die einzelnen Azure-Dienste wie z. B. Batch verfügen über Standardkontingente, die die Anzahl von bestimmten darin enthaltenen Entitäten begrenzen. Die Standardkontingente für Azure-Abonnements finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md). Die Standardkontingente für den Batch-Dienst finden Sie unter [Kontingente und Limits für den Azure Batch-Dienst](batch-quota-limit.md). Mithilfe der Batch Management .NET-Bibliothek können Sie diese Kontingente in Ihren Anwendungen überprüfen. Dadurch können Sie Zuordnungsentscheidungen treffen, bevor Sie Konten oder Computeressourcen hinzufügen (z. B. Pools und Computeknoten).
 
 ### <a name="check-an-azure-subscription-for-batch-account-quotas"></a>Überprüfen des Azure-Abonnements für Batch-Kontokontingente
 Vor dem Erstellen eines Batch-Kontos in einer Region können Sie Ihr Azure-Abonnement überprüfen, um festzustellen, ob Sie ein Konto in der betreffenden Region hinzufügen können.
@@ -198,7 +198,7 @@ Um die Beispielanwendung erfolgreich ausführen zu können, müssen Sie sie zun�
 [resman_api]: https://msdn.microsoft.com/library/azure/mt418626.aspx
 [resman_client]: https://msdn.microsoft.com/library/azure/microsoft.azure.management.resources.resourcemanagementclient.aspx
 [resman_subclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.subscriptions.subscriptionclient.aspx
-[resman_overview]: ../azure-resource-manager/resource-group-overview.md
+[resman_overview]: ../azure-resource-manager/management/overview.md
 
 [1]: ./media/batch-management-dotnet/portal-01.png
 [2]: ./media/batch-management-dotnet/portal-02.png

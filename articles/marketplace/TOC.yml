@@ -3,7 +3,7 @@
   items:
     - name: Roadmap für Azure Marketplace und AppSource
       href: ./marketplace-roadmap.md
-    - name: Azure Marketplace-Richtlinien und -Bestimmungen
+    - name: Richtlinien und Nutzungsbedingungen für Azure Marketplace
       href: ./policies-terms.md
     - name: 'Azure Marketplace und AppSource: Übersicht und Vorteile'
       href: ./marketplace-publishers-guide.md
@@ -55,7 +55,7 @@
               href: ./gtm-how-to-get-featured.md
             - name: Überprüfung von Marketplace-Inhalten
               href: ./marketplace-criteria-content-validation.md
-            - name: Cloudlösungsanbieter
+            - name: Cloud Solution Provider (CSP)
               href: ./cloud-solution-providers.md
         - name: Ihre Marketplace-Vorteile
           href: ./gtm-your-marketplace-benefits.md
@@ -76,6 +76,8 @@
 - name: Cloudpartnerportal
   href: ./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md
   items:
+    - name: Migration vom Cloud-Partnerportal zu Partner Center
+      href: ./cloud-partner-portal-orig/cloud-partner-portal-migration-to-partner-center.md
     - name: Tour durch das Portal
       href: ./cloud-partner-portal/portal-tour/cpp-portal-tour.md
       items:
@@ -130,7 +132,7 @@
           items:
             - name: Erste Schritte
               href: ./cloud-partner-portal-orig/si-getting-started.md
-            - name: Neuigkeiten
+            - name: Neues
               href: ./cloud-partner-portal-orig/si-changes.md
             - name: Webanalysen
               href: ./cloud-partner-portal-orig/web-analytics.md
@@ -449,6 +451,8 @@
               href: ./partner-center-portal/create-new-azure-apps-offer.md
             - name: Verarbeiten von Prüfungsfeedback
               href: ./partner-center-portal/azure-apps-review-feedback.md
+            - name: API für das Onboarding
+              href: ./partner-center-portal/azure-app-apis.md
         - name: Dynamics 365-Angebote
           items:
             - name: Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
@@ -512,13 +516,33 @@
     - name: Supportoptionen
       href: ./partner-center-portal/support.md
     - name: Partner Center Analytics
-      href: ./partner-center-portal/analytics.md
+      items:
+        - name: Analysen für den kommerziellen Marketplace
+          href: ./partner-center-portal/analytics.md
+        - name: Dashboard „Zusammenfassung“
+          href: ./partner-center-portal/summary-dashboard.md
+        - name: Dashboard „Bestellungen“
+          href: ./partner-center-portal/orders-dashboard.md
+        - name: Dashboard „Nutzung“
+          href: ./partner-center-portal/usage-dashboard.md
+        - name: Dashboard „Kunden“
+          href: ./partner-center-portal/customer-dashboard.md
+        - name: Dashboard „Marketplace-Erkenntnisse“
+          href: ./partner-center-portal/insights-dashboard.md
+        - name: Dashboard „Downloads“
+          href: ./partner-center-portal/downloads-dashboard.md
+        - name: Dashboard „Bewertungen und Rezensionen“
+          href: ./partner-center-portal/ratings-reviews.md
+        - name: Häufig gestellte Fragen und Terminologie
+          href: ./partner-center-portal/faq-terminology.md
     - name: Erhalten der Bezahlung
       items:
         - name: Erhalten der Bezahlung
           href: ./partner-center-portal/get-paid.md
         - name: Einrichten von Auszahlungskonten und Steuerformularen
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
+        - name: Abrechnungsdetails
+          href: ./partner-center-portal/billing-details.md
         - name: 'Zahlungsschwellenwerte, -methoden und -zeitrahmen'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
         - name: Auszahlungszusammenfassung

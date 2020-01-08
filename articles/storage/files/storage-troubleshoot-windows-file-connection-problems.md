@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 86b4b19ca80b7dfb2bd9a1a56069fe3d347377ec
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927847"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457388"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Behandeln von Azure Files-Problemen unter Windows
 
@@ -151,7 +151,7 @@ Sie haben keinen Zugriff.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
 
-Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/common/storage-security-guide#how-to-secure-your-storage-account-with-role-based-access-control-rbac).
+Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Sichern Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection).
 
 ### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Ursache 2: Virtuelle Netzwerk- oder Firewallregeln sind für das Speicherkonto aktiviert.
 
@@ -266,7 +266,7 @@ Wenn eine Datei über das Netzwerk kopiert wird, wird die Datei auf dem Quellcom
 Dieses Problem kann auftreten, wenn Sie ein verschlüsselndes Dateisystem (EFS, Encrypting File System) verwenden. Mit BitLocker verschlüsselte Dateien können in Azure Files kopiert werden. Azure Files unterstützt NTFS EFS jedoch nicht.
 
 ### <a name="workaround"></a>Problemumgehung
-Um eine Datei über das Netzwerk zu kopieren, müssen Sie sie zunächst entschlüsseln. Verwenden Sie eine der folgenden Methoden an:
+Um eine Datei über das Netzwerk zu kopieren, müssen Sie sie zunächst entschlüsseln. Verwenden Sie eine der folgenden Methoden:
 
 - Verwenden Sie den **copy /d**-Befehl. Sie können die verschlüsselten Dateien dadurch als entschlüsselte Dateien am Ziel speichern.
 - Legen Sie den folgenden Registrierungsschlüssel fest:

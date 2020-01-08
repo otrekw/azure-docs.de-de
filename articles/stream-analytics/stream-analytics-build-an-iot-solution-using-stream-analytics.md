@@ -1,20 +1,19 @@
 ---
 title: Erstellen einer IoT-Lösung mit Azure Stream Analytics
 description: Enthält ein Tutorial zu den ersten Schritten für die Stream Analytics-IoT-Lösung für ein Mauthäuschen-Szenario.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4b250a5e14ab37553d93453d05f8ff388bf1ba84
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: f506cc526a824d45ae2d6b7a75e1c1a99dae4d64
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67620520"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426444"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Erstellen einer IoT-Lösung mithilfe von Stream Analytics
 
@@ -44,7 +43,7 @@ In dieser Lösung werden zwei Datenströme verwendet. Mit Sensoren, die am Einga
 ### <a name="entry-data-stream"></a>Eingangsdatenstrom
 Der Eingangsdatenstrom enthält Informationen zu den Fahrzeugen, die in Mautstationen einfahren. Die Ereignisse des Ausgangsdatenstroms werden von einer Web-App, die in der Beispiel-App enthalten ist, live in eine Event Hub-Warteschlange gestreamt.
 
-| TollId | EntryTime | LicensePlate | Zustand | Stellen | Modell | VehicleType | VehicleWeight | Toll | Tag |
+| TollId | EntryTime | LicensePlate | State | Make | Modell | VehicleType | VehicleWeight | Toll | Tag |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,8 +59,8 @@ Nachfolgend finden Sie eine kurze Beschreibung der Spalten:
 | TollId |Mauthäuschen-ID zur eindeutigen Identifizierung des Mauthäuschens |
 | EntryTime |Datum und Uhrzeit der Einfahrt des Fahrzeugs in das Mauthäuschen in UTC |
 | LicensePlate |Nummernschild des Fahrzeugs |
-| Zustand |Bundesstaat (USA) |
-| Stellen |Der Fahrzeughersteller |
+| State |Bundesstaat (USA) |
+| Make |Der Fahrzeughersteller |
 | Modell |Modellnummer des Fahrzeugs |
 | VehicleType |1 für Privatfahrzeuge oder 2 für Nutzfahrzeuge |
 | WeightType |Fahrzeuggewicht in Tonnen; „0“ für Pkws |

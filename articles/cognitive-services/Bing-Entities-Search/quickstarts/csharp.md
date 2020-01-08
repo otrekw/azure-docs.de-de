@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 03/12/2019
+ms.date: 12/11/2019
 ms.author: aahi
-ms.openlocfilehash: efb2c646d364a93910d2105edb6527ad1116ccb2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c343c160f67eda2dd390ffc39f3b4f1ff49cacb6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327170"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448672"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von C#
 
@@ -50,7 +50,7 @@ Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful
     using System.Text;
     ```
 
-2. Erstellen Sie eine neue Klasse, und fügen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und eine Abfrage hinzu, die Sie durchsuchen möchten.
+2. Erstellen Sie eine neue Klasse, und fügen Sie Variablen für den API-Endpunkt, Ihren Abonnementschlüssel und eine Abfrage hinzu, die Sie durchsuchen möchten. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```csharp
     namespace EntitySearchSample

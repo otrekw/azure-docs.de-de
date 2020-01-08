@@ -1,25 +1,14 @@
 ---
 title: Upgrade der Azure Service Fabric-Version eines Clusters
 description: Upgraden Sie den Service Fabric-Code und/oder die Konfiguration für die Ausführung eines Service Fabric-Clusters, und machen Sie sich unter anderem mit dem Festlegen des Clusteraktualisierungsmodus, dem Upgraden von Zertifikaten, dem Hinzufügen von Anwendungsports und dem Anwenden von Betriebssystempatches vertraut. Was können Sie erwarten, wenn die Upgrades durchgeführt werden?
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: 067bf654928240ffe9651d4acf1933a81e631146
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013345"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451803"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Aktualisieren der Service Fabric-Version eines Clusters
 

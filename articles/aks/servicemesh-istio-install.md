@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 2768c2d4cef68dcf25e25c047aaa69653af5e0b6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 85ef34f8644d95f6cfd2c7262bfe4bbc0683547f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170873"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561737"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)
 
@@ -136,7 +136,7 @@ spec:
 Installieren Sie Istio mithilfe des Befehls `istioctl apply` und der Istio-Steuerungsebenen-Spezifikationsdatei `istio.aks.yaml` wie folgt:
 
 ```console
-istioctl manifest apply -f istio.aks.yaml
+istioctl manifest apply -f istio.aks.yaml --logtostderr --set installPackagePath=./install/kubernetes/operator/charts
 ```
 
 Das Installationsprogramm stellt eine Reihe von [CRDs][kubernetes-crd] bereit und verwaltet dann die Abhängigkeiten, um alle relevanten Objekte zu installieren, die für diese Konfiguration von Istio definiert sind. Das angezeigte Ergebnis sollte ähnlich wie der folgende Ausgabecodeausschnitt aussehen.
@@ -361,7 +361,9 @@ istioctl dashboard envoy <pod-name>.<namespace>
 Um Istio aus dem AKS-Cluster zu entfernen, verwenden Sie den Befehl `istioctl manifest generate` mit der Istio-Steuerungsebenen-Spezifikationsdatei `istio.aks.yaml`. Dadurch wird das bereitgestellte Manifest generiert, das wir an `kubectl delete` weiterleiten, um alle installierten Komponenten und den Namespace `istio-system` zu entfernen.
 
 ```console
-istioctl manifest generate -f istio.aks.yaml | kubectl delete -f -
+istioctl manifest generate -f istio.aks.yaml -o istio-components-aks --logtostderr --set installPackagePath=./install/kubernetes/operator/charts 
+
+kubectl delete -f istio-components-aks -R
 ```
 
 ### <a name="remove-istio-crds-and-secrets"></a>Entfernen von Istio-CRDs und Geheimnissen

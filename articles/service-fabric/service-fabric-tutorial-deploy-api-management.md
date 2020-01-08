@@ -1,26 +1,15 @@
 ---
-title: Integrieren von API Management in Service Fabric in Azure | Microsoft-Dokumentation
+title: Integrieren von API Management in Service Fabric in Azure
 description: Lernen Sie die ersten Schritte mit Azure API Management und dem Weiterleiten von Datenverkehr an einen Back-End-Dienst in Service Fabric kennen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/10/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 470eacee5c71742678497edf48169e14a4073829
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 201d617ce15216ba168bc484f644e165d5ae0e71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465355"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Integrieren von API Management in Service Fabric in Azure
 
@@ -197,11 +186,11 @@ Einen vollständigen Satz von Attributen für die Service Fabric-Back-End-Richtl
 
 Geben Sie für die Bereitstellung die folgenden leeren Parameter in der Datei *apim.parameters.json* an.
 
-|Parameter|Wert|
+|Parameter|value|
 |---|---|
 |apimInstanceName|sf-apim|
 |apimPublisherEmail|myemail@contosos.com|
-|apimSku|Developer|
+|apimSku|Entwickler|
 |serviceFabricCertificateName|sfclustertutorialgroup320171031144217|
 |certificatePassword|q6D7nN%6ck@6|
 |serviceFabricCertificateThumbprint|C4C1E541AD512B8065280292A8BA6079C3F26F10 |

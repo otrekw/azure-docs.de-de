@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: b598fafbbfce9a2c0a824dd6530d07a5933a2873
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 92e213a87796247128e7e3810db99fde8525e12a
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765205"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659218"
 ---
 # <a name="handle-transient-errors-and-connect-efficiently-to-azure-database-for-mysql"></a>Behandeln vorübergehender Fehler und effizientes Verbinden mit Azure Database for MySQL
 
@@ -52,7 +52,7 @@ Weil es sich bei Datenbankverbindungen um eine eingeschränkte Ressource handelt
 
 Das Verwalten von Datenbankverbindungen kann sich auf die Leistung der gesamten Anwendung erheblich auswirken. Wenn Sie die Leistung Ihrer Anwendung optimieren möchten, sollte Ihr Ziel darin bestehen, die Häufigkeit, mit der Verbindungen hergestellt werden, und die Zeit für das Herstellen von Verbindungen in wichtigen Codepfaden zu verringern. Es wird dringend empfohlen, das Datenbankverbindungs-Pooling oder permanente Verbindungen zum Herstellen einer Verbindung mit Azure Database for MySQL zu verwenden. Das Datenbankverbindungs-Pooling sorgt für die Erstellung, Verwaltung und Zuordnung von Datenbankverbindungen. Wenn ein Programm eine Datenbankverbindung anfordert, priorisiert es die Zuordnung vorhandener Datenbankverbindungen im Leerlauf, statt eine neue Verbindung zu erstellen. Nachdem das Programm die Datenbankverbindung verwendet hat, wird sie in Vorbereitung auf weitere Verwendung wiederhergestellt und nicht einfach geschlossen.
 
-Zur besseren Veranschaulichung enthält dieser Artikel [einen Teil des Beispielcodes](./sample-scripts-java-connection-pooling.md), in dem JAVA als Beispiel verwendet wird. Weitere Informationen finden Sie in unter [Apache common DBCP](http://commons.apache.org/proper/commons-dbcp/).
+Zur besseren Veranschaulichung enthält dieser Artikel [einen Teil des Beispielcodes](./sample-scripts-java-connection-pooling.md), in dem JAVA als Beispiel verwendet wird. Weitere Informationen finden Sie in unter [Apache common DBCP](https://commons.apache.org/proper/commons-dbcp/).
 
 > [!NOTE]
 > Der Server konfiguriert einen Zeitüberschreitungsmechanismus zum Schließen einer Verbindung, die seit einiger Zeit im Leerlauf war, um so Ressourcen freizugeben. Richten Sie unbedingt das Überprüfungssystem ein, um die Effektivität von permanenten Verbindungen bei deren Verwendung sicherzustellen. Weitere Informationen finden Sie unter [Configure verification systems on the client side to ensure the effectiveness of persistent connections](concepts-connectivity.md#configure-verification-mechanisms-in-clients-to-confirm-the-effectiveness-of-persistent-connections) (Konfigurieren von Überprüfungssystemen auf der Clientseite, um die Effektivität von permanenten Verbindungen sicherzustellen).

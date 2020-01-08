@@ -6,17 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: rohogue
-ms.openlocfilehash: 274a20f84b978b38a284d1feb315d6621b7d3ccd
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256148"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414336"
 ---
 # <a name="cluster-tuning"></a>Clusteroptimierung
 
-
-Die meisten vFXT-Cluster können von benutzerdefinierten Leistungseinstellungen profitieren. Diese Einstellungen helfen dem Cluster, optimal mit Ihrem speziellen Workflow, Dataset und Ihren Tools zu arbeiten. 
+Die meisten vFXT-Cluster können von benutzerdefinierten Leistungseinstellungen profitieren. Diese Einstellungen helfen dem Cluster, optimal mit Ihrem speziellen Workflow, Dataset und Ihren Tools zu arbeiten.
 
 Diese Anpassung sollte zusammen mit einem Supportmitarbeiter durchgeführt werden, da es in der Regel darum geht, Features zu konfigurieren, die nicht über die Avere-Systemsteuerung verfügbar sind.
 
@@ -34,9 +33,9 @@ In diesem Abschnitt werden einige der benutzerdefinierten Einstellungen erläute
 
 Diese Änderungen können aufgrund von Datasetqualitäten oder auf Basis des Workflowstils empfohlen werden.
 
-* Wenn der Workload sehr viele Schreibvorgänge umfasst, erhöhen Sie die standardmäßige Größe des Schreibcache von 20 %. 
-* Wenn das Dataset viele kleine Dateien umfasst, erhöhen Sie den Grenzwert für die Dateianzahl des Clustercache. 
-* Wenn die Arbeit das Kopieren oder Verschieben von Daten zwischen zwei Repositorys umfasst, passen Sie die Anzahl der Threads an, die zum Verschieben von Daten verwendet werden: 
+* Wenn der Workload sehr viele Schreibvorgänge umfasst, erhöhen Sie die standardmäßige Größe des Schreibcache von 20 %.
+* Wenn das Dataset viele kleine Dateien umfasst, erhöhen Sie den Grenzwert für die Dateianzahl des Clustercache.
+* Wenn die Arbeit das Kopieren oder Verschieben von Daten zwischen zwei Repositorys umfasst, passen Sie die Anzahl der Threads an, die zum Verschieben von Daten verwendet werden:
   * Um die Geschwindigkeit zu erhöhen, können Sie die Anzahl der verwendeten parallelen Threads erhöhen.
   * Wenn das Back-End-Speichervolume überlastet wird, müssen Sie die Anzahl der parallel verwendeten Threads möglicherweise verringern.
 * Wenn der Cluster Daten für eine Kernspeichereinheit zwischenspeichert, die NFSv4 ACLs verwendet, aktivieren Sie das Zugriffsmoduscaching, um die Dateiautorisierung für bestimmte Clients zu optimieren.
@@ -58,4 +57,4 @@ In einem Cloudbursting-Szenario oder einem Szenario mit Hybrid-Speicher-WAN-Opti
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Hilfe bei der Optimierung von Avere vFXT für Azure
 
-Verwenden Sie das unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md) beschriebene Verfahren, um den Support über diese Optimierungen zu informieren. 
+Verwenden Sie das unter [Abrufen von Hilfe zu Ihrem System](avere-vfxt-open-ticket.md) beschriebene Verfahren, um den Support über diese Optimierungen zu informieren.

@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 71922a9da594de3402caf778b1e066da9d20505c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28ab1eaa860c0d684182f5f1660daed2751a9c6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465082"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -389,10 +389,10 @@ Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten...
 | :----------------------------- | :------------------------------------- | :---------- |
 | Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | ACR Tasks können beim Erstellen von Containerimages auf Speicherkonten zugreifen. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
-| Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](/azure/logic-apps/create-managed-service-identity#authenticate-access-with-managed-identity.md) |
-| Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
+| Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) |
+| Azure Machine Learning | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage. [Weitere Informationen](/azure/machine-learning/service/how-to-enable-virtual-network#use-a-storage-account-for-your-workspace) | 
 | Azure SQL Data Warehouse       | Microsoft.Sql                          | Ermöglicht das Importieren und Exportieren von Daten aus bestimmten SQL-Datenbankinstanzen mithilfe von PolyBase. [Weitere Informationen](/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) |
-| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity.md) |
+| Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. Diese Funktion steht derzeit als Vorschau zur Verfügung. [Weitere Informationen](/azure/stream-analytics/blob-output-managed-identity) |
 | Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Synapse Analytics. |
 
 

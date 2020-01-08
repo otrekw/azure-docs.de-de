@@ -2,19 +2,15 @@
 title: Verwalten von Updates für mehrere virtuelle Azure-Computer
 description: In diesem Artikel wird beschrieben, wie Sie Updates für Azure- und Nicht-Azure-VMs verwalten.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417829"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -190,8 +186,8 @@ Klicken Sie auf die abgeschlossene Bereitstellung, um das Dashboard für eine Up
 Im Bereich **Updateergebnisse** werden die Gesamtzahl von Updates und die Ergebnisse der Bereitstellung für den virtuellen Computer angezeigt. Die Tabelle rechts enthält eine detaillierte Aufschlüsselung der einzelnen Updates und die Installationsergebnisse. Bei den Installationsergebnissen kann es sich um einen der folgenden Werte handeln:
 
 - **Kein Versuch erfolgt**: Das Update wurde nicht installiert, da aufgrund des definierten Wartungsfensters nicht genügend Zeit zur Verfügung stand.
-- **Erfolgreich**: Das Update war erfolgreich.
-- **Fehler**: Beim Update ist ein Fehler aufgetreten.
+- **Erfolg:** Das Update war erfolgreich.
+- **Fehler:** Beim Update ist ein Fehler aufgetreten.
 
 Klicken Sie auf **Alle Protokolle**, um alle von der Bereitstellung erstellten Protokolleinträge anzuzeigen.
 

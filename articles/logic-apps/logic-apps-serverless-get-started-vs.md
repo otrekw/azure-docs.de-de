@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: 4ed2ad2d2ff92e9320a7b9c773c4d6e5857fb905
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792965"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428740"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Erstellen Ihrer ersten serverlosen App mit Azure Logic Apps und Azure Functions in Visual Studio
 
@@ -21,7 +21,7 @@ Mithilfe der serverlosen Tools und Funktionen in Azure (beispielsweise [Azure Lo
 
 Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die folgenden Tools. Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind.
 
@@ -56,7 +56,7 @@ Zum Erstellen einer serverlosen App in Visual Studio benötigen Sie Folgendes:
 
 ## <a name="create-a-resource-group-project"></a>Erstellen eines Ressourcengruppenprojekts
 
-Erstellen Sie für Ihre serverlose App zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). In Azure werden Ressourcen innerhalb einer *Ressourcengruppe* erstellt. Dabei handelt es sich um eine logische Sammlung, die als Einzelressource zum Organisieren, Verwalten und Bereitstellen von Ressourcen für eine gesamte App verwendet wird. Für eine serverlose App in Azure umfasst Ihre Ressourcengruppe Ressourcen sowohl für Azure Logic Apps als auch für Azure Functions. Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/resource-group-overview.md).
+Erstellen Sie für Ihre serverlose App zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). In Azure werden Ressourcen innerhalb einer *Ressourcengruppe* erstellt. Dabei handelt es sich um eine logische Sammlung, die als Einzelressource zum Organisieren, Verwalten und Bereitstellen von Ressourcen für eine gesamte App verwendet wird. Für eine serverlose App in Azure umfasst Ihre Ressourcengruppe Ressourcen sowohl für Azure Logic Apps als auch für Azure Functions. Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/management/overview.md).
 
 1. Starten Sie Visual Studio, und melden Sie sich mit Ihrem Azure-Konto an.
 

@@ -1,24 +1,18 @@
 ---
-title: Integrieren mit verwalteten Azure-Identitäten | Microsoft-Dokumentation
+title: Integrieren mit verwalteten Azure-Identitäten
 description: Erfahren Sie, wie Sie verwaltete Azure-Identitäten verwenden, um die Authentifizierung für Azure App Configuration durchzuführen und Zugriff darauf zu erhalten.
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.assetid: ''
+ms.author: yegu
 ms.service: azure-app-configuration
-ms.workload: tbd
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
-ms.author: yegu
-ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 3af13a3009886c88f1a30eab2e6cc9f498ad6e45
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185142"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665249"
 ---
 # <a name="integrate-with-azure-managed-identities"></a>Integrieren mit verwalteten Azure-Identitäten
 

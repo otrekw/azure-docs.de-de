@@ -2,19 +2,15 @@
 title: Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 description: Erfahren Sie, wie Sie einen virtuellen Azure-Computer mit Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand integrieren, die Bestandteil von Azure Automation sind.
 services: automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-ms.service: automation
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 8dd69b1cf4ac8874175cff84d3c2b9fc5e323922
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93222b1b38fa37ec577da6377fdd9aff3fe12018
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849682"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421824"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand von einem virtuellen Azure-Computer
 
@@ -59,7 +55,7 @@ Wird ein Computer den Lösungen für Updateverwaltung, Änderungsnachverfolgung 
 
 Wechseln Sie zu Ihrem Arbeitsbereich. Wählen Sie unter **Allgemein** die Option **Gespeicherte Suchvorgänge** aus. Die beiden von diesen Lösungen verwendeten gespeicherten Suchvorgänge werden in der folgenden Tabelle angezeigt:
 
-|NAME     |Category  |Alias  |
+|Name     |Category  |Alias  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | Aktualisierungen        | Updates__MicrosoftDefaultComputerGroup         |
@@ -87,7 +83,7 @@ Nach dem Entfernen dieser Lösungen können Sie die folgenden Schritte ausführe
 
 2. Klicken Sie auf der Seite „Verknüpfung des Arbeitsbereichs aufheben“ auf **Verknüpfung des Arbeitsbereichs aufheben**.
 
-   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
+   ![Seite „Verknüpfung des Arbeitsbereichs aufheben“](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png)erforderlich.
 
    Sie werden gefragt, ob Sie fortfahren möchten.
 
@@ -105,7 +101,7 @@ Wenn Sie die Lösung „Starten und Beenden von VMs außerhalb der Kernzeit“ v
 * Starten und beenden Sie VM-Runbooks.
 * Variables
 
-Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto** aus. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
+Alternativ können Sie Ihren Arbeitsbereich auch von Ihrem Automation-Konto in Ihrem Log Analytics-Arbeitsbereich trennen. Wählen Sie in Ihrem Arbeitsbereich unter **Verwandte Ressourcen** die Option **Automation-Konto**. Klicken Sie auf der Seite „Automation-Konto“ auf **Verknüpfung zu diesem Konto aufheben**.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

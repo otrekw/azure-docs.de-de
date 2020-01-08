@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 6d52062561e3f08a214f3e191706583edc844786
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: ec19f4b4140fb6f4a1dc968f4e2cac3c3d7a1e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447712"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
@@ -28,10 +28,10 @@ Ihr QnA Maker-Dienst verwendet zwei Arten von Schlüsseln: **Abonnementschlüsse
 
 ![Schlüsselverwaltung](../media/qnamaker-how-to-key-management/key-management.png)
 
-|NAME|Location|Zweck|
+|Name|Location|Zweck|
 |--|--|--|
-|Abonnementschlüssel|[Azure-Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://go.microsoft.com/fwlink/?linkid=2092179) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
-|Endpunktschlüssel|[QnA Maker-Portal](http://www.qnamaker.ai)|Diese Schlüssel werden für den Zugriff auf den Endpunkt der veröffentlichten Wissensdatenbank verwendet, um eine Antwort auf eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Endpunkt in Ihrem Chatbot oder im Clientanwendungscode, der eine Verbindung mit dem QnA Maker-Dienst herstellt. Diese Schlüssel werden erstellt, wenn Sie Ihre QnA Maker-Wissensdatenbank veröffentlichen.<br><br>Sie finden diese Schlüssel auf der Seite **Diensteinstellungen**. Suchen Sie diese Seite im Menü des Benutzers in der oberen rechten Ecke der Seite im Dropdownmenü.|
+|Abonnementschlüssel|[Azure portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Diese Schlüssel werden verwendet, um auf die [QnA Maker-Verwaltungsdienst-APIs](https://go.microsoft.com/fwlink/?linkid=2092179) zuzugreifen. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie einen neuen QnA Maker-Dienst erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel**.|
+|Endpunktschlüssel|[QnA Maker-Portal](https://www.qnamaker.ai)|Diese Schlüssel werden für den Zugriff auf den Endpunkt der veröffentlichten Wissensdatenbank verwendet, um eine Antwort auf eine Benutzerfrage abzurufen. In der Regel verwenden Sie diesen Endpunkt in Ihrem Chatbot oder im Clientanwendungscode, der eine Verbindung mit dem QnA Maker-Dienst herstellt. Diese Schlüssel werden erstellt, wenn Sie Ihre QnA Maker-Wissensdatenbank veröffentlichen.<br><br>Sie finden diese Schlüssel auf der Seite **Diensteinstellungen**. Suchen Sie diese Seite im Menü des Benutzers in der oberen rechten Ecke der Seite im Dropdownmenü.|
 
 ## <a name="create-a-new-qna-maker-service"></a>Erstellen eines neuen QnA Maker-Diensts
 
@@ -63,7 +63,7 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
 
     * Wählen Sie, ob Sie **Application Insights** aktivieren möchten. Wenn **Application Insights** aktiviert ist, sammelt QnA Maker Telemetriedaten zu Datenverkehr, Chatprotokollen und Fehlern.
     * Wählen Sie den **App Insights-Speicherort** aus, an dem die Application Insights-Ressource bereitgestellt werden soll.
-    * Zur Kosteneinsparung können Sie einige, aber nicht alle Azure-Ressourcen, die für QnA Maker erstellt wurden, [freigeben](#share-existing-services-with-qna-maker). 
+    * Zur Kosteneinsparung können Sie einige, aber nicht alle Azure-Ressourcen, die für QnA Maker erstellt wurden, [freigeben](#share-existing-services-with-qna-maker).
 
 1. Nachdem Sie alle Felder überprüft haben, wählen Sie **Erstellen** aus. Der Vorgang kann einige Minuten dauern.
 
@@ -124,7 +124,7 @@ Wenn Sie einen QnA-Dienst über Azure Resource Manager-Vorlagen erstellen, könn
 
 ## <a name="upgrade-qna-maker"></a>Upgraden von QnA Maker
 
-|Upgrade|`Reason`|
+|Aktualisieren|`Reason`|
 |--|--|
 |[Upgrade](#upgrade-qna-maker-sku) der QnA Maker Management-SKU|Ihre Wissensdatenbank soll mehr Fragen und Antworten enthalten.|
 |[Upgrade](#upgrade-app-service) der App Service-SKU|Ihre Wissensdatenbank muss mehr Anforderungen aus Ihrer Client-App verarbeiten, z.B. einen Chatbot.|

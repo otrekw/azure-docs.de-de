@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 06/24/2019
 ms.author: lbosq
-ms.openlocfilehash: 0c1ca054f9d28bb81c6f8acf6c0f43b134a596ed
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 564e69e3cd852c6a0f8c20278d4742b77f064298
+ms.sourcegitcommit: 801e9118fae92f8eef8d846da009dddbd217a187
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293769"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75499991"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
 Azure Cosmos DB unterstützt die [Apache Tinkerpop](https://tinkerpop.apache.org)-Graphdurchlauf-Sprache, auch als [Gremlin](https://tinkerpop.apache.org/docs/3.3.2/reference/#graph-traversal-steps) bezeichnet. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
@@ -48,7 +48,7 @@ Die folgende Tabelle enthält die TinkerPop-Funktionen, die von Azure Cosmos DB 
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin-Sendeformat: GraphSON
 
-Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das [GraphSON-Format](http://tinkerpop.apache.org/docs/current/reference/#graphson). Azure Cosmos DB unterstützt derzeit die Version „GraphSONv2“. GraphSON ist das Standardformat von Gremlin zur Darstellung von Vertices, Edges und (ein- und mehrwertigen) Eigenschaften mittels JSON.
+Azure Cosmos DB verwendet bei der Rückgabe von Ergebnissen aus Gremlin-Vorgängen das [GraphSON-Format](https://tinkerpop.apache.org/docs/current/reference/#graphson). Azure Cosmos DB unterstützt derzeit die Version „GraphSONv2“. GraphSON ist das Standardformat von Gremlin zur Darstellung von Vertices, Edges und (ein- und mehrwertigen) Eigenschaften mittels JSON.
 
 Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azure Cosmos DB, der *an den Client zurückgegeben wurde*. 
 
@@ -113,7 +113,7 @@ Jede Eigenschaft kann mehrere Werte in einem Array speichern.
 
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| `value` | Der Wert der Eigenschaft.
+| `value` | Wert der Eigenschaft
 
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](https://tinkerpop.apache.org/docs/3.3.2/reference).

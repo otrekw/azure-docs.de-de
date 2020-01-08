@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mlearned
-ms.openlocfilehash: 318846cddecdf020e2e751d3a0b9e05fc83bba73
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a8b561780e2e81499d211252648aeef86561cb9b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614548"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658507"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ In diesem Artikel werden die Standardressourcenlimits für AKS-Ressourcen (Azure
 
 ## <a name="provisioned-infrastructure"></a>Bereitgestellte Infrastruktur
 
-Alle anderen Netzwerk-, Compute- und Speichereinschränkungen gelten für die bereitgestellte Infrastruktur. Die relevanten Grenzwerte finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+Alle anderen Netzwerk-, Compute- und Speichereinschränkungen gelten für die bereitgestellte Infrastruktur. Die relevanten Grenzwerte finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 > [!IMPORTANT]
 > Wenn Sie für einen AKS-Cluster ein Upgrade vornehmen, werden vorübergehend zusätzliche Ressourcen genutzt. Diese Ressourcen umfassen verfügbare IP-Adressen in einem Subnetz eines virtuellen Netzwerks oder ein vCPU-Kontingent für virtuelle Computer. Wenn Sie Windows Server-Container verwenden (derzeit in der Vorschau in AKS), besteht der einzige unterstützte Ansatz zum Anwenden der neuesten Updates auf die Knoten darin, einen Upgradevorgang durchzuführen. Ein fehlgeschlagener Upgradevorgang für einen Cluster kann darauf hindeuten, dass Sie nicht über den verfügbaren IP-Adressraum oder das vCPU-Kontingent verfügen, um diese temporären Ressourcen zu verarbeiten. Weitere Informationen zum Upgradevorgang eines Windows Server-Knotens finden Sie unter [Durchführen eines Upgrades für einen Knotenpool in AKS][nodepool-upgrade].

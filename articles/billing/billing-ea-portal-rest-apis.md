@@ -4,16 +4,16 @@ description: In diesem Artikel werden die REST-APIs beschrieben, die Sie mit Ihr
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: ea53ad91dcb411c43b367bfb43bc9dcea3d2bba7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 58f38cc3649c1d08187a4bb93be83422c8e7911b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841420"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644527"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise-REST-APIs
 
@@ -68,14 +68,14 @@ Führen Sie die folgenden Schritte aus, wenn Sie den Benutzern, die keine Untern
 
 Übergeben Sie den API-Schlüssel zur Authentifizierung und Autorisierung. Übergeben Sie die folgende Eigenschaft an HTTP-Header:
 
-| Anforderungsheaderschlüssel | Wert |
+| Anforderungsheaderschlüssel | value |
 | --- | --- |
 | Authorization | Geben Sie den Wert im folgenden Format an: **bearer {API\_KEY}** .
 Beispiel: bearer \&lt;APIKey\&gt; |
 
 ### <a name="swagger"></a>Swagger
 
-Ein Swagger-Endpunkt ist unter [Enterprise Reporting V3 APIs](https://consumption.azure.com/swagger/ui/index) für die folgenden APIs verfügbar. Swagger hilft Ihnen beim Überprüfen der API. Verwenden Sie Swagger, um Client-SDKs mithilfe von [AutoRest](https://github.com/Azure/AutoRest) oder [Swagger CodeGen](http://swagger.io/swagger-codegen/) zu generieren. Ab dem 1. Mai 2014 verfügbare Daten sind über die API verfügbar.
+Ein Swagger-Endpunkt ist unter [Enterprise Reporting V3 APIs](https://consumption.azure.com/swagger/ui/index) für die folgenden APIs verfügbar. Swagger hilft Ihnen beim Überprüfen der API. Verwenden Sie Swagger, um Client-SDKs mithilfe von [AutoRest](https://github.com/Azure/AutoRest) oder [Swagger CodeGen](https://swagger.io/swagger-codegen/) zu generieren. Ab dem 1. Mai 2014 verfügbare Daten sind über die API verfügbar.
 
 ### <a name="api-response-codes"></a>API-Antwortcodes
 
@@ -142,7 +142,7 @@ Das JSON-Format wird aus dem CSV-Bericht generiert. Somit entspricht das Format 
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | `Tags` | `Tags` | `Tags` |   |
 | Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
-| Department Name | Abteilungsname | Abteilungsname |   |
+| Department Name | DepartmentName | DepartmentName |   |
 | Kostenstelle | CostCenter | CostCenter |   |
 | Berechnungseinheit | UnitOfMeasure | UnitOfMeasure | Beispielwerte: Stunden, GB, Ereignisse, Pushvorgänge, Einheiten, Einheit Stunden, MB, tägliche Einheiten |
 | ResourceGroup | ResourceGroup | ResourceGroup |   |
@@ -169,10 +169,10 @@ Das JSON-Format wird aus dem CSV-Bericht generiert. Somit entspricht das Format 
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Berechnungseinheit | UnitOfMeasure | UnitOfMeasure |
 | Instance ID | InstanceId | InstanceId |
-| Additional Info | AdditionalInfo | AdditionalInfo |
+| Zusätzliche Informationen | AdditionalInfo | AdditionalInfo |
 | `Tags` | `Tags` | `Tags` |
 | Order Number | OrderNumber | OrderNumber |
-| Department Name | DepartmentNames | Abteilungsname |
+| Department Name | DepartmentNames | DepartmentName |
 | Kostenstelle | CostCenters |  CostCenter |
 | Ressourcengruppe | ResourceGroup |  ResourceGroup |
 
@@ -210,5 +210,5 @@ Unter Umständen werden bei einem API-Aufruf die Fehler 400 und 404 (nicht verf�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Azure EA-Portaladministratoren finden unter [Azure EA-Portalverwaltung](billing-ea-portal-administration.md) weitere Informationen zu häufigen Verwaltungsaufgaben.
+- Azure EA-Portaladministratoren finden unter [Azure EA-Portalverwaltung](billing-ea-portal-administration.md) Informationen zu allgemeinen Verwaltungsaufgaben.
 - Hilfe zu Problemen im Azure EA-Portal finden Sie unter [Beheben von Zugriffsproblemen beim Azure EA-Portal](billing-ea-portal-troubleshoot.md).

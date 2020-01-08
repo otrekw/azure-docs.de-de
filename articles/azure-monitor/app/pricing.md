@@ -8,12 +8,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559093"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406532"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Verwalten der Nutzung und der Kosten für Application Insights
 
@@ -53,7 +53,7 @@ Application Insights erleichtert das Verständnis der basierend auf den aktuelle
 ![Auswählen von Preisen](./media/pricing/pricing-001.png)
 
 A. Überprüfen Sie Ihr Datenvolumen für den Monat. Dies schließt alle nach einer beliebigen [Stichprobenerstellung](../../azure-monitor/app/sampling.md) in Ihren Server- und Client-Apps sowie Verfügbarkeitstests empfangenen und beibehaltenen Daten ein.  
-B: Für [Webtests mit mehreren Schritten](../../azure-monitor/app/availability-multistep.md) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
+B. Für [Webtests mit mehreren Schritten](../../azure-monitor/app/availability-multistep.md) wird eine gesonderte Gebühr erhoben. (Darin nicht enthalten sind einfache Verfügbarkeitstests, die von der Gebühr für das Datenvolumen abgedeckt sind.)  
 C. Zeigen Sie Trends zum Datenvolumen für den letzten Monat an.  
 D: Aktivieren Sie die Datenerfassungs-[Stichprobenerstellung](../../azure-monitor/app/sampling.md).   
 E. Legen Sie die Obergrenze für das tägliche Datenvolumen fest.  

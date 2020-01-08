@@ -4,21 +4,21 @@ description: Sie können Azure Resource Manager-Vorlagen zum Erstellen und Konfi
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/22/2019
-ms.openlocfilehash: 5410d6ef11c3f95bb4f02dbd914a1aacbd068a1b
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363369"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics-Arbeitsbereichen mithilfe von Azure Resource Manager-Vorlagen
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Sie können [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen in Azure Monitor verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
+Sie können [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen in Azure Monitor verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
 
 * Erstellen eines Arbeitsbereichs und Festlegen des Tarifs 
 * Hinzufügen einer Lösung

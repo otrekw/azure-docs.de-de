@@ -1,20 +1,18 @@
 ---
 title: Benutzerdefinierte JavaScript-Aggregate in Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Aggregaten in Azure Stream Analytics durchführen.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
-manager: kfile
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2017
-ms.openlocfilehash: 6c590ae62e080a6681e49c87264089f9a5f4ce2f
-ms.sourcegitcommit: bafb70af41ad1326adf3b7f8db50493e20a64926
+ms.openlocfilehash: d9b37810146f66806be9b8ce7a38f8dac31facb9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68489538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426090"
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates"></a>Azure Stream Analytics – benutzerdefinierte JavaScript-Aggregate
  
@@ -80,7 +78,7 @@ Jedes JavaScript-UDA wird durch eine Funktionsobjektdeklaration definiert. Es fo
 
 ### <a name="function-alias"></a>Funktionsalias
 
-Der Funktionsalias ist der UDA-Bezeichner. Verwenden Sie beim Aufrufen in einer Stream Analytics-Abfrage immer den UDA-Alias zusammen mit „uda.“ als Präfix.
+Der Funktionsalias ist der UDA-Bezeichner. Verwenden Sie beim Aufrufen in einer Stream Analytics-Abfrage immer den UDA-Alias zusammen mit „uda.“ als .
 
 ### <a name="function-type"></a>Funktionstyp
 

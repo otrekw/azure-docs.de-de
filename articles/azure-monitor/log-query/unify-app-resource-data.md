@@ -1,23 +1,18 @@
 ---
 title: Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zum Verwenden einer Funktion in Azure Monitor-Protokollen zum Abfragen mehrerer Application Insights-Ressourcen und zum Visualisieren dieser Daten.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.service: azure-monitor
+author: bwren
+ms.author: bwren
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: magoedte
-ms.openlocfilehash: d441b72b34da6146eba523563a09c2908cdcbbf4
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 07dd4c96ba51b1ac1e0cb2807c9e26df87a6daa7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69650137"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364967"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
 In diesem Artikel wird beschrieben, wie Sie all Ihre Application Insights-Protokolldaten an einem zentralen Ort abfragen und anzeigen, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.
@@ -124,7 +119,7 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | ExceptionMessage | message | 
 | ExceptionType | type |
 | OperationID | operation_id |
-| OperationName | operation_Name | 
+| Vorgangsname | operation_Name | 
 | OS | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
@@ -138,7 +133,7 @@ Die folgende Tabelle zeigt die Schemaunterschiede zwischen Log Analytics und App
 | ResponseCode | resultCode | 
 | Role | cloud_RoleName |
 | RoleInstance | cloud_RoleInstance |
-| SessionId | session_Id | 
+| SessionID | session_Id | 
 | SourceSystem | operation_SyntheticSource |
 | TelemetryTYpe | type |
 | URL | url |

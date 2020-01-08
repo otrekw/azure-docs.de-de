@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 727636b4b59bf4b31fd7592b1a0f2d52d5dbbfd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: fa4e4bd7561a7a745e6eb0b70016144b9fb57998
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032987"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75371274"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-windows-vm"></a>Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Windows-VM
 
@@ -36,5 +36,5 @@ Sie können jetzt mithilfe dieses DNS-Namens eine Remoteverbindung mit dem virtu
 ## <a name="next-steps"></a>Nächste Schritte
 Ihr virtueller Computer verfügt nun über eine öffentliche IP und einen DNS-Namen. Als Nächstes können Sie allgemeine Anwendungsframeworks oder Dienste bereitstellen, z.B. IIS, SQL oder SharePoint.
 
-Außerdem können Sie sich ausführlicher [über die Verwendung von Resource Manager informieren](../../azure-resource-manager/resource-group-overview.md), um Hinweise zum Erstellen Ihrer Azure-Bereitstellungen zu erhalten.
+Außerdem können Sie sich ausführlicher [über die Verwendung von Resource Manager informieren](../../azure-resource-manager/management/overview.md), um Hinweise zum Erstellen Ihrer Azure-Bereitstellungen zu erhalten.
 

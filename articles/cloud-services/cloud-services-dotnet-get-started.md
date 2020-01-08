@@ -3,19 +3,19 @@ title: Erste Schritte mit Azure-Clouddiensten und ASP.NET | Microsoft Docs
 description: Hier erfahren Sie, wie Sie mit ASP.NET MVC und Azure eine Anwendung mit mehreren Ebenen erstellen. Die Anwendung wird in einem Clouddienst mit Webrolle und Workerrolle ausgeführt. Sie verwendet Entity Framework, SQL-Datenbank und Azure Storage-Warteschlangen und -Blobs.
 services: cloud-services, storage
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: gwallace
-ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tagore
+ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827660"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386730"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Erste Schritte mit Azure-Clouddiensten und ASP.NET
 
@@ -105,7 +105,7 @@ Führen Sie folgende Schritte aus, um die Anwendung in der Cloud auszuführen:
 
 * Erstellen eines Azure-Clouddiensts
 * Erstellen einer Azure SQL-Datenbank
-* Erstellen eines Azure-Speicherkontos
+* Erstellen Sie ein Azure-Speicherkonto.
 * Konfigurieren der Lösung zur Verwendung Ihrer Azure SQL-Datenbank bei der Ausführung in Azure
 * Konfigurieren der Lösung zur Verwendung Ihres Azure-Speicherkontos bei der Ausführung in Azure
 * Bereitstellen des Projekts in Ihrem Azure-Clouddienst
@@ -124,7 +124,7 @@ Ein Azure-Clouddienst ist die Umgebung, in der die Anwendung ausgeführt wird.
 5. Wählen Sie die Region aus, in der Sie Ihre Anwendung bereitstellen möchten.
 
     Dieses Feld gibt an, in welchem Datencenter der Clouddienst gehostet wird. Für eine Produktionsanwendung würden Sie die für Ihre Kunden am nächsten gelegene Region auswählen. Wählen Sie für dieses Tutorial die Ihnen am nächsten gelegene Region aus.
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 
     In der folgenden Abbildung wird ein Clouddienst mit der URL „CSvccontosoads.cloudapp.net“ erstellt.
 
@@ -153,7 +153,7 @@ Wenn die Anwendung in der Cloud ausgeführt wird, verwendet sie eine cloudbasier
 9. Klicken Sie für den neuen Server auf **Auswählen**.
 
     ![Neuer SQL-Datenbank-Server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klicken Sie auf **Create**.
+10. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 Azure-Speicherkonten bieten Ressourcen zum Speichern von Warteschlangen- und Blobdaten in der Cloud.
@@ -176,7 +176,7 @@ In einer tatsächlichen Anwendung würden Sie normalerweise separate Konten für
     Wenn sich Clouddienst und Speicherkonto in unterschiedlichen Datencentern (d. h. unterschiedlichen Regionen) befinden, steigt die Latenz an und Sie müssen für die Bandbreite außerhalb des Datencenters bezahlen. Die Bandbreite innerhalb eines Datencenters ist kostenlos.
 
     Mit Azure-Affinitätsgruppen können Sie die Distanz zwischen Ressourcen in einem Datencenter und somit die Latenz minimieren. Dieses Tutorial verwendet keine Affinitätsgruppen. Anweisungen finden Sie unter [Erstellen einer Affinitätsgruppe in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 
     ![Neues Speicherkonto](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -216,7 +216,7 @@ Sie werden eine [Web.config-Transformation](https://www.asp.net/mvc/tutorials/de
 7. Klicken Sie im **Projektmappen-Explorer** unter **Rollen** im Clouddienstprojekt mit der rechten Maustaste auf **ContosoAdsWorker**, und klicken Sie auf **Eigenschaften**.
 
     ![Rolleneigenschaften](./media/cloud-services-dotnet-get-started/rolepropertiesworker.png)
-8. Klicken Sie auf die Registerkarte **Einstellungen** .
+8. Klicken Sie auf die Registerkarte **Settings** .
 9. Ändern Sie die **Dienstkonfiguration** in **Cloud**.
 10. Wählen Sie für die `ContosoAdsDbConnectionString`-Einstellung das Feld **Wert** aus, und fügen Sie die Verbindungszeichenfolge ein, die Sie im vorherigen Abschnitt des Tutorials kopiert haben.
 
@@ -314,7 +314,7 @@ Die Erstellung der Contoso-Werbeanwendung umfasst die folgenden Schritte:
 
 * Erstellen einer Clouddienst-Lösung in Visual Studio
 * Aktualisieren und Hinzufügen von NuGet-Paketen
-* Festlegen von Projektverweisen
+* Projektverweise setzen.
 * Konfigurieren von Verbindungszeichenfolgen
 * Hinzufügen von Codedateien
 
@@ -388,7 +388,7 @@ In diesem Abschnitt konfigurieren Sie die Verbindungszeichenfolgen für Azure St
 8. Fügen Sie ebenfalls im **ContosoAdsWorker [Role]** -Eigenschaftenfenster eine weitere Verbindungszeichenfolge hinzu:
 
    * Name: ContosoAdsDbConnectionString
-   * Geben Sie Folgendes ein:  Zeichenfolge
+   * Typ: String
    * Wert: Fügen Sie dieselbe Verbindungszeichenfolge ein, die Sie auch für das Webrollenprojekt verwendet haben. (Das folgende Beispiel bezieht sich auf Visual Studio 2013. Wenn Sie Visual Studio 2015 oder höher verwenden und dieses Beispiel kopieren, sollten sich daran denken, den Wert für „Data Source“ zu ändern.)
 
        ```
@@ -776,3 +776,6 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage (in englischer Sprache)](https://docs.microsoft.com/azure/storage/)
 * [Wie wähle ich den richtigen Clouddienstanbieter?](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+
+
+

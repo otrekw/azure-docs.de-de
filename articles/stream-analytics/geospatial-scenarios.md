@@ -1,18 +1,17 @@
 ---
 title: Geofencing und räumliche Aggregation per Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie Azure Stream Analytics für das Geofencing und die räumliche Aggregation verwenden.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: d44b2fae677554594f0cc280c1129bbd6effddf2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935069"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443641"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Szenarien mit Geofencing und räumlicher Aggregation per Azure Stream Analytics
 

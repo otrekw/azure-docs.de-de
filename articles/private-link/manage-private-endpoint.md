@@ -2,17 +2,17 @@
 title: Verwalten einer Verbindung mit einem privaten Endpunkt in Azure
 description: Informationen zum Verwalten von Verbindungen mit einem privaten Endpunkt in Azure
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 929dfedbbbbe58a30eaa186398c595eaaabeb0a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 62b24b3e2f5c1b89fa7db581ac34cf58381db2a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232533"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452963"
 ---
 # <a name="manage-a-private-endpoint-connection"></a>Verwalten einer Verbindung mit einem privatem Endpunkt
 Azure Private Link arbeitet an einem Ablaufmodell für den Genehmigungsaufruf, bei dem der Private Link-Dienstconsumer eine Verbindung mit dem Dienstanbieter anfordern kann, um den Dienst zu nutzen. Der Dienstanbieter kann dann entscheiden, ob er es dem Consumer gestattet, die Verbindung herzustellen. Azure Private Link ermöglicht es den Dienstanbietern, die private Endpunktverbindung über ihre Ressourcen zu verwalten. Dieser Artikel enthält Anweisungen zur Verwaltung der privaten Endpunktverbindungen.

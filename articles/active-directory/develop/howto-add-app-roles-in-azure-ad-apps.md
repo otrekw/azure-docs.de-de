@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe116b5ae26522c9bce0322123836a6e08d3cfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917913"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424492"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Gewusst wie: Hinzufügen von App-Rollen in Ihrer Anwendung und Empfangen der Rollen im Token
 
@@ -106,7 +106,7 @@ Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie diesen
 1. Wählen Sie im Bereich **Azure Active Directory** im Navigationsmenü **Azure Active Directory** auf der linken Seite die Option **Unternehmensanwendungen**.
 1. Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
 
-     Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **Alle Anwendungen** die verschiedenen Filter verwenden, um die Liste einzuschränken. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
+     Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **Alle Anwendungen** die verschiedenen Filter verwenden, um den Inhalt der Liste einzugrenzen. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
 
 1. Wählen Sie die Anwendung aus, in der Sie Benutzer oder eine Sicherheitsgruppe zu Rollen zuweisen möchten.
 1. Wählen Sie in der Anwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen**.
@@ -125,7 +125,7 @@ Nachdem Sie App-Rollen in Ihrer Anwendung hinzugefügt haben, können Sie diesen
 
 - [Authorization in a web app using Azure AD application roles &amp; role claims (Sample)](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) (Autorisierung in einer Web-App mithilfe von Azure AD-Anwendungsrollen und -Rollenansprüchen (Beispiel))
 - [Using Security Groups and Application Roles in your apps (Video)](https://www.youtube.com/watch?v=V8VUPixLSiM) (Verwenden von Sicherheitsgruppen und Anwendungsrollen in Ihren Apps (Video))
-- [Azure Active Directory, now with Group Claims and Application Roles](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles) (Azure Active Directory jetzt mit Gruppenansprüchen und Anwendungsrollen)
+- [Azure Active Directory, now with Group Claims and Application Roles](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-Active-Directory-now-with-Group-Claims-and-Application/ba-p/243862) (Azure Active Directory jetzt mit Gruppenansprüchen und Anwendungsrollen)
 - [Azure Active Directory-App-Manifest](https://docs.microsoft.com/azure/active-directory/develop/reference-app-manifest)
 - [Azure Active Directory access tokens](access-tokens.md) (Azure Active Directory-Zugriffstoken)
 - [`id_tokens`](id-tokens.md) (ID-Token)

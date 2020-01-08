@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 823527af81e0cb22fb59421b84983684d4cdfffd
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286245"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407507"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights für ASP.NET Core-Anwendungen
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie Application Insights für eine [ASP.
 
 Sie verwenden im folgenden Beispiel eine [MVC-Anwendung](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) für `netcoreapp2.2`. Die Anleitung in diesem Artikel können Sie allerdings für alle ASP.NET Core-Anwendungen nutzen.
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Mit dem [Application Insights SDK für ASP.NET Core](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) können Sie Anwendungen unabhängig davon überwachen, wo und wie sie ausgeführt werden. Wenn Ihre Anwendung ausgeführt wird und über eine Netzwerkverbindung mit Azure verfügt, können Telemetriedaten erfasst werden. Die Application Insights-Überwachung wird in allen Umgebungen unterstützt, in denen auch .NET Core unterstützt wird. Dazu zählen:
 * **Betriebssystem**: Windows, Linux oder Mac.
@@ -66,7 +66,7 @@ Mit dem [Application Insights SDK für ASP.NET Core](https://nuget.org/packages/
 
     ```xml
         <ItemGroup>
-          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.8.0" />
+          <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.12.0" />
         </ItemGroup>
     ```
 
@@ -203,7 +203,7 @@ Vollständige Liste der Einstellungen in `ApplicationInsightsServiceOptions`
 |AddAutoCollectedMetricExtractor | Extraktor für „AutoCollectedMetrics“ aktivieren/deaktivieren, bei dem es sich um einen Telemetrieprozessor handelt, der vorab aggregierte Metriken zu Anforderungen/Abhängigkeiten sendet, bevor die Stichprobenerstellung stattfindet. | true
 |RequestCollectionOptions.TrackExceptions | Berichterstellung über die Nachverfolgung von Ausnahmefehlern durch das Anforderungserfassungsmodul aktivieren/deaktivieren. | In NETSTANDARD2.0 „false“ (da Ausnahmen mit „ApplicationInsightsLoggerProvider“ nachverfolgt werden), andernfalls „true“.
 
-Die aktuellste Liste finden Sie unter den [konfigurierbaren Einstellungen in `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs).
+Die aktuelle Liste finden Sie unter den [konfigurierbaren Einstellungen in `ApplicationInsightsServiceOptions`](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs).
 
 ### <a name="sampling"></a>Stichproben
 
@@ -441,7 +441,7 @@ Dieses SDK erfordert `HttpContext` und kann daher nicht in Nicht-HTTP-Anwendunge
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 
-[Lesen und Hinzufügen von Code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates).
+[Lesen und Hinzufügen von Code](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
 
 ## <a name="video"></a>Video
 

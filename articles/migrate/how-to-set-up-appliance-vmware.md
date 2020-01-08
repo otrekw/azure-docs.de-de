@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 1489d29f854b02cf493493fe022c73dc050e2615
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: adb78682e80d78aa4fa6b48507f1fcce789a3fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185855"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360173"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Einrichten einer Appliance für VMware-VMs
 
@@ -22,7 +22,7 @@ Bei der VMware-VM-Appliance handelt es sich um eine einfache Appliance, die von 
 - Ermitteln Sie lokale virtuelle VMware-Computer.
 - Senden von Meta- und Leistungsdaten für ermittelte VMs an die Azure Migrate-Serverbewertung/-migration
 
-[Weitere Informationen](migrate-appliance.md) zur Azure Migrate-Appliance.
+[Erfahren Sie mehr](migrate-appliance.md) über die Azure Migrate-Appliance.
 
 
 ## <a name="appliance-deployment-steps"></a>Schritte für die Appliancebereitstellung
@@ -48,7 +48,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die OVA-Datei sicher ist.
 2. Führen Sie den folgenden Befehl aus, um den Hash für die OVA-Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Für die aktuelle Applianceversion muss der generierte Hash den folgenden Einstellungen entsprechen.
+3. Für die aktuellste Applianceversion muss der generierte Hash den unten angegebenen Einstellungen entsprechen.
 
   **Algorithmus** | **Hashwert**
   --- | ---
@@ -81,7 +81,7 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
 1. Klicken Sie in der vSphere-Clientkonsole mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Konsole öffnen** aus.
 2. Geben Sie die Sprache, die Zeitzone und das Kennwort für die Appliance an.
-3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, die URL der Appliance-Web-App: **https://*Name oder IP-Adresse der Appliance*: 44368**.
+3. Öffnen Sie in einem Browser auf einem beliebigen Computer, der eine Verbindung mit der VM herstellen kann, und öffnen Sie die URL der Appliance-Web-App: **https://*Appliancename oder IP-Adresse*: 44368**.
 
    Alternativ können Sie auch auf dem Appliancedesktop auf die App-Verknüpfung klicken, um die App zu öffnen.
 4. Gehen Sie in der Web-App unter **Erforderliche Komponenten einrichten** wie folgt vor:
@@ -114,7 +114,7 @@ Die Appliance muss eine Verbindung mit der vCenter Server-Instanz herstellen, um
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server-Details angeben
 1. Geben Sie unter **vCenter Server-Details angeben** den Namen (FQDN) oder die IP-Adresse der vCenter Server-Instanz an. Sie können den Standardport beibehalten oder einen benutzerdefinierten Port angeben, an dem Ihre vCenter Server-Instanz lauscht.
-2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Stellen Sie sicher, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#scoping-discovery).
+2. Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das die Appliance VMs in der vCenter Server-Instanz ermittelt. Vergewissern Sie sich, dass das Konto über die [erforderlichen Berechtigungen für die Ermittlung](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions) verfügt. Sie können das Ermittlungsspektrum festlegen, indem Sie den Zugriff für das vCenter-Konto entsprechend beschränken. Weitere Informationen zur Beschränkung der Ermittlung finden Sie [hier](tutorial-assess-vmware.md#set-the-scope-of-discovery).
 3. Vergewissern Sie sich durch Klicken auf **Verbindung überprüfen**, dass die Appliance eine Verbindung mit vCenter Server herstellen kann.
 
 ### <a name="specify-vm-credentials"></a>Angeben der VM-Anmeldeinformationen

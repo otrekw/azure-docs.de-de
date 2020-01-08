@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: abcd6dc8c50b819dd02347b938602af7f2152d04
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75462455"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Planungs- und Betriebshandbuch für Azure Security Center
 Dieses Handbuch ist für IT-Experten, IT-Architekten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, die mit Azure Security Center arbeiten möchte.
@@ -82,6 +82,10 @@ Für die Personae im obigen Diagramm wären die folgenden RBAC-Einstellungen erf
 **Jeff (Workloadbesitzer)**
 
 * Ressourcengruppenbesitzer/-mitwirkender
+
+**Ellen (CISO/CIO)**
+
+* Abonnementbesitzer/-mitwirkender oder Sicherheitsadministrator
 
 **David (IT-Sicherheit)**
 
@@ -195,7 +199,7 @@ Wenn Sie Ihrer Azure-Umgebung neue Ressourcen (virtuelle Computer, SQL-Datenbank
 
 Außerdem sollten Sie die vorhandenen Ressourcen regelmäßig auf Konfigurationsänderungen prüfen, die Sicherheitsrisiken, Abweichungen von den empfohlenen Grundwerten und Sicherheitswarnungen verursacht haben könnten. Navigieren Sie hierzu zunächst zum Security Center-Dashboard. Hier gibt es drei Hauptbereiche, die Sie regelmäßig überprüfen sollten.
 
-![Vorgänge](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
+![Operationen (Operations)](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
 
 1. Über den Abschnittsbereich **Prävention** können Sie schnell auf Ihre wichtigsten Ressourcen zugreifen. Verwenden Sie diese Option für die Überwachung von Compute, Netzwerk, Speicher und Daten und Anwendungen.
 2. Der Bereich **Empfehlungen** enthält die Empfehlungen von Security Center. Im Rahmen der kontinuierlichen Überwachung stehen möglicherweise nicht jeden Tag Empfehlungen zur Verfügung. Dies ist normal, da Sie ja alle Empfehlungen bei der Ersteinrichtung von Security Center umgesetzt haben. Aus diesem Grund enthält der Abschnitt unter Umständen nicht täglich neue Informationen, sodass Sie nur bei Bedarf darauf zugreifen müssen.
@@ -248,7 +252,7 @@ Das Video [How to Leverage the Azure Security Center & Microsoft Operations Mana
 In diesem Dokument haben Sie erfahren, wie Sie die Einführung von Security Center planen. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
 * [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md)
-* [Überwachen der Sicherheitsintegrität in Azure Security Center:](security-center-monitoring.md) Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
+* [Überwachen der Sicherheitsintegrität in Azure Security Center](security-center-monitoring.md) : Erfahren Sie, wie Sie die Integrität Ihrer Azure-Ressourcen überwachen.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](https://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.

@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/14/2019
-ms.openlocfilehash: cdc534325fd693dd34f2dc25c9953cd40ca96163
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 28eb7e490890b46a4025a6cf62e13b364bd7b6dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162312"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432347"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
 Anhand einer [rollenbasierten Zugriffssteuerung in Microsoft Azure](../../role-based-access-control/role-assignments-portal.md) können Sie steuern, wer in Azure [Application Insights][start] über Lese- und Aktualisierungszugriff auf Ihre Daten verfügt.
 
 > [!IMPORTANT]
-> Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access).
+> Weisen Sie Benutzern den Zugriff in der **Ressourcengruppe oder dem Abonnement** zu, dem Ihre Anwendungsressource angehört – nicht in der Ressource selbst. Weisen Sie die Rolle **Mitwirkender der Application Insights-Komponente** zu. Dadurch wird eine einheitliche Steuerung des Zugriffs auf Webtests und Warnungen zusammen mit Ihrer Anwendungsressource sichergestellt. [Weitere Informationen](#access)
 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -141,6 +141,6 @@ $resourceGroup = "RGNAME"
 <!--Link references-->
 
 [account]: https://account.microsoft.com
-[group]: ../../azure-resource-manager/resource-group-overview.md
+[group]: ../../azure-resource-manager/management/overview.md
 [portal]: https://portal.azure.com/
 [start]: ../../azure-monitor/app/app-insights-overview.md

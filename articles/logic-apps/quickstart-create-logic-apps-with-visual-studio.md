@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: f4d10f6b0934e7dea9779f45d0f05d7c28966965
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: bb284ad336e7110b0354450f3438fadb592370be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428647"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Schnellstart: Erstellen von automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps – Visual Studio
 
@@ -28,7 +28,7 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Laden Sie diese Tools herunter, und installieren Sie sie, falls sie noch nicht vorhanden sind:
 
@@ -61,7 +61,7 @@ In diesem Schnellstart erstellen Sie die gleiche Logik-App wie im Schnellstart z
 
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
 
-Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/resource-group-overview.md).
+Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Informieren Sie sich über [Azure-Ressourcengruppen und -Ressourcen](../azure-resource-manager/management/overview.md).
 
 1. Starten Sie Visual Studio. Melden Sie sich mit Ihrem Azure-Konto an.
 
@@ -80,7 +80,7 @@ Erstellen Sie zunächst ein [Azure-Ressourcengruppenprojekt](../azure-resource-m
 
    Führen Sie diese Schritte aus, wenn Sie Visual Studio 2019 verwenden:
 
-   1. Wählen Sie im Feld **Neues Projekt erstellen** das Projekt **Azure-Ressourcengruppe** für Visual C# oder Visual Basic aus. Klicken Sie auf **Weiter**.
+   1. Wählen Sie im Feld **Neues Projekt erstellen** das Projekt **Azure-Ressourcengruppe** für Visual C# oder Visual Basic aus. Wählen Sie **Weiter** aus.
 
    1. Geben Sie einen Namen für die gewünschte Azure-Ressourcengruppe und andere Projektinformationen an. Klicken Sie auf **Erstellen**.
 
@@ -101,7 +101,7 @@ Wenn Sie über Ihr Azure-Ressourcengruppenobjekt verfügen, erstellen Sie Ihre L
    ![Öffnen der Datei „LogicApp.json“ mit dem Logik-App-Designer](./media/quickstart-create-logic-apps-with-visual-studio/open-logic-app-designer.png)
 
    > [!TIP]
-   > Wenn Sie diesen Befehl in Visual Studio 2019 nicht finden, überprüfen Sie, ob Sie das letzte Update für Visual Studio installiert haben.
+   > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio verfügen.
 
    Visual Studio fordert Sie zur Angabe Ihres Azure-Abonnements und einer Azure-Ressourcengruppe auf, um Ressourcen für Ihre Logik-App und Verbindungen zu erstellen und bereitzustellen.
 

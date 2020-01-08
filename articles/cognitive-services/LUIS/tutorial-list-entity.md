@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 83644ac7144adaa664b13b6e7d7993c50da0e779
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 056c64657f42d56879928f518598206d45493f60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447785"
 ---
 # <a name="tutorial-get-exact-text-matched-data-from-an-utterance-with-list-entity"></a>Tutorial: Abrufen von Daten mit genauer Textübereinstimmung aus einer Äußerung mit Listenentität
 
 In diesem Tutorial erfahren Sie, wie Sie Daten abrufen, die exakt mit einer vordefinierten Liste von Elementen übereinstimmen.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 **In diesem Tutorial lernen Sie Folgendes:**
 
@@ -51,7 +49,7 @@ Eine Listenentität ist eine gute Wahl für diese Art von Daten, wenn Folgendes 
 
 ## <a name="import-example-json-and-add-utterances"></a>Importieren der JSON-Beispieldatei und Hinzufügen von Äußerungen
 
-1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json) herunter, und speichern Sie sie.
+1.  Laden Sie die [App-JSON-Datei](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/tutorials/machine-learned-entity/pizza-tutorial-with-entities.json) herunter, und speichern Sie sie.
 
     [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -82,7 +80,7 @@ Im Anschluss folgen einige Beispiele für den primären Namen und für Synonyme:
 
 1. Wählen Sie **+ Erstellen** aus.
 
-1. Geben Sie im Popupdialogfeld `CrustList` als Entitätsname und **List** (Liste) als Entitätstyp ein. Klicken Sie auf **Weiter**.
+1. Geben Sie im Popupdialogfeld `CrustList` als Entitätsname und **List** (Liste) als Entitätstyp ein. Wählen Sie **Weiter** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Popupdialogfeld zum Erstellen einer neuen Entität](media/luis-quickstart-intent-and-list-entity/create-pizza-crust-list-entity.png)
@@ -195,7 +193,7 @@ Im Anschluss folgen einige Beispiele für den primären Namen und für Synonyme:
 ## <a name="related-information"></a>Verwandte Informationen
 
 * Informationen zum Konzept der [Listenentität](luis-concept-entity-types.md#list-entity)
-* [Gewusst wie: trainieren](luis-how-to-train.md)
+* [Informationen zum Trainieren](luis-how-to-train.md)
 * [Informationen zum Veröffentlichen](luis-how-to-publish-app.md)
 * [Informationen zum Testen im LUIS-Portal](luis-interactive-test.md)
 * [Entitäten und ihr Zweck in LUIS](luis-concept-entity-types.md)

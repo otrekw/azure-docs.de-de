@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 4512fd8a236c888937eb60a75d01cfb0ef2c1913
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 616f10b32d0a9c1a05d759a0e27550cd2808808b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792644"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428879"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
 
@@ -24,7 +24,7 @@ Sie können diesen Flow aus [Microsoft Flow](https://flow.microsoft.com) zu [Pow
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Der Flow, den Sie aus Power Automate exportieren möchten.
 
@@ -81,7 +81,7 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
       Für jede Verbindung, die eine Autorisierung erfordert, wird ein Warnsymbol angezeigt:
 
-      ![Symbol "Warnung"](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
+      ![Warnungssymbol](./media/export-from-microsoft-flow-logic-app-template/authorize-connections.png)
 
    1. Erweitern Sie jeden Schritt, für den eine autorisierte Verbindung erforderlich ist, und klicken Sie auf **Neue hinzufügen**.
 
@@ -133,7 +133,7 @@ Wenn Sie Visual Studio mit den [Voraussetzungen](../logic-apps/quickstart-create
 
 1. Öffnen Sie im Projektmappen-Explorer das Kontextmenü für das Projekt, und klicken Sie dann auf **Bereitstellen** > **Neu**. Melden Sie sich nach Aufforderung mit Ihrem Azure-Konto an.
 
-1. Bestätigen Sie, falls Sie dazu aufgefordert werden, das Azure-Abonnement, die Azure-Ressourcengruppe und die anderen Einstellungen, die Sie für die Bereitstellung verwenden möchten (beispielsweise eine [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files) zum Übergeben von Vorlagenparameterwerten), und klicken Sie dann auf **Bereitstellen**.
+1. Bestätigen Sie, falls Sie dazu aufgefordert werden, das Azure-Abonnement, die Azure-Ressourcengruppe und die anderen Einstellungen, die Sie für die Bereitstellung verwenden möchten (beispielsweise eine [Parameterdatei](../azure-resource-manager/templates/parameter-files.md) zum Übergeben von Vorlagenparameterwerten), und klicken Sie dann auf **Bereitstellen**.
 
    ![Bestätigen der Bereitstellungseinstellungen](./media/export-from-microsoft-flow-logic-app-template/confirm-azure-subscription-resource-group-deployment.png)
 

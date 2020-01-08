@@ -16,12 +16,12 @@ ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 3aaa99caca461d4b8e339cf4c1f7847adef4027a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c84277603420567485b5199cdd2fa63ee3a2654
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378380"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>Diagnostizieren verworfener Benachrichtigungen in Azure Notification Hubs
 
@@ -103,7 +103,7 @@ Jeder Batch wird an den Pushbenachrichtigungsdienst gesendet, der wiederum die R
 
 In diesem Fall wird die Registrierung, die den Fehler verursacht, aus der Datenbank entfernt. Dann wird erneut versucht, die Benachrichtigungen für den Rest der Geräte in diesem Batch zu übermitteln.
 
-Um weitere Informationen zum Übermittlungsfehler bei einer Registrierung zu erhalten, können Sie diese Notification Hubs-REST-APIs verwenden: [Per Message Telemetry: Get Notification Message Telemetry](https://msdn.microsoft.com/library/azure/mt608135.aspx) (Nachrichtenbasierte Telemetrie: Abrufen der Telemetrie für Benachrichtigungsmeldungen) und [PNS-Feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Beispielcode finden Sie im [Beispiel für „Send REST“](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
+Um weitere Informationen zum Übermittlungsfehler bei einer Registrierung zu erhalten, können Sie diese Notification Hubs-REST-APIs verwenden: [Per Message Telemetry: Get Notification Message Telemetry](https://docs.microsoft.com/rest/api/notificationhubs/get-notification-message-telemetry) (Nachrichtenbasierte Telemetrie: Abrufen der Telemetrie für Benachrichtigungsmeldungen) und [PNS-Feedback](https://msdn.microsoft.com/library/azure/mt705560.aspx). Beispielcode finden Sie im [Beispiel für „Send REST“](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/).
 
 ## <a name="push-notification-service-issues"></a>Probleme mit dem Pushbenachrichtigungsdienst
 
@@ -125,7 +125,7 @@ Hier finden Sie Möglichkeiten, die Ursache von verworfenen Benachrichtigungen i
 
 #### <a name="push-notification-service-developer-portal"></a>Entwicklerportal für den Pushbenachrichtigungsdienst ####
 
-Überprüfen Sie die Anmeldeinformationen im Entwicklerportal des jeweiligen Pushbenachrichtigungsdiensts (APNs, FCM, Windows-Benachrichtigungsdienst usw.). Weitere Informationen finden Sie unter [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification) erstellt haben.
+Überprüfen Sie die Anmeldeinformationen im Entwicklerportal des jeweiligen Pushbenachrichtigungsdiensts (APNs, FCM, Windows-Benachrichtigungsdienst usw.). Weitere Informationen finden Sie im [Tutorial: Senden von Benachrichtigungen an Apps für die universelle Windows-Plattform mit Azure Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification) erstellt haben.
 
 #### <a name="azure-portal"></a>Azure-Portal ####
 

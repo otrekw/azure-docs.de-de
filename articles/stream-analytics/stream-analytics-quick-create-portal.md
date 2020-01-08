@@ -1,19 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals'
 description: In dieser Schnellstartanleitung werden die ersten Schritte zum Erstellen eines Stream Analytic-Auftrags, zum Konfigurieren von Ein- und Ausgaben sowie zum Definieren einer Abfrage erläutert.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.date: 06/21/2019
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 65114f2ddb7567b47ac3951fbaf6664654e379f0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 4abf5078a005f9d928397d9666e7f2bc55d65f19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431550"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe des Azure-Portals
 
@@ -179,7 +178,7 @@ In diesem Abschnitt konfigurieren Sie eine IoT Hub-Geräteeingabe für den Strea
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen. Führen Sie dazu folgende Schritte aus:
+Löschen Sie die Ressourcengruppe, den Stream Analytics-Auftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieser Schnellstartanleitung erstellt wurden:
 
 1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** und dann auf den Namen der erstellten Ressource.  
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 8b089a1b32ee70479072522372c060713108957c
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: b63032baa60d18f3d9d98fc403bdc1087c6c9b6b
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350096"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660680"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -41,7 +41,7 @@ Beachten Sie, dass Kontingente keine garantierten Werte darstellen. Kontingente 
 
 ### <a name="cores-quotas-in-user-subscription-mode"></a>Kontingente für Kerne im Modus „Benutzerabonnement“
 
-Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutzerabonnement** festgelegt ist, werden Kontingente unterschiedlich angewendet. In diesem Modus werden Batch-VMs und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Die Kontingente für Kerne von Azure Batch gilt nicht für Konten, die in diesem Modus erstellt werden. Stattdessen werden die Kontingente in Ihrem Abonnement für regionale Computekerne und andere Ressourcen angewendet. Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+Wenn Sie ein Batch-Konto erstellen, bei dem der Poolzuordnungsmodus auf **Benutzerabonnement** festgelegt ist, werden Kontingente unterschiedlich angewendet. In diesem Modus werden Batch-VMs und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Die Kontingente für Kerne von Azure Batch gilt nicht für Konten, die in diesem Modus erstellt werden. Stattdessen werden die Kontingente in Ihrem Abonnement für regionale Computekerne und andere Ressourcen angewendet. Weitere Informationen zu diesen Kontingenten finden Sie unter [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="pool-size-limits"></a>Poolgrößenbeschränkungen
 
@@ -99,7 +99,7 @@ Führen Sie die folgenden Schritte aus, um über das [Azure-Portal][portal] eine
    
     c. **Kontingenttyp** > **Batch**
       
-    Klicken Sie auf **Weiter**.
+    Wählen Sie **Weiter** aus.
     
 1. Unter **Details** finden Sie folgende Informationen:
       
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um über das [Azure-Portal][portal] eine
 
     b. Wählen Sie einen **Schweregrad** gemäß der [geschäftlichen Auswirkung][support_sev] aus.
 
-    Klicken Sie auf **Weiter**.
+    Wählen Sie **Weiter** aus.
 
 1. Gehen Sie unter **Kontaktinformationen** wie folgt vor:
    
@@ -139,13 +139,13 @@ Batch-Pools in der Konfiguration von virtuellen Computern, die in einem virtuell
 * Eine [öffentliche IP-Adresse](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * Ein [Load Balancer](../load-balancer/load-balancer-overview.md)
 
-Diese Ressourcen werden in dem Abonnement zugeordnet, das das virtuelle Netzwerk enthält, das beim Erstellen des Batch-Pools bereitgestellt wurde. Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-subscription-service-limits.md) des Abonnements beschränkt. Wenn Sie große Poolbereitstellungen in einem virtuellen Netzwerk planen, überprüfen Sie die Kontingente des Abonnements für diese Ressourcen. Fordern Sie bei Bedarf eine Erhöhung im Azure-Portal an, indem Sie **Hilfe und Support** auswählen.
+Diese Ressourcen werden in dem Abonnement zugeordnet, das das virtuelle Netzwerk enthält, das beim Erstellen des Batch-Pools bereitgestellt wurde. Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Wenn Sie große Poolbereitstellungen in einem virtuellen Netzwerk planen, überprüfen Sie die Kontingente des Abonnements für diese Ressourcen. Fordern Sie bei Bedarf eine Erhöhung im Azure-Portal an, indem Sie **Hilfe und Support** auswählen.
 
 
 ## <a name="related-topics"></a>Verwandte Themen
 * [Erstellen und Verwalten eines Azure Batch-Kontos im Azure-Portal](batch-account-create-portal.md)
 * [Übersicht über Azure Batch-Features](batch-api-basics.md)
-* [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)
+* [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/

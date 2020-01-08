@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
-ms.openlocfilehash: 5c654610df8c00e1e80382687bd30dca0c02b69f
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: 3dc7ebe224f1edb1b0fabc40441bd399fda6c133
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355589"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Mandantenübergreifende Verwaltung in Security Center
 
@@ -43,7 +43,7 @@ Klicken Sie in der oberen Menüleiste auf das Filtersymbol, und wählen Sie aus 
 
   ![Filtern von Mandanten](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-Die Ansichten und Aktionen sind im Grunde identisch. Hier einige Beispiele:
+Die Ansichten und Aktionen sind im Grunde identisch. Im Folgenden finden Sie einige Beispiele:
 
 - **Verwalten von Sicherheitsrichtlinien**: Verwalten Sie in einer einzigen Ansicht den Sicherheitsstatus vieler Ressourcen mit [Richtlinien](tutorial-security-policy.md), ergreifen Sie Maßnahmen mit Sicherheitsempfehlungen, und erfassen und verwalten Sie sicherheitsrelevante Daten.
 - **Verbessern von Secure Score und Konformitätsstatus**: Mithilfe der mandantenübergreifenden Sichtbarkeit können Sie den gesamten Sicherheitsstatus all Ihrer Mandanten anzeigen und ermitteln, wo und wie Sie die [Sicherheitsbewertung](security-center-secure-score.md) und den [Compliancestatus](security-center-compliance-dashboard.md) für jeden einzelnen Mandanten optimieren können.

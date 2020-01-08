@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: d6f417e53e7d7a1a242a0c0dc56c2356f78f5344
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: c54725d9a947b0c912a822686d7b2cffe1a7b5c9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828953"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640787"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-the-azure-portal"></a>Verschieben eines virtuellen Azure-Netzwerks in eine andere Region im Azure-Portal
 
@@ -32,7 +32,7 @@ Sie können zum Verschieben des virtuellen Netzwerks in eine andere Region eine 
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement virtuelle Netzwerke in der Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement über genügend Ressourcen verfügt, um das Hinzufügen virtueller Netzwerke für diesen Prozess zu unterstützen. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement über genügend Ressourcen verfügt, um das Hinzufügen virtueller Netzwerke für diesen Prozess zu unterstützen. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Vorbereiten der Verschiebung
@@ -194,13 +194,13 @@ Gehen Sie folgendermaßen vor, um das virtuelle Netzwerk zu exportieren und das 
 
 ## <a name="delete-the-target-virtual-network"></a>Löschen des virtuellen Zielnetzwerks
 
-Wenn Sie das virtuelle Zielnetzwerk verwerfen möchten, löschen Sie die Ressourcengruppe, die das virtuelle Zielnetzwerk enthält. Gehen Sie dazu wie folgt vor:
+Wenn Sie das virtuelle Zielnetzwerk verwerfen möchten, löschen Sie die Ressourcengruppe, die das virtuelle Zielnetzwerk enthält. Gehen Sie folgendermaßen vor:
 1. Wählen Sie im Dashboard des Azure-Portals die Ressourcengruppe aus.
 1. Wählen Sie oben im Bereich **Übersicht** die Option **Löschen** aus.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
-Um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen, löschen Sie das virtuelle Quellnetzwerk oder die Ressourcengruppe. Gehen Sie dazu wie folgt vor:
+Um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen, löschen Sie das virtuelle Quellnetzwerk oder die Ressourcengruppe. Gehen Sie folgendermaßen vor:
 1. Wählen Sie im Dashboard des Azure-Portals das virtuelle Netzwerk oder die Ressourcengruppe aus.
 1. Wählen Sie oben in jedem Bereich die Option **Löschen** aus.
 
@@ -210,4 +210,4 @@ In diesem Tutorial haben Sie mithilfe des Azure-Portals ein virtuelles Azure-Net
 
 
 - [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources)
-- [Verschieben von virtuellen Azure-Computern in eine andere Azure-Region](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)
+- [Verschieben von virtuellen Azure-Computern in eine andere Region](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-migrate)

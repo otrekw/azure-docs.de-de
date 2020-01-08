@@ -2,17 +2,17 @@
 title: Was ist privater Endpunkt in Azure?
 description: Informationen zum privaten Endpunkt in Azure
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: ccae73b58b7da8e631c081871e17cec221918a76
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228119"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647389"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -22,9 +22,9 @@ Ein privater Endpunkt in Azure ist eine Netzwerkschnittstelle, die Sie privat un
  Für einen privaten Endpunkt werden die folgenden Eigenschaften angegeben: 
 
 
-|Eigenschaft  |Description |
+|Eigenschaft  |BESCHREIBUNG |
 |---------|---------|
-|NAME    |    Ein eindeutiger Name innerhalb der Ressourcengruppe.      |
+|Name    |    Ein eindeutiger Name innerhalb der Ressourcengruppe.      |
 |Subnet    |  Das Subnetz, dem private IP-Adressen aus einem virtuellen Netzwerk bereitgestellt und zugeordnet werden. Anforderungen an das Subnetz finden Sie im Abschnitt „Einschränkungen“ in diesem Artikel.         |
 |Private Link-Ressource    |   Die Private Link-Ressource, mit der anhand der Liste verfügbarer Typen eine Verbindung über die Ressourcen-ID oder den Alias hergestellt werden soll. Für den gesamten Datenverkehr an diese Ressource wird ein eindeutiger Netzwerkbezeichner generiert.       |
 |Unterressource des Ziels   |      Die Unterressource, mit der eine Verbindung hergestellt wird. Jeder Private Link-Ressourcentyp verfügt über verschiedene Optionen, die je nach Präferenz ausgewählt werden können.    |
@@ -43,7 +43,7 @@ Im Folgenden finden Sie einige wichtige Details zu privaten Endpunkten:
  
 - Mehrere private Endpunkte können mithilfe derselben Private Link-Ressource erstellt werden. Für ein einzelnes Netzwerk mit einer herkömmlichen DNS-Serverkonfiguration wird empfohlen, einen einzigen privaten Endpunkt für eine bestimmte Private Link-Ressource zu verwenden, um doppelte Einträge oder Konflikte bei der DNS-Auflösung zu vermeiden. 
  
-- Mehrere private Endpunkte können im gleichen oder in verschiedenen Subnetzen innerhalb desselben virtuellen Netzwerks erstellt werden. Die Anzahl der privaten Endpunkte, die Sie in einem Abonnement anlegen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Mehrere private Endpunkte können im gleichen oder in verschiedenen Subnetzen innerhalb desselben virtuellen Netzwerks erstellt werden. Die Anzahl der privaten Endpunkte, die Sie in einem Abonnement anlegen können, ist begrenzt. Ausführliche Informationen finden Sie im Artikel zu  [Azure-Grenzwerten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
  
@@ -111,7 +111,7 @@ Verwenden Sie für Azure-Dienste die empfohlenen Zonennamen in der folgenden Tab
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Table|privatelink.table.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Tabelle|privatelink.table.cosmos.azure.com|
  
 Azure erstellt einen DNS-Eintrag des Typs CNAME (kanonischer Name) im öffentlichen DNS zum Umleiten der Auflösung an die vorgeschlagenen Domänennamen. Sie können die Auflösung mit der privaten IP-Adresse Ihrer privaten Endpunkte überschreiben. 
  
@@ -122,7 +122,7 @@ Ihre Anwendungen müssen die Verbindungs-URL nicht ändern. Beim Versuch der Auf
 Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verwendung privater Endpunkte: 
 
 
-|Einschränkung |BESCHREIBUNG |Lösung  |
+|Einschränkung |BESCHREIBUNG |Minderung  |
 |---------|---------|---------|
 |Regeln für Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierte Routen gelten nicht für den privaten Endpunkt    |NSGs werden für private Endpunkte nicht unterstützt. Während Subnetzen, die den privaten Endpunkt enthalten, eine NSG zugeordnet sein kann, gelten die Regeln nicht für den vom privaten Endpunkt verarbeiteten Datenverkehr. Sie müssen die [Durchsetzung von Netzwerkrichtlinien deaktivieren](disable-private-endpoint-network-policy.md), um private Endpunkte in einem Subnetz bereitzustellen zu können. Die NSG wird weiterhin für andere Workloads erzwungen, die im selben Subnetz gehostet werden. Für Routen in einem beliebigen Clientsubnetz wird ein /32-Präfix verwendet. Zum Ändern des Standardverhaltens für das Routing ist eine ähnliche benutzerdefinierte Route erforderlich.  | Steuern Sie den Datenverkehr, indem Sie auf Quellclients NSG-Regeln für ausgehenden Datenverkehr verwenden. Bereitstellen einzelner Routen mit /32-Präfix zum Außerkraftsetzen von Routen privater Endpunkte        |
 |  Virtuelle Netzwerke mit Peering mit nur privaten Endpunkten werden nicht unterstützt.   |   Das Herstellen einer Verbindung mit privaten Endpunkten in einem virtuellen Netzwerk mit Peering ohne andere Workload wird nicht unterstützt.       | Stellen Sie einen einzelnen virtuellen Computer im virtuellen Netzwerk mit Peering bereit, um die Konnektivität zu ermöglichen. |

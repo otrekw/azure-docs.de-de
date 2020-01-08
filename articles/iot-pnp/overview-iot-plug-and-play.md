@@ -3,18 +3,18 @@ title: Einführung in IoT Plug & Play (Vorschauversion) | Microsoft-Dokumentat
 description: Hier finden Sie Informationen zu IoT Plug & Play (Vorschauversion). IoT Plug & Play beruht auf einer offenen Modelliersprache, mit der IoT-Geräte ihre Funktionen deklarieren können. IoT-Geräte geben diese als Gerätefunktionsmodell bezeichnete Deklaration an, wenn sie eine Verbindung mit Cloudlösungen wie Azure IoT Central oder Partneranwendungen herstellen. Die Cloudlösung kann das Gerät dann automatisch verstehen und mit der Interaktion beginnen – ohne dass Sie Code schreiben müssen.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 06/21/2019
+ms.date: 12/23/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: fd1479a224255f74f4d47cfd90576a5afd25010f
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 54a18bb20ab9af3ad794ed678ea3234a712bf5cb
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935393"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531161"
 ---
 # <a name="what-is-iot-plug-and-play-preview"></a>Was ist IoT Plug & Play (Vorschauversion)?
 
@@ -86,6 +86,6 @@ Während der Public Preview-Phase senden IoT Plug & Play-Geräte separate Nac
 
 Nachdem Sie sich nun einen Überblick über IoT Plug & Play verschafft haben, empfehlen wir Ihnen als Nächstes einen der folgenden Schnellstarts:
 
-- [Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts](./quickstart-create-pnp-device.md)
-- [Verbinden eines Geräts mit IoT Hub](./quickstart-connect-pnp-device.md)
-- [Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung](./quickstart-connect-pnp-device-solution.md)
+- [Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts](./quickstart-create-pnp-device-windows.md)
+- [Verbinden eines Geräts mit IoT Hub](./quickstart-connect-pnp-device-c-windows.md)
+- [Herstellen einer Verbindung mit einem Gerät in Ihrer Lösung](./quickstart-connect-pnp-device-solution-node.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/25/2019
 ms.author: barclayn
-ms.openlocfilehash: fc3c7ea2f0060fc6ab20fa821c9e45d6e5173d4f
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: da8dfe61e92c4839deb1f7fbc289be0136087720
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795800"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497299"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -61,7 +61,7 @@ Wie bereits beschrieben, ist das Ziel der Verschlüsselung ruhender Daten die Ve
 
 ![Komponenten](./media/encryption-atrest/azure-security-encryption-atrest-fig1.png)
 
-### <a name="azure-key-vault"></a>Azure Key Vault
+### <a name="azure-key-vault"></a>Azure-Schlüsseltresor
 
 Der Speicherort der Verschlüsselungsschlüssel und der Zugriffssteuerung dieser Schlüssel ist für das Modell der Verschlüsselung ruhender Daten wesentlich. Die Schlüssel müssen stark gesichert aber dennoch von angegebenen Benutzern verwaltbar sein. Darüber hinaus müssen spezifische Dienste darauf zugreifen können. Azure Key Vault ist die für Azure-Dienste empfohlene Schlüsselspeicherlösung. Es bietet eine dienstübergeifende Verwaltungserfahrung. Schlüssel werden in Schlüsseltresoren gespeichert und verwaltet. Der Zugriff auf diesen Schlüsseltresor kann Benutzern und Diensten gewährt werden. Azure Key Vault unterstützt das Erstellen von Schlüsseln durch Kunden und das Importieren von Kundenschlüsseln für den Gebrauch in von Kunden verwalteten Verschlüsselungsschlüsselszenarios.
 
@@ -305,10 +305,10 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | **IoT-Dienste**                 |                    |                    |                    |
 | IoT Hub                          | Ja                | -                  | Ja                |
 | **Verwaltung und Governance**    |                    |                    |                    |
-| Azure Site Recovery              | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure Site Recovery              | Ja                | -                  | -                  |
 | **Medien**                        |                    |                    |                    |
 | Media Services                   | Ja                | -                  | Ja                |
-| **Speicher**                      |                    |                    |                    |
+| **Storage**                      |                    |                    |                    |
 | Blob Storage                     | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Disk Storage                     | Ja                | -                  | -                  |
 | Speicher für verwaltete Datenträger             | Ja                | -                  | -                  |

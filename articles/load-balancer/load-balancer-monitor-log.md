@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214916"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428845"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
 
@@ -171,7 +171,7 @@ Stellen Sie eine Verbindung mit Ihrem Speicherkonto her, und rufen Sie die JSON-
 > Wenn Sie mit Visual Studio und den grundlegenden Konzepten zum Ändern der Werte für Konstanten und Variablen in C# vertraut sind, können Sie die [Protokollkonvertierungstools](https://github.com/Azure-Samples/networking-dotnet-log-converter) von GitHub verwenden.
 
 ## <a name="stream-to-an-event-hub"></a>An einen Event Hub streamen
-Wenn Diagnoseinformationen an einen Event Hub gestreamt werden, kann er für die zentrale Protokollanalyse in einem SIEM-Tool eines Drittanbieters mit Azure Monitor-Integration verwendet werden. Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](https://docs.microsoft.com/azure/azure-monitor/platform/stream-monitoring-data-event-hubs#tools-with-azure-monitor-integration)
+Wenn Diagnoseinformationen an einen Event Hub gestreamt werden, kann er für die zentrale Protokollanalyse in einem SIEM-Tool eines Drittanbieters mit Azure Monitor-Integration verwendet werden. Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>An Log Analytics senden
 Ressourcen in Azure können ihre Diagnoseinformationen direkt an einen Log Analytics-Arbeitsbereich senden lassen, in dem zwecks Problembehandlung und Analyse komplexe Abfragen für die Informationen ausgeführt werden können.  Weitere Informationen finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)

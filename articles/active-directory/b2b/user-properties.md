@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1416dacd65024457e713547223f5c35290b3d15
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aa282afdf910c2449b5d5ea0bc5e38a396f3aa02
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65768166"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75608855"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -101,7 +101,7 @@ Sie können die standardmäßigen Einschränkungen aufheben, sodass Gastbenutzer
 ![Screenshot mit der Option für externe Benutzer in den Benutzereinstellungen](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
-Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Kann ich Gast-Objekte in der globalen Adressliste sichtbar machen?** im Artikel [Verwalten des Zugriffs von Gast in Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq). 
+Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter **Kann ich Gast-Objekte in der globalen Adressliste sichtbar machen?** im Artikel [Verwalten des Zugriffs von Gast in Office 365-Gruppen](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#add-guests-to-the-global-address-list). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

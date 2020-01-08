@@ -3,12 +3,12 @@ title: 'Schnellstart: Erstellen einer Blaupause mit REST-API'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprints, um Artefakte mithilfe der REST-API zu erstellen, zu definieren und bereitzustellen.
 ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 0338afb3dbcb7b2c6d7d204d4387873ac7607182
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 13a6cce25b17fdfbfa5f62dbf16cd2cfbbdc4fe2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436594"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -407,7 +407,9 @@ In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetz
      > [!IMPORTANT]
      > Die benutzerseitig zugewiesene verwaltete Identität wird nicht durch Blaupausen verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
 
-## <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+### <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
 
 Sie können eine Blaupause aus einem Abonnement entfernen. Dieser Schritt wird häufig ausgeführt, wenn die Artefaktressourcen nicht mehr benötigt werden. Wenn eine Blaupause entfernt wird, werden die als Teil der Blaupause zugewiesenen Artefakte beibehalten. Verwenden Sie den folgenden REST-API-Vorgang, um eine Blaupausenzuweisung zu entfernen:
 
@@ -417,7 +419,7 @@ Sie können eine Blaupause aus einem Abonnement entfernen. Dieser Schritt wird h
   DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Blueprint/blueprintAssignments/assignMyBlueprint?api-version=2018-11-01-preview
   ```
 
-## <a name="delete-a-blueprint"></a>Löschen einer Blaupause
+### <a name="delete-a-blueprint"></a>Löschen einer Blaupause
 
 Verwenden Sie den folgenden REST-API-Vorgang, um die Blaupause zu löschen:
 
@@ -429,7 +431,7 @@ Verwenden Sie den folgenden REST-API-Vorgang, um die Blaupause zu löschen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie eine Blaupause mit der REST-API erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
+In dieser Schnellstartanleitung haben Sie eine Blaupause mit der REST-API erstellt, zugewiesen und entfernt. Weitere Informationen zu Azure Blueprints finden Sie im Artikel zum Lebenszyklus von Blaupausen.
 
 > [!div class="nextstepaction"]
 > [Informationen zum Lebenszyklus von Blaupausen](./concepts/lifecycle.md)

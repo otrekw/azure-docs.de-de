@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: a836c6b47e0e1346b5e8de9ba5fbe94f88961cbd
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965486"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75615047"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Behandeln von Leistungsproblemen von virtuellen Azure-Computern unter Linux oder Windows
 
@@ -30,7 +30,7 @@ In diesem Artikel wird die Verwendung von Überwachung zur Diagnose von Leistung
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Überwachung von virtuellen Azure-IaaS-Computern
 
-Zum Überwachen der Gast-VM verwenden Sie die Azure-VM-Überwachung, die Sie bei bestimmten Ressourcenbedingungen auf allgemeiner Ebene warnt. Informationen zum Überprüfen, ob die VM-Diagnose aktiviert ist, finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs). Wenn Sie diese Meldung sehen, ist die Diagnose wahrscheinlich nicht aktiviert:
+Zum Überwachen der Gast-VM verwenden Sie die Azure-VM-Überwachung, die Sie bei bestimmten Ressourcenbedingungen auf allgemeiner Ebene warnt. Informationen zum Überprüfen, ob die VM-Diagnose aktiviert ist, finden Sie in der [Übersicht über Azure-Ressourcenprotokolle](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs). Wenn Sie diese Meldung sehen, ist die Diagnose wahrscheinlich nicht aktiviert:
 
 ![Überwachung ist nicht aktiviert](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -210,7 +210,7 @@ Mit neuen Datenträgerangeboten unter Storage Standard können die IOPS- und Dur
 
 * [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](https://docs.microsoft.com/azure/virtual-machines/windows/disk-scalability-targets).
 
-#### <a name="references"></a>Referenzen
+#### <a name="references"></a>References
 
 * [Skalierbarkeitsziele für Festplatten virtueller Computer](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
 

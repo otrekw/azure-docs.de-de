@@ -7,15 +7,15 @@ author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 6a17bcdd26548a091e72f20b19f8978c3ccf902a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 2b42d427530bb34cbc245d585f7ba01046379a14
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981211"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469747"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 
 ## <a name="add-sample-code"></a>Hinzufügen von Beispielcode
 
-1. Öffnen Sie `Program.cs`, und ersetzen Sie den gesamten in der Datei enthaltenen Code wie folgt.
+1. Öffnen Sie `Program.cs`, und ersetzen Sie den gesamten in dieser Datei enthaltenen Code durch Folgendes.
 
    ```Csharp
    using System;

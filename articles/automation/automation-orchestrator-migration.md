@@ -2,19 +2,15 @@
 title: Migrieren von Orchestrator zu Azure Automation
 description: Beschreibt, wie Runbooks und Integrationspakete von System Center Orchestrator nach Azure Automation migriert werden.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: b34554798130d9741318e0f518c32a41f82a17e3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 528b961ca07ec86ad502ee1b589772e354564a3d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849665"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421696"
 ---
 # <a name="migrating-from-orchestrator-to-azure-automation-beta"></a>Migrieren von Orchestrator zu Azure Automation (Beta)
 Runbooks in [System Center Orchestrator](https://technet.microsoft.com/library/hh237242.aspx) basieren auf Aktivitäten der Integrationspakete, die speziell für Orchestrator geschrieben wurden, während Runbooks in Azure Automation auf Windows PowerShell basieren.  [Grafische Runbooks](automation-runbook-types.md#graphical-runbooks) in Azure Automation haben ein ähnliches Aussehen wie Orchestrator-Runbooks, die enthaltenen Aktivitäten repräsentieren PowerShell-Cmdlets, untergeordnete Runbooks und Objekte.
@@ -96,7 +92,7 @@ ConvertFrom-SCORunbook -RunbookPath "c:\runbooks\MyRunbooks.ois_export" -Module 
 ### <a name="log-files"></a>Protokolldateien
 Der Runbook Converter erstellt die folgenden Protokolldateien am gleichen Speicherort wie das konvertierte Runbook.  Wenn die Dateien bereits vorhanden sind, werden sie mit den Informationen aus der letzten Konvertierung überschrieben.
 
-| Datei | Inhalt: |
+| Datei | Contents |
 |:--- |:--- |
 | Runbook Converter - Progress.log |Ausführliche Konvertierungsschritte einschließlich Informationen für jede erfolgreich konvertierte Aktivität und Warnung für jede nicht konvertierte Aktivität. |
 | Runbook Converter - Summary.log |Zusammenfassung der letzten Konvertierung einschließlich Warnungen und Folgeaufgaben, die Sie durchführen müssen, z. B. Erstellen einer Variablen für das konvertierte Runbook. |

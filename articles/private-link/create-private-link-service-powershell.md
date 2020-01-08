@@ -2,17 +2,17 @@
 title: Erstellen eines Azure Private Link-Diensts mit Azure PowerShell | Microsoft-Dokumentation
 description: Informationen zum Erstellen eines Azure Private Link-Diensts mit Azure PowerShell
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 932de70b634a7bbdb77e5dc1552ae53828a7269e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c4395628ac31dd69a4978f7f68ecc24ca1e15cfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453128"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Erstellen eines Private Link-Diensts mit Azure PowerShell
 In diesem Artikel erfahren Sie, wie Sie mit Azure PowerShell einen Private Link-Dienst in Azure erstellen.

@@ -4,15 +4,15 @@ description: Dieser Artikel soll Ihnen einen besseren Einblick ermöglichen, wie
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 03/19/2017
-ms.openlocfilehash: 5a48bbff89f0d6a0be9adf2ad242dbca41eec6db
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: cbeaa3e148d6fbe20d7ddb4d04cd00d6300f9818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555321"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402446"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Lösung für die Agent-Integritätsdiagnose in Azure Monitor
 Die Agent-Integritätsdiagnose-Lösung in Azure bietet Ihnen für alle direkt an den Log Analytics-Arbeitsbereich in Azure Monitor oder eine mit Azure Monitor verbundene System Center Operations Manager-Verwaltungsgruppe berichtende Agents, die nicht reagieren und Betriebsdaten übermitteln, Einblicke in die Ursachen.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -91,7 +91,7 @@ Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sen
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |

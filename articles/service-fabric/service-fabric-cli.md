@@ -1,19 +1,16 @@
 ---
 title: Erste Schritte mit der Azure Service Fabric CLI
 description: Hier erfahren Sie, wie Sie die Azure Service Fabric CLI verwenden. Es wird beschrieben, wie Sie eine Verbindung mit einem Cluster herstellen und Anwendungen verwalten.
-services: service-fabric
 author: jeffj6123
-manager: chackdan
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: e0146504bd06a3c56de8113cc59c9eedd375d06f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 4c3a41fe4dba351c10ad8488d4d339bc797597ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901377"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463396"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -34,11 +31,11 @@ Die Service Fabric-Befehlszeilenschnittstelle ist zur Unterstützung der neueste
 | CLI-Version   | Unterstützte Laufzeitversion |
 |---------------|---------------------------|
 | Neueste (~=8)  | Neueste (~=6.5)            |
-| 7.1.0         | 6.4.                       |
+| 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |
 | 5.0.0         | 6.2                       |
 | 4.0.0         | 6.1                       |
-| 3.0.0         | 6,0                       |
+| 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6, 5.7                  |
 
 Sie können optional eine zu installierende Zielversion der Befehlszeilenschnittstelle angeben, indem Sie den Befehl `pip install` mit dem Suffix `==<version>` versehen. Die Syntax für Version 1.1.0 lautet beispielsweise wie folgt:
@@ -128,7 +125,7 @@ sudo pip3 install sfctl
 Sie können die Schritte im Abschnitt **Ubuntu und Windows-Subsystem für Linux** durchführen, um die Installation zu testen.
 
 <a name = "cli-mac"></a>
-### <a name="macos"></a>macOS
+### <a name="macos"></a>MacOS
 
 Für MacOS empfehlen wir Ihnen die Nutzung des [HomeBrew-Paket-Managers](https://brew.sh). Wenn HomeBrew nicht bereits installiert ist, können Sie die Installation mit dem folgenden Befehl durchführen:
 

@@ -1,20 +1,19 @@
 ---
 title: Betrugserkennung in Echtzeit mit Azure Stream Analytics
 description: Erfahren Sie, wie Sie mit Stream Analytics eine Lösung zur Betrugserkennung in Echtzeit erstellen können. Verwenden Sie einen Event Hub für die Ereignisverarbeitung in Echtzeit.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19c9448b6a743302eb81bb208444336d6435f114
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 168f11e82305a0e08923289e71ae6ea0d36c1734
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68947042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458795"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -75,7 +74,7 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>Gewähren des Zugriffs auf den Event Hub und Abrufen einer Verbindungszeichenfolge
 
@@ -92,7 +91,7 @@ Damit ein Prozess Daten an einen Event Hub senden kann, muss der Event Hub mit e
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  Klicken Sie auf **Create**.
+4.  Klicken Sie auf **Erstellen**.
 
 5.  Nachdem die Richtlinie bereitgestellt wurde, klicken sie in der Liste der SAS-Richtlinien darauf.
 
@@ -172,7 +171,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. Klicken Sie auf **Create**.
+3. Klicken Sie auf **Erstellen**.
 
     Der Auftrag wird erstellt, und die Auftragsdetails werden im Portal angezeigt. Die Einrichtung ist jedoch noch nicht abgeschlossen. Bevor Sie den Auftrag starten können, müssen Sie ihn konfigurieren.
 
@@ -197,7 +196,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. Klicken Sie auf **Create**.
+4. Klicken Sie auf **Erstellen**.
 
 ## <a name="create-queries-to-transform-real-time-data"></a>Erstellen von Abfragen zum Transformieren von Daten in Echtzeit
 

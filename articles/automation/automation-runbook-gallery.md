@@ -2,19 +2,15 @@
 title: Runbook und Modulkataloge für Azure Automation
 description: Ihnen stehen Runbooks und Module von Microsoft und der Community zur Verfügung, die Sie in Ihrer Azure Automation-Umgebung installieren und verwenden können.  Dieser Artikel beschreibt, wie Sie auf diese Ressourcen zugreifen und Ihre Runbooks im Katalog bereitstellen können.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850719"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421481"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook und Modulkataloge für Azure Automation
 
@@ -69,8 +65,8 @@ PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können
 
 4. Auf der Seite **Katalog durchsuchen** können Sie nach den folgenden Feldern suchen:
 
-   * Modulname
-   * Tags
+   * Name des Moduls
+   * `Tags`
    * Autor
    * Cmdlet-/DSC-Ressourcenname
 

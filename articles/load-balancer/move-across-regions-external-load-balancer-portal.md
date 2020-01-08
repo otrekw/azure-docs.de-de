@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: 9358d99c66b3b8e3d6988b1881e51c11848ad97b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 5cd5ce2635ce05c4d5962f12ddc3945342897ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300632"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638492"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Verschieben eines externen Lastenausgleichs in eine andere Region über das Azure-Portal
 
@@ -24,15 +24,15 @@ Im eigentlichen Sinn können Sie einen externen Azure Lastenausgleich nicht von 
 
 - Stellen Sie sicher, dass sich der externe Azure-Lastenausgleich in der Azure-Region befindet, aus der Sie ihn verschieben möchten.
 
-- Externe Azure Load Balancer können nicht zwischen Regionen verschoben werden. Sie müssen den neuen Load Balancer zu Ressourcen in der Zielregion zuordnen.
+- Externe Azure Load Balancer können nicht zwischen Regionen verschoben werden. Sie müssen den neuen Load Balancer Ressourcen in der Zielregion zuordnen.
 
 - Zum Exportieren der Konfiguration eines externen Lastenausgleichs und Bereitstellen einer Vorlage zum Erstellen eines externen Lastenausgleichs in einer anderen Region muss Ihnen mindestens die Rolle „Netzwerkmitwirkender“ zugewiesen sein.
 
-- Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dieses Layout umfasst, ohne darauf beschränkt zu sein, Load Balancer, Netzwerksicherheitsgruppen, öffentliche IP-Adressen und virtuelle Netzwerke.
+- Identifizieren Sie das Layout des Quellnetzwerks und alle Ressourcen, die Sie aktuell verwenden. Dieses Layout umfasst Load Balancer, Netzwerksicherheitsgruppen, öffentliche IP-Adressen und virtuelle Netzwerke, ohne darauf beschränkt zu sein.
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement externe Lastenausgleichsmodule in der Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement über ausreichend Ressourcen verfügt, um das Hinzufügen der Lastenausgleichsmodule zu unterstützen. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement über ausreichend Ressourcen verfügt, um das Hinzufügen der Lastenausgleichsmodule zu unterstützen. Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
 Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Verschiebung mithilfe einer Resource Manager-Vorlage vorbereiten und die Konfiguration des externen Lastenausgleichs dann im Azure-Portal in die Zielregion verschieben. Sie müssen zunächst die Konfiguration der öffentlichen IP-Adresse des externen Lastenausgleichs exportieren.
@@ -405,7 +405,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
 
 Wenn Sie die öffentliche IP-Adresse und den externen Lastenausgleich des Ziels verwerfen möchten, löschen Sie die Ressourcengruppe, in der sie enthalten sind. Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und wählen Sie dann oben auf der Übersichtsseite **Löschen** aus.
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und die Verschiebung der öffentlichen IP-Adresse und des externen Load Balancers abzuschließen, löschen Sie die öffentliche IP-Adresse sowie den externen Load Balancer oder die Ressourcengruppe der Quelle. Wählen Sie hierzu im Portal die Ressourcengruppe im Dashboard aus, und wählen Sie dann oben auf jeder Seite **Löschen** aus.
 

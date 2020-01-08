@@ -17,6 +17,8 @@
           href: ./hdinsight-administer-use-dotnet-sdk.md
         - name: 'Verwalten von HDInsight-Clustern: PowerShell'
           href: ./hdinsight-administer-use-powershell.md
+        - name: Erstellen von Clustern mit Runbooks
+          href: ./manage-clusters-runbooks.md
         - name: Erstellen einer ETL-Pipeline
           href: ./hdinsight-sales-insights-etl.md
     - name: Beispiele
@@ -73,14 +75,29 @@
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
             - name: Erstellen von Clustern mithilfe von .NET
               href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
-        - name: Verwenden des Clusterspeichers
-          items:
-            - name: Verwenden von Azure Storage
-              href: hdinsight-hadoop-use-blob-storage.md
-            - name: Verwenden von Azure Data Lake Storage Gen2
-              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-            - name: Verwenden von Azure Data Lake Storage Gen1
-              href: hdinsight-hadoop-use-data-lake-store.md
+            - name: Fehler bei der Clustererstellung
+              href: ./create-cluster-error-dictionary.md
+              title: null
+              summary: null
+              abstract: null
+              achievement: null
+              iconUrl: null
+              levels:
+                - null
+              roles:
+                - null
+              products:
+                - null
+              units:
+                - null
+                - name: Verwenden des Clusterspeichers
+                  items:
+                    - name: Verwenden von Azure Storage
+                      href: hdinsight-hadoop-use-blob-storage.md
+                    - name: Verwenden von Azure Data Lake Storage Gen2
+                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+                    - name: Verwenden von Azure Data Lake Storage Gen1
+                      href: hdinsight-hadoop-use-data-lake-store.md
         - name: Erweitern von Clustern
           items:
             - name: Installieren von HDInsight-Apps
@@ -105,7 +122,7 @@
                   href: 'https://msdn.microsoft.com/library/mt706515.aspx'
                 - name: Veröffentlichen von HDInsight-Apps im Azure Marketplace
                   href: hdinsight-apps-publish-applications.md
-        - name: Schützen
+        - name: Sicher
           items:
             - name: Verwenden von SSH mit HDInsight
               href: hdinsight-hadoop-linux-use-ssh-unix.md
@@ -533,6 +550,8 @@
           href: ./hdinsight-apache-kafka-spark-structured-streaming.md
     - name: Konzepte
       items:
+        - name: Migrieren von Kafka-Workloads zu 4.0
+          href: ./kafka/migrate-versions.md
         - name: Speicherung und Skalierbarkeit
           href: ./kafka/apache-kafka-scalability.md
         - name: Hochverfügbarkeit von Daten
@@ -545,6 +564,8 @@
       items:
         - name: Entwickeln
           items:
+            - name: Verwenden eines Kafka-REST-Proxys
+              href: ./kafka/rest-proxy.md
             - name: Aktivieren der automatischen Themenerstellung
               href: ./kafka/apache-kafka-auto-create-topics.md
             - name: Verwenden von Apache Kafka mit IoT Hub
@@ -707,6 +728,8 @@
               href: ./interactive-query/interactive-query-troubleshoot-query-performance.md
             - name: Langsamer Reducer
               href: ./interactive-query/interactive-query-troubleshoot-slow-reducer.md
+            - name: Apache Hive-Gatewaytimeout
+              href: ./interactive-query/troubleshoot-gateway-timeout.md
             - name: 'Apache Hive-Ansicht: Timeout'
               href: ./interactive-query/interactive-query-troubleshoot-view-time-out.md
             - name: Berechtigungsfehler beim Erstellen einer Tabelle
@@ -835,14 +858,14 @@
           href: ./hdinsight-service-tags.md
     - name: Anleitung
       items:
+        - name: Verwenden des Identitätsbrokers für die Verwaltung von Anmeldeinformationen
+          href: ./domain-joined/identity-broker.md
         - name: Erstellen von ESP-Clustern und Synchronisieren mit lokalen Ressourcen
           href: ./domain-joined/apache-domain-joined-create-configure-enterprise-security-cluster.md
         - name: Erstellen von VNETs für HDInsight
           href: ./hdinsight-create-virtual-network.md
         - name: Verbinden von HDInsight mit dem lokalen Netzwerk
           href: ./connect-on-premises-network.md
-        - name: Konfigurieren der Unternehmenssicherheit in HDInsight
-          href: ./domain-joined/apache-domain-joined-configure.md
         - name: Konfigurieren von ESP-Clustern mit Azure AD DS
           href: ./domain-joined/apache-domain-joined-configure-using-azure-adds.md
         - name: Synchronisieren von Azure AD-Benutzern mit einem HDInsight-Cluster

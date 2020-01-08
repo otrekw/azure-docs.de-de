@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: d28893133c27fe4945918071c60b889e997b775b
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 01327d24aebee02c3b14594c2b0b2f2f175211fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424158"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450798"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurieren einer Point-to-Site-Verbindung unter Verwendung der Zertifikatauthentifizierung (klassisch)
 
@@ -29,7 +29,7 @@ ms.locfileid: "74424158"
 In diesem Artikel wird erläutert, wie Sie ein VNET mit einer Point-to-Site-Verbindung erstellen. Sie erstellen dieses VNET mit dem klassischen Bereitstellungsmodell im Azure-Portal. In dieser Konfiguration werden Zertifikate verwendet, um den Client, von dem die Verbindung hergestellt wird, zu authentifizieren (entweder selbstsigniert oder von der Zertifizierungsstelle ausgegeben). Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder Modell erstellen, indem Sie Optionen verwenden, die in den folgenden Artikeln beschrieben werden:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
@@ -62,9 +62,9 @@ Nutzen Sie die folgenden Werte zum Erstellen einer Testumgebung oder zum bessere
 
 - **Einstellungen zum Erstellen virtueller Netzwerke (klassisch)**
    - **Name**: Geben Sie *VNet1* ein.
-   - **Adressraum**: Geben Sie *192.168.0.0/16* ein. In diesem Beispiel verwenden wir nur einen einzelnen Adressraum. Sie können für Ihr VNet aber auch mehrere Adressräume verwenden, wie im Diagramm zu sehen.
+   - **Adressraum:** Geben Sie *192.168.0.0/16* ein. In diesem Beispiel verwenden wir nur einen einzelnen Adressraum. Sie können für Ihr VNet aber auch mehrere Adressräume verwenden, wie im Diagramm zu sehen.
    - **Subnetzname**: Geben Sie *FrontEnd* ein.
-   - **Subnetzadressbereich**: Geben Sie *192.168.1.0/24* ein.
+   - **Subnetzadressbereich:** Geben Sie *192.168.1.0/24* ein.
    - **Abonnement**: Wählen Sie aus der Liste der verfügbaren Abonnements ein Abonnement aus.
    - **Ressourcengruppe**: Geben Sie *TestRG* ein. Wählen Sie **Neu erstellen** aus, wenn die Ressourcengruppe nicht vorhanden ist.
    - **Standort**: Wählen Sie **USA, Osten** in der Liste aus.
@@ -78,7 +78,7 @@ Nutzen Sie die folgenden Werte zum Erstellen einer Testumgebung oder zum bessere
    - **Adressbereich**: Geben Sie *192.168.200.0/24* ein. 
 
 - **Einstellungen zur Gatewaykonfiguration**:
-   - **Größe**: Wählen Sie die gewünschte Gateway-SKU aus.
+   - **Size**: Wählen Sie die gewünschte Gateway-SKU aus.
    - **Routingtyp**: Wählen Sie **Dynamisch** aus.
 
 ## <a name="create-a-virtual-network-and-a-vpn-gateway"></a>Erstellen eines virtuelles Netzwerks und eines VPN-Gateways
@@ -101,7 +101,7 @@ Falls Sie noch nicht über ein virtuelles Netzwerk (VNET) verfügen, erstellen S
 
 5. Wählen Sie in der Dropdownliste das **Abonnement** aus, das Sie verwenden möchten.
 
-6. Wählen Sie eine vorhandene **Ressourcengruppe** aus. Erstellen Sie alternativ eine neue Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen Namen ein. Falls Sie eine neue Ressourcengruppe erstellen, geben Sie ihr einen Namen, der zu den geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../azure-resource-manager/resource-group-overview.md#resource-groups).
+6. Wählen Sie eine vorhandene **Ressourcengruppe** aus. Erstellen Sie alternativ eine neue Ressourcengruppe, indem Sie **Neu erstellen** auswählen, und geben Sie einen Namen ein. Falls Sie eine neue Ressourcengruppe erstellen, geben Sie ihr einen Namen, der zu den geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. Wählen Sie einen **Standort** für Ihr VNET aus. Diese Einstellung bestimmt den geografischen Standort der Ressourcen, die Sie für dieses VNet bereitstellen.
 
@@ -135,7 +135,7 @@ In diesem Schritt erstellen Sie ein Gatewaysubnetz und ein Gateway mit dynamisch
 6. Wählen Sie auf der Seite **Gatewaykonfiguration** **Subnetz** aus, um das Gatewaysubnetz hinzuzufügen. Es ist möglich, ein Gatewaysubnetz zu erstellen, das so klein wie „/29“ ist. Sie sollten jedoch ein größeres Subnetz mit mehr Adressen erstellen und mindestens „/28“ oder „/27“ auswählen. Damit steht eine ausreichend hohe Anzahl von Adressen für mögliche zusätzliche Konfigurationen zur Verfügung, die Sie zukünftig vielleicht benötigen. Vermeiden Sie bei der Verwendung von Gatewaysubnetzen die Zuordnung einer Netzwerksicherheitsgruppe (NSG) zum Gatewaysubnetz. Das Zuordnen einer Netzwerksicherheitsgruppe zu diesem Subnetz kann dazu führen, dass das VPN-Gateway nicht mehr wie erwartet funktioniert. Wählen Sie **OK** aus, um diese Einstellung zu speichern.
 
    ![Hinzufügen von „GatewaySubnet“](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsubnet125.png)
-7. Wählen Sie die Gatewaygröße **aus** . Bei der Größe handelt es sich um die Gateway-SKU für Ihr virtuelles Netzwerkgateway. Im Azure-Portal ist standardmäßig die SKU **Standard** ausgewählt. Weitere Informationen zu Gateway-SKUs finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+7. Wählen Sie die **Gatewaygröße**aus. Bei der Größe handelt es sich um die Gateway-SKU für Ihr virtuelles Netzwerkgateway. Im Azure-Portal ist standardmäßig die SKU **Standard** ausgewählt. Weitere Informationen zu Gateway-SKUs finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
    ![Gatewaygröße](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/gwsize125.png)
 8. Wählen Sie den **Routingtyp** für Ihr Gateway aus. Für P2S-Konfigurationen wird der Routingtyp **Dynamisch** benötigt. Wählen Sie abschließend **OK** aus.
@@ -210,7 +210,7 @@ Um eine P2S-Verbindung mit einem anderen Clientcomputer als dem für die Generie
 >
 >
 
-1. Um eine Verbindung mit Ihrem VNET herzustellen, wechseln Sie auf dem Clientcomputer im Azure-Portal zu **VPN-Verbindungen**, und suchen Sie nach der VPN-Verbindung, die Sie erstellt haben. Die VPN-Verbindung hat den gleichen Namen wie Ihr virtuelles Netzwerk. Wählen Sie **Verbinden**aus. Wenn eine Popupmeldung zu dem Zertifikat angezeigt wird, wählen Sie **Weiter** zur Verwendung erhöhter Rechte aus.
+1. Um eine Verbindung mit Ihrem VNET herzustellen, wechseln Sie auf dem Clientcomputer im Azure-Portal zu **VPN-Verbindungen**, und suchen Sie nach der VPN-Verbindung, die Sie erstellt haben. Die VPN-Verbindung hat den gleichen Namen wie Ihr virtuelles Netzwerk. Wählen Sie **Verbinden**. Wenn eine Popupmeldung zu dem Zertifikat angezeigt wird, wählen Sie **Weiter** zur Verwendung erhöhter Rechte aus.
 
 2. Wählen Sie auf der Statusseite **Verbindung** **Verbinden** aus, um die Verbindung herzustellen. Wenn der Bildschirm **Zertifikat auswählen** angezeigt wird, stellen Sie sicher, dass das angezeigte Clientzertifikat richtig ist. Falls nicht, wählen Sie das richtige Zertifikat in der Dropdownliste aus, und wählen Sie dann **OK** aus.
 
@@ -275,12 +275,12 @@ Bei Bedarf können Sie ein Clientzertifikat sperren. Anhand der Zertifikatsperrl
 
 Sie können ein Clientzertifikat sperren, indem Sie den Fingerabdruck der Sperrliste hinzufügen.
 
-1. Rufen Sie den Fingerabdruck des Clientzertifikats ab. Weitere Informationen finden Sie unter [Gewusst wie: Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx).
+1. Rufen Sie den Fingerabdruck des Clientzertifikats ab. Weitere Informationen finden Sie unter [Vorgehensweise: Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695.aspx).
 2. Kopieren Sie die Informationen in einen Text-Editor, und entfernen Sie alle Leerzeichen, sodass eine fortlaufende Zeichenfolge entsteht.
 3. Wechseln Sie zum klassischen virtuellen Netzwerk. Wählen Sie **Point-to-Site-VPN-Verbindung** und dann **Zertifikat verwalten** aus, um die Seite **Zertifikate** zu öffnen.
 4. Wählen Sie **Sperrliste** zum Öffnen der Seite **Sperrliste** aus. 
 5. Wählen Sie **Zertifikat hinzufügen** aus, um die Seite **Zertifikat der Sperrliste hinzufügen** zu öffnen.
-6. Fügen Sie in **Fingerabdruck** den Zertifikatfingerabdruck als durchgehende Textzeile (ohne Leerzeichen) ein. Wählen Sie **OK** aus, um den Vorgang abzuschließen.
+6. Fügen Sie in **Fingerabdruck** den Zertifikatfingerabdruck als durchgehende Textzeile (ohne Leerzeichen) ein. Klicken Sie auf **OK**, um den Vorgang abzuschließen.
 
 Nach Abschluss der Aktualisierung kann das Zertifikat nicht mehr für die Verbindungsherstellung verwendet werden. Clients, die versuchen, unter Verwendung dieses Zertifikats eine Verbindung herzustellen, erhalten eine Meldung mit dem Hinweis, dass das Zertifikat nicht mehr gültig ist.
 

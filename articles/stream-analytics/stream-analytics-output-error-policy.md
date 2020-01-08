@@ -1,20 +1,19 @@
 ---
 title: Ausgabefehlerrichtlinien in Azure Stream Analytics
 description: Hier erfahren Sie mehr über die Richtlinien zur Ausgabefehlerbehandlung, die in Azure Stream Analytics verfügbar sind.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b31530966d2c5ca9a3f82f3e74ba349e66053a83
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22112272bb302769e5969cf6995d486438deb41f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61478918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431624"
 ---
 # <a name="azure-stream-analytics-output-error-policy"></a>Azure Stream Analytics-Ausgabefehlerrichtlinie
 In diesem Artikel werden die Richtlinien zur Ausgabefehlerbehandlung beschrieben, die in Azure Stream Analytics konfiguriert werden können.

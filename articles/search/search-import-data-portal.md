@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: df7d0fde05c974ef4cec739236a3ac0aebd63ecc
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0ed2bd7f1e03d8d5fa11f7e76010d087605f0fe1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534554"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460701"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Datenimport-Assistent für die kognitive Azure-Suche
 
@@ -77,7 +77,7 @@ Im Hintergrund erstellt und konfiguriert der Assistent die folgenden Objekte, un
 
 | Object | BESCHREIBUNG | 
 |--------|-------------|
-| [Datenquelle](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Speichert die Verbindungsinformationen zu den Quelldaten, einschließlich der Anmeldeinformationen. Ein Datenquellenobjekt wird ausschließlich mit Indexern verwendet. | 
+| [Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Speichert die Verbindungsinformationen zu den Quelldaten, einschließlich der Anmeldeinformationen. Ein Datenquellenobjekt wird ausschließlich mit Indexern verwendet. | 
 | [Index](https://docs.microsoft.com/rest/api/searchservice/create-index) | Physische Datenstruktur, die für die Volltextsuche und andere Abfragen verwendet wird. | 
 | [Qualifikationsgruppe](https://docs.microsoft.com/rest/api/searchservice/create-skillset) | Ein kompletter Satz von Anweisungen zum Bearbeiten, Transformieren und Strukturieren von Inhalten, einschließlich der Analyse und Extraktion von Informationen aus Bilddateien. Mit Ausnahme sehr einfacher und eingeschränkter Strukturen umfasst eine Qualifikationsgruppe einen Verweis auf eine Cognitive Services-Ressource, die Anreicherungen bereitstellt. Optional kann sie auch eine Wissensspeicherdefinition enthalten.  | 
 | [Indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)  | Ein Konfigurationsobjekt, das eine Datenquelle, einen Zielindex, eine optionale Qualifikationsgruppe, einen optionalen Zeitplan und optionale Konfigurationseinstellungen für die Fehlerbehandlung und Base-64-Codierung festlegt. |
@@ -109,7 +109,7 @@ Der Assistent generiert einen unvollständigen Index, der mit Dokumenten aus der
 
 1. Legen Sie Attribute fest, um zu bestimmen, wie das Feld in einem Index verwendet wird. 
 
-   Nehmen Sie sich bei diesem Schritt Zeit, da Attribute den physischen Ausdruck von Feldern im Index bestimmen. Wenn Sie Attribute später ändern möchten, selbst programmgesteuert, müssen Sie fast immer den Index löschen und neu erstellen. Die [Auswirkungen](search-what-is-an-index.md#storage-implications) von Kernattributen wie **Searchable** und **Retrievable** auf den Speicher sind vernachlässigbar. Die Aktivierung von Filtern und die Verwendung von Vorschlagsfunktionen erhöht die Speicheranforderungen. 
+   Nehmen Sie sich bei diesem Schritt Zeit, da Attribute den physischen Ausdruck von Feldern im Index bestimmen. Wenn Sie Attribute später ändern möchten, selbst programmgesteuert, müssen Sie fast immer den Index löschen und neu erstellen. Die [Auswirkungen](search-what-is-an-index.md#index-size) von Kernattributen wie **Searchable** und **Retrievable** auf den Speicher sind vernachlässigbar. Die Aktivierung von Filtern und die Verwendung von Vorschlagsfunktionen erhöht die Speicheranforderungen. 
    
    + **Durchsuchbar** ermöglicht eine Volltextsuche. Jedes Feld, das in Freiformabfragen oder in Abfrageausdrücken verwendet wird, muss über dieses Attribut verfügen. Für jedes als **Durchsuchbar** markierte Feld werden invertierte Indizes erstellt.
 

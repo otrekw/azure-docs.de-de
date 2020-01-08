@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 800b51c8f900d2ea99900ea147b33010452348f5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129344"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639870"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale Notfallwiederherstellung für Azure Databricks-Cluster
 
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zu einer praktischen Notfallwiederherstell
 
 ## <a name="azure-databricks-architecture"></a>Azure Databricks-Architektur
 
-Wenn Sie über das Azure-Portal einen Azure Databricks-Arbeitsbereich erstellen, wird ganz allgemein gesagt in Ihrem Abonnement eine [verwaltete Appliance](../managed-applications/overview.md) als Azure-Ressource in der ausgewählten Azure-Region (beispielsweise „USA, Westen“) bereitgestellt. Diese Appliance wird in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) mit einer [Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md) und einem in Ihrem Abonnement verfügbaren Azure Storage-Konto bereitgestellt. Das virtuelle Netzwerk bietet Sicherheit auf Umgebungsebene für den Databricks-Arbeitsbereich und wird durch die Netzwerksicherheitsgruppe geschützt. Innerhalb des Arbeitsbereichs können Sie Databricks-Cluster erstellen, indem Sie den VM-Typ für Worker und Treiber sowie die Databricks-Laufzeitversion angeben. Die gespeicherten Daten steht in Ihrem Speicherkonto (Azure Blob Storage oder Azure Data Lake Storage) zur Verfügung. Nach der Clustererstellung können Sie Aufträge über Notebooks, REST-APIs und ODBC/JDBC-Endpunkte ausführen, indem Sie sie an einen bestimmten Cluster anfügen.
+Wenn Sie über das Azure-Portal einen Azure Databricks-Arbeitsbereich erstellen, wird ganz allgemein gesagt in Ihrem Abonnement eine [verwaltete Appliance](../azure-resource-manager/managed-applications/overview.md) als Azure-Ressource in der ausgewählten Azure-Region (beispielsweise „USA, Westen“) bereitgestellt. Diese Appliance wird in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) mit einer [Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md) und einem in Ihrem Abonnement verfügbaren Azure Storage-Konto bereitgestellt. Das virtuelle Netzwerk bietet Sicherheit auf Umgebungsebene für den Databricks-Arbeitsbereich und wird durch die Netzwerksicherheitsgruppe geschützt. Innerhalb des Arbeitsbereichs können Sie Databricks-Cluster erstellen, indem Sie den VM-Typ für Worker und Treiber sowie die Databricks-Laufzeitversion angeben. Die gespeicherten Daten steht in Ihrem Speicherkonto (Azure Blob Storage oder Azure Data Lake Storage) zur Verfügung. Nach der Clustererstellung können Sie Aufträge über Notebooks, REST-APIs und ODBC/JDBC-Endpunkte ausführen, indem Sie sie an einen bestimmten Cluster anfügen.
 
 Die Databricks-Steuerungsebene verwaltet und überwacht die Umgebung des Databricks-Arbeitsbereichs. Verwaltungsvorgänge wie etwa das Erstellen eines Clusters werden über die Steuerungsebene initiiert. Alle Metadaten (beispielsweise geplante Aufträge) werden aus Gründen der Fehlertoleranz in einer Azure-Datenbank mit Georeplikation gespeichert.
 

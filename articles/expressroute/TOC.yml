@@ -70,7 +70,7 @@
       items:
         - name: Privates Peering
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen und Ändern einer Verbindung
       items:
@@ -157,7 +157,7 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute
           href: how-to-npm.md
-    - name: Artikel zum klassischen Bereitstellungsmodell
+    - name: Klassische Artikel und Vorgängerversionen
       items:
         - name: Ändern einer Verbindung
           href: expressroute-howto-circuit-classic.md
@@ -169,6 +169,8 @@
           href: expressroute-howto-coexist-classic.md
         - name: Hinzufügen eines Gateways zu einem VNET
           href: expressroute-howto-add-gateway-classic.md
+        - name: Erstellen und Ändern des öffentlichen Peerings
+          href: about-public-peering.md
     - name: Bewährte Methoden
       items:
         - name: Bewährte Methoden für Netzwerksicherheit und Clouddienste
@@ -223,7 +225,7 @@
     - name: SLA
       href: 'https://azure.microsoft.com/support/legal/sla/'
     - name: Einschränkungen von Abonnements und Diensten
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json
+      href: ../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: 'ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)'
       href: expressroute-for-cloud-solution-providers.md
     - name: Videos

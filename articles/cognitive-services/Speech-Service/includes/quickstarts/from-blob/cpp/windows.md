@@ -7,16 +7,16 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 54c6f920b581a0bbd00910a3b3ddeebecdbb595f
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: b7ce80baa090ed87722397384b8e75c134eb26da
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74954909"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467494"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +33,7 @@ Führen Sie die folgenden Schritte aus, bevor Sie beginnen:
 Im ersten Schritt müssen Sie sicherstellen, dass das Projekt in Visual Studio geöffnet ist.
 
 1. Starten Sie Visual Studio 2019.
-2. Laden Sie Ihr Projekt, und öffnen Sie `helloworld.cpp`.
+2. Laden Sie das Projekt, und öffnen Sie `helloworld.cpp`.
 
 ## <a name="add-a-references"></a>Hinzufügen eines Verweises
 
@@ -53,7 +53,7 @@ vcpkg install nlohmann-json
 Fügen Sie Code hinzu, der als Gerüst für das Projekt fungiert.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
-(Ersetzen Sie die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte.)
+(Sie müssen die Werte von `YourSubscriptionKey`, `YourServiceRegion` und `YourFileUrl` durch Ihre eigenen Werte ersetzen.)
 
 ## <a name="json-wrappers"></a>JSON-Wrapper
 
@@ -95,14 +95,14 @@ Wir laden den Inhalt dieser URL herunter, deserialisieren den JSON-Code und durc
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=246-284)]
 
-## <a name="check-your-code"></a>Überprüfen Ihres Codes
+## <a name="check-your-code"></a>Überprüfen des Codes
 Ihr Code sollte nun wie folgt aussehen: (Wir haben dieser Version einige Kommentare hinzugefügt.)
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-308)]
 
 ## <a name="build-and-run-your-app"></a>Erstellen und Ausführen der App
 
-Sie können nun Ihre App erstellen und die Spracherkennung mit dem Spracherkennungsdienst testen.
+Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

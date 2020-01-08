@@ -1,31 +1,23 @@
 ---
 title: Beispiele für Azure Service Fabric-Anwendungsmanifeste
 description: Erfahren Sie, wie Sie die Einstellungen für das Anwendungs- und Dienstmanifest für eine Service Fabric-Anwendung konfigurieren.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 969f15ecb45164e3b3f26c22f756a022e55782ed
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 6f44d2ddaac11545a3a3dc52fd20e02263c6ad67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451643"
 ---
 # <a name="service-fabric-application-and-service-manifest-examples"></a>Beispiele für Service Fabric-Anwendungs- und -Dienstmanifeste
 Dieser Abschnitt enthält Beispiele für Anwendungs- und Dienstmanifeste. Diese Beispiele sollen keine wichtigen Szenarien zeigen, sondern die verschiedenen verfügbaren Einstellungen und deren Verwendung. 
 
 Im Folgenden finden Sie einen Index der gezeigten Features und die Beispielmanifeste, zu denen sie gehören.
 
-|Feature|Manifest|
+|Funktion|Manifest|
 |---|---|
 |[Ressourcenkontrolle](service-fabric-resource-governance.md)|[Reliable Services-Anwendungsmanifest](service-fabric-manifest-example-reliable-services-app.md#application-manifest), [Containeranwendungsmanifest](service-fabric-manifest-example-container-app.md#application-manifest)|
 |[Ausführen eines Diensts als lokales Administratorkonto](service-fabric-application-runas-security.md)|[Reliable Services-Anwendungsmanifest](service-fabric-manifest-example-reliable-services-app.md#application-manifest)|
