@@ -5,7 +5,7 @@
   items:
     - name: Worum handelt es sich bei Language Understanding?
       href: what-is-luis.md
-    - name: Neuigkeiten
+    - name: Neues
       href: whats-new.md
 - name: Schnellstarts
   items:
@@ -66,13 +66,8 @@
           href: luis-tutorial-review-endpoint-utterances.md
         - name: Testen von Datasets in Batches
           href: luis-tutorial-batch-testing.md
-        - name: Hinzufügen allgemeiner Formate für Äußerungen
+        - name: Hinzufügen von Mustern zur Verbesserung von Vorhersagen
           href: luis-tutorial-pattern.md
-        - name: Extrahieren kontextbezogener Muster
-          href: luis-tutorial-pattern-roles.md
-          displayName: roles
-        - name: Extrahieren von Freiformdaten
-          href: luis-tutorial-pattern-any.md
     - name: Verwenden mit einem Bot
       items:
         - name: 'Mit C#'
@@ -154,7 +149,7 @@
         - name: Entwurfsstrategien
           href: luis-concept-enterprise.md
           displayName: import
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Starten einer neuen App
       href: luis-how-to-start-new-app.md
@@ -173,6 +168,8 @@
         - name: Hinzufügen eines Deskriptors
           displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
+        - name: Migrieren zur V3-Erstellung
+          href: luis-migration-authoring-entities.md
         - name: Mit REST-APIs
           items:
             - name: Programmgesteuertes Erstellen einer App per Node.js
@@ -267,12 +264,12 @@
           href: luis-reference-prebuilt-entities.md
         - name: Altersentität
           href: luis-reference-prebuilt-age.md
-        - name: Währungsentität
+        - name: Entität „currency“
           href: luis-reference-prebuilt-currency.md
         - name: DatetimeV2-Entität
           href: luis-reference-prebuilt-datetimev2.md
           displayName: timex
-        - name: Dimensionsentität
+        - name: Entität „dimension“
           href: luis-reference-prebuilt-dimension.md
         - name: Veraltete Entitäten
           href: luis-reference-prebuilt-deprecated.md
@@ -421,7 +418,7 @@
       displayName: 'FAQ, import'
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/LUIS'

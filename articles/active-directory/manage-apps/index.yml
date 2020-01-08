@@ -12,12 +12,12 @@ metadata:
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2b83d09932aaa39e31d04f30bc660541efcbb50b
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 7ebb44ec1f3483b9bf3f29ddb6dc7a73266b8cea
+  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73882802"
+  ms.lasthandoff: 12/25/2019
+  ms.locfileid: "75443359"
 landingContent:
 - title: Informationen zur Anwendungsverwaltung
   linkLists:
@@ -53,22 +53,22 @@ landingContent:
     links:
     - text: Worum handelt es sich bei automatischer Benutzerbereitstellung?
       url: user-provisioning.md
-  - linkListType: concept
+    - text: Funktionsweise der Bereitstellung
+      url: how-provisioning-works.md
+  - linkListType: tutorial
     links:
-    - text: Bereitstellen von Benutzern und Gruppen mithilfe von SCIM
-      url: use-scim-to-provision-users-and-groups.md
+    - text: Tutorials zur Bereitstellung von Saas-Apps
+      url: /azure/active-directory/saas-apps/
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren der automatischen Benutzerbereitstellung
+    - text: Entwickeln Sie eine App? Verwenden von SCIM für die automatische Bereitstellung
+      url: use-scim-to-provision-users-and-groups.md
+    - text: Fügen Sie eine Katalog-App hinzu? Konfigurieren der Bereitstellung für die App
       url: configure-automatic-user-provisioning-portal.md
     - text: Anpassen von Attributzuordnungen
       url: customize-application-attributes.md
-    - text: Überprüfen des Bereitstellungsstatus
-      url: application-provisioning-when-will-provisioning-finish-specific-user.md
-  - linkListType: reference
-    links:
-    - text: Schreiben von Ausdrücken für Attributzuordnungen
-      url: functions-for-customizing-application-data.md
+    - text: Verwenden von Bereichsfiltern
+      url: define-conditional-rules-for-provisioning-user-accounts.md
 - title: Veröffentlichen lokaler Apps mit dem Anwendungsproxy
   linkLists:
   - linkListType: overview

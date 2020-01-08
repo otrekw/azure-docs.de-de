@@ -1,0 +1,85 @@
+### YamlMime:Landing
+title: Verwalten der Ressourcendokumentation
+summary: Erfahren Sie, wie Sie Ressourcen verwalten und nutzen können.
+metadata:
+  title: Dokumentation zu Azure Resource Manager
+  description: Hier erfahren Sie, wie Sie Azure Resource Manager-Vorlagen entwickeln und damit Azure-Ressourcen bereitstellen.
+  ms.service: azure-resource-manager
+  ms.subservice: management
+  ms.topic: landing-page
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 01/02/2020
+  ms.openlocfilehash: ba00994808e50f10c7153535f442e03f85fe2202
+  ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/04/2020
+  ms.locfileid: "75657930"
+landingContent:
+- title: Informationen zum Azure Resource Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Resource Manager?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Resource Manager-Bereitstellung und klassische Bereitstellung
+      url: deployment-models.md
+- title: Informationen zu Azure-Diensten
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Einschränkungen bei Abonnements und Diensten
+      url: azure-subscription-service-limits.md
+    - text: Ressourcenanbieter und -typen
+      url: resource-providers-and-types.md
+    - text: Ressourcenanbieter für die einzelnen Azure-Dienste
+      url: azure-services-resource-providers.md
+- title: Ressourcen verwalten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Verschieben zwischen Ressourcengruppen und Abonnements
+      url: move-resource-group-and-subscription.md
+    - text: Regionsübergreifendes Verschieben
+      url: move-region.md
+    - text: Markieren von Ressourcen
+      url: tag-resources.md
+    - text: Sperren von Ressourcen
+      url: lock-resources.md
+    - text: Löschen von Ressourcengruppen
+      url: delete-resource-group.md
+  - linkListType: reference
+    links:
+    - text: Unterstützung für das Verschieben
+      url: move-support-resources.md
+    - text: Tagunterstützung
+      url: tag-support.md
+    - text: Grenzwerte für Ressourceninstanzen
+      url: resources-without-resource-group-limit.md
+- title: SDKs und Tools
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure-Befehlszeilenschnittstelle
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources?view=azure-python
+- title: Vorgänge nachverfolgen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen von Aktivitätsprotokollen
+      url: view-activity-logs.md
+    - text: Anforderungsgrenzwerte und -drosselung
+      url: request-limits-and-throttling.md
+    - text: Asynchrone Vorgänge
+      url: async-operations.md

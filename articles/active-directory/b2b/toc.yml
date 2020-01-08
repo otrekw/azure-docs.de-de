@@ -28,6 +28,8 @@
     - name: Konzepte
       expanded: false
       items:
+        - name: "B2B\_– bewährte Methoden"
+          href: b2b-fundamentals.md
         - name: B2B-Lizenzierung
           href: licensing-guidance.md
         - name: B2B und externe Office 365-Freigaben
@@ -48,7 +50,7 @@
           href: hybrid-organizations.md
         - name: Aktuelle Einschränkungen
           href: current-limitations.md
-    - name: Anleitungen
+    - name: Gewusst-wie-Anleitungen
       expanded: true
       items:
         - name: Verwalten der B2B-Freigabe

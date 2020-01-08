@@ -14,7 +14,7 @@
           href: data-storage.md
         - name: Serverloses Computing
           href: serverless-compute.md
-        - name: Azure-Speicher
+        - name: Azure Storage
           href: azure-storage.md
         - name: Echtzeit-Apps
           href: real-time.md
@@ -32,7 +32,7 @@
           href: continuous-delivery.md
     - name: Analysieren der Nutzung und des Benutzerverhaltens
       href: analytics.md
-    - name: Absturzberichte in Echtzeit
+    - name: Fehlerberichterstellung in Echtzeit
       href: diagnostics.md
     - name: Pushbenachrichtigungen
       href: push-notifications.md
@@ -42,7 +42,7 @@
       href: cognitive-services.md
     - name: Azure Maps
       href: azure-maps.md
-    - name: Azure CDN
+    - name: Azure Content Delivery Network
       href: azure-cdn.md
     - name: Azure Cognitive Search
       href: azure-search.md

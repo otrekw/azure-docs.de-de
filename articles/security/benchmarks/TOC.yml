@@ -1,0 +1,30 @@
+- name: Vergleichstest für die Azure-Sicherheit
+  href: index.yml
+- name: Einführung
+  href: introduction.md
+- name: Einstellungen für einmaliges Anmelden
+  items:
+    - name: Übersicht
+      href: overview.md
+    - name: Netzwerksicherheit
+      href: security-control-network-security.md
+    - name: Protokollierung und Überwachung
+      href: security-control-logging-monitoring.md
+    - name: Identität und Zugriffssteuerung
+      href: security-control-identity-access-control.md
+    - name: Datenschutz
+      href: security-control-data-protection.md
+    - name: Verwaltung von Sicherheitsrisiken
+      href: security-control-vulnerability-management.md
+    - name: Bestands- und Ressourcenverwaltung
+      href: security-control-inventory-asset-management.md
+    - name: Sichere Konfiguration
+      href: security-control-secure-configuration.md
+    - name: Schutz vor Schadsoftware
+      href: security-control-malware-defense.md
+    - name: Datenwiederherstellung
+      href: security-control-data-recovery.md
+    - name: Reaktion auf Vorfälle
+      href: security-control-incident-response.md
+    - name: Penetrationstests und Red Team-Übungen
+      href: security-control-penetration-tests-red-team-exercises.md

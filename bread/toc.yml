@@ -48,7 +48,7 @@
         - name: 'Benutzer, Gruppen und Rollen'
           tocHref: /azure/active-directory/users-groups-roles/
           topicHref: /azure/active-directory/users-groups-roles/
-        - name: Identitätsgovernance
+        - name: Identity Governance
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
         - name: Anwendungsverwaltung
@@ -139,6 +139,10 @@
     - name: Azure Monitor
       tocHref: /azure/azure-monitor/
       topicHref: /azure/azure-monitor/
+      items:
+        - name: Application Insights
+          tocHref: /azure/azure-monitor/azure-monitor-app-hub
+          topicHref: /azure/azure-monitor/azure-monitor-app-hub
     - name: Azure Spatial Anchors
       tocHref: /azure/spatial-anchors/
       topicHref: /azure/spatial-anchors/
@@ -170,7 +174,7 @@
     - name: Azure-VMware-Lösung von CloudSimple
       tocHref: /azure/vmware-cloudsimple/
       topicHref: /azure/vmware-cloudsimple/
-    - name: Anpassung des Azure-Portals
+    - name: Dokumentation zum Azure-Portal
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/\
     - name: Internet der Dinge
@@ -226,6 +230,19 @@
     - name: Ressourcen-Manager
       tocHref: /azure/azure-resource-manager/
       topicHref: /azure/azure-resource-manager/
+      items:
+        - name: Vorlagen
+          tocHref: /azure/azure-resource-manager/templates/
+          topicHref: /azure/azure-resource-manager/templates/
+        - name: Verwaltung
+          tocHref: /azure/azure-resource-manager/management/
+          topicHref: /azure/azure-resource-manager/management/
+        - name: Verwaltete Anwendungen
+          tocHref: /azure/azure-resource-manager/managed-applications/
+          topicHref: /azure/azure-resource-manager/managed-applications/
+        - name: Azure Custom Providers
+          tocHref: /azure/azure-resource-manager/custom-providers/
+          topicHref: /azure/azure-resource-manager/custom-providers/
     - name: SignalR Service
       tocHref: /azure/azure-signalr/
       topicHref: /azure/azure-signalr/
@@ -235,7 +252,7 @@
     - name: Azure Stack-Benutzer
       tocHref: /azure/azure-stack/user/
       topicHref: /azure/azure-stack/user/
-    - name: Unterstützungsmöglichkeiten
+    - name: Unterstützbarkeit
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
     - name: Backup
@@ -408,7 +425,7 @@
         - name: DC/OS und Swarm
           tocHref: /azure/container-service/dcos-swarm/
           topicHref: /azure/container-service/dcos-swarm/
-        - name: kubernetes
+        - name: Kubernetes
           tocHref: /azure/container-service/kubernetes/
           topicHref: /azure/container-service/kubernetes/
     - name: Bastion
@@ -659,6 +676,9 @@
         - name: Entwickeln
           tocHref: /azure/security/develop/
           topicHref: /azure/security/develop/
+        - name: Vergleichstests
+          tocHref: /azure/security/benchmarks/
+          topicHref: /azure/security/benchmarks/
     - name: Security Center
       tocHref: /azure/security-center/
       topicHref: /azure/security-center/
@@ -699,7 +719,7 @@
       tocHref: /azure/storage/
       topicHref: /azure/storage/
       items:
-        - name: Blobs (in englischer Sprache)
+        - name: BLOBs
           tocHref: /azure/storage/blobs/
           topicHref: /azure/storage/blobs/storage-blobs-introduction
         - name: Data Lake Storage Gen2
@@ -733,7 +753,7 @@
       tocHref: /azure/virtual-machines/
       topicHref: /azure/virtual-machines/
       items:
-        - name: Workloads
+        - name: Arbeitsauslastungen
           tocHref: /azure/virtual-machines/workloads/
           topicHref: /azure/virtual-machines/workloads/workloads
           items:

@@ -22,13 +22,15 @@
   items:
     - name: Architekturen von Oracle-Anwendungen
       href: oracle-oci-applications.md
+    - name: Oracle-Datenbankarchitekturen
+      href: oracle-reference-architecture.md
     - name: Zusammenstellen einer Oracle Database
       href: oracle-design.md
     - name: Sicherungsstrategie für Oracle Database
       href: oracle-backup-recovery.md
     - name: Notfallwiederherstellungsoptionen für Oracle
       href: oracle-disaster-recovery.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: 'Verbinden von Azure und OCI: Vorschau'
       href: configure-azure-oci-networking.md

@@ -43,7 +43,7 @@
           href: vmware-azure-tutorial.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens
           href: tutorial-dr-drill-azure.md
-        - name: Ausführen von Failover und Failback
+        - name: Failover in Azure
           href: vmware-azure-tutorial-failover-failback.md
     - name: Notfallwiederherstellung von virtuellen Hyper-V-Computern in Azure
       items:
@@ -57,7 +57,7 @@
           href: hyper-v-vmm-azure-tutorial.md
         - name: Durchführen eines Notfallwiederherstellungsverfahrens
           href: tutorial-dr-drill-azure.md
-        - name: Ausführen von Failover und Failback
+        - name: Failover in Azure
           href: hyper-v-azure-failover-failback-tutorial.md
     - name: Migrieren zu Azure
       items:
@@ -73,7 +73,7 @@
   items:
     - name: Allgemeine Fragen zu Site Recovery
       href: site-recovery-faq.md
-    - name: Einrichten der Notfallwiederherstellung für Azure-VMs
+    - name: Informationen zur Notfallwiederherstellung für virtuelle Azure-Computer
       items:
         - name: Azure-zu-Azure-Architektur
           href: azure-to-azure-architecture.md
@@ -87,9 +87,9 @@
           href: azure-vm-disaster-recovery-with-accelerated-networking.md
         - name: ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
           href: azure-vm-disaster-recovery-with-expressroute.md
-    - name: Informationen zum Verschieben von virtuellen Azure-Computern
+    - name: Informationen zum Verschieben von Azure-VMs in eine andere Region
       href: azure-to-azure-move-overview.md
-    - name: Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern in Azure
+    - name: Informationen zur Notfallwiederherstellung von virtuellen VMware-Computern
       items:
         - name: Übersicht über die VMware-Notfallwiederherstellung
           href: vmware-azure-about-disaster-recovery.md
@@ -103,11 +103,13 @@
           href: vmware-azure-configuration-server-requirements.md
         - name: VMware-zu-Azure-Architektur
           href: vmware-azure-architecture.md
+        - name: Informationen zum Ausschließen von Datenträgern von der Replikation
+          href: exclude-disks-replication.md
         - name: Standortoptionen für Failbacks von Azure auf VMware
           href: concepts-types-of-failback.md
         - name: Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung
           href: vmware-azure-multi-tenant-overview.md
-    - name: Informationen zur Notfallwiederherstellung von virtuellen Hyper-V-Computern in Azure
+    - name: Informationen zur Notfallwiederherstellung von virtuellen Hyper-V-Computern
       items:
         - name: Häufig gestellte Fragen
           href: hyper-v-azure-common-questions.md
@@ -115,13 +117,17 @@
           href: hyper-v-azure-support-matrix.md
         - name: Hyper-V-zu-Azure-Architektur
           href: hyper-v-azure-architecture.md
-    - name: Informationen zur Notfallwiederherstellung von physischen Servern in Azure
+        - name: Informationen zum Ausschließen von Datenträgern von der Replikation
+          href: exclude-disks-replication.md
+    - name: Informationen zur Notfallwiederherstellung für physische Server
       items:
         - name: VMware/physisch zu Azure – Supportmatrix
           href: vmware-physical-azure-support-matrix.md
         - name: 'Architektur: Physische Server zu Azure'
           href: physical-azure-architecture.md
-    - name: Informationen zu Netzwerken für die Notfallwiederherstellung in Azure
+        - name: Informationen zum Ausschließen von Datenträgern von der Replikation
+          href: exclude-disks-replication.md
+    - name: Informationen zu Netzwerken für die Notfallwiederherstellung
       items:
         - name: Azure Traffic Manager mit Site Recovery
           href: concepts-traffic-manager-with-site-recovery.md
@@ -131,7 +137,9 @@
           href: concepts-network-security-group-with-site-recovery.md
         - name: Verwenden von öffentlichen IP-Adressen mit Site Recovery
           href: concepts-public-ip-address-with-site-recovery.md
-    - name: Informationen zu Failover- und Wiederherstellungsplänen
+    - name: Informationen zu Failover und Failback
+      href: failover-failback-overview.md
+    - name: Informationen zu Wiederherstellungsplänen
       href: recovery-plan-overview.md
     - name: Informationen zur Migration zu Azure
       href: migrate-overview.md
@@ -231,13 +239,13 @@
               items:
                 - name: 'Mobility Service: Übersicht und Installation'
                   href: vmware-physical-mobility-service-overview.md
-                - name: Vorbereiten der Pushinstallation des Mobilitätsdiensts
+                - name: Vorbereiten der Pushinstallation
                   href: vmware-azure-install-mobility-service.md
-                - name: Bereitstellen des Mobilitätsdiensts mithilfe von System Center Configuration Manager
+                - name: Automatisieren der Bereitstellung des Mobility Service
                   href: vmware-azure-mobility-install-configuration-mgr.md
             - name: Aktivieren der Replikation für virtuelle VMware-Computer
               href: vmware-azure-enable-replication.md
-            - name: Ausschließen von Datenträgern
+            - name: Ausschließen von Datenträgern von der Replikation
               href: vmware-azure-exclude-disk.md
             - name: 'Exemplarische Vorgehensweise: Einrichten der Replikation mit Mehrinstanzenfähigkeit und CSP für virtuelle VMWare-Computer'
               href: vmware-azure-multi-tenant-csp-disaster-recovery.md
@@ -249,17 +257,19 @@
               href: site-recovery-test-failover-to-azure.md
             - name: Ausführen eines Failovers auf Azure
               href: site-recovery-failover.md
-            - name: Erneutes Schützen von Azure zu einer lokalen VMware-Umgebung
+            - name: Vorbereiten für erneuten Schutz/Failback
+              href: vmware-azure-prepare-failback.md
+            - name: Erneutes Schützen von Azure zu lokal
               href: vmware-azure-reprotect.md
-            - name: Failback von Azure nach VMware
+            - name: Failback von Azure zum lokalen Standort
               href: vmware-azure-failback.md
-            - name: Einrichten und Verwalten eines Failbackprozessservers in Azure
+            - name: Einrichten eines Failbackprozessservers in Azure
               href: vmware-azure-set-up-process-server-azure.md
             - name: Einrichten eines Linux-Masterzielservers für Failbacks
               href: vmware-azure-install-linux-master-target.md
         - name: Verwalten
           items:
-            - name: Verwalten des Mobilitäts-Agents für VMware
+            - name: Verwalten des Mobilitäts-Agent
               href: vmware-physical-manage-mobility-service.md
             - name: Verwalten des Konfigurationsservers für VMware
               href: vmware-azure-manage-configuration-server.md
@@ -303,9 +313,9 @@
           href: physical-to-azure-failover-failback.md
         - name: Verwalten
           items:
-            - name: Verwalten des Mobilitäts-Agents für physische Server
+            - name: Verwalten des Mobilitätsdiensts
               href: vmware-physical-manage-mobility-service.md
-            - name: Verwalten des Konfigurationsservers für die Replikation physischer Server
+            - name: Verwalten des Konfigurationsservers
               href: physical-manage-configuration-server.md
             - name: Verwalten von Prozessservern
               href: vmware-azure-manage-process-server.md
@@ -345,7 +355,7 @@
           items:
             - name: Vorbereiten der Netzwerkzuordnung für die Notfallwiederherstellung für virtuelle Hyper-V-Computer
               href: hyper-v-vmm-network-mapping.md
-            - name: Ausschließen von Datenträgern von der Replikation von Hyper-V zu Azure
+            - name: Ausschließen von Datenträgern von der Replikation
               href: hyper-v-exclude-disk.md
         - name: Ausführen von Failover und Failback
           items:

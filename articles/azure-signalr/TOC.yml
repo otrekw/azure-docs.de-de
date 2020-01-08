@@ -25,6 +25,10 @@
   items:
     - name: Erstellen einer serverlosen Echtzeit-App mit Authentifizierung
       href: signalr-tutorial-authenticate-azure-functions.md
+    - name: Überwachen
+      items:
+        - name: Verwenden von Diagnoseprotokollen zum Überwachen von SignalR Service
+          href: signalr-tutorial-diagnostic-logs.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -57,7 +61,7 @@
       href: signalr-concept-authenticate-oauth.md
     - name: Behandlung von Ereignissen
       href: signalr-concept-event-grid-integration.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Skalieren
       items:
@@ -65,7 +69,7 @@
           href: signalr-howto-scale-signalr.md
         - name: Mehrere Instanzen
           href: signalr-howto-scale-multi-instances.md
-    - name: Schützen
+    - name: Sicher
       items:
         - name: Zugriffsschlüsselrotation
           href: signalr-howto-key-rotation.md
@@ -75,7 +79,7 @@
           href: signalr-concept-azure-functions.md
         - name: Event Grid-Integration
           href: signalr-howto-event-grid-integration.md
-- name: Referenzen
+- name: References
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: signalr-reference-cli.md
@@ -100,7 +104,7 @@
     - name: Häufig gestellte Fragen
       href: signalr-resource-faq.md
     - name: SignalR Service-Einschränkungen auf Abonnementebene
-      href: 'https://docs.microsoft.com/azure/azure-subscription-service-limits#signalr-service-limits'
+      href: 'https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#signalr-service-limits'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/signalr-service/'
     - name: Videos
