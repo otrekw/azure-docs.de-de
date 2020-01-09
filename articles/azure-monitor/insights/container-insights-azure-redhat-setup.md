@@ -1,18 +1,14 @@
 ---
 title: Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Red Hat OpenShift gehostet werden.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/21/2019
-ms.openlocfilehash: 07d84175325226af755712ec38ab93b901bbd361
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707525"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75405571"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Azure Red Hat OpenShift-Clustern mit Azure Monitor für Container
 
@@ -100,7 +96,7 @@ Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachun
 
 4. Bearbeiten Sie die JSON-Parameterdatei **newClusterWithMonitoringParam.json**, und aktualisieren Sie die folgenden Werte:
 
-    - *Speicherort*
+    - *location*
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*

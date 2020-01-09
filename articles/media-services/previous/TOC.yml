@@ -47,9 +47,10 @@
           href: media-services-portal-live-passthrough-get-started.md
         - name: .NET
           href: media-services-dotnet-live-encode-with-onpremises-encoders.md
-- name: Anleitung
+- name: Vorgehensweise
   items:
     - name: Legacy-Komponenten
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
       href: legacy-components.md
       items:
         - name: Migrieren von Azure Media Encoder
@@ -228,7 +229,7 @@
               href: media-services-rest-get-media-processor.md
         - name: Fehlercodes
           href: media-services-encoding-error-codes.md
-        - name: Veraltet
+        - name: Als veraltet markiert
           items:
             - name: Statische Paketerstellung und Verschlüsselung
               href: media-services-static-packaging.md
@@ -462,6 +463,9 @@
           href: ../media-services-specifications-live-timed-metadata.md
         - name: Smooth Streaming (HEVC)
           href: ../media-services-specifications-ms-sstr-amendment-hevc.md
+    - name: Legacy-Komponenten
+      displayName: 'deprecated, deprecation, retired, retirement, legacy'
+      href: legacy-components.md
 - name: Ressourcen
   items:
     - name: Azure Media Services-Community

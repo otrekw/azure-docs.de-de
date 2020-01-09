@@ -3,12 +3,12 @@ title: Sichern einer Azure-VM über die VM-Einstellungen
 description: In diesem Artikel erfahren Sie, wie Sie entweder einen einzelnen virtuellen Azure-Computer oder mehrere virtuelle Azure-Computer mit dem Azure Backup-Dienst sichern können.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172512"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391433"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Sichern einer Azure-VM über die VM-Einstellungen
 
@@ -61,10 +61,6 @@ Um Azure-VMs zu sichern, installiert Azure Backup eine Erweiterung auf dem VM-Ag
 10. Nachdem Sie die Sicherung aktiviert haben, wird eine erste Sicherung ausgeführt. Sie können die erste Sicherung sofort starten oder warten, bis sie gemäß dem Sicherungszeitplan beginnt.
     - Bis zum Abschluss des ersten Sicherungsvorgangs wird **Status der letzten Sicherung** als **Warnung (erste Sicherung steht aus)** angezeigt.
     - Um zu sehen, wann die nächste geplante Sicherung ausgeführt wird, klicken Sie auf den Namen der Sicherungsrichtlinie.
-
-> [!NOTE]
-> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden für die Dauer (in Tagen) aufbewahrt, die in der Sicherungsrichtlinie für virtuelle Azure-Computer unter „Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für“ angegeben ist. Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
-Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
 
 ## <a name="run-a-backup-immediately"></a>Sofortige Ausführung einer Sicherung
 

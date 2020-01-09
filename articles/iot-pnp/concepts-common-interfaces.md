@@ -3,16 +3,16 @@ title: Allgemeine Schnittstellen – IoT Plug & Play (Vorschau) | Microsoft-Dok
 description: Beschreibung der allgemeinen Schnittstellen für IoT Plug & Play-Entwickler
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 2eae778230fa5fce1be095106a02b2b643ff436e
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: f697a0d6aba4f137b75faa2a200424c72aa78c3b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70935321"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531410"
 ---
 # <a name="iot-plug-and-play-preview-common-interfaces"></a>IoT Plug & Play (Vorschau): allgemeine Schnittstellen
 
@@ -20,7 +20,7 @@ Alle IoT Plug & Play-Geräte sollten einige allgemeine Schnittstellen implemen
 
 ## <a name="summary-of-common-interfaces"></a>Zusammenfassung der allgemeinen Schnittstellen
 
-| NAME | id | BESCHREIBUNG | Implementiert durch Azure IoT SDK | Muss in einem Funktionsmodell deklariert sein |
+| Name | id | BESCHREIBUNG | Implementiert durch Azure IoT SDK | Muss in einem Funktionsmodell deklariert sein |
 | -------- | -------- | -------- | -------- | -------- | -------- |
 | Modellinformationen | urn:azureiot:ModelDiscovery:ModelInformation:1 | Hiermit deklarieren Geräte Funktionsmodell-ID und Schnittstellen. Für alle IoT Plug & Play-Geräte erforderlich. | Ja | Nein |
 | Informationen zum Client-SDK des digitalen Zwillings | urn:azureiot:Client:SDKInformation:1 | Client-SDK zum Verbinden des Geräts mit Azure. Ist für die [Zertifizierung](tutorial-build-device-certification.md) erforderlich. | Ja | Nein |

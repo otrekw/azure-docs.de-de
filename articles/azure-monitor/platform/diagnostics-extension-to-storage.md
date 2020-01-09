@@ -2,18 +2,18 @@
 title: Speichern und Anzeigen von Diagnosedaten in Azure Storage
 description: Erfahren Sie, wie Sie Azure-Diagnosedaten in einem Azure Storage-Konto erfassen, damit Sie sie mit einem der verschiedenen verfügbaren Tools anzeigen können.
 services: azure-monitor
-author: jpconnock
+author: bwren
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 08/01/2016
-ms.author: jeconnoc
+ms.author: bwren
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 35e852a36ebc52edff338ed640419afe32297b81
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: c9d751a7e3d01860b3b5860f1e75fa3767cd4f3c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304960"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395007"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Speichern und Anzeigen von Diagnosedaten im Azure-Speicher
 Diagnosedaten werden nicht dauerhaft gespeichert, wenn sie nicht in den Microsoft Azure-Speicheremulator oder den Azure-Speicher übertragen werden. Sobald die Daten gespeichert wurden, können sie mit einem der verschiedenen verfügbaren Tools angezeigt werden.
@@ -33,12 +33,12 @@ Je nach Art der gesammelten Diagnosedaten verwendet die Azure-Diagnose entweder 
 
 | Datenquelle | Speicherformat |
 | --- | --- |
-| Azure-Protokolle |Table |
+| Azure-Protokolle |Tabelle |
 | IIS 7.0-Protokolle |Blob |
-| Infrastrukturprotokolle der Azure-Diagnose |Table |
+| Infrastrukturprotokolle der Azure-Diagnose |Tabelle |
 | Ablaufprotokolle für fehlgeschlagene Anforderungen |Blob |
-| Windows-Ereignisprotokolle |Table |
-| Leistungsindikatoren |Table |
+| Windows-Ereignisprotokolle |Tabelle |
+| Leistungsindikatoren |Tabelle |
 | Absturzabbilder |Blob |
 | Benutzerdefinierte Fehlerprotokolle |Blob |
 

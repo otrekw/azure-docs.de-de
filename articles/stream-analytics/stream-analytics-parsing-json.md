@@ -1,18 +1,17 @@
 ---
 title: Analysieren von JSON- und AVRO-Daten in Azure Stream Analytics
 description: Dieser Artikel beschreibt, wie Sie mit komplexen Datentypen wie Arrays, JSON- und CSV-formatierten Daten arbeiten.
-services: stream-analytics
 ms.service: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: daf5b97e4ac586f89e5964ee16ee73c86f59b01d
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 1741510c7398ce74da81f006cb4109d9a33f8f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431609"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>Analysieren von JSON- und AVRO-Daten in Azure Stream Analytics
 
@@ -61,7 +60,7 @@ FROM input
 ```
 
 ### <a name="select-all-properties"></a>Auswählen aller Eigenschaften
-Sie können alle Eigenschaften eines geschachtelten Datensatzes mit dem Platzhalter „*“ auswählen. Betrachten Sie das folgende Beispiel:
+Sie können alle Eigenschaften eines geschachtelten Datensatzes mit dem Platzhalter „*“ auswählen. Betrachten Sie das folgenden Beispiel:
 
 ```SQL
 SELECT input.Location.*
@@ -153,5 +152,5 @@ CROSS APPLY GetArrayElements(event.arrayField) AS arrayElement
 ```
 
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Datentypen in Azure Stream Analytics](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)

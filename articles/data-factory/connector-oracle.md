@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: b43ec36f6f3a9111656892c65af2592fce6eaed2
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5fd13531e438b8bcda8e3720758e338c964f77af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444251"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Oracle mit Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-onprem-oracle-connector.md)
 > * [Aktuelle Version](connector-oracle.md)
 
@@ -69,7 +69,7 @@ Der verknüpfte Oracle-Dienst unterstützt folgende Eigenschaften:
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **Oracle** festgelegt werden. | Ja |
-| connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. <br/>Markieren Sie dieses Feld als `SecureString`, um es sicher in Data Factory zu speichern. Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). <br><br>**Unterstützter Verbindungstyp:** Sie können die **Oracle-SID** oder den **Oracle-Dienstnamen** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
+| connectionString | Gibt die Informationen an, die zum Herstellen einer Verbindung mit der Oracle-Datenbankinstanz erforderlich sind. <br/>Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). <br><br>**Unterstützter Verbindungstyp:** Sie können die **Oracle-SID** oder den **Oracle-Dienstnamen** zur Identifizierung Ihrer Datenbank verwenden:<br>– Wenn Sie die SID verwenden: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Wenn Sie den Dienstnamen verwenden: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 >[!TIP]
@@ -130,10 +130,7 @@ Zum Aktivieren der Verschlüsselung bei einer Oracle-Verbindung haben Sie zwei M
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
-            }
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -151,10 +148,7 @@ Zum Aktivieren der Verschlüsselung bei einer Oracle-Verbindung haben Sie zwei M
     "properties": {
         "type": "Oracle",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;"
-            },
+            "connectionString": "Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -219,9 +213,9 @@ Legen Sie zum Kopieren von Daten aus Oracle den Quelltyp in der Kopieraktivität
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `OracleSource` festgelegt werden. | Ja |
-| oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
+| oracleReaderQuery | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
 | partitionOptions | Gibt die Datenpartitionierungsoptionen an, mit denen Daten aus Oracle geladen werden. <br>Zulässige Werte sind: **None** (Standardwert), **PhysicalPartitionsOfTable** und **DynamicRange**.<br>Wenn eine Partitionsoption aktiviert ist (d.h. nicht `None`), wird der Grad an Parallelität zum gleichzeitigen Laden von Daten aus einer Oracle-Datenbank durch die Einstellung [`parallelCopies`](copy-activity-performance.md#parallel-copy) für die Kopieraktivität gesteuert. | Nein |
-| partitionSettings | Geben Sie die Gruppe der Einstellung für die Datenpartitionierung an. <br>Verwenden Sie diese Option, wenn die Partitionsoption nicht `None` lautet. | Nein |
+| partitionSettings | Geben Sie die Gruppe der Einstellungen für die Datenpartitionierung an. <br>Verwenden Sie diese Option, wenn die Partitionsoption nicht `None` lautet. | Nein |
 | partitionNames | Die Liste der physischen Partitionen, die kopiert werden müssen. <br>Verwenden Sie diese Option, wenn die Partitionsoption `PhysicalPartitionsOfTable` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfTabularPartitionName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
 | partitionColumnName | Geben Sie den Namen der Quellspalte als **Integer** an, der von der Bereichspartitionierung für den parallelen Kopiervorgang verwendet wird. Ohne Angabe wird der Primärschlüssel der Tabelle automatisch erkannt und als Partitionsspalte verwendet. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionColumnName` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
 | partitionUpperBound | Der Höchstwert der Partitionsspalte zum Herauskopieren von Daten. <br>Verwenden Sie diese Option, wenn die Partitionsoption `DynamicRange` lautet. Wenn Sie die Quelldaten mithilfe einer Abfrage abrufen, integrieren Sie `?AdfRangePartitionUpbound` in die WHERE-Klausel. Ein Beispiel finden Sie im Abschnitt [Paralleles Kopieren aus Oracle](#parallel-copy-from-oracle). | Nein |
@@ -315,7 +309,7 @@ Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Vollständiges Laden aus einer großen Tabelle mit physischen Partitionen          | **Partitionsoption:** Physische Partitionen der Tabelle. <br><br/>Während der Ausführung erkennt Data Factory automatisch die physischen Partitionen und kopiert Daten nach Partitionen. |
 | Vollständiges Laden aus einer großen Tabelle ohne physische Partitionen, aber mit einer Integerspalte für die Datenpartitionierung | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Partitionsspalte:** Geben Sie die Spalte für die Datenpartitionierung an. Ohne Angabe wird die Primärschlüsselspalte verwendet. |
-| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage mit physischen Partitionen | **Partitionsoption:** Physische Partitionen der Tabelle.<br>**Abfrage:** `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`<br>**Partitionsname:** Geben Sie den Namen der Partitionen an, aus denen Daten kopiert werden sollen. Ohne Angabe werden die physischen Partitionen in der Tabelle, die Sie im Oracle-Dataset angegeben haben, von Data Factory automatisch erkannt.<br><br>Während der Ausführung ersetzt Data Factory `?AdfTabularPartitionName` durch den tatsächlichen Partitionsnamen und sendet die Daten an Oracle. |
+| Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage mit physischen Partitionen | **Partitionsoption:** Physische Partitionen der Tabelle.<br>**Abfrage**: `SELECT * FROM <TABLENAME> PARTITION("?AdfTabularPartitionName") WHERE <your_additional_where_clause>`<br>**Partitionsname:** Geben Sie den Namen der Partitionen an, aus denen Daten kopiert werden sollen. Ohne Angabe werden die physischen Partitionen in der Tabelle, die Sie im Oracle-Dataset angegeben haben, von Data Factory automatisch erkannt.<br><br>Während der Ausführung ersetzt Data Factory `?AdfTabularPartitionName` durch den tatsächlichen Partitionsnamen und sendet die Daten an Oracle. |
 | Laden einer großen Datenmenge unter Verwendung einer benutzerdefinierten Abfrage ohne physische Partitionen, aber mit einer Integerspalte für die Datenpartitionierung | **Partitionsoptionen:** Dynamische Bereichspartitionierung<br>**Abfrage**: `SELECT * FROM <TABLENAME> WHERE ?AdfRangePartitionColumnName <= ?AdfRangePartitionUpbound AND ?AdfRangePartitionColumnName >= ?AdfRangePartitionLowbound AND <your_additional_where_clause>`<br>**Partitionsspalte:** Geben Sie die Spalte für die Datenpartitionierung an. Die Partitionierung kann auf der Grundlage der Spalte mit dem Datentyp „Integer“ erfolgen.<br>**Obergrenze der Partition** und **Untergrenze der Partition**: Geben Sie an, ob Sie anhand der Partitionsspalte filtern möchten, um nur Daten zwischen der Ober- und der Untergrenze zu erhalten.<br><br>Data Factory ersetzt während der Ausführung `?AdfRangePartitionColumnName`, `?AdfRangePartitionUpbound` und `?AdfRangePartitionLowbound` durch den tatsächlichen Spaltennamen und die Wertebereiche für die jeweilige Partition und sendet die Daten dann an Oracle. <br>Wenn Ihre Partitionsspalte „ID“ also beispielsweise mit der Untergrenze „1“ und der Obergrenze „80“ konfiguriert und paralleles Kopieren auf „4“ festgelegt ist, ruft Data Factory Daten anhand von vier Partitionen ab. Die ID-Bereiche sehen dann wie folgt aus: [1–20], [21–40], [41–60] und [61–80]. |
 
 **Beispiel: Abfrage mit physischer Partition**
@@ -353,14 +347,14 @@ Es wird empfohlen, das parallele Kopieren mit Datenpartitionierung zu aktivieren
 
 Beim Kopieren von Daten aus Oracle und nach Oracle gelten folgende Zuordnungen. Weitere Informationen dazu, wie die Kopieraktivität das Quellschema und den Datentyp zur Senke zuordnet, finden Sie unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md).
 
-| Datentyp "Oracle" | Data Factory-Zwischendatentyp |
+| Oracle-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | BFILE |Byte[] |
 | BLOB |Byte[]<br/>(nur für Oracle 10g und höher unterstützt) |
 | CHAR |String |
 | CLOB |String |
 | DATE |Datetime |
-| FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
+| GLEITKOMMAZAHL |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | LONG |String |
 | LONG RAW |Byte[] |
@@ -370,7 +364,7 @@ Beim Kopieren von Daten aus Oracle und nach Oracle gelten folgende Zuordnungen. 
 | NVARCHAR2 |String |
 | RAW |Byte[] |
 | ROWID |String |
-| TIMESTAMP |Datetime |
+| timestamp |Datetime |
 | TIMESTAMP WITH LOCAL TIME ZONE |String |
 | TIMESTAMP WITH TIME ZONE |String |
 | UNSIGNED INTEGER |Number |

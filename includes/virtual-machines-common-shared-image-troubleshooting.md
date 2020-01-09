@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 1476830313296615591a69a2cadd04bcc56b22bc
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: cc35133df073eea056586dede62c451713e98c10
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178028"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663145"
 ---
 Wenn beim Ausführen von Vorgängen an Katalogen mit geteilten Images, Imagedefinitionen und Imageversionen Probleme auftreten, führen Sie den fehlgeschlagenen Befehl erneut im Debugmodus aus. Der Debugmodus wird aktiviert, indem Sie in der CLI den Parameter **-debug** übergeben und bei der PowerShell den Parameter **-Debug**. Nachdem Sie den Fehler lokalisiert haben, befolgen Sie dieses Dokument, um die Fehler zu behandeln.
 
@@ -24,7 +24,7 @@ Mögliche Ursachen:
 
 *Der Katalogname ist ungültig.*
 
-Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname kann keine Bindestriche enthalten. Ändern Sie den Katalognamen, und versuchen Sie es noch mal. 
+Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Ändern Sie den Katalognamen, und versuchen Sie es noch mal. 
 
 *Der Katalogname ist innerhalb Ihres Abonnements nicht eindeutig.*
 
@@ -96,7 +96,7 @@ Verwenden Sie den Parameter **--expand ReplicationStatus**, um zu überprüfen, 
 
 ## <a name="azure-limits-and-quotas"></a>Azure-Grenzwerte und -Kontingente 
 
-[Azure-Grenzwerte und -Kontingente](https://docs.microsoft.com/azure/azure-subscription-service-limits) gelten für alle Katalog mit geteilten Images-, Imagedefinitions- und Imageversionsressourcen. Stellen Sie sicher, dass Sie die Grenzwerte für Ihre Abonnements einhalten. 
+[Azure-Grenzwerte und -Kontingente](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-resource-manager/management/azure-subscription-service-limits) gelten für alle Katalog mit geteilten Images-, Imagedefinitions- und Imageversionsressourcen. Stellen Sie sicher, dass Sie die Grenzwerte für Ihre Abonnements einhalten. 
 
 
 

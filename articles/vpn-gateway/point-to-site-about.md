@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7305976060cb5df01f683b3310e59644d7e45b35
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 55433efabea516151cfb858bb61f504e180f5fb7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975090"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353594"
 ---
 # <a name="about-point-to-site-vpn"></a>Informationen zu Point-to-Site-VPN
 
@@ -51,11 +51,11 @@ Mit der nativen Azure AD-Authentifizierung können Sie den bedingten Zugriff von
 
 Auf einer hohen Ebene müssen Sie die folgenden Schritte ausführen, um die Azure AD-Authentifizierung zu konfigurieren:
 
-[1. Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md)
+1. [Konfigurieren eines Azure AD-Mandanten](openvpn-azure-ad-tenant.md)
 
-[2. Aktivieren der Azure AD-Authentifizierung im Gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
+2. [Aktivieren der Azure AD-Authentifizierung im Gateway](https://docs.microsoft.com/azure/vpn-gateway/openvpn-azure-ad-tenant#enable-authentication)
 
-[3. Herunterladen und Konfigurieren von Azure VPN Client (Preview)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
+3. [Herunterladen und Konfigurieren von Azure VPN Client (Vorschau)](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab)
 
 
 ### <a name="authenticate-using-active-directory-ad-domain-server"></a>Authentifizieren mit Active Directory-Domänenserver (AD)
@@ -67,10 +67,6 @@ Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestellt werden. Während 
 Der RADIUS-Server kann auch in AD-Zertifikatdienste integriert werden. Dadurch können Sie den RADIUS-Server und Ihre Unternehmenszertifikatbereitstellung für die P2S-Zertifikatauthentifizierung als Alternative zur Azure-Zertifikatauthentifizierung verwenden. Der Vorteil besteht darin, dass Sie keine Stammzertifikate und gesperrten Zertifikate in Azure hochladen müssen.
 
 Ein RADIUS-Server kann auch in andere externe Identitätssysteme integriert werden. Dadurch ergeben sich zahlreiche Authentifizierungsoptionen für P2S-VPNs, einschließlich Optionen für die mehrstufige Authentifizierung.
-
->[!NOTE]
->Das **OpenVPN®-Protokoll** wird mit der RADIUS-Authentifizierung nicht unterstützt.
->
 
 ![point-to-site](./media/point-to-site-about/p2s.png "Point-to-Site")
 

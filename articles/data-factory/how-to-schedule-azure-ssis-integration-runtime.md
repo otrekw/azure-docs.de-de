@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 8d7d4c8d7e01c6a4bfa644b84f03f8a2ea5bfd06
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 5263af2708ee30566e90cdf59ef69f52f76a9d32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928854"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440321"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Starten und Beenden von Azure-SSIS Integration Runtimes nach einem Zeitplan
 Dieser Artikel beschreibt die Planung des Startens und Beendens einer Azure-SSIS Integration Runtime (IR) mithilfe von Azure Data Factory (ADF). Azure-SSIS IR ist eine dedizierte ADF-Computeressource für das Ausführen von SSIS-Paketen (SQL Server Integration Services). Das Ausführen von Azure-SSIS IR ist mit Kosten verbunden. Sie sollten Ihre IR daher in der Regel nur ausführen, wenn Sie SSIS-Pakete in Azure ausführen müssen, und die IR beenden, wenn Sie sie nicht mehr benötigen. Sie können die ADF-Benutzeroberfläche (UI) oder -App oder Azure PowerShell verwenden, um [die IR manuell zu starten oder zu beenden](manage-azure-ssis-integration-runtime.md).
@@ -64,12 +64,12 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
    - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen** aus, und geben Sie den Namen der neuen Ressourcengruppe ein.   
          
-   Weitere Informationen zu Ressourcengruppen finden Sie im Artikel [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
+   Weitere Informationen zu Ressourcengruppen finden Sie im Artikel [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).
    
 6. Wählen Sie **V2** als **Version** aus.
 7. Wählen Sie für **Speicherort** in der Dropdownliste einen der unterstützten Speicherorte für die Erstellung von ADFs aus.
 8. Wählen Sie die Option **An Dashboard anheften** aus.     
-9. Klicken Sie auf **Create**.
+9. Klicken Sie auf **Erstellen**.
 10. Auf dem Azure-Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying Data Factory** (Data Factory wird bereitgestellt). 
 
     ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-create-azure-ssis-runtime-portal/deploying-data-factory.png)
@@ -133,7 +133,7 @@ Wenn Sie einen dritten Trigger erstellen, der für eine Ausführung täglich um 
     1. Geben Sie unter **Servername** die Zeichenfolge **&lt;Ihr Azure SQL-Datenbank-Servername&gt;.database.windows.net** ein.
     2. Wählen Sie **Optionen >>** aus.
     3. Wählen Sie unter **Mit Datenbank verbinden** die Option **SSISDB** aus.
-    4. Wählen Sie **Verbinden**aus. 
+    4. Wählen Sie **Verbinden**. 
     5. Erweitern Sie **Integration Services-Kataloge** -> **SSISDB** -> Ihr Ordner -> **Projekte** -> Ihr SSIS-Projekt -> **Pakete** . 
     6. Klicken Sie mit der rechten Maustaste auf das auszuführende SSIS-Paket, und wählen Sie **Berichte** -> **Standardberichte** -> **Alle Ausführungen** aus. 
     7. Stellen Sie sicher, dass es ausgeführt wurde. 
@@ -160,7 +160,7 @@ Nachdem Ihre Pipelines nun wie erwartet funktioniert, können Sie Trigger erstel
     4. Geben Sie unter **Wiederholung** eine Frequenz für den Trigger ein. Im folgenden Beispiel ist dies einmal **täglich**. 
     5. Wählen Sie für **Ende** die Option **Kein Ende** aus, oder wählen Sie **On Date** (An Datum) aus, und geben Sie ein Enddatum und eine Uhrzeit ein. 
     6. Wählen Sie **Aktiviert** aus, um den Trigger sofort nach dem Veröffentlichen der gesamten ADF-Einstellungen zu aktivieren. 
-    7. Klicken Sie auf **Weiter**.
+    7. Wählen Sie **Weiter** aus.
 
    ![Trigger -> „Neu/Bearbeiten“](./media/how-to-schedule-azure-ssis-integration-runtime/new-trigger-window.png)
     
@@ -386,7 +386,7 @@ Informationen finden Sie im folgenden Blogbeitrag:
 
 Informationen finden Sie in den folgenden Artikeln der SSIS-Dokumentation: 
 
-- [Deploy, run, and monitor an SSIS package on Azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial) (Bereitstellen, Ausführen und Überwachen eines SSIS-Pakets in Azure)   
+- [Bereitstellen, Ausführen und Überwachen eines SSIS-Pakets in Azure](/sql/integration-services/lift-shift/ssis-azure-deploy-run-monitor-tutorial)   
 - [Connect to the SSISDB Catalog database on Azure](/sql/integration-services/lift-shift/ssis-azure-connect-to-catalog-database) (Herstellen einer Verbindung mit der SSISDB-Katalogdatenbank in Azure)
 - [Schedule the execution of an SSIS package on Azure](/sql/integration-services/lift-shift/ssis-azure-schedule-packages) (Planen der Ausführung eines SSIS-Pakets in Azure)
 - [Connect to on-premises data sources with Windows Authentication](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) (Herstellen einer Verbindung mit lokalen Datenquellen mit Windows-Authentifizierung)

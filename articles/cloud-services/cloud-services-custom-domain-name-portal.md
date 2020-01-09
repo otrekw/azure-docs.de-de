@@ -3,17 +3,17 @@ title: Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services 
 description: Hier erfahren Sie, wie Sie Ihre Azure-Anwendung oder -Daten durch das Konfigurieren von DNS-Einstellungen auf einer benutzerdefinierten Domäne im Internet verfügbar machen.  In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8940d1a319d5bfabf8fd32b98f47cc6d283a8517
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: b1f75a5f7a97907bf5b8bb460ff2df420d053f9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386798"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
 Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie `http://contoso.cloudapp.net` zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
@@ -58,7 +58,7 @@ Sie müssen einen neuen Eintrag zu der DNS-Tabelle Ihrer benutzerdefinierten Dom
 
 1. Verwenden Sie eine dieser Methoden, um den **.cloudapp.net** -Domänennamen zu ermitteln, der Ihrem Clouddienst zugewiesen ist.
 
-   * Melden Sie sich beim [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Website-URL**.
+   * Melden Sie sich beim [Azure portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Website-URL**.
 
        ![Die Schnelleinsicht zeigt die Site-URL.][csurl]
 
@@ -91,7 +91,7 @@ Sie müssen zunächst die virtuelle IP-Adresse Ihres Clouddiensts ermitteln, um 
 
 1. Verwenden Sie eine der folgenden Methoden, um die IP-Adresse Ihres Clouddiensts zu ermitteln.
 
-   * Melden Sie sich beim [Azure-Portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Öffentliche IP-Adressen**.
+   * Melden Sie sich beim [Azure portal] an, und wählen Sie Ihren Clouddienst aus. Suchen Sie im Abschnitt **Übersicht** nach dem Eintrag **Öffentliche IP-Adressen**.
 
        ![Die Schnelleinsicht zeigt die VIP.][vip]
 
@@ -124,7 +124,7 @@ Dieses Beispiel zeigt das Erstellen eines A-Datensatzes für die Stammdomäne. W
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
+* [Verwalten von Clouddiensten](cloud-services-how-to-manage-portal.md)
 * [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](../cdn/cdn-map-content-to-custom-domain.md)
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
@@ -135,6 +135,9 @@ Dieses Beispiel zeigt das Erstellen eines A-Datensatzes für die Stammdomäne. W
 [Expose Your Data on a Custom Domain]: #access-data
 [VIP swaps]: cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production
 [Create a CNAME record that associates the subdomain with the storage account]: #create-cname
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
+
+
+

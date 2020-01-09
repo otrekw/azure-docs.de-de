@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: c0b30ecb9bc2b029141e528139f2b8a308c3a8dd
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f03dbb783fe1374fe138f251d813b3333ed9e025
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892837"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613838"
 ---
-# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events für Linux-VMs
+# <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Instance Metadata Service: Scheduled Events für Linux-VMs
 
 Scheduled Events ist ein Azure-Metadatendienst, der Ihren Anwendungen Zeit zur Vorbereitung auf die Wartung virtueller Computer gibt. Er stellt Informationen zu geplanten Wartungsereignissen (z.B. Neustart) bereit, damit Ihre Anwendung sich darauf vorbereiten und Unterbrechungen begrenzen kann. Der Dienst steht für alle Azure-VM-Typen zur Verfügung, einschließlich PaaS und IaaS unter Windows und Linux. 
 
@@ -76,9 +76,9 @@ Das Feature für geplante Ereignisse ist versionsspezifisch. Die Versionen sind 
 
 | Version | Releasetyp | Regions | Versionsinformationen | 
 | - | - | - | - | 
-| 2017-11-01 | Allgemeine Verfügbarkeit | Alle | <li> Unterstützung für die Entfernung von Spot-VMs hinzugefügt (EventType „Preempt“)<br> | 
-| 2017-08-01 | Allgemeine Verfügbarkeit | Alle | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
-| 2017-03-01 | Vorschau | Alle | <li>Erste Version
+| 2017-11-01 | Allgemeine Verfügbarkeit | All | <li> Unterstützung für die Entfernung von Spot-VMs hinzugefügt (EventType „Preempt“)<br> | 
+| 2017-08-01 | Allgemeine Verfügbarkeit | All | <li> Ein vorangestellter Unterstrich wurde aus Ressourcennamen virtueller Iaas-Computer entfernt.<br><li>Der Metadatenheader wird als Voraussetzung für alle Anforderungen erzwungen. | 
+| 2017-03-01 | Vorschau | All | <li>Erste Veröffentlichung
 
 
 > [!NOTE] 
@@ -176,20 +176,20 @@ Im folgenden Beispiel fragt der Metadatenserver geplante Ereignisse ab und geneh
 #!/usr/bin/python
 
 import json
-import urllib2
 import socket
-import sys
+import urllib2
 
-metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01"
-headers = "{Metadata:true}"
+metadata_url = "http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01"
 this_host = socket.gethostname()
 
+
 def get_scheduled_events():
-   req = urllib2.Request(metadata_url)
-   req.add_header('Metadata', 'true')
-   resp = urllib2.urlopen(req)
-   data = json.loads(resp.read())
-   return data
+    req = urllib2.Request(metadata_url)
+    req.add_header('Metadata', 'true')
+    resp = urllib2.urlopen(req)
+    data = json.loads(resp.read())
+    return data
+
 
 def handle_scheduled_events(data):
     for evt in data['Events']:
@@ -198,19 +198,20 @@ def handle_scheduled_events(data):
         resources = evt['Resources']
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
-        notbefore = evt['NotBefore'].replace(" ","_")
+        notbefore = evt['NotBefore'].replace(" ", "_")
         if this_host in resources:
-            print "+ Scheduled Event. This host " + this_host + " is scheduled for " + eventtype + " not before " + notbefore
+            print("+ Scheduled Event. This host " + this_host +
+                " is scheduled for " + eventtype + " not before " + notbefore)
             # Add logic for handling events here
 
 
 def main():
-   data = get_scheduled_events()
-   handle_scheduled_events(data)
+    data = get_scheduled_events()
+    handle_scheduled_events(data)
+
 
 if __name__ == '__main__':
-  main()
-  sys.exit(0)
+    main()
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte 

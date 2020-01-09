@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560647"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644885"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance der Azure DevTest Labs-Infrastruktur: Migration und Integration von Anwendungen
 Nach der Einrichtung Ihrer Entwicklungs-/Test Lab-Umgebung müssen Sie sich die folgenden Fragen stellen:
@@ -93,7 +93,7 @@ Wann sollte ich ein neues virtuelles Netzwerk für meine DevTest Labs-Umgebung e
 ### <a name="answer"></a>Antwort
 Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, sollten Sie die Verwendung eines vorhandenen virtuellen Netzwerks innerhalb Ihrer DevTest Labs-Umgebung in Erwägung ziehen. Wenn Sie ExpressRoute verwenden, kann es darüber hinaus sinnvoll sein, die Menge der VNets/Subnetze zu minimieren, um Fragmentierung Ihres IP-Adressraums, der für die Verwendung in den Abonnements zugewiesen wird, zu vermeiden. Sie sollten hier ferner die Verwendung des VNet-Peeringmusters (Nabe-Speiche-Modell) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende Kommunikation in VNets/Subnetzen innerhalb einer bestimmten Region. Das regionsübergreifende Peering ist als zukünftiges Feature in Azure-Netzwerken vorgesehen.
 
-Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. Beachten Sie aber, dass die Anzahl der virtuellen Netzwerke pro Abonnement [begrenzt](../azure-subscription-service-limits.md) ist. Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
+Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. Beachten Sie aber, dass die Anzahl der virtuellen Netzwerke pro Abonnement [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md) ist. Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
 
 ## <a name="shared-public-or-private-ip"></a>Freigegebene, öffentliche oder private IP
 
@@ -117,7 +117,7 @@ Gibt es eine Regel hinsichtlich der Anzahl virtueller Computer, die pro Benutzer
 Beim Betrachten der Anzahl virtueller Computer pro Benutzer oder Lab gibt es drei Hauptanliegen:
 
 - Die **Gesamtkosten**, die das Team für Ressourcen im Lab aufwenden kann. Es ist natürlich kein Problem, viele Computer laufen zu lassen. Ein Mechanismus zur Kostenkontrolle besteht darin, die Anzahl der VMs pro Benutzer und/oder Lab zu beschränken.
-- Die Gesamtzahl der virtuellen Computer in einem Lab wird durch die verfügbaren [Kontingente auf Abonnementebene](../azure-subscription-service-limits.md) beeinflusst. Eine der Obergrenzen liegt bei 800 Ressourcengruppen pro Abonnement. DevTest Labs erstellt derzeit eine neue Ressourcengruppe für jeden virtuellen Computer (sofern keine gemeinsamen öffentlichen IP-Adressen verwendet werden). Wenn Sie 10 Labs in einem Abonnement betreiben, könnten pro Lab ungefähr 79 virtuelle Computer eingesetzt werden (Obergrenze von 800 – 10 Ressourcengruppen für die 10 Labs selbst) = 79 virtuelle Computer pro Lab.
+- Die Gesamtzahl der virtuellen Computer in einem Lab wird durch die verfügbaren [Kontingente auf Abonnementebene](../azure-resource-manager/management/azure-subscription-service-limits.md) beeinflusst. Eine der Obergrenzen liegt bei 800 Ressourcengruppen pro Abonnement. DevTest Labs erstellt derzeit eine neue Ressourcengruppe für jeden virtuellen Computer (sofern keine gemeinsamen öffentlichen IP-Adressen verwendet werden). Wenn Sie 10 Labs in einem Abonnement betreiben, könnten pro Lab ungefähr 79 virtuelle Computer eingesetzt werden (Obergrenze von 800 – 10 Ressourcengruppen für die 10 Labs selbst) = 79 virtuelle Computer pro Lab.
 - Wenn das Lab mithilfe von ExpressRoute (beispielsweise) mit dem lokalen Netzwerk verbunden ist, sind für das VNet/Subnetz **definierte IP-Adressräume verfügbar**. Um sicherzustellen, dass keine Fehler beim Erstellen von VMs im Lab auftreten (Fehler: IP-Adresse kann nicht abgerufen werden), können sich Lab-Besitzer beim Festlegen der maximalen Anzahl von VMs pro Lab am zur Verfügung stehenden IP-Adressraum orientieren.
 
 ## <a name="use-resource-manager-templates"></a>Verwenden von Resource Manager-Vorlagen

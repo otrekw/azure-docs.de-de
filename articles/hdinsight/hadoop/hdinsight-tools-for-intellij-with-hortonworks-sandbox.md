@@ -3,18 +3,18 @@ title: Verwenden des Azure-Toolkits für IntelliJ mit Hortonworks Sandbox
 description: Erfahren Sie, wie Sie HDInsight-Tools im Azure-Toolkit für IntelliJ mit Hortonworks Sandbox verwenden.
 keywords: Hadoop-Tools,Hive-Abfrage,IntelliJ,Hortonworks Sandbox,Azure-Toolkit für IntelliJ
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
+ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.author: hrasheed
-ms.openlocfilehash: 783d7fc8bc26ce2c715c774e63ecf60c5b75a439
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076257"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647831"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Verwenden von HDInsight-Tools für IntelliJ mit Hortonworks Sandbox
 
@@ -57,13 +57,13 @@ In diesem Abschnitt erstellen Sie mit IntelliJ IDEA ein Scala-Beispielprojekt. I
 
    ![Intellij – Neues Scala-Projekt erstellen](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project.png)
 
-2. Klicken Sie auf **Weiter**.
+2. Wählen Sie **Weiter** aus.
 3. Führen Sie im nächsten Dialogfeld **New Project** (Neues Projekt) folgende Schritte aus:
 
    1. Geben Sie in das Feld **Project name** einen Projektnamen ein.
    2. Geben Sie in das Feld **Project location** (Projektspeicherort) einen Projektspeicherort ein.
    3. Klicken Sie neben der Dropdownliste **Project SDK** (Projekt-SDK) auf **New** (Neu). Wählen Sie **JDK** aus, und geben Sie dann den Ordner der Java JDK-Version 1.7 oder höher an. Wählen Sie **Java 1.8** für den Spark 2.x-Cluster. Wählen Sie **Java 1.7** für den Spark 1.x-Cluster. Der Standardspeicherort ist „C:\Programme\Java\jdk1.8.x_xxx“.
-   4. In der Dropdownliste **Spark Version** (Spark-Version) fügt der Scala-Projekterstellungs-Assistent die richtige Version für das Spark-SDK und das Scala-SDK ein. Wenn die Spark-Clusterversion niedriger als 2.0 ist, wählen Sie **Spark 1.x** aus. Wählen Sie andernfalls **Spark 2.x** aus. In diesem Beispiel wird Spark 1.6.2 (Scala 2.10.5) verwendet. Stellen Sie sicher, dass Sie das Repository **Scala 2.10.x** verwenden. Verwenden Sie nicht das Repository „Scala 2.11.x“.
+   4. In der Dropdownliste **Spark Version** (Spark-Version) fügt der Scala-Projekterstellungs-Assistent die richtige Version für das Spark-SDK und das Scala-SDK ein. Wenn Sie eine ältere Spark-Clusterversion als 2.0 verwenden, wählen Sie **Spark 1.x** aus. Wählen Sie andernfalls **Spark 2.x** aus. In diesem Beispiel wird Spark 1.6.2 (Scala 2.10.5) verwendet. Stellen Sie sicher, dass Sie das Repository **Scala 2.10.x** verwenden. Verwenden Sie nicht das Repository „Scala 2.11.x“.
     
       ![Erstellen von IntelliJ Scala-Projekteigenschaften](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
@@ -158,4 +158,3 @@ So übermitteln Sie ein Projekt an einen Emulator:
 
 - Erfahren Sie mehr über das [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Apache Spark-Anwendungen](../spark/apache-spark-eclipse-tool-plugin.md).
 
-- Ein Video zu HDInsight-Tools für Eclipse finden Sie unter [Use HDInsight Tool for Eclipse to create Spark applications](https://mix.office.com/watch/1rau2mopb6fha) (Verwenden von HDInsight-Tools für Eclipse zum Erstellen von Spark-Anwendungen).

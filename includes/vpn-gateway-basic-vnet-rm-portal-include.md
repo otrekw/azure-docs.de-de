@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 02297a45c9560f867e97d7024862ea0de5d3f7b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828841"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469724"
 ---
 Sie können ein VNET wie im Folgenden beschrieben mit dem Resource Manager-Bereitstellungsmodell im Azure-Portal erstellen. Weitere Informationen zu virtuellen Netzwerken finden Sie in der [Übersicht über Azure Virtual Network](../articles/virtual-network/virtual-networks-overview.md).
 
@@ -22,7 +22,7 @@ Sie können ein VNET wie im Folgenden beschrieben mit dem Resource Manager-Berei
 >
 >
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. Die Seite **Neu** wird geöffnet.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.  Klicken Sie im Menü des Azure-Portals oder auf der Seite **Home** auf die Option **Ressource erstellen**. Die Seite **Neu** wird geöffnet.
 
 2. Geben Sie *virtuelles Netzwerk* in das Feld **Marketplace durchsuchen** ein, und wählen Sie aus den Ergebnissen den Eintrag **Virtuelles Netzwerk** aus.
 
@@ -38,11 +38,11 @@ Sie können ein VNET wie im Folgenden beschrieben mit dem Resource Manager-Berei
 
    - **Name**: Geben Sie den Namen für Ihr virtuelles Netzwerk ein.
 
-   - **Adressraum**: Geben Sie den Adressraum ein. Falls Sie mehrere Adressräume hinzufügen möchten, geben Sie hier den ersten Adressraum ein. Sie können später weitere Adressräume hinzufügen, nachdem Sie das VNET erstellt haben.
+   - **Adressraum:** Geben Sie den Adressraum ein. Falls Sie mehrere Adressräume hinzufügen möchten, geben Sie hier den ersten Adressraum ein. Sie können später weitere Adressräume hinzufügen, nachdem Sie das VNET erstellt haben.
 
    - **Abonnement**: Vergewissern Sie sich, dass das richtige Abonnement angegeben ist. Das Abonnement kann über die Dropdownliste geändert werden.
 
-   - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Verwenden Sie für eine neue Ressourcengruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../articles/azure-resource-manager/resource-group-overview.md#resource-groups).
+   - **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Verwenden Sie für eine neue Ressourcengruppe einen Namen, der zu Ihren geplanten Konfigurationswerten passt. Weitere Informationen zu Ressourcengruppen finden Sie unter [Azure Resource Manager – Übersicht](../articles/azure-resource-manager/management/overview.md#resource-groups).
 
    - **Standort**: Wählen Sie den Standort für Ihr VNET aus. Der Standort gibt an, wo sich die in diesem VNET bereitgestellten Ressourcen befinden.
 

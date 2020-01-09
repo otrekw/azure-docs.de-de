@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013996"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438060"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Erstellen und Verwalten von Rollenzuweisungen in Azure Digital Twins
 
@@ -36,13 +36,13 @@ Jede Rollenzuweisung entspricht der folgenden Definition:
 
 In der folgenden Tabelle werden die einzelnen Attribute beschrieben:
 
-| Attribut | NAME | Erforderlich | Typ | BESCHREIBUNG |
+| attribute | Name | Erforderlich | type | BESCHREIBUNG |
 | --- | --- | --- | --- | --- |
-| roleId | Bezeichner der Rollendefinition | Ja | Zeichenfolge | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
-| objectId | Objektbezeichner | Ja | Zeichenfolge | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
-| objectIdType | Objektbezeichnertyp | Ja | Zeichenfolge | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
-| path | Raumpfad | Ja | Zeichenfolge | Der vollständige Zugriffspfad für das `Space`-Objekt. Ein Beispiel ist `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
-| tenantId | Mandanten-ID | Varies | Zeichenfolge | In den meisten Fällen eine Azure Active Directory-Mandanten-ID. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
+| roleId | Bezeichner der Rollendefinition | Ja | String | Die eindeutige ID der gewünschten Rollenzuweisung. Sie können Rollendefinitionen und deren Bezeichner (IDs) durch das Abfragen der System-API ermitteln, oder die unten stehende Tabelle überprüfen. |
+| objectId | Objektbezeichner | Ja | String | Eine Azure Active Directory-ID, eine Dienstprinzipalobjekt-ID oder ein Domänenname. Wem die Rollenzuweisung zugewiesen ist (Objekt oder Person). Die Rollenzuweisung muss gemäß ihrem zugeordneten Typ formatiert sein. Für den `DomainName`-objectIdType muss objectId mit dem `“@”`-Zeichen beginnen. |
+| objectIdType | Objektbezeichnertyp | Ja | String | Die Art des verwendeten Objektbezeichners. Siehe unten unter **Unterstützte ObjektIdTypes**. |
+| path | Raumpfad | Ja | String | Der vollständige Zugriffspfad für das `Space`-Objekt. z. B. `/{Guid}/{Guid}`. Wenn für einen Bezeichner die Rollenzuweisung für den gesamten Graphen erforderlich ist, geben Sie `"/"` an. Mit diesem Zeichen wird der Stamm angegeben, aber von der Verwendung wird abgeraten. Befolgen Sie immer das Prinzip der geringsten Rechte. |
+| tenantId | Mandanten-ID | Varies | String | In den meisten Fällen eine Azure Active Directory-Mandanten-ID. Nicht zulässig für den `DeviceId`- und den `TenantId`-objectIdType. Erforderlich für den `UserId`- und den `ServicePrincipalId`-objectIdType. Optional für den DomainName-objectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Unterstützte Rollendefinitionsbezeichner
 
@@ -163,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parameterwert** | **Erforderlich** |  **Typ** |  **Beschreibung** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Zeichenfolge |   Die objectId für objectIdType „UserId“. |
-| YOUR_PATH | True | Zeichenfolge |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |
-| YOUR_ACCESS_TYPE |  True | Zeichenfolge |   *Read*, *Create*, *Update* oder *Delete* |
-| YOUR_RESOURCE_TYPE | True | Zeichenfolge |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *Endpoint*, *KeyStore*, *Matcher*, *Ontology*, *Report*, *RoleDefinition*, *Sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *System*, *UerDefinedFunction*, *User*, *UserBlobMetadata* oder *UserExtendedProperty* |
+| YOUR_USER_ID |  True | String |   Die objectId für objectIdType „UserId“. |
+| YOUR_PATH | True | String |   Der ausgewählte Pfad, für den der Zugriff überprüft werden solle. |
+| YOUR_ACCESS_TYPE |  True | String |   *Read*, *Create*, *Update* oder *Delete* |
+| YOUR_RESOURCE_TYPE | True | String |  *Device*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *ExtendedType*, *Endpoint*, *KeyStore*, *Matcher*, *Ontology*, *Report*, *RoleDefinition*, *Sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *System*, *UerDefinedFunction*, *User*, *UserBlobMetadata* oder *UserExtendedProperty* |
 
 Eine erfolgreiche Anforderung gibt einen booleschen `true`- oder `false`-Wert zurück, um anzuzeigen, ob dem Benutzer der Zugriffstyp für den angegebenen Pfad und die Ressource zugewiesen wurde.
 
@@ -178,7 +178,7 @@ Um alle Rollenzuweisungen für einen Pfad abzurufen, stellen Sie eine authentifi
 YOUR_MANAGEMENT_API_URL/roleassignments?path=YOUR_PATH
 ```
 
-| Wert | Ersetzen durch |
+| value | Ersetzen durch |
 | --- | --- |
 | YOUR_PATH | Der vollständige Pfad zum Raum |
 
@@ -240,7 +240,7 @@ Eine erfolgreiche Anforderung gibt einen Antwortstatus „201“ zurück, zusamm
 
 Die folgenden Beispiele veranschaulichen, wie Sie Ihren JSON-Text in verschiedenen, häufig auftretenden Rollenzuweisungsszenarios konfigurieren sollten.
 
-* **Beispiel**: Ein Benutzer benötigt Administratorzugriff auf eine Ebene eines Mandantenraums.
+* **Beispiel:** Ein Benutzer benötigt Administratorzugriff auf eine Ebene eines Mandantenraums.
 
    ```JSON
    {
@@ -252,7 +252,7 @@ Die folgenden Beispiele veranschaulichen, wie Sie Ihren JSON-Text in verschieden
    }
    ```
 
-* **Beispiel**: Eine Anwendung führt Testszenarien aus, in denen Geräte und Sensoren simuliert werden.
+* **Beispiel:** Eine Anwendung führt Testszenarien aus, in denen Geräte und Sensoren simuliert werden.
 
    ```JSON
    {
@@ -264,7 +264,7 @@ Die folgenden Beispiele veranschaulichen, wie Sie Ihren JSON-Text in verschieden
    }
     ```
 
-* **Beispiel**: Alle Benutzer, die Teil einer Domäne sind, erhalten Lesezugriff für Räume, Sensoren und Benutzer. Dieser Zugriff umfasst auch die entsprechenden zugehörigen Objekte.
+* **Beispiel:** Alle Benutzer, die Teil einer Domäne sind, erhalten Lesezugriff für Räume, Sensoren und Benutzer. Dieser Zugriff umfasst auch die entsprechenden zugehörigen Objekte.
 
    ```JSON
    {

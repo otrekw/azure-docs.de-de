@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff01bd0d6586cf75dcfdb7277c34120c6ec22894
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078151"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647491"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Erstellen einer SAP NetWeaver Multi-SID-Konfiguration
 
@@ -33,7 +33,7 @@ ms.locfileid: "70078151"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -88,7 +88,7 @@ Die vollständige Szene mit zwei hoch verfügbaren SAP-Systemen sieht dann so au
 ## <a name="prepare-the-infrastructure"></a>Vorbereiten der Infrastruktur
 Um Ihre Infrastruktur vorzubereiten, können Sie mit den folgenden Parametern eine zusätzliche SAP ASCS/SCS-Instanz installieren:
 
-| Parametername | Wert |
+| Parametername | value |
 | --- | --- |
 | SAP ASCS/SCS-SID |pr1-lb-ascs |
 | Interner Load Balancer für das SAP-DBMS | PR5 |
@@ -219,7 +219,7 @@ Nach Ausführung des Skripts werden die Ergebnisse im Azure-Portal angezeigt, wi
 
 Sie müssen für jede zusätzliche SAP ASCS/SCS-Instanz einen neuen gemeinsamen Clusterdatenträger hinzufügen. Als gemeinsamer WSFC-Clusterdatenträger für Windows Server 2012 R2 wird aktuell die SIOS DataKeeper-Softwarelösung verwendet.
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 1. Fügen Sie jedem der Clusterknoten einen weiteren Datenträger oder weitere Datenträger gleicher Größe (als Stripeset) hinzu, und formatieren Sie sie.
 2. Konfigurieren Sie Speicherreplikation mit SIOS DataKeeper.
 

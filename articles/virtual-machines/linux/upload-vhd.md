@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 95486208f52b2faa2fbb3db5bf1ef968c330dab6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 70fff041cd693a19269b11398947fb0c8ce56bb1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350683"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Erstellen eines virtuellen Linux-Computers auf der Grundlage eines benutzerdefinierten Datenträgers mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -40,7 +40,7 @@ Für die folgenden Schritte benötigen Sie Folgendes:
 
 - Einen virtuellen Linux-Computer, der für die Verwendung in Azure vorbereitet wurde. Im Abschnitt [Vorbereiten des virtuellen Computers](#prepare-the-vm) dieses Artikels erfahren Sie, wo Sie distributionsspezifische Informationen zur Installation des Azure Linux-Agents (waagent) finden. Dieser ist erforderlich, um eine SSH-Verbindung mit einem virtuellen Computer herstellen zu können.
 - Die VHD-Datei einer vorhandenen [ von Azure unterstützten Linux-Distribution](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (oder [Informationen zu nicht unterstützten Distributionen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) an einen virtuellen Datenträger im VHD-Format. Für die Erstellung virtueller Computer und Festplatten stehen verschiedene Tools zur Verfügung:
-  - Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](https://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie mit `qemu-img convert` [ein Image konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
+  - Installieren und konfigurieren Sie [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) oder [KVM](https://www.linux-kvm.org/page/RunningKVM), und verwenden Sie dabei „VHD“ als Imageformat. Bei Bedarf können Sie mit `qemu-img convert`[ein Image konvertieren](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats).
   - Unter [Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) und [Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx) können Sie auch Hyper-V verwenden.
 
 > [!NOTE]
@@ -53,7 +53,7 @@ Für die folgenden Schritte benötigen Sie Folgendes:
 
 Ersetzen Sie in den folgenden Beispielen die exemplarischen Parameternamen durch Ihre eigenen Werte (beispielsweise `myResourceGroup`, `mystorageaccount` und `mydisks`).
 
-<a id="prepimage"></a>
+<a id="prepimage"> </a>
 
 ## <a name="prepare-the-vm"></a>Vorbereiten des virtuellen Computers
 
@@ -134,4 +134,4 @@ az vm create \
 Mit den Anmeldeinformationen des virtuellen Quellcomputers sollten Sie eine SSH-Verbindung mit dem virtuellen Computer herstellen können. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../../azure-resource-manager/resource-group-overview.md)beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Nachdem Sie den benutzerdefinierten virtuellen Datenträger vorbereitet und hochgeladen haben, können Sie sich mit der [Verwendung von Resource Manager und Vorlagen](../../azure-resource-manager/management/overview.md)beschäftigen. Informationen zum Hinzufügen eines Datenträgers zu Ihren neuen virtuellen Computern finden Sie [hier](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) . Falls auf Ihren virtuellen Computern Anwendungen ausgeführt werden, auf die Sie zugreifen müssen, müssen Sie [Ports und Endpunkte öffnen](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

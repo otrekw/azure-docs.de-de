@@ -5,15 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f9ed841d347d99a2208971d164bbd7b9044e3b09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436842"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Umstellen von öffentlichem Peering auf Microsoft-Peering
 
@@ -63,7 +62,7 @@ Eine ausführliche Anleitung zum Aktivieren des Microsoft-Peerings finden Sie in
 
 Vergewissern Sie sich, dass Microsoft-Peering aktiviert ist und die angekündigten öffentlichen Präfixe konfiguriert sind.
 
-* [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
+* [Azure portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)<br>
 * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)<br>
 * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md#getmsft)
 
@@ -83,9 +82,8 @@ Gehen Sie zum Konfigurieren von Routenfiltern gemäß einem der folgenden Artike
 
 Nachdem Sie sich vergewissert haben, dass das Microsoft-Peering konfiguriert ist und die Präfixe, die Sie nutzen möchten, ordnungsgemäß für Microsoft-Peering angekündigt werden, können Sie das öffentliche Peering löschen. Gehen Sie zum Löschen des öffentlichen Peerings gemäß einem der folgenden Artikel vor:
 
-* [Löschen des öffentlichen Azure-Peerings über das Azure-Portal](expressroute-howto-routing-portal-resource-manager.md#deletepublic)<br>
-* [Löschen des öffentlichen Azure-Peerings mithilfe von Azure PowerShell](expressroute-howto-routing-arm.md#deletepublic)<br>
-* [Löschen des öffentlichen Azure-Peerings mithilfe der Befehlszeilenschnittstelle](howto-routing-cli.md#deletepublic)
+* [Löschen des öffentlichen Azure-Peerings mithilfe von Azure PowerShell](about-public-peering.md#powershell)
+* [Löschen des öffentlichen Azure-Peerings mithilfe der Befehlszeilenschnittstelle](about-public-peering.md#cli)
   
 ## <a name="view"></a>5. Anzeigen der Peerings
   

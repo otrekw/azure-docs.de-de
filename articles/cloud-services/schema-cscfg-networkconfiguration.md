@@ -6,14 +6,14 @@ services: cloud-services
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 28
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: c5a6501c71420ca5b43c4c08c2a29ae5f27b4af5
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: cacc8b1f2909965594fdf0d841963e792acf648c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945921"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385423"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services – Netzwerkkonfigurationsschema
 
@@ -72,5 +72,5 @@ Die folgende Tabelle beschreibt die untergeordneten Elemente des `NetworkConfigu
 | Subnet | Optional. Gibt das Subnetz an, das dem Subnetznamen in der Netzwerkkonfigurationsdatei entspricht. Der Name des Subnetzes wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 | ReservedIP | Optional. Gibt die reservierte IP-Adresse an, die der Bereitstellung zugeordnet werden soll. Sie müssen mit „Reservierte IP-Adresse erstellen“ die reservierte IP-Adresse erstellen. Jede Bereitstellung in einem Clouddienst kann einer reservierten IP-Adresse zugeordnet werden. Der Name der reservierten IP-Adresse wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Azure Cloud Services Config Schema (.cscfg File)](schema-cscfg-file.md) (Azure Cloud Services-Konfigurationsschema (CSCFG-Datei))

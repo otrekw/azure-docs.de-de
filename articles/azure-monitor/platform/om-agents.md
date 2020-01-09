@@ -4,15 +4,15 @@ description: Zur Bewahrung Ihrer bisherigen Investitionen in System Center Opera
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/13/2019
-ms.openlocfilehash: 79fcbb6f972eb022ce4d0e47a608e6f0d053a9ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5dc9412c7884eb62795fd04240f6cfa7d103e3be
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162241"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363658"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>Herstellen einer Verbindung zwischen Operations Manager und Azure Monitor
 
@@ -116,7 +116,7 @@ Nachdem Sie die folgenden Schritte zur Integration mit Azure Monitor abgeschloss
 1. Wählen Sie in der Operations Manager-Konsole den Arbeitsbereich **Administration** aus.
 1. Erweitern Sie den Knoten für Operations Management Suite, und klicken Sie auf **Verbindung**.
 1. Klicken Sie auf den Link **Register to Operations Management Suite** (Bei Operations Management Suite registrieren).
-1. Geben Sie auf der Seite des **Assistenten zum Onboarding der Operations Management Suite: Authentifizierung** die E-Mail-Adresse oder Telefonnummer und Kennwort des Administratorkontos ein, das mit Ihrem OMS-Abonnement verknüpft ist, und klicken Sie auf **Anmelden**.
+1. Klicken Sie auf der Seite des **Assistenten zum Onboarding der Operations Management Suite: Authentifizierung** die E-Mail-Adresse oder Telefonnummer und Kennwort des Administratorkontos ein, das mit Ihrem OMS-Abonnement verknüpft ist, und klicken Sie auf **Anmelden**.
 
    >[!NOTE]
    >Der Name der Operations Management Suite wurde eingestellt.

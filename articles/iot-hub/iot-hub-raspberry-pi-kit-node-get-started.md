@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: wesmc
-ms.openlocfilehash: 28897ca6f80632210032b7f800404fc921143adf
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 5780477be71988653e89379ae17e9009337bbc0f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457098"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (Node.js)
 
@@ -51,7 +51,7 @@ Sie haben noch kein Kit? Probieren Sie den [Raspberry Pi-Onlinesimulator](iot-hu
 
 * Eine Raspberry Pi 2- oder Raspberry Pi 3-Platine.
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 * Ein Monitor, eine USB-Tastatur und eine Maus, die mit Pi verbunden werden.
 
@@ -148,7 +148,7 @@ Verwenden Sie für Sensorstifte die folgende Verkabelung:
 | LED VDD (Stift 18F)        | GPIO 24 (Stift 18)       | Weißes Kabel   |
 | LED GND (Stift 17F)        | GND (Stift 20)           | Schwarzes Kabel   |
 
-Klicken Sie hier, um die [Raspberry Pi 2- und 3-Stiftzuordnungen](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) zur Referenz anzuzeigen.
+Klicken Sie hier, um die [Raspberry Pi 2- und 3-Stiftzuordnungen](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) zur Referenz anzuzeigen.
 
 Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollte das Gerät wie in der nachstehenden Abbildung aussehen.
 

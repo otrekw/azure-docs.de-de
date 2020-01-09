@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582238"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646726"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Verschieben von Daten in Azure-Blobspeicher
 
@@ -21,7 +21,7 @@ Dieser Artikel erläutert die besten Verfahren zum Verschieben von Daten in Blob
 
 Beachten Sie dabei Folgendes:
 
-* Azure HPC Cache verwendet ein spezielles Speicherformat zum Strukturieren der Daten in Blobspeicher. Aus diesem Grund muss ein Blob Storage-Ziel entweder ein neuer, leerer Container oder ein Blobcontainer sein, der zuvor für Azure HPC Cache-Daten verwendet wurde. ([Avere vFXT für Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) verwendet ebenfalls dieses Clouddateisystem.)
+* Azure HPC Cache verwendet ein spezielles Speicherformat zum Strukturieren der Daten in Blobspeicher. Aus diesem Grund muss ein Blob Storage-Ziel entweder ein neuer, leerer Container oder ein Blobcontainer sein, der zuvor für Azure HPC Cache-Daten verwendet wurde. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * Das Kopieren von Daten über Azure HPC Cache in ein Back-End-Speicherziel ist effizienter, wenn Sie mehrere Clients und parallele Operationen verwenden. Ein einfacher Kopierbefehl von einem Client verschiebt Daten langsam.
 

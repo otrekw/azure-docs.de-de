@@ -1,5 +1,6 @@
 ---
-title: Ausweiten von Berechtigungen für die private Cloud – Azure-VMware-Lösung von CloudSimple
+title: Ausweiten von Berechtigungen für die private Cloud
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschreibt, wie Sie Berechtigungen in Ihrer privaten Cloud für administrative Funktionen in vCenter ausweiten
 author: sharaths-cs
 ms.author: b-shsury
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b54f1d8c0705488c53925d097433e77aed3eac72
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69617612"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372770"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Ausweiten von Berechtigungen für das vCenter Ihrer privaten Cloud über das CloudSimple-Portal
 
@@ -30,7 +31,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 
 ## <a name="escalate-privileges"></a>Eskalieren von Berechtigungen
 
-1. Greifen Sie auf das [CloudSimple-Portal](access-cloudsimple-portal.md) zu.
+1. Rufen Sie das [CloudSimple-Portal](access-cloudsimple-portal.md) auf.
 
 2. Öffnen Sie die Seite **Resources** (Ressourcen), und wählen Sie die private Cloud aus, für die Sie die Berechtigungen ausweiten möchten.
 

@@ -4,15 +4,15 @@ description: Dieser Artikel enthält Details zum Konfigurieren des Log Analytics
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2017
-ms.openlocfilehash: 60f09035f4aabcbd6348fb5608b812ca4b001b45
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 75fd0453534e3a656bb1d8e2940b716dadfdf869
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932451"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395846"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -42,7 +42,7 @@ Die MySQL-OMI-Authentifizierungsdatei hat das folgende Format
 
 In der folgenden Tabelle werden die Einträge aus der Authentifizierungsdatei beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | Port | Stellt den aktuellen Port dar, den die MySQL-Instanz überwacht Port 0 gibt an, dass die folgenden Eigenschaften für die Standardinstanz verwendet werden. |
 | Bind-Adresse| Aktuelle MySQL-Bind-Adresse |
@@ -55,7 +55,7 @@ Die MySQL-OMI-Authentifizierungsdatei kann eine Standardinstanz und Portnummer d
 
 Die folgende Tabelle enthält Beispielinstanzeinstellungen 
 
-| Beschreibung | Datei |
+| BESCHREIBUNG | Datei |
 |:--|:--|
 | Standardinstanz und Instanz mit Port 3308 | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Standardinstanz und Instanz mit Port 3308 und anderem Benutzernamen und Kennwort | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -112,8 +112,8 @@ Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Mon
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
-| MySQL Database | Disk Space in Bytes |
-| MySQL Database | Tabellen |
+| MySQL-Datenbank | Disk Space in Bytes |
+| MySQL-Datenbank | Tabellen |
 | MySQL Server | Aborted Connection Pct |
 | MySQL Server | Connection Use Pct |
 | MySQL Server | Disk Space Use in Bytes |

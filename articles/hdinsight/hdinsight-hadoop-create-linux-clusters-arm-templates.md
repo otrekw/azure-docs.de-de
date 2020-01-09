@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c840cf452f047177c1244caedf09d976f0514961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279277"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435549"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Erstellen von Apache Hadoop-Clustern in HDInsight mit Resource Manager-Vorlagen
 
@@ -40,18 +40,18 @@ Sie finden Beispiele für HDInsight-Vorlagen unter [Azure-Schnellstartvorlagen](
 
 Weitere Informationen über Resource Manager-Vorlagen finden Sie in den folgenden Artikeln und Beispielen:
 
-* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Erstellen von Azure Resource-Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md)
 * [Bereitstellen einer Anwendung mit Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-template-deploy.md)
 * [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions)-Vorlagenreferenz
 * [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Generieren von Vorlagen
 
-Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement mithilfe unterschiedlicher Tools exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren. Weitere Informationen finden Sie unter [Exportieren von Vorlagen](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+Mit Resource Manager können Sie eine Resource Manager-Vorlage aus vorhandenen Ressourcen in Ihrem Abonnement mithilfe unterschiedlicher Tools exportieren. Auf der Grundlage dieser generierten Vorlage können Sie sich über die Vorlagensyntax informieren oder ggf. die erneute Bereitstellung Ihrer Lösung automatisieren. Weitere Informationen finden Sie unter [Exportieren von Vorlagen](../azure-resource-manager/templates/export-template-portal.md).
 
 ## <a name="deploy-using-the-portal"></a>Bereitstellen mit dem Portal
 
-Sie können eine Resource Manager-Vorlage über das Azure-Portal bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+Sie können eine Resource Manager-Vorlage über das Azure-Portal bereitstellen. Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template).
 
 ## <a name="deploy-using-powershell"></a>Bereitstellen mit PowerShell
 
@@ -77,11 +77,11 @@ Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie mehrere Möglichkeiten zum Erstellen von HDInsight-Clustern kennengelernt. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
 * Weitere HDInsight-bezogene Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=hdinsight).
 * Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Ein ausführliches Beispiel für die Bereitstellung einer Anwendung finden Sie unter [Vorhersagbares Bereitstellen von Microservices in Azure](../app-service/deploy-complex-application-predictably.md).
 * Informationen zum Bereitstellen der Lösung in andere Umgebungen finden Sie unter [Entwicklungs- und Testumgebungen in Microsoft Azure](../solution-dev-test-environments.md).
-* Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+* Informationen zu den Abschnitten der Azure Resource Manager-Vorlage finden Sie unter [Erstellen von Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 * Unter [Vorlagenfunktionen](../azure-resource-manager/resource-group-template-functions.md)finden Sie eine Liste der Funktionen, die Sie in einer Azure Resource Manager-Vorlage verwenden können.

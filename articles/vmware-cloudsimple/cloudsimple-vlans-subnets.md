@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 7af191893d6b3cf1c38e5ff44a7a8a04509347a8
-ms.sourcegitcommit: 0c906f8624ff1434eb3d3a8c5e9e358fcbc1d13b
+ms.openlocfilehash: 2451fbb69636624db354006df2a7925ef9e75459
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69543803"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75372736"
 ---
 # <a name="vlans-and-subnets-overview"></a>Übersicht über VLANs und Subnetze
 
@@ -38,8 +38,8 @@ Eine private Cloud wird als isolierte VMware-Stapelumgebung (ESXi-Hosts, vCenter
 * Minimales Präfix für den CIDR-Bereich der vSphere-/vSAN-Subnetze: **/24**
 * Maximales Präfix für den CIDR-Bereich der vSphere-/vSAN-Subnetze: **/21**
 
-> [!IMPORTANT]
-> IP-Adressen im vSphere-/vSAN CIDR-Bereich sind zur Verwendung durch die private Cloudinfrastruktur reserviert.  Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.
+> [!CAUTION]
+> IP-Adressen im vSphere/vSAN CIDR-Bereich sind zur Verwendung durch die private Cloudinfrastruktur reserviert.  Verwenden Sie keine IP-Adresse dieses Bereichs auf einem virtuellen Computer.
 
 ### <a name="vspherevsan-subnets-cidr-range-limits"></a>Grenzwerte für vSphere/vSAN-Subnetze-CIDR
 

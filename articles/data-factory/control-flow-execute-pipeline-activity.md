@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 093050952ed826a540c35b2b73acd107fafc45ab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 26dd7c4f33360030b13ddbfc1516396436724c40
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679934"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440440"
 ---
 # <a name="execute-pipeline-activity-in-azure-data-factory"></a>Aktivität „Pipeline ausführen“ in Azure Data Factory
 Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline eine andere Pipeline aufrufen.
@@ -61,11 +61,11 @@ Mit der Aktivität „Pipeline ausführen“ kann eine Data Factory-Pipeline ein
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der Aktivität „Pipeline ausführen“. | Zeichenfolge | Ja
-type | Muss auf folgenden Wert festgelegt werden: **ExecutePipeline**. | Zeichenfolge | Ja
+name | Name der Aktivität „Pipeline ausführen“. | String | Ja
+type | Muss festgelegt werden auf: **ExecutePipeline**. | String | Ja
 pipeline | Pipelineverweis auf die abhängige Pipeline, die diese Pipeline aufruft. Ein Pipelineverweisobjekt verfügt über zwei Eigenschaften: **referenceName** und **type**. Die Eigenschaft „referenceName“ gibt den Namen des Pipelineverweises an. Die Eigenschaft „type“ muss auf „PipelineReference“ festgelegt werden. | PipelineReference | Ja
 parameters | Parameter, die an die aufgerufene Pipeline übergeben werden sollen | Ein JSON-Objekt, das Parameternamen Argumentwerten zuordnet | Nein
-waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. Die Standardeinstellung ist "false". | Boolean | Nein
+waitOnCompletion | Definiert, ob die Aktivitätsausführung wartet, bis die Ausführung der abhängigen Pipeline abgeschlossen ist. Der Standardwert ist "false". | Boolean | Nein
 
 ## <a name="sample"></a>Beispiel
 In diesem Szenario gibt es zwei Pipelines:
@@ -168,10 +168,7 @@ In diesem Szenario gibt es zwei Pipelines:
     "properties": {
     "type": "AzureStorage",
     "typeProperties": {
-      "connectionString": {
-        "value": "DefaultEndpointsProtocol=https;AccountName=*****",
-        "type": "SecureString"
-      }
+      "connectionString": "DefaultEndpointsProtocol=https;AccountName=*****;AccountKey=*****"
     }
   }
 }

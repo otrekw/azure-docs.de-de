@@ -3,12 +3,12 @@ title: Verwenden von Parametern für das Erstellen dynamischer Blaupausen
 description: Hier erhalten Sie Informationen zu statischen und dynamischen Parametern und dazu, wie Sie sie zum Erstellung sicherer und dynamischer Blaupausen verwenden können.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128933"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644969"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Erstellen dynamischer Blaupausen mithilfe von Parametern
 
@@ -40,7 +40,7 @@ Wenn für die Blaupausenzuweisung eine **systemseitig zugewiesene verwaltete Ide
 Wenn für die Blaupausenzuweisung eine **benutzerseitig zugewiesene verwaltete Identität** verwendet wird, _kann_ der Key Vault, auf den verwiesen wird, in einem zentralen Abonnement vorhanden sein. Der verwalteten Identität müssen vor der Blaupausenzuweisung die entsprechenden Rechte für den Key Vault gewährt werden.
 
 > [!IMPORTANT]
-> In beiden Fällen muss für den Key Vault auf der Seite **Zugriffsrichtlinien** die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** konfiguriert sein. Eine Anleitung zum Aktivieren dieses Features finden Sie unter [Key Vault – Aktivieren der Vorlagenbereitstellung](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+> In beiden Fällen muss für den Key Vault auf der Seite **Zugriffsrichtlinien** die Option **Zugriff auf Azure Resource Manager für Vorlagenbereitstellung aktivieren** konfiguriert sein. Eine Anleitung zum Aktivieren dieses Features finden Sie unter [Key Vault – Aktivieren der Vorlagenbereitstellung](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment).
 
 Weitere Informationen zu Azure Key Vault finden Sie im [Überblick über Azure Key Vault](../../../key-vault/key-vault-overview.md).
 

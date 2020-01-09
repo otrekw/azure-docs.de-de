@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/26/2019
 ms.author: allensu
-ms.openlocfilehash: 753c239f4bf4d6a8f31d4dc5ca771f312cd34578
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: dc316e5bbb88359ff8b1e8a4fc35a56541a577f6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828994"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646709"
 ---
 # <a name="move-an-azure-virtual-network-to-another-region-by-using-azure-powershell"></a>Verschieben eines virtuellen Azure-Netzwerks in eine andere Region mit Azure PowerShell
 
@@ -32,7 +32,7 @@ Sie können zum Verschieben des virtuellen Netzwerks in eine andere Region eine 
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement virtuelle Netzwerke in der Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement über genügend Ressourcen verfügt, um das Hinzufügen virtueller Netzwerke für diesen Prozess zu unterstützen. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement über genügend Ressourcen verfügt, um das Hinzufügen virtueller Netzwerke für diesen Prozess zu unterstützen. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-for-the-move"></a>Vorbereiten der Verschiebung
@@ -231,7 +231,7 @@ Um die Ressourcengruppe zu entfernen, verwenden Sie [Remove-AzResourceGroup](htt
 Remove-AzResourceGroup -Name <target-resource-group-name>
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Führen Sie einen der folgenden Schritte aus, um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen:
 

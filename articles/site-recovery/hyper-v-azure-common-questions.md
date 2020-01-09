@@ -1,18 +1,14 @@
 ---
 title: Allgemeine Fragen zur Hyper-V-Notfallwiederherstellung mit Azure Site Recovery
 description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer in Azure mithilfe des Azure Site Recovery-Diensts zusammengefasst.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: 8f3a04c70b88987fc91dbed3c186d04826b75726
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 7c5f55fbea67567ddf7a2afa6a61f6c76568d829
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954059"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498196"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -98,7 +94,7 @@ Sie benötigen eine oder mehrere VMs, die auf einem oder mehreren eigenständige
 
 ### <a name="can-i-replicate-vms-located-on-a-hyper-v-cluster"></a>Kann ich VMs, die sich in einem Hyper-V-Cluster befinden, replizieren?
 
-Ja, Site Recovery unterstützt gruppierte Hyper-V-Hosts. Beachten Sie Folgendes:
+Ja, Site Recovery unterstützt gruppierte Hyper-V-Hosts. Beachten Sie dabei Folgendes:
 
 - Alle Knoten des Clusters müssen beim selben Tresor registriert werden.
 - Wenn Sie VMM nicht verwenden, müssen alle Hyper-V-Hosts im Cluster derselben Hyper-V-Site hinzugefügt werden.
@@ -202,20 +198,23 @@ Von Site Recovery wird nichts explizit auf Hyper-V-VMs installiert, die für die
 ### <a name="how-do-i-fail-over-to-azure"></a>Wie führe ich ein Failover zu Azure aus?
 
 Sie können ein geplantes oder ungeplantes Failover von lokalen Hyper-V-VMs zu Azure ausführen.
-    - Wenn Sie ein geplantes Failover durchführen, werden die Quell-VMs heruntergefahren, um sicherzustellen, dass kein Datenverlust auftritt.
-    - Sie können ein ungeplantes Failover ausführen, wenn kein Zugriff auf Ihren primären Standort möglich ist.
-    - Sie können ein Failover für einen einzelnen Computer ausführen oder Wiederherstellungspläne erstellen, um das Failover von mehreren Computern zu orchestrieren.
-    - Sie führen ein Failover aus. Nachdem die erste Phase des Failovers abgeschlossen ist, sollten Sie die erstellten Replikat-VMs in Azure sehen können. Sie können der VM bei Bedarf eine öffentliche IP-Adresse zuweisen. Anschließend führen Sie ein Commit für das Failover durch, um von der Replikat-VM in Azure auf die Workload zuzugreifen.
+
+- Wenn Sie ein geplantes Failover durchführen, werden die Quell-VMs heruntergefahren, um sicherzustellen, dass kein Datenverlust auftritt.
+- Sie können ein ungeplantes Failover ausführen, wenn kein Zugriff auf Ihren primären Standort möglich ist.
+- Sie können ein Failover für einen einzelnen Computer ausführen oder Wiederherstellungspläne erstellen, um das Failover von mehreren Computern zu orchestrieren.
+- Das Failover besteht aus zwei Teilen:
+    - Nachdem die erste Phase des Failovers abgeschlossen ist, sollten Sie die erstellten Replikat-VMs in Azure sehen können. Sie können der VM bei Bedarf eine öffentliche IP-Adresse zuweisen.
+    - Anschließend führen Sie ein Commit für das Failover durch, um von der Replikat-VM in Azure auf die Workload zuzugreifen.
    
 
 ### <a name="how-do-i-access-azure-vms-after-failover"></a>Wie greife ich nach einem Failover auf virtuelle Azure-Computer zu?
-Nach einem Failover können Sie über eine sichere Internetverbindung, eine Site-to-Site-VPN-Verbindung oder über Azure ExpressRoute auf die Azure-VMs zugreifen. Sie müssen eine Reihe von Vorbereitungen treffen, um eine Verbindung herzustellen. [Weitere Informationen](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)
+Nach einem Failover können Sie über eine sichere Internetverbindung, eine Site-to-Site-VPN-Verbindung oder über Azure ExpressRoute auf die Azure-VMs zugreifen. Sie müssen eine Reihe von Vorbereitungen treffen, um eine Verbindung herzustellen. [Weitere Informationen](failover-failback-overview.md#connect-to-azure-after-failover)
 
 ### <a name="is-failed-over-data-resilient"></a>Sind Daten, mit denen ein Failover ausgeführt wurde, stabil?
 Azure ist auf Resilienz ausgelegt. Site Recovery ist für ein Failover zu einem sekundären Azure-Rechenzentrum (gemäß Azure-SLA) konzipiert. Wenn ein Failover auftritt, stellen wir sicher, dass Ihre Metadaten und Tresore innerhalb der gleichen geografischen Region bleiben, die Sie für Ihren Tresor ausgewählt haben.
 
 ### <a name="is-failover-automatic"></a>Erfolgt ein Failover automatisch?
-Ein [Failover](site-recovery-failover.md) erfolgt nicht automatisch. Sie initiieren Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](/powershell/module/az.recoveryservices) verwenden, um ein Failover auslösen.
+Ein [Failover](site-recovery-failover.md) erfolgt nicht automatisch. Sie initiieren Failover mit einem Mausklick im Portal, oder Sie können [PowerShell](/powershell/module/az.recoveryservices) verwenden, um ein Failover auszulösen.
 
 ### <a name="how-do-i-fail-back"></a>Wie führe ich ein Failback aus?
 
@@ -232,4 +231,4 @@ Sobald Ihre lokale Infrastruktur wieder funktioniert und ausgeführt werden kann
 5. Nachdem Failbacks für die Workloads ausgeführt wurden, aktivieren Sie die umgekehrte Replikation, sodass die lokalen VMs erneut in Azure replizieren.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Kann ich ein Failback zu einem anderen Speicherort ausführen?
-Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)
+Ja, wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback zu einem anderen Speicherort ausführen, wenn der ursprüngliche nicht verfügbar ist. [Weitere Informationen](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)

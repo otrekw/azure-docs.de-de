@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995914"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435663"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der Apache HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -51,7 +51,7 @@ Es gibt drei Konfigurationsoptionen:
 
 In diesem Artikel wir das Szenario der Georeplikation behandelt.
 
-Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-overview.md) erstellt. Wenn Sie die Umgebungen mit anderen Methoden einrichten möchten, finden Sie hier weitere Informationen:
+Um Ihnen die Einrichtung der Umgebungen zu erleichtern, haben wir einige [Azure Resource Manager-Vorlagen](../../azure-resource-manager/management/overview.md) erstellt. Wenn Sie die Umgebungen mit anderen Methoden einrichten möchten, finden Sie hier weitere Informationen:
 
 - [Erstellen von Apache Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Erstellen von Apache HBase-Clustern in Azure Virtual Network](apache-hbase-provision-vnet.md)
@@ -66,7 +66,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 **VNet 1**
 
-| Eigenschaft | Wert |
+| Eigenschaft | value |
 |----------|-------|
 | Location | USA (Westen) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
@@ -83,7 +83,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 **VNet 2**
 
-| Eigenschaft | Wert |
+| Eigenschaft | value |
 |----------|-------|
 | Location | East US |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
@@ -263,7 +263,7 @@ Erstellen Sie in jedem der beiden virtuellen Netzwerke einen [Apache HBase](http
 - **Clustertyp**: hbase
 - **Version**: HBase 1.1.2 (HDI 3.6)
 - **Standort**: Verwenden Sie denselben Standort wie das virtuelle Netzwerk.  Standardmäßig ist vnet1 *USA, Westen* und vnet2 ist *USA, Osten*.
-- **Speicher**: Erstellen Sie ein neues Speicherkonto für den Cluster.
+- **Storage**: Erstellen Sie ein neues Speicherkonto für den Cluster.
 - **Virtuelles Netzwerk** (über die erweiterten Einstellungen im Portal): Wählen Sie „vnet1“ aus, das Sie im letzten Vorgang erstellt haben.
 - **Subnetz**: Der in der Vorlage verwendete Standardname lautet **subnet1**.
 
@@ -307,7 +307,7 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
 
 Erforderliche Argumente:
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |----|-----------|
 |-s, --src-cluster | Gibt den DNS-Namen des HBase-Quellclusters an. Beispiel: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | Gibt den DNS-Namen des HBase-Zielclusters (Replikats) an. Beispiel: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -316,7 +316,7 @@ Erforderliche Argumente:
 
 Optionale Argumente:
 
-|NAME|BESCHREIBUNG|
+|Name|BESCHREIBUNG|
 |----|-----------|
 |-su, --src-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Quellcluster an. Der Standardwert lautet **admin**. |
 |-du, --dst-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Zielcluster an. Der Standardwert lautet **admin**. |

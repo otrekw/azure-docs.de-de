@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: fa1aa8c560f4b9cc48c7a6a761abe4d69d5d0265
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773172"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429310"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -40,7 +40,7 @@ Sie können [Berechtigungen](#iot-hub-permissions) auf folgende Weise gewähren:
   | SAS-Richtlinie | Berechtigungen |
   | -------------------- | ----------- |
   | iothubowner | Alle Berechtigungen |
-  | service | **ServiceConnect**-Berechtigung |
+  | Dienst | **ServiceConnect**-Berechtigung |
   | device | **DeviceConnect**-Berechtigung |
   | registryRead | **RegistryRead**-Berechtigung |
   | registryReadWrite | **RegistryReadWrite**- und **RegistryWrite**-Berechtigungen |
@@ -64,7 +64,7 @@ Azure IoT Hub gewährt Zugriff auf Endpunkte, indem ein Token zur Verifizierung 
 Sicherheitsanmeldeinformationen, beispielsweise symmetrische Schlüssel, werden niemals über eine physische Verbindung gesendet.
 
 > [!NOTE]
-> Der Azure IoT Hub-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter im [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+> Der Azure IoT Hub-Ressourcenanbieter wird über Ihr Azure-Abonnement geschützt – ebenso wie alle Anbieter im [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 
 Weitere Informationen zur Erstellung und Verwendung von Sicherheitstoken finden Sie im Artikel zu den [IoT Hub-Sicherheitstoken](iot-hub-devguide-security.md#security-tokens).
 
@@ -134,7 +134,7 @@ Das Sicherheitstoken weist das folgende Format auf:
 
 Hier sind die erwarteten Werte:
 
-| Wert | BESCHREIBUNG |
+| value | BESCHREIBUNG |
 | --- | --- |
 | {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
 | {resourceURI} |Das URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann – beginnend mit dem Hostnamen des IoT Hubs (kein Protokoll). Zum Beispiel, `myHub.azure-devices.net/devices/device1` |
@@ -195,7 +195,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + parse.urlencode(rawtoken)
 ```
 
-Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt:
+Nachfolgend sind die Installationsanweisungen für die erforderlichen Komponenten aufgeführt.
 
 [!INCLUDE [Iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
 

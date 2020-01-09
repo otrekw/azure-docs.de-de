@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 0f0e2b6164eab7afc39532b0d572d367e3d4ae64
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4913152125b0fafd74db575f835d53fa992b075e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913072"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439544"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 
@@ -174,7 +174,7 @@ Dieses Beispiel zeigt, wie Sie „referenceObjects“ und „extendedProperties�
             "type": "LinkedServiceReference"
           }]
         },
-        "extendedProperties": {
+        "extendedProperties": {          
           "connectionString": {
             "type": "SecureString",
             "value": "aSampleSecureString"

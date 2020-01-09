@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9bc0b32d3c94cabc1a772f02bf21f31e73f1306f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212013"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75642147"
 ---
 # <a name="azure-private-dns-faq"></a>Häufig gestellte Fragen zu privatem Azure-DNS
 
@@ -34,7 +34,7 @@ Nein. Private Zonen funktionieren mit virtuellen Netzwerken. Sie verwenden diese
 
 ## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Kann die gleiche private Zone für mehrere virtuelle Netzwerke zur Auflösung verwendet werden?
 
-Ja. Sie können eine private DNS-Zone mit Tausenden virtueller Netzwerke verknüpfen. Weitere Informationen finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits).
+Ja. Sie können eine private DNS-Zone mit Tausenden virtueller Netzwerke verknüpfen. Weitere Informationen finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits).
 
 ## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Kann ein virtuelles Netzwerk, das zu einem anderen Abonnement gehört, mit einer privaten Zone verknüpft werden?
 
@@ -71,7 +71,7 @@ Eine Anleitung, wie Sie dieses Suffix ändern, finden Sie unter [Verwenden von d
 
 ## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Welche Nutzungsgrenzwerte gelten für private Azure DNS-Zonen?
 
-Ausführliche Informationen zu den Nutzungsgrenzwerten für private Azure DNS-Zonen finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits).
+Ausführliche Informationen zu den Nutzungsgrenzwerten für private Azure DNS-Zonen finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits).
 
 ## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Warum werden meine vorhandenen privaten DNS-Zonen nicht in der neuen Portaloberfläche angezeigt?
 

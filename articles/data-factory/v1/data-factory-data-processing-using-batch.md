@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682663"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438884"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -180,7 +180,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 
    a. Starten Sie Visual Studio 2012/2013/2015.
 
-   b. Wählen Sie **Datei** > **Neu** > **Projekt**.
+   b. Klicken Sie auf **Datei** > **Neu** > **Projekt**.
 
    c. Erweitern Sie **Vorlagen**, und wählen Sie **Visual C#\#** aus. In dieser exemplarischen Vorgehensweise verwenden Sie C\#, Sie können jedoch jede .NET-Sprache verwenden, um benutzerdefinierte Aktivität zu entwickeln.
 
@@ -190,7 +190,7 @@ Die Methode verfügt über einige wichtige Komponenten, die Sie kennen müssen:
 
    f. Wählen Sie **C:\\ADF** als **Speicherort**. Erstellen Sie den Ordner **ADF**, sofern noch nicht vorhanden.
 
-   g. Wählen Sie **OK** aus, um das Projekt zu erstellen.
+   g. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 1. Klicken Sie auf **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 
@@ -556,7 +556,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Computedienste mit einer Data
 
    ![Neuer Datenspeicher](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-manage.md#access-keys).
+1. Ersetzen Sie **account name** durch den Namen Ihres Speicherkontos. Ersetzen Sie **account key** durch den Zugriffsschlüssel Ihres Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
 1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen.
 
@@ -578,7 +578,7 @@ In diesem Schritt erstellen Sie für Ihr Batch-Konto einen verknüpften Dienst, 
    d. Geben Sie die Batch-URI für die JSON-Eigenschaft **batchUri** ein.
 
       > [!IMPORTANT]
-      > Die URL auf dem Blatt **Batch-Konto** hat folgendes Format: \<Kontoname\>.\<Region\>.batch.azure.com. Für die **batchUri**-Eigenschaft im JSON-Skript müssen Sie a88"accountname** aus der URL entfernen. Ein Beispiel ist `"batchUri": "https://eastus.batch.azure.com"`.
+      > Die URL auf dem Blatt **Batch-Konto** hat folgendes Format: \<Kontoname\>.\<Region\>.batch.azure.com. Für die **batchUri**-Eigenschaft im JSON-Skript müssen Sie a88"accountname** aus der URL entfernen. z. B. `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 
@@ -964,7 +964,7 @@ Nachdem Sie Daten verarbeitet haben, können Sie sie mit Onlinetools wie Power B
 * [Aktualisieren von Daten in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure und Power BI: Grundlegende Übersicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Einführung in den Data Factory-Dienst](data-factory-introduction.md)

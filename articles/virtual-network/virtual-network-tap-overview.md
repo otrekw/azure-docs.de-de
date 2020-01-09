@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2019
 ms.author: kaanan
-ms.openlocfilehash: f287d3782148ca48a0367fa2a6a9a346a0299684
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 47db03460ad3c5194a5445f0b25cb8e742e60c21
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373229"
 ---
 # <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
@@ -58,13 +58,13 @@ In der folgenden Abbildung wird gezeigt, wie der TAP des virtuellen Netzwerks fu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie einen TAP für ein virtuelles Netzwerk erstellen können, müssen Sie eine E-Mail erhalten haben, die bestätigt, dass Sie für die Vorschauversion registriert sind, und mindestens einen virtuellen Computer mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Bereitstellungsmodell und einer Partnerlösung zum Aggregieren des TAP-Datenverkehrs in derselben Azure-Region erstellt haben. Wenn keine Partnerlösung in Ihrem virtuellen Netzwerk vorhanden ist, lesen Sie [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions), um eine solche Lösung bereitzustellen. Mit derselben TAP-Ressource für virtuelle Netzwerke können Sie Datenverkehr von mehreren Netzwerkschnittstellen in der gleichen oder in unterschiedlichen Abonnements aggregieren. Wenn sich die überwachten Netzwerkschnittstellen in verschiedenen Abonnements befinden, müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Darüber hinaus können sich die überwachten Netzwerkschnittstellen und der Endpunkt des Ziels zum Aggregieren des TAP-Datenverkehrs in der gleichen Region befinden, in der die mittels Peering verknüpften virtuellen Netzwerken vorhanden sind. Stellen Sie bei diesem Bereitstellungsmodell sicher, dass das [Peering virtueller Netzwerke](virtual-network-peering-overview.md) aktiviert ist, bevor Sie einen TAP für virtuelle Netzwerke konfigurieren.
+Bevor Sie einen TAP für ein virtuelles Netzwerk erstellen können, müssen Sie eine E-Mail erhalten haben, die bestätigt, dass Sie für die Vorschauversion registriert sind, und mindestens einen virtuellen Computer mit dem [Azure Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Bereitstellungsmodell und einer Partnerlösung zum Aggregieren des TAP-Datenverkehrs in derselben Azure-Region erstellt haben. Wenn keine Partnerlösung in Ihrem virtuellen Netzwerk vorhanden ist, lesen Sie [Partnerlösungen für TAPs von virtuellen Netzwerken](#virtual-network-tap-partner-solutions), um eine solche Lösung bereitzustellen. Mit derselben TAP-Ressource für virtuelle Netzwerke können Sie Datenverkehr von mehreren Netzwerkschnittstellen in der gleichen oder in unterschiedlichen Abonnements aggregieren. Wenn sich die überwachten Netzwerkschnittstellen in verschiedenen Abonnements befinden, müssen die Abonnements demselben Azure Active Directory-Mandanten zugeordnet sein. Darüber hinaus können sich die überwachten Netzwerkschnittstellen und der Endpunkt des Ziels zum Aggregieren des TAP-Datenverkehrs in der gleichen Region befinden, in der die mittels Peering verknüpften virtuellen Netzwerken vorhanden sind. Stellen Sie bei diesem Bereitstellungsmodell sicher, dass das [Peering virtueller Netzwerke](virtual-network-peering-overview.md) aktiviert ist, bevor Sie einen TAP für virtuelle Netzwerke konfigurieren.
 
 ## <a name="permissions"></a>Berechtigungen
 
 Die Konten, mit denen Sie die TAP-Konfiguration auf Netzwerkschnittstellen anwenden, müssen der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Rolle zugewiesen sein, der die erforderlichen Aktionen aus der folgenden Tabelle zugewiesen ist:
 
-| Aktion | NAME |
+| Action | Name |
 |---|---|
 | Microsoft.Network/virtualNetworkTaps/* | Erforderlich, um eine TAP-Ressource für virtuelle Netzwerke zu erstellen, zu aktualisieren, zu lesen und zu löschen |
 | Microsoft.Network/networkInterfaces/read | Erforderlich, um die Netzwerkschnittstellenressource zu lesen, für die der TAP konfiguriert wird |

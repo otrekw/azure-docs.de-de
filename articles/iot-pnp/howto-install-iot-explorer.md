@@ -3,23 +3,23 @@ title: Installieren und Verwenden des Azure-IoT-Explorers | Microsoft-Dokumentat
 description: Installieren Sie den Azure-IoT-Explorer, um mit den Geräten in IoT Plug & Play (Vorschau) zu interagieren, die mit Ihrem IoT-Hub verbunden sind.
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679851"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529625"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Installieren und Verwenden des Azure-IoT-Explorers
 
 Der Azure-IoT-Explorer ist ein grafisches Tool, über das Sie mit Ihren Geräten in IoT Plug & Play (Vorschau) interagieren und diese Geräte testen können. Nach der Installation des Tools auf Ihrem lokalen Computer können Sie es verwenden, um eine Verbindung mit einem Gerät herzustellen. Sie können mit diesem Tool die Telemetriedaten anzeigen, die das Gerät sendet, Geräteeigenschaften einrichten und Befehle aufrufen.
 
-In diesem Artikel erfahren Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 - Installieren und Konfigurieren des Azure-IoT-Explorers
 - Verwenden des Tools zum Interagieren mit Ihren Geräte und zum Testen Ihrer Geräte
@@ -79,7 +79,7 @@ Auf der Listenseite **Geräte** können Sie folgende Aktionen ausführen:
 
 Wählen Sie auf der Seite **Geräte** einen Wert in der Spalte **Geräte-ID** aus, um die Detailseite für das registrierte Gerät anzuzeigen. Für jedes Gerät gibt es zwei Abschnitte: **Gerät** und **Digitaler Zwilling**.
 
-### <a name="device"></a>Gerät
+### <a name="device"></a>Sicherungsmedium
 
 Dieser Abschnitt enthält die Registerkarten **Geräteidentität**, **Gerätezwilling**, **Telemetrie**, **Direkte Methode** und **Cloud-zu-Gerät-Nachrichten**.
 
@@ -97,7 +97,7 @@ Sie können das Tool verwenden, um eine Instanz eines digitalen Zwillings des Ge
 
 Auf der Seite **Schnittstelle** können Sie die JSON-Definition der Schnittstelle anzeigen.
 
-#### <a name="properties"></a>Properties
+#### <a name="properties"></a>Eigenschaften
 
 Auf der Seite **Schreibgeschützte Eigenschaften** können Sie die in einer Schnittstelle definierten schreibgeschützten Eigenschaften anzeigen. Auf der Seite **Schreibbare Eigenschaften** können Sie die in einer Schnittstelle definierten schreibbaren Eigenschaften mit den folgenden Schritten aktualisieren:
 

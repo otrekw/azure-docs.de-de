@@ -3,16 +3,16 @@ title: Anleitung für Entwickler – IoT Plug & Play (Vorschau) | Microsoft-Doku
 description: Beschreibung der Gerätemodellierung für IoT Plug & Play-Entwickler
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/05/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6d8e0e9e675b88c69b74cdad261280f5dcaf7161
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 21001a22be6297595658ff347e9f8a7b04bb6faf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581621"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531393"
 ---
 # <a name="iot-plug-and-play-preview-modeling-developer-guide"></a>Anleitung für Entwickler: Modellierung mit IoT Plug & Play (Vorschau)
 
@@ -67,9 +67,9 @@ Es gibt weitere optionale Felder, über die Sie dem Funktionsmodell weitere Deta
 
 Mit DTDL beschreiben Sie die Funktionen des Geräts über Schnittstellen. Schnittstellen beschreiben die _Eigenschaften_, _Telemetriedaten_ und _Befehle_, die eine Komponente des Geräts implementiert:
 
-- `Properties`. Eigenschaften sind Datenfelder, die den Zustand des Geräts darstellen. Verwenden Sie Eigenschaften, um den dauerhaften Zustand des Geräts darzustellen, z. B. den Ein/Aus-Status einer Kühlmittelpumpe. Eigenschaften können außerdem grundlegende Geräteeigenschaften darstellen, z. B. die Firmwareversion des Geräts. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren.
-- `Telemetry`. Telemetriefelder stellen Messungen von Sensoren dar. Immer wenn das Gerät eine Sensormessung vornimmt, sollte ein Telemetrieereignis mit den Sensordaten gesendet werden.
-- `Commands`. Befehle stellen Methoden dar, die Benutzer des Geräts auf dem Gerät ausführen können, beispielsweise ein Befehl zum Zurücksetzen oder ein Befehl zum Ein- oder Ausschalten eines Lüfters.
+- [https://login.microsoftonline.com/consumers/](`Properties`). Eigenschaften sind Datenfelder, die den Zustand des Geräts darstellen. Verwenden Sie Eigenschaften, um den dauerhaften Zustand des Geräts darzustellen, z. B. den Ein/Aus-Status einer Kühlmittelpumpe. Eigenschaften können außerdem grundlegende Geräteeigenschaften darstellen, z. B. die Firmwareversion des Geräts. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren.
+- [https://login.microsoftonline.com/consumers/](`Telemetry`). Telemetriefelder stellen Messungen von Sensoren dar. Immer wenn das Gerät eine Sensormessung vornimmt, sollte ein Telemetrieereignis mit den Sensordaten gesendet werden.
+- [https://login.microsoftonline.com/consumers/](`Commands`). Befehle stellen Methoden dar, die Benutzer des Geräts auf dem Gerät ausführen können, beispielsweise ein Befehl zum Zurücksetzen oder ein Befehl zum Ein- oder Ausschalten eines Lüfters.
 
 Das folgende Beispiel zeigt die Schnittstelle für einen Thermostat:
 
@@ -103,7 +103,7 @@ In diesem einfachen Beispiel gibt es nur ein einziges Telemetriefeld. Eine minim
 
 Über andere optionale Felder, z. B. Anzeigename und Beschreibung, können Sie der Schnittstelle und den Funktionen weitere Details hinzufügen.
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
 Standardmäßig sind Eigenschaften schreibgeschützt. Schreibgeschützte Eigenschaften bedeutet, dass das Gerät Aktualisierungen der Eigenschaftswerte an Ihren IoT-Hub sendet. Der IoT-Hub kann den Wert einer schreibgeschützten Eigenschaft nicht festlegen.
 

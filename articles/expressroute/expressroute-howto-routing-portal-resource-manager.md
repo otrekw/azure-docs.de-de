@@ -5,30 +5,30 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 02/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: 5fb728cccd77d0cefd10c124cb7215dc3b880fe3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 18d2db18e9880028c60b4b545c3628f4a9cb4703
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083537"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436971"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung
 
 In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal die Routingkonfiguration für eine ExpressRoute-Leitung in Azure Resource Manager (ARM) erstellen und verwalten. Sie können außerdem den Status prüfen, ein Update durchführen oder Peerings für eine ExpressRoute-Verbindung löschen bzw. deren Bereitstellung aufheben. Wenn Sie eine andere Methode für die Arbeit mit Ihrer Verbindung verwenden möchten, wählen Sie einen Artikel aus der folgenden Liste aus:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md)
+> * [Öffentliches Peering](about-public-peering.md)
 > * [Video – Privates Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video – Öffentliches Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Video – Microsoft-Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassisch)](expressroute-howto-routing-classic.md)
 > 
 
-Sie können privates Azure- und Microsoft-Peering für eine ExpressRoute-Leitung konfigurieren (öffentliches Azure-Peering ist für neue Leitungen veraltet). Sie können Peerings in beliebiger Reihenfolge konfigurieren. Sie müssen jedoch sicherstellen, dass Sie die Konfiguration jedes Peerings einzeln nacheinander durchführen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [Über Verbindungen und Peerings](expressroute-circuit-peerings.md).
+Sie können privates Peering und Microsoft-Peering für eine ExpressRoute-Leitung konfigurieren (öffentliches Azure-Peering ist für neue Leitungen veraltet). Sie können Peerings in beliebiger Reihenfolge konfigurieren. Sie müssen jedoch sicherstellen, dass Sie die Konfiguration jedes Peerings einzeln nacheinander durchführen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Routingdomänen](expressroute-circuit-peerings.md). Weitere Informationen zum öffentlichen Peering finden Sie unter [Öffentliches ExpressRoute-Peering](about-public-peering.md).
 
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
@@ -172,25 +172,6 @@ Die Peeringkonfiguration kann durch Auswählen des Löschsymbols entfernt werden
 
 ![Löschen des privaten Peerings](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
-## <a name="public"></a>Öffentliches Azure-Peering:
-
-Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der öffentlichen Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
-
-> [!Note]
-> Öffentliches Azure-Peering gilt für neue Leitungen als veraltet. Weitere Informationen finden Sie unter [ExpressRoute-Peering](expressroute-circuit-peerings.md).
->
-
-### <a name="getpublic"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
-
-Zeigen Sie die Eigenschaften des öffentlichen Azure-Peerings an, indem Sie das Peering auswählen.
-
-### <a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
-
-Wählen Sie die Zeile für das Peering aus, und ändern Sie dann die Peeringeigenschaften.
-
-### <a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
-
-Entfernen Sie Ihre Peeringkonfiguration, indem Sie das Löschsymbol auswählen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

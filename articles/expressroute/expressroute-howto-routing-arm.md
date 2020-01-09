@@ -5,25 +5,25 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 04/24/2019
+ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 9e03abc25ec5224006f41946e6514836e2b6d534
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 2c28df35eec862afb5b0078ca7693898e9b58533
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436944"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell
 
 In diesem Artikel erfahren Sie, wie Sie die Routingkonfiguration einer ExpressRoute-Verbindung mithilfe von PowerShell im Resource Manager-Bereitstellungsmodell erstellen und verwalten. Sie können außerdem den Status prüfen, ein Update durchführen oder Peerings für eine ExpressRoute-Verbindung löschen bzw. deren Bereitstellung aufheben. Wenn Sie eine andere Methode für die Arbeit mit Ihrer Verbindung verwenden möchten, wählen Sie einen Artikel aus der folgenden Liste aus:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md)
+> * [Öffentliches Peering](about-public-peering.md)
 > * [Video – Privates Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video – Öffentliches Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Video – Microsoft-Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassisch)](expressroute-howto-routing-classic.md)
 > 
@@ -36,7 +36,7 @@ Diese Anweisungen gelten nur für Verbindungen, die über Service Provider erste
 > 
 > 
 
-Sie können eine, zwei oder alle drei Peerings (Azure privat, Azure öffentlich und Microsoft) für eine ExpressRoute-Verbindung konfigurieren. Sie können Peerings in beliebiger Reihenfolge konfigurieren. Sie müssen jedoch sicherstellen, dass Sie die Konfiguration jedes Peerings einzeln nacheinander durchführen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Routingdomänen](expressroute-circuit-peerings.md).
+Sie können privates Peering und Microsoft-Peering für eine ExpressRoute-Leitung konfigurieren (öffentliches Azure-Peering ist für neue Leitungen veraltet). Sie können Peerings in beliebiger Reihenfolge konfigurieren. Sie müssen jedoch sicherstellen, dass Sie die Konfiguration jedes Peerings einzeln nacheinander durchführen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Routingdomänen](expressroute-circuit-peerings.md). Weitere Informationen zum öffentlichen Peering finden Sie unter [Öffentliches ExpressRoute-Peering](about-public-peering.md).
 
 ## <a name="configuration-prerequisites"></a>Konfigurationsvoraussetzungen
 
@@ -304,140 +304,6 @@ Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRo
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-## <a name="public"></a>Öffentliches Azure-Peering:
-
-Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der öffentlichen Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
-
-> [!Note]
-> Öffentliches Azure-Peering gilt für neue Leitungen als veraltet. Weitere Informationen finden Sie unter [ExpressRoute-Peering](expressroute-circuit-peerings.md).
->
-
-### <a name="to-create-azure-public-peering"></a>So erstellen Sie ein öffentliches Azure-Peering
-
-1. Importieren Sie das PowerShell-Modul für ExpressRoute.
-
-   Sie müssen den neuesten PowerShell-Installer aus dem [PowerShell-Katalog](https://www.powershellgallery.com/) installieren und die Azure-Ressourcen-Manager-Module in die PowerShell-Sitzung importieren, um die ExpressRoute-Cmdlets verwenden zu können. Sie müssen PowerShell als Administrator ausführen.
-
-   ```azurepowershell-interactive
-   Install-Module Az
-   ```
-
-   Importieren Sie alle Az.\*-Module im bekannten semantischen Versionsbereich.
-
-   ```azurepowershell-interactive
-   Import-Module Az
-   ```
-
-   Sie können auch lediglich ein ausgewähltes Modul im bekannten semantischen Versionsbereich importieren.
-
-   ```azurepowershell-interactive
-   Import-Module Az.Network
-   ```
-
-   Melden Sie sich bei Ihrem Konto an.
-
-   ```azurepowershell-interactive
-   Connect-AzAccount
-   ```
-
-   Wählen Sie das Abonnement aus, mit dem die ExpressRoute-Verbindung erstellt werden soll.
-
-   ```azurepowershell-interactive
-   Select-AzSubscription -SubscriptionId "<subscription ID>"
-   ```
-2. Erstellen Sie eine ExpressRoute-Verbindung.
-
-   Führen Sie die Schritte zum Erstellen einer [ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) aus, und lassen Sie sie vom Konnektivitätsanbieter bereitstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des öffentlichen Azure-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing jedoch nicht für Sie verwaltet, setzen Sie Ihre Konfiguration nach dem Erstellen der Verbindung mit den nachfolgenden Schritten fort.
-
-3. Überprüfen Sie, ob die ExpressRoute-Verbindung bereitgestellt und auch aktiviert wurde. Nehmen Sie das folgende Beispiel:
-
-   ```azurepowershell-interactive
-   Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-   ```
-
-   Die Antwort ähnelt dem folgenden Beispiel:
-
-   ```
-   Name                             : ExpressRouteARMCircuit
-   ResourceGroupName                : ExpressRouteResourceGroup
-   Location                         : westus
-   Id                               : /subscriptions/***************************/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/ExpressRouteARMCircuit
-   Etag                             : W/"################################"
-   ProvisioningState                : Succeeded
-   Sku                              : {
-                                      "Name": "Standard_MeteredData",
-                                       "Tier": "Standard",
-                                       "Family": "MeteredData"
-                                     }
-   CircuitProvisioningState         : Enabled
-   ServiceProviderProvisioningState : Provisioned
-   ServiceProviderNotes             : 
-   ServiceProviderProperties        : {
-                                       "ServiceProviderName": "Equinix",
-                                       "PeeringLocation": "Silicon Valley",
-                                       "BandwidthInMbps": 200
-                                     }
-   ServiceKey                       : **************************************
-   Peerings                         : []
-   ```
-4. Konfigurieren Sie das öffentliche Azure-Peering für die Verbindung. Stellen Sie sicher, dass die folgenden Informationen vorliegen, bevor Sie fortfahren:
-
-   * Ein /30-Subnetz für die primäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein.
-   * Ein /30-Subnetz für die sekundäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein.
-   * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
-   * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
-   * Optional:
-     * Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
-
-   Führen Sie das folgende Beispiel aus, um das öffentliche Azure-Peering für Ihre Verbindung zu konfigurieren:
-
-   ```azurepowershell-interactive
-   Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
-
-   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-   ```
-
-   Wenn Sie sich für den Einsatz eines MD5-Hash entscheiden, verwenden Sie das folgende Beispiel:
-
-   ```azurepowershell-interactive
-   Add-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100  -SharedKey "A1B2C3D4"
-
-   Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-   ```
-
-   > [!IMPORTANT]
-   > Stellen Sie sicher, dass Sie Ihre AS-Nummer als Peering-ASN angeben, nicht als Kunden-ASN.
-   > 
-   >
-
-### <a name="getpublic"></a>So rufen Sie Details zum öffentlichen Azure-Peering ab
-
-Sie können die Konfigurationsdetails mit dem folgenden Cmdlet abrufen:
-
-```azurepowershell-interactive
-  $ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
-
-  Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
-  ```
-
-### <a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
-
-Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispiels aktualisieren. In diesem Beispiel wird die VLAN-ID der Verbindung von 200 in 600 geändert.
-
-```azurepowershell-interactive
-Set-AzExpressRouteCircuitPeeringConfig  -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 600
-
-Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
-
-### <a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
-
-Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel ausführen:
-
-```azurepowershell-interactive
-Remove-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
-Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

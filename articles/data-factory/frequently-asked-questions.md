@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 2da12bbc760ff06ad0737ed9d48e12ea81260655
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 8238f2ea8395fc53044703db619d768918cb1834
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73674734"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644697"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Data Factory.  
@@ -46,7 +46,7 @@ Mit Data Factory können Sie nun flexibel einen beliebigen Ablaufstil modelliere
 - Deltaabläufe:
     - Sie können mithilfe von Parametern die Obergrenze für Deltakopien beim Verschieben von Dimensions- oder Referenztabellen aus einem relationalen Speicher (entweder lokal oder in der Cloud) definieren, um die Daten in den Lake zu laden. 
 
-Weitere Informationen finden Sie unter [Tutorial: Ablaufsteuerungen](tutorial-control-flow.md).
+Weitere Informationen finden Sie im [Tutorial: Ablaufsteuerungen](tutorial-control-flow.md).
 
 ### <a name="data-transformed-at-scale-with-code-free-pipelines"></a>Nach Bedarf transformierte Daten mit Pipelines ohne Code
 Die neue browserbasierte Toolumgebung ermöglicht die Erstellung und Bereitstellung von Pipelines ohne Code mit einer modernen, interaktiven webbasierten Benutzeroberfläche.
@@ -101,7 +101,7 @@ Sie können zum Verschieben und Transformieren von Daten je nach Bedarf eine ode
 Weitere Informationen finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
 
 ## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Welcher Grenzwert besteht hinsichtlich der Anzahl von Integrationslaufzeiten?
-Es gibt keine festen Grenzwerte hinsichtlich der Anzahl von Integration Runtime-Instanzen in einer Data Factory. Es gibt jedoch einen Grenzwert hinsichtlich der Anzahl von VM-Kernen, die von Integration Runtime pro Abonnement für die Ausführung von SSIS-Paketen verwendet werden können. Weitere Informationen finden Sie unter [Data Factory-Grenzwerte](../azure-subscription-service-limits.md#data-factory-limits).
+Es gibt keine festen Grenzwerte hinsichtlich der Anzahl von Integration Runtime-Instanzen in einer Data Factory. Es gibt jedoch einen Grenzwert hinsichtlich der Anzahl von VM-Kernen, die von Integration Runtime pro Abonnement für die Ausführung von SSIS-Paketen verwendet werden können. Weitere Informationen finden Sie unter [Data Factory-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits).
 
 ## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Wie lauten die Hauptkonzepte von Azure Data Factory?
 Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (oder Data Factory) verfügen. Azure Data Factory enthält vier Hauptkomponenten, die zusammen als Plattform fungieren, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können.
@@ -249,16 +249,16 @@ Der Wranglingdatenfluss unterstützt die folgenden Datentypen in SQL. Bei Verwen
 * real
 * float
 * char
-* nchar
+* NCHAR
 * varchar
-* nvarchar
+* NVARCHAR
 * integer
-* int
+* INT
 * bit
 * boolean
-* smallint
-* tinyint
-* bigint
+* SMALLINT
+* TINYINT
+* BIGINT
 * long
 * text
 * date
@@ -266,7 +266,7 @@ Der Wranglingdatenfluss unterstützt die folgenden Datentypen in SQL. Bei Verwen
 * datetime2
 * smalldatetime
 * timestamp
-* uniqueidentifier
+* UNIQUEIDENTIFIER
 * Xml
 
 In Zukunft werden weitere Datentypen unterstützt.

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 9ba9be7b4761e6633ffe3063b6bdba53c56b93bd
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0be2efd3783d9a0a7992819c984c993c64000ecd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561647"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644867"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance der Azure DevTest Labs-Infrastruktur – Ressourcen
 Dieser Artikel behandelt die Ausrichtung und die Verwaltung von Ressourcen für DevTest Labs in Ihrer Organisation. 
@@ -44,7 +44,7 @@ Als **zweite empfohlene Praxis** sollte das DevTest-Abonnement innerhalb des Azu
 
 Dieses Modell bietet einer Organisation die Flexibilität, Azure DevTest Labs bedarfsorientiert bereitzustellen. Eine Organisation kann Hunderte Labs für verschiedene Geschäftseinheiten mit 100 bis 1000 parallel ausgeführten virtuellen Computern unterstützen. Es befördert das Konzept einer konzernweit zentralen Lab-Lösung, bei der die stets gleichen Prinzipien von Konfigurationsmanagement und Sicherheitsmechanismen durchgesetzt werden können.
 
-Dieses Modell stellt darüber hinaus sicher, dass die Organisation die Ressourcengrenzen im Rahmen ihres Azure-Abonnements nicht erschöpft. Details zu Grenzwerten für Abonnements und Dienste finden Sie unter [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md) (Grenzwerte für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen). Der DevTest Labs-Bereitstellungsprozess kann eine große Anzahl Ressourcengruppen in Anspruch nehmen. Über eine Supportanfrage beim Azure DevTest-Abonnement können Sie eine Heraufsetzung der Grenzwerte anfordern. Die Ressourcen innerhalb des Produktionsabonnements sind nicht betroffen, wenn die Nutzung des Entwicklungsabonnements zunimmt. Weitere Informationen zum Skalieren von DevTest Labs finden Sie unter [Scale quotas and limits in DevTest Labs](devtest-lab-scale-lab.md) (Skalierungskontingente und -beschränkungen in DevTest Labs).
+Dieses Modell stellt darüber hinaus sicher, dass die Organisation die Ressourcengrenzen im Rahmen ihres Azure-Abonnements nicht erschöpft. Details zu Grenzwerten für Abonnements und Dienste finden Sie unter [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md) (Grenzwerte für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen). Der DevTest Labs-Bereitstellungsprozess kann eine große Anzahl Ressourcengruppen in Anspruch nehmen. Über eine Supportanfrage beim Azure DevTest-Abonnement können Sie eine Heraufsetzung der Grenzwerte anfordern. Die Ressourcen innerhalb des Produktionsabonnements sind nicht betroffen, wenn die Nutzung des Entwicklungsabonnements zunimmt. Weitere Informationen zum Skalieren von DevTest Labs finden Sie unter [Scale quotas and limits in DevTest Labs](devtest-lab-scale-lab.md) (Skalierungskontingente und -beschränkungen in DevTest Labs).
 
 Ein gemeinsamer Grenzwert auf Abonnementebene, dem Rechnung zu tragen ist, besteht in der Zuweisung des Netzwerk-IP-Adressraums, damit sowohl das Produktions- als auch das Entwicklungsabonnement unterstützt werden. Diese Zuweisungen sollten Wachstum in Lauf der Zeit berücksichtigen (ausgehend von lokaler Konnektivität oder einer anderen Netzwerktopologie, die eine Verwaltung des Netzwerkstapels durch das Unternehmen erfordert, statt einfach die Implementierung in Azure zu nutzen). Die empfohlene Praxis besteht in der Verwendung einiger virtueller Netzwerke, denen ein großes IP-Adresspräfix zugewiesen ist und die in viele große Subnetze aufgeteilt sind, gegenüber einer Lösung mit vielen virtuellen Netzwerken mit kleinen Subnetzen. Beispielsweise können Sie mit 10 Abonnements 10 virtuelle Netzwerke definieren (eins für jedes Abonnement). Alle Labs, für die keine Isolierung erforderlich ist, können im VNet des Abonnements gemeinsam das gleiche Subnetz nutzen.
 

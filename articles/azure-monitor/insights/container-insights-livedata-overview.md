@@ -1,24 +1,14 @@
 ---
 title: Anzeigen von Livedaten (Vorschau) mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/15/2019
-ms.author: magoedte
-ms.openlocfilehash: 9c497c73d42e1fb8851c5293010098d843297250
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 18ae091a32d0256288d27ad1439ffc7be26db5f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510771"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404753"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
@@ -60,7 +50,7 @@ Sie können Echtzeitprotokolldaten anzeigen, da diese von der Container-Engine a
 
 1. Navigieren Sie im Azure-Portal zur Ressourcengruppe des AKS-Clusters, und wählen Sie die AKS-Ressource aus.
 
-2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Insights** aus. 
+2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Erkenntnisse** aus. 
 
 3. Wählen Sie entweder die Register **Knoten**, **Controller** oder **Container** aus.
 
@@ -75,13 +65,13 @@ Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vo
 
 Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppiert ist.
 
-## <a name="view-events"></a>Ereignisse anzeigen
+## <a name="view-events"></a>Anzeigen von Ereignissen
 
 Sie können Echtzeitereignisdaten anzeigen, da sie von der Container-Engine bei Auswahl eines Containers, Pods, Knotens, Replikatsatzes, Daemon-Satzes, Auftrags, Cron-Auftrags oder einer Bereitstellung aus den Ansichten **Knoten**, **Controller**, **Container** und **Bereitstellungen (Vorschau)** generiert werden. Führen Sie zum Anzeigen von Ereignissen die folgenden Schritte aus.
 
 1. Navigieren Sie im Azure-Portal zur Ressourcengruppe des AKS-Clusters, und wählen Sie die AKS-Ressource aus.
 
-2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Insights** aus. 
+2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Erkenntnisse** aus. 
 
 3. Wählen Sie entweder die Registerkarte **Knoten**, **Controller**, **Container** oder **Bereitstellungen (Vorschau)** aus.
 
@@ -108,7 +98,7 @@ Sie können Echtzeitmetrikdaten anzeigen, da diese von der Container-Engine bei 
 
 1. Navigieren Sie im Azure-Portal zur Ressourcengruppe des AKS-Clusters, und wählen Sie die AKS-Ressource aus.
 
-2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Insights** aus. 
+2. Wählen Sie im Dashboard des AKS-Clusters links unter **Überwachung** die Option **Erkenntnisse** aus. 
 
 3. Wählen Sie entweder die Register **Knoten** oder **Controller** aus.
 

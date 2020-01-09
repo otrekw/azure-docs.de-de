@@ -1,18 +1,14 @@
 ---
 title: Abfragen von Protokollen aus Azure Monitor für Container | Microsoft-Dokumentation
 description: Azure Monitor für Container erfasst Metriken und Protokolldaten. In diesem Artikel werden die Datensätze und einige Beispielabfragen beschrieben.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
 ms.date: 10/15/2019
-ms.openlocfilehash: 787e9e6d0ae86568e1af74b4d67fb716841a02df
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: dcd1656673e549b583de26bca897d0055f389d0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73477092"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404538"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Abfragen von Protokollen aus Azure Monitor für Container
 
@@ -56,7 +52,7 @@ Die an Ihren Arbeitsbereich weitergeleiteten Containerprotokollausgaben sind STD
 
 Es ist oft hilfreich, die Abfrageerstellung ausgehend von einem oder zwei Beispielen zu beginnen und diese dann den Anforderungen entsprechend anzupassen. Sie können mit den folgenden Beispielabfragen experimentieren, um komplexere Abfragen zu erstellen:
 
-| Abfragen | BESCHREIBUNG | 
+| Abfrage | BESCHREIBUNG | 
 |-------|-------------|
 | ContainerInventory<br> &#124; project Computer, Name, Image, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; render table | Liste mit Lebenszyklusinformationen aller Container| 
 | KubeEvents_CL<br> &#124; where not(isempty(Namespace_s))<br> &#124; sort by TimeGenerated desc<br> &#124; render table | Kubernetes-Ereignisse|

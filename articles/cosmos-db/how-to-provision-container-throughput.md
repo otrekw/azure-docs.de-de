@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie Durchsatz auf Containerebene in Azure Cosmos 
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/12/2019
+ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: ed6a55c8b6049f16e96a4a95ecf3ef125db908d7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: bfd18a009ed9ab5edffafcd0327b1d846cae02d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872042"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643847"
 ---
 # <a name="provision-throughput-on-an-azure-cosmos-container"></a>Bereitstellen von Durchsatz für einen Azure Cosmos-Container
 
@@ -49,7 +49,7 @@ Informationen zum Erstellen eines Containers mit dediziertem Durchsatz finden Si
 > Verwenden Sie die Cosmos SDKs für die SQL-API, um Durchsatz für alle Cosmos DB-APIs (mit Ausnahme der Cassandra-API) bereitzustellen.
 
 ### <a id="dotnet-most"></a>SQL-, MongoDB-, Gremlin- und Tabellen-API
-### <a name="net-v2-sdk"></a>.Net V2 SDK
+### <a name="net-v2-sdk"></a>.NET V2 SDK
 
 ```csharp
 // Create a container with a partition key and provision throughput of 400 RU/s
@@ -77,7 +77,7 @@ const { database } = await client.databases.createIfNotExists({ id: "databaseId"
 
 // Create a container with the specified throughput
 const { resource } = await database.containers.createIfNotExists({
-id: "contaierId ",
+id: "containerId",
 throughput: 1000
 });
 

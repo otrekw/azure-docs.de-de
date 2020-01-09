@@ -3,17 +3,17 @@ title: Überwachen eines Azure-Clouddiensts| Microsoft Docs
 description: Hier wird beschrieben, welche Aspekte die Überwachung eines Azure-Clouddiensts umfasst und welche Optionen verfügbar sind.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
-ms.author: gwallace
-ms.openlocfilehash: ac0ea7557774f0e59cb6a6eca1fc739592ab971d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359115"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386067"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
@@ -96,4 +96,7 @@ Hinweis: Sie können die Leistungsindikatoren (und weiteren Einstellungen), die 
 
 - [Informationen zu Application Insights mit Cloud Services](../azure-monitor/app/cloudservices.md)
 - [Einrichten von Leistungsindikatoren](diagnostics-performance-counters.md)
+
+
+
 

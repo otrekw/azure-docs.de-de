@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 582e0c6b9f6a51f97e8d4990634ceac61c6d9f23
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: fd0e6d526f0c47304e7bf53f91d08f42b924ff23
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440381"
 ---
 # <a name="switch-activity-in-azure-data-factory"></a>Switch-Aktivität in Azure Data Factory
 
@@ -67,8 +67,8 @@ Die Switch-Aktivität bietet die gleiche Funktionalität wie eine Switch-Anweisu
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Name der Switch-Aktivität. | Zeichenfolge | Ja
-type | Muss auf *Switch** festgelegt werden. | Zeichenfolge | Ja
+name | Name der Switch-Aktivität. | String | Ja
+type | Muss auf *Switch** festgelegt werden. | String | Ja
 expression | Ausdruck, der als Zeichenfolgenwert ausgewertet werden muss | Ausdruck mit Ergebnistyp „String“ | Ja
 cases | Eine Reihe von Fällen, die einen Wert und einen Satz von Aktivitäten enthalten, die ausgeführt werden sollen, wenn der Wert der Ausdrucksauswertung entspricht. Es muss mindestens ein Fall angegeben werden. Es dürfen maximal 25 Fälle angegeben werden. | Array von Case-Objekten | Ja
 defaultActivities | Aktivitäten, die ausgeführt werden, wenn die Ausdrucksauswertung nicht erfüllt wird. | Array von Aktivitäten | Ja
@@ -236,10 +236,7 @@ Die Pipeline in diesem Beispiel kopiert Daten aus einem Eingabeordner in einen A
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

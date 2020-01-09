@@ -6,14 +6,14 @@ services: cloud-services
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 12
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: 481301333ada39297bf2813bbea5f096c2abd3ad
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: 0f0e79b462726b1aa6a953a4b8c92334d6b16492
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68360654"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449084"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Rollenschema der Azure Cloud Services-Konfiguration
 
@@ -40,7 +40,7 @@ Das folgende Beispiel zeigt das `Role`-Element und seine untergeordneten Element
 
 In der folgenden Tabelle sind die Attribute des `Role`-Elements beschrieben.
 
-| Attribut | BESCHREIBUNG |
+| attribute | BESCHREIBUNG |
 | --------- | ----------- |
 | name   | Erforderlich. Gibt den Namen der Rolle an. Der Name muss mit dem in der Dienstdefinitionsdatei angegebenen Namen für die Rolle übereinstimmen.|
 | vmName | Optional. Gibt den DNS-Namen für einen virtuellen Computer an. Der Name darf höchstens 10 Zeichen enthalten.|
@@ -53,5 +53,5 @@ Die folgende Tabelle beschreibt die untergeordneten Elemente des `Role`-Elements
 | Einstellung   | Optional. Gibt einen Einstellungsnamen und -Wert in einer Auflistung von Einstellungen für eine Rolle an. Der Name der Einstellung wird durch eine Zeichenfolge für das `name`-Attribut und der Wert der Einstellung durch eine Zeichenfolge für das `value`-Attribut definiert.|
 | Zertifikat | Optional. Gibt den Namen, den Fingerabdruck und den Algorithmus eines Dienstzertifikats an, das der Rolle zugeordnet werden soll. Der Name des Zertifikats wird durch eine Zeichenfolge für das `name`-Attribut definiert. Der Zertifikatfingerabdruck wird durch eine Zeichenfolge von Hexadezimalzahlen ohne Leerzeichen für das `thumbprint`-Attribut definiert. Die Hexadezimalzahlen müssen durch Ziffern und Großbuchstaben dargestellt werden. Der Zertifikatalgorithmus wird durch eine Zeichenfolge für das `thumbprintAlgorithm`-Attribut definiert.|
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Azure Cloud Services Config Schema (.cscfg File)](schema-cscfg-file.md) (Azure Cloud Services-Konfigurationsschema (CSCFG-Datei))

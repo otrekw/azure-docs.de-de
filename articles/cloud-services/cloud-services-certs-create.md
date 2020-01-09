@@ -3,17 +3,17 @@ title: Clouddienste und Verwaltungszertifikate | Microsoft-Dokumentation
 description: Informationen zum Erstellen und Verwenden von Zertifikaten mit Microsoft Azure
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359194"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361346"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Übersicht über Zertifikate für Azure Cloud Services
 Zertifikate werden in Azure für Clouddienste verwendet ([Dienstzertifikate](#what-are-service-certificates)) und für die Authentifizierung mit der Verwaltungs-API genutzt ([Verwaltungszertifikate](#what-are-management-certificates)). Dieses Thema bietet eine allgemeine Übersicht über beide Zertifikattypen sowie über deren [Erstellung](#create) und Bereitstellung in Azure.
@@ -86,10 +86,13 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 Im Internet wird auf vielen Seiten erläutert, wie mit IIS Zertifikate erstellt werden können. [Hier](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) eine Seite, auf der dies nach meinem Empfinden anschaulich erklärt wird. 
 
 ### <a name="linux"></a>Linux
-In [diesem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Artikel wird beschrieben, wie Zertifikate mit SSH erstellt werden.
+[diesem](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Artikel wird beschrieben, wie Zertifikate mit SSH erstellt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Hochladen des Dienstzertifikats in das Azure-Portal](cloud-services-configure-ssl-certificate-portal.md).
 
 Hochladen des [Verwaltungs-API-Zertifikats](../azure-api-management-certs.md) in das Azure-Portal.
+
+
+
 

@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/29/2018
-ms.openlocfilehash: 9cc9c9db1438196190df38082f18d650eff38249
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 7112f86ca123c66c5969236617f35fcb8d698030
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932696"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680663"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Erstellen und Verwalten von Warnungsregeln in Log Analytics mithilfe der REST-API
 Mit der REST-API für Log Analytics-Warnungen können Sie Warnungen in Log Analytics erstellen und verwalten.  Dieser Artikel enthält die Details der API und mehrere Beispiele für verschiedene Vorgänge.
 
 > [!IMPORTANT]
-> Wie [bereits angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), können in Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln **nur** mit der scheduledQueryRules-[REST-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), der [Azure Resource Manager-Vorlage](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) und dem [PowerShell-Cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell) verwaltet werden. Kunden können für ältere Arbeitsbereiche problemlos [ihre bevorzugte Methode zur Verwaltung von Warnungsregeln umstellen](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api), um scheduledQueryRules in Azure Monitor als Standard zu verwenden und viele [neue Vorteile](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) zu nutzen, z. B. die Möglichkeit der Verwendung nativer PowerShell-Cmdlets, verlängerter Rückschauzeitraum in Regeln, Erstellung von Regeln in separater Ressourcengruppe oder separatem Abonnement und vieles mehr.
+> Wie [bereits angekündigt](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), können in Log Analytics-Arbeitsbereichen, die nach dem *1. Juni 2019* erstellt wurden, Warnungsregeln **nur** mit der scheduledQueryRules-[REST-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), der [Azure Resource Manager-Vorlage](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) und dem [PowerShell-Cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell) verwaltet werden. Kunden können für ältere Arbeitsbereiche problemlos [ihre bevorzugte Methode zur Verwaltung von Warnungsregeln umstellen](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api), um „scheduledQueryRules“ in Azure Monitor als Standard zu verwenden und viele [neue Vorteile](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) zu nutzen. Hierzu zählen beispielsweise die Möglichkeit zur Verwendung nativer PowerShell-Cmdlets, ein längerer Rückschauzeitraum in Regeln sowie die Erstellung von Regeln in einer separaten Ressourcengruppe oder in einem separaten Abonnement.
 
 Die REST-API für die Log Analytics-Suche ist RESTful. Der Zugriff darauf erfolgt über die Azure Resource Manager-REST-API. In diesem Dokument finden Sie Beispiele, in denen über eine PowerShell-Befehlszeile per [ARMClient](https://github.com/projectkudu/ARMClient) auf die API zugegriffen wird. Dies ist ein Open-Source-Befehlszeilentool, mit dem das Aufrufen der Azure Resource Manager-API vereinfacht wird. Die Verwendung von ARMClient und PowerShell ist eine von vielen Möglichkeiten, auf die Protokollsuch-API von Log Analytics zuzugreifen. Mit diesen Tools können Sie die RESTful-API von Azure Resource Manager für Aufrufe an Log Analytics-Arbeitsbereiche nutzen und darin Suchbefehle ausführen. Die API wird Ihnen Suchergebnisse im JSON-Format ausgeben, und Sie können die Suchergebnisse programmgesteuert auf viele verschiedene Arten verwenden.
 
@@ -124,7 +124,7 @@ Verwenden Sie die Delete-Methode mit der Aktions-ID, um eine Aktion zu löschen.
 ### <a name="alert-actions"></a>Warnungsaktionen
 Ein Zeitplan sollte nur über genau eine Warnungsaktion verfügen.  Warnungsaktionen weisen einen oder mehrere Abschnitte auf, die in der folgenden Tabelle aufgeführt sind.  Jeder Abschnitt wird unten ausführlicher beschrieben.
 
-| Abschnitt | BESCHREIBUNG | Verwendung |
+| `Section` | BESCHREIBUNG | Verwendung |
 |:--- |:--- |:--- |
 | Schwellenwert |Kriterien für den Zeitpunkt der Ausführung einer Aktion.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
 | severity |Bezeichnung zum Klassifizieren einer Warnung bei Auslösung.| Für jede Warnung vor oder nach der Erweiterung auf Azure erforderlich. |
@@ -159,12 +159,12 @@ Unten ist eine Beispielantwort für eine Aktion angegeben, die nur über einen S
 
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine neue Schwellenwertaktion für einen Zeitplan zu erstellen.  
 
-    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schwellenwertaktion für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
-    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
 #### <a name="severity"></a>severity
@@ -191,12 +191,12 @@ Unten ist eine Beispielantwort für eine Aktion angegeben, die nur einen Schwell
 
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine neue Aktion für einen Zeitplan mit Schweregrad zu erstellen.  
 
-    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schweregradaktion für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
-    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
 
 #### <a name="suppress"></a>Suppress
@@ -222,12 +222,12 @@ Unten sehen eine Beispielantwort für eine Aktion, die nur einen Schwellenwert, 
 
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine neue Aktion für einen Zeitplan mit Schweregrad zu erstellen.  
 
-    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine Schweregradaktion für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
-    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{ResourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>Aktionsgruppen
@@ -257,12 +257,12 @@ Um eine Zuordnung einer Aktionsgruppe zu einer Warnung hinzuzufügen, geben Sie 
 
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine bereits vorhandene Aktionsgruppe für einen Zeitplan zuzuordnen.  Im Folgenden finden eine Beispieldarstellung der Nutzung.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordnete Aktionsgruppe für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': { 'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'] } } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 #### <a name="customize-actions"></a>Anpassen von Aktionen
@@ -292,12 +292,12 @@ Der Standard-E-Mail-Betreff für Warnungen lautet: „Alert Notification `<Alert
 
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine bereits vorhandene angepasste Aktionsgruppe für einen Zeitplan zuzuordnen.  Im Folgenden finden eine Beispieldarstellung der Nutzung.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} }"
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordnete Aktionsgruppe für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' }"
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 ##### <a name="customize-webhook-payload-for-action-group"></a>Anpassen einer Webhook-Nutzlast für eine Aktionsgruppe
@@ -327,12 +327,12 @@ Die Details des angepassten Webhooks müssen mit den Details zur Aktionsgruppe g
 
 Verwenden Sie die Put-Methode mit einer eindeutigen Aktions-ID, um eine bereits vorhandene angepasste Aktionsgruppe für einen Zeitplan zuzuordnen.  Im Folgenden finden eine Beispieldarstellung der Nutzung.
 
-    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} }"
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 Verwenden Sie die Put-Methode mit einer vorhandenen Aktions-ID, um eine zugeordnete Aktionsgruppe für einen Zeitplan zu ändern.  Der Hauptteil der Anforderung muss das ETag der Aktion enthalten.
 
-    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' }"
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', 'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
 
 

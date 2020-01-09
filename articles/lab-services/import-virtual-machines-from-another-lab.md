@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: ca6ed58cfabb5027830828812c4820c1b586875c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0778759958e70c564779f5493d7cf8b646f6ced0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61322853"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644646"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>Importieren virtueller Computer aus einem anderen Lab in Azure DevTest Labs
 In diesem Artikel erfahren Sie, wie Sie virtuelle Computer aus einem anderen Lab in Ihr Lab importieren.
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie virtuelle Computer aus einem anderen Lab
 Folgende Beispiele beschreiben Szenarios, in denen Sie VMs aus einem Lab in ein anderes Lab importieren müssen:
 
 - Ein Mitglied eines Teams wechselt zu einer anderen Gruppe im Unternehmen und möchte den Entwicklerdesktop mit in die DevTest Labs-Umgebung des neuen Teams nehmen.
-- Die Gruppe hat das [Kontingent auf Abonnementebene](../azure-subscription-service-limits.md) erreicht und möchte die Teams in mehrere Abonnements unterteilen.
+- Die Gruppe hat das [Kontingent auf Abonnementebene](../azure-resource-manager/management/azure-subscription-service-limits.md) erreicht und möchte die Teams in mehrere Abonnements unterteilen.
 - Das Unternehmen wechselt zu ExpressRoute (oder einer anderen neuen Netzwerktopologie), und das Team möchte virtuelle Computer verschieben, um diese neue Infrastruktur zu verwenden.
 
 ## <a name="solution-and-constraints"></a>Lösung und Einschränkungen
@@ -83,7 +83,7 @@ POST https://management.azure.com/subscriptions/<DestinationSubscriptionID>/reso
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Weitere Informationen finden Sie in folgenden Artikeln:
 
 - [Festlegen von Richtlinien für ein Lab](devtest-lab-get-started-with-lab-policies.md)
 - [Häufig gestellte Fragen](devtest-lab-faq.md)

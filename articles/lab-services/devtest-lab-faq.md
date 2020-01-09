@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565332"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644918"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
@@ -162,11 +162,11 @@ Szenario mit gemeinsamer Ressourcengruppe:
 Es kann sinnvoll sein, aktuelle Benennungskonventionen im Unternehmen auf den Azure-Betrieb auszudehnen und sie über die gesamte DevTest Labs-Umgebung konsistent zu machen. Wir empfehlen, bei der Bereitstellung von DevTest Labs bestimmte Ausgangsrichtlinien zu implementieren. Sie stellen diese Richtlinien mit einem zentralen Skript und JSON-Vorlagen bereit, um Konsistenz durchzusetzen. Benennungsrichtlinien können mithilfe von Azure-Richtlinien implementiert werden, die auf Abonnementebene angewendet werden. JSON-Beispiele für Azure Policy finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).
 
 ### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Wie viele Labs kann ich unter demselben Abonnement erstellen?
-Es gibt keine bestimmte Beschränkung für die Anzahl von Labs, die pro Abonnement erstellt werden können. Allerdings ist die Menge der pro Abonnement nutzbaren Ressourcen begrenzt. Weitere Informationen finden Sie bei Bedarf in den Artikeln zu den [Einschränkungen für Azure-Abonnements und Kontingente](../azure-subscription-service-limits.md) und zum [Erhöhen dieser Limits](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Es gibt keine bestimmte Beschränkung für die Anzahl von Labs, die pro Abonnement erstellt werden können. Allerdings ist die Menge der pro Abonnement nutzbaren Ressourcen begrenzt. Weitere Informationen finden Sie bei Bedarf in den Artikeln zu den [Einschränkungen für Azure-Abonnements und Kontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) und zum [Erhöhen dieser Limits](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>Wie viele VMs kann ich pro Lab erstellen?
-Es gibt keine bestimmte Beschränkung für die Anzahl von virtuellen Computern (VMs), die pro Abonnement erstellt werden können. Die Menge an Ressourcen pro Abonnement (VM-Kerne, öffentliche IP-Adressen usw.) ist jedoch begrenzt. Weitere Informationen finden Sie bei Bedarf in den Artikeln zu den [Einschränkungen für Azure-Abonnements und Kontingente](../azure-subscription-service-limits.md) und zum [Erhöhen dieser Limits](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Es gibt keine bestimmte Beschränkung für die Anzahl von virtuellen Computern (VMs), die pro Abonnement erstellt werden können. Die Menge an Ressourcen pro Abonnement (VM-Kerne, öffentliche IP-Adressen usw.) ist jedoch begrenzt. Weitere Informationen finden Sie bei Bedarf in den Artikeln zu den [Einschränkungen für Azure-Abonnements und Kontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) und zum [Erhöhen dieser Limits](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 ### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Wie lässt sich das Verhältnis von Benutzern pro Lab zur Gesamtzahl der innerhalb einer gesamten Organisation erforderlichen Labs bestimmen?
 Wir empfehlen, dass Geschäftseinheiten und Entwicklungsgruppen, die dem gleichen Entwicklungsprojekt angehören, dem gleichen Lab zugeordnet werden. Dadurch können für beide Gruppen die gleichen Arten von Richtlinien, Images und Richtlinien zum Herunterfahren angewendet werden.
@@ -352,7 +352,7 @@ Wenn Ihre VMs mit vorhandener Infrastruktur interagieren müssen, erwägen Sie d
 
 Sie sollten hier auch die Verwendung des VNet-Peeringmusters ([Nabe-Speiche-Modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) in Erwägung ziehen. Dieser Ansatz ermöglicht die abonnementübergreifende VNet/Subnetz-Kommunikation. Andernfalls kann jede DevTest Labs-Umgebung über ein eigenen virtuelles Netzwerk verfügen. 
 
-Die Anzahl der virtuellen Netzwerke pro Abonnement ist [begrenzt](../azure-subscription-service-limits.md). Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
+Die Anzahl der virtuellen Netzwerke pro Abonnement ist [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md). Standardmäßig sind 50 möglich, dieser Grenzwert kann jedoch auf 100 heraufgesetzt werden.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Wann sollte eine gemeinsame IP-Adresse, wann eine öffentliche, wann eine private verwendet werden?
  

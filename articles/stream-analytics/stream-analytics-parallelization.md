@@ -1,20 +1,18 @@
 ---
 title: Verwenden der Abfrageparallelisierung und Skalierung in Azure Stream Analytics
 description: In diesem Artikel erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfiguration von Eingabepartitionen, Optimierung der Abfragedefinition und Festlegung von Auftragsstreamingeinheiten skalieren.
-services: stream-analytics
 author: JSeb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: 985746989af39aa55d5d8af735edf62f4c4b77b7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: d1afb6037b5fc290de93faba405982ebd1fb68ea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932283"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431592"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -200,7 +198,7 @@ Wenn eine Abfrage partitioniert ist, werden die Eingabeereignisse verarbeitet un
 Alle nicht partitionierten Schritte zusammen können auf bis zu sechs Streamingeinheiten (SUs) für einen Stream Analytics-Auftrag zentral hochskaliert werden. Darüber hinaus können Sie 6 SUs für jede Partition in einem partitionierten Schritt hinzufügen.
 In der nachstehenden Tabelle werden einige **Beispiele** angegeben.
 
-| Abfragen                                               | Max. Anzahl von SUs für den Auftrag |
+| Abfrage                                               | Max. Anzahl von SUs für den Auftrag |
 | --------------------------------------------------- | ------------------- |
 | <ul><li>Die Abfrage umfasst einen Schritt.</li><li>Der Schritt ist nicht partitioniert.</li></ul> | 6 |
 | <ul><li>Der Eingabedatenstrom ist in 16 Partitionen unterteilt.</li><li>Die Abfrage umfasst einen Schritt.</li><li>Der Schritt ist partitioniert.</li></ul> | 96 (6*16 Partitionen) |
@@ -299,7 +297,7 @@ Alle [Azure-Beispiele zum bedarfsorientierten Streaming](https://github.com/Azur
 ```
 
 > [!NOTE]
-> Die Konfigurationen können sich aufgrund der verschiedenen Komponenten in der Lösung ändern. Um eine genauere Schätzung zu erhalten, passen Sie die Beispiele Ihrem Szenario an.
+> Die Konfigurationen können sich aufgrund der verschiedenen Komponenten in der Lösung ändern. Um eine genauere Schätzung zu erhalten, passen Sie die Beispiele an Ihr Szenario an.
 
 ### <a name="identifying-bottlenecks"></a>Identifizieren von Engpässen
 

@@ -3,18 +3,18 @@ title: 'Glossar: IoT Plug & Play (Vorschau) | Microsoft-Dokumentation'
 description: 'Konzepte: Ein Glossar mit häufig verwendeten Begriffen in Zusammenhang mit IoT Plug & Play (Vorschau).'
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 10/10/2019
+ms.date: 12/23/2019
 ms.topic: conceptual
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 22b2cb8caa815b2ce8343a060a5f12133b763b83
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b6516b07f24c40fcb95d47e05b22dd7672c10f2a
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890341"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531200"
 ---
 # <a name="glossary-of-terms-for-iot-plug-and-play-preview"></a>Glossar für IoT Plug & Play (Vorschau)
 
@@ -171,7 +171,7 @@ In einem Modellrepository werden [Gerätefunktionsmodelle](#device-capability-mo
 
 Eine API zum Verwalten von und Interagieren mit Modellrepositorys. So können Sie beispielsweise mithilfe der API [Gerätefunktionsmodelle](#device-capability-model) hinzufügen und nach Funktionsmodellen suchen.
 
-## <a name="properties"></a>Properties
+## <a name="properties"></a>Eigenschaften
 
 Eigenschaften sind Datenfelder, die in einer [Schnittstelle](#interface) definiert sind und einen bestimmten Zustand eines digitalen Zwillings repräsentieren. Sie können Eigenschaften als schreibgeschützt oder beschreibbar deklarieren. Schreibgeschützte Eigenschaften, z.B. eine Seriennummer, werden durch Code festgelegt, der auf dem [IoT Plug & Play-Gerät](#iot-plug-and-play-device) selbst ausgeführt wird.  Schreibbare Eigenschaften, z.B. ein Alarmschwellenwert, werden normalerweise aus der cloudbasierten IoT-Lösung festgelegt.
 

@@ -1,19 +1,18 @@
 ---
 title: Integration eines Power BI-Dashboards mit Azure Stream Analytics
 description: In diesem Artikel wird beschrieben, wie Sie mit einem Power BI-Echtzeitdashboard Daten aus einem Azure Stream Analytics-Auftrag visualisieren.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: c415bdecdaf55f3068dcd804ab34de402fe7a31f
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 76f5c1f0cd3186244e9a262358c9c9a652a73fdb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431633"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
 
@@ -57,7 +56,7 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 4. Nachdem Sie **Autorisieren** ausgewählt haben, werden Sie in einem Popupfenster aufgefordert, Anmeldeinformationen für die Authentifizierung Ihres Power BI-Kontos anzugeben. Nachdem die Autorisierung erfolgreich abgeschlossen wurde, können Sie die Einstellungen speichern, indem Sie **Speichern** wählen.
 
-8. Klicken Sie auf **Create**.
+8. Klicken Sie auf **Erstellen**.
 
 Das Dataset wird mit den folgenden Einstellungen erstellt:
 
@@ -121,7 +120,7 @@ Dieser Abschnitt ist optional, wird aber empfohlen.
 
 4. Klicken Sie auf **Test**, und überprüfen Sie die Ergebnisse.
 
-## <a name="run-the-job"></a>Ausführen des Auftrags
+## <a name="run-the-job"></a>Ausführung des Auftrags.
 
 1. Stellen Sie sicher, dass die TelcoStreaming-App ausgeführt wird.
 

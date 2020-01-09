@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: a0505b987deb67f93de6f6166154211359515ad7
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74807704"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456978"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Beheben von Problemen, die beim Anwenden von Artefakten auf einem virtuellen Azure DevTest Labs-Computer auftreten
 Das Anwenden von Artefakten auf einem virtuellen Computer kann aus verschiedenen Gründen fehlschlagen. Dieser Artikel stellt Ihnen einige der Methoden vor, die Sie beim Identifizieren möglicher Ursachen unterstützen.
@@ -69,7 +69,7 @@ Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, bei
 - **Beim Versuch, das Artefakt auszuführen**. Die Ursache können Netzwerk- oder Speicherprobleme sein. Weitere Informationen finden Sie im entsprechenden Abschnitt weiter unten in diesem Artikel. Dies kann auch durch die Art und Weise erfolgen, in der das Skript erstellt wird. Beispiel:
     - Ein PowerShell-Skript verfügt über **erforderliche Parameter**, aber einer der Parameter kann keinen Wert an das Skript übergeben, weil Sie dem Benutzer erlauben, den Parameterwert leer zu lassen, oder weil kein Standardwert für die Eigenschaft in der Definitionsdatei „artifactfile.json“ vorhanden ist. Das Skript reagiert nicht mehr, da es auf Benutzereingaben wartet.
     - Ein PowerShell-Skript **erfordert Benutzereingaben** als Teil der Ausführung. Skripts müssen so geschrieben werden, dass sie ohne Benutzereingriff unbeaufsichtigt funktionieren.
-- **VM-Agent benötigt lange, bis er bereit ist**. Beim ersten Start der VM oder beim ersten Installieren der benutzerdefinierten Skripterweiterung, um die Anforderung zum Anwenden von Artefakten zu erfüllen, muss die VM möglicherweise entweder ein Upgrade des VM-Agents durchführen oder darauf warten, dass der VM-Agent initialisiert wird. Möglicherweise sind Dienste vorhanden, von denen der VM-Agent abhängig ist, deren Initialisierung lange dauert. In diesen Fällen finden Sie Informationen zur weiteren Problembehandlung unter [Übersicht über den Agent für virtuelle Azure-Computer](/virtual-machines/extensions/agent-windows.md).
+- **VM-Agent benötigt lange, bis er bereit ist**. Beim ersten Start der VM oder beim ersten Installieren der benutzerdefinierten Skripterweiterung, um die Anforderung zum Anwenden von Artefakten zu erfüllen, muss die VM möglicherweise entweder ein Upgrade des VM-Agents durchführen oder darauf warten, dass der VM-Agent initialisiert wird. Möglicherweise sind Dienste vorhanden, von denen der VM-Agent abhängig ist, deren Initialisierung lange dauert. In diesen Fällen finden Sie Informationen zur weiteren Problembehandlung unter [Übersicht über den Agent für virtuelle Azure-Computer](../virtual-machines/extensions/agent-windows.md).
 
 ### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>So überprüfen Sie, ob das Artefakt aufgrund des Skripts nicht mehr reagiert
 
@@ -101,7 +101,7 @@ Wenn ein Artefakt scheinbar nicht mehr reagiert, stellen Sie zunächst fest, bei
     In diesem Beispiel können Sie erkennen, dass die Startzeit des VM-Agents 10 Minuten und 20 Sekunden betragen hat, weil ein Heartbeat gesendet wurde. In diesem Fall war die Ursache, dass der Start des OOBE-Diensts eine lange Zeit in Anspruch genommen hat.
 
 > [!TIP]
-> Allgemeine Informationen zu Azure-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](/virtual-machines/extensions/overview.md).
+> Allgemeine Informationen zu Azure-Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Azure-Computer](../virtual-machines/extensions/overview.md).
 
 ## <a name="storage-errors"></a>Speicherfehler
 DevTest Labs erfordert Zugriff auf das Speicherkonto des Labs, das zum Zwischenspeichern von Artefakten erstellt wird. Wenn DevTest Labs ein Artefakt anwendet, werden die Artefaktkonfiguration und die zugehörigen Dateien aus den konfigurierten Repositorys gelesen. Standardmäßig konfiguriert DevTest Labs den Zugriff auf das **öffentliche Artefaktrepository**.

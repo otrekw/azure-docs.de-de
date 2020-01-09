@@ -3,19 +3,19 @@ title: Installieren von .NET in Rollen in Azure Cloud Services | Microsoft-Dokum
 description: Dieser Artikel beschreibt die manuelle Installation von .NET Framework in Clouddienstweb- und -workerrollen.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
-ms.author: gwallace
-ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359635"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360989"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
@@ -234,3 +234,6 @@ Wenn Sie Ihren Clouddienst bereitstellen, installieren die Startaufgaben .NET Fr
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

@@ -10,15 +10,15 @@ ms.date: 01/15/2018
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 1a9a88f975ca10a63741818dcb88874a8f1bf436
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 87633abaaae1f6034709c6e552be6647533115ec
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926384"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440306"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Erstellen und Konfigurieren von Azure Integration Runtime
-Bei Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen verschiedene Netzwerkumgebungen übergreifend bereitstellt. Weitere Informationen zu IR finden Sie unter [Integration runtime in Azure Data Factory](concepts-integration-runtime.md) (Integration Runtime in Azure Data Factory).
+Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zu IR finden Sie unter [Integration runtime in Azure Data Factory](concepts-integration-runtime.md) (Integration Runtime in Azure Data Factory).
 
 Azure IR bietet ein vollständig verwaltetes Compute zur nativen Durchführung des Verschiebens von Daten und Disponierens von Datentransformationsaktivitäten zum Berechnen von Diensten wie HDInsight. IR wird in der Azure-Umgebung gehostet und unterstützt das Herstellen von Verbindungen mit Ressourcen in einer öffentlichen Netzwerkumgebung mit öffentlich zugänglichen Endpunkten.
 
@@ -49,10 +49,7 @@ Sobald eine Azure IR erstellt ist, können Sie in Ihrer Definition des verknüpf
     "properties": {
       "type": "AzureStorage",
       "typeProperties": {
-        "connectionString": {
-          "value": "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=...",
-          "type": "SecureString"
-        }
+        "connectionString": "DefaultEndpointsProtocol=https;AccountName=myaccountname;AccountKey=..."
       },
       "connectVia": {
         "referenceName": "MySampleAzureIR",
@@ -66,6 +63,6 @@ Sobald eine Azure IR erstellt ist, können Sie in Ihrer Definition des verknüpf
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zum Erstellen anderer Integration Runtime-Typen finden Sie in den folgenden Artikeln:
 
-- [How to create and configure Self-hosted Integration Runtime](create-self-hosted-integration-runtime.md) (Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime)
-- [Create an Azure-SSIS integration runtime in Azure Data Factory](create-azure-ssis-integration-runtime.md) (Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory)
+- [Create self-hosted integration runtime](create-self-hosted-integration-runtime.md) (Erstellen einer selbstgehosteten Integrationslaufzeit)
+- [Erstellen einer Azure SSIS Integration Runtime](create-azure-ssis-integration-runtime.md)
  

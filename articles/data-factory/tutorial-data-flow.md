@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/07/2019
-ms.openlocfilehash: 1211a7f2aa82f7084dc87e2c9a8bdaab9997be45
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: e686648680261e2d13707f1704c56f306c510397
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927210"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439468"
 ---
 # <a name="transform-data-using-mapping-data-flows"></a>Transformieren von Daten mithilfe von Mapping Data Flow
 
@@ -41,7 +41,7 @@ Die Datei, die in diesem Tutorial transformiert wird, ist „MoviesDB.csv“, di
 In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-Benutzeroberfläche, um eine Pipeline in der Data Factory zu erstellen. 
 
 1. Öffnen Sie **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird derzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen** > **Analytics** > **Data Factory**: 
+2. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**: 
   
    ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -57,7 +57,7 @@ In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-B
 
     b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
          
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md). 
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md). 
 6. Wählen Sie unter **Version** die Option **V2**.
 7. Wählen Sie unter **Standort** einen Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Datenspeicher (etwa Azure Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von der Data Factory genutzt werden, können sich in anderen Regionen befinden.
 8. Klicken Sie auf **Erstellen**. 
@@ -95,13 +95,13 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
     ![Datenflusscanvas](media/tutorial-data-flow/dataflow3.png)
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
-    ![Datensatz](media/tutorial-data-flow/dataset1.png)
+    ![Dataset](media/tutorial-data-flow/dataset1.png)
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
-    ![Datensatz](media/tutorial-data-flow/dataset2.png)
+    ![Dataset](media/tutorial-data-flow/dataset2.png)
 1. Geben Sie dem Dataset den Namen **MoviesDB**. Wählen Sie in der Dropdownliste für den verknüpften Dienst die Option **Neu** aus.
 
-    ![Datensatz](media/tutorial-data-flow/dataset3.png)
+    ![Dataset](media/tutorial-data-flow/dataset3.png)
 1. Geben Sie im Erstellungsbildschirm für einen verknüpften Dienst dem verknüpften ADLS Gen2-Dienst den Namen **ADLSGen2**, und geben Sie die Authentifizierungsmethode an. Dann geben Sie Ihre Verbindungsanmeldeinformationen ein. In diesem Tutorial wird der Kontoschlüssel zum Herstellen einer Verbindung mit dem Speicherkonto verwendet. Sie können auf **Verbindung testen** klicken, um zu überprüfen, ob Ihre Anmeldeinformationen korrekt eingegeben wurden. Wenn Sie fertig sind, klicken Sie auf „Erstellen“.
 
     ![Verknüpfter Dienst](media/tutorial-data-flow/ls1.png)
@@ -116,7 +116,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
     ![Datenflusscanvas](media/tutorial-data-flow/dataflow5.png)
 1. Geben Sie der Filtertransformation den Namen **FilterYears**. Klicken Sie auf das Ausdrucksfeld neben **Filtern nach**, um den Ausdrucks-Generator zu öffnen. Hier geben Sie dann die Filterbedingung an. 
     
-    ![Filter](media/tutorial-data-flow/filter1.png)
+    ![Filtern](media/tutorial-data-flow/filter1.png)
 1. Mit dem Datenfluss-Ausdrucks-Generator können Sie Ausdrücke interaktiv erstellen, die dann in verschiedenen Transformationen verwendet werden können. Ausdrücke können integrierte Funktionen, Spalten aus dem Eingabeschema und benutzerdefinierte Parameter enthalten. Weitere Informationen zum Erstellen von Ausdrücken finden Sie unter [Mapping Data Flow: Ausdrucks-Generator](concepts-data-flow-expression-builder.md).
     
     In diesem Tutorial möchten Sie Filme des Genres „Komödie“ filtern, die zwischen den Jahren 1910 und 2000 entstanden sind. Da die Jahresangabe derzeit eine Zeichenfolge ist, müssen Sie sie mithilfe der Funktion ```toInteger()``` in eine ganze Zahl konvertieren. Verwenden Sie die Operatoren für größer als oder gleich (>=) und kleiner als oder gleich (<=) für einen Vergleich mit den Literalwerten für die Jahre 1910 und 2000. Verbinden Sie diese Ausdrücke mit dem Und-Operator (&&). Der Ausdruck sieht wie folgt aus:
@@ -129,13 +129,13 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     Wenn ein Debugcluster aktiv ist, können Sie die Logik überprüfen. Klicken Sie dazu auf **Aktualisieren**, um die Ausdrucksausgabe im Vergleich zu den verwendeten Eingaben anzuzeigen. Es gibt mehrere Möglichkeiten, wie Sie diese Logik mithilfe der Ausdruckssprache für Datenflüsse erzielen können.
     
-    ![Filter](media/tutorial-data-flow/filter2.png)
+    ![Filtern](media/tutorial-data-flow/filter2.png)
 
     Sobald Sie den Ausdruck fertiggestellt haben, klicken Sie auf **Speichern und beenden**.
 
 1. Rufen Sie eine **Datenvorschau** ab, um zu überprüfen, ob der Filter ordnungsgemäß funktioniert.
     
-    ![Filter](media/tutorial-data-flow/filter3.png)
+    ![Filtern](media/tutorial-data-flow/filter3.png)
 1. Als nächste Transformation fügen Sie eine **Aggregat**-Transformation unter **Schemamodifizierer** hinzu.
     
     ![Aggregat](media/tutorial-data-flow/agg1.png)
@@ -163,10 +163,10 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
     ![Senke](media/tutorial-data-flow/sink2.png)
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
-    ![Datensatz](media/tutorial-data-flow/dataset1.png)
+    ![Dataset](media/tutorial-data-flow/dataset1.png)
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
-    ![Datensatz](media/tutorial-data-flow/dataset2.png)
+    ![Dataset](media/tutorial-data-flow/dataset2.png)
 1. Geben Sie dem Senkendataset den Namen **MoviesSink**. Wählen Sie als verknüpften Dienst den verknüpften ADLS Gen2-Dienst aus, den Sie in Schritt 6 erstellt haben. Geben Sie einen Ausgabeordner ein, in den die Daten geschrieben werden sollen. In diesem Tutorial wird in den Ordner „output“ im Container „sample-data“ geschrieben. Der Ordner muss nicht vorab vorhanden sein und kann dynamisch erstellt werden. Aktivieren Sie das Kontrollkästchen **Erste Zeile als Header**, und wählen Sie für **Schema importieren** die Option **Kein** aus. Klicken Sie auf Fertig stellen.
     
     ![Senke](media/tutorial-data-flow/sink3.png)
@@ -194,7 +194,7 @@ Wenn Sie dieses Tutorial richtig durchgeführt haben, sollten 83 Zeilen und 2 Sp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Mit der Pipeline in diesem Tutorial wird ein Datenfluss ausgeführt, der die durchschnittliche Bewertung von Komödien zwischen 1910 und 2000 aggregiert und die Daten in ADLS schreibt. Es wurde Folgendes vermittelt:
+Mit der Pipeline in diesem Tutorial wird ein Datenfluss ausgeführt, der die durchschnittliche Bewertung von Komödien zwischen 1910 und 2000 aggregiert und die Daten in ADLS schreibt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.

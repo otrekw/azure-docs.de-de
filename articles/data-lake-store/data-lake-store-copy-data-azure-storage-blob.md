@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 0225405c5d3a511bbb2bbb08c1c13e5adedd5096
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ad408df140be49da2e50ef810285dd850e9da6a1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903770"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638867"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopieren von Daten aus Azure Storage-Blobs in Azure Data Lake Storage Gen1
 
@@ -54,7 +54,7 @@ Die Parameter in der Syntax werden nachfolgend beschrieben:
 | `Source` |Gibt den Speicherort der Quelldaten im Azure-Speicherblob an. Bei der Quelle kann es sich um einen Blobcontainer, ein Blob oder ein anderes Data Lake Storage Gen1-Konto handeln. |
 | Dest |Gibt das Data Lake Storage Gen1-Ziel für das Kopieren an. |
 | SourceKey |Gibt den Speicherzugriffsschlüssel für die Azure-Speicherblobquelle an. Dies ist nur erforderlich, wenn die Quelle ein Blobcontainer oder ein Blob ist. |
-| Konto |**Optional**. Verwenden Sie diese Option, wenn Sie das Azure Data Lake Analytics-Konto verwenden möchten, um den Kopierauftrag auszuführen. Wenn Sie die Option „/Account“ in der Syntax verwenden, aber kein Data Lake Analytics-Konto angeben, verwendet „AdlCopy“ ein Standardkonto zum Ausführen des Auftrags. Wenn Sie diese Option verwenden, müssen Sie außerdem die Quelle (Azure Storage Blob) und das Ziel (Azure Data Lake Storage Gen1) als Datenquellen für das Data Lake Analytics-Konto hinzufügen. |
+| Konto |**Optional:** Verwenden Sie diese Option, wenn Sie das Azure Data Lake Analytics-Konto verwenden möchten, um den Kopierauftrag auszuführen. Wenn Sie die Option „/Account“ in der Syntax verwenden, aber kein Data Lake Analytics-Konto angeben, verwendet „AdlCopy“ ein Standardkonto zum Ausführen des Auftrags. Wenn Sie diese Option verwenden, müssen Sie außerdem die Quelle (Azure Storage Blob) und das Ziel (Azure Data Lake Storage Gen1) als Datenquellen für das Data Lake Analytics-Konto hinzufügen. |
 | Units |Gibt die Anzahl der Data Lake Analytics-Einheiten an, die für den Kopierauftrag verwendet werden. Diese Option ist erforderlich, wenn Sie mithilfe der Option **/Account** das Data Lake Analytics-Konto angeben. |
 | Muster |Gibt ein RegEx-Muster an, das festlegt, welche Blobs oder Dateien kopiert werden sollen. Beim Abgleich für AdlCopy muss die Groß-/Kleinschreibung übereinstimmen. Das Standardmuster, wenn zum Kopieren aller Elemente kein Muster angegeben wurde. Das Angeben mehrerer Dateimuster wird nicht unterstützt. |
 
@@ -90,7 +90,7 @@ Die Parameter in der Syntax werden nachfolgend beschrieben:
 
 ### <a name="performance-considerations"></a>Überlegungen zur Leistung
 
-Beim Kopieren aus einem Azure Blob Storage-Konto wird der Kopierauftrag unter Umständen auf der Blob Storage-Seite gedrosselt. Dies beeinträchtigt die Leistung Ihres Kopierauftrags. Weitere Informationen zu den Einschränkungen von Azure Blob Storage finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md) unter „Speichergrenzwerte“.
+Beim Kopieren aus einem Azure Blob Storage-Konto wird der Kopierauftrag unter Umständen auf der Blob Storage-Seite gedrosselt. Dies beeinträchtigt die Leistung Ihres Kopierauftrags. Weitere Informationen zu den Einschränkungen von Azure Blob Storage finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md) unter „Speichergrenzwerte“.
 
 ## <a name="use-adlcopy-as-standalone-to-copy-data-from-another-data-lake-storage-gen1-account"></a>Verwenden von AdlCopy (als eigenständiges Tool) zum Kopieren von Daten aus einem anderen Data Lake Storage Gen1-Konto
 
@@ -186,4 +186,4 @@ AdlCopy unterstützt das Kopieren von Daten mit Tausenden von Dateien und Ordner
 
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Verwenden von Azure HDInsight mit Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Erstellen von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen1 im Azure-Portal](data-lake-store-hdinsight-hadoop-use-portal.md)

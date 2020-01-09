@@ -11,17 +11,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 9dd81484d8afab66fcb76f8fccdea348ef6a34c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90e51e8b56bd3fb63d56c630d47770e97f439796
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681487"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563535"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Verknüpfte Dienste in Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-create-datasets.md)
-> * [Aktuelle Version](concepts-datasets-linked-services.md)
+> * [Aktuelle Version](concepts-linked-services.md)
 
 In diesem Artikel ist beschrieben, was verknüpfte Dienste sind, wie sie im JSON-Format definiert werden, und wie sie in Azure Data Factory-Pipelines verwendet werden.
 
@@ -77,10 +77,7 @@ Der folgende verknüpfte Dienst ist ein mit Azure Storage verknüpfter Dienst. B
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

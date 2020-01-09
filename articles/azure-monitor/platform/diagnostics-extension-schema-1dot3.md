@@ -4,19 +4,19 @@ description: Schemaversion 1.3 und höher für Azure-Diagnose wird als Komponent
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: reference
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 09/20/2018
-ms.openlocfilehash: 3d79fe6a415b7d1f862797bf41caed89bfe50a41
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a3ee9731ebeb3b002f4dd9f5b856e720bf719d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834743"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75395092"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Konfigurationsschema für Azure-Diagnose 1.3 und höher
 > [!NOTE]
-> Die Azure-Diagnoseerweiterung ist die Komponente, die zum Sammeln von Leistungsindikatoren und anderen Statistiken aus diesen Komponenten verwendet wird:
+> Die Azure-Diagnoseerweiterung ist die Komponente, die zum Sammeln von Leistungsindikatoren und anderen Statistiken aus diesen Produkten verwendet wird:
 > - Azure Virtual Machines
 > - Virtual Machine Scale Sets
 > - Service Fabric
@@ -443,7 +443,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Erforderlich
 
-|Attribute|BESCHREIBUNG|  
+|Attributes|BESCHREIBUNG|  
 |----------------|-----------------|  
 | **overallQuotaInMB** | Der maximale lokale Speicherplatz, der von den verschiedenen Typen von Diagnosedaten genutzt werden kann, die von der Azure-Diagnose erfasst werden. Die Standardeinstellung lautet 4.096 MB.<br />
 |**useProxyServer** | Konfigurieren Sie die Azure-Diagnose, um die Proxyservereinstellungen den IE-Einstellungen entsprechend zu verwenden.|
@@ -470,7 +470,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Aktivieren Sie die Sammlung der Absturzabbilder.  
 
-|Attribute|BESCHREIBUNG|  
+|Attributes|BESCHREIBUNG|  
 |----------------|-----------------|  
 |**containerName**|Optional. Der Name des Blobcontainers in Ihrem Azure Storage-Konto, der zum Speichern der Absturzabbilder verwendet wird|  
 |**crashDumpType**|Optional.  Konfiguriert die Azure-Diagnose für die Erfassung von kleinen oder vollständigen Absturzabbildern.|  
@@ -606,9 +606,9 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Pufferkonfiguration für grundlegende Azure-Protokolle.  
 
-|Attribut|type|BESCHREIBUNG|  
+|attribute|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
+|**bufferQuotaInMB**|**unsignedInt**|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Die Standardeinstellung ist 0.|  
 |**scheduledTransferLogLevelFilter**|**string**|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**scheduledTransferPeriod**|**duration**|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
 |**Senken** |**string**| Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispielsweise Application Insights oder Event Hubs.|  
@@ -638,14 +638,14 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|Attribut|type|BESCHREIBUNG|  
+|attribute|type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
-|**name**|Zeichenfolge|Eine Zeichenfolge für den Senkennamen.|  
+|**name**|string|Eine Zeichenfolge für den Senkennamen.|  
 
 |Element|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
-|**Application Insights**|Zeichenfolge|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
-|**Kanäle**|Zeichenfolge|Einer für jeden zusätzlichen Filter, den Sie streamen|  
+|**Application Insights**|string|Wird nur beim Senden von Daten an Application Insights verwendet. Enthält den Instrumentationsschlüssel für ein aktives Application Insights-Konto, für das Sie Zugriff besitzen.|  
+|**Channels**|string|Einer für jeden zusätzlichen Filter, den Sie streamen|  
 
 ## <a name="channels-element"></a>Channels-Element  
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – SinksConfig – Sink – Channels*
@@ -656,7 +656,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 |Element|type|BESCHREIBUNG|  
 |-------------|----------|-----------------|  
-|**Channel**|Zeichenfolge|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
+|**Channel**|string|Siehe Beschreibung an anderer Stelle auf dieser Seite.|  
 
 ## <a name="channel-element"></a>Channel-Element
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – SinksConfig – Sink – Channels – Channel*
@@ -665,7 +665,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
  Definiert die Standorte, an die die Diagnosedaten gesendet werden sollen. Beispiel: der Application Insights-Dienst.  
 
-|Attribute|type|BESCHREIBUNG|  
+|Attributes|type|BESCHREIBUNG|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert ist **Undefined**, der alle Protokolle überträgt. Weitere mögliche Werte (meiste Informationen bis wenigste Informationen) sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
 |**name**|**string**|Ein eindeutiger Name des Kanals, auf den verwiesen wird|  

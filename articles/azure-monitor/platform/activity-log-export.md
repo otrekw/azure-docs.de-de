@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: ff8956d942aa54500a08cac4ebd94127b14b0bd4
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9cd6c2a39f72c47b06bebfa2a8c457a725484141
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931777"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529982"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Exportieren des Aktivitätsprotokolls in den Speicher oder in Azure Event Hubs
 
 > [!WARNING]
-> Sie können das Aktivitätsprotokoll jetzt in einem Log Analytics-Arbeitsbereich erfassen, indem Sie eine Diagnoseeinstellung ähnlich wie bei der Erfassung von Ressourcenprotokollen verwenden. Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-subscription.md).
+> Sie können das Aktivitätsprotokoll jetzt mithilfe einer Diagnoseeinstellung in einem Log Analytics-Arbeitsbereich erfassen (ähnlich wie bei der Erfassung von Ressourcenprotokollen). Weitere Informationen finden Sie unter [Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](diagnostic-settings-subscription.md).
 
 Das [Azure-Aktivitätsprotokoll](activity-logs-overview.md) bietet Einblick in Ereignisse auf Abonnementebene, die in Ihrem Azure-Abonnement aufgetreten sind. Zusätzlich zum Anzeigen des Aktivitätsprotokolls im Azure-Portal oder Kopieren des Protokolls in einen Log Analytics-Arbeitsbereich, in dem es mit anderen von Azure Monitor gesammelten Daten analysiert werden kann, können Sie ein Protokollprofil zum Archivieren des Aktivitätsprotokolls in einem Azure-Speicherkonto oder zum Streamen an einen Event Hub erstellen.
 
@@ -162,91 +162,6 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
     | days |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 365). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert.  Falls 0, muss der Parameter „enabled“ auf „false“ festgelegt werden. |
     |enabled | Ja |„True“ oder „False“.  Wird zum Aktivieren bzw. Deaktivieren der Aufbewahrungsrichtlinie verwendet.  Ist „True“ festgelegt, muss für den Parameter „days“ ein Wert größer 0 angegeben werden.
     | categories |Ja |Durch Leerzeichen getrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
-
-
-
-## <a name="activity-log-schema"></a>Aktivitätsprotokollschema
-Die Aktivitätsprotokolldaten werden im folgenden Format in JSON geschrieben, unabhängig davon, ob sie an den Azure-Speicher oder Event Hub gesendet werden.
-
-
-> Das Format der Aktivitätsprotokolldaten, die in das Speicherkonto geschrieben werden, wurde am 1. November 2018 in JSON Lines geändert. Einzelheiten zu dieser Formatumstellung finden Sie unter [Vorbereiten der Formatumstellung auf Azure Monitor-Ressourcenprotokolle, die in einem Speicherkonto archiviert werden](diagnostic-logs-append-blobs.md).
-
-``` JSON
-{
-    "records": [
-        {
-            "time": "2015-01-21T22:14:26.9792776Z",
-            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-            "operationName": "microsoft.support/supporttickets/write",
-            "category": "Write",
-            "resultType": "Success",
-            "resultSignature": "Succeeded.Created",
-            "durationMs": 2826,
-            "callerIpAddress": "111.111.111.11",
-            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
-            "identity": {
-                "authorization": {
-                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-                    "action": "microsoft.support/supporttickets/write",
-                    "evidence": {
-                        "role": "Subscription Admin"
-                    }
-                },
-                "claims": {
-                    "aud": "https://management.core.windows.net/",
-                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-                    "iat": "1421876371",
-                    "nbf": "1421876371",
-                    "exp": "1421880271",
-                    "ver": "1.0",
-                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-                    "puid": "20030000801A118C",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-                    "name": "John Smith",
-                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-                    "appidacr": "2",
-                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
-                }
-            },
-            "level": "Information",
-            "location": "global",
-            "properties": {
-                "statusCode": "Created",
-                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
-            }
-        }
-    ]
-}
-```
-Die Elemente in diesem JSON-Code sind in der folgenden Tabelle beschrieben.
-
-| Elementname | BESCHREIBUNG |
-| --- | --- |
-| time |Zeitstempel der Ereignisgenerierung durch den Azure-Dienst, der die zum Ereignis gehörende Anforderung verarbeitet hat. |
-| resourceId |Ressourcen-ID der betroffenen Ressource. |
-| operationName |Name des Vorgangs. |
-| category |Kategorie der Aktion, z.B. Schreiben, Lesen, Aktion. |
-| resultType |Der Typ des Ergebnisses, z.B. Erfolg, Fehler, Start |
-| resultSignature |Abhängig vom Ressourcentyp. |
-| durationMs |Dauer des Vorgangs in Millisekunden. |
-| callerIpAddress |IP-Adresse des Benutzers, der den Vorgang, UPN-Anspruch oder SPN-Anspruch ausgeführt hat (sofern verfügbar). |
-| correlationId |Normalerweise eine GUID im Zeichenfolgenformat. Ereignisse, die über die gleiche correlationId verfügen, gehören zu derselben übergeordneten Aktion. |
-| identity |JSON-Blob zur Beschreibung der Autorisierung und Ansprüche. |
-| authorization |Blob mit RBAC-Eigenschaften des Ereignisses. Enthält normalerweise die Eigenschaften „action“, „role“ und „scope“. |
-| level |Ebene des Ereignisses. Einer der folgenden Werte: _Critical_, _Error_, _Warning_, _Informational_ oder _Verbose_ |
-| location |Region des Speicherorts (oder „global“). |
-| properties |Satz mit `<Key, Value>` -Paaren (Wörterbuch), die die Details des Ereignisses beschreiben. |
-
-> [!NOTE]
-> Die Eigenschaften und deren Verwendung können je nach Ressource variieren.
 
 
 

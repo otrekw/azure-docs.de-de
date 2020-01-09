@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bb0962991701dc780e50fec60982083b20d4ab0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032788"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358376"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von C# #
 
@@ -111,7 +111,7 @@ Bevor Sie mit diesem Schritt beginnen, stellen Sie sicher, dass Sie Zugriff auf 
 
 ### <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 
-Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) enthalten sein.
+Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/management/overview.md) enthalten sein.
 
 Zum Angeben von Werten für die Anwendung und Erstellen der Ressourcengruppe fügen Sie der „Main“-Methode diesen Code hinzu:
 
@@ -247,7 +247,7 @@ Wenn Sie mit dem virtuellen Computer Aufgaben ausführen müssen, benötigen Sie
 var vm = azure.VirtualMachines.GetByResourceGroup(groupName, vmName);
 ```
 
-### <a name="get-information-about-the-vm"></a>Abrufen von Informationen zum virtuellen Computer
+### <a name="get-information-about-the-vm"></a>Abrufen von Informationen zur VM
 
 Fügen Sie der „Main“-Methode diesen Code hinzu, um Informationen zum virtuellen Computer abzurufen:
 

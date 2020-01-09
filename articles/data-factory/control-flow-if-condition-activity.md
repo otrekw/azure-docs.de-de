@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 562e84b4fe51603ae32884057578541f5536ebd4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ef63a159c132f5b565123eeb4824fb1ae5812ce1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679842"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444146"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Aktivität „If Condition“ in Azure Data Factory
 Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird. 
@@ -65,8 +65,8 @@ Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der Aktivität „If Condition“ | Zeichenfolge | Ja
-type | Muss auf **IfCondition** festgelegt werden. | Zeichenfolge | Ja
+name | Der Name der Aktivität „If Condition“ | String | Ja
+type | Muss auf **IfCondition** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck mit Ergebnistyp „Boolesch“ | Ja
 ifTrueActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `true` ausgewertet wird | Array | Ja
 ifFalseActivities | Aktivitäten, die ausgeführt werden, wenn der Ausdruck als `false` ausgewertet wird | Array | Ja
@@ -196,10 +196,7 @@ Ein weiteres Beispiel für den Ausdruck lautet:
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<Azure Storage account name>;AccountKey=<Azure Storage account key>"
         }
     }
 }

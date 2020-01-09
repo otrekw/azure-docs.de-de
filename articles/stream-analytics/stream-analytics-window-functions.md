@@ -1,19 +1,18 @@
 ---
 title: Einführung in die Azure Stream Analytics-Windowing-Funktionen
 description: In diesem Artikel werden die vier Windowing-Funktionen (Rollierend, Springend, Gleitend, Sitzung) beschrieben, die in Azure Stream Analytics-Aufträgen verwendet werden.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 530ff8d09d6c580a31ae26929fafcec5bb5b471b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: a0547243ddf114d5c9f7034f182a5e76d8c3e016
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621589"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369421"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Einführung in die Stream Analytics-Windowing-Funktionen
 

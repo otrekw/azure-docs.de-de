@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a route table using the portal.
-ms.openlocfilehash: 6b78b97004498fdacccdf9408d59158424ff6c07
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: c0681024b60827cf589906041c264d912ab209bb
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534130"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75612359"
 ---
 # <a name="create-a-virtual-wan-hub-route-table-for-nvas-azure-portal"></a>Erstellen einer Routingtabelle für den Virtual WAN-Hub für virtuelle Netzwerkgeräte: Azure-Portal
 
@@ -45,7 +45,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 ## <a name="vwan"></a>2. Erstellen eines virtuellen WAN
 
-Erstellen Sie ein virtuelles WAN. Bei dieser Übung können Sie die folgenden Werte verwenden:
+Erstellen Sie ein virtuelles WAN. Für diese Übung können Sie die folgenden Werte verwenden:
 
 * **Name des virtuellen WAN:** myVirtualWAN
 * **Ressourcengruppe:** testRG
@@ -67,7 +67,7 @@ Erstellen Sie den Hub. Für diese Übung können Sie die folgenden Werte verwend
 
 Aktualisieren Sie den Hub mit einer Routingtabelle für den Hub. Für diese Übung können Sie die folgenden Werte verwenden:
 
-* **Adressräume des indirekten Spoke-VNET:** (VNET1 und VNET2) 10.0.2.0/24 und 10.0.3.0/24
+* **Spoke-VNet-Adressräume:** (VNET1 und VNET2) 10.0.2.0/24 und 10.0.3.0/24
 * **Private IP-Adressen der Netzwerkschnittstelle der DMZ des virtuellen Netzwerkgeräts:** 10.0.4.5
 
 1. Navigieren Sie zu Ihrem virtuellen WAN.

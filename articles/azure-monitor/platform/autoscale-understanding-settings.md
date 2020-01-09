@@ -1,19 +1,15 @@
 ---
 title: Grundlegendes zu Einstellungen für die automatische Skalierung in Azure Monitor
 description: Enthält eine ausführliche Aufschlüsselung der Einstellungen für die automatische Skalierung und deren Funktionsweise. Gilt für Virtual Machines, Cloud Services und Web-Apps.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a2b94208de7ce490a0e7acfbb71175b4a7c846e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787494"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364304"
 ---
 # <a name="understand-autoscale-settings"></a>Grundlegendes zu Einstellungen für die automatische Skalierung
 Mithilfe der Einstellungen für die automatische Skalierung können Sie sicherstellen, dass Sie über die richtige Anzahl von ausgeführten Ressourcen verfügen, um die wechselnde Auslastung Ihrer Anwendung zu bewältigen. Sie können konfigurieren, dass Einstellungen für die automatische Skalierung basierend auf Metriken ausgelöst werden, mit denen die Auslastung oder die Leistung angezeigt werden, oder die Auslösung kann zu einem geplanten Datum bzw. einer geplanten Uhrzeit erfolgen. In diesem Artikel wird die Anatomie einer Einstellung für die automatische Skalierung ausführlich beschrieben. Der Artikel beginnt mit Erläuterungen zu dem Schema und den Eigenschaften einer Einstellung und führt Sie dann durch die verschiedenen Profiltypen, die konfiguriert werden können. Abschließend erfahren Sie in diesem Artikel, wie das Feature für die automatische Skalierung in Azure auswertet, welches Profil zu einem bestimmten Zeitpunkt ausgeführt wird.

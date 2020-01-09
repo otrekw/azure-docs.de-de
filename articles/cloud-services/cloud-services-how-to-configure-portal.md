@@ -3,17 +3,17 @@ title: Konfigurieren eines Clouddiensts (Portal) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Clouddienste in Azure konfigurieren. Hier erfahren Sie, wie Sie die Konfiguration für Clouddienste aktualisieren und Remotezugriff auf Rolleninstanzen konfigurieren. In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 12/07/2016
-ms.author: gwallace
-ms.openlocfilehash: 8b60a81e06b95c69a02f88ff3275743b056c191d
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 554d3e465b42ca889ba03565e87193f80e89ed1d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359659"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361006"
 ---
 # <a name="how-to-configure-cloud-services"></a>Konfigurieren von Clouddiensten
 
@@ -95,7 +95,7 @@ Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkon
     ![Download](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
 4. Laden Sie nach dem Update der Dienstkonfigurationsdatei die Konfigurationsupdates hoch, und wenden Sie sie an:
 
-    ![Hochladen](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
+    ![Upload](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
 5. Wählen Sie die CSCFG-Datei aus, und klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -104,3 +104,6 @@ Sie müssen Ihren Clouddienst möglicherweise über die Datei mit der [Dienstkon
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+
+
+

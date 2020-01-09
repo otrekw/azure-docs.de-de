@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 1683b57aa50cff00d26cc3400b8ab7a903a2c8e0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: dbda73e022ebaad283641ce2f54a5962aeb4cb60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083242"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436824"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-cli"></a>Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von CLI
 
 In diesem Artikel erfahren Sie, wie Sie die Routingkonfiguration bzw. das Peering einer ExpressRoute-Verbindung mithilfe der CLI im Resource Manager-Bereitstellungsmodell erstellen und verwalten. Sie können außerdem den Status prüfen, ein Update durchführen oder Peerings für eine ExpressRoute-Verbindung löschen bzw. deren Bereitstellung aufheben. Wenn Sie eine andere Methode für die Arbeit mit Ihrer Verbindung verwenden möchten, wählen Sie einen Artikel aus der folgenden Liste aus:
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-routing-cli.md)
+> * [Öffentliches Peering](about-public-peering.md)
 > * [Video – Privates Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video – Öffentliches Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
 > * [Video – Microsoft-Peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassisch)](expressroute-howto-routing-classic.md)
 > 
@@ -37,7 +37,7 @@ In diesem Artikel erfahren Sie, wie Sie die Routingkonfiguration bzw. das Peerin
 
 Diese Anweisungen gelten nur für Verbindungen, die über Service Provider erstellt wurden, von denen Layer 2-Konnektivitätsdienste angeboten werden. Wenn Sie einen Dienstanbieter nutzen, der verwaltete Layer 3-Dienste anbietet (meist ein IP-VPN, z.B. MPLS), übernimmt Ihr Konnektivitätsanbieter die Konfiguration und Verwaltung des Routings für Sie.
 
-Sie können ein, zwei oder alle drei Peerings (Azure privat, Azure öffentlich und Microsoft) für eine ExpressRoute-Verbindung konfigurieren. Sie können Peerings in beliebiger Reihenfolge konfigurieren. Sie müssen jedoch sicherstellen, dass Sie die Konfiguration jedes Peerings einzeln nacheinander durchführen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Routingdomänen](expressroute-circuit-peerings.md).
+Sie können privates Peering und Microsoft-Peering für eine ExpressRoute-Leitung konfigurieren (öffentliches Azure-Peering ist für neue Leitungen veraltet). Sie können Peerings in beliebiger Reihenfolge konfigurieren. Sie müssen jedoch sicherstellen, dass Sie die Konfiguration jedes Peerings einzeln nacheinander durchführen. Weitere Informationen zu Routingdomänen und Peerings finden Sie unter [ExpressRoute-Routingdomänen](expressroute-circuit-peerings.md). Weitere Informationen zum öffentlichen Peering finden Sie unter [Öffentliches ExpressRoute-Peering](about-public-peering.md).
 
 ## <a name="msft"></a>Microsoft-Peering
 
@@ -325,139 +325,6 @@ Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePrivatePeering
 ```
 
-## <a name="public"></a>Öffentliches Azure-Peering:
-
-Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der öffentlichen Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
-
-> [!Note]
-> Öffentliches Azure-Peering gilt für neue Leitungen als veraltet. Weitere Informationen finden Sie unter [ExpressRoute-Peering](expressroute-circuit-peerings.md).
->
-
-### <a name="to-create-azure-public-peering"></a>So erstellen Sie ein öffentliches Azure-Peering
-
-1. Installieren Sie die neueste Version der Azure CLI. Sie müssen die neueste Version der Azure-Befehlszeilenschnittstelle (CLI) verwenden.* Bevor Sie mit der Konfiguration beginnen, überprüfen Sie die [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
-
-   ```azurecli-interactive
-   az login
-   ```
-
-   Wählen Sie das Abonnement aus, für das eine ExpressRoute-Verbindung erstellt werden soll.
-
-   ```azurecli-interactive
-   az account set --subscription "<subscription ID>"
-   ```
-2. Erstellen Sie eine ExpressRoute-Verbindung.  Führen Sie die Schritte zum Erstellen einer [ExpressRoute-Verbindung](howto-circuit-cli.md) aus, und lassen Sie sie vom Konnektivitätsanbieter bereitstellen. Wenn Ihr Konnektivitätsanbieter verwaltete Layer 3-Dienste im Angebot hat, können Sie bei ihm die Aktivierung des öffentlichen Azure-Peerings anfordern. In diesem Fall müssen Sie die Anweisungen in den nächsten Abschnitten nicht befolgen. Falls Ihr Konnektivitätsanbieter das Routing jedoch nicht für Sie verwaltet, setzen Sie Ihre Konfiguration nach dem Erstellen der Verbindung mit den nachfolgenden Schritten fort.
-
-3. Überprüfen Sie, ob die ExpressRoute-Verbindung bereitgestellt und auch aktiviert wurde. Nehmen Sie das folgende Beispiel:
-
-   ```azurecli-interactive
-   az network express-route list
-   ```
-
-   Die Antwort ähnelt dem folgenden Beispiel:
-
-   ```azurecli
-   "allowClassicOperations": false,
-   "authorizations": [],
-   "circuitProvisioningState": "Enabled",
-   "etag": "W/\"1262c492-ffef-4a63-95a8-a6002736b8c4\"",
-   "gatewayManagerEtag": null,
-   "id": "/subscriptions/81ab786c-56eb-4a4d-bb5f-f60329772466/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit",
-   "location": "westus",
-   "name": "MyCircuit",
-   "peerings": [],
-   "provisioningState": "Succeeded",
-   "resourceGroup": "ExpressRouteResourceGroup",
-   "serviceKey": "1d05cf70-1db5-419f-ad86-1ca62c3c125b",
-   "serviceProviderNotes": null,
-   "serviceProviderProperties": {
-    "bandwidthInMbps": 200,
-    "peeringLocation": "Silicon Valley",
-    "serviceProviderName": "Equinix"
-   },
-   "serviceProviderProvisioningState": "Provisioned",
-   "sku": {
-    "family": "UnlimitedData",
-    "name": "Standard_MeteredData",
-    "tier": "Standard"
-   },
-   "tags": null,
-   "type": "Microsoft.Network/expressRouteCircuits]
-   ```
-
-4. Konfigurieren Sie das öffentliche Azure-Peering für die Verbindung. Stellen Sie sicher, dass die folgenden Informationen vorliegen, bevor Sie fortfahren:
-
-   * Ein /30-Subnetz für die primäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein.
-   * Ein /30-Subnetz für die sekundäre Verknüpfung. Dies muss ein gültiges öffentliches IPv4-Präfix sein.
-   * Eine gültige VLAN-ID zum Einrichten dieses Peerings. Stellen Sie sicher, dass kein anderes Peering der Verbindung die gleiche VLAN-ID verwendet.
-   * AS-Nummer für Peering. Sie können sowohl AS-Nummern mit 2 Byte als auch mit 4 Byte verwenden.
-   * **Optional** – Einen MD5-Hash, wenn Sie sich für dessen Einsatz entscheiden.
-
-   Führen Sie das folgende Beispiel aus, um das öffentliche Azure-Peering für Ihre Verbindung zu konfigurieren:
-
-   ```azurecli-interactive
-   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering
-   ```
-
-   Wenn Sie sich für den Einsatz eines MD5-Hash entscheiden, verwenden Sie das folgende Beispiel:
-
-   ```azurecli-interactive
-   az network express-route peering create --circuit-name MyCircuit --peer-asn 100 --primary-peer-subnet 12.0.0.0/30 -g ExpressRouteResourceGroup --secondary-peer-subnet 12.0.0.4/30 --vlan-id 200 --peering-type AzurePublicPeering --SharedKey "A1B2C3D4"
-   ```
-
-   > [!IMPORTANT]
-   > Stellen Sie sicher, dass Sie Ihre AS-Nummer als Peering-ASN angeben, nicht als Kunden-ASN.
-
-### <a name="getpublic"></a>So zeigen Sie Details zum öffentlichen Azure-Peering an:
-
-Sie können Konfigurationsdetails anhand des folgenden Beispiels abrufen:
-
-```azurecli
-az network express-route peering show -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
-```
-
-Die Ausgabe sieht in etwa wie das folgende Beispiel aus:
-
-```azurecli
-{
-  "azureAsn": 12076,
-  "etag": "W/\"2e97be83-a684-4f29-bf3c-96191e270666\"",
-  "gatewayManagerEtag": "18",
-  "id": "/subscriptions/9a0c2943-e0c2-4608-876c-e0ddffd1211b/resourceGroups/ExpressRouteResourceGroup/providers/Microsoft.Network/expressRouteCircuits/MyCircuit/peerings/AzurePublicPeering",
-  "lastModifiedBy": "Customer",
-  "microsoftPeeringConfig": null,
-  "name": "AzurePublicPeering",
-  "peerAsn": 7671,
-  "peeringType": "AzurePublicPeering",
-  "primaryAzurePort": "",
-  "primaryPeerAddressPrefix": "",
-  "provisioningState": "Succeeded",
-  "resourceGroup": "ExpressRouteResourceGroup",
-  "routeFilter": null,
-  "secondaryAzurePort": "",
-  "secondaryPeerAddressPrefix": "",
-  "sharedKey": null,
-  "state": "Enabled",
-  "stats": null,
-  "vlanId": 100
-}
-```
-
-### <a name="updatepublic"></a>Aktualisieren der Konfiguration für öffentliches Azure-Peering:
-
-Sie können einen beliebigen Teil der Konfiguration anhand des folgenden Beispiels aktualisieren. In diesem Beispiel wird die VLAN-ID der Verbindung von 200 in 600 geändert.
-
-```azurecli-interactive
-az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
-```
-
-### <a name="deletepublic"></a>So löschen Sie ein öffentliches Azure-Peering:
-
-Sie können Ihre Peeringkonfiguration entfernen, indem Sie das folgende Beispiel ausführen:
-
-```azurecli-interactive
-az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
-```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

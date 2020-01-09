@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 6046ab98e657cd14a2ac883cd32709c9a1b5da57
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: ba65c8ed30bce1f0128e1a1f8604744a732384c1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721487"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646828"
 ---
 # <a name="security-groups"></a>Sicherheitsgruppen
 <a name="network-security-groups"></a>
@@ -29,30 +29,30 @@ In diesem Artikel werden Konzepte für Netzwerksicherheitsgruppen erklärt, dami
 
 ## <a name="security-rules"></a>Sicherheitsregeln
 
-Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) des Azure-Abonnements – null oder mehr Regeln enthalten. Für jede Regel werden die folgenden Eigenschaften angegeben:
+Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) des Azure-Abonnements – null oder mehr Regeln enthalten. Für jede Regel werden die folgenden Eigenschaften angegeben:
 
 |Eigenschaft  |Erklärung  |
 |---------|---------|
-|NAME|Ein eindeutiger Name in der Netzwerksicherheitsgruppe.|
+|Name|Ein eindeutiger Name in der Netzwerksicherheitsgruppe.|
 |Priority | Eine Zahl zwischen 100 und 4.096. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.|
 |Quelle oder Ziel| Beliebiges Element oder eine einzelne IP-Adresse, ein CIDR-Block (klassenloses domänenübergreifendes Routing, z.B. 10.0.0.0/24), ein [Diensttag](service-tags-overview.md) oder eine [Anwendungssicherheitsgruppe](#application-security-groups). Wenn Sie eine Adresse für eine Azure-Ressource angeben, geben Sie die private IP-Adresse an, die der Ressource zugewiesen ist. Netzwerksicherheitsgruppen werden verarbeitet, nachdem Azure eine öffentliche IP-Adresse in eine private IP-Adresse für eingehenden Datenverkehr übersetzt hat und bevor Azure eine private IP-Adresse in eine öffentliche IP-Adresse für ausgehenden Datenverkehr übersetzt. Erfahren Sie mehr über Azure-[IP-Adressen](virtual-network-ip-addresses-overview-arm.md). Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. Die Option zum Angeben mehrerer einzelner IP-Adressen und Bereiche (die Angabe mehrerer Diensttags oder Anwendungsgruppen ist nicht zulässig) in einer Regel wird als [Ergänzte Sicherheitsregeln](#augmented-security-rules) bezeichnet. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Es ist nicht möglich, mehrere IP-Adressen und IP-Adressbereiche in Netzwerksicherheitsgruppen anzugeben, die mit dem klassischen Bereitstellungsmodell erstellt wurden. Erfahren Sie mehr über [Azure-Bereitstellungsmodelle](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
 |Protocol     | „TCP“, „UDP“, „ICMP“ oder „Beliebig“.|
 |Direction| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
 |Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
-|Aktion     | Zulassen oder Verweigern        |
+|Action     | Zulassen oder Verweigern        |
 
 Netzwerksicherheitsgruppen-Sicherheitsregeln werden nach Priorität anhand der 5-Tupel-Informationen (Quelle, Quellport, Ziel, Zielport und Protokoll) ausgewertet, um den Datenverkehr zuzulassen oder zu verweigern. Für vorhandene Verbindungen wird ein Flussdatensatz erstellt. Die Kommunikation wird basierend auf dem Verbindungszustand der Flussdatensätze zugelassen oder verweigert. Der Flussdatensatz ermöglicht es, dass eine Netzwerksicherheitsgruppe zustandsbehaftet ist. Wenn Sie beispielsweise eine Sicherheitsregel für Datenverkehr in ausgehender Richtung an eine beliebige Adresse über Port 80 angeben, ist es nicht erforderlich, für die Antwort auf den ausgehenden Datenverkehr eine Sicherheitsregel für Datenverkehr in eingehender Richtung anzugeben. Sie müssen nur dann eine Sicherheitsregel für Datenverkehr in eingehender Richtung angeben, wenn die Kommunikation extern initiiert wird. Dies gilt auch für den umgekehrten Fall. Wenn eingehender Datenverkehr über einen Port zugelassen wird, ist es nicht erforderlich, für die Beantwortung des Datenverkehrs über den Port eine Sicherheitsregel für Datenverkehr in ausgehender Richtung anzugeben.
 Vorhandene Verbindungen können nicht unterbrochen werden, wenn Sie eine Sicherheitsregel entfernen, die den Datenfluss ermöglicht hat. Datenverkehrsflüsse werden unterbrochen, wenn die Verbindungen beendet wurden und in beide Richtungen mindestens einige Minuten lang kein Datenverkehr besteht.
 
-Es gibt Beschränkungen für die Anzahl von Sicherheitsregeln, die Sie in einer Netzwerksicherheitsgruppe erstellen können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Es gibt Beschränkungen für die Anzahl von Sicherheitsregeln, die Sie in einer Netzwerksicherheitsgruppe erstellen können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="augmented-security-rules"></a>Ergänzte Sicherheitsregeln
 
-Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle Netzwerke vereinfacht, da Sie umfangreichere und komplexe Netzwerksicherheitsregeln mit weniger Regeln definieren können. Sie können mehrere Ports und mehrere explizite IP-Adressen und Bereiche zu einer einzelnen Sicherheitsregel zusammenfassen, die leicht verständlich ist. Verwenden Sie ergänzte Regeln in den Feldern für die Quelle, das Ziel und den Port einer Regel. Kombinieren Sie ergänzte Sicherheitsregeln mit [Diensttags](service-tags-overview.md) oder [Anwendungssicherheitsgruppen](#application-security-groups), um die Wartung Ihrer Sicherheitsregeldefinition zu vereinfachen. Es gibt Beschränkungen für die Anzahl von Adressen, Bereichen und Ports, die Sie in einer Regel angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Mit ergänzten Sicherheitsregeln wird die Sicherheitsdefinition für virtuelle Netzwerke vereinfacht, da Sie umfangreichere und komplexe Netzwerksicherheitsregeln mit weniger Regeln definieren können. Sie können mehrere Ports und mehrere explizite IP-Adressen und Bereiche zu einer einzelnen Sicherheitsregel zusammenfassen, die leicht verständlich ist. Verwenden Sie ergänzte Regeln in den Feldern für die Quelle, das Ziel und den Port einer Regel. Kombinieren Sie ergänzte Sicherheitsregeln mit [Diensttags](service-tags-overview.md) oder [Anwendungssicherheitsgruppen](#application-security-groups), um die Wartung Ihrer Sicherheitsregeldefinition zu vereinfachen. Es gibt Beschränkungen für die Anzahl von Adressen, Bereichen und Ports, die Sie in einer Regel angeben können. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="service-tags"></a>Diensttags
 
-Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Dienstes. Damit kann die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln minimiert werden.
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mit Diensttags lässt sich die Komplexität häufiger Aktualisierungen von Netzwerksicherheitsregeln verringern.
 
 Weitere Informationen finden Sie unter [Azure-Diensttags](service-tags-overview.md). 
 
@@ -64,19 +64,19 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|`Source`|Quellports|Destination|Zielports|Protocol|Access|
+|Priority|`Source`|Quellports|Destination|Zielports|Protocol|Zugriff|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Any|Allow|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|`Source`|Quellports|Destination|Zielports|Protocol|Access|
+|Priority|`Source`|Quellports|Destination|Zielports|Protocol|Zugriff|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Any|Allow|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|`Source`|Quellports|Destination|Zielports|Protocol|Access|
+|Priority|`Source`|Quellports|Destination|Zielports|Protocol|Zugriff|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0 - 65535|0.0.0.0/0|0 - 65535|Any|Verweigern|
 
@@ -84,19 +84,19 @@ Azure erstellt in jeder von Ihnen erstellten Netzwerksicherheitsgruppe die folge
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
+|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Any | Allow |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
+|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Any | Allow |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
+|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0 - 65535 | 0.0.0.0/0 | 0 - 65535 | Any | Verweigern |
 
@@ -110,13 +110,13 @@ Mit Anwendungssicherheitsgruppen können Sie die Netzwerksicherheit als natürli
 
 ![Anwendungssicherheitsgruppen](./media/security-groups/application-security-groups.png)
 
-In der Abbildung oben sind *NIC1* und *NIC2* Mitglieder der Anwendungssicherheitsgruppe *AsgWeb*. *NIC3* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgLogic*. *NIC4* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgDb*. Obwohl jede Netzwerkschnittstelle in diesem Beispiel Mitglied von nur einer Anwendungssicherheitsgruppe ist, kann eine Netzwerkschnittstelle Mitglied mehrerer Anwendungssicherheitsgruppen sein. Dabei gelten die [Einschränkungen für Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Keiner der Netzwerkschnittstellen ist eine Netzwerksicherheitsgruppe zugeordnet. *NSG1* ist beiden Subnetzen zugeordnet und enthält die folgenden Regeln:
+In der Abbildung oben sind *NIC1* und *NIC2* Mitglieder der Anwendungssicherheitsgruppe *AsgWeb*. *NIC3* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgLogic*. *NIC4* ist ein Mitglied der Anwendungssicherheitsgruppe *AsgDb*. Obwohl jede Netzwerkschnittstelle in diesem Beispiel Mitglied von nur einer Anwendungssicherheitsgruppe ist, kann eine Netzwerkschnittstelle Mitglied mehrerer Anwendungssicherheitsgruppen sein. Dabei gelten die [Einschränkungen für Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). Keiner der Netzwerkschnittstellen ist eine Netzwerksicherheitsgruppe zugeordnet. *NSG1* ist beiden Subnetzen zugeordnet und enthält die folgenden Regeln:
 
 ### <a name="allow-http-inbound-internet"></a>Allow-HTTP-Inbound-Internet
 
 Diese Regel ist erforderlich, um Datenverkehr aus dem Internet an die Webserver zuzulassen. Da eingehender Datenverkehr aus dem Internet durch die Standardsicherheitsregel [DenyAllInbound](#denyallinbound) verweigert wird, ist keine zusätzliche Regel für die Anwendungssicherheitsgruppen *AsgLogic* oder *AsgDb* erforderlich.
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
+|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | Allow |
 
@@ -124,7 +124,7 @@ Diese Regel ist erforderlich, um Datenverkehr aus dem Internet an die Webserver 
 
 Da die Standardsicherheitsregel [AllowVNetInBound](#allowvnetinbound) die gesamte Kommunikation zwischen Ressourcen im gleichen virtuellen Netzwerk erlaubt, ist diese Regel erforderlich, um den Datenverkehr von allen Ressourcen zu verweigern.
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
+|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | Any | Verweigern |
 
@@ -132,7 +132,7 @@ Da die Standardsicherheitsregel [AllowVNetInBound](#allowvnetinbound) die gesamt
 
 Diese Regel lässt Datenverkehr von der Anwendungssicherheitsgruppe *AsgLogic* zur Anwendungssicherheitsgruppe *AsgDb* zu. Die Priorität für diese Regel ist höher als die Priorität für die Regel *Deny-Database-All*. Daher wird diese Regel vor der Regel *Deny-Database-All* verarbeitet, sodass Datenverkehr von den Anwendungssicherheitsgruppen *AsgLogic* zulässig ist, während der andere Datenverkehr blockiert wird.
 
-|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Access |
+|Priority|`Source`|Quellports| Destination | Zielports | Protocol | Zugriff |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | Allow |
 
@@ -140,7 +140,7 @@ Regeln, in denen eine Anwendungssicherheitsgruppe als Quelle oder Ziel angegeben
 
 Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
 
--   Es gibt Beschränkungen für die Anzahl von Anwendungssicherheitsgruppen in einem Abonnement sowie in Bezug auf Anwendungssicherheitsgruppen. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+-   Es gibt Beschränkungen für die Anzahl von Anwendungssicherheitsgruppen in einem Abonnement sowie in Bezug auf Anwendungssicherheitsgruppen. Ausführliche Informationen finden Sie im Artikel zu den [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Sie können eine einzelne Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben. Sie können in der Quelle und im Ziel nicht mehrere Anwendungssicherheitsgruppen angeben.
 - Alle Netzwerkschnittstellen, die einer Anwendungssicherheitsgruppe zugewiesen sind, müssen in selben virtuellen Netzwerk vorhanden sein, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde. Wenn sich die erste Netzwerkschnittstelle, die einer Anwendungssicherheitsgruppe mit dem Namen *AsgWeb* zugewiesen ist, im virtuellen Netzwerk *VNet1* befindet, müssen alle nachfolgenden Netzwerkschnittstellen, die *ASGWeb* zugewiesen werden, in *VNet1* enthalten sein. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden.
 - Wenn Sie eine Anwendungssicherheitsgruppe als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise *AsgLogic* Netzwerkschnittstellen aus *VNet1* und *AsgDb* Netzwerkschnittstellen aus *VNet2* enthält, kann *AsgLogic* nicht als Quelle und *AsgDb* nicht als Ziel in einer Regel zugewiesen werden. Alle Netzwerkschnittstellen für die Quell- und Ziel-Anwendungssicherheitsgruppen müssen im selben virtuellen Netzwerk vorhanden sein.

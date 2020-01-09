@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: b4eb083b0f98112274a5d00631af8662ff5c063a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c8ef1d4dacf500c459ae1ab9a534ed118ca9e05a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835886"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446699"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>Textübersetzungs-API 3.0: BreakSentence
 
@@ -69,7 +69,7 @@ Anforderungsheader enthalten Folgendes:
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Optional*.<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
+    <td>*Optional:*<br/>Eine vom Client erstellte GUID zur eindeutigen Identifizierung der Anforderung. Beachten Sie, dass Sie diesen Header weglassen können, wenn Sie die Ablaufverfolgungs-ID mithilfe eines Abfrageparameters namens `ClientTraceId` in die Abfragezeichenfolge einschließen.</td>
   </tr>
 </table> 
 
@@ -109,7 +109,7 @@ Eine JSON-Beispielantwort lautet wie folgt:
 ```json
 [
   {
-    "sentenceLengths": [ 13, 11, 22 ]
+    "sentLen": [ 13, 11, 22 ]
     "detectedLanguage": {
       "language": "en",
       "score": 401
@@ -138,7 +138,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
   <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
-    <td>Erfolgreich.</td>
+    <td>Erfolg.</td>
   </tr>
   <tr>
     <td>400</td>

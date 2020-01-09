@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 56607de57939be769b1951f0eee9078c46d610c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 615d9a3c5c359174ef15028e82044a85da0dd733
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035458"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561285"
 ---
 # <a name="deploy-openshift-container-platform-311-in-azure"></a>Bereitstellen von OpenShift Container Platform 3.11 in Azure
 
@@ -27,7 +27,7 @@ Zum Bereitstellen von OpenShift Container Platform 3.11 in Azure können Sie ver
 
 - Sie können die erforderlichen Azure-Infrastrukturkomponenten manuell bereitstellen und sich dann an der [Dokumentation von OpenShift Container Platform](https://docs.openshift.com/container-platform) orientieren.
 - Sie können auch eine vorhandene [Ressourcen-Manager-Vorlage](https://github.com/Microsoft/openshift-container-platform/) verwenden, die die Bereitstellung des OpenShift Container Platform-Clusters vereinfacht.
-- Eine weitere Möglichkeit besteht darin, das [Azure Marketplace-Angebot](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview) zu nutzen.
+- Eine weitere Möglichkeit besteht darin, das [Azure Marketplace-Angebot](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy) zu nutzen.
 
 Für alle Optionen ist ein Red Hat-Abonnement erforderlich. Während der Bereitstellung wird die Red Hat Enterprise Linux-Instanz beim Red Hat-Abonnement registriert und an die Pool-ID, die die Berechtigungen für OpenShift Container Platform enthält, angefügt.
 Stellen Sie sicher, dass Sie über einen gültigen Benutzernamen, ein gültiges Kennwort und eine gültige Pool-ID für Red Hat Subscription Manager (RHSM) verfügen. Sie können einen Aktivierungsschlüssel, eine Organisations-ID und eine Pool-ID verwenden. Sie können diese Informationen überprüfen, indem Sie sich hier anmelden: https://access.redhat.com.
@@ -286,7 +286,7 @@ Die Parameter können sich je nach Release unterschieden. Überprüfen Sie daher
 | `masterClusterDns` | Der benutzerdefinierte DNS-Name für den Zugriff auf die OpenShift-Webkonsole, wenn für `masterClusterDnsType` „custom“ ausgewählt wurde |  | console.contoso.com |
 | `routingSubDomainType` | Ist der Wert auf „nipio“ festgelegt, verwendet `routingSubDomain` „nip.io“.  Geben Sie „custom“ an, wenn Sie über eine eigene Domäne für das Routing verfügen | nipio <br> custom | nipio |
 | `routingSubDomain` | Der für das Routing zu verwendende Platzhalter-DNS-Name, wenn Sie für `routingSubDomainType` „custom“ ausgewählt haben |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Wählen Sie aus, ob ein vorhandenes virtuelles Netzwerk verwendet oder ein neues virtuelles Netzwerk erstellt werden soll | existing <br> Neu | Neu |
+| `virtualNetworkNewOrExisting` | Wählen Sie aus, ob ein vorhandenes virtuelles Netzwerk verwendet oder ein neues virtuelles Netzwerk erstellt werden soll | existing <br> new | new |
 | `virtualNetworkResourceGroupName` | Name der Ressourcengruppe für das neue virtuelle Netzwerk, wenn Sie für `virtualNetworkNewOrExisting` „new“ ausgewählt haben |  | resourceGroup().name |
 | `virtualNetworkName` | Name des neuen virtuellen Netzwerks, wenn Sie für `virtualNetworkNewOrExisting` „new“ ausgewählt haben |  | openshiftvnet |
 | `addressPrefixes` | Adresspräfix des neuen virtuellen Netzwerks |  | 10.0.0.0/14 |

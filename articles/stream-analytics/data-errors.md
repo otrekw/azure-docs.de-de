@@ -1,18 +1,17 @@
 ---
 title: Azure Stream Analytics-Diagnoseprotokolldatenfehler
 description: In diesem Artikel werden die verschiedenen Fehler bei der Eingabe und Ausgabe von Daten erklärt, die bei der Verwendung von Azure Stream Analytics auftreten können.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: ecc7077bf208adf1ac89adcce2f2e480ce34888e
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 0546464b4d1bcc9eaa4fbffe265486985d9c58f3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329595"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75465029"
 ---
 # <a name="azure-stream-analytics-data-errors"></a>Datenfehler in Azure Stream Analytics
 

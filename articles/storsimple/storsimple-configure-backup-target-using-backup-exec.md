@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: matd
-ms.openlocfilehash: 85c04b6ea3e40f1f1dcd12eb5d6f4a8f53836867
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 4dcda65384190050e11f1bf9b15c706b0e38c6b3
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "67876787"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561642"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
@@ -37,7 +37,7 @@ Die Informationen in diesem Artikel sind vornehmlich für Sicherungsadministrato
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
--   [Backup Exec 16 und höher](http://backupexec.com/compatibility)
+-   [Backup Exec 16 und höher](https://www.veritas.com/content/support/en_US/article.100040087)
 -   [StorSimple Update 3 und höher](storsimple-overview.md#storsimple-workload-summary)
 
 
@@ -115,7 +115,7 @@ In diesem Szenario werden StorSimple-Volumes der Sicherungsanwendung als einzige
 1.  Der Sicherungsserver kontaktiert den Sicherungs-Agent auf dem Ziel, und der Sicherungs-Agent überträgt Daten zurück zum Sicherungsserver.
 2.  Der Sicherungsserver schreibt Daten auf die mehrstufigen StorSimple-Volumes.
 3.  Der Sicherungsserver aktualisiert die Katalogdatenbank und schließt dann den Sicherungsauftrag ab.
-4.  Ein Momentaufnahmenskript löst den StorSimple Cloud Snapshot Manager aus (starten oder löschen).
+4.  Ein Momentaufnahmenskript löst die Verwaltung von StorSimple-Cloudmomentaufnahmen aus (starten oder löschen).
 5.  Der Sicherungsserver löscht die abgelaufenen Sicherungen basierend auf einer Aufbewahrungsrichtlinie.
 
 
@@ -255,7 +255,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 | Sicherungstyp | Größe (TiB) | GFS-Multiplikator\* | Gesamtkapazität (TiB)  |
 |---|---|---|---|
 | Wöchentlich vollständig | 1 | 4  | 4 |
-| Täglich inkrementell | 0,5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
+| Täglich inkrementell | 0.5 | 20 (Zyklen entsprechen der Anzahl von Wochen pro Monat) | 12 (2 für zusätzliches Kontingent) |
 | Monatlich vollständig | 1 | 12 | 12 |
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung |   | 38 |   |
@@ -275,7 +275,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
     ![Backup Exec-Verwaltungskonsole, Seite zum Auswählen des Speichers](./media/storsimple-configure-backup-target-using-backup-exec/image5.png)
 
-3.  Geben Sie einen aussagekräftigen Namen wie z.B. **Samstag, vollständig** und eine Beschreibung ein. Klicken Sie auf **Weiter**.
+3.  Geben Sie einen aussagekräftigen Namen wie z.B. **Samstag, vollständig** und eine Beschreibung ein. Wählen Sie **Weiter** aus.
 
     ![Backup Exec-Verwaltungskonsole, Seite zur Eingabe von Name und Beschreibung](./media/storsimple-configure-backup-target-using-backup-exec/image7.png)
 
@@ -381,7 +381,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 
 ### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS-Beispielzeitplan: GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan
 
-| Woche | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
+| Week | Vollständig | Inkrementell, Tag 1 | Inkrementell, Tag 2 | Inkrementell, Tag 3 | Inkrementell, Tag 4 | Inkrementell, Tag 5 |
 |---|---|---|---|---|---|---|
 | Woche 1 | Lokales RAID-Volume  | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume | Lokales RAID-Volume |
 | Woche 2 | StorSimple, Woche 2-4 |   |   |   |   |   |
@@ -395,7 +395,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 
 #### <a name="to-assign-storsimple-volumes-to-a-backup-exec-archive-and-duplication-job"></a>So weisen Sie StorSimple-Volumes einem Backup Exec-Archivierungs- und Deduplizierungsauftrag zu
 
-1.  Klicken Sie in der Backup Exec-Verwenden mit der rechten Maustaste auf den Auftrag, den Sie auf einem StorSimple-Volume archivieren möchten. Wählen Sie dann **Backup Definition Properties** > **Edit** (Eigenschaften von Sicherungsdefinitionen>Bearbeiten) aus.
+1.  Klicken Sie in der Backup Exec-Verwendenmit der rechten Maustaste auf den Auftrag, den Sie auf einem StorSimple-Volume archivieren möchten. Wählen Sie dann **Backup Definition Properties** > **Edit** (Eigenschaften von Sicherungsdefinitionen>Bearbeiten) aus.
 
     ![Backup Exec-Verwaltungskonsole, Registerkarte „Eigenschaften“ in der Sicherungsdefinition](./media/storsimple-configure-backup-target-using-backup-exec/image19.png)
 
@@ -478,7 +478,7 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 | Ausfall des Backup Exec-Servers | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Erstellen Sie den Sicherungsserver neu, und führen Sie eine Datenbankwiederherstellung durch, wie unter [How to do a manual Backup and Restore of Backup Exec (BEDB) database](http://www.veritas.com/docs/000041083) (Manuelles Sichern und Wiederherstellen der Backup Exec-Datenbank [BEDB]) beschrieben. | Sie können den Backup Exec-Server am Notfallwiederherstellungsstandort neu erstellen oder wiederherstellen. Stellen Sie die Datenbank auf den jüngsten Zeitpunkt wieder her. Wenn die wiederhergestellte Backup Exec-Datenbank nicht mit Ihren jüngsten Sicherungsaufträgen synchron ist, ist eine Indizierung und Katalogisierung erforderlich. Das erneute Scannen von Index und Katalog kann dazu führen, dass alle Sicherungssätze gescannt und aus der Cloudspeicherstufe in die lokale Speicherstufe des Geräts übertragen werden. Damit wird diese Aufgabe noch zeitaufwendiger. |
 | Standortausfall, der zum Verlust des Sicherungsservers und von StorSimple führt | Sicherungs- und Wiederherstellungsvorgänge werden unterbrochen. | Stellen Sie zuerst StorSimple und dann Backup Exec wieder her. | Stellen Sie zuerst StorSimple und dann Backup Exec wieder her. Wenn nach der Wiederherstellung des Geräts eine Datenwiederherstellung erforderlich ist, werden die vollständigen Arbeitssätze mit Daten aus der Cloud auf das neue Gerät abgerufen. Alle Vorgänge erfolgen mit der Geschwindigkeit der Cloud. |
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 

@@ -1,25 +1,26 @@
 ---
 title: Erstellen und Bereitstellen einer Node.js-Express-App in Azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Erstellen und Bereitstellen einer Express.js-Anwendung in Node.js für Azure Cloud Services
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360751"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Erstellen und Bereitstellen einer Node.js-Webanwendung mit Express in Azure Cloud Services
 
 Die Core Runtime von Node.js umfasst eine Reihe elementarer Funktionen.
-Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Lernprogramm erstellen Sie eine neue Anwendung mit dem Modul [Express](https://github.com/expressjs/express) , das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
+Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Tutorial erstellen Sie eine neue Anwendung mit dem Modul [Express](https://github.com/expressjs/express), das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
 
 Nachfolgend sehen Sie einen Screenshot der fertigen Anwendung:
 
@@ -119,5 +120,8 @@ Weitere Informationen finden Sie im [Node.js Developer Center](https://docs.micr
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: kumud
-ms.openlocfilehash: 47da2524f719e53edcbd89686a1a0b76fa6e79cd
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3624c8fd8b15f6d35917f4ead676221d93a26ddc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802711"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646488"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -39,7 +39,7 @@ Alle Azure-Ressourcen werden in einer Azure-Region und unter einem Abonnement er
 
 ## <a name="subscriptions"></a>Abonnements
 
-Innerhalb jedes Abonnements können Sie bis zum geltenden [Limit](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) beliebig viele virtuelle Netzwerke bereitstellen. Einige Organisationen verfügen beispielsweise für unterschiedliche Abteilungen über unterschiedliche Abonnements. Weitere Informationen und Überlegungen zu Abonnements finden Sie unter [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
+Innerhalb jedes Abonnements können Sie bis zum geltenden [Limit](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) beliebig viele virtuelle Netzwerke bereitstellen. Einige Organisationen verfügen beispielsweise für unterschiedliche Abteilungen über unterschiedliche Abonnements. Weitere Informationen und Überlegungen zu Abonnements finden Sie unter [Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance#define-your-hierarchy).
 
 ## <a name="segmentation"></a>Segmentierung
 
@@ -51,14 +51,14 @@ Ein virtuelles Netzwerk ist ein virtueller und isolierter Bereich des öffentlic
 
 - Liegen Sicherheitsanforderungen der Organisation zur Isolierung von Datenverkehr in separaten virtuellen Netzwerken vor? Sie können auswählen, ob virtuelle Netzwerke verbunden oder nicht verbunden werden. Wenn Sie virtuelle Netzwerke verbinden, können Sie ein virtuelles Netzwerkgerät (z.B. eine Firewall) implementieren, um den ein- und ausgehenden Datenverkehr zwischen den virtuellen Netzwerken zu steuern. Weitere Informationen finden Sie unter [Sicherheit](#security) und [Konnektivität](#connectivity).
 - Liegen Sicherheitsanforderungen der Organisation zur Isolierung von virtuellen Netzwerken in separaten [Abonnements](#subscriptions) oder [Regionen](#regions) vor?
-- Eine [Netzwerkschnittstelle](virtual-network-network-interface.md) ermöglicht die Kommunikation zwischen einem virtuellen Computer und anderen Ressourcen. Jeder Netzwerkschnittstelle sind private IP-Adressen zugewiesen. Wie viele Netzwerkschnittstellen und [private IP-Adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) benötigen Sie in einem virtuellen Netzwerk? Die Anzahl der Netzwerkschnittstellen und privaten IP-Adressen, die in einem virtuellen Netzwerk festgelegt werden können, ist [begrenzt](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+- Eine [Netzwerkschnittstelle](virtual-network-network-interface.md) ermöglicht die Kommunikation zwischen einem virtuellen Computer und anderen Ressourcen. Jeder Netzwerkschnittstelle sind private IP-Adressen zugewiesen. Wie viele Netzwerkschnittstellen und [private IP-Adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) benötigen Sie in einem virtuellen Netzwerk? Die Anzahl der Netzwerkschnittstellen und privaten IP-Adressen, die in einem virtuellen Netzwerk festgelegt werden können, ist [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 - Möchten Sie das virtuelle Netzwerk mit einem anderen virtuellen Netzwerk oder einem lokalen Netzwerk verbinden? Sie können einige virtuelle Netzwerke untereinander oder mit lokalen Netzwerken verbinden, jedoch nicht alle. Weitere Informationen finden Sie unter [Konnektivität](#connectivity). Jedes virtuelle Netzwerk, das Sie mit einem anderen virtuellen Netzwerk oder einem lokalen Netzwerk verbinden, muss einen eindeutigen Adressraum aufweisen. Jedes virtuelle Netzwerk verfügt über einen oder mehrere dem Adressraum zugewiesene öffentliche oder private Adressbereiche. Ein Adressbereich wird im CIDR-Format (Classless Interdomain Routing, klassenloses domänenübergreifendes Routing) angegeben, z.B. 10.0.0.0/16. Weitere Informationen zu Adressbereichen für virtuelle Netzwerke finden Sie [hier](manage-virtual-network.md#add-or-remove-an-address-range).
 - Liegen Verwaltungsanforderungen der Organisation in Bezug auf Ressourcen in unterschiedlichen virtuellen Netzwerken vor? Wenn ja, können Sie Ressourcen in separaten virtuellen Netzwerken trennen, um die [Zuweisung von Berechtigungen](#permissions) zu Personen in Ihrer Organisation zu vereinfachen oder um unterschiedlichen virtuellen Netzwerken unterschiedliche Richtlinien zuzuweisen.
 - Wenn Sie Azure-Dienstressourcen in einem virtuellen Netzwerk bereitstellen, wird jeweils ein zugehöriges virtuelles Netzwerk erstellt. In den jeweiligen Informationen zu jedem [Azure-Dienst, der in einem virtuellen Netzwerk bereitgestellt werden kann](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), können Sie einsehen, ob für einen Azure-Dienst ein eigenes zugehöriges virtuelles Netzwerk erstellt wird.
 
 ### <a name="subnets"></a>Subnetze
 
-Ein virtuelles Netzwerk kann bis zu den geltenden [Limits](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Subnetze segmentiert werden. Bei der Entscheidung, ob Sie ein Subnetz oder mehrere virtuelle Netzwerke in einem Abonnement erstellen, sollten folgende Aspekte berücksichtigt werden:
+Ein virtuelles Netzwerk kann bis zu den geltenden [Limits](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Subnetze segmentiert werden. Bei der Entscheidung, ob Sie ein Subnetz oder mehrere virtuelle Netzwerke in einem Abonnement erstellen, sollten folgende Aspekte berücksichtigt werden:
 
 - Jedes Subnetz muss über einen eindeutigen im CIDR-Format angegebenen Adressbereich innerhalb des Adressraums des virtuellen Netzwerks verfügen. Der Adressbereich darf keine Überlappungen mit anderen Subnetzen innerhalb des virtuellen Netzwerks aufweisen.
 - Wenn Sie Azure-Dienstressourcen in einem virtuellen Netzwerk bereitstellen möchten, ist es möglich, dass für diese ein eigenes Subnetz erforderlich ist oder erstellt wird. Dafür muss ausreichend nicht zugewiesener Speicherplatz zur Verfügung stehen. In den jeweiligen Informationen zu jedem [Azure-Dienst, der in einem virtuellen Netzwerk bereitgestellt werden kann](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), können Sie einsehen, ob für einen Azure-Dienst ein eigenes zugehöriges Subnetz erstellt wird. Wenn Sie z.B ein virtuelles Netzwerk über ein Azure VPN Gateway mit einem lokalen Netzwerk verbinden, muss das virtuelle Netzwerk über ein dediziertes Subnetz für das Gateway verfügen. Weitere Informationen zu Gatewaysubnetzen finden Sie [hier](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub).

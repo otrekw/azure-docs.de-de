@@ -2,17 +2,17 @@
 title: Automatisches Skalieren eines Clouddiensts im Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mit dem Portal Regeln für die automatische Skalierung für eine Clouddienst-Webrolle oder -Workerrolle in Azure konfigurieren.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359622"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360836"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Konfigurieren der automatischen Skalierung für einen Clouddienst im Portal
 
@@ -105,3 +105,6 @@ Durch diese Einstellung wird die automatische Skalierung von der Rolle entfernt.
 3. Instanzen der Rolle, auf die skaliert werden soll.
 
 Nachdem Sie die Skalierungseinstellungen konfiguriert haben, wählen Sie oben das Symbol **Speichern** aus.
+
+
+

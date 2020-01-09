@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: c391aa157e35bdc389bd30efe48fa380d06c193e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: ff410d3767e90f92a946b72354b39f87e4f37b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508355"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429008"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Hinzufügen eines Artefaktrepositorys zu Ihrem Lab in DevTest Labs
 DevTest Labs ermöglicht das Angeben eines Artefakts, das einem virtuellen Computer hinzugefügt werden soll – entweder beim Erstellen des virtuellen Computers oder nach Erstellung des virtuellen Computers. Bei diesem Artefakt kann es sich beispielsweise um ein Tool oder um eine Anwendung handeln, das bzw. die Sie auf dem virtuellen Computer installieren möchten. Artefakte werden in einer JSON-Datei definiert, die aus einem GitHub- oder Azure DevOps-Git-Repository geladen wird. 
@@ -84,7 +84,7 @@ In diesem Abschnitt erfahren Sie, wie Sie einem Lab über das Azure-Portal ein A
 6. Wählen Sie **Speichern** aus.
 
 ## <a name="use-azure-resource-manager-template"></a>Verwenden von Azure Resource Manager-Vorlagen
-Vorlagen für die Azure-Ressourcenverwaltung (Azure Resource Manager-Vorlagen) sind JSON-Dateien, die Ressourcen in Azure beschreiben, die Sie erstellen möchten. Weitere Informationen zu diesen Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
+Vorlagen für die Azure-Ressourcenverwaltung (Azure Resource Manager-Vorlagen) sind JSON-Dateien, die Ressourcen in Azure beschreiben, die Sie erstellen möchten. Weitere Informationen zu diesen Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](../azure-resource-manager/templates/template-syntax.md).
 
 In diesem Abschnitt erfahren Sie, wie Sie einem Lab unter Verwendung einer Azure Resource Manager-Vorlage ein Artefaktrepository hinzufügen.  Die Vorlage erstellt das Lab, falls es noch nicht vorhanden ist. 
 
@@ -165,7 +165,7 @@ Die in diesem Artikel verwendete Beispielvorlage sammelt über Parameter folgend
 
 
 ### <a name="deploy-the-template"></a>Bereitstellen der Vorlage
-Es gibt mehrere Möglichkeiten, die Vorlage in Azure bereitzustellen und die Ressource zu erstellen (falls sie noch nicht vorhanden ist) oder zu aktualisieren (falls sie bereits vorhanden ist). Ausführliche Informationen finden Sie in den folgenden Artikeln:
+Es gibt mehrere Möglichkeiten, die Vorlage in Azure bereitzustellen und die Ressource zu erstellen (falls sie noch nicht vorhanden ist) oder zu aktualisieren (falls sie bereits vorhanden ist). Details finden Sie in den folgenden Artikeln:
 
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 - [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)

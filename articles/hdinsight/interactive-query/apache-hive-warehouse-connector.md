@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2019
-ms.openlocfilehash: 2448550cf35f92bc8d91bc6ad9d5b22cc90b5ae0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 47bcc9a4f906fa1e0cc0560cdbd2e0cebec481ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494310"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435377"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-the-hive-warehouse-connector"></a>Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector
 
@@ -74,11 +74,11 @@ Navigieren Sie auf der Spark Ambari-Webbenutzeroberfläche zu **Spark2** > **CON
 
 Klicken Sie bei Bedarf auf **Eigenschaft hinzufügen**, um die folgenden Eigenschaften hinzuzufügen bzw. zu aktualisieren:
 
-| Schlüssel | Wert |
+| Key | value |
 |----|----|
 |`spark.hadoop.hive.llap.daemon.service.hosts`|Der Wert, den Sie zuvor aus **hive.llap.daemon.service.hosts** abgerufen haben.|
-|`spark.sql.hive.hiveserver2.jdbc.url`|`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`. Legen Sie diese Einstellung auf die JDBC-Verbindungszeichenfolge fest, mit der eine Verbindung mit Hiveserver2 im Interactive Query-Cluster hergestellt wird. Ersetzen Sie `LLAPCLUSTERNAME` durch den Namen Ihres Interactive Query-Clusters. Ersetzen Sie `PWD` durch das tatsächliche Kennwort.|
-|`spark.datasource.hive.warehouse.load.staging.dir`|`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`. Legen Sie diese Einstellung auf ein geeignetes mit HDFS kompatibles Stagingverzeichnis fest. Wenn Sie zwei unterschiedliche Cluster verwenden, sollte das Stagingverzeichnis ein Ordner im Stagingverzeichnis Ihres Speicherkontos im LLAP-Cluster sein, damit HiveServer2 Zugriff darauf hat.  Ersetzen Sie `STORAGE_ACCOUNT_NAME` durch den Namen des vom Cluster verwendeten Speicherkontos und `STORAGE_CONTAINER_NAME` durch den Namen des Speichercontainers.|
+|`spark.sql.hive.hiveserver2.jdbc.url`|[https://login.microsoftonline.com/consumers/](`jdbc:hive2://LLAPCLUSTERNAME.azurehdinsight.net:443/;user=admin;password=PWD;ssl=true;transportMode=http;httpPath=/hive2`). Legen Sie diese Einstellung auf die JDBC-Verbindungszeichenfolge fest, mit der eine Verbindung mit Hiveserver2 im Interactive Query-Cluster hergestellt wird. Ersetzen Sie `LLAPCLUSTERNAME` durch den Namen Ihres Interactive Query-Clusters. Ersetzen Sie `PWD` durch das tatsächliche Kennwort.|
+|`spark.datasource.hive.warehouse.load.staging.dir`|[https://login.microsoftonline.com/consumers/](`wasbs://STORAGE_CONTAINER_NAME@STORAGE_ACCOUNT_NAME.blob.core.windows.net/tmp`). Legen Sie diese Einstellung auf ein geeignetes mit HDFS kompatibles Stagingverzeichnis fest. Wenn Sie zwei unterschiedliche Cluster verwenden, sollte das Stagingverzeichnis ein Ordner im Stagingverzeichnis Ihres Speicherkontos im LLAP-Cluster sein, damit HiveServer2 Zugriff darauf hat.  Ersetzen Sie `STORAGE_ACCOUNT_NAME` durch den Namen des vom Cluster verwendeten Speicherkontos und `STORAGE_CONTAINER_NAME` durch den Namen des Speichercontainers.|
 |`spark.datasource.hive.warehouse.metastoreUri`|Der Wert, den Sie zuvor aus **hive.metastore.uris** abgerufen haben.|
 |`spark.security.credentials.hiveserver2.enabled`|`false` für den YARN-Clientbereitstellungsmodus.|
 |`spark.hadoop.hive.zookeeper.quorum`|Der Wert, den Sie zuvor aus **hive.zookeeper.quorum** abgerufen haben.|
@@ -107,7 +107,7 @@ Führen Sie die folgenden Schritte aus, um eine spark-shell-Sitzung zu starten:
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.2.1-8.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     ```
 
@@ -132,7 +132,7 @@ Das Enterprise-Sicherheitspaket (ESP) umfasst Unternehmensfunktionen wie Active 
 
     ```bash
     spark-shell --master yarn \
-    --jars /usr/hdp/3.0.1.0-183/hive_warehouse_connector/hive-warehouse-connector-assembly-1.0.0.3.0.1.0-183.jar \
+    --jars /usr/hdp/current/hive_warehouse_connector/hive-warehouse-connector-assembly-<STACK_VERSION>.jar \
     --conf spark.security.credentials.hiveserver2.enabled=false
     --conf spark.hadoop.hive.llap.daemon.service.hosts='<LLAP_APP_NAME>'
     --conf spark.sql.hive.hiveserver2.jdbc.url='jdbc:hive2://<ZOOKEEPER_QUORUM>;serviceDiscoveryMode=zookeeper;zookeeperNamespace=hiveserver2-interactive'
@@ -193,7 +193,7 @@ Führen Sie die unten angegebenen Schritte aus, um ein Hive Warehouse Connector-
 
 1. Generieren Sie Daten für den von Ihnen erstellten Spark-Stream, indem Sie die folgenden Schritte ausführen:
     1. Richten Sie im selben Spark-Cluster eine zweite SSH-Sitzung ein.
-    1. Geben Sie an der Eingabeaufforderung Folgendes ein: `nc -lk 9999`. Für diesen Befehl wird das Hilfsprogramm netcat verwendet, um Daten über die Befehlszeile an den angegebenen Port zu senden.
+    1. Geben Sie an der Eingabeaufforderung `nc -lk 9999` ein: Für diesen Befehl wird das Hilfsprogramm netcat verwendet, um Daten über die Befehlszeile an den angegebenen Port zu senden.
 
 1. Kehren Sie zur ersten SSH-Sitzung zurück, und erstellen Sie für die Streamingdaten eine neue Hive-Tabelle. Geben Sie in spark-shell den folgenden Befehl ein:
 

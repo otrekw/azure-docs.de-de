@@ -8,12 +8,12 @@ services: iot-dps
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: xujing
-ms.openlocfilehash: ffe20ff80e26bc5564b9379ea21ca99e2890b519
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3cbab09c6b50abb590cfe9f2720713a8fa547aa7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974818"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646471"
 ---
 # <a name="troubleshooting-with-azure-iot-hub-device-provisioning-service"></a>Problembehandlung beim Azure IoT Hub Device Provisioning-Dienst
 
@@ -81,5 +81,5 @@ Verwenden Sie diese Tabelle, um häufig auftretende Fehler zu verstehen und zu b
 | 401 | Das Autorisierungstoken kann nicht überprüft werden: es ist beispielsweise abgelaufen oder gilt nicht für den URI der Anforderung. Dieser Fehlercode wird auch im Rahmen des TPM-Nachweisvorgangs an Geräte zurückgegeben. | 401 – Nicht autorisiert|
 | 404 | Die Device Provisioning-Dienstinstanz oder eine Ressource (z.B. eine Registrierung) ist nicht vorhanden. |404 – Nicht gefunden |
 | 412 | Gemäß RFC7232 entspricht das ETag in der Anforderung nicht dem ETag der vorhandenen Ressource. | 412 Fehler bei Vorbedingung |
-| 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 Zu viele Anforderungen |
+| 429 | Vorgänge werden vom Dienst gedrosselt. Informationen zu bestimmten Dienstgrenzwerten finden Sie unter [Grenzwerte für den IoT Hub Device Provisioning-Dienst](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#iot-hub-device-provisioning-service-limits). | 429 Zu viele Anforderungen |
 | 500 | Ein interner Fehler ist aufgetreten. | 500 Interner Serverfehler|

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/16/2019
-ms.openlocfilehash: 3729d43716a0f4e133fb175da2546aac560b0525
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 67d59e3f733efe5a248e6763f46402302496d437
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931617"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444389"
 ---
 # <a name="copy-data-to-and-from-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Database for PostgreSQL mithilfe von Azure Data Factory
 
@@ -48,17 +48,17 @@ Folgende Eigenschaften werden für den verknüpften Azure Database for PostgreSQ
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzurePostgreSql**. | Ja |
-| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Azure Database for PostgreSQL.<br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| connectionString | Eine ODBC-Verbindungszeichenfolge zum Herstellen einer Verbindung mit Azure Database for PostgreSQL.<br/>Sie können auch ein Kennwort in Azure Key Vault speichern und die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | connectVia | Diese Eigenschaft gibt die [Integration Runtime](concepts-integration-runtime.md) an, die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet wird. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 Eine typische Verbindungszeichenfolge ist `Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Weitere Eigenschaften, die Sie für Ihren Fall festlegen können:
 
-| Eigenschaft | BESCHREIBUNG | Optionen | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Tastatur | Erforderlich |
 |:--- |:--- |:--- |:--- |
 | EncryptionMethod (EM)| Diese Methode wird vom Treiber verwendet, um Daten zu verschlüsseln, die zwischen dem Treiber und dem Datenbankserver gesendet werden. Beispiel: `EncryptionMethod=<0/1/6>;`| 0 (keine Verschlüsselung) **(Standard)** / 1 (SSL) / 6 (RequestSSL) | Nein |
 | ValidateServerCertificate (VSC) | Bestimmt, ob der Treiber das Zertifikat überprüft, das vom Datenbankserver gesendet wird, wenn die SSL-Verschlüsselung aktiviert ist (Encryption Method=1). Beispiel: `ValidateServerCertificate=<0/1>;`| 0 (Deaktiviert) **(Standard)** / 1 (Aktiviert) | Nein |
 
-**Beispiel**:
+**Beispiel:**
 
 ```json
 {
@@ -66,16 +66,13 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>.postgres.database.azu
     "properties": {
         "type": "AzurePostgreSql",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
-            }
+            "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
         }
     }
 }
 ```
 
-**Beispiel**:
+**Beispiel:**
 
 ***Speichern des Kennworts in Azure Key Vault***
 
@@ -85,10 +82,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>.postgres.database.azu
     "properties": {
         "type": "AzurePostgreSql",
         "typeProperties": {
-            "connectionString": {
-                 "type": "SecureString",
-                 "value": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;"
-            },
+            "connectionString": "Server=<server>.postgres.database.azure.com;Database=<database>;Port=<port>;UID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -113,7 +107,7 @@ Legen Sie die „type“-Eigenschaft des Datasets auf **AzurePostgreSQLTable** f
 | type | Die type-Eigenschaft des Datasets muss auf **AzurePostgreSqlTable** festgelegt werden. | Ja |
 | tableName | Name der Tabelle | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
-**Beispiel**:
+**Beispiel:**
 
 ```json
 {
@@ -140,9 +134,9 @@ Legen Sie zum Kopieren von Daten aus Azure Database for PostgreSQL den Quelltyp 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzurePostgreSqlSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"` | Nein (wenn die tableName-Eigenschaft im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"` | Nein (wenn die tableName-Eigenschaft im Dataset angegeben ist) |
 
-**Beispiel**:
+**Beispiel:**
 
 ```json
 "activities":[
@@ -185,7 +179,7 @@ Beim Kopieren von Daten nach Azure Database for PostgreSQL werden im Abschnitt *
 | writeBatchSize | Fügt Daten in die Azure Database for PostgreSQL-Tabelle ein, wenn die Puffergröße „writeBatchSize“ erreicht.<br>Als Wert ist ein Integer zulässig, der die Anzahl der Zeilen angibt. | Nein (Standardwert ist 10.000) |
 | writeBatchTimeout | Die Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br>Zulässige Werte sind Timespan-Zeichenfolgen. Beispiel: 00:30:00 (30 Minuten). | Nein (Standardwert ist 00:00:30) |
 
-**Beispiel**:
+**Beispiel:**
 
 ```json
 "activities":[

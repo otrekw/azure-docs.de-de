@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ec9f7ecf218b635588065c14bd4d11283d027c11
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286134"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364083"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
 
@@ -23,7 +23,7 @@ Die [WAD-Erweiterung](diagnostics-extension-overview.md) (Windows Azure-Diagnose
 
 In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetriebssystems für eine VM-Skalierungsgruppe von Windows an den Azure Monitor-Datenspeicher beschrieben. Ab Version 1.11 von Windows Azure-Diagnose können Sie Metriken direkt in den Azure Monitor-Metrikspeicher schreiben, in dem bereits Metriken der Standardplattformen gesammelt werden. Wenn Sie diesen Speicherort verwenden möchten, können Sie die gleichen Aktionen wie für Plattformmetriken nutzen. Zu den Aktionen gehören Benachrichtigung nahezu in Echtzeit, Diagrammerstellung, Routing, Zugriff über eine REST-API und vieles mehr. In der Vergangenheit hat die Windows Azure-Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.  
 
-Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.  
+Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../../azure-resource-manager/management/overview.md) sowie deren Struktur und Syntax.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -276,7 +276,7 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
 
 1. Wählen Sie im Menü auf der linken Seite **Monitor** aus. 
 
-1. Wählen Sie auf der Seite **Überwachen** die Option **Metriken** aus. 
+1. Wählen Sie auf der Seite **Monitor** die Option **Metriken** aus. 
 
    ![Monitor – Seite „Metriken“](media/collect-custom-metrics-guestos-resource-manager-vmss/metrics.png) 
 

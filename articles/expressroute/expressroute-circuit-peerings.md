@@ -5,14 +5,14 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 09/18/2019
+ms.date: 12/13/2019
 ms.author: mialdrid
-ms.openlocfilehash: f6673e114c249cb86c648155b889e925554e9458
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c68ffd019937f902567c3deda8d879448dc082da
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083635"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647134"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-Verbindungen und Peering
 
@@ -36,7 +36,7 @@ Jede Verbindung verfügt über eine feste Bandbreite (50 MBit/s, 100 MBit/s, 2
 
 ### <a name="quotas"></a>Kontingente, Grenzwerte und Einschränkungen
 
-Standardkontingente und -grenzwerte gelten für alle ExpressRoute-Verbindungen. Aktuelle Informationen zu Kontingenten finden Sie auf der Seite [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-subscription-service-limits.md) .
+Standardkontingente und -grenzwerte gelten für alle ExpressRoute-Verbindungen. Aktuelle Informationen zu Kontingenten finden Sie auf der Seite [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md) .
 
 ## <a name="routingdomains"></a>ExpressRoute-Peering
 
@@ -48,7 +48,7 @@ Einer ExpressRoute-Verbindung sind mehrere Routingdomänen/Peerings zugeordnet: 
 
 Azure-Computedienste, sprich virtuelle Computer (IaaS) und Clouddienste (PaaS), die in einem virtuellen Netzwerk bereitgestellt werden, können über die private Peeringdomäne verbunden werden. Die private Peeringdomäne gilt als vertrauenswürdige Erweiterung Ihres Kernnetzwerks für Microsoft Azure. Sie können eine bidirektionale Verbindung zwischen Ihrem Kernnetzwerk und den virtuellen Azure-Netzwerken (VNets) einrichten. Durch dieses Peering können Sie direkt über ihre privaten IP-Adressen eine Verbindung zwischen virtuellen Computern und Clouddiensten herstellen.  
 
-Sie können mehr als ein virtuelles Netzwerk mit der privaten Peeringdomäne verbinden. Informationen zu Grenzwerten und Einschränkungen finden Sie auf der [FAQ-Seite](expressroute-faqs.md) . Aktuelle Informationen zu Grenzwerten finden Sie auf der Seite [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-subscription-service-limits.md) .  Ausführliche Informationen zur Routingkonfiguration finden Sie unter [Routing](expressroute-routing.md) .
+Sie können mehr als ein virtuelles Netzwerk mit der privaten Peeringdomäne verbinden. Informationen zu Grenzwerten und Einschränkungen finden Sie auf der [FAQ-Seite](expressroute-faqs.md) . Aktuelle Informationen zu Grenzwerten finden Sie auf der Seite [Grenzwerte, Kontingente und Einschränkungen für Azure-Abonnements und -Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md) .  Ausführliche Informationen zur Routingkonfiguration finden Sie unter [Routing](expressroute-routing.md) .
 
 ### <a name="microsoftpeering"></a>Microsoft-Peering
 
@@ -58,32 +58,11 @@ Verbindungen mit Onlinediensten von Microsoft (Office 365 und Azure-PaaS-Dienste
 
 Auf der [FAQ-Seite](expressroute-faqs.md) finden Sie weitere Informationen zu unterstützten Diensten, Kosten und Konfigurationsdetails. Auf der Seite [ExpressRoute-Standorte](expressroute-locations.md) finden Sie Informationen zur Liste der Konnektivitätsanbieter, die Microsoft-Peeringsupport anbieten.
 
-### <a name="publicpeering"></a>Öffentliches Azure-Peering (für neue Verbindungen veraltet)
-
-> [!Note]
-> Im öffentlichen Azure-Peering ist jeder BGP-Sitzung eine NAT-IP-Adresse zugeordnet. Wechseln Sie bei mehr als 2 NAT-IP-Adressen zu Microsoft-Peering. Microsoft-Peering ermöglicht Ihnen, Ihre eigenen NAT-Zuordnungen zu konfigurieren und Routenfilter für selektive Präfixankündigungen zu verwenden. Weitere Informationen finden Sie unter [Wechseln zu Microsoft-Peering](https://docs.microsoft.com/azure/expressroute/how-to-move-peering).
->
-
-Dienste wie Azure Storage, SQL-Datenbanken und Websites werden über öffentliche IP-Adressen angeboten. Über die öffentliche Peeringrouting-Domäne können Sie eine private Verbindung mit unter öffentlichen IP-Adressen gehosteten Diensten herstellen (darunter VIPs Ihrer Clouddienste). Sie können die öffentliche Peeringdomäne mit der DMZ verbinden und aus Ihrem WAN heraus eine Verbindung mit allen Azure-Diensten unter ihren öffentlichen IP-Adressen herstellen, ohne eine Verbindung über das Internet herstellen zu müssen.
-
-Die Verbindung wird immer von Ihrem WAN aus mit den Microsoft Azure-Diensten initiiert. Microsoft Azure-Dienste können über diese Routingdomäne keine Verbindungen in Ihr Netzwerk initiieren. Sobald öffentliches Peering aktiviert ist, werden Sie eine Verbindung mit allen Azure-Diensten herstellen können. Es ist Ihnen nicht gestattet, selektiv Dienste auszuwählen, zu denen wir Routen ankündigen.
-
-Innerhalb des Netzwerks können Sie benutzerdefinierte Routingfilter definieren, um nur die benötigten Routen zu nutzen. Ausführliche Informationen zur Routingkonfiguration finden Sie unter [Routing](expressroute-routing.md) .
-
-In den [häufig gestellten Fragen](expressroute-faqs.md) finden Sie weitere Informationen zu Diensten, die von der öffentlichen Peeringrouting-Domäne unterstützt werden.
-
 ## <a name="peeringcompare"></a>Peeringvergleich
 
 In der folgenden Tabelle werden die drei Peerings verglichen:
 
-|  | **Privates Peering** | **Microsoft-Peering** |  **Öffentliches Peering** (für neue Verbindungen veraltet) |
-| --- | --- | --- | --- |
-| **Max. Anzahl von unterstützten Präfixen pro Peering** |Standardmäßig 4.000, bei ExpressRoute Premium 10.000 |200 |200 |
-| **Unterstützte IP-Adressbereiche** |Jede gültige IPv4-Adresse innerhalb des WAN |Öffentliche IP-Adressen in Ihrem Besitz oder im Besitz des Konnektivitätsanbieters |Öffentliche IP-Adressen in Ihrem Besitz oder im Besitz des Konnektivitätsanbieters |
-| **Anforderungen für AS-Nummern** |Private und öffentliche AS-Nummern. Wenn Sie eine öffentliche AS-Nummer verwenden möchten, muss diese in Ihrem Besitz sein. |Private und öffentliche AS-Nummern. Sie müssen allerdings den Besitz öffentlicher IP-Adressen nachweisen. |Private und öffentliche AS-Nummern. Sie müssen allerdings den Besitz öffentlicher IP-Adressen nachweisen. |
-| **Unterstützte IP-Protokolle**| IPv4 |  IPv4, IPv6 | IPv4 |
-| **IP-Adressen der Routingschnittstelle** |RFC1918 und öffentliche IP-Adressen |In Routingregistrierungen für Sie registrierte öffentliche IP-Adressen. |In Routingregistrierungen für Sie registrierte öffentliche IP-Adressen. |
-| **MD5-Hash-Unterstützung** |Ja |Ja |Ja |
+[!INCLUDE [peering comparison](../../includes/expressroute-peering-comparison.md)]
 
 Sie können mehrere Routingdomänen als Teil der ExpressRoute-Verbindung aktivieren. Sie können alle Routingdomänen durch das gleiche VPN leiten, wenn sie diese zu einer einzelnen Routingdomäne zusammenführen möchten. Sie können sie auch getrennt halten, ähnlich wie im Diagramm. Die empfohlene Konfiguration sieht folgendermaßen aus: Das private Peering ist direkt mit dem Kernnetzwerk verbunden, und die öffentlichen Peeringlinks und die Microsoft-Peeringlinks sind mit Ihrer DMZ verbunden.
 

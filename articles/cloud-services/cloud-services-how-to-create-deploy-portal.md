@@ -3,17 +3,17 @@ title: Erstellen und Bereitstellen eines Clouddiensts| Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen Clouddienst über das Azure-Portal erstellen und bereitstellen.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 53f53976b20359afc45abe1b25ca60325b5d6a2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359129"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386169"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
 Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
@@ -91,3 +91,6 @@ Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
 * Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+
+
+

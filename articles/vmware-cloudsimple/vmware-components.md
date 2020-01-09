@@ -1,5 +1,6 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: VMware-Komponenten in der privaten Cloud'
+title: VMware-Komponenten in der privaten Cloud
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Beschreibt, wie VMware-Komponenten in einer privaten Cloud installiert werden
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: bd83cff243c94ed62014ff95f6ca7c4e878f6af7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 9c9b80cd4d8a7a7ac5597d10bbb87095564bd461
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452314"
 ---
 # <a name="private-cloud-vmware-components"></a>VMware-Komponenten in der privaten Cloud
 

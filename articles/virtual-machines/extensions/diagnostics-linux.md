@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073166"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359361"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -53,7 +53,7 @@ Die herunterladbare Konfiguration ist nur ein Beispiel. Passen Sie sie an Ihre e
 
 * **Azure Linux Agent ab Version 2.2.0**. Die meisten Images des Azure-Katalogs für virtuelle Linux-Computer enthalten Version 2.2.7 oder höher. Führen Sie `/usr/sbin/waagent -version` aus, um die auf dem virtuellen Computer installierte Version zu überprüfen. Wenn der virtuelle Computer unter einer älteren Version des Gast-Agents ausgeführt wird, führen Sie [diese Anweisungen](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) aus, um ihn zu aktualisieren.
 * **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) auf dem Computer ein.
-* Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget`aus.
+* Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget` aus.
 * Ein vorhandenes Azure-Abonnement und ein vorhandenes Speicherkonto in diesem Abonnement zum Speichern der Daten.
 * Eine Liste der unterstützten Linux-Distributionen finden Sie unter https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions.
 
@@ -127,7 +127,7 @@ Dieser Satz von Konfigurationsinformationen enthält vertrauliche Informationen,
 }
 ```
 
-NAME | Wert
+Name | value
 ---- | -----
 storageAccountName | Der Name des Speicherkontos, in dem von der Erweiterung Daten geschrieben werden
 storageAccountEndPoint | (optional:) Der Endpunkt, der die Cloud mit dem Speicherkonto angibt. Wenn diese Einstellung fehlt, verwendet LAD standardmäßig die öffentliche Azure-Cloud `https://core.windows.net`. Um ein Speicherkonto in Azure Deutschland, Azure Government oder Azure China zu verwenden, legen Sie diesen Wert entsprechend fest.
@@ -135,7 +135,7 @@ storageAccountSasToken | Ein [Konto-SAS-Token](https://azure.microsoft.com/blog/
 mdsdHttpProxy | (optional:) HTTP-Proxyinformationen, die erforderlich sind, damit die Erweiterung Verbindungen mit dem angegebenen Speicherkonto und dem Endpunkt herstellen kann
 sinksConfig | (optional:) Details zu alternativen Zielen, an die Metriken und Ereignisse übermittelt werden können. Die spezifischen Details der einzelnen Datensenken, die von der Erweiterung unterstützt werden, sind in den folgenden Abschnitten beschrieben.
 
-Verwenden Sie die **listAccountSas**-Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
+Verwenden Sie die **listAccountSas**-Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 Sie können das erforderliche SAS-Token einfach über das Azure-Portal erstellen.
 
@@ -165,7 +165,7 @@ Kopieren Sie die generierte SAS in das Feld storageAccountSasToken. Entfernen Si
 
 In diesem optionalen Abschnitt werden zusätzliche Ziele definiert, an die die Erweiterung die gesammelten Informationen sendet. Das Array „sink“ enthält ein Objekt für jede zusätzliche Datensenke. Das Attribut „type“ bestimmt die anderen Attribute im Objekt.
 
-Element | Wert
+Element | value
 ------- | -----
 name | Eine Zeichenfolge, die zum Verweisen auf diese Senke an anderer Stelle in der Konfiguration der Erweiterung verwendet wird
 type | Der Typ der Senke, die definiert wird. Bestimmt die anderen Werte in Instanzen dieses Typs (sofern vorhanden).
@@ -227,7 +227,7 @@ Diese Struktur enthält verschiedene Blöcke von Einstellungen zur Steuerung der
 }
 ```
 
-Element | Wert
+Element | value
 ------- | -----
 StorageAccount | Der Name des Speicherkontos, in dem von der Erweiterung Daten geschrieben werden Er muss mit dem Namen übereinstimmen, der in den [geschützten Einstellungen](#protected-settings) festgelegt wurde.
 mdsdHttpProxy | (optional:) Wie bei den [geschützten Einstellungen](#protected-settings). Der öffentliche Wert wird durch den geschützten Wert überschrieben, sofern dieser festgelegt wurde. Nehmen Sie Proxyeinstellungen, die ein Geheimnis (z.B. ein Kennwort) enthalten, in den [geschützten Einstellungen](#protected-settings) vor.
@@ -250,7 +250,7 @@ Diese übrigen Elemente werden in den folgenden Abschnitten ausführlich beschri
 
 Diese optionale Struktur steuert das Sammeln von Metriken und Protokollen für die Übermittlung an den Azure-Metrikendienst und andere Datensenken. Sie müssen `performanceCounters` und/oder `syslogEvents` angeben. Sie müssen die `metrics`-Struktur angeben.
 
-Element | Wert
+Element | value
 ------- | -----
 eventVolume | (optional:) Steuert die Anzahl der Partitionen, die innerhalb der Speichertabelle erstellt werden. Muss `"Large"`, `"Medium"` oder `"Small"` sein. Wenn Sie hier nichts angeben, lautet der Standardwert `"Medium"`.
 sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung von unformatierten (nicht aggregierten) Metriken. Die kleinste unterstützte Erfassungsrate beträgt 15 Sekunden. Wenn Sie hier nichts angeben, lautet der Standardwert `15`.
@@ -267,7 +267,7 @@ sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung v
 }
 ```
 
-Element | Wert
+Element | value
 ------- | -----
 resourceId | Die Azure Resource Manager-Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, zu der der virtuelle Computer gehört. Diese Einstellung muss ebenfalls angegeben werden, wenn in der Konfiguration eine JsonBlob-Senke verwendet wird.
 scheduledTransferPeriod | Die Häufigkeit, mit der aggregierte Metriken berechnet und an den Azure-Metrikendienst übertragen werden, als ein Zeitintervall im Format ISO 8601. Das kleinste Übertragungsintervall ist 60 Sekunden, d.h. PT1M. Sie müssen mindestens einen scheduledTransferPeriod-Wert angeben.
@@ -307,7 +307,7 @@ Mit diesem optionalen Abschnitt wird die Erfassung von Metriken gesteuert. Die u
 * letzter erfasster Wert
 * Anzahl der unformatierten Daten für die Aggregatberechnung
 
-Element | Wert
+Element | value
 ------- | -----
 sinks | (optional:) Eine durch Trennzeichen getrennte Liste der Namen der Senken, an die LAD die aggregierten Metrikergebnisse übermittelt. Alle aggregierten Metriken werden an jede aufgeführte Senke veröffentlicht. Siehe [sinksConfig](#sinksconfig). Beispiel: `"EHsink1, myjsonsink"`.
 type | Gibt den tatsächlichen Anbieter der Metrik an.
@@ -319,7 +319,7 @@ sampleRate | ISO-8601-Intervall, das die Häufigkeit festlegt, mit der unformati
 unit | Sollte eine der folgenden Zeichenfolgen sein: „Count“, „Bytes“, „Seconds“, „Percent“, „CountPerSecond“, „BytesPerSecond“, „Millisecond“. Definiert die Einheit für die Metrik. Consumer der gesammelten Daten erwarten, dass die gesammelten Datenwerte diesen Einheiten entsprechen. LAD ignoriert dieses Feld.
 displayName | Die Bezeichnung (in der Sprache, die durch die zugehörige Gebietsschemaeinstellung festgelegt wird), die an diese Daten in Azure-Metriken angefügt wird. LAD ignoriert dieses Feld.
 
-Der counterSpecifier ist ein frei wählbarer Bezeichner. Consumer von Metriken, wie das Azure-Portal-Feature für Diagramme und Warnungen, verwenden counterSpecifier als „Schlüssel“, der eine Metrik oder eine Instanz einer Metrik identifiziert. Für `builtin`-Metriken werden counterSpecifier-Werte empfohlen, die mit `/builtin/` beginnen. Wenn Sie eine bestimmte Instanz einer Metrik erfassen, sollten Sie den Bezeichner der Instanz an den counterSpecifier-Wert anfügen. Hier einige Beispiele:
+Der counterSpecifier ist ein frei wählbarer Bezeichner. Consumer von Metriken, wie das Azure-Portal-Feature für Diagramme und Warnungen, verwenden counterSpecifier als „Schlüssel“, der eine Metrik oder eine Instanz einer Metrik identifiziert. Für `builtin`-Metriken werden counterSpecifier-Werte empfohlen, die mit `/builtin/` beginnen. Wenn Sie eine bestimmte Instanz einer Metrik erfassen, sollten Sie den Bezeichner der Instanz an den counterSpecifier-Wert anfügen. Einige Beispiele:
 
 * `/builtin/Processor/PercentIdleTime` – Leerlaufzeit (Durchschnitt für alle vCPUs)
 * `/builtin/Disk/FreeSpace(/mnt)` – freier Speicherplatz für das Dateisystem „/mnt“
@@ -353,7 +353,7 @@ Mit diesem optionalen Abschnitt wird die Erfassung von Protokollereignissen von 
 
 Die syslogEventConfiguration-Sammlung enthält einen Eintrag für jede gewünschte Syslog-Funktion. Wenn minSeverity für eine bestimmte Funktion „NONE“ lautet oder wenn diese Funktion im Element nicht enthalten ist, werden keine Ereignisse von dieser Funktion erfasst.
 
-Element | Wert
+Element | value
 ------- | -----
 sinks | Eine durch Trennzeichen getrennte Liste der Namen von Senken, an die einzelne Protokollereignisse veröffentlicht werden. Alle Protokollereignisse, die den Einschränkungen in syslogEventConfiguration entsprechen, werden an alle aufgeführten Senken veröffentlicht. Beispiel: „EHforsyslog“
 facilityName | Ein Syslog-Funktionsname (z.B. „LOG\_USER“ oder „LOG\_LOCAL0“). Im Abschnitt „facility“ in der [Manpage von Syslog](http://man7.org/linux/man-pages/man3/syslog.3.html) finden Sie die vollständige Liste.
@@ -382,10 +382,10 @@ Dieser optionale Abschnitt steuert die Ausführung von beliebigen [OMI](https://
 ]
 ```
 
-Element | Wert
+Element | value
 ------- | -----
 Namespace | (optional:) Der OMI-Namespace, in dem die Abfrage ausgeführt werden soll. Falls keine Angabe erfolgt, lautet der Standardwert „root/scx“, der von den [plattformübergreifenden System Center-Anbietern](https://github.com/Microsoft/SCXcore) implementiert wird.
-query | Die OMI-Abfrage, die ausgeführt werden soll.
+Abfrage | Die OMI-Abfrage, die ausgeführt werden soll.
 table | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (siehe [geschützte Einstellungen](#protected-settings)).
 frequency | (optional:) Die Anzahl von Sekunden zwischen der Ausführung der Abfrage. Der Standardwert ist 300 (fünf Minuten), der Mindestwert beträgt 15 Sekunden.
 sinks | (optional:) Eine durch Trennzeichen getrennte Liste der Namen von zusätzlichen Senken, an die unformatierte Metrikergebnisse veröffentlicht werden sollen. Es erfolgt keine Aggregation dieser unformatierten Daten durch die Erweiterung oder den Azure-Metrikendienst.
@@ -406,7 +406,7 @@ Steuert die Erfassung von Protokolldateien. LAD erfasst neue Textzeilen so, wie 
 ]
 ```
 
-Element | Wert
+Element | value
 ------- | -----
 file | Der vollständige Pfadname der Protokolldatei, die überwacht und erfasst werden soll. Beim Pfadnamen muss es sich um eine einzelne Datei handeln. Er darf keinen Verzeichnisnamen oder Platzhalter enthalten.
 table | (optional:) Die Azure Storage-Tabelle im angegebenen Speicherkonto (wie in der geschützten Konfiguration angegeben), in die neue Zeilen vom Ende der Datei geschrieben werden.
@@ -500,7 +500,7 @@ TransfersPerSecond | Lese- oder Schreibvorgänge pro Sekunde
 
 Aggregierte Werte für alle Dateisysteme erhalten Sie, indem Sie `"condition": "IsAggregate=True"` festlegen. Werte für ein bestimmtes eingebundenes Dateisystem, wie z.B. „/mnt“, erhalten Sie, indem Sie `"condition": 'Name="/mnt"'` angeben. 
 
-**HINWEIS**: Wenn Sie nicht JSON, sondern das Azure-Portal verwenden, ist „Name='/mnt'“ die richtige Form des Bedingungsfelds.
+**HINWEIS:** Wenn Sie nicht JSON, sondern das Azure-Portal verwenden, ist „Name='/mnt'“ die richtige Form des Bedingungsfelds.
 
 ### <a name="builtin-metrics-for-the-disk-class"></a>Integrierte Metriken der Datenträgerklasse
 

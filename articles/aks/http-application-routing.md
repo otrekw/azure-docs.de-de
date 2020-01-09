@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/06/2019
 ms.author: laevenso
-ms.openlocfilehash: f0975d0a60081b66d3d5a513954deb0c4fa1b978
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: cfd69ebf6408acaa2938271ba87f36768416de80
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851555"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442958"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -51,12 +51,13 @@ az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addo
 Nachdem der Cluster bereitgestellt oder aktualisiert wurde, rufen Sie mit dem Befehl [az aks show][az-aks-show] den Namen der DNS-Zone ab. Dieser Name wird zur Bereitstellung von Anwendungen im AKS-Cluster benötigt.
 
 ```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName -o table
-
-Result
------------------------------------------------------
-9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+az aks show --resource-group myResourceGroup --name myAKSCluster --query addonProfiles.httpapplicationrouting.config.HTTPApplicationRoutingZoneName -o table
 ```
+
+Ergebnis
+
+9f9c1fe7-21a1-416d-99cd-3543bb92e4c3.eastus.aksapp.io
+
 
 ## <a name="deploy-http-routing-portal"></a>Bereitstellen von HTTP-Routing: Portal
 
@@ -261,7 +262,7 @@ I0426 21:51:58.042932       9 controller.go:179] ingress backend successfully re
 167.220.24.46 - [167.220.24.46] - - [26/Apr/2018:21:53:20 +0000] "GET / HTTP/1.1" 200 234 "" "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0)" 197 0.001 [default-party-clippy-80] 10.244.0.13:8080 234 0.004 200
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Entfernen Sie die zugeordneten Kubernetes-Objekte, die in diesem Artikel erstellt wurden.
 

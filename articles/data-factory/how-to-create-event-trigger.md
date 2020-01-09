@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: 0b1d9fad2992397a3a6768d0f5e7ff26a400a2b3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e4301afafb48fb9a1b0c9e36dde9800e2b8390f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889323"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443923"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 
@@ -30,7 +30,7 @@ Das folgende Video enthält eine zehnminütige Einführung und Demonstration die
 
 
 > [!NOTE]
-> Die in diesem Artikel beschriebene Integration basiert auf [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Stellen Sie sicher, dass Ihr Abonnement für den Event Grid-Ressourcenanbieter registriert ist. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+> Die in diesem Artikel beschriebene Integration basiert auf [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Stellen Sie sicher, dass Ihr Abonnement für den Event Grid-Ressourcenanbieter registriert ist. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ## <a name="data-factory-ui"></a>Data Factory-Benutzeroberfläche
 
@@ -80,11 +80,11 @@ Die folgende Tabelle enthält eine Übersicht über die Schemaelemente, die mit 
 
 | **JSON-Element** | **Beschreibung** | **Typ** | **Zulässige Werte** | **Erforderlich** |
 | ---------------- | --------------- | -------- | ------------------ | ------------ |
-| **scope** | Die Ressourcen-ID von Azure Resource Manager im Speicherkonto. | Zeichenfolge | Azure Resource Manager-ID | Ja |
+| **scope** | Die Ressourcen-ID von Azure Resource Manager im Speicherkonto. | String | Azure Resource Manager-ID | Ja |
 | **events** | Der Ereignistyp, die diesen Trigger auslöst. | Array    | Microsoft.Storage.BlobCreated, Microsoft.Storage.BlobDeleted | Ja (beliebige Kombination dieser Werte). |
-| **blobPathBeginsWith** | Der Blobpfad muss mit dem angegebenen Muster beginnen, damit der Trigger ausgelöst wird. `/records/blobs/december/` löst den Trigger beispielsweise nur für Blobs im Ordner `december` unter dem Container `records` aus. | Zeichenfolge   | | Geben Sie einen Wert für mindestens eine der folgenden Eigenschaften an: `blobPathBeginsWith` oder `blobPathEndsWith`. |
-| **blobPathEndsWith** | Der Blobpfad muss mit dem angegebenen Muster enden, damit der Trigger ausgelöst wird. `december/boxes.csv` löst den Trigger beispielsweise nur für Blobs namens `boxes` aus, die sich in einem Ordner namens `december` befinden. | Zeichenfolge   | | Geben Sie einen Wert für mindestens eine der folgenden Eigenschaften an: `blobPathBeginsWith` oder `blobPathEndsWith`. |
-| **ignoreEmptyBlobs** | Legt fest, ob Null-Byte-Blobs eine Pipelineausführung auslösen oder nicht. Dieser Wert ist standardmäßig auf „true“ festgelegt. | Boolean | "true" oder "false" | Nein |
+| **blobPathBeginsWith** | Der Blobpfad muss mit dem angegebenen Muster beginnen, damit der Trigger ausgelöst wird. `/records/blobs/december/` löst den Trigger beispielsweise nur für Blobs im Ordner `december` unter dem Container `records` aus. | String   | | Geben Sie einen Wert für mindestens eine der folgenden Eigenschaften an: `blobPathBeginsWith` oder `blobPathEndsWith`. |
+| **blobPathEndsWith** | Der Blobpfad muss mit dem angegebenen Muster enden, damit der Trigger ausgelöst wird. `december/boxes.csv` löst den Trigger beispielsweise nur für Blobs namens `boxes` aus, die sich in einem Ordner namens `december` befinden. | String   | | Geben Sie einen Wert für mindestens eine der folgenden Eigenschaften an: `blobPathBeginsWith` oder `blobPathEndsWith`. |
+| **ignoreEmptyBlobs** | Legt fest, ob Null-Byte-Blobs eine Pipelineausführung auslösen oder nicht. Dieser Wert ist standardmäßig auf „true“ festgelegt. | Boolean | true oder false | Nein |
 
 ## <a name="examples-of-event-based-triggers"></a>Beispiele für ereignisbasierte Trigger
 

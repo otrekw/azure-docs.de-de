@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/25/2019
+ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 527114adbe2422148605fd878723ae74fa7c3304
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fb44f217b7a940bc07a164e482b67ddb53835715
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958590"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440476"
 ---
 | Category | Datenspeicher |
 |:--- |:--- |
@@ -28,7 +28,7 @@ ms.locfileid: "72958590"
 | &nbsp; |[Azure Files](../articles/data-factory/connector-azure-file-storage.md) |
 | &nbsp; |[Azure SQL-Datenbank](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Verwaltete Azure SQL-Datenbank-Instanz](../articles/data-factory/connector-azure-sql-database-managed-instance.md) |
-| &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
+| &nbsp; |[Azure Synapse Analytics (ehemals SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |
 | **Datenbank** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
@@ -58,7 +58,7 @@ ms.locfileid: "72958590"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (Vorschauversion)](../articles/data-factory/connector-couchbase.md) |
-| **Datei** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[Dateisystem](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Google Cloud Storage](../articles/data-factory/connector-google-cloud-storage.md) |

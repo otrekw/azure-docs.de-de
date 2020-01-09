@@ -1,19 +1,19 @@
 ---
 title: Apache Storm-Beispieltopologien in Azure HDInsight
 description: Eine Liste von Beispieltopologien, die mit Apache Storm in HDInsight erstellt und getestet wurden, einschließlich der grundlegenden C#- und Java-Topologien, und mit Event Hubs funktionieren.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/30/2018
-ms.openlocfilehash: 831d3a187a4388a429c6fabb1bb0e0ec6dd584cc
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.custom: hdinsightactive
+ms.date: 12/27/2019
+ms.openlocfilehash: 302ba583f11b15be98832316b1ea05c7f9be931f
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800046"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530662"
 ---
 # <a name="example-apache-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>Apache Storm-Beispieltopologien und -komponenten für Apache Storm in HDInsight
 
@@ -47,7 +47,6 @@ Ein Beispiel der Python-Komponenten mit einer Flux-Topologie finden Sie unter [V
 * [Erstellen und Überwachen einer Apache Storm-Topologie in Azure HDInsight](./apache-storm-quickstart.md)
 * [Bereitstellen und Verwalten von Apache Storm-Topologien mit Apache Storm in HDInsight][6eb0d3b8]
 
-
 [6eb0d3b8]:apache-storm-deploy-monitor-topology-linux.md "Bereitstellen und Verwalten von Topologien mit dem webbasierten Apache Storm-Dashboard und der Storm-Benutzeroberfläche oder den HDInsight-Tools für Visual Studio"
 [16fce2d1]:apache-storm-develop-csharp-visual-studio-topology.md "Erfahren Sie, wie Sie C#-Storm-Topologien mithilfe der HDInsight-Tools für Visual Studio erstellen."
 [5797064f]:apache-storm-develop-java-topology.md "Erfahren Sie, wie Sie Storm-Topologien in Java mit Maven erstellen, indem Sie eine Grundtopologie zur Wortzählung erstellen."
@@ -56,4 +55,3 @@ Ein Beispiel der Python-Komponenten mit einer Flux-Topologie finden Sie unter [V
 [d6c540e3]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/EventCountExample "Enthält mehrere Topologien, um den Durchsatz beim Lesen von Azure Event Hubs und das Speichern in einer SQL-Datenbank unter Verwendung von Apache Storm in HDInsight zu veranschaulichen."
 [b4b68194]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample "Erfahren Sie, wie Sie Daten von Azure Event Hubs lesen, die Daten aggregieren und transformieren und dann in HBase in HDInsight speichern."
 [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "Dieses Projekt enthält Vorlagen für Spouts, Bolts und Topologien für die Interaktion mit verschiedenen Azure-Diensten wie Event Hubs, Cosmos DB und SQL-Datenbank."
-

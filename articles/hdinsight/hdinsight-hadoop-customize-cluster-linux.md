@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: 16b0fdcbae51b30e14fbf7ea4d98699dfaf19804
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 6df7eebae0f0e7cfab790a4fca12dbb6ee5a5acf
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035741"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638985"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 
@@ -144,12 +144,12 @@ Skripts für Skriptaktionen können über die folgenden Hilfsprogramme verwendet
 
 HDInsight verfügt über Skripts zum Installieren der folgenden Komponenten auf HDInsight-Clustern:
 
-| NAME | Skript |
+| Name | Skript |
 | --- | --- |
-| Hinzufügen eines Azure Storage-Kontos |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Weitere Informationen finden Sie unter [Hinzufügen zusätzlicher Speicherkonten zu HDInsight](hdinsight-hadoop-add-storage.md). |
-| Installieren von Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Weitere Informationen finden Sie unter [Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern](hdinsight-hadoop-hue-linux.md). |
-| Installieren von Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Weitere Informationen finden Sie unter [Installieren von Apache Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme](hdinsight-hadoop-giraph-install-linux.md). |
-| Vorabladen von Hive-Bibliotheken |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Weitere Informationen finden Sie unter [Hinzufügen benutzerdefinierter Apache Hive-Bibliotheken beim Erstellen des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md). |
+| Hinzufügen eines Azure Storage-Kontos |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`). Weitere Informationen finden Sie unter [Hinzufügen zusätzlicher Speicherkonten zu HDInsight](hdinsight-hadoop-add-storage.md). |
+| Installieren von Hue |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`). Weitere Informationen finden Sie unter [Installieren und Verwenden von Hue in HDInsight Hadoop-Clustern](hdinsight-hadoop-hue-linux.md). |
+| Installieren von Giraph |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`). Weitere Informationen finden Sie unter [Installieren von Apache Giraph in HDInsight Hadoop-Clustern und Verwenden von Giraph zur Verarbeitung großer Diagramme](hdinsight-hadoop-giraph-install-linux.md). |
+| Vorabladen von Hive-Bibliotheken |[https://login.microsoftonline.com/consumers/](`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`). Weitere Informationen finden Sie unter [Hinzufügen benutzerdefinierter Apache Hive-Bibliotheken beim Erstellen des HDInsight-Clusters](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Verwenden einer Skriptaktion während der Clustererstellung
 
@@ -167,10 +167,10 @@ In diesem Abschnitt werden die verschiedenen Verwendungsmöglichkeiten von Skrip
 
     Die folgende Tabelle beschreibt die Elemente des Formulars:
 
-    | Eigenschaft | Wert |
+    | Eigenschaft | value |
     | --- | --- |
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls eines der bereitgestellten Skripts aus. |
-    | NAME |Geben Sie einen Namen für die Skriptaktion an. |
+    | Name |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
     | Haupt-/Workerknoten/Zookeeper |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
@@ -247,10 +247,10 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com):
 
     Die folgende Tabelle beschreibt die Elemente des Formulars:
 
-    | Eigenschaft | Wert |
+    | Eigenschaft | value |
     | --- | --- |
     | Auswählen eines Skripts | Wählen Sie __Benutzerdefiniert__ aus, wenn Sie ein eigenes Skript verwenden möchten. Wählen Sie andernfalls ein bereitgestelltes Skript aus. |
-    | NAME |Geben Sie einen Namen für die Skriptaktion an. |
+    | Name |Geben Sie einen Namen für die Skriptaktion an. |
     | Bash-Skript-URI |Geben Sie den URI des Skripts an. |
     | Haupt-/Worker-/Zookeeper-Knoten |Geben Sie die Knoten an, auf denen das Skript ausgeführt wird: **Hauptknoten**, **Worker** oder **ZooKeeper**. |
     | Parameter |Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. |
@@ -404,7 +404,7 @@ Im HDInsight-Dienst sind zwei Arten von Open-Source-Komponenten verfügbar:
 > [!WARNING]  
 > Mit dem HDInsight-Cluster bereitgestellte Komponenten werden vollständig unterstützt. Der Microsoft-Support unterstützt Sie beim Isolieren und Beheben von Problemen im Zusammenhang mit diesen Komponenten.
 >
-> Für benutzerdefinierte Komponenten steht wirtschaftlich angemessener Support für eine weiterführende Behandlung des Problems zur Verfügung. Unter Umständen kann Ihnen der Microsoft-Support bei der Lösung des Problems helfen. Möglicherweise werden Sie auch gebeten, verfügbare Kanäle für die Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. Hierzu kommen zahlreiche Communitywebsites in Frage. Beispiele wären etwa das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com).
+> Für benutzerdefinierte Komponenten steht wirtschaftlich angemessener Support für eine weiterführende Behandlung des Problems zur Verfügung. Unter Umständen kann Ihnen der Microsoft-Support bei der Lösung des Problems helfen. Möglicherweise werden Sie auch gebeten, verfügbare Kanäle für die Open-Source-Technologien in Anspruch zu nehmen, die über umfassende Kenntnisse für diese Technologien verfügen. Hierzu kommen zahlreiche Communitywebsites in Frage. Beispiele hierfür sind das [MSDN-Forum für HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) und [Stack Overflow](https://stackoverflow.com).
 >
 > Für Apache-Projekte stehen auf der [Apache-Website](https://apache.org) auch Projektwebsites zur Verfügung. Ein Beispiel hierfür ist [Hadoop](https://hadoop.apache.org/).
 
@@ -422,7 +422,7 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
 ### <a name="the-apache-ambari-web-ui"></a>Apache Ambari-Webbenutzeroberfläche
 
-1. Navigieren Sie im Browser zu https://CLUSTERNAME.azurehdinsight.net. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.
+1. Navigieren Sie im Browser zu `https://CLUSTERNAME.azurehdinsight.net`. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres HDInsight-Clusters.
 
     Geben Sie bei entsprechender Aufforderung den Namen (**admin**) und das Kennwort für den Cluster ein. Unter Umständen müssen die Administratoranmeldeinformationen in einem Webformular erneut eingegeben werden.
 
@@ -458,7 +458,7 @@ Für den Fall, dass die Clustererstellung aufgrund eines Fehlers in einem Skript
 
 * Es kann sein, dass Sie wiederholt eine Skriptaktion mit demselben Namen erstellen. In diesem Fall können Sie die relevanten Protokolle anhand des **Datums** im Ordnernamen unterscheiden. Die Ordnerstruktur für einen an verschiedenen Tagen erstellten Cluster namens **mycluster** ähnelt beispielsweise den folgenden Protokolleinträgen:
 
-    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04``\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
+    `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-04` `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\mycluster\2015-10-05`
 
 * Wenn Sie am gleichen Tag einen Skriptaktionscluster mit demselben Namen erstellen, können Sie die relevanten Protokolldateien anhand des eindeutigen Präfixes ermitteln.
 

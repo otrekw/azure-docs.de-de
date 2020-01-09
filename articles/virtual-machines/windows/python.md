@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: 1686e86600fb28165ae44e7ca6c0c406dfa26d72
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a85a9c28acd2d50d95159883a01b27c8ed1d2f1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74065599"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75461099"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Erstellen und Verwalten von Windows-VMs in Azure mithilfe von Python
 
@@ -125,7 +125,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="create-the-vm-and-supporting-resources"></a>Erstellen der VM und der unterstützenden Ressourcen
 
-Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) enthalten sein.
+Alle Ressourcen müssen in einer [Ressourcengruppe](../../azure-resource-manager/management/overview.md) enthalten sein.
 
 1. Um eine Ressourcengruppe zu erstellen, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu:
 

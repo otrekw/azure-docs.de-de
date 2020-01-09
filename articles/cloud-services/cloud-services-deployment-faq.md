@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2ffa6d7b1cf0550c97a60614f3f00ddc4b955218
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154799"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660595"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Bereitstellungsprobleme bei Azure Cloud Services: Häufig gestellte Fragen (FAQs)
 
@@ -52,7 +52,7 @@ Hilfe bei der Abmilderung solcher Zuordnungsfehler finden Sie unter [Zuordnungsf
 Informationen zu den verfügbaren Größen in Ihrer Region finden Sie unter [Microsoft Azure: Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services).
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Warum schlägt die Bereitstellung eines Clouddiensts manchmal aufgrund von Grenzwerten/Kontingenten/Einschränkungen in meinem Abonnement oder Dienst fehl?
-Die Bereitstellung eines Clouddiensts schlägt manchmal fehl, wenn die erforderlichen Ressourcen für die Zuweisung das maximale oder standardmäßige Kontingent überschreiten, das für Ihren Dienst in Ihrer Region/Datencenterebene zulässig ist. Weitere Informationen finden Sie unter [Grenzwerte für Clouddienste](../azure-subscription-service-limits.md#azure-cloud-services-limits).
+Die Bereitstellung eines Clouddiensts schlägt manchmal fehl, wenn die erforderlichen Ressourcen für die Zuweisung das maximale oder standardmäßige Kontingent überschreiten, das für Ihren Dienst in Ihrer Region/Datencenterebene zulässig ist. Weitere Informationen finden Sie unter [Grenzwerte für Clouddienste](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cloud-services-limits).
 
 Sie können auch die aktuelle Nutzung bzw. das aktuelle Kontingent für Ihr Abonnement im Portal nachverfolgen: „Azure-Portal“ -> „Abonnements“ -> \<gewünschtes Abonnement> -> „Nutzung und Kontingent“.
 

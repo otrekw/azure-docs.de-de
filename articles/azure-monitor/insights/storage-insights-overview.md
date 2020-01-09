@@ -4,15 +4,15 @@ description: In diesem Artikel wird das Azure Monitor für Storage-Feature besch
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: aaf7d1a38d4b809b904b6c607a4cfc23efd4dde5
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 790d6ad9fb26253697ea36b402799d3eb488ca47
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286367"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75401130"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage (Vorschauversion)
 

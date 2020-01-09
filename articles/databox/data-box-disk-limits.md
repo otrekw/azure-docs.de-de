@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: alkohli
-ms.openlocfilehash: cd40c5d11414c91ff2f2febc0621e1e06f79e9cf
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1bb8300f1e54cf03563704cf00549ce9e09a3916
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646979"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613787"
 ---
 # <a name="azure-data-box-disk-limits"></a>Begrenzungen für Azure Data Box Disk
 
@@ -27,7 +27,7 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 ## <a name="data-box-disk-performance"></a>Leistung des Data Box-Datenträgers
 
-Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Datenträgerleistung bis zu 430MB/s. Die tatsächlichen Zahlen variieren abhängig von der Größe der verwendeten Datei. Bei kleineren Dateien stellen Sie möglicherweise eine geringere Leistung fest.
+Beim Testen mit Datenträgern, die über USB 3.0 verbunden waren, betrug die Datenträgerleistung bis zu 430 MB/s. Die tatsächlichen Zahlen variieren abhängig von der Größe der verwendeten Datei. Bei kleineren Dateien ist die Leistung unter Umständen etwas reduziert.
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 
@@ -59,7 +59,7 @@ Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährt
 
 ## <a name="azure-storage-account-size-limits"></a>Größenbeschränkungen für das Azure-Speicherkonto
 
-Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
+Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/scalability-targets#scale-targets-for-blob-storage) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/common/scalability-targets-standard-account#scale-targets-for-standard-storage-accounts).
 
 | Größe der in das Azure-Speicherkonto kopierten Daten                      | Standardlimit          |
 |---------------------------------------------------------------------|------------------------|

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 08cae51da20b6093b284618de92c61aab4bf5b55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22fd78ccd58be1790fcd167da396600e8b876564
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65508380"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428916"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-Konzepte
 ## <a name="overview"></a>Übersicht
@@ -51,7 +51,7 @@ Artefakte werden zum Bereitstellen und Konfigurieren Ihrer Anwendung nach der Be
 * Aktionen, die auf dem virtuellen Computer ausgeführt werden sollen, z. B. das Klonen eines Repositorys.
 * Anwendungen, die Sie testen möchten.
 
-Artefakte sind [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)-JSON-Dateien, die Anweisungen zum Ausführen der Bereitstellung und Übernehmen der Konfiguration enthalten.
+Artefakte sind [Azure Resource Manager](../azure-resource-manager/management/overview.md)-JSON-Dateien, die Anweisungen zum Ausführen der Bereitstellung und Übernehmen der Konfiguration enthalten.
 
 ## <a name="artifact-repositories"></a>Artefaktrepositorys
 Artefaktrepositorys sind Git-Repositorys, in denen Artefakte eingecheckt werden. Artefaktrepositorys können mehreren Labs in Ihrer Organisation hinzugefügt werden, sodass sie wiederverwendet und geteilt werden können.

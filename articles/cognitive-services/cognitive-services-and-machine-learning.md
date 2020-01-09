@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: 48bac68b518706cf3a23d2283da7cda49846e0a7
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795830"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531478"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services und maschinelles Lernen
 
@@ -134,7 +134,7 @@ Folgende Cognitive Services stellen exportierte Modelle für andere Machine Lear
 ## <a name="learn-more"></a>Weitere Informationen
 
 * [Architekturleitfaden – Welche Machine Learning-Produkte bietet Microsoft?](https://docs.microsoft.com/azure/architecture/data-guide/technology-choices/data-science-and-machine-learning)
-* [Machine Learning – Einführung: Deep Learning im Vergleich zu maschinellem Lernen](../machine-learning/service/concept-deep-learning-vs-machine-learning.md)
+* [Machine Learning – Einführung: Deep Learning im Vergleich zu maschinellem Lernen](../machine-learning/concept-deep-learning-vs-machine-learning.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

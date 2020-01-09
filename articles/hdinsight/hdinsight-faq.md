@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: 37b8ad0fc09644d746c3528c174d1bf95d546d0f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706261"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644595"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: Häufig gestellte Fragen
 
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie unter [Kapazitätsplanung für HDInsight-Cluste
 
 In diesem Abschnitt werden allgemeine Fehler bei Kapazitätsproblemen behandelt. Außerdem erfahren Sie, wie Sie diese verhindern.
 
-#### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Fehler Für die Bereitstellung wird die Kontingentgrenze von „800“ überschritten.
+#### <a name="error-the-deployment-would-exceed-the-quota-of-800"></a>Error: Für die Bereitstellung wird die Kontingentgrenze von „800“ überschritten.
 
 Azure verfügt über eine Kontingentgrenze von 800 Bereitstellungen pro Ressourcengruppe. Pro Ressourcengruppe, Abonnement, Konto oder anderen Bereichen werden unterschiedliche Kontingente angewendet. Ihr Abonnement kann beispielsweise so konfiguriert werden, um die Anzahl der Kerne für eine Region zu begrenzen. Wenn Sie versuchen, einen virtuellen Computer mit mehr als der zulässigen Anzahl von Kernen bereitzustellen, erhalten Sie eine Fehlermeldung, dass das Kontingent überschritten wurde.
 
@@ -52,7 +52,7 @@ Um dieses Problem zu beheben, löschen Sie die Bereitstellungen, die nicht mehr 
 
 Weitere Informationen finden Sie unter [Das Beheben von Fehlern bei Ressourcenkontingenten](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
-#### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Fehler Die maximale Knotenzahl hat die Zahl der verfügbaren Kerne in dieser Region überschritten.
+#### <a name="error-the-maximum-node-exceeded-the-available-cores-in-this-region"></a>Error: Die maximale Knotenzahl hat die Zahl der verfügbaren Kerne in dieser Region überschritten.
 
 Ihr Abonnement kann so konfiguriert werden, dass die Anzahl von Kernen für eine Region begrenzt wird. Wenn Sie versuchen, eine Ressource mit mehr als der zulässigen Anzahl von Kernen bereitzustellen, erhalten Sie eine Fehlermeldung, dass das Kontingent überschritten wurde.
 
@@ -114,7 +114,7 @@ Nein, Apache Kafka und Apache Spark können nicht im selben HDInsight-Cluster au
 
 ### <a name="how-do-i-change-timezone-in-ambari"></a>Wie ändere ich die Zeitzone in Ambari?
 
-1. Öffnen Sie die Ambari-Webbenutzeroberfläche unter https://CLUSTERNAME.azurehdinsight.net. Dabei entspricht CLUSTERNAME dem Namen Ihres Clusters.
+1. Öffnen Sie die Ambari-Webbenutzeroberfläche unter `https://CLUSTERNAME.azurehdinsight.net`. Dabei entspricht CLUSTERNAME dem Namen Ihres Clusters.
 2. Wählen Sie oben rechts „Admin (Administrator) | Settings (Einstellungen)“ aus. 
 
    ![Ambari-Einstellungen](media/hdinsight-faq/ambari-settings.png)
@@ -263,7 +263,7 @@ Sie finden Ihre Einstellungen im Azure-Portal in den Clustereigenschaften unter 
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Wie berechne ich die Verwendung von Speicherkonten und BLOB-Containern für meine HDInsight-Cluster?
 
-Führen Sie einen der folgenden Schritte aus:
+Führen Sie eines der folgenden Verfahren aus:
 
 - [Verwenden von PowerShell](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 

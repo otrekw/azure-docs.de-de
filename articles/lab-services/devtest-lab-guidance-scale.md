@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3a48cef2210721bf7116b1c4ad1169779288f47d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60561488"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644833"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Zentrales Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
 Vor der Implementierung von DevTest Labs auf Unternehmensebene sind mehrere wichtige Entscheidungspunkte zu berücksichtigen. Diese Entscheidungspunkte auf hoher Ebene zu verstehen, hilft Organisationen bei zukünftigen Entwurfsentscheidungen. Sie sollten jedoch eine Organisation nicht daran hindern, einen Proof of Concept zu starten. Die obersten drei Bereiche für die anfängliche Planung der Hochskalierung sind:
@@ -53,7 +53,7 @@ Häufig ist der Ansatz, nur ein Abonnement zu verwenden, in einem großen Untern
 ### <a name="subscription-per-user"></a>Ein Abonnement pro Benutzer
 Ein separates Abonnement pro Benutzer bietet gleiche Möglichkeiten in einem alternativen Spektrum. Die Vorteile der Nutzung mehrerer Abonnements sind etwa:
 
-- Der Aufbau wird nicht durch **Azure-Skalierungskontingente** beeinträchtigt. Zum Zeitpunkt dieses Artikels lässt Azure beispielsweise 200 Speicherkonten pro Abonnement zu. Für die meisten Dienste in Azure bestehen operative Kontingente (viele können angepasst werden, einige nicht). Bei diesem Modell mit einem Abonnement pro Benutzer ist es bei den meisten Kontingenten sehr unwahrscheinlich, dass sie erreicht werden. Weitere Informationen zu aktuellen Azure-Skalierungskontingenten finden Sie unter [Grenzwerte für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+- Der Aufbau wird nicht durch **Azure-Skalierungskontingente** beeinträchtigt. Zum Zeitpunkt dieses Artikels lässt Azure beispielsweise 200 Speicherkonten pro Abonnement zu. Für die meisten Dienste in Azure bestehen operative Kontingente (viele können angepasst werden, einige nicht). Bei diesem Modell mit einem Abonnement pro Benutzer ist es bei den meisten Kontingenten sehr unwahrscheinlich, dass sie erreicht werden. Weitere Informationen zu aktuellen Azure-Skalierungskontingenten finden Sie unter [Grenzwerte für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 - Die **verbrauchsbasierte Kostenzuteilung** für Gruppen oder einzelne Entwickler ist wesentlich einfacher, sodass Organisationen Kosten mit ihrem aktuellen Modell einplanen können.
 - **Besitz und Berechtigungen** sind in DevTest Labs-Umgebungen einfach. Sie gewähren Entwicklern Zugriff auf Abonnementebene, und diese sind dann uneingeschränkt für alle Elemente verantwortlich, einschließlich Netzwerkkonfiguration, Labrichtlinien und VM-Verwaltung.
 

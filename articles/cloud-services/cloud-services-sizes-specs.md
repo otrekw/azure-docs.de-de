@@ -3,23 +3,23 @@ title: Größen virtueller Computer und Azure-Clouddienste | Microsoft-Dokumenta
 description: Führt die verschiedenen VM-Größen (und IDs) für Web-und Workerrollen von Azure-Clouddiensten auf.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 0df9ee859ae8e341537f5e832d9ff90e9736cb0c
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.author: tagore
+ms.openlocfilehash: 34cb4282f64544e67b3724699380d1d54fd9b806
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68443010"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660425"
 ---
 # <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Jede Größe besitzt eine ID, die Sie in Ihre [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef) einfügen. Preise für jede Größe sind auf der Seite [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/) verfügbar.
 
 > [!NOTE]
-> Zugehörige Einschränkungen von Azure finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md)
+> Zugehörige Einschränkungen von Azure finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md)
 >
 >
 
@@ -80,7 +80,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Sehr klein      | 1         | 0,768        | 20                   | 1/niedrig |
 | Klein           | 1         | 1,75         | 225                  | 1/moderat |
-| Mittel          | 2         | 3,5          | 490                  | 1/moderat |
+| Medium          | 2         | 3,5          | 490                  | 1/moderat |
 | Groß           | 4         | 7            | 1000                 | 2/hoch |
 | Extragroß      | 8         | 14           | 2040                 | 4/hoch |
 | A5              | 2         | 14           | 490                  | 1/moderat |
@@ -214,5 +214,8 @@ Get-AzureRoleSize | where SupportedByWebWorkerRoles -eq $true | select InstanceS
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-subscription-service-limits.md).
+* Erfahren Sie mehr über [Einschränkungen für Azure-Abonnements und -Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
 * Erfahren Sie mehr über [Größen für leistungsstarke Compute-VMs](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) für HPC-Workloads.
+
+
+

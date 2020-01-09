@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fada16b3ca5307a28eebca4dfe97dc96ba389212
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1f7e9551e6a48350b8f23e9d6ce1d47a1a903c63
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70098694"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75643252"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -34,9 +34,9 @@ ms.locfileid: "70098694"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 
 
@@ -199,7 +199,7 @@ ms.locfileid: "70098694"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -254,7 +254,7 @@ Die vollständige Szene mit zwei hoch verfügbaren SAP-Systemen sieht dann so au
 
 Um Ihre Infrastruktur vorzubereiten, können Sie mit den folgenden Parametern eine zusätzliche SAP ASCS/SCS-Instanz installieren:
 
-| Parametername | Wert |
+| Parametername | value |
 | --- | --- |
 | SAP ASCS/SCS-SID |pr1-lb-ascs |
 | Interner Load Balancer für das SAP-DBMS | PR5 |
@@ -384,7 +384,7 @@ Nach Ausführung des Skripts werden die Ergebnisse im Azure-Portal angezeigt, wi
 
 Sie müssen für jede zusätzliche SAP ASCS/SCS-Instanz einen neuen freigegebenen Clusterdatenträger hinzufügen. Als gemeinsamer WSFC-Clusterdatenträger für Windows Server 2012 R2 wird aktuell die SIOS DataKeeper-Softwarelösung verwendet.
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 1. Fügen Sie jedem der Clusterknoten einen weiteren Datenträger oder weitere Datenträger gleicher Größe (als Stripeset) hinzu, und formatieren Sie sie.
 2. Konfigurieren Sie Speicherreplikation mit SIOS DataKeeper.
 

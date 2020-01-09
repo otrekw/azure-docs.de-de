@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: fa9de74c89ba3f0351169f143146dc21b80ee666
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790526"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639853"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Front Door Service
 
@@ -132,7 +132,7 @@ Azure Front Door (AFD) erfordert eine öffentliche IP-Adresse oder einen öffent
 
 ### <a name="what-are-the-various-timeouts-and-limits-for-azure-front-door-service"></a>Welche Timeouts und Grenzwerte gelten für Azure Front Door Service?
 
-Weitere Informationen zu allen dokumentierten [Timeouts und Grenzwerten für Azure Front Door Service](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-front-door-service-limits).
+Weitere Informationen zu allen dokumentierten [Timeouts und Grenzwerten für Azure Front Door Service](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-front-door-service-limits).
 
 ## <a name="performance"></a>Leistung
 
@@ -215,5 +215,5 @@ Ja. Azure Front Door Service unterstützt Warnungen. Warnungen werden für Metri
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

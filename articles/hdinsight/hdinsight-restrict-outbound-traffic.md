@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 8f6959eb6f9d17a368e7df7b95ecc511d0396f87
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621453"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646692"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mittels Firewall
 
@@ -59,21 +59,21 @@ Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtig
 
     **Oberer Abschnitt**
 
-    | Eigenschaft|  Wert|
+    | Eigenschaft|  value|
     |---|---|
-    |NAME| FwAppRule|
+    |Name| FwAppRule|
     |Priority|200|
-    |Aktion|Allow|
+    |Action|Allow|
 
     **Abschnitt „FQDN-Tags“**
 
-    | NAME | Quelladresse | FQDN-Tag | Notizen |
+    | Name | Quelladresse | FQDN-Tag | Notizen |
     | --- | --- | --- | --- |
     | Regel 1 | * | „WindowsUpdate“ und „HDInsight“ | Für HDI-Dienste erforderlich |
 
     **Abschnitt „Ziel-FQDNs“**
 
-    | NAME | Quelladressen | Protokoll:Port | Ziel-FQDNs | Notizen |
+    | Name | Quelladressen | Protokoll:Port | Ziel-FQDNs | Notizen |
     | --- | --- | --- | --- | --- |
     | Regel 2 | * | https:443 | login.windows.net | Lässt Windows Anmeldeaktivität zu |
     | Regel 3 | * | https:443 | login.microsoftonline.com | Lässt Windows Anmeldeaktivität zu |
@@ -93,15 +93,15 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
 
     **Oberer Abschnitt**
 
-    | Eigenschaft|  Wert|
+    | Eigenschaft|  value|
     |---|---|
-    |NAME| FwNetRule|
+    |Name| FwNetRule|
     |Priority|200|
-    |Aktion|Allow|
+    |Action|Allow|
 
     **Abschnitt „IP-Adressen“**
 
-    | NAME | Protocol | Quelladressen | Zieladressen | Zielports | Notizen |
+    | Name | Protocol | Quelladressen | Zieladressen | Zielports | Notizen |
     | --- | --- | --- | --- | --- | --- |
     | Regel 1 | UDP | * | * | 123 | Zeitdienst |
     | Regel 2 | Any | * | DC_IP_Address_1, DC_IP_Address_2 | * | Wenn Sie das Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) verwenden, fügen Sie im Abschnitt „IP-Adressen“ eine Netzwerkregel hinzu, die die Kommunikation mit AAD-DS für ESP-Cluster ermöglicht. Die IP-Adressen der Domänencontroller finden Sie im Abschnitt „AAD-DS“ im Portal. |
@@ -110,7 +110,7 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
 
     **Abschnitt „Diensttags“**
 
-    | NAME | Protocol | Quelladressen | Diensttags | Zielports | Notizen |
+    | Name | Protocol | Quelladressen | Diensttags | Zielports | Notizen |
     | --- | --- | --- | --- | --- | --- |
     | Regel 7 | TCP | * | SQL | 1433 | Konfigurieren Sie im Abschnitt „Diensttags“ eine Regel für SQL, die es Ihnen ermöglicht, SQL-Datenverkehr zu protokollieren und zu überwachen, sofern Sie im HDInsight-Subnetz keine Dienstendpunkte für SQL Server konfiguriert haben, wodurch die Firewall umgangen wird. |
 
@@ -178,7 +178,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
-Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](../azure-subscription-service-limits.md#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](../firewall/firewall-faq.md).
+Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](../firewall/firewall-faq.md).
 
 ## <a name="access-to-the-cluster"></a>Zugriff auf den Cluster
 

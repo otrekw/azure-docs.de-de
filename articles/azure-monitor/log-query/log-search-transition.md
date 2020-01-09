@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/16/2019
-ms.openlocfilehash: b738d532cb458506ca50a07dea11687040f99e02
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: a8d0469d57901f53d8e615f800b5d804944163fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900328"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398155"
 ---
 # <a name="transition-from-log-analytics-log-search-to-azure-monitor-logs"></a>Übergang von der Log Analytics-Protokollsuche zu Azure Monitor-Protokollen
 Die Protokollsuche in Log Analytics wurde vor Kurzem durch eine neue Vorgehensweise für das Analysieren von Azure Monitor-Protokollen ersetzt. Die Seite für die Protokollsuche ist derzeit noch über die Menüoption **Protokolle (klassisch)** auf der Seite **Log Analytics-Arbeitsbereiche** im Azure-Portal zugänglich, wird jedoch am 15. Februar 2019 entfernt. Dieser Artikel beschreibt die Unterschiede zwischen den beiden Vorgehensweisen, um Ihnen den Übergang von der Protokollsuche zu erleichtern. 

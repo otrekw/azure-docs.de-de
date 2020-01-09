@@ -1,5 +1,6 @@
 ---
-title: Status von Datenbankmigrationsszenarios | Microsoft-Dokumentation
+title: Status des Datenbankmigrationsszenarios
+titleSuffix: Azure Database Migration Service
 description: Informationen zum Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden.
 services: database-migration
 author: HJToland3
@@ -11,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/05/2019
-ms.openlocfilehash: 9ea070ea86a4d0d5e7101e82450235a59c936d2d
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 03fb6a1aff62df878417da55a7da7b42186b3462
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70376406"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75437678"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>Status von Migrationsszenarien, die in Azure Database Migration Service unterstützt werden
 
@@ -79,7 +80,7 @@ Die folgende Tabelle enthält die Azure Database Migration Service-Unterstützun
 |   | RDS MySQL | ✔ | Allgemein verfügbar |
 | **Azure-Datenbank für PostgreSQL** | PostgreSQL | ✔ | Allgemein verfügbar |
 |   | RDS PostgreSQL | ✔ | Allgemein verfügbar |
-|   | Oracle | ✔ | Öffentliche Vorschau |
+|   | Oracle | ✔ | Public Preview |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

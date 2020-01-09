@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/13/2019
-ms.openlocfilehash: aff6be1a6abf2550013b752ba4f796ffe255499f
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.date: 12/27/2019
+ms.openlocfilehash: 1c482166ffe27bde900a102c39def400728c102f
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539043"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529710"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
@@ -534,7 +534,7 @@ Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind.
 
 | Column | BESCHREIBUNG |
 |:--|:--|
-| Vorgänge | Bietet Informationen über die aktiven Benutzer aller Ihrer überwachten Office 365-Abonnements. Sie können auch die Anzahl der Aktivitäten sehen, die im Verlauf aufgetreten sind.
+| Operationen (Operations) | Bietet Informationen über die aktiven Benutzer aller Ihrer überwachten Office 365-Abonnements. Sie können auch die Anzahl der Aktivitäten sehen, die im Verlauf aufgetreten sind.
 | Exchange | Zeigt die Aufschlüsselung der Exchange Server-Aktivitäten, z.B. Berechtigungen zum Hinzufügen oder Festlegen von Postfächern. |
 | SharePoint | Zeigt die wichtigsten Aktivitäten, die Benutzer in SharePoint-Dokumenten ausführen. Wenn Sie auf dieser Kachel einen Drilldown ausführen, zeigt die Seite „Suche“ die Details dieser Aktivitäten, z.B. das Zieldokument und den Speicherort dieser Aktivität. Beispiel: Für ein Ereignis „Auf Datei zugegriffen“ werden das Dokument, auf das zugegriffen wurde, der zugeordnete Kontoname und die IP-Adresse angezeigt. |
 | Azure Active Directory | Enthält die wichtigsten Benutzeraktivitäten, z.B. Versuche, das Benutzerkennwort zurückzusetzen, und Anmeldeversuche. Wenn Sie einen Drilldown ausführen, können Sie die Details dieser Aktivitäten wie den Ergebnisstatus anzeigen. Dies ist hilfreich, wenn Sie verdächtige Aktivitäten in Azure Active Directory überwachen möchten. |
@@ -550,7 +550,7 @@ Alle im Log Analytics-Arbeitsbereich in Azure Monitor von der Office 365-Lösung
 
 Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 
-| Eigenschaft | Description |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | type | *OfficeActivity* |
 | ClientIP | Die IP-Adresse des Geräts, das verwendet wurde, als die Aktivität protokolliert wurde. Die IP-Adresse wird im IPv4- oder IPv6-Adressformat angezeigt. |
@@ -561,7 +561,7 @@ Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
 | ResultStatus | Gibt an, ob die Aktion (angegeben in der Eigenschaft „Operation“) erfolgreich war oder nicht. Mögliche Werte sind „Succeeded“, „PartiallySucceeded“ oder „Failed“. Bei Exchange-Administratoraktivitäten ist der Wert entweder „True“ oder „False“. |
 | UserId | Der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers, der die Aktion ausgeführt hat, die zum Protokollieren des Datensatzes geführt hat, beispielsweise my_name@my_domain_name. Beachten Sie, dass auch Datensätze für die von Systemkonten ausgeführten Aktivitäten (z.B. „SHAREPOINT\system“ oder „NTAUTHORITY\SYSTEM“) enthalten sind. | 
 | UserKey | Eine alternative ID für den Benutzer, der in der Eigenschaft „UserId“ identifiziert wird.  Beispiel: Diese Eigenschaft wird für Ereignisse, die von Benutzern in SharePoint, OneDrive for Business und Exchange ausgeführt werden, mit der eindeutigen Passport-ID (PUID) aufgefüllt. Diese Eigenschaft kann für Ereignisse, die in anderen Diensten und Ereignissen von Systemkonten ausgeführt werden, auch den gleichen Wert wie die Eigenschaft „UserID“ angeben.|
-| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Administrator<br>Anwendung<br>DcAdmin<br>Regulär<br>Reserved<br>ServicePrincipal<br>System |
+| UserType | Der Typ des Benutzers, der den Vorgang ausgeführt hat.<br><br>Admin<br>Application<br>DcAdmin<br>Regulär<br>Reserved<br>ServicePrincipal<br>System |
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory-Basis
@@ -670,7 +670,7 @@ Diese Datensätze werden erstellt, wenn ein Eintrag zur Postfachüberwachung ers
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| Item | Stellt das Element dar, für das der Vorgang ausgeführt wurde. | 
+| Element | Stellt das Element dar, für das der Vorgang ausgeführt wurde. | 
 | SendAsUserMailboxGuid | Die Exchange-GUID des Postfachs, auf das zugegriffen wurde, um die E-Mail zu senden. |
 | SendAsUserSmtp | Die SMTP-Adresse des Benutzers, dessen Identität angenommen wird. |
 | SendonBehalfOfUserMailboxGuid | Die Exchange-GUID des Postfachs, auf das zugegriffen wurde, um die E-Mail im Namen eines anderen Benutzers zu senden. |
@@ -751,7 +751,7 @@ Diese Datensätze werden als Reaktion auf Dateivorgänge in SharePoint erstellt.
 
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 | --- | --- |
 |Anzahl aller Vorgänge in Ihrem Office 365-Abonnement |OfficeActivity &#124; summarize count() by Operation |
 |Verwendung von SharePoint-Websites|OfficeActivity &#124; where OfficeWorkload =~ "sharepoint" &#124; summarize count() by SiteUrl \| sort by Count asc|

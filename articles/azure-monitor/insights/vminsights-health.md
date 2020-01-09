@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie die Integrität der VM 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/14/2019
-ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e01223783130ea6b276db26bab709e2b51a8f76d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399790"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Grundlegendes zur Integrität Ihrer Azure-VMs
 
@@ -56,9 +56,9 @@ In diesem Abschnitt werden die standardmäßig angewendeten Integritätskriterie
 | Logischer Datenträger – verfügbarer Speicherplatz (MB) | 15 | 60 | > | 500 MB – Warnung<br> 300 MB – Kritisch | Kritisch | Sev1<br> Sev2 | Windows | 
 | Logischer Datenträger – verfügbarer Speicherplatz (%) | 15 | 60 | > | 10 % – Warnung<br> 5 % – Kritisch | Kritisch | Sev1<br> Sev2 | Windows |
 | Logischer Datenträger – Leerlaufzeit (%) | 15 | 360 | <= | 20% | Warnung | Sev2 | Windows | 
-| Genutzte Bandbreite (%) beim Lesen | 5 | 60 | >= | 60 % | Warnung | Sev2 | Windows | 
+| Genutzte Bandbreite (%) beim Lesen | 5 | 60 | >= | 60% | Warnung | Sev2 | Windows | 
 | Genutzte Bandbreite (%) gesamt | 5 | 60 | >= | 75 % | Warnung | Sev2 | Windows | 
-| Genutzte Bandbreite (%) beim Schreiben | 5 | 60 | >= | 60 % | Warnung | Sev2 | Windows | 
+| Genutzte Bandbreite (%) beim Schreiben | 5 | 60 | >= | 60% | Warnung | Sev2 | Windows | 
 | Integrität des DHCP-Clientdiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
 | Integrität des DNS-Clientdiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
 | Integrität des Windows-Ereignisprotokolldiensts | 5 | 12 | <> | 4 (bei Ausführung) | Kritisch | Sev1 | Windows | 
@@ -310,7 +310,7 @@ Zum Filtern dieser Ansicht können Sie Werte in den Dropdownmenüs am oberen Ran
 |Überwachungsbedingung |Wählen Sie eine Überwachungsbedingung aus, um Warnungen danach zu filtern, ob sie vom System ausgelöst oder behoben wurden, falls die Bedingung nicht mehr aktiv ist. Wählen Sie alternativ **Alle** aus, um Warnungen in allen Zuständen einzuschließen. |
 |Warnungsstatus |Wählen Sie einen Warnungszustand aus (**Neu**, **Bestätigt**, **Geschlossen**), oder wählen Sie **Alle** aus, um Warnungen mit jedem Zustand einzuschließen. |
 |Überwachungsdienst |Wählen Sie einen Dienst oder **Alle** aus, um alle Dienste einzuschließen. Für dieses Feature werden nur Warnungen von „VM Insights“ unterstützt.|
-|Zeitbereich| Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
+|Uhrzeitbereich| Nur Warnungen, die innerhalb des ausgewählten Zeitfensters ausgelöst wurden, sind in der Ansicht enthalten. Unterstützte Werte sind die letzte Stunde, die letzten 24 Stunden, die letzten 7 Tage und die letzten 30 Tage. |
 
 Die Seite **Warnungsdetails** wird angezeigt, wenn Sie auf eine Warnung klicken. Sie enthält Details zur Warnung und ermöglicht Ihnen das Ändern des Zustands.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/21/2019
-ms.openlocfilehash: b5687d659103eed0fcba70319aa37030bd85165a
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 475b784f4d25e28289536e6c70200fe86dd806f5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539122"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435592"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
@@ -45,10 +45,10 @@ Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der
 | Apache Mahout          | -             | 0.9.0+                      |
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2.4    | 2.3.0, 2.2.0, 2.1.0         |
-| Apache Livy            | 0,5           | 0.4, 0.4, 0.3               |
+| Apache Livy            | 0.5           | 0.4, 0.4, 0.3               |
 | Apache Kafka           | 1.1.1, 2.1    | 1.1, 1.0 * (Siehe Hinweis unten) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
-| Apache Zeppelin        | 0.8.0         | 0.7.0                       |
+| Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
@@ -70,7 +70,7 @@ In den folgenden Tabellen sind die Versionen von HDInsight aufgeführt. Der Abla
 
 Die folgende Tabelle enthält die im Azure-Portal verfügbaren Versionen von HDInsight sowie andere Bereitstellungsmethoden wie z.B. PowerShell und .NET SDK.
 
-| HDInsight-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Verfügbarkeit im Azure-Portal |
+| HDInsight-Version | Betriebssystem des virtuellen Computers | Veröffentlichungsdatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Verfügbarkeit im Azure-Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24. September 2018 | | |Ja |Ja |
 | HDInsight 3.6 |Ubuntu 16.0.4 LTS |4\. April 2017 | 31. Dezember 2020 |31. Dezember 2020 |Ja |Ja |
@@ -84,7 +84,7 @@ Die Unterstützung für Spark 2.1, 2.2 und Kafka 1.0 läuft am 30. Juni 2020 a
 
 Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit **nicht** im Azure-Portal verfügbar sind.
 
-| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal |
+| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Veröffentlichungsdatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. September 2016 |5\. September 2017 |28. Juni 2018 |Ja |Nein |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. März 2016 |29. Dezember 2016 |9\. Januar 2018 |Ja |Nein |

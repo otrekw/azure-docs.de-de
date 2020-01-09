@@ -1,20 +1,19 @@
 ---
 title: Begriffe zur Wiederherstellung von Prüfpunkten und der Wiedergabe in Azure Stream Analytics
 description: In diesem Artikel werden Begriffe zur Wiederherstellung von Prüfpunkten und Wiedergabeaufträgen in Azure Stream Analytics beschrieben.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 26d8d8248c9dcc57edaaa4a90f87071ee61a70ce
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935047"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426405"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Begriffe zu Prüfpunkten und zur Wiedergabe bei Azure Stream Analytics-Aufträgen
 In diesem Artikel werden Begriffe zu internen Prüfpunkten und zur Wiedergabe in Azure Stream Analytics sowie deren Auswirkung auf die Wiederherstellung von Aufträgen beschrieben. Bei jeder Ausführung eines Stream Analytics-Auftrags werden intern Zustandsinformationen verwaltet. Die Zustandsinformationen werden in regelmäßigen Abständen in einem Prüfpunkt gespeichert. In einigen Szenarien werden die Prüfpunktinformationen bei einem Auftragsfehler oder einem Upgrade für die Auftragswiederherstellung verwendet. In anderen Fällen kann der Prüfpunkt nicht für die Wiederherstellung verwendet werden, sodass eine Wiedergabe erforderlich ist.

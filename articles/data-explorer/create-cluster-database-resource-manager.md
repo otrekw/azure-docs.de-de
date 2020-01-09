@@ -7,12 +7,12 @@ ms.reviewer: oflipman
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/26/2019
-ms.openlocfilehash: 4a95804bcff3653df42186907f03d0bc27a603ea
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 9a91f81c9d28f1b3c8d553a2a8a26d53ff1b2b3e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869713"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444492"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-an-azure-resource-manager-template"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mithilfe einer Azure Resource Manager-Vorlage
 
@@ -26,7 +26,7 @@ ms.locfileid: "74869713"
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Um den Azure Data Explorer zu verwenden, erstellen Sie zuerst einen Cluster und anschließend eine oder mehrere Datenbanken in diesem Cluster. Anschließend erfassen (laden) Sie Daten in eine Datenbank, damit Sie diese abfragen können. 
 
-In diesem Artikel erstellen Sie einen Azure Data Explorer-Cluster und eine Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md). Dieser Artikel zeigt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates). Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollten, finden Sie unter [Microsoft.Kusto-Ressourcentypen](/azure/templates/microsoft.kusto/allversions).
+In diesem Artikel erstellen Sie einen Azure Data Explorer-Cluster und eine Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md). Dieser Artikel zeigt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen. Weitere Informationen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](/azure/azure-resource-manager/resource-group-authoring-templates). Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage verwendet werden sollten, finden Sie unter [Microsoft.Kusto-Ressourcentypen](/azure/templates/microsoft.kusto/allversions).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 

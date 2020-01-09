@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: 6c4215933b3816b445c55282bae9a36e88c0311f
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: d73dcb89739395e4dd52b1ef4d39c41ad6125666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890523"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457157"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -50,7 +50,7 @@ Das [Microsoft Azure-Portal](https://portal.azure.com) ist eine zentrale Anlaufs
 [Azure PowerShell](/powershell/azure/overview) ist eine Sammlung von Cmdlets, die Sie nutzen können, um Azure mit Windows PowerShell zu verwalten. Sie können diese Cmdlets verwenden, um durch die Azure-Plattform bereitgestellte Lösungen und Dienste zu erstellen, zu testen, bereitzustellen und zu verwalten.
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
-Mit dem [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können die Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
+Mit dem [Azure Resource Manager](../azure-resource-manager/management/overview.md) können Sie als Gruppe mit den Ressourcen in Ihrer Lösung arbeiten. Sie können die Ressourcen für Ihre Lösung in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
 ## <a name="azure-service-bus"></a>Azure-Servicebus
 [Service Bus](../service-bus/index.md) bietet cloudfähige Kommunikation mit Messagingfunktionen für Unternehmen und Relaykommunikation, um Sie bei der Verbindung Ihrer lokalen Lösungen mit der Cloud zu unterstützen. In einigen IoT Hub-Tutorials werden Service Bus-[Warteschlangen](../service-bus-messaging/service-bus-messaging-overview.md) verwendet.
@@ -96,7 +96,7 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es
 ## <a name="device-to-cloud"></a>Gerät-zu-Cloud (D2C)
 Bezieht sich auf Nachrichten, die von einem verbundenen Gerät an [IoT Hub](#iot-hub) gesendet werden. Bei diesen Nachrichten kann es sich um [datenpunktbezogene](#data-point-message) oder um [interaktive](#interactive-message) Nachrichten handeln. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="device"></a>Gerät
+## <a name="device"></a>Sicherungsmedium
 Im Kontext von IoT ist ein Gerät in der Regel eine kleines, eigenständiges Datenverarbeitungsgerät, das Daten sammeln oder andere Geräte steuern kann. Ein Gerät kann beispielsweise ein Umweltüberwachungsgerät oder ein Regler für Bewässerungs- und Lüftungsanlagen in einem Gewächshaus sein. Der [Gerätekatalog](https://catalog.azureiotsolutions.com/) enthält eine Liste mit Hardwaregeräten, die für die Verwendung mit [IoT Hub](#iot-hub) zertifiziert sind.
 
 ## <a name="device-app"></a>Geräte-App

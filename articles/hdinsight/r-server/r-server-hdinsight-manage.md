@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: e0ce8b97df6f2d6e95255d3f4dfc9f76fa08a594
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b2c16c27c0dfc0c30a99c52544cc4d2278eadfc7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123554"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647729"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Verwalten eines ML Services-Clusters in Azure HDInsight
 
@@ -70,7 +70,7 @@ Wenn Sie aufgefordert werden, das aktuelle Kerberos-Kennwort einzugeben, drücke
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Schritt 3: Verwenden der RStudio Community-Version mit dem erstellten Benutzer
 
-Greifen Sie aus https://CLUSTERNAME.azurehdinsight.net/rstudio/ auf RStudio zu. Wenn Sie sich zum ersten Mal nach dem Erstellen des Clusters anmelden, geben Sie die Clusteradministrator-Anmeldeinformationen ein, gefolgt von den erstellten SSH-Benutzeranmeldeinformationen. Wenn dies nicht Ihre erste Anmeldung ist, geben Sie nur die Anmeldeinformationen für den SSH-Benutzer ein, den Sie erstellt haben.
+Greifen Sie aus `https://CLUSTERNAME.azurehdinsight.net/rstudio/` auf RStudio zu. Wenn Sie sich zum ersten Mal nach dem Erstellen des Clusters anmelden, geben Sie die Clusteradministrator-Anmeldeinformationen ein, gefolgt von den erstellten SSH-Benutzeranmeldeinformationen. Wenn dies nicht Ihre erste Anmeldung ist, geben Sie nur die Anmeldeinformationen für den SSH-Benutzer ein, den Sie erstellt haben.
 
 Sie können sich auch gleichzeitig in einem anderen Browserfenster mit den ursprünglichen Anmeldeinformationen (standardmäßig *sshuser*) anmelden.
 
@@ -192,7 +192,7 @@ Um R-Pakete auf den Workerknoten des Clusters zu installieren, müssen Sie eine 
 
    * Geben Sie einen **Namen** für die Skriptaktion an.
 
-     * Geben Sie für **Bash-Skript-URI** `https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` ein. Dies ist das Skript, das zusätzliche R-Pakete auf dem Workerknoten installiert
+     * Geben Sie für **Bash-Skript-URI**`https://mrsactionscripts.blob.core.windows.net/rpackages-v01/InstallRPackages.sh` ein. Dies ist das Skript, das zusätzliche R-Pakete auf dem Workerknoten installiert
 
    * Aktivieren Sie nur das Kontrollkästchen für **Worker**.
 

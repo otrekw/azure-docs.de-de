@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: e5a3df82fae9d81a870d3dba929bc7e4cd4123d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904699"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438757"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
 
@@ -42,7 +42,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
    * **Name**: Geben Sie einen eindeutigen Namen für das Data Lake Storage Gen1-Konto ein.
    * **Abonnement**. Wählen Sie das Abonnement aus, unter dem Sie ein neues Data Lake Storage Gen1-Konto erstellen möchten.
-   * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder wählen Sie die Option **Neu erstellen**, um eine Ressourcengruppe zu erstellen. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Anwendung enthält. Weitere Informationen finden Sie unter [Ressourcengruppen in Azure](../azure-resource-manager/resource-group-overview.md#resource-groups).
+   * **Ressourcengruppe**. Wählen Sie eine vorhandene Ressourcengruppe aus, oder wählen Sie die Option **Neu erstellen**, um eine Ressourcengruppe zu erstellen. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Anwendung enthält. Weitere Informationen finden Sie unter [Ressourcengruppen in Azure](../azure-resource-manager/management/overview.md#resource-groups).
    * **Standort**: Wählen Sie einen Standort aus, an dem Sie das Data Lake Storage Gen1-Konto erstellen möchten.
    * **Verschlüsselungseinstellungen**. Drei Optionen stehen zur Verfügung:
 
@@ -56,7 +56,7 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
         Weitere Informationen finden Sie unter [Verschlüsselung von Daten in Azure Data Lake Storage Gen1](./data-lake-store-encryption.md).
 
-4. Klicken Sie auf **Create**. Wenn Sie die Option zum Anheften des Kontos an das Dashboard ausgewählt haben, wird wieder das Dashboard angezeigt, und Sie können den Fortschritt der Bereitstellung Ihres Data Lake Storage Gen1-Kontos überprüfen. Nachdem die Bereitstellung des Data Lake Storage Gen1-Kontos erfolgt ist, wird das Kontoblatt angezeigt.
+4. Klicken Sie auf **Erstellen**. Wenn Sie die Option zum Anheften des Kontos an das Dashboard ausgewählt haben, wird wieder das Dashboard angezeigt, und Sie können den Fortschritt der Bereitstellung Ihres Data Lake Storage Gen1-Kontos überprüfen. Nachdem die Bereitstellung des Data Lake Storage Gen1-Kontos erfolgt ist, wird das Kontoblatt angezeigt.
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>Zuweisen von Berechtigungen zu Azure Key Vault
 

@@ -3,12 +3,12 @@ title: Informationen zu Azure Policy für Azure Kubernetes Service
 description: Erfahren Sie, wie Azure Policy Rego und Open Policy Agent verwendet, um Cluster im Azure Kubernetes Service zu verwalten.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279395"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436388"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Grundlegendes zu Azure Policy für Azure Kubernetes Service
 
@@ -33,7 +33,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 - Azure-Portal:
 
-  1. Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal).
+  1. Registrieren Sie die Ressourcenanbieter **Microsoft.ContainerService** und **Microsoft.PolicyInsights**. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
   1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
 
@@ -47,7 +47,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
   1. Wählen Sie die Schaltfläche **Opt-in** (Abonnieren) oben in der Abonnementliste aus.
 
-- Azure-Befehlszeilenschnittstelle:
+- Azure CLI:
 
   ```azurecli-interactive
   # Log in first with az login if you're not using Cloud Shell

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c8ab954471e597cfea5c6f56cd45b2191aa73242
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 92ff08d460e9bf11b49700570a156a101811a533
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424081"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436001"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -266,7 +266,7 @@ Dienste wie [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Wenn Sie Ihre App in Azure ausführen, müssen Sie wahrscheinlich mit mehreren Azure-Diensten arbeiten. Diese Dienste folgen demselben Lebenszyklus und können als logische Einheit betrachtet werden. Eine Web-App könnte beispielsweise die Dienste Web-Apps, SQL-Datenbank, Storage, Azure Cache für Redis und Azure Content Delivery Network verwenden. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
+Wenn Sie Ihre App in Azure ausführen, müssen Sie wahrscheinlich mit mehreren Azure-Diensten arbeiten. Diese Dienste folgen demselben Lebenszyklus und können als logische Einheit betrachtet werden. Eine Web-App könnte beispielsweise die Dienste Web-Apps, SQL-Datenbank, Storage, Azure Cache für Redis und Azure Content Delivery Network verwenden. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 
 Zusätzlich zur logischen Gruppierung und dem Verwalten von zugehörigen Ressourcen umfasst Azure Resource Manager Bereitstellungsfunktionen, mit deren Hilfe Sie die Bereitstellung und die Konfiguration zugehöriger Ressourcen anpassen können. Beispielsweise können Sie mit dem Resource Manager eine Anwendung bereitstellen und konfigurieren. Diese Anwendung kann aus mehreren virtuellen Computern, einem Lastenausgleichsmodul und einer Azure SQL-Datenbank als einzelne Einheit bestehen.
 
@@ -320,7 +320,7 @@ Mit Azure Resource Manager können Sie einzelnen Ressourcen benutzerdefinierte T
 * In der Azure Resource Manager-Vorlage 
 * Verwenden der REST-API
 * Verwenden der Azure-Befehlszeilenschnittstelle
-* Verwenden von PowerShell 
+* PowerShell 
 
 Sie können jeder Ressource mehrere Tags zuweisen. Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Ressourcen](../../resource-group-using-tags.md).
 

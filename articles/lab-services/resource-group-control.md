@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: spelluru
-ms.openlocfilehash: 574cc0c41ce645c71302178afcf6e7deaec69d8e
-ms.sourcegitcommit: cababb51721f6ab6b61dda6d18345514f074fb2e
+ms.openlocfilehash: b6f51dee948d9e4d9e3f8594f9f7e60fb11b7057
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2019
-ms.locfileid: "66476082"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647338"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Angeben einer Ressourcengruppe für virtuelle Labcomputer in Azure DevTest Labs
 
@@ -31,7 +31,7 @@ Als Labbesitzer können Sie Ihre Lab-VMs so konfigurieren, dass sie in einer bes
 Mit dieser Funktion können Sie mithilfe eines Skripts eine neue oder vorhandene Ressourcengruppe in Ihrem Azure-Abonnement für all Ihre virtuellen Lab-Computer angeben. Azure DevTest Labs unterstützt diese Funktion derzeit über eine API.
 
 > [!NOTE]
-> Es gelten alle Abonnementeinschränkungen, wenn Sie Labs in DevTest Labs erstellen. Stellen Sie sich ein Lab so vor wie jede andere Ressource in Ihrem Abonnement. Im Fall von Ressourcengruppen beträgt die Einschränkung [980 Ressourcengruppen pro Abonnement](../azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
+> Es gelten alle Abonnementeinschränkungen, wenn Sie Labs in DevTest Labs erstellen. Stellen Sie sich ein Lab so vor wie jede andere Ressource in Ihrem Abonnement. Im Fall von Ressourcengruppen beträgt die Einschränkung [980 Ressourcengruppen pro Abonnement](../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager). 
 
 ## <a name="use-azure-portal"></a>Verwenden des Azure-Portals
 Führen Sie die folgenden Schritte aus, um eine Ressourcengruppe für alle im Lab erstellten virtuellen Computer anzugeben. 
@@ -118,7 +118,7 @@ Verwenden dieser API:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Entsprechende Informationen finden Sie in den folgenden Artikeln: 
+Weitere Informationen finden Sie in folgenden Artikeln: 
 
 - [Festlegen von Richtlinien für ein Lab](devtest-lab-get-started-with-lab-policies.md)
 - [Häufig gestellte Fragen](devtest-lab-faq.md)

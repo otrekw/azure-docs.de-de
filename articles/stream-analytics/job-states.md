@@ -1,25 +1,24 @@
 ---
 title: Zustände von Azure Stream Analytics-Aufträgen
 description: 'In diesem Artikel werden die vier verschiedenen Zustände eines Stream Analytics-Auftrags beschrieben: „Wird ausgeführt“, „Beendet“, „Beeinträchtigt“ und „Fehler“.'
-services: stream-analytics
 author: sidram
 ms.author: sidram
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: c533463ff544dc315142f7fb95c34c67933f9614
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.openlocfilehash: 454474333cac94dc25deae8196e9ba45bcb3a574
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68444249"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359765"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Zustände von Azure Stream Analytics-Aufträgen
 
 Ein Stream Analytics-Auftrag kann sich in einem von vier Zuständen befinden: „Wird ausgeführt“, „Beendet“, „Beeinträchtigt“ oder „Fehler“. Den Zustand Ihres Stream Analytics-Auftrags können Sie im Azure-Portal auf der zugehörigen Seite „Übersicht“ bestimmen. 
 
-| Zustand | Beschreibung | Empfohlene Aktionen |
+| State | BESCHREIBUNG | Empfohlene Aktionen |
 | --- | --- | --- |
 | **Wird ausgeführt** | Ihr in Azure ausgeführter Auftrag liest Ereignisse aus den definierten Eingabequellen, verarbeitet sie und schreibt die Ergebnisse in die konfigurierten Ausgabesenken. | Es ist eine bewährte Methode, die Leistung Ihres Auftrags durch Überwachung [wichtiger Metriken](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor) zu verfolgen. |
 | **Beendet** | Ihr Auftrag wurde beendet und verarbeitet keine Ereignisse mehr. | Nicht verfügbar | 

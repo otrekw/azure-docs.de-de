@@ -1,20 +1,18 @@
 ---
 title: Programmgesteuertes Überwachen und Verwalten von Azure Stream Analytics-Aufträgen
 description: Dieser Artikel beschreibt, wie Sie Stream Analytics-Aufträge, die mit REST-APIs, dem Azure SDK oder PowerShell erstellt wurden, programmgesteuert überwachen.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-manager: kfile
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: bf84a5b89e4769e37c45714a30d5d98300a4328d
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 23c0cc0d0e4a007fdf46021f857b559266f6a193
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612250"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75431674"
 ---
 # <a name="programmatically-create-a-stream-analytics-job-monitor"></a>Programmgesteuertes Überwachen von Stream Analytics-Aufträgen
 

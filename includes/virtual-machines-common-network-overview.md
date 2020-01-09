@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: e08860579ca3a18093375652e0243c994c66d75b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 93e53362257126130438d75da1c9b7ee5cac8e68
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796192"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663123"
 ---
-Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-subscription-service-limits.md#networking-limits) verstehen.
+Beim Erstellen eines virtuellen Azure-Computers (VM) müssen Sie ein [virtuelles Netzwerk](../articles/virtual-network/virtual-networks-overview.md) (VNet) erstellen oder ein vorhandenes VNet verwenden. Außerdem müssen Sie entscheiden, wie auf Ihre VMs im VNet zugegriffen werden soll. Es ist wichtig, [vor dem Erstellen von Ressourcen einen Plan aufzustellen](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) und sicherzustellen, dass Sie die [Einschränkungen von Netzwerkressourcen](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) verstehen.
 
 In der folgenden Abbildung werden VMs als Webserver und Datenbankserver dargestellt. Alle Gruppen mit VMs werden im VNet separaten Subnetzen zugewiesen.
 
@@ -66,7 +66,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer IP-
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| [Azure-Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Öffentliche IP-Adressen sind standardmäßig dynamisch. Die ihnen zugewiesene Adresse kann sich daher ändern, wenn die VM beendet oder gelöscht wird. Erstellen Sie eine statische öffentliche IP-Adresse, um sicherzustellen, dass für die VM immer die gleiche öffentliche IP-Adresse verwendet wird. Standardmäßig wird einer NIC beim Erstellen einer VM vom Portal eine dynamische private IP-Adresse zugewiesen. Sie können diese IP-Adresse in „Statisch“ ändern, nachdem die VM erstellt wurde.|
+| [Azure portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Öffentliche IP-Adressen sind standardmäßig dynamisch. Die ihnen zugewiesene Adresse kann sich daher ändern, wenn die VM beendet oder gelöscht wird. Erstellen Sie eine statische öffentliche IP-Adresse, um sicherzustellen, dass für die VM immer die gleiche öffentliche IP-Adresse verwendet wird. Standardmäßig wird einer NIC beim Erstellen einer VM vom Portal eine dynamische private IP-Adresse zugewiesen. Sie können diese IP-Adresse in „Statisch“ ändern, nachdem die VM erstellt wurde.|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | Sie verwenden [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) mit dem Parameter **-AllocationMethod** mit dem Wert „Dynamic“ oder „Static“. |
 | [Azure-Befehlszeilenschnittstelle](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | Sie verwenden [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) mit dem Parameter **--allocation-method** und dem Wert „Dynamic“ oder „Static“. |
 | [Vorlage](../articles/virtual-network/template-samples.md) | Verwenden Sie [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) (Netzwerkschnittstelle in einem virtuellen Netzwerk mit öffentlicher IP-Adresse) als Anleitung zum Bereitstellen einer öffentlichen IP-Adresse mit einer Vorlage. |
@@ -87,7 +87,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines VNe
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| [Azure-Portal](../articles/virtual-network/quick-create-portal.md) | Wenn Sie bei der Erstellung einer VM zulassen, dass von Azure ein VNet erstellt wird, ist der Name eine Kombination aus dem Namen der Ressourcengruppe, die das VNet enthält, und dem Zusatz **-vnet**. Der Adressraum ist 10.0.0.0/24, der erforderliche Subnetzname lautet **default**, und der Adressbereich des Subnetzes ist 10.0.0.0/24. |
+| [Azure portal](../articles/virtual-network/quick-create-portal.md) | Wenn Sie bei der Erstellung einer VM zulassen, dass von Azure ein VNet erstellt wird, ist der Name eine Kombination aus dem Namen der Ressourcengruppe, die das VNet enthält, und dem Zusatz **-vnet**. Der Adressraum ist 10.0.0.0/24, der erforderliche Subnetzname lautet **default**, und der Adressbereich des Subnetzes ist 10.0.0.0/24. |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | Sie verwenden [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworkSubnetConfig) und [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork), um ein Subnetz und ein VNET zu erstellen. Sie können auch [Add-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/Az.Network/Add-AzVirtualNetworkSubnetConfig) verwenden, um ein Subnetz in einem vorhandenen VNET hinzuzufügen. |
 | [Azure-Befehlszeilenschnittstelle](../articles/virtual-network/quick-create-cli.md) | Das Subnetz und das VNet werden gleichzeitig erstellt. Geben Sie für [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) den Parameter **--subnet-name** mit dem Subnetznamen an. |
 | Vorlage | Die einfachste Möglichkeit zum Erstellen eines VNet und von Subnetzen ist das Herunterladen einer vorhandenen Vorlage, z.B. [Virtual Network with two Subnets](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets) (Virtuelles Netzwerk mit zwei Subnetzen), und die anschließende Anpassung gemäß Ihren Anforderungen. |
@@ -108,7 +108,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| [Azure-Portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Wenn Sie im Azure-Portal eine VM erstellen, wird automatisch eine NSG erstellt und der vom Portal erstellten NIC zugeordnet. Der Name der NSG ist eine Kombination aus dem Namen der VM und dem Zusatz **-nsg**. Diese NSG enthält eine Regel für eingehenden Datenverkehr mit einer Priorität von 1000, RDP als Dienst, TCP als Protokoll, 3389 als Port und der Einstellung „Allow“ als Aktion. Wenn Sie anderen eingehenden Datenverkehr für die VM zulassen möchten, müssen Sie der NSG zusätzliche Regeln hinzufügen. |
+| [Azure portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Wenn Sie im Azure-Portal eine VM erstellen, wird automatisch eine NSG erstellt und der vom Portal erstellten NIC zugeordnet. Der Name der NSG ist eine Kombination aus dem Namen der VM und dem Zusatz **-nsg**. Diese NSG enthält eine Regel für eingehenden Datenverkehr mit einer Priorität von 1000, RDP als Dienst, TCP als Protokoll, 3389 als Port und der Einstellung „Allow“ als Aktion. Wenn Sie anderen eingehenden Datenverkehr für die VM zulassen möchten, müssen Sie der NSG zusätzliche Regeln hinzufügen. |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | Verwenden Sie [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig), und geben Sie die erforderlichen Informationen für die Regel an. Verwenden Sie [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup), um die NSG zu erstellen. Verwenden Sie [Set-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetworksubnetconfig), um die NSG für das Subnetz zu konfigurieren. Verwenden Sie [Set-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/set-azvirtualnetwork), um die NSG im VNET hinzuzufügen. |
 | [Azure-Befehlszeilenschnittstelle](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | Verwenden Sie [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg) für die erste Erstellung der NSG. Verwenden Sie [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule), um der NSG Regeln hinzuzufügen. Verwenden Sie [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet), um die NSG dem Subnetz hinzuzufügen. |
 | [Vorlage](../articles/virtual-network/template-samples.md) | Verwenden Sie [Create a Network Security Group](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create) (Erstellen einer Netzwerksicherheitsgruppe) als Anleitung zum Bereitstellen einer Netzwerksicherheitsgruppe mit einer Vorlage. |
@@ -157,7 +157,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer VM 
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| [Azure-Portal](../articles/virtual-machines/windows/quick-create-portal.md) | Es werden die bereits erwähnten Standard-Netzwerkeinstellungen verwendet, um eine VM mit einer einzelnen NIC zu erstellen. Zum Erstellen einer VM mit mehreren NICs müssen Sie eine andere Methode verwenden. |
+| [Azure portal](../articles/virtual-machines/windows/quick-create-portal.md) | Es werden die bereits erwähnten Standard-Netzwerkeinstellungen verwendet, um eine VM mit einer einzelnen NIC zu erstellen. Zum Erstellen einer VM mit mehreren NICs müssen Sie eine andere Methode verwenden. |
 | [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | Umfasst die Verwendung von [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) zum Hinzufügen der zuvor erstellten NIC zur VM-Konfiguration. |
 | [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/create-cli-complete.md) | Erstellen Sie eine VM, und stellen Sie dafür eine Verbindung mit einem VNet, einem Subnetz und einer Netzwerkkarte her, indem Sie die einzelnen erforderlichen Schritte ausführen. |
 | [Vorlage](../articles/virtual-machines/windows/ps-template.md) | Verwenden Sie [Very simple deployment of a Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) (Sehr einfache Bereitstellung einer Windows-VM) als Anleitung zum Bereitstellen einer VM mit einer Vorlage. |

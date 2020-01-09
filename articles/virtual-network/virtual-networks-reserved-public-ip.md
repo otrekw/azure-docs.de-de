@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 675e7a7b557a3f19ea4d8d4960316c3859cbb9c1
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058478"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638220"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Reservierte IP-Adressen (klassische Bereitstellung)
 
@@ -41,7 +41,7 @@ Lesen Sie für weitere Informationen zu IP-Adressen in Azure den Artikel [IP-Adr
 - Kann ich eine reservierte IP-Adresse für alle Azure-Dienste verwenden?
     Nein. Reservierte IPs können nur für virtuelle Computer und Clouddienst-Instanzenrollen, die über eine VIP verfügbar gemacht werden, verwendet werden.
 - Wie viele reservierte IP-Adressen können verwendet werden?
-    Weitere Informationen finden Sie im Artikel [Grenzwerte für Netzwerke](../azure-subscription-service-limits.md#networking-limits).
+    Weitere Informationen finden Sie im Artikel [Grenzwerte für Netzwerke](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 - Fällt für reservierte IPs eine Gebühr an?
     Manchmal. Preisinformationen finden Sie auf der Seite [Preise für reservierte IP-Adressen](https://go.microsoft.com/fwlink/?LinkID=398482).
 - Wie wird eine IP-Adresse reserviert?

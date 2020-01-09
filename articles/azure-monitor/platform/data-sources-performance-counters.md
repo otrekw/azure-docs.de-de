@@ -4,15 +4,15 @@ description: Leistungsindikatoren werden von Azure Monitor gesammelt, um die Lei
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363828"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows- und Linux-Leistungsdatenquellen in Azure Monitor
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -200,7 +200,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 ## <a name="log-queries-with-performance-records"></a>Protokollabfragen mit Leistungsdatensätzen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit denen Leistungsdatensätze abgerufen werden.
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:--- |:--- |
 | Perf |Alle Leistungsdaten. |
 | Perf &#124; where Computer == "MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |

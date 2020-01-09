@@ -2,14 +2,14 @@
 title: Behandeln von Problemen mit dem Azure Backup-Agent
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Installation und Registrierung des Azure Backup-Agents behandeln.
 ms.reviewer: saurse
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/15/2019
-ms.openlocfilehash: 4f1d93a6ba36821832c945db2e5cc19bf7e9d232
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 06c741547e0206059195f481ed29dc8e69aa4dd3
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172932"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665316"
 ---
 # <a name="troubleshoot-the-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -65,31 +65,31 @@ Wir empfehlen, die folgenden Prüfungen durchzuführen, bevor Sie mit der Proble
 
 ## <a name="unable-to-download-vault-credential-file"></a>Herunterladen der Datei mit Tresoranmeldeinformationen nicht möglich
 
-| Error   | Empfohlene Aktionen |
+| Fehler   | Empfohlene Aktionen |
 | ---     | ---    |
 |Fehler beim Herunterladen der Datei mit Tresoranmeldeinformationen. (ID: 403) | <ul><li> Versuchen Sie in einem anderen Browser, die Anmeldeinformationen für den Tresor herunterzuladen, oder führen Sie die folgenden Schritte aus: <ul><li> Starten Sie Internet Explorer. Wählen Sie F12 aus. </li><li> Navigieren Sie zur Registerkarte **Netzwerk**, und löschen Sie den Cache und die Cookies. </li> <li> Aktualisieren Sie die Seite.<br></li></ul> <li> Prüfen Sie, ob das Abonnement deaktiviert/abgelaufen ist.<br></li> <li> Prüfen Sie, ob eine Firewallregel das Herunterladen blockiert. <br></li> <li> Stellen Sie sicher, dass Sie den Grenzwert für den Tresor (50 Computer pro Tresor) nicht überschritten haben.<br></li>  <li> Stellen Sie sicher, dass der Benutzer über die Azure Backup-Berechtigungen verfügt, die erforderlich sind, um Tresoranmeldeinformationen herunterzuladen und einen Server beim Tresor zu registrieren. Lesen Sie hierzu [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten von Azure Backup-Wiederherstellungspunkten](backup-rbac-rs-vault.md).</li></ul> |
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Es konnte keine Verbindung zwischen dem Microsoft Azure Recovery Services-Agent und Microsoft Azure Backup hergestellt werden.
 
-| Error  | Mögliche Ursache | Empfohlene Aktionen |
+| Fehler  | Mögliche Ursache | Empfohlene Aktionen |
 | ---     | ---     | ---    |
 | <br /><ul><li>Es konnte keine Verbindung zwischen dem Microsoft Azure Recovery Services-Agent und Microsoft Azure Backup hergestellt werden. (ID: 100050) Überprüfen Sie Ihre Netzwerkeinstellungen, und stellen Sie sicher, dass Sie eine Verbindung mit dem Internet herstellen können.<li>(407) Proxyauthentifizierung erforderlich. |Ein Proxy blockiert die Verbindung. |  <ul><li>Navigieren Sie in Internet Explorer zu **Extras** > **Internetoptionen** > **Sicherheit** > **Internet**. Wählen Sie **Stufe anpassen** aus, und scrollen Sie zum Abschnitt **Dateidownload**. Wählen Sie **Aktivieren** aus.<p>Sie müssen möglicherweise auch [URLs und IP-Adressen](backup-configure-vault.md#verify-internet-access) zu Ihren vertrauenswürdigen Sites in Internet Explorer hinzufügen.<li>Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an.<li> Wenn Ihr Computer über einen eingeschränkten Internetzugang verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxyserver diese [URLs und IP-Adressen](backup-configure-vault.md#verify-internet-access) zulassen. <li>Wenn Sie Antivirensoftware auf dem Server installiert haben, schließen Sie die folgenden Dateien vom Virenscan aus: <ul><li>CBEngine.exe (statt dpmra.exe)<li>CSC.exe: (Diese Datei ist mit dem .NET Framework verknüpft.) Für jede auf dem Server installierte .NET Framework-Version gibt es eine Datei namens „CSC.exe“. Schließen Sie Dateien mit dem Namen „CSC.exe“ für alle .NET Framework-Versionen auf dem betroffenen Server aus. <li>Speicherort des Ablageordners oder Caches. <br>Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“.<li>Ordner „Bin“ im Pfad C:\Program Files\Microsoft Azure Recovery Services Agent\Bin.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Fehler beim Festlegen des Verschlüsselungsschlüssels für sichere Sicherungen
 
-| Error | Mögliche Ursachen | Empfohlene Aktionen |
+| Fehler | Mögliche Ursachen | Empfohlene Aktionen |
 | ---     | ---     | ---    |
 | <br />Fehler beim Festlegen des Verschlüsselungsschlüssels für sichere Sicherungen. Die Aktivierung wurde nicht vollständig abgeschlossen, aber die Verschlüsselungspassphrase wurde in der folgenden Datei gespeichert. |<li>Der Server ist bereits bei einem anderen Tresor registriert.<li>Beim Konfigurieren wurde die Passphrase beschädigt.| Heben Sie die Registrierung des Servers beim Tresor auf, und registrieren Sie ihn erneut mit einer neuen Passphrase.
 
 ## <a name="the-activation-did-not-complete-successfully"></a>Die Aktivierung wurde nicht erfolgreich abgeschlossen.
 
-| Error  | Mögliche Ursachen | Empfohlene Aktionen |
+| Fehler  | Mögliche Ursachen | Empfohlene Aktionen |
 |---------|---------|---------|
 |<br />Die Aktivierung wurde nicht erfolgreich abgeschlossen. Beim aktuellen Vorgang ist aufgrund eines internen Dienstfehlers [0x1FC07] ein Fehler aufgetreten. Wiederholen Sie den Vorgang nach einiger Zeit. Wenn das Problem weiterhin besteht, wenden Sie sich an den Microsoft-Support.     | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.         | <li>Führen Sie ein Upgrade auf die [aktuelle Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .        |
 
 ## <a name="encryption-passphrase-not-correctly-configured"></a>Die Verschlüsselungspassphrase ist nicht richtig konfiguriert.
 
-| Error  | Mögliche Ursachen | Empfohlene Aktionen |
+| Fehler  | Mögliche Ursachen | Empfohlene Aktionen |
 |---------|---------|---------|
 | <br />Fehler 34506. Die auf diesem Computer gespeicherte Verschlüsselungspassphrase ist nicht richtig konfiguriert.    | <li> Der Ablageordner befindet sich auf einem Volume, das nicht genügend Speicherplatz aufweist. <li> Der Ablageordner wurde nicht ordnungsgemäß verschoben. <li> Die Datei „OnlineBackup.KEK“ fehlt.        | <li>Führen Sie ein Upgrade auf die [neueste Version](https://aka.ms/azurebackup_agent) des MARS-Agents durch.<li>Verschieben Sie den Ablageordner oder den Cachespeicherort zu einem Volume, auf dem Speicherplatz in Höhe von 5–10 % der Gesamtgröße der Sicherungsdaten verfügbar ist. Um den Cachespeicherort ordnungsgemäß zu verschieben, führen Sie die unter [Häufig gestellte Fragen zum Sichern von Dateien und Ordnern](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) erläuterten Schritte aus.<li> Stellen Sie sicher, dass die Datei „OnlineBackup.KEK“ vorhanden ist. <br>*Der Standardspeicherort für den Ablageordner oder der Cachepfad lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“* .         |
 

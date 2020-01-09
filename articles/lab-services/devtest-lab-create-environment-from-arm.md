@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 51c699f9b392be5f2e2bc16b5729d6567ace7f17
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: 9e80bc3e176f831f8609dd7f2a2ee22a2495e89b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428933"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
-Azure DevTest Labs-Umgebungen ermöglichen Benutzern, komplexe Infrastrukturen problemlos auf konsistente Weise innerhalb der Grenzen des Labs bereitzustellen. Sie können [Azure Resource Manager Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md) verwenden, um Umgebungen mit Ressourcensätzen in DevTest Labs zu erstellen. Diese Umgebungen können alle Azure-Ressourcen enthalten, die von Resource Manager-Vorlagen erstellt werden können. 
+Azure DevTest Labs-Umgebungen ermöglichen Benutzern, komplexe Infrastrukturen problemlos auf konsistente Weise innerhalb der Grenzen des Labs bereitzustellen. Sie können [Azure Resource Manager Vorlagen](../azure-resource-manager/templates/template-syntax.md) verwenden, um Umgebungen mit Ressourcensätzen in DevTest Labs zu erstellen. Diese Umgebungen können alle Azure-Ressourcen enthalten, die von Resource Manager-Vorlagen erstellt werden können. 
 
 Sie können einem Lab problemlos [jeweils einen virtuellen Computer (VM) hinzufügen](devtest-lab-add-vm.md), indem Sie das [Azure-Portal](https://portal.azure.com) verwenden. Szenarios wie Apps mit mehreren Ebenen oder eine SharePoint-Farm benötigen jedoch einen Mechanismus zum Erstellen mehrerer virtueller Computer in einem einzigen Schritt. Mit Azure Resource Manager-Vorlagen können Sie die Infrastruktur und Konfiguration Ihrer Azure-Lösung definieren und wiederholt mehrere virtuelle Computer in einem konsistenten Zustand bereitstellen. 
 
@@ -34,7 +34,7 @@ Azure Resource Manager-Vorlagen bieten außerdem die folgenden Vorteile:
 - Sie können Azure PaaS-Ressourcen sowie virtuelle IaaS-Computer in einer Umgebung über eine Azure Resource Manager-Vorlage bereitstellen.
 - Sie können die Umgebungskosten im Lab zusätzlich zu den einzelnen virtuellen Computern nachverfolgen, die unter Verwendung anderer Grundlagen erstellt wurden. Die PaaS-Ressourcen werden erstellt und in der Kostenüberwachung angezeigt. Das automatische Herunterfahren für virtuelle Computer gilt jedoch nicht für PaaS-Ressourcen.
 
-Unter [Vorteile der Verwendung von Resource Manager-Vorlagen](../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager) erfahren Sie mehr über die Vorteile der Verwendung von Resource Manager-Vorlagen zum Bereitstellen, Aktualisieren oder Löschen vieler Labressourcen in einem einzigen Vorgang.
+Unter [Vorteile der Verwendung von Resource Manager-Vorlagen](../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager) erfahren Sie mehr über die Vorteile der Verwendung von Resource Manager-Vorlagen zum Bereitstellen, Aktualisieren oder Löschen vieler Labressourcen in einem einzigen Vorgang.
 
 > [!NOTE]
 > Wenn Sie eine Resource Manager-Vorlage als Grundlage zum Erstellen von Lab-VMs verwenden, sind jedoch einige Unterschiede zwischen dem Erstellen mehrerer VMs und einer einzelnen VM zu berücksichtigen. Weitere Informationen finden Sie unter [Erstellen von virtuellen Computern mit einer Azure Resource Manager-Vorlage](devtest-lab-use-resource-manager-template.md).

@@ -8,22 +8,22 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b671fe9a4ecd35cbe9d70f398f8d39664203fc58
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781886"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663127"
 ---
-Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen verkraften können, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
+Mithilfe von Spot-VMs können Sie unsere ungenutzte Kapazität mit signifikanten Kosteneinsparungen nutzen. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs durch die Azure-Infrastruktur entfernt. Aus diesem Grund eignen sich Spot-VMs hervorragend für Workloads, die Unterbrechungen tolerieren, z. B. Batchverarbeitungsaufträge, Dev/Test-Umgebungen, umfangreiche Computeworkloads und mehr.
 
-Die Menge der verfügbaren Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Spot-VMs in Skalierungsgruppen weist Azure die virtuellen Computer zu, wenn Kapazität verfügbar ist, aber es gibt keine SLA für diese VMs. Eine Spot-VM bietet keine Garantien für Hochverfügbarkeit. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs mit einer Vorlaufzeit von 30 Sekunden durch die Azure-Infrastruktur entfernt. 
+Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Spot-VMs in Skalierungsgruppen weist Azure die virtuellen Computer zu, wenn Kapazität verfügbar ist, aber es gibt keine SLA für diese VMs. Eine Spot-VM bietet keine Garantien für Hochverfügbarkeit. Wenn die Kapazität von Azure wieder benötigt wird, werden die Spot-VMs mit einer Vorlaufzeit von 30 Sekunden durch die Azure-Infrastruktur entfernt. 
 
 > [!IMPORTANT]
 > Spot-Instanzen sind zurzeit als Public Preview verfügbar.
-> Diese Vorschauversion wird nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Im frühen Stadium der Public Preview weisen Spot-Instanzen einen festen Preis aus, sodass sie nicht basierend auf dem Preis entfernt werden.
+> Im frühen Stadium der Public Preview weisen Spot-Instanzen einen festen Preis auf, sodass sie nicht basierend auf dem Preis entfernt werden.
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
@@ -32,7 +32,7 @@ VMs können basierend auf der Kapazität oder dem von Ihnen festgelegten maximal
 Benutzer können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../articles/virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
 > [!IMPORTANT]
-> Im frühen Stadium der Public Preview können Sie einen maximalen Preis festlegen, der jedoch ignoriert wird. Spot-VMs weisen einen festen Preis auf, sodass keine preisbasierten Entfernungen stattfinden.
+> Im frühen Stadium der Public Preview können Sie einen maximalen Preis festlegen, der jedoch ignoriert wird. Für Spot-VMs wird ein fester Preis festgelegt. Es wird also auch keine preisbasierten Entfernungen geben.
 
 
 | Option | Ergebnis |
@@ -78,7 +78,7 @@ Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar
 
 **F:** Wie werden Kontingente für Spot-VMs verwaltet?
 
-**A:** Spot-VMs verfügen über einen separaten Kontingentpool. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+**A:** Spot-VMs verfügen über einen separaten Kontingentpool. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 
 **F:** Kann ich ein zusätzliches Kontingent für Spot anfordern?

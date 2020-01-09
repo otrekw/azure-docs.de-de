@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 83910c2209b5d3d3d67578ae41afb902bc885171
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f7d14da6c7436120e013c979b108f61b82640d13
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037452"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647882"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 Dieses Thema beschreibt Folgendes:
@@ -137,7 +137,7 @@ Der Front-End-Port ist der Port, der von Anwendungen zum Herstellen einer Verbin
 > [!NOTE]
 > Bei SQL Server-Verfügbarkeitsgruppen wird für jede IP-Adresse ein bestimmter Testport benötigt. Wenn für eine IP-Adresse eines Lastenausgleichsmoduls beispielsweise der Testport 59999 verwendet wird, können keine anderen IP-Adressen des Lastenausgleichsmoduls den Testport 59999 nutzen.
 
-* Informationen zu den Grenzwerten für Load Balancer finden Sie im Abschnitt **Private Front-End-IP pro Load Balancer** unter [Netzwerklimits – Azure Resource Manager](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
+* Informationen zu den Grenzwerten für Load Balancer finden Sie im Abschnitt **Private Front-End-IP pro Load Balancer** unter [Netzwerklimits – Azure Resource Manager](../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 * Informationen zu den Grenzwerten von Verfügbarkeitsgruppen finden Sie unter [Einschränkungen (Verfügbarkeitsgruppen)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG).
 
 Mit dem folgenden Skript wird einem vorhandenen Lastenausgleichsmodul eine neue IP-Adresse hinzugefügt. Der interne Load Balancer verwendet den Listenerport für den Front-End-Port des Load Balancers. Dieser Port kann der Port sein, über den SQL Server lauscht. Für Standardinstanzen von SQL Server lautet der Port 1433. Für die Load Balancer-Regel einer Verfügbarkeitsgruppe wird eine Floating IP-Adresse (Direct Server Return) benötigt, sodass der Back-End-Port dem Front-End-Port entspricht. Aktualisieren Sie die Variablen für Ihre Umgebung. 
@@ -227,7 +227,7 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
 
 * Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, stellen Sie sicher, dass die Zulassungsregeln die IP-Adressen des virtuellen SQL Server-Back-End-Computers, die Floating IP-Adressen des Lastenausgleichs für den AG-Listener und die IP-Adresse der Hauptressourcen des Clusters (falls zutreffend) umfassen.
 
-## <a name="for-more-information"></a>Weitere Informationen
+## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 Weitere Informationen finden Sie unter [Manuelles Konfigurieren der Always On-Verfügbarkeitsgruppe auf virtuellen Azure-Computern](virtual-machines-windows-portal-sql-availability-group-tutorial.md).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-Cmdlets

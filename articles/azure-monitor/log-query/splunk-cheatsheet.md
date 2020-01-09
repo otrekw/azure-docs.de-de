@@ -1,18 +1,17 @@
 ---
 title: Von Splunk zur Azure Monitor-Protokollabfrage | Microsoft-Dokumentation
 description: Unterstützung für Benutzer, die mit Splunk vertraut sind, beim Erlernen von Azure Monitor-Protokollabfragen
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
-ms.openlocfilehash: e16bf152e739a6145bfabaf8546fa71199f8d732
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6346055f1169bfa533d5dbfe441ecf27fb0d78a7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932949"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397748"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Von Splunk zur Azure Monitor-Protokollabfrage
 
@@ -26,12 +25,12 @@ In der folgenden Tabelle werden Konzepte und Datenstrukturen von Splunk und Azur
  | --- | --- | --- | ---
  | Bereitstellungseinheit  | cluster |  cluster |  Azure Monitor ermöglicht beliebige clusterübergreifende Abfragen. Bei Splunk ist das nicht der Fall. |
  | Datencaches |  buckets  |  Caching und Aufbewahrungsrichtlinien |  Steuert den Zeitraum und die Cachingebene für die Daten. Diese Einstellung wirkt sich direkt auf die Leistung von Abfragen und die Kosten der Bereitstellung aus. |
- | Logische Partition von Daten  |  index  |  database  |  Ermöglicht die logische Trennung der Daten. Beide Implementierungen ermöglichen partitionsübergreifende Unions und Verknüpfungen. |
+ | Logische Partition von Daten  |  Index  |  database  |  Ermöglicht die logische Trennung der Daten. Beide Implementierungen ermöglichen partitionsübergreifende Unions und Verknüpfungen. |
  | Strukturierte Ereignismetadaten | – | table |  Bei Splunk wird das Konzept der Suchsprache für Ereignismetadaten nicht verfügbar gemacht. Azure Monitor-Protokolle weisen das Konzept einer Tabelle mit Spalten auf. Jede Ereignisinstanz ist einer Zeile zugeordnet. |
- | Datensatz | event | row |  Nur Terminologieänderung. |
+ | Datensatz | Ereignis | row |  Nur Terminologieänderung. |
  | Datensatzattribut | Feld |  column |  In Azure Monitor ist dies als Teil der Tabellenstruktur vordefiniert. In Splunk hat jedes Ereignis einen eigenen Satz von Feldern. |
  | Typen | datatype |  datatype |  Azure Monitor-Datentypen sind expliziter, da sie für die Spalten festgelegt sind. Beide verfügen über die Möglichkeit, dynamisch mit Datentypen und einem sich weitgehend entsprechenden Satz von Datentypen, einschließlich JSON-Unterstützung, zu arbeiten. |
- | Abfrage und Suche  | search | query |  Die Konzepte sind bei Azure Monitor und Splunk im Wesentlichen identisch. |
+ | Abfrage und Suche  | search | Abfrage |  Die Konzepte sind bei Azure Monitor und Splunk im Wesentlichen identisch. |
  | Ereigniserfassungszeit | Systemzeit | ingestion_time() |  In Splunk erhält jedes Ereignis einen Systemzeitstempel des Zeitpunkts, zu dem das Ereignis indiziert wurde. In Azure Monitor können Sie eine Richtlinie namens „ingestion_time“ definieren, mit der eine Systemspalte bereitgestellt wird, auf die mit der Funktion „ingestion_time()“ verwiesen werden kann. |
 
 ## <a name="functions"></a>Functions
@@ -54,7 +53,7 @@ In der folgenden Tabelle sind Funktionen in Azure Monitor angegeben, die Splunk-
 | searchmatch | == | In Splunk ermöglicht `searchmatch` eine Suche nach der exakten Zeichenfolge.
 | random | rand()<br>rand(n) | Die Splunk-Funktion gibt eine Zahl zwischen 0 (null) und 2<sup>31</sup>-1 zurück. Azure Monitor gibt eine Zahl zwischen 0,0 und 1,0 oder bei angegebenem Parameter eine Zahl zwischen 0 und n-1 zurück.
 | now | now() | (1)
-| relative_time | totimespan() | (1)<br>Die Entsprechung der Splunk-Funktion „relative_time(datetimeVal, offsetVal)“ lautet in Azure Monitor „datetimeVal + totimespan(offsetVal)“.<br>Beispielsweise wird <code>search &#124; eval n=relative_time(now(), "-1d@d")</code> zu <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
+| relative_time | totimespan() | (1)<br>Die Entsprechung der Splunk-Funktion „relative_time(datetimeVal, offsetVal)“ lautet in Azure Monitor „datetimeVal + totimespan(offsetVal)“.<br><code>search &#124; eval n=relative_time(now(), "-1d@d")</code> wird beispielsweise zu <code>...  &#124; extend myTime = now() - totimespan("1d")</code>.
 
 (1) In Splunk wird die Funktion mit dem `eval`-Operator aufgerufen. In Azure Monitor wird sie als Teil von `extend` oder `project` verwendet.<br>(2) In Splunk wird die Funktion mit dem `eval`-Operator aufgerufen. In Azure Monitor kann sie mit dem `where`-Operator verwendet werden.
 
@@ -75,7 +74,7 @@ In Splunk können Sie das Schlüsselwort `search` auslassen und eine Zeichenfolg
 | Azure Monitor | **find** | <code>find Session.Id=="c8894ffd-e684-43c9-9125-42adc25cd3fc" and ingestion_time()> ago(24h)</code> |
 | | |
 
-### <a name="filter"></a>Filter
+### <a name="filter"></a>Filtern
 Azure Monitor-Protokollabfragen beginnen in einem tabellarischen Resultset mit dem „where“-Filter. In Splunk ist Filtern der Standardvorgang für den aktuellen Index. Sie können auch den `where`-Operator in Splunk verwenden, doch wird dies nicht empfohlen.
 
 | |  | |

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 1679862b1660d3c8b2505c6e0c54f203f5d4665d
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 18f4edf5cc63a448779423cc1b302130b4b80724
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383537"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75692595"
 ---
 ## <a name="create-an-azure-container-instance-resource"></a>Erstellen einer Azure Container Instances-Ressource
 
@@ -22,7 +22,7 @@ ms.locfileid: "74383537"
 
 2. Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Informationen ein:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |--|--|
     |Subscription|Wählen Sie Ihr Abonnement aus.|
     |Resource group|Wählen Sie die verfügbare Ressource aus, oder erstellen Sie eine neue wie z.B. `cognitive-services`.|
@@ -35,18 +35,18 @@ ms.locfileid: "74383537"
 
 3. Geben Sie auf der Registerkarte **Netzwerk** die folgenden Informationen ein:
 
-    |Einstellung|Wert|
+    |Einstellung|value|
     |--|--|
     |Ports|Legen Sie den TCP-Port auf `5000` fest. Macht den Container an Port 5000 verfügbar.|
 
 4. Geben Sie auf der Registerkarte **Erweitert** die erforderlichen **Umgebungsvariablen** für die Abrechnungseinstellungen der Azure Container Instance-Ressource ein:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |--|--|
     |`apikey`|Kopiert von der Seite **Schlüssel** der Ressource. Es handelt sich um eine aus 32 alphanumerischen Zeichen bestehende Zeichenfolge ohne Leerzeichen oder Bindestriche, `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.|
     |`billing`|Kopiert von der Seite **Übersicht** der Ressource.|
     |`eula`|`accept`|
 
-1. Klicken Sie auf **Überprüfen und erstellen**.
-1. Nachdem die Überprüfung abgeschlossen ist, klicken Sie auf **Erstellen**, um den Erstellungsprozess abzuschließen.
-1. Nach ihrer erfolgreicher Bereitstellung ist die Ressource bereit.
+5. Klicken Sie auf **Überprüfen und erstellen**.
+6. Nachdem die Überprüfung abgeschlossen ist, klicken Sie auf **Erstellen**, um den Erstellungsprozess abzuschließen.
+7. Nach ihrer erfolgreicher Bereitstellung ist die Ressource bereit.

@@ -1,19 +1,15 @@
 ---
 title: Allgemeine Metriken für die automatische Skalierung
 description: Erfahren Sie, welche Metriken häufig für die automatische Skalierung von Cloud Services, Virtual Machines und Web-Apps verwendet werden.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/6/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "66129733"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364593"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Allgemeine Metriken für die automatische Skalierung in Azure Monitor
 
@@ -56,10 +52,10 @@ Sie können eine Warnung für die folgenden Metriken erstellen:
 | \Processor(_Total)\%Prozessorzeit |Percent |
 | \Processor(_Total)\%Privilegierte Zeit |Percent |
 | \Processor(_Total)\%Benutzerzeit |Percent |
-| \Processor Informationen(_Total)\Prozessorfrequenz |Count |
-| \System\Prozesse |Count |
-| \Process(_Total)\Threadanzahl |Count |
-| \Process(_Total)\Handleanzahl |Count |
+| \Processor Informationen(_Total)\Prozessorfrequenz |Anzahl |
+| \System\Prozesse |Anzahl |
+| \Process(_Total)\Threadanzahl |Anzahl |
+| \Process(_Total)\Handleanzahl |Anzahl |
 | \Memory\%Verwendete zugesicherte Bytes |Percent |
 | \Memory\Verfügbare Bytes |Byte |
 | \Memory\Zugesicherte Bytes |Byte |
@@ -75,11 +71,11 @@ Sie können eine Warnung für die folgenden Metriken erstellen:
 | \PhysicalDisk(_Total)\Bytes/s |Bytes pro Sekunde |
 | \PhysicalDisk(_Total)\Byte gelesen/s |Bytes pro Sekunde |
 | \PhysicalDisk(_Total)\Byte geschrieben/s |Bytes pro Sekunde |
-| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge des Datenträgers |Count |
-| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge |Count |
-| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge |Count |
+| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge des Datenträgers |Anzahl |
+| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Lesevorgänge |Anzahl |
+| \PhysicalDisk(_Total)\Durchschnittl. Warteschlangenlänge der Datenträger-Schreibvorgänge |Anzahl |
 | \LogicalDisk(_Total)\%Freier Speicherplatz |Percent |
-| \LogicalDisk(_Total)\MB frei |Count |
+| \LogicalDisk(_Total)\MB frei |Anzahl |
 
 ### <a name="guest-os-metrics-linux-vms"></a>Gastbetriebssystem-Metriken für virtuelle Linux-Computer
 Wenn Sie in Azure einen virtuellen Computer erstellen, wird die Diagnose standardmäßig durch Verwenden der Diagnoseerweiterung aktiviert.
@@ -92,7 +88,7 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
  Sie können eine Warnung für die folgenden Metriken erstellen:
 
-| Metrikname | Unit |
+| Metrikname | Einheit |
 | --- | --- |
 | \Memory\AvailableMemory |Byte |
 | \Memory\PercentAvailableMemory |Percent |
@@ -123,15 +119,15 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \PhysicalDisk\AverageReadTime |Sekunden |
 | \PhysicalDisk\AverageWriteTime |Sekunden |
 | \PhysicalDisk\AverageTransferTime |Sekunden |
-| \PhysicalDisk\AverageDiskQueueLength |Count |
+| \PhysicalDisk\AverageDiskQueueLength |Anzahl |
 | \NetworkInterface\BytesTransmitted |Byte |
 | \NetworkInterface\BytesReceived |Byte |
-| \NetworkInterface\PacketsTransmitted |Count |
-| \NetworkInterface\PacketsReceived |Count |
+| \NetworkInterface\PacketsTransmitted |Anzahl |
+| \NetworkInterface\PacketsReceived |Anzahl |
 | \NetworkInterface\BytesTotal |Byte |
-| \NetworkInterface\TotalRxErrors |Count |
-| \NetworkInterface\TotalTxErrors |Count |
-| \NetworkInterface\TotalCollisions |Count |
+| \NetworkInterface\TotalRxErrors |Anzahl |
+| \NetworkInterface\TotalTxErrors |Anzahl |
+| \NetworkInterface\TotalCollisions |Anzahl |
 
 ## <a name="commonly-used-web-server-farm-metrics"></a>Häufig verwendete Webmetriken (Serverfarm)
 Sie können die automatische Skalierung auch basierend auf allgemeinen Webservermetriken wie der HTTP-Warteschlangenlänge ausführen. Der Metrikname ist **HttpQueueLength**.  Im folgenden Abschnitt sind die verfügbaren Serverfarmmetriken (Web-Apps) aufgeführt.
@@ -145,12 +141,12 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 
 Anhand dieser Metriken können Sie Warnungen ausgeben oder skalieren.
 
-| Metrikname | Unit |
+| Metrikname | Einheit |
 | --- | --- |
 | CpuPercentage |Percent |
 | MemoryPercentage |Percent |
-| DiskQueueLength |Count |
-| HttpQueueLength |Count |
+| DiskQueueLength |Anzahl |
+| HttpQueueLength |Anzahl |
 | BytesReceived |Byte |
 | BytesSent |Byte |
 

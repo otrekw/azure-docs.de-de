@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795570"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359958"
 ---
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Azure Premium-SSD-Datenträgern ein.
 
@@ -398,7 +398,7 @@ Nein, verwaltete SSD Standard-Datenträger beliebiger Größe können nicht mit 
 
 **Welche ist die maximale Größe verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 
-Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt, beträgt 2 TiB. Azure unterstützt bis zu 32TiB für verwaltete Datenträger für Daten im globalen Azure, 4TiB in Sovereign Clouds von Azure.
+Der Partitionstyp, den Azure für einen Betriebssystemdatenträger unterstützt, ist der Master Boot Record (MBR). Das MBR-Format unterstützt eine Datenträgergröße von bis zu 2 TiB. Die maximale Größe, die Azure für einen Betriebssystemdatenträger unterstützt, beträgt 2 TiB. Für verwaltete Datenträger unterstützt Azure bis zu 32 TiB.
 
 **Welche ist die maximale Größe nicht verwalteter Datenträger, die für Betriebssystemdatenträger und Datenträger für Daten unterstützt wird?**
 

@@ -4,15 +4,15 @@ description: Erfahren Sie, wie die VMware-Überwachungslösung dabei helfen kann
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 05/04/2018
-ms.openlocfilehash: dc453ad42312bb096aed1356d376b0906870a7b0
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: ac735c9131ebe7b7273d93a927cb4d4a8be24508
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75399187"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware-Überwachungslösung (veraltet) in Azure Monitor
 
@@ -128,7 +128,7 @@ Hier können Sie die Protokollabfrage bearbeiten, um nach etwas Bestimmtem zu su
 #### <a name="find-esxi-host-events"></a>Suchen von ESXi-Hostereignissen
 Ein einzelner ESXi-Host generiert basierend auf seinen Prozessen mehrere Protokolle. Die VMware-Überwachungslösung zentralisiert sie und fasst die auftretenden Ereignisse zusammen. Mit dieser zentralisierten Ansicht können Sie erkennen, auf welchem ESXi-Host eine große Anzahl von Ereignissen auftritt und welche Ereignisse in Ihrer Umgebung am häufigsten vorkommen.
 
-![event](./media/vmware/events.png)
+![Ereignis](./media/vmware/events.png)
 
 Sie können weitere Details anzeigen, indem Sie auf einen ESXi-Host oder einen Ereignistyp klicken.
 

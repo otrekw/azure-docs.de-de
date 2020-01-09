@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: ec79f6a9b255d44e66b901a0aae263c8dbbf2863
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623467"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644850"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Skalierungskontingente und -beschränkungen in DevTest Labs
 Bei der Arbeit mit DevTest Labs werden Sie möglicherweise feststellen, dass bestimmte Standardbeschränkungen für Azure-Ressourcen gelten, die sich auf den DevTest Labs-Dienst auswirken können. Diese Beschränkungen werden als **Kontingente** bezeichnet.
@@ -30,7 +30,7 @@ Sie können jede Azure-Ressource bis zur Ausschöpfung des Kontingents nutzen. J
 
 Jedes Abonnement weist z.B. ein Standardkontingent von 20 Kernen auf. Wenn Sie in Ihrem Lab demnach VMs mit jeweils vier Kernen erstellen, können Sie lediglich fünf VMs erstellen.
 
-Unter [Beschränkungen des Azure-Abonnements und -Diensts](https://docs.microsoft.com/azure/azure-subscription-service-limits) werden einige der am häufigsten geltenden Kontingente für Azure-Ressourcen aufgeführt. Zu Ressourcen, die am häufigsten in einem Lab verwendet werden und für die eventuell Kontingente gelten, zählen VM-Kerne, öffentliche IP-Adressen, Netzwerkschnittstellen, verwaltete Datenträger, RBAC-Rollenzuweisung und ExpressRoute-Verbindungen.
+Unter [Beschränkungen des Azure-Abonnements und -Diensts](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) werden einige der am häufigsten geltenden Kontingente für Azure-Ressourcen aufgeführt. Zu Ressourcen, die am häufigsten in einem Lab verwendet werden und für die eventuell Kontingente gelten, zählen VM-Kerne, öffentliche IP-Adressen, Netzwerkschnittstellen, verwaltete Datenträger, RBAC-Rollenzuweisung und ExpressRoute-Verbindungen.
 
 ## <a name="view-your-usage-and-quotas"></a>Anzeigen von Nutzungsdaten und Kontingenten
 In den folgenden Schritten wird gezeigt, wie die aktuellen Kontingente in Ihrem Abonnement für bestimmte Azure-Ressourcen angezeigt werden und der Prozentsatz von jedem Kontingent, das Sie genutzt haben, ermittelt wird.
@@ -47,7 +47,7 @@ In den folgenden Schritten wird gezeigt, wie die aktuellen Kontingente in Ihrem 
    ![Kontingente und Nutzung](./media/devtest-lab-scale-lab/devtestlab-view-quotas.png)
 
 ## <a name="requesting-more-resources-in-your-subscription"></a>Anfordern von weiteren Ressourcen im Abonnement
-Wenn Sie eine Kontingentgrenze erreichen, kann die Standardbeschränkung einer Ressource in einem Abonnement bis zu einem Höchstwert erhöht werden, wie unter [Azure-Abonnement und Dienstbeschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits) beschrieben wird.
+Wenn Sie eine Kontingentgrenze erreichen, kann die Standardbeschränkung einer Ressource in einem Abonnement bis zu einem Höchstwert erhöht werden, wie unter [Azure-Abonnement und Dienstbeschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits) beschrieben wird.
 
 In diesen Schritten wird erläutert, wie Sie eine Kontingenterhöhung über das [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) anfordern.
 

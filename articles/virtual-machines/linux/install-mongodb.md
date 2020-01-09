@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: 7f5fdd625eb49bfcac0bd58bca7a8415ac877517
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 643d4b918dd8677e8ed02a7def383efa77e71fce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035993"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430290"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
 
@@ -215,7 +215,7 @@ In diesen Beispielen wird vom virtuellen Computer eine lokale Verbindung mit der
 
 In diesen Beispielen wird die MongoDB-Kernumgebung für Entwicklungszwecke bereitgestellt. Wenden Sie die erforderlichen Optionen der Sicherheitskonfiguration für Ihre Umgebung an. Weitere Informationen finden Sie in den [Dokumenten zur MongoDB-Sicherheit](https://docs.mongodb.com/manual/security/).
 
-Weitere Informationen zur Erstellung mithilfe von Vorlagen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Weitere Informationen zur Erstellung mithilfe von Vorlagen finden Sie in der [Übersicht über den Azure Resource Manager](../../azure-resource-manager/management/overview.md).
 
 Die Azure Resource Manager-Vorlagen verwenden die benutzerdefinierte Skripterweiterung zum Herunterladen und Ausführen von Skripts auf Ihren virtuellen Computern. Weitere Informationen finden Sie unter [Verwenden der benutzerdefinierten Skripterweiterung von Azure mit virtuellen Linux-Computern](extensions-customscript.md).
 

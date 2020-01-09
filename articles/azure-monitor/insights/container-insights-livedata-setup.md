@@ -1,24 +1,14 @@
 ---
 title: Einrichten von Livedaten (Vorschau) mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von Containerprotokollen (stdout/stderr) und Ereignissen ohne Verwendung von kubectl mit Azure Monitor für Container einrichten.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/16/2019
-ms.author: magoedte
-ms.openlocfilehash: 596c5ad378d471c6c98616a48f44e96c365ee0bb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a3d020132e3c93eab7fec46d1ffe45d00b5ed43
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510755"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75404702"
 ---
 # <a name="how-to-setup-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
@@ -132,7 +122,7 @@ Weitere Informationen zur Einrichtung für erweiterte Sicherheit in Kubernetes f
 >[!IMPORTANT]
 >Wenn Sie Azure AD mit dem aktualisierten URI erneut für die Benutzerauthentifizierung konfiguriert haben, löschen Sie den Cache Ihres Browsers, um sicherzustellen, dass das aktualisierte Authentifizierungstoken heruntergeladen und angewendet wird.
 
-## <a name="grant-permission"></a>Erteilen der Berechtigung
+## <a name="grant-permission"></a>Erteilen einer Berechtigung
 
 Jedem Azure AD-Konto muss die Berechtigung für die entsprechenden APIs in Kubernetes erteilt werden, um auf die Funktion für Livedaten (Vorschau) zugreifen zu können. Die entsprechenden Schritte für das Azure Active Directory-Konto ähneln den Schritten, die im Abschnitt [Kubernetes RBAC-Authentifizierung](#configure-kubernetes-rbac-authentication) beschrieben sind. Bevor Sie die YAML-Konfigurationsvorlage auf Ihren Cluster anwenden, ersetzen Sie **clusterUser** unter **ClusterRoleBinding** durch den gewünschten Benutzer. 
 

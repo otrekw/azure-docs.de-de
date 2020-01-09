@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
-ms.openlocfilehash: 20a17e52064c5beb09ce4db5815ddd6faf7cbcba
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 235efd746562ea4bd52b9cb57da0d8165d60de02
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035522"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561319"
 ---
 # <a name="configure-prerequisites"></a>Konfigurieren der Voraussetzungen
 
@@ -28,7 +28,7 @@ Vor dem Verwenden des Marketplace-Angebots zum Bereitstellen eines selbstverwalt
  
 ## <a name="deploy-using-the-marketplace-offer"></a>Bereitstellen mithilfe des Marketplace-Angebots
 
-Die einfachste Möglichkeit, einen selbstverwalteten OpenShift Container Platform 3.11-Cluster in Azure bereitzustellen, stellt das [Azure Marketplace-Angebot](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.openshift-container-platform?tab=Overview) dar.
+Die einfachste Möglichkeit, einen selbstverwalteten OpenShift Container Platform 3.11-Cluster in Azure bereitzustellen, stellt das [Azure Marketplace-Angebot](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy) dar.
 
 Dies ist zwar die einfachste Option, sie bietet jedoch begrenzte Anpassungsmöglichkeiten. Das Marketplace-Angebot stellt OpenShift Container Platform 3.11.82 bereit und umfasst die folgenden Konfigurationsoptionen:
 

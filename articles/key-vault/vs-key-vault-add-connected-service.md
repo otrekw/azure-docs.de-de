@@ -9,12 +9,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: ghogen
-ms.openlocfilehash: 1df0ff3b6fea335dde5a3200f824adf14f924d9c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 1c12cf4a7bd097c6d33d032065734b477920644b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74452371"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456999"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Hinzufügen von Key Vault zu Ihrer Webanwendung mithilfe der Option „Verbundene Dienste“ in Visual Studio
 
@@ -112,7 +112,7 @@ Jetzt können Sie in Code auf Ihre Geheimnisse zugreifen. Die nächsten Schritte
                 {
                     webBuilder.UseStartup<Startup>();
                 });
-        private static string GetKeyVaultEndpoint() => "https://WebApplication4-3-kv.vault.azure.net";
+        private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     ```
 
 1. Öffnen Sie dann eine der Seitendateien, z.B. *Index.cshtml.cs*, und schreiben Sie den folgenden Code:

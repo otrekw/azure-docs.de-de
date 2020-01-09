@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 6af95b7f8bde6e77ba356fec9dde123e26a9a4a8
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: f49396331a31f7ca9eaf453dc8bf6880da2e0da8
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67448613"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613855"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>Verwalten eines Azure Data Box Edge-Geräts mittels Windows PowerShell
 
@@ -56,7 +56,7 @@ Set-HcsCertificate -Scope IotEdge -RootCACertificateFilePath "\\hcfs\root-ca-cer
 ```
 Wenn Sie dieses Cmdlet ausführen, werden Sie aufgefordert, das Kennwort für die Netzwerkfreigabe anzugeben.
 
-Weitere Informationen zu Zertifikaten finden Sie unter [Zertifikate für Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) oder [Installieren von Zertifikaten auf einem Gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway#install-certificates-on-the-gateway).
+Weitere Informationen zu Zertifikaten finden Sie unter [Zertifikate für Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-certs) oder [Installieren von Zertifikaten auf einem Gateway](https://docs.microsoft.com/azure/iot-edge/how-to-create-transparent-gateway).
 
 ## <a name="view-device-information"></a>Anzeigen von Geräteinformationen
  

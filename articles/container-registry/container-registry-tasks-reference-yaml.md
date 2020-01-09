@@ -3,12 +3,12 @@ title: 'YAML-Referenz: ACR Tasks'
 description: Referenz für die Definition von Aufgaben in YAML für Azure Container Registry Tasks (ACR Tasks), einschließlich Aufgabeneigenschaften, Schritttypen, Schritteigenschaften und integrierter Variablen.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: a27f55d08a7ed5d7bf3360030eabefc4b7720b82
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454638"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445693"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -77,9 +77,9 @@ Aufgabeneigenschaften werden in der Regel am Anfang einer Datei vom Typ `acr-tas
 
 | Eigenschaft | type | Optional | BESCHREIBUNG | Außerkraftsetzung unterstützt | Standardwert |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | Zeichenfolge | Ja | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. Ohne Angabe wird standardmäßig die neueste Version verwendet. | Nein | Keine |
+| `version` | string | Ja | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. Ohne Angabe wird standardmäßig die neueste Version verwendet. | Nein | Keine |
 | `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `timeout`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft `timeout` für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | 600 (10 Minuten) |
-| `workingDirectory` | Zeichenfolge | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `$HOME` |
+| `workingDirectory` | string | Ja | Das Arbeitsverzeichnis des Containers während der Laufzeit. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `workingDirectory`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie die für die Aufgabe angegebene Eigenschaft. | Ja | `$HOME` |
 | `env` | [string, string, ...] | Ja |  Ein Array von Zeichenfolgen im Format `key=value`, die die Umgebungsvariablen für die Aufgabe definieren. Wenn die Eigenschaft für eine Aufgabe angegeben wird, legt sie die `env`-Standardeigenschaft für alle Schritte fest. Wird die Eigenschaft für einen Schritt angegeben, überschreibt sie sämtliche von der Aufgabe geerbten Umgebungsvariablen. | Keine |
 | `secrets` | [Geheimnis, Geheimnis, ...] | Ja | Array mit [Geheimnisobjekten](#secret). | Keine |
 | `networks` | [Netzwerk, Netzwerk, ...] | Ja | Array mit [Netzwerkobjekten](#network). | Keine |
@@ -90,9 +90,9 @@ Das Geheimnisobjekt hat folgende Eigenschaften:
 
 | Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | Zeichenfolge | Nein | Der Bezeichner des Geheimnisses. | Keine |
-| `keyvault` | Zeichenfolge | Ja | Die Geheimnis-URL von Azure Key Vault. | Keine |
-| `clientID` | Zeichenfolge | Ja | Die Client-ID der [benutzerseitig zugewiesenen verwalteten Identität](container-registry-tasks-authentication-managed-identity.md) für Azure-Ressourcen. | Keine |
+| `id` | string | Nein | Der Bezeichner des Geheimnisses. | Keine |
+| `keyvault` | string | Ja | Die Geheimnis-URL von Azure Key Vault. | Keine |
+| `clientID` | string | Ja | Die Client-ID der [benutzerseitig zugewiesenen verwalteten Identität](container-registry-tasks-authentication-managed-identity.md) für Azure-Ressourcen. | Keine |
 
 ### <a name="network"></a>Netzwerk
 
@@ -100,8 +100,8 @@ Das Netzwerkobjekt hat folgende Eigenschaften:
 
 | Eigenschaft | type | Optional | BESCHREIBUNG | Standardwert |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | Zeichenfolge | Nein | Der Name des Netzwerks. | Keine |
-| `driver` | Zeichenfolge | Ja | Der Treiber für die Netzwerkverwaltung. | Keine |
+| `name` | string | Nein | Der Name des Netzwerks. | Keine |
+| `driver` | string | Ja | Der Treiber für die Netzwerkverwaltung. | Keine |
 | `ipv6` | bool | Ja | Aktivierungsstatus der IPv6-Netzwerkfunktionen. | `false` |
 | `skipCreation` | bool | Ja | Gibt an, ob die Netzwerkerstellung übersprungen werden soll. | `false` |
 | `isDefault` | bool | Ja | Gibt an, ob das Netzwerk ein mit Azure Container Registry bereitgestelltes Standardnetzwerk ist. | `false` |
@@ -145,24 +145,24 @@ Der Schritttyp `build` unterstützt die folgenden Eigenschaften. Details zu dies
 | -------- | ---- | -------- |
 | `detach` | bool | Optional |
 | `disableWorkingDirectoryOverride` | bool | Optional |
-| `entryPoint` | Zeichenfolge | Optional |
+| `entryPoint` | string | Optional |
 | `env` | [string, string, ...] | Optional |
 | `expose` | [string, string, ...] | Optional |
-| `id` | Zeichenfolge | Optional |
+| `id` | string | Optional |
 | `ignoreErrors` | bool | Optional |
-| `isolation` | Zeichenfolge | Optional |
+| `isolation` | string | Optional |
 | `keep` | bool | Optional |
-| `network` | object | Optional |
+| `network` | Objekt (object) | Optional |
 | `ports` | [string, string, ...] | Optional |
 | `pull` | bool | Optional |
-| `repeat` | int | Optional |
-| `retries` | int | Optional |
+| `repeat` | INT | Optional |
+| `retries` | INT | Optional |
 | `retryDelay` | int (Sekunden) | Optional |
-| `secret` | object | Optional |
+| `secret` | Objekt (object) | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
 | `when` | [string, string, ...] | Optional |
-| `workingDirectory` | Zeichenfolge | Optional |
+| `workingDirectory` | string | Optional |
 
 ### <a name="examples-build"></a>Beispiele: build
 
@@ -216,7 +216,7 @@ Der Schritttyp `push` unterstützt die folgenden Eigenschaften. Details zu diese
 | | | |
 | -------- | ---- | -------- |
 | `env` | [string, string, ...] | Optional |
-| `id` | Zeichenfolge | Optional |
+| `id` | string | Optional |
 | `ignoreErrors` | bool | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
@@ -262,24 +262,24 @@ Der Schritttyp `cmd` unterstützt die folgenden Eigenschaften:
 | -------- | ---- | -------- |
 | `detach` | bool | Optional |
 | `disableWorkingDirectoryOverride` | bool | Optional |
-| `entryPoint` | Zeichenfolge | Optional |
+| `entryPoint` | string | Optional |
 | `env` | [string, string, ...] | Optional |
 | `expose` | [string, string, ...] | Optional |
-| `id` | Zeichenfolge | Optional |
+| `id` | string | Optional |
 | `ignoreErrors` | bool | Optional |
-| `isolation` | Zeichenfolge | Optional |
+| `isolation` | string | Optional |
 | `keep` | bool | Optional |
-| `network` | object | Optional |
+| `network` | Objekt (object) | Optional |
 | `ports` | [string, string, ...] | Optional |
 | `pull` | bool | Optional |
-| `repeat` | int | Optional |
-| `retries` | int | Optional |
+| `repeat` | INT | Optional |
+| `retries` | INT | Optional |
 | `retryDelay` | int (Sekunden) | Optional |
-| `secret` | object | Optional |
+| `secret` | Objekt (object) | Optional |
 | `startDelay` | int (Sekunden) | Optional |
 | `timeout` | int (Sekunden) | Optional |
 | `when` | [string, string, ...] | Optional |
-| `workingDirectory` | Zeichenfolge | Optional |
+| `workingDirectory` | string | Optional |
 
 Details zu diesen Eigenschaften finden Sie im Abschnitt [Aufgabenschritteigenschaften](#task-step-properties) dieses Artikels.
 
@@ -360,26 +360,26 @@ Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenscha
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | Ja | Gibt an, ob der Container bei der Ausführung getrennt werden soll. | `false` |
 | `disableWorkingDirectoryOverride` | bool | Ja | Gibt an, ob die `workingDirectory`-Überschreibungsfunktion deaktiviert werden soll. Verwenden Sie diese Eigenschaft in Kombination mit `workingDirectory`, um sämtliche Aspekte des Arbeitsverzeichnisses des Containers zu steuern. | `false` |
-| `entryPoint` | Zeichenfolge | Ja | Setzt den `[ENTRYPOINT]` des Containers für einen Schritt außer Kraft. | Keine |
+| `entryPoint` | string | Ja | Setzt den `[ENTRYPOINT]` des Containers für einen Schritt außer Kraft. | Keine |
 | `env` | [string, string, ...] | Ja | Ein Array von Zeichenfolgen im `key=value`-Format, die die Umgebungsvariablen für den Schritt definieren. | Keine |
 | `expose` | [string, string, ...] | Ja | Array mit verfügbar gemachten Ports aus dem Container. |  Keine |
-| [`id`](#example-id) | Zeichenfolge | Ja | Identifiziert den Schritt innerhalb der Aufgabe eindeutig. Andere Schritte in der Aufgabe können auf die `id` eines Schritts verweisen, beispielsweise zur Abhängigkeitsüberprüfung mit `when`.<br /><br />Die `id` ist auch der Name des ausgeführten Containers. Prozesse, die in anderen Containern in der Aufgabe ausgeführt werden, können beispielsweise als DNS-Hostnamen auf die `id` verweisen oder durch einen Verweis mit Docker-Protokollen [Id] auf den Container zugreifen. | `acb_step_%d`, wobei `%d` der nullbasierte Index des Schritts (von oben nach unten) in der YAML-Datei ist. |
+| [`id`](#example-id) | string | Ja | Identifiziert den Schritt innerhalb der Aufgabe eindeutig. Andere Schritte in der Aufgabe können auf die `id` eines Schritts verweisen, beispielsweise zur Abhängigkeitsüberprüfung mit `when`.<br /><br />Die `id` ist auch der Name des ausgeführten Containers. Prozesse, die in anderen Containern in der Aufgabe ausgeführt werden, können beispielsweise als DNS-Hostnamen auf die `id` verweisen oder durch einen Verweis mit Docker-Protokollen [Id] auf den Container zugreifen. | `acb_step_%d`, wobei `%d` der nullbasierte Index des Schritts (von oben nach unten) in der YAML-Datei ist. |
 | `ignoreErrors` | bool | Ja | Gibt an, ob der Schritt als erfolgreich markiert werden soll (unabhängig davon, ob bei der Containerausführung ein Fehler aufgetreten ist). | `false` |
-| `isolation` | Zeichenfolge | Ja | Die Isolationsstufe des Containers. | `default` |
+| `isolation` | string | Ja | Die Isolationsstufe des Containers. | `default` |
 | `keep` | bool | Ja | Gibt an, ob der Container des Schritts nach der Ausführung beibehalten werden soll. | `false` |
-| `network` | object | Ja | Gibt ein Netzwerk an, in dem der Container ausgeführt wird. | Keine |
+| `network` | Objekt (object) | Ja | Gibt ein Netzwerk an, in dem der Container ausgeführt wird. | Keine |
 | `ports` | [string, string, ...] | Ja | Array mit Ports, die aus dem Container für den Host veröffentlicht werden. |  Keine |
 | `pull` | bool | Ja | Gibt an, ob vor dem Ausführen des Containers ein Pullvorgang erzwungen werden soll, um jegliches Zwischenspeicherverhalten zu verhindern. | `false` |
 | `privileged` | bool | Ja | Gibt an, ob der Container im privilegierten Modus ausgeführt werden soll. | `false` |
-| `repeat` | int | Ja | Die Anzahl von Wiederholungsversuchen für die Containerausführung. | 0 |
-| `retries` | int | Ja | Die Anzahl von Wiederholungsversuchen im Falle einer nicht erfolgreichen Containerausführung. Ein erneuter Versuch findet nur statt, wenn der Exitcode des Containers nicht Null ist. | 0 |
+| `repeat` | INT | Ja | Die Anzahl von Wiederholungsversuchen für die Containerausführung. | 0 |
+| `retries` | INT | Ja | Die Anzahl von Wiederholungsversuchen im Falle einer nicht erfolgreichen Containerausführung. Ein erneuter Versuch findet nur statt, wenn der Exitcode des Containers nicht Null ist. | 0 |
 | `retryDelay` | int (Sekunden) | Ja | Die Verzögerung zwischen erneuten Ausführungsversuchen für einen Container (in Sekunden). | 0 |
-| `secret` | object | Ja | Gibt ein Azure Key Vault-Geheimnis oder eine [verwaltete Identität für Azure-Ressourcen](container-registry-tasks-authentication-managed-identity.md) an. | Keine |
+| `secret` | Objekt (object) | Ja | Gibt ein Azure Key Vault-Geheimnis oder eine [verwaltete Identität für Azure-Ressourcen](container-registry-tasks-authentication-managed-identity.md) an. | Keine |
 | `startDelay` | int (Sekunden) | Ja | Verzögerung der Ausführung eines Containers (in Sekunden). | 0 |
 | `timeout` | int (Sekunden) | Ja | Maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann, bevor er beendet wird. | 600 |
 | [`when`](#example-when) | [string, string, ...] | Ja | Konfiguriert die Abhängigkeit eines Schritts von einem oder mehreren anderen Schritten innerhalb der Aufgabe. | Keine |
-| `user` | Zeichenfolge | Ja | Der Benutzername oder die Benutzer-ID eines Containers. | Keine |
-| `workingDirectory` | Zeichenfolge | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. | `$HOME` |
+| `user` | string | Ja | Der Benutzername oder die Benutzer-ID eines Containers. | Keine |
+| `workingDirectory` | string | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. | `$HOME` |
 
 ### <a name="examples-task-step-properties"></a>Beispiele: Aufgabenschritteigenschaften
 
@@ -541,9 +541,9 @@ Jeder der folgenden Aliase verweist auf ein stabiles Image in Microsoft Containe
 | Alias | Image |
 | ----- | ----- |
 | `acr` | `mcr.microsoft.com/acr/acr-cli:0.1` |
-| `az` | `mcr.microsoft.com/acr/azure-cli:d0725bc` |
-| `bash` | `mcr.microsoft.com/acr/bash:d0725bc` |
-| `curl` | `mcr.microsoft.com/acr/curl:d0725bc` |
+| `az` | `mcr.microsoft.com/acr/azure-cli:a80af84` |
+| `bash` | `mcr.microsoft.com/acr/bash:a80af84` |
+| `curl` | `mcr.microsoft.com/acr/curl:a80af84` |
 
 In der folgenden Beispielaufgabe werden mehrere Aliase zum [Bereinigen](container-registry-auto-purge.md) von Imagetags, die älter als 7 Tage sind, im Repository `samples/hello-world` in der Ausführungsregistrierung verwendet:
 

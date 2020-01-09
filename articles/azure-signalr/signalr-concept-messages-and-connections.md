@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 2785d85db47ed3b214044e673566a2837b83e984
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 5f6428231a3639738e8fb52e7dc3f2f2a3d2a26e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285488"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75392813"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Nachrichten und Verbindungen in Azure SignalR Service
 
@@ -38,8 +38,6 @@ Nachrichten mit einer Größe von mehr als 2 KB werden als mehrere Nachrichten 
 
 Beispiel: Angenommen, Sie verfügen über drei Clients und einen Anwendungsserver. Ein Client sendet eine 4 KB große Nachricht, damit der Server einen Broadcast an alle Clients durchführt. In diesem Fall werden acht Nachrichten gezählt: eine Nachricht vom Dienst an den Anwendungsserver und drei Nachrichten vom Dienst an die Clients. Jede Nachricht wird als zwei Nachrichten mit jeweils 2 KB gezählt.
 
-Im Azure-Portal werden weiterhin null Nachrichten angezeigt, bis mehr als 100 Nachrichten zusammengekommen sind.
-
 ## <a name="how-connections-are-counted"></a>Zählung von Verbindungen
 
 Es gibt Server- und Clientverbindungen mit Azure SignalR Service. Standardmäßig beginnt jeder Anwendungsserver mit fünf Anfangsverbindungen pro Hub, und jeder Client hat eine Clientverbindung.
@@ -54,7 +52,7 @@ Während der Lebensdauer des Anwendungsservers halten Dienst und Anwendungsserve
 
 ## <a name="how-inboundoutbound-traffic-is-counted"></a>Berücksichtigung von ein-/ausgehendem Datenverkehr
 
-Die Unterscheidung zwischen eingehendem und ausgehendem Datenverkehr basiert auf der Perspektive von Azure SignalR Service. Datenverkehr wird in Bytes berechnet. Genau wie bei der Nachrichtenanzahl gilt auch beim Datenverkehr eine Samplingrate. Das Diagramm für ein-/ausgehenden Datenverkehr im Azure-Portal wird hubspezifisch alle 100 KB aktualisiert.
+Die Unterscheidung zwischen eingehendem und ausgehendem Datenverkehr basiert auf der Perspektive von Azure SignalR Service. Datenverkehr wird in Bytes berechnet.
 
 ## <a name="related-resources"></a>Zugehörige Ressourcen
 

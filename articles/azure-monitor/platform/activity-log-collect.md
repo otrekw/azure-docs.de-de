@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: 40025e2347fa80d2717ba292f6e3d74f5dda8e5c
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: ae71b71ad7c0425893391954f5ffe8b285370273
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931412"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531036"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor
 
@@ -47,7 +47,7 @@ Gehen Sie folgendermaßen vor, um das Aktivitätsprotokoll mit Ihrem Log Analyti
     ![Verbinden von Arbeitsbereichen](media/activity-log-export/connect-workspace.png)
 
 ## <a name="analyze-in-log-analytics-workspace"></a>Analysieren im Log Analytics-Arbeitsbereich
-Wenn Sie ein Aktivitätsprotokoll mit einem Log Analytics-Arbeitsbereich verbinden, werden Einträge in den Arbeitsbereich in eine Tabelle namens **AzureActivity** geschrieben, die Sie mit einer [Protokollabfrage](../log-query/log-query-overview.md) abrufen können. Die Struktur dieser Tabelle ist je nach [Kategorie des Protokolleintrags](activity-logs-overview.md#categories-in-the-activity-log) verschieden. Eine Beschreibung der einzelnen Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md).
+Wenn Sie ein Aktivitätsprotokoll mit einem Log Analytics-Arbeitsbereich verbinden, werden Einträge in den Arbeitsbereich in eine Tabelle namens **AzureActivity** geschrieben, die Sie mit einer [Protokollabfrage](../log-query/log-query-overview.md) abrufen können. Die Struktur dieser Tabelle ist je nach [Kategorie des Protokolleintrags](activity-log-view.md#categories-in-the-activity-log) verschieden. Eine Beschreibung der einzelnen Kategorien finden Sie unter [Ereignisschema des Azure-Aktivitätsprotokolls](activity-log-schema.md).
 
 ## <a name="activity-logs-analytics-monitoring-solution"></a>Überwachungslösung der Aktivitätsprotokollanalyse
 Die Azure Log Analytics-Überwachungslösung umfasst mehrere Protokollabfragen und Ansichten zum Analysieren der Aktivitätsprotokolldatensätze in Ihrem Log Analytics-Arbeitsbereich.

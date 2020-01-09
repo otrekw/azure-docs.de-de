@@ -3,17 +3,17 @@ title: Erfassen von Leistungsindikatoren in Azure-Clouddiensten | Microsoft-Doku
 description: Erfahren Sie, wie Sie mithilfe von Azure-Diagnose und Application Insights Leistungsindikatoren in Clouddiensten ermitteln, verwenden und erstellen.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 02/02/2018
-ms.author: gwallace
-ms.openlocfilehash: d6b16b859b29ef835bca75c5fca0ea1a9d35a306
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.author: tagore
+ms.openlocfilehash: 16b0727a78ad8ad582535fa1f5b0e57079cc4c05
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68358939"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75385585"
 ---
 # <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
 
@@ -292,3 +292,6 @@ Wie zuvor erwähnt, werden die zu erfassenden Leistungsindikatoren in der Datei 
 - [Systemleistungsindikatoren in Application Insights](../azure-monitor/app/performance-counters.md)
 - [Angeben eines Indikatorpfads](https://msdn.microsoft.com/library/windows/desktop/aa373193(v=vs.85))
 - [Schema der Azure-Diagnose – Leistungsindikatoren](../azure-monitor/platform/diagnostics-extension-schema-1dot3.md#performancecounters-element)
+
+
+

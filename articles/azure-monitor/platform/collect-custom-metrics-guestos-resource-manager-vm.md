@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286177"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364117"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
 
@@ -25,7 +25,7 @@ In diesem Artikel wird der Prozess zum Senden von Leistungsmetriken des Gastbetr
 
 Wenn Sie diesen Speicherort verwenden möchten, können Sie die gleichen Aktionen wie für Plattformmetriken nutzen. Zu den Aktionen gehören Benachrichtigung nahezu in Echtzeit, Diagrammerstellung, Routing, Zugriff über eine REST-API und vieles mehr. In der Vergangenheit hat die Diagnoseerweiterung in Azure Storage geschrieben, aber nicht in den Azure Monitor-Datenspeicher.
 
-Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../../azure-resource-manager/resource-group-overview.md) sowie deren Struktur und Syntax.
+Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie sich über [Vorlagenbereitstellungen](../../azure-resource-manager/management/overview.md) sowie deren Struktur und Syntax.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

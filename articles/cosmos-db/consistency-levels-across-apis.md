@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 8bfff7790fa4984241e1c3dda19a20c8b13591fb
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 819929fb157444ae53df113c0318dd18146156c9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442041"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Konsistenzebenen und Azure Cosmos DB-APIs
 
@@ -21,7 +21,6 @@ Azure Cosmos DB bietet für gängige Datenbanken native Unterstützung für Wire
 Für die SQL-API, die Gremlin-API und die Tabellen-API wird die im Azure Cosmos-Konto konfigurierte Standardkonsistenzebene verwendet. 
 
 Bei Verwenden der Cassandra-API oder der Azure Cosmos DB-API für MongoDB erhalten Anwendungen einen vollständigen Satz von Konsistenzebenen, die von Apache Cassandra bzw. MongoDB geboten werden, mit noch stärkeren Garantien für Konsistenz und Dauerhaftigkeit. In diesem Dokument sind die entsprechenden Konsistenzebenen von Azure Cosmos DB für die Konsistenzebenen von Apache Cassandra und MongoDB aufgeführt.
-
 
 ## <a id="cassandra-mapping"></a>Zuordnung zwischen Apache Cassandra- und Azure Cosmos DB-Konsistenzebenen
 
@@ -33,7 +32,7 @@ Im Gegensatz zu Azure Cosmos DB bietet Apache Cassandra nativ keine genau defini
 
 Die folgende Tabelle veranschaulicht, wie die nativen Cassandra-Konsistenzebenen den Konsistenzebenen von Azure Cosmos DB zugeordnet werden, wenn die Cassandra-API verwendet wird:  
 
-[ ![Zuordnung zum Cassandra-Konsistenzmodell](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![Zuordnung zum Cassandra-Konsistenzmodell](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>Zuordnung zwischen Konsistenzebenen von MongoDB und Azure Cosmos DB
 
@@ -51,11 +50,11 @@ Bei Verwenden der Azure Cosmos DB-API für MongoDB gilt Folgendes:
 
 Die folgende Tabelle veranschaulicht, wie die nativen Schreib- und Lesebestätigungen von MongoDB den Konsistenzebenen von Azure Cosmos DB zugeordnet werden, wenn die Azure Cosmos DB-API für MongoDB verwendet wird:
 
-[ ![Zuordnung zum MongoDB-Konsistenzmodell](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![Zuordnung zum MongoDB-Konsistenzmodell](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Konsistenzebenen und die Kompatibilität zwischen Azure Cosmos DB-APIs und Open-Source-APIs. Entsprechende Informationen finden Sie in den folgenden Artikeln:
+Erfahren Sie mehr über die Konsistenzebenen und die Kompatibilität zwischen Azure Cosmos DB-APIs und Open-Source-APIs. Weitere Informationen finden Sie in folgenden Artikeln:
 
 * [Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschiedene Konsistenzebenen](consistency-levels-tradeoffs.md)
 * [MongoDB-Features, die von der API für MongoDB von Azure Cosmos DB unterstützt werden](mongodb-feature-support.md)

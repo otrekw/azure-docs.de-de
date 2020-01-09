@@ -3,12 +3,12 @@ title: Informationen zu Azure Policy für die AKS-Engine
 description: Erfahren Sie, wie Azure Policy CustomResourceDefinitions und Open Policy Agent von Gatekeeper v3 verwendet, um Cluster mit der AKS-Engine zu verwalten.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2d1ae33755dcb52c5fe65ec46f0d02e090f6f417
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c41a9d84dfe43e356e9a4a17af523a37209c2933
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74267248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436424"
 ---
 # <a name="understand-azure-policy-for-aks-engine"></a>Grundlegendes zu Azure Policy für die AKS-Engine
 
@@ -33,7 +33,7 @@ Führen Sie die folgenden Aktionen aus, um Azure Policy für die AKS-Engine für
 
 Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures aktivieren, muss in Ihrem Abonnement der **Microsoft.PolicyInsights**-Ressourcenanbieter aktiviert und eine Rollenzuweisung für den Clusterdienstprinzipal erstellt werden. 
 
-1. Zum Aktivieren des Ressourcenanbieters führen Sie die Schritte unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal) aus, oder führen Sie entweder den Azure CLI- oder Azure PowerShell-Befehl aus:
+1. Zum Aktivieren des Ressourcenanbieters führen Sie die Schritte unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) aus, oder führen Sie entweder den Azure CLI- oder Azure PowerShell-Befehl aus:
 
    - Azure-Befehlszeilenschnittstelle
 

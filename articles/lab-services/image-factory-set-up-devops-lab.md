@@ -1,6 +1,6 @@
 ---
 title: Ausführen einer Image Factory aus Azure DevOps in Azure DevTest Labs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine benutzerdefinierte Image Factory in Azure DevTest Labs erstellen.
+description: Erfahren Sie, wie Sie in Azure DevTest Labs eine benutzerdefinierte Image Factory erstellen.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61320605"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638951"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Ausführen einer Image Factory aus AzureDevOps
 Dieser Artikel behandelt alle erforderlichen Vorbereitungsschritte, um die Image Factory aus Azure DevOps (früher Visual Studio Team Services) auszuführen.
@@ -78,7 +78,7 @@ Zu diesem Zeitpunkt haben Sie die Quelldateien in einem Git-Repository in Azure 
 Um die Befehlszeilenparameter zu vereinfachen, kapseln Sie die Schlüsselwerte, die die Image Factory steuern, in einen Satz Buildvariablen. Wählen Sie die Registerkarte **Variablen** aus, wo eine Liste mehrerer Standardvariablen angezeigt wird. Dies ist die Liste der in Azure DevOps einzugebenden Variablen:
 
 
-| Variablenname | Wert | Notizen |
+| Variablenname | value | Notizen |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | Dies ist der vollständige Pfad im Repository zum Ordner **Configuration**. Wenn Sie oben das gesamte Repository importiert haben, ist der Wert auf der linken Seite zutreffend. Andernfalls aktualisieren Sie ihn so, dass er auf den Speicherort von „Configuration“ verweist. |
 | DevTestLabName | MyImageFactory | Der Name des Labs in Azure DevTest Labs, das als Factory zur Erzeugung von Images verwendet wird. Wenn Sie keins haben, erstellen Sie eins. Stellen Sie sicher, dass sich das Lab im selben Abonnement befindet, auf das auch der Dienstendpunkt Zugriff hat. |
@@ -87,7 +87,7 @@ Um die Befehlszeilenparameter zu vereinfachen, kapseln Sie die Schlüsselwerte, 
 | MachineUserName | ImageFactoryUser | Der integrierte Administratorkonto-Benutzername für die virtuellen Computer. Dies ist ein vorübergehendes Konto. |
 | StandardTimeoutMinutes | 30 | Der Timeout, der für normale Azure-Vorgänge abgewartet werden soll. |
 | SubscriptionId |  0000000000-0000-0000-0000-0000000000000 | Die ID des Abonnements, in dem sich das Lab befindet, auf das auch der Dienstendpunkt Zugriff hat. |
-| VMSize | Standard_A3 | Die Größe des virtuellen Computers, der für den Schritt **Erstellen** verwendet werden soll. Die erstellten VMs sind kurzlebig. Die Größe muss derjenigen entsprechen, die [für das Lab aktiviert](devtest-lab-set-lab-policy.md) ist. Bestätigen Sie, dass ein ausreichendes [Abonnement-Kontingent Speicherkerne](../azure-subscription-service-limits.md) vorhanden ist.
+| VMSize | Standard_A3 | Die Größe des virtuellen Computers, der für den Schritt **Erstellen** verwendet werden soll. Die erstellten VMs sind kurzlebig. Die Größe muss derjenigen entsprechen, die [für das Lab aktiviert](devtest-lab-set-lab-policy.md) ist. Bestätigen Sie, dass ein ausreichendes [Abonnement-Kontingent Speicherkerne](../azure-resource-manager/management/azure-subscription-service-limits.md) vorhanden ist.
 
 ![Buildvariablen](./media/set-up-devops-lab/configure-build-variables.png)
 

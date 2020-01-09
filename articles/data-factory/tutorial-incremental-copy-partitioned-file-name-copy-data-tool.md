@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 9c72bc9c0862820b72fbecee7966e946f4ba0001
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b6826fa53e9810bdd30af4faf9fbf6bc3c3492e8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439246"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer Dateien basierend auf dem zeitpartitionierten Dateinamen und mithilfe des Tools „Daten kopieren“
 
@@ -72,7 +72,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
          
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).
 
 5. Wählen Sie unter **Version** die Option **V2**.
 6. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (etwa Azure Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von der Data Factory genutzt werden, können sich an anderen Standorten und in anderen Regionen befinden.
@@ -102,7 +102,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     d. Geben Sie unter **Recurrence** (Wiederholung) **1 Hour(s)** (1 Stunde[n]) ein. 
     
-    e. Klicken Sie auf **Weiter**. 
+    e. Wählen Sie **Weiter** aus. 
     
     Über die Data Factory-Benutzeroberfläche wird eine Pipeline mit dem angegebenen Tasknamen erstellt. 
 

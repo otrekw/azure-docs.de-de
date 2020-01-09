@@ -1,18 +1,17 @@
 ---
 title: workspace()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
 description: Der workspace-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einem bestimmten Arbeitsbereich in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
-ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2018
-ms.openlocfilehash: f26b9534fbf95cc301ae782d47ab7030988fa469
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 255888acf5da6149b6a964b23ed038b99715481c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932850"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364950"
 ---
 # <a name="workspace-expression-in-azure-monitor-log-query"></a>workspace()-Ausdruck in Azure Monitor-Protokollabfragen
 

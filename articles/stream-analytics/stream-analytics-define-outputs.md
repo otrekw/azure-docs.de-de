@@ -1,19 +1,18 @@
 ---
 title: Grundlegendes zu den Ausgaben von Azure Stream Analytics
 description: In diesem Artikel werden die Datenausgabeoptionen beschrieben, die in Azure Stream Analytics verfügbar sind, z.B. Power BI für Analyseergebnisse.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: 6f04ccf216edb4e6a654c83c6220451bfccfe6ac
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5d4e8c081e4009b1115d6b56ffc7244ad41001e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73488513"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75638917"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Grundlegendes zu den Ausgaben von Azure Stream Analytics
 
@@ -52,7 +51,7 @@ In der folgenden Tabelle sind Eigenschaftsnamen und deren Beschreibungen für di
 
 Sie können [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) als Ausgabe für relationale Daten oder für Anwendungen verwenden, die auf Inhalten aufsetzen, die in einer relationalen Datenbank gehostet werden. Stream Analytics-Aufträge schreiben in eine vorhandene Tabelle in einer SQL-Datenbank. Das Tabellenschema muss genau den Feldern und deren Typen in der Ausgabe Ihres Auftrags entsprechen. Sie können auch [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) als Ausgabe über die Ausgabeoption „SQL-Datenbank“ angeben. Weitere Informationen zu Möglichkeiten zur Verbesserung des Schreibdurchsatzes finden Sie im Artikel [Stream Analytics mit Azure SQL-Datenbank als Ausgabe](stream-analytics-sql-output-perf.md).
 
-Sie können auch eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Ausgabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten Azure SQL-Datenbank-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und anschließend in Azure Stream Analytics die folgenden Einstellungen manuell konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
+Sie können auch eine [verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance) als Ausgabe verwenden. Sie müssen einen [öffentlichen Endpunkt in der verwalteten Azure SQL-Datenbank-Instanz konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure) und dann in Azure Stream Analytics die folgenden Einstellungen manuell konfigurieren. Für den virtuellen Azure-Computer mit SQL Server und einer angefügten Datenbank wird ebenfalls das manuelle Konfigurieren der folgenden Einstellungen unterstützt.
 
 Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Beschreibungen zum Erstellen einer SQL-Datenbank-Ausgabe.
 
@@ -63,7 +62,7 @@ Die folgende Tabelle enthält die Eigenschaftennamen und die entsprechenden Besc
 | Servername | Der Name des SQL-Datenbank-Servers Für die verwaltete Azure SQL-Datenbank-Instanz muss Port 3342 angegeben werden. Beispiel: *sampleserver.public.database.windows.net,3342* |
 | Username | Der Benutzername, der Schreibzugriff auf die Datenbank hat. Stream Analytics unterstützt nur die SQL-Authentifizierung. |
 | Kennwort | Das Kennwort zum Herstellen einer Verbindung mit der Datenbank |
-| Table | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. Das Schema dieser Tabelle sollte genau der Anzahl der Felder und deren Typen entsprechen, die Ihre Auftragsausgabe generiert. |
+| Tabelle | Der Name der Tabelle, in die die Ausgabe geschrieben wird. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. Das Schema dieser Tabelle sollte genau der Anzahl der Felder und deren Typen entsprechen, die Ihre Auftragsausgabe generiert. |
 |Erben des Partitionsschemas| Eine Option zum Erben des Partitionierungsschemas Ihres vorherigen Abfrageschrittes, um die vollständig parallele Topologie mit mehreren in die Tabelle Schreibenden zu aktivieren. Weitere Informationen finden Sie unter [Azure Stream Analytics-Ausgabe an Azure SQL-Datenbank](stream-analytics-sql-output-perf.md).|
 |Max Batch Count| Der empfohlene obere Grenzwert für die Anzahl der Sätze, die mit jeder Transaktion zum Masseneinfügen gesendet werden.|
 
@@ -156,8 +155,8 @@ Die folgende Tabelle enthält die Datentypkonvertierungen von [Stream Analytics-
 
 Quelle: Stream Analytics | Ziel: Power BI
 -----|-----
-bigint | Int64
-nvarchar(max) | Zeichenfolge
+BIGINT | Int64
+nvarchar(max) | String
 datetime | Datetime
 float | Double
 Datensatzarray | Zeichenfolgentyp, Konstantenwert „IRecord“ oder „IArray“
@@ -168,12 +167,12 @@ Stream Analytics leitet das Datenmodellschema vom ersten Ereignissatz in der Aus
 Vermeiden Sie die `SELECT *`-Abfrage, um zeilenübergreifende dynamische Schemaaktualisierungen zu verhindern. Neben einer möglichen Beeinträchtigung der Leistung ist möglicherweise auch der Zeitaufwand für die Ergebnisse ungewiss. Wählen Sie die genauen Felder aus, die auf dem Power BI-Dashboard angezeigt werden sollen. Außerdem müssen die Datenwerte mit dem ausgewählten Datentyp kompatibel sein.
 
 
-Vorher/Aktuell | Int64 | Zeichenfolge | DateTime | Double
+Vorher/Aktuell | Int64 | String | Datetime | Double
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | Zeichenfolge | Zeichenfolge | Double
-Double | Double | Zeichenfolge | Zeichenfolge | Double
-Zeichenfolge | String | String | String | Zeichenfolge 
-Datetime | Zeichenfolge | Zeichenfolge |  Datetime | Zeichenfolge
+Int64 | Int64 | String | String | Double
+Double | Double | String | String | Double
+String | String | String | String | String 
+Datetime | String | String |  Datetime | String
 
 ## <a name="table-storage"></a>Table Storage
 
@@ -266,7 +265,7 @@ Azure Stream Analytics ruft Azure Functions über HTTP-Trigger auf. Der Azure Fu
 | --- | --- |
 | Funktionen-App |Der Name der Azure Functions-App. |
 | Funktion |Der Name der Funktion in der Azure Functions-App. |
-| Schlüssel |Wenn Sie eine Azure-Funktion aus einem anderen Abonnement verwenden möchten, können Sie dazu den Schlüssel für den Zugriff auf Ihre Funktion angeben. |
+| Key |Wenn Sie eine Azure-Funktion aus einem anderen Abonnement verwenden möchten, können Sie dazu den Schlüssel für den Zugriff auf Ihre Funktion angeben. |
 | Max Batch Size |Eine Eigenschaft, mit der Sie die maximale Größe für jeden Ausgabebatch festlegen können, der an Ihre Azure-Funktion gesendet wird. Die Eingabeeinheit ist Bytes. Standardmäßig ist dieser Wert auf 262,144 Bytes (256 KB) festgelegt. |
 | Max Batch Count  |Eine Eigenschaft, mit der Sie die maximale Anzahl von Ereignissen in jedem Batch angeben können, die an Azure Functions gesendet werden. Der Standardwert ist 100. |
 
@@ -341,15 +340,15 @@ In der folgenden Tabelle sind einige Aspekte von Ausgabebatches beschrieben:
 
 | Ausgabetyp | Maximale Nachrichtengröße | Optimierung der Batchgröße |
 | :--- | :--- | :--- |
-| Azure Data Lake Store | Siehe [Grenzwerte für Data Lake Store](../azure-subscription-service-limits.md#data-lake-store-limits). | Verwenden Sie bis zu 4 MB pro Schreibvorgang. |
+| Azure Data Lake Store | Siehe [Grenzwerte für Data Lake Store](../azure-resource-manager/management/azure-subscription-service-limits.md#data-lake-store-limits). | Verwenden Sie bis zu 4 MB pro Schreibvorgang. |
 | Azure SQL-Datenbank | Konfigurierbar mithilfe der maximal zulässigen Batchanzahl. Standardmäßig höchstens 10.000 Zeilen und mindestens 100 Zeilen bei einem einzelnen Masseneinfügevorgang.<br />Siehe [Einschränkungen für Azure SQL-Datenbank](../sql-database/sql-database-resource-limits.md). |  Jeder Batch wird zunächst mit maximaler Batchanzahl als Massenvorgang eingefügt. Der Batch wird in der Mitte (bis zur minimalen Batchanzahl) basierend auf wiederholbaren Fehlern aus SQL unterteilt. |
-| Azure Blob Storage | Siehe [Azure Storage-Grenzwerte](../azure-subscription-service-limits.md#storage-limits). | Die maximale Größe von Blobblöcken beträgt 4 MB.<br />Die maximale Anzahl von Blobblöcken beträgt 50.000. |
+| Azure Blob Storage | Siehe [Azure Storage-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Die maximale Größe von Blobblöcken beträgt 4 MB.<br />Die maximale Anzahl von Blobblöcken beträgt 50.000. |
 | Azure Event Hubs  | 256KB oder 1MB pro Nachricht. <br />Siehe [Event Hubs-Grenzwerte](../event-hubs/event-hubs-quotas.md). |  Wenn die E/A-Partitionierung nicht ausgerichtet ist, wird jedes Ereignis einzeln in `EventData` verpackt und als Batch gesendet, dessen Größe bis zur maximalen Nachrichtengröße reichen kann. Dies geschieht auch, wenn [benutzerdefinierte Metadateneigenschaften](#custom-metadata-properties-for-output) verwendet werden. <br /><br />  Wenn die E/A-Partitionierung ausgerichtet ist, werden mehrere Ereignisse bis zur maximalen Nachrichtengröße in eine einzelne `EventData`-Instanz verpackt und gesendet. |
 | Power BI | Siehe [Einschränkungen für Power BI-REST-API](https://msdn.microsoft.com/library/dn950053.aspx). |
-| Azure-Tabellenspeicher | Siehe [Azure Storage-Grenzwerte](../azure-subscription-service-limits.md#storage-limits). | Der Standardwert ist 100 Entitäten pro Einzeltransaktion. Sie können bei Bedarf einen niedrigeren Wert konfigurieren. |
+| Azure-Tabellenspeicher | Siehe [Azure Storage-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#storage-limits). | Der Standardwert ist 100 Entitäten pro Einzeltransaktion. Sie können bei Bedarf einen niedrigeren Wert konfigurieren. |
 | Azure Service Bus-Warteschlange   | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
 | Azure Service Bus-Thema | 256KB pro Nachricht für den Standard-Tarif, 1MB für den Premium-Tarif.<br /> Siehe [Service Bus-Grenzwerte](../service-bus-messaging/service-bus-quotas.md). | Verwenden Sie ein einzelnes Ereignis pro Nachricht. |
-| Azure Cosmos DB   | Siehe [Einschränkungen für Azure Cosmos DB](../azure-subscription-service-limits.md#azure-cosmos-db-limits). | Die Batchgröße und Schreibfrequenz werden basierend auf den Azure Cosmos DB-Antworten dynamisch angepasst. <br /> Es gelten keine vordefinierten Stream Analytics-Einschränkungen. |
+| Azure Cosmos DB   | Siehe [Einschränkungen für Azure Cosmos DB](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cosmos-db-limits). | Die Batchgröße und Schreibfrequenz werden basierend auf den Azure Cosmos DB-Antworten dynamisch angepasst. <br /> Es gelten keine vordefinierten Stream Analytics-Einschränkungen. |
 | Azure-Funktionen   | | Die Standardbatchgröße beträgt 262.144 Bytes (256 KB). <br /> Die Standardereignisanzahl pro Batch beträgt 100. <br /> Die Batchgröße ist konfigurierbar und kann in den [Ausgabeoptionen](#azure-functions) von Stream Analytics erhöht oder verringert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte

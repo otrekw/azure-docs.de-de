@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 04285de6fa7ef678e36767b7336f732ed9b45329
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 08cc7ce8f306095a66bc0f8cf74dff8c8b551ecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679705"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440488"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Lookup-Aktivität in Azure Data Factory
 
@@ -53,7 +53,7 @@ Die folgenden Datenquellen werden für die Lookup-Aktivität unterstützt. Von d
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-NAME | BESCHREIBUNG | type | Erforderlich?
+Name | BESCHREIBUNG | type | Erforderlich?
 ---- | ----------- | ---- | --------
 dataset | Enthält die Datasetreferenz für die Lookupaktivität. Details finden Sie in den entsprechenden Connectorartikeln im Abschnitt **Dataset-Eigenschaften**. | Schlüssel-Wert-Paar | Ja
 source | Enthält spezifische Quelleneigenschaften für das Dataset, identisch mit der Quelle der Kopieraktivität. Details finden Sie in jedem entsprechenden Connectorartikel im Abschnitt **Eigenschaften der Kopieraktivität**. | Schlüssel-Wert-Paar | Ja
@@ -81,7 +81,7 @@ Das Lookupergebnis wird im Abschnitt `output` des Ergebnisses der Aktivitätsaus
     }
     ```
 
-* **Wenn `firstRowOnly` auf `false` festgelegt ist**, wird das Ausgabeformat wie im folgenden Code gezeigt. Ein Feld `count` gibt an, wie viele Datensätze zurückgegeben werden. Detaillierte Werte werden unter einem festen `value`-Array angezeigt. In diesem Fall folgt auf die Lookup-Aktivität eine [ForEach-Aktivität](control-flow-for-each-activity.md). Um das Array `value` an das Feld `items` der ForEach-Aktivität zu übergeben, verwenden Sie das Muster `@activity('MyLookupActivity').output.value`. Für den Zugriff auf Elemente in Array `value` verwenden Sie die folgende Syntax: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. Ein Beispiel ist `@{activity('lookupActivity').output.value[0].tablename}`.
+* **Wenn `firstRowOnly` auf `false` festgelegt ist**, wird das Ausgabeformat wie im folgenden Code gezeigt. Ein Feld `count` gibt an, wie viele Datensätze zurückgegeben werden. Detaillierte Werte werden unter einem festen `value`-Array angezeigt. In diesem Fall folgt auf die Lookup-Aktivität eine [ForEach-Aktivität](control-flow-for-each-activity.md). Um das Array `value` an das Feld `items` der ForEach-Aktivität zu übergeben, verwenden Sie das Muster `@activity('MyLookupActivity').output.value`. Für den Zugriff auf Elemente in Array `value` verwenden Sie die folgende Syntax: `@{activity('lookupActivity').output.value[zero based index].propertyname}`. z. B. `@{activity('lookupActivity').output.value[0].tablename}`.
 
     ```json
     {
@@ -238,10 +238,7 @@ Dieses Speicherkonto enthält die JSON-Datei mit den Namen der SQL-Tabellen.
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": {
-                "value": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>",
-                "type": "SecureString"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<StorageAccountName>;AccountKey=<StorageAccountKey>"
         }
     },
         "name": "AzureStorageLinkedService"
@@ -258,10 +255,7 @@ Diese Azure SQL-Datenbankinstanz enthält die Daten, die in Blob Storage kopiert
         "type": "AzureSqlDatabase",
         "description": "",
         "typeProperties": {
-            "connectionString": {
-                "value": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;",
-                "type": "SecureString"
-            }
+            "connectionString": "Server=<server>;Initial Catalog=<database>;User ID=<user>;Password=<password>;"
         }
     }
 }

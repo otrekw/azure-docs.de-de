@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 0b977cb9fe2df1627ad9a2e07b00ffb0e749ed39
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435557"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -33,7 +33,7 @@ Die folgende Tabelle zeigt die verschiedenen Methoden, die Sie zum Einrichten ei
 
 | Verfahren zur Clustererstellung | Webbrowser | Befehlszeile | REST-API | SDK |
 | --- |:---:|:---:|:---:|:---:|
-| [Azure-Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
+| [Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
 | [Azure-Befehlszeilenschnittstelle](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
@@ -57,7 +57,7 @@ Befolgen Sie die Anweisungen auf dem Bildschirm. Sie finden im Folgenden folgend
 
 ## <a name="resource-group-name"></a>Ressourcengruppenname
 
-[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, bezeichnet als „Azure-Ressourcengruppe“. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen.
+[Azure Resource Manager](../azure-resource-manager/management/overview.md) können Sie mit den Ressourcen in Ihrer Anwendung als Gruppe arbeiten, bezeichnet als „Azure-Ressourcengruppe“. Sie können alle Ressourcen für Ihre Anwendung in einem einzigen, koordinierten Vorgang bereitstellen, aktualisieren, überwachen oder löschen.
 
 ## <a name="cluster-types"></a> Clustertypen und Konfiguration
 

@@ -14,18 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02b6ddf723e47e4608e631aef96f8a12d5f68698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034686"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369013"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Installieren und Konfigurieren von Terraform, um Azure-Ressourcen bereitzustellen
  
 Terraform bietet eine einfache Möglichkeit, Cloudinfrastruktur mit der [einfachen Vorlagensprache](https://www.terraform.io/docs/configuration/syntax.html) zu definieren, eine Vorschau anzuzeigen und bereitzustellen. In diesem Artikel werden die notwendigen Schritte zum Bereitstellen von Ressourcen in Azure mithilfe von Terraform beschrieben.
 
 Weitere Informationen zur Verwendung von Terraform mit Azure finden Sie im [Terraform-Hub](/azure/terraform).
+> [!NOTE]
+> Wenn Sie Terraform-spezifische Unterstützung benötigen, wenden Sie sich über einen der Community-Kanäle direkt an Terraform:
+>
+>   • Der [Terraform-Abschnitt](https://discuss.hashicorp.com/c/terraform-core) des Community-Portals enthält Fragen, Anwendungsfälle und nützliche Muster.
+>
+>   • Informationen zu anbieterbezogenen Fragen finden Sie im Abschnitt [Terraform-Anbieter](https://discuss.hashicorp.com/c/terraform-providers) im Community-Portal.
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

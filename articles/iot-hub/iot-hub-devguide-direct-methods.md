@@ -6,13 +6,13 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
-ms.author: nberdy
-ms.openlocfilehash: d7c63ffe5a318507053f59bf3a18242ee8c327a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: rezas
+ms.openlocfilehash: f4125aae954519beead99db45fc8a35264d5731e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61327753"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429268"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 
@@ -94,7 +94,7 @@ curl -X POST \
 }'
 ```
 
-### <a name="response"></a>response
+### <a name="response"></a>Antwort
 
 Die Back-End-App empfängt eine Antwort, die aus den folgenden Elementen besteht:
 
@@ -142,7 +142,7 @@ Der vom Gerät empfangene Text weist das folgende Format auf:
 
 Methodenanforderungen sind QoS 0.
 
-#### <a name="response"></a>response
+#### <a name="response"></a>Antwort
 
 Das Gerät sendet Antworten an `$iothub/methods/res/{status}/?$rid={request id}`, wobei Folgendes gilt:
 
@@ -168,7 +168,7 @@ Die AMQP-Nachricht geht bei dem Empfangslink ein, der die Methodenanforderung da
 
 * Den AMQP-Nachrichtentext mit der Methodennutzlast im JSON-Format
 
-#### <a name="response"></a>response
+#### <a name="response"></a>Antwort
 
 Das Gerät erstellt einen Sendelink, um die Methodenantwort an der Adresse `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` zurückzugeben.
 
@@ -188,7 +188,7 @@ Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:
 
 * Unter [Einschränkung und Kontingente](iot-hub-devguide-quotas-throttling.md) werden die Kontingente und das Einschränkungsverhalten beschrieben, die bei Verwendung von IoT Hub zu erwarten sind.
 
-* Unter [Azure IoT-SDKs für Geräte und Dienste](iot-hub-devguide-sdks.md) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
+* Unter [Verstehen und Verwenden von Azure IoT Hub SDKs](iot-hub-devguide-sdks.md) werden die verschiedenen Sprach-SDKs aufgelistet, die Sie bei der Entwicklung von Geräte- und Dienst-Apps für die Interaktion mit IoT Hub verwenden können.
 
 * Unter [IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting](iot-hub-devguide-query-language.md) wird die IoT Hub-Abfragesprache beschrieben, mit der Sie von IoT Hub Informationen zu Gerätezwillingen und Aufträgen abrufen können.
 

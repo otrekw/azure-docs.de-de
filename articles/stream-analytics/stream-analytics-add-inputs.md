@@ -1,19 +1,18 @@
 ---
 title: Grundlegendes zu Eingaben für Azure Stream Analytics
 description: In diesem Artikel wird das Konzept von Eingaben in einem Azure Stream Analytics-Auftrag beschrieben, wobei die Eingabe von Streamingdaten mit der Eingabe von Verweisdaten verglichen wird.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.openlocfilehash: 87e260c97a748807929a0e7021e3efb2ae8f8e7b
-ms.sourcegitcommit: 08138eab740c12bf68c787062b101a4333292075
+ms.openlocfilehash: 6b841d6b47e009c3b01d9925e11d352c00ed5c19
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2019
-ms.locfileid: "67329287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426431"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Grundlegendes zu Eingaben für Azure Stream Analytics
 

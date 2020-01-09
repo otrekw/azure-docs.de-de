@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603839"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531444"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Ereignisquellen in Azure Event Grid
 
@@ -177,7 +177,7 @@ Abonnieren Sie Azure Machine Learning-Arbeitsbereichereignisse, um auf die Model
 
 | Titel | BESCHREIBUNG |
 | ----- | ----- |
-| [Nutzen von Azure Machine Learning-Ereignissen](../machine-learning/service/concept-event-grid-integration.md) | Übersicht über die Integration von Azure Machine Learning in Event Grid. |
+| [Nutzen von Azure Machine Learning-Ereignissen](../machine-learning/concept-event-grid-integration.md) | Übersicht über die Integration von Azure Machine Learning in Event Grid. |
 | [Azure Event Grid-Ereignisschema für Azure Machine Learning](event-schema-machine-learning.md) | Anzeigen von Feldern in Azure Machine Learning-Ereignissen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

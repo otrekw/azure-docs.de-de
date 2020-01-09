@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 91a71f914cff25dcdf4a85f3baafcfd9bc96b104
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74218877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440976"
 ---
 # <a name="understand-and-work-with-scopes"></a>Verstehen von und Arbeiten mit Bereichen
 
@@ -45,7 +45,7 @@ Azure unterstützt für die Ressourcenverwaltung drei Bereiche. Jeder Bereich un
 
     Ressourcentyp: [Microsoft.Resources/subscriptions](/rest/api/resources/subscriptions)
 
-- [**Ressourcengruppe**](../azure-resource-manager/resource-group-overview.md#resource-groups): Logische Gruppierungen zusammengehöriger Ressourcen für eine Azure-Lösung, die den gleichen Lebenszyklus haben. Dies sind z.B. Ressourcen, die gemeinsam bereitgestellt und gelöscht werden.
+- [**Ressourcengruppe**](../azure-resource-manager/management/overview.md#resource-groups): Logische Gruppierungen zusammengehöriger Ressourcen für eine Azure-Lösung, die den gleichen Lebenszyklus haben. Dies sind z.B. Ressourcen, die gemeinsam bereitgestellt und gelöscht werden.
 
     Ressourcentyp: [Microsoft.Resources/subscriptions/resourceGroups](/rest/api/resources/resourcegroups)
 
@@ -63,7 +63,7 @@ Cost Management unterstützt für jeden der folgenden Bereiche die folgenden int
 - [**Cost Management-Mitwirkender**](../role-based-access-control/built-in-roles.md#cost-management-contributor): Ermöglicht das Anzeigen der Kosten, das Verwalten der Kostenkonfiguration und die Anzeige von Empfehlungen.
 - [**Cost Management-Leser**](../role-based-access-control/built-in-roles.md#cost-management-reader): Ermöglicht die Anzeige von Kostendaten, Kostenkonfiguration und Empfehlungen.
 
-„Cost Management-Mitwirkender“ ist die empfohlene Rolle mit geringstmöglichen Berechtigungen. Sie ermöglicht den Zugriff für die Erstellung und Verwaltung von Budgets und Exporten, um die Kosten effektiver zu überwachen und zu dokumentieren. Cost Management-Mitwirkende benötigen ggf. auch zusätzliche Rollen, um Kostenverwaltungsszenarien durchgängig unterstützen zu können. Stellen Sie sich die folgenden Szenarien vor:
+„Cost Management-Mitwirkender“ ist die empfohlene Rolle mit geringstmöglichen Berechtigungen. Sie ermöglicht den Zugriff für die Erstellung und Verwaltung von Budgets und Exporten, um die Kosten effektiver zu überwachen und zu dokumentieren. Cost Management-Mitwirkende benötigen ggf. auch zusätzliche Rollen, um Kostenverwaltungsszenarien durchgängig unterstützen zu können. Betrachten Sie die folgenden Szenarien:
 
 - **Eingreifen bei Überschreitung von Budgets**: Cost Management-Mitwirkende benötigen auch Zugriff für das Erstellen und/oder Verwalten von Aktionsgruppen, um bei Überschreitungen automatisch zu reagieren. Erwägen Sie das Zuweisen der Rolle [Mitwirkender an der Überwachung](../role-based-access-control/built-in-roles.md#monitoring-contributor) zu einer Ressourcengruppe, die die zu verwendende Aktionsgruppe enthält, wenn Budgetschwellenwerte überschritten werden. Die Automatisierung bestimmter Aktionen erfordert zusätzliche Rollen für die verwendeten spezifischen Dienste, wie z.B. Azure Automation und Azure Functions.
 - **Planen des Exports von Kostendaten**: Cost Management-Mitwirkende benötigen auch Zugriff für das Verwalten von Speicherkonten, um einen Export zum Kopieren von Daten in ein Speicherkonto zu planen. Erwägen Sie das Zuweisen der Rolle [Speicherkontomitwirkender](../role-based-access-control/built-in-roles.md#storage-account-contributor) zu einer Ressourcengruppe, die das Speicherkonto enthält, in das Kostendaten exportiert werden.
@@ -106,7 +106,7 @@ Für aus einzelnen Angeboten wie nutzungsbasierte Bezahlung und verwandten Typen
 
 - [**Abrechnungskonto**](../billing/billing-view-all-accounts.md): Stellt einen Besitzer mit einem einzelnen Konto für ein oder mehrere Azure-Abonnements dar. Unterstützt derzeit nicht das Gewähren des Zugriffs für mehrere Personen oder des Zugriffs auf aggregierte Kostenansichten.
 
-    Ressourcentyp: Nicht zutreffend
+    Ressourcentyp: Nicht verfügbar
 
 Kontoadministratoren für einzelne Azure-Abonnements können im [Azure-Kontocenter](https://account.azure.com/subscriptions) Abrechnungsdaten wie Rechnungen und Zahlungen anzeigen und verwalten. Sie können jedoch im Azure-Portal keine Kostendaten einsehen und keine Ressourcen verwalten. Um dem Kontoadministrator Zugriff zu gewähren, verwenden Sie die zuvor genannten Cost Management-Rollen.
 

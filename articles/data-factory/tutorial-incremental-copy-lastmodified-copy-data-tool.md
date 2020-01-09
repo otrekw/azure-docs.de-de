@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 1/24/2019
-ms.openlocfilehash: 5ff3ade800b2a3474a68a34dc77d0c9b009e8822
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 05696ae2fed31c267aa37013fac32db0916e24bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923139"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439318"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Inkrementelles Kopieren neuer und geänderter Dateien auf Basis von LastModifiedDate und mithilfe des Tools zum Kopieren von Daten
 
@@ -68,7 +68,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
 
     * Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein. 
          
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).
 
 5. Wählen Sie unter **Version** die Option **V2** aus.
 6. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (z. B. Azure Storage und SQL-Datenbank) und Computeeinheiten (z. B. Azure HDInsight), die von der Data Factory genutzt werden, können sich an anderen Standorten und in anderen Regionen befinden.
@@ -98,7 +98,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     d. Geben Sie unter **Recurrence** (Wiederholung) **15 Minute(s)** (15 Minuten) ein. 
     
-    e. Klicken Sie auf **Weiter**. 
+    e. Wählen Sie **Weiter** aus. 
     
     Über die Data Factory-Benutzeroberfläche wird eine Pipeline mit dem angegebenen Tasknamen erstellt. 
 
@@ -136,7 +136,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
      ![Auswählen der Eingabedatei bzw. des Eingabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/check-binary-copy.png)
      
-5. Wählen Sie auf der Seite **Zieldatenspeicher** die Option **AzureBlobStorage** aus. Dies ist dasselbe Speicherkonto wie der Quelldatenspeicher. Klicken Sie anschließend auf **Weiter**.
+5. Wählen Sie auf der Seite **Zieldatenspeicher** die Option **AzureBlobStorage** aus. Dies ist dasselbe Speicherkonto wie der Quelldatenspeicher. Wählen Sie **Weiter**aus.
 
     ![Seite „Zieldatenspeicher“](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/destination-data-store-page-select-linkedservice.png)
     
@@ -146,7 +146,7 @@ Bereiten Sie Ihren Blobspeicher folgendermaßen auf das Tutorial vor.
     
     ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/choose-output-file-folder.png)
     
-    b. Klicken Sie auf **Weiter**.
+    b. Wählen Sie **Weiter** aus.
     
      ![Auswählen der Ausgabedatei oder des Ausgabeordners](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/click-next-after-output-folder.png)
     

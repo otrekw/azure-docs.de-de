@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: ganesr
-ms.openlocfilehash: f232e1e8a1f7121b047a846fc2c614b48e757f76
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4fed30f7f4b723f04cd59b2a987b498e3d614a5
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076645"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645904"
 ---
 # <a name="moving-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model"></a>Umstellen von ExpressRoute-Verbindungen vom klassischen Bereitstellungsmodell auf das Resource Manager-Bereitstellungsmodell
 Dieser Artikel enthält eine Übersicht über die Umstellung einer Azure ExpressRoute-Verbindung vom klassischen Bereitstellungsmodell auf das Azure Resource Manager-Bereitstellungsmodell.
@@ -39,7 +39,7 @@ Mit dem Resource Manager-Bereitstellungsmodell erstellte ExpressRoute-Verbindung
 * Der Zugriff auf das klassische Bereitstellungsmodell wird in der ExpressRoute-Verbindung durch den Parameter **allowClassicOperations** gesteuert.
 
 > [!IMPORTANT]
-> Es gelten alle Kontingente, die auf der Seite [Diensteinschränkungen](../azure-subscription-service-limits.md) dokumentiert sind. Beispiel: Eine Standardverbindung kann insgesamt maximal zehn Verknüpfungen/Verbindungen mit virtuellen Netzwerken für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell umfassen.
+> Es gelten alle Kontingente, die auf der Seite [Diensteinschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md) dokumentiert sind. Beispiel: Eine Standardverbindung kann insgesamt maximal zehn Verknüpfungen/Verbindungen mit virtuellen Netzwerken für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell umfassen.
 > 
 > 
 

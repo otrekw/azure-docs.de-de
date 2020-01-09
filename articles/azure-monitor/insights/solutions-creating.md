@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 97472a65af6eb2c5c2da93d93f38450cc021f680
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402044"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in Azure (Vorschau)
 > [!NOTE]
@@ -53,14 +53,14 @@ Wenn ein Problem prinzipiell mit einem automatisierten Prozess behoben werden ka
 
 Wenn Ihre Lösung externe Funktionen als Antwort auf eine Warnung erfordert, können Sie eine [Webhookantwort](../../azure-monitor/platform/alerts-metric.md) verwenden.  Dadurch können Sie einen externen Webdienst aufrufen, der Informationen aus der Warnung sendet.
 
-### <a name="views"></a>Ansichten
+### <a name="views"></a>Sichten
 Ansichten in Log Analytics dienen zur Visualisierung von Daten aus dem Log Analytics-Repository.  Jede Lösung enthält in der Regel eine einzige Ansicht mit einer [Kachel](../../azure-monitor/platform/view-designer-tiles.md), die auf dem Hauptdashboard des Benutzers angezeigt wird.  Die Ansicht kann eine beliebige Anzahl von [Visualisierungskomponenten](../../azure-monitor/platform/view-designer-parts.md) enthalten, um dem Benutzer unterschiedliche Visualisierungen der gesammelten Daten bereitzustellen.
 
 Sie [Erstellen benutzerdefinierte Ansichten mit dem Ansicht-Designer](../../azure-monitor/platform/view-designer.md). Diese können Sie später exportieren und Ihrer Lösungsdatei hinzufügen.  
 
 
 ## <a name="create-solution-file"></a>Erstellen einer Lösungsdatei
-Nachdem Sie die Komponenten, die Teil der Lösung werden sollen, getestet und konfiguriert haben, können Sie [die Lösungsdatei erstellen]( solutions-solution-file.md).  Implementieren Sie die Komponenten der Lösung in eine [Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md), die eine [Lösungsressource]( solutions-solution-file.md#solution-resource) mit Beziehungen zu den anderen Ressourcen in der Datei umfasst.  
+Nachdem Sie die Komponenten, die Teil der Lösung werden sollen, getestet und konfiguriert haben, können Sie [die Lösungsdatei erstellen]( solutions-solution-file.md).  Implementieren Sie die Komponenten der Lösung in eine [Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md), die eine [Lösungsressource]( solutions-solution-file.md#solution-resource) mit Beziehungen zu den anderen Ressourcen in der Datei umfasst.  
 
 
 ## <a name="test-your-solution"></a>Testen Ihrer Lösung
@@ -76,5 +76,5 @@ Sobald Sie Ihre Lösung fertig gestellt und getestet haben, können Sie sie Kund
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über das [Erstellen einer Lösungsdatei ]( solutions-solution-file.md) für Ihre Verwaltungslösung.
-* Erfahren Sie Näheres zum [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md).
+* Erfahren Sie Näheres zum [Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md).
 * Durchsuchen Sie die [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates), um Beispiele für verschiedene Resource Manager-Vorlagen zu finden.

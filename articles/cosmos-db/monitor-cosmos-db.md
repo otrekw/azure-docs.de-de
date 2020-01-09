@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 9a36b46d11657ef52051f8bf8df1e4944051da23
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: c166811bbfd27691f9a01a944d304d06560b0232
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74454263"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445175"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Überwachen von Azure Cosmos DB
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure Cosmos-Datenbanken generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -37,46 +37,15 @@ Die folgenden Abschnitte basieren auf diesem Artikel, indem sie die spezifischen
 ![Azure Monitor für Cosmos DB](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
 
 ## <a name="monitoring-data-collected-from-azure-cosmos-db"></a>Von Azure Cosmos DB gesammelte Überwachungsdaten
+
 Azure Cosmos DB sammelt dieselben Arten von Überwachungsdaten wie andere Azure-Ressourcen, die unter [Überwachen von Daten von Azure-Ressourcen](../azure-monitor/insights/monitor-azure-resource.md#monitoring-data) beschrieben sind. Eine ausführliche Referenz zu den Protokollen und Metriken, die von Azure Cosmos DB erstellt werden, finden Sie unter [Überwachen von Azure Cosmos DB-Daten – Referenz](monitor-cosmos-db-reference.md).
 
 Die Seite **Übersicht** im Azure-Portal für jede Azure Cosmos-Datenbank enthält eine kurze Übersicht über die Datenbanknutzung einschließlich ihrer Anforderung und der Nutzung der stündlichen Abrechnung. Dies sind hilfreiche Informationen, die aber nur einen kleinen Teil der verfügbaren Überwachungsdaten ausmachen. Einige dieser Daten werden automatisch gesammelt und stehen für die Analyse zur Verfügung, sobald Sie die Datenbank erstellen, während Sie mit einer gewissen Konfiguration zusätzliche Datensammlungen aktivieren können.
 
 ![Seite „Übersicht“](media/monitor-cosmos-db/overview-page.png)
 
-
-
-## <a name="diagnostic-settings"></a>Diagnoseeinstellungen
-Plattformmetriken und das Aktivitätsprotokoll werden automatisch gesammelt, aber Sie müssen eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle zu sammeln oder außerhalb von Azure Monitor weiterzuleiten. Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Azure-Portal, die Befehlszeilenschnittstelle oder PowerShell finden Sie unter [Erstellen einer Diagnoseeinstellung zum Sammeln von Plattformprotokollen und Metriken in Azure](../azure-monitor/platform/diagnostic-settings.md).
-
-Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorien von Protokollen gesammelt werden sollen. Die Kategorien für Azure Cosmos DB sind unten zusammen mit Beispieldaten aufgeführt.
-
- * **DataPlaneRequests**: Verwenden Sie diese Option, um Back-End-Anforderungen an alle APIs in Azure Cosmos DB zu protokollieren, worin SQL-, Graph-, MongoDB-, Cassandra- und Tabellen-API-Konten einbezogen sind. Wichtige zu beachtende Eigenschaften sind: Requestcharge, statusCode, clientIPaddress und partitionID.
-
-    ```
-    { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372","resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}
-    ```
-
-* **MongoRequests**: Verwenden Sie diese Option, um vom Benutzer initiierte Anforderungen vom Front-End zum Erfüllen von Anforderungen an die API für MongoDB von Azure Cosmos DB zu protokollieren. MongoDB-Anforderungen werden in MongoRequests sowie DataPlaneRequests angezeigt. Wichtige zu beachtende Eigenschaften sind: Requestcharge, opCode.
-
-    ```
-    { "time": "2019-04-10T15:10:46.7820998Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "MongoRequests", "operationName": "ping", "properties": {"activityId": "823cae64-0000-0000-0000-000000000000","opCode": "MongoOpCode_OP_QUERY","errorCode": "0","duration": "0","requestCharge": "0.000000","databaseName": "admin","collectionName": "$cmd","retryCount": "0"}}
-    ```
-
-* **QueryRuntimeStatistics**: Wählen Sie diese Option aus, um den Abfragetext zu protokollieren, der ausgeführt wurde. 
-
-    ```
-    { "time": "2019-04-14T19:08:11.6353239Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "QueryRuntimeStatistics", "properties": {"activityId": "278b0661-7452-4df3-b992-8aa0864142cf","databasename": "Tasks","collectionname": "Items","partitionkeyrangeid": "0","querytext": "{"query":"SELECT *\nFROM c\nWHERE (c.p1__10 != true)","parameters":[]}"}}
-    ```
-
-* **PartitionKeyStatistics**: Wählen Sie diese Option aus, um die Statistiken der Partitionsschlüssel zu protokollieren. Dies wird aktuell mit der Speichergröße (KB) der Partitionsschlüssel dargestellt. Das Protokoll wird für die ersten drei Partitionsschlüssel ausgegeben, die den meisten Datenspeicher beanspruchen.
-
-    ```
-    { "time": "2019-10-11T02:33:24.2018744Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "PartitionKeyStatistics", "properties": {"subscriptionId": "<your_subscription_ID>","regionName": "West US 2","databaseName": "KustoQueryResults","collectionname": "CapacityMetrics","partitionkey": "["CapacityMetricsPartition.136"]","sizeKb": "2048270"}}
-    ```
-
-* **Metrikanforderungen:** Wählen Sie diese Option aus, um Metrikdaten von Azure Cosmos DB zu den Zielen in der Diagnoseeinstellung zu sammeln. Dies sind dieselben Daten, die automatisch in Azure-Metriken gesammelt werden. Sammeln Sie Metrikdaten mit Ressourcenprotokollen, um beide Arten von Daten gemeinsam zu analysieren und Metrikdaten außerhalb von Azure Monitor zu senden.
-
 ## <a name="analyzing-metric-data"></a>Analysieren von Metrikdaten
+
 Azure Cosmos DB bietet ein benutzerdefiniertes Erlebnis für die Arbeit mit Metriken. Ausführliche Informationen zur Verwendung dieser Erfahrung und zur Analyse verschiedener Azure Cosmos DB-Szenarien finden Sie unter [Überwachen und Debuggen von Azure Cosmos DB-Metriken aus Azure Monitor](cosmos-db-azure-monitor-metrics.md).
 
 Sie können Metriken für Azure Cosmos DB mit Metriken aus anderen Azure-Diensten mit dem Metrik-Explorer analysieren, indem Sie **Metriken** aus dem Menü **Azure Monitor** öffnen. Ausführliche Informationen zur Verwendung dieses Tools finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](../azure-monitor/platform/metrics-getting-started.md). Alle Metriken für Azure Cosmos DB befinden sich im Namespace **Cosmos DB-Standardmetriken**. Sie können die folgenden Dimensionen mit diesen Metriken verwenden, wenn Sie einen Filter zu einem Diagramm hinzufügen:
@@ -91,7 +60,7 @@ Sie können Metriken für Azure Cosmos DB mit Metriken aus anderen Azure-Dienste
 ## <a name="analyzing-log-data"></a>Analysieren von Protokolldaten
 Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz eindeutiger Eigenschaften hat. In Azure Cosmos DB werden Daten in den folgenden Tabellen gespeichert.
 
-| Table | BESCHREIBUNG |
+| Tabelle | BESCHREIBUNG |
 |:---|:---|
 | AzureDiagnostics | Allgemeine Tabelle, die von mehreren Diensten verwendet wird, um Ressourcenprotokolle zu speichern. Ressourcenprotokolle von Azure Cosmos DB können mit `MICROSOFT.DOCUMENTDB` identifiziert werden.   |
 | AzureActivity    | Allgemeine Tabelle, die alle Datensätze aus dem Aktivitätsprotokoll speichert. 

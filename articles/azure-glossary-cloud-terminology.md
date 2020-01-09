@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60325424"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659558"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -33,7 +33,7 @@ Das Microsoft Azure-Glossar ist ein kompaktes Wörterbuch der Cloudterminologie 
 Ein Konto für den Zugriff auf ein Azure-Abonnement und dessen Verwaltung. Es wird häufig als Azure-Konto bezeichnet, kann aber ein vorhandenes Geschäfts-, Schul- oder Unikonto, ein persönliches Microsoft-Konto oder ein Office 365-Benutzername und -Kennwort sein. Sie können auch ein Konto für die Verwaltung eines Azure-Abonnements erstellen, wenn Sie sich für die [kostenlose Testversion](https://azure.microsoft.com) registrieren.  
 Weitere Informationen finden Sie unter [Registrieren für ein Azure-Abonnement mit Ihrem Office 365-Konto](billing/billing-use-existing-office-365-account-azure-subscription.md) sowie unter [Konten, die für die Anmeldung verwendet werden können](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a name="api-app"></a>Eine API-App
+## <a name="api-app"></a>API-App
 Ein anderer Name für [App Service-App](#app-service-app).
 
 ## <a name="app-service-app"></a>App Service-App
@@ -75,7 +75,7 @@ Weitere Informationen finden Sie unter [Navigieren zu und Auswählen von Images 
 
 ## <a name="limits"></a>Grenzwerte
 Die Anzahl von Ressourcen, die erstellt werden können oder der Leistungsbenchmark, der erzielt werden kann. Grenzwerte werden üblicherweise Abonnements, Diensten und Angeboten zugeordnet.  
-Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](azure-subscription-service-limits.md).
+Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](azure-resource-manager/management/azure-subscription-service-limits.md).
 
 ## <a name="load-balancer"></a>Lastenausgleich
 Eine Ressource, die den eingehenden Datenverkehr auf die Computer in einem Netzwerk verteilt. In Azure verteilt ein Load Balancer den Datenverkehr auf virtuelle Computer, die in einer Lastenausgleichsgruppe definiert sind. Ein [Load Balancer](load-balancer/load-balancer-overview.md) kann mit Internetverbindung oder intern eingerichtet werden.  
@@ -110,7 +110,7 @@ Weitere Informationen finden Sie unter [Erstellen von Azure Resource Manager-Vor
 Ein Dienst, über den Sie die Ressourcen beziehen, die Sie über Resource Manager bereitstellen und verwalten können. Jeder Ressourcenanbieter bietet Vorgänge zum Arbeiten mit den bereitgestellten Ressourcen. Auf Ressourcenanbieter kann über das Azure-Portal, Azure PowerShell und verschiedene SDKs für die Programmierung zugegriffen werden.  
 Weitere Informationen finden Sie unter [Übersicht über den Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
 
-## <a name="role"></a>role
+## <a name="role"></a>Rolle (role)
 Eine Möglichkeit zum Steuern des Zugriffs, die Benutzern, Gruppen und Diensten zugewiesen werden kann. Rollen können verschiedene Aktionen ausführen und so beispielsweise Azure-Ressourcen erstellen, verwalten und lesen.  
 Siehe [RBAC: Integrierte Rollen](role-based-access-control/built-in-roles.md).
 

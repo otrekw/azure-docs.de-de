@@ -3,17 +3,17 @@ title: Konfigurieren von SSL für einen Clouddienst | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie einen HTTPS-Endpunkt für eine Webrolle angeben und ein SSL-Zertifikat zur Sicherung Ihrer Anwendung hochladen können. In diesen Beispielen wird das Azure-Portal verwendet.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
-ms.author: gwallace
-ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: tagore
+ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469023"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386764"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Konfigurieren von SSL für eine Anwendung in Azure
 
@@ -41,7 +41,7 @@ Zu Testzwecken können Sie ein selbst signiertes Zertifikat [erstellen](cloud-se
 
 Daraufhin müssen Sie Informationen zum Zertifikat in Ihre Definitions- und Konfigurationsdateien für den Dienst einfügen.
 
-<a name="modify"></a>
+<a name="modify"> </a>
 
 ## <a name="step-2-modify-the-service-definition-and-configuration-files"></a>Schritt 2: Ändern der Definitions- und Konfigurationsdateien für den Dienst
 Ihre Anwendung muss so konfiguriert sein, dass das Zertifikat verwendet wird. Außerdem muss ein HTTPS-Endpunkt hinzugefügt werden. Daher müssen die Definitions- und Konfigurationsdateien für den Dienst aktualisiert werden.
@@ -176,3 +176,6 @@ Jetzt wird die Bereitstellung in Azure ausgeführt, und Sie können eine HTTPS-V
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
+
+
+

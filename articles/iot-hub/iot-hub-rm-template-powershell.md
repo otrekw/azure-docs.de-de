@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: eefa17b699a0599d2d3323409cafddd1d0984c61
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45908557ed40eb249bbac08cfca83bca7ff06ad1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61440317"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429136"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (PowerShell)
 
@@ -47,19 +47,19 @@ New-AzResourceGroupDeployment `
     -iotHubName $iotHubName
 ```
 
-Wie Sie im PowerShell-Skript sehen können, stammt die verwendete Vorlage aus den Azure-Schnellstartvorlagen. Wenn Sie Ihre eigene Vorlage verwenden möchten, müssen Sie zuerst die Vorlagendatei in Cloud Shell hochladen und dann den Dateinamen mithilfe des Schalters `-TemplateFile` angeben.  Ein Beispiel dazu finden Sie unter [Bereitstellen der Vorlage](../azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template).
+Wie Sie im PowerShell-Skript sehen können, stammt die verwendete Vorlage aus den Azure-Schnellstartvorlagen. Wenn Sie Ihre eigene Vorlage verwenden möchten, müssen Sie zuerst die Vorlagendatei in Cloud Shell hochladen und dann den Dateinamen mithilfe des Schalters `-TemplateFile` angeben.  Ein Beispiel dazu finden Sie unter [Bereitstellen der Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-visual-studio-code.md?tabs=PowerShell#deploy-the-template).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie eine IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage bereitgestellt haben, möchten Sie vielleicht mehr wissen:
 
 * Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API][lnk-rest-api].
-* Weitere Informationen zu den Funktionen des Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager][lnk-azure-rm-overview].
+* Weitere Informationen zu den Funktionen von Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager][lnk-azure-rm-overview].
 * Informationen zur JSON-Syntax und zu den Eigenschaften, die in Vorlagen verwendet werden sollen, finden Sie unter [Microsoft.Devices resource types](/azure/templates/microsoft.devices/iothub-allversions) (Microsoft.Devices-Ressourcentypen).
 
 Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 
-* [Einführung in das C SDK][lnk-c-sdk]
+* [Azure IoT-Geräte-SDK für C][lnk-c-sdk]
 * [Azure IoT SDKs][lnk-sdks]
 
 Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
@@ -72,7 +72,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-status]: https://azure.microsoft.com/status/
 [lnk-powershell-install]: /powershell/azure/install-Az-ps
 [lnk-rest-api]: https://docs.microsoft.com/rest/api/iothub/iothubresource
-[lnk-azure-rm-overview]: ../azure-resource-manager/resource-group-overview.md
+[lnk-azure-rm-overview]: ../azure-resource-manager/management/overview.md
 [lnk-powershell-arm]: ../azure-resource-manager/manage-resources-powershell.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b5c886625c944e2f5501859e78506ca89ec3d765
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: af5e511cbf273bc4e4fa0a08d089a955426fe75c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71203691"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454192"
 ---
 # <a name="use-the-opc-vault-certificate-management-service"></a>Verwenden des OPC Vault-Zertifikatverwaltungsdiensts
 
@@ -98,7 +98,7 @@ Jetzt liegt es am OPC UA-Gerät, wie das neue Schlüsselpaar angewendet wird. N
 
 Jetzt liegt es am OPC UA-Gerät, wie das neue Zertifikat angewendet wird. Normalerweise werden das ZS-Zertifikat und die Zertifikatsperrliste in einen Ordner des Typs `trusted` kopiert, während das Anwendungszertifikat auf einen Ordner des Typs `own` im Zertifikatspeicher angewendet wird. Einige Geräte unterstützen möglicherweise bereits einen „Serverpush“-Vorgang für Zertifikatupdates. Informationen hierzu finden Sie in der Dokumentation Ihres OPC UA-Geräts.
 
-### <a name="step-4-device-secured"></a>Schritt 4: Gerät geschützt
+### <a name="step-3-device-secured"></a>Schritt 3: Gerät geschützt
 
 Das OPC UA-Gerät ist jetzt für die Kommunikation mit anderen OPC UA-Geräten, die mit von einer Zertifizierungsstelle signierten Zertifikaten geschützt sind, ohne weitere Konfiguration bereit.
 

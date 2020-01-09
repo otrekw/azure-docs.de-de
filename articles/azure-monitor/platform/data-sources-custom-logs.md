@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/26/2019
-ms.openlocfilehash: 3bd40e9a266305ac94ed53806bf394891e89c125
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 6d85ada428ab448bd8e96545999ca038e532a32b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932510"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450665"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Benutzerdefinierte Protokolle in Azure Monitor
 
@@ -86,7 +86,7 @@ Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Prot
 2. Geben Sie den Pfad ein, und klicken Sie auf die Schaltfläche **+** .
 3. Wiederholen Sie den Vorgang für jeden zusätzlichen Pfad.
 
-### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Schritt 4: Angeben eines Namens und einer Beschreibung für das Protokoll
+### <a name="step-4-provide-a-name-and-description-for-the-log"></a>Schritt 4. Angeben eines Namens und einer Beschreibung für das Protokoll
 Der angegebene Name wird für den oben beschriebenen Protokolltyp verwendet.  Er endet immer mit „_CL“, um ihn als benutzerdefiniertes Protokoll zu kennzeichnen.
 
 1. Geben Sie einen Namen für das Protokoll ein.  Das Suffix **\_CL** wird automatisch angehängt.

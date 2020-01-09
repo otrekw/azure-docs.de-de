@@ -4,15 +4,15 @@ description: Service Map ist eine Lösung in Azure, die Anwendungskomponenten au
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: 00bb58c88b7dc535bf76e1a96e9748a2c366b338
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402597"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -582,7 +582,7 @@ Die folgende Tabelle enthält Codenummern und Lösungsvorschläge.
 
 Wenn die Installation des Dependency-Agents erfolgreich war, der Computer aber nicht in der Dienstzuordnungslösung angezeigt wird:
 * Wurde der Dependency-Agent erfolgreich installiert? Überprüfen Sie, ob der Dienst installiert wurde und ausgeführt wird.<br><br>
-**Windows:** Suchen Sie nach dem Dienst **Microsoft Dependency-Agent**.
+**Windows**: Suchen Sie nach dem Dienst **Microsoft Dependency-Agent**.
 **Linux:** Suchen Sie nach dem laufenden Prozess **microsoft-dependency-agent**.
 
 * Haben Sie den [Log Analytics-Tarif „Free“](https://azure.microsoft.com/pricing/details/monitor/)? Der kostenlose Plan („Free“) erlaubt bis zu fünf einzelne Dienstzuordnungscomputer. Alle weiteren Computer werden in der Dienstzuordnung nicht angezeigt, selbst wenn die vorherigen fünf keine Daten mehr senden.

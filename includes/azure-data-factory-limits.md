@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 5/30/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 6dc846ab6af0ed4d6d48c6f6db0abbce06427c36
-ms.sourcegitcommit: 11265f4ff9f8e727a0cbf2af20a8057f5923ccda
+ms.openlocfilehash: e1db978dbb7b63aaa4e9d189486faa0dfef520d1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035882"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75662901"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -34,6 +34,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Maximale Parameter pro Pipeline | 50 | 50 |
 | ForEach-Elemente | 100.000 | 100.000 |
 | ForEach-Parallelität | 20 | 50 |
+| Maximale Anzahl von Ausführungen in Warteschlange pro Pipeline | 100 | 100 |
 | Zeichen pro Ausdruck | 8\.192 | 8\.192 |
 | Mindestintervall für Trigger für ein rollierendes Fenster | 15 Min. | 15 Min. |
 | Maximales Zeitlimit für Ausführungen von Pipelineaktivitäten | 7 Tage | 7 Tage |
@@ -65,7 +66,6 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
 | --- | --- | --- |
-| Data Factorys in einem Azure-Abonnement |50 |[Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Pipelines innerhalb einer Data Factory |2\.500 |[Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Datasets innerhalb einer Data Factory |5\.000 |[Wenden Sie sich an den Support](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gleichzeitige Slices pro Dataset |10 |10 |
@@ -88,4 +88,4 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Timeoutwert für Wiederholungsversuche |1 Sekunde |1 Sekunde |
 
 #### <a name="web-service-call-limits"></a>Limits für Webdienstaufrufe
-Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../articles/azure-subscription-service-limits.md#resource-group-limits)ausführen.
+Azure Resource Manager weist Grenzwerte für API-Aufrufe auf. Sie können API-Aufrufe mit einer Rate innerhalb der [API-Limits von Azure Resource Manager](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)ausführen.

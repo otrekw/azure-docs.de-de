@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 04/16/2019
-ms.openlocfilehash: c948d07bed99f1286e27d645fde7b96fdc699c02
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive,seodec18
+ms.date: 12/24/2019
+ms.openlocfilehash: 3e9b23ce450e45dfedcee8b20e09b1c2b52b6e68
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311694"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495781"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
 
@@ -31,11 +31,12 @@ Die Schritte in diesem Dokument verwenden [Apache Maven](https://maven.apache.or
 
 * Einen SSH-Client. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-* Wenn Sie PowerShell verwenden, benötigen Sie das [AZ-Modul](https://docs.microsoft.com/powershell/azure/overview).
+* Bei Verwendung von PowerShell benötigen Sie das [Az-Modul](https://docs.microsoft.com/powershell/azure/overview).
 
 * Ein Texteditor In diesem Artikel wird der Microsoft-Editor verwendet.
 
 ## <a name="test-environment"></a>Testumgebung
+
 Für diesen Artikel wurde ein Computer unter Windows 10 verwendet.  Die Befehle wurden an einer Eingabeaufforderung ausgeführt, und die verschiedenen Dateien wurden mit dem Windows-Editor bearbeitet. Nehmen Sie die Ihrer Umgebung entsprechenden Änderungen vor.
 
 Geben Sie an einer Eingabeaufforderung die folgenden Befehle ein, um eine Arbeitsumgebung zu erstellen:
@@ -84,7 +85,7 @@ Fügen Sie in `pom.xml` im Abschnitt `<dependencies>` den folgenden Text hinzu:
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
-    <artifactId>hbase-client</artifactId>
+    <artifactId>hbase-shaded-client</artifactId>
     <version>1.1.2</version>
 </dependency>
 <dependency>
@@ -128,7 +129,7 @@ Fügen Sie der Datei `pom.xml` den folgenden Code hinzu, und speichern und schli
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
         <configuration>
             <source>1.8</source>
             <target>1.8</target>
@@ -408,7 +409,7 @@ In den folgenden Schritten wird `scp` zum Kopieren der JAR-Datei auf den primär
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
- 3. Verwenden Sie den folgenden Befehl in Ihrer offenen SSH-Verbindung, um eine HBase-Tabelle mithilfe der Java-Anwendung zu erstellen:
+3. Verwenden Sie den folgenden Befehl in Ihrer offenen SSH-Verbindung, um eine HBase-Tabelle mithilfe der Java-Anwendung zu erstellen:
 
     ```bash
     yarn jar hbaseapp-1.0-SNAPSHOT.jar com.microsoft.examples.CreateTable

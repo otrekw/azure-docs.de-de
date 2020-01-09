@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2b74523f42a1f57805388aa8c60cf1ad5b1d1331
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b24400b2a6a2050fa74b23f936253046f96a9028
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74080082"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436887"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrieren von über ExpressRoute zugeordneten virtuellen Netzwerken vom klassischen Modell zu Resource Manager
 
@@ -40,7 +40,7 @@ In diesem Artikel wird erläutert, wie über ExpressRoute zugeordnete virtuelle 
 * Virtuelle Netzwerke, Gateways und zugeordnete Bereitstellungen innerhalb des virtuellen Netzwerks, die einer ExpressRoute-Verbindung im selben Abonnement angefügt sind, können ohne Downtime zur Resource Manager-Umgebung migriert werden. Sie können die weiter unten beschriebenen Schritte ausführen, um Ressourcen wie virtuelle Netzwerke, Gateways und im virtuellen Netzwerk bereitgestellte virtuelle Computer zu migrieren. Sie müssen sicherstellen, dass die virtuellen Netzwerke ordnungsgemäß konfiguriert sind, bevor sie migriert werden. 
 * Bei virtuellen Netzwerken, Gateways und zugeordneten Bereitstellungen innerhalb des virtuellen Netzwerks, die nicht im selben Abonnement wie die ExpressRoute-Verbindung enthalten sind, ist eine gewisse Downtime zum Abschließen der Migration erforderlich. Im letzten Abschnitt des Dokuments werden die Schritte zum Migrieren von Ressourcen beschrieben.
 * Ein virtuelles Netzwerk mit einem ExpressRoute-Gateway und einem VPN-Gateway kann nicht migriert werden.
-* Die abonnementübergreifende Migration einer ExpressRoute-Verbindung wird nicht unterstützt. Weitere Informationen finden Sie im Abschnitt zur [Unterstützung des Verschiebevorgangs für Microsoft.Network](../azure-resource-manager/move-support-resources.md#microsoftnetwork).
+* Die abonnementübergreifende Migration einer ExpressRoute-Verbindung wird nicht unterstützt. Weitere Informationen finden Sie im Abschnitt zur [Unterstützung des Verschiebevorgangs für Microsoft.Network](../azure-resource-manager/management/move-support-resources.md#microsoftnetwork).
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Umstellen einer ExpressRoute-Verbindung vom klassischen Modell auf das Resource Manager-Modell
 Sie müssen eine ExpressRoute-Verbindung von der klassischen Umgebung in die Resource Manager-Umgebung verschieben, bevor Sie Ressourcen migrieren, die mit der ExpressRoute-Verbindung verknüpft sind. Informationen zum Ausführen dieser Aufgabe finden Sie in den folgenden Artikeln:

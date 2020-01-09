@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 0aa2cbad75319de93c34128a09f94971e5c70216
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 00262b48b8fa2fd1292554155e8ec8e933d886e6
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790611"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690909"
 ---
 # <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure
 In diesem Artikel wird beschrieben, wie Sie das Lizenzierungsmodell für einen virtuellen SQL Server-Computer (VM) in Azure ändern, indem Sie den neuen SQL-VM-Ressourcenanbieter **Microsoft.SqlVirtualMachine** verwenden.
@@ -115,7 +115,7 @@ Sie sind nur dazu berechtigt, SQL Server auf einer Azure-VM über den Azure-Hyb
 
 Sie können den Lizenztyp „Nutzungsbasierte Bezahlung“ oder Azure-Hybridvorteil einer SQL Server-VM nur ändern, wenn die SQL Server-VM beim SQL-VM-Ressourcenanbieter registriert ist.
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Bemerkungen
 
 - Azure CSP-Kunden (Azure Cloud Solution Provider) können den Azure-Hybridvorteil nutzen, indem sie zuerst eine VM mit nutzungsbasierter Bezahlung bereitstellen und sie dann in Bring-Your-Own-License umwandeln, wenn sie über aktive Software Assurance verfügen.
 - Wenn Sie Ihre SQL Server-VM-Ressource verwerfen, kehren Sie wieder zur hartcodierten Lizenzeinstellung des Images zurück. 
@@ -129,7 +129,7 @@ Das Ändern des Lizenzmodells
    - ist nur für Kunden mit [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview) verfügbar.
    - wird nur für die Standard Edition und Enterprise Edition von SQL Server unterstützt. unterstützt keine Lizenzänderungen für Express, Web und Developer. 
    - wird nur für virtuelle Computer unterstützt, die mit dem Azure Resource Manager-Modell bereitgestellt wurden. unterstützt keine SQL Server-VMs, die mit dem klassischen Modell bereitgestellt wurden. 
-   - ist nur für öffentliche Cloudinstallationen verfügbar. 
+   - Nur für öffentliche oder Azure Government-Clouds verfügbar. 
    - wird nur auf virtuellen Computern unterstützt, die eine einzelne Netzwerkschnittstelle haben. 
 
 
@@ -144,7 +144,7 @@ Dieser Fehler tritt auf, wenn Sie versuchen, das Lizenzierungsmodell auf einer S
 Sie müssen Ihr Abonnement beim Ressourcenanbieter registrieren und anschließend [Ihre SQL Server-VM beim Ressourcenanbieter registrieren](virtual-machines-windows-sql-register-with-resource-provider.md). 
 
 
-## <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Der virtuelle Computer „\<vmname\>“ hat mehr als eine zugeordnete Netzwerkschnittstelle
+### <a name="the-virtual-machine-vmname-has-more-than-one-nic-associated"></a>Der virtuelle Computer „\<vmname\>“ hat mehr als eine zugeordnete Netzwerkschnittstelle
 
 Dieser Fehler tritt auf virtuellen Computern auf, die über mehr als eine Netzwerkschnittstelle verfügen. Entfernen Sie eine der Netzwerkschnittstellen, bevor Sie das Lizenzierungsmodell ändern. Obwohl Sie die Netzwerkschnittstelle nach dem Ändern des Lizenzmodells wieder zur VM hinzufügen können, werden Vorgänge im Azure-Portal wie die automatische Sicherung und das automatische Patchen nicht mehr unterstützt. 
 

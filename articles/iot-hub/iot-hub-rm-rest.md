@@ -8,12 +8,12 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.openlocfilehash: 7d5e38e2ecfa2406ff0f58f73d828aa45d84c512
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c4cb230c9f0b56e3ff9d81e0d85134a7f192e6e9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429176"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Erstellen einer IoT Hub-Instanz mithilfe der Ressourcenanbieter-REST-API (.NET)
 
@@ -176,7 +176,7 @@ Nachdem Sie nun einen IoT-Hub mit der Ressourcenanbieter-REST-API bereitgestellt
 
 * Informieren Sie sich über die Funktionen der [IoT Hub-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/iothub/iothubresource).
 
-* Weitere Informationen zu den Funktionen von Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+* Weitere Informationen zu den Funktionen von Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
 
 Weitere Informationen zum Entwickeln für IoT Hub finden Sie in folgenden Artikeln:
 
