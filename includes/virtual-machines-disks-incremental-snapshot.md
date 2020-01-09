@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: b936c3a320a99d0853cb331fcd0bc44718527b9e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566263"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466608"
 ---
 Inkrementelle Momentaufnahmen (Vorschau) sind Sicherungen zu einem bestimmten Zeitpunkt für verwaltete Datenträger, die im Erfassungszustand nur aus allen Änderungen seit der letzten Momentaufnahme bestehen. Wenn Sie versuchen, eine inkrementelle Momentaufnahme herunterzuladen oder anderweitig zu verwenden, wird die vollständige VHD verwendet. Diese neue Funktion für Momentaufnahmen verwalteter Datenträger kann es potenziell ermöglichen, dass diese kostengünstiger sind, da Sie nicht mehr den gesamten Datenträger mit jeder einzelnen Momentaufnahme speichern müssen, es sei denn, Sie entscheiden sich dazu. Ebenso wie reguläre Momentaufnahmen können inkrementelle Momentaufnahmen verwendet werden, um einen vollständigen verwalteten Datenträger oder eine reguläre Momentaufnahme zu erstellen.
 
@@ -21,9 +21,7 @@ Es gibt einige Unterschiede zwischen einer inkrementellen Momentaufnahme und ein
 
 Inkrementelle Momentaufnahmen bieten außerdem eine differenzielle Funktion, die für verwaltete Datenträger exklusiv verfügbar ist. Sie ermöglichen es Ihnen, die Änderungen zwischen zwei inkrementellen Momentaufnahmen der gleichen verwalteten Datenträger bis hinunter zur Blockebene abzurufen. Sie können diese Funktion verwenden, um den Datenbedarf beim regionsübergreifenden Kopieren von Momentaufnahmen zu verringern.
 
-Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwendung von inkrementellen Momentaufnahmen beginnen möchten, senden Sie eine E-Mail an AzureDisks@microsoft.com, um Zugriff auf die öffentliche Vorschau zu erhalten.
-
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
 - Inkrementelle Momentaufnahmen sind zurzeit nur in den Regionen „USA, Osten“, „USA, Mitte“, „Kanada, Mitte“, „USA, Westen-Mitte“ und „Europa, Norden“ verfügbar.
 - Inkrementelle Momentaufnahmen können derzeit nicht erstellt werden, nachdem die Größe eines Datenträgers geändert wurde.
@@ -156,8 +154,4 @@ Sie können auch Azure Resource Manager-Vorlagen verwenden, um eine inkrementell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-1. Wenn Sie sich noch nicht für die Vorschau registriert haben und mit der Verwendung von inkrementellen Momentaufnahmen beginnen möchten, senden Sie eine E-Mail an AzureDisks@microsoft.com, um Zugriff auf die öffentliche Vorschau zu erhalten. 
-
-2. Sehen Sie sich die folgenden Beispiele für regionsübergreifende Kopien von inkrementellen Momentaufnahmen mit differenziellen Funktionen an.   
-
-    - [Verwenden von Azure .NET SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+Beispielcode mit .NET, der die differenzielle Funktionalität von inkrementellen Momentaufnahmen veranschaulicht, finden Sie unter [Kopieren von Azure Managed Disks-Sicherungen in eine andere Region mit der differenziellen Funktionalität von inkrementellen Momentaufnahmen](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 09/20/2019
 ms.author: cynthn
-ms.openlocfilehash: 11d503e7dd15f148208da65d551f9c6ae71a7e7f
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: a08a8c6afd4670bea1c3775466d23135016bf08c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71265566"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373263"
 ---
 # <a name="workloads-on-azure-virtual-machines"></a>Workloads auf virtuellen Azure-Computern
 
@@ -27,8 +27,9 @@ Virtuelle Computer in Azure können viele Workloads unterstützen. Für jede Wor
 
 - [High Performance Computing](./hpc/overview.md) in Azure verwendet für CPU oder GPU optimierte virtuelle Computer, um komplexe, rechenintensive Probleme zu lösen.
 - [SAP](./sap/get-started.md) in Azure kann Ihre geschäftskritischen SAP-Workloads und -Szenarien zuverlässig auf einer skalierbaren, konformen und in Unternehmen bewährten Plattform ausführen.
-- [Oracle](./oracle/oracle-considerations.md) unterstützt die Ausführung von Oracle DB 12.1 Standard und Enterprise Edition in Azure auf virtuellen Computerimages, die auf Oracle Linux basieren. 
-- [Erneutes Hosten von Mainframes](./mainframe-rehosting/overview.md) 
+- [Oracle](./oracle/oracle-considerations.md) unterstützt die Ausführung von Oracle DB 12.1 Standard und Enterprise Edition in Azure auf virtuellen Computerimages, die auf Oracle Linux basieren.
+- [Red Hat](./redhat/redhat-overview.md) in Azure wird durch eine Vielzahl von Red Hat Enterprise Linux-Images und eine Red Hat-Updateinfrastruktur für die bedarfsgesteuerte Bereitstellung von Updates unterstützt.
+- [Erneutes Hosten von Mainframes](./mainframe-rehosting/overview.md)
 
 
 

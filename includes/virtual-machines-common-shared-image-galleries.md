@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 067ac0f7f000f749f61d302db4c5c6b856e698a2
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875541"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663105"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre verwalteten Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -80,7 +80,7 @@ Für spezialisierte virtuelle Computer wurden keine computerspezifischen Informa
 - Das `osProfile` gibt an, wie sensible Informationen mithilfe von `secrets` an den virtuellen Computer übermittelt werden. Dies kann Probleme bei KeyVault, WinRM und anderen Funktionen verursachen, die `secrets` im `osProfile` verwenden. In einigen Fällen können Sie verwaltete Dienstidentitäten (Managed Service Identities, MSIs) verwenden, um diese Einschränkungen zu umgehen.
 
 > [!IMPORTANT]
-> Spezialisierte Images befinden sich zurzeit in der Public Preview-Phase.
+> Spezialisierte Images befinden sich zurzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
 > **Bekannte Einschränkungen der Vorschau**: Virtuelle Computer können nur mithilfe des Portals oder der API aus spezialisierten Images erstellt werden. In der Vorschauversion werden die CLI und PowerShell nicht unterstützt.
@@ -117,7 +117,7 @@ Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ress
 
 Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
  
-## <a name="scaling"></a>Skalieren
+## <a name="scaling"></a>Skalierung
 Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
 
 Mit dem Katalog mit freigegebenen Images können Sie jetzt bis zu 1.000 VM-Instanzen in einer VM-Skalierungsgruppe bereitstellen (erhöht von 600 mit verwalteten Images). Imagereplikate bieten eine bessere Leistung, Zuverlässigkeit und Konsistenz bei der Bereitstellung.  Sie können in jeder Zielregion ein andere Replikatanzahl festlegen, basierend auf der für die Region erforderlichen Skalierung. Da jedes Replikat eine tiefe Kopie Ihres Images ist, hilft dies dabei, Ihre Bereitstellungen mit jedem zusätzlichen Replikat linear zu skalieren. Natürlich sind wir uns bewusst, dass keine zwei Images oder Regionen identisch sind, doch dies ist unsere allgemeine Richtlinie für die Verwendung von Replikaten in einer Region:
@@ -144,7 +144,7 @@ Die Regionen, in die eine Versionen eines freigegebenen Images repliziert wird, 
 
 ![Eine Abbildung, die zeigt, wie Sie Images replizieren können](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Zugriff
 
 Da es sich bei dem Katalog mit freigegebenen Images, der Imagedefinition und der Imageversion alles um Ressourcen handelt, lassen sich diese mithilfe der integrierten nativen Azure-RBAC-Steuerelemente freigeben. Mithilfe der rollenbasierten Zugriffssteuerung können Sie diese Ressourcen für andere Benutzer, Dienstprinzipalen und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf die Version eines freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  Im Folgenden finden Sie die Matrix für das Teilen, die dabei hilft, zu verstehen, worauf der Benutzer Zugriff erhält:
 
@@ -239,9 +239,9 @@ Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg 
  
 Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben können.
 
- Szenario 1: Wenn Sie ein verwaltetes Image haben, können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
+ Szenario 1: Wenn Sie im gleichen Abonnement wie für Ihren Katalog mit freigegebenen Images über ein verwaltetes Image verfügen, können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
 
- Szenario 2: Wenn Sie ein nicht verwaltetes Image haben, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
+ Szenario 2: Wenn Sie gleichen Abonnement wie für Ihren Katalog mit freigegebenen Images über ein nicht verwaltetes Image verfügen, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
 
  Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD in ein verwaltetes Image hochladen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
 

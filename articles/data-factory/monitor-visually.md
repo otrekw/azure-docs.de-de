@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/19/2018
-ms.openlocfilehash: a4258b51acfa603c156bc35cdb2cbc3b16f37ab0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 85b1d6b532ba11819947558226291e62af6b5119
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278348"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690934"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Visuelles Überwachen von Azure Data Factory
 
@@ -37,7 +37,7 @@ Die standardmäßige Überwachungsansicht ist eine Liste der Pipelineausführung
 | Status | **Fehlerhaft**, **Erfolgreich**, **In Bearbeitung**, **Abgebrochen** oder **In Warteschlange** |
 | Anmerkungen | Einer Pipeline zugeordnete filterbare Tags  |
 | Parameter | Parameter für die Pipelineausführung (Name-Wert-Paare) |
-| Error | Bei einem Fehler der Pipeline ist dies der Ausführungsfehler |
+| Fehler | Bei einem Fehler der Pipeline ist dies der Ausführungsfehler |
 | Run ID | ID der Pipelineausführung |
 
 ![Listenansicht zum Überwachen von Pipelineausführungen](media/monitor-visually/pipeline-runs.png)
@@ -60,7 +60,7 @@ Wählen Sie das Symbol **Aktivitätsausführungen anzeigen** unter der Spalte **
 | Status | **Fehlerhaft**, **Erfolgreich**, **In Bearbeitung** oder **Abgebrochen** |
 | Integration Runtime | Für welche Integration Runtime die Aktivität ausgeführt wurde |
 | Benutzereigenschaften | Benutzerdefinierte Eigenschaften der Aktivität |
-| Error | Bei einer fehlerhaften Aktivität ist dies der Ausführungsfehler |
+| Fehler | Bei einer fehlerhaften Aktivität ist dies der Ausführungsfehler |
 | Run ID | ID der Aktivitätsausführung |
 
 ![Listenansicht zum Überwachen von Aktivitätsausführungen](media/monitor-visually/activity-runs.png)
@@ -113,6 +113,12 @@ Aktivitäten innerhalb einer Pipeline können erneut ausgeführt werden. Wählen
 ![Anzeigen der Aktivitätsausführungen](media/monitor-visually/rerun-activities-image1.png)
 
 ![Auswählen einer Aktivitätsausführung](media/monitor-visually/rerun-activities-image2.png)
+
+### <a name="rerun-from-failed-activity"></a>Ab fehlgeschlagener Aktivität erneut ausführen
+
+Wenn eine Aktivität fehlschlägt, das Zeitlimit überschritten wird oder die Aktivität abgebrochen wird, können Sie die Pipeline ab der fehlgeschlagenen Aktivität erneut ausführen, indem Sie **Ab fehlgeschlagener Aktivität erneut ausführen** auswählen.
+
+![Fehlgeschlagene Aktivität erneut ausführen](media/monitor-visually/rerun-failed-activity.png)
 
 ### <a name="view-rerun-history"></a>Anzeigen des Verlaufs für erneute Ausführungen
 

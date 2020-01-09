@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 62b42a39e2ce2c86d7f17c611e89d60bc583640e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 43110036c685cd17ba912766dd8ec19aa274e7c1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74816417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459522"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Anpassen der Remotedesktopprotokoll-Eigenschaften für einen Hostpool
 
@@ -26,6 +26,18 @@ Zunächst müssen Sie das [Windows Virtual Desktop-PowerShell-Modul herunterlade
 Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
+## <a name="default-rdp-properties"></a>RDP-Standardeigenschaften
+
+Veröffentlichte RDP-Dateien enthalten standardmäßig die folgenden Eigenschaften:
+
+|RDP-Eigenschaften | Desktops | RemoteApps |
+|---|---| --- |
+| Mehrfachmonitor-Modus | Enabled | – |
+| Aktivierte Laufwerksumleitungen | Laufwerke, Zwischenablage, Drucker, COM-Anschlüsse, USB-Geräte und Smartcards| Laufwerke, Zwischenablage und Drucker |
+| Remoteaudio-Modus | Lokale Wiedergabe | Lokale Wiedergabe |
+
+Alle benutzerdefinierten Eigenschaften, die Sie für den Hostpool definieren, überschreiben diese Standardeinstellungen.
+
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Hinzufügen oder Bearbeiten einer einzelnen benutzerdefinierten RDP-Eigenschaft
 
 Wenn Sie eine einzelne benutzerdefinierte RDP-Eigenschaft hinzufügen oder bearbeiten möchten, führen Sie das folgende PowerShell-Cmdlet aus:
@@ -33,7 +45,8 @@ Wenn Sie eine einzelne benutzerdefinierte RDP-Eigenschaft hinzufügen oder bearb
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
 ```
-![Ein Screenshot des PowerShell-Cmdlets „Set-RdsHostPool“ mit hervorgehobener benutzerdefinierter RDP-Einstellung](media/singlecustomrdpproperty.png)
+
+![Screenshot des PowerShell-Cmdlets „Get-RDSRemoteApp“ mit hervorgehobenem Namen und Anzeigenamen](media/singlecustomrdpproperty.png)
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Hinzufügen oder Bearbeiten von mehreren benutzerdefinierten RDP-Eigenschaften
 
@@ -43,7 +56,8 @@ Wenn Sie mehrere benutzerdefinierte RDP-Eigenschaften hinzufügen oder bearbeite
 $properties="<property1>;<property2>;<property3>"
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
 ```
-![Ein Screenshot des PowerShell-Cmdlets „Set-RdsHostPool“ mit hervorgehobener benutzerdefinierter RDP-Einstellung](media/multiplecustomrdpproperty.png)
+
+![Screenshot des PowerShell-Cmdlets „Get-RDSRemoteApp“ mit hervorgehobenem Namen und Anzeigenamen](media/multiplecustomrdpproperty.png)
 
 ## <a name="reset-all-custom-rdp-properties"></a>Zurücksetzen aller benutzerdefinierten RDP-Eigenschaften
 
@@ -52,11 +66,12 @@ Sie können eine einzelne benutzerdefinierte RDP-Eigenschaft auf deren Standardw
 ```powershell
 Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
-![Ein Screenshot des PowerShell-Cmdlets „Set-RdsHostPool“ mit hervorgehobener benutzerdefinierter RDP-Einstellung](media/resetcustomrdpproperty.png)
+
+![Screenshot des PowerShell-Cmdlets „Get-RDSRemoteApp“ mit hervorgehobenem Namen und Anzeigenamen](media/resetcustomrdpproperty.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die RDP-Eigenschaften eines bestimmten Hostpools angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen als Teil einer Benutzersitzung zu testen. Wechseln Sie dafür zu den Vorgehensweisen für das Herstellen einer Verbindung mit Windows Virtual Desktop-Ressourcen:
+Nachdem Sie die RDP-Eigenschaften eines bestimmten Hostpools angepasst haben, können Sie sich bei einem Windows Virtual Desktop-Client anmelden, um die Einstellungen als Teil einer Benutzersitzung zu testen. In den nächsten zwei Vorgehensweisen erfahren Sie, wie Sie mit dem ausgewählten Client eine Verbindung zu einer Sitzung herstellen:
 
-- [Herstellen einer Verbindung über Windows 10 oder Windows 7](connect-windows-7-and-10.md)
-- [Herstellen einer Verbindung über einen Webbrowser](connect-web.md)
+- [Herstellen einer Verbindung mit dem Windows-Desktopclient](connect-windows-7-and-10.md)
+- [Herstellen einer Verbindung mit dem Webclient](connect-web.md)

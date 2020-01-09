@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 05/23/2019
+ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3cffd2de0763ea6984b64b965ce1214951d3d569
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "67056483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353579"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Wie viele VPN-Clientendpunkte kann meine Punkt-zu-Standort-Konfiguration umfassen?
 
@@ -35,6 +35,12 @@ Folgende Clientbetriebssysteme werden unterstützt:
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
+
+### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>Wie muss ich vorgehen, wenn beim Herstellen einer Verbindung ein Zertifikatkonflikt gemeldet wird?
+
+Deaktivieren Sie **Identität des Servers durch Validierung des Zertifikat überprüfen** oder **fügen Sie den Server-FQDN zusammen mit dem Zertifikat hinzu**, wenn Sie ein Profil manuell erstellen. Sie können dazu **rasphone** an einer Eingabeaufforderung ausführen und das Profil in der Dropdown-Liste auswählen.
+
+![point-to-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Serverzertifikat")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Können Proxys und Firewalls mit der Punkt-zu-Standort-Funktion durchlaufen werden?
 

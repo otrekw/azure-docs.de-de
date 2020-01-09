@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 12/18/2019
 ms.author: alzam
-ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151407"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647916"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung (Vorschau)
 
@@ -26,9 +26,9 @@ Dieser Artikel unterstützt Sie beim Konfigurieren eines VPN-Clients für die Ve
 
 Sie müssen zum Herstellen einer Verbindung auf jedem Computer, der eine Verbindung mit dem VNET herstellen möchte, Azure VPN Client (Vorschauversion) herunterladen und ein VPN-Clientprofil konfigurieren. Sie können ein Clientprofil auf einem Computer erstellen, das Profil exportieren und dann auf weiteren Computern importieren.
 
-### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter:
+### <a name="to-download-the-azure-vpn-client"></a>So laden Sie Azure VPN Client herunter
 
-Verwenden Sie [diesen](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab) Link, um Azure VPN Client (Vorschauversion) herunterzuladen.
+Verwenden Sie [diesen Link](https://www.microsoft.com/p/azure-vpn-client-preview/9np355qt2sqb?rtc=1&activetab=pivot:overviewtab), um Azure VPN Client (Vorschauversion) herunterzuladen.
 
 ### <a name="cert"></a>So erstellen Sie ein zertifikatbasiertes Clientprofil
 
@@ -39,6 +39,10 @@ Bei Verwendung eines zertifikatbasierten Profils müssen die entsprechenden Zert
 ### <a name="radius"></a>So erstellen Sie ein RADIUS-Clientprofil
 
   ![Radius](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  
+> [!NOTE]
+> Der geheime Serverschlüssel kann in das P2S-VPN-Clientprofil exportiert werden.  Anweisungen zum Exportieren eines Clientprofils finden Sie [hier](about-vpn-profile-download.md).
+>
 
 ### <a name="export"></a>So exportieren und verteilen Sie ein Clientprofil
 
@@ -143,6 +147,26 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 4. Zeigen Sie die Diagnoseergebnisse an.
 
     ![Diagnose](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
+
+## <a name="faq"></a>Häufig gestellte Fragen
+
+### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Wie füge ich DNS-Suffixe zum VPN-Client hinzu?
+
+Sie können die heruntergeladene XML-Profildatei ändern und die Tags **\<dnssuffixes>\<dnssufix> \</dnssufix>\</dnssuffixes>** hinzufügen.
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnssuffixes>
+          <dnssuffix>.mycorp.com</dnssuffix>
+          <dnssuffix>.xyz.com</dnssuffix>
+          <dnssuffix>.etc.net</dnssuffix>
+    </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

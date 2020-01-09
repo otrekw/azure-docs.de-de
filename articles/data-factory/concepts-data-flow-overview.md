@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/7/2019
-ms.openlocfilehash: 397ecdb805f0be9f374c53ae7128f806bfb789d3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/19/2019
+ms.openlocfilehash: 210c1814325e689dd70af9caa7fad08deed933e1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928287"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444500"
 ---
 # <a name="what-are-mapping-data-flows"></a>Was sind Zuordnungsdatenflüsse?
 
@@ -61,6 +61,8 @@ Wenn Sie Datenflüsse in einer Pipeline parallel ausführen, erstellt ADF separa
 
 Diese Option der drei verfügbaren Optionen weist normalerweise die kürzeste Ausführungsdauer auf. Da jeder parallele Datenfluss gleichzeitig in separaten Clustern ausgeführt wird, ist die Sortierung der Ereignisse nicht deterministisch.
 
+Wenn Sie Ihre Datenflussaktivitäten in ihren Pipelines parallel ausführen, wird empfohlen, keine TTL zu verwenden. Dies liegt daran, dass die gleichzeitige parallele Ausführung von Datenflüssen mit derselben Azure Integration Runtime zu mehreren aktiven Poolinstanzen für Ihre Data Factory führt.
+
 ##### <a name="overload-single-data-flow"></a>Überladen eines einzelnen Datenflusses
 
 Wenn Sie Ihre gesamte Logik in einem einzelnen Datenfluss anordnen, verwendet ADF für die gesamte Ausführung denselben Auftragsausführungskontext in einer einzelnen Spark-Clusterinstanz.
@@ -85,11 +87,11 @@ Die erste Registerkarte im Konfigurationsbereich jeder Transformation enthält d
 
 ![Registerkarte „Quelleinstellungen“](media/data-flow/source1.png "Registerkarte „Quelleinstellungen“")
 
-#### <a name="optimize"></a>Optimierung
+#### <a name="optimize"></a>Optimieren
 
 Die Registerkarte **Optimieren** enthält Einstellungen zum Konfigurieren von Partitionierungsschemas.
 
-![Optimieren](media/data-flow/optimize1.png "Optimierung")
+![Optimieren](media/data-flow/optimize1.png "Optimieren")
 
 Die Standardeinstellung ist **Aktuelle Partitionierung verwenden**, mit der Azure Data Factory angewiesen wird, das native Partitionierungsschema der in Spark ausgeführten Datenflüsse zu verwenden. Für die meisten Szenarien wird diese Einstellung empfohlen.
 
@@ -119,7 +121,7 @@ Bei dieser Option werden dynamische Spark-Bereiche basierend auf den von Ihnen a
 
 Erstellen Sie einen Ausdruck, der einen festen Bereich für Werte in Ihren partitionierten Datenspalten bereitstellt. Sie sollten über fundiertes Wissen über Ihre Daten verfügen, bevor Sie diese Option verwenden, um Partitionsungleichmäßigkeiten zu vermeiden. Die von Ihnen für den Ausdruck eingegebenen Werte werden als Teil einer Partitionsfunktion verwendet. Sie können die Anzahl der physischen Partitionen festlegen.
 
-##### <a name="key"></a>Schlüssel
+##### <a name="key"></a>Key
 
 Wenn Sie gut mit der Kardinalität Ihrer Daten vertraut sind, kann die Schlüsselpartitionierung eine gute Strategie darstellen. Die Schlüsselpartitionierung erstellt Partitionen für jeden eindeutigen Wert in der Spalte. Sie können die Anzahl der Partitionen nicht festlegen, weil die Anzahl auf den eindeutigen Werten in den Daten basiert.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure-VPN-Gateway: Konfigurieren von Paketerfassungen'
+title: 'Azure-VPN Gateway: Konfigurieren von Paketerfassungen'
 description: Hier erhalten Sie Informationen über Paketerfassungsfunktionen, die für VPN-Gateways verwendet werden können.
 services: vpn-gateway
 author: radwiv
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: radwiv
-ms.openlocfilehash: 41c36d302605bb619899131a8ace649b0f1439b2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 2429a8d08baa34aed120cffa069abae1fb9a3df9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151857"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353519"
 ---
 # <a name="configure-packet-captures-for-vpn-gateways"></a>Konfigurieren der Paketerfassung für VPN-Gateways
 
@@ -26,9 +26,11 @@ VPN-Gateway-Paketerfassungen können je nach Kundenanforderungen für das Gatewa
 
 Die Verwendung von 5-Tupel-Filtern (Quellsubnetz, Zielsubnetz, Quellport, Zielport, Protokoll) und TCP-Flags (SYN, ACK, FIN, URG, PSH, RST) ist nützlich, um eine Problemisolierung bei einem hohen Datenverkehrsaufkommen durchzuführen.
 
+Während der Ausführung der Paketerfassung können Sie nur eine Option pro Eigenschaft verwenden.
+
 ## <a name="setup-packet-capture-using-powershell"></a>Einrichten der Paketerfassung mithilfe von PowerShell
 
-Nachfolgend finden Sie Beispiele für PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu den Parameteroptionen (z. B. zum Erstellen von Filtern) finden Sie in diesem PowerShell-[Dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
+Nachfolgend finden Sie Beispiele für PowerShell-Befehle zum Starten und Beenden von Paketerfassungen. Weitere Informationen zu den Parameteroptionen (z. B. zum Erstellen von eines Filters) finden Sie in diesem PowerShell-[Dokument](https://docs.microsoft.com/powershell/module/az.network/start-azvirtualnetworkgatewaypacketcapture).
 
 ### <a name="start-packet-capture-for-a-vpn-gateway"></a>Starten der Paketerfassung für ein VPN-Gateway
 
@@ -36,7 +38,7 @@ Nachfolgend finden Sie Beispiele für PowerShell-Befehle zum Starten und Beenden
 Start-AzVirtualnetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayName"
 ```
 
-Der optionale Parameter **-FilterData** kann verwendet werden, um Filter anzuwenden.
+Der optionale Parameter **-FilterData** kann verwendet werden, um einen Filter anzuwenden.
 
 ### <a name="stop-packet-capture-for-a-vpn-gateway"></a>Beenden der Paketerfassung für ein VPN-Gateway
 
@@ -50,7 +52,7 @@ Stop-AzVirtualNetworkGatewayPacketCapture -ResourceGroupName "YourResourceGroupN
 Start-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourResourceGroupName" -Name "YourVPNGatewayConnectionName"
 ```
 
-Der optionale Parameter **-FilterData** kann verwendet werden, um Filter anzuwenden.
+Der optionale Parameter **-FilterData** kann verwendet werden, um einen Filter anzuwenden.
 
 ### <a name="stop-packet-capture-on-a-vpn-gateway-connection"></a>Beenden der Paketerfassung für eine VPN-Gatewayverbindung
 
@@ -62,7 +64,7 @@ Stop-AzVirtualNetworkGatewayConnectionPacketCapture -ResourceGroupName "YourReso
 
 - Das Ausführen von Paketerfassungen kann sich auf die Leistung auswirken. Denken Sie daran, die Paketerfassung zu beenden, wenn sie nicht benötigt wird.
 - Die empfohlene Mindestdauer für die Paketerfassung beträgt 600 Sekunden. Eine kürzere Paketerfassung führt möglicherweise zu unvollständigen Daten aufgrund von Synchronisierungsproblemen zwischen verschiedenen Komponenten im Pfad.
-- Bei der Paketerfassung werden Datendateien im PCAP- oder ETL-Format generiert. Möglicherweise benötigen Sie den Netmon-Parser, um die Daten zu analysieren.
+- Bei der Paketerfassung werden Datendateien im PCAP-Format generiert. Verwenden Sie Wireshark oder andere allgemein verfügbare Anwendungen, um PCAP-Dateien zu öffnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

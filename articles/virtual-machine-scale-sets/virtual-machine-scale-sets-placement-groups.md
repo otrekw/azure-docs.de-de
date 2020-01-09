@@ -1,6 +1,6 @@
 ---
-title: Verwenden umfangreicher Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
-description: Alles, was Sie zur Verwendung umfangreicher Azure-VM-Skalierungsgruppe wissen müssen
+title: Verwenden umfangreicher Azure VM-Skalierungsgruppen
+description: Was Sie über umfangreiche Azure VM-Skalierungsgruppen wissen müssen, um Sie in Ihrer Anwendung zu verwenden.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: rajsqr
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/9/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 46ca46c99187b14974b78ccc4acc134a5f716b05
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 839d889783a7ef3bcd602c37a4975ddeea4e2a16
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326707"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459344"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
 Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
@@ -50,7 +50,7 @@ Geben Sie beim Erstellen einer Skalierungsgruppe über das Azure-Portal einfach 
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
-Über die [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-cli) kann eine umfangreiche VM-Skalierungsgruppe mithilfe des Befehls _az vmss create_ erstellt werden. Dieser Befehl legt auf der Grundlage des Arguments _instance-count_ intelligente Standardwerte wie etwa die Subnetzgröße fest:
+Über die [Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-cli) kann mit dem Befehl _az vmss create_ eine umfangreiche VM-Skalierungsgruppe erstellt werden. Dieser Befehl legt auf der Grundlage des Arguments _instance-count_ intelligente Standardwerte wie etwa die Subnetzgröße fest:
 
 ```bash
 az group create -l southcentralus -n biginfra

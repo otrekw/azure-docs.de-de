@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 11/09/2019
+ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 7f80fb07bbed3bdb478bce557241a92cd571cc83
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459575"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Problembehandlung: Übersicht, Feedback und Support
 
@@ -38,21 +38,22 @@ Verwenden Sie die folgende Tabelle, um Probleme zu identifizieren und zu beheben
 | Sitzungshostpool-VM-Erstellung, wenn keine mit Windows Virtual Desktop bereitgestellten Azure Resource Manager-Vorlagen verwendet werden | Wenden Sie sich an den **Azure-Support (Compute)** . <br> <br> Informationen zu Problemen mit den Vorlagen von Azure Resource Manager, die mit Windows Virtual Desktop bereitgestellt werden, finden Sie im Abschnitt „Erstellen eines Windows Virtual Desktop-Mandanten“ unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md). |
 | Verwalten der Windows Virtual Desktop-Sitzungshostumgebung über das Azure-Portal    | Wenden Sie sich an den **Azure-Support**. <br> <br> Bei Verwaltungsproblemen bei der Verwendung von Remote Desktop Services/Windows Virtual Desktop PowerShell lesen Sie [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md), oder **öffnen Sie eine Supportanfrage für Windows Virtual Desktop (Compute)** . |
 | Verwalten einer Windows Virtual Desktop-Konfiguration, die an Hostpools und Anwendungsgruppen (App-Gruppen) gebunden ist      | Weitere Informationen finden Sie unter [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md), oder **öffnen Sie eine Supportanfrage für Windows Virtual Desktop (Compute)** . <br> <br> Wenn Probleme mit der grafischen Beispielbenutzeroberfläche (GUI) verbunden sind, wenden Sie sich an die Yammer-Community.|
-| Fehlfunktion von Remotedesktopclients beim Start                                                 | Weitere Informationen finden Sie unter [Remote Desktop-Clientverbindungen](troubleshoot-client-connection.md). Wenn das Problem weiterhin besteht, **öffnen Sie eine Supportanfrage für Windows Virtual Desktop (Compute)** .  <br> <br> Wenn es sich um ein Netzwerkproblem handelt, müssen Ihre Benutzer sich an ihren Netzwerkadministrator wenden. |
-| Verbunden, aber kein Feed                                                                 | Führen Sie die Problembehandlung anhand von „Benutzer stellt eine Verbindung her, aber es wird nichts angezeigt (kein Feed)“ im Abschnitt [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md) aus. <br> <br> Wenn Ihre Benutzer einer App-Gruppe zugewiesen wurden, **öffnen Sie eine Supportanfrage für Windows Virtual Desktop (Compute)** . |
+| Fehlfunktion von Remotedesktopclients beim Start                                                 | Weitere Informationen finden Sie unter [Problembehandlung bei Remote Desktop-Clientverbindungen](troubleshoot-client.md). Wenn das Problem weiterhin besteht, **öffnen Sie eine Supportanfrage für Windows Virtual Desktop (Compute)** .  <br> <br> Wenn es sich um ein Netzwerkproblem handelt, müssen Ihre Benutzer sich an ihren Netzwerkadministrator wenden. |
+| Verbunden, aber kein Feed                                                                 | Führen Sie die Problembehandlung anhand von „Benutzer stellt eine Verbindung her, aber es wird nichts angezeigt (kein Feed)“ im Abschnitt [Problembehandlung bei Remotedesktop-Clientverbindungen](troubleshoot-client.md) aus. <br> <br> Wenn Ihre Benutzer einer App-Gruppe zugewiesen wurden, **öffnen Sie eine Supportanfrage für Windows Virtual Desktop (Compute)** . |
 | Feedermittlungsprobleme aufgrund des Netzwerks                                            | Ihre Benutzer müssen sich an ihren Netzwerkadministrator wenden. |
-| Verbinden von Clients                                                                    | Weitere Informationen finden Sie unter [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md). Wenn das Ihr Problem nicht löst, finden Sie weitere Informationen unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md). |
+| Verbinden von Clients                                                                    | Weitere Informationen finden Sie unter [Windows Virtual Desktop-Dienstverbindungen](troubleshoot-service-connection.md). Wenn das Ihr Problem nicht löst, finden Sie weitere Informationen unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md). |
 | Reaktionsfähigkeit von Remoteanwendungen oder Desktop                                      | Wenn Probleme mit einer bestimmten Anwendung oder einem Produkt verknüpft sind, wenden Sie sich an das Team, das für das betreffende Produkt zuständig ist. |
 | Lizenzierungsmeldungen oder -fehler                                                          | Wenn Probleme mit einer bestimmten Anwendung oder einem Produkt verknüpft sind, wenden Sie sich an das Team, das für das betreffende Produkt zuständig ist. |
-| Probleme bei der Verwendung von Windows Virtual Desktop-Tools auf GitHub (Azure Resource Manager-Vorlagen, Diagnosetool, Verwaltungstool) | Informationen zum Melden von Problemen finden Sie unter [ARM-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md). |
+| Probleme bei der Verwendung von Windows Virtual Desktop-Tools auf GitHub (Azure Resource Manager-Vorlagen, Diagnosetool, Verwaltungstool) | Informationen zum Melden von Problemen finden Sie unter [Azure Resource Manager-Vorlagen für Remotedesktopdienste](https://github.com/Azure/RDS-Templates/blob/master/README.md). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zur Problembehandlung beim Erstellen eines Mandanten- und Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
 - Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Problembehandlung bei Problemen mit Windows Virtual Desktop-Clientverbindungen finden Sie unter [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md).
+- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen](../azure-resource-manager/resource-manager-deployment-operations.md).

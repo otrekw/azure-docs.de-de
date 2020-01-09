@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 289100afe825c14ce9964f39e3f583078f51da1d
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73182221"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75564772"
 ---
 ## <a name="application-performance-indicators"></a>Anwendungsleistungsindikatoren
 
@@ -53,7 +53,7 @@ Die folgenden Vorgänge auf Steuerungsebene auf verwalteten Datenträgern könne
 - Erstellen eines verwalteten Datenträgers aus einer Momentaufnahme
 - Konvertieren von nicht verwalteten Datenträgern in verwaltete Datenträger
 
-# <a name="performance-application-checklist-for-disks"></a>Prüfliste für die Anwendungsleistung für Datenträger
+## <a name="performance-application-checklist-for-disks"></a>Prüfliste für die Anwendungsleistung für Datenträger
 
 Der erste Schritt beim Entwerfen hochleistungsfähiger Anwendungen in Azure Storage Premium besteht darin, sich mit den Leistungsanforderungen der Anwendung vertraut zu machen. Nach dem Erfassen von Anforderungen können Sie Ihre Anwendung optimieren, um eine optimale Leistung zu erzielen.
 
@@ -92,7 +92,7 @@ Die beste Methode zum Messen der Leistungsanforderungen Ihrer Anwendung ist die 
 
 Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher und alle logischen und physischen Datenträger Ihres Servers verfügbar. Bei Verwenden von Storage Premium-Datenträgern mit einem virtuellen Computer gelten die Indikatoren für physische Datenträger für jeden Storage Premium-Datenträger. Die Indikatoren für logische Datenträger gelten für jedes Volume, das auf den Storage Premium-Datenträgern erstellt wurde. Sie müssen die Werte für die Datenträger erfassen, die den Workload Ihrer Anwendung hosten. Wenn es eine 1: 1-Zuordnung zwischen logischen und physischen Datenträgern gilt, beziehen Sie sich auf die Leistungsindikatoren für physische Datenträger und andernfalls auf die Leistungsindikatoren für logische Datenträger. Unter Linux erzeugt der Befehl „iostat“ einen Bericht der CPU- und Festplattenauslastung. Der Bericht zur Datenträgerauslastung bietet Statistiken pro physischem Gerät bzw. pro Partition. Wenn Sie einen Datenbankserver mit Daten- und Protokolldateien auf getrennten Datenträgern nutzen, erfassen Sie diese Daten für beide Datenträger. In der folgenden Tabelle werden die Leistungsindikatoren für Datenträger, Prozessor und Arbeitsspeicher beschrieben:
 
-| Indikator | BESCHREIBUNG | Systemmonitor | iostat |
+| Leistungsindikator | BESCHREIBUNG | Systemmonitor | iostat |
 | --- | --- | --- | --- |
 | **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s <br> Schreibvorgänge/s |tps <br> r/s <br> w/s |
 | **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit <br> % Schreibzeit |r/s <br> w/s |
@@ -170,11 +170,11 @@ Führen Sie zum Überprüfen der Auswirkungen der E/A-Größe auf die Anwendungs
 
 ## <a name="high-scale-vm-sizes"></a>Größen von Hochleistungs-VMs
 
-Beim Entwerfen einer Anwendung ist eine der ersten Aufgaben das Wählen einer VM zum Hosten Ihrer Anwendung. Storage Premium bietet verschiedene Größen von Hochleistungs-VMs zum Ausführen von Anwendungen, die eine höhere Rechenleistung und einen lokalen Datenträger mit hoher E/A-Leistung benötigen. Diese VMs bieten schnellere Prozessoren, ein höheres Arbeitsspeicher/Kern-Verhältnis und ein SSD-Laufwerk (Solid State Drive) als lokalen Datenträger. Beispiele für Hochleistungs-VMs, die Storage Premium unterstützen, sind die VMs der DS-, DSv2- und GS-Serie.
+Beim Entwerfen einer Anwendung ist eine der ersten Aufgaben das Wählen einer VM zum Hosten Ihrer Anwendung. Storage Premium bietet verschiedene Größen von Hochleistungs-VMs zum Ausführen von Anwendungen, die eine höhere Rechenleistung und einen lokalen Datenträger mit hoher E/A-Leistung benötigen. Diese VMs bieten schnellere Prozessoren, ein höheres Arbeitsspeicher/Kern-Verhältnis und ein SSD-Laufwerk (Solid State Drive) als lokalen Datenträger. Beispiele für Hochleistungs-VMs, die Storage Premium unterstützen, sind die VMs der DS- und GS-Serie.
 
-Hochleistungs-VMs stehen in mehreren Größen mit jeweils einer anderen Anzahl von CPU-Kernen, Arbeitsspeicher- und temporären Datenträgergröße und einem anderen Betriebssystem zur Verfügung. Jede VM-Größe weist außerdem eine maximale Anzahl von Datenträgern auf, die Sie an die VM anfügen können. Daher beeinflusst die gewählte VM-Größe die Verarbeitungs-, Arbeitsspeicher- und Speicherkapazität, die für Ihre Anwendung zur Verfügung steht. Sie hat außerdem Einfluss auf die Compute- und Speicherkosten. Nachstehend sehen Sie beispielsweise die Spezifikationen der höchsten VM-Größen in den DS-, DSv2- und GS-Serien:
+Hochleistungs-VMs stehen in mehreren Größen mit jeweils einer anderen Anzahl von CPU-Kernen, Arbeitsspeicher- und temporären Datenträgergröße und einem anderen Betriebssystem zur Verfügung. Jede VM-Größe weist außerdem eine maximale Anzahl von Datenträgern auf, die Sie an die VM anfügen können. Daher beeinflusst die gewählte VM-Größe die Verarbeitungs-, Arbeitsspeicher- und Speicherkapazität, die für Ihre Anwendung zur Verfügung steht. Sie hat außerdem Einfluss auf die Compute- und Speicherkosten. Nachstehend sind beispielsweise die Spezifikationen der maximalen VM-Größen in der DS- und GS-Serie aufgeführt:
 
-| Größe des virtuellen Computers | CPU-Kerne | Arbeitsspeicher | VM-Datenträgergrößen | Max. Anzahl Datenträger | Cachegröße | IOPS | Limits für Bandbreite, Cache und E/A |
+| Größe des virtuellen Computers | CPU-Kerne | Arbeitsspeicher | VM-Datenträgergrößen | Maximal Anzahl Datenträger | Cachegröße | IOPS | Limits für Bandbreite, Cache und E/A |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 224 GB |32 |576 GB |50.000 IOPS <br> 512 MB pro Sekunde |4\.000 IOPS und 33 MB pro Sekunde |
 | Standard_GS5 |32 |448 GB |Betriebssystem = 1023 GB <br> Lokales SSD = 896 GB |64 |4\.224 GB |80.000 IOPS <br> 2.000 MB pro Sekunde |5\.000 IOPS und 50 MB pro Sekunde |
@@ -265,7 +265,7 @@ Durch Konfigurieren des „ReadOnly“-Caches für Storage Premium-Datenträger 
 *ReadWrite*  
 Für die Betriebssystem-Datenträger ist der „ReadWrite“-Cache standardmäßig aktiviert. Wir haben vor Kurzem Unterstützung des „ReadWrite“-Caches auf Datenträgern hinzugefügt. Wenn Sie den „ReadWrite“-Cache nutzen, benötigen Sie eine ordnungsgemäße Möglichkeit zum Schreiben der Daten aus dem Cache auf beständige Datenträger. SQL Server übernimmt beispielsweise selbst das Schreiben von Daten im Cache auf beständige Speicherdatenträger. Das Verwenden eines „ReadWrite“-Caches mit einer Anwendung, die die benötigten Daten nicht beständig speichert, kann zu Datenverlusten führen, sollte die VM abstürzen.
 
-*Keine*  
+*None*  
 Die Option **None** wird aktuell nur für reguläre Datenträger unterstützt. Für Betriebssystemdatenträger wird sie nicht unterstützt. Wenn Sie **None** für einen Betriebssystemdatenträger festlegen, wird die Einstellung intern überschrieben und auf **ReadOnly** festgelegt.
 
 Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwenden, indem Sie die folgenden Schritte ausführen:
@@ -278,7 +278,7 @@ Als Beispiel können Sie diese Leitlinien auf SQL Server in Storage Premium anwe
 
 ## <a name="optimize-performance-on-linux-vms"></a>Optimieren der Leistung auf Linux-VMs
 
-Für alle Premium SSDs oder Ultra Disks mit der Cacheeinstellung **ReadOnly** oder **None** müssen Sie beim Bereitstellen des Dateisystems „Barriers“ (Sperren) deaktivieren. Sie benötigen keine Sperren für dieses Szenario, da die Schreibvorgänge auf Storage Premium-Datenträgern für diese Cacheeinstellungen beständig sind. Wenn die Schreibanforderung erfolgreich abgeschlossen wurde, wurden Daten in den permanenten Speicher geschrieben. Verwenden Sie zum Deaktivieren von Sperren eines der folgenden Verfahren. Wählen Sie das richtige Verfahren für Ihr Dateisystem:
+Für alle SSD Premium-Datenträger oder Ultra Disks mit der Cacheeinstellung **ReadOnly** oder **None** müssen Sie beim Einbinden des Dateisystems Sperren deaktivieren. Sie benötigen keine Sperren für dieses Szenario, da die Schreibvorgänge auf Storage Premium-Datenträgern für diese Cacheeinstellungen beständig sind. Wenn die Schreibanforderung erfolgreich abgeschlossen wurde, wurden Daten in den permanenten Speicher geschrieben. Verwenden Sie zum Deaktivieren von Sperren eines der folgenden Verfahren. Wählen Sie das richtige Verfahren für Ihr Dateisystem:
   
 * Verwenden Sie zum Deaktivieren von Sperren für **reiserFS** die Bereitstellungsoption `barrier=none`. (Verwenden Sie zum Aktivieren von Sperren `barrier=flush`.)
 * Verwenden Sie zum Deaktivieren von Sperren für **ext3/ext4** die Bereitstellungsoption `barrier=0`. (Verwenden Sie zum Aktivieren von Sperren `barrier=1`.)
@@ -292,29 +292,31 @@ Für einige Versionen sind die neuesten Linux-Integrationsdienste (LIS v4.0) fü
 
 | Distribution | Version | Unterstützter Kernel | Details |
 | --- | --- | --- | --- |
-| Ubuntu | 12.04 oder höher| 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
-| Ubuntu | 14.04 oder höher| 3.13.0-44.73+  | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Ubuntu | 12.04 oder höher| 3.2.0-75.110+ | &nbsp; |
+| Ubuntu | 14.04 oder höher| 3.13.0-44.73+  | &nbsp; |
 | Debian | 7.x, 8.x oder höher| 3.16.7-ckt4-1+ | &nbsp; |
-| SUSE | SLES 12 oder höher| 3.12.36-38.1+ | suse-sles-12-priority-v20150213 <br> suse-sles-12-v20150213 |
+| SUSE | SLES 12 oder höher| 3.12.36-38.1+ | &nbsp; |
 | SUSE | SLES 11 SP4 oder höher| 3.0.101-0.63.1+ | &nbsp; |
-| CoreOS | 584.0.0+ oder höher| 3.18.4+ | CoreOS 584.0.0 |
-| CentOS | 6.5, 6.6, 6.7, 7.0 oder höher| &nbsp; | [LIS4 erforderlich](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Siehe Hinweis im nächsten Abschnitt* |
-| CentOS | 7.1+ oder höher| 3.10.0-229.1.2.el7+ | [LIS4 empfohlen](https://www.microsoft.com/download/details.aspx?id=51612) <br> *Siehe Hinweis im nächsten Abschnitt* |
+| CoreOS | 584.0.0+ oder höher| 3.18.4+ | &nbsp; |
+| CentOS | 6.5, 6.6, 6.7, 7.0 oder höher| &nbsp; | [LIS4 erforderlich](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Siehe Hinweis im nächsten Abschnitt* |
+| CentOS | 7.1+ oder höher| 3.10.0-229.1.2.el7+ | [LIS4 empfohlen](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Siehe Hinweis im nächsten Abschnitt* |
 | Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ oder höher | &nbsp; | &nbsp; |
 | Oracle | 6.0+, 7.2+ oder höher | &nbsp; | UEK4 oder RHCK |
-| Oracle | 7.0-7.1 oder höher | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://www.microsoft.com/download/details.aspx?id=51612) |
-| Oracle | 6.4-6.7 oder höher | &nbsp; | UEK4 oder RHCK mit [LIS 4.1+](https://www.microsoft.com/download/details.aspx?id=51612) |
+| Oracle | 7.0-7.1 oder höher | &nbsp; | UEK4 oder RHCK mit [LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
+| Oracle | 6.4-6.7 oder höher | &nbsp; | UEK4 oder RHCK mit [LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
 
 ### <a name="lis-drivers-for-openlogic-centos"></a>LIS-Treiber für OpenLogic CentOS
 
 Wenn Sie virtuelle OpenLogic CentOS-Computer ausführen, sollten Sie den folgenden Befehl zum Installieren der neuesten Treiber verwenden:
 
 ```
-sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
+sudo reboot
 ```
 
-Starten Sie den virtuellen Computer neu, um die neuen Treiber zu aktivieren.
+In einigen Fällen wird auch der Kernel mit dem obigen Befehl aktualisiert. Wenn eine Kernelaktualisierung erforderlich ist, müssen Sie die obigen Befehle nach dem Neustart u. U. erneut ausführen, damit das microsoft-hyper-v-Paket vollständig installiert wird.
+
 
 ## <a name="disk-striping"></a>Datenträgerstriping
 
@@ -382,4 +384,3 @@ Für ein Stripesetvolume muss die Warteschlangenlänge so hoch sein, dass jeder 
 Azure Storage Premium stellt abhängig von den gewählten VM- und Datenträgergrößen die angegebene IOPS- und Durchsatzrate bereit. Immer wenn die Anwendung versucht, eine IOPS- oder Durchsatzrate über diese Limits der VM oder des Datenträgers hinaus zu nutzen, erfolgt eine Drosselung durch Storage Premium. Dies zeigt sich in Form von Leistungseinbußen in Ihrer Anwendung. Folgen sind höhere Latenz, weniger Durchsatz oder weniger IOPS. Wenn Storage Premium keine Drosselung vornimmt, kann Ihre Anwendung vollständig ausfallen, sobald die zur Verfügung stehenden Ressourcen überschritten werden. Um also Leistungsprobleme aufgrund der Drosselung zu vermeiden, stellen Sie Ihrer Anwendung stets ausreichend Ressourcen zur Verfügung. Berücksichtigen Sie, was zuvor in den Abschnitt „VM-Größen“ und „Datenträgergrößen“ erörtert wurde. Benchmarktests sind die beste Möglichkeit, um herauszufinden, welche Ressourcen Sie zum Hosten der Anwendung benötigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
