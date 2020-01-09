@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 803b1e397efd4a6f9ddaa3bae1d101c8f204e728
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328294"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645802"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -77,8 +77,8 @@ ms.locfileid: "74328294"
 [azure-ps]:/powershell/azureps-cmdlets-docs
 [azure-quickstart-templates-github]:https://github.com/Azure/azure-quickstart-templates
 [azure-script-ps]:https://go.microsoft.com/fwlink/p/?LinkID=395017
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md#subscription-limits
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits
 
 [dbms-guide]:dbms-guide_general.md 
 [dbms-guide-2.1]:dbms-guide.md#c7abf1f0-c927-4a7c-9c1d-c7b5b3b7212f 
@@ -235,7 +235,7 @@ ms.locfileid: "74328294"
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f 
 
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
-[resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
+[resource-group-overview]:../../../azure-resource-manager/management/overview.md
 [resource-groups-networking]:../../../networking/networking-overview.md
 [sap-pam]:https://support.sap.com/pam 
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
@@ -249,7 +249,7 @@ ms.locfileid: "74328294"
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
 [storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-scalability-targets]:../../../storage/common/scalability-targets-standard-accounts.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
@@ -480,7 +480,7 @@ Die Funktion „SQL Server-Protokollversand“ wurde in Azure kaum verwendet, um
 
 
 
-### <a name="database-mirroring"></a>Spiegeln von Datenbanken
+### <a name="database-mirroring"></a>Datenbankspiegelung
 Die von SAP unterstützte Datenbankspiegelung (siehe SAP-Hinweis [965908]) basiert auf der Definition eines Failoverpartners in der SAP-Verbindungszeichenfolge. Bei standortübergreifenden Fällen wird davon ausgegangen, dass sich die beiden VMs in derselben Domäne befinden und dass es sich bei dem Benutzerkontext, unter dem die beiden SQL Server-Instanzen ausgeführt werden, ebenfalls um Domänenbenutzer handelt, die über ausreichende Berechtigungen für die zwei beteiligten SQL Server-Instanzen verfügen. Daher unterscheidet sich die Einrichtung der Datenbankspiegelung in Azure nicht von einer typischen lokalen Einrichtung/Konfiguration.
 
 Für Nur-Cloud-Bereitstellungen besteht die einfachste Methode darin, eine weitere Domäne in Azure einzurichten, damit sich die DBMS-VMs (und im Idealfall die dedizierten SAP-VMs) innerhalb einer Domäne befinden.
@@ -552,7 +552,7 @@ In diesem Handbuch finden Sie eine Reihe von Empfehlungen. Es ist ratsam, das Ha
 1. Verwenden Sie die neueste DBMS-Version wie SQL Server 2017, die die meisten Vorteile in Azure bietet. 
 2. Planen Sie Ihre SAP-Systemlandschaft in Azure sorgfältig, um das Layout von Datendateien und die Einschränkungen von Azure gegeneinander abzuwägen:
    * Verwenden Sie nicht zu viele Datenträger, aber ausreichend viele, um sicherzustellen, dass die erforderlichen IOPS erzielt werden können.
-   * Wenn Sie nicht Managed Disks verwenden, denken Sie daran, dass IOPS auch pro Azure Storage-Konto beschränkt sind und dass Speicherkonten innerhalb jedes Azure-Abonnements beschränkt sind ([weitere Details][azure-subscription-service-limits]). 
+   * Wenn Sie nicht Managed Disks verwenden, denken Sie daran, dass IOPS auch pro Azure Storage-Konto beschränkt sind und dass Speicherkonten innerhalb jedes Azure-Abonnements beschränkt sind ([weitere Details][azure-resource-manager/management/azure-subscription-service-limits]). 
    * Erstellen Sie nur Stripesets für Datenträger, wenn Sie einen höheren Durchsatz erzielen müssen.
 3. Auf dem Laufwerk „D:\“ sollten Sie nie Software installieren oder Dateien speichern, die Persistenz erfordern, da dieses Laufwerk nicht permanent ist und somit sämtliche Inhalte bei einem Windows-Neustart verloren gehen.
 4. Verwenden Sie keine Datenträgerzwischenspeicherung für Azure-Standardspeicher.

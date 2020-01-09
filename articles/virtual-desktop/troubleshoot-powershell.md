@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 38d9a2dda945f3a9459aa8e3360012c6ef422608
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 231441a97f5f76af0ab29171b649c31c7f1c8cc8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163302"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430278"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop: PowerShell
 
@@ -26,7 +26,7 @@ In der [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.
 
 Dieser Abschnitt listet PowerShell-Befehle auf, die typischerweise beim Einrichten von Windows Virtual Desktop verwendet werden, und bietet Lösungen für Probleme, die bei der Verwendung dieser Befehle auftreten können.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Fehler Befehl Add-RdsAppGroupUser: Der angegebene UserPrincipalName ist bereits einer RemoteApp-App-Gruppe im angegebenen Hostpool zugeordnet.
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-is-already-assigned-to-a-remoteapp-app-group-in-the-specified-host-pool"></a>Error: Befehl Add-RdsAppGroupUser: Der angegebene UserPrincipalName ist bereits einer RemoteApp-App-Gruppe im angegebenen Hostpool zugeordnet.
 
 ```Powershell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName 'Desktop Application Group' -UserPrincipalName <UserName>
@@ -36,7 +36,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 
 **Behebung:** Wenn der Benutzer sowohl Remote-Apps als auch Remotedesktops benötigt, erstellen Sie verschiedene Hostpools, oder gewähren Sie dem Benutzer Zugriff auf den Remotedesktop, was die Verwendung einer beliebigen Anwendung auf der Sitzungshost-VM ermöglicht.
 
-### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Fehler Befehl Add-RdsAppGroupUser: Der angegebene UserPrincipalName ist nicht im Azure Active Directory vorhanden, das dem Remote Desktop-Mandanten zugeordnet ist.
+### <a name="error-add-rdsappgroupuser-command----the-specified-userprincipalname-doesnt-exist-in-the-azure-active-directory-associated-with-the-remote-desktop-tenant"></a>Error: Befehl Add-RdsAppGroupUser: Der angegebene UserPrincipalName ist nicht im Azure Active Directory vorhanden, das dem Remote Desktop-Mandanten zugeordnet ist.
 
 ```PowerShell
 Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGroupName "Desktop Application Group" -UserPrincipalName <UserPrincipalName>
@@ -50,7 +50,7 @@ Add-RdsAppGroupUser -TenantName <TenantName> -HostPoolName <HostPoolName> -AppGr
 - Der Benutzer ist nicht mit B2C (Business-to-Consumer) oder B2B (Business-to-Business) Commerce verknüpft.
 - Der Windows Virtual Desktop-Mandant ist an das richtige Azure Active Directory gebunden.
 
-### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Fehler Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
+### <a name="error-get-rdsdiagnosticactivities----user-isnt-authorized-to-query-the-management-service"></a>Error: Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
 ```PowerShell
 Get-RdsDiagnosticActivities -ActivityId <ActivityId>
@@ -60,7 +60,7 @@ Get-RdsDiagnosticActivities -ActivityId <ActivityId>
 
 **Behebung:** Geben Sie „Get-RdsDiagnosticActivities“ mit „-TenantName \<Mandantenname>“ aus.
 
-### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Fehler Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
+### <a name="error-get-rdsdiagnosticactivities----the-user-isnt-authorized-to-query-the-management-service"></a>Error: Get-RdsDiagnosticActivities: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
 ```PowerShell
 Get-RdsDiagnosticActivities -Deployment -username <username>
@@ -70,7 +70,7 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 
 **Behebung:** Der Schalter -Deployment kann nur von Bereitstellungsadministratoren verwendet werden. Diese Administratoren sind in der Regel Mitglieder des Teams für Remotedesktopdienste/Windows Virtual Desktop. Ersetzen Sie den Schalter „-Deployment“ durch „-TenantName \<Mandantenname>“.
 
-### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Fehler New-RdsRoleAssignment: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
+### <a name="error-new-rdsroleassignment----the-user-isnt-authorized-to-query-the-management-service"></a>Error: New-RdsRoleAssignment: Der Benutzer ist nicht berechtigt, den Verwaltungsdienst abzufragen.
 
 **Ursache 1:** Das verwendete Konto hat keine Remote Desktop Services-Besitzerberechtigungen für den Mandanten.
 
@@ -88,8 +88,9 @@ Get-RdsDiagnosticActivities -Deployment -username <username>
 - Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
 - Informationen zur Problembehandlung beim Erstellen eines Mandanten- und Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
 - Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Problembehandlung bei Problemen mit Windows Virtual Desktop-Clientverbindungen finden Sie unter [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
+- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/resource-manager-deployment-operations.md).

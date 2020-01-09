@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: 3312b5ba6f97dc51f5eeff06eeb194e367935e08
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c357e460e49ffee669f3978be7678353acfcd249
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74869526"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459429"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfiguration des virtuellen Sitzungshostcomputers
 
@@ -30,7 +30,7 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 - Versuchen Sie, den Domänennamen über die Befehlszeile auf dem virtuellen Computer zu pingen.
 - Überprüfen Sie die Liste der Fehlermeldungen zum Domänenbeitritt unter [Fehlermeldungen bei der Problembehandlung von Domänenbeitritten](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx).
 
-### <a name="error-incorrect-credentials"></a>Fehler Falsche Anmeldeinformationen
+### <a name="error-incorrect-credentials"></a>Error: Falsche Anmeldeinformationen
 
 **Ursache:** Es gab einen Schreibfehler, als die Anmeldeinformationen in die Schnittstellenkorrekturen der Azure Resource Manager-Vorlage eingegeben wurden.
 
@@ -40,7 +40,7 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 - Stellen Sie die Vorlage erneut bereit, nachdem die Anmeldeinformationen bestätigt wurden. Siehe [Erstellen eines Hostpools mit PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
 - Fügen Sie einer Domäne VMs mithilfe einer Vorlage zum [Hinzufügen eines vorhandenen virtuellen Windows-Computers zu einer AD-Domäne](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/) hinzu.
 
-### <a name="error-timeout-waiting-for-user-input"></a>Fehler Timeout beim Warten auf eine Benutzereingabe.
+### <a name="error-timeout-waiting-for-user-input"></a>Error: Timeout beim Warten auf eine Benutzereingabe.
 
 **Ursache:** Das Konto, dar zum Abschließen des Domänenbeitritts verwendet wird, nutzt möglicherweise Multi-Factor Authentication (MFA).
 
@@ -49,7 +49,7 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 - Entfernen Sie vorübergehend MFA für das Konto.
 - Verwenden Sie ein Dienstkonto.
 
-### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Fehler Das während der Bereitstellung verwendete Konto ist nicht berechtigt, den Vorgang abzuschließen.
+### <a name="error-the-account-used-during-provisioning-doesnt-have-permissions-to-complete-the-operation"></a>Error: Das während der Bereitstellung verwendete Konto ist nicht berechtigt, den Vorgang abzuschließen.
 
 **Ursache:** Das verwendete Konto besitzt aufgrund von Compliance und Vorschriften keine Berechtigungen, der Domäne VMs hinzuzufügen.
 
@@ -58,7 +58,7 @@ Befolgen Sie diese Anweisungen, wenn Probleme beim Hinzufügen virtueller Comput
 - Verwenden Sie ein Konto, das Mitglied der Gruppe „Administratoren“ ist.
 - Erteilen Sie dem verwendeten Konto die erforderlichen Berechtigungen.
 
-### <a name="error-domain-name-doesnt-resolve"></a>Fehler Der Domänenname wird nicht aufgelöst.
+### <a name="error-domain-name-doesnt-resolve"></a>Error: Der Domänenname wird nicht aufgelöst.
 
 **Ursache 1:** VMs befinden sich in einem virtuellen Netzwerk, das nicht dem virtuellen Netzwerk (VNET) zugeordnet ist, in dem sich die Domäne befindet.
 
@@ -84,7 +84,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 2. Öffnen Sie den **Datei-Explorer**, und navigieren Sie zu **C:\Windows\Temp\ScriptLog.log**. Wenn die Datei nicht vorhanden ist, zeigt dies an, dass die PowerShell-DSC, die die beiden Komponenten installiert hat, nicht in der Lage war, im bereitgestellten Sicherheitskontext ausgeführt zu werden.
 3. Wenn die Datei **C:\Windows\Temp\ScriptLog.log** vorhanden ist, öffnen Sie sie, und suchen Sie nach Fehlermeldungen.
 
-### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Fehler Der Windows Virtual Desktop-Agent und das Windows Virtual Desktop-Agent--Startladeprogramm sind nicht vorhanden. „C:\Windows\Temp\ScriptLog.log“ fehlt ebenfalls.
+### <a name="error-windows-virtual-desktop-agent-and-windows-virtual-desktop-agent-boot-loader-are-missing-cwindowstempscriptloglog-is-also-missing"></a>Error: Der Windows Virtual Desktop-Agent und das Windows Virtual Desktop-Agent--Startladeprogramm sind nicht vorhanden. „C:\Windows\Temp\ScriptLog.log“ fehlt ebenfalls.
 
 **Ursache 1:** Die bei der Eingabe für die Azure Resource Manager-Vorlage angegebenen Anmeldeinformationen waren falsch, oder die Berechtigungen waren unzureichend.
 
@@ -98,7 +98,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 - Bestätigen Sie, dass der Mandantenname richtig und der Mandant in Windows Virtual Desktop vorhanden ist.
 - Bestätigen Sie, dass das Konto mindestens über die Berechtigung „RDS-Mitwirkender“ verfügt.
 
-### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Fehler Authentifizierungsfehler, Fehler in „C:\Windows\Temp\ScriptLog.log“.
+### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Error: Authentifizierungsfehler, Fehler in „C:\Windows\Temp\ScriptLog.log“.
 
 **Ursache:** Die PowerShell-DSC konnte ausgeführt werden, aber keine Verbindung mit Windows Virtual Desktop herstellen.
 
@@ -112,7 +112,7 @@ Befolgen Sie diese Anweisungen, um die Installation der Komponenten zu bestätig
 
 Wenn der Windows Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs installiert wird (entweder manuell oder über die Azure Resource Manager-Vorlage und PowerShell-DSC), stellt er ein Registrierungstoken bereit. Der folgende Abschnitt beschreibt die Behandlung von Problemen, die für den Windows Virtual Desktop-Agent und das Token gelten.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Fehler Der Status im Cmdlet Get-RdsSessionHost wird als „Nicht verfügbar“ angegeben.
+### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Error: Der Status im Cmdlet Get-RdsSessionHost wird als „Nicht verfügbar“ angegeben.
 
 ![Das Cmdlet Get-RdsSessionHost zeigt den Status als „Nicht verfügbar“ an.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
@@ -127,7 +127,7 @@ Wenn der Windows Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs insta
 5. Führen Sie den Installations-Assistenten aus.
 6. Öffnen Sie den Task-Manager, und starten Sie den RDAgentBootLoader-Dienst.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Fehler  Der Registrierungseintrag IsRegistered des Windows Virtual Desktop-Agents zeigt einen Wert von 0 an.
+## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Error:  Der Registrierungseintrag IsRegistered des Windows Virtual Desktop-Agents zeigt einen Wert von 0 an.
 
 **Ursache:** Das Registrierungstoken ist abgelaufen oder wurde mit einem Ablaufwert von 999999 generiert.
 
@@ -137,7 +137,7 @@ Wenn der Windows Virtual Desktop-Agent zum ersten Mal auf Sitzungshost-VMs insta
 2. Generieren Sie ein neues Token mit Rds-NewRegistrationInfo.
 3. Bestätigen Sie, dass der Parameter -ExpriationHours auf 72 festgelegt ist (der Maximalwert ist 99999).
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Fehler Der Windows Virtual Desktop-Agent meldet bei der Ausführung von Get-RdsSessionHost keinen Heartbeat.
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Error: Der Windows Virtual Desktop-Agent meldet bei der Ausführung von Get-RdsSessionHost keinen Heartbeat.
 
 **Ursache 1:** Der RDAgentBootLoader-Dienst wurde beendet.
 
@@ -199,7 +199,7 @@ Untersuchen Sie die unten aufgeführten Registrierungseinträge und bestätigen 
     Server\ClusterSettings\"SessionDirectoryListener":rdp-sxs
 ```
 
-### <a name="error-o_reverse_connect_stack_failure"></a>Fehler O_REVERSE_CONNECT_STACK_FAILURE
+### <a name="error-o_reverse_connect_stack_failure"></a>Error: O_REVERSE_CONNECT_STACK_FAILURE
 
 ![O_REVERSE_CONNECT_STACK_FAILURE-Fehlercode.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
@@ -340,9 +340,10 @@ Stellen Sie das Hostbetriebssystem mit der neuesten Windows 10-Imageversion (190
 - Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
 - Informationen zur Problembehandlung beim Erstellen eines Mandanten- und Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Mandanten- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
 - Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
-- Informationen zur Problembehandlung bei Problemen mit Windows Virtual Desktop-Clientverbindungen finden Sie unter [Remotedesktop-Clientverbindungen](troubleshoot-client-connection.md).
+- Informationen zur Behebung von Problemen bei Windows Virtual Desktop-Clientverbindungen finden Sie unter [Windows Virtual Desktop – Clientverbindungen](troubleshoot-service-connection.md).
+- Informationen zur Behebung von Problemen bei Remotedesktop-Clients finden Sie unter [Problembehandlung für den Remotedesktop-Client](troubleshoot-client.md).
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
-- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](https://docs.microsoft.com/azure/virtual-desktop/environment-setup).
-- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).
-- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit).
-- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations).
+- Weitere Informationen zum Dienst finden Sie unter [Windows Virtual Desktop-Umgebung](environment-setup.md).
+- Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
+- Informationen zur Überwachung von Aktionen finden Sie unter [Überwachen von Vorgängen mit Resource Manager](../azure-resource-manager/resource-group-audit.md).
+- Weitere Informationen zu Aktionen zum Bestimmen von Fehlern während der Bereitstellung finden Sie unter [Anzeigen von Bereitstellungsvorgängen mit dem Azure-Portal](../azure-resource-manager/resource-manager-deployment-operations.md).

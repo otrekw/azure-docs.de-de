@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 1096c120b4e7731fabd574c4096e70fe02b6272d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1f55b8963ad9f940202816704c5818c6853ffcde
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66146997"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353696"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
 
@@ -29,16 +29,18 @@ Dieser Artikel unterstützt Sie beim Konfigurieren einer P2S-Konfiguration mit A
 
 ![Verbindungsdiagramm – RADIUS](./media/point-to-site-how-to-radius-ps/p2sradius.png)
 
-Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche IP-Adresse. P2S erstellt die VPN-Verbindung entweder über SSTP (Secure Socket Tunneling Protocol) oder IKEv2.
+Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche IP-Adresse. P2S erstellt die VPN-Verbindung entweder über SSTP (Secure Socket Tunneling Protocol), OpenVPN oder IKEv2.
 
 * SSTP ist ein SSL-basierter VPN-Tunnel, der nur auf Windows-Clientplattformen unterstützt wird. Er kann Firewalls durchdringen und ist daher optimal für die ortsunabhängige Verbindungsherstellung mit Azure geeignet. Auf Serverseite werden die SSTP-Versionen 1.0, 1.1 und 1.2 unterstützt. Der Client entscheidet, welche Version verwendet wird. Unter Windows 8.1 und höher wird standardmäßig SSTP 1.2 verwendet.
+
+* OpenVPN®-Protokoll, ein auf SSL/TLS basierendes VPN-Protokoll. Eine SSL-VPN-Lösung kann Firewalls durchdringen, da die meisten Firewalls den von SSL verwendeten TCP-Port 443 für ausgehenden Datenverkehr öffnen. OpenVPN kann zum Herstellen einer Verbindung von Android-, iOS- (Versionen 11.0 und höher), Windows-, Linux- und Mac-Geräten (OSX-Version 10.13 und höher) verwendet werden.
 
 * IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
 P2S-Verbindungen erfordern Folgendes:
 
 * Ein RouteBased-VPN-Gateway. 
-* Einen RADIUS-Server für die Benutzerauthentifizierung. Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestellt werden.
+* Einen RADIUS-Server für die Benutzerauthentifizierung. Der RADIUS-Server kann lokal oder im Azure-VNET bereitgestelltwerden.
 * Ein VPN-Clientkonfigurationspaket für die Windows-Geräte, die eine Verbindung mit dem VNET herstellen. Ein VPN-Clientkonfigurationspaket enthält die Einstellungen, die ein VPN-Client zum Herstellen einer P2S-Verbindung benötigt.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -196,6 +198,17 @@ New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
     -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "SSTP" `
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
+
+   Für OpenVPN®-Konfigurationen:
+
+    ```azurepowershell-interactive
+    $Gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway -VpnClientRootCertificates @()
+    Set-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
+    -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "OpenVPN" `
+    -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
+    ```
+
 
    Für IKEv2-Konfigurationen:
 

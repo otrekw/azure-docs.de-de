@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: baa3444773c41bc91de7e35d2c80f066b96b9ed5
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d8d1505a268976161636abd0ed2d24398978284
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790420"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75374297"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
 
@@ -103,20 +103,22 @@ Wenn Sie über eine vorhandene Datenbank verfügen, empfiehlt sich die Verschieb
 
 Das Azure-Portal bietet die Möglichkeit, [all Ihre Azure SQL-Ressourcen](https://portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Sql%2Fazuresql), einschließlich SQL-VMs, auf einer einzigen Seite zu verwalten.
 
-Um auf die Seite **Azure SQL-Ressourcen** zuzugreifen, wählen Sie im Menü auf der linken Seite des Azure-Portals die Option **Azure SQL** aus. Wenn **Azure SQL** in der Liste nicht aufgeführt ist, wählen Sie **Alle Dienste** aus, und geben Sie dann *Azure SQL* im Suchfeld ein.
+Wählen Sie zum Zugreifen auf die Seite **Azure SQL-Ressourcen** im Menü des Azure-Portals **Azure SQL** aus, oder suchen Sie auf einer beliebigen Seite nach **Azure SQL** und wählen Sie "Azure SQL" aus.
+
+![Suche nach Azure SQL](./media/quickstart-sql-vm-create-portal/search-for-azure-sql.png)
 
 > [!NOTE]
 > **Azure SQL** bietet eine einfache und schnelle Möglichkeit, auf all Ihre SQL-Datenbanken, Pools für elastische Datenbanken, Datenbankserver, verwaltete SQL-Instanzen und SQL-VMs zuzugreifen. Azure SQL ist weder ein Dienst noch eine Ressource. 
 
 Um vorhandene Ressourcen zu verwalten, wählen Sie das gewünschte Element aus der Liste aus. Um neue Azure SQL-Ressourcen zu erstellen, klicken Sie auf **+ Hinzufügen**. 
 
-![Azure SQL-Portalseite](./media/quickstart-sql-vm-create-portal/azure-sql.png)
+![Erstellen einer Azure SQL-Ressource](./media/quickstart-sql-vm-create-portal/create-azure-sql-resource.png)
 
 Zeigen Sie nach dem Klicken auf **+ Hinzufügen** zusätzliche Informationen zu den verschiedenen Optionen an, indem Sie auf einer beliebigen Kachel auf **Details anzeigen** klicken.
 
 ![Details auf Datenbankkachel](./media/quickstart-sql-vm-create-portal/sql-vm-details.png)
 
-Einzelheiten dazu finden Sie hier:
+Einzelheiten dazu finden Sie unter:
 
 - [Erstellen einer Einzeldatenbank](../../../sql-database/sql-database-single-database-get-started.md)
 - [Erstellen eines Pools für elastische Datenbanken](../../../sql-database/sql-database-elastic-pool.md#creating-a-new-sql-database-elastic-pool-using-the-azure-portal)

@@ -1,6 +1,6 @@
 ---
-title: Verwenden der DSC-Erweiterung mit VM-Skalierungsgruppen | Microsoft Docs
-description: Verwenden von VM-Skalierungsgruppen mit der Azure DSC-Erweiterung
+title: Verwenden von Desired State Configuration mit VM-Skalierungsgruppen
+description: Verwenden von VM-Skalierungsgruppen mit der Azure Desired State Configuration-Erweiterung zum Konfigurieren von virtuellen Computern.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: f3da1ed5eabd3a35fe382471314084258b20213b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d3d064bc1d9c0a72b10ca27515d8325e7ca7fef9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166162"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359297"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Verwenden von VM-Skalierungsgruppen mit der Azure DSC-Erweiterung
 [VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md) können mit dem Erweiterungshandler [Azure-Konfiguration des gewünschten Zustands](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) verwendet werden. VM-Skalierungsgruppen bieten eine Möglichkeit, eine große Anzahl von virtuellen Computern bereitzustellen und zu verwalten, und lassen sich je nach Auslastung elastisch hoch- und herunterskalieren. DSC dient zum Konfigurieren der VMs, sobald sie online geschaltet wurden, damit sie in der Produktionssoftware ausgeführt werden.

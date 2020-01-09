@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088465"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443586"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-Neustartschleife auf einem virtuellen Azure-Computer
 In diesem Artikel wird die Neustartschleife beschrieben, die auf einem virtuellen Windows-Computer (Virtual Machine, VM) in Microsoft Azure auftreten kann.
@@ -86,7 +86,7 @@ Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Wählen Sie den Schlüssel **BROKENSYSTEM** aus, und wählen Sie dann im Menü die Optionen **Datei** > **Struktur laden** aus.
+13. Wählen Sie den Schlüssel **BROKENSYSTEM** aus, und wählen Sie dann im Menü die Optionen **Datei** > **Struktur entladen** aus.
 
 14. Trennen Sie den Betriebssystemdatenträger von dem virtuellen Computer, auf dem Sie die Problembehandlung ausführen.
 

@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6b310bf1958671583aab873ab42a70845f93f9a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167429"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452430"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -156,7 +156,7 @@ Um den Status von VMS anzeigen zu können, müssen Sie die Log Analytics-Verbind
 2. Wechseln Sie zu Ihrem Log Analytics-Arbeitsbereich.
 3. Wählen Sie im linken Bereich unter „Arbeitsbereichsdatenquellen“ **Virtuelle Computer** aus.
 4. Wählen Sie den Namen des virtuellen Computers aus, den Sie verbinden möchten.
-5. Wählen Sie **Verbinden**aus.
+5. Wählen Sie **Verbinden**.
 
 ## <a name="deploy-the-diagnostics-tool"></a>Bereitstellen des Diagnosetools
 
@@ -256,3 +256,8 @@ Sie können auch mit Benutzern auf dem Sitzungshost interagieren:
 - [Benutzereingabeverzögerung pro Sitzung(\*)\\Maximale Eingabeverzögerung](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Schwellenwert: Mehr als 2000 ms werden als fehlerhaft markiert.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Informationen zur Überwachung von Aktivitätsprotokollen finden Sie unter [Verwenden von Diagnosedaten mit Log Analytics](diagnostics-log-analytics.md).
+- Informationen zu den häufigsten Fehlerszenarien und deren Behebung finden Sie unter [Identifizieren und Diagnostizieren von Problemen](diagnostics-role-service.md).

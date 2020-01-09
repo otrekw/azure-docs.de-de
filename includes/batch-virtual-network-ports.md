@@ -15,12 +15,12 @@ ms.workload: ''
 ms.date: 07/16/2019
 ms.author: lahugh
 ms.custom: include file
-ms.openlocfilehash: c8b25858556538835d6a84bf0d6699f9906f1438
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 98f5269c27643e7ce6c0aaf9b359503a124d9232
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68322661"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75663126"
 ---
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
@@ -46,7 +46,7 @@ Darüber hinaus gelten ggf. noch weitere VNET-Anforderungen. Diese hängen jedoc
 
 **Berechtigungen:** Überprüfen Sie, ob Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres VNETs die VNET-Verwaltungsberechtigungen eines Benutzers einschränken.
 
-**Zusätzliche Netzwerkressourcen:** Batch ordnet in der Ressourcengruppe, die das VNET enthält, automatisch zusätzliche Netzwerkressourcen zu. Für je 50 dedizierte Knoten (oder je 20 Knoten mit niedriger Priorität) ordnet Batch zu: 1 Netzwerksicherheitsgruppe (NSG), 1 öffentliche IP-Adresse und 1 Lastenausgleich. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
+**Zusätzliche Netzwerkressourcen:** Batch ordnet in der Ressourcengruppe, die das VNET enthält, automatisch zusätzliche Netzwerkressourcen zu. Für je 50 dedizierte Knoten (oder je 20 Knoten mit niedriger Priorität) ordnet Batch zu: 1 Netzwerksicherheitsgruppe (NSG), 1 öffentliche IP-Adresse und 1 Lastenausgleich. Diese Ressourcen werden durch die [Ressourcenkontingente](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Bei umfangreichen Pools muss ggf. eine Kontingenterhöhung für eine oder mehrere der Ressourcen angefordert werden.
 
 #### <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 
@@ -64,16 +64,16 @@ Sie müssen keine NSGs auf der Subnetzebene angeben, da Batch eigene NSGs konfig
 
 **Eingangssicherheitsregeln**
 
-| Quell-IP-Adressen | Quelldiensttag | Quellports | Destination | Zielports | Protocol | Aktion |
+| Quell-IP-Adressen | Quelldiensttag | Quellports | Destination | Zielports | Protocol | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | `BatchNodeManagement` [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876–29877 | TCP | ZULASSEN |
-| Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | ZULASSEN |
+| – | `BatchNodeManagement` [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | * | Any | 29876–29877 | TCP | Allow |
+| Benutzerquellen-IPs für den Remotezugriff auf Computeknoten und/oder Computeknoten-Subnetz für Multi-Instanz-Aufgaben unter Linux, falls erforderlich. | – | * | Any | 3389 (Windows), 22 (Linux) | TCP | Allow |
 
 **Ausgangssicherheitsregeln**
 
-| `Source` | Quellports | Destination | Zieldiensttag | Zielports | Protocol | Aktion |
+| `Source` | Quellports | Destination | Zieldiensttag | Zielports | Protocol | Action |
 | --- | --- | --- | --- | --- | --- | --- |
-| Any | * | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in der gleichen Region wie Ihr Batchkonto und VNET) | 443 | TCP | ZULASSEN |
+| Any | * | [Diensttag](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (in der gleichen Region wie Ihr Batchkonto und VNET) | 443 | TCP | Allow |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Pools in der Cloud Services-Konfiguration
 
@@ -97,13 +97,13 @@ Konfigurieren Sie eingehenden Datenverkehr am Port 3389 für Windows, wenn Sie R
 
 **Eingangssicherheitsregeln**
 
-| Quell-IP-Adressen | Quellports | Destination | Zielports | Protocol | Aktion |
+| Quell-IP-Adressen | Quellports | Destination | Zielports | Protocol | Action |
 | --- | --- | --- | --- | --- | --- |
-Any <br /><br />Dafür ist zwar im Grunde die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf der Ebene jedes Knotens eine ACL-Regel an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * | Any | 10100, 20100, 30100 | TCP | ZULASSEN |
-| Optional, um RDP-Zugriff auf Computeknoten zu ermöglichen. | * | Any | 3389 | TCP | ZULASSEN |
+Any <br /><br />Dafür ist zwar im Grunde die Zulassung aller IP-Adressen erforderlich, der Batch-Dienst wendet jedoch auf der Ebene jedes Knotens eine ACL-Regel an, die alle nicht vom Batch-Dienst stammenden IP-Adressen herausfiltert. | * | Any | 10100, 20100, 30100 | TCP | Allow |
+| Optional, um RDP-Zugriff auf Computeknoten zu ermöglichen. | * | Any | 3389 | TCP | Allow |
 
 **Ausgangssicherheitsregeln**
 
-| `Source` | Quellports | Destination | Zielports | Protocol | Aktion |
+| `Source` | Quellports | Destination | Zielports | Protocol | Action |
 | --- | --- | --- | --- | --- | --- |
-| Any | * | Any | 443  | Any | ZULASSEN |
+| Any | * | Any | 443  | Any | Allow |

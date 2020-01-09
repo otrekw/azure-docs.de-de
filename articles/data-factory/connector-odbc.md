@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: b94dbb81b2ab5b7e4421357ee81d6c3ea8e8d3c0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 816009bb7481d93fd53011d067ab56cecbe8e3ef
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440423"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopieren von Daten aus ODBC-Datenspeichern bzw. in ODBC-Datenspeicher mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-odbc-connector.md)
 > * [Aktuelle Version](connector-odbc.md)
 
@@ -56,11 +56,11 @@ Folgende Eigenschaften werden für den mit ODBC verknüpften Dienst unterstützt
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Odbc** | Ja |
-| connectionString | Die Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge mit einem Muster wie `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` angeben oder den System-DSN (Data Source Name) verwenden, den Sie mit `"DSN=<name of the DSN on IR machine>;"` auf dem Computer mit der Integrationslaufzeit eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md).| Ja |
+| connectionString | Die Verbindungszeichenfolge, ausgenommen des Teils mit den Anmeldeinformationen. Sie können die Verbindungszeichenfolge mit einem Muster wie `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` angeben oder den System-DSN (Data Source Name) verwenden, den Sie mit `"DSN=<name of the DSN on IR machine>;"` auf dem Computer mit der Integrationslaufzeit eingerichtet haben. (Sie müssen nach wie vor den Teil mit den Anmeldeinformationen im verknüpften Dienst entsprechend angeben.)<br>Sie können auch ein Kennwort in Azure Key Vault speichern und die  `password` Konfiguration aus der Verbindungszeichenfolge ziehen. Ausführlichere Informationen finden Sie unter  [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md) .| Ja |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit dem ODBC-Datenspeicher.<br/>Zulässige Werte sind: **Standard** und **Anonym**. | Ja |
 | userName | Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. | Nein |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „userName“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Nein |
-| credential | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `"RefreshToken=<secret refresh token>;"`. Legen Sie für dieses Feld „SecureString“ fest. | Nein |
+| Anmeldeinformationen (credential) | Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `"RefreshToken=<secret refresh token>;"`. Legen Sie für dieses Feld „SecureString“ fest. | Nein |
 | connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel 1: Verwenden der Standardauthentifizierung**
@@ -71,10 +71,7 @@ Folgende Eigenschaften werden für den mit ODBC verknüpften Dienst unterstützt
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
@@ -98,10 +95,7 @@ Folgende Eigenschaften werden für den mit ODBC verknüpften Dienst unterstützt
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "<connection string>"
-            },
+            "connectionString": "<connection string>",
             "authenticationType": "Anonymous",
             "credential": {
                 "type": "SecureString",
@@ -159,7 +153,7 @@ Zum Kopieren von Daten aus einem ODBC-kompatiblen Datenspeicher werden die folge
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **OdbcSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -261,10 +255,7 @@ Erstellen Sie einen über die ODBC verknüpften Dienst, um einen SAP HANA-Datens
     "properties": {
         "type": "Odbc",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015"
-            },
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
             "authenticationType": "Basic",
             "userName": "<username>",
             "password": {

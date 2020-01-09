@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
-ms.openlocfilehash: 0d48f3eacad86dac520d837b80605a75cce8cfd5
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 87ccb1c4995337b385f685797980a9fc3962bc6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72514485"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451258"
 ---
 # <a name="azure-serial-console-for-windows"></a>Die serielle Azure-Konsole für Windows
 
@@ -29,7 +29,7 @@ Die serielle Konsole funktioniert auf die gleiche Weise für VMs und VM-Skalieru
 Die Dokumentation zur seriellen Konsole für Linux finden Sie unter [Die serielle Azure-Konsole für Linux](serial-console-linux.md).
 
 > [!NOTE]
-> Die serielle Konsole ist in den globalen Azure-Regionen allgemein verfügbar. Sie ist noch nicht in den Clouds „Azure Government“ und „Azure China“ verfügbar.
+> Die serielle Konsole ist in den globalen Azure-Regionen sowie in der öffentlichen Vorschauversion in Azure Government verfügbar. Sie ist noch nicht in der Cloud „Azure China“ verfügbar.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -181,7 +181,7 @@ Interaktion mit Bootloader | Greifen Sie über die serielle Konsole auf das BCD 
 ## <a name="known-issues"></a>Bekannte Probleme
 Uns sind einige Probleme mit der seriellen Konsole und dem Betriebssystem der VM bekannt. Hier finden Sie eine Liste dieser Probleme und Schritte zur Lösung für Windows-VMs. Diese Probleme und Gegenmaßnahmen gelten sowohl für VMs als auch für VM-Skalierungsgruppeninstanzen. Wenn sie sich nicht auf den Fehler beziehen, den Sie suchen, schlagen Sie unter [Allgemeine Fehler für die serielle Konsole](./serial-console-errors.md) die allgemeinen Fehler für den seriellen Konsolendienst nach.
 
-Problem                             |   Lösung
+Problem                             |   Minderung
 :---------------------------------|:--------------------------------------------|
 Das Drücken der **EINGABETASTE** nach dem Verbindungsbanner führt nicht zur Anzeige einer Anmeldeaufforderung. | Weitere Informationen finden Sie unter [Hitting enter does nothing](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md) (Das Drücken der Eingabetaste bewirkt nichts). Dieser Fehler kann auftreten, wenn Sie eine benutzerdefinierte VM, eine Appliance mit verstärkter Sicherheit oder eine Startkonfiguration ausführen, und Windows aufgrund dessen keine ordnungsgemäße Verbindung mit dem seriellen Port herstellen kann. Dieser Fehler geschieht auch dann, wenn Sie eine Windows 10-VM ausführen, da nur Windows Server-VMs für EMS konfiguriert sind.
 Es werden nur Integritätsinformationen angezeigt, wenn eine Verbindung mit einem virtuellen Windows-Computer hergestellt wird.| Dieser Fehler tritt auf, wenn die spezielle Verwaltungskonsole (Special Administration Console, SAC) für Ihr Windows-Image nicht aktiviert wurde. Unter [Aktivieren der seriellen Konsole in benutzerdefinierten oder älteren Images](#enable-the-serial-console-in-custom-or-older-images) finden Sie Anweisungen für das manuelle Aktivieren der SAC auf Ihrer Windows-VM. Weitere Informationen finden Sie in der Dokumentation zu [Windows-Integritätssignalen](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).

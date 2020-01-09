@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012132"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466527"
 ---
 ### <a name="azure-storage-linked-service"></a>Mit Azure-Speicher verknüpfter Dienst
 Sie können einen mit **Azure Storage verknüpften Dienst** verwenden, um ein Azure-Speicherkonto mithilfe des **Kontoschlüssels** mit einer Azure Data Factory zu verknüpfen. Dadurch erhält die Data Factory globalen Zugriff auf Azure Storage. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure Storage verknüpften Dienst spezifisch sind.
@@ -19,7 +19,7 @@ Sie können einen mit **Azure Storage verknüpften Dienst** verwenden, um ein Az
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureStorage** |Ja |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
 
-Im folgenden Abschnitt finden Sie die Schritte zum Anzeigen/Kopieren des Kontoschlüssels für eine Azure Storage-Instanz: [Zugriffsschlüssel](../articles/storage/common/storage-account-manage.md#access-keys).
+Informationen zum Abrufen von Speicherkonto-Zugriffsschlüsseln finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../articles/storage/common/storage-account-keys-manage.md).
 
 **Beispiel:**  
 

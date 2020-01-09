@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: 37a8799ca1ea986d5b47dad6e17781d7dfbacfab
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 786b21e7571ed173d2da90f587a5b76d8c92a13d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261680"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450886"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals
 
@@ -42,9 +42,9 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
 3. Klicken Sie auf **Erstellen**.
 4. Geben Sie Ihre eigenen Werte bzw. die folgenden Beispielwerte ein, oder wählen Sie diese aus, und klicken Sie anschließend auf **Erstellen**:
 
-    |Einstellung        |Wert                                              |
+    |Einstellung        |value                                              |
     |---------      |---------                                          |
-    |NAME           | myDdosProtectionPlan                              |
+    |Name           | myDdosProtectionPlan                              |
     |Subscription   | Wählen Sie Ihr Abonnement aus.                         |
     |Resource group | Klicken Sie auf **Neue erstellen**, und geben Sie *myResourceGroup* ein. |
     |Location       | East US                                           |
@@ -55,9 +55,9 @@ Die Erstellung von mehr als einem Plan ist für die meisten Organisationen nicht
 2. Wählen Sie **Netzwerk** und anschließend **Virtuelles Netzwerk** aus.
 3. Geben Sie Ihre eigenen Werte bzw. die folgenden Beispielwerte ein, oder wählen Sie diese aus. Übernehmen Sie die restlichen Standardwerte, und klicken Sie dann auf **Erstellen**:
 
-    | Einstellung         | Wert                                                        |
+    | Einstellung         | value                                                        |
     | ---------       | ---------                                                    |
-    | NAME            | myVirtualNetwork                                             |
+    | Name            | myVirtualNetwork                                             |
     | Subscription    | Wählen Sie Ihr Abonnement aus.                                    |
     | Resource group  | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus. |
     | Location        | East US                                                      |
@@ -73,11 +73,20 @@ Ein virtuelles Netzwerk kann nicht in eine andere Ressourcengruppe oder ein ande
 4. Wählen Sie unter **EINSTELLUNGEN** die Option **DDoS-Schutz** aus.
 5. Wählen Sie **Standard** aus. Klicken Sie unter **DDoS-Schutzplan** auf einen vorhandenen DDoS-Schutzplan oder den Plan, den Sie in Schritt 1 erstellt haben, und wählen Sie dann **Speichern** aus. Der von Ihnen ausgewählte Plan kann sich im selben oder in einem anderen Abonnement als das virtuelle Netzwerk befinden. Beide Abonnements müssen jedoch dem gleichen Azure Active Directory-Mandanten zugeordnet sein.
 
+**Befehle** 
+- Azure CLI: [az network ddos-protection create](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-create)
+- Powershell: [New-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/Az.Network/New-AzDdosProtectionPlan?view=azps-2.8.0)
+ 
+
 ## <a name="disable-ddos-for-a-virtual-network"></a>Deaktivieren von DDoS für ein neues virtuelles Netzwerk
 
 1. Geben Sie am oberen Rand im Portal im Feld **Ressourcen, Dienste und Dokumente durchsuchen** den Namen des virtuellen Netzwerks ein, für das der DDoS-Schutzstandard deaktiviert werden soll. Wenn der Name des virtuellen Netzwerks in den Suchergebnissen angezeigt wird, wählen Sie ihn aus.
 2. Wählen Sie unter **EINSTELLUNGEN** die Option **DDoS-Schutz** aus.
 3. Wählen Sie **Grundlegend** unter **DDoS-Schutzplan** und dann **Speichern** aus.
+
+**Befehle** 
+- Azure CLI: [az network ddos-protection delete](https://docs.microsoft.com/cli/azure/network/ddos-protection?view=azure-cli-latest#az-network-ddos-protection-delete)
+- Powershell: [Remove-AzDdosProtectionPlan](https://docs.microsoft.com/powershell/module/az.network/remove-azddosprotectionplan?view=azps-3.2.0)
 
 ## <a name="work-with-ddos-protection-plans"></a>Arbeiten mit DDoS-Schutzplänen
 
@@ -96,9 +105,9 @@ Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfü
 3. Wählen Sie unter **GEMEINSAME DIENSTE** die Option **Metriken** aus.
 4. Geben Sie Ihre eigenen Werte bzw. die folgenden Beispielwerte ein, übernehmen Sie die restlichen Standardwerte, und klicken Sie dann auf **OK**:
 
-    |Einstellung                  |Wert                                                                                               |
+    |Einstellung                  |value                                                                                               |
     |---------                |---------                                                                                           |
-    |NAME                     | myDdosAlert                                                                                        |
+    |Name                     | myDdosAlert                                                                                        |
     |Subscription             | Wählen Sie das Abonnement aus, das die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten.        |
     |Resource group           | Wählen Sie die Ressourcengruppe aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten.      |
     |Resource                 | Wählen Sie die öffentliche IP-Adresse aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten. DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller unter [virtuelles Netzwerk für Azure-Dienste](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) aufgeführter Ressourcen überwachen, die über den Resource Manager (nicht klassisch), ausgenommen Azure App Service-Umgebungen und Azure VPN Gateway. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.                   |
@@ -221,7 +230,7 @@ Die Warnungen enthalten allgemeine Informationen zur angegriffenen öffentlichen
 
 Zum Arbeiten mit DDoS-Schutzplänen muss Ihr Konto der Rolle [Netzwerkmitwirkender](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) oder einer [benutzerdefinierten Rolle](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) zugewiesen sein, der die entsprechenden Aktionen in der folgenden Tabelle zugewiesen wurden:
 
-| Aktion                                            | NAME                                     |
+| Action                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | Lesen eines DDoS-Schutzplans              |
 | Microsoft.Network/ddosProtectionPlans/write       | Erstellen oder Aktualisieren eines DDoS-Schutzplans  |

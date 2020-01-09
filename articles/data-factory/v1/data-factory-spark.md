@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: d5f5da4811a9551f687fed6ab317bb3d33041622
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d30b2001889a2555f736de0685fe23de1ea0e055
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73666179"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438838"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -95,7 +95,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste. Ein Dienst verknüpft 
 #### <a name="create-a-storage-linked-service"></a>Erstellen eines verknüpften Speicherdiensts
 In diesem Schritt verknüpfen Sie Ihr Speicherkonto mit Ihrer Data Factory. Ein Dataset, das Sie in einem späteren Schritt in dieser exemplarischen Vorgehensweise erstellen, verweist auf diesen verknüpften Dienst. Der verknüpfte HDInsight-Dienst, den Sie im nächsten Schritt definieren, verweist ebenfalls auf diesen verknüpften Dienst. 
 
-1. Wählen Sie auf dem Blatt **Data Factory** die Option **Verfassen und bereitstellen** aus. Der Data Factory-Editor wird angezeigt.
+1. Wählen Sie auf dem Blatt **Data Factory** die Option **Verfassen und bereitstellen** aus. Der Data Factory-Editor wird eingeblendet.
 
 1. Klicken Sie auf **Neuer Datenspeicher** und dann auf **Azure Storage**.
 
@@ -105,7 +105,7 @@ In diesem Schritt verknüpfen Sie Ihr Speicherkonto mit Ihrer Data Factory. Ein 
 
    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Ersetzen Sie **Kontoname** und **Kontoschlüssel** durch den Namen und den Zugriffsschlüssel Ihres Speicherkontos. Informationen zum Abrufen Ihres Speicherzugriffsschlüssels finden Sie unter [Verwalten von Speicherkonten](../../storage/common/storage-account-manage.md#access-keys) in den Informationen zum Anzeigen, Kopieren und erneuten Generieren von Speicherzugriffsschlüsseln.
+1. Ersetzen Sie **Kontoname** und **Kontoschlüssel** durch den Namen und den Zugriffsschlüssel Ihres Speicherkontos. Weitere Informationen zum Abrufen der Speicherzugriffsschlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../../storage/common/storage-account-keys-manage.md).
 
 1. Klicken Sie auf der Befehlsleiste auf **Bereitstellen**, um den verknüpften Dienst bereitzustellen. Nachdem der verknüpfte Dienst erfolgreich bereitgestellt wurde, wird das Fenster „Draft-1“ geschlossen. **AzureStorageLinkedService** wird in der Strukturansicht links angezeigt.
 
@@ -273,7 +273,7 @@ Da Sie „getDebugInfo“ auf **Always** festgelegt haben, finden Sie einen Unte
 Führen Sie zur zusätzlichen Problembehandlung die folgenden Schritte aus:
 
 
-1. Wechseln Sie zur Adresse `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`.
+1. Gehe zu `https://<CLUSTERNAME>.azurehdinsight.net/yarnui/hn/cluster`.
 
     ![YARN-UI-Anwendung](media/data-factory-spark/yarnui-application.png)
 
@@ -333,7 +333,7 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | rootPath | Der Blobcontainer und -ordner mit der Spark-Datei. Für den Dateinamen wird zwischen Groß- und Kleinschreibung unterschieden. | Ja |
 | entryFilePath | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja |
 | className | Die Java-/Spark-Hauptklasse der Anwendung. | Nein |
-| arguments | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein |
+| Argumente | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein |
 | proxyUser | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein |
 | sparkConfig | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die unter [Spark-Konfiguration: Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt sind. | Nein |
 | getDebugInfo | Gibt an, ob die Spark-Protokolldateien in den Speicher kopiert werden, der vom HDInsight-Cluster verwendet oder von „sparkJobLinkedService“ angegeben wird. Zulässige Werte sind “Keine“, „Immer“ oder „Fehler“. Der Standardwert lautet „Keine“. | Nein |
@@ -346,7 +346,7 @@ Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpf
 
 | `Path` | BESCHREIBUNG | Erforderlich | type |
 | ---- | ----------- | -------- | ---- |
-| . | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
+| erforderlich. | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |
 | ./jars | Alle Dateien in diesem Ordner werden hochgeladen und im Java-CLASSPATH des Clusters platziert. | Nein | Ordner |
 | ./pyFiles | Alle Dateien in diesem Ordner werden hochgeladen und im PYTHONPATH des Clusters platziert. | Nein | Ordner |

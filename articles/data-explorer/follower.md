@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: dd2c29632d70da64251c5e1736a9cb7d82f5d0dc
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440966"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Verwenden der Follower-Datenbank zum Anfügen von Datenbanken in Azure Data Explorer
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Anhängen einer Datenbank mithilfe einer Azure Resource Manager-Vorlage
 
-In diesem Abschnitt erfahren Sie, wie Sie eine Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) anfügen. 
+In diesem Abschnitt erfahren Sie, wie Sie eine Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) anfügen. 
 
 ```json
 {
@@ -236,7 +236,7 @@ Um zu überprüfen, ob die Datenbank erfolgreich angefügt wurde, suchen Sie im 
 Alternativ:
 
 1. Navigieren Sie zum Leader-Cluster, und wählen Sie **Datenbanken** aus.
-2. Überprüfen Sie, ob die relevanten Datenbanken unter **FREIGEGEBEN FÜR WEITERE PERSONEN** mit **Ja** gekennzeichnet sind.
+2. Überprüfen Sie, ob die relevanten Datenbanken unter **FREIGEGEBEN FÜR WEITERE PERSONEN** >  mit **Ja** gekennzeichnet sind.
 
     ![Lesen und Schreiben für angefügte Datenbanken](media/follower/read-write-databases-shared.png)
 
@@ -378,7 +378,7 @@ Wenn Sie eine Datenbank anfügen, geben Sie die **Standardänderungsart für Pri
 |---------|---------|
 |**Union**     |   Die angefügten Datenbankprinzipale umfassen immer die ursprünglichen Datenbankprinzipale und zusätzliche neue Prinzipale, die der Follower-Datenbank hinzugefügt werden.      |
 |**Replace**   |    Keine Vererbung von Prinzipalen aus der ursprünglichen Datenbank. Für die angefügte Datenbank müssen neue Prinzipale erstellt werden.     |
-|**Keine**   |   Die angefügten Datenbankprinzipale umfassen nur die Prinzipale der ursprünglichen Datenbank ohne zusätzliche Prinzipale.      |
+|**None**   |   Die angefügten Datenbankprinzipale umfassen nur die Prinzipale der ursprünglichen Datenbank ohne zusätzliche Prinzipale.      |
 
 Weitere Informationen zur Verwendung von Steuerungsbefehlen zum Konfigurieren der autorisierten Prinzipale finden Sie unter [Steuerungsbefehle zum Verwalten eines Follower-Clusters](/azure/kusto/management/cluster-follower).
 

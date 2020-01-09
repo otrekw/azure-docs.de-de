@@ -10,14 +10,14 @@ ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: 001a6d5ef742874698cd7a67014179a2f8528fc6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053459"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373246"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Was ist IPv6 für Azure Virtual Network? (Vorschau)
 
@@ -60,7 +60,7 @@ IPv6 für Azure VNET beinhaltet die folgenden Funktionen:
     - Mehrere optionale Front-End-Konfigurationen, sodass ein einzelner Lastenausgleich mehrere öffentliche IPv6-Adressen nutzen kann. (Für verschiedene Front-End-Adressen können das gleiche Front-End-Protokoll und der gleiche Port verwendet werden.)
     - Optionale IPv6-Ports können mithilfe der Funktion *Floating IP* der Lastenausgleichsregeln in Back-End-Instanzen wiederverwendet werden. 
 - Unterstützung einer [internen IPv6-Load Balancer Standard-Instanz](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) zur Erstellung resilienter Anwendungen mit mehreren Ebenen innerhalb von Azure VNETs.  
-- Unterstützung einer öffentlichen IPv6-Load Balancer Basic-Instanz für die Kompatibilität mit Legacybereitstellungen.
+- Unterstützung einer öffentlichen IPv6-Load Balancer Basic-Instanz für die Kompatibilität mit Legacy-Bereitstellungen
 - [Reservierte öffentliche IPv6-IP-Adressen und IPv6-Adressbereiche](ipv6-public-ip-address-prefix.md) bieten stabile vorhersagbare IPv6-Adressen, die Whitelists der in Azure gehosteten Anwendungen für Ihr Unternehmen und Ihre Kunden vereinfachen.
 - Eine öffentliche IP-Adresse auf Instanzebene ermöglicht direkte IPv6-Internetkonnektivität für einzelne virtuelle Computer.
 - [Hinzufügen von IPv6 zu vorhandenen reinen IPv4-Bereitstellungen:](ipv6-add-to-existing-vnet-powershell.md) Über diese Funktion können Sie IPv6-Konnektivität einfach vorhandenen reinen IPv4-Bereitstellungen hinzufügen, ohne die Bereitstellungen neu erstellen zu müssen.  Der IPv4-Netzwerkdatenverkehr wird während dieses Vorgangs nicht beeinträchtigt. Abhängig von der Anwendung und dem Betriebssystem können Sie IPv6 möglicherweise sogar Livediensten hinzufügen.    

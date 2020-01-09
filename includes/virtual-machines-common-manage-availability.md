@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 7c884d3c7102fc47f6efad86d9fe3704afd0edcf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: edaa3f7c17ff5fb6bc79f67b7028a7ba72347367
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73590775"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467905"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Grundlegendes zu VM-Neustarts – Gegenüberstellung von Wartung und Ausfallzeit
 Drei Szenarien können zu einer Beeinträchtigung virtueller Computer in Azure führen: eine ungeplante Hardwarewartung, eine unerwartete Ausfallzeit und eine geplante Wartung.
@@ -84,7 +84,7 @@ Falls Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden, empfehlen w
 Gehen Sie wie folgt vor, wenn Sie planen, VMs mit nicht verwalteten Datenträgern zu verwenden: Halten Sie sich an die unten angegebenen bewährten Methoden für Storage-Konten, bei denen virtuelle Festplatten (VHDs) von VMs als [Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) gespeichert werden.
 
 1. **Alle Datenträger (Betriebssystem und Daten) müssen einem virtuellen Computer im selben Speicherkonto zugeordnet sein**
-2. **Überprüfen Sie die [Grenzwerte](../articles/storage/common/storage-scalability-targets.md) für die Anzahl von nicht verwalteten Datenträgern eines Storage-Kontos**, bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
+2. **Überprüfen Sie die [Grenzwerte](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) für die Anzahl von nicht verwalteten Datenträgern eines Azure Storage-Kontos**, bevor Sie einem Speicherkonto weitere VHDs hinzufügen.
 3. **Verwenden Sie mehrere Speicherkonten für jeden virtuellen Computer in einer Verfügbarkeitsgruppe.** Geben Sie Storage-Konten mit mehreren VMs in derselben Verfügbarkeitsgruppe nicht für die gemeinsame Nutzung frei. Für VMs, die über verschiedene Verfügbarkeitsgruppen hinweg verteilt sind, können Speicherkonten freigegeben werden, solange die oben genannten bewährten Methoden befolgt werden. ![Fehlerdomänen nicht verwalteter Datenträger](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Verwenden von Scheduled Events für proaktive Antworten auf Ereignisse, die sich auf virtuelle Computer auswirken

@@ -1,6 +1,6 @@
 ---
-title: Netzwerk für Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
-description: Konfigurationsnetzwerkeigenschaften für Azure-VM-Skalierungsgruppen.
+title: Netzwerk für Azure-VM-Skalierungsgruppen
+description: Vorgehensweise zum Konfigurieren einiger komplexerer Netzwerkeigenschaften für Azure VM-Skalierungsgruppen.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: manayar
-ms.openlocfilehash: 5be64ad2b3141791d5612aba84324278ea812875
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 390da9179280a1ab8898d1ccea4df81e3b98805a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244843"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647576"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -238,7 +238,7 @@ Beispielausgabe des [Azure-Ressourcen-Explorers](https://resources.azure.com) un
 ```
 
 ## <a name="multiple-ip-addresses-per-nic"></a>Mehrere IP-Adressen pro NIC
-Jeder NIC, die an einen virtuellen Computer in einer Skalierungsgruppe angefügt ist, kann mindestens eine IP-Konfiguration zugeordnet sein. Jeder Konfiguration wird eine private IP-Adresse zugewiesen. Außerdem kann jeder Konfiguration eine öffentliche IP-Adressressource zugeordnet sein. Informationen dazu, wie viele IP-Adressen einer NIC zugewiesen werden und wie viele öffentliche IP-Adressen Sie in einem Azure-Abonnement verwenden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Jeder NIC, die an einen virtuellen Computer in einer Skalierungsgruppe angefügt ist, kann mindestens eine IP-Konfiguration zugeordnet sein. Jeder Konfiguration wird eine private IP-Adresse zugewiesen. Außerdem kann jeder Konfiguration eine öffentliche IP-Adressressource zugeordnet sein. Informationen dazu, wie viele IP-Adressen einer NIC zugewiesen werden und wie viele öffentliche IP-Adressen Sie in einem Azure-Abonnement verwenden können, finden Sie unter [Netzwerkgrenzwerte – Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
 ## <a name="multiple-nics-per-virtual-machine"></a>Mehrere NICs vor virtuellem Computer
 Ein virtueller Computer kann je nach Größe über bis zu acht NICs verfügen. Informationen zur maximalen Anzahl von NICs pro Computer finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md). Alle mit einer VM-Instanz verbundenen NICs müssen eine Verbindung mit dem gleichen virtuellen Netzwerk herstellen. Die NICs können eine Verbindung mit verschiedenen Subnetzen herstellen, aber alle Subnetze müssen Teil des gleichen virtuellen Netzwerks sein.

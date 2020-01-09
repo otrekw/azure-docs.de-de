@@ -1,5 +1,6 @@
 ---
-title: Lokales Zugreifen auf die Azure VMware-Lösung von CloudSimple
+title: Lokaler Zugriff auf die Azure VMware-Lösung von CloudSimple
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Zugreifen auf Ihre Azure VMware-Lösung von CloudSimple aus Ihrem lokalen Netzwerk über eine Firewall
 author: sharaths-cs
 ms.author: dikamath
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: c0f575417819f0e2d46565ad15aaa23a04fd7cf1
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: df4c51953c6f50e30ba61b993cdb35856fcb8e25
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972639"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452408"
 ---
 # <a name="accessing-your-cloudsimple-private-cloud-environment-and-applications-from-on-premises"></a>Lokales Zugreifen auf Ihre private CloudSimple-Cloudumgebung und darin enthaltene Anwendungen
 

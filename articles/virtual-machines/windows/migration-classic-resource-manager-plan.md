@@ -1,5 +1,5 @@
 ---
-title: Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
+title: Planen der Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 description: Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033219"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460055"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
@@ -31,7 +31,7 @@ Die Migration lässt sich in vier allgemeine Phasen unterteilen:<br>
 
 ![Migrationsphasen](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plan
+## <a name="plan"></a>Planen
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische Aspekte und Kompromisse
 
@@ -145,7 +145,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
-    **Storage** *(Speicherkonto)*
+    **Speicher** *(Speicherkonto)*
 
     ```powershell
     Get-AzStorageUsage
@@ -190,7 +190,7 @@ Unzureichendes Testen kann zu Problemen und Verzögerungen bei der Migration fü
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische Aspekte und Kompromisse
 
-Nachdem Sie nun Azure Resource Manager verwenden, sollten Sie die Plattform auch optimal nutzen.  In der [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) finden Sie Informationen zu weiteren Vorteilen.
+Nachdem Sie nun Azure Resource Manager verwenden, sollten Sie die Plattform auch optimal nutzen.  In der [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md) finden Sie Informationen zu weiteren Vorteilen.
 
 Ziehen Sie Folgendes in Betracht:
 
