@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Benutzerdefinierte Pfadmuster für Blobs
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Optimieren Ihres Stream Analytics-Auftrags
+      items:
+        - name: Überblick über Streamingeinheiten und Informationen zu Anpassungen
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Verbessern der Abfrageleistung
+          href: stream-analytics-parallelization.md
+        - name: Neupartitionieren Ihrer Eingabe
+          href: repartition.md
+        - name: Erhöhen des Durchsatzes Ihres Auftrags
+          href: stream-analytics-scale-jobs.md
     - name: Zustände eines Auftrags
       href: job-states.md
     - name: Fensterfunktionen
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: 'Überwachen von Aufträgen: Visual Studio'
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Skalieren
-      items:
-        - name: Skalieren mit Streamingeinheiten
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Skalieren mit Parallelisierung
-          items:
-            - name: Parallelisierung der Abfragen
-              href: stream-analytics-parallelization.md
-            - name: Erhöhen des Durchsatzes
-              href: stream-analytics-scale-jobs.md
-        - name: Skalieren mit ML-Funktionen
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Skalieren mit Neupartitionierung
-          href: repartition.md
     - name: Automatisieren
       items:
         - name: Verwenden des .NET SDK
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Debuggen mithilfe des Auftragsdiagramms
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: Skalieren mit ML-Funktionen
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Stream Analytics-Abfragesprache
   items:
     - name: Integrierte Funktionen

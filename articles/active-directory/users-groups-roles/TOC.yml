@@ -31,7 +31,9 @@
       href: /azure/role-based-access-control/rbac-and-directory-admin-roles?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Grundlagen der gruppenbasierten Lizenzierung
       href: /azure/active-directory/fundamentals/active-directory-licensing-whatis-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-- name: Anleitungen
+    - name: Verwalten des Zugriffs mit Gruppen
+      href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
     - name: Verwalten von Benutzern
@@ -80,8 +82,6 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Verwalten von Gruppen
       items:
-        - name: Verwalten des Zugriffs mit Gruppen
-          href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Durchsuchen von Gruppen-und Mitgliederlisten (Vorschau)
           href: groups-members-owners-search.md
         - name: Erstellen einer Gruppe (Azure-Portal)
@@ -122,9 +122,7 @@
           items:
             - name: Erstellen einer dynamischen Gruppe
               href: groups-create-rule.md
-            - name: Aktualisieren einer Mitgliedschaftsregel
-              href: groups-update-rule.md
-            - name: Dynamische Gruppenregeln und Syntax
+            - name: Syntax dynamischer Gruppenregeln
               href: groups-dynamic-membership.md
             - name: Ändern des Gruppenmitgliedschaftstyps
               href: groups-change-type.md

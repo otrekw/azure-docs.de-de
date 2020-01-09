@@ -35,7 +35,7 @@
     - name: Binden Ihrer Anwendung an Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
     - name: Bereitstellen von Apps in Azure Spring Cloud mithilfe von Jenkins und der Azure-Befehlszeilenschnittstelle
-      href: /jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
+      href: /azure/jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: Konzepte
   items:
     - name: Grundlegendes zu Azure Spring Cloud-Kontingenten und -Grenzwerten
