@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie mit Ansible Azure-Routingtabellen erst
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Netzwerke, Route, Routingtabelle
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d1e44a98405bc1009f6f3d56d90fc1fd655d77d5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1f08aebe7e9dcc1c5687f50ac91c7cb8cc8a62eb
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156488"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659796"
 ---
 # <a name="tutorial-configure-azure-route-tables-using-ansible"></a>Tutorial: Konfigurieren von Azure-Routingtabellen mit Ansible
 
@@ -30,7 +30,7 @@ Azure führt für Datenverkehr automatisch das Routing zwischen Azure-Subnetzen,
 
 ## <a name="create-a-route-table"></a>Erstellen einer Routingtabelle
 
-Mit dem Playbookcode in diesem Abschnitt wird eine Routingtabelle erstellt. Weitere Informationen zu Einschränkungen für Routingtabellen finden Sie auf der Seite mit den [Azure-Einschränkungen](/azure/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
+Mit dem Playbookcode in diesem Abschnitt wird eine Routingtabelle erstellt. Weitere Informationen zu Einschränkungen für Routingtabellen finden Sie auf der Seite mit den [Azure-Einschränkungen](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-resource-manager-virtual-networking-limits). 
 
 Speichern Sie das folgende Playbook als `route_table_create.yml`:
 
@@ -46,7 +46,7 @@ Speichern Sie das folgende Playbook als `route_table_create.yml`:
         resource_group: "{{ resource_group }}"
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_table_create.yml
@@ -103,7 +103,7 @@ Speichern Sie das folgende Playbook als `route_table_associate.yml`:
         route_table: "{ route_table_name }"
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_table_associate.yml
@@ -132,7 +132,7 @@ Speichern Sie das folgende Playbook als `route_table_dissociate.yml`:
         address_prefix_cidr: "10.1.0.0/24"
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_table_dissociate.yml
@@ -165,7 +165,7 @@ Beachten Sie vor dem Ausführen des Playbooks die folgenden Hinweise:
 * `virtual_network_gateway` ist als `next_hop_type` definiert. Weitere Informationen dazu, wie in Azure Routen ausgewählt werden, finden Sie in der [Routingübersicht](/azure/virtual-network/virtual-networks-udr-overview).
 * `address_prefix` ist als `10.1.0.0/16` definiert. Das Präfix kann in der Routingtabelle nicht dupliziert werden.
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_create.yml
@@ -192,7 +192,7 @@ Speichern Sie das folgende Playbook als `route_delete.yml`:
         state: absent
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_delete.yml
@@ -220,7 +220,7 @@ Speichern Sie das folgende Playbook als `route_table_facts.yml`:
          var: query.route_tables[0]
 ```
 
-Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
 ```bash
 ansible-playbook route_table_facts.yml

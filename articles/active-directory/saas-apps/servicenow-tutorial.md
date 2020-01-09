@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/14/2019
+ms.date: 12/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52b3b7ea34d48c37a4e07ab073e611d5a60399a9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706924"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75561977"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -116,7 +115,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie im Azure-Portal im linken Bereich **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
-   1. Geben Sie unter **Name** `B.Simon` ein.  
+   1. Geben Sie unter **Name**`B.Simon` ein.  
    1. Geben Sie unter **Benutzername** einen Benutzernamen im Format username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
    1. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den im Feld **Kennwort** angezeigten Wert.
    1. Klicken Sie auf **Erstellen**.
@@ -314,7 +313,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
         * Vergewissern Sie sich, dass **NameID Policy** (NameID-Richtlinie) auf den Wert `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified` festgelegt ist.
 
-        * Wählen Sie **Advanced** (Erweitert). Geben Sie unter **User Field** (Benutzerfeld) den Wert **email** oder **user_name** ein (je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird).
+        * Wählen Sie **Erweitert**aus. Geben Sie unter **User Field** (Benutzerfeld) den Wert **email** oder **user_name** ein (je nachdem, welches Feld für die eindeutige Identifizierung von Benutzern in Ihrer ServiceNow-Bereitstellung verwendet wird).
 
             > [!NOTE]
             > Sie können Azure AD so konfigurieren, dass entweder die Azure AD-Benutzer-ID (Benutzerprinzipalname) oder die E-Mail-Adresse als eindeutiger Bezeichner im SAML-Token ausgegeben wird. Wechseln Sie dazu im Azure-Portal zu **ServiceNow** > **Attribute** > **Einmaliges Anmelden**, und weisen Sie das gewünschte Feld dem Attribut **nameidentifier** zu. Der gespeicherte Wert für das ausgewählte Attribut in Azure AD (beispielsweise „Benutzerprinzipalname“) muss dem in ServiceNow gespeicherten Wert für das eingegebene Feld (beispielsweise „user_name“) entsprechen.

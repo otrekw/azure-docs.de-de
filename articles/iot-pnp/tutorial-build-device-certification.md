@@ -3,18 +3,18 @@ title: Erstellen eines IoT Plug & Play Preview-Geräts (Vorschauversion) für di
 description: Als Geräteentwickler erfahren Sie hier mehr darüber, wie Sie ein IoT Plug & Play Preview-Gerät für die Zertifizierung erstellen.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569639"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550265"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Erstellen eines Azure IoT Plug & Play Preview-Geräts für die Zertifizierung
 
@@ -26,7 +26,7 @@ Bei den Zertifizierungstests wird überprüft, ob:
 - Ihr IoT Plug & Play-Gerätecode mit dem Azure IoT SDK erstellt wurde.
 - Ihr Gerätecode den [Azure IoT Hub Device Provisioning-Dienst](../iot-dps/about-iot-dps.md) unterstützt.
 - Ihr Gerätecode die Schnittstelle „Geräteinformationen“ implementiert.
-- das Funktionsmodell und der Gerätecode mit IoT Central kompatibel sind.
+- Das Funktionsmodell und der Gerätecode sind mit IoT Central kompatibel.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +35,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - Erweiterungspaket [Azure IoT Tools für VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
 
-Außerdem benötigen Sie das IoT Plug & Play-Gerät, das Sie im [Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts](quickstart-create-pnp-device.md) erstellt haben.
+Außerdem benötigen Sie das IoT Plug & Play-Gerät, das Sie im [Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts](quickstart-create-pnp-device-windows.md) erstellt haben.
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Speichern von Gerätefunktionsmodellen und Schnittstellen
 
@@ -58,7 +58,7 @@ Um den Zertifizierungsprozess zu bestehen, müssen Sie die Schnittstelle **Gerä
 ```
 
 > [!NOTE]
-> Wenn Sie den [Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts](quickstart-create-pnp-device.md)abgeschlossen haben, dann ist die Schnittstelle **Geräteinformationen** bereits in Ihr Modell eingebunden.
+> Wenn Sie den [Schnellstart: Verwenden eines Gerätefunktionsmodells zum Erstellen eines Geräts](quickstart-create-pnp-device-windows.md)abgeschlossen haben, dann ist die Schnittstelle **Geräteinformationen** bereits in Ihr Modell eingebunden.
 
 Fügen Sie zum Einbinden der Schnittstelle **Geräteinformationen** die Schnittstellen-ID der Eigenschaft `implements` des Funktionsmodells hinzu:
 

@@ -3,18 +3,18 @@ title: Erstellen und Testen eines IoT Plug & Play-Geräts (Vorschauversion) | Mi
 description: Für Geräteentwickler wird beschrieben, wie VS Code zum Erstellen und Testen eines neuen Gerätefunktionsmodells für ein IoT Plug & Play-Gerät (Vorschauversion) verwendet wird.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2019
+ms.date: 12/30/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: b7b9cd1040accda4d39af4d0a18940b56a45f929
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 209c63207653e98967a5a66e36c0cae53b7e044f
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569885"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550280"
 ---
 # <a name="tutorial-create-and-test-a-device-capability-model-using-visual-studio-code"></a>Tutorial: Erstellen und Testen eines Gerätefunktionsmodells mit Visual Studio Code
 
@@ -50,7 +50,7 @@ Zum Erstellen des generierten C-Codes unter Windows in diesem Tutorial benötige
 Sie benötigen Folgendes, um Ihren Gerätecode in diesem Tutorial zu testen:
 
 * [Azure IoT-Explorer](https://github.com/Azure/azure-iot-explorer/releases).
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -275,7 +275,7 @@ Damit das Tool Azure IoT-Explorer Ihr Gerätefunktionsmodell lesen kann, müssen
 
 1. Öffnen Sie mit **STRG+UMSCHALT+P** die Befehlspalette.
 
-1. Geben Sie **Plug & Play** ein, und wählen Sie dann den Befehl **IoT Plug & Play: Open Model Repository** (IoT Plug & Play: Modellrepository öffnen).
+1. Geben Sie **Plug & Play** ein, und wählen Sie dann den Befehl **IoT Plug & Play: Modellrepository öffnen** aus.
 
 1. Wählen Sie **Open Organizational Model Repository** (Modellrepository der Organisation öffnen), und fügen Sie Ihre Verbindungszeichenfolge ein.
 

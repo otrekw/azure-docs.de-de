@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Azure Functions erstellen, die auf einem
 ms.date: 09/27/2019
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 7bf079f84978539735f3bbf5bb13b18130871fb1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5a7fbecca2dc7585ff7110d53deccbbbbf23087c
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484384"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551487"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Erstellen einer Funktion unter Linux mit einem benutzerdefinierten Image
 
@@ -175,8 +175,7 @@ storageConnectionString=$(az storage account show-connection-string \
 
 az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
---settings AzureWebJobsDashboard=$storageConnectionString \
-AzureWebJobsStorage=$storageConnectionString
+--settings AzureWebJobsStorage=$storageConnectionString
 ```
 
 > [!NOTE]
@@ -190,12 +189,12 @@ AzureWebJobsStorage=$storageConnectionString
 
 <!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
 
-Die von Ihnen erstellte über HTTP ausgelöste Funktion erfordert beim Aufrufen des Endpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys). Zu diesem Zeitpunkt ist die einfachste Methode zum Abrufen Ihrer Funktions-URL, einschließlich des Schlüssels, die Verwendung des [Azure-Portal]. 
+Die von Ihnen erstellte über HTTP ausgelöste Funktion erfordert beim Aufrufen des Endpunkts einen [Funktionsschlüssel](functions-bindings-http-webhook.md#authorization-keys). Zu diesem Zeitpunkt ist die einfachste Methode zum Abrufen Ihrer Funktions-URL, einschließlich des Schlüssels, die Verwendung des [Azure portal]. 
 
 > [!TIP]
 > Sie können Ihre Funktionsschlüsseln auch über die [Schlüsselverwaltungs-APIs](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) beziehen, für die Sie ein [Bearertoken zur Authentifizierung](/cli/azure/account#az-account-get-access-token) vorlegen müssen.
 
-Suchen Sie Ihre neue Funktions-App im [Azure-Portal], indem Sie den Namen Ihrer Funktions-App in das **Suchfeld** oben auf der Seite eingeben und die Ressource **App-Service** auswählen.
+Suchen Sie Ihre neue Funktions-App im [Azure portal], indem Sie den Namen Ihrer Funktions-App in das **Suchfeld** oben auf der Seite eingeben und die Ressource **App-Service** auswählen.
 
 Wählen Sie die Funktion **MyHttpTrigger** aus, wählen Sie **</> Funktions-URL abrufen** > **Standard (Funktionsschlüssel)**  > **Kopieren** aus.
 
@@ -374,4 +373,4 @@ Nachdem Sie Ihren benutzerdefinierten Container nun erfolgreich in einer Funktio
 + [Skalierungs- und Hostingoptionen](functions-scale.md)
 + [Kubernetes-basiertes serverloses Hosting](functions-kubernetes-keda.md)
 
-[Azure-Portal]: https://portal.azure.com
+[Azure portal]: https://portal.azure.com
