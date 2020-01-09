@@ -1,5 +1,6 @@
 ---
-title: 'Tutorial: Verwenden der dynamischen Konfiguration von Azure App Configuration in einer .NET Core-App | Microsoft-Dokumentation'
+title: 'Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Core-App'
+titleSuffix: Azure App Configuration
 description: In diesem Tutorial wird beschrieben, wie Sie die Konfigurationsdaten für .NET Core-Apps dynamisch aktualisieren.
 services: azure-app-configuration
 documentationcenter: ''
@@ -13,12 +14,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: abarora
-ms.openlocfilehash: ae753758a3cd5b7dfa8794ccf98f7a8a063f5b18
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: afecc84748ae8ce85c07e3b482bd9b596bdca251
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185192"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433677"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Core-App
 
@@ -123,7 +124,7 @@ Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die
 
 1. Wählen Sie den **Konfigurations-Explorer** aus, und aktualisieren Sie die Werte der folgenden Schlüssel:
 
-    | Schlüssel | Wert |
+    | Key | value |
     |---|---|
     | TestApp:Settings:Message | Daten aus Azure App Configuration: Aktualisiert |
 

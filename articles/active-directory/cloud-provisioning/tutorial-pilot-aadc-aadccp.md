@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Azure AD Connect-Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur'
-description: Tutorial.
+description: 'Tutorial:'
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 812f9bc71cde26b6f32a1259984bb0859ba49d54
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868761"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425097"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Pilotcloudbereitstellung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -47,11 +47,11 @@ Im Folgenden finden Sie die erforderlichen Komponenten für die Durchführung di
 Sie sollten mindestens [Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) 1.4.32.0 verwenden. Führen Sie die Schritte unter [Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version](../hybrid/how-to-upgrade-previous-version.md) aus, um Azure AD Connect zu aktualisieren.  
 
 ## <a name="stop-the-scheduler"></a>Beenden des Schedulers
-Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem lokalen Verzeichnis mithilfe eines Synchronisierungsplaners. Um benutzerdefinierte Regeln zu ändern und hinzuzufügen, möchten Sie den Synchronisierungsplaner deaktivieren, damit keine Synchronisierungen stattfinden, während Sie an den Regeln arbeiten.  Führen Sie die folgenden Schritte aus:
+Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem lokalen Verzeichnis mithilfe eines Synchronisierungsplaners. Um benutzerdefinierte Regeln zu ändern und hinzuzufügen, möchten Sie den Synchronisierungsplaner deaktivieren, damit keine Synchronisierungen stattfinden, während Sie an den Regeln arbeiten.  Führen Sie die folgenden Schritte durch:
 
 1.  Öffnen Sie auf dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, PowerShell mit Administratorrechten.
-2.  Führen Sie `Stop-ADSyncSyncCycle`aus.  Drücken Sie die EINGABETASTE.
-3.  Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $false`aus.
+2.  Führen Sie `Stop-ADSyncSyncCycle` aus.  Drücken Sie die EINGABETASTE.
+3.  Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $false` aus.
 
 >[!NOTE] 
 >Wenn Sie Ihren eigenen benutzerdefinierten Scheduler für die AAD Connect-Synchronisierung ausführen, deaktivieren Sie den Scheduler. 
@@ -76,9 +76,9 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
     **Tag:** Lassen Sie dieses Feld leer.<br>
     ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user2.png)</br>
  
- 4. Geben Sie auf der Seite **Bereichsfilter** die Organisationseinheit oder Sicherheitsgruppe ein, auf der die Pilotbereitstellung basieren soll.  Fügen Sie zum Filtern nach der Organisationseinheit den Teil des Distinguished Name (DN) hinzu, der für die Organisationseinheit steht. Die Regel wird auf alle Benutzer in dieser Organisationseinheit angewendet.  Wenn der DN auf „OU=CPUsers,DC=contoso,DC=com“ endet, fügen Sie den folgenden Filter hinzu.  Klicken Sie auf **Weiter**. 
+ 4. Geben Sie auf der Seite **Bereichsfilter** die Organisationseinheit oder Sicherheitsgruppe ein, auf der die Pilotbereitstellung basieren soll.  Fügen Sie zum Filtern nach der Organisationseinheit den Teil des Distinguished Name (DN) hinzu, der für die Organisationseinheit steht. Die Regel wird auf alle Benutzer in dieser Organisationseinheit angewendet.  Wenn der DN auf „OU=CPUsers,DC=contoso,DC=com“ endet, fügen Sie den folgenden Filter hinzu.  Klicken Sie dann auf **Weiter**. 
 
-    |Regel|Attribut|Operator|Wert|
+    |Regel|attribute|Operator|value|
     |-----|----|----|-----|
     |Bereichsorganisationseinheit|DN|ENDSWITH|Distinguished Name der Organisationseinheit.|
     |Bereichsgruppe||ISMEMBEROF|Distinguished Name der Sicherheitsgruppe.|
@@ -109,7 +109,7 @@ Diese Schritte müssen für alle Objekttypen (Benutzer, Gruppen und Kontakte) au
     
     ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user6.png)</br>
  
- 3. Wählen Sie auf der Seite **Bereichsfilter** das Attribut **cloudNoFlow**, den Operator „Gleich“ und den Wert **True** aus. Klicken Sie auf **Weiter**.
+ 3. Wählen Sie auf der Seite **Bereichsfilter** das Attribut **cloudNoFlow**, den Operator „Gleich“ und den Wert **True** aus. Klicken Sie dann auf **Weiter**.
  ![Benutzerdefinierte Regel](media/how-to-cloud-custom-user-rule/user7.png)</br>
  
  4. Klicken Sie auf der Seite **Verknüpfungsregeln** auf **Weiter**.
@@ -131,22 +131,7 @@ Diese Schritte müssen für alle Objekttypen (Benutzer, Gruppen und Kontakte) au
 6. Klicken Sie auf dem Bildschirm **Konfiguration abgeschlossen** auf **Bestätigen**.  Dadurch wird der Agent registriert und neu gestartet.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install4.png)</br>
 
-7. Sobald dieser Vorgang abgeschlossen ist, sollte der Hinweis angezeigt werden, dass **die Agent-Konfiguration erfolgreich überprüft wurde**.  Sie können auf **Beenden** klicken.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install5.png)</br>
-8. Falls der erste Begrüßungsbildschirm weiterhin angezeigt wird, klicken Sie auf **Schließen**. Melden Sie sich bei dem Server an, den Sie mit den Berechtigungen eines Unternehmensadministrators verwenden werden.
-2. Laden Sie den Agent für die Azure AD Connect-Cloudbereitstellung [hier](https://go.microsoft.com/fwlink/?linkid=2109037) herunter.
-3. Führen Sie den Azure AD Connect-Cloudbereitstellungs-Agent aus (AADConnectProvisioningAgent.Installer).
-3. **Akzeptieren** Sie auf dem Begrüßungsbildschirm die Lizenzbedingungen, und klicken Sie auf **Installieren**.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install1.png)</br>
-
-4. Nach Abschluss dieses Vorgangs wird der Konfigurations-Assistent gestartet.  Melden Sie sich mit dem Konto Ihres globalen Azure AD-Administrators an.
-5. Klicken Sie auf dem Bildschirm **Connect Active Directory** (Active Directory verbinden) auf **Verzeichnis hinzufügen**, und melden Sie sich dann mit Ihrem Active Directory-Administratorkonto an.  Dadurch wird Ihr lokales Verzeichnis hinzugefügt.  Klicken Sie auf **Weiter**.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install3.png)</br>
-
-6. Klicken Sie auf dem Bildschirm **Konfiguration abgeschlossen** auf **Bestätigen**.  Dadurch wird der Agent registriert und neu gestartet.</br>
-![Bildschirm „Willkommen“](media/how-to-install/install4.png)</br>
-
-7. Sobald dieser Vorgang abgeschlossen ist, sollte der Hinweis angezeigt werden, dass **die Agent-Konfiguration erfolgreich überprüft wurde**.  Sie können auf **Beenden** klicken.</br>
+7. Sobald dieser Vorgang abgeschlossen ist, sollte der Hinweis angezeigt werden, dass **die Agent-Konfiguration erfolgreich überprüft wurde**.  Sie können dann auf **Beenden** klicken.</br>
 ![Bildschirm „Willkommen“](media/how-to-install/install5.png)</br>
 8. Falls der erste Begrüßungsbildschirm weiterhin angezeigt wird, klicken Sie auf **Schließen**.
 
@@ -157,19 +142,19 @@ Die Agent-Überprüfung erfolgt im Azure-Portal und auf dem lokalen Server, auf 
 Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent von Azure erkannt wird:
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
-![Azure-Portal](media/how-to-install/install6.png)</br>
+2. Wählen Sie auf der linken Seite **Azure Active Directory** aus, klicken Sie auf **Azure AD Connect**, und wählen Sie im mittleren Bereich **Bereitstellung verwalten (Vorschau)** aus.</br>
+![Azure portal](media/how-to-install/install6.png)</br>
 
-3.  Klicken Sie im Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
+3.  Klicken Sie auf dem Bildschirm **Azure AD-Bereitstellung (Vorschau)** auf **Alle Agents überprüfen**.
 ![Azure AD-Bereitstellung](media/how-to-install/install7.png)</br>
  
-4. Auf dem Bildschirm **Lokale Bereitstellungs-Agents** werden die von Ihnen installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als **Deaktiviert** markiert ist.  Der Agent ist in der Liste der ![Bereitstellungs-Agents](media/how-to-install/verify1.png) standardmäßig deaktiviert.</br>
+4. Auf dem Bildschirm **On-premises provisioning agents** (Lokale Bereitstellungs-Agents) werden die von Ihnen installierten Agents angezeigt.  Vergewissern Sie sich, dass der betreffende Agent aufgeführt wird und als **Deaktiviert** markiert ist.  Der Agent ist in der Liste der ![Bereitstellungs-Agents](media/how-to-install/verify1.png) standardmäßig deaktiviert.</br>
 
 ### <a name="on-the-local-server"></a>Auf dem lokalen Server
 Führen Sie die folgenden Schritte aus, um sicherzustellen, dass der Agent ausgeführt wird:
 
 1.  Melden Sie sich beim Server mit einem Administratorkonto an.
-2.  Öffnen Sie **Dienste**, indem Sie zu dieser Seite oder zu „Start/Run/Services.msc“ navigieren.
+2.  Öffnen Sie die Seite **Dienste**, indem Sie zu dieser Seite oder zu „Start/Run/Services.msc“ navigieren.
 3.  Vergewissern Sie sich, dass unter **Dienste** die Dienste **Microsoft Azure AD Connect Agent Updater** und **Microsoft Azure AD Connect-Bereitstellungs-Agent** angezeigt werden und ihr Status **Wird ausgeführt** lautet.
 ![Dienste](media/how-to-troubleshoot/troubleshoot1.png)
 
@@ -183,9 +168,9 @@ Gehen Sie wie folgt vor, um die Bereitstellung zu konfigurieren:
  ![](media/how-to-configure/manage1.png) aus.</br>
  5.  Klicken Sie auf **Neue Konfiguration**
  ![](media/tutorial-single-forest/configure1.png).</br>
- 6.  Geben Sie auf dem Konfigurationsbildschirm eine **E-Mail-Adresse für Benachrichtigungen** ein, verschieben Sie den Selektor auf **Aktivieren**, und klicken Sie auf **Speichern**.
+ 6.  Geben Sie im Konfigurationsbildschirm eine **E-Mail-Adresse für Benachrichtigungen** ein, verschieben Sie den Selektor auf **Aktivieren**, und klicken Sie auf **Speichern**.
  ![](media/tutorial-single-forest/configure2.png)</br>
- 7. Wählen Sie unter **Konfigurieren** die Option **Alle Benutzer** aus, um den Gültigkeitsbereich der Konfigurationsregel zu ändern.
+ 7. Wählen Sie unter **Konfigurieren** die Option **Alle Benutzer** aus, um den Bereich der Konfigurationsregel zu ändern.
  ![](media/how-to-configure/scope2.png)</br>
  8. Ändern Sie auf der rechten Seite den Bereich, sodass er die gerade erstellte Organisationseinheit „OU=CPUsers,DC=contoso,DC=com“ enthält.
  ![](media/tutorial-existing-forest/scope2.png)</br>
@@ -207,11 +192,11 @@ Nun überprüfen Sie, ob die Benutzer, die in unserem lokalen Verzeichnis enthal
 Außerdem können Sie überprüfen, ob der Benutzer und die Gruppe in Azure AD vorhanden sind.
 
 ## <a name="start-the-scheduler"></a>Starten des Schedulers
-Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem lokalen Verzeichnis mithilfe eines Synchronisierungsplaners. Nachdem Sie die Regeln geändert haben, können Sie den Synchronisierungsplaner nun neu starten.  Führen Sie die folgenden Schritte aus:
+Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem lokalen Verzeichnis mithilfe eines Synchronisierungsplaners. Nachdem Sie die Regeln geändert haben, können Sie den Synchronisierungsplaner nun neu starten.  Führen Sie die folgenden Schritte durch:
 
 1.  Öffnen Sie auf dem Server, auf dem die Azure AD Connect-Synchronisierung ausgeführt wird, PowerShell mit Administratorrechten.
-2.  Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $true`aus.
-3.  Führen Sie `Start-ADSyncSyncCycle`aus.  Drücken Sie die EINGABETASTE.  
+2.  Führen Sie `Set-ADSyncScheduler -SyncCycleEnabled $true` aus.
+3.  Führen Sie `Start-ADSyncSyncCycle` aus.  Drücken Sie die EINGABETASTE.  
 
 >[!NOTE] 
 >Wenn Sie Ihren eigenen benutzerdefinierten Scheduler für die AAD Connect-Synchronisierung ausführen, aktivieren Sie den Scheduler. 
@@ -238,6 +223,6 @@ Wenn Sie sich vergewissert haben, dass Benutzer aus der Pilotorganisationseinhei
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [Was ist eine Bereitstellung?](what-is-provisioning.md)
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
 

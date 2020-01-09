@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: b0e4fcf771f2441d9e1061ee57e83e26b6b1a241
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 389125b1ce3ed43e16f2c9c481e26f1297785a6c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922954"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439348"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Datenbank nach Azure Blob Storage
 
@@ -109,7 +109,7 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutoria
 1. Lassen Sie das Fenster **Container** für **adftutorial** geöffnet. Sie überprüfen darauf am Ende des Tutorials die Ausgabe. Data Factory erstellt den Ausgabeordner automatisch in diesem Container, damit Sie ihn nicht selbst erstellen müssen.
 
 
-### <a name="windows-powershell"></a>Windows PowerShell
+### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>Installieren von Azure Powershell
 
@@ -135,7 +135,7 @@ Installieren Sie die neueste Version von Azure PowerShell, falls sie auf Ihrem C
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehl nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) an (in doppelten Anführungszeichen, z.B. `"adfrg"`), und führen Sie dann den Befehl aus. 
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehl nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) an (in doppelten Anführungszeichen, z.B. `"adfrg"`), und führen Sie dann den Befehl aus. 
    
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -715,7 +715,7 @@ Die Pipeline erstellt den Ausgabeordner *fromonprem* automatisch im Blobcontaine
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Pipeline in diesem Beispiel kopiert Daten in Azure Blob Storage von einem Speicherort an einen anderen. Es wurde Folgendes vermittelt:
+Die Pipeline in diesem Beispiel kopiert Daten in Azure Blob Storage von einem Speicherort an einen anderen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.

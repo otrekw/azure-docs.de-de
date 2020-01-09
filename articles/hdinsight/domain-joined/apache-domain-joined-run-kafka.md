@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 09/04/2019
-ms.openlocfilehash: cb99b747cb5de01c616c4cab0ac6c14823f7d4db
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: a0205d57fa68585b1a91b99b19e008eb92e73c0d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435854"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache Kafka-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschau)
 
@@ -52,7 +52,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
 3. Wählen Sie **Neue Richtlinie hinzufügen** aus, und geben Sie die folgenden Werte ein:
 
-   |Einstellung  |Empfohlener Wert  |
+   |Einstellung  |Vorgeschlagener Wert  |
    |---------|---------|
    |Richtlinienname  |  hdi sales*-Richtlinie   |
    |Thema   |  sales* |
@@ -72,7 +72,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user** und **marketing_user**.
 
 5. Wählen Sie **Neue Richtlinie hinzufügen** aus, und geben Sie die folgenden Werte ein:
 
-   |Einstellung  |Empfohlener Wert  |
+   |Einstellung  |Vorgeschlagener Wert  |
    |---------|---------|
    |Richtlinienname  |  hdi marketing-Richtlinie   |
    |Thema   |  marketingspend |
@@ -93,7 +93,7 @@ So erstellen Sie zwei Themen, `salesevents` und `marketingspend`:
    ssh DOMAINADMIN@CLUSTERNAME-ssh.azurehdinsight.net
    ```
 
-   Ersetzen Sie `DOMAINADMIN` durch den Administratorbenutzer für Ihren Cluster, den Sie während der [Clustererstellung](./apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp) konfiguriert haben, und ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das Administratorbenutzerkonto ein. Weitere Informationen zum Verwenden von `SSH` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+   Ersetzen Sie `DOMAINADMIN` durch den Administratorbenutzer für Ihren Cluster, den Sie während der [Clustererstellung](./apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp) konfiguriert haben, und ersetzen Sie `CLUSTERNAME` durch den Namen Ihres Clusters. Geben Sie bei entsprechender Aufforderung das Kennwort für das Administratorbenutzerkonto ein. Weitere Informationen zum Verwenden von `SSH` mit HDInsight finden Sie unter [Verwenden von SSH mit HDInsight](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Um den Clusternamen in einer Variablen zu speichern und ein JSON-Analysehilfsprogramm (`jq`) zu installieren, verwenden Sie die folgenden Befehle. Geben Sie bei entsprechender Aufforderung den Namen des Kafka-Clusters ein.
 

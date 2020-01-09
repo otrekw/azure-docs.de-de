@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/12/2019
-ms.openlocfilehash: f9203f77d5b398f53fcb7c9fceb70604b364a4e0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 17802228c8f08e3c8f1533296e2d39080f6f8b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790289"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456627"
 ---
 # <a name="tutorial-create-automated-schedule-based-recurring-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter, zeitplanbasierter periodischer Workflows mithilfe von Azure Logic Apps
 
@@ -34,7 +34,7 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Sollten Sie über kein Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
+* ein Azure-Abonnement Sollten Sie über kein Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 * Ein E-Mail-Konto eines von Logic Apps unterstützten E-Mail-Anbieters (beispielsweise Office 365 Outlook, Outlook.com oder Gmail). Informationen zu Connectors für andere Anbieter finden Sie in [dieser Liste](https://docs.microsoft.com/connectors/). In dieser Schnellstartanleitung wird ein Office 365 Outlook-Konto verwendet. Bei Verwendung eines anderen E-Mail-Kontos bleiben die allgemeinen Schritte zwar gleich, die Benutzeroberfläche unterscheidet sich aber ggf. etwas.
 
@@ -54,11 +54,11 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
    ![Angeben von Informationen zu Ihrer Logik-App](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | LA-TravelTime | Der Name Ihrer Logik-App. Er darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten. In diesem Beispiel wird „LA-TravelTime“ verwendet. |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements |
-   | **Ressourcengruppe** | LA-TravelTime-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-TravelTime-RG“ verwendet. |
+   | **Ressourcengruppe** | LA-TravelTime-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-TravelTime-RG“ verwendet. |
    | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. |
    ||||
@@ -89,10 +89,10 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
 
    ![Ändern des Intervalls und der Häufigkeit des Wiederholungstriggers](./media/tutorial-build-scheduled-recurring-logic-app-workflow/change-interval-frequency.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Intervall** | Ja | 1 | Die Anzahl von Warteintervallen zwischen Überprüfungen |
-   | **Frequency** | Ja | Woche | Die Zeiteinheit für die Wiederholung |
+   | **Frequency** | Ja | Week | Die Zeiteinheit für die Wiederholung |
    |||||
 
 1. Öffnen Sie unter **Intervall** und **Frequenz** die Liste **Neuen Parameter hinzufügen**, und wählen Sie die folgenden Eigenschaften aus, um sie dem Trigger hinzuzufügen:
@@ -107,7 +107,7 @@ Fügen Sie als Nächstes den [Serientrigger](../logic-apps/logic-apps-overview.m
 
    ![Eingeben der Zeitplan- und Wiederholungsdetails](./media/tutorial-build-scheduled-recurring-logic-app-workflow/recurrence-trigger-property-values.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **An diesen Tagen** | Montag,Dienstag,Mittwoch,Donnerstag,Freitag | Nur verfügbar, wenn für **Häufigkeit** die Option „Woche“ festgelegt ist. |
    | **Zu diesen Stunden** | 7,8,9 | Nur verfügbar, wenn für **Häufigkeit** die Option „Woche“ oder „Tag“ festgelegt ist. Wählen Sie für die Ausführung der Wiederholung die Stunden des Tages aus. Dieses Beispiel wird um 7, 8 und 9 Uhr ausgeführt. |
@@ -138,7 +138,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
 
    ![Erstellen einer Verbindung mit der Bing Karten-API](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | BingMapsConnection | Geben Sie einen Namen für die Verbindung an. In diesem Beispiel wird „BingMapsConnection“ verwendet. |
    | **API-Schlüssel** | Ja | <*Ihr Bing Maps-Schlüssel*> | Geben Sie den Bing Maps-Schlüssel ein, den Sie zuvor abgerufen haben. Falls Sie keinen Bing Maps-Schlüssel besitzen, lesen Sie die Informationen zum [Abrufen eines Schlüssels](https://msdn.microsoft.com/library/ff428642.aspx). |
@@ -158,7 +158,7 @@ Sie verfügen über einen Trigger und können nun eine [Aktion](../logic-apps/lo
 
    ![Angeben von Details für die Aktion „Get route“ (Route ermitteln)](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Wegpunkt 1** | Ja | <*Start*> | Ausgangspunkt für die Route |
    | **Wegpunkt 2** | Ja | <*Ziel*> | Ziel der Route |
@@ -189,7 +189,7 @@ Die vorherige Aktion **Get route** (Route ermitteln) gibt standardmäßig die ak
 
 1. Geben Sie die Details für die Variable an wie hier beschrieben:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Name** | Ja | travelTime | Der Name für Ihre Variable. In diesem Beispiel wird „travelTime“ verwendet. |
    | **Typ** | Ja | Integer | Der Datentyp für die Variable |

@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
-ms.openlocfilehash: d3fecd54e36c8a3dd43c88f5aa4e4233057c3f91
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 9764c4bc794eb8d133270b762fa2bca30a056fea
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838593"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459632"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-using-ssms"></a>Tutorial: Entwerfen einer relationalen Datenbank in einer Einzeldatenbank in Azure SQL-Datenbank mit SSMS
 
@@ -48,7 +48,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-blank-single-database"></a>Erstellen einer leeren Einzeldatenbank
 
-Eine Einzeldatenbank in Azure SQL-Datenbank wird mit einer definierten Gruppe von Compute- und Speicherressourcen erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt und mit einem [Datenbankserver](sql-database-servers.md) verwaltet.
+Eine Einzeldatenbank in Azure SQL-Datenbank wird mit einer definierten Gruppe von Compute- und Speicherressourcen erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt und mit einem [Datenbankserver](sql-database-servers.md) verwaltet.
 
 Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstellen:
 
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstell
 
 3. Geben Sie die folgenden Informationen in das **SQL-Datenbank**-Formular ein, wie in der obigen Abbildung dargestellt:
 
-    | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Datenbankname** | *yourDatabase* | Gültige Datenbanknamen finden Sie unter [Datenbankbezeichner](/sql/relational-databases/databases/database-identifiers). |
     | **Abonnement** | *yourSubscription*  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
@@ -68,7 +68,7 @@ Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstell
 
 4. Klicken Sie auf **Server**, um einen vorhandenen Datenbankserver zu verwenden oder um einen neuen Datenbankserver zu erstellen und zu konfigurieren. Wählen Sie einen vorhandenen Server aus, oder klicken Sie auf **Neuen Server erstellen**, und geben Sie im Formular **Neuer Server** die folgenden Informationen ein:
 
-    | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
     | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Datenbankbezeichner](/sql/relational-databases/databases/database-identifiers). |
@@ -120,14 +120,14 @@ Die IP-Adresse kann nun die IP-Firewall passieren. Nun können Sie mit SQL Serve
 > [!IMPORTANT]
 > Standardmäßig ist der Zugriff über die SQL-Datenbank-IP-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS**, um dies für alle Azure-Dienste zu deaktivieren.
 
-## <a name="connect-to-the-database"></a>Herstellen einer Verbindung mit der Datenbank
+## <a name="connect-to-the-database"></a>Herstellen der Verbindung mit der Datenbank
 
 Verwenden Sie [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms), um eine Verbindung mit Ihrer Einzeldatenbank herzustellen.
 
 1. Öffnen Sie SQL Server Management Studio.
 2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
 
-   | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servertyp** | Datenbank-Engine | Dieser Wert ist erforderlich. |
    | **Servername** | Der vollqualifizierte Servername | Beispiel: *yourserver.database.windows.net* |
@@ -208,7 +208,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
    )
    ```
 
-   ![Erstellen von Tabellen.](./media/sql-database-design-first-database/create-tables.png)
+   ![Erstellen von Tabellen](./media/sql-database-design-first-database/create-tables.png)
 
 3. Erweitern Sie im **Objekt-Explorer** unter *yourDatabase* den Knoten **Tabellen**, um die von Ihnen erstellten Tabellen anzuzeigen.
 
@@ -238,7 +238,7 @@ Die folgende Abbildung zeigt, wie diese Tabellen miteinander verknüpft sind. Au
 
 Sie haben jetzt Beispieldaten in die Tabellen geladen, die Sie zuvor erstellt haben.
 
-## <a name="query-data"></a>Abfragen von Daten
+## <a name="query-data"></a>Daten abfragen
 
 Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabellen abzurufen. Weitere Informationen zum Schreiben von SQL-Abfragen finden Sie unter [Writing SQL Queries](https://technet.microsoft.com/library/bb264565.aspx) (Schreiben von SQL-Abfragen). In der ersten Abfrage werden alle vier Tabellen verknüpft, um alle Kursteilnehmer zu finden, die von „Dominick Pope“ unterrichtet werden und ein Ergebnis (Grade) haben, das über 75 Prozent liegt. In der zweiten Abfrage werden alle vier Tabellen verknüpft und die Lehrveranstaltungen gesucht, für die „Noe Coleman“ jemals eingeschrieben war.
 
@@ -270,13 +270,13 @@ Führen Sie die folgenden Abfragen aus, um Informationen aus den Datenbanktabell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie viele grundlegende Datenbankaufgaben kennengelernt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie viele grundlegende Datenbankaufgaben kennengelernt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > - Erstellen einer Einzeldatenbank
 > - Einrichten einer IP-Firewallregel auf Serverebene
 > - Herstellen einer Verbindung mit der Datenbank mit [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)
-> - Erstellen von Tabellen.
+> - Erstellen von Tabellen
 > - Massenladen von Daten
 > - Abfragen der Daten
 

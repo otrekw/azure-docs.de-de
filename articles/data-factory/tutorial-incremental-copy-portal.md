@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 5d82971cbd7781a298f3f3aeeba47e4be471e248
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1c8df388bcd3956746edba9a721b0598025b827e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927995"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439173"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus einer Azure SQL-Datenbank in Azure Blob Storage mithilfe des Azure-Portals
 
@@ -150,7 +150,7 @@ END
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen** > **Analytics** > **Data Factory**: 
+2. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**: 
    
    ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -165,10 +165,10 @@ END
       - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
       - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-        Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+        Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 6. Wählen Sie **V2** als **Version** aus.
 7. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
-8. Klicken Sie auf **Create**.      
+8. Klicken Sie auf **Erstellen**.      
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
    
    ![Data Factory-Startseite](./media/doc-common-process/data-factory-home-page.png)
@@ -253,10 +253,10 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     2. Wählen Sie unter **Speicherkontoname** Ihr Azure Storage-Konto aus.
     3. Testen Sie die Verbindung, und klicken Sie dann auf **Fertig stellen**. 
 
-27. Vergewissern Sie sich, dass im Fenster **Eigenschaften festlegen** unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService** ausgewählt ist. Klicken Sie dann auf **Fertig stellen**.
+27. Vergewissern Sie sich, dass im Fenster **Eigenschaften festlegen** unter **Verknüpfter Dienst** die Option **AzureStorageLinkedService** ausgewählt ist. Wählen Sie dann **Fertig stellen** aus.
 28. Wechseln Sie zur Registerkarte **Verbindung** von „SinkDataset“, und führen Sie die folgenden Schritte aus:
     1. Geben Sie im Feld **Dateipfad** die Zeichenfolge **adftutorial/incrementalcopy** ein. **adftutorial** ist der Name des Blobcontainers, und **incrementalcopy** ist der Ordnername. In diesem Codeausschnitt wird davon ausgegangen, dass Sie einen Blobcontainer mit dem Namen „adftutorial“ in Ihrem Blobspeicher besitzen. Erstellen Sie den Container, wenn er noch nicht vorhanden ist, oder geben Sie den Namen eines bereits vorhandenen ein. Azure Data Factory erstellt den Ausgabeordner **incrementalcopy** automatisch, falls er nicht vorhanden ist. Sie können auch die Schaltfläche **Durchsuchen** für den **Dateipfad** verwenden, um zu einem Ordner in einem Blobcontainer zu navigieren.
-    2. Wählen Sie für den Teil **Datei** des Felds **Dateipfad** die Option **Dynamischen Inhalt hinzufügen [ALT+P]** aus, und geben Sie dann `@CONCAT('Incremental-', pipeline().RunId, '.txt')`in das geöffnete Fenster ein. Klicken Sie dann auf **Fertig stellen**. Der Dateiname wird mit dem Ausdruck dynamisch generiert. Jede Pipelineausführung verfügt über eine eindeutige ID. Die Copy-Aktivität nutzt die Ausführungs-ID zum Generieren des Dateinamens. 
+    2. Wählen Sie für den Teil **Datei** des Felds **Dateipfad** die Option **Dynamischen Inhalt hinzufügen [ALT+P]** aus, und geben Sie dann `@CONCAT('Incremental-', pipeline().RunId, '.txt')`in das geöffnete Fenster ein. Wählen Sie dann **Fertig stellen** aus. Der Dateiname wird mit dem Ausdruck dynamisch generiert. Jede Pipelineausführung verfügt über eine eindeutige ID. Die Copy-Aktivität nutzt die Ausführungs-ID zum Generieren des Dateinamens. 
 
 28. Wechseln Sie zum **Pipeline**-Editor, indem Sie oben auf die Registerkarte „Pipeline“ oder in der Strukturansicht auf der linken Seite auf den Namen der Pipeline klicken. 
 29. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie die **Stored Procedure**-Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers. **Verbinden** Sie die grüne Ausgabe (Erfolgreich) der **Copy**-Aktivität mit der **Stored Procedure**-Aktivität. 
@@ -270,10 +270,10 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **usp_write_watermark**. 
     2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein: 
 
-        | NAME | type | Wert | 
+        | Name | type | value | 
         | ---- | ---- | ----- | 
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
-        | TableName | Zeichenfolge | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
+        | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
 27. Klicken Sie zum Überprüfen der Pipelineeinstellungen in der Symbolleiste auf **Überprüfen**. Vergewissern Sie sich, dass keine Validierungsfehler vorliegen. Schließen Sie das Fenster **Pipeline Validation Report** (Pipelineüberprüfungsbericht), indem Sie auf >> klicken.   
@@ -353,7 +353,7 @@ PersonID | Name | LastModifytime
 
 ## <a name="monitor-the-second-pipeline-run"></a>Überwachen der zweiten Pipelineausführung
 
-1. Wechseln Sie zur Registerkarte **Überwachen** auf der linken Seite. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. 
+1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können den Status der Pipelineausführung anzeigen, die vom manuellen Trigger ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. 
     
 2. Wenn Sie mit dieser Pipelineausführung verknüpfte Aktivitätsausführungen anzeigen möchten, klicken Sie in der Spalte **Aktionen** auf den ersten Link (**View Activity Runs** (Aktivitätsausführungen anzeigen)). Sie können zurück zur vorherigen Ansicht wechseln, indem Sie oben auf **Pipelines** klicken. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren.
 

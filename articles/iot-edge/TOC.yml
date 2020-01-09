@@ -161,6 +161,8 @@
           href: how-to-deploy-monitor.md
         - name: Azure-Befehlszeilenschnittstelle
           href: how-to-deploy-monitor-cli.md
+        - name: Visual Studio Code
+          href: how-to-deploy-monitor-vscode.md
     - name: Verwenden von IoT Edge-Geräten als Gateways
       items:
         - name: Konfigurieren eines transparenten Gateways

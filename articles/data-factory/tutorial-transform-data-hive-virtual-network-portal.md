@@ -10,12 +10,12 @@ manager: anandsub
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/04/2018
-ms.openlocfilehash: d52aed98549478898cb3bd263d52eeae2a69ccfd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd0de5415dc001f107221add7ea223450290b3f4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439261"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten in Azure Virtual Network mithilfe einer Hive-Aktivität in Azure Data Factory
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - **Azure Storage-Konto**. Erstellen Sie ein Hive-Skript, und laden Sie es in Azure Storage hoch. Die Ausgabe des Hive-Skripts wird in diesem Storage-Konto gespeichert. In diesem Beispiel verwendet der HDInsight-Cluster dieses Azure Storage-Konto als primären Speicher. 
-- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
+- **Azure Virtual Network.** Wenn Sie noch nicht über ein Azure Virtual Network verfügen, erstellen Sie ein solches anhand [dieser Anweisungen](../virtual-network/quick-create-portal.md). In diesem Beispiel befindet sich HDInsight in einem Azure Virtual Network. Hier finden Sie die Beispielkonfiguration von Azure Virtual Network. 
 
     ![Virtuelles Netzwerk erstellen](media/tutorial-transform-data-using-hive-in-vnet-portal/create-virtual-network.png)
 - **HDInsight-Cluster.** Erstellen Sie einen HDInsight-Cluster, und binden Sie ihn in das virtuelle Netzwerk ein, das Sie im vorherigen Schritt erstellt haben. Befolgen Sie dazu die Anweisungen in folgendem Artikel: [Erweitern von Azure HDInsight per Azure Virtual Network](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Hier finden Sie die Beispielkonfiguration von HDInsight in einem virtuellen Netzwerk. 
@@ -88,11 +88,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
    - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-     Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+     Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 4. Wählen Sie **V2** als **Version** aus.
 5. Wählen Sie den **Standort** für die Data Factory aus. Die Liste enthält nur Standorte, die für die Erstellung von Data Factorys geeignet sind.
 6. Wählen Sie die Option **An Dashboard anheften** aus.     
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 8. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying data factory** (Data Factory wird bereitgestellt...). 
 
      ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
@@ -157,7 +157,7 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste und stellen sie berei
 1. Wechseln Sie zur Registerkarte **Verknüpfte Dienste**, und klicken Sie auf **Neu**.
 
    ![Schaltfläche für neuen verknüpften Dienst](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-linked-service.png)    
-2. Wählen Sie im Fenster **Neuer verknüpfter Dienst** die Option **Azure Blob Storage** aus, und klicken Sie dann auf **Weiter**. 
+2. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
    ![Auswählen von „Azure Blob Storage“](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-azure-storage.png)
 3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
@@ -178,13 +178,13 @@ In diesem Abschnitt erstellen Sie zwei verknüpfte Dienste und stellen sie berei
 2. Wechseln Sie zur Registerkarte **Compute**, wählen Sie **Azure HDInsight** aus, und klicken Sie anschließend auf **Weiter**.
 
     ![Auswählen von „Azure HDInsight“](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-hdinsight.png)
-3. Führen Sie im Fenster **Neuer verknüpfter Dienst** die folgenden Schritte aus:
+3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus:
 
     1. Geben Sie unter **Name** die Zeichenfolge **AzureHDInsightLinkedService** ein.
     2. Wählen Sie **Bring your own HDInsight** (Eigenes HDInsight verwenden) aus. 
     3. Wählen Sie unter **Hdi cluster** (HDI-Cluster) Ihren HDInsight-Cluster aus. 
     4. Geben Sie unter **Benutzername** den Benutzernamen für den HDInsight-Cluster ein.
-    5. Geben Sie unter **Kennwort** das Kennwort für den Benutzer ein. 
+    5. Geben Sie das **Kennwort** für den Benutzer ein. 
     
         ![Azure HDInsight-Einstellungen](./media/tutorial-transform-data-using-hive-in-vnet-portal/specify-azure-hdinsight.png)
 
@@ -200,8 +200,8 @@ In diesem Schritt erstellen Sie eine neue Pipeline mit einer Hive-Aktivität. Di
 
 Beachten Sie folgende Punkte:
 
-- **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Beim Pfad wird die Groß-/Kleinschreibung beachtet.
-- **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Beim Pfad wird die Groß-/Kleinschreibung beachtet. 
+- **scriptPath** zeigt auf den Pfad zu dem Hive-Skript im Azure Storage-Konto, das Sie für „MyStorageLinkedService“ verwendet haben. Der Pfad berücksichtigt die Groß- und Kleinschreibung.
+- **Output** ist ein im Hive-Skript verwendetes Argument. Verwenden Sie das Format `wasbs://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/`, um auf einen vorhandenen Ordner in Ihrem Azure Storage zu zeigen. Der Pfad berücksichtigt die Groß- und Kleinschreibung. 
 
 1. Klicken Sie im linken Bereich der Data Factory-Benutzeroberfläche auf **+** (Pluszeichen) und dann auf **Pipeline**. 
 

@@ -44,7 +44,7 @@
           href: devtest-lab-training-lab.md
         - name: Szenarien für die Verwendung von abrufbaren VMs
           href: devtest-lab-use-claim-capabilities.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Konfigurieren eines Labs
       items:
@@ -72,6 +72,8 @@
           href: devtest-lab-auto-startup-vm.md
         - name: Skalieren des Labs
           href: devtest-lab-scale-lab.md
+        - name: Aktivieren von verwalteten Identitäten für virtuelle Lab-Computer
+          href: enable-managed-identities-lab-vms.md
         - name: Verwalten von Basen virtueller Computer
           items:
             - name: Konfigurieren von Azure Marketplace-Images
@@ -179,7 +181,7 @@
         - name: Erstellen einer Imagefactory
           href: image-factory-create.md
           items:
-            - name: Ausführen einer Imagefactory über AzureDevOps
+            - name: Ausführen einer Image Factory aus AzureDevOps
               href: image-factory-set-up-devops-lab.md
             - name: Speichern von benutzerdefinierten Images und Verteilen an mehrere Labs
               href: image-factory-save-distribute-custom-images.md

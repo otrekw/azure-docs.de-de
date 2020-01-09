@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6a2057eee6cf294e401f60c889bcf58ac6fbe32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084360"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429104"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Tutorial: Einrichten und Verwenden von Metriken und Diagnoseprotokollen mit einem IoT-Hub
 
@@ -36,7 +36,7 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- ein Azure-Abonnement Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 - Installieren Sie [Visual Studio](https://www.visualstudio.com/). 
 
@@ -50,7 +50,7 @@ Für dieses Tutorial benötigen Sie einen IoT-Hub, ein Speicherkonto und ein sim
 
 Erforderliche Schritte:
 
-1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). 
+1. Erstellen Sie eine [Ressourcengruppe](../azure-resource-manager/management/overview.md). 
 
 2. Erstellen Sie einen IoT Hub.
 
@@ -211,7 +211,7 @@ IoT Hub wurde noch nicht zu den [Metriken in Azure Monitor](/azure/azure-monitor
 
     **Name**: Geben Sie einen Namen für Ihre Warnungsregel ein (beispielsweise *telemetry-messages*).
 
-    **Beschreibung:** Geben Sie eine Beschreibung für Ihre Warnung ein. Beispiel: *alert when there are 1000 telemetry messages sent* (Warnen, wenn mehr als 1.000 Telemetrienachrichten gesendet wurden) 
+    **Beschreibung**: Geben Sie eine Beschreibung für Ihre Warnung ein. Beispiel: *alert when there are 1000 telemetry messages sent* (Warnen, wenn mehr als 1.000 Telemetrienachrichten gesendet wurden) 
 
     **Quelle**: Legen Sie diese Option auf *Metriken* fest.
 
@@ -241,7 +241,7 @@ IoT Hub wurde noch nicht zu den [Metriken in Azure Monitor](/azure/azure-monitor
 
    **Name**: Geben Sie einen Namen für Ihre Warnungsregel ein (beispielsweise *number-of-messages-used*).
 
-   **Beschreibung:** Geben Sie eine Beschreibung für Ihre Warnung ein. Beispiel: *alert when getting close to quota* (Warnen, wenn das Kontingent fast erreicht ist)
+   **Beschreibung**: Geben Sie eine Beschreibung für Ihre Warnung ein. Beispiel: *alert when getting close to quota* (Warnen, wenn das Kontingent fast erreicht ist)
 
    **Quelle**: Legen Sie dieses Feld auf *Metriken* fest.
 

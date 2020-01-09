@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/20/2019
-ms.openlocfilehash: bcd90859066911797d78737187cae6d361029ddd
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7d7f573e5b18e6e0e63d3275aecefe408a9143fb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74784662"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456610"
 ---
 # <a name="tutorial-create-automated-approval-based-workflows-by-using-azure-logic-apps"></a>Tutorial: Erstellen automatisierter genehmigungsbasierter Workflows mithilfe von Azure Logic Apps
 
@@ -35,7 +35,7 @@ Am Ende entspricht Ihre Logik-App grob dem folgenden Workflow:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Sollten Sie über kein Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
+* ein Azure-Abonnement Sollten Sie über kein Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
 * Ein MailChimp-Konto, das eine Liste namens „test-members-ML“ enthält, der Ihre Logik-App E-Mail-Adressen für genehmigte Mitglieder hinzufügen kann. Falls Sie über kein Konto verfügen, [registrieren Sie sich für ein kostenloses Konto](https://login.mailchimp.com/signup/), und informieren Sie sich dann darüber, [wie Sie eine MailChimp-Liste erstellen](https://us17.admin.mailchimp.com/lists/#).
 
@@ -55,11 +55,11 @@ Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim [Azure-Port
 
    ![Angeben von Informationen zu Ihrer Logik-App](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | LA-MailingList | Der Name Ihrer Logik-App. Er darf nur Buchstaben, Ziffern, Bindestriche (`-`), Unterstriche (`_`), Klammern (`(`, `)`) und Punkte (`.`) enthalten. In diesem Beispiel wird „LA-MailingList“ verwendet. |
    | **Abonnement** | <*Name Ihres Azure Abonnements*> | Der Name Ihres Azure-Abonnements |
-   | **Ressourcengruppe** | LA-MailingList-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-MailingList-RG“ verwendet. |
+   | **Ressourcengruppe** | LA-MailingList-RG | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet wird. In diesem Beispiel wird „LA-MailingList-RG“ verwendet. |
    | **Location** | USA (Westen) | Die Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
    | **Log Analytics** | Aus | Behalten Sie die Einstellung **Aus** für die Diagnoseprotokollierung bei. |
    ||||
@@ -95,7 +95,7 @@ Fügen Sie als Nächstes einen [Trigger](../logic-apps/logic-apps-overview.md#lo
 
       ![Angeben von Ordner, Intervall und Häufigkeit für die E-Mail-Überprüfung](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | Eigenschaft | Wert | BESCHREIBUNG |
+      | Eigenschaft | value | BESCHREIBUNG |
       |----------|-------|-------------|
       | **Ordner** | `Inbox` | Der zu überwachende E-Mail-Ordner. |
       | **Intervall** | `1` | Die Anzahl von Warteintervallen zwischen Überprüfungen |
@@ -136,9 +136,9 @@ Nachdem Sie nun über einen Trigger verfügen, fügen Sie als Nächstes eine [Ak
 
    ![Eigenschaften für „Genehmigungs-E-Mail senden“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | Eigenschaft | Wert | BESCHREIBUNG |
+   | Eigenschaft | value | BESCHREIBUNG |
    |----------|-------|-------------|
-   | **To** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. In diesem Beispiel wird die fiktive E-Mail-Adresse „sophia.owen@fabrikam.com“ verwendet. |
+   | **An** | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse der genehmigenden Person. Zu Testzwecken können Sie hier Ihre eigene Adresse angeben. In diesem Beispiel wird die fiktive E-Mail-Adresse „sophia.owen@fabrikam.com“ verwendet. |
    | **Subject** | `Approve member request for test-members-ML` | Ein aussagekräftiger E-Mail-Betreff. |
    | **Benutzeroptionen** | `Approve, Reject` | Die Antwortoptionen, zwischen denen die genehmigende Person wählen kann. Standardmäßig kann die genehmigende Person zwischen „Genehmigen“ und „Ablehnen“ wählen. |
    ||||
@@ -193,7 +193,7 @@ Fügen Sie nun eine Aktion hinzu, die das genehmigte Mitglied Ihrer Adressenlist
 
 1. Wählen Sie in der Bedingungsverzweigung **Bei TRUE** die Option **Aktion hinzufügen** aus.
 
-1. Geben Sie unter **Aktion auswählen** `mailchimp` als Filter ein, und wählen Sie die Aktion **Mitglied zu Liste hinzufügen** aus.
+1. Geben Sie unter **Aktion auswählen**`mailchimp` als Filter ein, und wählen Sie die Aktion **Mitglied zu Liste hinzufügen** aus.
 
    ![Auswählen der Aktion „Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member.png)
 
@@ -203,7 +203,7 @@ Fügen Sie nun eine Aktion hinzu, die das genehmigte Mitglied Ihrer Adressenlist
 
    ![Angeben der Informationen für „Mitglied zu Liste hinzufügen“](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Listen-ID** | Ja | `test-members-ML` | Der Name Ihrer MailChimp-Adressenliste. In diesem Beispiel wird „test-members-ML“ verwendet. |
    | **Status** | Ja | `subscribed` | Wählen Sie den Abonnementstatus für das neue Mitglied aus. In diesem Beispiel wird „Abonniert“ verwendet. <p>Weitere Informationen finden Sie unter [Manage Subscribers with the MailChimp API](https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/) (Verwalten von Abonnenten mit der MailChimp-API). |
@@ -258,9 +258,9 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
    ![Angeben der Informationen für die Erfolgs-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | **To** | Ja | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
+   | **An** | Ja | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Erfolgs-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
    | **Subject** | Ja | <*Betreff der Erfolgs-E-Mail*> | Der Betreff der Erfolgs-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`Success! Member added to "test-members-ML": ` <p>Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **E-Mail-Adresse** aus. |
    | **Text** | Ja | <*Text für Erfolgs-E-Mail*> | Der Inhalt der Erfolgs-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`New member has joined "test-members-ML":` <p>Wählen Sie in der Liste mit den dynamischen Inhalten die Eigenschaft **E-Mail-Adresse** aus. <p>Geben Sie in der nächsten Zeile den folgenden Text ein: `Member opt-in status: `. <p> Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **Status** aus. |
    |||||
@@ -283,9 +283,9 @@ Richten Sie als Nächstes die E-Mails ein, die gesendet werden sollen, wenn das 
 
    ![Angeben der Informationen für die Fehler-E-Mail](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
-   | **To** | Ja | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
+   | **An** | Ja | <*Ihre E-Mail-Adresse*> | Die E-Mail-Adresse, an die die Fehler-E-Mail gesendet werden soll. Zu Testzwecken können Sie hier Ihre eigene E-Mail-Adresse angeben. |
    | **Subject** | Ja | <*Betreff für Fehler-E-Mail*> | Der Betreff der Fehler-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`Failed, member not added to "test-members-ML": ` <p>Wählen Sie in der Liste mit den dynamischen Inhalten unter **Mitglied zu Liste hinzufügen** die Eigenschaft **E-Mail-Adresse** aus. |
    | **Text** | Ja | <*Text für Fehler-E-Mail*> | Der Inhalt der Fehler-E-Mail. Geben Sie für dieses Tutorial den folgenden Text ein: <p>`Member might already exist. Check your MailChimp account.` |
    |||||

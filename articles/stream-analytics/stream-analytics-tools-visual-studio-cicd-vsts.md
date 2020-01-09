@@ -1,7 +1,6 @@
 ---
 title: Bereitstellen von Azure Stream Analytics-Aufträgen mit CI/CD und Azure DevOps
 description: In diesem Artikel wird beschrieben, wie Sie einen Azure Stream Analytics-Auftrag mit CI/CD mithilfe von Azure DevOps Services bereitstellen.
-services: stream-analytics
 author: su-jie
 ms.author: sujie
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7810cf9950d919469c4b47053a878518726f4393
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: d9360ff64206cdce208f9643cf8ca86515aaeb7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72925066"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354434"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure Pipelines
 In diesem Tutorial wird beschrieben, wie Continuous Integration und Continuous Deployment für einen Azure Stream Analytics-Auftrag mithilfe von Azure-Pipelines eingerichtet werden. 
@@ -118,7 +117,7 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     |**Einstellung**  |**Empfohlener Wert**  |
     |---------|---------|
     |Subscription  |  Wählen Sie Ihr Abonnement aus.   |
-    |Aktion  |  Erstellen oder aktualisieren Sie eine Ressourcengruppe.   |
+    |Action  |  Erstellen oder aktualisieren Sie eine Ressourcengruppe.   |
     |Ressourcengruppe  |  Geben Sie einen Ressourcengruppennamen ein.   |
     |Vorlage  | [Ihr Projektmappenpfad]\bin\Debug\Deploy\\[Ihr Projektname].JobTemplate.json   |
     |Vorlagenparameter  | [Ihr Projektmappenpfad]\bin\Debug\Deploy\\[Ihr Projektname].JobTemplate.parameters.json   |

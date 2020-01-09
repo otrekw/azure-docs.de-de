@@ -10,10 +10,6 @@
       href: quickstart-create-templates-use-the-portal.md
     - name: Erstellen von Vorlagen – VS Code
       href: quickstart-create-templates-use-visual-studio-code.md
-    - name: Erstellen von Vorlagen – Visual Studio
-      href: create-visual-studio-deployment-project.md
-    - name: 'Erstellen von Vorlagen: IntelliJ IDEA'
-      href: create-templates-use-intellij.md
 - name: Lernprogramme
   items:
     - name: Anfänger
@@ -101,8 +97,9 @@
   items:
     - name: Erstellen von Vorlagen
       items:
-        - name: Verwenden von Visual Studio Code
-          href: use-vs-code-to-create-template.md
+        - name: Vorlagendateistruktur
+          displayName: 'parameters,variables,resources,outputs,condition'
+          href: template-syntax.md
         - name: Schreiben von Vorlagenausdrücken
           href: template-expressions.md
         - name: Parameter
@@ -134,6 +131,14 @@
           href: deploy-to-subscription.md
         - name: Ressourcen auf Verwaltungsgruppenebene
           href: deploy-to-management-group.md
+    - name: Verwenden von Erstellungstools
+      items:
+        - name: VS-Code
+          href: use-vs-code-to-create-template.md
+        - name: Visual Studio
+          href: create-visual-studio-deployment-project.md
+        - name: IntelliJ IDEA
+          href: create-templates-use-intellij.md
     - name: Bereitstellen von Vorlagen
       items:
         - name: 'Bereitstellen: Portal'
@@ -206,9 +211,6 @@
           href: ../../virtual-machines/windows/troubleshoot-deploy-vm.md
 - name: Verweis
   items:
-    - name: Vorlagendateistruktur
-      displayName: 'parameters,variables,resources,outputs,condition'
-      href: template-syntax.md
     - name: Vorlagenreferenz
       href: /azure/templates/
     - name: Funktionen von Azure-Ressourcen-Manager-Vorlagen

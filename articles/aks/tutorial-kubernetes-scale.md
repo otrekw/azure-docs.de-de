@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 951cd7ae8962d71f41899eca848ce0740d6395ad
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1838cfefee8c1cf9ca6548aa64fa7a6fcb46f66a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538751"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442856"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Skalieren von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -141,7 +141,7 @@ Wenn der Cluster erfolgreich skaliert wurde, sieht die Ausgabe so wie im folgend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie verschiedene Skalierungsfunktionen in Ihrem Kubernetes-Cluster verwendet. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie verschiedene Skalierungsfunktionen in Ihrem Kubernetes-Cluster verwendet. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Manuelles Skalieren von Kubernetes-Pods, die Ihre Anwendung ausführen
@@ -159,7 +159,7 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Anwendungen in K
 [kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
 [kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
 [metrics-server-github]: https://github.com/kubernetes-incubator/metrics-server/tree/master/deploy/1.8%2B
-[metrics-server]: https://v1-12.docs.kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
+[metrics-server]: https://v1-13.docs.kubernetes.io/docs/tasks/debug-application-cluster/core-metrics-pipeline/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

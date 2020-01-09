@@ -82,22 +82,14 @@
               abstract: null
               achievement: null
               iconUrl: null
-              levels:
-                - null
-              roles:
-                - null
-              products:
-                - null
-              units:
-                - null
-                - name: Verwenden des Clusterspeichers
-                  items:
-                    - name: Verwenden von Azure Storage
-                      href: hdinsight-hadoop-use-blob-storage.md
-                    - name: Verwenden von Azure Data Lake Storage Gen2
-                      href: hdinsight-hadoop-use-data-lake-storage-gen2.md
-                    - name: Verwenden von Azure Data Lake Storage Gen1
-                      href: hdinsight-hadoop-use-data-lake-store.md
+        - name: Verwenden des Clusterspeichers
+          items:
+            - name: Verwenden von Azure Storage
+              href: hdinsight-hadoop-use-blob-storage.md
+            - name: Verwenden von Azure Data Lake Storage Gen2
+              href: hdinsight-hadoop-use-data-lake-storage-gen2.md
+            - name: Verwenden von Azure Data Lake Storage Gen1
+              href: hdinsight-hadoop-use-data-lake-store.md
         - name: Erweitern von Clustern
           items:
             - name: Installieren von HDInsight-Apps

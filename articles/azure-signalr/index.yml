@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentation zu Azure SignalR Service
 metadata:
-  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275f
   title: 'Dokumentation: Azure SignalR Service'
   description: 'Hier erfahren Sie, wie Sie eine Echtzeit-Web-App im serverlosen Modus oder Servermodus einfach erstellen und skalieren. Grundlage ist ein Websocket, das zahlreiche Sprachen und Frameworks unterstützt.'
   services: azure-signalr

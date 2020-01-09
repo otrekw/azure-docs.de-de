@@ -84,6 +84,8 @@
       items:
         - name: Transformieren von Daten mit einem Zuordnungsdatenfluss
           href: tutorial-data-flow.md
+        - name: Videotutorials zum Zuordnungsdatenfluss
+          href: data-flow-tutorials.md
         - name: Vorbereiten von Daten mit einem Wrangling-Datenfluss
           href: wrangling-data-flow-tutorial.md
     - name: Externe Transformationen

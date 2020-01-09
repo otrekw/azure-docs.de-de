@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie Ihre dynamischen Azure-Bestände mithilf
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, dynamischer Bestand
 ms.topic: tutorial
 ms.date: 10/23/2019
-ms.openlocfilehash: dea6b47e5e263fdd2e048a0435efbebfa90fe69e
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f159322a19cc79758de33904bbad9dfce32ff7cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442786"
 ---
 # <a name="tutorial-configure-dynamic-inventories-of-your-azure-resources-using-ansible"></a>Tutorial: Konfigurieren von dynamischen Beständen Ihrer Azure-Ressourcen mit Ansible
 
@@ -228,7 +228,7 @@ Das Tag ermöglicht die schnelle und einfache Verwendung von Untergruppen virtue
           become: yes
           tasks:
           - name: install nginx
-            apt: pkg=nginx state=installed
+            apt: pkg=nginx state=present
             notify:
             - start nginx
     
@@ -239,7 +239,7 @@ Das Tag ermöglicht die schnelle und einfache Verwendung von Untergruppen virtue
 
 1. Speichern Sie die Datei, und beenden Sie den Editor.
 
-1. Führen Sie das Playbook mit dem Befehl `ansible-playbook` aus:
+1. Führen Sie das Playbook mithilfe des Befehls `ansible-playbook` aus:
 
    - Ansible < 2.8:
 

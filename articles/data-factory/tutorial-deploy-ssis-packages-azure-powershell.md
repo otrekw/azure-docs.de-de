@@ -14,19 +14,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: ff40867bc1e2778ec6f21f479360866b50d0c184
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f374bd386996cd02ab7e8bff975f757aec1a0bfc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926506"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439391"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory-with-powershell"></a>Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory mit PowerShell
 
 In diesem Tutorial werden die Schritte für die Bereitstellung einer Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) in Azure Data Factory (ADF) beschrieben. Azure-SSIS IR unterstützt die Ausführung von Paketen, die im SSIS-Katalog (SSISDB) bereitgestellt und vom Azure SQL-Datenbank-Server bzw. einer verwalteten Instanz (Projektbereitstellungsmodell) gehostet werden, und von Paketen, die in Dateisystemen/Dateifreigaben/Azure Files (Projektbereitstellungsmodell) bereitgestellt werden. Sobald Azure-SSIS IR bereitgestellt wurde, können Sie vertraute Tools wie SQL Server Data Tools (SSDT)/SQL Server Management Studio (SSMS) und Befehlszeilenprogramme wie `dtinstall`/`dtutil`/`dtexec` verwenden, um Ihre Pakete in Azure bereitzustellen und auszuführen. In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!NOTE]
-> In diesem Artikel wird Azure PowerShell zum Bereitstellen einer Azure-SSIS IR-Instanz verwendet. Informationen zum Bereitstellen einer Azure-SSIS IR-Instanz über das Azure-Portal und die ADF-App finden Sie unter [Tutorial: Bereitstellen von Azure-SSIS IR](tutorial-create-azure-ssis-runtime-portal.md). 
+> In diesem Artikel wird Azure PowerShell zum Bereitstellen einer Azure-SSIS IR-Instanz verwendet. Informationen zum Bereitstellen einer Azure-SSIS IR-Instanz über das Azure-Portal und die ADF-App finden Sie unter [Tutorial: Bereitstellen der Azure-SSIS Integration Runtime in Azure Data Factory](tutorial-create-azure-ssis-runtime-portal.md). 
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.
@@ -150,7 +150,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName $ResourceGroupName -ServerName $S
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden.
+Erstellen Sie mit dem Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md). Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und als Gruppe verwaltet werden.
 
 Wenn die Ressourcengruppe bereits vorhanden ist, müssen Sie diesen Code nicht in das Skript kopieren. 
 
@@ -384,7 +384,7 @@ Informationen finden Sie außerdem in den folgenden Artikeln der SSIS-Dokumentat
 In diesem Tutorial haben Sie Folgendes gelernt: 
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory
+> * Erstellen einer Data Factory.
 > * Erstellen einer Azure SSIS Integration Runtime
 > * Starten der Azure SSIS Integration Runtime
 > * Überprüfen des kompletten Skripts

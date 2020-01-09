@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentation zu virtuellen Computern
 metadata:
-  document_id: na
   title: 'Dokumentation für Azure Virtual Machines: Tutorials, API-Referenz'
   meta.description: 'Learn how to create, deploy, and manage Windows or Linux virtual machines. Tutorials, API references, and other documentation.'
   services: virtual-machines
@@ -111,7 +110,7 @@ sections:
         items:
           - title: Befehlszeile
             html: <p><a href="/cli/azure/vm">Azure-Befehlszeilenschnittstelle</a></p><p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p>
-          - title: Sprachen
+          - title: Languages
             html: '<p><a href="/dotnet/api/microsoft.azure.management.compute">.NET</a></p><p><a href="/java/api">Java</a></p><p><a href="https://azure.microsoft.com/develop/nodejs/#azure-sdk">Node.js</a></p><p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>'
           - title: REST
             html: <p><a href="/rest/api/compute">REST-API-Referenz</a></p>

@@ -71,8 +71,12 @@
       href: howto-develop-solution.md
 - name: Verweis
   items:
-    - name: REST
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/createorupdatemodel'
+    - name: Digitaler Zwilling
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+    - name: Dienst für digitale Zwillinge
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+    - name: Modellrepository für digitale Zwillinge
+      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
     - name: Generieren eines REST-Sicherheitstokens
       href: howto-generate-sas-token.md
 - name: Verwandte Themen

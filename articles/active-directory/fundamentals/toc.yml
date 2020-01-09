@@ -8,12 +8,14 @@
     - name: Neuerungen in Azure Active Directory
       href: whats-new.md
 - name: Schnellstarts
+  expanded: true
   items:
     - name: Zugreifen auf das Portal und Erstellen eines Mandanten
       href: active-directory-access-create-new-tenant.md
     - name: Anzeigen Ihrer Gruppen mit zugewiesenen Mitgliedern
       href: active-directory-groups-view-azure-portal.md
 - name: Konzepte
+  expanded: true
   items:
     - name: Identity Secure Score
       href: identity-secure-score.md
@@ -37,6 +39,8 @@
       href: active-directory-deployment-checklist-p2.md
     - name: Identitätsdatenspeicher für die EU
       href: active-directory-data-storage-eu.md
+    - name: Identitätsdatenspeicher für Australien
+      href: active-directory-data-storage-australia.md
     - name: Neuigkeiten in Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
     - name: Referenz zu Azure AD-Vorgängen
@@ -49,12 +53,12 @@
           href: active-directory-ops-guide-auth.md
         - name: Identitätsgovernance
           href: active-directory-ops-guide-govern.md
-        - name: Vorgänge
+        - name: Operationen (Operations)
           href: active-directory-ops-guide-ops.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   expanded: true
   items:
-    - name: Organisation
+    - name: Organization
       items:
         - name: Registrieren für Azure AD als Organisation
           href: sign-up-organization.md
@@ -97,6 +101,7 @@
         - name: Wiederherstellen eines gelöschten Benutzers
           href: active-directory-users-restore.md
 - name: Ressourcen
+  expanded: true
   items:
     - name: Erhalten von Support für Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md

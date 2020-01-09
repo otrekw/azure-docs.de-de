@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 4e71fc869a08192b756c37e5106568bdd36361bd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926577"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439423"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopieren von Daten aus Azure Blob Storage in eine SQL-Datenbank mithilfe des Tools zum Kopieren von Daten
 
@@ -77,7 +77,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
-1. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen** > **Analytics** > **Data Factory**:
+1. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**:
     
     ![Erstellen einer neuen Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Geben Sie auf der Seite **Neue Data Factory** unter **Name** den Namen **ADFTutorialDataFactory** ein.
@@ -94,7 +94,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
 
     b. Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.
     
-    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).
+    Weitere Informationen zu Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).
 
 1. Wählen Sie unter **Version** die Option **V2**.
 1. Wählen Sie unter **Standort** den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die Datenspeicher (etwa Azure Storage und SQL-Datenbank) und Computeeinheiten (etwa Azure HDInsight), die von der Data Factory genutzt werden, können sich an anderen Standorten und in anderen Regionen befinden.
@@ -110,7 +110,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
 1. Klicken Sie auf der Seite **Erste Schritte** auf die Kachel **Daten kopieren**, um das Tool zum Kopieren von Daten zu starten.
 
     ![Kachel für das Tool zum Kopieren von Daten](./media/doc-common-process/get-started-page.png)
-1. Geben Sie auf der Seite **Eigenschaften** unter **Taskname** den Namen **CopyFromBlobToSqlPipeline** ein. Klicken Sie anschließend auf **Weiter**. Über die Data Factory-Benutzeroberfläche wird eine Pipeline mit dem angegebenen Tasknamen erstellt.
+1. Geben Sie auf der Seite **Eigenschaften** unter **Taskname** den Namen **CopyFromBlobToSqlPipeline** ein. Wählen Sie **Weiter**aus. Über die Data Factory-Benutzeroberfläche wird eine Pipeline mit dem angegebenen Tasknamen erstellt.
 
 1. Führen Sie auf der Seite **Quelldatenspeicher** die folgenden Schritte aus:
 
@@ -130,7 +130,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
 
     b. Klicken Sie auf **Weiter**, um mit dem nächsten Schritt fortzufahren.
 
-1. Auf der Seite **Dateiformateinstellungen** können Sie sehen, dass das Tool die Spalten- und Zeilentrennzeichen automatisch erkennt. Klicken Sie auf **Weiter**. Auf dieser Seite können Sie außerdem eine Vorschau der Daten und das Schema der Eingabedaten anzeigen.
+1. Auf der Seite **Dateiformateinstellungen** können Sie sehen, dass das Tool die Spalten- und Zeilentrennzeichen automatisch erkennt. Wählen Sie **Weiter** aus. Auf dieser Seite können Sie außerdem eine Vorschau der Daten und das Schema der Eingabedaten anzeigen.
 
     ![Dateiformateinstellungen](./media/tutorial-copy-data-tool/file-format-settings-page.png)
 1. Führen Sie auf der Seite **Zieldatenspeicher** die folgenden Schritte aus:
@@ -149,7 +149,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
 
 1. Wählen Sie auf der Seite **Tabellenmapping** die Tabelle **[dbo].[emp]** aus, und klicken Sie dann auf **Weiter**.
 
-1. Auf der Seite **Schemazuordnung** sehen Sie, dass die erste und zweite Spalte in der Eingabedatei den Spalten **FirstName** und **LastName** der Tabelle **emp** zugeordnet werden. Klicken Sie auf **Weiter**.
+1. Auf der Seite **Schemazuordnung** sehen Sie, dass die erste und zweite Spalte in der Eingabedatei den Spalten **FirstName** und **LastName** der Tabelle **emp** zugeordnet werden. Wählen Sie **Weiter** aus.
 
     ![Seite „Schemazuordnung“](./media/tutorial-copy-data-tool/schema-mapping.png)
 1. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**.
@@ -168,7 +168,7 @@ Bereiten Sie Ihre Blob Storage-Instanz und SQL-Datenbank durch Ausführen der fo
 1. Klicken Sie im linken Bereich auf die Registerkarte **Autor**, um in den Bearbeitungsmodus zu wechseln. Sie können die vom Tool erstellten verknüpften Dienste, Datasets und Pipelines mit dem Editor aktualisieren. Ausführliche Informationen zum Bearbeiten dieser Entitäten über die Data Factory-Benutzeroberfläche finden Sie in der [Azure-Portal-Version dieses Tutorials](tutorial-copy-data-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die Pipeline in diesem Beispiel kopiert Daten aus Blob Storage in eine SQL-Datenbank. Es wurde Folgendes vermittelt:
+Die Pipeline in diesem Beispiel kopiert Daten aus Blob Storage in eine SQL-Datenbank. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Data Factory.

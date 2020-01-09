@@ -1,26 +1,17 @@
 ---
-title: Überwachen eines Service Fabric-Clusters in Azure | Microsoft-Dokumentation
+title: Überwachen eines Service Fabric-Clusters in Azure
 description: In diesem Tutorial erfahren Sie, wie Sie einen Cluster überwachen, indem Sie Service Fabric-Ereignisse anzeigen, die EventStore-APIs abfragen, Leistungsindikatoren überwachen und Integritätsberichte anzeigen.
-services: service-fabric
-documentationcenter: .net
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: 63069dcdebf19c64d7bcde298fa234622a6d9a2b
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385276"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376629"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Tutorial: Überwachen eines Service Fabric-Clusters in Azure
 
@@ -50,7 +41,7 @@ In dieser Tutorialserie lernen Sie Folgendes:
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 * Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* Installieren Sie [Azure Powershell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
+* Installieren Sie [Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) oder die [Azure CLI](/cli/azure/install-azure-cli).
 * Erstellen Sie einen sicheren [Windows-Cluster](service-fabric-tutorial-create-vnet-and-windows-cluster.md). 
 * Richten Sie eine [Diagnosesammlung](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configurediagnostics_anchor) für den Cluster ein.
 * Aktivieren Sie den [EventStore-Dienst](service-fabric-tutorial-create-vnet-and-windows-cluster.md#configureeventstore_anchor) im Cluster.

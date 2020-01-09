@@ -56,6 +56,8 @@
           href: how-to-attach-detach-shared-image-gallery.md
         - name: Hinzufügen eines Benutzers als Besitzer zu einem Classroom-Lab
           href: how-to-add-user-lab-owner.md
+        - name: Firewalleinstellungen für Azure Lab Services
+          href: how-to-configure-firewall-settings.md
     - name: Erstellen und Konfigurieren von Classroom-Labs (Kursleiter)
       items:
         - name: Erstellen und Verwalten von Classroom-Labs

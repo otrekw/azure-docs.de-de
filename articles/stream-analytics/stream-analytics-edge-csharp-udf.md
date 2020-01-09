@@ -1,7 +1,6 @@
 ---
 title: 'Tutorial: Schreiben benutzerdefinierter C#-Funktionen für Azure Stream Analytics-Aufträge in Visual Studio (Vorschauversion)'
 description: In diesem Tutorial wird beschrieben, wie Sie benutzerdefinierte C#-Funktionen für Stream Analytics-Aufträge in Visual Studio schreiben.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
@@ -9,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: d600c891f35a0719012707bdc2cb45101e14e090
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1d71f4c5616efb05efe2733c49507b085ca2dcf6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707356"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426295"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Tutorial: Schreiben einer benutzerdefinierten C#-Funktion für einen Azure Stream Analytics-Auftrag (Vorschauversion)
 
@@ -66,7 +65,7 @@ Der von Ihnen erstellte Container wird zum Speichern des kompilierten C#-Pakets 
    |Global Storage Settings Storage Account (Speicherkonto für globale Speichereinstellungen)| <Ihr Speicherkonto>|
    |Custom Code Storage Settings Resource (Ressource für Speichereinstellungen für benutzerdefinierten Code)|Datenquelle aus aktuellem Konto wählen|
    |Custom Code Storage Settings Storage Account (Speicherkonto für Speichereinstellungen für benutzerdefinierten Code)|<Ihr Speicherkonto>|
-   |Custom Code Storage Settings Container (Container für Speichereinstellungen für benutzerdefinierten Code)|< Ihr Speichercontainer >|
+   |Custom Code Storage Settings Container (Container für Speichereinstellungen für benutzerdefinierten Code)|<Ihr Speichercontainer>|
 
 
 ## <a name="write-a-c-udf-with-codebehind"></a>Schreiben einer benutzerdefinierten C#-Datei mit CodeBehind

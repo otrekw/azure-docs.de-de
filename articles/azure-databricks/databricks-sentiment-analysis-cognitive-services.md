@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: ff16458bb853323181ad8006e378a061572db463
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286544"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411131"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Tutorial: Standpunktanalyse für Streamingdaten mit Azure Databricks
 
@@ -36,7 +36,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Anfügen von Bibliotheken für Event Hubs und die Twitter-API
 > * Erstellen eines Cognitive Services-Kontos und Abrufen des Zugriffsschlüssels
 > * Senden von Tweets an Event Hubs
-> * Lesen von Tweets von Event Hubs
+> * Lesen von Tweets aus Event Hubs
 > * Durchführen der Standpunktanalyse für Tweets
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=sparkeventhubs-docs-alehall) erstellen, bevor Sie beginnen.
@@ -77,7 +77,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.        |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
-    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md). |
+    |**Ressourcengruppe**     | Geben Sie an, ob Sie eine neue Ressourcengruppe erstellen oder eine vorhandene Ressourcengruppe verwenden möchten. Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für eine Azure-Lösung enthält. Weitere Informationen finden Sie in der [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md). |
     |**Location**     | Wählen Sie **USA, Osten 2** aus. Informationen zu weiteren verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
     |**Tarif**     |  Wählen Sie zwischen **Standard** und **Premium**. Weitere Informationen zu diesen Tarifen, finden Sie unter [Azure Databricks – Preise](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
@@ -196,10 +196,10 @@ In diesem Tutorial verwenden Sie die [Azure Cognitive Services-Textanalyse-APIs]
 
 In diesem Abschnitt erstellen Sie zwei Notebooks mit den folgenden Namen im Databricks-Arbeitsbereich.
 
-- **SendTweetsToEventHub**: Ein Producer-Notebook zum Abrufen von Tweets von Twitter und Streamen an Event Hubs.
+- **SendTweetsToEventHub**: Ein Producer-Notebook, um Tweets von Twitter abzurufen und an Event Hubs zu streamen.
 - **AnalyzeTweetsFromEventHub**: Ein Consumer-Notebook zum Lesen der Tweets von Event Hubs und Durchführen der Standpunktanalyse.
 
-1. Wählen Sie im linken Bereich die Option **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** und dann **Notebook**.
+1. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** und dann **Notebook**.
 
     ![Erstellen eines Notebooks in Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
@@ -333,7 +333,7 @@ Drücken Sie **UMSCHALT+EINGABE** , um das Notebook auszuführen. Die Ausgabe si
 
 ## <a name="read-tweets-from-event-hubs"></a>Lesen von Tweets aus Event Hubs
 
-Fügen Sie im Notebook **AnalyzeTweetsFromEventHub** den folgenden Code ein, und ersetzen Sie den Platzhalter durch Werte für Ihre zuvor erstellten Azure Event Hubs. Mit diesem Notebook werden die Tweets gelesen, die Sie weiter oben mit dem Notebook **SendTweetsToEventHub** in Event Hubs gestreamt haben.
+Fügen Sie im Notebook **AnalyzeTweetsFromEventHub** den folgenden Code ein, und ersetzen Sie den Platzhalter durch Werte für Ihre zuvor erstellten Azure Event Hubs. Mit diesem Notebook werden die Tweets gelesen, die Sie weiter oben mit dem Notebook **SendTweetsToEventHub** an Event Hubs gestreamt haben.
 
 ```scala
 
@@ -625,7 +625,7 @@ Nach Abschluss des Tutorials können Sie den Cluster beenden. Klicken Sie hierzu
 Wenn Sie den Cluster nicht manuell beenden, wird er automatisch beendet, sofern Sie bei der Erstellung des Clusters das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden) aktiviert haben. Der Cluster wird dann automatisch beendet, wenn er für den angegebenen Zeitraum inaktiv war.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial wurde beschrieben, wie Sie Azure Databricks zum Streamen von Daten in Azure Event Hubs verwenden und die Streamingdaten dann in Echtzeit von Event Hubs lesen. Es wurde Folgendes vermittelt:
+In diesem Tutorial wurde beschrieben, wie Sie Azure Databricks zum Streamen von Daten in Azure Event Hubs verwenden und die Streamingdaten dann in Echtzeit von Event Hubs lesen. Sie haben Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen eines Azure Databricks-Arbeitsbereichs
 > * Erstellen eines Spark-Clusters in Azure Databricks
@@ -634,7 +634,7 @@ In diesem Tutorial wurde beschrieben, wie Sie Azure Databricks zum Streamen von 
 > * Hinzufügen und Anfügen von Bibliotheken für Event Hubs und die Twitter-API
 > * Erstellen eines Microsoft Cognitive Services-Kontos und Abrufen des Zugriffsschlüssels
 > * Senden von Tweets an Event Hubs
-> * Lesen von Tweets von Event Hubs
+> * Lesen von Tweets aus Event Hubs
 > * Durchführen der Standpunktanalyse für Tweets
 
 Fahren Sie mit dem nächsten Tutorial fort, um sich über die Durchführung von Machine Learning-Aufgaben mit Azure Databricks zu informieren.

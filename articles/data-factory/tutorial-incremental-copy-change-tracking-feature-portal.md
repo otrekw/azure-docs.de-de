@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 1b619ca7bb3b095a5707077beb3e0750dee1c2b7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 4f7ad05402745f17ff60dbaab8d736acc8f92196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74923483"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439403"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 
@@ -69,7 +69,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure SQL-Datenbank**. Sie verwenden die Datenbank als den **Quell**-Datenspeicher. Wenn Sie noch nicht über eine Azure SQL-Datenbank verfügen, finden Sie im Artikel [Erstellen einer Azure SQL-Datenbank](../sql-database/sql-database-get-started-portal.md) die Schritte zum Erstellen einer solchen Datenbank.
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto haben, finden Sie im Artikel [Create a storage account (Erstellen eines Speicherkontos)](../storage/common/storage-quickstart-create-account.md) eine Anleitung zum Erstellen eines Azure Storage-Kontos. Erstellen Sie einen Container mit dem Namen **Adftutorial**. 
+* **Azure Storage-Konto**. Sie verwenden den Blob Storage als den **Senken**-Datenspeicher. Wenn Sie kein Azure Storage-Konto besitzen, finden Sie im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-quickstart-create-account.md) Schritte zum Erstellen eines solchen Kontos. Erstellen Sie einen Container mit dem Namen **Adftutorial**. 
 
 ### <a name="create-a-data-source-table-in-your-azure-sql-database"></a>Erstellen Sie eine Datenquelletabelle in Ihrer Azure SQL-Datenbank
 1. Starten Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrer Azure SQL Server-Instanz her. 
@@ -169,11 +169,11 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
       - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
       - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
          
-        Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+        Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 4. Wählen Sie **V2 (Vorschau)** als **Version** aus.
 5. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 6. Wählen Sie die Option **An Dashboard anheften** aus.     
-7. Klicken Sie auf **Create**.      
+7. Klicken Sie auf **Erstellen**.      
 8. Auf dem Dashboard sehen Sie die folgende Kachel mit dem Status: **Deploying data factory** (Data Factory wird bereitgestellt...). 
 
     ![Kachel „Die Data Factory wird bereitgestellt“](media/tutorial-incremental-copy-change-tracking-feature-portal/deploying-data-factory.png)
@@ -181,7 +181,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
    
    ![Data Factory-Startseite](./media/tutorial-incremental-copy-change-tracking-feature-portal/data-factory-home-page.png)
 10. Klicken Sie auf die Kachel **Erstellen und überwachen**, um die Azure Data Factory-Benutzeroberfläche (User Interface, UI) auf einer separaten Registerkarte zu starten.
-11. Wechseln Sie auf der Seite **Erste Schritte** im Bereich links zur Registerkarte **Bearbeiten**, wie in der folgenden Abbildung gezeigt: 
+11. Wechseln Sie im linken Bereich der Seite **Erste Schritte** zur Registerkarte **Bearbeiten**, wie in der folgenden Abbildung gezeigt: 
 
     ![Schaltfläche „Create pipeline“ (Pipeline erstellen)](./media/tutorial-incremental-copy-change-tracking-feature-portal/get-started-page.png)
 
@@ -193,13 +193,13 @@ In diesem Schritt verknüpfen Sie Ihr Azure Storage-Konto mit der Data Factory.
 
 1. Klicken Sie auf **Verbindungen** und dann auf **+ Neu**.
 
-   ![Schaltfläche „Neue Verbindung“](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
+   ![Schaltfläche für eine neue Verbindung](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-connection-button-storage.png)
 2. Wählen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die Option **Azure Blob Storage**, und klicken Sie dann auf **Weiter**. 
 
    ![Auswählen von „Azure Blob Storage“](./media/tutorial-incremental-copy-change-tracking-feature-portal/select-azure-storage.png)
 3. Führen Sie im Fenster **New Linked Service** (Neuer verknüpfter Dienst) die folgenden Schritte aus: 
 
-    1. Geben Sie unter **Name**  den Namen **AzureStorageLinkedService** ein. 
+    1. Geben Sie unter **Name** die Zeichenfolge **AzureStorageLinkedService** ein. 
     2. Wählen Sie unter **Speicherkontoname** Ihr Azure Storage-Konto aus. 
     3. Klicken Sie auf **Speichern**. 
     
@@ -281,10 +281,10 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei de
 
 1. Klicken Sie im Bereich auf der linken Seite auf **+** (Pluszeichen) und dann auf **Pipeline**. 
 
-    ![Menü „Neue Pipeline“](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
+    ![Menü für neue Pipeline](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu.png)
 2. Eine neue Registerkarte zum Konfigurieren der Pipeline wird angezeigt. Außerdem wird die Pipeline in der Strukturansicht angezeigt. Ändern Sie im **Eigenschaftenfenster** den Namen der Pipeline in **FullCopyPipeline**.
 
-    ![Menü „Neue Pipeline“](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
+    ![Menü für neue Pipeline](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-pipeline-name.png)
 3. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Datenfluss**, und ziehen Sie die **Copy**-Aktivität in die Oberfläche des Pipeline-Designers. Legen Sie den Namen auf **FullCopyActivity** fest. 
 
     ![Name für vollständige Copy-Aktivität](./media/tutorial-incremental-copy-change-tracking-feature-portal/full-copy-activity-name.png)
@@ -358,7 +358,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
 
 1. Wechseln Sie auf der Data Factory-Benutzeroberfläche zur Registerkarte **Bearbeiten**. Klicken Sie im Bereich auf der linken Seite auf **+** (Pluszeichen) und dann auf **Pipeline**. 
 
-    ![Menü „Neue Pipeline“](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
+    ![Menü für neue Pipeline](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-pipeline-menu-2.png)
 2. Eine neue Registerkarte zum Konfigurieren der Pipeline wird angezeigt. Außerdem wird die Pipeline in der Strukturansicht angezeigt. Ändern Sie im **Eigenschaftenfenster** den Namen der Pipeline in **IncrementalCopyPipeline**.
 
     ![Pipelinename](./media/tutorial-incremental-copy-change-tracking-feature-portal/incremental-copy-pipeline-name.png)
@@ -414,10 +414,10 @@ In diesem Schritt erstellen Sie eine Pipeline mit den folgenden Aktivitäten und
     2. Wählen Sie die Option **Import parameter** (Importparameter). 
     3. Geben Sie im Abschnitt **Parameter der gespeicherten Prozedur** die folgenden Werte für den Parameter an: 
 
-        | NAME | type | Wert | 
+        | Name | type | value | 
         | ---- | ---- | ----- | 
         | CurrentTrackingVersion | Int64 | @{activity('LookupCurrentChangeTrackingVersionActivity').output.firstRow.CurrentChangeTrackingVersion} | 
-        | TableName | Zeichenfolge | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
+        | TableName | String | @{activity('LookupLastChangeTrackingVersionActivity').output.firstRow.TableName} | 
     
         ![Stored Procedure-Aktivität – Parameter](./media/tutorial-incremental-copy-change-tracking-feature-portal/stored-procedure-parameters.png)
 14. **Verbinden Sie die Copy-Aktivität mit der Stored Procedure-Aktivität**. Ziehen Sie die **grüne** Schaltfläche, die der Copy-Aktivität zugeordnet ist, auf die Stored Procedure-Aktivität. 

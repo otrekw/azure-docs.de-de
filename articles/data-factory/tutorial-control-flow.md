@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 277616d9fcd15affc7ddc8ede5d9af3ff68c62f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 31ae3483ca7cefbb65726f976244d582f1587aaf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439454"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 
@@ -453,9 +453,9 @@ In dieser Pipeline verwenden Sie die folgenden Funktionen:
 
 Der erste Abschnitt unseres Pipelinecodes definiert Parameter.
 
-* `sourceBlobContainer`. Das Quell-Blobdataset verwendet diesen Parameter in der Pipeline.
-* `sinkBlobContainer`. Das Senken-Blobdataset verwendet diesen Parameter in der Pipeline.
-* `receiver`. Die beiden Webaktivitäten in der Pipeline, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, verwenden diesen Parameter.
+* [https://login.microsoftonline.com/consumers/](`sourceBlobContainer`). Das Quell-Blobdataset verwendet diesen Parameter in der Pipeline.
+* [https://login.microsoftonline.com/consumers/](`sinkBlobContainer`). Das Senken-Blobdataset verwendet diesen Parameter in der Pipeline.
+* [https://login.microsoftonline.com/consumers/](`receiver`). Die beiden Webaktivitäten in der Pipeline, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, verwenden diesen Parameter.
 
 ```csharp
 Parameters = new Dictionary<string, ParameterSpecification>
@@ -608,10 +608,7 @@ Creating linked service AzureStorageLinkedService...
 {
   "type": "AzureStorage",
   "typeProperties": {
-    "connectionString": {
-      "type": "SecureString",
-      "value": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
-    }
+    "connectionString": "DefaultEndpointsProtocol=https;AccountName=***;AccountKey=***"
   }
 }
 Creating dataset SourceStorageDataset...

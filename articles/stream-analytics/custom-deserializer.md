@@ -1,19 +1,18 @@
 ---
 title: 'Tutorial: Benutzerdefinierte .NET-Deserialisierer für Azure Stream Analytics-Cloudaufträge'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Visual Studio einen benutzerdefinierten .NET-Deserialisierer für einen Azure Stream Analytics-Cloudauftrag erstellen.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 05/06/2019
-ms.openlocfilehash: f5fa0a4398c904113dbce5d80844b42b6e775df0
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1fffeec1434cb066487bf383589554edec2e6a86
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74702440"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443693"
 ---
 # <a name="tutorial-custom-net-deserializers-for-azure-stream-analytics"></a>Tutorial: Benutzerdefinierte .NET-Deserialisierer für Azure Stream Analytics
 

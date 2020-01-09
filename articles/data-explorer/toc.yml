@@ -32,7 +32,9 @@
       href: ingest-data-overview.md
     - name: Übersicht über die Datenvisualisierung
       href: viz-overview.md
-- name: Anleitungen
+    - name: Sicherheitsübersicht
+      href: security.md
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Erstellen eines Clusters und einer Datenbank
       items:
@@ -94,7 +96,7 @@
           href: ingest-data-logstash.md
         - name: Kopieren von Daten mit Azure Data Factory
           href: data-factory-load-data.md
-    - name: Abfragen von Daten
+    - name: Daten abfragen
       items:
         - name: Schreiben von Abfragen
           href: write-queries.md
@@ -126,7 +128,7 @@
               href: power-bi-connector.md
             - name: Importierte Abfrage
               href: power-bi-imported-query.md
-            - name: SQL-Abfrage
+            - name: SQL-Abfrage (SQL query)
               href: power-bi-sql-query.md
         - name: Excel
           items:
@@ -144,6 +146,18 @@
           href: sisense.md
         - name: Redash
           href: redash.md
+    - name: Sicher
+      items:
+        - name: Verwalten der Clustersicherheit
+          href: manage-cluster-security.md
+        - name: Konfigurieren von verwalteten Identitäten
+          href: managed-identities.md
+        - name: Konfigurieren von kundenseitig verwalteten Schlüsseln
+          items:
+            - name: 'C#'
+              href: customer-managed-keys-csharp.md
+            - name: Azure Resource Manager-Vorlage
+              href: customer-managed-keys-resource-manager.md
     - name: Verwalten
       items:
         - name: Cluster
@@ -154,8 +168,6 @@
               href: manage-cluster-horizontal-scaling.md
             - name: Verwalten von vertikaler Clusterskalierung
               href: manage-cluster-vertical-scaling.md
-            - name: Verwalten der Clustersicherheit
-              href: manage-cluster-security.md
             - name: Überprüfen der Clusterintegrität
               href: check-cluster-health.md
         - name: Datenbank

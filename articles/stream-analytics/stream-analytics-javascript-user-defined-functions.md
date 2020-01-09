@@ -1,7 +1,6 @@
 ---
 title: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
 description: In diesem Tutorial führen Sie erweiterte Abfragemechanismen mit benutzerdefinierten JavaScript-Funktionen aus.
-services: stream-analytics
 author: rodrigoamicrosoft
 ms.author: rodrigoa
 ms.service: stream-analytics
@@ -9,12 +8,12 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.openlocfilehash: 9ddf8a2a11cb863a0016726074c5279bfde96959
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: f82add78eef418e3644a5961d984708d3721a8dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72990226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426065"
 ---
 # <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Tutorial: Azure Stream Analytics – benutzerdefinierte JavaScript-Funktionen
  
@@ -102,10 +101,10 @@ Es gibt Unterschiede zwischen den Typen, die in der Stream Analytics-Abfragespra
 
 Stream Analytics | JavaScript
 --- | ---
-bigint | Number (in JavaScript können nur ganze Zahlen bis genau 2^53 dargestellt werden)
+BIGINT | Number (in JavaScript können nur ganze Zahlen bis genau 2^53 dargestellt werden)
 Datetime | Date (JavaScript unterstützt nur Millisekunden)
 double | Number
-nvarchar(MAX) | Zeichenfolge
+nvarchar(Max) | String
 Datensatz | Object
 Array | Array
 NULL | Null
@@ -118,7 +117,7 @@ JavaScript | Stream Analytics
 --- | ---
 Number | bigint (wenn die Zahl gerundet ist und zwischen long.MinValue und long.MaxValue liegt, andernfalls double)
 Date | Datetime
-Zeichenfolge | nvarchar(MAX)
+String | nvarchar(Max)
 Object | Datensatz
 Array | Array
 Null, Undefined | NULL

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 2cb07a94b2ae85cc0755e1e7069a76e1ef2a5252
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 233d8f345eceb188fcc849457c5243a3c64aaec2
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977334"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548852"
 ---
 # <a name="tutorial-use-a-device-capability-model-to-create-an-iot-plug-and-play-device-and-connect-it-to-your-iot-central-application"></a>Tutorial: Verwenden eines Gerätefunktionsmodells zum Erstellen eines IoT Plug & Play-Geräts und Verbinden mit Ihrer IoT Central-Anwendung
 
@@ -30,14 +30,14 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Arbeiten Sie die Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung (Previewfunktionen)](./quick-deploy-iot-central.md) durch, um mit der Vorlage **Benutzerdefinierte App > Vorschauanwendung** eine IoT Central-Anwendung zu erstellen.
+Arbeiten Sie die Schnellstartanleitung [Erstellen einer Azure IoT Central-Anwendung (Previewfunktionen)](./quick-deploy-iot-central.md) durch, um mit der Vorlage **Benutzerdefinierte App > Vorschauanwendung** eine IoT Central-Anwendung zu erstellen.
 
 Für dieses Tutorials müssen Sie auf Ihrem lokalen Computer folgende Software installieren:
 
 * [Buildtools für Visual Studio](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) mit Workloads für **C++-Buildtools** und **NuGet-Paket-Manager-Komponenten**. Oder Sie haben bereits [Visual Studio (Community, Professional oder Enterprise)](https://visualstudio.microsoft.com/downloads/) 2019, 2017 oder 2015 mit denselben Workloads installiert.
 * [Git](https://git-scm.com/download/).
 * [CMake](https://cmake.org/download/): Wählen Sie beim Installieren von **CMake** die Option **Add CMake to the system PATH** (CMake dem Systempfad hinzufügen).
-* [Visual Studio Code](https://code.visualstudio.com/).
+* [Visual Studio Code](https://code.visualstudio.com/)
 * [Node.js](https://nodejs.org/)
 * Hilfsprogramm `dps-keygen`:
 
@@ -117,7 +117,7 @@ In diesem Tutorial verwenden Sie das öffentliche Gerätefunktionsmodell für ei
 
 Da Sie jetzt über das Gerätefunktionsmodell **MXChip IoT DevKit** und die zugeordneten Schnittstellen verfügen, können Sie den Gerätecode generieren, mit dem das Modell implementiert wird. Generieren Sie wie folgt den C-Code-Stub in VS Code:
 
-1. Drücken Sie bei geöffnetem Ordner mit den Gerätefunktionsmodell-Dateien die Tastenkombination **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie **IoT Plug & Play** ein, und wählen Sie **Generate Device Code Stub** (Gerätecode-Stub generieren).
+1. Drücken Sie bei geöffnetem Ordner mit den DCM-Dateien die Tastenkombination **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen. Geben Sie **IoT Plug & Play** ein, und wählen Sie **Gerätecodestub generieren** aus.
 
     > [!NOTE]
     > Wenn Sie das Hilfsprogramm „IoT Plug & Play-Codegenerator“ zum ersten Mal verwenden, dauert der Download einige Sekunden.
@@ -166,10 +166,10 @@ Sie verwenden das Geräte-SDK, um den generierten Gerätecode-Stub zu erstellen.
     cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
     ```
 
-1. Nachdem der Buildvorgang erfolgreich abgeschlossen wurde, können Sie Ihre Anwendung über die Eingabeaufforderung ausführen. Ersetzen Sie `<scopeid>` und `<devicekey>` durch die zuvor notierten Werte:
+1. Nachdem der Buildvorgang erfolgreich abgeschlossen wurde, können Sie Ihre Anwendung über die Eingabeaufforderung ausführen. Ersetzen Sie `<scopeid>` und `<primarykey>` durch die zuvor notierten Werte:
 
     ```cmd
-    .\Release\devkit_device.exe mxchip-001 <scopeid> <devicekey>
+    .\Release\devkit_device.exe mxchip-001 <scopeid> <primarykey>
     ```
 
 1. Die Geräteanwendung beginnt mit dem Senden von Daten an IoT Hub. Manchmal wird der Fehler `Error registering device for DPS` angezeigt, wenn Sie den vorherigen Befehl zum ersten Mal ausführen. Wenn dieser Fehler angezeigt wird, wiederholen Sie den Befehl.

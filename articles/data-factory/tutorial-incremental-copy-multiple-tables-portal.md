@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/20/2018
-ms.openlocfilehash: e3ccc5a48251af181983624f0c8d0eed68c241da
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 2c89b53d66b93ff38a7cff07b2889faf8eda24ce
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926543"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75439292"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 
@@ -231,7 +231,7 @@ END
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 
 1. Starten Sie den Webbrowser **Microsoft Edge** oder **Google Chrome**. Die Data Factory-Benutzeroberfläche wird zurzeit nur in den Webbrowsern Microsoft Edge und Google Chrome unterstützt.
-2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen** > **Analytics** > **Data Factory**: 
+2. Klicken Sie im Menü auf der linken Seite auf **Ressource erstellen** > **Analytics** > **Data Factory**: 
    
    ![Auswählen von „Data Factory“ im Bereich „Neu“](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -246,10 +246,10 @@ END
      
     - Wählen Sie die Option **Use existing**(Vorhandene verwenden) und dann in der Dropdownliste eine vorhandene Ressourcengruppe. 
     - Wählen Sie **Neu erstellen**, und geben Sie den Namen einer Ressourcengruppe ein.   
-    Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+    Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
 6. Wählen Sie **V2** als **Version** aus.
 7. Wählen Sie den **Standort** für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
-8. Klicken Sie auf **Create**.      
+8. Klicken Sie auf **Erstellen**.      
 9. Nach Abschluss der Erstellung wird die Seite **Data Factory** wie in der Abbildung angezeigt.
    
    ![Data Factory-Startseite](./media/doc-common-process/data-factory-home-page.png)
@@ -295,7 +295,7 @@ In diesem Schritt verknüpfen Sie die lokale SQL Server-Datenbank mit der Data F
     1. Geben Sie unter **Servername** den Namen Ihres Computers ein, auf dem sich die SQL Server-Datenbank befindet.
     1. Geben Sie als **Datenbankname** den Namen der Datenbank Ihrer SQL Server-Instanz an, die über die Quelldaten verfügt. Während der Erfüllung der Voraussetzungen haben Sie eine Tabelle erstellt und Daten in diese Datenbank eingefügt. 
     1. Wählen Sie unter **Authentifizierungstyp** den **Typ der Authentifizierung** aus, den Sie zum Herstellen der Verbindung mit der Datenbank verwenden möchten. 
-    1. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die SQL Server-Datenbank hat. Wenn Sie im Benutzerkonto- oder Servernamen einen Schrägstrich (`\`) verwenden müssen, verwenden Sie das Escapezeichen (`\`). Ein Beispiel ist `mydomain\\myuser`.
+    1. Geben Sie unter **Benutzername** den Namen des Benutzers ein, der Zugriff auf die SQL Server-Datenbank hat. Wenn Sie im Benutzerkonto- oder Servernamen einen Schrägstrich (`\`) verwenden müssen, verwenden Sie das Escapezeichen (`\`). z. B. `mydomain\\myuser`.
     1. Geben Sie unter **Kennwort** das **Kennwort** für den Benutzer ein. 
     1. Klicken Sie auf **Verbindung testen**, um zu testen, ob für die Data Factory eine Verbindung mit Ihrer SQL Server-Datenbank hergestellt werden kann. Beheben Sie alle Fehler, bis die Verbindung erfolgreich hergestellt wird. 
     1. Klicken Sie auf **Fertig stellen**, um den verknüpften Dienst zu speichern.
@@ -446,7 +446,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
         ![Copy-Aktivität – Quelleinstellungen](./media/tutorial-incremental-copy-multiple-tables-portal/copy-source-settings.png)
 1. Wechseln Sie zur Registerkarte **Senke**, und wählen Sie unter **Sink Dataset** (Senkendataset) die Option **SinkDataset**. 
         
-1. Führen Sie folgende Schritte aus:
+1. Führen Sie die folgenden Schritte aus:
 
     1. Geben Sie in den **Dataseteigenschaften** für den Parameter **SinkTableName** Folgendes ein: `@{item().TABLE_NAME}`.
     1. Geben Sie für die Eigenschaft **Stored Procedure Name** die Zeichenfolge `@{item().StoredProcedureNameForMergeOperation}` ein.
@@ -467,10 +467,10 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     1. Wählen Sie die Option **Import parameter** (Importparameter). 
     1. Geben Sie die folgenden Werte für die Parameter an: 
 
-        | NAME | type | Wert | 
+        | Name | type | value | 
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
-        | TableName | Zeichenfolge | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
+        | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)
 1. Wählen Sie zum Veröffentlichen der erstellten Entitäten im Data Factory-Dienst **Alle veröffentlichen** aus. 
@@ -605,7 +605,7 @@ VALUES
 
 1. Wechseln Sie im linken Bereich zur Registerkarte **Überwachen**. Sie können die Pipelineausführung anzeigen, die vom **manuellen Trigger** ausgelöst wird. Klicken Sie auf die Schaltfläche **Aktualisieren**, um die Liste zu aktualisieren. Mit den Links in der Spalte **Aktionen** können Sie Aktivitätsausführungen anzeigen, die der Pipelineausführung zugeordnet sind, und die Pipeline erneut ausführen. 
 
-1. Klicken Sie in der Spalte **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen). Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
+1. Klicken Sie in der Spalte **Aktionen** auf den Link **Aktivitätsausführungen anzeigen**. Es werden alle Aktivitätsausführungen angezeigt, die der ausgewählten Pipelineausführung zugeordnet sind. 
 
 ## <a name="review-the-final-results"></a>Überprüfen der Endergebnisse
 Führen Sie in SQL Server Management Studio die folgenden Abfragen für die SQL-Zieldatenbank aus, um sicherzustellen, dass die aktualisierten bzw. neuen Daten aus den Quelltabellen in die Zieltabellen kopiert wurden. 

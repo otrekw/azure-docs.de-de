@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: 6c4a99367c7fc6a864f6a16bc614e4c10663d0ff
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0f1140bbefc7508666e763fcd4f1a04ba48cdfdd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837178"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75354940"
 ---
 # <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Tutorial: Entwerfen einer relationalen Datenbank in einer Einzeldatenbank in Azure SQL-Datenbank mit C&#x23; und ADO.NET
 
@@ -40,7 +40,7 @@ Eine Installation von [Visual Studio 2019](https://www.visualstudio.com/download
 
 ## <a name="create-a-blank-single-database"></a>Erstellen einer leeren Einzeldatenbank
 
-Eine Einzeldatenbank in Azure SQL-Datenbank wird mit einer definierten Gruppe von Compute- und Speicherressourcen erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) erstellt und mit einem [Datenbankserver](sql-database-servers.md) verwaltet.
+Eine Einzeldatenbank in Azure SQL-Datenbank wird mit einer definierten Gruppe von Compute- und Speicherressourcen erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) erstellt und mit einem [Datenbankserver](sql-database-servers.md) verwaltet.
 
 Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstellen:
 
@@ -51,7 +51,7 @@ Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstell
 
 3. Geben Sie die folgenden Informationen in das **SQL-Datenbank**-Formular ein, wie in der obigen Abbildung dargestellt:
 
-    | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Datenbankname** | *yourDatabase* | Gültige Datenbanknamen finden Sie unter [Datenbankbezeichner](/sql/relational-databases/databases/database-identifiers). |
     | **Abonnement** | *yourSubscription*  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um eine leere Einzeldatenbank zu erstell
 
 4. Klicken Sie auf **Server**, um einen vorhandenen Datenbankserver zu verwenden oder um einen neuen Datenbankserver zu erstellen und zu konfigurieren. Wählen Sie einen vorhandenen Server aus, oder klicken Sie auf **Neuen Server erstellen**, und geben Sie im Formular **Neuer Server** die folgenden Informationen ein:
 
-    | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+    | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
     | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Datenbankbezeichner](/sql/relational-databases/databases/database-identifiers). |
@@ -114,13 +114,13 @@ Die IP-Adresse kann nun die IP-Firewall passieren. Nun können Sie mit SQL Serve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden grundlegende Datenbankaufgaben behandelt, z.B. das Erstellen einer Datenbank und von Tabellen, das Herstellen einer Verbindung mit der Datenbank, das Laden von Daten und das Ausführen von Abfragen. Es wurde Folgendes vermittelt:
+In diesem Tutorial wurden grundlegende Datenbankaufgaben behandelt, z.B. das Erstellen einer Datenbank und von Tabellen, das Herstellen einer Verbindung mit der Datenbank, das Laden von Daten und das Ausführen von Abfragen. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Datenbank
 > * Einrichten einer Firewallregel
 > * Herstellen einer Verbindung mit der Datenbank mit [Visual Studio und C#](sql-database-connect-query-dotnet-visual-studio.md)
-> * Erstellen von Tabellen.
+> * Erstellen von Tabellen
 > * Einfügen, Aktualisieren, Löschen und Abfragen von Daten
 
 Im nächsten Tutorial erhalten Sie Informationen zur Datenmigration.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: 1b9d943f540a0132abc6a70eba888aa5f8f46093
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d167a157935c6d51c025d2fbb11586343a2ef3f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225217"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453518"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal
 
@@ -64,11 +64,11 @@ Erstellen Sie zunächst ein virtuelles Netzwerk (VNET). Erstellen Sie im VNET zw
 1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
    
    Stellen Sie sicher, dass Folgendes ausgewählt ist:
-   - **Virtuelles Netzwerk**: **MyVNet**
+   - **Virtuelles Netzwerk:** **MyVNet**
    - **Subnetz**: **MyBackendSubnet**
    
    Unter **Netzwerksicherheitsgruppe**:
-   1. Wählen Sie **Advanced** (Erweitert). 
+   1. Wählen Sie **Erweitert**aus. 
    1. Öffnen Sie die Dropdownliste **Netzwerksicherheitsgruppe konfigurieren**, und wählen Sie **Keine**. 
    
 1. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest.
@@ -89,12 +89,12 @@ Erstellen Sie einen internen Load Balancer im Tarif „Basic“, indem Sie das P
    
 2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
-    | Einstellung                 | Wert                                              |
+    | Einstellung                 | value                                              |
     | ---                     | ---                                                |
     | Subscription               | Wählen Sie Ihr Abonnement aus.    |    
     | Resource group         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
-    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Name                   | *myLoadBalancer*                                   |
+    | Region         | Wählen Sie **USA, Osten 2** aus.                                        |
     | type          | Wählen Sie **Intern** aus.                                        |
     | SKU           | Wählen Sie **Basic** aus.                          |
     | Virtuelles Netzwerk           | Wählen Sie *MyVNet* aus.                          |    
@@ -150,8 +150,8 @@ Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Inte
 1. Geben Sie auf der Seite **Integritätstest hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
    
    - **Name**: Geben Sie *MyHealthProbe* ein.
-   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
-   - **Port**: Geben Sie *80* ein. 
+   - **Protokoll:** Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
+   - **Port:** Geben Sie *80* ein. 
    - **Pfad**: Übernehmen Sie */* als Standard-URI. Sie können diesen Wert durch einen beliebigen anderen URI ersetzen. 
    - **Intervall**: Geben Sie *15* ein. Das Intervall ist die Anzahl von Sekunden zwischen Testversuchen.
    - **Fehlerschwellenwert**: Geben Sie *2* ein. Dieser Wert gibt die Anzahl aufeinander folgender Testfehler an, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.
@@ -176,8 +176,8 @@ Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Fron
    
    - **Name**: Geben Sie *MyLoadBalancerRule* ein.
    - **Front-End-IP-Adresse**: Geben Sie *LoadBalancerFrontEnd* ein (sofern noch nicht vorhanden).
-   - **Protokoll**: Wählen Sie **TCP** aus.
-   - **Port**: Geben Sie *80* ein.
+   - **Protokoll:** Wählen Sie **TCP** aus.
+   - **Port:** Geben Sie *80* ein.
    - **Back-End-Port**: Geben Sie *80* ein.
    - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
    - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 

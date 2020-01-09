@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
 ms.custom: mvc
-ms.openlocfilehash: 70ecc5dc95aced3eb901f24910339eb059ba0c17
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d56b81dbe8c78b9b48f122d79f4567d0b0f42e27
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900471"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398536"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -32,7 +32,7 @@ Azure Application Insights erfasst Telemetriedaten Ihrer Anwendung, um Laufzeita
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
@@ -64,7 +64,7 @@ Application Insights erfasst alle Fehler in Ihrer Anwendung und ermöglicht Ihne
 
     ![Beispiele für Anforderungsfehler](media/tutorial-runtime-exceptions/failed-requests-search.png)
 
-6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. Weitere Informationen zu der neuen Oberfläche finden Sie [hier](../../azure-monitor/app/transaction-diagnostics.md). Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
+6. Die Details des Anforderungsfehlers enthalten ein Gantt-Diagramm, dem Sie entnehmen können, dass bei dieser Transaktion zwei Abhängigkeitsfehler aufgetreten sind, die über 50 Prozent der Gesamtdauer der Transaktion ausgemacht haben. Auf dieser Oberfläche werden alle Telemetriedaten für die Komponenten einer verteilten Anwendung dargestellt, die mit dieser Vorgangs-ID zusammenhängen. [Weitere Informationen zur neuen Oberfläche](../../azure-monitor/app/transaction-diagnostics.md) Sie können auf beliebige Elemente klicken, um auf der rechten Seite entsprechende Details anzuzeigen. 
 
     ![Details zu Anforderungen mit Fehlern](media/tutorial-runtime-exceptions/failed-request-details.png)
 

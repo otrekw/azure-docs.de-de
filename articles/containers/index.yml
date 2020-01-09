@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Azure für Container
 metadata:
-  document_id: null
   title: 'Azure für Container: Schnellstartanleitungen, Tutorials, API-Referenz'
   description: 'Schnellstartanleitungen, Tutorials und Tools für Container erleichtern die ersten Schritte bei der Verwaltung und Bereitstellung von Container-Apps mit Azure.'
   keywords: 'Azure, Container, Docker, API, Kubernetes'

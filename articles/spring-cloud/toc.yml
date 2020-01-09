@@ -34,6 +34,8 @@
       href: spring-cloud-tutorial-bind-redis.md
     - name: Binden Ihrer Anwendung an Azure MySQL
       href: spring-cloud-tutorial-bind-mysql.md
+    - name: Bereitstellen von Apps in Azure Spring Cloud mithilfe von Jenkins und der Azure-Befehlszeilenschnittstelle
+      href: /jenkins/tutorial-jenkins-deploy-cli-spring-cloud-service
 - name: Konzepte
   items:
     - name: Grundlegendes zu Azure Spring Cloud-Kontingenten und -Grenzwerten
@@ -42,7 +44,7 @@
       href: spring-cloud-concept-metrics.md
     - name: Plan der Notfallwiederherstellung
       href: disaster-recovery.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: 'Gewusst wie: Starten, Beenden und Löschen einer Azure Spring Cloud-Anwendung'
       href: spring-cloud-howto-start-stop-delete.md

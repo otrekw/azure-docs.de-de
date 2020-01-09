@@ -2,7 +2,6 @@
 documentType: LandingData
 title: Dokumentation für Azure Container Service mit DC/OS und Swarm
 metadata:
-  document_id: null
   title: 'Dokumentation für Azure Container Service mit DC/OS und Swarm – Tutorials, API-Referenz | Microsoft-Dokumentation'
   meta.description: 'Azure Container Service allows you to quickly deploy a production ready DC/OS or Docker Swarm cluster. Learn how to use Azure Container Service with these quickstarts, tutorials, and samples.'
   services: container-service
