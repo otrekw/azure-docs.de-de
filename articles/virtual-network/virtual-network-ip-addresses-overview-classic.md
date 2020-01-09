@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7b197e1acf696c2ae6e919ee2eddacfb82ac3802
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058925"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646777"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden (klassisch) in Azure
 Sie können Azure-Ressourcen IP-Adressen zuweisen, um die Kommunikation mit anderen Azure-Ressourcen, Ihrem lokalen Netzwerk und dem Internet zu ermöglichen. In Azure können zwei Arten von IP-Adressen verwendet werden: öffentliche und private.
@@ -132,7 +132,7 @@ Beim Erstellen einer VM wird den von Azure verwalteten DNS-Servern eine Hostname
 
 Bei einem *eigenständigen* Clouddienst können nur die Hostnamen der VMs/Rolleninstanzen innerhalb des gleichen Clouddiensts aufgelöst werden. Bei einem Clouddienst innerhalb eines VNets können die Hostnamen aller VMs/Rolleninstanzen innerhalb des VNets aufgelöst werden.
 
-### <a name="internal-load-balancers-ilb--application-gateways"></a>Interner Lastenausgleich (Internal Load Balancer, ILB) und Anwendungsgateways
+### <a name="internal-load-balancers-ilb--application-gateways"></a>Interne Load Balancer (ILB) und Anwendungsgateways
 Sie können der **Front-End**-Konfiguration eines [Azure-ILBs](../load-balancer/load-balancer-internal-overview.md) oder eines [Azure Application Gateways](../application-gateway/application-gateway-introduction.md) eine private IP-Adresse zuweisen. Diese private IP-Adresse fungiert als interner Endpunkt und steht nur den Ressourcen innerhalb des entsprechenden virtuellen Netzwerks (VNet) und der damit verbundenen Remotenetzwerke zur Verfügung. Der Front-End-Konfiguration kann eine dynamische oder eine statische private IP-Adresse zugewiesen werden. Für Multi-VIP-Szenarien können auch mehrere private IP-Adressen zugewiesen werden.
 
 ### <a name="at-a-glance"></a>Auf einen Blick
@@ -155,7 +155,7 @@ Folgende Tabelle zeigt die Einschränkungen für die IP-Adressierung in Azure ge
 | Öffentliche VIP-Adressen pro Bereitstellung (Clouddienst) |5 |an den Support wenden |
 | Private VIP-Adressen (ILB) pro Bereitstellung (Clouddienst) |1 |1 |
 
-Lesen Sie unbedingt alle Informationen zu den [Netzwerkeinschränkungen](../azure-subscription-service-limits.md#networking-limits) in Azure.
+Lesen Sie unbedingt alle Informationen zu den [Netzwerkeinschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) in Azure.
 
 ## <a name="pricing"></a>Preise
 In den meisten Fällen sind öffentliche IP-Adressen kostenlos. Es wird eine Schutzgebühr für die Verwendung zusätzlicher und/oder statischer öffentlicher IP-Adressen erhoben. Informieren Sie sich unbedingt über die [Preisstruktur für öffentliche IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses/).

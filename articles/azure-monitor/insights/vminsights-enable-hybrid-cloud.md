@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs 
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/15/2019
-ms.openlocfilehash: e9e5504125920cedaf383f8fa4299a4b1b1d60ed
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 40d89dd675e063283d1ed90cf145575b8164e4e5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553869"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75400689"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-for-a-hybrid-environment"></a>Aktivieren von Azure Monitor für VMs (Vorschauversion) für eine Hybridumgebung
 
@@ -69,7 +69,7 @@ Der Dependency-Agent wird auf Linux-Servern mit *InstallDependencyAgent-Linux64.
 | Parameter | BESCHREIBUNG |
 |:--|:--|
 | -help | Ruft eine Liste der Befehlszeilenoptionen ab. |
-| -s | Führt eine automatische Installation ohne Benutzereingaben aus. |
+| -S | Führt eine automatische Installation ohne Benutzereingaben aus. |
 | --check | Überprüft Berechtigungen und das Betriebssystem, ohne den Agent zu installieren. |
 
 Um das Installationsprogramm beispielsweise mit dem Parameter `-help` auszuführen, geben Sie **InstallDependencyAgent-Linux64.bin -help** ein.
@@ -232,7 +232,7 @@ Wenn die Installation des Dependency-Agents erfolgreich war, der Computer jedoch
 
 1. Wurde der Dependency-Agent erfolgreich installiert? Überprüfen Sie, ob der Dienst installiert wurde und ausgeführt wird.
 
-    **Windows:** Suchen Sie nach dem Dienst „Microsoft Dependency-Agent“. 
+    **Windows**: Suchen Sie nach dem Dienst „Microsoft Dependency-Agent“. 
 
     **Linux:** Suchen Sie nach dem laufenden Prozess „microsoft-dependency-agent“.
 

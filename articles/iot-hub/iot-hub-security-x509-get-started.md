@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 32219eeaee7980b685ac3453c6af3beff716abe2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 968241eff1bcab449f9a4def7a394a508461ec95
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457025"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub
 
@@ -83,7 +83,7 @@ Um das X.509-Gerät zu authentifizieren, müssen Sie das Gerät zuerst mit dem C
 
 Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ihren IoT Hub registrierten X.509-Geräts erstellen. Wir senden Temperatur- und Luftfeuchtigkeitswerte vom simulierten Gerät an Ihren Hub. In diesem Tutorial wird nur die Geräteanwendung erstellt. Es bleibt den Lesern überlassen, als Übung die IoT Hub-Dienstanwendung zu erstellen, die eine Antwort auf die vom simulierten Gerät gesendeten Ereignisse sendet. Die C#-Anwendung setzt voraus, dass Sie die Schritte unter [Managing test CA certificates for samples and tutorials (Verwalten von Test-ZS-Zertifikaten für Beispiele und Tutorials)](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) ausgeführt haben.
 
-1. Öffnen Sie Visual Studio, wählen Sie **Neues Projekt erstellen** und dann die Projektvorlage **Konsolen-App (.NET Framework)** aus. Klicken Sie auf **Weiter**.
+1. Öffnen Sie Visual Studio, wählen Sie **Neues Projekt erstellen** und dann die Projektvorlage **Konsolen-App (.NET Framework)** aus. Wählen Sie **Weiter** aus.
 
 1. Benennen Sie in **Neues Projekt konfigurieren** das Projekt mit *SimulateX509Device*, und wählen Sie **Erstellen** aus.
 
@@ -99,7 +99,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
 1. Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
 
-    ```CSharp
+    ```csharp
         using Microsoft.Azure.Devices.Client;
         using Microsoft.Azure.Devices.Shared;
         using System.Security.Cryptography.X509Certificates;
@@ -107,7 +107,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
 1. Fügen Sie der **Program**-Klasse die folgenden Felder hinzu:
 
-    ```CSharp
+    ```csharp
         private static int MESSAGE_COUNT = 5;
         private const int TEMPERATURE_THRESHOLD = 30;
         private static String deviceId = "<your-device-id>";
@@ -120,7 +120,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
 1. Fügen Sie die folgende Funktion zum Erstellen von Zufallszahlen für Temperatur- und Luftfeuchtigkeitswerte und Senden dieser Werte an den Hub hinzu:
 
-    ```CSharp
+    ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
     {
         string dataBuffer;
@@ -142,7 +142,7 @@ Als Nächstes erfahren Sie, wie Sie eine C#-Anwendung zum Simulieren des für Ih
 
 1. Fügen Sie schließlich der **Main**-Funktion die folgenden Codezeilen hinzu, und ersetzen Sie dabei die Platzhalter _device-id_, _your-iot-hub-name_ und _absolute-path-to-your-device-pfx-file_ wie für das Setup erforderlich.
 
-    ```CSharp
+    ```csharp
     try
     {
         var cert = new X509Certificate2(@"<absolute-path-to-your-device-pfx-file>", "1234");

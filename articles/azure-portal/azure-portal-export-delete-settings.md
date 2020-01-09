@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.author: kfollis
-ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: mblythe
+ms.openlocfilehash: f033af37985077f4d8df9d541b55764df0c75eda
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551666"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640175"
 ---
 # <a name="export-or-delete-user-settings"></a>Exportieren oder Löschen von Benutzereinstellungen
 
@@ -42,7 +42,7 @@ Es empfiehlt sich, Ihre Einstellungen zu exportieren und zu überprüfen, bevor 
 
       Diese Aktionen sind in der folgenden Tabelle beschrieben.
 
-      | Aktion | BESCHREIBUNG |
+      | Action | BESCHREIBUNG |
       | --- | --- |
       | **Alle Einstellungen exportieren** | Erstellt eine JSON-Datei, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards.|
       | **Alle Einstellungen und private Dashboards löschen** | Löscht alle Verknüpfungen mit privaten Dashboards und anderen benutzerdefinierten Einstellungen, die Sie im Portal vorgenommen haben. |

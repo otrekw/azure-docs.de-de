@@ -1,19 +1,18 @@
 ---
 title: Starten eines Azure Stream Analytics-Auftrags
 description: In diesem Artikel wird beschrieben, wie Sie einen Stream Analytics-Auftrag über das Azure-Portal, PowerShell und Visual Studio starten.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 1e4cb63accf7e89ac02451e9c25b9902a8a10812
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: c393eb782c2ff16eb5b3e5967b39938dfe2f1534
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173269"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426463"
 ---
 # <a name="how-to-start-an-azure-stream-analytics-job"></a>Starten eines Azure Stream Analytics-Auftrags
 
@@ -33,7 +32,7 @@ Das erste mögliche Ausgabeereignis hat einen Zeitstempel, der dem aktuellen Zei
 
 Navigieren Sie im Azure-Portal zu Ihrem Auftrag, und wählen Sie auf der Übersichtsseite **Starten** aus. Wählen Sie eine **Startzeit der Auftragsausgabe** und anschließend **Starten** aus.
 
-Wählen Sie eine der Optionen für **Startzeit der Auftragsausgabe** aus. Möglich sind die Optionen *Jetzt*, *Benutzerdefinierte*, und, wenn der Auftrag zuvor ausgeführt wurde, *Zeitpunkt der letzten Beendigung*. Weitere Informationen zu diesen Optionen finden Sie weiter oben.
+Wählen Sie eine der Optionen für **Startzeit der Auftragsausgabe** aus. Möglich sind die Optionen *Jetzt*, *Benutzerdefiniert* und, wenn der Auftrag zuvor ausgeführt wurde, *Zeitpunkt der letzten Beendigung*. Weitere Informationen zu diesen Optionen finden Sie weiter oben.
 
 ## <a name="visual-studio"></a>Visual Studio
 

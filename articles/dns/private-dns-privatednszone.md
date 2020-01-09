@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 462c873221a4bdc622a9b118b6699a9719a5f88d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963734"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646794"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Was ist eine private Azure DNS-Zone?
 
@@ -25,9 +25,9 @@ Sie können auch die [automatische Registrierung](./private-dns-autoregistration
 
 ## <a name="limits"></a>Einschränkungen
 
-Informationen dazu, wie viele private DNS-Zonen Sie in einem Abonnement erstellen können und wie viele Eintragssätze in einer privaten DNS-Zone unterstützt werden, finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits).
+Informationen dazu, wie viele private DNS-Zonen Sie in einem Abonnement erstellen können und wie viele Eintragssätze in einer privaten DNS-Zone unterstützt werden, finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits).
 
-## <a name="restrictions"></a>Einschränkungen
+## <a name="restrictions"></a>Beschränkungen
 
 * Private DNS-Zonen mit einzelner Bezeichnung werden nicht unterstützt. Ihre private DNS-Zone muss über mindestens zwei Bezeichnungen verfügen. Beispielsweise besitzt „contoso.com“ zwei Bezeichnungen, die durch einen Punkt getrennt sind. Eine private DNS-Zone kann maximal 34 Bezeichnungen aufweisen.
 * Sie können keine Zonendelegierungen (NS-Einträge) in einer privaten DNS-Zone erstellen. Wenn Sie beabsichtigen, eine untergeordnete Domäne zu verwenden, können Sie die Domäne direkt als private DNS-Zone erstellen und sie mit dem virtuellen Netzwerk verknüpfen, ohne eine Namenserverdelegierung aus der übergeordneten Zone einrichten zu müssen.

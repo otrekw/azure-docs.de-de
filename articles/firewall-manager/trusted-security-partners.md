@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: victorh
-ms.openlocfilehash: cb8a2fdd14cfa7d361e3d78a64f3aaf60ea7676d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b92242ce9086579d0397f78853402cfc08453f68
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73510051"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436773"
 ---
 # <a name="what-are-trusted-security-partners-preview"></a>Was sind vertrauenswürdige Sicherheitspartner (Vorschau)?
 
@@ -41,7 +41,7 @@ Mithilfe der Sicherheitspartner können Sie den Internetdatenverkehr in folgende
 
    Nutzen Sie die Azure-Konnektivität und die globale Verteilung, um auf einfache Weise eine NSaaS-Drittanbieterfilterung für Szenarien vom Typ „Filiale-zu-Internet“ hinzuzufügen. Sie können Ihr globales Übertragungsnetzwerk und die Sicherheitsperipherie mithilfe von Azure Virtual WAN erstellen.
 
-Folgende Szenarios werden unterstützt:
+Die folgenden Szenarien werden unterstützt:
 -   „VNET zu Internet“ über das Partnerangebot eines Drittanbieters
 -   „Filiale zu Internet“ über das Partnerangebot eines Drittanbieters
 -   „Filiale zu Internet“ über das Partnerangebot eines Drittanbieters – der übrige private Datenverkehr (Spoke-to-Spoke, Spoke-to-Branches, Branch-to-Spokes) über Azure Firewall
@@ -75,7 +75,7 @@ Bei Office 365 sind Netzwerklatenz und -leistung für eine positive Benutzererfa
 
 Gemäß den [Office 365-Prinzipien für Netzwerkkonnektivität](https://docs.microsoft.com/office365/enterprise/office-365-network-connectivity-principles) müssen wichtige Office 365-Verbindungen lokal vom Filialstandort oder Mobilgerät des Benutzers direkt über das Internet an den nächstgelegenen Netzwerk-POP (Point-of-Presence) von Microsoft weitergeleitet werden.
 
-Darüber hinaus werden Office 365-Verbindungen aus Gründen des Datenschutzes stark verschlüsselt und nutzen aus Leistungsgründen effiziente, proprietäre Protokolle. Daher ist es weder praktisch noch wirkungsvoll, diese Verbindungen mit herkömmlichen Sicherheitslösungen auf Netzwerkebene zu schützen. Aus diesen Gründen wird dringend empfohlen, dass Kunden Office 365-Datenverkehr direkt von Filialstandorten senden, bevor der übrige Datenverkehr über Azure übertragen wird. Microsoft verfügt über Partnerschaften mit mehreren Anbietern von SD-WAN-Lösungen, die in Azure und Office 365 integriert sind und es Kunden einfach machen, das direkte und lokale Internetbreakout in Office 365 zu aktivieren. Ausführliche Informationen finden Sie unter [Wie richte ich meine Office 365-Richtlinien über Virtual WAN ein?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview#how-do-i-set-my-o365-policies-via-virtual-wan).
+Darüber hinaus werden Office 365-Verbindungen aus Gründen des Datenschutzes stark verschlüsselt und nutzen aus Leistungsgründen effiziente, proprietäre Protokolle. Daher ist es weder praktisch noch wirkungsvoll, diese Verbindungen mit herkömmlichen Sicherheitslösungen auf Netzwerkebene zu schützen. Aus diesen Gründen wird dringend empfohlen, dass Kunden Office 365-Datenverkehr direkt von Filialstandorten senden, bevor der übrige Datenverkehr über Azure übertragen wird. Microsoft verfügt über Partnerschaften mit mehreren Anbietern von SD-WAN-Lösungen, die in Azure und Office 365 integriert sind und es Kunden einfach machen, das direkte und lokale Internetbreakout in Office 365 zu aktivieren. Ausführliche Informationen finden Sie unter [Wie richte ich meine Office 365-Richtlinien über Virtual WAN ein?](https://docs.microsoft.com/azure/virtual-wan/virtual-wan-office365-overview).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

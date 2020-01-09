@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 6c133f99ce31d4994753aba11cee90cfc1b5afc9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552817"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364797"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -55,7 +55,7 @@ Verwenden Sie das folgende Verfahren.
 
      > [!NOTE]
      > 
-     > Sie können nur vom [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) überwachte Ressourcen, Ressourcengruppen oder ein ganzes Abonnement für ein Aktivitätsprotokollsignal auswählen. 
+     > Sie können nur vom [Azure Resource Manager](../../azure-resource-manager/management/overview.md) überwachte Ressourcen, Ressourcengruppen oder ein ganzes Abonnement für ein Aktivitätsprotokollsignal auswählen. 
 
      **Beispielansicht für Warnungsziel**
 
@@ -86,7 +86,7 @@ Verwenden Sie das folgende Verfahren.
 4. Geben Sie unter **Details der Warnungsregel definieren** die folgenden Details an:
 
     - **Name der Warnungsregel**: Der Name für die neue Warnungsregel.
-    - **Beschreibung:** Die Beschreibung für die Warnungsregel.
+    - **Beschreibung**: Die Beschreibung für die Warnungsregel.
     - **Warnung in Ressourcengruppe speichern**: Wählen Sie die Ressourcengruppe aus, in der Sie die neue Regel speichern möchten.
 
 5. Geben Sie unter **Aktionsgruppe** im Dropdownmenü die Aktionsgruppe an, der Sie die neue Warnungsregel zuweisen möchten. Alternativ hierzu können Sie auch [eine neue Aktionsgruppe erstellen](../../azure-monitor/platform/action-groups.md) und der neuen Regel zuweisen. Klicken Sie zum Erstellen einer neuen Gruppe auf **+ Neue Gruppe**.

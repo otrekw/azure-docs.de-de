@@ -4,15 +4,15 @@ description: Bei Überwachungslösungen in Azure Monitor handelt es sich um eine
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
+author: bwren
 ms.author: bwren
 ms.date: 06/26/2018
-ms.openlocfilehash: 6012a74c00b64c818434ea1744d86c6cf67dd463
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9b0140b843d7da1b892463bff7d6014a3f9584ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75402021"
 ---
 # <a name="inventory-and-data-collection-details-for-monitoring-solutions-in-azure"></a>Bestand und Datensammlungsdetails für Überwachungslösungen in Azure
 [Überwachungslösungen](solutions.md) nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Überwachungslösungen sammeln in der Regel Protokolldaten und stellen Abfragen und Ansichten bereit, um die gesammelten Daten zu analysieren. Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen.
@@ -41,9 +41,9 @@ Erläuterung der Spalten:
 | [Aktivitätsprotokollanalyse](../platform/activity-log-collect.md) | Azure | | | | | | Bei Benachrichtigung |
 | [AD-Bewertung](ad-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 Tage |
 | [AD-Replikationsstatus](ad-replication-status.md) |Windows |&#8226; |&#8226; | | |&#8226; |5 Tage |
-| [Agent-Integrität](solution-agenthealth.md) | Windows und Linux | &#8226; | &#8226; | | | &#8226; | 1 Minute |
+| [Agent-Integrität](solution-agenthealth.md) | Windows und Linux | &#8226; | &#8226; | | | &#8226; | 1 Minute |
 | [Warnungsverwaltung](../platform/alert-management-solution.md) (Nagios) |Linux |&#8226; | | | | |Bei der Ankunft |
-| [Warnungsverwaltung](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 Minute |
+| [Warnungsverwaltung](../platform/alert-management-solution.md) (Zabbix) |Linux |&#8226; | | | | |1 Minute |
 | [Warnungsverwaltung](../platform/alert-management-solution.md) (Operations Manager) |Windows | |&#8226; | |&#8226; |&#8226; |3 Minuten |
 | [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) | Azure | | | | | | – |
 | [Application Insights-Connector (Veraltet)](../platform/app-insights-connector.md) | Azure | | | |  |  | Bei Benachrichtigung |
@@ -51,8 +51,8 @@ Erläuterung der Spalten:
 | [Azure Application Gateway-Analyse](azure-networking-analytics.md) | Azure |  |  |  |  |  | Bei Benachrichtigung |
 | **Überwachungslösung** | **Plattform** | **Microsoft Monitoring Agent** | **Operations Manager-Agent** | **Azure Storage** | **Operations Manager erforderlich?** | **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten** | **Sammlungshäufigkeit** |
 | [Azure-Netzwerksicherheitsgruppen-Analyse (Veraltet)](azure-networking-analytics.md) | Azure |  |  |  |  |  | Bei Benachrichtigung |
-| [Azure SQL Analytics (Vorschau)](azure-sql.md) | Windows | | | | | | 1 Minute |
-| [Sicherung](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | Bei Benachrichtigung |
+| [Azure SQL Analytics (Vorschau)](azure-sql.md) | Windows | | | | | | 1 Minute |
+| [Backup](https://azure.microsoft.com/resources/templates/101-backup-oms-monitoring/) | Azure |  |  |  |  |  | Bei Benachrichtigung |
 | [Kapazität und Leistung (Vorschau)](capacity-performance.md) |Windows |&#8226; |&#8226; | | |&#8226; |Bei der Ankunft |
 | [Änderungsnachverfolgung](../../automation/change-tracking.md) |Windows |&#8226; |&#8226; | | |&#8226; |[variiert](../../automation/change-tracking.md#change-tracking-data-collection-details) |
 | [Änderungsnachverfolgung](../../automation/change-tracking.md) |Linux |&#8226; | | | | |[variiert](../../automation/change-tracking.md#change-tracking-data-collection-details) |
@@ -70,7 +70,7 @@ Erläuterung der Spalten:
 | [Updateverwaltung](../../automation/automation-update-management.md) | Windows |&#8226; |&#8226; | | |&#8226; |Mindestens zweimal pro Tag und 15 Minuten nach Installation eines Updates |
 | [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started) | Windows | &#8226; |  |  |  |  | 2 Tage |
 | [VMware-Überwachung (Veraltet)](vmware.md) | Linux | &#8226; |  |  |  |  | 3 Minuten |
-| [Wire Data 2.0 (Vorschau)](wire-data.md) |Windows (2012 R2 / 8.1 oder höher) |&#8226; |&#8226; | | | | 1 Minute |
+| [Wire Data 2.0 (Vorschau)](wire-data.md) |Windows (2012 R2 / 8.1 oder höher) |&#8226; |&#8226; | | | | 1 Minute |
 
 
 

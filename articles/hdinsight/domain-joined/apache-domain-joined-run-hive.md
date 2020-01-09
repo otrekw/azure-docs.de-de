@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688109"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435872"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -40,11 +40,11 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurie
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
 
-Unter [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp) finden Sie Informationen zum Erstellen von „hiveruser1“ und „hiveuser2“. Diese beiden Benutzerkonten werden in diesem Artikel verwendet.
+Unter [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp) finden Sie Informationen zum Erstellen von „hiveruser1“ und „hiveuser2“. Diese beiden Benutzerkonten werden in diesem Artikel verwendet.
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
 
-In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden über [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp) erstellt. Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
+In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden über [Erstellen eines HDInsight-Clusters mit ESP](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp) erstellt. Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
 
 **So erstellen Sie Ranger-Richtlinien**
 
@@ -52,7 +52,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 2. Wählen Sie unter **Hive** die Zeichenfolge **CLUSTERNAME_Hive** aus. Zwei vorkonfigurierte Richtlinien werden angezeigt.
 3. Wählen Sie **Neue Richtlinie hinzufügen** aus, und geben Sie die folgenden Werte ein:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
     |Richtlinienname|read-hivesampletable-all|
     |Hive-Datenbank|default|
@@ -61,7 +61,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
     |Benutzer auswählen|hiveuser1|
     |Berechtigungen|select|
 
-    ![HDInsight ESP Ranger – Konfigurieren von Hive-Richtlinien](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
+    ![HDInsight ESP Ranger – Konfigurieren von Hive-Richtlinien](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png)erforderlich.
 
     > [!NOTE]  
     > Wenn unter „Benutzer auswählen“ kein Domänenbenutzer eingetragen wird, warten Sie kurz, bis Ranger mit AAD synchronisiert wurde.
@@ -70,7 +70,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 
 5. Wiederholen Sie die letzten beiden Schritte, um eine weitere Richtlinie mit folgenden Eigenschaften zu erstellen:
 
-    |Eigenschaft |Wert |
+    |Eigenschaft |value |
     |---|---|
     |Richtlinienname|read-hivesampletable-devicemake|
     |Hive-Datenbank|default|
@@ -85,7 +85,7 @@ Die Anleitung finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](../hadoop
 
  | Eigenschaft  |BESCHREIBUNG |
  | --- | --- |
- | Name der Datenquelle | Geben Sie einen Namen für die Datenquelle an. |
+ | Datenquellenname | Geben Sie einen Namen für die Datenquelle an. |
  | Host | Geben Sie „CLUSTERNAME.azurehdinsight.net“ ein. Beispiel: myHDICluster.azurehdinsight.net |
  | Port | Verwenden Sie **443**. (Dieser Port wurde von 563 in 443 geändert.) |
  | Datenbank | Verwenden Sie **Standard**. |

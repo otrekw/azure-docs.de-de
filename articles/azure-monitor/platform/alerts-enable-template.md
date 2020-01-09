@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: faeb4df915cc5c56e21d1857fe75a956d419c46e
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262091"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75397275"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage
-In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) Metrikwarnungen in Azure konfigurieren können. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
+In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) Metrikwarnungen in Azure konfigurieren können. So können Sie Warnungen für Ihre Ressourcen gleich bei der Erstellung automatisch einrichten, um sicherzustellen, dass alle Ressourcen ordnungsgemäß überwacht werden.
 
 > [!NOTE]
 > 

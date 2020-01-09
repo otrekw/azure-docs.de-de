@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 09/09/2019
-ms.openlocfilehash: e8029b957fedc07ba571b61f1211c020b706bea3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f1eb8644faf6693a2a33ded489830cf4106df222
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929658"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444400"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory
 
@@ -63,7 +63,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AzureSqlMI** festgelegt werden. | Ja |
-| connectionString |Diese Eigenschaft gibt die **connectionString**-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. <br/>Der Standardport ist 1433. Wenn Sie die verwaltete Azure SQL-Datenbank-Instanz mit einem öffentlichen Endpunkt verwenden, geben Sie Port 3342 explizit an.<br>Markieren Sie dieses Feld als **SecureString**, um es sicher in Azure Data Factory zu speichern. Sie können auch ein Kennwort in Azure Key Vault speichern. Bei Verwendung der SQL-Authentifizierung pullen Sie die `password`-Konfiguration aus der Verbindungszeichenfolge. Weitere Informationen finden Sie im JSON-Beispiel unter der Tabelle sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectionString |Diese Eigenschaft gibt die **connectionString**-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. <br/>Der Standardport ist 1433. Wenn Sie die verwaltete Azure SQL-Datenbank-Instanz mit einem öffentlichen Endpunkt verwenden, geben Sie Port 3342 explizit an.<br> Sie können auch ein Kennwort in Azure Key Vault speichern. Bei Verwendung der SQL-Authentifizierung pullen Sie die `password`-Konfiguration aus der Verbindungszeichenfolge. Weitere Informationen finden Sie im JSON-Beispiel unter der Tabelle sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja, bei Azure AD-Authentifizierung mit einem Dienstprinzipal |
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Azure Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, bei Azure AD-Authentifizierung mit einem Dienstprinzipal |
 | tenant | Geben Sie die Mandanteninformationen, wie Domänenname oder Mandanten-ID, für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja, bei Azure AD-Authentifizierung mit einem Dienstprinzipal |
@@ -85,10 +85,7 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;Password=<password>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -106,10 +103,7 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;",
             "password": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -167,10 +161,7 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzip
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            },
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": {
                 "type": "SecureString",
@@ -188,7 +179,7 @@ Um die Azure AD-Anwendungstokenauthentifizierung basierend auf dem Dienstprinzip
 
 ### <a name="managed-identity"></a>Verwaltete Identitäten für Azure-Ressourcenauthentifizierung
 
-Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese verwaltete Identität für die Authentifizierung einer verwalteten Azure SQL-Datenbank-Instanz verwenden. Die angegebene Factory kann mithilfe dieser Identität auf Daten in Ihrer Datenbank zuzugreifen und diese kopieren.
+Eine Data Factory kann einer [verwalteten Identität für Azure-Ressourcen](data-factory-service-identity.md) zugeordnet werden, die diese spezielle Data Factory darstellt. Sie können diese verwaltete Identität für die Authentifizierung einer verwalteten Azure SQL-Datenbank-Instanz verwenden. Die angegebene Factory kann mithilfe dieser Identität auf Daten zugreifen und Daten aus der oder in die Datenbank kopieren.
 
 Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer verwalteten Identität zu verwenden.
 
@@ -222,10 +213,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer verwa
     "properties": {
         "type": "AzureSqlMI",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
-            }
+            "connectionString": "Data Source=<hostname,port>;Initial Catalog=<databasename>;"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -280,7 +268,7 @@ Zum Kopieren von Daten aus der verwalteten Azure SQL-Datenbank-Instanz werden di
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlMISource** festgelegt werden. | Ja |
-| sqlReaderQuery |Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Ein Beispiel ist `select * from MyTable`. |Nein |
+| sqlReaderQuery |Diese Eigenschaft verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `select * from MyTable`. |Nein |
 | sqlReaderStoredProcedureName |Diese Eigenschaft ist der Name der gespeicherten Prozedur, die Daten aus der Quelltabelle liest. Die letzte SQL-Anweisung muss eine SELECT-Anweisung in der gespeicherten Prozedur sein. |Nein |
 | storedProcedureParameters |Diese Parameter werden für die gespeicherte Prozedur verwendet.<br/>Zulässige Werte sind Namen oder Name-Wert-Paare. Die Namen und die Groß-/Kleinschreibung der Parameter müssen denen der Parameter der gespeicherten Prozedur entsprechen. |Nein |
 
@@ -586,8 +574,8 @@ Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Ins
 
 | Datentyp der verwalteten Azure SQL-Datenbank-Instanz | Azure Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| bigint |Int64 |
-| binary |Byte[] |
+| BIGINT |Int64 |
+| BINARY |Byte[] |
 | bit |Boolean |
 | char |String, Char[] |
 | date |Datetime |
@@ -598,23 +586,23 @@ Beim Kopieren von Daten auf die bzw. von der verwalteten Azure SQL-Datenbank-Ins
 | FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
-| int |Int32 |
+| INT |Int32 |
 | money |Decimal |
-| nchar |String, Char[] |
+| NCHAR |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
-| nvarchar |String, Char[] |
+| NUMERIC |Decimal |
+| NVARCHAR |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |Datetime |
-| smallint |Int16 |
-| smallmoney |Decimal |
+| SMALLINT |Int16 |
+| SMALLMONEY |Decimal |
 | sql_variant |Object |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
-| tinyint |Int16 |
-| uniqueidentifier |Guid |
+| TINYINT |Int16 |
+| UNIQUEIDENTIFIER |Guid |
 | varbinary |Byte[] |
 | varchar |String, Char[] |
 | Xml |Xml |

@@ -1,24 +1,23 @@
 ---
 title: Testen eines Azure Stream Analytics-Auftrags mit Beispieldaten
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Portals einen Azure Stream Analytics-Auftrag mit Beispieleingabedaten testen und Beispieldaten hochladen.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: d68c1ee084efc146d69d8404aadb8acbb4cc33d1
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 85d32e96335a9fffa874f1f370f72883ff420df0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73891756"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369863"
 ---
 # <a name="test-an-azure-stream-analytics-job-with-sample-data"></a>Testen eines Azure Stream Analytics-Auftrags mit Beispieldaten
 
-In Azure Stream Analytics können Sie Ihre Abfrage testen, ohne den Auftrag zu starten oder zu beenden. Sie können Abfragen mit eingehenden Daten aus Ihrer Eingabesenke oder hochgeladenen Beispieldaten aus einer lokalen Datei im Azure-Portal testen. Sie können Abfragen auch lokal mit Ihren lokalen Beispieldaten oder Livedaten in [Visual Studio](stream-analytics-live-data-local-testing.md) und [Visual Studio Code](vscode-local-run.md) testen. 
+In Azure Stream Analytics können Sie Ihre Abfrage testen, ohne den Auftrag zu starten oder zu beenden. Sie können Abfragen mit eingehenden Daten aus Ihrer Eingabesenke oder hochgeladenen Beispieldaten aus einer lokalen Datei im Azure-Portal testen. Sie können Abfragen auch lokal mit Ihren lokalen Beispieldaten oder Livedaten in [Visual Studio](stream-analytics-live-data-local-testing.md) und [Visual Studio Code](visual-studio-code-local-run-live-input.md) testen.
 
 ## <a name="sample-incoming-data-from-input"></a>Beispieleingangsdaten aus Eingabe
 
@@ -30,7 +29,7 @@ Azure Stream Analytics ruft automatisch Ereignisse aus ihrer Datenstromeingabe a
 
 3. Wählen Sie auf der Stream Analytics-Auftragsseite unter der Überschrift **Auftragstopologie** die Option **Abfrage** aus, um das Fenster des Abfrage-Editors zu öffnen. 
 
-4. Um eine Beispielliste eingehender Ereignisse anzuzeigen, wählen Sie das Symbol „Eingabe mit Datei“ aus, und die Beispielereignisse werden automatisch in der **Eingabevorschau** angezeigt. 
+4. Um eine Beispielliste eingehender Ereignisse anzuzeigen, wählen Sie das Symbol „Eingabe mit Datei“ aus, und die Beispielereignisse werden automatisch in der **Eingabevorschau** angezeigt.
 
    a. Der Serialisierungstyp für Ihre Daten wird automatisch erkannt, wenn es sich um JSON oder CSV handelt. Sie können ihn manuell in JSON, CSV oder AVRO ändern, indem Sie die Option im Dropdownmenü ändern.
     

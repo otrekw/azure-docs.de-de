@@ -6,12 +6,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: allensu
-ms.openlocfilehash: 1be4882af781f884313fbc7b8e2f04f843b60068
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 0cbd8f61cb1b4cb8eae6b30625fb3039ff75adde
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71038888"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641467"
 ---
 # <a name="move-azure-network-security-group-nsg-to-another-region-using-azure-powershell"></a>Verschieben einer Azure-Netzwerksicherheitsgruppe (NSG) in eine andere Region mit Azure PowerShell
 
@@ -32,7 +32,7 @@ Azure-Sicherheitsgruppen können nicht aus einer Region in eine andere verschobe
 
 - Vergewissern Sie sich, dass Sie mit Ihrem Azure-Abonnement NSGs in der verwendeten Zielregion erstellen können. Wenden Sie sich an den Support, um das erforderliche Kontingent zu aktivieren.
 
-- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von NSGs für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
+- Stellen Sie sicher, dass Ihr Abonnement genügend Ressourcen hat, um das Hinzufügen von NSGs für diesen Prozess zu unterstützen.  Weitere Informationen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits).
 
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben
@@ -211,7 +211,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ```
 
-## <a name="clean-up"></a>Bereinigen
+## <a name="clean-up"></a>Bereinigung
 
 Um die Änderungen zu übernehmen und die Verschiebung der NSG abzuschließen, löschen Sie die Quell-NSG oder -Ressourcengruppe mit [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) oder [Remove-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/remove-aznetworksecuritygroup?view=azps-2.6.0):
 

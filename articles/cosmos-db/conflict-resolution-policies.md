@@ -1,5 +1,5 @@
 ---
-title: Konflikttypen und Konfliktauflösungsrichtlinien mit mehreren Schreibregionen in Azure Cosmos DB
+title: Konflikttypen und Konfliktauflösungsrichtlinien in Azure Cosmos DB
 description: Dieser Artikel beschreibt die Konfliktkategorien und Konfliktauflösungsrichtlinien in Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: f69a70ef3bfc8830ed12173fddee41095937a1c0
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: a8ee72f46e1789088e779c10a0824262469ffde8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68815097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441987"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>Konflikttypen und Konfliktauflösungsrichtlinien
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f62406a341c7e1467cdf17b21662bb5c0993881c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232399"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358359"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -121,11 +121,11 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Auf den Instanzmetadatendienst-Endpunkt kann nur innerhalb der ausgeführten Instanz des virtuellen Computers an einer nicht routingfähigen IP-Adresse zugegriffen werden. Darüber hinaus wird jede Anforderung mit einem `X-Forwarded-For`-Header vom Dienst abgelehnt.
 Zudem müssen Anforderungen einen `Metadata: true`-Header enthalten, um sicherzustellen, dass die eigentliche Anforderung direkt vorgesehen war und nicht Teil einer unbeabsichtigten Umleitung ist.
 
-### <a name="error"></a>Error
+### <a name="error"></a>Fehler
 
 Wenn ein Datenelement nicht gefunden wird oder eine Anforderung ungültig ist, gibt der Instanzmetadatendienst standardmäßige HTTP-Fehler zurück. Beispiel:
 
-HTTP-Statuscode | Grund
+HTTP-Statuscode | `Reason`
 ----------------|-------
 200 – OK |
 400 – Ungültige Anforderung | Fehlender `Metadata: true`-Header oder fehlendes Format beim Abfragen eines Blattknotens
@@ -366,10 +366,10 @@ placementGroupId | [Platzierungsgruppe](../../virtual-machine-scale-sets/virtual
 Tarif | Der [Tarif](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) mit Name, Produkt und Herausgeber für einen virtuellen Computer, wenn es sich um ein Azure Marketplace-Image handelt | 2018-04-02
 platformUpdateDomain |  [Updatedomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
 platformFaultDomain | [Fehlerdomäne](manage-availability.md), in der die VM ausgeführt wird | 2017-04-02
-Anbieter | Anbieter des virtuellen Computers | 2018-10-01
+Provider | Anbieter des virtuellen Computers | 2018-10-01
 publicKeys | [Sammlung von öffentlichen Schlüsseln](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey), dem virtuellen Computer und den entsprechenden Pfaden zugewiesen | 2018-04-02
 publisher | Herausgeber des VM-Images | 2017-04-02
-resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md) für den virtuellen Computer | 2017-08-01
+resourceGroupName | [Ressourcengruppe](../../azure-resource-manager/management/overview.md) für den virtuellen Computer | 2017-08-01
 resourceId | Die [vollqualifizierte](https://docs.microsoft.com/rest/api/resources/resources/getbyid) ID der Ressource | 11.03.2019
 sku | Spezifische SKU für das VM-Image | 2017-04-02
 subscriptionId | Azure-Abonnement für den virtuellen Computer | 2017-08-01

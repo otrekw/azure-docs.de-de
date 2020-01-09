@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 63a2a3a68adaa2e389cc2af173c8f75a18fbc36d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e4de954d55725f36d48d09ac46ef3700787d937b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078705"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647644"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Vorbereiten der Azure-Infrastruktur für SAP HA mit einem Windows-Failovercluster und einem freigegebenen Datenträger für SAP ASCS/SCS
 
@@ -34,8 +34,8 @@ ms.locfileid: "70078705"
 [sap-installation-guides]:http://service.sap.com/instguides
 [tuning-failover-cluster-network-thresholds]:https://techcommunity.microsoft.com/t5/Failover-Clustering/Tuning-Failover-Cluster-Network-Thresholds/ba-p/371834
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -154,7 +154,7 @@ ms.locfileid: "70078705"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -403,7 +403,7 @@ Für lokale Bereitstellungen benötigen Sie diese reservierten Hostnamen und IP-
 | SAP ASCS/SCS-Instanz – virtueller Hostname |pr1-ascs-sap |10.0.0.43 |
 | SAP-DBMS – zweiter virtueller Host im Cluster (Clusterverwaltung) |pr1-dbms-vir |10.0.0.32 |
 
-Bei der Erstellung des Clusters erstellen Sie die virtuellen Hostnamen „pr1-ascs-vir“ und „pr1-dbms-vir“ und die zugehörigen IP-Adressen, mit denen der Cluster selbst verwaltet wird. Informationen zur Vorgehensweise finden Sie unter [Erfassen der Clusterknoten in einer Clusterkonfiguration][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config].
+Bei der Erstellung des Clusters erstellen Sie die virtuellen Hostnamen „pr1-ascs-vir“ und „pr1-dbms-vir“ und die zugehörigen IP-Adressen, mit denen der Cluster selbst verwaltet wird. Informationen zur Vorgehensweise finden Sie unter [Collect cluster nodes in a cluster configuration][sap-high-availability-infrastructure-wsfc-shared-disk-collect-cluster-config] (Erfassen von Clusterknoten in einer Clusterkonfiguration).
 
 Sie können die anderen beiden virtuellen Hostnamen „pr1-ascs-sap“ und „pr1-dbms-sap“ und die zugeordneten IP-Adressen manuell auf dem DNS-Server erstellen. Die SAP ASCS/SCS-Clusterinstanz und die DBMS-Clusterinstanz verwenden diese Ressourcen. Informationen zur Vorgehensweise finden Sie unter [Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz][sap-ha-guide-9.1.1].
 
@@ -524,7 +524,7 @@ Wenn Sie andere Nummern für die SAP ASCS- oder SCS-Instanzen verwenden möchten
 1. Wählen Sie im Azure-Portal **\<SID\>-lb-ascs load balancer** > **Lastenausgleichsregeln**.
 2. Ändern Sie für alle zur SAP ASCS- oder SCS-Instanz gehörenden Lastenausgleichsregeln die folgenden Werte:
 
-   * NAME
+   * Name
    * Port
    * Back-End-Port
 
@@ -554,7 +554,7 @@ Fügen Sie zuerst diese Windows-Registrierungseinträge auf beiden Windows-Clust
 | --- | --- |
 | Variablenname |`KeepAliveTime` |
 | Variablentyp |REG_DWORD-Wert (dezimal) |
-| Wert |120000 |
+| value |120000 |
 | Link zur Dokumentation |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 **Tabelle 3:** Ändern des ersten TCP/IP-Parameters
@@ -565,7 +565,7 @@ Fügen Sie diesen Windows-Registrierungseintrag dann auf beiden Windows-Clusterk
 | --- | --- |
 | Variablenname |`KeepAliveInterval` |
 | Variablentyp |REG_DWORD-Wert (dezimal) |
-| Wert |120000 |
+| value |120000 |
 | Link zur Dokumentation |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 **Tabelle 4:** Ändern des zweiten TCP/IP-Parameters
@@ -643,7 +643,7 @@ Das Einrichten eines Windows Server-Failoverclusters für eine SAP ASCS/SCS-Inst
    _**Abbildung 17:** Eingeben des Namens für den zweiten Clusterknotenhost_
 
    > [!IMPORTANT]
-   > Stellen Sie sicher, dass das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden** *nicht* aktiviert wird.  
+   > Stellen Sie sicher, dass das Kontrollkästchen **Der gesamte geeignete Speicher soll dem Cluster hinzugefügt werden***nicht* aktiviert wird.  
    >
    >
 

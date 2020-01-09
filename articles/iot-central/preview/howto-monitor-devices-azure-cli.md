@@ -3,17 +3,17 @@ title: Überwachen der Gerätekonnektivität mit dem Azure IoT Central-Explorer
 description: Überwachen Sie Gerätemeldungen, und beobachten Sie Änderungen bei Gerätezwillingen über die Befehlszeilenschnittstelle des IoT Central-Explorers.
 author: viv-liu
 ms.author: viviali
-ms.date: 09/27/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: corywink
-ms.openlocfilehash: 2b1c4c64fc02df67f38e36194072efd5db3b8e38
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 90cf83f86acb647b8194619bc1b572e5147cc0cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894434"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75434946"
 ---
 # <a name="monitor-device-connectivity-using-azure-cli-preview-features"></a>Überwachen der Gerätekonnektivität per Azure CLI (Vorschaufeatures)
 
@@ -49,7 +49,7 @@ az extension update --name azure-cli-iot-ext
 
 Die folgenden Abschnitte beschreiben allgemeine Befehle und Optionen, die Sie beim Ausführen von `az iot central` verwenden können. Wenn Sie die vollständige Sammlung von Befehlen und Optionen anzeigen möchten, übergeben Sie `--help` an `az iot central` oder einen seiner Unterbefehle.
 
-### <a name="login"></a>Anmeldung
+### <a name="login"></a>Anmeldename
 
 Melden Sie zuerst bei der Azure CLI an. 
 

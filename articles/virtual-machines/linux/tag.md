@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: cabebee7b10ef86486fb8296df44845429d7ebbe
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 871159a660d03469b67461f5eb1ce8245d4c3611
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034721"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75369149"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Gewusst wie: Markieren eines virtuellen Linux-Computers in Azure
 In diesem Artikel werden verschiedene Methoden zum Markieren eines virtuellen Linux-Computers in Azure mithilfe des Resource Manager-Bereitstellungsmodells beschrieben. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 15 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Beachten Sie, dass Tags nur für Ressourcen unterstützt werden, die über das Resource Manager-Bereitstellungsmodell erstellt wurden.
@@ -60,7 +60,7 @@ Nun, da wir unseren Ressourcen über die Azure-Befehlszeilenschnittstelle und da
 * Informationen dazu, wie Tags Ihnen helfen können, die Verwendung Ihrer Azure-Ressourcen zu verwalten, finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure][Understanding your Azure Bill] und [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure][Gain insights into your Microsoft Azure resource consumption].
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
-[Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md
+[Azure Resource Manager Overview]: ../../azure-resource-manager/management/overview.md
 [Using Tags to organize your Azure Resources]: ../../azure-resource-manager/resource-group-using-tags.md
 [Understanding your Azure Bill]: ../../billing/billing-understand-your-bill.md
 [Gain insights into your Microsoft Azure resource consumption]: ../../billing/billing-usage-rate-card-overview.md

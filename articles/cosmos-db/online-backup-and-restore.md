@@ -1,5 +1,5 @@
 ---
-title: Automatische Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
+title: Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 description: In diesem Artikel wird beschrieben, wie die automatische Onlinesicherung und die bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB funktionieren.
 author: kanshiG
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/21/2019
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 066549f1343eaceb9a47fccc3b5d4508f226a89b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4ca4fa8699d9bd4b35f26983f2f7004c63da180f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65967478"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441536"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 

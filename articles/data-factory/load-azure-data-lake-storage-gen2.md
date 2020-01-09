@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
-ms.openlocfilehash: ff43173823919f25f85d32996b77265a8a5864c3
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 90573f77c77d614923f882053145d2f84598953d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926824"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440236"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory
 
@@ -50,7 +50,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
  
     * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen \"LoadADLSDemo\" ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_ **ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
     * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
-    * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md).  
+    * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
     * **Version**: Wählen Sie **V2** aus.
     * **Standort**: Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. 
 
@@ -82,7 +82,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
    1. Geben Sie den Wert für die **Zugriffsschlüssel-ID** an.
    2. Geben Sie den Wert für den **geheimen Zugriffsschlüssel** an.
    3. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Fertig stellen** aus.
-   4. Eine neue Verbindung wird erstellt. Klicken Sie auf **Weiter**.
+   4. Eine neue Verbindung wird erstellt. Wählen Sie **Weiter** aus.
    
       ![Angeben des Amazon S3-Kontos](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
@@ -101,7 +101,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 8. Führen Sie auf der Seite **Specify Azure Data Lake Storage connection** (Azure Data Lake Storage-Verbindung angeben) die folgenden Schritte aus:
 
    1. Wählen Sie in der Dropdownliste „Speicherkontoname“ das Data Lake Storage Gen2-fähige Konto aus.
-   2. Wählen Sie **Fertig stellen** aus, um die Verbindung zu erstellen. Klicken Sie anschließend auf **Weiter**.
+   2. Wählen Sie **Fertig stellen** aus, um die Verbindung zu erstellen. Wählen Sie **Weiter**aus.
    
    ![Angeben eines Azure Data Lake Storage Gen2-Kontos](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
 

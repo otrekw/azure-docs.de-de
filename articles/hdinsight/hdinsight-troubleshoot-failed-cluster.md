@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 69711f7ac20882617de175b1b90d8df4f2858c4d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22bf4dcd472cf2d7804b571e09093535f30b053f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498085"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647423"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -47,7 +47,7 @@ Beantworten Sie die folgenden Fragen zur Identifizierung des Problems:
 
 Wichtige Clusterinformationen sind:
 
-* Clustername
+* Clustername.
 * Clusterregion – Prüfung auf [Regionsausfälle](https://azure.microsoft.com/status/) durchführen
 * Typ und Version des HDInsight-Clusters
 * Typ und Anzahl von HDInsight-Instanzen, die für die Haupt- und Workerknoten angegeben wurden
@@ -90,7 +90,7 @@ HDInsight basiert auf mehreren Azure-Diensten. Virtuelle Server werden in Azure 
 
 #### <a name="check-azure-service-usage-limits"></a>Überprüfen der Nutzungseinschränkungen von Azure-Diensten
 
-Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) erstellen.
 
 #### <a name="check-the-release-version"></a>Überprüfen der Releaseversion

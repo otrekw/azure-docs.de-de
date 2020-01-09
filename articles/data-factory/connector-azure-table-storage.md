@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
-ms.openlocfilehash: e23bf7b3e111d9945ac3eaab942fa77ddba9d9ed
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b64b0f32b7e8d94115facf43646a5a030697d80f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929613"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444417"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Table Storage mit Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-azure-table-connector.md)
 > * [Aktuelle Version](connector-azure-table-storage.md)
 
@@ -54,7 +54,7 @@ Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften D
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **AzureTableStorage** festgelegt werden. |Ja |
-| connectionString | Geben Sie für die connectionString-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
+| connectionString | Geben Sie für die connectionString-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/>Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein |
 
 >[!NOTE]
@@ -68,10 +68,7 @@ Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften D
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
-            }
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",
@@ -89,10 +86,7 @@ Sie können mithilfe des Kontoschlüssels einen mit Azure Storage verknüpften D
     "properties": {
         "type": "AzureTableStorage",
         "typeProperties": {
-            "connectionString": {
-                "type": "SecureString",
-                "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;"
-            },
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;",
             "accountKey": { 
                 "type": "AzureKeyVaultSecret", 
                 "store": { 
@@ -336,14 +330,14 @@ Beim Verschieben von Daten von und nach Azure Table werden die folgenden [von Az
 
 | Azure-Tabellendatentyp | Data Factory-Zwischendatentyp | Details |
 |:--- |:--- |:--- |
-| Edm.Binary |Byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
+| Edm.Binary |byte[] |Ein Array von Bytes mit einer Größe bis zu 64KB. |
 | Edm.Boolean |bool |Ein boolescher Wert. |
 | Edm.DateTime |Datetime |Ein 64-Bit-Wert, ausgedrückt als koordinierte Weltzeit (UTC). Der unterstützte DateTime-Bereich beginnt am 1. Januar 1601 n. Chr um Mitternacht. (unsere Zeitrechnung), UTC Der Bereich endet am 31. Dezember 9999. |
 | Edm.Double |double |Ein 64-Bit-Gleitkommawert. |
 | Edm.Guid |Guid |Ein 128-Bit-GUID. |
 | Edm.Int32 |Int32 |Eine 32-Bit-Ganzzahl. |
 | Edm.Int64 |Int64 |Eine 64-Bit-Ganzzahl. |
-| Edm.String |Zeichenfolge |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64 KB groß sein. |
+| Edm.String |String |Ein UTF-16-codierter Wert. Zeichenfolgenwerte können bis zu 64 KB groß sein. |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

@@ -6,14 +6,14 @@ manager: philmea
 ms.service: iot-pnp
 services: iot-pnp
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 12/26/2019
 ms.author: philmea
-ms.openlocfilehash: 4320a975f74d000bd492d291f5e610f591536b0d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7e71c940d0c083642954114cf4fa1617b93335b9
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979103"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531258"
 ---
 # <a name="manage-models-in-the-repository"></a>Verwalten von Modellen im Repository
 
@@ -37,7 +37,7 @@ Es gibt zwei Arten von Modellrepositorys zum Speichern von Gerätefunktionsmodel
 Im [Azure Certified for IoT-Portal](https://preview.catalog.azureiotsolutions.com) können Sie die folgenden Aufgaben ausführen:
 
 - [Schließen Sie den Zertifizierungsprozess für Ihr IoT-Gerät ab](./tutorial-certification-test.md).
-- Suchen Sie nach IoT Plug & Play-Gerätefunktionsmodellen. Mithilfe dieser Modelle können Sie [im Handumdrehen IoT-fähige Geräte erstellen und in Lösungen integrieren](./quickstart-connect-pnp-device-solution.md).
+- Suchen Sie nach IoT Plug & Play-Gerätefunktionsmodellen. Mithilfe dieser Modelle können Sie [im Handumdrehen IoT-fähige Geräte erstellen und in Lösungen integrieren](./quickstart-connect-pnp-device-solution-node.md).
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c4351afe7781f4340dfd943828d65e94efbdc0a7
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120969"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75659303"
 ---
 # <a name="networking-limit-increase"></a>Erhöhung des Grenzwerts für Netzwerke
 
@@ -70,7 +70,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Nu
 
 2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
 
-    ![Wählen Sie das Abonnement aus.](./media/resource-manager-core-quotas-request/select-subscription.png)
+    ![Auswählen des Abonnements](./media/resource-manager-core-quotas-request/select-subscription.png)
 
 3. Wählen Sie **Nutzung + Kontingente** aus.
 
@@ -84,4 +84,4 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal über das Blatt „Nu
 
 ## <a name="about-networking-limits"></a>Informationen zu Netzwerkgrenzwerten
 
-Weitere Informationen zu Netzwerkgrenzwerten finden Sie im Abschnitt [Netzwerk](../azure-subscription-service-limits.md#networking-limits) der Seite „Grenzwerte“ oder dem Abschnitt zu häufig gestellten Fragen zu Netzwerkgrenzwerten.
+Weitere Informationen zu Netzwerkgrenzwerten finden Sie im Abschnitt [Netzwerk](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) der Seite „Grenzwerte“ oder dem Abschnitt zu häufig gestellten Fragen zu Netzwerkgrenzwerten.

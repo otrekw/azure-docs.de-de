@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 68315b1b0d290b107fe2d28a9e3b49be009b78b8
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: d2c8e599e44e48517920862e1fcf83e1a5e24910
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74781926"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647627"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Vorschau: Azure-Spot-VMs für VM-Skalierungsgruppen 
 
@@ -24,17 +24,17 @@ Wenn Sie Azure Spot-VMs für Skalierungsgruppen verwenden, profitieren Sie von u
 Die verfügbare Kapazität kann abhängig von der Größe, Region, Tageszeit usw. variieren. Beim Bereitstellen von Spot-Instanzen für Skalierungsgruppen wird die Instanz von Azure nur zugeordnet, wenn Kapazität verfügbar ist, für diese Instanzen aber keine SLA besteht. Eine Spot-Skalierungsgruppe wird in einer einzelnen Fehlerdomäne bereitgestellt und gewährleistet keine Hochverfügbarkeit.
 
 > [!IMPORTANT]
-> Spot-Instanzen sind zurzeit als öffentliche Vorschau verfügbar.
+> Spot-Instanzen sind zurzeit als Public Preview verfügbar.
 > Von der Verwendung dieser Vorschauversion für Produktionsworkloads wird abgeraten. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 >
-> Im frühen Stadium der öffentlichen Vorschau verfügen Spot-Instanzen über einen festen Preis, sodass sie nicht basierend auf dem Preis entfernt werden.
+> Im frühen Stadium der Public Preview weisen Spot-Instanzen einen festen Preis auf, sodass sie nicht basierend auf dem Preis entfernt werden.
 
 ## <a name="pricing"></a>Preise
 
 Die Preise für Spot-Instanzen variieren je nach Region und SKU. Weitere Informationen finden Sie unter den Preisen für [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) und [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/). 
 
 
-Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar (USD) mit bis zu 5 Dezimalstellen festlegen. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die Instanz nicht basierend auf dem Preis entfernt. Der Preis für die Instanz entspricht dem aktuellen Preis für Spot-Instanzen oder dem Preis für eine Standardinstanz, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind.
+Bei der variablen Preisgestaltung können Sie einen maximalen Preis in US-Dollar (USD) mit bis zu 5 Dezimalstellen festlegen. Der Wert `0.98765` würde beispielsweise einem maximalen Preis von 0,98765 US-Dollar pro Stunde entsprechen. Wenn Sie den maximalen Preis auf `-1` festlegen, wird die Instanz nicht basierend auf dem Preis entfernt. Der Preis für die Instanz entspricht dem aktuellen Preis für Spot-Instanzen oder dem Preis für eine Standardinstanz, je nachdem, welcher Preis niedriger ist, solange Kapazität und Kontingente verfügbar sind.
 
 ## <a name="eviction-policy"></a>Entfernungsrichtlinie
 
@@ -44,13 +44,13 @@ Durch die Richtlinie *Zuordnung aufheben* werden die entfernten Instanzen in den
 
 Wenn die Instanzen in Ihrer Spot-Skalierungsgruppe beim Entfernen gelöscht werden sollen, können Sie die Entfernungsrichtlinie auf *Löschen* festlegen. Wenn die Entfernungsrichtlinie zum Löschen festgelegt ist, können Sie neue VMs durch Heraufsetzen der Skalierungsgruppeninstanzenanzahl-Eigenschaft erstellen. Die entfernten VMs werden zusammen mit ihren zugrunde liegenden Datenträgern gelöscht, und darum fallen keine Kosten für ihre Speicherung an. Sie können auch die Funktion zur automatischen Skalierung von Skalierungsgruppen verwenden, um zu versuchen, entfernte VMs automatisch zu kompensieren, es gibt jedoch keine Garantie, dass die Zuordnung erfolgreich ist. Die Funktion für die automatische Skalierung sollte nur für Spot-Skalierungsgruppen verwendet werden, wenn Sie die Entfernungsrichtlinie auf „Löschen“ festlegen. So vermeiden Sie Kosten für Datenträger und das Überschreiten von Kontingentgrenzen. 
 
-Benutzer können [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) nutzen, um VM-Benachrichtigungen zu erhalten. Dadurch werden Sie benachrichtigt, wenn Ihre VMs entfernt werden. Anschließend haben Sie vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
+Benutzer können sich für den Empfang von Benachrichtigungen in der VM über [Azure Scheduled Events](../virtual-machines/linux/scheduled-events.md) anmelden. Dadurch werden Sie benachrichtigt, wenn Ihre virtuellen Computer entfernt werden, und Sie haben vor dem Entfernen 30 Sekunden Zeit, Aufträge abzuschließen und die VMs herunterzufahren. 
 
 
 ## <a name="deploying-spot-vms-in-scale-sets"></a>Bereitstellen von Spot-VMs in Skalierungsgruppen
 
 Zum Bereitstellen von Spot-VMs in Skalierungsgruppen können Sie das neue *Priority*-Flag auf *Spot* festlegen. Für alle VMs in Ihrer Skalierungsgruppe wird „Spot“ festgelegt. Verwenden Sie zum Erstellen einer Skalierungsgruppe mit Spot-VMs eine der folgenden Methoden:
-- [Azure-Portal](#portal)
+- [Azure portal](#portal)
 - [Azure-Befehlszeilenschnittstelle](#azure-cli)
 - [Azure PowerShell](#powershell)
 - [Azure-Ressourcen-Manager-Vorlagen](#resource-manager-templates)
@@ -146,17 +146,17 @@ Im folgenden Beispiel wird eine Linux-Spot-Skalierungsgruppe mit der Bezeichnung
 
 **F:** Was kann ich tun, wenn ich nach dem Entfernen immer noch Kapazität benötige?
 
-**A:** Es wird empfohlen, anstelle von Spot-VMs Standard-VMS zu verwenden, wenn Sie sofort Kapazität benötigen.
+**A:** Es wird empfohlen, anstelle von Spot-VMs Standard-VMs zu verwenden, wenn Sie sofort Kapazität benötigen.
 
 
 **F:** Wie werden Kontingente für Spot-Instanzen verwaltet?
 
-**A:** Für Spot-Instanzen und Standardinstanzen werden getrennte Kontingentpools verwendet. Das Spot-Kontingent wird von VMs und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
+**A:** Für Spot-Instanzen und Standardinstanzen werden getrennte Kontingentpools verwendet. Das Spotkontingent wird von virtuellen Computern und Skalierungsgruppeninstanzen gemeinsam genutzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
 
 
-**F:** Kann ich ein zusätzliches Kontingent für Spot-VMs anfordern?
+**F:** Kann ich ein zusätzliches Kontingent für Spot anfordern?
 
-**A:** Ja, Sie können das [Standardverfahren für die Kontingentanforderung](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests) nutzen, um eine Erhöhung Ihres Kontingents für Spot-VMs anzufordern.
+**A:** Ja, Sie können eine Anforderung zur Erhöhung Ihres Kontingents für Spot-VMs über den [Standard-Kontingentanforderungsprozess](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests) übermitteln.
 
 
 **F:** Kann ich vorhandene Skalierungsgruppen in Spot-Skalierungsgruppen konvertieren?
@@ -190,13 +190,13 @@ Im folgenden Beispiel wird eine Linux-Spot-Skalierungsgruppe mit der Bezeichnung
 
 <a name="channel"></a>
 
-| Azure-Kanäle               | Verfügbarkeit von Azure Spot-VMs       |
+| Azure-Kanäle               | Azure-Spot-VM-Verfügbarkeit       |
 |------------------------------|-----------------------------------|
 | Enterprise Agreement         | Ja                               |
 | Nutzungsbasierte Bezahlung                | Ja                               |
-| Clouddienstanbieter | [Partner kontaktieren](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
+| Clouddienstanbieter | [Kontaktieren Sie Ihren Partner.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Vorteile                     | Nicht verfügbar                     |
-| Gesponsert                    | Nicht verfügbar                     |
+| Sponsoren                    | Nicht verfügbar                     |
 | Kostenlose Testversion                   | Nicht verfügbar                     |
 
 

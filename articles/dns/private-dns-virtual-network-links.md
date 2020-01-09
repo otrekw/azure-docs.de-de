@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963726"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646760"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Was ist eine virtuelle Netzwerkverknüpfung?
 
@@ -33,7 +33,7 @@ Eine private DNS-Zone kann mehrere virtuelle Auflösungsnetzwerke aufweisen, und
 
 ## <a name="limits"></a>Einschränkungen
 
-Um zu verstehen, wie viele Registrierungs- und Auflösungsnetzwerke Sie mit privaten DNS-Zonen verknüpfen können, finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits).
+Um zu verstehen, wie viele Registrierungs- und Auflösungsnetzwerke Sie mit privaten DNS-Zonen verknüpfen können, finden Sie unter [Azure DNS-Limits](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits).
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
 

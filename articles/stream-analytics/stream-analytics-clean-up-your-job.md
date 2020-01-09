@@ -1,20 +1,19 @@
 ---
 title: Bereinigen Ihres Azure Stream Analytics-Auftrags
 description: Dieser Artikel macht Sie mit verschiedenen Methoden zum Löschen Ihrer Azure Stream Analytics-Aufträge bekannt.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 093ada2b2751540b986154be3a2f333784c1259f
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: d99920417f20034da1001a821c02376ac19274d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173286"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426485"
 ---
 # <a name="stop-or-delete-your-azure-stream-analytics-job"></a>Beenden oder Löschen Ihres Azure Stream Analytics-Auftrags
 

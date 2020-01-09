@@ -1,19 +1,15 @@
 ---
 title: Erweiterte automatische Skalierung mit Azure Virtual Machines
 description: Hier werden Resource Manager und VM Scale Sets mit mehreren Regeln und Profilen verwendet, die mit Skalierungsaktionen E-Mails senden und Webhook-URLs aufrufen.
-author: anirudhcavale
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 02/22/2016
-ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60787783"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364219"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.

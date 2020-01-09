@@ -3,17 +3,17 @@ title: Verwenden der Azure IoT-Erweiterung für Azure CLI zum Interagieren mit I
 description: Installieren Sie die Azure IoT-Erweiterung für Azure CLI, und verwenden Sie sie zum Interagieren mit den IoT Plug &Play-Geräten, die mit Ihrem IoT-Hub verbunden sind.
 author: ChrisGMsft
 ms.author: chrisgre
-ms.date: 09/08/2019
+ms.date: 12/26/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: eb4f607672c39d45b7791ccaeeb6f7cff9393cb9
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: f4e255309d32026b7f2bb4de67fce7ec37c753f6
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571017"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529574"
 ---
 # <a name="install-and-use-the-azure-iot-extension-for-the-azure-cli"></a>Installieren und Verwenden der Azure IoT-Erweiterung für die Azure CLI
 
@@ -26,7 +26,7 @@ Die Azure IoT-Erweiterung für die Azure CLI ist ein Befehlszeilentool zum Inter
 - Arbeiten mit Geräteeigenschaften.
 - Aufrufen von Gerätebefehlen.
 
-In diesem Artikel erfahren Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 - Installieren und Konfigurieren der Azure IoT-Erweiterung für die Azure CLI.
 - Verwenden der Erweiterung zum Interagieren mit Ihren Geräten und Testen Ihrer Geräte.
@@ -88,7 +88,7 @@ Auflisten aller Schnittstellen, die von einem IoT Plug & Play-Gerät registriert
 az iot dt list-interfaces --hub-name {YourIoTHubName} --device-id {YourDeviceID}
 ```
 
-#### <a name="properties"></a>Properties
+#### <a name="properties"></a>Eigenschaften
 
 Auflisten aller Eigenschaften und Eigenschaftswerte für eine Schnittstelle auf einem Gerät:
 

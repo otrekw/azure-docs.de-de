@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 7c5c1e91e97087bf28b03629659e5194f67c22b3
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 06c8784c235b157f5799bb727df9784dfaa2f376
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680028"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75440544"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery (CI/CD) in Azure Data Factory
 
@@ -56,11 +56,11 @@ Wählen Sie in der Dropdownliste **ARM-Vorlage** den Eintrag **Export ARM templa
 
 Wählen Sie in den Test- und Produktionsfactorys den Eintrag **Import ARM template** (ARM-Vorlage importieren) aus. Mit dieser Aktion gelangen Sie zum Azure-Portal, in dem sie die exportierte Vorlage importieren können. Wählen Sie **Eigene Vorlage im Editor erstellen** aus, um den Editor für Resource Manager-Vorlagen zu öffnen.
 
-![](media/continuous-integration-deployment/continuous-integration-image3.png) 
+![Benutzerdefinierte Bereitstellung – Erstellen einer eigenen Vorlage](media/continuous-integration-deployment/custom-deployment-build-your-own-template.png) 
 
 Klicken Sie auf **Datei laden**, und wählen Sie die generierte Resource Manager-Vorlage aus.
 
-![](media/continuous-integration-deployment/continuous-integration-image4.png)
+![Benutzerdefinierte Bereitstellung – Vorlage bearbeiten](media/continuous-integration-deployment/custom-deployment-edit-template.png)
 
 Geben Sie im Einstellungsbereich die Konfigurationswerte ein, z. B. die Anmeldeinformationen für verknüpfte Dienste. Klicken Sie anschließend auf **Kaufen**, um die Resource Manager-Vorlage bereitzustellen.
 
