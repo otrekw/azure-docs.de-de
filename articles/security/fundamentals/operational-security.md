@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 69b25f22d448436db5e906a3b56b5e50ec412b40
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a4a4393a25bfa49a8074793b572111f69dcc17c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934675"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459643"
 ---
 # <a name="azure-operational-security"></a>Azure Operational Security
 ## <a name="introduction"></a>Einführung
@@ -103,7 +103,7 @@ Geschützte Daten werden in Azure Backup in einem Sicherungstresor gespeichert, 
 [Azure Monitor](../../security-center/security-center-intro.md) ist eine cloudbasierte IT-Verwaltungslösung von Microsoft, die Ihnen die Verwaltung und den Schutz Ihrer lokalen und cloudbasierten Infrastruktur erleichtert.
 
 
-[Verwaltungslösungen](../../monitoring/monitoring-solutions.md) sind vordefinierte Logiksätze zur Implementierung eines bestimmten Verwaltungsszenarios unter Verwendung mindestens eines Azure Monitor-Diensts. Von Microsoft und von Partnern werden verschiedene Lösungen angeboten, die Sie problemlos Ihrem Azure-Abonnement hinzufügen und dadurch den Nutzen Ihrer Azure Monitor-Investition erhöhen können. Partner können eigene Lösungen zur Unterstützung ihrer Anwendungen und Dienste erstellen und sie Benutzern über den Azure Marketplace oder über Schnellstartvorlagen zur Verfügung stellen.
+[Verwaltungslösungen](../../monitoring/monitoring-solutions.md) sind vordefinierte Logiksätze zur Implementierung eines bestimmten Verwaltungsszenarios unter Verwendung mindestens eines Azure Monitor-Diensts. Von Microsoft und von Partnern werden verschiedene Lösungen angeboten, die Sie problemlos Ihrem Azure-Abonnement hinzufügen und dadurch den Nutzen Ihrer Azure Monitor-Investition erhöhen können. Partner können eigene Lösungen zur Unterstützung ihrer Anwendungen und Dienste erstellen und sie Benutzern über Azure Marketplace oder über Schnellstartvorlagen zur Verfügung stellen.
 
 
 ![Verwaltungslösungen](./media/operational-security/azure-operational-security-fig4.png)
@@ -114,7 +114,7 @@ Wenn Sie eine Bereitstellung erstellen, werden erforderliche Updates mithilfe vo
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center unterstützt Sie beim Schützen Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Innerhalb des Diensts können Sie Richtlinien nicht nur für Ihre Azure-Abonnements definieren, sondern auch für [Ressourcengruppen](../../azure-resource-manager/resource-group-overview.md#resource-groups), sodass Sie differenzierter vorgehen können.
+Azure Security Center unterstützt Sie beim Schützen Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Innerhalb des Diensts können Sie Richtlinien nicht nur für Ihre Azure-Abonnements definieren, sondern auch für [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups), sodass Sie differenzierter vorgehen können.
 
 ### <a name="security-policies-and-recommendations"></a>Sicherheitsrichtlinien und -empfehlungen
 
@@ -144,7 +144,7 @@ Security Center sammelt Daten von Ihren virtuellen Computern (VMs), um den Siche
 
 -   Ihre virtuellen Computer: Verwendet Konfigurationsinformationen und Informationen zu Sicherheitsereignissen – beispielsweise Windows-Ereignis- und -Überwachungsprotokolle, IIS-Protokolle, Syslog-Nachrichten und Absturzabbilddateien von Ihren virtuellen Computern.
 
-### <a name="data-protection"></a>Datenschutz
+### <a name="data-protection"></a>Schutz von Daten
 
 Azure Security Center erfasst und verarbeitet sicherheitsbezogene Daten (einschließlich Konfigurationsinformationen, Metadaten, Ereignisprotokolle, Absturzabbilddateien und Ähnliches), um Kunden bei der Vermeidung, Erkennung und Behandlung von Bedrohungen zu unterstützen. Microsoft hält strenge Compliance- und Sicherheitsrichtlinien ein – angefangen bei der Codierung bis hin zum Betreiben von Diensten.
 
@@ -197,7 +197,7 @@ Windows-Ereignissystemprotokolle sind z. B. eine Kategorie des Diagnoseprotokol
 
 Diagnoseprotokolle unterscheiden sich vom [Aktivitätsprotokoll (früher als Überwachungsprotokoll oder Betriebsprotokoll bezeichnet)](../../azure-monitor/platform/activity-logs-overview.md). Das Aktivitätsprotokoll bietet Einblicke in Vorgänge, die für Ressourcen Ihres Abonnements durchgeführt wurden. Diagnoseprotokolle bieten Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.
 
-### <a name="metrics"></a>Metriken
+### <a name="metrics"></a>metrics
 
 Mit Azure Monitor können Sie Telemetriedaten verwenden, um sich einen Überblick über Leistung und Integrität Ihrer Workloads in Azure zu verschaffen. Die wichtigsten Typen von Telemetriedaten sind Metriken (auch Leistungsindikatoren genannt), die von den meisten Azure-Ressourcen ausgegeben werden. Azure Monitor bietet Ihnen verschiedene Möglichkeiten, diese [Metriken](../../monitoring/monitoring-data-collection.md) für die Überwachung und Problembehandlung zu konfigurieren und zu nutzen. Metriken sind eine wertvolle Quelle für Telemetriedaten, mit denen Sie folgende Aufgaben ausführen können:
 
@@ -260,7 +260,7 @@ Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 > Zur Optimierung der Leistung sollten Sie die Anzahl stark ausgelasteter Datenträger begrenzen, die an den virtuellen Computer angefügt sind, um eine mögliche Drosselung zu vermeiden. Wenn nicht alle Datenträger gleichzeitig hoch ausgelastet sind, kann das Speicherkonto eine höhere Anzahl von Datenträgern unterstützen.
 
 > [!Note]
-> Weitere Informationen zu Speicherkontobegrenzungen finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](../../storage/common/storage-scalability-targets.md).
+> Weitere Informationen zu Speicherkontogrenzwerten finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md).
 
 
 Die folgenden Typen authentifizierter und anonymer Anforderungen werden protokolliert.

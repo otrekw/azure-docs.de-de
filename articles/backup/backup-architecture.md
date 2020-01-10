@@ -3,12 +3,12 @@ title: Übersicht über die Architektur
 description: Übersicht über die Architektur, die Komponenten und die Prozesse des Azure Backup-Diensts.
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: de532bb02b4ecf5e912a71df404418338325d582
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173522"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450199"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Azure Backup-Architektur und -Komponenten
 
@@ -105,7 +105,7 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 ## <a name="architecture-built-in-azure-vm-backup"></a>Architektur: Integrierte Azure-VM-Sicherung
 
 1. Wenn Sie die Sicherung für einen virtuellen Azure-Computer aktivieren, wird eine Sicherung gemäß dem von Ihnen angegebenen Zeitplan ausgeführt.
-1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn der VM ausgeführt wird.
+1. Während der ersten Sicherung wird auf dem virtuellen Computer eine Sicherungserweiterung installiert, wenn die VM ausgeführt wird.
     - Für virtuelle Windows-Computer wird die Erweiterung „VMSnapshot“ installiert.
     - Für virtuelle Linux-Computer wird die Erweiterung „VMSnapshot Linux“ installiert.
 1. Die Erweiterung erstellt eine Momentaufnahme auf Speicherebene.
@@ -174,7 +174,7 @@ Weitere Informationen zu Datenträgerspeicher und den verfügbaren Datenträgert
 Sie können virtuelle Azure-Computer mithilfe von Storage Premium mit Azure Backup sichern:
 
 - Während des Vorgangs zum Sichern virtueller Computer mit Storage Premium erstellt der Backup-Dienst im Speicherkonto einen temporären Stagingspeicherort mit dem Namen *AzureBackup-* . Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts.
-- Stellen Sie sicher, dass das Premium-Speicherkonto über genügend freien Speicherplatz für den temporären Stagingspeicherort verfügt. [Weitere Informationen](../storage/common/storage-scalability-targets.md#premium-performance-storage-account-scale-limits) Ändern Sie den Stagingspeicherort nicht.
+- Stellen Sie sicher, dass das Premium-Speicherkonto über genügend freien Speicherplatz für den temporären Stagingspeicherort verfügt. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Seitenblobspeicher mit Premium-Leistung](../storage/blobs/scalability-targets-premium-page-blobs.md). Ändern Sie den Stagingspeicherort nicht.
 - Nach Abschluss des Sicherungsauftrags wird der Stagingspeicherort gelöscht.
 - Die Kosten für den Speicher, der für den Stagingspeicherort genutzt wird, entsprechen den [Preisen für Storage Premium](../virtual-machines/windows/disks-types.md#billing).
 

@@ -2,14 +2,14 @@
 title: Problembehandlung bei der Systemstatussicherung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme bei der Systemstatussicherung für lokale Windows-Server beheben können.
 ms.reviewer: srinathv
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/22/2019
-ms.openlocfilehash: 116f8f40193ea276c6150452b0aa6f2d2ce5bc6c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: fde5fd9f2464c2aff9a7a34ffa440ab9a6a1ca51
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172622"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665041"
 ---
 # <a name="troubleshoot-system-state-backup"></a>Problembehandlung bei der Systemstatussicherung
 
@@ -29,16 +29,16 @@ Wir empfehlen, dass Sie die nachstehende Prüfung durchführen, bevor Sie mit de
 - [Sicherstellen, dass nicht unterstützte Laufwerke und Dateien mit nicht unterstützten Attributen aus der Sicherung ausgeschlossen werden](backup-support-matrix-mars-agent.md#supported-drives-or-volumes-for-backup)
 - Vergewissern Sie sich, dass die **Systemuhr** des geschützten Systems auf die richtige Zeitzone festgelegt ist. <br>
 - [Stellen Sie sicher, dass auf dem Server mindestens .NET Framework Version 4.5.2 oder höher installiert ist.](https://www.microsoft.com/download/details.aspx?id=30653)<br>
-- Wenn Sie **Ihren Server erneut in einem Tresor registrieren** möchten: <br>
-  - Stellen Sie sicher, dass der Agent auf dem Server deinstalliert und aus dem Portal gelöscht wurde. <br>
+- Wenn Sie **Ihren Server erneut bei einem Tresor registrieren** möchten: <br>
+  - Stellen Sie sicher, dass der Agent auf dem Server deinstalliert und aus dem Portal gelöscht wird. <br>
   - Verwenden Sie dieselbe Passphrase, die ursprünglich zum Registrieren des Servers verwendet wurde. <br>
-- Sorgen Sie bei einer Offlinesicherung dafür, dass Azure PowerShell, Version 3.7.0, sowohl auf dem Quell- als auch auf dem Zielcomputer installiert ist, bevor Sie mit dem Offlinesicherungsvorgang beginnen.
+- Wenn es sich um eine Offlinesicherung handelt, sorgen Sie dafür, dass Azure PowerShell, Version 3.7.0, sowohl auf dem Quell- als auch auf dem Zielcomputer installiert ist, bevor Sie mit dem Offlinesicherungsvorgang beginnen.
 - [Aspekte, wenn der Backup-Agent auf einem virtuellen Azure-Computer ausgeführt wird](https://aka.ms/AB-AA4dwtr)
 
 ### <a name="limitation"></a>Einschränkung
 
 - Eine Systemstatuswiederherstellung auf anderer Hardware wird von Microsoft nicht empfohlen.
-- Die Systemstatussicherung unterstützt derzeit „lokale“ Windows-Server. Für virtuelle Azure-Computer steht diese Funktion nicht zur Verfügung.
+- Die Systemstatussicherung unterstützt derzeit „lokale“ Windows-Server. Für Azure-VMs ist diese Funktion nicht verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,9 +94,9 @@ Stellen Sie sicher, dass die folgenden Dienste ausgeführt werden:
 
 **Dienstname** | **Starttyp**
 --- | ---
-Remoteprozeduraufruf (RPC) | Automatisch
-COM+-Ereignissystem (EventSystem) | Automatisch
-Benachrichtigungsdienst für Systemereignisse (SENS) | Automatisch
+Remoteprozeduraufruf (RPC) | Automatic
+COM+-Ereignissystem (EventSystem) | Automatic
+Benachrichtigungsdienst für Systemereignisse (SENS) | Automatic
 Volumeschattenkopie-Dienst (VSS) | Manuell
 Microsoft-Softwareschattenkopie-Anbieter (SWPRV) | Manuell
 
@@ -131,7 +131,7 @@ Wenn bei dem Auftrag ein Fehler auftritt, ist dies ein Hinweis auf ein Problem v
 
 | Symptom | Ursache | Lösung
 | -- | -- | --
-| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: „VSS-Fehler bei WSB-Auftrag. Überprüfen Sie die VSS-Ereignisprotokolle, um den Fehler zu beheben.“<br/><br/> - In VSS-Anwendungsereignisprotokollen ist das folgende Fehlerprotokoll vorhanden: „Von einem VSS Writer wurde ein Ereignis mit dem Fehler 0x800423f2 zurückgewiesen. Das Zeitlimit des Generators für den Zeitraum zwischen dem Freeze- und dem Thaw-Ereignis wurde überschritten.“| VSS Writer kann aufgrund des Mangels an CPU- und Arbeitsspeicherressourcen auf dem Computer nicht rechtzeitig abgeschlossen werden. <br/><br/> Der VSS Writer wird bereits von einer anderen Sicherungssoftware verwendet. Daher konnte der Momentaufnahmevorgang für diese Sicherung nicht abgeschlossen werden. | Warten Sie, bis CPU-/Arbeitsspeicherressourcen auf dem System freigegeben wurden, oder brechen Sie Prozesse ab, die zu viele Arbeitsspeicher-/CPU-Ressourcen beanspruchen, und wiederholen Sie den Vorgang. <br/><br/>  Warten Sie, bis die laufende Sicherung abgeschlossen ist, und wiederholen Sie den Vorgang zu einem späteren Zeitpunkt, wenn keine Sicherungen auf dem Computer ausgeführt werden.
+| - Fehler des MARS-Agents mit der folgenden Fehlermeldung: „VSS-Fehler bei WSB-Auftrag. Überprüfen Sie die VSS-Ereignisprotokolle, um den Fehler zu beheben.“<br/><br/> - In VSS-Anwendungsereignisprotokollen ist das folgende Fehlerprotokoll vorhanden: „Von einem VSS Writer wurde ein Ereignis mit dem Fehler 0x800423f2 zurückgewiesen. Das Zeitlimit des Generators für den Zeitraum zwischen dem Freeze- und dem Thaw-Ereignis wurde überschritten.“| VSS Writer kann aufgrund des Mangels an CPU- und Arbeitsspeicherressourcen auf dem Computer nicht rechtzeitig abgeschlossen werden. <br/><br/> Der VSS Writer wird bereits von einer anderen Sicherungssoftware verwendet. Daher konnte der Momentaufnahmevorgang für diese Sicherung nicht abgeschlossen werden. | Warten Sie, bis CPU-/Arbeitsspeicherressourcen auf dem System freigegeben wurden, oder brechen Sie die Prozesse ab, die zu viele Arbeitsspeicher-/CPU-Ressourcen beanspruchen, und wiederholen Sie den Vorgang. <br/><br/>  Warten Sie, bis die laufende Sicherung abgeschlossen ist, und wiederholen Sie den Vorgang zu einem späteren Zeitpunkt, wenn keine Sicherungen auf dem Computer ausgeführt werden.
 
 ### <a name="insufficient-disk-space-to-grow-shadow-copies"></a>Nicht genügend Speicherplatz zum Vergrößern des Schattenkopiespeichers
 

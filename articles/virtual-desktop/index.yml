@@ -5,7 +5,7 @@ metadata:
   title: "Dokumentation zu Windows Virtual\_Desktop | Microsoft-Dokumentation"
   description: "Windows Virtual Desktop für Azure ist eine in der Cloud virtualisierte Windows\_10\_Enterprise-Mehrbenutzerumgebung."
   author: Heidilohr
-  manager: daveba
+  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page

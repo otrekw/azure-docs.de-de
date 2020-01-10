@@ -4,12 +4,12 @@ description: Azure-Funktion zur sofortigen Wiederherstellung und häufig gestell
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7a962ff42125b262f6ec6673f75b0afd2954de24
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391301"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Verbesserte Sicherungs- und Wiederherstellungsleistung mit der Azure Backup-Funktion zur sofortigen Wiederherstellung
 
@@ -52,7 +52,7 @@ Standardmäßig werden Momentaufnahmen zwei Tage lang aufbewahrt. Mit diesem Fea
 
 ## <a name="cost-impact"></a>Kostenauswirkung
 
-Die inkrementellen Momentaufnahmen werden im Speicherkonto des virtuellen Computers gespeichert, der für die sofortige Wiederherstellung verwendet wird. Inkrementelle Momentaufnahme bedeutet, dass der durch eine Momentaufnahme belegte Speicherplatz dem Platz entspricht, der von Seiten belegt wird, die nach der Erstellung der Momentaufnahme geschrieben werden. Die Abrechnung erfolgt weiterhin pro GB für den durch die Momentaufnahme belegten Speicherplatz, und der Preis pro GB entspricht dem Preis auf der [Preisseite](https://azure.microsoft.com/pricing/details/managed-disks/).
+Die inkrementellen Momentaufnahmen werden im Speicherkonto des virtuellen Computers gespeichert, der für die sofortige Wiederherstellung verwendet wird. Inkrementelle Momentaufnahme bedeutet, dass der durch eine Momentaufnahme belegte Speicherplatz dem Platz entspricht, der von Seiten belegt wird, die nach der Erstellung der Momentaufnahme geschrieben werden. Die Abrechnung erfolgt weiterhin pro GB für den durch die Momentaufnahme belegten Speicherplatz, und der Preis pro GB entspricht dem Preis auf der [Preisseite](https://azure.microsoft.com/pricing/details/managed-disks/). Bei virtuellen Computern, die nicht verwaltete Datenträger verwenden, können die Momentaufnahmen im Menü für die VHD-Datei der einzelnen Datenträger angezeigt werden. Bei verwalteten Datenträgern werden Momentaufnahmen in einer RPC-Ressource (Wiederherstellungspunktsammlung) in einer festgelegten Ressourcengruppe gespeichert, und die Momentaufnahmen selbst sind nicht direkt sichtbar.
 
 >[!NOTE]
 > Die Aufbewahrung einer Momentaufnahme ist für wöchentliche Richtlinien auf fünf Tage festgelegt.
@@ -65,7 +65,7 @@ Im Azure-Portal wird ein zusätzliches Feld auf dem Blatt **VM-Sicherungsrichtli
 
 ![Funktion zur sofortigen Wiederherstellung](./media/backup-azure-vms/instant-restore-capability.png)
 
-### <a name="using-powershell"></a>Verwenden von PowerShell
+### <a name="using-powershell"></a>PowerShell
 
 >[!NOTE]
 > Ab Azure PowerShell, Version 1.6.0, können Sie die Aufbewahrungsdauer von Momentaufnahmen für sofortige Wiederherstellung in Richtlinien mithilfe von PowerShell aktualisieren.

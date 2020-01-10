@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Konfiguration eines Tre
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: cbd958dd71d2d62f7b4c7e8d66ab7e56dc679a51
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 3739f95e3962def9ab669970c48b2d1c546fdc0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998724"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75390538"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualisieren von Konfigurationen eines Azure Recovery Services-Tresors mithilfe der REST-API
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Die erfolgreiche Antwort für den GET-Vorgang sieht wie folgt aus:
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,16 +83,16 @@ Die folgenden allgemeinen Definitionen werden verwendet, um einen Anforderungste
 
 Ausführlichere Informationen finden Sie in der [REST-API-Dokumentation](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body).
 
-|NAME  |Erforderlich  |Typ  |BESCHREIBUNG  |
+|Name  |Erforderlich  |type  |BESCHREIBUNG  |
 |---------|---------|---------|---------|
-|eTag     |         |   Zeichenfolge      |  Optionales ETag       |
-|location     |  true       |Zeichenfolge         |   Speicherort von Ressourcen      |
+|eTag     |         |   String      |  Optionales ETag       |
+|location     |  true       |String         |   Ressourcenspeicherort      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschaften des Tresors       |
 |tags     |         | Object        |     Ressourcentags    |
 
 #### <a name="example-request-body"></a>Beispiel für Anforderungstext
 
-Im folgenden Beispiel wird der Zustand des vorläufigen Löschens in „Disabled“ (Deaktiviert) geändert:
+Im folgenden Beispiel wird der Zustand des vorläufigen Löschens in „Disabled“ (Deaktiviert) geändert.
 
 ```json
 {
@@ -107,7 +107,7 @@ Im folgenden Beispiel wird der Zustand des vorläufigen Löschens in „Disabled
 
 Die erfolgreiche Antwort für den PATCH-Vorgang sieht wie folgt aus:
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

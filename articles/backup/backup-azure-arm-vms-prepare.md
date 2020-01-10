@@ -3,12 +3,12 @@ title: Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 description: Beschreibt das Sichern virtueller Azure-Computer in einem Recovery Services-Tresor mit Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173346"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450143"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Sichern virtueller Azure-Computer in einem Recovery Services-Tresor
 
@@ -63,9 +63,8 @@ Nach Abschluss des Erstellungsvorgangs wird der Tresor in der Liste der Recovery
 
 ![Liste der Sicherungstresore](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
-> [!NOTE]
-> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden so lange aufbewahrt, wie dies in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist (in Tagen).  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen.<br>
-Diese Ressourcengruppe sollte von allen Namens-/Tageinschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Sicherungsfehlern führen würde.
+>[!NOTE]
+> Azure Backup ermöglicht jetzt die Anpassung des vom Azure Backup-Dienst erstellten Ressourcengruppennamens. Weitere Informationen finden Sie unter [Azure Backup-Ressourcengruppe für virtuelle Computer](backup-during-vm-creation.md#azure-backup-resource-group-for-virtual-machines).
 
 ### <a name="modify-storage-replication"></a>Ändern der Speicherreplikation
 
@@ -170,7 +169,7 @@ Der Auftragsstatus kann abhängig von den folgenden Szenarien variieren:
 **Momentaufnahme** | **Daten in Tresor übertragen** | **Auftragsstatus**
 --- | --- | ---
 Abgeschlossen | In Bearbeitung | In Bearbeitung
-Abgeschlossen | Übersprungen | Abgeschlossen
+Abgeschlossen | Ausgelassen | Abgeschlossen
 Abgeschlossen | Abgeschlossen | Abgeschlossen
 Abgeschlossen | Fehler | Mit Warnung abgeschlossen
 Fehler | Fehler | Fehler

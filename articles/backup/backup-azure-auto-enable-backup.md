@@ -3,12 +3,12 @@ title: Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von
 description: In diesem Artikel wird beschrieben, wie Sie Azure Policy für die automatische Aktivierung der Sicherung für alle VMs verwenden, die in einem bestimmten Bereich erstellt wurden.
 ms.topic: conceptual
 ms.date: 11/08/2019
-ms.openlocfilehash: ea3c0d217c8495078e91e171caef695bb32d129b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a3b526d654936d4e7ec89127a9074146c1b0179
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979943"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450132"
 ---
 # <a name="auto-enable-backup-on-vm-creation-using-azure-policy"></a>Automatisches Aktivieren der Sicherung bei der VM-Erstellung mithilfe von Azure Policy
 
@@ -26,6 +26,8 @@ Heute bietet Azure Backup eine integrierte Richtlinie (unter Verwendung von Azur
 
 * Der Bereich „Verwaltungsgruppe“ wird derzeit nicht unterstützt.
 
+* Die integrierte Richtlinie ist in nationalen Clouds zurzeit nicht verfügbar.
+
 ## <a name="using-the-built-in-policy"></a>Verwenden der integrierten Richtlinie
 
 Um die Richtlinie dem erforderlichen Bereich zuzuweisen, führen Sie die folgenden Schritte aus:
@@ -37,7 +39,7 @@ Um die Richtlinie dem erforderlichen Bereich zuzuweisen, führen Sie die folgend
 4. Klicken Sie auf den Namen der Richtlinie. Sie werden zur detaillierten Definition für diese Richtlinie umgeleitet.
 ![Blatt „Richtliniendefinition“](./media/backup-azure-auto-enable-backup/policy-definition-blade.png)
 5. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Zuweisen**. Dadurch werden Sie zum Blatt **Richtlinie zuweisen** umgeleitet.
-6. Klicken Sie unter **Grundlagen** auf die drei Punkte neben dem Feld **Bereich**. Dadurch wird ein Blatt mit dem richtigen Kontext geöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für VMs in einer bestimmten Ressourcengruppe angewendet wird.
+6. Klicken Sie unter **Grundlagen** auf die drei Punkte neben dem Feld **Bereich**. Dadurch wird ein Blatt mit dem richtigen Kontextgeöffnet, auf dem Sie das Abonnement auswählen können, auf das die Richtlinie angewendet werden soll. Optional können Sie auch eine Ressourcengruppe auswählen, damit die Richtlinie nur für VMs in einer bestimmten Ressourcengruppe angewendet wird.
 ![Grundlegendes zur Richtlinienzuweisung](./media/backup-azure-auto-enable-backup/policy-assignment-basics.png)
 7. Wählen Sie auf der Registerkarte **Parameter** einen Speicherort aus der Dropdownliste aus, und wählen Sie dann den Tresor und die Sicherungsrichtlinie aus, denen die VMs im Bereich zugeordnet werden müssen.
 ![Parameter der Richtlinienzuweisung](./media/backup-azure-auto-enable-backup/policy-assignment-parameters.png)

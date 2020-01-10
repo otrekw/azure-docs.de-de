@@ -3,12 +3,12 @@ title: Sichern von Dateien und Ordnern – Häufig gestellte Fragen
 description: Hierin geht es um häufig gestellte Fragen zum Sichern von Dateien und Ordnern mit Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: d2049036d52eea29b03a2ca3cea29e3d6c52e9cc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173058"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611627"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Häufig gestellte Fragen zum Sichern von Dateien und Ordnern
 
@@ -98,7 +98,7 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 1. Standardmäßig befindet sich der Ordner „scratch“ unter `\Program Files\Microsoft Azure Recovery Services Agent\Scratch`.
 2. Stellen Sie sicher, dass der Pfad des Speicherorts für den Ordner „scatch“ mit den Werten der folgenden Registrierungsschlüsseleinträge übereinstimmt:
 
-  | Registrierungspfad | Registrierungsschlüssel | Wert |
+  | Registrierungspfad | Registrierungsschlüssel | value |
   | --- | --- | --- |
   | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
   | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
@@ -113,7 +113,7 @@ Die Größe des Cacheordners bestimmt die Menge der Daten, die Sie sichern.
 3. Verschieben Sie nicht die Dateien! Kopieren Sie den Cacheordner stattdessen auf ein anderes Laufwerk mit ausreichend Speicherplatz.
 4. Aktualisieren Sie die folgenden Registrierungseinträge mit dem Pfad zum neuen Cacheordner.
 
-    | Registrierungspfad | Registrierungsschlüssel | Wert |
+    | Registrierungspfad | Registrierungsschlüssel | value |
     | --- | --- | --- |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
     | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*Neuer Speicherort des Cacheordners* |
@@ -141,7 +141,7 @@ Die folgenden Attribute oder Kombinationen dieser Attribute werden für den Cach
 
 * Verschlüsselt
 * Dedupliziert
-* Komprimiert
+* Compressed
 * Platzsparend
 * Analysepunkt
 
@@ -152,10 +152,43 @@ Der Cacheordner und die Metadaten-VHD verfügen nicht über die erforderlichen A
 Ja, Sie können die Option **Eigenschaften ändern** im MARS-Agent verwenden, um die Bandbreite und den Zeitpunkt anzupassen. [Weitere Informationen](backup-configure-vault.md#enable-network-throttling)
 
 ## <a name="restore"></a>Restore
+### <a name="manage"></a>Verwalten
+**Kann ich eine Wiederherstellung vornehmen, wenn ich meine Passphrase vergessen habe?**<br>
+Der Azure Backup-Agent benötigt eine Passphrase (die Sie bei der Registrierung angegeben haben), um die gesicherten Daten während der Wiederherstellung zu entschlüsseln. Überprüfen Sie die folgenden Szenarien, um Ihre Möglichkeiten bei einer verlorenen Passphrase zu verstehen:<br>
+
+| Ursprünglicher Computer <br> *(Quellcomputer, auf dem Sicherungen erstellt wurden)* | Passphrase | Verfügbare Optionen |
+| --- | --- | --- |
+| Verfügbar |Verloren |Wenn Ihr ursprünglicher Computer (auf dem die Sicherungen erstellt wurden) verfügbar ist und noch bei demselben Recovery Services-Tresor registriert ist, können Sie die Passphrase mithilfe der folgenden [Schritte](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase) erneut generieren.  |
+| Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
+
+Unter den folgenden Bedingungen ziehen Sie Folgendes in Betracht:
+- Wenn Sie den Agent deinstallieren und erneut auf dem gleichen ursprünglichen Computer registrieren, und zwar mit
+  - *der gleichen Passphrase*, dann können Sie Ihre gesicherten Daten wiederherstellen.<br>
+  - *einer anderen Passphrase*, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.
+-   Wenn Sie den Agent auf einem *anderen Computer* installieren, und zwar mit<br>
+  - der gleichen Passphrase (die auf dem ursprünglichen Computer verwendet wurde), dann können Sie Ihre gesicherten Daten wiederherstellen.<br>
+  - einer anderen Passphrase, dann können Sie Ihre gesicherten Daten nicht wiederherstellen.<br>
+-   Außerdem gilt Folgendes: Wenn der ursprüngliche Computer beschädigt ist (Sie also die Passphrase nicht über die MARS-Konsole neu generieren können), Sie den ursprünglichen, vom MARS-Agent verwendeten Ablageordner aber wiederherstellen bzw. darauf zugreifen können, ist die Wiederherstellung ggf. möglich, wenn Sie das Kennwort vergessen haben. Weitere Unterstützung erhalten Sie vom Kundensupport.
+
+**Wie kann ich die Daten wiederherstellen, wenn ich mein Originalgerät (auf dem die Backups erstellt wurden) verloren habe?**<br>
+
+Wenn Sie über die gleiche Passphrase (die Sie bei der Registrierung angegeben haben) auf dem ursprünglichen Computer verfügen, können Sie die gesicherten Daten auf einem anderen Computer wiederherstellen. Überprüfen Sie die folgenden Szenarien, um Ihre Wiederherstellungsoptionen zu verstehen.
+
+| Ursprünglicher Computer | Passphrase | Verfügbare Optionen |
+| --- | --- | --- |
+| Verloren |Verfügbar |Sie können den MARS-Agent auf einem anderen Computer mit der gleichen Passphrase, die Sie bei der Registrierung des ursprünglichen Computers angegeben haben, installieren und registrieren. Wählen Sie **Wiederherstellungsoption** ** > Anderer Speicherort** aus, um die Wiederherstellung auszuführen. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine).
+| Verloren |Verloren |Die Wiederherstellung der Daten ist nicht möglich, oder die Daten sind nicht verfügbar. |
+
 
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Was geschieht, wenn ich einen laufenden Wiederherstellungsauftrag abbreche?
 
 Wenn ein laufender Wiederherstellungsauftrag abgebrochen wird, wird der Wiederherstellungsvorgang beendet. Alle vor dem Abbruch wiederhergestellten Dateien verbleiben ohne Rollbacks am konfigurierten Ziel (ursprünglicher oder alternativer Speicherort).
+
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>Werden die für Dateien, Ordner und Volumes festgelegten ACLs vom MARS-Agent gesichert und wieder hergestellt?
+
+* Die für Dateien, Ordner und Volumes festgelegten ACLs werden vom MARS-Agent gesichert.
+* Für die Wiederherstellungsoption „Volumewiederherstellung“ bietet der MARS-Agent eine Option zum Überpringen der Wiederherstellung der ACL-Berechtigungen für die wiederherzustellenden Dateien/Ordner.
+* Für die Wiederherstellungsoption für einzelne Dateien und Ordner führt der MARS-Agent die Wiederherstellung mit ACL-Berechtigungen aus (es gibt keine Option zum Überspringen der ACL-Wiederherstellung).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

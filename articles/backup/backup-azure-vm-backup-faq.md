@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172565"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680527"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -111,16 +111,9 @@ Die Option zur Wiederherstellung eines Datenträgers können Sie verwenden, wenn
 
 Ja, Sie können Sicherungen verwenden, die erstellt wurden, bevor Datenträger von nicht verwaltet auf verwaltet umgestellt wurden.
 
-- Standardmäßig wird bei einem VM-Wiederherstellungsauftrag eine nicht verwaltete VM erstellt.
-- Jedoch können Sie Datenträger wiederherstellen und zum Erstellen einer verwalteten VM verwenden.
-
 ### <a name="how-do-i-restore-a-vm-to-a-restore-point-before-the-vm-was-migrated-to-managed-disks"></a>Wie kann ich eine VM auf einen Punkt vor der Migration der VM zu verwalteten Datenträgern wiederherstellen?
 
-Standardmäßig wird bei einem VM-Wiederherstellungsauftrag eine VM mit nicht verwalteten Datenträgern erstellt. So erstellen Sie einen virtuellen Computer mit verwalteten Datenträgern:
-
-1. [Stellen Sie wieder her auf nicht verwaltete Datenträger](tutorial-restore-disk.md#restore-a-vm-disk).
-2. [Konvertieren Sie die wiederhergestellten Datenträger in verwaltete Datenträger](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk).
-3. [Erstellen Sie eine VM mit verwalteten Datenträgern](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
+Der Wiederherstellungsvorgangs bleibt gleich. Wenn der Wiederherstellungspunkt ein Zeitpunkt ist, zu dem der virtuelle Computer über nicht verwaltete Datenträger verfügte, können Sie [Datenträger als nicht verwaltete Datenträger wiederherstellen](tutorial-restore-disk.md#unmanaged-disks-restore). Wenn der virtuelle Computer zu diesem Zeitpunkt über verwaltete Datenträger verfügte, können Sie [Datenträger als verwaltete Datenträger wiederherstellen](tutorial-restore-disk.md#managed-disk-restore). Anschließend können Sie [einen virtuellen Computer aus diesen Datenträgern erstellen](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk).
 
 [Hier](backup-azure-vms-automation.md#restore-an-azure-vm) finden Sie weitere Informationen dazu, wie Sie diese Schritte in PowerShell ausführen.
 

@@ -4,73 +4,16 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665592"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497002"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
 In diesem Artikel wird beschrieben, wie Sie Dateien und Ordner verwalten, die mit Microsoft Azure Recovery Services Agent gesichert wurden.
-
-## <a name="create-a-backup-policy"></a>Erstellen einer Sicherungsrichtlinie
-
-Die Sicherungsrichtlinie legt fest, wann Momentaufnahmen der Daten zur Erstellung von Wiederherstellungspunkten erstellt werden sollen und wie lange die Wiederherstellungspunkte aufbewahrt werden. Sie konfigurieren die Sicherungsrichtlinie mit dem MARS-Agent.
-
-Erstellen Sie eine Richtlinie wie folgt:
-
-1. Nachdem Sie den MARS-Agent heruntergeladen und registriert haben, starten Sie die Agent-Konsole. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.  
-2. Klicken Sie unter **Aktionen** auf **Sicherung planen**.
-
-    ![Planen einer Windows Server-Sicherung](./media/backup-configure-vault/schedule-first-backup.png)
-3. Klicken Sie im Assistenten zum Planen der Sicherung auf **Erste Schritte** und dann auf **Weiter**.
-4. Klicken Sie unter **Elemente für Sicherung auswählen** auf **Elemente hinzufügen**.
-
-    ![Elemente für die Sicherung auswählen](./media/backup-azure-manage-mars/select-item-to-backup.png)
-
-5. Wählen Sie unter **Elemente auswählen**, was Sie sichern möchten, und klicken Sie auf **OK**.
-
-    ![Ausgewählte zu sichernde Elemente](./media/backup-azure-manage-mars/selected-items-to-backup.png)
-
-6. Klicken Sie auf der Seite **Elemente für Sicherung auswählen** auf **Weiter**.
-7. Geben Sie auf der Seite **Sicherungszeitplan angeben** an, wann Sie tägliche oder wöchentliche Sicherungen erstellen möchten. Klicken Sie auf **Weiter**.
-
-    - Ein Wiederherstellungspunkt wird gleichzeitig mit einer Sicherung erstellt.
-    - Die Anzahl der in Ihrer Umgebung erstellten Wiederherstellungspunkte hängt von Ihrem Sicherungszeitplan ab.
-
-8. Es können bis zu drei tägliche Sicherungen geplant werden. Der Screenshot zeigt beispielsweise zwei tägliche Sicherungen, eine um Mitternacht und eine um 18 Uhr.
-
-    ![Täglicher Zeitplan](./media/backup-configure-vault/day-schedule.png)
-
-9. Sie können auch wöchentliche Sicherungen ausführen. Der Screenshot zeigt beispielsweise Sicherungen, die jeden zweiten Sonntag und Mittwoch um 9:30 Uhr und 1:00 Uhr erstellt werden.
-
-    ![Wöchentlicher Zeitplan](./media/backup-configure-vault/week-schedule.png)
-
-10. Geben Sie auf der Seite **Aufbewahrungsrichtlinie auswählen** an, wie Sie historische Kopien Ihrer Daten speichern. Klicken Sie auf **Weiter**.
-
-    - Die Aufbewahrungseinstellungen legen fest, welche Wiederherstellungspunkte gespeichert werden sollen und wie lange sie gespeichert werden.
-    - Wenn Sie beispielsweise Einstellungen für die tägliche Aufbewahrung festlegen, geben Sie an, dass zu dem für die tägliche Aufbewahrung angegebenen Zeitpunkt der neueste Wiederherstellungspunkt für die angegebene Anzahl von Tagen beibehalten wird. Oder Sie können als weiteres Beispiel eine monatliche Aufbewahrungsrichtlinie angeben, die angibt, dass der am 30. eines jeden Monats erstellte Wiederherstellungspunkt für 12 Monate gespeichert werden soll.
-    - Die tägliche und wöchentliche Aufbewahrung der Wiederherstellungspunkte stimmt in der Regel mit dem Sicherungszeitplan überein. Das bedeutet, dass bei planmäßiger Auslösung der Sicherung der von der Sicherung erstellte Wiederherstellungspunkt für die in der täglichen oder wöchentlichen Aufbewahrungsrichtlinie angegebene Dauer gespeichert wird.
-    - Dies ist beispielsweise im folgenden Screenshot dargestellt: – Tägliche Sicherungen um Mitternacht und um 18:00 Uhr werden sieben Tage lang aufbewahrt.
-            – Sicherungen, die an einem Samstag um Mitternacht und 18 Uhr erstellt werden, werden vier Wochen lang aufbewahrt.
-            – Sicherungen, die am Samstag in der letzten Woche des Monats um Mitternacht und 18 Uhr erstellt werden, werden 12 Monate lang aufbewahrt.
-            - Sicherungen, die an einem Samstag in der letzten Märzwoche erstellt wurden, werden zehn Jahre lang aufbewahrt.
-
-    ![Beispiel für die Aufbewahrung](./media/backup-configure-vault/retention-example.png)
-
-11. Wählen Sie in **Erstsicherungstyp auswählen**, ob Sie die Erstsicherung über das Netzwerk ausführen oder eine Offlinesicherung verwenden möchten (weitere Informationen zur Offlinesicherung finden Sie in diesem [Artikel](backup-azure-backup-import-export.md)). Um die Erstsicherung über das Netzwerk auszuführen, wählen Sie **Automatisch über das Netzwerk** aus, und klicken Sie auf **Weiter**.
-
-    ![Erstsicherungstyp](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
-
-12. Lesen Sie sich die Informationen unter **Bestätigung** durch, und klicken Sie dann auf **Fertig stellen**.
-    ![Bestätigen des Sicherungstyps](./media/backup-azure-manage-mars/confirm-backup-type.png)
-
-13. Klicken Sie auf **Schließen**, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
-  ![Bestätigen des Änderns des Sicherungsvorgangs](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
-
-Sie müssen auf jedem Computer, auf dem der Agent installiert ist, eine Richtlinie erstellen.
 
 ## <a name="modify-a-backup-policy"></a>Ändern einer Sicherungsrichtlinie
 
@@ -83,7 +26,7 @@ Wenn Sie die Sicherungsrichtlinie ändern, können Sie neue Elemente hinzufügen
   - Wenn Sie diese Optionen erneut aktivieren, führt dies zu einer ersten vollständigen Sicherung, und neue Richtlinienänderungen werden nicht auf alte Sicherungen angewendet.
   - Durch das Aufheben der Auswahl des gesamten Volumes wird die letzte Sicherung aufbewahrt, ohne dass an der Aufbewahrungsrichtlinie Änderungen vorgenommen werden können.
 - **Ausschlusseinstellungen**: Verwenden Sie diese Option, um bestimmte Elemente aus der Sicherung auszuschließen.
-  
+
 ### <a name="add-new-items-to-existing-policy"></a>Hinzufügen neuer Elemente zu einer vorhandenen Richtlinie
 
 1. Klicken Sie unter **Aktionen** auf **Sicherung planen**.
@@ -158,12 +101,17 @@ Sie haben zwei Möglichkeiten, den Schutz von Dateien und Ordnern durch Sicherun
 ### <a name="stop-protection-and-retain-backup-data"></a>Schutz beenden und Sicherungsdaten beibehalten
 
 1. Öffnen Sie die MARS-Verwaltungskonsole, navigieren Sie zum Bereich **Aktionen**, und wählen Sie **Sicherung planen** aus.
+
     ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/mars-actions.png)
 1. Wählen Sie auf der Seite **Wählen Sie das Richtlinienelement aus** die Option **Ändern Sie einen Sicherungszeitplan für Ihre Dateien und Ordner** aus, und klicken Sie auf **Weiter**.
+
     ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Wählen Sie auf der Seite **Geplante Sicherung ändern oder beenden** die Option **Stop using this backup schedule, but keep the stored backups until a schedule is activated again** (Diesen Sicherungszeitplan nicht länger verwenden, die gespeicherten Sicherungen jedoch beibehalten, bis erneut ein Sicherungszeitplan aktiviert wird) aus. Klicken Sie anschließend auf **Weiter**.  
+1. Wählen Sie auf der Seite **Geplante Sicherung ändern oder beenden** die Option **Stop using this backup schedule, but keep the stored backups until a schedule is activated again** (Diesen Sicherungszeitplan nicht länger verwenden, die gespeicherten Sicherungen jedoch beibehalten, bis erneut ein Sicherungszeitplan aktiviert wird) aus. Klicken Sie anschließend auf **Weiter**.
+
     ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Überprüfen Sie die Informationen in **Geplante Sicherung anhalten**, und klicken Sie auf **Fertig stellen**. ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+1. Überprüfen Sie die Informationen in **Geplante Sicherung anhalten**, und klicken Sie auf **Fertig stellen**.
+
+    ![Ändern oder Beenden einer geplanten Sicherung](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. Überprüfen Sie in **Sicherungsstatus ändern**, ob der Status der geplanten Sicherung „Erfolgreich“ ist, und klicken Sie auf **Schließen**, um den Vorgang abzuschließen.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Schutz beenden und Sicherungsdaten löschen
@@ -194,15 +142,34 @@ Nachdem Sie die lokalen Sicherungselemente gelöscht haben, führen Sie die näc
 Wenn Sie den Schutz beendet haben, die Daten jedoch aufbewahrt wurden, und Sie den Schutz fortsetzen möchten, können Sie durch Ändern der Sicherungsrichtlinie den Sicherungszeitplan erneut aktivieren.
 
 1. Wählen Sie in **Aktionen** die Option **Sicherung planen** aus.
-1. Wählen Sie **Aktivieren Sie den Sicherungszeitplan erneut. Sie können Sicherungselemente oder -zeiten auch ändern.** aus, und klicken Sie auf **Weiter**.
+1. Wählen Sie **Aktivieren Sie den Sicherungszeitplan erneut. Sie können Sicherungselemente oder -zeiten auch ändern.** aus, und klicken Sie auf **Weiter**.<br>
+
     ![Löschen der Sicherungsinfrastruktur](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. Klicken Sie in **Elemente für Sicherung auswählen** auf **Weiter**.
+
     ![Löschen der Sicherungsinfrastruktur](./media/backup-azure-manage-mars/re-enable-next.png)
 1. Geben Sie in **Sicherungszeitplan angeben** den Sicherungszeitplan an, und klicken Sie auf **Weiter**.
 1. Geben Sie in **Aufbewahrungsrichtlinie auswählen** die Aufbewahrungsdauer an, und klicken Sie auf **Weiter**.
 1. Überprüfen Sie abschließend im Bildschirm **Bestätigung** die Richtliniendetails, und klicken Sie auf **Fertig stellen**.
 
+## <a name="re-generate-passphrase"></a>Passphrase neu generieren
+
+Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während der Sicherung oder Wiederherstellung Ihres lokalen Computers mithilfe des MARS-Agents nach oder aus Azure verwendet. Wenn Sie die Passphrase verloren oder vergessen haben, können Sie sie neu generieren (vorausgesetzt, der Computer ist noch beim Recovery Services-Tresor registriert, und die Sicherung wurde konfiguriert). Führen Sie dazu die folgenden Schritte aus:
+
+- Wechseln Sie von der MARS-Agent-Konsole zu **Aktionsbereich** > **Eigenschaften ändern** >. Wechseln Sie dann zur **Registerkarte „Verschlüsselung“** .<br>
+- Aktivieren Sie das Kontrollkästchen **Passphrase ändern**.<br>
+- Geben Sie eine neue Passphrase ein, oder klicken Sie auf **Passphrase generieren**.
+- Klicken Sie auf **Durchsuchen**, um die neue Passphrase zu speichern.
+
+    ![Generieren Sie die Passphrase.](./media/backup-azure-manage-mars/passphrase.png)
+- Klicken Sie auf **OK**, um die Änderungen zu übernehmen.  Wenn im Azure-Portal das [Sicherheitsfeature](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) für den Recovery Services-Tresor aktiviert ist, werden Sie aufgefordert, die Sicherheits-PIN einzugeben. Führen Sie die Schritte in diesem [Artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations) aus, um die PIN zu erhalten.<br>
+- Fügen Sie die Sicherheits-PIN aus dem Portal ein, und klicken Sie auf **OK**, um die Änderungen anzuwenden.<br>
+
+    ![Generieren Sie die Passphrase.](./media/backup-azure-manage-mars/passphrase2.png)
+- Stellen Sie sicher, dass die Passphrase an einem alternativen Speicherort (nicht auf dem Quellcomputer) sicher gespeichert wird, vorzugsweise im Azure Key Vault. Halten Sie alle Passphrasen nach, wenn Sie über mehrere mit den MARS-Agents gesicherte Computer verfügen.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu unterstützten Szenarien und Einschränkungen finden Sie in der [Supportmatrix für MARS](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
+- Informationen zu unterstützten Szenarien und Einschränkungen finden Sie in der [Supportmatrix für den MARS-Agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent).
 - Erfahren Sie mehr über die [Aufbewahrung bei Richtlinien für bedarfsgesteuerte Sicherungen](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

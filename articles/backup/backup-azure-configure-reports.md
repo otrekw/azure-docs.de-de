@@ -3,12 +3,12 @@ title: Konfigurieren von Power BI-Berichten
 description: Erfahren Sie, wie Sie Power BI-Berichte für Azure Backup mit einem Recovery Services-Tresor konfigurieren.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 6e8482aea4f1d757550d4490e3a9972f664729c9
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450105"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 
@@ -21,7 +21,7 @@ Laden Sie die aktuelle App (Version 1.8) herunter, um dieses Problem zu vermeide
 >
 >
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 - Azure Backup-Berichte werden für die Sicherung von Azure-VMs und Dateien/Ordnern in der Cloud mit dem Azure Recovery Services-Agent unterstützt.
 - Berichte für Azure SQL-Datenbank, Azure-Dateifreigaben, Data Protection Manager und Azure Backup Server werden aktuell nicht unterstützt.
@@ -88,7 +88,7 @@ Wenn Sie den Bericht anpassen und freigeben möchten, erstellen Sie einen Arbeit
 4. Geben Sie den Namen des Speicherkonto ein, das in Schritt 5 konfiguriert wurde, und wählen Sie **Weiter** aus.
 
     ![Den Namen des Speicherkontos erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)
-5. Geben Sie bei Verwendung der Authentifizierungsmethode „Schlüssel“ den Speicherkontoschlüssel für dieses Speicherkonto ein. Zum [Anzeigen und Kopieren der Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys) navigieren Sie im Azure-Portal zu Ihrem Speicherkonto.
+5. Geben Sie bei Verwendung der Authentifizierungsmethode „Schlüssel“ den Speicherkontoschlüssel für dieses Speicherkonto ein. Sie finden die Zugriffsschlüssel für Ihr Speicherkonto im Azure-Portal. Weitere Informationen finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md).
 
      ![Speicherkonto erfassen](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
 

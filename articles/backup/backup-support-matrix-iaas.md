@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: fa4e01def8db4e5fef32b644d198bad1e9beab27
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: fd4319feaec1134fe0cf073fa2db2d36a7f40c4e
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996169"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680493"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -20,11 +20,11 @@ Andere Unterstützungsmatrizen:
 - [Unterstützungsmatrix](backup-support-matrix-mabs-dpm.md) für Azure Backup-Server bzw. System Center Data Protection Manager-Sicherungen
 - [Unterstützungsmatrix](backup-support-matrix-mars-agent.md) für die Sicherung mit dem Microsoft Azure Recovery Services-Agent (MARS)
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
 Virtuelle Azure-Computer können wie folgt mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 
-**Szenario** | **Sicherung** | **Agent** |**Wiederherstellen**
+**Szenario** | **Backup** | **Agent** |**Wiederherstellen**
 --- | --- | --- | ---
 Direkte Sicherung virtueller Azure-Computer  | Sicherung der gesamten VM  | Auf dem virtuellen Azure-Computer ist kein Agent erforderlich. Azure Backup installiert und verwendet eine Erweiterung für den [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows), der auf dem virtuellen Computer ausgeführt wird. | Die Wiederherstellung wird wie folgt durchgeführt:<br/><br/> - **Erstellen eines einfachen virtuellen Computers:** Dies ist nützlich, wenn der virtuelle Computer keine besondere Konfiguration (z.B. mehrere IP-Adressen) aufweist.<br/><br/> - **Wiederherstellen des VM-Datenträgers:** Stellen Sie den Datenträger wieder her. Fügen Sie ihn dann an einen vorhandenen virtuellen Computer an, oder erstellen Sie mit PowerShell über den Datenträger einen neuen virtuellen Computer.<br/><br/> - **Ersetzen des VM-Datenträgers:** Wenn ein virtueller Computer vorhanden ist, der verwaltete Datenträger (unverschlüsselt) verwendet, können Sie einen Datenträger wiederherstellen und zum Ersetzen eines vorhandenen Datenträgers auf dem virtuellen Computer verwenden.<br/><br/> - **Wiederherstellen bestimmter Dateien oder Ordner:** Sie können Dateien oder Ordner einer VM statt der gesamten VM wiederherstellen.
 Direkte Sicherung von Azure-VMs (nur Windows)  | Sichern bestimmter Dateien, Ordner oder Volumes | Installieren Sie den [Azure Recovery Services-Agent](backup-azure-file-folder-backup-faq.md).<br/><br/> Sie können den MARS-Agent zusammen mit der Sicherungserweiterung für den Azure-VM-Agent ausführen, um den virtuellen Computer auf Datei- oder Ordnerebene zu sichern. | Wiederherstellen bestimmter Ordner oder Dateien
@@ -39,18 +39,18 @@ Weitere Informationen zum Sichern finden Sie in den Artikeln zu [Sicherungsserve
 Aktivieren der Sicherung beim Erstellen eines virtuellen Windows-Azure-Computers | Unterstützung für: <br/><br/> - Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)
 Aktivieren der Sicherung beim Erstellen eines virtuellen Linux-Computers | Unterstützung für:<br/><br/> – Ubuntu Server: 18.04, 17.10, 17.04, 16.04 (LTS), 14.04 (LTS)<br/><br/> – Red Hat: RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4<br/><br/> – SUSE Linux Enterprise Server: 11 SP4, 12 SP2, 12 SP3, 15 <br/><br/> – Debian: 8, 9<br/><br/> – CentOS: 6.9, 7.3<br/><br/> – Oracle Linux: 6.7, 6.8, 6.9, 7.2, 7.3
 Sichern eines heruntergefahrenen virtuellen Computers / einer Offline-VM | Unterstützt.<br/><br/> Die Momentaufnahme ist nur ausfallkonsistent, jedoch nicht anwendungskonsistent.
-Sicherung von Datenträgern nach Migration zu verwalteten Datenträgern | Unterstützt.<br/><br/> Sicherung wird weiterhin durchgeführt. Es ist keine Aktion erforderlich.
-Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Nicht unterstützt.<br/><br/> Die älteren Wiederherstellungspunkte können von Azure Backup nicht gelöscht werden, und bei Sicherungen treten Fehler auf, wenn die maximale Anzahl von Wiederherstellungspunkten erreicht ist.
+Sicherung von Datenträgern nach Migration zu verwalteten Datenträgern | Unterstützt.<br/><br/> Sicherung wird weiterhin durchgeführt. Keine Aktion erforderlich.
+Sicherung von verwalteten Datenträgern nach Aktivierung einer Ressourcengruppensperre | Wird nicht unterstützt.<br/><br/> Die älteren Wiederherstellungspunkte können von Azure Backup nicht gelöscht werden, und bei Sicherungen treten Fehler auf, wenn die maximale Anzahl von Wiederherstellungspunkten erreicht ist.
 Ändern der Sicherungsrichtlinie für einen virtuellen Computer | Unterstützt.<br/><br/> Der virtuelle Computer wird unter Verwendung der Zeitplan- und Aufbewahrungseinstellungen der neuen Richtlinie gesichert. Wenn die Aufbewahrungseinstellungen erweitert werden, werden vorhandene Wiederherstellungspunkte markiert und beibehalten. Wenn die Einstellungen reduziert werden, werden vorhandene Wiederherstellungspunkte im nächsten Bereinigungsauftrag gelöscht und schließlich endgültig entfernt.
 Abbrechen eines Sicherungsauftrags| Wird während des Prozesses der Momentaufnahme unterstützt.<br/><br/> Wird nicht unterstützt, wenn die Momentaufnahme in den Tresor übertragen wird.
-Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |Nicht unterstützt.
+Sicherung des virtuellen Computers in einer anderen Region oder einem anderen Abonnement |Wird nicht unterstützt.
 Sicherungen pro Tag (über die Azure-VM-Erweiterung) | Eine geplante Sicherung pro Tag<br/><br/>Der Azure Backup-Dienst unterstützt bis zu neun bedarfsgesteuerte Sicherungen pro Tag. Microsoft empfiehlt jedoch nicht mehr als vier bedarfsgesteuerte Sicherungen pro Tag, um eine optimale Leistung zu gewährleisten.
 Sicherungen pro Tag (über den MARS-Agent) | Drei geplante Sicherungen pro Tag
 Sicherungen pro Tag (über DPM/MABS) | Zwei geplante Sicherungen pro Tag
 Monatliche oder jährliche Sicherung| Wird bei der Sicherung mit der Azure-VM-Erweiterung nicht unterstützt. Lediglich tägliche und wöchentliche Sicherungen werden unterstützt.<br/><br/> Sie können die Richtlinie so einrichten, dass tägliche oder wöchentliche Sicherungen in einem monatlichen oder jährlichen Aufbewahrungszeitraum beibehalten werden.
-Automatische Uhrzeitanpassung | Nicht unterstützt.<br/><br/> Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer VM nicht automatisch an.<br/><br/>  Ändern Sie die Richtlinie nach Bedarf manuell.
+Automatische Uhrzeitanpassung | Wird nicht unterstützt.<br/><br/> Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer VM nicht automatisch an.<br/><br/>  Ändern Sie die Richtlinie nach Bedarf manuell.
 [Sicherheitsfunktionen für Hybridsicherungen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) |Die Sicherheitsfunktionen können nicht deaktiviert werden.
-Sichern von virtuellen Computern mit geänderter Computerzeit | Nicht unterstützt.<br/><br/> Falls als Computerzeit ein zukünftiges Datum bzw. eine zukünftige Uhrzeit festgelegt wird, nachdem die Sicherung für diesen virtuellen Computer aktiviert wurde. Auch wenn diese Änderung rückgängig gemacht wird, wird die erfolgreiche Sicherung nicht garantiert.  
+Sichern von virtuellen Computern mit geänderter Computerzeit | Wird nicht unterstützt.<br/><br/> Falls als Computerzeit ein zukünftiges Datum bzw. eine zukünftige Uhrzeit festgelegt wird, nachdem die Sicherung für diesen virtuellen Computer aktiviert wurde. Auch wenn diese Änderung rückgängig gemacht wird, wird die erfolgreiche Sicherung nicht garantiert.  
 
 ## <a name="operating-system-support-windows"></a>Unterstützte Betriebssysteme (Windows)
 
@@ -71,8 +71,8 @@ Hier ist die Unterstützung für den Fall angegeben, dass Sie Linux-Computer sic
 **Aktion** | **Unterstützung**
 --- | ---
 Sicherung virtueller Linux-Azure-Computer mit dem Linux-Azure-VM-Agent | Dateikonsistente Sicherung<br/><br/> App-konsistente Sicherung mit [benutzerdefinierten Skripts](backup-azure-linux-app-consistent.md).<br/><br/> Während der Wiederherstellung können Sie eine neue VM erstellen oder einen Datenträger wiederherstellen und damit eine VM erstellen oder einen Datenträger auf einer vorhandenen VM ersetzen. Zudem können Sie einzelne Dateien und Ordner wiederherstellen.
-Sicherung virtueller Linux-Azure-Computer mit dem MARS-Agent | Nicht unterstützt.<br/><br/> Der MARS-Agent kann nur auf Windows-Computern installiert werden.
-Sicherung virtueller Linux-Azure-Computer mit DPM/MABS | Nicht unterstützt.
+Sicherung virtueller Linux-Azure-Computer mit dem MARS-Agent | Wird nicht unterstützt.<br/><br/> Der MARS-Agent kann nur auf Windows-Computern installiert werden.
+Sicherung virtueller Linux-Azure-Computer mit DPM/MABS | Wird nicht unterstützt.
 
 ## <a name="operating-system-support-linux"></a>Unterstützte Betriebssysteme (Linux)
 
@@ -110,9 +110,9 @@ Wiederherstellen von Dateien | Sie können Dateien von einem ausgewählten Wiede
 **Wiederherstellen** | **Unterstützt**
 --- | ---
 Wiederherstellen von Dateien unter verschiedenen Betriebssystemen | Sie können Dateien auf allen Computern wiederherstellen, die dasselbe (oder ein kompatibles) Betriebssystem wie der gesicherte virtuelle Computer haben. Weitere Informationen finden Sie in der Tabelle mit [kompatiblen Betriebssystemen](backup-azure-restore-files-from-vm.md#system-requirements).
-Wiederherstellen von Dateien auf klassischen virtuellen Computern | Nicht unterstützt.
-Wiederherstellen von Dateien von verschlüsselten virtuellen Computern | Nicht unterstützt.
-Wiederherstellen von Dateien von Speicherkonten mit Netzwerkbeschränkung | Nicht unterstützt.
+Wiederherstellen von Dateien auf klassischen virtuellen Computern | Wird nicht unterstützt.
+Wiederherstellen von Dateien von verschlüsselten virtuellen Computern | Wird nicht unterstützt.
+Wiederherstellen von Dateien von Speicherkonten mit Netzwerkbeschränkung | Wird nicht unterstützt.
 Wiederherstellen von Dateien auf virtuellen Computern mit Windows-Speicherplätzen | Die Wiederherstellung auf demselben Computer wird nicht unterstützt.<br/><br/> Führen Sie stattdessen die Wiederherstellung der Dateien auf einem kompatiblen virtuellen Computer durch.
 Wiederherstellen von Dateien auf einem virtuellen Linux-Computer mit LVM/RAID-Arrays | Die Wiederherstellung auf demselben Computer wird nicht unterstützt.<br/><br/> Führen Sie die Wiederherstellung auf einem kompatiblen virtuellen Computer durch.
 Wiederherstellen von Dateien mit spezifischen Netzwerkeinstellungen | Die Wiederherstellung auf demselben Computer wird nicht unterstützt. <br/><br/> Führen Sie die Wiederherstellung auf einem kompatiblen virtuellen Computer durch.
@@ -123,10 +123,10 @@ In der folgenden Tabelle ist die Unterstützung für die Sicherung bei Verwaltun
 
 **Wiederherstellen** | **Unterstützt**
 --- | ---
-Wiederherstellung in verschiedenen Abonnements, Regionen oder Zonen | Nicht unterstützt.
+Wiederherstellung in verschiedenen Abonnements, Regionen oder Zonen | Wird nicht unterstützt.
 Wiederherstellung auf einem vorhandenen virtuellen Computer | Verwenden Sie die Option zum Ersetzen eines Datenträgers.
-Wiederherstellen eines Datenträgers mit für die Azure-Speicherdienstverschlüsselung (SSE) aktiviertem Speicherkonto | Nicht unterstützt.<br/><br/> Führen Sie die Wiederherstellung in einem Konto aus, für das SSE nicht aktiviert ist.
-Wiederherstellung in gemischten Speicherkonten |Nicht unterstützt.<br/><br/> Basierend auf dem Speicherkontotyp sind alle wiederhergestellten Datenträger entweder jeweils Premium- oder Standard-Datenträger und können nicht gemischt sein.
+Wiederherstellen eines Datenträgers mit für die Azure-Speicherdienstverschlüsselung (SSE) aktiviertem Speicherkonto | Wird nicht unterstützt.<br/><br/> Führen Sie die Wiederherstellung in einem Konto aus, für das SSE nicht aktiviert ist.
+Wiederherstellung in gemischten Speicherkonten |Wird nicht unterstützt.<br/><br/> Basierend auf dem Speicherkontotyp sind alle wiederhergestellten Datenträger entweder jeweils Premium- oder Standard-Datenträger und können nicht gemischt sein.
 Wiederherstellen eines virtuellen Computers direkt in einer Verfügbarkeitsgruppe | Bei verwalteten Datenträgern können Sie den Datenträger wiederherstellen und die Option für die Verfügbarkeitsgruppe in der Vorlage verwenden.<br/><br/> Dies wird für nicht verwaltete Datenträger nicht unterstützt. Bei nicht verwalteten Datenträgern stellen Sie den Datenträger wieder her und erstellen dann einen virtuellen Computer in der Verfügbarkeitsgruppe.
 Wiederherstellen einer Sicherung von nicht verwalteten VMs nach dem Upgrade auf verwaltete VMs| Unterstützt.<br/><br/> Sie können Datenträger wiederherstellen und dann einen verwalteten virtuellen Computer erstellen.
 Wiederherstellen eines virtuellen Computers an einem Wiederherstellungspunkt vor der Migration des virtuellen Computers zu verwalteten Datenträgern | Unterstützt.<br/><br/> Sie führen die Wiederherstellung auf nicht verwalteten Datenträgern durch (Standardeinstellung), konvertieren die wiederhergestellten Datenträger in verwaltete Datenträger und erstellen einen virtuellen Computer mit den verwalteten Datenträgern.
@@ -141,7 +141,7 @@ Wiederherstellen einer VM in einem anderen virtuellen Netzwerk |Unterstützt.<br
 Größe des virtuellen Computers |Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM<br/><br/> [Weitere Informationen.](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
 Sicherung virtueller Computer in [Verfügbarkeitsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/availability#availability-sets) | Unterstützt.<br/><br/> Sie können eine VM in einer Verfügbarkeitsgruppe nicht mit der Option zum schnellen Erstellen einer VM wiederherstellen. Stattdessen müssen Sie bei der Wiederherstellung der VM den Datenträger wiederherstellen und damit entweder eine VM bereitstellen oder einen vorhandenen Datenträger ersetzen.
 Sicherung von mit [Hybridvorteil (HUB)](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) bereitgestellten VMs | Unterstützt.
-Sicherung von in einer [Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) bereitgestellten VMs |Nicht unterstützt.
+Sicherung von in einer [Skalierungsgruppe](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) bereitgestellten VMs |Wird nicht unterstützt.
 Sicherung von über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) bereitgestellten VMs<br/><br/> (Veröffentlicht von Microsoft oder Drittanbietern) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden. Wir stellen die Azure Marketplace-VMs, die als VMs gesichert werden, nicht wieder her, da hierfür Kaufinformationen benötigt werden (nur als Datenträger).
 Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanbieter) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden.
 Sicherung von zu Azure migrierten VMs| Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
@@ -154,13 +154,13 @@ Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederh
 
 **Komponente** | **Unterstützung**
 --- | ---
-Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern
+Azure-VM-Datenträger (für Daten) | Sichern eines virtuellen Computers mit maximal 16 Datenträgern.<BR> Wenn Sie sich für die private Vorschauversion von virtuellen Computern mit mehr als 16 Datenträgern (bis zu 32 Datenträger) registrieren möchten, senden Sie eine E-Mail an AskAzureBackupTeam@microsoft.com.
 Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und maximal 256 TB für alle Datenträger in einer VM betragen.
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
-Verschlüsselte Datenträger | Wird unterstützt (bis zu 4 TB).<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte virtuelle Computer können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen.
-Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt nicht die Deduplizierung. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wieder hergestellt werden, da der Tresor das Format nicht versteht.
+Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte virtuelle Computer können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
+Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen.
+Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt nicht die Deduplizierung. Weitere Informationen finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-support-matrix#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wieder hergestellt werden, da der Tresor das Format nicht versteht. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit Cluster Shared Volume (CSV) oder Dateiservern mit horizontaler Skalierung wird nicht empfohlen. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
@@ -175,7 +175,7 @@ Mehrere reservierte IP-Adressen |Unterstützt. <br/><br/> Weitere Informationen 
 Virtuelle Computer mit mehreren Netzwerkadaptern| Unterstützt. <br/><br/> Weitere Informationen zum Wiederherstellen von virtuellen Computern mit spezifischen Netzwerkeinstellungen finden Sie [hier](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations).
 Virtuelle Computer mit öffentlichen IP-Adressen| Unterstützt.<br/><br/> Ordnen Sie dem Netzwerkadapter eine vorhandene öffentliche IP-Adresse zu, oder erstellen Sie eine Adresse, und ordnen Sie diese nach der Wiederherstellung dem Netzwerkadapter zu.
 Netzwerksicherheitsgruppe (NSG) für Netzwerkadapter oder Subnetz |Unterstützt.
-Statische IP-Adresse | Nicht unterstützt.<br/><br/> Einer neuen VM, die aus einem Wiederherstellungspunkt erstellt wird, wird eine dynamische IP-Adresse zugewiesen.<br/><br/> Bei klassischen VMs kann eine VM mit einer reservierten IP-Adresse und ohne definierten Endpunkt nicht gesichert werden.
+Statische IP-Adresse | Wird nicht unterstützt.<br/><br/> Einer neuen VM, die aus einem Wiederherstellungspunkt erstellt wird, wird eine dynamische IP-Adresse zugewiesen.<br/><br/> Bei klassischen VMs kann eine VM mit einer reservierten IP-Adresse und ohne definierten Endpunkt nicht gesichert werden.
 Dynamische IP-Adresse |Unterstützt.<br/><br/> Wenn der Netzwerkadapter auf der Quell-VM dynamische IP-Adressen verwendet, werden diese standardmäßig auch für den Netzwerkadapter auf der wiederhergestellten VM verwendet.
 Azure Traffic Manager| Unterstützt.<br/><br/>Wenn sich die gesicherte VM in Traffic Manager befindet, müssen Sie die wiederhergestellte VM manuell in derselben Traffic Manager-Instanz hinzufügen.
 Azure DNS |Unterstützt.

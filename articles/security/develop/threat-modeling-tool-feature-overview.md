@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
+title: Übersicht über die Features des Microsoft Threat Modeling Tools – Azure
 description: Erfahren Sie mehr über alle Funktionen im Threat Modeling Tool
-services: security
-documentationcenter: na
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: e3c6769cc832a897cfbab5548de5328d743884b2
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 88eea0eb2bceb0f6322381a94d4339cbdfa662c0
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68728549"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552116"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
@@ -49,7 +41,7 @@ Die Benutzeroberfläche ist ähnlich wie bei anderen Microsoft-Produkten. Betrac
 
 | Bezeichnung                               | Details      |
 | --------------------------------------- | ------------ |
-| **Datei** | <ul><li>Dateien öffnen, speichern und schließen</li><li>Bei OneDrive-Konten an- und abmelden</li><li>Links teilen (Anzeigen und Bearbeiten)</li><li>Dateiinformationen anzeigen</li><li>Neue Vorlage auf vorhandene Modelle anwenden</li></ul> |
+| **File** | <ul><li>Dateien öffnen, speichern und schließen</li><li>Bei OneDrive-Konten an- und abmelden</li><li>Links teilen (Anzeigen und Bearbeiten)</li><li>Dateiinformationen anzeigen</li><li>Neue Vorlage auf vorhandene Modelle anwenden</li></ul> |
 | **Bearbeiten** | Aktionen rückgängig machen und wiederholen sowie Kopieren, Einfügen und Löschen |
 | **Ansicht** | <ul><li>Zwischen den Ansichten **Analyse** und **Entwurf** wechseln</li><li>Geschlossene Fenster öffnen (z.B. Schablonen, Elementeigenschaften und Meldungen)</li><li>Layout auf die Standardeinstellungen zurücksetzen</li></ul> |
 | **Diagramm** | Diagramme hinzufügen und löschen und durch die Registerkarten von Diagrammen navigieren |
@@ -150,17 +142,17 @@ Sie können Elemente auf zwei Arten verbinden:
 - **Drag & Drop**: Ziehen Sie den gewünschten Datenfluss in das Raster, und verbinden Sie beide Enden mit den entsprechenden Elementen.
 - **Klicken bei gedrückter UMSCHALTTASTE**: Klicken Sie auf das erste Element (Daten werden gesendet), halten Sie die UMSCHALTTASTE gedrückt, und wählen Sie dann das zweite Element aus (Daten werden empfangen). Klicken Sie mit der rechten Maustaste, und wählen Sie **Verbinden** aus. Wenn Sie einen bidirektionalen Datenfluss verwenden, ist die Reihenfolge nicht so wichtig.
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
  Um die Eigenschaften anzuzeigen, die für Schablonen geändert werden können, wählen Sie die Schablone aus, und das Eigenschaftenfenster wird entsprechend aufgefüllt. Das folgende Beispiel zeigt das Fenster vor und nach dem Ziehen der Schablone **Datenbank** auf das Diagramm:
 
-#### <a name="before"></a>Vorher
+#### <a name="before"></a>vor
 
-![Vorher](./media/threat-modeling-tool-feature-overview/properties1.png)
+![vor](./media/threat-modeling-tool-feature-overview/properties1.png)
 
-#### <a name="after"></a>Nachher
+#### <a name="after"></a>Nach
 
-![Nachher](./media/threat-modeling-tool-feature-overview/properties2.png)
+![Nach](./media/threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>Meldungen
 
@@ -182,7 +174,7 @@ Nachdem Sie das Diagramm erstellt haben, wählen Sie auf der Symbolleiste das Sy
 
 Wenn Sie eine Bedrohung auswählen, können Sie drei verschiedene Funktionen verwenden:
 
-| Feature                               | Information      |
+| Funktion                               | Information      |
 | --------------------------------------- | ------------ |
 | **Markierung „Gelesen“** | <p>Die Bedrohung ist als „Gelesen“ markiert, sodass Sie leichter den Überblick über die bereits überprüften Elemente behalten.</p><p>![Markierung „Gelesen/Nicht gelesen“](./media/threat-modeling-tool-feature-overview/readmode.png)</p> |
 | **Interaktionsfokus** | <p>Die zu einer Bedrohung gehörende Interaktion wird hervorgehoben.</p><p>![Interaktionsfokus](./media/threat-modeling-tool-feature-overview/interactionfocus.png)</p> |

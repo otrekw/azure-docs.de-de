@@ -3,12 +3,12 @@ title: Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 description: Hier wird beschrieben, wie die Sicherung beim Erstellen eines virtuellen Azure-Computers mit Azure Backup aktiviert wird.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: f34c5dd8cfdc94775b9bd9a896b4cfbe4154ecf8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 0cfea6579791c4fd23c1b7acdfe722d57b5ec2fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172353"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449926"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>Aktivieren der Sicherung beim Erstellen eines virtuellen Azure-Computers
 
@@ -48,8 +48,22 @@ Falls Sie noch nicht bei Ihrem Konto angemeldet sind, melden Sie beim [Azure-Por
 
       ![Standardsicherungsrichtlinie](./media/backup-during-vm-creation/daily-policy.png)
 
-> [!NOTE]
-> Der Azure Backup-Dienst erstellt zum Speichern der Momentaufnahme eine separate Ressourcengruppe (nicht die VM-Ressourcengruppe) mit dem Namensformat **AzureBackupRG_geography_number** (Beispiel: AzureBackupRG_northeurope_1). Die Daten in dieser Ressourcengruppe werden so lange aufbewahrt, wie dies in der Sicherungsrichtlinie für virtuelle Azure-Computer unter *Momentaufnahme(n) zur sofortigen Wiederherstellung beibehalten für* angegeben ist (in Tagen).  Das Anwenden einer Sperre auf diese Ressourcengruppe kann zu Sicherungsfehlern führen. <br> Diese Ressourcengruppe sollte von allen Namens-/Tag-Einschränkungen ausgeschlossen werden, da eine Einschränkungsrichtlinie die Erstellung von Wiederherstellungspunktsammlungen in dieser Gruppe blockieren und erneut zu Fehlern führen würde.
+## <a name="azure-backup-resource-group-for-virtual-machines"></a>Azure Backup-Ressourcengruppe für virtuelle Computer
+
+Der Backup-Dienst erstellt eine separate Ressourcengruppe (RG) neben der Ressourcengruppe des virtuellen Computers zum Speichern der Wiederherstellungspunktsammlung (RPC). Die RPC enthält die Wiederherstellungspunkte für die sofortige Wiederherstellung der verwalteten VMs. Das Standardnamensformat der vom Backup-Dienst erstellten Ressourcengruppe sieht folgendermaßen aus: `AzureBackupRG_<Geo>_<number>`. Beispiel:  *AzureBackupRG_northeurope_1*. Sie können den von Azure Backup erstellten Ressourcengruppennamen jetzt anpassen.
+
+Beachten Sie Folgendes:
+
+1. Sie können entweder den Standardnamen der RG verwenden oder ihn entsprechend den Anforderungen Ihres Unternehmens bearbeiten.
+2. Beim Erstellen der VM-Sicherungsrichtlinie geben Sie das RG-Namensmuster als Eingabe an. Der RG-Name sollte das folgende Format aufweisen: `<alpha-numeric string>* n <alpha-numeric string>`. „n“ wird durch eine ganze Zahl (beginnend mit 1) ersetzt und zum horizontalen Hochskalieren verwendet, wenn die erste RG voll ist. Eine RG kann heute maximal 600 RPC umfassen.
+              ![Wählen Sie den Namen beim Erstellen einer Richtlinie aus](./media/backup-during-vm-creation/create-policy.png)
+3. Das Muster sollte den nachstehend aufgeführten RG-Benennungsregeln folgen, und die Gesamtlänge sollte die maximal zulässige Länge für RG-Namen nicht überschreiten.
+    1. Ressourcengruppennamen dürfen nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Sie dürfen nicht mit einem Punkt enden.
+    2. Ressourcengruppennamen können bis zu 74 Zeichen enthalten, einschließlich des Namens der RG und des Suffixes.
+4. Die erste `<alpha-numeric-string>` ist obligatorisch, während die zweite nach dem „n“ optional ist. Dies gilt nur, wenn Sie einen benutzerdefinierten Namen vergeben. Wenn Sie beide Textfelder leer lassen, wird der Standardname verwendet.
+5. Sie können den Namen der RG bearbeiten, indem Sie die Richtlinie ändern, wenn dies erforderlich ist. Wenn das Namensmuster geändert wird, werden in der neuen RG neue RPs erstellt. Die alten RPs befinden sich jedoch weiterhin in der alten RG und werden nicht verschoben, da die RP-Sammlung kein Verschieben von Ressourcen unterstützt. Schließlich erfolgt eine automatische Speicherbereinigung der RPs, wenn die Punkte ablaufen.
+![Ändern des Namens beim Ändern der Richtlinie](./media/backup-during-vm-creation/modify-policy.png)
+6. Es empfiehlt sich, die für die Verwendung durch den Backup-Dienst erstellte Ressourcengruppe nicht zu sperren.
 
 ## <a name="start-a-backup-after-creating-the-vm"></a>Starten einer Sicherung nach dem Erstellen der VM
 

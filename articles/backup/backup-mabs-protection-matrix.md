@@ -3,12 +3,12 @@ title: Was kann Azure Backup Server sichern?
 description: Dieser Artikel bietet eine Unterstützungsmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server geschützt werden.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e34ba81ad20b2d6a4e89995ab8b834f5f7dc725
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 8f1ae1432f619dafc5084d250e3f89707405e08b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996152"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449887"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure Backup Server-Schutzmatrix
 
@@ -21,8 +21,8 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 |Clientcomputer (64 Bit und 32 Bit)|Windows 10|Physischer Server<br /><br />Virtueller Hyper-V-Computer<br /><br />Virtueller VMware-Computer|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
 |Clientcomputer (64 Bit und 32 Bit)|Windows 8.1|Physischer Server<br /><br />Virtueller Hyper-V-Computer|V3, V2|Dateien<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
 |Clientcomputer (64 Bit und 32 Bit)|Windows 8.1|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
-|Clientcomputer (64 Bit und 32 Bit)|Windows 8|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
-|Clientcomputer (64 Bit und 32 Bit)|Windows 8|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
+|Clientcomputer (64 Bit und 32 Bit)|Windows 8|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
+|Clientcomputer (64 Bit und 32 Bit)|Windows 8|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
 |Clientcomputer (64 Bit und 32 Bit)|Windows 7|Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
 |Clientcomputer (64 Bit und 32 Bit)|Windows 7|Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)|V3, V2|Volume, Freigabe, Ordner, Dateien, deduplizierte Volumes<br /><br />Geschützte Volumes müssen mit NTFS formatiert sein. FAT und FAT32 werden nicht unterstützt.<br /><br />Volumes müssen mindestens 1 GB groß sein. Azure Backup Server verwendet den Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) für die Daten der Momentaufnahme, und die Momentaufnahme funktioniert nur, wenn das Volume mindestens 1GB groß ist.|
 |Server (64 Bit)|Windows Server 2019|Virtueller Azure-Computer (wenn die Workload als virtueller Azure-Computer ausgeführt wird)<br /><br />Windows-VM in VMware (schützt Workloads auf virtuellen Windows-Computern in VMware)<br /><br />Physischer Server<br /><br />Lokaler virtueller Hyper-V-Computer<br /> <br /> Azure Stack|V3 <br />Nicht Nano Server|Volume, Freigabe, Ordner, Datei, Systemstatus/Bare-Metal, dedupliziertes Volume|
@@ -82,9 +82,23 @@ In diesem Artikel sind verschiedene Server und Workloads aufgeführt, die Sie mi
 
 ## <a name="azure-expressroute-support"></a>Azure ExpressRoute-Unterstützung
 
-Wenn Azure ExpressRoute mit privatem Peering oder Microsoft-Peering konfiguriert wird, können die Daten mit dem Dienst nicht in Azure gesichert werden.
+Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Sicherung über privates Peering wird nicht unterstützt.
 
-Wenn Azure ExpressRoute mit öffentlichem Peering konfiguriert wird, können die Daten mit dem Dienst in Azure gesichert werden.
+Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
+
+* `http://www.msftncsi.com/ncsi.txt`
+* `microsoft.com`
+* `.WindowsAzure.com`
+* `.microsoftonline.com`
+* `.windows.net`
+
+Wählen Sie beim Microsoft-Peering die folgenden Dienste/Regionen und relevanten Communitywerte aus:
+
+* Azure Active Directory (12076:5060)
+* Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)
+* Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)
+
+Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
 >[!NOTE]
 >Öffentliches Peering gilt für neue Leitungen als veraltet.
@@ -93,17 +107,17 @@ Wenn Azure ExpressRoute mit öffentlichem Peering konfiguriert wird, können die
 
 Azure Backup Server kann Daten in den folgenden gruppierten Anwendungen schützen:
 
-- Dateiserver
+* Dateiserver
 
-- SQL Server
+* SQL Server
 
-- Hyper-V: Wenn Sie einen Hyper-V-Cluster mithilfe von horizontal skaliertem MABS-Schutz-Agent schützen, können Sie keinen sekundären Schutz für die geschützten Hyper-V-Workloads hinzufügen.
+* Hyper-V: Wenn Sie einen Hyper-V-Cluster mithilfe von horizontal skaliertem MABS-Schutz-Agent schützen, können Sie keinen sekundären Schutz für die geschützten Hyper-V-Workloads hinzufügen.
 
     Wenn Sie Hyper-V unter Windows Server 2008 R2 ausführen, installieren Sie unbedingt das in KB [975354](https://support.microsoft.com/kb/975354) beschriebene Update.
     Wenn Sie Hyper-V unter Windows Server 2008 R2 in einer Clusterkonfiguration ausführen, installieren Sie unbedingt SP2 und KB [971394](https://support.microsoft.com/kb/971394).
 
-- Exchange Server – Azure Backup Server kann nicht freigegebene Datenträgercluster für unterstützte Exchange Server-Versionen schützen (fortlaufende Clusterreplikation). Auch der Schutz von Exchange Server in einer Konfiguration für fortlaufende lokale Replikation ist mit Azure Backup Server möglich.
+* Exchange Server – Azure Backup Server kann nicht freigegebene Datenträgercluster für unterstützte Exchange Server-Versionen schützen (fortlaufende Clusterreplikation). Auch der Schutz von Exchange Server in einer Konfiguration für fortlaufende lokale Replikation ist mit Azure Backup Server möglich.
 
-- SQL Server – Azure Backup Server unterstützt nicht das Sichern von SQL Server-Datenbanken, die auf freigegebenen Clustervolumes (CSVs) gehostet werden.
+* SQL Server – Azure Backup Server unterstützt nicht das Sichern von SQL Server-Datenbanken, die auf freigegebenen Clustervolumes (CSVs) gehostet werden.
 
 Azure Backup Server kann Workloads schützen, die sich in derselben Domäne wie der MABS-Server, in einer untergeordneten oder in einer vertrauenswürdigen Domäne befinden. Wenn Sie Datenquellen in nicht vertrauenswürdigen Domänen oder Arbeitsgruppen schützen möchten, verwenden Sie NTLM, Zertifikatauthentifizierung für einen einzelnen Server oder Zertifikatauthentifizierung nur für einen Cluster.

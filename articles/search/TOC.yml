@@ -113,6 +113,8 @@
       items:
         - name: Sicherheitsübersicht
           href: search-security-overview.md
+        - name: Erstellen eines privaten Endpunkts
+          href: service-create-private-endpoint.md
         - name: Dienstschlüsselverwaltung
           href: search-security-api-keys.md
         - name: Rollenbasierter Administratorzugriff

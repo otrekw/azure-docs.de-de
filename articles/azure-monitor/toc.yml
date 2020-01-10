@@ -91,6 +91,8 @@
       items:
         - name: Protokolldaten
           href: platform/data-security.md
+        - name: Vom Kunden verwaltete Schlüssel
+          href: platform/customer-managed-keys.md
         - name: Behandlung von personenbezogenen Protokolldaten
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'

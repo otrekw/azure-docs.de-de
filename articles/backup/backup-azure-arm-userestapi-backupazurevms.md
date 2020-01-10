@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 4f73958a46e408f85d1f23371552aad0d5540184
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 4789ef1e0e09df521f8cab539d972e9e669e0a58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554906"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450161"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Sichern eines virtuellen Azure-Computers mithilfe von Azure Backup über die REST-API
 
@@ -41,7 +41,7 @@ Der „refresh“-Vorgang ist ein [asynchroner Vorgang](https://docs.microsoft.c
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |204 Kein Inhalt     |         |  OK, wird ohne Inhalt zurückgegeben      |
 |202 – Akzeptiert     |         |     Zulässig    |
@@ -104,7 +104,7 @@ Der *GET*-URI enthält alle erforderlichen Parameter. Es ist kein zusätzlicher 
 
 #### <a name="responses-1"></a>Antworten
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     | [WorkloadProtectableItemResourceList](https://docs.microsoft.com/rest/api/backup/backupprotectableitems/list#workloadprotectableitemresourcelist)        |       OK |
 
@@ -180,7 +180,7 @@ PUT https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 Zum Erstellen eines geschützten Elements werden die folgenden Komponenten des Anforderungstexts verwendet.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | AzureIaaSVMProtectedItem        |ProtectedItem-Ressourceneigenschaften         |
 
@@ -208,7 +208,7 @@ Die Erstellung eines geschützten Elements ist ein [asynchroner Vorgang](https:/
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |    [ProtectedItemResource](https://docs.microsoft.com/rest/api/backup/protecteditemoperationresults/get#protecteditemresource)     |  OK       |
 |202 – Akzeptiert     |         |     Zulässig    |
@@ -294,7 +294,7 @@ POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-00000000
 
 Zum Auslösen einer bedarfsgesteuerten Sicherung werden die folgenden Komponenten des Anforderungstexts verwendet.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     | [IaaSVMBackupRequest](https://docs.microsoft.com/rest/api/backup/backups/trigger#iaasvmbackuprequest)        |BackupRequestResource-Eigenschaften         |
 
@@ -319,7 +319,7 @@ Das Auslösen einer bedarfsgesteuerten Sicherung ist ein [asynchroner Vorgang](h
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -433,16 +433,38 @@ DELETE https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroup
 DELETE https://management.azure.com//Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;iaasvmcontainerv2;testRG;testVM?api-version=2019-05-13
 ```
 
-### <a name="responses-2"></a>Antworten
+#### <a name="responses-2"></a>Antworten
 
 Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „204 (NoContent)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |204 Kein Inhalt     |         |  Kein Inhalt       |
 |202 – Akzeptiert     |         |     Zulässig    |
+
+> [!IMPORTANT]
+> Zum Schutz vor versehentlichen Löschungen steht für den Recovery Services-Tresor ein [Feature für vorläufiges Löschen](use-restapi-update-vault-properties.md#soft-delete-state) zur Verfügung. Wenn der Status „Vorläufiges Löschen“ für den Tresor auf „Aktiviert“ festgelegt ist, werden die Daten durch den Löschvorgang NICHT sofort gelöscht. Sie werden 14 Tage lang aufbewahrt und dann dauerhaft gelöscht. Für diesen Zeitraum von 14 Tagen wird dem Kunden kein Speicher in Rechnung gestellt. Informationen dazu, wie Sie den Löschvorgang rückgängig machen, finden Sie im Abschnitt zum [Rückgängigmachen des Löschens](#undo-the-stop-protection-and-delete-data).
+
+### <a name="undo-the-stop-protection-and-delete-data"></a>Rückgängigmachen des Beendens des Schutzes und des Löschens der Daten
+
+Das Rückgängigmachen eines versehentlichen Löschens ähnelt dem Erstellen des Sicherungselements. Nachdem der Löschvorgang rückgängig gemacht wurde, wird das Element aufbewahrt, aber es werden keine zukünftigen Sicherungen ausgelöst.
+
+Das Rückgängigmachen einer Löschung ist ein *PUT*-Vorgang, der dem [Ändern der Richtlinie](#changing-the-policy-of-protection) und/oder dem [Aktivieren des Schutzes](#enabling-protection-for-the-azure-vm) sehr ähnlich ist. Geben Sie einfach die Absicht, den Löschvorgang rückgängig zu machen, mit der Variablen *isRehydrate* im [Anforderungstext](#example-request-body) an, und übermitteln Sie die Anforderung. Beispiel:  Zum Rückgängigmachen der Löschung von „testVM“ verwenden Sie den folgenden Anforderungstext.
+
+```http
+{
+  "properties": {
+    "protectedItemType": "Microsoft.Compute/virtualMachines",
+    "protectionState": "ProtectionStopped",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "isRehydrate": true
+  }
+}
+```
+
+Die Antwort erfolgt im gleichen Format wie beim [Auslösen einer bedarfsgesteuerten Sicherung](#example-responses-3). Der resultierende Auftrag muss wie im [Dokument zum Überwachen von Aufträgen mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) erläutert nachverfolgt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
