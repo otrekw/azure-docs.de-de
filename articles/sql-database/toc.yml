@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: "Streamen von Daten mit Stream\_Analytics"
           href: sql-database-stream-analytics.md
+        - name: Migrieren einer SQLite-Datenbank zu „Azure SQL-Datenbank – serverlos“
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Konzepte
       items:
         - name: Einzeldatenbankressourcen

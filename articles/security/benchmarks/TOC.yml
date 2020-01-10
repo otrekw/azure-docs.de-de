@@ -1,10 +1,10 @@
-- name: Vergleichstest für die Azure-Sicherheit
+- name: Vergleichstests für die Azure-Sicherheit
   href: index.yml
 - name: Einführung
   href: introduction.md
 - name: Einstellungen für einmaliges Anmelden
   items:
-    - name: Übersicht
+    - name: Übersicht über Azure-Sicherheitssteuerungen
       href: overview.md
     - name: Netzwerksicherheit
       href: security-control-network-security.md

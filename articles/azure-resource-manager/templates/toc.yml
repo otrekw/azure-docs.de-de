@@ -44,6 +44,9 @@
         - name: Festlegen der Reihenfolge für die Ressourcenbereitstellung
           displayName: 'dependent resources, dependency'
           href: template-tutorial-create-templates-with-dependent-resources.md
+        - name: Verwenden eines Bereitstellungsskripts
+          displayName: custom script
+          href: template-tutorial-deployment-script.md
         - name: Verwenden von Bedingungen
           href: template-tutorial-use-conditions.md
         - name: Integrieren von Key Vault
@@ -122,6 +125,9 @@
               href: add-resource-extensions.md
         - name: Ausgaben
           href: template-outputs.md
+        - name: Bereitstellungsskript
+          displayName: custom script
+          href: deployment-script-template.md
         - name: Modularisieren von Vorlagen
           displayName: 'linked templates, nested templates'
           href: linked-templates.md

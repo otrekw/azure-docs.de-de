@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: Konzepte
   items:
-    - name: Erzwingen von TLS 1.2
+    - name: TLS-Unterstützung
+      href: iot-hub-tls.md
+    - name: Einstellung von TLS 1.0 und 1.1
       href: tls-1.2-everywhere.md
     - name: 'Nachrichtenergänzungen: Übersicht'
       href: iot-hub-message-enrichments-overview.md

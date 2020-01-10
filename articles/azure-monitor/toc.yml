@@ -62,6 +62,8 @@
       href: platform/powershell-samples.md
 - name: Konzepte
   items:
+    - name: Was können Sie überwachen?
+      href: monitor-reference.md
     - name: Azure-Verwaltung
       href: azure-management.md
     - name: Kontinuierliche Überwachung
