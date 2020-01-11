@@ -1,17 +1,17 @@
 ---
-title: Schema für die Workflowdefinitionssprache
-description: Schemareferenz für die Workflowdefinitionssprache in Azure Logic Apps
+title: Schemareferenz für die Workflowdefinitionssprache
+description: Referenzleitfaden für JSON-Schema und -Syntax für die Workflowdefinitionssprache, mit der Workflows in Azure Logic Apps beschrieben werden.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 9c235c76e3d96ce02efc113c65c62081fcba20ee
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ff2267c2d03076d3abc44d0bd1dddc64577cc7f1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790809"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428658"
 ---
 # <a name="schema-reference-guide-for-the-workflow-definition-language-in-azure-logic-apps"></a>Schemareferenzleitfaden für die Workflowdefinitionssprache in Azure Logic Apps
 
@@ -35,7 +35,7 @@ So sieht die allgemeine Struktur einer Workflowdefinition aus:
 }
 ```
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 |-----------|----------|-------------|
 | `definition` | Ja | Das Startelement für Ihre Workflowdefinition |
 | `$schema` | Nur bei externem Verweis auf eine Workflowdefinition | Der Speicherort der JSON-Schemadatei, welche die Version der Workflowdefinitionssprache beschreibt. Der Speicherort lautet wie folgt: <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
@@ -74,7 +74,7 @@ So sieht die allgemeine Struktur einer Parameterdefinition aus:
 },
 ```
 
-| Attribut | Erforderlich | Typ | BESCHREIBUNG |
+| attribute | Erforderlich | type | BESCHREIBUNG |
 |-----------|----------|------|-------------|
 | <*parameter-name*> | Ja | String | Der Name des Parameters, den Sie definieren möchten |
 | <*parameter-type*> | Ja | int, float, string, bool, array, object, securestring, secureobject <p><p>**Hinweis**: Verwenden Sie für sämtliche Kennwörter, Schlüssel und Geheimnisse die Typen `securestring` oder `secureobject`, da diese Typen beim `GET`-Vorgang nicht zurückgegeben werden. Weitere Informationen zum Sichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters). | Der Typ des Parameters |
@@ -83,7 +83,7 @@ So sieht die allgemeine Struktur einer Parameterdefinition aus:
 | <*parameter-description*> | Nein | JSON-Objekt | Alle anderen Parameterdetails, z.B. eine Beschreibung des Parameters |
 ||||
 
-Erstellen Sie als nächstes eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für die Workflowdefinition, definieren Sie Vorlagenparameter, die die bei der Bereitstellung gewünschten Werte akzeptieren, ersetzen Sie hartcodierte Werte nach Bedarf durch Verweise auf Vorlagen- oder Workflowdefinitionsparameter, und speichern Sie die Werte, die bei der Bereitstellung verwendet werden sollen, in einer separaten [Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files). Auf diese Weise können Sie diese Werte einfacher über die Parameterdatei ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Für Informationen, die vertraulich sind oder geschützt werden müssen, etwa Benutzernamen, Kennwörter und Geheimnisse, können Sie diese Werte in Azure Key Vault speichern und aus Ihrem Schlüsseltresor in die Parameterdatei abrufen. Weitere Informationen und Beispiele zum Definieren von Parametern auf Vorlagen- und Workflowdefinitionsebene finden Sie unter [Übersicht: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Erstellen Sie als nächstes eine [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/overview.md) für die Workflowdefinition, definieren Sie Vorlagenparameter, die die bei der Bereitstellung gewünschten Werte akzeptieren, ersetzen Sie hartcodierte Werte nach Bedarf durch Verweise auf Vorlagen- oder Workflowdefinitionsparameter, und speichern Sie die Werte, die bei der Bereitstellung verwendet werden sollen, in einer separaten [Parameterdatei](../azure-resource-manager/templates/parameter-files.md). Auf diese Weise können Sie diese Werte einfacher über die Parameterdatei ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Für Informationen, die vertraulich sind oder geschützt werden müssen, etwa Benutzernamen, Kennwörter und Geheimnisse, können Sie diese Werte in Azure Key Vault speichern und aus Ihrem Schlüsseltresor in die Parameterdatei abrufen. Weitere Informationen und Beispiele zum Definieren von Parametern auf Vorlagen- und Workflowdefinitionsebene finden Sie unter [Übersicht: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 <a name="static-results"></a>
 
@@ -112,10 +112,10 @@ Definieren Sie im `staticResults`-Attribut die Attribute `outputs` und `status` 
 }
 ```
 
-| Attribut | Erforderlich | Typ | BESCHREIBUNG |
+| attribute | Erforderlich | type | BESCHREIBUNG |
 |-----------|----------|------|-------------|
 | <*static-result-definition-name*> | Ja | String | Der Name der Definition eines statischen Ergebnisses, auf die eine Aktionsdefinition über ein `runtimeConfiguration.staticResult`-Objekt verweisen kann. Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfiguration](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-config-options). <p>Sie können jedoch auch einen beliebigen anderen eindeutigen Namen verwenden. Standardmäßig wird an diesen eindeutigen Namen eine Zahl angehängt, die nach Bedarf inkrementiert wird. |
-| <*output-attributes-and-values-returned*> | Ja | Varies | Die Anforderungen an diese Attribute variieren auf Grundlage verschiedener Bedingungen. Wenn z. B. für das Attribut `status` `Succeeded` gilt, schließt das `outputs`-Attribut Attribute und Werte ein, die von der Aktion als Modellausgaben zurückgegeben werden. Wenn für das Attribut `status` `Failed` gilt, schließt das `outputs`-Attribut das `errors`-Attribut ein. Dabei handelt es sich um ein Array mit mindestens einem `message`-Objekt, in dem Fehlerinformationen enthalten sind. |
+| <*output-attributes-and-values-returned*> | Ja | Varies | Die Anforderungen an diese Attribute variieren auf Grundlage verschiedener Bedingungen. Wenn z. B. für das Attribut `status``Succeeded` gilt, schließt das `outputs`-Attribut Attribute und Werte ein, die von der Aktion als Modellausgaben zurückgegeben werden. Wenn für das Attribut `status``Failed` gilt, schließt das `outputs`-Attribut das `errors`-Attribut ein. Dabei handelt es sich um ein Array mit mindestens einem `message`-Objekt, in dem Fehlerinformationen enthalten sind. |
 | <*header-values*> | Nein | JSON | Alle Headerwerte, die von der Aktion zurückgegeben werden. |
 | <*status-code-returned*> | Ja | String | Der von der Aktion zurückgegebene Statuscode. |
 | <*action-status*> | Ja | String | Der Status der Aktion, z. B. `Succeeded` oder `Failed`. |
@@ -275,7 +275,7 @@ So sieht die allgemeine Struktur einer Ausgabedefinition aus:
 }
 ```
 
-| Attribut | Erforderlich | Typ | BESCHREIBUNG |
+| attribute | Erforderlich | type | BESCHREIBUNG |
 |-----------|----------|------|-------------|
 | <*key-name*> | Ja | String | Der Schlüsselname des Rückgabewerts der Ausgabe |
 | <*key-type*> | Ja | int, float, string, securestring, bool, array, JSON-Objekt | Der Typ des Rückgabewerts der Ausgabe |
@@ -294,7 +294,7 @@ In [Ausdrücken](#expressions) und [Funktionen](#functions) führen Operatoren b
 |----------|------|
 | ' | Wenn Sie ein Zeichenfolgenliteral als Eingabe oder in Ausdrücken und Funktionen verwenden möchten, umschließen Sie die Zeichenfolge nur mit einfachen Anführungszeichen. Beispiel: `'<myString>'`. Verwenden Sie keine doppelten Anführungszeichen (""). Dies könnte zu einem Konflikt mit der JSON-Formatierung eines ganzen Ausdrucks führen. Beispiel: <p>**Ja**: length('Hello') </br>**Nein**: length("Hello") <p>Wenn Sie Arrays oder Zahlen übergeben, sind keine umschließenden Satzzeichen erforderlich. Beispiel: <p>**Ja**: length([1, 2, 3]) </br>**Nein**: length("[1, 2, 3]") |
 | [] | Verwenden Sie eckige Klammern, um auf einen Wert an einer bestimmten Position (Index) in einem Array zu verweisen. So können Sie z.B. das zweite Element in einem Array abrufen: <p>`myArray[1]` |
-| . | Verwenden Sie den Punktoperator, um auf eine Eigenschaft in einem Objekt zu verweisen. So können Sie z.B. die Eigenschaft `name` für das JSON-Objekt `customer` abrufen: <p>`"@parameters('customer').name"` |
+| erforderlich. | Verwenden Sie den Punktoperator, um auf eine Eigenschaft in einem Objekt zu verweisen. So können Sie z.B. die Eigenschaft `name` für das JSON-Objekt `customer` abrufen: <p>`"@parameters('customer').name"` |
 | ? | Mit dem Fragezeichenoperator können Sie ohne Laufzeitfehler auf NULL-Eigenschaften in einem Objekt verweisen. Mithilfe des folgenden Ausdrucks können Sie beispielsweise NULL-Ausgaben eines Triggers verarbeiten: <p>`@coalesce(trigger().outputs?.body?.<someProperty>, '<property-default-value>')` |
 |||
 

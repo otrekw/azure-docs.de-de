@@ -1,20 +1,20 @@
 ---
-title: Herstellen einer Verbindung mit GitHub
-description: Überwachen von GitHub-Ereignissen mit GitHub-REST-APIs und Azure Logic Apps
+title: Zugreifen auf sowie Überwachen und Verwalten Ihres GitHub-Repositorys
+description: Überwachen von GitHub-Ereignissen und Verwalten Ihres GitHub-Repositorys durch Erstellen automatisierter Workflows mit Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 03/02/2018
 tags: connectors
-ms.openlocfilehash: 7dc865f520b6f4667ace720e656a210e0252d1a1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b67d2e860e8c69f6f2f43441144ef2f60ed3a104
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789760"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75378448"
 ---
-# <a name="connect-to-github-from-azure-logic-apps"></a>Herstellen einer Verbindung mit GitHub aus Azure Logic Apps
+# <a name="monitor-and-manage-your-github-repo-by-using-azure-logic-apps"></a>Überwachen und Verwalten Ihres GitHub-Repositorys mithilfe von Azure Logic Apps
 
 GitHub ist ein webbasierter Hostingdienst für Git-Repositorys. Darin finden Sie die gesamte verteilte Versionskontroll- und SCM-Funktionalität (Source Code Management, Quellcodeverwaltung) in Git sowie weitere Features.
 
@@ -26,7 +26,7 @@ Um den GitHub-Connector in einer Logik-App verwenden zu können, müssen Sie zue
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG | 
 | -------- | -------- | ----------- | 
-| Tokenverschlüsselung | Ja | Geben Sie Ihre Anmeldeinformationen für GitHub an. |
+| Token | Ja | Geben Sie Ihre Anmeldeinformationen für GitHub an. |
 
 Nachdem Sie die Verbindung erstellt haben, können Sie die Aktionen ausführen und auf die in diesem Artikel beschriebenen Trigger lauschen.
 

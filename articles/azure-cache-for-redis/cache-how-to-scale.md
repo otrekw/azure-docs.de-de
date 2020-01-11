@@ -1,17 +1,17 @@
 ---
 title: Skalieren von Azure Cache for Redis
-description: Erfahren Sie, wie Sie Azure Cache for Redis-Instanzen skalieren
+description: Erfahren Sie, wie Sie Ihre Azure Cache for Redis-Instanzen über das Azure-Portal sowie mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.author: yegu
-ms.openlocfilehash: 0fe4092a93e34d6e6b4bb4c4441609f696518b86
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122127"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433498"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Skalieren von Azure Cache for Redis
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -49,7 +49,7 @@ Sie können mit den folgenden Einschränkungen zu einem anderen Tarif wechseln:
  
 Während der Cache in den neuen Tarif skaliert wird, wird auf dem Blatt **Azure Cache for Redis** der Status **Wird skaliert** angezeigt.
 
-![Skalieren][redis-cache-scaling]
+![Skalierung][redis-cache-scaling]
 
 Wenn die Skalierung abgeschlossen ist, ändert sich der Status von **Wird skaliert** zu **Wird ausgeführt**.
 
@@ -118,7 +118,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * Ein **Basic**-Cache kann nicht direkt auf einen **Premium**-Cache skaliert werden. Skalieren Sie zunächst in einem ersten Skalierungsvorgang von **Basic** auf **Standard** und dann in einem nachfolgenden Skalierungsvorgang von **Standard** auf **Premium**.
 * Wenn Sie beim Erstellen des **Premium** -Caches die Clusterunterstützung aktiviert haben, können Sie die [Clustergröße ändern](cache-how-to-premium-clustering.md#cluster-size). Wenn der Cache ohne aktiviertes Clustering erstellt wurde, können Sie das Clustering zu einem späteren Zeitpunkt konfigurieren.
   
-  Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ "Premium"](cache-how-to-premium-clustering.md).
+  Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-clustering.md).
 
 ### <a name="after-scaling-do-i-have-to-change-my-cache-name-or-access-keys"></a>Muss ich nach dem Skalieren den Namen oder die Zugriffsschlüssel für den Cache ändern?
 Nein, Cachename und -schlüssel bleiben während eines Skalierungsvorgangs unverändert.

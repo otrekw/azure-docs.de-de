@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 5ee07e5b0ac9c73a686a0f8c7d489ecc7ee96425
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805738"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422200"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Konfigurieren einer Linux-Java-App für Azure App Service
 
@@ -248,8 +248,7 @@ Zur Verschlüsselung Ihrer JDBC-Verbindung sind möglicherweise zusätzliche Kon
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
-- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
-
+- [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
 #### <a name="manually-initialize-and-load-the-key-store"></a>Manuelles Initialisieren und Laden des Keystores
 
@@ -663,7 +662,7 @@ In den folgenden Schritten werden die Anforderungen für die Verbindung Ihres vo
 
 Wenn Ihr App Service das nächste Mal neugestartet wird, führt er das Startskript aus und führt die notwendigen Konfigurationsschritte durch. Sie können mit SSH auf Ihren App Service zugreifen, um zu überprüfen, ob diese Konfiguration richtig ist. Führen Sie dann das Startskript aus der Bash-Aufforderung selber aus. Sie können auch die App Service-Protokolle untersuchen. Weitere Informationen über diese Optionen finden sie unter [„Protokollieren und Debuggen von Apps“](#logging-and-debugging-apps).
 
-Als Nächstes müssen Sie die WildFly-Konfiguration für Ihre Anwendung aktualisieren und erneut bereitstellen. Führen Sie die folgenden Schritte aus:
+Als Nächstes müssen Sie die WildFly-Konfiguration für Ihre Anwendung aktualisieren und erneut bereitstellen. Führen Sie die folgenden Schritte durch:
 
 1. Öffnen Sie die Datei *src/main/resources/META-INF/persistence.xml* für Ihre Anwendung und suchen Sie das Element `<jta-data-source>`. Ersetzen Sie seinen Inhalt wie folgt:
 
@@ -709,7 +708,7 @@ In den folgenden Schritten werden die erforderliche Konfiguration und der Code b
 
 1. Öffnen Sie ein Bash-Terminal, und verwenden Sie die folgenden Befehle, um Ihre Azure-Ressourceninformationen in Umgebungsvariablen zu speichern. Ersetzen Sie die Platzhalter (einschließlich der spitzen Klammern) durch Ihre eigenen Werte.
 
-    | Variable            | Wert                                                                      |
+    | Variable            | value                                                                      |
     |---------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME  | Der Name der Ressourcengruppe, die Ihre App Service-Instanz enthält.       |
     | WEBAPP_NAME         | Der Name Ihrer App Service-Instanz.                                     |
@@ -993,7 +992,7 @@ Um Tomcat mit Redis zu verwenden, müssen Sie Ihre App für die Verwendung einer
 
 1. Öffnen Sie in Bash-Terminal, und verwenden Sie `<variable>=<value>`, um jede der folgenden Umgebungsvariablen festzulegen.
 
-    | Variable                 | Wert                                                                      |
+    | Variable                 | value                                                                      |
     |--------------------------|----------------------------------------------------------------------------|
     | RESOURCEGROUP_NAME       | Der Name der Ressourcengruppe, die Ihre App Service-Instanz enthält.       |
     | WEBAPP_NAME              | Der Name Ihrer App Service-Instanz.                                     |

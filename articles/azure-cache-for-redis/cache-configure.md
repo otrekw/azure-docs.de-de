@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 62e0c9bbf8b1c7cef9b1cc239810cb554b5ffa45
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122876"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433537"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Konfigurieren von Azure Cache for Redis
 In diesem Thema sind die für Ihre Azure Cache for Redis-Instanzen verfügbaren Konfigurationen beschrieben. Darüber hinaus wird in diesem Thema die standardmäßige Redis-Serverkonfiguration für Azure Cache for Redis-Instanzen behandelt.
@@ -46,11 +46,11 @@ Sie können die folgenden Einstellungen über das **Ressourcenmenü** anzeigen u
     * [Georeplikation](#geo-replication)
     * [Virtual Network](#virtual-network)
     * [Firewall](#firewall)
-    * [Properties](#properties)
-    * [Sperren](#locks)
+    * [Eigenschaften](#properties)
+    * [Locks](#locks)
     * [Automatisierungsskript](#automation-script)
 * Verwaltung
-    * [Daten importieren](#importexport)
+    * [Importieren von Daten](#importexport)
     * [Daten exportieren](#importexport)
     * [Neustart](#reboot)
 * [Überwachung](#monitoring)
@@ -98,8 +98,8 @@ Der Abschnitt **Einstellungen** ermöglicht den Zugriff auf die folgenden Cachee
 * [Georeplikation](#geo-replication)
 * [Virtual Network](#virtual-network)
 * [Firewall](#firewall)
-* [Properties](#properties)
-* [Sperren](#locks)
+* [Eigenschaften](#properties)
+* [Locks](#locks)
 * [Automatisierungsskript](#automation-script)
 
 
@@ -120,7 +120,7 @@ Die folgenden Einstellungen werden auf dem Blatt **Erweiterte Einstellungen** ko
 Der Zugriff ohne SSL ist für neue Caches standardmäßig deaktiviert. Zum Aktivieren eines nicht SSL-fähigen Ports klicken Sie auf dem Blatt **Erweiterte Einstellungen** bei **Nur Zugriff über SSL zulassen** auf **Nein**, und klicken Sie dann auf **Speichern**.
 
 > [!NOTE]
-> SSL-Zugriff auf Azure Cache for Redis unterstützt standardmäßig TLS 1.0. Die unterstützte Mindestversion von TLS kann bei Bedarf bis zu TLS 1.2 erhöht werden, indem Sie das Dropdown **TLS-Mindestversion** auf dem Blatt **Erweiterte Einstellungen** verwenden und dann auf **Speichern** klicken.
+> Der SSL-Zugriff auf Azure Cache for Redis unterstützt derzeit TLS 1.0, 1.1 und 1.2, aber die Versionen 1.0 und 1.1 werden bald eingestellt.  Weitere Informationen finden Sie auf unserer Seite [Entfernen von TLS 1.0 und 1.1](cache-remove-tls-10-11.md).
 
 ![Azure Cache for Redis: Zugriffsports](./media/cache-configure/redis-cache-access-ports.png)
 
@@ -213,7 +213,7 @@ Klicken Sie zum Ändern der Clustergröße aus einem ausgeführten Premium-Cache
 Um die Clustergröße zu ändern, verwenden Sie den Schieberegler, oder geben Sie im Textfeld **Shardanzahl** eine Zahl zwischen 1 und 10 ein, und klicken Sie zum Speichern auf **OK**.
 
 > [!IMPORTANT]
-> Redis-Clustering ist nur für Premium-Caches verfügbar. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ "Premium"](cache-how-to-premium-clustering.md).
+> Redis-Clustering ist nur für Premium-Caches verfügbar. Weitere Informationen finden Sie unter [Konfigurieren von Clustern für Azure Cache for Redis vom Typ „Premium“](cache-how-to-premium-clustering.md).
 > 
 > 
 
@@ -278,12 +278,12 @@ Sie können Firewallregeln mit einem Start- und End-IP-Adressbereich angeben. We
 > 
 > 
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 Klicken Sie auf **Eigenschaften**, um Informationen zu Ihrem Cache anzuzeigen, z.B. den Endpunkt und die Ports des Caches.
 
 ![Azure Cache for Redis-Eigenschaften](./media/cache-configure/redis-cache-properties.png)
 
-### <a name="locks"></a>Sperren
+### <a name="locks"></a>Locks
 Im Abschnitt **Sperren** können Sie ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Weitere Informationen finden Sie unter [Sperren von Ressourcen mit dem Azure-Ressourcen-Manager](../azure-resource-manager/resource-group-lock-resources.md).
 
 ### <a name="automation-script"></a>Automatisierungsskript
@@ -295,12 +295,12 @@ Mit den Einstellungen im Abschnitt **Verwaltung** können Sie folgende Verwaltun
 
 ![Verwaltung](./media/cache-configure/redis-cache-administration.png)
 
-* [Daten importieren](#importexport)
+* [Importieren von Daten](#importexport)
 * [Daten exportieren](#importexport)
 * [Neustart](#reboot)
 
 
-### <a name="importexport"></a>Import/Export
+### <a name="importexport"></a>Importieren/Exportieren
 Import/Export ist ein Vorgang der Azure Cache for Redis-Datenverwaltung, bei dem Sie Daten in den Cache importieren oder aus dem Cache exportieren können. Hierzu importieren bzw. exportieren Sie eine Momentaufnahme der Azure Cache for Redis-Datenbank (RDB) aus einem Premium-Cache in ein Seitenblob in einem Azure Storage-Konto. So können Sie zwischen verschiedenen Azure Cache for Redis-Instanzen migrieren oder den Cache vor der Nutzung mit Daten auffüllen.
 
 Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Cache for Redis die RDB-Dateien aus Azure Storage in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
@@ -458,7 +458,7 @@ Weitere Informationen zu Datenbanken finden Sie unter [Was sind Redis-Datenbanke
 > * CONFIG
 > * DEBUG
 > * MIGRATE
-> * Speichern
+> * SAVE
 > * SHUTDOWN
 > * SLAVEOF
 > * CLUSTER: Clusterschreibbefehle sind deaktiviert, aber schreibgeschützte Clusterbefehle sind zulässig.

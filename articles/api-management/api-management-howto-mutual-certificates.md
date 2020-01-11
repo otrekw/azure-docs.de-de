@@ -1,5 +1,6 @@
 ---
-title: Sichern von Back-End-Diensten über die Clientzertifikatauthentifizierung – Azure API Management | Microsoft-Dokumentation
+title: Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie Back-End-Dienste über eine Clientzertifikatauthentifizierung in Azure API Management sichern.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: be6441b1fea81f5b947e8deacd8de7b17814aab5
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442646"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management
 
@@ -31,38 +32,38 @@ Weitere Informationen zur Verwaltung von Zertifikaten mit der API Management-RES
 
 Diese Anleitung beschreibt, wie Sie Ihre Instanz des API Management-Diensts konfigurieren, um für den Zugriff auf den Back-End-Dienst einer API die Clientzertifikatauthentifizierung zu verwenden. Bevor Sie die Schritte in diesem Artikel ausführen, sollte Ihr Back-End-Dienst für die Clientzertifikatauthentifizierung konfiguriert sein ([Informationen zum Konfigurieren der Zertifikatauthentifizierung in Azure Websites finden Sie in diesem Artikel][to configure certificate authentication in Azure WebSites refer to this article]). Sie benötigen Zugriff auf das Zertifikat und das Kennwort zum Hochladen in den API Management-Dienst.
 
-## <a name="step1"></a>Hochladen eines Clientzertifikats
+## <a name="step1"> </a>Hochladen eines Zertifikats
 
-![Hinzufügen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert.png)
+![Hinzufügen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
 Gehen Sie folgendermaßen vor, um ein neues Clientzertifikat hochzuladen. Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Tutorial [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance].
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure API Management-Dienstinstanz.
-2. Wählen Sie **Clientzertifikate** im Menü aus.
+2. Wählen Sie **Zertifikate** im Menü aus.
 3. Klicken Sie auf die Schaltfläche **+ Hinzufügen**.  
     ![Hinzufügen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
 4. Suchen Sie nach dem Zertifikat, und geben Sie dessen ID und Kennwort an.  
-5. Klicken Sie auf **Create**.
+5. Klicken Sie auf **Erstellen**.
 
 > [!NOTE]
 > Das Zertifikat muss im **.pfx** -Format vorliegen. Selbstsignierte Zertifikate sind zulässig.
 
-Sobald das Zertifikat hochgeladen ist, wird es auf der Registerkarte **Clientzertifikate** angezeigt.  Wenn Sie viele Zertifikate haben, notieren Sie sich den Fingerabdruck des gewünschten Zertifikats zum [Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung][Configure an API to use a client certificate for gateway authentication].
+Sobald das Zertifikat hochgeladen ist, wird es unter **Zertifikate** angezeigt.  Wenn Sie viele Zertifikate haben, notieren Sie sich den Fingerabdruck des gewünschten Zertifikats zum [Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung][Configure an API to use a client certificate for gateway authentication].
 
 > [!NOTE]
 > Wenn Sie beispielsweise bei der Verwendung eines selbstsignierten Zertifikats die Überprüfung der Zertifikatkette deaktivieren möchten, führen Sie die Schritte in [diesem Punkt](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end) der häufig gestellten Fragen aus.
 
-## <a name="step1a"></a>Löschen eines Clientzertifikats
+## <a name="step1a"> </a>Löschen eines Clientzertifikats
 
 Um ein Zertifikat zu löschen, klicken Sie auf das Kontextmenü **...** , und wählen Sie neben dem betreffenden Zertifikat **Löschen** aus.
 
-![Löschen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
+![Löschen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-delete-new.png)
 
 Falls das Zertifikat von einer API verwendet wird, wird ein Warnbildschirm angezeigt. Um das Zertifikat zu löschen, müssen Sie es zunächst aus allen APIs entfernen, die zu seiner Verwendung konfiguriert sind.
 
 ![Fehler beim Löschen von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
-## <a name="step2"></a>Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung
+## <a name="step2"> </a>Konfigurieren einer API zum Verwenden eines Clientzertifikats für die Gatewayauthentifizierung
 
 1. Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs**, und navigieren Sie zur API.  
     ![Aktivieren von Clientzertifikaten](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)

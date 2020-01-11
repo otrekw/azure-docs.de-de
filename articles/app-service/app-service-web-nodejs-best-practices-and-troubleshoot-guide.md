@@ -1,19 +1,19 @@
 ---
 title: Bewährte Methoden und Problembehandlung bei Node.js
 description: Erfahren Sie etwas über bewährte Methoden und Problembehandlungsschritte für Node.js-Anwendungen, die in Azure App Service ausgeführt werden.
-author: ranjithr
+author: msangapu-msft
 ms.assetid: 387ea217-7910-4468-8987-9a1022a99bef
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: bwren
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 75195bd7ad228bb66dfd21d2c65997cc8c02680e
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 682884d11b298a97e27056af3c10802dfd410e4c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672042"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430562"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -83,11 +83,11 @@ Für das Streaming von Anwendungen müssen Sie außerdem responseBufferLimit fü
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`.
+Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert ist `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
-Der Standardwert ist „false“. Wenn diese Einstellung aktiviert ist, kann die Node-Anwendung eine Verbindung mit einer benannten Pipe herstellen (Umgebungsvariable IISNODE\_CONTROL\_PIPE) und eine „recycle“-Nachricht senden. Dies bewirkt, dass w3wp korrekt recycelt wird.
+Der Standardwert ist „FALSE“. Wenn diese Einstellung aktiviert ist, kann die Node-Anwendung eine Verbindung mit einer benannten Pipe herstellen (Umgebungsvariable IISNODE\_CONTROL\_PIPE) und eine „recycle“-Nachricht senden. Dies bewirkt, dass w3wp korrekt recycelt wird.
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
@@ -99,7 +99,7 @@ Der Standardwert ist 0. Dies bedeutet, dass das Feature aktiviert ist. Wenn ein 
 
 ### <a name="debugheaderenabled"></a>debugHeaderEnabled
 
-Der Standardwert ist „false“. Wenn „true“ festgelegt ist, fügt iisnode jeder gesendeten HTTP-Antwort den HTTP-Antwortheader `iisnode-debug` hinzu. Der Headerwert `iisnode-debug` ist eine URL. Sie können einzelne Teile der Diagnoseinformationen ermitteln, indem Sie sich das URL-Fragment ansehen. Wenn Sie eine Visualisierung wünschen, öffnen Sie die URL in einem Browser.
+Der Standardwert ist „FALSE“. Wenn „true“ festgelegt ist, fügt iisnode jeder gesendeten HTTP-Antwort den HTTP-Antwortheader `iisnode-debug` hinzu. Der Headerwert `iisnode-debug` ist eine URL. Sie können einzelne Teile der Diagnoseinformationen ermitteln, indem Sie sich das URL-Fragment ansehen. Wenn Sie eine Visualisierung wünschen, öffnen Sie die URL in einem Browser.
 
 ### <a name="loggingenabled"></a>loggingEnabled
 
@@ -107,7 +107,7 @@ Mit dieser Einstellung wird die Protokollierung von stdout und stderr durch iisn
 
 ### <a name="deverrorsenabled"></a>devErrorsEnabled
 
-Der Standardwert ist „false“. Bei der Festlegung auf „true“ zeigt iisnode den HTTP-Statuscode und win32-Fehlercode in Ihrem Browser an. Der win32-Code ist hilfreich beim Debuggen bestimmter Problemtypen.
+Der Standardwert ist „FALSE“. Bei der Festlegung auf „true“ zeigt iisnode den HTTP-Statuscode und win32-Fehlercode in Ihrem Browser an. Der win32-Code ist hilfreich beim Debuggen bestimmter Problemtypen.
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (nicht für aktive Produktionswebsite aktivieren)
 
@@ -172,7 +172,7 @@ Wechseln Sie in das Verzeichnis „site/wwwroot“. Es wird eine Eingabeaufforde
 
 ![](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_install_v8.png)
 
-Führen Sie den Befehl `npm install v8-profiler`aus.
+Führen Sie den Befehl `npm install v8-profiler` aus.
 
 Dieser Befehl installiert v8-profiler im Verzeichnis „node\_modules“ und für alle Abhängigkeiten.
 Bearbeiten Sie nun die Datei „server.js“, um das Profil für Ihre Anwendung zu erstellen.

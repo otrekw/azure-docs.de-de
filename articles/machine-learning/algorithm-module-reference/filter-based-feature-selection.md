@@ -1,7 +1,7 @@
 ---
 title: 'Filter Based Feature Selection: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Hie erfahren Sie, wie Sie das Modul „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) im Azure Machine Learning-Dienst verwenden, um die Merkmale (Features) in einem Dataset zu bestimmen, die die größte Vorhersagekraft haben.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Filter Based Feature Selection“ (Filterbasierte Featureauswahl) in Azure Machine Learning verwenden, um die Merkmale (Features) in einem Dataset zu bestimmen, die die größte Vorhersagekraft haben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: f8ae4982f7602cd7403a78517fec79fa95d33aa2
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717206"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428521"
 ---
 # <a name="filter-based-feature-selection"></a>Filter Based Feature Selection
 
@@ -135,5 +135,5 @@ Wenn Sie eine Pearson-Korrelation für ein numerisches Feature und eine Kategori
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
 

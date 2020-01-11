@@ -4,19 +4,19 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 05/09/2019
 ms.author: glenga
-ms.openlocfilehash: eb61bf5734d0aea1534735b23a2b95b52000f5ad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 8946da455b4a395814d4cb5a833932c2e3d56f0a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74322901"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75658524"
 ---
 | Resource | [Verbrauchstarif](../articles/azure-functions/functions-scale.md#consumption-plan) | [Premium-Plan](../articles/azure-functions/functions-scale.md#premium-plan) | [App Service-Plan](../articles/azure-functions/functions-scale.md#app-service-plan)<sup>1</sup> |
 | --- | --- | --- | --- |
 | Horizontales Skalieren | Ereignisgesteuert | Ereignisgesteuert | [Manuelle Skalierung/Autoskalierung](../articles/app-service/manage-scale-up.md) | 
 | Maximale Anzahl Instanzen | 200 | 100 | 10 – 20 |
-|Standardmäßige [Timeoutzeit](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |5 | 30 |30<sup>2</sup> |
-|Maximale [Timeoutzeit](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | 60 | unbegrenzt<sup>3</sup> |
+|Standardmäßige [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |5 | 30 |30<sup>2</sup> |
+|Maximale [Timeoutdauer](../articles/azure-functions/functions-scale.md#timeout) (in Minuten) |10 | 60 | unbegrenzt<sup>3</sup> |
 | Maximale Anzahl ausgehender Verbindungen (pro Instanz) | 600 aktive (insgesamt 1.200) | unbounded | unbounded |
 | Maximale Anforderungsgröße (MB)<sup>4</sup> | 100 | 100 | 100 |
 | Maximale Länge der Abfragezeichenfolge<sup>4</sup> | 4096 | 4096 | 4096 |
@@ -25,11 +25,11 @@ ms.locfileid: "74322901"
 | Maximaler Arbeitsspeicher (GB pro Instanz) | 1.5 | 3,5–14 | 1,75–14 |
 | Funktions-Apps pro Plan |100 |100 |unbegrenzt<sup>5</sup> |
 | [App Service-Pläne](../articles/app-service/overview-hosting-plans.md) | 100 pro [Region](https://azure.microsoft.com/global-infrastructure/regions/) |100 pro Ressourcengruppe |100 pro Ressourcengruppe |
-| Speicher<sup>6</sup> |1 GB |250 GB |50–1.000 GB |
+| Speicher<sup>6</sup> |1 GB |250 GB |50–1.000 GB |
 | Benutzerdefinierte Domänen pro App</a> |500<sup>7</sup> |500 |500 |
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/configure-ssl-bindings.md) |Unbegrenzte Anzahl von SNI SSL-Verbindungen inbegriffen | Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen | 
 
-<sup>1</sup> Spezifische Grenzwerte für die verschiedenen Optionen des App Service-Plans finden Sie unter [Grenzwerte für App Service-Pläne](../articles/azure-subscription-service-limits.md#app-service-limits).  
+<sup>1</sup> Spezifische Grenzwerte für die verschiedenen Optionen des App Service-Plans finden Sie unter [Grenzwerte für App Service-Pläne](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits).  
 <sup>2</sup> Das Timeout für die Laufzeit von Functions 1.x in einem App Service-Plan ist standardmäßig unbegrenzt.  
 <sup>3</sup> Hierfür muss der App Service-Plan auf [Always On](../articles/azure-functions/functions-scale.md#always-on) festgelegt werden. Die Bezahlung erfolgt zu den üblichen [Raten](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup>Diese Grenzwerte werden [auf dem Host festgelegt](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/web.config).  

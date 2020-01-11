@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 06/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 91d5827a08a600c19c24ac0a96a5f4e3e98e22f2
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2ae8b71a7d48949cd82765112752192aba54521f
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671779"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75680952"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Lokale Git-Bereitstellung in Azure App Service
 
@@ -97,7 +97,9 @@ Wenn Ihr Konto über die erforderlichen Berechtigungen verfügt, können Sie Azu
 
 So aktivieren Sie die lokale Git-Bereitstellung für Ihre App mit Azure Pipelines (Vorschau):
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu ihrer Seite für die Azure App Service-App, und wählen Sie im linken Menü **Bereitstellungscenter** aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie den Eintrag aus. 
+
+1. Wählen Sie Ihre Azure App Service-App und dann im linken Menü **Bereitstellungscenter** aus.
    
 1. Wählen Sie auf der Seite **Bereitstellungscenter** nacheinander **Lokales Git** und dann **Weiter** aus. 
    

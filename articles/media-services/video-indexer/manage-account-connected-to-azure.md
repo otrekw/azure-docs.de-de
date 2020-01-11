@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 12/16/2019
 ms.author: juliako
-ms.openlocfilehash: 4f8491e31747eda9cbe8689ba7db3026df0ff3ad
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f3825f6c9186c5e04807dd3890a14fcc6d370989
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892769"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454675"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Verwalten eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -49,6 +49,17 @@ Wenn Ihr Videos Indexer-Konto mit Azure verbunden ist, sehen Sie Folgendes:
 * Die Anzahl und den Typ der zugeordneten reservierten Einheiten.
 
 Wenn für Ihr Konto einige Anpassungen erforderlich ist, werden auf der Seite **Einstellungen** entsprechende Fehler- und Warnmeldungen zu Ihrer Kontokonfiguration angezeigt. Die Nachrichten enthalten Links zu den genauen Stellen im Azure-Portal, in denen Sie Änderungen vornehmen müssen. Weitere Informationen finden Sie im folgenden Abschnitt [Fehler und Warnungen](#errors-and-warnings).
+
+## <a name="repair-the-connection-to-azure"></a>Reparieren der Verbindung mit Azure
+
+Im Dialogfeld **Verbindung mit Azure Media Services aktualisieren** Ihrer Seite [Video Indexer](https://www.videoindexer.ai/) werden Sie aufgefordert, Werte für die folgenden Einstellungen anzugeben: 
+
+|Einstellung|BESCHREIBUNG|
+|---|---|
+|Azure-Abonnement-ID|Die Abonnement-ID kann über das Azure-Portal abgerufen werden. Klicken Sie im linken Navigationsbereich auf **Alle Dienste**, und suchen Sie nach „Abonnements“. Wählen Sie **Abonnements** und dann in der Liste Ihrer Abonnements die gewünschte ID aus.|
+|Name der Azure Media Services-Ressourcengruppen|Der Name der Ressourcengruppe, in der Sie das Media Services-Konto erstellt haben.|
+|Anwendungs-ID|Die Azure AD-Anwendungs-ID (mit Berechtigungen für das angegebene Media Services-Konto), die Sie für dieses Video Indexer-Konto erstellt haben. <br/><br/>Um die App-ID zu erhalten, navigieren Sie zum Azure-Portal. Wählen Sie unter dem Media Services-Konto Ihr Konto aus, und wechseln Sie zu **API-Zugriff**. Klicken Sie auf **Verbindung mit Azure Media Services-API über Dienstprinzipal herstellen** -> **Azure AD-App**. Kopieren Sie die relevanten Parameter.|
+|Anwendungsschlüssel|Der Ihrem oben angegebenen Media Services-Konto zugeordnete Azure AD-Anwendungsschlüssel. <br/><br/>Um den App-Schlüssel zu erhalten, navigieren Sie zum Azure-Portal. Wählen Sie unter dem Media Services-Konto Ihr Konto aus, und wechseln Sie zu **API-Zugriff**. Klicken Sie auf **Verbindung mit Media Services-API über Dienstprinzipal herstellen** -> **Anwendung verwalten** -> **Zertifikate und Geheimnisse**. Kopieren Sie die relevanten Parameter.|
 
 ## <a name="auto-scale-reserved-units"></a>Automatische Skalierung reservierter Einheiten
 

@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 6e44ea1b219e60f547806afb7ce04277d27f7408
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445773"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Häufig gestellte Fragen zu Azure Container Registry (ACR)
 
@@ -185,6 +185,9 @@ az acr login -n MyRegistry
 
 Ja. Aktivieren Sie TLS mithilfe eines beliebigen aktuellen Docker-Clients (Version 18.03.0 und höher). 
 
+> [!IMPORTANT]
+> Ab dem 13. Januar 2020 setzt Azure Container Registry voraus, dass alle sicheren Verbindungen von Servern und Anwendungen TLS 1.2 verwenden. Die Unterstützung für TLS 1.0 und 1.1 wird eingestellt.
+
 ### <a name="does-azure-container-registry-support-content-trust"></a>Wird Inhaltsvertrauen von Azure Container Registry unterstützt?
 
 Ja, Sie können vertrauenswürdige Images in Azure Container Registry verwenden, da [Docker Notary](https://docs.docker.com/notary/getting_started/) integriert wurde und aktiviert werden kann. Weitere Informationen finden Sie unter [Inhaltsvertrauen in Azure Container Registry](container-registry-content-trust.md).
@@ -204,7 +207,7 @@ Es wird empfohlen, diese öffentlichen Schlüssel und Zertifikate nach der gesam
 ACR unterstützt [benutzerdefinierte Rollen](container-registry-roles.md), die unterschiedliche Berechtigungsebenen bereitstellen. Insbesondere ermöglichen die Rollen `AcrPull` und `AcrPush` den Benutzern Pull- bzw. Pushvorgänge für Images ohne die Berechtigung zur Verwaltung der Registrierungsressource in Azure.
 
 * Azure-Portal: Ihre Registrierung -> Zugriffssteuerung (IAM) -> Hinzufügen (wählen Sie für die Rolle `AcrPull` oder `AcrPush` aus).
-* Azure-Befehlszeilenschnittstelle: Ermitteln Sie die Ressourcen-ID der Registrierung, indem Sie den folgenden Befehl ausführen:
+* Azure CLI: Ermitteln Sie die Ressourcen-ID der Registrierung, indem Sie den folgenden Befehl ausführen:
 
   ```azurecli
   az acr show -n myRegistry
@@ -428,7 +431,7 @@ Wenden Sie sich an Ihren Netzwerkadministrator, oder überprüfen Sie Ihre Netzw
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Warum schlägt meine Pull- oder Pushanforderung mit einem unzulässigen Vorgang fehl?
 
 Hier finden Sie einige Szenarios, bei denen Vorgänge möglicherweise nicht zulässig sind:
-* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) oder mit dem Azure-Portal ein Upgrade auf eine unterstützte [SKU](https://aka.ms/acr/skus) durch.
+* Klassische Registrierungen werden nicht mehr unterstützt. Führen Sie mithilfe von [az acr update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) oder im Azure-Portal ein Upgrade auf eine unterstützte [SKU](https://aka.ms/acr/skus) durch.
 * Das Image oder Repository ist möglicherweise gesperrt, sodass es nicht gelöscht oder aktualisiert werden kann. Sie können den Befehl [az acr show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) verwenden, um aktuelle Attribute anzuzeigen.
 * Einige Vorgänge sind nicht zulässig, wenn das Image in Quarantäne gestellt wird. Weitere Informationen zur Quarantäne finden Sie [hier](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 

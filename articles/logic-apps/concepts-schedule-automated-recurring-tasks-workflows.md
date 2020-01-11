@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/25/2019
-ms.openlocfilehash: 972b9360fa95b528bd955a07451e7347f3e1791d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6ec158cf6ab855191e6796be3abec7d37439a0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792750"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456661"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Planen und Ausführen von wiederkehrenden automatisierten Aufgaben, Prozessen und Workflows mit Azure Logic Apps
 
@@ -79,11 +79,21 @@ Die folgenden Muster veranschaulichen, wie Sie die Wiederholung mit dem Startdat
 | Startuhrzeit liegt in Gegenwart oder Zukunft | Die erste Workload wird zur angegebenen Startuhrzeit ausgeführt. <p>Zukünftige Workloads werden basierend auf Berechnungen der letzten Ausführungszeit ausgeführt. | Die erste Workload wird *frühestens* zur Startuhrzeit basierend auf dem Zeitplan ausgeführt, der anhand der Startuhrzeit berechnet wurde. <p>Zukünftige Workloads werden basierend auf dem angegebenen Zeitplan ausgeführt. <p>**Hinweis:** Wenn Sie eine Wiederholung mit einem Zeitplan angeben, aber keine Stunden oder Minuten für den Zeitplan, werden zukünftige Ausführungszeiten anhand der Stunden bzw. Minuten der ersten Ausführungszeit berechnet. |
 ||||
 
+> [!IMPORTANT]
+> Wenn Wiederholungen keine erweiterten Zeitplanungsoptionen angeben, basieren zukünftige Wiederholungen auf der letzten Laufzeit.
+> Die Startzeiten für diese Wiederholungen können sich aufgrund von Faktoren wie Wartezeiten während Speicheraufrufen verschieben. Um sicherzustellen, dass Ihre Logik-App keine Wiederholung verpasst, insbesondere wenn die Häufigkeit im Bereich von Tagen oder länger liegt, verwenden Sie eine dieser Optionen:
+> 
+> * Geben Sie eine Startzeit für die Wiederholung an.
+> 
+> * Geben Sie die Stunden und Minuten an, zu denen die Wiederholung ausgeführt werden soll, indem Sie die Eigenschaften **Zu diesen Stunden** und **Zu diesen Minuten** verwenden.
+> 
+> * Verwenden Sie den Trigger [Gleitendes Fenster](../connectors/connectors-native-sliding-window.md) anstelle des Triggers „Wiederholung“.
+
 *Beispiel für eine Startuhrzeit in der Vergangenheit mit Wiederholung, aber ohne Zeitplan*
 
 Annahme: Das aktuelle Datum ist der 8. September 2017, die aktuelle Uhrzeit ist 13:00 Uhr. Sie geben den 7. September 2017 als Startdatum und 14:00 Uhr als Startuhrzeit (also einen Zeitpunkt in der Vergangenheit) sowie eine Wiederholung an, die alle zwei Tage ausgeführt wird.
 
-| Startzeit | Die aktuelle Zeit | Serie | Schedule |
+| Startzeit | Die aktuelle Zeit | Serie | Zeitplan |
 |------------|--------------|------------|----------|
 | 2017-09-**07**T14:00:00Z <br>(**07**.09.2017 um 14:00 Uhr) | 2017-09-**08**T13:00:00Z <br>(**08**.09.2017 um 13:00 Uhr) | Alle zwei Tage | {keine} |
 |||||
@@ -116,7 +126,7 @@ Es gilt also: Unabhängig davon, wie weit die angegebene Startzeit zurückliegt 
 
 Im Folgenden finden Sie einige Beispiele für Serien, die Sie für die Trigger einrichten können, die die Optionen unterstützen:
 
-| Trigger | Serie | Intervall | Frequency | Startzeit | An diesen Tagen | Zu diesen Stunden | Zu diesen Minuten | Hinweis |
+| Trigger | Serie | Intervall | Häufigkeit | Startzeit | An diesen Tagen | Zu diesen Stunden | Zu diesen Minuten | Hinweis |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
 | Serie, <br>Schiebefenster | Ausführung alle 15 Minuten (ohne Startdatum und -uhrzeit) | 15 | Minute | {keine} | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird sofort gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. |
 | Serie, <br>Schiebefenster | Ausführung alle 15 Minuten (mit Startdatum und -uhrzeit) | 15 | Minute | *startDate*T*startTime*Z | {nicht verfügbar} | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, und anschließend werden basierend auf der letzten Ausführungszeit zukünftige Wiederholungen berechnet. |
@@ -131,12 +141,12 @@ Im Folgenden finden Sie einige Beispiele für Serien, die Sie für die Trigger e
 | Serie | Ausführung täglich um 8:30 Uhr (ohne Startdatum und -uhrzeit) | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8 | 30 | Dieser Zeitplan wird jeden Tag um 8:30 Uhr ausgeführt. |
 | Serie | Ausführung täglich um 8:30 Uhr und 16:30 Uhr | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30 | |
 | Serie | Ausführung täglich um 8:30 Uhr, 8:45 Uhr, 16:30 Uhr und 16:45 Uhr. | 1 | Day (Tag) | {keine} | {nicht verfügbar} | 8, 16 | 30, 45 | |
-| Serie | Ausführung jeden Samstag um 17:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Woche | {keine} | „Saturday“ (Samstag) | 17 | 00 | Dieser Zeitplan wird jeden Samstag um 17:00 Uhr ausgeführt. |
-| Serie | Ausführung jeden Samstag um 17:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Woche | *startDate*T17:00:00Z | „Saturday“ (Samstag) | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, also hier am 9. September 2017 um 17:00 Uhr. Zukünftige Wiederholungen werden jeden Samstag um 17:00 Uhr ausgeführt. |
-| Serie | Ausführung jeden Dienstag und Donnerstag um 17 Uhr *plus* die Minutenmarkierung, zu der Sie Ihre Logik-App speichern.| 1 | Woche | {keine} | „Tuesday“ (Dienstag), „Thursday“ (Donnerstag) | 17 | {keine} | |
-| Serie | Ausführung einmal pro Stunde während der Geschäftszeiten | 1 | Woche | {keine} | Wählen Sie alle Tage mit Ausnahme von Samstag und Sonntag aus. | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie die gewünschten Minuten der Stunde aus. | Wenn Ihre Geschäftszeiten beispielsweise den Zeitraum von 8:00 bis 17:00 Uhr umfassen, wählen Sie „8, 9, 10, 11, 12, 13, 14, 15, 16, 17“ als Stunden des Tages aus. <p>Wählen Sie bei einer Geschäftszeit von 8:30 bis 17:30 Uhr die obigen Stunden des Tages sowie „30“ als Minuten der Stunde aus. |
-| Serie | Ausführung einmal pro Tag an Wochenenden | 1 | Woche | {keine} | „Saturday“ (Samstag), „Sunday“ (Sonntag) | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie wie gewünscht die Minuten der Stunde aus. | Dieser Zeitplan wird jeden Samstag und Sonntag basierend auf dem angegebenen Zeitplan ausgeführt. |
-| Serie | Ausführung alle zwei Wochen nur am Montag im Abstand von 15 Minuten | 2 | Woche | {keine} | „Monday“ (Montag) | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dieser Zeitplan wird jeden zweiten Montag jeweils zur 15-Minuten-Marke ausgeführt. |
+| Serie | Ausführung jeden Samstag um 17:00 Uhr (ohne Startdatum und -uhrzeit) | 1 | Week | {keine} | „Saturday“ (Samstag) | 17 | 00 | Dieser Zeitplan wird jeden Samstag um 17:00 Uhr ausgeführt. |
+| Serie | Ausführung jeden Samstag um 17:00 Uhr (mit Startdatum und -uhrzeit) | 1 | Week | *startDate*T17:00:00Z | „Saturday“ (Samstag) | {keine} | {keine} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur entsprechenden Uhrzeit gestartet, also hier am 9. September 2017 um 17:00 Uhr. Zukünftige Wiederholungen werden jeden Samstag um 17:00 Uhr ausgeführt. |
+| Serie | Ausführung jeden Dienstag und Donnerstag um 17 Uhr *plus* die Minutenmarkierung, zu der Sie Ihre Logik-App speichern.| 1 | Week | {keine} | „Tuesday“ (Dienstag), „Thursday“ (Donnerstag) | 17 | {keine} | |
+| Serie | Ausführung einmal pro Stunde während der Geschäftszeiten | 1 | Week | {keine} | Wählen Sie alle Tage mit Ausnahme von Samstag und Sonntag aus. | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie die gewünschten Minuten der Stunde aus. | Wenn Ihre Geschäftszeiten beispielsweise den Zeitraum von 8:00 bis 17:00 Uhr umfassen, wählen Sie „8, 9, 10, 11, 12, 13, 14, 15, 16, 17“ als Stunden des Tages aus. <p>Wählen Sie bei einer Geschäftszeit von 8:30 bis 17:30 Uhr die obigen Stunden des Tages sowie „30“ als Minuten der Stunde aus. |
+| Serie | Ausführung einmal pro Tag an Wochenenden | 1 | Week | {keine} | „Saturday“ (Samstag), „Sunday“ (Sonntag) | Wählen Sie die gewünschten Stunden des Tages aus. | Wählen Sie wie gewünscht die Minuten der Stunde aus. | Dieser Zeitplan wird jeden Samstag und Sonntag basierend auf dem angegebenen Zeitplan ausgeführt. |
+| Serie | Ausführung alle zwei Wochen nur am Montag im Abstand von 15 Minuten | 2 | Week | {keine} | „Monday“ (Montag) | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Dieser Zeitplan wird jeden zweiten Montag jeweils zur 15-Minuten-Marke ausgeführt. |
 | Serie | Ausführung jeden Monat | 1 | Month (Monat) | *startDate*T*startTime*Z | {nicht verfügbar} | {nicht verfügbar} | {nicht verfügbar} | Dieser Zeitplan wird *frühestens* am angegebenen Startdatum zur angegebenen Uhrzeit gestartet. Zukünftige Wiederholungen werden basierend auf Startdatum und -uhrzeit berechnet. Wenn Sie Startdatum und -uhrzeit nicht angeben, werden in diesem Zeitplan das Datum und die Uhrzeit der Erstellung verwendet. |
 | Serie | Ausführung jede Stunde an einem Tag des Monats | 1 | Month (Monat) | {siehe Hinweis} | {nicht verfügbar} | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {siehe Hinweis} | Wenn Sie Startdatum und -uhrzeit nicht angeben, werden in diesem Zeitplan das Datum und die Uhrzeit der Erstellung verwendet. Geben Sie die Minuten der Stunde oder eine Startuhrzeit an, oder verwenden Sie die Uhrzeit der Erstellung, um die Minuten für den Zeitplan der Wiederholung zu steuern. Wenn die Startuhrzeit oder die Uhrzeit der Erstellung beispielsweise 8:25 Uhr lautet, wird dieser Zeitplan um 8:25, 9:25, 10:25 usw. ausgeführt. |
 |||||||||

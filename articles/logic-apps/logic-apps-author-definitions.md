@@ -1,21 +1,21 @@
 ---
-title: Erstellen, Bearbeiten oder Erweitern von Logik-App-Definitionen
-description: So schreiben, bearbeiten und erweitern Sie JSON-Definitionen für Logik-Apps in Azure Logic Apps.
+title: Erstellen, Bearbeiten oder Erweitern von Logik-App JSON-Workflowdefinitionen
+description: So schreiben, bearbeiten und erweitern Sie JSON-Workflowdefinitionen Ihrer Logik-Apps in Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: bffbc29322a57d6bb9b8497299add5dbb0478d2c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 95e9f7211c8cd6cb4edd59d099ae9c189bae3780
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792594"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666923"
 ---
-# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen in Azure Logic Apps
+# <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Workflowdefinitionen in Azure Logic Apps
 
-Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen. Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/resource-group-overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md) einbinden. Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
+Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen, verwenden die zugrunde liegenden Logik-App-Definitionen einfachen und deklarativen JSON-Code (JavaScript Object Notation) sowie das [Schema der Definitionssprache für Workflows](../logic-apps/logic-apps-workflow-definition-language.md) zur Beschreibung und Überprüfung der Definitionen. Diese Formate erleichtern Benutzern ohne umfassende Codekenntnisse das Lesen und Verständnis von Logik-App-Definitionen. Wenn Sie die Erstellung und Bereitstellung von Logik-Apps automatisieren möchten, können Sie Logik-App-Definitionen als [Azure-Ressourcen](../azure-resource-manager/management/overview.md) in [Azure Resource Manager-Vorlagen](../azure-resource-manager/template-deployment-overview.md) einbinden. Zum Erstellen, Verwalten und Bereitstellen von Logik-Apps können Sie dann [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md) oder die [Azure Logic Apps-REST-APIs](https://docs.microsoft.com/rest/api/logic/) verwenden.
 
 Um mit Logik-App-Definitionen in JSON zu arbeiten, öffnen Sie im Azure-Portal oder in Visual Studio den Codeansichts-Editor, oder kopieren Sie die Definition in einen Editor Ihrer Wahl. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
 
@@ -39,7 +39,7 @@ Bevor Sie die Definition Ihrer Logik-App in Visual Studio bearbeiten können, m�
 
 In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Portal oder als Azure Resource Manager-Projekte über Visual Studio erstellt und bereitgestellt wurden.
 
-1. Öffnen Sie die Visual Studio-Projektmappe oder das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/resource-group-overview.md) mit der Logik-App.
+1. Öffnen Sie die Visual Studio-Projektmappe oder das [Azure-Ressourcengruppenprojekt](../azure-resource-manager/management/overview.md) mit der Logik-App.
 
 2. Suchen Sie nach der Definition Ihrer Logik-App, und öffnen Sie sie. Die Definition wird standardmäßig in einer [Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) mit dem Namen **LogicApp.json** angezeigt. Sie können diese Vorlage für die Bereitstellung in verschiedenen Umgebungen anpassen.
 
@@ -48,7 +48,7 @@ In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Port
    ![Öffnen der Logik-App in einer Visual Studio-Projektmappe](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
    > [!TIP]
-   > Überprüfen Sie, ob Sie das letzte Update für Visual Studio installiert haben, wenn Sie diesen Befehl in Visual Studio 2019 nicht finden.
+   > Sollte dieser Befehl in Visual Studio 2019 nicht zur Verfügung stehen, überprüfen Sie, ob Sie über die neuesten Updates für Visual Studio verfügen.
 
 4. Klicken Sie unten im Designer auf **Codeansicht**. 
 
@@ -58,9 +58,9 @@ In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Port
 
 ## <a name="parameters"></a>Parameter
 
-Der Bereitstellungslebenszyklus umfasst in der Regel verschiedene Umgebungen zur Entwicklung, zum Testen, Staging und für die Produktion. Wenn Sie Werte haben, die Sie in ihrer Logik-App wieder verwenden möchten, ohne hartcodieren oder – je nach Ihren Bereitstellungsanforderungen – variieren zu müssen, können Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-overview.md) für die Workflowdefinition erstellen, um auch die Bereitstellung von Logik-Apps zu automatisieren. 
+Der Bereitstellungslebenszyklus umfasst in der Regel verschiedene Umgebungen zur Entwicklung, zum Testen, Staging und für die Produktion. Wenn Sie Werte haben, die Sie in ihrer Logik-App wieder verwenden möchten, ohne hartcodieren oder – je nach Ihren Bereitstellungsanforderungen – variieren zu müssen, können Sie eine [Azure Resource Manager-Vorlage](../azure-resource-manager/management/overview.md) für die Workflowdefinition erstellen, um auch die Bereitstellung von Logik-Apps zu automatisieren. 
 
-Führen Sie diese allgemeinen Schritte aus, um stattdessen diese Werte zu *parametrisieren* bzw. Parameter für diese zu definieren und zu verwenden. Anschließend können Sie die Werte in einer separaten Parameterdatei bereitstellen, die diese Werte an Ihre Vorlage übergibt. Auf diese Weise können Sie diese Werte einfacher ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Ausführlichere Informationen finden Sie unter [Overview: Automate deployment for logic apps with Azure Resource Manager templates (Übersicht: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen)](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
+Führen Sie diese allgemeinen Schritte aus, um stattdessen diese Werte zu *parametrisieren* bzw. Parameter für diese zu definieren und zu verwenden. Anschließend können Sie die Werte in einer separaten Parameterdatei bereitstellen, die diese Werte an Ihre Vorlage übergibt. Auf diese Weise können Sie diese Werte einfacher ändern, ohne Ihre Logik-App aktualisieren und erneut bereitstellen zu müssen. Ausführlichere Informationen finden Sie unter [Overview: Automatisieren der Bereitstellung für Logik-Apps mit Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md).
 
 1. Definieren Sie in Ihrer Vorlage Vorlagenparameter und Workflowdefinitionsparameter, um die Werte zu akzeptieren, die zur Bereitstellung bzw. zur Laufzeit verwendet werden sollen.
 
@@ -72,7 +72,7 @@ Führen Sie diese allgemeinen Schritte aus, um stattdessen diese Werte zu *param
 
    Wenn Sie die Werte für die Workflowdefinitionsparameter angeben, können Sie auf Vorlagenparameter verweisen, indem Sie den Parameterabschnitt verwenden, der sich außerhalb der Workflowdefinition befindet, sich aber noch in der Ressourcendefinition Ihrer Logik-App befindet. Auf diese Weise können Sie Vorlagenparameterwerte an die Workflowdefinitionsparameter übergeben.
 
-1. Speichern Sie die Werte für die Parameter in einer [separaten Parameterdatei](../azure-resource-manager/resource-group-template-deploy.md#parameter-files), und schließen Sie diese Datei in die Bereitstellung ein.
+1. Speichern Sie die Werte für die Parameter in einer [separaten Parameterdatei](../azure-resource-manager/templates/parameter-files.md), und schließen Sie diese Datei in die Bereitstellung ein.
 
 ## <a name="process-strings-with-functions"></a>Verarbeiten von Zeichenfolgen mit Funktionen
 

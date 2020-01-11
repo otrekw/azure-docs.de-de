@@ -1,18 +1,18 @@
 ---
-title: Einschränken des Zugriffs für IP-Adressen
-description: Erfahren Sie, wie Sie Ihre App in Azure App Service schützen, indem Sie Client-IP-Adressen oder -Adressbereiche explizit in die Whitelist aufnehmen.
+title: Azure App Service-Zugriffseinschränkungen
+description: Erfahren Sie, wie Sie Ihre App in Azure App Service schützen, indem Sie Zugriffseinschränkungen angeben.
 author: ccompy
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 64ce74c84f8f69e72510be76a1309e1a5ea42f2f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 42f25c1b66261ac644f015290bed2c7473acbdaa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672186"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422239"
 ---
 # <a name="azure-app-service-access-restrictions"></a>Azure App Service – Zugriffseinschränkungen #
 
@@ -24,7 +24,7 @@ Wenn eine Anforderung an Ihre App gesendet wird, wird die VON-Adresse anhand der
 
 Die Funktion „Zugriffseinschränkungen“ wird in den App Service-Front-End-Rollen implementiert, die den Workerhosts vorgeschaltet sind, auf denen Ihr Code ausgeführt wird. Es handelt sich somit bei Zugriffseinschränkungen im Grunde um Zugriffssteuerungslisten für das Netzwerk.
 
-Die Möglichkeit, den Zugriff auf Ihre Web-App auf ein Azure Virtual Network (VNET) zu beschränken, wird als [Dienstendpunkte][serviceendpoints] bezeichnet. Mit Dienstendpunkten können Sie den Zugriff auf einen mehrinstanzenfähigen Dienst auf ausgewählte Subnetze beschränken. Dies muss im Netzwerk sowie für den Dienst, für den die Aktivierung gilt, aktiviert sein. Der Datenverkehr für Apps, die in einer App Service-Umgebung gehostet werden, kann dadurch nicht eingeschränkt werden.  In einer App Service-Umgebung können Sie den Zugriff auf Ihre App mit IP-Adressregeln steuern.
+Die Möglichkeit, den Zugriff auf Ihre Web-App auf ein Azure Virtual Network (VNET) zu beschränken, wird als [Dienstendpunkte][serviceendpoints] bezeichnet. Mit Dienstendpunkten können Sie den Zugriff auf einen mehrinstanzenfähigen Dienst auf ausgewählte Subnetze beschränken. Dies muss im Netzwerk sowie für den Dienst, für den die Aktivierung gilt, aktiviert sein. Der Datenverkehr für Apps, die in einer App Service-Umgebung gehostet werden, kann dadurch nicht eingeschränkt werden. In einer App Service-Umgebung können Sie den Zugriff auf Ihre App mit IP-Adressregeln steuern.
 
 ![Flow von Zugriffseinschränkungen](media/app-service-ip-restrictions/access-restrictions-flow.png)
 
@@ -58,7 +58,7 @@ Dienstendpunkte ermöglichen das Einschränken des Zugriffs auf ausgewählte Sub
 
 Der Zugriff auf Apps, die in einer App Service-Umgebung ausgeführt werden, kann nicht mit Dienstendpunkten eingeschränkt werden. Wenn Ihre App in einer App Service-Umgebung enthalten ist, können Sie den Zugriff darauf mit IP-Zugriffsregeln steuern. 
 
-Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WAF-Geräten konfigurieren. Sie können auch Anwendungen mit mehreren Ebenen und sicheren Back-Ends konfigurieren. Weitere Informationen zu diesen Möglichkeiten finden Sie unter [App Service-Netzwerkfunktionen](networking-features.md).
+Bei Dienstendpunkten können Sie Ihre App mit Anwendungsgateways oder anderen WAF-Geräten konfigurieren. Sie können auch Anwendungen mit mehreren Ebenen und sicheren Back-Ends konfigurieren. Weitere Informationen zu diesen Möglichkeiten finden Sie unter [App Service-Netzwerkfunktionen](networking-features.md) und [Application Gateway-Integration mit Dienstendpunkten](networking/app-gateway-with-service-endpoints.md).
 
 ## <a name="managing-access-restriction-rules"></a>Verwalten von Zugriffseinschränkungsregeln
 
@@ -90,34 +90,49 @@ Neben der Möglichkeit, den Zugriff auf Ihre App zu steuern, können Sie auch de
 
 ## <a name="programmatic-manipulation-of-access-restriction-rules"></a>Programmgesteuerte Bearbeitung von Zugriffseinschränkungsregeln ##
 
-Derzeit kann weder die Befehlszeilenschnittstelle noch PowerShell für die neue Funktion „Zugriffseinschränkungen“ verwendet werden. Sie können die Werte jedoch manuell per PUT-Vorgang der [Azure-REST-API](https://docs.microsoft.com/rest/api/azure/) in der App-Konfiguration in Resource Manager festlegen. Sie können beispielsweise „resources.azure.com“ verwenden und den ipSecurityRestrictions-Block bearbeiten, um den erforderlichen JSON-Code hinzuzufügen.
+[Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest) und [Azure PowerShell](https://docs.microsoft.com/powershell/module/Az.Websites/Add-AzWebAppAccessRestrictionRule?view=azps-3.1.0) besitzen Unterstützung für die Bearbeitung von Zugriffseinschränkungen. Beispiel für das Hinzufügen einer Zugriffseinschränkung mithilfe von Azure CLI:
+
+```azurecli-interactive
+az webapp config access-restriction add --resource-group ResourceGroup --name AppName \
+    --rule-name 'IP example rule' --action Allow --ip-address 122.133.144.0/24 --priority 100
+```
+Beispiel für das Hinzufügen einer Zugriffseinschränkung mithilfe von Azure PowerShell:
+
+```azurepowershell-interactive
+Add-AzWebAppAccessRestrictionRule -ResourceGroupName "ResourceGroup" -WebAppName "AppName"
+    -Name "Ip example rule" -Priority 100 -Action Allow -IpAddress 122.133.144.0/24
+```
+
+Sie können die Werte auch manuell per PUT-Vorgang der [Azure-REST-API](https://docs.microsoft.com/rest/api/azure/) in der App-Konfiguration in Resource Manager festlegen oder mithile einer Azure Resource Manager-Vorlage. Sie können beispielsweise „resources.azure.com“ verwenden und den ipSecurityRestrictions-Block bearbeiten, um den erforderlichen JSON-Code hinzuzufügen.
 
 Der Speicherort dieser Informationen im Resource Manager ist:
 
 management.azure.com/subscriptions/**Abonnement-ID**/resourceGroups/**Ressourcengruppen**/providers/Microsoft.Web/sites/**Web-App-Name**/config/web?api-version=2018-02-01
 
 Die JSON-Syntax für das obige Beispiel lautet:
-
-    {
-      "properties": {
-        "ipSecurityRestrictions": [
-          {
-            "ipAddress": "122.133.144.0/24",
-            "action": "Allow",
-            "tag": "Default",
-            "priority": 100,
-            "name": "IP example rule"
-          }
-        ]
+```json
+{
+  "properties": {
+    "ipSecurityRestrictions": [
+      {
+        "ipAddress": "122.133.144.0/24",
+        "action": "Allow",
+        "priority": 100,
+        "name": "IP example rule"
       }
-    }
+    ]
+  }
+}
+```
 
-## <a name="function-app-ip-restrictions"></a>IP-Einschränkungen der Funktionen-App
+## <a name="azure-function-app-access-restrictions"></a>Azure-Funktions-App-Zugriffseinschränkungen
 
-IP-Einschränkungen stehen für beide Funktionen-Apps mit derselben Funktionalität wie App Service-Pläne zur Verfügung. Durch die Aktivierung von IP-Einschränkungen wird der Portalcode-Editor für alle unzulässigen IP-Adressen deaktiviert.
+Zugriffseinschränkungen stehen sowohl für Funktionen-Apps mit derselben Funktionalität als auch App Service-Pläne zur Verfügung. Durch die Aktivierung von Zugriffseinschränkungen wird der Portalcode-Editor für alle unzulässigen IP-Adressen deaktiviert.
 
-[Hier erhalten Sie weitere Informationen](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
+## <a name="next-steps"></a>Nächste Schritte
+[Zugriffseinschränkungen für Azure-Funktions-Apps](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)
 
+[Application Gateway-Integration mit Dienstendpunkten](networking/app-gateway-with-service-endpoints.md)
 
 <!--Links-->
 [serviceendpoints]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview

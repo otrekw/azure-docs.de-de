@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383978"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75530679"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Einrichten eines Labs zum Vermitteln von Data Science mit Python und Jupyter Notebooks
 
@@ -32,7 +32,7 @@ Zum Einrichten dieses Labs benötigen Sie zunächst ein Azure-Abonnement und ein
 
 Aktivieren Sie die Einstellungen für das Lab-Konto, die in der nachfolgenden Tabelle beschrieben werden. Weitere Informationen zum Aktivieren von Marketplace-Images finden Sie unter [Angeben von für Lab-Ersteller verfügbaren Marketplace-Images](tutorial-setup-lab-account.md#specify-marketplace-images-available-to-lab-creators).
 
-| Lab-Kontoeinstellungen | Anleitung |
+| Lab-Kontoeinstellungen | Instructions |
 | ------------------- | ------------ |
 | Marketplace-Image | Aktivieren Sie das Image [Data Science Virtual Machine – Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) zur Verwendung in Ihrem Lab-Konto. |
 
@@ -46,13 +46,13 @@ Verwenden Sie beim Einrichten eines Classroom-Labs die Einstellungen in der unte
 | Lab-Einstellungen | Wert/Anweisungen |
 | ------------ | ------------------ |
 |VM-Größe| Kleine GPU (Compute). Diese Größe eignet sich am besten für rechenintensive und netzwerkintensive Anwendungen wie künstliche Intelligenz und Deep Learning. |
-|VM-Image| SQL Server 2019 Standard unter Windows Server 2019|
+|VM-Image| Data Science Virtual Machine – Windows 2016|
 
 ## <a name="template-machine"></a>Vorlagencomputer
 
 Das Image [Data Science Virtual Machine – Windows 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) bietet die für Kurse dieser Art notwendigen Deep Learning-Frameworks und -Tools.  Das Image enthält Jupyter Notebooks und Visual Studio Code.  [Jupyter Notebooks](http://jupyter-notebook.readthedocs.io) ist eine Webanwendung, mit der Datenanalysten Berechnungen an Rohdaten durchführen und die Ergebnisse in derselben Umgebung anzeigen können.  Für den Vorlagencomputer wird die Webanwendung lokal ausgeführt.  [Visual Studio Code](https://code.visualstudio.com/) ist eine IDE, die eine umfangreiche interaktive Erfahrung zum Schreiben und Testen eines Notebooks bietet.  Weitere Informationen finden Sie unter [Arbeiten mit Jupyter-Notebooks in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support).
 
-Die verbleibende Aufgabe zum Einrichten des Kurses besteht darin, lokale Notebooks bereitzustellen.  Anweisungen zum Verwenden der Azure Machine Learning-Beispiele finden Sie unter [Konfigurieren einer Umgebung mit Jupyter Notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter).  Sie können auch Ihre eigenen Notebooks auf dem Vorlagencomputer bereitstellen.  Die Notebooks werden auf alle Kursteilnehmercomputer kopiert, wenn die Vorlage veröffentlicht wird.
+Die verbleibende Aufgabe zum Einrichten des Kurses besteht darin, lokale Notebooks bereitzustellen.  Anweisungen zum Verwenden der Azure Machine Learning-Beispiele finden Sie unter [Konfigurieren einer Umgebung mit Jupyter Notebooks](../../machine-learning/how-to-configure-environment.md#jupyter).  Sie können auch Ihre eigenen Notebooks auf dem Vorlagencomputer bereitstellen.  Die Notebooks werden auf alle Kursteilnehmercomputer kopiert, wenn die Vorlage veröffentlicht wird.
 
 ## <a name="cost-estimate"></a>Kostenschätzung
 

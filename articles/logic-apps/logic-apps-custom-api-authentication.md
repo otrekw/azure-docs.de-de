@@ -1,17 +1,17 @@
 ---
-title: Hinzufügen von Authentifizierung zu benutzerdefinierten APIs
-description: Einrichten der Authentifizierung für Aufrufe benutzerdefinierter APIs in Azure Logic Apps
+title: Hinzufügen von Authentifizierung zum Sichern von Aufrufen benutzerdefinierter APIs
+description: Vorgehensweise zum Einrichten der Authentifizierung zum Sichern von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: f6dfa98550dcfb092ca1fb52a5cf0bed32e697ad
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2f8b1cc002fe3f340ff6d5329329507316577885
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793143"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666889"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
@@ -152,7 +152,7 @@ Jetzt müssen Sie die Client-ID und die Mandanten-ID für die Anwendungsidentit�
 
 Sie müssen weiterhin eine Azure AD-Anwendungsidentität für Ihre Web-App oder API-App erstellen, die sich von der Anwendungsidentität Ihrer Logik-App unterscheidet. Führen Sie zur Erstellung der Anwendungsidentität die vorherigen Schritte in Teil 2 für das Azure-Portal aus. 
 
-Sie können auch die Schritte in Teil 1 ausführen. Dann sollten Sie jedoch sicherstellen, dass Ihre Web-App oder API-App tatsächlich für `https://{URL}` **Anmelde-URL** und **App-ID-URI** verwendet wird. In diesen Schritten müssen Sie die Client-ID und die Mandanten-ID für die Verwendung in der Bereitstellungsvorlage Ihrer App und auch für Teil 3 speichern.
+Sie können auch die Schritte in Teil 1 ausführen. Dann sollten Sie jedoch sicherstellen, dass Ihre Web-App oder API-App tatsächlich für `https://{URL}`**Anmelde-URL** und **App-ID-URI** verwendet wird. In diesen Schritten müssen Sie die Client-ID und die Mandanten-ID für die Verwendung in der Bereitstellungsvorlage Ihrer App und auch für Teil 3 speichern.
 
 > [!NOTE]
 > Wenn Sie die Azure AD-Anwendungsidentität für Ihre Web-App oder API-App erstellen, müssen Sie anstelle von PowerShell das Azure-Portal verwenden. Mit dem PowerShell-Cmdlet werden nicht die erforderlichen Berechtigungen für die Anmeldung der Benutzer bei einer Website eingerichtet.
@@ -271,7 +271,7 @@ Schließen Sie im Abschnitt **Autorisierung** diese Eigenschaften ein:
 }
 ```
 
-| Eigenschaft | Erforderlich | description | 
+| Eigenschaft | Erforderlich | BESCHREIBUNG | 
 | -------- | -------- | ----------- | 
 | type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
 | username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 

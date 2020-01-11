@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 4a8dbe9d1c66955e585f7b2cbf842193c965252e
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74998732"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414224"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Anleitung zur Notfallwiederherstellung für Avere vFXT for Azure
 
@@ -104,7 +104,7 @@ Gehen Sie wie folgt vor, um über einen Avere vFXT for Azure-Cluster auf den Sic
 1. Erstellen Sie bei Bedarf einen neuen Avere vFXT for Azure-Cluster in einer nicht betroffenen Region.
 
    > [!TIP]
-   > Beim Erstellen eines Avere vFXT for Azure-Clusters können Sie eine Kopie der Erstellungsvorlage und der Parameter speichern. Wenn Sie diese Informationen beim Erstellen Ihres primären Clusters speichern, können Sie sie nutzen, um einen Ersatzcluster mit den gleichen Eigenschaften zu erstellen. Klicken Sie auf der Seite für die [Überprüfung und Zusammenfassung](avere-vfxt-deploy.md#validation-and-purchase) auf den Link **Vorlage und Parameter herunterladen**. Speichern Sie die Informationen in einer Datei, bevor Sie auf die Schaltfläche **OK** klicken, um den Cluster zu erstellen.
+   > Beim Erstellen eines Avere vFXT for Azure-Clusters können Sie eine Kopie der Erstellungsvorlage und der Parameter speichern. Wenn Sie diese Informationen beim Erstellen Ihres primären Clusters speichern, können Sie sie nutzen, um einen Ersatzcluster mit den gleichen Eigenschaften zu erstellen. Klicken Sie auf der Seite [Zusammenfassung](avere-vfxt-deploy.md#validation-and-purchase) auf den Link **Vorlage und Parameter herunterladen**. Speichern Sie die Informationen in einer Datei, bevor Sie den Cluster erstellen.
 
 1. Fügen Sie eine neue Cloud-Kernspeichereinheit hinzu, die auf den duplizierten Blobcontainer verweist.
 

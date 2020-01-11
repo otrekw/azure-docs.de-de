@@ -1,5 +1,6 @@
 ---
-title: Beispiel für eine Azure API Management-Richtlinie – Senden von Fehlern an Stackify für die Protokollierung | Microsoft-Dokumentation
+title: API Management-Beispielrichtlinie – Senden von Fehlern an Stackify für die Protokollierung
+titleSuffix: Azure API Management
 description: Das Beispiel für eine Azure API Management-Richtlinie veranschaulicht, wie Sie eine Richtlinie für die Protokollierung von Fehlern hinzufügen, um diese Fehler für die Protokollierung an Stackify zu senden.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 82aab34a9815f080fe8abb8c1d8b6de66866806e
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 6662761df005211729dffb16282b8e0a8e2a8444
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067579"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442439"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>Senden von Fehlern an Stackify für die Protokollierung
 

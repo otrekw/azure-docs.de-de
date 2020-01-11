@@ -1,7 +1,7 @@
 ---
 title: 'Evaluate Recommender: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Es wird beschrieben, wie Sie das Modul „Evaluate Recommender“ (Evaluieren von Empfehlungswerten) in Azure Machine Learning Service verwenden können, um die Genauigkeit der Vorhersagen eines Empfehlungsmodells zu evaluieren.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul „Evaluate Recommender“ (Evaluieren von Empfehlungswerten) in Azure Machine Learning verwenden können, um die Genauigkeit der Vorhersagen eines Empfehlungsmodells zu evaluieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9a80fce04aa939895d1dc9572714046d9203bad7
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 38144d5df04427a82989b78843466ecd55386196
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428540"
 ---
 # <a name="evaluate-recommender"></a>Evaluate Recommender
 
@@ -90,4 +90,4 @@ Da es nicht möglich ist, die tatsächlichen „Ground Truth“-Werte für die e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

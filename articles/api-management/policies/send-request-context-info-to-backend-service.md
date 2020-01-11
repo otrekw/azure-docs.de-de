@@ -1,5 +1,6 @@
 ---
-title: Beispiel für eine Azure API Management-Richtlinie –Senden von Anforderungskontextinformationen an den Back-End-Dienst | Microsoft-Dokumentation
+title: API Management-Beispielrichtlinie –Senden von Anforderungskontextinformationen an den Back-End-Dienst
+titleSuffix: Azure API Management
 description: 'Beispiel für eine Azure API Management-Richtlinie: Veranschaulicht, wie Anforderungskontextinformationen an den Back-End-Dienst gesendet werden.'
 services: api-management
 documentationcenter: ''
@@ -12,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: cc770ff700155f8ab32bbbd6737c9dad7bc6e664
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 8cef989ca7ce8ee649c4f4aeb579c43bf8a8d6ab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70067519"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442402"
 ---
 # <a name="send-request-context-information-to-the-backend-service"></a>Senden von Anforderungskontextinformationen an den Back-End-Dienst
 
-Dieser Artikel enthält ein Beispiel für eine Azure API Management-Richtlinie, das veranschaulicht, wie Anforderungskontextinformationen an den Back-End-Dienst gesendet werden. Um den Code einer Richtlinie festzulegen oder zu bearbeiten, führen Sie die Schritte unter [How to set or edit Azure API Management policies](../set-edit-policies.md) (Festlegen oder Bearbeiten von Azure API Management-Richtlinien) aus. Weitere Beispiele finden Sie unter [API Management-Richtlinienbeispiele](../policy-samples.md).
+Dieser Artikel enthält ein Beispiel für eine Azure API Management-Richtlinie, das veranschaulicht, wie Anforderungskontextinformationen an den Back-End-Dienst gesendet werden. Um den Code einer Richtlinie festzulegen oder zu bearbeiten, führen Sie die Schritte unter [Festlegen oder Bearbeiten von Azure API Management-Richtlinien](../set-edit-policies.md) aus. Weitere Beispiele finden Sie unter [API Management-Richtlinienbeispiele](../policy-samples.md).
 
 ## <a name="policy"></a>Richtlinie
 

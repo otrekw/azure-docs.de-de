@@ -2,14 +2,14 @@
 title: Bindungen für Durable Functions – Azure
 description: Erfahren Sie, wie Sie Trigger und Bindungen für die Durable Functions-Erweiterung für Azure Functions verwenden.
 ms.topic: conceptual
-ms.date: 11/02/2019
+ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 40b5f0f17cbb6867a6ef293a485d728141a012ef
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f42c6c9b0086d49e539040334c83cfc0c6feb42
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75410229"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindungen für Durable Functions (Azure Functions)
 
@@ -73,7 +73,7 @@ public static string Run([OrchestrationTrigger] IDurableOrchestrationContext con
 }
 ```
 > [!NOTE]
-> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableOrchestrationContext` anstelle von `IDurableOrchestrationContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 #### <a name="javascript-functions-20-only"></a>JavaScript (nur Functions 2.0)
 
@@ -179,7 +179,7 @@ public static string SayHello([ActivityTrigger] IDurableActivityContext helloCon
 ```
 
 > [!NOTE]
-> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableActivityContext` anstelle von `IDurableActivityContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie `DurableActivityContext` anstelle von `IDurableActivityContext` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 Der Standardparametertyp für die .NET-Bindung `ActivityTriggerAttribute` lautet `IDurableActivityContext`. .NET-Aktivitätstrigger unterstützen aber auch die direkte Bindung an JSON-serialisierbare Typen (z. B. primitive Typen). Die gleiche Funktion kann daher wie folgt vereinfacht werden:
 
@@ -279,7 +279,7 @@ In .NET-Funktionen richten Sie normalerweise eine Bindung an `IDurableOrchestrat
 * `CreateCheckStatusResponse`
 * `CreateHttpManagementPayload`
 
-Alternativ können .NET-Funktionen an `IAsyncCollector<T>` gebunden werden, wobei `T` `StartOrchestrationArgs` oder `JObject` ist.
+Alternativ können .NET-Funktionen an `IAsyncCollector<T>` gebunden werden, wobei `T``StartOrchestrationArgs` oder `JObject` ist.
 
 Weitere Informationen zu diesen Vorgängen finden Sie in der API-Dokumentation zu `IDurableOrchestrationClient`.
 
@@ -299,7 +299,7 @@ public static Task Run(
 ```
 
 > [!NOTE]
-> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Der vorherige C#-Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie das `OrchestrationClient`-Attribut anstelle des `DurableClient`-Attributs verwenden, und Sie müssen den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 ### <a name="client-sample-not-visual-studio"></a>Clientbeispiel (nicht Visual Studio)
 
@@ -344,7 +344,7 @@ public static Task Run(string input, IDurableOrchestrationClient starter)
 ```
 
 > [!NOTE]
-> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
+> Der vorherige Code ist für Durable Functions 2.x vorgesehen. Für Durable Functions 1.x müssen Sie den `DurableOrchestrationClient`-Parametertyp anstelle von `IDurableOrchestrationClient` verwenden. Weitere Informationen zu den Unterschieden zwischen den Versionen finden Sie im Artikel [Durable Functions-Versionen](durable-functions-versions.md).
 
 #### <a name="javascript-sample"></a>JavaScript-Beispiel
 
@@ -398,7 +398,7 @@ Jede Entitätsfunktion weist den Parametertyp `IDurableEntityContext` auf, der �
 * **DeleteState()** : Löscht den Zustand der Entität. 
 * **GetInput\<TInput>()** : Ruft die Eingabe für den aktuellen Vorgang ab. Der `TInput`-Typparameter muss ein primitiver oder JSON-serialisierbarer Typ sein.
 * **Return(arg)** : Gibt einen Wert an die Orchestrierung zurück, die den Vorgang aufgerufen hat. Der `arg`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
-* **SignalEntity(EntityId, operation, input)** : Sendet eine unidirektionale Nachricht an eine Entität. Der `operation`-Parameter muss eine Zeichenfolge ungleich bzw. nicht Null sein, und der `input`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
+* **SignalEntity(EntityId, scheduledTimeUtc, operation, input)** : Sendet eine unidirektionale Nachricht an eine Entität. Der `operation`-Parameter muss eine Zeichenfolge ungleich bzw. nicht Null sein, der optionale `scheduledTimeUtc`-Parameter muss ein UTC-Datums-/Uhrzeitwert sein, zu dem der Vorgang aufgerufen werden soll, und der `input`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
 * **CreateNewOrchestration(orchestratorFunctionName, input)** : Startet eine neue Orchestrierung. Der `input`-Parameter muss ein primitives oder JSON-serialisierbares Objekt sein.
 
 Auf das an die Entitätsfunktion übergebene `IDurableEntityContext`-Objekt kann mithilfe der asynchronen lokalen `Entity.Current`-Eigenschaft zugegriffen werden. Diese Vorgehensweise ist praktisch, wenn Sie das klassenbasierte Programmiermodell verwenden.
@@ -456,7 +456,7 @@ Der Zustand dieser Entität ist ein Objekt vom Typ `Counter`. Dieses enthält ei
 Weitere Informationen zur klassenbasierten Syntax sowie zu deren Verwendung finden Sie unter [Definieren von Entitätsklassen](durable-functions-dotnet-entities.md#defining-entity-classes).
 
 > [!NOTE]
-> Die Methode für den Funktionseinstiegspunkt mit dem Attribut `[FunctionName]` *muss* bei Verwendung von Entitätsklassen als `static` deklariert werden. Nicht statische Einstiegspunktmethoden können zu einer Mehrfachinitialisierung von Objekten und möglicherweise zu anderen undefinierten Verhaltensweisen führen.
+> Die Methode für den Funktionseinstiegspunkt mit dem Attribut `[FunctionName]`*muss* bei Verwendung von Entitätsklassen als `static` deklariert werden. Nicht statische Einstiegspunktmethoden können zu einer Mehrfachinitialisierung von Objekten und möglicherweise zu anderen undefinierten Verhaltensweisen führen.
 
 Entitätsklassen verfügen über spezielle Mechanismen für die Interaktion mit Bindungen und .NET-Abhängigkeitsinjektion (Dependency Injection). Weitere Informationen finden Sie unter [Entitätskonstruktion](durable-functions-dotnet-entities.md#entity-construction).
 
@@ -519,7 +519,7 @@ Wenn Sie Skriptsprachen (z.B. *CSX*- oder *JS*-Dateien) für die Entwicklung nut
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "durableClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -535,6 +535,7 @@ In .NET-Funktionen richten Sie normalerweise eine Bindung mit `IDurableEntityCli
 
 * **ReadEntityStateAsync\<T>** : Liest den Zustand einer Entität. Es gibt eine Antwort zurück, die anzeigt, ob die Zielentität vorhanden ist, und wenn dies der Fall ist, ihren Zustand.
 * **SignalEntityAsync**: Sendet eine unidirektional Nachricht an eine Entität und wartet darauf, dass diese in die Warteschlange eingereiht wird.
+* **ListEntitiesAsync**: Abfragen für den Zustand mehrerer Entitäten. Entitäten können nach *Namen* und *letzter Vorgangszeit* abgefragt werden.
 
 Die Zielentität muss nicht vor dem Senden eines Signals erstellt werden. Der Entitätszustand kann aus der Entitätsfunktion heraus erstellt werden, die das Signal verarbeitet.
 

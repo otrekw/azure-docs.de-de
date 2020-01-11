@@ -1,17 +1,17 @@
 ---
-title: Hinzufügen und Aufrufen von Azure-Funktionen aus Azure Logic Apps
-description: Hinzufügen und Ausführen von Azure-Funktionen aus Logik-Apps
+title: Hinzufügen und Aufrufen von Azure Functions aus Azure Logic Apps
+description: Aufrufen und Ausführen benutzerdefinierten Codes in Ihren Azure Functions aus automatisierten Aufgaben und Workflows in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
-ms.openlocfilehash: 8e72cda1965280e0694493e533f49f71c746ebc6
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2525ca681d805a3b6f086335531a4beaeb9c4e51
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792575"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453471"
 ---
 # <a name="call-azure-functions-from-azure-logic-apps"></a>Aufrufen von Azure-Funktionen aus Azure Logic Apps
 
@@ -28,7 +28,7 @@ Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funkt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Eine Funktions-App in Azure, bei der es sich um einen Container für Azure-Funktionen handelt, zusammen mit Ihrer Azure-Funktion. Wenn noch keine Funktionen-App vorhanden ist, [erstellen Sie zuerst Ihre Funktionen-App](../azure-functions/functions-create-first-azure-function.md). Sie können dann Ihre Funktion außerhalb Ihrer Logik-App im Azure-Portal oder [aus Ihrer Logik-App heraus](#create-function-designer) im Logik-App-Designer erstellen.
 

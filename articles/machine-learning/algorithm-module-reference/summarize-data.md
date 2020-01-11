@@ -1,6 +1,6 @@
 ---
 title: Zusammenfassen von Daten
-titleSuffix: Azure Machine Learning service
+titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie das Modul „Summarize Data“ (Zusammenfassen von Daten) in Azure Machine Learning verwenden, um einen einfachen beschreibenden Statistikbericht für die Spalten in einem Dataset zu generieren.
 services: machine-learning
 ms.service: machine-learning
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 503eb533b83cbeedcc16b73a9c1dbe821a4d4d94
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492571"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428453"
 ---
 # <a name="summarize-data"></a>Zusammenfassen von Daten
 
@@ -73,4 +73,4 @@ Der Bericht aus dem Modul kann die folgenden statistischen Werte enthalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an.  
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.  

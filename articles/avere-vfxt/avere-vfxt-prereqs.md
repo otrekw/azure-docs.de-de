@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: rohogue
-ms.openlocfilehash: dce359d1567ee763cd988e778b1e0e44475388cc
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 27b0fd1e6a9238e978518e06ab7f0aeeae5501d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255354"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75414374"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Vorbereiten der Avere vFXT-Erstellung
 
@@ -19,7 +19,7 @@ In diesem Artikel werden die Voraussetzungen für die Erstellung eines Avere vFX
 
 ## <a name="create-a-new-subscription"></a>Erstellen eines neuen Abonnements
 
-Beginnen Sie mit der Erstellung eines neuen Azure-Abonnements. Verwenden Sie ein separates Abonnement für jedes Avere vFXT-Projekt, damit Sie alle Projektressourcen und -kosten leicht nachverfolgen können, andere Projekte vor einer möglichen Ressourcenbegrenzung während der Bereitstellung schützen und die Bereinigung vereinfachen können.  
+Beginnen Sie mit der Erstellung eines neuen Azure-Abonnements. Verwenden Sie ein separates Abonnement für jedes Avere vFXT-Projekt, damit Sie alle Projektressourcen und -kosten leicht nachverfolgen können, andere Projekte vor einer möglichen Ressourcenbegrenzung während der Bereitstellung schützen und die Bereinigung vereinfachen können.
 
 So erstellen Sie ein neues Azure-Abonnement im Azure-Portal
 
@@ -30,16 +30,16 @@ So erstellen Sie ein neues Azure-Abonnement im Azure-Portal
 
 ## <a name="configure-subscription-owner-permissions"></a>Konfigurieren der Berechtigungen des Abonnementbesitzers
 
-Ein Benutzer mit Besitzerberechtigungen für das Abonnement sollte den vFXT-Cluster erstellen. Zum Akzeptieren der Nutzungsbedingungen der Software und zum Ausführen anderer Aktionen sind Berechtigungen des Abonnementbesitzers erforderlich. 
+Ein Benutzer mit Besitzerberechtigungen für das Abonnement sollte den vFXT-Cluster erstellen. Zum Akzeptieren der Nutzungsbedingungen der Software und zum Ausführen anderer Aktionen sind Berechtigungen des Abonnementbesitzers erforderlich.
 
-Es gibt einige Problemumgehungsszenarien, in denen es möglich ist, dass Nicht-Besitzer einen Avere vFXT für Azure-Cluster erstellen. Diese Szenarien beinhalten die Einschränkung von Ressourcen und die Zuordnung zusätzlicher Rollen zum Ersteller. In beiden Fällen muss ein Abonnementbesitzer auch die [Nutzungsbedingungen für die Avere vFXT-Software](#accept-software-terms) vorab akzeptieren. 
+Es gibt einige Problemumgehungsszenarien, in denen es möglich ist, dass Nicht-Besitzer einen Avere vFXT für Azure-Cluster erstellen. Diese Szenarien beinhalten die Einschränkung von Ressourcen und die Zuordnung zusätzlicher Rollen zum Ersteller. In beiden Fällen muss ein Abonnementbesitzer auch die [Nutzungsbedingungen für die Avere vFXT-Software](#accept-software-terms) vorab akzeptieren.
 
-| Szenario | Einschränkungen | Erforderliche Zugriffsrollen für die Erstellung des Avere vFXT-Clusters | 
+| Szenario | Beschränkungen | Erforderliche Zugriffsrollen für die Erstellung des Avere vFXT-Clusters |
 |----------|--------|-------|
-| Ressourcengruppenadministrator | Das virtuelle Netzwerk, der Clustercontroller und die Clusterknoten müssen in der Ressourcengruppe erstellt werden. | Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), beide für die Zielressourcengruppe festgelegt | 
-| Externes VNET | Der Clustercontroller und die Clusterknoten werden in der Ressourcengruppe erstellt, jedoch wird ein vorhandenes virtuelles Netzwerk in einer anderen Ressourcengruppe verwendet. | (1) Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), festgelegt auf die vFXT-Ressourcengruppe; und (2) Rolle [Mitwirkender von virtuellen Computern](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Avere-Mitwirkender](../role-based-access-control/built-in-roles.md#avere-contributor), festgelegt auf die VNET-Ressourcengruppe |
- 
-Alternativ können Sie wie in [diesem Artikel](avere-vfxt-non-owner.md) beschrieben vorab eine benutzerdefinierte RBAC-Rolle (role-based access control, rollenbasierte Zugriffssteuerung) erstellen und dem Benutzer Berechtigungen zuweisen. Diese Methode gewährt diesen Benutzern jedoch erhebliche Berechtigungen. 
+| Ressourcengruppenadministrator | Das virtuelle Netzwerk, der Clustercontroller und die Clusterknoten müssen in der Ressourcengruppe erstellt werden. | Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), beide für die Zielressourcengruppe festgelegt |
+| Externes virtuelles Netzwerk | Der Clustercontroller und die Clusterknoten werden in der Ressourcengruppe erstellt, jedoch wird ein vorhandenes virtuelles Netzwerk in einer anderen Ressourcengruppe verwendet. | (1) Rolle [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor), festgelegt auf die vFXT-Ressourcengruppe; und (2) Rolle [Mitwirkender von virtuellen Computern](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) und [Avere-Mitwirkender](../role-based-access-control/built-in-roles.md#avere-contributor), festgelegt auf die Ressourcengruppe des virtuellen Netzwerks. |
+
+Alternativ können Sie wie in [diesem Artikel](avere-vfxt-non-owner.md) beschrieben vorab eine benutzerdefinierte RBAC-Rolle (role-based access control, rollenbasierte Zugriffssteuerung) erstellen und dem Benutzer Berechtigungen zuweisen. Diese Methode gewährt diesen Benutzern jedoch erhebliche Berechtigungen.
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kontingent für den vFXT-Cluster
 
@@ -57,12 +57,12 @@ Sie müssen über ein ausreichendes Kontingent für die folgenden Azure-Komponen
 
 ## <a name="accept-software-terms"></a>Nutzungsbedingungen der Software akzeptieren
 
-> [!NOTE] 
+> [!NOTE]
 > Dieser Schritt ist nicht erforderlich, wenn ein Abonnementbesitzer den Avere vFXT-Cluster erstellt.
 
 Bei der Clustererstellung müssen Sie die Nutzungsbedingungen für die Avere vFXT-Software akzeptieren. Wenn Sie kein Abonnementbesitzer sind, lassen Sie einen Abonnementbesitzer die Bedingungen vorab akzeptieren. Dieser Schritt muss nur einmal pro Abonnement durchgeführt werden.
 
-So akzeptieren Sie die Nutzungsbedingungen der Software im Voraus 
+So akzeptieren Sie die Nutzungsbedingungen der Software im Voraus
 
 1. Öffnen Sie eine Cloud-Shell im Azure-Portal oder Navigieren Sie zu <https://shell.azure.com>. Melden Sie sich mit Ihrer Abonnement-ID an.
 
@@ -71,7 +71,7 @@ So akzeptieren Sie die Nutzungsbedingungen der Software im Voraus
     az account set --subscription abc123de-f456-abc7-89de-f01234567890
    ```
 
-1. Führen Sie diesen Befehl aus, um Nutzungsbedingungen zu akzeptieren und den programmgesteuerten Zugriff auf das Softwareimage von Avere vFXT für Azure zu ermöglichen: 
+1. Führen Sie diesen Befehl aus, um Nutzungsbedingungen zu akzeptieren und den programmgesteuerten Zugriff auf das Softwareimage von Avere vFXT für Azure zu ermöglichen:
 
    ```azurecli
    az vm image accept-terms --urn microsoft-avere:vfxt:avere-vfxt-controller:latest
@@ -79,27 +79,28 @@ So akzeptieren Sie die Nutzungsbedingungen der Software im Voraus
 
 ## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Erstellen eines Speicherdienstendpunkts in Ihrem virtuellen Netzwerk (falls erforderlich)
 
-Ein [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) sorgt dafür, dass der Azure Blob-Datenverkehr lokal bleibt, anstatt ihn außerhalb des virtuellen Netzwerks weiterzuleiten. Er wird für alle Avere vFXT for Azure-Cluster empfohlen, bei denen Azure Blob Storage für den Back-End-Datenspeicher verwendet wird. 
+Ein [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) sorgt dafür, dass der Azure Blob-Datenverkehr lokal bleibt, anstatt ihn außerhalb des virtuellen Netzwerks weiterzuleiten. Er wird für alle Avere vFXT for Azure-Cluster empfohlen, bei denen Azure Blob Storage für den Back-End-Datenspeicher verwendet wird.
 
-Wenn Sie ein vorhandenes VNET angeben und einen neuen Azure-Blobcontainer für den Back-End-Speicher als Teil der Clustererstellung erstellen, müssen Sie über einen Dienstendpunkt im VNET für Microsoft Storage verfügen. Dieser Endpunkt muss vor dem Erstellen des Clusters vorhanden sein, andernfalls treten bei der Erstellung Fehler auf. 
+Wenn Sie ein vorhandenes virtuelles Netzwerk angeben und einen neuen Azure-Blobcontainer für den Back-End-Speicher als Teil der Clustererstellung erstellen, müssen Sie über einen Dienstendpunkt im Netzwerk für Microsoft Storage verfügen. Dieser Endpunkt muss vor dem Erstellen des Clusters vorhanden sein, andernfalls treten bei der Erstellung Fehler auf.
 
-Ein Speicherdienstendpunkt wird für alle Avere vFXT for Azure-Cluster empfohlen, bei denen Azure Blob Storage verwendet wird, auch wenn der Speicher später hinzugefügt wird. 
+Ein Speicherdienstendpunkt wird für alle Avere vFXT for Azure-Cluster empfohlen, bei denen Azure Blob Storage verwendet wird, auch wenn der Speicher später hinzugefügt wird.
 
-> [!TIP] 
-> * Überspringen Sie diesen Schritt, wenn Sie ein neues virtuelles Netzwerk als Teil der Clustererstellung erstellen. 
-> * Dieser Schritt ist optional, wenn Sie bei der Clustererstellung keinen Blobspeicher erstellen. In diesem Fall können Sie den Dienstendpunkt später erstellen, wenn Sie Azure Blob Storage verwenden möchten.
+> [!TIP]
+>
+>* Überspringen Sie diesen Schritt, wenn Sie ein neues virtuelles Netzwerk als Teil der Clustererstellung erstellen.
+>* Dieser Schritt ist optional, wenn Sie bei der Clustererstellung keinen Blobspeicher erstellen. In diesem Fall können Sie den Dienstendpunkt später erstellen, wenn Sie Azure Blob Storage verwenden möchten.
 
-Erstellen Sie den Speicherdienstendpunkt über das Azure-Portal. 
+Erstellen Sie den Speicherdienstendpunkt über das Azure-Portal.
 
-1. Klicken Sie im Portal links auf **Virtuelle Netzwerke**.
-1. Wählen Sie das VNET für den Cluster aus. 
-1. Klicken Sie links auf **Dienstendpunkte**.
+1. Öffnen Sie im Portal Ihre Liste der virtuellen Netzwerke.
+1. Wählen Sie das virtuelle Netzwerk für Ihren Cluster aus.
+1. Klicken Sie im linken Menü auf **Dienstendpunkte**.
 1. Klicken Sie oben auf **Hinzufügen**.
-1. Übernehmen Sie den Dienst ``Microsoft.Storage`` unverändert, und wählen Sie das Subnetz des Clusters aus.
+1. Wählen Sie den Dienst ``Microsoft.Storage`` aus.
+1. Wählen Sie das Subnetz des Clusters aus.
 1. Klicken Sie unten auf **Hinzufügen**.
 
    ![Screenshot für das Azure-Portal mit Anmerkungen für die Schritte zum Erstellen des Dienstendpunkts](media/avere-vfxt-service-endpoint.png)
-
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Nächster Schritt: Erstellen des vFXT-Clusters
 

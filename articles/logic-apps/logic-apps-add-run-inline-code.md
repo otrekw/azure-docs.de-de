@@ -1,17 +1,17 @@
 ---
-title: Hinzufügen und Ausführen von Codeausschnitten
-description: Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
+title: Hinzufügen und Ausführen von Codeausschnitten mithilfe von Inlinecode
+description: Erfahren Sie, wie Sie Codeausschnitte erstellen und ausführen, indem Sie Inlinecodeaktionen für automatisierte Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 05/14/2019
-ms.openlocfilehash: f28a93e47aa028f152d7ca797abb17cb3832aa60
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: f7a134fd026b42d1666b8310b3fb0c10642c7bb0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792608"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453494"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
 
@@ -34,7 +34,7 @@ In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die Logik-App, in der der Codeausschnitt hinzugefügt werden soll, einschließlich eines Triggers. Wenn Sie über keine Logik-App verfügen, lesen Sie den Artikel [Schnellstart: Erstellen Ihres ersten automatisierten Workflows mit Azure Logic Apps – Azure-Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
@@ -128,7 +128,7 @@ Das `workflowContext`-Objekt weist diese Struktur auf und schließt die untergeo
 
 Diese Tabelle enthält weitere Informationen zu den untergeordneten Eigenschaften:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 |----------|------|-------|
 | `actions` | Objektsammlung | Ergebnisobjekte von Aktionen, die vor der Ausführung des Codeausschnitts ausgeführt werden. Jedes Objekt verfügt über ein *Schlüssel-Wert*-Paar, bei dem der Schlüssel den Namen einer Aktion angibt und der Wert dem Aufruf der [actions()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#actions) mit `@actions('<action-name>')` entspricht. Als Name der Aktion wird der Aktionsname verwendet, der auch in der zugrunde liegenden Workflowdefinition verwendet wird, wobei Leerzeichen (" ") im Aktionsnamen durch Unterstriche (_) ersetzt werden. Dieses Objekt bietet Zugriff auf Eigenschaftswerte der Aktion aus der aktuellen Ausführung der Workflowinstanz. |
 | `trigger` | Object | Ergebnisobjekt aus dem Trigger, das einem Aufruf der [trigger()-Funktion](../logic-apps/workflow-definition-language-functions-reference.md#trigger) entspricht. Dieses Objekt bietet Zugriff auf Eigenschaftswerte des Triggers aus der aktuellen Ausführung der Workflowinstanz. |

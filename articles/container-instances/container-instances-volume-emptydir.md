@@ -3,16 +3,16 @@ title: Einbinden eines emptyDir-Volumes in eine Containergruppe
 description: Hier erfahren Sie, wie Sie ein emptyDir-Volume einbinden, um Daten zwischen den Containern in einer Containergruppe in Azure Container Instances freizugeben.
 ms.topic: article
 ms.date: 02/08/2018
-ms.openlocfilehash: 0440bcc490b766c12b2117d2453557707df2a1c4
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 955423b685ebb3979271c7c2dc7e835a16100c2b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533236"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552456"
 ---
 # <a name="mount-an-emptydir-volume-in-azure-container-instances"></a>Einbinden eines emptyDir-Volumes in Azure Container Instances
 
-Hier erfahren Sie, wie Sie ein *emptyDir*-Volume einbinden, um Daten zwischen den Containern in einer Containergruppe in Azure Container Instances freizugeben.
+Hier erfahren Sie, wie Sie ein *emptyDir*-Volume einbinden, um Daten zwischen den Containern in einer Containergruppe in Azure Container Instances freizugeben. Verwenden Sie *emptyDir-* -Volumes als kurzlebige Caches für Ihre containerisierten Workloads.
 
 > [!NOTE]
 > Zurzeit ist das Einbinden eines *emptyDir*-Volumes auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede in der [Übersicht](container-instances-overview.md#linux-and-windows-containers).
@@ -27,7 +27,7 @@ Beispiele für die Verwendung eines *emptyDir*-Volumes:
 * Setzen von Prüfpunkten bei Tasks mit langer Ausführungsdauer
 * Speicherdaten, die von einem Sidecar-Container abgerufen und von einem Anwendungscontainer bereitgestellt werden
 
-Daten in einem *emptyDir*-Volume bleiben bei Containerabstürzen gespeichert. Bei neu gestarteten Container kann jedoch nicht garantiert werden, dass die Daten in einem *emptyDir*-Volume beibehalten werden.
+Daten in einem *emptyDir*-Volume bleiben bei Containerabstürzen gespeichert. Bei neu gestarteten Container kann jedoch nicht garantiert werden, dass die Daten in einem *emptyDir*-Volume beibehalten werden. Wenn Sie eine Containergruppe anhalten, wird das *emptyDir*-Volume nicht persistent gespeichert.
 
 ## <a name="mount-an-emptydir-volume"></a>Einbinden eines emptyDir-Volumes
 

@@ -1,20 +1,18 @@
 ---
-title: Notfallwiederherstellung und geografische Verteilung in Durable Functions – Azure
+title: Notfallwiederherstellung und geografische Verteilung in Azure Durable Functions
 description: Hier erfahren Sie mehr zur Notfallwiederherstellung und zur geografischen Verteilung in Durable Functions.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232940"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433331"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>Notfallwiederherstellung und geografische Verteilung
-
-## <a name="overview"></a>Übersicht
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Notfallwiederherstellung und geografische Verteilung in Azure Durable Functions
 
 In Durable Functions werden sämtliche Zustände in Azure Storage persistent gespeichert. Ein [Aufgabenhub](durable-functions-task-hubs.md) ist ein logischer Container für Azure Storage-Ressourcen, die zur Orchestrierung verwendet werden. Orchestrator- und Aktivitätsfunktionen können nur miteinander interagieren, wenn sie zum selben Aufgabenhub gehören.
 In den beschriebenen Szenarien werden Bereitstellungsoptionen empfohlen, um bei Notfallwiederherstellungsaktivitäten die Verfügbarkeit zu erhöhen und Ausfallzeiten zu minimieren.

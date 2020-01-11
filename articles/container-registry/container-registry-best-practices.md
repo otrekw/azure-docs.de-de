@@ -3,16 +3,18 @@ title: Registrierung – bewährte Methoden
 description: Erfahren Sie, wie Sie Azure Container Registry anhand dieser bewährten Methoden effektiv verwenden.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 4b0512674358d4db2e29596408ebbf44af4ea2a9
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 7efea468a6c5c042f709d8a5bb493516458ce52b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445786"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Bewährte Methoden für Azure Container Registry
 
 Durch Befolgen dieser bewährten Methoden sorgen Sie für eine optimale Leistung und kostengünstige Verwendung Ihrer privaten Docker-Registrierung in Azure.
+
+Informationen zu Strategien zum Taggen und für die Versionsverwaltung von Images in Ihrer Registrierung finden Sie unter [Empfehlungen für das Taggen und die Versionsverwaltung von Containerimages](container-registry-image-tag-version.md). 
 
 ## <a name="network-close-deployment"></a>Netzwerknahe Bereitstellung
 
@@ -31,7 +33,7 @@ Sehen Sie sich die dreiteilige Tutorialreihe [Georeplikation in Azure Container 
 
 Mithilfe von Repositorynamespaces können Sie die gemeinsame Nutzung einer einzigen Registrierung in mehreren Gruppen innerhalb Ihrer Organisation ermöglichen. Registrierungen können in mehreren Bereitstellungen und Teams gemeinsam verwendet werden. Azure Container Registry unterstützt geschachtelte Namespaces und ermöglicht damit die Isolation von Gruppen.
 
-Sehen Sie sich beispielsweise die folgenden Containerimagetags an. Images, die unternehmensweit verwendet werden (z.B. `aspnetcore`), werden im Stammnamespace abgelegt, während Containerimages, die zu den Produktions- und Marketinggruppen gehören, jeweils eigene Namespaces verwenden.
+Sehen Sie sich beispielsweise die folgenden Containerimagetags an. Images, die unternehmensweit verwendet werden (z. B. `aspnetcore`), werden im Stammnamespace abgelegt, während Containerimages, die zu den Produk- und Marketinggruppen gehören, jeweils eigene Namespaces verwenden.
 
 ```
 contoso.azurecr.io/aspnetcore:2.0

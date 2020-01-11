@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: fdc7254b4c6e798c0f32f5fac3575474ed6ec1d0
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077073"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690391"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
-Wenn Sie Lastausgleichsregeln mit Azure Load Balancer verwenden, müssen Sie einen Integritätstest angeben, damit Load Balancer den Back-End-Endpunktstatus erkennen kann.  Die Konfiguration des Integritätstests und die Testantworten bestimmen, welche Back-End-Poolinstanzen neue Flows empfangen. Anhand von Integritätstests können Sie einen Fehler in einer Anwendung für einen Back-End-Endpunkt erkennen. Sie können auch eine benutzerdefinierte Antwort auf einen Integritätstest generieren und den Integritätstest zur Flusssteuerung verwenden, um die Last oder geplante Downtimes zu verwalten. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz.
+Wenn Sie Lastausgleichsregeln mit Azure Load Balancer verwenden, müssen Sie einen Integritätstest angeben, damit Load Balancer den Back-End-Endpunktstatus erkennen kann.  Die Konfiguration des Integritätstests und die Testantworten bestimmen, welche Back-End-Poolinstanzen neue Flows empfangen. Anhand von Integritätstests können Sie einen Fehler in einer Anwendung für einen Back-End-Endpunkt erkennen. Sie können auch eine benutzerdefinierte Antwort auf einen Integritätstest generieren und den Integritätstest zur Flusssteuerung verwenden, um die Last oder geplante Downtimes zu verwalten. Wenn ein einem Integritätstest ein Fehler auftritt, beendet der Load Balancer das Senden neuer Flows an die entsprechende fehlerhafte Instanz. Die ausgehende Konnektivität ist nicht betroffen, nur eingehende Konnektivität ist beeinträchtigt.
 
 Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bestimmten Integritätstestprotokolls hängt von der Load Balancer-SKU ab.  Darüber hinaus variiert das Verhalten des Diensts je nach Load Balancer-SKU. Die Tabelle zeigt dies:
 
@@ -49,8 +49,8 @@ Die Integritätstestkonfiguration besteht aus den folgenden Elementen:
 - Port des Tests
 - HTTP-Pfad, der für HTTP GET bei Verwendung von HTTP(S)-Tests verwendet werden soll.
 
-> [!NOTE]
-> Wenn Sie Azure PowerShell, die Azure CLI, Vorlagen oder eine API verwenden, ist eine Testdefinition nicht obligatorisch, und ihr Vorhandensein wird nicht überprüft. Validierungstests werden nur bei Verwendung des Azure-Portals durchgeführt.
+>[!NOTE]
+>Wenn Sie Azure PowerShell, die Azure CLI, Vorlagen oder eine API verwenden, ist eine Testdefinition nicht obligatorisch, und ihr Vorhandensein wird nicht überprüft. Validierungstests werden nur bei Verwendung des Azure-Portals durchgeführt.
 
 ## <a name="understanding-application-signal-detection-of-the-signal-and-reaction-of-the-platform"></a>Verstehen des Anwendungssignals, Erkennen des Signals und Reaktion der Plattform
 
@@ -120,6 +120,9 @@ Im Folgenden wird veranschaulicht, wie Sie diese Art von Testkonfiguration in ei
 HTTP- und HTTPS-Tests basieren auf dem TCP-Test und geben eine HTTP GET-Anforderung mit dem angegebenen Pfad aus. Diese beiden Tests unterstützen für HTTP GET relative Pfade. HTTPS-Tests sind mit HTTP-Tests identisch, weisen jedoch zusätzlich einen Transport Layer Security-Wrapper (TLS, früher als SSL bezeichnet) auf. Der Integritätstest kennzeichnet die Instanz als online, wenn diese innerhalb des Zeitlimits mit dem HTTP-Statuscode 200 antwortet.  Bei diesem Integritätstest wird standardmäßig versucht, den konfigurierten Integritätstestport alle 15 Sekunden zu prüfen. Das minimale Testintervall beträgt 5 Sekunden. Die gesamte Dauer aller Intervalle darf 120 Sekunden nicht überschreiten.
 
 HTTP/HTTPS-Tests eignen sich auch zum Implementieren Ihrer eigenen Logik, um Instanzen aus der Lastenausgleichsrotation zu entfernen, wenn der Testport auch der Listener für den Dienst selbst ist. Sie können z.B. eine Instanz entfernen, wenn sie über 90 % CPU beansprucht und einen anderen HTTP-Status als 200 zurückgibt. 
+
+> [!NOTE] 
+> Der HTTPS-Test erfordert die Verwendung von Zertifikaten mit einem minimalen Signaturhash von SHA256 in der gesamten Kette.
 
 Wenn Sie Cloud Services verwenden und über Webrollen verfügen, die „w3wp.exe“ verwenden, erreichen Sie auch eine automatische Überwachung Ihrer Website. Fehler in Ihrem Websitecode geben einen anderen Status als 200 an den Lastenausgleichstest zurück.
 

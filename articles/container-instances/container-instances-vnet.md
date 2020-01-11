@@ -2,13 +2,14 @@
 title: Bereitstellen einer Containergruppe in einem virtuellen Azure-Netzwerk
 description: Erfahren Sie, wie Sie Containergruppen in einem neuen oder vorhandenen virtuellen Azure-Netzwerk bereitstellen.
 ms.topic: article
-ms.date: 07/11/2019
-ms.openlocfilehash: f211924eb74035f4bb30db2d2b848e0a2591de09
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/17/2019
+ms.author: danlep
+ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533268"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75442251"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -45,8 +46,8 @@ Ressourceneinschränkungen für Container können von Einschränkungen für nich
 ### <a name="unsupported-networking-scenarios"></a>Nicht unterstützte Netzwerkszenarien 
 
 * **Azure Load Balancer**: Das Positionieren eines Azure Load Balancer vor Containerinstanzen in einer vernetzten Containergruppe wird nicht unterstützt.
-* **Peering virtueller Netzwerke**: Sie können kein Peering für ein virtuelles Netzwerk mit einem an Azure Container Instances delegierten Subnetz zu einem anderen virtuellen Netzwerk durchführen.
-* **Routingtabellen**: Benutzerdefinierte Routen können nicht in einem Subnetz eingerichtet werden, das an Azure Container Instances delegiert wurde.
+* **Peering virtueller Netzwerke**: VNet-Peering funktioniert nicht für ACI, wenn das Netzwerk, mit dem das ACI-NVet gekoppelt wird, einen öffentlichen IP-Adressbereich verwendet. Das gekoppelte Netzwerk benötigt einen privaten IP-Adressraum gemäß RFC1918, damit das Peering funktioniert. Außerdem können Sie Ihr VNet zurzeit nur mit einem anderen VNet koppeln.
+* **Routing von Datenverkehr für virtuelle Netzwerke**: Kundenrouten können nicht mit öffentlichen IP-Adressen eingerichtet werden. Routen können innerhalb des privaten IP-Adressraums des delegierten Subnetzes eingerichtet werden, in dem die ACI-Ressourcen bereitgestellt werden. 
 * **Netzwerksicherheitsgruppen**: Ausgehende Sicherheitsregeln in Netzwerksicherheitsgruppen, die auf ein an Azure Container Instances delegiertes Subnetz angewendet werden, werden derzeit nicht erzwungen. 
 * **Öffentliche IP-Adresse oder DNS-Bezeichnung**: Containergruppen, die in einem virtuellen Netzwerk bereitgestellt werden, unterstützen derzeit keine direkte Bereitstellung von Containern im Internet mit einer öffentlichen IP-Adresse oder einem vollqualifizierten Domänennamen.
 * **Interne Namensauflösung**: Die Namensauflösung für Azure-Ressourcen im virtuellen Netzwerk über das interne Azure DNS wird nicht unterstützt.

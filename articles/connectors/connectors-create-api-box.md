@@ -1,20 +1,20 @@
 ---
 title: Herstellen einer Verbindung mit Box
-description: Erstellen und Verwalten von Dateien mit Box-REST-APIs und Azure Logic Apps
+description: Automatisieren von Aufgaben und Workflows, die Dateien in Box mithilfe von Azure Logic Apps erstellen und verwalten
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 38e061e918d445de07961af1789891f44c59090a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: c7f97ff33742eb545cbfbd7521ba135584851e5e
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789862"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666770"
 ---
-# <a name="create-and-manage-files-in-box-with-azure-logic-apps"></a>Erstellen und Verwalten von Dateien in Box mit Azure Logic Apps
+# <a name="create-and-manage-files-in-box-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Dateien in Box mithilfe von Azure Logic Apps
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Dateien in Box innerhalb einer Logik-App mit dem Box-Connector erstellen und verwalten. Auf diese Weise können Sie Logik-Apps erstellen, mit denen Aufgaben und Workflows für das Verwalten Ihrer Dateien und anderer Aktionen automatisiert werden, wie z.B.:
 
@@ -31,7 +31,7 @@ In diesem Artikel wird gezeigt, wie Sie Ihre Dateien in Box innerhalb einer Logi
 
 * Ein [Box-Konto](https://www.box.com/home).
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Die Logik-App, in der Sie auf Ihr Box-Konto zugreifen möchten. Um Ihre Logik-App mit einem Box-Trigger starten zu können, benötigen Sie eine [leere Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

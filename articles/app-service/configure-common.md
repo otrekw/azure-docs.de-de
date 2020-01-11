@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45de3b79263fd43a93fcea73c271ede4bc5f96fe
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: e4ba7326d9c23bed2406e62fe1a206501d05a1b1
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671961"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666181"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>Konfigurieren einer App Service-App im Azure-Portal
 
@@ -21,7 +21,11 @@ In diesem Thema wird erläutert, wie Sie allgemeine Einstellungen für Web-Apps,
 
 In App Service handelt es sich bei App-Einstellungen um Variablen, die als Umgebungsvariablen an den Anwendungscode übergeben werden. Bei Linux-Apps und benutzerdefinierten Containern übergibt App Service mithilfe des Flags `--env` App-Einstellungen an den Container, um die Umgebungsvariable im Container festzulegen.
 
-Navigieren Sie im [Azure-Portal] zur Verwaltungsseite Ihrer App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Anwendungseinstellungen**.
+Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. 
+
+![Suchen nach App Services](./media/configure-common/search-for-app-services.png)
+
+Wählen Sie im linken Menü der App **Konfiguration** > **Anwendungseinstellungen** aus.
 
 ![Anwendungseinstellungen](./media/configure-common/open-ui.png)
 
@@ -82,7 +86,7 @@ App-Einstellungen haben folgende JSON-Formatierung:
 
 ## <a name="configure-connection-strings"></a>Konfigurieren von Verbindungszeichenfolgen
 
-Navigieren Sie im [Azure-Portal] zur Verwaltungsseite der App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Anwendungseinstellungen**.
+Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. Wählen Sie im linken Menü der App **Konfiguration** > **Anwendungseinstellungen** aus.
 
 ![Anwendungseinstellungen](./media/configure-common/open-ui.png)
 
@@ -153,7 +157,7 @@ Verbindungszeichenfolgen haben folgende JSON-Formatierung:
 
 ## <a name="configure-general-settings"></a>Konfigurieren allgemeiner Einstellungen
 
-Navigieren Sie im [Azure-Portal] zur Verwaltungsseite der App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Anwendungseinstellungen**.
+Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. Wählen Sie im linken Menü der App **Konfiguration** > **Allgemeine Einstellungen** aus.
 
 ![Allgemeine Einstellungen](./media/configure-common/open-general.png)
 
@@ -176,9 +180,9 @@ Hier können Sie einige allgemeine Einstellungen für die App konfigurieren. Ein
 
 Diese Einstellung gilt nur für Windows-Apps.
 
-Navigieren Sie im [Azure-Portal] zur Verwaltungsseite der App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Standarddokumente**.
+Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. Wählen Sie im linken Menü der App **Konfiguration** > **Standarddokumente** aus.
 
-![Allgemeine Einstellungen](./media/configure-common/open-documents.png)
+![Standarddokumente](./media/configure-common/open-documents.png)
 
 Das Standarddokument ist die Webseite, die an der Stamm-URL für eine Website angezeigt wird. Die erste übereinstimmende Datei in der Liste wird verwendet. Klicken Sie zum Hinzufügen eines neuen Standarddokuments auf **Neues Dokument**. Vergessen Sie das **Speichern** nicht.
 
@@ -186,9 +190,9 @@ Wenn die App Module verwendet, die auf Grundlage der URL weiterleiten, anstatt s
 
 ## <a name="configure-path-mappings"></a>Konfigurieren von Pfadzuordnungen
 
-Navigieren Sie im [Azure-Portal] zur Verwaltungsseite der App. Klicken Sie im linken Menü der App auf **Konfiguration** > **Pfadzuordnungen**.
+Suchen Sie im [Azure-Portal] die Option **App Services**, wählen Sie sie aus, und wählen Sie anschließend Ihre App aus. Wählen Sie im linken Menü der App **Konfiguration** > **Pfadzuordnungen** aus.
 
-![Allgemeine Einstellungen](./media/configure-common/open-path.png)
+![Pfadzuordnungen](./media/configure-common/open-path.png)
 
 Auf der Seite **Pfadzuordnungen** wird je nach BS-Typ Unterschiedliches angezeigt.
 

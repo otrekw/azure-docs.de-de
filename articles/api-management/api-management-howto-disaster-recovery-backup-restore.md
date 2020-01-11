@@ -1,5 +1,6 @@
 ---
-title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen in Azure API Management | Microsoft-Dokumentation
+title: Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen in API Management
+titleSuffix: Azure API Management
 description: Erfahren Sie, wie Sie Sichern und Wiederherstellen zur Notfallwiederherstellung in Azure API Management verwenden.
 services: api-management
 documentationcenter: ''
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 9c97723687484e8af82d63b6fb4999401a69fb2c
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fccb9dfe88d39849fb87bdce4b81ac9ee22fada5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958532"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430697"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -67,7 +68,7 @@ Alle Aufgaben, die Sie mithilfe von Azure Resource Manager für Ressourcen ausf�
 4. Geben Sie einen Namen für die Anwendung ein.
 5. Wählen Sie als Anwendungstyp **Nativ** aus.
 6. Geben Sie eine Platzhalter-URL wie z.B. `http://resources` für den **Umleitungs-URI** ein, da es sich um ein Pflichtfeld handelt. Der Wert wird jedoch später nicht verwendet. Klicken Sie auf das Kontrollkästchen, um die Anwendung zu speichern.
-7. Klicken Sie auf **Create**.
+7. Klicken Sie auf **Erstellen**.
 
 ### <a name="add-an-application"></a>Hinzufügen einer Anwendung
 
@@ -124,7 +125,7 @@ Ersetzen Sie `{tenant id}`, `{application id}` und `{redirect uri}` entsprechend
 
     Wenn die Werte angegeben wurden, sollte im Codebeispiel ein Token ähnlich dem folgenden Beispiel zurückgegeben werden:
 
-    ![Tokenverschlüsselung][api-management-arm-token]
+    ![Token][api-management-arm-token]
 
     > [!NOTE]
     > Das Token kann nach einer bestimmten Zeit ablaufen. Führen Sie das Codebeispiel erneut aus, um ein neues Token zu generieren.
@@ -139,7 +140,7 @@ Legen Sie vor dem Aufrufen der in den folgenden Abschnitten beschriebenen Vorgä
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="step1"></a>Sichern eines API Management-Diensts
+### <a name="step1"> </a>Sichern eines API Management-Diensts
 
 Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderung aus:
 
@@ -147,7 +148,7 @@ Zum Sichern eines API Management-Diensts führen Sie die folgende HTTP-Anforderu
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-Hierbei gilt:
+Dabei gilt:
 
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, den Sie sichern möchten
 -   `resourceGroupName` – der Name der Ressourcengruppe Ihres Azure API Management-Diensts
@@ -180,7 +181,7 @@ Beachten Sie die folgenden Einschränkungen für Sicherungsanforderungen:
 -   **Änderungen** an der Dienstkonfiguration (z.B. APIs, Richtlinien, Erscheinungsbild des Entwicklerportals), die während des Sicherungsvorgangs vorgenommen werden, sind ggf. **nicht in der Sicherung enthalten und gehen verloren**.
 -   Sie müssen den Zugriff von der Steuerungsebene auf das Azure Storage-Konto **zulassen**. Kunden müssen die folgenden eingehenden IP-Adressen in ihrem Storage-Konto für das Backup öffnen. 
     > 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 13.64.39.16/32, 40.81.47.216/32, 51.145.179.78/32, 52.142.95.35/32, 40.90.185.46/32, 20.40.125.155/32
-### <a name="step2"></a>Wiederherstellen eines API Management-Diensts
+### <a name="step2"> </a>Wiederherstellen eines API Management-Diensts
 
 Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sicherung führen Sie die folgende HTTP-Anforderung aus:
 
@@ -188,7 +189,7 @@ Zum Wiederherstellen eines API Management-Diensts aus einer zuvor erstellten Sic
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-Hierbei gilt:
+Dabei gilt:
 
 -   `subscriptionId` – ID des Abonnements, das den API Management-Dienst enthält, in den Sie eine Sicherung erstellen
 -   `resourceGroupName` – Name der Ressourcengruppe mit dem Azure-API Management-Dienst, in dem Sie eine Sicherung wiederherstellen

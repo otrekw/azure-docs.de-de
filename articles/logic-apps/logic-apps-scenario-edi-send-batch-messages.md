@@ -1,20 +1,20 @@
 ---
 title: Batchverarbeitung von EDI-Nachrichten als Gruppe
-description: Senden und Empfangen von EDI-Nachrichten als Batches, Gruppen oder Sammlungen in Azure Logic Apps
+description: Senden und Empfangen von EDI-Nachrichten als Batches, Gruppen oder Sammlungen mithilfe der Batchverarbeitung in Azure Logic Apps
 services: logic-apps
 author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: 1c4b32bfec667620101d588974e0411a9c7438d2
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793006"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666668"
 ---
-# <a name="send-edi-messages-in-batches-to-trading-partners-with-azure-logic-apps"></a>Senden von EDI-Nachrichten in Batches an Handelspartner mit Azure Logic Apps
+# <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Austauschen von EDI-Nachrichten als Batches oder Gruppen zwischen Handelspartnern in Azure Logic Apps
 
 In B2B-Szenarien tauschen Geschäftspartner häufig Nachrichten in Gruppen oder *Batches* aus. Wenn Sie eine Batchverarbeitungslösung mit Logic Apps erstellen, können Sie Nachrichten an Handelspartner senden und diese Nachrichten in Batches verarbeiten. In diesem Artikel wird am Beispiel von X12 erläutert, wie Sie EDI-Nachrichten in Batches verarbeiten können, indem Sie eine Logik-App für den Batchversand und eine Logik-App für den Batchempfang erstellen. 
 
@@ -34,7 +34,7 @@ Stellen Sie sicher, dass sich die Logik-App für den Batchempfang und die Logik-
 
 Für dieses Beispiel benötigen Sie Folgendes:
 
-* Ein Azure-Abonnement. Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
+* ein Azure-Abonnement Falls Sie über kein Abonnement verfügen, können Sie [mit einem kostenlosen Azure-Konto beginnen](https://azure.microsoft.com/free/). Oder [registrieren Sie sich für ein Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/pricing/purchase-options/).
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -64,14 +64,14 @@ Für den Batchempfang werden der Batchmodus, der Batchname, die Freigabekriterie
 
 4. Legen Sie die Eigenschaften für den Batchempfang fest: 
 
-   | Eigenschaft | Wert | Notizen | 
+   | Eigenschaft | value | Notizen | 
    |----------|-------|-------|
    | **Batchmodus** | Inline |  |  
    | **Batchname** | TestBatch | Nur mit dem Batchmodus **Inline** verfügbar | 
    | **Freigabekriterien** | Basierend auf der Nachrichtenanzahl, basierend auf dem Zeitplan | Nur mit dem Batchmodus **Inline** verfügbar | 
    | **Nachrichtenanzahl** | 10 | Nur mit den Freigabekriterien **Basierend auf der Nachrichtenanzahl** verfügbar | 
    | **Intervall** | 10 | Nur mit den Freigabekriterien **Basierend auf dem Zeitplan** verfügbar | 
-   | **Frequency** | Minute | Nur mit den Freigabekriterien **Basierend auf dem Zeitplan** verfügbar | 
+   | **Frequency** | minute | Nur mit den Freigabekriterien **Basierend auf dem Zeitplan** verfügbar | 
    ||| 
 
    ![Angeben von Details für den Batchtrigger](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)

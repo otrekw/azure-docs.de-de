@@ -1,22 +1,22 @@
 ---
-title: Verbinden mit IBM DB2
-description: Verwalten von Ressourcen IBM mit DB2-REST-APIs und Azure Logic Apps
+title: Zugriff auf und Verwalten von IBM DB2-Ressourcen
+description: Lesen, Bearbeiten, Aktualisieren und Verwalten von IBM DB2-Ressourcen durch Erstellen automatisierter Workflows mithilfe von Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: plarsen, logicappspm
 ms.topic: conceptual
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: 3c2bb01254b19c42fdd704544a6812177fecf4ca
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 0f6e32056783a816d847db191de4fcdae2616ab7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789904"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446179"
 ---
-# <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>Verwalten von Ressourcen mit IBM DB2-REST-APIs und Azure Logic Apps
+# <a name="access-and-manage-ibm-db2-resources-by-using-azure-logic-apps"></a>Zugreifen auf und Verwalten von IBM DB2-Ressourcen mithilfe von Azure Logic Apps
 
-Mit Azure Logic Apps und dem IBM DB2-Connector können Sie automatisierte Aufgaben und Workflows auf der Grundlage der in Ihrer DB2-Datenbank gespeicherten Ressourcen erstellen. Ihre Workflows können eine Verbindung zu den Ressourcen in Ihrer Datenbank herstellen, Ihre Datenbanktabellen auslesen und auflisten und Zeilen hinzufügen, ändern, löschen usw. Sie können Aktionen in Ihre Logik-Apps integrieren, die Antworten von Ihrer Datenbank erhalten und die Ausgabe für andere Aktionen verfügbar machen.
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [IBM DB2-Connector](/connectors/db2/) können Sie automatisierte Aufgaben und Workflows auf Grundlage der in Ihrer DB2-Datenbank gespeicherten Ressourcen erstellen. Ihre Workflows können eine Verbindung zu den Ressourcen in Ihrer Datenbank herstellen, Ihre Datenbanktabellen auslesen und auflisten und Zeilen hinzufügen, ändern, löschen usw. Sie können Aktionen in Ihre Logik-Apps integrieren, die Antworten von Ihrer Datenbank erhalten und die Ausgabe für andere Aktionen verfügbar machen.
 
 In diesem Artikel wird gezeigt, wie Sie eine Logik-App erstellen können, die verschiedene Datenbankvorgänge durchführt. Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
@@ -49,13 +49,13 @@ Der IBM DB2-Connector unterstützt diese Datenbankvorgänge, die den entsprechen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Ein IBM DB2-Datenbank, entweder cloudbasiert oder lokal
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Die Logik-App, in der Sie auf Ihre DB2-Datenbank zugreifen möchten. Dieser Connector ermöglicht nur Aktionen, daher müssen Sie zum Starten Ihrer Logik-App einen separaten Trigger wie einen **Wiederholungstrigger** verwenden.
+* Die Logik-App, in der Sie auf Ihre DB2-Datenbank zugreifen möchten. Dieser Connector stellt nur Aktionen bereit, daher müssen Sie zum Starten Ihrer Logik-App einen separaten Trigger auswählen, z.B. einen **Wiederholungstrigger**.
 In den Beispielen dieses Artikels wird der **Wiederholungstrigger** verwendet.
 
 <a name="add-db2-action"></a>

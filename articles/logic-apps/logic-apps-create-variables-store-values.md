@@ -1,17 +1,17 @@
 ---
-title: Erstellen und Verwalten von Variablen zum Speichern von Werten
-description: So speichern und verwalten Sie Werte, indem Sie Variablen in Azure Logic Apps verwenden.
+title: Erstellen und Verwalten von Variablen zum Speichern und Übergeben von Werten
+description: Erfahren Sie, wie Sie Werte speichern, verwalten, verwenden und übergeben, indem Sie Variablen in Ihren automatisierten Aufgaben und Workflows verwenden, die Sie mit Azure Logic Apps erstellen.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.openlocfilehash: 9b3ba7ff20e581988c3e862cff3bbf6d5ee96bf4
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 55984082a6b287e9f7cdca005a24ef3c18032491
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793174"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75456696"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Speichern und Verwalten von Werten mittels Variablen in Azure Logic Apps
 
@@ -31,7 +31,7 @@ Vorhandene Variabeln sind nur innerhalb der Logic App-Instanz, die sie erstellt,
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
+* ein Azure-Abonnement Falls Sie kein Abonnement besitzen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
 * Die Logik-App, für die Sie die Variable erstellen möchten.
 
@@ -65,7 +65,7 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
 1. Geben Sie diese Informationen zu Ihrer Variablen wie unten beschrieben an:
 
-   | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | **Name** | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable |
    | **Typ** | Ja | <*Variablentyp*> | Der Datentyp für die Variable |
@@ -205,7 +205,7 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
 1. Geben Sie diese Informationen zum schrittweisen Erhöhen Ihrer Variable an:
 
-   | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
    | **Name** | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable |
    | **Wert** | Nein | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. |
@@ -326,7 +326,7 @@ Um eine Variable um einen konstanten Wert zu verringern oder zu *dekrementieren*
 
 Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu verringernde Variable | 
 | **Wert** | Nein | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. |
@@ -359,7 +359,7 @@ Um einer vorhandenen Variablen einen anderen Wert zuzuweisen, folgen Sie den Sch
 
 Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable |
 | **Wert** | Ja | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. |
@@ -417,7 +417,7 @@ Bei Variablen, die Strings oder Arrays speichern, können Sie den Wert einer Var
 
 Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
-| Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
+| Eigenschaft | Erforderlich | value |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
 | **Name** | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable |
 | **Wert** | Ja | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. |

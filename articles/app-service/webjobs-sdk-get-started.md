@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 33ae3f9f928a55f50f4ecd0c6c98790a384e880b
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 11df1557fdcad059910dd2a87e9056e19a90bf01
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684182"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640833"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -320,13 +320,13 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 1. Fügen Sie im Feld **Verbindungszeichenfolgen** den folgenden Eintrag hinzu.
 
-   |NAME  |Verbindungszeichenfolge  |Datenbanktyp|
+   |Name  |Verbindungszeichenfolge  |Datenbanktyp|
    |---------|---------|------|
    |AzureWebJobsStorage | {die zuvor kopierte Verbindungszeichenfolge für den Speicher}|Benutzerdefiniert|
 
 1. Wenn das Feld **Anwendungseinstellungen** keinen Application Insights-Instrumentierungsschlüssel enthält, fügen Sie den zuvor kopierten hinzu. (Der Instrumentierungsschlüssel ist möglicherweise bereits vorhanden, je nachdem, wie Sie die App Service-App erstellt haben.)
 
-   |NAME  |Wert  |
+   |Name  |value  |
    |---------|---------|
    |APPINSIGHTS_INSTRUMENTATIONKEY | {Instrumentierungsschlüssel} |
 
@@ -399,7 +399,7 @@ Zur Nutzung der [Application Insights](../azure-monitor/app/app-insights-overvie
 
 In diesem Abschnitt führen Sie das Projekt erneut lokal aus, um zu überprüfen, ob die Protokollierungsdaten jetzt sowohl an Application Insights als auch an die Konsole weitergeleitet werden.
 
-1. Verwenden Sie in Visual Studio **Server-Explorer**, um eine Warteschlangennachricht auf die gleiche Weise wie [zuvor](#trigger-the-function-in-azure) zu erstellen, mit der Ausnahme, dass Sie hier *Hello App Insights!* als Nachrichtentext eingeben.
+1. Verwenden Sie in Visual Studio **Server-Explorer**, um eine Warteschlangennachricht wie [zuvor](#test-locally) zu erstellen, mit der Ausnahme, dass Sie hier *Hello App Insights!* als Nachrichtentext eingeben.
 
 1. Führen Sie das Projekt aus.
 
@@ -407,7 +407,9 @@ In diesem Abschnitt führen Sie das Projekt erneut lokal aus, um zu überprüfen
 
 1. Schließen Sie das Konsolenfenster.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zu Ihrer Application Insights-Ressource.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com/), um Ihre Application Insights-Ressource anzuzeigen. Suchen Sie nach **Application Insights**, und wählen Sie die Option aus.
+
+1. Wählen Sie Ihre Application Insights-Instanz aus.
 
 1. Wählen Sie **Suchen** aus.
 

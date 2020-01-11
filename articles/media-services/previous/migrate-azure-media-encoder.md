@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: e9c83a25147696b5e492241a191b3104df001c7c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 7bbebe71f6a3278d70767ac9f9dbb9d55e6d481a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424024"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75453379"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migrieren von Azure Media Encoder zu Media Encoder Standard
 
-In diesem Artikel werden die Schritte für die Migration vom älteren AME-Medienprozessor (Azure Media Encoder), der am 1. März 2020 eingestellt wird, zum Media Encoder Standard-Medienprozessor erläutert.  
+In diesem Artikel werden die Schritte für die Migration vom älteren AME-Medienprozessor (Azure Media Encoder), der am 31. März 2020 eingestellt wird, zum Media Encoder Standard-Medienprozessor erläutert.  
 
 Beim Codieren von Dateien mit AME haben Kunden in der Regel eine benannte Voreinstellungszeichenfolge wie `H264 Adaptive Bitrate MP4 Set 1080p` verwendet. Für die Migration muss Ihr Code aktualisiert werden, um den **Media Encoder Standard**-Medienprozessor anstelle von AME und eine der entsprechenden [Systemvoreinstellungen](media-services-mes-presets-overview.md) wie `H264 Multiple Bitrate 1080p` zu verwenden. 
 
@@ -67,7 +67,7 @@ ITask task = job.Tasks.AddNew("My encoding task",
 Wenn Sie eine eigene Codierungsvoreinstellung für AME mit dessen Schema erstellt haben, gibt es ein [äquivalentes Schema für Media Encoder Standard](media-services-mes-schema.md). Wenn Sie Fragen zur Zuordnung der älteren Einstellungen zum neuen Encoder haben, können Sie uns über mailto:amshelp@microsoft.com erreichen.  
 ## <a name="known-differences"></a>Bekannte Unterschiede 
 
-Media Encoder Standard ist robuster, zuverlässiger, hat eine höhere Leistung und liefert eine bessere Qualität als der herkömmliche AME-Encoder. Außerdem haben Sie folgende Möglichkeiten: 
+Media Encoder Standard ist robuster, zuverlässiger, hat eine höhere Leistung und liefert eine bessere Qualität als der herkömmliche AME-Encoder. Berücksichtigen Sie zudem Folgendes: 
 
 * Media Encoder Standard erzeugt Ausgabedateien mit einer anderen Namenskonvention als AME.
 * Media Encoder Standard erzeugt Artefakte wie Dateien, die die [Eingabedateimetadaten](media-services-input-metadata-schema.md) und die [Metadaten der Ausgabedatei(en)](media-services-output-metadata-schema.md) enthalten.

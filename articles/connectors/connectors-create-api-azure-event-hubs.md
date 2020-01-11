@@ -1,18 +1,18 @@
 ---
 title: Herstellen einer Verbindung mit Azure Event Hubs
-description: Verwalten und Überwachen von Ereignissen mit Azure Event Hubs und Azure Logic Apps
+description: Erstellen von automatisierten Aufgaben und Workflows, die Ereignisse mithilfe von Azure Event Hubs und Azure Logic Apps überwachen und verwalten
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 04/23/2019
 tags: connectors
-ms.openlocfilehash: 77ff24f3af77e012b9ae9bc702d6a5a2639a5b11
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: a0ba747fcc3015df961aa40de794071828d73a33
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789937"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75446167"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Überwachen, Erhalten und Senden von Ereignissen mit Azure Event Hubs und Azure Logic Apps
 
@@ -20,7 +20,7 @@ In diesem Artikel wird gezeigt, wie Sie Ereignisse überwachen und verwalten kö
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
+* ein Azure-Abonnement Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/). 
 
 * Einen [Azure Event Hubs-Namespace und Event Hub](../event-hubs/event-hubs-create.md)
 
@@ -134,7 +134,7 @@ Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Ereignis senden �
    |----------|----------|-------------|
    | **Event Hub-Name** | Ja | Der Event Hub, an den das Ereignis gesendet werden soll. |
    | **Inhalt** | Nein | Der Inhalt für das Ereignis, das Sie senden möchten |
-   | **Properties** | Nein | Die App-Eigenschaften und Werte, die gesendet werden sollen |
+   | **Eigenschaften** | Nein | Die App-Eigenschaften und Werte, die gesendet werden sollen |
    | **Partitionsschlüssel** | Nein | Die ID der [Partition](../event-hubs/event-hubs-features.md#partitions) für die Adresse, an die das Ereignis gesendet werden soll. |
    ||||
 
@@ -152,7 +152,7 @@ Wählen Sie in der Liste mit den Aktionen diese Aktion aus: **Ereignis senden �
 
 1. Wenn Sie zur Eingabe von Verbindungsinformationen aufgefordert werden, geben Sie diese Details an:
 
-   | Eigenschaft | Erforderlich | Value | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | value | BESCHREIBUNG |
    |----------|----------|-------|-------------|
    | **Verbindungsname** | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung erstellt werden soll |
    | **Event Hubs-Namespace** | Ja | <*event-hubs-namespace*> | Wählen Sie den Event Hubs-Namespace, den Sie verwenden möchten. |

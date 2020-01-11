@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: 5e69df816e67ddc346ac8452c9bdc8bbd68fa426
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 630535103656e13ca43d958ef2a4124a4ea940ac
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546943"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658286"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -131,7 +131,7 @@ Ja, Sie müssen eine Active Directory-Verbindung erstellen, bevor Sie ein SMB-Vo
 
 ### <a name="how-many-active-directory-connections-are-supported"></a>Wie viele Active Directory-Verbindungen werden unterstützt?
 
-Azure NetApp Files unterstützt derzeit eine Active Directory-Verbindung pro Abonnement. Darüber hinaus gilt die Active Directory-Verbindung spezifisch für ein einzelnes NetApp-Konto, sie wird nicht von mehreren Konten gemeinsam genutzt. 
+Azure NetApp Files unterstützt zurzeit nur eine Active Directory-Verbindung pro NetApp-Konto, pro Abonnement und in jeder Region. Die Verbindung wird nicht über NetApp-Konten hinweg geteilt.
 
 ### <a name="does-azure-netapp-files-support-azure-active-directory"></a>Unterstützt Azure NetApp Files Azure Active Directory? 
 

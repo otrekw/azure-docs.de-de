@@ -1,7 +1,7 @@
 ---
 title: Anwenden einer mathematischen Operation
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie das Modul zum Anwenden einer mathematischen Operation im Azure Machine Learning Service verwenden können, um eine mathematische Operation auf Spaltenwerte in einer Pipeline anzuwenden.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie das Modul zum Anwenden einer mathematischen Operation in Azure Machine Learning verwenden können, um eine mathematische Operation auf Spaltenwerte in einer Pipeline anzuwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: a2f3665355cc2023aaf4b66c9207aaff4a3bc6db
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493941"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75428606"
 ---
 # <a name="apply-math-operation"></a>Anwenden einer mathematischen Operation
 
@@ -32,7 +32,7 @@ Nachdem Sie eine Operation definiert und die Pipeline gestartet haben, werden di
 
 Suchen Sie in den folgenden Kategorien nach der benötigten Operation:  
 
-- [Basic](#basic-math-operations)  
+- [Grundlegend](#basic-math-operations)  
   
      Mit den Funktionen der Kategorie **Grundlegende Funktionen** kann ein einzelner Wert oder eine Wertspalte bearbeitet werden. So können Sie beispielsweise den absoluten Wert aller Zahlen in einer Spalte ermitteln oder die Quadratwurzel jedes Wertes in einer Spalte berechnen.  
   
@@ -162,7 +162,7 @@ Gibt den natürlichen Logarithmus für die Werte in der ausgewählten Spalte zur
 
 Gibt den natürlichen Logarithmus plus 1 für die Werte in der ausgewählten Spalte zurück.  
 
-### <a name="log"></a>Protokoll
+### <a name="log"></a>Log
 
 Gibt den Logarithmus der Werte in der ausgewählten Spalte bezogen auf die angegebene Basis zurück.  
 
@@ -202,7 +202,7 @@ Gibt die Quadratwurzel für die Werte in der ausgewählten Spalte zurück.
 
 Jeder Wert in der ausgewählten Spalte wird mit Pi multipliziert, anschließend wird die Quadratwurzel des Ergebnisses zurückgegeben.  
 
-### <a name="square"></a>Quadrat
+### <a name="square"></a>Square
 
 Quadriert die Werte in der ausgewählten Spalte.  
 
@@ -536,7 +536,7 @@ Berechnet den Sekans für die Spaltenwerte in Grad.
 
 Berechnet den hyperbolischen Sekans für die Spaltenwerte.  
 
-### <a name="sign"></a>Sign
+### <a name="sign"></a>Signieren
 
 Gibt das Vorzeichen der Spaltenwerte zurück.  
 
@@ -590,4 +590,4 @@ Alternativ können Sie auch eines der folgenden Module verwenden, um alle Berech
   
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für Azure Machine Learning Service an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 

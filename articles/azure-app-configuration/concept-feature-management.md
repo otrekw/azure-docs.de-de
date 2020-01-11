@@ -1,23 +1,17 @@
 ---
-title: Featureverwaltung in Azure App Configuration | Microsoft-Dokumentation
+title: Featureverwaltung in Azure App Configuration
 description: Dieser Artikel bietet eine Übersicht darüber, wie Azure App Configuration zum bedarfsbasierten Aktivieren und Deaktivieren von Anwendungsfeatures verwendet werden kann.
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 46f39e87e4e4cf115cbc1fceeabf0dab38fade28
-ms.sourcegitcommit: 51a7669c2d12609f54509dbd78a30eeb852009ae
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 04/19/2019
+ms.openlocfilehash: 48aebfe1ba6af348e98e5600075f3a9e9dce1a8e
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/30/2019
-ms.locfileid: "66393358"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495772"
 ---
 # <a name="feature-management-overview"></a>Übersicht über die Featureverwaltung
 
