@@ -1,6 +1,6 @@
 ---
-title: Adaptive Anwendungssteuerungen in Azure Security Center | Microsoft-Dokumentation
-description: In diesem Dokument erfahren Sie, wie Sie Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen.
+title: Adaptive Anwendungssteuerungen in Azure Security Center
+description: In diesem Dokument erfahren Sie, wie Sie Anwendungen, die auf Azure-Computern ausgeführt werden, mithilfe der adaptiven Anwendungssteuerung in Azure Security Center einer Whitelist hinzufügen.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2019
+ms.date: 12/23/2019
 ms.author: memildin
-ms.openlocfilehash: 46ab2fc5c796d960de8b1c5e3391a6356563b50a
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 862fb4f8a9dcd357148f73a729ffc7e92ba0083a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202812"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75353438"
 ---
-# <a name="adaptive-application-controls-in-azure-security-center"></a>Adaptive Anwendungssteuerungen in Azure Security Center
+# <a name="adaptive-application-controls"></a>Adaptive Anwendungssteuerungen
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
 
 ## <a name="what-are-adaptive-application-controls-in-security-center"></a>Was sind adaptive Anwendungssteuerungen in Security Center?
-Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung von Azure Security Center, mit der Sie steuern können, welche Anwendungen auf Ihren virtuellen Computern mit oder ohne Azure ausgeführt werden können (Windows und Linux). Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre virtuellen Computer vor Schadsoftware zu schützen. Security Center nutzt maschinelles Lernen, um die auf Ihren virtuellen Computern ausgeführten Anwendungen zu analysieren, und erstellt basierend auf diesen Daten eine Zulassungsliste. Dadurch können Sie Richtlinien für Anwendungszulassungsliste deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
+Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-End-Lösung von Azure Security Center, mit der Sie steuern können, welche Anwendungen auf Ihren Computern mit oder ohne Azure ausgeführt werden können (Windows und Linux). Neben anderen Vorteilen verbessert dies die Möglichkeiten, ihre Computer vor Schadsoftware zu schützen. Security Center nutzt maschinelles Lernen, um die auf Ihren Computern ausgeführten Anwendungen zu analysieren, und erstellt basierend auf diesen Daten eine Zulassungsliste. Dadurch können Sie Richtlinien für Anwendungszulassungsliste deutlich einfacher konfigurieren und verwalten und profitieren außerdem von folgenden Möglichkeiten:
 
 - Blockierung der Ausführung schädlicher Anwendungen oder Ausgabe einer Warnung beim Versuch, eine schädliche Anwendung auszuführen (auch bei Anwendungen, die möglicherweise von Antischadsoftwarelösungen nicht erfasst werden)
 - Einhaltung der Sicherheitsrichtlinie Ihrer Organisation, die die ausschließliche Verwendung von lizenzierter Software vorschreibt
@@ -34,15 +34,17 @@ Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-En
 - Steuerung des Zugriffs auf sensible Daten im Rahmen der App-Nutzung durch die IT-Abteilung
 
 > [!NOTE]
-> Bei virtuellen Nicht-Azure und Linux-Computern wird die adaptive Anwendungssteuerung nur im Überwachungsmodus unterstützt.
+> Bei Nicht-Azure und Linux-Computern wird die adaptive Anwendungssteuerung nur im Überwachungsmodus unterstützt.
 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
-Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung auf konfigurierten Gruppen virtueller Computer zulässig ist. Dieses Feature steht sowohl für virtuelle Azure- als auch Nicht-Azure-Windows- (alle Versionen,klassisch oder Azure Resource Manager) und Linux-Computer und -Server zur Verfügung. Führen Sie die folgenden Schritte aus, um die Anwendungszulassungslisten zu konfigurieren:
+
+Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung auf konfigurierten Gruppen von Computern zulässig ist. Dieses Feature steht sowohl für Windows- (alle Versionen, klassisch oder Azure Resource Manager) und Linux-Computer und -Server mit oder ohne Azure zur Verfügung. Führen Sie die folgenden Schritte aus, um die Anwendungszulassungslisten zu konfigurieren:
 
 1. Öffnen Sie das Dashboard **Security Center**.
-2. Wählen Sie im linken Bereich unter **Erweiterter Cloudschutz** die Option **Adaptive Anwendungssteuerung**.
 
-    ![Verteidigung](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+1. Wählen Sie im linken Bereich unter **Erweiterter Cloudschutz** die Option **Adaptive Anwendungssteuerung**.
+
+    [![Verteidigung](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png#lightbox)
 
 Die Seite **Adaptive Anwendungssteuerung** wird angezeigt.
 
@@ -60,7 +62,8 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 >
 
 ### <a name="configure-a-new-application-control-policy"></a>Konfigurieren einer neuen Anwendungssteuerungsrichtlinie
-1. Klicken Sie auf die Registerkarte **Empfohlen**, um eine Liste der Gruppen mit Anwendungssteuerungsempfehlungen anzuzeigen:
+
+1. Wählen Sie die Registerkarte **Empfohlen** aus, um eine Liste der Gruppen mit Anwendungssteuerungsempfehlungen anzuzeigen:
 
    ![Empfohlen](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
@@ -73,7 +76,7 @@ Der Abschnitt **Groups of VMs** (VM-Gruppen) enthält drei Registerkarten:
 
 2. Klicken Sie auf eine Gruppe, um die Option **Regeln zur Anwendungssteuerung erstellen** zu öffnen.
 
-   ![Anwendungssteuerungsregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)
+   [![Anwendungssteuerungsregeln](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png)](./media/security-center-adaptive-application/security-center-adaptive-application-fig4.png#lightbox)
 
 3. Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen Computern an, und heben Sie die Auswahl aller virtuellen Computer auf, auf die Sie keine Richtlinie für das Anwendungswhitelisting anwenden möchten. Als Nächstes sehen Sie zwei Listen:
 

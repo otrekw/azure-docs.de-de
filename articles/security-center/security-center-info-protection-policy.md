@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: d37333c0ca3f8acab7a35c23bbab67beef056b72
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73664389"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75611065"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Anpassen der SQL Information Protection-Richtlinie im Azure Security Center (Vorschau)
  
 In Azure Security Center kann eine SQL Information Protection-Richtlinie für Ihren gesamten Azure-Mandanten definiert und angepasst werden.
 
-Information Protection ist eine erweiterte Sicherheitsfunktion für die Ermittlung, Klassifizierung, Bezeichnung und den Schutz vertraulicher Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-, Finanz-, Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
-- Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
+Information Protection ist eine erweiterte Sicherheitsfunktion für Ermittlung, Klassifizierung, Bezeichnung und Berichterstellung zu vertraulichen Daten in Ihren Azure-Datenressourcen. Das Ermitteln und Klassifizieren Ihrer vertraulichen Daten (Geschäfts-, Finanz-, Gesundheits-, personenbezogene Daten usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Sie kann für Folgendes als Infrastruktur gelten:
+- Unterstützung beim Einhalten von Datenschutzstandards und gesetzlich geregelten Complianceanforderungen
 - Sicherheitsszenarien wie Überwachung und Warnung bei anomalem Zugriff auf vertrauliche Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenspeichern, die sensible Daten enthalten
  

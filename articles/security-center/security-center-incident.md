@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: memildin
-ms.openlocfilehash: 2a22039b3499f1ba0f2d7acb2e86a1991d35a380
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b2ab769fc2595af9fd1ea41f1ef492944cb5e7fa
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71202118"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665767"
 ---
 # <a name="manage-security-incidents-in-azure-security-center"></a>Verwalten von Sicherheitsvorfällen in Azure Security Center
 
@@ -31,7 +31,7 @@ In Security Center ist ein Sicherheitsvorfall eine Aggregation aller Warnungen f
 
     ![Sicherheitsvorfälle anzeigen](./media/security-center-managing-and-responding-alerts/security-center-manage-alerts.png)
 
-1. Um Details anzuzeigen, klicken Sie auf einen Vorfall. Auf dem Blatt **Sicherheitsvorfall erkannt** werden weitere Details angezeigt. Der Abschnitt **Allgemeine Informationen** bietet Erkenntnisse dazu, was die Sicherheitswarnung ausgelöst hat. Er enthält Informationen wie die Zielressource, die Quell-IP-Adresse (sofern zutreffend), ob die Warnung noch aktiv ist sowie Empfehlungen zur Korrektur.  
+1. Um Details anzuzeigen, klicken Sie auf einen Vorfall. Auf dem Blatt **Sicherheitsvorfall erkannt** werden weitere Details angezeigt. Der Abschnitt **Allgemeine Informationen** bietet Erkenntnisse dazu, was die Sicherheitswarnung ausgelöst hat. Er enthält Informationen wie die Zielressource, die Quell-IP-Adresse (sofern zutreffend), ob die Warnung noch aktiv ist sowie Empfehlungen zur Behebung.  
 
     ![Reagieren auf Sicherheitsvorfälle in Azure Security Center](./media/security-center-managing-and-responding-alerts/security-center-alert-incident.png)
 
@@ -55,12 +55,12 @@ In den folgenden Themen finden Sie Informationen zu den verschiedenen Warnungen 
 In den folgenden Themen erfahren Sie, wie Security Center die verschiedenen Telemetriedaten nutzt, die im Rahmen der Azure-Infrastrukturintegration gesammelt werden, um zusätzliche Schutzebenen für in Azure bereitstellte Ressourcen zu implementieren:
 
 * [Bedrohungserkennung für die Azure-Dienstebene in Azure Security Center](security-center-alerts-service-layer.md)
-* [Integration mit Azure-Sicherheitsprodukten](security-center-alerts-integration.md)
+* [Bedrohungserkennung für Azure WAF und Azure DDoS Protection](security-center-alerts-integration.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 In diesem Dokument haben Sie erfahren, wie Sie die Sicherheitsvorfallfunktion in Security Center verwenden. Weitere Informationen zu Security Center finden Sie in den folgenden Quellen:
 
-* [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md).
+* [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
 * [Verwalten von Sicherheitswarnungen](security-center-managing-and-responding-alerts.md)
 * [Planungs- und Betriebshandbuch für Azure Security Center](security-center-planning-and-operations-guide.md)
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.

@@ -11,23 +11,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 12/19/2019
 ms.author: memildin
-ms.openlocfilehash: 8b069bedd3c36f27828e54a1110443ae6dfcdf3f
-ms.sourcegitcommit: 263a69b70949099457620037c988dc590d7c7854
+ms.openlocfilehash: 6b262baddd10c9d0dff4b196b733972b97d99872
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71268857"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552983"
 ---
-# <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Überwachen der Identität und des Zugriffs im Azure Security Center (Vorschauversion)
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
+# <a name="monitor-identity-and-access-preview"></a>Überwachen der Identität und des Zugriffs (Vorschau)
+Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Sichern und Schützen Ihrer Ressourcen unterstützen.
+
+In diesem Artikel wird die Seite **Identität und Zugriff** des Abschnitts „Ressourcensicherheit“ im Azure Security Center erläutert.
+
+Eine vollständige Liste der Empfehlungen, die auf dieser Seite angezeigt werden können, finden Sie unter [Empfehlungen zu Identität und Zugriff](recommendations-reference.md#recs-identity).
 
 > [!NOTE]
 > Die Überwachung der Identität und des Zugriffs ist als Vorschauversion und im Standard-Tarif vom Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
 >
 
-Die Identität sollte die Kontrollebene für Ihr Unternehmen darstellen, und der Schutz der Identität sollte höchste Priorität haben. Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Bei der Sicherheit geht es immer weniger um die Verteidigung Ihres Netzwerks und immer mehr um die Verteidigung Ihrer Daten sowie um die Verwaltung der Sicherheit Ihrer Apps und Benutzer. Da heutzutage jedoch immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
+Die Identität sollte die Kontrollebene für Ihr Unternehmen darstellen, und der Schutz von Identitäten sollte höchste Priorität haben. Der Fokus bei der Entwicklung des Sicherheitsbereichs wurde von der Netzwerkorientierung auf die Identitätsorientierung verlagert. Bei der Sicherheit geht es immer weniger um die Verteidigung Ihres Netzwerks und immer mehr um die Verteidigung Ihrer Daten sowie um die Verwaltung der Sicherheit Ihrer Apps und Benutzer. Da heutzutage jedoch immer mehr Daten und Apps in die Cloud verlagert werden, ist die Identität zur neuen Grenze geworden.
 
 Durch die Überwachung von Identitätsaktivitäten können Sie proaktive Maßnahmen ergreifen, bevor es zu einem Vorfall kommt, oder einen Angriffsversuch abwehren. Das Dashboard für Identität und Zugriff bietet Empfehlungen wie etwa zu Folgendem:
 
@@ -36,30 +40,20 @@ Durch die Überwachung von Identitätsaktivitäten können Sie proaktive Maßnah
 - Privilegierte externe Konten aus Ihrem Abonnement entfernen
 
 > [!NOTE]
-> Wenn Ihr Abonnement mehr als 600 Konten umfasst, kann das Security Center nicht die Identitätsempfehlungen für Ihr Abonnement ausführen. Empfehlungen, die nicht ausgeführt werden, werden wie nachfolgend gezeigt unter „Nicht verfügbare Bewertungen“ aufgeführt.
+> Wenn Ihr Abonnement mehr als 600 Konten umfasst, kann das Security Center nicht die Identitätsempfehlungen für Ihr Abonnement ausführen. Empfehlungen, die nicht ausgeführt werden, werden unter „Nicht verfügbare Bewertungen“ aufgeführt.
 Im Security Center können keine Identitätsempfehlungen für Administrator-Agents eines Cloud Solution Provider-Partners (CSP) ausgeführt werden.
 >
 
-Unter [Empfehlungen](security-center-identity-access.md#recommendations) finden Sie eine Liste der Identitäts- und Zugriffsempfehlungen, die vom Security Center bereitgestellt werden.
-
-## <a name="monitoring-security-health"></a>Überwachung der Sicherheitsintegrität
-Auf dem Dashboard **Security Center – Übersicht** können Sie den Sicherheitsstatus Ihrer Ressourcen überwachen. Der Abschnitt **Ressourcen** ist kein Integritätsindikator, der die Schweregrade für die einzelnen Ressourcentypen anzeigt.
-
-Sie können eine Liste aller Probleme anzeigen, indem Sie auf **Empfehlungen** klicken. Unter **Ressourcen** können Sie eine Liste der Probleme einsehen, die speziell für Compute und Apps, die Datensicherheit, Netzwerke oder Identität und Zugriff gelten. Weitere Informationen zur Anwendung der Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
-
-Eine vollständige Liste der Identitäts- und Zugriffsempfehlungen finden Sie unter [Empfehlungen](security-center-identity-access.md#recommendations).
-
-Wählen Sie zum Fortsetzen des Vorgangs **Identität und Zugriff** unter **Ressourcen** oder im Security Center-Hauptmenü aus.
-
-![Security Center-Dashboard][1]
-
 ## <a name="monitor-identity-and-access"></a>Überwachen der Identität und des Zugriffs
+
+Öffnen Sie die Liste der identifizierten Identitäts- und Zugriffsprobleme, indem Sie **Identität und Zugriff** in der Security Center-Seitenleiste (unter **Ressourcen**) oder auf der Übersichtsseite auswählen. 
+
 Unter **Identität und Zugriff** befinden sich zwei Registerkarten:
 
 - **Übersicht**: Vom Security Center identifizierte Empfehlungen.
 - **Abonnements**: Liste Ihrer Abonnements und der jeweils aktuelle Sicherheitsstatus.
 
-![„Identity & Access“ (Identität und Zugriff)][2]
+[![Identität und Zugriff](./media/security-center-identity-access/identity-dashboard.png)](./media/security-center-identity-access/identity-dashboard.png#lightbox)
 
 ### <a name="overview-section"></a>Abschnitt „Übersicht“
 Unter **Übersicht** finden Sie eine Liste von Empfehlungen. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl der Abonnements, die diese Empfehlung betrifft. Die dritte Spalte gibt den Schweregrad des Problems an.
@@ -70,14 +64,14 @@ Unter **Übersicht** finden Sie eine Liste von Empfehlungen. Die erste Spalte en
    - Liste der fehlerhaften und fehlerfreien Abonnements
    - Liste der Ressourcen, die aufgrund einer fehlerhaften Bewertung nicht überprüft wurden oder aufgrund der Ausführung in einem Abonnement mit dem Free-Tarif nicht bewertet wurden
 
-   ![Fenster der Empfehlung][3]
+    [![Fenster „Empfehlungen“](./media/security-center-identity-access/select-subscription.png)](./media/security-center-identity-access/select-subscription.png#lightbox)
 
 1. Um weitere Einzelheiten zu erhalten, wählen Sie ein Abonnement in der Liste aus.
 
 ### <a name="subscriptions-section"></a>Abonnementabschnitt
 Unter **Abonnements** finden Sie eine Liste von Abonnements. Die erste Spalte enthält die Abonnements. Die zweite Spalte zeigt die Gesamtanzahl der Empfehlungen für die einzelnen Abonnements. Die dritte Spalte gibt die Schweregrade der Probleme an.
 
-![Registerkarte „Abonnements“][4]
+[![Registerkarte „Abonnements“](./media/security-center-identity-access/subscriptions.png)](./media/security-center-identity-access/subscriptions.png#lightbox)
 
 1. Wählen Sie ein Abonnement aus. Eine zusammenfassende Darstellung mit drei Registerkarten wird geöffnet:
 
@@ -87,36 +81,19 @@ Unter **Abonnements** finden Sie eine Liste von Abonnements. Die erste Spalte en
 
    Unter **Empfehlungen** finden Sie eine Liste der Empfehlungen für das ausgewählte Abonnement und den Schweregrad der einzelnen Empfehlungen.
 
-   ![Empfehlungen für das ausgewählte Abonnement][5]
+   [![Empfehlungen für das ausgewählte Abonnement](./media/security-center-identity-access/recommendations.png)](./media/security-center-identity-access/recommendations.png#lightbox)
 
 1. Wählen Sie eine Empfehlung aus, um eine Beschreibung der Empfehlung, eine Liste von fehlerhaften und fehlerfreien Abonnements und eine Liste von nicht überprüften Ressourcen zu erhalten.
 
-   ![Beschreibung der Empfehlung][6]
+   [![Beschreibung der Empfehlung](./media/security-center-identity-access/designate.png)](./media/security-center-identity-access/designate.png#lightbox)
 
    Unter **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
 
-   ![Bestandene Bewertungen][7]
+   [![Bestandene Bewertungen](./media/security-center-identity-access/passed-assessments.png)](./media/security-center-identity-access/passed-assessments.png#lightbox)
 
 1. Wählen Sie eine bestandene Bewertung aus der Liste aus, um eine Beschreibung der Bewertung und eine Liste von fehlerfreien Abonnements zu erhalten. Auf einer Registerkarte für fehlerhafte Abonnements werden alle Abonnements aufgeführt, bei denen ein Fehler aufgetreten ist.
 
-   ![Bestandene Bewertungen][8]
-
-## <a name="recommendations"></a>Empfehlungen
-Der folgenden Tabelle können Sie entnehmen, welche Identitäts- und Zugriffsempfehlungen verfügbar sind und welche Aktionen bei ihrer Anwendung jeweils ausgeführt werden.
-
-|Ressourcentyp|Sicherheitsbewertung|Empfehlung|BESCHREIBUNG|
-|----|----|----|----|
-|Subscription|50|MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Administratorrechten die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
-|Subscription|40|MFA sollte für Ihre Abonnementkonten mit Schreibberechtigungen aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Schreibberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
-|Subscription|30|Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Besitzerberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.|
-|Subscription|30|MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein.|Aktivieren Sie für alle Abonnementkonten mit Leseberechtigungen die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine Sicherheitsverletzung von Konten oder Ressourcen zu verhindern.|
-|Subscription|25|Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Schreibberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern. |
-|Subscription|20|Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie veraltete Konten mit Besitzerberechtigungen aus Ihrem Abonnement.|
-|Subscription|5|Veraltete Konten sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie veraltete Konten aus Ihren Abonnements, um nur den Zugriff auf aktuelle Benutzer zuzulassen. |
-|Subscription|5|Ihrem Abonnement sollte mehr als ein Besitzer zugewiesen sein.|Legen Sie mehrere Abonnementbesitzer fest, um Redundanz beim Administratorzugriff zu gewährleisten.|
-|Subscription|5|Maximal 3 Besitzer sollten für Ihr Abonnement festgelegt sein.|Legen Sie höchstens drei Abonnementbesitzer fest, um die Möglichkeit einer Sicherheitsverletzung durch einen kompromittierten Besitzer zu verringern.|
-|Schlüsseltresor|5|Diagnoseprotokolle in Key Vault sollten aktiviert sein.|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Auf diese Weise können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-|Subscription|15|Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden.|Entfernen Sie externe Konten mit Leseberechtigungen aus Ihrem Abonnement, um nicht überwachten Zugriff zu verhindern.| 
+   [![Bestandene Bewertungen](./media/security-center-identity-access/remove.png)](./media/security-center-identity-access/remove.png#lightbox)
 
 > [!NOTE]
 > Wenn Sie eine Richtlinie für bedingten Zugriff erstellt haben, die MFA erfordert, für die jedoch Ausschlüsse festgelegt sind, wird die Richtlinie beim Assessment der MFA-Empfehlung für Security Center als nicht kompatibel eingestuft, da sie zulässt, dass sich einige Benutzer in Azure ohne MFA anmelden.
@@ -127,19 +104,3 @@ Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen fin
 - [Schützen von Computern und Anwendungen im Azure Security Center](security-center-virtual-machine-protection.md)
 - [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)
 - [Schützen des Azure SQL-Diensts und der Daten im Azure Security Center](security-center-sql-service-recommendations.md)
-
-Weitere Informationen zu Security Center finden Sie in den folgenden Artikeln:
-* [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Hier erfahren Sie, wie Sie Warnungen verwalten und auf Sicherheitsvorfälle in Security Center reagieren.
-* [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Hier finden Sie Informationen zu den unterschiedlichen Arten von Sicherheitswarnungen.
-* [Azure Security Center – häufig gestellte Fragen](security-center-faq.md)festgelegt ist. Hier finden Sie häufig gestellte Fragen zur Verwendung von Security Center.
-
-
-<!--Image references-->
-[1]: ./media/security-center-identity-access/overview.png
-[2]: ./media/security-center-identity-access/identity-dashboard.png
-[3]: ./media/security-center-identity-access/select-subscription.png
-[4]: ./media/security-center-identity-access/subscriptions.png
-[5]: ./media/security-center-identity-access/recommendations.png
-[6]: ./media/security-center-identity-access/designate.png
-[7]: ./media/security-center-identity-access/passed-assessments.png
-[8]: ./media/security-center-identity-access/remove.png

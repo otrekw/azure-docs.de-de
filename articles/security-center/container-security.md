@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9cb4f6ec7331a2d0eb03beb2680c882484b69541
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7bd097885d629a6c8541b57195f2a2996e45ffaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868489"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75552660"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
@@ -32,9 +32,9 @@ In diesem Artikel wird beschrieben, wie Sie die Sicherheit ihrer Container und d
 [![Registerkarte „Containersicherheit“ in Azure Security Center](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Verwaltung von Sicherheitsrisiken: Scannen von Containerimages (Vorschau)
-Stellen Sie zur Überwachung Ihrer Azure Container Registry-Instanz sicher, dass Sie den Standard-Tarif von Security Center verwenden (siehe [Preise](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Aktivieren Sie anschließend das optionale Paket „Containerregistrierungen“. Wenn ein neues Image per Push bereitgestellt wird, überprüft Security Center das Image mithilfe eines Scanners von Qualys, dem branchenführenden Hersteller von Anwendungen zur Sicherheitsrisikoüberprüfung.
+Stellen Sie zur Überwachung Ihrer Azure Container Registry-Instanz sicher, dass Sie den Standard-Tarif von Security Center verwenden (siehe [Preise](/azure/security-center/security-center-pricing)). Aktivieren Sie anschließend das optionale Paket „Containerregistrierungen“. Wenn ein neues Image per Push bereitgestellt wird, überprüft Security Center das Image mithilfe eines Scanners von Qualys, dem branchenführenden Hersteller von Anwendungen zur Sicherheitsrisikoüberprüfung.
 
-Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie im Security Center-Dashboard benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen finden Sie in der Liste der Empfehlungen ([hier](recommendations-compute-and-apps.md)).
+Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie im Security Center-Dashboard benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen finden Sie in der [Referenzliste der Empfehlungen](recommendations-reference.md).
 
 ## <a name="environment-hardening"></a>Umgebungshärtung
 

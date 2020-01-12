@@ -13,23 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2019
 ms.author: memildin
-ms.openlocfilehash: 4a6d733b490edd892136f6febcc90c29a5a865e1
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b7e5b0286cdd15834b84e4fd3e619c6555054823
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766802"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75553000"
 ---
 # <a name="protect-your-machines-and-applications"></a>Schützen Ihrer Computer und Anwendungen
-Wenn potenzielle Sicherheitslücken erkannt werden, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Kontrollen unterstützen. 
+Werden potenzielle Sicherheitslücken erkannt, erstellt Azure Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente zum Härten und Schützen Ihrer Ressourcen unterstützen.
 
-In diesem Artikel wird die Seite **Compute und Apps** des Abschnitts „Ressourcensicherheit“ von Azure Security Center erläutert. Außerdem werden einige der Empfehlungen beschrieben, die dort angezeigt werden.
+In diesem Artikel wird die Seite **Compute und Apps** des Abschnitts „Ressourcensicherheit“ von Azure Security Center erläutert.
 
-Eine vollständige Liste der Empfehlungen für Compute- und App-Dienste finden Sie unter [Compute- und App-Empfehlungen](recommendations-compute-and-apps.md).
+Eine vollständige Liste der Empfehlungen, die auf dieser Seite angezeigt werden können, finden Sie unter [Daten- und Speicherempfehlungen](recommendations-reference.md#recs-computeapp).
+
 
 ## <a name="view-the-security-of-your-compute-and-apps-resources"></a>Anzeigen der Sicherheit Ihrer Compute- und App-Ressourcen
 
-![Security Center-Dashboard](./media/security-center-virtual-machine-recommendations/overview.png)
+[![Security Center-Dashboard](./media/security-center-virtual-machine-recommendations/overview.png)](./media/security-center-virtual-machine-recommendations/overview.png#lightbox)
 
 Wenn Sie den Status Ihrer Compute- und App-Ressourcen anzeigen möchten, wählen Sie **Compute und Apps** unter **Ressourcen** in der Randleiste von Security Center aus. Die folgenden Registerkarten sind verfügbar:
 
@@ -74,7 +75,8 @@ Anhand des Symbols unter der jeweiligen Empfehlung sehen Sie sofort, bei welchem
 
 Um einen Drilldown in die Sicherheitsempfehlungen für jeden virtuellen Computer durchzuführen, klicken Sie auf den virtuellen Computer.
 Hier finden Sie die Sicherheitsdetails für den virtuellen oder physischen Computer. Im unteren Bereich des Blatts werden die empfohlene Aktion und der Schweregrad des jeweiligen Problems angezeigt.
-![Clouddienste](./media/security-center-virtual-machine-recommendations/recommendation-list.png)
+
+[![Clouddienste](./media/security-center-virtual-machine-recommendations/recommendation-list.png)](./media/security-center-virtual-machine-recommendations/recommendation-list.png#lightbox)
 
 ### <a name="cloud-services"></a>Clouddienste
 Für Clouddienste wird eine Empfehlung erstellt, wenn die Betriebssystemversion nicht mehr aktuell ist.
@@ -141,6 +143,7 @@ Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für al
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Empfehlungen für andere Arten von Azure-Ressourcen finden Sie in den folgenden Artikeln:
 
+* [Vollständige Referenzliste der Sicherheitsempfehlungen von Azure Security Center](recommendations-reference.md)
 * [Überwachen von Identität und Zugriff in Azure Security Center](security-center-identity-access.md)
 * [Schützen Ihres Netzwerks in Azure Security Center](security-center-network-recommendations.md)
 * [Schützen Ihres Azure SQL-Diensts in Azure Security Center](security-center-sql-service-recommendations.md)

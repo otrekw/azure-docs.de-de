@@ -5,17 +5,17 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: include
-ms.date: 11/05/2019
+ms.date: 12/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a78a44f9e4dd1b64ae989dffa04892a490b986d4
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: ff5a42150140035105298802a7ce8b4d0e25959c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748121"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436946"
 ---
-Sie können Azure Cloud Shell verwenden, um die meisten PowerShell-Cmdlets auszuführen, anstatt Azure PowerShell lokal zu installieren. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde.
+Sie können Azure Cloud Shell verwenden, um die meisten PowerShell-Cmdlets und CLI-Befehle auszuführen, anstatt Azure PowerShell oder die Befehlszeilenschnittstelle lokal zu installieren. Azure Cloud Shell ist eine kostenlose interaktive Shell, in der häufig verwendete Azure-Tools vorinstalliert sind und die für die Verwendung mit Ihrem Konto konfiguriert wurde.
 Um in Azure Cloud Shell Code aus diesem Artikel auszuführen, öffnen Sie eine Cloud Shell-Sitzung, verwenden Sie für einen Codeblock die Schaltfläche **Kopieren**, um Code zu kopieren, und fügen Sie ihn mit __STRG+UMSCHALT+V__ (Windows und Linux) oder __BEFEHL+UMSCHALT+V__ (macOS) in die Cloud Shell-Sitzung ein. Eingefügter Code wird nicht automatisch ausgeführt. Sie müssen zum Ausführen von Code die **EINGABETASTE** drücken.
 
 Cloud Shell kann auf mehrere Arten gestartet werden:

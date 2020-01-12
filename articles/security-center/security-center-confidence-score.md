@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: memildin
-ms.openlocfilehash: 5b7e53291e10db17f848553b17dae2f84bdb08b7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: ca2afaa9f4e01ac56657681ce71e32e3c5375fdf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75355643"
 ---
-# <a name="alert-confidence-score"></a>Zuverlässigkeitsbewertung für Warnungen 
+# <a name="alert-confidence-score-preview"></a>Zuverlässigkeitsbewertung für Warnungen (Vorschau)
 
 Azure Security Center bietet Ihnen Einblick in alle Ressourcen, die Sie in Azure ausführen, und warnt Sie, wenn potenzielle Probleme erkannt werden. Angesichts der großen Anzahl von Warnungen kann es für ein Security Operations-Team schwierig sein, die Warnungen einzeln zu bearbeiten, und es wird notwendig, die zu untersuchenden Warnungen zu priorisieren. Das Untersuchen von Warnungen kann komplex und zeitaufwendig sein. Daher werden einige Warnungen ignoriert.
 
-Die Zuverlässigkeitsbewertung in Security Center kann Ihrem Team dabei helfen, Warnungen auszusortieren und zu priorisieren. Security Center wendet automatisch bewährte Methoden der Branche, intelligente Algorithmen und von Analysten eingesetzte Prozesse an, um zu bestimmen, ob eine Bedrohung legitim ist, und bietet Ihnen aussagekräftige Einblicke in Form einer Zuverlässigkeitsbewertung.
+Die Zuverlässigkeitsbewertung im Security Center (derzeit in der Vorschau) kann Ihrem Team dabei helfen, Warnungen auszusortieren und zu priorisieren. Security Center wendet automatisch bewährte Methoden der Branche, intelligente Algorithmen und von Analysten eingesetzte Prozesse an, um zu bestimmen, ob eine Bedrohung legitim ist, und bietet Ihnen aussagekräftige Einblicke in Form einer Zuverlässigkeitsbewertung.
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Funktionsweise für das Auslösen der Zuverlässigkeitsbewertung
 
