@@ -63,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Bedrohungserkennung für Azure-Dienstebenen
           href: security-center-alerts-service-layer.md
-        - name: Bedrohungserkennung für Azure WAF und Azure DDoS Protection
+        - name: Warnungen der Bedrohungserkennung von Azure WAF und Azure DDoS Protection
           href: security-center-alerts-integration.md
         - name: Korrelation von intelligenten Cloudwarnungen (Vorfälle)
           href: security-center-alerts-cloud-smart.md

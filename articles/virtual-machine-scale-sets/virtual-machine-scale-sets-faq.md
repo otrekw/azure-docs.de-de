@@ -1,6 +1,6 @@
 ---
-title: Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Skalierungsgruppen.
+title: Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
+description: Hier erhalten Sie Antworten auf die am häufigsten gestellten Fragen zu VM-Skalierungsgruppen in Azure.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/24/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 429e201ba1d15103ae130ee2fb767cd1b4fa909a
-ms.sourcegitcommit: 6cbf5cc35840a30a6b918cb3630af68f5a2beead
+ms.openlocfilehash: 47ea23f3018e9d28c0ccfd6640b3d365103ab9ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68779427"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356214"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -229,11 +229,11 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
 }
 ```
 
-linuxConfiguration-Elementname | Erforderlich | Typ | BESCHREIBUNG
+linuxConfiguration-Elementname | Erforderlich | type | BESCHREIBUNG
 --- | --- | --- | ---
 ssh | Nein | Collection | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
-path | Ja | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
-keyData | Ja | Zeichenfolge | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
+path | Ja | String | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
+keyData | Ja | String | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
 
 Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
@@ -343,6 +343,13 @@ Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microso
 
 Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen für [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) und [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi).
 
+## <a name="deleting"></a>Wird gelöscht 
+
+### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Werden die Sperren, die ich für VM-Skalierungsgruppeninstanzen festgelegt habe, beim Löschen von Instanzen beachtet?
+
+Im Azure-Portal haben Sie die Möglichkeit, eine einzelne Instanz zu löschen oder mehrere Instanzen auszuwählen und gleichzeitig in einem Schritt zu löschen. Wenn Sie versuchen, eine einzelne gesperrte Instanz zu löschen, wird die Sperre beachtet, sodass Sie die Instanz nicht löschen können. Wenn Sie mehrere Instanzen auswählen und eine dieser Instanzen gesperrt wurde, werden die Sperren nicht beachtet, sodass alle ausgewählten Instanzen gelöscht werden. 
+ 
+In der Azure-Befehlszeilenschnittstelle können Sie nur eine einzelne Instanz löschen. Wenn Sie versuchen, eine einzelne gesperrte Instanz zu löschen, wird die Sperre beachtet, sodass Sie die betreffende Instanz nicht löschen können. 
 
 ## <a name="extensions"></a>Erweiterungen
 
