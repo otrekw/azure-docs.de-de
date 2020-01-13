@@ -848,6 +848,8 @@
           href: ./hdinsight-management-ip-addresses.md
         - name: Diensttags für Azure Firewall
           href: ./hdinsight-service-tags.md
+        - name: Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln
+          href: ./disk-encryption.md
     - name: Anleitung
       items:
         - name: Verwenden des Identitätsbrokers für die Verwaltung von Anmeldeinformationen

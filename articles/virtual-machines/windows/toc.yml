@@ -184,7 +184,7 @@
           items:
             - name: GPU-optimiert
               href: sizes-gpu.md
-            - name: Einrichten von GPU-Treibern
+            - name: Einrichten von NVIDIA-GPU-Treibern
               href: n-series-driver-setup.md
             - name: Einrichten von AMD GPU-Treibern
               href: n-series-amd-driver-setup.md

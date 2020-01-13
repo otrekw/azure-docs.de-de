@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. Erstellen eines Hostpools zum Überprüfen von Dienstupdates
       href: create-validation-host-pool.md
-    - name: 6. Bereitstellen eines Verwaltungstools
-      href: manage-resources-using-ui.md
-    - name: 7. Einrichten von Dienstwarnungen
+    - name: 6. Einrichten von Dienstwarnungen
       href: set-up-service-alerts.md
 - name: Vorgehensweise
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: Feed anpassen
       href: customize-feed-for-virtual-desktop-users.md
+    - name: Bereitstellen des Verwaltungstools
+      items:
+        - name: Azure Resource Manager-Vorlage
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: Verwenden der Service-Diagnose
       items:
         - name: Bereitstellen des Diagnosetools

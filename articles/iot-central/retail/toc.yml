@@ -36,11 +36,13 @@
       href: architecture-smart-inventory-management-pnp.md
     - name: Store Analytics-Architektur
       href: store-analytics-architecture.md
+    - name: Vorlagenarchitektur für Micro-Fulfillment-Center-Apps
+      href: architecture-micro-fulfillment-center-pnp.md
     - name: Konnektivität
       href: ../preview/overview-iot-central-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Was sind Anwendungsvorlagen?
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Herstellen einer Verbindung zwischen Geräten
       items:

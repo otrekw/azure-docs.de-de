@@ -51,14 +51,18 @@
       href: container-instances-orchestrator-relationship.md
     - name: Sicherheitshinweise
       href: container-instances-image-security.md
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Bereitstellen
       items:
-        - name: Bereitstellen in einem virtuellen Netzwerk (Vorschauversion)
+        - name: Bereitstellen in einem virtuellen Netzwerk
           href: container-instances-vnet.md
         - name: Bereitstellen aus Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Verschlüsseln von Bereitstellungsdaten
+          href: container-instances-encrypt-data.md
+        - name: Bereitstellen auf dedizierten Hosts
+          href: container-instances-dedicated-hosts.md
     - name: Containerszenarien
       items:
         - name: Festlegen der Neustartrichtlinie für Aufgaben mit einmaliger Ausführung

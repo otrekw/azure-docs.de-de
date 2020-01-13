@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: Ermöglichen der Replikation von Azure zu Azure für verschlüsselte virtuelle Computer
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: Aktivieren der Azure-zu-Azure-Replikation für virtuelle Computer mit Datenträgern mit CMK-fähigen Datenträgern
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: Ermöglichen der Replikation von Azure zu Azure für virtuelle S2D-Computer
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Aktivieren der Replikation für einen hinzugefügten Datenträger

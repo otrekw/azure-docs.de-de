@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Anleitungsvideos für das Azure-Portal
       href: azure-portal-video-series.md
+    - name: Erstellen und Verwalten von Supportanfragen
+      items:
+        - name: Erstellen einer Azure-Supportanfrage
+          href: supportability/how-to-create-azure-support-request.md
+        - name: Hochladen von Dateien für eine Supportanfrage
+          href: supportability/how-to-use-file-uploader.md
+        - name: Anfordern der Kontingenterhöhung
+          items:
+            - name: Erhöhen der vCPU-Grenzwerte für Compute
+              items:
+                - name: Ressourcen-Manager-Bereitstellungsmodell
+                  items:
+                    - name: Erhöhen des vCPU-Grenzwerts für die VM-Serie
+                      href: supportability/per-vm-quota-requests.md
+                    - name: Erhöhen des Grenzwerts der gesamten regionalen vCPUs
+                      href: supportability/regional-quota-requests.md
+                    - name: Erhöhung des Spotkontingentlimits
+                      href: supportability/low-priority-quota.md
+                - name: Klassisches Bereitstellungsmodell
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: Erhöhen der Grenzwerte für Netzwerke
+              href: supportability/networking-quota-requests.md
+        - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
+          href: supportability/sku-series-unavailable.md
 - name: Verweis
   items:
     - name: Tastenkombinationen
