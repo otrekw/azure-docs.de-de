@@ -2,13 +2,13 @@
 title: Python-Entwicklerreferenz für Azure Functions
 description: Entwickeln von Funktionen mit Python
 ms.topic: article
-ms.date: 04/16/2018
-ms.openlocfilehash: 7c8ce87fdf396bc488a7deaf576eea28f989e0e4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/13/2019
+ms.openlocfilehash: 55eb1fe53aa4256f1b7eee44547703328816cd32
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226642"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409091"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -280,28 +280,30 @@ In dieser Funktion wird der Wert des `name`-Abfrageparameters aus dem `params`-P
 
 Außerdem können Sie `status_code` und `headers` für die Antwortnachricht im zurückgegebenen [HttpResponse]-Objekt festlegen.
 
-## <a name="concurrency"></a>Parallelität
+## <a name="scaling-and-concurrency"></a>Skalierung und Parallelität
 
-Standardmäßig kann die Python-Runtime von Functions nur einen Aufruf einer Funktion zu einem Zeitpunkt verarbeiten. Dieser Grad an Parallelität ist in den folgenden Situationen jedoch u. U. nicht ausreichend:
+Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Functions verwendet integrierte (nicht vom Benutzer konfigurierbare) Schwellenwerte für verschiedene Triggertypen, um zu entscheiden, wann Instanzen hinzugefügt werden sollen, z. B. Alter von Nachrichten und Warteschlangengröße für Warteschlangentrigger. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
 
-+ Sie versuchen, eine große Anzahl von Aufrufen gleichzeitig zu verarbeiten.
-+ Sie verarbeiten eine große Anzahl von E/A-Ereignissen.
-+ Ihre Anwendung ist E/A-gebunden.
+Dieses Skalierungsverhalten ist für zahlreiche Anwendungen ausreichend. Anwendungen mit einer der folgenden Eigenschaften werden jedoch möglicherweise nicht effektiv skaliert:
 
-In diesen Fällen können Sie die Leistung durch asynchrones Ausführen und Verwenden von mehreren Sprachworkerprozessen verbessern.  
+- Die Anwendung muss viele gleichzeitige Aufrufe verarbeiten.
+- Die Anwendung verarbeitet eine große Anzahl von E/A-Ereignissen.
+- Die Anwendung ist E/A-gebunden.
+
+In solchen Fällen können Sie die Leistung durch Verwendung asynchroner Muster sowie mehrerer Sprachworkerprozesse weiter verbessern.
 
 ### <a name="async"></a>Async
 
-Es wird empfohlen, dass Sie mit der `async def`-Anweisung die Ausführung der Funktion als asynchrone Coroutine festlegen.
+Da Python eine Single-Thread-Laufzeit ist, kann eine Hostinstanz für Python jeweils nur einen Funktionsaufruf gleichzeitig verarbeiten. Bei Anwendungen, die eine große Anzahl von E/A-Ereignissen verarbeiten und/oder E/A-gebunden sind, können Sie die Leistung verbessern, indem Sie Funktionen asynchron ausführen.
+
+Um eine Funktion asynchron auszuführen, verwenden Sie die `async def`-Anweisung, die die Funktion mit [asyncio](https://docs.python.org/3/library/asyncio.html) direkt ausführt:
 
 ```python
-# Runs with asyncio directly
-
 async def main():
     await some_nonblocking_socket_io_op()
 ```
 
-Wenn die `main()`-Funktion synchron ist (ohne den `async`-Qualifizierer), wird die Funktion automatisch in einem `asyncio`-Threadpool ausgeführt.
+Eine Funktion ohne das `async`-Schlüsselwort wird automatisch in einem asyncio-Threadpool ausgeführt:
 
 ```python
 # Runs in an asyncio thread-pool
@@ -312,7 +314,9 @@ def main():
 
 ### <a name="use-multiple-language-worker-processes"></a>Verwenden mehrerer Sprachworkerprozesse
 
-Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Mehrere Sprachworkerprozesse pro Hostinstanz werden jedoch unterstützt. Funktionsaufrufe werden dann gleichmäßig auf diese Sprachworkerprozesse verteilt. Ändern Sie diesen Wert mithilfe der Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count). 
+Standardmäßig verfügt jede Functions-Hostinstanz über einen einzigen Sprachworkerprozess. Sie können die Anzahl der Workerprozesse pro Host erhöhen (bis zu 10), indem Sie die Anwendungseinstellung [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) verwenden. Azure Functions versucht dann, gleichzeitige Funktionsaufrufe gleichmäßig auf diese Worker zu verteilen. 
+
+Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erstellt wird, wenn Ihre Anwendung horizontal skaliert wird, um die Anforderungen zu erfüllen. 
 
 ## <a name="context"></a>Kontext
 

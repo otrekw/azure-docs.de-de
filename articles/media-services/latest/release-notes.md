@@ -9,22 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 654787c34c6ceae51f1e1ce500193f73189f8935
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420039"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427082"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
+
+>Sie können eine Benachrichtigung erhalten, wann auf dieser Seite Updates vorhanden sind, indem Sie die URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` kopieren und in Ihren RSS-Feedreader einfügen.
 
 Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu Folgendem:
 
 * Neueste Versionen
 * Bekannte Probleme
-* Fehlerbehebungen
+* Behebung von Programmfehlern
 * Veraltete Funktionen
 
 ## <a name="known-issues"></a>Bekannte Probleme
@@ -33,6 +35,40 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 > Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-sdk), CLI oder eines der unterstützten SDKs.
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="november-2019"></a>November 2019
+
+### <a name="live-transcription-preview"></a>Livetranskription Preview
+
+Die Livetranskription befindet sich jetzt in der öffentlichen Vorschau und ist in der Region „USA, Westen 2“ verfügbar.
+
+Die Livetranskription ist so konzipiert, dass sie zusammen mit Liveereignissen als Add-On-Funktion funktioniert.  Sie wird sowohl für Pass-Through-Liveereignisse als auch für Liveereignisse mit Standard- oder Premium-Codierung unterstützt.  Wenn dieses Feature aktiviert wird, nutzt der Dienst das [Spracherkennungsfeature](../../cognitive-services/speech-service/speech-to-text.md) von Cognitive Services, um den gesprochenen Text in der eingehenden Audiodatei in Text zu konvertieren. Dieser Text wird dann mitsamt Video- und Audiodaten in den MPEG-DASH- und HLS-Protokollen für die Übermittlung zur Verfügung gestellt. Die Abrechnung basiert auf einer neuen Add-On-Verbrauchseinheit, die sich als zusätzliche Kosten für das Liveereignis niederschlägt, wenn es sich im Zustand „Wird ausgeführt“ befindet.  Details zur Livetranskription und Abrechnung finden Sie unter [Livetranskription](live-transcription.md)
+
+> [!NOTE]
+> Derzeit ist die Livetranskription nur als Vorschaufunktion in der Region „USA, Westen 2“ verfügbar. Sie unterstützt zu diesem Zeitpunkt nur die Transkription von gesprochener englischer Sprache (en-us).
+
+### <a name="content-protection"></a>Inhaltsschutz
+
+Die Funktion *Verhindern der Tokenwiedergabe* (Token Replay Prevention), die in begrenzten Regionen im September veröffentlicht wurde, ist jetzt in allen Regionen verfügbar.
+Media Services-Kunden können jetzt einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Weitere Informationen finden Sie unter [Token Replay Prevention](content-protection-overview.md#token-replay-prevention) (Verhindern der Tokenwiedergabe).
+
+### <a name="new-recommended-live-encoder-partners"></a>Neue, empfohlene Liveencoder-Partner
+
+Unterstützung für die folgenden neuen, empfohlenen Partner-Encoder für RTMP-Livestreaming wurde hinzugefügt:
+
+- [Cambria Live 4.3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 und Max Action-Kameras](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>Verbesserungen bei der Dateicodierung
+
+- Verbesserte Leistung und Multithreading für das Größenänderungsmodul (Resizer) in Media Encoder Standard. Unter bestimmten Bedingungen sollte der Kunde eine Leistungssteigerung zwischen 5 und 40 % VOD-Codierung sehen. Inhalte von geringer Komplexität, die in mehrere Bitraten codiert werden, erfahren die höchsten Leistungssteigerungen. 
+- Die Standardcodierung behält nun bei Verwendung der zeitbasierten GOP-Einstellung einen regelmäßigen GOP-Rhythmus für Inhalte mit variablen Frameraten (VFR) bei der VOD-Codierung bei.  Dies bedeutet, dass Kunden, die Inhalte mit gemischten Frameraten übermitteln, die beispielsweise zwischen 15 und 30 fps variieren, nun feststellen sollten, dass bei der Ausgabe in MP4-Dateien mit Adaptive Bitrate Streaming regelmäßige GOP-Abstände berechnet werden. Hierdurch wird die Möglichkeit verbessert, nahtlos zwischen den Spuren zu wechseln, wenn über HLS oder DASH geliefert wird. 
+-  Verbesserte AV-Synchronisierung für Quellinhalte mit variabler Framerate (VFR)
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer, Videoanalyse
+
+- Keyframes, die mithilfe der VideoAnalyzer-Voreinstellung extrahiert wurden, sind jetzt in der ursprünglichen Auflösung des Videos, anstatt dass ihre Größe angepasst wird. Die hochauflösende Keyframe-Extraktion bietet Ihnen Bilder in Originalqualität und ermöglicht Ihnen die Verwendung bildbasierter Künstlicher Intelligenz-Modelle, die von den Microsoft-Diensten Maschinelles Sehen und Custom Vision bereitgestellt werden, um noch mehr Erkenntnisse zu Ihrem Video zu erhalten.
 
 ## <a name="september-2019"></a>September 2019
 
@@ -70,13 +106,13 @@ Weitere Informationen finden Sie unter [Migrieren von WAME zu Media Encoder Stan
  
 ## <a name="july-2019"></a>Juli 2019
 
-### <a name="content-protection"></a>Content Protection
+### <a name="content-protection"></a>Inhaltsschutz
 
 Beim Streamen von Inhalten, die mittels Tokeneinschränkung geschützt sind, benötigen Endbenutzer ein Token, das im Rahmen der Schlüsselübermittlungsanforderung gesendet wird. Mit dem Feature zum *Verhindern der Tokenwiedergabe* können Media Services-Kunden einen Grenzwert festlegen, der bestimmt, wie oft ein Token zum Anfordern eines Schlüssels oder einer Lizenz verwendet werden kann. Weitere Informationen finden Sie unter [Token Replay Prevention](content-protection-overview.md#token-replay-prevention) (Verhindern der Tokenwiedergabe).
 
-Dieses Feature steht aktuell in „USA, Mitte“ und in „USA, Westen-Mitte“ zur Verfügung.
+Seit Juli war die Previewfunktion nur in „USA, Mitte“ und „USA, Westen-Mitte“ verfügbar.
 
-## <a name="june-2019"></a>Juni 2019
+## <a name="june-2019"></a>Juni 2019
 
 ### <a name="video-subclipping"></a>Video-Subclips
 
@@ -89,7 +125,7 @@ Beispiele finden Sie hier:
 * [Erstellen von Subclips mit .NET](subclip-video-dotnet-howto.md)
 * [Erstellen von Subclips mit REST](subclip-video-rest-howto.md)
 
-## <a name="may-2019"></a>Mai 2019
+## <a name="may-2019"></a>Mai 2019
 
 ### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor-Unterstützung für Media Services-Diagnoseprotokolle und -Metriken
 

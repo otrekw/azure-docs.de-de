@@ -6,53 +6,53 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 9684b230b8790e36cd7442c65481c0c71ce185d6
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 46e6828710c5951cdd7ec3a029272a0e3d68c477
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255425"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75415423"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT für Azure – Übersicht über die Bereitstellung
 
 Dieser Artikel bietet eine Übersicht über die Schritte, die erforderlich sind, um einen Avere vFXT für Azure-Cluster in Betrieb zu nehmen.
 
-Vor und nach dem Erstellen des vFXT-Clusters aus Azure Marketplace sind mehrere Aufgaben erforderlich. Ein sicheres Gespür für den gesamten Prozess hilft Ihnen, den erforderlichen Aufwand zu minimieren. 
+Vor und nach dem Erstellen des vFXT-Clusters aus Azure Marketplace sind mehrere Aufgaben erforderlich. Ein sicheres Gespür für den gesamten Prozess hilft Ihnen, den erforderlichen Aufwand zu minimieren.
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 
-Nach der [Planung Ihres Systems](avere-vfxt-deploy-plan.md) können Sie mit der Erstellung des Avere vFXT-Clusters beginnen. 
+Nach der [Planung Ihres Systems](avere-vfxt-deploy-plan.md) können Sie mit der Erstellung des Avere vFXT-Clusters beginnen.
 
-Eine Azure Resource Manager-Vorlage in Azure Marketplace erfasst die erforderlichen Informationen und stellt automatisch den gesamten Cluster bereit. 
+Eine Azure Resource Manager-Vorlage in Azure Marketplace erfasst die erforderlichen Informationen und stellt automatisch den gesamten Cluster bereit.
 
-Nachdem der vFXT-Cluster in Betrieb genommen wurde, möchten Sie sicherlich wissen, wie Sie Clients damit verbinden und, falls erforderlich, Ihre Daten in den neuen Blob-Speichercontainer verschieben können.  
+Nachdem der vFXT-Cluster in Betrieb genommen wurde, möchten Sie sicherlich wissen, wie Sie Clients damit verbinden und (optional) Ihre Daten in den neuen Blob-Speichercontainer verschieben können. Wenn Sie ein NAS-Speichersystem verwenden, müssen Sie es nach der Erstellung des Clusters hinzufügen.
 
 Hier folgt eine Übersicht über alle Schritte.
 
-1. Konfigurieren der Voraussetzungen 
+1. Konfigurieren der Voraussetzungen
 
    Bevor Sie einen virtuellen Computer erstellen, müssen Sie ein neues Abonnement für das Avere vFXT-Projekt erstellen, den Abonnementbesitz konfigurieren, Kontingente prüfen und bei Bedarf eine Erhöhung anfordern sowie Bedingungen für die Nutzung der Avere vFXT-Software akzeptieren. Ausführliche Anweisungen finden Sie unter [Vorbereiten der Avere vFXT-Erstellung](avere-vfxt-prereqs.md).
 
-1. Erstellen des Avere vFXT-Clusters 
+1. Erstellen des Avere vFXT-Clusters
 
    Verwenden Sie Azure Marketplace, um den Avere vFXT-Cluster für Azure zu erstellen. Eine Vorlage erfasst die erforderlichen Informationen und führt Skripts aus, um das endgültige Produkt zu erstellen.
 
-   Die Erstellung des Clusters umfasst die folgenden Schritte, die alle von der Marketplace-Vorlage ausgeführt werden: 
+   Die Erstellung des Clusters umfasst die folgenden Schritte, die alle von der Marketplace-Vorlage ausgeführt werden:
 
    * Erstellen einer neuen Netzwerkinfrastruktur und von Ressourcengruppen, wenn erforderlich
    * Erstellen eines *Clustercontrollers*  
 
      Der Clustercontroller ist eine einfache VM, die sich im gleichen virtuellen Netzwerk wie der Avere vFXT-Cluster befindet und über die für die Erstellung und Verwaltung des Clusters erforderliche benutzerdefinierte Software verfügt. Der Controller erstellt die vFXT-Knoten und bildet den Cluster, und er stellt auch eine Befehlszeilenschnittstelle zur Verfügung, um den Cluster während seiner Lebensdauer zu verwalten.
 
-     Wenn Sie während der Bereitstellung ein neues VNET erstellen, hat Ihr Controller eine öffentliche IP-Adresse. Dies bedeutet, dass der Controller als Jump Host für das Herstellen der Verbindung mit dem Cluster von außerhalb des virtuellen VNET dienen kann.
+     Wenn Sie während der Bereitstellung ein neues virtuelles Netzwerk oder Subnetz erstellen, hat Ihr Controller eine öffentliche IP-Adresse. Dies bedeutet, dass der Controller als Jump Host für das Herstellen der Verbindung mit dem Cluster von außerhalb des Subnetzes dienen kann.
 
    * Erstellen der Clusterknoten-VMs
 
-   * Konfigurieren der Clusterknoten-VMs, um das Cluster zu bilden
+   * Konfigurieren der Clusterknoten-VMs, um den Cluster zu bilden
 
-   * Optional Erstellen eines neuen Blobcontainers und Konfigurieren des Containers als Back-End-Speicher für den Cluster
+   * Optionales Erstellen eines neuen Blobcontainers und Konfigurieren des Containers als Back-End-Speicher für den Cluster
 
-1. Konfigurieren des Clusters 
+1. Konfigurieren des Clusters
 
    Stellen Sie eine Verbindung zur Avere vFXT-Konfigurationsschnittstelle (Avere-Systemsteuerung) her, um die Einstellungen des Clusters anzupassen. Melden Sie sich für die Supportüberwachung an, und fügen Sie Ihr Speichersystem hinzu, wenn Sie ein lokales Rechenzentrum verwenden.
 
@@ -66,8 +66,10 @@ Hier folgt eine Übersicht über alle Schritte.
 
 1. Hinzufügen von Daten (falls erforderlich)
 
-   Da es sich bei Avere vFXT um einen skalierbaren Cache mit mehreren Clients handelt, ist der beste Weg, Daten in einen neuen Back-End-Speichercontainer zu verschieben, die Strategie der Verwendung mehrerer Clients und mehrerer Threads. Weitere Informationen finden Sie unter [Verschieben von Daten in den vFXT-Cluster](avere-vfxt-data-ingest.md).
+   Da es sich bei Avere vFXT um einen skalierbaren Cache mit mehreren Clients handelt, ist der beste Weg, Daten in einen neuen Back-End-Speichercontainer zu verschieben, die Strategie der Verwendung mehrerer Clients und mehrerer Threads.
+   
+   Wenn Sie Arbeitssatzdaten in einen neuen BLOB-Container oder ein anderes Back-End-Speichersystem verschieben müssen, befolgen Sie die Anweisungen unter [Verschieben von Daten in den vFXT-Cluster](avere-vfxt-data-ingest.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Fahren Sie mit [Vorbereiten der Avere vFXT-Erstellung](avere-vfxt-prereqs.md) fort, um vorbereitende Aufgaben für die Bereitstellung von Avere vFXT für Azure abzuschließen. 
+Fahren Sie mit dem [Vorbereiten der Avere vFXT-Erstellung](avere-vfxt-prereqs.md) fort, um die vorbereitenden Aufgaben abzuschließen.

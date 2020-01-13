@@ -6,18 +6,26 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 74fcce412b2673a3ec9e4809cef018f1afbc3530
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a2c2e05b11c538918ad63559267b5377ce9faa7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74812840"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75412170"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Entfernen der Verwendung von TLS 1.0 und 1.1 mit Azure Cache for Redis
 
 Es zeichnet sich ein branchenweiter Trend zur ausschließlichen Verwendung von Transport Layer Security (TLS) Version 1.2 oder höher ab. Die TLS-Versionen 1.0 und 1.1 sind bekanntermaßen anfällig für Angriffe wie BEAST und POODLE und weisen andere allgemeine Sicherheitslücken und Schwachstellen (CVE, Common Vulnerabilities and Exposures) auf. Außerdem unterstützen diese Versionen nicht die durch die Konformitätsstandards der Payment Card Industry (PCI) empfohlenen modernen Verschlüsselungsmethoden und Verschlüsselungssammlungen. Einige dieser Sicherheitslücken werden in diesem [Blog zur TLS-Sicherheit](https://www.acunetix.com/blog/articles/tls-vulnerabilities-attacks-final-part/) ausführlicher erläutert.
 
-Obwohl keiner dieser Aspekte ein unmittelbares Problem darstellt, wird empfohlen, die Verwendung von TLS 1.0 und 1.1 bald einzustellen. In Azure Cache for Redis werden diese TLS-Versionen ab 31. März 2020 nicht mehr unterstützt. Nach diesem Datum müssen Sie in Ihrer Anwendung für die Kommunikation mit dem Cache TLS 1.2 oder höher verwenden.
+Im Rahmen dieser Anstrengung nehmen wir die folgenden Änderungen an Azure Cache for Redis vor:
+
+* Ab dem 13. Januar 2020 konfigurieren wir die standardmäßige TLS-Mindestversion für neu erstellte Cache-Instanzen auf 1.2.  Vorhandene Cache-Instanzen werden zu diesem Zeitpunkt nicht aktualisiert.  Wenn erforderlich, dürfen Sie die [TLS-Mindestversion aus Gründen der Abwärtskompatibilität zurück auf 1.0 oder 1.1 zurückändern](cache-configure.md#access-ports).  Diese Änderung können Sie über das Azure-Portal oder andere Verwaltungs-APIs ausführen.
+* Ab dem 31. März 2020 beenden wir die Unterstützung für die TLS-Versionen 1.0 und 1.1. Nach dieser Änderung müssen Sie in Ihrer Anwendung für die Kommunikation mit dem Cache TLS 1.2 oder höher verwenden.
+
+Zusätzlich entfernen wir im Rahmen dieser Änderung die Unterstützung für ältere, unsichere Suites mit Verschlüsselungsverfahren.  Unsere unterstützten Suites mit Verschlüsselungsverfahren werden auf folgende beschränkt, wenn der Cache mit einer TLS-Mindestversion von 1.2 konfiguriert ist.
+
+* TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384
+* TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Dieser Artikel enthält eine allgemeine Anleitung zum Erkennen von Abhängigkeiten von diesen früheren TLS-Versionen und zum Entfernen der Versionen aus Ihrer Anwendung.
 
