@@ -1,14 +1,14 @@
 ---
 title: 'Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“: Übersicht'
 description: 'Übersicht und Architektur des Beispiels zur Blaupause „ISO 27001: Gemeinsame Dienste“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer ISO 27001-Kontrollen.'
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 9723b77f2ba8f9a7030e891130853deb906c456e
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 0b6a250ebac2744adca813219225388841f1776f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546683"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922544"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“
 
@@ -16,7 +16,7 @@ Mit dem Beispiel zur Blaupause „ISO 27001: Gemeinsame Dienste“ wird eine Re
 
 Das Blaupausenbeispiel [ISO 27001: App Service-Umgebungs-/SQL-Datenbank-Workload](../iso27001-ase-sql-workload/index.md) stellt eine Erweiterung dieses Beispiels dar.
 
-## <a name="architecture"></a>Architecture
+## <a name="architecture"></a>Aufbau
 
 Mit dem Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“ wird eine grundlegende Infrastruktur in Azure bereitgestellt, die von Organisationen zum Hosten mehrerer Workloads basierend auf dem Ansatz mit einem virtuellen Rechenzentrum (Virtual Datacenter, VDC) verwendet werden kann.
 VDC umfasst einen bewährten Satz mit Referenzarchitekturen, Automatisierungstools und Kundenbindungsmodell und wird von Microsoft für seine größten Unternehmenskunden genutzt. Das Blaupausenbeispiel für gemeinsame Dienste basiert auf einer vollständig nativen Azure-VDC-Umgebung, die unten dargestellt ist.

@@ -106,7 +106,7 @@
     - name: Leitfaden zum AMQP 1.0-Protokoll
       href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
       maintainContext: true
-- name: Anleitungen
+- name: Gewusst-wie-Anleitungen
   items:
     - name: Entwickeln
       items:
@@ -156,7 +156,7 @@
           href: event-hubs-auto-inflate.md
         - name: Event Hubs-Verwaltungsbibliotheken
           href: event-hubs-management-libraries.md
-    - name: Schützen
+    - name: Sicher
       items:
         - name: Verwenden von Firewalls
           href: event-hubs-ip-filtering.md
@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Aktivieren der Integration virtueller Netzwerke und von Firewalls für den Event Hubs-Namespace
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten (Vorschau)
+        - name: Konfigurieren der vom Kunden verwalteten Schlüssel für die Verschlüsselung ruhender Daten
           href: configure-customer-managed-key.md
     - name: Problembehandlung
       items:
