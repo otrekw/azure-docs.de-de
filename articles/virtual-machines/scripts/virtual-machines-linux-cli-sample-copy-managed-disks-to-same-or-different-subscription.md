@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-Beispielskript – Kopieren (Verschieben) verwalteter Datenträger in dasselbe oder ein anderes Abonnement
-description: Azure CLI-Beispielskript – Kopieren (Verschieben) verwalteter Datenträger in dasselbe oder ein anderes Abonnement
+title: 'Kopieren von verwalteten Datenträgern in ein Abonnement: CLI-Beispiel'
+description: 'Azure CLI-Skriptbeispiel: Kopieren (oder Verschieben) verwalteter Datenträger in das gleiche oder ein anderes Abonnement'
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 5f3859d632b14f1ec22ecd37ee0f10b01cbc7cd5
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7ccdec703781a4e48870d5b4c27ec9d23de71dd0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038290"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458582"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Kopieren verwalteter Datenträger in dasselbe oder ein anderes Abonnement mithilfe der Befehlszeilenschnittstelle
 
@@ -48,7 +48,7 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen eines neuen verwalte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen virtueller Computer aus verwalteten Datenträgern](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Erstellen eines virtuellen Computers aus einem verwalteten Datenträger](./virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
 Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](https://docs.microsoft.com/cli/azure).
 

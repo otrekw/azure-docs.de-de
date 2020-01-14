@@ -1,18 +1,18 @@
 ---
-title: 'Tutorial: Erstellen einer Web-App mit Azure Cache for Redis und Nutzung eines cachefremden Musters'
-description: Erfahren Sie, wie Sie eine Web-App mit Azure Cache for Redis erstellen, die ein cachefremdes Muster nutzt.
+title: 'Tutorial: Erstellen einer Web-App (cachefremd) – Azure Cache for Redis'
+description: Hier erfahren Sie, wie Sie eine Web-App mit Azure Cache for Redis erstellen, die ein cachefremdes Muster nutzt.
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.author: yegu
-ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74121515"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411942"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Tutorial: Erstellen eines cachefremden Leaderboards in ASP.NET
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Dieses Tutorial wird an der Stelle fortgesetzt, an der Sie in [ASP.NET quickstart for Azure Cache for Redis](cache-web-app-howto.md) (ASP.NET-Schnellstart für Azure Cache for Redis) aufgehört haben. Sollten Sie den Schnellstart noch nicht absolviert haben, holen Sie dies jetzt nach.
-* [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+* Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     * ASP.NET und Webentwicklung
     * Azure-Entwicklung
     * .NET Desktopentwicklung mit SQL Server Express LocalDB oder [SQL Server 2017 Express Edition](https://www.microsoft.com/sql-server/sql-server-editions-express)
@@ -652,7 +652,7 @@ In diesem Abschnitt stellen Sie eine neue SQL Azure-Datenbank für die App berei
 
 1. Verwenden Sie die folgenden Einstellungen für die neue SQL-Datenbank:
 
-   | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Datenbankname** | *ContosoTeamsDatabase* | Gültige Datenbanknamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). |
    | **Abonnement** | *Ihr Abonnement*  | Wählen Sie das gleiche Abonnement, mit dem Sie den Cache erstellt und den App Service gehostet haben. |
@@ -661,7 +661,7 @@ In diesem Abschnitt stellen Sie eine neue SQL Azure-Datenbank für die App berei
 
 1. Klicken Sie unter **Server** auf **Erforderliche Einstellungen konfigurieren** > **Neuen Server erstellen**, und geben Sie die folgenden Informationen ein. Klicken Sie dann auf die Schaltfläche **Auswählen**:
 
-   | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
+   | Einstellung       | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming) (Benennungsregeln und Einschränkungen). |
    | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). |
@@ -678,7 +678,7 @@ In diesem Abschnitt stellen Sie eine neue SQL Azure-Datenbank für die App berei
 
 1. Fügen Sie eine neue Verbindungszeichenfolge namens *TeamContext* hinzu, die der Entity Framework-Datenbank-Kontextklasse entspricht. Fügen Sie die Verbindungszeichenfolge für die neue Datenbank als Wert ein. Ersetzen Sie unbedingt die folgenden Platzhalter in der Verbindungszeichenfolge, und klicken Sie auf **Speichern**:
 
-    | Platzhalter | Empfohlener Wert |
+    | Platzhalter | Vorgeschlagener Wert |
     | --- | --- |
     | *{Ihr_Benutzername}* | Verwenden Sie die **Serveradministratoranmeldung** für den Datenbankserver, den Sie gerade erstellt haben. |
     | *{Ihr_Kennwort}* | Verwenden Sie das Kennwort für den Datenbankserver, den Sie gerade erstellt haben. |
@@ -701,7 +701,7 @@ In diesem Schritt des Tutorials veröffentlichen Sie die Anwendungsaktualisierun
 
     In der folgenden Tabelle werden die einzelnen Aktionslinks aus der Beispielanwendung beschrieben:
 
-    | Aktion | BESCHREIBUNG |
+    | Action | BESCHREIBUNG |
     | --- | --- |
     | Create New |Erstellt ein neues Team. |
     | Play Season |Spielt eine Spielesaison durch, aktualisiert die Teamstatistik und entfernt veraltete Teamdaten aus dem Cache. |

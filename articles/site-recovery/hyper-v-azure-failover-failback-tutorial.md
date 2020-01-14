@@ -1,29 +1,28 @@
 ---
-title: Einrichten von Failover und Failback für Hyper-V-VMs in Azure Site Recovery
-description: Hier erhalten Sie Informationen zum Ausführen eines Failovers und Failbacks für virtuelle Hyper-V-Computer während der Notfallwiederherstellung in Azure mit dem Azure Site Recovery-Dienst.
+title: Einrichten des Failovers auf Azure für Hyper-V-VMs in Azure Site Recovery
+description: Hier erfahren Sie, wie Sie mit Azure Site Recovery das Failover auf Azure für Hyper-V-VMs einrichten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/14/2019
+ms.date: 12/16/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a8c197c2f0875bb31d091fb5839730ee1568b471
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 03826abf6da94859c510f4c127dfce035aa79370
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082648"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75498160"
 ---
-# <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-azure"></a>Failover und Failback von Hyper-V-VMs, die in Azure repliziert werden
+# <a name="fail-over-hyper-v-vms-to-azure"></a>Ausführen eines Failovers auf Azure für virtuelle Hyper-V-Computer
 
-In diesem Tutorial wird das Ausführen eines Failovers einer Hyper-V-VM zu Azure beschrieben. Nach dem Failover erfolgt ein Failback zum lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial erfahren Sie, wie Sie mit [Azure Site Recovery](site-recovery-overview.md) das Failover auf Azure für Hyper-V-VMs einrichten. Nach dem Failover erfolgt ein Failback zum lokalen Standort, wenn er verfügbar ist. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Überprüfen der Hyper-V-VM-Eigenschaften zum Feststellen der Konformität mit Azure-Anforderungen
-> * Ausführen eines Failovers auf Azure
-> * Failback von Azure zum lokalen Standort
-> * Umgekehrtes Replizieren von lokalen VMs, um das erneute Replizieren nach Azure zu starten
+> * Ausführen eines Failovers auf Azure für bestimmte VMs
+
 
 Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Sie bereits die Aufgaben in den vorherigen Tutorials durchgearbeitet haben.    
 
@@ -32,8 +31,9 @@ Dies ist das fünfte Tutorial in einer Reihe. Es wird davon ausgegangen, dass Si
 3. Einrichten der Notfallwiederherstellung für [Hyper-V-VMs](tutorial-hyper-v-to-azure.md) oder [in System Center VMM-Clouds verwaltete Hyper-V-VMs](tutorial-hyper-v-vmm-to-azure.md)
 4. [Durchführen eines Notfallwiederherstellungsverfahrens](tutorial-dr-drill-azure.md)
 
-## <a name="prepare-for-failover-and-failback"></a>Vorbereiten für Failover und Failback
+[Erfahren Sie mehr](failover-failback-overview.md#types-of-failover) über verschiedene Failovertypen. Wenn Sie ein Failover für mehrere VMs in einem Wiederherstellungsplan ausführen möchten, lesen Sie [diesen Artikel](site-recovery-failover.md).
 
+## <a name="prepare-for-failover"></a>Vorbereiten des Failovers 
 Stellen Sie sicher, dass auf dem virtuellen Computer keine Momentaufnahmen vorhanden sind und dass die lokalen virtuellen Computer während des Failbacks deaktiviert sind. Dies hilft, die Konsistenz der Daten während der Replikation sicherzustellen. Aktivieren Sie während des Failbacks keine lokalen virtuellen Computer. 
 
 Failover und Failback weisen drei Phasen auf:
@@ -56,7 +56,7 @@ Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 
 1. Unter **Datenträger** finden Sie Informationen über das Betriebssystem und die Datenträger auf dem virtuellen Computer.
 
-## <a name="failover-to-azure"></a>Failover zu Azure
+## <a name="fail-over-to-azure"></a>Failover in Azure
 
 1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Failover**.
 2. Wählen Sie unter **Failover** den **letzten** Wiederherstellungspunkt aus. 
@@ -66,15 +66,18 @@ Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente** > VM.
 > [!WARNING]
 > **Brechen Sie ein aktuell ausgeführtes Failover nicht ab**: Wenn Sie den Fortschritt abbrechen, wird das Failover beendet, die Replikation der VM wird jedoch nicht erneut durchgeführt.
 
-## <a name="failback-azure-vm-to-on-premises-and-reverse-replicate-the-on-premises-vm"></a>Failback von Azure-VMs auf lokale Standorte und umgekehrtes Replizieren von lokalen VMs
+## <a name="connect-to-failed-over-vm"></a>Herstellen einer Verbindung mit einer VM nach dem Failover
 
-Der Failbackvorgang ist im Grunde genommen ein Failover von Azure auf den lokalen Standort und impliziert ein umgekehrtes Replizieren der VMs vom lokalen Standort nach Azure.
+1. Wenn Sie Verbindungen mit Azure-VMs nach dem Failover mithilfe von RDP (Remote Desktop Protocol) und SSH (Secure Shell) herstellen möchten, [überprüfen Sie, ob die Anforderungen erfüllt wurden](failover-failback-overview.md#connect-to-azure-after-failover).
+2. Navigieren Sie nach einem Failover zu dem virtuellen Computer, und stellen Sie zur Überprüfung eine [Verbindung](../virtual-machines/windows/connect-logon.md) her.
+3. Verwenden Sie **Wiederherstellungspunkt ändern**, falls Sie nach dem Failover einen anderen Wiederherstellungspunkt verwenden möchten. Wenn Sie das Failover im nächsten Schritt committen, steht diese Option nicht mehr zur Verfügung.
+4. Wählen Sie nach der Überprüfung **Committen** aus, um den Wiederherstellungspunkt des virtuellen Computers nach dem Failover fertig zu stellen.
+5. Nach dem Committen werden alle anderen verfügbaren Wiederherstellungspunkte gelöscht. Mit diesem Schritt wird das Failover abgeschlossen.
 
-1. Klicken Sie unter **Einstellungen** > **Replizierte Elemente** auf VM > **Geplantes Failover**.
-2. Überprüfen Sie in **Geplantes Failover bestätigen** die Failoverrichtung (von Azure), und wählen Sie Quell- und Zielspeicherort aus.
-3. Wählen Sie **Daten vor Failover synchronisieren (nur Deltaänderungen synchronisieren)** aus. Diese Option minimiert VM-Ausfallzeiten, da hierbei eine Synchronisierung durchgeführt wird, ohne den virtuellen Computer herunterzufahren.
-4. Initiieren Sie das Failover. Der Fortschritt des Failovers wird auf der Registerkarte **Aufträge** angezeigt.
-5. Wenn die erste Datensynchronisierung abgeschlossen ist und Sie zum Herunterfahren der Azure-VMs bereit sind, klicken Sie auf **Aufträge** > Auftragsname des geplanten Failovers > **Failover abschließen**. Daraufhin wird die Azure-VM heruntergefahren, die neuesten Änderungen werden an den lokalen Standort übertragen, und der lokale virtuelle Computer wird gestartet.
-6. Melden Sie sich auf dem lokalen virtuellen Computer an, um zu überprüfen, ob er wie erwartet verfügbar ist.
-7. Der lokale virtuelle Computer befindet sich nun im Status **Commit ausstehend**. Klicken Sie auf **Commit ausführen**. Daraufhin werden die Azure-VMs und die zugehörigen Datenträger gelöscht, und der lokale virtuelle Computer wird auf die umgekehrte Replikation vorbereitet.
-Aktivieren Sie zum Starten der Replikation des lokalen virtuellen Computers in Azure **Umgekehrt replizieren**. Daraufhin wird die Replikation von Deltaänderungen seit dem Ausschalten des virtuellen Azure-Computers ausgelöst.  
+>[!TIP]
+> Sollten nach dem Failover Verbindungsprobleme auftreten, lesen Sie das [Handbuch zur Problembehandlung](site-recovery-failover-to-azure-troubleshoot.md).
+
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Schützen Sie die Azure-VMs nach dem Failover erneut, sodass sie die Replikation von Azure zu lokalen Ressourcen durchführen. Sobald die virtuellen Computer am lokalen Standort erneut geschützt und repliziert werden, können Sie ein Failback von Azure durchführen, wenn Sie bereit sind.

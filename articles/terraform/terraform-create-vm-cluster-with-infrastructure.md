@@ -3,12 +3,12 @@ title: 'Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform und HCL'
 description: Hier erfahren Sie, wie Sie Terraform und HCL verwenden, um einen Cluster mit virtuellen Linux-Computern mit Lastenausgleich in Azure zu erstellen.
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: f28cbbf13015d07c9d789ed258a9e2b0582ba1da
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 1ff13f05a5be463ed7477b4bbbc3e1f977a04a75
+ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159274"
+ms.lasthandoff: 01/05/2020
+ms.locfileid: "75665370"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-and-hcl"></a>Tutorial: Erstellen eines Azure-VM-Clusters mit Terraform und HCL
 
@@ -208,7 +208,7 @@ In diesem Abschnitt erstellen Sie eine Datei, die Ressourcendefinitionen für di
       disable_password_authentication = false
     }
 
-    tags {
+    tags = {
       environment = "staging"
     }
    }
@@ -260,10 +260,10 @@ Standardmäßig wurde von Terraform versucht, Ihre Variablendatei wie folgt zu f
 - Datei namens `terraform.tfvars`
 - Datei mit folgendem Benennungsmuster: `*.auto.tfvars`
 
-Für Ihre Variablendatei muss jedoch keine der beiden obigen Konventionen verwendet werden. Geben Sie in diesem Fall den Namen Ihrer Variablendatei mithilfe des Parameters `-var-file` an. Dies wird im folgenden Beispiel veranschaulicht:
+Für Ihre Variablendatei muss jedoch keine der beiden obigen Konventionen verwendet werden. Geben Sie in diesem Fall den Namen Ihrer Variablendatei mithilfe des Parameters `-var-file` an. Der Name Ihrer Variablendatei darf keine Erweiterung enthalten. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```hcl
-terraform plan -var-file <my-variables-file.tf>
+terraform plan -var-file <my-variables-file>
 ```
 
 Terraform bestimmt die Aktionen, die erforderlich sind, um den in der Konfigurationsdatei angegebenen Zustand zu erreichen.

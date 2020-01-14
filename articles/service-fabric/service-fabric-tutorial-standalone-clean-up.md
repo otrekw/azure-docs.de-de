@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Bereinigen des eigenständigen Service Fabric-Clusters – Azure Service Fabric | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie Ihren eigenständigen Cluster bereinigen.
-services: service-fabric
-documentationcenter: .net
+title: Bereinigen eines eigenständigen Clusters
+description: In diesem Tutorial erfahren Sie, wie Sie in Ihrem eigenständigen Service Fabric-Cluster AWS- oder Azure-Ressourcen bereinigen.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385166"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639019"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Tutorial: Bereinigen Ihres eigenständigen Clusters
 

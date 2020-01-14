@@ -45,7 +45,7 @@ In diesem Teil des Tutorials führen Sie den Code im Jupyter-Beispielnotebook `t
 
 
 > [!Warning]
-> Erstellen Sie **kein***neues* Notebook über die Jupyter-Schnittstelle! Das Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` enthält **sämtlichen Code und alle Daten**, die für dieses Tutorial benötigt werden.
+> Erstellen Sie **kein** *neues* Notebook über die Jupyter-Schnittstelle! Das Notebook `tutorials/tutorial-1st-experiment-sdk-train.ipynb` enthält **sämtlichen Code und alle Daten**, die für dieses Tutorial benötigt werden.
 
 ## <a name="connect-workspace-and-create-experiment"></a>Herstellen einer Verbindung für den Arbeitsbereich und Erstellen des Experiments
 

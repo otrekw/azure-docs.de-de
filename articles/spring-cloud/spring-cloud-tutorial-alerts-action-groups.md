@@ -5,13 +5,13 @@ author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.openlocfilehash: 2be21b20c394ae8505ad18f2c411db7aab06215f
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.date: 12/29/2019
+ms.openlocfilehash: 49fea7d568e356169f8bbf0dfd1f4ce5c80a7223
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74689565"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75690225"
 ---
 # <a name="tutorial-monitor-spring-cloud-resources-using-alerts-and-action-groups"></a>Tutorial: Überwachen von Spring Cloud-Ressourcen mithilfe von Warnungen und Aktionsgruppen
 
@@ -26,7 +26,7 @@ Zusätzlich zu den erforderlichen Azure Spring-Komponenten werden für dieses T
 
 * Eine bereitgestellte Azure Spring Cloud-Instanz.  Befolgen Sie unseren [Schnellstart](spring-cloud-quickstart-launch-app-cli.md), um zu beginnen.
 
-* Eine zu überwachende Azure-Ressource, beispielsweise die im folgenden Artikel implementierte Datenbank: [Verwenden der Spring Data-Apache Cassandra-API mit Azure Cosmos DB](https://docs.microsoft.com/azure/java/spring-framework/configure-spring-data-apache-cassandra-with-cosmos-db).
+* Eine zu überwachende Azure-Ressource. In diesem Beispiel wird eine Spring Cloud-Instanz überwacht.
  
 Die folgenden Prozeduren initialisieren sowohl **Aktionsgruppe** als auch **Warnung** ausgehend von der Option **Warnungen** im linken Navigationsbereich einer Spring Cloud-Instanz. (Die Prozedur kann auch über die Seite **Monitor – Übersicht** im Azure-Portal gestartet werden.) 
 
@@ -70,21 +70,46 @@ Navigieren Sie zum Konfigurieren einer **Warnung** zurück zur Seite **Warnungen
 
 1. Klicken Sie auf **+ Neue Warnungsregel**.
 
-  ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3.png)
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3.png)
 
-1. Geben Sie auf der Seite **Regel erstellen** Werte für **RESSOURCE**, **BEDINGUNG** und **AKTIONEN** an.  Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
+1. Geben Sie auf der Seite **Regel erstellen** einen Wert für **RESSOURCE** an.
 
-1. Geben Sie unter **WARNUNGSDETAILS** einen Namen für die Warnungsregel ein.
+1. Die Einstellung **BEDINGUNG** bietet zahlreiche Optionen für die Überwachung Ihrer **Spring Cloud**-Ressourcen.  Klicken Sie auf **Hinzufügen**, um den Bereich **Signallogik konfigurieren** zu öffnen.
+
+1. Wählen Sie eine Bedingung aus. In diesem Beispiel wird **System CPU Usage Percentage** (System-CPU-Auslastung in Prozent) verwendet.
+
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-1.png)
+
+1. Scrollen Sie im Bereich **Signallogik konfigurieren** nach unten, um den zu überwachenden **Schwellenwert** festzulegen.
+
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-2.png)
+
+1. Klicken Sie auf **Fertig**.
+
+Ausführliche Informationen zu den für die Überwachung verfügbaren Bedingungen finden Sie unter [Metriken für Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options).
+
+ Klicken Sie unter **AKTIONEN** auf **Aktionsgruppe auswählen**. Wählen Sie im Bereich **AKTIONEN** die zuvor definierte **Aktionsgruppe** aus.
+
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-3.png) 
+
+1. Scrollen Sie nach unten, und geben Sie unter **WARNUNGSDETAILS** einen Namen für die Warnungsregel ein.
+
+1. Legen Sie den **Schweregrad** fest.
 
 1. Klicken Sie auf **Warnungsregel erstellen**.
 
-  ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-4.png)
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-3-4.png)
 
 Vergewissern Sie sich, dass die neue Warnungsregel aktiviert ist.
 
-  ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-5.png)
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-4.png)
+
+Eine Regel kann auch über die Seite **Metriken** erstellt werden:
+
+   ![Screenshot: „Neue Warnungsregel“ im Portal](media/alerts-action-groups/alerts-5.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
+* [Metriken für Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options)
 * [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups)
 * [SMS-Warnungsverhalten in Aktionsgruppen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-sms-behavior)
 * [Tutorial: Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-distributed-tracing)

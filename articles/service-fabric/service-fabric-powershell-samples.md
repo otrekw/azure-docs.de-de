@@ -1,28 +1,17 @@
 ---
-title: Azure PowerShell-Beispiele – Service Fabric| Microsoft-Dokumentation
-description: Azure PowerShell-Beispiele – Service Fabric
-services: service-fabric
-documentationcenter: service-fabric
-author: athinanthny
-manager: chackdan
-editor: ''
-tags: ''
-ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
-ms.service: service-fabric
+title: Azure PowerShell-Beispiele – Service Fabric
+description: Hier erfahren Sie mehr über die Erstellung und Verwaltung von Azure Service Fabric-Clustern, -Apps und -Diensten mithilfe von Powershell.
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: service-fabric
 ms.date: 11/29/2018
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: cae88e142c3bca15e837db7f084eef68434a78ca
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f9ba1b4833b3aff13284a68c23f398ea47ef2ae2
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903268"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645649"
 ---
-# <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
+# <a name="azure-service-fabric-powershell-samples"></a>Azure Service Fabric PowerShell-Beispiele
 
 Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die Service Fabric-Cluster, -Anwendungen und -Dienste erstellen und verwalten.
 

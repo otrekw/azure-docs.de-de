@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499320"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438734"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Tutorial: Freigeben von Daten mithilfe von Azure Data Share  
 
@@ -49,6 +49,8 @@ In diesem Tutorial lernen Sie Folgendes:
 ```                   
 Beachten Sie, dass *<share_acc_name>* der Name Ihres Data Share-Kontos ist. Wenn Sie noch kein Data Share-Konto erstellt haben, können Sie später zu dieser Voraussetzung zurückkehren.  
 
+* Ein [Azure SQL-Datenbank-Benutzer mit `db_owner`-Zugriff](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) zum Navigieren und Auswählen der Tabellen und/oder Ansichten, die Sie freigeben möchten 
+
 * Client-IP-SQL Server-Firewallzugriff: Die Berechtigung kann mit folgenden Schritten gewährt werden: 1. Navigieren Sie zu *Firewalls und virtuelle Netzwerke*. 2. Legen Sie die Umschaltfläche auf **Ein** fest, um den Zugriff auf Azure-Dienste zuzulassen. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
@@ -69,7 +71,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | NAME | *datashareacount* | Geben Sie einen Namen für Ihr Data Share-Konto an. |
+    | Name | *datashareacount* | Geben Sie einen Namen für Ihr Data Share-Konto an. |
     | Subscription | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihr Data Share-Konto verwenden möchten.|
     | Resource group | *test-resource-group* | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
     | Location | *USA, Osten 2* | Wählen Sie eine Region für Ihr Data Share-Konto aus.
@@ -99,7 +101,7 @@ Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
     ![Datasets](./media/datasets.png "Datasets")
 
-1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. 
+1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Bei der Freigabe über eine Azure SQL-Datenbank- oder Azure SQL Data Warehouse-Instanz werden Sie zur Eingabe einiger SQL-Anmeldeinformationen aufgefordert. Authentifizieren Sie sich unter Verwendung des Benutzers, den Sie im Rahmen der Voraussetzungen erstellt haben.
 
     ![AddDatasets](./media/add-datasets.png "Hinzufügen von Datasets")    
 

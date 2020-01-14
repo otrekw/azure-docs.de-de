@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 09/06/2019
+ms.date: 12/17/2019
 ms.author: helohr
-ms.openlocfilehash: a7511b8026cb3f53a23eed0f0c057632314320c4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 70cabc75ebdeb7ed6d7ffd000419295fce6303de
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466591"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459507"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Tutorial: Erstellen eines Mandanten in Windows Virtual Desktop
 
@@ -25,14 +25,18 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Zuweisen der Anwendungsrolle „TenantCreator“ für einen Benutzer in Ihrem Azure Active Directory-Mandanten
 > * Erstellen eines Windows Virtual Desktop-Mandanten
 
-Sie benötigen Folgendes, um Ihren Windows Virtual Desktop-Mandanten einzurichten:
+## <a name="what-you-need-to-set-up-a-tenant"></a>Erforderliche Komponenten zum Einrichten eines Mandanten
+
+Bevor Sie mit der Einrichtung Ihres Windows Virtual Desktop-Mandanten beginnen, stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Die Mandanten-ID von [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für Windows Virtual Desktop-Benutzer.
 * Ein globales Administratorkonto im Azure Active Directory-Mandanten.
    * Dies gilt auch für CSP-Organisationen (Cloud Solution Provider), die einen Windows Virtual Desktop-Mandanten für ihre Kunden erstellen. Wenn Sie einer CSP-Organisation angehören, müssen Sie sich als globaler Administrator der Azure Active Directory-Instanz des Kunden anmelden können.
    * Das Administratorkonto muss aus dem Azure Active Directory-Mandanten stammen, in dem Sie den Windows Virtual Desktop-Mandanten erstellen möchten. Azure Active Directory B2B-Konten (Gastkonten) werden bei diesem Prozess nicht unterstützt.
    * Das Administratorkonto muss ein Geschäfts-, Schul- oder Unikonto sein.
-* Ein Azure-Abonnement.
+* ein Azure-Abonnement
+
+Sie müssen die Mandanten-ID, das globale Administratorkonto und das Azure-Abonnement bereithalten, damit das in diesem Tutorial beschriebene Verfahren ordnungsgemäß funktioniert.
 
 ## <a name="grant-permissions-to-windows-virtual-desktop"></a>Erteilen von Berechtigungen für Windows Virtual Desktop
 
@@ -135,6 +139,12 @@ Ersetzen Sie die Werte in Klammern durch die Werte, die für Ihre Organisation u
 
 ```powershell
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
+```
+
+Es ist ratsam, einem zweiten Benutzer Administratorzugriff zuzuweisen, falls Sie sich einmal aus Ihrem Konto aussperren oder Urlaub nehmen und ein anderer Benutzer in Ihrer Abwesenheit die Aufgaben des Mandantenadministrators übernehmen muss. Führen Sie zum Zuweisen des Administratorzugriffs zu einem zweiten Benutzer das folgende Cmdlet mit `<TenantName>` und `<Upn>` aus. Ersetzen Sie diese Platzhalter durch Ihren Mandantennamen und den UPN des zweiten Benutzers.
+
+```powershell
+New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

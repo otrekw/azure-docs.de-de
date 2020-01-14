@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial 1: Vorhersagen des Kreditrisikos'
 titleSuffix: ML Studio (classic) - Azure
-description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in der klassischen Version von Azure Machine Learning Studio. Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.  Es wird beschrieben, wie Sie einen Arbeitsbereich erstellen, Daten hochladen und ein Experiment erstellen.
+description: Ein ausführliches Tutorial zum Erstellen einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning Studio (klassisch) Dieses Tutorial ist der erste Teil einer dreiteiligen Reihe.  Es wird beschrieben, wie Sie einen Arbeitsbereich erstellen, Daten hochladen und ein Experiment erstellen.
 keywords: Kreditrisiko, Predictive Analytics-Lösung, Risikobewertung
 author: sdgilley
 ms.author: sgilley
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: e8c1eea097fc3ea2704acfae198eb493943b6ccf
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 07621bd2d0593ea3896aba0deb65e0b856e5987b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838868"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432243"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio-classic"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio (klassisch)
 
@@ -25,7 +25,7 @@ Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Ana
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden die klassische Version von Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio (klassisch) erstellen können. Für diese Lösung werden Azure Machine Learning Studio (klassisch) und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -95,7 +95,7 @@ Wenn mit dem Modell eine Person dann fälschlicherweise als Person mit einem nie
 
 ### <a name="convert-the-dataset-format"></a>Konvertieren des Datensatzformats
 
-Der Originaldatensatz verwendet ein Format mit Trennung durch Leerzeichen. Die klassische Version von Machine Learning Studio funktioniert besser mit durch Trennzeichen getrennten Dateien (CSV). Daher konvertieren Sie das Dataset, indem Sie die Leerzeichen durch Kommas ersetzen.  
+Der Originaldatensatz verwendet ein Format mit Trennung durch Leerzeichen. Machine Learning Studio (klassisch) funktioniert besser mit durch Trennzeichen getrennten Dateien (CSV). Daher konvertieren Sie den Datensatz, indem Sie die Leerzeichen durch Kommas ersetzen.  
 
 Es gibt viele Möglichkeiten zum Konvertieren dieser Daten. Eine ist die Verwendung des folgenden Windows PowerShell-Befehls:   
 
@@ -109,7 +109,7 @@ In beiden Fällen haben Sie eine durch Kommas getrennte Version der Daten in der
 
 ### <a name="upload-the-dataset-to-machine-learning-studio-classic"></a>Hochladen des Datasets in Machine Learning Studio (klassisch)
 
-Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in die klassische Version von Machine Learning Studio hochladen. 
+Nach dem Konvertieren der Daten in das CSV-Format müssen Sie sie in Machine Learning Studio (klassisch) hochladen. 
 
 1. Öffnen Sie die Startseite von Machine Learning Studio (klassisch) unter [https://studio.azureml.net](https://studio.azureml.net). 
 
@@ -145,7 +145,7 @@ Weitere Informationen zum Importieren anderer Datentypen in einem Experiment fin
 
 ## <a name="create-an-experiment"></a>Erstellen eines Experiments
 
-Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in der klassischen Version von Machine Learning Studio, in der das von Ihnen hochgeladene Dataset verwendet wird.  
+Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in Machine Learning Studio (klassisch), in dem das von Ihnen hochgeladene Dataset verwendet wird.  
 
 1. Klicken Sie in Studio (klassisch) unten auf der Seite auf **+NEW**.
 1. Wählen Sie **EXPERIMENT**und anschließend "Blank Experiment" aus. 
@@ -173,7 +173,7 @@ Der nächste Schritt in diesem Tutorial ist die Erstellung eines Experiments in 
 
 Sie können die ersten 100 Datenzeilen sowie einige statistische Informationen für das ganze Dataset anzeigen: Klicken Sie auf den Ausgabeport des Datasets (den kleinen Kreis unten), und wählen Sie **Visualisieren**.  
 
-Da die Datendatei keine Spaltenüberschriften aufweist, hat die klassische Version von Studio allgemeine Überschriften (Col1, Col2 *usw.* ) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
+Da die Datendatei keine Spaltenüberschriften aufweist, hat Studio (klassisch) allgemeine Überschriften (Col1, Col2 *usw.* ) bereitgestellt. Aussagekräftige Überschriften haben keine Bedeutung für die Erstellung eines Modells, erleichtern aber die Arbeit mit den Daten im Experiment. Wenn Sie dieses Modell später in einem Webdienst veröffentlichen, kann der Benutzer des Diensts die Spalten anhand der Überschriften außerdem leichter identifizieren.  
 
 Verwenden Sie das Modul [Edit Metadata][edit-metadata], um Spaltenüberschriften hinzuzufügen.
 

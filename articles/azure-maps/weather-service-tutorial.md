@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8f641640ff6cf4174e2e1374404d47fc0760f79f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979576"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75613566"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
@@ -35,8 +35,11 @@ In diesem Lernprogramm lernen Sie Folgendes:
 
 Für dieses Tutorial sind folgende Vorbereitungen erforderlich:
 
-1. Gehen Sie wie unter [Erstellen eines neuen Kontos](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) beschrieben vor, um ein Azure Maps-Kontoabonnement im Tarif S0 zu erstellen.
-2. Gehen Sie wie unter [Abrufen des Primärschlüssels für Ihr Konto](./tutorial-search-location.md#getkey) beschrieben vor, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
+1. Gehen Sie wie unter [Erstellen eines Kontos und Abrufen Ihres Schlüssels](quick-demo-map-app.md#create-an-account-with-azure-maps) beschrieben vor, um ein Azure Maps-Kontoabonnement im Tarif S0 zu erstellen.
+2. Gehen Sie wie unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) beschrieben vor, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
+
+
+Weitere Einzelheiten zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
 Unter [Erstellen eines Azure-Notebooks](https://docs.microsoft.com/azure/azure-maps/tutorial-ev-routing#create-an-azure-notebook) können Sie sich mit Azure-Notebooks und mit den ersten Schritten vertraut machen.
 
@@ -68,7 +71,7 @@ In unserem Beispielszenario möchten wir eine tägliche Vorhersage für jeden Se
 
 
 ```python
-subscription_key = "Your Azure Maps primary subscription key"
+subscription_key = "Your Azure Maps key"
 
 # Get a lists of unique station IDs and their coordinates 
 station_ids = pd.unique(df[['StationID']].values.ravel())
@@ -172,7 +175,7 @@ windsPlot.set_xlabel("Date")
 windsPlot.set_ylabel("Wind direction")
 ```
 
-Die folgenden Diagramme zeigen die vorhergesagten Daten für die Änderung der Windgeschwindigkeit (linkes Diagramm) und der Windrichtung (rechtes Diagramm) in den nächsten 15 Tagen ab dem aktuellen Tag:
+Die folgenden Diagramme zeigen die vorhergesagten Daten für die Änderung der Windgeschwindigkeit (linkes Diagramm) und der Windrichtung (rechtes Diagramm) in den nächsten 15 Tagen ab dem Tag, an dem die Daten angefordert werden:
 
 <center>
 
@@ -190,6 +193,6 @@ Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie u
 * [Wetter: Abrufen einer täglichen Vorhersage (Vorschau)](https://aka.ms/AzureMapsWeatherDailyForecast)
 * [Rendern: Abrufen des Kartenbilds](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
 
-Eine vollständige Liste mit den Azure Maps-REST-APIs finden Sie unter [Azure Maps-Dokumentation](https://docs.microsoft.com/azure/azure-maps/#reference).
+Eine vollständige Liste mit den Azure Maps-REST-APIs finden Sie unter [Azure Maps-Dokumentation](https://docs.microsoft.com/azure/azure-maps/consumption-model).
 
 Weitere Informationen zu Azure Notebooks finden Sie unter [Azure Notebooks-Dokumentation](https://docs.microsoft.com/azure/notebooks).

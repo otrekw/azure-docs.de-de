@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: e17205af1ede845ea77b04f6f2b4c6babf3bc450
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 10b9dba2f54a2d20b0cb405285772f8c3d74b3a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450841"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Tutorial: Erstellen einer Site-to-Site-Verbindung per Azure Virtual WAN
 
@@ -41,7 +41,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Voraussetzungen erfüllt sind bzw. Folgendes vorhanden ist:
 
-* Sie verfügen über ein virtuelles Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken überlappt, mit denen Sie eine Verbindung herstellen möchten. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im [Schnellstart](../virtual-network/quick-create-portal.md).
+* Sie verfügen über ein virtuelles Netzwerk, mit dem Sie eine Verbindung herstellen möchten. Stellen Sie sicher, dass sich kein Subnetz Ihres lokalen Netzwerks mit den virtuellen Netzwerken für die Verbindungsherstellung überschneidet. Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie in der [Schnellstartanleitung](../virtual-network/quick-create-portal.md).
 
 * Ihr virtuelles Netzwerk verfügt nicht über Gateways für virtuelle Netzwerke. Falls Ihr virtuelles Netzwerk über ein Gateway verfügt (entweder VPN oder ExpressRoute), müssen Sie alle Gateways entfernen. Für diese Konfiguration ist es erforderlich, dass virtuelle Netzwerke stattdessen mit dem Gateway des Virtual WAN-Hubs verbunden werden.
 
@@ -64,8 +64,8 @@ Navigieren Sie in einem Browser zum Azure-Portal, und melden Sie sich mit Ihrem 
    * **Ressourcengruppenstandort**: Wählen Sie in der Dropdownliste einen Ressourcengruppenstandort aus. Ein WAN ist eine globale Ressource, die nicht in einer bestimmten Region angeordnet ist. Sie müssen aber eine Region auswählen, damit Sie die von Ihnen erstellte WAN-Ressource leichter verwalten und finden können.
    * **Name**: Geben Sie den Namen ein, den Sie Ihrem WAN geben möchten.
    * **Typ:** „Basic“ oder „Standard“. Bei der Erstellung eines WAN vom Typ „Basic“ können Sie auch nur einen Hub vom Typ „Basic“ erstellen. Für „Basic“-Hubs sind nur Site-to-Site-VPN-Verbindungen möglich.
-4. Wählen Sie nach dem Ausfüllen der Felder die Option **Bewerten + erstellen** aus.
-5. Wählen Sie nach der bestandenen Überprüfung die Option **Erstellen** aus, um das Virtual WAN zu erstellen.
+4. Klicken Sie nach dem Ausfüllen der Felder auf **Überprüfen + erstellen**.
+5. Klicken Sie nach bestandenen Überprüfung auf **Erstellen**, um das virtuelle WAN zu erstellen.
 
 ## <a name="hub"></a>Erstellen eines Hubs
 
@@ -75,7 +75,7 @@ Ein Hub ist ein virtuelles Netzwerk, das Gateways für Verbindungen vom Typ „S
 
 ## <a name="site"></a>Erstellen einer Site
 
-Nun ist alles bereit, um die Sites gemäß Ihren physischen Standorten zu erstellen. Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. Sie können in einem Virtual WAN bis zu 1.000 Sites pro virtuellem Hub erstellen. Bei mehreren Hubs ist die Erstellung von 1.000 Sites pro Hub möglich. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen (Linkeinfügung), können Sie sich beim Partner über die Automatisierungsmöglichkeiten in Azure informieren. Normalerweise umfasst die Automatisierung eine einfache Vorgehensweise per Klick, um umfassende Branchinformationen nach Azure zu exportieren und die Konnektivität vom CPE zum Azure Virtual WAN-VPN-Gateway einzurichten (Link zu einem Leitfaden zur Automatisierung von Azure zu CPE-Partnern).
+Nun ist alles bereit, um die Sites gemäß Ihren physischen Standorten zu erstellen. Erstellen Sie beliebig viele Sites, die Ihren physischen Standorten entsprechen. Erstellen Sie beispielsweise drei separate Sites, wenn Sie jeweils über eine Filiale in New York, London und Los Angeles verfügen. Diese Sites enthalten Ihre lokalen VPN-Geräteendpunkte. Sie können in einem Virtual WAN bis zu 1.000 Sites pro virtuellem Hub erstellen. Bei mehreren Hubs ist die Erstellung von 1.000 Sites pro Hub möglich. Falls Sie über ein CPE-Gerät eines Virtual WAN-Partners verfügen (Linkeinfügung), können Sie sich beim Partner über die Automatisierungsmöglichkeiten in Azure informieren. Normalerweise umfasst die Automatisierung eine einfache Vorgehensweise per Klick, um umfassende Branchinformationen nach Azure zu exportieren und die Konnektivität vom CPE zum Azure Virtual WAN-VPN-Gateway einzurichten. Weitere Informationen finden Sie unter [Virtual WAN-Partner](virtual-wan-configure-automation-providers.md).
 
 [!INCLUDE [Create a site](../../includes/virtual-wan-tutorial-s2s-site-include.md)]
 
@@ -97,7 +97,7 @@ In diesem Schritt erstellen Sie die Verbindung zwischen Ihrem Hub und einem VNET
     * **Hubs**: Wählen Sie den Hub aus, den Sie dieser Verbindung zuordnen möchten.
     * **Abonnement**: Überprüfen Sie das Abonnement.
     * **Virtuelles Netzwerk**: Wählen Sie das virtuelle Netzwerk aus, das Sie mit diesem Hub verbinden möchten. Für das virtuelle Netzwerk kann nicht bereits ein Gateway für virtuelle Netzwerke vorhanden sein.
-4. Klicken Sie auf **OK**, um die Verbindung für das virtuelle Netzwerk zu erstellen.
+4. Klicken Sie auf **OK**, um die VNet-Verbindung zu erstellen.
 
 ## <a name="device"></a>Herunterladen der VPN-Konfiguration
 

@@ -1,26 +1,17 @@
 ---
-title: Bereitstellen einer Service Fabric-App in einem Cluster in Azure | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie über Visual Studio eine Anwendung in einem Cluster bereitstellen.
-services: service-fabric
-documentationcenter: .net
+title: Bereitstellen einer Service Fabric-App in einem Cluster in Azure
+description: Hier erfahren Sie, wie Sie über Visual Studio eine vorhandene Anwendung in einem neu erstellten Azure Service Fabric-Cluster bereitstellen.
 author: athinanthny
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 37c27ae71eddcb5a35b9baeae250bee232c7acb7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9951610732cbb1c5884a7b7e830033f427db0ab1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213198"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646006"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>Tutorial: Bereitstellen einer Service Fabric-Anwendung in einem Cluster in Azure
 
@@ -93,7 +84,7 @@ Geben Sie auf der Registerkarte **Zertifikat** das Kennwort und den Ausgabepfad 
 
 ![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/certificate.png)
 
-Geben Sie auf der Registerkarte **VM-Detail** unter **Benutzername** und **Kennwort** den Benutzernamen und das Kennwort für das Clusteradministratorkonto ein.  Wählen Sie unter **Image des virtuellen Computers** das VM-Image für die Clusterknoten und unter **Größe des virtuellen Computers** die VM-Größe für die einzelnen Clusterknoten aus.  Klicken Sie auf die Registerkarte **Advanced** .
+Geben Sie auf der Registerkarte **VM-Detail** unter **Benutzername** und **Kennwort** den Benutzernamen und das Kennwort für das Clusteradministratorkonto ein.  Wählen Sie unter **Image des virtuellen Computers** das VM-Image für die Clusterknoten und unter **Größe des virtuellen Computers** die VM-Größe für die einzelnen Clusterknoten aus.  Klicken Sie auf die Registerkarte **Erweitert**.
 
 ![Erstellen eines Clusters](./media/service-fabric-tutorial-deploy-app-to-party-cluster/vm-detail.png)
 
@@ -112,7 +103,7 @@ Wählen Sie unter **Verbindungsendpunkt** den Endpunkt des im vorherigen Schritt
 
 Wählen Sie **Veröffentlichen**.
 
-Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse gefolgt von **:8080** ein. Oder geben Sie einen anderen Port ein, sofern einer konfiguriert ist. Ein Beispiel ist `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Sie sehen jetzt, dass die Anwendung im Cluster in Azure ausgeführt wird. Fügen Sie auf der Voting-Webseite Abstimmungsoptionen hinzu, löschen Sie Abstimmungsoptionen, und stimmen Sie für einzelne oder mehrere dieser Optionen ab.
+Öffnen Sie nach der Bereitstellung der Anwendung einen Browser, und geben Sie die Clusteradresse gefolgt von **:8080** ein. Oder geben Sie einen anderen Port ein, sofern einer konfiguriert ist. z. B. `http://mytestcluster.southcentral.cloudapp.azure.com:8080`. Sie sehen jetzt, dass die Anwendung im Cluster in Azure ausgeführt wird. Fügen Sie auf der Voting-Webseite Abstimmungsoptionen hinzu, löschen Sie Abstimmungsoptionen, und stimmen Sie für einzelne oder mehrere dieser Optionen ab.
 
 ![Service Fabric-Beispiel „Voting“](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-screenshot-new-azure.png)
 

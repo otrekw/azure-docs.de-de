@@ -1,19 +1,19 @@
 ---
-title: 'Azure CLI-Skriptbeispiel: Abrufen des Hostnamens, der Ports und Schlüssel für Azure Cache for Redis'
-description: 'Azure CLI-Skriptbeispiel: Abrufen des Hostnamens, der Ports und Schlüssel für eine Azure Cache for Redis-Instanz'
+title: 'Abrufen des Hostnamens, der Ports und Schlüssel – Azure Cache for Redis: Azure CLI'
+description: In diesem Azure CLI-Codebeispiel wird gezeigt, wie Sie den Hostnamen, die Ports und Schlüssel für eine Azure Cache for Redis-Instanz abrufen.
 author: yegu-ms
+ms.author: yegu
 tags: azure-service-management
 ms.service: cache
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/30/2017
-ms.author: yegu
-ms.openlocfilehash: 604ec6de3b95a4bc289176d54d9c7b0a6c42eae6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 199c5707e9ecd887af64e271184e151ce0966745
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75411304"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Abrufen des Hostnamens, der Ports und Schlüssel für Azure Cache for Redis
 
@@ -32,7 +32,7 @@ Dieses Skript verwendet die folgenden Befehle, um den Hostnamen, die Schlüssel 
 
 | Get-Help | Notizen |
 |---|---|
-| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Details zu einer Azure Cache for Redis-Instanz abrufen. |
+| [az redis show](https://docs.microsoft.com/cli/azure/redis) | Ruft Details zu einer Azure Cache for Redis-Instanz ab. |
 | [az redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Zugriffsschlüssel für eine Azure Cache for Redis-Instanz abrufen. |
 
 

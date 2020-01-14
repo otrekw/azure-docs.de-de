@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit iOS und macOS – Microsoft Identity Platform | Azure
-description: So können iOS- und macOS-Anwendungen (Swift) über Microsoft Identity Platform eine API aufrufen, für die Zugriffstoken erforderlich sind
+title: 'Tutorial: MSAL für iOS und macOS – Microsoft Identity Platform | Azure'
+description: Hier erfahren Sie, wie iOS- und macOS-Apps (Swift) über Microsoft Identity Platform eine API aufrufen, für die Zugriffstoken erforderlich sind
 services: active-directory
 documentationcenter: dev-center-name
 author: tylermsft
@@ -14,12 +14,12 @@ ms.author: jmprieur
 ms.reviewer: oldalton
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 64f161d94d622ae76932e88be52df6f068bfc945
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a0aa97f2cb54295d9403ec332eb9c0ada684df12
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964667"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423399"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-ios-or-macos-app"></a>Anmelden von Benutzern und Aufrufen von Microsoft Graph aus einer iOS- oder macOS-App
 
@@ -349,7 +349,7 @@ func application(_ app: UIApplication, open url: URL, options: [UIApplication.Op
 ```
 
 **Bei Verwendung von Xcode 11** müssen Sie den MSAL-Rückruf stattdessen in `SceneDelegate.swift` platzieren.
-Wenn Sie sowohl UISceneDelegate als auch UIApplicationDelegate für die Kompatibilität mit älteren iOS-Versionen unterstützen, muss der MSAL-Rückruf in beiden Dateien zur Verfügung gestellt werden.
+Wenn Sie zur Erzielung von Kompatibilität mit älteren iOS-Versionen sowohl „UISceneDelegate“ als auch „UIApplicationDelegate“ unterstützen, muss der MSAL-Rückruf in beide Dateien eingefügt werden.
 
 ```swift
 func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

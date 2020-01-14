@@ -3,14 +3,14 @@ title: 'Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und 
 services: azure-dev-spaces
 ms.date: 09/26/2018
 ms.topic: tutorial
-description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
+description: In diesem Tutorial erfahren Sie, wie Sie mit Azure Dev Spaces und Visual Studio Code eine Node.js-Anwendung in Azure Kubernetes Service debuggen und schnell durchlaufen.
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s
-ms.openlocfilehash: 64d4f7560325429fc2a36be066c6c475d4d60e90
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5cfd0281b7f68a416f47e478292341bd708ed1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708600"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438533"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-code-and-nodejs-with-azure-dev-spaces"></a>Erstellen eines Kubernetes-Entwicklungsbereichs: Visual Studio Code und Node.js mit Azure Dev Spaces
 
@@ -211,7 +211,7 @@ Dadurch wird die Debugkonfiguration für Azure Dev Spaces unter dem `.vscode`-Or
 ![](media/common/command-palette.png)
 
 ### <a name="select-the-azds-debug-configuration"></a>Auswählen der AZDS-Debugkonfiguration
-1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“.
+1. Klicken Sie zum Öffnen der Debugansicht auf der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“.
 1. Wählen Sie als aktive Debugkonfiguration **Launch Program (AZDS)** (Programm starten (AZDS)) aus.
 
 ![](media/get-started-node/debug-configuration-nodejs2.png)
@@ -265,7 +265,7 @@ Mit Azure Dev Spaces können Sie viele Entwicklungsworkflows nutzen, die auch be
 
 Probieren Sie die folgenden Schritte aus:
 1. Beenden Sie den VS Code-Debugger.
-1. Klicken Sie auf der **Aktivitätsleiste** am Rand von VS Code auf das Symbol „Debuggen“. 
+1. Klicken Sie auf der **Aktivitätsleiste** am Rand von VS Codeauf das Symbol „Debuggen“. 
 1. Wählen Sie als aktive Debugkonfiguration **Attach (AZDS)** (Anfügen (AZDS)) aus.
 1. Drücken Sie F5.
 

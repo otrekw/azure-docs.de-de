@@ -1,14 +1,14 @@
 ---
-title: 'Tutorial: Erstellen und Ausführen von Jupyter Notebook in Azure'
-description: Erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure Notebooks erstellen und ausführen, die den Prozess der linearen Regression in der Data Science veranschaulicht.
+title: 'Tutorial: Erstellen und Ausführen eines Jupyter-Notebooks – Azure Notebooks (Vorschauversion)'
+description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Datei in Azure Notebooks (Vorschauversion) erstellen und ausführen, die den Prozess der linearen Regression in der Data Science veranschaulicht.
 ms.topic: tutorial
 ms.date: 01/11/2019
-ms.openlocfilehash: 2c151cb0de2855856e92d9de07ad7dabfda2f55b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 8a1c13f41ef1588b040b3540b852d83764c6ce79
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277428"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660816"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -16,9 +16,20 @@ In diesem Tutorial durchlaufen Sie den Prozess zur Verwendung von Azure Notebook
 
 Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (GitHub: Azure Notebooks-Beispiele)](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps). Dieses Tutorial beginnt jedoch mit einem neuen Projekt und einem leeren Notebook, damit Sie die Erstellung Schritt für Schritt kennenlernen können.
 
+[!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Erstellen eines Projekt-Notebooks mit einigen Beispieldaten
+> * Verwenden Sie die Notebook-Schnittstelle, um eine Vielzahl von Zelltypen zu erstellen.
+> * Ausführen des Notebooks
+> * Speichern des Notebooks
+> * Debuggen des Notebooks in Visual Studio Code
+
 ## <a name="create-the-project"></a>Erstellen des Projekts
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an. (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
+1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com), und melden Sie sich an (ausführliche Informationen hierzu finden Sie unter [Schnellstart: Anmelden bei Azure Notebooks](quickstart-sign-in-azure-notebooks.md)).
 
 1. Wählen Sie oben auf Ihrer öffentlichen Profilseite **Meine Projekte** aus:
 
@@ -30,12 +41,12 @@ Das vollständige Notebook finden Sie unter [GitHub - Azure Notebooks Samples (G
 
 1. Geben Sie folgende Informationen im angezeigten Popupfenster **Create New Project** (Neues Projekt erstellen) an, und klicken Sie anschließend auf **Create** (Erstellen):
 
-    - **Project name** (Projektname): Linear Regression Example - Cricket Chirps
-    - **Project ID** (Projekt-ID): linear-regression-example
-    - **Public project** (Öffentliches Projekt): (deaktiviert)
-    - **Create a README.md** (README-Datei erstellen): (nicht aktiviert)
+   - **Projektname**: Linear Regression Example - Cricket Chirps
+   - **Project ID** (Projekt-ID): linear-regression-example
+   - **Public project** (Öffentliches Projekt): (nicht aktiviert)
+   - **Create a README.md** (README-Datei erstellen): (nicht aktiviert)
 
-1. Kurz darauf navigiert Azure Notebooks zum neuen Projekt.
+1. Nach einigen Augenblicken navigiert Azure Notebooks zum neuen Projekt.
 
 ## <a name="create-the-data-file"></a>Erstellen der Datendatei
 

@@ -13,20 +13,28 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2019
+ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d130a962c14415c417eedecd6ae26af1131b2e86
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: d884987ed5fb00d4078a38aa37d463a81630ca7e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997019"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423397"
 ---
-# <a name="build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Erstellen eines mehrinstanzenfähigen Daemons, der den Microsoft Identity Platform-Endpunkt verwendet
+# <a name="tutorial-build-a-multitenant-daemon-that-uses-the-microsoft-identity-platform-endpoint"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der den Microsoft Identity Platform-Endpunkt verwendet
 
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Microsoft Identity Plattform auf die Daten von Microsoft-Geschäftskunden in einem nicht interaktiven Prozess mit langer Ausführungsdauer zugreifen. Der Beispiel-Daemon verwendet die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md), um ein Zugriffstoken abzurufen. Dieses Token wird dann vom Daemon verwendet, um [Microsoft Graph](https://graph.microsoft.io) aufzurufen und auf Organisationsdaten zuzugreifen.
+
+> [!div class="checklist"]
+> * Integrieren einer Daemon-App in Microsoft Identity Platform
+> * Erteilen von Anwendungsberechtigungen direkt für die App durch einen Administrator
+> * Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API
+> * Rufen Sie die Microsoft Graph-API auf.
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 Die App wird als ASP.NET-MVC-Anwendung erstellt. Sie verwendet die OWIN OpenID Connect-Middleware für die Benutzeranmeldung.  
 
@@ -60,11 +68,11 @@ git clone https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2.git
 
 Oder [laden Sie das Beispiel in einer ZIP-Datei herunter](https://github.com/Azure-Samples/ms-identity-aspnet-daemon-webapp/archive/master.zip).
 
-## <a name="register-the-sample-application-with-your-azure-ad-tenant"></a>Registrieren der Beispielanwendung bei Ihrem Azure AD-Mandanten
+## <a name="register-your-application"></a>Anwendung registrieren
 
-Dieses Beispiel enthält ein einzelnes Projekt. Es kann mit einer der folgenden Methoden registriert werden:
+Dieses Beispiel enthält ein einzelnes Projekt. Zum Registrieren der Anwendung bei Ihrem Azure AD-Mandanten haben Sie folgende Möglichkeiten:
 
-- Mithilfe der Schritte [Registrieren der Beispielanwendung bei Ihrem Azure AD-Mandanten](#register-the-sample-application-with-your-azure-ad-tenant) und [Auswählen des Azure AD-Mandanten für die Anwendungen](#choose-the-azure-ad-tenant)
+- Mithilfe der Schritte [Registrieren der Beispielanwendung bei Ihrem Azure AD-Mandanten](#register-your-application) und [Auswählen des Azure AD-Mandanten für die Anwendungen](#choose-the-azure-ad-tenant)
 - Mithilfe von PowerShell-Skripts, die:
   - *Automatisch* die Azure AD-Anwendungen und die zugehörigen Objekte (Kennwörter, Berechtigungen, Abhängigkeiten) für Sie erstellen.
   - Die Konfigurationsdateien der Visual Studio-Projekte ändern.
@@ -221,7 +229,7 @@ Dieses Projekt enthält Web-App- und Web-API-Projekte. Führen Sie jeweils die f
    1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
    1. Wählen Sie auf der unteren Leiste die Option **Profil importieren** aus, und importieren Sie das zuvor heruntergeladene Veröffentlichungsprofil.
 1. Wählen Sie **Konfigurieren**aus.
-1. Aktualisieren Sie auf der Registerkarte **Verbindung** die Ziel-URL, sodass sie HTTPS verwendet. Verwenden Sie beispielsweise [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Klicken Sie auf **Weiter**.
+1. Aktualisieren Sie auf der Registerkarte **Verbindung** die Ziel-URL, sodass sie HTTPS verwendet. Verwenden Sie beispielsweise [https://dotnet-web-daemon-v2-contoso.azurewebsites.net](https://dotnet-web-daemon-v2-contoso.azurewebsites.net). Wählen Sie **Weiter** aus.
 1. Vergewissern Sie sich auf der Registerkarte **Einstellungen**, dass die Option **Organisationsauthentifizierung aktivieren** deaktiviert ist.  
 1. Wählen Sie **Speichern** aus. Wählen Sie im Hauptbildschirm **Veröffentlichen** aus.
 
@@ -237,7 +245,10 @@ Visual Studio veröffentlicht das Projekt und öffnet die Projekt-URL automatisc
 1. Speichern Sie die Konfiguration.
 1. Fügen Sie die gleiche URL der Werteliste unter **Authentifizierung** > **Umleitungs-URIs** hinzu. Falls Sie über mehrere Umleitungs-URLs verfügen, muss für jede ein neuer Eintrag mit dem URI des App-Diensts vorhanden sein.
 
-## <a name="community-help-and-support"></a>Hilfe und Unterstützung der Community
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Löschen Sie das im Schritt [Registrieren Ihrer Anwendung](#register-your-application) erstellte App-Objekt, wenn Sie es nicht mehr benötigen.  Befolgen Sie zum Entfernen der Anwendung die Anweisungen unter [Entfernen einer Anwendung, die von Ihnen oder Ihrer Organisation erstellt wurde](quickstart-remove-app.md#remove-an-application-authored-by-you-or-your-organization).
+
+## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
 Verwenden Sie [Stack Overflow](http://stackoverflow.com/questions/tagged/msal), um Unterstützung von der Community zu erhalten.
 Stellen Sie Ihre Fragen zuerst auf Stack Overflow, und durchsuchen Sie die vorhandenen Probleme, um zu prüfen, ob vielleicht schon jemand anders die gleiche Frage hatte.

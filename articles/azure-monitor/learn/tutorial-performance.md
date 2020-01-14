@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/13/2019
 ms.custom: mvc
-ms.openlocfilehash: cd1a483cd50051ade5d7d4f45c8eb7e5d8351787
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: f9074a004683393df18d621a679fbb7378dc6704
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900458"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75398633"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Suchen und Diagnostizieren von Leistungsproblemen mit Azure Application Insights
 
@@ -30,7 +30,7 @@ Azure Application Insights erfasst die Telemetriedaten Ihrer Anwendung, um die F
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md).
@@ -42,7 +42,7 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="identify-slow-server-operations"></a>Identifizieren langsamer Servervorgänge
 Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in Ihrer Anwendung. Durch Identifizieren der Vorgänge mit der längsten Dauer können Sie potenzielle Probleme diagnostizieren oder die aktuelle Entwicklung bestmöglich auf die Verbesserung der allgemeinen Leistung der Anwendung ausrichten.
 
-1. Wählen Sie zuerst **Application Insights** und anschließend Ihr Abonnement aus.  
+1. Klicken Sie auf **Application Insights**, und wählen Sie anschließend Ihr Abonnement aus.  
 1. Um den Bereich **Leistung** zu öffnen, klicken Sie entweder im Menü **Untersuchen** auf die Option **Leistung** oder auf das Diagramm **Serverantwortzeit**.
 
     ![Leistung](media/tutorial-performance/1-overview.png)
@@ -72,7 +72,7 @@ Application Insights erfasst die Leistungsdetails der verschiedenen Vorgänge in
 
     ![Leistungstipp](media/tutorial-performance/6-perf-tip.png)
 
-8.  Für eine weiterführende Analyse können Sie auf **Ablaufverfolgung herunterladen** klicken und die Ablaufverfolgung in Visual Studio herunterladen.
+8.   Für eine weiterführende Analyse können Sie auf **Ablaufverfolgung herunterladen** klicken und die Ablaufverfolgung herunterladen. Sie können diese Daten mit [PerfView](https://github.com/Microsoft/perfview#perfview-overview) anzeigen.
 
 ## <a name="use-logs-data-for-server"></a>Verwenden von Protokolldaten für den Server
  Protokolle bieten eine umfangreiche Abfragesprache, mit der Sie alle von Application Insights erfassten Daten analysieren können. Sie können damit tiefgehende Analysen von Anforderungs- und Leistungsdaten ausführen.
